@@ -63,8 +63,7 @@
 			"image": "Fashion_Yellow_Beach.jpg",
 			"likes": 62,
 			"date": "2011-12-08",
-			"price": 55,
-			"description": "Plan en pied d'une jeune femme brune vétue d'une tenue jaune, vue sur la mer et un terrain de basket, couleurs chaudes"
+			"price": 55
 		},
 		{
 			"id": 8520927,
@@ -73,8 +72,7 @@
 			"image": "Fashion_Urban_Jungle.jpg",
 			"likes": 11,
 			"date": "2011-11-06",
-			"price": 55,
-			"description": "Plan en pied d'une jeune femme blonde vétue d'une robe style tropicale, positionnée sur un pont au milieu de la route"
+			"price": 55
 		},
 		{
 			"id": 9025895,
@@ -83,8 +81,7 @@
 			"image": "Fashion_Pattern_on_Pattern.jpg",
 			"likes": 72,
 			"date": "2013-08-12",
-			"price": 55,
-			"description": "Plan taille d'une jeune femme brune vétue d'une robe à rayoures verticales, équipée d'un sac en bandouillère rouge, et d'une écharpe jaune moutarde"
+			"price": 55
 		},
 		{
 			"id": 9275938,
@@ -93,8 +90,7 @@
 			"image": "Event_WeddingGazebo.jpg",
 			"likes": 69,
 			"date": "2018-02-22",
-			"price": 55,
-			"description": "Allée d'une cérémonie d'un mariage, arche fleurie avec une table pour les mariées"
+			"price": 55
 		},
 		{
 			"id": 2053494,
@@ -103,8 +99,7 @@
 			"image": "Event_Sparklers.jpg",
 			"likes": 2,
 			"date": "2020-05-25",
-			"price": 55,
-			"description": "Cérémonie de mariage la nuit, les invitées ont des sparklers dans les mains et félicitent les mariés"
+			"price": 55
 		},
 		{
 			"id": 7324238,
@@ -113,9 +108,16 @@
 			"image": "Event_18thAnniversary.jpg",
 			"likes": 33,
 			"date": "2019-06-12",
-			"price": 55,
-			"description": "Décoration d'une table d'anniversaire de 18ans"
+			"price": 55
 		},
+		{
+			"id": 8328953,
+			"photographerId": 82,
+			"video": "Art_Wooden_Horse_Sculpture.mp4",
+			"likes": 24,
+			"date": "2011-12-08",
+			"price": 100
+		  },
 		{
 			"id": 7502053,
 			"photographerId": 82,
@@ -123,8 +125,7 @@
 			"image": "Art_Triangle_Man.jpg",
 			"likes": 88,
 			"date": "2007-05-07",
-			"price": 55,
-			"description": "Streetart géométrique avec des couleurs vives"
+			"price": 55
 		},
 		{
 			"id": 8523492,
@@ -133,8 +134,7 @@
 			"image": "Art_Purple_light.jpg",
 			"likes": 24,
 			"date": "2018-05-05",
-			"price": 55,
-			"description": "Sous-terrain avec des grafitis, néons roses"
+			"price": 55
 		},
 		{
 			"id": 75902334,
@@ -143,8 +143,7 @@
 			"image": "Art_Mine.jpg",
 			"likes": 75,
 			"date": "2019-11-25",
-			"price": 55,
-			"description": "Streetart d'oiseaux, couleurs pastelles"
+			"price": 55
 		},
 
 		{
@@ -154,8 +153,7 @@
 			"image": "Sport_2000_with_8.jpg",
 			"likes": 52,
 			"date": "2013-02-30",
-			"price": 70,
-			"description": "Photo prise du dessus de deux athlètes qui rament au milieu d'un fleuve"
+			"price": 70
 		},
 		{
 			"id": 92758372,
@@ -164,8 +162,7 @@
 			"image": "Fashion_Wings.jpg",
 			"likes": 58,
 			"date": "2018-07-17",
-			"price": 70,
-			"description": "Modèles qui prennent la pause"
+			"price": 70
 		},
 		{
 			"id": 32958383,
@@ -174,8 +171,7 @@
 			"image": "Fashion_Melody_Red_on_Stripes.jpg",
 			"likes": 11,
 			"date": "2019-08-12",
-			"price": 70,
-			"description": "Femme vétue d'une robe rouge, avec des lunettes de soleil"
+			"price": 70
 		},
 		{
 			"id": 928587383,
@@ -184,8 +180,7 @@
 			"image": "Event_VentureConference.jpg",
 			"likes": 2,
 			"date": "2019-01-02",
-			"price": 70,
-			"description": "Daily meeting d'une entreprise où la speakeuse donne des informations"
+			"price": 70
 		},
 		{
 			"id": 725639493,
@@ -194,8 +189,7 @@
 			"image": "Event_ProductPitch.jpg",
 			"likes": 3,
 			"date": "2019-05-20",
-			"price": 70,
-			"description": "Pitch d'un intervenant d'une entreprise"
+			"price": 70
 		},
 		{
 			"id": 23394384,
@@ -204,8 +198,7 @@
 			"image": "Event_KeyboardCheck.jpg",
 			"likes": 52,
 			"date": "2019-07-18",
-			"price": 70,
-			"description": "Noir et blanc d'une pianiste sur scène qui joues du synthétiseur"
+			"price": 70
 		},
 		{
 			"id": 87367293,
@@ -214,8 +207,7 @@
 			"image": "Event_Emcee.jpg",
 			"likes": 23,
 			"date": "2018-02-22",
-			"price": 70,
-			"description": "Portrait d'un speakeur sur scène avec un micro à la main"
+			"price": 70
 		},
 		{
 			"id": 593834784,
@@ -224,8 +216,23 @@
 			"image": "Animals_Majesty.jpg",
 			"likes": 52,
 			"date": "2017-03-13",
-			"price": 70,
-			"description": "Portrait d'un cerf aux longs bois"
+			"price": 70
+		},
+		{
+			"id": 83958935,
+			"photographerId": 925,
+			"video": "Animals_Puppiness.mp4",
+			"likes": 52,
+			"date": "2016-06-12",
+			"price": 70
+		},
+		{
+			"id": 394583434,
+			"photographerId": 527,
+			"video": "Travel_Rock_Mountains.mp4",
+			"likes": 23,
+			"date": "2017-03-18",
+			"price": 45
 		},
 		{
 			"id": 343423425,
@@ -234,8 +241,7 @@
 			"image": "Travel_Outdoor_Baths.jpg",
 			"likes": 101,
 			"date": "2017-04-03",
-			"price": 45,
-			"description": "Des personnes se baignent dans des thermes en extérieur"
+			"price": 45
 		},
 		{
 			"id": 73434243,
@@ -244,8 +250,7 @@
 			"image": "Travel_Road_into_Hill.jpg",
 			"likes": 99,
 			"date": "2018-04-30",
-			"price": 45,
-			"description": "Vue d'une longue route dans un paysage inhabité"
+			"price": 45
 		},
 		{
 			"id": 23425523,
@@ -254,8 +259,7 @@
 			"image": "Travel_Bridge_into_Forest.jpg",
 			"likes": 34,
 			"date": "2016-04-05",
-			"price": 45,
-			"description": "Point of vue sur une pont dans la forêt"
+			"price": 45
 		},
 		{
 			"id": 23134513,
@@ -264,8 +268,7 @@
 			"image": "Travel_Boat_Wanderer.jpg",
 			"likes": 23,
 			"date": "2017-03-18",
-			"price": 45,
-			"description": "Vue a bord d'un bateau sur une chaîne de montagnes"
+			"price": 45
 		},
 		{
 			"id": 92352352,
@@ -274,8 +277,7 @@
 			"image": "Portrait_Sunkissed.jpg",
 			"likes": 66,
 			"date": "2018-05-24",
-			"price": 45,
-			"description": "Portrait d'une femme rousse souriante"
+			"price": 45
 		},
 		{
 			"id": 34513453,
@@ -284,8 +286,7 @@
 			"image": "Portrait_Shaw.jpg",
 			"likes": 52,
 			"date": "2017-04-21",
-			"price": 45,
-			"description": "Portrait en noir et blanc d'une homme qui regarde à sa gauche"
+			"price": 45
 		},
 		{
 			"id": 23523533,
@@ -294,8 +295,7 @@
 			"image": "Portrait_Alexandra.jpg",
 			"likes": 95,
 			"date": "2018-11-02",
-			"price": 45,
-			"description": "Portrait d'une femme en noir et blanc"
+			"price": 45
 		},
 		{
 			"id": 525834234,
@@ -304,8 +304,7 @@
 			"image": "Portrait_AfternoonBreak.jpg",
 			"likes": 25,
 			"date": "2019-01-02",
-			"price": 45,
-			"description": "Portrait en noir et blanc d'un homme âgé "
+			"price": 45
 		},
 
 		{
@@ -315,8 +314,7 @@
 			"image": "Travel_Lonesome.jpg",
 			"likes": 88,
 			"date": "2019-02-03",
-			"price": 45,
-			"description": "Paysage montagneux et levé de soleil"
+			"price": 45
 		},
 		{
 			"id": 625025343,
@@ -325,8 +323,7 @@
 			"image": "Travel_HillsideColor.jpg",
 			"likes": 85,
 			"date": "2019-04-03",
-			"price": 45,
-			"description": "Paysage de maisons colorées sur une montagne"
+			"price": 45
 		},
 		{
 			"id": 2525345343,
@@ -335,8 +332,7 @@
 			"image": "Portrait_Wednesday.jpg",
 			"likes": 34,
 			"date": "2019-04-07",
-			"price": 45,
-			"description": "Portrait d'une enfant en noir et blanc"
+			"price": 45
 		},
 		{
 			"id": 2523434634,
@@ -345,8 +341,7 @@
 			"image": "Portrait_Nora.jpg",
 			"likes": 63,
 			"date": "2019-04-07",
-			"price": 45,
-			"description": "Portrait aux couleurs froides d'une femme à lunettes"
+			"price": 45
 		},
 		{
 			"id": 398847109,
@@ -355,8 +350,7 @@
 			"image": "Portrait_Background.jpg",
 			"likes": 55,
 			"date": "2019-06-20",
-			"price": 45,
-			"description": "Portrait d'une femme en noir et blanc"
+			"price": 45
 		},
 		{
 			"id": 2534342,
@@ -365,8 +359,7 @@
 			"image": "Event_SeasideWedding.jpg",
 			"likes": 25,
 			"date": "2019-06-21",
-			"price": 45,
-			"description": "Vue d'une table de cérémonie décorée en bord de mer"
+			"price": 45
 		},
 		{
 			"id": 65235234,
@@ -375,8 +368,7 @@
 			"image": "Event_PintoWedding.jpg",
 			"likes": 52,
 			"date": "2019-06-25",
-			"price": 45,
-			"description": "Portrait de deux jeunes mariés"
+			"price": 45
 		},
 		{
 			"id": 23523434,
@@ -385,9 +377,16 @@
 			"image": "Event_BenevidesWedding.jpg",
 			"likes": 77,
 			"date": "2019-06-28",
-			"price": 45,
-			"description": "Portrait de deux jeunes mariés pendant la cérémonie"
+			"price": 45
 		},
+		{
+			"id": 5234343,
+			"photographerId": 243,
+			"video": "Animals_Wild_Horses_in_the_mountains.mp4",
+			"likes": 142,
+			"date": "2019-08-23",
+			"price": 60
+		  },
 		{
 			"id": 95234343,
 			"photographerId": 243,
@@ -395,8 +394,7 @@
 			"image": "Animals_Rainbow.jpg",
 			"likes": 59,
 			"date": "2019-07-02",
-			"price": 60,
-			"description": "Portrait d'un petit oiseau coloré"
+			"price": 60
 		},
 
 		{
@@ -406,8 +404,7 @@
 			"image": "Travel_Tower.jpg",
 			"likes": 25,
 			"date": "2019-04-03",
-			"price": 60,
-			"description": "Paysage japonnais avec tour en arrière plan"
+			"price": 60
 		},
 		{
 			"id": 2523434,
@@ -416,8 +413,7 @@
 			"image": "Travel_SunsetonCanals.jpg",
 			"likes": 53,
 			"date": "2019-05-06",
-			"price": 60,
-			"description": "Couché de soleil à venise"
+			"price": 60
 		},
 		{
 			"id": 95293534,
@@ -426,8 +422,7 @@
 			"image": "Travel_OpenMountain.jpg",
 			"likes": 33,
 			"date": "2019-05-12",
-			"price": 60,
-			"description": "Paysage montagneux avec lac bleu turquoise"
+			"price": 60
 		},
 		{
 			"id": 356234343,
@@ -436,8 +431,7 @@
 			"image": "Travel_Bike_and_Stair.jpg",
 			"likes": 53,
 			"date": "2019-06-20",
-			"price": 60,
-			"description": "Rue avec immeuble style hosmanien et velo en premier plan"
+			"price": 60
 		},
 		{
 			"id": 235234343,
@@ -446,8 +440,7 @@
 			"image": "Travel_Adventure_Door.jpg",
 			"likes": 63,
 			"date": "2019-06-26",
-			"price": 60,
-			"description": "Paysage vu de l'intérieur d'une porte indienne"
+			"price": 60
 		},
 		{
 			"id": 6234234343,
@@ -456,8 +449,7 @@
 			"image": "Architecture_Contrast.jpg",
 			"likes": 52,
 			"date": "2019-06-30",
-			"price": 60,
-			"description": "Photo du kremlin à Moscou"
+			"price": 60
 		},
 		{
 			"id": 6525666253,
@@ -466,8 +458,7 @@
 			"image": "Architecture_On_a_hill.jpg",
 			"likes": 63,
 			"date": "2019-07-20",
-			"price": 60,
-			"description": "Paysage architectural de maisons sur une coline"
+			"price": 60
 		},
 		{
 			"id": 98252523433,
@@ -476,9 +467,16 @@
 			"image": "Architecture_Dome.jpg",
 			"likes": 88,
 			"date": "2020-01-05",
-			"price": 60,
-			"description": "Tour de pise vue d'en bas"
+			"price": 60
 		},
+		{
+			"id": 9259398453,
+			"photographerId": 195,
+			"video": "Architecture_coverr_circle_empty_highway_in_buenos_aires_587740985637.mp4",
+			"likes": 57,
+			"date": "2020-01-20",
+			"price": 65
+		  },
 		{
 			"id": 3523523534,
 			"photographerId": 195,
@@ -486,9 +484,16 @@
 			"image": "Architecture_Corner_Room.jpg",
 			"likes": 54,
 			"date": "2020-05-05",
-			"price": 60,
-			"description": "Photographie architecturale d'un immeuble, ciel bleu en arrière plan"
+			"price": 60
 		},
+		{
+			"id": 952343423,
+			"photographerId": 930,
+			"video": "Sport_Tricks_in_the_air.mp4",
+			"likes": 150,
+			"date": "2018-02-30",
+			"price": 70
+		  },
 		{
 			"id": 235234343,
 			"photographerId": 930,
@@ -496,8 +501,7 @@
 			"image": "Sport_Next_Hold.jpg",
 			"likes": 101,
 			"date": "2018-03-05",
-			"price": 65,
-			"description": "Une escaladeuse grimpe sur un rocher"
+			"price": 65
 		},
 		{
 			"id": 235343222,
@@ -506,8 +510,7 @@
 			"image": "sport_water_tunnel.jpg",
 			"likes": 103,
 			"date": "2018-03-10",
-			"price": 70,
-			"description": "Un surfeur qui surfe dans une vague"
+			"price": 70
 		},
 		{
 			"id": 7775342343,
@@ -516,8 +519,7 @@
 			"image": "Sport_Sky_Cross.jpg",
 			"likes": 77,
 			"date": "2018-04-16",
-			"price": 50,
-			"description": "Skieur qui fait une figure en l'air"
+			"price": 50
 		},
 		{
 			"id": 9253445784,
@@ -526,8 +528,7 @@
 			"image": "Sport_Race_End.jpg",
 			"likes": 88,
 			"date": "2018-04-22",
-			"price": 65,
-			"description": "Athlètistes en pleine course"
+			"price": 65
 		},
 		{
 			"id": 22299394,
@@ -536,8 +537,7 @@
 			"image": "Sport_Jump.jpg",
 			"likes": 95,
 			"date": "2018-04-27",
-			"price": 70,
-			"description": "Skateurs dans un bowl en bord de mer"
+			"price": 70
 		},
 		{
 			"id": 3452342633,
@@ -546,8 +546,7 @@
 			"image": "Architecture_White_Light.jpg",
 			"likes": 52,
 			"date": "2018-05-03",
-			"price": 75,
-			"description": "Architecture intérieure en blanc"
+			"price": 75
 		},
 		{
 			"id": 939234243,
@@ -556,8 +555,7 @@
 			"image": "Architecture_Water_on_Modern.jpg",
 			"likes": 55,
 			"date": "2018-05-10",
-			"price": 72,
-			"description": "Architecture"
+			"price": 72
 		},
 		{
 			"id": 222959233,
@@ -566,8 +564,7 @@
 			"image": "Architecture_Horseshoe.jpg",
 			"likes": 85,
 			"date": "2018-05-15",
-			"price": 71,
-			"description": "Architecture d'un immeuble en rond"
+			"price": 71
 		},
 		{
 			"id": 965933434,
@@ -576,8 +573,7 @@
 			"image": "Architecture_Cross_Bar.jpg",
 			"likes": 66,
 			"date": "2018-05-20",
-			"price": 58,
-			"description": "Architecture d'un immeuble vue d'en bas"
+			"price": 58
 		},
 		{
 			"id": 777723343,
@@ -586,8 +582,7 @@
 			"image": "Architecture_Connected_Curves.jpg",
 			"likes": 79,
 			"date": "2018-05-21",
-			"price": 80,
-			"description": "Immeuble à l'architecture géométrique"
+			"price": 80
 		}
 	]
 }

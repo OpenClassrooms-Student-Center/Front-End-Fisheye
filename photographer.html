@@ -9,24 +9,26 @@
   </head>
   <body>
     <header>
-        <!-- Logo  -->
+      <img src="assets/images/logo.png" class="logo" />
     </header>
     <main id="main">
-      <button class="photographer-page_contact_button" onclick="displayModal()" >Contactez-moi
+      <div class="photograph-header">
+        <button class="contact_button" onclick="displayModal()" >Contactez-moi
+        </div>
     </main>
     <div id="contact_modal">
-			<div>
+			<div class="modal">
 				<header>
-          <h1>Contactez-moi</h1>
-          <span onclick="closeModal()">X</span>
+          <h2>Contactez-moi</h2>
+          <img src="assets/icons/close.svg" onclick="closeModal()" />
         </header>
 				<form>
 					<div>
 						<label>Prénom</label>
 						<input>
 					</div>
+          <button class="contact_button">Envoyer</button>
 				</form>
-        <button>Envoyer</button>
 			</div>
 		</div>
     <script src="/scripts/utils/contactForm.js"></script>

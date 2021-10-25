@@ -2,5 +2,5 @@
 
 ## Démarrer le projet
 
-Rien à installer ici, il suffit d'ouvrir le fichier HTML.
-Pour développer encore plus confortablement, `live-server` est recommandé.
+Rien à installer ici, il suffit d'ouvrir le fichier `index.html`.
+
