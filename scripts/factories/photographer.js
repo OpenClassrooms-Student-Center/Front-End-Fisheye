@@ -11,7 +11,7 @@ function photographerFactory(data) {
 
         //In article
         //Heading Photographer div
-        const headPhotographer = document.createElement('div');
+        const headPhotographer = document.createElement('a');
         headPhotographer.classList.add("photographer-head");
 
         const headPhotographerImg = document.createElement('div');
@@ -21,11 +21,17 @@ function photographerFactory(data) {
         img.setAttribute("src", picture)
         const nom = document.createElement( 'h2' );
         nom.textContent = name;
+
+        //Append photographer name to div
+        const nameDiv = document.createElement('div');
+        nameDiv.classList.add("photographer-name");
+        nameDiv.appendChild(nom);
+
         //Append pour pouvoir faire une photo ronde
         headPhotographerImg.appendChild(img);
         headPhotographer.appendChild(headPhotographerImg);
 
-        headPhotographer.appendChild(nom);
+        headPhotographer.appendChild(nameDiv);
 
         //Desc Photographer div
         const descPhotographer = document.createElement('div');
