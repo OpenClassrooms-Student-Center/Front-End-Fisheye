@@ -1,11 +1,6 @@
 /*--------- DOM ELEMENTS ---------*/
-const titlePhotographers = document.querySelectorAll('.photographer-name');
-    
-    
+ 
 /*--------- EVENTS ---------*/
-titlePhotographers.forEach(titlePhotographer => {
-    titlePhotographers.addEventListener("click", openPhotographer);
-});
 
 /*--------- FUNCTIONS ---------*/
 async function getPhotographers() {
@@ -86,10 +81,6 @@ async function init() {
     const { photographers } = await getPhotographers();
     displayData(photographers);
 };
-
-function openPhotographer() {
-    console.log('heyyyyyy');
-};
     
-    init();
+init();
     

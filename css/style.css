@@ -49,6 +49,9 @@ h1 {
   font-size: 36px;
   text-align: center;
   margin: 0px;
+}
+
+.photographer-head {
   cursor: pointer;
 }
 

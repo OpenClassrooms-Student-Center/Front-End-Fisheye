@@ -1,9 +1,28 @@
+/*--------- DOM ELEMENTS ---------*/
+    
+    
+/*--------- EVENTS ---------*/
+
+/*--------- FUNCTIONS ---------*/
+
+
 function photographerFactory(data) {
-    const { name, portrait, city, country, tagline, price } = data;
+    const { name, portrait, city, country, tagline, price, id } = data;
 
     const picture = `assets/photographers/${portrait}`;
     const localisationEx = `${city}, ${country}`;
     const prixEx = `${price}€/jour`;
+
+    //Definir le click event pour aller a la page photographe
+    let titlePhotographers = document.querySelectorAll(".photographer-head");
+    //Event pour aller a la page photographe
+    titlePhotographers.forEach(titlePhotographer => {
+        titlePhotographer.addEventListener("click", () => {
+            console.log(titlePhotographer);
+
+            window.location = `photographer.html?${titlePhotographer.id}`;
+        });
+    });
 
     function getUserCardDOM() {
         //Setup element
@@ -13,6 +32,7 @@ function photographerFactory(data) {
         //Heading Photographer div
         const headPhotographer = document.createElement('a');
         headPhotographer.classList.add("photographer-head");
+        headPhotographer.setAttribute('id', id);
 
         const headPhotographerImg = document.createElement('div');
         headPhotographerImg.classList.add("photographer-head-img");
@@ -52,4 +72,5 @@ function photographerFactory(data) {
         return (article);
     }
     return { name, picture, getUserCardDOM }
+    
 }

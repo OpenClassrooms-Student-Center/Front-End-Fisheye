@@ -2,6 +2,10 @@
 
 /*--------- DOM ELEMENTS ---------*/
 
+//Recuperer l'id du photographe
+const photographe = window.location.search.split("?").join("");
+console.log(photographe);
+
 
 /*--------- EVENTS ---------*/
 
