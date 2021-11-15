@@ -1,10 +1,5 @@
-/*--------- DOM ELEMENTS ---------*/
-    
-    
-/*--------- EVENTS ---------*/
 
 /*--------- FUNCTIONS ---------*/
-
 
 function photographerFactory(data) {
     const { name, portrait, city, country, tagline, price, id } = data;
