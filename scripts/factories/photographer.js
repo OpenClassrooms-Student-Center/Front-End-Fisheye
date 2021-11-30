@@ -8,17 +8,6 @@ function photographerFactory(data) {
     const localisationEx = `${city}, ${country}`;
     const prixEx = `${price}€/jour`;
 
-    //Definir le click event pour aller a la page photographe
-    let titlePhotographers = document.querySelectorAll(".photographer-head");
-    //Event pour aller a la page photographe
-    titlePhotographers.forEach(titlePhotographer => {
-        titlePhotographer.addEventListener("click", () => {
-            console.log(titlePhotographer);
-
-            window.location = `photographer.html?${titlePhotographer.id}`;
-        });
-    });
-
     function getUserCardDOM() {
         //Setup element
         const article = document.createElement( 'article' );
@@ -64,6 +53,11 @@ function photographerFactory(data) {
         //Append
         article.appendChild(headPhotographer);
         article.appendChild(descPhotographer);
+
+        //Event pour aller a la page photographe
+        article.addEventListener("click", () => {
+            window.location = `photographer.html?${id}`;
+        });
         return (article);
     }
     return { name, picture, getUserCardDOM }
