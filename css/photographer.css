@@ -61,6 +61,7 @@ main {
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
+  color: #901C1C;
 }
 .photo-desc .titre {
 }

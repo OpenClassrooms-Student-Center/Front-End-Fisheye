@@ -18,7 +18,6 @@ const fetchPhotographer = async () => {
             for (let i = 0; i < thePhotographers.length; i++) {
                 if(thePhotographers[i].id == photographe){
                     thePhotographer = thePhotographers[i];
-                    console.log(thePhotographer);
                 }
             }
         });
@@ -59,7 +58,6 @@ const photographerDisplay = async () => {
 
     for (let i = 0; i < theMedia.length; i++) {
         if(theMedia[i].photographerId == photographe){
-            console.log(theMedia[i]);
 
             //Setup element
             const photo = document.createElement('div');
@@ -71,23 +69,28 @@ const photographerDisplay = async () => {
             const img = document.createElement( 'img' );
             img.setAttribute("src", laPhoto)
 
+            //Desciption photo
+            const photoDesc = document.createElement('div');
+            photoDesc.classList.add("photo-desc");
+
+            const photoTitre = document.createElement('div');
+            photoTitre.classList.add("titre");
+            const titre = document.createElement('p');
+            titre.textContent = theMedia[i].title;
+            photoTitre.appendChild(titre);
+            photoDesc.appendChild(photoTitre);
+            const photoLikes = document.createElement('div');
+            photoLikes.classList.add("likes");
+            const likes = document.createElement('p');
+            likes.innerHTML = theMedia[i].likes + '<i class="fas fa-heart"></i>';
+            photoLikes.appendChild(likes);
+            photoDesc.appendChild(photoLikes);
+
+
             photo.appendChild(img);
+            photo.appendChild(photoDesc);
             //Append to div
             photoSection.appendChild(photo);
-
-            photoSection.append (
-            `<div class="photo">
-                <img src="assets/photographers/${thePhotographer.name}/${theMedia[i].image}" alt="Photo: ${theMedia[i].title}">
-                <div class="photo-desc">
-                    <div class="titre">
-                        <p>${theMedia[i].title}</p>
-                    </div>
-                    <div class="likes">
-                        <p>${theMedia[i].likes}</p><i class="fas fa-heart"></i>
-                    </div>
-                </div>
-            </div>
-            `);
         }
     }
     
