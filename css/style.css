@@ -11,7 +11,7 @@ header {
   justify-content: space-between;
   align-items: center;
   height: 90px;
-  max-width: 1200px;
+  max-width: 1400px;
   margin: auto;
 }
 
@@ -41,7 +41,7 @@ h1 {
   gap: 70px;
   align-items: center;
   justify-content: space-evenly;
-  max-width: 1200px;
+  max-width: 1400px;
   margin: auto;
 }
 
