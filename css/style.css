@@ -15,7 +15,6 @@ header {
 
 h1 {
   color: #901c1c;
-  margin-right: 100px;
 }
 
 .logo {
@@ -133,6 +132,10 @@ h1 {
   .photographer_section article img {
     height: 250px;
     width: 250px;
+  }
+
+  .photos {
+    justify-content: center;
   }
 }
 

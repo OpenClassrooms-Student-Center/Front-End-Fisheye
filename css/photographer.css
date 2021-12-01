@@ -47,15 +47,17 @@ main {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  justify-content: center;
+  justify-content: space-between;
   padding: 50px 20px;
   gap: 50px;
 }
 .photo {
-  width: 200px;
 }
 .photo img {
-  width: 200px;
+  height: 350px;
+  width: 350px;
+  object-fit: cover;
+  object-position: center center;
 }
 .photo-desc {
   display: flex;
