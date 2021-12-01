@@ -11,10 +11,7 @@ const fetchPhotographers = async () => {
         return resp.json();
     })
     .then( function (data) {
-        console.log(data);
         thePhotographers = data.photographers;
-        theMedia = data.media;
-        console.log(thePhotographers);
     });
 };
 

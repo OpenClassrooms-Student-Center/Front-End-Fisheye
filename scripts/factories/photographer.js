@@ -61,5 +61,11 @@ function photographerFactory(data) {
         return (article);
     }
     return { name, picture, getUserCardDOM }
-    
+}
+
+function photoPageFactory(data) {
+    function getUserPage() {
+        
+        console.log(data)
+    }
 }
