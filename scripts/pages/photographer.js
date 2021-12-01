@@ -59,24 +59,35 @@ const photographerDisplay = async () => {
 
     for (let i = 0; i < theMedia.length; i++) {
         if(theMedia[i].photographerId == photographe){
-            theMedias = theMedia[i];
-            console.log(theMedias);
+            console.log(theMedia[i]);
 
-            theMedias.forEach((media) => {
-                photoSection.innerHTML = 
-                `<div class="photo">
-                    <img src="assets/photographers/${thePhotographer.name}/${theMedias.image}" alt="Photo: ${theMedias.title}">
-                    <div class="photo-desc">
-                        <div class="titre">
-                            <p>${theMedias.title}</p>
-                        </div>
-                        <div class="likes">
-                            <p>${theMedias.likes}</p><i class="fas fa-heart"></i>
-                        </div>
+            //Setup element
+            const photo = document.createElement('div');
+            photo.classList.add("photo");
+
+            //Afficher la photo
+            laPhotoName = thePhotographer.name.split(" ")[0]
+            const laPhoto = `assets/photographers/${laPhotoName}/${theMedia[i].image}`;
+            const img = document.createElement( 'img' );
+            img.setAttribute("src", laPhoto)
+
+            photo.appendChild(img);
+            //Append to div
+            photoSection.appendChild(photo);
+
+            photoSection.append (
+            `<div class="photo">
+                <img src="assets/photographers/${thePhotographer.name}/${theMedia[i].image}" alt="Photo: ${theMedia[i].title}">
+                <div class="photo-desc">
+                    <div class="titre">
+                        <p>${theMedia[i].title}</p>
+                    </div>
+                    <div class="likes">
+                        <p>${theMedia[i].likes}</p><i class="fas fa-heart"></i>
                     </div>
                 </div>
-                `
-            });
+            </div>
+            `);
         }
     }
     
