@@ -76,7 +76,7 @@ main {
   align-items: center;
   column-gap: 20px;
   padding: 0px 20px;
-  position:absolute;
+  position:fixed;
   bottom:0;
   right:0;
   z-index: 5;
