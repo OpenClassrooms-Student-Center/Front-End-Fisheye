@@ -81,7 +81,7 @@ main {
   padding: 0px 20px;
   position:fixed;
   bottom:0;
-  right:0;
+  right: 40px;
   z-index: 5;
   background-color: #DB8876;
   border-radius: 5px;

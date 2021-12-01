@@ -11,6 +11,8 @@ header {
   justify-content: space-between;
   align-items: center;
   height: 90px;
+  max-width: 1200px;
+  margin: auto;
 }
 
 h1 {
@@ -19,7 +21,6 @@ h1 {
 
 .logo {
   height: 50px;
-  margin-left: 100px;
   cursor: pointer;
 }
 
