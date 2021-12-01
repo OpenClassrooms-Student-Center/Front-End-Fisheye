@@ -65,17 +65,17 @@ h1 {
 }
 
 .photographer-head-img {
-  width: 200px;
-  height: 200px;
   position: relative;
   overflow: hidden;
-  border-radius: 50%;
 }
 .photographer_section article img {
   display: inline;
   margin: 0 auto;
-  height: 100%;
-  width: 100%;
+  height: 300px;
+  width: 300px;
+  object-fit: cover;
+  object-position: center center;
+  border-radius: 50%;
 }
 
 .photographer_section .photographer-head {
@@ -129,6 +129,11 @@ h1 {
   .logo {
     margin-left: 0;
   }
+
+  .photographer_section article img {
+    height: 250px;
+    width: 250px;
+  }
 }
 
 @media only screen and (max-width: 850px) {
@@ -138,5 +143,10 @@ h1 {
 
   .logo {
     margin-left: 0;
+  }
+
+  .photographer_section article img {
+    height: 200px;
+    width: 200px;
   }
 }
