@@ -20,6 +20,7 @@ main {
   width: 200px;
   height: 200px;
   border-radius: 50%;
+  object-fit: cover;
 }
 
 .contact_button {
@@ -46,15 +47,17 @@ main {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  justify-content: center;
+  justify-content: space-between;
   padding: 50px 20px;
   gap: 50px;
 }
 .photo {
-  width: 200px;
 }
 .photo img {
-  width: 200px;
+  height: 350px;
+  width: 350px;
+  object-fit: cover;
+  object-position: center center;
 }
 .photo-desc {
   display: flex;
@@ -76,9 +79,9 @@ main {
   align-items: center;
   column-gap: 20px;
   padding: 0px 20px;
-  position:absolute;
+  position:fixed;
   bottom:0;
-  right:0;
+  right: 40px;
   z-index: 5;
   background-color: #DB8876;
   border-radius: 5px;

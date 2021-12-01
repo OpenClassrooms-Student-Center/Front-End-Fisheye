@@ -5,6 +5,8 @@
 //Recuperer l'id du photographe
 const photographe = window.location.search.split("?").join("");
 
+let likeCount = 0;
+
 /*--------- EVENTS ---------*/
 const fetchPhotographer = async () => {
     await fetch('./data/photographers.json')
@@ -43,17 +45,6 @@ const photographerDisplay = async () => {
           <img src="assets/photographers/${thePhotographer.portrait}" alt="Photo de Mimi Keel">
         </div>`;
 
-    //Zone pour afficher les données:
-    const photographerRecap = document.querySelector(".photograph-recap");
-    //Afficher les données
-    photographerRecap.innerHTML = 
-    `<div class="photograph-recap-totalLikes">
-        <p>None</p><i class="fas fa-heart"></i>
-    </div>
-    <div class="photograph-recap-price">
-        <h3>${thePhotographer.price}€/jour</h3>
-    </div>`;
-
     const photoSection = document.querySelector(".photos");
 
     for (let i = 0; i < theMedia.length; i++) {
@@ -83,9 +74,11 @@ const photographerDisplay = async () => {
             photoLikes.classList.add("likes");
             const likes = document.createElement('p');
             likes.innerHTML = theMedia[i].likes + '<i class="fas fa-heart"></i>';
+            //Like counter
+
             photoLikes.appendChild(likes);
             photoDesc.appendChild(photoLikes);
-
+            likeCount = likeCount + theMedia[i].likes;
 
             photo.appendChild(img);
             photo.appendChild(photoDesc);
@@ -93,6 +86,17 @@ const photographerDisplay = async () => {
             photoSection.appendChild(photo);
         }
     }
+
+    //Zone pour afficher les données:
+    const photographerRecap = document.querySelector(".photograph-recap");
+    //Afficher les données
+    photographerRecap.innerHTML = 
+    `<div class="photograph-recap-totalLikes">
+        <p>${likeCount}</p><i class="fas fa-heart"></i>
+    </div>
+    <div class="photograph-recap-price">
+        <h3>${thePhotographer.price}€/jour</h3>
+    </div>`;
     
 }
 
