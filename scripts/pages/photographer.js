@@ -29,11 +29,9 @@ const fetchPhotographer = async () => {
 const photographerDisplay = async () => {
     await fetchPhotographer();
 
-    const prixEx = `${thePhotographer.price}€/jour`;
-
+    //Zone pour afficher les données:
     const photographerBanner = document.querySelector(".photograph-header");
-
-
+    //Afficher les données
     photographerBanner.innerHTML = 
     `<div class="photograph-header-name">
           <h1>${thePhotographer.name}</h1>
@@ -46,6 +44,19 @@ const photographerDisplay = async () => {
         <div class="photograph-header-photo">
           <img src="assets/photographers/${thePhotographer.portrait}" alt="Photo de Mimi Keel">
         </div>`;
+
+    //Zone pour afficher les données:
+    const photographerRecap = document.querySelector(".photograph-recap");
+    //Afficher les données
+    photographerRecap.innerHTML = 
+    `<div class="photograph-recap-totalLikes">
+        <p>None</p><i class="fas fa-heart"></i>
+    </div>
+    <div class="photograph-recap-price">
+        <h3>${thePhotographer.price}€/jour</h3>
+    </div>`;
+
+    
 }
 
 photographerDisplay();

@@ -75,12 +75,21 @@ main {
   align-items: center;
   column-gap: 20px;
   padding: 0px 20px;
+  position:absolute;
+  bottom:0;
+  right:0;
+  z-index: 5;
+  background-color: #DB8876;
+  border-radius: 5px;
 }
 .photograph-recap-totalLikes {
   display: flex;
   flex-direction: row;
   align-items: center;
 }
+
+
+
 
 .modal {
   border-radius: 5px;
