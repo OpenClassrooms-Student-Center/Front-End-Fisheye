@@ -16,7 +16,6 @@ const fetchPhotographer = async () => {
             theMedia = data.media;
 
             for (let i = 0; i < thePhotographers.length; i++) {
-
                 if(thePhotographers[i].id == photographe){
                     thePhotographer = thePhotographers[i];
                     console.log(thePhotographer);
@@ -56,6 +55,30 @@ const photographerDisplay = async () => {
         <h3>${thePhotographer.price}€/jour</h3>
     </div>`;
 
+    const photoSection = document.querySelector(".photos");
+
+    for (let i = 0; i < theMedia.length; i++) {
+        if(theMedia[i].photographerId == photographe){
+            theMedias = theMedia[i];
+            console.log(theMedias);
+
+            theMedias.forEach((media) => {
+                photoSection.innerHTML = 
+                `<div class="photo">
+                    <img src="assets/photographers/${thePhotographer.name}/${theMedias.image}" alt="Photo: ${theMedias.title}">
+                    <div class="photo-desc">
+                        <div class="titre">
+                            <p>${theMedias.title}</p>
+                        </div>
+                        <div class="likes">
+                            <p>${theMedias.likes}</p><i class="fas fa-heart"></i>
+                        </div>
+                    </div>
+                </div>
+                `
+            });
+        }
+    }
     
 }
 
