@@ -2,7 +2,7 @@
 /*--------- FUNCTIONS ---------*/
 
 function photographerFactory(data) {
-    const { name, portrait, city, country, tagline, price, id } = data;
+    const { name, portrait, city, country, tags, tagline, price, id } = data;
 
     const picture = `assets/photographers/${portrait}`;
     const localisationEx = `${city}, ${country}`;
@@ -46,11 +46,22 @@ function photographerFactory(data) {
         tag.textContent = tagline;
         const prix = document.createElement( 'h4' );
         prix.textContent = prixEx;
+        const photographerTags = document.createElement( 'div' );
+        photographerTags.classList.add(".photographerTags");
+        //for Each Tags
+        tags.forEach(tagWord => {
+            console.log(tagWord);  
+            const photographerTag = document.createElement( 'p' );
+            
+        });
+
+        //Append to desc
         descPhotographer.appendChild(loca);
         descPhotographer.appendChild(tag);
         descPhotographer.appendChild(prix);
+        descPhotographer.appendChild(photographerTags);
 
-        //Append
+        //Append to article
         article.appendChild(headPhotographer);
         article.appendChild(descPhotographer);
 
