@@ -1,4 +1,3 @@
-
 /*--------- FUNCTIONS ---------*/
 
 function photographerFactory(data) {
@@ -48,8 +47,12 @@ function photographerFactory(data) {
         prix.textContent = prixEx;
         const photographerTags = document.createElement( 'div' );
         photographerTags.classList.add("photographerTags");
+        
+        
         //for Each Tags
         tags.forEach(tagWord => {
+            tagArray.push(tagWord);
+
             const photographerTag = document.createElement( 'div' );
             photographerTag.classList.add("photographerTag");
             const p = document.createElement( 'p' );
@@ -76,3 +79,4 @@ function photographerFactory(data) {
     }
     return { name, picture, getUserCardDOM }
 }
+

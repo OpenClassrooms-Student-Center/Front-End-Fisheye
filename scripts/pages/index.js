@@ -1,6 +1,9 @@
 /*--------- DOM ELEMENTS ---------*/
 let thePhotographers;
 let theMedia;
+
+let tagArray = [];
+let finalTagArray = [];
 /*--------- EVENTS ---------*/
 
 /*--------- FUNCTIONS ---------*/
@@ -25,8 +28,18 @@ const photographersDisplay = async () => {
         const userCardDOM = photographerModel.getUserCardDOM();
         photographersSection.appendChild(userCardDOM);
     });
+
+    console.log(tagArray)
 }
 
+const tagsFilter = async () => {
+    await fetchPhotographers();
+
+    const tagFilters = document.querySelector(".tagFilter");
+}
+
+tagsFilter();
 photographersDisplay();
+
 
     
