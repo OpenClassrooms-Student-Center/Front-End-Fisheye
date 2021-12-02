@@ -50,9 +50,9 @@ function photographerFactory(data) {
         photographerTags.classList.add(".photographerTags");
         //for Each Tags
         tags.forEach(tagWord => {
-            console.log(tagWord);  
             const photographerTag = document.createElement( 'p' );
-            
+            photographerTag.textContent = tagWord;
+            photographerTags.appendChild(photographerTag);
         });
 
         //Append to desc
