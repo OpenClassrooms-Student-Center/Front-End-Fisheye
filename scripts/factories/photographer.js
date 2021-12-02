@@ -47,11 +47,14 @@ function photographerFactory(data) {
         const prix = document.createElement( 'h4' );
         prix.textContent = prixEx;
         const photographerTags = document.createElement( 'div' );
-        photographerTags.classList.add(".photographerTags");
+        photographerTags.classList.add("photographerTags");
         //for Each Tags
         tags.forEach(tagWord => {
-            const photographerTag = document.createElement( 'p' );
-            photographerTag.textContent = tagWord;
+            const photographerTag = document.createElement( 'div' );
+            photographerTag.classList.add("photographerTag");
+            const p = document.createElement( 'p' );
+            p.textContent = '#'+tagWord;
+            photographerTag.appendChild(p);
             photographerTags.appendChild(photographerTag);
         });
 
@@ -59,11 +62,11 @@ function photographerFactory(data) {
         descPhotographer.appendChild(loca);
         descPhotographer.appendChild(tag);
         descPhotographer.appendChild(prix);
-        descPhotographer.appendChild(photographerTags);
 
         //Append to article
         article.appendChild(headPhotographer);
         article.appendChild(descPhotographer);
+        article.appendChild(photographerTags);
 
         //Event pour aller a la page photographe
         article.addEventListener("click", () => {
@@ -72,11 +75,4 @@ function photographerFactory(data) {
         return (article);
     }
     return { name, picture, getUserCardDOM }
-}
-
-function photoPageFactory(data) {
-    function getUserPage() {
-        
-        console.log(data)
-    }
 }
