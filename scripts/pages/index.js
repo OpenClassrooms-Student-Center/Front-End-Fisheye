@@ -3,7 +3,6 @@ let thePhotographers;
 let theMedia;
 
 let tagArray = [];
-let finalTagArray = [];
 /*--------- EVENTS ---------*/
 
 /*--------- FUNCTIONS ---------*/
@@ -28,17 +27,21 @@ const photographersDisplay = async () => {
         const userCardDOM = photographerModel.getUserCardDOM();
         photographersSection.appendChild(userCardDOM);
     });
+    // Remove duplicates from tagArray
+    let uniqueTagArray = [...new Set(tagArray)];
 
-    console.log(tagArray)
+    uniqueTagArray.forEach(tag =>{
+        const tagFilters = document.querySelector(".tagFilter");
+
+        const photographerTag = document.createElement( 'div' );
+        photographerTag.classList.add("photographerTag");
+        const p = document.createElement( 'p' );
+        p.textContent = '#'+tag;
+        photographerTag.appendChild(p);
+        tagFilters.appendChild(photographerTag);
+    });
 }
 
-const tagsFilter = async () => {
-    await fetchPhotographers();
-
-    const tagFilters = document.querySelector(".tagFilter");
-}
-
-tagsFilter();
 photographersDisplay();
 
 

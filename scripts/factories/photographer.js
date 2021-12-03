@@ -51,6 +51,7 @@ function photographerFactory(data) {
         
         //for Each Tags
         tags.forEach(tagWord => {
+            //Push in array each tag
             tagArray.push(tagWord);
 
             const photographerTag = document.createElement( 'div' );

@@ -27,6 +27,7 @@ h1 {
 .tagFilter {
   display: flex;
   flex-direction: row;
+  flex-wrap: wrap;
   column-gap: 5px;
   align-items: center;
 }
@@ -40,6 +41,12 @@ h1 {
   padding: 0 8px;
   margin: 5px 0;
   cursor: pointer;
+  transition: all 0.3s ease-in-out;
+}
+
+.tagFilter p:hover {
+  color: white;
+  background-color: #901c1c;
 }
 
 .photographer_section {
