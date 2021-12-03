@@ -42,6 +42,7 @@ const photographersDisplay = async () => {
         photographerTag.appendChild(p);
         tagFilters.appendChild(photographerTag);
         photographerTag.addEventListener("click",() => {
+            photographerTag.classList.toggle("active")
             console.log(tag);
         });
     });

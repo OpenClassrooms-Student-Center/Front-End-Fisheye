@@ -44,6 +44,11 @@ h1 {
   background-color: #901c1c;
 }
 
+.photographerTagFilter.active {
+  color: white;
+  background-color: #901c1c;
+}
+
 .photographerTagFilter p {
   font-weight: 600;
   font-size: 15px;
