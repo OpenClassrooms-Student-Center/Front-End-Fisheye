@@ -43,15 +43,13 @@ const photographersDisplay = async () => {
         tagFilters.appendChild(photographerTag);
         photographerTag.addEventListener("click",() => {
             photographerTag.classList.toggle("active")
-            console.log(tag);
+            if (photographerTag.classList.contains("active")) {
+                console.log(tag);
+            }
         });
     });
 
 }
-
-function FilterTags() {
-
-};
 
 photographersDisplay();
 
