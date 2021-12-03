@@ -48,6 +48,13 @@ const photographersDisplay = async () => {
             if (photographerTag.classList.contains("active")) {
                 photographersSection.innerHTML = "";
                 
+                // for (var i = 0; i < thePhotographers.length; i++) {
+                //     console.log(thePhotographers);
+                //         if (thePhotographers.tag === tag) {
+                //             console.log(tag);
+                //         }
+                //     }
+                
                 console.log(tag);
             } else {               
                 thePhotographers.forEach((photographer) => {
