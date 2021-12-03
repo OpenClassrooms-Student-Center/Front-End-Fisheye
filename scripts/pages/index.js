@@ -40,11 +40,20 @@ const photographersDisplay = async () => {
         const p = document.createElement( 'p' );
         p.textContent = '#'+tag;
         photographerTag.appendChild(p);
-        tagFilters.appendChild(photographerTag);
+        //Event when a tag is selected
         photographerTag.addEventListener("click",() => {
             photographerTag.classList.toggle("active")
             if (photographerTag.classList.contains("active")) {
+                photographersSection.innerHTML = "";
+
+                
                 console.log(tag);
+            } else {               
+                thePhotographers.forEach((photographer) => {
+                    const photographerModel = photographerFactory(photographer);
+                    const userCardDOM = photographerModel.getUserCardDOM();
+                    photographersSection.appendChild(userCardDOM);
+                });
             }
         });
     });

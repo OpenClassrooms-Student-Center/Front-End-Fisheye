@@ -56,7 +56,6 @@ h1 {
   margin: 2px 0;
 }
 
-
 .photographer_section {
   padding-top: 70px;
   display: flex;
@@ -150,7 +149,7 @@ h1 {
   flex-wrap: wrap;
 }
 
-.photographerTag p{
+.photographerTag p {
   color: #901c1c;
   font-weight: 600;
   font-size: 15px;
@@ -166,7 +165,7 @@ h1 {
     flex-wrap: wrap;
     justify-content: space-evenly;
   }
-  header h1{
+  header h1 {
     margin: 0;
   }
 
@@ -196,5 +195,17 @@ h1 {
   .photographer_section article img {
     height: 200px;
     width: 200px;
+  }
+}
+
+@media only screen and (max-width: 400px) {
+  .photographer_section {
+    padding-top: 100px;
+  }
+}
+
+@media only screen and (max-width: 340px) {
+  .photographer_section {
+    padding-top: 200px;
   }
 }
