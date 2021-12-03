@@ -3,6 +3,8 @@ let thePhotographers;
 let theMedia;
 
 let tagArray = [];
+
+const photographerTag = document.querySelector(".photographerTag");
 /*--------- EVENTS ---------*/
 
 /*--------- FUNCTIONS ---------*/
@@ -34,13 +36,21 @@ const photographersDisplay = async () => {
         const tagFilters = document.querySelector(".tagFilter");
 
         const photographerTag = document.createElement( 'div' );
-        photographerTag.classList.add("photographerTag");
+        photographerTag.classList.add("photographerTagFilter");
         const p = document.createElement( 'p' );
         p.textContent = '#'+tag;
         photographerTag.appendChild(p);
         tagFilters.appendChild(photographerTag);
+        photographerTag.addEventListener("click",() => {
+            console.log(tag);
+        });
     });
+
 }
+
+function FilterTags() {
+
+};
 
 photographersDisplay();
 

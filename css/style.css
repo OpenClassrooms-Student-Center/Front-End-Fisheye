@@ -28,26 +28,29 @@ h1 {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  column-gap: 5px;
+  gap: 5px;
   align-items: center;
 }
 
-.tagFilter p {
-  color: #901c1c;
-  font-weight: 600;
-  font-size: 15px;
+.photographerTagFilter {
+  cursor: pointer;
   border: 1px solid;
   border-radius: 15px;
-  padding: 0 8px;
-  margin: 5px 0;
-  cursor: pointer;
+  color: #901c1c;
   transition: all 0.3s ease-in-out;
 }
-
-.tagFilter p:hover {
+.photographerTagFilter:hover {
   color: white;
   background-color: #901c1c;
 }
+
+.photographerTagFilter p {
+  font-weight: 600;
+  font-size: 15px;
+  padding: 0 8px;
+  margin: 2px 0;
+}
+
 
 .photographer_section {
   padding-top: 70px;
