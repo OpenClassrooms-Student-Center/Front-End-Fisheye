@@ -1,8 +1,7 @@
-
 /*--------- FUNCTIONS ---------*/
 
 function photographerFactory(data) {
-    const { name, portrait, city, country, tagline, price, id } = data;
+    const { name, portrait, city, country, tags, tagline, price, id } = data;
 
     const picture = `assets/photographers/${portrait}`;
     const localisationEx = `${city}, ${country}`;
@@ -46,13 +45,32 @@ function photographerFactory(data) {
         tag.textContent = tagline;
         const prix = document.createElement( 'h4' );
         prix.textContent = prixEx;
+        const photographerTags = document.createElement( 'div' );
+        photographerTags.classList.add("photographerTags");
+        
+        
+        //for Each Tags
+        tags.forEach(tagWord => {
+            //Push in array each tag
+            tagArray.push(tagWord);
+
+            const photographerTag = document.createElement( 'div' );
+            photographerTag.classList.add("photographerTag");
+            const p = document.createElement( 'p' );
+            p.textContent = '#'+tagWord;
+            photographerTag.appendChild(p);
+            photographerTags.appendChild(photographerTag);
+        });
+
+        //Append to desc
         descPhotographer.appendChild(loca);
         descPhotographer.appendChild(tag);
         descPhotographer.appendChild(prix);
 
-        //Append
+        //Append to article
         article.appendChild(headPhotographer);
         article.appendChild(descPhotographer);
+        article.appendChild(photographerTags);
 
         //Event pour aller a la page photographe
         article.addEventListener("click", () => {
@@ -63,9 +81,3 @@ function photographerFactory(data) {
     return { name, picture, getUserCardDOM }
 }
 
-function photoPageFactory(data) {
-    function getUserPage() {
-        
-        console.log(data)
-    }
-}

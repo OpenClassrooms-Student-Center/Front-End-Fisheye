@@ -27,10 +27,33 @@ h1 {
 .tagFilter {
   display: flex;
   flex-direction: row;
-  column-gap: 10px;
-  color: #901c1c;
-  font-weight: 600;
+  flex-wrap: wrap;
+  gap: 5px;
   align-items: center;
+}
+
+.photographerTagFilter {
+  cursor: pointer;
+  border: 1px solid;
+  border-radius: 15px;
+  color: #901c1c;
+  transition: all 0.3s ease-in-out;
+}
+.photographerTagFilter:hover {
+  color: white;
+  background-color: #901c1c;
+}
+
+.photographerTagFilter.active {
+  color: white;
+  background-color: #901c1c;
+}
+
+.photographerTagFilter p {
+  font-weight: 600;
+  font-size: 15px;
+  padding: 0 8px;
+  margin: 2px 0;
 }
 
 .photographer_section {
@@ -88,7 +111,8 @@ h1 {
   flex-direction: column;
   align-items: center;
 }
-.photographer_section article h3 {
+
+.photographer_section .photographer-desc h3 {
   font-style: normal;
   font-weight: normal;
   color: #901c1c;
@@ -97,7 +121,7 @@ h1 {
   text-align: center;
   margin: 0px;
 }
-.photographer_section article p {
+.photographer_section .photographer-desc p {
   font-style: normal;
   font-weight: normal;
   font-size: 10px;
@@ -106,7 +130,7 @@ h1 {
   color: #000000;
   margin: 0px;
 }
-.photographer_section article h4 {
+.photographer_section .photographer-desc h4 {
   font-style: normal;
   font-weight: normal;
   font-size: 9px;
@@ -116,13 +140,32 @@ h1 {
   margin: 0px;
 }
 
+.photographerTags {
+  display: flex;
+  flex-direction: row;
+  column-gap: 5px;
+  align-items: center;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+}
+
+.photographerTag p {
+  color: #901c1c;
+  font-weight: 600;
+  font-size: 15px;
+  border: 1px solid;
+  border-radius: 15px;
+  padding: 0 8px;
+  margin: 5px 0;
+}
+
 @media only screen and (max-width: 1300px) {
   header {
     padding: 20px;
     flex-wrap: wrap;
     justify-content: space-evenly;
   }
-  header h1{
+  header h1 {
     margin: 0;
   }
 
@@ -152,5 +195,17 @@ h1 {
   .photographer_section article img {
     height: 200px;
     width: 200px;
+  }
+}
+
+@media only screen and (max-width: 400px) {
+  .photographer_section {
+    padding-top: 100px;
+  }
+}
+
+@media only screen and (max-width: 340px) {
+  .photographer_section {
+    padding-top: 200px;
   }
 }
