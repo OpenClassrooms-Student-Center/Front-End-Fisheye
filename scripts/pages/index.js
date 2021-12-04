@@ -31,7 +31,7 @@ const photographersDisplay = async () => {
     });
     // Remove duplicates from tagArray
     let uniqueTagArray = [...new Set(tagArray)];
-
+    //Create tag selector
     uniqueTagArray.forEach(tag =>{
         const tagFilters = document.querySelector(".tagFilter");
 
@@ -47,16 +47,16 @@ const photographersDisplay = async () => {
             photographerTag.classList.toggle("active")
             if (photographerTag.classList.contains("active")) {
                 photographersSection.innerHTML = "";
-                
-                // for (var i = 0; i < thePhotographers.length; i++) {
-                //     console.log(thePhotographers);
-                //         if (thePhotographers.tag === tag) {
-                //             console.log(tag);
-                //         }
-                //     }
-                
-                console.log(tag);
-            } else {               
+
+                for (var i = 0; i < thePhotographers.length; i++) {
+                         if (thePhotographers[i].tags.includes(tag)) {
+                            const photographerModel = photographerFactory(thePhotographers[i]);
+                            const userCardDOM = photographerModel.getUserCardDOM();
+                            photographersSection.appendChild(userCardDOM);
+                         }
+                     }
+            } else {
+                photographersSection.innerHTML = "";        
                 thePhotographers.forEach((photographer) => {
                     const photographerModel = photographerFactory(photographer);
                     const userCardDOM = photographerModel.getUserCardDOM();
