@@ -1,0 +1,30 @@
+{
+  "name": "antoinethomas_6_06122021",
+  "version": "1.0.0",
+  "description": "Projet N°6 parcours dev app js -- Openclassrooms -- 2021-12-06",
+  "main": "index.html",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1", 
+    "serve": "sass --watch sass/stylesheets/main.scss:css/style.css", 
+    "start": "sass sass/stylesheets/main.scss:css/style.css"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/antoineThomasCode/antoinethomas_6_06122021.git"
+  },
+  "keywords": [
+    "js",
+    "html",
+    "css",
+    "api",
+    "openclassrooms",
+    "patternFactory",
+    "FishEye"
+  ],
+  "author": "Antoine Thomas",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/antoineThomasCode/antoinethomas_6_06122021/issues"
+  },
+  "homepage": "https://github.com/antoineThomasCode/antoinethomas_6_06122021#readme"
+}
