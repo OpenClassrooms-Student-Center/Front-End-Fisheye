@@ -9,10 +9,16 @@ function photographerFactory(data) {
     function getUserCardDOM() {
         // create user card container 
         const article = document.createElement( 'article' );
+        // create link to Portfolio
+        const linkToProfil = document.createElement('a');
+        linkToProfil.setAttribute('href', `./pages/photographer.html?id=${id}`);
+        article.appendChild(linkToProfil);
+
         // create and setting items 
         // --> profil picture
         const img = document.createElement( 'img' );
-        img.setAttribute("src", picture)
+        img.setAttribute("src", picture);
+        img.setAttribute("alt", `portrait de ${name}`);
 
         // --> name 
         const h2 = document.createElement( 'h2' );
@@ -31,22 +37,15 @@ function photographerFactory(data) {
         salary.textContent = tjm;
 
         // insert items in article 
-        article.appendChild(img);
-        article.appendChild(h2);
-        article.appendChild(h3);
-        article.appendChild(p);
-        article.appendChild(salary);
+        linkToProfil.appendChild(img);
+        linkToProfil.appendChild(h2);
+        linkToProfil.appendChild(h3);
+        linkToProfil.appendChild(p);
+        linkToProfil.appendChild(salary);
         return (article);
 
     }
-    function getPhotographerPage() {
-        // create profil page informations 
-        const Profilcontainer = document.createElement('div'); 
-        // create header Profil Page
-        const headerProfilPage = document.createElement('header');
-
-        return Profilcontainer; 
-
-    }
-    return { name, picture, tagline, location, getUserCardDOM }
+    
+   
+    return { name, picture, tagline, location,  getUserCardDOM }
 }

@@ -8,7 +8,9 @@ body {
     grid-template-columns: 1fr 1fr 1fr;
     gap: 70px;
     margin-top: 100px;
-    article {
+    article  a {
+        text-decoration: none;
+        color: black;
         justify-self: center;
         display: flex;
         justify-content: center;
@@ -28,7 +30,6 @@ body {
             line-height: 47px;
             letter-spacing: 0em;
             text-align: center;
-
         }
         h3 {
             color: $primary-color;
