@@ -64,7 +64,7 @@ main {
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
-  color: #901C1C;
+  color: #901c1c;
 }
 .photo-desc .titre {
 }
@@ -79,21 +79,33 @@ main {
   align-items: center;
   column-gap: 20px;
   padding: 0px 20px;
-  position:fixed;
-  bottom:0;
-  right: 40px;
+  position: fixed;
+  bottom: 0;
+  right: 60px;
   z-index: 5;
-  background-color: #DB8876;
-  border-radius: 5px;
+  background-color: #db8876;
+  border-radius: 5px 5px 0px 0px;
 }
+.photograph-recap p {
+  font-size: 18px;
+  font-weight: 600;
+}
+.photograph-recap I {
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.photograph-recap h3 {
+  font-size: 18px;
+  font-weight: 600;
+}
+
 .photograph-recap-totalLikes {
   display: flex;
   flex-direction: row;
   align-items: center;
+  column-gap: 5px;
 }
-
-
-
 
 .modal {
   border-radius: 5px;
