@@ -1,6 +1,13 @@
-# Base de code du projet P6 - Parcours Front-end
+### Project Fisheye. :camera:
 
-## Démarrer le projet
+Creez un site accessible pour une plateforme de photographes.
 
-Rien à installer ici, il suffit d'ouvrir le fichier `index.html`.
+## Etapes:
 
+ -   Ecrire du code JavaScript maintenable
+    
+-   Assurer l'accessibilité d'un site web
+    
+-   Gérer les évènements d'un site avec JavaScript
+    
+-   Développer une application web modulaire avec des design patterns
