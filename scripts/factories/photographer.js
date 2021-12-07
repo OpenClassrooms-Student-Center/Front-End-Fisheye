@@ -2,13 +2,14 @@ function photographerFactory(data) {
     const { name, portrait, id, city, country, tagline, price } = data;
 
     const picture = `assets/photographers/${portrait}`;
-    const location = `${city}` +', '+`${country}`;
+    const location = `${city}, ${country}`;
+    const tjm =  `${price}€/jour`; 
    
 
     function getUserCardDOM() {
+        // create user card container 
         const article = document.createElement( 'article' );
         // create and setting items 
-
         // --> profil picture
         const img = document.createElement( 'img' );
         img.setAttribute("src", picture)
@@ -27,7 +28,7 @@ function photographerFactory(data) {
 
         // -- > price
         const salary = document.createElement( 'p' );
-        salary.textContent = `${price}€/jour`;
+        salary.textContent = tjm;
 
         // insert items in article 
         article.appendChild(img);
@@ -36,6 +37,16 @@ function photographerFactory(data) {
         article.appendChild(p);
         article.appendChild(salary);
         return (article);
+
     }
-    return { name, picture, getUserCardDOM }
+    function getPhotographerPage() {
+        // create profil page informations 
+        const Profilcontainer = document.createElement('div'); 
+        // create header Profil Page
+        const headerProfilPage = document.createElement('header');
+
+        return Profilcontainer; 
+
+    }
+    return { name, picture, tagline, location, getUserCardDOM }
 }
