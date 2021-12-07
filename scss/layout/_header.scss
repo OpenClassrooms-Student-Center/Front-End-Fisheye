@@ -1,0 +1,11 @@
+header {
+    padding-top: 20px;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    height: 90px;
+    .logo {
+        height: 50px;
+        margin-left: 100px;
+    }
+}

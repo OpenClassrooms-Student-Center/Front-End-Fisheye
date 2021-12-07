@@ -61,27 +61,27 @@ table {
   flex-wrap: wrap;
 }
 
-body {
-  font-family: "DM Sans", sans-serif;
-  margin: 0;
+h1 {
+  font-size: 2.5em;
+  color: #901C1C;
+  margin-right: 100px;
 }
 
 header {
-  display: flex;
+  padding-top: 20px;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
   height: 90px;
 }
-
-h1 {
-  color: #901C1C;
-  margin-right: 100px;
-}
-
-.logo {
+header .logo {
   height: 50px;
   margin-left: 100px;
+}
+
+body {
+  font-family: "DM Sans", sans-serif;
+  margin: 0;
 }
 
 .photographer_section {
@@ -90,7 +90,6 @@ h1 {
   gap: 70px;
   margin-top: 100px;
 }
-
 .photographer_section article {
   justify-self: center;
   display: flex;
@@ -98,15 +97,32 @@ h1 {
   align-items: center;
   flex-direction: column;
 }
-
-.photographer_section article h2 {
-  color: #D3573C;
-  font-size: 36px;
-}
-
 .photographer_section article img {
   height: 200px;
   width: 200px;
+  object-fit: cover;
+  border-radius: 50%;
+}
+.photographer_section article h2 {
+  color: #D3573C;
+  font-size: 36px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 47px;
+  letter-spacing: 0em;
+  text-align: center;
+}
+.photographer_section article h3 {
+  color: #901C1C;
+  font-family: DM Sans;
+  font-size: 13px;
+  font-weight: 400;
+  line-height: 17px;
+}
+.photographer_section article p {
+  font-size: 10px;
+  font-weight: 400;
+  line-height: 13px;
 }
 
 #contact_modal {
