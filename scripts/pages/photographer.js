@@ -49,7 +49,6 @@ const photographerDisplay = async () => {
 
     for (let i = 0; i < theMedia.length; i++) {
         if(theMedia[i].photographerId == photographe){
-
             //Setup element
             const photo = document.createElement('div');
             photo.classList.add("photo");
@@ -73,10 +72,13 @@ const photographerDisplay = async () => {
             const photoLikes = document.createElement('div');
             photoLikes.classList.add("likes");
             const likes = document.createElement('p');
-            likes.innerHTML = theMedia[i].likes + '<i class="fas fa-heart"></i>';
+            likes.innerHTML = theMedia[i].likes;
+            const likesI = document.createElement('i')
+            likesI.classList.add("far","fa-heart");
             //Like counter
 
             photoLikes.appendChild(likes);
+            photoLikes.appendChild(likesI);
             photoDesc.appendChild(photoLikes);
             likeCount = likeCount + theMedia[i].likes;
 
@@ -84,20 +86,42 @@ const photographerDisplay = async () => {
             photo.appendChild(photoDesc);
             //Append to div
             photoSection.appendChild(photo);
+
+            //Like Event
+            likesI.addEventListener("click", () => {
+                if (likesI.classList.contains("far")) {
+                    likesI.classList.replace("far","fas")
+                    likes.innerHTML = theMedia[i].likes + 1;
+                    likeCount++;
+                    console.log(likeCount);
+                } else {
+                    likesI.classList.replace("fas","far")
+                    likes.innerHTML = theMedia[i].likes;
+                    likeCount--;
+                }
+            }); 
         }
     }
 
     //Zone pour afficher les données:
     const photographerRecap = document.querySelector(".photograph-recap");
     //Afficher les données
-    photographerRecap.innerHTML = 
-    `<div class="photograph-recap-totalLikes">
-        <p>${likeCount}</p><i class="fas fa-heart"></i>
-    </div>
-    <div class="photograph-recap-price">
-        <h3>${thePhotographer.price}€/jour</h3>
-    </div>`;
-    
+    const photographRecapTotalLikes = document.createElement('div');
+    photographRecapTotalLikes.classList.add("photograph-recap-totalLikes");
+    const likes = document.createElement('p');
+    likes.innerHTML = likeCount;
+    const likesI = document.createElement('i')
+    likesI.classList.add("fas","fa-heart");
+    const photographRecapTotalPrice = document.createElement('div');
+    photographRecapTotalPrice.classList.add("photograph-recap-price");
+    const price = document.createElement('h3');
+    price.innerHTML = thePhotographer.price + '€/jour';
+
+    photographRecapTotalLikes.appendChild(likes);
+    photographRecapTotalLikes.appendChild(likesI);
+    photographerRecap.appendChild(photographRecapTotalLikes);
+    photographRecapTotalPrice.appendChild(price);
+    photographerRecap.appendChild(photographRecapTotalPrice);
 }
 
 photographerDisplay();
