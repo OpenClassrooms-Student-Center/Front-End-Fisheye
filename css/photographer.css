@@ -94,10 +94,12 @@ main {
   font-size: 18px;
   font-weight: 600;
 }
-
 .photograph-recap h3 {
   font-size: 18px;
   font-weight: 600;
+}
+.heart {
+  cursor: pointer;
 }
 
 .photograph-recap-totalLikes {

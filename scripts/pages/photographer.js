@@ -49,7 +49,6 @@ const photographerDisplay = async () => {
 
     for (let i = 0; i < theMedia.length; i++) {
         if(theMedia[i].photographerId == photographe){
-
             //Setup element
             const photo = document.createElement('div');
             photo.classList.add("photo");
@@ -73,10 +72,13 @@ const photographerDisplay = async () => {
             const photoLikes = document.createElement('div');
             photoLikes.classList.add("likes");
             const likes = document.createElement('p');
-            likes.innerHTML = theMedia[i].likes + '<i class="fas fa-heart"></i>';
+            likes.innerHTML = theMedia[i].likes;
+            const likesI = document.createElement('i')
+            likesI.classList.add("far","fa-heart");
             //Like counter
 
             photoLikes.appendChild(likes);
+            photoLikes.appendChild(likesI);
             photoDesc.appendChild(photoLikes);
             likeCount = likeCount + theMedia[i].likes;
 
@@ -84,8 +86,18 @@ const photographerDisplay = async () => {
             photo.appendChild(photoDesc);
             //Append to div
             photoSection.appendChild(photo);
+
+            likesI.addEventListener("click", () => {
+                console.log(likes);
+                if (likesI.classList.contains("far")) {
+                    likesI.classList.replace("far","fas")
+                } else {
+                    likesI.classList.replace("fas","far")
+                }
+            }); 
         }
     }
+
 
     //Zone pour afficher les données:
     const photographerRecap = document.querySelector(".photograph-recap");
