@@ -1,25 +1,83 @@
-#contact_modal {
-    display: none;
-}
+
 
 .photograph-header {
     background-color: #FAFAFA;
     height: 300px;
     margin: 0 100px;
+    justify-content: space-around;
+    align-items: center;
+    margin-bottom: 60px;
+    box-shadow: 15px 19px 55px 24px rgba(177, 177, 185, 0.411);
+    border-radius: 20px;
+    span {
+        position: fixed;
+        bottom: 0;
+        right: 100px;
+        padding: 20px 30px;
+        background-color: #DB8876;
+        border-top-left-radius: 5px;
+        border-top-right-radius: 5px;
+        font-weight: 600;
+    }
+  
+    div {
+        order: 1;
+        h1 {
+            margin-bottom: 10px;
+            margin-right: 0;
+            text-shadow: 2px 15px 14px rgba(65, 65, 66, 0.253);
+        }
+        h3 {
+            color: $primary-color;
+            margin-bottom: 15px;
+            font-size: 1.3em;
+            font-weight: 100;
+            text-shadow:  2px 3px 4px rgba(65, 65, 66, 0.438);
+        }
+        p {
+            font-size: 0.8em;
+            color:  #525252;
+            text-shadow:  2px 15px 14px rgba(65, 65, 66, 0.199);
+        }
+    }
+    img {
+        order: 3;
+        height: 200px;
+        width: 200px;
+        object-fit: cover;
+        border-radius: 50%;
+        opacity: 0.9;
+        box-shadow: 15px 19px 55px 24px rgba(184, 184, 189, 0.616);
+        background-color: rgba(211, 211, 211, 0.548);
+        animation: puff-in-center  0.2s cubic-bezier(0.470, 0.000, 0.745, 0.715) both;
+    }
+}
+#mediaContainer {
+    display: flex;
+    flex-wrap: wrap;
+    margin-bottom: 100px;
+    row-gap: 60px;
+    justify-content: space-between;
+    padding: 0 100px;
+    img {
+        order: 1;
+        width: 370px;
+        height: 370px;
+        object-fit: cover;
+        border-radius: 5px;
+        box-shadow: 15px 19px 55px 24px rgba(108, 108, 110, 0.479);
+    }
+    video {
+        order: 2;
+        width: 100%;
+        height: auto;
+        object-fit: cover;
+        border-radius: 5px;
+        box-shadow: 15px 19px 55px 24px rgba(108, 108, 110, 0.479);
+    }
 }
 
-.contact_button {
-    font-size: 20px;
-    font-weight: bold;
-    color: white;
-    padding: 11px;
-    width: 170px;
-    height: 70px;
-    border: none;
-    background-color: #901C1C;
-    border-radius: 5px;
-    cursor: pointer;
-}
+
 
 .modal {
     border-radius: 5px;

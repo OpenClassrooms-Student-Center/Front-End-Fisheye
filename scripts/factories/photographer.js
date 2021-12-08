@@ -7,6 +7,7 @@ function photographerFactory(data) {
    
 
     function getUserCardDOM() {
+        
         // create user card container 
         const article = document.createElement( 'article' );
         // create link to Portfolio
@@ -45,7 +46,43 @@ function photographerFactory(data) {
         return (article);
 
     }
-    
+    function getPortoflioItems() {
+
+        // -- > profil picture
+        const picture = `../assets/photographers/${photographerInfos.portrait}`
+        const img = document.createElement('img')
+        img.setAttribute('src', picture)
+        img.setAttribute('alt', `portrait de ${photographerInfos.name}`)
+
+        // --> name
+        const h1 = document.createElement('h1')
+        h1.textContent = photographerInfos.name
+
+        // -- > location
+        const h3 = document.createElement('h3')
+        h3.textContent = `${photographerInfos.city}, ${photographerInfos.country}`
+
+        // --> tagline
+        const p = document.createElement('p')
+        p.textContent = photographerInfos.tagline
+        
+        // --> price 
+        const price = document.createElement('span');
+        price.textContent = `${photographerInfos.price}€ / jour`
+
+        // create div container for design 
+        const userInfosContainer = document.createElement('div')
+        //import parent element in DOM
+        const photographerHeader = document.querySelector('.photograph-header')
+
+        // insert intems in header
+        photographerHeader.appendChild(userInfosContainer)
+        userInfosContainer.appendChild(h1)
+        userInfosContainer.appendChild(h3)
+        userInfosContainer.appendChild(p)
+        photographerHeader.appendChild(img)
+        photographerHeader.appendChild(price)
+    }
    
-    return { name, picture, tagline, location,  getUserCardDOM }
+    return { name, picture, tagline, location,  getUserCardDOM, getPortoflioItems }
 }

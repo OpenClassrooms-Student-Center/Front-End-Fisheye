@@ -14,6 +14,7 @@
         photographers.forEach((photographer) => {
             const photographerModel = photographerFactory(photographer);
             const userCardDOM = photographerModel.getUserCardDOM();
+            const photographerHeader = document.querySelector('.photograph-header')
             photographersSection.appendChild(userCardDOM);
         });
     };
