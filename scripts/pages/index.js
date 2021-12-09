@@ -3,6 +3,7 @@ let thePhotographers;
 let theMedia;
 
 let tagArray = [];
+let tagFilterArray = [];
 
 const photographerTag = document.querySelector(".photographerTag");
 /*--------- EVENTS ---------*/
@@ -45,28 +46,45 @@ const photographersDisplay = async () => {
         //Event when a filter is selected
         photographerTag.addEventListener("click",() => {
             photographerTag.classList.toggle("active")
+            photographersSection.innerHTML = "";
             if (photographerTag.classList.contains("active")) {
+                //Clear
                 photographersSection.innerHTML = "";
 
+                tagFilterArray.push(tag);
+                console.log(tagFilterArray);
                 for (var i = 0; i < thePhotographers.length; i++) {
-                         if (thePhotographers[i].tags.includes(tag)) {
-                            const photographerModel = photographerFactory(thePhotographers[i]);
-                            const userCardDOM = photographerModel.getUserCardDOM();
-                            photographersSection.appendChild(userCardDOM);
-                         }
-                     }
+                    //Check if the photographers tag and tagFilterArray is =
+                    if (thePhotographers[i].tags.some(r=> tagFilterArray.indexOf(r) >= 0)) {
+                        const photographerModel = photographerFactory(thePhotographers[i]);
+                        const userCardDOM = photographerModel.getUserCardDOM();
+                        photographersSection.appendChild(userCardDOM);
+                    }
+                }
             } else {
-                photographersSection.innerHTML = "";        
-                thePhotographers.forEach((photographer) => {
-                    const photographerModel = photographerFactory(photographer);
+                tagFilterArray.pop(tag);
+                console.log(tagFilterArray);
+                for (var i = 0; i < thePhotographers.length; i++) {
+                    //Check if the photographers tag and tagFilterArray is =
+                    if (thePhotographers[i].tags.some(r=> tagFilterArray.indexOf(r) >= 0)) {
+                        const photographerModel = photographerFactory(thePhotographers[i]);
+                        const userCardDOM = photographerModel.getUserCardDOM();
+                        photographersSection.appendChild(userCardDOM);
+                    }
+                }
+            }
+            if (tagFilterArray.length === 0) {
+                for (var i = 0; i < thePhotographers.length; i++) {
+                    //Check if the photographers tag and tagFilterArray is =
+                    const photographerModel = photographerFactory(thePhotographers[i]);
                     const userCardDOM = photographerModel.getUserCardDOM();
                     photographersSection.appendChild(userCardDOM);
-                });
+                }
             }
         });
     });
-
 }
+
 
 photographersDisplay();
 
