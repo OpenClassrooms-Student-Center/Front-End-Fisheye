@@ -3,6 +3,6 @@ class Controller {
     // Récupère les datas des photographes
     const photographers = await Model.getPhotographers();
     console.log(photographers);
-    IndexView.displayData(photographers);
+    ListPhotographersView.datasPhotographersList(photographers);
   }
 }

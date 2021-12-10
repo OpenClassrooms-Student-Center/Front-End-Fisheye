@@ -1,17 +1,9 @@
-function photographerFactory(data) {
+function photographerFactoryList(data) {
   const { name, portrait, city, country, tagline, price } = data;
-
   const picture = `assets/photographers/${portrait}`;
 
   function getUserCardDOM() {
     const article = document.createElement("article");
-    //const img = document.createElement("img");
-    //img.setAttribute("src", picture);
-    //const h2 = document.createElement("h2");
-    //h2.textContent = name;
-    //article.appendChild(img);
-    //article.appendChild(h2);
-
     const content = `
     <a class="photographer_section a" href="photographer.html">
         <img src="${picture}" class="photographer_section article img"></img>
@@ -26,18 +18,10 @@ function photographerFactory(data) {
 
     return article;
   }
-  return { name, picture, getUserCardDOM };
+  return { name, picture, tagline, getUserCardDOM };
 }
 /* ?? CREER UNE class PhotographerFactory {
   constructor(photographer) {
     this.photographer = photographer;
   }
-  getUserCardDOM() {
-    const article = document.createElement("article");
-    const img = document.createElement("img");
-    img.setAttribute("src", picture);
-    const h2 = document.createElement("h2");
-    h2.textContent = this.photographer.name;
-    article.appendChild(img);
-    article.appendChild(h2);
-}}*/
+}*/
