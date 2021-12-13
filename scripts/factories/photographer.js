@@ -47,7 +47,10 @@ function photographerFactory(data) {
 
     }
     function getPortoflioItems() {
-
+        // create div container for design 
+        const userInfosContainer = document.createElement('div')
+        const infosLikesAndPrice = document.createElement('div')
+        infosLikesAndPrice.id = 'sticky-user-infos'
         // -- > profil picture
         const picture = `../assets/photographers/${photographerInfos.portrait}`
         const img = document.createElement('img')
@@ -70,8 +73,7 @@ function photographerFactory(data) {
         const price = document.createElement('span');
         price.textContent = `${photographerInfos.price}€ / jour`
 
-        // create div container for design 
-        const userInfosContainer = document.createElement('div')
+        
         //import parent element in DOM
         const photographerHeader = document.querySelector('.photograph-header')
 
@@ -81,7 +83,8 @@ function photographerFactory(data) {
         userInfosContainer.appendChild(h3)
         userInfosContainer.appendChild(p)
         photographerHeader.appendChild(img)
-        photographerHeader.appendChild(price)
+        photographerHeader.appendChild(infosLikesAndPrice)
+        infosLikesAndPrice.appendChild(price)
     }
    
     return { name, picture, tagline, location,  getUserCardDOM, getPortoflioItems }

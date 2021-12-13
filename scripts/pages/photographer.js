@@ -14,7 +14,6 @@ async function getPhotographerInfos() {
 // display items in page or console log an error 
 async function displayPortfolioItems(photographers) {
   //catch photographer array 
-  let photographerinfos
 
   if (photographerId) {
 
@@ -38,21 +37,36 @@ async function displayDataUser(medias) {
     medias.forEach((media) => {
         if (media.photographerId == photographerId){
           const section = document.getElementById('mediaContainer');
-        let mediaModel = mediaFactory(media);
-        const userDataDOM = mediaModel.getMediaItems();
-        
-        
+          let mediaModel = mediaFactory(media);
+          const userDataDOM = mediaModel.getMediaItems();
         }
     });
 }
+async function displayLikes(medias) {
 
+    let userLikesCounter = 0; 
+    const stickyUserInfos = document.getElementById('sticky-user-infos')
+    const userLikes = document.createElement('span');
+    medias.forEach((media) => {
+      if (media.photographerId == photographerId){
+        userLikesCounter += media.likes; 
+        return userLikesCounter;
+      }
+    userLikes.textContent = userLikesCounter;
+    const heartIcon = document.createElement('i');
+    heartIcon.classList.add('fas')
+    heartIcon.classList.add('fa-heart') 
+    userLikes.appendChild(heartIcon)
+    stickyUserInfos.appendChild(userLikes);
+  })
+    }
 // call functions to display doata in page 
 async function init() {
   // Récupère les datas des photographes
   const { photographers, medias } = await getPhotographerInfos()
   displayPortfolioItems(photographers)
   displayDataUser(medias)
-  
+  displayLikes(medias)
 }
 
 init()

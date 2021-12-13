@@ -7,9 +7,11 @@
     justify-content: space-around;
     align-items: center;
     margin-bottom: 60px;
-    box-shadow: 15px 19px 55px 24px rgba(177, 177, 185, 0.411);
+    box-shadow: 15px 19px 55px 24px rgba(177, 177, 185, 0.322);
     border-radius: 20px;
-    span {
+    #sticky-user-infos {
+        display: flex;
+        z-index: 999;
         position: fixed;
         bottom: 0;
         right: 100px;
@@ -18,6 +20,15 @@
         border-top-left-radius: 5px;
         border-top-right-radius: 5px;
         font-weight: 600;
+        flex-direction: row-reverse;
+        span {
+            margin-right: 10px;
+        }
+        i {
+            padding-left: 5px;
+            font-size: 0.7em;
+        }
+        
     }
   
     div {
@@ -59,21 +70,41 @@
     row-gap: 60px;
     justify-content: space-between;
     padding: 0 100px;
-    img {
-        order: 1;
-        width: 370px;
-        height: 370px;
-        object-fit: cover;
-        border-radius: 5px;
-        box-shadow: 15px 19px 55px 24px rgba(108, 108, 110, 0.479);
-    }
-    video {
-        order: 2;
-        width: 100%;
-        height: auto;
-        object-fit: cover;
-        border-radius: 5px;
-        box-shadow: 15px 19px 55px 24px rgba(108, 108, 110, 0.479);
+    article {
+        animation: slide-top 1s ease-out 2.5s  both;
+        img {
+            
+            width: 370px;
+            height: 370px;
+            object-fit: cover;
+            object-position: top center;
+            border-radius: 5px;
+            box-shadow: 15px 19px 55px 24px rgba(108, 108, 110, 0.479);
+        }
+        video {
+            width: 100%;
+            height: auto;
+            object-fit: cover;
+            border-radius: 5px;
+            box-shadow: 15px 19px 55px 24px rgba(108, 108, 110, 0.479);
+            
+        }
+        div {
+            display: flex;
+            justify-content: space-between;
+            color: $primary-color;
+            padding: 5px 0;
+            h3 {
+                font-weight: 300;
+                font-family: "DM sans";
+            }
+            span {
+                i {
+                    margin-left: 3px;
+                    font-size: 0.7em;
+                }
+            }
+        }
     }
 }
 
