@@ -1,6 +1,7 @@
 // catch id in URL
 let params = new URL(document.location).searchParams
 const photographerId = params.get('id')
+let userLikesCounter = 0; 
 // connect to json file 
 async function getPhotographerInfos() {
   try {
@@ -44,7 +45,6 @@ async function displayDataUser(medias) {
 }
 async function displayLikes(medias) {
 
-    let userLikesCounter = 0; 
     const stickyUserInfos = document.getElementById('sticky-user-infos')
     const userLikes = document.createElement('span');
     medias.forEach((media) => {
@@ -58,6 +58,7 @@ async function displayLikes(medias) {
     heartIcon.classList.add('fa-heart') 
     userLikes.appendChild(heartIcon)
     stickyUserInfos.appendChild(userLikes);
+    return userLikesCounter;
   })
     }
 // call functions to display doata in page 
