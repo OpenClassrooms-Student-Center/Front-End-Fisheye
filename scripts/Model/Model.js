@@ -19,4 +19,16 @@ class Model {
       }
     );
   }
+
+  static async getPhotographer(id) {
+    let listPhotographers = await Model.getPhotographers();
+    console.log(listPhotographers);
+    for (let index = 0; index < listPhotographers.length; index++) {
+      const photographer = listPhotographers[index];
+      console.log(photographer.id);
+      if (photographer.id == id) {
+        return photographer;
+      }
+    }
+  }
 }

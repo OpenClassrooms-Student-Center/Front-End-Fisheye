@@ -1,11 +1,12 @@
 function photographerFactoryList(data) {
-  const { name, portrait, city, country, tagline, price } = data;
+  console.log(data);
+  const { name, id, portrait, city, country, tagline, price } = data;
   const picture = `assets/photographers/${portrait}`;
 
   function getUserCardDOM() {
     const article = document.createElement("article");
     const content = `
-    <a class="photographer_section a" href="photographer.html">
+    <a class="photographer_section a" href="photographer.html?id=${id}">
         <img src="${picture}" class="photographer_section article img"></img>
         <h2 class="photographer_section article h2">${name}</h2>
     </a>
