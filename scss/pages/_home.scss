@@ -1,0 +1,56 @@
+body {
+    font-family: "DM Sans", sans-serif;
+    margin: 0;
+}
+
+.photographer_section {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 70px;
+    margin: 100px 0;
+    article  a {
+        text-decoration: none;
+        color: black;
+        justify-self: center;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        animation: slide-top 0.9s ease-out 2s  both;
+        img {
+            height: 200px;
+            width: 200px;
+            object-fit: cover;
+            border-radius: 50%;
+            box-shadow: 15px 19px 55px 24px rgba(184, 184, 189, 0.726);
+            background-color: rgba(211, 211, 211, 0.548);
+           
+          
+        }
+        h2 {
+            color: $secondary-color;
+            font-size: 36px;
+            font-style: normal;
+            font-weight: 400;
+            line-height: 47px;
+            letter-spacing: 0em;
+            text-align: center;
+           
+        }
+        h3 {
+            color: $primary-color;
+            font-family: DM Sans;
+            font-size: 13px;
+            font-weight: 400;
+            line-height: 17px;
+           
+        }
+        p {
+            font-size: 10px;
+            font-weight: 400;
+            line-height: 13px;
+          
+        }
+    
+    }
+}
