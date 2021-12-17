@@ -8,9 +8,11 @@
     align-items: center;
     background-color: #FAFAFA;
     height: 300px;
-    margin: 0 100px;
     font-size: 1.3em;
+    width: 80%;
+    margin: 0 auto;
 }
+
 
 .photographer-name {
     font-size: 2em;
@@ -36,7 +38,9 @@
 }
 
 .tri {
-    display: inline-flex;
+    display: flex;
+    width: 80%;
+    margin: 0 auto;
     gap: 40px;
     position: relative;
     align-items: baseline;
@@ -50,12 +54,13 @@
             background-color: $primary-color-one;
             color: white;
             font-weight: 500;
+            margin-bottom: 1px;
         }
     }
     i {
-        position: absolute;
-        right: 10px;
-        top: 20px;
+        position: relative;
+        right: 70px;
+        top: 2px;
         color: white;
 
         &:hover {
@@ -70,6 +75,17 @@
 
 .show {
     display: block;
+}
+
+.media-content {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+
+    &__card {
+        color:red;
+    }
 }
 
 .contact_button {

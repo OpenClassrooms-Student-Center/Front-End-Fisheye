@@ -106,8 +106,9 @@ p {
           align-items: center;
   background-color: #FAFAFA;
   height: 300px;
-  margin: 0 100px;
   font-size: 1.3em;
+  width: 80%;
+  margin: 0 auto;
 }
 
 .photographer-name {
@@ -135,9 +136,11 @@ p {
 }
 
 .tri {
-  display: -webkit-inline-box;
-  display: -ms-inline-flexbox;
-  display: inline-flex;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  width: 80%;
+  margin: 0 auto;
   gap: 40px;
   position: relative;
   -webkit-box-align: baseline;
@@ -156,12 +159,13 @@ p {
   background-color: #901C1C;
   color: white;
   font-weight: 500;
+  margin-bottom: 1px;
 }
 
 .tri i {
-  position: absolute;
-  right: 10px;
-  top: 20px;
+  position: relative;
+  right: 70px;
+  top: 2px;
   color: white;
 }
 
@@ -175,6 +179,24 @@ p {
 
 .show {
   display: block;
+}
+
+.media-content {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.media-content__card {
+  color: red;
 }
 
 .contact_button {
