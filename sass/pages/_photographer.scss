@@ -1,0 +1,159 @@
+#contact_modal {
+    display: none;
+}
+
+.photograph-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #FAFAFA;
+    height: 300px;
+    margin: 0 100px;
+    font-size: 1.3em;
+}
+
+.photographer-name {
+    font-size: 2em;
+    color: $primary-color-two;
+    text-align: left;
+}
+
+.photographer-location {
+    color: $primary-color-one;
+    text-align: left;
+}
+
+.photographer-tagline {
+    color: $secondary-color;
+}
+
+.photographer-img {
+    aspect-ratio: 1/1;
+    border-radius: 50%;
+    object-fit: cover;
+    width: 30%;
+    max-width: 200px;
+}
+
+.tri {
+    display: inline-flex;
+    gap: 40px;
+    position: relative;
+    align-items: baseline;
+    ul {
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+
+        li {
+            padding: 20px 50px 20px 20px;
+            background-color: $primary-color-one;
+            color: white;
+            font-weight: 500;
+        }
+    }
+    i {
+        position: absolute;
+        right: 10px;
+        top: 20px;
+        color: white;
+
+        &:hover {
+            cursor: pointer;
+        }
+    }
+}
+
+.hidden {
+    display: none;
+}
+
+.show {
+    display: block;
+}
+
+.contact_button {
+    font-size: 20px;
+    font-weight: bold;
+    color: white;
+    padding: 11px;
+    width: 170px;
+    height: 70px;
+    border: none;
+    background-color: #901C1C;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.modal {
+    border-radius: 5px;
+    background-color: #DB8876;
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    padding: 35px;
+    margin: auto;
+}
+
+.modal header {
+    justify-content: space-between;
+    width: 100%;
+}
+
+.modal header img {
+    cursor: pointer;
+}
+
+.modal header h2 {
+    font-size: 64px;
+    font-weight: normal;
+    text-align: center;
+}
+
+form {
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+form label {
+    color: #312E2E;
+    font-size: 36px;
+}
+
+form div {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    align-items: self-start;
+    margin-bottom: 26px;
+}
+
+form input {
+    width: 100%;
+    height: 68px;
+    border: none;
+    border-radius: 5px;
+}
+
+.fixed-counter {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 185px;
+    position: fixed;
+    bottom: 0;
+    right: 40px;
+    padding: 10px;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    background-color: $primary-color-two;
+
+    p {
+        margin: 0;
+        font-size: 1em;
+    }
+}
