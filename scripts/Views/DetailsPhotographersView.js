@@ -38,7 +38,12 @@ Contactez-moi
       let newImage = document.createElement("img");
       newImage.setAttribute("src", pictures);
       newImage.setAttribute("class", "picturespage");
-      mediasSection.appendChild(newImage);
+      let newDiv = document.createElement("a");
+      newDiv.setAttribute("href", "index.html");
+      newDiv.appendChild(newImage);
+      let newContent = document.createTextNode(enregmedia.title);
+      newDiv.appendChild(newContent);
+      mediasSection.appendChild(newDiv);
     }
   }
 }
