@@ -9,7 +9,7 @@
     background-color: #FAFAFA;
     height: 300px;
     font-size: 1.3em;
-    width: 80%;
+    width: 95%;
     margin: 0 auto;
 }
 
@@ -39,11 +39,12 @@
 
 .tri {
     display: flex;
-    width: 80%;
+    width: 95%;
     margin: 0 auto;
     gap: 40px;
     position: relative;
     align-items: baseline;
+    margin-bottom: 5%;
     ul {
         list-style-type: none;
         margin: 0;
@@ -77,34 +78,37 @@
     display: block;
 }
 
-.media-content {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    align-items: center;
-
-    &__card {
-        color:red;
-    }
-}
-
 #media-content {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
-    gap: 8%;
-
+    gap: 2%;
+    width: 95%;
+    margin: 0 auto;
 }
 
 .media-card {
+    font-size: 1.2em;
+
     img {
         object-fit: cover;
         aspect-ratio: 1/1;
         width: 100%;
+        border-radius: 10px;
+        margin-bottom: 10px;
     }
     .flex-red {
         display: flex;
         justify-content: space-between;
-        color: red;
+        color: $primary-color-one;
+    }
+
+    i {
+        &:hover {
+            color: lighten($color: $primary-color-one, $amount: 20%);
+            cursor: pointer;
+            transform: scale(1.2);
+            transition: transform;
+        }
     }
 }
 

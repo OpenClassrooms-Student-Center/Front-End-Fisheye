@@ -11,6 +11,7 @@ async function getMedia() {
 }
 
 const actualId = 82;
+let likes = 0;
 
 // Fonction pour injecter les cartes médias.
 function displayMedia(photographers) {
@@ -21,9 +22,20 @@ function displayMedia(photographers) {
       const photographerMedia = mediaFactory(photographer);
       const mediaCard = photographerMedia.createMediaCards();
       mediaSection.appendChild(mediaCard);
+      console.log(likes);
+      likes += photographer.likes;
     }
   });
+  // ------------------------
+  // Ne renvoie pas le nombre total de likes...
+  // ------------------------
+  return likes;
 }
+
+console.log(likes);
+
+let heartTarget = document.querySelectorAll('counter');
+console.log(heartTarget);
 
 // L'objectif est de pouvoir récupérer l'ID du photographe avec un event listener en cliquant sur les liens (images des photographes) sur la page d'accueil, puis de passer l'ID dans la fonction pour récupérer les médias correspondant à l'ID.
 async function getMediaData(id) {
@@ -36,7 +48,10 @@ async function getMediaData(id) {
   // });
 }
 
-getMediaData(2);
+getMediaData(actualId);
+
+
+// Fonction pour additionner les likes des photographes
 
 const photographHeader = document.querySelector('.photograph-header');
 const photographerInfo = document.querySelector('.photographer-info');
@@ -96,7 +111,7 @@ chevronDown.addEventListener('click', () => {
 
 function getFixedCounter() {
   const hourlyRate = document.createElement('p');
-  hourlyRate.innerText = `${price}€ / jour`;
+  hourlyRate.innerHTML = `<p>${likes}<i class="fas fa-heart"></i></p>${price}€ / jour`;
   fixedCounter.appendChild(hourlyRate);
 }
 
@@ -132,12 +147,3 @@ class Photo {
   //   return this._likes;
   // }
 }
-
-
-// function separateImg(data) {
-//   data.forEach((el) => {
-//     console.log(el.likes);
-//   });
-// }
-
-// separateImg(mediaData);

@@ -1,6 +1,6 @@
 // Création des cartes médias pour la pages des photographes.
 function mediaFactory(data) {
-  const { id, photographerId, title, image, likes } = data;
+  const { id, photographerId, title, image, likes, video } = data;
   const picture = `assets/photos/${photographerId}/${image}`;
 
   function createMediaCards() {
@@ -9,19 +9,19 @@ function mediaFactory(data) {
     const img = document.createElement('img');
     img.setAttribute('src', picture);
     img.setAttribute('alt', `${title}`);
-    const text = document.createElement('p');
-    text.classList.add('flex-red');
+    const textbox = document.createElement('p');
+    textbox.classList.add('flex-red');
     const tag = document.createElement('p');
     tag.textContent = title;
     const heart = document.createElement('span');
-    heart.innerHTML = '<i class="fas fa-heart"></i>';
+    heart.innerHTML = `${likes} <i class="fas fa-heart counter"></i>`;
     card.appendChild(img);
-    card.appendChild(text);
-    text.appendChild(tag);
-    text.appendChild(heart);
+    card.appendChild(textbox);
+    textbox.appendChild(tag);
+    textbox.appendChild(heart);
     return (card)
   }
-  return { id, photographerId, title, image, likes, createMediaCards };
+  return { id, photographerId, title, image, likes, video, createMediaCards };
 }
 
 const mediaData = [

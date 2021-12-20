@@ -107,7 +107,7 @@ p {
   background-color: #FAFAFA;
   height: 300px;
   font-size: 1.3em;
-  width: 80%;
+  width: 95%;
   margin: 0 auto;
 }
 
@@ -139,13 +139,14 @@ p {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  width: 80%;
+  width: 95%;
   margin: 0 auto;
   gap: 40px;
   position: relative;
   -webkit-box-align: baseline;
       -ms-flex-align: baseline;
           align-items: baseline;
+  margin-bottom: 5%;
 }
 
 .tri ul {
@@ -181,30 +182,18 @@ p {
   display: block;
 }
 
-.media-content {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -ms-flex-wrap: wrap;
-      flex-wrap: wrap;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-}
-
-.media-content__card {
-  color: red;
-}
-
 #media-content {
   display: -ms-grid;
   display: grid;
   -ms-grid-columns: 1fr 1fr 1fr;
       grid-template-columns: 1fr 1fr 1fr;
-  gap: 8%;
+  gap: 2%;
+  width: 95%;
+  margin: 0 auto;
+}
+
+.media-card {
+  font-size: 1.2em;
 }
 
 .media-card img {
@@ -212,6 +201,8 @@ p {
      object-fit: cover;
   aspect-ratio: 1/1;
   width: 100%;
+  border-radius: 10px;
+  margin-bottom: 10px;
 }
 
 .media-card .flex-red {
@@ -221,7 +212,18 @@ p {
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
-  color: red;
+  color: #901C1C;
+}
+
+.media-card i:hover {
+  color: #d93939;
+  cursor: pointer;
+  -webkit-transform: scale(1.2);
+          transform: scale(1.2);
+  -webkit-transition: -webkit-transform;
+  transition: -webkit-transform;
+  transition: transform;
+  transition: transform, -webkit-transform;
 }
 
 .contact_button {

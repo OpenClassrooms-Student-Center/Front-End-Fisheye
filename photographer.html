@@ -27,6 +27,11 @@
       </section>
       <article class="tri">
         <p>Trier par</p>
+        <select name="filters" id="filters">
+          <option value="popularity">Popularité</option>
+          <option value="date">Date</option>
+          <option value="title">Titre</option>
+        </select>
         <ul>
           <li>Popularité</li>
           <li class="hidden">Date</li>
@@ -52,7 +57,6 @@
       </div>
     </div>
     <div class="fixed-counter">
-      <p>297 081 <i class="fas fa-heart"></i></p>
     </div>
     <script src="/scripts/pages/photographer.js"></script>
     <script src="/scripts/factories/media.js"></script>
