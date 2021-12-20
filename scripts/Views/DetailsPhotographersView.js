@@ -31,11 +31,39 @@ Contactez-moi
     const mediasSection = document.querySelector(".photograph_medias");
     for (let index = 0; index < medias.length; index++) {
       const enregmedia = medias[index];
-      console.log(enregmedia.image);
+      console.log(enregmedia);
       const pictures = `assets/Sample Photos/${photographer.name}/${enregmedia.image}`;
       const video = `assets/Sample Photos/${photographer.name}/${enregmedia.video}`;
-      console.log(video);
-      let newImage = document.createElement("img");
+
+      for (let attributeName in enregmedia) {
+        console.log(attributeName);
+        if (attributeName == "image") {
+          let newImage = document.createElement("img");
+          newImage.setAttribute("src", pictures);
+          newImage.setAttribute("class", "picturespage");
+          let newDiv = document.createElement("a");
+          newDiv.setAttribute("href", "index.html");
+          newDiv.appendChild(newImage);
+          let newContent = document.createTextNode(enregmedia.title);
+          newDiv.appendChild(newContent);
+          mediasSection.appendChild(newDiv);
+          break;
+        } else if (attributeName == "video") {
+          let newVideo = document.createElement("video");
+          newVideo.setAttribute("src", video);
+          newVideo.controls = true;
+          newVideo.setAttribute("class", "controls");
+          let newDiv = document.createElement("a");
+          newDiv.setAttribute("href", "index.html");
+          newDiv.appendChild(newVideo);
+          mediasSection.appendChild(newDiv);
+          break;
+        } else {
+          console.log("no");
+        }
+      }
+
+      /*let newImage = document.createElement("img");
       newImage.setAttribute("src", pictures);
       newImage.setAttribute("class", "picturespage");
       let newDiv = document.createElement("a");
@@ -43,7 +71,12 @@ Contactez-moi
       newDiv.appendChild(newImage);
       let newContent = document.createTextNode(enregmedia.title);
       newDiv.appendChild(newContent);
-      mediasSection.appendChild(newDiv);
+      mediasSection.appendChild(newDiv);*/
+
+      /*let newVideo = document.createElement("video");
+      newVideo.setAttribute("src", video);
+      newVideo.setAttribute("class", "picturespage");
+      mediasSection.appendChild(newVideo);*/
     }
   }
 }

@@ -96,11 +96,40 @@ form input {
 }
 
 .picturespage {
-  width: 150px;
-  display: flex;
+  object-fit: cover;
+    width: 300px;
+    height: 300px;
+    display: flex;
+  
 }
 
 .photograph_medias {
   display: flex;
-  flex-wrap: wrap;
+    align-items: center;
+    row-gap: 50px;
+    justify-content: space-between;
+    column-gap: 60px;
+    flex-wrap: wrap;
+    margin-right: 50px;
+    padding-top: 20px;
+    margin-left: 50px;
+    
+}
+a {
+  text-decoration: none;
+}
+
+.controls {
+  width: 300px;
+  border-radius: 10px;
+  bottom: 20px;
+  left: 50%;
+  background-color: black;
+  box-shadow: 3px 3px 5px black;
+  transition: 1s all;
+  
+}
+
+/*.player:hover .controls, player:focus .controls {
+  opacity: 1;
 }
