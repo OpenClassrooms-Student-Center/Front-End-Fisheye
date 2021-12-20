@@ -199,6 +199,31 @@ p {
   color: red;
 }
 
+#media-content {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 1fr 1fr 1fr;
+      grid-template-columns: 1fr 1fr 1fr;
+  gap: 8%;
+}
+
+.media-card img {
+  -o-object-fit: cover;
+     object-fit: cover;
+  aspect-ratio: 1/1;
+  width: 100%;
+}
+
+.media-card .flex-red {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  color: red;
+}
+
 .contact_button {
   font-size: 20px;
   font-weight: bold;

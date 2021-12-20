@@ -10,17 +10,18 @@ async function getMedia() {
   }
 }
 
+const actualId = 82;
+
 // Fonction pour injecter les cartes médias.
 function displayMedia(photographers) {
-  const mediaSection = document.querySelector('media-content');
-  console.log(mediaSection);
-  // ----------------------------------------------------
-  // Error mediaSection est NULL ...
-  // ----------------------------------------------------
+  const mediaSection = document.getElementById('media-content');
   photographers.forEach(photographer => {
-    const photographerMedia = mediaFactory(photographer);
-    const mediaCard = photographerMedia.createMediaCards();
-    mediaSection.appendChild(mediaCard);
+    const photographerId = photographer.photographerId;
+    if (photographerId === actualId) {
+      const photographerMedia = mediaFactory(photographer);
+      const mediaCard = photographerMedia.createMediaCards();
+      mediaSection.appendChild(mediaCard);
+    }
   });
 }
 
@@ -35,7 +36,7 @@ async function getMediaData(id) {
   // });
 }
 
-getMediaData(243);
+getMediaData(2);
 
 const photographHeader = document.querySelector('.photograph-header');
 const photographerInfo = document.querySelector('.photographer-info');
