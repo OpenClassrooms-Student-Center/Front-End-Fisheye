@@ -1,5 +1,5 @@
 // Requete pour obtenir tous les objets media du fichier photographers.json
-async function getPhotographers() {
+async function getMedia() {
   let url = '../data/photographers.json';
   try {
     let res = await fetch(url);
@@ -10,25 +10,32 @@ async function getPhotographers() {
   }
 }
 
-
-async function getMediaData(id) {
-  const trial = await getPhotographers();
-  trial.forEach((el) => {
-  if (el.photographerId === id) {
-    console.log(el.image);
-  }
+// Fonction pour injecter les cartes médias.
+function displayMedia(photographers) {
+  const mediaSection = document.querySelector('media-content');
+  console.log(mediaSection);
+  // ----------------------------------------------------
+  // Error mediaSection est NULL ...
+  // ----------------------------------------------------
+  photographers.forEach(photographer => {
+    const photographerMedia = mediaFactory(photographer);
+    const mediaCard = photographerMedia.createMediaCards();
+    mediaSection.appendChild(mediaCard);
   });
 }
 
+// L'objectif est de pouvoir récupérer l'ID du photographe avec un event listener en cliquant sur les liens (images des photographes) sur la page d'accueil, puis de passer l'ID dans la fonction pour récupérer les médias correspondant à l'ID.
+async function getMediaData(id) {
+  const media = await getMedia();
+  displayMedia(media);
+  // media.forEach((el) => {
+  // if (el.photographerId === id) {
+  //   console.log(el.image);
+  // }
+  // });
+}
 
-
-//Mettre le code JavaScript lié à la page photographer.html
-
-// function test() {
-//     if (window.location.href.indexOf('photographer') > -1) {
-//       alert('Alert: Desktop!');
-//     }
-// }
+getMediaData(243);
 
 const photographHeader = document.querySelector('.photograph-header');
 const photographerInfo = document.querySelector('.photographer-info');
@@ -96,100 +103,6 @@ function getFixedCounter() {
 getPhotographerBanner();
 getFixedCounter();
 
-// ---------------------
-// Data media
-
-const mediaData = [
-  {
-    id: 342550,
-    photographerId: 82,
-    title: 'Fashion Yellow Beach',
-    image: 'Fashion_Yellow_Beach.jpg',
-    likes: 62,
-    date: '2011-12-08',
-    price: 55,
-  },
-  {
-    id: 8520927,
-    photographerId: 82,
-    title: 'Fashion Urban Jungle',
-    image: 'Fashion_Urban_Jungle.jpg',
-    likes: 11,
-    date: '2011-11-06',
-    price: 55,
-  },
-  {
-    id: 9025895,
-    photographerId: 82,
-    title: 'Fashion Pattern on a Pattern',
-    image: 'Fashion_Pattern_on_Pattern.jpg',
-    likes: 72,
-    date: '2013-08-12',
-    price: 55,
-  },
-  {
-    id: 9275938,
-    photographerId: 82,
-    title: 'Wedding Gazebo',
-    image: 'Event_WeddingGazebo.jpg',
-    likes: 69,
-    date: '2018-02-22',
-    price: 55,
-  },
-  {
-    id: 2053494,
-    photographerId: 82,
-    title: 'Sparkles',
-    image: 'Event_Sparklers.jpg',
-    likes: 2,
-    date: '2020-05-25',
-    price: 55,
-  },
-  {
-    id: 7324238,
-    photographerId: 82,
-    title: '18th Anniversary',
-    image: 'Event_18thAnniversary.jpg',
-    likes: 33,
-    date: '2019-06-12',
-    price: 55,
-  },
-  {
-    id: 8328953,
-    photographerId: 82,
-    video: 'Art_Wooden_Horse_Sculpture.mp4',
-    likes: 24,
-    date: '2011-12-08',
-    price: 100,
-  },
-  {
-    id: 7502053,
-    photographerId: 82,
-    title: 'Triangle Man',
-    image: 'Art_Triangle_Man.jpg',
-    likes: 88,
-    date: '2007-05-07',
-    price: 55,
-  },
-  {
-    id: 8523492,
-    photographerId: 82,
-    title: 'Purple Tunnel',
-    image: 'Art_Purple_light.jpg',
-    likes: 24,
-    date: '2018-05-05',
-    price: 55,
-  },
-  {
-    id: 75902334,
-    photographerId: 82,
-    title: 'Art Mine',
-    image: 'Art_Mine.jpg',
-    likes: 75,
-    date: '2019-11-25',
-    price: 55,
-  },
-];
 
 class Photo {
   constructor(data) {
@@ -219,11 +132,6 @@ class Photo {
   // }
 }
 
-// const exemple1 = mediaData[9];
-
-// new Photo(exemple1);
-
-// console.log(exemple1);
 
 // function separateImg(data) {
 //   data.forEach((el) => {
