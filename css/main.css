@@ -190,6 +190,7 @@ p {
   gap: 2%;
   width: 95%;
   margin: 0 auto;
+  margin-bottom: 8%;
 }
 
 .media-card {
@@ -224,6 +225,13 @@ p {
   transition: -webkit-transform;
   transition: transform;
   transition: transform, -webkit-transform;
+}
+
+.video {
+  width: 100%;
+  aspect-ratio: 1/1;
+  -o-object-fit: cover;
+     object-fit: cover;
 }
 
 .contact_button {

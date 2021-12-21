@@ -84,6 +84,7 @@
     gap: 2%;
     width: 95%;
     margin: 0 auto;
+    margin-bottom: 8%;
 }
 
 .media-card {
@@ -110,6 +111,12 @@
             transition: transform;
         }
     }
+}
+
+.video {
+    width: 100%;
+    aspect-ratio: 1/1;
+    object-fit: cover;
 }
 
 .contact_button {

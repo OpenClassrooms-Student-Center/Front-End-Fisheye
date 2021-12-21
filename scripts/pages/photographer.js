@@ -1,3 +1,21 @@
+const photographHeader = document.querySelector('.photograph-header');
+const photographerInfo = document.querySelector('.photographer-info');
+const photographerPicture = document.querySelector('.photographer-picture');
+const fixedCounter = document.querySelector('.fixed-counter');
+const chevronDown = document.querySelector('.fa-chevron-down');
+const filterList = document.querySelectorAll('.tri ul li.hidden');
+const photographerTemplate = {
+  name: 'Mimi Keel',
+  id: 243,
+  city: 'London',
+  country: 'UK',
+  tagline: 'Voir le beau dans le quotidien',
+  price: 400,
+  portrait: 'MimiKeel.jpg',
+};
+const { name, id, city, country, tagline, price, portrait } =
+  photographerTemplate;
+
 // Requete pour obtenir tous les objets media du fichier photographers.json
 async function getMedia() {
   let url = '../data/photographers.json';
@@ -10,68 +28,29 @@ async function getMedia() {
   }
 }
 
-const actualId = 82;
+const actualId = 925;
 let likes = 0;
+let heartCounter;
 
 // Fonction pour injecter les cartes médias.
 function displayMedia(photographers) {
   const mediaSection = document.getElementById('media-content');
-  photographers.forEach(photographer => {
+  photographers.forEach((photographer) => {
     const photographerId = photographer.photographerId;
     if (photographerId === actualId) {
       const photographerMedia = mediaFactory(photographer);
       const mediaCard = photographerMedia.createMediaCards();
       mediaSection.appendChild(mediaCard);
-      console.log(likes);
       likes += photographer.likes;
+      console.log(likes);
     }
   });
-  // ------------------------
-  // Ne renvoie pas le nombre total de likes...
-  // ------------------------
-  return likes;
+  heartCounter = likes;
 }
-
-console.log(likes);
-
-let heartTarget = document.querySelectorAll('counter');
-console.log(heartTarget);
-
-// L'objectif est de pouvoir récupérer l'ID du photographe avec un event listener en cliquant sur les liens (images des photographes) sur la page d'accueil, puis de passer l'ID dans la fonction pour récupérer les médias correspondant à l'ID.
 async function getMediaData(id) {
   const media = await getMedia();
   displayMedia(media);
-  // media.forEach((el) => {
-  // if (el.photographerId === id) {
-  //   console.log(el.image);
-  // }
-  // });
 }
-
-getMediaData(actualId);
-
-
-// Fonction pour additionner les likes des photographes
-
-const photographHeader = document.querySelector('.photograph-header');
-const photographerInfo = document.querySelector('.photographer-info');
-const photographerPicture = document.querySelector('.photographer-picture');
-const fixedCounter = document.querySelector('.fixed-counter');
-const photographerTemplate = {
-  name: 'Mimi Keel',
-  id: 243,
-  city: 'London',
-  country: 'UK',
-  tagline: 'Voir le beau dans le quotidien',
-  price: 400,
-  portrait: 'MimiKeel.jpg',
-};
-
-// --------------------------------
-// Fonctionne mais pourquoi name est barré ?
-const { name, id, city, country, tagline, price, portrait } =
-  photographerTemplate;
-// console.log(name);
 
 function getPhotographerBanner() {
   const picture = `assets/photos/profile/${portrait}`;
@@ -93,9 +72,6 @@ function getPhotographerBanner() {
   photographHeader.appendChild(img);
 }
 
-const chevronDown = document.querySelector('.fa-chevron-down');
-const filterList = document.querySelectorAll('.tri ul li.hidden');
-
 // Menu déroulant de filtres
 chevronDown.addEventListener('click', () => {
   filterList.forEach((li) => {
@@ -111,39 +87,9 @@ chevronDown.addEventListener('click', () => {
 
 function getFixedCounter() {
   const hourlyRate = document.createElement('p');
-  hourlyRate.innerHTML = `<p>${likes}<i class="fas fa-heart"></i></p>${price}€ / jour`;
+  hourlyRate.innerHTML = `<p>${heartCounter}<i class="fas fa-heart"></i>${price}€ / jour</p>`;
   fixedCounter.appendChild(hourlyRate);
 }
-
-
 getPhotographerBanner();
+getMediaData(actualId);
 getFixedCounter();
-
-
-class Photo {
-  constructor(data) {
-    this.id = data.id;
-    this.photographerId = data.photographerId;
-    this.title = data.title;
-    this.image = data.image;
-    this.likes = data.likes;
-  }
-
-  // ----------------------------------
-  // Je ne comprends pas getter et setter
-  // get id() {
-  //   return this._id;
-  // }
-  // get photographerId() {
-  //   return this._photographerId;
-  // }
-  // get title() {
-  //   return this._title;
-  // }
-  // get image() {
-  //   return this._image;
-  // }
-  // get likes() {
-  //   return this._likes;
-  // }
-}
