@@ -15,7 +15,6 @@ function mediaFactory(data) {
       mediaSrc = document.createElement('source');
       mediaSrc.setAttribute("src", videoUrl);
       media.appendChild(mediaSrc);
-      // Ajoute balise source dans la video puis fixer l'attribut src de source / video tag
     } else {
       media = document.createElement('img');
       media.setAttribute('src', picture);
@@ -35,31 +34,3 @@ function mediaFactory(data) {
   }
   return { id, photographerId, title, image, likes, video, createMediaCards };
 }
-
-const mediaData = [
-  {
-    id: 342550,
-    photographerId: 82,
-    title: 'Fashion Yellow Beach',
-    image: 'Fashion_Yellow_Beach.jpg',
-    likes: 62,
-    date: '2011-12-08',
-    price: 55,
-  },
-  {
-    id: 8520927,
-    photographerId: 82,
-    title: 'Fashion Urban Jungle',
-    image: 'Fashion_Urban_Jungle.jpg',
-    likes: 11,
-    date: '2011-11-06',
-    price: 55,
-  }
-];
-
-const exemple = mediaData[0];
-// console.log(mediaFactory(exemple));
-
-// Ne fonctionne pas...
-// const ex = exemple.createMediaCards();
-// console.log(mediaFactory(ex));

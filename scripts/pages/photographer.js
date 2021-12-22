@@ -29,6 +29,10 @@ async function getMedia() {
 }
 
 const actualId = 925;
+let params;
+const url = new URL(window.document.location.href);
+params = url.searchParams.get('id');
+const idLink = parseInt(params, 10)
 let likes = 0;
 let heartCounter;
 
@@ -37,12 +41,11 @@ function displayMedia(photographers) {
   const mediaSection = document.getElementById('media-content');
   photographers.forEach((photographer) => {
     const photographerId = photographer.photographerId;
-    if (photographerId === actualId) {
+    if (photographerId === idLink) {
       const photographerMedia = mediaFactory(photographer);
       const mediaCard = photographerMedia.createMediaCards();
       mediaSection.appendChild(mediaCard);
       likes += photographer.likes;
-      console.log(likes);
     }
   });
   heartCounter = likes;
@@ -91,5 +94,5 @@ function getFixedCounter() {
   fixedCounter.appendChild(hourlyRate);
 }
 getPhotographerBanner();
-getMediaData(actualId);
+getMediaData(idLink);
 getFixedCounter();
