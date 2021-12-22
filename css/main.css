@@ -87,7 +87,6 @@ h1 {
 
 p {
   margin: 0 0 5px;
-  text-align: center;
 }
 
 #contact_modal {
@@ -203,6 +202,10 @@ p {
   aspect-ratio: 1/1;
   width: 100%;
   border-radius: 10px;
+  margin-bottom: 10px;
+}
+
+.media-card video {
   margin-bottom: 10px;
 }
 

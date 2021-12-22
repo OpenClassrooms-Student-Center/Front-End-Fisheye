@@ -34,3 +34,5 @@ function mediaFactory(data) {
   }
   return { id, photographerId, title, image, likes, video, createMediaCards };
 }
+
+
