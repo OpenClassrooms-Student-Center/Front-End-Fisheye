@@ -4,7 +4,71 @@ const photographerInfo = document.querySelector('.photographer-info');
 const photographerPicture = document.querySelector('.photographer-picture');
 const fixedCounter = document.querySelector('.fixed-counter');
 const chevronDown = document.querySelector('.fa-chevron-down');
+const filter = document.getElementsByClassName('filters');
 const filterList = document.querySelectorAll('.tri ul li.hidden');
+const mediaSection = document.getElementById('media-content');
+
+// Ajout d'un écouteur d'évènement sur les filtres
+for (let index = 0; index < filter.length; index++) {
+  const element = filter[index];
+  element.addEventListener('click', () => {
+    getFilters(element);
+  });
+}
+
+// Création de la fonction qui efface le contenu de la section photo, la trie, puis la renvoie en fonction du filtre choisi
+async function getFilters(data) {
+  mediaSection.innerHTML = '';
+  let mediaArray = [];
+  const medias = await getMedia();
+  medias.forEach((media) => {
+    if (media.photographerId === idLink) {
+      mediaArray.push(media);
+    }
+  });
+  switch (data.innerText) {
+    case 'Popularité':
+      mediaArray.sort((a, b) => {
+        if (a.likes < b.likes) {
+          return 1;
+        } else if (a.likes > b.likes) {
+          return -1;
+        } else {
+          return 0;
+        }
+      });
+      displayMedia(mediaArray);
+      break;
+    case 'Date':
+      mediaArray.sort((a, b) => {
+        if (a.date < b.date) {
+          return -1;
+        } else if (a.date > b.date) {
+          return 1;
+        } else {
+          return 0;
+        }
+      });
+      displayMedia(mediaArray);
+      break;
+    case 'Titre':
+      mediaArray.sort((a, b) => {
+        if (a.title < b.title) {
+          return -1;
+        } else if (a.title > b.title) {
+          return 1;
+        } else {
+          return 0;
+        }
+      });
+      displayMedia(mediaArray);
+      break;
+
+    default:
+      getMediaData();
+      break;
+  }
+}
 
 // Requete pour obtenir les objets photographes
 async function getPhotographers() {
@@ -51,7 +115,6 @@ class Profile {
 
 async function getPrice(id) {
   const profile = await getPhotographers();
-  console.log(profile);
   for (let index = 0; index < profile.length; index++) {
     const element = profile[index];
     if (element.id === id) {
@@ -61,7 +124,7 @@ async function getPrice(id) {
 }
 
 // -----------------------------------------
-// Je n'arrive pas à utiliser le promise result 
+// Je n'arrive pas à utiliser le promise result
 const test = getPrice(925);
 console.log(test);
 // -----------------------------------------
@@ -105,22 +168,21 @@ let likes = 0;
 let heartCounter;
 
 // Injecter les cartes médias dans le DOM.
-function displayMedia(photographers) {
-  const mediaSection = document.getElementById('media-content');
-  photographers.forEach((photographer) => {
-    const photographerId = photographer.photographerId;
+function displayMedia(medias) {
+  medias.forEach((media) => {
+    const photographerId = media.photographerId;
     if (photographerId === idLink) {
-      const photographerMedia = mediaFactory(photographer);
+      const photographerMedia = mediaFactory(media);
       const mediaCard = photographerMedia.createMediaCards();
       mediaSection.appendChild(mediaCard);
-      likes += photographer.likes;
+      likes += media.likes;
     }
   });
   heartCounter = likes;
 }
 
 // Injecter les médias dans le DOM
-async function getMediaData(id) {
+async function getMediaData() {
   const media = await getMedia();
   displayMedia(media);
 }
@@ -147,5 +209,5 @@ function getFixedCounter() {
 
 // Appel des fonctions pour injecter les informations dans le DOM
 getProfile();
-getMediaData(idLink);
+getMediaData();
 getFixedCounter();

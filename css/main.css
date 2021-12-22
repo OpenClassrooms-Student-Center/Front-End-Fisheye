@@ -146,6 +146,7 @@ p {
       -ms-flex-align: baseline;
           align-items: baseline;
   margin-bottom: 5%;
+  z-index: 2;
 }
 
 .tri ul {
