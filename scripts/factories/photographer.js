@@ -1,17 +1,15 @@
-function photographerFactory(data) {
-    const { name, portrait } = data;
-
-    const picture = `assets/photographers/${portrait}`;
-
-    function getUserCardDOM() {
-        const article = document.createElement( 'article' );
-        const img = document.createElement( 'img' );
-        img.setAttribute("src", picture)
-        const h2 = document.createElement( 'h2' );
-        h2.textContent = name;
-        article.appendChild(img);
-        article.appendChild(h2);
-        return (article);
+class photographerFactory {
+  constructor(data) {
+    if (data.name) {
+      return new Photographer(data);
+    } else if (data.photographerId) {
+      if (data.video) {
+        return new Movie(data);
+      } else {
+        return new Picture(data);
+      }
+    } else {
+      throw "Unknow type format";
     }
-    return { name, picture, getUserCardDOM }
+  }
 }
