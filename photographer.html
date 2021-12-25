@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <link href="css/style.css" rel="stylesheet" type="text/css" />
+    <link href="public/css/style.css" rel="stylesheet" type="text/css" />
     <meta charset="utf-8" />
     <link rel="icon" type="image/png" href="assets/favicon.png" />
     <link
@@ -11,15 +11,25 @@
     <title>Fisheye - photographe</title>
   </head>
   <body>
-    <header>
+    <header class="heading">
       <a href="./">
-        <img src="assets/images/logo.png" class="logo" />
+        <img src="assets/images/logo.png" class="heading__logo" />
       </a>
     </header>
     <main id="main">
       <header class="photograph-header"></header>
-      <form class="photograph-sorter" action="#" method="POST"></form>
-      <section class="photographer_section"></section>
+      <section class="sorter">
+        <div class="sorter__desc">Trier par</div>
+        <div class="sorter__selector" tabindex="1">
+          <input type="radio" name="sorter" id="like" value="like" checked />
+          <label class="sorter__selector__option" for="like">Popularité</label>
+          <input type="radio" name="sorter" id="date" value="date" />
+          <label class="sorter__selector__option" for="date">Date</label>
+          <input type="radio" name="sorter" id="title" value="title" />
+          <label class="sorter__selector__option" for="title">Titre</label>
+        </div>
+      </section>
+      <section class="media"></section>
     </main>
     <div id="contact_modal">
       <div class="modal">

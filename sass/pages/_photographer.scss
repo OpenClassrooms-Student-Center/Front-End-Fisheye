@@ -1,0 +1,76 @@
+.photograph-header {
+  background-color: #fafafa;
+  height: 300px;
+  margin: 0 100px;
+  padding: 0 50px;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  &__desc {
+    font-weight: normal;
+    align-self: center;
+    white-space: nowrap;
+    & h1 {
+      color: $primary-heading;
+      font-size: 64px;
+      line-height: 83px;
+    }
+    & h4 {
+      color: $primary-color;
+      font-size: 24px;
+      line-height: 31px;
+    }
+    & p {
+      color: $paragraph-color;
+      line-height: 23px;
+      margin-top: 19px;
+    }
+  }
+  & button {
+    justify-self: center;
+    align-self: center;
+  }
+  & img {
+    justify-self: flex-end;
+    align-self: center;
+  }
+}
+
+.media {
+  margin: 100px;
+  display: grid;
+  grid-template-columns: 28% 28% 28%;
+  column-gap: 8%;
+  row-gap: 30px;
+  &__article {
+    &__image,
+    &__video {
+      object-fit: cover;
+      object-position: 25% 33%;
+      width: 100%;
+      height: 300px;
+      border-radius: 5px;
+      background-color: $media-bg;
+      cursor: pointer;
+    }
+    &__desc {
+      display: flex;
+      justify-content: space-between;
+      white-space: nowrap;
+      & span {
+        font-size: 24px;
+        color: $primary-color;
+        line-height: 31px;
+      }
+      &__title {
+        text-overflow: ellipsis;
+        overflow: hidden;
+      }
+      &__like {
+        font-weight: 500;
+        svg {
+          cursor: pointer;
+        }
+      }
+    }
+  }
+}

@@ -1,6 +1,6 @@
 class App {
   constructor() {
-    this.$photographWrapper = document.querySelector(".photographer_section");
+    this.$photographWrapper = document.querySelector(".photographer-section");
 
     this.photographersApi = new Api("./data/photographers.json");
 

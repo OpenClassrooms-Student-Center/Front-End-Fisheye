@@ -5,8 +5,8 @@ class App {
     this.photographersApi = new Api("./data/photographers.json");
     this.url = new URL(document.location);
 
-    this.$mediaWrapper = document.querySelector(".photographer_section");
-    this.$sorterFormWrapper = document.querySelector(".photograph-sorter");
+    this.$mediaWrapper = document.querySelector(".media");
+    this.$sorterWrapper = document.getElementsByName("sorter");
 
     this.photographerData = {};
   }
@@ -58,30 +58,15 @@ class App {
   }
 
   displaySorter() {
-    const sorterForm = `
-    <label for="filter-select">Trier par </label>
-    <select name="filter-select" id="filter-select">
-        <option value ="">---</option>
-        <option ${
-          this.getSorter() === "like" ? "selected" : ""
-        } value="like">Popularité</option>
-        <option ${
-          this.getSorter() === "date" ? "selected" : ""
-        } value="date">Date</option>
-        <option ${
-          this.getSorter() === "title" ? "selected" : ""
-        } value="title">Titre</option>
-    </select>`;
-
-    this.$sorterFormWrapper.addEventListener("change", (e) => {
-      const sorter = e.target.value;
-      this.url.searchParams.set("sorting", sorter);
-      window.history.pushState({}, "", this.url);
-      this.displayMedia(sorter);
-      Lightbox.init();
+    this.$sorterWrapper.forEach((element) => {
+      element.addEventListener("click", (e) => {
+        const sorter = e.target.value;
+        this.url.searchParams.set("sorting", sorter);
+        window.history.pushState({}, "", this.url);
+        this.displayMedia(sorter);
+        Lightbox.init();
+      });
     });
-
-    this.$sorterFormWrapper.innerHTML = sorterForm;
   }
 
   sortingMedia(sorter) {

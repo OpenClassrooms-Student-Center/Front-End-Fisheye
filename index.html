@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <link href="css/style.css" rel="stylesheet" type="text/css" />
+    <link href="./public/css/style.css" rel="stylesheet" type="text/css" />
     <meta charset="utf-8" />
     <link rel="icon" type="image/png" href="assets/favicon.png" />
     <link
@@ -11,12 +11,14 @@
     <title>Fisheye</title>
   </head>
   <body>
-    <header>
-      <img src="assets/images/logo.png" class="logo" />
-      <h1>Nos photographes</h1>
+    <header class="heading">
+      <a href="./">
+        <img src="assets/images/logo.png" class="heading__logo" />
+      </a>
+      <h1 class="heading__title">Nos photographes</h1>
     </header>
     <main id="main">
-      <div class="photographer_section"></div>
+      <div class="photographer-section"></div>
     </main>
     <script src="scripts/factories/Photographer.js"></script>
     <script src="scripts/api/api.js"></script>

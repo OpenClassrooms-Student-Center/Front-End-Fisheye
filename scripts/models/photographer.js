@@ -41,12 +41,12 @@ class Photographer {
     const $wrapper = document.createElement("article");
     const photographCard = `
       <a href="./photographer.html?photographer-id=${this._id}">
-        <img src="${this.portrait}" alt="${this._name}"/>
+        <img class="user" src="${this.portrait}" alt="${this._name}"/>
         <h2>${this._name}</h2>
       </a>
       <h4>${this._city}</h4>
-      <p>${this._tagline}</p>
-      <p>${this._price}€/jour</p>
+      <p class="tagline">${this._tagline}</p>
+      <p class="price">${this._price}€/jour</p>
       `;
     $wrapper.innerHTML = photographCard;
 
@@ -57,7 +57,7 @@ class Photographer {
     // Retourne le header du photographe
     const $wrapper = document.querySelector(".photograph-header");
     const headerDOM = `
-    <div class="description-header">
+    <div class="photograph-header__desc">
       <h1>${this.name}</h1>
       <h4>${this.city}</h4>
       <p>${this.tagline}</p>
@@ -65,7 +65,7 @@ class Photographer {
     <button class="contact_button" onclick="displayModal()">
       Contactez-moi
     </button>
-    <img class="img-header" src="${this.portrait}" alt="${this.name}" />`;
+    <img class="user" src="${this.portrait}" alt="${this.name}" />`;
     $wrapper.innerHTML = headerDOM;
   }
 }
