@@ -103,7 +103,7 @@ p {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  background-color: #FAFAFA;
+  background-color: #fafafa;
   height: 300px;
   font-size: 1.3em;
   width: 95%;
@@ -238,6 +238,99 @@ p {
      object-fit: cover;
 }
 
+.media-wrapper {
+  width: 600px;
+  margin: 0 auto;
+  position: relative;
+}
+
+.media-wrapper .fa-chevron-left {
+  position: absolute;
+  left: -50px;
+  bottom: 50%;
+  -webkit-transform: translateY(50%);
+          transform: translateY(50%);
+  color: #901C1C;
+  font-size: 3em;
+}
+
+.media-wrapper .fa-chevron-right {
+  position: absolute;
+  right: -50px;
+  bottom: 50%;
+  -webkit-transform: translateY(50%);
+          transform: translateY(50%);
+  color: #901C1C;
+  font-size: 3em;
+}
+
+.media-wrapper .fa-times {
+  position: absolute;
+  right: -50px;
+  top: 0;
+  color: #901C1C;
+  font-size: 3em;
+}
+
+.media-wrapper img {
+  width: 100%;
+  aspect-ratio: 1/1;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
+.wrapper {
+  height: 200%;
+  width: 600px;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  overflow: hidden;
+  background-color: white;
+}
+
+.wrapper .diaporama {
+  height: 50%;
+  aspect-ratio: 1/1;
+}
+
+.wrapper .diaporama img {
+  width: 100%;
+}
+
+.wrapper .fa-chevron-left {
+  left: -50px;
+  bottom: 50%;
+  -webkit-transform: translateY(50%);
+          transform: translateY(50%);
+  color: #901C1C;
+  font-size: 3em;
+}
+
+.wrapper .fa-chevron-right {
+  right: -50px;
+  bottom: 50%;
+  -webkit-transform: translateY(50%);
+          transform: translateY(50%);
+  color: #901C1C;
+  font-size: 3em;
+}
+
+.wrapper .fa-times {
+  position: absolute;
+  right: -50px;
+  top: 0;
+  color: #901C1C;
+  font-size: 3em;
+}
+
+.wrapper img {
+  width: 100%;
+  aspect-ratio: 1/1;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
 .contact_button {
   font-size: 20px;
   font-weight: bold;
@@ -246,14 +339,14 @@ p {
   width: 170px;
   height: 70px;
   border: none;
-  background-color: #901C1C;
+  background-color: #901c1c;
   border-radius: 5px;
   cursor: pointer;
 }
 
 .modal {
   border-radius: 5px;
-  background-color: #DB8876;
+  background-color: #db8876;
   width: 50%;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -304,7 +397,7 @@ form {
 }
 
 form label {
-  color: #312E2E;
+  color: #312e2e;
   font-size: 36px;
 }
 

@@ -11,12 +11,13 @@ function mediaFactory(data) {
     if (image === undefined) {
       media = document.createElement('video');
       media.setAttribute('controls', true);
-      media.classList.add('video')
+      media.classList.add('video', 'media');
       mediaSrc = document.createElement('source');
       mediaSrc.setAttribute("src", videoUrl);
       media.appendChild(mediaSrc);
     } else {
       media = document.createElement('img');
+      media.classList.add('media');
       media.setAttribute('src', picture);
       media.setAttribute('alt', `${title}`);
     }

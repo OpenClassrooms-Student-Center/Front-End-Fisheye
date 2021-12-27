@@ -7,6 +7,7 @@ const chevronDown = document.querySelector('.fa-chevron-down');
 const filter = document.getElementsByClassName('filters');
 const filterList = document.querySelectorAll('.tri ul li.hidden');
 const mediaSection = document.getElementById('media-content');
+const media = document.getElementsByClassName('media');
 
 // Ajout d'un écouteur d'évènement sur les filtres
 for (let index = 0; index < filter.length; index++) {
@@ -125,7 +126,7 @@ async function getPrice(id) {
 
 // -----------------------------------------
 // Je n'arrive pas à utiliser le promise result
-const test = getPrice(925);
+const test = getPrice(idLink);
 console.log(test);
 // -----------------------------------------
 
@@ -164,6 +165,7 @@ async function getProfile() {
   });
 }
 
+// ------------------------------
 let likes = 0;
 let heartCounter;
 
@@ -206,6 +208,82 @@ function getFixedCounter() {
   hourlyRate.innerHTML = `<p>${heartCounter}<i class="fas fa-heart"></i>${price}€ / jour</p>`;
   fixedCounter.appendChild(hourlyRate);
 }
+
+// function lightboxModal() {
+//   for (let i = 0; i < media.length; i++) {
+//     let element = media[i];
+//     element.addEventListener('click', () => {
+//       mediaSection.innerHTML = '';
+//       mediaSection.style.gridTemplateColumns = 'auto';
+//       const mediaWrapper = document.createElement('div');
+//       mediaWrapper.classList.add('media-wrapper');
+//       const leftArrow = document.createElement('i');
+//       leftArrow.classList.add('fas', 'fa-chevron-left');
+//       const rightArrow = document.createElement('i');
+//       rightArrow.classList.add('fas', 'fa-chevron-right');
+//       const exit = document.createElement('i');
+//       exit.classList.add('fas', 'fa-times');
+//       exit.setAttribute('id', 'exit');
+//       mediaWrapper.appendChild(element);
+//       mediaWrapper.appendChild(leftArrow);
+//       mediaWrapper.appendChild(rightArrow);
+//       mediaWrapper.appendChild(exit);
+//       mediaSection.appendChild(mediaWrapper);
+//       leftArrow.addEventListener('click', () => {
+//         i--;
+//         element = media[i];
+//         console.log(element);
+//         mediaWrapper.appendChild(element);
+//       });
+//     });
+//   }
+// }
+
+function lightboxModal1() {
+  for (let i = 0; i < media.length; i++) {
+    let element = media[i];
+    element.addEventListener('click', () => {
+      const articleWrapper = document.createElement('section');
+      articleWrapper.classList.add('wrapper');
+      const newArticle = document.createElement('article');
+      newArticle.classList.add('diaporama');
+      document.body.append(articleWrapper);
+      articleWrapper.appendChild(newArticle);
+      newArticle.appendChild(element);
+      console.log('cc');
+      const leftArrow = document.createElement('i');
+      leftArrow.classList.add('fas', 'fa-chevron-left');
+      const rightArrow = document.createElement('i');
+      rightArrow.classList.add('fas', 'fa-chevron-right');
+      const exit = document.createElement('i');
+      exit.classList.add('fas', 'fa-times');
+      exit.setAttribute('id', 'exit');
+      newArticle.appendChild(leftArrow);
+      newArticle.appendChild(rightArrow);
+      newArticle.appendChild(exit);
+      leftArrow.addEventListener('click', () => {
+        newArticle.removeChild(element)
+        i--;
+        console.log(i);
+        element = media[i];
+        newArticle.innerHTML = element;
+      });
+      console.log(i);
+      rightArrow.addEventListener('click', () => {
+        newArticle.removeChild(element);
+        i++;
+        console.log(i);
+        element = media[i];
+        newArticle.appendChild(element);
+      });
+    });
+  }
+}
+
+// Pour pouvoir appeler le lightbox modal à cause du async media mais devra être rappelé à chaque filtre
+setTimeout(() => {
+  lightboxModal1();
+}, 500);
 
 // Appel des fonctions pour injecter les informations dans le DOM
 getProfile();
