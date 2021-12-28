@@ -41,26 +41,6 @@
   grid-template-columns: 28% 28% 28%;
   column-gap: 8%;
   row-gap: 30px;
-  &__summary {
-    position: fixed;
-    bottom: 0;
-    right: 40px;
-    background-color: $secondary-color;
-    border-radius: 5px;
-    padding: 20px 30px;
-    height: 30px;
-    min-width: 350px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    &__likes,
-    &__price {
-      font-size: 24px;
-      font-weight: 500;
-      line-height: 31px;
-      align-self: baseline;
-    }
-  }
   &__article {
     &__image,
     &__video {
@@ -92,5 +72,28 @@
         }
       }
     }
+  }
+}
+
+.summary {
+  position: fixed;
+  bottom: 0;
+  right: 40px;
+  background-color: $secondary-color;
+  border-radius: 5px;
+  padding: 20px 30px;
+  height: 30px;
+  min-width: 350px;
+  &__heart {
+    align-self: flex-start;
+  }
+  &__likes,
+  &__price {
+    font-size: 24px;
+    font-weight: 500;
+    line-height: 31px;
+  }
+  &__price {
+    margin-left: 150px;
   }
 }

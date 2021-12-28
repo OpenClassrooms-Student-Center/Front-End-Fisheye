@@ -54,6 +54,13 @@ class App {
     this.photographerData.photographer.photographHeaderDOM;
   }
 
+  displaySummaryMedia() {
+    const likes = document.querySelector(".summary__likes");
+    const price = document.querySelector(".summary__price");
+    likes.innerText = this.getSumLikes();
+    price.innerText = this.photographerData.photographer.price + " € / jour";
+  }
+
   displayMedia(sorter) {
     this.$mediaWrapper.innerHTML = "";
     if (sorter) {
@@ -63,19 +70,7 @@ class App {
       const DOM = m.mediaDOM;
       this.$mediaWrapper.appendChild(DOM);
     }
-    const div = document.createElement("div");
-    div.classList.add("media__summary");
-    div.innerHTML = `
-      <span class="media__summary__likes">${this.getSumLikes()}
-        <svg width="19" height="19" viewBox="0 0 18 19" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path d="M9.125 18.35L7.85625 17.03C3.35 12.36 0.375 9.28 0.375 5.5C0.375 2.42 2.4925 0 5.1875 0C6.71 0 8.17125 0.81 9.125 2.09C10.0787 0.81 11.54 0 13.0625 0C15.7575 0 17.875 2.42 17.875 5.5C17.875 9.28 14.9 12.36 10.3938 17.04L9.125 18.35Z" fill="black"/>
-        </svg>
-      </span>
-      <span class="media__summary__price">${
-        this.photographerData.photographer.price
-      }€ / jour</span>
-    `;
-    this.$mediaWrapper.appendChild(div);
+    this.displaySummaryMedia();
   }
 
   displaySorter() {

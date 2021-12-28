@@ -285,25 +285,6 @@ form input {
   column-gap: 8%;
   row-gap: 30px;
 }
-.media__summary {
-  position: fixed;
-  bottom: 0;
-  right: 40px;
-  background-color: #db8876;
-  border-radius: 5px;
-  padding: 20px 30px;
-  height: 30px;
-  min-width: 350px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-.media__summary__likes, .media__summary__price {
-  font-size: 24px;
-  font-weight: 500;
-  line-height: 31px;
-  align-self: baseline;
-}
 .media__article__image, .media__article__video {
   object-fit: cover;
   object-position: 25% 33%;
@@ -332,6 +313,28 @@ form input {
 }
 .media__article__desc__like svg {
   cursor: pointer;
+}
+
+.summary {
+  position: fixed;
+  bottom: 0;
+  right: 40px;
+  background-color: #db8876;
+  border-radius: 5px;
+  padding: 20px 30px;
+  height: 30px;
+  min-width: 350px;
+}
+.summary__heart {
+  align-self: flex-start;
+}
+.summary__likes, .summary__price {
+  font-size: 24px;
+  font-weight: 500;
+  line-height: 31px;
+}
+.summary__price {
+  margin-left: 150px;
 }
 
 .user {
