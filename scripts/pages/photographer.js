@@ -34,9 +34,8 @@ async function getFilters(data) {
           return 1;
         } else if (a.likes > b.likes) {
           return -1;
-        } else {
-          return 0;
         }
+        return 0;
       });
       displayMedia(mediaArray);
       break;
@@ -46,9 +45,8 @@ async function getFilters(data) {
           return -1;
         } else if (a.date > b.date) {
           return 1;
-        } else {
-          return 0;
         }
+        return 0;
       });
       displayMedia(mediaArray);
       break;
@@ -58,9 +56,8 @@ async function getFilters(data) {
           return -1;
         } else if (a.title > b.title) {
           return 1;
-        } else {
-          return 0;
         }
+        return 0;
       });
       displayMedia(mediaArray);
       break;
@@ -114,26 +111,25 @@ class Profile {
   }
 }
 
+
+
 async function getPrice(id) {
   const profile = await getPhotographers();
   for (let index = 0; index < profile.length; index++) {
     const element = profile[index];
     if (element.id === id) {
+      console.log(element.price);
       return element.price;
     }
   }
 }
 
-// -----------------------------------------
-// Je n'arrive pas à utiliser le promise result
-const test = getPrice(idLink);
-console.log(test);
-// -----------------------------------------
+
 
 // Récupération des informations du photographe en fonction de l'ID de la page
 async function getProfile() {
   const data = await getPhotographers();
-  data.forEach((element) => {
+  data.forEach(async (element) => {
     if (element.id === idLink) {
       const el = new Profile(
         element.name,
@@ -161,32 +157,31 @@ async function getProfile() {
       photographerInfo.appendChild(Plocation);
       photographerInfo.appendChild(Ptagline);
       photographHeader.appendChild(img);
+      const hearts = await getMediaData();
+      getFixedCounter(el.price, hearts);
     }
   });
 }
 
-// ------------------------------
-let likes = 0;
-let heartCounter;
-
 // Injecter les cartes médias dans le DOM.
 function displayMedia(medias) {
-  medias.forEach((media) => {
+  let likes = 0;
+  medias.forEach((media, i) => {
     const photographerId = media.photographerId;
     if (photographerId === idLink) {
       const photographerMedia = mediaFactory(media);
-      const mediaCard = photographerMedia.createMediaCards();
+      const mediaCard = photographerMedia.createMediaCards(i);
       mediaSection.appendChild(mediaCard);
       likes += media.likes;
     }
   });
-  heartCounter = likes;
+  return likes
 }
 
 // Injecter les médias dans le DOM
 async function getMediaData() {
   const media = await getMedia();
-  displayMedia(media);
+  return displayMedia(media);
 }
 
 // Menu déroulant de filtres
@@ -202,10 +197,12 @@ chevronDown.addEventListener('click', () => {
   chevronDown.classList.toggle('fa-chevron-down');
 });
 
+
+
 // Injecter les informations de tarif du photographe dans le DOM
-function getFixedCounter() {
+function getFixedCounter(price, hearts) {
   const hourlyRate = document.createElement('p');
-  hourlyRate.innerHTML = `<p>${heartCounter}<i class="fas fa-heart"></i>${price}€ / jour</p>`;
+  hourlyRate.innerHTML = `<p>${hearts}<i class="fas fa-heart"></i>${price}€ / jour</p>`;
   fixedCounter.appendChild(hourlyRate);
 }
 
@@ -242,7 +239,8 @@ function getFixedCounter() {
 function lightboxModal1() {
   for (let i = 0; i < media.length; i++) {
     let element = media[i];
-    element.addEventListener('click', () => {
+    element.addEventListener('click', (e) => {
+      console.log(e.target);
       const articleWrapper = document.createElement('section');
       articleWrapper.classList.add('wrapper');
       const newArticle = document.createElement('article');
@@ -262,7 +260,7 @@ function lightboxModal1() {
       newArticle.appendChild(rightArrow);
       newArticle.appendChild(exit);
       leftArrow.addEventListener('click', () => {
-        newArticle.removeChild(element)
+        newArticle.removeChild(element);
         i--;
         console.log(i);
         element = media[i];
@@ -288,4 +286,5 @@ setTimeout(() => {
 // Appel des fonctions pour injecter les informations dans le DOM
 getProfile();
 getMediaData();
-getFixedCounter();
+
+

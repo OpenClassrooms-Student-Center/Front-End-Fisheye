@@ -1,10 +1,10 @@
-// Création des cartes médias pour la pages des photographes.
+// Création des cartes médias pour la page des photographes.
 function mediaFactory(data) {
   const { id, photographerId, title, image, likes, video } = data;
   const picture = `assets/photos/${photographerId}/${image}`;
   const videoUrl = `assets/photos/${photographerId}/${video}`;
 
-  function createMediaCards() {
+  function createMediaCards(i) {
     const card = document.createElement('article');
     card.classList.add('media-card');
     let media;
@@ -21,6 +21,7 @@ function mediaFactory(data) {
       media.setAttribute('src', picture);
       media.setAttribute('alt', `${title}`);
     }
+    media.setAttribute('data-index', i);
     const textbox = document.createElement('p');
     textbox.classList.add('flex-red');
     const tag = document.createElement('p');
