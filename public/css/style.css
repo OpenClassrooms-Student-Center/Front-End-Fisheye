@@ -355,22 +355,21 @@ form input {
   right: 0;
 }
 .lightbox__container {
-  margin: 62px 35%;
+  margin: 62px 165px;
 }
 .lightbox__container__figure {
-  border-radius: 5px;
   max-width: 100%;
   height: 85vh;
-  box-shadow: 5px 0px 0px 0px #c4c4c4;
+  padding: 0 25%;
 }
 .lightbox__container__figure img,
 .lightbox__container__figure video {
   object-fit: cover;
   width: 100%;
   height: 100%;
-}
-.lightbox__container__figure video {
   background-color: #c4c4c4;
+  padding-right: 5px;
+  border-radius: 5px;
 }
 .lightbox__container__title {
   display: block;

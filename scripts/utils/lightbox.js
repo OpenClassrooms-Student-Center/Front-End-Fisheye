@@ -56,8 +56,8 @@ class Lightbox {
         </svg>
       </button>
       <div class="lightbox__container">
-        <div class="lightbox__container__figure"></div>
-        <div class="lightbox__container__title"></div>
+        <figure class="lightbox__container__figure">
+        </figure>
       </div>
       `;
     dom
@@ -75,9 +75,7 @@ class Lightbox {
   loadMedia(url, title) {
     this.url = null;
     const figure = this.element.querySelector(".lightbox__container__figure");
-    const divTitle = this.element.querySelector(".lightbox__container__title");
     figure.innerHTML = "";
-    divTitle.innerText = "";
     if (this.getExtensionUrl(url) === "mp4") {
       const video = document.createElement("video");
       video.setAttribute("controls", "");
@@ -86,14 +84,20 @@ class Lightbox {
       source.setAttribute("src", url);
       source.setAttribute("type", "video/mp4");
       video.appendChild(source);
-      divTitle.innerText = title;
-      figure.append(video);
+      const figcaption = document.createElement("figcaption");
+      figcaption.classList.add("lightbox__container__title");
+      figcaption.innerText = title;
+      figure.appendChild(video);
+      figure.appendChild(figcaption);
     } else if (this.getExtensionUrl(url) === "jpg") {
       const image = document.createElement("img");
       image.setAttribute("src", url);
       image.setAttribute("alt", title);
-      divTitle.innerText = title;
-      figure.append(image);
+      const figcaption = document.createElement("figcaption");
+      figcaption.classList.add("lightbox__container__title");
+      figcaption.innerText = title;
+      figure.appendChild(image);
+      figure.appendChild(figcaption);
     } else {
       throw "unknow file";
     }
