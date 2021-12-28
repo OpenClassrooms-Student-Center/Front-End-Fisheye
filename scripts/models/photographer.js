@@ -40,7 +40,7 @@ class Photographer {
   get userCardDOM() {
     const $wrapper = document.createElement("article");
     const photographCard = `
-      <a href="./photographer.html?photographer-id=${this._id}">
+      <a href="./photographer.html?photographerId=${this._id}">
         <img class="user" src="${this.portrait}" alt="${this._name}"/>
         <h2>${this._name}</h2>
       </a>

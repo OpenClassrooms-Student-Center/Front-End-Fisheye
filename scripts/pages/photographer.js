@@ -42,7 +42,7 @@ class App {
 
   getUrlId() {
     const params = this.url.searchParams;
-    return parseInt(params.get("photographer-id"));
+    return parseInt(params.get("photographerId"));
   }
 
   getSorter() {
