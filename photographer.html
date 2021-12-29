@@ -53,21 +53,27 @@
           <h2>Contactez-moi</h2>
           <img src="assets/icons/close.svg" onclick="closeModal()" />
         </header>
-        <form>
+        <form name="contact" onsubmit="">
           <div>
-            <label>Prénom</label>
-            <input />
+            <label for="firstname">Prénom</label>
+            <input id="firstname" name="firtname" />
+            <label for="lastname">Nom</label>
+            <input id="lastname" name="lastname" />
+            <label for="email">Email</label>
+            <input id="email" type="email" name="email" />
+            <label for="message">Votre message</label>
+            <textarea id="message" name="message" rows="3"></textarea>
           </div>
-          <button class="contact_button">Envoyer</button>
+          <button class="contact_button" type="submit">Envoyer</button>
         </form>
       </div>
     </div>
+    <script src="scripts/models/photographer.js"></script>
+    <script src="scripts/models/media.js"></script>
     <script src="scripts/utils/lightbox.js"></script>
     <script src="scripts/factories/Photographer.js"></script>
     <script src="scripts/api/api.js"></script>
     <script src="scripts/pages/photographer.js"></script>
-    <script src="scripts/models/photographer.js"></script>
-    <script src="scripts/models/media.js"></script>
     <script src="scripts/utils/contactForm.js"></script>
   </body>
 </html>

@@ -105,7 +105,6 @@ class Lightbox {
   }
 
   next(e) {
-    e.preventDefault();
     let i = this.media.findIndex((media) => media === this.url);
     if (i === this.media.length - 1) {
       i = -1;
@@ -114,7 +113,6 @@ class Lightbox {
   }
 
   prev(e) {
-    e.preventDefault();
     let i = this.media.findIndex((media) => media === this.url);
     if (i === 0) {
       i = this.media.length;
@@ -133,7 +131,6 @@ class Lightbox {
   }
 
   close(e) {
-    e.preventDefault();
     this.element.parentElement.removeChild(this.element);
     document.removeEventListener("keyup", this.onKeyUp);
   }

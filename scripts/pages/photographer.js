@@ -11,33 +11,75 @@ class App {
     this.photographerData = {};
   }
 
-  async fetchDataPhotographer() {
-    const data = await this.photographersApi.get();
-    const id = this.getUrlId();
-    const photographerIdExist = data.photographers.some((obj) => obj.id === id);
+  async fetchData() {
+    const localPhotographerData = JSON.parse(
+      localStorage.getItem("photographerData")
+    );
 
-    if (photographerIdExist) {
-      const photographer = new photographerFactory(
-        data.photographers.find((photograph) => photograph.id === id)
-      );
-      const mediaById = data.media.filter(
-        (media) => media.photographerId === id
-      );
+    if (localPhotographerData) {
       this.photographerData = {
-        photographer: photographer,
-        media: mediaById.map((media) => new photographerFactory(media)),
+        photographers: localPhotographerData.photographers.map(
+          (photograph) => new photographerFactory(photograph)
+        ),
+        media: localPhotographerData.media.map(
+          (media) => new photographerFactory(media)
+        ),
       };
     } else {
-      throw "unknow photograph id";
+      const data = await this.photographersApi.get();
+      this.photographerData = {
+        photographers: data.photographers.map(
+          (photograph) => new photographerFactory(photograph)
+        ),
+        media: data.media.map((media) => new photographerFactory(media)),
+      };
+    }
+  }
+
+  getPhotographerById() {
+    const id = this.getUrlId();
+    const photographerIdExist = this.photographerData.photographers.some(
+      (obj) => obj.id === id
+    );
+
+    if (photographerIdExist) {
+      return this.photographerData.photographers.find(
+        (photographer) => photographer.id === id
+      );
+    } else {
+      window.location.replace(window.location.origin);
+    }
+  }
+
+  getMediaByPhotographerId() {
+    const id = this.getUrlId();
+    const photographerIdExist = this.photographerData.photographers.some(
+      (obj) => obj.id === id
+    );
+
+    if (photographerIdExist) {
+      return this.photographerData.media.filter(
+        (media) => media.photographerId === id
+      );
+    } else {
+      window.location.replace(window.location.origin);
     }
   }
 
   getSumLikes() {
     let sum = 0;
-    for (const media of this.photographerData.media) {
+    for (const media of this.getMediaByPhotographerId()) {
       sum += media.likes;
     }
     return sum;
+  }
+
+  incrementLikes(id) {
+    const mediaById = this.getMediaByPhotographerId().find(
+      (media) => media.id === id
+    );
+    mediaById.liked();
+    this.update();
   }
 
   getUrlId() {
@@ -51,26 +93,30 @@ class App {
   }
 
   displayHeader() {
-    this.photographerData.photographer.photographHeaderDOM;
+    this.getPhotographerById().photographHeaderDOM;
   }
 
   displaySummaryMedia() {
     const likes = document.querySelector(".summary__likes");
     const price = document.querySelector(".summary__price");
     likes.innerText = this.getSumLikes();
-    price.innerText = this.photographerData.photographer.price + " € / jour";
+    price.innerText = this.getPhotographerById().price + " € / jour";
   }
 
   displayMedia(sorter) {
     this.$mediaWrapper.innerHTML = "";
+    let media = this.getMediaByPhotographerId();
+
     if (sorter) {
-      this.photographerData.media = this.sortingMedia(sorter);
+      media = this.sortingMedia(sorter);
     }
-    for (const m of this.photographerData.media) {
+    for (const m of media) {
       const DOM = m.mediaDOM;
+
       this.$mediaWrapper.appendChild(DOM);
+      this.displaySummaryMedia();
     }
-    this.displaySummaryMedia();
+    Lightbox.init();
   }
 
   displaySorter() {
@@ -79,40 +125,54 @@ class App {
         const sorter = e.target.value;
         this.url.searchParams.set("sorting", sorter);
         window.history.pushState({}, "", this.url);
-        this.displayMedia(sorter);
-        Lightbox.init();
+        this.update();
       });
     });
   }
 
   sortingMedia(sorter) {
     if (sorter === "like") {
-      return Array.from(this.photographerData.media).sort(
+      return Array.from(this.getMediaByPhotographerId()).sort(
         (a, b) => b.likes - a.likes
       );
     } else if (sorter === "date") {
-      return Array.from(this.photographerData.media).sort(
+      return Array.from(this.getMediaByPhotographerId()).sort(
         (a, b) => new Date(b.date) - new Date(a.date)
       );
     } else if (sorter === "title") {
-      return Array.from(this.photographerData.media).sort((a, b) =>
+      return Array.from(this.getMediaByPhotographerId()).sort((a, b) =>
         a.title.localeCompare(b.title)
       );
     } else {
-      throw "unknow sorter type";
+      this.url.searchParams.delete("sorting");
+      window.history.pushState({}, "", this.url);
+      this.update();
     }
+  }
+
+  displayNameIntoForm() {
+    const wrapper = document.querySelector(".modal header h2");
+    wrapper.innerHTML += `<br> ${this.getPhotographerById().name}`;
+  }
+
+  update() {
+    this.displayMedia(this.getSorter());
+    Lightbox.init();
+    localStorage.setItem(
+      "photographerData",
+      JSON.stringify(this.photographerData)
+    );
   }
 
   async main() {
     try {
-      await this.fetchDataPhotographer();
+      await this.fetchData();
       this.displayHeader();
       this.displaySorter();
       this.displayMedia(this.getSorter());
-      Lightbox.init();
+      this.displayNameIntoForm();
     } catch (e) {
       console.log(e);
-      //window.location.replace(window.location.origin);
     }
   }
 }
