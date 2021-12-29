@@ -10,7 +10,6 @@ function mediaFactory(data) {
     let media;
     if (image === undefined) {
       media = document.createElement('video');
-      // media.setAttribute('controls', true);
       media.classList.add('video', 'media');
       mediaSrc = document.createElement('source');
       mediaSrc.setAttribute("src", videoUrl);

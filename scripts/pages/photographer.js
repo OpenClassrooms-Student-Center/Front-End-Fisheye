@@ -9,7 +9,6 @@ const filterList = document.querySelectorAll('.tri ul li.hidden');
 const mediaSection = document.getElementById('media-content');
 const media = document.getElementsByClassName('media');
 
-
 // Ajout d'un écouteur d'évènement sur les filtres
 for (let index = 0; index < filter.length; index++) {
   const element = filter[index];
@@ -214,7 +213,7 @@ function displayMedia(medias) {
       // --------------------------------------------
     }
   });
-  return likes
+  return likes;
 }
 
 // Injecter les médias dans le DOM
@@ -253,20 +252,60 @@ function lightboxModal() {
       let elementSrc = element.getAttribute('src');
       if (!elementSrc) {
         element.setAttribute('controls', true);
+        // const vidPlayer = document.createElement('source');
+        // const vidUrl = el.children[0].attributes.src.value;
+        // vidPlayer.setAttribute('src', vidUrl);
+        // element.appendChild(vidPlayer)
       }
       let dataIndex = element.getAttribute('data-index');
       leftArrow.addEventListener('click', () => {
-        dataIndex--
+        dataIndex--;
         for (let index = 0; index < media.length; index++) {
           const el = media[index];
           if (el.getAttribute('data-index') == dataIndex) {
-            console.log(el);
-            newDataIndex = el.getAttribute('src')
-            console.log(element);
-            element.setAttribute('src', newDataIndex)
+            if (!el.getAttribute('src')) {
+              const vid = document.createElement('video')
+              const vidPlayer = document.createElement('source');
+              let newDataIndex = el.children[0].attributes.src.value;
+              let newAlt = el.getAttribute('alt');
+              vidPlayer.setAttribute('src', newDataIndex);
+              vid.appendChild(vidPlayer)
+              element.setAttribute('data-index', dataIndex);
+              element.setAttribute('alt', newAlt);
+              console.log(el.parentNode);
+            } else {
+              let newDataIndex = el.getAttribute('src');
+              let newAlt = el.getAttribute('alt');
+              element.setAttribute('src', newDataIndex);
+              element.setAttribute('data-index', dataIndex);
+              element.setAttribute('alt', newAlt);
+              const currentSrc = document.querySelector('source')
+              console.log(currentSrc);
+              element.removeChild(currentSrc)
+            }
           }
         }
-        ;
+      });
+      rightArrow.addEventListener('click', () => {
+        dataIndex++;
+        for (let index = 0; index < media.length; index++) {
+          const el = media[index];
+
+          if (el.getAttribute('data-index') == dataIndex) {
+            if (!elementSrc) {
+              const vidPlayer = document.createElement('source');
+              const vidUrl = el.children[0].attributes.src.value;
+              vidPlayer.setAttribute('src', vidUrl);
+              el.appendChild(vidPlayer);
+            } else {
+              newDataIndex = el.getAttribute('src');
+              newAlt = el.getAttribute('alt');
+              element.setAttribute('src', newDataIndex);
+              element.setAttribute('data-index', dataIndex);
+              element.setAttribute('alt', newAlt);
+            }
+          }
+        }
       });
     });
   }
@@ -321,5 +360,3 @@ setTimeout(() => {
 
 // Appel des fonctions pour injecter les informations dans le DOM
 getProfile();
-
-
