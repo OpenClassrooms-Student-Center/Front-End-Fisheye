@@ -9,12 +9,39 @@ const filterList = document.querySelectorAll('.tri ul li.hidden');
 const mediaSection = document.getElementById('media-content');
 const media = document.getElementsByClassName('media');
 
+
 // Ajout d'un écouteur d'évènement sur les filtres
 for (let index = 0; index < filter.length; index++) {
   const element = filter[index];
   element.addEventListener('click', () => {
     getFilters(element);
   });
+}
+
+// Menu déroulant de filtres
+chevronDown.addEventListener('click', () => {
+  filterList.forEach((li) => {
+    if (li.className.includes('hidden')) {
+      li.classList.remove('hidden');
+    } else {
+      li.classList.add('hidden');
+    }
+  });
+  chevronDown.classList.toggle('fa-chevron-up');
+  chevronDown.classList.toggle('fa-chevron-down');
+});
+
+// Fonction pour refermer la liste des filtres
+function refreshFilter() {
+  filterList.forEach((li) => {
+    if (li.className.includes('hidden')) {
+      li.classList.remove('hidden');
+    } else {
+      li.classList.add('hidden');
+    }
+  });
+  chevronDown.classList.toggle('fa-chevron-up');
+  chevronDown.classList.toggle('fa-chevron-down');
 }
 
 // Création de la fonction qui efface le contenu de la section photo, la trie, puis la renvoie en fonction du filtre choisi
@@ -37,6 +64,7 @@ async function getFilters(data) {
         }
         return 0;
       });
+      refreshFilter();
       displayMedia(mediaArray);
       break;
     case 'Date':
@@ -48,6 +76,7 @@ async function getFilters(data) {
         }
         return 0;
       });
+      refreshFilter();
       displayMedia(mediaArray);
       break;
     case 'Titre':
@@ -59,10 +88,12 @@ async function getFilters(data) {
         }
         return 0;
       });
+      refreshFilter();
       displayMedia(mediaArray);
       break;
 
     default:
+      refreshFilter();
       getMediaData();
       break;
   }
@@ -111,8 +142,6 @@ class Profile {
   }
 }
 
-
-
 async function getPrice(id) {
   const profile = await getPhotographers();
   for (let index = 0; index < profile.length; index++) {
@@ -123,8 +152,6 @@ async function getPrice(id) {
     }
   }
 }
-
-
 
 // Récupération des informations du photographe en fonction de l'ID de la page
 async function getProfile() {
@@ -173,6 +200,18 @@ function displayMedia(medias) {
       const mediaCard = photographerMedia.createMediaCards(i);
       mediaSection.appendChild(mediaCard);
       likes += media.likes;
+      // -------------------------------------------
+      // Sélectionner l'icone coeur pour lui ajouter un event listener afin d'incrémenter le nombre de likes au clic
+      // const heartCount = document.querySelectorAll('.fa-heart');
+      // console.log(heartCount[0]);
+      // for (let index = 0; index < heartCount; index++) {
+      //   const element = heartCount[index];
+      //   console.log(element);
+      //   element.addEventListener('click', () => {
+      //     console.log(element);
+      //   })
+      // }
+      // --------------------------------------------
     }
   });
   return likes
@@ -184,57 +223,54 @@ async function getMediaData() {
   return displayMedia(media);
 }
 
-// Menu déroulant de filtres
-chevronDown.addEventListener('click', () => {
-  filterList.forEach((li) => {
-    if (li.className.includes('hidden')) {
-      li.classList.remove('hidden');
-    } else {
-      li.classList.add('hidden');
-    }
-  });
-  chevronDown.classList.toggle('fa-chevron-up');
-  chevronDown.classList.toggle('fa-chevron-down');
-});
-
-
-
 // Injecter les informations de tarif du photographe dans le DOM
 function getFixedCounter(price, hearts) {
   const hourlyRate = document.createElement('p');
-  hourlyRate.innerHTML = `<p>${hearts}<i class="fas fa-heart"></i>${price}€ / jour</p>`;
+  hourlyRate.innerHTML = `<p>${hearts} <i class="fas fa-heart"></i> ${price}€ / jour</p>`;
   fixedCounter.appendChild(hourlyRate);
 }
 
-// function lightboxModal() {
-//   for (let i = 0; i < media.length; i++) {
-//     let element = media[i];
-//     element.addEventListener('click', () => {
-//       mediaSection.innerHTML = '';
-//       mediaSection.style.gridTemplateColumns = 'auto';
-//       const mediaWrapper = document.createElement('div');
-//       mediaWrapper.classList.add('media-wrapper');
-//       const leftArrow = document.createElement('i');
-//       leftArrow.classList.add('fas', 'fa-chevron-left');
-//       const rightArrow = document.createElement('i');
-//       rightArrow.classList.add('fas', 'fa-chevron-right');
-//       const exit = document.createElement('i');
-//       exit.classList.add('fas', 'fa-times');
-//       exit.setAttribute('id', 'exit');
-//       mediaWrapper.appendChild(element);
-//       mediaWrapper.appendChild(leftArrow);
-//       mediaWrapper.appendChild(rightArrow);
-//       mediaWrapper.appendChild(exit);
-//       mediaSection.appendChild(mediaWrapper);
-//       leftArrow.addEventListener('click', () => {
-//         i--;
-//         element = media[i];
-//         console.log(element);
-//         mediaWrapper.appendChild(element);
-//       });
-//     });
-//   }
-// }
+function lightboxModal() {
+  for (let i = 0; i < media.length; i++) {
+    let element = media[i];
+    element.addEventListener('click', () => {
+      // mediaSection.innerHTML = '';
+      mediaSection.style.gridTemplateColumns = 'auto';
+      const mediaWrapper = document.createElement('div');
+      mediaWrapper.classList.add('media-wrapper');
+      const leftArrow = document.createElement('i');
+      leftArrow.classList.add('fas', 'fa-chevron-left');
+      const rightArrow = document.createElement('i');
+      rightArrow.classList.add('fas', 'fa-chevron-right');
+      const exit = document.createElement('i');
+      exit.classList.add('fas', 'fa-times');
+      exit.setAttribute('id', 'exit');
+      mediaWrapper.appendChild(element);
+      mediaWrapper.appendChild(leftArrow);
+      mediaWrapper.appendChild(rightArrow);
+      mediaWrapper.appendChild(exit);
+      mediaSection.appendChild(mediaWrapper);
+      let elementSrc = element.getAttribute('src');
+      if (!elementSrc) {
+        element.setAttribute('controls', true);
+      }
+      let dataIndex = element.getAttribute('data-index');
+      leftArrow.addEventListener('click', () => {
+        dataIndex--
+        for (let index = 0; index < media.length; index++) {
+          const el = media[index];
+          if (el.getAttribute('data-index') == dataIndex) {
+            console.log(el);
+            newDataIndex = el.getAttribute('src')
+            console.log(element);
+            element.setAttribute('src', newDataIndex)
+          }
+        }
+        ;
+      });
+    });
+  }
+}
 
 function lightboxModal1() {
   for (let i = 0; i < media.length; i++) {
@@ -280,11 +316,10 @@ function lightboxModal1() {
 
 // Pour pouvoir appeler le lightbox modal à cause du async media mais devra être rappelé à chaque filtre
 setTimeout(() => {
-  lightboxModal1();
-}, 500);
+  lightboxModal();
+}, 1000);
 
 // Appel des fonctions pour injecter les informations dans le DOM
 getProfile();
-getMediaData();
 
 
