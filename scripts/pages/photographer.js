@@ -233,10 +233,39 @@ function lightboxModal() {
   for (let i = 0; i < media.length; i++) {
     let element = media[i];
     element.addEventListener('click', () => {
-      // mediaSection.innerHTML = '';
-      mediaSection.style.gridTemplateColumns = 'auto';
-      const mediaWrapper = document.createElement('div');
-      mediaWrapper.classList.add('media-wrapper');
+      const lightbox = document.createElement('div');
+      lightbox.id = 'lightbox';
+      document.body.appendChild(lightbox);
+      document.body.style.overflow = 'hidden';
+      document.body.style.margin = 'initial';
+      console.log(element);
+      let newMedia;
+      if (element.src) {
+        newSrc = element.getAttribute('src');
+        newAlt = element.getAttribute('alt');
+        newDataIndex = element.getAttribute('data-index');
+        newClass = element.getAttribute('class');
+        newMedia = document.createElement('img');
+        newMedia.setAttribute('src', newSrc);
+        newMedia.setAttribute('alt', newAlt);
+        newMedia.setAttribute('data-index', newDataIndex);
+        newMedia.setAttribute('class', newClass);
+        console.log(newMedia);
+      } else {
+        // newSrc = element.getAttribute('src');
+        newSource = element.children[0];
+        newDataIndex = element.getAttribute('data-index');
+        newClass = element.getAttribute('class');
+        newMedia = document.createElement('video');
+        newMedia.setAttribute('data-index', newDataIndex);
+        newMedia.setAttribute('class', newClass);
+        newMedia.setAttribute('controls', true);
+        console.log(newSource);
+        newMedia.appendChild(newSource)
+        console.log(newMedia);
+      }
+
+      lightbox.appendChild(newMedia);
       const leftArrow = document.createElement('i');
       leftArrow.classList.add('fas', 'fa-chevron-left');
       const rightArrow = document.createElement('i');
@@ -244,69 +273,75 @@ function lightboxModal() {
       const exit = document.createElement('i');
       exit.classList.add('fas', 'fa-times');
       exit.setAttribute('id', 'exit');
-      mediaWrapper.appendChild(element);
-      mediaWrapper.appendChild(leftArrow);
-      mediaWrapper.appendChild(rightArrow);
-      mediaWrapper.appendChild(exit);
-      mediaSection.appendChild(mediaWrapper);
-      let elementSrc = element.getAttribute('src');
-      if (!elementSrc) {
-        element.setAttribute('controls', true);
-        // const vidPlayer = document.createElement('source');
-        // const vidUrl = el.children[0].attributes.src.value;
-        // vidPlayer.setAttribute('src', vidUrl);
-        // element.appendChild(vidPlayer)
-      }
-      let dataIndex = element.getAttribute('data-index');
-      leftArrow.addEventListener('click', () => {
-        dataIndex--;
-        for (let index = 0; index < media.length; index++) {
-          const el = media[index];
-          if (el.getAttribute('data-index') == dataIndex) {
-            if (!el.getAttribute('src')) {
-              const vid = document.createElement('video')
-              const vidPlayer = document.createElement('source');
-              let newDataIndex = el.children[0].attributes.src.value;
-              let newAlt = el.getAttribute('alt');
-              vidPlayer.setAttribute('src', newDataIndex);
-              vid.appendChild(vidPlayer)
-              element.setAttribute('data-index', dataIndex);
-              element.setAttribute('alt', newAlt);
-              console.log(el.parentNode);
-            } else {
-              let newDataIndex = el.getAttribute('src');
-              let newAlt = el.getAttribute('alt');
-              element.setAttribute('src', newDataIndex);
-              element.setAttribute('data-index', dataIndex);
-              element.setAttribute('alt', newAlt);
-              const currentSrc = document.querySelector('source')
-              console.log(currentSrc);
-              element.removeChild(currentSrc)
-            }
-          }
-        }
+      lightbox.appendChild(leftArrow);
+      lightbox.appendChild(rightArrow);
+      lightbox.appendChild(exit);
+      exit.addEventListener('click', () => {
+        lightbox.style.display = 'none';
+        console.log(newMedia);
+        console.log(element);
+        document.body.style.overflow = 'initial';
       });
-      rightArrow.addEventListener('click', () => {
-        dataIndex++;
-        for (let index = 0; index < media.length; index++) {
-          const el = media[index];
+      // mediaSection.appendChild(mediaWrapper);
 
-          if (el.getAttribute('data-index') == dataIndex) {
-            if (!elementSrc) {
-              const vidPlayer = document.createElement('source');
-              const vidUrl = el.children[0].attributes.src.value;
-              vidPlayer.setAttribute('src', vidUrl);
-              el.appendChild(vidPlayer);
-            } else {
-              newDataIndex = el.getAttribute('src');
-              newAlt = el.getAttribute('alt');
-              element.setAttribute('src', newDataIndex);
-              element.setAttribute('data-index', dataIndex);
-              element.setAttribute('alt', newAlt);
-            }
-          }
-        }
-      });
+      // let elementSrc = element.getAttribute('src');
+      // if (!elementSrc) {
+      //   element.setAttribute('controls', true);
+      // const vidPlayer = document.createElement('source');
+      // const vidUrl = el.children[0].attributes.src.value;
+      // vidPlayer.setAttribute('src', vidUrl);
+      // element.appendChild(vidPlayer)
+      // }
+      // let dataIndex = element.getAttribute('data-index');
+      // leftArrow.addEventListener('click', () => {
+      //   dataIndex--;
+      //   for (let index = 0; index < media.length; index++) {
+      //     const el = media[index];
+      //     if (el.getAttribute('data-index') == dataIndex) {
+      //       if (!el.getAttribute('src')) {
+      //         const vid = document.createElement('video')
+      //         const vidPlayer = document.createElement('source');
+      //         let newDataIndex = el.children[0].attributes.src.value;
+      //         let newAlt = el.getAttribute('alt');
+      //         vidPlayer.setAttribute('src', newDataIndex);
+      //         vid.appendChild(vidPlayer)
+      //         element.setAttribute('data-index', dataIndex);
+      //         element.setAttribute('alt', newAlt);
+      //         console.log(el.parentNode);
+      //       } else {
+      //         let newDataIndex = el.getAttribute('src');
+      //         let newAlt = el.getAttribute('alt');
+      //         element.setAttribute('src', newDataIndex);
+      //         element.setAttribute('data-index', dataIndex);
+      //         element.setAttribute('alt', newAlt);
+      //         const currentSrc = document.querySelector('source')
+      //         console.log(currentSrc);
+      //         element.removeChild(currentSrc)
+      //       }
+      //     }
+      //   }
+      // });
+      // rightArrow.addEventListener('click', () => {
+      //   dataIndex++;
+      //   for (let index = 0; index < media.length; index++) {
+      //     const el = media[index];
+
+      //     if (el.getAttribute('data-index') == dataIndex) {
+      //       if (!elementSrc) {
+      //         const vidPlayer = document.createElement('source');
+      //         const vidUrl = el.children[0].attributes.src.value;
+      //         vidPlayer.setAttribute('src', vidUrl);
+      //         el.appendChild(vidPlayer);
+      //       } else {
+      //         newDataIndex = el.getAttribute('src');
+      //         newAlt = el.getAttribute('alt');
+      //         element.setAttribute('src', newDataIndex);
+      //         element.setAttribute('data-index', dataIndex);
+      //         element.setAttribute('alt', newAlt);
+      //       }
+      //     }
+      //   }
+      // });
     });
   }
 }
