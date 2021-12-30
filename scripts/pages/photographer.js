@@ -238,7 +238,6 @@ function lightboxModal() {
       document.body.appendChild(lightbox);
       document.body.style.overflow = 'hidden';
       document.body.style.margin = 'initial';
-      console.log(element);
       let newMedia;
       if (element.src) {
         newSrc = element.getAttribute('src');
@@ -249,10 +248,8 @@ function lightboxModal() {
         newMedia.setAttribute('src', newSrc);
         newMedia.setAttribute('alt', newAlt);
         newMedia.setAttribute('data-index', newDataIndex);
-        newMedia.setAttribute('class', newClass);
-        console.log(newMedia);
+        // newMedia.setAttribute('class', newClass);
       } else {
-        // newSrc = element.getAttribute('src');
         newSource = element.children[0];
         newDataIndex = element.getAttribute('data-index');
         newClass = element.getAttribute('class');
@@ -260,12 +257,8 @@ function lightboxModal() {
         newMedia.setAttribute('data-index', newDataIndex);
         newMedia.setAttribute('class', newClass);
         newMedia.setAttribute('controls', true);
-        console.log(newSource);
         newMedia.appendChild(newSource)
-        console.log(newMedia);
       }
-
-      lightbox.appendChild(newMedia);
       const leftArrow = document.createElement('i');
       leftArrow.classList.add('fas', 'fa-chevron-left');
       const rightArrow = document.createElement('i');
@@ -273,15 +266,50 @@ function lightboxModal() {
       const exit = document.createElement('i');
       exit.classList.add('fas', 'fa-times');
       exit.setAttribute('id', 'exit');
+      lightbox.appendChild(newMedia);
       lightbox.appendChild(leftArrow);
       lightbox.appendChild(rightArrow);
       lightbox.appendChild(exit);
       exit.addEventListener('click', () => {
         lightbox.style.display = 'none';
-        console.log(newMedia);
-        console.log(element);
         document.body.style.overflow = 'initial';
       });
+      leftArrow.addEventListener('click', () => {
+        newDataIndex--;
+        console.log(newDataIndex);
+        for (let index = 0; index < media.length; index++) {
+          const element = media[index];
+          const minusOne = media[0].getAttribute('data-index') -1;
+          console.log(minusOne);
+          if (element.getAttribute('data-index') == newDataIndex) {
+            console.log(element);
+            if (element.src) {
+              console.log(element.src);
+              // Modifie les infos de la balise actuelle IMG avec les infos de l'image précédente
+
+            } else {
+              console.log('video');
+              // Modifie les infos de la balise actuelle IMG et SOURCE avec les infos de la vidéo précédente
+            }
+            break
+          } else if (newDataIndex == minusOne) {
+            newDataIndex = media[media.length -1].getAttribute('data-index');
+            console.log(newDataIndex);
+            for (let index = 0; index < media.length; index++) {
+              const element = media[index];
+              if (element.getAttribute('data-index') == newDataIndex) {
+                console.log(element);
+              }
+            }
+            // break
+          }
+          // else if (!element.getAttribute('data-index' == newDataIndex)) {
+            
+          //   console.log(media[media.length - 1]);
+          //   break
+          // }
+        }
+      })
       // mediaSection.appendChild(mediaWrapper);
 
       // let elementSrc = element.getAttribute('src');
