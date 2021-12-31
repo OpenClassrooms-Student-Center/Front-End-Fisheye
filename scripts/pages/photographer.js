@@ -150,7 +150,6 @@ async function getPrice(id) {
   for (let index = 0; index < profile.length; index++) {
     const element = profile[index];
     if (element.id === id) {
-      console.log(element.price);
       return element.price;
     }
   }
@@ -268,7 +267,6 @@ function lightboxModal() {
         newMedia.setAttribute('class', newClass);
         newMedia.setAttribute('controls', true);
         newMedia.appendChild(newSrc);
-        console.log(element);
       }
       const leftArrow = document.createElement('i');
       leftArrow.classList.add('fas', 'fa-chevron-left');
@@ -329,19 +327,14 @@ function lightboxModal() {
             }
             break;
           } else if (newDataIndex == minusOne) {
-            console.log(element);
-            console.log(newDataIndex);
             newDataIndex = media[media.length - 1].getAttribute('data-index');
-            console.log(newDataIndex);
           }
         }
       });
 
       // Au clic sur la flèche droite de la lightbox, l'attribut data-index de l'élément visible est incrémenté de 1, puis le média est retiré.
       rightArrow.addEventListener('click', () => {
-        console.log(element.getAttribute('data-index'));
         newDataIndex++;
-        console.log(newDataIndex);
         lightbox.removeChild(newMedia);
         // Appel d'une boucle sur tous les médias du photographe de la page afin de trouver le média qui correspond au nouveau data-index
         for (let index = 0; index < media.length; index++) {
@@ -383,7 +376,6 @@ function lightboxModal() {
             break;
           } else if (newDataIndex == (plusOne)) {
             newDataIndex = media[0].getAttribute('data-index');
-            console.log(newDataIndex);
             if (element.src) {
               // Je créé une nouvelle balise img à laquelle j'ajoute les informations du nouveau média avant de l'insérer dans le DOM
               newMedia = document.createElement('img');
