@@ -93,6 +93,15 @@ class App {
     return params.get("sorting");
   }
 
+  getInputSorterChecked() {
+    const inputs = document.getElementsByName("sorter");
+    for (const elt of inputs) {
+      if (elt.checked) {
+        return elt.value;
+      }
+    }
+  }
+
   displayHeader() {
     this.getPhotographerById().photographHeaderDOM;
   }
@@ -108,9 +117,14 @@ class App {
     this.$mediaWrapper.innerHTML = "";
     let media = this.getMediaByPhotographerId();
 
-    if (sorter) {
+    if (!sorter) {
+      media = this.sortingMedia(this.getInputSorterChecked());
+      this.url.searchParams.set("sorting", this.getInputSorterChecked());
+      window.history.pushState({}, "", this.url);
+    } else {
       media = this.sortingMedia(sorter);
     }
+
     for (const m of media) {
       const DOM = m.mediaDOM;
 

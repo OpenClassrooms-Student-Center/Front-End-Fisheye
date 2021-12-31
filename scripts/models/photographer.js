@@ -16,7 +16,7 @@ class Photographer {
   get userCardDOM() {
     const $wrapper = document.createElement("article");
     const photographCard = `
-      <a href="./photographer.html?photographerId=${this.id}&sorting=like">
+      <a href="./photographer.html?photographerId=${this.id}">
         <img class="user" src="${this.getPortrait()}" alt="${this.name}"/>
         <h2>${this.name}</h2>
       </a>

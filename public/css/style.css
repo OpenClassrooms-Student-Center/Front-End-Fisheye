@@ -410,6 +410,9 @@ form textarea {
   height: 80vh;
   padding: 0 25%;
 }
+.lightbox__container__figure--mp4 {
+  padding: 0;
+}
 .lightbox__container__figure img,
 .lightbox__container__figure video {
   object-fit: cover;

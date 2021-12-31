@@ -35,6 +35,9 @@
       max-width: 100%;
       height: 80vh;
       padding: 0 25%;
+      &--mp4 {
+        padding: 0;
+      }
       img,
       video {
         object-fit: cover;

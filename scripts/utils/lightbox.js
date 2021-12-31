@@ -77,6 +77,7 @@ class Lightbox {
     const figure = this.element.querySelector(".lightbox__container__figure");
     figure.innerHTML = "";
     if (this.getExtensionUrl(url) === "mp4") {
+      figure.classList.add("lightbox__container__figure--mp4");
       const video = document.createElement("video");
       video.setAttribute("controls", "");
       video.setAttribute("alt", title);
@@ -90,6 +91,9 @@ class Lightbox {
       figure.appendChild(video);
       figure.appendChild(figcaption);
     } else if (this.getExtensionUrl(url) === "jpg") {
+      if (figure.classList.contains("lightbox__container__figure--mp4")) {
+        figure.classList.remove("lightbox__container__figure--mp4");
+      }
       const image = document.createElement("img");
       image.setAttribute("src", url);
       image.setAttribute("alt", title);
