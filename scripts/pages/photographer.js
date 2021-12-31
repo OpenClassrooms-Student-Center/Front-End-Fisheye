@@ -79,7 +79,8 @@ class App {
       (media) => media.id === id
     );
     mediaById.liked();
-    this.update();
+    this.saveLocalStorage();
+    this.displayMedia(this.getSorter());
   }
 
   getUrlId() {
@@ -158,6 +159,9 @@ class App {
   update() {
     this.displayMedia(this.getSorter());
     Lightbox.init();
+  }
+
+  saveLocalStorage() {
     localStorage.setItem(
       "photographerData",
       JSON.stringify(this.photographerData)

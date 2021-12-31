@@ -8,6 +8,8 @@
   height: 100%;
   z-index: 9999;
   padding: 20px 0;
+  overflow: auto;
+  box-sizing: border-box;
 }
 
 .modal {
@@ -39,4 +41,8 @@
   font-size: 64px;
   font-weight: normal;
   text-align: left;
+}
+
+.noscroll {
+  overflow: hidden;
 }

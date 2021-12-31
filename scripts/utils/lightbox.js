@@ -11,7 +11,7 @@ class Lightbox {
     const titles = links.map((title) => title.getAttribute("alt"));
     links.forEach((link) =>
       link.addEventListener("click", (e) => {
-        e.preventDefault();
+        document.querySelector("body").classList.add("noscroll");
         new Lightbox(
           e.currentTarget.getAttribute("src"),
           media,
@@ -132,6 +132,7 @@ class Lightbox {
 
   close(e) {
     this.element.parentElement.removeChild(this.element);
+    document.querySelector("body").classList.remove("noscroll");
     document.removeEventListener("keyup", this.onKeyUp);
   }
 }
