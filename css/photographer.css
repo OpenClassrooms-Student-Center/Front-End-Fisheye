@@ -2,10 +2,108 @@
     display: none;
 }
 
+#sortItems {
+    margin: 50px 100px;
+}
+
+.row {
+    display: flex;
+}
+
+select {
+    margin-left: 20px;
+    padding: 0 30px;
+    background-color: #901C1C;
+    color: white;
+    border-radius: 5px;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+#slideshow_modal {
+    display: none;
+}
+
 .photograph-header {
     background-color: #FAFAFA;
     height: 300px;
     margin: 0 100px;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 70px;
+}
+
+.header-info {
+    margin: auto;
+}
+
+.info-name {
+    color: #D3573C;
+    ;
+    font-size: 64px;
+}
+
+.info-location {
+    color: #901C1C;
+    font-size: 24px;
+    margin-top: -50px;
+}
+
+.info-desc {
+    color: #525252;
+    font-size: 18px;
+}
+
+.header-img {
+    margin: auto;
+}
+
+
+.photos_info {
+    height: 300px;
+    margin: 100px;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 70px;
+}
+
+.photos_info article img {
+    height: 300px;
+    width: 350px;
+    object-fit: cover;
+    border-radius: 5px;
+    text-align: center;
+}
+
+.photos_info article p {
+    color: #901C1C;
+    font-size: 24px;
+    padding-right: 15px;
+}
+
+.photos_info article span {
+    float: right;
+}
+
+.photos_info article span img {
+    height: 20px;
+    width: 20px;
+    padding-left: 5px;
+}
+
+
+.photograph-img {
+    height: 200px;
+    width: 200px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+
+
+.header-button {
+    margin: auto;
+    text-align: center;
 }
 
 .contact_button {
@@ -21,16 +119,66 @@
     cursor: pointer;
 }
 
-.modal {
-    border-radius: 5px;
-    background-color: #DB8876;
-    width: 50%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: space-between;
-    padding: 35px;
+.current-img {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
     margin: auto;
+    border-radius: 5px;
+    object-fit: cover;
+}
+
+.current-video {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+    border-radius: 5px;
+    object-fit: cover;
+}
+
+.close_slideshow {
+    position: absolute;
+    top: 5%;
+    right: 10%;
+}
+
+.next_slideshow {
+    position: absolute;
+    right: 10%;
+    top: 50%;
+    color: #901C1C;
+}
+
+.prev_slideshow {
+    position: absolute;
+    left: 10%;
+    top: 50%;
+    color: #901C1C;
+}
+
+.title-img {
+    position: absolute;
+    bottom: 5%;
+    left: 33%;
+    font-size: 24px;
+    color: #901C1C;
+
+}
+
+.modal {
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgb(255, 255, 255);
 }
 
 .modal header {

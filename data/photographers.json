@@ -113,11 +113,12 @@
 		{
 			"id": 8328953,
 			"photographerId": 82,
+			"title": "Wooden Horse",
 			"video": "Art_Wooden_Horse_Sculpture.mp4",
 			"likes": 24,
 			"date": "2011-12-08",
 			"price": 100
-		  },
+		},
 		{
 			"id": 7502053,
 			"photographerId": 82,
@@ -145,7 +146,6 @@
 			"date": "2019-11-25",
 			"price": 55
 		},
-
 		{
 			"id": 73852953,
 			"photographerId": 925,
@@ -221,6 +221,7 @@
 		{
 			"id": 83958935,
 			"photographerId": 925,
+			"title": "Puppiness",
 			"video": "Animals_Puppiness.mp4",
 			"likes": 52,
 			"date": "2016-06-12",
@@ -229,6 +230,7 @@
 		{
 			"id": 394583434,
 			"photographerId": 527,
+			"title": "Rock Mountains",
 			"video": "Travel_Rock_Mountains.mp4",
 			"likes": 23,
 			"date": "2017-03-18",
@@ -306,7 +308,6 @@
 			"date": "2019-01-02",
 			"price": 45
 		},
-
 		{
 			"id": 623534343,
 			"photographerId": 243,
@@ -382,11 +383,12 @@
 		{
 			"id": 5234343,
 			"photographerId": 243,
+			"title": "Wild Horses",
 			"video": "Animals_Wild_Horses_in_the_mountains.mp4",
 			"likes": 142,
 			"date": "2019-08-23",
 			"price": 60
-		  },
+		},
 		{
 			"id": 95234343,
 			"photographerId": 243,
@@ -396,7 +398,6 @@
 			"date": "2019-07-02",
 			"price": 60
 		},
-
 		{
 			"id": 52343416,
 			"photographerId": 195,
@@ -472,11 +473,12 @@
 		{
 			"id": 9259398453,
 			"photographerId": 195,
+			"title": "Empty Highway",
 			"video": "Architecture_coverr_circle_empty_highway_in_buenos_aires_587740985637.mp4",
 			"likes": 57,
 			"date": "2020-01-20",
 			"price": 65
-		  },
+		},
 		{
 			"id": 3523523534,
 			"photographerId": 195,
@@ -489,11 +491,12 @@
 		{
 			"id": 952343423,
 			"photographerId": 930,
+			"title": "Sport Tricks",
 			"video": "Sport_Tricks_in_the_air.mp4",
 			"likes": 150,
 			"date": "2018-02-30",
 			"price": 70
-		  },
+		},
 		{
 			"id": 235234343,
 			"photographerId": 930,

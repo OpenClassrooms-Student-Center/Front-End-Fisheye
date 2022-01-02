@@ -1,36 +1,82 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <link href="css/style.css" rel="stylesheet" type="text/css" />
-    <meta charset="utf-8">
-    <link rel="icon" type="image/png" href="assets/favicon.png">
-    <link href="https://fonts.googleapis.com/css?family=DM+Sans&display=swap" rel="stylesheet">
-    <title>Fisheye - photographe </title>
-  </head>
-  <body>
-    <header>
-      <img src="assets/images/logo.png" class="logo" />
-    </header>
-    <main id="main">
-      <div class="photograph-header">
-        <button class="contact_button" onclick="displayModal()">Contactez-moi</button>
+<html lang="fr">
+
+<head>
+  <link href="css/style.css" rel="stylesheet" type="text/css" />
+  <meta charset="utf-8">
+  <link rel="icon" type="image/png" href="assets/favicon.png">
+  <link href="https://fonts.googleapis.com/css?family=DM+Sans&display=swap" rel="stylesheet">
+  <title>Fisheye - photographe </title>
+</head>
+
+<body onload="init()">
+  <header>
+    <a href="#"><img src="assets/images/logo.png" class="logo" alt="Fisheye Home page" /></a>
+  </header>
+  <main id="main">
+    <div class="photograph-header">
+      <div class="header-info">
+        <h1 class="info-name" id="name"></h1>
+        <h2 class="info-location" id="location"></h2>
+        <p class="info-desc" id="desc"></p>
       </div>
-    </main>
-    <div id="contact_modal">
-			<div class="modal">
-				<header>
-          <h2>Contactez-moi</h2>
-          <img src="assets/icons/close.svg" onclick="closeModal()" />
-        </header>
-				<form>
-					<div>
-						<label>Prénom</label>
-						<input />
-					</div>
-          <button class="contact_button">Envoyer</button>
-				</form>
-			</div>
-		</div>
-    <script src="/scripts/utils/contactForm.js"></script>
-  </body>
+      <div class="header-button">
+        <button class="contact_button" alt="Contact Me" onclick="displayModal()">Contactez-moi</button>
+      </div>
+      <div class="header-img">
+        <img id="profile-pic" alt="" class="photograph-img" />
+      </div>
+    </div>
+  </main>
+  <div id="sortItems">
+    <div class="row">
+      <h2>Trier par</h2>
+      <select id="sort_select" onchange="displayData()">
+        <option value="0">Popularité</option>
+        <option value="1">Date</option>
+        <option value="2">Titre</option>
+      </select>
+    </div>
+
+  </div>
+  <div id="slideshow_modal">
+    <div class="modal">
+      <video class="current-video" height="80%" width="35%" controls="true">
+        <source id="video-src" src="">
+      </video>
+      <img height="80%" width="35%" class="current-img" src="">
+      <div class="title-img" id="title-img"></div>
+      <div class="close_slideshow" id="close"><img src="assets/icons/close.png" /></div>
+      <div class="next_slideshow" id="next"><img src="assets/icons/next.png" /></div>
+      <div class="prev_slideshow" id="prev"><img src="assets/icons/prev.png" /></div>
+    </div>
+  </div>
+
+  <div id="contact_modal">
+    <div class="modal">
+      <header>
+        <h2>Contactez-moi</h2>
+        <img src="assets/icons/close.svg" onclick="closeModal()" />
+      </header>
+      <form>
+        <div>
+          <label>Prénom</label>
+          <input />
+        </div>
+        <button class="contact_button">Envoyer</button>
+      </form>
+    </div>
+  </div>
+  <div>
+    <div class="photos_info">
+    </div>
+  </div>
+  <script src="/scripts/factories/photographerDetail.js"></script>
+  <script src="/scripts/pages/photographer.js"></script>
+  <script src="/scripts/utils/contactForm.js"></script>
+  <script src="/scripts/utils/slideShow.js"></script>
+
+
+</body>
+
 </html>
