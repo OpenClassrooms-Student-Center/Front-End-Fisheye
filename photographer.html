@@ -21,11 +21,11 @@
     <main id="main">
       <section class="photograph-header">
         <div class="photographer-info"></div>
-        <button class="contact_button" onclick="displayModal()">
+        <button id="contact_button" class="contact_button">
           Contactez-moi
         </button>
       </section>
-      <article class="tri" style="height: 5vw">
+      <article class="tri">
         <p>Trier par</p>
         <ul>
           <li class="filters">Popularité</li>
@@ -40,15 +40,8 @@
       <div class="modal">
         <header>
           <h2>Contactez-moi</h2>
-          <img src="assets/icons/close.svg" onclick="closeModal()" />
+          <img src="assets/icons/close.svg" id="contact_close"/>
         </header>
-        <form>
-          <div>
-            <label>Prénom</label>
-            <input />
-          </div>
-          <button class="contact_button">Envoyer</button>
-        </form>
       </div>
     </div>
     <div class="fixed-counter">
