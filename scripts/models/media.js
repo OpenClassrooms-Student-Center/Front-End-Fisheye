@@ -27,7 +27,9 @@ class Picture extends Media {
     const article = document.createElement("article");
     article.classList.add("media__article");
     article.innerHTML = `
-        <img class="media__article__image" src="${this.link}" alt="${this.title}">
+        <a href="${this.link}" alt="${this.title}">
+          <img class="media__article__image" src="${this.link}" alt="${this.title}">
+        </a>
         <footer class="media__article__desc">
           <h3 class="media__article__desc__title">${this.title}</h3>
           <data value="${this.likes}" class="media__article__desc__like">${this.likes}
@@ -58,7 +60,9 @@ class Movie extends Media {
       this.link.substring(0, this.link.lastIndexOf(".")) + ".jpg";
     article.classList.add("media__article");
     article.innerHTML = `
-        <video class="media__article__video" autobuffer=true src="${this.link}" alt="${this.title}" poster="${linkThumbnail}"></video>
+        <a href="${this.link}" alt="${this.title}">
+          <video class="media__article__video" autobuffer=true src="${this.link}" alt="${this.title}" poster="${linkThumbnail}"></video>
+        </a>
         <footer class="media__article__desc">
           <h3 class="media__article__desc__title">${this.title}</h3>
           <data value="${this.likes}" class="media__article__desc__like">${this.likes}
