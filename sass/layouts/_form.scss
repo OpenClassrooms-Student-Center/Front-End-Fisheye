@@ -1,27 +1,26 @@
-form {
+#contact {
   display: flex;
   width: 100%;
   flex-direction: column;
   align-items: flex-start;
   padding-bottom: 20px;
-  label {
-    color: #312e2e;
-    font-size: 36px;
-  }
   .formData {
     display: flex;
     flex-direction: column;
     width: 100%;
     align-items: self-start;
+    label {
+      color: #312e2e;
+      font-size: 36px;
+    }
     &[data-error]::after {
       content: attr(data-error);
       font-size: 22px;
-      color: $primary-color;
+      color: white;
       display: block;
-      margin-top: 7px;
-      margin-bottom: 7px;
+      margin: 7px 0 7px 5px;
       text-align: left;
-      line-height: 0.3;
+      line-height: 0.6;
       opacity: 0;
       transition: 0.3s;
     }

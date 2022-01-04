@@ -22,8 +22,8 @@
     </header>
     <main id="main">
       <header class="photograph-header"></header>
-      <section class="sorter">
-        <div class="sorter__desc">Trier par</div>
+      <fieldset class="sorter">
+        <legend class="sorter__desc">Trier par</legend>
         <div class="sorter__selector" tabindex="1">
           <input type="radio" name="sorter" id="like" value="like" checked />
           <label class="sorter__selector__option" for="like">Popularité</label>
@@ -32,7 +32,7 @@
           <input type="radio" name="sorter" id="title" value="title" />
           <label class="sorter__selector__option" for="title">Titre</label>
         </div>
-      </section>
+      </fieldset>
       <section class="media"></section>
       <section class="summary">
         <span class="summary__likes"></span>
@@ -59,9 +59,10 @@
             class="modal__heading__picture"
             src="assets/icons/close.svg"
             onclick="closeModal()"
+            alt="fermer le formulaire"
           />
         </header>
-        <form name="contact" onsubmit="app.validate(event);">
+        <form id="contact" name="contact" onsubmit="app.validate(event);">
           <div class="formData">
             <label for="firstname">Prénom</label>
             <input id="firstname" name="firtname" class="text-control" />

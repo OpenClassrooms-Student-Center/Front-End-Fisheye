@@ -36,14 +36,16 @@ class Photographer {
     const $wrapper = document.querySelector(".photograph-header");
     const headerDOM = `
     <div class="photograph-header__desc">
-      <h1>${this.name}</h1>
-      <h4>${this.city}</h4>
-      <p>${this.tagline}</p>
+      <h1 class="photograph-header__desc__name">${this.name}</h1>
+      <h2 class="photograph-header__desc__city">${this.city}</h2>
+      <p class="photograph-header__desc__tagline">${this.tagline}</p>
     </div>
     <button class="contact_button" onclick="displayModal()">
       Contactez-moi
     </button>
-    <img class="user" src="${this.getPortrait()}" alt="${this.name}" />`;
+    <img class="user" src="${this.getPortrait()}" alt="portrait du photographe :${
+      this.name
+    }" />`;
     $wrapper.innerHTML = headerDOM;
   }
 }

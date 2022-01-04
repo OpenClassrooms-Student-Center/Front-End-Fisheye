@@ -9,17 +9,17 @@
     font-weight: normal;
     align-self: center;
     white-space: nowrap;
-    & h1 {
+    &__name {
       color: $primary-heading;
       font-size: 64px;
       line-height: 83px;
     }
-    & h4 {
+    &__city {
       color: $primary-color;
       font-size: 24px;
       line-height: 31px;
     }
-    & p {
+    &__tagline {
       color: $paragraph-color;
       line-height: 23px;
       margin-top: 19px;

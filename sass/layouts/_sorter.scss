@@ -1,25 +1,3 @@
-.media-sorter {
-  padding-top: 10px;
-  padding-bottom: 25px;
-  margin: 0 100px;
-  &__label {
-    font-size: 18px;
-    font-weight: 700;
-    line-height: 23px;
-  }
-  &__selector {
-    background-color: $primary-color;
-    width: 170px;
-    height: 69px;
-    border-radius: 5px;
-    color: white;
-    font-weight: 700;
-    font-size: 18px;
-    line-height: 23px;
-    text-align: center;
-  }
-}
-
 .sorter {
   position: absolute;
   display: flex;
@@ -27,13 +5,14 @@
   font-size: 18px;
   font-weight: 700;
   line-height: 23px;
+  border: 0;
   &__desc {
     padding-top: 20px;
     margin-right: 25px;
+    float: left;
   }
   &__selector {
     margin-top: 9px;
-    display: flex;
     flex-direction: column;
     position: relative;
     width: 170px;
