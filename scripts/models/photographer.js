@@ -22,7 +22,7 @@ class Photographer {
     }"/>
         <h2>${this.name}</h2>
       </a>
-      <h3>${this.city}</h3>
+      <p class="city">${this.city}</p>
       <p class="tagline">${this.tagline}</p>
       <p class="price">${this.price}€/jour</p>
       `;

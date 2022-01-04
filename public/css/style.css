@@ -266,7 +266,7 @@ form button {
   text-align: center;
   line-height: 47px;
 }
-.photographer-section article h3 {
+.photographer-section article .city {
   font-size: 13px;
   color: #901c1c;
   line-height: 17px;
