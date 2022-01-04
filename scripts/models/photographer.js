@@ -17,10 +17,12 @@ class Photographer {
     const $wrapper = document.createElement("article");
     const photographCard = `
       <a href="./photographer.html?photographerId=${this.id}">
-        <img class="user" src="${this.getPortrait()}" alt="${this.name}"/>
+        <img class="user" src="${this.getPortrait()}" alt="portrait du photographe : ${
+      this.name
+    }"/>
         <h2>${this.name}</h2>
       </a>
-      <h4>${this.city}</h4>
+      <h3>${this.city}</h3>
       <p class="tagline">${this.tagline}</p>
       <p class="price">${this.price}€/jour</p>
       `;
