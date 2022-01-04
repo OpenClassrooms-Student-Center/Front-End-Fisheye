@@ -16,7 +16,7 @@
         <img
           src="assets/images/logo.png"
           class="heading__logo"
-          alt="logo fisheye"
+          alt="Fisheye Home page"
         />
       </a>
     </header>
@@ -24,7 +24,7 @@
       <header class="photograph-header"></header>
       <fieldset class="sorter">
         <legend class="sorter__desc">Trier par</legend>
-        <div class="sorter__selector" tabindex="1">
+        <div class="sorter__selector" tabindex="0">
           <input type="radio" name="sorter" id="like" value="like" checked />
           <label class="sorter__selector__option" for="like">Popularité</label>
           <input type="radio" name="sorter" id="date" value="date" />
@@ -51,8 +51,9 @@
         <span class="summary__price"></span>
       </section>
     </main>
-    <div id="contact_modal">
+    <section id="contact_modal">
       <div class="modal">
+        h
         <header class="modal__heading">
           <h2 class="modal__heading__title">Contactez-moi</h2>
           <img
@@ -76,7 +77,7 @@
             <input id="email" type="email" name="email" class="text-control" />
           </div>
           <div class="formData">
-            <label for="message" id="message">Votre message</label>
+            <label for="message">Votre message</label>
             <textarea
               id="message"
               name="message"
@@ -87,7 +88,7 @@
           <button class="contact_button" type="submit">Envoyer</button>
         </form>
       </div>
-    </div>
+    </section>
     <script src="scripts/models/photographer.js"></script>
     <script src="scripts/models/media.js"></script>
     <script src="scripts/utils/lightbox.js"></script>

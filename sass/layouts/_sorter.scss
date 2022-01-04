@@ -12,6 +12,7 @@
     float: left;
   }
   &__selector {
+    display: flex;
     margin-top: 9px;
     flex-direction: column;
     position: relative;

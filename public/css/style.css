@@ -143,6 +143,7 @@ body {
   float: left;
 }
 .sorter__selector {
+  display: flex;
   margin-top: 9px;
   flex-direction: column;
   position: relative;
