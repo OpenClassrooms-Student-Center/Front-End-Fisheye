@@ -56,16 +56,15 @@
       display: flex;
       justify-content: space-between;
       white-space: nowrap;
-      & span {
-        font-size: 24px;
-        color: $primary-color;
-        line-height: 31px;
-      }
+      color: $primary-color;
+      line-height: 31px;
       &__title {
         text-overflow: ellipsis;
         overflow: hidden;
+        font-size: 24px;
       }
       &__like {
+        font-size: 24px;
         font-weight: 500;
         svg {
           cursor: pointer;

@@ -109,8 +109,13 @@ class App {
   displaySummaryMedia() {
     const likes = document.querySelector(".summary__likes");
     const price = document.querySelector(".summary__price");
-    likes.innerText = this.getSumLikes();
-    price.innerText = this.getPhotographerById().price + " € / jour";
+    const sumLikes = this.getSumLikes();
+    const valuePrice = this.getPhotographerById().price;
+
+    likes.setAttribute("value", sumLikes);
+    price.setAttribute("value", valuePrice);
+    likes.innerText = sumLikes;
+    price.innerText = valuePrice + " € / jour";
   }
 
   displayMedia(sorter) {

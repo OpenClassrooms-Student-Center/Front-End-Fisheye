@@ -16,10 +16,10 @@ class Photographer {
   get userCardDOM() {
     const $wrapper = document.createElement("article");
     const photographCard = `
-      <a href="./photographer.html?photographerId=${this.id}">
-        <img class="user" src="${this.getPortrait()}" alt="portrait du photographe : ${
+      <a href="./photographer.html?photographerId=${this.id}  alt="${
       this.name
-    }"/>
+    }">
+        <img class="user" src="${this.getPortrait()}" alt=""/>
         <h2>${this.name}</h2>
       </a>
       <p class="city">${this.city}</p>
@@ -43,9 +43,7 @@ class Photographer {
     <button class="contact_button" onclick="displayModal()">
       Contactez-moi
     </button>
-    <img class="user" src="${this.getPortrait()}" alt="portrait du photographe :${
-      this.name
-    }" />`;
+    <img class="user" src="${this.getPortrait()}" alt="${this.name}" />`;
     $wrapper.innerHTML = headerDOM;
   }
 }

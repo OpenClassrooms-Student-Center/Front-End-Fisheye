@@ -320,17 +320,16 @@ body {
   display: flex;
   justify-content: space-between;
   white-space: nowrap;
-}
-.media__article__desc span {
-  font-size: 24px;
   color: #901c1c;
   line-height: 31px;
 }
 .media__article__desc__title {
   text-overflow: ellipsis;
   overflow: hidden;
+  font-size: 24px;
 }
 .media__article__desc__like {
+  font-size: 24px;
   font-weight: 500;
 }
 .media__article__desc__like svg {
