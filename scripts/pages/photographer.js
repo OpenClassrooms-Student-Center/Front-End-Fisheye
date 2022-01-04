@@ -165,11 +165,6 @@ class App {
     }
   }
 
-  displayNameIntoForm() {
-    const wrapper = document.querySelector(".modal header h2");
-    wrapper.innerHTML += `<br> ${this.getPhotographerById().name}`;
-  }
-
   update() {
     this.displayMedia(this.getSorter());
     Lightbox.init();
@@ -180,6 +175,89 @@ class App {
       "photographerData",
       JSON.stringify(this.photographerData)
     );
+  }
+
+  displayNameIntoForm() {
+    const wrapper = document.querySelector(".modal header h2");
+    wrapper.innerHTML += `<br> ${this.getPhotographerById().name}`;
+  }
+
+  firstNameIsValid(firstname) {
+    const regName = /^[A-zÀ-ú -]{2,}$/;
+    if (regName.test(firstname));
+  }
+
+  removeMsgError(element) {
+    if (element.parentElement.hasAttribute("data-error")) {
+      element.parentElement.removeAttribute("data-error");
+      element.parentElement.removeAttribute("data-error-visible");
+    }
+  }
+
+  setMsgError(element, name) {
+    element.parentElement.setAttribute(
+      "data-error",
+      `Veuillez entrer un ${name} valide`
+    );
+    element.parentElement.setAttribute("data-error-visible", "true");
+  }
+
+  firstNameIsValid(firstname) {
+    const regName = /^[A-zÀ-ú -]{2,}$/;
+    return regName.test(firstname.value);
+  }
+
+  lastNameIsValid(lastname) {
+    const regName = /^[A-zÀ-ú -]{2,}$/;
+    return regName.test(lastname.value);
+  }
+
+  emailIsValid(email) {
+    const regEmail =
+      /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    return regEmail.test(email.value);
+  }
+
+  messageIsValid(message) {
+    if (message.value != "") {
+      return true;
+    }
+    return false;
+  }
+
+  validate(event) {
+    event.preventDefault();
+
+    const form = event.target;
+    const firstname = form[0];
+    const lastname = form[1];
+    const email = form[2];
+    const message = form[3];
+
+    this.messageIsValid(message)
+      ? this.removeMsgError(message)
+      : this.setMsgError(message, "message");
+    this.firstNameIsValid(firstname)
+      ? this.removeMsgError(firstname)
+      : this.setMsgError(firstname, "prénom");
+    this.lastNameIsValid(lastname)
+      ? this.removeMsgError(lastname)
+      : this.setMsgError(lastname, "nom");
+    this.emailIsValid(email)
+      ? this.removeMsgError(email)
+      : this.setMsgError(email, "email");
+    if (
+      this.messageIsValid(message) &&
+      this.firstNameIsValid(firstname) &&
+      this.lastNameIsValid(lastname) &&
+      this.emailIsValid(email)
+    ) {
+      console.log(`Bonjour ${firstname.value} ${lastname.value}, 
+Voici votre message :
+${message.value}`);
+      closeModal();
+      form.reset();
+    }
   }
 
   async main() {

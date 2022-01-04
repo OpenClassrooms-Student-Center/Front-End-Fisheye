@@ -42,12 +42,29 @@ form label {
   color: #312e2e;
   font-size: 36px;
 }
-form div {
+form .formData {
   display: flex;
   flex-direction: column;
   width: 100%;
   align-items: self-start;
-  margin-bottom: 26px;
+}
+form .formData[data-error]::after {
+  content: attr(data-error);
+  font-size: 22px;
+  color: #901c1c;
+  display: block;
+  margin-top: 7px;
+  margin-bottom: 7px;
+  text-align: left;
+  line-height: 0.3;
+  opacity: 0;
+  transition: 0.3s;
+}
+form .formData[data-error-visible=true]::after {
+  opacity: 1;
+}
+form .formData[data-error-visible=true] .text-control {
+  border: 4px solid #901c1c;
 }
 form input,
 form textarea {
@@ -61,6 +78,9 @@ form textarea {
 }
 form textarea {
   height: 170px;
+}
+form button {
+  margin-top: 25px;
 }
 
 #contact_modal {
@@ -89,20 +109,17 @@ form textarea {
   padding: 15px 35px;
   margin: auto;
 }
-
-.modal header {
+.modal__heading {
   display: flex;
   justify-content: space-between;
   width: 100%;
   align-items: baseline;
   margin-bottom: 20px;
 }
-
-.modal header img {
+.modal__heading__picture {
   cursor: pointer;
 }
-
-.modal header h2 {
+.modal__heading__title {
   font-size: 64px;
   font-weight: normal;
   text-align: left;

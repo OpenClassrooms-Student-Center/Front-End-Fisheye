@@ -49,20 +49,35 @@
     </main>
     <div id="contact_modal">
       <div class="modal">
-        <header>
-          <h2>Contactez-moi</h2>
-          <img src="assets/icons/close.svg" onclick="closeModal()" />
+        <header class="modal__heading">
+          <h2 class="modal__heading__title">Contactez-moi</h2>
+          <img
+            class="modal__heading__picture"
+            src="assets/icons/close.svg"
+            onclick="closeModal()"
+          />
         </header>
-        <form name="contact" onsubmit="">
-          <div>
+        <form name="contact" onsubmit="app.validate(event);">
+          <div class="formData">
             <label for="firstname">Prénom</label>
-            <input id="firstname" name="firtname" />
+            <input id="firstname" name="firtname" class="text-control" />
+          </div>
+          <div class="formData">
             <label for="lastname">Nom</label>
-            <input id="lastname" name="lastname" />
+            <input id="lastname" name="lastname" class="text-control" />
+          </div>
+          <div class="formData">
             <label for="email">Email</label>
-            <input id="email" type="email" name="email" />
-            <label for="message">Votre message</label>
-            <textarea id="message" name="message" rows="3"></textarea>
+            <input id="email" type="email" name="email" class="text-control" />
+          </div>
+          <div class="formData">
+            <label for="message" id="message">Votre message</label>
+            <textarea
+              id="message"
+              name="message"
+              rows="3"
+              class="text-control"
+            ></textarea>
           </div>
           <button class="contact_button" type="submit">Envoyer</button>
         </form>

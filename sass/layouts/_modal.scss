@@ -23,24 +23,21 @@
   justify-content: space-between;
   padding: 15px 35px;
   margin: auto;
-}
-
-.modal header {
-  display: flex;
-  justify-content: space-between;
-  width: 100%;
-  align-items: baseline;
-  margin-bottom: 20px;
-}
-
-.modal header img {
-  cursor: pointer;
-}
-
-.modal header h2 {
-  font-size: 64px;
-  font-weight: normal;
-  text-align: left;
+  &__heading {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    align-items: baseline;
+    margin-bottom: 20px;
+    &__picture {
+      cursor: pointer;
+    }
+    &__title {
+      font-size: 64px;
+      font-weight: normal;
+      text-align: left;
+    }
+  }
 }
 
 .noscroll {
