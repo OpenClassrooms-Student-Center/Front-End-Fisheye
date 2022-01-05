@@ -42,8 +42,12 @@ function displayModal() {
   message.setAttribute('name', 'message');
   message.setAttribute('id', 'message');
   message.setAttribute('required', 'true');
+  message.setAttribute('role', 'text field');
+  message.setAttribute('aria-label', 'your message');
   const submit = document.createElement('button');
   submit.classList.add('contact_button');
+  submit.setAttribute('role', 'button');
+  submit.setAttribute('aria-label', 'send');
   submit.innerText = 'Envoyer';
   form.appendChild(firstNameLabel);
   form.appendChild(firstName);
@@ -78,15 +82,3 @@ function closeModal() {
 
 contactButton.addEventListener('click', displayModal);
 contactClose.addEventListener('click', closeModal);
-
-// console.log(photographerInfo.firstChild);
-// async function tte() {
-//   const pppp = await getPhotographers();
-//   pppp.forEach((photographer) => {
-//     if (photographer.id == idLink) {
-//       console.log(photographer);
-//       return photographer.name
-//     }
-//   });
-// }
-// console.log(tte());

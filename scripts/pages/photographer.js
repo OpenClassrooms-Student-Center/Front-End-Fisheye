@@ -23,15 +23,16 @@ if (document.location.href.includes('photographer')) {
     filterList.forEach((li) => {
       if (li.className.includes('hidden')) {
         li.classList.remove('hidden');
+        chevronDown.setAttribute('aria-expanded', true);
       } else {
         li.classList.add('hidden');
+        chevronDown.setAttribute('aria-expanded', false);
       }
     });
     chevronDown.classList.toggle('fa-chevron-up');
     chevronDown.classList.toggle('fa-chevron-down');
   });
 }
-
 
 // Fonction pour refermer la liste des filtres
 function refreshFilter() {
@@ -40,6 +41,7 @@ function refreshFilter() {
       li.classList.remove('hidden');
     } else {
       li.classList.add('hidden');
+      chevronDown.setAttribute('aria-expanded', 'false');
     }
   });
   chevronDown.classList.toggle('fa-chevron-up');
@@ -113,10 +115,6 @@ async function getPhotographers() {
   try {
     let res = await fetch(url);
     let json = await res.json();
-    // Ajout de l'attribut alt vide pour les photos de profil des photographes
-    json.photographers.forEach(photographer => {
-      photographer.alt = '';
-    });
     return json.photographers;
   } catch (error) {
     console.log(error);
@@ -268,6 +266,9 @@ function lightboxModal() {
       document.body.appendChild(lightbox);
       document.body.style.overflow = 'hidden';
       document.body.style.margin = 'initial';
+      document.body.children.main.setAttribute('aria-hidden', 'true');
+      document.body.removeAttribute('aria-current', 'page');
+      lightbox.setAttribute('aria-current', 'page');
       let newMedia;
       // Si le média cliqué possède un attribut src, c'est une balise img. Je créé une nouvelle balise img à laquelle je passe les informations du média cliqué pour afficher le média correct grace à l'attribut data-index
       if (element.src) {
@@ -280,6 +281,8 @@ function lightboxModal() {
         newMedia.setAttribute('alt', newAlt);
         newMedia.setAttribute('data-index', newDataIndex);
         newMedia.setAttribute('class', newClass);
+        newMedia.setAttribute('aria-label', 'image closeup view');
+
         // Si le média cliqué ne possède pas d'attribut src, c'est une vidéo. Je créé une nouvelle balise vidéo et source auxquelles je passe les informations du média cliqué pour afficher le média correct grace à l'attribut data-index
       } else {
         newSource = element.children[0];
@@ -291,15 +294,22 @@ function lightboxModal() {
         newMedia.setAttribute('data-index', newDataIndex);
         newMedia.setAttribute('class', newClass);
         newMedia.setAttribute('controls', true);
+        newMedia.setAttribute('aria-label', 'video closeup view');
         newMedia.appendChild(newSrc);
       }
       const leftArrow = document.createElement('i');
       leftArrow.classList.add('fas', 'fa-chevron-left');
+      leftArrow.setAttribute('aria-label', 'previous')
+      leftArrow.setAttribute('role', 'Previous image')
       const rightArrow = document.createElement('i');
-      rightArrow.classList.add('fas', 'fa-chevron-right');
+      rightArrow.classList.add('fas', 'fa-chevron-right')
+      rightArrow.setAttribute('aria-label', 'next');
+      rightArrow.setAttribute('role', 'Next image');
       const exit = document.createElement('i');
       exit.classList.add('fas', 'fa-times');
       exit.setAttribute('id', 'exit');
+      exit.setAttribute('aria-label', 'close');
+      exit.setAttribute('role', 'Exit closeup view');
       lightbox.appendChild(newMedia);
       lightbox.appendChild(leftArrow);
       lightbox.appendChild(rightArrow);
@@ -311,6 +321,9 @@ function lightboxModal() {
         }
         document.body.removeChild(lightbox);
         document.body.style.overflow = 'initial';
+        lightbox.removeAttribute('aria-current', 'page')
+        document.body.children.main.setAttribute('aria-hidden', 'false');
+        document.body.setAttribute('aria-current', 'page');
       });
       // Au clic sur la flèche gauche de la lightbox, l'attribut data-index de l'élément visible est décrémenté de 1, puis le média est retiré.
       leftArrow.addEventListener('click', () => {
@@ -334,6 +347,7 @@ function lightboxModal() {
               newMedia.setAttribute('alt', newAlt);
               newMedia.setAttribute('class', newClass);
               newMedia.setAttribute('data-index', newDataIndex);
+              newMedia.setAttribute('aria-label', 'image closeup view');
               lightbox.appendChild(newMedia);
               // Si ce média ne possède pas de source, dans ce cas c'est une balise vidéo
             } else {
@@ -348,6 +362,7 @@ function lightboxModal() {
               newMedia.setAttribute('class', newClass);
               newMedia.setAttribute('controls', true);
               newMedia.appendChild(newSrc);
+              newMedia.setAttribute('aria-label', 'video closeup view');
               lightbox.appendChild(newMedia);
             }
             break;
@@ -382,6 +397,7 @@ function lightboxModal() {
               newMedia.setAttribute('alt', newAlt);
               newMedia.setAttribute('class', newClass);
               newMedia.setAttribute('data-index', newDataIndex);
+              newMedia.setAttribute('aria-label', 'image closeup view');
               lightbox.appendChild(newMedia);
               // Si ce média ne possède pas de source, dans ce cas c'est une balise vidéo
             } else {
@@ -396,6 +412,7 @@ function lightboxModal() {
               newMedia.setAttribute('class', newClass);
               newMedia.setAttribute('controls', true);
               newMedia.appendChild(newSrc);
+              newMedia.setAttribute('aria-label', 'video closeup view');
               lightbox.appendChild(newMedia);
             }
             break;
@@ -412,6 +429,7 @@ function lightboxModal() {
               newMedia.setAttribute('alt', newAlt);
               newMedia.setAttribute('class', newClass);
               newMedia.setAttribute('data-index', newDataIndex);
+              newMedia.setAttribute('aria-label', 'image closeup view');
               lightbox.appendChild(newMedia);
               // Si ce média ne possède pas de source, dans ce cas c'est une balise vidéo
             } else {
@@ -425,6 +443,7 @@ function lightboxModal() {
               newMedia.setAttribute('data-index', newDataIndex);
               newMedia.setAttribute('class', newClass);
               newMedia.setAttribute('controls', true);
+              newMedia.setAttribute('aria-label', 'video closeup view');
               newMedia.appendChild(newSrc);
               lightbox.appendChild(newMedia);
             }
@@ -457,6 +476,7 @@ function lightboxModal() {
                   newMedia.setAttribute('alt', newAlt);
                   newMedia.setAttribute('class', newClass);
                   newMedia.setAttribute('data-index', newDataIndex);
+                  newMedia.setAttribute('aria-label', 'image closeup view');
                   lightbox.appendChild(newMedia);
                   // Si ce média ne possède pas de source, dans ce cas c'est une balise vidéo
                 } else {
@@ -471,6 +491,7 @@ function lightboxModal() {
                   newMedia.setAttribute('class', newClass);
                   newMedia.setAttribute('controls', true);
                   newMedia.appendChild(newSrc);
+                  newMedia.setAttribute('aria-label', 'video closeup view');
                   lightbox.appendChild(newMedia);
                 }
                 break;
@@ -508,6 +529,7 @@ function lightboxModal() {
                   newMedia.setAttribute('alt', newAlt);
                   newMedia.setAttribute('class', newClass);
                   newMedia.setAttribute('data-index', newDataIndex);
+                  newMedia.setAttribute('aria-label', 'image closeup view');
                   lightbox.appendChild(newMedia);
                   // Si ce média ne possède pas de source, dans ce cas c'est une balise vidéo
                 } else {
@@ -522,6 +544,7 @@ function lightboxModal() {
                   newMedia.setAttribute('class', newClass);
                   newMedia.setAttribute('controls', true);
                   newMedia.appendChild(newSrc);
+                  newMedia.setAttribute('aria-label', 'video closeup view');
                   lightbox.appendChild(newMedia);
                 }
                 break;
@@ -538,6 +561,7 @@ function lightboxModal() {
                   newMedia.setAttribute('alt', newAlt);
                   newMedia.setAttribute('class', newClass);
                   newMedia.setAttribute('data-index', newDataIndex);
+                  newMedia.setAttribute('aria-label', 'image closeup view');
                   lightbox.appendChild(newMedia);
                   // Si ce média ne possède pas de source, dans ce cas c'est une balise vidéo
                 } else {
@@ -551,6 +575,7 @@ function lightboxModal() {
                   newMedia.setAttribute('data-index', newDataIndex);
                   newMedia.setAttribute('class', newClass);
                   newMedia.setAttribute('controls', true);
+                  newMedia.setAttribute('aria-label', 'video closeup view');
                   newMedia.appendChild(newSrc);
                   lightbox.appendChild(newMedia);
                 }

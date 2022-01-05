@@ -21,12 +21,15 @@ function mediaFactory(data) {
       media.setAttribute('alt', `${title}`);
     }
     media.setAttribute('data-index', i);
+    media.setAttribute('role', 'image link')
+    // media.setAttribute('aria-label', 'image closeup view')
     const textbox = document.createElement('p');
     textbox.classList.add('flex-red');
     const tag = document.createElement('p');
     tag.textContent = title;
     const heart = document.createElement('span');
     heart.innerHTML = `${likes} <i class="fas fa-heart counter"></i>`;
+    heart.setAttribute('aria-label', 'likes')
     card.appendChild(media);
     card.appendChild(textbox);
     textbox.appendChild(tag);

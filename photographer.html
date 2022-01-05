@@ -16,31 +16,31 @@
   </head>
   <body>
     <header><a href="index.html">
-      <img src="assets/images/logo.png" class="logo" alt="Fisheye Home page" /></a>
+      <img src="assets/images/logo.png" class="logo" alt="Page d'acceuil de Fisheye" /></a>
     </header>
     <main id="main">
       <section class="photograph-header">
         <div class="photographer-info"></div>
-        <button id="contact_button" class="contact_button">
+        <button id="contact_button" class="contact_button" role="button" aria-label="Contact me">
           Contactez-moi
         </button>
       </section>
       <article class="tri">
-        <p>Trier par</p>
+        <p id="filter-list">Trier par</p>
         <ul>
-          <li class="filters">Popularité</li>
-          <li class="hidden filters">Date</li>
-          <li class="hidden filters">Titre</li>
+          <li class="filters" aria-labelledby="filter-list">Popularité</li>
+          <li class="hidden filters" aria-labelledby="filter-list">Date</li>
+          <li class="hidden filters" aria-labelledby="filter-list">Titre</li>
         </ul>
-        <i class="fas fa-chevron-down"></i>
+        <i class="fas fa-chevron-down" role="button" aria-haspopup="listbox" aria-expanded="false"></i>
       </article>
       <section id="media-content"></section>
     </main>
-    <div id="contact_modal">
+    <div id="contact_modal" aria-labelledby="contact-me">
       <div class="modal">
         <header>
-          <h2>Contactez-moi</h2>
-          <img src="assets/icons/close.svg" id="contact_close"/>
+          <h2 id="contact-me">Contactez-moi</h2>
+          <img src="assets/icons/close.svg" id="contact_close" role="button" aria-label="close contact form"/>
         </header>
       </div>
     </div>
