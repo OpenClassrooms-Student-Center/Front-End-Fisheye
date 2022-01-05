@@ -113,6 +113,7 @@
 		{
 			"id": 8328953,
 			"photographerId": 82,
+			"title": "Wooden sculpture of a horse",
 			"video": "Art_Wooden_Horse_Sculpture.mp4",
 			"likes": 24,
 			"date": "2011-12-08",
@@ -221,6 +222,7 @@
 		{
 			"id": 83958935,
 			"photographerId": 925,
+			"title": "Cute puppy on sunset",
 			"video": "Animals_Puppiness.mp4",
 			"likes": 52,
 			"date": "2016-06-12",
@@ -229,6 +231,7 @@
 		{
 			"id": 394583434,
 			"photographerId": 527,
+			"title": "Rocky mountains from the air",
 			"video": "Travel_Rock_Mountains.mp4",
 			"likes": 23,
 			"date": "2017-03-18",
@@ -382,6 +385,7 @@
 		{
 			"id": 5234343,
 			"photographerId": 243,
+			"title": "Wild horses in the mountains",
 			"video": "Animals_Wild_Horses_in_the_mountains.mp4",
 			"likes": 142,
 			"date": "2019-08-23",
@@ -472,6 +476,7 @@
 		{
 			"id": 9259398453,
 			"photographerId": 195,
+			"title": "Drone shot of Buenos Aires highways",
 			"video": "Architecture_coverr_circle_empty_highway_in_buenos_aires_587740985637.mp4",
 			"likes": 57,
 			"date": "2020-01-20",
@@ -489,6 +494,7 @@
 		{
 			"id": 952343423,
 			"photographerId": 930,
+			"title": "Tricks in te air",
 			"video": "Sport_Tricks_in_the_air.mp4",
 			"likes": 150,
 			"date": "2018-02-30",
