@@ -22,18 +22,24 @@ function mediaFactory(data) {
     }
     media.setAttribute('data-index', i);
     media.setAttribute('role', 'image link')
-    // media.setAttribute('aria-label', 'image closeup view')
     const textbox = document.createElement('p');
     textbox.classList.add('flex-red');
+    const likesContainer = document.createElement('p');
     const tag = document.createElement('p');
     tag.textContent = title;
     const heart = document.createElement('span');
-    heart.innerHTML = `${likes} <i class="fas fa-heart counter"></i>`;
+    heart.classList.add('likes-counter');
+    heart.innerText = likes;
+    const heartIcon = document.createElement('i');
+    heartIcon.classList.add('fas', 'fa-heart', 'counter')
+    // heart.innerHTML = `${likes} <i class="fas fa-heart counter"></i>`;
     heart.setAttribute('aria-label', 'likes')
     card.appendChild(media);
     card.appendChild(textbox);
     textbox.appendChild(tag);
-    textbox.appendChild(heart);
+    likesContainer.appendChild(heart);
+    likesContainer.appendChild(heartIcon);
+    textbox.appendChild(likesContainer)
     return (card)
   }
   return { id, photographerId, title, image, likes, video, createMediaCards };

@@ -225,18 +225,16 @@ function displayMedia(medias) {
       const mediaCard = photographerMedia.createMediaCards(i);
       mediaSection.appendChild(mediaCard);
       likes += media.likes;
-      // -------------------------------------------
-      // Sélectionner l'icone coeur pour lui ajouter un event listener afin d'incrémenter le nombre de likes au clic
-      // const heartCount = document.querySelectorAll('.fa-heart');
-      // console.log(heartCount[0]);
-      // for (let index = 0; index < heartCount; index++) {
-      //   const element = heartCount[index];
-      //   console.log(element);
-      //   element.addEventListener('click', () => {
-      //     console.log(element);
-      //   })
-      // }
-      // --------------------------------------------
+      const heartCount = document.querySelectorAll('.fa-heart');
+      heartCount.forEach((heart) => {
+        heart.addEventListener('click', () => {
+          const likesCounter = document.getElementsByClassName('likes-counter')
+          for (let index = 0; index < likesCounter.length; index++) {
+            const element = likesCounter[index];
+            console.log(element);
+          }
+        });
+      });
     }
   });
   return likes;
@@ -299,10 +297,10 @@ function lightboxModal() {
       }
       const leftArrow = document.createElement('i');
       leftArrow.classList.add('fas', 'fa-chevron-left');
-      leftArrow.setAttribute('aria-label', 'previous')
-      leftArrow.setAttribute('role', 'Previous image')
+      leftArrow.setAttribute('aria-label', 'previous');
+      leftArrow.setAttribute('role', 'Previous image');
       const rightArrow = document.createElement('i');
-      rightArrow.classList.add('fas', 'fa-chevron-right')
+      rightArrow.classList.add('fas', 'fa-chevron-right');
       rightArrow.setAttribute('aria-label', 'next');
       rightArrow.setAttribute('role', 'Next image');
       const exit = document.createElement('i');
@@ -321,7 +319,7 @@ function lightboxModal() {
         }
         document.body.removeChild(lightbox);
         document.body.style.overflow = 'initial';
-        lightbox.removeAttribute('aria-current', 'page')
+        lightbox.removeAttribute('aria-current', 'page');
         document.body.children.main.setAttribute('aria-hidden', 'false');
         document.body.setAttribute('aria-current', 'page');
       });
