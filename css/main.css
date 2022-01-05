@@ -159,6 +159,7 @@ p {
   color: white;
   font-weight: 500;
   margin-bottom: 1px;
+  cursor: pointer;
 }
 
 .tri i {
@@ -340,6 +341,13 @@ body {
   background-color: #901c1c;
   border-radius: 5px;
   cursor: pointer;
+}
+
+#contact_button:hover, #contact_button:focus,
+.contact_button:hover,
+.contact_button:focus {
+  color: white;
+  background-color: #D3573C;
 }
 
 #contact_modal {

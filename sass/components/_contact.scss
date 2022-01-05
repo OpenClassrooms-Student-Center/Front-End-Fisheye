@@ -10,6 +10,11 @@
   background-color: #901c1c;
   border-radius: 5px;
   cursor: pointer;
+
+  &:hover, &:focus {
+    color: white;
+    background-color: $primary-color-two;
+  }
 }
 
 #contact_modal {

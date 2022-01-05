@@ -17,18 +17,21 @@ for (let index = 0; index < filter.length; index++) {
   });
 }
 
-// Menu déroulant de filtres
-chevronDown.addEventListener('click', () => {
-  filterList.forEach((li) => {
-    if (li.className.includes('hidden')) {
-      li.classList.remove('hidden');
-    } else {
-      li.classList.add('hidden');
-    }
+// Menu déroulant de filtres sur la page des médias
+if (document.location.href.includes('photographer')) {
+  chevronDown.addEventListener('click', () => {
+    filterList.forEach((li) => {
+      if (li.className.includes('hidden')) {
+        li.classList.remove('hidden');
+      } else {
+        li.classList.add('hidden');
+      }
+    });
+    chevronDown.classList.toggle('fa-chevron-up');
+    chevronDown.classList.toggle('fa-chevron-down');
   });
-  chevronDown.classList.toggle('fa-chevron-up');
-  chevronDown.classList.toggle('fa-chevron-down');
-});
+}
+
 
 // Fonction pour refermer la liste des filtres
 function refreshFilter() {
@@ -63,7 +66,9 @@ async function getFilters(data) {
         }
         return 0;
       });
-      refreshFilter();
+      if (chevronDown.classList.contains('fa-chevron-up')) {
+        refreshFilter();
+      }
       displayMedia(mediaArray);
       lightboxModal();
       break;
@@ -108,6 +113,10 @@ async function getPhotographers() {
   try {
     let res = await fetch(url);
     let json = await res.json();
+    // Ajout de l'attribut alt vide pour les photos de profil des photographes
+    json.photographers.forEach(photographer => {
+      photographer.alt = '';
+    });
     return json.photographers;
   } catch (error) {
     console.log(error);
@@ -141,8 +150,6 @@ async function getMedia() {
     console.log(error);
   }
 }
-
-function getAlt(mediaType) {}
 
 // Récupération de l'ID dans l'URL de la page pour cibler le photographe
 let params;
