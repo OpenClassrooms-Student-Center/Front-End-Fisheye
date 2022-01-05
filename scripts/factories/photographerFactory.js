@@ -21,8 +21,3 @@ function photographerFactoryList(data) {
   }
   return { name, picture, tagline, getUserCardDOM };
 }
-/* ?? CREER UNE class PhotographerFactory {
-  constructor(photographer) {
-    this.photographer = photographer;
-  }
-}*/

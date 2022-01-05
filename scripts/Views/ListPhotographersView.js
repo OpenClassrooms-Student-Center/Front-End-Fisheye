@@ -7,6 +7,7 @@ class ListPhotographersView {
     photographers.forEach((photographer) => {
       const photographerModel = photographerFactoryList(photographer);
       const userCardDOM = photographerModel.getUserCardDOM();
+      console.log(photographerModel);
       photographersSection.appendChild(userCardDOM);
     });
   }
