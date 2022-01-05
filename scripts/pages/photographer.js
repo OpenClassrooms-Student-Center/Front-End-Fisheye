@@ -120,11 +120,29 @@ async function getMedia() {
   try {
     let res = await fetch(url);
     let json = await res.json();
+    // Ajout de l'attribut alt pour chaque média
+    json.media.forEach((media) => {
+      let regex = new RegExp(/\.(mp4)/);
+      let regexUnderscore = new RegExp(/[_]/g);
+      let regexNumber = new RegExp(/\d/g);
+      if (media.video) {
+        const deleteMp4 = media.video.replace(regex, '');
+        const preAlt = deleteMp4.replace(regexUnderscore, ' ');
+        const alt = preAlt.replace(regexNumber, '');
+        media.alt = alt;
+      } else if (media.title) {
+        const preAlt = media.title.replace(regexUnderscore, ' ');
+        const alt = preAlt.replace(regexNumber, '');
+        media.alt = alt;
+      }
+    });
     return json.media;
   } catch (error) {
     console.log(error);
   }
 }
+
+function getAlt(mediaType) {}
 
 // Récupération de l'ID dans l'URL de la page pour cibler le photographe
 let params;
