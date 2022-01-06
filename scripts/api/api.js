@@ -1,11 +1,11 @@
-class Api {
+export default class Api {
   constructor(url) {
-    this._url = url;
+    this.url = url;
   }
 
   get() {
-    return fetch(this._url)
+    return fetch(this.url)
       .then((res) => res.json())
-      .catch((err) => console.log("an error occurs", err));
+      .catch((err) => console.log('an error occurs', err));
   }
 }

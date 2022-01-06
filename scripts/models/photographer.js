@@ -1,4 +1,4 @@
-class Photographer {
+export default class Photographer {
   constructor(data) {
     this.name = data.name;
     this.id = data.id;
@@ -14,7 +14,7 @@ class Photographer {
   }
 
   get userCardDOM() {
-    const $wrapper = document.createElement("article");
+    const $wrapper = document.createElement('article');
     const photographCard = `
       <a href="./photographer.html?photographerId=${this.id}"  alt="${
       this.name
@@ -33,7 +33,7 @@ class Photographer {
 
   get photographHeaderDOM() {
     // Retourne le header du photographe
-    const $wrapper = document.querySelector(".photograph-header");
+    const $wrapper = document.querySelector('.photograph-header');
     const headerDOM = `
     <div class="photograph-header__desc">
       <h1 class="photograph-header__desc__name">${this.name}</h1>

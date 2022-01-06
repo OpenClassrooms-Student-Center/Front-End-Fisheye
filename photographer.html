@@ -62,7 +62,7 @@
             alt="Close form"
           />
         </header>
-        <form id="contact" name="contact" onsubmit="app.validate(event);">
+        <form id="contact" name="contact" onsubmit="validate(event);">
           <div class="formData">
             <label for="firstname">Prénom</label>
             <input id="firstname" name="firtname" class="text-control" />
@@ -88,12 +88,12 @@
         </form>
       </div>
     </section>
-    <script src="scripts/models/photographer.js"></script>
+    <!--     <script src="scripts/models/photographer.js"></script>
     <script src="scripts/models/media.js"></script>
     <script src="scripts/utils/lightbox.js"></script>
     <script src="scripts/factories/photographer.js"></script>
-    <script src="scripts/api/api.js"></script>
-    <script src="scripts/pages/photographer.js"></script>
+    <script src="scripts/api/api.js"></script> -->
+    <script type="module" src="scripts/pages/photographer.js"></script>
     <script src="scripts/utils/contactForm.js"></script>
   </body>
 </html>

@@ -1,8 +1,11 @@
+import PhotographerFactory from '../factories/photographer.js';
+import Api from '../api/api.js';
+
 class App {
   constructor() {
-    this.$photographWrapper = document.querySelector(".photographer-section");
+    this.$photographWrapper = document.querySelector('.photographer-section');
 
-    this.photographersApi = new Api("./data/photographers.json");
+    this.photographersApi = new Api('./data/photographers.json');
 
     this.allPhotographers = [];
   }
@@ -10,7 +13,7 @@ class App {
   async fetchData() {
     const data = await this.photographersApi.get();
     this.allPhotographers = data.photographers.map(
-      (photograph) => new photographerFactory(photograph)
+      (photograph) => new PhotographerFactory(photograph),
     );
   }
 

@@ -1,19 +1,19 @@
-class Lightbox {
+export default class Lightbox {
   static init() {
-    const links = Array.from(document.querySelectorAll(".media__article a"));
-    const media = links.map((link) => link.getAttribute("href"));
-    const titles = links.map((title) => title.getAttribute("alt"));
+    const links = Array.from(document.querySelectorAll('.media__article a'));
+    const media = links.map((link) => link.getAttribute('href'));
+    const titles = links.map((title) => title.getAttribute('alt'));
     links.forEach((link) =>
-      link.addEventListener("click", (e) => {
+      link.addEventListener('click', (e) => {
         e.preventDefault();
-        document.querySelector("body").classList.add("noscroll");
-        new Lightbox(
-          e.currentTarget.getAttribute("href"),
+        document.querySelector('body').classList.add('noscroll');
+        const lightbox = new Lightbox(
+          e.currentTarget.getAttribute('href'),
           media,
-          e.currentTarget.getAttribute("alt"),
-          titles
+          e.currentTarget.getAttribute('alt'),
+          titles,
         );
-      })
+      }),
     );
   }
 
@@ -24,16 +24,16 @@ class Lightbox {
     this.loadMedia(url, title);
     this.onKeyUp = this.onKeyUp.bind(this);
     document.body.appendChild(this.element);
-    document.addEventListener("keyup", this.onKeyUp);
+    document.addEventListener('keyup', this.onKeyUp);
   }
 
   getExtensionUrl(url) {
-    return url.split(".").pop();
+    return url.split('.').pop();
   }
 
   buildDOM() {
-    const dom = document.createElement("div");
-    dom.classList.add("lightbox");
+    const dom = document.createElement('div');
+    dom.classList.add('lightbox');
     dom.innerHTML = `
       <button class="lightbox__close">
         <svg width="42" height="42" viewBox="0 0 42 42" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -59,49 +59,49 @@ class Lightbox {
       </div>
       `;
     dom
-      .querySelector(".lightbox__close")
-      .addEventListener("click", this.close.bind(this));
+      .querySelector('.lightbox__close')
+      .addEventListener('click', this.close.bind(this));
     dom
-      .querySelector(".lightbox__next")
-      .addEventListener("click", this.next.bind(this));
+      .querySelector('.lightbox__next')
+      .addEventListener('click', this.next.bind(this));
     dom
-      .querySelector(".lightbox__prev")
-      .addEventListener("click", this.prev.bind(this));
+      .querySelector('.lightbox__prev')
+      .addEventListener('click', this.prev.bind(this));
     return dom;
   }
 
   loadMedia(url, title) {
     this.url = null;
-    const figure = this.element.querySelector(".lightbox__container__figure");
-    figure.innerHTML = "";
-    if (this.getExtensionUrl(url) === "mp4") {
-      figure.classList.add("lightbox__container__figure--mp4");
-      const video = document.createElement("video");
-      video.setAttribute("controls", "");
-      video.setAttribute("alt", title);
-      const source = document.createElement("source");
-      source.setAttribute("src", url);
-      source.setAttribute("type", "video/mp4");
+    const figure = this.element.querySelector('.lightbox__container__figure');
+    figure.innerHTML = '';
+    if (this.getExtensionUrl(url) === 'mp4') {
+      figure.classList.add('lightbox__container__figure--mp4');
+      const video = document.createElement('video');
+      video.setAttribute('controls', '');
+      video.setAttribute('alt', title);
+      const source = document.createElement('source');
+      source.setAttribute('src', url);
+      source.setAttribute('type', 'video/mp4');
       video.appendChild(source);
-      const figcaption = document.createElement("figcaption");
-      figcaption.classList.add("lightbox__container__title");
+      const figcaption = document.createElement('figcaption');
+      figcaption.classList.add('lightbox__container__title');
       figcaption.innerText = title;
       figure.appendChild(video);
       figure.appendChild(figcaption);
-    } else if (this.getExtensionUrl(url) === "jpg") {
-      if (figure.classList.contains("lightbox__container__figure--mp4")) {
-        figure.classList.remove("lightbox__container__figure--mp4");
+    } else if (this.getExtensionUrl(url) === 'jpg') {
+      if (figure.classList.contains('lightbox__container__figure--mp4')) {
+        figure.classList.remove('lightbox__container__figure--mp4');
       }
-      const image = document.createElement("img");
-      image.setAttribute("src", url);
-      image.setAttribute("alt", title);
-      const figcaption = document.createElement("figcaption");
-      figcaption.classList.add("lightbox__container__title");
+      const image = document.createElement('img');
+      image.setAttribute('src', url);
+      image.setAttribute('alt', title);
+      const figcaption = document.createElement('figcaption');
+      figcaption.classList.add('lightbox__container__title');
       figcaption.innerText = title;
       figure.appendChild(image);
       figure.appendChild(figcaption);
     } else {
-      throw "unknow file";
+      throw new Error('unknow file');
     }
     this.url = url;
   }
@@ -127,11 +127,11 @@ class Lightbox {
   onKeyUp(e) {
     e.preventDefault();
 
-    if (e.key === "Escape") {
+    if (e.key === 'Escape') {
       this.close(e);
-    } else if (e.key === "ArrowLeft") {
+    } else if (e.key === 'ArrowLeft') {
       this.prev(e);
-    } else if (e.key === "ArrowRight") {
+    } else if (e.key === 'ArrowRight') {
       this.next(e);
     }
   }
@@ -139,7 +139,7 @@ class Lightbox {
   close(e) {
     e.preventDefault();
     this.element.parentElement.removeChild(this.element);
-    document.querySelector("body").classList.remove("noscroll");
-    document.removeEventListener("keyup", this.onKeyUp);
+    document.querySelector('body').classList.remove('noscroll');
+    document.removeEventListener('keyup', this.onKeyUp);
   }
 }
