@@ -225,16 +225,23 @@ function displayMedia(medias) {
       const mediaCard = photographerMedia.createMediaCards(i);
       mediaSection.appendChild(mediaCard);
       likes += media.likes;
-      const heartCount = document.querySelectorAll('.fa-heart');
-      heartCount.forEach((heart) => {
-        heart.addEventListener('click', () => {
-          const likesCounter = document.getElementsByClassName('likes-counter')
-          for (let index = 0; index < likesCounter.length; index++) {
-            const element = likesCounter[index];
-            console.log(element);
+      const heartCount = mediaCard.querySelector('.fa-heart');
+        heartCount.addEventListener('click', (e) => {
+          // Récupérer le compteur global. 
+          let parent = e.target.parentNode;
+          let lc = parent.children[0];
+          let state = lc.getAttribute('data-state') || 0;
+          if (state == 0) {
+            // Incrémenter le compteur global
+            lc.innerText++;
+            lc.setAttribute("data-state", 1)
+          } else {
+            // Décrémenter le compteur global
+            lc.innerText--;
+            lc.setAttribute("data-state", 0)
           }
+          // Mettre à jour le compteur global
         });
-      });
     }
   });
   return likes;
@@ -335,33 +342,12 @@ function lightboxModal() {
           if (element.getAttribute('data-index') == newDataIndex) {
             // Si ce média possède une source (est donc est une balise img)
             if (element.src) {
+              newMedia = createImg(element, lightbox)
               // Je créé une nouvelle balise img à laquelle j'ajoute les informations du nouveau média avant de l'insérer dans le DOM
-              newMedia = document.createElement('img');
-              newSrc = element.getAttribute('src');
-              newAlt = element.getAttribute('alt');
-              newDataIndex = element.getAttribute('data-index');
-              newClass = element.getAttribute('class');
-              newMedia.setAttribute('src', newSrc);
-              newMedia.setAttribute('alt', newAlt);
-              newMedia.setAttribute('class', newClass);
-              newMedia.setAttribute('data-index', newDataIndex);
-              newMedia.setAttribute('aria-label', 'image closeup view');
-              lightbox.appendChild(newMedia);
               // Si ce média ne possède pas de source, dans ce cas c'est une balise vidéo
             } else {
+              newMedia = createVid(element, lightbox)
               // Je récupère les informations et la balise source que je passe dans des nouvelles balises crées avant de l'injecter dans le DOM
-              newSource = element.children[0];
-              newDataIndex = element.getAttribute('data-index');
-              newClass = element.getAttribute('class');
-              newMedia = document.createElement('video');
-              newSrc = document.createElement('source');
-              newSrc.setAttribute('src', newSource.getAttribute('src'));
-              newMedia.setAttribute('data-index', newDataIndex);
-              newMedia.setAttribute('class', newClass);
-              newMedia.setAttribute('controls', true);
-              newMedia.appendChild(newSrc);
-              newMedia.setAttribute('aria-label', 'video closeup view');
-              lightbox.appendChild(newMedia);
             }
             break;
           } else if (newDataIndex == minusOne) {
@@ -598,3 +584,36 @@ setTimeout(() => {
 
 // Appel des fonctions pour injecter les informations dans le DOM
 getProfile();
+
+function createImg(element, lightbox) {
+  let newMedia;
+  newMedia = document.createElement('img');
+  newSrc = element.getAttribute('src');
+  newAlt = element.getAttribute('alt');
+  newDataIndex = element.getAttribute('data-index');
+  newClass = element.getAttribute('class');
+  newMedia.setAttribute('src', newSrc);
+  newMedia.setAttribute('alt', newAlt);
+  newMedia.setAttribute('class', newClass);
+  newMedia.setAttribute('data-index', newDataIndex);
+  newMedia.setAttribute('aria-label', 'image closeup view');
+  lightbox.appendChild(newMedia);
+  return newMedia
+}
+
+function createVid(element, lightbox) {
+  let newMedia;
+  newSource = element.children[0];
+  newDataIndex = element.getAttribute('data-index');
+  newClass = element.getAttribute('class');
+  newMedia = document.createElement('video');
+  newSrc = document.createElement('source');
+  newSrc.setAttribute('src', newSource.getAttribute('src'));
+  newMedia.setAttribute('data-index', newDataIndex);
+  newMedia.setAttribute('class', newClass);
+  newMedia.setAttribute('controls', true);
+  newMedia.appendChild(newSrc);
+  newMedia.setAttribute('aria-label', 'video closeup view');
+  lightbox.appendChild(newMedia);
+  return newMedia
+}
