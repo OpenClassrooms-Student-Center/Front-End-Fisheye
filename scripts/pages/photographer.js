@@ -9,6 +9,8 @@ class App {
 
     this.$mediaWrapper = document.querySelector('.media');
     this.$sorterWrapper = document.getElementsByName('sorter');
+    this.$photographHeaderWrapper =
+      document.querySelector('.photograph-header');
 
     this.photographerData = {};
   }
@@ -76,13 +78,19 @@ class App {
     return sum;
   }
 
-  incrementLikes(id) {
-    const mediaById = this.getMediaByPhotographerId().find(
-      (media) => media.id === id,
-    );
-    mediaById.liked();
-    this.saveLocalStorage();
-    this.displayMedia(this.getSorter());
+  liked() {
+    let id;
+    document.querySelectorAll('.media__article__desc__like').forEach((elt) => {
+      elt.querySelector('svg').addEventListener('click', () => {
+        id = parseInt(elt.id, 10);
+        const mediaById = this.getMediaByPhotographerId().find(
+          (media) => media.id === id,
+        );
+        mediaById.incrementLikes();
+        this.saveLocalStorage();
+        this.displayMedia(this.getSorter());
+      });
+    });
   }
 
   getUrlId() {
@@ -95,14 +103,14 @@ class App {
     return params.get('sorting');
   }
 
-  getInputSorterChecked() {
-    const inputs = Array.from(document.getElementsByName('sorter'));
-    const inputChecked = inputs.find((elt) => elt.checked);
-    return inputChecked.value;
+  displayNameIntoForm() {
+    const wrapper = document.querySelector('.modal header h2');
+    wrapper.innerHTML += `<br> ${this.getPhotographerById().name}`;
   }
 
   displayHeader() {
-    this.getPhotographerById().photographHeaderDOM;
+    this.$photographHeaderWrapper.innerHTML =
+      this.getPhotographerById().userHeaderCard;
   }
 
   displaySummaryMedia() {
@@ -117,33 +125,64 @@ class App {
     price.innerText = `${valuePrice}€ / jour`;
   }
 
-  displayMedia(sorter) {
+  displayMedia() {
     this.$mediaWrapper.innerHTML = '';
-    let media = this.getMediaByPhotographerId();
+    const sorter = this.getSorter();
+    const defaultSorter = 'like';
+    let media;
 
     if (!sorter) {
-      media = this.sortingMedia(this.getInputSorterChecked());
-      this.url.searchParams.set('sorting', this.getInputSorterChecked());
+      media = this.sortingMedia(defaultSorter);
+      this.url.searchParams.set('sorting', defaultSorter);
       window.history.pushState({}, '', this.url);
+    } else if (this.sortingMedia(sorter) === null) {
+      this.url.searchParams.delete('sorting');
+      window.history.pushState({}, '', this.url);
+      this.update();
     } else {
       media = this.sortingMedia(sorter);
     }
-
-    for (const m of media) {
-      const DOM = m.mediaDOM;
-
+    media.forEach((m) => {
+      const DOM = m.mediaCard;
       this.$mediaWrapper.appendChild(DOM);
-      this.displaySummaryMedia();
-    }
+    });
+    this.liked();
+    this.displaySummaryMedia();
     Lightbox.init();
   }
 
   displaySorter() {
+    const btnSelectedSorter = document.querySelector('.sorter__selected');
+    const listSorter = document.querySelector('.sorter__list');
+
+    btnSelectedSorter.addEventListener('click', (e) => {
+      e.target.style.display = 'none';
+      listSorter.style.display = 'block';
+    });
+
     this.$sorterWrapper.forEach((element) => {
       element.addEventListener('click', (e) => {
         const sorter = e.target.value;
+        let sorterText;
+
         this.url.searchParams.set('sorting', sorter);
         window.history.pushState({}, '', this.url);
+        switch (sorter) {
+          case 'like':
+            sorterText = 'Popularité';
+            break;
+          case 'date':
+            sorterText = 'Date';
+            break;
+          case 'title':
+            sorterText = 'Titre';
+            break;
+          default:
+            throw new Error('invalid sorter');
+        }
+        btnSelectedSorter.innerText = sorterText;
+        listSorter.style.display = 'none';
+        btnSelectedSorter.style.display = 'block';
         this.update();
       });
     });
@@ -165,14 +204,11 @@ class App {
         a.title.localeCompare(b.title),
       );
     }
-    this.url.searchParams.delete('sorting');
-    window.history.pushState({}, '', this.url);
-    this.update();
     return null;
   }
 
   update() {
-    this.displayMedia(this.getSorter());
+    this.displayMedia();
     Lightbox.init();
   }
 
@@ -181,11 +217,6 @@ class App {
       'photographerData',
       JSON.stringify(this.photographerData),
     );
-  }
-
-  displayNameIntoForm() {
-    const wrapper = document.querySelector('.modal header h2');
-    wrapper.innerHTML += `<br> ${this.getPhotographerById().name}`;
   }
 
   async main() {

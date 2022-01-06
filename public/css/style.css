@@ -117,6 +117,8 @@ body {
 }
 .modal__heading__picture {
   cursor: pointer;
+  border: 0;
+  background-color: unset;
 }
 .modal__heading__title {
   font-size: 64px;
@@ -130,86 +132,33 @@ body {
 
 .sorter {
   position: absolute;
-  display: flex;
   margin: 0 100px;
   font-size: 18px;
   font-weight: 700;
   line-height: 23px;
-  border: 0;
+  display: flex;
 }
 .sorter__desc {
   padding-top: 20px;
   margin-right: 25px;
   float: left;
 }
-.sorter__selector {
-  display: flex;
-  margin-top: 9px;
-  flex-direction: column;
-  position: relative;
-  width: 170px;
-  cursor: pointer;
+.sorter__selected {
+  font-family: "DM Sans", sans-serif;
   border-radius: 5px;
-  overflow: hidden;
-}
-.sorter__selector:focus .sorter__selector__option {
-  position: relative;
-  pointer-events: all;
-}
-.sorter__selector:focus input:checked + .sorter__selector__option:after {
-  content: "";
-  width: 10px;
-  height: 10px;
-  border-right: 4px solid white;
-  border-top: 4px solid white;
-  transform: rotate(-45deg);
-  position: absolute;
-  top: calc(50% - 5px);
-  right: 26px;
-  z-index: 3;
-  pointer-events: none;
-}
-.sorter__selector:focus input:not(:checked) + .sorter__selector__option:before {
-  content: "";
-  width: 150px;
-  height: 1px;
-  position: absolute;
-  top: 0px;
-  left: 10px;
-  background-color: white;
-}
-.sorter__selector__option {
   background-color: #901c1c;
+  border: 0;
   color: white;
   font-size: 18px;
   font-weight: 700;
   line-height: 23px;
-  min-height: 40px;
   padding: 12px 20px;
-  display: flex;
-  align-items: center;
-  pointer-events: none;
-  cursor: pointer;
-  position: absolute;
-  order: 2;
-  z-index: 1;
-}
-.sorter__selector__option:hover {
-  background: #db8876;
-  color: black;
-}
-.sorter__selector input {
-  opacity: 0;
-  position: absolute;
-  left: -9999px;
-}
-.sorter__selector input:checked + .sorter__selector__option {
-  order: 1;
-  z-index: 2;
+  height: 70px;
+  width: 170px;
   position: relative;
-  border-top: none;
+  text-align: left;
 }
-.sorter__selector input:checked + .sorter__selector__option:after {
+.sorter__selected::after {
   content: "";
   width: 10px;
   height: 10px;
@@ -220,7 +169,55 @@ body {
   top: calc(50% - 10px);
   right: 26px;
   z-index: 3;
-  pointer-events: none;
+}
+.sorter__list {
+  display: none;
+  position: relative;
+  border-radius: 5px;
+  width: 170px;
+  background-color: #901c1c;
+  z-index: 4;
+}
+.sorter__list::after {
+  content: "";
+  width: 10px;
+  height: 10px;
+  border-right: 4px solid white;
+  border-top: 4px solid white;
+  transform: rotate(-45deg);
+  position: absolute;
+  top: 30px;
+  right: 26px;
+  z-index: 3;
+}
+.sorter__list li {
+  position: relative;
+  list-style-type: none;
+  height: 70px;
+}
+.sorter__list li button {
+  font-family: "DM Sans", sans-serif;
+  width: 100%;
+  height: 100%;
+  z-index: 99;
+  background-color: unset;
+  border: 0;
+  color: white;
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 23px;
+  padding: 12px 20px;
+  text-align: left;
+}
+.sorter__list li + li::before {
+  content: "";
+  position: absolute;
+  width: 150px;
+  height: 1px;
+  top: 0px;
+  left: 10px;
+  background-color: white;
+  z-index: 3;
 }
 
 .photographer-section {

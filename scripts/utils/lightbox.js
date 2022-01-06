@@ -27,7 +27,7 @@ export default class Lightbox {
     document.addEventListener('keyup', this.onKeyUp);
   }
 
-  getExtensionUrl(url) {
+  static getExtensionUrl(url) {
     return url.split('.').pop();
   }
 
@@ -74,7 +74,7 @@ export default class Lightbox {
     this.url = null;
     const figure = this.element.querySelector('.lightbox__container__figure');
     figure.innerHTML = '';
-    if (this.getExtensionUrl(url) === 'mp4') {
+    if (Lightbox.getExtensionUrl(url) === 'mp4') {
       figure.classList.add('lightbox__container__figure--mp4');
       const video = document.createElement('video');
       video.setAttribute('controls', '');
@@ -88,7 +88,7 @@ export default class Lightbox {
       figcaption.innerText = title;
       figure.appendChild(video);
       figure.appendChild(figcaption);
-    } else if (this.getExtensionUrl(url) === 'jpg') {
+    } else if (Lightbox.getExtensionUrl(url) === 'jpg') {
       if (figure.classList.contains('lightbox__container__figure--mp4')) {
         figure.classList.remove('lightbox__container__figure--mp4');
       }

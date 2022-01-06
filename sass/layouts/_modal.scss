@@ -31,6 +31,8 @@
     margin-bottom: 20px;
     &__picture {
       cursor: pointer;
+      border: 0;
+      background-color: unset;
     }
     &__title {
       font-size: 64px;

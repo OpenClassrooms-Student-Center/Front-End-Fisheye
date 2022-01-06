@@ -22,17 +22,21 @@
     </header>
     <main id="main">
       <header class="photograph-header"></header>
-      <fieldset class="sorter">
-        <legend class="sorter__desc">Trier par</legend>
-        <div class="sorter__selector" tabindex="0">
-          <input type="radio" name="sorter" id="like" value="like" checked />
-          <label class="sorter__selector__option" for="like">Popularité</label>
-          <input type="radio" name="sorter" id="date" value="date" />
-          <label class="sorter__selector__option" for="date">Date</label>
-          <input type="radio" name="sorter" id="title" value="title" />
-          <label class="sorter__selector__option" for="title">Titre</label>
-        </div>
-      </fieldset>
+      <section class="sorter">
+        <p class="sorter__desc">Trier par</p>
+        <button class="sorter__selected">Popularité</button>
+        <ul class="sorter__list">
+          <li>
+            <button value="like" name="sorter">Popularité</button>
+          </li>
+          <li>
+            <button value="date" name="sorter">Date</button>
+          </li>
+          <li>
+            <button value="title" name="sorter">Titre</button>
+          </li>
+        </ul>
+      </section>
       <section class="media"></section>
       <aside class="summary">
         <data class="summary__likes"></data>
@@ -55,12 +59,13 @@
       <div class="modal">
         <header class="modal__heading">
           <h2 class="modal__heading__title">Contactez-moi</h2>
-          <img
+          <button
             class="modal__heading__picture"
-            src="assets/icons/close.svg"
             onclick="closeModal()"
             alt="Close form"
-          />
+          >
+            <img src="assets/icons/close.svg" />
+          </button>
         </header>
         <form id="contact" name="contact" onsubmit="validate(event);">
           <div class="formData">
@@ -88,11 +93,6 @@
         </form>
       </div>
     </section>
-    <!--     <script src="scripts/models/photographer.js"></script>
-    <script src="scripts/models/media.js"></script>
-    <script src="scripts/utils/lightbox.js"></script>
-    <script src="scripts/factories/photographer.js"></script>
-    <script src="scripts/api/api.js"></script> -->
     <script type="module" src="scripts/pages/photographer.js"></script>
     <script src="scripts/utils/contactForm.js"></script>
   </body>

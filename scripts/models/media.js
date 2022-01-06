@@ -8,7 +8,7 @@ export default class Media {
     this.price = data.price;
   }
 
-  liked() {
-    this.likes++;
+  incrementLikes() {
+    this.likes += 1;
   }
 }

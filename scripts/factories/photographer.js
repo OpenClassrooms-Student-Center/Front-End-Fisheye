@@ -11,7 +11,6 @@ export default class PhotographerFactory {
       if (data.video) {
         return new Movie(data);
       }
-
       return new Picture(data);
     }
     throw new Error('Unknow type format');

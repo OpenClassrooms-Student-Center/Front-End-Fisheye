@@ -21,7 +21,7 @@ class App {
     await this.fetchData();
 
     this.allPhotographers.forEach((photograph) => {
-      this.$photographWrapper.appendChild(photograph.userCardDOM);
+      this.$photographWrapper.appendChild(photograph.userCard);
     });
   }
 }
