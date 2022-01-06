@@ -1,0 +1,97 @@
+.photograph-header {
+  background-color: #fafafa;
+  height: 300px;
+  margin: 0 100px;
+  padding: 0 50px;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  &__desc {
+    font-weight: normal;
+    align-self: center;
+    white-space: nowrap;
+    &__name {
+      color: $primary-heading;
+      font-size: 64px;
+      line-height: 83px;
+    }
+    &__city {
+      color: $primary-color;
+      font-size: 24px;
+      line-height: 31px;
+    }
+    &__tagline {
+      color: $paragraph-color;
+      line-height: 23px;
+      margin-top: 19px;
+    }
+  }
+  & button {
+    justify-self: center;
+    align-self: center;
+  }
+  & img {
+    justify-self: flex-end;
+    align-self: center;
+  }
+}
+
+.media {
+  margin: 100px;
+  display: grid;
+  grid-template-columns: 28% 28% 28%;
+  column-gap: 8%;
+  row-gap: 30px;
+  &__article {
+    &__image,
+    &__video {
+      object-fit: cover;
+      object-position: 25% 33%;
+      width: 100%;
+      height: 300px;
+      border-radius: 5px;
+      background-color: $media-bg;
+    }
+    &__desc {
+      display: flex;
+      justify-content: space-between;
+      white-space: nowrap;
+      color: $primary-color;
+      line-height: 31px;
+      &__title {
+        text-overflow: ellipsis;
+        overflow: hidden;
+        font-size: 24px;
+      }
+      &__like {
+        font-size: 24px;
+        font-weight: 500;
+        svg {
+          cursor: pointer;
+        }
+      }
+    }
+  }
+}
+
+.summary {
+  position: fixed;
+  bottom: 0;
+  right: 40px;
+  background-color: $secondary-color;
+  border-radius: 5px;
+  padding: 20px 30px;
+  height: 30px;
+  min-width: 350px;
+  &__heart {
+    align-self: flex-start;
+  }
+  &__likes,
+  &__price {
+    font-size: 24px;
+    font-weight: 500;
+    line-height: 31px;
+  }
+  &__price {
+    margin-left: 150px;
+  }
+}

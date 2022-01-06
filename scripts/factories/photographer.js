@@ -1,17 +1,18 @@
-function photographerFactory(data) {
-    const { name, portrait } = data;
+import Photographer from '../models/photographer.js';
+import Picture from '../models/picture.js';
+import Movie from '../models/movie.js';
 
-    const picture = `assets/photographers/${portrait}`;
-
-    function getUserCardDOM() {
-        const article = document.createElement( 'article' );
-        const img = document.createElement( 'img' );
-        img.setAttribute("src", picture)
-        const h2 = document.createElement( 'h2' );
-        h2.textContent = name;
-        article.appendChild(img);
-        article.appendChild(h2);
-        return (article);
+export default class PhotographerFactory {
+  constructor(data) {
+    if (data.name) {
+      return new Photographer(data);
     }
-    return { name, picture, getUserCardDOM }
+    if (data.photographerId) {
+      if (data.video) {
+        return new Movie(data);
+      }
+      return new Picture(data);
+    }
+    throw new Error('Unknow type format');
+  }
 }

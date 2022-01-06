@@ -1,76 +1,154 @@
 #contact_modal {
-    display: none;
+  display: none;
 }
 
 .photograph-header {
-    background-color: #FAFAFA;
-    height: 300px;
-    margin: 0 100px;
+  background-color: #fafafa;
+  height: 300px;
+  margin: 0 100px;
+  display: flex;
+}
+
+.img-header {
+  height: 200px;
+  width: 200px;
+  border-radius: 50%;
 }
 
 .contact_button {
-    font-size: 20px;
-    font-weight: bold;
-    color: white;
-    padding: 11px;
-    width: 170px;
-    height: 70px;
-    border: none;
-    background-color: #901C1C;
-    border-radius: 5px;
-    cursor: pointer;
+  font-size: 20px;
+  font-weight: bold;
+  color: white;
+  padding: 11px;
+  width: 170px;
+  height: 70px;
+  border: none;
+  background-color: #901c1c;
+  border-radius: 5px;
+  cursor: pointer;
 }
 
 .modal {
-    border-radius: 5px;
-    background-color: #DB8876;
-    width: 50%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: space-between;
-    padding: 35px;
-    margin: auto;
+  border-radius: 5px;
+  background-color: #db8876;
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  padding: 35px;
+  margin: auto;
 }
 
 .modal header {
-    justify-content: space-between;
-    width: 100%;
+  justify-content: space-between;
+  width: 100%;
 }
 
 .modal header img {
-    cursor: pointer;
+  cursor: pointer;
 }
 
 .modal header h2 {
-    font-size: 64px;
-    font-weight: normal;
-    text-align: center;
+  font-size: 64px;
+  font-weight: normal;
+  text-align: center;
 }
 
 form {
-    display: flex;
-    width: 100%;
-    flex-direction: column;
-    align-items: flex-start;
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  align-items: flex-start;
 }
 
 form label {
-    color: #312E2E;
-    font-size: 36px;
+  color: #312e2e;
+  font-size: 36px;
 }
 
 form div {
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-    align-items: self-start;
-    margin-bottom: 26px;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  align-items: self-start;
+  margin-bottom: 26px;
 }
 
 form input {
-    width: 100%;
-    height: 68px;
-    border: none;
-    border-radius: 5px;
+  width: 100%;
+  height: 68px;
+  border: none;
+  border-radius: 5px;
+}
+
+.lightbox {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: white;
+  z-index: 10;
+  overflow: auto;
+}
+
+.lightbox button {
+  opacity: 0.5;
+  cursor: pointer;
+}
+
+.lightbox button:hover {
+  opacity: 1;
+}
+
+.lightbox.fadeOut {
+  opacity: 0;
+}
+
+.lightbox__next,
+.lightbox__prev {
+  border: 2px;
+  width: 50px;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  right: 0;
+  margin-top: 14px;
+  z-index: 11;
+}
+
+.lightbox__next:hover,
+.lightbox__prev:hover {
+  opacity: 1;
+}
+
+.lightbox__prev {
+  right: auto;
+  left: 0;
+  transform: rotate(135deg);
+}
+
+.lightbox__close {
+  width: 15px;
+  height: 15px;
+  content: "x";
+  border: none;
+  font-size: 32px;
+  position: fixed;
+  top: 50px;
+  right: 50px;
+}
+
+.lightbox__container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  margin: 0 50px;
+}
+
+.lightbox__container img {
+  max-width: 100%;
+  height: 80vh;
 }
