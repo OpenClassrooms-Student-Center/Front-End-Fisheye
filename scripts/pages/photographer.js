@@ -226,22 +226,26 @@ function displayMedia(medias) {
       mediaSection.appendChild(mediaCard);
       likes += media.likes;
       const heartCount = mediaCard.querySelector('.fa-heart');
-        heartCount.addEventListener('click', (e) => {
-          // Récupérer le compteur global. 
-          let parent = e.target.parentNode;
-          let lc = parent.children[0];
-          let state = lc.getAttribute('data-state') || 0;
-          if (state == 0) {
-            // Incrémenter le compteur global
-            lc.innerText++;
-            lc.setAttribute("data-state", 1)
-          } else {
-            // Décrémenter le compteur global
-            lc.innerText--;
-            lc.setAttribute("data-state", 0)
-          }
-          // Mettre à jour le compteur global
-        });
+      heartCount.addEventListener('click', (e) => {
+        // Récupérer le compteur global.
+        let parent = e.target.parentNode;
+        let lc = parent.children[0];
+        let state = lc.getAttribute('data-state') || 0;
+        if (state == 0) {
+          // Incrémenter le compteur global
+          lc.innerText++;
+          lc.setAttribute('data-state', 1);
+          likes.innerText++;
+          console.log(likes);
+        } else {
+          // Décrémenter le compteur global
+          lc.innerText--;
+          lc.setAttribute('data-state', 0);
+          likes.innerText--;
+          console.log(likes);
+        }
+        // Mettre à jour le compteur global
+      });
     }
   });
   return likes;
@@ -275,33 +279,14 @@ function lightboxModal() {
       document.body.removeAttribute('aria-current', 'page');
       lightbox.setAttribute('aria-current', 'page');
       let newMedia;
-      // Si le média cliqué possède un attribut src, c'est une balise img. Je créé une nouvelle balise img à laquelle je passe les informations du média cliqué pour afficher le média correct grace à l'attribut data-index
       if (element.src) {
-        newSrc = element.getAttribute('src');
-        newAlt = element.getAttribute('alt');
-        newDataIndex = element.getAttribute('data-index');
-        newClass = element.getAttribute('class');
-        newMedia = document.createElement('img');
-        newMedia.setAttribute('src', newSrc);
-        newMedia.setAttribute('alt', newAlt);
-        newMedia.setAttribute('data-index', newDataIndex);
-        newMedia.setAttribute('class', newClass);
-        newMedia.setAttribute('aria-label', 'image closeup view');
-
-        // Si le média cliqué ne possède pas d'attribut src, c'est une vidéo. Je créé une nouvelle balise vidéo et source auxquelles je passe les informations du média cliqué pour afficher le média correct grace à l'attribut data-index
+        // Si le média cliqué possède un attribut src, c'est une balise img. Je créé une nouvelle balise img à laquelle je passe les informations du média cliqué pour afficher le média correct grace à l'attribut data-index
+        newMedia = createImg(element, lightbox);
       } else {
-        newSource = element.children[0];
-        newDataIndex = element.getAttribute('data-index');
-        newClass = element.getAttribute('class');
-        newMedia = document.createElement('video');
-        newSrc = document.createElement('source');
-        newSrc.setAttribute('src', newSource.getAttribute('src'));
-        newMedia.setAttribute('data-index', newDataIndex);
-        newMedia.setAttribute('class', newClass);
-        newMedia.setAttribute('controls', true);
-        newMedia.setAttribute('aria-label', 'video closeup view');
-        newMedia.appendChild(newSrc);
+        // Si le média cliqué ne possède pas d'attribut src, c'est une vidéo. Je créé une nouvelle balise vidéo et source auxquelles je passe les informations du média cliqué pour afficher le média correct grace à l'attribut data-index
+        newMedia = createVid(element, lightbox);
       }
+      // Ajout des icones fléchées et de la croix sur le diaporama
       const leftArrow = document.createElement('i');
       leftArrow.classList.add('fas', 'fa-chevron-left');
       leftArrow.setAttribute('aria-label', 'previous');
@@ -342,12 +327,12 @@ function lightboxModal() {
           if (element.getAttribute('data-index') == newDataIndex) {
             // Si ce média possède une source (est donc est une balise img)
             if (element.src) {
-              newMedia = createImg(element, lightbox)
               // Je créé une nouvelle balise img à laquelle j'ajoute les informations du nouveau média avant de l'insérer dans le DOM
-              // Si ce média ne possède pas de source, dans ce cas c'est une balise vidéo
+              newMedia = createImg(element, lightbox);
             } else {
-              newMedia = createVid(element, lightbox)
+              // Si ce média ne possède pas de source, dans ce cas c'est une balise vidéo
               // Je récupère les informations et la balise source que je passe dans des nouvelles balises crées avant de l'injecter dans le DOM
+              newMedia = createVid(element, lightbox);
             }
             break;
           } else if (newDataIndex == minusOne) {
@@ -372,64 +357,22 @@ function lightboxModal() {
             // Si ce média possède une source (est donc est une balise img)
             if (element.src) {
               // Je créé une nouvelle balise img à laquelle j'ajoute les informations du nouveau média avant de l'insérer dans le DOM
-              newMedia = document.createElement('img');
-              newSrc = element.getAttribute('src');
-              newAlt = element.getAttribute('alt');
-              newDataIndex = element.getAttribute('data-index');
-              newClass = element.getAttribute('class');
-              newMedia.setAttribute('src', newSrc);
-              newMedia.setAttribute('alt', newAlt);
-              newMedia.setAttribute('class', newClass);
-              newMedia.setAttribute('data-index', newDataIndex);
-              newMedia.setAttribute('aria-label', 'image closeup view');
-              lightbox.appendChild(newMedia);
-              // Si ce média ne possède pas de source, dans ce cas c'est une balise vidéo
+              newMedia = createImg(element, lightbox);
             } else {
+              // Si ce média ne possède pas de source, dans ce cas c'est une balise vidéo
               // Je récupère les informations et la balise source que je passe dans des nouvelles balises crées avant de l'injecter dans le DOM
-              newSource = element.children[0];
-              newDataIndex = element.getAttribute('data-index');
-              newClass = element.getAttribute('class');
-              newMedia = document.createElement('video');
-              newSrc = document.createElement('source');
-              newSrc.setAttribute('src', newSource.getAttribute('src'));
-              newMedia.setAttribute('data-index', newDataIndex);
-              newMedia.setAttribute('class', newClass);
-              newMedia.setAttribute('controls', true);
-              newMedia.appendChild(newSrc);
-              newMedia.setAttribute('aria-label', 'video closeup view');
-              lightbox.appendChild(newMedia);
+              newMedia = createVid(element, lightbox);
             }
             break;
           } else if (newDataIndex == plusOne) {
             newDataIndex = media[0].getAttribute('data-index');
             if (element.src) {
               // Je créé une nouvelle balise img à laquelle j'ajoute les informations du nouveau média avant de l'insérer dans le DOM
-              newMedia = document.createElement('img');
-              newSrc = element.getAttribute('src');
-              newAlt = element.getAttribute('alt');
-              newDataIndex = element.getAttribute('data-index');
-              newClass = element.getAttribute('class');
-              newMedia.setAttribute('src', newSrc);
-              newMedia.setAttribute('alt', newAlt);
-              newMedia.setAttribute('class', newClass);
-              newMedia.setAttribute('data-index', newDataIndex);
-              newMedia.setAttribute('aria-label', 'image closeup view');
-              lightbox.appendChild(newMedia);
-              // Si ce média ne possède pas de source, dans ce cas c'est une balise vidéo
+              newMedia = createImg(element, lightbox);
             } else {
+              // Si ce média ne possède pas de source, dans ce cas c'est une balise vidéo
               // Je récupère les informations et la balise source que je passe dans des nouvelles balises crées avant de l'injecter dans le DOM
-              newSource = element.children[0];
-              newDataIndex = element.getAttribute('data-index');
-              newClass = element.getAttribute('class');
-              newMedia = document.createElement('video');
-              newSrc = document.createElement('source');
-              newSrc.setAttribute('src', newSource.getAttribute('src'));
-              newMedia.setAttribute('data-index', newDataIndex);
-              newMedia.setAttribute('class', newClass);
-              newMedia.setAttribute('controls', true);
-              newMedia.setAttribute('aria-label', 'video closeup view');
-              newMedia.appendChild(newSrc);
-              lightbox.appendChild(newMedia);
+              newMedia = createVid(element, lightbox);
             }
             break;
           }
@@ -439,7 +382,6 @@ function lightboxModal() {
       document.addEventListener('keydown', (e) => {
         switch (e.key) {
           case 'ArrowLeft':
-            // ---------------------------------------------------------
             newDataIndex--;
             lightbox.removeChild(newMedia);
             // Appel d'une boucle sur tous les médias du photographe de la page afin de trouver le média qui correspond au nouveau data-index
@@ -451,32 +393,11 @@ function lightboxModal() {
                 // Si ce média possède une source (est donc est une balise img)
                 if (element.src) {
                   // Je créé une nouvelle balise img à laquelle j'ajoute les informations du nouveau média avant de l'insérer dans le DOM
-                  newMedia = document.createElement('img');
-                  newSrc = element.getAttribute('src');
-                  newAlt = element.getAttribute('alt');
-                  newDataIndex = element.getAttribute('data-index');
-                  newClass = element.getAttribute('class');
-                  newMedia.setAttribute('src', newSrc);
-                  newMedia.setAttribute('alt', newAlt);
-                  newMedia.setAttribute('class', newClass);
-                  newMedia.setAttribute('data-index', newDataIndex);
-                  newMedia.setAttribute('aria-label', 'image closeup view');
-                  lightbox.appendChild(newMedia);
-                  // Si ce média ne possède pas de source, dans ce cas c'est une balise vidéo
+                  newMedia = createImg(element, lightbox)
                 } else {
+                  // Si ce média ne possède pas de source, dans ce cas c'est une balise vidéo
                   // Je récupère les informations et la balise source que je passe dans des nouvelles balises crées avant de l'injecter dans le DOM
-                  newSource = element.children[0];
-                  newDataIndex = element.getAttribute('data-index');
-                  newClass = element.getAttribute('class');
-                  newMedia = document.createElement('video');
-                  newSrc = document.createElement('source');
-                  newSrc.setAttribute('src', newSource.getAttribute('src'));
-                  newMedia.setAttribute('data-index', newDataIndex);
-                  newMedia.setAttribute('class', newClass);
-                  newMedia.setAttribute('controls', true);
-                  newMedia.appendChild(newSrc);
-                  newMedia.setAttribute('aria-label', 'video closeup view');
-                  lightbox.appendChild(newMedia);
+                  newMedia = createVid(element, lightbox)
                 }
                 break;
               } else if (newDataIndex == minusOne) {
@@ -484,12 +405,8 @@ function lightboxModal() {
                   media[media.length - 1].getAttribute('data-index');
               }
             }
-            // ---------------------------------------------------------
-
             break;
-
           case 'ArrowRight':
-            // ---------------------------------------------------------
             newDataIndex++;
             lightbox.removeChild(newMedia);
             // Appel d'une boucle sur tous les médias du photographe de la page afin de trouver le média qui correspond au nouveau data-index
@@ -504,71 +421,27 @@ function lightboxModal() {
                 // Si ce média possède une source (est donc est une balise img)
                 if (element.src) {
                   // Je créé une nouvelle balise img à laquelle j'ajoute les informations du nouveau média avant de l'insérer dans le DOM
-                  newMedia = document.createElement('img');
-                  newSrc = element.getAttribute('src');
-                  newAlt = element.getAttribute('alt');
-                  newDataIndex = element.getAttribute('data-index');
-                  newClass = element.getAttribute('class');
-                  newMedia.setAttribute('src', newSrc);
-                  newMedia.setAttribute('alt', newAlt);
-                  newMedia.setAttribute('class', newClass);
-                  newMedia.setAttribute('data-index', newDataIndex);
-                  newMedia.setAttribute('aria-label', 'image closeup view');
-                  lightbox.appendChild(newMedia);
+                  newMedia = createImg(element, lightbox)
                   // Si ce média ne possède pas de source, dans ce cas c'est une balise vidéo
                 } else {
                   // Je récupère les informations et la balise source que je passe dans des nouvelles balises crées avant de l'injecter dans le DOM
-                  newSource = element.children[0];
-                  newDataIndex = element.getAttribute('data-index');
-                  newClass = element.getAttribute('class');
-                  newMedia = document.createElement('video');
-                  newSrc = document.createElement('source');
-                  newSrc.setAttribute('src', newSource.getAttribute('src'));
-                  newMedia.setAttribute('data-index', newDataIndex);
-                  newMedia.setAttribute('class', newClass);
-                  newMedia.setAttribute('controls', true);
-                  newMedia.appendChild(newSrc);
-                  newMedia.setAttribute('aria-label', 'video closeup view');
-                  lightbox.appendChild(newMedia);
+                  newMedia = createVid(element, lightbox)
                 }
                 break;
               } else if (newDataIndex == plusOne) {
                 newDataIndex = media[0].getAttribute('data-index');
                 if (element.src) {
                   // Je créé une nouvelle balise img à laquelle j'ajoute les informations du nouveau média avant de l'insérer dans le DOM
-                  newMedia = document.createElement('img');
-                  newSrc = element.getAttribute('src');
-                  newAlt = element.getAttribute('alt');
-                  newDataIndex = element.getAttribute('data-index');
-                  newClass = element.getAttribute('class');
-                  newMedia.setAttribute('src', newSrc);
-                  newMedia.setAttribute('alt', newAlt);
-                  newMedia.setAttribute('class', newClass);
-                  newMedia.setAttribute('data-index', newDataIndex);
-                  newMedia.setAttribute('aria-label', 'image closeup view');
-                  lightbox.appendChild(newMedia);
+                  newMedia = createImg(element, lightbox)
                   // Si ce média ne possède pas de source, dans ce cas c'est une balise vidéo
                 } else {
                   // Je récupère les informations et la balise source que je passe dans des nouvelles balises crées avant de l'injecter dans le DOM
-                  newSource = element.children[0];
-                  newDataIndex = element.getAttribute('data-index');
-                  newClass = element.getAttribute('class');
-                  newMedia = document.createElement('video');
-                  newSrc = document.createElement('source');
-                  newSrc.setAttribute('src', newSource.getAttribute('src'));
-                  newMedia.setAttribute('data-index', newDataIndex);
-                  newMedia.setAttribute('class', newClass);
-                  newMedia.setAttribute('controls', true);
-                  newMedia.setAttribute('aria-label', 'video closeup view');
-                  newMedia.appendChild(newSrc);
-                  lightbox.appendChild(newMedia);
+                  newMedia = createVid(element, lightbox)
                 }
                 break;
               }
             }
-            // ---------------------------------------------------------
             break;
-
           default:
             break;
         }
@@ -577,14 +450,7 @@ function lightboxModal() {
   }
 }
 
-// Pour pouvoir appeler le lightbox modal à cause du async media mais devra être rappelé à chaque filtre
-setTimeout(() => {
-  lightboxModal();
-}, 1000);
-
-// Appel des fonctions pour injecter les informations dans le DOM
-getProfile();
-
+// Fonction pour générer la balise img du diaporama
 function createImg(element, lightbox) {
   let newMedia;
   newMedia = document.createElement('img');
@@ -598,9 +464,10 @@ function createImg(element, lightbox) {
   newMedia.setAttribute('data-index', newDataIndex);
   newMedia.setAttribute('aria-label', 'image closeup view');
   lightbox.appendChild(newMedia);
-  return newMedia
+  return newMedia;
 }
 
+// Fonction pour générer la balise vidéo et source du diaporama
 function createVid(element, lightbox) {
   let newMedia;
   newSource = element.children[0];
@@ -615,5 +482,15 @@ function createVid(element, lightbox) {
   newMedia.appendChild(newSrc);
   newMedia.setAttribute('aria-label', 'video closeup view');
   lightbox.appendChild(newMedia);
-  return newMedia
+  return newMedia;
 }
+
+// Pour pouvoir appeler le lightbox modal à cause du async media mais devra être rappelé à chaque filtre
+setTimeout(() => {
+  lightboxModal();
+}, 1000);
+
+// Appel des fonctions pour injecter les informations dans le DOM
+getProfile();
+
+
