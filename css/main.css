@@ -218,10 +218,12 @@ p {
   width: 100%;
   border-radius: 10px;
   margin-bottom: 10px;
+  cursor: pointer;
 }
 
 .media-card video {
   margin-bottom: 10px;
+  cursor: pointer;
 }
 
 .media-card .flex-red {
@@ -232,6 +234,12 @@ p {
       -ms-flex-pack: justify;
           justify-content: space-between;
   color: #901C1C;
+}
+
+.media-card .liked {
+  color: #d93939;
+  -webkit-transform: scale(1.2);
+          transform: scale(1.2);
 }
 
 .media-card i:hover {
@@ -311,7 +319,7 @@ p {
 }
 
 #lightbox video {
-  width: 80%;
+  width: 85vh;
   aspect-ratio: 1/1;
   -o-object-fit: cover;
      object-fit: cover;
@@ -340,6 +348,10 @@ p {
 .fixed-counter p {
   margin: 0;
   font-size: 1em;
+}
+
+.daily-rate {
+  margin-left: 5px;
 }
 
 body {

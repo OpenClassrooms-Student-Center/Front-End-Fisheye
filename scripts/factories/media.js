@@ -32,7 +32,6 @@ function mediaFactory(data) {
     heart.innerText = likes;
     const heartIcon = document.createElement('i');
     heartIcon.classList.add('fas', 'fa-heart', 'counter')
-    // heart.innerHTML = `${likes} <i class="fas fa-heart counter"></i>`;
     heart.setAttribute('aria-label', 'likes')
     card.appendChild(media);
     card.appendChild(textbox);

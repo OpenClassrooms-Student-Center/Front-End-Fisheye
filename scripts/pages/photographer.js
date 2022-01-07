@@ -228,6 +228,7 @@ function displayMedia(medias) {
       const heartCount = mediaCard.querySelector('.fa-heart');
       heartCount.addEventListener('click', (e) => {
         // Récupérer le compteur global.
+        let compteurLikes = document.getElementsByClassName('total-likes')[0]
         let parent = e.target.parentNode;
         let lc = parent.children[0];
         let state = lc.getAttribute('data-state') || 0;
@@ -235,16 +236,15 @@ function displayMedia(medias) {
           // Incrémenter le compteur global
           lc.innerText++;
           lc.setAttribute('data-state', 1);
-          likes.innerText++;
-          console.log(likes);
+          compteurLikes.innerText++
+          heartCount.classList.add('liked')
         } else {
           // Décrémenter le compteur global
           lc.innerText--;
           lc.setAttribute('data-state', 0);
-          likes.innerText--;
-          console.log(likes);
+          compteurLikes.innerText--
+          heartCount.classList.remove('liked')
         }
-        // Mettre à jour le compteur global
       });
     }
   });
@@ -260,7 +260,7 @@ async function getMediaData() {
 // Injecter les informations de tarif du photographe dans le DOM
 function getFixedCounter(price, hearts) {
   const hourlyRate = document.createElement('p');
-  hourlyRate.innerHTML = `<p>${hearts} <i class="fas fa-heart"></i> ${price}€ / jour</p>`;
+  hourlyRate.innerHTML = `<span class="total-likes">${hearts}</span> <i class="fas fa-heart"></i> <span class="daily-rate">${price}€ / jour</span>`;
   fixedCounter.appendChild(hourlyRate);
 }
 

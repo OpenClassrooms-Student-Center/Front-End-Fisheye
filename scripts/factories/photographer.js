@@ -19,15 +19,15 @@ function photographerFactory(data) {
         const tag = document.createElement( 'p' );
         tag.classList.add('accroche')
         tag.textContent = tagline;
-        const hourlyRate = document.createElement( 'p' );
-        hourlyRate.classList.add('price');
-        hourlyRate.textContent = `${price}€/jour`;
+        // const hourlyRate = document.createElement( 'p' );
+        // hourlyRate.classList.add('price');
+        // hourlyRate.textContent = `${price}€/jour`;
         article.appendChild(link);
         link.appendChild(img)
         link.appendChild(h2);
         article.appendChild(localization);
         article.appendChild(tag);
-        article.appendChild(hourlyRate);
+        // article.appendChild(hourlyRate);
         return (article);
     }
     return { name, picture, price, tagline, city, country, getUserCardDOM }

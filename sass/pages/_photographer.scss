@@ -95,17 +95,25 @@
     width: 100%;
     border-radius: 10px;
     margin-bottom: 10px;
+    cursor: pointer;
   }
-
+  
   video {
     margin-bottom: 10px;
+    cursor: pointer;
   }
+
   .flex-red {
     display: flex;
     justify-content: space-between;
     color: $primary-color-one;
   }
 
+  .liked {
+    color: lighten($color: $primary-color-one, $amount: 20%);
+    transform: scale(1.2);
+  }
+  
   i {
     &:hover {
       color: lighten($color: $primary-color-one, $amount: 20%);
@@ -167,7 +175,7 @@
     object-fit: cover;
   }
   video {
-    width: 80%;
+    width: 85vh;
     aspect-ratio: 1/1;
     object-fit: cover;
   }
@@ -190,4 +198,8 @@
     margin: 0;
     font-size: 1em;
   }
+}
+
+.daily-rate {
+  margin-left: 5px;
 }
