@@ -6,9 +6,40 @@
     background-color: #FAFAFA;
     height: 300px;
     margin: 0 100px;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    justify-items: center;
+    align-items: center;
+    padding: 0 2rem 0 2rem;
 }
-
+.photograph-header img {
+    grid-column: 33.33%;
+    height: 200px;
+    width: 200px;
+    border-radius: 100%;
+    object-fit: cover;
+}
+.photograph-instruction {
+    grid-column: 33.33%;
+}
+.photograph-header h2 {
+    color: #D3573C;
+    font-size: 64px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 47px;
+    margin-bottom: 0;
+}
+.photograph-header h3 {
+    color: #901C1C;
+    font-size: 24px;
+    font-weight: 500;
+}
+.photograph-header p {
+    font-size: 18px
+}
 .contact_button {
+    grid-column: 33.33%;
     font-size: 20px;
     font-weight: bold;
     color: white;

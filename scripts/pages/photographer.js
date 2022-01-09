@@ -3,39 +3,34 @@ const photographerSelectedId = urlParams.get("id"); // on récupère l'Id du pho
 
 // éléments du dom
 const container = document.getElementById('main');
-const photographerPage = document.getElementById('photograph-header');
+const photographerHeader = document.getElementById('photograph-header');
 
 function displayPhotographerData(value) {
   const photographersData = value.photographers;
 
+  const photographIntroduction = document.getElementById('photograph-introduction');
+
   if(photographersData) {
     photographersData.find((photographer) => {
         if(photographer.id == photographerSelectedId) {
-
-          const profilePicture = document.createElement( 'img' ); // création de la photo de profil
-          profilePicture.setAttribute("src", photographer.portrait); // définition de l'image
-          profilePicture.setAttribute("alt", `${photographer.name}`); // définition du nom de l'image
-          photographerPage.appendChild(profilePicture); // est l'enfant du lien du profil
   
           const profileName = document.createElement( 'h2' ); // création du nom du profil
           profileName.textContent = photographer.name; // on affiche le nom sous forme de texte
-          photographerPage.appendChild(profileName); // est l'enfant du lien du profil
-  
+          photographIntroduction.appendChild(profileName); // est l'enfant du lien du profil
+          
           const profileLocation = document.createElement( 'h3' ); // création de la localisation du photographe
           profileLocation.textContent = photographer.city; // on l'affiche sous forme de texte
-          photographerPage.appendChild(profileLocation); // est l'enfant du lien
-  
+          photographIntroduction.appendChild(profileLocation); // est l'enfant du lien
+          
           const profileQuote = document.createElement( 'p' ); // création de la citation
           profileQuote.setAttribute('class', 'quote');
           profileQuote.textContent = photographer.tagline; // qu'on affiche sous forme de texte
-          photographerPage.appendChild(profileQuote); // est l'enfant du lien
+          photographIntroduction.appendChild(profileQuote); // est l'enfant du lien
   
-          const profileRate = document.createElement( 'p' ); // création du tarif
-          profileRate.setAttribute('class', 'rate');
-          profileRate.textContent = photographer.price; // affichage sous forme de texte
-          photographerPage.appendChild(profileRate); // enfant du lien
-  
-
+          const profilePicture = document.createElement( 'img' ); // création de la photo de profil
+          profilePicture.setAttribute("src", `assets/photographers/${photographer.portrait}`); // définition de l'image
+          profilePicture.setAttribute("alt", `${photographer.name}`); // définition du nom de l'image
+          photographerHeader.appendChild(profilePicture); // est l'enfant du lien du profil
         }
       });
 }
