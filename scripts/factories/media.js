@@ -6,6 +6,7 @@ function mediaFactory(data) {
 
   function createMediaCards(i) {
     const card = document.createElement('article');
+    card.setAttribute('tabindex', 0)
     card.classList.add('media-card');
     let media;
     if (image === undefined) {
@@ -13,15 +14,19 @@ function mediaFactory(data) {
       media.classList.add('video', 'media');
       mediaSrc = document.createElement('source');
       mediaSrc.setAttribute("src", videoUrl);
+      media.setAttribute('aria-label', 'video');
+      media.setAttribute('role', 'application');
+      media.setAttribute('tabindex', 0)
       media.appendChild(mediaSrc);
     } else {
       media = document.createElement('img');
       media.classList.add('media');
       media.setAttribute('src', picture);
       media.setAttribute('alt', `${title}`);
+      media.setAttribute('role', 'link')
+      media.setAttribute('tabindex', 0)
     }
     media.setAttribute('data-index', i);
-    media.setAttribute('role', 'image link')
     const textbox = document.createElement('p');
     textbox.classList.add('flex-red');
     const likesContainer = document.createElement('p');
@@ -31,7 +36,9 @@ function mediaFactory(data) {
     heart.classList.add('likes-counter');
     heart.innerText = likes;
     const heartIcon = document.createElement('i');
-    heartIcon.classList.add('fas', 'fa-heart', 'counter')
+    heartIcon.classList.add('fas', 'fa-heart', 'counter');
+    heartIcon.setAttribute('role', 'button');
+    heartIcon.setAttribute('tabindex', 0);
     heart.setAttribute('aria-label', 'likes')
     card.appendChild(media);
     card.appendChild(textbox);

@@ -43,7 +43,7 @@ function displayModal() {
   message.setAttribute('name', 'message');
   message.setAttribute('id', 'message');
   message.setAttribute('required', 'true');
-  message.setAttribute('role', 'text field');
+  message.setAttribute('role', 'textbox');
   message.setAttribute('aria-label', 'your message');
   const submit = document.createElement('button');
   submit.classList.add('contact_button');

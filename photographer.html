@@ -1,8 +1,10 @@
 <!DOCTYPE html>
-<html>
+<html lang="fr">
   <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link href="css/main.css" rel="stylesheet" type="text/css" />
-    <meta charset="utf-8" />
     <link rel="icon" type="image/png" href="assets/favicon.png" />
     <link
       href="https://fonts.googleapis.com/css?family=DM+Sans&display=swap"
@@ -15,37 +17,56 @@
     <title>Fisheye - photographe</title>
   </head>
   <body>
-    <header><a href="index.html">
-      <img src="assets/images/logo.png" class="logo" alt="Page d'acceuil de Fisheye" /></a>
+    <header>
+      <a href="index.html">
+        <img
+          src="assets/images/logo.png"
+          class="logo"
+          alt="Page d'acceuil de Fisheye"
+      /></a>
     </header>
     <main id="main">
       <section class="photograph-header">
         <div class="photographer-info"></div>
-        <button id="contact_button" class="contact_button" role="button" aria-label="Contact me">
+        <button
+          id="contact_button"
+          class="contact_button"
+          role="button"
+          aria-label="Contact me"
+        >
           Contactez-moi
         </button>
       </section>
-      <article class="tri">
+      <section class="tri" tabindex="0">
         <p id="filter-list">Trier par</p>
-        <ul>
-          <li class="filters" aria-labelledby="filter-list">Popularité</li>
-          <li class="hidden filters" aria-labelledby="filter-list">Date</li>
-          <li class="hidden filters" aria-labelledby="filter-list">Titre</li>
+        <ul role="list" aria-labelledby="filter-list" tabindex="0">
+          <li class="filters" role="listitem" tabindex="0">Popularité</li>
+          <li class="hidden filters" role="listitem" tabindex="0">Date</li>
+          <li class="hidden filters" role="listitem" tabindex="0">Titre</li>
         </ul>
-        <i class="fas fa-chevron-down" role="button" aria-haspopup="listbox" aria-expanded="false"></i>
-      </article>
-      <section id="media-content"></section>
+        <i
+          class="fas fa-chevron-down"
+          role="button"
+          aria-haspopup="listbox"
+          aria-expanded="false"
+        ></i>
+      </section>
+      <section id="media-content" tabindex="0"></section>
     </main>
     <div id="contact_modal" aria-labelledby="contact-me">
       <div class="modal">
         <header>
           <h2 id="contact-me">Contactez-moi</h2>
-          <img src="assets/icons/close.svg" id="contact_close" role="button" aria-label="close contact form"/>
+          <img
+            src="assets/icons/close.svg"
+            id="contact_close"
+            role="button"
+            aria-label="close contact form"
+          />
         </header>
       </div>
     </div>
-    <div class="fixed-counter">
-    </div>
+    <div class="fixed-counter"></div>
     <script src="/scripts/pages/photographer.js"></script>
     <script src="/scripts/factories/media.js"></script>
     <script src="/scripts/utils/contactForm.js"></script>

@@ -193,17 +193,18 @@ async function getProfile() {
         element.id
       );
       const picture = `assets/photos/profile/${el.portrait}`;
-      const Pname = document.createElement('p');
+      const Pname = document.createElement('h1');
       Pname.innerText = `${el.name}`;
       Pname.classList.add('photographer-name');
       const Plocation = document.createElement('p');
-      Plocation.innerText = `${el.country}, ${el.city}`;
+      Plocation.innerText = `${el.city}, ${el.country}`;
       Plocation.classList.add('photographer-location');
       const Ptagline = document.createElement('p');
       Ptagline.innerText = `${el.tagline}`;
       Ptagline.classList.add('photographer-tagline');
       const img = document.createElement('img');
       img.setAttribute('src', picture);
+      img.setAttribute('alt', `Portrait de ${el.name}`);
       img.classList.add('photographer-img');
       photographerInfo.appendChild(Pname);
       photographerInfo.appendChild(Plocation);
@@ -211,7 +212,7 @@ async function getProfile() {
       photographHeader.appendChild(img);
       const hearts = await getMediaData();
       getFixedCounter(el.price, hearts);
-      getContactName(el.name)
+      getContactName(el.name);
     }
   });
 }
@@ -229,7 +230,7 @@ function displayMedia(medias) {
       const heartCount = mediaCard.querySelector('.fa-heart');
       heartCount.addEventListener('click', (e) => {
         // Récupérer le compteur global.
-        let compteurLikes = document.getElementsByClassName('total-likes')[0]
+        let compteurLikes = document.getElementsByClassName('total-likes')[0];
         let parent = e.target.parentNode;
         let lc = parent.children[0];
         let state = lc.getAttribute('data-state') || 0;
@@ -237,14 +238,14 @@ function displayMedia(medias) {
           // Incrémenter le compteur global
           lc.innerText++;
           lc.setAttribute('data-state', 1);
-          compteurLikes.innerText++
-          heartCount.classList.add('liked')
+          compteurLikes.innerText++;
+          heartCount.classList.add('liked');
         } else {
           // Décrémenter le compteur global
           lc.innerText--;
           lc.setAttribute('data-state', 0);
-          compteurLikes.innerText--
-          heartCount.classList.remove('liked')
+          compteurLikes.innerText--;
+          heartCount.classList.remove('liked');
         }
       });
     }
@@ -267,7 +268,7 @@ function getFixedCounter(price, hearts) {
 
 // Injecter le nom du photographe dans le header du formulaire de contact
 function getContactName(name) {
-  const contactName = document.createElement("p");
+  const contactName = document.createElement('p');
   contactName.innerText = name;
   const contactMe = document.getElementById('contact-me');
   contactMe.appendChild(contactName);
@@ -403,11 +404,11 @@ function lightboxModal() {
                 // Si ce média possède une source (est donc est une balise img)
                 if (element.src) {
                   // Je créé une nouvelle balise img à laquelle j'ajoute les informations du nouveau média avant de l'insérer dans le DOM
-                  newMedia = createImg(element, lightbox)
+                  newMedia = createImg(element, lightbox);
                 } else {
                   // Si ce média ne possède pas de source, dans ce cas c'est une balise vidéo
                   // Je récupère les informations et la balise source que je passe dans des nouvelles balises crées avant de l'injecter dans le DOM
-                  newMedia = createVid(element, lightbox)
+                  newMedia = createVid(element, lightbox);
                 }
                 break;
               } else if (newDataIndex == minusOne) {
@@ -431,22 +432,22 @@ function lightboxModal() {
                 // Si ce média possède une source (est donc est une balise img)
                 if (element.src) {
                   // Je créé une nouvelle balise img à laquelle j'ajoute les informations du nouveau média avant de l'insérer dans le DOM
-                  newMedia = createImg(element, lightbox)
+                  newMedia = createImg(element, lightbox);
                   // Si ce média ne possède pas de source, dans ce cas c'est une balise vidéo
                 } else {
                   // Je récupère les informations et la balise source que je passe dans des nouvelles balises crées avant de l'injecter dans le DOM
-                  newMedia = createVid(element, lightbox)
+                  newMedia = createVid(element, lightbox);
                 }
                 break;
               } else if (newDataIndex == plusOne) {
                 newDataIndex = media[0].getAttribute('data-index');
                 if (element.src) {
                   // Je créé une nouvelle balise img à laquelle j'ajoute les informations du nouveau média avant de l'insérer dans le DOM
-                  newMedia = createImg(element, lightbox)
+                  newMedia = createImg(element, lightbox);
                   // Si ce média ne possède pas de source, dans ce cas c'est une balise vidéo
                 } else {
                   // Je récupère les informations et la balise source que je passe dans des nouvelles balises crées avant de l'injecter dans le DOM
-                  newMedia = createVid(element, lightbox)
+                  newMedia = createVid(element, lightbox);
                 }
                 break;
               }
@@ -472,7 +473,9 @@ function createImg(element, lightbox) {
   newMedia.setAttribute('alt', newAlt);
   newMedia.setAttribute('class', newClass);
   newMedia.setAttribute('data-index', newDataIndex);
-  newMedia.setAttribute('aria-label', 'image closeup view');
+  newMedia.setAttribute('aria-label', 'image');
+  lightbox.setAttribute('role', 'dialog');
+  lightbox.setAttribute('aria-label', 'image closeup view');
   lightbox.appendChild(newMedia);
   return newMedia;
 }
@@ -490,7 +493,9 @@ function createVid(element, lightbox) {
   newMedia.setAttribute('class', newClass);
   newMedia.setAttribute('controls', true);
   newMedia.appendChild(newSrc);
-  newMedia.setAttribute('aria-label', 'video closeup view');
+  newMedia.setAttribute('aria-label', 'video');
+  lightbox.setAttribute('role', 'dialog');
+  lightbox.setAttribute('aria-label', 'video closeup view');
   lightbox.appendChild(newMedia);
   return newMedia;
 }
@@ -502,5 +507,3 @@ setTimeout(() => {
 
 // Appel des fonctions pour injecter les informations dans le DOM
 getProfile();
-
-

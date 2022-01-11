@@ -147,6 +147,10 @@ p {
   max-width: 200px;
 }
 
+.photographer-info h1.photographer-name {
+  margin: 0;
+}
+
 .tri {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -399,8 +403,7 @@ body {
 .modal {
   border-radius: 5px;
   background-color: #db8876;
-  width: 50%;
-  height: 100%;
+  width: 35%;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -431,7 +434,7 @@ body {
 }
 
 .modal header h2 {
-  font-size: 3em;
+  font-size: 2.5em;
   font-weight: normal;
   margin: 0;
 }
@@ -441,7 +444,6 @@ body {
   display: -ms-flexbox;
   display: flex;
   width: 100%;
-  height: 100%;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
@@ -453,7 +455,7 @@ body {
 
 .modal form label {
   color: #312e2e;
-  font-size: 2em;
+  font-size: 1.5em;
 }
 
 .modal form div {
@@ -474,7 +476,7 @@ body {
 .modal form input {
   width: 100%;
   height: 2em;
-  font-size: 1.4em;
+  font-size: 1em;
   border: none;
   border-radius: 5px;
   margin-bottom: 2%;
@@ -482,15 +484,15 @@ body {
 
 .modal form textarea {
   width: 100%;
-  height: 6em;
-  font-size: 1.4em;
+  height: 4em;
+  font-size: 1em;
   border: none;
   border-radius: 5px;
   margin-bottom: 5%;
 }
 
 .modal form .thank-you {
-  font-size: 1.4em;
+  font-size: 1.5em;
   text-align: center;
   margin: 0 auto;
   padding: 10px;
