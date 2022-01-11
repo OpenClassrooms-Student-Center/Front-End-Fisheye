@@ -182,14 +182,14 @@ p {
   cursor: pointer;
 }
 
-.tri i {
+.tri em {
   position: relative;
   right: 70px;
   top: 2px;
   color: white;
 }
 
-.tri i:hover {
+.tri em:hover {
   cursor: pointer;
 }
 
