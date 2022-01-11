@@ -211,6 +211,7 @@ async function getProfile() {
       photographHeader.appendChild(img);
       const hearts = await getMediaData();
       getFixedCounter(el.price, hearts);
+      getContactName(el.name)
     }
   });
 }
@@ -264,6 +265,14 @@ function getFixedCounter(price, hearts) {
   fixedCounter.appendChild(hourlyRate);
 }
 
+// Injecter le nom du photographe dans le header du formulaire de contact
+function getContactName(name) {
+  const contactName = document.createElement("p");
+  contactName.innerText = name;
+  const contactMe = document.getElementById('contact-me');
+  contactMe.appendChild(contactName);
+}
+
 // Création de la lightbox pour afin un diaporama au clic
 function lightboxModal() {
   for (let i = 0; i < media.length; i++) {
@@ -311,6 +320,7 @@ function lightboxModal() {
         }
         document.body.removeChild(lightbox);
         document.body.style.overflow = 'initial';
+        document.body.style.margin = '0 auto';
         lightbox.removeAttribute('aria-current', 'page');
         document.body.children.main.setAttribute('aria-hidden', 'false');
         document.body.setAttribute('aria-current', 'page');

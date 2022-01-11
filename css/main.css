@@ -423,7 +423,7 @@ body {
       -ms-flex-pack: justify;
           justify-content: space-between;
   width: 100%;
-  margin-bottom: 1em;
+  margin-bottom: 2em;
 }
 
 .modal header img {
@@ -433,7 +433,6 @@ body {
 .modal header h2 {
   font-size: 3em;
   font-weight: normal;
-  text-align: center;
   margin: 0;
 }
 

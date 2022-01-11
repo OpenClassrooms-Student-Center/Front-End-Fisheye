@@ -3,6 +3,7 @@ const modal = document.querySelector('.modal');
 const contactButton = document.getElementById('contact_button');
 const contactClose = document.getElementById('contact_close');
 
+
 // Création de la modale du formulaire de contact
 function displayModal() {
   contactModal.style.display = 'block';
