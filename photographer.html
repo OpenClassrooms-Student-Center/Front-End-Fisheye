@@ -115,28 +115,53 @@
       <p>297 081 <i class="fa fa-heart" aria-hidden="true"></i></p>
       <p>300€ / jour</p>
     </div>
-    <div id="contact_modal">
+    <div
+      id="contact_modal"
+      role="dialog"
+      aria-describedby="modalTitle"
+      aria-hidden="true"
+    >
       <div class="modal">
         <header>
-          <h2>Contactez-moi</h2>
+          <h2 id="modalTitle">Contactez-moi</h2>
           <p class="name"></p>
           <img src="assets/icons/close.svg" onclick="closeModal()" />
         </header>
         <form>
           <div>
             <label for="first-name">Prénom</label>
-            <input id="first-name" />
+            <input
+              id="first-name"
+              minlength="2"
+              pattern="[a-zA-Zéèâôàêï-]*"
+              required
+            />
+            <div class="error-wrapper"><p></p></div>
 
             <label for="last-name">Nom</label>
-            <input id="last-name" />
+            <input
+              id="last-name"
+              minlength="2"
+              pattern="[a-zA-Zéèâôàêï-]*"
+              required
+            />
+            <div class="error-wrapper"><p></p></div>
 
             <label for="email">Adresse électronique</label>
-            <input id="email" />
+            <input id="email" type="email" required />
+            <div class="error-wrapper"><p></p></div>
 
             <label for="message">Votre message</label>
-            <textarea name="message" id="message" rows="10"></textarea>
+            <textarea
+              name="message"
+              id="message"
+              rows="10"
+              minlength="6"
+              required
+            ></textarea>
+            <div class="error-wrapper"><p></p></div>
           </div>
-          <button class="contact_button">Envoyer</button>
+          <button class="contact_button submit-button">Envoyer</button>
         </form>
       </div>
     </div>

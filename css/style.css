@@ -1,12 +1,16 @@
 @import url("photographer.css");
 
 body {
-  font-family: "DM Sans", sans-serif;
   margin: 0;
   color: #000000;
   max-width: 1250px;
   width: 85%;
   margin: auto;
+}
+
+body,
+textarea {
+  font-family: "DM Sans", sans-serif;
 }
 
 header {
