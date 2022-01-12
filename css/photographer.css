@@ -1,8 +1,9 @@
 #contact_modal {
     display: none;
 }
-
-.photograph-header {
+/* Photograph header */
+#photograph-header {
+    position: relative;
     background-color: #FAFAFA;
     height: 300px;
     margin: 0 100px;
@@ -10,19 +11,19 @@
     grid-template-columns: 1fr 1fr 1fr;
     justify-items: center;
     align-items: center;
-    padding: 0 2rem 0 2rem;
+    padding-left: 2rem;
 }
-.photograph-header img {
-    grid-column: 33.33%;
+#photograph-header img {
+    position: absolute;
+    top : 3rem;
+    right: 2rem;
     height: 200px;
     width: 200px;
     border-radius: 100%;
-    object-fit: cover;
+    object-fit: cover; 
 }
-.photograph-instruction {
-    grid-column: 33.33%;
-}
-.photograph-header h2 {
+
+#photograph-introduction h2 {
     color: #D3573C;
     font-size: 64px;
     font-style: normal;
@@ -30,16 +31,17 @@
     line-height: 47px;
     margin-bottom: 0;
 }
-.photograph-header h3 {
+#photograph-introduction h3 {
     color: #901C1C;
     font-size: 24px;
     font-weight: 500;
 }
-.photograph-header p {
-    font-size: 18px
+#photograph-introduction p {
+    font-size: 18px;
+    color:#525252;
 }
+
 .contact_button {
-    grid-column: 33.33%;
     font-size: 20px;
     font-weight: bold;
     color: white;
@@ -52,6 +54,36 @@
     cursor: pointer;
 }
 
+/* photograph Media */
+#photograph-medias {
+    display: grid;
+    justify-items: center;
+    align-items: center;
+    grid-template-columns: 1fr 1fr 1fr;
+    margin: 100px;
+}
+#photograph-medias img {
+    height: 300px;
+    width: 350px;
+    object-fit: cover;
+    filter: drop-shadow(-1px 6px 8px #525252);
+    background: #C4C4C4;
+    border-radius: 5px;
+    margin: 1rem;
+}
+
+#photograph-medias video {
+    height: 300px;
+    width: 350px;
+    object-fit: cover;
+    filter: drop-shadow(-1px 6px 8px #525252);
+    background: #C4C4C4;
+    border-radius: 5px;
+}
+
+
+
+/* Contact Modal */
 .modal {
     border-radius: 5px;
     background-color: #DB8876;

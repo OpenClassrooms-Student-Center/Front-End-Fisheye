@@ -7,11 +7,11 @@ function photographerFactory(data) {
    
 
     function getUserCardDOM() {
-        const article = document.createElement( 'article' ); // création du container
+        const photograherCard = document.createElement( 'aside' ); // création du container
 
         const photographerLink = document.createElement('a'); // création du lien vers le profile du photographe
         photographerLink.setAttribute('href', `http://localhost:5500/photographer.html?id=${id}`); // définition de l'url
-        article.appendChild(photographerLink); // définition du lien comme enfant du container
+        photograherCard.appendChild(photographerLink); // définition du lien comme enfant du container
 
         const profilePicture = document.createElement( 'img' ); // création de la photo de profil
         profilePicture.setAttribute("src", picture); // définition de l'image
@@ -36,7 +36,7 @@ function photographerFactory(data) {
         profileRate.textContent = dailyRate; // affichage sous forme de texte
         photographerLink.appendChild(profileRate); // enfant du lien
 
-        return (article); // on retourne la carte du photographe
+        return (photograherCard); // on retourne la carte du photographe
     }
     return { name, picture, tagline, location,  getUserCardDOM }
 }
