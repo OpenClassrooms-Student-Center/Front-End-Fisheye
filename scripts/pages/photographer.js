@@ -1,7 +1,8 @@
+/* eslint-disable no-undef */
+/* eslint-disable no-unused-vars */
 // Définition des variables ciblant des éléments du DOM
 const photographHeader = document.querySelector('.photograph-header');
 const photographerInfo = document.querySelector('.photographer-info');
-const photographerPicture = document.querySelector('.photographer-picture');
 const fixedCounter = document.querySelector('.fixed-counter');
 const chevronDown = document.querySelector('.fa-chevron-down');
 const filter = document.getElementsByClassName('filters');

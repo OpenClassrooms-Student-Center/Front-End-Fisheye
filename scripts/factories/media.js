@@ -1,4 +1,5 @@
 // Création des cartes médias pour la page des photographes.
+// eslint-disable-next-line no-unused-vars
 function mediaFactory(data) {
   const { id, photographerId, title, image, likes, video } = data;
   const picture = `assets/photos/${photographerId}/${image}`;
@@ -12,7 +13,7 @@ function mediaFactory(data) {
     if (image === undefined) {
       media = document.createElement('video');
       media.classList.add('video', 'media');
-      mediaSrc = document.createElement('source');
+      const mediaSrc = document.createElement('source');
       mediaSrc.setAttribute("src", videoUrl);
       media.setAttribute('aria-label', 'video');
       media.setAttribute('role', 'application');

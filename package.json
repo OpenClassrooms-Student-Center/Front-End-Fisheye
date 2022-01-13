@@ -1,0 +1,19 @@
+{
+  "name": "front-end-fisheye",
+  "version": "1.0.0",
+  "description": "Projet 6 de la formation Développeur React d'Open Classrooms",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JohanSannier/Front-End-Fisheye.git"
+  },
+  "author": "Johan Sannier",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/JohanSannier/Front-End-Fisheye/issues"
+  },
+  "homepage": "https://github.com/JohanSannier/Front-End-Fisheye#readme"
+}
