@@ -282,3 +282,7 @@ textarea {
 .close {
   cursor: pointer;
 }
+
+#description {
+  max-width: 374px;
+}

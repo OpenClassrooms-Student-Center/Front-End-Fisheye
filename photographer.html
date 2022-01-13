@@ -16,15 +16,17 @@
     </header>
     <main id="main">
       <div class="photographer-header">
-        <div>
-          <h1>John Doe</h1>
-          <p class="location">London, UK</p>
-          <p class="tagline">I am John Doe</p>
-        </div>
+        <div id="description"></div>
         <button class="contact_button" onclick="displayModal()">
           Contactez-moi
         </button>
-        <img src="./assets/photographers/account.png" alt="image d'homme" />
+        <div class="img-wrapper">
+          <img
+            id="profile-pic"
+            src="./assets/photographers/account.png"
+            alt="image d'homme"
+          />
+        </div>
       </div>
       <div class="photographer-gallery">
         <div>
@@ -113,7 +115,7 @@
     </main>
     <div class="widget">
       <p>297 081 <i class="fa fa-heart" aria-hidden="true"></i></p>
-      <p>300€ / jour</p>
+      <p id="price-count">300€ / jour</p>
     </div>
     <div
       id="contact_modal"
@@ -197,7 +199,8 @@
       </div>
     </section>
     <script src="https://use.fontawesome.com/5e2c88f402.js"></script>
+    <script src="/scripts/entities/photographer.js"></script>
     <script src="/scripts/utils/contactForm.js"></script>
-    <script src="/scripts/utils/photographer.js"></script>
+    <script src="/scripts/pages/photographer.js"></script>
   </body>
 </html>
