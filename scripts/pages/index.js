@@ -1,10 +1,16 @@
 async function getPhotographers() {
-  const data = await fetch("../../data/photographers.json");
-  const jsonData = await data.json();
-  const photographers = jsonData.photographers;
-  return {
-    photographers: [...photographers],
-  };
+  try {
+    const data = await fetch("../../data/photographers.json");
+    const jsonData = await data.json();
+    const photographers = jsonData.photographers;
+    return {
+      photographers: [...photographers],
+    };
+  } catch (err) {
+    const errMessage = document.createElement("p");
+    errMessage.innerText = err;
+    document.getElementById("main").appendChild(errMessage);
+  }
 }
 
 async function displayData(photographers) {
