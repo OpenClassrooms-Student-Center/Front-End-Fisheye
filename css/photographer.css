@@ -13,6 +13,10 @@
   top: 0;
 }
 
+main {
+  margin-bottom: 96px;
+}
+
 .photographer-header {
   background-color: #fafafa;
   height: 300px;
@@ -35,6 +39,7 @@
 .photographer-header .location {
   font-size: 24px;
   color: #901c1c;
+  margin-bottom: 16px;
 }
 
 .photographer-header .tagline {
@@ -58,6 +63,12 @@
   background-color: #901c1c;
   border-radius: 5px;
   cursor: pointer;
+}
+
+.contact_button:hover,
+.contact_button:focus {
+  color: #000;
+  background-color: #db8876;
 }
 
 .modal {
@@ -134,6 +145,7 @@ textarea {
   font-weight: 700;
   gap: 45px;
   margin-bottom: 32px;
+  align-items: center;
 }
 
 .photographer-gallery select {
@@ -167,6 +179,10 @@ textarea {
 
 .img-previews a p {
   margin: 6px 0px;
+}
+
+.img-previews a i {
+  font-size: 18px;
 }
 
 .photograph-name {
@@ -219,12 +235,11 @@ textarea {
 }
 
 .lightbox {
-  display: block;
   background-color: white;
-  display: flex;
+  display: none;
   flex-flow: column nowrap;
-  padding-top: 40px;
-  height: calc(100% - 40px);
+  align-items: center;
+  justify-content: center;
 }
 
 .lightbox img {
@@ -234,13 +249,36 @@ textarea {
 }
 
 .lightbox > div {
+  height: 90%;
+  display: flex;
+  flex-direction: column;
+}
+
+.slideshow {
   display: flex;
   flex-flow: row nowrap;
   justify-content: space-between;
   align-items: center;
-  height: 90%;
+  gap: 16px;
+  margin-top: -42px;
 }
 
-.lightbox .photograph-name {
-  margin-left: 195px;
+.lightbox .chevron {
+  width: 60px;
+  height: 64px;
+}
+
+.lightbox .close {
+  position: relative;
+  z-index: 1;
+}
+
+.close-wrapper {
+  align-self: flex-end;
+  height: 42px;
+}
+
+.chevron,
+.close {
+  cursor: pointer;
 }

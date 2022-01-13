@@ -167,16 +167,34 @@
     </div>
 
     <section class="lightbox" role="dialog">
-      <!-- <img src="assets/icons/close.svg" onclick="" /> -->
       <div>
-        <i class="fas fa-chevron-left"></i>
-        <img
-          src="/assets/Sample Photos/Ellie Rose/Architecture_Connected_Curves.jpg"
-          alt="photographie"
-        />
-        <p><i class="fas fa-chevron-right"></i></p>
+        <div class="close-wrapper">
+          <img
+            src="assets/icons/close-red.svg"
+            alt="fermer le dialogue"
+            class="close"
+          />
+        </div>
+        <div class="slideshow">
+          <img
+            src="/assets/icons/chevron-left.svg"
+            alt="image précédente"
+            class="chevron"
+          />
+          <div>
+            <img
+              src="/assets/Sample Photos/Ellie Rose/Architecture_Cross_Bar.jpg"
+              alt="photographie"
+            />
+            <p class="photograph-name">Arc-en-ciel</p>
+          </div>
+          <img
+            src="/assets/icons/chevron-right.svg"
+            alt="image suivante"
+            class="chevron"
+          />
+        </div>
       </div>
-      <p class="photograph-name">Arc-en-ciel</p>
     </section>
     <script src="https://use.fontawesome.com/5e2c88f402.js"></script>
     <script src="/scripts/utils/contactForm.js"></script>
