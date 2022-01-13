@@ -1,9 +1,16 @@
 @import url("photographer.css");
 
 body {
-  font-family: "DM Sans", sans-serif;
   margin: 0;
   color: #000000;
+  max-width: 1250px;
+  width: 85%;
+  margin: auto;
+}
+
+body,
+textarea {
+  font-family: "DM Sans", sans-serif;
 }
 
 header {
@@ -21,13 +28,16 @@ h1 {
 
 .logo {
   height: 50px;
-  margin-left: 100px;
 }
 
 a {
   text-decoration: none;
   color: #000000;
   display: block;
+}
+
+p {
+  margin: 0px;
 }
 
 .photographer_section {
@@ -46,7 +56,6 @@ a {
 }
 
 .photographer_section article h2 {
-  color: #d3573c;
   font-size: 36px;
 }
 

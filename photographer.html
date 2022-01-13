@@ -2,35 +2,202 @@
 <html>
   <head>
     <link href="css/style.css" rel="stylesheet" type="text/css" />
-    <meta charset="utf-8">
-    <link rel="icon" type="image/png" href="assets/favicon.png">
-    <link href="https://fonts.googleapis.com/css?family=DM+Sans&display=swap" rel="stylesheet">
-    <title>Fisheye - photographe </title>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/png" href="assets/favicon.png" />
+    <link
+      href="https://fonts.googleapis.com/css?family=DM+Sans&display=swap"
+      rel="stylesheet"
+    />
+    <title>Fisheye - photographe</title>
   </head>
   <body>
     <header>
       <img src="assets/images/logo.png" class="logo" />
     </header>
     <main id="main">
-      <div class="photograph-header">
-        <button class="contact_button" onclick="displayModal()">Contactez-moi</button>
+      <div class="photographer-header">
+        <div>
+          <h1>John Doe</h1>
+          <p class="location">London, UK</p>
+          <p class="tagline">I am John Doe</p>
+        </div>
+        <button class="contact_button" onclick="displayModal()">
+          Contactez-moi
+        </button>
+        <img src="./assets/photographers/account.png" alt="image d'homme" />
+      </div>
+      <div class="photographer-gallery">
+        <div>
+          <p>Trier par</p>
+          <select name="sort-options" id="sort-options">
+            <option value="popularity">Popularité</option>
+            <option value="date">Date</option>
+            <option value="title">Titre</option>
+          </select>
+        </div>
+        <div class="img-previews">
+          <a>
+            <img
+              src="/assets/Sample Photos/Ellie Rose/Architecture_Connected_Curves.jpg"
+              alt="photographie"
+            />
+            <div>
+              <p class="photograph-name">Une oeuvre</p>
+              <p class="like-count">
+                93 <i class="fa fa-heart" aria-hidden="true"></i>
+              </p>
+            </div>
+          </a>
+          <a>
+            <img
+              src="/assets/Sample Photos/Ellie Rose/Architecture_Connected_Curves.jpg"
+              alt="photographie"
+            />
+            <div>
+              <p class="photograph-name">Une oeuvre</p>
+              <p class="like-count">
+                93 <i class="fa fa-heart" aria-hidden="true"></i>
+              </p>
+            </div>
+          </a>
+          <a>
+            <img
+              src="/assets/Sample Photos/Ellie Rose/Architecture_Connected_Curves.jpg"
+              alt="photographie"
+            />
+            <div>
+              <p class="photograph-name">Une oeuvre</p>
+              <p class="like-count">
+                93 <i class="fa fa-heart" aria-hidden="true"></i>
+              </p>
+            </div>
+          </a>
+          <a>
+            <img
+              src="/assets/Sample Photos/Ellie Rose/Architecture_Connected_Curves.jpg"
+              alt="photographie"
+            />
+            <div>
+              <p class="photograph-name">Une oeuvre</p>
+              <p class="like-count">
+                93 <i class="fa fa-heart" aria-hidden="true"></i>
+              </p>
+            </div>
+          </a>
+          <a>
+            <img
+              src="/assets/Sample Photos/Ellie Rose/Architecture_Connected_Curves.jpg"
+              alt="photographie"
+            />
+            <div>
+              <p class="photograph-name">Une oeuvre</p>
+              <p class="like-count">
+                93 <i class="fa fa-heart" aria-hidden="true"></i>
+              </p>
+            </div>
+          </a>
+          <a>
+            <img
+              src="/assets/Sample Photos/Ellie Rose/Architecture_Connected_Curves.jpg"
+              alt="photographie"
+            />
+            <div>
+              <p class="photograph-name">Une oeuvre</p>
+              <p class="like-count">
+                93 <i class="fa fa-heart" aria-hidden="true"></i>
+              </p>
+            </div>
+          </a>
+        </div>
       </div>
     </main>
-    <div id="contact_modal">
-			<div class="modal">
-				<header>
-          <h2>Contactez-moi</h2>
+    <div class="widget">
+      <p>297 081 <i class="fa fa-heart" aria-hidden="true"></i></p>
+      <p>300€ / jour</p>
+    </div>
+    <div
+      id="contact_modal"
+      role="dialog"
+      aria-describedby="modalTitle"
+      aria-hidden="true"
+    >
+      <div class="modal">
+        <header>
+          <h2 id="modalTitle">Contactez-moi</h2>
+          <p class="name"></p>
           <img src="assets/icons/close.svg" onclick="closeModal()" />
         </header>
-				<form>
-					<div>
-						<label>Prénom</label>
-						<input />
-					</div>
-          <button class="contact_button">Envoyer</button>
-				</form>
-			</div>
-		</div>
+        <form>
+          <div>
+            <label for="first-name">Prénom</label>
+            <input
+              id="first-name"
+              minlength="2"
+              pattern="[a-zA-Zéèâôàêï-]*"
+              required
+            />
+            <div class="error-wrapper"><p></p></div>
+
+            <label for="last-name">Nom</label>
+            <input
+              id="last-name"
+              minlength="2"
+              pattern="[a-zA-Zéèâôàêï-]*"
+              required
+            />
+            <div class="error-wrapper"><p></p></div>
+
+            <label for="email">Adresse électronique</label>
+            <input id="email" type="email" required />
+            <div class="error-wrapper"><p></p></div>
+
+            <label for="message">Votre message</label>
+            <textarea
+              name="message"
+              id="message"
+              rows="10"
+              minlength="6"
+              required
+            ></textarea>
+            <div class="error-wrapper"><p></p></div>
+          </div>
+          <button class="contact_button submit-button">Envoyer</button>
+        </form>
+      </div>
+    </div>
+
+    <section class="lightbox" role="dialog">
+      <div>
+        <div class="close-wrapper">
+          <img
+            src="assets/icons/close-red.svg"
+            alt="fermer le dialogue"
+            class="close"
+          />
+        </div>
+        <div class="slideshow">
+          <img
+            src="/assets/icons/chevron-left.svg"
+            alt="image précédente"
+            class="chevron"
+          />
+          <div>
+            <img
+              src="/assets/Sample Photos/Ellie Rose/Architecture_Cross_Bar.jpg"
+              alt="photographie"
+            />
+            <p class="photograph-name">Arc-en-ciel</p>
+          </div>
+          <img
+            src="/assets/icons/chevron-right.svg"
+            alt="image suivante"
+            class="chevron"
+          />
+        </div>
+      </div>
+    </section>
+    <script src="https://use.fontawesome.com/5e2c88f402.js"></script>
     <script src="/scripts/utils/contactForm.js"></script>
+    <script src="/scripts/utils/photographer.js"></script>
   </body>
 </html>
