@@ -178,7 +178,7 @@ textarea {
   object-fit: cover;
 }
 
-.media-preview div {
+.media-preview > div {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -188,7 +188,7 @@ textarea {
 }
 
 .media-preview p {
-  margin: 6px 0px;
+  padding: 6px 0px;
 }
 
 .media-preview i {
@@ -202,13 +202,16 @@ textarea {
   text-overflow: ellipsis;
 }
 
-.like-count {
+.like-section {
   font-size: 16px;
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: center;
+  gap: 6px;
 }
 
-.like-count i {
+.like-section i {
   color: #901c1c;
-  font-size: 16px;
 }
 
 .widget {
@@ -228,6 +231,17 @@ textarea {
 
 .widget p {
   margin: 0px;
+}
+
+#total-like-count {
+  width: 87px;
+  text-align: end;
+}
+
+.widget div {
+  display: flex;
+  align-items: center;
+  gap: 6px;
 }
 
 .error-wrapper {

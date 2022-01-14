@@ -10,11 +10,14 @@ class Video {
             <source src="/assets/Sample Photos/${this.photographerName}/${this.video}">
           </video>
           <div>
-            <p class="media-title">${this.title}</p>
+          <p class="media-title">${this.title}</p>
+          <div class="like-section" aria-label="J'aime ce contenu">
             <p class="like-count">
-              ${this.likes} <i class="fa fa-heart" aria-hidden="true"></i>
+            ${this.likes}
             </p>
+            <i class="fa fa-heart" aria-hidden="true"></i>
           </div>
+        </div>
         </div>`;
   }
 }
