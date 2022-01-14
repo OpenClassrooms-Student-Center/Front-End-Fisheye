@@ -5,7 +5,9 @@ class DataManager {
       try {
         this.data = await (await fetch(file)).json();
       } catch (err) {
-        throw err;
+        const errMessage = new ErrorManager(err);
+        document.getElementById("main").innerHTML +=
+          errMessage.getErrorMessageDOM();
       }
     }
   }

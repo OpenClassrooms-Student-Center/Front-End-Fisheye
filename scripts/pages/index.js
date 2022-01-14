@@ -3,9 +3,9 @@ async function getPhotographers() {
     await DataManager.loadJson("../../data/photographers.json");
     return DataManager.getPhotographers();
   } catch (err) {
-    const errMessage = document.createElement("p");
-    errMessage.innerText = err;
-    document.getElementById("main").appendChild(errMessage);
+    const errMessage = new ErrorManager(err);
+    document.getElementById("main").innerHTML +=
+      errMessage.getErrorMessageDOM();
   }
 }
 
