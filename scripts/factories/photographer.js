@@ -6,7 +6,7 @@ function photographerFactory(data) {
   const formattedPrice = `${price}€/jour`;
 
   function getPhotographerPreview() {
-    return `<a class="preview-card" href="${photographerUrl}"><div class="img-wrapper"><img alt=${altText} src="${pictureUrl}" alt="bonhomme"></div><h2>${name}</h2><p class="location">${city}, ${country}</p><p class="tagline">${tagline}</p><p class="price">${formattedPrice}</p></a>`;
+    return `<a class="preview-card" href="${photographerUrl}"><div class="img-wrapper"><img alt="${altText}" src="${pictureUrl}" alt="bonhomme"></div><h2>${name}</h2><p class="location">${city}, ${country}</p><p class="tagline">${tagline}</p><p class="price">${formattedPrice}</p></a>`;
   }
   return { getPhotographerPreview };
 }

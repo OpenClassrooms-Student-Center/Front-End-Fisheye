@@ -1,8 +1,12 @@
 <!DOCTYPE html>
-<html>
+<html lang="fr">
   <head>
     <link href="css/style.css" rel="stylesheet" type="text/css" />
     <meta charset="utf-8" />
+    <meta
+      name="description"
+      content="Mettez en avant vos photos et vos vidéos sur Fisheye"
+    />
     <link rel="icon" type="image/png" href="assets/favicon.png" />
     <link
       href="https://fonts.googleapis.com/css?family=DM+Sans&display=swap"
@@ -12,19 +16,23 @@
   </head>
   <body>
     <header>
-      <img src="assets/images/logo.png" class="logo" />
+      <a href="index.html"
+        ><img src="assets/images/logo.png" class="logo" alt="Fisheye"
+      /></a>
     </header>
     <main id="main">
       <div class="photographer-header">
-        <div>
-          <h1>John Doe</h1>
-          <p class="location">London, UK</p>
-          <p class="tagline">I am John Doe</p>
-        </div>
+        <div id="description"></div>
         <button class="contact_button" onclick="displayModal()">
           Contactez-moi
         </button>
-        <img src="./assets/photographers/account.png" alt="image d'homme" />
+        <div class="img-wrapper">
+          <img
+            id="profile-pic"
+            src="./assets/photographers/account.png"
+            alt="photo de profil"
+          />
+        </div>
       </div>
       <div class="photographer-gallery">
         <div>
@@ -35,85 +43,12 @@
             <option value="title">Titre</option>
           </select>
         </div>
-        <div class="img-previews">
-          <a>
-            <img
-              src="/assets/Sample Photos/Ellie Rose/Architecture_Connected_Curves.jpg"
-              alt="photographie"
-            />
-            <div>
-              <p class="photograph-name">Une oeuvre</p>
-              <p class="like-count">
-                93 <i class="fa fa-heart" aria-hidden="true"></i>
-              </p>
-            </div>
-          </a>
-          <a>
-            <img
-              src="/assets/Sample Photos/Ellie Rose/Architecture_Connected_Curves.jpg"
-              alt="photographie"
-            />
-            <div>
-              <p class="photograph-name">Une oeuvre</p>
-              <p class="like-count">
-                93 <i class="fa fa-heart" aria-hidden="true"></i>
-              </p>
-            </div>
-          </a>
-          <a>
-            <img
-              src="/assets/Sample Photos/Ellie Rose/Architecture_Connected_Curves.jpg"
-              alt="photographie"
-            />
-            <div>
-              <p class="photograph-name">Une oeuvre</p>
-              <p class="like-count">
-                93 <i class="fa fa-heart" aria-hidden="true"></i>
-              </p>
-            </div>
-          </a>
-          <a>
-            <img
-              src="/assets/Sample Photos/Ellie Rose/Architecture_Connected_Curves.jpg"
-              alt="photographie"
-            />
-            <div>
-              <p class="photograph-name">Une oeuvre</p>
-              <p class="like-count">
-                93 <i class="fa fa-heart" aria-hidden="true"></i>
-              </p>
-            </div>
-          </a>
-          <a>
-            <img
-              src="/assets/Sample Photos/Ellie Rose/Architecture_Connected_Curves.jpg"
-              alt="photographie"
-            />
-            <div>
-              <p class="photograph-name">Une oeuvre</p>
-              <p class="like-count">
-                93 <i class="fa fa-heart" aria-hidden="true"></i>
-              </p>
-            </div>
-          </a>
-          <a>
-            <img
-              src="/assets/Sample Photos/Ellie Rose/Architecture_Connected_Curves.jpg"
-              alt="photographie"
-            />
-            <div>
-              <p class="photograph-name">Une oeuvre</p>
-              <p class="like-count">
-                93 <i class="fa fa-heart" aria-hidden="true"></i>
-              </p>
-            </div>
-          </a>
-        </div>
+        <div class="img-previews"></div>
       </div>
     </main>
     <div class="widget">
       <p>297 081 <i class="fa fa-heart" aria-hidden="true"></i></p>
-      <p>300€ / jour</p>
+      <p id="price-count">300€ / jour</p>
     </div>
     <div
       id="contact_modal"
@@ -166,7 +101,7 @@
       </div>
     </div>
 
-    <section class="lightbox" role="dialog">
+    <div class="lightbox" role="dialog">
       <div>
         <div class="close-wrapper">
           <img
@@ -183,7 +118,7 @@
           />
           <div>
             <img
-              src="/assets/Sample Photos/Ellie Rose/Architecture_Cross_Bar.jpg"
+              src="/assets/Sample Photos/Ellie-Rose Wilkens/Architecture_Cross_Bar.jpg"
               alt="photographie"
             />
             <p class="photograph-name">Arc-en-ciel</p>
@@ -195,9 +130,14 @@
           />
         </div>
       </div>
-    </section>
+    </div>
     <script src="https://use.fontawesome.com/5e2c88f402.js"></script>
+    <script src="scripts/entities/DataManager.js"></script>
+    <script src="/scripts/entities/Photographer.js"></script>
+    <script src="/scripts/entities/Photo.js"></script>
+    <script src="/scripts/entities/Video.js"></script>
+    <script src="/scripts/factories/Media.js"></script>
     <script src="/scripts/utils/contactForm.js"></script>
-    <script src="/scripts/utils/photographer.js"></script>
+    <script src="/scripts/pages/photographer.js"></script>
   </body>
 </html>
