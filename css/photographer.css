@@ -170,11 +170,17 @@ textarea {
   cursor: pointer;
 }
 
+.media-preview,
+.media-preview img,
+.media-preview video,
+.like-section {
+  border-radius: 5px;
+}
+
 .media-preview img,
 .media-preview video {
   width: 350px;
   height: 300px;
-  border-radius: 5px;
   object-fit: cover;
 }
 

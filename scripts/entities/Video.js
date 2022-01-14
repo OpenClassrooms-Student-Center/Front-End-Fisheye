@@ -5,13 +5,13 @@ class Video {
   }
 
   getDOM() {
-    return `<div class="media-preview">
-          <video>
+    return `<div tabindex="0" class="media-preview">
+          <video tabindex="-1">
             <source src="/assets/Sample Photos/${this.photographerName}/${this.video}">
           </video>
           <div>
           <p class="media-title">${this.title}</p>
-          <div class="like-section" aria-label="J'aime ce contenu">
+          <div class="like-section" aria-label="J'aime ce contenu" tabindex="0">
             <p class="like-count">
             ${this.likes}
             </p>

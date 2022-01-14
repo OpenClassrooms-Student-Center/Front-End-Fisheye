@@ -30,10 +30,15 @@ h1 {
   height: 50px;
 }
 
+.logo:focus {
+  outline: 2px solid red;
+}
+
 a {
   text-decoration: none;
   color: #000000;
   display: block;
+  border-radius: 5px;
 }
 
 p {
@@ -74,6 +79,13 @@ h2 {
   flex-flow: column nowrap;
   text-align: center;
   align-items: center;
+}
+
+a:focus,
+select:focus,
+button:focus,
+div:focus {
+  outline: 2px #0085be solid;
 }
 
 .img-wrapper {
