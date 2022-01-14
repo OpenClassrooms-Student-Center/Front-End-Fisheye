@@ -12,9 +12,12 @@ class Photo {
         />
         <div>
           <p class="media-title">${this.title}</p>
-          <p class="like-count">
-            ${this.likes} <i class="fa fa-heart" aria-hidden="true"></i>
-          </p>
+          <div class="like-section" aria-label="J'aime ce contenu">
+            <p class="like-count">
+            ${this.likes}
+            </p>
+            <i class="fa fa-heart" aria-hidden="true"></i>
+          </div>
         </div>
       </div>`;
   }
