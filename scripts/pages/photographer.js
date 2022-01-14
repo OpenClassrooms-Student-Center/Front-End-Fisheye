@@ -50,9 +50,6 @@ async function getArtistMedia() {
     const jsonData = await (
       await fetch("../../data/photographers.json")
     ).json();
-    console.log(
-      jsonData.media.filter((media) => media.photographerId === photographerId)
-    );
     return jsonData.media.filter(
       (media) => media.photographerId === photographerId
     );
@@ -70,6 +67,14 @@ function displayErrorMessage(err) {
 async function init() {
   await displayPhotographer();
   displayArtistMedia();
+}
+
+for (let likeCount of document.getElementsByClassName("like-count")) {
+  likeCount.addEventListener("click", () => {
+    if (!likeCount.classList.contains("clicked")) {
+      likeCount.innerText++;
+    }
+  });
 }
 
 init();
