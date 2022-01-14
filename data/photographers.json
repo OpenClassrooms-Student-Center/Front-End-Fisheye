@@ -8,7 +8,7 @@
       "tagline": "Voir le beau dans le quotidien",
       "price": 400,
       "portrait": "MimiKeel.jpg",
-      "alt-text": "Page de Mimi Keel"
+      "altText": "Page de Mimi Keel"
     },
     {
       "name": "Ellie-Rose Wilkens",
@@ -18,7 +18,7 @@
       "tagline": "Capturer des compositions complexes",
       "price": 250,
       "portrait": "EllieRoseWilkens.jpg",
-      "alt-text": "Page de Ellie-Rose Wilkens"
+      "altText": "Page de Ellie-Rose Wilkens"
     },
     {
       "name": "Tracy Galindo",
@@ -28,7 +28,7 @@
       "tagline": "Photographe freelance",
       "price": 500,
       "portrait": "TracyGalindo.jpg",
-      "alt-text": "Page de Tracy Galindo"
+      "altText": "Page de Tracy Galindo"
     },
     {
       "name": "Nabeel Bradford",
@@ -38,7 +38,7 @@
       "tagline": "Toujours aller de l'avant",
       "price": 350,
       "portrait": "NabeelBradford.jpg",
-      "alt-text": "Page de Nabeel Bradford"
+      "altText": "Page de Nabeel Bradford"
     },
     {
       "name": "Rhode Dubois",
@@ -48,7 +48,7 @@
       "tagline": "Je crée des souvenirs",
       "price": 275,
       "portrait": "RhodeDubois.jpg",
-      "alt-text": "Page de Rhode Dubois"
+      "altText": "Page de Rhode Dubois"
     },
     {
       "name": "Marcel Nikolic",
@@ -58,7 +58,7 @@
       "tagline": "Toujours à la recherche de LA photo",
       "price": 300,
       "portrait": "MarcelNikolic.jpg",
-      "alt-text": "Page de Marcel Nikolic"
+      "altText": "Page de Marcel Nikolic"
     }
   ],
   "media": [
@@ -70,7 +70,7 @@
       "likes": 62,
       "date": "2011-12-08",
       "price": 55,
-      "alt-text": "Femme en sweat devant une plage"
+      "altText": "Femme en sweat devant une plage"
     },
     {
       "id": 8520927,
@@ -80,7 +80,7 @@
       "likes": 11,
       "date": "2011-11-06",
       "price": 55,
-      "alt-text": "Femme en jupe sur un pont"
+      "altText": "Femme en jupe sur un pont"
     },
     {
       "id": 9025895,
@@ -90,7 +90,7 @@
       "likes": 72,
       "date": "2013-08-12",
       "price": 55,
-      "alt-text": "Femme devant un motif quadrillé"
+      "altText": "Femme devant un motif quadrillé"
     },
     {
       "id": 9275938,
@@ -100,7 +100,7 @@
       "likes": 69,
       "date": "2018-02-22",
       "price": 55,
-      "alt-text": "Belvédère décoré pour un mariage"
+      "altText": "Belvédère décoré pour un mariage"
     },
     {
       "id": 2053494,
@@ -110,7 +110,7 @@
       "likes": 2,
       "date": "2020-05-25",
       "price": 55,
-      "alt-text": "Fête de nuit avec feux de Bengale"
+      "altText": "Fête de nuit avec feux de Bengale"
     },
     {
       "id": 7324238,
@@ -120,7 +120,7 @@
       "likes": 33,
       "date": "2019-06-12",
       "price": 55,
-      "alt-text": "Salle décorée pour un anniversaire"
+      "altText": "Salle décorée pour un anniversaire"
     },
     {
       "id": 8328953,
@@ -139,7 +139,7 @@
       "likes": 88,
       "date": "2007-05-07",
       "price": 55,
-      "alt-text": "Peinture d'homme jaune et bleu avec un triangle"
+      "altText": "Peinture d'homme jaune et bleu avec un triangle"
     },
     {
       "id": 8523492,
@@ -149,7 +149,7 @@
       "likes": 24,
       "date": "2018-05-05",
       "price": 55,
-      "alt-text": "Tunnel avec lumière violette et graffitis"
+      "altText": "Tunnel avec lumière violette et graffitis"
     },
     {
       "id": 75902334,
@@ -159,7 +159,7 @@
       "likes": 75,
       "date": "2019-11-25",
       "price": 55,
-      "alt-text": "Peinture avec horde de canards bleus et rouges"
+      "altText": "Peinture avec horde de canards bleus et rouges"
     },
 
     {
@@ -170,7 +170,7 @@
       "likes": 52,
       "date": "2013-02-30",
       "price": 70,
-      "alt-text": "Personnes sur un kayak en train de ramer la nuit"
+      "altText": "Personnes sur un kayak en train de ramer la nuit"
     },
     {
       "id": 92758372,
@@ -180,7 +180,7 @@
       "likes": 58,
       "date": "2018-07-17",
       "price": 70,
-      "alt-text": "Homme et femme en blanc levant la main"
+      "altText": "Homme et femme en blanc levant la main"
     },
     {
       "id": 32958383,
@@ -190,7 +190,7 @@
       "likes": 11,
       "date": "2019-08-12",
       "price": 70,
-      "alt-text": "Femme en robe rouge et baskets descendant des escaliers"
+      "altText": "Femme en robe rouge et baskets descendant des escaliers"
     },
     {
       "id": 928587383,
@@ -200,7 +200,7 @@
       "likes": 2,
       "date": "2019-01-02",
       "price": 70,
-      "alt-text": "Réunion d'équipe en entreprise"
+      "altText": "Réunion d'équipe en entreprise"
     },
     {
       "id": 725639493,
@@ -210,7 +210,7 @@
       "likes": 3,
       "date": "2019-05-20",
       "price": 70,
-      "alt-text": "Présentation en entreprise"
+      "altText": "Présentation en entreprise"
     },
     {
       "id": 23394384,
@@ -220,7 +220,7 @@
       "likes": 52,
       "date": "2019-07-18",
       "price": 70,
-      "alt-text": "Femme jouant sur un clavier"
+      "altText": "Femme jouant sur un clavier"
     },
     {
       "id": 87367293,
@@ -230,7 +230,7 @@
       "likes": 23,
       "date": "2018-02-22",
       "price": 70,
-      "alt-text": "Femme chantant lors d'un concert"
+      "altText": "Femme chantant lors d'un concert"
     },
     {
       "id": 593834784,
@@ -240,7 +240,7 @@
       "likes": 52,
       "date": "2017-03-13",
       "price": 70,
-      "alt-text": "Photo de cerf en nature"
+      "altText": "Photo de cerf en nature"
     },
     {
       "id": 83958935,
@@ -268,7 +268,7 @@
       "likes": 101,
       "date": "2017-04-03",
       "price": 45,
-      "alt-text": "Bain d'eau chaude"
+      "altText": "Bain d'eau chaude"
     },
     {
       "id": 73434243,
@@ -278,7 +278,7 @@
       "likes": 99,
       "date": "2018-04-30",
       "price": 45,
-      "alt-text": "Route sur une colline"
+      "altText": "Route sur une colline"
     },
     {
       "id": 23425523,
@@ -288,7 +288,7 @@
       "likes": 34,
       "date": "2016-04-05",
       "price": 45,
-      "alt-text": "Pont menant vers une forêt"
+      "altText": "Pont menant vers une forêt"
     },
     {
       "id": 23134513,
@@ -298,7 +298,7 @@
       "likes": 23,
       "date": "2017-03-18",
       "price": 45,
-      "alt-text": "Bâteau sur rivière dans les montagnes"
+      "altText": "Bâteau sur rivière dans les montagnes"
     },
     {
       "id": 92352352,
@@ -308,7 +308,7 @@
       "likes": 66,
       "date": "2018-05-24",
       "price": 45,
-      "alt-text": "Portrait de femme souriant en extérieur"
+      "altText": "Portrait de femme souriant en extérieur"
     },
     {
       "id": 34513453,
@@ -318,7 +318,7 @@
       "likes": 52,
       "date": "2017-04-21",
       "price": 45,
-      "alt-text": "Portrait d'homme ressortant du noir"
+      "altText": "Portrait d'homme ressortant du noir"
     },
     {
       "id": 23523533,
@@ -328,7 +328,7 @@
       "likes": 95,
       "date": "2018-11-02",
       "price": 45,
-      "alt-text": "Portrait de femme en noir et blanc"
+      "altText": "Portrait de femme en noir et blanc"
     },
     {
       "id": 525834234,
@@ -338,7 +338,7 @@
       "likes": 25,
       "date": "2019-01-02",
       "price": 45,
-      "alt-text": "Portrait de femme âgée en noir et blanc"
+      "altText": "Portrait de femme âgée en noir et blanc"
     },
 
     {
@@ -349,7 +349,7 @@
       "likes": 88,
       "date": "2019-02-03",
       "price": 45,
-      "alt-text": "Homme sur une montagne devant le paysage"
+      "altText": "Homme sur une montagne devant le paysage"
     },
     {
       "id": 625025343,
@@ -359,7 +359,7 @@
       "likes": 85,
       "date": "2019-04-03",
       "price": 45,
-      "alt-text": "Village en bord de mer"
+      "altText": "Village en bord de mer"
     },
     {
       "id": 2525345343,
@@ -369,7 +369,7 @@
       "likes": 34,
       "date": "2019-04-07",
       "price": 45,
-      "alt-text": "Portrait de fille faisant la grimace"
+      "altText": "Portrait de fille faisant la grimace"
     },
     {
       "id": 2523434634,
@@ -379,7 +379,7 @@
       "likes": 63,
       "date": "2019-04-07",
       "price": 45,
-      "alt-text": "Portrait de fille nue derrière un fauteuil"
+      "altText": "Portrait de fille nue derrière un fauteuil"
     },
     {
       "id": 398847109,
@@ -389,7 +389,7 @@
       "likes": 55,
       "date": "2019-06-20",
       "price": 45,
-      "alt-text": "Portrait de femme ressortant du noir"
+      "altText": "Portrait de femme ressortant du noir"
     },
     {
       "id": 2534342,
@@ -399,7 +399,7 @@
       "likes": 25,
       "date": "2019-06-21",
       "price": 45,
-      "alt-text": "Table dressée au bord de mer"
+      "altText": "Table dressée au bord de mer"
     },
     {
       "id": 65235234,
@@ -409,7 +409,7 @@
       "likes": 52,
       "date": "2019-06-25",
       "price": 45,
-      "alt-text": "Mariés devant des rochers"
+      "altText": "Mariés devant des rochers"
     },
     {
       "id": 23523434,
@@ -419,7 +419,7 @@
       "likes": 77,
       "date": "2019-06-28",
       "price": 45,
-      "alt-text": "Marié tenant la mariée"
+      "altText": "Marié tenant la mariée"
     },
     {
       "id": 5234343,
@@ -438,7 +438,7 @@
       "likes": 59,
       "date": "2019-07-02",
       "price": 60,
-      "alt-text": "Oiseau arc-en-ciel perché sur une branche"
+      "altText": "Oiseau arc-en-ciel perché sur une branche"
     },
 
     {
@@ -449,7 +449,7 @@
       "likes": 25,
       "date": "2019-04-03",
       "price": 60,
-      "alt-text": "Tour au Japon"
+      "altText": "Tour au Japon"
     },
     {
       "id": 2523434,
@@ -459,7 +459,7 @@
       "likes": 53,
       "date": "2019-05-06",
       "price": 60,
-      "alt-text": "Coucher de soleil sur un canal"
+      "altText": "Coucher de soleil sur un canal"
     },
     {
       "id": 95293534,
@@ -469,7 +469,7 @@
       "likes": 33,
       "date": "2019-05-12",
       "price": 60,
-      "alt-text": "Lac devant une montagne ouverte"
+      "altText": "Lac devant une montagne ouverte"
     },
     {
       "id": 356234343,
@@ -479,7 +479,7 @@
       "likes": 53,
       "date": "2019-06-20",
       "price": 60,
-      "alt-text": "Bicyclette devant un escalier"
+      "altText": "Bicyclette devant un escalier"
     },
     {
       "id": 235234343,
@@ -489,7 +489,7 @@
       "likes": 63,
       "date": "2019-06-26",
       "price": 60,
-      "alt-text": "Porte d'un temple en Inde"
+      "altText": "Porte d'un temple en Inde"
     },
     {
       "id": 6234234343,
@@ -499,7 +499,7 @@
       "likes": 52,
       "date": "2019-06-30",
       "price": 60,
-      "alt-text": "Monument à St Petersbourg"
+      "altText": "Monument à St Petersbourg"
     },
     {
       "id": 6525666253,
@@ -509,7 +509,7 @@
       "likes": 63,
       "date": "2019-07-20",
       "price": 60,
-      "alt-text": "Village sur une colline au Tibet"
+      "altText": "Village sur une colline au Tibet"
     },
     {
       "id": 98252523433,
@@ -519,7 +519,7 @@
       "likes": 88,
       "date": "2020-01-05",
       "price": 60,
-      "alt-text": "Tour de Pise"
+      "altText": "Tour de Pise"
     },
     {
       "id": 9259398453,
@@ -538,7 +538,7 @@
       "likes": 54,
       "date": "2020-05-05",
       "price": 60,
-      "alt-text": "Vue d'extérieur sur un appartement faisant le coin du bâtiment"
+      "altText": "Vue d'extérieur sur un appartement faisant le coin du bâtiment"
     },
     {
       "id": 952343423,
@@ -557,7 +557,7 @@
       "likes": 101,
       "date": "2018-03-05",
       "price": 65,
-      "alt-text": "Femme faisant de l'escalade sur des rochers"
+      "altText": "Femme faisant de l'escalade sur des rochers"
     },
     {
       "id": 235343222,
@@ -567,7 +567,7 @@
       "likes": 103,
       "date": "2018-03-10",
       "price": 70,
-      "alt-text": "Homme surfant à l'intérieur d'une vague"
+      "altText": "Homme surfant à l'intérieur d'une vague"
     },
     {
       "id": 7775342343,
@@ -577,7 +577,7 @@
       "likes": 77,
       "date": "2018-04-16",
       "price": 50,
-      "alt-text": "Skieur effectuant une figure"
+      "altText": "Skieur effectuant une figure"
     },
     {
       "id": 9253445784,
@@ -587,7 +587,7 @@
       "likes": 88,
       "date": "2018-04-22",
       "price": 65,
-      "alt-text": "Femmes faisant une course d'athlétisme"
+      "altText": "Femmes faisant une course d'athlétisme"
     },
     {
       "id": 22299394,
@@ -597,7 +597,7 @@
       "likes": 95,
       "date": "2018-04-27",
       "price": 70,
-      "alt-text": "Homme torse-nu faisant une figure en skateboard"
+      "altText": "Homme torse-nu faisant une figure en skateboard"
     },
     {
       "id": 3452342633,
@@ -607,7 +607,7 @@
       "likes": 52,
       "date": "2018-05-03",
       "price": 75,
-      "alt-text": "Lumière blanche émanant d'un dôme"
+      "altText": "Lumière blanche émanant d'un dôme"
     },
     {
       "id": 939234243,
@@ -617,7 +617,7 @@
       "likes": 55,
       "date": "2018-05-10",
       "price": 72,
-      "alt-text": "Bâtiment d'architecture moderne"
+      "altText": "Bâtiment d'architecture moderne"
     },
     {
       "id": 222959233,
@@ -627,7 +627,7 @@
       "likes": 85,
       "date": "2018-05-15",
       "price": 71,
-      "alt-text": "Bâtiment moderne en forme de fer à cheval"
+      "altText": "Bâtiment moderne en forme de fer à cheval"
     },
     {
       "id": 965933434,
@@ -637,7 +637,7 @@
       "likes": 66,
       "date": "2018-05-20",
       "price": 58,
-      "alt-text": "Bâtiment d'architecture moderne"
+      "altText": "Bâtiment d'architecture moderne"
     },
     {
       "id": 777723343,
@@ -647,7 +647,7 @@
       "likes": 79,
       "date": "2018-05-21",
       "price": 80,
-      "alt-text": "Bâtiment d'architecture moderne arrondi"
+      "altText": "Bâtiment d'architecture moderne arrondi"
     }
   ]
 }

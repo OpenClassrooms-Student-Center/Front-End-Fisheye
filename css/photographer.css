@@ -169,6 +169,7 @@ textarea {
   width: 350px;
   height: 300px;
   border-radius: 5px;
+  object-fit: cover;
 }
 
 .img-previews a div {
