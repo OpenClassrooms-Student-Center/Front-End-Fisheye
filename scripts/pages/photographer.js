@@ -17,10 +17,10 @@ function displayPhotographer(photographer) {
 }
 
 function displayArtistMedia(photographerName) {
-  for (let media of DataManager.getPhotographerMedia(photographerId)) {
-    const photo = new Photo(media, photographerName);
+  for (let jsonMedia of DataManager.getPhotographerMedia(photographerId)) {
+    const media = new MediaFactory(jsonMedia, photographerName);
     document.getElementsByClassName("img-previews")[0].innerHTML +=
-      photo.getDOM();
+      media.getDOM();
   }
 }
 

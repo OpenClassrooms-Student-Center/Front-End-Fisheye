@@ -166,30 +166,40 @@ textarea {
   justify-content: space-between;
 }
 
-.img-previews a img {
+.media-preview {
+  cursor: pointer;
+}
+
+.media-preview img,
+.media-preview video {
   width: 350px;
   height: 300px;
   border-radius: 5px;
   object-fit: cover;
 }
 
-.img-previews a div {
+.media-preview div {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  width: 350px;
+  white-space: nowrap;
+  gap: 12px;
 }
 
-.img-previews a p {
+.media-preview p {
   margin: 6px 0px;
 }
 
-.img-previews a i {
+.media-preview i {
   font-size: 18px;
 }
 
-.photograph-name {
+.media-title {
   color: #901c1c;
   font-size: 24px;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .like-count {
