@@ -7,11 +7,13 @@ const lastName = document.getElementById("last-name");
 const email = document.getElementById("email");
 const message = document.getElementById("message");
 const errorSpaces = document.querySelectorAll(".error-wrapper p");
+const closeBtn = document.querySelector(".modal img");
 
 function displayModal() {
   modal.style.display = "block";
   modal.setAttribute("aria-hidden", "false");
   page.setAttribute("aria-hidden", "true");
+  allFields[0].focus();
 }
 
 function closeModal() {
@@ -87,3 +89,10 @@ function logFormInput() {
     console.log(input.value);
   }
 }
+
+//close modal with escape key
+window.addEventListener("keyup", (event) => {
+  if (event.key === "Escape") {
+    closeModal();
+  } else return;
+});
