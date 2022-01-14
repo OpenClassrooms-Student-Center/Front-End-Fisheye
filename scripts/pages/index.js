@@ -1,27 +1,15 @@
-async function getPhotographers() {
-  try {
-    await DataManager.loadJson("../../data/photographers.json");
-    return DataManager.getPhotographers();
-  } catch (err) {
-    const errMessage = new ErrorManager(err);
-    document.getElementById("main").innerHTML +=
-      errMessage.getErrorMessageDOM();
+async function displayData() {
+  const jsonPhotographers = DataManager.getPhotographers();
+  for (let jsonPhotographer of jsonPhotographers) {
+    const photographer = new Photographer(jsonPhotographer);
+    document.getElementsByClassName("photographer_section")[0].innerHTML +=
+      photographer.getPreviewDOM();
   }
 }
 
-async function displayData(photographers) {
-  const photographersSection = document.querySelector(".photographer_section");
-
-  photographers.forEach((photographer) => {
-    const photographerModel = photographerFactory(photographer);
-    const userCardDOM = photographerModel.getPhotographerPreview();
-    photographersSection.innerHTML += userCardDOM;
-  });
-}
-
 async function init() {
-  // Récupère les datas des photographes
-  displayData(await getPhotographers());
+  await DataManager.loadJson("../../data/photographers.json");
+  displayData();
 }
 
 init();

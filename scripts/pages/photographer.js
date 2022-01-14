@@ -25,12 +25,6 @@ function displayArtistMedia(photographerName) {
   }
 }
 
-function displayErrorMessage(err) {
-  const errMessage = document.createElement("p");
-  errMessage.innerText = err;
-  document.getElementById("main").appendChild(errMessage);
-}
-
 function setupLikeButtons() {
   for (let likeButton of document.getElementsByClassName("like-section")) {
     likeButton.addEventListener("click", () => {
