@@ -1,9 +1,7 @@
 const currentUrl = new URL(window.location.href);
 const photographerId = parseInt(currentUrl.searchParams.get("id"));
-let photographerName = "";
 
-async function displayPhotographer() {
-  const photographer = new Photographer(await getPhotographer());
+function displayPhotographer(photographer) {
   document.getElementById("description").innerHTML +=
     photographer.getPhotographerDetailsDOM();
   document
@@ -18,43 +16,11 @@ async function displayPhotographer() {
     photographer.getPageName();
 }
 
-async function getPhotographer() {
-  try {
-    const jsonData = await (
-      await fetch("../../data/photographers.json")
-    ).json();
-    const jsonPhotographer = jsonData.photographers.find(
-      (photographer) => photographer.id === photographerId
-    );
-    await setPhotographerName(jsonPhotographer.name);
-    return jsonPhotographer;
-  } catch (err) {
-    displayErrorMessage(err);
-  }
-}
-
-async function setPhotographerName(name) {
-  photographerName = name;
-}
-
-async function displayArtistMedia() {
-  for (let media of await getArtistMedia()) {
-    const photo = new Photo(media);
+function displayArtistMedia(photographerName) {
+  for (let media of DataManager.getPhotographerMedia(photographerId)) {
+    const photo = new Photo(media, photographerName);
     document.getElementsByClassName("img-previews")[0].innerHTML +=
-      photo.getPhotoThumbnailDOM(photographerName);
-  }
-}
-
-async function getArtistMedia() {
-  try {
-    const jsonData = await (
-      await fetch("../../data/photographers.json")
-    ).json();
-    return jsonData.media.filter(
-      (media) => media.photographerId === photographerId
-    );
-  } catch (err) {
-    displayErrorMessage(err);
+      photo.getDOM();
   }
 }
 
@@ -65,8 +31,12 @@ function displayErrorMessage(err) {
 }
 
 async function init() {
-  await displayPhotographer();
-  displayArtistMedia();
+  await DataManager.loadJson("../../data/photographers.json");
+  const photographer = new Photographer(
+    DataManager.getPhotographer(photographerId)
+  );
+  displayPhotographer(photographer);
+  displayArtistMedia(photographer.name);
 }
 
 for (let likeCount of document.getElementsByClassName("like-count")) {

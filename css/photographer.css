@@ -27,6 +27,7 @@ main {
   align-items: center;
   width: calc(100% - 2 * 34px);
   border-radius: 5px;
+  margin-bottom: 9px;
 }
 
 .photographer-header h1 {

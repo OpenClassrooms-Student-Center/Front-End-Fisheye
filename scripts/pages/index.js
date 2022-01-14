@@ -1,11 +1,7 @@
 async function getPhotographers() {
   try {
-    const data = await fetch("../../data/photographers.json");
-    const jsonData = await data.json();
-    const photographers = jsonData.photographers;
-    return {
-      photographers: [...photographers],
-    };
+    await DataManager.loadJson("../../data/photographers.json");
+    return DataManager.getPhotographers();
   } catch (err) {
     const errMessage = document.createElement("p");
     errMessage.innerText = err;
@@ -25,8 +21,7 @@ async function displayData(photographers) {
 
 async function init() {
   // Récupère les datas des photographes
-  const { photographers } = await getPhotographers();
-  displayData(photographers);
+  displayData(await getPhotographers());
 }
 
 init();

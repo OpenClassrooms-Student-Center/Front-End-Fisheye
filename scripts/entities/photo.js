@@ -1,16 +1,13 @@
 class Photo {
-  constructor(jsonPhoto) {
+  constructor(jsonPhoto, photographerName) {
     jsonPhoto && Object.assign(this, jsonPhoto);
+    this.photographerName = photographerName;
   }
 
-  getMediaUrl() {
-    return `?id=${this.id}`;
-  }
-
-  getPhotoThumbnailDOM(photographer) {
-    return `<a href="${this.getMediaUrl()}">
+  getDOM() {
+    return `<a href="?id=${this.id}">
         <img
-          src="/assets/Sample Photos/${photographer}/${this.image}"
+          src="/assets/Sample Photos/${this.photographerName}/${this.image}"
           alt="${this.altText}"
         />
         <div>
