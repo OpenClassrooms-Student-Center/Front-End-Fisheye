@@ -33,6 +33,13 @@
   cursor: pointer;
 }
 
+.dropdown {
+  margin: 20px 0 20px 7%;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
 .modal {
   border-radius: 5px;
   background-color: var(--secondary-light-red);
@@ -95,25 +102,47 @@ form input {
   box-shadow: -2px 2px 20px rgba(0, 0, 0, 0.25);
 }
 
-.picturespage {
+.cardSize {
+  display: flex;
+  flex-direction: column-reverse;
+}
+
+.picturesSize {
   object-fit: cover;
-    width: 300px;
-    height: 300px;
-    display: flex;
-  
+  width: 300px;
+  height: 300px;
+  display: flex;
+}
+
+.picturesText {
+  font-size: 0.9rem;
+  color: #8a1717;
+  font-weight: bold;
+}
+.underpicture {
+  display: flex;
+  justify-content: space-between;
+  font-size: 1.4rem;
+  color: #8a1717;
+  width: auto;
+  font-size: large;
+  align-items: center;
+}
+
+.likesHeart {
+  display: flex;
 }
 
 .photograph_medias {
   display: flex;
-    align-items: center;
-    row-gap: 50px;
-    justify-content: space-between;
-    column-gap: 60px;
-    flex-wrap: wrap;
-    margin-right: 50px;
-    padding-top: 20px;
-    margin-left: 50px;
-    
+  align-items: center;
+  row-gap: 50px;
+  justify-content: space-between;
+  column-gap: 60px;
+  flex-wrap: wrap;
+  margin-right: 50px;
+  padding-top: 20px;
+  margin-left: 50px;
 }
 a {
   text-decoration: none;
@@ -127,9 +156,22 @@ a {
   background-color: black;
   box-shadow: 3px 3px 5px black;
   transition: 1s all;
-  
 }
 
 /*.player:hover .controls, player:focus .controls {
   opacity: 1;
+}*/
+
+.stickyBar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: fixed;
+  background-color: var(--secondary-light-red);
+  border-radius: 7px 7px 0 0;
+  bottom: 0;
+  right: 5%;
+  width: 200px;
+  font-weight: bold;
+  padding: 0 20px 0 20px;
 }

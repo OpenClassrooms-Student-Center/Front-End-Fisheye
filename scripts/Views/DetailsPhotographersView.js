@@ -1,18 +1,24 @@
 class DetailsPhotographersView {
-  static async showDetailsPhotographer(photographer) {
+  constructor(photographer, medias) {
+    this.photographer = photographer;
+    this.medias = medias;
+  }
+  async showDetailsPhotographer() {
+    this.stickyBar(this.photographer, this.medias);
+
     const photographersSection = document.querySelector(".photograph_header");
-    console.log(photographer);
-    const picture = `assets/photographers/${photographer.portrait}`;
+    console.log(this.photographer);
+    const picture = `assets/photographers/${this.photographer.portrait}`;
 
     let html = `
     
     <div class="photograph-header">
     <div class="photograph-name">
-    <h1>${photographer.name}</h1>
+    <h1>${this.photographer.name}</h1>
     </div>
     <div class="photograph-txt">
-      <h2>${photographer.city}, ${photographer.country}</h2>
-      <p>${photographer.tagline}</p>
+      <h2>${this.photographer.city}, ${this.photographer.country}</h2>
+      <p>${this.photographer.tagline}</p>
     </div>
 </div>
 
@@ -28,7 +34,7 @@ Contactez-moi
     photographersSection.innerHTML = html;
   }
 
-  static async selectDropdown(medias, photographer) {
+  selectDropdown() {
     //menu déroulant trier par
     const dropdownMenu = document.querySelector(".dropdown");
 
@@ -67,36 +73,45 @@ Contactez-moi
         // console.log(medias);
 
         case "title":
-          medias.sort((a, b) => a.title > b.title); // PB DS LE TRI !!!!!
-          console.log();
+          function compare(a, b) {
+            if (a.title < b.title) {
+              return -1;
+            }
+
+            if (a.title > b.title) {
+              return 1;
+            }
+            return 0;
+          }
+
+          medias.sort(compare);
+
           break;
       }
 
       let galeryContainer = document.querySelector(".photograph_medias");
-      console.log(medias);
+
       if (galeryContainer) {
         galeryContainer.innerHTML = "";
       }
-      //for (let index = 0; index < galeryContainer.children.length; index++) {
-      //console.log(index);
-      //galeryContainer.items(index).remove();
-      //}
-      //console.log("pop");
 
-      this.showListMediasPhotographer(medias, photographer);
+      this.showListMediasPhotographer();
     });
 
     dropdownMenu.appendChild(select);
   }
 
-  static async showListMediasPhotographer(medias, photographer) {
+  showListMediasPhotographer() {
     const mediasSection = document.querySelector(".photograph_medias");
-    for (let index = 0; index < medias.length; index++) {
-      const enregMedia = medias[index];
-      //console.log(enregMedia);
-      const pictures = `assets/Sample Photos/${photographer.name}/${enregMedia.image}`;
-      const video = `assets/Sample Photos/${photographer.name}/${enregMedia.video}`;
-      let lightbox = new Lightbox(medias, photographer.name);
+
+    // incrémentation +1 au tableau this.medias
+    for (let index = 0; index < this.medias.length; index++) {
+      const enregMedia = this.medias[index];
+      const pictures = `assets/Sample Photos/${this.photographer.name}/${enregMedia.image}`;
+      const video = `assets/Sample Photos/${this.photographer.name}/${enregMedia.video}`;
+      let lightbox = new Lightbox(this.medias, this.photographer.name);
+
+      //si c'est une image :
 
       for (let attributeName in enregMedia) {
         //
@@ -104,32 +119,52 @@ Contactez-moi
           //
           let newImage = document.createElement("img");
           newImage.setAttribute("src", pictures);
-          newImage.setAttribute("class", "picturespage");
+          newImage.setAttribute("class", "picturesSize");
           newImage.style = "cursor:pointer";
           newImage.addEventListener("click", () => {
             lightbox.displayLightbox(enregMedia.id);
           });
 
-          //crée l'élement container titre + likes + <3 de la photo // CSS set attributes for all
+          //crée l'élement newContainer titre + likes + <3 de la photo // CSS set attributes for all
 
           let newContainer = document.createElement("div");
-          newContainer.appendChild(newImage);
+          newContainer.setAttribute("class", "underpicture");
+
+          //crée element container de tout
+          let container = document.createElement("div");
+          container.setAttribute("class", "cardSize");
+          container.append(newContainer, newImage);
+
           let newContent = document.createTextNode(enregMedia.title);
 
-          newContainer.appendChild(newContent);
-
           //crée élément nombre de likes de la photo / CSS
+          const loveContainer = document.createElement("div");
+          loveContainer.setAttribute("class", "likesHeart");
 
           const likesMedia = document.createElement("p");
+          likesMedia.setAttribute("class", "picturesText");
           likesMedia.textContent = enregMedia.likes;
-          newContainer.appendChild(likesMedia);
+          //likesMedia.textContent = enregMedia.likes;
+          //loveContainer.appendChild(likesMedia);
 
           //crée élément coeur de la photo / CSS à faire
           const heart = document.createElement("p");
           heart.innerHTML = '<i class="fas fa-heart"></i>';
-          newContainer.appendChild(heart);
+          heart.setAttribute("class", "picturesText");
+          //loveContainer.appendChild(heart);
+          loveContainer.append(likesMedia, heart);
 
-          mediasSection.appendChild(newContainer);
+          loveContainer.addEventListener("click", (event) => {
+            //console.log(event.target.parentNode); //p du heart
+
+            likesMedia.textContent = enregMedia.likes += 1;
+            this.stickyBar(this.photographer, this.medias);
+          });
+          newContainer.append(newContent, loveContainer);
+
+          //mediasSection.appendChild(newImage);
+
+          mediasSection.appendChild(container);
 
           //
           break;
@@ -151,5 +186,28 @@ Contactez-moi
         }
       }
     }
+  }
+  stickyBar() {
+    console.log(this.photographer);
+    let stickBar = document.createElement("aside");
+    stickBar.setAttribute("class", "stickyBar");
+    document.body.appendChild(stickBar);
+    console.log(this.medias);
+    let totalLikes = this.calculateTotalLikes();
+    let stickyBarTextOne = document.createElement("p");
+    stickyBarTextOne.textContent = `${totalLikes} likes`;
+    let stickyBarTextTwo = document.createElement("p");
+    stickyBarTextTwo.textContent = `${this.photographer.price}€/jour`;
+
+    stickBar.append(stickyBarTextOne, stickyBarTextTwo);
+  }
+  calculateTotalLikes() {
+    let totalLikes = 0;
+    console.log(this.medias);
+    this.medias.map((element) => {
+      totalLikes += element.likes;
+      console.log("totalLikes");
+    });
+    return totalLikes;
   }
 }

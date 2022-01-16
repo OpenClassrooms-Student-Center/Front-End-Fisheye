@@ -7,12 +7,13 @@ class ControllerPage {
     // Récupère au model les photographes par id et demande à la vue de les afficher
     const photographer = await Model.getPhotographer(id);
     //console.log(photographer);
-    DetailsPhotographersView.showDetailsPhotographer(photographer);
 
     //recupère au model les médias des photographes par id et demande à la vue des les afficher
     const medias = await Model.getMediasByPhotographerId(id);
     //console.log(medias);
-    DetailsPhotographersView.showListMediasPhotographer(medias, photographer);
-    DetailsPhotographersView.selectDropdown(medias, photographer);
+    let view = new DetailsPhotographersView(photographer, medias);
+    view.showDetailsPhotographer();
+    view.showListMediasPhotographer();
+    view.selectDropdown();
   }
 }
