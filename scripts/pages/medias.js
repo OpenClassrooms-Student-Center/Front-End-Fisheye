@@ -1,3 +1,46 @@
+async function getProfile() {
+    // Penser à remplacer par les données récupérées dans le json
+    const photographers = [
+        {
+            "name": "Mimi Keel",
+            "id": 243,
+            "city": "London",
+            "country": "UK",
+            "tagline": "Voir le beau dans le quotidien",
+            "price": 400,
+            "portrait": "MimiKeel.jpg"
+        }
+    ]
+
+    fetch("data/photographers.json")
+    .then((res) => res.json())
+    .then((data) => {
+        console.log(data)
+    })
+
+    return ({photographers}) 
+    // ?????
+}
+
+async function displayData(photographers) {
+    const photographHeader = document.querySelector(".photograph-header");
+
+    photographers.forEach((photographer) => {
+        const photographerModel = profileFactory(photographer);
+        const userCardDOM = photographerModel.getUserCardDOM();
+        photographHeader.appendChild(userCardDOM);
+    }); 
+};
+
+async function init() {
+    // Récupère les datas des photographes
+    const { photographers } = await getProfile();
+    displayData(photographers);
+};
+
+init();
+
+/*
 async function getMedias() {
     // Penser à remplacer par les données récupérées dans le json
     const medias = [
@@ -563,4 +606,4 @@ async function init() {
     displayData(medias);
 };
 
-init();
+init(); */

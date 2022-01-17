@@ -1,39 +1,48 @@
-function mediasFactory(data) {
+function profileFactory(data) {
     const { name, portrait, city, country, tagline, price } = data;
 
     const picture = `assets/photographers/${portrait}`;
 
     function getUserCardDOM() {
-        const article = document.createElement('article');
-      
+        const headerPh = document.querySelector('.photograph-header');
+        const profile = document.createElement('div');
+            profile.style.margin = "auto 0";
+            profile.style.ordre = "1" ; 
+
         const img = document.createElement('img');
             img.setAttribute("src", picture); 
+            img.style.width = "200px";
+            img.style.height = "200px";
+            img.style.objectFit = "cover";
+            img.style.borderRadius = "50%";
+            img.style.margin = "auto 0";
+            img.style.order = "3"; 
 
         const photographerName = document.createElement('h2');
             photographerName.textContent = name;
+            photographerName.style.fontSize = "64px";
+            photographerName.style.color = "#D3573C";
 
         const photographerCity = document.createElement('p');
             photographerCity.textContent = city + ', ' + country; 
-            photographerCity.style.fontSize = "13px";
-            photographerCity.style.color = "#901C1C";
-            photographerCity.style.marginBottom = "3px";
+            photographerCity.style.fontSize = "24px";
+            photographerCity.style.color = "#D3573C";
 
         const photographerTagline = document.createElement('p');
             photographerTagline.textContent = tagline;
-            photographerTagline.style.fontSize = "10px";
-            photographerTagline.style.marginBottom = "3px";
+            photographerTagline.style.fontSize = "18px";
+            photographerTagline.style.marginTop = "20px";
 
         const photographerPrice = document.createElement('p');
             photographerPrice.textContent = price + '€/jour';
-            photographerPrice.style.fontSize = "9px";
 
-        article.appendChild(photographerName);
-        article.appendChild(photographerCity);
-        article.appendChild(photographerTagline);
-        article.appendChild(photographerPrice);
-        link.appendChild(img);
+        profile.appendChild(photographerName);
+        profile.appendChild(photographerCity);
+        profile.appendChild(photographerTagline);
+        headerPh.appendChild(profile);
+        headerPh.appendChild(img);
         
-        return (article);
+        return (profile);
         
     }
     return { name, picture, city, country, tagline, price, getUserCardDOM }

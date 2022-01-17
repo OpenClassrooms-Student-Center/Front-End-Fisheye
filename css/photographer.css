@@ -1,3 +1,9 @@
+* {
+    font-family: "DM Sans", sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
 #contact_modal {
     display: none;
 }
@@ -10,6 +16,9 @@
     background-color: #FAFAFA;
     height: 300px;
     margin: 0 100px;
+    display: flex;
+    justify-content: space-between;
+    padding: 0 50px;
 }
 
 .contact_button {
@@ -23,6 +32,8 @@
     background-color: #901C1C;
     border-radius: 5px;
     cursor: pointer;
+    margin: auto 0;
+    order: 2;
 }
 
 .modal {
