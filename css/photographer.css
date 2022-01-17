@@ -2,6 +2,10 @@
     display: none;
 }
 
+.logo {
+    height: 50px;
+}
+
 .photograph-header {
     background-color: #FAFAFA;
     height: 300px;

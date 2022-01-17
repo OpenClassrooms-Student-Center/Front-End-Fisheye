@@ -63,7 +63,8 @@
             console.log(data)
         })
 
-        return ({photographers: [...photographers]})
+        return ({photographers: [...photographers]}) 
+        // ?????
     }
 
     async function displayData(photographers) {
