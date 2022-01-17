@@ -4,6 +4,10 @@
     padding: 0;
 }
 
+header {
+    margin: 30px 100px;
+}
+
 #contact_modal {
     display: none;
 }
@@ -88,4 +92,13 @@ form input {
     height: 68px;
     border: none;
     border-radius: 5px;
+}
+
+/*****************************************************************/
+
+.photograph-medias {
+    margin: 50px 100px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
 }
