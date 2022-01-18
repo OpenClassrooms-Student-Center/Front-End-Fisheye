@@ -1,5 +1,5 @@
 async function getPhotographers() {   
-    let url = '../SannierJohan_6_13122021/data/photographers.json';
+    let url = '../data/photographers.json';
     try {
         let res = await fetch(url)
         let json = await res.json();
