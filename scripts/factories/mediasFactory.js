@@ -1,3 +1,5 @@
+//FONCTION POUR AFFICHER LE PROFIL DU PHOTOGRAPHE 
+
 function profileFactory(data) {
     const { name, portrait, city, country, tagline, price } = data;
 
@@ -62,7 +64,7 @@ function profileFactory(data) {
     return { name, picture, city, country, tagline, price, getUserCardDOM }
 }
 
-/////////////////////////////////////////////////////////////////////////////
+// FONCTION POUR AFFICHER LES MEDIAS DU PHOTOGRAPHE
 
 function mediasFactory(data) {
     const { image, video, title, likes } = data;

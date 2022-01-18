@@ -1,5 +1,4 @@
 async function getProfile() {
-    // Penser à remplacer par les données récupérées dans le json
     const photographers = [
         {
             "name": "Mimi Keel",
@@ -19,7 +18,7 @@ async function getProfile() {
     })
 
     return ({photographers}) 
-    // ?????
+
 }
 
 async function displayData(photographers) {
@@ -33,7 +32,6 @@ async function displayData(photographers) {
 };
 
 async function init() {
-    // Récupère les datas des photographes
     const { photographers } = await getProfile();
     displayData(photographers);
 };
@@ -43,7 +41,6 @@ init();
 /////////////////////////////////////////////////////////////////
 
 async function getMedias() {
-
     const medias = [
         {
 			"id": 623534343,
