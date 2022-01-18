@@ -90,27 +90,12 @@ class Lightbox {
 
   showImage() {
     this.hideImage();
-    //déterminer si l'element est une image ou une video et gérer les src
-    if (this.medias[this.index].video) {
-      const vids = `assets/Sample Photos/${this.name}/${
-        this.medias[this.index].video
-      }`;
-      console.log(vids);
-      const video = document.createElement("video");
-      video.src = vids;
-      video.controls = true;
-      video.setAttribute("class", "lightbox-img lightbox-media");
-      this.lightbox.appendChild(video);
-      //
-    } else if (this.medias[this.index].image) {
-      const img = document.createElement("img");
-      img.setAttribute("class", "lightbox-img lightbox-media");
-      const pictures = `assets/Sample Photos/${this.name}/${
-        this.medias[this.index].image
-      }`;
-      img.src = pictures;
-      this.lightbox.appendChild(img);
-    }
+
+    let htmlMedia = Factory.getLightboxMedia(
+      this.medias[this.index],
+      this.name
+    );
+    this.lightbox.appendChild(htmlMedia);
   }
 
   hideImage() {

@@ -8,6 +8,8 @@
 
 #contact_modal {
   display: none;
+  position: absolute;
+  top: 20px;
 }
 
 .photograph_header {

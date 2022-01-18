@@ -3,6 +3,7 @@ class DetailsPhotographersView {
     this.photographer = photographer;
     this.medias = medias;
   }
+
   async showDetailsPhotographer() {
     this.stickyBar(this.photographer, this.medias);
 
@@ -104,7 +105,8 @@ Contactez-moi
   showListMediasPhotographer() {
     const mediasSection = document.querySelector(".photograph_medias");
 
-    // incrémentation +1 au tableau this.medias
+    // boucle sur le tableau this.medias
+
     for (let index = 0; index < this.medias.length; index++) {
       const enregMedia = this.medias[index];
       const pictures = `assets/Sample Photos/${this.photographer.name}/${enregMedia.image}`;
@@ -112,11 +114,8 @@ Contactez-moi
       let lightbox = new Lightbox(this.medias, this.photographer.name);
 
       //si c'est une image :
-
       for (let attributeName in enregMedia) {
-        //
         if (attributeName == "image") {
-          //
           let newImage = document.createElement("img");
           newImage.setAttribute("src", pictures);
           newImage.setAttribute("class", "picturesSize");
@@ -125,42 +124,39 @@ Contactez-moi
             lightbox.displayLightbox(enregMedia.id);
           });
 
-          //crée l'élement newContainer titre + likes + <3 de la photo // CSS set attributes for all
+          //crée l'élement pictureLegend titre + likes + <3 de la photo
 
-          let newContainer = document.createElement("div");
-          newContainer.setAttribute("class", "underpicture");
+          let pictureLegend = document.createElement("div");
+          pictureLegend.setAttribute("class", "underpicture");
 
-          //crée element container de tout
-          let container = document.createElement("div");
-          container.setAttribute("class", "cardSize");
-          container.append(newContainer, newImage);
-
-          let newContent = document.createTextNode(enregMedia.title);
+          //crée le titre
+          let pictureTitle = document.createTextNode(enregMedia.title);
 
           //crée élément nombre de likes de la photo / CSS
-          const loveContainer = document.createElement("div");
-          loveContainer.setAttribute("class", "likesHeart");
-
           const likesMedia = document.createElement("p");
           likesMedia.setAttribute("class", "picturesText");
           likesMedia.textContent = enregMedia.likes;
-          //likesMedia.textContent = enregMedia.likes;
-          //loveContainer.appendChild(likesMedia);
 
           //crée élément coeur de la photo / CSS à faire
           const heart = document.createElement("p");
           heart.innerHTML = '<i class="fas fa-heart"></i>';
           heart.setAttribute("class", "picturesText");
-          //loveContainer.appendChild(heart);
+
+          //le loveContainer - au clic, met à jour le like et le total like de la stickybar
+          const loveContainer = document.createElement("div");
+          loveContainer.setAttribute("class", "likesHeart");
           loveContainer.append(likesMedia, heart);
-
-          loveContainer.addEventListener("click", (event) => {
-            //console.log(event.target.parentNode); //p du heart
-
+          loveContainer.addEventListener("click", () => {
             likesMedia.textContent = enregMedia.likes += 1;
+            // cursor main au survol? CSS hover
             this.stickyBar(this.photographer, this.medias);
           });
-          newContainer.append(newContent, loveContainer);
+          pictureLegend.append(pictureTitle, loveContainer);
+
+          //crée element container de tout
+          let container = document.createElement("div");
+          container.setAttribute("class", "cardSize");
+          container.append(pictureLegend, newImage);
 
           //mediasSection.appendChild(newImage);
 
@@ -175,27 +171,26 @@ Contactez-moi
           newVideo.controls = true;
           newVideo.setAttribute("class", "controls");
 
-          let newContainer = document.createElement("a");
-          newContainer.addEventListener("click", () => {
+          let videoLegend = document.createElement("a");
+          videoLegend.addEventListener("click", () => {
             lightbox.displayLightbox(enregMedia.id);
           });
           // créer élément title et likes pour la video??
-          newContainer.appendChild(newVideo);
-          mediasSection.appendChild(newContainer);
+          videoLegend.appendChild(newVideo);
+          mediasSection.appendChild(videoLegend);
           break;
         }
       }
     }
   }
   stickyBar() {
-    console.log(this.photographer);
     let stickBar = document.createElement("aside");
     stickBar.setAttribute("class", "stickyBar");
     document.body.appendChild(stickBar);
-    console.log(this.medias);
+
     let totalLikes = this.calculateTotalLikes();
     let stickyBarTextOne = document.createElement("p");
-    stickyBarTextOne.textContent = `${totalLikes} likes`;
+    stickyBarTextOne.innerHTML = `${totalLikes} <i class="fas fa-heart"></i>`;
     let stickyBarTextTwo = document.createElement("p");
     stickyBarTextTwo.textContent = `${this.photographer.price}€/jour`;
 
@@ -203,10 +198,9 @@ Contactez-moi
   }
   calculateTotalLikes() {
     let totalLikes = 0;
-    console.log(this.medias);
     this.medias.map((element) => {
       totalLikes += element.likes;
-      console.log("totalLikes");
+      //console.log("totalLikes");
     });
     return totalLikes;
   }
