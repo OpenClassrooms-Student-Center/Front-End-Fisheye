@@ -2,6 +2,7 @@ const contactModal = document.getElementById('contact_modal');
 const modal = document.querySelector('.modal');
 const contactButton = document.getElementById('contact_button');
 const contactClose = document.getElementById('contact_close');
+const header = document.querySelector('.photograph-header')
 
 
 // Création de la modale du formulaire de contact
@@ -19,6 +20,7 @@ function displayModal() {
   firstName.setAttribute('name', 'firstname');
   firstName.setAttribute('id', 'firstname');
   firstName.setAttribute('required', 'true');
+  firstName.focus();
   const lastNameLabel = document.createElement('label');
   lastNameLabel.setAttribute('for', 'lastname');
   lastNameLabel.innerText = 'Nom';
@@ -60,6 +62,14 @@ function displayModal() {
   form.appendChild(message);
   form.appendChild(submit);
 
+  header.removeChild(contactButton)
+
+  // contactModal.addEventListener('keydown', (e) => {
+  //   if (e.key === ' ') {
+  //     e.preventDefault()
+  //   }
+  // })
+
   submit.addEventListener('click', (e) => {
     if (firstName.value && lastName.value && email.value && message.value) {
       e.preventDefault();
@@ -79,6 +89,8 @@ function closeModal() {
   contactModal.style.display = 'none';
   const form = document.querySelector('form');
   modal.removeChild(form);
+  header.appendChild(contactButton)
+  contactButton.style.order = 1;
 }
 
 contactButton.addEventListener('click', displayModal);

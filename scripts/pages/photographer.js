@@ -191,6 +191,7 @@ async function getProfile() {
       img.setAttribute("src", picture);
       img.setAttribute("alt", `Portrait de ${el.name}`);
       img.classList.add("photographer-img");
+      img.style.order = 3;
       photographerInfo.appendChild(Pname);
       photographerInfo.appendChild(Plocation);
       photographerInfo.appendChild(Ptagline);
