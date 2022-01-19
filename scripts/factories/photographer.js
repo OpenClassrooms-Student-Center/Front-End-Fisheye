@@ -1,3 +1,4 @@
+// eslint-disable-next-line no-unused-vars
 function photographerFactory(data) {
     const { name, portrait, price, tagline, city, country, id } = data;
 

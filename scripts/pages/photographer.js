@@ -156,19 +156,6 @@ const url = new URL(window.document.location.href);
 params = url.searchParams.get('id');
 const idLink = parseInt(params, 10);
 
-// Création de l'objet profil du photographe
-class Profile {
-  constructor(name, city, country, tagline, portrait, price, id) {
-    this.name = name;
-    this.city = city;
-    this.country = country;
-    this.tagline = tagline;
-    this.portrait = portrait;
-    this.price = price;
-    this.id = id;
-  }
-}
-
 async function getPrice(id) {
   const profile = await getPhotographers();
   for (let index = 0; index < profile.length; index++) {
@@ -275,11 +262,109 @@ function getContactName(name) {
   contactMe.appendChild(contactName);
 }
 
+function createLightbox() {
+  const lightbox = document.createElement('div');
+  lightbox.id = 'lightbox';
+  document.body.appendChild(lightbox);
+  document.body.style.overflow = 'hidden';
+  document.body.style.margin = 'initial';
+  document.body.children.main.setAttribute('aria-hidden', 'true');
+  document.body.removeAttribute('aria-current', 'page');
+  lightbox.setAttribute('aria-current', 'page');
+  return lightbox;
+}
+
+function createModal(element, lightbox) {
+  let newMedia;
+  if (element.src) {
+    // Si le média cliqué possède un attribut src, c'est une balise img. Je créé une nouvelle balise img à laquelle je passe les informations du média cliqué pour afficher le média correct grace à l'attribut data-index
+    newMedia = createImg(element, lightbox);
+  } else {
+    // Si le média cliqué ne possède pas d'attribut src, c'est une vidéo. Je créé une nouvelle balise vidéo et source auxquelles je passe les informations du média cliqué pour afficher le média correct grace à l'attribut data-index
+    newMedia = createVid(element, lightbox);
+  }
+  lightbox.appendChild(newMedia);
+  return newMedia;
+}
+
+function createArrows(lightbox) {
+  // Ajout des icones fléchées et de la croix sur le diaporama
+  const leftArrow = document.createElement('i');
+  leftArrow.classList.add('fas', 'fa-chevron-left');
+  leftArrow.setAttribute('aria-label', 'previous');
+  leftArrow.setAttribute('role', 'Previous image');
+  const rightArrow = document.createElement('i');
+  rightArrow.classList.add('fas', 'fa-chevron-right');
+  rightArrow.setAttribute('aria-label', 'next');
+  rightArrow.setAttribute('role', 'Next image');
+  const exit = document.createElement('i');
+  exit.classList.add('fas', 'fa-times');
+  exit.setAttribute('id', 'exit');
+  exit.setAttribute('aria-label', 'close');
+  exit.setAttribute('role', 'Exit closeup view');
+  lightbox.appendChild(leftArrow);
+  lightbox.appendChild(rightArrow);
+  lightbox.appendChild(exit);
+}
+
 // Création de la lightbox pour afin un diaporama au clic
 function lightboxModal() {
   for (let i = 0; i < media.length; i++) {
     let element = media[i];
     // Ajout d'un event listener clic sur chaque média et création de la lightbox
+    element.addEventListener('keydown', (e) => {
+      if (e.key == ' ' || e.key === 'Enter') {
+        let lightbox = createLightbox();
+        newMedia = createModal(element, lightbox);
+        arrows = createArrows(lightbox);
+        window.addEventListener('keydown', (e) => {
+          switch (e.key) {
+            case 'ArrowLeft':
+              newDataIndex--;
+              lightbox.removeChild(newMedia);
+              // Appel d'une boucle sur tous les médias du photographe de la page afin de trouver le média qui correspond au nouveau data-index
+              for (let index = 0; index < media.length; index++) {
+                const element = media[index];
+                const minusOne = media[0].getAttribute('data-index') - 1;
+                // Si il y a un élément qui correspond au nouveau data-index (un média précédent dans la liste)
+                if (element.getAttribute('data-index') == newDataIndex) {
+                  // Si ce média possède une source (est donc est une balise img)
+                  if (element.src) {
+                    // Je créé une nouvelle balise img à laquelle j'ajoute les informations du nouveau média avant de l'insérer dans le DOM
+                    newMedia = createImg(element, lightbox);
+                  } else {
+                    // Si ce média ne possède pas de source, dans ce cas c'est une balise vidéo
+                    // Je récupère les informations et la balise source que je passe dans des nouvelles balises crées avant de l'injecter dans le DOM
+                    newMedia = createVid(element, lightbox);
+                  }
+                  break;
+                } else if (newDataIndex == minusOne) {
+                  newDataIndex =
+                    media[media.length - 1].getAttribute('data-index');
+                }
+              }
+              break;
+            case 'ArrowRight':
+              console.log('va a droite');
+              break;
+            case 'Escape':
+              // A la pression de la touche echap du clavier, si l'élément était une balise vidéo, lui ajouter la balise source afin que la vidéo reste fonctionnelle
+              if (!element.src) {
+                element.appendChild(newSource);
+              }
+              document.body.removeChild(lightbox);
+              document.body.style.overflow = 'initial';
+              document.body.style.margin = '0 auto';
+              lightbox.removeAttribute('aria-current', 'page');
+              document.body.children.main.setAttribute('aria-hidden', 'false');
+              document.body.setAttribute('aria-current', 'page');
+              break;
+            default:
+              break;
+          }
+        });
+      }
+    });
     element.addEventListener('click', () => {
       const lightbox = document.createElement('div');
       lightbox.id = 'lightbox';
@@ -315,7 +400,7 @@ function lightboxModal() {
       lightbox.appendChild(leftArrow);
       lightbox.appendChild(rightArrow);
       lightbox.appendChild(exit);
-      // Au clic sur la croix, si l'élément était une valise vidéo, lui ajouter la balise source afin que la vidéo reste fonctionnelle au prochain clic
+      // Au clic sur la croix, si l'élément était une balise vidéo, lui ajouter la balise source afin que la vidéo reste fonctionnelle au prochain clic
       exit.addEventListener('click', () => {
         if (!element.src) {
           element.appendChild(newSource);
