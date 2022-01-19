@@ -5,7 +5,7 @@ const photographHeader = document.querySelector(".photograph-header");
 const photographerInfo = document.querySelector(".photographer-info");
 const fixedCounter = document.querySelector(".fixed-counter");
 const chevronDown = document.querySelector(".fa-chevron-down");
-const filter = document.getElementsByClassName("filters");
+const filter = document.querySelectorAll(".filters");
 const filterList = document.querySelectorAll(".tri ul li.hidden");
 const mediaSection = document.getElementById("media-content");
 const media = document.getElementsByClassName("media");
@@ -21,30 +21,27 @@ for (let index = 0; index < filter.length; index++) {
 // Menu déroulant de filtres sur la page des médias
 if (document.location.href.includes("photographer")) {
   chevronDown.addEventListener("click", () => {
-    filterList.forEach((li) => {
-      if (li.className.includes("hidden")) {
-        li.classList.remove("hidden");
-        chevronDown.setAttribute("aria-expanded", true);
-      } else {
-        li.classList.add("hidden");
-        chevronDown.setAttribute("aria-expanded", false);
-      }
-    });
     chevronDown.classList.toggle("fa-chevron-up");
     chevronDown.classList.toggle("fa-chevron-down");
+    if (chevronDown.className.match('fa-chevron-up')) {
+      filter.forEach((li) => {
+        li.classList.remove('hidden')
+      })
+    } else {
+      filter.forEach((li) => {
+        li.classList.add('hidden')
+      })
+      filter[0].classList.remove('hidden')
+    }
   });
 }
 
 // Fonction pour refermer la liste des filtres
-function refreshFilter() {
-  filterList.forEach((li) => {
-    if (li.className.includes("hidden")) {
-      li.classList.remove("hidden");
-    } else {
-      li.classList.add("hidden");
-      chevronDown.setAttribute("aria-expanded", "false");
-    }
-  });
+function refreshFilter(data) {
+  filter.forEach((li) => {
+    li.classList.add('hidden');
+  })
+  data.classList.remove('hidden')
   chevronDown.classList.toggle("fa-chevron-up");
   chevronDown.classList.toggle("fa-chevron-down");
 }
@@ -70,7 +67,7 @@ async function getFilters(data) {
         return 0;
       });
       if (chevronDown.classList.contains("fa-chevron-up")) {
-        refreshFilter();
+        refreshFilter(data);
       }
       displayMedia(mediaArray);
       lightboxModal();
@@ -84,7 +81,7 @@ async function getFilters(data) {
         }
         return 0;
       });
-      refreshFilter();
+      refreshFilter(data);
       displayMedia(mediaArray);
       lightboxModal();
       break;
@@ -97,7 +94,7 @@ async function getFilters(data) {
         }
         return 0;
       });
-      refreshFilter();
+      refreshFilter(data);
       displayMedia(mediaArray);
       lightboxModal();
       break;
@@ -446,8 +443,41 @@ function lightboxModal() {
             }
             // ------------
             break;
-          case 'ArrowRight':
-            console.log(element);
+          case "ArrowRight":
+            newDataIndex++;
+            lightbox.removeChild(newMedia);
+            // Appel d'une boucle sur tous les médias du photographe de la page afin de trouver le média qui correspond au nouveau data-index
+            for (let index = 0; index < media.length; index++) {
+              const element = media[index];
+              const length = media[media.length - 1].getAttribute("data-index");
+              const parsed = parseInt(length, 10);
+              const One = 1;
+              const plusOne = One + parsed;
+              // Si il y a un élément qui correspond au nouveau data-index (un média suivant dans la liste)
+              if (element.getAttribute("data-index") == newDataIndex) {
+                // Si ce média possède une source (est donc est une balise img)
+                if (element.src) {
+                  // Je créé une nouvelle balise img à laquelle j'ajoute les informations du nouveau média avant de l'insérer dans le DOM
+                  newMedia = createImg(element, lightbox);
+                } else {
+                  // Si ce média ne possède pas de source, dans ce cas c'est une balise vidéo
+                  // Je récupère les informations et la balise source que je passe dans des nouvelles balises crées avant de l'injecter dans le DOM
+                  newMedia = createVid(element, lightbox);
+                }
+                break;
+              } else if (newDataIndex == plusOne) {
+                newDataIndex = media[0].getAttribute("data-index");
+                if (element.src) {
+                  // Je créé une nouvelle balise img à laquelle j'ajoute les informations du nouveau média avant de l'insérer dans le DOM
+                  newMedia = createImg(element, lightbox);
+                } else {
+                  // Si ce média ne possède pas de source, dans ce cas c'est une balise vidéo
+                  // Je récupère les informations et la balise source que je passe dans des nouvelles balises crées avant de l'injecter dans le DOM
+                  newMedia = createVid(element, lightbox);
+                }
+                break;
+              }
+            }
             break;
           default:
             break;
