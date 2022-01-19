@@ -1,5 +1,5 @@
+    //RECUPERATION DES DONNEES DES PHOTOGRAPHES
     async function getPhotographers() {
-        // Penser à remplacer par les données récupérées dans le json
         const photographers = [
             {
                 "name": "Mimi Keel",
@@ -64,9 +64,9 @@
         })
 
         return ({photographers: [...photographers]}) 
-        // ?????
     }
 
+    //AFFICHAGE DES DONNEES VIA PhotographerFactory
     async function displayData(photographers) {
         const photographersSection = document.querySelector(".photographer_section");
 
@@ -78,7 +78,6 @@
     };
 
     async function init() {
-        // Récupère les datas des photographes
         const { photographers } = await getPhotographers();
         displayData(photographers);
     };
