@@ -61,14 +61,7 @@ function displayModal() {
   form.appendChild(messageLabel);
   form.appendChild(message);
   form.appendChild(submit);
-
   header.removeChild(contactButton)
-
-  // contactModal.addEventListener('keydown', (e) => {
-  //   if (e.key === ' ') {
-  //     e.preventDefault()
-  //   }
-  // })
 
   submit.addEventListener('click', (e) => {
     if (firstName.value && lastName.value && email.value && message.value) {
