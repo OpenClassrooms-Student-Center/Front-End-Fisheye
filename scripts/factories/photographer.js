@@ -12,13 +12,13 @@ function photographerFactory(data) {
         const h2 = document.createElement( 'h2' );
         h2.textContent = name;
 
-        const locationCity = document.createElement('p');
+        const locationCity = document.createElement('h3');
         locationCity.textContent = city;
 
-        const locationCountry = document.createElement ('p');
+        const locationCountry = document.createElement ('h3');
         locationCountry.textContent = country;
 
-        const description = document.createElement ('p');
+        const description = document.createElement ('i');
         description.textContent = tagline;
 
         const pricePerDay = document.createElement ('p');
