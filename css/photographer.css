@@ -102,3 +102,7 @@ form input {
     flex-wrap: wrap;
     justify-content: space-between;
 }
+
+.vid + img{
+    display: none;
+}
