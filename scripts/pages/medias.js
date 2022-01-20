@@ -14,14 +14,8 @@ async function getProfile() {
     fetch("data/photographers.json")
     .then((res) => res.json())
     .then((data) => {
-		//RECUPERE L'ID DU PHOTOGRAPHE VIA HREF PHOTOGRAPHER CARD
-		const getId = (urlId, id) => {
-			urlId = new URL(document.location).searchParams;
-			id = urlId.get('id');
-			return id;
-		}
         console.log(data);
-		console.log(getId());
+		
     })
 
     return ({photographers}) 
