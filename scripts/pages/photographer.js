@@ -60,7 +60,7 @@
     fetch("data/photographers.json")
     .then((res) => res.json())
     .then((data) => {
-        console.log(data);
+        //console.log(data);
     })
 
     return ({photographers: [...photographers]}) 
@@ -78,12 +78,17 @@ async function displayData(photographers) {
         let verifyUrl = new URLSearchParams(window.location.search);
         verifyUrl.has(photographer.id);
         let param = verifyUrl.get('id');
-        console.log(param);
+        //console.log(param);
 
         if(photographer.id == param) {
             const photographerModel = profileFactory(photographer);
             const userCardDOM = photographerModel.getUserCardDOM();
             photographHeader.appendChild(userCardDOM);
+
+            const contactHeader = document.querySelector(".contact-header");
+            const contactModel = contactFactory(photographer);
+            const contactCardDOM = contactModel.getContactCardDOM();
+            contactHeader.appendChild(contactCardDOM);
         }
     });
 };

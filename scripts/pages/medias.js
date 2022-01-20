@@ -539,7 +539,7 @@ async function getMedias() {
     fetch("data/photographers.json")
     .then((res) => res.json())
     .then((data) => {
-        console.log(data)
+        //console.log(data)
     })
 
     return ({medias : [...medias]}) 
@@ -554,7 +554,7 @@ async function displayDataMedias(medias) {
         let verifyUrl = new URLSearchParams(window.location.search);
         verifyUrl.has(media.photographerId);
         let param = verifyUrl.get('id');
-        console.log(media.photographerId); 
+        //console.log(media.photographerId); 
 		
 		if(media.photographerId == param) {
 			const mediaModel = mediasFactory(media);
