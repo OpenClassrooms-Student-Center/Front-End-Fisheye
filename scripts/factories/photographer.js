@@ -12,8 +12,8 @@ function photographerFactory(data) {
         const h2 = document.createElement( 'h2' );
         h2.textContent = name;
 
-        const locationCity = document.createElement('h3');
-        locationCity.textContent = city;
+        const location = document.createElement('h3');
+        location.textContent = city;
 
         const locationCountry = document.createElement ('h3');
         locationCountry.textContent = country;
@@ -26,8 +26,7 @@ function photographerFactory(data) {
 
         article.appendChild(img);
         article.appendChild(h2);
-        article.appendChild(locationCity);
-        article.appendChild(locationCountry);
+        article.appendChild(location);
         article.appendChild(description);
         article.appendChild(pricePerDay);
 
