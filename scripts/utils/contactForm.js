@@ -22,7 +22,7 @@ function closeModal() {
 
 //INSERTION DU NOM DU PHOTOGRAPHE DANS LA MODALE
 function contactFactory(data) {
-    const {name} = data;
+    const {name, id} = data;
 
     function getContactCardDOM() {
         const modal = document.querySelector(".modal");
@@ -90,4 +90,15 @@ form.addEventListener("submit", (e) => {
         isTextareaValid = true;
         textarea.style.border = "solid 5px green";
     }
+
+
+    if(isInputFirstnameValid &&
+        isInputLastnameValid &&
+        isInputEmailValid &&
+        isTextareaValid) {
+            form.reset();
+        }
+
+    
 })
+
