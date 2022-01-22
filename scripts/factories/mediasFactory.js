@@ -7,16 +7,18 @@ function mediasFactory(data) {
 
     function getMediasCardDOM() {
 
-      const figure = document.createElement('article');
-            figure.style.marginBottom = "40px";
-            figure.style.width = "350px";
+        const figure = document.createElement('article');
+                figure.style.marginBottom = "40px";
+                figure.style.width = "350px";
 
-    const img = document.createElement('img');
-        img.setAttribute("src", mediaImage);
-        img.style.width = "350px";
-        img.style.height = "300px";
-        img.style.objectFit = "cover";
-        
+        const img = document.createElement('img');
+            img.setAttribute("src", mediaImage);
+            img.style.width = "350px";
+            img.style.height = "300px";
+            img.style.objectFit = "cover";
+            img.style.cursor = "pointer";
+            img.classList.add("photo"); 
+
         const mediaCaption = document.createElement('div');
             mediaCaption.style.display = "flex";
             mediaCaption.style.justifyContent = "space-between";
@@ -39,6 +41,19 @@ function mediasFactory(data) {
                 vid.style.height = "300px";
                 figure.appendChild(vid);
                 vid.style.objectFit = "cover";
+                vid.style.cursor = "pointer";
+
+                /*
+                vid.addEventListener("click", () => {
+                    const lightbox = document.querySelector(".lightbox");
+                    const container = document.querySelector(".container");
+                    lightbox.style.display = "block";
+                    container.appendChild(vid);
+                    vid.style.width = "100%";
+                    vid.style.height ="100%"; 
+                    vid.style.margin = "auto";
+                    vid.classList.add("selected");
+                }); */
             };
     
         figure.appendChild(img);
@@ -46,11 +61,9 @@ function mediasFactory(data) {
         mediaCaption.appendChild(mediaTitle);
         mediaCaption.appendChild(mediaLike);
 
-        
-
         return (figure);
-        
     }
+
     return { image, video, title, likes, getMediasCardDOM }
 }
 

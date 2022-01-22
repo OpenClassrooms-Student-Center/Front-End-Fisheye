@@ -65,7 +65,7 @@
 
     return ({photographers: [...photographers]}) 
     
- }
+}
 
 
 //AFFICHAGE DES DONNEES VIA profileFactory

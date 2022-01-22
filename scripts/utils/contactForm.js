@@ -22,7 +22,7 @@ function closeModal() {
 
 //INSERTION DU NOM DU PHOTOGRAPHE DANS LA MODALE
 function contactFactory(data) {
-    const {name, id} = data;
+    const {name} = data;
 
     function getContactCardDOM() {
         const modal = document.querySelector(".modal");

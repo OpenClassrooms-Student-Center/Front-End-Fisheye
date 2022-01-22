@@ -539,28 +539,37 @@ async function getMedias() {
     fetch("data/photographers.json")
     .then((res) => res.json())
     .then((data) => {
-        //console.log(data)
+        console.log(data)
     })
 
     return ({medias : [...medias]}) 
 }
 
+
+
 async function displayDataMedias(medias) {
     const photographMedias = document.querySelector(".photograph-medias");
-
+	//const lightboxSection = document.querySelector(".lightbox-section");
+	
     medias.forEach((media) => {
+
+		
 
 		//Verifie si l'url contient l'id du photographe
         let verifyUrl = new URLSearchParams(window.location.search);
         verifyUrl.has(media.photographerId);
         let param = verifyUrl.get('id');
-        //console.log(media.photographerId); 
+        //console.log(media.photographerId);  
 		
 		if(media.photographerId == param) {
+
 			const mediaModel = mediasFactory(media);
         	const mediaCardDOM = mediaModel.getMediasCardDOM();
         	photographMedias.appendChild(mediaCardDOM);
-		}
+
+			const lightboxModel = lightboxFactory(media);
+			lightboxModel.getLightboxDOM();
+		};
     }); 
 };
 
