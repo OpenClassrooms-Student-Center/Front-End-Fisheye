@@ -1,6 +1,7 @@
 function lightboxFactory(data) {
 
     const { image , video } = data;
+    let mediaImage = `assets/medias/${image}`;
 
     function getLightboxDOM() {
 
@@ -46,7 +47,8 @@ function lightboxFactory(data) {
         closeLightbox.style.cursor = "pointer";
 
         //OUVERTURE DE LA LIGHTBOX AU CLIC
-        const photos = document.querySelectorAll(".photo");
+        const photos = document.querySelectorAll("img");
+        const videos = document.querySelectorAll("video");
 
         photos.forEach(img => { 
             img.addEventListener("click", () => {
@@ -60,6 +62,48 @@ function lightboxFactory(data) {
             })
         });
 
+        videos.forEach(video => {
+            video.addEventListener("click", () => {
+                lightbox.style.display = "block";
+                container.appendChild(video);
+                video.style.width = "100%";
+                video.style.height ="100%"; 
+                video.style.margin = "auto";
+                video.classList.add("selected"); 
+            });
+        })
+        
+
+        //FERMETURE DE LA LIGHTBOX 
+        closeLightbox.addEventListener("click", () => {
+            lightbox.style.display = "none";
+            location.reload(); 
+            //COMMENT FAIRE REAPPARAITRE LE MEDIA ????
+        })
+
+        //PHOTOS SUIVANTE 
+        const medias = (data.image + data.video);
+
+        
+
+        const previousMedia = () => {
+            previous.addEventListener("click", () => {
+                if(medias.classList.contains("selected")) {
+                   // medias.classList.remove("selected");
+                   // i--;
+                   console.log(true);
+                }
+            });
+        };
+
+        for (let i = 0; i < medias.length; i++) {
+            myMedia = medias[i];
+            previousMedia();
+        //   nextMedia();
+        
+
+
+    };
       
         lightbox.appendChild(container);
         lightbox.appendChild(previous);

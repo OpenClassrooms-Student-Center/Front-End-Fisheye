@@ -42,18 +42,6 @@ function mediasFactory(data) {
                 figure.appendChild(vid);
                 vid.style.objectFit = "cover";
                 vid.style.cursor = "pointer";
-
-                /*
-                vid.addEventListener("click", () => {
-                    const lightbox = document.querySelector(".lightbox");
-                    const container = document.querySelector(".container");
-                    lightbox.style.display = "block";
-                    container.appendChild(vid);
-                    vid.style.width = "100%";
-                    vid.style.height ="100%"; 
-                    vid.style.margin = "auto";
-                    vid.classList.add("selected");
-                }); */
             };
     
         figure.appendChild(img);
