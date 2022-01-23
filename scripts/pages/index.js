@@ -6,7 +6,7 @@
 			"id": 243,
 			"city": "London, UK",
 			"tagline": "Voir le beau dans le quotidien",
-			"price": 400,
+			"price": "400€/jour",
 			"portrait": "MimiKeel.jpg"
             },
             {
@@ -14,7 +14,7 @@
 			"id": 930,
 			"city": "Paris, France",
 			"tagline": "Capturer des compositions complexes",
-			"price": 250,
+			"price": "250€/jour",
 			"portrait": "EllieRoseWilkens.jpg"
             },
             {
@@ -22,7 +22,7 @@
 			"id": 82,
 			"city": "Montreal, Canada",
 			"tagline": "Photographe freelance",
-			"price": 500,
+			"price": "500€/jour",
 			"portrait": "TracyGalindo.jpg"
             },
             {
@@ -30,7 +30,7 @@
 			"id": 527,
 			"city": "Mexico City, Mexico",
 			"tagline": "Toujours aller de l'avant",
-			"price": 350,
+			"price": "350€/jour",
 			"portrait": "NabeelBradford.jpg"
             },
             {
@@ -38,7 +38,7 @@
 			"id": 925,
 			"city": "Barcelona, Spain",
 			"tagline": "Je crée des souvenirs",
-			"price": 275,
+			"price": "275€/jour",
 			"portrait": "RhodeDubois.jpg"
             },
             {
@@ -46,7 +46,7 @@
 			"id": 195,
 			"city": "Berlin, Germany",
 			"tagline": "Toujours à la recherche de LA photo",
-			"price": 300,
+			"price": "300€/jour",
 			"portrait": "MarcelNikolic.jpg"
 		    }
         ]
