@@ -8,6 +8,9 @@ function photographerFactory(data) {
 
         const img = document.createElement( 'img' );
         img.setAttribute("src", picture);
+        img.onclick = function(){
+            window.location.href = './photographer.html';
+        };
 
         const h2 = document.createElement( 'h2' );
         h2.textContent = name;
