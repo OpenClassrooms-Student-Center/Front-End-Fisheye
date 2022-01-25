@@ -6,10 +6,14 @@
 
 header {
     margin: 30px 100px;
+    display: flex;
 }
 
 #contact_modal {
     display: none;
+    position: absolute;
+    width: 100%;
+    top: 10px;
 }
 
 .logo {
@@ -46,25 +50,30 @@ header {
     width: 50%;
     display: flex;
     flex-direction: column;
-    align-items: center;
     justify-content: space-between;
-    padding: 35px;
+    padding: 20px 35px;
     margin: auto;
+    z-index: 99;
+    
 }
 
 .modal header {
     justify-content: space-between;
     width: 100%;
+    margin: 0;
+    order: 1;
 }
 
 .modal header img {
     cursor: pointer;
+    height: 40px;
+    width: 40px;
+    margin-top: 20px;
 }
 
 .modal header h2 {
     font-size: 64px;
     font-weight: normal;
-    text-align: center;
 }
 
 form {
@@ -72,6 +81,7 @@ form {
     width: 100%;
     flex-direction: column;
     align-items: flex-start;
+    order: 3;
 }
 
 form label {
@@ -101,4 +111,20 @@ form input {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
+}
+
+.vid + img{
+    display: none;
+}
+
+.lightbox {
+    background: white;
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 999;
+    text-align: center;
+    display: none;
 }
