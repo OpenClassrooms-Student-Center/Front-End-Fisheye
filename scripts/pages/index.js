@@ -3,7 +3,7 @@
         const photographers = [
             {
 			"name": "Mimi Keel",
-			"id": '243',
+			"id": 243,
 			"city": "London, UK",
 			"tagline": "Voir le beau dans le quotidien",
 			"price": "400€/jour",
@@ -72,4 +72,4 @@
     };
     
     init();
-    
+    	

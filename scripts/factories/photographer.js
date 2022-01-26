@@ -10,10 +10,13 @@ function photographerFactory(data) {
         img.setAttribute("src", picture);
         img.onclick = function(){
             window.location.href = './photographer.html';
-        };
+        }
 
         const h2 = document.createElement( 'h2' );
         h2.textContent = name;
+        h2.onclick = function(){
+            window.location.href = './photographer.html';
+        }
 
         const location = document.createElement( 'h3' );
         location.textContent = city;
@@ -33,5 +36,5 @@ function photographerFactory(data) {
 
         return (article);
     }
-    return { name, picture, getUserCardDOM }
+    return { name, picture, getUserCardDOM}
 }
