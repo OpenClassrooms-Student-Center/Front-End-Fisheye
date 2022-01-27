@@ -5,7 +5,9 @@ const first = document.getElementById("first");
 const last = document.getElementById("last");
 const email = document.getElementById("email");
 const modal = document.getElementById("contact_modal");
-const modal = document.getElementById("contact_modal");
+const message = document.getElementById("message");
+const form = document.querySelector("form");
+const btnSubmit = document.querySelector("#submit");
 
 //Fonction et fermeture du modal
 function displayModal() {
@@ -16,10 +18,10 @@ function closeModal() {
 }
 
 //Empêcher la page de se recharger tant que le formulaire n'est pas validé
-submitBtn.addEventListener("click", (e) => {
+btnSubmit.addEventListener("click", (e) => {
   e.preventDefault();
+  checkForm();
   validForm();
-  closeForm();
 });
 
 //Fonctions pour les bordures des inputs
@@ -28,7 +30,7 @@ function goodBorder(element) {
 }
 
 function badBorder(element) {
-  changeBorder(element, "#e54858");
+  changeBorder(element, "#901c1c");
 }
 
 function changeBorder(element, color) {
@@ -53,7 +55,9 @@ last.addEventListener("blur", (e) => {
 email.addEventListener("blur", (e) => {
   checkEmail();
 });
-
+message.addEventListener("blur", (e) => {
+  checkMessage();
+});
 //Fonction de contrôle du prénom
 function checkPrenom() {
   const firstValue = first.value.trim();
@@ -93,17 +97,41 @@ function checkEmail() {
   return true;
 }
 
+function checkMessage() {
+  const messageValue = message.value.trim();
+  if (messageValue === null || messageValue.length < 10) {
+    removeInvisible(message);
+    badBorder(message);
+    return false;
+  }
+  goodBorder(message);
+  addInvisible(message);
+  return true;
+}
 //Fonctions de contrôle avant validation du formulaire
-function validForm() {
+function checkForm() {
   checkPrenom();
   checkNom();
   checkEmail();
+  checkMessage();
 }
 
-//Fonction de validation du formulaire
-function closeForm() {
-  if (checkPrenom() && checkNom() && checkEmail()) {
-    form.remove();
-    document.getElementById("confirmation").classList.remove("invisible");
+// Fonction de validation du formulaire
+function validForm() {
+  console.log(
+    "Prénom : " +
+      first.value +
+      "\nNom : " +
+      last.value +
+      "\nEmail : " +
+      email.value +
+      "\nMessage : " +
+      message.value
+  );
+  if (checkPrenom() && checkNom() && checkEmail() && checkMessage()) {
+    console.log("Le formulaire est valide");
+    return true;
   }
+  console.error("Le formulaire n'est pas valide");
+  return false;
 }

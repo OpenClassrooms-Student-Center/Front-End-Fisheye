@@ -73,4 +73,20 @@ form input {
   height: 68px;
   border: none;
   border-radius: 5px;
+  font-size: 2rem;
+}
+.error {
+  margin-top: 5px;
+  color: #901c1c;
+  font-size: 1em;
+}
+.invisible {
+  display: none;
+}
+
+textarea {
+  width: 100%;
+  min-height: 13rem;
+  font-size: 2rem;
+  border-radius: 5px;
 }

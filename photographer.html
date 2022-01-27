@@ -1,23 +1,24 @@
 <!DOCTYPE html>
 <html lang="fr">
   <head>
-    <link href="css/style.css" rel="stylesheet" type="text/css" />
+    <link href="css/style.css" rel="stylesheet" />
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="icon" type="image/png" href="assets/favicon.png" />
+    <link rel="icon" type="image/png" href="#" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
       href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&family=Shrikhand&display=swap"
       rel="stylesheet"
-      role="link"
     />
     <title>Fisheye - photographe</title>
   </head>
   <body>
     <header role="banner" aria-label="En tête">
-      <img src="assets/images/logo.png" class="logo" aria-label="image" />
+      <a href="index.html"
+        ><img src="assets/images/logo.png" class="logo" aria-label="image" />
+      </a>
     </header>
     <main id="main" role="main">
       <div class="photograph-header">
@@ -31,7 +32,7 @@
         <header>
           <h2>Contactez-moi</h2>
           <img
-            src="assets/icons/close.svg"
+            src="./assets/icons/close.svg"
             alt="image"
             onclick="closeModal()"
           />
@@ -82,11 +83,16 @@
           <div>
             <label for="message">Votre message</label>
             <textarea name="message" id="message" required></textarea>
+            <div class="error invisible">
+              Vous devez indiquer votre message !
+            </div>
           </div>
-          <button type="button" class="contact_button">Envoyer</button>
+          <button type="button" class="contact_button" id="submit">
+            Envoyer
+          </button>
         </form>
       </div>
     </div>
-    <script src="/scripts/utils/contactForm.js"></script>
+    <script src="./scripts/utils/contactForm.js"></script>
   </body>
 </html>
