@@ -44,6 +44,8 @@ h1 {
 }
 
 .photographer_section article img {
+  display: flex;
+  margin: auto;
   height: 200px;
   width: 200px;
   border-radius: 98px;

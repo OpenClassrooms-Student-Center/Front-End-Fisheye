@@ -130,6 +130,7 @@ function validForm() {
   );
   if (checkPrenom() && checkNom() && checkEmail() && checkMessage()) {
     console.log("Le formulaire est valide");
+    closeModal();
     return true;
   }
   console.error("Le formulaire n'est pas valide");
