@@ -1,24 +1,18 @@
-function photographerDetailFactory(data, photos) {
-    const { name, portrait, city, country, tagline, price, id } = data;
-
-    const profilePicture = `assets/photographers/${portrait}`;
-    const slideShow = new SlideShow(name, photos);
-
-
-    function getPhotographersInfo() {
-        const img = document.getElementById("profile-pic")
-        img.src = profilePicture
-        const nameElement = document.getElementById("name")
-        nameElement.innerHTML = name
-        const location = document.getElementById("location")
-        location.innerHTML = city + ', ' + country
-        const description = document.getElementById("desc")
-        description.innerHTML = tagline
+class MediaFactory {
+    constructor(photographer, index, media, photos) {
+        if (media.image) {
+            return this.getPhotoDOM(photographer, index, media, photos)
+        } else if (media.video) {
+            return this.getVideoDOM(photographer, photos, index, media)
+        } else {
+            return
+        }
     }
 
-    function getVideoDOM(index, video) {
 
-        const videoLink = `assets/images/${name}/${video.video}`;
+    getVideoDOM(photographer, photos, index, video) {
+
+        const videoLink = `assets/images/${photographer.name}/${video.video}`;
         const iconImage = `assets/icons/Vector.png`;
 
         const article = document.createElement('article');
@@ -30,15 +24,16 @@ function photographerDetailFactory(data, photos) {
         videoElement.setAttribute('width', 350);
         videoElement.setAttribute('height', 300);
 
+        let slideshow = new SlideShow(photographer.name, photos);
         videoElement.addEventListener("click", function () {
-            slideShow.open(index)
+            slideshow.open(index)
 
         }, true);
         srcVideo.setAttribute('src', videoLink);
 
         const titleDiv = document.createElement('div');
 
-        const title = document.createElement('p');
+        const title = document.createElement('h3');
         title.textContent = video.title;
 
         const span = document.createElement('span');
@@ -46,6 +41,7 @@ function photographerDetailFactory(data, photos) {
 
         const icon = document.createElement('img');
         icon.setAttribute("src", iconImage);
+        icon.setAttribute("alt", "likes")
         span.appendChild(icon);
 
         article.appendChild(link);
@@ -59,21 +55,22 @@ function photographerDetailFactory(data, photos) {
 
     }
 
-    function getPhotoDOM(index, photo, photos) {
-        const photoLink = `assets/images/${name}/${photo.image ? photo.image : photo.video}`;
+    getPhotoDOM(photographer, index, photo, photos) {
+        const photoLink = `assets/images/${photographer.name}/${photo.image ? photo.image : photo.video}`;
         const likeIcon = `assets/icons/Vector.png`;
         const article = document.createElement('article');
         const link = document.createElement('a');
 
         const img = document.createElement('img');
-        img.addEventListener("click", function () {
-            slideShow.open(index, photos)
+        var slideshow = new SlideShow(photographer.name, photos);
+        link.addEventListener("click", function () {
+            slideshow.open(index, photos)
 
         }, true);
 
         const titleDiv = document.createElement('div');
 
-        const title = document.createElement('p');
+        const title = document.createElement('h3');
         title.textContent = photo.title;
 
         const span = document.createElement('span');
@@ -88,7 +85,8 @@ function photographerDetailFactory(data, photos) {
         img.setAttribute("alt", photo.title)
         img.setAttribute("aria-pressed", false)
         img.setAttribute("role", "button")
-        link.setAttribute("href", "javascript:void(0)")
+        link.setAttribute("href", "#")
+        link.setAttribute("title", "Agrandir l'image")
         article.appendChild(link);
 
         link.appendChild(img);
@@ -98,5 +96,5 @@ function photographerDetailFactory(data, photos) {
 
         return (article);
     }
-    return { name, profilePicture, city, country, tagline, price, getPhotoDOM, getPhotographersInfo, getVideoDOM }
+
 }

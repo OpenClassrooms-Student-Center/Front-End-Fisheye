@@ -3,6 +3,7 @@
 
 <head>
   <link href="css/style.css" rel="stylesheet" type="text/css" />
+  <link href="css/photographer.css" rel="stylesheet" type="text/css" />
   <meta charset="utf-8">
   <link rel="icon" type="image/png" href="assets/favicon.png">
   <link href="https://fonts.googleapis.com/css?family=DM+Sans&display=swap" rel="stylesheet">
@@ -11,72 +12,108 @@
 
 <body onload="init()">
   <header>
-    <a href="#"><img src="assets/images/logo.png" class="logo" alt="Fisheye Home page" /></a>
+    <a href="index.html"><img src="assets/images/logo.png" class="logo" alt="Fisheye Home page" /></a>
   </header>
   <main id="main">
     <div class="photograph-header">
       <div class="header-info">
         <h1 class="info-name" id="name"></h1>
         <h2 class="info-location" id="location"></h2>
-        <p class="info-desc" id="desc"></p>
+        <h3 class="info-desc" id="desc"></h3>
       </div>
       <div class="header-button">
         <button class="contact_button" alt="Contact Me" onclick="displayModal()">Contactez-moi</button>
       </div>
       <div class="header-img">
-        <img id="profile-pic" alt="" class="photograph-img" />
+        <img id="profile-pic" alt="Profile Picture" class="photograph-img" />
+      </div>
+    </div>
+
+    <div id="sortItems">
+      <div class="row">
+        <h2 id="sortLabel">Trier par</h2>
+        <label class="dropdown">
+          <span id="sortDropList" class="dd-button h2" role="button" aria-haspopup="listbox" aria-expanded>
+            Popularité
+          </span>
+          <input type="checkbox" class="dd-input" id="test">
+          <ul class="dd-menu" role="listbox" aria-activedescendant="popularité" aria-labelledby="sortLabel">
+            <li id="popularity" onclick="sortData(1)" value="0" aria-selected>Popularité</li>
+            <li class="divider"></li>
+            <li id="date" onclick="sortData(2)" value="1">Date</li>
+            <li class="divider"></li>
+            <li id="title" onclick="sortData(3)" value="2">Titre</li>
+          </ul>
+        </label>
+      </div>
+    </div>
+
+    <dialog id="slideshow_modal" aria-label="image closeup view">
+      <div class="slideshow-modal">
+        <video class="current-video" controls="true">
+          <source id="video-src" src="">
+        </video>
+        <img class="current-img" alt="Current Photo">
+        <div class="title-img" id="title-img"></div>
+        <button class="close_slideshow" id="close" tabindex="3" aria-label="Close Dialog">
+          <img src="assets/icons/close.png" alt="close" />
+        </button>
+        <a href="#" class="next_slideshow" tabindex="2" id="next" aria-label="Next image">
+          <img src="assets/icons/next.png" alt="next Item" />
+        </a>
+        <a href="#" class="prev_slideshow" tabindex="1" id="prev" aria-label="Previous image">
+          <img src="assets/icons/prev.png" alt="Previous Item" />
+        </a>
+      </div>
+    </dialog>
+    <div id="like_bar">
+      <div class="like">
+        <div class="like_details">
+          <h2 id="total_likes"></h2>
+          <h3 id="price"></h3>
+        </div>
+      </div>
+    </div>
+    <dialog id="contact_modal" aria-labelledby="contact_modal_h2">
+      <div class="modal">
+        <header class="form-header">
+          <div>
+            <h2 id="contact_modal_h2">Contactez-moi</h2>
+            <div id="closeContactForm"></div>
+          </div>
+          <img src="assets/icons/close.svg" alt="close" onclick="closeModal()" aria-label="closeContactForm" />
+        </header>
+        <form>
+          <div>
+            <label for="First Name" id="firstName-label">Prénom</label>
+            <input type="text" id="First Name" />
+          </div>
+          <div>
+            <label for="Last Name" id="lastName-label">Nom</label>
+            <input type="text" id="Last Name" />
+          </div>
+          <div>
+            <label for="email" id="email-label">Email</label>
+            <input type="email" id="email" />
+          </div>
+          <div>
+            <label for="message" id="votreMessage-label">Votre message</label>
+            <input type="textarea" id="message" />
+          </div>
+          <button type="submit" aria-label="send" class="contact_button">Envoyer</button>
+        </form>
+      </div>
+    </dialog>
+    <div>
+      <div class="photos_info">
       </div>
     </div>
   </main>
-  <div id="sortItems">
-    <div class="row">
-      <h2>Trier par</h2>
-      <select id="sort_select" onchange="displayData()">
-        <option value="0">Popularité</option>
-        <option value="1">Date</option>
-        <option value="2">Titre</option>
-      </select>
-    </div>
-
-  </div>
-  <div id="slideshow_modal">
-    <div class="modal">
-      <video class="current-video" height="80%" width="35%" controls="true">
-        <source id="video-src" src="">
-      </video>
-      <img height="80%" width="35%" class="current-img" src="">
-      <div class="title-img" id="title-img"></div>
-      <div class="close_slideshow" id="close"><img src="assets/icons/close.png" /></div>
-      <div class="next_slideshow" id="next"><img src="assets/icons/next.png" /></div>
-      <div class="prev_slideshow" id="prev"><img src="assets/icons/prev.png" /></div>
-    </div>
-  </div>
-
-  <div id="contact_modal">
-    <div class="modal">
-      <header>
-        <h2>Contactez-moi</h2>
-        <img src="assets/icons/close.svg" onclick="closeModal()" />
-      </header>
-      <form>
-        <div>
-          <label>Prénom</label>
-          <input />
-        </div>
-        <button class="contact_button">Envoyer</button>
-      </form>
-    </div>
-  </div>
-  <div>
-    <div class="photos_info">
-    </div>
-  </div>
-  <script src="/scripts/factories/photographerDetail.js"></script>
+  <script src="/scripts/factories/MediaFactory.js"></script>
+  <script src="scripts/factories/PhotographerFactory.js"></script>
   <script src="/scripts/pages/photographer.js"></script>
   <script src="/scripts/utils/contactForm.js"></script>
   <script src="/scripts/utils/slideShow.js"></script>
-
-
 </body>
 
 </html>

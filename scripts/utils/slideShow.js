@@ -60,6 +60,7 @@ class SlideShow {
             this.video.style.display = 'none'
             this.img.style.display = 'block'
             this.img.setAttribute("src", photoLink)
+            this.img.setAttribute("alt", media.title)
 
 
         } else {
@@ -70,6 +71,7 @@ class SlideShow {
             this.video.load();
             this.video.play();
         }
+        this.prevButton.focus();
         this.titleImg.textContent = media.title;
 
         this.checkControlers(index)
@@ -128,6 +130,7 @@ class SlideShow {
         }
         if (isFirst) {
             this.prevButton.style.display = 'none'
+            this.nextButton.focus();
         } else {
             this.prevButton.style.display = 'block'
         }

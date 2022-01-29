@@ -16,19 +16,14 @@ async function getPhotographerDetail() {
 }
 
 async function displayData(photographer, photos) {
-  const photographerModel = photographerDetailFactory(photographer, photos);
-  photographerModel.getPhotographersInfo()
+  const photographerModel = new PhotographerFactory(photographer, 'info', photos);
 
   const photosSection = document.querySelector(".photos_info");
 
   photosSection.innerHTML = ''
-  photos.forEach((photo, index) => {
+  photos.forEach((media, index) => {
     let mediaDOM;
-    if (photo.image) {
-      mediaDOM = photographerModel.getPhotoDOM(index, photo, photos);
-    } else {
-      mediaDOM = photographerModel.getVideoDOM(index, photo)
-    }
+    mediaDOM = new MediaFactory(photographer, index, media, photos);
     photosSection.appendChild(mediaDOM);
   });
 };
@@ -55,6 +50,29 @@ function sortData(sortId, listOfPhotos, photographer) {
 
 }
 
+function initSort(photos, photographer) {
+  const popularityItem = document.getElementById("popularity");
+  const dateItem = document.getElementById("date");
+  const titleItem = document.getElementById("title");
+  const sortDropList = document.getElementById("sortDropList");
+
+  popularityItem.onclick = function (e) {
+    sortData("0", photos, photographer)
+    sortDropList.innerHTML = "Popularité";
+  }
+  dateItem.onclick = function (e) {
+    sortData("1", photos, photographer)
+    sortDropList.innerHTML = "Date";
+
+  }
+  titleItem.onclick = function (e) {
+    sortData("2", photos, photographer)
+    sortDropList.innerHTML = "Titre";
+
+  }
+
+}
+
 async function init() {
 
 
@@ -62,11 +80,14 @@ async function init() {
   // Récupère les datas des photographes
   const { photographer, photos } = await getPhotographerDetail();
 
-  const selectSort = document.getElementById("sort_select");
-  selectSort.onchange = function (e) {
-    sortData(selectSort.value, photos, photographer)
-  }
+  initSort(photos, photographer)
 
   displayData(photographer, photos)
 };
 
+/*
+form.addEventListener('submit', (event) => {
+  event.preventDefault();
+  // TODO: cacher le formulaire
+})
+*/

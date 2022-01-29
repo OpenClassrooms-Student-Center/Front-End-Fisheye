@@ -1,10 +1,12 @@
-@import url("photographer.css");
+/*@import url("photographer.css");*/
 
 body {
     font-family: "DM Sans", sans-serif;
-    margin: 0;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 1280px;
+    padding: 20px;
 }
-
 
 header {
     display: flex;
@@ -53,20 +55,20 @@ h1 {
 
 .photographer_section article h3 {
     color: #901C1C;
-    font-size: 13px;
+    font-size: 18px;
     line-height: 17px;
     margin-top: -20px;
 }
 
-.photographer_section article p {
-    font-size: 10px;
-    line-height: 13px;
-    margin-top: -5px;
+.photographer_section article h4 {
+    font-size: 16px;
+    line-height: 24px;
+    margin-top: -8px;
 }
 
 .photographer_section article h5 {
     color: #757575;
-    font-size: 9px;
+    font-size: 16px;
     line-height: 12px;
-    margin-top: -5px;
+    margin-top: -10px;
 }
