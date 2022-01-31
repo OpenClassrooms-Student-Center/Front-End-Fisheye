@@ -1,3 +1,4 @@
+//FONCTION POUR AFFICHER LE PROFIL DES PHOTOGRAPHES (HEADER PAGE PHOTOGRAPHER)
 function profileFactory(data) {
     const { name, portrait, city, country, tagline, price } = data;
 

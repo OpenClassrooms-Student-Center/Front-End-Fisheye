@@ -539,7 +539,7 @@ async function getMedias() {
     fetch("data/photographers.json")
     .then((res) => res.json())
     .then((data) => {
-        console.log(data)
+     //   console.log(data)
     })
 
     return ({medias : [...medias]}) 
@@ -549,12 +549,8 @@ async function getMedias() {
 
 async function displayDataMedias(medias) {
     const photographMedias = document.querySelector(".photograph-medias");
-	//const lightboxSection = document.querySelector(".lightbox-section");
-	
+
     medias.forEach((media) => {
-
-		
-
 		//Verifie si l'url contient l'id du photographe
         let verifyUrl = new URLSearchParams(window.location.search);
         verifyUrl.has(media.photographerId);
@@ -567,10 +563,11 @@ async function displayDataMedias(medias) {
         	const mediaCardDOM = mediaModel.getMediasCardDOM();
         	photographMedias.appendChild(mediaCardDOM);
 
-			const lightboxModel = lightboxFactory(media);
-			lightboxModel.getLightboxDOM();
+			
 		};
     }); 
+
+	
 };
 
 async function initMedias() {

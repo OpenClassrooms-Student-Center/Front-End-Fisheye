@@ -1,3 +1,4 @@
+//FONCTION POUR AFFICHER LE PROFIL DES PHOTOGRAPHES (INDEX)
 function photographerFactory(data) {
     const { name, portrait, city, country, tagline, price , id } = data;
 
