@@ -51,10 +51,25 @@ h1 {
   border-radius: 98px;
   object-fit: cover;
 }
+.photographer_section .price {
+  color: #525252;
+}
 .adresse {
   color: #901c1c;
   font-size: 20px;
 }
 a {
   text-decoration: none;
+}
+.countLikes {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  position: fixed;
+  bottom: 0;
+  right: 0px;
+  background-color: #db8876;
+  width: 25rem;
+  height: 4rem;
+  border-radius: 5px 5px 0px 0px;
 }

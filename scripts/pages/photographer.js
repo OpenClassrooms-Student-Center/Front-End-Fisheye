@@ -29,7 +29,9 @@ async function displayData(photographers, mediaAll) {
   photographers.forEach((photographer) => {
     const photographerModel = photographerFactory(photographer);
     const userCardDOM = photographerModel.getUserDetail();
+    const userLikes = photographerModel.getUserLikes();
     photographersSection.appendChild(userCardDOM);
+    photographersSection.appendChild(userLikes);
   });
   mediaAll.forEach((media) => {
     const mediaModel = mediaFactory(media, photographers);

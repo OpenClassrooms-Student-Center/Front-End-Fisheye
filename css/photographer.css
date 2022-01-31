@@ -20,6 +20,43 @@
   align-items: center;
   width: 100%;
 }
+.photograph-header .tagline {
+  color: #525252;
+}
+.media-section {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
+.media-section article {
+  width: 25vw;
+  margin-bottom: 1rem;
+}
+.media-section > article > img,
+.media-section > article > video {
+  width: 25vw;
+  height: 25vw;
+  object-fit: cover;
+}
+.media-section > article > div {
+  display: flex;
+  justify-content: space-between;
+}
+.media-section > article > div > div {
+  display: flex;
+  align-items: center;
+}
+.media-section h2 {
+  color: #901c1c;
+}
+.likes p {
+  color: #901c1c;
+}
+.likes i {
+  width: 1rem;
+  margin-left: 0.4rem;
+  color: #901c1c;
+}
 .contact_button {
   font-size: 20px;
   font-weight: bold;

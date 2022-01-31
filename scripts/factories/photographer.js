@@ -1,5 +1,5 @@
 function photographerFactory(data) {
-  const { name, portrait, city, country, tagline, price, id } = data;
+  const { name, portrait, city, country, tagline, price, id, likes } = data;
 
   const picture = `assets/photographers/${portrait}`;
   //Création des cards de chaque photographe
@@ -27,7 +27,7 @@ function photographerFactory(data) {
 
     //Création de la balise p
     const priceTag = document.createElement("p");
-    priceTag.textContent = `${price} €/jours`;
+    priceTag.textContent = `${price}€/jours`;
     priceTag.classList.add("price");
 
     //Création du lien vers la page de profil
@@ -51,6 +51,7 @@ function photographerFactory(data) {
     const divGauche = document.createElement("div");
     const divDroite = document.createElement("div");
     const divCentre = document.createElement("div");
+
     //Création de la balise h2
     const h2 = document.createElement("h2");
     h2.textContent = name;
@@ -87,6 +88,30 @@ function photographerFactory(data) {
     divDroite.appendChild(img);
     return article;
   }
+  function getUserLikes(likes) {
+    const countLikes = document.createElement("div");
+    countLikes.classList.add("countLikes");
+    const divGauche = document.createElement("div");
+    const divDroite = document.createElement("div");
+
+    const span = document.createElement("span");
+    span.textContent = "0 ";
+
+    const i = document.createElement("i");
+    i.classList.add("fas");
+    i.classList.add("fa-heart");
+
+    const p = document.createElement("p");
+    p.textContent = price + "€ / jour";
+
+    countLikes.appendChild(divGauche);
+    countLikes.appendChild(divDroite);
+    divGauche.appendChild(span);
+    divGauche.appendChild(i);
+    divDroite.appendChild(p);
+
+    return countLikes;
+  }
   return {
     name,
     picture,
@@ -95,20 +120,22 @@ function photographerFactory(data) {
     tagline,
     price,
     id,
+    likes,
     getUserCardDOM,
     getUserDetail,
+    getUserLikes,
   };
 }
 
+//Fonction pour afficher les médias
 function mediaFactory(media, photographers) {
   const { title, image, video, likes, date, price } = media;
   let { name } = photographers[0];
   name = name.split(" ")[0].replace("-", " ");
   const imageSrc = `assets/${name}/${image}`;
   const videoSrc = `assets/${name}/${video}`;
-  console.log(imageSrc);
-  console.log(videoSrc);
 
+  //Création des card de chaque média
   function getMediaCardDom() {
     //Création de la balise article
     const article = document.createElement("article");
@@ -123,20 +150,29 @@ function mediaFactory(media, photographers) {
       img.setAttribute("src", videoSrc);
       // img.setAttribute("controls", "controls");
     }
+    const desc = document.createElement("div");
 
     //Création de la balise h2
     const h2 = document.createElement("h2");
     h2.textContent = title;
 
+    const divLikes = document.createElement("div");
+    divLikes.classList.add("likes");
     //Création de la balise p
     const likeTag = document.createElement("p");
     likeTag.textContent = likes;
-    likeTag.classList.add("likes");
 
-    const imageLike = document.createElement("img");
-    imageLike.setAttribute("src", "assets/img/heart-solid.svg");
+    const imageLike = document.createElement("i");
+    imageLike.classList.add("fas");
+    imageLike.classList.add("fa-heart");
+
     //Je crée un lien qui va me permettre de faire apparaître la page de profil
     article.appendChild(img);
+    article.appendChild(desc);
+    desc.appendChild(h2);
+    desc.appendChild(divLikes);
+    divLikes.appendChild(likeTag);
+    divLikes.appendChild(imageLike);
     return article;
   }
   return {
