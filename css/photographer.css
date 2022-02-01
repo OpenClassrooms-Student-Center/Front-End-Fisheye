@@ -37,6 +37,7 @@
   width: 25vw;
   height: 25vw;
   object-fit: cover;
+  border-radius: 6px;
 }
 .media-section > article > div {
   display: flex;
@@ -81,7 +82,7 @@
   padding: 35px;
   margin: auto;
   position: absolute;
-  bottom: 2574px;
+  bottom: 1414px;
   left: 291px;
 }
 
@@ -140,4 +141,39 @@ textarea {
   min-height: 13rem;
   font-size: 2rem;
   border-radius: 5px;
+}
+.selectMenu {
+  display: flex;
+  flex-direction: row;
+  margin-top: 3rem;
+  margin-bottom: 3rem;
+}
+.selectMenu p {
+  font-weight: bold;
+  margin-right: 10px;
+}
+select {
+  background-color: #901c1c;
+  font-size: 1rem;
+  padding: 2px 5px;
+  width: 10rem;
+  height: 3rem;
+  color: white;
+  border: none;
+  border-radius: 5px;
+}
+.countLikes {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  position: fixed;
+  bottom: 0;
+  right: 0px;
+  background-color: #db8876;
+  width: 25rem;
+  height: 4rem;
+  border-radius: 5px 5px 0px 0px;
+}
+.countLikes span {
+  margin-right: 0.4em;
 }

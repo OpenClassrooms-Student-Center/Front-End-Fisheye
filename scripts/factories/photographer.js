@@ -1,7 +1,7 @@
-function photographerFactory(data) {
+function photographerFactory(data, mediaAll) {
   const { name, portrait, city, country, tagline, price, id, likes } = data;
-
   const picture = `assets/photographers/${portrait}`;
+
   //Création des cards de chaque photographe
   function getUserCardDOM() {
     //Création de la balise article
@@ -88,14 +88,18 @@ function photographerFactory(data) {
     divDroite.appendChild(img);
     return article;
   }
-  function getUserLikes(likes) {
+  function getUserLikes() {
+    let numLikes = new Number();
+    mediaAll.forEach((media) => {
+      numLikes += media.likes;
+    });
     const countLikes = document.createElement("div");
     countLikes.classList.add("countLikes");
     const divGauche = document.createElement("div");
     const divDroite = document.createElement("div");
 
     const span = document.createElement("span");
-    span.textContent = "0 ";
+    span.textContent = numLikes;
 
     const i = document.createElement("i");
     i.classList.add("fas");
@@ -163,7 +167,7 @@ function mediaFactory(media, photographers) {
     likeTag.textContent = likes;
 
     const imageLike = document.createElement("i");
-    imageLike.classList.add("fas");
+    imageLike.classList.add("far");
     imageLike.classList.add("fa-heart");
 
     //Je crée un lien qui va me permettre de faire apparaître la page de profil
@@ -173,6 +177,10 @@ function mediaFactory(media, photographers) {
     desc.appendChild(divLikes);
     divLikes.appendChild(likeTag);
     divLikes.appendChild(imageLike);
+    divLikes.addEventListener("click", () => {
+      addLikes(likeTag, imageLike);
+    });
+
     return article;
   }
   return {
@@ -186,4 +194,18 @@ function mediaFactory(media, photographers) {
     videoSrc,
     getMediaCardDom,
   };
+}
+function addLikes(likeTag, imageLike) {
+  if (imageLike.classList.contains("far")) {
+    likeTag.textContent++;
+    document.querySelector(".countLikes span").textContent++;
+    imageLike.classList.replace("far", "fas");
+    return true;
+  }
+  {
+    likeTag.textContent--;
+    document.querySelector(".countLikes span").textContent--;
+    imageLike.classList.replace("fas", "far");
+    return false;
+  }
 }

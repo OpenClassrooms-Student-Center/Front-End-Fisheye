@@ -9,41 +9,42 @@ async function getPhotographer() {
     const photographers = await data.photographers;
 
     //Récupération des données du photographe avec filtre par photographe
-    const photographer = photographers.filter(
+    const photographerFiltered = photographers.filter(
       (photographer) => photographer.id == id
     );
     //Récupération des médias avec filtre des médias
     const mediaAll = await data.media;
-    const media = mediaAll.filter((media) => media.photographerId == id);
+    const mediaFiltered = mediaAll.filter(
+      (media) => media.photographerId == id
+    );
 
-    return { photographer, media };
+    return { photographerFiltered, mediaFiltered };
   } catch (error) {
     console.error(error);
   }
 }
 
-async function displayData(photographers, mediaAll) {
+async function displayData(photographerFiltered, mediaFiltered) {
   const photographersSection = document.querySelector(".photograph-header");
   const mediaSection = document.querySelector(".media-section");
 
-  photographers.forEach((photographer) => {
-    const photographerModel = photographerFactory(photographer);
+  photographerFiltered.forEach((photographer) => {
+    const photographerModel = photographerFactory(photographer, mediaFiltered);
     const userCardDOM = photographerModel.getUserDetail();
     const userLikes = photographerModel.getUserLikes();
     photographersSection.appendChild(userCardDOM);
     photographersSection.appendChild(userLikes);
   });
-  mediaAll.forEach((media) => {
-    const mediaModel = mediaFactory(media, photographers);
+  mediaFiltered.forEach((media) => {
+    const mediaModel = mediaFactory(media, photographerFiltered);
     const mediaCardDom = mediaModel.getMediaCardDom();
     mediaSection.appendChild(mediaCardDom);
   });
 }
-
 async function init() {
   // Récupère les datas des photographes
-  const { photographer, media } = await getPhotographer();
-  displayData(photographer, media);
+  const { photographerFiltered, mediaFiltered } = await getPhotographer();
+  displayData(photographerFiltered, mediaFiltered);
 }
 
 init();

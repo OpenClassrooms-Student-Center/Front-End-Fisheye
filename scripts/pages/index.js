@@ -4,7 +4,7 @@ async function getPhotographers() {
     const response = await fetch("./data/photographers.json");
     const data = await response.json();
     const photographers = await data.photographers;
-    return { photographers };
+    return { photographers }; //Retourne les données des photographes [Sous forme d'un tableau {d'objets}]
   } catch (error) {
     console.error(error);
   }
