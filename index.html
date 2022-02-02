@@ -2,21 +2,36 @@
 <html>
   <head>
     <link href="css/style.css" rel="stylesheet" type="text/css" />
-    <meta charset="utf-8">
-    <link rel="icon" type="image/png" href="assets/favicon.png">
-    <link href="https://fonts.googleapis.com/css?family=DM+Sans&display=swap" rel="stylesheet">
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/png" href="assets/favicon.png" />
+    <link
+      href="https://fonts.googleapis.com/css?family=DM+Sans&display=swap"
+      rel="stylesheet"
+    />
+    <script
+      src="https://kit.fontawesome.com/45e38e596f.js"
+      crossorigin="anonymous"
+    ></script>
     <title>Fisheye</title>
   </head>
   <body>
     <header>
-        <img src="assets/images/logo.png" class="logo" />
-        <h1>Nos photographes</h1>
+      <a href="index.html" title="Fisheye_Home_Page" class="logo">
+        <img src="assets/images/logo.png" class="logo"
+      /></a>
+      <h1>Nos photographes</h1>
     </header>
     <main id="main">
-        <div class="photographer_section"></div>
+      <div class="photographer_section"></div>
     </main>
-    <script src="scripts/factories/Photographer.js"></script>
-    <script src="scripts/pages/index.js"></script>
-    <script src="scripts/pages/photographer.js"></script>
+
+    <script src="scripts/Views/homePage.js"></script>
+    <script src="scripts/Model/Model.js"></script>
+    <script src="scripts/Views/ListPhotographersView.js"></script>
+    <script src="scripts/Controller.js"></script>
+    <script>
+      let controller = new Controller();
+      controller.showPhotographersList();
+    </script>
   </body>
 </html>

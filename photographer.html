@@ -1,36 +1,117 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <link href="css/photographer.css" rel="stylesheet" type="text/css" />
     <link href="css/style.css" rel="stylesheet" type="text/css" />
-    <meta charset="utf-8">
-    <link rel="icon" type="image/png" href="assets/favicon.png">
-    <link href="https://fonts.googleapis.com/css?family=DM+Sans&display=swap" rel="stylesheet">
-    <title>Fisheye - photographe </title>
+    <link href="css/lightbox.css" rel="stylesheet" type="text/css" />
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/png" href="assets/favicon.png" />
+    <link
+      href="https://fonts.googleapis.com/css?family=DM+Sans&display=swap"
+      rel="stylesheet"
+    />
+    <script
+      src="https://kit.fontawesome.com/45e38e596f.js"
+      crossorigin="anonymous"
+    ></script>
+
+    <title>Fisheye - photographe</title>
   </head>
   <body>
     <header>
-      <img src="assets/images/logo.png" class="logo" />
+      <a href="index.html" title="Fisheye_Home_Page" class="logo">
+        <img src="assets/images/logo.png" class="logo"
+      /></a>
     </header>
+
     <main id="main">
-      <div class="photograph-header">
-        <button class="contact_button" onclick="displayModal()">Contactez-moi</button>
-      </div>
+      <div class="photograph_header"></div>
+
+      <aside class="dropdown"></aside>
+
+      <div class="photograph_medias"></div>
+
+      <div class="lightboxmedia"></div>
     </main>
-    <div id="contact_modal">
-			<div class="modal">
-				<header>
-          <h2>Contactez-moi</h2>
-          <img src="assets/icons/close.svg" onclick="closeModal()" />
+
+    <div
+      id="contact_modal"
+      role="dialog"
+      aria-label="Contact me"
+      aria-labelledby="2"
+    >
+      <div class="modal">
+        <header>
+          <h2 indextab="0" name="Contact Me">Contactez-moi</h2>
+          <img
+            src="assets/icons/close.svg"
+            alt="close contact form"
+            id="close-button"
+          />
         </header>
-				<form>
-					<div>
-						<label>Prénom</label>
-						<input />
-					</div>
-          <button class="contact_button">Envoyer</button>
-				</form>
-			</div>
-		</div>
+        <form id="form" name="reserve" method="get">
+          <div>
+            <label for="first">Prénom</label>
+            <input
+              aria-label="First name"
+              aria-labelledby="3"
+              class="text-control"
+              type="text"
+              id="first"
+              name="first"
+            />
+          </div>
+          <div>
+            <label for="last">Nom</label>
+            <input
+              aria-label="Last name"
+              aria-labelledby="5"
+              class="text-control"
+              type="text"
+              id="last"
+              name="last"
+            />
+          </div>
+          <div>
+            <label>Email</label>
+            <input
+              aria-label="Email"
+              aria-labelledby="7"
+              class="text-control"
+              type="email"
+              id="email"
+              name="email"
+            />
+          </div>
+          <div>
+            <label for="message">Votre message</label>
+            <input
+              aria-label="Your message"
+              aria-labelledby="9"
+              class="text-control"
+              type="text"
+              id="message"
+              name="message"
+            />
+          </div>
+          <button id="signinform" class="contact_button" aria-label="Send">
+            Envoyer
+          </button>
+        </form>
+      </div>
+    </div>
+
+    <script src="scripts/factories/Factory.js"></script>
+    <script src="scripts/Views/homePage.js"></script>
+    <script src="scripts/Model/Model.js"></script>
     <script src="/scripts/utils/contactForm.js"></script>
+    <script src="scripts/Views/lightbox.js"></script>
+    <script src="scripts/Views/DetailsPhotographersView.js"></script>
+    <script src="scripts/ControllerPage.js"></script>
+
+    <script>
+      let controllerPage = new ControllerPage();
+      controllerPage.showPhotographersDetails();
+    </script>
   </body>
 </html>
