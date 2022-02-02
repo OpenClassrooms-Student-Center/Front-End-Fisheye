@@ -14,6 +14,10 @@ class ControllerPage {
     let view = new DetailsPhotographersView(photographer, medias);
     view.showDetailsPhotographer();
     view.showListMediasPhotographer();
-    view.selectDropdown();
+    //view.selectDropdown();
+    view.showContactModal();
+    view.hideContactModal();
+
+    console.log("fin controller");
   }
 }

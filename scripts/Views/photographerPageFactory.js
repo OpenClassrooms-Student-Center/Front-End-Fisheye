@@ -1,4 +1,6 @@
-/*function photographerPageFactory(data) {
+/*PAGE A VERIF ET A SUPPRIMER 
+
+function photographerPageFactory(data) {
   const { name, id, portrait, city, country, tagline, alt } = data;
   const picture = `assets/photographers/${portrait}`;
 

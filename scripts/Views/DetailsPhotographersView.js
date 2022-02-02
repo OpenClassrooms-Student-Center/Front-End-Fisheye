@@ -2,8 +2,18 @@ class DetailsPhotographersView {
   constructor(photographer, medias) {
     this.photographer = photographer;
     this.medias = medias;
+    this.initModalVerification();
   }
 
+  initModalVerification() {
+    this.formValidation = new FormValidation();
+    const inputName = document.getElementById("first");
+    inputName.addEventListener("focusout", (event) => {
+      console.log(event.target.value);
+      this.formValidation.testInputText(event.target);
+    });
+  }
+  //function to create the html elements of photographer's banner
   async showDetailsPhotographer() {
     this.stickyBar(this.photographer, this.medias);
 
@@ -13,18 +23,23 @@ class DetailsPhotographersView {
 
     let html = `
     
-    <div class="photograph-header">
-    <div class="photograph-name">
+<div class="photograph-header">
+  <div class="photograph-name">
     <h1>${this.photographer.name}</h1>
-    </div>
-    <div class="photograph-txt">
-      <h2>${this.photographer.city}, ${this.photographer.country}</h2>
-      <p>${this.photographer.tagline}</p>
-    </div>
+  </div>
+  <div class="photograph-txt">
+    <h2>${this.photographer.city}, ${this.photographer.country}</h2>
+    <p>${this.photographer.tagline}</p>
+  </div>
 </div>
 
-<button class="contact_button" onclick="displayModal()">
-Contactez-moi
+<button 
+  id="contactme"
+  type="button"
+  class="contact_button" 
+  aria-haspopup="dialog" 
+  aria-controls="dialog">
+  Contactez-moi
 </button>
 
 <div class="photograph-img">
@@ -35,9 +50,10 @@ Contactez-moi
     photographersSection.innerHTML = html;
   }
 
+  //function to create the select menu
   selectDropdown() {
-    //menu déroulant trier par
     const dropdownMenu = document.querySelector(".dropdown");
+    dropdownMenu.innerHTML = "";
 
     let sortBy = document.createElement("label");
     sortBy.setAttribute("class", "sort-by");
@@ -56,7 +72,7 @@ Contactez-moi
     optionTitle.text = "Titre";
     optionTitle.value = "title";
 
-    select.add(optionPop); //méthode add
+    select.add(optionPop);
     select.add(optionDate);
     select.add(optionTitle);
 
@@ -65,11 +81,11 @@ Contactez-moi
 
       switch (event.target.value) {
         case "pop":
-          medias.sort((a, b) => b.likes - a.likes);
+          this.medias.sort((a, b) => b.likes - a.likes);
           break; //trier le tableau par les likes >
 
         case "date":
-          medias.sort((a, b) => new Date(b.date) - new Date(a.date));
+          this.medias.sort((a, b) => new Date(b.date) - new Date(a.date));
           break;
         // console.log(medias);
 
@@ -85,7 +101,7 @@ Contactez-moi
             return 0;
           }
 
-          medias.sort(compare);
+          this.medias.sort(compare);
 
           break;
       }
@@ -102,87 +118,33 @@ Contactez-moi
     dropdownMenu.appendChild(select);
   }
 
+  //function to create and show the list medias of a photographer
+
   showListMediasPhotographer() {
     const mediasSection = document.querySelector(".photograph_medias");
+    let lightbox = new Lightbox(this.medias, this.photographer.name);
 
     // boucle sur le tableau this.medias
 
     for (let index = 0; index < this.medias.length; index++) {
+      console.log(index);
       const enregMedia = this.medias[index];
-      const pictures = `assets/Sample Photos/${this.photographer.name}/${enregMedia.image}`;
-      const video = `assets/Sample Photos/${this.photographer.name}/${enregMedia.video}`;
-      let lightbox = new Lightbox(this.medias, this.photographer.name);
+      const container = Factory.getMediasCards(
+        enregMedia,
+        this.photographer.name
+      );
 
-      //si c'est une image :
-      for (let attributeName in enregMedia) {
-        if (attributeName == "image") {
-          let newImage = document.createElement("img");
-          newImage.setAttribute("src", pictures);
-          newImage.setAttribute("class", "picturesSize");
-          newImage.style = "cursor:pointer";
-          newImage.addEventListener("click", () => {
-            lightbox.displayLightbox(enregMedia.id);
-          });
+      console.log(container);
 
-          //crée l'élement pictureLegend titre + likes + <3 de la photo
+      mediasSection.appendChild(container);
 
-          let pictureLegend = document.createElement("div");
-          pictureLegend.setAttribute("class", "underpicture");
-
-          //crée le titre
-          let pictureTitle = document.createTextNode(enregMedia.title);
-
-          //crée élément nombre de likes de la photo / CSS
-          const likesMedia = document.createElement("p");
-          likesMedia.setAttribute("class", "picturesText");
-          likesMedia.textContent = enregMedia.likes;
-
-          //crée élément coeur de la photo / CSS à faire
-          const heart = document.createElement("p");
-          heart.innerHTML = '<i class="fas fa-heart"></i>';
-          heart.setAttribute("class", "picturesText");
-
-          //le loveContainer - au clic, met à jour le like et le total like de la stickybar
-          const loveContainer = document.createElement("div");
-          loveContainer.setAttribute("class", "likesHeart");
-          loveContainer.append(likesMedia, heart);
-          loveContainer.addEventListener("click", () => {
-            likesMedia.textContent = enregMedia.likes += 1;
-            // cursor main au survol? CSS hover
-            this.stickyBar(this.photographer, this.medias);
-          });
-          pictureLegend.append(pictureTitle, loveContainer);
-
-          //crée element container de tout
-          let container = document.createElement("div");
-          container.setAttribute("class", "cardSize");
-          container.append(pictureLegend, newImage);
-
-          //mediasSection.appendChild(newImage);
-
-          mediasSection.appendChild(container);
-
-          //
-          break;
-          //
-        } else if (attributeName == "video") {
-          let newVideo = document.createElement("video");
-          newVideo.setAttribute("src", video);
-          newVideo.controls = true;
-          newVideo.setAttribute("class", "controls");
-
-          let videoLegend = document.createElement("a");
-          videoLegend.addEventListener("click", () => {
-            lightbox.displayLightbox(enregMedia.id);
-          });
-          // créer élément title et likes pour la video??
-          videoLegend.appendChild(newVideo);
-          mediasSection.appendChild(videoLegend);
-          break;
-        }
-      }
+      container.addEventListener("click", () => {
+        lightbox.displayLightbox(enregMedia.id);
+      });
     }
+    this.selectDropdown();
   }
+  //function to create and update a stick bar with total likes &
   stickyBar() {
     let stickBar = document.createElement("aside");
     stickBar.setAttribute("class", "stickyBar");
@@ -196,6 +158,8 @@ Contactez-moi
 
     stickBar.append(stickyBarTextOne, stickyBarTextTwo);
   }
+
+  //function to calculate the total likes of a prohotgrapher
   calculateTotalLikes() {
     let totalLikes = 0;
     this.medias.map((element) => {
@@ -203,5 +167,83 @@ Contactez-moi
       //console.log("totalLikes");
     });
     return totalLikes;
+  }
+  //functions to open and close contact form modal
+
+  showContactModal() {
+    const contactBtn = document.getElementById("contactme");
+    contactBtn.addEventListener("click", (event) => {
+      this.displayModal(event);
+    });
+    contactBtn.addEventListener("keydown", (e) => {
+      if (e.key === "Enter") {
+        displayModal(e);
+      }
+    });
+  }
+
+  displayModal() {
+    const modal = document.getElementById("contact_modal");
+    const main = document.getElementById("main");
+
+    console.log("open");
+    modal.style.display = "block";
+    main.style.display = "none";
+  }
+
+  hideContactModal() {
+    const closeCross = document.getElementById("close-button");
+    closeCross.addEventListener("click", (event) => {
+      this.closeModal(event);
+    });
+    /*closeCross.addEventListener("keydown", (e) => {
+      if (e.key === "Escape") {
+        closeModal(e);
+      }
+    });*/
+  }
+
+  closeModal() {
+    const modal = document.getElementById("contact_modal");
+    const main = document.getElementById("main");
+
+    console.log("close");
+    modal.style.display = "none";
+    main.style.display = "block";
+  }
+
+  //function to check each form entries
+
+  // function called at form submit event
+
+  checkform(event) {
+    event.preventDefault();
+
+    /*let isError = false;
+
+    if (!testInputText(inputName)) {
+      isError = true;
+    }
+    if (!testInputText(inputLastName)) {
+      isError = true;
+    }
+    if (!testInputEmail(inputEmail)) {
+      isError = true;
+    }
+    if (!testInputMessageText(inputMessage)) {
+      isError = true;
+    }
+    if (isError == true) {
+      console.log("no");
+    } else if (isError == false) {
+      console.log(inputName);
+      console.log(
+        "ok",
+        "Prenom: " + inputName.value,
+        "Nom: " + inputLastName,
+        "Mail: " + inputEmail,
+        "Message: " + inputMessage
+      );
+    }*/
   }
 }
