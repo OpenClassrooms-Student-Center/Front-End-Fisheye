@@ -26,38 +26,61 @@ function mediasFactory(data) {
             img.style.cursor = "pointer";
             img.classList.add("currentMedia");
 
+        if(video != undefined) {
+            const vid = document.createElement('video');
+            vid.setAttribute("src", mediaVideo);
+            vid.setAttribute("alt", title);
+            vid.className = 'vid';
+            vid.style.width = "350px";
+            vid.style.height = "300px";
+            mediaLink.appendChild(vid);
+            vid.style.objectFit = "cover";
+            vid.style.cursor = "pointer";
+            vid.classList.add("currentMedia");
+        };
+
         const mediaCaption = document.createElement('div');
             mediaCaption.style.display = "flex";
             mediaCaption.style.justifyContent = "space-between";
+            mediaCaption.classList.add("figcaption");
 
         const mediaTitle = document.createElement('p');
             mediaTitle.textContent = title;
             mediaTitle.style.fontSize = "20px";
             mediaTitle.style.color = "#901C1C";
 
-        const mediaLike = document.createElement('p');
-            mediaLike.innerHTML = likes + '<i class="fas fa-heart"></i>';
-            mediaLike.style.fontSize = "20px";
-            mediaLike.style.color = "#901C1C";
+        const mediaLikes = document.createElement("div");
+        mediaLikes.style.display = "flex";
+        mediaLikes.style.fontSize = "20px";
+        mediaLikes.style.color = "#901C1C";
+        mediaLikes.classList.add("likesContainer");
+        
+        const numberOfLikes = document.createElement("input");
+        numberOfLikes.setAttribute("value", likes);
+        numberOfLikes.style.width = "30px";
+        numberOfLikes.style.border = "none";
+        numberOfLikes.classList.add("numberOfLikes");
+        numberOfLikes.style.color = "#901C1C";
+        numberOfLikes.style.fontSize = "20px";
+        
+        const buttonHeart = document.createElement("button");
+        buttonHeart.innerHTML = '<i class="fas fa-heart"></i>';
+        buttonHeart.style.background = "white";
+        buttonHeart.style.border = "none";
+        buttonHeart.style.fontSize = "20px";
+        buttonHeart.style.color = "#901C1C";
+        buttonHeart.classList.add("buttonHeart");
+        buttonHeart.style.cursor = "pointer";
 
-            if(video != undefined) {
-                const vid = document.createElement('video');
-                vid.setAttribute("src", mediaVideo);
-                vid.setAttribute("alt", title);
-                vid.className = 'vid';
-                vid.style.width = "350px";
-                vid.style.height = "300px";
-                mediaLink.appendChild(vid);
-                vid.style.objectFit = "cover";
-                vid.style.cursor = "pointer";
-                vid.classList.add("currentMedia");
-            };
-    
+
         figure.appendChild(mediaLink);
         mediaLink.appendChild(img);
         figure.appendChild(mediaCaption);
         mediaCaption.appendChild(mediaTitle);
-        mediaCaption.appendChild(mediaLike);
+        mediaCaption.appendChild(mediaLikes);
+        mediaLikes.appendChild(numberOfLikes);
+        mediaLikes.appendChild(buttonHeart);
+        
 
         return (figure);
     }

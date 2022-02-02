@@ -34,13 +34,13 @@ function profileFactory(data) {
             photographerTagline.style.fontSize = "18px";
             photographerTagline.style.marginTop = "20px";
 
-        const priceContainer = document.createElement('div');
-            priceContainer.style.background = "#D88876";
-            priceContainer.style.position = "fixed";
-            priceContainer.style.bottom = "0px";
-            priceContainer.style.right = "30px";
-            priceContainer.style.height = "50px";
-            priceContainer.style.padding = "0 20px";
+        const priceAndLikes = document.createElement('div');
+        priceAndLikes.style.background = "#D88876";
+        priceAndLikes.style.position = "fixed";
+        priceAndLikes.style.bottom = "0px";
+        priceAndLikes.style.right = "30px";
+        priceAndLikes.style.height = "50px";
+        priceAndLikes.style.paddingRight = "25px";
 
         const body = document.querySelector('body');
 
@@ -54,8 +54,8 @@ function profileFactory(data) {
         profile.appendChild(photographerTagline);
         headerPh.appendChild(profile);
         headerPh.appendChild(img);
-        body.appendChild(priceContainer);
-        priceContainer.appendChild(photographerPrice);
+        body.appendChild(priceAndLikes);
+        priceAndLikes.appendChild(photographerPrice);
         
         return (profile);
         

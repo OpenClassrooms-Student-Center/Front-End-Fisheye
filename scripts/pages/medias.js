@@ -539,7 +539,7 @@ async function getMedias() {
     fetch("data/photographers.json")
     .then((res) => res.json())
     .then((data) => {
-     //   console.log(data)
+        console.log(data)
     })
 
     return ({medias : [...medias]}) 
@@ -562,8 +562,6 @@ async function displayDataMedias(medias) {
 			const mediaModel = mediasFactory(media);
         	const mediaCardDOM = mediaModel.getMediasCardDOM();
         	photographMedias.appendChild(mediaCardDOM);
-
-			
 		};
     }); 
 

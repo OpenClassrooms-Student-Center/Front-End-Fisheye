@@ -79,7 +79,10 @@ async function displayData(photographers) {
         //console.log(param);
 
         const lightboxModel = lightboxFactory(photographer);
-			lightboxModel.getLightboxDOM();
+		lightboxModel.getLightboxDOM();
+
+		const totalLikesModel = totalLikesFactory(photographer);
+        totalLikesModel.getTotalLikes(); 
 
         if (photographer.id == param) {
             const photographerModel = profileFactory(photographer);
@@ -90,8 +93,6 @@ async function displayData(photographers) {
             const contactModel = contactFactory(photographer);
             const contactCardDOM = contactModel.getContactCardDOM();
             contactHeader.appendChild(contactCardDOM);
-
-            
         }
     });
 };

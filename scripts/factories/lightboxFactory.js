@@ -5,7 +5,6 @@ function lightboxFactory(data) {
         //INTEGRATION DE LA LIGHTBOX
         const lightbox = document.querySelector(".lightbox");
 
-
         const previous = document.createElement("i");
 
         previous.innerHTML          = '<i class="fas fa-chevron-left"></i>';
@@ -45,7 +44,7 @@ function lightboxFactory(data) {
         container.style.top         = "0";
         container.style.bottom      = "0";
         container.style.left        = "0"; 
-        container.style.right       = "0";  
+        container.style.right       = "0";
 
         const img = document.createElement("img");
         img.setAttribute("src", "");
@@ -100,6 +99,7 @@ function lightboxFactory(data) {
                         vid.src = selectedMedia.src;
                         vid.alt = selectedMedia.alt; 
                         titleMedia.textContent = "Wild horses in the mountains";
+                        vid.play();
                     }
                     else {
                         vid.replaceWith(img);

@@ -128,3 +128,11 @@ form input {
     text-align: center;
     display: none;
 }
+
+
+.totalLikesContainer > input, label {
+    display: none;
+} 
+.remove {
+    display: block;
+} 
