@@ -1,6 +1,6 @@
 //Mettre le code JavaScript lié à la page photographer.html
 const id = window.location.href.split("id=")[1];
-//Récupération des données des photographes
+//Méthode de récupération des données des photographes
 async function getPhotographer() {
   try {
     //Récupération des données des photographes (Tout le fichier JSON)

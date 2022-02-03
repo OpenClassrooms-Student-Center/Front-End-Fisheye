@@ -177,3 +177,79 @@ select {
 .countLikes span {
   margin-right: 0.4em;
 }
+
+/* 
+  * Lightbox  * 
+  */
+.lightbox {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.8);
+  z-index: 10;
+  overflow: auto;
+  animation: lightboxIn 0.5s;
+}
+.lightbox__next,
+.lightbox__prev {
+  border: none;
+  background: url(../assets/images/arrow.svg) center center / 30px 48px
+    no-repeat;
+  width: 50px;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  right: 0;
+  margin-top: -14px;
+  z-index: 11;
+}
+
+.lightbox__prev {
+  left: 0;
+  right: 0;
+  transform: rotate(180deg);
+}
+.lightbox__close {
+  background: url(../assets/images/close.svg) center center / 100% 100%
+    no-repeat transparent;
+  width: 42px;
+  height: 42px;
+  border: none;
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  z-index: 12;
+}
+.lightbox button {
+  opacity: 0.5;
+  cursor: pointer;
+  transition: opacity 0.3s;
+  text-indent: -3000px;
+}
+.lightbox button:hover {
+  opacity: 1;
+}
+.lightbox__container img {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  animation: lightboxIn 0.5s;
+}
+.lightbox__container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: 50px;
+  margin-right: 50px;
+  min-height: 100vh;
+}
+@keyframes lightboxIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
