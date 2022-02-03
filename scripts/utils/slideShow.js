@@ -1,7 +1,7 @@
 
 class SlideShow {
     constructor(photographerName, listOfPhotos, indexOfCurrent) {
-        //initialisation du slideshow
+        //initialisation les elements du slideshow
         this.photographerName = photographerName;
         this.listOfPhotos = listOfPhotos;
         this.indexOfCurrent = indexOfCurrent;
@@ -26,10 +26,9 @@ class SlideShow {
             context.close()
         })
 
-        //fonctions clavier
+        //fonctions clavier pour les touches directionnelles
         document.onkeydown = function (e) {
             e = e || window.event;
-            console.log(e.key)
             if (e.key == "ArrowRight") {
                 context.nextPhoto()
             }
@@ -83,7 +82,6 @@ class SlideShow {
         //si on est pas sur la derniere image
         if (this.indexOfCurrent !== this.listOfPhotos.length - 1) {
 
-            console.log(this.indexOfCurrent)
             //l'image suivante
             const nextMedia = this.listOfPhotos[this.indexOfCurrent + 1]
 
@@ -135,6 +133,7 @@ class SlideShow {
             this.prevButton.style.display = 'block'
         }
     }
+
     prevPhoto() {
         if (this.indexOfCurrent !== 0) {
 

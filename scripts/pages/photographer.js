@@ -1,4 +1,7 @@
-//Mettre le code JavaScript lié à la page photographer.htmlasync function getPhotographers() {
+/**
+ * Récupére les informations et les photos du photographe
+ * @returns 
+ */
 async function getPhotographerDetail() {
 
   //l'accès le fichier json
@@ -15,12 +18,23 @@ async function getPhotographerDetail() {
   })
 }
 
+/**
+ * Crée les elements HTML de la page photographe
+ * @param {*} photographer 
+ * @param {*} photos 
+ */
 async function displayData(photographer, photos) {
-  const photographerModel = new PhotographerFactory(photographer, 'info', photos);
+  //Afficher les informations du photographe
+  const profileInfo = document.getElementById("profile-info")
+  profileInfo.innerHTML = ''
+  const photographerProfile = new PhotographerFactory(photographer, 'banner', photos);
+  profileInfo.appendChild(photographerProfile);
+
+  //Afficher les photos et les videos du photographe
 
   const photosSection = document.querySelector(".photos_info");
-
   photosSection.innerHTML = ''
+
   photos.forEach((media, index) => {
     let mediaDOM;
     mediaDOM = new MediaFactory(photographer, index, media, photos);
@@ -28,6 +42,12 @@ async function displayData(photographer, photos) {
   });
 };
 
+/**
+ * Permets de trier les photos en fonction du choix de l'utilisateur
+ * @param {*} sortId 
+ * @param {*} listOfPhotos 
+ * @param {*} photographer 
+ */
 function sortData(sortId, listOfPhotos, photographer) {
   switch (sortId) {
     case "0":
@@ -50,22 +70,27 @@ function sortData(sortId, listOfPhotos, photographer) {
 
 }
 
+/**
+ * Defini l'evenement de click pour chaque option de tri
+ * @param {*} photos 
+ * @param {*} photographer 
+ */
 function initSort(photos, photographer) {
   const popularityItem = document.getElementById("popularity");
   const dateItem = document.getElementById("date");
   const titleItem = document.getElementById("title");
   const sortDropList = document.getElementById("sortDropList");
 
-  popularityItem.onclick = function (e) {
+  popularityItem.onclick = function () {
     sortData("0", photos, photographer)
     sortDropList.innerHTML = "Popularité";
   }
-  dateItem.onclick = function (e) {
+  dateItem.onclick = function () {
     sortData("1", photos, photographer)
     sortDropList.innerHTML = "Date";
 
   }
-  titleItem.onclick = function (e) {
+  titleItem.onclick = function () {
     sortData("2", photos, photographer)
     sortDropList.innerHTML = "Titre";
 
@@ -73,21 +98,14 @@ function initSort(photos, photographer) {
 
 }
 
+/**
+ * Initialisation de la page
+ */
 async function init() {
 
-
-
-  // Récupère les datas des photographes
   const { photographer, photos } = await getPhotographerDetail();
 
   initSort(photos, photographer)
 
   displayData(photographer, photos)
 };
-
-/*
-form.addEventListener('submit', (event) => {
-  event.preventDefault();
-  // TODO: cacher le formulaire
-})
-*/

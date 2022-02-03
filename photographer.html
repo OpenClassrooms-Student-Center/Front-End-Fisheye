@@ -16,10 +16,7 @@
   </header>
   <main id="main">
     <div class="photograph-header">
-      <div class="header-info">
-        <h1 class="info-name" id="name"></h1>
-        <h2 class="info-location" id="location"></h2>
-        <h3 class="info-desc" id="desc"></h3>
+      <div id="profile-info" class="header-info">
       </div>
       <div class="header-button">
         <button class="contact_button" alt="Contact Me" onclick="displayModal()">Contactez-moi</button>
@@ -79,9 +76,11 @@
         <header class="form-header">
           <div>
             <h2 id="contact_modal_h2">Contactez-moi</h2>
-            <div id="closeContactForm"></div>
+            <div id="photographer-name"> </div>
           </div>
-          <img src="assets/icons/close.svg" alt="close" onclick="closeModal()" aria-label="closeContactForm" />
+          <input type="image" src="assets/icons/close.svg" alt="close" onclick="closeModal()"
+            aria-label="contact_modal_h2" />
+
         </header>
         <form>
           <div>

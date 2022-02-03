@@ -9,7 +9,14 @@ class MediaFactory {
         }
     }
 
-
+    /**
+     * Retourne l'element DOM d'une vidéo
+     * @param {*} photographer 
+     * @param {*} photos 
+     * @param {*} index 
+     * @param {*} video 
+     * @returns 
+     */
     getVideoDOM(photographer, photos, index, video) {
 
         const videoLink = `assets/images/${photographer.name}/${video.video}`;
@@ -55,6 +62,14 @@ class MediaFactory {
 
     }
 
+    /**
+     * Retourne l'element DOM d'une photo
+     * @param {*} photographer 
+     * @param {*} index 
+     * @param {*} photo 
+     * @param {*} photos 
+     * @returns 
+     */
     getPhotoDOM(photographer, index, photo, photos) {
         const photoLink = `assets/images/${photographer.name}/${photo.image ? photo.image : photo.video}`;
         const likeIcon = `assets/icons/Vector.png`;

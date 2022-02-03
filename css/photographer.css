@@ -35,15 +35,16 @@ a:hover {
 
 .dropdown {
     position: relative;
-    width: 200px;
-    margin-top: 30px;
+    margin-top: 15px;
 }
 
 .dd-button {
     border-radius: 4px;
     font-size: 18px;
     margin-left: 35px;
-    padding: 10px 30px 10px 20px;
+    position: absolute;
+    width: 110px;
+    padding: 10px;
     background-color: #901C1C;
     cursor: pointer;
     white-space: nowrap;
@@ -76,7 +77,7 @@ a:hover {
     box-shadow: 0 0 6px 0 rgba(0, 0, 0, 0.1);
     background-color: #901C1C;
     list-style-type: none;
-
+    z-index: 2;
 }
 
 .dd-input+.dd-menu {
@@ -88,7 +89,7 @@ a:hover {
 }
 
 .dd-menu li {
-    padding: 10px 40px;
+    padding: 10px 23px;
     cursor: pointer;
     white-space: nowrap;
     color: #ffffff;
