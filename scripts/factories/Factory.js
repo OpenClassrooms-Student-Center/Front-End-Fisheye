@@ -19,66 +19,50 @@ class Factory {
   }
   static getMediasCards(media, name) {
     let container = document.createElement("div");
+    container.setAttribute("class", "cardSize");
+
+    //crée le titre
+    const pictureTitle = (document.createElement("p").textContent =
+      media.title);
+    console.log(pictureTitle);
+
+    //crée élément nombre de likes de la photo et video / CSS
+    const likesMedia = document.createElement("p");
+    likesMedia.setAttribute("class", "picturesText");
+    likesMedia.textContent = media.likes;
+
+    //crée élément coeur de la photo et video / CSS à faire
+    const heart = document.createElement("p");
+    heart.innerHTML = '<i class="fas fa-heart"></i>';
+    heart.setAttribute("class", "picturesText");
+
+    //crée l'élement pictureLegend titre + likes + <3 de la photo
+    let legendContainer = document.createElement("div");
+
+    //le loveContainer - au clic, met à jour le like et le total like de la stickybar
+    const loveContainer = document.createElement("div");
+    loveContainer.setAttribute("class", "likesHeart");
+    loveContainer.append(likesMedia, heart);
+
+    //crée element container de tout
+    legendContainer.setAttribute("class", "underpicture");
+    legendContainer.append(pictureTitle, loveContainer);
 
     if (media.image) {
-      const pictures = `assets/Sample Photos/${name}/${media.image}`;
-
       let newImage = document.createElement("img");
+      const pictures = `assets/Sample Photos/${name}/${media.image}`;
       newImage.setAttribute("src", pictures);
       newImage.setAttribute("class", "picturesSize");
       newImage.style = "cursor:pointer";
-      /*newImage.addEventListener("click", () => {
-        lightbox.displayLightbox(enregMedia.id);
-      });*/
 
-      //crée le titre
-      let pictureTitle = document.createTextNode(media.title);
-
-      //crée l'élement pictureLegend titre + likes + <3 de la photo
-      let legendContainer = document.createElement("div");
-
-      //crée élément nombre de likes de la photo / CSS
-      const likesMedia = document.createElement("p");
-      likesMedia.setAttribute("class", "picturesText");
-      likesMedia.textContent = media.likes;
-
-      //crée élément coeur de la photo / CSS à faire
-      const heart = document.createElement("p");
-      heart.innerHTML = '<i class="fas fa-heart"></i>';
-      heart.setAttribute("class", "picturesText");
-
-      //le loveContainer - au clic, met à jour le like et le total like de la stickybar
-      const loveContainer = document.createElement("div");
-      loveContainer.setAttribute("class", "likesHeart");
-      loveContainer.append(likesMedia, heart);
-      /*loveContainer.addEventListener("click", () => {
-        likesMedia.textContent = enregMedia.likes += 1;
-        // cursor main au survol? CSS hover
-        this.stickyBar(this.photographer, this.medias);
-      });*/
-
-      //crée element container de tout
-      legendContainer.setAttribute("class", "underpicture");
-      legendContainer.append(pictureTitle, loveContainer);
-
-      container.setAttribute("class", "cardSize");
       container.append(legendContainer, newImage);
     } else if (media.video) {
-      console.log(media.video);
-      const vids = `assets/Sample Photos/${name}/${media.video}`;
       let newVideo = document.createElement("video");
+      const vids = `assets/Sample Photos/${name}/${media.video}`;
       newVideo.setAttribute("src", vids);
-      newVideo.controls = true;
       newVideo.setAttribute("class", "controls");
-
-      let videoLegend = document.createElement("a");
-      //videoLegend.addEventListener("click", () => {
-      //lightbox.displayLightbox(enregMedia.id);
-      //});
-      // créer élément title et likes pour la video??
-      videoLegend.appendChild(newVideo);
-      container.append(videoLegend, newVideo);
-      //mediasSection.appendChild(videoLegend);
+      newVideo.controls = true;
+      container.append(legendContainer, newVideo);
     }
     return container;
   }

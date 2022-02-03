@@ -15,8 +15,6 @@ class DetailsPhotographersView {
   }
   //function to create the html elements of photographer's banner
   async showDetailsPhotographer() {
-    this.stickyBar(this.photographer, this.medias);
-
     const photographersSection = document.querySelector(".photograph_header");
     console.log(this.photographer);
     const picture = `assets/photographers/${this.photographer.portrait}`;
@@ -134,14 +132,34 @@ class DetailsPhotographersView {
         this.photographer.name
       );
 
-      console.log(container);
+      //Premier on doit poser un écouteur d'event sur les likes pour les incréementer (sur le loveContainer entier)
+      container.childNodes[0].childNodes[1].addEventListener(
+        "click",
+        (event) => {
+          let likes = parseInt(
+            event.target.closest(".likesHeart").querySelector(".picturesText")
+              .textContent
+          );
+          likes += 1;
+          event.target
+            .closest(".likesHeart")
+            .querySelector(".picturesText").textContent = likes;
+          this.stickyBar();
+        }
+      );
+      //Deux on doitpoiser un ecouteru sur l'image pour  lancer lightbox (Why not sur le titre aussi )
+      container.childNodes[1].addEventListener("click", (event) => {
+        //On doit lancer la lightbox
+        lightbox.displayLightbox(enregMedia.id);
+      });
 
       mediasSection.appendChild(container);
 
-      container.addEventListener("click", () => {
-        lightbox.displayLightbox(enregMedia.id);
-      });
+      // container.addEventListener("click", () => {
+      //   lightbox.displayLightbox(enregMedia.id);
+      // });
     }
+    this.stickyBar(this.photographer, this.medias);
     this.selectDropdown();
   }
   //function to create and update a stick bar with total likes &
@@ -162,10 +180,16 @@ class DetailsPhotographersView {
   //function to calculate the total likes of a prohotgrapher
   calculateTotalLikes() {
     let totalLikes = 0;
-    this.medias.map((element) => {
-      totalLikes += element.likes;
-      //console.log("totalLikes");
-    });
+    // this.medias.map((element) => {
+    //   totalLikes += element.likes;
+    //   //console.log("totalLikes");
+    // });
+    const allLikes = document.querySelectorAll(".picturesText");
+    allLikes.forEach((element) => (totalLikes += Number(element.textContent)));
+    // for (element of allLikes) {
+    //   console.log(element);
+    // }
+    console.log(totalLikes);
     return totalLikes;
   }
   //functions to open and close contact form modal
