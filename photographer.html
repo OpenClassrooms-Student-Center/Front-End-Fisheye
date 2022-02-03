@@ -19,10 +19,10 @@
       <div id="profile-info" class="header-info">
       </div>
       <div class="header-button">
-        <button class="contact_button" alt="Contact Me" onclick="displayModal()">Contactez-moi</button>
+        <button class="contact_button" onclick="displayModal()">Contactez-moi</button>
       </div>
       <div class="header-img">
-        <img id="profile-pic" alt="Profile Picture" class="photograph-img" />
+        <img id="profile-pic" src="assets/icons/profilePlaceholder.jpeg" alt="Profile Picture" class="photograph-img" />
       </div>
     </div>
 
@@ -47,10 +47,10 @@
 
     <dialog id="slideshow_modal" aria-label="image closeup view">
       <div class="slideshow-modal">
-        <video class="current-video" controls="true">
-          <source id="video-src" src="">
+        <video class="current-video" controlss>
+          <source id="video-src" srcset="assets/icons/videoPlaceholder.jpeg">
         </video>
-        <img class="current-img" alt="Current Photo">
+        <img class="current-img" alt="Current Photo" src="assets/icons/profilePlaceholder.jpeg">
         <div class="title-img" id="title-img"></div>
         <button class="close_slideshow" id="close" tabindex="3" aria-label="Close Dialog">
           <img src="assets/icons/close.png" alt="close" />
@@ -84,12 +84,12 @@
         </header>
         <form>
           <div>
-            <label for="First Name" id="firstName-label">Prénom</label>
-            <input type="text" id="First Name" />
+            <label for="firstName" id="firstName-label">Prénom</label>
+            <input type="text" id="firstName" />
           </div>
           <div>
-            <label for="Last Name" id="lastName-label">Nom</label>
-            <input type="text" id="Last Name" />
+            <label for="lastName" id="lastName-label">Nom</label>
+            <input type="text" id="lastName" />
           </div>
           <div>
             <label for="email" id="email-label">Email</label>
@@ -97,7 +97,7 @@
           </div>
           <div>
             <label for="message" id="votreMessage-label">Votre message</label>
-            <input type="textarea" id="message" />
+            <textarea id="message"></textarea>
           </div>
           <button type="submit" aria-label="send" class="contact_button">Envoyer</button>
         </form>
