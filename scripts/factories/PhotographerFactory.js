@@ -11,8 +11,8 @@ class PhotographerFactory {
 
     /**
      * Retourne l'element DOM du header d'un photographe
-     * @param {*} photographer 
-     * @param {*} photos 
+     * @param {object} photographer 
+     * @param {object[]} photos 
      * @returns 
      */
     getPhotographersBannerDOM(photographer, photos) {
@@ -60,7 +60,7 @@ class PhotographerFactory {
     /**
      * Retourne l'element DOM contenant les information d'un photographe 
      * sur la page d'acceuil
-     * @param {*} photographer 
+     * @param {object} photographer 
      * @returns 
      */
     getPhotographerCardDOM(photographer) {

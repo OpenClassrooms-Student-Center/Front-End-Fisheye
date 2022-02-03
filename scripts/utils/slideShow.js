@@ -77,6 +77,7 @@ class SlideShow {
 
 
     }
+
     nextPhoto() {
 
         //si on est pas sur la derniere image

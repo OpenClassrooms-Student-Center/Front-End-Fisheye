@@ -20,8 +20,8 @@ async function getPhotographerDetail() {
 
 /**
  * Crée les elements HTML de la page photographe
- * @param {*} photographer 
- * @param {*} photos 
+ * @param {object} photographer 
+ * @param {object[]} photos 
  */
 async function displayData(photographer, photos) {
   //Afficher les informations du photographe
@@ -72,8 +72,8 @@ function sortData(sortId, listOfPhotos, photographer) {
 
 /**
  * Defini l'evenement de click pour chaque option de tri
- * @param {*} photos 
- * @param {*} photographer 
+ * @param {object[]} photos 
+ * @param {object} photographer 
  */
 function initSort(photos, photographer) {
   const popularityItem = document.getElementById("popularity");

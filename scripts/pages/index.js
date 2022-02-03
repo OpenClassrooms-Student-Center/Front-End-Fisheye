@@ -13,7 +13,7 @@ async function getPhotographers() {
 
 /**
  * Affiche la liste des photographes
- * @param {*} photographers 
+ * @param {object[]} photographers 
  */
 async function displayData(photographers) {
     const photographersSection = document.querySelector(".photographer_section");

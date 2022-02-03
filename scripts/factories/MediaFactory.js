@@ -11,10 +11,10 @@ class MediaFactory {
 
     /**
      * Retourne l'element DOM d'une vidéo
-     * @param {*} photographer 
-     * @param {*} photos 
-     * @param {*} index 
-     * @param {*} video 
+     * @param {object} photographer 
+     * @param {object[]} photos 
+     * @param {number} index 
+     * @param {object} video 
      * @returns 
      */
     getVideoDOM(photographer, photos, index, video) {
@@ -64,10 +64,10 @@ class MediaFactory {
 
     /**
      * Retourne l'element DOM d'une photo
-     * @param {*} photographer 
-     * @param {*} index 
-     * @param {*} photo 
-     * @param {*} photos 
+     * @param {object} photographer 
+     * @param {number} index 
+     * @param {object} photo 
+     * @param {object[]} photos 
      * @returns 
      */
     getPhotoDOM(photographer, index, photo, photos) {
