@@ -5,7 +5,7 @@
 async function getPhotographerDetail() {
 
   //l'accès le fichier json
-  const data = await fetch("../data/photographers.json")
+  const data = await fetch("data/photographers.json")
   const json = await data.json();
   var url = new URL(window.location.href);
   const photographerId = url.searchParams.get("id");
@@ -44,20 +44,20 @@ async function displayData(photographer, photos) {
 
 /**
  * Permets de trier les photos en fonction du choix de l'utilisateur
- * @param {*} sortId 
- * @param {*} listOfPhotos 
- * @param {*} photographer 
+ * @param {string} sortId 
+ * @param {object[]} listOfPhotos
+ * @param {object} photographer 
  */
 function sortData(sortId, listOfPhotos, photographer) {
   switch (sortId) {
-    case "0":
+    case "LIKE":
       listOfPhotos = listOfPhotos.sort((a, b) => b.likes - a.likes);
       break;
-    case "1":
+    case "DATE":
       listOfPhotos = listOfPhotos.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
 
       break;
-    case "2":
+    case "TITRE":
       listOfPhotos = listOfPhotos.sort((a, b) => a.title.localeCompare(b.title));
 
       break;
@@ -82,16 +82,16 @@ function initSort(photos, photographer) {
   const sortDropList = document.getElementById("sortDropList");
 
   popularityItem.onclick = function () {
-    sortData("0", photos, photographer)
+    sortData("LIKE", photos, photographer)
     sortDropList.innerHTML = "Popularité";
   }
   dateItem.onclick = function () {
-    sortData("1", photos, photographer)
+    sortData("DATE", photos, photographer)
     sortDropList.innerHTML = "Date";
 
   }
   titleItem.onclick = function () {
-    sortData("2", photos, photographer)
+    sortData("TITRE", photos, photographer)
     sortDropList.innerHTML = "Titre";
 
   }
