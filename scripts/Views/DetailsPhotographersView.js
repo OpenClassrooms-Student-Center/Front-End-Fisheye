@@ -6,13 +6,37 @@ class DetailsPhotographersView {
   }
 
   initModalVerification() {
-    this.formValidation = new FormValidation();
+    this.formValidation = new FormValidator();
     const inputName = document.getElementById("first");
+    const inputLastName = document.getElementById("last");
+    const inputEmail = document.getElementById("email");
+    const inputMessage = document.getElementById("message");
+    const signInForm = document.getElementById("signinform");
+    console.log(signInForm);
+    const form = document.getElementById("form");
+
+    //listeners
     inputName.addEventListener("focusout", (event) => {
-      console.log(event.target.value);
       this.formValidation.testInputText(event.target);
     });
+    inputLastName.addEventListener("focusout", (event) => {
+      this.formValidation.testInputText(event.target);
+    });
+    inputEmail.addEventListener("focusout", (event) => {
+      this.formValidation.testInputEmail(event.target);
+    });
+    inputMessage.addEventListener("focusout", (event) => {
+      console.log(event.target.value);
+      this.formValidation.testInputMessageText(event.target);
+    });
+    form.addEventListener("submit", (event) => {
+      event.preventDefault();
+      console.log(event.target);
+      this.formValidation.checkForm(event.target);
+      this.closeModal();
+    });
   }
+
   //function to create the html elements of photographer's banner
   async showDetailsPhotographer() {
     const photographersSection = document.querySelector(".photograph_header");
