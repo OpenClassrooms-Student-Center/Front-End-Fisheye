@@ -1,31 +1,42 @@
-    async function getPhotographers() {
-        // Penser à remplacer par les données récupérées dans le json
-        const photographers = [
-            {
-                "name": "Marilyn Manson",
-                "id": 1,
-                "city": "Paris",
-                "country": "France",
-                "tagline": "Ceci est ma data test",
-                "price": 400,
-                "portrait": "account.png"
-            },
-            {
-                "name": "Autre data test",
-                "id": 2,
-                "city": "Londres",
-                "country": "UK",
-                "tagline": "Ceci est ma data test 2",
-                "price": 500,
-                "portrait": "account.png"
-            },
-        ]
-        // et bien retourner le tableau photographers seulement une fois
-        return ({
-            photographers: [...photographers, ...photographers, ...photographers]})
-    }
+// fonction pour recuperer les données du json
 
-    async function displayData(photographers) {
+// fetch('./data/photographers.json')
+//    .then(function (response) {
+//        return response.json()
+//    } ).then(function (data) {
+//         console.log(data);
+//    })
+// let artist = [];
+// let medias = [];
+
+
+// const getArtists = async function() {
+//     let response = await fetch('./data/photographers.json')
+//     let data = await response.json()
+//     console.log(data);
+//     console.log(data.media);
+//     console.log(data.photographers[0].name);
+// }
+// getArtists()
+
+async function getPhotographers() 
+            
+        {
+        // Penser à remplacer par les données récupérées dans le json
+            let response = await fetch('./data/photographers.json')
+            let data = await response.json()
+            
+            console.log(data);
+            console.log(data.media);
+            console.log(data.photographers[0].name);
+
+            return  data
+        }
+        // et bien retourner le tableau photographers seulement une fois
+       
+    
+
+ async function displayData(photographers) {
         const photographersSection = document.querySelector(".photographer_section");
 
         photographers.forEach((photographer) => {
@@ -35,7 +46,7 @@
         });
     };
 
-    async function init() {
+ async function init() {
         // Récupère les datas des photographes
         const { photographers } = await getPhotographers();
         displayData(photographers);

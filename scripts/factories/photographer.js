@@ -1,6 +1,7 @@
 function photographerFactory(data) {
     const { name, portrait } = data;
-
+console.log("coucou");
+console.log(data.portrait);
     const picture = `assets/photographers/${portrait}`;
 
     function getUserCardDOM() {
