@@ -7,7 +7,7 @@ function mediasFactory(data) {
 
     function getMediasCardDOM() {
 
-        const figure = document.createElement('article');
+        const figure = document.createElement('figure');
                 figure.style.marginBottom = "40px";
                 figure.style.width = "350px";
 
@@ -39,15 +39,16 @@ function mediasFactory(data) {
             vid.classList.add("currentMedia");
         };
 
-        const mediaCaption = document.createElement('div');
+        const mediaCaption = document.createElement('figcaption');
             mediaCaption.style.display = "flex";
             mediaCaption.style.justifyContent = "space-between";
-            mediaCaption.classList.add("figcaption");
+            mediaCaption.classList.add("figcaption"); 
 
         const mediaTitle = document.createElement('p');
             mediaTitle.textContent = title;
             mediaTitle.style.fontSize = "20px";
             mediaTitle.style.color = "#901C1C";
+            mediaTitle.classList.add("mediaTitle");
 
         const mediaLikes = document.createElement("div");
         mediaLikes.style.display = "flex";
@@ -80,6 +81,10 @@ function mediasFactory(data) {
         mediaCaption.appendChild(mediaLikes);
         mediaLikes.appendChild(numberOfLikes);
         mediaLikes.appendChild(buttonHeart);
+
+        /////////////////////////////////////////////////////////////
+
+        
         
 
         return (figure);

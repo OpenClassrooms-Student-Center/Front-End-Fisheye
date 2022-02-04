@@ -549,7 +549,7 @@ async function getMedias() {
 
 async function displayDataMedias(medias) {
     const photographMedias = document.querySelector(".photograph-medias");
-
+	
     medias.forEach((media) => {
 		//Verifie si l'url contient l'id du photographe
         let verifyUrl = new URLSearchParams(window.location.search);

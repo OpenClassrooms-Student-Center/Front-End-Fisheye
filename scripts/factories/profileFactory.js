@@ -56,6 +56,8 @@ function profileFactory(data) {
         headerPh.appendChild(img);
         body.appendChild(priceAndLikes);
         priceAndLikes.appendChild(photographerPrice);
+
+        
         
         return (profile);
         

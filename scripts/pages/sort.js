@@ -1,4 +1,4 @@
-function getSort() {
+function getSortFactory() {
 
     const main = document.querySelector("#main");
     main.style.display = "flex";
@@ -44,7 +44,7 @@ function getSort() {
     
 
     const arrowClose = document.createElement("button");
-    arrowClose.innerHTML = '<i class="fas fa-chevron-up"></i>';
+    arrowClose.innerHTML = '<i class="fas fa-chevron-down"></i>';
     arrowClose.style.position = "absolute";
     arrowClose.style.top = "15px";
     arrowClose.style.right = "10px"; 
@@ -54,45 +54,50 @@ function getSort() {
     arrowClose.style.color = "white";
     arrowClose.style.cursor = "pointer";
 
-    const date = document.createElement("li");
-    date.textContent = "Date";
-    date.style.fontSize = "18px";
-    date.style.height = "50px";
-    date.style.width = "170px";
-    date.style.lineHeight = "50px";
-    date.style.background = "#901C1C";
-    date.style.color = "white";
-    date.style.cursor = "pointer";
-    date.style.paddingLeft = "10px";
-    date.style.display = "none";
+    const dateSort = document.createElement("li");
+    dateSort.textContent = "Date";
+    dateSort.style.fontSize = "18px";
+    dateSort.style.height = "50px";
+    dateSort.style.width = "170px";
+    dateSort.style.lineHeight = "50px";
+    dateSort.style.background = "#901C1C";
+    dateSort.style.color = "white";
+    dateSort.style.cursor = "pointer";
+    dateSort.style.paddingLeft = "10px";
+    dateSort.style.display = "none";
 
-    const title = document.createElement("li");
-    title.textContent = "Titre";
-    title.style.fontSize = "18px";
-    title.style.height = "50px";
-    title.style.width = "170px";
-    title.style.lineHeight = "50px";
-    title.style.background = "#901C1C";
-    title.style.color = "white";
-    title.style.cursor = "pointer";
-    title.style.paddingLeft = "10px"; 
-    title.style.display = "none";
+    const titleSort = document.createElement("li");
+    titleSort.textContent = "Titre";
+    titleSort.style.fontSize = "18px";
+    titleSort.style.height = "50px";
+    titleSort.style.width = "170px";
+    titleSort.style.lineHeight = "50px";
+    titleSort.style.background = "#901C1C";
+    titleSort.style.color = "white";
+    titleSort.style.cursor = "pointer";
+    titleSort.style.paddingLeft = "10px"; 
+    titleSort.style.display = "none";
 
-    popularityBloc.addEventListener("click", () => {
-        date.style.display = "block";
-        title.style.display = "block";
-    })
+    function closeSort() {
+        arrowClose.addEventListener("click", () => {
+            dateSort.style.display = "none";
+            titleSort.style.display = "none";
+        })
+    };
 
-    arrowClose.addEventListener("click", () => {
-        date.style.display = "none";
-        title.style.display = "none";
-    });  
+    if (dateSort.style.display = "none" , titleSort.style.display = "none") {
+        popularityBloc.addEventListener("mouseover", () => {
+            dateSort.style.display = "block";
+            titleSort.style.display = "block";
+            closeSort();
+        })
+    };
 
-    
+    titleSort.addEventListener("click", () => {
+        titleSort.style.background = "green";
+    });
 
-
-    
-
+   
 
 
     main.appendChild(sortContainer);
@@ -101,8 +106,9 @@ function getSort() {
     sortList.appendChild(popularityBloc);
     popularityBloc.appendChild(popularity);
     popularityBloc.appendChild(arrowClose);
-    sortList.appendChild(date);
-    sortList.appendChild(title);
+    sortList.appendChild(dateSort);
+    sortList.appendChild(titleSort);
+
 };
 
-getSort();
+getSortFactory();
