@@ -16,6 +16,14 @@ header {
     top: 10px;
 }
 
+.contact-header {
+    display: flex;
+    justify-content: space-between;
+}
+
+form div {
+    width: 100%;
+}
 .logo {
     height: 50px;
 }
@@ -54,7 +62,6 @@ header {
     padding: 20px 35px;
     margin: auto;
     z-index: 99;
-    
 }
 
 .modal header {
@@ -64,18 +71,6 @@ header {
     order: 1;
 }
 
-.modal header img {
-    cursor: pointer;
-    height: 40px;
-    width: 40px;
-    margin-top: 20px;
-}
-
-.modal header h2 {
-    font-size: 64px;
-    font-weight: normal;
-}
-
 form {
     display: flex;
     width: 100%;
@@ -83,27 +78,6 @@ form {
     align-items: flex-start;
     order: 3;
 }
-
-form label {
-    color: #312E2E;
-    font-size: 36px;
-}
-
-form div {
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-    align-items: self-start;
-    margin-bottom: 26px;
-}
-
-form input {
-    width: 100%;
-    height: 68px;
-    border: none;
-    border-radius: 5px;
-}
-
 /*****************************************************************/
 
 .photograph-medias {
@@ -129,10 +103,13 @@ form input {
     display: none;
 }
 
-
 .totalLikesContainer > input, label {
     display: none;
 } 
 .remove {
     display: block;
 } 
+
+form label {
+    display: block;
+}

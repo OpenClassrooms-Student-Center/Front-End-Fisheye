@@ -28,22 +28,26 @@
 			<div class="modal">
 
 				<div class="contact-header">
-          <h2>Contactez-moi</h2>
-          <img src="assets/icons/close.svg" onclick="closeModal()" />
+          <h2 class="contact-title">Contactez-moi</h2>
+          <img src="assets/icons/close.svg" onclick="closeModal()" class="close-modale"/>
         </div>
 
 				<form action="index.html" method="get" name="form">
 					<div>
-						<label for="firstname">Prénom</label>
-						<input type="text" name="firstname" id="firstname" />
-            <label for="lastname">Nom</label>
-            <input type="text" name="lastname" id="lastname"/>
-            <label for="email">Email</label>
-            <input type="email" name="email" id="email"/>
-            <label for="textarea">Votre message</label>
-            <textarea name="textarea" id="textarea" cols="45" rows="10"></textarea>
+						<label for="firstname" class="firstname">Prénom</label>
+						<input type="text" name="firstname" id="firstname" class="input-form" />
+            <span class="error-firstname"></span>
+            <label for="lastname" class="lastname">Nom</label>
+            <input type="text" name="lastname" id="lastname" class="input-form" />
+            <span class="error-lastname"></span>
+            <label for="email" class="email">Email</label>
+            <input type="email" name="email" id="email" class="input-form" />
+            <span class="error-email"></span>
+            <label for="textarea" class="textarea">Votre message</label>
+            <textarea name="textarea" id="textarea"></textarea>
+            <span class="error-textarea"></span>
 					</div>
-          <button class="contact_button">Envoyer</button>
+          <button class="contact_button submit-btn">Envoyer</button>
 				</form>
 
 			</div>
@@ -51,7 +55,7 @@
 
     <footer class="totalLikesContainer"></footer>
     
-    <script src="/scripts/utils/contactForm.js"></script>
+    <script src="/scripts/utils/contact.js"></script>
     <script src="scripts/factories/profileFactory.js"></script> 
     <script src="scripts/factories/lightboxFactory.js"></script>
     <script src="scripts/factories/mediasFactory.js"></script>
@@ -60,6 +64,7 @@
     <script src="scripts/pages/photographer.js"></script>
     <script src="scripts/pages/likesCounter.js"></script>
     <script src="scripts/pages/sort.js"></script>
+    
     
   
   </body>
