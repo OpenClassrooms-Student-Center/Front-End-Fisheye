@@ -5,7 +5,6 @@ body {
     margin: 0;
 }
 
-
 header {
     display: flex;
     flex-direction: row;
@@ -20,7 +19,6 @@ h1 {
 }
 
 .photographer_section img {
-   
     border-radius: 2500px;
     object-fit: cover;
 }
@@ -59,7 +57,6 @@ h1 {
 }
 
 .photographer-link {
-   
     display: flex;
     flex-direction: column;
     justify-content: center;
