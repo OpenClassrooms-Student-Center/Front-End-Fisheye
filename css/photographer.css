@@ -226,7 +226,6 @@ select {
   opacity: 0.5;
   cursor: pointer;
   transition: opacity 0.3s;
-  text-indent: -3000px;
 }
 .lightbox button:hover {
   opacity: 1;

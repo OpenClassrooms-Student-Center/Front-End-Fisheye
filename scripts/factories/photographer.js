@@ -116,6 +116,7 @@ function photographerFactory(data, mediaAll) {
 
     return countLikes;
   }
+
   return {
     name,
     picture,
@@ -154,6 +155,10 @@ function mediaFactory(media, photographers) {
       img.setAttribute("src", videoSrc);
       // img.setAttribute("controls", "controls");
     }
+    img.addEventListener("click", () => {
+      image ? showLightbox(imageSrc) : showLightbox(videoSrc);
+    });
+
     const desc = document.createElement("div");
 
     //Création de la balise h2
