@@ -1,9 +1,9 @@
 class MediaFactory {
-    constructor(photographer, index, media, photos) {
+    constructor(photographer, index, media, slideshow) {
         if (media.image) {
-            return this.getPhotoDOM(photographer, index, media, photos)
+            return this.getPhotoDOM(photographer, slideshow, index, media)
         } else if (media.video) {
-            return this.getVideoDOM(photographer, photos, index, media)
+            return this.getVideoDOM(photographer, slideshow, index, media)
         } else {
             return
         }
@@ -12,12 +12,12 @@ class MediaFactory {
     /**
      * Retourne l'element DOM d'une vidéo
      * @param {object} photographer 
-     * @param {object[]} photos 
+     * @param {object} slideshow 
      * @param {number} index 
      * @param {object} video 
      * @returns 
      */
-    getVideoDOM(photographer, photos, index, video) {
+    getVideoDOM(photographer, slideshow, index, video) {
 
         const videoLink = `assets/images/${photographer.name}/${video.video}`;
         const iconImage = `assets/icons/Vector.png`;
@@ -31,7 +31,6 @@ class MediaFactory {
         videoElement.setAttribute('width', 350);
         videoElement.setAttribute('height', 300);
 
-        let slideshow = new SlideShow(photographer.name, photos);
         videoElement.addEventListener("click", function () {
             slideshow.open(index)
 
@@ -67,19 +66,18 @@ class MediaFactory {
      * @param {object} photographer 
      * @param {number} index 
      * @param {object} photo 
-     * @param {object[]} photos 
+     * @param {object} slideshow 
      * @returns 
      */
-    getPhotoDOM(photographer, index, photo, photos) {
+    getPhotoDOM(photographer, slideshow, index, photo) {
         const photoLink = `assets/images/${photographer.name}/${photo.image ? photo.image : photo.video}`;
         const likeIcon = `assets/icons/Vector.png`;
         const article = document.createElement('article');
         const link = document.createElement('a');
 
         const img = document.createElement('img');
-        var slideshow = new SlideShow(photographer.name, photos);
         link.addEventListener("click", function () {
-            slideshow.open(index, photos)
+            slideshow.open(index)
 
         }, true);
 

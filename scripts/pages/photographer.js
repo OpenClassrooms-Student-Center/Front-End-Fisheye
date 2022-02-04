@@ -35,9 +35,11 @@ async function displayData(photographer, photos) {
   const photosSection = document.querySelector(".photos_info");
   photosSection.innerHTML = ''
 
+  let slideshow = new SlideShow(photographer.name, photos);
+
   photos.forEach((media, index) => {
     let mediaDOM;
-    mediaDOM = new MediaFactory(photographer, index, media, photos);
+    mediaDOM = new MediaFactory(photographer, index, media, slideshow);
     photosSection.appendChild(mediaDOM);
   });
 };

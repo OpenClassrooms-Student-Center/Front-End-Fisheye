@@ -1,10 +1,10 @@
 
 class SlideShow {
-    constructor(photographerName, listOfPhotos, indexOfCurrent) {
+    constructor(photographerName, listOfPhotos) {
         //initialisation les elements du slideshow
         this.photographerName = photographerName;
         this.listOfPhotos = listOfPhotos;
-        this.indexOfCurrent = indexOfCurrent;
+        this.indexOfCurrent = 0;
         this.img = document.getElementsByClassName("current-img")[0];
         this.videoSrc = document.getElementById("video-src");
         this.video = document.getElementsByClassName("current-video")[0];
