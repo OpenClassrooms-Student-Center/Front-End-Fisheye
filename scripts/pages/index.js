@@ -1,4 +1,4 @@
-    //RECUPERATION DES DONNEES DES PHOTOGRAPHES
+    // RECUPERATION DES DONNEES DES PHOTOGRAPHES
     async function getPhotographers() {
         const photographers = [
             {
@@ -66,7 +66,7 @@
         return ({photographers: [...photographers]}) 
     }
 
-    //AFFICHAGE DES DONNEES VIA PhotographerFactory
+    // AFFICHAGE DES PHOTOGRAPHES
     async function displayData(photographers) {
         const photographersSection = document.querySelector(".photographer_section");
 

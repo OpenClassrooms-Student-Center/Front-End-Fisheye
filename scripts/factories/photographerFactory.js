@@ -1,35 +1,36 @@
-//FONCTION POUR AFFICHER LE PROFIL DES PHOTOGRAPHES (INDEX)
+// AFFICHE LE PROFIL DES PHOTOGRAPHES (index)
 function photographerFactory(data) {
     const { name, portrait, city, country, tagline, price , id } = data;
 
     const picture = `assets/photographers/${portrait}`;
     
     function getUserCardDOM() {
-        const article = document.createElement('article');
+        const article                           = document.createElement('article');
+        const link                              = document.createElement('a');
+        const img                               = document.createElement('img');
+        const photographerName                  = document.createElement('h2');
+        const photographerCity                  = document.createElement('p');
+        const photographerTagline               = document.createElement('p');
+        const photographerPrice                 = document.createElement('p');
 
-        const link = document.createElement('a');
         link.setAttribute("href", `photographer.html?id=${id}`);
 
-        const img = document.createElement('img');
         img.setAttribute("src", picture); 
 
-        const photographerName = document.createElement('h2');
-        photographerName.textContent = name;
+        photographerName.textContent            = name;
+        photographerName.style.fontSize         = "36px";
 
-        const photographerCity = document.createElement('p');
-            photographerCity.textContent = city + ', ' + country; 
-            photographerCity.style.fontSize = "13px";
-            photographerCity.style.color = "#901C1C";
-            photographerCity.style.marginBottom = "3px";
+        photographerCity.textContent            = city + ', ' + country; 
+        photographerCity.style.fontSize         = "13px";
+        photographerCity.style.color            = "#901C1C";
+        photographerCity.style.marginBottom     = "3px";
 
-        const photographerTagline = document.createElement('p');
-            photographerTagline.textContent = tagline;
-            photographerTagline.style.fontSize = "10px";
-            photographerTagline.style.marginBottom = "3px";
+        photographerTagline.textContent         = tagline;
+        photographerTagline.style.fontSize      = "10px";
+        photographerTagline.style.marginBottom  = "3px";
             
-        const photographerPrice = document.createElement('p');
-            photographerPrice.textContent = price + '€/jour';
-            photographerPrice.style.fontSize = "9px"; 
+        photographerPrice.textContent           = price + '€/jour';
+        photographerPrice.style.fontSize        = "9px"; 
     
         article.appendChild(link);
         article.appendChild(photographerName);
@@ -39,7 +40,6 @@ function photographerFactory(data) {
         link.appendChild(img);
         
         return (article);
-        
     }
     return { name, picture, city, country, tagline, price, id, getUserCardDOM}
 }

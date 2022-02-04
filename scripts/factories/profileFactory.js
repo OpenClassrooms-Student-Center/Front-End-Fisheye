@@ -1,53 +1,54 @@
-//FONCTION POUR AFFICHER LE PROFIL DES PHOTOGRAPHES (HEADER PAGE PHOTOGRAPHER)
+// AFFICHE LE PROFIL DES PHOTOGRAPHES (Page photographer/Header)
 function profileFactory(data) {
     const { name, portrait, city, country, tagline, price } = data;
 
     const picture = `assets/photographers/${portrait}`;
 
     function getUserCardDOM() {
-        const headerPh = document.querySelector('.photograph-header');
-        const profile = document.createElement('div');
-            profile.style.margin = "auto 0";
-            profile.style.ordre = "1" ; 
+        const headerPh                      = document.querySelector('.photograph-header');
+        const profile                       = document.createElement('div');
+        const img                           = document.createElement('img');
+        const photographerName              = document.createElement('h2');
+        const photographerCity              = document.createElement('p');
+        const photographerTagline           = document.createElement('p');
+        const priceAndLikes                 = document.createElement('div');
+        const photographerPrice             = document.createElement('p');
+        const body                          = document.querySelector("body");
+        
+        profile.style.margin                = "auto 0";
+        profile.style.order                 = "1" ; 
 
-        const img = document.createElement('img');
-            img.setAttribute("src", picture); 
-            img.style.width = "200px";
-            img.style.height = "200px";
-            img.style.objectFit = "cover";
-            img.style.borderRadius = "50%";
-            img.style.margin = "auto 0";
-            img.style.order = "3"; 
+        img.setAttribute("src", picture); 
+        img.style.width                     = "200px";
+        img.style.height                    = "200px";
+        img.style.objectFit                 = "cover";
+        img.style.borderRadius              = "50%";
+        img.style.margin                    = "auto 0";
+        img.style.order                     = "3"; 
 
-        const photographerName = document.createElement('h2');
-            photographerName.textContent = name;
-            photographerName.style.fontSize = "64px";
-            photographerName.style.color = "#D3573C";
+        photographerName.textContent        = name;
+        photographerName.style.fontSize     = "64px";
+        photographerName.style.color        = "#D3573C";
 
-        const photographerCity = document.createElement('p');
-            photographerCity.textContent = city + ', ' + country; 
-            photographerCity.style.fontSize = "24px";
-            photographerCity.style.color = "#D3573C";
+        photographerCity.textContent        = city + ', ' + country; 
+        photographerCity.style.fontSize     = "24px";
+        photographerCity.style.color        = "#D3573C";
 
-        const photographerTagline = document.createElement('p');
-            photographerTagline.textContent = tagline;
-            photographerTagline.style.fontSize = "18px";
-            photographerTagline.style.marginTop = "20px";
+        photographerTagline.textContent     = tagline;
+        photographerTagline.style.fontSize  = "18px";
+        photographerTagline.style.marginTop = "20px";
+        photographerTagline.style.color     = "#525252";
 
-        const priceAndLikes = document.createElement('div');
-        priceAndLikes.style.background = "#D88876";
-        priceAndLikes.style.position = "fixed";
-        priceAndLikes.style.bottom = "0px";
-        priceAndLikes.style.right = "30px";
-        priceAndLikes.style.height = "50px";
-        priceAndLikes.style.paddingRight = "25px";
-
-        const body = document.querySelector('body');
-
-        const photographerPrice = document.createElement('p');
-            photographerPrice.textContent = price + '€/jour';
-            photographerPrice.style.fontSize = "24px";
-            photographerPrice.style.lineHeight = "50px";
+        priceAndLikes.style.background      = "#D88876";
+        priceAndLikes.style.position        = "fixed";
+        priceAndLikes.style.bottom          = "0px";
+        priceAndLikes.style.right           = "30px";
+        priceAndLikes.style.height          = "50px";
+        priceAndLikes.style.paddingRight    = "25px";
+        
+        photographerPrice.textContent       = price + '€/jour';
+        photographerPrice.style.fontSize    = "24px";
+        photographerPrice.style.lineHeight  = "50px";
 
         profile.appendChild(photographerName);
         profile.appendChild(photographerCity);
@@ -57,10 +58,7 @@ function profileFactory(data) {
         body.appendChild(priceAndLikes);
         priceAndLikes.appendChild(photographerPrice);
 
-        
-        
         return (profile);
-        
     }
     return { name, picture, city, country, tagline, price, getUserCardDOM }
 }

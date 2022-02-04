@@ -545,8 +545,7 @@ async function getMedias() {
     return ({medias : [...medias]}) 
 }
 
-
-
+// AFFICHE LES MEDIAS DES PHOTOGRAPHES
 async function displayDataMedias(medias) {
     const photographMedias = document.querySelector(".photograph-medias");
 	
@@ -555,7 +554,6 @@ async function displayDataMedias(medias) {
         let verifyUrl = new URLSearchParams(window.location.search);
         verifyUrl.has(media.photographerId);
         let param = verifyUrl.get('id');
-        //console.log(media.photographerId);  
 		
 		if(media.photographerId == param) {
 
