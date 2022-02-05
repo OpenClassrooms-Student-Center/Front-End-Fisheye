@@ -1,5 +1,5 @@
 // fonction pour lancer la creation des cards en html
-export async function displayData(photographers) {
+async function displayData(photographers) {
   const photographersSection = document.querySelector(".photographer_section");
 
   photographers.forEach((photographer) => {
@@ -32,3 +32,5 @@ function photographerFactory(data) {
 
   return { getUserCardDOM, name, portrait, city, country, tagline, price };
 }
+
+export { displayData }
