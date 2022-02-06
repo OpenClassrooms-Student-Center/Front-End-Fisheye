@@ -134,11 +134,21 @@ function photographerFactory(data, mediaAll) {
 
 //Fonction pour afficher les médias
 function mediaFactory(media, photographers) {
-  const { title, image, video, likes, date, price } = media;
+  const { title, image, video, likes, date, price, id } = media;
   let { name } = photographers[0];
   name = name.split(" ")[0].replace("-", " ");
-  const imageSrc = `assets/${name}/${image}`;
-  const videoSrc = `assets/${name}/${video}`;
+
+  // !
+  let type = "";
+  let source = "";
+  if (image) {
+    type = "image";
+    source = `assets/${name}/${image}`;
+  } else {
+    type = "video";
+    source = `assets/${name}/${video}`;
+  }
+  // !
 
   //Création des card de chaque média
   function getMediaCardDom() {
@@ -146,18 +156,16 @@ function mediaFactory(media, photographers) {
     const article = document.createElement("article");
 
     //Création de la balise image
-    let img = {};
-    if (image) {
-      img = document.createElement("img");
-      img.setAttribute("src", imageSrc);
-    } else {
-      img = document.createElement("video");
-      img.setAttribute("src", videoSrc);
-      // img.setAttribute("controls", "controls");
-    }
-    img.addEventListener("click", () => {
-      image ? showLightbox(imageSrc) : showLightbox(videoSrc);
+    // !
+    let thumbnail = {};
+    type == "image"
+      ? (thumbnail = document.createElement("img"))
+      : (thumbnail = document.createElement("video"));
+    thumbnail.setAttribute("src", source);
+    thumbnail.addEventListener("click", () => {
+      showLightbox(source, type, id);
     });
+    // !
 
     const desc = document.createElement("div");
 
@@ -176,7 +184,7 @@ function mediaFactory(media, photographers) {
     imageLike.classList.add("fa-heart");
 
     //Je crée un lien qui va me permettre de faire apparaître la page de profil
-    article.appendChild(img);
+    article.appendChild(thumbnail);
     article.appendChild(desc);
     desc.appendChild(h2);
     desc.appendChild(divLikes);
@@ -195,8 +203,9 @@ function mediaFactory(media, photographers) {
     likes,
     date,
     price,
-    imageSrc,
-    videoSrc,
+    type,
+    source,
+    id,
     getMediaCardDom,
   };
 }
