@@ -1,5 +1,5 @@
 //Mettre le code JavaScript lié à la page photographer.html
-const id = window.location.href.split("id=")[1];
+
 //Méthode de récupération des données des photographes
 async function getPhotographer() {
   try {
@@ -7,7 +7,6 @@ async function getPhotographer() {
     const response = await fetch("./data/photographers.json");
     const data = await response.json();
     const photographers = await data.photographers;
-
     //Récupération des données du photographe avec filtre par photographe
     const photographerFiltered = photographers.filter(
       (photographer) => photographer.id == id
@@ -17,7 +16,6 @@ async function getPhotographer() {
     const mediaFiltered = mediaAll.filter(
       (media) => media.photographerId == id
     );
-
     return { photographerFiltered, mediaFiltered };
   } catch (error) {
     console.error(error);
@@ -25,26 +23,52 @@ async function getPhotographer() {
 }
 
 async function displayData(photographerFiltered, mediaFiltered) {
+  // Éléments du DOM
   const photographersSection = document.querySelector(".photograph-header");
   const mediaSection = document.querySelector(".media-section");
 
-  photographerFiltered.forEach((photographer) => {
-    const photographerModel = photographerFactory(photographer, mediaFiltered);
-    const userCardDOM = photographerModel.getUserDetail();
-    const userLikes = photographerModel.getUserLikes();
-    photographersSection.appendChild(userCardDOM);
-    photographersSection.appendChild(userLikes);
-  });
+  if (photographersSection.children.length == 0) {
+    photographerFiltered.forEach((photographer) => {
+      const photographerModel = photographerFactory(
+        photographer,
+        mediaFiltered
+      );
+      const userCardDOM = photographerModel.getUserDetail();
+      const userLikes = photographerModel.getUserLikes();
+      photographersSection.appendChild(userCardDOM);
+      photographersSection.appendChild(userLikes);
+    });
+  }
   mediaFiltered.forEach((media) => {
     const mediaModel = mediaFactory(media, photographerFiltered);
     const mediaCardDom = mediaModel.getMediaCardDom();
     mediaSection.appendChild(mediaCardDom);
   });
 }
-async function init() {
+async function init(option) {
   // Récupère les datas des photographes
   const { photographerFiltered, mediaFiltered } = await getPhotographer();
+  //  tri les médias (défaut: par date)
+  switch (option) {
+    case "popularité":
+      mediaFiltered.sort((a, b) => b.likes - a.likes);
+      break;
+    case "titre":
+      mediaFiltered.sort(function (a, b) {
+        const titleA = a.title.toLowerCase();
+        const titleB = b.title.toLowerCase();
+        if (titleA < titleB) return -1;
+      });
+      break;
+    case "date":
+    default:
+      mediaFiltered.sort((a, b) => new Date(b.date) - new Date(a.date));
+      break;
+  }
+
   displayData(photographerFiltered, mediaFiltered);
 }
 
-init();
+// Récupération de l'ID dans l'url
+const id = window.location.href.split("id=")[1];
+id ? init() : (window.location.href = "index.html");

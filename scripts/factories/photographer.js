@@ -137,8 +137,6 @@ function mediaFactory(media, photographers) {
   const { title, image, video, likes, date, price, id } = media;
   let { name } = photographers[0];
   name = name.split(" ")[0].replace("-", " ");
-
-  // !
   let type = "";
   let source = "";
   if (image) {
@@ -148,15 +146,12 @@ function mediaFactory(media, photographers) {
     type = "video";
     source = `assets/${name}/${video}`;
   }
-  // !
-
   //Création des card de chaque média
   function getMediaCardDom() {
     //Création de la balise article
     const article = document.createElement("article");
 
     //Création de la balise image
-    // !
     let thumbnail = {};
     type == "image"
       ? (thumbnail = document.createElement("img"))
@@ -165,7 +160,6 @@ function mediaFactory(media, photographers) {
     thumbnail.addEventListener("click", () => {
       showLightbox(source, type, id);
     });
-    // !
 
     const desc = document.createElement("div");
 
@@ -175,6 +169,7 @@ function mediaFactory(media, photographers) {
 
     const divLikes = document.createElement("div");
     divLikes.classList.add("likes");
+
     //Création de la balise p
     const likeTag = document.createElement("p");
     likeTag.textContent = likes;

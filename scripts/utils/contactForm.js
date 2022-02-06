@@ -8,10 +8,11 @@ const modal = document.getElementById("contact_modal");
 const message = document.getElementById("message");
 const form = document.querySelector("form");
 const btnSubmit = document.querySelector("#submit");
+const inputs = document.querySelectorAll("input,textarea");
 
 //Fonction et fermeture du modal
 function displayModal() {
-  modal.style.display = "block";
+  modal.style.display = "flex";
 }
 function closeModal() {
   modal.style.display = "none";
@@ -31,6 +32,11 @@ function goodBorder(element) {
 
 function badBorder(element) {
   changeBorder(element, "#901c1c");
+}
+function resetBorder(array) {
+  array.forEach((element) => {
+    element.style.border = "none";
+  });
 }
 
 function changeBorder(element, color) {
@@ -131,6 +137,8 @@ function validForm() {
   if (checkPrenom() && checkNom() && checkEmail() && checkMessage()) {
     console.log("Le formulaire est valide");
     closeModal();
+    form.reset();
+    resetBorder(inputs);
     return true;
   }
   console.error("Le formulaire n'est pas valide");

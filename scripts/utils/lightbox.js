@@ -1,8 +1,8 @@
 /**
  * Fonction qui crée et intègre le contenu de la lightbox
- * @param {string} source - source de l'image à affichée
- * @param {string} type - type de l'image à affichée
- * @param {string} id - identifiant de l'image à affichée
+ * @param {string} source - source de l'image à afficher
+ * @param {string} type - type de l'image à afficher
+ * @param {string} id - identifiant de l'image à afficher
  * @param {object} lightbox - lightbox
  * @param {string} option - une string "next" ou "prev"
  */
@@ -53,9 +53,9 @@ function lightboxContent(source, type, id, lightbox) {
 
 /**
  * Fonction qui retourne la lightbox en objet HTML
- * @param {string} source - source de l'image à affichée
- * @param {string} type - type de l'image à affichée
- * @param {string} id - identifiant de l'image à affichée
+ * @param {string} source - source de l'image à afficher
+ * @param {string} type - type de l'image à afficher
+ * @param {string} id - identifiant de l'image à afficher
  * @return {HTML} lightbox [HTML object]
  */
 function lightbox(source, type, id) {
@@ -69,9 +69,9 @@ function lightbox(source, type, id) {
 
 /**
  * Fonction qui affiche la lightbox dans le DOM
- * @param {string} source - source de l'image à affichée
- * @param {string} type - type de l'image à affichée
- * @param {string} id - identifiant de l'image à affichée
+ * @param {string} source - source de l'image à afficher
+ * @param {string} type - type de l'image à afficher
+ * @param {string} id - identifiant de l'image à afficher
  */
 async function showLightbox(source, type, id) {
   document.getElementById("main").appendChild(lightbox(source, type, id));
