@@ -78,6 +78,10 @@
   cursor: pointer;
 }
 
+/**
+ ** Modal
+ */
+
 .modal {
   display: flex;
   width: 30rem;
@@ -115,6 +119,9 @@
   font-weight: normal;
   margin: 0.4rem 0;
 }
+/**
+ * *Formulaire de contact  
+ */
 form {
   display: flex;
   width: 100%;
@@ -198,14 +205,16 @@ select {
 /* 
   * Lightbox  * 
   */
+
 .lightbox {
   display: flex;
   position: fixed;
+  justify-content: center;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.8);
+  background-color: #fafafa;
   z-index: 10;
   overflow: auto;
   animation: lightboxIn 0.5s;
@@ -243,29 +252,30 @@ select {
   cursor: pointer;
 }
 .lightbox button {
-  opacity: 0.5;
+  opacity: 1;
   cursor: pointer;
   transition: opacity 0.3s;
 }
 .lightbox button:hover {
-  opacity: 1;
-}
-.lightbox__container img,
-.lightbox__container video {
-  max-width: 80%;
-  max-height: 90%;
-  object-fit: contain;
-  box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.5);
-  border-radius: 6px;
-
-  animation: lightboxIn 0.5s;
+  opacity: 0.5;
 }
 .lightbox__container {
   display: flex;
-  align-items: center;
+  flex-direction: column;
   justify-content: center;
-  width: 100vw;
-  height: 100vh;
+}
+.lightbox__container h2 {
+  color: #901c1c;
+  font-weight: bold;
+}
+.lightbox__container img,
+.lightbox__container video {
+  max-width: 90vw;
+  max-height: 90vh;
+  object-fit: contain;
+  box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.5);
+  border-radius: 6px;
+  animation: lightboxIn 0.5s;
 }
 @keyframes lightboxIn {
   from {

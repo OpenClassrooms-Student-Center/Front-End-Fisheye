@@ -158,7 +158,7 @@ function mediaFactory(media, photographers) {
       : (thumbnail = document.createElement("video"));
     thumbnail.setAttribute("src", source);
     thumbnail.addEventListener("click", () => {
-      showLightbox(source, type, id);
+      showLightbox(title, source, type, id);
     });
 
     const desc = document.createElement("div");

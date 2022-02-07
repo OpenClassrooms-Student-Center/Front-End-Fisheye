@@ -1,12 +1,13 @@
 /**
  * Fonction qui crée et intègre le contenu de la lightbox
+ * @param {string} title - titre de l'image à afficher
  * @param {string} source - source de l'image à afficher
  * @param {string} type - type de l'image à afficher
  * @param {string} id - identifiant de l'image à afficher
  * @param {object} lightbox - lightbox
  * @param {string} option - une string "next" ou "prev"
  */
-function lightboxContent(source, type, id, lightbox) {
+function lightboxContent(title, source, type, id, lightbox) {
   //Création de la div de la lightbox de fermeture
   const close = document.createElement("button");
   close.classList.add("lightbox__close");
@@ -43,38 +44,47 @@ function lightboxContent(source, type, id, lightbox) {
   type == "video" && content.setAttribute("autoplay", true);
   content.setAttribute("src", source);
   content.classList.add("thumbnail");
+  //Création du titre de l'image
+  const titleText = document.createElement("h2");
+  titleText.textContent = title;
+
   // Accroche les éléments créés
   lightbox.appendChild(close);
   lightbox.appendChild(next);
   lightbox.appendChild(prev);
   lightbox.appendChild(container);
   container.appendChild(content);
+  container.appendChild(titleText);
 }
 
 /**
  * Fonction qui retourne la lightbox en objet HTML
+ * @param {string} title - titre de l'image à afficher
  * @param {string} source - source de l'image à afficher
  * @param {string} type - type de l'image à afficher
  * @param {string} id - identifiant de l'image à afficher
  * @return {HTML} lightbox [HTML object]
  */
-function lightbox(source, type, id) {
+function lightbox(title, source, type, id) {
   //Crée la div global de la lightbox
   const lightbox = document.createElement("div");
   lightbox.classList.add("lightbox");
   // Crée et ajoute le contenu de la lightbox
-  lightboxContent(source, type, id, lightbox);
+  lightboxContent(title, source, type, id, lightbox);
   return lightbox;
 }
 
 /**
  * Fonction qui affiche la lightbox dans le DOM
+ * @param {string} title - titre de l'image à afficher
  * @param {string} source - source de l'image à afficher
  * @param {string} type - type de l'image à afficher
  * @param {string} id - identifiant de l'image à afficher
  */
-async function showLightbox(source, type, id) {
-  document.getElementById("main").appendChild(lightbox(source, type, id));
+async function showLightbox(title, source, type, id) {
+  document
+    .getElementById("main")
+    .appendChild(lightbox(title, source, type, id));
 }
 
 /* BOUTONS */
@@ -133,6 +143,8 @@ async function lightboxNextPrev(source, id, option) {
   const newMediaName =
     newMediaType == "image" ? newMedia.image : newMedia.video;
   const newMediaSource = "assets/" + source.split("/")[1] + "/" + newMediaName;
+  // * Récupère le titre du nouveau media
+  const newMediaTitle = newMedia.title;
   // * Récupère l'id du nouveau media
   const newMediaId = newMedia.id;
   // Récupère l'élément DOM lightbox
@@ -140,5 +152,11 @@ async function lightboxNextPrev(source, id, option) {
   // ! Vide la lightbox
   document.querySelector(".lightbox").innerHTML = "";
   // Crée et ajoute le nouveau contenu de la lightbox
-  lightboxContent(newMediaSource, newMediaType, newMediaId, recupLightbox);
+  lightboxContent(
+    newMediaTitle,
+    newMediaSource,
+    newMediaType,
+    newMediaId,
+    recupLightbox
+  );
 }
