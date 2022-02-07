@@ -1,5 +1,7 @@
 //Mettre le code JavaScript lié à la page photographer.html
-
+// Récupération de l'ID dans l'url
+const id = window.location.href.split("id=")[1];
+let photographerName = "";
 //Méthode de récupération des données des photographes
 async function getPhotographer() {
   try {
@@ -65,10 +67,10 @@ async function init(option) {
       mediaFiltered.sort((a, b) => new Date(b.date) - new Date(a.date));
       break;
   }
-
-  displayData(photographerFiltered, mediaFiltered);
+  photographerFiltered.length == 0
+    ? (window.location.href = "index.html")
+    : displayData(photographerFiltered, mediaFiltered);
+  photographerName = photographerFiltered[0].name;
 }
 
-// Récupération de l'ID dans l'url
-const id = window.location.href.split("id=")[1];
-id ? init() : (window.location.href = "index.html");
+init();

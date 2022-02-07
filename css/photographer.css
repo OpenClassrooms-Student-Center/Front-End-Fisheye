@@ -80,7 +80,7 @@
 
 .modal {
   display: flex;
-  width: 50%;
+  width: 30rem;
   margin: auto;
   padding: 35px;
   background-color: #db8876;
@@ -92,29 +92,40 @@
 }
 
 .modal header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: baseline;
   width: 100%;
 }
 
+.divContact {
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+}
 .modal header img {
   cursor: pointer;
+  width: 2rem;
 }
 
-.modal header h2 {
-  font-size: 64px;
+.modal header h2,
+.modal header p {
+  font-size: 40px;
   font-weight: normal;
-  text-align: center;
+  margin: 0.4rem 0;
 }
-
 form {
   display: flex;
   width: 100%;
   flex-direction: column;
   align-items: flex-start;
+  margin-top: 1rem;
 }
 
 form label {
   color: #312e2e;
-  font-size: 36px;
+  font-size: 18px;
 }
 
 form div {
@@ -122,15 +133,15 @@ form div {
   flex-direction: column;
   width: 100%;
   align-items: self-start;
-  margin-bottom: 26px;
+  margin-bottom: 0.8rem;
 }
 
 form input {
   width: 100%;
-  height: 68px;
+  height: 2rem;
   border: none;
   border-radius: 5px;
-  font-size: 2rem;
+  font-size: 1rem;
 }
 .error {
   margin-top: 5px;
@@ -244,6 +255,8 @@ select {
   max-width: 80%;
   max-height: 90%;
   object-fit: contain;
+  box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.5);
+  border-radius: 6px;
 
   animation: lightboxIn 0.5s;
 }

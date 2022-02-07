@@ -9,10 +9,12 @@ const message = document.getElementById("message");
 const form = document.querySelector("form");
 const btnSubmit = document.querySelector("#submit");
 const inputs = document.querySelectorAll("input,textarea");
-
+const titleName = document.querySelector(".contactModalName");
 //Fonction et fermeture du modal
 function displayModal() {
   modal.style.display = "flex";
+  titleName.textContent = photographerName;
+  console.log(photographerName);
 }
 function closeModal() {
   modal.style.display = "none";
