@@ -1,0 +1,22 @@
+{
+  "name": "front-end-fisheye",
+  "version": "1.0.0",
+  "description": "## Démarrer le projet",
+  "main": "index.js",
+  "scripts": {
+    "sass": "sass --watch ./sass/main.scss:./public/css/style.css --style compressed"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rMaloberti/Front-End-Fisheye.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/rMaloberti/Front-End-Fisheye/issues"
+  },
+  "homepage": "https://github.com/rMaloberti/Front-End-Fisheye#readme",
+  "dependencies": {
+    "sass": "^1.49.7"
+  }
+}
