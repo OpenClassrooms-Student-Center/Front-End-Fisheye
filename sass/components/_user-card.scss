@@ -1,0 +1,17 @@
+.user-card {
+    justify-self: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+
+    &__img {
+        height: 200px;
+        width: 200px;
+    }
+
+    &__title {
+        color: $secondary-color;
+        font-size: 36px;
+    }
+}
