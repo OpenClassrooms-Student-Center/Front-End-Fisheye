@@ -11,8 +11,6 @@ class DetailsPhotographersView {
     const inputLastName = document.getElementById("last");
     const inputEmail = document.getElementById("email");
     const inputMessage = document.getElementById("message");
-    const signInForm = document.getElementById("signinform");
-    console.log(signInForm);
     const form = document.getElementById("form");
 
     //listeners
@@ -38,6 +36,9 @@ class DetailsPhotographersView {
   }
 
   //function to create the html elements of photographer's banner
+
+  //refacto !!!
+
   async showDetailsPhotographer() {
     const photographersSection = document.querySelector(".photograph_header");
     console.log(this.photographer);
@@ -258,40 +259,5 @@ class DetailsPhotographersView {
     console.log("close");
     modal.style.display = "none";
     main.style.display = "block";
-  }
-
-  //function to check each form entries
-
-  // function called at form submit event
-
-  checkform(event) {
-    event.preventDefault();
-
-    /*let isError = false;
-
-    if (!testInputText(inputName)) {
-      isError = true;
-    }
-    if (!testInputText(inputLastName)) {
-      isError = true;
-    }
-    if (!testInputEmail(inputEmail)) {
-      isError = true;
-    }
-    if (!testInputMessageText(inputMessage)) {
-      isError = true;
-    }
-    if (isError == true) {
-      console.log("no");
-    } else if (isError == false) {
-      console.log(inputName);
-      console.log(
-        "ok",
-        "Prenom: " + inputName.value,
-        "Nom: " + inputLastName,
-        "Mail: " + inputEmail,
-        "Message: " + inputMessage
-      );
-    }*/
   }
 }

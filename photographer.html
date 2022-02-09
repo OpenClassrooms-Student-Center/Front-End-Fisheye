@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="fr">
   <head>
     <link href="css/photographer.css" rel="stylesheet" type="text/css" />
     <link href="css/style.css" rel="stylesheet" type="text/css" />
@@ -20,7 +20,7 @@
   <body>
     <header>
       <a href="index.html" title="Fisheye_Home_Page" class="logo">
-        <img src="assets/images/logo.png" class="logo"
+        <img src="assets/images/logo.png" class="logo" alt="logo Fisheye"
       /></a>
     </header>
 
@@ -43,6 +43,7 @@
       <div class="modal">
         <header>
           <h2 indextab="0" name="Contact Me">Contactez-moi</h2>
+
           <img
             src="assets/icons/close.svg"
             alt="close contact form"
@@ -75,9 +76,9 @@
             />
           </div>
           <div>
-            <label>Email</label>
+            <label for="email">Email</label>
             <input
-              aria-label="Email"
+              aria-label="email"
               aria-labelledby="7"
               class="text-control"
               type="email"
@@ -110,7 +111,6 @@
     </div>
 
     <script src="scripts/factories/Factory.js"></script>
-    <script src="scripts/Views/homePage.js"></script>
     <script src="scripts/Model/Model.js"></script>
     <script src="/scripts/utils/contactForm.js"></script>
     <script src="scripts/Views/lightbox.js"></script>
