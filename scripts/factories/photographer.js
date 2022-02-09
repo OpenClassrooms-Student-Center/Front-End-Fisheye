@@ -204,6 +204,7 @@ function mediaFactory(media, photographers) {
     getMediaCardDom,
   };
 }
+//Fonction qui permet d'incrémenter et de décrémenter le nombre de likes
 function addLikes(likeTag, imageLike) {
   if (imageLike.classList.contains("far")) {
     likeTag.textContent++;

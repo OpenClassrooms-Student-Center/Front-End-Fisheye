@@ -12,6 +12,16 @@
   background-color: #fafafa;
   height: 300px;
 }
+.photograph-header h2 {
+  color: #d3573c;
+  font-size: 4.6rem;
+  margin-bottom: 0;
+}
+.photograph-header .adresse {
+  color: #901c1c;
+  font-size: 1.6rem;
+  margin: 5px 0 2px 0;
+}
 .photograph-header img {
   width: 200px;
   height: 200px;
@@ -56,6 +66,7 @@
 }
 .media-section h2 {
   color: #901c1c;
+  font-weight: normal;
 }
 .likes p {
   color: #901c1c;
@@ -256,7 +267,7 @@ select {
   cursor: pointer;
   transition: opacity 0.3s;
 }
-.lightbox button:hover {
+.lightbox button:hover button:focus {
   opacity: 0.5;
 }
 .lightbox__container {
@@ -266,7 +277,7 @@ select {
 }
 .lightbox__container h2 {
   color: #901c1c;
-  font-weight: bold;
+  font-weight: normal;
 }
 .lightbox__container img,
 .lightbox__container video {
