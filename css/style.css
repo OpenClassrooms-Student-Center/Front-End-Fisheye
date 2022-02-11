@@ -13,7 +13,7 @@ body > header {
   height: 90px;
 }
 
-h1 {
+header h1 {
   color: #901c1c;
   font-weight: normal;
 }

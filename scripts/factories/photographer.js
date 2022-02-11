@@ -1,7 +1,7 @@
 function photographerFactory(data, mediaAll) {
   const { name, portrait, city, country, tagline, price, id, likes } = data;
-  const picture = `assets/photographers/${portrait}`;
-
+  // const picture = `assets/photographers/${portrait}`;
+  const picture = "assets/photographers/" + portrait;
   //Création des cards de chaque photographe
   function getUserCardDOM() {
     //Création de la balise article
@@ -10,14 +10,16 @@ function photographerFactory(data, mediaAll) {
     //Création de la balise image
     const img = document.createElement("img");
     img.setAttribute("src", picture);
+    img.setAttribute("alt", "Vignette des photographes : " + name);
 
     //Création de la balise h2
     const h2 = document.createElement("h2");
     h2.textContent = name;
-
     //Création de la balise p
     const adresse = document.createElement("p");
-    adresse.textContent = `${city}, ${country}`;
+    // adresse.textContent = `${city}, ${country}`;
+    adresse.textContent = city + ", " + country;
+
     adresse.classList.add("adresse");
 
     //Création de la balise p
@@ -27,7 +29,8 @@ function photographerFactory(data, mediaAll) {
 
     //Création de la balise p
     const priceTag = document.createElement("p");
-    priceTag.textContent = `${price}€/jours`;
+    // priceTag.textContent = `${price}€/jours`;
+    priceTag.textContent = price + "€/jours";
     priceTag.classList.add("price");
 
     //Création du lien vers la page de profil
@@ -53,11 +56,11 @@ function photographerFactory(data, mediaAll) {
     const divCentre = document.createElement("div");
 
     //Création de la balise h2
-    const h2 = document.createElement("h2");
+    const h2 = document.createElement("h1");
     h2.textContent = name;
 
     //Création de la balise p
-    const adresse = document.createElement("p");
+    const adresse = document.createElement("h2");
     adresse.textContent = `${city}, ${country}`;
     adresse.classList.add("adresse");
 
@@ -76,6 +79,7 @@ function photographerFactory(data, mediaAll) {
     //Création de la balise image
     const img = document.createElement("img");
     img.setAttribute("src", picture);
+    img.setAttribute("alt", "Vignette de contact : " + name);
 
     //Je crée un lien qui va me permettre de faire apparaître la page de profil
     article.appendChild(divGauche);
@@ -160,7 +164,8 @@ function mediaFactory(media, photographers) {
     thumbnail.addEventListener("click", () => {
       showLightbox(title, source, type, id);
     });
-
+    type == "image" &&
+      thumbnail.setAttribute("alt", "Vignette de media : " + title);
     const desc = document.createElement("div");
 
     //Création de la balise h2

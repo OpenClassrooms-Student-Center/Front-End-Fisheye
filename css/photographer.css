@@ -1,18 +1,9 @@
-#contact_modal {
-  display: none;
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-}
-
 .photograph-header {
   display: flex;
   background-color: #fafafa;
   height: 300px;
 }
-.photograph-header h2 {
+.photograph-header h1 {
   color: #d3573c;
   font-size: 4.6rem;
   margin-bottom: 0;
@@ -88,10 +79,23 @@
   border-radius: 5px;
   cursor: pointer;
 }
+.contact_button:hover,
+.contact_button:focus {
+  background-color: #d3573c;
+  color: black;
+}
 
 /**
  ** Modal
  */
+#contact_modal {
+  display: none;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
 
 .modal {
   display: flex;
@@ -102,11 +106,10 @@
   border-radius: 5px;
   box-shadow: 0px 0px 10px 3px rgba(0, 0, 0, 0.5);
   flex-direction: column;
-  align-items: center;
-  justify-content: space-between;
+  position: relative;
 }
 
-.modal header {
+.modal > div {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -114,18 +117,24 @@
   width: 100%;
 }
 
-.divContact {
-  display: flex;
-  flex-direction: column;
-  justify-content: start;
-}
-.modal header img {
+.modal img {
   cursor: pointer;
   width: 2rem;
+  height: 2rem;
+  position: absolute;
+  right: 2rem;
+  top: 3rem;
 }
 
-.modal header h2,
-.modal header p {
+.modal h1 {
+  font-size: 3rem;
+  margin: 0;
+}
+.contactModalName {
+  font-size: 1.6rem;
+  font-weight: normal;
+}
+.modal p {
   font-size: 40px;
   font-weight: normal;
   margin: 0.4rem 0;
@@ -183,7 +192,7 @@ textarea {
   margin-top: 3rem;
   margin-bottom: 3rem;
 }
-.selectMenu p {
+.selectMenu label {
   font-weight: bold;
   margin-right: 10px;
 }

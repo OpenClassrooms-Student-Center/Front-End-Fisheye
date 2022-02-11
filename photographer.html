@@ -5,7 +5,7 @@
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="icon" type="image/png" href="#" />
+    <link rel="icon" type="image/png" href="./assets/icons/logo.png" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -21,41 +21,44 @@
     <title>Fisheye - photographe</title>
   </head>
   <body>
-    <header role="banner" aria-label="En tête">
+    <header>
       <a href="index.html"
         ><img
           src="assets/images/logo.png"
           class="logo"
-          aria-label="image logo"
+          alt="logo de la page web"
         />
       </a>
     </header>
-    <main id="main" role="main" aria-label="Corps de la page">
+    <main id="main" role="main" alt="Corps de la page">
       <div class="photograph-header"></div>
-      <div class="selectMenu">
-        <p>Trier par</p>
-        <select aria-label="Sélection des options de tri">
+      <form class="selectMenu">
+        <label for="sort">Trier par</label>
+        <select name="sort" id="sort">
           <option value="date">Date</option>
           <option value="popularité">Popularité</option>
           <option value="titre">Titre</option>
         </select>
-      </div>
+      </form>
       <div class="media-section"></div>
     </main>
-    <div id="contact_modal">
+    <div id="contact_modal" text="modal">
       <div class="modal">
-        <header>
-          <div class="divContact">
-            <h2>Contactez-moi</h2>
-            <p class="contactModalName"></p>
-          </div>
-          <img
-            src="./assets/icons/close.svg"
-            alt="image close"
-            onclick="closeModal()"
-          />
-        </header>
-        <form name="reserve" action="photographer.html" method="get">
+        <img
+          src="./assets/icons/close.svg"
+          alt="close modal"
+          onclick="closeModal()"
+          tabindex="0"
+        />
+        <h1 alt="formulaire de contact">Contactez-moi</h1>
+        <h2 class="contactModalName"></h2>
+        <form
+          id="contactForm"
+          name="reserve"
+          action="photographer.html"
+          method="get"
+          aria-label="formulaire"
+        >
           <div class="formData">
             <label for="first">Prénom</label>
             <input

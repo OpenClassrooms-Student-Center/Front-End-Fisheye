@@ -6,7 +6,7 @@ const last = document.getElementById("last");
 const email = document.getElementById("email");
 const modal = document.getElementById("contact_modal");
 const message = document.getElementById("message");
-const form = document.querySelector("form");
+const form = document.getElementById("contactForm");
 const btnSubmit = document.querySelector("#submit");
 const inputs = document.querySelectorAll("input,textarea");
 const titleName = document.querySelector(".contactModalName");
@@ -14,11 +14,16 @@ const titleName = document.querySelector(".contactModalName");
 function displayModal() {
   modal.style.display = "flex";
   titleName.textContent = photographerName;
-  console.log(photographerName);
 }
 function closeModal() {
   modal.style.display = "none";
 }
+function keydown(e) {
+  if (e.keyCode == 27) {
+    closeModal();
+  }
+}
+document.addEventListener("keydown", keydown, false);
 
 //Empêcher la page de se recharger tant que le formulaire n'est pas validé
 btnSubmit.addEventListener("click", (e) => {
