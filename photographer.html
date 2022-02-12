@@ -26,11 +26,11 @@
         ><img
           src="assets/images/logo.png"
           class="logo"
-          alt="logo de la page web"
+          alt="Fisheye Home page"
         />
       </a>
     </header>
-    <main id="main" role="main" alt="Corps de la page">
+    <main id="main">
       <div class="photograph-header"></div>
       <form class="selectMenu">
         <label for="sort">Trier par</label>
@@ -41,79 +41,80 @@
         </select>
       </form>
       <div class="media-section"></div>
-    </main>
-    <div id="contact_modal" text="modal">
-      <div class="modal">
-        <img
-          src="./assets/icons/close.svg"
-          alt="close modal"
-          onclick="closeModal()"
-          tabindex="0"
-        />
-        <h1 alt="formulaire de contact">Contactez-moi</h1>
-        <h2 class="contactModalName"></h2>
-        <form
-          id="contactForm"
-          name="reserve"
-          action="photographer.html"
-          method="get"
-          aria-label="formulaire"
-        >
-          <div class="formData">
-            <label for="first">Prénom</label>
-            <input
-              class="text-control"
-              type="text"
-              id="first"
-              name="first"
-              minlength="2"
-              required
-            />
-            <div class="error invisible">
-              Vous devez entrer 2 caractères alphabétique minimum !
+      <div id="contact_modal">
+        <div class="modal">
+          <img
+            src="./assets/icons/close.svg"
+            alt="close modal"
+            onclick="closeModal()"
+            tabindex="0"
+          />
+          <h1>Contactez-moi</h1>
+          <div class="contactModalName"></div>
+          <form
+            id="contactForm"
+            name="reserve"
+            action="photographer.html"
+            method="get"
+            aria-label="formulaire"
+          >
+            <div class="formData">
+              <label for="first">Prénom</label>
+              <input
+                class="text-control"
+                type="text"
+                id="first"
+                name="first"
+                minlength="2"
+                required
+              />
+              <div class="error invisible">
+                Vous devez entrer 2 caractères alphabétique minimum !
+              </div>
             </div>
-          </div>
-          <div class="formData">
-            <label for="last">Nom</label>
-            <input
-              class="text-control"
-              type="text"
-              id="last"
-              name="last"
-              minlength="2"
-              required
-            />
-            <div class="error invisible">
-              Vous devez entrer 2 caractères alphabétique minimum !
+            <div class="formData">
+              <label for="last">Nom</label>
+              <input
+                class="text-control"
+                type="text"
+                id="last"
+                name="last"
+                minlength="2"
+                required
+              />
+              <div class="error invisible">
+                Vous devez entrer 2 caractères alphabétique minimum !
+              </div>
             </div>
-          </div>
-          <div class="formData">
-            <label for="email">E-mail</label>
-            <input
-              class="text-control"
-              type="email"
-              id="email"
-              name="email"
-              minlength="2"
-              required
-            />
-            <div class="error invisible">
-              Vous devez entrer une adresse mail valide !
+            <div class="formData">
+              <label for="email">E-mail</label>
+              <input
+                class="text-control"
+                type="email"
+                id="email"
+                name="email"
+                minlength="2"
+                required
+              />
+              <div class="error invisible">
+                Vous devez entrer une adresse mail valide !
+              </div>
             </div>
-          </div>
-          <div>
-            <label for="message">Votre message</label>
-            <textarea name="message" id="message" required></textarea>
-            <div class="error invisible">
-              Vous devez indiquer votre message plus long !
+            <div>
+              <label for="message">Votre message</label>
+              <textarea name="message" id="message" required></textarea>
+              <div class="error invisible">
+                Vous devez indiquer votre message plus long !
+              </div>
             </div>
-          </div>
-          <button type="button" class="contact_button" id="submit">
-            Envoyer
-          </button>
-        </form>
+            <button type="submit" class="contact_button" id="submit">
+              Envoyer
+            </button>
+          </form>
+        </div>
       </div>
-    </div>
+    </main>
+
     <script src="./scripts/utils/contactForm.js"></script>
     <script src="scripts/pages/photographer.js"></script>
     <script src="scripts/factories/Photographer.js"></script>

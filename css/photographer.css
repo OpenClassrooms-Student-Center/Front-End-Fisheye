@@ -29,10 +29,11 @@
   color: #525252;
 }
 .media-section {
-  display: flex;
-  justify-content: space-around;
-  flex-wrap: wrap;
-  margin-bottom: 5rem;
+  display: grid;
+  justify-content: center;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 40px;
+  margin-top: 100px;
 }
 .media-section article {
   width: 25vw;

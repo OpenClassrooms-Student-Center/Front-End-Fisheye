@@ -10,14 +10,17 @@
 function lightboxContent(title, source, type, id, lightbox) {
   //Création de la div de la lightbox de fermeture
   const close = document.createElement("button");
+  close.setAttribute("aria-label", "close");
   close.classList.add("lightbox__close");
   close.addEventListener("click", () => closeLightbox());
   //Création de la div de la lightbox suivant
   const next = document.createElement("button");
+  next.setAttribute("aria-label", "next");
   next.classList.add("lightbox__next");
   next.addEventListener("click", () => nextLightbox(source, id));
   //Création de la div de la lightbox précédent
   const prev = document.createElement("button");
+  prev.setAttribute("aria-label", "prev");
   prev.classList.add("lightbox__prev");
   prev.addEventListener("click", () => prevLightbox(source, id));
   //Écouteur d'événement pour les touches clavier
@@ -44,6 +47,7 @@ function lightboxContent(title, source, type, id, lightbox) {
   type == "video" && content.setAttribute("autoplay", true);
   content.setAttribute("src", source);
   content.classList.add("thumbnail");
+  content.setAttribute("alt", "image");
   //Création du titre de l'image
   const titleText = document.createElement("h2");
   titleText.textContent = title;
