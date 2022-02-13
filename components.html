@@ -7,7 +7,7 @@
         <title>FishEye - Composants</title>
         <link href="./public/css/style.css" rel="stylesheet" type="text/css" />
     </head>
-    <body>
+    <body style="display: flex; flex-direction: column">
         <filedset class="form-group">
             <label class="form-group__label" for="first-name">Prénom</label>
             <input
@@ -18,5 +18,11 @@
                 placeholder="Prénom"
             />
         </filedset>
+        <div style="padding: 1rem">
+            <button class="like-btn">
+                <span class="like-btn__counter">12</span>
+                <span class="like-btn__icon"></span>
+            </button>
+        </div>
     </body>
 </html>
