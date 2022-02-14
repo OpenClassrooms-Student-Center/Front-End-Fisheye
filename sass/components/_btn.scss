@@ -1,0 +1,33 @@
+.btn {
+    width: 8rem;
+    border-radius: 0.25rem;
+    padding: 1.05rem 0.75rem;
+    font-size: 0.9rem;
+    cursor: pointer;
+    background-color: $primary-color;
+    color: white;
+    position: relative;
+
+    &:after {
+        opacity: 0;
+        position: absolute;
+        min-width: 100%;
+        min-height: 100%;
+        border-radius: 0.25rem;
+        top: 0;
+        left: 0;
+        content: "Contactez-moi";
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: $secondary-color;
+        color: black;
+        transition: opacity 200ms ease-out;
+    }
+
+    &:hover {
+        &:after {
+            opacity: 1;
+        }
+    }
+}
