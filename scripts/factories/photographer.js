@@ -1,4 +1,4 @@
-function photographerFactory(data) {
+export function photographerFactory(data) {
     const { name, portrait } = data;
 
     const picture = `assets/photographers/${portrait}`;
@@ -14,7 +14,9 @@ function photographerFactory(data) {
         h2.textContent = name;
         article.appendChild(img);
         article.appendChild(h2);
+
         return article;
     }
+
     return { name, picture, getUserCardDOM };
 }
