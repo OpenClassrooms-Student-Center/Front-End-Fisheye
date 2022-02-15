@@ -13,6 +13,11 @@
         width: 0.9rem;
         height: 0.9rem;
         background-size: cover;
-        background-image: url("../../assets/icons/like.svg");
+        background-image: url("../../assets/icons/like-outline.svg");
+        position: relative;
+
+        &--liked {
+            background-image: url("../../assets/icons/like.svg");
+        }
     }
 }
