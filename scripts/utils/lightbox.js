@@ -43,8 +43,9 @@ function lightboxContent(title, source, type, id, lightbox) {
     type == "image"
       ? document.createElement("img")
       : document.createElement("video");
+
   type == "video" && content.setAttribute("controls", true);
-  type == "video" && content.setAttribute("autoplay", true);
+  // type == "video" && content.setAttribute("autoplay", true);
   content.setAttribute("src", source);
   content.classList.add("thumbnail");
   content.setAttribute("alt", "image");
@@ -59,6 +60,20 @@ function lightboxContent(title, source, type, id, lightbox) {
   lightbox.appendChild(container);
   container.appendChild(content);
   container.appendChild(titleText);
+
+  //Création des sous titres si c'est une video
+  if (type == "video") {
+    const subtitle = document.createElement("track");
+    subtitle.setAttribute("kind", "subtitles");
+    subtitle.setAttribute("label", "English");
+    subtitle.setAttribute("srclang", "en");
+    subtitle.setAttribute("src", "chrome-subtitles-zh.vtt");
+    const paragraph = document.createElement("h3");
+    paragraph.textContent =
+      "Ce navigateur ne prend pas en charge l'élément vidéo.";
+    content.appendChild(subtitle);
+    content.appendChild(paragraph);
+  }
 }
 
 /**
@@ -73,6 +88,7 @@ function lightbox(title, source, type, id) {
   //Crée la div global de la lightbox
   const lightbox = document.createElement("div");
   lightbox.classList.add("lightbox");
+  lightbox.setAttribute("alt", "image closeup view");
   // Crée et ajoute le contenu de la lightbox
   lightboxContent(title, source, type, id, lightbox);
   return lightbox;

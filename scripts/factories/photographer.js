@@ -10,7 +10,7 @@ function photographerFactory(data, mediaAll) {
     //Création de la balise image
     const img = document.createElement("img");
     img.setAttribute("src", picture);
-    img.setAttribute("alt", "Vignette des photographes : " + name);
+    img.setAttribute("alt", "Vignette du photographe : " + name);
 
     //Création de la balise h2
     const h2 = document.createElement("h2");
@@ -174,7 +174,7 @@ function mediaFactory(media, photographers) {
 
     const divLikes = document.createElement("div");
     divLikes.classList.add("likes");
-
+    divLikes.setAttribute("alt", "Nombre de likes : " + likes);
     //Création de la balise p
     const likeTag = document.createElement("p");
     likeTag.textContent = likes;
