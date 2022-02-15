@@ -1,50 +1,69 @@
 @import url("photographer.css");
 
 body {
-    font-family: "DM Sans", sans-serif;
-    margin: 0;
+  font-family: "DM Sans", sans-serif;
+  margin: 0 100px;
 }
 
-
-header {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-    height: 90px;
+body > header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  height: 90px;
 }
 
-h1 {
-    color: #901C1C;
-    margin-right: 100px;
+header h1 {
+  color: #901c1c;
+  font-weight: normal;
 }
 
 .logo {
-    height: 50px;
-    margin-left: 100px;
+  height: 50px;
 }
 
 .photographer_section {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    gap: 70px;
-    margin-top: 100px;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 70px;
+  margin-top: 100px;
 }
 
 .photographer_section article {
-    justify-self: center;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
+  justify-self: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
 }
 
 .photographer_section article h2 {
-    color: #D3573C;
-    font-size: 36px;
+  color: #d3573c;
+  font-size: 36px;
+  text-align: center;
+  margin-bottom: 0.1rem;
 }
 
 .photographer_section article img {
-    height: 200px;
-    width: 200px;
+  display: flex;
+  margin: auto;
+  height: 200px;
+  width: 200px;
+  border-radius: 98px;
+  object-fit: cover;
+}
+.photographer_section .adresse {
+  color: #901c1c;
+  font-size: 20px;
+  margin: 0.5rem;
+}
+.photographer_section .tagline {
+  margin: 0.2rem;
+}
+.photographer_section .price {
+  color: #525252;
+  margin: 0.2rem;
+}
+a {
+  text-decoration: none;
 }

@@ -1,36 +1,124 @@
 <!DOCTYPE html>
-<html>
+<html lang="fr">
   <head>
-    <link href="css/style.css" rel="stylesheet" type="text/css" />
-    <meta charset="utf-8">
-    <link rel="icon" type="image/png" href="assets/favicon.png">
-    <link href="https://fonts.googleapis.com/css?family=DM+Sans&display=swap" rel="stylesheet">
-    <title>Fisheye - photographe </title>
+    <link href="css/style.css" rel="stylesheet" />
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/png" href="./assets/icons/logo.png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&family=Shrikhand&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.15.4/css/all.css"
+      integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm"
+      crossorigin="anonymous"
+    />
+    <title>Fisheye - photographe</title>
   </head>
   <body>
     <header>
-      <img src="assets/images/logo.png" class="logo" />
+      <a href="index.html"
+        ><img
+          src="assets/images/logo.png"
+          class="logo"
+          alt="Fisheye Home page"
+        />
+      </a>
     </header>
     <main id="main">
-      <div class="photograph-header">
-        <button class="contact_button" onclick="displayModal()">Contactez-moi</button>
+      <div class="photograph-header"></div>
+      <form class="selectMenu">
+        <label for="sort">Trier par</label>
+        <select name="sort" id="sort">
+          <option value="date">Date</option>
+          <option value="popularité">Popularité</option>
+          <option value="titre">Titre</option>
+        </select>
+      </form>
+      <div class="media-section"></div>
+      <div id="contact_modal">
+        <div class="modal">
+          <img
+            src="./assets/icons/close.svg"
+            alt="close modal"
+            onclick="closeModal()"
+            tabindex="0"
+          />
+          <h1>Contactez-moi</h1>
+          <div class="contactModalName"></div>
+          <form
+            id="contactForm"
+            name="reserve"
+            action="photographer.html"
+            method="get"
+            aria-label="formulaire"
+          >
+            <div class="formData">
+              <label for="first">Prénom</label>
+              <input
+                class="text-control"
+                type="text"
+                id="first"
+                name="first"
+                minlength="2"
+                required
+              />
+              <div class="error invisible">
+                Vous devez entrer 2 caractères alphabétique minimum !
+              </div>
+            </div>
+            <div class="formData">
+              <label for="last">Nom</label>
+              <input
+                class="text-control"
+                type="text"
+                id="last"
+                name="last"
+                minlength="2"
+                required
+              />
+              <div class="error invisible">
+                Vous devez entrer 2 caractères alphabétique minimum !
+              </div>
+            </div>
+            <div class="formData">
+              <label for="email">E-mail</label>
+              <input
+                class="text-control"
+                type="email"
+                id="email"
+                name="email"
+                minlength="2"
+                required
+              />
+              <div class="error invisible">
+                Vous devez entrer une adresse mail valide !
+              </div>
+            </div>
+            <div>
+              <label for="message">Votre message</label>
+              <textarea name="message" id="message" required></textarea>
+              <div class="error invisible">
+                Vous devez indiquer votre message plus long !
+              </div>
+            </div>
+            <button type="submit" class="contact_button" id="submit">
+              Envoyer
+            </button>
+          </form>
+        </div>
       </div>
     </main>
-    <div id="contact_modal">
-			<div class="modal">
-				<header>
-          <h2>Contactez-moi</h2>
-          <img src="assets/icons/close.svg" onclick="closeModal()" />
-        </header>
-				<form>
-					<div>
-						<label>Prénom</label>
-						<input />
-					</div>
-          <button class="contact_button">Envoyer</button>
-				</form>
-			</div>
-		</div>
-    <script src="/scripts/utils/contactForm.js"></script>
+
+    <script src="./scripts/utils/contactForm.js"></script>
+    <script src="scripts/pages/photographer.js"></script>
+    <script src="scripts/factories/Photographer.js"></script>
+    <script src="./scripts/utils/lightbox.js"></script>
+    <script src="./scripts/utils/globals.js"></script>
   </body>
 </html>
