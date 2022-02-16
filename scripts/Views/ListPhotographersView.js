@@ -1,12 +1,12 @@
 class ListPhotographersView {
-  static async datasPhotographersList(photographers) {
+  static datasPhotographersList(photographers) {
     const photographersSection = document.querySelector(
       ".photographer_section"
     );
 
     photographers.forEach((photographer) => {
-      const photographerModel = photographerFactoryList(photographer);
-      const userCardDOM = photographerModel.getUserCardDOM();
+      const photographerCard = photographerFactoryList(photographer);
+      const userCardDOM = photographerCard.getUserCardDOM();
       photographersSection.appendChild(userCardDOM);
     });
   }

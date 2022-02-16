@@ -6,10 +6,6 @@
   --secondary-light-red: #db8876;
 }
 
-#contact_modal {
-  display: none;
-}
-
 .photograph_header {
   display: flex;
   align-items: center;
@@ -25,39 +21,92 @@
   font-weight: bold;
   color: white;
   padding: 11px;
-  width: 170px;
-  height: 70px;
+  width: 160px;
+  height: 60px;
   border: none;
   background-color: var(--primary-dark-red);
   border-radius: 5px;
   cursor: pointer;
 }
 
+.contact_button:hover,
+.contact_button:focus {
+  background-color: var(--secondary-light-red);
+}
+
+.dropdown {
+  margin: 20px 0 20px 50px;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.sort-by {
+  font-size: 1.2rem;
+  font-weight: bolder;
+}
+.sort-byButton {
+  font-size: 1rem;
+  color: white;
+  padding: 11px;
+  width: 150px;
+  height: 55px;
+  border: none;
+  background-color: var(--primary-dark-red);
+  border-radius: 5px;
+  cursor: pointer;
+}
+.sort-byButton option {
+  padding: 10px;
+  border-bottom: 1px white;
+}
+
+#contact_modal {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 100%;
+  background-color: rgba(208, 208, 208, 0.6);
+}
+
 .modal {
   border-radius: 5px;
   background-color: var(--secondary-light-red);
-  width: 50%;
+  position: relative;
+  height: fit-content;
+  width: 35%;
   display: flex;
   flex-direction: column;
+  margin-top: 5%;
+  margin-left: auto;
+  margin-right: auto;
   align-items: center;
   justify-content: space-between;
   padding: 35px;
-  margin: auto;
+  padding-top: unset;
 }
 
 .modal header {
   justify-content: space-between;
   width: 100%;
+  height: 25%;
+  margin-top: unset;
 }
 
 .modal header img {
   cursor: pointer;
+  width: 8%;
 }
 
 .modal header h2 {
-  font-size: 64px;
+  font-size: 48px;
+  margin-top: 14px;
+  margin-bottom: 10px;
   font-weight: normal;
-  text-align: center;
+  text-align: left;
 }
 
 form {
@@ -69,7 +118,7 @@ form {
 
 form label {
   color: #312e2e;
-  font-size: 36px;
+  font-size: 30px;
 }
 
 form div {
@@ -77,14 +126,38 @@ form div {
   flex-direction: column;
   width: 100%;
   align-items: self-start;
-  margin-bottom: 26px;
+  margin-bottom: 3px;
 }
 
 form input {
   width: 100%;
-  height: 68px;
+  height: 40px;
   border: none;
   border-radius: 5px;
+}
+
+#message {
+  height: 100px;
+  margin-bottom: 15px;
+}
+
+.errorMessage {
+  font-size: 0.8em;
+  color: #312e2e;
+  display: block;
+  margin-top: 7px;
+  margin-bottom: 7px;
+  text-align: right;
+  line-height: 0.3;
+  opacity: 0;
+  transition: 0.3s;
+}
+
+.errorVisible {
+  opacity: 1;
+}
+.borderError {
+  border: 2px solid #312e2e;
 }
 
 .cardpicture {
@@ -95,25 +168,48 @@ form input {
   box-shadow: -2px 2px 20px rgba(0, 0, 0, 0.25);
 }
 
-.picturespage {
+.cardSize {
+  display: flex;
+  flex-direction: column-reverse;
+}
+
+.picturesSize {
   object-fit: cover;
-    width: 300px;
-    height: 300px;
-    display: flex;
-  
+  width: 300px;
+  height: 300px;
+  display: flex;
+}
+
+.picturesText {
+  font-size: 0.9rem;
+  color: #8a1717;
+  cursor: pointer;
+  font-weight: bold;
+}
+.underpicture {
+  display: flex;
+  justify-content: space-between;
+  font-size: 1.4rem;
+  color: #8a1717;
+  width: auto;
+  font-size: large;
+  align-items: center;
+}
+
+.likesHeart {
+  display: flex;
 }
 
 .photograph_medias {
   display: flex;
-    align-items: center;
-    row-gap: 50px;
-    justify-content: space-between;
-    column-gap: 60px;
-    flex-wrap: wrap;
-    margin-right: 50px;
-    padding-top: 20px;
-    margin-left: 50px;
-    
+  align-items: center;
+  row-gap: 50px;
+  justify-content: space-between;
+  column-gap: 60px;
+  flex-wrap: wrap;
+  margin-right: 50px;
+  padding-top: 20px;
+  margin-left: 50px;
 }
 a {
   text-decoration: none;
@@ -127,9 +223,22 @@ a {
   background-color: black;
   box-shadow: 3px 3px 5px black;
   transition: 1s all;
-  
 }
 
 /*.player:hover .controls, player:focus .controls {
   opacity: 1;
+}*/
+
+.stickyBar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: fixed;
+  background-color: var(--secondary-light-red);
+  border-radius: 7px 7px 0 0;
+  bottom: 0;
+  right: 5%;
+  width: 200px;
+  font-weight: bold;
+  padding: 0 20px 0 20px;
 }

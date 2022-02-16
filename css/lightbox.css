@@ -1,0 +1,88 @@
+@import url("photographer.css");
+
+:root {
+  --primary-dark-red: #901c1c;
+  --primary-light-red: #d3573c;
+  --secondary-dark-gray: #525252;
+  --secondary-light-gray: #fafafa;
+  --secondary-light-red: #db8876;
+}
+
+.lightboxContainer {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background-color: rgba(255, 255, 255, 1);
+  overflow: auto;
+}
+.lightbox {
+  display: flex;
+  justify-content: center;
+  height: 100%;
+  width: 100%;
+  align-items: center;
+}
+
+.lightbox-next,
+.lightbox-prev,
+.lightbox-close {
+  border: none;
+  background: none;
+  color: var(--primary-dark-red);
+  position: fixed;
+  cursor: pointer;
+  z-index: 15;
+}
+
+.lightboxContainer.active {
+  display: flex;
+  display: block;
+  justify-content: center;
+  align-items: center;
+}
+
+.lightbox-next,
+.lightbox-prev {
+  top: 45%;
+  height: 10%;
+  margin-top: -14px;
+}
+
+.lightbox-next i,
+.lightbox-prev i,
+.lightbox-close i {
+  transform: scale(3.5);
+}
+
+.lightbox-next {
+  right: 5%;
+}
+
+.lightbox-prev {
+  left: 5%;
+}
+
+.lightbox-close {
+  top: 5%;
+  right: 5%;
+}
+
+.lightbox-img {
+  border-radius: 10px;
+  height: 80%;
+  /* justify-content: center; */
+  width: 80%;
+  position: fixed;
+  object-fit: cover;
+}
+
+.lightbox-legend {
+  font-weight: bolder;
+  align-self: flex-end;
+  z-index: 2;
+  margin-right: 75%;
+  padding-bottom: 30px;
+  color: var(--primary-light-red);
+}

@@ -21,6 +21,11 @@ header {
   height: 90px;
 }
 
+a:focus {
+  outline: 2px var(--secondary-dark-gray) solid;
+  outline-offset: 0.15em;
+}
+
 h1 {
   color: #901c1c;
   margin-right: 130px;
@@ -28,7 +33,7 @@ h1 {
 
 .logo {
   height: 50px;
-  margin-left: 75px;
+  margin-left: 28px;
 }
 
 .photographer_section {
