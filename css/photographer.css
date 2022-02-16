@@ -6,8 +6,33 @@
     background-color: #FAFAFA;
     height: 300px;
     margin: 0 100px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
 }
 
+.photograph-header img {
+    height: 200px;
+    width: 200px;
+    object-fit: cover;
+    border-radius: 2500px;
+}
+
+.photograph-header article {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+}
+.photographer-details {
+    
+    justify-content: flex-start;
+    align-items: flex-start;
+}
+
+article h2 {
+    margin: 0;
+}
 .contact_button {
     font-size: 20px;
     font-weight: bold;

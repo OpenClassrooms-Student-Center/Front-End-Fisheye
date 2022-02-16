@@ -1,5 +1,8 @@
 @import url("photographer.css");
 
+* {
+    text-decoration: none;
+}
 body {
     font-family: "DM Sans", sans-serif;
     margin: 0;
@@ -43,7 +46,7 @@ h1 {
     flex-direction: column;
 }
 
-.photographer_section article h2 {
+ article h2 {
     color: #D3573C;
     font-size: 36px;
     font-weight: 400;

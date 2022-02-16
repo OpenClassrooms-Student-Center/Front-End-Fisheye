@@ -11,11 +11,12 @@ async function displayData(photographers) {
 
 // fonction pour constuire des elements html
 function photographerFactory(data) {
-  const { name, portrait, city, country, tagline, price } = data;
+  const { name, portrait, city, country, tagline, price, id } = data;
 
   function getUserCardDOM() {
     const htmlArticle = `
-          <a class="photographer-link">
+          <a class="photographer-link" href="./photographer.html?id=${id}&name=${name}&city=${city}
+          &country=${country}&price=${price}&tagline=${tagline}&portrait=${portrait}">
               <img src="assets/photographers/${portrait}">
               <h2>${name}</h2>
               </a>
@@ -26,11 +27,14 @@ function photographerFactory(data) {
           </div>`;
     const article = document.createElement("article");
     article.innerHTML = htmlArticle;
+    console.log(data);
 
     return article;
   }
 
-  return { getUserCardDOM, name, portrait, city, country, tagline, price };
+  return { getUserCardDOM, name, portrait, city, country, tagline, price, id };
 }
 
-export { displayData }
+//fonction pour construire la page photographer.html
+
+export { displayData };
