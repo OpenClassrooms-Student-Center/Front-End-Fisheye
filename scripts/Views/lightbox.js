@@ -6,7 +6,7 @@ class Lightbox {
     this.lightbox = null;
   }
   displayLightbox(idMedia) {
-    //récupérer l'Id de l'image courante
+    //id of the current img
     this.calculateIndexById(idMedia);
 
     // Lightbox DOMelements
@@ -30,6 +30,14 @@ class Lightbox {
       this.goPrevImage();
     });
 
+    //accessibility
+
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "ArrowLeft") {
+        this.goPrevImage();
+      }
+    });
+
     const next = document.createElement("button");
     next.innerHTML = '<i class="fas fa-chevron-right"></i>';
     next.setAttribute("class", "lightbox-next");
@@ -38,12 +46,22 @@ class Lightbox {
       this.goNextImage();
     });
 
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "ArrowRight") {
+        this.goNextImage();
+      }
+    });
+
     const close = document.createElement("button");
     close.innerHTML = '<i class="fas fa-times"></i>';
     close.setAttribute("class", "lightbox-close");
     close.addEventListener("click", (event) => {
-      //la target de l'event c'est le button et son parent le plus proche qui a la classe container->fermer
       event.target.closest(".lightboxContainer").remove();
+    });
+    document.addEventListener("keydown", (event) => {
+      if (event.key === "Escape") {
+        lightboxContainer.style.display = "none";
+      }
     });
 
     this.showImage();
@@ -56,7 +74,7 @@ class Lightbox {
     lightboxContainer.style.display = "block";
   }
 
-  //recherche dans le array medias de ce photographe les img par leur id et return index de l'img courante
+  //current index of the img in the photographer medias array
   calculateIndexById(id) {
     for (let i = 0; i < this.medias.length; i++) {
       if (this.medias[i].id == id) {
@@ -67,10 +85,7 @@ class Lightbox {
   }
 
   goNextImage() {
-    //incrémenter +1
     this.index += 1;
-    //index> à taille du tableau -1 ? si oui index retourne à 0
-    //this.index > this.medias.length - 1 ? (index = 0) : "";
     if (this.index > this.medias.length) {
       this.index = 0;
     }

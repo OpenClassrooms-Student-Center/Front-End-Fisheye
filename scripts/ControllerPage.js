@@ -17,7 +17,5 @@ class ControllerPage {
     //view.selectDropdown();
     view.showContactModal();
     view.hideContactModal();
-
-    console.log("fin controller");
   }
 }

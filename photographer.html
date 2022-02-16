@@ -18,7 +18,7 @@
     <title>Fisheye - photographe</title>
   </head>
   <body>
-    <header>
+    <header id="header">
       <a href="index.html" title="Fisheye_Home_Page" class="logo">
         <img src="assets/images/logo.png" class="logo" alt="logo Fisheye"
       /></a>
@@ -38,16 +38,17 @@
       id="contact_modal"
       role="dialog"
       aria-label="Contact me"
-      aria-labelledby="2"
+      aria-labelledby="contact_modal"
     >
       <div class="modal">
         <header>
-          <h2 indextab="0" name="Contact Me">Contactez-moi</h2>
+          <h2>Contactez-moi</h2>
 
           <img
             src="assets/icons/close.svg"
             alt="close contact form"
             id="close-button"
+            aria-label="Fermer"
           />
         </header>
         <form id="form" name="reserve" method="get">
@@ -55,7 +56,7 @@
             <label for="first">Prénom</label>
             <input
               aria-label="First name"
-              aria-labelledby="3"
+              aria-labelledby="first"
               class="text-control"
               type="text"
               id="first"
@@ -67,7 +68,7 @@
             <label for="last">Nom</label>
             <input
               aria-label="Last name"
-              aria-labelledby="5"
+              aria-labelledby="last"
               class="text-control"
               type="text"
               id="last"
@@ -79,7 +80,7 @@
             <label for="email">Email</label>
             <input
               aria-label="email"
-              aria-labelledby="7"
+              aria-labelledby="email"
               class="text-control"
               type="email"
               id="email"
@@ -91,7 +92,7 @@
             <label for="message">Votre message</label>
             <input
               aria-label="Your message"
-              aria-labelledby="9"
+              aria-labelledby="message"
               class="text-control"
               type="text"
               id="message"

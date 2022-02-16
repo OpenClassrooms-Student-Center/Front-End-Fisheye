@@ -3,7 +3,10 @@ class DetailsPhotographersView {
     this.photographer = photographer;
     this.medias = medias;
     this.initModalVerification();
+    this.selectDropdown();
   }
+
+  // function to show validate form
 
   initModalVerification() {
     this.formValidation = new FormValidator();
@@ -24,24 +27,19 @@ class DetailsPhotographersView {
       this.formValidation.testInputEmail(event.target);
     });
     inputMessage.addEventListener("focusout", (event) => {
-      console.log(event.target.value);
       this.formValidation.testInputMessageText(event.target);
     });
     form.addEventListener("submit", (event) => {
       event.preventDefault();
-      console.log(event.target);
       this.formValidation.checkForm(event.target);
       this.closeModal();
     });
   }
 
-  //function to create the html elements of photographer's banner
-
-  //refacto !!!
+  //function to show html elements of photographer's banner
 
   async showDetailsPhotographer() {
     const photographersSection = document.querySelector(".photograph_header");
-    console.log(this.photographer);
     const picture = `assets/photographers/${this.photographer.portrait}`;
 
     let html = `
@@ -74,6 +72,7 @@ class DetailsPhotographersView {
   }
 
   //function to create the select menu
+
   selectDropdown() {
     const dropdownMenu = document.querySelector(".dropdown");
     dropdownMenu.innerHTML = "";
@@ -84,13 +83,16 @@ class DetailsPhotographersView {
     dropdownMenu.appendChild(sortBy);
 
     let select = document.createElement("select");
+    select.setAttribute("class", "sort-byButton");
 
     let optionPop = document.createElement("option");
     optionPop.text = "Popularité";
     optionPop.value = "pop";
+
     let optionDate = document.createElement("option");
     optionDate.text = "Date";
     optionDate.value = "date";
+
     let optionTitle = document.createElement("option");
     optionTitle.text = "Titre";
     optionTitle.value = "title";
@@ -110,7 +112,6 @@ class DetailsPhotographersView {
         case "date":
           this.medias.sort((a, b) => new Date(b.date) - new Date(a.date));
           break;
-        // console.log(medias);
 
         case "title":
           function compare(a, b) {
@@ -141,23 +142,20 @@ class DetailsPhotographersView {
     dropdownMenu.appendChild(select);
   }
 
-  //function to create and show the list medias of a photographer
+  //function to show the list medias of a photographer
 
   showListMediasPhotographer() {
     const mediasSection = document.querySelector(".photograph_medias");
     let lightbox = new Lightbox(this.medias, this.photographer.name);
 
-    // boucle sur le tableau this.medias
-
     for (let index = 0; index < this.medias.length; index++) {
-      console.log(index);
       const enregMedia = this.medias[index];
       const container = Factory.getMediasCards(
         enregMedia,
         this.photographer.name
       );
 
-      //Premier on doit poser un écouteur d'event sur les likes pour les incréementer (sur le loveContainer entier)
+      //Listener d'event sur les likes pour les incrémenter (sur le loveContainer entier likes + <3)
       container.childNodes[0].childNodes[1].addEventListener(
         "click",
         (event) => {
@@ -172,22 +170,41 @@ class DetailsPhotographersView {
           this.stickyBar();
         }
       );
-      //Deux on doitpoiser un ecouteru sur l'image pour  lancer lightbox (Why not sur le titre aussi )
+
+      //accessiblity
+      container.childNodes[0].childNodes[1].addEventListener(
+        "keydown",
+        (event) => {
+          if (event.key === "Enter") {
+            let likes = parseInt(
+              event.target.closest(".likesHeart").querySelector(".picturesText")
+                .textContent
+            );
+            likes += 1;
+            event.target
+              .closest(".likesHeart")
+              .querySelector(".picturesText").textContent = likes;
+            this.stickyBar();
+          }
+        }
+      );
+      //listener sur l'image pour  lancer lightbox
       container.childNodes[1].addEventListener("click", (event) => {
-        //On doit lancer la lightbox
         lightbox.displayLightbox(enregMedia.id);
+      });
+      container.childNodes[1].addEventListener("keydown", (e) => {
+        if (e.key === "Enter") {
+          lightbox.displayLightbox(enregMedia.id);
+        }
       });
 
       mediasSection.appendChild(container);
-
-      // container.addEventListener("click", () => {
-      //   lightbox.displayLightbox(enregMedia.id);
-      // });
     }
     this.stickyBar(this.photographer, this.medias);
-    this.selectDropdown();
   }
-  //function to create and update a stick bar with total likes &
+
+  //function to create and update a stick bar with total likes & hearts
+
   stickyBar() {
     let stickBar = document.createElement("aside");
     stickBar.setAttribute("class", "stickyBar");
@@ -205,16 +222,8 @@ class DetailsPhotographersView {
   //function to calculate the total likes of a prohotgrapher
   calculateTotalLikes() {
     let totalLikes = 0;
-    // this.medias.map((element) => {
-    //   totalLikes += element.likes;
-    //   //console.log("totalLikes");
-    // });
     const allLikes = document.querySelectorAll(".picturesText");
     allLikes.forEach((element) => (totalLikes += Number(element.textContent)));
-    // for (element of allLikes) {
-    //   console.log(element);
-    // }
-    console.log(totalLikes);
     return totalLikes;
   }
   //functions to open and close contact form modal
@@ -224,20 +233,11 @@ class DetailsPhotographersView {
     contactBtn.addEventListener("click", (event) => {
       this.displayModal(event);
     });
-    contactBtn.addEventListener("keydown", (e) => {
-      if (e.key === "Enter") {
-        displayModal(e);
-      }
-    });
   }
 
   displayModal() {
     const modal = document.getElementById("contact_modal");
-    const main = document.getElementById("main");
-
-    console.log("open");
     modal.style.display = "block";
-    main.style.display = "none";
   }
 
   hideContactModal() {
@@ -245,19 +245,16 @@ class DetailsPhotographersView {
     closeCross.addEventListener("click", (event) => {
       this.closeModal(event);
     });
-    /*closeCross.addEventListener("keydown", (e) => {
+    //accessibility if Escape btn pressed = close form
+    document.addEventListener("keydown", (e) => {
       if (e.key === "Escape") {
-        closeModal(e);
+        this.closeModal(e);
       }
-    });*/
+    });
   }
 
   closeModal() {
     const modal = document.getElementById("contact_modal");
-    const main = document.getElementById("main");
-
-    console.log("close");
     modal.style.display = "none";
-    main.style.display = "block";
   }
 }

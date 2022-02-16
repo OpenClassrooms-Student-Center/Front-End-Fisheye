@@ -24,7 +24,6 @@ class Factory {
     //crée le titre
     const pictureTitle = (document.createElement("p").textContent =
       media.title);
-    console.log(pictureTitle);
 
     //crée élément nombre de likes de la photo et video / CSS
     const likesMedia = document.createElement("p");
@@ -43,6 +42,7 @@ class Factory {
     const loveContainer = document.createElement("div");
     loveContainer.setAttribute("class", "likesHeart");
     loveContainer.append(likesMedia, heart);
+    loveContainer.setAttribute("tabindex", "0");
 
     //crée element container de tout
     legendContainer.setAttribute("class", "underpicture");
@@ -53,6 +53,8 @@ class Factory {
       const pictures = `assets/Sample Photos/${name}/${media.image}`;
       newImage.setAttribute("src", pictures);
       newImage.setAttribute("class", "picturesSize");
+      newImage.setAttribute("aria-label", media.image);
+      newImage.setAttribute("tabindex", "0");
       newImage.style = "cursor:pointer";
 
       container.append(legendContainer, newImage);

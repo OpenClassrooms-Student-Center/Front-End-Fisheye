@@ -6,12 +6,6 @@
   --secondary-light-red: #db8876;
 }
 
-#contact_modal {
-  display: none;
-  position: absolute;
-  top: 20px;
-}
-
 .photograph_header {
   display: flex;
   align-items: center;
@@ -27,46 +21,92 @@
   font-weight: bold;
   color: white;
   padding: 11px;
-  width: 170px;
-  height: 70px;
+  width: 160px;
+  height: 60px;
   border: none;
   background-color: var(--primary-dark-red);
   border-radius: 5px;
   cursor: pointer;
 }
 
+.contact_button:hover,
+.contact_button:focus {
+  background-color: var(--secondary-light-red);
+}
+
 .dropdown {
-  margin: 20px 0 20px 7%;
+  margin: 20px 0 20px 50px;
   display: flex;
   align-items: center;
   gap: 20px;
 }
 
+.sort-by {
+  font-size: 1.2rem;
+  font-weight: bolder;
+}
+.sort-byButton {
+  font-size: 1rem;
+  color: white;
+  padding: 11px;
+  width: 150px;
+  height: 55px;
+  border: none;
+  background-color: var(--primary-dark-red);
+  border-radius: 5px;
+  cursor: pointer;
+}
+.sort-byButton option {
+  padding: 10px;
+  border-bottom: 1px white;
+}
+
+#contact_modal {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 100%;
+  background-color: rgba(208, 208, 208, 0.6);
+}
+
 .modal {
   border-radius: 5px;
   background-color: var(--secondary-light-red);
-  width: 100%;
+  position: relative;
+  height: fit-content;
+  width: 35%;
   display: flex;
   flex-direction: column;
+  margin-top: 5%;
+  margin-left: auto;
+  margin-right: auto;
   align-items: center;
   justify-content: space-between;
   padding: 35px;
-  margin: auto;
+  padding-top: unset;
 }
 
 .modal header {
   justify-content: space-between;
   width: 100%;
+  height: 25%;
+  margin-top: unset;
 }
 
 .modal header img {
   cursor: pointer;
+  width: 8%;
 }
 
 .modal header h2 {
-  font-size: 64px;
+  font-size: 48px;
+  margin-top: 14px;
+  margin-bottom: 10px;
   font-weight: normal;
-  text-align: center;
+  text-align: left;
 }
 
 form {
@@ -78,7 +118,7 @@ form {
 
 form label {
   color: #312e2e;
-  font-size: 36px;
+  font-size: 30px;
 }
 
 form div {
@@ -86,19 +126,24 @@ form div {
   flex-direction: column;
   width: 100%;
   align-items: self-start;
-  margin-bottom: 26px;
+  margin-bottom: 3px;
 }
 
 form input {
   width: 100%;
-  height: 68px;
+  height: 40px;
   border: none;
   border-radius: 5px;
 }
 
+#message {
+  height: 100px;
+  margin-bottom: 15px;
+}
+
 .errorMessage {
-  font-size: 0.6em;
-  color: #e54858;
+  font-size: 0.8em;
+  color: #312e2e;
   display: block;
   margin-top: 7px;
   margin-bottom: 7px;
@@ -112,7 +157,7 @@ form input {
   opacity: 1;
 }
 .borderError {
-  border: 2px solid #e54858;
+  border: 2px solid #312e2e;
 }
 
 .cardpicture {
