@@ -1,14 +1,5 @@
 //Mettre le code JavaScript lié à la page photographer.html
 
-//recuperer les données du json
-async function getPhotographers() {
-  // Penser à remplacer par les données récupérées dans le json
-  let response = await fetch("./data/photographers.json");
-  let data = await response.json();
-  console.log(data);
-  return data;
-}
-
 async function displayData() {
   const photographersHeader = document.querySelector(".photograph-header");
   const contactBtn = document.querySelector(".contact_button");
@@ -21,7 +12,7 @@ async function displayData() {
 
 function createImage() {
   const userImg = `
-    <img src="../assets/photographers/${photogapherPortrait}"></img>`;
+    <img src="./assets/photographers/${photogapherPortrait}"></img>`;
 
   image = document.createElement("div");
   image.innerHTML = userImg;
