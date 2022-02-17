@@ -15,8 +15,7 @@ function photographerFactory(data) {
 
   function getUserCardDOM() {
     const htmlArticle = `
-          <a class="photographer-link" href="./photographer.html?id=${id}&name=${name}&city=${city}
-          &country=${country}&price=${price}&tagline=${tagline}&portrait=${portrait}">
+          <a class="photographer-link" href="./photographer.html?id=${id}">
               <img src="assets/photographers/${portrait}">
               <h2>${name}</h2>
               </a>
