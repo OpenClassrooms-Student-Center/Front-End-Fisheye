@@ -1,25 +1,21 @@
 class Model {
   //get all photographer's datas
   static async getPhotographers() {
-    return fetch("http://127.0.0.1:5500/data/photographers.json").then(
-      function (response) {
-        return response.json().then(function (json) {
-          //console.log(json);
-          return json.photographers;
-        });
-      }
-    );
+    return fetch("data/photographers.json").then(function (response) {
+      return response.json().then(function (json) {
+        //console.log(json);
+        return json.photographers;
+      });
+    });
   }
   static async getMedias() {
     //get all photographer's medias
-    return fetch("http://127.0.0.1:5500/data/photographers.json").then(
-      function (response) {
-        return response.json().then(function (json) {
-          //console.log(json);
-          return json.media;
-        });
-      }
-    );
+    return fetch("data/photographers.json").then(function (response) {
+      return response.json().then(function (json) {
+        //console.log(json);
+        return json.media;
+      });
+    });
   }
 
   //function to get photographer by id + medias
