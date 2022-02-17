@@ -82,9 +82,9 @@ form input {
     width: 350px;
     height: 300px;
     object-fit: cover;
-    border-radius: 8px;
+    border-radius: 5px;
 }
-.gallerie {
+.pictures {
     
     margin: 0 100px;
     display: grid;
@@ -101,6 +101,26 @@ h3 {
     color : #901C1C;
     font-size: 24px;
 }
+.gallerie h3 {
+    font-weight: 400;
+    margin: 0;
+    
+}
+
+.photo-details {
+    
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0;
+    padding: 0;
+    margin-bottom: 20px;
+}
+.likes {
+    font-size: 24px;
+    color:   #901C1C;
+}
+
 /***********************/
  /*******header**********/
  /***********************/
@@ -119,6 +139,7 @@ h3 {
 
 .photograph-header h3 {
     font-size: 24px;
+    font-weight: 400;
 }
 .photograph-header h5 {
     font-size: 18px;
@@ -140,4 +161,26 @@ h3 {
     
     justify-content: flex-start;
     align-items: flex-start;
+}
+
+/***********************/
+/*******filters*********/
+/***********************/
+
+.filtersMenu {
+   
+    grid-template-columns: 1fr ;
+    margin: 0 100px;
+    font-size: 18px;
+    font-weight: 700;
+    margin-top: 10px;
+    margin-bottom: 30px;
+}
+.filtersMenu select {
+    background-color: #901C1C;
+    color: white;
+    font-size: 18px;
+    padding: 20px 23px;
+    border: none;
+    border-radius: 5px;
 }
