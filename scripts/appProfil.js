@@ -1,5 +1,5 @@
 import { getPhotographers } from "./factories/apiProvider.js";
-import { createHTML, buildGallery } from "./factories/builderPageProfil.js";
+import { createHTML , buildGallery, buildPrice } from "./factories/builderPageProfil.js";
 
 ////////////////////////////////////////
 
@@ -7,8 +7,7 @@ import { createHTML, buildGallery } from "./factories/builderPageProfil.js";
 getPhotographers().then((res) => {
   const allPhotographers = res.photographers;
   const allMedias = res.media;
-  console.log(allPhotographers);
-  console.log(allMedias);
+ 
 
   //afficher tous les id des photographes du json
   allPhotographers.forEach((artist) => compare(artist, photographerId));
@@ -19,7 +18,6 @@ getPhotographers().then((res) => {
 
 let url = new URL(window.location.href);
 let photographerId = url.searchParams.get("id");
-console.log(photographerId);
 
 // Comparer l'id de la page avec les id des photographes
 function compare(a, b) {
@@ -30,9 +28,10 @@ function compare(a, b) {
 
 function findMedias(a, b) {
   if (a.photographerId == b) {
-    console.log(a.title);
-    buildGallery(a);
+    buildGallery(a)
+    
   }
 }
-
+buildPrice()
 getPhotographers();
+

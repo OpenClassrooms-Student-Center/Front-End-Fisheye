@@ -11,7 +11,6 @@ function createHTML(el) {
   photographersHeader.appendChild(image);
 
   // creer le paragraphe dans le header
-
   const htmlHeader = `
                   <h2>${el.name}</h2>       
               <div class="photographer-details">
@@ -24,19 +23,60 @@ function createHTML(el) {
   photographersHeader.insertBefore(article, contactBtn);
 }
 
-function buildGallery(el) {
-  //recuperer les elements du dom
-  const phtographGallery = document.querySelector(".gallerie");
 
-  const htmlInbox = `<a>
+
+//fonction pour ajouter des articles avec les images
+ function buildGallery(el) {
+    //const phtographGallery = document.querySelector(".gallerie");
+     const htmlInbox = `<a>
+       <img src="./assets/photos/${el.image}"></img>
+       <div class="photo-details">
+            <h3>${el.title} </h3>
+            <div class="likes">${el.likes} <i class="fas fa-heart"></i></div>
+        </div
+   </a>`;
+   
+     const article = document.createElement("article");
+     article.innerHTML = htmlInbox;
+    sectionGallery.appendChild(article);
     
-    <img src="./assets/photos/${el.image}"></img>
-    <h3>${el.title} </h3>
+  }
+//fonction pour faire la div filtres 
+function buildFilters() {
+    const phtographGallery = document.querySelector(".gallerie");
+    const htmlFilters = `
+    <label for="filters"> Trier par </label>
+    <select name = "photofilter" id= "filters">
+        <option value="popularity">Popularité</option>
+        <option value="date">Date</option>
+        <option value="date">Titre</option>
+    </select>`
+
     
-</a>`;
-  const article = document.createElement("article");
-  article.innerHTML = htmlInbox;
-  phtographGallery.appendChild(article);
+    const filters = document.createElement("div");
+    filters.classList.add('filtersMenu');
+    filters.innerHTML  = htmlFilters;
+    phtographGallery.append(filters);
+    const section = document.createElement("section");
+    section.classList.add('pictures');
+    phtographGallery.append(section);
+    
 }
+buildFilters();
 
-export { createHTML, buildGallery };
+function buildPrice(el) {
+    const price = document.createElement("div");
+    price.classList.add('priceBox');
+    const htmlPrice = `
+    <div class="numbersOfLikes">123</div>
+    <div class="price">456</div>`;
+    price.innerHTML = htmlPrice;
+    main.append(price);
+
+}
+//recuperer elements du dom
+const sectionGallery = document.querySelector(".pictures");
+const main = document.getElementById("main");   
+
+
+export { createHTML, buildGallery, buildPrice };
