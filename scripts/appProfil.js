@@ -1,13 +1,12 @@
 import { getPhotographers } from "./factories/apiProvider.js";
-import { createHTML , buildGallery, buildPrice } from "./factories/builderPageProfil.js";
-
+import { createHTML, buildGallery, buildPrice } from "./factories/builderPageProfil.js";
+import { closeLightbox } from "./utils/lightbox.js";
 ////////////////////////////////////////
 
 // aller chercher tous les photographes du json
 getPhotographers().then((res) => {
   const allPhotographers = res.photographers;
   const allMedias = res.media;
- 
 
   //afficher tous les id des photographes du json
   allPhotographers.forEach((artist) => compare(artist, photographerId));
@@ -23,15 +22,14 @@ let photographerId = url.searchParams.get("id");
 function compare(a, b) {
   if (a.id == b) {
     createHTML(a);
+    buildPrice(a);
   }
 }
 
 function findMedias(a, b) {
   if (a.photographerId == b) {
-    buildGallery(a)
-    
+    buildGallery(a);
   }
 }
-buildPrice()
-getPhotographers();
 
+getPhotographers();
