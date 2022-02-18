@@ -100,7 +100,6 @@ class Lightbox {
     }
     this.showImage();
     this.showTitle();
-    console.log(this.index);
   }
 
   showImage() {

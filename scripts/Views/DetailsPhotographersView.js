@@ -102,8 +102,6 @@ class DetailsPhotographersView {
     select.add(optionTitle);
 
     select.addEventListener("change", (event) => {
-      console.log(event.target.value);
-
       switch (event.target.value) {
         case "pop":
           this.medias.sort((a, b) => b.likes - a.likes);

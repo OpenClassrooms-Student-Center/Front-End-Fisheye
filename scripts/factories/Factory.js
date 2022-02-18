@@ -2,7 +2,6 @@ class Factory {
   static getLightboxMedia(media, name) {
     if (media.video) {
       const vids = `assets/Sample Photos/${name}/${media.video}`;
-      console.log(vids);
       const video = document.createElement("video");
       video.src = vids;
       video.controls = true;
