@@ -3,6 +3,8 @@ const label = document.querySelectorAll("label");
 const myInputs = document.querySelectorAll(".input-form");
 const closeImg = document.querySelector(".close-modale");
 const submitBtn = document.querySelector(".submit-btn");
+const modal = document.getElementById("contact_modal");
+const main = document.querySelector("main");
 
 const form = document.querySelector('form');
 const inputFirstname = document.getElementById('firstname');
@@ -14,7 +16,6 @@ const errorFirstname = document.querySelector(".error-firstname");
 const errorLastname = document.querySelector(".error-lastname");
 const errorEmail = document.querySelector(".error-email");
 const errorTextarea = document.querySelector(".error-textarea");
-
 
 contactTitle.style.fontSize = "50px";
 
@@ -43,18 +44,29 @@ myInputs.forEach((myInputs) => {
 
 // Ouverture de la modale
 function displayModal() {
-    const modal = document.getElementById("contact_modal");
-    const main = document.querySelector("main");
 	modal.style.display = "block";
     main.style.filter = "blur(5px)";
+    submitBtn.focus();
+    modal.setAttribute("aria-hidden", "false");
+    main.setAttribute("aria-hidden", "true");
 };
 
 // Fermeture de la modale 
 function closeModal() {
-    const modal = document.getElementById("contact_modal");
     modal.style.display = "none";
     main.style.filter = "blur(0px)";
+    modal.setAttribute("aria-hidden", "true");
+    main.setAttribute("aria-hidden", "false");
 }; 
+
+// Fermeture de la modale avec la touche Echap
+window.addEventListener("keydown", (e) => {
+    const keyCode = e.keyCode ? e.keyCode : e.which;
+
+    if (modal.style.display = "block" && keyCode === 27) {
+        closeModal();
+    }
+});
 
 // Insertion du nom du photographe dans la modale
 function contactFactory(data) {
@@ -89,12 +101,12 @@ form.addEventListener("submit", (e) => {
         inputFirstname.style.border = "solid 5px #901C1C";
         errorFirstname.textContent = "Veuillez entrer votre prénom";
         errorFirstname.style.color = "#901C1C";
-        inputFirstname.setAttribute("aria-invalid", false);
+        inputFirstname.setAttribute("aria-invalid", "false");
         isInputFirstnameValid = false;
         e.preventDefault();
     }
     else {
-        inputFirstname.setAttribute("aria-invalid", true);
+        inputFirstname.setAttribute("aria-invalid", "true");
         isInputFirstnameValid = true;
         
     }
@@ -104,12 +116,12 @@ form.addEventListener("submit", (e) => {
         inputLastname.style.border = "solid 5px #901C1C";
         errorLastname.textContent = "Veuillez entrer votre nom";
         errorLastname.style.color = "#901C1C";
-        inputLastname.setAttribute("aria-invalid", false);
+        inputLastname.setAttribute("aria-invalid", "false");
         isInputLastnameValid = false;
         e.preventDefault();
     }
     else {
-        inputLastname.setAttribute("aria-invalid", true);
+        inputLastname.setAttribute("aria-invalid", "true");
         isInputLastnameValid = true;
     }
 
@@ -118,12 +130,12 @@ form.addEventListener("submit", (e) => {
         inputEmail.style.border = "solid 5px #901C1C";
         errorEmail.textContent = "Veuillez entrer un e-mail valide";
         errorEmail.style.color = "#901C1C";
-        inputEmail.setAttribute("aria-invalid", false);
+        inputEmail.setAttribute("aria-invalid", "false");
         isInputEmailValid = false ;
         e.preventDefault();
     }
     else {
-        inputEmail.setAttribute("aria-invalid", true);
+        inputEmail.setAttribute("aria-invalid", "true");
         isInputEmailValid = true;
     }
 
@@ -132,12 +144,12 @@ form.addEventListener("submit", (e) => {
         textarea.style.border = "solid 5px #901C1C";
         errorTextarea.textContent = "Veuillez entrer votre message";
         errorTextarea.style.color = "#901C1C";
-        textarea.setAttribute("aria-invalid", false);
+        textarea.setAttribute("aria-invalid", "false");
         isTextareaValid = false ;
         e.preventDefault();
     }
     else {
-        textarea.setAttribute("aria-invalid", true);
+        textarea.setAttribute("aria-invalid", "true");
         isTextareaValid = true;
     }
 
@@ -147,4 +159,6 @@ form.addEventListener("submit", (e) => {
         isTextareaValid) {
             form.reset();
         }
-})
+});
+
+
