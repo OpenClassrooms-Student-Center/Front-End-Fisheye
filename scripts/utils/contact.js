@@ -89,11 +89,14 @@ form.addEventListener("submit", (e) => {
         inputFirstname.style.border = "solid 5px #901C1C";
         errorFirstname.textContent = "Veuillez entrer votre prénom";
         errorFirstname.style.color = "#901C1C";
+        inputFirstname.setAttribute("aria-invalid", false);
         isInputFirstnameValid = false;
         e.preventDefault();
     }
     else {
+        inputFirstname.setAttribute("aria-invalid", true);
         isInputFirstnameValid = true;
+        
     }
 
     // Validation du champs Nom  
@@ -101,10 +104,12 @@ form.addEventListener("submit", (e) => {
         inputLastname.style.border = "solid 5px #901C1C";
         errorLastname.textContent = "Veuillez entrer votre nom";
         errorLastname.style.color = "#901C1C";
+        inputLastname.setAttribute("aria-invalid", false);
         isInputLastnameValid = false;
         e.preventDefault();
     }
     else {
+        inputLastname.setAttribute("aria-invalid", true);
         isInputLastnameValid = true;
     }
 
@@ -113,10 +118,12 @@ form.addEventListener("submit", (e) => {
         inputEmail.style.border = "solid 5px #901C1C";
         errorEmail.textContent = "Veuillez entrer un e-mail valide";
         errorEmail.style.color = "#901C1C";
+        inputEmail.setAttribute("aria-invalid", false);
         isInputEmailValid = false ;
         e.preventDefault();
     }
     else {
+        inputEmail.setAttribute("aria-invalid", true);
         isInputEmailValid = true;
     }
 
@@ -125,10 +132,12 @@ form.addEventListener("submit", (e) => {
         textarea.style.border = "solid 5px #901C1C";
         errorTextarea.textContent = "Veuillez entrer votre message";
         errorTextarea.style.color = "#901C1C";
+        textarea.setAttribute("aria-invalid", false);
         isTextareaValid = false ;
         e.preventDefault();
     }
     else {
+        textarea.setAttribute("aria-invalid", true);
         isTextareaValid = true;
     }
 

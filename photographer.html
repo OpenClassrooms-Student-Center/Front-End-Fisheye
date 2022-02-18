@@ -33,21 +33,21 @@
         </div>
 
 				<form action="index.html" method="get" name="form">
-					<div>
+					<div role="group" aria-labelledby="Coordonnées">
 						<label for="firstname" class="firstname">Prénom</label>
-						<input type="text" name="firstname" id="firstname" class="input-form" />
+						<input type="text" name="firstname" id="firstname" class="input-form" aria-required="true"/>
             <span class="error-firstname"></span>
             <label for="lastname" class="lastname">Nom</label>
-            <input type="text" name="lastname" id="lastname" class="input-form" />
+            <input type="text" name="lastname" id="lastname" class="input-form" aria-required="true"/>
             <span class="error-lastname"></span>
             <label for="email" class="email">Email</label>
-            <input type="email" name="email" id="email" class="input-form" />
+            <input type="email" name="email" id="email" class="input-form" aria-required="true"/>
             <span class="error-email"></span>
             <label for="textarea" class="textarea">Votre message</label>
-            <textarea name="textarea" id="textarea"></textarea>
+            <textarea name="textarea" id="textarea" aria-required="true"></textarea>
             <span class="error-textarea"></span>
 					</div>
-          <button class="contact_button submit-btn">Envoyer</button>
+          <button class="contact_button submit-btn" type="submit">Envoyer</button>
 				</form>
 
 			</div>
