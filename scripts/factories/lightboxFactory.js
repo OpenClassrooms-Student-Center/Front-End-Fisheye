@@ -19,6 +19,7 @@ function lightboxFactory(data) {
         previous.style.color        = "#901C1C";
         previous.style.cursor       = "pointer";
         previous.classList.add      = "previous";
+        previous.setAttribute("title", "Image précédente");
 
         next.innerHTML              = '<i class="fas fa-chevron-right"></i>';
         next.style.position         = "absolute";
@@ -28,6 +29,7 @@ function lightboxFactory(data) {
         next.style.color            = "#901C1C";
         next.style.cursor           = "pointer";
         next.classList.add          = "next"; 
+        next.setAttribute("title", "Image suivante");
 
         closeBtn.innerHTML          = '<i class="fas fa-times"></i>';
         closeBtn.style.position     = "absolute";
@@ -36,6 +38,7 @@ function lightboxFactory(data) {
         closeBtn.style.fontSize     = "40px";
         closeBtn.style.color        = "#901C1C";
         closeBtn.style.cursor       = "pointer";
+        closeBtn.setAttribute("title", "Fermer la lightbox");
       
         container.classList.add("container"); 
         container.style.width       = "55%";
@@ -95,7 +98,6 @@ function lightboxFactory(data) {
                         vid.alt = selectedMedia.alt; 
                         titleMedia.textContent = "Wild horses in the mountains";
                         vid.play();
-                        console.log(vid)
                     }
                     else {
                         vid.replaceWith(img);

@@ -19,6 +19,7 @@ function profileFactory(data) {
         profile.style.order                 = "1" ; 
 
         img.setAttribute("src", picture); 
+        img.setAttribute("alt", "Portrait de " + name)
         img.style.width                     = "200px";
         img.style.height                    = "200px";
         img.style.objectFit                 = "cover";

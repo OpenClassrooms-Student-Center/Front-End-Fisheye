@@ -1,6 +1,0 @@
-
-
-
-// Validation du formulaire 
-
-

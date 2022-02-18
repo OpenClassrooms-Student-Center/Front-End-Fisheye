@@ -1,3 +1,5 @@
+let pictures = [];
+
 async function getMedias() {
     const medias = [
         {
@@ -438,7 +440,7 @@ async function getMedias() {
 		{
 			"id": 952343423,
 			"photographerId": 930,
-			"title": "Tricks in te air",
+			"title": "Tricks in the air",
 			"video": "Sport_Tricks_in_the_air.mp4",
 			"likes": 150,
 			"date": "2018-02-30",
@@ -537,33 +539,47 @@ async function getMedias() {
     ]
 
     fetch("data/photographers.json")
-    .then((res) => res.json())
+    .then((res) => {
+	return	res.json()
+	})
     .then((data) => {
-        console.log(data)
+        //console.log(data)
     })
-
+	
     return ({medias : [...medias]}) 
 }
 
+getSortFactory();
+
 // AFFICHE LES MEDIAS DES PHOTOGRAPHES
 async function displayDataMedias(medias) {
-    const photographMedias = document.querySelector(".photograph-medias");
-	
-    medias.forEach((media) => {
-		//Verifie si l'url contient l'id du photographe
-        let verifyUrl = new URLSearchParams(window.location.search);
-        verifyUrl.has(media.photographerId);
-        let param = verifyUrl.get('id');
-		
-		if(media.photographerId == param) {
+    
+	let verifyUrl = new URLSearchParams(window.location.search);
+    const photographerId = verifyUrl.get('id');
 
-			const mediaModel = mediasFactory(media);
-        	const mediaCardDOM = mediaModel.getMediasCardDOM();
-        	photographMedias.appendChild(mediaCardDOM);
-		};
-    }); 
+	pictures = medias.filter(obj => obj.photographerId == photographerId);
 
-	
+	//pictures = pictures.sort((a, b) => a.title.localeCompare(b.title));
+	//pictures = pictures.sort((a1, a2) => a2.likes - a1.likes);
+
+	//const sortTitle = document.querySelector(".titleSort");
+	//console.log(sortTitle);
+	 
+
+	buildGallery(pictures); 
+};
+
+ 
+
+
+
+function buildGallery(pictures) {
+	pictures.forEach((picture) => {
+		const photographMedias = document.querySelector(".photograph-medias");
+		const mediaModel = mediasFactory(picture);
+        const mediaCardDOM = mediaModel.getMediasCardDOM();
+        photographMedias.appendChild(mediaCardDOM);
+	})
 };
 
 async function initMedias() {

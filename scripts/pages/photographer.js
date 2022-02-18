@@ -68,6 +68,8 @@ async function getProfile() {
 async function displayData(photographers) {
     const photographHeader = document.querySelector(".photograph-header");
 
+    
+
     photographers.forEach((photographer) => {
         // Verifie si l'url contient l'id du photographe
         let verifyUrl = new URLSearchParams(window.location.search);

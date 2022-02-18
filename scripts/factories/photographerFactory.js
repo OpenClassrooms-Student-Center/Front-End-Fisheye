@@ -16,6 +16,7 @@ function photographerFactory(data) {
         link.setAttribute("href", `photographer.html?id=${id}`);
 
         img.setAttribute("src", picture); 
+        img.setAttribute("alt", "Portrait de " + name);
 
         photographerName.textContent            = name;
         photographerName.style.fontSize         = "36px";

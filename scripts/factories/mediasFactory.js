@@ -75,6 +75,7 @@ function mediasFactory(data) {
         buttonHeart.style.fontSize          = "20px";
         buttonHeart.style.color             = "#901C1C";
         buttonHeart.style.cursor            = "pointer";
+        buttonHeart.setAttribute("title", "Likes");
 
         figure.appendChild(mediaLink);
         mediaLink.appendChild(img);
@@ -83,7 +84,7 @@ function mediasFactory(data) {
         mediaCaption.appendChild(mediaLikes);
         mediaLikes.appendChild(numberOfLikes);
         mediaLikes.appendChild(buttonHeart);
-
+ 
         return (figure);
     }
 
