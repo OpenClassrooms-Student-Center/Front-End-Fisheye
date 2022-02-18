@@ -86,7 +86,7 @@ class Lightbox {
 
   goNextImage() {
     this.index += 1;
-    if (this.index > this.medias.length) {
+    if (this.index >= this.medias.length) {
       this.index = 0;
     }
     this.showImage();
@@ -95,7 +95,7 @@ class Lightbox {
 
   goPrevImage() {
     this.index -= 1;
-    if (this.index < 0) {
+    if (this.index <= 0) {
       this.index = this.medias.length - 1;
     }
     this.showImage();
