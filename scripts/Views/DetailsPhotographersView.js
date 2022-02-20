@@ -44,7 +44,7 @@ class DetailsPhotographersView {
 
     let html = `
     
-<div class="photograph-header">
+<div class="photograph-banner">
   <div class="photograph-name">
     <h1>${this.photographer.name}</h1>
   </div>

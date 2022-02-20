@@ -31,7 +31,7 @@ a:focus {
 }
 
 h1 {
-  color: #901c1c;
+  color: var(--primary-dark-red);
   margin-right: 130px;
 }
 
