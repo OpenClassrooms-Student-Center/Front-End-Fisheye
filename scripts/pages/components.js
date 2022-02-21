@@ -12,7 +12,7 @@ function displayComponents() {
     const buttonsContainer = document.querySelector(".buttons-container");
     const likeBtn = likeBtnFactory(12, true);
     const sortBtn = sortBtnFactory();
-    const btn = btnFactory();
+    const btn = btnFactory("Contactez-moi");
 
     buttonsContainer.appendChild(likeBtn);
     buttonsContainer.appendChild(sortBtn);
