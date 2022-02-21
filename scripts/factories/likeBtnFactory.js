@@ -8,10 +8,32 @@ export function likeBtnFactory(likes, isLiked) {
 
     const icon = document.createElement("span");
     icon.classList.add("like-btn__icon");
-    isLiked ? icon.classList.add("like-btn__icon--liked") : null;
+
+    if (isLiked) {
+        icon.classList.add("like-btn__icon--liked");
+        icon.addEventListener("click", unlike);
+    } else {
+        icon.addEventListener("click", like);
+    }
 
     button.appendChild(counter);
     button.appendChild(icon);
+
+    function unlike() {
+        icon.removeEventListener("click", unlike);
+
+        icon.classList.remove("like-btn__icon--liked");
+
+        icon.addEventListener("click", like);
+    }
+
+    function like() {
+        icon.removeEventListener("click", like);
+
+        icon.classList.add("like-btn__icon--liked");
+
+        icon.addEventListener("click", unlike);
+    }
 
     return button;
 }
