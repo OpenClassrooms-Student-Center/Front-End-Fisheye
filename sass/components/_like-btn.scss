@@ -15,6 +15,7 @@
         background-size: cover;
         background-image: url("../../assets/icons/like-outline.svg");
         position: relative;
+        cursor: pointer;
 
         &--liked {
             background-image: url("../../assets/icons/like.svg");
