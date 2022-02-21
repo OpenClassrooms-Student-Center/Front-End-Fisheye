@@ -4,6 +4,7 @@ import { sortBtnFactory } from "../factories/sortBtnFactory.js";
 import { btnFactory } from "../factories/btnFactory.js";
 import { logoFactory } from "../factories/logoFactory.js";
 import { avatarFactory } from "../factories/avatarFactory.js";
+import { userNameFactory } from "../factories/userNameFactory.js";
 
 function displayComponents() {
     const textfieldContainer = document.querySelector(".form-group-container");
@@ -28,14 +29,16 @@ function displayComponents() {
     const cardsContainer = document.querySelector(".cards-container");
     const cardComponentsContainer = document.createElement("div");
     cardComponentsContainer.style =
-        "width: 33%; display: flex; flex-direction: column;";
+        "width: 33%; display: flex; flex-direction: column; gap: 0.5rem;";
 
     const avatar = avatarFactory(
         "../../assets/photographers/MarcelNikolic.jpg",
         "Marcel Nikolic"
     );
+    const userName = userNameFactory("Marcel Nikolic");
 
     cardComponentsContainer.appendChild(avatar);
+    cardComponentsContainer.appendChild(userName);
 
     cardsContainer.appendChild(cardComponentsContainer);
 }
