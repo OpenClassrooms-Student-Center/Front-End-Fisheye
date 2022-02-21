@@ -2,6 +2,7 @@ import { textfieldFactory } from "../factories/textfieldFactory.js";
 import { likeBtnFactory } from "../factories/likeBtnFactory.js";
 import { sortBtnFactory } from "../factories/sortBtnFactory.js";
 import { btnFactory } from "../factories/btnFactory.js";
+import { logoFactory } from "../factories/logoFactory.js";
 
 function displayComponents() {
     const textfieldContainer = document.querySelector(".form-group-container");
@@ -17,6 +18,11 @@ function displayComponents() {
     buttonsContainer.appendChild(likeBtn);
     buttonsContainer.appendChild(sortBtn);
     buttonsContainer.appendChild(btn);
+
+    const logoContainer = document.querySelector(".logo-container");
+    const logo = logoFactory();
+
+    logoContainer.appendChild(logo);
 }
 
 function init() {
