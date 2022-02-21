@@ -5,6 +5,7 @@ import { btnFactory } from "../factories/btnFactory.js";
 import { logoFactory } from "../factories/logoFactory.js";
 import { avatarFactory } from "../factories/avatarFactory.js";
 import { userNameFactory } from "../factories/userNameFactory.js";
+import { userLocationFactory } from "../factories/userLocationFactory.js";
 
 function displayComponents() {
     const textfieldContainer = document.querySelector(".form-group-container");
@@ -36,9 +37,11 @@ function displayComponents() {
         "Marcel Nikolic"
     );
     const userName = userNameFactory("Marcel Nikolic");
+    const userLocation = userLocationFactory("Berlin, Germany");
 
     cardComponentsContainer.appendChild(avatar);
     cardComponentsContainer.appendChild(userName);
+    cardComponentsContainer.appendChild(userLocation);
 
     cardsContainer.appendChild(cardComponentsContainer);
 }
