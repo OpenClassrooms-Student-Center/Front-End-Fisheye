@@ -2,6 +2,7 @@ function lightboxFactory(data) {
     const { image , video, title } = data;
 
     function getLightboxDOM() {
+        const main                  = document.querySelector("#main");
         const lightbox              = document.querySelector(".lightbox");
         const previous              = document.createElement("i");
         const next                  = document.createElement("i");
@@ -73,6 +74,8 @@ function lightboxFactory(data) {
         // Ouverture de la lightbox
         function openLightbox() {
             lightbox.style.display = "block";
+            lightbox.setAttribute("aria-hidden", "false");
+            main.setAttribute("aria-hidden", "true");
         };
 
         const medias = document.querySelectorAll(".galleryLink");
@@ -137,10 +140,39 @@ function lightboxFactory(data) {
                 function closeLightbox() {
                     closeBtn.addEventListener("click", () => {
                         lightbox.style.display = "none";
+                        lightbox.setAttribute("aria-hidden", "true");
+                        main.setAttribute("aria-hidden", "false");
                     })
                 };
 
+                // Fermeture de la lightbox avec la touche Echap 
+                window.addEventListener("keydown", (e) => {
+                    const keyCode = e.keyCode ? e.keyCode : e.which;
+                
+                    if (lightbox.style.display = "block" && keyCode === 27) {
+                        lightbox.style.display = "none";
+                    };
+
+                    if (lightbox.style.display = "block" && keyCode === 37) {
+                        selectedMedia.classList.remove("selected");
+                        i--;
+                        selectedMedia = medias[i].querySelector(".currentMedia");
+                        selectedMedia.classList.add("selected");
+                        displayMedia();
+                    };
+
+                    if (lightbox.style.display = "block" && keyCode === 39) {
+                        selectedMedia.classList.remove("selected");
+                        i++;
+                        selectedMedia = medias[i].querySelector(".currentMedia");
+                        displayMedia();
+                    }
+                });
+
                 closeLightbox();
+
+                
+                  
             });
         };
         
