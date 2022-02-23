@@ -75,6 +75,9 @@ form input {
 /*******************/
 /**** Gallery*******/
 /*******************/
+.gallerie {
+    margin-bottom: 5rem;
+}
 
 .gallerie article img {
     width: 350px;
@@ -87,6 +90,9 @@ form input {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
       grid-template-rows: 1fr 1fr;
+}
+.pictures a {
+    cursor: pointer;
 }
 .gallerie article {
     display: flex;
@@ -115,6 +121,7 @@ h3 {
     font-size: 24px;
     color:   #901C1C;
 }
+
 
 /***********************/
  /*******header**********/

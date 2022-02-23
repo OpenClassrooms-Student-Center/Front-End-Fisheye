@@ -1,7 +1,8 @@
 // DOM elements
 const closeBtn = document.querySelector(".lightbox__close");
 const lightbox = document.querySelector(".lightbox");
-const photos = document.querySelector(".gallerie");
+const nextBtn = document.querySelector(".lightbox__next");
+const prevBtn = document.querySelector(".lightbox__prev");
 
 //fermer la ligthbox
 closeBtn.addEventListener("click", closeLightbox);
@@ -11,11 +12,11 @@ function closeLightbox() {
 }
 
 //ouvrir la lightbox
-photos.addEventListener("click", openLightbox);
-
 function openLightbox() {
   lightbox.style.display = "flex";
 }
 
+// aller a la photo suivante
+function nextOne() {}
 //les export
-export { closeLightbox };
+export { openLightbox };
