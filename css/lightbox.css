@@ -1,4 +1,4 @@
-.lightbox {
+#lightbox {
     position: fixed;
     top: 0;
     left: 0;
@@ -6,10 +6,12 @@
     height: 100%;
     background-color:white;
     z-index: 50;
-
     display: none;
     justify-content: center;
     align-items: center;
+}
+#lightbox.active {
+    display: flex;
 }
 button {
     background-color: inherit;
@@ -40,7 +42,7 @@ button {
 .lightbox__container {
     margin: 20px;
 }
-.lightbox__container img {
+#lightbox img {
     width: 1050px;
     height: 900px;
     object-fit: cover;

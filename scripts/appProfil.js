@@ -1,6 +1,6 @@
 import { ApiProvider } from "./factories/ApiProvider.js";
 import { buildFilters } from "./factories/buildFilters.js";
-import { openLightbox } from "./utils/lightbox.js";
+//import { closeLightbox } from "./utils/lightbox.js";
 // import { addOneLike} from "./utils/likes.js"
 ////////////////////////////////////////
 
@@ -27,7 +27,7 @@ class MediaBuilderFactory {
        <img src="./assets/photos/${media.image}" class="active"></img>
        <div class="photo-details">
             <h3>${media.title} </h3>
-            <div class="likes">${media.likes} <i class="fas fa-heart"></i></div>
+            <div class="likes"><span class="likes__nbr">${media.likes}</span><i class="fas fa-heart"></i></div>
         </div
    </a>`;
 
@@ -73,6 +73,7 @@ class ProfilPage {
     this.generateFooter();
     this.generateLightbox();
     this.generateLike();
+    this.addOneLike();
   }
 
   //////////////////////////////////////////////////
@@ -132,20 +133,53 @@ class ProfilPage {
   }
 
   generateLightbox() {
-    const liens = document.querySelectorAll("a img");
-    liens.forEach((lien) => lien.addEventListener("click", openLightbox));
+    const images = document.querySelectorAll("a img");
+    const lightbox = document.createElement("div");
+    lightbox.id = "lightbox";
+    lightbox.innerHTML = `<button class="lightbox__close"><i class="fa-solid fa-xmark"></i></button>`
+    document.body.appendChild(lightbox);
+
+    images.forEach((image) => {
+      image.addEventListener("click", (e) => {
+        
+        lightbox.classList.add("active");
+        const img = document.createElement("img");
+        img.src = image.src;
+        lightbox.appendChild(img);
+        img.classList.add("lightboxImg")
+      });
+      
+    });
+    const closeBtn = document.querySelector(".lightbox__close");
+      closeBtn.addEventListener("click", (e) => {
+          let imgActive = document.querySelector('.lightboxImg')
+          lightbox.classList.remove("active");
+          lightbox.removeChild(imgActive);
+      });
   }
   generateLike() {
+    ///////////////////////////////
+    //get DOM Elements
     const heart = document.querySelectorAll(".fas");
-    heart.forEach((lik) => lik.addEventListener("click", addOneLike));
+    const likes = document.querySelectorAll(".likes__nbr");
+
+    //recupere les nombre de likes
+    likes.forEach((el) => {
+      //recupere leur contenu html et transforme le en nombre
+      const cont = parseInt(el.innerHTML);
+      console.log(cont);
+    });
+  }
+
+  addOneLike() {
+    let media = this.medias;
+    if (media == this.photographer) {
+      console.log(media);
+    }
+
+    let compteur = 3;
+    let sum = compteur++;
   }
 }
-function addOneLike(media) {
-  //get DOM elements
-  let compteur = 3;
-  let sum = compteur++;
-  console.log(media.pointerId);
-  console.log(compteur);
-  console.log(sum);
-}
+
 buildFilters();
