@@ -1,5 +1,3 @@
-let pictures = [];
-
 async function getMedias() {
     const medias = [
         {
@@ -544,7 +542,7 @@ async function getMedias() {
 	})
     .then((data) => {
         //console.log(data)
-    })
+    }) 
 	
     return ({medias : [...medias]}) 
 }
@@ -556,26 +554,18 @@ async function displayDataMedias(medias) {
     
 	let verifyUrl = new URLSearchParams(window.location.search);
     const photographerId = verifyUrl.get('id');
-
+ 
 	pictures = medias.filter(obj => obj.photographerId == photographerId);
-
-	//pictures = pictures.sort((a, b) => a.title.localeCompare(b.title));
-	//pictures = pictures.sort((a1, a2) => a2.likes - a1.likes);
-
-	//const sortTitle = document.querySelector(".titleSort");
-	//console.log(sortTitle);
 	 
-
 	buildGallery(pictures); 
 };
 
- 
-
-
-
 function buildGallery(pictures) {
+	const photographMedias = document.querySelector(".photograph-medias");
+	photographMedias.innerHTML = "";
+
 	pictures.forEach((picture) => {
-		const photographMedias = document.querySelector(".photograph-medias");
+		
 		const mediaModel = mediasFactory(picture);
         const mediaCardDOM = mediaModel.getMediasCardDOM();
         photographMedias.appendChild(mediaCardDOM);

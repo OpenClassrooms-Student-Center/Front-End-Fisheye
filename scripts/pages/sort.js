@@ -19,6 +19,8 @@ function getSortFactory() {
     
     photographMedias.style.order            = "3";
 
+    sortList.classList.add("sortList");
+
     sortContainer.style.order               = "2";
     sortContainer.style.display             = "flex";
     sortContainer.style.marginLeft          ="100px";
@@ -44,6 +46,11 @@ function getSortFactory() {
     popularityBloc.style.cursor             = "pointer"; 
     popularityBloc.style.position           = "relative";
     popularityBloc.style.paddingLeft        = "10px";  
+
+    popularity.style.height                 = "100%";
+    popularity.style.width                  = "95%";
+    popularity.style.position               = "absolute";
+    popularity.style.top                    = "0";
     
     arrowClose.innerHTML                    = '<i class="fas fa-chevron-down"></i>';
     arrowClose.style.position               = "absolute";
@@ -66,46 +73,44 @@ function getSortFactory() {
     dateSort.style.paddingLeft              = "10px";
     dateSort.style.display                  = "none";
 
-   
-        titleSort.textContent                   = "Titre";
-        titleSort.style.fontSize                = "18px";
-        titleSort.style.height                  = "50px";
-        titleSort.style.width                   = "170px";
-        titleSort.style.lineHeight              = "50px";
-        titleSort.style.background              = "#901C1C";
-        titleSort.style.color                   = "white";
-        titleSort.style.cursor                  = "pointer";
-        titleSort.style.paddingLeft             = "10px"; 
-        titleSort.style.display                 = "none";
-        titleSort.classList.add("titleSort");
+    titleSort.textContent                   = "Titre";
+    titleSort.style.fontSize                = "18px";
+    titleSort.style.height                  = "50px";
+    titleSort.style.width                   = "170px";
+    titleSort.style.lineHeight              = "50px";
+    titleSort.style.background              = "#901C1C";
+    titleSort.style.color                   = "white";
+    titleSort.style.cursor                  = "pointer";
+    titleSort.style.paddingLeft             = "10px"; 
+    titleSort.style.display                 = "none";
+    titleSort.classList.add("titleSort");
 
-    function closeSort() {
-        arrowClose.addEventListener("click", () => {
-            dateSort.style.display          = "none";
-            titleSort.style.display         = "none";
-        })
-    };
+    // Ouverture et fermeture du bouton de tri
+    sortList.addEventListener("mouseover", () => {
+        dateSort.style.display = "block";
+        titleSort.style.display = "block";
+    });
 
+    sortList.addEventListener("mouseout", () => {
+        dateSort.style.display = "none";
+        titleSort.style.display = "none";
+    });
     
-    if (dateSort.style.display = "none" , titleSort.style.display = "none") {
-        popularityBloc.addEventListener("mouseover", () => {
-            dateSort.style.display          = "block";
-            titleSort.style.display         = "block";
-            closeSort();
-        })
-    };
-
-    
-
+    // Tri des medias par catégories 
     titleSort.addEventListener("click", () => {
-		
-        pictures = pictures.sort((a1, a2) => a2.likes - a1.likes);
-		titleSort.style.background = "green";
-        buildGallery(pictures);
+        pictures = pictures.sort((a, b) => a.title.localeCompare(b.title));
+		buildGallery(pictures);
 	}); 
-    
-    
-    
+
+    dateSort.addEventListener("click", () => {
+        pictures = pictures.sort((a, b) => new Date(b.date).valueOf() - new Date(a.date).valueOf());
+        buildGallery(pictures);
+    });
+
+    popularity.addEventListener("click", () => {
+        pictures = pictures.sort((a1, a2) => a2.likes - a1.likes);
+        buildGallery(pictures);
+    })
 
     main.appendChild(sortContainer);
     sortContainer.appendChild(titleContainer);
@@ -115,6 +120,5 @@ function getSortFactory() {
     popularityBloc.appendChild(arrowClose);
     sortList.appendChild(dateSort);
     sortList.appendChild(titleSort);
-
 };
 

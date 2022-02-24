@@ -1,3 +1,5 @@
+let pictures = [];
+
     // RECUPERATION DES DONNEES DES PHOTOGRAPHES
     async function getPhotographers() {
         const photographers = [
@@ -59,9 +61,6 @@
 
         fetch("data/photographers.json")
         .then((res) => res.json())
-        .then((data) => {
-            console.log(data)
-        })
 
         return ({photographers: [...photographers]}) 
     }

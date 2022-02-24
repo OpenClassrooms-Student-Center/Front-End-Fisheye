@@ -145,7 +145,7 @@ function lightboxFactory(data) {
                     })
                 };
 
-                // Fermeture de la lightbox avec la touche Echap 
+                // Accessibilité Lightbox
                 window.addEventListener("keydown", (e) => {
                     const keyCode = e.keyCode ? e.keyCode : e.which;
                 
@@ -170,8 +170,6 @@ function lightboxFactory(data) {
                 });
 
                 closeLightbox();
-
-                
                   
             });
         };
