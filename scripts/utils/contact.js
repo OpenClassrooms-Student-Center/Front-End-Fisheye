@@ -107,6 +107,9 @@ form.addEventListener("submit", (e) => {
     }
     else {
         inputFirstname.setAttribute("aria-invalid", "true");
+        inputFirstname.style.border         = "";
+        errorFirstname.textContent          = "";
+        errorFirstname.style.color          = "";
         isInputFirstnameValid               = true;
         
     }
@@ -122,6 +125,10 @@ form.addEventListener("submit", (e) => {
     }
     else {
         inputLastname.setAttribute("aria-invalid", "true");
+        inputLastname.style.border          = "";
+        errorLastname.textContent           = "";
+        errorLastname.style.color           = "";
+
         isInputLastnameValid                = true;
     }
 
@@ -136,6 +143,9 @@ form.addEventListener("submit", (e) => {
     }
     else {
         inputEmail.setAttribute("aria-invalid", "true");
+        inputEmail.style.border             = "";
+        errorEmail.textContent              = "";
+        errorEmail.style.color              = "";
         isInputEmailValid                   = true;
     }
 
@@ -150,6 +160,9 @@ form.addEventListener("submit", (e) => {
     }
     else {
         textarea.setAttribute("aria-invalid", "true");
+        textarea.style.border               = "";
+        errorTextarea.textContent           = "";
+        errorTextarea.style.color           = "";
         isTextareaValid = true;
     }
 
