@@ -1,6 +1,8 @@
 import { ApiProvider } from "./factories/ApiProvider.js";
 import { buildFilters } from "./factories/buildFilters.js";
-//import { closeLightbox } from "./utils/lightbox.js";
+
+import { MediaBuilderFactory } from "./factories/MediaBuilderFactory.js";
+import { generateLightbox } from "./utils/lightbox.js";
 // import { addOneLike} from "./utils/likes.js"
 ////////////////////////////////////////
 
@@ -14,32 +16,9 @@ new ApiProvider()
   .then(function (response) {
     let page = new ProfilPage(response);
     page.generateAll();
-    // console.dir(page);
-    // console.dir(new ProfilPage(response));
+    generateLightbox();
   });
-//////////////////////////////////////////////
-//affiche le nombre de media image et video
-class MediaBuilderFactory {
-  build(media) {
-    if (media.image) {
-      const sectionGallery = document.querySelector(".pictures");
-      const htmlInbox = `<a>
-       <img src="./assets/photos/${media.image}" class="active"></img>
-       <div class="photo-details">
-            <h3>${media.title} </h3>
-            <div class="likes"><span class="likes__nbr">${media.likes}</span><i class="fas fa-heart"></i></div>
-        </div
-   </a>`;
 
-      const article = document.createElement("article");
-      article.innerHTML = htmlInbox;
-      sectionGallery.appendChild(article);
-    }
-    if (media.video) {
-      console.log("une video");
-    }
-  }
-}
 ///////////////////////////////////////////////
 // constuction de la page photographer.js
 class ProfilPage {
@@ -71,7 +50,6 @@ class ProfilPage {
     this.generateProfilDetail();
     this.generateCarrousel();
     this.generateFooter();
-    this.generateLightbox();
     this.generateLike();
     this.addOneLike();
   }
@@ -132,31 +110,6 @@ class ProfilPage {
     main.append(prix);
   }
 
-  generateLightbox() {
-    const images = document.querySelectorAll("a img");
-    const lightbox = document.createElement("div");
-    lightbox.id = "lightbox";
-    lightbox.innerHTML = `<button class="lightbox__close"><i class="fa-solid fa-xmark"></i></button>`
-    document.body.appendChild(lightbox);
-
-    images.forEach((image) => {
-      image.addEventListener("click", (e) => {
-        
-        lightbox.classList.add("active");
-        const img = document.createElement("img");
-        img.src = image.src;
-        lightbox.appendChild(img);
-        img.classList.add("lightboxImg")
-      });
-      
-    });
-    const closeBtn = document.querySelector(".lightbox__close");
-      closeBtn.addEventListener("click", (e) => {
-          let imgActive = document.querySelector('.lightboxImg')
-          lightbox.classList.remove("active");
-          lightbox.removeChild(imgActive);
-      });
-  }
   generateLike() {
     ///////////////////////////////
     //get DOM Elements

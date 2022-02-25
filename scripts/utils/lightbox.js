@@ -1,24 +1,71 @@
-// DOM elements
-const closeBtn = document.querySelector(".lightbox__close");
-const nextBtn = document.querySelector(".lightbox__next");
-const prevBtn = document.querySelector(".lightbox__prev");
-console.log(closeBtn);
-//fermer la ligthbox
+function generateLightbox() {
+  //DOM elements
+  const images = document.querySelectorAll("a img");
+  console.log(images);
+  const lightbox = document.createElement("div");
 
-closeBtn.addEventListener("click", closeLightbox);
+  //ajout d'elements HTML
+  lightbox.id = "lightbox";
+  lightbox.innerHTML = `
+    <button class="lightbox__close">
+        <i class="fa-solid fa-xmark"></i></button>
+    <button class="lightbox__prev">
+        <i class="fas fa-chevron-left"></i>
+        </button>
+    <button class="lightbox__next">
+        <i class="fas fa-chevron-right"></i>
+        </button>`;
+  document.body.appendChild(lightbox);
 
- function closeLightbox() {
-    console.log("c'est la");
-  lightbox.classList.remove("active");
+  //ajoute une classe "active" qui rend la lightbox visible au clic
+  images.forEach((image) => {
+    const img = document.createElement("img");
+    //cree les img dans la lightbox
+    lightbox.appendChild(img);
+    img.src = image.src;
 
+    image.addEventListener("click", (e) => {
+      //affiche la lightbox
+      lightbox.classList.add("active");
+      //affiche la photo selectionnée
+      img.classList.add("lightboxImg");
+    });
+  });
+  const pix = document.querySelectorAll("#lightbox img");
+
+ 
+  //ferme la lightbox et retire la classe "acitve" quand on clic sur la croix
+  const closeBtn = document.querySelector(".lightbox__close");
+  closeBtn.addEventListener("click", (e) => {
+    let imgActive = document.querySelector(".lightboxImg");
+    lightbox.classList.remove("active");
+    lightbox.removeChild(imgActive);
+  });
+
+
+  //   //aller au suivant
+  //   //retirer la class lighboxImg
+
+  //   let etape = 0;
+  //   function enleverImg() {
+  //     images.forEach((image) => {
+  //       let currentImg = document.querySelector(".lightboxImg");
+  //       currentImg.classList.remove("lightboxImg");
+  //     });
+  //   }
+
+  //   const nextBtn = document.querySelector(".lightbox__next");
+  //   const prevBtn = document.querySelector(".lightbox__prev");
+  //   const pix = document.querySelectorAll(".lightbox img");
+  //   console.log(pix);
+  //   prevBtn.addEventListener("click", (e) => {
+  //     etape++;
+  //     console.log(images[etape]);
+  //     enleverImg();
+  //     pix.classList.add('ligghtboxImg');
+
+  //     images.classList.add("lightboxImg");
+  //   });
 }
 
-//ouvrir la lightbox
-function openLightbox() {
-  lightbox.style.display = "flex";
-}
-
-// aller a la photo suivante
-function nextOne() {}
-//les export
-export { closeLightbox };
+export { generateLightbox };
