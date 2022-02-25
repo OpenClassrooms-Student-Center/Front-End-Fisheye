@@ -17,6 +17,9 @@ new ApiProvider()
     let page = new ProfilPage(response);
     page.generateAll();
     generateLightbox();
+  })
+  .catch(function (e) {
+      console.log("zut ça ne marche pas");
   });
 
 ///////////////////////////////////////////////

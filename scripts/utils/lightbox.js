@@ -42,19 +42,51 @@ function generateLightbox() {
     lightbox.removeChild(imgActive);
   });
 
+  //suivant
+  const nextBtn = document.querySelector(".lightbox__next");
+  const prevBtn = document.querySelector(".lightbox__prev");
+  //const pix = document.querySelectorAll("#lightbox img");
+  let etape =0;
+
+  nextBtn.addEventListener('click', ()=> {
+    
+       console.log(pix);
+      
+      etape ++;
+
+      if(etape >= pix.length) {
+          etape= 0;
+      }
+      console.log(etape);
+      enleverImg();
+      pix[etape].classList.add('lightboxImg');
+
+  })
+
+  prevBtn.addEventListener('click', ()=> {
+
+    etape --;
+    if(etape < 0) {
+        etape= pix.length - 1;
+    }
+    enleverImg();
+    pix[etape].classList.add('lightboxImg')
+
+  })
+
 
   //   //aller au suivant
   //   //retirer la class lighboxImg
 
   //   let etape = 0;
-  //   function enleverImg() {
-  //     images.forEach((image) => {
-  //       let currentImg = document.querySelector(".lightboxImg");
-  //       currentImg.classList.remove("lightboxImg");
-  //     });
-  //   }
+     function enleverImg() {
+      images.forEach((image, i) => {
+         let currentImg = document.querySelector(".lightboxImg");
+         pix[i].classList.remove("lightboxImg");
+       });
+     }
 
-  //   const nextBtn = document.querySelector(".lightbox__next");
+  //   
   //   const prevBtn = document.querySelector(".lightbox__prev");
   //   const pix = document.querySelectorAll(".lightbox img");
   //   console.log(pix);

@@ -47,9 +47,12 @@ button {
     height: 900px;
     object-fit: cover;
     display: none;
+    opacity: 0;
+    transition: opacity .5s;
 }
 #lightbox img.lightboxImg {
     display: flex;
+    opacity: 1;
 }
 .lightbox__close {
     width: 42px;
