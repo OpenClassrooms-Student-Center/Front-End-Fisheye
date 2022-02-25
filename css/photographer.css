@@ -21,6 +21,11 @@ header {
     justify-content: space-between;
 }
 
+.hover:hover {
+    background: #DB8876;
+    color: black;
+}
+
 form div {
     width: 100%;
 }
