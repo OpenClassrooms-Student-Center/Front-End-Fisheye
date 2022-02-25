@@ -1,7 +1,6 @@
 function generateLightbox() {
   //DOM elements
-  const images = document.querySelectorAll("a img");
-  console.log(images);
+  const medias = document.querySelectorAll("a img, a video");
   const lightbox = document.createElement("div");
 
   //ajout d'elements HTML
@@ -18,7 +17,7 @@ function generateLightbox() {
   document.body.appendChild(lightbox);
 
   //ajoute une classe "active" qui rend la lightbox visible au clic
-  images.forEach((image) => {
+  medias.forEach((image) => {
     const img = document.createElement("img");
     //cree les img dans la lightbox
     lightbox.appendChild(img);
@@ -80,7 +79,7 @@ function generateLightbox() {
 
   //   let etape = 0;
      function enleverImg() {
-      images.forEach((image, i) => {
+      medias.forEach((image, i) => {
          let currentImg = document.querySelector(".lightboxImg");
          pix[i].classList.remove("lightboxImg");
        });
@@ -92,7 +91,7 @@ function generateLightbox() {
   //   console.log(pix);
   //   prevBtn.addEventListener("click", (e) => {
   //     etape++;
-  //     console.log(images[etape]);
+  //     console.log(medias[etape]);
   //     enleverImg();
   //     pix.classList.add('ligghtboxImg');
 

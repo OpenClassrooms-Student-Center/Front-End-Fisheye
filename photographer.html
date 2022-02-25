@@ -15,11 +15,13 @@
   </head>
   <body>
     <header>
+        <a href="./index.html">
       <img src="./assets/images/logo.png" class="logo" />
+    </a>
     </header>
     <main id="main">
       <div class="photograph-header">
-        <button class="contact_button" onclick="displayModal()">Contactez-moi</button>
+        <button class="contact_button" >Contactez-moi</button>
       </div>
       <div class="gallerie"></div>
     </main>
@@ -27,29 +29,31 @@
 			<div class="modal">
 				<header>
           <h2>Contactez-moi</h2>
-          <img src="./assets/icons/close.svg" onclick="closeModal()" />
+          <img src="./assets/icons/close.svg" />
         </header>
 				<form>
 					<div>
-						<label>Prénom</label>
-						<input />
+						<label for="firstName">Prénom</label>
+						<input id="firstName" />
+					</div>
+                    <div>
+						<label for="lastName">Nom</label>
+						<input id="lastName"/>
+					</div>
+                    <div>
+						<label for="email">Email</label>
+						<input id="email" />
+					</div>
+                    <div>
+						<label for="msg">Votre message</label>
+						<input id="msg"/>
 					</div>
           <button class="contact_button">Envoyer</button>
 				</form>
 			</div>
 		</div>
 
-    <!-- lightbox a integrer en JS plus tard-->
-    <!-- <div class="lightbox">
-        <button class="lightbox__close"><i class="fa-solid fa-xmark"></i></button>
-        <button class="lightbox__prev"><i class="fas fa-chevron-left"></i></button>
-        <div class="lightbox__container">
-            
-        </div>
-        <button class="lightbox__next"><i class="fas fa-chevron-right"></i></button>
-        
-        
-    </div> -->
+    
     <!-- <script src="./scripts/utils/contactForm.js"></script> -->
     <script type="module" src="./scripts/appProfil.js"></script>
   </body>

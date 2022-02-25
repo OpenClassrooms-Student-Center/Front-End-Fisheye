@@ -3,6 +3,7 @@ import { buildFilters } from "./factories/buildFilters.js";
 
 import { MediaBuilderFactory } from "./factories/MediaBuilderFactory.js";
 import { generateLightbox } from "./utils/lightbox.js";
+import { displayModal } from "./utils/contactForm.js";
 // import { addOneLike} from "./utils/likes.js"
 ////////////////////////////////////////
 
@@ -123,7 +124,7 @@ class ProfilPage {
     likes.forEach((el) => {
       //recupere leur contenu html et transforme le en nombre
       const cont = parseInt(el.innerHTML);
-      console.log(cont);
+      
     });
   }
 
@@ -139,3 +140,4 @@ class ProfilPage {
 }
 
 buildFilters();
+
