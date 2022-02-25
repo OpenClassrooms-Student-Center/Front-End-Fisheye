@@ -438,7 +438,7 @@ async function getMedias() {
 		{
 			"id": 952343423,
 			"photographerId": 930,
-			"title": "Tricks in te air",
+			"title": "Tricks in the air",
 			"video": "Sport_Tricks_in_the_air.mp4",
 			"likes": 150,
 			"date": "2018-02-30",
@@ -537,40 +537,39 @@ async function getMedias() {
     ]
 
     fetch("data/photographers.json")
-    .then((res) => res.json())
+    .then((res) => {
+	return	res.json()
+	})
     .then((data) => {
-        console.log(data)
-    })
-
+        //console.log(data)
+    }) 
+	
     return ({medias : [...medias]}) 
 }
 
+getSortFactory();
 
-
+// AFFICHE LES MEDIAS DES PHOTOGRAPHES
 async function displayDataMedias(medias) {
-    const photographMedias = document.querySelector(".photograph-medias");
-	//const lightboxSection = document.querySelector(".lightbox-section");
-	
-    medias.forEach((media) => {
+    
+	let verifyUrl = new URLSearchParams(window.location.search);
+    const photographerId = verifyUrl.get('id');
+ 
+	pictures = medias.filter(obj => obj.photographerId == photographerId);
+	 
+	buildGallery(pictures); 
+};
 
+function buildGallery(pictures) {
+	const photographMedias = document.querySelector(".photograph-medias");
+	photographMedias.innerHTML = "";
+
+	pictures.forEach((picture) => {
 		
-
-		//Verifie si l'url contient l'id du photographe
-        let verifyUrl = new URLSearchParams(window.location.search);
-        verifyUrl.has(media.photographerId);
-        let param = verifyUrl.get('id');
-        //console.log(media.photographerId);  
-		
-		if(media.photographerId == param) {
-
-			const mediaModel = mediasFactory(media);
-        	const mediaCardDOM = mediaModel.getMediasCardDOM();
-        	photographMedias.appendChild(mediaCardDOM);
-
-			const lightboxModel = lightboxFactory(media);
-			lightboxModel.getLightboxDOM();
-		};
-    }); 
+		const mediaModel = mediasFactory(picture);
+        const mediaCardDOM = mediaModel.getMediasCardDOM();
+        photographMedias.appendChild(mediaCardDOM);
+	})
 };
 
 async function initMedias() {

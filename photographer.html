@@ -1,60 +1,72 @@
 <!DOCTYPE html>
-<html>
+<html lang="fr">
   <head>
-    <link href="css/photographer.css" rel="stylesheet" type="text/css" />
     <meta charset="utf-8">
-    <link rel="icon" type="image/png" href="assets/favicon.png">
-    <link href="https://fonts.googleapis.com/css?family=DM+Sans&display=swap" rel="stylesheet">
-    <script src="https://kit.fontawesome.com/0e8c5e07d6.js" crossorigin="anonymous"></script>
     <title>Fisheye - photographe </title>
+    <script src="https://kit.fontawesome.com/0e8c5e07d6.js" crossorigin="anonymous"></script>
+    <link href="https://fonts.googleapis.com/css?family=DM+Sans&display=swap" rel="stylesheet">
+    <link href="css/photographer.css" rel="stylesheet" type="text/css" /> 
   </head>
   <body>
+
     <header>
-      <a href="index.html">
-        <img src="assets/images/logo.png" class="logo" />
+      <a href="index.html" title="Fisheye page d'accueil">
+        <img src="assets/images/logo.png" class="logo" alt="Logo de Fisheye"/>
       </a>
     </header>
+
     <main id="main">
-      <div class="photograph-header">
-        <button class="contact_button" onclick="displayModal()">Contactez-moi</button>
-      </div>
-      <div class="photograph-medias"></div>
+      <section class="photograph-header">
+        <button class="contact_button hover" onclick="displayModal()">Contactez-moi</button>
+      </section>
+      <section class="photograph-medias"></section>
     </main>
 
-    <div class="lightbox"></div> 
+    <div class="lightbox" role="dialog" aria-describedby="Lightbox"></div> 
 
-    <div id="contact_modal">
+    <div id="contact_modal" role="dialog" aria-describedby="Envoyer un message">
 			<div class="modal">
-				<header class="contact-header">
-          <h2>Contactez-moi</h2>
-          <img src="assets/icons/close.svg" onclick="closeModal()" />
-        </header>
+
+				<div class="contact-header">
+          <h2 class="contact-title">Contactez-moi</h2>
+          <img src="assets/icons/close.svg" onclick="closeModal()" class="close-modale" alt="Icône Fermer"/>
+        </div>
+
 				<form action="index.html" method="get" name="form">
-					<div>
-						<label for="firstname">Prénom</label>
-						<input type="text" name="firstname" id="firstname" />
-            <label for="lastname">Nom</label>
-            <input type="text" name="lastname" id="lastname"/>
-            <label for="email">Email</label>
-            <input type="email" name="email" id="email"/>
-            <label for="textarea">Votre message</label>
-            <textarea name="textarea" id="textarea" cols="45" rows="10"></textarea>
+					<div role="group" aria-labelledby="Coordonnées">
+						<label for="firstname" class="firstname">Prénom</label>
+						<input type="text" name="firstname" id="firstname" class="input-form" aria-required="true"/>
+            <span class="error-firstname"></span>
+            <label for="lastname" class="lastname">Nom</label>
+            <input type="text" name="lastname" id="lastname" class="input-form" aria-required="true"/>
+            <span class="error-lastname"></span>
+            <label for="email" class="email">Email</label>
+            <input type="email" name="email" id="email" class="input-form" aria-required="true"/>
+            <span class="error-email"></span>
+            <label for="textarea" class="textarea">Votre message</label>
+            <textarea name="textarea" id="textarea" aria-required="true"></textarea>
+            <span class="error-textarea"></span>
 					</div>
-          <button class="contact_button">Envoyer</button>
+          <button class="contact_button submit-btn" type="submit">Envoyer</button>
 				</form>
+
 			</div>
 		</div>
 
+    <footer class="totalLikesContainer"></footer>
     
-    
-    <script src="/scripts/utils/contactForm.js"></script>
-    <script src="scripts/factories/profileFactory.js"></script>
-    <script src="scripts/pages/photographer.js"></script>
-    <script src="scripts/factories/mediasFactory.js"></script>
+    <script src="/scripts/utils/contact.js"></script>
+    <script src="scripts/factories/profileFactory.js"></script> 
     <script src="scripts/factories/lightboxFactory.js"></script>
+    <script src="scripts/factories/mediasFactory.js"></script>
+    <script src="scripts/factories/totalLikesFactory.js"></script>
+    <script src="scripts/pages/sort.js"></script>
     <script src="scripts/pages/medias.js"></script>
-    <script src="scripts/utils/contactForm.js"></script>
+    <script src="scripts/pages/photographer.js"></script>
+    <script src="scripts/pages/likesCounter.js"></script>
     
     
+    
+  
   </body>
 </html>
