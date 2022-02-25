@@ -15,7 +15,7 @@ function Photographer() {
   return (
     <>
       <header>
-        <img src="assets/images/logo.png" className="logo" />
+        <img src="assets/images/logo.png" alt="Fisheye logo" className="logo" />
       </header>
       <main id="main">
         <div className="photograph-header">
@@ -28,7 +28,7 @@ function Photographer() {
         <div className="modal">
           <header>
             <h2>Contactez-moi</h2>
-            <img src="assets/icons/close.svg" onClick={() => closeModal()} />
+            <img src="assets/icons/close.svg" alt="" onClick={() => closeModal()} />
           </header>
           <form>
             <div>
