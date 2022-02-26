@@ -1,11 +1,45 @@
+* {
+    font-family: "DM Sans", sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    margin: 30px 100px;
+    display: flex;
+}
+
 #contact_modal {
     display: none;
+    position: absolute;
+    width: 100%;
+    top: 10px;
+}
+
+.contact-header {
+    display: flex;
+    justify-content: space-between;
+}
+
+.hover:hover {
+    background: #DB8876;
+    color: black;
+}
+
+form div {
+    width: 100%;
+}
+.logo {
+    height: 50px;
 }
 
 .photograph-header {
     background-color: #FAFAFA;
     height: 300px;
     margin: 0 100px;
+    display: flex;
+    justify-content: space-between;
+    padding: 0 50px;
 }
 
 .contact_button {
@@ -19,6 +53,8 @@
     background-color: #901C1C;
     border-radius: 5px;
     cursor: pointer;
+    margin: auto 0;
+    order: 2;
 }
 
 .modal {
@@ -27,25 +63,17 @@
     width: 50%;
     display: flex;
     flex-direction: column;
-    align-items: center;
     justify-content: space-between;
-    padding: 35px;
+    padding: 20px 35px;
     margin: auto;
+    z-index: 99;
 }
 
 .modal header {
     justify-content: space-between;
     width: 100%;
-}
-
-.modal header img {
-    cursor: pointer;
-}
-
-.modal header h2 {
-    font-size: 64px;
-    font-weight: normal;
-    text-align: center;
+    margin: 0;
+    order: 1;
 }
 
 form {
@@ -53,24 +81,40 @@ form {
     width: 100%;
     flex-direction: column;
     align-items: flex-start;
+    order: 3;
 }
+/*****************************************************************/
+
+.photograph-medias {
+    margin: 50px 100px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.vid + img{
+    display: none;
+}
+
+.lightbox {
+    background: white;
+    width: 100%;
+    height: 100%;
+    position: fixed; 
+    top: 0;
+    left: 0;
+    z-index: 999;
+    text-align: center;
+    display: none;
+}
+
+.totalLikesContainer > input, label {
+    display: none;
+} 
+.remove {
+    display: block;
+} 
 
 form label {
-    color: #312E2E;
-    font-size: 36px;
-}
-
-form div {
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-    align-items: self-start;
-    margin-bottom: 26px;
-}
-
-form input {
-    width: 100%;
-    height: 68px;
-    border: none;
-    border-radius: 5px;
+    display: block;
 }
