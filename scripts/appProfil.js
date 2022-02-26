@@ -1,4 +1,4 @@
-import { ApiProvider } from "./factories/ApiProvider.js";
+import { ApiProvider } from "./providers/apiProvider.js";
 import { buildFilters } from "./factories/buildFilters.js";
 
 import { MediaBuilderFactory } from "./factories/MediaBuilderFactory.js";
