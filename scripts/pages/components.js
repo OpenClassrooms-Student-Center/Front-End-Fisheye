@@ -1,8 +1,6 @@
 /* Import factories */
 import { LayoutsFactory } from "../factories/layoutsFactory.js";
 import { ComponentsFactory } from "../factories/componentsFactory.js";
-import { textfieldFactory } from "../factories/textfieldFactory.js";
-import { likeBtnFactory } from "../factories/likeBtnFactory.js";
 import { sortBtnFactory } from "../factories/sortBtnFactory.js";
 import { btnFactory } from "../factories/btnFactory.js";
 import { logoFactory } from "../factories/logoFactory.js";
@@ -20,19 +18,27 @@ function displayComponents() {
     const componentsContainer = layoutsFactory.getComponentsContainerDOM();
     document.querySelector("body").prepend(componentsContainer);
 
-    /* Create the textfield component and add it to its container */
+    /* Get the textfield container */
     const textfieldContainer = document.querySelector(".components-container__textfield");
+
+    /* Create the textfield component and add it to its container */
     const textfield = componentsFactory.getTextfieldDOM("Prénom", false);
     textfieldContainer.appendChild(textfield);
 
+    /* Get the buttons container */
     const buttonsContainer = document.querySelector(".components-container__buttons");
-    const likeBtn = likeBtnFactory(12, true);
-    const sortBtn = sortBtnFactory();
-    const btn = btnFactory("Contactez-moi");
 
+    /* Create the like button component and add it to its container */
+    const likeBtn = componentsFactory.getLikeBtnDOM(12, true);
     buttonsContainer.appendChild(likeBtn);
+
+    /* Create the sort button component and add it to its container */
+    const sortBtn = sortBtnFactory();
     buttonsContainer.appendChild(sortBtn);
-    buttonsContainer.appendChild(btn);
+
+    /* Create the main button component and add it to its container */
+    const mainBtn = btnFactory("Contactez-moi");
+    buttonsContainer.appendChild(mainBtn);
 
     const logoContainer = document.querySelector(".components-container__logo");
     const logo = logoFactory();
