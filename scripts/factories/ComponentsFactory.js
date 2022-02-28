@@ -206,4 +206,12 @@ export class ComponentsFactory {
 
         return location;
     };
+
+    getUserTaglineDOM = (userTagline) => {
+        const tagline = document.createElement("p");
+        tagline.classList.add("user-tagline");
+        tagline.textContent = userTagline;
+
+        return tagline;
+    };
 }

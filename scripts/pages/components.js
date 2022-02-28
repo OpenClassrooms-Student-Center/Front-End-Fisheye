@@ -58,11 +58,14 @@ function displayComponents() {
     const userLocation = componentsFactory.getUserLocationDOM("Berlin, Germany");
     cardComponentsContainer.appendChild(userLocation);
 
-    const userTagline = userTaglineFactory("Toujours à la recherche de LA photo");
+    /* Create the user tagline component and add it to its container */
+    const userTagline = componentsFactory.getUserTaglineDOM("Toujours à la recherche de LA photo");
     cardComponentsContainer.appendChild(userTagline);
 
+    /* Get the cards container */
     const cardsContainer = document.querySelector(".components-container__cards");
 
+    /* Add the card components container to the cards container */
     cardsContainer.appendChild(cardComponentsContainer);
 }
 
