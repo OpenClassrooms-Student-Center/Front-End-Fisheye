@@ -1,9 +1,6 @@
 /* Import factories */
 import { LayoutsFactory } from "../factories/layoutsFactory.js";
 import { ComponentsFactory } from "../factories/componentsFactory.js";
-import { userNameFactory } from "../factories/userNameFactory.js";
-import { userLocationFactory } from "../factories/userLocationFactory.js";
-import { userTaglineFactory } from "../factories/userTaglineFactory.js";
 
 function displayComponents() {
     /* Facotries initialisation */
@@ -67,6 +64,10 @@ function displayComponents() {
 
     /* Add the card components container to the cards container */
     cardsContainer.appendChild(cardComponentsContainer);
+
+    /* Create the media component and add it to its container */
+    const media = componentsFactory.getMediaDOM("../../assets/images/Marcel/Architecture_Corner_Room.jpg", "Corner Building and Blue Sky", 12, true);
+    cardsContainer.appendChild(media);
 }
 
 function init() {

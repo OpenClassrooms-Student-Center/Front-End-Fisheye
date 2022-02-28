@@ -214,4 +214,32 @@ export class ComponentsFactory {
 
         return tagline;
     };
+
+    getMediaDOM = (mediaPath, mediaTitle, likes, isLiked) => {
+        const mediaContainer = document.createElement("figure");
+        mediaContainer.classList.add("media-container");
+
+        const media = document.createElement("img");
+        media.classList.add("media-container__media");
+        media.setAttribute("alt", mediaTitle);
+        media.setAttribute("src", mediaPath);
+
+        mediaContainer.appendChild(media);
+
+        const figCaption = document.createElement("figcaption");
+        figCaption.classList.add("media-container__figcaption");
+
+        const title = document.createElement("p");
+        title.textContent = mediaTitle;
+
+        figCaption.appendChild(title);
+
+        const likeBtn = this.getLikeBtnDOM(likes, isLiked);
+
+        figCaption.appendChild(likeBtn);
+
+        mediaContainer.appendChild(figCaption);
+
+        return mediaContainer;
+    };
 }
