@@ -162,4 +162,32 @@ export class ComponentsFactory {
 
         return btn;
     };
+
+    getLogoDOM = () => {
+        const logo = document.createElement("div");
+        logo.classList.add("logo");
+
+        const image = document.createElement("img");
+        image.classList.add("logo__img");
+        image.setAttribute("alt", "Logo FishEye");
+        image.setAttribute("src", "./assets/images/logo.png");
+
+        logo.appendChild(image);
+
+        return logo;
+    };
+
+    getAvatarDOM = (userImage, userName) => {
+        const avatar = document.createElement("div");
+        avatar.classList.add("avatar");
+
+        const image = document.createElement("img");
+        image.classList.add("avatar__img");
+        image.setAttribute("alt", `Avatar de ${userName}`);
+        image.setAttribute("src", userImage);
+
+        avatar.appendChild(image);
+
+        return avatar;
+    };
 }

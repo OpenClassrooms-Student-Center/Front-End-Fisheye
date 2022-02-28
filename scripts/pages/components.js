@@ -1,7 +1,6 @@
 /* Import factories */
 import { LayoutsFactory } from "../factories/layoutsFactory.js";
 import { ComponentsFactory } from "../factories/componentsFactory.js";
-import { btnFactory } from "../factories/btnFactory.js";
 import { logoFactory } from "../factories/logoFactory.js";
 import { avatarFactory } from "../factories/avatarFactory.js";
 import { userNameFactory } from "../factories/userNameFactory.js";
@@ -39,23 +38,30 @@ function displayComponents() {
     const mainBtn = componentsFactory.getMainBtnDOM("Contactez-moi");
     buttonsContainer.appendChild(mainBtn);
 
+    /* Get the logo container */
     const logoContainer = document.querySelector(".components-container__logo");
-    const logo = logoFactory();
 
+    /* Create the logo component and add it to its container */
+    const logo = componentsFactory.getLogoDOM();
     logoContainer.appendChild(logo);
 
-    const cardsContainer = document.querySelector(".components-container__cards");
+    /* Get the card components container */
     const cardComponentsContainer = document.querySelector(".card-components");
 
-    const avatar = avatarFactory("../../assets/photographers/MarcelNikolic.jpg", "Marcel Nikolic");
-    const userName = userNameFactory("Marcel Nikolic");
-    const userLocation = userLocationFactory("Berlin, Germany");
-    const userTagline = userTaglineFactory("Toujours à la recherche de LA photo");
-
+    /* Create the avatar component and add it to its container */
+    const avatar = componentsFactory.getAvatarDOM("../../assets/photographers/MarcelNikolic.jpg", "Marcel Nikolic");
     cardComponentsContainer.appendChild(avatar);
+
+    const userName = userNameFactory("Marcel Nikolic");
     cardComponentsContainer.appendChild(userName);
+
+    const userLocation = userLocationFactory("Berlin, Germany");
     cardComponentsContainer.appendChild(userLocation);
+
+    const userTagline = userTaglineFactory("Toujours à la recherche de LA photo");
     cardComponentsContainer.appendChild(userTagline);
+
+    const cardsContainer = document.querySelector(".components-container__cards");
 
     cardsContainer.appendChild(cardComponentsContainer);
 }
