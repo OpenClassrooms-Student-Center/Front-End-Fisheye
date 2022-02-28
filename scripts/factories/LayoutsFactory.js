@@ -1,6 +1,7 @@
 export class LayoutsFactory {
     constructor(data) {}
 
+    /* Return the components layout */
     getComponentsContainerDOM = () => {
         const componentsContainer = document.createElement("div");
         componentsContainer.classList.add("components-container");

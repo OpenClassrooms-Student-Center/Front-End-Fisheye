@@ -1,3 +1,4 @@
+/* Import factories */
 import { LayoutsFactory } from "../factories/layoutsFactory.js";
 import { ComponentsFactory } from "../factories/componentsFactory.js";
 import { textfieldFactory } from "../factories/textfieldFactory.js";
