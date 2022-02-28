@@ -1,8 +1,6 @@
 /* Import factories */
 import { LayoutsFactory } from "../factories/layoutsFactory.js";
 import { ComponentsFactory } from "../factories/componentsFactory.js";
-import { logoFactory } from "../factories/logoFactory.js";
-import { avatarFactory } from "../factories/avatarFactory.js";
 import { userNameFactory } from "../factories/userNameFactory.js";
 import { userLocationFactory } from "../factories/userLocationFactory.js";
 import { userTaglineFactory } from "../factories/userTaglineFactory.js";
@@ -52,7 +50,8 @@ function displayComponents() {
     const avatar = componentsFactory.getAvatarDOM("../../assets/photographers/MarcelNikolic.jpg", "Marcel Nikolic");
     cardComponentsContainer.appendChild(avatar);
 
-    const userName = userNameFactory("Marcel Nikolic");
+    /* Create the user name component and add it to its container */
+    const userName = componentsFactory.getUserNameDOM("Marcel Nikolic");
     cardComponentsContainer.appendChild(userName);
 
     const userLocation = userLocationFactory("Berlin, Germany");
