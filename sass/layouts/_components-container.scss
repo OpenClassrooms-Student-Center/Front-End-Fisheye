@@ -1,0 +1,24 @@
+.components-container {
+    display: flex;
+    flex-direction: column;
+    padding: 2rem;
+    max-width: 2560px;
+
+    &__buttons {
+        display: flex;
+        align-items: center;
+        gap: 2.5rem;
+        padding: 2.5rem 0;
+    }
+
+    &__cards {
+        padding: 2.5rem 0;
+
+        > .card-components {
+            width: 30%;
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+    }
+}

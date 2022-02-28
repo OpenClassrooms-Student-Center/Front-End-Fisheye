@@ -1,3 +1,4 @@
+import { LayoutsFactory } from "../factories/layoutsFactory.js";
 import { textfieldFactory } from "../factories/textfieldFactory.js";
 import { likeBtnFactory } from "../factories/likeBtnFactory.js";
 import { sortBtnFactory } from "../factories/sortBtnFactory.js";
@@ -9,12 +10,17 @@ import { userLocationFactory } from "../factories/userLocationFactory.js";
 import { userTaglineFactory } from "../factories/userTaglineFactory.js";
 
 function displayComponents() {
-    const textfieldContainer = document.querySelector(".form-group-container");
+    const layoutsFactory = new LayoutsFactory();
+
+    const componentsContainer = layoutsFactory.getComponentsContainerDOM();
+    document.querySelector("body").prepend(componentsContainer);
+
+    const textfieldContainer = document.querySelector(".components-container__form-group");
     const textfield = textfieldFactory("Prénom", false);
 
     textfieldContainer.appendChild(textfield);
 
-    const buttonsContainer = document.querySelector(".buttons-container");
+    const buttonsContainer = document.querySelector(".components-container__buttons");
     const likeBtn = likeBtnFactory(12, true);
     const sortBtn = sortBtnFactory();
     const btn = btnFactory("Contactez-moi");
@@ -23,25 +29,18 @@ function displayComponents() {
     buttonsContainer.appendChild(sortBtn);
     buttonsContainer.appendChild(btn);
 
-    const logoContainer = document.querySelector(".logo-container");
+    const logoContainer = document.querySelector(".components-container__logo");
     const logo = logoFactory();
 
     logoContainer.appendChild(logo);
 
-    const cardsContainer = document.querySelector(".cards-container");
-    const cardComponentsContainer = document.createElement("div");
-    cardComponentsContainer.style =
-        "width: 30%; display: flex; flex-direction: column; gap: 0.5rem;";
+    const cardsContainer = document.querySelector(".components-container__cards");
+    const cardComponentsContainer = document.querySelector(".card-components");
 
-    const avatar = avatarFactory(
-        "../../assets/photographers/MarcelNikolic.jpg",
-        "Marcel Nikolic"
-    );
+    const avatar = avatarFactory("../../assets/photographers/MarcelNikolic.jpg", "Marcel Nikolic");
     const userName = userNameFactory("Marcel Nikolic");
     const userLocation = userLocationFactory("Berlin, Germany");
-    const userTagline = userTaglineFactory(
-        "Toujours à la recherche de LA photo"
-    );
+    const userTagline = userTaglineFactory("Toujours à la recherche de LA photo");
 
     cardComponentsContainer.appendChild(avatar);
     cardComponentsContainer.appendChild(userName);
