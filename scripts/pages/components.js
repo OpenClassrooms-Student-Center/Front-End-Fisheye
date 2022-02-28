@@ -1,7 +1,6 @@
 /* Import factories */
 import { LayoutsFactory } from "../factories/layoutsFactory.js";
 import { ComponentsFactory } from "../factories/componentsFactory.js";
-import { sortBtnFactory } from "../factories/sortBtnFactory.js";
 import { btnFactory } from "../factories/btnFactory.js";
 import { logoFactory } from "../factories/logoFactory.js";
 import { avatarFactory } from "../factories/avatarFactory.js";
@@ -37,7 +36,7 @@ function displayComponents() {
     buttonsContainer.appendChild(sortBtn);
 
     /* Create the main button component and add it to its container */
-    const mainBtn = btnFactory("Contactez-moi");
+    const mainBtn = componentsFactory.getMainBtnDOM("Contactez-moi");
     buttonsContainer.appendChild(mainBtn);
 
     const logoContainer = document.querySelector(".components-container__logo");
