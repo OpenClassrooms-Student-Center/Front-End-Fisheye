@@ -2,38 +2,48 @@ export function sortBtnFactory() {
     const sortBtn = document.createElement("ul");
     sortBtn.classList.add("sort-btn");
 
-    const selected = document.createElement("li");
+    const selectedContainer = document.createElement("li");
+    const selected = document.createElement("button");
     selected.textContent = "Popularité";
-    selected.classList.add("sort-btn__selected");
+    selectedContainer.classList.add("sort-btn__selected");
 
-    const icon = document.createElement("span");
+    selectedContainer.appendChild(selected);
+
+    const icon = document.createElement("i");
     icon.classList.add("sort-btn__icon");
 
     selected.appendChild(icon);
 
-    selected.addEventListener("click", openDropdown);
+    selectedContainer.addEventListener("click", openDropdown);
 
-    const option1 = document.createElement("li");
+    const option1Container = document.createElement("li");
+    const option1 = document.createElement("button");
     option1.textContent = "Date";
-    option1.classList.add("sort-btn__option");
-    option1.classList.add("sort-btn__option--hidden");
+    option1Container.classList.add("sort-btn__option");
+    option1Container.classList.add("sort-btn__option--hidden");
 
-    const option2 = document.createElement("li");
+    option1Container.appendChild(option1);
+
+    const option2Container = document.createElement("li");
+    const option2 = document.createElement("button");
     option2.textContent = "Titre";
-    option2.classList.add("sort-btn__option");
-    option2.classList.add("sort-btn__option--hidden");
+    option2Container.classList.add("sort-btn__option");
+    option2Container.classList.add("sort-btn__option--hidden");
 
-    const options = [selected, option1, option2];
+    option2Container.appendChild(option2);
 
-    sortBtn.appendChild(selected);
-    sortBtn.appendChild(option1);
-    sortBtn.appendChild(option2);
+    const options = [selectedContainer, option1Container, option2Container];
+
+    sortBtn.appendChild(selectedContainer);
+    sortBtn.appendChild(option1Container);
+    sortBtn.appendChild(option2Container);
 
     function openDropdown() {
-        selected.removeEventListener("click", openDropdown);
+        selectedContainer.removeEventListener("click", openDropdown);
 
-        option1.classList.remove("sort-btn__option--hidden");
-        option2.classList.remove("sort-btn__option--hidden");
+        icon.classList.add("sort-btn__icon--alt");
+        option1Container.classList.remove("sort-btn__option--hidden");
+        option2Container.classList.remove("sort-btn__option--hidden");
 
         options.forEach((option) => {
             option.addEventListener("click", closeDropdown);
@@ -46,6 +56,8 @@ export function sortBtnFactory() {
         });
 
         let filterChoosen = e.target.textContent;
+
+        console.log(filterChoosen);
 
         if (filterChoosen !== selected.textContent) {
             switch (filterChoosen) {
@@ -63,10 +75,11 @@ export function sortBtnFactory() {
             selected.appendChild(icon);
         }
 
-        option1.classList.add("sort-btn__option--hidden");
-        option2.classList.add("sort-btn__option--hidden");
+        icon.classList.remove("sort-btn__icon--alt");
+        option1Container.classList.add("sort-btn__option--hidden");
+        option2Container.classList.add("sort-btn__option--hidden");
 
-        selected.addEventListener("click", openDropdown);
+        selectedContainer.addEventListener("click", openDropdown);
     }
 
     return sortBtn;

@@ -6,19 +6,17 @@
     width: 8rem;
     border-radius: 0.25rem;
     padding: 0 0.75rem;
-    font-size: 0.9rem;
     cursor: pointer;
     background-color: $primary-color;
     color: white;
 
-    > li {
-        padding: 1rem 0.5rem;
-    }
-
     &__selected {
         width: 100%;
-        display: flex;
-        justify-content: space-between;
+
+        > button {
+            display: flex;
+            justify-content: space-between;
+        }
 
         &--alt {
             padding: 1rem 0.75rem;
@@ -30,13 +28,22 @@
         display: flex;
         flex-direction: column;
         align-items: flex-start;
-        padding: 0 0.5rem 0.25rem 0.5rem;
         border-top: 1px solid white;
         text-align: left;
 
         &--hidden {
             display: none;
         }
+    }
+
+    &__selected > button,
+    &__option > button {
+        font-size: 0.9rem;
+        text-align: left;
+        color: white;
+        width: 100%;
+        cursor: pointer;
+        padding: 1rem 0.5rem;
     }
 
     &__icon {
