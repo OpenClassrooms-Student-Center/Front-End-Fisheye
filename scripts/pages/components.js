@@ -54,7 +54,8 @@ function displayComponents() {
     const userName = componentsFactory.getUserNameDOM("Marcel Nikolic");
     cardComponentsContainer.appendChild(userName);
 
-    const userLocation = userLocationFactory("Berlin, Germany");
+    /* Create the user location component and add it to its container */
+    const userLocation = componentsFactory.getUserLocationDOM("Berlin, Germany");
     cardComponentsContainer.appendChild(userLocation);
 
     const userTagline = userTaglineFactory("Toujours à la recherche de LA photo");
