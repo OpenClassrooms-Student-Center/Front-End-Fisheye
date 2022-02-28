@@ -12,20 +12,17 @@ import { userLocationFactory } from "../factories/userLocationFactory.js";
 import { userTaglineFactory } from "../factories/userTaglineFactory.js";
 
 function displayComponents() {
-    /* Datas to display in this page */
-    const data = {};
-
     /* Facotries initialisation */
-    const layoutsFactory = new LayoutsFactory(data);
-    const componentsFactory = new ComponentsFactory(data);
+    const layoutsFactory = new LayoutsFactory();
+    const componentsFactory = new ComponentsFactory();
 
     /* Create the components layout and add it to the body */
     const componentsContainer = layoutsFactory.getComponentsContainerDOM();
     document.querySelector("body").prepend(componentsContainer);
 
-    const textfieldContainer = document.querySelector(".components-container__form-group");
-    const textfield = textfieldFactory("Prénom", false);
-
+    /* Create the textfield component and add it to its container */
+    const textfieldContainer = document.querySelector(".components-container__textfield");
+    const textfield = componentsFactory.getTextfieldDOM("Prénom", false);
     textfieldContainer.appendChild(textfield);
 
     const buttonsContainer = document.querySelector(".components-container__buttons");

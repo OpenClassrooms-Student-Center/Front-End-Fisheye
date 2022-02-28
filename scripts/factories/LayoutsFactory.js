@@ -1,13 +1,13 @@
 export class LayoutsFactory {
-    constructor(data) {}
+    constructor() {}
 
     /* Return the components layout */
     getComponentsContainerDOM = () => {
         const componentsContainer = document.createElement("div");
         componentsContainer.classList.add("components-container");
 
-        const formGroup = document.createElement("div");
-        formGroup.classList.add("components-container__form-group");
+        const textfield = document.createElement("div");
+        textfield.classList.add("components-container__textfield");
         const buttons = document.createElement("div");
         buttons.classList.add("components-container__buttons");
         const logo = document.createElement("div");
@@ -20,7 +20,7 @@ export class LayoutsFactory {
 
         cards.appendChild(cardComponents);
 
-        componentsContainer.appendChild(formGroup);
+        componentsContainer.appendChild(textfield);
         componentsContainer.appendChild(buttons);
         componentsContainer.appendChild(logo);
         componentsContainer.appendChild(cards);
