@@ -1,4 +1,5 @@
 import { LayoutsFactory } from "../factories/layoutsFactory.js";
+import { ComponentsFactory } from "../factories/componentsFactory.js";
 import { textfieldFactory } from "../factories/textfieldFactory.js";
 import { likeBtnFactory } from "../factories/likeBtnFactory.js";
 import { sortBtnFactory } from "../factories/sortBtnFactory.js";
@@ -10,8 +11,14 @@ import { userLocationFactory } from "../factories/userLocationFactory.js";
 import { userTaglineFactory } from "../factories/userTaglineFactory.js";
 
 function displayComponents() {
-    const layoutsFactory = new LayoutsFactory();
+    /* Datas to display in this page */
+    const data = {};
 
+    /* Facotries initialisation */
+    const layoutsFactory = new LayoutsFactory(data);
+    const componentsFactory = new ComponentsFactory(data);
+
+    /* Create the components layout and add it to the body */
     const componentsContainer = layoutsFactory.getComponentsContainerDOM();
     document.querySelector("body").prepend(componentsContainer);
 
