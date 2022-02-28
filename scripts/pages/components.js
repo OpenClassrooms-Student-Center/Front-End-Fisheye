@@ -33,7 +33,7 @@ function displayComponents() {
     buttonsContainer.appendChild(likeBtn);
 
     /* Create the sort button component and add it to its container */
-    const sortBtn = sortBtnFactory();
+    const sortBtn = componentsFactory.getSortBtnDOM();
     buttonsContainer.appendChild(sortBtn);
 
     /* Create the main button component and add it to its container */
