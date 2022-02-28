@@ -2,11 +2,11 @@ export function likeBtnFactory(likes, isLiked) {
     const button = document.createElement("button");
     button.classList.add("like-btn");
 
-    const counter = document.createElement("span");
+    const counter = document.createElement("p");
     counter.classList.add("like-btn__counter");
     counter.textContent = likes;
 
-    const icon = document.createElement("span");
+    const icon = document.createElement("i");
     icon.classList.add("like-btn__icon");
 
     if (isLiked) {
