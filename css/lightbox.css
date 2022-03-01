@@ -7,7 +7,7 @@
     background-color:white;
     z-index: 50;
     display: none;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
 }
 #lightbox.active {
@@ -17,17 +17,15 @@ button {
     background-color: inherit;
     border: none;
 }
+
 .lightbox__next, .lightbox__prev {
     color: #911C1C;
-    height: 100%;
+    height: 80%;
     font-size: 48px;
     cursor: pointer;
-    position: fixed;
-    top: 0;
-    right: 0;
     opacity: 0.5;
     transition: .3s;
-    margin: 0 20rem;
+    margin: 0 2rem;
 }
 
 .lightbox__next:hover,
@@ -43,23 +41,37 @@ button {
     margin: 20px;
 }
 #lightbox img {
-    width: 1050px;
+    max-width: 1050px;
     height: 900px;
     object-fit: cover;
     display: none;
     opacity: 0;
     transition: opacity .5s;
 }
-#lightbox img.lightboxImg {
+
+#lightbox img.lightboxImg  {
     display: flex;
     opacity: 1;
 }
+#lightbox video {
+    display: none;
+    opacity: 0;
+    object-fit: cover;
+    width: 1050px;
+    height: 900px;
+}
+#lightbox video.lightboxImg {
+    display: flex;
+    opacity: 1;
+}
+
 .lightbox__close {
     width: 42px;
     height: 42px;
-    position: fixed;
-    right: 20rem;
-    top: 20px;
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin: 2rem;
     cursor: pointer;
     z-index: 100;
     color: #911C1C;

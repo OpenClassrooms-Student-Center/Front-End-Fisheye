@@ -1,6 +1,7 @@
 //////////////////////////////////////////////
 //affiche le nombre de media image et video
 class MediaBuilderFactory {
+    
     build(media) {
         const sectionGallery = document.querySelector(".pictures");
       if (media.image) {
@@ -19,7 +20,7 @@ class MediaBuilderFactory {
       }
       if (media.video) {
         const htmlInbox = `<a>
-         <video src="./assets/photos/${media.video}" class="active"></video>
+         <video controls src="./assets/photos/${media.video}" class="active"></video>
          <div class="photo-details">
               <h3>${media.title} </h3>
               <div class="likes"><span class="likes__nbr">${media.likes} </span><i class="fas fa-heart"></i></div>

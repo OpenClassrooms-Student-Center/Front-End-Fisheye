@@ -116,7 +116,6 @@ h3 {
 .gallerie h3 {
     font-weight: 400;
     margin: 0;
-    
 }
 
 .photo-details {
@@ -126,6 +125,12 @@ h3 {
     margin: 0;
     padding: 0;
     margin-bottom: 20px;
+}
+.photo-details h3 {
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    width: 17rem;
+    overflow: hidden;
 }
 .likes {
     font-size: 24px;
