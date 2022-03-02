@@ -1,3 +1,5 @@
+
+
 function generateLightbox() {
   //DOM elements
   const medias = document.querySelectorAll(".gallerie img, a video");
@@ -22,36 +24,30 @@ function generateLightbox() {
   //ajoute une classe "active" qui rend la lightbox visible au clic
   medias.forEach((media) => {
     let a = media.toString();
-    const video = document.createElement("video");
-    const img = document.createElement("img");
+    const buildLightboxMedia = document.createElement("div");
     const containerLightbox = document.querySelector(".container");
-    console.log(containerLightbox);
 
     if (a.includes("Video")) {
-      console.log("je pass ici");
-
-      video.src = media.src;
-      containerLightbox.appendChild(video);
-      video.setAttribute("controls", "");
+      containerLightbox.appendChild(buildLightboxMedia);
+      buildLightboxMedia.classList.add('mediaCard');
+      buildLightboxMedia.innerHTML= `<video controls src="${media.src}"></video>
+                                    <h2> ahah </h2>`;
     } else {
       //cree les img dans la lightbox
-      containerLightbox.appendChild(img);
-      img.src = media.src;
+      containerLightbox.appendChild(buildLightboxMedia);
+      buildLightboxMedia.classList.add('mediaCard');
+      buildLightboxMedia.innerHTML= `<img src="${media.src}"/>
+                                    <h2>Titre</h2>`;
+      
     }
 
     media.addEventListener("click", (e) => {
-      console.log(media);
       //affiche la lightbox
       lightbox.classList.add("active");
-      //affiche la photo selectionnée
-      if (a.includes("Image")) {
-        img.classList.add("lightboxImg");
-      } else {
-        video.classList.add("lightboxImg");
-      }
+      buildLightboxMedia.classList.add("lightboxImg");
     });
   });
-  const pix = document.querySelectorAll("#lightbox img, #lightbox video");
+  const pix = document.querySelectorAll(".container div");
 
   //ferme la lightbox et retire la classe "acitve" quand on clic sur la croix
   const closeBtn = document.querySelector(".lightbox__close");
@@ -67,8 +63,8 @@ function generateLightbox() {
   //const pix = document.querySelectorAll("#lightbox img");
   let etape = 0;
 
+
   nextBtn.addEventListener("click", () => {
-    console.log(pix);
 
     etape++;
 
@@ -96,8 +92,7 @@ function generateLightbox() {
   function enleverImg() {
     medias.forEach((image, i) => {
       let currentImg = document.querySelector(".lightboxImg");
-      console.log(pix);
-      pix[i].classList.remove("lightboxImg");
+            pix[i].classList.remove("lightboxImg");
     });
   }
 }

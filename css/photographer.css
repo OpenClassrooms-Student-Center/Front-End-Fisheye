@@ -137,7 +137,13 @@ h3 {
     color:   #901C1C;
 }
 
-
+.pictures input {
+    opacity: 0;
+    display: none;
+}
+.pictures label {
+    cursor: pointer;
+}
 /***********************/
  /*******header**********/
  /***********************/
@@ -215,3 +221,4 @@ h3 {
     background-color: #DB8876;
     border-radius: 5px;
 }
+

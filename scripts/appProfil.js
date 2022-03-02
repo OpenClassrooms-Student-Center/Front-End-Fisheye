@@ -55,7 +55,6 @@ class ProfilPage {
     this.generateCarrousel();
     this.generateFooter();
     this.generateLike();
-    this.addOneLike();
   }
 
   //////////////////////////////////////////////////
@@ -117,25 +116,27 @@ class ProfilPage {
   generateLike() {
     ///////////////////////////////
     //get DOM Elements
-    const heart = document.querySelectorAll(".fas");
-    const likes = document.querySelectorAll(".likes__nbr");
-
-    //recupere les nombre de likes
-    likes.forEach((el) => {
-      //recupere leur contenu html et transforme le en nombre
-      const cont = parseInt(el.innerHTML);
-      
+    const firstLike = document.querySelector(".likes");
+    firstLike.addEventListener("click", () => {
+      console.log("bouton like du média 1 a été cliqué");
     });
-  }
 
-  addOneLike() {
-    let media = this.medias;
-    if (media == this.photographer) {
-      console.log(media);
-    }
+    //recupe les div likes
+    const likes = document.querySelectorAll(".likes");
 
-    let compteur = 3;
-    let sum = compteur++;
+    likes.forEach((el) => {
+      el.addEventListener("click", (e) => {
+        console.log(likes);
+        //recup le span nombre
+        let number = el.firstElementChild.innerHTML;
+        console.log(number);
+        number = parseInt(el.firstElementChild.innerHTML);
+        //remplace le html existant par celui incrementé
+        let ajout = number + 1;
+        let test = (el.firstElementChild.innerHTML = ajout);
+        console.log(test);
+      });
+    });
   }
 }
 

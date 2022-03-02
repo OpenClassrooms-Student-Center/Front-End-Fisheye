@@ -10,7 +10,7 @@ class MediaBuilderFactory {
          <img src="./assets/photos/${media.image}" class="active"></img>
          <div class="photo-details">
               <h3>${media.title} </h3>
-              <div class="likes"><span class="likes__nbr">${media.likes} </span><i class="fas fa-heart"></i></div>
+              <div class="likes"><span class="likes__nbr">${media.likes}</span>&nbsp<input type="checkbox" id="heart"/><label for="heart" class="fas fa-heart" ></label></div>
           </div
      </a>`;
   
@@ -23,7 +23,7 @@ class MediaBuilderFactory {
          <video controls src="./assets/photos/${media.video}" class="active"></video>
          <div class="photo-details">
               <h3>${media.title} </h3>
-              <div class="likes"><span class="likes__nbr">${media.likes} </span><i class="fas fa-heart"></i></div>
+              <div class="likes"><span class="likes__nbr">${media.likes}</span>&nbsp<input type="checkbox" id="heart"/><label for="heart" class="fas fa-heart" ></label></div>
           </div
      </a>`;
      const article = document.createElement("article");
