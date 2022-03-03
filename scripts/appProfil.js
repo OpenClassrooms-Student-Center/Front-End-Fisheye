@@ -20,7 +20,7 @@ new ApiProvider()
     generateLightbox();
   })
   .catch(function (e) {
-      console.log("zut ça ne marche pas");
+    console.log("zut ça ne marche pas");
   });
 
 ///////////////////////////////////////////////
@@ -114,31 +114,23 @@ class ProfilPage {
   }
 
   generateLike() {
-    ///////////////////////////////
-    //get DOM Elements
-    const firstLike = document.querySelector(".likes");
-    firstLike.addEventListener("click", () => {
-      console.log("bouton like du média 1 a été cliqué");
-    });
-
-    //recupe les div likes
     const likes = document.querySelectorAll(".likes");
 
     likes.forEach((el) => {
       el.addEventListener("click", (e) => {
-        console.log(likes);
         //recup le span nombre
-        let number = el.firstElementChild.innerHTML;
-        console.log(number);
-        number = parseInt(el.firstElementChild.innerHTML);
+        const numero = el.querySelector(".likes__nbr");
+
+        //recup le html existant
+        let text = parseInt(numero.innerHTML);
+       
+        //remplace le html par un nombre et ajoute 1
+        let ajout = text + 1;
         //remplace le html existant par celui incrementé
-        let ajout = number + 1;
-        let test = (el.firstElementChild.innerHTML = ajout);
-        console.log(test);
+        numero.innerHTML = ajout;
       });
     });
   }
 }
 
 buildFilters();
-
