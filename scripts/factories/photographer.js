@@ -26,7 +26,6 @@ function photographerFactory(data) {
           </div>`;
     const article = document.createElement("article");
     article.innerHTML = htmlArticle;
-    console.log(data);
 
     return article;
   }

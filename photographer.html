@@ -1,60 +1,64 @@
 <!DOCTYPE html>
 <html>
-  <head>
+
+<head>
     <link href="css/style.css" rel="stylesheet" type="text/css" />
     <link href="css/photographer.css" rel="stylesheet" type="text/css" />
     <link href="css/lightbox.css" rel="stylesheet" type="text/css" />
     <meta charset="utf-8">
-    <script
-      src="https://kit.fontawesome.com/48c9fff134.js"
-      crossorigin="anonymous"
-    ></script>
+    <script src="https://kit.fontawesome.com/48c9fff134.js" crossorigin="anonymous"></script>
     <link rel="icon" type="image/png" href="./assets/images/logo_favicon.png">
     <link href="https://fonts.googleapis.com/css?family=DM+Sans&display=swap" rel="stylesheet">
     <title>Fisheye - photographe </title>
-  </head>
-  <body>
+</head>
+
+<body>
     <header>
         <a href="./index.html">
-      <img src="./assets/images/logo.png" class="logo" />
-    </a>
+            <img src="./assets/images/logo.png" class="logo" />
+        </a>
     </header>
     <main id="main">
-      <div class="photograph-header">
-        <button class="contact_button" >Contactez-moi</button>
-      </div>
-      <div class="gallerie"></div>
+        <div class="photograph-header">
+            <button class="contact_button">Contactez-moi</button>
+        </div>
+        <div class="gallerie"></div>
     </main>
     <div id="contact_modal">
-			<div class="modal">
-				<header>
-          <h2>Contactez-moi</h2>
-          <img src="./assets/icons/close.svg" />
-        </header>
-				<form>
-					<div>
-						<label for="firstName">Prénom</label>
-						<input id="firstName" />
-					</div>
+        <div class="modal">
+            <header>
+                <h2>Contactez-moi</h2>
+                <img src="./assets/icons/close.svg" />
+            </header>
+            <form>
+                <div class="template-modal">
                     <div>
-						<label for="lastName">Nom</label>
-						<input id="lastName"/>
-					</div>
+                        <label for="firstName">Prénom</label>
+                        <input id="firstName" />
+                    </div>
                     <div>
-						<label for="email">Email</label>
-						<input id="email" />
-					</div>
+                        <label for="lastName">Nom</label>
+                        <input id="lastName" />
+                    </div>
                     <div>
-						<label for="msg">Votre message</label>
-						<input id="msg"/>
-					</div>
-          <button class="contact_button">Envoyer</button>
-				</form>
-			</div>
-		</div>
+                        <label for="email">Email</label>
+                        <input id="email" />
+                    </div>
+                    <div>
+                        <label for="msg">Votre message</label>
+                        <input id="msg" />
+                    </div>
+                    <input type="submit" id="submit_button"></button>
+                </div>
+                <div class="success-modal">Message envoyé avec succés</div>
+            </form>
 
-    
+        </div>
+    </div>
+
+
     <!-- <script src="./scripts/utils/contactForm.js"></script> -->
     <script type="module" src="./scripts/appProfil.js"></script>
-  </body>
+</body>
+
 </html>
