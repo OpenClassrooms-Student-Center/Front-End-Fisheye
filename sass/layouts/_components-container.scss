@@ -12,6 +12,8 @@
     }
 
     &__cards {
+        display: flex;
+        justify-content: space-between;
         padding: 2.5rem 0;
 
         > .card-components {

@@ -1,0 +1,17 @@
+.media-container {
+    width: 25%;
+
+    &__media {
+        width: 100%;
+    }
+
+    &__figcaption {
+        display: flex;
+        justify-content: space-between;
+
+        > p {
+            font-size: 1.1rem;
+            color: $primary-color;
+        }
+    }
+}
