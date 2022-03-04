@@ -8,6 +8,7 @@
     &__figcaption {
         display: flex;
         justify-content: space-between;
+        gap: 0.25rem;
 
         > p {
             font-size: 1.1rem;

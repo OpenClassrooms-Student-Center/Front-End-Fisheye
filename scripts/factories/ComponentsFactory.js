@@ -177,7 +177,7 @@ export class ComponentsFactory {
         return logo;
     };
 
-    getAvatarDOM = (userImage, userName) => {
+    getAvatarDOM = (userImage, userName, inCard) => {
         const avatar = document.createElement("div");
         avatar.classList.add("avatar");
 
@@ -188,29 +188,45 @@ export class ComponentsFactory {
 
         avatar.appendChild(image);
 
+        if (inCard) {
+            avatar.classList.add("avatar--card");
+        }
+
         return avatar;
     };
 
-    getUserNameDOM = (userName) => {
+    getUserNameDOM = (userName, inCard) => {
         const name = document.createElement("h2");
         name.classList.add("user-name");
         name.textContent = userName;
 
+        if (inCard) {
+            name.classList.add("user-name--card");
+        }
+
         return name;
     };
 
-    getUserLocationDOM = (userLocation) => {
+    getUserLocationDOM = (userLocation, inCard) => {
         const location = document.createElement("p");
         location.classList.add("user-location");
         location.textContent = userLocation;
 
+        if (inCard) {
+            location.classList.add("user-location--card");
+        }
+
         return location;
     };
 
-    getUserTaglineDOM = (userTagline) => {
+    getUserTaglineDOM = (userTagline, inCard) => {
         const tagline = document.createElement("p");
         tagline.classList.add("user-tagline");
         tagline.textContent = userTagline;
+
+        if (inCard) {
+            tagline.classList.add("user-tagline--card");
+        }
 
         return tagline;
     };
@@ -241,5 +257,27 @@ export class ComponentsFactory {
         mediaContainer.appendChild(figCaption);
 
         return mediaContainer;
+    };
+
+    getUserCardDOM = (userImage, userName, userLocation, userTagline, userPrice) => {
+        const userCard = document.createElement("article");
+        userCard.classList.add("user-card");
+
+        const avatar = this.getAvatarDOM(userImage, userName, true);
+        const name = this.getUserNameDOM(userName, true);
+        const location = this.getUserLocationDOM(userLocation, true);
+        const tagline = this.getUserTaglineDOM(userTagline, true);
+
+        const price = document.createElement("p");
+        price.classList.add("user-card__price");
+        price.textContent = `${userPrice}€/jour`;
+
+        userCard.appendChild(avatar);
+        userCard.appendChild(name);
+        userCard.appendChild(location);
+        userCard.appendChild(tagline);
+        userCard.appendChild(price);
+
+        return userCard;
     };
 }

@@ -1,4 +1,9 @@
 .user-tagline {
     color: $tertiary-color;
     font-size: 0.9rem;
+
+    &--card {
+        color: black;
+        font-size: 0.74rem;
+    }
 }

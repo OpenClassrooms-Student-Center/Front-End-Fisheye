@@ -44,19 +44,19 @@ function displayComponents() {
     const cardComponentsContainer = document.querySelector(".card-components");
 
     /* Create the avatar component and add it to its container */
-    const avatar = componentsFactory.getAvatarDOM("../../assets/photographers/MarcelNikolic.jpg", "Marcel Nikolic");
+    const avatar = componentsFactory.getAvatarDOM("../../assets/photographers/MarcelNikolic.jpg", "Marcel Nikolic", false);
     cardComponentsContainer.appendChild(avatar);
 
     /* Create the user name component and add it to its container */
-    const userName = componentsFactory.getUserNameDOM("Marcel Nikolic");
+    const userName = componentsFactory.getUserNameDOM("Marcel Nikolic", false);
     cardComponentsContainer.appendChild(userName);
 
     /* Create the user location component and add it to its container */
-    const userLocation = componentsFactory.getUserLocationDOM("Berlin, Germany");
+    const userLocation = componentsFactory.getUserLocationDOM("Berlin, Germany", false);
     cardComponentsContainer.appendChild(userLocation);
 
     /* Create the user tagline component and add it to its container */
-    const userTagline = componentsFactory.getUserTaglineDOM("Toujours à la recherche de LA photo");
+    const userTagline = componentsFactory.getUserTaglineDOM("Toujours à la recherche de LA photo", false);
     cardComponentsContainer.appendChild(userTagline);
 
     /* Get the cards container */
@@ -68,6 +68,16 @@ function displayComponents() {
     /* Create the media component and add it to its container */
     const media = componentsFactory.getMediaDOM("../../assets/images/Marcel/Architecture_Corner_Room.jpg", "Corner Building and Blue Sky", 12, true);
     cardsContainer.appendChild(media);
+
+    /* Create the user card component and add it to its container */
+    const userCard = componentsFactory.getUserCardDOM(
+        "../../assets/photographers/MarcelNikolic.jpg",
+        "Marcel Nikolic",
+        "Berlin, Germany",
+        "Toujours à la recherche de LA photo",
+        300
+    );
+    cardsContainer.appendChild(userCard);
 }
 
 function init() {

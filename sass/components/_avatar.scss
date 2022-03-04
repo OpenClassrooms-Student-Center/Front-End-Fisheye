@@ -1,8 +1,13 @@
 .avatar {
-    width: 5rem;
-    height: 5rem;
+    width: 7.5rem;
+    height: 7.5rem;
     display: flex;
     justify-content: center;
     border-radius: 50%;
     overflow: hidden;
+
+    &--card {
+        width: 12.5rem;
+        height: 12.5rem;
+    }
 }
