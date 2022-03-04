@@ -78,6 +78,17 @@ function displayComponents() {
         300
     );
     cardsContainer.appendChild(userCard);
+
+    /* Create the photographer header component and add it to its container */
+    const photographerHeader = componentsFactory.getPhotographerHeaderDOM(
+        "../../assets/photographers/MarcelNikolic.jpg",
+        "Marcel Nikolic",
+        "Berlin, Germany",
+        "Toujours à la recherche de LA photo",
+        "Contactez-moi"
+    );
+
+    componentsContainer.appendChild(photographerHeader);
 }
 
 function init() {

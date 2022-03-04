@@ -280,4 +280,40 @@ export class ComponentsFactory {
 
         return userCard;
     };
+
+    getPhotographerHeaderDOM = (userImage, userName, userLocation, userTagline, btnText) => {
+        const header = document.createElement("div");
+        header.classList.add("photographer-header");
+
+        const infos = document.createElement("div");
+        infos.classList.add("photographer-header__infos");
+
+        const name = this.getUserNameDOM(userName, false);
+        const location = this.getUserLocationDOM(userLocation, false);
+        const tagline = this.getUserTaglineDOM(userTagline, false);
+
+        infos.appendChild(name);
+        infos.appendChild(location);
+        infos.appendChild(tagline);
+
+        const btnContainer = document.createElement("div");
+        btnContainer.classList.add("photographer-header__btn-container");
+
+        const button = this.getMainBtnDOM(btnText);
+
+        btnContainer.appendChild(button);
+
+        const avatarContainer = document.createElement("div");
+        avatarContainer.classList.add("photographer-header__avatar-container");
+
+        const avatar = this.getAvatarDOM(userImage, userName, true);
+
+        avatarContainer.appendChild(avatar);
+
+        header.appendChild(infos);
+        header.appendChild(btnContainer);
+        header.appendChild(avatarContainer);
+
+        return header;
+    };
 }
