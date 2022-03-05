@@ -24,5 +24,4 @@ new ApiProvider()
     console.log("zut ça ne marche pas");
   });
 
-
 buildFilters();
