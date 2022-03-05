@@ -93,10 +93,7 @@ class Lightbox {
       pix[etape].classList.add("lightboxImg");
     });
 
-    //   //aller au suivant
-    //   //retirer la class lighboxImg
-
-    //   let etape = 0;
+    ////retirer la class lighboxImg
     function enleverImg() {
       medias.forEach((image, i) => {
         let currentImg = document.querySelector(".lightboxImg");
