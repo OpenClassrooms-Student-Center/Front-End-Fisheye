@@ -5,9 +5,21 @@
     align-items: center;
     flex-direction: column;
     gap: 0.25rem;
+    cursor: pointer;
 
     &__price {
         color: $tertiary-color;
         font-size: 0.75rem;
+    }
+
+    &__avatar {
+        transform-origin: bottom;
+        transition: transform 150ms ease-in;
+    }
+
+    &:hover {
+        > .avatar {
+            transform: scale(1.1);
+        }
     }
 }

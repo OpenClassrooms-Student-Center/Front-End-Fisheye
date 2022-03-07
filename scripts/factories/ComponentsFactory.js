@@ -174,6 +174,10 @@ export class ComponentsFactory {
 
         logo.appendChild(image);
 
+        logo.addEventListener("click", () => {
+            window.location.href = "./index.html";
+        });
+
         return logo;
     };
 
@@ -268,12 +272,13 @@ export class ComponentsFactory {
     };
 
     getUserCardDOM = (data) => {
-        const { portrait, name, city, country, tagline, price } = data;
+        const { portrait, name, city, country, tagline, price, id } = data;
 
         const userCard = document.createElement("article");
         userCard.classList.add("user-card");
 
         const avatar = this.getAvatarDOM({ portrait, name }, true);
+        avatar.classList.add("user-card__avatar");
         const userName = this.getUserNameDOM({ name }, true);
         const location = this.getUserLocationDOM({ city, country }, true);
         const userTagline = this.getUserTaglineDOM({ tagline }, true);
@@ -287,6 +292,10 @@ export class ComponentsFactory {
         userCard.appendChild(location);
         userCard.appendChild(userTagline);
         userCard.appendChild(userPrice);
+
+        userCard.addEventListener("click", () => {
+            window.location.href = `./photographer.html?id=${id}`;
+        });
 
         return userCard;
     };
