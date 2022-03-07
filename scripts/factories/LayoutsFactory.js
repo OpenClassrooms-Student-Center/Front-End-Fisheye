@@ -27,4 +27,34 @@ export class LayoutsFactory {
 
         return componentsContainer;
     };
+
+    /* Return the index header layout */
+    getIndexHeaderDOM = (logo) => {
+        const header = document.createElement("header");
+        header.classList.add("header");
+
+        logo.classList.add("header__logo");
+
+        const title = document.createElement("h1");
+        title.classList.add("header__title");
+        title.textContent = "Nos photographes";
+
+        header.appendChild(logo);
+        header.appendChild(title);
+
+        return header;
+    };
+
+    /* Return the index main layout */
+    getIndexMainDOM = (photographers, componentsFactory) => {
+        const main = document.createElement("main");
+        main.classList.add("photographer-section");
+
+        photographers.forEach((photographer) => {
+            const userCard = componentsFactory.getUserCardDOM(photographer);
+            main.appendChild(userCard);
+        });
+
+        return main;
+    };
 }

@@ -1,3 +1,6 @@
+import { LayoutsFactory } from "../factories/layoutsFactory.js";
+import { ComponentsFactory } from "../factories/ComponentsFactory.js";
+
 async function getPhotographers() {
     // Penser à remplacer par les données récupérées dans le json
     const res = await (await fetch("../../data/photographers.json")).json();
@@ -5,24 +8,21 @@ async function getPhotographers() {
     const photographers = res.photographers;
 
     photographers.forEach((photographer) => {
-        photographer.medias = res.media.filter(
-            (media) => media.photographerId === photographer.id
-        );
+        photographer.medias = res.media.filter((media) => media.photographerId === photographer.id);
     });
 
     return photographers;
 }
 
 async function displayData(photographers) {
-    const photographersSection = document.querySelector(
-        ".photographer_section"
-    );
+    const layoutsFactory = new LayoutsFactory();
+    const componentsFactory = new ComponentsFactory();
 
-    photographers.forEach((photographer) => {
-        const photographerModel = photographerFactory(photographer);
-        const userCardDOM = photographerModel.getUserCardDOM();
-        photographersSection.appendChild(userCardDOM);
-    });
+    const header = layoutsFactory.getIndexHeaderDOM(componentsFactory.getLogoDOM());
+    const main = layoutsFactory.getIndexMainDOM(photographers, componentsFactory);
+
+    document.querySelector("body").prepend(main);
+    document.querySelector("body").prepend(header);
 }
 
 async function init() {

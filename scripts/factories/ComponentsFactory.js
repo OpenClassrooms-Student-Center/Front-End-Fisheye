@@ -177,58 +177,66 @@ export class ComponentsFactory {
         return logo;
     };
 
-    getAvatarDOM = (userImage, userName, inCard) => {
+    getAvatarDOM = (data, isInCard) => {
+        const { portrait, name } = data;
+
         const avatar = document.createElement("div");
         avatar.classList.add("avatar");
 
         const image = document.createElement("img");
         image.classList.add("avatar__img");
-        image.setAttribute("alt", `Avatar de ${userName}`);
-        image.setAttribute("src", userImage);
+        image.setAttribute("alt", `Avatar de ${name}`);
+        image.setAttribute("src", `../../assets/photographers/${portrait}`);
 
         avatar.appendChild(image);
 
-        if (inCard) {
+        if (isInCard) {
             avatar.classList.add("avatar--card");
         }
 
         return avatar;
     };
 
-    getUserNameDOM = (userName, inCard) => {
-        const name = document.createElement("h2");
-        name.classList.add("user-name");
-        name.textContent = userName;
+    getUserNameDOM = (data, isInCard) => {
+        const { name } = data;
 
-        if (inCard) {
-            name.classList.add("user-name--card");
+        const userName = document.createElement("h2");
+        userName.classList.add("user-name");
+        userName.textContent = name;
+
+        if (isInCard) {
+            userName.classList.add("user-name--card");
         }
 
-        return name;
+        return userName;
     };
 
-    getUserLocationDOM = (userLocation, inCard) => {
+    getUserLocationDOM = (data, isInCard) => {
+        const { city, country } = data;
+
         const location = document.createElement("p");
         location.classList.add("user-location");
-        location.textContent = userLocation;
+        location.textContent = `${city}, ${country}`;
 
-        if (inCard) {
+        if (isInCard) {
             location.classList.add("user-location--card");
         }
 
         return location;
     };
 
-    getUserTaglineDOM = (userTagline, inCard) => {
-        const tagline = document.createElement("p");
-        tagline.classList.add("user-tagline");
-        tagline.textContent = userTagline;
+    getUserTaglineDOM = (data, isInCard) => {
+        const { tagline } = data;
 
-        if (inCard) {
-            tagline.classList.add("user-tagline--card");
+        const userTagline = document.createElement("p");
+        userTagline.classList.add("user-tagline");
+        userTagline.textContent = tagline;
+
+        if (isInCard) {
+            userTagline.classList.add("user-tagline--card");
         }
 
-        return tagline;
+        return userTagline;
     };
 
     getMediaDOM = (mediaPath, mediaTitle, likes, isLiked) => {
@@ -259,24 +267,26 @@ export class ComponentsFactory {
         return mediaContainer;
     };
 
-    getUserCardDOM = (userImage, userName, userLocation, userTagline, userPrice) => {
+    getUserCardDOM = (data) => {
+        const { portrait, name, city, country, tagline, price } = data;
+
         const userCard = document.createElement("article");
         userCard.classList.add("user-card");
 
-        const avatar = this.getAvatarDOM(userImage, userName, true);
-        const name = this.getUserNameDOM(userName, true);
-        const location = this.getUserLocationDOM(userLocation, true);
-        const tagline = this.getUserTaglineDOM(userTagline, true);
+        const avatar = this.getAvatarDOM({ portrait, name }, true);
+        const userName = this.getUserNameDOM({ name }, true);
+        const location = this.getUserLocationDOM({ city, country }, true);
+        const userTagline = this.getUserTaglineDOM({ tagline }, true);
 
-        const price = document.createElement("p");
-        price.classList.add("user-card__price");
-        price.textContent = `${userPrice}€/jour`;
+        const userPrice = document.createElement("p");
+        userPrice.classList.add("user-card__price");
+        userPrice.textContent = `${price}€/jour`;
 
         userCard.appendChild(avatar);
-        userCard.appendChild(name);
+        userCard.appendChild(userName);
         userCard.appendChild(location);
-        userCard.appendChild(tagline);
-        userCard.appendChild(price);
+        userCard.appendChild(userTagline);
+        userCard.appendChild(userPrice);
 
         return userCard;
     };
