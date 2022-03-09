@@ -1,105 +1,104 @@
 class Lightbox {
-  constructor(response) {
-    this.medias = response.media;
+  constructor(medias) {
+    this.medias = medias;
   }
   generateLightbox() {
     this.lightboxBuilder();
+    this.addEventListener();
   }
 
   lightboxBuilder() {
-    console.log(this.medias);
-
     //DOM elements
-    const medias = document.querySelectorAll(".gallerie img, a video");
-    const images = document.querySelectorAll(".gallerie img");
-    const lightbox = document.createElement("div");
+    const mediasGallery = document.querySelectorAll(".pictures img, a video");
+    // on recupere le template de la ligthbox
+    const template = document.getElementById("lightbox_template");
+    const lightbox = document.getElementById("lightbox");
 
-    // let title = medias
+    // On clone le template
+    const clone = document.importNode(template.content, true);
+    // on met les elements du template dans la lightbox
+    lightbox.appendChild(clone);
 
-    // if (this.medias.title == medias.title)
+    //on creer les cards medias de la ligthbox
+    this.medias.forEach((media) => {
+      // const buildLightboxMedia = lightbox.createElement("div");
+      const containerLightbox = lightbox.querySelector(".container");
+      const mediaCard = document.createElement("div");
 
-    lightbox.id = "lightbox";
-    lightbox.innerHTML = `
-    <button class="lightbox__prev">
-        <i class="fas fa-chevron-left"></i>
-        </button>
-    <div class="container"></div>
-    <button class="lightbox__next">
-            <i class="fas fa-chevron-right"></i>
-        </button>
-        <button class="lightbox__close">
-        <i class="fa-solid fa-xmark"></i>
-        </button>`;
-    document.body.appendChild(lightbox);
-
-    //ajoute une classe "active" qui rend la lightbox visible au clic
-    medias.forEach((media) => {
-      let a = media.toString();
-      const buildLightboxMedia = document.createElement("div");
-      const containerLightbox = document.querySelector(".container");
-
-      if (a.includes("Video")) {
-        containerLightbox.appendChild(buildLightboxMedia);
-        buildLightboxMedia.classList.add("mediaCard");
-        buildLightboxMedia.innerHTML = `<video controls src="${media.src}"></video>
-                                    <h2> ahah </h2>`;
-      } else {
-        //cree les img dans la lightbox
-        containerLightbox.appendChild(buildLightboxMedia);
-        buildLightboxMedia.classList.add("mediaCard");
-        buildLightboxMedia.innerHTML = `<img src="${media.src}"/>
-                                    <h2>${this.media}</h2>`;
-      }
-
-      media.addEventListener("click", (e) => {
-        //affiche la lightbox
-        lightbox.classList.add("active");
-        buildLightboxMedia.classList.add("lightboxImg");
-      });
+      if (media.video) {
+        mediaCard.innerHTML = `<video controls src="./assets/photos/${media.video}"></video>
+                                        <h2>${media.title} </h2>`;
+        containerLightbox.appendChild(mediaCard);
+      } else
+        mediaCard.innerHTML = `<img src="./assets/photos/${media.image}"/>
+        <h2>${media.title}</h2>`;
+      containerLightbox.appendChild(mediaCard);
+      mediaCard.classList.add("lightboxMedias");
     });
-    const pix = document.querySelectorAll(".container div");
+  }
 
-    //ferme la lightbox et retire la classe "acitve" quand on clic sur la croix
-    const closeBtn = document.querySelector(".lightbox__close");
-    closeBtn.addEventListener("click", (e) => {
-      let mediaActive = document.querySelector(".lightboxImg");
-      lightbox.classList.remove("active");
-      mediaActive.classList.remove("lightboxImg");
-    });
-
-    //suivant
-    const nextBtn = document.querySelector(".lightbox__next");
-    const prevBtn = document.querySelector(".lightbox__prev");
-    //const pix = document.querySelectorAll("#lightbox img");
+  addEventListener() {
+    const gallery = document.querySelector("body");
+    const lightbox = document.getElementById("lightbox");
+    const lightboxMedias = document.querySelectorAll(".lightboxMedias");
     let etape = 0;
 
-    nextBtn.addEventListener("click", () => {
-      etape++;
+    gallery.addEventListener("click", function (event) {
+      let classes = event.target.className;
+      let isActiv = classes.includes("gallery-media");
 
-      if (etape >= pix.length) {
+      //ouvrir la lightbox
+      if (isActiv) {
+        lightbox.classList.add("active");
+      }
+
+      // fermer la lightbox
+      isActiv = classes.includes("lightbox__close");
+      if (isActiv) {
+        let activImg = document.querySelector(".lightboxImg");
+        lightbox.classList.remove("active");
+        activImg.classList.remove("lightboxImg");
         etape = 0;
       }
 
-      enleverImg();
-      pix[etape].classList.add("lightboxImg");
-    });
+      // afficher le media dans la lightbox
+      lightboxMedias.forEach((media) => {
+        let img = media.querySelector("img, video");
 
-    prevBtn.addEventListener("click", () => {
-      etape--;
-      if (etape < 0) {
-        etape = pix.length - 1;
-      }
-      enleverImg();
-      pix[etape].classList.add("lightboxImg");
-    });
-
-    ////retirer la class lighboxImg
-    function enleverImg() {
-      medias.forEach((image, i) => {
-        let currentImg = document.querySelector(".lightboxImg");
-        pix[i].classList.remove("lightboxImg");
+        if (img.src == event.target.src) {
+          media.classList.add("lightboxImg");
+        }
       });
-    }
+
+      // bouton suivant
+      isActiv = classes.includes("lightbox__next");
+      const mediasArray = Array.from(lightboxMedias);
+
+      let activMedia = document.querySelector(".lightboxImg");
+      let index = mediasArray.indexOf(activMedia);
+
+      if (isActiv) {
+        let activMedia = document.querySelector(".lightboxImg");
+        activMedia.classList.remove("lightboxImg");
+        index++;
+        if (index >= lightboxMedias.length) {
+          index = 0;
+        }
+        lightboxMedias[index].classList.add("lightboxImg");
+      }
+
+      isActiv = classes.includes("lightbox__prev");
+      if (isActiv) {
+        let activMedia = document.querySelector(".lightboxImg");
+
+        index--;
+        if (index < 0) {
+          index = lightboxMedias.length - 1;
+        }
+        activMedia.classList.remove("lightboxImg");
+        lightboxMedias[index].classList.add("lightboxImg");
+      }
+    });
   }
 }
 

@@ -9,15 +9,13 @@ import { submitForm} from "./utils/contactForm.js";
 //va chercher les données du json dans la class ApiProvider
 new ApiProvider()
   .getPhotographers()
-
   .then(function (apiResult) {
     return apiResult.json();
   })
   .then(function (response) {
-    let page = new ProfilPage(response);
-    page.generateAll();
-    let lightbox = new Lightbox(response) ;
-    lightbox.generateLightbox();
+      let profilPage = new ProfilPage(response);
+      profilPage.generateAll();
+    (new Lightbox(profilPage.mediaFotographers)).generateLightbox();
     submitForm()
   })
   .catch(function (e) {

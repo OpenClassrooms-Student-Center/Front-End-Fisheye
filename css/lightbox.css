@@ -49,34 +49,37 @@ button {
     margin-top: 0;
     color: #911C1C;
 }
-.lightboxImg {
-    display: flex;
-    opacity: 1;
-    justify-content:center ;
-}
+
 .container {
     display: flex;
     height: 95%;
     padding: 1rem;
 }
 
-#lightbox img {
-   width: 1050px;
-    height: 900px;
-    object-fit: cover;
+.lightboxMedias {
+    display: none;
     overflow: hidden;
     padding: 2rem;
+    flex-direction: column;
     transition: opacity .5s;
 }
+.lightboxMedias img {
+    max-width: 1050px;
+    height: 800px;
+    object-fit: cover;
 
+}
+.lightboxImg {
+    display: flex;
+    opacity: 1;
+    justify-content:center ;
+}
 #lightbox video {  
     object-fit: cover;
     max-width: 1050px;
     max-height: 800px;
 }
-#lightbox video.lightboxImg {
-    opacity: 1;
-}
+
 
 .lightbox__close {
     width: 42px;

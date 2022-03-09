@@ -7,7 +7,7 @@ class MediaBuilderFactory {
       if (media.image) {
         
         const htmlInbox = `<a>
-         <img id=${media.id} src="./assets/photos/${media.image}" class="active"></img>
+         <img id=${media.id} src="./assets/photos/${media.image}" class="gallery-media"></img>
          <div class="photo-details">
               <h3>${media.title} </h3>
               <div class="likes"><span class="likes__nbr">${media.likes}</span>&nbsp<span class="fas fa-heart" ></span></div>
@@ -17,10 +17,10 @@ class MediaBuilderFactory {
         const article = document.createElement("article");
         article.innerHTML = htmlInbox;
         sectionGallery.appendChild(article);
-      }
+        article.classList.add('article-media');    }
       if (media.video) {
         const htmlInbox = `<a>
-         <video id=${media.id} controls src="./assets/photos/${media.video}" class="active"></video>
+         <video id=${media.id} controls src="./assets/photos/${media.video}" class="gallery-media"></video>
          <div class="photo-details">
               <h3>${media.title} </h3>
               <div class="likes"><span class="likes__nbr">${media.likes}</span>&nbsp<span class="fas fa-heart" ></span></div>
@@ -29,6 +29,7 @@ class MediaBuilderFactory {
      const article = document.createElement("article");
         article.innerHTML = htmlInbox;
         sectionGallery.appendChild(article);
+        article.classList.add('article-media'); 
       }
     }
   }
