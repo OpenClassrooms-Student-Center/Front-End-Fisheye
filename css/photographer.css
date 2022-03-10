@@ -140,6 +140,9 @@ h3 {
     font-size: 24px;
     color:   #901C1C;
 }
+.liked {
+    color: #eb7777;
+}
 
 .pictures input {
     opacity: 0;
@@ -225,4 +228,3 @@ h3 {
     background-color: #DB8876;
     border-radius: 5px;
 }
-

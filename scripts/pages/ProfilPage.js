@@ -97,6 +97,7 @@ class ProfilPage {
       el.addEventListener("click", (e) => {
         //recup le span nombre
         const numero = el.querySelector(".likes__nbr");
+        const coeur = el.querySelector(".fa-heart");
 
         //recup le html existant
         let text = parseInt(numero.innerHTML);
@@ -104,7 +105,19 @@ class ProfilPage {
         //remplace le html par un nombre et ajoute 1
         let ajout = text + 1;
         //remplace le html existant par celui incrementé
+
+        console.log(numero.classList.contains("liked"));
+        //ajoute une classe
+        if (coeur.classList.contains("liked")) {
+          coeur.classList.remove("liked");
+          console.log("j'ai la classe");
+          numero.innerHTML = ajout - 2;
+          return;
+        }
         numero.innerHTML = ajout;
+        coeur.classList.add("liked");
+
+        localStorage.setItem("gcliké", "oui");
       });
     });
   }
