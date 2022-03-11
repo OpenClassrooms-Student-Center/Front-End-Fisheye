@@ -7,6 +7,7 @@ function Photographer() {
   const { data } = location.state;
   const { name, id, city, country, tagline, portrait, price } = data;
   const [mediaList, setMediaList] = useState([]);
+  const [likesPerMedium, setLikesPerMedium] = useState({});
   const [totalLikes, setTotalLikes] = useState(0);
 
   useEffect(() => {
@@ -23,6 +24,11 @@ function Photographer() {
     function likesCounter() {
       let counter = 0;
       getMedia().forEach((medium) => {
+        // On crée un nouvel objet qui va nous permettre d'incrémenter le nombre de likes
+        const likesObj = {};
+        likesObj[medium.title] = medium.likes;
+        setLikesPerMedium((likesPerMedium) => ({ ...likesPerMedium, ...likesObj }));
+        // On additionne tous les likes des medias du photographe
         counter += medium.likes;
       });
       setTotalLikes(counter);
@@ -39,6 +45,19 @@ function Photographer() {
   function closeModal() {
     const modal = document.getElementById("contact_modal");
     modal.style.display = "none";
+  }
+
+  // Incrémentation des likes au clic sur un coeur
+  function handleLike(title) {
+    setTotalLikes(totalLikes + 1);
+    const update = {};
+    update[title] = likesPerMedium[title]++;
+    setLikesPerMedium((likesPerMedium) => ({ ...likesPerMedium, update }));
+  }
+
+  function handleContactSubmit(e) {
+    e.preventDefault();
+    console.log(`Nom/Prénom : ${e.target[0].value} ${e.target[1].value}\nEmail : ${e.target[2].value}\nMessage : ${e.target[3].value}`);
   }
 
   return (
@@ -73,10 +92,12 @@ function Photographer() {
             </select>
           </div>
           <div className="photos-container">
+            {/* Map sur tous les media du photographe */}
             {mediaList.map((medium, i) => {
               let photogFirstName = name.split(" ");
               photogFirstName = photogFirstName[0];
 
+              // Tag en fonction du type de medium
               let contentType = medium.image ? (
                 <img
                   className="min-w-full min-h-full object-cover rounded-[5px]"
@@ -84,19 +105,17 @@ function Photographer() {
                   alt={`${name} - ${medium.title}`}
                 ></img>
               ) : (
-                <video
-                  className="min-w-full min-h-full object-cover rounded-[5px]"
-                  controls
-                  src={`assets/photographers/${photogFirstName}/${medium.video}`}
-                ></video>
+                <video className="min-w-full min-h-full object-cover rounded-[5px]" src={`assets/photographers/${photogFirstName}/${medium.video}`}></video>
               );
 
               return (
-                <div className="flex flex-col w-[350px] h-[300px]">
+                <div key={i} className="flex flex-col w-[350px] h-[300px]">
                   {contentType}
                   <div className="flex w-full justify-between pt-2">
                     <h5 className="max-w-[80%] flex-wrap">{medium.title}</h5>
-                    <h5>{medium.likes} &#9829;</h5>
+                    <h5 className="cursor-pointer" onClick={() => handleLike(medium.title)}>
+                      {likesPerMedium[medium.title]} &#9829;
+                    </h5>
                   </div>
                 </div>
               );
@@ -124,7 +143,7 @@ function Photographer() {
             </div>
             <img src="assets/icons/close.svg" alt="" onClick={() => closeModal()} />
           </header>
-          <form>
+          <form onSubmit={(e) => handleContactSubmit(e)}>
             <div>
               <label>Prénom</label>
               <input />
