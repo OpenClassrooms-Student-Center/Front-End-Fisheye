@@ -20,7 +20,7 @@ class MediaBuilderFactory {
         article.classList.add('article-media');    }
       if (media.video) {
         const htmlInbox = `<a>
-         <video id=${media.id} controls src="./assets/photos/${media.video}" class="gallery-media"></video>
+         <video id=${media.id} controls preload="metadata" src="./assets/photos/${media.video}#t=1" type="video/mp4"  class="gallery-media"></video>
          <div class="photo-details">
               <h3>${media.title} </h3>
               <div class="likes"><span class="likes__nbr">${media.likes}</span>&nbsp<span class="fas fa-heart" ></span></div>

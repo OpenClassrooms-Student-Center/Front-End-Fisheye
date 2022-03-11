@@ -24,13 +24,48 @@ class ProfilPage {
 
     this.likes = 0;
   }
+
   // initiale tout
   generateAll() {
-    console.dir(this);
     this.generateProfilDetail();
     this.generateCarrousel();
     this.generateFooter();
     this.generateLike();
+    this.trions();
+  }
+  trions() {
+    //je ne suis pas encore trié
+    const gallery = document.querySelector(".gallerie");
+    let array = Array.from(this.mediaFotographers);
+    //je ne suis pas encore trié
+    gallery.addEventListener("click", function (event) {
+      let elt = event.target.value;
+      if (elt === "popularity") {
+        console.log("popularité");
+        array.sort(function compare(a, b) {
+          if (a.likes < b.likes) {
+            return -1;
+          } else if (a.likes == b.likes) {
+            return 0;
+          } else {
+            return 1;
+          }
+        });
+      }
+      if (elt === "title") {
+        console.log("titre");
+        array.sort(function compare(a, b) {
+          if (a.title < b.title) {
+            return -1;
+          } else if (a.title == b.title) {
+            return 0;
+          } else {
+            return 1;
+          }
+        });
+      }
+      //transforme le en tableau
+    });
   }
 
   //////////////////////////////////////////////////
@@ -91,31 +126,37 @@ class ProfilPage {
 
   generateLike() {
     const likes = document.querySelectorAll(".likes");
-    console.log(likes);
 
     likes.forEach((el) => {
       el.addEventListener("click", (e) => {
         //recup le span nombre
         const numero = el.querySelector(".likes__nbr");
         const coeur = el.querySelector(".fa-heart");
+        let footer = document.querySelector(".numbersOfLikes");
+        let newLikes = parseInt(footer.innerHTML);
 
         //recup le html existant
         let text = parseInt(numero.innerHTML);
 
         //remplace le html par un nombre et ajoute 1
         let ajout = text + 1;
-        //remplace le html existant par celui incrementé
 
-        console.log(numero.classList.contains("liked"));
         //ajoute une classe
         if (coeur.classList.contains("liked")) {
           coeur.classList.remove("liked");
-          console.log("j'ai la classe");
           numero.innerHTML = ajout - 2;
+          newLikes = newLikes - 1;
+          footer.innerHTML = newLikes;
           return;
         }
         numero.innerHTML = ajout;
         coeur.classList.add("liked");
+
+        newLikes = newLikes + 1;
+
+        console.log(parseInt(footer.innerHTML));
+        console.log(newLikes);
+        footer.innerHTML = newLikes;
 
         localStorage.setItem("gcliké", "oui");
       });

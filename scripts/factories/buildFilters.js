@@ -4,9 +4,9 @@ function buildFilters() {
   const htmlFilters = `
     <label for="filters"> Trier par </label>
     <select name = "photofilter" id= "filters">
-        <option value="popularity">Popularité</option>
-        <option value="date">Date</option>
-        <option value="date">Titre</option>
+        <option class="popularity" value="popularity">Popularité</option>
+        <option class="date" value="date">Date</option>
+        <option class="title" value="title">Titre</option>
     </select>`;
 
   const filters = document.createElement("div");
