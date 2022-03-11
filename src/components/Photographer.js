@@ -16,7 +16,8 @@ function Photographer() {
       const raw = require("../data/photographers.json");
       const allPhotos = raw.media;
       let selectedMedia = allPhotos.filter((medium) => medium.photographerId === id);
-      return selectedMedia;
+      // On retourne les médias du photographe triés par popularité décroissante
+      return selectedMedia.sort(sorter("likes"));
     }
     setMediaList(getMedia());
 
@@ -55,6 +56,23 @@ function Photographer() {
     setLikesPerMedium((likesPerMedium) => ({ ...likesPerMedium, update }));
   }
 
+  // Fonction de tri de l'array selon un paramètre
+  function sorter(parameter) {
+    let sortOrder = parameter === "title" ? 1 : -1;
+
+    return function (a, b) {
+      let result = a[parameter] < b[parameter] ? -1 : a[parameter] > b[parameter] ? 1 : 0;
+      return result * sortOrder;
+    };
+  }
+  function handleFilters(e) {
+    e.preventDefault();
+    let parameter = e.target.value;
+    let mediaListSorted = mediaList.sort(sorter(parameter));
+    setMediaList([...mediaListSorted]);
+  }
+
+  // A l'envoi du formulaire de contact, les informations sont logguées dans la console
   function handleContactSubmit(e) {
     e.preventDefault();
     console.log(`Nom/Prénom : ${e.target[0].value} ${e.target[1].value}\nEmail : ${e.target[2].value}\nMessage : ${e.target[3].value}`);
@@ -85,10 +103,10 @@ function Photographer() {
         <section className="flex flex-col">
           <div className="ml-[100px] mt-5 mb-14 text-lg font-bold space-x-6">
             <span className="">Trier par</span>
-            <select name="filters" id="filter-select">
-              <option value="popularité">Popularité</option>
+            <select name="filters" id="filter-select" onChange={(e) => handleFilters(e)}>
+              <option value="likes">Popularité</option>
               <option value="date">Date</option>
-              <option value="titre">Titre</option>
+              <option value="title">Titre</option>
             </select>
           </div>
           <div className="photos-container">
