@@ -77,13 +77,23 @@ function Photographer() {
               let photogFirstName = name.split(" ");
               photogFirstName = photogFirstName[0];
 
+              let contentType = medium.image ? (
+                <img
+                  className="min-w-full min-h-full object-cover rounded-[5px]"
+                  src={`assets/photographers/${photogFirstName}/${medium.image}`}
+                  alt={`${name} - ${medium.title}`}
+                ></img>
+              ) : (
+                <video
+                  className="min-w-full min-h-full object-cover rounded-[5px]"
+                  controls
+                  src={`assets/photographers/${photogFirstName}/${medium.video}`}
+                ></video>
+              );
+
               return (
                 <div className="flex flex-col w-[350px] h-[300px]">
-                  <img
-                    className="min-w-full min-h-full object-cover rounded-[5px]"
-                    src={`assets/photographers/${photogFirstName}/${medium.image}`}
-                    alt={`${name} - ${medium.title}`}
-                  ></img>
+                  {contentType}
                   <div className="flex w-full justify-between pt-2">
                     <h5 className="max-w-[80%] flex-wrap">{medium.title}</h5>
                     <h5>{medium.likes} &#9829;</h5>
