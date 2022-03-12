@@ -102,12 +102,56 @@ class ProfilPage {
   // construit la gallerie de photos et videos
   generateCarrousel() {
     let builder = new MediaBuilderFactory();
+    let array = Array.from(this.mediaFotographers);
+    const gallery = document.querySelector(".gallerie");
 
-    this.mediaFotographers.forEach((media) => {
-      builder.build(media);
+    gallery.addEventListener("click", function (event) {
+      let elt = event.target.value;
+      console.log(elt);
+      if (elt === "popularity") {
+        console.log("popularité");
+        array.sort(function compare(a, b) {
+          if (a.likes < b.likes) {
+            return -1;
+          } else if (a.likes == b.likes) {
+            return 0;
+          } else {
+            return 1;
+          }
+        });
+        array.forEach((media) => {
+          builder.build(media);
 
-      this.likes += media.likes;
+          this.likes += media.likes;
+        });
+      }
+      if (elt === "title") {
+        console.log("titre");
+        array.sort(function compare(a, b) {
+          if (a.title < b.title) {
+            return -1;
+          } else if (a.title == b.title) {
+            return 0;
+          } else {
+            return 1;
+          }
+        });
+        array.forEach((media) => {
+          builder.build(media);
+
+          this.likes += media.likes;
+        });
+      }
+      //transforme le en tableau
     });
+    if (elt == undefined) {
+        console.log("different");
+      array.forEach((media) => {
+        builder.build(media);
+
+        this.likes += media.likes;
+      });
+    }
   }
 
   ////////////////////////////////////////////
