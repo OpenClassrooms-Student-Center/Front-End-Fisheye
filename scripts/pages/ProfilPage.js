@@ -154,8 +154,6 @@ class ProfilPage {
 
         newLikes = newLikes + 1;
 
-        console.log(parseInt(footer.innerHTML));
-        console.log(newLikes);
         footer.innerHTML = newLikes;
 
         localStorage.setItem("gcliké", "oui");
