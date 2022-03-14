@@ -1,50 +1,180 @@
-@import url("photographer.css");
-
 body {
-    font-family: "DM Sans", sans-serif;
-    margin: 0;
+  font-family: "DM Sans", sans-serif;
+  margin: 0;
 }
 
-
 header {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-    height: 90px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  height: 90px;
 }
 
 h1 {
-    color: #901C1C;
-    margin-right: 100px;
+  color: #901C1C;
+  margin-right: 100px;
 }
 
 .logo {
-    height: 50px;
-    margin-left: 100px;
+  height: 50px;
+  margin-left: 100px;
 }
 
 .photographer_section {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    gap: 70px;
-    margin-top: 100px;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 70px;
+  margin-top: 100px;
 }
-
 .photographer_section article {
-    justify-self: center;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
+  justify-self: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
 }
-
-.photographer_section article h2 {
-    color: #D3573C;
-    font-size: 36px;
+.photographer_section article a {
+  cursor: pointer;
+  text-decoration: none;
 }
-
 .photographer_section article img {
-    height: 200px;
-    width: 200px;
+  object-fit: cover;
+  border-radius: 100%;
+  height: 200px;
+  width: 200px;
+  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.25);
 }
+.photographer_section article h2 {
+  color: #D3573C;
+  font-weight: 400;
+  font-size: 36px;
+  margin: 20px 0 0 0;
+}
+.photographer_section article #localisation {
+  color: #901C1C;
+  font-size: 13px;
+  margin: 0 0 3px 0;
+}
+.photographer_section article #tagline {
+  font-size: 10px;
+  margin: 0 0 3px 0;
+}
+.photographer_section article #price {
+  font-size: 9px;
+  color: #757575;
+  margin: 3px 0 6px 0;
+}
+
+#main {
+  margin-top: 30px;
+}
+#main #photograph-header {
+  position: relative;
+  height: 300px;
+  margin: 0 100px;
+  margin-bottom: 30px;
+  background-color: #FAFAFA;
+  padding: 50px;
+}
+#main #photograph-header img {
+  position: absolute;
+  right: 4%;
+  top: auto;
+  object-fit: cover;
+  border-radius: 100%;
+  height: 200px;
+  width: 200px;
+  right: 4%;
+  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.25);
+}
+#main #photograph-header h2 {
+  color: #D3573C;
+  font-weight: 400;
+  font-size: 64px;
+  margin: 0;
+  max-width: 100%;
+}
+#main #photograph-header #localisation {
+  color: #901C1C;
+  font-size: 24px;
+  margin: 0 0 19px 0;
+}
+#main #photograph-header #tagline {
+  font-size: 18px;
+  margin: 0 0 15px 0;
+  color: #525252;
+}
+
+.contact_button {
+  font-size: 20px;
+  font-weight: bold;
+  color: white;
+  padding: 11px;
+  width: 170px;
+  height: 70px;
+  border: none;
+  background-color: #901C1C;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+#contact_modal {
+  display: none;
+}
+
+.modal {
+  border-radius: 5px;
+  background-color: #DB8876;
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  padding: 35px;
+  margin: auto;
+}
+
+.modal header {
+  justify-content: space-between;
+  width: 100%;
+}
+
+.modal header img {
+  cursor: pointer;
+}
+
+.modal header h2 {
+  font-size: 64px;
+  font-weight: normal;
+  text-align: center;
+}
+
+form {
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+form label {
+  color: #312E2E;
+  font-size: 36px;
+}
+
+form div {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  align-items: self-start;
+  margin-bottom: 26px;
+}
+
+form input {
+  width: 100%;
+  height: 68px;
+  border: none;
+  border-radius: 5px;
+}
+
+/*# sourceMappingURL=style.css.map */

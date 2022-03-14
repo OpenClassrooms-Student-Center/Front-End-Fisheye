@@ -1,0 +1,61 @@
+#main {
+    margin-top: 30px;
+
+    #photograph-header {
+        position: relative;
+        height: 300px;
+        margin: 0 100px;
+        margin-bottom: 30px;
+        background-color: $color-tertiary-background;
+        padding: 50px;
+
+        img {
+            position: absolute;
+            right: 4%;
+            top: auto;
+            object-fit: cover;
+            border-radius: 100%;
+            height: 200px;
+            width: 200px;
+            right: 4%;
+            box-shadow: $profile-picture-shadow;
+        }
+
+        h2 {
+            color: $color-artists-name;
+            font-weight: 400;
+
+            font-size: 64px;
+            margin: 0;
+            max-width: 100%;
+        }
+
+        #localisation {
+            color: $color-primary;
+            font-size: 24px;
+            margin: 0 0 19px 0;
+        }
+
+        #tagline {
+            font-size: 18px;
+            margin: 0 0 15px 0;
+            color: $color-tertiary-font;
+        }
+
+    }
+}
+
+
+
+.contact_button {
+    font-size: 20px;
+    font-weight: bold;
+    color: white;
+    padding: 11px;
+    width: 170px;
+    height: 70px;
+    border: none;
+    background-color: #901C1C;
+    border-radius: 5px;
+    cursor: pointer;
+}
