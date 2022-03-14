@@ -2,7 +2,6 @@ import { LayoutsFactory } from "../factories/layoutsFactory.js";
 import { ComponentsFactory } from "../factories/ComponentsFactory.js";
 
 async function getPhotographers() {
-    // Penser à remplacer par les données récupérées dans le json
     const res = await (await fetch("../../data/photographers.json")).json();
 
     const photographers = res.photographers;
@@ -26,8 +25,6 @@ async function displayData(photographers) {
 }
 
 async function init() {
-    // Récupère les datas des photographes
-
     const photographers = await getPhotographers();
     displayData(photographers);
 }

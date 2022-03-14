@@ -48,12 +48,35 @@ export class LayoutsFactory {
     /* Return the index main layout */
     getIndexMainDOM = (photographers, componentsFactory) => {
         const main = document.createElement("main");
-        main.classList.add("photographer-section");
+        main.classList.add("photographers-section");
 
         photographers.forEach((photographer) => {
             const userCard = componentsFactory.getUserCardDOM(photographer);
             main.appendChild(userCard);
         });
+
+        return main;
+    };
+
+    /* Return the photographer header layout */
+    getPhotographerHeaderDOM = (logo) => {
+        const header = document.createElement("header");
+        header.classList.add("header");
+
+        logo.classList.add("header__logo");
+
+        header.appendChild(logo);
+
+        return header;
+    };
+
+    /* Return the photographer main layout */
+    getPhotographerMainDOM = (photographer, componentsFactory) => {
+        const main = document.createElement("main");
+        main.classList.add("photographer-section");
+
+        const banner = componentsFactory.getPhotographerHeaderDOM(photographer, "Contactez-moi");
+        main.appendChild(banner);
 
         return main;
     };
