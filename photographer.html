@@ -22,7 +22,22 @@
         <div class="photograph-header">
             <button class="contact_button">Contactez-moi</button>
         </div>
-        <div class="gallerie"></div>
+
+        <div class="gallerie">
+            <div class="filtersMenu">
+                <label for="filters"> Trier par 
+                </label>
+                <select name = "photofilter" id= "filters">
+                    <option class="blank" value="none">Filtres</option>
+                    <option class="popularity filters" value="popularity">Popularité
+                    </option>
+                    <option class="date filters" value="date">Date
+                    </option>
+                    <option class="title filters" value="title">Titre
+                    </option>
+                </select>
+            </div>
+            <section class="pictures"></section>
     </main>
     <div id="contact_modal">
         <div class="modal">

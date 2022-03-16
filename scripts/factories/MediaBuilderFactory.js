@@ -4,6 +4,7 @@ class MediaBuilderFactory {
     
     build(media) {
         const sectionGallery = document.querySelector(".pictures");
+        
       if (media.image) {
         
         const htmlInbox = `<a>
@@ -16,6 +17,7 @@ class MediaBuilderFactory {
   
         const article = document.createElement("article");
         article.innerHTML = htmlInbox;
+
         sectionGallery.appendChild(article);
         article.classList.add('article-media');    }
       if (media.video) {

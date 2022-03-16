@@ -1,11 +1,10 @@
 import { ApiProvider } from "./providers/apiProvider.js";
-import { buildFilters } from "./factories/buildFilters.js";
+
 import { ProfilPage } from "./pages/ProfilPage.js";
 import { Lightbox } from "./utils/Lightbox.js";
 import { submitForm } from "./utils/contactForm.js";
 import { Filters } from "./utils/Filters.js";
 
-// import { addOneLike} from "./utils/likes.js"
 ////////////////////////////////////////
 
 //va chercher les données du json dans la class ApiProvider
@@ -19,7 +18,16 @@ new ApiProvider()
     .then(function (res) {
         let profilPage = new ProfilPage(res);
         profilPage.generateAll()
+        
         new Lightbox(profilPage.mediaFotographers).generateLightbox();
+       
+        let menu = document.getElementById('filters')
+        menu.addEventListener("change", (event) => {
+            let filter = event.target.value;
+          profilPage.generateCarrousel(filter);
+          profilPage.generateLike()
+        })
+       
   })
 
 
@@ -29,4 +37,4 @@ new ApiProvider()
     console.log("zut ça ne marche pas");
    });
 
-buildFilters()
+

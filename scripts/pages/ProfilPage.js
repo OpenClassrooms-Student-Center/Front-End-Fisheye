@@ -1,4 +1,5 @@
 import { MediaBuilderFactory } from "../factories/MediaBuilderFactory.js";
+import { Filters } from "../utils/Filters.js";
 ///////////////////////////////////////////////
 // constuction de la page photographer.js
 class ProfilPage {
@@ -31,43 +32,10 @@ class ProfilPage {
     this.generateCarrousel();
     this.generateFooter();
     this.generateLike();
-    this.trions();
+    
   }
-  trions() {
-    //je ne suis pas encore trié
-    const gallery = document.querySelector(".gallerie");
-    let array = Array.from(this.mediaFotographers);
-    //je ne suis pas encore trié
-    gallery.addEventListener("click", function (event) {
-      let elt = event.target.value;
-      if (elt === "popularity") {
-        console.log("popularité");
-        array.sort(function compare(a, b) {
-          if (a.likes < b.likes) {
-            return -1;
-          } else if (a.likes == b.likes) {
-            return 0;
-          } else {
-            return 1;
-          }
-        });
-      }
-      if (elt === "title") {
-        console.log("titre");
-        array.sort(function compare(a, b) {
-          if (a.title < b.title) {
-            return -1;
-          } else if (a.title == b.title) {
-            return 0;
-          } else {
-            return 1;
-          }
-        });
-      }
-      //transforme le en tableau
-    });
-  }
-
+  
+      
   //////////////////////////////////////////////////
   // construit le header de la page photographer.html
   generateProfilDetail() {
@@ -100,59 +68,21 @@ class ProfilPage {
 
   ////////////////////////////////////////////
   // construit la gallerie de photos et videos
-  generateCarrousel() {
+  generateCarrousel(filter) {
+      
+    const sectionGallery = document.querySelector(".pictures");
+    sectionGallery.innerHTML = "";
     let builder = new MediaBuilderFactory();
-    let array = Array.from(this.mediaFotographers);
-    const gallery = document.querySelector(".gallerie");
-
-    gallery.addEventListener("click", function (event) {
-      let elt = event.target.value;
-      console.log(elt);
-      if (elt === "popularity") {
-        console.log("popularité");
-        array.sort(function compare(a, b) {
-          if (a.likes < b.likes) {
-            return -1;
-          } else if (a.likes == b.likes) {
-            return 0;
-          } else {
-            return 1;
-          }
-        });
-        array.forEach((media) => {
-          builder.build(media);
-
-          this.likes += media.likes;
-        });
-      }
-      if (elt === "title") {
-        console.log("titre");
-        array.sort(function compare(a, b) {
-          if (a.title < b.title) {
-            return -1;
-          } else if (a.title == b.title) {
-            return 0;
-          } else {
-            return 1;
-          }
-        });
-        array.forEach((media) => {
-          builder.build(media);
-
-          this.likes += media.likes;
-        });
-      }
-      //transforme le en tableau
-    });
-    if (elt == undefined) {
-        console.log("different");
-      array.forEach((media) => {
+    let medias  = this.mediaFotographers;
+    let filters = new Filters(medias);
+    medias = filters.sortBy(filter)
+    
+      medias.forEach((media) => {
         builder.build(media);
 
         this.likes += media.likes;
-      });
-    }
-  }
+  })
+}
 
   ////////////////////////////////////////////
   // construit le footer avec le prix et les likes
@@ -162,7 +92,7 @@ class ProfilPage {
     const prix = document.createElement("div");
     prix.classList.add("priceBox");
     const htmlPrice = `
-        <div class="numbersOfLikes">${this.likes} <i class="fas fa-heart"></i></div>
+        <div class="numbersOfLikes"><span>${this.likes}</span> <i class="fas fa-heart"></i></div>
         <div class="price">${profil.price}€ /jour</div>`;
     prix.innerHTML = htmlPrice;
     main.append(prix);
@@ -176,7 +106,7 @@ class ProfilPage {
         //recup le span nombre
         const numero = el.querySelector(".likes__nbr");
         const coeur = el.querySelector(".fa-heart");
-        let footer = document.querySelector(".numbersOfLikes");
+        let footer = document.querySelector(".numbersOfLikes  span");
         let newLikes = parseInt(footer.innerHTML);
 
         //recup le html existant
