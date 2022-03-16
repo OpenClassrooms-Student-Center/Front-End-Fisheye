@@ -8,6 +8,7 @@
         margin-bottom: 30px;
         background-color: $color-tertiary-background;
         padding: 50px;
+        
 
         img {
             position: absolute;
@@ -43,11 +44,27 @@
         }
 
     }
-}
+
+
+
+    }
+
+
+
+
+
+
+
 
 
 
 .contact_button {
+    position: absolute;
+    left: 40%;
+    right: 50%;
+    top: 20%;
+    bottom: 20%;
+    background: #911C1C;
     font-size: 20px;
     font-weight: bold;
     color: white;
@@ -55,7 +72,56 @@
     width: 170px;
     height: 70px;
     border: none;
-    background-color: #901C1C;
     border-radius: 5px;
     cursor: pointer;
+}
+
+
+
+
+
+#gallery {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 70px;
+    margin-top: 100px;
+
+    article {
+        justify-self: center;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+
+        a {
+            cursor: pointer;
+            text-decoration: none;
+        }
+
+
+
+        img {
+            object-fit: cover;
+            height: 300px;
+            width: 350px;
+            border-radius: 5px;
+            box-shadow: $profile-picture-shadow;
+        }
+
+
+        h2 {
+            color: $color-artists-name;
+            font-weight: 400;
+            font-size: 24px;
+            margin: 20px 0 0 0;
+        }
+
+
+
+
+
+    }
+
+
+
 }
