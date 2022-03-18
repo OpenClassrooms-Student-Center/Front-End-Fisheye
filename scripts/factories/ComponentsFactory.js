@@ -309,9 +309,9 @@ export class ComponentsFactory {
         const infos = document.createElement("div");
         infos.classList.add("photographer-header__infos");
 
-        const userName = this.getUserNameDOM(name, false);
+        const userName = this.getUserNameDOM({ name }, false);
         const userLocation = this.getUserLocationDOM({ city, country }, false);
-        const userTagline = this.getUserTaglineDOM(tagline, false);
+        const userTagline = this.getUserTaglineDOM({ tagline }, false);
 
         infos.appendChild(userName);
         infos.appendChild(userLocation);
