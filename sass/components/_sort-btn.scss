@@ -1,61 +1,73 @@
-.sort-btn {
+.sort-container {
     display: flex;
-    flex-direction: column;
-    align-items: center;
+    gap: 1rem;
 
-    width: 8rem;
-    border-radius: 0.25rem;
-    padding: 0 0.75rem;
-    box-shadow: 0 0.1rem 0.25rem 0 $tertiary-color;
-    cursor: pointer;
-    background-color: $primary-color;
-    color: white;
-
-    &__selected {
-        width: 100%;
-
-        > button {
-            display: flex;
-            justify-content: space-between;
-        }
-
-        &--alt {
-            padding: 1rem 0.75rem;
-        }
+    &__label {
+        font-weight: bold;
+        padding: 1rem 0;
     }
 
-    &__option {
-        width: 100%;
+    .sort-btn {
         display: flex;
         flex-direction: column;
-        align-items: flex-start;
-        border-top: 1px solid white;
-        text-align: left;
+        align-items: center;
 
-        &--hidden {
-            display: none;
-        }
-    }
-
-    &__selected > button,
-    &__option > button {
-        font-size: 0.9rem;
-        text-align: left;
-        color: white;
-        width: 100%;
+        width: 8rem;
+        border-radius: 0.25rem;
+        padding: 0 0.75rem;
+        box-shadow: 0 0.1rem 0.25rem 0 $tertiary-color;
         cursor: pointer;
-        padding: 1rem 0.5rem;
-    }
+        background-color: $primary-color;
+        color: white;
 
-    &__icon {
-        display: inline-block;
-        width: 0.9rem;
-        height: 0.9rem;
-        background-size: cover;
-        background-image: url("../../assets/icons/arrow-down.svg");
+        &__selected {
+            width: 100%;
 
-        &--alt {
-            background-image: url("../../assets/icons/arrow-up.svg");
+            > button {
+                display: flex;
+                justify-content: space-between;
+            }
+
+            &--alt {
+                padding: 1rem 0.75rem;
+            }
+        }
+
+        &__option {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            border-top: 1px solid white;
+            text-align: left;
+
+            position: sticky;
+
+            &--hidden {
+                display: none;
+            }
+        }
+
+        &__selected > button,
+        &__option > button {
+            font-size: 0.9rem;
+            text-align: left;
+            color: white;
+            width: 100%;
+            cursor: pointer;
+            padding: 1rem 0.5rem;
+        }
+
+        &__icon {
+            display: inline-block;
+            width: 0.9rem;
+            height: 0.9rem;
+            background-size: cover;
+            background-image: url("../../assets/icons/arrow-down.svg");
+
+            &--alt {
+                background-image: url("../../assets/icons/arrow-up.svg");
+            }
         }
     }
 }

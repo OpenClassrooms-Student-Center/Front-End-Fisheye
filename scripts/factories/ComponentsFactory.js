@@ -71,6 +71,13 @@ export class ComponentsFactory {
     };
 
     getSortBtnDOM = () => {
+        const sortContainer = document.createElement("div");
+        sortContainer.classList.add("sort-container");
+
+        const sortLabel = document.createElement("label");
+        sortLabel.classList.add("sort-container__label");
+        sortLabel.textContent = "Trier par";
+
         const sortBtn = document.createElement("ul");
         sortBtn.classList.add("sort-btn");
 
@@ -152,7 +159,10 @@ export class ComponentsFactory {
             selectedContainer.addEventListener("click", openDropdown);
         }
 
-        return sortBtn;
+        sortContainer.appendChild(sortLabel);
+        sortContainer.appendChild(sortBtn);
+
+        return sortContainer;
     };
 
     getMainBtnDOM = (btnText) => {

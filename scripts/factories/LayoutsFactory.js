@@ -76,7 +76,25 @@ export class LayoutsFactory {
         main.classList.add("photographer-section");
 
         const banner = componentsFactory.getPhotographerHeaderDOM(photographer, "Contactez-moi");
+
+        const mediasSection = document.createElement("section");
+        mediasSection.classList.add("medias-section");
+
+        const sortMedias = document.createElement("div");
+        sortMedias.classList.add("medias-section__sort");
+
+        const sortBtn = componentsFactory.getSortBtnDOM();
+
+        sortMedias.appendChild(sortBtn);
+
+        const medias = document.createElement("div");
+        medias.classList.add("medias-section__medias");
+
+        mediasSection.appendChild(sortMedias);
+        mediasSection.appendChild(medias);
+
         main.appendChild(banner);
+        main.appendChild(mediasSection);
 
         return main;
     };
