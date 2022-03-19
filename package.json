@@ -1,0 +1,23 @@
+{
+  "name": "front-end-fisheye",
+  "version": "1.0.0",
+  "description": "project 6 of openclassrooms training",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "sass": "sass --watch ./css/style.scss style.css"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/LoicAnael/Front-End-Fisheye.git"
+  },
+  "author": "loic anael",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/LoicAnael/Front-End-Fisheye/issues"
+  },
+  "homepage": "https://github.com/LoicAnael/Front-End-Fisheye#readme",
+  "devDependencies": {
+    "sass": "^1.49.9"
+  }
+}

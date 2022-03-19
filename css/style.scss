@@ -1,0 +1,79 @@
+//variables
+$primary-color: #901c1c;
+$secondary-color: #d3573c;
+$terciary-color: #757575;
+//mixins
+@mixin grid-items-center {
+  display: grid;
+  place-items: center;
+}
+@mixin flex-items($display, $align, $justify, $direction) {
+  display: $display;
+  align-items: $align;
+  justify-content: $justify;
+  flex-direction: $direction;
+}
+* {
+  font-family: "DM Sans", sans-serif;
+}
+a {
+  color: inherit;
+  text-decoration: none;
+}
+header {
+  @include flex-items(flex, center, space-between, row);
+  height: 90px;
+  .logo {
+    height: 50px;
+    margin-left: 100px;
+  }
+  h1 {
+    color: $primary-color;
+    margin-right: 100px;
+    display: block;
+  }
+}
+
+.photographers_section {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 50px;
+  margin-top: 100px;
+  .photographers-grid {
+    padding: 5px;
+    width: 350px;
+    text-align: center;
+    justify-self: center;
+    border: 1px solid red;
+    @include flex-items(flex, center, center, column);
+    h2 {
+      color: $secondary-color;
+      font-size: 36px;
+      font-weight: 400;
+      margin-bottom: 8px;
+    }
+    img {
+      width: 200px;
+      height: 200px;
+      border-radius: 50%;
+      object-fit: cover;
+      overflow: hidden;
+      box-shadow: 0 0 0.8rem rgba(135, 135, 135, 0.5);
+      &:hover {
+        cursor: pointer;
+        transform: scale(1.05);
+      }
+    }
+    .location {
+      color: $primary-color;
+      margin: 3px;
+    }
+    .tagline {
+      margin: 0;
+    }
+    .price {
+      color: $terciary-color;
+      margin: 0;
+    }
+  }
+}
