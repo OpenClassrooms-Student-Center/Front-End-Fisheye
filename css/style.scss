@@ -1,3 +1,5 @@
+//partie de style de la page d'acceuil
+
 //variables
 $primary-color: #901c1c;
 $secondary-color: #d3573c;
@@ -36,9 +38,9 @@ header {
 
 .photographers_section {
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  gap: 50px;
-  margin-top: 100px;
+  grid-template-columns: 30% 30% 30%;
+  gap: 5%;
+  margin-top: 90px;
   .photographers-grid {
     padding: 5px;
     width: 350px;
@@ -74,6 +76,33 @@ header {
     .price {
       color: $terciary-color;
       margin: 0;
+    }
+  }
+}
+@media screen and (max-width: 767px) {
+  header {
+    @include flex-items(flex, center, space-around, column);
+    height: 180px;
+    .logo {
+      margin-left: unset;
+    }
+    h1 {
+      margin-right: unset;
+      display: unset;
+    }
+  }
+
+  .photographers_section {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 50px;
+    margin-top: 10px;
+    .photographers-grid {
+      padding: 5px;
+      width: 94%;
+      text-align: center;
+      justify-self: center;
+      @include flex-items(flex, center, center, column);
     }
   }
 }

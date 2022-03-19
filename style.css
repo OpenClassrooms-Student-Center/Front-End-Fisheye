@@ -26,9 +26,9 @@ header h1 {
 
 .photographers_section {
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  gap: 50px;
-  margin-top: 100px;
+  grid-template-columns: 30% 30% 30%;
+  gap: 5%;
+  margin-top: 90px;
 }
 .photographers_section .photographers-grid {
   padding: 5px;
@@ -69,6 +69,40 @@ header h1 {
 .photographers_section .photographers-grid .price {
   color: #757575;
   margin: 0;
+}
+
+@media screen and (max-width: 767px) {
+  header {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    flex-direction: column;
+    height: 180px;
+  }
+  header .logo {
+    margin-left: unset;
+  }
+  header h1 {
+    margin-right: unset;
+    display: unset;
+  }
+
+  .photographers_section {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 50px;
+    margin-top: 10px;
+  }
+  .photographers_section .photographers-grid {
+    padding: 5px;
+    width: 94%;
+    text-align: center;
+    justify-self: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+  }
 }
 
 /*# sourceMappingURL=style.css.map */
