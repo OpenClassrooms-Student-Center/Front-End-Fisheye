@@ -1,6 +1,7 @@
 .sort-container {
     display: flex;
     gap: 1rem;
+    position: absolute;
 
     &__label {
         font-weight: bold;

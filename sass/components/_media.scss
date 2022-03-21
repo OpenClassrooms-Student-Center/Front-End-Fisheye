@@ -1,11 +1,15 @@
 .media-container {
-    width: 25%;
+    width: 20rem;
+    height: 22.5rem;
     display: flex;
     flex-direction: column;
     gap: 0.5rem;
 
     &__media {
-        width: 100%;
+        width: 20rem;
+        height: 17.5rem;
+        border-radius: 0.5rem;
+        object-fit: cover;
     }
 
     &__figcaption {

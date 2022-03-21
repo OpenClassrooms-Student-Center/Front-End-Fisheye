@@ -8,4 +8,11 @@
     &__sort {
         padding: 0.5rem 0;
     }
+
+    &__medias {
+        padding-top: 5rem;
+        display: flex;
+        flex-wrap: wrap;
+        column-gap: 10.5rem;
+    }
 }

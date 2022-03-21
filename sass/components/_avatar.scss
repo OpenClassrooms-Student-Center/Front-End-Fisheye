@@ -7,6 +7,11 @@
     border-radius: 50%;
     overflow: hidden;
 
+    &__img {
+        width: 100%;
+        object-fit: cover;
+    }
+
     &--card {
         width: 12.5rem;
         height: 12.5rem;
