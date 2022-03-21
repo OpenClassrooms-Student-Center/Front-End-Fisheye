@@ -19,7 +19,16 @@
         <button class="contact_button" id="contact" onclick="displayModal()">Contactez-moi</button>
       </div>
       <div id="gallery"></div>
+      <div class="popup-text">
+        <span class="likes-total"><span id="number-total-likes"></span><img src="../assets/icons/black_heart.svg" alt="total likes"></span>
+        <span id="price"></span>
+    </div>
     </main>
+
+
+
+<!-- formulaire initial -->
+
     <div id="contact_modal">
 			<div class="modal">
 				<header>
@@ -27,7 +36,7 @@
           <img src="assets/icons/close.svg" onclick="closeModal()" />
         </header>
 				<form>
-					<div>
+					<div class="formData">
 						<label>Prénom</label>
 						<input />
 					</div>
@@ -35,6 +44,145 @@
 				</form>
 			</div>
 		</div>
+
+
+
+
+<!-- formulaire du projet 4 -->
+
+
+    <div class="bground">
+      <div class="content">
+        <!-- Croix qui ferme le formulaire -->
+        <span class="close"></span>
+        <div class="modal-body">
+          <form
+            name="reserve"
+            action="index.html"
+            method="get"
+            novalidate
+            onsubmit="return validate();"
+          >
+            <!-- champs prénom dans le formulaire -->
+            <div
+              class="formData"
+              data-error="Veuillez entrer au moins deux caractères"
+            >
+              <label for="first">Prénom</label><br />
+              <input
+                class="text-control"
+                type="text"
+                id="first"
+                name="first"
+                autocomplete="off"
+              /><br />
+            </div>
+            <!-- champs nom dans le formulaire -->
+            <div
+              class="formData"
+              data-error="Veuillez entrer au moins deux caractères"
+            >
+              <label for="last">Nom</label><br />
+              <input
+                class="text-control"
+                type="text"
+                id="last"
+                name="last"
+                autocomplete="off"
+              /><br />
+            </div>
+            <!-- champs email dans le formulaire -->
+            <div
+              class="formData"
+              data-error="le format de l'email est invalide"
+            >
+              <label for="email">E-mail</label><br />
+              <input
+                class="text-control"
+                type="email"
+                id="email"
+                name="email"
+              /><br />
+            </div>
+            <!-- champs date de naissance dans le formulaire -->
+            <div
+              class="formData"
+              data-error="Vous devez entrer votre date de naissance"
+            >
+              <label for="birthdate">Date de naissance</label><br />
+              <input
+                class="text-control"
+                type="date"
+                id="birthdate"
+                name="birthdate"
+              /><br />
+            </div>
+           
+
+            <!-- champs termes et conditions dans le formulaire -->
+            <div
+              class="formData"
+              data-error="Vous devez accepter les termes et conditions"
+            >
+              <input class="checkbox-input" type="checkbox" id="checkbox1" />
+              <label class="checkbox2-label" for="checkbox1">
+                <span class="checkbox-icon"></span>
+                J'ai lu et accepté les conditions d'utilisation.
+              </label>
+              <br />
+              <input class="checkbox-input" type="checkbox" id="checkbox2" />
+              <label class="checkbox2-label" for="checkbox2">
+                <span class="checkbox-icon"></span>
+                Je souhaite être prévenu des prochains évènements.
+              </label>
+              <br />
+            </div>
+
+            <!-- bouton c'est parti dans le formulaire -->
+            <div class="sent-message"></div>
+            <input
+              class="btn-submit button"
+              type="submit"
+              value="C'est parti"
+            />
+
+            <div
+              class="formError"
+              data-error="Veuillez renseigner tous les champs"
+            >
+              Veuillez renseigner tous les champs
+            </div>
+          </form>
+          <!-- ====  Confirmation envoi des données après avoir rempli le formulaire  ==== -->
+          <div class="data-sent">
+            <img alt="logo" src="assets/Logo.png" />
+            <p>
+              Merci ! Votre demande de réservation a bien été enregistrée !
+            </p>
+            <button class="button btn-close">
+              Fermer
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <script src="/js/counter.js"></script>
     <script src="/js/photographer.js"></script>
-  </body>
+    <script src="/js/modal.js"></script>
+    </body>
 </html>

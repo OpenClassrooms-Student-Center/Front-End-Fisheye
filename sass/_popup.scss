@@ -1,0 +1,23 @@
+
+  .popup-text {
+    position: fixed;
+    bottom: -5px;
+    right: 2%;
+    background-color: $color-secondary;
+    width: 376px;
+    height: 60px;
+    border-radius: 5px;
+    font-size: 24px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    transition: 0.5s ease-in-out;
+
+    .likes-total {
+      img {
+        margin-left: 5px;
+        width: 18.5px;
+        height: 17px;
+      }
+    }
+  }
