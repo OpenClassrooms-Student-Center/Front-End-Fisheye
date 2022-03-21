@@ -259,12 +259,15 @@ export class ComponentsFactory {
         const mediaContainer = document.createElement("figure");
         mediaContainer.classList.add("media-container");
 
+        const mediaButton = document.createElement("button");
+
         const media = document.createElement("img");
         media.classList.add("media-container__media");
         media.setAttribute("alt", title);
         media.setAttribute("src", `../../assets/images/${photographerName.split(" ")[0]}/${image}`);
 
-        mediaContainer.appendChild(media);
+        mediaButton.appendChild(media);
+        mediaContainer.appendChild(mediaButton);
 
         const figCaption = document.createElement("figcaption");
         figCaption.classList.add("media-container__figcaption");
@@ -289,6 +292,8 @@ export class ComponentsFactory {
         const mediaContainer = document.createElement("figure");
         mediaContainer.classList.add("media-container");
 
+        const mediaButton = document.createElement("button");
+
         const media = document.createElement("video");
         media.classList.add("media-container__media");
 
@@ -298,8 +303,8 @@ export class ComponentsFactory {
         mediaSource.textContent = "Désolé, votre navigateur ne peut lire cette vidéo.";
 
         media.appendChild(mediaSource);
-
-        mediaContainer.appendChild(media);
+        mediaButton.appendChild(media);
+        mediaContainer.appendChild(mediaButton);
 
         const figCaption = document.createElement("figcaption");
         figCaption.classList.add("media-container__figcaption");
@@ -383,5 +388,36 @@ export class ComponentsFactory {
         header.appendChild(avatarContainer);
 
         return header;
+    };
+
+    getPhotographerLikesDOM = (data) => {
+        const { price, medias } = data;
+
+        const card = document.createElement("div");
+        card.classList.add("photographer-likes");
+
+        let count = 0;
+
+        medias.forEach((media) => {
+            count += media.likes;
+        });
+
+        const counter = document.createElement("p");
+        counter.classList.add("photographer-likes__counter");
+        counter.textContent = `${count}`;
+
+        const icon = document.createElement("i");
+        icon.classList.add("photographer-likes__counter__icon");
+
+        counter.appendChild(icon);
+
+        const photographerPrice = document.createElement("p");
+        photographerPrice.classList.add("photographer-likes__photographerPrice");
+        photographerPrice.textContent = `${price} / jour`;
+
+        card.appendChild(counter);
+        card.appendChild(photographerPrice);
+
+        return card;
     };
 }
