@@ -1,13 +1,13 @@
 .media-container {
-    width: 20rem;
-    height: 22.5rem;
+    width: 22.5vw;
+    height: 25vw;
     display: flex;
     flex-direction: column;
     gap: 0.5rem;
 
     &__media {
-        width: 20rem;
-        height: 17.5rem;
+        width: 22.5vw;
+        height: 20vw;
         border-radius: 0.5rem;
         object-fit: cover;
     }

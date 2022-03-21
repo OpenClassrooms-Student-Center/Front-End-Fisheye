@@ -1,6 +1,6 @@
 .like-btn {
     display: flex;
-    align-items: baseline;
+    align-items: center;
     gap: 0.3rem;
 
     &__counter {
@@ -10,8 +10,8 @@
 
     &__icon {
         display: inline-block;
-        width: 0.9rem;
-        height: 0.9rem;
+        width: 1rem;
+        height: 1rem;
         background-size: cover;
         background-image: url("../../assets/icons/like-outline.svg");
         position: relative;

@@ -136,6 +136,10 @@ export class ComponentsFactory {
 
             let filterChoosen = e.target.textContent;
 
+            if (filterChoosen === "") {
+                filterChoosen = selected.textContent;
+            }
+
             if (filterChoosen !== selected.textContent) {
                 switch (filterChoosen) {
                     case option1.textContent:
@@ -413,7 +417,7 @@ export class ComponentsFactory {
 
         const photographerPrice = document.createElement("p");
         photographerPrice.classList.add("photographer-likes__photographerPrice");
-        photographerPrice.textContent = `${price} / jour`;
+        photographerPrice.textContent = `${price}€ / jour`;
 
         card.appendChild(counter);
         card.appendChild(photographerPrice);

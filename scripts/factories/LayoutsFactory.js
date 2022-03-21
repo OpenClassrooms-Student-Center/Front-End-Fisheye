@@ -105,10 +105,9 @@ export class LayoutsFactory {
 
         const likes = componentsFactory.getPhotographerLikesDOM(photographer);
 
-        console.log(likes);
-
         main.appendChild(banner);
         main.appendChild(mediasSection);
+        main.appendChild(likes);
 
         return main;
     };

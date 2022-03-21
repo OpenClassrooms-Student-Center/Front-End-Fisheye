@@ -1,0 +1,27 @@
+.photographer-likes {
+    position: fixed;
+    bottom: 0;
+    right: 1rem;
+
+    background: $secondary-color;
+    padding: 1rem 1.5rem 0.75rem 1.5rem;
+
+    display: flex;
+    gap: 3rem;
+    border-radius: 0.25rem 0.25rem 0 0;
+
+    &__counter {
+        display: flex;
+        align-items: center;
+        gap: 0.25rem;
+
+        &__icon {
+            display: inline-block;
+            width: 0.9rem;
+            height: 0.9rem;
+            background-size: cover;
+            background-image: url("../../assets/icons/like-black.svg");
+            position: relative;
+        }
+    }
+}
