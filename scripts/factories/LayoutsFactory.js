@@ -90,6 +90,16 @@ export class LayoutsFactory {
         const medias = document.createElement("div");
         medias.classList.add("medias-section__medias");
 
+        const photographerName = photographer.name;
+
+        photographer.medias.forEach((media) => {
+            const mediaDOM = media.hasOwnProperty("image")
+                ? componentsFactory.getImageDOM(media, photographerName, false)
+                : componentsFactory.getVideoDOM(media, photographerName, false);
+
+            medias.appendChild(mediaDOM);
+        });
+
         mediasSection.appendChild(sortMedias);
         mediasSection.appendChild(medias);
 

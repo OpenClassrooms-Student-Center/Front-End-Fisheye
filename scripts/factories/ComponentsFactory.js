@@ -253,24 +253,61 @@ export class ComponentsFactory {
         return userTagline;
     };
 
-    getMediaDOM = (mediaPath, mediaTitle, likes, isLiked) => {
+    getImageDOM = (data, photographerName, isLiked) => {
+        const { title, image, likes } = data;
+
         const mediaContainer = document.createElement("figure");
         mediaContainer.classList.add("media-container");
 
         const media = document.createElement("img");
         media.classList.add("media-container__media");
-        media.setAttribute("alt", mediaTitle);
-        media.setAttribute("src", mediaPath);
+        media.setAttribute("alt", title);
+        media.setAttribute("src", `../../assets/images/${photographerName.split(" ")[0]}/${image}`);
 
         mediaContainer.appendChild(media);
 
         const figCaption = document.createElement("figcaption");
         figCaption.classList.add("media-container__figcaption");
 
-        const title = document.createElement("p");
-        title.textContent = mediaTitle;
+        const mediaTitle = document.createElement("p");
+        mediaTitle.textContent = title;
 
-        figCaption.appendChild(title);
+        figCaption.appendChild(mediaTitle);
+
+        const likeBtn = this.getLikeBtnDOM(likes, isLiked);
+
+        figCaption.appendChild(likeBtn);
+
+        mediaContainer.appendChild(figCaption);
+
+        return mediaContainer;
+    };
+
+    getVideoDOM = (data, photographerName, isLiked) => {
+        const { title, video, likes } = data;
+
+        const mediaContainer = document.createElement("figure");
+        mediaContainer.classList.add("media-container");
+
+        const media = document.createElement("video");
+        media.classList.add("media-container__media");
+
+        const mediaSource = document.createElement("source");
+        mediaSource.setAttribute("src", `../../assets/images/${photographerName.split(" ")[0]}/${video}`);
+        mediaSource.setAttribute("type", "video/mp4");
+        mediaSource.textContent = "Désolé, votre navigateur ne peut lire cette vidéo.";
+
+        media.appendChild(mediaSource);
+
+        mediaContainer.appendChild(media);
+
+        const figCaption = document.createElement("figcaption");
+        figCaption.classList.add("media-container__figcaption");
+
+        const mediaTitle = document.createElement("p");
+        mediaTitle.textContent = title;
+
+        figCaption.appendChild(mediaTitle);
 
         const likeBtn = this.getLikeBtnDOM(likes, isLiked);
 
