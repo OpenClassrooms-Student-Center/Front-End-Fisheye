@@ -42,7 +42,7 @@ h1 {
 .photographer_section article h2 {
     color: #D3573C;
     font-size: 36px;
-    margin : 0;
+    margin : 5px;
 }
 
 .photographer_section article h4 {
@@ -51,13 +51,13 @@ h1 {
     margin : 0;
 }
 
-.photographer_section article h4tag {
+.photographer_section article .h4tag {
     color: black;
     font-size: 12px;
     margin : 0;
 }
 
-.photographer_section article h4price {
+.photographer_section article .h4price {
     color: black;
     font-size: 12px;
     margin : 0;

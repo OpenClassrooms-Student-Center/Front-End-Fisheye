@@ -16,11 +16,13 @@ function photographerFactory(data) {
         h4.textContent = city + ", " + country;
         article.appendChild(h4);
 
-        const h4tag = document.createElement( 'h4tag' );
+        const h4tag = document.createElement( 'h4' );
+        h4tag.className="h4tag";
         h4tag.textContent = tagline;
         article.appendChild(h4tag);
 
-        const h4price = document.createElement( 'h4price' );
+        const h4price = document.createElement( 'h4' );
+        h4price.className="h4price";
         h4price.textContent = price + "€/jour";
         article.appendChild(h4price);
 
