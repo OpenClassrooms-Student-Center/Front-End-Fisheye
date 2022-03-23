@@ -1,15 +1,17 @@
 function photographerFactory(data) {
-    const { name, portrait } = data;
-    const picture = `../assets/Sample_Photos/PhotographersID/${name.split(/-| /).join("")}.jpg`;
+    const { name, portrait, id } = data;
+    const picture = `../assets/Sample_Photos/PhotographersID/${portrait}`;
     console.log(data)
     function getUserCardDOM() {
         const templateElm = document.getElementById("templateArticle");
         const article = document.importNode(templateElm.content, true);
-        const img = article.querySelector(".img");
+        const img = article.querySelector(".photographer__img");
         img.src = picture;
-        const h2 = article.getElementsByClassName( '.h2' );
+        const h2 = article.querySelector( '.photographer__h2' );
         h2.textContent = name;
-        document.getElementsByClassName("photographer_section").appenChild(article);
+        const a = article.querySelector("a");
+        a.href += `?id=${id}`;
+        document.querySelector(".photographer_section").appendChild(article);
         return (article);
     }
     return { name, picture, getUserCardDOM }
