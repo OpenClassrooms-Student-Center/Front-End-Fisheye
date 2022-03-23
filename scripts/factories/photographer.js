@@ -3,13 +3,13 @@ function photographerFactory(data) {
     const picture = `../assets/Sample_Photos/PhotographersID/${name.split(/-| /).join("")}.jpg`;
     console.log(data)
     function getUserCardDOM() {
-        const article = document.createElement( 'a' );
-        const img = document.createElement( 'img' );
+        const templateElm = document.getElementById("templateArticle");
+        const article = document.importNode(templateElm.content, true);
+        const img = article.querySelector(".img");
         img.src = picture;
-        const h2 = document.createElement( 'h2' );
+        const h2 = article.getElementsByClassName( '.h2' );
         h2.textContent = name;
-        article.appendChild(img);
-        article.appendChild(h2);
+        document.getElementsByClassName("photographer_section").appenChild(article);
         return (article);
     }
     return { name, picture, getUserCardDOM }
