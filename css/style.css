@@ -3,6 +3,7 @@
 body {
     font-family: "DM Sans", sans-serif;
     margin: 0;
+
 }
 
 
@@ -31,20 +32,24 @@ h1 {
     margin-top: 100px;
 }
 
-.photographer_section article {
+.photographer_section a {
     justify-self: center;
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
     flex-direction: column;
 }
 
-.photographer_section article h2 {
+.photographer_section a h2 {
     color: #D3573C;
     font-size: 36px;
+    text-align: center;
+
 }
 
-.photographer_section article img {
+.photographer_section a img {
     height: 200px;
     width: 200px;
+    border-radius: 50%;
+    object-fit: cover;
 }
