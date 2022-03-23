@@ -1,56 +1,56 @@
-function initTotalLikes(){
-const numberTotalLikes = document.getElementById("number-total-likes");
-//choosenGallery.forEach((item) =>
- //   gallery.appendChild(photographerGallery(photographers[index], item))
- // );
+function initTotalLikes(choosenGallery) {
+  let totallikes = 0;
+  choosenGallery.forEach((item) => totallikes += item.likes);
+
+  console.log("total", totallikes);
+  const numberTotalLikes = document.getElementById("number-total-likes");
+  numberTotalLikes.innerText = totallikes;
 }
 
 
 
 function counterFunction() {
 
-const allHearts = document.querySelectorAll(".heart-button"); //sélectionne ts les buttons coeur
-const numberTotalLikes = document.getElementById("number-total-likes");
+  const allHearts = document.querySelectorAll(".heart-button"); //sélectionne ts les buttons coeur
+  const numberTotalLikes = document.getElementById("number-total-likes");
 
+  allHearts.forEach((heart) => {
+    let likes = heart.parentElement; //div .likes qui contient likes et coeur
+    let likesCount = likes.innerText;
+    let totallikes;
 
-allHearts.forEach((heart) => {
-  let likes = heart.parentElement; //div .likes qui contient likes et coeur
-  let likesCount = likes.innerText;
-  let totallikes;
+    const refreshCount = () => {
+      likes.firstChild.innerText = likesCount;
+      numberTotalLikes.innerText = totallikes;
+    };
 
+    heart.addEventListener("click", () => {
+      if (heart.classList.contains("unliked")) {
+        //console.log("il y a eu un click");
+        totallikes = Number(numberTotalLikes.innerText); // pour initialiser 
+        heart.classList.remove("unliked");
+        heart.style.backgroundImage = "url(../assets/icons/light_red_heart.svg)";
+        likesCount++;
+        totallikes++;
 
-  const refreshCount = () => {
-     likes.firstChild.innerText = likesCount;
-     numberTotalLikes.innerText = totallikes;
-     };
+      } else {
+        //console.log("il y a eu un deuxième click");
+        heart.classList.add("unliked");
+        heart.style.backgroundImage = "url(../assets/icons/dark_red_heart.svg)";
+        likesCount--;
+        totallikes--;
 
-  heart.addEventListener("click", () => {
-    if (heart.classList.contains("unliked")) {
-      //console.log("il y a eu un click");
-      totallikes = Number(numberTotalLikes.innerText); // pour initialiser 
-      heart.classList.remove("unliked");
-      heart.style.backgroundImage = "url(../assets/icons/light_red_heart.svg)";
-      likesCount++;
-      totallikes++;
-      
-    } else {
-      //console.log("il y a eu un deuxième click");
-      heart.classList.add("unliked");
-      heart.style.backgroundImage = "url(../assets/icons/dark_red_heart.svg)";
-      likesCount--;
-      totallikes--;
+      }
+      refreshCount();
 
-    }
-    refreshCount();
-  
+    });
   });
-});
 
-return ;
+  return;
 
 }
 
 
 
-//function
+
 

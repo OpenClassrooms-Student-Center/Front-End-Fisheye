@@ -16,7 +16,7 @@
     </header>
     <main id="main">
       <div class="photograph-header" id="photograph-header">
-        <button class="contact_button" id="contact" onclick="displayModal()">Contactez-moi</button>
+        <button class="contact_button" id="contact" onclick="launchModal()">Contactez-moi</button>
       </div>
       <div id="gallery"></div>
       <div class="popup-text">
@@ -27,35 +27,15 @@
 
 
 
-<!-- formulaire initial -->
-
-    <div id="contact_modal">
-			<div class="modal">
-				<header>
-          <h2>Contactez-moi</h2>
-          <img src="assets/icons/close.svg" onclick="closeModal()" />
-        </header>
-				<form>
-					<div class="formData">
-						<label>Prénom</label>
-						<input />
-					</div>
-          <button class="contact_button">Envoyer</button>
-				</form>
-			</div>
-		</div>
-
-
-
-
 <!-- formulaire du projet 4 -->
-
 
     <div class="bground">
       <div class="content">
         <!-- Croix qui ferme le formulaire -->
         <span class="close"></span>
         <div class="modal-body">
+
+          <span id = "modal-title"></span>
           <form
             name="reserve"
             action="index.html"
@@ -63,6 +43,10 @@
             novalidate
             onsubmit="return validate();"
           >
+
+
+
+
             <!-- champs prénom dans le formulaire -->
             <div
               class="formData"
@@ -107,43 +91,19 @@
             <!-- champs date de naissance dans le formulaire -->
             <div
               class="formData"
-              data-error="Vous devez entrer votre date de naissance"
+              data-error="Vous devez entrer votre message"
             >
-              <label for="birthdate">Date de naissance</label><br />
-              <input
-                class="text-control"
-                type="date"
-                id="birthdate"
-                name="birthdate"
-              /><br />
+              <label for="message">Votre message</label><br />
+              <textarea class="text-control" id = "textarea" rows="5" cols="50" "></textarea>
             </div>
-           
-
-            <!-- champs termes et conditions dans le formulaire -->
-            <div
-              class="formData"
-              data-error="Vous devez accepter les termes et conditions"
-            >
-              <input class="checkbox-input" type="checkbox" id="checkbox1" />
-              <label class="checkbox2-label" for="checkbox1">
-                <span class="checkbox-icon"></span>
-                J'ai lu et accepté les conditions d'utilisation.
-              </label>
-              <br />
-              <input class="checkbox-input" type="checkbox" id="checkbox2" />
-              <label class="checkbox2-label" for="checkbox2">
-                <span class="checkbox-icon"></span>
-                Je souhaite être prévenu des prochains évènements.
-              </label>
-              <br />
-            </div>
+                 
 
             <!-- bouton c'est parti dans le formulaire -->
             <div class="sent-message"></div>
             <input
               class="btn-submit button"
               type="submit"
-              value="C'est parti"
+              value="Envoyer"
             />
 
             <div
@@ -155,7 +115,7 @@
           </form>
           <!-- ====  Confirmation envoi des données après avoir rempli le formulaire  ==== -->
           <div class="data-sent">
-            <img alt="logo" src="assets/Logo.png" />
+            <img alt="logo" src="assets/images/logo.png" />
             <p>
               Merci ! Votre demande de réservation a bien été enregistrée !
             </p>
@@ -171,18 +131,9 @@
 
 
 
-
-
-
-
-
-
-
-
-
-
+    <script src="/js/modal.js"></script>
     <script src="/js/counter.js"></script>
     <script src="/js/photographer.js"></script>
-    <script src="/js/modal.js"></script>
+    
     </body>
 </html>
