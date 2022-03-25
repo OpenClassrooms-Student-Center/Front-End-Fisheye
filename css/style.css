@@ -40,11 +40,13 @@ h1 {
 }
 
 .photographer_section article h2 {
-    color: #D3573C;
+    color: #901C1C; /* #D3573C; */
     font-size: 36px;
 }
 
 .photographer_section article img {
     height: 200px;
     width: 200px;
+    /* Modifiez une propriété CSS dans style.css pour vérifier que tout est bien connecté. */
+    border: 2px solid #901C1C; 
 }
