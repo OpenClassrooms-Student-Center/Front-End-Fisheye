@@ -12,9 +12,36 @@
       <img src="assets/images/logo.png" class="logo" />
     </header>
     <main id="main">
-      <div class="photograph-header">
-        <button class="contact_button" onclick="displayModal()">Contactez-moi</button>
+      <template id="photographer__template">
+        <div class="photograph-header">
+          <div class="photographer__presentation">
+            <h1 class="photographer__name">name</h1>
+            <span class="photographer__location">localisation</span>
+            <span class="photographer__quote">citation</span>
+            
+          </div>
+          <button class="contact_button" onclick="displayModal()">Contactez-moi</button>
+          <img class="photographer__profile avatar" src="#" alt="profile">
+        </div>
+      </template>
+
+      <div class="filter-condition">
+        <span>filter par :</span>
+        <select name="" id="select" >
+          <option value="popularite">Popularité</option>
+          <option value="date">Date</option>
+          <option value="title">Titre</option>
+        </select>
       </div>
+      <section class="product-field">
+        <template class="photo__template">
+          <img src="#">
+          <span class="photo__title">titre</span>
+          <span class="photo__likes">n</span>
+          <i class="fas fa-heart"></i>
+        </template>
+
+      </section>
     </main>
     <div id="contact_modal">
 			<div class="modal">

@@ -1,8 +1,8 @@
-//Mettre le code JavaScript lié à la page photographer.html
+import hydrateArticleFactory from "../factories/photographerPage.js";
+
 async function initPhotographe() {
-    const articleId =  getArticleId();
-    const article = await getArticle(articleId);
-    
+    const articleId = getArticleId();
+    await getArticle(articleId);
 }
 
 function getArticleId() {
@@ -14,6 +14,10 @@ async function getArticle(articleId) {
         .then(res => res.json())
         .then(data => {
             return data.photographers.filter((photographe)=> photographe.id === parseInt(articleId, 10))
+        })
+        .then(filtingphotographe => {
+            const photographe = filtingphotographe;
+            hydrateArticleFactory(photographe[0])
         })
 }
 

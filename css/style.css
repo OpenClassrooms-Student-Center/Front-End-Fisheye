@@ -47,9 +47,20 @@ h1 {
 
 }
 
-.photographer_section a img {
+.avatar {
     height: 200px;
     width: 200px;
     border-radius: 50%;
     object-fit: cover;
+}
+.photograph-header{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+}
+.photographer__presentation{
+    display: flex;
+    flex-direction:column;
+
 }

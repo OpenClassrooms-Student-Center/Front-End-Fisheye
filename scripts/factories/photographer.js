@@ -5,7 +5,7 @@ function photographerFactory(data) {
     function getUserCardDOM() {
         const templateElm = document.getElementById("templateArticle");
         const article = document.importNode(templateElm.content, true);
-        const img = article.querySelector(".photographer__img");
+        const img = article.querySelector(".avatar");
         img.src = picture;
         const h2 = article.querySelector( '.photographer__h2' );
         h2.textContent = name;
