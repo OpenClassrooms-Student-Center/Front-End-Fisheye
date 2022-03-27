@@ -42,9 +42,35 @@ h1 {
 .photographer_section article h2 {
     color: #D3573C;
     font-size: 36px;
+    margin : 5px;
+}
+
+/* Ajout .h4tag .h4price .img article:hover */
+.photographer_section article h4 {
+    color: #D3573C;
+    font-size: 12px;
+    margin : 0;
+}
+
+.photographer_section article .h4tag {
+    color: black;
+    font-size: 12px;
+    margin : 0;
+}
+
+.photographer_section article .h4price {
+    color: black;
+    font-size: 12px;
+    margin : 0;
+    opacity : 70%;
 }
 
 .photographer_section article img {
     height: 200px;
     width: 200px;
+    object-fit: cover;
+    border-radius: 100%;
+}
+.photographer_section article:hover {
+    cursor: pointer;
 }
