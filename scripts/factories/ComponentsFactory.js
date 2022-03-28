@@ -446,6 +446,15 @@ export class ComponentsFactory {
         const figure = document.createElement("figure");
         figure.classList.add("lightbox__figure");
 
+        const closeBtn = document.createElement("button");
+        closeBtn.classList.add("lightbox__figure__close");
+        closeBtn.setAttribute("id", "close-lightbox");
+
+        const closeIcon = document.createElement("i");
+        closeIcon.classList.add("lightbox__figure__close__icon");
+
+        closeBtn.appendChild(closeIcon);
+
         let media;
 
         if (medias[index].image) {
@@ -458,6 +467,7 @@ export class ComponentsFactory {
         if (medias[index].video) {
             media = document.createElement("video");
             media.classList.add("lightbox__figure__media");
+            media.setAttribute("controls", "true");
 
             const mediaSource = document.createElement("source");
             mediaSource.setAttribute("src", `../../assets/images/${photographerName.split(" ")[0]}/${medias[index].video}`);
@@ -471,6 +481,7 @@ export class ComponentsFactory {
         caption.classList.add("lightbox__figure__caption");
         caption.textContent = medias[index].title;
 
+        figure.appendChild(closeBtn);
         figure.appendChild(media);
         figure.appendChild(caption);
 
@@ -482,19 +493,9 @@ export class ComponentsFactory {
 
         nextBtn.appendChild(nextIcon);
 
-        const closeBtn = document.createElement("button");
-        closeBtn.classList.add("lightbox__close");
-        closeBtn.setAttribute("id", "close-lightbox");
-
-        const closeIcon = document.createElement("i");
-        closeIcon.classList.add("lightbox__close__icon");
-
-        closeBtn.appendChild(closeIcon);
-
         lightbox.appendChild(previousBtn);
         lightbox.appendChild(figure);
         lightbox.appendChild(nextBtn);
-        lightbox.appendChild(closeBtn);
 
         return lightbox;
     };
