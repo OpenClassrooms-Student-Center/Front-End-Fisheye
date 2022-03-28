@@ -424,4 +424,52 @@ export class ComponentsFactory {
 
         return card;
     };
+
+    getLightboxDOM = (data) => {
+        const lightbox = document.createElement("dialog");
+        lightbox.classList.add("lightbox");
+
+        const previousBtn = document.createElement("button");
+        previousBtn.classList.add("lightbox__previous");
+
+        const previousIcon = document.createElement("i");
+        previousIcon.classList.add("lightbox__previous__icon");
+
+        previousBtn.appendChild(previousIcon);
+
+        const figure = document.createElement("figure");
+        figure.classList.add("lightbox__figure");
+
+        const image = document.createElement("img");
+        image.classList.add("lightbox__figure__img");
+
+        const caption = document.createElement("figcaption");
+        caption.classList.add("lightbox__figure__caption");
+
+        figure.appendChild(image);
+        figure.appendChild(caption);
+
+        const nextBtn = document.createElement("button");
+        nextBtn.classList.add("lightbox__next");
+
+        const nextIcon = document.createElement("i");
+        nextIcon.classList.add("lightbox__next__icon");
+
+        nextBtn.appendChild(nextIcon);
+
+        const closeBtn = document.createElement("button");
+        closeBtn.classList.add("lightbox__close");
+
+        const closeIcon = document.createElement("i");
+        closeIcon.classList.add("lightbox__close__icon");
+
+        closeBtn.appendChild(closeIcon);
+
+        lightbox.appendChild(previousBtn);
+        lightbox.appendChild(figure);
+        lightbox.appendChild(nextBtn);
+        lightbox.appendChild(closeBtn);
+
+        return lightbox;
+    };
 }
