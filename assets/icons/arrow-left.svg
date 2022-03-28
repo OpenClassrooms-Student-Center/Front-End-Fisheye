@@ -2,7 +2,7 @@
 <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
 
 <!-- Created with Vectornator (http://vectornator.io/) -->
-<svg height="100%" stroke-miterlimit="10" style="fill-rule:nonzero;clip-rule:evenodd;stroke-linecap:round;stroke-linejoin:round;" version="1.1" viewBox="0 0 42 42" width="100%" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:vectornator="http://vectornator.io" xmlns:xlink="http://www.w3.org/1999/xlink">
+<svg height="100%" stroke-miterlimit="10" style="fill-rule:nonzero;clip-rule:evenodd;stroke-linecap:round;stroke-linejoin:round;" version="1.1" viewBox="0 0 320 512" width="100%" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:vectornator="http://vectornator.io" xmlns:xlink="http://www.w3.org/1999/xlink">
 <metadata>
 <vectornator:setting key="IsTimeLapseWatermarkDisabled" value="false"/>
 <vectornator:setting key="UndoHistoryDisabled" value="true"/>
@@ -22,6 +22,6 @@
 </metadata>
 <defs/>
 <g id="Untitled" vectornator:layerName="Untitled">
-<path d="M42 4.23L37.77 0L21 16.77L4.23 0L0 4.23L16.77 21L0 37.77L4.23 42L21 25.23L37.77 42L42 37.77L25.23 21L42 4.23Z" fill="#901c1c" fill-rule="evenodd" opacity="1" stroke="none"/>
+<path d="M224 480C215.812 480 207.62 476.875 201.38 470.625L9.38 278.625C-3.12 266.125-3.12 245.875 9.38 233.375L201.38 41.375C213.88 28.875 234.13 28.875 246.63 41.375C259.13 53.875 259.13 74.125 246.63 86.625L77.25 256L246.65 425.4C259.15 437.9 259.15 458.15 246.65 470.65C240.4 476.9 232.2 480 224 480Z" fill="#901c1c" fill-rule="evenodd" opacity="1" stroke="none"/>
 </g>
 </svg>
