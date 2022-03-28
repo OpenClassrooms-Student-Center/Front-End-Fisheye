@@ -77,6 +77,11 @@ h1 {
 .photographer_section article img {
     height: 200px;
     width: 200px;
+    /* éviter la déformation des thumbnails */
+    -o-object-fit: cover;
+       object-fit: cover;
+    /* intégrer les thumnails dans un cercle */
+    border-radius : 50%;
     /* Modifiez une propriété CSS dans style.css pour vérifier que tout est bien connecté. */
     /* border: 2px solid #901C1C; */
 }
