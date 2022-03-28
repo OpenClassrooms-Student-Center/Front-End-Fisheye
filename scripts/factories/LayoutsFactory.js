@@ -102,18 +102,16 @@ export class LayoutsFactory {
             mediaButton.addEventListener("click", () => {
                 const lightbox = componentsFactory.getLightboxDOM({ medias: photographer.medias, index, photographerName });
                 main.appendChild(lightbox);
+
+                const closeLightBox = document.getElementById("close-lightbox");
+
+                closeLightBox.addEventListener("click", () => {
+                    main.removeChild(document.querySelector(".lightbox"));
+                });
             });
 
             medias.appendChild(mediaDOM);
         });
-
-        if (document.querySelector(".lightbox")) {
-            const closeLightBox = document.getElementById("close-lightbox");
-
-            closeLightBox.addEventListener("click", () => {
-                main.removeChild(closeLightBox);
-            });
-        }
 
         mediasSection.appendChild(sortMedias);
         mediasSection.appendChild(medias);

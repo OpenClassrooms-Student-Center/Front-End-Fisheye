@@ -428,10 +428,6 @@ export class ComponentsFactory {
     getLightboxDOM = (data) => {
         const { medias, index, photographerName } = data;
 
-        console.log(medias);
-        console.log(index);
-        console.log(photographerName);
-
         const lightbox = document.createElement("dialog");
         lightbox.classList.add("lightbox");
 
