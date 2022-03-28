@@ -427,6 +427,8 @@ export class ComponentsFactory {
 
     getLightboxDOM = (data) => {
         const { medias, index, photographerName } = data;
+        let previousIndex;
+        let updatedIndex = index;
 
         const lightbox = document.createElement("dialog");
         lightbox.classList.add("lightbox");
@@ -492,6 +494,102 @@ export class ComponentsFactory {
         lightbox.appendChild(previousBtn);
         lightbox.appendChild(figure);
         lightbox.appendChild(nextBtn);
+
+        const previousMedia = () => {
+            previousIndex = updatedIndex;
+            updatedIndex--;
+            figure.removeChild(media);
+
+            if (medias[updatedIndex].image) {
+                media = document.createElement("img");
+                media.classList.add("lightbox__figure__media");
+                media.setAttribute("src", `../../assets/images/${photographerName.split(" ")[0]}/${medias[updatedIndex].image}`);
+                media.setAttribute("alt", medias[updatedIndex].title);
+            }
+
+            if (medias[updatedIndex].video) {
+                media = document.createElement("video");
+                media.classList.add("lightbox__figure__media");
+                media.setAttribute("controls", "true");
+
+                const mediaSource = document.createElement("source");
+                mediaSource.setAttribute("src", `../../assets/images/${photographerName.split(" ")[0]}/${medias[updatedIndex].video}`);
+                mediaSource.setAttribute("type", "video/mp4");
+                mediaSource.textContent = "Désolé, votre navigateur ne peut lire cette vidéo.";
+
+                media.appendChild(mediaSource);
+            }
+
+            figure.prepend(media);
+
+            caption.textContent = medias[updatedIndex].title;
+
+            if (updatedIndex === 0) {
+                previousIcon.classList.add("lightbox__previous__icon--disabled");
+                previousBtn.removeEventListener("click", previousMedia);
+            } else {
+                previousBtn.addEventListener("click", previousMedia);
+            }
+
+            if (previousIndex === medias.length - 1) {
+                nextIcon.classList.remove("lightbox__next__icon--disabled");
+                nextBtn.addEventListener("click", nextMedia);
+            }
+        };
+
+        const nextMedia = () => {
+            previousIndex = updatedIndex;
+            updatedIndex++;
+            figure.removeChild(media);
+
+            if (medias[updatedIndex].image) {
+                media = document.createElement("img");
+                media.classList.add("lightbox__figure__media");
+                media.setAttribute("src", `../../assets/images/${photographerName.split(" ")[0]}/${medias[updatedIndex].image}`);
+                media.setAttribute("alt", medias[updatedIndex].title);
+            }
+
+            if (medias[updatedIndex].video) {
+                media = document.createElement("video");
+                media.classList.add("lightbox__figure__media");
+                media.setAttribute("controls", "true");
+
+                const mediaSource = document.createElement("source");
+                mediaSource.setAttribute("src", `../../assets/images/${photographerName.split(" ")[0]}/${medias[updatedIndex].video}`);
+                mediaSource.setAttribute("type", "video/mp4");
+                mediaSource.textContent = "Désolé, votre navigateur ne peut lire cette vidéo.";
+
+                media.appendChild(mediaSource);
+            }
+
+            figure.prepend(media);
+
+            caption.textContent = medias[updatedIndex].title;
+
+            if (updatedIndex === medias.length - 1) {
+                nextIcon.classList.add("lightbox__next__icon--disabled");
+                nextBtn.removeEventListener("click", nextMedia);
+            } else {
+                nextBtn.addEventListener("click", nextMedia);
+            }
+
+            if (previousIndex === 0) {
+                previousIcon.classList.remove("lightbox__previous__icon--disabled");
+                previousBtn.addEventListener("click", previousMedia);
+            }
+        };
+
+        if (updatedIndex === 0) {
+            previousIcon.classList.add("lightbox__previous__icon--disabled");
+        } else {
+            previousBtn.addEventListener("click", previousMedia);
+        }
+
+        if (updatedIndex === medias.length - 1) {
+            nextIcon.classList.add("lightbox__next__icon--disabled");
+        } else {
+            nextBtn.addEventListener("click", nextMedia);
+        }
 
         return lightbox;
     };

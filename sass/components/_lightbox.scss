@@ -10,6 +10,7 @@
 
     &__previous {
         padding-right: 1.5rem;
+        cursor: default;
 
         &__icon {
             display: inline-block;
@@ -19,6 +20,11 @@
             background-image: url("../../assets/icons/arrow-left.svg");
             position: relative;
             cursor: pointer;
+
+            &--disabled {
+                background-image: url("../../assets/icons/arrow-left-disabled.svg");
+                cursor: default;
+            }
         }
     }
 
@@ -63,6 +69,7 @@
 
     &__next {
         padding-left: 1rem;
+        cursor: default;
 
         &__icon {
             display: inline-block;
@@ -72,6 +79,11 @@
             background-image: url("../../assets/icons/arrow-right.svg");
             position: relative;
             cursor: pointer;
+
+            &--disabled {
+                background-image: url("../../assets/icons/arrow-right-disabled.svg");
+                cursor: default;
+            }
         }
     }
 }
