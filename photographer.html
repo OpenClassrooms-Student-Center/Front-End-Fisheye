@@ -1,41 +1,100 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <link href="css/style.css" rel="stylesheet" type="text/css" />
     <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="icon" type="image/png" href="assets/favicon.png" />
     <link
-      href="https://fonts.googleapis.com/css?family=DM+Sans&display=swap"
+    rel="stylesheet"
+    href="https://use.fontawesome.com/releases/v5.15.4/css/all.css"
+    integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm"
+    crossorigin="anonymous"
+  />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,700;1,400;1,500;1,700&display=swap"
       rel="stylesheet"
     />
-    <title>Fisheye - photographe</title>
+    <link href="./style.css" rel="stylesheet" />
+    <link href="./normalize.css" rel="stylesheet" />
+    <title>Fisheye - photographer</title>
+    <script defer type="module" src="scripts/api.js"></script>
+    <script defer type="module" src="scripts/index.js"></script>
+    <script defer type="module" src="./scripts/photographer-profil.js"></script>
+    <script defer type="module" src="./scripts/modal.js"></script>
   </head>
   <body>
-    <header>
-      <img src="assets/images/logo.png" class="logo" />
+    <header class="home-page-header" role="banner">
+      <a href="./index.html" title="Fisheye Accueil">
+        <img
+          src="./assets/images/logo.png"
+          alt="page d'accueil de fisheye"
+          class="logo"
+        />
+      </a>
     </header>
-    <main id="main">
-      <div class="photograph-header">
-        <button class="contact_button" onclick="displayModal()">
-          Contactez-moi
-        </button>
+    <main>
+      <!-- Profil photographe -->
+      <header class="photographers-header">
+        <section id="ph-profil-header"></section>
+      </header>
+      <!-- Dropdown -->
+      <div class="works-sort">
+        <span id="sort-text">Trier par</span>
+        <div id="sort-wrapper">
+          <button class="sort-btn" aria-haspopup="listbox">Popularité</button>
+          <ul class="hidden-sort" role="listbox">
+            <li class="sort" role="option">
+              Popularité 
+            </li>
+            <li class="sort" role="option">Date</li>
+            <li class="sort" role="option">Tître</li>
+          </ul>
+        </div>
       </div>
-    </main>
-    <div id="contact_modal">
-      <div class="modal">
-        <header>
-          <h2>Contactez-moi</h2>
-          <img src="assets/icons/close.svg" onclick="closeModal()" />
-        </header>
-        <form>
-          <div>
-            <label>Prénom</label>
-            <input />
-          </div>
-          <button class="contact_button">Envoyer</button>
+      <!--galerie de photos et videos-->
+      <section id="photographer-gallery"></section>
+       <!-- Formulaire modal -->
+       <div role="dialog" id="form-container" aria-label="Contactez-moi">
+        <form method="POST" id="contact-form">
+            <header aria-label="contact form header">
+                <h1 id="form-title">
+                    <span>Contactez-moi</span>
+                    <span id="photograph-name"></span>
+                </h1>
+                <button id="close-btn" title="Close form" type="button" class="fas fa-times close-icon" ></i></button>
+            </header>
+       
+            <div class="form-data" >
+                <label for="first-name" id="first-name">Prénom</label>
+                <input type="text" name="first-name" id="first-name"  aria-labelledby="first-name"
+                aria-required="true" placeholder="Exemple: Loic">
+            </div>
+       
+            <div class="form-data">
+                <label for="last-name" id="last-name">Nom</label>
+                <input type="text" name="last-name" id="last-name" aria-labelledby="last-name"
+                aria-required="true" placeholder="Exemple: Anael">
+            </div>
+       
+            <div class="form-data" >
+                <label for="email" id="email">Email</label>
+                <input type="email"  name="email" id="email" aria-labelledby="email"
+                aria-required="true" placeholder="Exemple: nom@gmail.com">
+            </div>
+ 
+            <div class="form-data" >
+                <label for="message" id="message">Message</label>
+                <textarea  name="message" id="message" cols="20" rows="4"
+                aria-required="true" aria-labelledby="message" placeholder="Votre message"></textarea>
+            </div>
+            <button type="submit" name="envoyer le formulaire" class="form-submit" title="Send">Envoyer</button>
         </form>
-      </div>
     </div>
-    <script src="/scripts/utils/contactForm.js"></script>
+
+ 
+    <!--<script src="/scripts/utils/contactForm.js"></script>-->
   </body>
 </html>

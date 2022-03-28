@@ -1,7 +1,6 @@
 // recuperatation des donnees sources
 export async function getDataPhotographers() {
   const response = await fetch("./data/photographers.json");
-  console.log(response);
   const dataFisheye = await response.json();
   console.log(dataFisheye);
   const dataPhotographers = [...dataFisheye.photographers];
