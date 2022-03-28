@@ -426,6 +426,12 @@ export class ComponentsFactory {
     };
 
     getLightboxDOM = (data) => {
+        const { medias, index, photographerName } = data;
+
+        console.log(medias);
+        console.log(index);
+        console.log(photographerName);
+
         const lightbox = document.createElement("dialog");
         lightbox.classList.add("lightbox");
 
@@ -440,13 +446,32 @@ export class ComponentsFactory {
         const figure = document.createElement("figure");
         figure.classList.add("lightbox__figure");
 
-        const image = document.createElement("img");
-        image.classList.add("lightbox__figure__img");
+        let media;
+
+        if (medias[index].image) {
+            media = document.createElement("img");
+            media.classList.add("lightbox__figure__media");
+            media.setAttribute("src", `../../assets/images/${photographerName.split(" ")[0]}/${medias[index].image}`);
+            media.setAttribute("alt", medias[index].title);
+        }
+
+        if (medias[index].video) {
+            media = document.createElement("video");
+            media.classList.add("lightbox__figure__media");
+
+            const mediaSource = document.createElement("source");
+            mediaSource.setAttribute("src", `../../assets/images/${photographerName.split(" ")[0]}/${medias[index].video}`);
+            mediaSource.setAttribute("type", "video/mp4");
+            mediaSource.textContent = "Désolé, votre navigateur ne peut lire cette vidéo.";
+
+            media.appendChild(mediaSource);
+        }
 
         const caption = document.createElement("figcaption");
         caption.classList.add("lightbox__figure__caption");
+        caption.textContent = medias[index].title;
 
-        figure.appendChild(image);
+        figure.appendChild(media);
         figure.appendChild(caption);
 
         const nextBtn = document.createElement("button");
@@ -459,6 +484,7 @@ export class ComponentsFactory {
 
         const closeBtn = document.createElement("button");
         closeBtn.classList.add("lightbox__close");
+        closeBtn.setAttribute("id", "close-lightbox");
 
         const closeIcon = document.createElement("i");
         closeIcon.classList.add("lightbox__close__icon");
