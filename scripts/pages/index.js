@@ -13,8 +13,12 @@
 
         photographers.forEach((photographer) => {
             const photographerModel = photographerFactory(photographer);
+
+            console.log(photographer)
             const userCardDOM = photographerModel.getUserCardDOM();
             photographersSection.appendChild(userCardDOM);
+            
+            console.log(userCardDOM)
         });
     };
 

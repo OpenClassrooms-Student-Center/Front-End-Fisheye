@@ -21,6 +21,10 @@ header, .logo, h1 {
     padding-top: 20px;
 }
 
+a {
+    color: #901C1C;
+    text-decoration: none;
+}
 
 @media screen and (max-width: 700px) {
     header, h1 {
@@ -70,8 +74,28 @@ h1 {
 }
 
 .photographer_section article h2 {
-    color: #901C1C; /* #D3573C; */
+    color: #D3573C;
     font-size: 36px;
+    margin-bottom: 5px;
+}
+
+.photographer_section article h3 {
+    font-size: 10px;
+    margin: 5px;
+}
+
+.photographer_section article h4 {
+    color: #757575;
+    font-size: 9px;
+    margin-top: 0;
+}
+
+
+
+.photographer_section article p {
+    color: #901C1C;
+    font-size: 13px;
+    margin: 0;
 }
 
 .photographer_section article img {
