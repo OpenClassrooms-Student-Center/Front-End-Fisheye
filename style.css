@@ -217,56 +217,56 @@ a {
   cursor: pointer;
 }
 
-#form-container {
+#container {
   position: fixed;
   top: 0;
   left: 0;
   display: none;
   justify-content: center;
   align-items: center;
-  background-color: #0a0a0a77;
+  background-color: #00000080;
   width: 100vw;
   height: 100vh;
 }
-#form-container #contact-form {
+#container #contact-form {
   border-radius: 5px;
   width: 40vw;
-  background: #e08976;
+  background: #db8876;
   display: flex;
   flex-direction: column;
   padding: 2rem 2rem;
   height: 90vh;
 }
-#form-container #contact-form header {
+#container #contact-form header {
   display: flex;
   justify-content: space-between;
   margin: -0.3rem 0.3rem 1.25rem 0;
 }
-#form-container #contact-form header h1 {
+#container #contact-form header h1 {
   font-size: 3em;
   font-weight: 400;
 }
-#form-container #contact-form header .close-icon {
+#container #contact-form header .close-icon {
   color: #fff;
   font-size: 30px;
   margin-top: 8px;
 }
-#form-container #contact-form .form-data {
+#container #contact-form .form-data {
   display: flex;
   flex-direction: column;
 }
-#form-container #contact-form .form-data label {
+#container #contact-form .form-data label {
   font-size: 26px;
   margin-top: 8px;
 }
-#form-container #contact-form .form-data input,
-#form-container #contact-form .form-data textarea {
+#container #contact-form .form-data input,
+#container #contact-form .form-data textarea {
   border: none;
   border-radius: 0.3rem;
   font-size: 26px;
   padding: 0.3rem;
 }
-#form-container #contact-form .form-submit {
+#container #contact-form .form-submit {
   background: #901c1c;
   color: #fff;
   font-size: 1em;

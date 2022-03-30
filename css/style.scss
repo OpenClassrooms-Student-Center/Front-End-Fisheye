@@ -215,20 +215,20 @@ a {
   }
 }
 //style pour la modale de contact
-#form-container {
+#container {
   position: fixed;
   top: 0;
   left: 0;
   display: none;
   justify-content: center;
   align-items: center;
-  background-color: #0a0a0a77;
+  background-color: #00000080;
   width: 100vw;
   height: 100vh;
   #contact-form {
     border-radius: 5px;
     width: 40vw;
-    background: #e08976;
+    background: #db8876;
     display: flex;
     flex-direction: column;
     padding: 2rem 2rem;

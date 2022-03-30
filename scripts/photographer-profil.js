@@ -1,16 +1,16 @@
 // Création Profil Photographe
 "use strict";
 import { getDataPhotographers } from "./api.js";
+import Modal from "./modal.js";
 
 export async function displayPhotographerProfil(dataFisheye) {
   const PHOTOGRAPHERS_DATA = dataFisheye.dataPhotographers;
   console.log(PHOTOGRAPHERS_DATA);
   //recuperation de la valeur de ID dans l'URL
-  const ID = window.location.search.substring(1).split("=")[1];
+  /*const ID = window.location.search.substring(1).split("=")[1];*/
 
-  /*DEUXIEME METHODE
   let searchParam = new URLSearchParams(window.location.search);
-  const ID = searchParam.get("id");*/
+  const ID = searchParam.get("id");
   const PHOTOGRAPHERS = PHOTOGRAPHERS_DATA.filter(
     (photographer) => photographer.id == ID
   );
@@ -31,4 +31,5 @@ export async function displayPhotographerProfil(dataFisheye) {
 
   photographerProfileArticle.innerHTML = templatePhotographerProfil;
 }
+new Modal.manageModal(PHOTOGRAPHERS_DATA);
 displayPhotographerProfil(await getDataPhotographers());
