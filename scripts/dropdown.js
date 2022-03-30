@@ -16,4 +16,4 @@ export async function openSort() {
     );
   }
 }
-openSort();
+

@@ -30,4 +30,4 @@ export async function displayPhotographerProfil(dataFisheye) {
 
   photographerProfileArticle.innerHTML = templatePhotographerProfil;
 }
-displayPhotographerProfil(await getDataPhotographers());
+

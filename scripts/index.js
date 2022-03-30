@@ -1,7 +1,7 @@
 "use strict";
 import { createPhotographer } from "./factories/photographer.js";
-import { getDataPhotographers } from "./api.js";
-import { openSort } from "./dropdown.js";
+
+
 
 // Récupération du tableau des photographes
 export function displayPhotographers(data) {
@@ -12,6 +12,3 @@ export function displayPhotographers(data) {
     photographersSection.appendChild(createPhotographer(photographer));
   });
 }
-// Création Page d'Accueil
-displayPhotographers(await getDataPhotographers());
-await openSort();
