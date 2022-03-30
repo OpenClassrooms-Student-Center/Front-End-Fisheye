@@ -4,7 +4,7 @@
 
         console.log(data)
     return {
-        photographers: data.photographers // could be return ({ photographers: [...data.photographers] })
+        photographers: data.photographers // could be: return ({ photographers: [...data.photographers] })
     };
 }
 
