@@ -1,5 +1,4 @@
-function hydrateArticleFactory(data) {
-    console.log(data);
+function hydratePresentationFactory(data) {
     const{name, portrait} = data;
     const avatar = `../assets/Sample_Photos/PhotographersID/${portrait}`;
     getHydratingPage();
@@ -17,7 +16,10 @@ function hydrateArticleFactory(data) {
         quote.textContent = data.tagline;
         document.querySelector("#main").appendChild(page);
     }
+    function getPhotographerName () {
+        return name
+    }
 }
 
 
-export default hydrateArticleFactory
+export default hydratePresentationFactory

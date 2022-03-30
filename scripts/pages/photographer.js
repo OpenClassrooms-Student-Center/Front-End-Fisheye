@@ -1,23 +1,48 @@
-import hydrateArticleFactory from "../factories/photographerPage.js";
+import hydratePresentationFactory from "../factories/photographerPage.js";
+import hydratePhotoFactory from "../factories/photo.js";
 
 async function initPhotographe() {
-    const articleId = getArticleId();
-    await getArticle(articleId);
+    const photographerId = getphotographerId();
+    await getPresentation(photographerId);
+    await getPhotos(photographerId)
 }
 
-function getArticleId() {
+function getphotographerId() {
     return new URL(location.href).searchParams.get("id")
 }
 
-async function getArticle(articleId) {
+async function getPresentation(photographerId) {
     fetch("../data/photographers.json")
         .then(res => res.json())
         .then(data => {
-            return data.photographers.filter((photographe)=> photographe.id === parseInt(articleId, 10))
+            return data.photographers.filter((photographe)=> photographe.id === parseInt(photographerId, 10))
         })
         .then(filtingphotographe => {
-            const photographe = filtingphotographe;
-            hydrateArticleFactory(photographe[0])
+          
+            hydratePresentationFactory(filtingphotographe[0])
+            return (filtingphotographe[0].name)
+        })
+}
+async function getPhotos(photographerId) {
+    fetch("../data/photographers.json")
+        .then(res => res.json())
+        .then(data => {
+            console.log(data)
+            const photos = data.media.filter((photo)=> photo.photographerId === parseInt(photographerId, 10))
+            const name = data.photographers.filter((photographer) => photographer.id === parseInt(photographerId, 10))
+            return [photos, name[0].name]
+        })
+        .then(data => {
+           
+            console.log(data[0])
+            const photosId = data[0]
+            const name = data[1]
+            console.table(photosId)
+            photosId.forEach((photo) => {
+                
+                hydratePhotoFactory(photosId, name)
+            })
+           
         })
 }
 
