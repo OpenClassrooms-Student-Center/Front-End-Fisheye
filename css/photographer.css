@@ -2,10 +2,44 @@
     display: none;
 }
 
+#carousel_modal{
+    display:none;
+}
+
+/***** PHOTOGRAPHER HEADER *****/
 .photograph-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 10vw;
     background-color: #FAFAFA;
     height: 300px;
     margin: 0 100px;
+}
+
+.photograph-header img {
+    height: 200px;
+    width: 200px;
+    border-radius: 500px;
+    object-fit: cover;
+}
+
+.photograph-header h2 {
+    color: #D3573C;
+    font-size: 36px;
+    margin: 0;
+    padding: 0;
+}
+
+.photograph-header h3 {
+    color: #901C1C;
+    margin: 0;
+    padding: 0;
+}
+
+.photograph-header h4 {
+    margin: 0;
+    padding: 0;
 }
 
 .contact_button {
@@ -21,6 +55,201 @@
     cursor: pointer;
 }
 
+
+/***** SORTING MENU *****/
+a{
+    color: white;
+}
+
+a:visited{
+    color: white;
+}
+
+.sort{
+    margin:0 6vw;
+    padding: 0;
+    display: flex;
+    position: relative;
+    z-index: 100;
+}
+
+#openMenuButton{
+    cursor: pointer;
+    position:absolute;
+    right: 10px;
+    top:15px;
+    border:none;
+    background-color: transparent;
+    color: white;
+    transform: rotate(360deg);
+    transition: 100ms;
+}
+
+#openMenuButton.reverse{
+    transform: rotate(180deg);
+    transition: 100ms;
+}
+
+#sortingMenu{
+    background-color: #901C1C;
+    font-weight: bold;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: -10px;
+    margin-left: 20px;
+    width: 130px;
+    position: absolute;
+    left : 5vw;
+    padding: 0 10px;
+    border: solid 2px transparent;
+}
+
+.option{
+    
+    padding: 11px;
+    margin: 0;
+    display: none;
+}
+.option.selected{
+    display: block;
+}
+
+.menuOpened{
+    display: block;
+    z-index: 10;
+    border-bottom: solid 1px white;
+}
+.menuOpened.last{
+    border-bottom: none;
+}
+
+/***** MEDIA CONTAINER *****/
+
+.media_container{
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+.media{
+    margin: 5vw ;
+    padding: 0;
+    width: 22vw;
+    height: 20vw;
+}
+
+.media img,
+.media video{
+    width: 100%;
+    height: 100%;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.media img{
+    object-fit: cover;
+}
+.titleAndLikes{
+    display: flex;
+    justify-content: space-between;
+}
+
+.title{
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.likes{
+    display: flex;
+}
+
+.title,
+.fa-heart{
+    color:#901C1C;
+}
+
+.fa-heart{
+    cursor: pointer;
+}
+
+
+/***** TOTAL Nb of LIKES *****/
+
+.totalLikes{
+    position:absolute;
+    position: fixed;
+    bottom:0;
+    right:20px;
+    background-color: #DB8876;
+    width: 200px;
+    height: 30px;
+    display: flex;
+    justify-content: space-between;
+    padding: 0 20px;
+    align-items: center;
+}
+.totalLikes .fa-heart{
+    color: black;
+}
+
+/***** CAROUSEL *****/
+
+#carousel_modal{
+    position: absolute;
+    position: fixed;
+    left: 0;
+    top: 0;
+    height: 100vh;
+    width: 100vw;
+    background: white;
+    color: #901C1C;
+    z-index: 100;
+}
+#carousel_modal .fas,
+#carousel_modal div{
+    position: absolute;
+    font-size: 3rem;
+    cursor: pointer;
+}
+#left-arrow{
+    top:50vh;
+    left:5vh;
+}
+#right-arrow{
+    top:50vh;
+    right:10vh;
+}
+#close{
+    top:2vh;
+    right:2vh;
+}
+
+.carousel_media{
+    height: 80vh;
+    width: 80vw;
+    position: absolute;
+    top: 10vh;
+    left: 15vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.carousel_media img,
+.carousel_media video{
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: scale-down;
+    border-radius: 5px;
+}
+
+
+
+/***** CONTACT FORM (MODAL) *****/
+
 .modal {
     border-radius: 5px;
     background-color: #DB8876;
@@ -29,23 +258,40 @@
     flex-direction: column;
     align-items: center;
     justify-content: space-between;
-    padding: 35px;
+    padding: 0 35px;
     margin: auto;
+    position: absolute;
+    top:5vh;
+    left:50%;
+    transform: translateX(-50%);
+    z-index: 100;
 }
 
 .modal header {
     justify-content: space-between;
     width: 100%;
+    height: fit-content;
+}
+
+.contactHeader{
+    margin: 0;
+    padding: 0;
+    line-height: 1rem;
+    max-height: 100%;
+    font-size: 30px;
+    font-weight: normal;
+    text-align: left;
+}
+
+.contactHeader h2{
+    margin: 0;
+    padding: 20px 0;
 }
 
 .modal header img {
+    padding-top: 20px;
     cursor: pointer;
-}
-
-.modal header h2 {
-    font-size: 64px;
-    font-weight: normal;
-    text-align: center;
+    align-self: flex-start;
 }
 
 form {
@@ -53,11 +299,12 @@ form {
     width: 100%;
     flex-direction: column;
     align-items: flex-start;
+    margin-bottom: 20px;
 }
 
 form label {
     color: #312E2E;
-    font-size: 36px;
+    font-size: 30px;
 }
 
 form div {
@@ -65,12 +312,20 @@ form div {
     flex-direction: column;
     width: 100%;
     align-items: self-start;
-    margin-bottom: 26px;
+    margin-bottom: 20px;
 }
 
 form input {
     width: 100%;
-    height: 68px;
+    height: 50px;
     border: none;
     border-radius: 5px;
+}
+
+#message{
+    height: 100px;
+}
+
+.off{
+    background-color: gray;
 }
