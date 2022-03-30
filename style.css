@@ -217,7 +217,7 @@ a {
   cursor: pointer;
 }
 
-#container {
+#modal-container {
   position: fixed;
   top: 0;
   left: 0;
@@ -228,7 +228,7 @@ a {
   width: 100vw;
   height: 100vh;
 }
-#container #contact-form {
+#modal-container #contact-form {
   border-radius: 5px;
   width: 40vw;
   background: #db8876;
@@ -237,36 +237,36 @@ a {
   padding: 2rem 2rem;
   height: 90vh;
 }
-#container #contact-form header {
+#modal-container #contact-form header {
   display: flex;
   justify-content: space-between;
   margin: -0.3rem 0.3rem 1.25rem 0;
 }
-#container #contact-form header h1 {
+#modal-container #contact-form header h1 {
   font-size: 3em;
   font-weight: 400;
 }
-#container #contact-form header .close-icon {
+#modal-container #contact-form header .close-icon {
   color: #fff;
   font-size: 30px;
   margin-top: 8px;
 }
-#container #contact-form .form-data {
+#modal-container #contact-form .form-data {
   display: flex;
   flex-direction: column;
 }
-#container #contact-form .form-data label {
+#modal-container #contact-form .form-data label {
   font-size: 26px;
   margin-top: 8px;
 }
-#container #contact-form .form-data input,
-#container #contact-form .form-data textarea {
+#modal-container #contact-form .form-data input,
+#modal-container #contact-form .form-data textarea {
   border: none;
   border-radius: 0.3rem;
   font-size: 26px;
   padding: 0.3rem;
 }
-#container #contact-form .form-submit {
+#modal-container #contact-form .form-submit {
   background: #901c1c;
   color: #fff;
   font-size: 1em;

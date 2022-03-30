@@ -20,11 +20,8 @@
     <link href="./style.css" rel="stylesheet" />
     <link href="./normalize.css" rel="stylesheet" />
     <title>Fisheye - photographer</title>
-    <script defer type="module" src="scripts/api.js"></script>
-    <script defer type="module" src="scripts/index.js"></script>
-    <script defer type="module" src="./scripts/photographer-profil.js"></script>
-    <script defer type="module" src="./scripts/modal.js"></script>
-  
+    <script defer type="module" src="scripts/app.js"></script>
+   
   </head>
   <body>
     <header class="home-page-header" role="banner">
@@ -58,14 +55,14 @@
       <!--galerie de photos et videos-->
       <section id="photographer-gallery"></section>
        <!-- Formulaire modal -->
-       <div role="dialog" id="container" aria-label="Contactez-moi">
+       <div role="dialog" id="modal-container"  aria-label="Contactez-moi">
         <form method="POST" id="contact-form">
             <header aria-label="contact form header">
                 <h1 id="form-title">
                     <span>Contactez-moi</span>
                     <span id="photograph-name"></span>
                 </h1>
-                <button id="close-btn" title="Close form" type="button" class="fas fa-times close-icon" ></i></button>
+                <button id="close-btn" title="Close form" type="button" class="fas fa-times close-icon" ></button>
             </header>
        
             <div class="form-data" >
