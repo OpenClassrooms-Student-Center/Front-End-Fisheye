@@ -5,34 +5,85 @@
     <meta charset="utf-8">
     <link rel="icon" href="assets/icons/favicon.svg">
     <link href="https://fonts.googleapis.com/css?family=DM+Sans&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/892f98a91b.js" crossorigin="anonymous"></script>
     <title>Fisheye - photographe </title>
   </head>
   <body>
     <header>
-      <a href="index.html">
-        <img src="assets/images/logo.png" class="logo">
-      </a>
+      <a href=index.html><img src="assets/images/logo.png" class="logo" alt="lien vers la page principale"/></a>
     </header>
-    <main id="main">
+    <main id="main" aria-hidden="false">
       <div class="photograph-header">
         <button class="contact_button" onclick="displayModal()">Contactez-moi</button>
       </div>
+
+
+      <div class="sort" aria-label="triez les photos par titre, date ou popularité">Trier par
+        <container id="sortingMenu" aria-haspopup="true"  aria-expanded="false"
+        aria-label="Tirez par" tabindex="0">
+          <button id="openMenuButton" class="chevron-icon fas fa-chevron-down" aria-label="cliquez pour ouvrir le menu"></button>
+          <span class="option selected" id="option1" tabindex="-1">Nom</span>
+          <span class="option" id="option2" tabindex="-1">Date</span>
+          <span class="option last" id="option3" tabindex="-1">Popularité</span>
+        </container>
+      </div>
+
+      <div class="media_container">
+      </div>
+      <div class="totalLikes" role="complementary">
+          <div class=photographerLikes></div>
+          <div class=price></div>
+      </div>
     </main>
-    <div id="contact_modal">
+
+    <div id="contact_modal" aria-hidden="true" role="dialog" aria-describedby="modalTitle" tabindex="-1">
 			<div class="modal">
 				<header>
-          <h2>Contactez-moi</h2>
-          <img src="assets/icons/close.svg" onclick="closeModal()" />
+          <div class="contactHeader" tabindex="0" aria-label="contactez le photographe">
+            <h2 id="modalTitle" >Contactez-moi</h2>
+            <h2 id="photographerName"></h2>
+          </div>
+          <img src="assets/icons/close.svg" onclick="closeModal()" alt="fermer le formulaire de contact" tabindex="0"/>
         </header>
 				<form>
 					<div>
-						<label>Prénom</label>
-						<input />
+						<label for="firstName">Prénom</label>
+						<input id="firstName"/>
+            <div id='logFirstName'></div>
 					</div>
-          <button class="contact_button">Envoyer</button>
+          <div>
+						<label for="familyName">Nom</label>
+						<input id="familyName"/>
+            <div id='logFamilyName'></div>
+					</div>
+          <div>
+						<label for="email">Email</label>
+						<input id="email"/>
+            <div id="logEmail"></div>
+					</div>
+          <div>
+						<label for="message">Votre message</label>
+						<input id="message"/>
+					</div>
+          <button class="contact_button" aria-label="bouton d'envoi" id="send">Envoyer</button>
 				</form>
 			</div>
 		</div>
-    <script src="/scripts/utils/contactForm.js"></script>
+    <div id="carousel_modal" aria-hidden="true" role="dialog" aria-label="carousel d'images" tabindex="-1">
+      <div id="left-arrow"></div>
+      <div id="right-arrow"></div>
+      <div id="close"></div>
+      <div class="carousel_media"></div>
+    </div>
+
+    <!-- <script src="scripts/factories/media.js"></script>
+    <script src="scripts/utils/sortMedia.js"></script>
+    <script src="scripts/utils/likes.js"></script>
+    <script src="scripts/utils/adaMenu.js"></script>
+    <script src="scripts/utils/adaModals.js"></script>
+    <script src="scripts/utils/contactForm.js"></script>
+    <script src="scripts/utils/loadJsonData.js"></script>
+    <script src="scripts/utils/carousel.js"></script> -->
+    <script src="scripts/pages/photographer.js"></script>
   </body>
 </html>
