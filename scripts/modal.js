@@ -16,28 +16,31 @@ export function contactModal(PHOTOGRAPHERS) {
   const errMessage = document.querySelector(".error-message");
   //fonction d'ouverture et fermeture du formulaire
   function launchModal() {
+      formFocus();
     modalBg.style.display = "flex";
     let phName = `${PHOTOGRAPHERS[0].name}`;
     modalPhName.innerHTML = phName;
   }
   function closeModal() {
+      formBlur();
     modalBg.style.display = "none";
+    form.reset();
   }
   modalBtn.addEventListener("click", launchModal);
   modalCloseBtn.addEventListener("click", closeModal);
-
+  //validation du formuaire
   submitBtn.addEventListener("click", (e) => {
     e.preventDefault();
-    let error = 0;
+    let isValid = 0;
     if (firstName.value < 2) {
       errName.setAttribute(
         "data-error",
         "veillez saisir deux (2) carateres minimum"
       );
       errName.setAttribute("data-error-visible", "true");
-      error++;
     } else {
       errName.setAttribute("data-error-visible", "false");
+      isValid++;
     }
     if (lastName.value < 2) {
       errSurname.setAttribute(
@@ -45,30 +48,47 @@ export function contactModal(PHOTOGRAPHERS) {
         "veillez saisir deux (2) carateres minimum"
       );
       errSurname.setAttribute("data-error-visible", "true");
-      error++;
     } else {
       errSurname.setAttribute("data-error-visible", "false");
+      isValid++;
     }
-    const emailRegex = /^([]+)@((?:[w]+.))/;
-    if (!emailRegex.test(email.value)) {
+    if (!email.value) {
       errEmail.setAttribute(
         "data-error",
         "merci de saisir une adresse E-mail valide"
       );
       errEmail.setAttribute("data-error-visible", "true");
-      error++;
     } else {
       errEmail.setAttribute("data-error-visible", "false");
+      isValid++;
     }
     if (!message.value) {
       errMessage.setAttribute("data-error", "veillez saisir votre message");
       errMessage.setAttribute("data-error-visible", "true");
-      error++;
     } else {
       errMessage.setAttribute("data-error-visible", "false");
+      isValid++;
     }
-    if (error >= 4) {
-      modalBg.style.display = "flex";
+    if (isValid === 4) {
+      modalBg.style.display = "none";
+      form.reset();
     }
-  });
+});
+//fermeture de la modale avec les touches Tab et Retour
+function tabClose(event){
+    if(event.keyCode === 27 && event.keyCode === 8) {
+        modalBg.style.display = "none";
+        form.reset();
+    };
+}
+window.addEventListener("keydown", tabClose);
+//fonction pour lecture d'outils d'assistance
+function formFocus () {
+    form.focus();
+    modalBg.setAttribute("tabindex", "1");
+}
+function formBlur () {
+    form.blur();
+    modalBg.setAttribute("tabindex","0");
+}
 }

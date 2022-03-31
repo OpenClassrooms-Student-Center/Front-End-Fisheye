@@ -55,7 +55,7 @@
       <!--galerie de photos et videos-->
       <section id="photographer-gallery"></section>
        <!-- Formulaire modal -->
-       <div role="dialog" id="modal-container"  aria-label="Contactez-moi">
+       <div role="dialog" id="modal-container"  aria-label="Contactez-moi" tabindex="0">
         <form method="POST" id="contact-form">
             <header aria-label="contact form header">
                 <h1 id="form-title">
@@ -68,25 +68,25 @@
             <div class="form-data error-name" >
                 <label for="first-name" id="label-firstname">Prénom</label>
                 <input type="text" class="text-control" name="first-name" id="first-name"  aria-labelledby="label-firstname"
-                aria-required="true" placeholder="Exemple: Loic">
+                aria-required="true" placeholder="Exemple: Loic" required>
             </div>
        
             <div class="form-data error-surname">
                 <label for="last-name" id="label-last-name">Nom</label>
                 <input type="text" class="text-control" name="last-name" id="last-name" aria-labelledby="label-last-name"
-                aria-required="true" placeholder="Exemple: Anael">
+                aria-required="true" placeholder="Exemple: Anael" required>
             </div>
        
             <div class="form-data error-email" >
                 <label for="email" id="label-email">Email</label>
                 <input type="email" class="text-control"  name="email" id="email" aria-labelledby="label-email"
-                aria-required="true" placeholder="Exemple: nom@gmail.com">
+                aria-required="true" placeholder="Exemple: nom@gmail.com" required>
             </div>
  
             <div class="form-data error-message" >
                 <label for="message" id="label-message">Message</label>
                 <textarea class="text-control" name="message" id="message" cols="20" rows="4"
-                aria-required="true" aria-labelledby="label-message" placeholder="Votre message"></textarea>
+                aria-required="true" aria-labelledby="label-message" placeholder="Votre message" required></textarea>
             </div>
             <button type="submit" id="submit" name="envoyer le formulaire" class="form-submit" title="Send">Envoyer</button>
         </form>

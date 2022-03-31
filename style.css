@@ -261,7 +261,6 @@ a {
 }
 #modal-container #contact-form .form-data input,
 #modal-container #contact-form .form-data textarea {
-  border: none;
   border-radius: 0.3rem;
   font-size: 26px;
   padding: 0.3rem;
@@ -289,24 +288,27 @@ button {
   color: #860606;
   display: block;
   margin: 7px 0;
-  text-align: right;
   line-height: 0.3;
+  text-align: left;
   opacity: 0;
-  transition: 0.3s;
 }
 
 .form-data[data-error-visible=true]::after {
   opacity: 1;
 }
 
+.form-data .text-control {
+  border: transparent;
+}
+
 .form-data[data-error-visible=true] .text-control {
-  border: 2px solid #e54858;
+  border: 2px solid red;
 }
 
 input[data-error]::after {
   content: attr(data-error);
   font-size: 0.4em;
-  color: #720808;
+  color: #860606;
 }
 
 /*# sourceMappingURL=style.css.map */
