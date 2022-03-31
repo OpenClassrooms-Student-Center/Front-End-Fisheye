@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html>
   <head>
     <link href="css/style.css" rel="stylesheet" type="text/css" />
     <meta charset="utf-8">
@@ -9,117 +9,30 @@
   </head>
   <body>
     <header>
-      <a tabindex="0" href="/">
-        <img src="assets/images/logo.png" alt="Fisheye Home page" class="logo" />
+      <a href="index.html">
+        <img src="assets/images/logo.png" class="logo">
       </a>
     </header>
     <main id="main">
-      <!-- photograph-header -->
-      <header class="photograph-header">
-        <!-- left -->
-        <div class="photograph-header_left">
-          <h1 tabindex="1" id="photograph-name"></h1>
-          <div tabindex="2">
-            <p id="photograph-city"></p>
-            <p id="photograph-tagline"></p>
-          </div>
-        </div>
-        <!-- middle -->
-        <div class="photograph-header_middle">
-          <button tabindex="3" title="Contact me" class="contact_button" onclick="displayContactModal()">Contactez-moi</button>
-        </div>
-        <!-- right -->
-        <div class="photograph-header_right">
-          <img tabindex="4" id="photograph-img" src="" alt="">
-        </div>
-      </header>
-      <!-- photograph-infos -->
-      <aside tabindex="6" class="photograph-infos">
-        <!-- likes -->
-        <div class="photograph-infos_likes">
-          <p id="photograph-infos-likes"></p>
-          <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="heart" role="img" viewBox="0 0 512 512"><path d="M462.3 62.6C407.5 15.9 326 24.3 275.7 76.2L256 96.5l-19.7-20.3C186.1 24.3 104.5 15.9 49.7 62.6c-62.8 53.6-66.1 149.8-9.9 207.9l193.5 199.8c12.5 12.9 32.8 12.9 45.3 0l193.5-199.8c56.3-58.1 53-154.3-9.8-207.9z"></path></svg>
-        </div>
-        <!-- price -->
-        <div class="photograph-infos_price">
-          <p>
-            <span id="photograph-infos-price"></span>€ / jour
-          </p>
-        </div>
-      </aside>
-      <!-- photograph-medias-filters -->
-      <section class="photograph-medias-filters">
-        <p tabindex="7">
-          Trier par
-        </p>
-        <select tabindex="8" onchange="filterChange(this.value)" title="Order by" name="order" id="order-filter">
-          <option value="popularity">Popularité</option>
-          <option value="date">Date</option>
-          <option value="title">Titre</option>
-        </select>
-      </section>
-      <!-- photograph-medias -->
-      <section class="photograph-medias_section"></section>
-    </main>
-    <!-- media modal -->
-    <div tabindex="1" class="media-modal" aria-label="image closeup view" id="media_modal">
-      <!-- content -->
-      <div class="media-modal-content">
-        <div class="media-modal-img">
-          <div class="media-modal-img-container">
-            <img tabindex="2" src="" alt="">
-            <video tabindex="2" controls muted src=""></video>
-            <!-- close -->
-            <span class="media-modal-close" title="Close dialog" tabindex="6" onclick="closeMediaModal()">&times;</span>
-            <!-- next/prev -->
-            <a class="prev" title="Previous image" tabindex="4" onclick="mediaModalSlide(-1)">&#10094;</a>
-            <a class="next" title="Next image" tabindex="5" onclick="mediaModalSlide(1)">&#10095;</a>
-            <!-- title -->
-            <div class="media-modal-title">
-              <p tabindex="3"></p>
-            </div>
-          </div>
-        </div>
+      <div class="photograph-header">
+        <button class="contact_button" onclick="displayModal()">Contactez-moi</button>
       </div>
-    </div>
-    <!-- contact modal -->
-    <div tabindex="1" class="modal-container" id="contact_modal">
+    </main>
+    <div id="contact_modal">
 			<div class="modal">
-        <!-- header -->
 				<header>
-          <h1 tabindex="2">Contactez-moi <span></span></h1>
-          <img tabindex="12" title="Close Contact form" src="assets/icons/close.svg" alt="" onclick="closeContactModal()" />
+          <h2>Contactez-moi</h2>
+          <img src="assets/icons/close.svg" onclick="closeModal()" />
         </header>
-        <!-- form -->
-				<form onsubmit="return validateFormContact(this, event)">
+				<form>
 					<div>
-						<label tabindex="3" for="firstname">Prénom</label>
-						<input tabindex="4" id="firstname" type="text" min="1" max="100" title="First name" />
+						<label>Prénom</label>
+						<input />
 					</div>
-					<div>
-						<label tabindex="5" for="lastname">Nom</label>
-						<input tabindex="6" id="lastname" type="text" min="1" max="100" title="Last name" />
-					</div>
-					<div>
-						<label tabindex="7" for="email">Email</label>
-						<input tabindex="8" id="email" type="email" min="1" max="100" title="Email" />
-					</div>
-					<div>
-						<label tabindex="9" for="message">Votre message</label>
-            <textarea tabindex="10" id="message" min="1" title="Your message"></textarea>
-					</div>
-          <button tabindex="11" type="submit" title="Send" class="contact_button">Envoyer</button>
+          <button class="contact_button">Envoyer</button>
 				</form>
 			</div>
 		</div>
-    <script src="scripts/pages/index.js"></script>
-    <script src="scripts/pages/photographerMedia.js"></script>
-    <script src="scripts/factories/photographerMediaFactory.js"></script>
-    <script src="scripts/factories/photographerMediaImage.js"></script>
-    <script src="scripts/factories/photographerMediaVideo.js"></script>
-    <script src="scripts/templates/photographerMedia.js"></script>
-    <script src="/scripts/utils/modal.js"></script>
     <script src="/scripts/utils/contactForm.js"></script>
-    <script src="scripts/modals/photographerMedia.js"></script>
   </body>
 </html>

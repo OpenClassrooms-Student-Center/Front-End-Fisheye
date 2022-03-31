@@ -26,10 +26,6 @@ a {
     text-decoration: none;
 }
 
-a:visited {
-    text-decoration: none;
-}
-
 @media screen and (max-width: 700px) {
     header, h1 {
         flex-direction: column;
