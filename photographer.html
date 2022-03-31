@@ -62,33 +62,33 @@
                     <span>Contactez-moi</span>
                     <span id="photograph-name"></span>
                 </h1>
-                <button id="close-btn" title="Close form" type="button" class="fas fa-times close-icon" ></button>
+                <button id="clos-btn" title="Close form" type="button" class="fas fa-times close-icon" ></button>
             </header>
        
-            <div class="form-data" >
-                <label for="first-name" id="first-name">Prénom</label>
-                <input type="text" name="first-name" id="first-name"  aria-labelledby="first-name"
+            <div class="form-data error-name" >
+                <label for="first-name" id="label-firstname">Prénom</label>
+                <input type="text" class="text-control" name="first-name" id="first-name"  aria-labelledby="label-firstname"
                 aria-required="true" placeholder="Exemple: Loic">
             </div>
        
-            <div class="form-data">
-                <label for="last-name" id="last-name">Nom</label>
-                <input type="text" name="last-name" id="last-name" aria-labelledby="last-name"
+            <div class="form-data error-surname">
+                <label for="last-name" id="label-last-name">Nom</label>
+                <input type="text" class="text-control" name="last-name" id="last-name" aria-labelledby="label-last-name"
                 aria-required="true" placeholder="Exemple: Anael">
             </div>
        
-            <div class="form-data" >
-                <label for="email" id="email">Email</label>
-                <input type="email"  name="email" id="email" aria-labelledby="email"
+            <div class="form-data error-email" >
+                <label for="email" id="label-email">Email</label>
+                <input type="email" class="text-control"  name="email" id="email" aria-labelledby="label-email"
                 aria-required="true" placeholder="Exemple: nom@gmail.com">
             </div>
  
-            <div class="form-data" >
-                <label for="message" id="message">Message</label>
-                <textarea  name="message" id="message" cols="20" rows="4"
-                aria-required="true" aria-labelledby="message" placeholder="Votre message"></textarea>
+            <div class="form-data error-message" >
+                <label for="message" id="label-message">Message</label>
+                <textarea class="text-control" name="message" id="message" cols="20" rows="4"
+                aria-required="true" aria-labelledby="label-message" placeholder="Votre message"></textarea>
             </div>
-            <button type="submit" name="envoyer le formulaire" class="form-submit" title="Send">Envoyer</button>
+            <button type="submit" id="submit" name="envoyer le formulaire" class="form-submit" title="Send">Envoyer</button>
         </form>
     </div>
 
