@@ -1,13 +1,15 @@
-    async function getPhotographers() {
-        const response = await  fetch("./data/photographers.json");
-        const data = await response.json();
+//lit le fichier json pour en récupérer les données des photographes
+async function getPhotographers() {
+    const response = await  fetch("./data/photographers.json");
+    const data = await response.json();
 
-        console.log(data)
+    console.log(data)
     return {
         photographers: data.photographers // could be: return ({ photographers: [...data.photographers] })
     };
 }
 
+    // Affiche la carte des photogrphes
     async function displayData(photographers) {
         const photographersSection = document.querySelector(".photographer_section");
 
