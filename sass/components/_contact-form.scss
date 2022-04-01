@@ -1,0 +1,51 @@
+.contact-form-container {
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    .contact-form {
+        background: $secondary-color;
+        width: 35rem;
+        min-height: 90%;
+        border-radius: .25rem;
+        box-shadow: 0 .1rem .5rem 0 $tertiary-color;
+        position: relative;
+        padding: 1rem 2rem;
+
+        &__heading {
+            font-weight: normal;
+            font-size: 3.5rem;
+            width: 90%;
+        }
+
+        &__close {
+            position: absolute;
+            top: 1.5rem;
+            right: 1.5rem;
+
+            &__icon {
+                display: inline-block;
+                width: 2rem;
+                height: 2rem;
+                background-size: cover;
+                background-image: url("../../assets/icons/close-white.svg");
+                position: relative;
+                cursor: pointer;
+            }
+        }
+
+        textarea {
+            font-family: "DM Sans", sans-serif;
+        }
+
+        .btn {
+            margin-top: 1rem;
+            border: none;
+            box-shadow: none;
+        }
+    }
+}

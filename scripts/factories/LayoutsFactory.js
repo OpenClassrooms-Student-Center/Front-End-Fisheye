@@ -72,10 +72,29 @@ export class LayoutsFactory {
 
     /* Return the photographer main layout */
     getPhotographerMainDOM = (photographer, componentsFactory) => {
+        const photographerName = photographer.name;
+
         const main = document.createElement("main");
         main.classList.add("photographer-section");
 
         const banner = componentsFactory.getPhotographerHeaderDOM(photographer, "Contactez-moi");
+
+        const contactBtn = banner.querySelector("#contact-btn");
+
+        contactBtn.addEventListener("click", () => {
+            const contactForm = componentsFactory.getContactFromDOM({ photographerName });
+            main.appendChild(contactForm);
+
+            contactForm.querySelector(".contact-form").addEventListener("submit", (e) => {
+                e.preventDefault();
+                main.removeChild(contactForm);
+            });
+
+            const closeContactForm = contactForm.querySelector("#close-contact-form");
+            closeContactForm.addEventListener("click", () => {
+                main.removeChild(contactForm);
+            });
+        });
 
         const mediasSection = document.createElement("section");
         mediasSection.classList.add("medias-section");
@@ -90,8 +109,6 @@ export class LayoutsFactory {
         const medias = document.createElement("div");
         medias.classList.add("medias-section__medias");
 
-        const photographerName = photographer.name;
-
         photographer.medias.forEach((media, index) => {
             const mediaDOM = media.hasOwnProperty("image")
                 ? componentsFactory.getImageDOM(media, photographerName, false)
@@ -103,10 +120,10 @@ export class LayoutsFactory {
                 const lightbox = componentsFactory.getLightboxDOM({ medias: photographer.medias, index, photographerName });
                 main.appendChild(lightbox);
 
-                const closeLightBox = document.getElementById("close-lightbox");
+                const closeLightBoxBtn = document.getElementById("close-lightbox");
 
-                closeLightBox.addEventListener("click", () => {
-                    main.removeChild(document.querySelector(".lightbox"));
+                closeLightBoxBtn.addEventListener("click", () => {
+                    main.removeChild(lightbox);
                 });
             });
 

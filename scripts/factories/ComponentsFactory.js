@@ -1,7 +1,8 @@
 export class ComponentsFactory {
     constructor() {}
 
-    getTextfieldDOM = (textfieldName, isTextArea) => {
+    getTextfieldDOM = (data) => {
+        const { textfieldName, type } = data;
         const textfield = document.createElement("fieldset");
         textfield.classList.add("form-group");
 
@@ -12,17 +13,24 @@ export class ComponentsFactory {
 
         let input;
 
-        if (isTextArea) {
-            input = document.createElement("textarea");
-        } else {
-            input = document.createElement("input");
-            input.setAttribute("type", "text");
+        switch (type) {
+            case "textarea":
+                input = document.createElement("textarea");
+                input.setAttribute("rows", "5");
+                break;
+            case "email":
+                input = document.createElement("input");
+                input.setAttribute("type", "email");
+                break;
+            default:
+                input = document.createElement("input");
+                input.setAttribute("type", "text");
+                break;
         }
 
         input.classList.add("form-group__textfield");
         input.id = textfieldName;
         input.setAttribute("name", textfieldName);
-        input.setAttribute("placeholder", textfieldName);
 
         textfield.appendChild(label);
         textfield.appendChild(input);
@@ -175,6 +183,15 @@ export class ComponentsFactory {
         btn.classList.add("btn");
 
         return btn;
+    };
+
+    getSubmitBtnDOM = () => {
+        const submitBtn = document.createElement("input");
+        submitBtn.setAttribute("type", "submit");
+        submitBtn.setAttribute("value", "Envoyer");
+        submitBtn.classList.add("btn");
+
+        return submitBtn;
     };
 
     getLogoDOM = () => {
@@ -377,6 +394,7 @@ export class ComponentsFactory {
         btnContainer.classList.add("photographer-header__btn-container");
 
         const button = this.getMainBtnDOM(btnText);
+        button.setAttribute("id", "contact-btn");
 
         btnContainer.appendChild(button);
 
@@ -592,5 +610,46 @@ export class ComponentsFactory {
         }
 
         return lightbox;
+    };
+
+    getContactFromDOM = (data) => {
+        const { photographerName } = data;
+
+        const contactFormContainer = document.createElement("dialog");
+        contactFormContainer.classList.add("contact-form-container");
+
+        const contactForm = document.createElement("form");
+        contactForm.classList.add("contact-form");
+
+        const contactHeading = document.createElement("h1");
+        contactHeading.classList.add("contact-form__heading");
+        contactHeading.textContent = `Contactez-moi ${photographerName}`;
+
+        const firstName = this.getTextfieldDOM({ textfieldName: "Prénom", type: "text" });
+        const lastName = this.getTextfieldDOM({ textfieldName: "Nom", type: "text" });
+        const email = this.getTextfieldDOM({ textfieldName: "Email", type: "email" });
+        const message = this.getTextfieldDOM({ textfieldName: "Votre message", type: "textarea" });
+        const submit = this.getSubmitBtnDOM();
+
+        const closeBtn = document.createElement("button");
+        closeBtn.classList.add("contact-form__close");
+        closeBtn.setAttribute("id", "close-contact-form");
+
+        const closeIcon = document.createElement("i");
+        closeIcon.classList.add("contact-form__close__icon");
+
+        closeBtn.appendChild(closeIcon);
+
+        contactForm.appendChild(contactHeading);
+        contactForm.appendChild(firstName);
+        contactForm.appendChild(lastName);
+        contactForm.appendChild(email);
+        contactForm.appendChild(message);
+        contactForm.appendChild(submit);
+        contactForm.appendChild(closeBtn);
+
+        contactFormContainer.appendChild(contactForm);
+
+        return contactFormContainer;
     };
 }
