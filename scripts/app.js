@@ -3,7 +3,8 @@ import { displayPhotographers } from "./index.js";
 import { getDataPhotographers } from "./api.js";
 import { openSort } from "./dropdown.js";
 import { displayPhotographerProfil } from "./photographer-profil.js";
-import { contactModal } from "./modal.js";
+import MediaBuilder from "./factories/media.js";
+const mainContent = document.querySelector("#main-content");
 
 (async function appRouter() {
   try {
@@ -11,7 +12,8 @@ import { contactModal } from "./modal.js";
     if (window.location.pathname.includes("/photographer.html")) {
       // Affichage Profil Photographe
       displayPhotographerProfil(DATA_FISHEYE);
-
+      //affichage des medias de la galerie
+      new MediaBuilder().photographersMedias(DATA_FISHEYE);
       // Affichage Bouton dropdown
       openSort(DATA_FISHEYE);
 
@@ -19,7 +21,8 @@ import { contactModal } from "./modal.js";
     }
     // Affichage Page d'Accueil
     displayPhotographers(DATA_FISHEYE);
+  
   } catch (err) {
-    console.error("");
+    console.error();
   }
 })();

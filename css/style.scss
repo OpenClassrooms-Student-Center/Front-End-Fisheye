@@ -223,8 +223,9 @@ a {
   justify-content: center;
   align-items: center;
   background-color: #00000080;
-  width: 100vw;
-  height: 100vh;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
   #contact-form {
     border-radius: 5px;
     width: 40vw;
@@ -232,7 +233,6 @@ a {
     display: flex;
     flex-direction: column;
     padding: 2rem 2rem;
-    height: 90vh;
     header {
       display: flex;
       justify-content: space-between;
@@ -302,4 +302,66 @@ input[data-error]::after {
   content: attr(data-error);
   font-size: 0.4em;
   color: rgb(134, 6, 6);
+}
+//partie de style pour les medias
+#photographer-gallery {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  margin: 3rem 0;
+  padding: 0 1.5rem;
+}
+.btn-like {
+  background: none;
+  border: none;
+  color: #901c1c;
+  font-size: 1.1rem;
+  margin-left: -0.3rem;
+}
+.ph-work-elt {
+  color: #901c1c;
+  font-size: 1.1em;
+  font-weight: 500;
+  margin: 0 0 0.6rem;
+  width: 21rem;
+}
+.ph-work-elt .fa-heart:hover,
+.ph-work-elt img:hover,
+.ph-work-elt video:hover {
+  cursor: pointer;
+}
+.ph-work-elt .ph-work-title {
+  width: 14rem;
+}
+.ph-work-elt img,
+.ph-work-elt video {
+  border-radius: 0.3rem;
+  height: 12rem;
+  object-fit: cover;
+  width: 21rem;
+}
+.ph-work-elt-text {
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+  margin-top: 0;
+}
+.ph-work-title {
+  font-size: 1em;
+  font-weight: 400;
+}
+@media (min-width: 1300px) {
+  #photographer-gallery {
+      justify-content: space-between;
+      margin: 3rem 6.5rem;
+      padding: 0;
+  }
+  .ph-work-elt {
+      width: 22rem;
+  }
+  .ph-work-elt img,
+  .ph-work-elt video {
+      height: 19rem;
+      width: 22rem;
+  }
 }
