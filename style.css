@@ -313,74 +313,41 @@ input[data-error]::after {
 
 #photographer-gallery {
   display: flex;
-  flex-wrap: wrap;
+  align-items: unset;
   justify-content: space-around;
-  margin: 3rem 0;
-  padding: 0 1.5rem;
+  flex-direction: unset;
+  flex-wrap: wrap;
+  margin: 24px 0;
+  padding: 12px 36px;
+  gap: 0.6rem;
 }
-
-.btn-like {
-  background: none;
-  border: none;
+#photographer-gallery .media-art {
   color: #901c1c;
-  font-size: 1.1rem;
-  margin-left: -0.3rem;
-}
-
-.ph-work-elt {
-  color: #901c1c;
-  font-size: 1.1em;
+  font-size: 1.2em;
   font-weight: 500;
-  margin: 0 0 0.6rem;
-  width: 21rem;
+  width: 22rem;
 }
-
-.ph-work-elt .fa-heart:hover,
-.ph-work-elt img:hover,
-.ph-work-elt video:hover {
-  cursor: pointer;
-}
-
-.ph-work-elt .ph-work-title {
-  width: 14rem;
-}
-
-.ph-work-elt img,
-.ph-work-elt video {
+#photographer-gallery .media-art img, #photographer-gallery .media-art video {
   border-radius: 0.3rem;
   height: 12rem;
   object-fit: cover;
-  width: 21rem;
+  width: 22rem;
+  cursor: pointer;
 }
-
-.ph-work-elt-text {
-  align-items: center;
+#photographer-gallery .media-art .media-detail {
   display: flex;
+  align-items: center;
   justify-content: space-between;
+  flex-direction: unset;
   margin-top: 0;
 }
-
-.ph-work-title {
-  font-size: 1em;
-  font-weight: 400;
+#photographer-gallery .media-art .media-detail-title {
+  width: 12rem;
+  font-size: inherit;
+  font-weight: inherit;
 }
-
-@media (min-width: 1300px) {
-  #photographer-gallery {
-    justify-content: space-between;
-    margin: 3rem 6.5rem;
-    padding: 0;
-  }
-
-  .ph-work-elt {
-    width: 22rem;
-  }
-
-  .ph-work-elt img,
-.ph-work-elt video {
-    height: 19rem;
-    width: 22rem;
-  }
+#photographer-gallery .media-art .media-detail-like .heart-btn {
+  cursor: pointer;
 }
 
 /*# sourceMappingURL=style.css.map */

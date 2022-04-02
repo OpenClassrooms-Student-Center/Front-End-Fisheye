@@ -43,12 +43,10 @@
     // Construction gallerie de médias et de la lightbox
  class GalleryFactory {
     builderGallery(dataMedias) {
-        const id = window.location.search.split('id=')[1];
+        const id = new URLSearchParams(window.location.search).get("id");
         // Création du média via MediaFactory
         let mediaFactory = new MediaFactory();
-        let currentMedia = [];
-        let currentMediaName = [];
-          console.log(dataMedias)
+
         dataMedias.forEach(element => {
             if (id == element.photographerId) {
                 let sectionGallery = document.getElementById('photographer-gallery');
@@ -59,24 +57,21 @@
                 <a href='#' title=${element.title}>
                 ${mediaHTML.outerHTML}
                 </a>
-                <div class="ph-work-elt-text">
-                    <h2 class="ph-work-title">${element.title}</h2>
-                    <span class="ph-work-price">${element.price} €</span>
-                    <div class='ph-elt-like'>
-                    <span class="ph-work-like">
-                        <a class="like-counter">${element.likes}</a>
-                    </span>
+                <div class="media-detail">
+                    <h2 class="media-detail-title">${element.title}</h2>
+                    <span class="media-detail-price">${element.price} €</span>
+                    <div class='media-detail-like'>
+                    <span class="like-counter">${element.likes}</span> 
                     <i class="far fa-heart heart-btn" aria-label='likes' role="button" data-value="${element.likes}"></i>
                     </div>
                 </div>
                 `
+                console.log(articleGallery)
                 articleGallery.innerHTML = workTemplate;
                 sectionGallery.appendChild(articleGallery);
-                articleGallery.classList.add("ph-work-elt");
+                articleGallery.classList.add("media-art");
 
-console.log(sectionGallery)
-                currentMedia.push(mediaHTML.outerHTML);
-                currentMediaName.push(element.title);
+
             }
         })
         return this;
