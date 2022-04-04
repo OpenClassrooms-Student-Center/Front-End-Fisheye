@@ -2,13 +2,25 @@ import { LayoutsFactory } from "../factories/layoutsFactory.js";
 import { ComponentsFactory } from "../factories/ComponentsFactory.js";
 
 async function getPhotographers() {
-    const res = await (await fetch("../../data/photographers.json")).json();
+    let photographers;
 
-    const photographers = res.photographers;
+    /* 
+        If the local storage as a entry with key "photographers", get its value 
+        Else, get datas from the json file and store it in the local storage
+    */
+    if (localStorage.getItem("photographers")) {
+        photographers = JSON.parse(localStorage.getItem("photographers"));
+    } else {
+        const res = await (await fetch("../../data/photographers.json")).json();
 
-    photographers.forEach((photographer) => {
-        photographer.medias = res.media.filter((media) => media.photographerId === photographer.id);
-    });
+        photographers = res.photographers;
+
+        photographers.forEach((photographer) => {
+            photographer.medias = res.media.filter((media) => media.photographerId === photographer.id);
+        });
+
+        localStorage.setItem("photographers", JSON.stringify(photographers));
+    }
 
     return photographers;
 }
