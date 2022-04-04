@@ -4,7 +4,6 @@ import { getDataPhotographers } from "./api.js";
 import { openSort } from "./dropdown.js";
 import { displayPhotographerProfil } from "./photographer-profil.js";
 import MediaBuilder from "./factories/media.js";
-const mainContent = document.querySelector("#main-content");
 
 (async function appRouter() {
   try {
@@ -23,6 +22,6 @@ const mainContent = document.querySelector("#main-content");
     displayPhotographers(DATA_FISHEYE);
   
   } catch (err) {
-    console.error();
+    console.error("TU AS CASSE UN TRUC");
   }
 })();

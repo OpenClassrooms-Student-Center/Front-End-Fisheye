@@ -24,7 +24,7 @@ export async function displayPhotographerProfil(dataFisheye) {
                     <p class="ph-tagline">${PHOTOGRAPHERS[0].tagline}</p>
                 </div>
                 <button id="btn-contact" >Contactez-moi</button>
-                <a href='#'><img src="./assets/Photographers/${PHOTOGRAPHERS[0].portrait}" alt="${PHOTOGRAPHERS[0].alt}"></a>
+                <a href='#'><img src="${PHOTOGRAPHERS[0].image}" alt="${PHOTOGRAPHERS[0].alt}"></a>
             </article>
             `;
 

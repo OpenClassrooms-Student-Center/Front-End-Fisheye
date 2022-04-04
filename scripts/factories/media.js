@@ -11,9 +11,8 @@
         return eltImage;
     }
 }
-
 // Création d'un élément vidéo et ses attributs controls, src et role
- class VideoFactory {
+class VideoFactory {
     createHTML(element) {
         let eltVideo = document.createElement('video');
         eltVideo.setAttribute("controls", "controls")
@@ -21,10 +20,11 @@
         eltVideo.setAttribute('title', element.title);
         eltVideo.setAttribute('role', 'button');
         eltVideo.className = 'ph-media';
-
+        
         return eltVideo;
     }
 }
+
 // Test type d'élément image ou vidéo
  class MediaFactory {
     returnedMedia(element) {
@@ -46,7 +46,6 @@
         const id = new URLSearchParams(window.location.search).get("id");
         // Création du média via MediaFactory
         let mediaFactory = new MediaFactory();
-
         dataMedias.forEach(element => {
             if (id == element.photographerId) {
                 let sectionGallery = document.getElementById('photographer-gallery');
@@ -66,7 +65,7 @@
                     </div>
                 </div>
                 `
-                console.log(articleGallery)
+                //console.log(articleGallery)
                 articleGallery.innerHTML = workTemplate;
                 sectionGallery.appendChild(articleGallery);
                 articleGallery.classList.add("media-art");
