@@ -32,21 +32,22 @@ h1 {
 
     article {
         justify-self: center;
-       display: flex;
+        display: flex;
         justify-content: center;
         align-items: center;
         flex-direction: column;
 
-        a:focus,a:link {
+        a:focus,
+        a:link {
             cursor: pointer;
             text-decoration: none;
         }
-        
 
-       
+
+
 
         img {
-            display : flex;
+            display: flex;
             object-fit: cover;
             border-radius: 100%;
             height: 200px;

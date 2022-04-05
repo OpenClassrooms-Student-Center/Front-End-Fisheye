@@ -1,286 +1,300 @@
 /* Modal form */
 
 .smFont {
-    font-size: 16px;
-  }
-  
-  .bground {
-    display: none;
-    position: fixed;
-    z-index: 1;
-    left: 0;
-    top: 0;
-    height: 100%;
-    width: 100%;
-    overflow: auto;
-    background-color: rgba(255, 255, 255, 0.8);
-  }
-  
-  .content {
-    margin: 5% auto;
-    width: 100%;
-    max-width: 500px;
-    animation-name: modalopen;
-    animation-duration: var(--modal-duration);
-    background: $color-secondary;
-    border-radius: 10px;
-    overflow: hidden;
-    position: relative;
-    color: #fff;
-    padding-top: 10px;
-  }
-  
-  .modal-body {
-    padding: 0 8% 15px 6%;
-    margin: 0 auto 15px auto;
-  }
-  #modal-title {
-    color: #000;
-    font-family: DM Sans;
-font-size: 50px;
-font-style: normal;
-font-weight: 400;
-line-height: 70px;
-letter-spacing: 0em;
-text-align: left;
+  font-size: 16px;
+}
 
-  }
-  
-  label {
-    font-family: var(--font-default);
-    color: #312E2E;
-    font-size: 25px;
-    font-weight: normal;
-    display: inline-block;
-    margin-bottom: 0px;
-  }
-  input {
-    padding: 8px;
-    border: 0.8px solid #ccc;
-    outline: none;
-  }
+.bground {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 100%;
+  overflow: auto;
+  background-color: rgba(255, 255, 255, 0.8);
+}
 
-  .text-control {
-    margin: 0;
-    padding: 8px;
-    width: 100%;
-    border-radius: 5px;
-    font-size: 20px;
-    height: 48px;
+.content {
+  margin: 5% auto;
+  width: 100%;
+  max-width: 500px;
+  animation-name: modalopen;
+  animation-duration: var(--modal-duration);
+  background: $color-secondary;
+  border-radius: 10px;
+  overflow: hidden;
+  position: relative;
+  color: #fff;
+  padding-top: 10px;
+}
 
-  }
+.modal-body {
+  padding: 0 8% 15px 6%;
+  margin: 0 auto 15px auto;
+}
 
-  #textarea{
-    height:150px;}
+#modal-title {
+  color: #000;
+  font-family: DM Sans;
+  font-size: 50px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 70px;
+  letter-spacing: 0em;
+  text-align: left;
 
-  
-  
-  .formData[data-error]::after {
-    content: attr(data-error);
-    font-size: 0.6em;
-    color: #e54858;
-    display: block;
-    margin-top: 7px;
-    margin-bottom: 7px;
-    text-align: left;
-    line-height: 0.3;
-    opacity: 0;
-    transition: 0.3s;
-  }
-  .formData[data-error-visible="true"]::after {
-    opacity: 1;
-  }
-  .formData[data-error-visible="true"] .text-control {
-    border: 2px solid #e54858;
-  }
-  
-  .formData[data-error-visible="false"] .text-control {
-    border: 2px solid #3876ac;
-  }
-  
-  
-  
-  .close {
-    position: absolute;
-    right: 15px;
-    top: 15px;
-    width: 32px;
-    height: 32px;
-    opacity: 1;
-    cursor: pointer;
-    transform: scale(0.7);
-  }
-  
-  .close:before,
-  .close:after {
-    position: absolute;
-    left: 15px;
-    content: " ";
-    height: 33px; /* barre blanche de 33px de haut et 3 de large pour faire la croix */
-    width: 3px;
-    background-color: #fff;
-  }
-  .close:before {
-    transform: rotate(45deg); /*fait tourner la barre pour faire une croix  */
-  }
-  .close:after {
-    transform: rotate(-45deg);
-  }
-  
-  /* custom select styles */
-  .custom-select {
-    position: relative;
-    font-family: Arial;
-    font-size: 1.1rem;
-    font-weight: normal;
-  }
-  
-  .custom-select select {
-    display: none;
-  }
-  .select-selected {
-    background-color: #fff;
-  }
-  
-  /* Style the arrow inside the select element: */
-  .select-selected:after {
-    position: absolute;
-    content: "";
-    top: 10px;
-    right: 13px;
-    width: 11px;
-    height: 11px;
-    border: 3px solid transparent;
-    border-bottom-color: #f00;
-    border-left-color: #f00;
-    transform: rotate(-48deg);
-    border-radius: 5px 0 5px 0;
-  }
-  
-  /* Point the arrow upwards when the select box is open (active): */
-  .select-selected.select-arrow-active:after {
-    transform: rotate(135deg);
-    top: 13px;
-  }
-  
-  .select-items div,
-  .select-selected {
-    color: #000;
-    padding: 11px 16px;
-    border: 1px solid transparent;
-    border-color: transparent transparent rgba(0, 0, 0, 0.1) transparent;
-    cursor: pointer;
-    border-radius: 8px;
-    height: 48px;
-  }
-  
-  /* Style items (options): */
-  .select-items {
-    position: absolute;
-    background-color: #fff;
-    top: 89%;
-    left: 0;
-    right: 0;
-    z-index: 99;
-  }
-  
-  /* Hide the items when the select box is closed: */
-  .select-hide {
-    display: none;
-  }
-  
-  .select-items div:hover,
-  .same-as-selected {
-    background-color: rgba(0, 0, 0, 0.1);
-  }
-  /* custom select end */
-  .text-label {
-    font-weight: normal;
-    font-size: 16px;
-  }
-  
-  .btn-submit {
-    background: $color-primary;
-    display: block;
-    margin: 0 auto;
-    margin-left : 
+}
+
+label {
+  font-family: var(--font-default);
+  color: #312E2E;
+  font-size: 25px;
+  font-weight: normal;
+  display: inline-block;
+  margin-bottom: 0px;
+}
+
+input {
+  padding: 8px;
+  border: 0.8px solid #ccc;
+  outline: none;
+}
+
+.text-control {
+  margin: 0;
+  padding: 8px;
+  width: 100%;
+  border-radius: 5px;
+  font-size: 20px;
+  height: 48px;
+
+}
+
+#textarea {
+  height: 150px;
+}
+
+
+
+.formData[data-error]::after {
+  content: attr(data-error);
+  font-size: 0.6em;
+  color: #e54858;
+  display: block;
+  margin-top: 7px;
+  margin-bottom: 7px;
+  text-align: left;
+  line-height: 0.3;
+  opacity: 0;
+  transition: 0.3s;
+}
+
+.formData[data-error-visible="true"]::after {
+  opacity: 1;
+}
+
+.formData[data-error-visible="true"] .text-control {
+  border: 2px solid #e54858;
+}
+
+.formData[data-error-visible="false"] .text-control {
+  border: 2px solid #3876ac;
+}
+
+
+
+.close {
+  position: absolute;
+  right: 15px;
+  top: 15px;
+  width: 32px;
+  height: 32px;
+  opacity: 1;
+  cursor: pointer;
+  transform: scale(0.7);
+}
+
+.close:before,
+.close:after {
+  position: absolute;
+  left: 15px;
+  content: " ";
+  height: 33px;
+  /* barre blanche de 33px de haut et 3 de large pour faire la croix */
+  width: 3px;
+  background-color: #fff;
+}
+
+.close:before {
+  transform: rotate(45deg);
+  /*fait tourner la barre pour faire une croix  */
+}
+
+.close:after {
+  transform: rotate(-45deg);
+}
+
+/* custom select styles */
+.custom-select {
+  position: relative;
+  font-family: Arial;
+  font-size: 1.1rem;
+  font-weight: normal;
+}
+
+.custom-select select {
+  display: none;
+}
+
+.select-selected {
+  background-color: #fff;
+}
+
+/* Style the arrow inside the select element: */
+.select-selected:after {
+  position: absolute;
+  content: "";
+  top: 10px;
+  right: 13px;
+  width: 11px;
+  height: 11px;
+  border: 3px solid transparent;
+  border-bottom-color: #f00;
+  border-left-color: #f00;
+  transform: rotate(-48deg);
+  border-radius: 5px 0 5px 0;
+}
+
+/* Point the arrow upwards when the select box is open (active): */
+.select-selected.select-arrow-active:after {
+  transform: rotate(135deg);
+  top: 13px;
+}
+
+.select-items div,
+.select-selected {
+  color: #000;
+  padding: 11px 16px;
+  border: 1px solid transparent;
+  border-color: transparent transparent rgba(0, 0, 0, 0.1) transparent;
+  cursor: pointer;
+  border-radius: 8px;
+  height: 48px;
+}
+
+/* Style items (options): */
+.select-items {
+  position: absolute;
+  background-color: #fff;
+  top: 89%;
+  left: 0;
+  right: 0;
+  z-index: 99;
+}
+
+/* Hide the items when the select box is closed: */
+.select-hide {
+  display: none;
+}
+
+.select-items div:hover,
+.same-as-selected {
+  background-color: rgba(0, 0, 0, 0.1);
+}
+
+/* custom select end */
+.text-label {
+  font-weight: normal;
+  font-size: 16px;
+}
+
+.btn-submit {
+  background: $color-primary;
+  display: block;
+  margin: 0 auto;
+  margin-left:
     0px;
-    border-radius: 7px;
-    font-size: 1rem;
-    padding: 12px 82px;
-    color: #fff;
-    cursor: pointer;
-    border: 0;
-  }
-  
-  .button {
-    background: $color-primary;
-    width : 150px;
-    margin-top: 0.5em;
-    padding: 1em;
-    color: #fff;
-    border-radius: 7px;
-    cursor: pointer;
-    font-size: 16px;
-    border: 0;
-  }
-  
-  .button:hover {
-    background: #3876ac;
-  }
-  
-  .formError {
-    content: attr(data-error);
-    font-size: 0.6em;
-    color: #e54858;
-    display: block;
-    margin-top: 7px;
-    margin-bottom: 7px;
-    text-align: left;
-    line-height: 0.3;
+  border-radius: 7px;
+  font-size: 1rem;
+  padding: 12px 82px;
+  color: #fff;
+  cursor: pointer;
+  border: 0;
+}
+
+.button {
+  background: $color-primary;
+  width: 150px;
+  margin-top: 0.5em;
+  padding: 1em;
+  color: #fff;
+  border-radius: 7px;
+  cursor: pointer;
+  font-size: 16px;
+  border: 0;
+}
+
+.button:hover {
+  background: #3876ac;
+}
+
+.formError {
+  content: attr(data-error);
+  font-size: 0.6em;
+  color: #e54858;
+  display: block;
+  margin-top: 7px;
+  margin-bottom: 7px;
+  text-align: left;
+  line-height: 0.3;
+  opacity: 0;
+  transition: 0.3s;
+}
+
+.data-sent {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 600px;
+  max-height: 850px;
+  position: relative;
+}
+
+.data-sent p {
+  width: 309px;
+  font-weight: 400;
+  font-size: 36px;
+  color: #ffffff;
+  text-align: center;
+  margin: 18% 0;
+}
+
+.data-sent img {
+  padding-top: 40px;
+  width :50%;
+}
+
+@keyframes modalopen {
+  from {
     opacity: 0;
-    transition: 0.3s;
+    transform: translateY(-150px);
   }
-  
-  .data-sent {
-    display: none;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    min-height: 600px;
-    max-height: 850px;
-    position: relative;
+
+  to {
+    opacity: 1;
   }
-  
-  .data-sent p {
-    width: 309px;
-    font-weight: 400;
-    font-size: 36px;
-    color: #ffffff;
-    text-align: center;
-    margin: 18% 0;
+}
+
+@keyframes modalclose {
+  from {
+    opacity: 1;
   }
-  
-  .data-sent img {
-    padding-top: 40px;
+
+  to {
+    opacity: 0;
+    transform: translateY(150px);
   }
-  
-  @keyframes modalopen {
-    from {
-      opacity: 0;
-      transform: translateY(-150px);
-    }
-    to {
-      opacity: 1;
-    }
-  }
-  
-  @keyframes modalclose {
-    from {
-      opacity: 1;
-    }
-    to {
-      opacity: 0;
-      transform: translateY(150px);
-    }
-  }
+}

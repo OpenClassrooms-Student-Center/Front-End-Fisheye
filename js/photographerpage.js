@@ -170,7 +170,7 @@ function lightboxFunction() {
   function PreviousNextInit(){
     if (arrayGallery[mediaIndex].image) {
       lightboxBackground.querySelector("#imageFS").src =
-          "../assets/photographers/" + choosenphotographer.name + "/" + arrayGallery[mediaIndex].image;
+          "assets/photographers/" + choosenphotographer.name + "/" + arrayGallery[mediaIndex].image;
       lightboxBackground.querySelector("#imageFS").alt = arrayGallery[mediaIndex].title;
       lightboxBackground.querySelector("#videoFS").src = "";
       lightboxBackground.querySelector("#videoFS").removeAttribute("controls");
@@ -179,7 +179,7 @@ function lightboxFunction() {
       
     } else {
       lightboxBackground.querySelector("#videoFS").src =
-      "../assets/photographers/" + choosenphotographer.name + "/" + arrayGallery[mediaIndex].video;
+      "assets/photographers/" + choosenphotographer.name + "/" + arrayGallery[mediaIndex].video;
       lightboxBackground.querySelector("#videoFS").alt = arrayGallery[mediaIndex].title;
       console.log("arrayGallery[mediaIndex].title",arrayGallery[mediaIndex].title);
       console.log("lightboxBackground.querySelector(videoFS).alt",lightboxBackground.querySelector("#videoFS").alt);
@@ -207,7 +207,7 @@ function lightboxFunction() {
   };
 
   /////////////////lancements des events dans la lightbox sur les trois actions souris et clavier////////////////////////////////////////////////
-  
+
   lightboxClose.addEventListener("click", () => {
     Close();
   });

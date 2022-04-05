@@ -34,7 +34,8 @@ h1 {
   align-items: center;
   flex-direction: column;
 }
-.photographer_section article a:focus, .photographer_section article a:link {
+.photographer_section article a:focus,
+.photographer_section article a:link {
   cursor: pointer;
   text-decoration: none;
 }
@@ -471,6 +472,7 @@ input {
 
 .data-sent img {
   padding-top: 40px;
+  width: 50%;
 }
 
 @keyframes modalopen {
