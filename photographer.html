@@ -2,66 +2,80 @@
 <html>
   <head>
     <link href="css/style.css" rel="stylesheet" type="text/css" />
-    <meta charset="utf-8">
-    <link rel="icon" type="image/png" href="assets/images/favicon.png">
-    <link href="https://fonts.googleapis.com/css?family=DM+Sans&display=swap" rel="stylesheet">
-    <title>Fisheye - photographe </title>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/png" href="assets/images/favicon.png" />
+    <link
+      href="https://fonts.googleapis.com/css?family=DM+Sans&display=swap"
+      rel="stylesheet"
+    />
+    <title>Fisheye - photographe</title>
   </head>
   <body>
     <header>
-      <a href ="index.html">
-        <img src="assets/images/logo.png" alt="FishEye Home page" class ="logo">
-    </a>
-      
+      <a href="index.html">
+        <img
+          src="assets/images/logo.png"
+          alt="FishEye Home page"
+          class="logo"
+        />
+      </a>
     </header>
     <main id="main">
       <div class="photograph-header" id="photograph-header">
-        <button class="contact_button" id="contact" onclick="launchModal()">Contactez-moi</button>
+        <button class="contact_button" id="contact" onclick="launchModal()">
+          Contactez-moi
+        </button>
       </div>
 
-
-     <!-- <div class="custom-select"> </div> -->
+      <!-- <div class="custom-select"> </div> -->
       <select name="sort menu" id="sort-menu">
-        <p class="sort-menu-title" tabindex="10" aria-label="trier par...">Trier par</p>
+        <p class="sort-menu-title" tabindex="10" aria-label="trier par...">
+          Trier par
+        </p>
         <option value="sort-likes" onclick="sortLikes()">Popularité</option>
-        <option value="sort-date"  onclick="sortDate()">Date</option>
-        <option value="sort-title"  onclick="sortTitle()">Titre</option>
+        <option value="sort-date" onclick="sortDate()">Date</option>
+        <option value="sort-title" onclick="sortTitle()">Titre</option>
       </select>
 
-  
-
       <div id="gallery"></div>
-  
-  
+
       <div id="lightbox-background">
-      <div id="lightbox-close" aria-label="bouton fermer ou touche escape">x</div>
-      <div id="lightbox-previous" aria-label="bouton précédent ou touche flèche gauche"> < </div>
-      <img id="imageFS" src="" alt="">
-      <video id="videoFS" src="" alt="" ></video>
-      <div id="lightbox-next" aria-label="bouton suivant ou touche flèche droite"> > </div>
+        <div id="lightbox-close" aria-label="bouton fermer ou touche escape">
+          x
+        </div>
+        <div
+          id="lightbox-previous"
+          aria-label="bouton précédent ou touche flèche gauche"
+        >
+          <
+        </div>
+        <img id="imageFS" src="" alt="" />
+        <video id="videoFS" src="" alt=""></video>
+        <div
+          id="lightbox-next"
+          aria-label="bouton suivant ou touche flèche droite"
+        >
+          >
+        </div>
       </div>
 
-
-
-
-
       <div class="popup-text">
-        <span class="likes-total"><span id="number-total-likes"></span><img src="assets/icons/black_heart.svg" alt="total likes"></span>
+        <span class="likes-total"
+          ><span id="number-total-likes"></span
+          ><img src="assets/icons/black_heart.svg" alt="total likes"
+        /></span>
         <span id="price"></span>
-    </div>
+      </div>
     </main>
 
-
-
-<!-- formulaire issu du projet 4-->
+    <!-- formulaire de contact-->
 
     <div class="bground">
       <div class="content">
         <!-- Croix qui ferme le formulaire -->
         <span class="close"></span>
         <div class="modal-body">
-
-          <span id = "modal-title"></span>
+          <span id="modal-title"></span>
           <form
             name="reserve"
             action="index.html"
@@ -69,10 +83,6 @@
             novalidate
             onsubmit="validate();"
           >
-
-
-
-
             <!-- champs prénom dans le formulaire -->
             <div
               class="formData"
@@ -118,22 +128,20 @@
               /><br />
             </div>
             <!-- champs date de naissance dans le formulaire -->
-            <div
-              class="formData"
-              data-error="Vous devez entrer votre message"
-            >
+            <div class="formData" data-error="Vous devez entrer votre message">
               <label for="message">Votre message</label><br />
-              <textarea class="text-control" id = "textarea" rows="5" cols="50" aria-label="Text area"></textarea>
+              <textarea
+                class="text-control"
+                id="textarea"
+                rows="5"
+                cols="50"
+                aria-label="Text area"
+              ></textarea>
             </div>
-                 
 
             <!-- bouton c'est parti dans le formulaire -->
             <div class="sent-message"></div>
-            <input
-              class="btn-submit button"
-              type="submit"
-              value="Envoyer"
-            />
+            <input class="btn-submit button" type="submit" value="Envoyer" />
 
             <div
               class="formError"
@@ -145,26 +153,15 @@
           <!-- ====  Confirmation envoi des données après avoir rempli le formulaire  ==== -->
           <div class="data-sent">
             <img alt="logo" src="assets/images/logo.png" />
-            <p>
-              Merci ! Votre demande de réservation a bien été enregistrée !
-            </p>
-            <button class="button btn-close">
-              Fermer
-            </button>
+            <p>Merci ! Votre demande de réservation a bien été enregistrée !</p>
+            <button class="button btn-close">Fermer</button>
           </div>
         </div>
       </div>
     </div>
- 
 
-
-
-    
-    <script   src="/js/modal.js"></script>
-    <script  src="/js/counter.js"></script>
-    <script src="/js/photographerpage.js"></script>
-  
-    
-    
-    </body>
+    <script src="js/modal.js"></script>
+    <script src="js/counter.js"></script>
+    <script src="js/photographerpage.js"></script>
+  </body>
 </html>
