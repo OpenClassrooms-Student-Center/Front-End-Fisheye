@@ -1,5 +1,5 @@
 async function loadJsonData(){
-    const response = await fetch("./assets/data/photographers.json");
-    const pJsonData = response.json();
+    const response=await fetch("./data/photographers.json");
+    const pJsonData=response.json();
     return pJsonData;
 }

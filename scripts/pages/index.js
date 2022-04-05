@@ -9,7 +9,7 @@ async function getPhotographers() {
     };
 }
 
-    // Affiche la carte des photographes
+    // Affiche la carte des photographes dans la page index
     async function displayData(photographers) {
         const photographersSection = document.querySelector(".photographer_section");
 
