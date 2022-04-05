@@ -18,16 +18,42 @@
       <div class="photograph-header" id="photograph-header">
         <button class="contact_button" id="contact" onclick="launchModal()">Contactez-moi</button>
       </div>
+
+
+     <!-- <div class="custom-select"> </div> -->
+      <select name="sort menu" id="sort-menu">
+        <p class="sort-menu-title" tabindex="10" aria-label="trier par...">Trier par</p>
+        <option value="sort-likes" onclick="sortLikes()">Popularité</option>
+        <option value="sort-date"  onclick="sortDate()">Date</option>
+        <option value="sort-title"  onclick="sortTitle()">Titre</option>
+      </select>
+
+  
+
       <div id="gallery"></div>
+  
+  
+      <div id="lightbox-background">
+      <div id="lightbox-close" aria-label="bouton fermer ou touche escape">x</div>
+      <div id="lightbox-previous" aria-label="bouton précédent ou touche flèche gauche"> < </div>
+      <img id="imageFS" src="" alt="">
+      <video id="videoFS" src="" alt="" ></video>
+      <div id="lightbox-next" aria-label="bouton suivant ou touche flèche droite"> > </div>
+      </div>
+
+
+
+
+
       <div class="popup-text">
-        <span class="likes-total"><span id="number-total-likes"></span><img src="../assets/icons/black_heart.svg" alt="total likes"></span>
+        <span class="likes-total"><span id="number-total-likes"></span><img src="assets/icons/black_heart.svg" alt="total likes"></span>
         <span id="price"></span>
     </div>
     </main>
 
 
 
-<!-- formulaire du projet 4 -->
+<!-- formulaire issu du projet 4-->
 
     <div class="bground">
       <div class="content">
@@ -41,7 +67,7 @@
             action="index.html"
             method="get"
             novalidate
-            onsubmit="return validate();"
+            onsubmit="validate();"
           >
 
 
@@ -59,6 +85,7 @@
                 id="first"
                 name="first"
                 autocomplete="off"
+                aria-label="First name"
               /><br />
             </div>
             <!-- champs nom dans le formulaire -->
@@ -73,6 +100,7 @@
                 id="last"
                 name="last"
                 autocomplete="off"
+                aria-label="Last name"
               /><br />
             </div>
             <!-- champs email dans le formulaire -->
@@ -86,6 +114,7 @@
                 type="email"
                 id="email"
                 name="email"
+                aria-label="email"
               /><br />
             </div>
             <!-- champs date de naissance dans le formulaire -->
@@ -94,7 +123,7 @@
               data-error="Vous devez entrer votre message"
             >
               <label for="message">Votre message</label><br />
-              <textarea class="text-control" id = "textarea" rows="5" cols="50" "></textarea>
+              <textarea class="text-control" id = "textarea" rows="5" cols="50" aria-label="Text area"></textarea>
             </div>
                  
 
@@ -130,10 +159,12 @@
 
 
 
-
-    <script src="/js/modal.js"></script>
-    <script src="/js/counter.js"></script>
-    <script src="/js/photographer.js"></script>
+    
+    <script   src="/js/modal.js"></script>
+    <script  src="/js/counter.js"></script>
+    <script src="/js/photographerpage.js"></script>
+  
+    
     
     </body>
 </html>

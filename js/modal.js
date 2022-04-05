@@ -8,31 +8,32 @@ const modalbg = document.querySelector(".bground");
 const formulary = document.querySelector("form");
 const modalBtn = document.querySelectorAll(".modal-btn");
 const formData = document.querySelectorAll(".formData");
-const close = document.querySelector(".close"); //constant which retrieves the element corresponding to the cross
+const close = document.querySelector(".close"); //constante qui récupère l'élément correspondant à la croix
 const btnClose = document.querySelector(".btn-close");
 const modalTitle = document.querySelector("#modal-title");
 
 
 // launch modal form and reset data
 function launchModal() {
+  modalbg.style.display = "block";
   const artistNameH2 = document.querySelector("#artist-name");//DOM h2 demandé ici car pas construit avant l'exécution des scripts
  modalTitle.innerHTML = "Contactez-moi"+"\n" +artistNameH2.textContent;// \n saut de ligne
   formulary.reset();
-  formulary.style.display = "block"; // to be sure that the formulary is displayed in any cases
-  dataSent.style.display = "none"; // to remove data sent message if we want to do another registration
+  formulary.style.display = "block"; // pour être sûr que le formulaire s'affiche dans tous les cas
+  dataSent.style.display = "none"; // pour supprimer message d'envoi des données si nous voulons faire un autre enregistrement
   for (let step = 0; step < 3; step++) {
     formularyData[step].removeAttribute("data-error-visible");
-  } // to remove borders by default instead of red or blue
-  modalbg.style.display = "block";
+  } // pour supprimer les bordures par défaut au lieu du rouge ou du bleu
+  
 }
 
 
 
-//waiting for a click on the close class and then launching the function closeModal
+//attendre un clic sur la classe close puis lancer la fonction closeModal
 close.addEventListener("click", closeModal);
 btnClose.addEventListener("click", closeModal);
 
-//function allowing to close the modal when clicking on the cross
+//fonction permettant de fermer la modale en cliquant sur la croix
 function closeModal(disabled) {
   modalbg.style.display = "none";
 }
@@ -60,13 +61,13 @@ const regexName = /^[a-zA-Z-\s]+$/;
 const regexEmail = /([a-zA-Z0-9_\-.]+)@([a-zA-Z0-9_\-.]+).([a-zA-Z]{2,5})/;
 const regexNumber = /^([0-9]|[1-9][0-9]|)$/;
 
-// To prevent default submission of the formulary and thus allow our validate function to check it first
+// Pour empêcher la soumission par défaut du formulaire et permettre à notre fonction de validation de le vérifier en premier
 formulary.addEventListener("submit", (e) => {
   e.preventDefault();
   validate();
 });
 
-// listening to the keyboard input to help the customer
+// écoute de la saisie au clavier pour aider le client
 
 firstName.addEventListener("input", function (e) {
   let value = e.target.value;
@@ -95,7 +96,7 @@ email.addEventListener("input", function (e) {
   }
 });
 
-// The big validation function that test all input values
+// La grande fonction de validation qui teste toutes les valeurs d'entrée
 function validate() {
   let numberOfErrors = 0;
 

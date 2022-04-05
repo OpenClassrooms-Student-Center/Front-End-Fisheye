@@ -1,8 +1,8 @@
 /////////////////// Fetch du fichier Json
-////////////////// 1ère partie : data.photographers (section nommée photographers du fichier)
+////////////////// 1ère partie : data.photographers
 
 async function getPhotographers() {
-  let photographers = await fetch("../data/photographers.json")
+  let photographers = await fetch("data/photographers.json")
     .then((response) => response.json())
     .then((data) => {
       return data.photographers;
@@ -10,9 +10,7 @@ async function getPhotographers() {
   return photographers;
 }
 
-/////////////////// create photographers content ///////////////////
-//// on parcourt la liste photographers que l'on a fetché depuis le fichier json
-// et pour chacun on crée un article qui sera affiché dans le main index avec la fonction init
+/////////////////// creation de la fonction qui permet la fabrication des cartes présentant chaque photographe  ///////////////////
 
 function photographerCardFactory(photographer, photographers) {
   const photographerProfile = document.createElement("article");
@@ -23,10 +21,10 @@ function photographerCardFactory(photographer, photographers) {
   const tagline = document.createElement("p");
   const price = document.createElement("p");
 
-  photographerProfile.id = "photographer-" + photographer.id;
+  photographerProfile.id = "photographer-" + photographer.id ;
   urlPhotographer.href = "photographer.html?id=" + photographer.id;
   profilePicture.src =
-    "../assets/Photographers ID Photos/" + photographer.portrait;
+    "assets/Photographers ID Photos/" + photographer.portrait;
   profilePicture.alt = photographer.name;
   photographerName.textContent = photographer.name;
   localisation.id = "localisation";
@@ -56,4 +54,4 @@ async function init() {
   );
 }
 
-init(); /// les actions se lancent ici (fonctions) //////
+init();
