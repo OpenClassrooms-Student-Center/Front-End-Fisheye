@@ -1,9 +1,9 @@
 "use strict";
 import { displayPhotographers } from "./index.js";
 import { getDataPhotographers } from "./api.js";
-import { openSort } from "./dropdown.js";
+import DropdownSort from "./dropdown.js";
 import { displayPhotographerProfil } from "./photographer-profil.js";
-import MediaBuilder from "./factories/media.js";
+import GaleryBuilder from "./galerieBuild.js";
 
 (async function appRouter() {
   try {
@@ -12,16 +12,16 @@ import MediaBuilder from "./factories/media.js";
       // Affichage Profil Photographe
       displayPhotographerProfil(DATA_FISHEYE);
       //affichage des medias de la galerie
-      new MediaBuilder().photographersMedias(DATA_FISHEYE);
+      new GaleryBuilder().photographersMedias(DATA_FISHEYE);
       // Affichage Bouton dropdown
-      openSort(DATA_FISHEYE);
-
+      new  DropdownSort().Dropdown(DATA_FISHEYE);
+      
       return;
     }
     // Affichage Page d'Accueil
     displayPhotographers(DATA_FISHEYE);
-  
+    
   } catch (err) {
-    console.error("TU AS CASSE UN TRUC");
+    console.log(err);
   }
 })();

@@ -11,7 +11,6 @@ class imgFactory {
 class photographerFactory{
   createPhotographer(photographer) {
   let photographerFactory = new imgFactory().creatingHTML(photographer);
-  console.log(photographerFactory)
     const ARTICLE = document.createElement("article");
     ARTICLE.className = "photographers-grid";
   let templatePhotographer = `
@@ -29,11 +28,11 @@ class photographerFactory{
     }
   }
 // Récupération du tableau des photographes
-export function displayPhotographers(data) {
-  const photographerInfo  = data.dataPhotographers;
+export function displayPhotographers({dataPhotographers}) {
+  console.log({dataPhotographers})
   const photographersSection = document.querySelector(".photographers_section");
   // remplissage de la section "photographers_section" avec tous les photographes
-  photographerInfo.forEach((photographer) => {
+  dataPhotographers.forEach((photographer) => {
     photographersSection.appendChild(new photographerFactory().createPhotographer(photographer));
   });
 }

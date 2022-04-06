@@ -7,7 +7,6 @@
         eltImage.setAttribute('alt', element.alt);
         eltImage.setAttribute('role', 'button');
         eltImage.className = 'ph-media';
-
         return eltImage;
     }
 }
@@ -19,8 +18,7 @@ class VideoFactory {
         eltVideo.setAttribute('src', element.video);
         eltVideo.setAttribute('title', element.title);
         eltVideo.setAttribute('role', 'button');
-        eltVideo.className = 'ph-media';
-        
+        eltVideo.className = 'ph-media';      
         return eltVideo;
     }
 }
@@ -41,8 +39,9 @@ class VideoFactory {
 
 
     // Construction gallerie de médias et de la lightbox
- class GalleryFactory {
+export default class GalleryFactory {
     builderGallery(dataMedias) {
+        
         const id = new URLSearchParams(window.location.search).get("id");
         // Création du média via MediaFactory
         let mediaFactory = new MediaFactory();
@@ -74,12 +73,5 @@ class VideoFactory {
             }
         })
         return this;
-    }
-}
-export default class MediaBuilder {
-    photographersMedias(data) {
-        const MEDIAS = data.dataMedias;
-        // Appel de la méthode de GalleryFactory pour créer la gallerie
-        new GalleryFactory().builderGallery(MEDIAS);
     }
 }
