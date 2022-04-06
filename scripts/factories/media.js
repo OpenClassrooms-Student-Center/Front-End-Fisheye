@@ -14,7 +14,6 @@
 class VideoFactory {
     createHTML(element) {
         let eltVideo = document.createElement('video');
-        eltVideo.setAttribute("controls", "controls")
         eltVideo.setAttribute('src', element.video);
         eltVideo.setAttribute('title', element.title);
         eltVideo.setAttribute('role', 'button');
