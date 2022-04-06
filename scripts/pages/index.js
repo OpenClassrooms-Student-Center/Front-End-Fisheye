@@ -17,6 +17,9 @@ async function getPhotographers() {
 
         photographers.forEach((photographer) => {
             photographer.medias = res.media.filter((media) => media.photographerId === photographer.id);
+            photographer.medias.map((media) => {
+                media.isLiked = false;
+            });
         });
 
         localStorage.setItem("photographers", JSON.stringify(photographers));

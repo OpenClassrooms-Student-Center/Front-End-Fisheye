@@ -38,9 +38,12 @@ export class ComponentsFactory {
         return textfield;
     };
 
-    getLikeBtnDOM = (likes, isLiked) => {
+    getLikeBtnDOM = (data) => {
+        const { likes, id, isLiked } = data;
+
         const button = document.createElement("button");
         button.classList.add("like-btn");
+        button.setAttribute("id", `${id}`);
 
         const counter = document.createElement("p");
         counter.classList.add("like-btn__counter");
@@ -51,28 +54,28 @@ export class ComponentsFactory {
 
         if (isLiked) {
             icon.classList.add("like-btn__icon--liked");
-            icon.addEventListener("click", unlike);
+            button.addEventListener("click", unlike);
         } else {
-            icon.addEventListener("click", like);
+            button.addEventListener("click", like);
         }
 
         button.appendChild(counter);
         button.appendChild(icon);
 
         function unlike() {
-            icon.removeEventListener("click", unlike);
+            button.removeEventListener("click", unlike);
 
             icon.classList.remove("like-btn__icon--liked");
 
-            icon.addEventListener("click", like);
+            button.addEventListener("click", like);
         }
 
         function like() {
-            icon.removeEventListener("click", like);
+            button.removeEventListener("click", like);
 
             icon.classList.add("like-btn__icon--liked");
 
-            icon.addEventListener("click", unlike);
+            button.addEventListener("click", unlike);
         }
 
         return button;
@@ -274,8 +277,8 @@ export class ComponentsFactory {
         return userTagline;
     };
 
-    getImageDOM = (data, photographerName, isLiked) => {
-        const { title, image, likes } = data;
+    getImageDOM = (data, photographerName) => {
+        const { title, image, likes, id, isLiked } = data;
 
         const mediaContainer = document.createElement("figure");
         mediaContainer.classList.add("media-container");
@@ -298,7 +301,7 @@ export class ComponentsFactory {
 
         figCaption.appendChild(mediaTitle);
 
-        const likeBtn = this.getLikeBtnDOM(likes, isLiked);
+        const likeBtn = this.getLikeBtnDOM({ likes, id, isLiked });
 
         figCaption.appendChild(likeBtn);
 
@@ -307,8 +310,8 @@ export class ComponentsFactory {
         return mediaContainer;
     };
 
-    getVideoDOM = (data, photographerName, isLiked) => {
-        const { title, video, likes } = data;
+    getVideoDOM = (data, photographerName) => {
+        const { title, video, likes, id, isLiked } = data;
 
         const mediaContainer = document.createElement("figure");
         mediaContainer.classList.add("media-container");
@@ -335,7 +338,7 @@ export class ComponentsFactory {
 
         figCaption.appendChild(mediaTitle);
 
-        const likeBtn = this.getLikeBtnDOM(likes, isLiked);
+        const likeBtn = this.getLikeBtnDOM({ likes, id, isLiked });
 
         figCaption.appendChild(likeBtn);
 
