@@ -84,12 +84,12 @@ class Media {
   }
 
   image() {
-    this._image = `<img class="thumbnail" src= "assets/photographers/${this._photographer.name}/${this._media.image}" alt="${this._media.title}">`;
+    this._image = `<img class="thumbnail" src= "assets/photographers/${this._photographer.name}/${this._media.image}" alt="${this._media.title}" tabindex="0">`;
     this.init(this._image);
   }
 
   video() {
-    this._video = `<video class="thumbnail" src= "assets/photographers/${this._photographer.name}/${this._media.video}" alt="${this._media.title}" controls = "true"></video>`;
+    this._video = `<video class="thumbnail" src= "assets/photographers/${this._photographer.name}/${this._media.video}" alt="${this._media.title}" controls = "true" tabindex="0"></video>`;
     this.init(this._video);
   }
 }
@@ -99,7 +99,7 @@ class Media {
 const displayMedia = (mediaArray, photographer) => {
   mediaArray.forEach((media) => {
     new Media(media, photographer);
-   });
+  });
 };
 
 
@@ -107,12 +107,12 @@ const displayMedia = (mediaArray, photographer) => {
 ///////////////////// TRI DES MEDIA (FONCTIONS APPELEES DANS LE MENU DEROULANT)///////////////////////////////////////////////////////////////
 
 async function rebuildGallery() {
-  const gallery = document.getElementById("gallery"); 
-  gallery.innerHTML = ""; 
-  
+  const gallery = document.getElementById("gallery");
+  gallery.innerHTML = "";
+
   let photographers = await getPhotographers();
   displayMedia(arrayGallery, photographers[index]);
-  initTotalLikes(arrayGallery); 
+  initTotalLikes(arrayGallery);
   counterFunction();
   lightboxFunction();
 }
@@ -126,7 +126,7 @@ async function sortLikes() {
 
 async function sortDate() {
   arrayGallery.sort(function (a, b) {
-    return Date.parse(a.date) - Date.parse(b.date); 
+    return Date.parse(a.date) - Date.parse(b.date);
   });
   await rebuildGallery();
 }
@@ -139,10 +139,15 @@ async function sortTitle() {
   await rebuildGallery();
 }
 
+
+
+
+
+
 ///////////////////////////////////// LIGHT BOX ///////////////////////////////////////////////////////////////////////////////////////////////////////
 
 function lightboxFunction() {
-  let mediaList = document.querySelectorAll(".thumbnail"); 
+  let mediaList = document.querySelectorAll(".thumbnail");
   const lightboxBackground = document.querySelector("#lightbox-background");
   const lightboxClose = document.querySelector("#lightbox-close");
   const lightboxPrevious = document.querySelector("#lightbox-previous");
@@ -167,46 +172,47 @@ function lightboxFunction() {
   }
 
 
-  function PreviousNextInit(){
+  function PreviousNextInit() {
     if (arrayGallery[mediaIndex].image) {
       lightboxBackground.querySelector("#imageFS").src =
-          "assets/photographers/" + choosenphotographer.name + "/" + arrayGallery[mediaIndex].image;
+        "assets/photographers/" + choosenphotographer.name + "/" + arrayGallery[mediaIndex].image;
       lightboxBackground.querySelector("#imageFS").alt = arrayGallery[mediaIndex].title;
       lightboxBackground.querySelector("#videoFS").src = "";
       lightboxBackground.querySelector("#videoFS").removeAttribute("controls");
       lightboxBackground.querySelector("#videoFS").alt = "";
       lightboxBackground.querySelector("#imageFS").display = "flex";
-      
+
     } else {
       lightboxBackground.querySelector("#videoFS").src =
-      "assets/photographers/" + choosenphotographer.name + "/" + arrayGallery[mediaIndex].video;
+        "assets/photographers/" + choosenphotographer.name + "/" + arrayGallery[mediaIndex].video;
       lightboxBackground.querySelector("#videoFS").alt = arrayGallery[mediaIndex].title;
-      console.log("arrayGallery[mediaIndex].title",arrayGallery[mediaIndex].title);
-      console.log("lightboxBackground.querySelector(videoFS).alt",lightboxBackground.querySelector("#videoFS").alt);
+      console.log("arrayGallery[mediaIndex].title", arrayGallery[mediaIndex].title);
+      console.log("lightboxBackground.querySelector(videoFS).alt", lightboxBackground.querySelector("#videoFS").alt);
       lightboxBackground.querySelector("#videoFS").controls = "true";
-      lightboxBackground.querySelector("#imageFS").src = ""; 
-      lightboxBackground.querySelector("#imageFS").alt = ""; 
+      lightboxBackground.querySelector("#imageFS").src = "";
+      lightboxBackground.querySelector("#imageFS").alt = "";
       lightboxBackground.querySelector("#videoFS").display = "flex";
-   
-    }};
+
+    }
+  };
 
 
   function Next() {
     if (mediaIndex < mediaList.length - 1) {
-      
+
       mediaIndex++;
       PreviousNextInit();
-    } 
+    }
   };
 
   function Previous() {
     if (mediaIndex > 0) {
       mediaIndex--;
       PreviousNextInit();
-    } 
+    }
   };
 
-  /////////////////lancements des events dans la lightbox sur les trois actions souris et clavier////////////////////////////////////////////////
+  /////////lancements des events dans la lightbox sur les trois actions souris et clavier/////
 
   lightboxClose.addEventListener("click", () => {
     Close();
@@ -238,19 +244,37 @@ function lightboxFunction() {
   return;
 }
 
+let inputSort = document.getElementById("sort-menu");
+inputSort.addEventListener("keydown", function(event) {
+    if (event.code == "Enter") {
+        event.preventDefault();
+        console.log(document.activeElement.innerHTML);
+        document.activeElement.click();
+    }
+});
+
+
+
+
+
+
+
+
+
+
 
 //////////////////FONCTION PRINCIPALE INIT QUI LANCE LES TACHES A EFFECTUER pour fabriquer  LA PAGE DU PHOTOGRAPHE avec galerie & coeurs ////////////////////////////////////////////////////////////////////////////////////////////
-let arrayGallery = []; 
+let arrayGallery = [];
 let choosenphotographer = [];
-let index = 0; 
+let index = 0;
 
 async function init() {
-  let photographers = await getPhotographers(); 
+  let photographers = await getPhotographers();
   const queryParams = window.location.search;
-  const urlParams = new URLSearchParams(queryParams); 
+  const urlParams = new URLSearchParams(queryParams);
   const photographerArtistId = urlParams.get("id");
 
- choosenphotographer = photographers.find(function (item) {
+  choosenphotographer = photographers.find(function (item) {
     return item.id == photographerArtistId;
   });
 
@@ -264,7 +288,7 @@ async function init() {
   content.appendChild(photographerHeader(photographers[index]));
 
   ///   ajout des medias ///
-  let medias = await getMedias(); 
+  let medias = await getMedias();
   console.log("voici les médias obtenus par fetch", medias);
   const choosenGallery = medias.filter(function (item) {
     //ici on parcourt les medias du json et on ne retient que ceux ayant le bon id

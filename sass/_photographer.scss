@@ -1,3 +1,9 @@
+
+:focus-visible,  video:focus {
+  outline: 0;
+  box-shadow: 0 0 0 6px rgba(255, 81, 0, 0.5);
+}
+
 #main {
   margin-top: 30px;
 
@@ -99,6 +105,16 @@
     }
 
 
+    img:focus {
+      outline: 0;
+      box-shadow: 0 0 0 6px rgba(255, 81, 0, 0.5);
+    }
+    video:focus {
+      outline: 0;
+      box-shadow: 0 0 0 6px rgba(255, 81, 0, 0.5);
+    }
+
+
     h2 {
       display: flex;
       //max-width: 60%;
@@ -119,6 +135,7 @@
 
       button {
         margin: 0px;
+        border-radius: 5px;
         background: no-repeat;
         background-position: center center;
         border: none;

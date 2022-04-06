@@ -28,34 +28,34 @@
       </div>
 
       <!-- <div class="custom-select"> </div> -->
-      <select name="sort menu" id="sort-menu">
-        <p class="sort-menu-title" tabindex="10" aria-label="trier par...">
-          Trier par
-        </p>
-        <option value="sort-likes" onclick="sortLikes()">Popularité</option>
-        <option value="sort-date" onclick="sortDate()">Date</option>
-        <option value="sort-title" onclick="sortTitle()">Titre</option>
+      <p id="sort-menu-title" tabindex="-1" aria-label="trier par...">
+        Trier par
+      </p>
+      <select id="sort-menu" name="sort menu" autofocus id="sort-menu">
+        <option id="sort-likes" value="sort-likes" onclick="sortLikes()" >Popularité</option>
+        <option value="sort-date" onclick="sortDate()" >Date</option>
+        <option value="sort-title" onclick="sortTitle()" >Titre</option>
       </select>
 
       <div id="gallery"></div>
 
       <div id="lightbox-background">
-        <div id="lightbox-close" aria-label="bouton fermer ou touche escape">
+        <div id="lightbox-close" aria-label="bouton fermer ou touche escape" tabindex="0">
           x
         </div>
         <div
           id="lightbox-previous"
           aria-label="bouton précédent ou touche flèche gauche"
+          tabindex="0"
         >
-          <
         </div>
         <img id="imageFS" src="" alt="" />
         <video id="videoFS" src="" alt=""></video>
         <div
           id="lightbox-next"
           aria-label="bouton suivant ou touche flèche droite"
-        >
-          >
+          tabindex="0"
+        >  
         </div>
       </div>
 

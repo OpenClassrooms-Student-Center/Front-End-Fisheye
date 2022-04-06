@@ -1,5 +1,25 @@
+#sort-menu-title{
+   position: absolute;
+   width: 74px;
+   height: 23px;
+   left: 97px;
+   top: 420px;
+   
+   font-family: 'DM Sans';
+   font-style: normal;
+   font-weight: 700;
+   font-size: 18px;
+   line-height: 23px;
+   
+   color: #000000;
+   
+   }
+
+   #sort-menu-title:focus {outline : blue solid 20px;}
+
+
 select {
-   //display: none;
+   margin-top: 7px;
    margin-left: 200px;
    color: white;
    background-color: $color-primary;

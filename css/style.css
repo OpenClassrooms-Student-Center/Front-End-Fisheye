@@ -69,6 +69,11 @@ h1 {
   margin: 3px 0 6px 0;
 }
 
+:focus-visible, video:focus {
+  outline: 0;
+  box-shadow: 0 0 0 6px rgba(255, 81, 0, 0.5);
+}
+
 #main {
   margin-top: 30px;
 }
@@ -159,6 +164,14 @@ h1 {
   border-radius: 5px;
   box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.25);
 }
+#gallery article img:focus {
+  outline: 0;
+  box-shadow: 0 0 0 6px rgba(255, 81, 0, 0.5);
+}
+#gallery article video:focus {
+  outline: 0;
+  box-shadow: 0 0 0 6px rgba(255, 81, 0, 0.5);
+}
 #gallery article h2 {
   display: flex;
   font-weight: 400;
@@ -176,6 +189,7 @@ h1 {
 }
 #gallery article .likes button {
   margin: 0px;
+  border-radius: 5px;
   background: no-repeat;
   background-position: center center;
   border: none;
@@ -493,7 +507,26 @@ input {
     transform: translateY(150px);
   }
 }
+#sort-menu-title {
+  position: absolute;
+  width: 74px;
+  height: 23px;
+  left: 97px;
+  top: 420px;
+  font-family: "DM Sans";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 23px;
+  color: #000000;
+}
+
+#sort-menu-title:focus {
+  outline: blue solid 20px;
+}
+
 select {
+  margin-top: 7px;
   margin-left: 200px;
   color: white;
   background-color: #901C1C;
