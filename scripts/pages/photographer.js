@@ -55,7 +55,7 @@ const likeMedia = (media) => {
 };
 
 async function init() {
-    const photographer = await getPhtotgrapher(window.location.search.split("=")[1]);
+    const photographer = await getPhtotgrapher(window.location.search.split("&")[0].split("=")[1]);
     displayData(photographer);
 
     const likeButtons = document.querySelectorAll(".like-btn");

@@ -102,12 +102,36 @@ export class LayoutsFactory {
         const sortMedias = document.createElement("div");
         sortMedias.classList.add("medias-section__sort");
 
-        const sortBtn = componentsFactory.getSortBtnDOM();
+        const sortBtn = componentsFactory.getSortBtnDOM(photographer.id);
 
         sortMedias.appendChild(sortBtn);
 
         const medias = document.createElement("div");
         medias.classList.add("medias-section__medias");
+
+        if (window.location.search.includes("sort=")) {
+            const sortBy = window.location.search.split("&")[1].split("=")[1];
+
+            switch (sortBy) {
+                case "Popularit%C3%A9":
+                    photographer.medias.sort((a, b) => b.likes - a.likes);
+                    break;
+                case "Date":
+                    photographer.medias.sort((a, b) => {
+                        const dateA = new Date(a.date);
+                        const dateB = new Date(b.date);
+
+                        return dateB - dateA;
+                    });
+                    break;
+                case "Titre":
+                    photographer.medias.sort((a, b) => a.title.localeCompare(b.title));
+                    console.log(photographer.medias);
+                    break;
+                default:
+                    break;
+            }
+        }
 
         photographer.medias.forEach((media, index) => {
             const mediaDOM = media.hasOwnProperty("image")

@@ -81,7 +81,7 @@ export class ComponentsFactory {
         return button;
     };
 
-    getSortBtnDOM = () => {
+    getSortBtnDOM = (photographerId) => {
         const sortContainer = document.createElement("div");
         sortContainer.classList.add("sort-container");
 
@@ -94,7 +94,10 @@ export class ComponentsFactory {
 
         const selectedContainer = document.createElement("li");
         const selected = document.createElement("button");
-        selected.textContent = "Popularité";
+        selected.textContent =
+            window.location.search.includes("sort=") && window.location.search.split("&")[1].split("=")[1] !== "Popularit%C3%A9"
+                ? window.location.search.split("&")[1].split("=")[1]
+                : "Popularité";
         selectedContainer.classList.add("sort-btn__selected");
 
         selectedContainer.appendChild(selected);
@@ -108,7 +111,7 @@ export class ComponentsFactory {
 
         const option1Container = document.createElement("li");
         const option1 = document.createElement("button");
-        option1.textContent = "Date";
+        option1.textContent = selected.textContent === "Date" ? "Popularité" : "Date";
         option1Container.classList.add("sort-btn__option");
         option1Container.classList.add("sort-btn__option--hidden");
 
@@ -116,7 +119,7 @@ export class ComponentsFactory {
 
         const option2Container = document.createElement("li");
         const option2 = document.createElement("button");
-        option2.textContent = "Titre";
+        option2.textContent = selected.textContent === "Titre" ? "Popularité" : "Titre";
         option2Container.classList.add("sort-btn__option");
         option2Container.classList.add("sort-btn__option--hidden");
 
@@ -166,6 +169,8 @@ export class ComponentsFactory {
                 selected.textContent = filterChoosen;
                 selected.appendChild(icon);
             }
+
+            window.location.search = `id=${photographerId}&sort=${filterChoosen}`;
 
             icon.classList.remove("sort-btn__icon--alt");
             option1Container.classList.add("sort-btn__option--hidden");
