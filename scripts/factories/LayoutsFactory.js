@@ -126,7 +126,6 @@ export class LayoutsFactory {
                     break;
                 case "Titre":
                     photographer.medias.sort((a, b) => a.title.localeCompare(b.title));
-                    console.log(photographer.medias);
                     break;
                 default:
                     break;
