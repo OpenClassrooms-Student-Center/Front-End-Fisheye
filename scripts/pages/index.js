@@ -20,6 +20,8 @@
                 "portrait": "account.png"
             },
         ]
+
+        console.log(photographers)
         // et bien retourner le tableau photographers seulement une fois
         return ({
             photographers: [...photographers, ...photographers, ...photographers]})
