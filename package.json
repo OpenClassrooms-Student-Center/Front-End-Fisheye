@@ -4,6 +4,7 @@
   "description": "FishEye website prototype",
   "main": "scripts/index.js",
   "scripts": {
+    "lint": "eslint ."
   },
   "repository": {
     "type": "git",

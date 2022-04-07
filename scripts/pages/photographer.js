@@ -21,6 +21,6 @@ async function init () {
   const medias = media.filter(elt => elt.photographerId === photographerId)
   // displayData(photographer, medias)
   console.log(photographer, medias)
-};
+}
 
 init()
