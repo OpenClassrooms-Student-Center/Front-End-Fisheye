@@ -1,6 +1,14 @@
 // eslint-disable-next-line no-unused-vars
 function photographerFactory (data) {
-  const { name, portrait } = data
+  const {
+    city,
+    country,
+    id,
+    name,
+    portrait,
+    price,
+    tagline
+  } = data
 
   const picture = `assets/photographers/${portrait}`
 
@@ -16,8 +24,14 @@ function photographerFactory (data) {
   }
 
   return {
+    city,
+    country,
+    id,
+    location: `${city}, ${country}`,
     name,
-    picture,
+    portrait,
+    price,
+    tagline,
     getUserCardDOM
   }
 }
