@@ -38,6 +38,7 @@ h1 {
     justify-content: space-between;
     align-items: center;
     flex-direction: column;
+    text-decoration: none;
 }
 
 .photographer_section a h2 {

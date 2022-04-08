@@ -16,9 +16,7 @@ function hydratePresentationFactory(data) {
         quote.textContent = data.tagline;
         document.querySelector("#main").appendChild(page);
     }
-    function getPhotographerName () {
-        return name
-    }
+   
 }
 
 

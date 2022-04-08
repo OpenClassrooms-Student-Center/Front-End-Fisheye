@@ -1,5 +1,6 @@
 import hydratePresentationFactory from "../factories/photographerPage.js";
 import hydratePhotoFactory from "../factories/photo.js";
+import getSelectedSort from "../functions/getSelectedSort.js";
 
 async function initPhotographe() {
     const photographerId = getphotographerId();
@@ -27,23 +28,25 @@ async function getPhotos(photographerId) {
     fetch("../data/photographers.json")
         .then(res => res.json())
         .then(data => {
-            console.log(data)
+            
             const photos = data.media.filter((photo)=> photo.photographerId === parseInt(photographerId, 10))
             const name = data.photographers.filter((photographer) => photographer.id === parseInt(photographerId, 10))
             return [photos, name[0].name]
         })
         .then(data => {
-           
-            console.log(data[0])
             const photosId = data[0]
             const name = data[1]
-            console.table(photosId)
-            photosId.forEach((photo) => {
+            
+            const sortMedia = getSelectedSort(photosId);
+            console.log(sortMedia)
+            sortMedia.forEach((photo) => {
                 
-                hydratePhotoFactory(photosId, name)
-            })
+                hydratePhotoFactory(photo, name)
+             })
            
         })
 }
 
 initPhotographe ()
+// const selectedSort = document.querySelector("#select")
+// selectedSort.addEventListener("click", getSelectedSort(data))
