@@ -11,6 +11,7 @@ async function displayData (photographers) {
 
 async function init () {
   // Récupère les datas des photographes
+  // eslint-disable-next-line no-undef
   const { photographers } = await getPhotographers()
   displayData(photographers)
 }

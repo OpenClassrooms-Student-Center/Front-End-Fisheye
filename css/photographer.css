@@ -2,28 +2,60 @@
     display: none;
 }
 
-.photograph-header {
-    background-color: #FAFAFA;
-    height: 300px;
+.photographHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    background-color: var(--secondary-penumbra-background-color);
+    height: 313px;
     margin: 0 100px;
+    padding: 0 50px;
+}
+
+.photographHeader__infos--title {
+    color: var(--primary-light-text-color);
+    font-size: 64px;
+    line-height: 83px;
+    margin: 0;
+}
+
+.photographHeader__infos--location {
+    color: var(--primary-dark-background-color);
+    font-size: 24px;
+    line-height: 31px;
+}
+
+.photographHeader__infos--tagline {
+    color: var(--secondary-penumbra-text-color);
+    font-size: 18px;
+    line-height: 23px;
+    margin: 0;
+}
+
+.photographHeader__img {
+    height: 200px;
+    width: 200px;
+    border-radius: 100%;
+    object-fit: cover;
 }
 
 .contact_button {
     font-size: 20px;
     font-weight: bold;
-    color: white;
+    color: var(--primary-dark-text-color);;
     padding: 11px;
     width: 170px;
     height: 70px;
     border: none;
-    background-color: #901C1C;
+    background-color: var(--primary-dark-background-color);
     border-radius: 5px;
     cursor: pointer;
 }
 
 .modal {
     border-radius: 5px;
-    background-color: #DB8876;
+    background-color: var(--secondary-dark-background-color);
     width: 50%;
     display: flex;
     flex-direction: column;
@@ -73,4 +105,77 @@ form input {
     height: 68px;
     border: none;
     border-radius: 5px;
+}
+
+.photographMedias {
+    margin: 0 100px;
+}
+
+.photographMedias__filters {
+    font-size: 18px;
+    line-height: 23px;
+    font-weight: 700;
+    margin-bottom: 30px;
+}
+
+.mediaCards {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 30px;
+}
+
+.mediaCard {
+    width: 350px;
+    color: var(--secondary-light-text-color);
+}
+
+.mediaCard p {
+    margin: 0;
+}
+
+.mediaCard__img {
+    width: 350px;
+    height: 300px;
+    object-fit: cover;
+    border-radius: 5px;
+}
+
+.mediaCard__infos {
+    display: flex;
+    justify-content: space-between;
+}
+
+.mediaCard__infos--title {
+    font-size: 24px;
+    line-height: 31px;
+}
+
+.mediaCard__infos--likes {
+    font-weight: 500;
+    font-size: 24px;
+    line-height: 31px;
+}
+
+.photographComplementary {
+    position: sticky;
+    bottom: 0;
+    left: 100vw;
+
+    display: flex;
+    justify-content: space-between;
+    align-content: center;
+    width: 320px;
+    background-color: var(--secondary-dark-background-color);
+    border-radius: 5px 5px 0 0;
+
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 31px;
+    padding: 0 34px;
+}
+
+.photographComplementary p {
+    margin: 0;
+    padding: 21px 0;
 }

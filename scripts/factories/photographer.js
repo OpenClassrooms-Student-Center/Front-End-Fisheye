@@ -10,7 +10,7 @@ function photographerFactory (data) {
     tagline
   } = data
 
-  const picture = `assets/photographers/${portrait}`
+  const picture = `assets/images/photographers/${portrait}`
 
   function getUserCardDOM () {
     const article = document.createElement('article')
@@ -48,6 +48,55 @@ function photographerFactory (data) {
     return (article)
   }
 
+  function getPhotographerInfoDOM () {
+    const photographerInfos = document.createElement('div')
+    photographerInfos.classList.add('photographHeader__infos')
+
+    const h1 = document.createElement('h1')
+    h1.classList.add('photographHeader__infos--title')
+    h1.textContent = name
+    photographerInfos.appendChild(h1)
+
+    const locationElt = document.createElement('p')
+    locationElt.textContent = `${city}, ${country}`
+    locationElt.classList.add('photographHeader__infos--location')
+    photographerInfos.appendChild(locationElt)
+
+    const taglineElt = document.createElement('p')
+    taglineElt.textContent = tagline
+    taglineElt.classList.add('photographHeader__infos--tagline')
+    photographerInfos.appendChild(taglineElt)
+
+    return (photographerInfos)
+  }
+
+  function getPhotographerContactDOM () {
+    const photographerContact = document.createElement('div')
+    photographerContact.classList.add('photographHeader__contact')
+
+    const contactBtn = document.createElement('button')
+    contactBtn.classList.add('contact_button')
+    contactBtn.textContent = 'Contactez-moi'
+    // eslint-disable-next-line no-undef
+    contactBtn.addEventListener('click', displayModal)
+    photographerContact.appendChild(contactBtn)
+
+    return photographerContact
+  }
+
+  function getPhotographerImgDOM () {
+    const photographerImg = document.createElement('div')
+    photographerImg.classList.add('photographHeader__img')
+
+    const img = document.createElement('img')
+    img.classList.add('photographHeader__img')
+    img.setAttribute('src', picture)
+    img.setAttribute('alt', '')
+    photographerImg.appendChild(img)
+
+    return photographerImg
+  }
+
   return {
     city,
     country,
@@ -56,6 +105,9 @@ function photographerFactory (data) {
     portrait,
     price,
     tagline,
-    getUserCardDOM
+    getUserCardDOM,
+    getPhotographerInfoDOM,
+    getPhotographerContactDOM,
+    getPhotographerImgDOM
   }
 }
