@@ -11,6 +11,7 @@ const formData = document.querySelectorAll(".formData");
 const close = document.querySelector(".close"); //constante qui récupère l'élément correspondant à la croix
 const btnClose = document.querySelector(".btn-close");
 const modalTitle = document.querySelector("#modal-title");
+const firstname = document.querySelector("#first");
 
 
 // launch modal form and reset data
@@ -24,7 +25,7 @@ function launchModal() {
   for (let step = 0; step < 3; step++) {
     formularyData[step].removeAttribute("data-error-visible");
   } // pour supprimer les bordures par défaut au lieu du rouge ou du bleu
-  
+  firstname.focus();
 }
 
 
@@ -32,6 +33,9 @@ function launchModal() {
 //attendre un clic sur la classe close puis lancer la fonction closeModal
 close.addEventListener("click", closeModal);
 btnClose.addEventListener("click", closeModal);
+
+
+
 
 //fonction permettant de fermer la modale en cliquant sur la croix
 function closeModal(disabled) {
@@ -53,6 +57,7 @@ const formularyData = document.querySelectorAll(".formData");
 const firstName = document.querySelector("#first");
 const lastName = document.querySelector("#last");
 const email = document.querySelector("#email");
+const message = document.querySelector("#textarea")
 const buttonSubmit = document.querySelector(".btn-submit");
 const formError = document.querySelector(".formError");
 const dataSent = document.querySelector(".data-sent");
@@ -130,6 +135,14 @@ function validate() {
     formulary.style.display = "none";
     dataSent.style.display = "flex";
   }
+
+
+
+
+
+  console.log("contenu des champs du formulaire de contact :",firstName.value,lastName.value,email.value,message.value);
 }
+
+
 
 

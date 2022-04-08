@@ -25,7 +25,7 @@ function photographerCardFactory(photographer, photographers) {
   urlPhotographer.href = "photographer.html?id=" + photographer.id;
   profilePicture.src =
     "assets/Photographers ID Photos/" + photographer.portrait;
-  profilePicture.alt = photographer.name;
+  profilePicture.alt = "Photo d'identité de l'artiste " + photographer.name;
   photographerName.textContent = photographer.name;
   localisation.id = "localisation";
   localisation.textContent = photographer.city + ", " + photographer.country;

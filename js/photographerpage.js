@@ -76,6 +76,7 @@ class Media {
         <span class = "likes-number">${this._media.likes}</span>
         <button
         class="heart-button unliked"
+        aria-label="Coeur pour aimer le media et augmenter son compteur"
         style='background-image: url("assets/icons/dark_red_heart.svg");'
       ></button>
         </div>
@@ -139,6 +140,24 @@ async function sortTitle() {
   await rebuildGallery();
 }
 
+///////////// ACCESSIBILITE clavier : permettre le click ENTER sur le menu select dropdown /////////
+///////////// But simuler le click avec la touche ENTER  /////
+let selectSortMenu = document.getElementById("sort-menu");
+console.log("sort menu",selectSortMenu);
+selectSortMenu.addEventListener("keydown", function(event) {
+    if (event.code == "Enter") {
+        console.log("touche entrée détectée");
+        event.preventDefault();
+       document.getElementById("sort-likes").click();
+    }
+});
+
+
+
+
+
+
+
 
 
 
@@ -154,6 +173,8 @@ function lightboxFunction() {
   const lightboxNext = document.querySelector("#lightbox-next");
   let mediaIndex = 0;
 
+  
+
   mediaList.forEach((media) => {
     media.addEventListener("click", () => {
       lightboxBackground.querySelector("#imageFS").src = media.src;
@@ -163,9 +184,10 @@ function lightboxFunction() {
       mediaIndex = Array.from(mediaList).indexOf(choosenMedia);
       console.log("mediaIndex", mediaIndex);
       lightboxBackground.style.display = "block";
-    });
+       });
   });
-
+ 
+  
   //////déclaration des fonctions next et previous qui s'arrêtent au bout de la liste////////
   function Close() {
     lightboxBackground.style.display = "none";
@@ -244,15 +266,6 @@ function lightboxFunction() {
   return;
 }
 
-let inputSort = document.getElementById("sort-menu");
-inputSort.addEventListener("keydown", function(event) {
-    if (event.code == "Enter") {
-        event.preventDefault();
-        console.log(document.activeElement.innerHTML);
-        document.activeElement.click();
-    }
-});
-
 
 
 
@@ -277,8 +290,6 @@ async function init() {
   choosenphotographer = photographers.find(function (item) {
     return item.id == photographerArtistId;
   });
-
-  arrayPhotographer = choosenphotographer;
 
   console.log("photographers", photographers);
   console.log("choosenphotographer", choosenphotographer);

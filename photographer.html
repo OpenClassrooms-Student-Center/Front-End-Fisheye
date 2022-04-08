@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="fr">
   <head>
     <link href="css/style.css" rel="stylesheet" type="text/css" />
     <meta charset="utf-8" />
@@ -20,6 +20,7 @@
         />
       </a>
     </header>
+     <!-- ==================================         PHOTOGRAPH HEADER          ==========================================================-->
     <main id="main">
       <div class="photograph-header" id="photograph-header">
         <button class="contact_button" id="contact" onclick="launchModal()">
@@ -27,38 +28,42 @@
         </button>
       </div>
 
-      <!-- <div class="custom-select"> </div> -->
+      <!-- ================================== DROPDOWN OU MENU DEROULANT DE TRI ==========================================================-->
       <p id="sort-menu-title" tabindex="-1" aria-label="trier par...">
         Trier par
       </p>
-      <select id="sort-menu" name="sort menu" autofocus id="sort-menu">
+      <select id="sort-menu" name="sort menu" id="sort-menu">
         <option id="sort-likes" value="sort-likes" onclick="sortLikes()" >Popularité</option>
         <option value="sort-date" onclick="sortDate()" >Date</option>
         <option value="sort-title" onclick="sortTitle()" >Titre</option>
       </select>
 
+       <!-- ================================== GALERIE VIDE QUI EST REMPLIE GRACE AU FACTORY PATTERN ======================================-->
       <div id="gallery"></div>
 
+
+       <!-- ============================================ LIGHT BOX OU CAROUSSEL ===========================================================-->
       <div id="lightbox-background">
-        <div id="lightbox-close" aria-label="bouton fermer ou touche escape" tabindex="0">
+        <div id="lightbox-close" aria-label="bouton fermer ou touche escape" tabindex="1">
           x
         </div>
         <div
           id="lightbox-previous"
           aria-label="bouton précédent ou touche flèche gauche"
-          tabindex="0"
-        >
+          tabindex="1"
+        > <
         </div>
         <img id="imageFS" src="" alt="" />
         <video id="videoFS" src="" alt=""></video>
         <div
           id="lightbox-next"
           aria-label="bouton suivant ou touche flèche droite"
-          tabindex="0"
-        >  
+          tabindex="1"
+        >  >
         </div>
       </div>
 
+      <!-- ================================== POPUP OU ENCART AVEC LE NOMBRE TOTAL DE LIKES =================================================-->
       <div class="popup-text">
         <span class="likes-total"
           ><span id="number-total-likes"></span
@@ -68,7 +73,7 @@
       </div>
     </main>
 
-    <!-- formulaire de contact-->
+    <!--=========================================== MODALE OU FORMALAIRE DE CONTACT ==========================================================-->
 
     <div class="bground">
       <div class="content">
@@ -160,6 +165,10 @@
       </div>
     </div>
 
+
+
+
+     <!-- ======================================== SCRIPTS  =============================================================-->
     <script src="js/modal.js"></script>
     <script src="js/counter.js"></script>
     <script src="js/photographerpage.js"></script>
