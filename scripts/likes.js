@@ -1,5 +1,5 @@
+// Ajout ou retrait d'un like au clic    
 export default class likeEvent {
-    // Ajout ou retrait d'un like au clic sur icone   
     constructor() {
         let galerie = document.getElementById('photographer-gallery');
 

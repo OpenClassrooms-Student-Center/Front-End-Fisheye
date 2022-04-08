@@ -157,15 +157,15 @@ a {
 
 .works-sort {
   @include flex-items(flex, center, space-between, row);
-  width: 270px;
+  width: 250px;
   margin: (2rem 4rem);
   & > span {
     font-size: 1.2rem;
     font-weight: 700;
-    margin-right: 1.5rem;
+    margin-right: 5px;
   }
   .sort-btn {
-    @include flex-items(flex, center, flex-start, unset);
+    @include flex-items(flex, center, center, unset);
     background: $primary-color;
     border-radius: 5px;
     color: white;
@@ -173,14 +173,18 @@ a {
     font-weight: 500;
     padding: 0.6rem 1.5rem;
     width: 10rem;
+   
     &:hover {
       cursor: pointer;
       transform: scale(1.05);
     }
   }
-
+  .fa-chevron-down, .fa-chevron-up {
+    margin-left: 16px;
+  }
   .hidden-sort {
     display: none;
+    z-index: 1;
     border-radius: 5px;
     color: white;
     padding: 0;
@@ -193,6 +197,7 @@ a {
       font-size: 1.2rem;
       font-weight: 500;
       padding: 1.25rem;
+      list-style: none;
       &:hover {
         background-color: $secondary-color;
         cursor: pointer;

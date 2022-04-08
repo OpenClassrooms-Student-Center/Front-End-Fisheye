@@ -23,19 +23,19 @@ sortMedias(data) {
   sortBtn.forEach((btn, index) => btn.addEventListener('click', () => {
       hiddenSort[0].style.display = "none";
       if (index == 0) {
-          btnSort.innerHTML = `Popularité`;
+          btnSort.innerHTML = `Popularité<i class="fas fa-chevron-down"></i>`;
           // Trier par popularité
           mediaSorted = MEDIAS.sort((a, b) => {   
               return b.likes - a.likes;
           })
       } else if (index == 1) {
-          btnSort.innerHTML = `Date`;
+          btnSort.innerHTML = `Date<i class="fas fa-chevron-down"></i>`;
           // Trier par date
           mediaSorted = MEDIAS.sort((a, b) => {  
               return new Date(a.date).valueOf() - new Date(b.date).valueOf();
           })
       } else if (index == 2) {
-          btnSort.innerHTML = `Titre`;
+          btnSort.innerHTML = `Titre<i class="fas fa-chevron-down"></i>`;
           // Trier par titre
           mediaSorted = MEDIAS.sort((a, b) => { 
              return  a.title.localeCompare(b.title)}
