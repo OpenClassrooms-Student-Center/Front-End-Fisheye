@@ -1,16 +1,3 @@
-async function getPhotographers () {
-  const photographersData = fetch('./data/photographers.json')
-    .then(function (res) {
-      if (res.ok) {
-        return res.json()
-      }
-    })
-    .catch(function (err) {
-      console.log(err)
-    })
-  return photographersData
-}
-
 async function displayData (photographers) {
   const photographersSection = document.querySelector('.photographer_section')
 
