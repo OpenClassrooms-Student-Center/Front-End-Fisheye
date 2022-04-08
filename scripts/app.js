@@ -5,7 +5,7 @@ import DropdownSort from "./dropdown.js";
 import { displayPhotographerProfil } from "./photographer-profil.js";
 import GaleryBuilder from "./galerieBuild.js";
 
-(async function appRouter() {
+async function app() {
   try {
     const DATA_FISHEYE = await getDataPhotographers();
     if (window.location.pathname.includes("/photographer.html")) {
@@ -24,4 +24,4 @@ import GaleryBuilder from "./galerieBuild.js";
   } catch (err) {
     console.log(err);
   }
-})();
+}app();

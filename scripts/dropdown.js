@@ -1,5 +1,4 @@
 import  GalleryFactory  from "./factories/media.js";
-//import MediaBuilder from "./factories/media.js";
 
 export default class  DropdownSort{
   Dropdown(data){

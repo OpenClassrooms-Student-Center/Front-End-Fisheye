@@ -39,8 +39,10 @@ class VideoFactory {
 
     // Construction gallerie de médias et de la lightbox
 export default class GalleryFactory {
+    constructor() {
+        this.totalLike = 0;
+    }
     builderGallery(dataMedias) {
-        
         const id = new URLSearchParams(window.location.search).get("id");
         // Création du média via MediaFactory
         let mediaFactory = new MediaFactory();
@@ -58,17 +60,16 @@ export default class GalleryFactory {
                     <h2 class="media-detail-title">${element.title}</h2>
                     <span class="media-detail-price">${element.price} €</span>
                     <div class='media-detail-like'>
-                    <span class="like-counter">${element.likes}</span> 
-                    <i class="far fa-heart heart-btn" aria-label='likes' role="button" data-value="${element.likes}"></i>
+                        <span><a class="like-counter">${element.likes}</a></span>
+                        <i class="far fa-heart heart-btn" aria-label='likes' role="button" data-value="${element.likes}"></i>
                     </div>
                 </div>
                 `
-                //console.log(articleGallery)
+                
                 articleGallery.innerHTML = workTemplate;
                 sectionGallery.appendChild(articleGallery);
                 articleGallery.classList.add("media-art");
-
-
+                this.totalLike += parseInt(element.likes);
             }
         })
         return this;

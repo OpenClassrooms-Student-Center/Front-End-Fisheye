@@ -15,17 +15,7 @@ $terciary-color: #757575;
   justify-content: $justify;
   flex-direction: $direction;
 }
-//keyframe
-@keyframes dropdown-style {
-  0% {
-    transform: translateY(-50px);
-    opacity: 0;
-  }
-  100% {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
+
 * {
   font-family: "DM Sans", sans-serif;
 }
@@ -187,13 +177,9 @@ a {
       cursor: pointer;
       transform: scale(1.05);
     }
-    &:active + .hidden-sort {
-      animation: dropdown-style 3s 3000ms ease-in-out;
-    }
   }
 
   .hidden-sort {
-    animation: dropdown-style 3s 3000ms ease-in-out;
     display: none;
     border-radius: 5px;
     color: white;
@@ -338,5 +324,23 @@ input[data-error]::after {
     }
 }
 }
+//style pour la box des likes et du prix journalier 
 
+  #box-like {
+      @include flex-items(flex,center,space-between,row);;
+      background: #db8876;
+      border-radius: 0.3rem;
+      bottom: 0;
+      font-size: 1.2em;
+      font-weight: 500;
+      height: 4rem;
+      padding: 0 2rem;
+      position: fixed;
+      right: 2.5rem;
+      width: 18rem;
+     .fa-heart {
+          left: 4.8rem;
+          position: absolute;
+      }
+  }
 
