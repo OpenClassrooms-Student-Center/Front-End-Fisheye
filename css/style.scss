@@ -179,7 +179,7 @@ a {
       transform: scale(1.05);
     }
   }
-  .fa-chevron-down, .fa-chevron-up {
+  .fa-chevron-down {
     margin-left: 16px;
   }
   .hidden-sort {
@@ -349,3 +349,67 @@ input[data-error]::after {
       }
   }
 
+  //style pour la lightbox
+#lightbox{
+  background-color: #fff;
+  display: none;
+  height: 100vw;
+  left: 0;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 1;
+  &-body {
+    background-color: #fff;
+    height: 90%;
+    left: 50%;
+    margin: 0 auto;
+    position: fixed;
+    text-align: center;
+    top: 3%;
+    transform: translate(-50%, 0);
+    width: 60%;
+    #lightbox-media {
+      height: 100%;
+      margin: 0 auto 1rem;
+      overflow: hidden;
+      width: 90%;
+      img,
+      video {
+        height: 100%;
+        object-fit: cover;
+        width: 100%;
+      }
+    }
+    #lightbox-name {
+      color: $primary-color;
+      font-family: sans-serif;
+      font-size: 15px;
+      font-weight: 600;
+    }
+    .fa-times {
+      color: $primary-color;
+      font-size: 1.7rem;
+      position: absolute;
+      right: -3rem;
+      top: 0.5rem;
+      cursor: pointer;
+    }
+    .fa-chevron-left {
+      color: $primary-color;
+      font-size: 2rem;
+      left: -3rem;
+      position: absolute;
+      top: 48%;
+      cursor: pointer;
+    }
+    .fa-chevron-right {
+      color: $primary-color;
+      font-size: 2rem;
+      position: absolute;
+      right: -3rem;
+      top: 48%;
+      cursor: pointer;
+    }
+  }
+}

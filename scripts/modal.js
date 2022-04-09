@@ -75,13 +75,14 @@ export function contactModal(PHOTOGRAPHERS) {
     }
 });
 //fermeture de la modale avec les touches Tab et Retour
-function tabClose(event){
-    if(event.keyCode === 27 && event.keyCode === 8) {
-        modalBg.style.display = "none";
-        form.reset();
-    };
+function tabClose(e){
+  if (e.code == "Escape") {
+    modalBg.style.display = 'none';
+    form.reset();
+  };
 }
 window.addEventListener("keydown", tabClose);
+
 //fonction pour lecture d'outils d'assistance
 function formFocus () {
     form.focus();

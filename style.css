@@ -182,7 +182,7 @@ a {
   cursor: pointer;
   transform: scale(1.05);
 }
-.works-sort .fa-chevron-down, .works-sort .fa-chevron-up {
+.works-sort .fa-chevron-down {
   margin-left: 16px;
 }
 .works-sort .hidden-sort {
@@ -360,6 +360,70 @@ input[data-error]::after {
 #box-like .fa-heart {
   left: 4.8rem;
   position: absolute;
+}
+
+#lightbox {
+  background-color: #fff;
+  display: none;
+  height: 100vw;
+  left: 0;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 1;
+}
+#lightbox-body {
+  background-color: #fff;
+  height: 90%;
+  left: 50%;
+  margin: 0 auto;
+  position: fixed;
+  text-align: center;
+  top: 3%;
+  transform: translate(-50%, 0);
+  width: 60%;
+}
+#lightbox-body #lightbox-media {
+  height: 100%;
+  margin: 0 auto 1rem;
+  overflow: hidden;
+  width: 90%;
+}
+#lightbox-body #lightbox-media img,
+#lightbox-body #lightbox-media video {
+  height: 100%;
+  object-fit: cover;
+  width: 100%;
+}
+#lightbox-body #lightbox-name {
+  color: #901c1c;
+  font-family: sans-serif;
+  font-size: 15px;
+  font-weight: 600;
+}
+#lightbox-body .fa-times {
+  color: #901c1c;
+  font-size: 1.7rem;
+  position: absolute;
+  right: -3rem;
+  top: 0.5rem;
+  cursor: pointer;
+}
+#lightbox-body .fa-chevron-left {
+  color: #901c1c;
+  font-size: 2rem;
+  left: -3rem;
+  position: absolute;
+  top: 48%;
+  cursor: pointer;
+}
+#lightbox-body .fa-chevron-right {
+  color: #901c1c;
+  font-size: 2rem;
+  position: absolute;
+  right: -3rem;
+  top: 48%;
+  cursor: pointer;
 }
 
 /*# sourceMappingURL=style.css.map */

@@ -1,4 +1,5 @@
 // Création d'un élément image et ses attributs src, alt et role
+import LightBox from "../lightbox.js";
  export class ImageFactory {
     createHTML(element) {
         let eltImage = document.createElement('img');
@@ -44,8 +45,11 @@ export default class GalleryFactory {
     }
     builderGallery(dataMedias) {
         const id = new URLSearchParams(window.location.search).get("id");
-        // Création du média via MediaFactory
+        ////// Création du média via MediaFactory///////
         let mediaFactory = new MediaFactory();
+        //initialisation des element necessaire pour la lightbox
+        let mediaItems = [];
+        let mediaName = [];
         dataMedias.forEach(element => {
             if (id == element.photographerId) {
                 let sectionGallery = document.getElementById('photographer-gallery');
@@ -70,6 +74,11 @@ export default class GalleryFactory {
                 sectionGallery.appendChild(articleGallery);
                 articleGallery.classList.add("media-art");
                 this.totalLike += parseInt(element.likes);
+                //stockage des elements a utilisier pour la lightbox
+                mediaItems.push(mediaHTML.outerHTML);
+                mediaName.push(element.title);
+                // Création de la lightbox 
+                 new LightBox().lightboxOpen(mediaItems, mediaName);
             }
         })
         return this;
