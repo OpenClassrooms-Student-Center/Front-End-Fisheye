@@ -6,6 +6,60 @@
     background-color: #FAFAFA;
     height: 300px;
     margin: 0 100px;
+    justify-self: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+}
+
+.photograph-header {
+    justify-self: center;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-direction: row;
+}
+.photograph-header a {
+    justify-self: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+
+.photograph-header h2{
+    color: #D3573C;
+    font-size: 64px;
+    font-weight:500;
+    margin-bottom: 0;
+}
+
+.photograph-header img{
+    height: 200px;
+    width: 200px;
+    object-fit: cover;
+    border-radius: 100px;
+    order: 99;
+}
+
+.photograph-header p{
+    margin: 0;
+}
+
+.photograph-header p.citycountry{
+    color: #901C1C;
+    font-size: 24px;
+    font-weight: 400;
+}
+
+.photograph-header p.tagline{
+    font-size: 18px;
+}
+.photograph-header p.price{
+    color: #757575;
+    font-size: 9px;
 }
 
 .contact_button {
@@ -19,6 +73,7 @@
     background-color: #901C1C;
     border-radius: 5px;
     cursor: pointer;
+    order: 2;
 }
 
 .modal {
@@ -73,4 +128,57 @@ form input {
     height: 68px;
     border: none;
     border-radius: 5px;
+}
+
+.medias_section{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 70px;
+    margin-top: 100px;
+}
+
+.medias_section a {
+    justify-self: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+}
+
+.medias_section article{
+    justify-self: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.medias_section article h2{
+    color: #D3573C;
+    margin: 0;
+}
+
+.medias_section article img, .medias_section article video {
+    height: 300px;
+    width: 350px;
+    object-fit: cover;
+}
+
+.medias_section article p{
+    margin: 0;
+}
+.media-bottom{
+    width: 100%;
+    /*justify-self: center;*/
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: row;
+    font-size: 24px;
+}
+.hearts{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: row;
 }
