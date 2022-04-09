@@ -25,86 +25,9 @@
             <option>Titre</option>
           </select>
         </p>
-        <div class="mediaCards">
-
-          <div class="mediaCard">
-            <img src="assets\images\Mimi\Animals_Rainbow.jpg" class="mediaCard__img" />
-            <div class="mediaCard__infos">
-              <p class="mediaCard__infos--title">
-                Arc-en-ciel
-              </p>
-              <p class="mediaCard__infos--likes">
-                11 <i class="fa-solid fa-heart"></i>
-              </p>
-            </div>
-          </div>
-
-          <div class="mediaCard">
-            <img src="assets\images\Mimi\Animals_Rainbow.jpg" class="mediaCard__img" />
-            <div class="mediaCard__infos">
-              <p class="mediaCard__infos--title">
-                Arc-en-ciel
-              </p>
-              <p class="mediaCard__infos--likes">
-                11 <i class="fa-solid fa-heart"></i>
-              </p>
-            </div>
-          </div>
-
-          <div class="mediaCard">
-            <img src="assets\images\Mimi\Animals_Rainbow.jpg" class="mediaCard__img" />
-            <div class="mediaCard__infos">
-              <p class="mediaCard__infos--title">
-                Arc-en-ciel
-              </p>
-              <p class="mediaCard__infos--likes">
-                11 <i class="fa-solid fa-heart"></i>
-              </p>
-            </div>
-          </div>
-
-          <div class="mediaCard">
-            <img src="assets\images\Mimi\Animals_Rainbow.jpg" class="mediaCard__img" />
-            <div class="mediaCard__infos">
-              <p class="mediaCard__infos--title">
-                Arc-en-ciel
-              </p>
-              <p class="mediaCard__infos--likes">
-                11 <i class="fa-solid fa-heart"></i>
-              </p>
-            </div>
-          </div>
-
-          <div class="mediaCard">
-            <img src="assets\images\Mimi\Animals_Rainbow.jpg" class="mediaCard__img" />
-            <div class="mediaCard__infos">
-              <p class="mediaCard__infos--title">
-                Arc-en-ciel
-              </p>
-              <p class="mediaCard__infos--likes">
-                11 <i class="fa-solid fa-heart"></i>
-              </p>
-            </div>
-          </div>
-
-          <div class="mediaCard">
-            <img src="assets\images\Mimi\Animals_Rainbow.jpg" class="mediaCard__img" />
-            <div class="mediaCard__infos">
-              <p class="mediaCard__infos--title">
-                Arc-en-ciel
-              </p>
-              <p class="mediaCard__infos--likes">
-                11 <i class="fa-solid fa-heart"></i>
-              </p>
-            </div>
-          </div>
-
-        </div>
+        <div class="mediaCards"></div>
       </div>
-      <div class="photographComplementary">
-        <p>297 081 <i class="fa-solid fa-heart"></i></p>
-        <p>300€ / jour</p>
-      </div>
+      <aside class="photographComplementary"></aside>
     </main>
 
     <div id="contact_modal">
@@ -126,10 +49,16 @@
     <script src="scripts/utils/contactForm.js"></script>
 
     <!-- Api -->
-    <script src="scripts/api/photographer.js"></script>
+    <script src="scripts/api/PhotographerApi.js"></script>
 
     <!-- Factories -->
-    <script src="scripts/factories/photographer.js"></script>
+    <script src="scripts/factories/PhotographerFactory.js"></script>
+    <script src="scripts/factories/MediaFactory.js"></script>
+    
+    <!-- Models -->
+    <script src="scripts/models/Photographer.js"></script>
+    <script src="scripts/models/ImageMedia.js"></script>
+    <script src="scripts/models/VideoMedia.js"></script>
 
     <!-- Entry point -->
     <script src="scripts/pages/photographer.js"></script>
