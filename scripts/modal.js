@@ -24,6 +24,7 @@ export function contactModal(PHOTOGRAPHERS) {
   function closeModal() {
       formBlur();
     modalBg.style.display = "none";
+    modalBg.setAttribute("aria-hidden", "true");
     form.reset();
   }
   modalBtn.addEventListener("click", launchModal);
@@ -81,7 +82,7 @@ function tabClose(e){
     form.reset();
   };
 }
-window.addEventListener("keydown", tabClose);
+document.addEventListener("keydown", tabClose);
 
 //fonction pour lecture d'outils d'assistance
 function formFocus () {
