@@ -23,6 +23,7 @@ a {
   color: inherit;
   text-decoration: none;
 }
+
 .home-page-header {
   @include flex-items(flex, center, space-between, row);
   height: 90px;
@@ -350,7 +351,7 @@ input[data-error]::after {
   }
 
   //style pour la lightbox
-#lightbox{
+.lightbox{
   background-color: #fff;
   display: none;
   height: 100vw;
@@ -413,3 +414,6 @@ input[data-error]::after {
     }
   }
 }
+    .show{
+      display: block;
+    }
