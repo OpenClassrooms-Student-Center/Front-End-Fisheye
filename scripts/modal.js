@@ -16,13 +16,13 @@ export function contactModal(PHOTOGRAPHERS) {
   const errMessage = document.querySelector(".error-message");
   //fonction d'ouverture et fermeture du formulaire
   function launchModal() {
-      formFocus();
+    formFocus();
     modalBg.style.display = "flex";
     let phName = `${PHOTOGRAPHERS[0].name}`;
     modalPhName.innerHTML = phName;
   }
   function closeModal() {
-      formBlur();
+    formBlur();
     modalBg.style.display = "none";
     modalBg.setAttribute("aria-hidden", "true");
     form.reset();
@@ -74,23 +74,23 @@ export function contactModal(PHOTOGRAPHERS) {
       modalBg.style.display = "none";
       form.reset();
     }
-});
-//fermeture de la modale avec les touches Tab et Retour
-function tabClose(e){
-  if (e.code == "Escape") {
-    modalBg.style.display = 'none';
-    form.reset();
-  };
-}
-document.addEventListener("keydown", tabClose);
+  });
+  //fermeture de la modale avec les touches Esc
+  function tabClose(e) {
+    if (e.code == "Escape") {
+      modalBg.style.display = "none";
+      form.reset();
+    }
+  }
+  document.addEventListener("keydown", tabClose);
 
-//fonction pour lecture d'outils d'assistance
-function formFocus () {
+  //fonction pour lecture d'outils d'assistance
+  function formFocus() {
     form.focus();
     modalBg.setAttribute("tabindex", "1");
-}
-function formBlur () {
+  }
+  function formBlur() {
     form.blur();
-    modalBg.setAttribute("tabindex","0");
-}
+    modalBg.setAttribute("tabindex", "0");
+  }
 }
