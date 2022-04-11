@@ -26,16 +26,50 @@
           <img src="assets/icons/close.svg" onclick="closeModal()" />
         </header>
 				<form>
-					<div>
-						<label>Prénom</label>
-						<input />
-					</div>
+          <div class="formData">
+          <label for="first">Prénom</label><br>
+          <input
+            class="text-control"
+            type="text"
+            id="first"
+            name="first"
+          /><br>
+          </div>
+          <div class="formData">
+            <label for="last">Nom</label><br>
+            <input
+              class="text-control"
+              type="text"
+              id="last"
+              name="last"
+            /><br>
+          </div>
+          <div class="formData">
+            <label for="email">E-mail</label><br>
+            <input
+              class="text-control"
+              type="email"
+              id="email"
+              name="email"
+            /><br>
+          </div>			
+          <div class="formData">
+						<label for="message">Votre Message</label>
+            <textarea
+              class="text-control text-area"
+              id="message"
+              name="message"
+              rows="5"
+            ></textarea>				
+          </div>
           <button class="contact_button">Envoyer</button>
 				</form>
 			</div>
 		</div>
+    <section class="likes-and-price"></section>
     <script src="./scripts/utils/baseurl.js"></script>
     <script src="./scripts/api/Api.js"></script>
+    <script src="./scripts/factories/totallikes.js"></script>
     <script src="./scripts/factories/photographer.js"></script>
     <script src="./scripts/factories/media.js"></script>
     <script src="scripts/pages/photographer.js"></script>

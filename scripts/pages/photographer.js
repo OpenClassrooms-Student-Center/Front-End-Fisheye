@@ -5,13 +5,15 @@ async function getPhotographerAndMedias(id) {
     const photographers = photographersData
                             .map(photograf => photographerFactory(photograf))
                             .filter(photograf => photograf.id === id)
+    const totalLikes = TotalLikesFactory(photographers[0].price)
     const medias = mediasData
-                        .map(media => mediaFactory(media))
+                        .map(media => mediaFactory(media,totalLikes))
                         .filter(media => media.photographerId === id)
-    return [photographers[0],medias]
+
+
+    return [photographers[0],medias, totalLikes]
 }
 async function displayHeader(photograph) {
-//    const photographSection = document.querySelector(".photograph-header");
     const photographSection = document.querySelector("#main");
     const userCardDOM = photograph.getUserCardDOM(true);
     photographSection.appendChild(userCardDOM);
@@ -22,9 +24,13 @@ async function displayMedias(photograph,medias){
     const mediasSection = document.querySelector(".medias_section")
 
     medias.forEach((media) => {
-        const userCardDOM = media.getUserCardDOM(photograph.name);
-        mediasSection.appendChild(userCardDOM);
+        const userCardDOM = media.getUserCardDOM(photograph.name)
+        mediasSection.appendChild(userCardDOM)
+        media.SetListenerOnHearts()
     });
+}
+async function displayTotalLikes(totalLikes){
+    totalLikes.UserDivDOM()
 }
 
 function LogoAddLinkToHome(){
@@ -40,9 +46,12 @@ async function init(){
     if( isNaN(photographerID) ){
         return
     }
-    const [photograph, medias ] = await getPhotographerAndMedias(photographerID);
+    const [photograph, medias, totalLikes] = await getPhotographerAndMedias(photographerID);
     displayHeader(photograph)
     displayMedias(photograph,medias)
+    displayTotalLikes(totalLikes)
+    
+    contactEventControl()
 }
 
 init()

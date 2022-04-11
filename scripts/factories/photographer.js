@@ -1,3 +1,4 @@
+
 function photographerFactory(data) {
     
 
@@ -111,6 +112,8 @@ function photographerFactory(data) {
 
         return (article);
     }
-    return { id, name, picture, getUserCardDOM }
+
+
+    return { id, name, picture, price, getUserCardDOM }
 }
 

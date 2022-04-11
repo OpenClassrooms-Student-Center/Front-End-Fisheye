@@ -1,9 +1,40 @@
-function mediaFactory(data) {    
+
+class LikesCounter{
+    constructor(id, totalLikes) {
+        this._count = 0
+        this._id = id
+        this._totalLikes = totalLikes
+        this._countTotal = new TotalLikes
+    }
+
+    update() {
+        this._count++
+        this._countTotal.incr()
+        this._totalLikes.UserDivDOM()
+        const likesCountSpan = document.querySelector('#likes-number-'+this._id)
+        likesCountSpan.innerHTML = this._count
+    }
+
+    get count(){
+        return this._count
+    }
+}
+
+function mediaFactory(data,totalLikes) {    
     // const photographerUrl = new URL(window.location.href+"photographer.html")
     const {id, photographerId, title, image, video, likes, date, price } = data
+    const counter = new LikesCounter(id,totalLikes)
 
     function InsertHeart(element){
-        const insertHeartHtml ='<div class="display_or_not"><div class="display_if_not_liked"><i class="fa fa-heart-o fa-lg"></i></div><div class="display_if_liked"><i class="fa fa-heart fa-lg"></i></div></div>'
+        const insertHeartHtml =`
+            <div class="display_or_not">
+                <div id="dinl-${id}" class="display_if_not_liked not_liked">
+                    <i class="fa fa-heart-o"></i>
+                </div>
+                <div id="dil-${id}" class="display_if_liked not_liked">
+                    <i class="fa fa-heart"></i>
+                </div>
+            </div>`
 
         element.insertAdjacentHTML('beforeend', insertHeartHtml);
     }
@@ -41,14 +72,14 @@ function mediaFactory(data) {
         divLikes.setAttribute("id","likes-"+id)
         // Nombre de likes
         const likes=document.createElement('span')
+        likes.setAttribute("id","likes-number-"+id)
         // appel de la fonction d'init de l'observer ici? 
         // plutot dans le constructeur?
-        const nbLikes = 0
-        likes.textContent = ''+nbLikes
+
+        likes.textContent = counter.count
         divLikes.appendChild(likes)
         InsertHeart(divLikes)
         
-
         article.appendChild(imgOrVideo);
         divBottom.appendChild(h2)
         divBottom.appendChild(divLikes)
@@ -58,6 +89,24 @@ function mediaFactory(data) {
         return (article);
     }
 
-    return { id, photographerId, image, video, getUserCardDOM }
+    function SetListenerOnHearts(){
+        const dinl = document.querySelector('#dinl-'+id)
+        dinl.addEventListener('click',function f(e) {
+            counter.update()
+            dinl.classList.remove('not_liked')
+            dinl.classList.add('liked')
+
+            let ell = document.querySelector('#dil-'+id)
+            ell.classList.remove('not_liked')
+            ell.classList.add('liked')
+
+        })
+        const dil = document.querySelector('#dil-'+id)
+        dil.addEventListener('click',function f(e) {
+            counter.update()
+        })  
+    }
+
+    return { id, photographerId, image, video, getUserCardDOM, SetListenerOnHearts }
 }
 

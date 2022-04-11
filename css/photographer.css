@@ -77,6 +77,9 @@
 }
 
 .modal {
+    position: absolute;
+    top: 80px;
+    left: 25%;
     border-radius: 5px;
     background-color: #DB8876;
     width: 50%;
@@ -123,18 +126,25 @@ form div {
     margin-bottom: 26px;
 }
 
-form input {
+form input.text-control{
     width: 100%;
     height: 68px;
     border: none;
     border-radius: 5px;
+    font-size: 22px;
 }
 
+form textarea.text-area{
+    width: 100%;
+    border: none;
+    border-radius: 5px;
+    font-size: 22px;  
+}
 .medias_section{
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     gap: 70px;
-    margin-top: 100px;
+    margin: 100px;
 }
 
 .medias_section a {
@@ -154,8 +164,14 @@ form input {
 }
 
 .medias_section article h2{
-    color: #D3573C;
+    /*color: #D3573C;*/
     margin: 0;
+    font-style: normal;
+font-weight: 400;
+font-size: 24px;
+line-height: 31px;
+
+color: #911C1C;
 }
 
 .medias_section article img, .medias_section article video {
@@ -180,5 +196,59 @@ form input {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    flex-direction: row;
+    flex-direction: row;font-weight: 500;
+    gap: 5px;
+    font-size: 24px;
+    line-height: 31px;
+    text-align: right;    
+    color: #911C1C;
 }
+
+@keyframes heart-anim {
+    0% {
+      opacity: 0.1;
+    }
+    5% {
+      opacity: 0.3;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+  .display_or_not .display_if_not_liked.not_liked {
+    display: flex;
+  }
+  .display_or_not .display_if_liked.not_liked {
+    display: none;
+    color: #911C1C;
+  }
+  .display_or_not .display_if_liked.liked {
+    display: flex;
+    /* animation: heart-anim 3s forwards; */
+  }
+  .display_or_not .display_if_not_liked.liked {
+    display: none;
+  }
+  
+  .display_if_not_liked i {
+    color: #911C1C;
+  }
+  
+  .display_if_liked i {
+    color: #911C1C;
+  }
+
+
+  .likes-and-price {
+      position: fixed;
+      right: 200px;
+      bottom: 0px;
+      background-color: #D3573C;
+      font-size: 24px;
+      padding: 10px;
+      border-radius: 5px;
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      gap: 40px;
+  }
