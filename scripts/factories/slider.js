@@ -2,6 +2,8 @@ export default function sliderFactory(firstMedia, sortMedia, name) {
     console.table(sortMedia)
     console.log(firstMedia)
     let n = 0
+    
+    const slider = document.querySelector(".slider")
     sortMedia.forEach((media, index) =>{
         console.log(media)
         const pathName = name.split(/-| /).join("")
@@ -12,20 +14,20 @@ export default function sliderFactory(firstMedia, sortMedia, name) {
         img.src = photoPath;
         const title = slide.querySelector(".title__slider")
         title.textContent = media.title
+        title.className += " bise"
         console.log(slide)
-        
-        const first = document.querySelector(".slider").appendChild(slide);
         if (firstMedia.id === media.id){
             n = index 
-            // console.log(first)
-            // first.classList.add("active")
+            console.log(n)
+            
         }
+        document.querySelector(".slider").appendChild(slide);
+        
     })
-
-    const slider = document.querySelector(".slider")
-    // const list = slider.classList
     slider.classList.add("active")
     const slides = document.querySelectorAll(".slide")
+    const firstSlide = slides[n]
+    firstSlide.className += " active"
     
     const nbrSlider = slides.length
     console.log("length = " + nbrSlider )
