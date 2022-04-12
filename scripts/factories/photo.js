@@ -1,10 +1,8 @@
-function hydratePhotoFactory(dataPhoto, name) {
-    
+import sliderFactory from "../factories/slider.js";
+
+function hydratePhotoFactory(dataPhoto, sortMedia, name) {
     const pathName = name.split(/-| /).join("")
     const photoPath = `../assets/Sample_Photos/${pathName}/${dataPhoto.image}`;
-
-    
-
     getHydratingPhoto();
    
     function getHydratingPhoto() {
@@ -18,6 +16,7 @@ function hydratePhotoFactory(dataPhoto, name) {
         const likes = photo.querySelector(".photo__likes");
         likes.textContent = dataPhoto.likes;
         document.querySelector(".photo-field").appendChild(photo);
+        img.addEventListener("click", () => sliderFactory(dataPhoto, sortMedia, name))
     }
 }
 export default hydratePhotoFactory

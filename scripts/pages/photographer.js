@@ -1,6 +1,8 @@
 import hydratePresentationFactory from "../factories/photographerPage.js";
 import hydratePhotoFactory from "../factories/photo.js";
 import getSelectedSort from "../functions/getSelectedSort.js";
+import builderCard from "../functions/builderCard.js";
+import sliderFactory from "../factories/slider.js";
 
 async function initPhotographe() {
     const photographerId = getphotographerId();
@@ -36,10 +38,13 @@ async function getPhotos(photographerId) {
         .then(data => {
             const photosId = data[0]
             const name = data[1]
-            getSelectedSort(photosId, name);
-            photosId.forEach((photo) => {
-                hydratePhotoFactory(photo, name)
-            })
+            const sortMedia = getSelectedSort(photosId, name);
+            // sortMedia.forEach((photo) => {
+            //     hydratePhotoFactory(photo, name)
+            // })
+            builderCard(sortMedia, name)
+            // sliderFactory(sortPhotos, name)
+
         })
 }
 

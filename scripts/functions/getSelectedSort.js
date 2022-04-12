@@ -1,4 +1,5 @@
 import hydratePhotoFactory from "../factories/photo.js";
+import builderCard from "../functions/builderCard.js";
 
 export default function getSelectedSort(data, name) {
     const selectedSort = document.querySelector("#select")
@@ -30,9 +31,11 @@ export default function getSelectedSort(data, name) {
                 }
             })
         }
-        sortMedia.forEach((photo) => {
-            hydratePhotoFactory(photo, name)
-        })
+        // sortMedia.forEach((photo) => {
+        //     hydratePhotoFactory(photo, name)
+        // })
+        builderCard(sortMedia, name)
     })
 
+    return sortMedia
  }
