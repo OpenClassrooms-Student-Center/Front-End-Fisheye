@@ -16,7 +16,7 @@ export default class likeEvent {
         let isLiked =
           -1 != e.target.classList.value.split(" ").indexOf("isLiked");
         let totalPhLikes = document.getElementById("total-likes");
-
+        console.log(isLiked);
         if (isLiked) {
           e.target.classList.remove("isLiked");
           e.target.classList.replace("fas", "far");

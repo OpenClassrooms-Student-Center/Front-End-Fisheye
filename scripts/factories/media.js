@@ -17,7 +17,7 @@ class VideoFactory {
     let eltVideo = document.createElement("video");
     eltVideo.setAttribute("src", element.video);
     eltVideo.setAttribute("title", element.title);
-    //eltVideo.setAttribute("controls", "controls")
+    //eltVideo.setAttribute("controls", "controls");
     eltVideo.setAttribute("role", "button");
     eltVideo.className = "ph-media";
     return eltVideo;

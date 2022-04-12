@@ -11,6 +11,10 @@ export default class LightBox {
         let lightBoxName = document.getElementById("lightbox-name");
         let mediaDisplay = mediaItems[index];
         let nameDisplay = mediaName[index];
+        /*if (media.tagName == "VIDEO") {
+          media.setAttribute("controls", "controls");
+          console.log(media);
+        }*/
         let openLightbox = document.querySelector(".lightbox");
         openLightbox.classList.add("show");
         openLightbox.setAttribute("aria-hidden", "false");
