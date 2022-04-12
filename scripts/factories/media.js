@@ -1,15 +1,15 @@
 // Création d'un élément image et ses attributs src, alt et role
 import LightBox from "../lightbox.js";
-export class ImageFactory {
-  createHTML(element) {
-    let eltImage = document.createElement("img");
-    eltImage.setAttribute("src", element.image);
-    eltImage.setAttribute("title", element.title);
-    eltImage.setAttribute("alt", element.alt);
-    eltImage.setAttribute("role", "button");
-    eltImage.className = "ph-media";
-    return eltImage;
-  }
+ export class ImageFactory {
+    createHTML(element) {
+        let eltImage = document.createElement('img');
+        eltImage.setAttribute('src', element.image);
+        eltImage.setAttribute('title', element.title);
+        eltImage.setAttribute('alt', element.alt);
+        eltImage.setAttribute('role', 'button');
+        eltImage.className = 'ph-media';
+        return eltImage;
+    }
 }
 // Création d'un élément vidéo et ses attributs controls, src et role
 class VideoFactory {
@@ -39,23 +39,24 @@ class MediaFactory {
 
 // Construction gallerie de médias et de la lightbox
 export default class GalleryFactory {
-  constructor() {
-    this.totalLike = 0;
-  }
-  builderGallery(dataMedias) {
-    const id = new URLSearchParams(window.location.search).get("id");
-    ////// Création du média via MediaFactory///////
-    let mediaFactory = new MediaFactory();
-    //initialisation des element necessaire pour la lightbox
-    let mediaItems = [];
-    let mediaName = [];
-    dataMedias.forEach((element) => {
-      if (id == element.photographerId) {
-        let sectionGallery = document.getElementById("photographer-gallery");
-        let articleGallery = document.createElement("article");
-        // On passe le média à la factory
-        let mediaHTML = mediaFactory.returnedMedia(element);
-        let workTemplate = `
+    constructor() {
+        this.totalPhLike = 0;
+    }
+    builderGallery(dataMedias) {
+        const id = new URLSearchParams(window.location.search).get("id");
+        ////// Création du média via MediaFactory///////
+        let mediaFactory = new MediaFactory();
+        //initialisation des element necessaire pour la lightbox
+        let mediaItems = [];
+        let mediaName = [];
+    
+        dataMedias.forEach(element => {
+            if (id == element.photographerId) {
+                let sectionGallery = document.getElementById('photographer-gallery');
+                let articleGallery = document.createElement("article");
+                // On passe le média à la factory
+                let mediaHTML = mediaFactory.returnedMedia(element);
+                let workTemplate = `
                 <a href='#' title=${element.title}>
                 ${mediaHTML.outerHTML}
                 </a>
@@ -67,19 +68,19 @@ export default class GalleryFactory {
                         <i class="far fa-heart heart-btn" aria-label='likes' role="button" data-value="${element.likes}"></i>
                     </div>
                 </div>
-                `;
-
-        articleGallery.innerHTML = workTemplate;
-        sectionGallery.appendChild(articleGallery);
-        articleGallery.classList.add("media-art");
-        this.totalLike += parseInt(element.likes);
-        //stockage des elements a utilisier pour la lightbox
-        mediaItems.push(mediaHTML.outerHTML);
-        mediaName.push(element.title);
-        // Création de la lightbox
-        new LightBox().lightboxOpen(mediaItems, mediaName);
-      }
-    });
-    return this;
-  }
+                `
+                
+                articleGallery.innerHTML = workTemplate;
+                sectionGallery.appendChild(articleGallery);
+                articleGallery.classList.add("media-art");
+                this.totalPhLike += parseInt(element.likes);
+                //stockage des elements a utilisier pour la lightbox
+                mediaItems.push(mediaHTML.outerHTML);
+                mediaName.push(element.title);
+                // Création de la lightbox 
+                new LightBox().lightboxOpen(mediaItems, mediaName);
+            }
+        })
+        return this;
+    }
 }

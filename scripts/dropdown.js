@@ -11,14 +11,15 @@ export default class DropdownSort {
       });
     }
   }
+
   // Trier les médias
   sortMedias(data) {
     let mediaSorted = [];
     const MEDIAS = data.dataMedias;
-    let btnSort = document.querySelector(".sort-btn");
-    let hiddenSort = document.getElementsByClassName("hidden-sort");
-    let sortBtn = document.querySelectorAll(".sort");
-    console.log(sortBtn);
+    let btnSort = document.querySelector('.sort-btn');
+    let hiddenSort = document.getElementsByClassName('hidden-sort');
+    let sortBtn = document.querySelectorAll('.sort');
+
 
     sortBtn.forEach((btn, index) =>
       btn.addEventListener("click", () => {
