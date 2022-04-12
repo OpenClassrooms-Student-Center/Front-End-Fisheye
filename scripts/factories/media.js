@@ -25,17 +25,20 @@ class VideoFactory {
 }
 
 // Test type d'élément image ou vidéo
+/*eslint-disable eqeqeq, indent*/
 class MediaFactory {
   returnedMedia(element) {
     let factory = null;
-    if (element.hasOwnProperty("image")) {
+    console.log(element)
+    if (element.hasOwnProperty('image')) {
       factory = new ImageFactory();
-    } else if (element.hasOwnProperty("video")) {
+    } else if (element.hasOwnProperty('video')) {
       factory = new VideoFactory();
     }
     return factory.createHTML(element);
   }
 }
+/*eslint-enable eqeqeq, indent*/
 
 // Construction gallerie de médias et de la lightbox
 export default class GalleryFactory {

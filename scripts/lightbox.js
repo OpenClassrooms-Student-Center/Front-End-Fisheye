@@ -32,7 +32,7 @@ export default class LightBox {
   }
   // Fermeture de la lightbox
   close() {
-    document.querySelector(".close-lightbox").addEventListener("click", (e) => {
+    document.querySelector(".close-lightbox").addEventListener("click", () => {
       let lightbox = document.querySelector(".lightbox");
       lightbox.classList.remove("show");
       lightbox.setAttribute("aria-hidden", "true");
