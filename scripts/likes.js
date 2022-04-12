@@ -4,27 +4,30 @@ export default class likeEvent {
         let galerie = document.getElementById('photographer-gallery');
 
         galerie.addEventListener('click', (e) => {
-            let likeBtn = -1 != e.target.classList.value.split(' ').indexOf('fa-heart');
+            let likeBtn = -1 != e.target.classList.value.indexOf('heart-btn');
+            console.log(e)
             if (likeBtn) {
-                let totalLikes = parseInt(document.getElementById('total-likes').innerHTML);
                 let counterLike = e.target.parentNode.firstElementChild.firstElementChild;
-                let likeValue = parseInt(counterLike.innerHTML);
-                let isLiked = -1 != e.target.classList.value.split(' ').indexOf('isLiked');
                 let totalPhLikes = document.getElementById('total-likes');
- 
-                if (isLiked) {
+                let isLiked = -1 != e.target.classList.value.indexOf('isLiked');
+                if (isLiked ) {
                     e.target.classList.remove('isLiked');
                     e.target.classList.replace('fas', 'far');
-                    totalPhLikes.innerHTML= --totalLikes
-                    counterLike.innerHTML = --likeValue
+                    totalPhLikes.innerHTML = parseInt(totalPhLikes.innerHTML) - 1;
+                    counterLike.innerHTML = parseInt(counterLike.innerHTML) - 1;
                 } else {
                     e.target.classList.add('isLiked');
                     e.target.classList.replace('far', 'fas');
-                    totalPhLikes.innerHTML=  ++totalLikes;
-                    counterLike.innerHTML = ++likeValue;
+                    totalPhLikes.innerHTML=  parseInt(totalPhLikes.innerHTML) + 1;
+                    counterLike.innerHTML = parseInt(counterLike.innerHTML) + 1;
                 }
               }
         })
+   
+   
+   
+   
+   
     }
 
 }

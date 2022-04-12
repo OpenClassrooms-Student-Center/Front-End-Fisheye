@@ -14,7 +14,7 @@ async function app() {
       //affichage des medias de la galerie
       new GaleryBuilder().photographersMedias(DATA_FISHEYE);
       // Affichage Bouton dropdown
-      new  DropdownSort().Dropdown(DATA_FISHEYE);
+      new DropdownSort().Dropdown(DATA_FISHEYE);
       
       return;
     }

@@ -11,6 +11,7 @@ export default class  DropdownSort{
     });
   }
 }
+
 // Trier les médias
 sortMedias(data) {
   let mediaSorted = [];
@@ -18,7 +19,7 @@ sortMedias(data) {
   let btnSort = document.querySelector('.sort-btn');
   let hiddenSort = document.getElementsByClassName('hidden-sort');
   let sortBtn = document.querySelectorAll('.sort');
-  console.log(sortBtn)
+
 
   sortBtn.forEach((btn, index) => btn.addEventListener('click', () => {
       hiddenSort[0].style.display = "none";
@@ -42,7 +43,6 @@ sortMedias(data) {
           )}       
         // Affichage des médias triés
         this.displaySort(mediaSorted);
-        console.log(mediaSorted)
   }));
 }
 // Appel méthode builder() de GalleryFactory()

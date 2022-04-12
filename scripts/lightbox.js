@@ -15,6 +15,7 @@ export default class LightBox {
             openLightbox.setAttribute('aria-hidden', 'false');
             lightBoxMedia.innerHTML = `${mediaDisplay}`;
             lightBoxName.innerHTML = `${nameDisplay}`;
+            console.log(mediaItems)
         }))
         
         this.previous(mediaItems, mediaName);
