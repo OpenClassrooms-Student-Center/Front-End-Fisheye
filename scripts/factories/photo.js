@@ -2,9 +2,13 @@ function hydratePhotoFactory(dataPhoto, name) {
     
     const pathName = name.split(/-| /).join("")
     const photoPath = `../assets/Sample_Photos/${pathName}/${dataPhoto.image}`;
+
+    
+
     getHydratingPhoto();
    
     function getHydratingPhoto() {
+    
         const templateElm = document.querySelector(".photo__template");
         const photo= document.importNode(templateElm.content, true);
         const img = photo.querySelector(".photo");

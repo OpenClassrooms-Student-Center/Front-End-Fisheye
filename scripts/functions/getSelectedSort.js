@@ -1,30 +1,28 @@
+import hydratePhotoFactory from "../factories/photo.js";
 
+export default function getSelectedSort(data, name) {
+    const selectedSort = document.querySelector("#select")
+    let sortMedia = [...data]
 
-export default function getSelectedSort(data) {
-    const selectedSort = document.querySelector("#select").value
-    console.log(selectedSort)
-    sortMedia(data)
-};
+    selectedSort.addEventListener("change", () => {
+        const photoCard = document.getElementsByClassName("photo__card");
+        const templateElm = document.querySelector(".photo__template");
+        const totalPhoto = photoCard.length
+        for ( let i = 0 ; i < totalPhoto; i++) {
+            templateElm.parentNode.removeChild(photoCard[0])
+        }
 
-function sortMedia(media) {
-
-    console.table(media)
-    let sortOption = Array.from(document.querySelector("select"))
-    console.log(sortOption)
-    let sortMedia = []
-    sortOption.forEach((option, index) => { 
-        console.log(option)
-        console.log(index)
-        if (index === 0) {
-            sortMedia = media.sort((a,b) => {
+        let sortOption = document.querySelector("#select").value
+        if (sortOption === "likes") {
+            sortMedia.sort((a,b) => {
                 return b.likes - a.likes
             })
-        } else if (index === 1) {
-            sortMedia = media.sort((a,b) => {
+        } else if (sortOption === "date") {
+            sortMedia.sort((a,b) => {
                 return new Date(a.date).valueOf() - new Date(b.date).valueOf()
             })
-        } else if (index === 2) {
-            sortMedia = media.sort((a,b) => {
+        } else if (sortOption === "title") {
+            sortMedia.sort((a,b) => {
                 if (a.title.toLowerCase() < b.title.toLowerCase()) {
                     return -1
                 } else  if (a.title.toLowerCase() > b.title.toLowerCase()) {
@@ -32,9 +30,9 @@ function sortMedia(media) {
                 }
             })
         }
-        
+        sortMedia.forEach((photo) => {
+            hydratePhotoFactory(photo, name)
+        })
     })
-    console.log(sortMedia)
-    return sortMedia
 
  }

@@ -1,7 +1,8 @@
 function photographerFactory(data) {
     const { name, portrait, id } = data;
     const picture = `../assets/Sample_Photos/PhotographersID/${portrait}`;
-    console.log(data)
+   
+
     function getUserCardDOM() {
         const templateElm = document.getElementById("templateArticle");
         const article = document.importNode(templateElm.content, true);

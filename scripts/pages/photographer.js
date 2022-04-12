@@ -36,17 +36,11 @@ async function getPhotos(photographerId) {
         .then(data => {
             const photosId = data[0]
             const name = data[1]
-            
-            const sortMedia = getSelectedSort(photosId);
-            console.log(sortMedia)
-            sortMedia.forEach((photo) => {
-                
+            getSelectedSort(photosId, name);
+            photosId.forEach((photo) => {
                 hydratePhotoFactory(photo, name)
-             })
-           
+            })
         })
 }
 
 initPhotographe ()
-// const selectedSort = document.querySelector("#select")
-// selectedSort.addEventListener("click", getSelectedSort(data))
