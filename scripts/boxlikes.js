@@ -10,9 +10,9 @@
             <span id="total-likes">${totalPhLike}</span>
             <i class="fas fa-heart" aria-label='likes'></i>
             <span>${photographer.price} €/ jour</span>
-            `
-            box.innerHTML = boxTemplate;
-        }
-    })
-}
+            `;
+        box.innerHTML = boxTemplate;
+      }
+    });
+  }
 }

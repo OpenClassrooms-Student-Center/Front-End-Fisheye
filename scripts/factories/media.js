@@ -1,6 +1,5 @@
 // Création d'un élément image et ses attributs src, alt et role
 import LightBox from "../lightbox.js";
-import DropdownSort from "../dropdown.js";
  export class ImageFactory {
     createHTML(element) {
         let eltImage = document.createElement('img');
@@ -26,21 +25,19 @@ class VideoFactory {
 }
 
 // Test type d'élément image ou vidéo
- class MediaFactory {
-    returnedMedia(element) {
-        let factory = null;
-        if (element.hasOwnProperty('image')) {
-            factory = new ImageFactory();
-        } else if (element.hasOwnProperty('video')) {
-            factory = new VideoFactory();
-        }
-        return factory.createHTML(element);
+class MediaFactory {
+  returnedMedia(element) {
+    let factory = null;
+    if (element.hasOwnProperty("image")) {
+      factory = new ImageFactory();
+    } else if (element.hasOwnProperty("video")) {
+      factory = new VideoFactory();
     }
+    return factory.createHTML(element);
+  }
 }
 
-
-
-    // Construction gallerie de médias et de la lightbox
+// Construction gallerie de médias et de la lightbox
 export default class GalleryFactory {
     constructor() {
         this.totalPhLike = 0;

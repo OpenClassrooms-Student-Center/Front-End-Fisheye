@@ -20,8 +20,8 @@ async function app() {
     }
     // Affichage Page d'Accueil
     displayPhotographers(DATA_FISHEYE);
-    
   } catch (err) {
     console.log(err);
   }
-}app();
+}
+app();

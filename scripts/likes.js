@@ -1,7 +1,7 @@
-// Ajout ou retrait d'un like au clic    
+// Ajout ou retrait d'un like au clic
 export default class likeEvent {
-    constructor() {
-        let galerie = document.getElementById('photographer-gallery');
+  constructor() {
+    let galerie = document.getElementById("photographer-gallery");
 
         galerie.addEventListener('click', (e) => {
             let likeBtn = -1 != e.target.classList.value.indexOf('heart-btn');
@@ -23,11 +23,6 @@ export default class likeEvent {
                 }
               }
         })
-   
-   
-   
-   
-   
     }
+  }
 
-}
