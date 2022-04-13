@@ -1,7 +1,3 @@
-#contact_modal {
-    display: none;
-}
-
 .photographHeader {
     display: flex;
     justify-content: space-between;
@@ -53,31 +49,71 @@
     cursor: pointer;
 }
 
+.contact_button:hover,
+.contact_button:focus {
+    background-color: var(--secondary-dark-background-color);
+    color: var(--secondary-dark-text-color);
+}
+
 .modal {
     border-radius: 5px;
+    border: 0px;
     background-color: var(--secondary-dark-background-color);
-    width: 50%;
     display: flex;
     flex-direction: column;
-    align-items: center;
+    align-items: flex-start;
     justify-content: space-between;
     padding: 35px;
-    margin: auto;
+    padding-top: 15px;
+    width: 670px;
+}
+
+.display-none {
+    display: none;
+}
+
+.modal::backdrop {
+    background: rgba(196, 196, 196, 0.4);
+}
+
+.modal div {
+    margin: 0;
 }
 
 .modal header {
-    justify-content: space-between;
+    display: flex;
+    align-items: flex-start;
     width: 100%;
+    margin-bottom: 90px;
 }
 
 .modal header img {
     cursor: pointer;
+    align-self: center;
 }
 
 .modal header h2 {
     font-size: 64px;
     font-weight: normal;
-    text-align: center;
+    line-height: 83px;
+    margin: 0;
+}
+
+.modal textarea {
+    width: 100%;
+    height: 170px;
+    border-radius: 5px;
+    border: 0;
+}
+
+.modal .contact_button {
+    margin-top: 25px;
+}
+
+.modal .contact_button:hover,
+.modal .contact_button:focus {
+    background-color: var(--secondary-light-background-color);
+    color: var(--secondary-light-text-color);
 }
 
 form {

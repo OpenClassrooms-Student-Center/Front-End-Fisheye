@@ -68,4 +68,34 @@ class Photographer {
       <p>${this.price}€ / jour</p>
     `)
   }
+
+  getPhotographerModalDOM () {
+    return document.createRange().createContextualFragment(`
+      <dialog class="modal display-none" id="contact_modal">
+          <header>
+            <h2>Contactez-moi<br>${this.name}</h2>
+            <img class="close_modal" src="assets/icons/close.svg" alt="Fermez la modale" />
+          </header>
+          <form id="form" method="dialog">
+            <div>
+              <label for="first">Prénom</label>
+              <input type="text" id="first" name="first" />
+            </div>
+            <div>
+              <label for="last">Nom</label>
+              <input type="text" id="last" name="last" />
+            </div>
+            <div>
+              <label for="email">Email</label>
+              <input type="email" id="email" name="email" />
+            </div>
+            <div>
+              <label for="message">Votre message</label>
+              <textarea id="message" name="message"></textarea>
+            </div>
+            <button class="contact_button">Envoyer</button>
+          </form>
+      </dialog>
+    `)
+  }
 }

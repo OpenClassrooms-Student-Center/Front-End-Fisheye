@@ -1,31 +1,60 @@
-async function displayPhotographerData (photographer) {
+let currentPhotographer = null
+let currentPhotographerMedias = null
+
+async function displayPhotographerData () {
   const photographerSection = document.querySelector('.photographHeader')
 
-  // eslint-disable-next-line no-undef
-  const photographerModel = new PhotographerFactory(photographer)
-  const photographerHeaderDOM = photographerModel.getPhotographerHeaderDOM()
+  const photographerHeaderDOM = currentPhotographer.getPhotographerHeaderDOM()
   photographerSection.appendChild(photographerHeaderDOM)
 }
 
-async function displayMediasCards (medias, photographerFolder) {
+async function modalUtilities () {
+  const mainSection = document.querySelector('main')
+
+  const modalDOM = currentPhotographer.getPhotographerModalDOM()
+  mainSection.after(modalDOM)
+
+  const modal = document.querySelector('#contact_modal')
+  const openModal = document.querySelector('.contact_button')
+  const closeModal = document.querySelector('.close_modal')
+  const form = document.querySelector('#form')
+
+  openModal.addEventListener('click', () => {
+    modal.classList.remove('display-none')
+    modal.showModal()
+  })
+
+  closeModal.addEventListener('click', () => {
+    modal.classList.add('display-none')
+    modal.close()
+  })
+
+  form.addEventListener('submit', (e) => {
+    modal.classList.add('display-none')
+    // Can use 'form' or 'e.target'
+    const formData = new FormData(e.target)
+    for (const [key, value] of formData.entries()) {
+      console.log((`${key}: ${value}`))
+    }
+    form.reset()
+  })
+}
+
+async function displayMediasCards () {
   const mediaSection = document.querySelector('.mediaCards')
-  medias.forEach(media => {
-    // eslint-disable-next-line no-undef
-    const mediaModel = new MediaFactory(media, photographerFolder)
-    const mediaCardDOM = mediaModel.getMediaCardDOM()
+  currentPhotographerMedias.forEach(media => {
+    const mediaCardDOM = media.getMediaCardDOM()
     mediaSection.appendChild(mediaCardDOM)
   });
 }
 
-async function displayPhotographerComplementaryData (photographer, medias) {
+async function displayPhotographerComplementaryData () {
   const photographerComplementarySection = document.querySelector('.photographComplementary')
 
-  // eslint-disable-next-line no-undef
-  const photographerModel = new PhotographerFactory(photographer)
-  medias.forEach(media => {
-    photographerModel.totalLikes += media.likes
+  currentPhotographerMedias.forEach(media => {
+    currentPhotographer.totalLikes += media.likes
   });
-  const photographerComplementaryDOM = photographerModel.getPhotographerComplementaryDOM()
+  const photographerComplementaryDOM = currentPhotographer.getPhotographerComplementaryDOM()
   photographerComplementarySection.appendChild(photographerComplementaryDOM)
 }
 
@@ -40,11 +69,8 @@ async function init () {
   const photographer = photographers.filter(elt => elt.id === photographerId)[0]
   const medias = media.filter(elt => elt.photographerId === photographerId)
 
-  // displayData(photographer, medias)
-  // console.log(photographer, medias)
-
-  displayPhotographerData (photographer)
-
+  // eslint-disable-next-line no-undef
+  currentPhotographer = new PhotographerFactory(photographer)
   // Use some 'hack' to get photographer folder due to lack of consistency in data
   // split(' ') doesn't work with Ellie-Rose => 'Ellie Rose'
   const photographersFolders = {
@@ -55,9 +81,16 @@ async function init () {
     925: 'Rhode',
     195: 'Marcel'
   }
-  displayMediasCards (medias, photographersFolders[photographerId])
+  // eslint-disable-next-line no-undef
+  currentPhotographerMedias = medias.map(elt => new MediaFactory(elt, photographersFolders[photographerId]))
 
-  displayPhotographerComplementaryData (photographer, medias)
+  // displayData(photographer, medias)
+  console.log(currentPhotographer, currentPhotographerMedias)
+
+  displayPhotographerData ()
+  displayMediasCards ()
+  displayPhotographerComplementaryData ()
+  modalUtilities ()
 }
 
 init()
