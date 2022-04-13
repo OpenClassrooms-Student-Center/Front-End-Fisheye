@@ -8,9 +8,10 @@ class TotalLikes{
         TotalLikes.exists = true
         return this
     }
-    incr(){
-        this._total++
+    incr(incr=1){
+        this._total+=incr
     }
+
     get total(){
         return this._total
     }
@@ -19,8 +20,7 @@ class TotalLikes{
 function TotalLikesFactory(price)
 {
     const pricePerDay = price
-    const totalLikes = new TotalLikes
-    console.log("PRICE:"+price)
+    const totalLikes = new TotalLikes()
     function UserDivDOM(){
         const totalEl = document.querySelector('.likes-and-price')
         totalEl.innerHTML = `<div><span>${totalLikes.total}</span>

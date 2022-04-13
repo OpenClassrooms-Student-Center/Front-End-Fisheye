@@ -1,14 +1,20 @@
+function closeCaroussel(){
+    document.querySelector(".medias_caroussel").classList.toggle("visible")
+    document.querySelector(".medias_caroussel").classList.toggle("invisible")
+}
+
 //Mettre le code JavaScript lié à la page photographer.html
 async function getPhotographerAndMedias(id) {
     const photographersApi = new PhotographersApi(BaseURL.base+"data/photographers.json")
     const [photographersData,mediasData] = await photographersApi.getPhotographersAndMedias()
     const photographers = photographersData
-                            .map(photograf => photographerFactory(photograf))
-                            .filter(photograf => photograf.id === id)
+                                .filter(photograf => photograf.id === id)
+                                .map(photograf => photographerFactory(photograf))
+
     const totalLikes = TotalLikesFactory(photographers[0].price)
     const medias = mediasData
-                        .map(media => mediaFactory(media,totalLikes))
                         .filter(media => media.photographerId === id)
+                        .map(media => mediaFactory(media,totalLikes,photographers[0].name))
 
 
     return [photographers[0],medias, totalLikes]
@@ -22,12 +28,13 @@ async function displayHeader(photograph) {
 
 async function displayMedias(photograph,medias){
     const mediasSection = document.querySelector(".medias_section")
-
-    medias.forEach((media) => {
-        const userCardDOM = media.getUserCardDOM(photograph.name)
+    mediasList = new MediasList(medias)
+    mediasList.mediasList.forEach((media) => {
+        const userCardDOM = media.getUserCardDOM()
         mediasSection.appendChild(userCardDOM)
-        media.SetListenerOnHearts()
-    });
+        media.SetListeners()
+    }); 
+    mediasList.CarousselRender()      
 }
 async function displayTotalLikes(totalLikes){
     totalLikes.UserDivDOM()
@@ -50,7 +57,7 @@ async function init(){
     displayHeader(photograph)
     displayMedias(photograph,medias)
     displayTotalLikes(totalLikes)
-    
+    SelectedBoxManagement(medias)
     contactEventControl()
 }
 

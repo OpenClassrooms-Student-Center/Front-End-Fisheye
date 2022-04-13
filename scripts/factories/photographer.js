@@ -58,6 +58,7 @@ function photographerFactory(data) {
         article.appendChild(img)
         return article
     }
+    
     function getUserCardDOM(header=false) {
         let article
         if(header){
