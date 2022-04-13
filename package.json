@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "sass": "sass --watch ./css/style.scss style.css"
+    "sass": "sass --watch ./css/style.scss style.css",
+    "lint": "eslint --max-warnings=0 ."
   },
   "repository": {
     "type": "git",
@@ -18,6 +19,8 @@
   },
   "homepage": "https://github.com/LoicAnael/Front-End-Fisheye#readme",
   "devDependencies": {
+    "eslint": "^8.13.0",
+    "prettier": "^2.6.2",
     "sass": "^1.49.9"
   }
 }

@@ -1,6 +1,4 @@
 // Création Profil Photographe
-"use strict";
-import { getDataPhotographers } from "./api.js";
 import { contactModal } from "./modal.js";
 
 export async function displayPhotographerProfil(dataFisheye) {
