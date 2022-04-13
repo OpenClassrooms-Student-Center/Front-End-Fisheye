@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="fr">
   <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -20,11 +20,11 @@
     <link href="./style.css" rel="stylesheet" />
     <link href="./normalize.css" rel="stylesheet" />
     <title>Fisheye - photographer</title>
-    <script defer type="module" src="scripts/app.js"></script>
+    <script type="module" src="scripts/app.js"></script>
    
   </head>
   <body>
-    <header class="home-page-header" role="banner">
+    <header class="home-page-header" >
       <a href="./index.html" title="Fisheye Accueil">
         <img
           src="./assets/images/logo.png"
@@ -55,7 +55,8 @@
       <!--galerie de photos et videos-->
       <section id="photographer-gallery"></section>
       <!--box des liikes et prix-->
-      <div id="box-like" aria-label="nombre de likes et prix par jour"></div>
+      <div id="box-like" ></div>
+    </main>
        <!-- Formulaire modal -->
        <div role="dialog" id="modal-container" aria-hidden="true"  aria-label="Contactez-moi" tabindex="0">
         <form method="POST" id="contact-form">
@@ -96,7 +97,7 @@
 
     <!--Lightbox-->
     <aside  aria-hidden="true" class="lightbox">
-     <article class="lightbox-body" role='dialog'>
+     <article class="lightbox-body">
          <span class="fas fa-times close-lightbox" role="button" title="Close dialog"></span>
          <span class="fas fa-chevron-left " id="previous" role="button" title="Previous image"></span>
          <span class="fas fa-chevron-right " id="next" role="button" title="Next image"></span>

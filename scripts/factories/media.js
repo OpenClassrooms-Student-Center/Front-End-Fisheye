@@ -30,9 +30,9 @@ class MediaFactory {
   returnedMedia(element) {
     let factory = null;
     console.log(element)
-    if (element.hasOwnProperty('image')) {
+    if (Object.prototype.hasOwnProperty.call(element,'image')) {
       factory = new ImageFactory();
-    } else if (element.hasOwnProperty('video')) {
+    } else if (Object.prototype.hasOwnProperty.call(element,'video')) {
       factory = new VideoFactory();
     }
     return factory.createHTML(element);
