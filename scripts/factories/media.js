@@ -25,6 +25,7 @@ class VideoFactory {
 }
 
 // Test type d'élément image ou vidéo
+/*eslint-disable eqeqeq, indent*/
 class MediaFactory {
   returnedMedia(element) {
     let factory = null;
@@ -36,6 +37,7 @@ class MediaFactory {
     return factory.createHTML(element);
   }
 }
+/*eslint-enable eqeqeq, indent*/
 
 // Construction gallerie de médias et de la lightbox
 export default class GalleryFactory {

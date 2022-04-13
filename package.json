@@ -6,7 +6,11 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "sass": "sass --watch ./css/style.scss style.css",
-    "lint": "eslint --max-warnings=0 ."
+    "lint": "eslint --max-warnings=0 .",
+    "prefix": "postcss ./style.css --use autoprefixer -d ./prefixed"
+  },
+  "gitHooks": {
+    "pre-push": "npm run lint"
   },
   "repository": {
     "type": "git",
@@ -19,8 +23,12 @@
   },
   "homepage": "https://github.com/LoicAnael/Front-End-Fisheye#readme",
   "devDependencies": {
+    "autoprefixer": "^10.4.4",
     "eslint": "^8.13.0",
+    "postcss": "^8.4.12",
+    "postcss-cli": "^9.1.0",
     "prettier": "^2.6.2",
-    "sass": "^1.49.9"
+    "sass": "^1.49.9",
+    "yorkie": "^2.0.0"
   }
 }
