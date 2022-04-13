@@ -20,17 +20,14 @@ async function modalUtilities () {
   const form = document.querySelector('#form')
 
   openModal.addEventListener('click', () => {
-    modal.classList.remove('display-none')
     modal.showModal()
   })
 
   closeModal.addEventListener('click', () => {
-    modal.classList.add('display-none')
     modal.close()
   })
 
   form.addEventListener('submit', (e) => {
-    modal.classList.add('display-none')
     // Can use 'form' or 'e.target'
     const formData = new FormData(e.target)
     for (const [key, value] of formData.entries()) {

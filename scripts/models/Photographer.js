@@ -71,7 +71,7 @@ class Photographer {
 
   getPhotographerModalDOM () {
     return document.createRange().createContextualFragment(`
-      <dialog class="modal display-none" id="contact_modal">
+      <dialog class="modal" id="contact_modal">
           <header>
             <h2>Contactez-moi<br>${this.name}</h2>
             <img class="close_modal" src="assets/icons/close.svg" alt="Fermez la modale" />
