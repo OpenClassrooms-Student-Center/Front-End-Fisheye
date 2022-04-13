@@ -1,8 +1,6 @@
 import hydratePresentationFactory from "../factories/photographerPage.js";
-import hydratePhotoFactory from "../factories/photo.js";
 import getSelectedSort from "../functions/getSelectedSort.js";
 import builderCard from "../functions/builderCard.js";
-import sliderFactory from "../factories/slider.js";
 
 async function initPhotographe() {
     const photographerId = getphotographerId();

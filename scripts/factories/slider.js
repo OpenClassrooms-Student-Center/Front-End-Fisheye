@@ -2,7 +2,6 @@ export default function sliderFactory(firstMedia, sortMedia, name) {
     console.table(sortMedia)
     console.log(firstMedia)
     let n = 0
-    
     const slider = document.querySelector(".slider")
     sortMedia.forEach((media, index) =>{
         console.log(media)
@@ -18,8 +17,6 @@ export default function sliderFactory(firstMedia, sortMedia, name) {
         console.log(slide)
         if (firstMedia.id === media.id){
             n = index 
-            console.log(n)
-            
         }
         document.querySelector(".slider").appendChild(slide);
         

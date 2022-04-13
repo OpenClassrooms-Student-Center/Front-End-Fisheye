@@ -15,7 +15,11 @@ header {
     align-items: center;
     height: 90px;
 }
-
+.main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
 h1 {
     color: #901C1C;
     margin-right: 100px;
@@ -48,6 +52,13 @@ h1 {
     text-align: center;
 
 }
+.photographer_section article{
+    justify-self: center;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: column;
+}
 
 .avatar {
     height: 200px;
@@ -66,10 +77,23 @@ h1 {
     flex-direction:column;
 
 }
-.photo {
-    width: 200px;
 
+.photo-field {
+    display : grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 20px;
+    color: #901C1C;
 }
+.photo__card {
+    width: 350px;
+    height: 350px;
+}
+.photo {
+    width: 350px;
+    height: 300px;
+    object-fit: cover;
+}
+
 
 .slider{
     display: none;

@@ -1,4 +1,3 @@
-import hydratePhotoFactory from "../factories/photo.js";
 import builderCard from "../functions/builderCard.js";
 
 export default function getSelectedSort(data, name) {
