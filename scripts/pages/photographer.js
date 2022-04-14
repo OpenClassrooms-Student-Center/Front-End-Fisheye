@@ -1,5 +1,6 @@
 let currentPhotographer = null
 let currentPhotographerMedias = null
+let lighboxCurrentMediaId = null
 
 async function displayPhotographerData () {
   const photographerSection = document.querySelector('.photographHeader')
@@ -34,6 +35,68 @@ async function modalUtilities () {
       console.log((`${key}: ${value}`))
     }
     form.reset()
+  })
+}
+
+async function lightboxUtilities () {
+  const lightbox = document.querySelector('#lightbox')
+  const openLightboxs = document.querySelectorAll('.open_lightbox')
+  const closeLightbox = document.querySelector('.close_lightbox')
+  const lightboxMediaContent = document.querySelector('.lightbox__content--middleColumn')
+
+  openLightboxs.forEach((openLightbox) => {
+    openLightbox.addEventListener('click', (e) => {
+      lighboxCurrentMediaId = Number(e.target.id)
+      const selectedMedia = currentPhotographerMedias.filter((media) => media.id === lighboxCurrentMediaId)[0]
+      lightboxMediaContent.textContent = ''
+      lightboxMediaContent.appendChild(selectedMedia.getMediaLightboxDOM())
+      lightbox.showModal()
+    })
+  })
+  
+  closeLightbox.addEventListener('click', () => {
+    lightbox.close()
+  })
+
+  const nextSlideButton = document.querySelector('.lightbox__rightButton')
+  const previousSlideButton = document.querySelector('.lightbox__leftButton')
+
+  nextSlideButton.addEventListener('click', () => {
+    // Check if current item is last and define next item
+    const lighboxCurrentMediaIndex = currentPhotographerMedias.findIndex((media) => media.id === lighboxCurrentMediaId)
+    let nextMediaIndex
+    if (lighboxCurrentMediaIndex === currentPhotographerMedias.length - 1) {
+      nextMediaIndex = 0
+    } else {
+      nextMediaIndex = lighboxCurrentMediaIndex + 1
+    }
+    let nextMedia = currentPhotographerMedias[nextMediaIndex]
+
+    // Display next item
+    lightboxMediaContent.textContent = ''
+    lightboxMediaContent.appendChild(nextMedia.getMediaLightboxDOM())
+
+    // Define current item
+    lighboxCurrentMediaId = nextMedia.id
+  })
+
+  previousSlideButton.addEventListener('click', () => {
+    // Check if current item is first and define next item
+    const lighboxCurrentMediaIndex = currentPhotographerMedias.findIndex((media) => media.id === lighboxCurrentMediaId)
+    let nextMediaIndex
+    if (lighboxCurrentMediaIndex === 0) {
+      nextMediaIndex = currentPhotographerMedias.length - 1
+    } else {
+      nextMediaIndex = lighboxCurrentMediaIndex - 1
+    }
+    let nextMedia = currentPhotographerMedias[nextMediaIndex]
+
+    // Display next item
+    lightboxMediaContent.textContent = ''
+    lightboxMediaContent.appendChild(nextMedia.getMediaLightboxDOM())
+
+    // Define current item
+    lighboxCurrentMediaId = nextMedia.id
   })
 }
 
@@ -82,12 +145,13 @@ async function init () {
   currentPhotographerMedias = medias.map(elt => new MediaFactory(elt, photographersFolders[photographerId]))
 
   // displayData(photographer, medias)
-  console.log(currentPhotographer, currentPhotographerMedias)
+  // console.log(currentPhotographer, currentPhotographerMedias)
 
   displayPhotographerData ()
   displayMediasCards ()
   displayPhotographerComplementaryData ()
   modalUtilities ()
+  lightboxUtilities ()
 }
 
 init()

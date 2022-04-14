@@ -14,9 +14,9 @@ class VideoMedia {
 
   getMediaCardDOM () {
     return document.createRange().createContextualFragment(`
-      <div class="mediaCard">
+      <div class="mediaCard open_lightbox">
         <i class="fa-solid fa-video"></i>
-        <video class="mediaCard__media" src="assets/images/${this.photographerFolder}/${this.video}">
+        <video id="${this.id}" class="mediaCard__media" src="assets/images/${this.photographerFolder}/${this.video}">
         </video>
         <div class="mediaCard__infos">
           <p class="mediaCard__infos--title">
@@ -26,6 +26,18 @@ class VideoMedia {
             ${this.likes} <i class="fa-solid fa-heart"></i>
           </p>
         </div>
+      </div>
+    `)
+  }
+
+  getMediaLightboxDOM () {
+    return document.createRange().createContextualFragment(`
+      <div class="lightbox__mediaContent">
+        <video 
+          class="lightbox__media"
+          controls
+          src="assets/images/${this.photographerFolder}/${this.video}">
+        </video>
       </div>
     `)
   }

@@ -14,8 +14,8 @@ class ImageMedia {
 
   getMediaCardDOM () {
     return document.createRange().createContextualFragment(`
-      <div class="mediaCard">
-        <img class="mediaCard__media" src="assets/images/${this.photographerFolder}/${this.image}" />
+      <div class="mediaCard open_lightbox">
+        <img id="${this.id}" class="mediaCard__media" src="assets/images/${this.photographerFolder}/${this.image}" />
         <div class="mediaCard__infos">
           <p class="mediaCard__infos--title">
           ${this.title}
@@ -24,6 +24,17 @@ class ImageMedia {
             ${this.likes} <i class="fa-solid fa-heart"></i>
           </p>
         </div>
+      </div>
+    `)
+  }
+
+  getMediaLightboxDOM () {
+    return document.createRange().createContextualFragment(`
+      <div class="lightbox__mediaContent">
+        <img class="lightbox__media" src="assets/images/${this.photographerFolder}/${this.image}" />
+      </div>
+      <div class="lightbox__mediaTitle">
+        <h2>${this.title}</h2>
       </div>
     `)
   }
