@@ -6,6 +6,21 @@
     background-color: #FAFAFA;
     height: 300px;
     margin: 0 100px;
+    
+}
+.photographer-profile-wrapper{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.photographer-profile-img img{
+    height: 200px;
+    width: 200px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
 }
 
 .contact_button {

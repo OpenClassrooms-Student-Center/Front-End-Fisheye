@@ -39,34 +39,46 @@ h1 {
     align-items: center;
     flex-direction: column;
 }
-
-.photographer_section article h2 {
+.photographer-card-wrapper{
+    display: flex;
+    justify-content: center;
+    text-align: center;
+}
+.photographer_section h2 {
     color: #D3573C;
     font-size: 36px;
     margin-bottom: 2px;
+    text-align: center;
 }
-.photographer_section article h3 {
+.photographer_section h3 {
     color: #901C1C;
     font-size: 16px;
     margin-top: 0;
     margin-bottom: 6px;
+    text-align: center;
 }
-.photographer_section article p {
+.photographer_section p {
     color: #000;
     font-size: 14px;
     margin-top: 0;
     margin-bottom: 8px;
 }
-.photographer_section article span {
+.photographer_section span {
     color: #757575;
     font-size: 12px;
     margin-top: 0;
     margin-bottom: 8px;
 }
-
-.photographer_section article img {
+.photographer_section a{
+    text-decoration: none;
+}
+.photographer_section img {
     height: 200px;
     width: 200px;
     border-radius: 50%;
     object-fit: cover;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
 }
+

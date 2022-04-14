@@ -2,20 +2,25 @@
 <html>
   <head>
     <link href="css/style.css" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="css/photographer.css" type="text/css">
     <meta charset="utf-8">
-    <link rel="icon" type="image/png" href="assets/favicon.png">
+    <link rel="icon" type="image/png" href="assets/images/logo.png">
     <link href="https://fonts.googleapis.com/css?family=DM+Sans&display=swap" rel="stylesheet">
     <title>Fisheye - photographe </title>
   </head>
   <body>
     <header>
       <a href="./index.html">
-      <img src="assets/images/logo.png" class="logo" />
+      <img src="assets/images/logo.png" class="logo" alt="Fisheye Home Page" />
     </a>
     </header>
     <main id="main">
       <div class="photograph-header">
-        <button class="contact_button" onclick="displayModal()">Contactez-moi</button>
+        <!-- <button class="contact_button" onclick="displayModal()">Contactez-moi</button> -->
+      </div>
+      <div class="photograph-content">
+
+
       </div>
     </main>
     <div id="contact_modal">
@@ -28,11 +33,23 @@
 					<div>
 						<label>Prénom</label>
 						<input />
+            <label for="name">Nom</label>
+            <input />
+            <label for="email">Email</label>
+            <input />
+            <label for="message">Votre message</label>
+            <textarea name="message" id="" cols="100" rows="10"></textarea>
 					</div>
           <button class="contact_button">Envoyer</button>
 				</form>
 			</div>
 		</div>
     <script src="/scripts/utils/contactForm.js"></script>
+    <script src="scripts/models/photographer.js"></script>
+    <script src="scripts/models/media.js"></script>
+    <script src="scripts/templates/photographermedia.js"></script>
+    <script src="scripts/templates/photographerprofile.js"></script>
+    <script src="scripts/api/Api.js"></script>
+    <script src="scripts/app.js"></script>
   </body>
 </html>
