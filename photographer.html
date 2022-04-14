@@ -1,36 +1,38 @@
 <!DOCTYPE html>
-<html>
+<html lang="fr">
   <head>
-    <link href="css/style.css" rel="stylesheet" type="text/css" />
+    <link href="./css/style.css" rel="stylesheet" type="text/css" />
     <meta charset="utf-8">
     <link rel="icon" type="image/png" href="assets/favicon.png">
     <link href="https://fonts.googleapis.com/css?family=DM+Sans&display=swap" rel="stylesheet">
     <title>Fisheye - photographe </title>
   </head>
   <body>
-    <header>
-      <img src="assets/images/logo.png" class="logo" />
+    <header class="header">
+      <img src="assets/images/logo.png" alt="" class="header__logo" />
     </header>
-    <main id="main">
-      <div class="photograph-header">
-        <button class="contact_button" onclick="displayModal()">Contactez-moi</button>
+    <main id="main" class="photographer">
+      <div class="photographer__header">
+        <button class="button" onclick="displayModal()">Contactez-moi</button>
       </div>
     </main>
     <div id="contact_modal">
 			<div class="modal">
-				<header>
-          <h2>Contactez-moi</h2>
-          <img src="assets/icons/close.svg" onclick="closeModal()" />
+				<header class="modal__header">
+          <h2 class="modal__header__title">Contactez-moi</h2>
+          <img src="assets/icons/close.svg" alt="" class="modal__header__img" onclick="closeModal()" />
         </header>
-				<form>
+				<form class="form">
 					<div>
 						<label>Prénom</label>
 						<input />
 					</div>
-          <button class="contact_button">Envoyer</button>
+          <button class="button">Envoyer</button>
 				</form>
 			</div>
 		</div>
+
+    <!-- Utils -->
     <script src="/scripts/utils/contactForm.js"></script>
   </body>
 </html>
