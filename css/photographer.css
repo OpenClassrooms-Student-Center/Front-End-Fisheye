@@ -7,6 +7,7 @@
     height: 313px;
     margin: 0 100px;
     padding: 0 50px;
+    border-radius: 5px;
 }
 
 .photographHeader__infos--title {

@@ -105,7 +105,33 @@ async function displayMediasCards () {
   currentPhotographerMedias.forEach(media => {
     const mediaCardDOM = media.getMediaCardDOM()
     mediaSection.appendChild(mediaCardDOM)
+
+    // Like management
+    let likeButton = document.querySelector(`#likes--${media.id}`)
+    likeButton.addEventListener('click', () => {
+      let totalMediaLikesElement = document.querySelector(`#totalMedialikes--${media.id}`)
+      let totalPhotographerLikesElement = document.querySelector(`#photographComplementary__totalLikes`)
+      let totalMediaLikes = totalMediaLikesElement.firstChild.nodeValue
+      let totalPhotographerLikes = totalPhotographerLikesElement.firstChild.nodeValue
+      if (likeButton.classList.contains('fa-solid')) {     
+        likeButton.classList.remove('fa-solid')
+        likeButton.classList.add('fa-regular')
+        totalMediaLikes--
+        totalPhotographerLikes--
+        totalMediaLikesElement.textContent = totalMediaLikes
+        totalPhotographerLikesElement.textContent = totalPhotographerLikes
+      } else {
+        likeButton.classList.add('fa-solid')
+        likeButton.classList.remove('fa-regular')
+        totalMediaLikes++
+        totalPhotographerLikes++
+        totalMediaLikesElement.textContent = totalMediaLikes
+        totalPhotographerLikesElement.textContent = totalPhotographerLikes
+      }
+      
+    })
   });
+
 }
 
 async function displayPhotographerComplementaryData () {

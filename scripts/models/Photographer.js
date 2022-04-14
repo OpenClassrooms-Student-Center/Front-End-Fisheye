@@ -64,7 +64,7 @@ class Photographer {
 
   getPhotographerComplementaryDOM () {
     return document.createRange().createContextualFragment(`
-      <p>${this.totalLikes} <i class="fa-solid fa-heart"></i></p>
+      <p><span id="photographComplementary__totalLikes">${this.totalLikes}</span> <i class="fa-solid fa-heart"></i></p>
       <p>${this.price}€ / jour</p>
     `)
   }

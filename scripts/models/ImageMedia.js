@@ -14,14 +14,14 @@ class ImageMedia {
 
   getMediaCardDOM () {
     return document.createRange().createContextualFragment(`
-      <div class="mediaCard open_lightbox">
-        <img id="${this.id}" class="mediaCard__media" src="assets/images/${this.photographerFolder}/${this.image}" />
+      <div class="mediaCard">
+        <img id="${this.id}" class="mediaCard__media open_lightbox" src="assets/images/${this.photographerFolder}/${this.image}" />
         <div class="mediaCard__infos">
           <p class="mediaCard__infos--title">
           ${this.title}
           </p>
           <p class="mediaCard__infos--likes">
-            ${this.likes} <i class="fa-solid fa-heart"></i>
+            <span id="totalMedialikes--${this.id}">${this.likes}</span> <i id="likes--${this.id}" class="fa-regular fa-heart"></i>
           </p>
         </div>
       </div>
