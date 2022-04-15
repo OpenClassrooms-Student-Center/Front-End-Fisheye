@@ -48,6 +48,7 @@
     background-color: var(--primary-dark-background-color);
     border-radius: 5px;
     cursor: pointer;
+    font-family: "DM Sans", sans-serif;
 }
 
 .contact_button:hover,
@@ -208,6 +209,13 @@ form input {
     border-radius: 5px;
 }
 
+form input,
+form textarea {
+    font-size: 36px;
+    line-height: 47px;
+    font-family: "DM Sans", sans-serif
+}
+
 .photographMedias {
     margin: 0 100px;
 }
@@ -289,4 +297,89 @@ form input {
 .photographComplementary p {
     margin: 0;
     padding: 21px 0;
+}
+
+.photographMedias__filters {
+    display: flex;
+    gap: 25px;
+    align-items: center;
+    margin-top: 10px;
+}
+
+
+.photographMedias__filtersMenu {
+    position: relative;
+    align-self: flex-start;
+}
+
+.photographMedias__filtersTitle {
+    line-height: 50px;
+    margin: 0;
+    padding: 11px 0;
+}
+
+.photographMedias__filtersMenu--selected {
+    /* display: none; */
+    position: absolute;
+    top: 100;
+    left: 0;
+    z-index: 11;
+    line-height: 50px;
+    padding-left: 0;
+}
+
+.photographMedias__filtersMenu--selected i,
+.photographMedias__filtersMenu--list i {
+    margin-left: 25px;
+    pointer-events: none;
+}
+
+.displayNone {
+    display: none;
+}
+
+.photographMedias__filtersMenu--list {
+    /* display: none; */
+    list-style: none;
+    width: 170px;
+    border-radius: 5px;
+    color: var(--primary-dark-text-color);
+    background: var(--primary-dark-background-color);
+    overflow: hidden;
+    position: absolute;
+    margin: 0;
+    padding: 0;
+    line-height: 50px;
+    z-index: 10;
+}
+
+.photographMedias__filtersMenu--list > li {
+    font-size: 20px;
+    font-weight: bold;
+    color: var(--primary-dark-text-color);;
+    padding: 11px;
+    padding-left: 12px;
+    height: 50px;
+    border: none;
+    background-color: var(--primary-dark-background-color);
+    cursor: pointer;
+    /* border-bottom: 1px solid white; */
+    position: relative;
+}
+
+.photographMedias__filtersMenu--list > li:before {
+    content: "";
+    position: absolute;
+    border-bottom: 1px solid white;
+    width: calc(100% - 22px);
+    bottom : 0;
+}
+
+.photographMedias__filtersMenu--list > li:hover {
+    background-color: var(--secondary-dark-background-color);;
+    color: var(--secondary-dark-text-color);;
+}
+
+.photographMedias__filtersMenu--list > li:last-child:before {
+    border: none;
 }

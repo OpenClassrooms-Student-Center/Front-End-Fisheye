@@ -102,6 +102,7 @@ async function lightboxUtilities () {
 
 async function displayMediasCards () {
   const mediaSection = document.querySelector('.mediaCards')
+  mediaSection.textContent = ''
   currentPhotographerMedias.forEach(media => {
     const mediaCardDOM = media.getMediaCardDOM()
     mediaSection.appendChild(mediaCardDOM)
@@ -178,6 +179,32 @@ async function init () {
   displayPhotographerComplementaryData ()
   modalUtilities ()
   lightboxUtilities ()
+
+  const filterSelectedElement = document.querySelector('.photographMedias__filtersMenu--selected')
+  const filterListElement = document.querySelector('.photographMedias__filtersMenu--list')
+  const filterItemsElement = document.querySelectorAll('.photographMedias__filtersMenu--list > li')
+  filterItemsElement.forEach(element => {
+    element.addEventListener('click', (e) => {
+      // console.log(currentPhotographerMedias)
+      let currentFilterElement = e.target
+      currentPhotographerMedias.sort((a, b) => {
+        if (currentFilterElement.id === 'filter_popular') return b.likes - a.likes
+        if (currentFilterElement.id === 'filter_date') return b.date.localeCompare(a.date)
+        if (currentFilterElement.id === 'filter_title') return a.title.localeCompare(b.title)
+      })
+      // console.log(currentPhotographerMedias)
+      console.log(filterSelectedElement.textContent)
+      filterSelectedElement.innerHTML = `${currentFilterElement.textContent}<i class="fa-solid fa-chevron-down"></i>`
+      console.log(filterSelectedElement.textContent)
+      filterSelectedElement.classList.toggle('displayNone')
+      filterListElement.classList.toggle('displayNone')
+      displayMediasCards ()
+    })
+  })
+  filterSelectedElement.addEventListener('click', () => {
+    filterSelectedElement.classList.toggle('displayNone')
+    filterListElement.classList.toggle('displayNone')
+  })
 }
 
 init()

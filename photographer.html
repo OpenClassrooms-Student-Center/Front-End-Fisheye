@@ -19,17 +19,27 @@
       <section class="photographHeader"></section>
 
       <div class="photographMedias">
-        <p class="photographMedias__filters">
-          Trier par 
-          <select>
-            <option>Popularité</option>
-            <option>Date</option>
-            <option>Titre</option>
-          </select>
-        </p>
-        <div class="mediaCards"></div>
-      </div>
 
+        <div class="photographMedias__filters">
+          <p class="photographMedias__filtersTitle">
+            Trier par
+          </p>
+          <div class="photographMedias__filtersMenu">
+            <button class="contact_button photographMedias__filtersMenu--selected">
+              Popularité<i class="fa-solid fa-chevron-down"></i>
+            </button>
+            <ul class="photographMedias__filtersMenu--list displayNone">
+              <li id="filter_popular">Popularité<i class="fa-solid fa-chevron-up"></i></li>
+              <li id="filter_date">Date</li>
+              <li id="filter_title">Titre</li>
+            </ul>
+          </div>
+        </div>
+        
+        <div class="mediaCards"></div>
+
+      </div>
+        
       <aside class="photographComplementary"></aside>
       
     </main>

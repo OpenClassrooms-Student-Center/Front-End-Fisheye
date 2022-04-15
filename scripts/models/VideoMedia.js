@@ -39,6 +39,9 @@ class VideoMedia {
           src="assets/images/${this.photographerFolder}/${this.video}">
         </video>
       </div>
+      <div class="lightbox__mediaTitle">
+        <h2>${this.title}</h2>
+      </div>
     `)
   }
 }
