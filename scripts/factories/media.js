@@ -29,26 +29,29 @@ function mediaFactory(data,totalLikes,photografName) {
     let clickOnHeart = false
     let sectionHTML = ""
     const picture = BaseURL.base + `assets/photographers/${name.split(' ')[0].replace('-',' ')}/${image?image:video}`;
+    const arrow_left = document.querySelector(".arrow-left")
+    const arrow_right = document.querySelector(".arrow-right")
 
-    function InsertHeart(element){
+    function InsertHeart(element, given_tabindex=-1){
         const insertHeartHtml =`
             <div class="display_or_not">
-                <div id="dinl-${id}" class="display_if_not_liked ${(clickOnHeart)?"":"not_"}liked">
+                <button id="dinl-${id}" tabindex="${given_tabindex+1}" class="btn-heart display_if_not_liked ${(clickOnHeart)?"":"not_"}liked">
                     <i class="fa fa-heart-o"></i>
-                </div>
-                <div id="dil-${id}" class="display_if_liked ${(clickOnHeart)?"":"not_"}liked">
+                </button>
+                <button id="dil-${id}" tabindex="${given_tabindex+2}" class="btn-heart display_if_liked ${(clickOnHeart)?"":"not_"}liked">
                     <i class="fa fa-heart"></i>
-                </div>
+                </button>
             </div>`
 
         element.insertAdjacentHTML('beforeend', insertHeartHtml);
     }
 
-    function getUserCardDOM() {
-        if(sectionHTML !== ""){
-            return sectionHTML
-        }
-        // const picture = BaseURL.base + `/assets/photographers/${name.split(' ')[0].replace('-',' ')}/${image?image:video}`;
+    function getUserCardDOM(given_tabindex=-1) {
+        let tabindex = given_tabindex
+        // if(sectionHTML !== ""){
+
+        //     return sectionHTML
+        // }
         
         // vignette photographe
         const article = document.createElement( 'article' );
@@ -59,13 +62,15 @@ function mediaFactory(data,totalLikes,photografName) {
         const imgOrVideo = image? document.createElement( 'img' ): document.createElement( 'video' );
         imgOrVideo.setAttribute("id","img-or-video-"+id)
         imgOrVideo.setAttribute("src", picture)
-        if(video){
+        imgOrVideo.setAttribute("alt", title)
+        imgOrVideo.setAttribute("tabindex",""+tabindex)
+    if(video){
             // pas de player controls sur les videos dans la page principale
             // a enlever sur la version finale 
-            imgOrVideo.setAttribute("controls","")
+            // imgOrVideo.setAttribute("controls","")
             imgOrVideo.setAttribute("type","video/mp4")
         }
-
+    
         // Libellé et nombre de coeurs et coeur dans une div
         const divBottom = document.createElement('div')
         divBottom.classList.add('media-bottom')
@@ -85,27 +90,39 @@ function mediaFactory(data,totalLikes,photografName) {
 
         likes.textContent = counter.count
         divLikes.appendChild(likes)
-        InsertHeart(divLikes)
+        InsertHeart(divLikes, tabindex)
         
         article.appendChild(imgOrVideo);
         divBottom.appendChild(h2)
         divBottom.appendChild(divLikes)
     
         article.appendChild(divBottom)
+        article.classList.add("hover_photograf_css")
         sectionHTML = article
+
         return (article);
+    }
+
+    function ToggleLikesAndPrice(){
+        // le nombre de likes et le prix/jour passent en invisible
+        const likesAndPrice = document.querySelector(".likes-and-price")
+        likesAndPrice.classList.toggle("visible")        
+        likesAndPrice.classList.toggle("invisible")
     }
 
     function LightBoxRender(){
         const insertLightBoxHtml =
         `<div class="lightbox-media">
-        ${(image)?"<img src="+picture+">":"<video src="+picture+" controls type='video/mp4'></video>"}
+        <article>
+        ${(image)?("<img src='"+picture+"' alt='"+title+"'>")
+            :("<video src='"+picture+"' controls type='video/mp4' alt='"+title+"'></video>")}
         <h2>${title}</h2>
+        </article>
         </div>`
         return insertLightBoxHtml
     }
     
-    function ToggleClasses(el){
+    function ToggleHeartLikedClasses(el){
         el.classList.toggle('not_liked')
         el.classList.toggle('liked')
     }
@@ -114,8 +131,8 @@ function mediaFactory(data,totalLikes,photografName) {
         dinl.addEventListener('click',function f(e) {
             if(!clickOnHeart){
                 counter.update()
-                ToggleClasses(dinl)
-                ToggleClasses(document.querySelector('#dil-'+id))
+                ToggleHeartLikedClasses(dinl)
+                ToggleHeartLikedClasses(document.querySelector('#dil-'+id))
                 clickOnHeart = true
             }
         })
@@ -123,17 +140,38 @@ function mediaFactory(data,totalLikes,photografName) {
         dil.addEventListener('click',function f(e) {
             if(clickOnHeart){
                 counter.update(-1)
-                ToggleClasses(dil)
-                ToggleClasses(document.querySelector('#dinl-'+id))
+                ToggleHeartLikedClasses(dil)
+                ToggleHeartLikedClasses(document.querySelector('#dinl-'+id))
                 clickOnHeart = false
             }
         })  
     }
+
+    function ToggleOthers(){
+        ToggleLikesAndPrice()
+        document.querySelector(".opacity-if-caroussel").classList.toggle("visible")
+        document.querySelector(".opacity-if-caroussel").classList.toggle("invisible")
+
+    }
+
     function StartCaroussel(e) {
         const mediasList = new MediasList()
-        mediasList.CarousselRenderMedia(Array.from(mediasList.mediasList).findIndex(media => media.id === id))
+        const index = Array.from(mediasList.mediasList).findIndex(media => media.id === id)
+        if(!index){
+            arrow_left.classList.add("forbidden_arrow")
+            arrow_right.classList.remove("forbidden_arrow")
+        } else if((index+1) === mediasList.mediasList.length){
+            arrow_right.classList.add("forbidden_arrow")
+            arrow_left.classList.remove("forbidden_arrow")
+        } else {
+            arrow_left.classList.remove("forbidden_arrow")
+            arrow_right.classList.remove("forbidden_arrow")
+        }
+        mediasList.CarousselRenderMedia(index)
         document.querySelector(".medias_caroussel").classList.toggle("visible")
         document.querySelector(".medias_caroussel").classList.toggle("invisible")
+
+        ToggleOthers()
     }
 
     function SetListenerOnTitle() {
@@ -144,18 +182,18 @@ function mediaFactory(data,totalLikes,photografName) {
 
     function SetListenerOnClickImageOrVideo(){
         document.getElementById("img-or-video-"+id)
+            .addEventListener("keyup", function(event) {
+                event.preventDefault();
+                console.log(event.code)
+                if (event.code === "Enter") {
+                    document.getElementById("img-or-video-"+id).click();
+                }
+            });
+
+        document.getElementById("img-or-video-"+id)
             .addEventListener('click',e => StartCaroussel(e))
     }
 
-    function SetListenerOnClickImageOrVideo(){
-        document.getElementById("img-or-video-"+id)
-            .addEventListener('click',e =>{
-                const mediasList = new MediasList()
-                mediasList.CarousselRenderMedia(Array.from(mediasList.mediasList).findIndex(media => media.id === id))
-                document.querySelector(".medias_caroussel").classList.toggle("visible")
-                document.querySelector(".medias_caroussel").classList.toggle("invisible")
-            })
-    }
     function SetListeners(){
         SetListenerOnHearts()
         SetListenerOnClickImageOrVideo()

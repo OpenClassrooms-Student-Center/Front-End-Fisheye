@@ -14,6 +14,8 @@ function photographerFactory(data) {
         // photo vignette
         const img = document.createElement( 'img' );
         img.setAttribute("src", picture)
+        img.setAttribute("alt", ""/*name*/)
+
         return img
     }
 
@@ -47,6 +49,9 @@ function photographerFactory(data) {
         return pprice
     }
 
+    function AddingNameInModalContact(){
+        document.querySelector(".modal header h3").textContent = name;
+    }
     function getUniqPhotograph({article,img,h2,citycountry,slogan}){
         // les champs du header
         div = document.createElement( 'div' );
@@ -56,6 +61,7 @@ function photographerFactory(data) {
         div.appendChild(slogan)
         article.appendChild(div)
         article.appendChild(img)
+        AddingNameInModalContact()
         return article
     }
     
@@ -109,6 +115,7 @@ function photographerFactory(data) {
             article.appendChild(pcitycountry)
             article.appendChild(ptagline)
             article.appendChild(pprice)
+            article.classList.add("hover_photograf_css")
         }
 
         return (article);

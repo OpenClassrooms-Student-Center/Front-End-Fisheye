@@ -1,6 +1,12 @@
 function closeCaroussel(){
     document.querySelector(".medias_caroussel").classList.toggle("visible")
     document.querySelector(".medias_caroussel").classList.toggle("invisible")
+    const likesAndPrice = document.querySelector(".likes-and-price")
+    likesAndPrice.classList.toggle("invisible")
+    likesAndPrice.classList.toggle("visible")
+    document.querySelector(".opacity-if-caroussel").classList.toggle("visible")
+    document.querySelector(".opacity-if-caroussel").classList.toggle("invisible")
+
 }
 
 //Mettre le code JavaScript lié à la page photographer.html
@@ -29,12 +35,12 @@ async function displayHeader(photograph) {
 async function displayMedias(photograph,medias){
     const mediasSection = document.querySelector(".medias_section")
     mediasList = new MediasList(medias)
-    mediasList.mediasList.forEach((media) => {
-        const userCardDOM = media.getUserCardDOM()
+    mediasList.mediasList.forEach((media,index) => {
+        const userCardDOM = media.getUserCardDOM(10+(index*5))
         mediasSection.appendChild(userCardDOM)
         media.SetListeners()
     }); 
-    mediasList.CarousselRender()      
+    mediasList.CarousselRender()    
 }
 async function displayTotalLikes(totalLikes){
     totalLikes.UserDivDOM()

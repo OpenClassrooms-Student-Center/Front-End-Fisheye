@@ -10,73 +10,88 @@
     <title>Fisheye - photographe </title>
   </head>
   <body>
-    <header>
-      <a class="link-to-home"><img src="assets/images/logo.png" class="logo" /></a>
-    </header>
-    <main id="main">
-      <div class="photograph-header">
-        <button class="contact_button" onclick="displayModal()">Contactez-moi</button>
-      </div>
-    </main>
-    <section class="filter">
-      <h3>Trier par</h3>
-      <div class="custom-select">
-        <select>
-          <option value="0">Popularité</option>
-          <option value="1">Date</option>
-          <option value="2">Titre</option>         
-        </select>
-      </div>
-    </section>
-    <section class="medias_section"></section>
-    <div id="contact_modal">
-			<div class="modal">
-				<header>
-          <h2>Contactez-moi</h2>
-          <img src="assets/icons/close.svg" onclick="closeModal()" />
-        </header>
-				<form>
-          <div class="formData">
-          <label for="first">Prénom</label><br>
-          <input
-            class="text-control"
-            type="text"
-            id="first"
-            name="first"
-          /><br>
-          </div>
-          <div class="formData">
-            <label for="last">Nom</label><br>
+    <div class="opacity-if-caroussel visible">
+      <header class="header-logo hover_photograf_css">
+        <a class="link-to-home"  tabindex="1"><img src="assets/images/logo.png" class="logo" alt="Fisheye"/></a>
+      </header>
+      <main id="main">
+        <div class="photograph-header">
+          <button class="contact_button hover_css" onclick="displayModal()" tabindex="2">Contactez-moi</button>
+        </div>
+      </main>
+      <section class="filter">
+        <h3>Trier par</h3>
+        <label for="sort-select">Trier par</label>
+        <div class="custom-select" tabindex="3">
+          <select name="sort" id="sort-select">
+            <option value="0">Popularité</option>
+            <option value="1">Date</option>
+            <option value="2">Titre</option>         
+          </select>
+        </div>
+      </section>
+      <section class="medias_section">
+        <h4>Medias section</h4>
+      </section>
+      <div id="contact_modal">
+        <div class="modal">
+          <header>
+            <div class="title-form">
+              <h2>Contactez-moi</h2>
+              <img src="assets/icons/close.svg" onclick="closeModal()" alt="Close" tabindex="200"/>          
+            </div>
+            <h3>Hello</h3>
+          </header>
+          <form>
+            <div class="formData">
+            <label for="first">Prénom</label><br>
             <input
               class="text-control"
               type="text"
-              id="last"
-              name="last"
+              id="first"
+              name="first"
+              tabindex="202"
             /><br>
-          </div>
-          <div class="formData">
-            <label for="email">E-mail</label><br>
-            <input
-              class="text-control"
-              type="email"
-              id="email"
-              name="email"
-            /><br>
-          </div>			
-          <div class="formData">
-						<label for="message">Votre Message</label>
-            <textarea
-              class="text-control text-area"
-              id="message"
-              name="message"
-              rows="5"
-            ></textarea>				
-          </div>
-          <button class="contact_button">Envoyer</button>
-				</form>
-			</div>
-		</div>
+            </div>
+            <div class="formData">
+              <label for="last">Nom</label><br>
+              <input
+                class="text-control"
+                type="text"
+                id="last"
+                name="last"
+                tabindex="204"
+                /><br>
+            </div>
+            <div class="formData">
+              <label for="email">E-mail</label><br>
+              <input
+                class="text-control"
+                type="email"
+                id="email"
+                name="email"
+                tabindex="206"
+              /><br>
+            </div>			
+            <div class="formData">
+              <label for="message">Votre Message</label>
+              <textarea
+                class="text-control text-area"
+                id="message"
+                name="message"
+                rows="5"
+                tabindex="208"
+
+              ></textarea>				
+            </div>
+            <button class="contact_button hover_css" tabindex="210">Envoyer</button>
+          </form>
+        </div>
+      </div>
+    </div>
     <section class="medias_caroussel invisible">
+      <h4>Caroussel section</h4>
+
       <div class="arrow arrow-left">
       </div>
       <div class="media-caroussel-render"></div>
@@ -86,11 +101,11 @@
         </div>
         <div class="arrow arrow-right">
         </div>
-        <!-- <div class="fill-artifice">
-        </div> -->
       </div>
     </section>
-    <section class="likes-and-price"></section>
+    <section class="likes-and-price visible">
+      <h4>Likes and price section</h4>
+    </section>
     <script src="./scripts/utils/mediasList.js"></script>
     <script src="./scripts/utils/baseurl.js"></script>
     <script src="./scripts/api/Api.js"></script>
@@ -99,6 +114,6 @@
     <script src="./scripts/factories/photographer.js"></script>
     <script src="./scripts/factories/media.js"></script>
     <script src="scripts/pages/photographer.js"></script>
-    <script type="text/javascript" src="scripts/utils/contactForm.js"></script>
+    <script src="scripts/utils/contactForm.js"></script>
   </body>
 </html>
