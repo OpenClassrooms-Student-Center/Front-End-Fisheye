@@ -14,6 +14,7 @@ function photographerFactory(data) {
 
         const a = document.createElement( 'a' );
         a.setAttribute("href", `/photographer.html?photographerId=${id}`);
+        a.setAttribute("aria-label", `${name}`);
 
         const p = document.createElement( 'p' );
 
