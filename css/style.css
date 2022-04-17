@@ -5,9 +5,13 @@
 body {
   margin: 0;
 }
+body a {
+  text-decoration: none;
+}
 
 body {
   font-family: "DM Sans", sans-serif;
+  font-weight: 400;
 }
 
 .button {
@@ -45,23 +49,42 @@ body {
   gap: 70px;
   margin-top: 100px;
 }
-.photographer_section article {
-  justify-self: center;
+.photographer_section article a {
+  display: block;
   display: flex;
-  justify-content: center;
   align-items: center;
   flex-direction: column;
 }
-.photographer_section article h2 {
+.photographer_section article a h2 {
   color: #D3573C;
   font-size: 36px;
+  margin-bottom: 0;
 }
-.photographer_section article img {
+.photographer_section article a img {
   height: 200px;
   width: 200px;
+  object-fit: cover;
+  border-radius: 50%;
+  margin-top: 0.5rem;
+}
+.photographer_section article p {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.photographer_section article p .location {
+  font-size: 24px;
+  color: #901C1C;
+}
+.photographer_section article p .tagline {
+  font-size: 18px;
+}
+.photographer_section article p .price {
+  font-size: 18px;
+  color: #757575;
 }
 
-.photographer__header {
+.photographer_header {
   background-color: #FAFAFA;
   height: 300px;
   margin: 0 100px;

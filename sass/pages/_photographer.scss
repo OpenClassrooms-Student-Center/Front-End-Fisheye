@@ -1,9 +1,7 @@
-.photographer {
-    &__header {
-        background-color: $colorQuinary;
-        height: 300px;
-        margin: 0 100px;
-    }
+.photographer_header {
+    background-color: $colorQuinary;
+    height: 300px;
+    margin: 0 100px;
 }
 
 #contact_modal {
@@ -29,7 +27,7 @@
             cursor: pointer;
         }
         &__title {
-            font-size: 64px;
+            font-size: map-get($map: $font-size, $key: title);
             font-weight: normal;
             text-align: center;
         }
@@ -50,7 +48,7 @@
     }
     & label {
         color: $colorQuaternary;
-        font-size: 36px;
+        font-size: calc(map-get($map: $font-size, $key: title) / 2) + 4;
     }
     & input {
         width: 100%;

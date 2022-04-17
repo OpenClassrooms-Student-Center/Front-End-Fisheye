@@ -4,18 +4,39 @@
     gap: 70px;
     margin-top: 100px;
     & article {
-        justify-self: center;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        flex-direction: column;
-        & h2 {
-            color: $colorSecondary;
-            font-size: 36px;
+        & a {
+            display: block;
+            display: flex;
+            align-items: center;
+            flex-direction: column;
+            & h2 {
+                color: $colorSecondary;
+                font-size: calc(map-get($map: $font-size, $key: title) / 2) + 4;
+                margin-bottom: 0;
+            }
+            & img {
+                height: 200px;
+                width: 200px;
+                object-fit: cover;
+                border-radius: 50%;
+                margin-top: .5rem;
+            }
         }
-        & img {
-            height: 200px;
-            width: 200px;
+        & p {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            & .location {
+                font-size: map-get($map: $font-size, $key: text) + 6;
+                color: $colorPrimary;
+            }
+            & .tagline {
+                font-size: map-get($map: $font-size, $key: text);
+            }
+            & .price {
+                font-size: map-get($map: $font-size, $key: text);
+                color: #757575;
+            }
         }
     }
 }
