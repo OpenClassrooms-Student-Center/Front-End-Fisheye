@@ -38,7 +38,7 @@
 }
 
 
-.photograph-header h2{
+.photograph-header h1{
     color: #D3573C;
     font-size: 64px;
     font-weight:500;
@@ -57,10 +57,12 @@
     margin: 0;
 }
 
-.photograph-header p.citycountry{
+.photograph-header .citycountry{
     color: #901C1C;
     font-size: 24px;
     font-weight: 400;
+    margin-top: 10px;
+    margin-bottom: 20px;
 }
 
 .photograph-header p.tagline{
@@ -126,6 +128,10 @@
   align-items: center;
   justify-content: space-between;
   width: 100%;
+}
+
+#btn-close-form{
+  background-color: #DB8876;
 }
 
 form {
@@ -320,6 +326,8 @@ color: #911C1C;
   .custom-select {
     position: relative;
     width: 200px;
+    border: none;
+    padding: 0;
     /* font-family: Arial; */
   }
   
@@ -329,6 +337,7 @@ color: #911C1C;
   
   .select-selected {
     background-color: #901C1C;
+    width: 200px;
   }
   
   /* Style the arrow inside the select element: */
@@ -350,12 +359,14 @@ color: #911C1C;
   }
   
   /* style the items (options), including the selected item: */
-  .select-items div,.select-selected {
+  .select-items button,
+  .select-items div, .select-selected {
     color: #ffffff;
     padding: 8px 16px;
     border: 1px solid transparent;
     border-color: transparent transparent rgba(0, 0, 0, 0.1) transparent;
     cursor: pointer;
+    background-color: #901C1C;
   }
   
   /* Style items (options): */
@@ -366,6 +377,8 @@ color: #911C1C;
     left: 0;
     right: 0;
     z-index: 99;
+    display: flex;
+    flex-direction: column;
   }
   
   /* Hide the items when the select box is closed: */
@@ -374,6 +387,7 @@ color: #911C1C;
   }
   
   /* .select-items div:focus, */
+  .select-items button:hover,
   .select-items div:hover, .same-as-selected {
     background-color: rgba(0, 0, 0, 0.1);
   }

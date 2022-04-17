@@ -22,7 +22,6 @@ class LikesCounter{
 }
 
 function mediaFactory(data,totalLikes,photografName) {    
-    // const photographerUrl = new URL(window.location.href+"photographer.html")
     const {id, photographerId, title, image, video, likes, date, price } = data
     const counter = new LikesCounter(id,totalLikes,likes)
     const name = photografName
@@ -32,43 +31,49 @@ function mediaFactory(data,totalLikes,photografName) {
     const arrow_left = document.querySelector(".arrow-left")
     const arrow_right = document.querySelector(".arrow-right")
 
-    function InsertHeart(element, given_tabindex=-1){
-        const insertHeartHtml =`
-            <div class="display_or_not">
-                <button id="dinl-${id}" tabindex="${given_tabindex+1}" class="btn-heart display_if_not_liked ${(clickOnHeart)?"":"not_"}liked">
+    function InsertHeart(element){
+            const insertHeartHtml =`
+            <button id="like-${id}" class="display_or_not btn-heart" aria-label="Mettre un like">
+                <div id="dinl-${id}" class="display_if_not_liked ${(clickOnHeart)?"":"not_"}liked">
                     <i class="fa fa-heart-o"></i>
-                </button>
-                <button id="dil-${id}" tabindex="${given_tabindex+2}" class="btn-heart display_if_liked ${(clickOnHeart)?"":"not_"}liked">
+                </div>
+                <div id="dil-${id}" class="display_if_liked ${(clickOnHeart)?"":"not_"}liked">
                     <i class="fa fa-heart"></i>
-                </button>
-            </div>`
+                </div>
+            </button>`
 
         element.insertAdjacentHTML('beforeend', insertHeartHtml);
     }
 
-    function getUserCardDOM(given_tabindex=-1) {
-        let tabindex = given_tabindex
-        // if(sectionHTML !== ""){
+    function getUserCardDOM() {
+        // let tabindex = given_tabindex
+        if(sectionHTML !== ""){
 
-        //     return sectionHTML
-        // }
+            return sectionHTML
+        }
         
         // vignette photographe
         const article = document.createElement( 'article' );
         article.setAttribute("id", "media-"+id)
+        article.setAttribute("aria-label", title)
 
-    
-        // photo or video vignette
+        // l'élément lien <a> qui contiendra le media et qui déclenche le caroussel
+        const linkCaroussel = document.createElement('a')
+        linkCaroussel.setAttribute("id","to-caroussel-"+id)
+        linkCaroussel.setAttribute("href","#")
+        linkCaroussel.setAttribute("aria-label","Regarder cette vidéo dans le caroussel")
+        // vignette photo ou video ?
         const imgOrVideo = image? document.createElement( 'img' ): document.createElement( 'video' );
         imgOrVideo.setAttribute("id","img-or-video-"+id)
         imgOrVideo.setAttribute("src", picture)
         imgOrVideo.setAttribute("alt", title)
-        imgOrVideo.setAttribute("tabindex",""+tabindex)
-    if(video){
+        // traitement spécial en cas de vidéo
+        if(video){
             // pas de player controls sur les videos dans la page principale
-            // a enlever sur la version finale 
-            // imgOrVideo.setAttribute("controls","")
             imgOrVideo.setAttribute("type","video/mp4")
+            imgOrVideo.setAttribute("title",title)
+            // WCAG video captions conditions
+            imgOrVideo.insertAdjacentHTML('beforeend', "<track src='videos-track/track.vtt' kind='captions' label='Légende'>");
         }
     
         // Libellé et nombre de coeurs et coeur dans une div
@@ -85,14 +90,13 @@ function mediaFactory(data,totalLikes,photografName) {
         // Nombre de likes
         const likes=document.createElement('span')
         likes.setAttribute("id","likes-number-"+id)
-        // appel de la fonction d'init de l'observer ici? 
-        // plutot dans le constructeur?
-
         likes.textContent = counter.count
         divLikes.appendChild(likes)
-        InsertHeart(divLikes, tabindex)
+        // puis les coeurs
+        InsertHeart(divLikes)
         
-        article.appendChild(imgOrVideo);
+        linkCaroussel.appendChild(imgOrVideo);
+        article.appendChild(linkCaroussel)
         divBottom.appendChild(h2)
         divBottom.appendChild(divLikes)
     
@@ -115,7 +119,7 @@ function mediaFactory(data,totalLikes,photografName) {
         `<div class="lightbox-media">
         <article>
         ${(image)?("<img src='"+picture+"' alt='"+title+"'>")
-            :("<video src='"+picture+"' controls type='video/mp4' alt='"+title+"'></video>")}
+            :("<video src='"+picture+"' controls type='video/mp4' alt='"+title+"'><track src='videos-track/track.vtt' kind='captions' label='Légende'></video>")}
         <h2>${title}</h2>
         </article>
         </div>`
@@ -126,25 +130,23 @@ function mediaFactory(data,totalLikes,photografName) {
         el.classList.toggle('not_liked')
         el.classList.toggle('liked')
     }
+
     function SetListenerOnHearts(){
-        const dinl = document.querySelector('#dinl-'+id)
-        dinl.addEventListener('click',function f(e) {
+        const likeEl = document.querySelector('#like-'+id)
+        likeEl.addEventListener('click',function f(e) {
             if(!clickOnHeart){
                 counter.update()
-                ToggleHeartLikedClasses(dinl)
+                ToggleHeartLikedClasses(document.querySelector('#dinl-'+id))
                 ToggleHeartLikedClasses(document.querySelector('#dil-'+id))
                 clickOnHeart = true
             }
-        })
-        const dil = document.querySelector('#dil-'+id)
-        dil.addEventListener('click',function f(e) {
-            if(clickOnHeart){
+            else{
                 counter.update(-1)
-                ToggleHeartLikedClasses(dil)
+                ToggleHeartLikedClasses(document.querySelector('#dil-'+id))
                 ToggleHeartLikedClasses(document.querySelector('#dinl-'+id))
                 clickOnHeart = false
             }
-        })  
+        })
     }
 
     function ToggleOthers(){
@@ -157,6 +159,7 @@ function mediaFactory(data,totalLikes,photografName) {
     function StartCaroussel(e) {
         const mediasList = new MediasList()
         const index = Array.from(mediasList.mediasList).findIndex(media => media.id === id)
+
         if(!index){
             arrow_left.classList.add("forbidden_arrow")
             arrow_right.classList.remove("forbidden_arrow")
@@ -172,6 +175,7 @@ function mediaFactory(data,totalLikes,photografName) {
         document.querySelector(".medias_caroussel").classList.toggle("invisible")
 
         ToggleOthers()
+        document.querySelector(".close_img").focus()
     }
 
     function SetListenerOnTitle() {
@@ -180,17 +184,22 @@ function mediaFactory(data,totalLikes,photografName) {
 
     }
 
-    function SetListenerOnClickImageOrVideo(){
-        document.getElementById("img-or-video-"+id)
-            .addEventListener("keyup", function(event) {
-                event.preventDefault();
-                console.log(event.code)
-                if (event.code === "Enter") {
-                    document.getElementById("img-or-video-"+id).click();
-                }
-            });
+    // function SetListenerOnClickImageOrVideo(){
+    //     document.getElementById("img-or-video-"+id)
+    //         .addEventListener("keyup", function(event) {
+    //             event.preventDefault();
+    //             console.log(event.code)
+    //             if (event.code === "Enter") {
+    //                 document.getElementById("img-or-video-"+id).click();
+    //             }
+    //         });
 
-        document.getElementById("img-or-video-"+id)
+    //     document.getElementById("img-or-video-"+id)
+    //         .addEventListener('click',e => StartCaroussel(e))
+    // }
+
+    function SetListenerOnClickImageOrVideo(){
+        document.getElementById("to-caroussel-"+id)
             .addEventListener('click',e => StartCaroussel(e))
     }
 

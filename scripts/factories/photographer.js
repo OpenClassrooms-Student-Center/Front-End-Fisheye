@@ -19,16 +19,16 @@ function photographerFactory(data) {
         return img
     }
 
-    function getName(){
+    function getName(level=2){
         // Nom du photographe
-        const h2 = document.createElement( 'h2' );
-        h2.textContent = name;
-        return h2        
+        const hlevel = document.createElement( 'h'+level );
+        hlevel.textContent = name;
+        return hlevel       
     }
 
     function getCityCountry(){
         /* City, Country */
-        const pcitycountry = document.createElement( 'p' );
+        const pcitycountry = document.createElement( 'h2' );
         pcitycountry.textContent = city + ', ' + country
         pcitycountry.classList.add("citycountry")
         return pcitycountry
@@ -85,7 +85,7 @@ function photographerFactory(data) {
         const img = getImg()
 
         // Nom du photographe
-        const h2 = getName()
+        const h2 = getName((header)?1:2)
 
         /* City, Country */
         const pcitycountry = getCityCountry()

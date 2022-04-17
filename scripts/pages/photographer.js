@@ -9,7 +9,6 @@ function closeCaroussel(){
 
 }
 
-//Mettre le code JavaScript lié à la page photographer.html
 async function getPhotographerAndMedias(id) {
     const photographersApi = new PhotographersApi(BaseURL.base+"data/photographers.json")
     const [photographersData,mediasData] = await photographersApi.getPhotographersAndMedias()
@@ -36,7 +35,7 @@ async function displayMedias(photograph,medias){
     const mediasSection = document.querySelector(".medias_section")
     mediasList = new MediasList(medias)
     mediasList.mediasList.forEach((media,index) => {
-        const userCardDOM = media.getUserCardDOM(10+(index*5))
+        const userCardDOM = media.getUserCardDOM()
         mediasSection.appendChild(userCardDOM)
         media.SetListeners()
     }); 

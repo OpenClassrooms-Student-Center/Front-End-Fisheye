@@ -8,7 +8,8 @@ function SelectedBoxManagement(medias){
         selElmnt = x[i].getElementsByTagName("select")[0];
         ll = selElmnt.length;
         /* For each element, create a new DIV that will act as the selected item: */
-        a = document.createElement("DIV");
+        // a = document.createElement("DIV");
+        a = document.createElement("button");
         a.setAttribute("class", "select-selected");
         selElmnt.selectedIndex = 0;
         a.innerHTML = selElmnt.options[selElmnt.selectedIndex].innerHTML;
@@ -19,7 +20,7 @@ function SelectedBoxManagement(medias){
         for (j = 0; j < ll; j++) {
             /* For each option in the original select element,
             create a new DIV that will act as an option item: */
-            c = document.createElement("DIV");
+            c = document.createElement("button");
             c.innerHTML = selElmnt.options[j].innerHTML;
             c.addEventListener("click", function(e) {
                 /* When an item is clicked, update the original select box,

@@ -39,7 +39,6 @@ class MediasList {
         this._mediasList.forEach((media,index) => {
             const userCardDOM = media.getUserCardDOM(10+(index*5))
             this._mediasSection.appendChild(userCardDOM)
-            media.SetListeners()
         });
     
     }
