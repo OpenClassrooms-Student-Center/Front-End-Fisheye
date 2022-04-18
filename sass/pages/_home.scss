@@ -26,6 +26,8 @@
             display: flex;
             flex-direction: column;
             align-items: center;
+            line-height: 1.5;
+            margin-top: 0;
             & .location {
                 font-size: map-get($map: $font-size, $key: text) + 6;
                 color: $colorPrimary;
