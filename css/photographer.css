@@ -403,6 +403,7 @@ color: #911C1C;
     align-items: center;
     justify-content: center;
     background-color: #E5E5E5;
+    /* opacity: 0.2; */
   }
 
   .medias_caroussel.visible{
@@ -411,7 +412,7 @@ color: #911C1C;
   .medias_caroussel.invisible{
     display: none;
   }
-  .medias_caroussel .closable-div .close_img{
+  .close_img div{
     width: 50px;
     height: 50px;
     background-color: #901C1C;
@@ -419,15 +420,38 @@ color: #911C1C;
     mask: url(../assets/icons/close.svg);
     mask-repeat: no-repeat;
     mask-position: center;
+    /* border: solid 1px red; */
   }
+
+  button.close_img{
+    width: 60px;
+    height: 60px;
+    background-color: #E5E5E5;
+    border: none;
+  }
+  button.arrow{
+    width: 100px;
+    height: 100px;
+    background-color: #E5E5E5;
+    border: none;
+  }
+
+  /* button.arrow:focus {
+    cursor: pointer;
+    color: black;
+    border: solid 1px black;
+  } */
+
   .medias_caroussel .arrow {
     font-size: 25px;
-    background-color: #901C1C;
+    /* background-color: #901C1C; */
     min-width: 100px;
     min-height: 100px;
   }
 
-  .medias_caroussel .arrow-left{
+  .arrow-left div{
+    width: 90px;
+    height: 90px;
     background-color: #901C1C;
     -webkit-mask: url(../added_svg/angle-left-solid.svg) no-repeat center;
     mask: url(../added_svg/angle-left-solid.svg);
@@ -441,7 +465,10 @@ color: #911C1C;
     align-items: center;
     justify-content: space-between;
   }
-  .medias_caroussel .arrow-right{
+  
+  .arrow-right div{
+    width: 90px;
+    height: 90px;
     background-color: #901C1C;
     -webkit-mask: url(../added_svg/angle-right-solid.svg) no-repeat center;
     mask: url(../added_svg/angle-right-solid.svg);

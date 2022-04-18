@@ -37,7 +37,7 @@ class MediasList {
     render(){
         this._mediasSection.innerHTML = ""
         this._mediasList.forEach((media,index) => {
-            const userCardDOM = media.getUserCardDOM(10+(index*5))
+            const userCardDOM = media.getUserCardDOM()
             this._mediasSection.appendChild(userCardDOM)
         });
     

@@ -113,7 +113,10 @@ function mediaFactory(data,totalLikes,photografName) {
         likesAndPrice.classList.toggle("visible")        
         likesAndPrice.classList.toggle("invisible")
     }
-
+    /** les 2 etoiles permettent d'activer le JSdoc
+     * retourne le fragment HTML
+     * @returns {string}
+     */
     function LightBoxRender(){
         const insertLightBoxHtml =
         `<div class="lightbox-media">
@@ -175,7 +178,7 @@ function mediaFactory(data,totalLikes,photografName) {
         document.querySelector(".medias_caroussel").classList.toggle("invisible")
 
         ToggleOthers()
-        document.querySelector(".close_img").focus()
+        document.querySelector(".arrow-left").focus()
     }
 
     function SetListenerOnTitle() {
