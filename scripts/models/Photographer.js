@@ -69,6 +69,21 @@ class Photographer {
     `)
   }
 
+  addLike () {
+    this.totalLikes++
+    this.updateComplementaryDOM ()
+  }
+
+  removeLike () {
+    this.totalLikes--
+    this.updateComplementaryDOM ()
+  }
+
+  updateComplementaryDOM () {
+    const totalPhotographerLikesElement = document.querySelector(`#photographComplementary__totalLikes`)
+    totalPhotographerLikesElement.textContent = this.totalLikes
+  }
+
   getPhotographerModalDOM () {
     return document.createRange().createContextualFragment(`
       <dialog class="modal" id="contact_modal">

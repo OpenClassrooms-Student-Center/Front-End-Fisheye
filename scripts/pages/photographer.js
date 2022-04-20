@@ -1,12 +1,65 @@
+// Global variables
 let currentPhotographer = null
 let currentPhotographerMedias = null
 let lighboxCurrentMediaId = null
+let currentFilter = 'filter_popular'
 
+// Global selectors
+const lightbox = document.querySelector('#lightbox')
+const closeLightbox = document.querySelector('.close_lightbox')
+const lightboxMediaContent = document.querySelector('.lightbox__content--middleColumn')
+
+
+// Display functions
 async function displayPhotographerData () {
   const photographerSection = document.querySelector('.photographHeader')
 
   const photographerHeaderDOM = currentPhotographer.getPhotographerHeaderDOM()
   photographerSection.appendChild(photographerHeaderDOM)
+}
+
+async function displayPhotographerComplementaryData () {
+  const photographerComplementarySection = document.querySelector('.photographComplementary')
+
+  currentPhotographerMedias.forEach(media => {
+    currentPhotographer.totalLikes += media.likes
+  });
+  const photographerComplementaryDOM = currentPhotographer.getPhotographerComplementaryDOM()
+  photographerComplementarySection.appendChild(photographerComplementaryDOM)
+}
+
+async function displayMediasCards () {
+  const mediaSection = document.querySelector('.mediaCards')
+  mediaSection.textContent = ''
+  currentPhotographerMedias.forEach(media => {
+    const mediaCardDOM = media.getMediaCardDOM()
+    mediaSection.appendChild(mediaCardDOM)
+    likesUtilities (media.id)
+  });
+  addEventListenersToCards ()
+}
+
+function displayMediaInLightbox (media) {
+  lightboxMediaContent.textContent = ''
+  lightboxMediaContent.appendChild(media.getMediaLightboxDOM())
+}
+
+// Utilities functions
+function addEventListenersToCards () {
+  const openLightboxs = document.querySelectorAll('.open_lightbox')
+  
+  openLightboxs.forEach((openLightbox) => {
+    openLightbox.addEventListener('click', (e) => {
+      lighboxCurrentMediaId = Number(e.target.id)
+      const selectedMedia = currentPhotographerMedias.filter((media) => media.id === lighboxCurrentMediaId)[0]
+      displayMediaInLightbox(selectedMedia)
+      lightbox.showModal()
+    })
+  })
+
+  closeLightbox.addEventListener('click', () => {
+    lightbox.close()
+  })
 }
 
 async function modalUtilities () {
@@ -31,6 +84,7 @@ async function modalUtilities () {
   form.addEventListener('submit', (e) => {
     // Can use 'form' or 'e.target'
     const formData = new FormData(e.target)
+    // Use reduce
     for (const [key, value] of formData.entries()) {
       console.log((`${key}: ${value}`))
     }
@@ -39,25 +93,6 @@ async function modalUtilities () {
 }
 
 async function lightboxUtilities () {
-  const lightbox = document.querySelector('#lightbox')
-  const openLightboxs = document.querySelectorAll('.open_lightbox')
-  const closeLightbox = document.querySelector('.close_lightbox')
-  const lightboxMediaContent = document.querySelector('.lightbox__content--middleColumn')
-
-  openLightboxs.forEach((openLightbox) => {
-    openLightbox.addEventListener('click', (e) => {
-      lighboxCurrentMediaId = Number(e.target.id)
-      const selectedMedia = currentPhotographerMedias.filter((media) => media.id === lighboxCurrentMediaId)[0]
-      lightboxMediaContent.textContent = ''
-      lightboxMediaContent.appendChild(selectedMedia.getMediaLightboxDOM())
-      lightbox.showModal()
-    })
-  })
-  
-  closeLightbox.addEventListener('click', () => {
-    lightbox.close()
-  })
-
   const nextSlideButton = document.querySelector('.lightbox__rightButton')
   const previousSlideButton = document.querySelector('.lightbox__leftButton')
 
@@ -73,8 +108,7 @@ async function lightboxUtilities () {
     let nextMedia = currentPhotographerMedias[nextMediaIndex]
 
     // Display next item
-    lightboxMediaContent.textContent = ''
-    lightboxMediaContent.appendChild(nextMedia.getMediaLightboxDOM())
+    displayMediaInLightbox(nextMedia)
 
     // Define current item
     lighboxCurrentMediaId = nextMedia.id
@@ -92,57 +126,81 @@ async function lightboxUtilities () {
     let nextMedia = currentPhotographerMedias[nextMediaIndex]
 
     // Display next item
-    lightboxMediaContent.textContent = ''
-    lightboxMediaContent.appendChild(nextMedia.getMediaLightboxDOM())
+    displayMediaInLightbox(nextMedia)
 
     // Define current item
     lighboxCurrentMediaId = nextMedia.id
   })
 }
 
-async function displayMediasCards () {
-  const mediaSection = document.querySelector('.mediaCards')
-  mediaSection.textContent = ''
-  currentPhotographerMedias.forEach(media => {
-    const mediaCardDOM = media.getMediaCardDOM()
-    mediaSection.appendChild(mediaCardDOM)
-
-    // Like management
-    let likeButton = document.querySelector(`#likes--${media.id}`)
-    likeButton.addEventListener('click', () => {
-      let totalMediaLikesElement = document.querySelector(`#totalMedialikes--${media.id}`)
-      let totalPhotographerLikesElement = document.querySelector(`#photographComplementary__totalLikes`)
-      let totalMediaLikes = totalMediaLikesElement.firstChild.nodeValue
-      let totalPhotographerLikes = totalPhotographerLikesElement.firstChild.nodeValue
-      if (likeButton.classList.contains('fa-solid')) {     
-        likeButton.classList.remove('fa-solid')
-        likeButton.classList.add('fa-regular')
-        totalMediaLikes--
-        totalPhotographerLikes--
-        totalMediaLikesElement.textContent = totalMediaLikes
-        totalPhotographerLikesElement.textContent = totalPhotographerLikes
-      } else {
-        likeButton.classList.add('fa-solid')
-        likeButton.classList.remove('fa-regular')
-        totalMediaLikes++
-        totalPhotographerLikes++
-        totalMediaLikesElement.textContent = totalMediaLikes
-        totalPhotographerLikesElement.textContent = totalPhotographerLikes
-      }
-      
+function filterUtilities () {
+  const filterSelectedElement = document.querySelector('.photographMedias__filtersMenu--selected')
+  const filterListElement = document.querySelector('.photographMedias__filtersMenu--list')
+  const filterItemsElement = document.querySelectorAll('.photographMedias__filtersMenu--list > li')
+  filterItemsElement.forEach(element => {
+    element.addEventListener('click', (e) => {
+      let currentFilterElement = e.target
+      sortMediasBy(currentFilterElement.id)
+      filterSelectedElement.innerHTML = `${currentFilterElement.textContent}<i class="fa-solid fa-chevron-down"></i>`
+      filterSelectedElement.classList.toggle('displayNone')
+      filterListElement.classList.toggle('displayNone')
+      displayMediasCards ()
     })
-  });
-
+  })
+  filterSelectedElement.addEventListener('click', () => {
+    filterSelectedElement.classList.toggle('displayNone')
+    filterListElement.classList.toggle('displayNone')
+  })
 }
 
-async function displayPhotographerComplementaryData () {
-  const photographerComplementarySection = document.querySelector('.photographComplementary')
+function sortMediasBy (filter) {
+  currentPhotographerMedias.sort((a, b) => {
+    if (filter === 'filter_popular') return b.likes - a.likes
+    if (filter === 'filter_date') return b.date.localeCompare(a.date)
+    if (filter === 'filter_title') return a.title.localeCompare(b.title)
+  })
+  currentFilter = filter
+}
 
-  currentPhotographerMedias.forEach(media => {
-    currentPhotographer.totalLikes += media.likes
-  });
-  const photographerComplementaryDOM = currentPhotographer.getPhotographerComplementaryDOM()
-  photographerComplementarySection.appendChild(photographerComplementaryDOM)
+function likesUtilities (mediaId) {
+  const likeButton = document.querySelector(`#likes--${mediaId}`)
+  likeButton.addEventListener('click', () => {
+    const currentMediaIndex = currentPhotographerMedias.findIndex((media) => media.id === mediaId)
+    const currentMediaCardNode = document.querySelector(`#mediaCard--${mediaId}`)
+    const currentMedia = currentPhotographerMedias[currentMediaIndex]
+    currentMedia.swapLiked ()
+    if (currentMedia.isLiked) {     
+      currentPhotographer.addLike ()
+      if (currentFilter !== 'filter_popular') return
+      if (currentMediaIndex > 0) {
+        const previousMedia = currentPhotographerMedias[currentMediaIndex - 1]
+        if (previousMedia.likes < currentMedia.likes) {
+          swapNodes (currentMediaCardNode, currentMediaCardNode.previousElementSibling)
+        }
+      }
+    } else {
+      currentPhotographer.removeLike ()
+      if (currentFilter !== 'filter_popular') return
+      if (currentMediaIndex < currentPhotographerMedias.length - 1) {
+        const nextMedia = currentPhotographerMedias[currentMediaIndex + 1]
+        if (nextMedia.likes > currentMedia.likes) {
+          swapNodes (currentMediaCardNode, currentMediaCardNode.nextElementSibling)
+        }
+      }
+    }
+  })
+}
+
+function swapNodes (nodeA, nodeB) {
+  sortMediasBy ('filter_popular')
+  const parentA = nodeA.parentNode;
+  const siblingA = nodeA.nextSibling === nodeB ? nodeA : nodeA.nextSibling;
+
+  // Move `nodeA` to before the `nodeB`
+  nodeB.parentNode.insertBefore(nodeA, nodeB);
+
+  // Move `nodeB` to before the sibling of `nodeA`
+  parentA.insertBefore(nodeB, siblingA);
 }
 
 async function init () {
@@ -175,36 +233,12 @@ async function init () {
   // console.log(currentPhotographer, currentPhotographerMedias)
 
   displayPhotographerData ()
+  sortMediasBy(currentFilter)
   displayMediasCards ()
   displayPhotographerComplementaryData ()
   modalUtilities ()
   lightboxUtilities ()
-
-  const filterSelectedElement = document.querySelector('.photographMedias__filtersMenu--selected')
-  const filterListElement = document.querySelector('.photographMedias__filtersMenu--list')
-  const filterItemsElement = document.querySelectorAll('.photographMedias__filtersMenu--list > li')
-  filterItemsElement.forEach(element => {
-    element.addEventListener('click', (e) => {
-      // console.log(currentPhotographerMedias)
-      let currentFilterElement = e.target
-      currentPhotographerMedias.sort((a, b) => {
-        if (currentFilterElement.id === 'filter_popular') return b.likes - a.likes
-        if (currentFilterElement.id === 'filter_date') return b.date.localeCompare(a.date)
-        if (currentFilterElement.id === 'filter_title') return a.title.localeCompare(b.title)
-      })
-      // console.log(currentPhotographerMedias)
-      console.log(filterSelectedElement.textContent)
-      filterSelectedElement.innerHTML = `${currentFilterElement.textContent}<i class="fa-solid fa-chevron-down"></i>`
-      console.log(filterSelectedElement.textContent)
-      filterSelectedElement.classList.toggle('displayNone')
-      filterListElement.classList.toggle('displayNone')
-      displayMediasCards ()
-    })
-  })
-  filterSelectedElement.addEventListener('click', () => {
-    filterSelectedElement.classList.toggle('displayNone')
-    filterListElement.classList.toggle('displayNone')
-  })
+  filterUtilities ()
 }
 
 init()
