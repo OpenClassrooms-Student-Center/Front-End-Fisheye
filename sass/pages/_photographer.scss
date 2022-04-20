@@ -1,7 +1,42 @@
 .photographer_header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
     background-color: $colorQuinary;
     height: 300px;
     margin: 0 100px;
+    padding: 3rem;
+    &__content {
+        display: flex;
+        flex-direction: column;
+        order: 1;
+        line-height: 1.5;
+        & .name {
+            font-size: map-get($map: $font-size, $key: title);
+            color: $colorSecondary;
+            margin: 0;
+        }
+        & .location {
+            font-size: map-get($map: $font-size, $key: text) + 6;
+            color: $colorPrimary;
+            margin-bottom: 1rem;
+        }
+        & .tagline {
+            font-size: map-get($map: $font-size, $key: text);
+            color: #525252;
+        }
+    }
+    &__img {
+        order: 3;
+        height: 200px;
+        width: 200px;
+        border-radius: 50%;
+        object-fit: cover;
+    }
+    & button {
+        order: 2;
+    }
 }
 
 #contact_modal {
