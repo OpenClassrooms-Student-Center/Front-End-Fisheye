@@ -1,12 +1,13 @@
 function closeCaroussel(){
     document.querySelector(".medias_caroussel").classList.toggle("visible")
     document.querySelector(".medias_caroussel").classList.toggle("invisible")
-    const likesAndPrice = document.querySelector(".likes-and-price")
-    likesAndPrice.classList.toggle("invisible")
-    likesAndPrice.classList.toggle("visible")
-    document.querySelector(".opacity-if-caroussel").classList.toggle("visible")
-    document.querySelector(".opacity-if-caroussel").classList.toggle("invisible")
-
+    // const likesAndPrice = document.querySelector(".likes-and-price")
+    // likesAndPrice.classList.toggle("invisible")
+    // likesAndPrice.classList.toggle("visible")
+    document.querySelector(".header-render").classList.toggle("visible")
+    document.querySelector(".header-render").classList.toggle("invisible")
+    document.querySelector(".opacity-if-modale").classList.toggle("visible")
+    document.querySelector(".opacity-if-modale").classList.toggle("invisible")
 }
 
 async function getPhotographerAndMedias(id) {
@@ -25,9 +26,11 @@ async function getPhotographerAndMedias(id) {
     return [photographers[0],medias, totalLikes]
 }
 async function displayHeader(photograph) {
-    const photographSection = document.querySelector("#main");
+    const photographSection = document.querySelector(".opacity-if-modale");
+    //const photographSection = document.querySelector(".photograph-header");
     const userCardDOM = photograph.getUserCardDOM(true);
-    photographSection.appendChild(userCardDOM);
+    // photographSection.insertBefore(userCardDOM,document.querySelector(".filter"));
+    photographSection.prepend(userCardDOM);
 
 };
 

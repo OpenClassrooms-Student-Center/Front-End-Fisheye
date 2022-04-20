@@ -81,7 +81,7 @@ h1 {
     font-size: 11px;
 }
 
-/* .hover_css:focus, */
+.hover_css:focus,
 .hover_css:hover {
     color: black;
     background-color: #DB8876;

@@ -1,9 +1,14 @@
 
-.opacity-if-caroussel.visible{
+#main {
+  display: flex;
+  flex-direction: column;
+}
+
+.opacity-if-modale.visible, .header-render.visible{
   display: unset;
 }
 
-.opacity-if-caroussel.invisible{
+.opacity-if-modale.invisible, .header-render.invisible{
   display: none;
 }
 
@@ -299,6 +304,7 @@ color: #911C1C;
       font-size: 24px;
       padding: 10px;
       border-radius: 5px;
+      display: flex;
       flex-direction: row;
       align-items: center;
       gap: 40px;
@@ -501,4 +507,8 @@ color: #911C1C;
 
   h4 {
     display: none;
+  }
+
+  .opacity {
+    opacity: 0.5;
   }

@@ -107,12 +107,12 @@ function mediaFactory(data,totalLikes,photografName) {
         return (article);
     }
 
-    function ToggleLikesAndPrice(){
-        // le nombre de likes et le prix/jour passent en invisible
-        const likesAndPrice = document.querySelector(".likes-and-price")
-        likesAndPrice.classList.toggle("visible")        
-        likesAndPrice.classList.toggle("invisible")
-    }
+    // function ToggleLikesAndPrice(){
+    //     // le nombre de likes et le prix/jour passent en invisible
+    //     const likesAndPrice = document.querySelector(".likes-and-price")
+    //     likesAndPrice.classList.toggle("visible")        
+    //     likesAndPrice.classList.toggle("invisible")
+    // }
     /** les 2 etoiles permettent d'activer le JSdoc
      * retourne le fragment HTML
      * @returns {string}
@@ -153,10 +153,10 @@ function mediaFactory(data,totalLikes,photografName) {
     }
 
     function ToggleOthers(){
-        ToggleLikesAndPrice()
-        document.querySelector(".opacity-if-caroussel").classList.toggle("visible")
-        document.querySelector(".opacity-if-caroussel").classList.toggle("invisible")
-
+        document.querySelector(".opacity-if-modale").classList.toggle("visible")
+        document.querySelector(".opacity-if-modale").classList.toggle("invisible")
+        document.querySelector(".header-render").classList.toggle("visible")
+        document.querySelector(".header-render").classList.toggle("invisible")
     }
 
     function StartCaroussel(e) {
@@ -186,20 +186,6 @@ function mediaFactory(data,totalLikes,photografName) {
         .addEventListener('click',e => StartCaroussel(e))
 
     }
-
-    // function SetListenerOnClickImageOrVideo(){
-    //     document.getElementById("img-or-video-"+id)
-    //         .addEventListener("keyup", function(event) {
-    //             event.preventDefault();
-    //             console.log(event.code)
-    //             if (event.code === "Enter") {
-    //                 document.getElementById("img-or-video-"+id).click();
-    //             }
-    //         });
-
-    //     document.getElementById("img-or-video-"+id)
-    //         .addEventListener('click',e => StartCaroussel(e))
-    // }
 
     function SetListenerOnClickImageOrVideo(){
         document.getElementById("to-caroussel-"+id)

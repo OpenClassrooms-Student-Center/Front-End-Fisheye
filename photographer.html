@@ -10,30 +10,33 @@
     <title>Fisheye - photographe </title>
   </head>
   <body>
-    <div class="opacity-if-caroussel visible">
-      <header class="header-logo hover_photograf_css">
-        <a class="link-to-home"><img src="assets/images/logo.png" class="logo" alt="Fisheye"/></a>
-      </header>
-      <main id="main">
-        <div class="photograph-header">
+    <header class="header-logo hover_photograf_css header-render visible">
+      <a class="link-to-home"><img src="assets/images/logo.png" class="logo" alt="Fisheye"/></a>
+    </header>
+    <main id="main">
+      <div class="opacity-if-modale visible">
+        <section class="photograph-header">
           <button class="contact_button hover_css" onclick="displayModal()">Contactez-moi</button>
-        </div>
-      </main>
-      <section class="filter" aria-label="filter">
-        <h3>Trier par</h3>
-        <label for="sort-select">Trier par</label>
-        <div class="custom-select">
-          <select name="sort" id="sort-select">
-            <option value="0">Popularité</option>
-            <option value="1">Date</option>
-            <option value="2">Titre</option>        
-          </select>
-        </div>
-      </section>
-      <section class="medias_section" aria-label="images et vidéos">
-        <h4>Medias section</h4>
-      </section>
-      <div id="contact_modal">
+        </section>
+        <section class="filter" aria-label="filter">
+          <h3>Trier par</h3>
+          <label for="sort-select">Trier par</label>
+          <div class="custom-select">
+            <select name="sort" id="sort-select">
+              <option value="0">Popularité</option>
+              <option value="1">Date</option>
+              <option value="2">Titre</option>        
+            </select>
+          </div>
+        </section>
+        <section class="medias_section" aria-label="images et vidéos">
+          <h4>Medias section</h4>
+        </section>
+        <section class="likes-and-price" aria-label="Likes et prix par jour">
+          <h4>Likes and price section</h4>
+        </section>
+      </div>
+      <section id="contact_modal" role=”dialog”>
         <div class="modal">
           <header>
             <div class="title-form">
@@ -82,26 +85,23 @@
             <button class="contact_button hover_css">Envoyer</button>
           </form>
         </div>
-      </div>
-    </div>
-    <section class="medias_caroussel invisible">
-      <h4>Caroussel section</h4>
-      <div class="arrowdiv">
-        <button class="arrow arrow-left"><div></div></button>
-    </div>
-      <div class="media-caroussel-render"></div>
-      <div class="controls-right">
-        <div class="closable-div">
-          <button class="close_img" onclick="closeCaroussel()"><div></div></button>
-        </div>
+      </section>
+      <section class="medias_caroussel invisible">
+        <h4>Caroussel section</h4>
         <div class="arrowdiv">
-          <button class="arrow arrow-right"><div></div></button>
-        </div>
+          <button class="arrow arrow-left"><div></div></button>
       </div>
-    </section>
-    <section class="likes-and-price visible" aria-label="Likes et prix par jour">
-      <h4>Likes and price section</h4>
-    </section>
+        <div class="media-caroussel-render"></div>
+        <div class="controls-right">
+          <div class="closable-div">
+            <button class="close_img" onclick="closeCaroussel()"><div></div></button>
+          </div>
+          <div class="arrowdiv">
+            <button class="arrow arrow-right"><div></div></button>
+          </div>
+        </div>
+      </section>
+    </main>
     <script src="./scripts/utils/mediasList.js"></script>
     <script src="./scripts/utils/baseurl.js"></script>
     <script src="./scripts/api/Api.js"></script>
