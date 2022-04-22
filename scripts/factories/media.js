@@ -78,7 +78,7 @@ function mediaFactory(data,totalLikes,photografName) {
         const linkCaroussel = document.createElement('a')
         linkCaroussel.setAttribute("id","to-caroussel-"+id)
         linkCaroussel.setAttribute("href","#")
-        linkCaroussel.setAttribute("aria-label","Regarder cette vidéo dans le caroussel")
+        linkCaroussel.setAttribute("aria-label","Regarder cette"+((image)?" Image":" Vidéo") +" dans le caroussel")
         // vignette photo ou video ?
         const imgOrVideo = image? document.createElement( 'img' ): document.createElement( 'video' );
         imgOrVideo.setAttribute("id","img-or-video-"+id)

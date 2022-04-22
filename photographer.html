@@ -48,39 +48,47 @@
           </header>
           <form>
             <div class="formData">
-            <label for="first">Prénom</label><br>
+            <label id="firstname" for="first">Prénom</label><br>
             <input
               class="text-control"
               type="text"
               id="first"
               name="first"
+              aria-describedby="firstname"
+              aria-label="First Name"
             /><br>
             </div>
             <div class="formData">
-              <label for="last">Nom</label><br>
+              <label id="nomlabel" for="last" aria-label="Nom">Nom</label><br>
               <input
                 class="text-control"
                 type="text"
                 id="last"
                 name="last"
+                aria-describedby="nomlabel"
+                aria-label="Last Name"
                 /><br>
             </div>
             <div class="formData">
-              <label for="email">E-mail</label><br>
+              <label id="emaillabel" for="email">E-mail</label><br>
               <input
                 class="text-control"
                 type="email"
                 id="email"
                 name="email"
+                aria-describedby="emaillabel"
+                aria-label="Your Email address"
               /><br>
             </div>			
             <div class="formData">
-              <label for="message">Votre Message</label>
+              <label id="messagelabel" for="message">Votre Message</label>
               <textarea
                 class="text-control text-area"
                 id="message"
                 name="message"
                 rows="5"
+                aria-describedby="messagelabel"
+                aria-label="Your message"
               ></textarea>				
             </div>
             <button class="contact_button hover_css no_tabindex">Envoyer</button>
