@@ -11,17 +11,17 @@
   </head>
   <body>
     <header class="header-logo hover_photograf_css header-render visible">
-      <a class="link-to-home"><img src="assets/images/logo.png" class="logo" alt="Retour à la liste des photographes Fisheye"/></a>
+      <a class="link-to-home"><img src="assets/images/logo.png" class="logo" alt="Fisheye Home Page"/></a>
     </header>
     <main id="main">
       <div class="opacity-if-modale visible">
         <section class="photograph-header">
           <h2>Photographe</h2>
-          <button class="contact_button hover_css" onclick="displayModal()">Contactez-moi</button>
+          <button class="contact_button hover_css" onclick="displayModal()" alt="Contact me">Contactez-moi</button>
         </section>
         <section id="filter" class="filter" aria-label="filter">
           <h2>Trier par</h2>
-          <label for="sort-select">Trier par</label>
+          <label for="sort-select" alt="Order by">Trier par</label>
           <div class="custom-select">
             <select name="sort" id="sort-select">
               <option value="0">Popularité</option>
@@ -90,15 +90,15 @@
       <section class="medias_caroussel invisible">
         <h4>Caroussel section</h4>
         <div class="arrowdiv">
-          <button class="arrow arrow-left" aria-label="Media précédent"><div></div></button>
+          <button class="arrow arrow-left" aria-label="Previous image"><div></div></button>
       </div>
         <div class="media-caroussel-render"></div>
         <div class="controls-right">
           <div class="closable-div">
-            <button class="close_img" onclick="closeCaroussel()" aria-label="Sortir du caroussel"><div></div></button>
+            <button class="close_img" onclick="closeCaroussel()" aria-label="Close dialog"><div></div></button>
           </div>
           <div class="arrowdiv">
-            <button class="arrow arrow-right" aria-label="Media suivant"><div></div></button>
+            <button class="arrow arrow-right" aria-label="Next image"><div></div></button>
           </div>
         </div>
       </section>
