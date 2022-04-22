@@ -5,7 +5,7 @@
  * @param {*} flag : true: active la navigation
  */
 function SetAccessLinksAndButtonsNotInModale(selector,flag){
-    const listEl = document.querySelectorAll(":not("+selector+") a, :not("+selector+") button")
+    const listEl = document.querySelectorAll("a, button:not("+selector+")")
     listEl.forEach(el => {
         switch(flag){
             case true:
@@ -32,7 +32,8 @@ function SetDivOpacityIfModaleToAriaHidden(flag=false){
     notModale.setAttribute("aria-hidden",(flag)?"true":"false")
     notModale.classList.toggle("opacity")
 
-    SetAccessLinksAndButtonsNotInModale("#contact_modal",!flag)
+    // SetAccessLinksAndButtonsNotInModale("#contact_modal",!flag)
+    SetAccessLinksAndButtonsNotInModale(".no_tabindex",!flag)
 }
 
 /**

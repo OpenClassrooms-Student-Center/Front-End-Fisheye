@@ -4,10 +4,12 @@
   flex-direction: column;
 }
 
-.opacity-if-modale.visible, .header-render.visible{
+.opacity-if-modale.visible{
   display: unset;
 }
-
+.header-render.visible{
+  display: flex;
+}
 .opacity-if-modale.invisible, .header-render.invisible{
   display: none;
 }
