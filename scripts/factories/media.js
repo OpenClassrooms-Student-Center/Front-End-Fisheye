@@ -1,5 +1,11 @@
 
 class LikesCounter{
+    /**
+     * 
+     * @param {*} media id 
+     * @param {*} totalLikes pour ce photographe
+     * @param {*} likes pour ce media
+     */
     constructor(id, totalLikes, likes) {
         this._count = likes
         this._id = id
@@ -21,6 +27,17 @@ class LikesCounter{
     }
 }
 
+/**
+ * 
+ * @param {*} data : les datas du json pour ce media
+ * @param {*} totalLikes : le total des likes pour ce photographe
+ * @param {*} photografName : le nom du photographe (pour construire l'url du contenu)
+ * @returns { id, photographerId, image, video, counter, date, title, getUserCardDOM, SetListeners, LightBoxRender }
+ * 3 fonctions retournées:
+ * getUserCardDOM() : le render pour la vignette
+ * setLIsteners() : lancement des listeners pour ce media
+ * LightBoxRender() : le render pour la lightBox 
+ */
 function mediaFactory(data,totalLikes,photografName) {    
     const {id, photographerId, title, image, video, likes, date, price } = data
     const counter = new LikesCounter(id,totalLikes,likes)
@@ -46,7 +63,7 @@ function mediaFactory(data,totalLikes,photografName) {
     }
 
     function getUserCardDOM() {
-        // let tabindex = given_tabindex
+        // si la vignette est déjà construite on renvoie la section HTML qu'on a déjà calculée
         if(sectionHTML !== ""){
 
             return sectionHTML
@@ -66,7 +83,7 @@ function mediaFactory(data,totalLikes,photografName) {
         const imgOrVideo = image? document.createElement( 'img' ): document.createElement( 'video' );
         imgOrVideo.setAttribute("id","img-or-video-"+id)
         imgOrVideo.setAttribute("src", picture)
-        imgOrVideo.setAttribute("alt", title)
+        imgOrVideo.setAttribute("alt", title + ((image)?" (Image)":" (Vidéo)"))
         // traitement spécial en cas de vidéo
         if(video){
             // pas de player controls sur les videos dans la page principale
@@ -107,34 +124,36 @@ function mediaFactory(data,totalLikes,photografName) {
         return (article);
     }
 
-    // function ToggleLikesAndPrice(){
-    //     // le nombre de likes et le prix/jour passent en invisible
-    //     const likesAndPrice = document.querySelector(".likes-and-price")
-    //     likesAndPrice.classList.toggle("visible")        
-    //     likesAndPrice.classList.toggle("invisible")
-    // }
-    /** les 2 etoiles permettent d'activer le JSdoc
-     * retourne le fragment HTML
-     * @returns {string}
+    /** 
+     * 
+     * @returns {string} retourne le fragment HTML de la lightbox pour ce media
      */
     function LightBoxRender(){
         const insertLightBoxHtml =
         `<div class="lightbox-media">
         <article>
-        ${(image)?("<img src='"+picture+"' alt='"+title+"'>")
-            :("<video src='"+picture+"' controls type='video/mp4' alt='"+title+"'><track src='videos-track/track.vtt' kind='captions' label='Légende'></video>")}
+        ${(image)?("<img src='"+picture+"' alt='"+title+" (Image)'>")
+            :("<video src='"+picture+"' controls type='video/mp4' alt='"+title+" (Vidéo)'><track src='videos-track/track.vtt' kind='captions' label='Légende'></video>")}
         <h2>${title}</h2>
         </article>
         </div>`
         return insertLightBoxHtml
     }
     
+    /**
+     * 
+     * @param {*} el : element sur lequel on bascule les class not_liked et liked
+     */
     function ToggleHeartLikedClasses(el){
         el.classList.toggle('not_liked')
         el.classList.toggle('liked')
     }
 
+    // Si click => bascule j'aime / j'aime pas et incrément du nombre de likes
+    // Attention: en cas de tri par popularité le changement n'est "wysiwyg".
+    // Il faut retrier. C'est un choix de clarté de lecture pour l'utilisateur 
     function SetListenerOnHearts(){
+        // Bascule J'aime - Je n'aime plus
         const likeEl = document.querySelector('#like-'+id)
         likeEl.addEventListener('click',function f(e) {
             if(!clickOnHeart){
@@ -152,6 +171,7 @@ function mediaFactory(data,totalLikes,photografName) {
         })
     }
 
+    // Rend invisible les sections hors caroussel
     function ToggleOthers(){
         document.querySelector(".opacity-if-modale").classList.toggle("visible")
         document.querySelector(".opacity-if-modale").classList.toggle("invisible")
@@ -159,8 +179,12 @@ function mediaFactory(data,totalLikes,photografName) {
         document.querySelector(".header-render").classList.toggle("invisible")
     }
 
-    function StartCaroussel(e) {
+    /**
+     * On affiche le caroussel en partant du media sur lequel on pointe
+     */
+    function StartCaroussel() {
         const mediasList = new MediasList()
+        // on retrouve son index dans le tableau grace à son id...
         const index = Array.from(mediasList.mediasList).findIndex(media => media.id === id)
 
         if(!index){
@@ -177,24 +201,31 @@ function mediaFactory(data,totalLikes,photografName) {
         document.querySelector(".medias_caroussel").classList.toggle("visible")
         document.querySelector(".medias_caroussel").classList.toggle("invisible")
 
+        // Rend invisible les sections hors caroussel
         ToggleOthers()
         document.querySelector(".arrow-left").focus()
     }
 
+    // si click sur le titre, lancement du caroussel
     function SetListenerOnTitle() {
         document.querySelector("#media-"+id+" .title")
-        .addEventListener('click',e => StartCaroussel(e))
+        .addEventListener('click',e => StartCaroussel())
 
     }
 
+    // si click sur le media, lancement du caroussel
     function SetListenerOnClickImageOrVideo(){
         document.getElementById("to-caroussel-"+id)
-            .addEventListener('click',e => StartCaroussel(e))
+            .addEventListener('click',e => StartCaroussel())
     }
 
+    // Lors de l'init on initialise les listeners
     function SetListeners(){
+        // si click sur le coeur
         SetListenerOnHearts()
+        // si click sur le media
         SetListenerOnClickImageOrVideo()
+        // si click sur le titre du media
         SetListenerOnTitle()
     }
     return { id, photographerId, image, video, counter, date, title, getUserCardDOM, SetListeners, LightBoxRender }

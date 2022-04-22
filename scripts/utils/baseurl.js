@@ -1,3 +1,6 @@
+/**
+ * Singleton
+ */
 class BaseURL {
     constructor(){
         if(window.location.href[window.location.href.length -1] === '/'){

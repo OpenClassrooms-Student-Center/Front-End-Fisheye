@@ -1,3 +1,7 @@
+    /**
+     * 
+     * @returns {photographers} la map des photographes, données traitées 
+     */
     async function getPhotographers() {
         new BaseURL
         const photographersApi = new PhotographersApi(BaseURL.base+"data/photographers.json")
@@ -20,8 +24,9 @@
     };
 
     async function init() {
-        // Récupère les datas des photographes
+        // Récupère et traite les datas des photographes
         const { photographers } = await getPhotographers();
+        // Et les affiche
         displayData(photographers);
     };
     

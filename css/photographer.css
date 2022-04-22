@@ -42,7 +42,9 @@
     flex-direction: column;
 }
 
-
+.photograph-header h2 {
+  display: none;
+}
 .photograph-header h1{
     color: #D3573C;
     font-size: 64px;
@@ -334,7 +336,7 @@ color: #911C1C;
     width: 200px;
     border: none;
     padding: 0;
-    /* font-family: Arial; */
+    font-family: "DM Sans", sans-serif;
   }
   
   .custom-select select {
@@ -395,7 +397,8 @@ color: #911C1C;
   /* .select-items div:focus, */
   .select-items button:hover,
   .select-items div:hover, .same-as-selected {
-    background-color: rgba(0, 0, 0, 0.1);
+    /* background-color: rgba(0, 0, 0, 0.1); */
+    background-color: #DB8876;
   }
   
 

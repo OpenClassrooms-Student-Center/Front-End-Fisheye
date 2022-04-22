@@ -16,7 +16,11 @@ class TotalLikes{
         return this._total
     }
 }
-
+/**
+ * Factory  du total des likes et du prix par jour du photographe
+ * @param {*} price 
+ * @returns {UserDivDOM} : render de la DIV associée
+ */
 function TotalLikesFactory(price)
 {
     const pricePerDay = price

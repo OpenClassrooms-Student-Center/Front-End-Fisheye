@@ -1,9 +1,20 @@
+/**
+ * Classe Singleton de gestion de la liste des medias
+ * 
+ */
 class MediasList {
+    /**
+     * 
+     * @param {*} mediasList : liste des medias
+     * @param {*} tri : tri, par défaut "Popularité" (descendant)
+     * @returns 
+     */
     constructor(mediasList,tri = "Popularité"){
         if (MediasList.exists) {
             return MediasList.instance
         }
         this._mediasList = mediasList
+        // Le constructeur initialise le tri (par défaut "Popularité")
         this._tri = tri
         this.sort(this._tri)
         this._mediasSection = document.querySelector(".medias_section")
@@ -12,15 +23,23 @@ class MediasList {
         return this
     }
 
+    /**
+     * Le tri des medias
+     * @param {*} tri 
+     * @returns 
+     */
     sort(tri){
         switch(tri){
+            // Tri descendant
             case "Popularité":
                 this._mediasList = Array.from(this._mediasList).sort((a, b) => b.counter.count - a.counter.count)
                 break
+            // Tri descendant
             case "Date":
                 this._mediasList = Array.from(this._mediasList).sort(
                     (a, b) => (b.date > a.date)?1:-1)
                 break
+            // Tri ascendant
             case "Titre":
                 this._mediasList = Array
                         .from(this._mediasList)
@@ -30,10 +49,16 @@ class MediasList {
         return this._mediasList        
     }
 
+    /**
+     * le tableau des medias
+     */
     get mediasList(){
         return this._mediasList
     }
 
+    /**
+     * render de la liste des medias
+     */
     render(){
         this._mediasSection.innerHTML = ""
         this._mediasList.forEach((media,index) => {
@@ -42,6 +67,12 @@ class MediasList {
         });
     
     }
+
+    /**
+     * Tri + rendu
+     * @param {*} tri 
+     * @returns 
+     */
     sortAndRender(tri){
         if(this._tri === tri){
             return
@@ -51,6 +82,12 @@ class MediasList {
         this.render()
     }
 
+    /**
+     * 
+     * @param {*} e 
+     * @param {*} arrow_left : élément HTML
+     * @param {*} arrow_right : élément HTML
+     */
     LeftAction(e,arrow_left,arrow_right){
         if(this._indexMedia > 0) {
             this._indexMedia--
@@ -66,7 +103,12 @@ class MediasList {
         }
 
     }
-
+    /**
+     * 
+     * @param {*} e : l'évènement
+     * @param {*} arrow_left : élément HTML
+     * @param {*} arrow_right : élément HTML
+     */
     RightAction(e,arrow_left,arrow_right) {
         if((this._indexMedia+1) < this._mediasList.length) {
             this._indexMedia++
@@ -81,6 +123,10 @@ class MediasList {
         }
     }
 
+    /**
+     * 
+     * @param {*} i : index dans le tableau des medias
+     */
     CarousselRender(i=0){
         this._indexMedia = i
         this.CarousselRenderMedia(this._indexMedia)
@@ -89,17 +135,16 @@ class MediasList {
         const arrow_left = document.querySelector(".arrow-left")
         const arrow_right = document.querySelector(".arrow-right")
 
+        // Gestion du clavier dans le Caroussel
+        // Tab et Shift+Tab ainsi que return restent utilisables
         carousselEl.addEventListener('keyup', e => {
-            console.log(e.code)
             switch(e.code){
                 case "ArrowLeft":
-                    console.log("Left")
                     this.LeftAction(e,arrow_left,arrow_right)
                     arrow_left.focus()
                     break;
 
                 case "ArrowRight":
-                    console.log("Right")
                     this.RightAction(e,arrow_left,arrow_right)
                     arrow_right.focus()
                     break;
@@ -107,10 +152,9 @@ class MediasList {
                 case "ArrowUp":
                     document.querySelector(".close_img").focus()
                     break;
-                    
+
                 case "Escape":
                     closeCaroussel()
-                    console.log("Escape")
                     break;
 
                 default:
@@ -121,9 +165,36 @@ class MediasList {
         arrow_left.addEventListener('click',e => this.LeftAction(e,arrow_left,arrow_right))
         arrow_right.addEventListener('click',e => this.RightAction(e,arrow_left,arrow_right))
     }
+
+    /**
+     * 
+     * @param {*} indexMedia : l'index du media dans le tableau des medias
+     */
     CarousselRenderMedia(indexMedia){
         this._indexMedia = indexMedia
         const lightBox = document.querySelector(".media-caroussel-render")
         lightBox.innerHTML=this._mediasList[this._indexMedia].LightBoxRender()
     }
+
+    /**
+     * @returns
+     */
+    get indexMedia(){
+        return this._indexMedia
+    }
 }
+
+function closeCaroussel(){
+    // les éléments qui doivent être à nouveau visible (donc navigables)
+    document.querySelector(".medias_caroussel").classList.toggle("visible")
+    document.querySelector(".medias_caroussel").classList.toggle("invisible")
+    document.querySelector(".header-render").classList.toggle("visible")
+    document.querySelector(".header-render").classList.toggle("invisible")
+    document.querySelector(".opacity-if-modale").classList.toggle("visible")
+    document.querySelector(".opacity-if-modale").classList.toggle("invisible")
+    // On ferme le caroussel et on met le focus sur la dernière image/vidéo vue
+    mL = new MediasList()
+    // On met le focus sur l'élément qui était affiché dans le caroussel
+    document.querySelector("#to-caroussel-"+mL.mediasList[mL.indexMedia].id).focus()
+}
+

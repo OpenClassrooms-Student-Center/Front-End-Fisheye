@@ -11,14 +11,15 @@
   </head>
   <body>
     <header class="header-logo hover_photograf_css header-render visible">
-      <a class="link-to-home"><img src="assets/images/logo.png" class="logo" alt="Fisheye"/></a>
+      <a class="link-to-home"><img src="assets/images/logo.png" class="logo" alt="Retour à la liste des photographes Fisheye"/></a>
     </header>
     <main id="main">
       <div class="opacity-if-modale visible">
         <section class="photograph-header">
+          <h2>Photographe</h2>
           <button class="contact_button hover_css" onclick="displayModal()">Contactez-moi</button>
         </section>
-        <section class="filter" aria-label="filter">
+        <section id="filter" class="filter" aria-label="filter">
           <h3>Trier par</h3>
           <label for="sort-select">Trier par</label>
           <div class="custom-select">
@@ -36,11 +37,11 @@
           <h4>Likes and price section</h4>
         </section>
       </div>
-      <section id="contact_modal" role=”dialog”>
-        <div class="modal">
+      <section id="contact_modal">
+        <div class="modal" role=”dialog” aria-labelledby="dialogTitle">
           <header>
             <div class="title-form">
-              <h2>Contactez-moi</h2>
+              <h2 id="dialogTitle">Contactez-moi</h2>
               <button id="btn-close-form" onclick="closeModal()" alt="revenir à la page du photographe"><img src="assets/icons/close.svg" alt="Close"/></button>      
             </div>
             <h3>Hello</h3>
@@ -89,15 +90,15 @@
       <section class="medias_caroussel invisible">
         <h4>Caroussel section</h4>
         <div class="arrowdiv">
-          <button class="arrow arrow-left"><div></div></button>
+          <button class="arrow arrow-left" aria-label="Media précédent"><div></div></button>
       </div>
         <div class="media-caroussel-render"></div>
         <div class="controls-right">
           <div class="closable-div">
-            <button class="close_img" onclick="closeCaroussel()"><div></div></button>
+            <button class="close_img" onclick="closeCaroussel()" aria-label="Sortir du caroussel"><div></div></button>
           </div>
           <div class="arrowdiv">
-            <button class="arrow arrow-right"><div></div></button>
+            <button class="arrow arrow-right" aria-label="Media suivant"><div></div></button>
           </div>
         </div>
       </section>

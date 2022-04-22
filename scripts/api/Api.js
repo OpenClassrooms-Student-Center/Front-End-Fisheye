@@ -23,13 +23,20 @@ class PhotographersApi extends Api {
     constructor(url) {
         super(url)
     }
-
+    /**
+     * 
+     * @returns {photographers} Returns a json object containing the photographers and their properties 
+     */
     async getPhotographers() {
         const ret = await this.get()
 
         return ret.photographers
     }
 
+    /**
+     * 
+     * @returns {[photographers,media]} Returns an array containing the photographers JSON object AND the media JSON object
+     */
     async getPhotographersAndMedias() {
         const ret = await this.get()
     

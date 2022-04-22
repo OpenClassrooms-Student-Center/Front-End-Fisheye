@@ -1,4 +1,8 @@
-
+/**
+ * 
+ * @param {*} data du photographe
+ * @returns 
+ */
 function photographerFactory(data) {
     
 
@@ -18,7 +22,11 @@ function photographerFactory(data) {
 
         return img
     }
-
+    /**
+     * 
+     * @param {*} level : niveau de titre 
+     * @returns {hlevel} : élément titre avec le nom du photographe
+     */
     function getName(level=2){
         // Nom du photographe
         const hlevel = document.createElement( 'h'+level );
@@ -49,9 +57,18 @@ function photographerFactory(data) {
         return pprice
     }
 
+    /**
+     * La modale de contact contient aussi le nom du photographe
+     */
     function AddingNameInModalContact(){
         document.querySelector(".modal header h3").textContent = name;
     }
+
+    /**
+     * 
+     * @param {*} param0 
+     * @returns {article} : l'article pour le header du photographe
+     */
     function getUniqPhotograph({article,img,h2,citycountry,slogan}){
         // les champs du header
         div = document.createElement( 'div' );
@@ -65,6 +82,12 @@ function photographerFactory(data) {
         return article
     }
     
+    /**
+     * 
+     * @param {*} header 
+     * si false: vignette(index.html), si true: header(photographer.html)
+     * @returns {article} : élément html
+     */
     function getUserCardDOM(header=false) {
         let article
         if(header){
