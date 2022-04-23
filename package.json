@@ -1,0 +1,19 @@
+{
+  "name": "ocr_projet_06_front-end-fisheye",
+  "version": "1.0.0",
+  "description": "projet 06 OCR",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/POLETTISTE/OCR_PROJET_06_Front-End-Fisheye.git"
+  },
+  "author": "POLETTISTE",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/POLETTISTE/OCR_PROJET_06_Front-End-Fisheye/issues"
+  },
+  "homepage": "https://github.com/POLETTISTE/OCR_PROJET_06_Front-End-Fisheye#readme"
+}
