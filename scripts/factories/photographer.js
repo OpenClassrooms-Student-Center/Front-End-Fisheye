@@ -17,9 +17,10 @@ function photographerFactory(data) {
         const quote = article.querySelector(".quote");
         quote.textContent = data.tagline;
         const price = article.querySelector(".price");
-        price.textContent =`${data.price}€/jour`
+        price.textContent =`${data.price}€ /jour`
         document.querySelector(".photographer_section").appendChild(article);
-        return (article);
+
+        
     }
     return { name, picture, getUserCardDOM }
 }

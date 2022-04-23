@@ -14,7 +14,9 @@ function hydratePresentationFactory(data) {
         location.textContent = data.city;
         const quote = page.querySelector(".photographer__quote");
         quote.textContent = data.tagline;
-        document.querySelector("#main").appendChild(page);
+        console.log(page)
+        document.querySelector(".presentation__section").appendChild(page);
+        
     }
    
 }

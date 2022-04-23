@@ -10,21 +10,24 @@
   </head>
   <body>
     <header>
-      <img src="assets/images/logo.png" class="logo" />
+      <a href="/index.html">
+        <img src="assets/images/logo.png" class="logo" />
+      </a>
     </header>
     <main id="main">
-      <template id="photographer__template">
-        <div class="photograph-header">
-          <div class="photographer__presentation">
-            <h1 class="photographer__name">name</h1>
-            <span class="photographer__location">localisation</span>
-            <span class="photographer__quote">citation</span>
-            
+      <section class="presentation__section">
+        <template id="photographer__template">
+          <div class="photograph-header">
+            <div class="photographer__presentation">
+              <h1 class="photographer__name">name</h1>
+              <span class="photographer__location">localisation</span>
+              <span class="photographer__quote">citation</span>
+            </div>
+            <button class="contact_button" onclick="displayModal()">Contactez-moi</button>
+            <img class="photographer__profile avatar" src="#" alt="profile">
           </div>
-          <button class="contact_button" onclick="displayModal()">Contactez-moi</button>
-          <img class="photographer__profile avatar" src="#" alt="profile">
-        </div>
-      </template>
+        </template>
+      </section>
 
       <div class="filter-condition">
         <span>filter par :</span>
@@ -59,7 +62,7 @@
         <i class="fas fa-chevron-right"></i>
       </div>
       <div class="close">
-        <span>X</span>
+        <i class="fas fa-times"></i>
       </div>
       
     </div>
