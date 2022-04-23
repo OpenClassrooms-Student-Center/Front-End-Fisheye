@@ -39,6 +39,8 @@ class Photographer {
     }
 }
 
-newPhotographer = new Photographer("Mimi Keel", 243, "London", "UK", "Voir le beau dans le quotidien", 400, "MimiKeel.jpg")
+// Creation d'un objet
 
-console.log(newPhotographer)
+newPhotographer = new Photographer("Mimi Keel", 243, "London", "UK", "Voir le beau dans le quotidien", 400, "MimiKeel.jpg");
+
+console.log(newPhotographer);
