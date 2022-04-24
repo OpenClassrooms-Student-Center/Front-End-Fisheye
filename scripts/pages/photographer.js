@@ -40,6 +40,6 @@ class Photographer {
 }
 
 // Creation d'un objet
-// newPhotographer = new Photographer("Mimi Keel", 243, "London", "UK", "Voir le beau dans le quotidien", 400, "MimiKeel.jpg")
+newPhotographer = new Photographer("Mimi Keel", 243, "London", "UK", "Voir le beau dans le quotidien", 400, "MimiKeel.jpg")
 
-// console.log(newPhotographer)
+console.log(newPhotographer)
