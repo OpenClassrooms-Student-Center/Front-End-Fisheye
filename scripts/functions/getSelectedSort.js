@@ -1,4 +1,4 @@
-import builderCard from "../functions/builderCard.js";
+
 
 export default function getSelectedSort(data, name) {
     const selectedSort = document.querySelector("#select")
