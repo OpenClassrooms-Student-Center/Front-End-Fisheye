@@ -85,7 +85,7 @@ h1 {
 .hover_css:hover {
     color: black;
     background-color: #DB8876;
-    border: solid 1px;
+    border: solid 1px black;
 }
 
 @keyframes photo-img {

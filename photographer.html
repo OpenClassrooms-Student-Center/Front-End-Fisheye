@@ -17,11 +17,11 @@
       <div class="opacity-if-modale visible">
         <section class="photograph-header">
           <!-- <h1>Photographe</h1> -->
-          <button class="contact_button hover_css" onclick="displayModal()" alt="Contact me">Contactez-moi</button>
+          <button class="contact_button hover_css" onclick="displayModal()" aria-label="Contact me">Contactez-moi</button>
         </section>
         <section id="filter" class="filter" aria-label="filter">
           <h3>Trier par</h3>
-          <label for="sort-select" alt="Order by">Trier par</label>
+          <label for="sort-select" aria-label="Order by">Trier par</label>
           <div class="custom-select">
             <select name="sort" id="sort-select">
               <option value="0">Popularité</option>
@@ -42,7 +42,7 @@
           <header>
             <div class="title-form">
               <h2 id="dialogTitle">Contactez-moi</h2>
-              <button id="btn-close-form" class="no_tabindex" onclick="closeModal()" alt="revenir à la page du photographe"><img src="assets/icons/close.svg" alt="Close"/></button>      
+              <button id="btn-close-form" class="no_tabindex" onclick="closeModal()" aria-label="revenir à la page du photographe"><img src="assets/icons/close.svg" alt="Close"/></button>      
             </div>
             <h3>Hello</h3>
           </header>
@@ -98,15 +98,15 @@
       <section class="medias_caroussel invisible">
         <h4>Caroussel section</h4>
         <div class="arrowdiv">
-          <button class="arrow arrow-left" aria-label="Previous image"><div></div></button>
+          <button class="arrow arrow-left hover_caroussel_css" aria-label="Previous image"></button>
       </div>
         <div class="media-caroussel-render"></div>
         <div class="controls-right">
           <div class="closable-div">
-            <button class="close_img" onclick="closeCaroussel()" aria-label="Close dialog"><div></div></button>
+            <button class="close_img hover_caroussel_css" onclick="closeCaroussel()" aria-label="Close dialog"></button>
           </div>
           <div class="arrowdiv">
-            <button class="arrow arrow-right" aria-label="Next image"><div></div></button>
+            <button class="arrow arrow-right hover_caroussel_css" aria-label="Next image"></button>
           </div>
         </div>
       </section>
