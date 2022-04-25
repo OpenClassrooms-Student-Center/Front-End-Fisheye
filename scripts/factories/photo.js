@@ -1,10 +1,17 @@
 import sliderFactory from "../factories/slider.js";
 import photoBuild from "../model/CardPhoto.js";
+import videoBuild from "../model/CardVideo.js";
 
 function hydratePhotoFactory(media, sortMedia, name) {
     // const pathName = name.split(/-| /).join("")
     // const photoPath = `../assets/Sample_Photos/${pathName}/${dataPhoto.image}`;
-    photoBuild(media, sortMedia, name)
+    
+    if (media.image) {
+        photoBuild(media, sortMedia, name)
+    } else if (media.video) {
+        videoBuild(media, sortMedia, name)
+    }
+   
     
 
 
