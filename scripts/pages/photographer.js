@@ -64,11 +64,12 @@ function addEventListenersToCards () {
     })
     // add eventListener on enter
     openLightbox.parentNode.addEventListener('keydown', (e) => {
+      //const buttonLike = openLightbox.querySelector('.fa-heart')
       const keyCode = e.keyCode ? e.keyCode : e.which
       // Enter
       const stringId = e.target.id
       const mediaId = Number(stringId.replace('mediaCard--', ''))
-      if (keyCode === 13) displayMediaInLightboxFromId (mediaId)
+      if (keyCode === 13 && !e.target.classList.contains('fa-heart')) displayMediaInLightboxFromId (mediaId)
     })
   })
 
@@ -99,10 +100,16 @@ function modalUtilities () {
   form.addEventListener('submit', (e) => {
     // Can use 'form' or 'e.target'
     const formData = new FormData(e.target)
-    // Use reduce
-    for (const [key, value] of formData.entries()) {
-      console.log((`${key}: ${value}`))
-    }
+    // Use reduce with object decomposition
+    console.log(
+      [...formData.entries()].reduce(
+        (previousValue, currentValue) => {
+          previousValue[currentValue[0]] = currentValue[1]
+          return previousValue
+        },
+        {}
+      )
+    );
     form.reset()
   })
 }
@@ -225,7 +232,17 @@ function sortMediasBy (filter) {
 function likesUtilities (mediaId) {
   const likeButton = document.querySelector(`#likes--${mediaId}`)
   likeButton.addEventListener('click', () => {
-    const currentMediaIndex = currentPhotographerMedias.findIndex((media) => media.id === mediaId)
+    swapMediaLike (mediaId)
+  })
+  likeButton.addEventListener('keydown', e => {
+    const keyCode = e.keyCode ? e.keyCode : e.which
+    // Enter
+    if (keyCode === 13) swapMediaLike (mediaId)
+  })
+}
+
+function swapMediaLike (mediaId) {
+  const currentMediaIndex = currentPhotographerMedias.findIndex((media) => media.id === mediaId)
     const currentMediaCardNode = document.querySelector(`#mediaCard--${mediaId}`)
     const currentMedia = currentPhotographerMedias[currentMediaIndex]
     currentMedia.swapLiked ()
@@ -248,7 +265,6 @@ function likesUtilities (mediaId) {
         }
       }
     }
-  })
 }
 
 function swapNodes (nodeA, nodeB) {
