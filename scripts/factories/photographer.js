@@ -31,7 +31,7 @@ function photographerFactory(data) {
         // Nom du photographe
         const hlevel = document.createElement( 'h'+level );
         hlevel.textContent = name;
-        return hlevel       
+        return hlevel
     }
 
     function getCityCountry(){
@@ -69,11 +69,11 @@ function photographerFactory(data) {
      * @param {*} param0 
      * @returns {article} : l'article pour le header du photographe
      */
-    function getUniqPhotograph({article,img,h2,citycountry,slogan}){
+    function getUniqPhotograph({article,img,hname,citycountry,slogan}){
         // les champs du header
         div = document.createElement( 'div' );
         div.classList.add("photograph")
-        div.appendChild(h2)
+        div.appendChild(hname)
         div.appendChild(citycountry)
         div.appendChild(slogan)
         article.appendChild(div)
@@ -108,7 +108,7 @@ function photographerFactory(data) {
         const img = getImg()
 
         // Nom du photographe
-        const h2 = getName((header)?1:2)
+        const hname = getName((header)?1:2)
 
         /* City, Country */
         const pcitycountry = getCityCountry()
@@ -123,7 +123,7 @@ function photographerFactory(data) {
             article = getUniqPhotograph({
                 article:article,
                 img:img,
-                h2:h2,
+                hname:hname,
                 citycountry:pcitycountry,
                 slogan:ptagline
             })
@@ -133,7 +133,7 @@ function photographerFactory(data) {
             // modification par rapport à la version initiale:
             // le lien englobe la photo et le titre
             photographerLink.appendChild(img);
-            photographerLink.appendChild(h2);
+            photographerLink.appendChild(hname);
             // les nouveaux champs à afficher mais hors lien de redirection
             article.appendChild(pcitycountry)
             article.appendChild(ptagline)

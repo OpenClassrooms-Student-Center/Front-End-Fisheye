@@ -44,9 +44,9 @@
     flex-direction: column;
 }
 
-.photograph-header h2 {
+/* .photograph-header h2 {
   display: none;
-}
+} */
 .photograph-header h1{
     color: #D3573C;
     font-size: 64px;
