@@ -38,8 +38,3 @@ class Photographer {
         return `assets/photographers/${this._portrait}`;
     }
 }
-
-// Creation d'un objet
-newPhotographer = new Photographer("Mimi Keel", 243, "London", "UK", "Voir le beau dans le quotidien", 400, "MimiKeel.jpg")
-
-console.log(newPhotographer)
