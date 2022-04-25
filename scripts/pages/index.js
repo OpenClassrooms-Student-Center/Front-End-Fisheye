@@ -11,11 +11,10 @@ const photographers = [];
             .then(function(value) {
                 // On ajouter les données de l'API dans le tableau photographers
                 photographers.push(value);
-
             })
             .catch(function(err) {
                 // Une erreur est survenue
-                console.log("error in the function getPhotographers()")
+                console.log("error in the function getPhotographers()"); 
             });
     };
 

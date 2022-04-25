@@ -1,4 +1,5 @@
-//Mettre le code JavaScript lié à la page photographer.html
+// CONSTRUCTOR PATTERN
+
 class Photographer {
     constructor(name, id, city, country, tagline, price, portrait) {
         this._name = name;

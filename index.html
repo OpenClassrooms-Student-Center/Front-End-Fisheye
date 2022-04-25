@@ -1,7 +1,7 @@
 <!-- page qui affiche tous les avatars des photographes -->
 
 <!DOCTYPE html>
-<html>
+<html lang="fr">
   <head>
     <link href="css/style.css" rel="stylesheet" type="text/css" />
     <meta charset="utf-8">
@@ -11,7 +11,7 @@
   </head>
   <body>
     <header>
-        <img src="assets/images/logo.png" class="logo" />
+        <a href="index.html"><img src="assets/images/logo.png" class="logo" aria-label="retour à la page d'accueil" aria-current="page"/></a>
         <h1>Nos photographes</h1>
     </header>
     <main id="main">
@@ -19,6 +19,6 @@
     </main>
     <script src="scripts/factories/Photographer.js"></script>
     <script src="scripts/pages/index.js"></script>
-    <script src="scripts/pages/photographer.js"></script>
+    <script src="scripts/models/photographer.js"></script>
   </body>
 </html>

@@ -1,3 +1,28 @@
+/* HOME PAGE */
+.photographer__avatar {
+    text-align: center;
+}
+
 .photographer__avatar-picture {
     border-radius: 50%;
+}
+
+.photographer__infos {
+    text-align: center;
+}
+
+.photographer__infos-city-country {
+    color: #901C1C;
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+.photographer__infos-tagline {
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+.photographer__infos-price {
+    margin-top: 0;
+    margin-bottom: 0;
 }
