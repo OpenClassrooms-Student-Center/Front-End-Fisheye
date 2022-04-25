@@ -34,4 +34,32 @@ class Media {
       likeButton.classList.remove('fa-regular')
     }
   }
+
+  getMediaCardDOM () {
+    const heartValue = this.isLiked ? 'fa-solid' : 'fa-regular'
+    return document.createRange().createContextualFragment(`
+      <div class="mediaCard" id="mediaCard--${this.id}" tabindex="0">
+        ${this.getSpecificDOM()}
+        <div class="mediaCard__infos">
+          <p class="mediaCard__infos--title">
+          ${this.title}
+          </p>
+          <p class="mediaCard__infos--likes">
+            <span id="totalMedialikes--${this.id}">${this.likes}</span> <i id="likes--${this.id}" class="${heartValue} fa-heart" aria-label="like" tabindex="0" ></i>
+          </p>
+        </div>
+      </div>
+    `)
+  }
+
+  getMediaLightboxDOM () {
+    return document.createRange().createContextualFragment(`
+      <div class="lightbox__mediaContent" aria-label="${this.title}, vue rapprochée">
+        ${this.getSpecificLightboxDOM()}
+      </div>
+      <div class="lightbox__mediaTitle">
+        <h2>${this.title}</h2>
+      </div>
+    `)
+  }
 }

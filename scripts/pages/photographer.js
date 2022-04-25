@@ -8,17 +8,20 @@ let currentFilter = 'filter_popular'
 const lightbox = document.querySelector('#lightbox')
 const closeLightbox = document.querySelector('.close_lightbox')
 const lightboxMediaContent = document.querySelector('.lightbox__content--middleColumn')
+const filterSelectedElement = document.querySelector('.photographMedias__filtersMenu--selected')
+const filterListElement = document.querySelector('.photographMedias__filtersMenu--list')
+const filterItemsElement = document.querySelectorAll('.photographMedias__filtersMenu--list > li')
 
 
 // Display functions
-async function displayPhotographerData () {
+function displayPhotographerData () {
   const photographerSection = document.querySelector('.photographHeader')
 
   const photographerHeaderDOM = currentPhotographer.getPhotographerHeaderDOM()
   photographerSection.appendChild(photographerHeaderDOM)
 }
 
-async function displayPhotographerComplementaryData () {
+function displayPhotographerComplementaryData () {
   const photographerComplementarySection = document.querySelector('.photographComplementary')
 
   currentPhotographerMedias.forEach(media => {
@@ -28,7 +31,7 @@ async function displayPhotographerComplementaryData () {
   photographerComplementarySection.appendChild(photographerComplementaryDOM)
 }
 
-async function displayMediasCards () {
+function displayMediasCards () {
   const mediaSection = document.querySelector('.mediaCards')
   mediaSection.textContent = ''
   currentPhotographerMedias.forEach(media => {
@@ -44,16 +47,28 @@ function displayMediaInLightbox (media) {
   lightboxMediaContent.appendChild(media.getMediaLightboxDOM())
 }
 
+function displayMediaInLightboxFromId (mediaId) {
+  lighboxCurrentMediaId = mediaId
+  const selectedMedia = currentPhotographerMedias.filter((media) => media.id === lighboxCurrentMediaId)[0]
+  displayMediaInLightbox(selectedMedia)
+  lightbox.showModal()
+}
+
 // Utilities functions
 function addEventListenersToCards () {
   const openLightboxs = document.querySelectorAll('.open_lightbox')
   
   openLightboxs.forEach((openLightbox) => {
     openLightbox.addEventListener('click', (e) => {
-      lighboxCurrentMediaId = Number(e.target.id)
-      const selectedMedia = currentPhotographerMedias.filter((media) => media.id === lighboxCurrentMediaId)[0]
-      displayMediaInLightbox(selectedMedia)
-      lightbox.showModal()
+      displayMediaInLightboxFromId (Number(e.target.id))
+    })
+    // add eventListener on enter
+    openLightbox.parentNode.addEventListener('keydown', (e) => {
+      const keyCode = e.keyCode ? e.keyCode : e.which
+      // Enter
+      const stringId = e.target.id
+      const mediaId = Number(stringId.replace('mediaCard--', ''))
+      if (keyCode === 13) displayMediaInLightboxFromId (mediaId)
     })
   })
 
@@ -62,7 +77,7 @@ function addEventListenersToCards () {
   })
 }
 
-async function modalUtilities () {
+function modalUtilities () {
   const mainSection = document.querySelector('main')
 
   const modalDOM = currentPhotographer.getPhotographerModalDOM()
@@ -92,11 +107,12 @@ async function modalUtilities () {
   })
 }
 
-async function lightboxUtilities () {
+function lightboxUtilities () {
   const nextSlideButton = document.querySelector('.lightbox__rightButton')
   const previousSlideButton = document.querySelector('.lightbox__leftButton')
+  const lightbox = document.querySelector('#lightbox')
 
-  nextSlideButton.addEventListener('click', () => {
+  const nextSlide = () => {
     // Check if current item is last and define next item
     const lighboxCurrentMediaIndex = currentPhotographerMedias.findIndex((media) => media.id === lighboxCurrentMediaId)
     let nextMediaIndex
@@ -109,12 +125,13 @@ async function lightboxUtilities () {
 
     // Display next item
     displayMediaInLightbox(nextMedia)
-
     // Define current item
     lighboxCurrentMediaId = nextMedia.id
-  })
+    // Focus
+    nextSlideButton.focus()
+  }
 
-  previousSlideButton.addEventListener('click', () => {
+  const previousSlide = () => {
     // Check if current item is first and define next item
     const lighboxCurrentMediaIndex = currentPhotographerMedias.findIndex((media) => media.id === lighboxCurrentMediaId)
     let nextMediaIndex
@@ -127,30 +144,73 @@ async function lightboxUtilities () {
 
     // Display next item
     displayMediaInLightbox(nextMedia)
-
     // Define current item
     lighboxCurrentMediaId = nextMedia.id
+    // Focus
+    previousSlideButton.focus()
+  }
+
+  nextSlideButton.addEventListener('click', nextSlide)
+  previousSlideButton.addEventListener('click', previousSlide)
+  // Enter on next and previous button
+  nextSlideButton.addEventListener('keydown', e => {
+    const keyCode = e.keyCode ? e.keyCode : e.which
+    // Enter
+    if (keyCode === 13) nextSlide ()
+  })
+  previousSlideButton.addEventListener('keydown', e => {
+    const keyCode = e.keyCode ? e.keyCode : e.which
+    // Enter
+    if (keyCode === 13) previousSlide ()
+  })
+  // Left and right arrow
+  lightbox.addEventListener('keydown', e => {
+    const keyCode = e.keyCode ? e.keyCode : e.which
+    if (lightbox.hasAttribute('open')) {
+      // Left
+      if (keyCode === 37) previousSlide ()
+      // Right
+      if (keyCode === 39) nextSlide ()
+    }
   })
 }
 
 function filterUtilities () {
-  const filterSelectedElement = document.querySelector('.photographMedias__filtersMenu--selected')
-  const filterListElement = document.querySelector('.photographMedias__filtersMenu--list')
-  const filterItemsElement = document.querySelectorAll('.photographMedias__filtersMenu--list > li')
   filterItemsElement.forEach(element => {
     element.addEventListener('click', (e) => {
-      let currentFilterElement = e.target
-      sortMediasBy(currentFilterElement.id)
-      filterSelectedElement.innerHTML = `${currentFilterElement.textContent}<i class="fa-solid fa-chevron-down"></i>`
-      filterSelectedElement.classList.toggle('displayNone')
-      filterListElement.classList.toggle('displayNone')
-      displayMediasCards ()
+      selectFilter (e)
+    })
+    element.addEventListener('keydown', e => {
+      const keyCode = e.keyCode ? e.keyCode : e.which
+      // Enter
+      if (keyCode === 13) selectFilter (e)
     })
   })
   filterSelectedElement.addEventListener('click', () => {
-    filterSelectedElement.classList.toggle('displayNone')
-    filterListElement.classList.toggle('displayNone')
+    filterToggleDisplay ()
   })
+}
+
+function selectFilter (event) {
+  let currentFilterElement = event.target
+  sortMediasBy (currentFilterElement.id)
+  // Adding icone
+  filterSelectedElement.innerHTML = `${currentFilterElement.textContent}<i class="fa-solid fa-chevron-down"></i>`
+  // Remove all sibbling aria-selected attribut
+  filterItemsElement.forEach(element => element.removeAttribute('aria-selected'))
+  // Add aria-selected on current element
+  currentFilterElement.setAttribute('aria-selected', true)
+  filterToggleDisplay ()
+  displayMediasCards ()
+}
+
+function filterToggleDisplay () {
+  filterSelectedElement.classList.toggle('displayNone')
+  filterListElement.classList.toggle('displayNone')
+  filterSelectedElement.setAttribute(
+    'aria-expanded',
+    filterSelectedElement.getAttribute('aria-expanded') === 'false'
+  )
 }
 
 function sortMediasBy (filter) {

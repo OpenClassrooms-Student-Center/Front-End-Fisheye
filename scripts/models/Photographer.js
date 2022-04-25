@@ -18,7 +18,7 @@ class Photographer {
     return document.createRange().createContextualFragment(`
       <article class="photographerCard">
         <a class="photographerCard__link" href="photographer.html?id=${this.id}" title="Lien vers le photographe ${this.name}">
-          <img class="photographerCard__img" src="${this.picture}" alt="">
+          <img class="photographerCard__img" src="${this.picture}" alt="${this.name}">
           <h2 class="photographerCard__title">${this.name}</h2>
         </a>
         <div class="photographerCard__infos">
@@ -43,7 +43,7 @@ class Photographer {
   getPhotographerContact () {
     return `
     <div class="photographHeader__contact">
-    <button class="contact_button">Contactez-moi</button>
+      <button class="contact_button" aria-label="Contactez-moi">Contactez-moi</button>
     </div>
     `
   }
@@ -51,7 +51,7 @@ class Photographer {
   getPhotographerImg () {
     return `
       <div class="photographHeader__img">
-        <img class="photographHeader__img" src="${this.picture}" alt="">
+        <img class="photographHeader__img" src="${this.picture}" alt="${this.name}">
       </div>
     `
   }
@@ -86,29 +86,29 @@ class Photographer {
 
   getPhotographerModalDOM () {
     return document.createRange().createContextualFragment(`
-      <dialog class="modal" id="contact_modal">
+      <dialog class="modal" id="contact_modal" aria-labelledby="modalTitle">
           <header>
-            <h2>Contactez-moi<br>${this.name}</h2>
-            <img class="close_modal" src="assets/icons/close.svg" alt="Fermez la modale" />
+            <h2 id="modalTitle">Contactez-moi<br>${this.name}</h2>
+            <img class="close_modal" src="assets/icons/close.svg" alt="Fermez la modale" tabindex="0" />
           </header>
           <form id="form" method="dialog">
             <div>
-              <label for="first">Prénom</label>
-              <input type="text" id="first" name="first" />
+              <label id="label_first" for="first">Prénom</label>
+              <input type="text" id="first" name="first" aria-labelledby="label_first" />
             </div>
             <div>
-              <label for="last">Nom</label>
-              <input type="text" id="last" name="last" />
+              <label id="label_last" for="last">Nom</label>
+              <input type="text" id="last" name="last" aria-labelledby="label_last" />
             </div>
             <div>
-              <label for="email">Email</label>
-              <input type="email" id="email" name="email" />
+              <label id="label_email" for="email">Email</label>
+              <input type="email" id="email" name="email" aria-labelledby="label_email" />
             </div>
             <div>
-              <label for="message">Votre message</label>
-              <textarea id="message" name="message"></textarea>
+              <label id="label_message" for="message">Votre message</label>
+              <textarea id="message" name="message" aria-labelledby="label_message"></textarea>
             </div>
-            <button class="contact_button">Envoyer</button>
+            <button class="contact_button" aria-label="Envoyer">Envoyer</button>
           </form>
       </dialog>
     `)

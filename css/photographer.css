@@ -367,7 +367,7 @@ form textarea {
     position: relative;
 }
 
-.photographMedias__filtersMenu--list > li:before {
+.photographMedias__filtersMenu--list > li::before {
     content: "";
     position: absolute;
     border-bottom: 1px solid white;
@@ -375,11 +375,12 @@ form textarea {
     bottom : 0;
 }
 
-.photographMedias__filtersMenu--list > li:hover {
-    background-color: var(--secondary-dark-background-color);;
-    color: var(--secondary-dark-text-color);;
-}
-
 .photographMedias__filtersMenu--list > li:last-child:before {
     border: none;
+}
+
+.photographMedias__filtersMenu--list > li:hover,
+.photographMedias__filtersMenu--list > li:focus {
+    background-color: var(--secondary-dark-background-color);   
+    color: var(--secondary-dark-text-color);
 }

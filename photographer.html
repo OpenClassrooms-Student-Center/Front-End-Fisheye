@@ -25,13 +25,13 @@
             Trier par
           </p>
           <div class="photographMedias__filtersMenu">
-            <button class="contact_button photographMedias__filtersMenu--selected">
+            <button id="buttonFilter" class="contact_button photographMedias__filtersMenu--selected" role="button" aria-haspopup="listbox" aria-expanded="false" aria-activedescendant="filter_popular" tabindex="0"  >
               Popularité<i class="fa-solid fa-chevron-down"></i>
             </button>
             <ul class="photographMedias__filtersMenu--list displayNone">
-              <li id="filter_popular">Popularité<i class="fa-solid fa-chevron-up"></i></li>
-              <li id="filter_date">Date</li>
-              <li id="filter_title">Titre</li>
+              <li id="filter_popular" role="listbox" aria-label="Trier par popularité" aria-selected="true" aria-labelledby="buttonFilter" tabindex="0" >Popularité<i class="fa-solid fa-chevron-up"></i></li>
+              <li id="filter_date" role="listbox" aria-label="Trier par date" aria-labelledby="buttonFilter" tabindex="0" >Date</li>
+              <li id="filter_title" role="listbox" aria-label="Trier par titre" aria-labelledby="buttonFilter" tabindex="0" >Titre</li>
             </ul>
           </div>
         </div>
@@ -47,14 +47,14 @@
     <dialog id="lightbox">
       <div class="lightbox__content">
         <div class="lightbox__content--leftColumn">
-          <div class="lightbox__button lightbox__leftButton"></div>
+          <div class="lightbox__button lightbox__leftButton" aria-label="Image précédente" tabindex="0" ></div>
         </div>
         <div class="lightbox__content--middleColumn"></div>
         <div class="lightbox__content--rightColumn">
           <div class="lightbox__closeButton close_lightbox">
-            <img class="close_lightbox" src="assets/icons/close.svg" alt="Fermez le carousel" />
+            <img class="close_lightbox" src="assets/icons/close.svg" alt="Fermez la vue raprochée" tabindex="0" />
           </div>
-          <div class="lightbox__button lightbox__rightButton"></div>
+          <div class="lightbox__button lightbox__rightButton" aria-label="Image suivante" tabindex="0" ></div>
         </div>
       </div>
     </dialog>
