@@ -13,7 +13,7 @@ const photographers = [];
                 console.log(Object.entries(value));
                 console.log(Object.keys(value));
                 console.log(Object.values(value));
-                photographers.push(Object.entries(value));
+                photographers.push(value);
 
             })
             .catch(function(err) {
@@ -32,7 +32,7 @@ const photographers = [];
         console.log('dans la fn displayData');
         const photographersSection = document.querySelector(".photographer_section");
 
-        photographers.forEach((photographer) => {
+        photographers[0]['photographers'].forEach((photographer) => {
             const photographerModel = photographerFactory(photographer);
             const userCardDOM = photographerModel.getUserCardDOM();
             photographersSection.appendChild(userCardDOM);
