@@ -1,36 +1,124 @@
 <!DOCTYPE html>
-<html>
+<html lang="fr">
   <head>
-    <link href="css/style.css" rel="stylesheet" type="text/css" />
     <meta charset="utf-8">
-    <link rel="icon" type="image/png" href="assets/favicon.png">
+    <link href="css/style.css" rel="stylesheet" type="text/css" />
+    <link href="css/photographer.css" rel="stylesheet" type="text/css" />
+    <link rel="icon" type="image/png" href="assets/images/logo.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link href="https://fonts.googleapis.com/css?family=DM+Sans&display=swap" rel="stylesheet">
     <title>Fisheye - photographe </title>
   </head>
   <body>
-    <header>
-      <img src="assets/images/logo.png" class="logo" />
+    <header class="header-logo hover_photograf_css header-render visible">
+      <a class="link-to-home"><img src="assets/images/logo.png" class="logo" alt="Fisheye Home Page"/></a>
     </header>
     <main id="main">
-      <div class="photograph-header">
-        <button class="contact_button" onclick="displayModal()">Contactez-moi</button>
+      <div class="opacity-if-modale visible">
+        <section class="photograph-header">
+          <!-- <h1>Photographe</h1> -->
+          <button class="contact_button hover_css" onclick="displayModal()" aria-label="Contact me">Contactez-moi</button>
+        </section>
+        <section id="filter" class="filter" aria-label="filter">
+          <h3>Trier par</h3>
+          <label for="sort-select" aria-label="Order by">Trier par</label>
+          <div class="custom-select">
+            <select name="sort" id="sort-select">
+              <option value="0">Popularité</option>
+              <option value="1">Date</option>
+              <option value="2">Titre</option>        
+            </select>
+          </div>
+        </section>
+        <section class="medias_section" aria-label="images et vidéos">
+          <h4>Medias section</h4>
+        </section>
+        <section class="likes-and-price" aria-label="Likes et prix par jour">
+          <h4>Likes and price section</h4>
+        </section>
       </div>
+      <section id="contact_modal">
+        <div class="modal" role=”dialog” aria-labelledby="dialogTitle">
+          <header>
+            <div class="title-form">
+              <h2 id="dialogTitle">Contactez-moi</h2>
+              <button id="btn-close-form" class="no_tabindex" onclick="closeModal()" aria-label="revenir à la page du photographe"><img src="assets/icons/close.svg" alt="Close"/></button>      
+            </div>
+            <h3>Hello</h3>
+          </header>
+          <form>
+            <div class="formData">
+            <label id="firstname" for="first">Prénom</label><br>
+            <input
+              class="text-control"
+              type="text"
+              id="first"
+              name="first"
+              aria-describedby="firstname"
+              aria-label="First Name"
+            /><br>
+            </div>
+            <div class="formData">
+              <label id="nomlabel" for="last" aria-label="Nom">Nom</label><br>
+              <input
+                class="text-control"
+                type="text"
+                id="last"
+                name="last"
+                aria-describedby="nomlabel"
+                aria-label="Last Name"
+                /><br>
+            </div>
+            <div class="formData">
+              <label id="emaillabel" for="email">E-mail</label><br>
+              <input
+                class="text-control"
+                type="email"
+                id="email"
+                name="email"
+                aria-describedby="emaillabel"
+                aria-label="Your Email address"
+              /><br>
+            </div>			
+            <div class="formData">
+              <label id="messagelabel" for="message">Votre Message</label>
+              <textarea
+                class="text-control text-area"
+                id="message"
+                name="message"
+                rows="5"
+                aria-describedby="messagelabel"
+                aria-label="Your message"
+              ></textarea>				
+            </div>
+            <button class="contact_button hover_css no_tabindex">Envoyer</button>
+          </form>
+        </div>
+      </section>
+      <section class="medias_caroussel invisible">
+        <h4>Caroussel section</h4>
+        <div class="arrowdiv">
+          <button class="arrow arrow-left hover_caroussel_css" aria-label="Previous image"></button>
+      </div>
+        <div class="media-caroussel-render"></div>
+        <div class="controls-right">
+          <div class="closable-div">
+            <button class="close_img hover_caroussel_css" onclick="closeCaroussel()" aria-label="Close dialog"></button>
+          </div>
+          <div class="arrowdiv">
+            <button class="arrow arrow-right hover_caroussel_css" aria-label="Next image"></button>
+          </div>
+        </div>
+      </section>
     </main>
-    <div id="contact_modal">
-			<div class="modal">
-				<header>
-          <h2>Contactez-moi</h2>
-          <img src="assets/icons/close.svg" onclick="closeModal()" />
-        </header>
-				<form>
-					<div>
-						<label>Prénom</label>
-						<input />
-					</div>
-          <button class="contact_button">Envoyer</button>
-				</form>
-			</div>
-		</div>
-    <script src="/scripts/utils/contactForm.js"></script>
+    <script src="./scripts/utils/mediasList.js"></script>
+    <script src="./scripts/utils/baseurl.js"></script>
+    <script src="./scripts/api/Api.js"></script>
+    <script src="./scripts/utils/selectbox.js"></script>
+    <script src="./scripts/factories/totallikes.js"></script>
+    <script src="./scripts/factories/photographer.js"></script>
+    <script src="./scripts/factories/media.js"></script>
+    <script src="scripts/pages/photographer.js"></script>
+    <script src="scripts/utils/contactForm.js"></script>
   </body>
 </html>
