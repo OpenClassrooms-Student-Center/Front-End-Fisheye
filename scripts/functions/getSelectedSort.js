@@ -30,10 +30,7 @@ export default function getSelectedSort(data, name) {
                 }
             })
         }
-        // sortMedia.forEach((photo) => {
-        //     hydratePhotoFactory(photo, name)
-        // })
-        builderCard(sortMedia, name)
+       
     })
 
     return sortMedia

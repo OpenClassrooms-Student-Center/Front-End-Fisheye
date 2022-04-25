@@ -13,8 +13,6 @@ export default function sliderFactory(firstMedia, sortMedia, name) {
         img.src = photoPath;
         const title = slide.querySelector(".title__slider")
         title.textContent = media.title
-        title.className += " bise"
-        console.log(slide)
         if (firstMedia.id === media.id){
             n = index 
         }
@@ -27,7 +25,6 @@ export default function sliderFactory(firstMedia, sortMedia, name) {
     firstSlide.className += " active"
     
     const nbrSlider = slides.length
-    console.log("length = " + nbrSlider )
 
 
     const back = document.querySelector(".back")
@@ -36,7 +33,6 @@ export default function sliderFactory(firstMedia, sortMedia, name) {
 
     back.addEventListener("click", () => {
         n--
-        console.log(n)
         if (n < 0) { n = nbrSlider - 1 }
         removeActiveImages()
         slides[n].classList.add("active")
@@ -44,7 +40,6 @@ export default function sliderFactory(firstMedia, sortMedia, name) {
 
     next.addEventListener("click", () => {
         n++
-        console.log(n)
         if (n > nbrSlider) { n = 0 }
         removeActiveImages()
         slides[n].classList.add("active")
@@ -54,7 +49,6 @@ export default function sliderFactory(firstMedia, sortMedia, name) {
         removeActiveImages()
         slider.classList.remove("active")
         for ( let i = 0 ; i < nbrSlider; i++) {
-            console.log(slides[i])
             slider.parentNode.removeChild(slides[0])
             
         }
