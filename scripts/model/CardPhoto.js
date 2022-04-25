@@ -3,7 +3,7 @@ import sliderFactory from "../factories/slider.js";
 export default function photoBuild(media, sortMedia, name) {
     const pathName = name.split(/-| /).join("")
     const photoPath = `../assets/Sample_Photos/${pathName}/${media.image}`;
-  
+    console.log(media)
     const article = `
                 <img src=${photoPath} class="photo"></img>
                 <span class="photo__title" >${media.title}</span>
