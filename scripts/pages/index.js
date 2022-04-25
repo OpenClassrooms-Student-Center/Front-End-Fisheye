@@ -1,4 +1,4 @@
-const photographers = [];
+let photographers;
 
     async function getPhotographers() {
 
@@ -8,9 +8,11 @@ const photographers = [];
                 return res.json();
                 }
             })
-            .then(function(value) {
+            .then(function(data) {
                 // On ajouter les données de l'API dans le tableau photographers
-                photographers.push(value);
+                console.log(data);
+                photographers = data.photographers;
+                // photographers.push(value);
             })
             .catch(function(err) {
                 // Une erreur est survenue
@@ -21,8 +23,8 @@ const photographers = [];
     async function displayData(photographers) {
         const photographersSection = document.querySelector(".photographer_section");
 
-        photographers[0]['photographers'].forEach((photographer) => {
-            const photographerModel = photographerFactory(photographer);
+        photographers.forEach((photographer) => {
+            const photographerModel = indexFactory(photographer);
             const userCardDOM = photographerModel.getUserCardDOM();
             photographersSection.appendChild(userCardDOM);
         });

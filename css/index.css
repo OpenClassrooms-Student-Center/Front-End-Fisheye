@@ -1,10 +1,16 @@
 /* HOME PAGE */
 .photographer__avatar {
     text-align: center;
+    border:10px solid rgba(255,255,255,1);
+    
+}
+.photographer__avatar-name {
+    margin:0;
 }
 
 .photographer__avatar-picture {
     border-radius: 50%;
+    object-fit: cover;
 }
 
 .photographer__infos {

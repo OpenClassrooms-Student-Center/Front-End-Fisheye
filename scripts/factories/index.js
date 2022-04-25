@@ -1,4 +1,4 @@
-function photographerFactory(data) {
+function indexFactory(data) {
     const { name, id, city, country, tagline, price, portrait} = data;
     
     const picture = `assets/photographers/${portrait}`;
