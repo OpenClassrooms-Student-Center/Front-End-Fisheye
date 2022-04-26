@@ -1,23 +1,26 @@
+import sliderVideo from "../model/SliderVideo.js";
+import sliderPhoto from "../model/SliderPhoto.js";
+
 export default function sliderFactory(firstMedia, sortMedia, name) {
     console.table(sortMedia)
     console.log(firstMedia)
     let n = 0
     const slider = document.querySelector(".slider")
     sortMedia.forEach((media, index) =>{
-        console.log(media)
-        const pathName = name.split(/-| /).join("")
-        const photoPath = `../assets/Sample_Photos/${pathName}/${media.image}`;
-        const templateElm = document.querySelector(".slider__template");
-        const slide= document.importNode(templateElm.content, true);
-        const img = slide.querySelector(".photo__slider");
-        img.src = photoPath;
-        const title = slide.querySelector(".title__slider")
-        title.textContent = media.title
+        const slide = document.createElement("article")
+        slide.classList.add("slide")
+        if (media.video) {
+            slide.innerHTML = sliderVideo(media, name)   
+
+        } else if (media.image) {
+            slide.innerHTML = sliderPhoto(media, name)   
+        }
+
         if (firstMedia.id === media.id){
             n = index 
         }
         document.querySelector(".slider").appendChild(slide);
-        
+
     })
     slider.classList.add("active")
     const slides = document.querySelectorAll(".slide")
@@ -40,7 +43,7 @@ export default function sliderFactory(firstMedia, sortMedia, name) {
 
     next.addEventListener("click", () => {
         n++
-        if (n > nbrSlider) { n = 0 }
+        if (n >= nbrSlider) { n = 0 }
         removeActiveImages()
         slides[n].classList.add("active")
     })
