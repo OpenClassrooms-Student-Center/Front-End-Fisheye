@@ -1,11 +1,11 @@
 async function getPhotographers() {
     // Retourne le tableau de photographes
-    const photographerApi = new PhotographerApi("/data/photographers.json")
-    return photographerApi.get()
+    const photographerApi = new PhotographerApi('/data/photographers.json')
+    return photographerApi.getPhotographers()
 }
 
 async function displayData(photographers) {
-    const photographersSection = document.querySelector(".photographer_section")
+    const photographersSection = document.querySelector('.photographer_section')
     photographers.forEach((photographer) => {
         const photographerModel = new PhotographerFactory(photographer)
         const userCardDOM = photographerModel.getUserCardDOM()

@@ -7,11 +7,18 @@ class Api {
         this._url = url
     }
 
-    async get() {
+    async getP() {
         return fetch(this._url)
             .then((res) => res.json())
             .then((res) => res.photographers)
-            .catch((err) => console.log("an error", err))
+            .catch((err) => console.log('an error', err))
+    }
+
+    async getM() {
+        return fetch(this._url)
+            .then((res) => res.json())
+            .then((res) => res.media)
+            .catch((err) => console.log('an error', err))
     }
 }
 
@@ -21,6 +28,16 @@ class PhotographerApi extends Api {
     }
 
     async getPhotographers() {
-        return this.get()
+        return this.getP()
+    }
+}
+
+class MediaApi extends Api {
+    constructor(url) {
+        super(url)
+    }
+
+    async getMedia() {
+        return this.getM()
     }
 }
