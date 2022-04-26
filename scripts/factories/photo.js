@@ -1,13 +1,13 @@
-import photoBuild from "../model/CardPhoto.js";
-import videoBuild from "../model/CardVideo.js";
+import Photo from "../model/CardPhoto.js";
+import Video from "../model/CardVideo.js";
 
-function hydratePhotoFactory(media, sortMedia, name) {
+function hydratePhotoFactory(media, name) {
     
     if (media.image) {
-        photoBuild(media, sortMedia, name)
+        return new Photo(media, name)
     } else if (media.video) {
-        videoBuild(media, sortMedia, name)
+        return new Video(media, name)
     }
-    
+
 }
 export default hydratePhotoFactory

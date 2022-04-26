@@ -6,7 +6,7 @@ export default function sliderFactory(firstMedia, sortMedia, name) {
     console.log(firstMedia)
     let n = 0
     const slider = document.querySelector(".slider")
-    sortMedia.forEach((media, index) =>{
+    sortMedia.forEach((media, index) => {
         const slide = document.createElement("article")
         slide.classList.add("slide")
         if (media.video) {
