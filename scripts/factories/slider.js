@@ -4,6 +4,8 @@ import sliderPhoto from "../model/SliderPhoto.js";
 export default function sliderFactory(firstMedia, sortMedia, name) {
     let n = 0
     const slider = document.querySelector(".slider")
+    const slidesContainer = document.querySelector(".slides__container")
+    const slides = []
     sortMedia.forEach((media, index) => {
       
         const slide = document.createElement("article")
@@ -20,11 +22,10 @@ export default function sliderFactory(firstMedia, sortMedia, name) {
             n = index 
         }
         
-        slider.appendChild(slide);
-
+        slidesContainer.appendChild(slide);
+        slides.push(slide)
     })
     slider.classList.add("active")
-    const slides = document.querySelectorAll(".slide")
     const firstSlide = slides[n]
     firstSlide.className += " active"
     
@@ -36,13 +37,15 @@ export default function sliderFactory(firstMedia, sortMedia, name) {
     const close = document.querySelector(".close")
 
     back.addEventListener("click", () => {
+        slides[n].classList.remove('active')
         n--
         if (n < 0) { n = nbrSlider - 1 }
-        removeActiveImages()
+       
         slides[n].classList.add("active")
     })
 
     next.addEventListener("click", () => {
+        slides[n].classList.remove('active')
         n++
         if (n >= nbrSlider) { n = 0 }
         removeActiveImages()
@@ -50,17 +53,14 @@ export default function sliderFactory(firstMedia, sortMedia, name) {
     })
 
     close.addEventListener("click", () => {
-        removeActiveImages()
+        slidesContainer.innerHTML = ""
         slider.classList.remove("active")
-        for ( let i = 0 ; i < nbrSlider; i++) {
-            slider.parentNode.removeChild(slides[0])
-            
-        }
+       
     })
 
     function removeActiveImages(){
         for( let i = 0; i < nbrSlider ;  i++) {
-            slides[i].classList.remove('active')
+           
         }
     }
 

@@ -1,0 +1,27 @@
+.cardMedia {
+    display: flex;
+    flex-direction: column;
+    width: 350px;
+    height: 335px;
+    justify-content: space-between;
+   
+    overflow: hidden;
+
+    .media__aside{
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: flex-end;
+       
+        font-style: normal;
+        font-weight: 400;
+    }
+
+    .photo, iFrame {
+        width: 350px;
+        height: 300px;
+        object-fit: cover;
+        border-radius: 5px;
+    }
+}
+

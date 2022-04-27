@@ -7,27 +7,13 @@
     justify-content: space-around;
     align-items: center;
 }
+
 .photographer__presentation{
     display: flex;
     flex-direction:column;
-
 }
 
-.photo-field {
-    display : grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    gap: 20px;
-    color: #901C1C;
-}
-.photo__card {
-    width: 350px;
-    height: 350px;
-}
-.photo {
-    width: 350px;
-    height: 300px;
-    object-fit: cover;
-}
+
 
 
 .slider{

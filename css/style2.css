@@ -55,6 +55,29 @@ body {
   text-align: center;
 }
 
+.cardMedia {
+  display: flex;
+  flex-direction: column;
+  width: 350px;
+  height: 335px;
+  justify-content: space-between;
+  overflow: hidden;
+}
+.cardMedia .media__aside {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: flex-end;
+  font-style: normal;
+  font-weight: 400;
+}
+.cardMedia .photo, .cardMedia iFrame {
+  width: 350px;
+  height: 300px;
+  object-fit: cover;
+  border-radius: 5px;
+}
+
 .logo {
   height: 50px;
   margin-left: 100px;
@@ -79,6 +102,22 @@ header h1 {
   margin-top: 100px;
   height: 358px;
   padding: 0 100px;
+}
+
+.portrait {
+  height: 200px;
+  aspect-ratio: 1/1;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.photo-field {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 40px;
+  color: #901C1C;
+  justify-content: space-between;
+  width: 100%;
 }
 
 /*# sourceMappingURL=style2.css.map */

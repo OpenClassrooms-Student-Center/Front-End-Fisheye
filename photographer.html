@@ -25,7 +25,7 @@
               <span class="photographer__quote">citation</span>
             </div>
             <button class="contact_button" onclick="displayModal()">Contactez-moi</button>
-            <img class="photographer__profile avatar" src="#" alt="profile">
+            <img class="photographer__profile portrait" src="#" alt="profile">
           </div>
         </template>
       </section>
@@ -39,34 +39,21 @@
         </select>
       </div>
       <section class="photo-field">
-        <template class="photo__template">
-          <article class="photo__card">
-            <img src="#" class="photo ">
-            <span class="photo__title">titre</span>
-            <span class="photo__likes">n</span>
-            <i class="fas fa-heart"></i>
-          </article>  
-        </template>
       </section>
+      <div class="slider">
+        <div class="slides__container"></div>
+        <div class="back">
+          <i class="fas fa-chevron-left"></i>
+        </div>
+        <div class="next">
+          <i class="fas fa-chevron-right"></i>
+        </div>
+        <div class="close">
+          <i class="fas fa-times"></i>
+        </div>
+      </div>
     </main>
-    <div class="slider">
-      <template class="slider__template">
-        <article class="slide">
-          <img class="photo__slider">
-          <span class="title__slider"></span>
-        </article>
-      </template>
-      <div class="back">
-        <i class="fas fa-chevron-left"></i>
-      </div>
-      <div class="next">
-        <i class="fas fa-chevron-right"></i>
-      </div>
-      <div class="close">
-        <i class="fas fa-times"></i>
-      </div>
-      
-    </div>
+    
     <div id="contact_modal">
 			<div class="modal">
 				<header>

@@ -1,18 +1,19 @@
-
+import createPhotoCard from "../templates/Card.js";
+import sliderFactory from "../factories/slider.js";
 
 export default function getSelectedSort(data, name) {
     const selectedSort = document.querySelector("#select")
     let sortMedia = [...data]
+    const cardContainer = document.querySelector(".photo-field");
 
-    selectedSort.addEventListener("change", () => {
-        const photoCard = document.getElementsByClassName("photo__card");
-        const templateElm = document.querySelector(".photo__template");
-        const totalPhoto = photoCard.length
-        for ( let i = 0 ; i < totalPhoto; i++) {
-            templateElm.parentNode.removeChild(photoCard[0])
-        }
+    selectedSort.addEventListener("change", (e) => {
+        const mediaCard = document.getElementsByClassName("cardMedia");
+        
+        const totalPhoto = mediaCard.length
+        console.log(totalPhoto)
+        cardContainer.innerHTML = ""
 
-        let sortOption = document.querySelector("#select").value
+        let sortOption = e.target.value
         if (sortOption === "likes") {
             sortMedia.sort((a,b) => {
                 return b.likes - a.likes
@@ -30,8 +31,16 @@ export default function getSelectedSort(data, name) {
                 }
             })
         }
-       
+        sortMedia.forEach((media) => {
+                
+            const card = document.createElement("article")
+            card.classList.add("cardMedia")
+            card.innerHTML = createPhotoCard(media, name)
+            const elt = cardContainer.appendChild(card)
+            
+            elt.addEventListener("click", () => sliderFactory(media, sortMedia, name))
+        })
     })
-
+    
     return sortMedia
  }

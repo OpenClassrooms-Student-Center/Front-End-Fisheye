@@ -39,11 +39,13 @@ async function getPhotos(photographerId) {
         .then(data => {
             const photosId = data[0]
             const name = data[1]
-            const sortMedia = getSelectedSort(photosId, name);
+            const sortMedia = getSelectedSort(photosId);
+    
             const container = document.querySelector(".photo-field")
             sortMedia.forEach((media) => {
                 
                 const card = document.createElement("article")
+                card.classList.add("cardMedia")
                 card.innerHTML = createPhotoCard(media, name)
                 const elt = container.appendChild(card)
                 
@@ -51,6 +53,8 @@ async function getPhotos(photographerId) {
             })
             
         })
+
 }
+
 
 initPhotographe ()
