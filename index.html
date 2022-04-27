@@ -2,6 +2,7 @@
 <html>
   <head>
     <link href="css/style.css" rel="stylesheet" type="text/css" />
+    <link href="css/style2.css" rel="stylesheet" type="text/css" />
     <meta charset="utf-8">
     <link rel="icon" type="image/png" href="assets/favicon.png">
     <link href="https://fonts.googleapis.com/css?family=DM+Sans&display=swap" rel="stylesheet">
@@ -9,25 +10,25 @@
   </head>
   <body>
     <header>
-      <a href="/index.html">
-        <img src="assets/images/logo.png" class="logo" />
+      <a href="/index.html" role="retour à la page d'aceuil" aria-current="page">
+        <img src="assets/images/logo.png" class="logo" alt="fisheyes"/>
       </a>
       <h1>Nos photographes</h1>
     </header>
-    <main id="main">
-        <div class="photographer_section">
+    <main class="photographer_section">
           <template id="templateArticle">
             <article>
-              <a href="../photographer.html">
-                <img class="avatar">
+              <a href="../photographer.html" role="aller à la page du photographe">
+                <img class="avatar" alt="portrait du photographe">
                 <h2 class="photographer__h2">photographe</h2>
               </a>
-              <span class="location"></span>
+              <aside role="informations du photographe">
+                <span class="location"></span>
               <span class="quote"></span>
               <span class="price"></span>
+              </aside>
             </article>
           </template>
-        </div>
     </main>
    
     <script type="module" src="scripts/pages/index.js"></script>
