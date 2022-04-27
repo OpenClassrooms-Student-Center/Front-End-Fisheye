@@ -37,7 +37,7 @@ class Media {
 
   getMediaCardDOM () {
     const heartValue = this.isLiked ? 'fa-solid' : 'fa-regular'
-    return document.createRange().createContextualFragment(`
+    return htmlToElement(`
       <div class="mediaCard" id="mediaCard--${this.id}" tabindex="0">
         ${this.getSpecificDOM()}
         <div class="mediaCard__infos">
@@ -45,7 +45,7 @@ class Media {
           ${this.title}
           </p>
           <p class="mediaCard__infos--likes">
-            <span id="totalMedialikes--${this.id}">${this.likes}</span> <i id="likes--${this.id}" class="${heartValue} fa-heart" aria-label="like" tabindex="0" ></i>
+            <span id="totalMedialikes--${this.id}" aria-label="Total des likes pour ce media">${this.likes}</span> <i id="likes--${this.id}" class="${heartValue} fa-heart" aria-label="like" tabindex="0" ></i>
           </p>
         </div>
       </div>
@@ -53,12 +53,14 @@ class Media {
   }
 
   getMediaLightboxDOM () {
-    return document.createRange().createContextualFragment(`
-      <div class="lightbox__mediaContent" aria-label="${this.title}, vue rapprochée">
-        ${this.getSpecificLightboxDOM()}
-      </div>
-      <div class="lightbox__mediaTitle">
-        <h2>${this.title}</h2>
+    return htmlToElement(`
+      <div class="lightbox__content--middleColumn">
+        <div class="lightbox__mediaContent" aria-label="${this.title}, vue rapprochée">
+          ${this.getSpecificLightboxDOM()}
+        </div>
+        <div class="lightbox__mediaTitle">
+          <h2>${this.title}</h2>
+        </div>
       </div>
     `)
   }

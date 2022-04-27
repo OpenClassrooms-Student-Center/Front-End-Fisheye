@@ -15,7 +15,7 @@ class Photographer {
   }
 
   getUserCardDOM () {
-    return document.createRange().createContextualFragment(`
+    return htmlToElement(`
       <article class="photographerCard">
         <a class="photographerCard__link" href="photographer.html?id=${this.id}" title="Lien vers le photographe ${this.name}">
           <img class="photographerCard__img" src="${this.picture}" alt="${this.name}">
@@ -57,7 +57,7 @@ class Photographer {
   }
 
   getPhotographerHeaderDOM () {
-    return document.createRange().createContextualFragment(
+    return htmlToElement(
       this.getPhotographerInfo() + this.getPhotographerContact() + this.getPhotographerImg()
     )
   }
@@ -85,7 +85,7 @@ class Photographer {
   }
 
   getPhotographerModalDOM () {
-    return document.createRange().createContextualFragment(`
+    return htmlToElement(`
       <dialog class="modal" id="contact_modal" aria-labelledby="modalTitle">
           <header>
             <h2 id="modalTitle">Contactez-moi<br>${this.name}</h2>
