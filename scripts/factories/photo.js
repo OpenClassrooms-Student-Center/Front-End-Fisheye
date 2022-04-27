@@ -1,7 +1,7 @@
 import Photo from "../model/CardPhoto.js";
 import Video from "../model/CardVideo.js";
 
-function hydratePhotoFactory(media, name) {
+export default function hydratePhotoFactory(media, name) {
     
     if (media.image) {
         return new Photo(media, name)
@@ -10,4 +10,3 @@ function hydratePhotoFactory(media, name) {
     }
 
 }
-export default hydratePhotoFactory

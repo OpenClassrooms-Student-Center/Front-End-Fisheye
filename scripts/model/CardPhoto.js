@@ -1,26 +1,3 @@
-// import sliderFactory from "../factories/slider.js";
-// import photoCard from "../templates/Card.js";
-
-// export default function photoBuild(media, name) {
-//     const pathName = name.split(/-| /).join("")
-//     const photoPath = `../assets/Sample_Photos/${pathName}/${media.image}`;
-//     console.log(media)
-//     const tag = "img"
-    
-       
-//     let card = document.createElement("article")
-//     const container = document.querySelector(".photo-field")
-    
-//     card.innerHTML += article
-//     // container.appendChild(card);
-//     photoCard(media, tag, name)
-
-//     const img = card.querySelector(".photo");
-//     img.addEventListener("click", () => sliderFactory(media, sortMedia, name))
-
-//     return card
-// }
-
 export default class Photo {
     constructor(media, name) {
         this._name = name[0].name
@@ -30,6 +7,8 @@ export default class Photo {
         this._likes = media.likes
         this._pathName = this.name.split(/-| /).join("")
         this._path = `../assets/Sample_Photos/${this._pathName}/${this._pathMedia}`
+        this._id = media.id
+    
     }
     
     get path(){
@@ -49,5 +28,8 @@ export default class Photo {
     }
     get likes(){
         return this._likes
+    }
+    get id(){
+        return this._id
     }
 }

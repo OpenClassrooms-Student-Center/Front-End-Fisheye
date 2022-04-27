@@ -1,5 +1,4 @@
 export default function createPhotoCard(media){
-    // console.log( get media.props._tag)
     const article = `
                 <${media.tag} src=${media.path} class="photo"></${media.tag}>
                 <span class="photo__title" >${media.title}</span>

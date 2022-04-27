@@ -1,6 +1,7 @@
 import hydratePresentationFactory from "../factories/photographerPage.js";
 import getSelectedSort from "../functions/getSelectedSort.js";
 import hydratePhotoFactory from "../factories/photo.js";
+import sliderFactory from "../factories/slider.js";
 import createPhotoCard from "../templates/Card.js";
 
 async function initPhotographe() {
@@ -32,7 +33,6 @@ async function getPhotos(photographerId) {
             const dataMedias = data.media.filter((photo)=> photo.photographerId === parseInt(photographerId, 10))
             const name = data.photographers.filter((photographer) => photographer.id === parseInt(photographerId, 10))
             const medias = dataMedias.map(media => hydratePhotoFactory(media, name))
-            // const photos = data.media.filter((photo)=> photo.photographerId === parseInt(photographerId, 10))
             
             return [medias, name[0].name]
         })
@@ -45,7 +45,9 @@ async function getPhotos(photographerId) {
                 
                 const card = document.createElement("article")
                 card.innerHTML = createPhotoCard(media, name)
-                container.appendChild(card)
+                const elt = container.appendChild(card)
+                
+                elt.addEventListener("click", () => sliderFactory(media, sortMedia, name))
             })
             
         })

@@ -1,27 +1,3 @@
-import sliderFactory from "../factories/slider.js";
-
-// export default function videoBuild(media, sortMedia, name) {
-//     const pathName = name.split(/-| /).join("")
-//     const photoPath = `../assets/Sample_Photos/${pathName}/${media.video}`;
-//     console.log(media)
-//     const article = `
-//                 <video src=${photoPath} class="photo"></video>
-//                 <span class="photo__title" >${media.title}</span>
-//                 <span class="photo__likes" >${media.likes}</span>
-//                 <i class="fas fa-heart"></i>`
-       
-//     let card = document.createElement("article")
-//     const container = document.querySelector(".photo-field")
-    
-//     card.innerHTML += article
-//     container.appendChild(card);
-
-//     const video = card.querySelector(".photo");
-//     video.addEventListener("click", () => sliderFactory(media, sortMedia, name))
-
-//     return card
-// }
-
 export default class Video {
     constructor(media, name) {
         this._name = name[0].name
@@ -31,6 +7,7 @@ export default class Video {
         this._likes = media.likes
         this._pathName = this.name.split(/-| /).join("")
         this._path = `../assets/Sample_Photos/${this._pathName}/${this._pathMedia}`
+        this._id = media.id
     }
     
     get path(){
@@ -50,5 +27,8 @@ export default class Video {
     }
     get likes(){
         return this._likes
+    }
+    get id(){
+        return this._id
     }
 }

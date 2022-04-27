@@ -2,24 +2,25 @@ import sliderVideo from "../model/SliderVideo.js";
 import sliderPhoto from "../model/SliderPhoto.js";
 
 export default function sliderFactory(firstMedia, sortMedia, name) {
-    console.table(sortMedia)
-    console.log(firstMedia)
     let n = 0
     const slider = document.querySelector(".slider")
     sortMedia.forEach((media, index) => {
+      
         const slide = document.createElement("article")
         slide.classList.add("slide")
-        if (media.video) {
-            slide.innerHTML = sliderVideo(media, name)   
+        console.log(media)
+        if (media.tag === "iFrame") {
+            slide.innerHTML = sliderVideo(media)  
 
-        } else if (media.image) {
-            slide.innerHTML = sliderPhoto(media, name)   
+        } else if (media.tag === "img") {
+            slide.innerHTML = sliderPhoto(media)
         }
 
         if (firstMedia.id === media.id){
             n = index 
         }
-        document.querySelector(".slider").appendChild(slide);
+        
+        slider.appendChild(slide);
 
     })
     slider.classList.add("active")
