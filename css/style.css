@@ -16,37 +16,37 @@ header {
     height: 90px;
 }
 
-h1 {
+@media screen and (max-width: 768px){
+    header {
+        flex-direction: column;
+    }
+}
+
+header > h1 {
     color: #901C1C;
     margin-right: 100px;
+}
+@media screen and (max-width: 768px) {
+    header > h1 {
+        margin:0;
+    }
 }
 
 .logo {
     height: 50px;
     margin-left: 100px;
 }
-
-.photographer_section {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    gap: 70px;
-    margin-top: 100px;
+@media screen and (max-width: 768px) {
+    .logo {
+        margin-left:0px;
+        margin-bottom: 20px;
+    }
 }
 
-.photographer_section article {
-    justify-self: center;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
+a {
+    text-decoration: none;
 }
 
-.photographer_section article h2 {
-    color: #D3573C;
-    font-size: 36px;
-}
-
-.photographer_section article img {
-    height: 200px;
-    width: 200px;
+a:hover {
+    text-decoration: underline;
 }

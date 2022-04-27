@@ -1,12 +1,12 @@
-function indexFactory(data) {
+function PhotographerFactory(data) {
     const { name, id, city, country, tagline, price, portrait} = data;
     
     const picture = `assets/photographers/${portrait}`;
     
     function getUserCardDOM() {
         const article = document.createElement( 'article' );
-        // BLOC AVATAR + NAME
 
+        // BLOC AVATAR + NAME
         const avatarPictureAndName = document.createElement ('a');
         avatarPictureAndName.setAttribute('href', '#');
         avatarPictureAndName.setAttribute('aria-label', 'collection des photos du photographe');
@@ -55,5 +55,13 @@ function indexFactory(data) {
 
         return (article);
     }
-    return { name, id, city, country, tagline, price, portrait, getUserCardDOM }
+    return { 
+        name, 
+        id, 
+        city, 
+        country, 
+        tagline, 
+        price, 
+        portrait, 
+        getUserCardDOM }
 }

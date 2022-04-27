@@ -1,16 +1,53 @@
 /* HOME PAGE */
+
+/* MQ desktop > 992px
+MQ tablet > 768px <992px
+MQ mobile < 768px */
+
+.photographer_section {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 50px 10px;
+    margin-top: 100px;
+}
+
+@media screen and (min-width: 768px) and (max-width: 992px){
+    .photographer_section {
+        grid-template-columns: repeat(2,1fr);
+    }
+}
+
+@media screen and (max-width: 768px){
+    .photographer_section {
+        grid-template-columns: 1fr;
+    }
+}
+
 .photographer__avatar {
     text-align: center;
-    border:10px solid rgba(255,255,255,1);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+
     
 }
+
 .photographer__avatar-name {
     margin:0;
+    margin-top:20px;
+    color: #D3573C;
+    font-size: 36px;
+    line-height: 47px;
+    vertical-align: top;
+
 }
 
 .photographer__avatar-picture {
     border-radius: 50%;
     object-fit: cover;
+    height: 200px;
+    width: 200px;
 }
 
 .photographer__infos {
@@ -19,16 +56,31 @@
 
 .photographer__infos-city-country {
     color: #901C1C;
+    font-size:13px;
     margin-top: 0;
     margin-bottom: 0;
+    line-height: 17px;
+    vertical-align: top;
+
+
 }
 
 .photographer__infos-tagline {
+    font-size:10px;
     margin-top: 0;
     margin-bottom: 0;
+    line-height: 12px;
+    vertical-align: top;
+    margin-top:5px;
+
 }
 
 .photographer__infos-price {
+    font-size:9px;
+    color: #757575;
     margin-top: 0;
     margin-bottom: 0;
+    line-height: 12px;
+    vertical-align: top;
+    margin-top:5px;
 }

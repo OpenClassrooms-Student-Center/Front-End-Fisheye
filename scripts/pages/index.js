@@ -10,7 +10,7 @@ let photographers;
             })
             .then(function(data) {
                 // On ajouter les données de l'API dans le tableau photographers
-                console.log(data);
+                // console.log(data);
                 photographers = data.photographers;
                 // photographers.push(value);
             })
@@ -24,7 +24,7 @@ let photographers;
         const photographersSection = document.querySelector(".photographer_section");
 
         photographers.forEach((photographer) => {
-            const photographerModel = indexFactory(photographer);
+            const photographerModel = PhotographerFactory(photographer);
             const userCardDOM = photographerModel.getUserCardDOM();
             photographersSection.appendChild(userCardDOM);
         });
