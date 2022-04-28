@@ -1,11 +1,21 @@
 #contact_modal {
     display: none;
 }
+/*HEADER OF THE PAGE*/
 
 .photograph-header {
     background-color: #FAFAFA;
     height: 300px;
     margin: 0 100px;
+}
+
+.photograph-header-banner {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    height:100%;
+    
+
 }
 
 .contact_button {
@@ -73,4 +83,13 @@ form input {
     height: 68px;
     border: none;
     border-radius: 5px;
+}
+
+/* MAIN PAGE GALLERY PICTURES */
+
+.media-card {
+    width:350px;
+    height:300px;
+    object-fit:cover;
+    border-radius:5px;
 }

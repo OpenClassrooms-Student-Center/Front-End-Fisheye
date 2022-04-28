@@ -9,10 +9,10 @@ let photographers;
                 }
             })
             .then(function(data) {
-                // On ajouter les données de l'API dans le tableau photographers
-                // console.log(data);
+                // On ajoute les données de l'API dans la variable photographers
                 photographers = data.photographers;
-                // photographers.push(value);
+                // console.log(photographers);
+
             })
             .catch(function(err) {
                 // Une erreur est survenue
@@ -24,8 +24,14 @@ let photographers;
         const photographersSection = document.querySelector(".photographer_section");
 
         photographers.forEach((photographer) => {
-            const photographerModel = PhotographerFactory(photographer);
+            const photographerModel = PhotographersFactory(photographer);
+            // console.log("const photographerModel");
+            // console.log(photographerModel);
+
             const userCardDOM = photographerModel.getUserCardDOM();
+            // console.log("const userCardDOM");
+            // console.log(userCardDOM);
+
             photographersSection.appendChild(userCardDOM);
         });
     };

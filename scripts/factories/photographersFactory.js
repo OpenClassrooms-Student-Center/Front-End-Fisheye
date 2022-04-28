@@ -1,4 +1,4 @@
-function PhotographerFactory(data) {
+function PhotographersFactory(data) {
     const { name, id, city, country, tagline, price, portrait} = data;
     
     const picture = `assets/photographers/${portrait}`;
@@ -8,7 +8,7 @@ function PhotographerFactory(data) {
 
         // BLOC AVATAR + NAME
         const avatarPictureAndName = document.createElement ('a');
-        avatarPictureAndName.setAttribute('href', '#');
+        avatarPictureAndName.setAttribute('href', `photographer.html?id=${id}`);
         avatarPictureAndName.setAttribute('aria-label', 'collection des photos du photographe');
         avatarPictureAndName.setAttribute('aria-current', 'page');
         avatarPictureAndName.classList.add('photographer__avatar');
@@ -55,13 +55,7 @@ function PhotographerFactory(data) {
 
         return (article);
     }
-    return { 
-        name, 
-        id, 
-        city, 
-        country, 
-        tagline, 
-        price, 
-        portrait, 
-        getUserCardDOM }
+
+    //Return only getUserCardDOM because all constructors are called inside, don't need to return here!
+    return { getUserCardDOM }
 }
