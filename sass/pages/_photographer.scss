@@ -39,6 +39,43 @@
     }
 }
 
+.media {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 95px;
+    margin: 100px;
+    &__item {
+        & img, video {
+            height: 300px;
+            width: 100%;
+            object-fit: cover;
+            border-radius: 5px;
+        }
+        & .content {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            margin: 0;
+            & .title {
+                margin: 0 30px 0 0;
+                color: $colorPrimary;
+                font-size: map-get($map: $font-size, $key: text) + 6;
+            }
+            & .subContent {
+                display: flex;
+                flex-direction: row;
+                align-items: center;
+                justify-content: center;
+                & .likes {
+                    margin: 0;
+                    padding-right: 2px;
+                    font-size: map-get($map: $font-size, $key: text) - 2;
+                }
+            }
+        }
+    }
+}
+
 #contact_modal {
     display: none;
 }
