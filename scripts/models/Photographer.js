@@ -43,7 +43,7 @@ class Photographer {
   getPhotographerContact () {
     return `
     <div class="photographHeader__contact">
-      <button class="contact_button" aria-label="Contactez-moi">Contactez-moi</button>
+      <button id="modal_contact_button" class="contact_button" aria-label="Contactez-moi">Contactez-moi</button>
     </div>
     `
   }
@@ -57,7 +57,7 @@ class Photographer {
   }
 
   getPhotographerHeaderDOM () {
-    return htmlToElement(
+    return document.createRange().createContextualFragment(
       this.getPhotographerInfo() + this.getPhotographerContact() + this.getPhotographerImg()
     )
   }
