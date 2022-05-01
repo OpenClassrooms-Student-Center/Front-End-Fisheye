@@ -1,1 +1,2 @@
-Projet 6 => Formation Développeur JavaScript / React
+<h1>PROJET 6</h1>
+Formation Développeur JavaScript / React
