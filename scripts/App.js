@@ -4,10 +4,12 @@ class App {
         this.$photographerWrapperProfile = document.querySelector('.photograph-header')
         this.$photographerMedia = document.querySelector('.photograph-content')  
         this.photographerApi = new PhotographerApi('/data/photographers.json')  
+        
     }
 
     async main(){
         const photographersData = await this.photographerApi.getPhotographers()
+        const photographersMediaData = await this.photographerApi.getMedias()
         let params = (new URL(document.location)).searchParams
         let idphotograph = params.get('id')
         let url = window.location.href.split("?")
@@ -20,8 +22,12 @@ class App {
                     const TemplateProfile = new PhotographerProfile(photographer)
                     this.$photographerWrapperProfile.appendChild(TemplateProfile.createPhotographerProfile())
                    
-                    const TemplateMedia = new PhotographerMedia(media)
-                    this.$photographerMedia.appendChild(TemplateMedia.createPhotographerMedia)
+                    photographersMediaData.forEach(media =>{
+
+                        const TemplateMedia = new PhotographersMedia(media)
+                                this.$photographerMedia.appendChild(TemplateMedia.createPhotographerMedia)
+                                
+                    })
                     
                 } 
                 
@@ -42,7 +48,7 @@ class App {
             
         }
         
-
+        
 
         
 

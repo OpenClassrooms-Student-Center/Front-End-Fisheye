@@ -3,19 +3,24 @@ class Api {
      * 
      * @param {string} url 
      */
-    constructor(url, urlMedia) {
+    constructor(url) {
         this._url = url
-        this._urlMedia = urlMedia
+        
     }
 
-    async get() {
-        return fetch(this._url, this._urlMedia)
+    async getPhotographer() {
+        return fetch(this._url)
             .then(res => res.json())
             .then(res => res.photographer)
-            // .then(resTwo => resTwo.media)
+        
             
     }
     
+   async getMedia(){
+       return fetch(this._url)
+       .then(res2 => res2.json())
+       .then(res2 => res2.media)
+   }
     
     
 }
@@ -26,10 +31,14 @@ class PhotographerApi extends Api {
      * 
      * @param {string} url 
      */
-    constructor(url, urlMedia) {
-        super(url, urlMedia)
+    constructor(url) {
+        super(url)
     }
     async getPhotographers(){
-        return await this.get()
+        return await this.getPhotographer()
+    }
+    async getMedias(){
+        return await this.getMedia
     }
 }
+
