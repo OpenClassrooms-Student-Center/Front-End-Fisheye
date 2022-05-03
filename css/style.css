@@ -1,17 +1,8 @@
 @import url("photographer.css");
 
 
-.photograph-header{
-    display: flex;
-    flex-direction: row;
-    justify-content: space-around;
-    align-items: center;
-}
 
-.photographer__presentation{
-    display: flex;
-    flex-direction:column;
-}
+
 
 
 
@@ -41,7 +32,6 @@
     opacity: 0;
 }
 .photo__slider {
-    
     width: 100%;
     height: 100%;
     object-fit: cover;

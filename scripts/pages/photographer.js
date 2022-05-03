@@ -1,8 +1,10 @@
-import hydratePresentationFactory from "../factories/photographerPage.js";
 import getSelectedSort from "../functions/getSelectedSort.js";
 import hydratePhotoFactory from "../factories/photo.js";
 import sliderFactory from "../factories/slider.js";
 import createPhotoCard from "../templates/Card.js";
+import Presentation from "../model/presentation.js"
+
+import presentationTemplate from "../templates/presentationTemplate.js";
 
 async function initPhotographe() {
     const photographerId = getphotographerId();
@@ -21,9 +23,13 @@ async function getPresentation(photographerId) {
             return data.photographers.filter((photographe)=> photographe.id === parseInt(photographerId, 10))
         })
         .then(filtingphotographe => {
-          
-            hydratePresentationFactory(filtingphotographe[0])
-            return (filtingphotographe[0].name)
+            const newPresentation = new Presentation(filtingphotographe[0])
+            const section = document.createElement("section")
+            section.innerHTML = presentationTemplate(newPresentation)
+            document.querySelector(".presentation__section").appendChild(section)
+            section.className = "photograph-header"
+
+            
         })
 }
 async function getPhotos(photographerId) {

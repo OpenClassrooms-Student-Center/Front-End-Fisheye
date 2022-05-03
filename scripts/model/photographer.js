@@ -5,7 +5,7 @@ export default function createPhotographer(data) {
 
     const article = document.createElement("article")
     const articleInner =
-        `<a href=../photographer.html?id=${id} id="link${nameSplit}" role="aller à la page du photographe ${name}">
+        `<a href=../photographer.html?id=${id} id="link${nameSplit}" aria-label="aller à la page de ${name}" role="link">
             <img class="portrait" src=${path} alt="portrait du photographe ${name}">
             <h2 class="photographer__h2">${name}</h2>
         </a>
@@ -14,7 +14,6 @@ export default function createPhotographer(data) {
             <span class="quote">${data.tagline}</span>
             <span class="price">${data.price} /jour</span>
         </aside>`
-
     article.innerHTML = articleInner
-    return  document.querySelector(".photographer_section").appendChild(article)
+    return document.querySelector(".photographer_section").appendChild(article)
 }
