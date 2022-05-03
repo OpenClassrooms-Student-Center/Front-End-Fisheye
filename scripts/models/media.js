@@ -4,6 +4,7 @@ class PhotographersMedia{
         this._photographerId = media._photographerId
         this._likes = media._likes
         this._image = media._image
+        this._video = media._video
     }
    
     get title(){
@@ -14,5 +15,8 @@ class PhotographersMedia{
     }
     get likes(){
         return this._likes
+    }
+    get video(){
+        return this._video
     }
 }
