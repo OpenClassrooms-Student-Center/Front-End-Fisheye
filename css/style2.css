@@ -70,6 +70,7 @@ body {
   align-items: flex-end;
   font-style: normal;
   font-weight: 400;
+  margin-top: 3%;
 }
 .cardMedia .photo {
   aspect-ratio: 1/0.85;

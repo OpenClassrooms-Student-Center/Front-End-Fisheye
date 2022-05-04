@@ -57,6 +57,7 @@ async function getPhotos(photographerId) {
 
                 const elt = cardMedia.querySelector(".photo")
                 elt.addEventListener("click", () => sliderFactory(media, sortMedia, name))
+                
                 const like = cardMedia.querySelector(".photo__likes")
                 like.addEventListener("click", () => media.toggleLike() )
             })
