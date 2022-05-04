@@ -10,8 +10,7 @@ export default function sliderFactory(firstMedia, sortMedia, name) {
       
         const slide = document.createElement("article")
         slide.classList.add("slide")
-        console.log(media)
-        if (media.tag === "iFrame") {
+        if (media.tag === "video") {
             slide.innerHTML = sliderVideo(media)  
 
         } else if (media.tag === "img") {

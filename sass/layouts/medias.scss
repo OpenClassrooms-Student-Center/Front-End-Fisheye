@@ -1,9 +1,10 @@
 .photo-field {
     display : grid;
     grid-template-columns: 1fr 1fr 1fr;
-    gap: 40px;
-    color: #901C1C;
     justify-content: space-between;
+    color: #901C1C;
+    justify-items: stretch;
     width: 100%;
+    gap: 3% 8%;
     
 }

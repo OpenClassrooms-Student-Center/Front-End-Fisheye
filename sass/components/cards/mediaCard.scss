@@ -1,9 +1,9 @@
 .cardMedia {
     display: flex;
     flex-direction: column;
-    width: 350px;
-    height: 335px;
+    width: 100%;
     justify-content: space-between;
+    align-items: stretch;
    
     overflow: hidden;
 
@@ -17,9 +17,8 @@
         font-weight: 400;
     }
 
-    .photo, iFrame {
-        width: 350px;
-        height: 300px;
+    .photo {
+        aspect-ratio: 1/0.85;
         object-fit: cover;
         border-radius: 5px;
     }

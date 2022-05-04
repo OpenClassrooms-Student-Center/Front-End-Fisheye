@@ -8,6 +8,7 @@ export default class Photo {
         this._pathName = this.name.split(/-| /).join("")
         this._path = `../assets/Sample_Photos/${this._pathName}/${this._pathMedia}`
         this._id = media.id
+        this._date = media.date
     
     }
     
@@ -31,5 +32,11 @@ export default class Photo {
     }
     get id(){
         return this._id
+    }
+
+    toggleLike() {
+        
+        this.likes += 1
+        console.log(this.likes)
     }
 }

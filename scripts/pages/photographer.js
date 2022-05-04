@@ -53,9 +53,12 @@ async function getPhotos(photographerId) {
                 const card = document.createElement("article")
                 card.classList.add("cardMedia")
                 card.innerHTML = createPhotoCard(media, name)
-                const elt = container.appendChild(card)
-                
+                const cardMedia = container.appendChild(card)
+
+                const elt = cardMedia.querySelector(".photo")
                 elt.addEventListener("click", () => sliderFactory(media, sortMedia, name))
+                const like = cardMedia.querySelector(".photo__likes")
+                like.addEventListener("click", () => media.toggleLike() )
             })
             
         })

@@ -2,12 +2,13 @@ export default class Video {
     constructor(media, name) {
         this._name = name[0].name
         this._pathMedia = media.video
-        this._tag = "iFrame"
+        this._tag = "video"
         this._title = media.title
         this._likes = media.likes
         this._pathName = this.name.split(/-| /).join("")
         this._path = `../assets/Sample_Photos/${this._pathName}/${this._pathMedia}`
         this._id = media.id
+        this._date = media.date
     }
     
     get path(){

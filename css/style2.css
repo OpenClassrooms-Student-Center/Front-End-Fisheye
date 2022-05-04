@@ -58,9 +58,9 @@ body {
 .cardMedia {
   display: flex;
   flex-direction: column;
-  width: 350px;
-  height: 335px;
+  width: 100%;
   justify-content: space-between;
+  align-items: stretch;
   overflow: hidden;
 }
 .cardMedia .media__aside {
@@ -71,9 +71,8 @@ body {
   font-style: normal;
   font-weight: 400;
 }
-.cardMedia .photo, .cardMedia iFrame {
-  width: 350px;
-  height: 300px;
+.cardMedia .photo {
+  aspect-ratio: 1/0.85;
   object-fit: cover;
   border-radius: 5px;
 }
@@ -154,10 +153,11 @@ header h1 {
 .photo-field {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
-  gap: 40px;
-  color: #901C1C;
   justify-content: space-between;
+  color: #901C1C;
+  justify-items: stretch;
   width: 100%;
+  gap: 3% 8%;
 }
 
 .presentation__section {
@@ -205,6 +205,10 @@ header h1 {
   aspect-ratio: 1/1;
   border-radius: 50%;
   object-fit: cover;
+}
+
+main {
+  margin: 0 100px;
 }
 
 /*# sourceMappingURL=style2.css.map */

@@ -19,8 +19,9 @@ export default function getSelectedSort(data, name) {
                 return b.likes - a.likes
             })
         } else if (sortOption === "date") {
+            console.log("date")
             sortMedia.sort((a,b) => {
-                return new Date(a.date).valueOf() - new Date(b.date).valueOf()
+                return new Date(a._date).valueOf() - new Date(b._date).valueOf()
             })
         } else if (sortOption === "title") {
             sortMedia.sort((a,b) => {
@@ -41,6 +42,6 @@ export default function getSelectedSort(data, name) {
             elt.addEventListener("click", () => sliderFactory(media, sortMedia, name))
         })
     })
-    
+    console.table(sortMedia)
     return sortMedia
  }
