@@ -9,25 +9,25 @@ class App {
 
     async main(){
         const photographersData = await this.photographerApi.getPhotographers()
-        const photographersMediaData = await this.photographerApi.getMedias()
+        // const photographersMediaData = await this.photographerApi.getMedias()
         let params = (new URL(document.location)).searchParams
         let idphotograph = params.get('id')
         let url = window.location.href.split("?")
         
         if(url.length > 1){
-            console.log('page photographer');
+            console.log('page photographer')
             console.log(idphotograph)
             photographersData.forEach(photographer =>{
                 if(photographer.id == idphotograph){
                     const TemplateProfile = new PhotographerProfile(photographer)
                     this.$photographerWrapperProfile.appendChild(TemplateProfile.createPhotographerProfile())
                    
-                    photographersMediaData.forEach(media =>{
+                    // photographersMediaData.forEach(media =>{
 
-                        const TemplateMedia = new PhotographersMedia(media)
-                                this.$photographerMedia.appendChild(TemplateMedia.createPhotographerMedia)
+                    //     const TemplateMedia = new PhotographersMedia(media)
+                    //             this.$photographerMedia.appendChild(TemplateMedia.createPhotographerMedia)
                                 
-                    })
+                    // })
                     
                 } 
                 
