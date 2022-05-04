@@ -83,6 +83,10 @@ body {
   margin-left: 100px;
 }
 
+.slide.active {
+  z-index: 1;
+}
+
 header {
   display: flex;
   flex-direction: row;

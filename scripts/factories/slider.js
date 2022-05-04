@@ -39,7 +39,6 @@ export default function sliderFactory(firstMedia, sortMedia, name) {
         slides[n].classList.remove('active')
         n--
         if (n < 0) { n = nbrSlider - 1 }
-       
         slides[n].classList.add("active")
     })
 
@@ -47,7 +46,7 @@ export default function sliderFactory(firstMedia, sortMedia, name) {
         slides[n].classList.remove('active')
         n++
         if (n >= nbrSlider) { n = 0 }
-        removeActiveImages()
+        
         slides[n].classList.add("active")
     })
 

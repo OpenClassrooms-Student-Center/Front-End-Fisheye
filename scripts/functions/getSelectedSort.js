@@ -1,7 +1,7 @@
 import createPhotoCard from "../templates/Card.js";
 import sliderFactory from "../factories/slider.js";
 
-export default function getSelectedSort(data, name) {
+export default function getSelectedSort(data) {
     const selectedSort = document.querySelector("#select")
     let sortMedia = [...data]
     const cardContainer = document.querySelector(".photo-field");

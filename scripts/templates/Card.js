@@ -4,7 +4,7 @@ export default function createPhotoCard(media){
                 <aside class="media__aside">
                     <span class="photo__title" >${media.title}</span>
                     <span class="photo__likes" >
-                        ${media.likes} 
+                        <span>${media.likes}</span>
                         <i class="fas fa-heart" role="Image" aria-label="likes">
                     </i></span>
                 </aside>`

@@ -4,11 +4,12 @@ export default class Photo {
         this._pathMedia = media.image
         this._tag = "img"
         this._title = media.title
-        this._likes = media.likes
+        this._likes = Number(media.likes)
         this._pathName = this.name.split(/-| /).join("")
         this._path = `../assets/Sample_Photos/${this._pathName}/${this._pathMedia}`
         this._id = media.id
         this._date = media.date
+        this._userLike = false
     
     }
     
@@ -34,9 +35,16 @@ export default class Photo {
         return this._id
     }
 
-    toggleLike() {
+    toggleLike(e) {
+        if (this._userLike) {
+            this._likes -= 1
+
+        } else {
+            this._likes += 1
+        }
+        this._userLike = !this._userLike
+        e.currentTarget.querySelector("span").textContent = this._likes
+      
         
-        this.likes += 1
-        console.log(this.likes)
     }
 }

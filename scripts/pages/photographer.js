@@ -49,7 +49,6 @@ async function getPhotos(photographerId) {
     
             const container = document.querySelector(".photo-field")
             sortMedia.forEach((media) => {
-                
                 const card = document.createElement("article")
                 card.classList.add("cardMedia")
                 card.innerHTML = createPhotoCard(media, name)
@@ -57,9 +56,9 @@ async function getPhotos(photographerId) {
 
                 const elt = cardMedia.querySelector(".photo")
                 elt.addEventListener("click", () => sliderFactory(media, sortMedia, name))
-                
+
                 const like = cardMedia.querySelector(".photo__likes")
-                like.addEventListener("click", () => media.toggleLike() )
+                like.addEventListener("click",(e) => media.toggleLike(e) )
             })
             
         })
