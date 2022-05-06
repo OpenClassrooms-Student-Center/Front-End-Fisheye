@@ -3,14 +3,15 @@
 @import './components/cards/photographerCard';
 @import './components/cards/mediaCard';
 @import './components/logo/logo';
-@import './components/slide.scss';
-
+@import './components/slide';
 
 @import './layouts/header';
 @import './layouts/photographers';
 @import './layouts/presentation';
 @import './layouts/medias';
 @import './layouts/presentation';
+@import './layouts/slider';
+@import './layouts/totalLikes';
 
 @import './pages/index';
 @import './pages/photographe';

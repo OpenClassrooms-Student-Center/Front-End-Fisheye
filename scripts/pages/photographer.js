@@ -5,6 +5,7 @@ import createPhotoCard from "../templates/Card.js";
 import Presentation from "../model/presentation.js"
 
 import presentationTemplate from "../templates/presentationTemplate.js";
+import totalLikes from "../model/totalLikes.js";
 
 async function initPhotographe() {
     const photographerId = getphotographerId();
@@ -37,14 +38,14 @@ async function getPhotos(photographerId) {
         .then(res => res.json())
         .then(data => {
             const dataMedias = data.media.filter((photo)=> photo.photographerId === parseInt(photographerId, 10))
-            const name = data.photographers.filter((photographer) => photographer.id === parseInt(photographerId, 10))
-            const medias = dataMedias.map(media => hydratePhotoFactory(media, name))
-            
-            return [medias, name[0].name]
+            const mediaPage = data.photographers.filter((photographer) => photographer.id === parseInt(photographerId, 10))
+            const medias = dataMedias.map(media => hydratePhotoFactory(media, mediaPage[0].name))
+            return [medias, mediaPage[0].name, mediaPage[0].price]
         })
         .then(data => {
             const photosId = data[0]
             const name = data[1]
+            const price = data[2]
             const sortMedia = getSelectedSort(photosId);
     
             const container = document.querySelector(".photo-field")
@@ -60,7 +61,10 @@ async function getPhotos(photographerId) {
                 const like = cardMedia.querySelector(".photo__likes")
                 like.addEventListener("click",(e) => media.toggleLike(e) )
             })
-            
+            const sumLikes = document.querySelector(".totalLikes__likes")
+            sumLikes.innerHTML = totalLikes(sortMedia)
+            const pricePerDay = document.querySelector(".totalLikes__price")
+            pricePerDay.innerHTML = price + " /jour"
         })
 
 }

@@ -5,8 +5,10 @@
 .photograph-header{
     display: flex;
     flex-direction: row;
-    justify-content: space-around;
+    justify-content: space-between;
     align-items: center;
+    padding: 0 3%;
+    gap: 3%;
     
 
     .photographer__presentation{
@@ -19,13 +21,12 @@
             font-weight: 400;
             font-size: 64px;
             line-height: 83px;
-
             color: #D3573C;
             margin-bottom: 10px;
             margin-top: 0;
 
-
         }
+
         .photographer__location {
 
             font-family: 'DM Sans';
@@ -33,9 +34,9 @@
             font-weight: 400;
             font-size: 24px;
             line-height: 31px;
-
             color: #901C1C;
         }
+
         .photographer__quote {
 
             font-family: 'DM Sans';
@@ -43,9 +44,7 @@
             font-weight: 400;
             font-size: 18px;
             line-height: 23px;
-
             color: #525252;
-
 
         }
     }

@@ -10,7 +10,6 @@ export default function getSelectedSort(data) {
         const mediaCard = document.getElementsByClassName("cardMedia");
         
         const totalPhoto = mediaCard.length
-        console.log(totalPhoto)
         cardContainer.innerHTML = ""
 
         let sortOption = e.target.value
@@ -19,7 +18,6 @@ export default function getSelectedSort(data) {
                 return b.likes - a.likes
             })
         } else if (sortOption === "date") {
-            console.log("date")
             sortMedia.sort((a,b) => {
                 return new Date(a._date).valueOf() - new Date(b._date).valueOf()
             })
@@ -42,6 +40,5 @@ export default function getSelectedSort(data) {
             elt.addEventListener("click", () => sliderFactory(media, sortMedia, name))
         })
     })
-    console.table(sortMedia)
     return sortMedia
  }

@@ -29,7 +29,8 @@ export default function sliderFactory(firstMedia, sortMedia, name) {
     firstSlide.className += " active"
     
     const nbrSlider = slides.length
-
+    const totalLikes = document.querySelector(".totalLikes")
+    totalLikes.style.display = "none"
 
     const back = document.querySelector(".back")
     const next = document.querySelector(".next")
@@ -46,20 +47,13 @@ export default function sliderFactory(firstMedia, sortMedia, name) {
         slides[n].classList.remove('active')
         n++
         if (n >= nbrSlider) { n = 0 }
-        
         slides[n].classList.add("active")
     })
 
     close.addEventListener("click", () => {
         slidesContainer.innerHTML = ""
         slider.classList.remove("active")
-       
+        totalLikes.style.display = "grid"
     })
-
-    function removeActiveImages(){
-        for( let i = 0; i < nbrSlider ;  i++) {
-           
-        }
-    }
 
 }

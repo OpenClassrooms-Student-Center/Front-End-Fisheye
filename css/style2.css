@@ -1,4 +1,4 @@
-body {
+body, * {
   font-family: "DM Sans", sans-serif;
   margin: 0;
   box-sizing: border-box;
@@ -87,6 +87,27 @@ body {
   z-index: 1;
 }
 
+.slide {
+  position: absolute;
+  height: 80%;
+  max-width: 80%;
+  top: 10%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  opacity: 0;
+}
+
+.photo__slider {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.slide.active {
+  opacity: 1;
+}
+
 header {
   display: flex;
   flex-direction: row;
@@ -115,8 +136,10 @@ header h1 {
 .photograph-header {
   display: flex;
   flex-direction: row;
-  justify-content: space-around;
+  justify-content: space-between;
   align-items: center;
+  padding: 0 3%;
+  gap: 3%;
 }
 .photograph-header .photographer__presentation {
   display: flex;
@@ -172,8 +195,10 @@ header h1 {
 .photograph-header {
   display: flex;
   flex-direction: row;
-  justify-content: space-around;
+  justify-content: space-between;
   align-items: center;
+  padding: 0 3%;
+  gap: 3%;
 }
 .photograph-header .photographer__presentation {
   display: flex;
@@ -210,6 +235,71 @@ header h1 {
   aspect-ratio: 1/1;
   border-radius: 50%;
   object-fit: cover;
+}
+
+.slider {
+  display: none;
+  position: fixed;
+  height: 100vh;
+  width: 100vw;
+  top: 0;
+  left: 0;
+  background-color: white;
+}
+
+.slider.active {
+  display: flex;
+}
+
+.back, .next, .close {
+  font-size: 3rem;
+  z-index: 1;
+  color: #901C1C;
+  position: absolute;
+}
+
+.back, .next {
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.next {
+  right: 1rem;
+}
+
+.back {
+  left: 1rem;
+}
+
+.close {
+  right: 1rem;
+}
+
+.slides__container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.totalLikes {
+  background-color: #DB8876;
+  position: fixed;
+  right: 38px;
+  bottom: 0;
+  width: 376px;
+  height: 50px;
+  display: grid;
+  grid-template-columns: auto auto 1fr;
+  justify-content: start;
+  align-items: center;
+  gap: 3%;
+  padding: 0 3%;
+  border-radius: 5px 5px 0 0;
+}
+
+.totalLikes__price {
+  justify-self: end;
 }
 
 main {
