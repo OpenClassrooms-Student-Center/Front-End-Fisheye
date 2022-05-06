@@ -15,6 +15,7 @@ class Photographer {
   }
 
   getUserCardDOM () {
+    // eslint-disable-next-line no-undef
     return htmlToElement(`
       <article class="photographerCard">
         <a class="photographerCard__link" href="photographer.html?id=${this.id}" title="Lien vers le photographe ${this.name}">
@@ -85,6 +86,7 @@ class Photographer {
   }
 
   getPhotographerModalDOM () {
+    // eslint-disable-next-line no-undef
     return htmlToElement(`
       <dialog class="modal" id="contact_modal" aria-labelledby="modalTitle">
           <header>

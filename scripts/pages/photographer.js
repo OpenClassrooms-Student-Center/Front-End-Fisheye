@@ -2,7 +2,7 @@
 
 let currentPhotographer = null
 let currentPhotographerMedias = null
-let lighboxCurrentMediaId = null
+let lightboxCurrentMediaId = null
 let currentFilter = 'filter_popular'
 // Code for action (enter (keyCode = 13) espace (keyCode = 32))
 const codeAction = ['Enter', 'Space']
@@ -68,7 +68,6 @@ function addEventListenersToCard (card) {
   })
   // Add eventListener on enter/space to display media
   card.parentNode.addEventListener('keydown', (e) => {
-    //const buttonLike = openLightbox.querySelector('.fa-heart')
     const stringId = e.target.id
     const mediaId = Number(stringId.replace('mediaCard--', ''))
     if (codeAction.includes(e.code) && !e.target.classList.contains('fa-heart')) displayMediaInLightboxFromId (mediaId)
@@ -118,38 +117,38 @@ function lightboxUtilities () {
   const previousSlideButton = document.querySelector('.lightbox__leftButton')
   const lightbox = document.querySelector('#lightbox')
 
-  const displayNextMedia = (button, nextMediaIndex) => {
-    let media = currentPhotographerMedias[nextMediaIndex]
-    // Display next item
+  const displayNewMedia = (button, newMediaIndex) => {
+    let media = currentPhotographerMedias[newMediaIndex]
+    // Display new item
     displayMediaInLightbox(media)
     // Define current item
-    lighboxCurrentMediaId = media.id
+    lightboxCurrentMediaId = media.id
     // Focus
     button.focus()
   }
   
   const nextSlide = () => {
     // Check if current item is last and define next item
-    const lighboxCurrentMediaIndex = currentPhotographerMedias.findIndex((media) => media.id === lighboxCurrentMediaId)
+    const lighboxCurrentMediaIndex = currentPhotographerMedias.findIndex((media) => media.id === lightboxCurrentMediaId)
     let nextMediaIndex
     if (lighboxCurrentMediaIndex === currentPhotographerMedias.length - 1) {
       nextMediaIndex = 0
     } else {
       nextMediaIndex = lighboxCurrentMediaIndex + 1
     }
-    displayNextMedia (nextSlideButton, nextMediaIndex)
+    displayNewMedia (nextSlideButton, nextMediaIndex)
   }
 
   const previousSlide = () => {
     // Check if current item is first and define next item
-    const lighboxCurrentMediaIndex = currentPhotographerMedias.findIndex((media) => media.id === lighboxCurrentMediaId)
+    const lighboxCurrentMediaIndex = currentPhotographerMedias.findIndex((media) => media.id === lightboxCurrentMediaId)
     let nextMediaIndex
     if (lighboxCurrentMediaIndex === 0) {
       nextMediaIndex = currentPhotographerMedias.length - 1
     } else {
       nextMediaIndex = lighboxCurrentMediaIndex - 1
     }
-    displayNextMedia (previousSlideButton, nextMediaIndex)
+    displayNewMedia (previousSlideButton, nextMediaIndex)
   }
 
   nextSlideButton.addEventListener('click', nextSlide)
@@ -195,11 +194,13 @@ function filterUtilities () {
     filterToggleDisplay ()
   })
   document.addEventListener('click', (e) => {
+    // If already display and click outside (not on list or button) just close
     if (filterSelectedElement.getAttribute('aria-expanded') === 'true' && !(e.target.getAttribute('role') === 'listbox') && !(e.target.getAttribute('id') === 'buttonFilter')) {
       filterToggleDisplay ()
     }
   })
   document.addEventListener('keydown', (e) => {
+    // If already display and press escape just close
     if (filterSelectedElement.getAttribute('aria-expanded') === 'true') {
       if (e.code === 'Escape') {
         filterToggleDisplay ()
@@ -226,6 +227,7 @@ function filterToggleDisplay () {
   filterListElement.classList.toggle('displayNone')
   filterSelectedElement.setAttribute(
     'aria-expanded',
+    // Get opposite value (true === false => false || false === false => true)
     filterSelectedElement.getAttribute('aria-expanded') === 'false'
   )
 }
@@ -258,6 +260,7 @@ function swapMediaLike (mediaId) {
   if (currentMedia.isLiked) {     
     currentPhotographer.addLike ()
     if (currentFilter !== 'filter_popular') return
+    // If first element, no need to swap it will keep first
     if (currentMediaIndex > 0) {
       const previousMedia = currentPhotographerMedias[currentMediaIndex - 1]
       if (previousMedia.likes < currentMedia.likes) {
@@ -267,6 +270,7 @@ function swapMediaLike (mediaId) {
   } else {
     currentPhotographer.removeLike ()
     if (currentFilter !== 'filter_popular') return
+    // If last element, no need to swap it will keep last
     if (currentMediaIndex < currentPhotographerMedias.length - 1) {
       const nextMedia = currentPhotographerMedias[currentMediaIndex + 1]
       if (nextMedia.likes > currentMedia.likes) {
@@ -280,29 +284,27 @@ function swapNodes (nodeA, nodeB) {
   sortMediasBy ('filter_popular')
   const parentA = nodeA.parentNode;
   const siblingA = nodeA.nextSibling === nodeB ? nodeA : nodeA.nextSibling;
-
   // Move `nodeA` to before the `nodeB`
   nodeB.parentNode.insertBefore(nodeA, nodeB);
-
   // Move `nodeB` to before the sibling of `nodeA`
   parentA.insertBefore(nodeB, siblingA);
 }
 
 async function init () {
-  // Récupère l'id passer en parametre de l'url
+  // Get id from URL
   const photographerId = parseInt(new URL(document.location).searchParams.get('id'))
-  // Récupère les datas des photographes et des medias
+  // Get photographers and medias
   // eslint-disable-next-line no-undef
   const photographerApi = new PhotographerApi('data/photographers.json')
   const { photographers, media } = await photographerApi.get()
-  // Filtre pour obtenir le photographe et les medias liés
+  // Filter to get the currentPhotographer and his medias
   const photographer = photographers.filter(elt => elt.id === photographerId)[0]
   const medias = media.filter(elt => elt.photographerId === photographerId)
 
   // eslint-disable-next-line no-undef
   currentPhotographer = new PhotographerFactory(photographer)
   // Use some 'hack' to get photographer folder due to lack of consistency in data
-  // split(' ') doesn't work with Ellie-Rose => 'Ellie Rose'
+  // split(' ') doesn't work with 'Ellie-Rose' => 'Ellie Rose' may convert '-' into space to get it work need more feedback from back team
   const photographersFolders = {
     243: 'Mimi',
     930: 'Ellie Rose',

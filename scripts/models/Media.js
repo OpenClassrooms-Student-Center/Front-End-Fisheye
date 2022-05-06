@@ -37,6 +37,7 @@ class Media {
 
   getMediaCardDOM () {
     const heartValue = this.isLiked ? 'fa-solid' : 'fa-regular'
+    // eslint-disable-next-line no-undef
     return htmlToElement(`
       <div class="mediaCard" id="mediaCard--${this.id}" tabindex="0">
         ${this.getSpecificDOM()}
@@ -53,6 +54,7 @@ class Media {
   }
 
   getMediaLightboxDOM () {
+    // eslint-disable-next-line no-undef
     return htmlToElement(`
       <div class="lightbox__content--middleColumn">
         <div class="lightbox__mediaContent" aria-label="${this.title}, vue rapprochée">
