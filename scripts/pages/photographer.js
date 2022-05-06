@@ -52,6 +52,7 @@ function displayMediaInLightbox (media) {
   if (document.body.contains(lightboxMediaContent)) lightboxMediaContent.remove()
   const mediaDOMElement = media.getMediaLightboxDOM()
   lightboxMediaLeftContent.after(mediaDOMElement)
+  lightboxCurrentMediaId = media.id
 }
 
 function displayMediaInLightboxFromId (mediaId) {
@@ -64,13 +65,13 @@ function displayMediaInLightboxFromId (mediaId) {
 
 function addEventListenersToCard (card) {
   card.addEventListener('click', (e) => {
-    if (!e.target.classList.contains('fa-heart')) displayMediaInLightboxFromId (Number(e.target.id))
+    if (!e.target.classList.contains('fa-heart') && !e.target.classList.contains('mediaCard__infos--title')) displayMediaInLightboxFromId (Number(e.target.id))
   })
   // Add eventListener on enter/space to display media
-  card.parentNode.addEventListener('keydown', (e) => {
+  card.addEventListener('keydown', (e) => {
     const stringId = e.target.id
     const mediaId = Number(stringId.replace('mediaCard--', ''))
-    if (codeAction.includes(e.code) && !e.target.classList.contains('fa-heart')) displayMediaInLightboxFromId (mediaId)
+    if (codeAction.includes(e.code) && !e.target.classList.contains('fa-heart') && !e.target.classList.contains('mediaCard__infos--title')) displayMediaInLightboxFromId (mediaId)
   })
 }
 
@@ -220,6 +221,7 @@ function selectFilter (event) {
   currentFilterElement.setAttribute('aria-selected', true)
   filterToggleDisplay ()
   displayMediasCards ()
+  filterSelectedElement.focus()
 }
 
 function filterToggleDisplay () {
