@@ -1,36 +1,81 @@
 <!DOCTYPE html>
-<html>
+<html lang="fr">
   <head>
     <link href="css/style.css" rel="stylesheet" type="text/css" />
     <meta charset="utf-8">
     <link rel="icon" type="image/png" href="assets/favicon.png">
     <link href="https://fonts.googleapis.com/css?family=DM+Sans&display=swap" rel="stylesheet">
-    <title>Fisheye - photographe </title>
+    <script src="https://kit.fontawesome.com/23fccb6679.js" crossorigin="anonymous"></script>
+    <title>Fisheye - Photographe</title>
   </head>
   <body>
+
     <header>
-      <img src="assets/images/logo.png" class="logo" />
+      <a href="index.html"><img src="assets/images/logo.png" class="logo" alt="Fisheye Photographe" /></a>
     </header>
+
     <main id="main">
-      <div class="photograph-header">
-        <button class="contact_button" onclick="displayModal()">Contactez-moi</button>
+
+      <section class="photographHeader"></section>
+
+      <div class="photographMedias">
+
+        <div class="photographMedias__filters">
+          <p class="photographMedias__filtersTitle">
+            Trier par
+          </p>
+          <div class="photographMedias__filtersMenu">
+            <button id="buttonFilter" class="contact_button photographMedias__filtersMenu--selected" role="button" aria-haspopup="listbox" aria-expanded="false" aria-activedescendant="filter_popular" tabindex="0"  >
+              Popularité<i class="fa-solid fa-chevron-down" aria-hidden="true"></i>
+            </button>
+            <ul class="photographMedias__filtersMenu--list displayNone">
+              <li id="filter_popular" role="listbox" aria-label="Trier par popularité" aria-selected="true" aria-labelledby="buttonFilter" tabindex="0" >Popularité<i class="fa-solid fa-chevron-up" aria-hidden="true"></i></li>
+              <li id="filter_date" role="listbox" aria-label="Trier par date" aria-labelledby="buttonFilter" tabindex="0" >Date</li>
+              <li id="filter_title" role="listbox" aria-label="Trier par titre" aria-labelledby="buttonFilter" tabindex="0" >Titre</li>
+            </ul>
+          </div>
+        </div>
+        
+        <div class="mediaCards"></div>
+
       </div>
+        
+      <aside class="photographComplementary"></aside>
+      
     </main>
-    <div id="contact_modal">
-			<div class="modal">
-				<header>
-          <h2>Contactez-moi</h2>
-          <img src="assets/icons/close.svg" onclick="closeModal()" />
-        </header>
-				<form>
-					<div>
-						<label>Prénom</label>
-						<input />
-					</div>
-          <button class="contact_button">Envoyer</button>
-				</form>
-			</div>
-		</div>
-    <script src="/scripts/utils/contactForm.js"></script>
+
+    <dialog id="lightbox">
+      <div class="lightbox__content">
+        <div class="lightbox__content--leftColumn">
+          <div class="lightbox__button lightbox__leftButton" aria-label="Image précédente" tabindex="0" ></div>
+        </div>
+        <div class="lightbox__content--rightColumn">
+          <div class="lightbox__closeButton close_lightbox">
+            <img class="close_lightbox" src="assets/icons/close.svg" alt="Fermez la vue raprochée" tabindex="0" />
+          </div>
+          <div class="lightbox__button lightbox__rightButton" aria-label="Image suivante" tabindex="0" ></div>
+        </div>
+      </div>
+    </dialog>
+
+    <!-- Shared lib -->
+    <script src="scripts/utils/sharedFunctions.js"></script>
+
+    <!-- Api -->
+    <script src="scripts/api/PhotographerApi.js"></script>
+
+    <!-- Factories -->
+    <script src="scripts/factories/PhotographerFactory.js"></script>
+    <script src="scripts/factories/MediaFactory.js"></script>
+    
+    <!-- Models -->
+    <script src="scripts/models/Photographer.js"></script>
+    <script src="scripts/models/Media.js"></script>
+    <script src="scripts/models/ImageMedia.js"></script>
+    <script src="scripts/models/VideoMedia.js"></script>
+
+    <!-- Entry point -->
+    <script src="scripts/pages/photographer.js"></script>
+
   </body>
 </html>

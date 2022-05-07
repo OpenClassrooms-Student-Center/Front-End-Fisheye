@@ -1,0 +1,30 @@
+{
+  "name": "front-end-fisheye",
+  "version": "1.0.0",
+  "description": "FishEye website prototype",
+  "main": "scripts/index.js",
+  "scripts": {
+    "lint": "eslint ."
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jerome-foulet/Front-End-Fisheye.git"
+  },
+  "keywords": [
+    "fisheye",
+    "prototype"
+  ],
+  "author": "Jerome FOULET",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jerome-foulet/Front-End-Fisheye/issues"
+  },
+  "homepage": "https://github.com/jerome-foulet/Front-End-Fisheye#readme",
+  "devDependencies": {
+    "eslint": "^7.32.0",
+    "eslint-config-standard": "^16.0.3",
+    "eslint-plugin-import": "^2.26.0",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-promise": "^5.2.0"
+  }
+}

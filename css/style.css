@@ -1,8 +1,22 @@
 @import url("photographer.css");
 
 body {
+    --primary-dark-background-color: #901C1C;
+    --primary-dark-text-color: white;
+    --primary-light-background-color: white;
+    --primary-light-text-color: #D3573C;
+    --secondary-dark-background-color: #DB8876;
+    --secondary-dark-text-color: black;
+    --secondary-penumbra-background-color: #FAFAFA;
+    --secondary-penumbra-text-color: #525252;
+    --secondary-light-background-color: white;
+    --secondary-light-text-color: #901C1C;
+
+    
     font-family: "DM Sans", sans-serif;
     margin: 0;
+    width: 1440px;
+    margin: 0 auto;
 }
 
 
@@ -15,7 +29,7 @@ header {
 }
 
 h1 {
-    color: #901C1C;
+    color: var(--secondary-light-text-color);
     margin-right: 100px;
 }
 
@@ -40,11 +54,54 @@ h1 {
 }
 
 .photographer_section article h2 {
-    color: #D3573C;
+    color: var(--primary-light-text-color);
     font-size: 36px;
+    margin-top: 0.5em;
+    margin-bottom: 0;
 }
 
 .photographer_section article img {
     height: 200px;
     width: 200px;
+}
+
+.photographerCard {
+    min-width: 301px;
+}
+
+.photographerCard__link {
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+
+    text-decoration: none;
+}
+
+.photographerCard__img {
+    border-radius: 100%;
+    object-fit: cover;
+}
+
+.photographerCard__infos {
+    text-align: center;
+}
+
+.photographerCard__infos--location {
+    color: var(--secondary-light-text-color);
+    font-size: 13px;
+    margin: 0;
+    line-height: 17px;
+}
+
+.photographerCard__infos--tagline {
+    font-size: 10px;
+    margin: 0;
+    line-height: 13px;
+}
+
+.photographerCard__infos--price {
+    color: #757575;
+    font-size: 9px;
+    margin: 0;
+    line-height: 12px;
 }

@@ -1,22 +1,37 @@
 <!DOCTYPE html>
-<html>
+<html lang="fr">
   <head>
     <link href="css/style.css" rel="stylesheet" type="text/css" />
     <meta charset="utf-8">
     <link rel="icon" type="image/png" href="assets/favicon.png">
     <link href="https://fonts.googleapis.com/css?family=DM+Sans&display=swap" rel="stylesheet">
-    <title>Fisheye</title>
+    <title>Fisheye - Homepage</title>
   </head>
   <body>
+
     <header>
-        <img src="assets/images/logo.png" class="logo" />
+        <a href="index.html"><img src="assets/images/logo.png" class="logo" alt="Fisheye Homepage" /></a>
         <h1>Nos photographes</h1>
     </header>
+    
     <main id="main">
-        <div class="photographer_section"></div>
+        <section class="photographer_section"></section>
     </main>
-    <script src="scripts/factories/Photographer.js"></script>
+
+    <!-- Shared lib -->
+    <script src="scripts/utils/sharedFunctions.js"></script>
+
+    <!-- Api -->
+    <script src="scripts/api/PhotographerApi.js"></script>
+
+    <!-- Factories -->
+    <script src="scripts/factories/PhotographerFactory.js"></script>
+
+    <!-- Models -->
+    <script src="scripts/models/Photographer.js"></script>
+
+    <!-- Entry point -->
     <script src="scripts/pages/index.js"></script>
-    <script src="scripts/pages/photographer.js"></script>
+
   </body>
 </html>
