@@ -55,10 +55,10 @@
             display: flex;
             flex-direction: row;
             justify-content: space-between;
+            color: $colorPrimary;
             margin: 0;
             & .title {
-                margin: 0 30px 0 0;
-                color: $colorPrimary;
+                padding: 0 30px 0 0;
                 font-size: map-get($map: $font-size, $key: text) + 6;
             }
             & .subContent {
@@ -68,7 +68,7 @@
                 justify-content: center;
                 & .likes {
                     margin: 0;
-                    padding-right: 2px;
+                    padding-right: 6px;
                     font-size: map-get($map: $font-size, $key: text) - 2;
                 }
             }

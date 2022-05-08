@@ -171,11 +171,11 @@ body {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  color: #901C1C;
   margin: 0;
 }
 .media__item .content .title {
-  margin: 0 30px 0 0;
-  color: #901C1C;
+  padding: 0 30px 0 0;
   font-size: 24px;
 }
 .media__item .content .subContent {
@@ -186,7 +186,7 @@ body {
 }
 .media__item .content .subContent .likes {
   margin: 0;
-  padding-right: 2px;
+  padding-right: 6px;
   font-size: 16px;
 }
 
