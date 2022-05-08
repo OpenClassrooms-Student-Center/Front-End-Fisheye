@@ -6,7 +6,6 @@ function storeMedias(json) {
 
 async function getPhotographers() {
   // Penser à remplacer par les données récupérées dans le json
-
   var photographers = [];
 
   var storePhotographers = () => {};

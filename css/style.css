@@ -41,10 +41,29 @@ h1 {
 
 .photographer_section article h2 {
     color: #D3573C;
-    font-size: 36px;
+    font-size: 30px;
+    line-height: 0px;
+    margin-top: 40px;
 }
 
 .photographer_section article img {
     height: 200px;
     width: 200px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.place {
+    color: #901C1C;
+    font-size: 18px;
+    line-height: 0px;
+}
+
+.tagline {
+    line-height: 0px;
+}
+
+.price {
+    line-height: 0px;
+    color: #757575;
 }
