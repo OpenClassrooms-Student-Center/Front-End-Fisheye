@@ -13,9 +13,9 @@ class PictureCard {
     getPictureCardDom() {
         const mediaItem = document.createElement('div')
         mediaItem.setAttribute('class', 'media__item')
-        
+
         const image = document.createElement('img')
-        
+
         image.setAttribute(
             'src',
             `/assets/media/${this.photographerName}/${this.image}`

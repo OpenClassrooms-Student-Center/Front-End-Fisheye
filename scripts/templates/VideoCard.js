@@ -42,7 +42,7 @@ class VideoCard {
         p.appendChild(likeDiv)
         mediaItem.appendChild(video)
         mediaItem.appendChild(p)
-        
+
         return mediaItem
     }
 }

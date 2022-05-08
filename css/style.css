@@ -1,4 +1,6 @@
-*, *::before, *::after {
+*,
+*::before,
+*::after {
   box-sizing: border-box;
 }
 
@@ -161,7 +163,8 @@ body {
   gap: 95px;
   margin: 100px;
 }
-.media__item img, .media__item video {
+.media__item img,
+.media__item video {
   height: 300px;
   width: 100%;
   object-fit: cover;

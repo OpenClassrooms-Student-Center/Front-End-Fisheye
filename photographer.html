@@ -1,60 +1,79 @@
 <!DOCTYPE html>
 <html lang="fr">
-  <head>
-    <link href="./css/style.css" rel="stylesheet" type="text/css" />
-    <meta charset="utf-8">
-    <link rel="icon" type="image/png" href="assets/favicon.png">
-    <link href="https://fonts.googleapis.com/css?family=DM+Sans&display=swap" rel="stylesheet">
-    <title>Fisheye - photographe </title>
+    <head>
+        <link href="./css/style.css" rel="stylesheet" type="text/css" />
+        <meta charset="utf-8" />
+        <link rel="icon" type="image/png" href="assets/favicon.png" />
+        <link
+            href="https://fonts.googleapis.com/css?family=DM+Sans&display=swap"
+            rel="stylesheet"
+        />
+        <title>Fisheye - photographe</title>
 
-    <!-- Font Awesome -->
-    <script src="https://kit.fontawesome.com/3cca219877.js" crossorigin="anonymous"></script>
-  </head>
-  <body>
-    <header class="header">
-      <a href="/index.html"><img src="assets/images/logo.png" alt="Fisheye Home page" class="header__logo" /></a>
-    </header>
-    <main id="main">
-      <div class="photographer_header">
-        <button class="button" onclick="displayModal()">Contactez-moi</button>
-      </div>
-    </main>
-    <div id="contact_modal">
-			<div class="modal">
-				<header class="modal__header">
-          <h2 class="modal__header__title">Contactez-moi</h2>
-          <img src="assets/icons/close.svg" alt="" class="modal__header__img" onclick="closeModal()" />
+        <!-- Font Awesome -->
+        <script
+            src="https://kit.fontawesome.com/3cca219877.js"
+            crossorigin="anonymous"
+        ></script>
+    </head>
+    <body>
+        <header class="header">
+            <a href="/index.html">
+                <img
+                    src="assets/images/logo.png"
+                    alt="Fisheye Home page"
+                    class="header__logo"
+                />
+            </a>
         </header>
-				<form class="form">
-					<div>
-						<label>Prénom</label>
-						<input />
-					</div>
-          <button class="button">Envoyer</button>
-				</form>
-			</div>
-		</div>
+        <main id="main">
+            <div class="photographer_header">
+                <button class="button" onclick="displayModal()">
+                    Contactez-moi
+                </button>
+            </div>
+        </main>
+        <div id="contact_modal">
+            <div class="modal">
+                <header class="modal__header">
+                    <h2 class="modal__header__title">Contactez-moi</h2>
+                    <img
+                        src="assets/icons/close.svg"
+                        alt=""
+                        class="modal__header__img"
+                        onclick="closeModal()"
+                    />
+                </header>
+                <form class="form">
+                    <div>
+                        <label>Prénom</label>
+                        <input />
+                    </div>
+                    <button class="button">Envoyer</button>
+                </form>
+            </div>
+        </div>
 
-    <!-- Api -->
-    <script src="scripts/api/Api.js"></script>
+        <!-- Api -->
+        <script src="scripts/api/Api.js"></script>
 
-    <!-- Models -->
-    <script src="scripts/models/Picture.js"></script>
-    <script src="scripts/models/Video.js"></script>
-    <script src="scripts/models/Photographer.js"></script>
-    
-    <!-- Factories -->
-    <script src="scripts/factories/MediaFactory.js"></script>
+        <!-- Models -->
+        <script src="scripts/models/Picture.js"></script>
+        <script src="scripts/models/Video.js"></script>
+        <script src="scripts/models/Photographer.js"></script>
 
-    <!-- Templates -->
-    <script src="scripts/templates/PictureCard.js"></script>
-    <script src="scripts/templates/VideoCard.js"></script>
-    <script src="scripts/templates/PhotographerCard.js"></script>
+        <!-- Factories -->
+        <script src="scripts/factories/MediaFactory.js"></script>
 
-    <!-- Pages -->
-    <script src="scripts/pages/photographer.js"></script>
+        <!-- Templates -->
+        <script src="scripts/templates/PictureCard.js"></script>
+        <script src="scripts/templates/VideoCard.js"></script>
+        <script src="scripts/templates/PhotographerCard.js"></script>
 
-    <!-- Utils -->
-    <script src="scripts/utils/contactForm.js"></script>
-  </body>
+        <!-- Pages -->
+        <script src="scripts/pages/photographer.js"></script>
+
+        <!-- Utils -->
+        <script src="scripts/utils/contactForm.js"></script>
+    </body>
 </html>

@@ -45,7 +45,8 @@
     gap: 95px;
     margin: 100px;
     &__item {
-        & img, video {
+        & img,
+        video {
             height: 300px;
             width: 100%;
             object-fit: cover;
