@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 /**
  * @param {String} HTML representing a single element
  * @return {Element}

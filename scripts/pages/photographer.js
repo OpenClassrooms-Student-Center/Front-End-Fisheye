@@ -188,7 +188,7 @@ function filterUtilities () {
       }
     })
     element.addEventListener('focus', (e) => {
-      filterSelectedElement.setAttribute('aria-activedescendant', e.target.id)
+      filterListElement.setAttribute('aria-activedescendant', e.target.id)
     })
   })
   filterSelectedElement.addEventListener('click', () => {
@@ -215,10 +215,10 @@ function selectFilter (event) {
   sortMediasBy (currentFilterElement.id)
   // Adding icone
   filterSelectedElement.innerHTML = `${currentFilterElement.textContent}<i class="fa-solid fa-chevron-down"></i>`
-  // Remove all sibbling aria-selected attribut
-  filterItemsElement.forEach(element => element.removeAttribute('aria-selected'))
-  // Add aria-selected on current element
-  currentFilterElement.setAttribute('aria-selected', true)
+  // Remove all sibbling aria-current attribut
+  filterItemsElement.forEach(element => element.removeAttribute('aria-current'))
+  // Add aria-current on current element
+  currentFilterElement.setAttribute('aria-current', true)
   filterToggleDisplay ()
   displayMediasCards ()
   filterSelectedElement.focus()

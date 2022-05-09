@@ -18,7 +18,7 @@ class Photographer {
     // eslint-disable-next-line no-undef
     return htmlToElement(`
       <article class="photographerCard">
-        <a class="photographerCard__link" href="photographer.html?id=${this.id}" title="Lien vers le photographe ${this.name}">
+        <a class="photographerCard__link" href="photographer.html?id=${this.id}" title="Lien vers le photographe ${this.name}" aria-label="Lien vers le photographe ${this.name}">
           <img class="photographerCard__img" src="${this.picture}" alt="${this.name}">
           <h2 class="photographerCard__title">${this.name}</h2>
         </a>
