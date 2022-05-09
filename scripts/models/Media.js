@@ -46,7 +46,7 @@ class Media {
           ${this.title}
           </p>
           <p class="mediaCard__infos--likes">
-            <span id="totalMedialikes--${this.id}" aria-label="Total des likes pour ce media">${this.likes}</span> <i id="likes--${this.id}" class="${heartValue} fa-heart" aria-label="like" tabindex="0" ></i>
+            <span class="ignore" id="totalMedialikes--${this.id}" aria-label="Total des likes pour ce media">${this.likes}</span> <i id="likes--${this.id}" class="${heartValue} fa-heart" aria-label="like" tabindex="0" ></i>
           </p>
         </div>
       </div>
