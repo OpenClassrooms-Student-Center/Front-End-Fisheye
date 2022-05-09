@@ -44,6 +44,7 @@ export class ComponentsFactory {
         const button = document.createElement("button");
         button.classList.add("like-btn");
         button.setAttribute("id", `${id}`);
+        button.setAttribute("type", "button");
 
         const counter = document.createElement("p");
         counter.classList.add("like-btn__counter");
@@ -94,6 +95,7 @@ export class ComponentsFactory {
 
         const selectedContainer = document.createElement("li");
         const selected = document.createElement("button");
+        selected.setAttribute("type", "button");
         selected.textContent =
             window.location.search.includes("sort=") && window.location.search.split("&")[1].split("=")[1] !== "Popularit%C3%A9"
                 ? window.location.search.split("&")[1].split("=")[1]
@@ -111,6 +113,7 @@ export class ComponentsFactory {
 
         const option1Container = document.createElement("li");
         const option1 = document.createElement("button");
+        option1.setAttribute("type", "button");
         option1.textContent = selected.textContent === "Date" ? "Popularité" : "Date";
         option1Container.classList.add("sort-btn__option");
         option1Container.classList.add("sort-btn__option--hidden");
@@ -119,6 +122,7 @@ export class ComponentsFactory {
 
         const option2Container = document.createElement("li");
         const option2 = document.createElement("button");
+        option2.setAttribute("type", "button");
         option2.textContent = selected.textContent === "Titre" ? "Popularité" : "Titre";
         option2Container.classList.add("sort-btn__option");
         option2Container.classList.add("sort-btn__option--hidden");
@@ -187,6 +191,7 @@ export class ComponentsFactory {
 
     getMainBtnDOM = (btnText) => {
         const btn = document.createElement("button");
+        btn.setAttribute("type", "button");
         btn.textContent = btnText;
         btn.classList.add("btn");
 
@@ -204,6 +209,7 @@ export class ComponentsFactory {
 
     getLogoDOM = () => {
         const logo = document.createElement("button");
+        logo.setAttribute("type", "button");
         logo.classList.add("logo");
 
         const image = document.createElement("img");
@@ -243,13 +249,17 @@ export class ComponentsFactory {
     getUserNameDOM = (data, isInCard) => {
         const { name } = data;
 
-        const userName = document.createElement("h2");
-        userName.classList.add("user-name");
-        userName.textContent = name;
+        let userName;
 
         if (isInCard) {
+            userName = document.createElement("h2");
             userName.classList.add("user-name--card");
+        } else {
+            userName = document.createElement("h1");
         }
+
+        userName.classList.add("user-name");
+        userName.textContent = name;
 
         return userName;
     };
@@ -289,6 +299,7 @@ export class ComponentsFactory {
         mediaContainer.classList.add("media-container");
 
         const mediaButton = document.createElement("button");
+        mediaButton.setAttribute("type", "button");
 
         const media = document.createElement("img");
         media.classList.add("media-container__media");
@@ -322,6 +333,7 @@ export class ComponentsFactory {
         mediaContainer.classList.add("media-container");
 
         const mediaButton = document.createElement("button");
+        mediaButton.setAttribute("type", "button");
 
         const media = document.createElement("video");
         media.classList.add("media-container__media");
@@ -356,6 +368,7 @@ export class ComponentsFactory {
         const { portrait, name, city, country, tagline, price, id } = data;
 
         const userCard = document.createElement("button");
+        userCard.setAttribute("type", "button");
         userCard.classList.add("user-card");
 
         const avatar = this.getAvatarDOM({ portrait, name }, true);
