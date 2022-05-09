@@ -65,12 +65,14 @@ function displayMediaInLightboxFromId (mediaId) {
 
 function addEventListenersToCard (card) {
   card.addEventListener('click', (e) => {
+    console.log(card, e);
     if (!e.target.classList.contains('fa-heart') && !e.target.classList.contains('mediaCard__infos--title')) displayMediaInLightboxFromId (Number(e.target.id))
   })
   // Add eventListener on enter/space to display media
   card.addEventListener('keydown', (e) => {
     const stringId = e.target.id
     const mediaId = Number(stringId.replace('mediaCard--', ''))
+    console.log(card, e);
     if (codeAction.includes(e.code) && !e.target.classList.contains('fa-heart') && !e.target.classList.contains('mediaCard__infos--title')) displayMediaInLightboxFromId (mediaId)
   })
 }
