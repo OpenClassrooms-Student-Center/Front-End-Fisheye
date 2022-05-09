@@ -256,7 +256,6 @@ form textarea {
     height: 300px;
     object-fit: cover;
     border-radius: 5px;
-    z-index: 1;
 }
 
 .mediaCard__infos {
@@ -275,7 +274,6 @@ form textarea {
     line-height: 31px;
     width: 100px;
     text-align: right;
-    z-index: 2;
 }
 
 .photographComplementary {
