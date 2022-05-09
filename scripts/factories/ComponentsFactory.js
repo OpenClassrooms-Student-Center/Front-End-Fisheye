@@ -214,7 +214,7 @@ export class ComponentsFactory {
 
         const image = document.createElement("img");
         image.classList.add("logo__img");
-        image.setAttribute("alt", "Logo FishEye");
+        image.setAttribute("alt", "Fisheye Home page");
         image.setAttribute("src", "./assets/images/logo.png");
 
         logo.appendChild(image);
@@ -234,7 +234,13 @@ export class ComponentsFactory {
 
         const image = document.createElement("img");
         image.classList.add("avatar__img");
-        image.setAttribute("alt", `Avatar de ${name}`);
+
+        if (isInCard) {
+            image.setAttribute("alt", "");
+        } else {
+            image.setAttribute("alt", `Avatar de ${name}`);
+        }
+
         image.setAttribute("src", `../../assets/photographers/${portrait}`);
 
         avatar.appendChild(image);
@@ -267,13 +273,17 @@ export class ComponentsFactory {
     getUserLocationDOM = (data, isInCard) => {
         const { city, country } = data;
 
-        const location = document.createElement("p");
-        location.classList.add("user-location");
-        location.textContent = `${city}, ${country}`;
+        let location;
 
         if (isInCard) {
+            location = document.createElement("p");
             location.classList.add("user-location--card");
+        } else {
+            location = document.createElement("h2");
         }
+
+        location.classList.add("user-location");
+        location.textContent = `${city}, ${country}`;
 
         return location;
     };
@@ -303,7 +313,7 @@ export class ComponentsFactory {
 
         const media = document.createElement("img");
         media.classList.add("media-container__media");
-        media.setAttribute("alt", title);
+        media.setAttribute("alt", `image : ${title}`);
         media.setAttribute("src", `../../assets/images/${photographerName.split(" ")[0]}/${image}`);
 
         mediaButton.appendChild(media);
@@ -473,6 +483,7 @@ export class ComponentsFactory {
         lightbox.classList.add("lightbox");
 
         const previousBtn = document.createElement("button");
+        previousBtn.setAttribute("type", "button");
         previousBtn.classList.add("lightbox__previous");
 
         const previousIcon = document.createElement("i");
@@ -486,6 +497,7 @@ export class ComponentsFactory {
         const closeBtn = document.createElement("button");
         closeBtn.classList.add("lightbox__figure__close");
         closeBtn.setAttribute("id", "close-lightbox");
+        closeBtn.setAttribute("type", "button");
 
         const closeIcon = document.createElement("i");
         closeIcon.classList.add("lightbox__figure__close__icon");
@@ -523,6 +535,7 @@ export class ComponentsFactory {
         figure.appendChild(caption);
 
         const nextBtn = document.createElement("button");
+        nextBtn.setAttribute("type", "button");
         nextBtn.classList.add("lightbox__next");
 
         const nextIcon = document.createElement("i");
