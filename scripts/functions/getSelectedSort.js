@@ -4,7 +4,6 @@ import sliderFactory from "../factories/slider.js";
 export default function getSelectedSort(data) {
     let sortMedia = [...data]
 
-    
     const optionsContainer = document.querySelector(".filter__options")
     const btndrop = document.querySelector(".button__top")
     const btnValue = document.querySelector(".button__top span")
@@ -27,10 +26,9 @@ export default function getSelectedSort(data) {
         toggleIndex = false
         
     }
-    console.log(liItems)
+   
     liItems.forEach((item) => {
         const a = item.querySelector("a")
-        console.log(a.innerHTML)
         item.addEventListener(('click'),() => {
                
             if (a.innerHTML === "Popularité") {
@@ -60,7 +58,6 @@ export default function getSelectedSort(data) {
             }
             const cardContainer = document.querySelector(".photo-field");
             cardContainer.innerHTML = ""
-            console.table(sortMedia)
             
             sortMedia.forEach((media) => {
                 

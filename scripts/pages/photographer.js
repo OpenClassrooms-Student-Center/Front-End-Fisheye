@@ -2,10 +2,12 @@ import getSelectedSort from "../functions/getSelectedSort.js";
 import hydratePhotoFactory from "../factories/photo.js";
 import sliderFactory from "../factories/slider.js";
 import createPhotoCard from "../templates/Card.js";
-import Presentation from "../model/presentation.js"
+import Presentation from "../model/presentation.js";
+import Modal from "../model/Modal.js"
 
 import presentationTemplate from "../templates/presentationTemplate.js";
 import totalLikes from "../model/totalLikes.js";
+import modalTemplate from "../templates/modal.js";
 
 async function initPhotographe() {
     const photographerId = getphotographerId();
@@ -65,6 +67,19 @@ async function getPhotos(photographerId) {
             sumLikes.innerHTML = totalLikes(sortMedia)
             const pricePerDay = document.querySelector(".totalLikes__price")
             pricePerDay.innerHTML = price + " /jour"
+
+            const modalData = new Modal(name)
+            const contactButton = document.querySelector(".contact_button")
+            
+            const modalContainer = document.getElementById("contact_modal");
+            const modal = document.createElement("div")
+            modalContainer.appendChild(modal)
+            modal.outerHTML = modalTemplate(modalData)
+            contactButton.addEventListener("click", modalData.displayModal)
+            const iconClose = document.querySelector(".modal header img")
+            
+            iconClose.addEventListener("click", modalData.closeModal)
+
         })
 
 }

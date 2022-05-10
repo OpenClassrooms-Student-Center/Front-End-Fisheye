@@ -9,6 +9,8 @@
     align-items: center;
     padding: 0 3%;
     gap: 3%;
+    background-color: #FAFAFA;
+    height: 300px;
     
 
     .photographer__presentation{
@@ -35,6 +37,7 @@
             font-size: 24px;
             line-height: 31px;
             color: #901C1C;
+            padding-bottom: 15px;
         }
 
         .photographer__quote {
@@ -49,6 +52,8 @@
         }
     }
 
+   
+    
     .portrait {
         height: 200px;
         aspect-ratio: 1/1;
