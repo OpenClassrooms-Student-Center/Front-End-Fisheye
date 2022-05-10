@@ -1,14 +1,14 @@
 //Mettre le code JavaScript lié à la page photographer.html
 
 class Photographers{
-    constructor(data) {
-        this._name = data.name
-        this._portrait = data.portrait
-        this._city = data.city
-        this._country = data.country
-        this._price = data.price
-        this._tagline = data.tagline
-        this._id = data.id
+    constructor(photographer) {
+        this._name = photographer.name
+        this._portrait = photographer.portrait
+        this._city = photographer.city
+        this._country = photographer.country
+        this._price = photographer.price
+        this._tagline = photographer.tagline
+        this._id = photographer.id
     }
 
     get name(){

@@ -17,6 +17,7 @@ class App {
         if(url.length > 1){
             console.log('page photographer')
             console.log(idphotograph)
+            
             photographersData.forEach(photographer =>{
                 if(photographer.id == idphotograph){
                     const TemplateProfile = new PhotographerProfile(photographer)

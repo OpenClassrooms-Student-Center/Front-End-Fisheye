@@ -11,10 +11,10 @@ class Api {
     async getPhotographer() {
         return fetch(this._url)
             .then(res => res.json())
-            .then(res => res)
+            // .then(res => res)
+            
             .then(res =>
-                console.log("Response Message:", res));
-
+                console.log('mes photographer:', res.photographer[0], 'mes media:', res.media))
             
     }
 
