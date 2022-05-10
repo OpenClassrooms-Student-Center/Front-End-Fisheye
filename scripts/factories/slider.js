@@ -25,6 +25,7 @@ export default function sliderFactory(firstMedia, sortMedia, name) {
         slides.push(slide)
     })
     slider.classList.add("active")
+    slider.ariaHidden = "false"
     const firstSlide = slides[n]
     firstSlide.className += " active"
     
@@ -36,24 +37,37 @@ export default function sliderFactory(firstMedia, sortMedia, name) {
     const next = document.querySelector(".next")
     const close = document.querySelector(".close")
 
-    back.addEventListener("click", () => {
+    back.addEventListener("click",() => goPreviousSlide())
+    next.addEventListener("click", () => goNextSlide())
+    close.addEventListener("click", () => closeSlider())
+    document.addEventListener("keydown", (e) => {
+        if (slider.ariaHidden === "false" && e.keyCode === 39) {
+            goNextSlide()
+        } else if (slider.ariaHidden === "false" && e.keyCode === 37) {
+            goPreviousSlide()
+        } else if (slider.ariaHidden === "false" && e.keyCode === 27) {
+            closeSlider()
+        }
+    })
+
+    function goPreviousSlide() {
         slides[n].classList.remove('active')
         n--
         if (n < 0) { n = nbrSlider - 1 }
         slides[n].classList.add("active")
-    })
+    }
 
-    next.addEventListener("click", () => {
+    function goNextSlide() {
         slides[n].classList.remove('active')
         n++
         if (n >= nbrSlider) { n = 0 }
         slides[n].classList.add("active")
-    })
-
-    close.addEventListener("click", () => {
+    }
+    function closeSlider() {
         slidesContainer.innerHTML = ""
         slider.classList.remove("active")
+        slider.ariaHidden = "true"
         totalLikes.style.display = "grid"
-    })
 
+    }
 }
