@@ -52,6 +52,7 @@ export class ComponentsFactory {
 
         const icon = document.createElement("i");
         icon.classList.add("like-btn__icon");
+        icon.setAttribute("aria-label", "likes");
 
         if (isLiked) {
             icon.classList.add("like-btn__icon--liked");
@@ -87,15 +88,24 @@ export class ComponentsFactory {
         sortContainer.classList.add("sort-container");
 
         const sortLabel = document.createElement("label");
+        sortLabel.setAttribute("id", "sort-label");
         sortLabel.classList.add("sort-container__label");
         sortLabel.textContent = "Trier par";
 
         const sortBtn = document.createElement("ul");
         sortBtn.classList.add("sort-btn");
+        sortBtn.setAttribute("role", "button");
+        sortBtn.setAttribute("aria-haspopup", "listbox");
+        sortBtn.setAttribute("aria-expanded", "false");
 
         const selectedContainer = document.createElement("li");
+        selectedContainer.setAttribute("id", "selected");
+        selectedContainer.setAttribute("type", "button");
+        selectedContainer.setAttribute("role", "listbox");
+        selectedContainer.setAttribute("aria-activedescendant", "selected");
+        selectedContainer.setAttribute("aria-selected", "true");
+        selectedContainer.setAttribute("aria-labelledby", "sort-label");
         const selected = document.createElement("button");
-        selected.setAttribute("type", "button");
         selected.textContent =
             window.location.search.includes("sort=") && window.location.search.split("&")[1].split("=")[1] !== "Popularit%C3%A9"
                 ? window.location.search.split("&")[1].split("=")[1]
@@ -112,8 +122,13 @@ export class ComponentsFactory {
         selectedContainer.addEventListener("click", openDropdown);
 
         const option1Container = document.createElement("li");
+        option1Container.setAttribute("id", "option1");
+        option1Container.setAttribute("type", "button");
+        option1Container.setAttribute("role", "listbox");
+        option1Container.setAttribute("aria-activedescendant", "option1");
+        option1Container.setAttribute("aria-selected", "false");
+        option1Container.setAttribute("aria-labelledby", "sort-label");
         const option1 = document.createElement("button");
-        option1.setAttribute("type", "button");
         option1.textContent = selected.textContent === "Date" ? "Popularité" : "Date";
         option1Container.classList.add("sort-btn__option");
         option1Container.classList.add("sort-btn__option--hidden");
@@ -121,8 +136,13 @@ export class ComponentsFactory {
         option1Container.appendChild(option1);
 
         const option2Container = document.createElement("li");
+        option2Container.setAttribute("id", "option2");
+        option2Container.setAttribute("type", "button");
+        option2Container.setAttribute("role", "listbox");
+        option2Container.setAttribute("aria-activedescendant", "option2");
+        option2Container.setAttribute("aria-selected", "false");
+        option2Container.setAttribute("aria-labelledby", "sort-label");
         const option2 = document.createElement("button");
-        option2.setAttribute("type", "button");
         option2.textContent = selected.textContent === "Titre" ? "Popularité" : "Titre";
         option2Container.classList.add("sort-btn__option");
         option2Container.classList.add("sort-btn__option--hidden");
@@ -138,6 +158,8 @@ export class ComponentsFactory {
         function openDropdown() {
             selectedContainer.removeEventListener("click", openDropdown);
 
+            sortBtn.setAttribute("aria-expanded", "true");
+
             icon.classList.add("sort-btn__icon--alt");
             option1Container.classList.remove("sort-btn__option--hidden");
             option2Container.classList.remove("sort-btn__option--hidden");
@@ -151,6 +173,8 @@ export class ComponentsFactory {
             options.forEach((option) => {
                 option.removeEventListener("click", closeDropdown);
             });
+
+            sortBtn.setAttribute("aria-expanded", "false");
 
             let filterChoosen = e.target.textContent;
 
@@ -310,6 +334,7 @@ export class ComponentsFactory {
 
         const mediaButton = document.createElement("button");
         mediaButton.setAttribute("type", "button");
+        mediaButton.setAttribute("aria-haspopup", "dialog");
 
         const media = document.createElement("img");
         media.classList.add("media-container__media");
@@ -344,6 +369,7 @@ export class ComponentsFactory {
 
         const mediaButton = document.createElement("button");
         mediaButton.setAttribute("type", "button");
+        mediaButton.setAttribute("aria-haspopup", "dialog");
 
         const media = document.createElement("video");
         media.classList.add("media-container__media");
@@ -426,6 +452,7 @@ export class ComponentsFactory {
 
         const button = this.getMainBtnDOM(btnText);
         button.setAttribute("id", "contact-btn");
+        button.setAttribute("aria-haspopup", "dialog");
 
         btnContainer.appendChild(button);
 
@@ -461,6 +488,7 @@ export class ComponentsFactory {
 
         const icon = document.createElement("i");
         icon.classList.add("photographer-likes__counter__icon");
+        icon.setAttribute("aria-label", "likes");
 
         counter.appendChild(icon);
 
@@ -481,10 +509,14 @@ export class ComponentsFactory {
 
         const lightbox = document.createElement("dialog");
         lightbox.classList.add("lightbox");
+        lightbox.setAttribute("aria-label", "image closeup view");
+        lightbox.setAttribute("aria-hidden", "true");
 
         const previousBtn = document.createElement("button");
         previousBtn.setAttribute("type", "button");
+        previousBtn.setAttribute("aria-label", "Previous image");
         previousBtn.classList.add("lightbox__previous");
+        previousBtn.setAttribute("tabindex", "3");
 
         const previousIcon = document.createElement("i");
         previousIcon.classList.add("lightbox__previous__icon");
@@ -498,6 +530,8 @@ export class ComponentsFactory {
         closeBtn.classList.add("lightbox__figure__close");
         closeBtn.setAttribute("id", "close-lightbox");
         closeBtn.setAttribute("type", "button");
+        closeBtn.setAttribute("aria-label", "Close dialog");
+        closeBtn.setAttribute("tabindex", "1");
 
         const closeIcon = document.createElement("i");
         closeIcon.classList.add("lightbox__figure__close__icon");
@@ -526,6 +560,8 @@ export class ComponentsFactory {
             media.appendChild(mediaSource);
         }
 
+        media.removeAttribute("aria-haspopup");
+
         const caption = document.createElement("figcaption");
         caption.classList.add("lightbox__figure__caption");
         caption.textContent = medias[index].title;
@@ -536,7 +572,9 @@ export class ComponentsFactory {
 
         const nextBtn = document.createElement("button");
         nextBtn.setAttribute("type", "button");
+        nextBtn.setAttribute("aria-label", "Next image");
         nextBtn.classList.add("lightbox__next");
+        nextBtn.setAttribute("tabindex", "2");
 
         const nextIcon = document.createElement("i");
         nextIcon.classList.add("lightbox__next__icon");

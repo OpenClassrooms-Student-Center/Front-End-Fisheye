@@ -17,6 +17,11 @@ body {
     font-family: "DM Sans", sans-serif;
 }
 
+.body-modal {
+    height: 100vh;
+    overflow-y: hidden;
+}
+
 button,
 fieldset {
     background: none;

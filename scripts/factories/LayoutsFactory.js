@@ -94,6 +94,14 @@ export class LayoutsFactory {
             closeContactForm.addEventListener("click", () => {
                 main.removeChild(contactForm);
             });
+
+            document.addEventListener("keydown", (e) => {
+                const key = e.key;
+
+                if (key === "Esc" || key === "Escape") {
+                    main.removeChild(contactForm);
+                }
+            });
         });
 
         const mediasSection = document.createElement("section");
@@ -141,12 +149,34 @@ export class LayoutsFactory {
 
             mediaButton.addEventListener("click", () => {
                 const lightbox = componentsFactory.getLightboxDOM({ medias: photographer.medias, index, photographerName });
-                main.appendChild(lightbox);
+                document.body.appendChild(lightbox);
+
+                lightbox.setAttribute("aria-hidden", "false");
+                lightbox.setAttribute("open", "true");
+                document.body.classList.add("body-modal");
+                document.body.setAttribute("aria-hidden", "true");
+                document.getElementById("close-lightbox").focus();
 
                 const closeLightBoxBtn = document.getElementById("close-lightbox");
 
                 closeLightBoxBtn.addEventListener("click", () => {
-                    main.removeChild(lightbox);
+                    document.body.removeChild(lightbox);
+                    document.body.setAttribute("aria-hidden", "false");
+                    lightbox.setAttribute("aria-hidden", "true");
+                    document.body.classList.remove("body-modal");
+                    mediaButton.focus();
+                });
+
+                document.addEventListener("keydown", (e) => {
+                    const key = e.key;
+
+                    if (key === "Esc" || key === "Escape") {
+                        document.body.removeChild(lightbox);
+                        document.body.setAttribute("aria-hidden", "false");
+                        lightbox.setAttribute("aria-hidden", "true");
+                        document.body.classList.remove("body-modal");
+                        mediaButton.focus();
+                    }
                 });
             });
 
