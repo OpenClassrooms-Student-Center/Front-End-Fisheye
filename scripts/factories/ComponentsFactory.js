@@ -585,6 +585,23 @@ export class ComponentsFactory {
         lightbox.appendChild(figure);
         lightbox.appendChild(nextBtn);
 
+        const dispatchKeyEvent = (e) => {
+            switch (e.key) {
+                case "ArrowLeft":
+                    if (updatedIndex !== 0) {
+                        previousMedia();
+                    }
+                    break;
+                case "ArrowRight":
+                    if (updatedIndex !== medias.length - 1) {
+                        nextMedia();
+                    }
+                    break;
+                default:
+                    break;
+            }
+        };
+
         const previousMedia = () => {
             previousIndex = updatedIndex;
             updatedIndex--;
@@ -680,6 +697,8 @@ export class ComponentsFactory {
         } else {
             nextBtn.addEventListener("click", nextMedia);
         }
+
+        document.addEventListener("keydown", dispatchKeyEvent);
 
         return lightbox;
     };
