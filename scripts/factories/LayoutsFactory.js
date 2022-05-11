@@ -83,23 +83,41 @@ export class LayoutsFactory {
 
         contactBtn.addEventListener("click", () => {
             const contactForm = componentsFactory.getContactFromDOM({ photographerName });
-            main.appendChild(contactForm);
+            document.body.appendChild(contactForm);
+
+            contactForm.setAttribute("aria-hidden", "false");
+            contactForm.setAttribute("open", "true");
+            document.body.classList.add("body-modal");
+            document.body.setAttribute("aria-hidden", "true");
+            document.getElementById("close-contact-form").focus();
 
             contactForm.querySelector(".contact-form").addEventListener("submit", (e) => {
                 e.preventDefault();
-                main.removeChild(contactForm);
+                document.body.removeChild(contactForm);
+                document.body.setAttribute("aria-hidden", "false");
+                contactForm.setAttribute("aria-hidden", "true");
+                document.body.classList.remove("body-modal");
+                contactBtn.focus();
             });
 
             const closeContactForm = contactForm.querySelector("#close-contact-form");
             closeContactForm.addEventListener("click", () => {
-                main.removeChild(contactForm);
+                document.body.removeChild(contactForm);
+                document.body.setAttribute("aria-hidden", "false");
+                contactForm.setAttribute("aria-hidden", "true");
+                document.body.classList.remove("body-modal");
+                contactBtn.focus();
             });
 
             document.addEventListener("keydown", (e) => {
                 const key = e.key;
 
                 if (key === "Esc" || key === "Escape") {
-                    main.removeChild(contactForm);
+                    document.body.removeChild(contactForm);
+                    document.body.setAttribute("aria-hidden", "false");
+                    contactForm.setAttribute("aria-hidden", "true");
+                    document.body.classList.remove("body-modal");
+                    contactBtn.focus();
                 }
             });
         });

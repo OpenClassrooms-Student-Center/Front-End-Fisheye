@@ -8,6 +8,7 @@ export class ComponentsFactory {
 
         const label = document.createElement("label");
         label.classList.add("form-group__label");
+        label.setAttribute("id", `${textfieldName}-label`);
         label.setAttribute("for", textfieldName);
         label.textContent = textfieldName;
 
@@ -30,6 +31,7 @@ export class ComponentsFactory {
 
         input.classList.add("form-group__textfield");
         input.id = textfieldName;
+        input.setAttribute("aria-labelledby", `${textfieldName}-label`);
         input.setAttribute("name", textfieldName);
 
         textfield.appendChild(label);
@@ -708,12 +710,14 @@ export class ComponentsFactory {
 
         const contactFormContainer = document.createElement("dialog");
         contactFormContainer.classList.add("contact-form-container");
+        contactFormContainer.setAttribute("aria-labelledby", "contact-heading");
 
         const contactForm = document.createElement("form");
         contactForm.classList.add("contact-form");
 
         const contactHeading = document.createElement("h1");
         contactHeading.classList.add("contact-form__heading");
+        contactHeading.setAttribute("id", "contact-heading");
         contactHeading.textContent = `Contactez-moi ${photographerName}`;
 
         const firstName = this.getTextfieldDOM({ textfieldName: "Prénom", type: "text" });
@@ -721,10 +725,12 @@ export class ComponentsFactory {
         const email = this.getTextfieldDOM({ textfieldName: "Email", type: "email" });
         const message = this.getTextfieldDOM({ textfieldName: "Votre message", type: "textarea" });
         const submit = this.getSubmitBtnDOM();
+        submit.setAttribute("aria-label", "Send");
 
         const closeBtn = document.createElement("button");
         closeBtn.classList.add("contact-form__close");
         closeBtn.setAttribute("id", "close-contact-form");
+        closeBtn.setAttribute("aria-label", "Close Contact form");
 
         const closeIcon = document.createElement("i");
         closeIcon.classList.add("contact-form__close__icon");
