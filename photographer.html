@@ -11,7 +11,7 @@
   </head>
   <body>
     <header role="navigation" class="nav">
-      <a href="/index.html" aria-label="Fisheye Home page" role="Image link">
+      <a href="/index.html" aria-label="Retour à la page d'accueil Fisheye" role="Image link">
         <img src="assets/images/logo.png" class="logo" alt="fisheyes"/>
       </a>
     </header>
@@ -22,19 +22,20 @@
       <div class="filter">
         <span class="filter__span">Trier par</span>
         <div class="dropdown">
-          <button class ="button__top">
+          <button id="btnListbox" class="button__top" role="button" aria-haspopup="listbox" aria-expanded="true">
             <span></span> 
             <i class="fas fa-chevron-down"></i>
           </button>
           <div class="filter__options">
             <ul>
               <li>
-                <a class="first__option option">Popularité</a> <i class="fas fa-chevron-up"></i>
+                <a class="first__option option" role="listbox" aria-activedescendant="true" aria-labelledby="btnListbox">Popularité</a> <i class="fas fa-chevron-up"></i>
               </li>
               <li>
-                <a class="option">Date</a>
+                <a class="option" role="listbox" aria-activedescendant="true" aria-labelledby="btnListbox">Date</a>
+              </li>
               <li>
-                <a class="option">Titre</a> 
+                <a class="option" role="listbox" aria-activedescendant="true" aria-labelledby="btnListbox">Titre</a> 
               </li>
             </ul>
           </div>
@@ -42,22 +43,22 @@
       </div>
       
       
-      <section class="photo-field">
+      <section class="photo-field" role="dialog" aria-label="image de la vue de présentation">
       </section>
       <div class="slider">
         <div class="slides__container"></div>
-        <div class="back">
+        <div class="back" role="Link" aria-label="image précédente">
           <i class="fas fa-chevron-left"></i>
         </div>
-        <div class="next">
+        <div class="next" role="Link" aria-label="image suivante">
           <i class="fas fa-chevron-right"></i>
         </div>
-        <div class="close">
+        <div class="close" role="Buttons" aria-label="ferme la fenêtre">
           <i class="fas fa-times"></i>
         </div>
       </div>
       <div class="totalLikes">
-        <span class="totalLikes__likes"></span><i class="fas fa-heart"></i>
+        <span class="totalLikes__likes"></span><i class="fas fa-heart" role="Image" aria-label="likes"></i>
         <span class="totalLikes__price">/jour</span>
 
       </div>
