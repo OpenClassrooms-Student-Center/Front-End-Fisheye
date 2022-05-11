@@ -1,7 +1,7 @@
 import sliderVideo from "../model/SliderVideo.js";
 import sliderPhoto from "../model/SliderPhoto.js";
 
-export default function sliderFactory(firstMedia, sortMedia, name) {
+export default function sliderFactory(firstMedia, sortMedia) {
     let n = 0
     const slider = document.querySelector(".slider")
     const slidesContainer = document.querySelector(".slides__container")
@@ -52,16 +52,20 @@ export default function sliderFactory(firstMedia, sortMedia, name) {
 
     function goPreviousSlide() {
         slides[n].classList.remove('active')
+        slides[n].ariaHidden = "true"
         n--
         if (n < 0) { n = nbrSlider - 1 }
         slides[n].classList.add("active")
+        slides[n].ariaHidden = "false"
     }
 
     function goNextSlide() {
         slides[n].classList.remove('active')
+        slides[n].ariaHidden = "true"
         n++
         if (n >= nbrSlider) { n = 0 }
         slides[n].classList.add("active")
+        slides[n].ariaHidden = "false"
     }
     function closeSlider() {
         slidesContainer.innerHTML = ""

@@ -8,7 +8,7 @@ export default class Modal {
     }
 
     displayModal() {
-        const modal = document.getElementById("contact_modal");
+        const modal = document.getElementById("contact_modal")
         modal.style.display = "flex";
         modal.ariaHidden = "false"
         const form = modal.querySelector("form")
@@ -18,18 +18,15 @@ export default class Modal {
             inputs.forEach((input) => {
                 console.log(input.value)
             })
-            closeModal()
-        })
-        document.addEventListener("keydown", (e) => {
-            if (modal.ariaHidden === "false" && e.keyCode === 27) 
-            closeModal()
         })
         
     }
+
     closeModal() {
-        const modal = document.getElementById("contact_modal");
+        console.log("close modal")
+        const modal = document.getElementById("contact_modal")
         modal.ariaHidden = "true"
-        modal.style.display = "none";
+        modal.style.display = "none"
 
     }
 }

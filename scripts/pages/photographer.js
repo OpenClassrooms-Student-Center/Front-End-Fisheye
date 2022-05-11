@@ -57,8 +57,8 @@ async function getPhotos(photographerId) {
                 card.innerHTML = createPhotoCard(media, name)
                 const cardMedia = container.appendChild(card)
 
-                const elt = cardMedia.querySelector(".photo")
-                elt.addEventListener("click", () => sliderFactory(media, sortMedia, name))
+                const img = cardMedia.querySelector(".photo")
+                img.addEventListener("click", () => sliderFactory(media, sortMedia, name))
 
                 const like = cardMedia.querySelector(".photo__likes")
                 like.addEventListener("click",(e) => media.toggleLike(e) )
@@ -69,16 +69,21 @@ async function getPhotos(photographerId) {
             pricePerDay.innerHTML = price + " /jour"
 
             const modalData = new Modal(name)
-            const contactButton = document.querySelector(".contact_button")
-            
             const modalContainer = document.getElementById("contact_modal");
             const modal = document.createElement("div")
             modalContainer.appendChild(modal)
             modal.outerHTML = modalTemplate(modalData)
+            const contactButton = document.querySelector(".contact_button")
             contactButton.addEventListener("click", modalData.displayModal)
             const iconClose = document.querySelector(".modal header img")
             
             iconClose.addEventListener("click", modalData.closeModal)
+            document.addEventListener("keydown", (e) => {
+                console.log(e.code)
+                if (modalContainer.ariaHidden=== "false" && e.code === "Escape") {
+                    modalData.closeModal()
+                }
+            })
 
         })
 

@@ -1,5 +1,5 @@
 export default function modalTemplate(data){
-        return `<div class="modal" role="dialog">
+        return `<div class="modal" role="dialog"">
                     <header>
                         <h2>Contactez-moi <br>
                         ${data.name}</h2>
