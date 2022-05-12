@@ -1,5 +1,5 @@
-export default function modalTemplate(data){
-        return `<div class="modal" role="dialog" aria-label="Contactez moi ${data.name}" aria-labelledby="headingModal">
+export default function modalTemplate(data) {
+  return `<div class="modal" role="dialog" aria-label="Contactez moi ${data.name}" aria-labelledby="headingModal">
                     <header>
                         <h1 id="headingModal">Contactez-moi <br>
                         ${data.name}</h1>
@@ -24,5 +24,5 @@ export default function modalTemplate(data){
                         </div>
                         <button class="contact_button role="Buttons" aria-label="Envoyer le formulaire de contact à ${data.name}">Envoyer</button>
                     </form>
-                <div>`
+                <div>`;
 }
