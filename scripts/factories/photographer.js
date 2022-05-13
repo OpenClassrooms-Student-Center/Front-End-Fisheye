@@ -14,5 +14,5 @@ function photographerFactory(data) {
                         `;
     return article;
   }
-  return { name, id, getUserCardDOM };
+  return { name, id, portrait, city, country, price, tagline, getUserCardDOM };
 }

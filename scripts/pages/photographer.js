@@ -10,11 +10,21 @@ async function getSelectedPhotographer(id) {
   const selectedPhotographer = data.photographers.filter(
     (photographer) => photographer.id === id
   )[0];
-  console.log(selectedPhotographer.name);
   return selectedPhotographer;
 }
 
-const params = new URL(document.location).searchParams;
-const photographerId = parseInt(params.get("id"));
+async function displaySelectedData(photographer) {
+  const photographersHeader = document.querySelector(".photograph-header");
 
-getSelectedPhotographer(photographerId);
+  const photographerModel = photographerFactory(photographer);
+  photographersHeader.innerHTML = `<h1>${photographerModel.name}</h1>`;
+}
+
+async function selectedInit() {
+  const params = new URL(document.location).searchParams;
+  const photographerId = parseInt(params.get("id"));
+  const selectedPhotographer = await getSelectedPhotographer(photographerId);
+  displaySelectedData(selectedPhotographer);
+}
+
+selectedInit();
