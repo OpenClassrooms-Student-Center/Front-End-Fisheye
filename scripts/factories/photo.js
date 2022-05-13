@@ -7,4 +7,5 @@ export default function hydratePhotoFactory(media, name) {
   } if (media.video) {
     return new Video(media, name);
   }
+  return null;
 }

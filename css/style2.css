@@ -4,6 +4,11 @@ body, * {
   box-sizing: border-box;
 }
 
+:focus-visible, button:focus-visible {
+  border: 0.5rem solid #f1a9a0;
+  outline: none;
+}
+
 .photographer_section article {
   justify-self: center;
   display: flex;
@@ -76,6 +81,10 @@ body, * {
   aspect-ratio: 1/0.85;
   object-fit: cover;
   border-radius: 5px;
+  cursor: pointer;
+}
+.cardMedia .photo__likes {
+  cursor: pointer;
 }
 
 .logo {
@@ -124,7 +133,7 @@ body, * {
   font-weight: bold;
   color: white;
   padding: 11px;
-  width: 170px;
+  width: 190px;
   height: 70px;
   border: none;
   background-color: #901C1C;
@@ -289,6 +298,7 @@ body, * {
   z-index: 1;
   color: #901C1C;
   position: absolute;
+  cursor: pointer;
 }
 
 .back, .next {
@@ -368,6 +378,9 @@ body, * {
   background-color: #901C1C;
   color: #ffffff;
   cursor: pointer;
+}
+.button__top i {
+  padding-left: 15px;
 }
 
 .filter__options {

@@ -6,7 +6,7 @@ export default function getSelectedSort(data) {
 
   const optionsContainer = document.querySelector('.filter__options');
   const btndrop = document.querySelector('.button__top');
-  const btnValue = document.querySelector('.button__top span');
+  const btnValue = document.querySelector('.btn__value');
   const liItems = document.querySelectorAll('.dropdown li');
   const first = document.querySelector('.first__option');
   btnValue.innerHTML = first.innerHTML;
@@ -45,6 +45,7 @@ export default function getSelectedSort(data) {
           } if (a.title.toLowerCase() > b.title.toLowerCase()) {
             return 1;
           }
+          return null;
         });
       }
       const cardContainer = document.querySelector('.photo-field');
@@ -54,9 +55,11 @@ export default function getSelectedSort(data) {
         const card = document.createElement('article');
         card.classList.add('cardMedia');
         card.innerHTML = createPhotoCard(media);
-        const elt = cardContainer.appendChild(card);
-
+        const eltCard = cardContainer.appendChild(card);
+        const elt = eltCard.querySelector('.photo');
         elt.addEventListener('click', () => sliderFactory(media, sortMedia));
+        const like = eltCard.querySelector('.photo__likes');
+        like.addEventListener('click', (e) => media.toggleLike(e));
       });
     });
   });

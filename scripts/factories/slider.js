@@ -27,6 +27,8 @@ export default function sliderFactory(firstMedia, sortMedia) {
   slider.ariaHidden = 'false';
   const firstSlide = slides[n];
   firstSlide.className += ' active';
+  const body = document.querySelector('body');
+  body.style.overflow = 'hidden';
 
   const nbrSlider = slides.length;
   const totalLikes = document.querySelector('.totalLikes');
@@ -54,6 +56,7 @@ export default function sliderFactory(firstMedia, sortMedia) {
     slider.classList.remove('active');
     slider.ariaHidden = 'true';
     totalLikes.style.display = 'grid';
+    body.style.overflow = 'scroll';
   }
 
   const back = document.querySelector('.back');
@@ -64,11 +67,11 @@ export default function sliderFactory(firstMedia, sortMedia) {
   next.addEventListener('click', () => goNextSlide());
   close.addEventListener('click', () => closeSlider());
   document.addEventListener('keydown', (e) => {
-    if (slider.ariaHidden === 'false' && e.keyCode === 39) {
+    if (slider.ariaHidden === 'false' && e.code === 'ArrowRight') {
       goNextSlide();
-    } else if (slider.ariaHidden === 'false' && e.keyCode === 37) {
+    } else if (slider.ariaHidden === 'false' && e.code === 'ArrowLeft') {
       goPreviousSlide();
-    } else if (slider.ariaHidden === 'false' && e.keyCode === 27) {
+    } else if (slider.ariaHidden === 'false' && e.code === 'Escape') {
       closeSlider();
     }
   });

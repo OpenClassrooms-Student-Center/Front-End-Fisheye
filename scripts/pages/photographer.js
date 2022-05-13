@@ -4,13 +4,12 @@ import sliderFactory from '../factories/slider.js';
 import createPhotoCard from '../templates/Card.js';
 import Presentation from '../model/presentation.js';
 import Modal from '../model/Modal.js';
-
 import presentationTemplate from '../templates/presentationTemplate.js';
 import totalLikes from '../model/totalLikes.js';
 import modalTemplate from '../templates/modal.js';
 
 function getphotographerId() {
-  return new URL(location.href).searchParams.get('id');
+  return new URL(window.location.href).searchParams.get('id');
 }
 
 async function getPresentation(photographerId) {

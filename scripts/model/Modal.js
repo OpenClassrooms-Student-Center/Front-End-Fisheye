@@ -2,6 +2,9 @@ export default class Modal {
   constructor(data) {
     this._name = data;
     this.modal = document.getElementById('contact_modal');
+    this.keyPress = undefined;
+    this.formEvent = undefined;
+    this.body = document.querySelector('body');
   }
 
   get name() {
@@ -11,8 +14,9 @@ export default class Modal {
   displayModal() {
     this.modal.style.display = 'flex';
     this.modal.ariaHidden = 'false';
+    this.body.style.overflow = 'hidden';
     const form = this.modal.querySelector('form');
-    form.addEventListener('submit', (e) => {
+    this.formEvent = form.addEventListener('submit', (e) => {
       e.preventDefault();
       const inputs = form.querySelectorAll('.text');
       inputs.forEach((input) => {
@@ -20,7 +24,7 @@ export default class Modal {
       });
     });
 
-    document.addEventListener('keydown', (e) => {
+    this.keyPress = document.addEventListener('keydown', (e) => {
       if (this.modal.ariaHidden === 'false' && e.code === 'Escape') {
         this.closeModal();
       }
@@ -30,5 +34,8 @@ export default class Modal {
   closeModal() {
     this.modal.ariaHidden = 'true';
     this.modal.style.display = 'none';
+    document.removeEventListener('keydown', this.keyPress);
+    document.removeEventListener('submit', this.formEvent, false);
+    this.body.style.overflow = 'scroll';
   }
 }
