@@ -19,4 +19,7 @@ class PhotographersMedia{
     get video(){
         return this._video
     }
+    get image(){
+        return `${this._image}`
+    }
 }

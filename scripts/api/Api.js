@@ -11,18 +11,17 @@ class Api {
     async getPhotographer() {
         return fetch(this._url)
             .then(res => res.json())
-            // .then(res => res)
-            
-            .then(res =>
-                console.log('mes photographer:', res.photographer[0], 'mes media:', res.media))
+            .then(res => res.photographer)
+            // .then(res =>console.log('mes photographer:', res))
             
     }
 
-//    async getMedia(){
-//        return fetch(this._url)
-//        .then(res2 => res2.json())
-//        .then(res2 => res2.media)
-//    }
+   async getMedia(){
+       return fetch(this._url)
+       .then(res2 => res2.json())
+       .then(res2 => res2.media)
+    //    .then(res2 => console.log('Mes medias :', res2))
+   }
     
     
 }
@@ -39,8 +38,8 @@ class PhotographerApi extends Api {
     async getPhotographers(){
         return await this.getPhotographer()
     }
-    // async getMedias(){
-    //     return await this.getMedias()
-    // }
+    async getMedias(){
+        return await this.getMedia()
+    }
 }
 

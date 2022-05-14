@@ -5,14 +5,18 @@ class PhotographerMedia{
 
     createPhotographerMedia(){
         const $wrapperMedia = document.createElement('div')
+        $wrapperMedia.classList.add('mediaCard')
         // $wrapperMedia.classList.add('photographer-profile-wrapper')
 
         const photographerMedia = `
-        <div>
-            <h1>${this._media.title}</h1>
-            <h2>${this._media.photographerId}, ${this._photographer.country}
-            <p>${this._media.likes}<p>
-        </div>
+        
+            <img class="photographerMedia" src="/assets/photographersMedias/${this._media.image}"/>
+            <div class="media_infos">
+            <p>${this._media.title}</p>
+            <p>${this._media.likes} <i class="fa-solid fa-heart"></i></p>
+            </div>
+            
+        
         
         `
         $wrapperMedia.innerHTML = photographerMedia
