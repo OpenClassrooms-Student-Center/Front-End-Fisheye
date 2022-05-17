@@ -6,11 +6,15 @@ export class ComponentsFactory {
         const textfield = document.createElement("fieldset");
         textfield.classList.add("form-group");
 
+        const legend = document.createElement("legend");
+
         const label = document.createElement("label");
         label.classList.add("form-group__label");
         label.setAttribute("id", `${textfieldName}-label`);
         label.setAttribute("for", textfieldName);
         label.textContent = textfieldName;
+
+        legend.appendChild(label);
 
         let input;
 
@@ -34,7 +38,7 @@ export class ComponentsFactory {
         input.setAttribute("aria-labelledby", `${textfieldName}-label`);
         input.setAttribute("name", textfieldName);
 
-        textfield.appendChild(label);
+        textfield.appendChild(legend);
         textfield.appendChild(input);
 
         return textfield;
@@ -721,16 +725,22 @@ export class ComponentsFactory {
         contactHeading.textContent = `Contactez-moi ${photographerName}`;
 
         const firstName = this.getTextfieldDOM({ textfieldName: "Prénom", type: "text" });
+        firstName.querySelector("input").setAttribute("tabindex", "2");
         const lastName = this.getTextfieldDOM({ textfieldName: "Nom", type: "text" });
+        lastName.querySelector("input").setAttribute("tabindex", "3");
         const email = this.getTextfieldDOM({ textfieldName: "Email", type: "email" });
-        const message = this.getTextfieldDOM({ textfieldName: "Votre message", type: "textarea" });
+        email.querySelector("input").setAttribute("tabindex", "4");
+        const message = this.getTextfieldDOM({ textfieldName: "Message", type: "textarea" });
+        message.querySelector("textarea").setAttribute("tabindex", "5");
         const submit = this.getSubmitBtnDOM();
         submit.setAttribute("aria-label", "Send");
+        submit.setAttribute("tabindex", "6");
 
         const closeBtn = document.createElement("button");
         closeBtn.classList.add("contact-form__close");
         closeBtn.setAttribute("id", "close-contact-form");
         closeBtn.setAttribute("aria-label", "Close Contact form");
+        closeBtn.setAttribute("tabindex", "1");
 
         const closeIcon = document.createElement("i");
         closeIcon.classList.add("contact-form__close__icon");
