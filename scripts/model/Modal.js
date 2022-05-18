@@ -3,6 +3,9 @@ export default class Modal {
     this._name = data;
     this.modal = document.getElementById('contact_modal');
     this.body = document.querySelector('body');
+    this._handlerCloseModal = this.closeModal.bind(this);
+    this._handlerKeyclose = this.keyClose.bind(this);
+    this._form = this.modal.querySelector('form');
   }
 
   get name() {
@@ -25,28 +28,23 @@ export default class Modal {
     }
   }
 
-  imgClose() {
-    this.closeModal();
-  }
-
   displayModal() {
     this.modal.style.display = 'flex';
     this.modal.ariaHidden = 'false';
     this.body.style.overflow = 'hidden';
-    const form = this.modal.querySelector('form');
     const iconClose = document.querySelector('.modal header img');
-    form.addEventListener('submit', this.submitModal);
-    iconClose.addEventListener('click', this.closeModal.bind(this));
-    document.addEventListener('keydown', this.keyClose.bind(this));
+    this._form.addEventListener('submit', this.submitModal);
+    iconClose.addEventListener('click', this._handlerCloseModal);
+    document.addEventListener('keydown', this._handlerKeyclose);
   }
 
   closeModal() {
     this.modal.ariaHidden = 'true';
     this.modal.style.display = 'none';
-    document.removeEventListener('submit', this.submitModal);
-    document.removeEventListener('keydown', this.closeModal);
+    this._form.removeEventListener('submit', this.submitModal);
+    document.removeEventListener('keydown', this._handlerKeyclose);
     const iconClose = document.querySelector('.modal header img');
-    iconClose.removeEventListener('click', this.imgClose);
+    iconClose.removeEventListener('click', this._handlerCloseModal);
     this.body.style.overflow = 'scroll';
   }
 }

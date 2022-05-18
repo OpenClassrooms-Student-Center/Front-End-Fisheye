@@ -66,12 +66,12 @@ async function getPhotos(photographerId) {
       sumLikes.innerHTML = totalLikes(sortMedia);
       const pricePerDay = document.querySelector('.totalLikes__price');
       pricePerDay.innerHTML = `${price} /jour`;
-
-      const modalData = new Modal(name);
       const modalContainer = document.getElementById('contact_modal');
       const modal = document.createElement('div');
       modalContainer.appendChild(modal);
-      modal.outerHTML = modalTemplate(modalData);
+
+      modal.outerHTML = modalTemplate(name);
+      const modalData = new Modal(name);
       const contactButton = document.querySelector('.contact_button');
       contactButton.addEventListener('click', () => modalData.displayModal());
     });

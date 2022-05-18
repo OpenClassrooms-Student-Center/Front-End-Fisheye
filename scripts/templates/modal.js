@@ -1,8 +1,8 @@
-export default function modalTemplate(data) {
-  return `<div class="modal" role="dialog" aria-label="Contactez moi ${data.name}" aria-labelledby="headingModal">
+export default function modalTemplate(name) {
+  return `<div class="modal" role="dialog" aria-label="Contactez moi ${name}" aria-labelledby="headingModal">
                     <header>
                         <h1 id="headingModal">Contactez-moi <br>
-                        ${data.name}</h1>
+                        ${name}</h1>
                         <img src="assets/icons/close.svg" role="Buttons" aria-label="ferme le formulaire de contact"/>
                     </header>
                     <form>
@@ -20,9 +20,9 @@ export default function modalTemplate(data) {
                         </div>
                         <div>
                             <label for="message">Votre message</label>
-                            <textarea type="text" id="message" name="message" class="text" rows="5" role="text field" aria-label="entrer votre message pour ${data.name}"></textarea>
+                            <textarea type="text" id="message" name="message" class="text" rows="5" role="text field" aria-label="entrer votre message pour ${name}"></textarea>
                         </div>
-                        <button class="contact_button role="Buttons" aria-label="Envoyer le formulaire de contact à ${data.name}">Envoyer</button>
+                        <button class="contact_button role="Buttons" aria-label="Envoyer le formulaire de contact à ${name}">Envoyer</button>
                     </form>
                 <div>`;
 }
