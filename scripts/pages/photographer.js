@@ -1,6 +1,6 @@
 import getSelectedSort from '../functions/getSelectedSort.js';
 import hydratePhotoFactory from '../factories/photo.js';
-import sliderFactory from '../factories/slider.js';
+import sliderModal from '../model/slider.js';
 import createPhotoCard from '../templates/Card.js';
 import Presentation from '../model/presentation.js';
 import Modal from '../model/Modal.js';
@@ -54,7 +54,10 @@ async function getPhotos(photographerId) {
         const cardMedia = container.appendChild(card);
 
         const img = cardMedia.querySelector('.photo');
-        img.addEventListener('click', () => sliderFactory(media, sortMedia, name));
+        img.addEventListener('click', () => sliderModal(media, sortMedia, name));
+        document.addEventListener('keydown', (e) => {
+          if (e.code === 'Enter' && e.target === img) { sliderModal(media, sortMedia, name); }
+        });
 
         const like = cardMedia.querySelector('.photo__likes');
         like.addEventListener('click', (e) => media.toggleLike(e));
@@ -71,9 +74,6 @@ async function getPhotos(photographerId) {
       modal.outerHTML = modalTemplate(modalData);
       const contactButton = document.querySelector('.contact_button');
       contactButton.addEventListener('click', () => modalData.displayModal());
-      const iconClose = document.querySelector('.modal header img');
-
-      iconClose.addEventListener('click', () => modalData.closeModal);
     });
 }
 

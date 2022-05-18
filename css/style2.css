@@ -385,10 +385,8 @@ body, * {
 
 .filter__options {
   background-color: #901C1C;
-  height: 0;
-}
-.filter__options ul {
   padding: 0;
+  height: 0;
 }
 .filter__options li {
   list-style-type: none;
@@ -398,6 +396,8 @@ body, * {
 .filter__options li a {
   font-size: 18px;
   margin-left: 20px;
+  text-decoration: none;
+  color: #ffffff;
 }
 .filter__options li:first-child {
   padding-top: 20px;
@@ -407,6 +407,10 @@ body, * {
 }
 .filter__options li:last-child {
   padding-bottom: 20px;
+}
+
+select * {
+  background-color: #901C1C;
 }
 
 #contact_modal {
@@ -444,7 +448,7 @@ body, * {
   padding-top: 25px;
 }
 
-.modal header h2 {
+.modal header h1 {
   font-size: 64px;
   font-weight: normal;
   margin: 0;

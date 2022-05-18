@@ -1,5 +1,5 @@
 import createPhotoCard from '../templates/Card.js';
-import sliderFactory from '../factories/slider.js';
+import sliderModal from '../model/slider.js';
 
 export default function getSelectedSort(data) {
   const sortMedia = [...data];
@@ -17,10 +17,17 @@ export default function getSelectedSort(data) {
       optionsContainer.style.height = `${optionsContainer.scrollHeight}px`;
       toggleIndex = true;
       btndrop.style.display = 'none';
+      btndrop.ariaHidden = 'true';
+      optionsContainer.ariaHidden = 'false';
+      liItems.forEach((item) => {
+        console.log(item);
+      });
       return;
     }
     optionsContainer.style.height = 0;
     btndrop.style.display = 'flex';
+    btndrop.ariaHidden = 'false';
+    optionsContainer.ariaHidden = 'true';
     toggleIndex = false;
   }
   btndrop.addEventListener('click', dropDown);
@@ -57,7 +64,7 @@ export default function getSelectedSort(data) {
         card.innerHTML = createPhotoCard(media);
         const eltCard = cardContainer.appendChild(card);
         const elt = eltCard.querySelector('.photo');
-        elt.addEventListener('click', () => sliderFactory(media, sortMedia));
+        elt.addEventListener('click', () => sliderModal(media, sortMedia));
         const like = eltCard.querySelector('.photo__likes');
         like.addEventListener('click', (e) => media.toggleLike(e));
       });

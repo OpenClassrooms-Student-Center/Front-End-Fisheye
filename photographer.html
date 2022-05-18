@@ -19,29 +19,27 @@
 
       <section class="presentation__section">
       </section>
+
       <div class="filter">
         <span class="filter__span">Trier par</span>
         <div class="dropdown">
-          <button id="btnListbox" class="button__top" role="button" aria-haspopup="listbox" aria-expanded="true" tableindex="0">
+          <button id="btnListbox" class="button__top" role="button" aria-haspopup="listbox" aria-expanded="false" tableindex="0">
             <span class="btn__value"></span> 
             <i class="fas fa-chevron-down"></i>
           </button>
-          <div class="filter__options">
-            <ul>
-              <li>
-                <a class="first__option option" role="Listbox" aria-activedescendant="true" aria-labelledby="btnListbox" tableindex="0">Popularité</a> 
-              </li>
-              <li>
-                <a class="option" role="Listbox" aria-activedescendant="true" aria-labelledby="btnListbox" tableindex="0">Date</a>
-              </li>
-              <li>
-                <a class="option" role="Listbox" aria-activedescendant="true" aria-labelledby="btnListbox" tableindex="0">Titre</a> 
-              </li>
-            </ul>
-          </div>
+          <ul class="filter__options" role="listbox" aria-hidden="true" aria-activedescendant="true" aria-haspopup="listbox"  aria-labelledby="btnListbox" tableindex="0">
+            <li role="option">
+              <a class="first__option option" href="#" aria-hidden="true" aria-haspopup="true" aria-label="fitrer par ordre de popularité" tableindex="0">Popularité</a> 
+            </li>
+            <li role="option">
+              <a class="option" href="#" aria-label="fitrer par date" tableindex="0">Date</a>
+            </li>
+            <li role="option">
+              <a class="option" href="#" aria-label="fitrer par ordre alphabétique" tableindex="0">Titre</a> 
+            </li>
+          </ul>
         </div>
       </div>
-      
       
       <section class="photo-field" role="dialog" aria-label="image de la vue de présentation">
       </section>
