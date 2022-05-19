@@ -10,8 +10,8 @@
             console.log('Error' + err); 
         }); 
         // et bien retourner le tableau photographers seulement une fois
-        return datas
-    }
+        return datas;
+    };
 
     async function displayData(photographers) {
         const photographersSection = document.querySelector(".photographer_section");
