@@ -36,23 +36,11 @@ function displaySelectedData(photographer) {
     photographerHeader.appendChild(portrait);
   }
 
-  // display Select Menu
-  function displaySelectMenu() {
-    const main = document.getElementById("main");
-    const select = document.createElement("div");
-    select.innerHTML = `<label for='sort-select'>Trier par</label>
-                        <select name='sort' id='sort-select'>
-                          <option value='popularity'>Popularité</option>
-                          <option value='date'>Date</option>
-                          <option value='title'>Titre</option>
-                        </select>`;
-    main.appendChild(select);
-  }
   // display Media
 
   // display data
   displayHeader();
-  displaySelectMenu();
+  // displaySelectMenu();
 }
 
 async function selectedInit() {
