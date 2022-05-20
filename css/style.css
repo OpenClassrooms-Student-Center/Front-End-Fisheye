@@ -51,11 +51,6 @@ p {
   font-size: 36px;
 }
 
-.photographer-section article img {
-  height: 200px;
-  width: 200px;
-}
-
 .photographer-link {
   text-align: center;
 }
@@ -67,6 +62,8 @@ p {
 .portrait {
   object-fit: cover;
   border-radius: 50%;
+  height: 200px;
+  width: 200px;
 }
 
 .location {

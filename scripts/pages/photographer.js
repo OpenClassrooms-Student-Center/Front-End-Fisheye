@@ -6,25 +6,34 @@ async function getPhotographers() {
 }
 
 async function getSelectedPhotographer(id) {
-  const data = await getPhotographers();
-  const selectedPhotographer = data.photographers.filter(
+  const { photographers } = await getPhotographers();
+  const selectedPhotographer = photographers.find(
     (photographer) => photographer.id === id
-  )[0];
+  );
   return selectedPhotographer;
 }
 
-async function displaySelectedData(photographer) {
+function displaySelectedData(photographer) {
   const photographerModel = photographerFactory(photographer);
 
   // display Header
   const photographerHeader = document.querySelector(".photograph-header");
   const contactButton = document.getElementById("contact");
   const headerDiv = document.createElement("div");
-  headerDiv.innerHTML = `<h1>${photographerModel.name}</h1>
-                        <h2>${photographerModel.city}, ${photographerModel.country}</h2>
+  const portrait = document.createElement("img");
+
+  portrait.setAttribute(
+    "src",
+    `assets/photographers/${photographerModel.portrait}`
+  );
+  portrait.classList.add("portrait");
+
+  headerDiv.innerHTML = `<h2>${photographerModel.name}</h2>
+                        <h3>${photographerModel.city}, ${photographerModel.country}</h3>
                         <p>${photographerModel.tagline}</p>`;
   photographerHeader.appendChild(headerDiv);
   photographerHeader.insertBefore(headerDiv, contactButton);
+  photographerHeader.appendChild(portrait);
   // TODO: display portrait img
 
   // display Media
