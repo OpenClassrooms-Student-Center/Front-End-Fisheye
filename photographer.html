@@ -2,19 +2,52 @@
 <html>
   <head>
     <link href="css/style.css" rel="stylesheet" type="text/css" />
+    <link href="css/photographer.css" rel="stylesheet" type="text/css" />
     <meta charset="utf-8">
     <link rel="icon" type="image/png" href="assets/favicon.png">
     <link href="https://fonts.googleapis.com/css?family=DM+Sans&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/css/lightbox.css">
     <title>Fisheye - photographe </title>
   </head>
   <body>
     <header>
-      <img src="assets/images/logo.png" class="logo" />
+      <a href="index.html">
+        <img src="assets/images/logo.png" class="logo"/>
+      </a>
     </header>
-    <main id="main">
-      <div class="photograph-header">
-        <button class="contact_button" onclick="displayModal()">Contactez-moi</button>
+    <main id="main_profile">
+    <section id="section_profile">
+    </section>
+    <nav class="flexstart">
+      <div>
+        <p class="select_menu">Trier par</p>
       </div>
+      <div class="dropdown">
+        <button onclick="dropDown()" id="dropbtn" class="flexaround border_raduis_btn_up ">Popularité 
+        <i class="icone_cross_button_nav"></i>
+        
+         </button>
+        <div id="myDropDown" class="dropDownContent">
+          <a href="#" >Date</a>
+          <div class="border_design_btn"></div>
+          <a href="#" class="border_raduis_btn_bottom">Titre</a>          
+        </div>
+      </div>
+    </nav>
+    <section id="element_of_photographer" class="grid">
+      <div id="grid_element">
+      </div>
+      <!-- <div class="lightbox">
+        <button class="lightbox__close"></button>
+        <button class="lightbox__next"></button>
+        <button class="lightbox__prev"></button>
+        <div class="lightbox__container">
+          <img src="./assets/photographers/Sample Photos/Ellie Rose/Architecture_Connected_Curves.jpg" alt="">
+        </div>
+      </div> -->
+      
+
+    </section>
     </main>
     <div id="contact_modal">
 			<div class="modal">
@@ -25,12 +58,22 @@
 				<form>
 					<div>
 						<label>Prénom</label>
-						<input />
+						<input type="text">
+            <label>Nom</label>
+            <input type="text">
+            <label >Email</label>
+            <input type="text">
+            <label >Votre message</label>
+            <input type="text">
 					</div>
           <button class="contact_button">Envoyer</button>
 				</form>
 			</div>
 		</div>
+    <script  src="scripts/pages/photographer.js"></script>
     <script src="/scripts/utils/contactForm.js"></script>
+    <script src="/scripts/factories/photographer.js"></script>
+    <script src="/scripts/constructor/photographer.js"></script>
+    <script src="/scripts/utils/lightbox.js" type="module" defer></script>
   </body>
 </html>
