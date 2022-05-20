@@ -14,29 +14,45 @@ async function getSelectedPhotographer(id) {
 }
 
 function displaySelectedData(photographer) {
-  const photographerModel = photographerFactory(photographer);
-
   // display Header
-  const photographerHeader = document.querySelector(".photograph-header");
-  const contactButton = document.getElementById("contact");
-  const headerDiv = document.createElement("div");
-  const portrait = document.createElement("img");
+  function displayHeader() {
+    const photographerModel = photographerFactory(photographer);
+    const photographerHeader = document.querySelector(".photograph-header");
+    const contactButton = document.getElementById("contact");
+    const headerDiv = document.createElement("div");
+    const portrait = document.createElement("img");
 
-  portrait.setAttribute(
-    "src",
-    `assets/photographers/${photographerModel.portrait}`
-  );
-  portrait.classList.add("portrait");
+    headerDiv.innerHTML = `<h1>${photographerModel.name}</h1>
+    <h2>${photographerModel.city}, ${photographerModel.country}</h2>
+    <p>${photographerModel.tagline}</p>`;
+    photographerHeader.appendChild(headerDiv);
+    photographerHeader.insertBefore(headerDiv, contactButton);
 
-  headerDiv.innerHTML = `<h2>${photographerModel.name}</h2>
-                        <h3>${photographerModel.city}, ${photographerModel.country}</h3>
-                        <p>${photographerModel.tagline}</p>`;
-  photographerHeader.appendChild(headerDiv);
-  photographerHeader.insertBefore(headerDiv, contactButton);
-  photographerHeader.appendChild(portrait);
-  // TODO: display portrait img
+    portrait.setAttribute(
+      "src",
+      `assets/photographers/${photographerModel.portrait}`
+    );
+    portrait.classList.add("portrait");
+    photographerHeader.appendChild(portrait);
+  }
 
+  // display Select Menu
+  function displaySelectMenu() {
+    const main = document.getElementById("main");
+    const select = document.createElement("div");
+    select.innerHTML = `<label for='sort-select'>Trier par</label>
+                        <select name='sort' id='sort-select'>
+                          <option value='popularity'>Popularité</option>
+                          <option value='date'>Date</option>
+                          <option value='title'>Titre</option>
+                        </select>`;
+    main.appendChild(select);
+  }
   // display Media
+
+  // display data
+  displayHeader();
+  displaySelectMenu();
 }
 
 async function selectedInit() {

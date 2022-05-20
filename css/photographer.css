@@ -12,13 +12,13 @@
   padding: 0 50px;
 }
 
-.photograph-header h2 {
+.photograph-header h1 {
   font-size: 64px;
   color: #d3573c;
   margin: 0;
 }
 
-.photograph-header h3 {
+.photograph-header h2 {
   font-size: 24px;
   color: #901c1c;
 }
