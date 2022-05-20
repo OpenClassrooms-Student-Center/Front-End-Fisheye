@@ -14,10 +14,20 @@ async function getSelectedPhotographer(id) {
 }
 
 async function displaySelectedData(photographer) {
-  const photographersHeader = document.querySelector(".photograph-header");
-
   const photographerModel = photographerFactory(photographer);
-  photographersHeader.innerHTML = `<h1>${photographerModel.name}</h1>`;
+
+  // display Header
+  const photographerHeader = document.querySelector(".photograph-header");
+  const contactButton = document.getElementById("contact");
+  const headerDiv = document.createElement("div");
+  headerDiv.innerHTML = `<h1>${photographerModel.name}</h1>
+                        <h2>${photographerModel.city}, ${photographerModel.country}</h2>
+                        <p>${photographerModel.tagline}</p>`;
+  photographerHeader.appendChild(headerDiv);
+  photographerHeader.insertBefore(headerDiv, contactButton);
+  // TODO: display portrait img
+
+  // display Media
 }
 
 async function selectedInit() {
