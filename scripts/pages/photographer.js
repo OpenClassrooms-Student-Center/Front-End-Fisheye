@@ -1,26 +1,21 @@
 async function getOnePhotographer() {
     // Penser à remplacer par les données récupérées dans le json
-    const datas = fetch('./data/photographers.json')
-    .then(function(res) {
-        if (res.ok) {
-            return res.json(); 
-        }
-    })
+    const media = fetch('./data/photographers.json')
+    .then(response => response.json())
     .catch(err => {
-        console.log('Error' + err); 
-    }); 
-    // et bien retourner le tableau photographers seulement une fois
-    return datas;
+    console.log('Error' + err); 
+    });
+    return media ;  
 }
 
 
-async function displayMainUser(photographers){
+/*async function displayMainUser(media){
     const headerPhotographer = document.querySelector(".photographer_header"); 
-    const photographerSinglePage= photographerFactory(photographers);
-    const userHeaderDOM = photographerSinglePage.getUserIdDOM();  
-    headerPhotographer.appendChild(userHeaderDOM); 
+        const photographerModel = photographerFactory(media);
+        const userCardDOM = photographerModel.getUserIdDOM();
+        headerPhotographer.appendChild(userCardDOM);
 }
-/*async function displayMedia(media) {
+async function displayMedia(media) {
     const photographersSection = document.querySelector(".photographer_section");
 
     photographers.forEach((media) => {
@@ -32,10 +27,10 @@ async function displayMainUser(photographers){
 
 async function init() {
     // Récupère les datas des photographes
-    const { photographers } = await getOnePhotographer();
+    const { media } = await getOnePhotographer();
     //const { media } = await getOnePhotographer();
     //displayMainUser(photographers); 
-    displayMainUser(photographers);
-};
+    //displayMainUser(media);
+}
 
-init();
+init()
