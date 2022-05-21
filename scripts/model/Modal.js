@@ -23,6 +23,7 @@ export default class Modal {
   }
 
   keyClose(e) {
+    console.log(e.code);
     if (this.modal.ariaHidden === 'false' && e.code === 'Escape') {
       this.closeModal();
     }
