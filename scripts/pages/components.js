@@ -1,6 +1,7 @@
-/* Import factories */
+/* IMPORTS */
 import { LayoutsFactory } from "../factories/layoutsFactory.js";
 import { ComponentsFactory } from "../factories/componentsFactory.js";
+// END IMPORTS
 
 function displayComponents() {
     /* Facotries initialisation */
@@ -91,8 +92,11 @@ function displayComponents() {
     componentsContainer.appendChild(photographerHeader);
 }
 
+// Init function
+// Display all the components
 function init() {
     displayComponents();
 }
 
+// First function call when the page is loaded
 init();

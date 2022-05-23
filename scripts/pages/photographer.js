@@ -1,8 +1,11 @@
+// IMPORTS
 import { LayoutsFactory } from "../factories/LayoutsFactory.js";
 import { ComponentsFactory } from "../factories/ComponentsFactory.js";
+// END IMPORTS
 
 let photographers;
 
+// Returns a photographer data object
 async function getPhtotgrapher(photographerId) {
     let photographer;
 
@@ -18,6 +21,9 @@ async function getPhtotgrapher(photographerId) {
 
         photographers = res.photographers;
 
+        /* 
+            Append each media to it's pohtographer object
+        */
         photographers.forEach((photographer) => {
             photographer.medias = res.media.filter((media) => media.photographerId === photographer.id);
             photographer.medias.map((media) => {
@@ -27,12 +33,14 @@ async function getPhtotgrapher(photographerId) {
 
         localStorage.setItem("photographers", JSON.stringify(photographers));
 
+        // Get the right photographer using the passed id
         photographer = photographers.filter((user) => user.id == photographerId)[0];
     }
 
     return photographer;
 }
 
+// Call the factory methods in order to render the page with the photogrpaher cards
 function displayData(data) {
     const layoutsFactory = new LayoutsFactory();
     const componentsFactory = new ComponentsFactory();
@@ -44,20 +52,26 @@ function displayData(data) {
     document.querySelector("body").prepend(header);
 }
 
+// Unlike function
 const unlikeMedia = (media) => {
     media.isLiked = false;
     media.likes -= 1;
 };
 
+// Like function
 const likeMedia = (media) => {
     media.isLiked = true;
     media.likes += 1;
 };
 
+// Init function
+// Get all the photographer's medias and display the page
 async function init() {
+    // Get the photographer's id in the URL query string in order to call the display method
     const photographer = await getPhtotgrapher(window.location.search.split("&")[0].split("=")[1]);
     displayData(photographer);
 
+    // Add event listeners on like buttons to handle likes on medias
     const likeButtons = document.querySelectorAll(".like-btn");
     likeButtons.forEach((likeBtn) =>
         likeBtn.addEventListener("click", () => {
@@ -83,4 +97,5 @@ async function init() {
     );
 }
 
+// First function call when the page is loaded
 init();
