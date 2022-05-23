@@ -1,3 +1,4 @@
+// Layouts factory class
 export class LayoutsFactory {
     constructor() {}
 

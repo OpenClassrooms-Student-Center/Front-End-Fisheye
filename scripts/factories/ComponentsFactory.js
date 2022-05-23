@@ -1,6 +1,7 @@
 export class ComponentsFactory {
     constructor() {}
 
+    // Returns the textfield component
     getTextfieldDOM = (data) => {
         const { textfieldName, type } = data;
         const textfield = document.createElement("fieldset");
@@ -44,6 +45,7 @@ export class ComponentsFactory {
         return textfield;
     };
 
+    // Returns the like button component
     getLikeBtnDOM = (data) => {
         const { likes, id, isLiked } = data;
 
@@ -89,6 +91,7 @@ export class ComponentsFactory {
         return button;
     };
 
+    // Returns the sort button component
     getSortBtnDOM = (photographerId) => {
         const sortContainer = document.createElement("div");
         sortContainer.classList.add("sort-container");
@@ -219,6 +222,7 @@ export class ComponentsFactory {
         return sortContainer;
     };
 
+    // Returns the main button component
     getMainBtnDOM = (btnText) => {
         const btn = document.createElement("button");
         btn.setAttribute("type", "button");
@@ -228,6 +232,7 @@ export class ComponentsFactory {
         return btn;
     };
 
+    // Returns the submit button component
     getSubmitBtnDOM = () => {
         const submitBtn = document.createElement("input");
         submitBtn.setAttribute("type", "submit");
@@ -237,6 +242,7 @@ export class ComponentsFactory {
         return submitBtn;
     };
 
+    // Returns the logo component
     getLogoDOM = () => {
         const logo = document.createElement("button");
         logo.setAttribute("type", "button");
@@ -256,6 +262,7 @@ export class ComponentsFactory {
         return logo;
     };
 
+    // Returns the avatar component
     getAvatarDOM = (data, isInCard) => {
         const { portrait, name } = data;
 
@@ -282,6 +289,7 @@ export class ComponentsFactory {
         return avatar;
     };
 
+    // Returns the photographer's name component
     getUserNameDOM = (data, isInCard) => {
         const { name } = data;
 
@@ -300,6 +308,7 @@ export class ComponentsFactory {
         return userName;
     };
 
+    // Returns the photographer's location component
     getUserLocationDOM = (data, isInCard) => {
         const { city, country } = data;
 
@@ -318,6 +327,7 @@ export class ComponentsFactory {
         return location;
     };
 
+    // Returns the photographer's tagline component
     getUserTaglineDOM = (data, isInCard) => {
         const { tagline } = data;
 
@@ -332,6 +342,7 @@ export class ComponentsFactory {
         return userTagline;
     };
 
+    // Returns the image component
     getImageDOM = (data, photographerName) => {
         const { title, image, likes, id, isLiked } = data;
 
@@ -367,6 +378,7 @@ export class ComponentsFactory {
         return mediaContainer;
     };
 
+    // Returns the video component
     getVideoDOM = (data, photographerName) => {
         const { title, video, likes, id, isLiked } = data;
 
@@ -406,6 +418,7 @@ export class ComponentsFactory {
         return mediaContainer;
     };
 
+    // Returns the photographer's card component
     getUserCardDOM = (data) => {
         const { portrait, name, city, country, tagline, price, id } = data;
 
@@ -436,6 +449,7 @@ export class ComponentsFactory {
         return userCard;
     };
 
+    // Returns the photographer's header component
     getPhotographerHeaderDOM = (data, btnText) => {
         const { portrait, name, city, country, tagline } = data;
 
@@ -476,6 +490,7 @@ export class ComponentsFactory {
         return header;
     };
 
+    // Returns the photographer's likes component
     getPhotographerLikesDOM = (data) => {
         const { price, medias } = data;
 
@@ -508,6 +523,7 @@ export class ComponentsFactory {
         return card;
     };
 
+    // Returns the lightbox component
     getLightboxDOM = (data) => {
         const { medias, index, photographerName } = data;
         let previousIndex;
@@ -709,6 +725,7 @@ export class ComponentsFactory {
         return lightbox;
     };
 
+    // Returns the contact form component
     getContactFromDOM = (data) => {
         const { photographerName } = data;
 
