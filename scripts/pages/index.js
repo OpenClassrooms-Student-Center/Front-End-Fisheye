@@ -1,7 +1,5 @@
-    let photographers = []; 
+let photographers = []; 
     
-    
-      
     const getPhotographers = async () => {
         // Penser à remplacer par les données récupérées dans le json
         await fetch('./data/photographers.json')
@@ -16,11 +14,9 @@
     
     async function displayData(photographers) {
         const photographersSection = document.querySelector('.photographer_section');
-       
-        
+        const link = document.getElementById('link'); 
         photographers.forEach((photographer) => { 
-            const link = document.getElementById('link');
-            link.href += `?id=${photographer.id}`; 
+            link.href += `../photographer.html?id=${photographer.id}`; 
             const photographerModel = photographerFactory(photographer);
             const userCardDOM = photographerModel.getUserCardDOM();
             photographersSection.innerHTML += userCardDOM;

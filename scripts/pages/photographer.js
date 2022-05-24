@@ -1,5 +1,4 @@
 let media = []; 
-let photographers = []; 
 
 const getMedia = async () => {
     // Penser à remplacer par les données récupérées dans le json
@@ -7,8 +6,7 @@ const getMedia = async () => {
     .then((res) => res.json())
     .then((dataPhotographers) => { 
         media = dataPhotographers.media; 
-        photographers = dataPhotographers.photographers; 
-        return media, photographers; 
+        return media; 
     })
     .catch((err )=> {
     console.log(err); 
