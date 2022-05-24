@@ -1,27 +1,26 @@
-    async function getPhotographers() {
-        // Penser à remplacer par les données récupérées dans le json
-        const photographers = fetch('./data/photographers.json')
-        .then(response => response.json())
-        .then(photographers => {return photographers})
-        .catch(err => {
-        console.log('Error : ' + err); 
-        });
-        return photographers;  
-    }
-
+    let photographers = []; 
     
-
+    
+      
+    const getPhotographers = async () => {
+        // Penser à remplacer par les données récupérées dans le json
+        await fetch('./data/photographers.json')
+        .then((res) => res.json())
+        .then((dataPhotographers) => { 
+            return photographers = dataPhotographers.photographers;  
+        })
+        .catch((err )=> {
+        console.log(err); 
+        }); 
+    }
+    
     async function displayData(photographers) {
-        const photographersSection = document.querySelector(".photographer_section");
-        const linkUser = document.getElementById('urlUser');
+        const photographersSection = document.querySelector('.photographer_section');
+       
+        
         photographers.forEach((photographer) => { 
-            let params = new URLSearchParams({
-                id : photographers.id,
-                name : photographers.name
-            }) 
-            const url = `${params}`; 
-            linkUser.href =  url; 
-            console.log(linkUser);
+            const link = document.getElementById('link');
+            link.href += `?id=${photographer.id}`; 
             const photographerModel = photographerFactory(photographer);
             const userCardDOM = photographerModel.getUserCardDOM();
             photographersSection.innerHTML += userCardDOM;
@@ -30,7 +29,7 @@
 
     async function init() {
         // Récupère les datas des photographes
-        const { photographers } = await getPhotographers();
+        await getPhotographers(photographers);
         displayData(photographers);
     }
     
