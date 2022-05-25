@@ -13,22 +13,6 @@ export default function getSelectedSort(data) {
   btnValue.innerHTML = first.innerHTML;
   let toggleIndex;
 
-  function dropDown() {
-    if (!toggleIndex) {
-      optionsContainer.style.height = `${optionsContainer.scrollHeight}px`;
-      toggleIndex = true;
-      btndrop.style.display = 'none';
-      btndrop.ariaHidden = 'true';
-      optionsContainer.ariaHidden = 'false';
-      return;
-    }
-    optionsContainer.style.height = 0;
-    btndrop.style.display = 'flex';
-    btndrop.ariaHidden = 'false';
-    optionsContainer.ariaHidden = 'true';
-    toggleIndex = false;
-  }
-
   function sortlikes() {
     sortMedia.sort((a, b) => b.likes - a.likes);
   }
@@ -64,6 +48,22 @@ export default function getSelectedSort(data) {
     });
   }
 
+  function dropDown() {
+    if (!toggleIndex) {
+      optionsContainer.style.height = `${optionsContainer.scrollHeight}px`;
+      toggleIndex = true;
+      btndrop.style.display = 'none';
+      btndrop.ariaHidden = 'true';
+      optionsContainer.ariaHidden = 'false';
+      return;
+    }
+    optionsContainer.style.height = 0;
+    btndrop.style.display = 'flex';
+    btndrop.ariaHidden = 'false';
+    optionsContainer.ariaHidden = 'true';
+    toggleIndex = false;
+  }
+
   function keySelect(e) {
     if (e.target.id === 'btnListbox' && (e.code === 'ArrowDown' || 'ArrowUp')) {
       body.style.overflow = 'hidden';
@@ -83,6 +83,8 @@ export default function getSelectedSort(data) {
       else if (btnValue.innerHTML === 'Date') sortDate();
       else if (btnValue.innerHTML === 'Titre') sortTitle();
       createCardsMedia();
+      optionsContainer.ariaHidden = 'true';
+      console.log(optionsContainer.ariaHidden);
     }
   }
 
