@@ -41,14 +41,14 @@
 
 .media {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 5.938rem;
-    margin: 6.25rem;
+    grid-template-columns: repeat(3, 21.875rem);
+    gap: 3.15rem;
+    margin: 5rem 6.25rem;
     &__item {
         & img,
         video {
+            width: 21.875rem;
             height: 18.75rem;
-            width: 100%;
             object-fit: cover;
             border-radius: 0.313rem;
             background-color: #C4C4C4;
@@ -59,9 +59,12 @@
             justify-content: space-between;
             color: $colorPrimary;
             margin: 0;
+            white-space: nowrap;
+            font-size: map-get($map: $font-size, $key: text) + 0.375;
             & .title {
-                padding: 0 1.875rem 0 0;
-                font-size: map-get($map: $font-size, $key: text) + 0.375;
+                text-overflow: ellipsis;
+                overflow: hidden;
+                width: 75%;
             }
             & .subContent {
                 display: flex;
@@ -71,7 +74,6 @@
                 & .likes {
                     margin: 0;
                     padding-right: 0.375rem;
-                    font-size: map-get($map: $font-size, $key: text) - 0.125;
                 }
             }
         }
@@ -87,6 +89,7 @@
     border-radius: 0.313rem;
     padding: 1rem 2rem 1.25rem 2rem;
     background-color: $colorTertiary;
+    font-size: map-get($map: $font-size, $key: text) + 0.375;
     & .likeContent {
         display: flex;
         flex-direction: row;
@@ -97,7 +100,7 @@
         }
     }
     & .price {
-        padding-left: 4rem;
+        padding-left: 5rem;
     }
 }
 

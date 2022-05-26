@@ -31,6 +31,7 @@ class PictureCard {
 
         const iconLike = document.createElement('i')
         iconLike.setAttribute('class', 'fa-solid fa-heart icon')
+        iconLike.setAttribute('data-fa-transform', 'up-1')
 
         const p = document.createElement('p')
         p.setAttribute('class', 'content')

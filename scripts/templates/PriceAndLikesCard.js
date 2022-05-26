@@ -21,6 +21,7 @@ class PriceAndLikesCard {
             'class',
             'fa-solid fa-heart icon icon--black'
         )
+        iconLike.setAttribute('data-fa-transform', 'up-0.75')
 
         const likeDiv = document.createElement('div')
         likeDiv.setAttribute('class', 'likeContent')
