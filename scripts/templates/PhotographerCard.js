@@ -22,7 +22,7 @@ class PhotographerCard {
         const a = document.createElement('a')
         a.setAttribute(
             'href',
-            `/photographer.html?photographerName=${this.name}&photographerId=${this.id}`
+            `/photographer.html?photographerName=${this.name}&photographerId=${this.id}&photographerPrice=${this.price}`
         )
         a.setAttribute('aria-label', `${this.name}`)
 

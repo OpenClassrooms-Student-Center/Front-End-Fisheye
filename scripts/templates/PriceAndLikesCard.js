@@ -1,6 +1,6 @@
 class PriceAndLikesCard {
-    constructor(pricesData, likesData) {
-        this.price = pricesData
+    constructor(likesData) {
+        this.price = getPhotographerPrice()
         this.likes = likesData
     }
 

@@ -5,11 +5,19 @@ async function getPhotographers() {
 }
 
 function getPhotographerName() {
-    const name = window.location.search
-    const searchParams = new URLSearchParams(name)
+    const link = window.location.search
+    const searchParams = new URLSearchParams(link)
 
     // Retourne le nom du photographe contenu dans le lien
     return searchParams.get('photographerName')
+}
+
+function getPhotographerPrice() {
+    const link = window.location.search
+    const searchParams = new URLSearchParams(link)
+
+    // Retourne le prix du photographe contenu dans le lien
+    return parseInt(searchParams.get('photographerPrice'), 10)
 }
 
 async function getPhotographerId() {
@@ -58,26 +66,6 @@ async function filterPictures(media) {
 async function filterVideo(media) {
     // Retourne le media video filtré
     return media.filter((media) => media.video)[0]
-}
-
-// Retourne un tableau contenant le prix de chaque media
-function getPrices(data) {
-    let array = []
-
-    for (const element of data) {
-        array.push(element.price)
-    }
-    return array
-}
-
-// Retourne la somme total du prix des media
-function getSumPrices(array) {
-    let sumPrices
-
-    sumPrices = array.reduce(
-        (previousValue, currentValue) => previousValue + currentValue
-    )
-    return sumPrices
 }
 
 // Retourne un tableau contenant les likes de chaque media
@@ -143,16 +131,12 @@ async function displayMedia(media) {
         main.appendChild(mediaSection)
     })
 
-    // le total du prix des media
-    const prices = getPrices(mediaFilter)
-    const sumPrices = getSumPrices(prices)
-
     // le total de like des media
     const likes = getLikes(mediaFilter)
     const sumLikes = getSumLikes(likes)
 
     // Affiche le total du prix et des likes des media
-    displayPriceAndLikesOfMedia(sumPrices, sumLikes)
+    displayPriceAndLikesOfMedia(sumLikes)
 }
 
 async function init() {
