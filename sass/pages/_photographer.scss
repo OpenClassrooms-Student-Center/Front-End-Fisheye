@@ -18,7 +18,7 @@
             margin: 0;
         }
         & .location {
-            font-size: map-get($map: $font-size, $key: text) + 6;
+            font-size: map-get($map: $font-size, $key: text) + 0.375;
             color: $colorPrimary;
             margin-bottom: 1rem;
         }
@@ -51,6 +51,7 @@
             width: 100%;
             object-fit: cover;
             border-radius: 0.313rem;
+            background-color: #C4C4C4;
         }
         & .content {
             display: flex;
@@ -60,7 +61,7 @@
             margin: 0;
             & .title {
                 padding: 0 1.875rem 0 0;
-                font-size: map-get($map: $font-size, $key: text) + 6;
+                font-size: map-get($map: $font-size, $key: text) + 0.375;
             }
             & .subContent {
                 display: flex;
@@ -70,7 +71,7 @@
                 & .likes {
                     margin: 0;
                     padding-right: 0.375rem;
-                    font-size: map-get($map: $font-size, $key: text) - 2;
+                    font-size: map-get($map: $font-size, $key: text) - 0.125;
                 }
             }
         }
@@ -96,7 +97,7 @@
         }
     }
     & .price {
-        padding-left: 3rem;
+        padding-left: 4rem;
     }
 }
 
@@ -144,7 +145,7 @@
     }
     & label {
         color: $colorQuaternary;
-        font-size: calc(map-get($map: $font-size, $key: title) / 2) + 4;
+        font-size: map-get($map: $font-size, $key: title) - 1.75;
     }
     & input {
         width: 100%;

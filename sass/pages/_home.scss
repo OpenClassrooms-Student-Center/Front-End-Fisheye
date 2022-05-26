@@ -11,7 +11,7 @@
             flex-direction: column;
             & h2 {
                 color: $colorSecondary;
-                font-size: calc(map-get($map: $font-size, $key: title) / 2) + 4;
+                font-size: map-get($map: $font-size, $key: title) - 1.75;
                 margin-bottom: 0;
             }
             & img {
@@ -20,6 +20,7 @@
                 object-fit: cover;
                 border-radius: 50%;
                 margin-top: 0.5rem;
+                box-shadow: 0 0 1rem rgba(185, 184, 184, 0.685);
             }
         }
         & p {
@@ -29,7 +30,7 @@
             line-height: 1.5;
             margin-top: 0;
             & .location {
-                font-size: map-get($map: $font-size, $key: text) + 6;
+                font-size: map-get($map: $font-size, $key: text) + 0.375;
                 color: $colorPrimary;
             }
             & .tagline {

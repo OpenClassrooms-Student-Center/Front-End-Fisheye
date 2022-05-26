@@ -19,7 +19,7 @@ body {
 .button {
   position: relative;
   z-index: 1;
-  font-size: 20px;
+  font-size: 1.25rem;
   font-weight: bold;
   color: white;
   padding: 0.688rem;
@@ -90,7 +90,7 @@ body {
 }
 .photographer_section article a h2 {
   color: #D3573C;
-  font-size: 36px;
+  font-size: 2.25rem;
   margin-bottom: 0;
 }
 .photographer_section article a img {
@@ -99,6 +99,7 @@ body {
   object-fit: cover;
   border-radius: 50%;
   margin-top: 0.5rem;
+  box-shadow: 0 0 1rem rgba(185, 184, 184, 0.685);
 }
 .photographer_section article p {
   display: flex;
@@ -108,14 +109,14 @@ body {
   margin-top: 0;
 }
 .photographer_section article p .location {
-  font-size: 24px;
+  font-size: 1.5rem;
   color: #901C1C;
 }
 .photographer_section article p .tagline {
-  font-size: 18px;
+  font-size: 1.125rem;
 }
 .photographer_section article p .price {
-  font-size: 18px;
+  font-size: 1.125rem;
   color: #757575;
 }
 
@@ -136,17 +137,17 @@ body {
   line-height: 1.5;
 }
 .photographer_header__content .name {
-  font-size: 64px;
+  font-size: 4rem;
   color: #D3573C;
   margin: 0;
 }
 .photographer_header__content .location {
-  font-size: 24px;
+  font-size: 1.5rem;
   color: #901C1C;
   margin-bottom: 1rem;
 }
 .photographer_header__content .tagline {
-  font-size: 18px;
+  font-size: 1.125rem;
   color: #525252;
 }
 .photographer_header__img {
@@ -172,6 +173,7 @@ body {
   width: 100%;
   object-fit: cover;
   border-radius: 0.313rem;
+  background-color: #C4C4C4;
 }
 .media__item .content {
   display: flex;
@@ -182,7 +184,7 @@ body {
 }
 .media__item .content .title {
   padding: 0 1.875rem 0 0;
-  font-size: 24px;
+  font-size: 1.5rem;
 }
 .media__item .content .subContent {
   display: flex;
@@ -193,7 +195,7 @@ body {
 .media__item .content .subContent .likes {
   margin: 0;
   padding-right: 0.375rem;
-  font-size: 16px;
+  font-size: 1rem;
 }
 
 .priceAndLikes {
@@ -216,7 +218,7 @@ body {
   padding-right: 0.375rem;
 }
 .priceAndLikes .price {
-  padding-left: 3rem;
+  padding-left: 4rem;
 }
 
 #contact_modal {
@@ -244,7 +246,7 @@ body {
   cursor: pointer;
 }
 .modal__header__title {
-  font-size: 64px;
+  font-size: 4rem;
   font-weight: normal;
   text-align: center;
 }
@@ -264,7 +266,7 @@ body {
 }
 .form label {
   color: #312E2E;
-  font-size: 36px;
+  font-size: 2.25rem;
 }
 .form input {
   width: 100%;

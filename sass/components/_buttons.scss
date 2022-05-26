@@ -1,7 +1,7 @@
 .button {
     position: relative;
     z-index: 1;
-    font-size: map-get($map: $font-size, $key: text) + 2;
+    font-size: map-get($map: $font-size, $key: text) + 0.125;
     font-weight: bold;
     color: white;
     padding: 0.688rem;

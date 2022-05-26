@@ -13,7 +13,7 @@ class PriceAndLikesCard {
         spanLikes.setAttribute('class', 'likes')
 
         const spanPrice = document.createElement('span')
-        spanPrice.textContent = `${this.price}€/jour`
+        spanPrice.textContent = `${this.price}€ / jour`
         spanPrice.setAttribute('class', 'price')
 
         const iconLike = document.createElement('i')
