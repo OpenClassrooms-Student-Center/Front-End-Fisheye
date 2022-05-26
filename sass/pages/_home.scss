@@ -1,8 +1,8 @@
 .photographer_section {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
-    gap: 70px;
-    margin-top: 100px;
+    gap: 4.375rem;
+    margin-top: 6.25rem;
     & article {
         & a {
             display: block;
@@ -15,8 +15,8 @@
                 margin-bottom: 0;
             }
             & img {
-                height: 200px;
-                width: 200px;
+                height: 12.5rem;
+                width: 12.5rem;
                 object-fit: cover;
                 border-radius: 50%;
                 margin-top: 0.5rem;

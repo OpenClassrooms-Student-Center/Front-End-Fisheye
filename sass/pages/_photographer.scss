@@ -4,8 +4,8 @@
     justify-content: space-between;
     align-items: center;
     background-color: $colorQuinary;
-    height: 300px;
-    margin: 0 100px;
+    height: 18.75rem;
+    margin: 0 6.25rem;
     padding: 3rem;
     &__content {
         display: flex;
@@ -29,8 +29,8 @@
     }
     &__img {
         order: 3;
-        height: 200px;
-        width: 200px;
+        height: 12.5rem;
+        width: 12.5rem;
         border-radius: 50%;
         object-fit: cover;
     }
@@ -42,15 +42,15 @@
 .media {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 95px;
-    margin: 100px;
+    gap: 5.938rem;
+    margin: 6.25rem;
     &__item {
         & img,
         video {
-            height: 300px;
+            height: 18.75rem;
             width: 100%;
             object-fit: cover;
-            border-radius: 5px;
+            border-radius: 0.313rem;
         }
         & .content {
             display: flex;
@@ -59,7 +59,7 @@
             color: $colorPrimary;
             margin: 0;
             & .title {
-                padding: 0 30px 0 0;
+                padding: 0 1.875rem 0 0;
                 font-size: map-get($map: $font-size, $key: text) + 6;
             }
             & .subContent {
@@ -69,11 +69,34 @@
                 justify-content: center;
                 & .likes {
                     margin: 0;
-                    padding-right: 6px;
+                    padding-right: 0.375rem;
                     font-size: map-get($map: $font-size, $key: text) - 2;
                 }
             }
         }
+    }
+}
+
+.priceAndLikes {
+    position: fixed;
+    bottom: -0.25rem;
+    right: 2rem;
+    display: flex;
+    flex-direction: row;
+    border-radius: 0.313rem;
+    padding: 1rem 2rem 1.25rem 2rem;
+    background-color: $colorTertiary;
+    & .likeContent {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        & .likes {
+            padding-right: 0.375rem;
+        }
+    }
+    & .price {
+        padding-left: 3rem;
     }
 }
 
@@ -82,14 +105,14 @@
 }
 
 .modal {
-    border-radius: 5px;
+    border-radius: 0.313rem;
     background-color: $colorTertiary;
     width: 50%;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: space-between;
-    padding: 35px;
+    padding: 2.188rem;
     margin: auto;
     &__header {
         display: flex;
@@ -117,7 +140,7 @@
         flex-direction: column;
         width: 100%;
         align-items: self-start;
-        margin-bottom: 26px;
+        margin-bottom: 1.625rem;
     }
     & label {
         color: $colorQuaternary;
@@ -125,8 +148,8 @@
     }
     & input {
         width: 100%;
-        height: 68px;
+        height: 4.25rem;
         border: none;
-        border-radius: 5px;
+        border-radius: 0.313rem;
     }
 }

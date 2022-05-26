@@ -3,13 +3,13 @@
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
-    height: 90px;
+    height: 5.625rem;
     &__logo {
-        height: 50px;
-        margin-left: 100px;
+        height: 3.125rem;
+        margin-left: 6.25rem;
     }
     &__title {
         color: $colorPrimary;
-        margin-right: 100px;
+        margin-right: 6.25rem;
     }
 }

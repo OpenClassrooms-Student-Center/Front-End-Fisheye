@@ -4,12 +4,12 @@
     font-size: map-get($map: $font-size, $key: text) + 2;
     font-weight: bold;
     color: white;
-    padding: 11px;
-    width: 170px;
-    height: 70px;
+    padding: 0.688rem;
+    width: 10.625rem;
+    height: 4.375rem;
     border: none;
     background-color: $colorPrimary;
-    border-radius: 5px;
+    border-radius: 0.313rem;
     cursor: pointer;
     &:hover {
         color: #000000;
@@ -22,7 +22,7 @@
         z-index: -1;
         opacity: 0;
         background-color: $colorTertiary;
-        border-radius: 5px;
+        border-radius: 0.313rem;
         transition: opacity 250ms;
     }
 }
