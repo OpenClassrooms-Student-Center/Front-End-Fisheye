@@ -4,7 +4,7 @@ function mediaFactory(data) {
     const article = document.createElement("article");
 
     article.innerHTML = `<img src="assets/images/${image}" class="sample-image" alt="">
-                        <h1>${title}</h1>`;
+                        <p class="image-title">${title}</p>`;
     return article;
   }
   //console.log(title, date, price);

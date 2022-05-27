@@ -58,11 +58,23 @@
 }
 
 /**********MEDIA*********/
-
+.photograph-media {
+  display: grid;
+  grid-template-columns: 1fr 1fr auto;
+  margin: 70px 100px;
+  row-gap: 40px;
+}
 .sample-image {
   object-fit: cover;
   width: 350px;
   height: 300px;
+  border-radius: 5px;
+}
+
+.image-title {
+  color: #901c1c;
+  font-size: 24px;
+  font-weight: 400;
 }
 
 .contact-button {
