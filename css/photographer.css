@@ -57,6 +57,14 @@
   border-radius: 5px;
 }
 
+/**********MEDIA*********/
+
+.sample-image {
+  object-fit: cover;
+  width: 350px;
+  height: 300px;
+}
+
 .contact-button {
   font-size: 20px;
   font-weight: bold;

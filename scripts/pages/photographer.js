@@ -2,15 +2,18 @@ async function getPhotographers() {
   const url = "/data/photographers.json";
   const response = await fetch(url);
   const data = await response.json();
-  return { photographers: data.photographers };
+  return { photographers: data.photographers, medias: data.media };
 }
 
 async function getSelectedPhotographer(id) {
-  const { photographers } = await getPhotographers();
+  const { photographers, medias } = await getPhotographers();
   const selectedPhotographer = photographers.find(
     (photographer) => photographer.id === id
   );
-  return selectedPhotographer;
+  const photographerMedias = medias.filter(
+    (media) => media.photographerId === id
+  );
+  return [selectedPhotographer, photographerMedias];
 }
 
 function displaySelectedData(photographer) {
@@ -40,14 +43,25 @@ function displaySelectedData(photographer) {
 
   // display data
   displayHeader();
-  // displaySelectMenu();
+}
+
+async function displayMedia(medias) {
+  const mediaSection = document.querySelector(".photograph-media");
+  medias.forEach((media) => {
+    console.log(media.image);
+    const mediaModel = mediaFactory(media);
+    const mediaCardDOM = mediaModel.getMediaCardDOM();
+    mediaSection.appendChild(mediaCardDOM);
+  });
 }
 
 async function selectedInit() {
   const params = new URL(document.location).searchParams;
   const photographerId = parseInt(params.get("id"));
-  const selectedPhotographer = await getSelectedPhotographer(photographerId);
+  const [selectedPhotographer, photographerMedias] =
+    await getSelectedPhotographer(photographerId);
   displaySelectedData(selectedPhotographer);
+  displayMedia(photographerMedias);
 }
 
 selectedInit();
