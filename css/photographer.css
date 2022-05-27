@@ -27,7 +27,35 @@
   font-size: 18px;
   color: #525252;
 }
-/*********** Drop Down Menu************/
+/*********** SELECT************/
+.photograph-sort {
+  margin: 30px 100px;
+}
+
+.select-label {
+  font-size: 18px;
+  font-weight: 700;
+  margin-right: 10px;
+}
+
+#sort-select {
+  font-family: "DM Sans", sans-serif;
+  background-color: #901c1c;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 8px;
+  font-size: 18px;
+  font-weight: 700;
+}
+
+.select-option {
+  background-color: #901c1c;
+  color: white;
+  font-size: 18px;
+  font-weight: 700;
+  border-radius: 5px;
+}
 
 .contact-button {
   font-size: 20px;
