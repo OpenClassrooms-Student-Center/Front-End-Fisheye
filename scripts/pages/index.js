@@ -1,36 +1,20 @@
+import { URL } from "../../constants/index.js";
+import { photographerFactory } from "../factories/photographer.js";
+import { getData } from "../services/index.js";
+
 async function getPhotographers() {
-  // Penser à remplacer par les données récupérées dans le json
-  const photographers = [
-    {
-      name: "Ma data test",
-      id: 1,
-      city: "Paris",
-      country: "France",
-      tagline: "Ceci est ma data test",
-      price: 400,
-      portrait: "account.png",
-    },
-    {
-      name: "Autre data test",
-      id: 2,
-      city: "Londres",
-      country: "UK",
-      tagline: "Ceci est ma data test 2",
-      price: 500,
-      portrait: "account.png",
-    },
-  ];
-  // et bien retourner le tableau photographers seulement une fois
-  return {
-    photographers: [...photographers, ...photographers, ...photographers],
-  };
+  const data = await getData(URL);
+  return data;
 }
 
 async function displayData(photographers) {
+  console.log("photographers => ", photographerFactory);
   const photographersSection = document.querySelector(".photographer_section");
 
   photographers.forEach((photographer) => {
     const photographerModel = photographerFactory(photographer);
+    console.log("photographerModel => ", photographerModel);
+
     const userCardDOM = photographerModel.getUserCardDOM();
     photographersSection.appendChild(userCardDOM);
   });
@@ -38,8 +22,10 @@ async function displayData(photographers) {
 
 async function init() {
   // Récupère les datas des photographes
-  const { photographers } = await getPhotographers();
-  displayData(photographers);
+  const data = await getPhotographers();
+  console.log("data => ", data.photographers);
+
+  displayData(data.photographers);
 }
 
 init();

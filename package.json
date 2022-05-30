@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "Pas de dépendances à installer, il suffit d'ovrir le fichier `index.html` via votre nivigator",
   "main": "index.js",
+ "type": "module",
   "scripts": {
     "test": "test"
   },

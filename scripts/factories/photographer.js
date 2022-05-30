@@ -1,7 +1,9 @@
-function photographerFactory(data) {
+import { PHOTO_PORTRAIT } from "../../constants/index.js";
+
+export function photographerFactory(data) {
   const { name, portrait } = data;
 
-  const picture = `assets/photographers/${portrait}`;
+  const picture = PHOTO_PORTRAIT() + portrait;
 
   function getUserCardDOM() {
     const article = document.createElement("article");
