@@ -24,14 +24,14 @@ h1 {
     margin-left: 100px;
 }
 
-.photographer_section {
+#photographer_section {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     gap: 70px;
     margin-top: 100px;
 }
 
-.photographer_section article {
+#photographer_section article {
     justify-self: center;
     display: flex;
     justify-content: center;
@@ -39,12 +39,12 @@ h1 {
     flex-direction: column;
 }
 
-.photographer_section article h2 {
+#photographer_section article h2 {
     color: #D3573C;
     font-size: 36px;
 }
 
-.photographer_section article img {
+#photographer_section article img {
     height: 200px;
     width: 200px;
 }
