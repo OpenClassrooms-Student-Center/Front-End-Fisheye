@@ -1,64 +1,131 @@
-class Lightbox {
+setTimeout(function () {
+  /**
+   * @property {HTMLElement} element
+   * @property {string[]} images - The gallery of images
+   * @property {string} url - Displayed image url
+   */
 
+  class Lightbox {
     static init() {
-        const links = document.querySelectorAll('a[href$=".jpg"], a[href$=".jpeg"], a[href$=".png"], a[href$=".gif"]')
-        
-            links.forEach(link => link.addEventListener('click', e => 
-        {
-           e.preventDefault()
-           new Lightbox(e.currentTarget.getAttribute('href')) 
-        }))
+      const links = Array.from(
+        document.querySelectorAll('a[href$=".jpg"], a[href$=".mp4"]')
+      );
 
+      const gallery = links.map((link) => link.getAttribute("href"));
+
+      links.forEach((link) =>
+        link.addEventListener("click", (e) => {
+          e.preventDefault();
+          new Lightbox(e.currentTarget.getAttribute("href"), gallery);
+        })
+      );
     }
 
+    /**
+     *
+     * @param {string} src - The image source
+     * @param {string[]} images - The gallery of images
+     */
+    constructor(url, images) {
+      this.element = this.buildDom(url);
+      this.images = images;
+      this.onKeyUp = this.onKeyUp.bind(this);
+      document.body.appendChild(this.element);
+      document.addEventListener("keyup", this.onKeyUp);
+    }
 
+    onKeyUp(e) {
+      if (e.key === "Escape") {
+        this.close(e);
+      } else if (e.key === "ArrowRight") {
+        this.next(e);
+      } else if (e.key === "ArrowLeft") {
+        this.prev(e);
+      }
+    }
 
     /**
-    * 
-    * @param {string} src - The image source
-    */
-   constructor (url){
-       const element = this.buildDom(url)
-       document.body.appendChild(element)
-   
-   }
-   
-   /**
-    * @param {string} src - The image source
-    * @return (htmlElement)
-    */
-   
-   buildDom(url){
-       const dom = document.createElement('div')
-       dom.classList.add('lightbox')
-       dom.innerHTML = `
+     * Ferme la lightbox
+     * @param {mouseEvent | KeyboardEvent} e
+     */
+    close(e) {
+      e.preventDefault();
+      this.element.classList.add("fadeOut");
+      window.setTimeout(() => {
+        this.element.remove(this.element);
+      }, 500);
+      document.removeEventListener("keyup", this.onKeyUp);
+    }
+
+    /**
+     * @param {string} url URL de l'image
+     */
+    loadImage(url) {
+      this.url = null;
+      const image = new Image();
+      const container = this.element.querySelector(".lightbox_container");
+      container.innerHTML = "";
+      image.onload = () => {
+        container.appendChild(image);
+        this.url = url;
+      };
+      image.src = url;
+    }
+
+    /**
+     * @param {MouseEvent|KeyboardEvent} e
+     */
+    next(e) {
+      e.preventDefault();
+      let i = this.images.findIndex((image) => image === this.url);
+      if (i === this.images.length - 1) {
+        i = -1;
+      }
+      this.loadImage(this.images[i + 1]);
+    }
+
+    /**
+     * @param {MouseEvent|KeyboardEvent} e
+     */
+    prev(e) {
+      e.preventDefault();
+      let i = this.images.findIndex((image) => image === this.url);
+      if (i === 0) {
+        i = this.images.length;
+      }
+      this.loadImage(this.images[i - 1]);
+    }
+
+    /**
+     * @param {string} src - The image source
+     * @return (htmlElement)
+     */
+
+    buildDom(url) {
+      const dom = document.createElement("div");
+      dom.classList.add("lightbox");
+      dom.innerHTML = `
        <button class="lightbox_close">Fermer</button>
        <button class="lightbox_next">Suivant</button>
        <button class="lightbox_prev">Précédent</button>
        <div class="lightbox_container">
          <img src="${url}" alt="#">
        </div>
-    `
-     return dom
-   }
+    `;
+      dom
+        .querySelector(".lightbox_close")
+        .addEventListener("click", this.close.bind(this));
+      dom
+        .querySelector(".lightbox_next")
+        .addEventListener("click", this.next.bind(this));
+      dom
+        .querySelector(".lightbox_prev")
+        .addEventListener("click", this.prev.bind(this));
+      return dom;
+    }
+  }
 
-}
+  Lightbox.init();
 
-
-
-
-Lightbox.init();
-
-console.log('lightbox.js loaded')
-
-/** 
- * 
- * <div class="lightbox">
-        <button class="lightbox_close">Fermer</button>
-        <button class="lightbox_next">Suivant</button>
-        <button class="lightbox_prev">Précédent</button>
-        <div class="lightbox_container">
-          <img src="#" alt="#">
-        </div>
-      </div>
- */
+  console.log("lightbox.js loaded");
+}, 1000);

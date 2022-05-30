@@ -1,10 +1,9 @@
-var btnLike = document.querySelectorAll('#btnLike');
-var likeNmbr = document.querySelectorAll('#likeNmbr');
+setTimeout(function () {
 
-for (const btn of btnLike){
-    btn.addEventListener('click', function(){
-        likeNmbr.innerText++;
-    })  
-}
-
-console.log('like.js loaded')
+    document.querySelector('#btnLike').addEventListener('click', function () {
+        likeNbr = document.getElementById('#likeNmbr').value;
+        likeNbr++;
+        console.log('click like');
+    });
+   console.log('like.js loaded')
+}, 1000)

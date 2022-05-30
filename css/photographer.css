@@ -142,7 +142,7 @@ form input {
     width: 100%;
     height: 100%;
 }
-.mediaCard img{
+.mediaCard img, .mediaCard video{
     width: 100%;
     height: 400px;
     border-radius: 5px;
@@ -195,10 +195,13 @@ form input {
     height: 100%;
     background-color: rgba(0, 0, 0, 0.8);
     z-index: 10;
-    overflow: auto;
+    overflow: hidden;
     animation: lightboxIn 0.5s;
+    transition: opacity 0.3;
 }
-
+.lightbox.fadeOut {
+    opacity: 0;
+}
 .lightbox_next, .lightbox_prev {
    border: none;
    background: url(/assets/icons/arrow.svg) center center / 16px 28px no-repeat;
@@ -234,15 +237,15 @@ form input {
     opacity:.5;
     cursor: pointer;
     transition: opacity .3s;
-    text-indent: -3000px;
+    text-indent: -5000px;
 }
 .lightbox button:hover{
     opacity: 1;
     cursor: pointer;
 }
-.lightbox_container img{
+.lightbox_container img, .lightbox_container video{
     max-width: 100%;
-    height: auto;
+    height: 80vh;
     animation: lightboxIn 0.5s;
 }
 .lightbox_container{
