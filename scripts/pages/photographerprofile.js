@@ -20,16 +20,17 @@ class Profile {
             if(media.photographerId == idphotograph){
                 const TemplateMedia = new PhotographerMedia(media);
                 this.$photographerMedia.appendChild(TemplateMedia.createPhotographerMedia());
+                
             }
             
             
-          
+            
           
           // return true;
         });
   
        
-        
+        console.log('mes medias sont chargés')
     }
   }
   
