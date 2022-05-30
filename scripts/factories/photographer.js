@@ -13,7 +13,10 @@ function photographerFactory(data) {
         article.appendChild(img);
         article.appendChild(h2);
 
+        console.log(article);
         return article;
     }
+    console.log({ name, picture, getUserCardDOM })
     return { name, picture, getUserCardDOM }
+   
 }
