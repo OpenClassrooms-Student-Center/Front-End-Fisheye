@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/laminemessaci/Front-End-Fisheye/issues"
   },
-  "homepage": "https://github.com/laminemessaci/Front-End-Fisheye#readme"
+  "homepage": "https://github.com/laminemessaci/Front-End-Fisheye#readme",
+  "dependencies": {
+    "eslint": "^8.16.0"
+  }
 }
