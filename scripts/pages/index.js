@@ -1,6 +1,6 @@
 import { URL } from "../../constants/index.js";
 import { photographerFactory } from "../factories/photographer.js";
-import { getData } from "../services/index.js";
+import { getData } from "../services/getData.js";
 
 async function getPhotographers() {
   const data = await getData(URL);

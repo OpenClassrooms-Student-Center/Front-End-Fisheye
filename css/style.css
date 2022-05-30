@@ -37,14 +37,30 @@ h1 {
     justify-content: center;
     align-items: center;
     flex-direction: column;
+    width: 526px;
+    height: 358px;
 }
 
 .photographer_section article h2 {
     color: #D3573C;
     font-size: 36px;
+    font-style:normal ;
+    font-weight: 400;
+    line-height: 47px;
 }
 
 .photographer_section article img {
+    object-fit: cover;
     height: 200px;
     width: 200px;
+    border-radius: 10em;
+    box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.2);
+}
+.photographer_section article p {
+   
+    color: #901C1C;
+    font-size: 13px;
+    
+
+
 }
