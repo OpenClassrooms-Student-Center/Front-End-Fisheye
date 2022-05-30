@@ -9,14 +9,18 @@
     @include flex-cc;
     justify-self: center;
     flex-direction: column;
-}
 
-#photographer_section article h2 {
-    color: $color-primary-light;
-    font-size: 36px;
-}
+    h2 {
+        color: $color-primary-light;
+        font-weight: 400;
+        font-size: 36px;
+    }
 
-#photographer_section article img {
-    height: 200px;
-    width: 200px;
+    img {
+        height: 200px;
+        width: 200px;
+        border-radius: 50%;
+        object-fit: cover;
+        box-shadow: 1px 1px 15px rgba(150, 150, 150, 0.5);
+    }
 }
