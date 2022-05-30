@@ -1,6 +1,7 @@
 body {
   font-family: "DM Sans", sans-serif;
   margin: 0;
+  font-size: 14px;
 }
 
 header {
@@ -46,6 +47,13 @@ h1 {
   border-radius: 50%;
   object-fit: cover;
   box-shadow: 1px 1px 15px rgba(150, 150, 150, 0.5);
+}
+#photographer_section article .city {
+  color: #901C1C;
+  font-size: 18px;
+}
+#photographer_section article .price {
+  color: #525252;
 }
 
 #contact_modal {

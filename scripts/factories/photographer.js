@@ -1,5 +1,5 @@
 function photographerFactory(data) {
-    const { name, portrait, city, tagline, price } = data;
+    const { name, portrait, city, tagline, price, country } = data;
 
     const picture = `assets/photographers/Photographers ID Photos/${portrait}`;
 
@@ -20,7 +20,7 @@ function photographerFactory(data) {
 
         //Text injected in HTML elements
         h2.textContent = name;
-        divCity.textContent = city;
+        divCity.textContent = `${city}, ${country}`;
         divTagline.textContent = tagline;
         divPrice.textContent = `${price}€/jour`;
 

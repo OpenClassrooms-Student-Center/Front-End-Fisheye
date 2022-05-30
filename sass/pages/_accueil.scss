@@ -23,4 +23,13 @@
         object-fit: cover;
         box-shadow: 1px 1px 15px rgba(150, 150, 150, 0.5);
     }
+
+    .city {
+        color: $color-primary-dark;
+        font-size: 18px;
+    }
+
+    .price {
+        color: $color-secondary-dark;
+    }
 }
