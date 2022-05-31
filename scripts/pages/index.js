@@ -1,4 +1,5 @@
 import { URL } from "../../constants/index.js";
+import { PhotographerCard } from "../components/photographerCard/index.js";
 import { photographerFactory } from "../factories/photographer.js";
 import { getData } from "../services/getData.js";
 
@@ -11,11 +12,11 @@ async function displayData(photographers) {
   console.log("photographers => ", photographerFactory);
   const photographersSection = document.querySelector(".photographer_section");
 
-  photographers.forEach((photographer) => {
-    const photographerModel = photographerFactory(photographer);
+  photographers.map((photographer) => {
+    const photographerModel = new PhotographerCard(photographer);
     console.log("photographerModel => ", photographerModel);
 
-    const userCardDOM = photographerModel.getUserCardDOM();
+    const userCardDOM = photographerModel.createPhotographerCard();
     photographersSection.appendChild(userCardDOM);
   });
 }

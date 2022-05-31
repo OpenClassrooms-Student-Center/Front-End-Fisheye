@@ -1,10 +1,14 @@
 @import url("photographer.css");
 
-body {
+body, p, h1, h2 {
     font-family: "DM Sans", sans-serif;
     margin: 0;
+    padding: 0;
 }
 
+a{
+    text-decoration: none;
+}
 
 header {
     display: flex;
