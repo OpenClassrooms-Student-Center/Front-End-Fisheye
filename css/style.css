@@ -41,16 +41,30 @@ h1 {
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    width: 526px;
-    height: 358px;
+    font-size: 10px;
 }
 
 .photographer_section article h2 {
     color: #D3573C;
     font-size: 36px;
-    font-style:normal ;
-    font-weight: 400;
-    line-height: 47px;
+    font-weight: normal;
+
+}
+
+.photographer_section article p:first-of-type {
+    font-size: 13px;
+    color: #D3573C;
+}
+
+.photographer_section article p:last-of-type {
+    font-size: 9px;
+}
+
+.photographer_section article a {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 }
 
 .photographer_section article img {
@@ -59,12 +73,4 @@ h1 {
     width: 200px;
     border-radius: 10em;
     box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.2);
-}
-.photographer_section article p {
-   
-    color: #901C1C;
-    font-size: 13px;
-    
-
-
 }
