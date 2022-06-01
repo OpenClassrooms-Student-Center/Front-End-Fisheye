@@ -1,0 +1,42 @@
+.slider{
+    display: none;
+    position : fixed;
+    height: 100vh;
+    width: 100vw;
+    top: 0;
+    left: 0;
+    background-color: #FFFF;
+}
+.slider.active{
+    display: flex;
+}
+
+
+.back, .next, .close {
+    font-size: 3rem;
+    z-index: 1;
+    color: #901C1C;
+    position: absolute;
+    cursor: pointer;
+}
+
+.back, .next{
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.next {
+    right: 1rem;
+}
+.back {
+    left: 1rem;
+}
+.close {
+   right: 1rem;
+}
+.slides__container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

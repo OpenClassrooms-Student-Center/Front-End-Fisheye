@@ -1,0 +1,20 @@
+@import './bases/bases';
+
+@import './components/cards/photographerCard';
+@import './components/cards/mediaCard';
+@import './components/logo/logo';
+@import './components/slide';
+@import './components/buttons';
+
+@import './layouts/header';
+@import './layouts/photographers';
+@import './layouts/presentation';
+@import './layouts/medias';
+@import './layouts/presentation';
+@import './layouts/slider';
+@import './layouts/totalLikes';
+@import './layouts/filter';
+@import './layouts/modal';
+
+@import './pages/index';
+@import './pages/photographe';
