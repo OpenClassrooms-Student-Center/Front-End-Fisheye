@@ -17,6 +17,10 @@ h1 {
   margin-right: 100px;
 }
 
+a {
+  text-decoration: none;
+}
+
 .logo {
   height: 50px;
   margin-left: 100px;
@@ -29,30 +33,31 @@ h1 {
   margin-top: 100px;
 }
 
-#photographer_section article {
+#photographer_section article, #photographer_section a {
   display: flex;
   justify-content: center;
   align-items: center;
   justify-self: center;
   flex-direction: column;
 }
-#photographer_section article h2 {
+#photographer_section article h2, #photographer_section a h2 {
+  margin: 15px auto 5px;
   color: #D3573C;
   font-weight: 400;
   font-size: 36px;
 }
-#photographer_section article img {
+#photographer_section article img, #photographer_section a img {
   height: 200px;
   width: 200px;
   border-radius: 50%;
   object-fit: cover;
   box-shadow: 1px 1px 15px rgba(150, 150, 150, 0.5);
 }
-#photographer_section article .city {
+#photographer_section article .city, #photographer_section a .city {
   color: #901C1C;
   font-size: 18px;
 }
-#photographer_section article .price {
+#photographer_section article .price, #photographer_section a .price {
   color: #525252;
 }
 

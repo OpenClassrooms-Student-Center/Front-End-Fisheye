@@ -5,12 +5,13 @@
     margin-top: 100px;
 }
 
-#photographer_section article {
+#photographer_section article, #photographer_section a {
     @include flex-cc;
     justify-self: center;
     flex-direction: column;
 
     h2 {
+        margin: 15px auto 5px;
         color: $color-primary-light;
         font-weight: 400;
         font-size: 36px;
