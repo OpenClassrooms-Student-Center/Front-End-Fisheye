@@ -77,7 +77,7 @@ setTimeout(function () {
      */
     next(e) {
       e.preventDefault();
-      let i = this.images.findIndex((image) => image === this.url);
+      let i = this.images.findIndex(image => image === this.url);
       if (i === this.images.length - 1) {
         i = -1;
       }
@@ -89,7 +89,9 @@ setTimeout(function () {
      */
     prev(e) {
       e.preventDefault();
-      let i = this.images.findIndex((image) => image === this.url);
+      let i = this.images.findIndex(image => {
+        return image === this.url;
+      });
       if (i === 0) {
         i = this.images.length;
       }

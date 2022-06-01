@@ -20,7 +20,7 @@ class PhotographerProfile{
                     <img alt="${this._photographer.name}" src="/assets/photographers/${this._photographer.portrait}"/>
                 </div>
             </div>
-            <div class="price"><p>${this._photographer.price}€ / jour</p></div>
+            <div class="price"><p id="totalLike"></p><p><i class="fa-solid fa-heart"></i></p><p>${this._photographer.price}€ / jour</p></div>
             
         
         

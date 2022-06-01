@@ -21,7 +21,7 @@ class Profile {
         );
       }
 
-      console.log("mes medias sont chargés");
+      
 
       // return true;
     });
@@ -30,3 +30,4 @@ class Profile {
 
 const profile = new Profile();
 profile.main();
+console.log("mes medias sont chargés");

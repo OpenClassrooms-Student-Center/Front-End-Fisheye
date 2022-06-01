@@ -16,7 +16,7 @@ class PhotographerMedia {
                 ${
                   this._media.image
                     ? `<img alt="${this._media.title}" src="/assets/photographersMedias/${this._media.image}"/>`
-                    : `<video autoplay controls><source src="/assets/photographersMedias/${this._media.video}" type="video/mp4" ></video>`
+                    : `<video autoplay controls loop><source src="/assets/photographersMedias/${this._media.video}" type="video/mp4" ></video>`
                 }
             
                 </a>
@@ -25,7 +25,7 @@ class PhotographerMedia {
             <p>${this._media.title}</p>
             <p><span id="likeNmbr"> ${
               this._media.likes
-            }</span><button id="btnLike"><i class="fa-solid fa-heart"></i></button></p>
+            }</span><i id="btnLike" class="fa-solid fa-heart"></i></p>
             </div>
             
    
@@ -34,3 +34,6 @@ class PhotographerMedia {
     return $wrapperMedia;
   }
 }
+
+
+
