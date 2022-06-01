@@ -1,5 +1,5 @@
 function mediaFactory(data) {
-  const { id, photographerId, title, image, likes, date, price } = data;
+  const { id, photographerId, title, image, video, likes, date, price } = data;
   function getMediaCardDOM() {
     const article = document.createElement("article");
 
@@ -13,6 +13,7 @@ function mediaFactory(data) {
     photographerId,
     title,
     image,
+    video,
     likes,
     date,
     price,

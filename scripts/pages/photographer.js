@@ -48,7 +48,6 @@ function displaySelectedData(photographer) {
 async function displayMedia(medias) {
   const mediaSection = document.querySelector(".photograph-media");
   medias.forEach((media) => {
-    console.log(media.image);
     const mediaModel = mediaFactory(media);
     const mediaCardDOM = mediaModel.getMediaCardDOM();
     mediaSection.appendChild(mediaCardDOM);
