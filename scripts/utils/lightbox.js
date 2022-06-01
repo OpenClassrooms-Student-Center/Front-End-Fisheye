@@ -4,7 +4,8 @@
 class Lightbox{
 
    static init () {
-        const links = document.querySelectorAll('a[href$=".png"], a[href$=".jpg"], a[href$=".jpeg"], a[href$=".mp4"]')
+        
+        const links = document.getElementById('element_of_photographer').querySelectorAll('a[href$=".jpg"], a[href$=".mp4"]')
         .forEach(link => link.addEventListener('click', e => 
         {
             e.preventDefault()
@@ -44,7 +45,7 @@ class Lightbox{
     }
 
     loadVideo(url) {
-      const video = new Video();
+      const video = new Audio();
       const container = this.element.querySelector('.lightbox__container')
       const loader = document.createElement('div')
       loader.classList.add('lightbox__loader')

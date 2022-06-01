@@ -121,10 +121,10 @@ form input {
     white-space: nowrap;
     margin: 30px 0 0 0;
 }
-#profile_city{
+.red{
     font-size: 25px;
     color: #901C1C;
-    margin-top: 10px;
+    
 }
 #profile_tagline{
     font-size: 20px;
@@ -147,6 +147,7 @@ form input {
     height: 200px;
     margin-top: 30px;
     margin-left: 80px;
+    object-fit: cover;
 }
 
 #select_menu{
@@ -247,18 +248,66 @@ form input {
     grid-gap: 70px;
     margin-top: 50px;
     
-}
-.grid img{
-    display: block;
-    width: 420px;
-    height: 400px;
-    border-radius: 5px;
     
 }
+.grid  img   {
+    width: 420px;
+    height: 400px;
+    display: block;
+    border-radius: 5px;
+    cursor: pointer;
+    object-fit: cover;
+}
+.grid video    {
+    width: 420px;
+    height: 400px;
+    display: block;
+    border-radius: 5px;
+    cursor: pointer;
+    object-fit: cover;
+}
+
 .icone_cross_button_nav{
     height: 20px;
     width: 20px;
     right: 0;
     background: url(../assets/images/arrow.svg) center center / 100% 100% no-repeat;
     transform: rotate(90deg);
+}
+
+
+.likes{
+
+    margin: 5px;
+}
+.heart {
+    height: 25px;
+    width: 25px;
+    background: url(../assets/images/heart_red.svg) center center / 100% 100% no-repeat;
+    margin-right: 120px;
+}
+.price_and_likes{
+    position: fixed;
+    width:  376px ;
+    height: 65px;
+    background: #DB8876;
+    border-radius: 5px 5px 0 0;
+    right: 50px;
+    bottom: 0px;
+}
+#price_per_day{
+    margin-left: 100px;
+}
+#heart{
+    height: 25px;
+    width: 25px;
+    padding-left: 10px;
+    background: url(../assets/images/heart_black.svg) center center / 100% 100% no-repeat ;
+    color: black;
+}
+
+.position_of_price_and_likes{
+    margin: 20px 5% 0 5%;
+    font-weight: bold;
+    font-size: 20px;
 }

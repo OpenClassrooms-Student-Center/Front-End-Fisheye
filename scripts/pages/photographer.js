@@ -49,9 +49,9 @@ const testPhotographer = async (data) => {
   const photographerId = valueId
 
 
-  const mediafiltred = filterMediaOfPhotographer(data, photographerId)
   
-  console.log(mediafiltred);
+  
+  
   
 
   const structurePhotographer = `
@@ -59,7 +59,7 @@ const testPhotographer = async (data) => {
         
     <div class="main_information  position_main_information">
       <h1 id="profile_name">${photographerfiltred.name}</h1>
-      <p id="profile_city">${photographerfiltred.city + ', ' + photographerfiltred.country  }</p>
+      <p class="red">${photographerfiltred.city + ', ' + photographerfiltred.country  }</p>
       <p id="profile_tagline">${photographerfiltred.tagline  }</p>
     </div> 
        
@@ -75,8 +75,143 @@ const testPhotographer = async (data) => {
   main_photographer.innerHTML = structurePhotographer
   
   
+  // Grille des medias des photographe
+
+  const gridOfMediaOfPhotographer = async(a)=>{
+    
+    const mediafiltred = filterMediaOfPhotographer(data, photographerId)
+    
+    
+    
+
+    /* const structureMedia = 
+    `<div>
+        <a href="/assets/photographers/Sample Photos/${valueId}/${mediafiltred[a].image}">
+      <img src="/assets/photographers/Sample Photos/${valueId}/${mediafiltred[a].image}" alt="" >
+        </a>
+      <p id="profile_city">${mediafiltred[a].title}</p>
+    </div>` */
+    
+    
+    
+    
+    
+    let test = mediafiltred[a].image||mediafiltred[a].video.substring(mediafiltred[a].image||mediafiltred[a].video.lastIndexOf('.')+1)
+   
+    const div_grid_element = document.getElementById('element_of_photographer')
+      
+      
+      let div_media = document.createElement('div')
+      
+      
+      let title_media = document.createElement('h2')
+      title_media.textContent = mediafiltred[a].title
+      title_media.classList.add('red')
+      
+
+      let likes_media = document.createElement('p')
+      likes_media.textContent = mediafiltred[a].likes
+      likes_media.classList.add('likes')
+      
+      let title_and_likes = document.createElement('div')
+      title_and_likes.classList.add('flexbetween')
+      let title = document.createElement('div')
+      
+
+      let likes = document.createElement('div')
+      likes.classList.add('flexcenter')
+
+      let heart = document.createElement('p')
+      heart.classList.add('heart')
+
+      
+    
+
+    if(test == 'mp4'){
+      console.log('oui');
+          
+      
+      let div_media = document.createElement('div')
+      
+      let video_media = document.createElement('video')
+      let video_url = '/assets/photographers/Sample Photos/' + valueId + '/' + mediafiltred[a].video
+      video_media.src = video_url
+      
+      let aHref = document.createElement('a')
+      aHref.href = video_url
+      
+      div_grid_element.appendChild(div_media)
+      div_media.appendChild(aHref)
+      aHref.appendChild(video_media)
+      div_media.appendChild(title_and_likes)
+      div_media.appendChild(likes)
+      title.appendChild(title_media)
+      title_and_likes.appendChild(title)
+      title_and_likes.appendChild(likes)
+      likes.appendChild(likes_media)
+      likes.appendChild(heart)
+      
+
+      
+    
+    } else  {
+      
+      
+      let img_media = document.createElement('img')
+      let media_photo = '/assets/photographers/Sample Photos/' + valueId + '/' + mediafiltred[a].image
+      img_media.src = media_photo
+      
+      let aHref = document.createElement('a')
+      aHref.href = media_photo
+      
+      div_grid_element.appendChild(div_media)
+      div_media.appendChild(aHref)
+      aHref.appendChild(img_media)
+      div_media.appendChild(title_and_likes)
+      div_media.appendChild(likes)
+      title.appendChild(title_media)
+      title_and_likes.appendChild(title)
+      title_and_likes.appendChild(likes)
+      likes.appendChild(likes_media)
+      likes.appendChild(heart)
+      
+    }
+   
+  }
+  const mediafiltred = filterMediaOfPhotographer(data, photographerId)
+  for (a = 0; a < mediafiltred.length; a++) {
+    gridOfMediaOfPhotographer(a)
+  }
+
+  // rectangle des prix et des likes
+  // prix
   
   
+  let pricePerDay = document.getElementById('price_per_day')
+  pricePerDay.innerHTML = photographerfiltred.price + '€ / jour'
+  
+  //likes
+  // creer un tableau avec tout les likes des medias
+
+  const i = []
+  for (let a = 0; a < mediafiltred.length; a++) {
+    
+    const totalOfLikes = i.push(mediafiltred[a].likes)
+    
+  }
+  // additioner les likes du tableau
+  let totalOfLikes = 0
+  for (let e = 0; e < i.length; e++) {
+    totalOfLikes += i[e];
+    
+  }
+
+  let allLikes = document.getElementById('total_of_likes')
+  allLikes.innerHTML = totalOfLikes
+
+
+
+
 }
 
 
@@ -87,7 +222,7 @@ const getUsers = async function () {
         let data = await response.json()
         
         testPhotographer(data)
-        gridOfPhotographer(data)
+       
         
         
 
@@ -132,15 +267,16 @@ function filterMediaOfPhotographer(data, photographerId){
   // Récuperer le tableau media 
   const BoardOfMedia = data.media
   
+  
 
   /* Je souhaite récupérer les medias d'un photographe à partir de son id */
   const medias = BoardOfMedia.filter(element => element.photographerId === photographerId)
   
   // retourner les medias 
+  
   return medias
 
 }
-
 
 
 
@@ -180,18 +316,20 @@ function dropDown(){
 // Photos / videos des photographer 
 
 
-function gridOfPhotographer(data) {
-  console.log(data);
-
-  const grid = document.getElementById('grid_element')
-  grid.classList.add('grid')
 
 
-  const section = document.getElementById('element_of_photographer')
-    
 
 
-    grid.innerHTML = `
+
+
+   
+
+
+
+
+ 
+
+/* grid.innerHTML = `
         <a href="./assets/photographers/Sample Photos/Ellie Rose/Architecture_Connected_Curves.jpg">
           <img class="photos_of_photographer" src="./assets/photographers/Sample Photos/Ellie Rose/Architecture_Connected_Curves.jpg" alt="">
             <p class="">Arc en Ciel</p>
@@ -204,20 +342,7 @@ function gridOfPhotographer(data) {
         </a>
         <a href="#">
           <img class="photos_of_photographer" src="https://picsum.photos/id/210/900/1800" alt="">
-        </a>`
-
-
-
-    section.appendChild(grid)
-}
-
-
-   
-
-
- 
-
-
+        </a>` */
 
 
 
