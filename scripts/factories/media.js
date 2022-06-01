@@ -3,11 +3,29 @@ function mediaFactory(data) {
   function getMediaCardDOM() {
     const article = document.createElement("article");
 
-    article.innerHTML = `<img src="assets/images/${image}" class="sample-image" alt="">
-                        <p class="image-title">${title}</p>`;
+    function testvideo() {
+      video
+        ? (img = document.createElement("video")).setAttribute(
+            "src",
+            `assets/images/${video}`
+          )
+        : (img = document.createElement("img")).setAttribute(
+            "src",
+            `assets/images/${image}`
+          );
+
+      img.classList.add("sample-image");
+      return img;
+    }
+
+    testvideo();
+    // if (img.tagName === "VIDEO") {
+    //   img.setAttribute("controls", true);
+    // }
+    article.appendChild(img);
+
     return article;
   }
-  //console.log(title, date, price);
   return {
     id,
     photographerId,
