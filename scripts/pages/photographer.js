@@ -16,36 +16,38 @@ async function getSelectedPhotographer(id) {
   return [selectedPhotographer, photographerMedias];
 }
 
-function displaySelectedData(photographer) {
-  // display Header
-  function displayHeader() {
-    const photographerModel = photographerFactory(photographer);
-    const photographerHeader = document.querySelector(".photograph-header");
-    const contactButton = document.getElementById("contact");
-    const headerDiv = document.createElement("div");
-    const portrait = document.createElement("img");
+// display Photographer Header
+function displayPhotographer(photographer) {
+  const photographerModel = photographerFactory(photographer);
+  const photographerHeader = document.querySelector(".photograph-header");
+  const main = document.getElementById("main");
+  const contactButton = document.getElementById("contact");
+  const headerDiv = document.createElement("div");
+  const portrait = document.createElement("img");
+  const insert = document.createElement("div");
 
-    headerDiv.innerHTML = `<h1>${photographerModel.name}</h1>
+  headerDiv.innerHTML = `<h1>${photographerModel.name}</h1>
     <h2>${photographerModel.city}, ${photographerModel.country}</h2>
     <p>${photographerModel.tagline}</p>`;
-    photographerHeader.appendChild(headerDiv);
-    photographerHeader.insertBefore(headerDiv, contactButton);
+  photographerHeader.appendChild(headerDiv);
+  photographerHeader.insertBefore(headerDiv, contactButton);
 
-    portrait.setAttribute(
-      "src",
-      `assets/photographers/${photographerModel.portrait}`
-    );
-    portrait.classList.add("portrait");
-    photographerHeader.appendChild(portrait);
-  }
+  portrait.setAttribute(
+    "src",
+    `assets/photographers/${photographerModel.portrait}`
+  );
+  portrait.classList.add("portrait");
 
-  // display Media
+  insert.innerHTML = `<p>likes 🖤</p>
+                      <p>${photographerModel.price}€ / jour</p>`;
+  insert.classList.add("photograph-insert");
 
-  // display data
-  displayHeader();
+  photographerHeader.appendChild(portrait);
+  main.appendChild(insert);
 }
 
-async function displayMedia(medias) {
+//display Photographer Medias
+function displayMedia(medias) {
   const mediaSection = document.querySelector(".photograph-media");
   medias.forEach((media) => {
     const mediaModel = mediaFactory(media);
@@ -59,7 +61,7 @@ async function selectedInit() {
   const photographerId = parseInt(params.get("id"));
   const [selectedPhotographer, photographerMedias] =
     await getSelectedPhotographer(photographerId);
-  displaySelectedData(selectedPhotographer);
+  displayPhotographer(selectedPhotographer);
   displayMedia(photographerMedias);
 }
 

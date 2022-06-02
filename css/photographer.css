@@ -27,6 +27,21 @@
   font-size: 18px;
   color: #525252;
 }
+
+.photograph-insert {
+  display: flex;
+  justify-content: space-around;
+  position: fixed;
+  bottom: 0;
+  right: 270px;
+  background-color: #db8876;
+  width: 376px;
+  height: 60px;
+  border-radius: 5px 5px 0 0;
+  align-items: center;
+  font-size: 24px;
+  font-weight: 500;
+}
 /*********** SELECT************/
 .photograph-sort {
   margin: 30px 100px;
@@ -64,17 +79,38 @@
   margin: 70px 100px;
   row-gap: 40px;
 }
+
+.media-article {
+  width: 350px;
+}
 .sample-image {
   object-fit: cover;
   width: 350px;
   height: 300px;
   border-radius: 5px;
 }
+.image-infos {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
 
 .image-title {
   color: #901c1c;
   font-size: 24px;
   font-weight: 400;
+}
+
+.image-likes {
+  display: flex;
+  align-items: center;
+}
+
+.likes-number {
+  font-size: 24px;
+  font-weight: 500;
+  color: #911c1c;
+  margin-right: 4px;
 }
 
 .contact-button {
