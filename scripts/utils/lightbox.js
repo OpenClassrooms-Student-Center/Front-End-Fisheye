@@ -62,14 +62,34 @@ setTimeout(function () {
      */
     loadImage(url) {
       this.url = null;
+      if(url.includes('.jpg')){
+
       const image = new Image();
       const container = this.element.querySelector(".lightbox_container");
       container.innerHTML = "";
+
       image.onload = () => {
         container.appendChild(image);
         this.url = url;
       };
       image.src = url;
+    }else if(url.includes('.mp4')){
+      const video = document.createElement('video');
+      const container = this.element.querySelector(".lightbox_container");
+      container.innerHTML = "";
+
+      video.setAttribute('autoplay', true);
+      video.setAttribute('loop', true);
+      video.setAttribute('controls', true);
+
+      const source = document.createElement('source');
+      source.src = url;
+      source.type = 'video/mp4';
+      video.appendChild(source);
+      container.appendChild(video);
+      this.url = url;
+    }
+
     }
 
     /**
