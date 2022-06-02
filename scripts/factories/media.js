@@ -17,6 +17,7 @@ function mediaFactory(data) {
           );
 
       img.classList.add("sample-image");
+      img.setAttribute("alt", `${title}, closeup view`);
       return img;
     }
 
