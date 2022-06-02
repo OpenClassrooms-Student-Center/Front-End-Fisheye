@@ -19,31 +19,27 @@ async function getPhotographers() {
         });
 }
 
-async function displayData(medias) {
+async function displayData(medias, photographer) {
     const mediasSection = document.querySelector("#medias_section");
 
     medias.forEach((media) => {
-        const photographerMedias = mediaFactory(media);
-        // console.log(photographerModel);
-        const mediaCardDOM = photographerMedias.getMediaCardDOM();
-        // console.warn(userCardDOM);
+        const photographerMedia = mediaFactory(media, photographer);
+        const mediaCardDOM = photographerMedia.getMediaCardDOM();
         mediasSection.appendChild(mediaCardDOM);
     });
 };
 
 async function init() {
-    // Get photographers data and media data
+    //Get data for photographers and media
     const { photographers, media } = await getPhotographers();
-
-    // console.log(photographers);
-    // console.log(media);
     
+    //Get properties of photographer's page
     const currentPhotographer = photographers.find(id => id.id == photographerId)
-    console.log(currentPhotographer);
 
+    //Get medias of the current photographer
     const mediasOfPhotographer = media.filter(media => media.photographerId == photographerId)
-    console.warn(mediasOfPhotographer);
-    // displayData(responsePhotographers);
+    
+    displayData(mediasOfPhotographer, currentPhotographer);
 };
 
 init();
