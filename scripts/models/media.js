@@ -5,6 +5,7 @@ class PhotographersMedia{
         this._likes = media._likes
         this._image = media._image
         this._video = media._video
+        this._date = media._date
     }
    
     get title(){
@@ -20,6 +21,9 @@ class PhotographersMedia{
         return this._video
     }
     get image(){
-        return `${this._image}`
+        return this._image
+    }
+    get date(){
+        return this._date
     }
 }

@@ -24,20 +24,5 @@ setTimeout(function () {
     });
     }
 
-
-
-
-  
-
-
-  
-
-    
-
-    
-
-    
-
-
    console.log('like.js loaded')
-}, 1000)
+}, 500)

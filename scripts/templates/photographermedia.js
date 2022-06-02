@@ -21,11 +21,12 @@ class PhotographerMedia {
             
                 </a>
 
-            <div class="media_infos">
-            <p>${this._media.title}</p>
-            <p><span id="likeNmbr"> ${
+            <div id="media" class="media_infos">
+            <p id="title">${this._media.title}</p>
+            <p id="like"><span id="likeNmbr"> ${
               this._media.likes
             }</span><i id="btnLike" class="fa-solid fa-heart"></i></p>
+            <p id="date" class="date">${this._media.date}</p>
             </div>
             
    

@@ -102,26 +102,30 @@ form input {
   border: none;
   border-radius: 5px;
 }
-.selectBy {
+.select {
   margin: 0 100px;
   padding-top: 15px;
   padding-bottom: 50px;
   font-size: 18px;
   font-family: "DM Sans", sans-serif;
+  
 }
-.selectBy select {
+.select select {
   background-color: #901c1c;
+  border-bottom-left-radius: 5px;
+  font-size: 18px;
   padding: 15px;
   border-radius: 5px;
   border: none;
   color: #fff;
-  width: 120px;
+  width: 140px;
 }
-.selectBy select > option {
+.select option {
   background-color: #901c1c;
-  padding: 5px;
-  border-radius: 5px;
-  border: none;
+  font-size: 18px;
+  padding: 0 50px;
+  border-bottom-left-radius: 5px;
+  border-bottom: #fff solid 1px;
   color: #fff;
   width: 80px;
 }
@@ -160,7 +164,7 @@ form input {
 .media_infos p {
   margin: 0;
 }
-.media_infos:nth-child(1) {
+.media_infos p:first-child {
   white-space: nowrap;
   width: 70%;
   overflow: hidden;
@@ -172,6 +176,9 @@ form input {
 }
 .media_infos i:hover {
   cursor: pointer;
+}
+.media_infos .date{
+  display: none;
 }
 .price {
   position: fixed;
