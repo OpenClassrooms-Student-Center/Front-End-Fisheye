@@ -2,5 +2,5 @@
 
 ## Démarrer le projet
 
-Rien à installer ici, il suffit d'ouvrir le fichier `index.html`.
-
+### Sass :
+./dart-sass/sass sass/style.scss css/style.css --watch

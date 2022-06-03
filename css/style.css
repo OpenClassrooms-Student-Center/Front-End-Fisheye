@@ -393,7 +393,9 @@ body, * {
   padding: 5px 0;
   cursor: pointer;
 }
+
 .filter__options li span {
+
   font-size: 18px;
   margin-left: 20px;
   text-decoration: none;
