@@ -163,6 +163,7 @@ form {
 form label {
   color: #312e2e;
   font-size: 36px;
+  margin-top: 5px;
 }
 
 form div {
@@ -178,4 +179,8 @@ form input {
   height: 68px;
   border: none;
   border-radius: 5px;
+}
+
+.message-label {
+  height: 170px;
 }
