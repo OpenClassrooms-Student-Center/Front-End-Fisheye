@@ -137,11 +137,25 @@ a {
 .photograph-header {
   background-color: #fafafa;
   height: 300px;
-  flex-wrap: wrap;
   margin: 0 100px;
+  padding: 40px;
+  flex-wrap: wrap;
   display: flex;
   justify-content: space-between;
   align-items: center;
+}
+.photograph-header h1 {
+  font-size: 60px;
+  font-weight: 400;
+  color: #D3573C;
+  width: 400px;
+  margin: 0 0 20px 0;
+  line-height: 0.8;
+}
+.photograph-header .city {
+  font-size: 22px;
+  color: #901C1C;
+  margin-bottom: 20px;
 }
 .photograph-header img {
   height: 200px;
@@ -149,6 +163,7 @@ a {
   border-radius: 50%;
   object-fit: cover;
   box-shadow: 1px 1px 15px rgba(150, 150, 150, 0.5);
+  margin-left: 200px;
 }
 
 #medias_section {
@@ -166,6 +181,19 @@ a {
   width: 300px;
   border-radius: 5px;
   object-fit: cover;
+}
+#medias_section figcaption {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  font-size: 20px;
+  color: #901C1C;
+}
+#medias_section figcaption p {
+  margin-top: 8px;
+}
+#medias_section figcaption i {
+  padding-left: 8px;
 }
 
 /*# sourceMappingURL=style.css.map */

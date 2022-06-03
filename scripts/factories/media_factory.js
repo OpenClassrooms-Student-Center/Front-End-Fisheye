@@ -15,21 +15,26 @@ function mediaFactory(mediaData, photographerData) {
         const p = document.createElement('p');
         const img = document.createElement('img');
         const divLikes = document.createElement('likes');
+        const heart = document.createElement('i');
         
         //Set attributes and class for the CSS
         img.setAttribute("src", picture);
         divLikes.classList.add('likes');
+        heart.classList.add('fa-solid');
+        heart.classList.add('fa-heart');
 
         //Text injected in HTML elements
         p.textContent = `${title}`;
         divLikes.textContent = `${likes}`;
 
-        //Add creates element in the DOM
+        //Add created elements in the DOM
         figure.appendChild(img);
         figure.appendChild(figcaption);
 
-        figcaption.appendChild(p)
-        figcaption.appendChild(divLikes)
+        figcaption.appendChild(p);
+        figcaption.appendChild(divLikes);
+
+        divLikes.appendChild(heart);
 
         return figure;
     }

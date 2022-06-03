@@ -12,6 +12,12 @@
     align-items: center;
 }
 
+@mixin flex-sb{
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+}
+
 @mixin profil-picture {
     height: 200px;
     width: 200px;

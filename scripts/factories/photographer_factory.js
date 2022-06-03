@@ -49,7 +49,7 @@ function photographerFactory(data) {
         divCity.textContent = `${city}, ${country}`;
         divTagline.textContent = tagline;
 
-        //Add creates element in the DOM
+        //Add created elements in the DOM
         divPhotographerInfos.appendChild(h1);
         divPhotographerInfos.appendChild(divCity);
         divPhotographerInfos.appendChild(divTagline);

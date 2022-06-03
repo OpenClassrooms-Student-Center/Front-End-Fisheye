@@ -1,12 +1,29 @@
 .photograph-header {
     background-color: $color-secondary-light;
     height: 300px;
-    flex-wrap: wrap;
     margin: 0 100px;
+    padding: 40px;
+    flex-wrap: wrap;
     @include flex-sc;
+
+    h1{
+        font-size: 60px;
+        font-weight: 400;
+        color: $color-primary-light;
+        width: 400px;
+        margin: 0 0 20px 0;
+        line-height: 0.8;
+    }
+
+    .city {
+        font-size: 22px;
+        color: $color-primary-dark;
+        margin-bottom: 20px;
+    }
 
     img {
         @include profil-picture;
+        margin-left: 200px;
     }
 }
 
@@ -25,6 +42,18 @@
         width: 300px;
         border-radius: 5px;
         object-fit: cover;
+    }
+    figcaption {
+        @include flex-sb;
+        font-size: 20px;
+        color: $color-primary-dark;
+
+        p{
+            margin-top: 8px;
+        }
+        i{
+            padding-left: 8px;
+        }
     }
 }
 
