@@ -2,7 +2,6 @@
 const photographerUrl = window.location.search;
 const urlParams = new URLSearchParams(photographerUrl);
 const photographerId = urlParams.get('id')
-console.log(photographerId);
 
 async function getPhotographers() {
     return fetch("../data/photographers.json")
@@ -20,13 +19,20 @@ async function getPhotographers() {
 }
 
 async function displayData(medias, photographer) {
+    const photographHeader = document.querySelector(".photograph-header");
     const mediasSection = document.querySelector("#medias_section");
-
+    
+    //Create section for each media in DOM
     medias.forEach((media) => {
         const photographerMedia = mediaFactory(media, photographer);
         const mediaCardDOM = photographerMedia.getMediaCardDOM();
         mediasSection.appendChild(mediaCardDOM);
     });
+
+    const photographerInfo = photographerFactory(photographer);
+    const {img, divPhotographerInfos} = photographerInfo.getPhotographerInfos();
+    photographHeader.appendChild(img);
+    photographHeader.insertBefore(divPhotographerInfos, photographHeader.firstChild);
 };
 
 async function init() {

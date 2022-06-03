@@ -12,14 +12,10 @@
     align-items: center;
 }
 
-// @mixin pastille-nouveau{
-//     content: "Nouveau";
-//     padding: 5px 10px;
-//     border-radius: 3px;
-//     background-color: rgb(121, 223, 167);
-//     color: rgb(31, 128, 79);
-//     font-weight: 700;
-//     position: absolute;
-//     top: 15px;
-//     right: 15px;
-// }
+@mixin profil-picture {
+    height: 200px;
+    width: 200px;
+    border-radius: 50%;
+    object-fit: cover;
+    box-shadow: 1px 1px 15px rgba(150, 150, 150, 0.5);
+}

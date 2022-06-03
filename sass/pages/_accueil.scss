@@ -18,11 +18,7 @@
     }
 
     img {
-        height: 200px;
-        width: 200px;
-        border-radius: 50%;
-        object-fit: cover;
-        box-shadow: 1px 1px 15px rgba(150, 150, 150, 0.5);
+        @include profil-picture;
     }
 
     .city {

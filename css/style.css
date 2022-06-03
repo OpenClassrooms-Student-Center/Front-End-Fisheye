@@ -54,8 +54,9 @@ form input {
 
 body {
   font-family: "DM Sans", sans-serif;
-  margin: 0;
+  margin: auto;
   font-size: 14px;
+  max-width: 1400px;
 }
 
 header {
@@ -136,7 +137,18 @@ a {
 .photograph-header {
   background-color: #fafafa;
   height: 300px;
+  flex-wrap: wrap;
   margin: 0 100px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.photograph-header img {
+  height: 200px;
+  width: 200px;
+  border-radius: 50%;
+  object-fit: cover;
+  box-shadow: 1px 1px 15px rgba(150, 150, 150, 0.5);
 }
 
 #medias_section {
@@ -144,10 +156,10 @@ a {
   justify-content: space-between;
   align-items: center;
   flex-wrap: wrap;
-  padding: 100px;
+  padding: 80px;
 }
 #medias_section figure {
-  margin: 0;
+  margin: 20px;
 }
 #medias_section figure img {
   height: 300px;

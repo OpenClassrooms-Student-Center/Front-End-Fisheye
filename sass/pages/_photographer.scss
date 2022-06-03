@@ -1,16 +1,24 @@
 .photograph-header {
     background-color: $color-secondary-light;
     height: 300px;
+    flex-wrap: wrap;
     margin: 0 100px;
+    @include flex-sc;
+
+    img {
+        @include profil-picture;
+    }
 }
+
+
 
 #medias_section {
     @include flex-sc;
     flex-wrap: wrap;
-    padding: 100px;
+    padding: 80px;
 
     figure {
-        margin: 0;
+        margin: 20px;
     }
     figure img {
         height: 300px;

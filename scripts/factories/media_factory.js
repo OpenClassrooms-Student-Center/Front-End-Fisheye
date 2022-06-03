@@ -1,14 +1,15 @@
 function mediaFactory(mediaData, photographerData) {
     const { photographerId, title, image } = mediaData;
+    const { name } = photographerData;
 
     //Get first name to access picture folder
-    const nameOfPhotographer = photographerData.name.split(' ');
+    const nameOfPhotographer = name.split(' ');
     pathName = nameOfPhotographer[0].replace('-',' ');
 
     const picture = `assets/photographers/${pathName}/${image}`;
 
     function getMediaCardDOM() {
-        //DOM elements of photographers card's
+        //DOM elements of media card
         const figure = document.createElement('figure');
         const figcaption = document.createElement('figcaption');
         const p = document.createElement('p');

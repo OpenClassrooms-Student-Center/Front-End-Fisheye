@@ -4,22 +4,26 @@ function photographerFactory(data) {
     const picture = `assets/photographers/Photographers ID Photos/${portrait}`;
     const hrefPhotographer = `/photographer.html?id=${id}`;
 
-    function getUserCardDOM() {
-        //DOM elements of photographers card's
-        const article = document.createElement('article');
-        const a = document.createElement('a');
-        const img = document.createElement('img');
-        const h2 = document.createElement('h2');
-        const divCity = document.createElement('div');
-        const divTagline = document.createElement('div');
-        const divPrice = document.createElement('div');
+    //DOM elements of photographer
+    const article = document.createElement('article');
+    const a = document.createElement('a');
+    const img = document.createElement('img');
+    const h1 = document.createElement('h1');
+    const h2 = document.createElement('h2');
+    const divCity = document.createElement('div');
+    const divTagline = document.createElement('div');
+    const divPrice = document.createElement('div');
+    const divPhotographerInfos = document.createElement('div');
+    
+    //Set attributes and class for the CSS
+    img.setAttribute("src", picture);
+    a.setAttribute("href", hrefPhotographer);
+    divCity.classList.add('city');
+    divTagline.classList.add('tagline');
+    divPrice.classList.add('price');
+    divPhotographerInfos.classList.add('photographer-infos');
 
-        //Set attributes and class for the CSS
-        img.setAttribute("src", picture);
-        a.setAttribute("href", hrefPhotographer);
-        divCity.classList.add('city');
-        divTagline.classList.add('tagline');
-        divPrice.classList.add('price');
+    function getUserCardDOM() {
 
         //Text injected in HTML elements
         h2.textContent = name;
@@ -35,10 +39,24 @@ function photographerFactory(data) {
         article.appendChild(divTagline);
         article.appendChild(divPrice);
 
-        // console.log(article);
         return article;
     }
-    // console.log({ name, picture, getUserCardDOM })
-    return { name, picture, getUserCardDOM }
+
+    function getPhotographerInfos() {
+
+        //Text injected in HTML elements
+        h1.textContent = name;
+        divCity.textContent = `${city}, ${country}`;
+        divTagline.textContent = tagline;
+
+        //Add creates element in the DOM
+        divPhotographerInfos.appendChild(h1);
+        divPhotographerInfos.appendChild(divCity);
+        divPhotographerInfos.appendChild(divTagline);
+
+        return { img, divPhotographerInfos };
+    }
+
+    return { name, picture, getUserCardDOM, getPhotographerInfos }
    
 }
