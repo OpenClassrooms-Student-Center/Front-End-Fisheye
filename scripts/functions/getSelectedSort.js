@@ -69,7 +69,7 @@ export default function getSelectedSort(data) {
       body.style.overflow = 'hidden';
       const valueTarget = e.target.querySelector('span');
       const result = [...liItems].filter((li) => {
-        const liValue = li.querySelector('a');
+        const liValue = li.querySelector('span');
         if (liValue.innerHTML === valueTarget.innerHTML) {
           return true;
         } return false;
@@ -84,7 +84,6 @@ export default function getSelectedSort(data) {
       else if (btnValue.innerHTML === 'Titre') sortTitle();
       createCardsMedia();
       optionsContainer.ariaHidden = 'true';
-      console.log(optionsContainer.ariaHidden);
     }
   }
 
@@ -97,7 +96,7 @@ export default function getSelectedSort(data) {
   document.addEventListener('keyup', reactiveScroll);
 
   liItems.forEach((item) => {
-    const option = item.querySelector('a');
+    const option = item.querySelector('span');
     item.addEventListener(('click'), () => {
       if (option.innerHTML === 'Popularité') {
         dropDown();
