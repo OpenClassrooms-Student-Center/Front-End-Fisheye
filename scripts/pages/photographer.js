@@ -29,9 +29,12 @@ async function displayData(medias, photographer) {
         mediasSection.appendChild(mediaCardDOM);
     });
 
+    //Create the header of photographer's informations
     const photographerInfo = photographerFactory(photographer);
     const {img, divPhotographerInfos} = photographerInfo.getPhotographerInfos();
+    //Add picture profile
     photographHeader.appendChild(img);
+    //Add photographer's informations before contact btn for flexbox
     photographHeader.insertBefore(divPhotographerInfos, photographHeader.firstChild);
 };
 
