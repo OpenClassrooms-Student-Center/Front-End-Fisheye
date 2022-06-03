@@ -22,7 +22,7 @@ function mediaFactory(data) {
     }
 
     isVideo();
-    imgInfos.innerHTML = `<p class=image-title>${title}</p>
+    imgInfos.innerHTML = `<p class="image-title">${title}</p>
                           <div class="image-likes" aria-label="likes">
                             <span class="likes-number">${likes}</span>
                             <img src="assets/icons/heart.png" alt="heart icon">
