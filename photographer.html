@@ -41,7 +41,7 @@
       </div>
       <div class="photograph-media"></div>
     </main>
-    <div id="contact_modal">
+    <div id="contact_modal" aria-modal="false">
       <div class="modal">
         <header>
           <h2>Contactez-moi</h2>
@@ -58,13 +58,13 @@
             <label for="your-message">Votre message</label>
             <input id="your-message" maxlength="200" class="message-label" />
           </div>
-          <button class="contact-button">Envoyer</button>
+          <button id="submit-button" class="contact-button">Envoyer</button>
         </form>
       </div>
     </div>
     <script src="/scripts/utils/contactForm.js"></script>
-    <script src="/scripts/pages/photographer.js"></script>
-    <script src="/scripts/factories/media.js"></script>
     <script src="/scripts/factories/photographer.js"></script>
+    <script src="/scripts/factories/media.js"></script>
+    <script src="/scripts/pages/photographer.js"></script>
   </body>
 </html>
