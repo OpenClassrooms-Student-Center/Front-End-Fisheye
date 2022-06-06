@@ -174,13 +174,16 @@ form div {
   margin-bottom: 26px;
 }
 
-form input {
+form input,
+form textarea {
   width: 100%;
   height: 68px;
   border: none;
   border-radius: 5px;
+  font-size: 22px;
+  padding: 5px;
 }
 
-.message-label {
+.form-textarea {
   height: 170px;
 }

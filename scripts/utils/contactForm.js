@@ -8,17 +8,58 @@ function closeModal() {
   modal.style.display = "none";
 }
 
-//TODO: créer les variables utiles pour le formulaire
+//************VARIABLES*************
 const submitBtn = document.getElementById("submit-button");
 const firstNameInput = document.getElementById("first-name");
 const lastNameInput = document.getElementById("last-name");
 const emailInput = document.getElementById("email");
 const messageInput = document.getElementById("your-message");
-// TODO: créer les regex pour les champs prénom / nom / email
+
+//************REGEX*************
 const nameRegex = /^[A-Za-zÀ-ÿ-]{2,}$/i;
 const emailRegex = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/;
 
-// TODO: créer les event listener et fonctions qui vérifient la validité des champs
+//***********ERRORS MESSAGES*********
+const firstNameErrorMsg =
+  "⚠️ Veuillez entrer au moins 2 caractères valides pour le champ prénom";
+
+const lastNameErrorMsg =
+  "⚠️ Veuillez entrer au moins 2 caractères valides pour le champ nom";
+
+const emailErrorMsg = "⚠️ Veuillez saisir un email valide";
+
+const messageErrorMsg = "⚠️ Veuillez saisir un message";
+
+//***********ERRORS LOCATIONS*********
+const firstNameError = document.getElementById("first-name-error");
+const lastNameError = document.getElementById("last-name-error");
+const emailError = document.getElementById("email-error");
+const messageError = document.getElementById("message-error");
+
+const errorsLocations = [
+  firstNameError,
+  lastNameError,
+  emailError,
+  messageError,
+];
+
+const errorsMessages = [
+  firstNameErrorMsg,
+  lastNameErrorMsg,
+  emailErrorMsg,
+  messageErrorMsg,
+];
+
+const validations = [
+  firstNameValidation,
+  lastNameValidation,
+  emailValidation,
+  messageValidation,
+];
+
+//************FUNCTIONS***********
+
+// validation functions
 function firstNameValidation() {
   return nameRegex.test(firstNameInput.value);
 }
@@ -29,10 +70,9 @@ function emailValidation() {
   return emailRegex.test(emailInput.value);
 }
 function messageValidation() {
-  return messageInput !== "";
+  return messageInput.value !== "";
 }
 
-// TODO: créer la fonction validate puis afficher les infos saisies dans la console
 function validate() {
   return (
     firstNameValidation() &&
@@ -42,23 +82,54 @@ function validate() {
   );
 }
 
+// display inputs from user
 function displayContactInfos() {
-  const firstName = document.getElementById("first-name").value;
-  const lastName = document.getElementById("last-name").value;
-  const email = document.getElementById("email").value;
-  const message = document.getElementById("your-message").value;
-  if (true) {
-    console.log(
-      `Prénom: ${firstName}\nNom: ${lastName}\nEmail: ${email}\nMessage: ${message} `
-    );
+  console.log(
+    `Prénom: ${firstNameInput.value}\nNom: ${lastNameInput.value}\nEmail: ${emailInput.value}\nMessage: ${messageInput.value} `
+  );
+}
+
+// display errors messages
+function displayErrorMsg(validation, errorLocation, errorMessage) {
+  if (!validation()) {
+    errorLocation.innerHTML = errorMessage;
+    errorLocation.style.fontSize = "18px";
+    errorLocation.style.fontWeight = "700";
+  } else {
+    errorLocation.innerHTML = "";
   }
 }
+
+function displayErrors() {
+  for (let i = 0; i < validations.length; i++) {
+    displayErrorMsg(validations[i], errorsLocations[i], errorsMessages[i]);
+  }
+}
+
+//*********EVENT-LISTENERS***********
+firstNameInput.addEventListener("input", () => {
+  displayErrorMsg(firstNameValidation, firstNameError, firstNameErrorMsg);
+});
+
+// last name event
+lastNameInput.addEventListener("input", () => {
+  displayErrorMsg(lastNameValidation, lastNameError, lastNameErrorMsg);
+});
+
+// email event
+emailInput.addEventListener("input", () => {
+  displayErrorMsg(emailValidation, emailError, emailErrorMsg);
+});
+
+messageInput.addEventListener("input", () => {
+  displayErrorMsg(messageValidation, messageError, messageErrorMsg);
+});
 
 submitBtn.addEventListener("click", (e) => {
   e.preventDefault();
   if (validate()) {
     displayContactInfos();
   } else {
-    console.log("Il y a une erreur dans la saisie du formulaire...");
+    displayErrors();
   }
 });

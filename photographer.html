@@ -51,12 +51,20 @@
           <div>
             <label for="first-name">Prénom</label>
             <input id="first-name" />
+            <span id="first-name-error"></span>
             <label for="last-name">Nom</label>
             <input id="last-name" />
+            <span id="last-name-error"></span>
             <label for="email">Email</label>
             <input id="email" />
+            <span id="email-error"></span>
             <label for="your-message">Votre message</label>
-            <input id="your-message" maxlength="200" class="message-label" />
+            <textarea
+              id="your-message"
+              class="form-textarea"
+              maxlength="400"
+            ></textarea>
+            <span id="message-error"></span>
           </div>
           <button id="submit-button" class="contact-button">Envoyer</button>
         </form>
