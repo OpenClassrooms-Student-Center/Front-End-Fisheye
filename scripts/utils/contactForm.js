@@ -10,14 +10,27 @@ function closeModal() {
 
 //TODO: créer les variables utiles pour le formulaire
 const submitBtn = document.getElementById("submit-button");
+const firstNameInput = document.getElementById("first-name");
+const lastNameInput = document.getElementById("last-name");
+const emailInput = document.getElementById("email");
+const messageInput = document.getElementById("your-message");
 // TODO: créer les regex pour les champs prénom / nom / email
 const nameRegex = /^[A-Za-zÀ-ÿ-]{2,}$/i;
 const emailRegex = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/;
 
-// TODO: ajouter une max length pour le champ message
-// fait dans le html
-
 // TODO: créer les event listener et fonctions qui vérifient la validité des champs
+function firstNameValidation() {
+  return nameRegex.test(firstNameInput.value);
+}
+function lastNameValidation() {
+  return nameRegex.test(lastNameInput.value);
+}
+function emailValidation() {
+  return emailRegex.test(emailInput.value);
+}
+function messageValidation() {
+  return messageInput !== "";
+}
 
 // TODO: créer la fonction validate puis afficher les infos saisies dans la console
 function validate() {
@@ -43,5 +56,9 @@ function displayContactInfos() {
 
 submitBtn.addEventListener("click", (e) => {
   e.preventDefault();
-  displayContactInfos();
+  if (validate()) {
+    displayContactInfos();
+  } else {
+    console.log("Il y a une erreur dans la saisie du formulaire...");
+  }
 });
