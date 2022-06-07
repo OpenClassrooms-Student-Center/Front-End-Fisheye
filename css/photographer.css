@@ -15,11 +15,14 @@
     padding: 11px;
     width: 170px;
     height: 70px;
-    border: none;
+    margin-left: 800px;
+    margin-top: 100px;
     background-color: #901C1C;
     border-radius: 5px;
     cursor: pointer;
 }
+
+    
 
 .modal {
     border-radius: 5px;
