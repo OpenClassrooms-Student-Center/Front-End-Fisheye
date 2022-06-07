@@ -1,24 +1,39 @@
-async function getPhotographers() {
-    // Retourne le tableau de photographes
-    const photographerApi = new PhotographerApi('/data/photographers.json')
-    return photographerApi.getPhotographers()
+class HomePage {
+    constructor() {
+        // Element du DOM
+        this.photographersSection = document.querySelector(
+            '.photographer_section'
+        )
+
+        // Api
+        this.photographerApi = new PhotographerApi('/data/photographers.json')
+
+        // Photographes
+        this.photographers = []
+    }
+
+    async getPhotographers() {
+        // Retourne le tableau de photographes
+        return this.photographerApi.getPhotographers()
+    }
+
+    async displayData(photographers) {
+        photographers.forEach((photographer) => {
+            const photographerCard = new PhotographerCard(photographer)
+            const userCardDOM = photographerCard.getUserCardDOM()
+
+            this.photographersSection.appendChild(userCardDOM)
+        })
+    }
+
+    async init() {
+        // Récupère les datas des photographes dans un tableau
+        this.photographers = await this.getPhotographers()
+
+        // Affiche les données des photographes
+        this.displayData(this.photographers)
+    }
 }
 
-async function displayData(photographers) {
-    const photographersSection = document.querySelector('.photographer_section')
-    photographers.forEach((photographer) => {
-        const photographerModel = new PhotographerCard(photographer)
-        const userCardDOM = photographerModel.getUserCardDOM()
-        photographersSection.appendChild(userCardDOM)
-    })
-}
-
-async function init() {
-    // Récupère les datas des photographes
-    const photographers = await getPhotographers()
-
-    // Affiche les données des photographes
-    displayData(photographers)
-}
-
-init()
+const homePage = new HomePage()
+homePage.init()

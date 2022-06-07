@@ -32,6 +32,41 @@
                     Contactez-moi
                 </button>
             </div>
+            <div class="sorter">
+                <span class="sorter__title">Trier par</span>
+                <button
+                    class="option option-4"
+                    class="sorter__selected"
+                >
+                    Popularité
+                    <i
+                        class="fa-solid fa-chevron-down"
+                        aria-hidden="true"
+                        data-fa-transform="right-32 down-2"
+                    ></i>
+                </button>
+                <ul class="sorter__list">
+                    <li>
+                        <button class="option option-1" id="like" name="sorter">
+                            Popularité
+                        </button>
+                    </li>
+                    <li>
+                        <button class="option option-2" id="date" name="sorter">
+                            Date
+                        </button>
+                    </li>
+                    <li>
+                        <button
+                            class="option option-3"
+                            id="title"
+                            name="sorter"
+                        >
+                            Titre
+                        </button>
+                    </li>
+                </ul>
+            </div>
         </main>
         <div id="contact_modal">
             <div class="modal">
@@ -72,10 +107,11 @@
         <script src="scripts/templates/PhotographerCard.js"></script>
         <script src="scripts/templates/PriceAndLikesCard.js"></script>
 
+        <!-- Utils -->
+        <script src="scripts/utils/Sorter.js"></script>
+        <script src="scripts/utils/contactForm.js"></script>
+        
         <!-- Pages -->
         <script src="scripts/pages/photographer.js"></script>
-
-        <!-- Utils -->
-        <script src="scripts/utils/contactForm.js"></script>
     </body>
 </html>

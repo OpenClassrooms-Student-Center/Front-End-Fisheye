@@ -7,7 +7,15 @@ class VideoCard {
         this.likes = data.likes
         this.date = data.date
         this.price = data.price
-        this.photographerName = getPhotographerName()
+        this.photographerName = this.getPhotographerName()
+    }
+
+    getPhotographerName() {
+        const link = window.location.search
+        const searchParams = new URLSearchParams(link)
+
+        // Retourne le nom du photographe contenu dans le lien
+        return searchParams.get('photographerName')
     }
 
     getVideoCardDom() {

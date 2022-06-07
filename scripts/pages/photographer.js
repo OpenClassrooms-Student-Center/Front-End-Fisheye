@@ -1,156 +1,154 @@
-async function getPhotographers() {
-    // Retourne le tableau de photographes
-    const photographerApi = new PhotographerApi('/data/photographers.json')
-    return photographerApi.getPhotographers()
-}
+class PhotographerPage {
+    constructor() {
+        // Element du DOM
+        this.main = document.getElementById('main')
 
-function getPhotographerName() {
-    const link = window.location.search
-    const searchParams = new URLSearchParams(link)
+        // Api
+        this.photographerApi = new PhotographerApi('/data/photographers.json')
+        this.mediaApi = new MediaApi('/data/photographers.json')
 
-    // Retourne le nom du photographe contenu dans le lien
-    return searchParams.get('photographerName')
-}
+        // Photographes
+        this.photographers = []
 
-function getPhotographerPrice() {
-    const link = window.location.search
-    const searchParams = new URLSearchParams(link)
+        // Media
+        this.media = []
 
-    // Retourne le prix du photographe contenu dans le lien
-    return parseInt(searchParams.get('photographerPrice'), 10)
-}
-
-async function getPhotographerId() {
-    const link = window.location.search
-    const searchParams = new URLSearchParams(link)
-
-    // Retourne l'id du photographe contenu dans le lien
-    return parseInt(searchParams.get('photographerId'), 10)
-}
-
-async function getMedia() {
-    // Retourne le tableau des media
-    const mediaApi = new MediaApi('/data/photographers.json')
-    return mediaApi.getMedia()
-}
-
-async function filterDataOnePhotographer(photographers, photographerId) {
-    return photographers.filter(
-        (photographer) => photographer.id === photographerId
-    )[0]
-}
-
-async function displayPhotographerHeader(photographers) {
-    // Récupère l'id d'un photographe
-    const id = await getPhotographerId()
-
-    // filtre les données du photographe correspondant à l'id récupéré
-    const photographer = await filterDataOnePhotographer(photographers, id)
-
-    const photographerModel = new PhotographerCard(photographer)
-
-    // Affiche l'entête du photographe
-    photographerModel.getPhotographerHeader()
-}
-
-async function filterMedia(media, photographerId) {
-    // Retourne les media du photographe
-    return media.filter((media) => media.photographerId === photographerId)
-}
-
-async function filterPictures(media) {
-    // Retourne les media photos filtrés
-    return media.filter((media) => media.image)
-}
-
-async function filterVideo(media) {
-    // Retourne le media video filtré
-    return media.filter((media) => media.video)[0]
-}
-
-// Retourne un tableau contenant les likes de chaque media
-function getLikes(data) {
-    let array = []
-
-    for (const element of data) {
-        array.push(element.likes)
+        // ID du photographe
+        this.id = this.getPhotographerId()
     }
-    return array
+
+    async getPhotographers() {
+        // Retourne le tableau de photographes
+        return this.photographerApi.getPhotographers()
+    }
+
+    async getMedia() {
+        // Retourne le tableau des media
+        return this.mediaApi.getMedia()
+    }
+
+    getPhotographerId() {
+        const link = window.location.search
+        const searchParams = new URLSearchParams(link)
+
+        // Retourne l'id du photographe contenu dans le lien
+        return parseInt(searchParams.get('photographerId'), 10)
+    }
+
+    filterDataOnePhotographer(photographers, photographerId) {
+        return photographers.filter(
+            (photographer) => photographer.id === photographerId
+        )[0]
+    }
+
+    async displayPhotographerHeader(photographers) {
+        // filtre les données du photographe correspondant à l'id récupéré
+        const photographer = this.filterDataOnePhotographer(
+            photographers,
+            this.id
+        )
+
+        const photographerCard = new PhotographerCard(photographer)
+
+        // Affiche l'entête du photographe
+        photographerCard.getPhotographerHeader()
+    }
+
+    filterMedia(media, photographerId) {
+        // Retourne les media du photographe
+        return media.filter((media) => media.photographerId === photographerId)
+    }
+
+    getLikes(data) {
+        let array = []
+
+        for (const element of data) {
+            array.push(element.likes)
+        }
+
+        // Retourne un tableau contenant les likes de chaque media
+        return array
+    }
+
+    getSumLikes(array) {
+        let sumLikes
+
+        sumLikes = array.reduce(
+            (previousValue, currentValue) => previousValue + currentValue
+        )
+
+        // Retourne la somme total de likes des media
+        return sumLikes
+    }
+
+    loadButton() {
+        // Element du DOM
+        const btnSelected = document.querySelector('btn__selected')
+        const sorterList = document.querySelector('sorter__list')
+
+        btnSelected.addEventListener('click', (e) => {
+            sorterList.style.display = 'block'
+            e.style.display = 'none'
+        })
+    }
+
+    async displayPriceAndLikesOfMedia(prices, likes) {
+        const priceAndLikesDiv = new PriceAndLikesCard(prices, likes)
+        const divItem = priceAndLikesDiv.getPriceAndLikesDom()
+
+        // Affiche la div du prix et des likes
+        this.main.appendChild(divItem)
+    }
+
+    async displayMedia(media) {
+        // Récupère les media du photographe correspondant à l'id récupéré
+        const mediaFilter = this.filterMedia(media, this.id)
+        console.log(mediaFilter)
+
+        // Element du DOM
+        const mediaSection = document.createElement('div')
+        mediaSection.setAttribute('class', 'media')
+
+        mediaFilter.forEach((media) => {
+            if (media.video) {
+                const mediaVideoItem = new MediaFactory(media, 'video')
+                const videoCard = new VideoCard(mediaVideoItem)
+                const videoCardDOM = videoCard.getVideoCardDom()
+                mediaSection.appendChild(videoCardDOM)
+                this.main.appendChild(mediaSection)
+            } else if (media.image) {
+                const mediaPictureItem = new MediaFactory(media, 'picture')
+                const pictureCard = new PictureCard(mediaPictureItem)
+                const pictureCardDOM = pictureCard.getPictureCardDom()
+                mediaSection.appendChild(pictureCardDOM)
+                this.main.appendChild(mediaSection)
+            } else {
+                throw new Error('Unknown type format')
+            }
+        })
+
+        // le total de like des media
+        const likes = this.getLikes(mediaFilter)
+        const sumLikes = this.getSumLikes(likes)
+
+        // Affiche le total du prix et des likes des media
+        this.displayPriceAndLikesOfMedia(sumLikes)
+    }
+
+    async init() {
+        // Récupère les datas des photographes dans un tableau
+        this.photographers = await this.getPhotographers()
+
+        // Récupère les datas des media dans un tableau
+        this.media = await this.getMedia()
+
+        // Affiche l'entête du photographe
+        this.displayPhotographerHeader(this.photographers)
+
+        // Affiche les media
+        this.displayMedia(this.media)
+    }
 }
 
-// Retourne la somme total de likes des media
-function getSumLikes(array) {
-    let sumLikes
-
-    sumLikes = array.reduce(
-        (previousValue, currentValue) => previousValue + currentValue
-    )
-    return sumLikes
-}
-
-async function displayPriceAndLikesOfMedia(prices, likes) {
-    const main = document.getElementById('main')
-
-    const priceAndLikesDiv = new PriceAndLikesCard(prices, likes)
-    const divItem = priceAndLikesDiv.getPriceAndLikesDom()
-
-    // Affiche la div du prix et des likes
-    main.appendChild(divItem)
-}
-
-async function displayMedia(media) {
-    // Récupère l'id d'un photographe
-    const id = await getPhotographerId()
-
-    // Récupère les media du photographe correspondant à l'id récupéré
-    const mediaFilter = await filterMedia(media, id)
-
-    // Récupère les media photos filtrés
-    const mediaPictures = await filterPictures(mediaFilter)
-
-    // Récupère le media video filtré
-    const mediaVideo = await filterVideo(mediaFilter)
-
-    const main = document.getElementById('main')
-    const mediaSection = document.createElement('div')
-    mediaSection.setAttribute('class', 'media')
-
-    // Affiche le media video
-    const mediaVideoItem = new MediaFactory(mediaVideo, 'video')
-    const videoModel = new VideoCard(mediaVideoItem)
-    const videoCardDOM = videoModel.getVideoCardDom()
-    mediaSection.appendChild(videoCardDOM)
-    main.appendChild(mediaSection)
-
-    // Affiche les media photos
-    mediaPictures.forEach((media) => {
-        const mediaPictureItem = new MediaFactory(media, 'picture')
-        const pictureModel = new PictureCard(mediaPictureItem)
-        const pictureCardDOM = pictureModel.getPictureCardDom()
-        mediaSection.appendChild(pictureCardDOM)
-        main.appendChild(mediaSection)
-    })
-
-    // le total de like des media
-    const likes = getLikes(mediaFilter)
-    const sumLikes = getSumLikes(likes)
-
-    // Affiche le total du prix et des likes des media
-    displayPriceAndLikesOfMedia(sumLikes)
-}
-
-async function init() {
-    // Récupère les datas des photographes
-    const photographers = await getPhotographers()
-
-    // Récupère les datas des media
-    const media = await getMedia()
-
-    // Affiche l'entête du photographe
-    displayPhotographerHeader(photographers)
-
-    // Affiche les media
-    displayMedia(media)
-}
-
-init()
+const photographerPage = new PhotographerPage()
+photographerPage.init()
