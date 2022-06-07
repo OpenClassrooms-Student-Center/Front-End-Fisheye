@@ -1,56 +1,129 @@
 <!DOCTYPE html>
-<html>
+<html lang="fr">
   <head>
     <link href="css/style.css" rel="stylesheet" type="text/css" />
-    <meta charset="utf-8">
-    <link rel="icon" type="image/png" href="assets/favicon.png">
-    <link href="https://fonts.googleapis.com/css?family=DM+Sans&display=swap" rel="stylesheet">
-    <title>Fisheye - photographe </title>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/png" href="assets/favicon.png" />
+    <link
+      href="https://fonts.googleapis.com/css?family=DM+Sans&display=swap"
+      rel="stylesheet"
+    />
+    <title>Fisheye - photographe</title>
   </head>
   <body>
     <header>
-      <img src="assets/images/logo.png" class="logo" />
+      <a href="./index.html">
+        <img
+          src="assets/images/logo.png"
+          class="logo"
+          alt="Fisheye Home page"
+        />
+      </a>
     </header>
-    <main id="main">
-      <div class="photograph-header">
-        <button class="contact_button" onclick="displayModal()">Contactez-moi</button>
+    <main class="profil">
+      <section aria-label="presentation" class="profil__header">
+        <div class="profil__presentation">
+          <h1 id="profilName" class="name-title">Name</h1>
+          <div class="profil__info">
+            <h2 id="profilLocation">Location</h2>
+            <p id="profilTagline">Tagline</p>
+          </div>
+        </div>
+        <div class="profil__contact">
+          <button
+            class="contact_button"
+            onclick="displayModal()"
+            aria-label="Contactez-moi"
+          >
+            Contactez-moi
+          </button>
+        </div>
+        <div class="profil__image">
+          <img src="#" id="profilImage" class="circle-image" alt="" />
+        </div>
+      </section>
+      <div>
+        <div class="dropdown">
+          <label for="filter" class="dropdown-span">Trier par</label>
+          <div>
+            <button
+              class="dropdown-toggle"
+              aria-haspopup="listbox"
+              id="filter"
+              aria-expanded="false"
+            >
+              Popularité
+            </button>
+            <ul role="listbox" class="dropdown-list">
+              <li
+                role="option"
+                tabindex="0"
+                aria-selected="true"
+                data-name="likes"
+              >
+                Popularité
+              </li>
+              <li
+                role="option"
+                tabindex="0"
+                aria-selected="false"
+                data-name="date"
+              >
+                Date
+              </li>
+              <li
+                role="option"
+                tabindex="0"
+                aria-selected="false"
+                data-name="title"
+              >
+                Titre
+              </li>
+            </ul>
+          </div>
+        </div>
+        <ul id="profil__media"></ul>
       </div>
+
     </main>
-    <div id="contact_modal">
-			<div class="modal">
-				<header>
-          <h2>Contactez-moi</h2>
-          <img src="assets/icons/close.svg" onclick="closeModal()" />
-        </header>
-				<form>
-					<div>
-						<label>Prénom</label>
-          
-						<input />
-					</div>
-          <div>
-						<label>Nom</label>
-          
-						<input />
-					</div>
-          <div>
-						<label>Email</label>
-          
-						<input />
-					</div>
-          <div>
-						<label>Votre message</label>
 
-        
+    <div class="modal" aria-describedby="modalTitle">
+      <header>
+        <h1 id="modalTitle">Contactez-moi</h1>
+        <button class="contact_close_button" onclick="closeModal()">
+          <img
+            src="assets/icons/close.svg"
+            alt="croix"
+            aria-label="Bouton pour fermer modal"
+          />
+        </button>
+      </header>
+      <form name="contact">
+        <div>
+          <label for="firstName">Prénom</label>
+          <input type="text" name="firstName" id="firstName" />
+        </div>
+        <div>
+          <label for="name">Nom</label>
+          <input type="text" name="name" id="name" />
+        </div>
+        <div>
+          <label for="email">Email</label>
+          <input type="email" name="email" id="email" />
+        </div>
+        <div>
+          <label for="message">Votre message</label>
+          <textarea rows="5" cols="33" id="message"></textarea>
+        </div>
+        <button class="contact_button" type="submit" aria-label="envoyer">
+          Envoyer
+        </button>
+      </form>
+    </div>
 
-        
-          
-						<input />
-					</div>
-          <button class="contact_button">Envoyer</button>
-				</form>
-			</div>
-		</div>
     <script src="/scripts/utils/contactForm.js"></script>
+    <script src="/scripts/utils/selectForm.js"></script>
+    <script src="/scripts/factories/media.js"></script>
+    <script src="/scripts/pages/photographer.js"></script>
   </body>
 </html>

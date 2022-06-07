@@ -1,0 +1,51 @@
+.photographer_section {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 20px;
+    margin-top: 50px;
+  }
+  
+  .photographer_section article {
+    justify-self: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin: 20px 0;
+  }
+  
+  .photographer_section a {
+    justify-self: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+  }
+  
+  .photographer_section article img {
+    height: 200px;
+    width: 200px;
+    border-radius: 50%;
+    object-fit: cover;
+  }
+  
+  .photographer_section article h2 {
+    color: #d3573c;
+    font-size: 36px;
+    text-align: center;
+  }
+  
+  .photographer_section article div {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .circle-image {
+    width: 15em;
+    height: 15em;
+    border-radius: 50%;
+    object-fit: cover;
+  }
+  
