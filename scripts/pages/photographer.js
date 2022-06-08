@@ -21,12 +21,15 @@ async function getPhotographers() {
 async function displayData(medias, photographer) {
     const photographHeader = document.querySelector(".photograph-header");
     const mediasSection = document.querySelector("#medias_section");
-    
+    let likesCount = 0;
+
     //Create section for each media in DOM
     medias.forEach((media) => {
         const photographerMedia = mediaFactory(media, photographer);
         const mediaCardDOM = photographerMedia.getMediaCardDOM();
         mediasSection.appendChild(mediaCardDOM);
+        
+        likesCount += photographerMedia.likes;
     });
 
     //Create the header of photographer's informations
@@ -34,8 +37,15 @@ async function displayData(medias, photographer) {
     const {img, divPhotographerInfos} = photographerInfo.getPhotographerInfos();
     //Add picture profile
     photographHeader.appendChild(img);
-    //Add photographer's informations before contact btn for flexbox
+    //Add <div> before <contact btn> for flexbox
     photographHeader.insertBefore(divPhotographerInfos, photographHeader.firstChild);
+
+    //Create card of likes count and price
+    const divLikesPrice = document.createElement('div');
+    divLikesPrice.classList.add('likes-price');
+    divLikesPrice.innerHTML = `<span>${likesCount}<i class="fa-solid fa-heart"></i></span><span>${photographerInfo.price}€ / jour</span>`;
+    mediasSection.appendChild(divLikesPrice);
+
 };
 
 async function init() {

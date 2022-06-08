@@ -176,8 +176,8 @@ a {
 #medias_section figure {
   margin: 20px;
 }
-#medias_section figure img {
-  height: 300px;
+#medias_section figure img, #medias_section figure video {
+  height: 265px;
   width: 300px;
   border-radius: 5px;
   object-fit: cover;
@@ -188,12 +188,31 @@ a {
   align-items: baseline;
   font-size: 20px;
   color: #901C1C;
+  width: 300px;
 }
 #medias_section figcaption p {
   margin-top: 8px;
 }
+#medias_section figcaption .likes {
+  white-space: nowrap;
+}
 #medias_section figcaption i {
   padding-left: 8px;
+}
+#medias_section .likes-price {
+  background: #D3573C;
+  padding: 20px 40px;
+  position: fixed;
+  bottom: 0px;
+  right: -50px;
+  transform: translateX(-50%);
+  border-radius: 5px 5px 0 0;
+  font-weight: 700;
+  font-size: 20px;
+}
+#medias_section .likes-price i {
+  margin-left: 10px;
+  margin-right: 40px;
 }
 
 /*# sourceMappingURL=style.css.map */

@@ -37,8 +37,8 @@
     figure {
         margin: 20px;
     }
-    figure img {
-        height: 300px;
+    figure img, figure video {
+        height: 265px;
         width: 300px;
         border-radius: 5px;
         object-fit: cover;
@@ -47,13 +47,34 @@
         @include flex-sb;
         font-size: 20px;
         color: $color-primary-dark;
+        width: 300px;
 
-        p{
+        p {
             margin-top: 8px;
         }
-        i{
+        .likes {
+            white-space: nowrap;
+        }
+        i {
             padding-left: 8px;
         }
     }
+    .likes-price {
+        background: $color-primary-light;
+        padding: 20px 40px;
+        position: fixed;
+        bottom : 0px;
+        right : -50px;
+        transform: translateX(-50%);
+        border-radius: 5px 5px 0 0;
+        font-weight: 700;
+        font-size: 20px;
+
+        i {
+            margin-left: 10px;
+            margin-right: 40px;
+        }
+    }
+    
 }
 

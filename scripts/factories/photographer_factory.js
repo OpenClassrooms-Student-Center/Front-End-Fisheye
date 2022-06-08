@@ -57,6 +57,6 @@ function photographerFactory(data) {
         return { img, divPhotographerInfos };
     }
 
-    return { getUserCardDOM, getPhotographerInfos }
+    return { getUserCardDOM, getPhotographerInfos, price }
    
 }
