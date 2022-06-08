@@ -24,7 +24,11 @@ async function displayData(photographers) {
 async function init() {
   // Récupère les datas des photographes
   const data = await getPhotographers();
-  console.log("data => ", data.photographers);
+  const { photographers } = data;
+  // adding alt property to photographer object
+  photographers.map((photographer) => (photographer.alt = photographer.name));
+
+  console.log("photographers  => ", photographers);
 
   displayData(data.photographers);
 }
