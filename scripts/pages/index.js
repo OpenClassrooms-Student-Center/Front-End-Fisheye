@@ -30,7 +30,7 @@ async function init() {
 
   console.log("photographers  => ", photographers);
 
-  displayData(data.photographers);
+  displayData(photographers);
 }
 
 init();
