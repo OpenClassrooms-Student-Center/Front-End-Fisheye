@@ -17,17 +17,17 @@ function mediaFactory(mediaData, photographerData) {
         const p = document.createElement('p');
         const media = document.createElement(!!image ? 'img' : 'video');
         const divLikes = document.createElement('div');
+        const likesNb = document.createElement('span');
         const heart = document.createElement('i');
         
         //Set attributes and class for the CSS
         media.setAttribute("src", mediaPath);
         divLikes.classList.add('likes');
-        heart.classList.add('fa-solid');
-        heart.classList.add('fa-heart');
+        heart.classList.add('fa-regular', 'fa-heart');
 
         //Text injected in HTML elements
         p.textContent = `${title}`;
-        divLikes.textContent = `${likes}`;
+        likesNb.textContent = `${likes}`;
 
         //Add created elements in the DOM
         figure.appendChild(media);
@@ -36,6 +36,7 @@ function mediaFactory(mediaData, photographerData) {
         figcaption.appendChild(p);
         figcaption.appendChild(divLikes);
 
+        divLikes.appendChild(likesNb);
         divLikes.appendChild(heart);
 
         return figure;

@@ -28,7 +28,7 @@ async function displayData(medias, photographer) {
         const photographerMedia = mediaFactory(media, photographer);
         const mediaCardDOM = photographerMedia.getMediaCardDOM();
         mediasSection.appendChild(mediaCardDOM);
-        
+
         likesCount += photographerMedia.likes;
     });
 
@@ -43,22 +43,48 @@ async function displayData(medias, photographer) {
     //Create card of likes count and price
     const divLikesPrice = document.createElement('div');
     divLikesPrice.classList.add('likes-price');
-    divLikesPrice.innerHTML = `<span>${likesCount}<i class="fa-solid fa-heart"></i></span><span>${photographerInfo.price}€ / jour</span>`;
+    divLikesPrice.innerHTML = `<span class="likes-count">${likesCount}</span><i class="fa-solid fa-heart"></i><span>${photographerInfo.price}€ / jour</span>`;
     mediasSection.appendChild(divLikesPrice);
 
+};
+
+//Like btn incrementation
+async function likesClick() {
+    const likeBtn = document.querySelectorAll(".likes i");
+    const totalLikes = document.querySelector(".likes-count");
+    
+    likeBtn.forEach((btn) => {
+        btn.addEventListener("click", () => {
+            const likeNumber = btn.parentNode.firstChild;
+
+            if (btn.classList.contains('fa-regular')) {
+                btn.classList.replace('fa-regular', 'fa-solid');
+                likeNumber.textContent = (parseInt(likeNumber.textContent) + 1);
+                totalLikes.textContent = (parseInt(totalLikes.textContent) + 1);
+                
+            } else if (btn.classList.contains('fa-solid')){
+                btn.classList.replace('fa-solid', 'fa-regular');
+                likeNumber.textContent = (parseInt(likeNumber.textContent) - 1);
+                totalLikes.textContent = (parseInt(totalLikes.textContent) - 1);
+            }
+        });
+    })
 };
 
 async function init() {
     //Get data for photographers and media
     const { photographers, media } = await getPhotographers();
-    
+
     //Get properties of photographer's page
     const currentPhotographer = photographers.find(id => id.id == photographerId)
 
     //Get medias of the current photographer
     const mediasOfPhotographer = media.filter(media => media.photographerId == photographerId)
-    
+
     displayData(mediasOfPhotographer, currentPhotographer);
+
+    likesClick();
+    
 };
 
 init();

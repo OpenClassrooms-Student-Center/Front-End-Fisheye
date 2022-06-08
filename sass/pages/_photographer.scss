@@ -57,6 +57,7 @@
         }
         i {
             padding-left: 8px;
+            cursor: pointer;
         }
     }
     .likes-price {
@@ -64,8 +65,7 @@
         padding: 20px 40px;
         position: fixed;
         bottom : 0px;
-        right : -50px;
-        transform: translateX(-50%);
+        right : 120px;
         border-radius: 5px 5px 0 0;
         font-weight: 700;
         font-size: 20px;
