@@ -2,24 +2,16 @@
     display: none;
 }
 
+header a {
+    display: flex;
+}
+
 .photograph-header {
     background-color: #FAFAFA;
     height: 300px;
     margin: 0 100px;
 }
 
-.contact_button {
-    font-size: 20px;
-    font-weight: bold;
-    color: white;
-    padding: 11px;
-    width: 170px;
-    height: 70px;
-    border: none;
-    background-color: #901C1C;
-    border-radius: 5px;
-    cursor: pointer;
-}
 
 .modal {
     border-radius: 5px;
@@ -48,6 +40,69 @@
     text-align: center;
 }
 
+.section-photographe {
+    background-color: #FAFAFA;
+    height: 300px;
+    margin: 0 100px;
+    padding: 0 50px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.section-photographe div {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+}
+
+.section-photographe div:first-child{
+    flex-direction: column;
+}
+
+.section-photographe div:first-child h1{
+    font-size: 64px;
+    color: #D3573C;
+    margin: 0;
+}
+
+.section-photographe div:first-child p:first-of-type{
+    font-size: 18px;
+    margin-bottom: 20px;
+}
+
+.section-photographe div:first-child p:first-of-type{
+    font-size: 24px;
+    color: #901C1C;
+}
+
+.section-photographe div:last-child{
+    justify-content: right;
+}
+
+.section-photographe div:last-child img{
+    object-fit: cover;
+    height: 200px;
+    width: 200px;
+    border-radius: 10em;
+    box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.2);
+}
+
+
+.contact-button {
+    font-size: 20px;
+    font-weight: bold;
+    color: white;
+    padding: 11px;
+    width: 170px;
+    height: 70px;
+    border: none;
+    background-color: #901C1C;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
 form {
     display: flex;
     width: 100%;
@@ -74,3 +129,4 @@ form input {
     border: none;
     border-radius: 5px;
 }
+

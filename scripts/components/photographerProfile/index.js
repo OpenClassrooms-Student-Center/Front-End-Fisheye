@@ -1,4 +1,4 @@
-export class PhotographerProfil {
+export class PhotographerProfilHeader {
   constructor(photographer) {
     this.name = photographer.name;
     this.alt = photographer.alt;
@@ -8,7 +8,7 @@ export class PhotographerProfil {
     this.portrait = photographer.portrait;
   }
   createUserProfil() {
-    const photographeCard = `
+    const photographeCardHeader = `
         <div>
             <h1>${this.name}</h1>
             <p>${this.city}, ${this.country}</p>
@@ -21,6 +21,6 @@ export class PhotographerProfil {
             <img src="assets/photographers/${this.portrait}" alt="photo de profil, ${this.alt}">
         </div>`;
 
-    return photographeCard;
+    return photographeCardHeader;
   }
 }
