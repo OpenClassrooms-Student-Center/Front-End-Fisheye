@@ -5,9 +5,6 @@ function mediaFactory(mediaData, photographerData) {
     //Get first name to access picture folder
     const nameOfPhotographer = name.split(' ');
     pathName = nameOfPhotographer[0].replace('-',' ');
-
-    // const picture = `assets/photographers/${pathName}/${image}`;
-    // const video = `assets/photographers/${pathName}/${video}`;
     const mediaPath = `assets/photographers/${pathName}/${!!image ? image : video}`;
     
     function getMediaCardDOM() {
@@ -42,6 +39,5 @@ function mediaFactory(mediaData, photographerData) {
         return figure;
     }
 
-    return { getMediaCardDOM, likes };
-   
+    return { getMediaCardDOM, likes }; 
 }

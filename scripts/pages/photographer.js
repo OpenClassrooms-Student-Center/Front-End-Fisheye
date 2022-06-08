@@ -25,7 +25,7 @@ async function displayData(medias, photographer) {
 
     //Create section for each media in DOM
     medias.forEach((media) => {
-        const photographerMedia = mediaFactory(media, photographer);
+        const photographerMedia = new mediaFactory(media, photographer);
         const mediaCardDOM = photographerMedia.getMediaCardDOM();
         mediasSection.appendChild(mediaCardDOM);
 
@@ -35,9 +35,7 @@ async function displayData(medias, photographer) {
     //Create the header of photographer's informations
     const photographerInfo = photographerFactory(photographer);
     const {img, divPhotographerInfos} = photographerInfo.getPhotographerInfos();
-    //Add picture profile
     photographHeader.appendChild(img);
-    //Add <div> before <contact btn> for flexbox
     photographHeader.insertBefore(divPhotographerInfos, photographHeader.firstChild);
 
     //Create card of likes count and price
@@ -74,17 +72,12 @@ async function likesClick() {
 async function init() {
     //Get data for photographers and media
     const { photographers, media } = await getPhotographers();
-
-    //Get properties of photographer's page
     const currentPhotographer = photographers.find(id => id.id == photographerId)
-
-    //Get medias of the current photographer
     const mediasOfPhotographer = media.filter(media => media.photographerId == photographerId)
 
     displayData(mediasOfPhotographer, currentPhotographer);
 
     likesClick();
-    
 };
 
 init();
