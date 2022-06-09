@@ -548,7 +548,7 @@ export class ComponentsFactory {
     previousBtn.setAttribute('type', 'button');
     previousBtn.setAttribute('aria-label', 'Previous image');
     previousBtn.classList.add('lightbox__previous');
-    previousBtn.setAttribute('tabindex', '3');
+    previousBtn.setAttribute('tabindex', '2');
 
     const previousIcon = document.createElement('i');
     previousIcon.classList.add('lightbox__previous__icon');
@@ -563,7 +563,7 @@ export class ComponentsFactory {
     closeBtn.setAttribute('id', 'close-lightbox');
     closeBtn.setAttribute('type', 'button');
     closeBtn.setAttribute('aria-label', 'Close dialog');
-    closeBtn.setAttribute('tabindex', '1');
+    closeBtn.setAttribute('tabindex', '3');
 
     const closeIcon = document.createElement('i');
     closeIcon.classList.add('lightbox__figure__close__icon');
@@ -617,7 +617,7 @@ export class ComponentsFactory {
     nextBtn.setAttribute('type', 'button');
     nextBtn.setAttribute('aria-label', 'Next image');
     nextBtn.classList.add('lightbox__next');
-    nextBtn.setAttribute('tabindex', '2');
+    nextBtn.setAttribute('tabindex', '1');
 
     const nextIcon = document.createElement('i');
     nextIcon.classList.add('lightbox__next__icon');
@@ -788,31 +788,31 @@ export class ComponentsFactory {
       textfieldName: 'Prénom',
       type: 'text',
     });
-    firstName.querySelector('input').setAttribute('tabindex', '2');
+    firstName.querySelector('input').setAttribute('tabindex', '1');
     const lastName = this.getTextfieldDOM({
       textfieldName: 'Nom',
       type: 'text',
     });
-    lastName.querySelector('input').setAttribute('tabindex', '3');
+    lastName.querySelector('input').setAttribute('tabindex', '2');
     const email = this.getTextfieldDOM({
       textfieldName: 'Email',
       type: 'email',
     });
-    email.querySelector('input').setAttribute('tabindex', '4');
+    email.querySelector('input').setAttribute('tabindex', '3');
     const message = this.getTextfieldDOM({
       textfieldName: 'Message',
       type: 'textarea',
     });
-    message.querySelector('textarea').setAttribute('tabindex', '5');
+    message.querySelector('textarea').setAttribute('tabindex', '4');
     const submit = this.getSubmitBtnDOM();
     submit.setAttribute('aria-label', 'Send');
-    submit.setAttribute('tabindex', '6');
+    submit.setAttribute('tabindex', '5');
 
     const closeBtn = document.createElement('button');
     closeBtn.classList.add('contact-form__close');
     closeBtn.setAttribute('id', 'close-contact-form');
     closeBtn.setAttribute('aria-label', 'Close Contact form');
-    closeBtn.setAttribute('tabindex', '1');
+    closeBtn.setAttribute('tabindex', '6');
 
     const closeIcon = document.createElement('i');
     closeIcon.classList.add('contact-form__close__icon');
