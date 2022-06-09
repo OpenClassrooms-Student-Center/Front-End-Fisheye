@@ -40,8 +40,9 @@
 }
 
 .sorter {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
     width: 20rem;
     margin: 2rem 0 0 6.25rem;
     font-size: map-get($map: $font-size, $key: text);
@@ -50,57 +51,10 @@
         margin: 0;
     }
     &__list {
-        margin: 0;
-        padding: 0 1rem;
-        list-style: none;
         display: none;
-    }
-    &__selected {
-        display: block;
-    }
-    & .option {
-        position: relative;
-        padding: 1rem 4rem 1rem 2rem;
-        cursor: pointer;
-        color: #ffffff;
-        background: none;
-        border: none;
-        width: 100%;
-        font-size: map-get($map: $font-size, $key: text);
-        font-weight: 700;
-        text-align: start;
-        background-color: $colorPrimary;
-        &-1 {
-            display: flex;
-            flex-direction: row;
-            border-top-left-radius: 0.313rem;
-            border-top-right-radius: 0.313rem;
-        }
-        &-2{
-            &::before {
-                @include pseudoElement;
-                left: .9rem;
-                width: 85%;
-                height: 0.063rem;
-                background-color: #ffffff;
-            }
-        }
-        &-3{
-            border-bottom-left-radius: 0.313rem;
-            border-bottom-right-radius: 0.313rem;
-            &::before {
-                @include pseudoElement;
-                left: .9rem;
-                width: 85%;
-                height: 0.063rem;
-                background-color: #ffffff;
-            }
-        }
-        &-4{
-            display: flex;
-            flex-direction: row;
-            border-radius: 0.313rem;
-        }
+        list-style: none;
+        margin: 0;
+        padding: 0;
     }
 }
 

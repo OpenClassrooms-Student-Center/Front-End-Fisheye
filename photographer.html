@@ -34,39 +34,47 @@
             </div>
             <div class="sorter">
                 <span class="sorter__title">Trier par</span>
-                <button
-                    class="option option-4"
-                    class="sorter__selected"
-                >
-                    Popularité
+                <button class="sorter__selected button-sorter button-sorter-4">
+                    <span>Popularité</span>
                     <i
                         class="fa-solid fa-chevron-down"
                         aria-hidden="true"
-                        data-fa-transform="right-32 down-2"
+                        data-fa-transform="right-32"
                     ></i>
                 </button>
                 <ul class="sorter__list">
                     <li>
-                        <button class="option option-1" id="like" name="sorter">
-                            Popularité
-                        </button>
-                    </li>
-                    <li>
-                        <button class="option option-2" id="date" name="sorter">
-                            Date
+                        <button
+                            class="button-sorter button-sorter-1 option"
+                            id="like"
+                        >
+                            <span>Popularité</span>
+                            <i
+                                class="fa-solid fa-chevron-down fa-rotate-180"
+                                aria-hidden="true"
+                                data-fa-transform="right-32"
+                            ></i>
                         </button>
                     </li>
                     <li>
                         <button
-                            class="option option-3"
-                            id="title"
-                            name="sorter"
+                            class="button-sorter button-sorter-2 option"
+                            id="date"
                         >
-                            Titre
+                            <span>Date</span>
+                        </button>
+                    </li>
+                    <li>
+                        <button
+                            class="button-sorter button-sorter-3 option"
+                            id="title"
+                        >
+                            <span>Titre</span>
                         </button>
                     </li>
                 </ul>
             </div>
+            <div class="media"></div>
         </main>
         <div id="contact_modal">
             <div class="modal">
@@ -108,9 +116,10 @@
         <script src="scripts/templates/PriceAndLikesCard.js"></script>
 
         <!-- Utils -->
+        <script src="scripts/utils/dropDownOfSort.js"></script>
         <script src="scripts/utils/Sorter.js"></script>
         <script src="scripts/utils/contactForm.js"></script>
-        
+
         <!-- Pages -->
         <script src="scripts/pages/photographer.js"></script>
     </body>
