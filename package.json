@@ -4,7 +4,8 @@
   "description": "## Démarrer le projet",
   "main": "index.js",
   "scripts": {
-    "sass": "sass --watch ./sass/main.scss:./public/css/style.css --style compressed"
+    "sass": "sass --watch ./sass/main.scss:./public/css/style.css --style compressed",
+    "eslint": "eslint . --fix"
   },
   "repository": {
     "type": "git",
@@ -18,5 +19,12 @@
   "homepage": "https://github.com/rMaloberti/Front-End-Fisheye#readme",
   "dependencies": {
     "sass": "^1.49.7"
+  },
+  "devDependencies": {
+    "eslint": "^8.17.0",
+    "eslint-config-google": "^0.14.0",
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-plugin-prettier": "^4.0.0",
+    "prettier": "^2.6.2"
   }
 }
