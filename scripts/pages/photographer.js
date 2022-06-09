@@ -25,9 +25,9 @@ async function displayData(medias, photographer) {
 
     //Create section for each media in DOM
     medias.forEach((media) => {
-        const photographerMedia = new mediaFactory(media, photographer);
+        const photographerMedia = new MediaFactory(media, photographer);
         const mediaCardDOM = photographerMedia.getMediaCardDOM();
-        mediasSection.appendChild(mediaCardDOM);
+        mediasSection.appendChild(mediaCardDOM.figure);
 
         likesCount += photographerMedia.likes;
     });
