@@ -90,6 +90,87 @@ header a {
 }
 
 
+.portfolio-section {
+    position: relative;
+    margin: 30px 100px;
+}
+
+.portfolio-filter {
+    display: flex;
+    font-size: 18px;
+}
+.portfolio-filter > p {
+    font-weight: bold;
+}
+.portfolio-filter .dropdown {
+    position: absolute;
+    top: -20px;
+    left: 100px;
+    display: flex;
+    flex-direction: column;
+    padding: 0px 10px;
+    background: #901C1C;
+    border-radius: 5px;
+    cursor: pointer;
+    z-index: 10;
+}
+.portfolio-filter .dropdown .toggle-listbox {
+    position: relative;
+    width: 130px;
+    color: #fff;
+}
+.portfolio-filter .dropdown .toggle-listbox .active-option {
+    padding: 20px 0px;
+}
+
+.portfolio-filter .dropdown .toggle-listbox i {
+    position: absolute;
+    right: 10px;
+    top: 23px;
+}
+.portfolio-filter .dropdown button {
+    font-family: inherit;
+    border: unset;
+    background: inherit;
+    font-size: inherit;
+    color: #fff;
+    padding: 20px 0px;
+    width: 130px;
+    text-align: start;
+    display: none;
+    cursor: pointer;
+}
+.portfolio-filter .dropdown > button:first-of-type {
+    border-top:1px solid #fff; 
+    border-bottom:1px solid #fff
+}
+
+.portfolio-filter .hidden {
+    display: none;
+}
+
+.portfolio-section .portfolio{
+    margin: 80px 0;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);;
+    gap: 30px;
+}
+
+.portfolio article{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.portfolio article img, .portfolio article video{
+    object-fit: cover;
+    border-radius: 0.4em;
+    height: 300px;
+    width: 350px;
+    cursor: pointer;
+}
+
 .contact-button {
     font-size: 20px;
     font-weight: bold;
@@ -102,6 +183,7 @@ header a {
     border-radius: 5px;
     cursor: pointer;
 }
+
 
 form {
     display: flex;
