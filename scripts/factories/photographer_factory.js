@@ -54,7 +54,7 @@ function photographerFactory(data) {
         divPhotographerInfos.appendChild(divCity);
         divPhotographerInfos.appendChild(divTagline);
 
-        return { img, divPhotographerInfos };
+        return { img, name, divPhotographerInfos };
     }
 
     return { getUserCardDOM, getPhotographerInfos, price }

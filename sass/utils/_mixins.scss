@@ -25,3 +25,9 @@
     object-fit: cover;
     box-shadow: 1px 1px 15px rgba(150, 150, 150, 0.5);
 }
+
+@mixin form-input {
+    width: 100%;
+    border: none;
+    border-radius: 5px;
+}

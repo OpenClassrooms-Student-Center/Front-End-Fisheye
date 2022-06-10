@@ -11,12 +11,12 @@
   <body>
     <header>
       <a href="index.html">
-        <img src="assets/images/logo.png" class="logo" />
+        <img src="assets/images/logo.png" class="logo" alt="Fisheye Home page"/>
       </a>
     </header>
     <main id="main">
       <div class="photograph-header">
-        <button class="contact_button" onclick="displayModal()">Contactez-moi</button>
+        <button class="contact_button" onclick="displayModal()" name="Contact me">Contactez-moi</button>
       </div>
       <div id="medias_section"></div>
     </main>
@@ -24,14 +24,25 @@
 			<div class="modal">
 				<header>
           <h2>Contactez-moi</h2>
-          <img src="assets/icons/close.svg" onclick="closeModal()" />
+          <img src="assets/icons/close.svg" alt="Close contact form" onclick="closeModal()" />
         </header>
-				<form>
-					<div>
-						<label>Prénom</label>
-						<input />
-					</div>
-          <button class="contact_button">Envoyer</button>
+
+        <form name="contact" id="form">
+            
+          <label for="first name">Prénom</label>
+          <input type="text" id="first" name="first name"/><br/>
+
+          <label for="last name">Nom</label>
+          <input type="text" id="last" name="last name"/><br/>
+
+          <label for="email">E-mail</label>
+          <input type="email" id="email" name="email"/><br/>
+
+          <label for="your message">Votre message</label>
+          <textarea id="message" name="your message"></textarea><br/><br/>
+
+          <button class="contact_button" name="send">Envoyer</button>
+
 				</form>
 			</div>
 		</div>

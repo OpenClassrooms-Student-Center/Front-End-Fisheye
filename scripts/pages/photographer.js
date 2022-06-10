@@ -34,7 +34,8 @@ async function displayData(medias, photographer) {
 
     //Create the header of photographer's informations
     const photographerInfo = photographerFactory(photographer);
-    const {img, divPhotographerInfos} = photographerInfo.getPhotographerInfos();
+    const {img, name, divPhotographerInfos} = photographerInfo.getPhotographerInfos();
+    img.setAttribute("alt", name);
     photographHeader.appendChild(img);
     photographHeader.insertBefore(divPhotographerInfos, photographHeader.firstChild);
 
