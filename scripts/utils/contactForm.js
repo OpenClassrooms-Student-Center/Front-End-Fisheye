@@ -1,11 +1,27 @@
 function displayModal() {
   const modal = document.getElementById("contact_modal");
+  const header = document.getElementById("header");
+  const main = document.getElementById("main");
+  header.setAttribute("aria-hidden", true);
+  header.style.opacity = "0.4";
+  main.setAttribute("aria-hidden", true);
+  main.style.opacity = "0.4";
+  modal.setAttribute("aria-hidden", false);
   modal.style.display = "block";
+  document.getElementById("cross").focus();
 }
 
 function closeModal() {
   const modal = document.getElementById("contact_modal");
+  const header = document.getElementById("header");
+  const main = document.getElementById("main");
+  header.setAttribute("aria-hidden", false);
+  header.style.opacity = "1";
+  main.setAttribute("aria-hidden", false);
+  main.style.opacity = "1";
+  modal.setAttribute("aria-hidden", true);
   modal.style.display = "none";
+  document.getElementById("contact").focus();
 }
 
 //************VARIABLES*************
@@ -129,6 +145,8 @@ submitBtn.addEventListener("click", (e) => {
   e.preventDefault();
   if (validate()) {
     displayContactInfos();
+    closeModal();
+    document.getElementById("contact-form").reset();
   } else {
     displayErrors();
   }
