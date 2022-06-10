@@ -8,8 +8,8 @@
 }
 
 .modal {
-    position: fixed;
-    top: 15%;
+    position: absolute;
+    top: 150px;
     left: 50%;
     transform: translateX(-50%);
 
@@ -26,6 +26,8 @@
     header {
         justify-content: space-between;
         width: 100%;
+        margin-top: 20px;
+        margin-bottom: 50px;
 
         img {
             cursor: pointer;
@@ -33,7 +35,7 @@
         h2 {
             font-size: 64px;
             font-weight: normal;
-            text-align: center;
+            line-height: 1.2;
         }
     }
 }

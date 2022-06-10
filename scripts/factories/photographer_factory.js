@@ -1,62 +1,76 @@
-function photographerFactory(data) {
-    const { name, portrait, city, tagline, price, country, id } = data;
+class PhotographerFactory {
 
-    const picture = `assets/photographers/Photographers ID Photos/${portrait}`;
-    const hrefPhotographer = `/photographer.html?id=${id}`;
+    constructor(data) {
+        // const { name, portrait, city, tagline, price, country, id } = data;
+        this.name = data.name;
+        this.portrait = data.portrait;
+        this.city = data.city;
+        this.tagline = data.tagline;
+        this.price = data.price;
+        this.country = data.country;
+        this.id = data.id;
 
-    //DOM elements of photographer
-    const article = document.createElement('article');
-    const a = document.createElement('a');
-    const img = document.createElement('img');
-    const h1 = document.createElement('h1');
-    const h2 = document.createElement('h2');
-    const divCity = document.createElement('div');
-    const divTagline = document.createElement('div');
-    const divPrice = document.createElement('div');
-    const divPhotographerInfos = document.createElement('div');
-    
-    //Set attributes and class for the CSS
-    img.setAttribute("src", picture);
-    a.setAttribute("href", hrefPhotographer);
-    divCity.classList.add('city');
-    divTagline.classList.add('tagline');
-    divPrice.classList.add('price');
-    divPhotographerInfos.classList.add('photographer-infos');
+        const picture = `assets/photographers/Photographers ID Photos/${this.portrait}`;
+        const hrefPhotographer = `/photographer.html?id=${this.id}`;
 
-    function getUserCardDOM() {
+        //DOM elements of photographer
+        this.article = document.createElement('article');
+        this.a = document.createElement('a');
+        this.img = document.createElement('img');
+        this.h1 = document.createElement('h1');
+        this.h2 = document.createElement('h2');
+        this.divCity = document.createElement('div');
+        this.divTagline = document.createElement('div');
+        this.divPrice = document.createElement('div');
+        this.divPhotographerInfos = document.createElement('div');
+        
+        //Set attributes and class for the CSS
+        this.img.setAttribute("src", picture);
+        this.a.setAttribute("href", hrefPhotographer);
+        this.a.setAttribute("aria-label", this.name);
+        this.divCity.classList.add('city');
+        this.divTagline.classList.add('tagline');
+        this.divPrice.classList.add('price');
+        this.divPhotographerInfos.classList.add('photographer-infos');
+    }
+
+    getUserCardDOM() {
 
         //Text injected in HTML elements
-        h2.textContent = name;
-        divCity.textContent = `${city}, ${country}`;
-        divTagline.textContent = tagline;
-        divPrice.textContent = `${price}€/jour`;
+        this.h2.textContent = this.name;
+        this.divCity.textContent = `${this.city}, ${this.country}`;
+        this.divTagline.textContent = this.tagline;
+        this.divPrice.textContent = `${this.price}€/jour`;
 
         //Add creates element in the DOM
-        article.appendChild(a);
-        a.appendChild(img);
-        a.appendChild(h2);
-        article.appendChild(divCity);
-        article.appendChild(divTagline);
-        article.appendChild(divPrice);
+        this.article.appendChild(this.a);
+        this.a.appendChild(this.img);
+        this.a.appendChild(this.h2);
+        this.article.appendChild(this.divCity);
+        this.article.appendChild(this.divTagline);
+        this.article.appendChild(this.divPrice);
 
-        return article;
+        const article = this.article;
+        const price = this.price;
+        return {article, price};
     }
 
-    function getPhotographerInfos() {
+    getPhotographerInfos() {
 
         //Text injected in HTML elements
-        h1.textContent = name;
-        divCity.textContent = `${city}, ${country}`;
-        divTagline.textContent = tagline;
+        this.h1.textContent = this.name;
+        this.divCity.textContent = `${this.city}, ${this.country}`;
+        this.divTagline.textContent = this.tagline;
 
         //Add created elements in the DOM
-        divPhotographerInfos.appendChild(h1);
-        divPhotographerInfos.appendChild(divCity);
-        divPhotographerInfos.appendChild(divTagline);
+        this.divPhotographerInfos.appendChild(this.h1);
+        this.divPhotographerInfos.appendChild(this.divCity);
+        this.divPhotographerInfos.appendChild(this.divTagline);
 
-        return { img, name, divPhotographerInfos };
+        const photographerName = this.name;
+        const photographerPic = this.img;
+        const divPhotographerInfos = this.divPhotographerInfos;
+        return { photographerPic, photographerName, divPhotographerInfos };
     }
-
-    return { getUserCardDOM, getPhotographerInfos, price }
    
 }

@@ -33,10 +33,10 @@ async function displayData(medias, photographer) {
     });
 
     //Create the header of photographer's informations
-    const photographerInfo = photographerFactory(photographer);
-    const {img, name, divPhotographerInfos} = photographerInfo.getPhotographerInfos();
-    img.setAttribute("alt", name);
-    photographHeader.appendChild(img);
+    const photographerInfo = new PhotographerFactory(photographer);
+    const {photographerPic, photographerName, divPhotographerInfos} = photographerInfo.getPhotographerInfos();
+    photographerPic.setAttribute("alt", photographerName);
+    photographHeader.appendChild(photographerPic);
     photographHeader.insertBefore(divPhotographerInfos, photographHeader.firstChild);
 
     //Create card of likes count and price
@@ -45,6 +45,9 @@ async function displayData(medias, photographer) {
     divLikesPrice.innerHTML = `<span class="likes-count">${likesCount}</span><i class="fa-solid fa-heart"></i><span>${photographerInfo.price}€ / jour</span>`;
     mediasSection.appendChild(divLikesPrice);
 
+    //Insert photographer's name in modale
+    const modalH2 = document.querySelector(".modal h2");
+    modalH2.insertAdjacentHTML('beforeend', '<br/>' + photographerName);
 };
 
 //Like btn incrementation
