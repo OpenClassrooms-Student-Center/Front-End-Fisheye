@@ -1,7 +1,3 @@
-#contact_modal {
-  display: none;
-}
-
 .photograph-header {
   background-color: #fafafa;
   height: 300px;
@@ -126,6 +122,13 @@
   cursor: pointer;
 }
 
+#contact_modal {
+  display: none;
+  position: absolute;
+  top: 70px;
+  width: inherit;
+}
+
 .modal {
   border-radius: 5px;
   background-color: #db8876;
@@ -153,6 +156,11 @@
   text-align: center;
 }
 
+.cross-button {
+  background: none;
+  border: none;
+}
+
 form {
   display: flex;
   width: 100%;
@@ -163,6 +171,7 @@ form {
 form label {
   color: #312e2e;
   font-size: 36px;
+  margin-top: 5px;
 }
 
 form div {
@@ -173,9 +182,16 @@ form div {
   margin-bottom: 26px;
 }
 
-form input {
+form input,
+form textarea {
   width: 100%;
   height: 68px;
   border: none;
   border-radius: 5px;
+  font-size: 22px;
+  padding: 5px;
+}
+
+.form-textarea {
+  height: 170px;
 }
