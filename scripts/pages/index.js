@@ -1,45 +1,39 @@
-    async function getPhotographers() {
-        // Penser à remplacer par les données récupérées dans le json
-        const photographers = [
-            {
-                "name": "Ma data test",
-                "id": 1,
-                "city": "Paris",
-                "country": "France",
-                "tagline": "Ceci est ma data test",
-                "price": 400,
-                "portrait": "account.png"
-            },
-            {
-                "name": "Autre data test",
-                "id": 2,
-                "city": "Londres",
-                "country": "UK",
-                "tagline": "Ceci est ma data test 2",
-                "price": 500,
-                "portrait": "account.png"
-            },
-        ]
-        // et bien retourner le tableau photographers seulement une fois
-        return ({
-            photographers: [...photographers, ...photographers, ...photographers]})
-    }
+import labelOne from "../factories/labelOne.js";
+import photographerSecond from "../factories/photographerSecond.js";
 
-    async function displayData(photographers) {
-        const photographersSection = document.querySelector(".photographer_section");
+export default class frontPage {
+  constructor(datas) {
+    this.datas = datas;
+  }
+  renderfrontPage() {
+      // Création menuNav tags
+      const tags = labelOne.getTags(this.datas);
+      this.navTagsElement = document.getElementById("tags");
 
-        photographers.forEach((photographer) => {
-            const photographerModel = photographerFactory(photographer);
-            const userCardDOM = photographerModel.getUserCardDOM();
-            photographersSection.appendChild(userCardDOM);
+      this.navTagsElement.innerHTML = labelOne.createListTemplate(tags);
+
+      // Liste des profils
+      const photographersListElement = document.getElementById("photographers-list");
+      photographersListElement.innerHTML = photographerSecond.createListTemplate(this.datas.photographers);
+
+      // Evenement selection Tag
+      this.navTagsElement.querySelectorAll("li").forEach(tag => {
+        tag.addEventListener("click", () => {
+   
+        tag.classList.toggle('active');
+        // Filtre les photographes qui contiennent le tag selectionné
+        this.selPhotographe();  
+
         });
-    };
+      });
+  }
+  selPhotographe() {
+    let photographSel = this.datas.photographers;
+    const photographersListElement = document.getElementById("photographers-list");
+    this.navTagsElement.querySelectorAll("li.active").forEach(tag => {
+      photographSel =  [... this.datas.photographers.filter(photographer => photographer.tags.indexOf(tag.dataset.value) !== -1)];
+    });
+    photographersListElement.innerHTML = photographerSecond.createListTemplate(photographSel);
+  }
 
-    async function init() {
-        // Récupère les datas des photographes
-        const { photographers } = await getPhotographers();
-        displayData(photographers);
-    };
-    
-    init();
-    
+}  
