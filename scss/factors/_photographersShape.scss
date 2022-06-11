@@ -1,0 +1,63 @@
+.photographer-profil{
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 20px;
+
+    .photographer__infos{
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        gap: 5px;
+        max-width: 400px;
+        &__name{ font-size: 2.25rem; color: $orange; }
+        &__city{ font-size: 0.8rem; color: $pri-color; }
+        &__tagline{ font-size: 0.8rem; color: #4F4F4F; }
+        & .tag-list{ justify-content: start; }
+    }
+
+    .photographer__img{
+        width: 100px;
+        height: 100px;
+        object-fit: cover;
+        border-radius: 50%;
+        background-color: lighten($tert-color, 55%);
+        filter: drop-shadow(0px 4px 12px rgba(0,0,0, .25));
+        transition: transform .3s ease;
+    }
+
+    @media screen and (min-width: 950px){
+        background-color: $lightGrey;
+        border-radius: $borderRadius;
+        padding: 50px;
+
+
+        .photographer__infos{
+            max-width: 410px;
+            &__name{ font-size: 3rem; }
+            &__city{ font-size: 1.5rem; }
+            &__tagline{ font-size: 1.125rem; }
+            & .tag-item{ font-size: .8rem; }
+        }
+
+        .photographer__img{
+            width: 200px;
+            height: 200px;
+        }
+    }
+}
+
+.photographer__btn{
+    position: fixed;
+    left: 48%;
+    margin-top: 10px;
+    transform: translate3d(-50%, 0, 0);
+}
+
+@media screen and (min-width: 950px){
+
+    .photographer__btn{
+        position: absolute;
+        margin-top: -240px;
+        z-index: 0;
+    }
+}
