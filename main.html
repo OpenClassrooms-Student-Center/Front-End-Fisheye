@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" href="assets/images/favicon.png">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <script src="https://kit.fontawesome.com/2d017f9f32.js" crossorigin="anonymous"></script>
+    <script src="app.js" type="module"></script>
+    <title>Fisheye</title>
+</head>
+
+<body>
+    <!-- main -->
+    <a href="#main" class="direct-link-main">
+        Passer au contenu
+    </a>
+
+    <!-- header -->
+    <header class="header">
+        <a class="header__logo" href="index.html">
+            <img src="assets/images/logo-fisheye.svg" alt="FishEye _homePage page">
+        </a>
+    </header>
+
+    <main class="main" id="main">
+        <section id="photographer-profil" class="photographer-profil" >
+        </section>
+        <button id="contact-btn" class="btn photographer__btn" data-modal="modal_inscription">Contactez-moi</button>
+
+        <div class="hidden" data-modal="modal_success_inscription"></div>
+        <div class="hidden" id="modal_success_inscription">
+            <div class="form-contact__container">
+
+                <!-- sending message -->
+                <div class="modal-body-conf">
+                    Votre message à bien été envoyé
+                </div>
+
+                <!-- close button -->
+                <button class="btn btn-primary close">Fermer</button>
+            </div>
+        </div>
+       
+        <!-- filter -->
+        <div id="filter">
+            <div class="filter">
+                <span id="filter-label" class="filter__label">Trier par</span>
+                <div id="filter-wrapper" class="filter__wrapper">
+                    <button id="filter-btn" class="btn filter-btn active" arira-expended="false" aria-haspopup="listbox"
+                        aria-labelledby="filter-label">Popularité</button>
+
+                    <!-- filter listbox -->
+                    <ul id="filter-list" class="filter-list" role="listbox" aria-activedescendant="popularity"
+                        aria-selected="true" aria-labelledby="filter-label">
+                        <li id="Popularite" class="filter-list__item" data-value="popularity" tabindex="0"
+                            role="button">Popularité</li>
+                        <li id="Date" class="filter-list__item" data-value="date" tabindex="0" role="button">Date</li>
+                        <li id="Titre" class="filter-list__item" data-value="title" tabindex="0" role="button">Titre
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- article -->
+        <article id="gallery" class="gallery"></article>
+
+        <aside id="card-infos" class="card-infos">
+            <div class="cards-infos__nb-likes">
+                <span id="counter-likes" class="nb-likes"></span>
+
+                <!-- heart icon -->
+                <i class="fas fa-heart" aria-label="likes"></i>
+            </div>
+
+            <!-- picture rate  -->
+            <p><span id="photographerRate"></span> € / jour</p>
+        </aside> 
+    </main>
+
+    <!-- aside -->
+    <aside id="modal-menuForm" class="menuForm" tabindex="0" aria-label="Vue rapproché">
+        <div class="menuForm__container"></div>
+
+        <!-- left arrow -->
+        <button class="arrow-left" aria-label="précédent">
+            <i role="button" class="fas fa-chevron-left"></i>
+        </button>
+
+        <!-- right arrow -->
+        <button class="arrow-right" aria-label="suivant">
+            <i role="button" class="fas fa-chevron-right"></i>
+        </button>
+        
+        <button class="close" aria-label="fermer la vue rapproché">
+            <i class="fas fa-times"></i>
+        </button>
+    </aside>
+
+    <!-- aside -->
+    <aside id="modal_inscription" class="form-contact" tabindex="0" aria-label="Modal de contact" >
+        <div class="form-contact__container" >
+
+            <!-- form name -->
+            <h1 id="form-name" class="form-name">Contactez-moi<br></h1>
+
+            <h2 class="form-name" id="name"></h2>
+
+            <form id="contact-form" class="form" tabindex="0" action="" method="get" aria-label="formulaire de contact">
+                <!-- first name -->
+                <div class="form__item">
+                    <label for="first-name">Prénom</label>
+                    <input type="text" class="text-control" id="first-name" name="first_name">
+                    <div class="errorMsg">Le champ Prénom est requis avec 2 lettres minimum</div>
+                </div>
+
+                <!-- name -->
+                <div class="form__item">
+                    <label for="last-name">Nom</label>
+                    <input type="text" class="text-control" id="last-name" name="last_name">
+                    <div class="errorMsg">Le champ Nom est requis avec 2 lettres minimum</div>
+                </div>
+
+                <!-- email -->
+                <div class="form__item">
+                    <label for="email">Email</label>
+                    <input type="email" class="text-control" id="email" name="email">
+                    <div class="errorMsg">Le champ Email est requis</div>
+                </div>
+
+                <!-- message -->
+                <div class="form__item">
+                    <label for="message">Votre message</label>
+                    <textarea class="text-control" name="message" id="message"></textarea>
+                    <div class="errorMsg">Le champ est requis</div>
+                </div>
+
+                <!-- submit button -->
+                <button type="submit" id="submitForm" class="btn btn-submit">Envoyer</button>
+            </form>
+
+            <!-- close Modal button -->
+            <button id="closeModal" class="close" aria-label="fermer le formulaire">
+            </button>
+        </div>
+    </aside>
+
+</body>
+
+</html>
