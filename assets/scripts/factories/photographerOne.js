@@ -12,7 +12,7 @@ function createInfoTemplate(photographer) {
              ${labelOne.createListTemplate(photographer.tags)}
             </ul>
         </div>
-        <img class="photographer__img" src="assets/images/photos/Photographers ID Photos/${photographer.portrait}" alt="${photographer.alt}">
+        <img class="photographer__img" src="assets/images/photos/PhotographersIds/${photographer.portrait}" alt="${photographer.alt}">
         `;
 
     return template;
