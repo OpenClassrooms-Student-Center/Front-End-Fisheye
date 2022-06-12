@@ -1,0 +1,99 @@
+// menuForm
+.menuForm{
+    position: fixed;
+    inset: 0;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    background-color: $white;
+
+    &.open{
+        display: flex;
+    }
+
+    &__container{
+        position: relative;
+        display: inline-grid;
+        grid-template-columns: 40px minmax(130px, calc(100% - 100px)) 40px;
+        grid-template-rows: repeat(2, auto);
+        grid-column-gap: 10px;
+        grid-row-gap: 5px;
+        max-width: 95%;
+
+        i{
+             font-size: 1.5rem;
+              color: $pri-color;
+             }
+    
+        .arrow-left{
+            cursor: pointer;
+            position: absolute;
+            left: 30px;
+            border: none;
+            background: transparent;
+            }
+        .arrow-right{
+            cursor: pointer;
+            position: absolute;
+            right: 30px;
+            border: none;
+            background: transparent;
+            }
+
+        .media-container{
+            grid-area: 1 / 2 / 2 / 3;
+            width: 100%;
+
+            .media{
+                object-fit: cover;
+                width: 100%;
+                max-width: 100%;
+                max-height: calc(100vh - 100px);
+                border-radius: $borderRadius;
+            }
+        }
+        
+    
+        .title{
+            grid-area: 2 / 2 / 3 / 3;
+            font-size: .8rem;
+            color: $pri-color;
+        }
+    
+        .close{
+            cursor: pointer;
+            background: transparent;
+            border:none;
+            position: absolute;
+            top: 30px;
+            right: 30px;
+            min-width: 40px;
+            min-height: 40px;
+            transform: translate3d(0, -12px, 0);
+        }
+
+        button{
+            background-color: transparent;
+            border: 0px;
+            cursor: pointer;
+        }
+    }
+
+    @media screen and (min-width: 950px){
+        &__container{
+            grid-column-gap: 35px;
+
+            i{ font-size: 3rem; }
+            .title{ font-size: 1.75rem; }
+
+            .close{
+                position: absolute;
+                top: 0;
+                right: 0;
+                min-width: 40px;
+                min-height: 40px;
+                transform: translate3d(0, -7px, 0);
+            }
+        }
+    }
+}
