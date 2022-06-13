@@ -40,10 +40,9 @@ const generatePhotographerMedias = (currentMedias, currentPhotographer) => {
 
 const initMedias = async () => {
   const { media: medias } = data;
-  console.log("medias :::::> ", medias);
 
   const currentMedias = medias.filter((media) => media.photographerId === id);
-  console.log("currentMedias ::> ", currentMedias);
+  // console.log("currentMedias ::> ", currentMedias);
   generatePhotographerMedias(currentMedias, currentPhotographer);
 };
 

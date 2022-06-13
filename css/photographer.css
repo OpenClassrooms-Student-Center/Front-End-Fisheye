@@ -171,6 +171,63 @@ header a {
     cursor: pointer;
 }
 
+.portfolio article div span{
+    color: #901C1C;
+}
+.portfolio article div span:nth-of-type(2){
+    margin: 0 10px 0 auto;
+}
+.portfolio article div span input{
+    display: none;
+}
+.portfolio article div span label i{
+    font-size: 20px;
+    color: #901C1C;
+    cursor: pointer;
+}
+.portfolio article div span input:checked ~ label i{
+    animation: 0.4s ease-in-out both bounce;
+    transition: 0.2s ease-in;
+    color: #D3573C;
+}
+.portfolio article div span input:not(:checked) ~ label i{
+    color: #901C1C;
+}
+
+@keyframes bounce {
+    0% { 
+        transform: scale(1); 
+    }
+    30%   { 
+        transform: scale(1.4); 
+    }
+    100%   { 
+        transform: scale(1); 
+    }
+  }
+
+  aside > div {
+    position: fixed;
+    display: flex;
+    justify-content: space-between;
+    bottom: 0;
+    right: 40px;
+    width: 250px;
+    background: #DB8876;
+    padding: 20px 30px;
+    border-radius: 0.3em 0.3em 0 0;
+    font-size: 24px;
+}
+aside div.countLikes{
+    position: relative;
+}
+aside div.countLikes i{
+    position: absolute;
+    left: -70px;
+    top: 3px;
+}
+
+
 .contact-button {
     font-size: 20px;
     font-weight: bold;
