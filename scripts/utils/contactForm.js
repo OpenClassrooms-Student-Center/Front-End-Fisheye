@@ -1,8 +1,13 @@
 // DOM elements
 const modal = document.querySelector(".contact_modal");
 
-document.querySelector(".contact_button").addEventListener("click", displayModal);
-document.querySelector("#close_form").addEventListener("click", closeModal);
+document.querySelector(".contact_form").addEventListener("click", displayModal);
+document.querySelector(".close_form").addEventListener("click", closeModal);
+document.querySelector(".send_form").addEventListener("click", (e) => {
+    e.preventDefault();
+    closeModal();
+});
+
 
 function displayModal() {
     modal.classList.add('fade-out');

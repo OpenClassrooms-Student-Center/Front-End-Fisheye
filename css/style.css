@@ -104,7 +104,7 @@ a {
   margin-left: 100px;
 }
 
-.contact_button {
+.button {
   font-size: 20px;
   font-weight: bold;
   color: white;
@@ -117,7 +117,7 @@ a {
   cursor: pointer;
   transition: background ease 0.2s;
 }
-.contact_button:hover {
+.button:hover {
   background: #D3573C;
   transition: background ease 0.2s;
 }
