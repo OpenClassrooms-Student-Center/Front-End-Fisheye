@@ -78,6 +78,10 @@ async function init() {
     const { photographers, media } = await getPhotographers();
     const currentPhotographer = photographers.find(id => id.id == photographerId)
     const mediasOfPhotographer = media.filter(media => media.photographerId == photographerId)
+    // const mediasSortLikes = mediasOfPhotographer.sort((a, b) => (b.likes - a.likes));
+    // const mediasSortTitle = mediasOfPhotographer.sort((a, b) => (a.title - b.title));
+    // const mediasSortDate = mediasOfPhotographer.sort((a, b) => (b.date - a.date));
+    // console.log(mediasSortTitle);
 
     displayData(mediasOfPhotographer, currentPhotographer);
 
