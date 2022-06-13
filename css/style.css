@@ -1,4 +1,4 @@
-#contact_modal {
+.contact_modal {
   display: none;
   position: fixed;
   top: 0;
@@ -7,13 +7,18 @@
   height: 100%;
   background: rgba(100, 100, 100, 0.5);
   overflow: auto;
+  transition: opacity 0.3s;
+}
+
+.fade-out {
+  opacity: 0;
 }
 
 .modal {
   position: absolute;
-  top: 50%;
+  top: 100px;
   left: 50%;
-  transform: translate(-50%, -50%);
+  transform: translate(-50%);
   border-radius: 5px;
   background-color: #DB8876;
   width: 550px;
