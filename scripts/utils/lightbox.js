@@ -2,7 +2,7 @@ class Lightbox {
 
     static init() {
         const medias = Array.from(document.querySelectorAll('#medias_section img, #medias_section video'));
-        const gallery = medias.map(media => media.getAttribute('src'))
+        const gallery = medias.map(media => media.getAttribute('src'));
   
         medias.forEach(media => media.addEventListener('click', e => {
             const mediaURL = e.currentTarget.getAttribute('src');
@@ -24,10 +24,20 @@ class Lightbox {
     loadImage(url) {
         const container = this.divLightbox.querySelector('.lightbox__container');
         const image = document.createElement('img');
-
+        const video = document.createElement('video');
         container.innerHTML = '';
-        container.appendChild(image);
-        image.setAttribute("src", url);
+
+        if (url.endsWith('.jpg')){
+            container.appendChild(image);
+            image.setAttribute("src", url);
+            this.url = url;
+        } else if (url.endsWith('.mp4')){
+            container.appendChild(video);
+            video.setAttribute("src", url);
+            video.controls = true;
+            video.autoplay = true;
+            this.url = url;
+        }
     }
   
     keyboardAcces(e) {
@@ -49,7 +59,6 @@ class Lightbox {
     }
   
     next (e) {
-        this.url = document.querySelector('.lightbox__container img').getAttribute('src');
         let i = this.images.findIndex(image => image === this.url);
         if (i === this.images.length - 1) {
             i = -1
@@ -59,7 +68,6 @@ class Lightbox {
     }
   
     prev (e) {
-        this.url = document.querySelector('.lightbox__container img').getAttribute('src');
         let i = this.images.findIndex(image => image === this.url);
         if (i === 0) {
             i = this.images.length;
@@ -79,5 +87,4 @@ class Lightbox {
         this.divLightbox.querySelector('.lightbox__next').addEventListener('click', this.next.bind(this));
         this.divLightbox.querySelector('.lightbox__prev').addEventListener('click', this.prev.bind(this));
     }
-  
-  }  
+}  

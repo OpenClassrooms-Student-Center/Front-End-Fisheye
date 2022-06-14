@@ -27,7 +27,22 @@
     }
 }
 
+.sort_list {
+    margin: 50px 100px 0 100px;
 
+    option, select {
+        font-size: 16px;
+        font-weight: bold;
+        color: white;
+        padding: 2px;
+        width: 170px;
+        height: 50px;
+        border: none;
+        background: $color-primary-dark;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+}
 
 #medias_section {
     @include flex-sc;
@@ -36,13 +51,16 @@
 
     figure {
         margin: 20px;
+        position: relative;
     }
     figure img, figure video {
         height: 265px;
         width: 300px;
         border-radius: 5px;
         object-fit: cover;
+        cursor: pointer;
     }
+
     figcaption {
         @include flex-sb;
         font-size: 20px;

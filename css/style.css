@@ -146,7 +146,7 @@ form textarea {
   margin-right: 50px;
   min-height: 100vh;
 }
-.lightbox__container img {
+.lightbox__container img, .lightbox__container video {
   max-width: 100%;
   max-height: 95vh;
   animation: lightboxIn 0.5s;
@@ -266,6 +266,22 @@ a {
   margin-left: 200px;
 }
 
+.sort_list {
+  margin: 50px 100px 0 100px;
+}
+.sort_list option, .sort_list select {
+  font-size: 16px;
+  font-weight: bold;
+  color: white;
+  padding: 2px;
+  width: 170px;
+  height: 50px;
+  border: none;
+  background: #901C1C;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
 #medias_section {
   display: flex;
   justify-content: space-between;
@@ -275,12 +291,14 @@ a {
 }
 #medias_section figure {
   margin: 20px;
+  position: relative;
 }
 #medias_section figure img, #medias_section figure video {
   height: 265px;
   width: 300px;
   border-radius: 5px;
   object-fit: cover;
+  cursor: pointer;
 }
 #medias_section figcaption {
   display: flex;

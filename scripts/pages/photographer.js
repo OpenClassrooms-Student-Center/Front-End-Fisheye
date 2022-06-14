@@ -48,6 +48,18 @@ async function displayData(medias, photographer) {
     //Insert photographer's name in contact modal
     const modalH2 = document.querySelector(".modal h2");
     modalH2.insertAdjacentHTML('beforeend', '<br/>' + photographerName);
+
+    //Create sort list
+    const divSortList = document.createElement('div');
+    divSortList.classList.add('sort_list');
+    divSortList.innerHTML = 
+        `<label for="sort_list--select">Trier par</label>
+        <select name="sort_list" id="sort_list--select">
+        <option value="popular">Popularité</option>
+        <option value="date">Date</option>
+        <option value="title">Titre</option>
+        </select>`;
+        document.querySelector('#main').insertBefore(divSortList, mediasSection)
 };
 
 //Like btn incrementation
@@ -77,7 +89,8 @@ async function init() {
     //Get data for photographers and media
     const { photographers, media } = await getPhotographers();
     const currentPhotographer = photographers.find(id => id.id == photographerId)
-    const mediasOfPhotographer = media.filter(media => media.photographerId == photographerId)
+    let mediasOfPhotographer = media.filter(media => media.photographerId == photographerId)
+    mediasOfPhotographer = mediasOfPhotographer.sort((a, b) => (b.likes - a.likes));
     // const mediasSortLikes = mediasOfPhotographer.sort((a, b) => (b.likes - a.likes));
     // const mediasSortTitle = mediasOfPhotographer.sort((a, b) => (a.title - b.title));
     // const mediasSortDate = mediasOfPhotographer.sort((a, b) => (b.date - a.date));
