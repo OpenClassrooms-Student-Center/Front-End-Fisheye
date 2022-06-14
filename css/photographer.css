@@ -171,6 +171,15 @@ header a {
     cursor: pointer;
 }
 
+.portfolio article > div{
+    width: 350px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 0px;
+    font-size: 20px;
+}
+
 .portfolio article div span{
     color: #901C1C;
 }
@@ -262,10 +271,25 @@ form div {
     margin-bottom: 26px;
 }
 
-form input {
+form input, textarea {
+    font-family: inherit;
+    font-size: 32px;
+    padding: 0px 10px;
     width: 100%;
     height: 68px;
     border: none;
     border-radius: 5px;
+    box-sizing: border-box;
 }
+
+form input::placeholder, 
+form textarea::placeholder {
+    color: rgba(0, 0, 0, 0.2);
+}
+
+form textarea {
+    height: 150px;
+    padding: 10px;
+}
+
 

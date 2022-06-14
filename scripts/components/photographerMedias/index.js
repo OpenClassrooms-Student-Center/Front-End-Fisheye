@@ -37,6 +37,7 @@ export class MediaImg {
   }
   buildMediaCard() {
     const pictureLink = `assets/images/${this.photographeName}/${this.image}`;
+    console.log("this ID ==== ", this.id);
 
     const article = document.createElement("article");
     article.classList = "mediaBox";
