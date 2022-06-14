@@ -1,7 +1,7 @@
 export default class Modal {
   constructor(data) {
     this._name = data;
-    this.modal = document.getElementById('contact_modal');
+    this.modal = document.querySelector('#contact_modal');
     this.body = document.querySelector('body');
     this._handlerCloseModal = this.closeModal.bind(this);
     this._handlerKeyclose = this.keyClose.bind(this);
@@ -14,7 +14,7 @@ export default class Modal {
 
   submitModal(e) {
     e.preventDefault();
-    const form = this.modal.querySelector('form');
+    const form = e.currentTarget;
     const inputs = form.querySelectorAll('.text');
     inputs.forEach((input) => {
       console.log(input.value);
@@ -34,7 +34,7 @@ export default class Modal {
     this.modal.ariaHidden = 'false';
     this.body.style.overflow = 'hidden';
     const iconClose = document.querySelector('.modal header img');
-    this._form.addEventListener('submit', this.submitModal);
+    this._form.addEventListener('submit', this.submitModal.bind(this));
     iconClose.addEventListener('click', this._handlerCloseModal);
     document.addEventListener('keydown', this._handlerKeyclose);
   }
@@ -42,7 +42,7 @@ export default class Modal {
   closeModal() {
     this.modal.ariaHidden = 'true';
     this.modal.style.display = 'none';
-    this._form.removeEventListener('submit', this.submitModal);
+    this._form.removeEventListener('submit', this.submitModal.bind(this));
     document.removeEventListener('keydown', this._handlerKeyclose);
     const iconClose = document.querySelector('.modal header img');
     iconClose.removeEventListener('click', this._handlerCloseModal);

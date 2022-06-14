@@ -1,7 +1,7 @@
 import getSelectedSort from '../functions/getSelectedSort.js';
-import hydratePhotoFactory from '../factories/photo.js';
+import photoFactory from '../factories/photo.js';
 import sliderModal from '../model/slider.js';
-import createPhotoCard from '../templates/Card.js';
+import createCard from '../templates/Card.js';
 import Presentation from '../model/presentation.js';
 import Modal from '../model/Modal.js';
 import presentationTemplate from '../templates/presentationTemplate.js';
@@ -37,7 +37,7 @@ async function getPhotos(photographerId) {
       const mediaPage = data.photographers.filter(
         (photographer) => photographer.id === parseInt(photographerId, 10),
       );
-      const medias = dataMedias.map((media) => hydratePhotoFactory(media, mediaPage[0].name));
+      const medias = dataMedias.map((media) => photoFactory(media, mediaPage[0].name));
       return [medias, mediaPage[0].name, mediaPage[0].price];
     })
     .then((data) => {
@@ -50,7 +50,7 @@ async function getPhotos(photographerId) {
       sortMedia.forEach((media) => {
         const card = document.createElement('article');
         card.classList.add('cardMedia');
-        card.innerHTML = createPhotoCard(media, name);
+        card.innerHTML = createCard(media, name);
         const cardMedia = container.appendChild(card);
 
         const img = cardMedia.querySelector('.photo');
@@ -66,10 +66,10 @@ async function getPhotos(photographerId) {
       sumLikes.innerHTML = totalLikes(sortMedia);
       const pricePerDay = document.querySelector('.totalLikes__price');
       pricePerDay.innerHTML = `${price} /jour`;
+
       const modalContainer = document.getElementById('contact_modal');
       const modal = document.createElement('div');
       modalContainer.appendChild(modal);
-
       modal.outerHTML = modalTemplate(name);
       const modalData = new Modal(name);
       const contactButton = document.querySelector('.contact_button');
