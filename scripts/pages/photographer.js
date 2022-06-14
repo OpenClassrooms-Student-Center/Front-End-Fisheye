@@ -45,7 +45,7 @@ async function displayData(medias, photographer) {
     divLikesPrice.innerHTML = `<span class="likes-count">${likesCount}</span><i class="fa-solid fa-heart"></i><span>${photographerInfo.price}€ / jour</span>`;
     mediasSection.appendChild(divLikesPrice);
 
-    //Insert photographer's name in modale
+    //Insert photographer's name in contact modal
     const modalH2 = document.querySelector(".modal h2");
     modalH2.insertAdjacentHTML('beforeend', '<br/>' + photographerName);
 };
@@ -86,6 +86,8 @@ async function init() {
     displayData(mediasOfPhotographer, currentPhotographer);
 
     likesClick();
+
+    Lightbox.init()
 };
 
 init();
