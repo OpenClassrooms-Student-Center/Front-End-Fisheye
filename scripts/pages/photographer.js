@@ -1,4 +1,5 @@
 import { URL } from "../../constants/index.js";
+import { AsideLikes } from "../components/asideLikes/index.js";
 import { PhotographerProfilHeader } from "../components/photographerProfile/index.js";
 import { MediasFactory } from "../factories/photographerMediaFactory.js";
 import { getData } from "../services/getData.js";
@@ -10,7 +11,7 @@ const { photographers } = data;
 const currentPhotographer = photographers.find(
   (photographer) => photographer.id === id
 );
-console.log("ID => ", id);
+// console.log("ID => ", id);
 
 export const PhotographerProfil = async (data, id) => {
   console.log("CurrentPhotgrapher => ", currentPhotographer);
@@ -24,27 +25,35 @@ export const PhotographerProfil = async (data, id) => {
   sectionHeaderPhotographer.innerHTML =
     photographeCardHeader.createUserProfil();
 
-  console.log(" headerCard => ", photographeCardHeader.createUserProfil());
+  // console.log(" headerCard => ", photographeCardHeader.createUserProfil());
 };
 
-const generatePhotographerMedias = (currentMedias, currentPhotographer) => {
-  const portfolioBlock = document.querySelector(".portfolio");
-  portfolioBlock.innerHTML = "";
-  currentMedias.forEach((media) => {
-    const photoCardDOM = new MediasFactory(media, currentPhotographer.name);
-    portfolioBlock.appendChild(photoCardDOM.buildMediaCard());
-    individualLikesCount(media);
+/**
+ *
+ */
+const implementTotalLikes = () => {
+  const globalLikes = document.querySelector(".globalLikes");
+  const mediaLikes = document.querySelectorAll(".likes");
+  let likes = 0;
+  mediaLikes.forEach((element) => {
+    console.log("element ==> ", element);
+    likes = likes + parseInt(element.innerText);
+    console.log("element likes  ==> ", likes);
   });
+  globalLikes.innerText = likes;
 };
 
-function individualLikesCount(media) {
-  console.log("MEDIAAAAA ", media);
+/**
+ * Get the likes for each media of the currentPhotographer
+ * @param {Single media} media
+ */
+const individualLikesCount = (media) => {
   const likeButton = document.getElementById(media.id);
-  console.log("likeButton:::>", likeButton);
+  console.log("media liked :::>", media);
   if (media.liked === "true") {
     likeButton.checked = true;
   }
-  let nbLikes = parseFloat(media.likes);
+  let nbLikes = parseInt(media.likes);
 
   // Keyboard event
   likeButton.parentElement.addEventListener("keydown", (e) => {
@@ -67,9 +76,27 @@ function individualLikesCount(media) {
     // redefine the number of media likes
     media.likes = nbLikes;
     likeButton.parentElement.previousElementSibling.textContent = nbLikes;
-    this.implementTotalLikes();
+    implementTotalLikes();
   });
-}
+};
+
+const displayGlobalLikes = () => {
+  const { media: medias } = data;
+  const main = document.getElementById("main");
+  const globalCount = new AsideLikes(medias, currentPhotographer);
+  main.appendChild(globalCount.createAsideLikes());
+};
+
+const generatePhotographerMedias = (currentMedias, currentPhotographer) => {
+  const portfolioBlock = document.querySelector(".portfolio");
+  portfolioBlock.innerHTML = "";
+  currentMedias.forEach((media) => {
+    const photoCardDOM = new MediasFactory(media, currentPhotographer.name);
+    portfolioBlock.appendChild(photoCardDOM.buildMediaCard());
+    individualLikesCount(media);
+    displayGlobalLikes();
+  });
+};
 
 const initMedias = async () => {
   const { media: medias } = data;
