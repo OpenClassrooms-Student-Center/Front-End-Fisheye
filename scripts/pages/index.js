@@ -19,9 +19,7 @@
                 if (photographer.id == idphotograph) {
                   const TemplateProfile = new PhotographerProfile(photographer);
                   this.$photographerWrapperProfile.appendChild(TemplateProfile.createPhotographerProfile());
-                } else if (photographer.id == idphotograph) {
-                 
-                }
+                } 
               });
             } else {
               photographersData.forEach((photographer) => {
