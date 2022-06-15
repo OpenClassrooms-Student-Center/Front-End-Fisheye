@@ -127,9 +127,9 @@ setTimeout(function () {
       const dom = document.createElement("div");
       dom.classList.add("lightbox");
       dom.innerHTML = `
-       <button class="lightbox_close">Fermer</button>
-       <button class="lightbox_next">Suivant</button>
-       <button class="lightbox_prev">Précédent</button>
+       <button aria-label="Fermer la lightbox" title="Fermer" class="lightbox_close">Fermer</button>
+       <button aria-label="Media suivant" title="Fleche suivante" class="lightbox_next">Suivant</button>
+       <button aria-label="Media précédent" title="Fleche précédente" class="lightbox_prev">Précédent</button>
        <div class="lightbox_container">
          <img src="${url}" alt="#">
        </div>

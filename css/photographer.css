@@ -76,6 +76,14 @@ main {
   border: none;
   border-radius: 5px;
 }
+.closeModal{
+  border: none;
+  background: url(/assets/icons/close.svg) center center / 50px 50px no-repeat;
+  width: 50px;
+  height: 100%;
+  
+  cursor: pointer;
+}
 form {
   display: flex;
   width: 100%;
@@ -163,6 +171,7 @@ form input {
 }
 .media_infos p {
   margin: 0;
+  display: flex;
 }
 .media_infos p:first-child {
   white-space: nowrap;
@@ -179,6 +188,14 @@ form input {
 }
 .media_infos .date{
   display: none;
+}
+
+.likeBtn{
+  border: none;
+  background: url(/assets/icons/heart.svg) center center / 25px 25px no-repeat;
+  height: 100%;
+  width: 25px;
+  cursor: pointer;
 }
 .price {
   position: fixed;
@@ -218,7 +235,7 @@ form input {
 .lightbox_next,
 .lightbox_prev {
   border: none;
-  background: url(/assets/icons/arrow.svg) center center / 16px 28px no-repeat;
+  background: url(/assets/icons/arrow.svg) center center / 50px 45px no-repeat;
   width: 50px;
   height: 100%;
   position: fixed;
@@ -227,6 +244,7 @@ form input {
   margin-top: 14px;
   z-index: 11;
   cursor: pointer;
+  color: #901C1C;
 }
 
 .lightbox_prev {
@@ -247,7 +265,7 @@ form input {
   z-index: 12;
 }
 .lightbox button {
-  opacity: 0.5;
+  opacity: 0.8;
   cursor: pointer;
   transition: opacity 0.3s;
   text-indent: -5000px;
@@ -267,7 +285,6 @@ form input {
   align-items: center;
   justify-content: center;
   margin-left: 50px;
-  margin-top: 50px;
   min-height: 100vh;
 }
 

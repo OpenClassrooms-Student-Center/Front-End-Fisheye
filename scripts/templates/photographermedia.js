@@ -25,7 +25,7 @@ class PhotographerMedia {
             <p id="title">${this._media.title}</p>
             <p id="like"><span id="likeNmbr"> ${
               this._media.likes
-            }</span><i id="btnLike" class="fa-solid fa-heart"></i></p>
+            }</span><button class="likeBtn" aria-label="Bouton aimer le média" title="Bouton j'aime" id="btnLike" class="fa-solid fa-heart"></button></p>
             <p id="date" class="date">${this._media.date}</p>
             </div>
             
