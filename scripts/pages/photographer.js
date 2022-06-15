@@ -18,48 +18,13 @@ async function getPhotographers() {
         });
 }
 
-async function displayData(medias, photographer) {
-    const photographHeader = document.querySelector(".photograph-header");
-    const mediasSection = document.querySelector("#medias_section");
-    let likesCount = 0;
-
-    //Create section for each media in DOM
-    medias.forEach((media) => {
-        const photographerMedia = new MediaFactory(media, photographer);
-        const mediaCardDOM = photographerMedia.getMediaCardDOM();
-        mediasSection.appendChild(mediaCardDOM.figure);
-
-        likesCount += photographerMedia.likes;
-    });
-
-    //Create the header of photographer's informations
-    const photographerInfo = new PhotographerFactory(photographer);
-    const {photographerPic, photographerName, divPhotographerInfos} = photographerInfo.getPhotographerInfos();
-    photographerPic.setAttribute("alt", photographerName);
-    photographHeader.appendChild(photographerPic);
-    photographHeader.insertBefore(divPhotographerInfos, photographHeader.firstChild);
-
-    //Create card of likes count and price
-    const divLikesPrice = document.createElement('div');
-    divLikesPrice.classList.add('likes-price');
-    divLikesPrice.innerHTML = `<span class="likes-count">${likesCount}</span><i class="fa-solid fa-heart"></i><span>${photographerInfo.price}€ / jour</span>`;
-    mediasSection.appendChild(divLikesPrice);
-
-    //Insert photographer's name in contact modal
-    const modalH2 = document.querySelector(".modal h2");
-    modalH2.insertAdjacentHTML('beforeend', '<br/>' + photographerName);
-
-    //Create sort list
-    const divSortList = document.createElement('div');
-    divSortList.classList.add('sort_list');
-    divSortList.innerHTML = 
-        `<label for="sort_list--select">Trier par</label>
-        <select name="sort_list" id="sort_list--select">
-        <option value="popular">Popularité</option>
-        <option value="date">Date</option>
-        <option value="title">Titre</option>
-        </select>`;
-        document.querySelector('#main').insertBefore(divSortList, mediasSection)
+async function displayData(currentMedias, currentPhotographer) {
+   
+    MediaFactory.createMediaCard(currentMedias, currentPhotographer);
+    MediaFactory.createPhotographerHeader();
+    MediaFactory.createLikesCountCard();
+    MediaFactory.displayNameInModal();
+    MediaFactory.createSortList();
 };
 
 //Like btn incrementation
@@ -89,18 +54,37 @@ async function init() {
     //Get data for photographers and media
     const { photographers, media } = await getPhotographers();
     const currentPhotographer = photographers.find(id => id.id == photographerId)
-    let mediasOfPhotographer = media.filter(media => media.photographerId == photographerId)
-    mediasOfPhotographer = mediasOfPhotographer.sort((a, b) => (b.likes - a.likes));
-    // const mediasSortLikes = mediasOfPhotographer.sort((a, b) => (b.likes - a.likes));
-    // const mediasSortTitle = mediasOfPhotographer.sort((a, b) => (a.title - b.title));
-    // const mediasSortDate = mediasOfPhotographer.sort((a, b) => (b.date - a.date));
-    // console.log(mediasSortTitle);
+    const mediasOfPhotographer = media.filter(media => media.photographerId == photographerId)
+    
+    const mediasSortLikes = mediasOfPhotographer.sort((a, b) => (b.likes - a.likes));
+    const mediasSortTitle = mediasOfPhotographer.sort((a, b) => (a.title.localeCompare(b.title)));
+    const mediaSortDate = mediasOfPhotographer.sort((a, b) => (b.date.localeCompare(a.date)));
 
-    displayData(mediasOfPhotographer, currentPhotographer);
+    let currentMedias = mediasSortLikes;
+    // const selectElement = document.querySelector('.sort_list--select');
+    // selectElement.addEventListener('change', (event) => {
+    //     switch (event.target.value) {
+    //         case 'popular':
+    //             currentMedias = mediasSortLikes;
+    //             break;
+    //         case 'date':
+    //             currentMedias = mediaSortDate;
+    //             break;
+    //         case 'title':
+    //             currentMedias = mediasSortTitle;
+    //             break;
+    //         default:
+    //         currentMedias = mediasSortLikes;
+    //         break;
+    //     }
+    // });
+
+    displayData(currentMedias, currentPhotographer);
 
     likesClick();
 
     Lightbox.init()
+
 };
 
 init();

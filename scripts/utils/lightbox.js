@@ -50,7 +50,7 @@ class Lightbox {
         }
     }
   
-    close (e) {
+    close() {
         this.divLightbox.classList.add('fade-out');
         window.setTimeout(() => {
             this.divLightbox.parentElement.removeChild(this.divLightbox);
@@ -58,7 +58,7 @@ class Lightbox {
         document.removeEventListener('keyup', this.keyboardAcces);
     }
   
-    next (e) {
+    next() {
         let i = this.images.findIndex(image => image === this.url);
         if (i === this.images.length - 1) {
             i = -1
@@ -67,7 +67,7 @@ class Lightbox {
         this.loadImage(this.images[i]);
     }
   
-    prev (e) {
+    prev() {
         let i = this.images.findIndex(image => image === this.url);
         if (i === 0) {
             i = this.images.length;
@@ -76,7 +76,7 @@ class Lightbox {
         this.loadImage(this.images[i]);
     }
   
-    buildDOM () {
+    buildDOM() {
         this.divLightbox = document.createElement('div');
         this.divLightbox.classList.add('lightbox');
         this.divLightbox.innerHTML = `<button class="lightbox__close" aria-label="Fermer la visionneuse"></button>

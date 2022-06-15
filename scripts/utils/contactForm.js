@@ -1,4 +1,3 @@
-// DOM elements
 const modal = document.querySelector(".contact_modal");
 
 document.querySelector(".contact_form").addEventListener("click", displayModal);
