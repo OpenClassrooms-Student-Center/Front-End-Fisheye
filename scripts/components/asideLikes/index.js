@@ -12,9 +12,13 @@ export class AsideLikes {
 
     const contentAside = `        
             <div>
-                <span class="globalLikes">${likes}</span>
+            <div class="rowLikes">
+             <span class="globalLikes">${likes}</span>
+             <i class="fas fa-heart"></i>
+            </div>
+               
                 <div class="countLikes">
-                    <i class="fas fa-heart"></i>
+                   
                     <span>${this.photographerProfil.price}€ / jour</span>                      
                 </div>
             </div>`;
