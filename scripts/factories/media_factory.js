@@ -1,19 +1,17 @@
 class MediaFactory {
 
     constructor(mediaData, photographerData) {
-    // const { likes, title, image, video } = mediaData;
-    this.likes = mediaData.likes;
-    this.image = mediaData.image;
-    this.title = mediaData.title;
-    this.video = mediaData.video;
-    this.mediaData = mediaData;
-    // const { name } = photographerData;
-    this.name = photographerData.name;
+        this.mediaData = mediaData;
+        this.likes = mediaData.likes;
+        this.image = mediaData.image;
+        this.title = mediaData.title;
+        this.video = mediaData.video;
+        this.name = photographerData.name;
 
-    //Get first name to access picture folder
-    const nameOfPhotographer = this.name.split(' ');
-    const pathName = nameOfPhotographer[0].replace('-',' ');
-    this.mediaPath = `assets/photographers/${pathName}/${!!this.image ? this.image : this.video}`;
+        //Get first name to access medias folder
+        const nameOfPhotographer = this.name.split(' ');
+        const pathName = nameOfPhotographer[0].replace('-',' ');
+        this.mediaPath = `assets/photographers/${pathName}/${!!this.image ? this.image : this.video}`;
     }
     
     getMediaCardDOM() {
@@ -43,8 +41,7 @@ class MediaFactory {
         divLikes.appendChild(likesNb);
         divLikes.appendChild(heart);
 
-        const likes = this.likes;
-        return {figure, likes};
+        return {figure};
     }
 
     static createMediaCard(currentMedias, currentPhotographer) {
@@ -94,15 +91,40 @@ class MediaFactory {
 
     static createSortList() {
         //Create sort list
-        const divSortList = document.createElement('div');
-        divSortList.classList.add('sort_list');
-        divSortList.innerHTML = 
-            `<label for="sort_list--select">Trier par
-            <select name="sort_list" class="sort_list--select">
-            <option value="popular">Popularité</option>
-            <option value="date">Date</option>
-            <option value="title">Titre</option>
-            </select></label>`;
-            document.querySelector('#main').insertBefore(divSortList, this.mediasSection)
+        this.divSortList = document.createElement('div');
+        this.divSortList.classList.add('sort_list');
+        this.divSortList.innerHTML = 
+           `<p class="selected">Populaire<i class="fas fa-chevron-down"></i></p>
+           <div class="options hidden">  
+               <p class="optDate">Date</p>
+               <p class="optTitle">Titre</p>
+           </div>`;
+        document.querySelector('#main').insertBefore(this.divSortList, this.mediasSection);
+    }
+    
+    static manageSortList(opt){
+        this.divSortList.innerHTML = " ";
+        if (opt == 'popular') {
+            this.divSortList.innerHTML = 
+           `<p class="selected">Populaire<i class="fas fa-chevron-down"></i></p>
+           <div class="options hidden">  
+               <p class="optDate">Date</p>
+               <p class="optTitle">Titre</p>
+           </div>`;
+       } else if (opt == 'date') {
+           this.divSortList.innerHTML = 
+           `<p class="selected">Date<i class="fas fa-chevron-down"></i></p>
+           <div class="options hidden">  
+               <p class="optPopular">Populaire</p>
+               <p class="optTitle">Titre</p>
+           </div>`;
+       } else if (opt == 'title') {
+           this.divSortList.innerHTML = 
+           `<p class="selected">Titre<i class="fas fa-chevron-down"></i></p>
+           <div class="options hidden">  
+               <p class="optPopular">Populaire</p>
+               <p class="optDate">Date</p>
+           </div>`;
+       }
     }
 }

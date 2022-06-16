@@ -35,13 +35,18 @@
         font-weight: bold;
         color: white;
         padding: 2px;
-        width: 170px;
-        height: 50px;
+        width: 130px;
+        height: 30px;
         border: none;
         background: $color-primary-dark;
         border-radius: 5px;
         cursor: pointer;
+        outline: none;
     }
+}
+
+.hidden {
+    display: none;
 }
 
 #medias_section {
