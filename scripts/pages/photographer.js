@@ -82,8 +82,9 @@ const individualLikesCount = (media) => {
 
 const displayGlobalLikes = () => {
   const { media: medias } = data;
+  const currentMedias = medias.filter((media) => media.photographerId === id);
   const main = document.getElementById("main");
-  const globalCount = new AsideLikes(medias, currentPhotographer);
+  const globalCount = new AsideLikes(currentMedias, currentPhotographer);
   main.appendChild(globalCount.createAsideLikes());
 };
 
