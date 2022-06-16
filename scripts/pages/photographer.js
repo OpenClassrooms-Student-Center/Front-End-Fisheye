@@ -40,6 +40,7 @@ const implementTotalLikes = () => {
     likes = likes + parseInt(element.innerText);
     console.log("element likes  ==> ", likes);
   });
+  console.log("global likes ::: ", globalLikes);
   globalLikes.innerText = likes;
 };
 
@@ -95,17 +96,15 @@ const generatePhotographerMedias = (currentMedias, currentPhotographer) => {
     const photoCardDOM = new MediasFactory(media, currentPhotographer.name);
     portfolioBlock.appendChild(photoCardDOM.buildMediaCard());
     individualLikesCount(media);
-    displayGlobalLikes();
   });
 };
 
 const initMedias = async () => {
   const { media: medias } = data;
-  PhotographerProfil(data, id);
-
   const currentMedias = medias.filter((media) => media.photographerId === id);
-  // console.log("currentMedias ::> ", currentMedias);
+  PhotographerProfil(data, id);
   generatePhotographerMedias(currentMedias, currentPhotographer);
+  displayGlobalLikes();
 };
 
 initMedias();
