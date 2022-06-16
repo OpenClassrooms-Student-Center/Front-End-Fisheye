@@ -1,7 +1,5 @@
 import getSelectedSort from '../functions/getSelectedSort.js';
 import mediaFactory from '../factories/media.js';
-import sliderModal from '../model/slider.js';
-// import createCard from '../templates/Card.js';
 import Presentation from '../model/presentation.js';
 import Modal from '../model/Modal.js';
 import presentationTemplate from '../templates/presentationTemplate.js';
@@ -37,39 +35,11 @@ async function getPhotos(photographerId) {
       const mediaPage = data.photographers.filter(
         (photographer) => photographer.id === parseInt(photographerId, 10),
       );
-      const container = document.querySelector('.photo-field');
-      const medias = dataMedias.map((dataMedia) => {
-        const media = mediaFactory(dataMedia, mediaPage[0].name);
-        media.createCard(media, container);
-        // const card = container.appendChild(media.createCard(media, container));
-        // const like = card.querySelector('.photo__likes');
-        // like.addEventListener('click', (e) => media.elt.toggleLike(e));
-        return media;
-      });
-      return [medias, mediaPage[0].name, mediaPage[0].price];
-    })
-    .then((data) => {
-      const photosId = data[0];
-      const name = data[1];
-      const price = data[2];
-      const sortMedia = getSelectedSort(photosId);
+      const medias = dataMedias.map((dataMedia) => mediaFactory(dataMedia, mediaPage[0].name));
+      const name = mediaPage[0][0];
+      const price = mediaPage[0][3];
+      const sortMedia = getSelectedSort(medias);
 
-      const container = document.querySelector('.photo-field');
-      sortMedia.forEach((media) => {
-        // const card = document.createElement('article');
-        // card.classList.add('cardMedia');
-        // card.innerHTML = createCard(media, name);
-        // const cardMedia = container.appendChild(card);
-
-        // const img = cardMedia.querySelector('.photo');
-        // img.addEventListener('click', () => sliderModal(media, sortMedia, name));
-        // document.addEventListener('keydown', (e) => {
-        //   if (e.code === 'Enter' && e.target === img) { sliderModal(media, sortMedia, name); }
-        // });
-
-        // const like = cardMedia.querySelector('.photo__likes');
-        // like.addEventListener('click', (e) => media.toggleLike(e));
-      });
       const sumLikes = document.querySelector('.totalLikes__likes');
       sumLikes.innerHTML = totalLikes(sortMedia);
       const pricePerDay = document.querySelector('.totalLikes__price');

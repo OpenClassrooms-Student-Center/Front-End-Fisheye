@@ -1,5 +1,5 @@
-import createPhotoCard from '../templates/Card.js';
-import sliderModal from '../model/slider.js';
+// import createPhotoCard from '../templates/Card.js';
+// import sliderModal from '../model/slider.js';
 
 export default function getSelectedSort(data) {
   const sortMedia = [...data];
@@ -14,18 +14,18 @@ export default function getSelectedSort(data) {
   let toggleIndex;
 
   function sortlikes() {
-    sortMedia.sort((a, b) => b.likes - a.likes);
+    sortMedia.sort((a, b) => b.elt.likes - a.elt.likes);
   }
 
   function sortDate() {
-    sortMedia.sort((a, b) => new Date(a._date) - new Date(b._date));
+    sortMedia.sort((a, b) => new Date(a.elt._date) - new Date(b.elt._date));
   }
 
   function sortTitle() {
     sortMedia.sort((a, b) => {
-      if (a.title.toLowerCase() < b.title.toLowerCase()) {
+      if (a.elt.title.toLowerCase() < b.elt.title.toLowerCase()) {
         return -1;
-      } if (a.title.toLowerCase() > b.title.toLowerCase()) {
+      } if (a.elt.title.toLowerCase() > b.elt.title.toLowerCase()) {
         return 1;
       }
       return null;
@@ -35,18 +35,11 @@ export default function getSelectedSort(data) {
   function createCardsMedia() {
     const cardContainer = document.querySelector('.photo-field');
     cardContainer.innerHTML = '';
-
     sortMedia.forEach((media) => {
-      const card = document.createElement('article');
-      card.classList.add('cardMedia');
-      card.innerHTML = createPhotoCard(media);
-      const eltCard = cardContainer.appendChild(card);
-      const elt = eltCard.querySelector('.photo');
-      elt.addEventListener('click', () => sliderModal(media, sortMedia));
-      const like = eltCard.querySelector('.photo__likes');
-      like.addEventListener('click', (e) => media.toggleLike(e));
+      media.createCard(media, cardContainer, sortMedia);
     });
   }
+  createCardsMedia();
 
   function dropDown() {
     if (!toggleIndex) {

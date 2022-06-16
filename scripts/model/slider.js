@@ -9,13 +9,13 @@ export default function sliderModal(firstMedia, sortMedia) {
   sortMedia.forEach((media, index) => {
     const slide = document.createElement('article');
     slide.classList.add('slide');
-    if (media.tag === 'video') {
-      slide.innerHTML = sliderVideo(media);
-    } else if (media.tag === 'img') {
-      slide.innerHTML = sliderPhoto(media);
+    if (media.elt.tag === 'video') {
+      slide.innerHTML = sliderVideo(media.elt);
+    } else if (media.elt.tag === 'img') {
+      slide.innerHTML = sliderPhoto(media.elt);
     }
 
-    if (firstMedia.id === media.id) {
+    if (firstMedia.id === media.elt.id) {
       n = index;
     }
 
