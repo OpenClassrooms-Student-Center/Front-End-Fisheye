@@ -7,6 +7,7 @@ export default class Media {
     this._id = media.id;
     this._date = media.date;
     this._userLike = false;
+    this.toggleLike = this.toggleLike.bind(this);
   }
 
   get pathName() {

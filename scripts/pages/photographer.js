@@ -1,7 +1,7 @@
 import getSelectedSort from '../functions/getSelectedSort.js';
 import mediaFactory from '../factories/media.js';
 import sliderModal from '../model/slider.js';
-import createCard from '../templates/Card.js';
+// import createCard from '../templates/Card.js';
 import Presentation from '../model/presentation.js';
 import Modal from '../model/Modal.js';
 import presentationTemplate from '../templates/presentationTemplate.js';
@@ -38,11 +38,13 @@ async function getPhotos(photographerId) {
         (photographer) => photographer.id === parseInt(photographerId, 10),
       );
       const container = document.querySelector('.photo-field');
-      const medias = dataMedias.map((media) => {
-        const card = mediaFactory(media, mediaPage[0].name);
-        container.appendChild(card.createCard(card.elt));
-
-        return card;
+      const medias = dataMedias.map((dataMedia) => {
+        const media = mediaFactory(dataMedia, mediaPage[0].name);
+        media.createCard(media, container);
+        // const card = container.appendChild(media.createCard(media, container));
+        // const like = card.querySelector('.photo__likes');
+        // like.addEventListener('click', (e) => media.elt.toggleLike(e));
+        return media;
       });
       return [medias, mediaPage[0].name, mediaPage[0].price];
     })
@@ -65,8 +67,8 @@ async function getPhotos(photographerId) {
         //   if (e.code === 'Enter' && e.target === img) { sliderModal(media, sortMedia, name); }
         // });
 
-        const like = cardMedia.querySelector('.photo__likes');
-        like.addEventListener('click', (e) => media.toggleLike(e));
+        // const like = cardMedia.querySelector('.photo__likes');
+        // like.addEventListener('click', (e) => media.toggleLike(e));
       });
       const sumLikes = document.querySelector('.totalLikes__likes');
       sumLikes.innerHTML = totalLikes(sortMedia);
