@@ -1,5 +1,6 @@
 import { URL } from "../../constants/index.js";
 import { AsideLikes } from "../components/asideLikes/index.js";
+import { Filter } from "../components/filter/index.js";
 import { PhotographerProfilHeader } from "../components/photographerProfile/index.js";
 import { MediasFactory } from "../factories/photographerMediaFactory.js";
 import { getData } from "../services/getData.js";
@@ -12,8 +13,7 @@ const currentPhotographer = photographers.find(
   (photographer) => photographer.id === id
 );
 // console.log("ID => ", id);
-
-export const PhotographerProfil = async (data, id) => {
+const PhotographerProfil = async (data, id) => {
   console.log("CurrentPhotgrapher => ", currentPhotographer);
   const sectionHeaderPhotographer = document.querySelector(
     ".section-photographe"
@@ -24,8 +24,12 @@ export const PhotographerProfil = async (data, id) => {
 
   sectionHeaderPhotographer.innerHTML =
     photographeCardHeader.createUserProfil();
+};
 
-  // console.log(" headerCard => ", photographeCardHeader.createUserProfil());
+const generateMediaFilter = () => {
+  const section = document.querySelector(".filter");
+  const mediaFilter = new Filter();
+  section.innerHTML = mediaFilter.createDropListFilter();
 };
 
 /**
@@ -102,7 +106,9 @@ const generatePhotographerMedias = (currentMedias, currentPhotographer) => {
 const initMedias = async () => {
   const { media: medias } = data;
   const currentMedias = medias.filter((media) => media.photographerId === id);
+
   PhotographerProfil(data, id);
+  generateMediaFilter();
   generatePhotographerMedias(currentMedias, currentPhotographer);
   displayGlobalLikes();
 };
