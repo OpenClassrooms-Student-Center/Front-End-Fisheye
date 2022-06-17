@@ -1,15 +1,16 @@
+
 /**
  * @property {HTMlElement} element
  */
 class Lightbox{
-
+  
    static init () {
-        
-        const links = document.getElementById('element_of_photographer').querySelectorAll('a[href$=".jpg"], a[href$=".mp4"]')
+        const links = document.querySelectorAll('a[href$=".jpg"], a[href$=".mp4"]')
         .forEach(link => link.addEventListener('click', e => 
         {
             e.preventDefault()
             new Lightbox(e.currentTarget.getAttribute('href') )
+            
         }))
 
     }
@@ -42,6 +43,7 @@ class Lightbox{
         container.appendChild(image)
       }
       image.src = url
+      console.log(url);
     }
 
     loadVideo(url) {
@@ -55,6 +57,7 @@ class Lightbox{
         container.appendChild(video)
       }
       video.src = url
+      video.type = 'video/mp4'
     }
 
     /**
@@ -114,4 +117,5 @@ class Lightbox{
       
  */
 
-Lightbox.init() 
+
+window.onload = Lightbox.init
