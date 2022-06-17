@@ -1,0 +1,61 @@
+// menuPlatForm
+.media{
+    width: 100%;
+    max-width: 350px;
+    margin: 0 auto;
+
+    &__link{
+        position: relative;
+        display: block;
+        margin-bottom: 5px;
+        cursor: pointer;
+
+        &.video-overlay::before{
+            content: '';
+            position: absolute;
+            inset: 0;
+            background-color: rgba(#000, .15);
+        }
+
+        &.video-overlay::after{
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            border-top: 20px solid transparent;
+            border-bottom: 20px solid transparent; 
+            border-left: 30px solid $tert-color;          
+            transform: translate3d(-50%, -50%, 0);
+        }
+
+        &__img, &__video{
+            display: block;
+            width: 100%;
+            height: 190px;
+            object-fit: cover;
+            border-radius: $borderRadius;
+            background-color: #dedede;
+            overflow: hidden;
+            
+            @media screen and (min-width: 950px){
+                height: 300px;
+                width: 350px;
+            }
+        }
+    }
+
+    &__infos{
+        display: flex;
+        justify-content: space-between;
+        color: $pri-color;
+
+        &__title{ font-size: 0.875rem; }
+
+        &__likes-icon{
+            margin-left: 5px;
+            cursor: pointer;
+        }
+    }
+}
