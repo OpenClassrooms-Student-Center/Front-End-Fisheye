@@ -56,7 +56,7 @@ async function sortList(currentMedias, currentPhotographer) {
     const optDate = document.querySelector('.optDate');
     const optTitle = document.querySelector('.optTitle');
     const optPopular = document.querySelector('.optPopular');
-    
+
 
     selectElement.addEventListener('click', () => {
         opt.classList.toggle('hidden');
@@ -68,6 +68,7 @@ async function sortList(currentMedias, currentPhotographer) {
             MediaFactory.manageSortList('date');
             document.querySelector("#medias_section").innerHTML = " ";
             MediaFactory.createMediaCard(currentMedias, currentPhotographer);
+
             sortList(currentMedias, currentPhotographer);
         });
     }
@@ -77,6 +78,7 @@ async function sortList(currentMedias, currentPhotographer) {
             currentMedias = currentMedias.sort((a, b) => (a.title.localeCompare(b.title)));
             document.querySelector("#medias_section").innerHTML = " ";
             MediaFactory.createMediaCard(currentMedias, currentPhotographer);
+
             sortList(currentMedias, currentPhotographer);
         });
     }
@@ -86,10 +88,13 @@ async function sortList(currentMedias, currentPhotographer) {
             currentMedias = currentMedias.sort((a, b) => (b.likes - a.likes));
             document.querySelector("#medias_section").innerHTML = " ";
             MediaFactory.createMediaCard(currentMedias, currentPhotographer);
+
             sortList(currentMedias, currentPhotographer);
         });
     }
     
+    
+    Lightbox.init()
 }
 
 async function init() {
@@ -101,7 +106,7 @@ async function init() {
     
     displayData(currentMedias, currentPhotographer);
     likesClick();
-    Lightbox.init()
+    Lightbox.init();
     sortList(currentMedias, currentPhotographer);
 };
 

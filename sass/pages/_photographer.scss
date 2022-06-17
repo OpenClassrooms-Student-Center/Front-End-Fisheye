@@ -28,22 +28,23 @@
 }
 
 .sort_list {
-    margin: 50px 100px 0 100px;
-
-    option, select {
-        font-size: 16px;
-        font-weight: bold;
-        color: white;
-        padding: 2px;
-        width: 130px;
-        height: 30px;
-        border: none;
-        background: $color-primary-dark;
-        border-radius: 5px;
-        cursor: pointer;
-        outline: none;
-    }
-}
+    margin-left: 100px;
+    position: absolute;
+    z-index: 1;
+    p {
+    margin: 1px;
+    padding: 20px;
+    font-size: 16px;
+    font-weight: bold;
+    color: white;
+    width: 130px;
+    height: 30px;
+    border: none;
+    background: $color-primary-dark;
+    border-radius: 5px;
+    cursor: pointer;
+    outline: none;
+}}
 
 .hidden {
     display: none;
