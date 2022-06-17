@@ -96,17 +96,32 @@
 }
 
 #medias_section {
-    @include flex-sc;
-    flex-wrap: wrap;
-    padding: 80px;
+    display: grid;
+    grid-template-columns: repeat(3, 400px);
+    grid-gap: 20px;
+    padding-top: 80px;
+    max-width: 1200px;
+    margin-left: 80px;
 
     figure {
-        margin: 20px;
         position: relative;
+        margin: 20px;
+        video + figcaption:after{
+            pointer-events:none;
+            content: " ";
+            padding: 70px 70px;
+            width: 30px;
+            height: 30px;
+            background: url(../../assets/icons/play.svg) center center / 100% 100% no-repeat;
+            opacity: 0.7;
+            position: absolute;
+            top: 65px;
+            right: 90px;
+        }
     }
     figure img, figure video {
-        height: 265px;
-        width: 300px;
+        height: 300px;
+        width: 100%;
         border-radius: 5px;
         object-fit: cover;
         cursor: pointer;
@@ -116,7 +131,7 @@
         @include flex-sb;
         font-size: 20px;
         color: $color-primary-dark;
-        width: 300px;
+        width: 100%;
 
         p {
             margin-top: 8px;
@@ -146,4 +161,3 @@
     }
     
 }
-

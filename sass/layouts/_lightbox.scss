@@ -22,24 +22,24 @@
         right: 0;
     }
     &__close {
-        width: 30px;
-        height: 30px;
+        width: 60px;
+        height: 60px;
         cursor: pointer;
         border: none;
-        background: url(../../assets/icons/close.svg) center center / 100% 100% no-repeat;
+        background: url(../../assets/icons/close.svg) center center / 30px 30px no-repeat;
         position: absolute;
-        top: 20px;
-        right: 10px;
+        top: 0px;
+        right: 0px;
         z-index: 3;
     }
 }
 
 .lightbox button{
-    opacity: 0.5;
+    opacity: 1;
     transition: opacity .3s;
 
     &:hover {
-    opacity: 1;
+    opacity: 0.5;
     }
     &:focus{
         border: 2px solid $color-primary-light;
