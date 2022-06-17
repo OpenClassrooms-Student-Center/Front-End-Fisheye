@@ -115,31 +115,31 @@ class MediaFactory {
         document.querySelector('#main').insertBefore(this.divSortList, this.mediasSection);
     }
     
-    static manageSortList(opt){
-        this.divSortList.innerHTML = " ";
-        if (opt == 'popular') {
-            this.divSortList.innerHTML = 
-           `<p class="selected">Populaire<i class="fas fa-chevron-down"></i></p>
-           <div class="options hidden">  
-               <p class="optDate">Date</p>
-               <p class="optTitle">Titre</p>
-           </div>`;
-       } else if (opt == 'date') {
-           this.divSortList.innerHTML = 
-           `<p class="selected">Date<i class="fas fa-chevron-down"></i></p>
-           <div class="options hidden">  
-               <p class="optPopular">Populaire</p>
-               <p class="optTitle">Titre</p>
-           </div>`;
-       } else if (opt == 'title') {
-           this.divSortList.innerHTML = 
-           `<p class="selected">Titre<i class="fas fa-chevron-down"></i></p>
-           <div class="options hidden">  
-               <p class="optPopular">Populaire</p>
-               <p class="optDate">Date</p>
-           </div>`;
-       }
-    }
+    // static manageSortList(opt){
+    //     this.divSortList.innerHTML = " ";
+    //     if (opt == 'popular') {
+    //         this.divSortList.innerHTML = 
+    //        `<p class="selected">Populaire<i class="fas fa-chevron-down"></i></p>
+    //        <div class="options hidden">  
+    //            <p class="optDate">Date</p>
+    //            <p class="optTitle">Titre</p>
+    //        </div>`;
+    //    } else if (opt == 'date') {
+    //        this.divSortList.innerHTML = 
+    //        `<p class="selected">Date<i class="fas fa-chevron-down"></i></p>
+    //        <div class="options hidden">  
+    //            <p class="optPopular">Populaire</p>
+    //            <p class="optTitle">Titre</p>
+    //        </div>`;
+    //    } else if (opt == 'title') {
+    //        this.divSortList.innerHTML = 
+    //        `<p class="selected">Titre<i class="fas fa-chevron-down"></i></p>
+    //        <div class="options hidden">  
+    //            <p class="optPopular">Populaire</p>
+    //            <p class="optDate">Date</p>
+    //        </div>`;
+    //    }
+    // }
     
 
         //     switch (selectedOption) {

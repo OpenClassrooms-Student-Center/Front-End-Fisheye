@@ -8,6 +8,7 @@
     background: $color-bg-modal;
     overflow: auto;
     transition: opacity .3s;
+    z-index: 2;
 }
 
 .fade-out {

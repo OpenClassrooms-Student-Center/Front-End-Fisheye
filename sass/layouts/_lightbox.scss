@@ -6,6 +6,7 @@
     height: 100%;
     background: $color-bg-modal;
     overflow: auto;
+    z-index: 2;
     animation: lightboxIn .5s;
     transition: opacity .3s;
 }
@@ -29,7 +30,7 @@
         position: absolute;
         top: 20px;
         right: 10px;
-        z-index: 1;
+        z-index: 3;
     }
 }
 

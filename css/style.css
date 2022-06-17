@@ -16,6 +16,7 @@
   background: rgba(100, 100, 100, 0.8);
   overflow: auto;
   transition: opacity 0.3s;
+  z-index: 2;
 }
 
 .fade-out {
@@ -91,6 +92,7 @@ form textarea {
   height: 100%;
   background: rgba(100, 100, 100, 0.8);
   overflow: auto;
+  z-index: 2;
   animation: lightboxIn 0.5s;
   transition: opacity 0.3s;
 }
@@ -123,7 +125,7 @@ form textarea {
   position: absolute;
   top: 20px;
   right: 10px;
-  z-index: 1;
+  z-index: 3;
 }
 
 .lightbox button {
@@ -267,27 +269,57 @@ a {
 }
 
 .sort_list {
+  margin-top: 15px;
   margin-left: 100px;
   position: absolute;
   z-index: 1;
 }
 .sort_list p {
-  margin: 1px;
+  margin: 0px;
   padding: 20px;
   font-size: 16px;
   font-weight: bold;
   color: white;
   width: 130px;
-  height: 30px;
+  height: 20px;
   border: none;
   background: #901C1C;
-  border-radius: 5px;
   cursor: pointer;
   outline: none;
 }
+.sort_list p:hover {
+  background: #D3573C;
+  transition: background ease 0.2s;
+}
+.sort_list p i {
+  position: absolute;
+  right: 15px;
+  transition: 0.3s ease-out;
+}
+.sort_list .selected {
+  border-radius: 5px;
+}
+.sort_list .options {
+  margin-top: -4px;
+  transform-origin: 50% 0%;
+  transition: 0.2s linear;
+}
+.sort_list .options :nth-child(1) {
+  border-top: 1px solid white;
+  border-bottom: 1px solid white;
+}
+.sort_list .options :nth-child(2) {
+  border-radius: 0 0 5px 5px;
+}
+
+.chevron-up {
+  transform: rotate(-180deg);
+  transition: 0.3s ease-out;
+}
 
 .hidden {
-  display: none;
+  transform: scaleY(0);
+  transition: 0.2s linear;
 }
 
 #medias_section {
