@@ -89,6 +89,19 @@ class MediaFactory {
         modalH2.insertAdjacentHTML('beforeend', '<br/>' + this.photographerName);
     }
 
+    // static createSortList() {
+    //     //Create sort list
+    //     const divSortList = document.createElement('div');
+    //     divSortList.classList.add('sort_list');
+    //     divSortList.innerHTML = 
+    //         `<label for="sort_list--select">Trier par
+    //         <select name="sort_list" class="sort_list--select">
+    //         <option value="popular" class="selected">Popularité</option>
+    //         <option value="date">Date</option>
+    //         <option value="title">Titre</option>
+    //         </select></label>`;
+    //         document.querySelector('#main').insertBefore(divSortList, this.mediasSection)
+    // }
     static createSortList() {
         //Create sort list
         this.divSortList = document.createElement('div');
@@ -127,4 +140,38 @@ class MediaFactory {
            </div>`;
        }
     }
+    
+
+        //     switch (selectedOption) {
+        //     case 'popular':
+        //         document.querySelector('.sort_list--selected').innerHTML = "Populaire";
+        //         option1 = "date";
+        //         option2 = "title";
+        //         document.querySelector('.sort_list--option1').innerHTML = "Date";
+        //         document.querySelector('.sort_list--option2').innerHTML = "Titre";
+        //         break;
+        //     case 'date':
+        //         document.querySelector('.sort_list--selected').innerHTML = "Date";
+        //         option1 = "popular";
+        //         option2 = "title";
+        //         document.querySelector('.sort_list--option1').innerHTML = "Populaire";
+        //         document.querySelector('.sort_list--option2').innerHTML = "Titre";
+        //         break;
+        //     case 'title':
+        //         document.querySelector('.sort_list--selected').innerHTML = "Titre";
+        //         option1 = "date";
+        //         option2 = "popular";
+        //         document.querySelector('.sort_list--option1').innerHTML = "Date";
+        //         document.querySelector('.sort_list--option2').innerHTML = "Populaire";
+        //         break;
+        //     default:
+        //         document.querySelector('.sort_list--selected').innerHTML = "Populaire";
+        //         option1 = "date";
+        //         option2 = "title";
+        //         document.querySelector('.sort_list--option1').innerHTML = "Date";
+        //         document.querySelector('.sort_list--option2').innerHTML = "Titre";
+        //         break;
+        // }
+            
+    
 }
