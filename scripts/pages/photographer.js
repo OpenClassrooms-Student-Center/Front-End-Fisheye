@@ -26,6 +26,10 @@ const PhotographerProfil = async (data, id) => {
     photographeCardHeader.createUserProfil();
 };
 
+/**
+ * display dropList for sorting media
+ */
+
 const generateMediaFilter = () => {
   const section = document.querySelector(".filter");
   const mediaFilter = new Filter();
@@ -33,7 +37,7 @@ const generateMediaFilter = () => {
 };
 
 /**
- *
+ * Get total likes 
  */
 const implementTotalLikes = () => {
   const globalLikes = document.querySelector(".globalLikes");
@@ -85,6 +89,9 @@ const individualLikesCount = (media) => {
   });
 };
 
+/**
+ * Display aside component including likes infos
+ */
 const displayGlobalLikes = () => {
   const { media: medias } = data;
   const currentMedias = medias.filter((media) => media.photographerId === id);
@@ -93,6 +100,11 @@ const displayGlobalLikes = () => {
   main.appendChild(globalCount.createAsideLikes());
 };
 
+/**
+ * Generate medias of current photographer
+ * @param {* photographer media} currentMedias 
+ * @param {*} currentPhotographer 
+ */
 const generatePhotographerMedias = (currentMedias, currentPhotographer) => {
   const portfolioBlock = document.querySelector(".portfolio");
   portfolioBlock.innerHTML = "";
@@ -103,6 +115,9 @@ const generatePhotographerMedias = (currentMedias, currentPhotographer) => {
   });
 };
 
+/**
+ * Initialize all photographer infos
+ */
 const initMedias = async () => {
   const { media: medias } = data;
   const currentMedias = medias.filter((media) => media.photographerId === id);
