@@ -1,0 +1,93 @@
+/* page d'acceuil */
+
+.main {
+    padding-top: 25px;
+    padding-bottom: 100px;
+
+    .photographers-list {
+        display: grid;
+        gap: 30px;
+
+        .no-photographer {
+            display: none;
+            text-align: center;
+            grid-area: 1 / 1 / 2 / 4;
+        }
+    }
+
+    .photographer-thumbnail {
+        text-align: center;
+
+        .photographer__profil {
+            display: inline-block;
+        }
+
+        .photographer__profil__img {
+            width: 200px;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 50%;
+            background-color: #dedede;
+            filter: drop-shadow(0px 4px 12px rgba(0, 0, 0, 0.25));
+        }
+
+        .photographer__profil__name {
+            font-size: 40px;
+            color: $orange;
+        }
+
+        .photographer__infos {
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+            margin-bottom: 10px;
+
+            .photographer__infos__city {
+                color: $pri-color;
+                font-size: 16px;
+            }
+
+            .photographer__infos__tagline {
+                font-size: 12px;
+            }
+
+            .photographer__infos__price {
+                color: $tert-color;
+                font-size: 12px;
+            }
+        }
+
+     
+    }
+}
+
+.direct-link-main {
+    position: fixed;
+    top: 15px;
+    left: 50%;
+    padding: 3px 15px;
+    border-radius: $borderRadius;
+    background-color: $lightRed;
+    font-size: 1.125rem;
+    font-weight: 500;
+    transform: translate3d(-50%, 0, 0);
+    transition: top 0.3s ease;
+    z-index: 100;
+
+    &:focus {
+        top: 6px;
+    }
+}
+
+@media screen and (min-width: 768px) {
+    .photographers-list {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 50px 30px;
+    }
+}
+
+@media screen and (min-width: 1024px) {
+    .photographers-list {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}

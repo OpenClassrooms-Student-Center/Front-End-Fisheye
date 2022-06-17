@@ -1,0 +1,23 @@
+// scss base
+@import './base/principal';
+@import './factors/cardInfos';
+@import './factors/config';
+@import './factors/contactForm';
+@import './factors/keys';
+@import './factors/menuForm';
+@import './factors/menuNav';
+@import './factors/menuPlatForm';
+@import './factors/menuTag';
+@import './factors/photographersInfo';
+@import './factors/photographersShape';
+@import './factors/responsive';
+
+// scss pages
+@import './pages/homePage';
+@import './pages/photographers';
+
+// scss settingUp
+@import './settingUp/settingUp';
+
+// utils variables
+@import './utils/variables';
