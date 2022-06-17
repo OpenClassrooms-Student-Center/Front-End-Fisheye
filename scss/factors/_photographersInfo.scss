@@ -1,0 +1,40 @@
+// --------------------------------------------------
+// Photographer Thumbnail Component
+// --------------------------------------------------
+
+.photographer-thumbnail{
+    text-align: center;
+
+    .photographer__profil{
+        display: inline-block;
+
+        &__img{
+            width: 200px;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 50%;
+            background-color: lighten($tert-color, 55%);
+            filter: drop-shadow(0px 4px 12px rgba(0,0,0, .25));
+            transition: transform .3s ease;
+        }
+    
+        &__name{
+            font-size: 2.25rem;
+            color: $orange;
+        }
+
+        
+    }
+
+    .photographer__infos{
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
+        margin-bottom: 10px;
+
+        &__city{ color: $pri-color; font-size: 0.8rem;}
+        &__tagline{ font-size: 0.6rem; }
+        &__price{ color: #757575; font-size: 0.6rem; }
+    }
+    
+}
