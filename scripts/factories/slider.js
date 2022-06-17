@@ -1,3 +1,3 @@
 export default function sliderFactory() {
-  console.log('test');
+  console.log('test2');
 }
