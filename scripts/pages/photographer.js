@@ -14,7 +14,6 @@ const currentPhotographer = photographers.find(
 );
 // console.log("ID => ", id);
 const PhotographerProfil = async (data, id) => {
-  console.log("CurrentPhotgrapher => ", currentPhotographer);
   const sectionHeaderPhotographer = document.querySelector(
     ".section-photographe"
   );
@@ -37,7 +36,7 @@ const generateMediaFilter = () => {
 };
 
 /**
- * Get total likes 
+ * Get total likes
  */
 const implementTotalLikes = () => {
   const globalLikes = document.querySelector(".globalLikes");
@@ -48,7 +47,7 @@ const implementTotalLikes = () => {
     likes = likes + parseInt(element.innerText);
     console.log("element likes  ==> ", likes);
   });
-  console.log("global likes ::: ", globalLikes);
+
   globalLikes.innerText = likes;
 };
 
@@ -58,7 +57,7 @@ const implementTotalLikes = () => {
  */
 const individualLikesCount = (media) => {
   const likeButton = document.getElementById(media.id);
-  console.log("media liked :::>", media);
+
   if (media.liked === "true") {
     likeButton.checked = true;
   }
@@ -102,8 +101,8 @@ const displayGlobalLikes = () => {
 
 /**
  * Generate medias of current photographer
- * @param {* photographer media} currentMedias 
- * @param {*} currentPhotographer 
+ * @param {* photographer media} currentMedias
+ * @param {*} currentPhotographer
  */
 const generatePhotographerMedias = (currentMedias, currentPhotographer) => {
   const portfolioBlock = document.querySelector(".portfolio");
@@ -116,6 +115,98 @@ const generatePhotographerMedias = (currentMedias, currentPhotographer) => {
 };
 
 /**
+ * Manage dropdown widget options
+ * @param {*} widgetOpen
+ * @param {*} sortOptions
+ * @param {*} optionShowed
+ */
+const manageOptions = (widgetOpen, sortOptions, optionShowed) => {
+  if (widgetOpen == false) {
+    sortOptions.forEach((option) => {
+      option.style.display = "block";
+    });
+    optionShowed[0].focus();
+    widgetOpen = true;
+  } else {
+    sortOptions.forEach((option) => {
+      option.style.display = "none";
+    });
+    widgetOpen = false;
+  }
+};
+
+/**
+ *
+ * @param {*} element
+ * @param {*} sortOptions
+ * @param {*} toggleBox
+ * @param {*} widgetOpen
+ */
+const sortBy = (element, sortOptions, toggleBox, widgetOpen, optionShowed) => {
+  const { media: medias } = data;
+  const currentMedias = medias?.filter((media) => media.photographerId === id);
+  switch (element.value) {
+    case "popularity":
+      currentMedias?.sort(function (a, b) {
+        return b.likes - a.likes;
+      });
+      break;
+    case "date":
+      currentMedias?.sort(function (a, b) {
+        return new Date(b.date) - new Date(a.date);
+      });
+      break;
+    case "title":
+      currentMedias?.sort(function (a, b) {
+        return a.title?.localeCompare(b.title);
+      });
+      break;
+  }
+  generatePhotographerMedias(currentMedias, currentPhotographer);
+
+  // new list of options
+  const hideElement = document.querySelector(".hidden button");
+  const activeOption = document.querySelector(".active-option");
+  const currentButtonPos = sortOptions.indexOf(element);
+  const clickedOptionValue = sortOptions[currentButtonPos].innerText;
+  activeOption.innerText = clickedOptionValue;
+  toggleBox.setAttribute(
+    "aria-label",
+    `liste de trie, trié par ${clickedOptionValue}`
+  );
+  document.querySelector(".dropdown").appendChild(hideElement);
+  document.querySelector(".hidden").appendChild(element);
+  optionShowed = document.querySelectorAll(".dropdown > button");
+
+  // close the sortwidget after clicking on an option
+  sortOptions.forEach((option) => {
+    console.log("je suis ici ====");
+    option.style.display = "none";
+  });
+  widgetOpen = false;
+  toggleBox.focus();
+};
+
+const getSortedMedias = () => {
+  const toggleBox = document.querySelector(".toggle-listbox");
+  const sortOptions = Array.from(document.querySelectorAll(".sort-option"));
+  let optionShowed = document.querySelectorAll(".dropdown > button");
+  let widgetOpen = false;
+  console.log("variables :", toggleBox, sortOptions, optionShowed, widgetOpen);
+
+  // togglebox button property
+  toggleBox.addEventListener("click", () =>
+    manageOptions(widgetOpen, sortOptions, optionShowed)
+  );
+
+  sortOptions.forEach((element) =>
+    element.addEventListener("click", () =>
+      sortBy(element, sortOptions, toggleBox, widgetOpen, optionShowed)
+    )
+  );
+};
+
+/**
  * Initialize all photographer infos
  */
 const initMedias = async () => {
@@ -125,6 +216,7 @@ const initMedias = async () => {
   PhotographerProfil(data, id);
   generateMediaFilter();
   generatePhotographerMedias(currentMedias, currentPhotographer);
+  getSortedMedias();
   displayGlobalLikes();
 };
 
