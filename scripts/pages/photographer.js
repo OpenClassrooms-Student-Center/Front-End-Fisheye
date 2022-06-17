@@ -19,7 +19,6 @@ async function getPhotographers() {
 }
 
 async function displayData(medias, photographer) {
-   
     MediaFactory.createMediaCard(medias, photographer);
     MediaFactory.createPhotographerHeader();
     MediaFactory.createLikesCountCard();
@@ -49,67 +48,6 @@ async function likesClick() {
         });
     })
 };
-
-// async function sortList(currentMedias, currentPhotographer) {
-//     const selectElement = document.querySelector('.selected');
-//     const options = document.querySelector('.options');
-//     const optDate = document.querySelector('.optDate');
-//     const optTitle = document.querySelector('.optTitle');
-//     const optPopular = document.querySelector('.optPopular');    
-
-//     selectElement.addEventListener('click', () => {
-//         console.log('click');
-//         options.classList.toggle('hidden');
-//     });
-
-//     if (optDate) {
-//         optDate.addEventListener('click', () => {
-//             currentMedias = currentMedias.sort((a, b) => (b.date.localeCompare(a.date)));
-//             refreshSortList(currentMedias, currentPhotographer, "date");
-//         });
-//     }
-//     if (optTitle) {
-//         optTitle.addEventListener('click', () => {
-//             currentMedias = currentMedias.sort((a, b) => (a.title.localeCompare(b.title)));
-//             refreshSortList(currentMedias, currentPhotographer, "title");
-//         });
-//     }
-//     if (optPopular) {
-//         optPopular.addEventListener('click', () => {
-//             currentMedias = currentMedias.sort((a, b) => (b.likes - a.likes));
-//             refreshSortList(currentMedias, currentPhotographer, "popular");
-//         });
-// }
-// async function refreshSortList(currentMedias, currentPhotographer, opt) {
-//     MediaFactory.manageSortList(opt);
-//     document.querySelector("#medias_section").innerHTML = " ";
-//     MediaFactory.createMediaCard(currentMedias, currentPhotographer);
-//     MediaFactory.createLikesCountCard();
-//     likesClick();
-//     Lightbox.init();
-//     sortList(currentMedias, currentPhotographer);
-// }
-    
-    
-        // switch (selectElement.getAttribute('data-criterion')) {
-        //                 case 'popular':
-        //                     currentMedias = currentMedias.sort((a, b) => (b.likes - a.likes));
-        //                     break;
-        //                 case 'date':
-        //                     currentMedias = currentMedias.sort((a, b) => (b.date.localeCompare(a.date)));
-        //                     break;
-        //                 case 'title':
-        //                     currentMedias = currentMedias.sort((a, b) => (a.title.localeCompare(b.title)));
-        //                     break;
-        //                 default:
-        //                     currentMedias = mediasOfPhotographer.sort((a, b) => (b.likes - a.likes));
-        //                     break;
-        //             }
-        
-        // document.querySelector("#medias_section").innerHTML = " ";
-        // MediaFactory.createMediaCard(currentMedias, currentPhotographer);
-    
-
 
 async function init() {
     //Get data for photographers and media

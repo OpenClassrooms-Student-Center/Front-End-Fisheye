@@ -66,7 +66,6 @@ class MediaFactory {
         const photographHeader = document.querySelector(".photograph-header");
         const photographerInfo = new PhotographerFactory(this.currentPhotographer);
         this.photographerInfo = photographerInfo;
-        // const {photographerPic, photographerName, divPhotographerInfos} = photographerInfo.getPhotographerInfos();
         this.photographerPic = this.photographerInfo.getPhotographerInfos().photographerPic;
         this.photographerName = this.photographerInfo.getPhotographerInfos().photographerName;
         this.divPhotographerInfos = this.photographerInfo.getPhotographerInfos().divPhotographerInfos;
@@ -89,19 +88,6 @@ class MediaFactory {
         modalH2.insertAdjacentHTML('beforeend', '<br/>' + this.photographerName);
     }
 
-    // static createSortList() {
-    //     //Create sort list
-    //     const divSortList = document.createElement('div');
-    //     divSortList.classList.add('sort_list');
-    //     divSortList.innerHTML = 
-    //         `<label for="sort_list--select">Trier par
-    //         <select name="sort_list" class="sort_list--select">
-    //         <option value="popular" class="selected">Popularité</option>
-    //         <option value="date">Date</option>
-    //         <option value="title">Titre</option>
-    //         </select></label>`;
-    //         document.querySelector('#main').insertBefore(divSortList, this.mediasSection)
-    // }
     static createSortList() {
         //Create sort list
         this.divSortList = document.createElement('div');
@@ -114,64 +100,4 @@ class MediaFactory {
            </div>`;
         document.querySelector('#main').insertBefore(this.divSortList, this.mediasSection);
     }
-    
-    // static manageSortList(opt){
-    //     this.divSortList.innerHTML = " ";
-    //     if (opt == 'popular') {
-    //         this.divSortList.innerHTML = 
-    //        `<p class="selected">Populaire<i class="fas fa-chevron-down"></i></p>
-    //        <div class="options hidden">  
-    //            <p class="optDate">Date</p>
-    //            <p class="optTitle">Titre</p>
-    //        </div>`;
-    //    } else if (opt == 'date') {
-    //        this.divSortList.innerHTML = 
-    //        `<p class="selected">Date<i class="fas fa-chevron-down"></i></p>
-    //        <div class="options hidden">  
-    //            <p class="optPopular">Populaire</p>
-    //            <p class="optTitle">Titre</p>
-    //        </div>`;
-    //    } else if (opt == 'title') {
-    //        this.divSortList.innerHTML = 
-    //        `<p class="selected">Titre<i class="fas fa-chevron-down"></i></p>
-    //        <div class="options hidden">  
-    //            <p class="optPopular">Populaire</p>
-    //            <p class="optDate">Date</p>
-    //        </div>`;
-    //    }
-    // }
-    
-
-        //     switch (selectedOption) {
-        //     case 'popular':
-        //         document.querySelector('.sort_list--selected').innerHTML = "Populaire";
-        //         option1 = "date";
-        //         option2 = "title";
-        //         document.querySelector('.sort_list--option1').innerHTML = "Date";
-        //         document.querySelector('.sort_list--option2').innerHTML = "Titre";
-        //         break;
-        //     case 'date':
-        //         document.querySelector('.sort_list--selected').innerHTML = "Date";
-        //         option1 = "popular";
-        //         option2 = "title";
-        //         document.querySelector('.sort_list--option1').innerHTML = "Populaire";
-        //         document.querySelector('.sort_list--option2').innerHTML = "Titre";
-        //         break;
-        //     case 'title':
-        //         document.querySelector('.sort_list--selected').innerHTML = "Titre";
-        //         option1 = "date";
-        //         option2 = "popular";
-        //         document.querySelector('.sort_list--option1').innerHTML = "Date";
-        //         document.querySelector('.sort_list--option2').innerHTML = "Populaire";
-        //         break;
-        //     default:
-        //         document.querySelector('.sort_list--selected').innerHTML = "Populaire";
-        //         option1 = "date";
-        //         option2 = "title";
-        //         document.querySelector('.sort_list--option1').innerHTML = "Date";
-        //         document.querySelector('.sort_list--option2').innerHTML = "Titre";
-        //         break;
-        // }
-            
-    
 }

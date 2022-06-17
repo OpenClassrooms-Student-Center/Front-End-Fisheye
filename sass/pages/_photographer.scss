@@ -62,9 +62,23 @@
         margin-top: -4px;
         transform-origin: 50% 0%;
         transition: .2s linear;
-        :nth-child(1){
-            border-top: 1px solid white;
-            border-bottom: 1px solid white;
+        :nth-child(1):after{
+            content: " ";
+            padding: 1px 70px;
+            border-radius: 5px;
+            background-color: white;
+            position: absolute;
+            top: 55px;
+            right: 15px;
+        }
+        :nth-child(1):before{
+            content: " ";
+            padding: 1px 70px;
+            border-radius: 5px;
+            background-color: white;
+            position: absolute;
+            top: 115px;
+            right: 15px;
         }
         :nth-child(2){
             border-radius: 0 0 5px 5px;

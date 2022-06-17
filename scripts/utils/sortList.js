@@ -1,15 +1,14 @@
-async function sortList(currentMedias, currentPhotographer) {
+function sortList(currentMedias, currentPhotographer) {
     const selectElement = document.querySelector('.selected');
     const options = document.querySelector('.options');
     const optDate = document.querySelector('.optDate');
     const optTitle = document.querySelector('.optTitle');
-    const optPopular = document.querySelector('.optPopular');    
-
+    const optPopular = document.querySelector('.optPopular');  
+    
     selectElement.addEventListener('click', () => {
         document.querySelector('.fa-chevron-down').classList.toggle('chevron-up');
         options.classList.toggle('hidden');
     });
-
     if (optDate) {
         optDate.addEventListener('click', () => {
             currentMedias = currentMedias.sort((a, b) => (b.date.localeCompare(a.date)));
@@ -27,9 +26,10 @@ async function sortList(currentMedias, currentPhotographer) {
             currentMedias = currentMedias.sort((a, b) => (b.likes - a.likes));
             refreshSortList(currentMedias, currentPhotographer, "popular");
         });
+    }
 }
 
-async function manageSortList(opt){
+function manageSortList(opt){
     const divSortList = document.querySelector('.sort_list')
     divSortList.innerHTML = " ";
     if (opt == 'popular') {
@@ -56,7 +56,7 @@ async function manageSortList(opt){
    }
 }
 
-async function refreshSortList(currentMedias, currentPhotographer, opt) {
+function refreshSortList(currentMedias, currentPhotographer, opt) {
     manageSortList(opt);
     document.querySelector("#medias_section").innerHTML = " ";
     MediaFactory.createMediaCard(currentMedias, currentPhotographer);
@@ -64,7 +64,6 @@ async function refreshSortList(currentMedias, currentPhotographer, opt) {
     likesClick();
     Lightbox.init();
     sortList(currentMedias, currentPhotographer);
-}
 }
 
 

@@ -1,7 +1,6 @@
 class PhotographerFactory {
 
     constructor(data) {
-        // const { name, portrait, city, tagline, price, country, id } = data;
         this.name = data.name;
         this.portrait = data.portrait;
         this.city = data.city;
