@@ -108,6 +108,7 @@ const generatePhotographerMedias = (currentMedias, currentPhotographer) => {
   const portfolioBlock = document.querySelector(".portfolio");
   portfolioBlock.innerHTML = "";
   currentMedias.forEach((media) => {
+    media.alt = media.title;
     const photoCardDOM = new MediasFactory(media, currentPhotographer.name);
     portfolioBlock.appendChild(photoCardDOM.buildMediaCard());
     individualLikesCount(media);
