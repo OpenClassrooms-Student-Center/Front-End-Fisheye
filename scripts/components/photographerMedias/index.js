@@ -15,9 +15,6 @@ export class MediaVideo {
     article.innerHTML = `
             <video src="${videoLink}"  controls="true"  aria-label="${this.alt}, vue rapprochée" role="link" tabIndex="0"></video>
             <div>
-            <i class="fa fa-clapperboard-play"></i>
-            </div>
-            <div>
                 <span class="titles">${this.title}</span>
                 <span class="likes">${this.likes}</span>
                 <span class="spanIcon" aria-label="likes" tabIndex="0" role="button">
