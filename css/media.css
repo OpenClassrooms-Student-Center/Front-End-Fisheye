@@ -1,0 +1,44 @@
+.media {
+  display: flex;
+  flex-direction: column;
+}
+
+.media__link {
+  border-radius: 0.5em;
+  width: 100%;
+  height: 25em;
+  cursor: pointer;
+}
+
+.media__link img,
+.media__link video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  border-radius: 0.5em;
+}
+
+.media__info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.5em 0;
+}
+
+.media__title {
+  color: #901c1c;
+  font-size: 2em;
+  font-weight: 300;
+}
+
+.like {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  color: #901c1c;
+  font-size: 1.2em;
+  font-weight: 600;
+  cursor: pointer;
+  background-color: white;
+}

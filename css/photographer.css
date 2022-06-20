@@ -1,190 +1,99 @@
 .profil {
-    margin: 0 5em;
-  }
-  .profil__header {
-    display: flex;
-    justify-content: space-between;
-    background-color: #fafafa;
-    padding: 2em;
-  }
-  
-  .profil__presentation {
-    width: 100%;
-  }
-  
-  .profil__presentation h1 {
-    font-size: 3em;
-    text-align: start;
-    color: #d3576c;
-  }
-  
-  .profil__info {
-    display: flex;
-    flex-direction: column;
-    gap: 1em;
-    margin: 1em 0;
-  }
-  
-  .photographer-info {
-    position: fixed;
-    bottom: 0;
-    right: 40px;
-    background-color: #db8876;
-    color: black;
-    display: flex;
-    justify-content: space-between;
-    padding: 15px 20px;
-    border-radius: 5px 5px 0 0;
-    width: 300px;
-  }
-  
-  .photographer-info img {
-    filter: brightness(0%);
-  }
-  
-  .photographer-info div {
-    display: flex;
-    gap: 4px;
-  }
-  
-  .profil__contact {
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-  .profil__contact button {
-    font-size: 20px;
-    font-weight: bold;
-    color: white;
-    padding: 20px 11px;
-    border: none;
-    background-color: #901c1c;
-    border-radius: 5px;
-    cursor: pointer;
-  }
-  
-  .profil__contact button:hover,
-  profil__contact button:focus {
-    background-color: #d3576c;
-    color: black;
-  }
-  
-  .profil__image {
-    width: 100%;
-    display: flex;
-    justify-content: flex-end;
-  }
-  
-  #profilLocation {
-    color: #901c1c;
-    font-weight: 400;
-    font-size: 1.5em;
-  }
-  
-  #profilImage {
-    width: 12em;
-    height: 12em;
-  }
-  
-  #profil__media {
-    display: grid;
-    grid-template-rows: auto;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 5em;
-  }
-  
-  #profilTagline {
-    color: #525252;
-  }
-  .dropdown {
-    display: flex;
-    align-items: center;
-    position: relative;
-    margin: 20px 0;
-  }
-  
-  .dropdown-span {
-    margin-right: 15px;
-    font-weight: 900;
-  }
-  
-  .dropdown-toggle {
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
-    background: #901c1c;
-    border: none;
-    border-radius: 5px;
-    color: #fff;
-    width: 130px;
-    height: 50px;
-    padding-left: 10px;
-    position: relative;
-    font-size: 16px;
-    cursor: pointer;
-  }
-  
-  .dropdown-toggle::before {
-    content: url("../assets/icons/arrow_icon.svg");
-    position: absolute;
-    right: 8px;
-    top: 15px;
-    width: 20px;
-    height: 20px;
-    transform: rotate(-90deg);
-    z-index: 2;
-    filter: brightness(0) invert(1);
-  }
-  
-  .dropdown-list {
-    display: none;
-    flex-direction: column;
-    align-items: flex-start;
-    justify-content: center;
-    top: 0%;
-    border-radius: 5px;
-    color: #fff;
-    width: 130px;
-    background-color: #901c1c;
-    position: absolute;
-    z-index: 2;
-    overflow: hidden;
-  }
-  
-  .dropdown-list li {
-    height: 50px;
-    display: flex;
-    align-items: center;
-    position: relative;
-    width: 100%;
-    padding-left: 10px;
-  }
-  
-  .dropdown-list li:hover {
-    background-color: #d3576c;
-    cursor: pointer;
-    color: black;
-  }
-  
-  .dropdown-list::before {
-    content: url("../assets/icons/arrow_icon.svg");
-    position: absolute;
-    right: 8px;
-    top: 15px;
-    width: 20px;
-    height: 20px;
-    transform: rotate(90deg);
-    z-index: 2;
-    filter: brightness(0) invert(1);
-  }
-  
-  .dropdown-list li:not(:last-child)::after {
-    content: "";
-    position: absolute;
-    bottom: 1px;
-    width: 110px;
-    left: 10px;
-    border-bottom: 1px solid white;
-  }
-  
+  margin: 0 5em;
+}
+.profil__header {
+  display: flex;
+  justify-content: space-between;
+  background-color: #fafafa;
+  padding: 2em;
+}
+
+.profil__presentation {
+  width: 100%;
+}
+
+.profil__presentation h1 {
+  font-size: 3em;
+  text-align: start;
+  color: #d3576c;
+}
+
+.profil__info {
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+  margin: 1em 0;
+}
+
+.photographer-info {
+  position: fixed;
+  bottom: 0;
+  right: 40px;
+  background-color: #db8876;
+  color: black;
+  display: flex;
+  justify-content: space-between;
+  padding: 15px 20px;
+  border-radius: 5px 5px 0 0;
+  width: 300px;
+}
+
+.photographer-info img {
+  filter: brightness(0%);
+}
+
+.photographer-info div {
+  display: flex;
+  gap: 4px;
+}
+
+.profil__contact {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.profil__contact button {
+  font-size: 20px;
+  font-weight: bold;
+  color: white;
+  padding: 20px 11px;
+  border: none;
+  background-color: #901c1c;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.profil__contact button:hover,
+profil__contact button:focus {
+  background-color: #d3576c;
+  color: black;
+}
+
+.profil__image {
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+}
+
+#profilLocation {
+  color: #901c1c;
+  font-weight: 400;
+  font-size: 1.5em;
+}
+
+#profilImage {
+  width: 12em;
+  height: 12em;
+}
+
+#profil__media {
+  display: grid;
+  grid-template-rows: auto;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 5em;
+}
+
+#profilTagline {
+  color: #525252;
+}

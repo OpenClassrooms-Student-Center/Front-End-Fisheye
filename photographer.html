@@ -85,6 +85,13 @@
         <ul id="profil__media"></ul>
       </div>
 
+      <div class="photographer-info">
+        <div>
+          <p id="photographer-all-likes"></p>
+          <img src="./assets/icons/heart.svg" alt="coeur" />
+        </div>
+        <p id="photographer-price-day"></p>
+      </div>
     </main>
 
     <div class="modal" aria-describedby="modalTitle">
@@ -121,8 +128,36 @@
       </form>
     </div>
 
+    <div id="lightbox_media">
+      <button
+        id="close-lightbox_media"
+        style="background: url(assets/icons/close.svg)"
+        onclick="closeLightbox()"
+        aria-label="Fermer lightbox"
+      ></button>
+      <div class="lightbox_media__content"></div>
+      <a
+        href="#"
+        aria-label="Image précédente"
+        class="link-previous-media"
+        onclick="changeMediaLightBox(-1)"
+      >
+        <img src="./assets/icons/arrow_icon.svg" alt="arrow icon" />
+      </a>
+      <a
+        href="#"
+        aria-label="Image suivante"
+        class="link-next-media"
+        onclick="changeMediaLightBox(1)"
+      >
+        <img src="./assets/icons/arrow_icon.svg" alt="arrow icon" />
+      </a>
+    </div>
+    <script src="/scripts/utils/focusInContainer.js"></script>
     <script src="/scripts/utils/contactForm.js"></script>
     <script src="/scripts/utils/selectForm.js"></script>
+    <script src="/scripts/utils/lightbox.js"></script>
+    <script src="/scripts/factories/media.js"></script>
     <script src="/scripts/pages/photographer.js"></script>
   </body>
 </html>
