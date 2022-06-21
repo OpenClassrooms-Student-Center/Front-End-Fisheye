@@ -10,6 +10,8 @@ btnSelected.addEventListener('click', () => {
 function loadList() {
     sorterList.style.display = 'block'
     btnSelected.style.display = 'none'
+
+    btnSelected.setAttribute('aria-expanded', 'true')
 }
 
 btnList.forEach((btn) => {
@@ -17,16 +19,34 @@ btnList.forEach((btn) => {
         if (btn.id === 'like') {
             loadBtnSelected()
             changeBtnContent('Popularité')
+
+            btnList[0].setAttribute('aria-selected', 'true')
+            btnList[1].setAttribute('aria-selected', 'false')
+            btnList[2].setAttribute('aria-selected', 'false')
+
+            sorterList.setAttribute('aria-activedescendant', `${btn.id}`)
         }
 
         if (btn.id === 'date') {
             loadBtnSelected()
             changeBtnContent('Date')
+
+            btnList[1].setAttribute('aria-selected', 'true')
+            btnList[0].setAttribute('aria-selected', 'false')
+            btnList[2].setAttribute('aria-selected', 'false')
+
+            sorterList.setAttribute('aria-activedescendant', `${btn.id}`)
         }
 
         if (btn.id === 'title') {
             loadBtnSelected()
             changeBtnContent('Titre')
+
+            btnList[2].setAttribute('aria-selected', 'true')
+            btnList[0].setAttribute('aria-selected', 'false')
+            btnList[1].setAttribute('aria-selected', 'false')
+
+            sorterList.setAttribute('aria-activedescendant', `${btn.id}`)
         }
     })
 })
@@ -34,6 +54,8 @@ btnList.forEach((btn) => {
 function loadBtnSelected() {
     sorterList.style.display = 'none'
     btnSelected.style.display = null
+
+    btnSelected.setAttribute('aria-expanded', 'false')
 }
 
 function changeBtnContent(content) {

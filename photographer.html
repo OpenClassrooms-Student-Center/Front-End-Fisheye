@@ -33,8 +33,14 @@
                 </button>
             </div>
             <div class="sorter">
-                <span class="sorter__title">Trier par</span>
-                <button class="sorter__selected button-sorter button-sorter-4">
+                <span class="sorter__title" id="orderBy">Trier par</span>
+                <button
+                    class="sorter__selected button-sorter button-sorter-4"
+                    role="button"
+                    aria-haspopup="listbox"
+                    aria-expanded="false"
+                    aria-controls="sorterList"
+                >
                     <span>Popularité</span>
                     <i
                         class="fa-solid fa-chevron-down"
@@ -42,11 +48,18 @@
                         data-fa-transform="right-32"
                     ></i>
                 </button>
-                <ul class="sorter__list">
+                <ul
+                    class="sorter__list"
+                    role="listbox"
+                    id="sorterList"
+                    aria-labelledby="orderBy"
+                    aria-activedescendant=""
+                >
                     <li>
                         <button
                             class="button-sorter button-sorter-1 option"
                             id="like"
+                            role="option"
                         >
                             <span>Popularité</span>
                             <i
@@ -60,6 +73,7 @@
                         <button
                             class="button-sorter button-sorter-2 option"
                             id="date"
+                            role="option"
                         >
                             <span>Date</span>
                         </button>
@@ -68,6 +82,7 @@
                         <button
                             class="button-sorter button-sorter-3 option"
                             id="title"
+                            role="option"
                         >
                             <span>Titre</span>
                         </button>
