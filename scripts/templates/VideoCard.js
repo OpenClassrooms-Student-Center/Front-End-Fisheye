@@ -1,21 +1,14 @@
+export { VideoCard }
 class VideoCard {
-    constructor(data) {
-        this.id = data.id
-        this.photographerId = data.photographerId
-        this.title = data.title
-        this.video = data.video
-        this.likes = data.likes
-        this.date = data.date
-        this.price = data.price
-        this.photographerName = this.getPhotographerName()
-    }
-
-    getPhotographerName() {
-        const link = window.location.search
-        const searchParams = new URLSearchParams(link)
-
-        // Retourne le nom du photographe contenu dans le lien
-        return searchParams.get('photographerName')
+    constructor(video, photographer) {
+        this.id = video.id
+        this.title = video.title
+        this.video = video.video
+        this.likes = video.likes
+        this.date = video.date
+        this.price = video.price
+        this.photographerId = video.photographerId
+        this.photographerName = photographer.name
     }
 
     getVideoCardDom() {
@@ -23,10 +16,14 @@ class VideoCard {
         mediaItem.setAttribute('class', 'media__item')
 
         const video = document.createElement('video')
+
+        const accessibleVideoName = this.video.replace('.mp4', '')
+
         video.setAttribute(
             'src',
             `/assets/media/${this.photographerName}/${this.video}`
         )
+        video.setAttribute('alt', `${accessibleVideoName}, closeup view`)
 
         const spanTitle = document.createElement('span')
         spanTitle.textContent = this.title
@@ -38,7 +35,7 @@ class VideoCard {
 
         const iconLike = document.createElement('i')
         iconLike.setAttribute('class', 'fa-solid fa-heart icon')
-        iconLike.setAttribute('data-fa-transform', 'up-1')
+        iconLike.setAttribute('video-fa-transform', 'up-1')
 
         const p = document.createElement('p')
         p.setAttribute('class', 'content')

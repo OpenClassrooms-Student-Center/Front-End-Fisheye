@@ -1,3 +1,4 @@
+export { Photographer }
 class Photographer {
     constructor(data) {
         this._name = data.name

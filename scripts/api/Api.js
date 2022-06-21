@@ -1,3 +1,5 @@
+export { PhotographerApi }
+export { MediaApi }
 class Api {
     /**
      *
@@ -41,3 +43,5 @@ class MediaApi extends Api {
         return this.getM()
     }
 }
+
+

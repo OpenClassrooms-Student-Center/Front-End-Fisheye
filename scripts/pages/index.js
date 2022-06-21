@@ -1,3 +1,6 @@
+import { PhotographerApi } from '../api/Api.js'
+import { Photographer } from '../models/Photographer.js'
+import { PhotographerCard } from '../templates/PhotographerCard.js'
 class HomePage {
     constructor() {
         // Element du DOM
@@ -12,9 +15,10 @@ class HomePage {
         this.photographers = []
     }
 
-    async getPhotographers() {
+    async fetchPhotographers() {
         // Retourne le tableau de photographes
-        return this.photographerApi.getPhotographers()
+        const photographers = await this.photographerApi.getPhotographers()
+        return photographers.map((photographer) => new Photographer(photographer))   
     }
 
     async displayData(photographers) {
@@ -28,7 +32,7 @@ class HomePage {
 
     async init() {
         // Récupère les datas des photographes dans un tableau
-        this.photographers = await this.getPhotographers()
+        this.photographers = await this.fetchPhotographers()
 
         // Affiche les données des photographes
         this.displayData(this.photographers)

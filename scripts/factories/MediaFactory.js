@@ -1,3 +1,7 @@
+import { Picture } from '../models/Picture.js'
+import { Video } from '../models/Video.js'
+
+export { MediaFactory }
 class MediaFactory {
     constructor(data, type) {
         // Si le type est picture retourne une instance image

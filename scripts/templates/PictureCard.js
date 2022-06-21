@@ -1,21 +1,14 @@
+export { PictureCard }
 class PictureCard {
-    constructor(data) {
-        this.id = data.id
-        this.photographerId = data.photographerId
-        this.title = data.title
-        this.image = data.image
-        this.likes = data.likes
-        this.date = data.date
-        this.price = data.price
-        this.photographerName = this.getPhotographerName()
-    }
-
-    getPhotographerName() {
-        const link = window.location.search
-        const searchParams = new URLSearchParams(link)
-
-        // Retourne le nom du photographe contenu dans le lien
-        return searchParams.get('photographerName')
+    constructor(picture, photographer) {
+        this.id = picture.id
+        this.title = picture.title
+        this.image = picture.image
+        this.likes = picture.likes
+        this.date = picture.date
+        this.price = picture.price
+        this.photographerId = picture.photographerId
+        this.photographerName = photographer.name
     }
 
     getPictureCardDom() {
@@ -24,10 +17,13 @@ class PictureCard {
 
         const image = document.createElement('img')
 
+        const accessibleImageName = this.image.replace('.jpg', '')
+
         image.setAttribute(
             'src',
             `/assets/media/${this.photographerName}/${this.image}`
         )
+        image.setAttribute('alt', `${accessibleImageName}, closeup view`)
 
         const spanTitle = document.createElement('span')
         spanTitle.textContent = this.title
@@ -39,7 +35,7 @@ class PictureCard {
 
         const iconLike = document.createElement('i')
         iconLike.setAttribute('class', 'fa-solid fa-heart icon')
-        iconLike.setAttribute('data-fa-transform', 'up-1')
+        iconLike.setAttribute('picture-fa-transform', 'up-1')
 
         const p = document.createElement('p')
         p.setAttribute('class', 'content')

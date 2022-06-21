@@ -1,12 +1,13 @@
+export { PhotographerCard }
 class PhotographerCard {
-    constructor(data) {
-        this.name = data.name
-        this.id = data.id
-        this.city = data.city
-        this.country = data.country
-        this.tagline = data.tagline
-        this.price = data.price
-        this.portrait = data.portrait
+    constructor(photographer) {
+        this.name = photographer.name
+        this.id = photographer.id
+        this.city = photographer.city
+        this.country = photographer.country
+        this.tagline = photographer.tagline
+        this.price = photographer.price
+        this.portrait = photographer.portrait
         this.picture = `assets/photographers/${this.portrait}`
     }
 
@@ -22,7 +23,7 @@ class PhotographerCard {
         const a = document.createElement('a')
         a.setAttribute(
             'href',
-            `/photographer.html?photographerName=${this.name}&photographerId=${this.id}&photographerPrice=${this.price}`
+            `/photographer.html?photographerId=${this.id}`
         )
         a.setAttribute('aria-label', `${this.name}`)
 
@@ -61,6 +62,7 @@ class PhotographerCard {
         const img = document.createElement('img')
         img.setAttribute('src', `${this.picture}`)
         img.setAttribute('class', 'photographer_header__img')
+        img.setAttribute('alt', `${this.name}`)
 
         const h2 = document.createElement('h2')
         h2.setAttribute('class', 'name')
