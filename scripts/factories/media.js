@@ -1,6 +1,6 @@
 import Photo from '../model/CardPhoto.js';
 import Video from '../model/CardVideo.js';
-import sliderModal from '../model/slider.js';
+import sliderFactory from './slider.js';
 
 export default function mediaFactory(media, name) {
   function createCard(data, container, sortMedia) {
@@ -20,11 +20,16 @@ export default function mediaFactory(media, name) {
     const like = cardElt.querySelector('.photo__likes');
     like.addEventListener('click', (e) => data.elt.toggleLike(e));
     const img = cardElt.querySelector('.photo');
-    img.addEventListener('click', () => sliderModal(media, sortMedia));
-    document.addEventListener('keydown', (e) => {
-      if (e.code === 'Enter' && e.target === img) sliderModal(media, sortMedia);
+    img.addEventListener('click', () => {
+      const slider = sliderFactory(media, sortMedia);
+      slider.addEventSlider();
     });
-
+    document.addEventListener('keydown', (e) => {
+      if (e.code === 'Enter' && e.target === img) {
+        const slider = sliderFactory(media, sortMedia);
+        slider.addEventSlider();
+      }
+    });
     return card;
   }
 
