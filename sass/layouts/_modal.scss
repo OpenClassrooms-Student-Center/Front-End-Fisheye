@@ -76,4 +76,24 @@ form {
         height: 150px;
         resize:none;
     }
+    .formData[data-error]::after {
+        content: attr(data-error);
+        font-size: 15px;
+        color: #e54858;
+        display: block;
+        margin-top: 7px;
+        margin-bottom: 0px;
+        text-align: left;
+        line-height: 0.3;
+        opacity: 0;
+        transition: 0.3s;
+      }
+      .formData[data-error-visible="true"]::after {
+        opacity: 1;
+      }
+      .formData[data-error-visible="true"] {
+        input, textarea{
+            border: 2px solid #e54858;
+        }
+      }
 }
