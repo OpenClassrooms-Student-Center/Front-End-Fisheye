@@ -8,7 +8,7 @@ export default function modalTemplate(name) {
                     <form>
                         <div>
                             <label for="name">Prénom</label>
-                            <input type="text" id="name name="name" class="text" role="text field" aria-label="entrer votre prénon" required minlength="2"/>
+                            <input type="text" id="name name="name" class="text" role="text field" aria-label="Fist name" required minlength="2"/>
                         </div>
                         <div>
                             <label for="lastName">Nom</label>

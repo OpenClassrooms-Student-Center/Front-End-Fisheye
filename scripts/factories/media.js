@@ -6,11 +6,11 @@ export default function mediaFactory(media, name) {
   function createCard(data, container, sortMedia) {
     const article = `<${data.elt._tag} src=${data.elt._path} role="Image link" aria-Label="${media.title}, vue de présentation}" tabindex="0" class="photo"></${data.elt._tag}>
                   <aside class="media__aside">
-                      <span class="photo__title" >${media.title}</span>
-                      <span class="photo__likes" aria-label=${media.userLike ? 'enlever like' : 'ajouter like'} tabindex="0">
-                          <span>${media.likes}</span>
+                      <p class="photo__title" >${media.title}</p>
+                      <p class="photo__likes" aria-label=${media.userLike ? 'enlever like' : 'ajouter like'} tabindex="0">
+                          <p>${media.likes}</p>
                           <i class="fas fa-heart" role="Image" aria-label="likes">
-                      </i></span>
+                      </i></p>
                   </aside>`;
 
     const card = document.createElement('article');
