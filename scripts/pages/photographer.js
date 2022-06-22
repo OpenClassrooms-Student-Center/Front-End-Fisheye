@@ -4,6 +4,7 @@ import { Filter } from "../components/filter/index.js";
 import { PhotographerProfilHeader } from "../components/photographerProfile/index.js";
 import { MediasFactory } from "../factories/photographerMediaFactory.js";
 import { getData } from "../services/getData.js";
+import { Lightbox } from "../utils/lightBox.js";
 
 const data = await getData(URL);
 const id = parseInt(new URLSearchParams(location.search).get("photographer"));
@@ -113,6 +114,8 @@ const generatePhotographerMedias = (currentMedias, currentPhotographer) => {
     portfolioBlock.appendChild(photoCardDOM.buildMediaCard());
     individualLikesCount(media);
   });
+
+  Lightbox.init();
 };
 
 /**
@@ -184,7 +187,7 @@ const sortBy = (element, sortOptions, toggleBox, widgetOpen, optionShowed) => {
   sortOptions.forEach((option) => {
     option.style.display = "none";
   });
-  
+
   widgetOpen = false;
   toggleBox.focus();
 };
@@ -194,12 +197,12 @@ const getSortedMedias = () => {
   const sortOptions = Array.from(document.querySelectorAll(".sort-option"));
   let optionShowed = document.querySelectorAll(".dropdown > button");
   let widgetOpen = false;
-  console.log("variables :", toggleBox, sortOptions, optionShowed, widgetOpen);
 
   // togglebox button property
-  toggleBox.addEventListener("click", () =>
-    manageOptions(widgetOpen, sortOptions, optionShowed)
-  );
+  toggleBox.addEventListener("click", () => {
+    // console.log("toggle filter list");
+    manageOptions(widgetOpen, sortOptions, optionShowed);
+  });
 
   sortOptions.forEach((element) =>
     element.addEventListener("click", () =>

@@ -290,5 +290,64 @@ form textarea {
     height: 150px;
     padding: 10px;
 }
+.lightbox {
+    position: fixed;
+    top: 0;
+    left: 0;
+    display: flex;
+    height: 100%;
+    width: 100%;
+    color: #901C1C;
+    background: #fff;
+    z-index: 20;
+}
 
+.lightbox:focus {
+    outline: none;
+}
 
+.lightbox button{
+    font-size: 58px;
+    border: none;
+    background-color: unset;
+    cursor: pointer;
+    color: inherit;
+}
+
+.lightbox .lightbox-left,.lightbox-right {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    flex: 1;
+}
+.lightbox .lightbox-right .close {
+    position: absolute;
+    top: 20px;
+    left: 50%;
+    transform: translate(-50%, 50%);
+}
+.lightbox .lightbox-content{
+    flex: 4;
+    display: flex;
+    justify-content: center;
+    padding: 60px 0px;
+    font-size: 24px;
+}
+.lightbox .lightbox-content div {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.lightbox .lightbox-content div img, 
+.lightbox .lightbox-content div video {
+    object-fit: cover;
+    border-radius: 0.3em;
+    max-height: 100%;
+    max-width: 100%;
+}
+.lightbox .lightbox-content div p {
+    position: relative;
+    top: 10px;
+}
