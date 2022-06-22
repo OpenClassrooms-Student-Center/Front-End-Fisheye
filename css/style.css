@@ -45,12 +45,24 @@
 }
 .modal header img {
   cursor: pointer;
-  margin-top: -90px;
+  margin-top: 0px;
 }
 .modal header h2 {
   font-size: 50px;
   font-weight: normal;
   line-height: 1.2;
+}
+
+.close_form {
+  margin-top: -50px;
+  height: 40px;
+  width: 40px;
+  background: transparent;
+  border: none;
+  padding: 0;
+}
+.close_form:focus {
+  outline: 2px dashed white;
 }
 
 form {
@@ -85,7 +97,7 @@ form textarea {
   height: 150px;
   resize: none;
 }
-form input:focus, form textarea:focus {
+form input:focus, form textarea:focus, form button:focus {
   outline: 2px dashed white;
 }
 form .formData[data-error]::after {

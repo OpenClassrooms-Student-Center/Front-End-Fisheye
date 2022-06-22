@@ -39,7 +39,7 @@
 
         img {
             cursor: pointer;
-            margin-top: -90px;
+            margin-top: 0px;
         }
         h2 {
             font-size: 50px;
@@ -49,6 +49,17 @@
     }
 }
 
+.close_form {
+    margin-top: -50px;
+    height: 40px;
+    width: 40px;
+    background: transparent;
+    border: none;
+    padding: 0;
+    &:focus{
+        outline: 2px dashed white;
+    }
+}
 
 form {
     display: flex;
@@ -76,7 +87,7 @@ form {
         height: 150px;
         resize:none;
     }
-    input:focus, textarea:focus {
+    input:focus, textarea:focus, button:focus {
         outline: 2px dashed white;
     }
     .formData[data-error]::after {
