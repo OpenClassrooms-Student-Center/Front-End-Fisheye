@@ -137,7 +137,7 @@ const manageOptions = (widgetOpen, sortOptions, optionShowed) => {
 };
 
 /**
- *
+ *Sort Photographer Media by dropList filter
  * @param {*} element
  * @param {*} sortOptions
  * @param {*} toggleBox
@@ -163,6 +163,7 @@ const sortBy = (element, sortOptions, toggleBox, widgetOpen, optionShowed) => {
       });
       break;
   }
+
   generatePhotographerMedias(currentMedias, currentPhotographer);
 
   // new list of options
@@ -181,9 +182,9 @@ const sortBy = (element, sortOptions, toggleBox, widgetOpen, optionShowed) => {
 
   // close the sortwidget after clicking on an option
   sortOptions.forEach((option) => {
-    console.log("je suis ici ====");
     option.style.display = "none";
   });
+  
   widgetOpen = false;
   toggleBox.focus();
 };
