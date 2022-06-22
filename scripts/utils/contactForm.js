@@ -42,6 +42,7 @@ function validInput(element) {
 	element.parentNode.removeAttribute("data-error");
 }
 
+document.addEventListener('keyup', keyboardAcces);
 document.querySelector(".contact_form").addEventListener("click", displayModal);
 document.querySelector(".close_form").addEventListener("click", closeModal);
 document.querySelector(".send_form").addEventListener("click", (e) => {
@@ -78,11 +79,16 @@ document.querySelector(".send_form").addEventListener("click", (e) => {
         email: email.value,
         message: message.value,
         };
-    console.log("User inputs:", userInputs);
-    closeModal();
-  } 
+        console.log("User inputs:", userInputs);
+        closeModal();
+    } 
 });
 
+function keyboardAcces(e) {
+    if (e.key === 'Escape') {
+        closeModal();
+    }
+}
 
 function displayModal() {
     modal.classList.add('fade-out');

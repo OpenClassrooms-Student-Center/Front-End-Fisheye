@@ -1,5 +1,6 @@
 function sortList(currentMedias, currentPhotographer) {
     const selectElement = document.querySelector('.selected');
+    selectElement.setAttribute("aria-expanded", false);
     const options = document.querySelector('.options');
     const optDate = document.querySelector('.optDate');
     const optTitle = document.querySelector('.optTitle');
@@ -7,6 +8,9 @@ function sortList(currentMedias, currentPhotographer) {
     
     selectElement.addEventListener('click', () => {
         document.querySelector('.fa-chevron-down').classList.toggle('chevron-up');
+        let ariaExpanded = selectElement.getAttribute("aria-expanded");
+        ariaExpanded == "true" ? ariaExpanded = "false" : ariaExpanded = "true";
+        selectElement.setAttribute("aria-expanded", ariaExpanded);
         options.classList.toggle('hidden');
     });
     if (optDate) {
