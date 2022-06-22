@@ -37,13 +37,13 @@ async function getPhotos(photographerId) {
       );
       const medias = dataMedias.map((dataMedia) => mediaFactory(dataMedia, mediaPage[0].name));
       const name = mediaPage[0][0];
-      const price = mediaPage[0][3];
+      const price = mediaPage[0];
       const sortMedia = getSelectedSort(medias);
 
       const sumLikes = document.querySelector('.totalLikes__likes');
       sumLikes.innerHTML = totalLikes(sortMedia);
       const pricePerDay = document.querySelector('.totalLikes__price');
-      pricePerDay.innerHTML = `${price} /jour`;
+      pricePerDay.innerHTML = `${price.price}E /jour`;
 
       const modalContainer = document.getElementById('contact_modal');
       const modal = document.createElement('div');

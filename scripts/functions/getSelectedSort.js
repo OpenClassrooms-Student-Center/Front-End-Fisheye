@@ -87,6 +87,7 @@ export default function getSelectedSort(data) {
   btndrop.addEventListener('click', dropDown);
   document.addEventListener('keydown', keySelect);
   document.addEventListener('keyup', reactiveScroll);
+  document.addEventListener('focusout', reactiveScroll);
 
   liItems.forEach((item) => {
     const option = item.querySelector('span');
