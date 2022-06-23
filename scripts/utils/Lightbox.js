@@ -107,9 +107,12 @@ class Lightbox {
         const lightbox = document.createElement('div')
 
         lightbox.setAttribute('class', 'lightbox')
+        lightbox.setAttribute('role', 'dialog')
+        lightbox.setAttribute('aria-label', 'image closeup view')
         lightbox.innerHTML = `
             <button 
                 class="button-close"
+                aria-label="Close dialog"
             >
                 <i 
                     class="fa-solid fa-xmark"
@@ -117,14 +120,14 @@ class Lightbox {
                 >
                 </i>
             </button>
-            <a class="lightbox__next">
+            <a class="lightbox__next" alt="Next image">
                 <i
                     class="fa-solid fa-chevron-down fa-rotate-270"
                     aria-hidden="true"
                 >
                 </i>
             </a>
-            <a class="lightbox__prev">
+            <a class="lightbox__prev" alt="Previous image">
                 <i
                     class="fa-solid fa-chevron-down fa-rotate-90"
                     aria-hidden="true"
