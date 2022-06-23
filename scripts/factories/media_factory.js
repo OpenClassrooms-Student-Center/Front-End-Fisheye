@@ -22,6 +22,7 @@ class MediaFactory {
         const media = document.createElement(!!this.image ? 'img' : 'video');
         const divLikes = document.createElement('div');
         const likesNb = document.createElement('span');
+        const btnLike = document.createElement('button');
         const heart = document.createElement('i');
         
         //Set attributes and class for the CSS
@@ -40,8 +41,9 @@ class MediaFactory {
         figure.appendChild(figcaption);
         figcaption.appendChild(p);
         figcaption.appendChild(divLikes);
+        btnLike.appendChild(heart);
         divLikes.appendChild(likesNb);
-        divLikes.appendChild(heart);
+        divLikes.appendChild(btnLike);
 
         return {figure};
     }

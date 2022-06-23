@@ -232,8 +232,9 @@ a {
   cursor: pointer;
   transition: background ease 0.2s;
 }
-.button:hover {
+.button:hover, .button:focus-visible {
   background: #D3573C;
+  outline: none;
   transition: background ease 0.2s;
 }
 
@@ -323,7 +324,8 @@ a {
   background-color: #901C1C;
   padding-left: 15px;
 }
-.sort_list button:hover {
+.sort_list button:hover, .sort_list button:focus-visible {
+  outline: none;
   background: #D3573C;
   transition: background ease 0.2s;
 }
@@ -404,6 +406,13 @@ a {
   border-radius: 5px;
   object-fit: cover;
   cursor: pointer;
+  transition: 0.2s;
+}
+#medias_section figure img:focus-visible, #medias_section figure video:focus-visible {
+  transform: scale(1.03);
+  opacity: 0.85;
+  outline: 3px solid #901C1C;
+  transition: 0.2s;
 }
 #medias_section figcaption {
   display: flex;
@@ -419,9 +428,20 @@ a {
 #medias_section figcaption .likes {
   white-space: nowrap;
 }
-#medias_section figcaption i {
-  padding-left: 8px;
+#medias_section figcaption button {
+  margin-left: 8px;
   cursor: pointer;
+  background: none;
+  border: none;
+  color: inherit;
+  font-size: inherit;
+  transition: 0.2s;
+}
+#medias_section figcaption button:focus-visible {
+  outline: none;
+  color: #D3573C;
+  transform: scale(1.5);
+  transition: 0.2s;
 }
 #medias_section .likes-price {
   background: #D3573C;

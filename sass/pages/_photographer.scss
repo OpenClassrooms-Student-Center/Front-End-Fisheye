@@ -45,7 +45,8 @@
         text-align: left;
         background-color: $color-primary-dark;
         padding-left: 15px;
-        &:hover{
+        &:hover, &:focus-visible {
+            outline: none;
             background: $color-primary-light;
             transition: background ease .2s;
         }
@@ -128,6 +129,14 @@
         border-radius: 5px;
         object-fit: cover;
         cursor: pointer;
+        transition: .2s;
+
+        &:focus-visible{
+            transform: scale(1.03);
+            opacity: 0.85;
+            outline: 3px solid $color-primary-dark;
+            transition: .2s;
+        }
     }
 
     figcaption {
@@ -142,9 +151,21 @@
         .likes {
             white-space: nowrap;
         }
-        i {
-            padding-left: 8px;
+        button {
+            margin-left: 8px;
             cursor: pointer;
+            background: none;
+            border: none;
+            color: inherit;
+            font-size: inherit;
+            transition: .2s;
+
+            &:focus-visible {
+                outline: none;
+                color: $color-primary-light;
+                transform: scale(1.5);
+                transition: .2s;
+            }
         }
     }
     .likes-price {

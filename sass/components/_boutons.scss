@@ -12,8 +12,9 @@
     cursor: pointer;
     transition: background ease .2s;
 
-    &:hover{
+    &:hover, &:focus-visible {
         background: $color-primary-light;
+        outline: none;
         transition: background ease .2s;
     }
 }

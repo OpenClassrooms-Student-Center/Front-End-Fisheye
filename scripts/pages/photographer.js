@@ -28,20 +28,21 @@ async function displayData(medias, photographer) {
 
 //Like btn incrementation
 async function likesClick() {
-    const likeBtn = document.querySelectorAll(".likes i");
+    const likeBtn = document.querySelectorAll(".likes button");
+    const heart = document.querySelectorAll(".likes i");
     const totalLikes = document.querySelector(".likes-count");
     
     likeBtn.forEach((btn) => {
         btn.addEventListener("click", () => {
             const likeNumber = btn.parentNode.firstChild;
 
-            if (btn.classList.contains('fa-regular')) {
-                btn.classList.replace('fa-regular', 'fa-solid');
+            if (btn.firstChild.classList.contains('fa-regular')) {
+                btn.firstChild.classList.replace('fa-regular', 'fa-solid');
                 likeNumber.textContent = (parseInt(likeNumber.textContent) + 1);
                 totalLikes.textContent = (parseInt(totalLikes.textContent) + 1);
                 
-            } else if (btn.classList.contains('fa-solid')){
-                btn.classList.replace('fa-solid', 'fa-regular');
+            } else if (btn.firstChild.classList.contains('fa-solid')){
+                btn.firstChild.classList.replace('fa-solid', 'fa-regular');
                 likeNumber.textContent = (parseInt(likeNumber.textContent) - 1);
                 totalLikes.textContent = (parseInt(totalLikes.textContent) - 1);
             }
