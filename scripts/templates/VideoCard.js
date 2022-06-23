@@ -13,41 +13,35 @@ class VideoCard {
 
     getVideoCardDom() {
         const mediaItem = document.createElement('div')
+
+        const videoName = this.video
+            .replace('.mp4', '')
+            .replaceAll('_', ' ')
+
         mediaItem.setAttribute('class', 'media__item')
-
-        const video = document.createElement('video')
-
-        const accessibleVideoName = this.video.replace('.mp4', '')
-
-        video.setAttribute(
-            'src',
-            `/assets/media/${this.photographerName}/${this.video}`
-        )
-        video.setAttribute('alt', `${accessibleVideoName}, closeup view`)
-
-        const spanTitle = document.createElement('span')
-        spanTitle.textContent = this.title
-        spanTitle.setAttribute('class', 'title')
-
-        const spanLikes = document.createElement('span')
-        spanLikes.textContent = this.likes
-        spanLikes.setAttribute('class', 'likes')
-
-        const iconLike = document.createElement('i')
-        iconLike.setAttribute('class', 'fa-solid fa-heart icon')
-        iconLike.setAttribute('video-fa-transform', 'up-1')
-
-        const p = document.createElement('p')
-        p.setAttribute('class', 'content')
-        const likeDiv = document.createElement('div')
-        likeDiv.setAttribute('class', 'subContent')
-
-        p.appendChild(spanTitle)
-        likeDiv.appendChild(spanLikes)
-        likeDiv.appendChild(iconLike)
-        p.appendChild(likeDiv)
-        mediaItem.appendChild(video)
-        mediaItem.appendChild(p)
+        mediaItem.innerHTML = `
+            <a 
+                href="/assets/media/${this.photographerName}/${this.video}"
+                alt="${this.title}"
+            >
+                <video 
+                    src="/assets/media/${this.photographerName}/${this.video}" 
+                    alt="${videoName}, closeup view"
+                >
+                </video>
+                <div class="content">
+                    <span class="title">${this.title}</span>
+                    <div class="subContent">
+                        <span class="likes">${this.likes}</span>
+                        <i 
+                            class="fa-solid fa-heart icon" 
+                            data-fa-transform="up-1"
+                        >
+                        </i>
+                    </div>
+                </div>
+            </a>
+        `
 
         return mediaItem
     }

@@ -16,37 +16,37 @@ function loadList() {
 
 btnList.forEach((btn) => {
     btn.addEventListener('click', () => {
-        if (btn.id === 'like') {
-            loadBtnSelected()
-            changeBtnContent('Popularité')
+        switch (btn.id) {
+            case 'like':
+                loadBtnSelected()
+                changeBtnContent('Popularité')
 
-            btnList[0].setAttribute('aria-selected', 'true')
-            btnList[1].setAttribute('aria-selected', 'false')
-            btnList[2].setAttribute('aria-selected', 'false')
+                btnList[0].setAttribute('aria-selected', 'true')
+                btnList[1].setAttribute('aria-selected', 'false')
+                btnList[2].setAttribute('aria-selected', 'false')
 
-            sorterList.setAttribute('aria-activedescendant', `${btn.id}`)
-        }
+                sorterList.setAttribute('aria-activedescendant', `${btn.id}`)
+                break
+            case 'date':
+                loadBtnSelected()
+                changeBtnContent('Date')
 
-        if (btn.id === 'date') {
-            loadBtnSelected()
-            changeBtnContent('Date')
+                btnList[1].setAttribute('aria-selected', 'true')
+                btnList[0].setAttribute('aria-selected', 'false')
+                btnList[2].setAttribute('aria-selected', 'false')
 
-            btnList[1].setAttribute('aria-selected', 'true')
-            btnList[0].setAttribute('aria-selected', 'false')
-            btnList[2].setAttribute('aria-selected', 'false')
+                sorterList.setAttribute('aria-activedescendant', `${btn.id}`)
+                break
+            case 'title':
+                loadBtnSelected()
+                changeBtnContent('Titre')
 
-            sorterList.setAttribute('aria-activedescendant', `${btn.id}`)
-        }
+                btnList[2].setAttribute('aria-selected', 'true')
+                btnList[0].setAttribute('aria-selected', 'false')
+                btnList[1].setAttribute('aria-selected', 'false')
 
-        if (btn.id === 'title') {
-            loadBtnSelected()
-            changeBtnContent('Titre')
-
-            btnList[2].setAttribute('aria-selected', 'true')
-            btnList[0].setAttribute('aria-selected', 'false')
-            btnList[1].setAttribute('aria-selected', 'false')
-
-            sorterList.setAttribute('aria-activedescendant', `${btn.id}`)
+                sorterList.setAttribute('aria-activedescendant', `${btn.id}`)
+                break
         }
     })
 })
@@ -59,9 +59,13 @@ function loadBtnSelected() {
 }
 
 function changeBtnContent(content) {
-    btnSelected.innerHTML = `<span>${content}</span><i
-                        class="fa-solid fa-chevron-down"
-                        aria-hidden="true"
-                        data-fa-transform="right-32"
-                    ></i>`
+    btnSelected.innerHTML = `
+        <span>${content}</span>
+        <i
+            class="fa-solid fa-chevron-down"
+            aria-hidden="true"
+            data-fa-transform="right-25"
+        >
+        </i>
+    `
 }

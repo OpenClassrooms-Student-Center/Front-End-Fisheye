@@ -44,7 +44,7 @@ class PhotographerPage {
         // Retourne le tableau de photographes
         const photographersData = await this.photographerApi.getPhotographers()
 
-        this.photographerFiltered = this.filterPhotographer(
+        this.photographerFiltered = this.findPhotographer(
             photographersData,
             this.id
         )
@@ -52,10 +52,10 @@ class PhotographerPage {
         return new Photographer(this.photographerFiltered)
     }
 
-    filterPhotographer(photographers, photographerId) {
-        return photographers.filter(
+    findPhotographer(photographers, photographerId) {
+        return photographers.find(
             (photographer) => photographer.id === photographerId
-        )[0]
+        )
     }
 
     async fetchMediaFiltered() {
@@ -167,43 +167,43 @@ class PhotographerPage {
 
         // Element du DOM
         const btnList = document.querySelectorAll('.option')
-        
+
         btnList.forEach((btn) => {
             btn.addEventListener('click', () => {
-                if (btn.id === 'like') {
-                    // Supprimer la section media
-                    this.clearMediaSection()
+                switch (btn.id) {
+                    case 'like':
+                        // Supprimer la section media
+                        this.clearMediaSection()
 
-                    // Affiche les media par Popularité
-                    this.displayMediaSorted(
-                        this.mediaFiltered,
-                        `${btn.id}`,
-                        this.photographer
-                    )
-                }
+                        // Affiche les media par Popularité
+                        this.displayMediaSorted(
+                            this.mediaFiltered,
+                            'like',
+                            this.photographer
+                        )
+                        break
+                    case 'date':
+                        // Supprimer la section media
+                        this.clearMediaSection()
 
-                if (btn.id === 'date') {
-                    // Supprimer la section media
-                    this.clearMediaSection()
+                        // Affiche les media par Date
+                        this.displayMediaSorted(
+                            this.mediaFiltered,
+                            'date',
+                            this.photographer
+                        )
+                        break
+                    case 'title':
+                        // Supprimer la section
+                        this.clearMediaSection()
 
-                    // Affiche les media par Date
-                    this.displayMediaSorted(
-                        this.mediaFiltered,
-                        `${btn.id}`,
-                        this.photographer
-                    )
-                }
-
-                if (btn.id === 'title') {
-                    // Supprimer la section
-                    this.clearMediaSection()
-
-                    // Affiche les media par Titre
-                    this.displayMediaSorted(
-                        this.mediaFiltered,
-                        `${btn.id}`,
-                        this.photographer
-                    )
+                        // Affiche les media par Titre
+                        this.displayMediaSorted(
+                            this.mediaFiltered,
+                            'title',
+                            this.photographer
+                        )
+                        break
                 }
             })
         })
