@@ -25,7 +25,7 @@ function mediaFactory(data) {
     imgInfos.innerHTML = `<p class="image-title">${title}</p>
                           <div class="image-likes" aria-label="likes">
                             <span class="likes-number">${likes}</span>
-                            <img src="assets/icons/heart.png" alt="heart icon">
+                            <img src="assets/icons/heart.png" class="likes-heart" alt="heart icon">
                           </div>`;
     imgInfos.classList.add("image-infos");
     article.appendChild(img);

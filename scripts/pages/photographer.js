@@ -63,10 +63,12 @@ function displayMedia(medias) {
 function addLike() {
   let totalOfLikes = parseInt(document.getElementById("total-likes").innerText);
 
-  const heartsArray = Array.from(document.querySelectorAll(".image-likes"));
-  heartsArray.forEach((element) => {
+  const likesArray = Array.from(document.querySelectorAll(".likes-heart"));
+  likesArray.forEach((element) => {
     element.addEventListener("click", (e) => {
       e.preventDefault();
+      element.previousElementSibling.innerText =
+        parseInt(element.previousElementSibling.innerText) + 1;
 
       totalOfLikes += 1;
       document.getElementById("total-likes").innerText = `${totalOfLikes} 🖤`;
