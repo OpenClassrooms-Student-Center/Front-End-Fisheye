@@ -14,7 +14,7 @@ export class MediaVideo {
     const article = document.createElement("article");
     article.classList = "mediaBox";
     article.innerHTML = `
-            <video src="${videoLink}"  controls="true"  aria-label="${this.alt}, vue rapprochée" role="link" tabIndex="0"></video>
+            <video src="${videoLink}"   aria-label="${this.alt}, vue rapprochée" role="link" tabIndex="0"></video>
             <div>
                 <span class="titles">${this.title}</span>
                 <span class="likes">${this.likes}</span>
