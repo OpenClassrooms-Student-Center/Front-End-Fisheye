@@ -8,6 +8,12 @@ class Lightbox {
             const mediaURL = e.currentTarget.getAttribute('src');
             new Lightbox(mediaURL, gallery);
             }))
+        medias.forEach(media => media.addEventListener('keypress', e => {
+            if (e.key === 'Enter') {
+                const mediaURL = e.currentTarget.getAttribute('src');
+                new Lightbox(mediaURL, gallery);
+            }
+            }))
     }
   
     constructor(url, images) {
