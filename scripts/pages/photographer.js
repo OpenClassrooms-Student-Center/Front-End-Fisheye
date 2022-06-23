@@ -10,6 +10,7 @@ import { PictureCard } from '../templates/PictureCard.js'
 import { PriceAndLikesCard } from '../templates/PriceAndLikesCard.js'
 
 import { Sorter } from '../utils/Sorter.js'
+import { Lightbox } from '../utils/Lightbox.js'
 
 class PhotographerPage {
     constructor() {
@@ -135,6 +136,8 @@ class PhotographerPage {
                 throw new Error('Unknown type format')
             }
         })
+
+        Lightbox.init()
     }
 
     clearMediaSection() {

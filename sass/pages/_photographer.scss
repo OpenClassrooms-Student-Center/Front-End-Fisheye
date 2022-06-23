@@ -70,7 +70,7 @@
             height: 18.75rem;
             object-fit: cover;
             border-radius: 0.313rem;
-            background-color: #C4C4C4;
+            background-color: #c4c4c4;
         }
         & .content {
             display: flex;
@@ -120,6 +120,59 @@
     }
     & .price {
         padding-left: 5rem;
+    }
+}
+
+.lightbox {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #ffffff;
+    z-index: 10;
+    &__next,
+    &__prev {
+        position: fixed;
+        top: 50%;
+        right: 0;
+        z-index: 11;
+        border: 0.125rem;
+        margin: 0 6.25rem;
+        cursor: pointer;
+        color: $colorPrimary;
+        font-size: map-get($map: $font-size, $key: text) + 2;
+    }
+    &__prev {
+        right: auto;
+        left: 0;
+    }
+    &__container {
+        margin: 3.775rem 10rem;
+        &__figure {
+            max-width: 100%;
+            height: 80vh;
+            padding: 0 25%;
+            &--mp4 {
+                padding: 0;
+            }
+            img,
+            video {
+                object-fit: cover;
+                width: 100%;
+                height: 100%;
+                background-color: #C4C4C4;
+                padding-right: 0.313rem;
+                border-radius: 0.313rem;
+            }
+        }
+        &__title {
+            display: block;
+            text-align: left;
+            padding-top: 0.75rem;
+            font-size: map-get($map: $font-size, $key: text) + 0.375;
+            color: $colorPrimary;
+        }
     }
 }
 
