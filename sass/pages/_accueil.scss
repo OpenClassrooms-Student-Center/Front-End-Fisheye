@@ -19,6 +19,7 @@
 
     img {
         @include profil-picture;
+        transition: .2s;
     }
 
     .city {
@@ -30,3 +31,19 @@
         color: $color-secondary-dark;
     }
 }
+
+article a:focus-visible {
+    outline: none;
+
+    & > img {
+        transform: scale(1.2);
+        opacity: 0.85;
+        transition: .2s;
+    }
+}
+
+// article a:focus-visible > img {
+//     transform: scale(1.2);
+//     outline: none;
+//     transition: .2s;
+// }

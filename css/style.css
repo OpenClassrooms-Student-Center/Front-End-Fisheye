@@ -264,6 +264,7 @@ a {
   border-radius: 50%;
   object-fit: cover;
   box-shadow: 1px 1px 15px rgba(150, 150, 150, 0.5);
+  transition: 0.2s;
 }
 #photographer_section article .city, #photographer_section a .city {
   color: #901C1C;
@@ -271,6 +272,15 @@ a {
 }
 #photographer_section article .price, #photographer_section a .price {
   color: #525252;
+}
+
+article a:focus-visible {
+  outline: none;
+}
+article a:focus-visible > img {
+  transform: scale(1.2);
+  opacity: 0.85;
+  transition: 0.2s;
 }
 
 .photograph-header {
