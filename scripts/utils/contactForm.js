@@ -1,3 +1,4 @@
+const main = document.querySelector("#main");
 const modal = document.querySelector(".contact_modal");
 const firstName = document.querySelector("#first");
 const lastName = document.querySelector("#last");
@@ -91,6 +92,8 @@ function keyboardAcces(e) {
 }
 
 function displayModal() {
+    main.ariaHidden = "true";
+    modal.ariaHidden = "false";
     modal.classList.add('fade-out');
 	modal.style.display = "block";
     window.setTimeout(() => {
@@ -99,6 +102,8 @@ function displayModal() {
 }
 
 function closeModal() {
+    main.ariaHidden = "false";
+    modal.ariaHidden = "true";
     modal.classList.add('fade-out');
     window.setTimeout(() => {
         modal.style.display = "none";

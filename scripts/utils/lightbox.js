@@ -7,11 +7,13 @@ class Lightbox {
         medias.forEach(media => media.addEventListener('click', e => {
             const mediaURL = e.currentTarget.getAttribute('src');
             new Lightbox(mediaURL, gallery);
+            document.querySelector('#main').ariaHidden = "true";
             }))
         medias.forEach(media => media.addEventListener('keypress', e => {
             if (e.key === 'Enter') {
                 const mediaURL = e.currentTarget.getAttribute('src');
                 new Lightbox(mediaURL, gallery);
+                document.querySelector('#main').ariaHidden = "true";
             }
             }))
     }
@@ -22,7 +24,8 @@ class Lightbox {
         this.images = images;
         this.loadImage(url);
     
-        document.querySelector('#main').appendChild(this.divLightbox);
+        // document.querySelector('#main').appendChild(this.divLightbox);
+        document.querySelector('#main').parentNode.insertBefore(this.divLightbox, document.querySelector('.contact_modal'));
         this.keyboardAcces = this.keyboardAcces.bind(this);
         document.addEventListener('keyup', this.keyboardAcces);
     }
@@ -58,6 +61,7 @@ class Lightbox {
   
     close() {
         this.divLightbox.classList.add('fade-out');
+        document.querySelector('#main').ariaHidden = "false";
         window.setTimeout(() => {
             this.divLightbox.parentElement.removeChild(this.divLightbox);
         }, 500)
@@ -85,6 +89,8 @@ class Lightbox {
     buildDOM() {
         this.divLightbox = document.createElement('div');
         this.divLightbox.classList.add('lightbox');
+        this.divLightbox.ariaHidden = "false";
+        this.divLightbox.setAttribute("role", "dialog");
         this.divLightbox.innerHTML = `<button class="lightbox__close" aria-label="Fermer la visionneuse"></button>
             <button class="lightbox__next" aria-label="Média suivant"></button>
             <button class="lightbox__prev" aria-label="Média précédent"></button>
