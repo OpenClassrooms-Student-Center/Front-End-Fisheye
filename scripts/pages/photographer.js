@@ -44,9 +44,9 @@ const implementTotalLikes = () => {
   const mediaLikes = document.querySelectorAll(".likes");
   let likes = 0;
   mediaLikes.forEach((element) => {
-    console.log("element ==> ", element);
+    // console.log("element ==> ", element);
     likes = likes + parseInt(element.innerText);
-    console.log("element likes  ==> ", likes);
+    // console.log("element likes  ==> ", likes);
   });
 
   globalLikes.innerText = likes;
@@ -106,6 +106,10 @@ const displayGlobalLikes = () => {
  * @param {*} currentPhotographer
  */
 const generatePhotographerMedias = (currentMedias, currentPhotographer) => {
+  // sort by popularity on load
+  currentMedias?.sort(function (a, b) {
+    return b.likes - a.likes;
+  });
   const portfolioBlock = document.querySelector(".portfolio");
   portfolioBlock.innerHTML = "";
   currentMedias.forEach((media) => {
@@ -125,6 +129,8 @@ const generatePhotographerMedias = (currentMedias, currentPhotographer) => {
  * @param {*} optionShowed
  */
 const manageOptions = (widgetOpen, sortOptions, optionShowed) => {
+  console.log(" optionShowed", optionShowed);
+
   if (widgetOpen == false) {
     sortOptions.forEach((option) => {
       option.style.display = "block";
@@ -195,6 +201,9 @@ const sortBy = (element, sortOptions, toggleBox, widgetOpen, optionShowed) => {
 const getSortedMedias = () => {
   const toggleBox = document.querySelector(".toggle-listbox");
   const sortOptions = Array.from(document.querySelectorAll(".sort-option"));
+  const angle = document.querySelector(".fa-angle-down");
+  //angle.className = "fa-angle-up";
+  console.log("angle ==== ", angle);
   let optionShowed = document.querySelectorAll(".dropdown > button");
   let widgetOpen = false;
 

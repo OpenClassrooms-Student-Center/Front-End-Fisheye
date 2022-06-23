@@ -1,6 +1,5 @@
 export class MediaVideo {
   constructor(media, photographeName) {
-    console.log("media.alt : ", media.alt);
     this.photographeName = photographeName;
     this.title = media.title;
     this.alt = media.alt;
@@ -30,7 +29,6 @@ export class MediaVideo {
 
 export class MediaImg {
   constructor(media, photographeName) {
-    console.log("media.alt : ", media.alt);
     this.photographeName = photographeName;
     this.title = media.title;
     this.alt = media.alt;
