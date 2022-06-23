@@ -13,11 +13,14 @@ async function getSelectedPhotographer(id) {
   const photographerMedias = medias.filter(
     (media) => media.photographerId === id
   );
-  return [selectedPhotographer, photographerMedias];
+
+  const likesArray = photographerMedias.map((media) => media.likes);
+  const sumOfLikes = likesArray.reduce((a, b) => a + b, 0);
+  return [selectedPhotographer, photographerMedias, sumOfLikes];
 }
 
 // display Photographer Header
-function displayPhotographer(photographer) {
+function displayPhotographer(photographer, likes) {
   const photographerModel = photographerFactory(photographer);
   const photographerHeader = document.querySelector(".photograph-header");
   const main = document.getElementById("main");
@@ -38,7 +41,7 @@ function displayPhotographer(photographer) {
   );
   portrait.classList.add("portrait");
 
-  insert.innerHTML = `<p>likes 🖤</p>
+  insert.innerHTML = `<p>${likes} 🖤</p>
                       <p>${photographerModel.price}€ / jour</p>`;
   insert.classList.add("photograph-insert");
 
@@ -59,9 +62,9 @@ function displayMedia(medias) {
 async function selectedInit() {
   const params = new URL(document.location).searchParams;
   const photographerId = parseInt(params.get("id"));
-  const [selectedPhotographer, photographerMedias] =
+  const [selectedPhotographer, photographerMedias, sumOfLikes] =
     await getSelectedPhotographer(photographerId);
-  displayPhotographer(selectedPhotographer);
+  displayPhotographer(selectedPhotographer, sumOfLikes);
   displayMedia(photographerMedias);
 }
 

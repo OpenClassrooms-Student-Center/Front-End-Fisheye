@@ -1,5 +1,5 @@
 function photographerFactory(data) {
-  const { name, portrait, city, country, price, tagline, id } = data;
+  const { name, portrait, city, country, price, tagline, id, likes } = data;
 
   function getUserCardDOM() {
     const article = document.createElement("article");
@@ -14,5 +14,16 @@ function photographerFactory(data) {
                         `;
     return article;
   }
-  return { name, id, portrait, city, country, price, tagline, getUserCardDOM };
+
+  return {
+    name,
+    id,
+    portrait,
+    city,
+    country,
+    price,
+    tagline,
+    likes,
+    getUserCardDOM,
+  };
 }
