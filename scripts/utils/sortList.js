@@ -38,24 +38,24 @@ function manageSortList(opt){
     divSortList.innerHTML = " ";
     if (opt == 'popular') {
         divSortList.innerHTML = 
-       `<p class="selected">Populaire<i class="fas fa-chevron-down"></i></p>
+       `<button class="selected">Populaire<i class="fas fa-chevron-down"></i></button>
        <div class="options hidden">  
-           <p class="optDate">Date</p>
-           <p class="optTitle">Titre</p>
+           <button class="optDate">Date</button>
+           <button class="optTitle">Titre</button>
        </div>`;
    } else if (opt == 'date') {
        divSortList.innerHTML = 
-       `<p class="selected">Date<i class="fas fa-chevron-down"></i></p>
+       `<button class="selected">Date<i class="fas fa-chevron-down"></i></button>
        <div class="options hidden">  
-           <p class="optPopular">Populaire</p>
-           <p class="optTitle">Titre</p>
+           <button class="optPopular">Populaire</button>
+           <button class="optTitle">Titre</button>
        </div>`;
    } else if (opt == 'title') {
        divSortList.innerHTML = 
-       `<p class="selected">Titre<i class="fas fa-chevron-down"></i></p>
+       `<button class="selected">Titre<i class="fas fa-chevron-down"></i></button>
        <div class="options hidden">  
-           <p class="optPopular">Populaire</p>
-           <p class="optDate">Date</p>
+           <button class="optPopular">Populaire</button>
+           <button class="optDate">Date</button>
        </div>`;
    }
 }

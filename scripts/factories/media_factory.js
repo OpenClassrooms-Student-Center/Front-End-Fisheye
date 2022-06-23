@@ -93,10 +93,10 @@ class MediaFactory {
         this.divSortList = document.createElement('div');
         this.divSortList.classList.add('sort_list');
         this.divSortList.innerHTML = 
-           `<p class="selected">Populaire<i class="fas fa-chevron-down"></i></p>
+           `<button class="selected">Populaire<i class="fas fa-chevron-down"></i></button>
            <div class="options hidden">  
-               <p class="optDate">Date</p>
-               <p class="optTitle">Titre</p>
+               <button class="optDate">Date</button>
+               <button class="optTitle">Titre</button>
            </div>`;
         document.querySelector('#main').insertBefore(this.divSortList, this.mediasSection);
     }
