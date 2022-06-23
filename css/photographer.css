@@ -237,9 +237,10 @@ aside .rowLikes i{
     margin-left: 10px;
 }
 .play-circle{
-    font-size: 23px;
+    font-size: 42px;
     position: absolute;
     align-items:center;
+    color: #901C1C;
 }
 .contact-button {
     font-size: 20px;
