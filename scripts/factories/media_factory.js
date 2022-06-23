@@ -27,6 +27,7 @@ class MediaFactory {
         //Set attributes and class for the CSS
         media.setAttribute("src", this.mediaPath);
         media.setAttribute("alt", this.title);
+        media.setAttribute("tabindex", "0");
         divLikes.classList.add('likes');
         heart.classList.add('fa-regular', 'fa-heart');
 
