@@ -56,8 +56,12 @@
     background: transparent;
     border: none;
     padding: 0;
-    &:focus{
-        outline: 2px dashed white;
+    transition: .4s ease-in-out;
+    &:focus-visible{
+        outline: none;
+        transform: rotate(180deg);
+        opacity: 0.6;
+        transition: .4s ease-in-out;
     }
 }
 
@@ -88,7 +92,7 @@ form {
         resize:none;
     }
     input:focus, textarea:focus, button:focus {
-        outline: 2px dashed white;
+        outline: 2px solid $color-primary-dark;
     }
     .formData[data-error]::after {
         content: attr(data-error);
