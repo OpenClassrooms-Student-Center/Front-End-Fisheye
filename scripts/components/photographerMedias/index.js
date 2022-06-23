@@ -15,6 +15,7 @@ export class MediaVideo {
     article.classList = "mediaBox";
     article.innerHTML = `
             <video src="${videoLink}"   aria-label="${this.alt}, vue rapprochée" role="link" tabIndex="0"></video>
+            <span class= "play-circle"> <i class="fa-solid fa-circle-play"></i></span>
             <div>
                 <span class="titles">${this.title}</span>
                 <span class="likes">${this.likes}</span>
