@@ -16,6 +16,7 @@ async function getSelectedPhotographer(id) {
 
   const likesArray = photographerMedias.map((media) => media.likes);
   const sumOfLikes = likesArray.reduce((a, b) => a + b, 0);
+
   return [selectedPhotographer, photographerMedias, sumOfLikes];
 }
 
@@ -41,7 +42,7 @@ function displayPhotographer(photographer, likes) {
   );
   portrait.classList.add("portrait");
 
-  insert.innerHTML = `<p>${likes} 🖤</p>
+  insert.innerHTML = `<p id="total-likes">${likes} 🖤</p>
                       <p>${photographerModel.price}€ / jour</p>`;
   insert.classList.add("photograph-insert");
 
@@ -59,6 +60,20 @@ function displayMedia(medias) {
   });
 }
 
+function addLike() {
+  let totalOfLikes = parseInt(document.getElementById("total-likes").innerText);
+
+  const heartsArray = Array.from(document.querySelectorAll(".image-likes"));
+  heartsArray.forEach((element) => {
+    element.addEventListener("click", (e) => {
+      e.preventDefault();
+
+      totalOfLikes += 1;
+      document.getElementById("total-likes").innerText = `${totalOfLikes} 🖤`;
+    });
+  });
+}
+
 async function selectedInit() {
   const params = new URL(document.location).searchParams;
   const photographerId = parseInt(params.get("id"));
@@ -66,6 +81,7 @@ async function selectedInit() {
     await getSelectedPhotographer(photographerId);
   displayPhotographer(selectedPhotographer, sumOfLikes);
   displayMedia(photographerMedias);
+  addLike();
 }
 
 selectedInit();
