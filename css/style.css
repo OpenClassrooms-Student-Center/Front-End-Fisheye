@@ -400,6 +400,7 @@ article a:focus-visible > img {
 }
 #medias_section figure {
   position: relative;
+  width: 360px;
   margin: 20px;
 }
 #medias_section figure video + figcaption:after {
@@ -470,6 +471,50 @@ article a:focus-visible > img {
 #medias_section .likes-price i {
   margin-left: 10px;
   margin-right: 40px;
+}
+
+@media only screen and (max-width: 1400px) {
+  #medias_section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    margin-right: 80px;
+  }
+
+  .photograph-header {
+    height: auto;
+    margin: auto;
+    justify-content: space-between;
+    text-align: center;
+  }
+  .photograph-header img {
+    margin: 40px;
+  }
+}
+@media only screen and (max-width: 950px) {
+  .logo {
+    margin: auto;
+  }
+
+  .photograph-header {
+    flex-direction: column;
+    padding: 20px;
+  }
+  .photograph-header h1 {
+    width: auto;
+  }
+  .photograph-header button {
+    margin-top: 20px;
+  }
+
+  .sort_list {
+    margin: 20px;
+  }
+
+  #medias_section {
+    margin: auto;
+  }
 }
 
 /*# sourceMappingURL=style.css.map */

@@ -109,6 +109,7 @@
 
     figure {
         position: relative;
+        width: 360px;
         margin: 20px;
         video + figcaption:after{
             pointer-events:none;
@@ -183,5 +184,42 @@
             margin-right: 40px;
         }
     }
-    
+}
+
+@media only screen and (max-width: $break-point-tablet){
+    #medias_section {
+    @include flex-cc;
+    flex-wrap: wrap;
+    margin-right: 80px;
+    }
+    .photograph-header {
+        height: auto;
+        margin: auto;
+        justify-content: space-between;
+        text-align: center;
+        img {
+            margin: 40px;
+        }
+    }
+}
+@media only screen and (max-width: $break-point-mobile){
+    .logo{
+        margin: auto;
+    }
+    .photograph-header {
+        flex-direction: column;
+        padding: 20px;
+        h1{
+            width: auto;
+        }
+        button{
+            margin-top: 20px;
+        }
+    }
+    .sort_list{
+        margin: 20px;
+    }
+    #medias_section {
+        margin: auto;
+    }
 }
