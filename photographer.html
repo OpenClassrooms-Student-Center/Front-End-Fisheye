@@ -28,18 +28,26 @@
       </div>
     </section>
   </main>
-  <div id="contact_modal">
-    <div class="modal">
-      <header>
-        <h2>Contactez-moi</h2>
-        <img src="assets/icons/close.svg" onclick="closeModal()" />
+  <div id="contact-modal">
+    <div class="modal" role="dialog" aria-labelledby="modal-Title" tabindex="-1">
+      <header class="header-modal">
+        <h2 id="modal-Title">Contactez-moi<br></h2>
+        <img class="close-form" role="button" tabindex="-1" aria-label="Fermer le formulaire de contact"
+          src="assets/icons/close.svg" />
       </header>
       <form>
         <div>
-          <label>Prénom</label>
-          <input />
+          <label for="prenom">Prénom</label>
+          <input type="text" name="prenom" id="prenom" placeholder="Jean" required>
+          <label for="nom">Nom</label>
+          <input type="text" name="nom" id="nom" placeholder="Dupont" required>
+          <label for="email">Email</label>
+          <input type="email" name="email" id="email" placeholder="jean.dupont@gmail.com" required>
+          <label for="commentaire">Votre message</label>
+          <textarea name="commentaire" id="commentaire" rows="3" placeholder="Je prends contact avec vous..."
+            required></textarea>
         </div>
-        <button class="contact_button">Envoyer</button>
+        <button class="contact-button submit">Envoyer</button>
       </form>
     </div>
   </div>

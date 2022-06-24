@@ -4,6 +4,7 @@ import { Filter } from "../components/filter/index.js";
 import { PhotographerProfilHeader } from "../components/photographerProfile/index.js";
 import { MediasFactory } from "../factories/photographerMediaFactory.js";
 import { getData } from "../services/getData.js";
+import { Form } from "../utils/contactForm.js";
 import { Lightbox } from "../utils/lightBox.js";
 
 const data = await getData(URL);
@@ -24,6 +25,7 @@ const PhotographerProfil = async (data, id) => {
 
   sectionHeaderPhotographer.innerHTML =
     photographeCardHeader.createUserProfil();
+  new Form(currentPhotographer);
 };
 
 /**
@@ -33,7 +35,7 @@ const PhotographerProfil = async (data, id) => {
 const generateMediaFilter = () => {
   const section = document.querySelector(".filter");
   const mediaFilter = new Filter();
-  section.innerHTML = mediaFilter.createDropListFilter();
+  section.innerHTML = mediaFilter.createDropListFilter(true);
 };
 
 /**
