@@ -24,7 +24,6 @@ class Lightbox {
         this.images = images;
         this.loadImage(url);
     
-        // document.querySelector('#main').appendChild(this.divLightbox);
         document.querySelector('#main').parentNode.insertBefore(this.divLightbox, document.querySelector('.contact_modal'));
         this.keyboardAcces = this.keyboardAcces.bind(this);
         document.addEventListener('keyup', this.keyboardAcces);
