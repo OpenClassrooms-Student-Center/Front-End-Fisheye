@@ -541,6 +541,12 @@ article a:focus-visible > img {
   #medias_section {
     margin: auto;
   }
+  #medias_section .likes-price {
+    width: 90%;
+    left: 0px;
+    border-radius: 0;
+    text-align: center;
+  }
 }
 
 /*# sourceMappingURL=style.css.map */

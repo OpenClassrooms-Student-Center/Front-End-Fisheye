@@ -221,5 +221,13 @@
     }
     #medias_section {
         margin: auto;
+
+        .likes-price {
+            width: 90%;
+            left: 0px;
+            border-radius: 0;
+            text-align: center;
+        }
     }
+    
 }
