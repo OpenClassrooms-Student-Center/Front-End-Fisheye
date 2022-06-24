@@ -113,3 +113,15 @@ form {
         }
       }
 }
+
+@media only screen and (max-width: $break-point-mobile){
+    .modal {
+        width: 80%;      
+    }
+    #modalTitle {
+            font-size: 30px;
+    }
+    .formData label {
+        font-size: 20px;
+    }
+}

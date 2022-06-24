@@ -120,6 +120,19 @@ form .formData[data-error-visible=true] input, form .formData[data-error-visible
   background: #ffdcdc;
 }
 
+@media only screen and (max-width: 950px) {
+  .modal {
+    width: 80%;
+  }
+
+  #modalTitle {
+    font-size: 30px;
+  }
+
+  .formData label {
+    font-size: 20px;
+  }
+}
 .lightbox {
   position: fixed;
   top: 0;
