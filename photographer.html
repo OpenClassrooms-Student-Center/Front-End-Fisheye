@@ -1,36 +1,93 @@
 <!DOCTYPE html>
-<html>
+<html lang="fr">
   <head>
     <link href="css/style.css" rel="stylesheet" type="text/css" />
-    <meta charset="utf-8">
-    <link rel="icon" type="image/png" href="assets/favicon.png">
-    <link href="https://fonts.googleapis.com/css?family=DM+Sans&display=swap" rel="stylesheet">
-    <title>Fisheye - photographe </title>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/png" href="/assets/favicon.png" />
+    <link
+      href="https://fonts.googleapis.com/css?family=DM+Sans&display=swap"
+      rel="stylesheet"
+    />
+    <title>Fisheye - photographe</title>
   </head>
   <body>
-    <header>
-      <img src="assets/images/logo.png" class="logo" />
+    <header id="header" aria-hidden="false">
+      <a href="index.html">
+        <img
+          src="assets/images/logo.png"
+          class="logo"
+          alt="Fisheye Home page"
+        />
+      </a>
     </header>
-    <main id="main">
+    <main id="main" aria-hidden="false">
       <div class="photograph-header">
-        <button class="contact_button" onclick="displayModal()">Contactez-moi</button>
+        <button
+          id="contact"
+          class="contact-button"
+          aria-label="Contact Me"
+          onclick="displayModal()"
+        >
+          Contactez-moi
+        </button>
       </div>
+      <div class="photograph-sort">
+        <label class="select-label" for="sort-select">Trier par</label>
+        <select name="order by" id="sort-select">
+          <option class="select-option" id="popularity-sort">Popularité</option>
+          <option class="select-option" id="date-sort">Date</option>
+          <option class="select-option" id="title-sort">Titre</option>
+        </select>
+      </div>
+      <div class="photograph-media"></div>
     </main>
-    <div id="contact_modal">
-			<div class="modal">
-				<header>
-          <h2>Contactez-moi</h2>
-          <img src="assets/icons/close.svg" onclick="closeModal()" />
+    <div
+      id="contact_modal"
+      aria-hidden="true"
+      role="dialog"
+      aria-labelledby="modal-title"
+    >
+      <div class="modal">
+        <header>
+          <h2 id="modal-title">Contactez-moi</h2>
+          <button
+            id="cross"
+            class="cross-button"
+            aria-label="Close contact form"
+            onclick="closeModal()"
+          >
+            <img src="assets/icons/close.svg" alt="Close contact form" />
+          </button>
         </header>
-				<form>
-					<div>
-						<label>Prénom</label>
-						<input />
-					</div>
-          <button class="contact_button">Envoyer</button>
-				</form>
-			</div>
-		</div>
+        <form id="contact-form">
+          <div>
+            <label id="first-name-label" for="first-name">Prénom</label>
+            <input id="first-name" aria-labelledby="first-name-label" />
+            <span id="first-name-error"></span>
+            <label id="last-name-label" for="last-name">Nom</label>
+            <input id="last-name" aria-labelledby="last-name-label" />
+            <span id="last-name-error"></span>
+            <label id="email-label" for="email">Email</label>
+            <input id="email" aria-labelledby="email-label" />
+            <span id="email-error"></span>
+            <label id="message-label" for="your-message">Votre message</label>
+            <textarea
+              id="your-message"
+              class="form-textarea"
+              maxlength="400"
+              aria-labelledby="message-label"
+            ></textarea>
+            <span id="message-error"></span>
+          </div>
+          <button id="submit-button" class="contact-button" aria-label="Send">
+            Envoyer
+          </button>
+        </form>
+      </div>
+    </div>
     <script src="/scripts/utils/contactForm.js"></script>
+    <script src="/scripts/factories/photographer.js"></script>
+    <script src="/scripts/factories/media.js"></script>
+    <script src="/scripts/pages/photographer.js"></script>
   </body>
 </html>

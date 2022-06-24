@@ -1,6 +1,3 @@
-# Base de code du projet P6 - Parcours Front-end
-
-## Démarrer le projet
-
-Rien à installer ici, il suffit d'ouvrir le fichier `index.html`.
-
+<h1>PROJET 6</h1>
+Formation Développeur JavaScript / React
+https://benjaminsiret.github.io/Siret_Benjamin_6_01052022/
