@@ -1,5 +1,5 @@
 async function getPhotographers() {
-    return fetch("/data/photographers.json")
+    return fetch("/photographers.json")
         .then(function (res) {
             if (res.ok) {
                 return res.json();
