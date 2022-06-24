@@ -8,7 +8,7 @@ export default function mediaFactory(media, name) {
                     <aside class="media__aside">
                       <p class="photo__title" >${media.title}</p>
                       <span class="photo__likes" aria-label=${media.userLike ? 'enlever like' : 'ajouter like'} tabindex="0">
-                          <p>${media.likes}</p>
+                          <p class="photo__nbrLikes">${media.likes}</p>
                           <i class="fas fa-heart" role="Image" aria-label="likes"></i>
                       </span>
                     </aside>`;
