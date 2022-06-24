@@ -1,5 +1,6 @@
 const main = document.querySelector("#main");
 const modal = document.querySelector(".contact_modal");
+const contactBtn = document.querySelector(".contact_form");
 const firstName = document.querySelector("#first");
 const lastName = document.querySelector("#last");
 const email = document.querySelector("#email");
@@ -44,7 +45,7 @@ function validInput(element) {
 }
 
 document.addEventListener('keyup', keyboardAcces);
-document.querySelector(".contact_form").addEventListener("click", displayModal);
+contactBtn.addEventListener("click", displayModal);
 document.querySelector(".close_form").addEventListener("click", closeModal);
 document.querySelector(".send_form").addEventListener("click", (e) => {
     e.preventDefault();
@@ -96,6 +97,7 @@ function displayModal() {
     modal.ariaHidden = "false";
     modal.classList.add('fade-out');
 	modal.style.display = "block";
+    firstName.focus();
     window.setTimeout(() => {
         modal.classList.remove('fade-out');
       }, 50)
@@ -105,6 +107,7 @@ function closeModal() {
     main.ariaHidden = "false";
     modal.ariaHidden = "true";
     modal.classList.add('fade-out');
+    contactBtn.focus();
     window.setTimeout(() => {
         modal.style.display = "none";
         modal.classList.remove('fade-out');

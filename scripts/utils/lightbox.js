@@ -8,12 +8,14 @@ class Lightbox {
             const mediaURL = e.currentTarget.getAttribute('src');
             new Lightbox(mediaURL, gallery);
             document.querySelector('#main').ariaHidden = "true";
+            document.querySelector(".lightbox__close").focus();
             }))
         medias.forEach(media => media.addEventListener('keypress', e => {
             if (e.key === 'Enter') {
                 const mediaURL = e.currentTarget.getAttribute('src');
                 new Lightbox(mediaURL, gallery);
                 document.querySelector('#main').ariaHidden = "true";
+                document.querySelector(".lightbox__close").focus();
             }
             }))
     }
@@ -61,6 +63,7 @@ class Lightbox {
     close() {
         this.divLightbox.classList.add('fade-out');
         document.querySelector('#main').ariaHidden = "false";
+
         window.setTimeout(() => {
             this.divLightbox.parentElement.removeChild(this.divLightbox);
         }, 500)
