@@ -1,5 +1,5 @@
 async function getPhotographers() {
-    return fetch("/data/photographers.json")
+    return fetch("https://dwain06.github.io/Front-End-Fisheye/data/photographers.json")
         .then(function (res) {
             if (res.ok) {
                 return res.json();
