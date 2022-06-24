@@ -4,7 +4,7 @@ const urlParams = new URLSearchParams(photographerUrl);
 const photographerId = urlParams.get('id')
 
 async function getPhotographers() {
-    return fetch("../../data/photographers.json")
+    return fetch("/data/photographers.json")
         .then(function (res) {
             if (res.ok) {
                 return res.json();
