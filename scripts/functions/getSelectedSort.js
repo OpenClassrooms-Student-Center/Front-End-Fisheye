@@ -32,14 +32,14 @@ export default function getSelectedSort(data) {
     });
   }
 
-  function createCardsMedia() {
+  function newCardsMedia() {
     const cardContainer = document.querySelector('.photo-field');
     cardContainer.innerHTML = '';
     sortMedia.forEach((media) => {
       media.createCard(media, cardContainer, sortMedia);
     });
   }
-  createCardsMedia();
+  newCardsMedia();
 
   function dropDown() {
     if (!toggleIndex) {
@@ -75,7 +75,7 @@ export default function getSelectedSort(data) {
       if (btnValue.innerHTML === 'Popularité') sortlikes();
       else if (btnValue.innerHTML === 'Date') sortDate();
       else if (btnValue.innerHTML === 'Titre') sortTitle();
-      createCardsMedia();
+      newCardsMedia();
       optionsContainer.ariaHidden = 'true';
     }
   }
@@ -106,7 +106,7 @@ export default function getSelectedSort(data) {
         sortTitle();
       }
 
-      createCardsMedia();
+      newCardsMedia();
     });
   });
 

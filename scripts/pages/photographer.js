@@ -43,7 +43,7 @@ async function getPhotos(photographerId) {
       const sumLikes = document.querySelector('.totalLikes__likes');
       sumLikes.innerHTML = totalLikes(sortMedia);
       const pricePerDay = document.querySelector('.totalLikes__price');
-      pricePerDay.innerHTML = `${price.price}E /jour`;
+      pricePerDay.innerHTML = `${price.price}€ /jour`;
 
       const modalContainer = document.getElementById('contact_modal');
       const modal = document.createElement('div');
