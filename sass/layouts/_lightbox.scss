@@ -59,3 +59,20 @@
         animation: lightboxIn .5s;
     }
 }
+
+@media only screen and (max-width: $break-point-mobile){
+    .lightbox {
+        &__prev {
+            
+            transform: scale(2) rotate(180deg);
+        }
+        &__next {
+            transform: scale(2);
+        }
+        &__close {
+            transform: scale(2);
+            right: 10px;
+            top: 10px;
+        }
+    }
+}

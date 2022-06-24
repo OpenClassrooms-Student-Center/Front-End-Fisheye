@@ -205,6 +205,19 @@ form .formData[data-error-visible=true] input, form .formData[data-error-visible
   animation: lightboxIn 0.5s;
 }
 
+@media only screen and (max-width: 950px) {
+  .lightbox__prev {
+    transform: scale(2) rotate(180deg);
+  }
+  .lightbox__next {
+    transform: scale(2);
+  }
+  .lightbox__close {
+    transform: scale(2);
+    right: 10px;
+    top: 10px;
+  }
+}
 body {
   font-family: "DM Sans", sans-serif;
   margin: auto;
