@@ -11,95 +11,29 @@ class Lightbox {
         document.addEventListener('keyup', this.onKeyUp)
     }
 
+    // Initialise la lightbox
+    static init() {
+        const links = Array.from(document.querySelectorAll('.media__item a'))
+        const media = links.map((link) => link.getAttribute('href'))
+        const titles = links.map((title) => title.getAttribute('alt'))
+
+        links.forEach((link) =>
+            link.addEventListener('click', (e) => {
+                e.preventDefault()
+                document.getElementById('main').setAttribute('hidden', '')
+                const lightbox = new Lightbox(
+                    e.currentTarget.getAttribute('href'),
+                    media,
+                    e.currentTarget.getAttribute('alt'),
+                    titles
+                )
+            })
+        )
+    }
+
     // Retourne l’extension de l'url
     static getExtensionUrl(url) {
         return url.split('.').pop()
-    }
-
-    // Récupère le lien et le titre du media et construit une video ou une image
-    loadMedia(url, title) {
-        this.url = null
-
-        const figure = this.element.querySelector(
-            '.lightbox__container__figure'
-        )
-
-        if (Lightbox.getExtensionUrl(url) === 'mp4') {
-            figure.classList.add('lightbox__container__figure--mp4')
-            figure.innerHTML = `
-                <video  
-                    alt="${title}"       
-                    controls
-                >
-                    <source
-                        src="${url}"
-                        type="video/mp4"
-                    >
-                </video>
-                <figcaption class="lightbox__container__title">
-                    ${title}
-                </figcaption>
-            `
-        } else if (Lightbox.getExtensionUrl(url) === 'jpg') {
-            if (figure.classList.contains('lightbox__container__figure--mp4')) {
-                figure.classList.remove('lightbox__container__figure--mp4')
-            }
-
-            figure.innerHTML = `
-                <img 
-                    src="${url}" 
-                    alt="${title}"
-                >
-                <figcaption class="lightbox__container__title">
-                    ${title}
-                </figcaption>
-            `
-        } else {
-            throw new Error('Unknown type format')
-        }
-
-        this.url = url
-    }
-
-    // Afficher le média suivant
-    next(e) {
-        e.preventDefault()
-        let i = this.media.findIndex((media) => media === this.url)
-        if (i === this.media.length - 1) {
-            i = -1
-        }
-        this.loadMedia(this.media[i + 1], this.titles[i + 1])
-    }
-
-    // Afficher le média précédent
-    prev(e) {
-        e.preventDefault()
-        let i = this.media.findIndex((media) => media === this.url)
-        if (i === 0) {
-            i = this.media.length
-        }
-        this.loadMedia(this.media[i - 1], this.titles[i - 1])
-    }
-
-    // Ferme la lightbox & Affiche le main
-    close(e) {
-        e.preventDefault()
-        this.element.parentElement.removeChild(this.element)
-        document.getElementById('main').removeAttribute('hidden')
-        document.removeEventListener('keyup', this.onKeyUp)
-    }
-
-    // onKeyUp ajoute des fonctions aux touches
-    onKeyUp(e) {
-        e.preventDefault()
-
-        if (e.key === 'Escape') {
-            this.close(e)
-        } else if (e.key === 'ArrowLeft') {
-            this.prev(e)
-        } else if (e.key === 'ArrowRight') {
-            this.next(e)
-        }
     }
 
     // Retourne la lightbox
@@ -157,23 +91,89 @@ class Lightbox {
         return lightbox
     }
 
-    // Initialise la lightbox
-    static init() {
-        const links = Array.from(document.querySelectorAll('.media__item a'))
-        const media = links.map((link) => link.getAttribute('href'))
-        const titles = links.map((title) => title.getAttribute('alt'))
+    // Afficher le média suivant
+    next(e) {
+        e.preventDefault()
+        let i = this.media.findIndex((media) => media === this.url)
+        if (i === this.media.length - 1) {
+            i = -1
+        }
+        this.loadMedia(this.media[i + 1], this.titles[i + 1])
+    }
 
-        links.forEach((link) =>
-            link.addEventListener('click', (e) => {
-                e.preventDefault()
-                document.getElementById('main').setAttribute('hidden', '')
-                const lightbox = new Lightbox(
-                    e.currentTarget.getAttribute('href'),
-                    media,
-                    e.currentTarget.getAttribute('alt'),
-                    titles
-                )
-            })
+    // Afficher le média précédent
+    prev(e) {
+        e.preventDefault()
+        let i = this.media.findIndex((media) => media === this.url)
+        if (i === 0) {
+            i = this.media.length
+        }
+        this.loadMedia(this.media[i - 1], this.titles[i - 1])
+    }
+
+    // Ferme la lightbox & Affiche le main
+    close(e) {
+        e.preventDefault()
+        this.element.parentElement.removeChild(this.element)
+        document.getElementById('main').removeAttribute('hidden')
+        document.removeEventListener('keyup', this.onKeyUp)
+    }
+
+    // onKeyUp ajoute des fonctions aux touches
+    onKeyUp(e) {
+        e.preventDefault()
+
+        if (e.key === 'Escape') {
+            this.close(e)
+        } else if (e.key === 'ArrowLeft') {
+            this.prev(e)
+        } else if (e.key === 'ArrowRight') {
+            this.next(e)
+        }
+    }
+
+    // Récupère le lien et le titre du media et construit une video ou une image
+    loadMedia(url, title) {
+        this.url = null
+
+        const figure = this.element.querySelector(
+            '.lightbox__container__figure'
         )
+
+        if (Lightbox.getExtensionUrl(url) === 'mp4') {
+            figure.classList.add('lightbox__container__figure--mp4')
+            figure.innerHTML = `
+                <video  
+                    alt="${title}"       
+                    controls
+                >
+                    <source
+                        src="${url}"
+                        type="video/mp4"
+                    >
+                </video>
+                <figcaption class="lightbox__container__title">
+                    ${title}
+                </figcaption>
+            `
+        } else if (Lightbox.getExtensionUrl(url) === 'jpg') {
+            if (figure.classList.contains('lightbox__container__figure--mp4')) {
+                figure.classList.remove('lightbox__container__figure--mp4')
+            }
+
+            figure.innerHTML = `
+                <img 
+                    src="${url}" 
+                    alt="${title}"
+                >
+                <figcaption class="lightbox__container__title">
+                    ${title}
+                </figcaption>
+            `
+        } else {
+            throw new Error('Unknown type format')
+        }
+
+        this.url = url
     }
 }
