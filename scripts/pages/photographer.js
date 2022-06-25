@@ -11,9 +11,19 @@ const data = await getData(URL);
 const id = parseInt(new URLSearchParams(location.search).get("photographer"));
 const { photographers } = data;
 
+// Current photographer
 const currentPhotographer = photographers.find(
   (photographer) => photographer.id === id
 );
+
+// Current photographer medias
+const { media: medias } = data;
+const currentMedias = medias.filter((media) => media.photographerId === id);
+
+// Sort Media by default
+currentMedias?.sort(function (a, b) {
+  return b.likes - a.likes;
+});
 // console.log("ID => ", id);
 const PhotographerProfil = async (data, id) => {
   const sectionHeaderPhotographer = document.querySelector(
@@ -108,10 +118,6 @@ const displayGlobalLikes = () => {
  * @param {*} currentPhotographer
  */
 const generatePhotographerMedias = (currentMedias, currentPhotographer) => {
-  // sort by popularity on load
-  currentMedias?.sort(function (a, b) {
-    return b.likes - a.likes;
-  });
   const portfolioBlock = document.querySelector(".portfolio");
   portfolioBlock.innerHTML = "";
   currentMedias.forEach((media) => {
@@ -203,9 +209,7 @@ const sortBy = (element, sortOptions, toggleBox, widgetOpen, optionShowed) => {
 const getSortedMedias = () => {
   const toggleBox = document.querySelector(".toggle-listbox");
   const sortOptions = Array.from(document.querySelectorAll(".sort-option"));
-  const angle = document.querySelector(".fa-angle-down");
-  //angle.className = "fa-angle-up";
-  console.log("angle ==== ", angle);
+  // const angle = document.querySelector(".fa-angle-up");
   let optionShowed = document.querySelectorAll(".dropdown > button");
   let widgetOpen = false;
 
@@ -226,9 +230,6 @@ const getSortedMedias = () => {
  * Initialize all photographer infos
  */
 const initMedias = async () => {
-  const { media: medias } = data;
-  const currentMedias = medias.filter((media) => media.photographerId === id);
-
   PhotographerProfil(data, id);
   generateMediaFilter();
   generatePhotographerMedias(currentMedias, currentPhotographer);
