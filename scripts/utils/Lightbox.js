@@ -32,7 +32,7 @@ class Lightbox {
     }
 
     // Retourne l’extension de l'url
-    static getExtensionUrl(url) {
+    getExtensionUrl(url) {
         return url.split('.').pop()
     }
 
@@ -140,7 +140,7 @@ class Lightbox {
             '.lightbox__container__figure'
         )
 
-        if (Lightbox.getExtensionUrl(url) === 'mp4') {
+        if (this.getExtensionUrl(url) === 'mp4') {
             figure.classList.add('lightbox__container__figure--mp4')
             figure.innerHTML = `
                 <video  
@@ -156,7 +156,7 @@ class Lightbox {
                     ${title}
                 </figcaption>
             `
-        } else if (Lightbox.getExtensionUrl(url) === 'jpg') {
+        } else if (this.getExtensionUrl(url) === 'jpg') {
             if (figure.classList.contains('lightbox__container__figure--mp4')) {
                 figure.classList.remove('lightbox__container__figure--mp4')
             }
