@@ -249,15 +249,16 @@ body {
 
 .media {
   display: grid;
-  grid-template-columns: repeat(3, 21.875rem);
-  gap: 3.15rem;
+  grid-template-columns: repeat(3, 28%);
+  gap: 2rem 8%;
   margin: 5rem 6.25rem;
 }
 .media__item img,
 .media__item video {
-  width: 21.875rem;
+  width: 100%;
   height: 18.75rem;
   object-fit: cover;
+  object-position: 50% 30%;
   border-radius: 0.313rem;
   background-color: #c4c4c4;
 }
@@ -348,6 +349,7 @@ body {
 .lightbox__container__figure img,
 .lightbox__container__figure video {
   object-fit: cover;
+  object-position: 50% 35%;
   width: 100%;
   height: 100%;
   background-color: #C4C4C4;

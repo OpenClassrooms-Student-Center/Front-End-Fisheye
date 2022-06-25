@@ -60,15 +60,16 @@
 
 .media {
     display: grid;
-    grid-template-columns: repeat(3, 21.875rem);
-    gap: 3.15rem;
+    grid-template-columns: repeat(3, 28%);
+    gap: 2rem 8%;
     margin: 5rem 6.25rem;
     &__item {
         & img,
         video {
-            width: 21.875rem;
+            width: 100%;
             height: 18.75rem;
             object-fit: cover;
+            object-position: 50% 30%;
             border-radius: 0.313rem;
             background-color: #c4c4c4;
         }
@@ -159,6 +160,7 @@
             img,
             video {
                 object-fit: cover;
+                object-position: 50% 35%;
                 width: 100%;
                 height: 100%;
                 background-color: #C4C4C4;
