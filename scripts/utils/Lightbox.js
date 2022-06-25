@@ -81,7 +81,7 @@ class Lightbox {
         this.loadMedia(this.media[i - 1], this.titles[i - 1])
     }
 
-    // close the modal lightbox & display the main
+    // Ferme la lightbox & Affiche le main
     close(e) {
         e.preventDefault()
         this.element.parentElement.removeChild(this.element)
@@ -142,15 +142,15 @@ class Lightbox {
             </div>
         `
 
-        // link to close the lightbox
+        // button pour fermer la lightbox
         lightbox
             .querySelector('.button-close')
             .addEventListener('click', this.close.bind(this))
-        // link to the next media
+        // lien vers le média suivant
         lightbox
             .querySelector('.lightbox__next')
             .addEventListener('click', this.next.bind(this))
-        // link to the previous media
+        // lien vers le média précédent
         lightbox
             .querySelector('.lightbox__prev')
             .addEventListener('click', this.prev.bind(this))
