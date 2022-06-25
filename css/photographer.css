@@ -2,7 +2,8 @@
 header a {
     display: flex;
 }
-#contact_modal {
+
+#contact-modal {
     display: none;
 }
 
@@ -252,6 +253,48 @@ aside .rowLikes i{
     cursor: pointer;
 }
 
+/* Form contact */
+#contact-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+    background: #fff;
+    z-index: 20;
+}
+.modal {
+    border-radius: 5px;
+    background-color: #DB8876;
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    padding: 25px 35px;
+    margin: auto;
+}
+.modal:focus {
+    outline: none;
+}
+
+.modal .header-modal {
+    justify-content: space-between;
+    width: 100%;
+    height: unset;
+}
+
+.modal .header-modal img {
+    cursor: pointer;
+}
+
+.modal .header-modal h2 {
+    font-size: 58px;
+    font-weight: normal;
+    margin-bottom: 10px;
+}
 
 form {
     display: flex;
@@ -354,3 +397,4 @@ form textarea {
     position: relative;
     top: 10px;
 }
+
