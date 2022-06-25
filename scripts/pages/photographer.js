@@ -44,13 +44,12 @@ class PhotographerPage {
     async fetchPhotographerFiltered() {
         // Retourne le tableau de photographes
         const photographersData = await this.photographerApi.getPhotographers()
-
-        this.photographerFiltered = this.findPhotographer(
+        const photographerDataFiltered = this.findPhotographer(
             photographersData,
             this.id
         )
 
-        return new Photographer(this.photographerFiltered)
+        return new Photographer(photographerDataFiltered)
     }
 
     findPhotographer(photographers, photographerId) {
@@ -147,11 +146,11 @@ class PhotographerPage {
     }
 
     async init() {
-        // Récupère les datas des photographes dans un tableau
-        this.photographer = await this.fetchPhotographerFiltered()
+        // Récupère les datas du photographes
+        this.photographerFiltered = await this.fetchPhotographerFiltered()
 
         // Affiche l'entête du photographe
-        this.displayPhotographerHeader(this.photographer)
+        this.displayPhotographerHeader(this.photographerFiltered)
 
         // Récupère les datas des media dans un tableau
         this.mediaFiltered = await this.fetchMediaFiltered()
@@ -163,10 +162,10 @@ class PhotographerPage {
         const sumLikes = this.getSumLikes(likes)
 
         // Affiche le total du prix et des likes des media
-        this.displayPriceAndLikesOfMedia(sumLikes, this.photographer.price)
+        this.displayPriceAndLikesOfMedia(sumLikes, this.photographerFiltered.price)
 
         // Affiche les media par Popularité
-        this.displayMediaSorted(this.mediaFiltered, 'like', this.photographer)
+        this.displayMediaSorted(this.mediaFiltered, 'like', this.photographerFiltered)
 
         // Element du DOM
         const btnList = document.querySelectorAll('.option')
@@ -182,7 +181,7 @@ class PhotographerPage {
                         this.displayMediaSorted(
                             this.mediaFiltered,
                             'like',
-                            this.photographer
+                            this.photographerFiltered
                         )
                         break
                     case 'date':
@@ -193,7 +192,7 @@ class PhotographerPage {
                         this.displayMediaSorted(
                             this.mediaFiltered,
                             'date',
-                            this.photographer
+                            this.photographerFiltered
                         )
                         break
                     case 'title':
@@ -204,7 +203,7 @@ class PhotographerPage {
                         this.displayMediaSorted(
                             this.mediaFiltered,
                             'title',
-                            this.photographer
+                            this.photographerFiltered
                         )
                         break
                 }
