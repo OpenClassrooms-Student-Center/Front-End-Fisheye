@@ -23,6 +23,7 @@ export class Form {
     this.manageEvent();
     this.keyboardNav();
   }
+
   displayModal(photographerName) {
     const formh2 = document.querySelector(".header-modal h2");
     formh2.innerHTML = "Contactez-moi<br>" + photographerName;

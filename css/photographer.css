@@ -1,43 +1,8 @@
-#contact_modal {
-    display: none;
-}
-
 header a {
     display: flex;
 }
-
-.photograph-header {
-    background-color: #FAFAFA;
-    height: 300px;
-    margin: 0 100px;
-}
-
-
-.modal {
-    border-radius: 5px;
-    background-color: #DB8876;
-    width: 50%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: space-between;
-    padding: 35px;
-    margin: auto;
-}
-
-.modal header {
-    justify-content: space-between;
-    width: 100%;
-}
-
-.modal header img {
-    cursor: pointer;
-}
-
-.modal header h2 {
-    font-size: 64px;
-    font-weight: normal;
-    text-align: center;
+#contact-modal {
+    display: none;
 }
 
 .section-photographe {
@@ -88,7 +53,6 @@ header a {
     border-radius: 10em;
     box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.2);
 }
-
 
 .portfolio-section {
     position: relative;
@@ -179,7 +143,6 @@ header a {
     padding: 10px 0px;
     font-size: 20px;
 }
-
 .portfolio article div span{
     color: #901C1C;
 }
@@ -215,7 +178,7 @@ header a {
     }
   }
 
-  aside > div {
+aside > div {
     position: fixed;
     display: flex;
     justify-content: space-between;
@@ -224,24 +187,19 @@ header a {
     width: 250px;
     background: #DB8876;
     padding: 20px 30px;
-    border-radius: 5px;
+    border-radius: 0.3em 0.3em 0 0;
     font-size: 24px;
 }
-aside div .rowLikes {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    
+
+aside div.countLikes{
+    position: relative;
 }
-aside .rowLikes i{
-    margin-left: 10px;
-}
-.play-circle{
-    font-size: 42px;
+aside div.countLikes i{
     position: absolute;
-    align-items:center;
-    color: #901C1C;
+    left: -70px;
+    top: 3px;
 }
+
 .contact-button {
     font-size: 20px;
     font-weight: bold;
@@ -254,7 +212,54 @@ aside .rowLikes i{
     border-radius: 5px;
     cursor: pointer;
 }
+.open-form:hover,
+.open-form:focus  {
+    background-color: #DB8876;
+    color : #000000
+}
 
+/* Formulaire de contact */
+#contact-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+    background: #fff;
+    z-index: 20;
+}
+.modal {
+    border-radius: 5px;
+    background-color: #DB8876;
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    padding: 25px 35px;
+    margin: auto;
+}
+.modal:focus {
+    outline: none;
+}
+
+.modal .header-modal {
+    justify-content: space-between;
+    width: 100%;
+    height: unset;
+}
+
+.modal .header-modal img {
+    cursor: pointer;
+}
+
+.modal .header-modal h2 {
+    font-size: 58px;
+    font-weight: normal;
+    margin-bottom: 10px;
+}
 
 form {
     display: flex;
@@ -265,14 +270,13 @@ form {
 
 form label {
     color: #312E2E;
-    font-size: 36px;
+    font-size: 32px;
 }
 
 form div {
     display: flex;
     flex-direction: column;
     width: 100%;
-    align-items: self-start;
     margin-bottom: 26px;
 }
 
@@ -296,6 +300,7 @@ form textarea {
     height: 150px;
     padding: 10px;
 }
+
 .lightbox {
     position: fixed;
     top: 0;
