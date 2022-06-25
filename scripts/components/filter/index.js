@@ -8,7 +8,8 @@ export class Filter {
           <div class="toggle-listbox" role="button" tabindex="0" aria-label="liste de tri, trié par popularité"
             aria-haspopup=”listbox” aria-expanded>
             <p class="active-option">Popularité</p>
-            <i class="fa-solid fa-angle-up"></i>
+             <i class="fa-solid fa-angle-down"></i>
+             <i class="fa-solid fa-angle-up"></i>
           </div>
           <div class="hidden">
             <button class="sort-option" value="popularity" role=”listbox” tabindex="0" aria-label="trié par popularité"

@@ -1,6 +1,5 @@
 export class Form {
   constructor(photographer) {
-    console.log("photographe ::: ", photographer);
     const photographerName = photographer.name;
     this.form = document.getElementById("contact-modal");
     this.closeButton = document.querySelector(".close-form");
@@ -60,6 +59,7 @@ export class Form {
     const inputs = document.querySelectorAll("form input");
     const userMessage = [];
     inputs.forEach((input) => {
+      console.log("user input ", input.value);
       userMessage.push(input.value);
     });
     const textarea = document.querySelector("form textarea").value;

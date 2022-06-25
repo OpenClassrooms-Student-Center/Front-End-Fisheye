@@ -136,15 +136,14 @@ const generatePhotographerMedias = (currentMedias, currentPhotographer) => {
  * @param {*} sortOptions
  * @param {*} optionShowed
  */
-const manageOptions = (widgetOpen, sortOptions, optionShowed) => {
-  console.log(" optionShowed", optionShowed);
-
+const manageOptions = (widgetOpen, sortOptions, optionShowed, angleUp) => {
   if (widgetOpen == false) {
     sortOptions.forEach((option) => {
       option.style.display = "block";
     });
     optionShowed[0].focus();
     widgetOpen = true;
+    angleUp.style.display = "block";
   } else {
     sortOptions.forEach((option) => {
       option.style.display = "none";
@@ -209,20 +208,25 @@ const sortBy = (element, sortOptions, toggleBox, widgetOpen, optionShowed) => {
 const getSortedMedias = () => {
   const toggleBox = document.querySelector(".toggle-listbox");
   const sortOptions = Array.from(document.querySelectorAll(".sort-option"));
-  // const angle = document.querySelector(".fa-angle-up");
+  const angleUp = document.querySelector(".fa-angle-up");
+  const angleDown = document.querySelector(".fa-angle-down");
   let optionShowed = document.querySelectorAll(".dropdown > button");
   let widgetOpen = false;
 
   // togglebox button property
   toggleBox.addEventListener("click", () => {
-    // console.log("toggle filter list");
-    manageOptions(widgetOpen, sortOptions, optionShowed);
+    if (angleDown != null) {
+      angleDown.style.display = "none";
+    }
+    manageOptions(widgetOpen, sortOptions, optionShowed, angleUp);
   });
 
   sortOptions.forEach((element) =>
-    element.addEventListener("click", () =>
-      sortBy(element, sortOptions, toggleBox, widgetOpen, optionShowed)
-    )
+    element.addEventListener("click", () => {
+      angleDown.style.display = "block";
+      sortBy(element, sortOptions, toggleBox, widgetOpen, optionShowed);
+      angleUp.style.display = "none";
+    })
   );
 };
 

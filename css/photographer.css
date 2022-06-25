@@ -141,7 +141,9 @@ header a {
     border-top:1px solid #fff; 
     border-bottom:1px solid #fff
 }
-
+.portfolio-filter .fa-angle-up{
+    display:none;
+}
 .portfolio-filter .hidden {
     display: none;
 }
