@@ -8,20 +8,22 @@ import { PhotographerCard } from '../templates/PhotographerCard.js'
 import { VideoCard } from '../templates/VideoCard.js'
 import { PictureCard } from '../templates/PictureCard.js'
 import { PriceAndLikesCard } from '../templates/PriceAndLikesCard.js'
+import { SorterForm } from '../templates/SorterForm.js'
 
-import { Sorter } from '../utils/Sorter.js'
-import { Lightbox } from '../utils/Lightbox.js'
+import { Sorter } from '../utils/sorter/Sorter.js'
+import { Lightbox } from '../utils/lightbox/Lightbox.js'
 
 class PhotographerPage {
     constructor() {
-        // Element du DOM
+        // Elements du DOM
         this.main = document.getElementById('main')
+        this.mediaSection = document.querySelector('.media')
 
         // Api
         this.photographerApi = new PhotographerApi('/data/photographers.json')
         this.mediaApi = new MediaApi('/data/photographers.json')
 
-        // Url
+        // Url de la page
         this.url = new URL(window.location)
 
         // Id du photographe
@@ -39,6 +41,12 @@ class PhotographerPage {
 
         // Retourne l'id du photographe contenu dans le lien
         return parseInt(params.get('photographerId'), 10)
+    }
+
+    // Retourne la valeur de 'sorter' de l'url de la page
+    getSorterFromURL() {
+        const params = this.url.searchParams
+        return params.get('sorter')
     }
 
     async fetchPhotographerFiltered() {
@@ -114,35 +122,24 @@ class PhotographerPage {
         return sumLikes
     }
 
-    displayMediaSorted(media, sorter, photographer) {
-        // Element du DOM
-        const mediaSection = document.querySelector('.media')
-
-        const mediaSorted = new Sorter(media, sorter).mediaSorted()
+    displayMediaByLike(media, photographer) {
+        const mediaSorted = new Sorter(media, 'like').mediaSorted()
 
         mediaSorted.forEach((media) => {
             if (media.video) {
                 const videoCard = new VideoCard(media, photographer)
-                const videoCardDOM = videoCard.getVideoCardDom()
-                mediaSection.appendChild(videoCardDOM)
-                this.main.appendChild(mediaSection)
+                this.mediaSection.appendChild(videoCard.getVideoCardDom())
+                this.main.appendChild(this.mediaSection)
             } else if (media.image) {
                 const pictureCard = new PictureCard(media, photographer)
-                const pictureCardDOM = pictureCard.getPictureCardDom()
-                mediaSection.appendChild(pictureCardDOM)
-                this.main.appendChild(mediaSection)
+                this.mediaSection.appendChild(pictureCard.getPictureCardDom())
+                this.main.appendChild(this.mediaSection)
             } else {
                 throw new Error('Unknown type format')
             }
         })
 
         Lightbox.init()
-    }
-
-    clearMediaSection() {
-        // Element du DOM
-        const mediaSection = document.querySelector('.media')
-        mediaSection.textContent = ''
     }
 
     async init() {
@@ -162,53 +159,36 @@ class PhotographerPage {
         const sumLikes = this.getSumLikes(likes)
 
         // Affiche le total du prix et des likes des media
-        this.displayPriceAndLikesOfMedia(sumLikes, this.photographerFiltered.price)
+        this.displayPriceAndLikesOfMedia(
+            sumLikes,
+            this.photographerFiltered.price
+        )
 
-        // Affiche les media par Popularité
-        this.displayMediaSorted(this.mediaFiltered, 'like', this.photographerFiltered)
+        let sorter = this.getSorterFromURL()
 
-        // Element du DOM
-        const btnList = document.querySelectorAll('.option')
+        /*
+            si la valeur du trieur est fausse,
+            l'utilisateur est redirigé vers le trieur par défaut : like
+        */
+        if (!['like', 'date', 'title'].includes(this.sorter)) {
+            /* 
+                Met à jour le paramètre 'sorter' dans l'url de la page
+                Rafraîchi le DOM
+            */
+            this.url.searchParams.set('sorter', 'like')
+            window.history.pushState({}, '', this.url)
+            sorter = 'like'
+        }
 
-        btnList.forEach((btn) => {
-            btn.addEventListener('click', () => {
-                switch (btn.id) {
-                    case 'like':
-                        // Supprimer la section media
-                        this.clearMediaSection()
+        // Formulaire qui affiche les media triés en fonction du bouton de tri
+        const sorterForm = new SorterForm(
+            this.mediaFiltered,
+            this.photographerFiltered,
+            sorter
+        )
 
-                        // Affiche les media par Popularité
-                        this.displayMediaSorted(
-                            this.mediaFiltered,
-                            'like',
-                            this.photographerFiltered
-                        )
-                        break
-                    case 'date':
-                        // Supprimer la section media
-                        this.clearMediaSection()
-
-                        // Affiche les media par Date
-                        this.displayMediaSorted(
-                            this.mediaFiltered,
-                            'date',
-                            this.photographerFiltered
-                        )
-                        break
-                    case 'title':
-                        // Supprimer la section
-                        this.clearMediaSection()
-
-                        // Affiche les media par Titre
-                        this.displayMediaSorted(
-                            this.mediaFiltered,
-                            'title',
-                            this.photographerFiltered
-                        )
-                        break
-                }
-            })
-        })
+        // Initialise le formulaire 
+        sorterForm.init()
     }
 }
 

@@ -45,7 +45,7 @@ class Lightbox {
         lightbox.setAttribute('aria-label', 'image closeup view')
         lightbox.innerHTML = `
             <button 
-                class="button-close"
+                class="btn_close"
                 aria-label="Close dialog"
             >
                 <i 
@@ -78,7 +78,7 @@ class Lightbox {
 
         // button pour fermer la lightbox
         lightbox
-            .querySelector('.button-close')
+            .querySelector('.btn_close')
             .addEventListener('click', this.close.bind(this))
         // lien vers le média suivant
         lightbox

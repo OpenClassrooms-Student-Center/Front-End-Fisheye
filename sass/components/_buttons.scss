@@ -1,5 +1,5 @@
 // Boutons par défaut
-.button {
+.btn {
     position: relative;
     z-index: 1;
     font-size: map-get($map: $font-size, $key: text) + 0.125;
@@ -29,7 +29,7 @@
 }
 
 // Boutons du menu de tri
-.button-sorter {
+.btn_sorter {
     position: relative;
     padding: 1rem 4rem 1rem 2rem;
     cursor: pointer;
@@ -76,7 +76,7 @@
 }
 
 // Boutons de la lightbox
-.button-close {
+.btn_close {
     position: fixed;
     margin: 0 6.25rem;
     cursor: pointer;

@@ -16,7 +16,7 @@ body {
   font-weight: 400;
 }
 
-.button {
+.btn {
   position: relative;
   z-index: 1;
   font-size: 1.25rem;
@@ -30,13 +30,13 @@ body {
   border-radius: 0.313rem;
   cursor: pointer;
 }
-.button:hover {
+.btn:hover {
   color: #000000;
 }
-.button:hover::after {
+.btn:hover::after {
   opacity: 1;
 }
-.button::after {
+.btn::after {
   content: "";
   position: absolute;
   top: 0;
@@ -50,7 +50,7 @@ body {
   transition: opacity 250ms;
 }
 
-.button-sorter {
+.btn_sorter {
   position: relative;
   padding: 1rem 4rem 1rem 2rem;
   cursor: pointer;
@@ -63,13 +63,13 @@ body {
   text-align: start;
   background-color: #901C1C;
 }
-.button-sorter-1 {
+.btn_sorter-1 {
   display: flex;
   flex-direction: row;
   border-top-left-radius: 0.313rem;
   border-top-right-radius: 0.313rem;
 }
-.button-sorter-2::before {
+.btn_sorter-2::before {
   content: "";
   position: absolute;
   top: 0;
@@ -81,11 +81,11 @@ body {
   height: 0.063rem;
   background-color: #ffffff;
 }
-.button-sorter-3 {
+.btn_sorter-3 {
   border-bottom-left-radius: 0.313rem;
   border-bottom-right-radius: 0.313rem;
 }
-.button-sorter-3::before {
+.btn_sorter-3::before {
   content: "";
   position: absolute;
   top: 0;
@@ -97,14 +97,14 @@ body {
   height: 0.063rem;
   background-color: #ffffff;
 }
-.button-sorter-4 {
+.btn_sorter-4 {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   border-radius: 0.313rem;
 }
 
-.button-close {
+.btn_close {
   position: fixed;
   margin: 0 6.25rem;
   cursor: pointer;

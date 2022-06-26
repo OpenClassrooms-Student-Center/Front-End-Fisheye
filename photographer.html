@@ -28,20 +28,19 @@
         </header>
         <main id="main">
             <div class="photographer_header">
-                <button class="button" onclick="displayModal()">
+                <button class="btn" onclick="displayModal()">
                     Contactez-moi
                 </button>
             </div>
             <div class="sorter">
                 <span class="sorter__title" id="orderBy">Trier par</span>
                 <button
-                    class="sorter__selected button-sorter button-sorter-4"
-                    role="button"
+                    class="sorter__selected btn_sorter btn_sorter-4"
                     aria-haspopup="listbox"
                     aria-expanded="false"
                     aria-controls="sorterList"
                 >
-                    <span>Popularité</span>
+                    <span class="sorter__selected__name">Popularité</span>
                     <i
                         class="fa-solid fa-chevron-down"
                         aria-hidden="true"
@@ -51,14 +50,13 @@
                 <ul
                     class="sorter__list"
                     role="listbox"
-                    id="sorterList"
                     aria-labelledby="orderBy"
-                    aria-activedescendant=""
+                    aria-activedescendant="like"
                 >
                     <li>
                         <button
-                            class="button-sorter button-sorter-1 option"
                             id="like"
+                            class="sorter__list__option btn_sorter btn_sorter-1"
                             role="option"
                         >
                             <span>Popularité</span>
@@ -71,8 +69,8 @@
                     </li>
                     <li>
                         <button
-                            class="button-sorter button-sorter-2 option"
                             id="date"
+                            class="sorter__list__option btn_sorter btn_sorter-2"
                             role="option"
                         >
                             <span>Date</span>
@@ -80,8 +78,8 @@
                     </li>
                     <li>
                         <button
-                            class="button-sorter button-sorter-3 option"
                             id="title"
+                            class="sorter__list__option btn_sorter btn_sorter-3"
                             role="option"
                         >
                             <span>Titre</span>
@@ -107,14 +105,13 @@
                         <label>Prénom</label>
                         <input />
                     </div>
-                    <button class="button">Envoyer</button>
+                    <button class="btn">Envoyer</button>
                 </form>
             </div>
         </div>
 
         <!-- Utils -->
-        <script src="scripts/utils/dropDownOfSort.js"></script>
-        <script src="scripts/utils/contactForm.js"></script>
+        <script src="scripts/utils/contact/contactForm.js"></script>
 
         <!-- Pages -->
         <script type="module" src="scripts/pages/photographer.js"></script>

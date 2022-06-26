@@ -1,4 +1,5 @@
 export { Sorter }
+
 class Sorter {
     constructor(media, sorter) {
         this.media = media
