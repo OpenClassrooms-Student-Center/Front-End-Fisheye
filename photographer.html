@@ -2,35 +2,55 @@
 <html>
   <head>
     <link href="css/style.css" rel="stylesheet" type="text/css" />
-    <meta charset="utf-8">
-    <link rel="icon" type="image/png" href="assets/favicon.png">
-    <link href="https://fonts.googleapis.com/css?family=DM+Sans&display=swap" rel="stylesheet">
-    <title>Fisheye - photographe </title>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/png" href="assets/favicon.png" />
+    <link
+      href="https://fonts.googleapis.com/css?family=DM+Sans&display=swap"
+      rel="stylesheet"
+    />
+    <title>Fisheye - photographe</title>
   </head>
   <body>
+    <!-- Header avec logo -->
     <header>
-      <img src="assets/images/logo.png" class="logo" />
+      <a href="http://127.0.0.1:5500/Front-End-Fisheye/index.html">
+        <img src="assets/images/logo.png" class="logo" alt="Fisheye Home page"
+      /></a>
     </header>
+
+    <!--  Main avec profil du photographe -->
     <main id="main">
-      <div class="photograph-header">
-        <button class="contact_button" onclick="displayModal()">Contactez-moi</button>
+      <div class="header_profil">
+        <h1 class="header_photographer_name">Mimi Keel</h1>
+        <p class="header_title_text">London, UK</p>
+        <p class="header_text">Voir le beau dans le quotidien</p>
+        <button class="contact_button" onclick="displayModal()">
+          Contactez-moi
+        </button>
+        <img
+          src="assets/Photo_photographer/Mimi/Portrait_Nora.jpg"
+          alt="Portofolio Mimi Keel"
+          class="picture_profil"
+        />
       </div>
     </main>
+
+    <!--  Modale de contact -->
     <div id="contact_modal">
-			<div class="modal">
-				<header>
+      <div class="modal">
+        <header>
           <h2>Contactez-moi</h2>
           <img src="assets/icons/close.svg" onclick="closeModal()" />
         </header>
-				<form>
-					<div>
-						<label>Prénom</label>
-						<input />
-					</div>
+        <form>
+          <div>
+            <label>Prénom</label>
+            <input />
+          </div>
           <button class="contact_button">Envoyer</button>
-				</form>
-			</div>
-		</div>
+        </form>
+      </div>
+    </div>
     <script src="/scripts/utils/contactForm.js"></script>
   </body>
 </html>
