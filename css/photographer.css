@@ -197,10 +197,10 @@ header a {
 .portfolio article div span input:checked ~ label i{
     animation: 0.4s ease-in-out both bounce;
     transition: 0.2s ease-in;
-    color: #D3573C;
+    color: #901C1C;
 }
 .portfolio article div span input:not(:checked) ~ label i{
-    color: #901C1C;
+    color: #d6e0e0;
 }
 
 @keyframes bounce {
