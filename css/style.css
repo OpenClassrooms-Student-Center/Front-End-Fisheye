@@ -34,6 +34,26 @@ h1 {
   margin-top: 100px;
 }
 
+.photographer_section article {
+    justify-self: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.photographer_section article h2 {
+    color: #D3573C;
+    font-size: 36px;
+}
+
+.photographer_section article img {
+    height: 200px;
+    width: 200px;
+}
+
+/* Modif page accueil */
+
 .photographer_profil {
   display: flex;
   flex-direction: column;
@@ -73,4 +93,52 @@ margin-top: -15px;
     font-weight: 100;
     margin-top: -10px;
 }
+
+/* Photographer page */
+
+#main {
+  margin-left: 100px;
+  margin-right: 100px;
+}
+
+#header_profil {
+  background-color:#F9F9F9;
+  border-radius: 15px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 30px 30px 30px 30px;
+  margin-top: 20px;
+}
+
+#header_photographer_name {
+  position: relative;
+  top: -45px;
+  color: #D3573C;
+  font-size: 38px;
+  font-weight: 100;
+}
+
+.text {
+  position: relative;
+  top: -160px;
+  padding-left: 30px;
+}
+
+.header_title_text {
+  color: #901c1c;
+  font-size: 25px;
+}
+
+.header_text {
+  font-size: 18px;
+  font-weight: 100;
+  margin-top: -20px;
+}
+
+
+
+
+
+
 
