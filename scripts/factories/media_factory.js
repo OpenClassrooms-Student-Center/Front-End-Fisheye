@@ -31,6 +31,7 @@ class MediaFactory {
         media.setAttribute("tabindex", "0");
         divLikes.classList.add('likes');
         heart.classList.add('fa-regular', 'fa-heart');
+        heart.setAttribute("aria-label", "likes");
 
         //Text injected in HTML elements
         p.textContent = `${this.title}`;
@@ -95,13 +96,17 @@ class MediaFactory {
     static createSortList() {
         //Create sort list
         this.divSortList = document.createElement('div');
+        this.divSortSection = document.createElement('div');
         this.divSortList.classList.add('sort_list');
+        this.divSortSection.classList.add('sort_section');
+        this.divSortSection.innerHTML = `<label id="listboxlabel" role="label" for="selected" name="Order by">Trier par</label>`;
         this.divSortList.innerHTML = 
-           `<button class="selected">Populaire<i class="fas fa-chevron-down"></i></button>
+           `<button class="selected" id="selected" aria_labelledby="listboxlabel" aria-haspopup="listbox">Populaire<i class="fas fa-chevron-down"></i></button>
            <div class="options hidden">  
-               <button class="optDate">Date</button>
-               <button class="optTitle">Titre</button>
+               <button class="optDate" role="option" aria-label="Date">Date</button>
+               <button class="optTitle" role="option" aria-label="Titre">Titre</button>
            </div>`;
-        document.querySelector('#main').insertBefore(this.divSortList, this.mediasSection);
+        document.querySelector('#main').insertBefore(this.divSortSection, this.mediasSection);
+        this.divSortSection.appendChild(this.divSortList);
     }
 }

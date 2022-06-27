@@ -345,12 +345,20 @@ article a:focus-visible > img {
   margin-left: 200px;
 }
 
-.sort_list {
-  margin-top: 15px;
-  margin-left: 100px;
+.sort_section {
+  display: flex;
+  align-items: baseline;
   position: absolute;
   z-index: 1;
+  margin-top: 15px;
+  margin-left: 100px;
 }
+.sort_section label {
+  font-weight: 700;
+  font-size: 16px;
+  padding-right: 15px;
+}
+
 .sort_list button {
   cursor: pointer;
   width: 160px;
@@ -534,7 +542,7 @@ article a:focus-visible > img {
     margin-top: 20px;
   }
 
-  .sort_list {
+  .sort_section {
     margin: 20px;
   }
 

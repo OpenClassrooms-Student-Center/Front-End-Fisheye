@@ -93,9 +93,10 @@ class Lightbox {
         this.divLightbox.classList.add('lightbox');
         this.divLightbox.ariaHidden = "false";
         this.divLightbox.setAttribute("role", "dialog");
-        this.divLightbox.innerHTML = `<button class="lightbox__close" aria-label="Fermer la visionneuse"></button>
-            <button class="lightbox__next" aria-label="Média suivant"></button>
-            <button class="lightbox__prev" aria-label="Média précédent"></button>
+        this.divLightbox.setAttribute("aria-label", "image closeup view");
+        this.divLightbox.innerHTML = `<button class="lightbox__close" aria-label="Close dialog"></button>
+            <button class="lightbox__next" aria-label="Next image"></button>
+            <button class="lightbox__prev" aria-label="Previous image"></button>
             <div class="lightbox__container"></div>`;
         this.divLightbox.querySelector('.lightbox__close').addEventListener('click', this.close.bind(this));
         this.divLightbox.querySelector('.lightbox__next').addEventListener('click', this.next.bind(this));
