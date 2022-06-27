@@ -9,8 +9,8 @@ class PhotographerFactory {
         this.country = data.country;
         this.id = data.id;
 
-        const picture = `assets/photographers/Photographers ID Photos/${this.portrait}`;
-        const hrefPhotographer = `/photographer.html?id=${this.id}`;
+        const picture = `./assets/photographers/Photographers ID Photos/${this.portrait}`;
+        const hrefPhotographer = `./photographer.html?id=${this.id}`;
 
         //DOM elements of photographer
         this.article = document.createElement('article');
