@@ -101,7 +101,7 @@ class MediaFactory {
         this.divSortSection.classList.add('sort_section');
         this.divSortSection.innerHTML = `<label id="listboxlabel" role="label" for="selected" name="Order by">Trier par</label>`;
         this.divSortList.innerHTML = 
-           `<button class="selected" id="selected" aria_labelledby="listboxlabel" aria-haspopup="listbox">Populaire<i class="fas fa-chevron-down"></i></button>
+           `<button class="selected" id="selected" aria_labelledby="listboxlabel" aria-haspopup="listbox" aria-label="Populaire">Populaire<i class="fas fa-chevron-down"></i></button>
            <div class="options hidden">  
                <button class="optDate" role="option" aria-label="Date">Date</button>
                <button class="optTitle" role="option" aria-label="Titre">Titre</button>

@@ -39,23 +39,23 @@ function manageSortList(opt){
     divSortList.innerHTML = " ";
     if (opt == 'popular') {
         divSortList.innerHTML = 
-       `<button class="selected" id="selected" aria_labelledby="listboxlabel" aria-haspopup="listbox">Populaire<i class="fas fa-chevron-down"></i></button>
+       `<button class="selected" id="selected" aria_labelledby="listboxlabel" aria-haspopup="listbox" aria-label="Populaire">Populaire<i class="fas fa-chevron-down"></i></button>
        <div class="options hidden">  
            <button class="optDate" role="option" aria-label="Date">Date</button>
            <button class="optTitle" role="option" aria-label="Titre">Titre</button>
        </div>`;
    } else if (opt == 'date') {
        divSortList.innerHTML = 
-       `<button class="selected" id="selected" aria_labelledby="listboxlabel" aria-haspopup="listbox">Date<i class="fas fa-chevron-down"></i></button>
+       `<button class="selected" id="selected" aria_labelledby="listboxlabel" aria-haspopup="listbox" aria-label="Date">Date<i class="fas fa-chevron-down"></i></button>
        <div class="options hidden">  
            <button class="optPopular" role="option" aria-label="Populaire">Populaire</button>
            <button class="optTitle" role="option" aria-label="Titre">Titre</button>
        </div>`;
    } else if (opt == 'title') {
        divSortList.innerHTML = 
-       `<button class="selected" id="selected" aria_labelledby="listboxlabel" aria-haspopup="listbox">Titre<i class="fas fa-chevron-down"></i></button>
+       `<button class="selected" id="selected" aria_labelledby="listboxlabel" aria-haspopup="listbox" aria-label="Titre">Titre<i class="fas fa-chevron-down"></i></button>
        <div class="options hidden">  
-           <button class="optPopular" role="option" aria-label="Polulaire">Populaire</button>
+           <button class="optPopular" role="option" aria-label="Populaire">Populaire</button>
            <button class="optDate" role="option" aria-label="Date">Date</button>
        </div>`;
    }
