@@ -121,11 +121,8 @@ class SorterForm {
                 // Indique que la liste n'est pas étendue
                 sortButtonSelected.setAttribute('aria-expanded', 'false')
 
-                /*
-                    Met le focus sur le bouton de tri sélectionné
-                    (exclus) pour améliorer les performances
-                */
-                // sortButtonSelected.focus()
+                // Met le focus sur le bouton de tri sélectionné
+                sortButtonSelected.focus()
 
                 this.init()
             })
