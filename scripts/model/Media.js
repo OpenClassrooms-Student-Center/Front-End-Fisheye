@@ -49,6 +49,6 @@ export default class Media {
       sumLikes.innerHTML = Number(sumLikes.innerHTML) + 1;
     }
     this._userLike = !this._userLike;
-    e.currentTarget.querySelector('.photo__nbrLikes').textContent = this._likes;
+    e.currentTarget.querySelector('.media__nbrLikes').textContent = this._likes;
   }
 }

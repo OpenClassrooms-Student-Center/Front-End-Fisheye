@@ -46,7 +46,7 @@ async function getPhotos(photographerId) {
       pricePerDay.innerHTML = `${price.price}€ /jour`;
 
       const modalContainer = document.getElementById('contact_modal');
-      const modal = document.createElement('div');
+      const modal = document.createElement('section');
       modalContainer.appendChild(modal);
       modal.outerHTML = modalTemplate(name);
       const modalData = new Modal(name);
