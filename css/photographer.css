@@ -164,7 +164,7 @@ header a {
 
 .portfolio article img, .portfolio article video{
     object-fit: cover;
-    object-position: 50% 17%;
+    object-position: 50% 35%;
     border-radius: 0.4em;
     height: 300px;
     width: 350px;

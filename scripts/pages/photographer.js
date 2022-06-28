@@ -24,17 +24,19 @@ const currentMedias = medias.filter((media) => media.photographerId === id);
 currentMedias?.sort(function (a, b) {
   return b.likes - a.likes;
 });
-// console.log("ID => ", id);
+
 const PhotographerProfil = async (data, id) => {
   const sectionHeaderPhotographer = document.querySelector(
     ".section-photographe"
   );
+
   const photographeCardHeader = new PhotographerProfilHeader(
     currentPhotographer
   );
-
   sectionHeaderPhotographer.innerHTML =
     photographeCardHeader.createUserProfil();
+
+  //Contact  Form
   new Form(currentPhotographer);
 };
 
@@ -56,9 +58,7 @@ const implementTotalLikes = () => {
   const mediaLikes = document.querySelectorAll(".likes");
   let likes = 0;
   mediaLikes.forEach((element) => {
-    // console.log("element ==> ", element);
     likes = likes + parseInt(element.innerText);
-    // console.log("element likes  ==> ", likes);
   });
 
   globalLikes.innerText = likes;
@@ -131,10 +131,11 @@ const generatePhotographerMedias = (currentMedias, currentPhotographer) => {
 };
 
 /**
- * Manage dropdown widget options
- * @param {*} widgetOpen
- * @param {*} sortOptions
- * @param {*} optionShowed
+ *  Manage dropdown widget options
+ * @param {boolean} widgetOpen
+ * @param {[]} sortOptions
+ * @param {HTMLElement} optionShowed
+ * @param {HTMLElement} angleUp
  */
 const manageOptions = (widgetOpen, sortOptions, optionShowed, angleUp) => {
   if (widgetOpen == false) {
@@ -205,6 +206,10 @@ const sortBy = (element, sortOptions, toggleBox, widgetOpen, optionShowed) => {
   toggleBox.focus();
 };
 
+/**
+ * Sort photographer Media by their
+ *  name, date and popularity
+ */
 const getSortedMedias = () => {
   const toggleBox = document.querySelector(".toggle-listbox");
   const sortOptions = Array.from(document.querySelectorAll(".sort-option"));
@@ -221,6 +226,7 @@ const getSortedMedias = () => {
     manageOptions(widgetOpen, sortOptions, optionShowed, angleUp);
   });
 
+  // Events
   sortOptions.forEach((element) =>
     element.addEventListener("click", () => {
       angleDown.style.display = "block";

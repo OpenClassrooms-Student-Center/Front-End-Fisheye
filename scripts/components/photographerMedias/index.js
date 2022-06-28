@@ -1,4 +1,9 @@
 export class MediaVideo {
+  /**
+   * Constructor
+   * @param {Object} media
+   * @param {string} optionsphotographeName
+   */
   constructor(media, photographeName) {
     this.photographeName = photographeName;
     this.title = media.title;
@@ -7,6 +12,10 @@ export class MediaVideo {
     this.video = media.video;
     this.id = media.id;
   }
+  /**
+   *
+   * @returns {HTMLElement} article element containing  video element
+   */
   buildMediaCard() {
     const videoLink = `assets/images/${this.photographeName}/${this.video}`;
 
@@ -28,6 +37,11 @@ export class MediaVideo {
 }
 
 export class MediaImg {
+  /**
+   * Constructor
+   * @param {Object} media
+   * @param {string} photographeName
+   */
   constructor(media, photographeName) {
     this.photographeName = photographeName;
     this.title = media.title;
@@ -36,6 +50,11 @@ export class MediaImg {
     this.image = media.image;
     this.id = media.id;
   }
+
+  /**
+   *
+   * @returns {HTMLElement} article element containing  the image element
+   */
   buildMediaCard() {
     const pictureLink = `assets/images/${this.photographeName}/${this.image}`;
     //console.log("this ID ==== ", this.id);

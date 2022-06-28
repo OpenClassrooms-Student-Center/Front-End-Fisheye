@@ -1,3 +1,8 @@
+/**
+ *
+ * @param {string} URL
+ * @returns{Object} data
+ */
 export const getData = async (URL) => {
   try {
     /** @var Response */
@@ -5,6 +10,6 @@ export const getData = async (URL) => {
     const jsonData = await response.json();
     return jsonData;
   } catch (error) {
-    console.error(error);
+    console.error("!!Error Json file : ", error);
   }
 };

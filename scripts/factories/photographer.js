@@ -1,11 +1,17 @@
 import { PHOTO_PORTRAIT } from "../../constants/index.js";
 
+/**
+ *
+ * @returns {Object} containing information about photographer
+ */
 export function photographerFactory(data) {
-  console.log("data => ", data);
   const { name, portrait, city, country, tagline } = data;
 
   const picture = PHOTO_PORTRAIT() + portrait;
 
+  /**
+   * @return {HTMLElement} article
+   */
   function getUserCardDOM() {
     const article = document.createElement("article");
     const img = document.createElement("img");
@@ -22,7 +28,9 @@ export function photographerFactory(data) {
     article.appendChild(h2);
     article.appendChild(p1);
     article.appendChild(p2);
+
     return article;
   }
+
   return { name, picture, getUserCardDOM };
 }

@@ -1,4 +1,8 @@
 export class LightboxImg {
+  /**
+   * @param {string}imageLink
+   * @param {string}title
+   */
   constructor(imageLink, title) {
     this.imageLink = imageLink;
     this.title = title;

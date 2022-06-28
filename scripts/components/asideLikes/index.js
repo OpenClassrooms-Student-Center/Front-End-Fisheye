@@ -1,4 +1,8 @@
 export class AsideLikes {
+  /**
+   * @param {Collection} medias
+   * @param {Object} photographer
+   */
   constructor(medias, photographerProfil) {
     this.medias = medias;
     this.photographerProfil = photographerProfil;

@@ -1,4 +1,8 @@
 export class PhotographerProfilHeader {
+  /**
+   * Constructor
+   * @param {Object} photographer
+   */
   constructor(photographer) {
     this.name = photographer.name;
     this.alt = photographer.alt;
@@ -7,6 +11,11 @@ export class PhotographerProfilHeader {
     this.tagline = photographer.tagline;
     this.portrait = photographer.portrait;
   }
+
+  /**
+   * build  photographer header
+   * @returns {HTMLElement} 
+   */
   createUserProfil() {
     const photographeCardHeader = `
         <div>

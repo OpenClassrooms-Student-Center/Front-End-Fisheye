@@ -1,4 +1,8 @@
 export class PhotographerCard {
+  /**
+   * Constructor
+   * @param {Object} photographer
+   */
   constructor(photographer) {
     this.name = photographer.name;
     this.alt = photographer.alt;
@@ -9,6 +13,11 @@ export class PhotographerCard {
     this.price = photographer.price;
     this.portrait = photographer.portrait;
   }
+
+  /**
+   * Build the Card
+   * @returns {HtmlElement} article element containing infos Photographer
+   */
   createPhotographerCard() {
     const article = document.createElement("article");
     const contentCard = `
@@ -21,6 +30,7 @@ export class PhotographerCard {
             <p>${this.price}€/jour</p>`;
 
     article.innerHTML = contentCard;
+
     return article;
   }
 }
