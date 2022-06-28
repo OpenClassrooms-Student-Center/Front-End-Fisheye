@@ -19,6 +19,9 @@ export default function mediaFactory(media, name) {
     const cardElt = container.appendChild(card);
     const like = cardElt.querySelector('.media__likes');
     like.addEventListener('click', (e) => data.elt.toggleLike(e));
+    like.addEventListener('keydown', (e) => {
+      if (e.target.className === 'media__likes' && e.code === 'Enter')data.elt.toggleLike(e);
+    });
     const img = cardElt.querySelector('.media');
     img.tabIndex = '0';
     img.addEventListener('click', () => {
