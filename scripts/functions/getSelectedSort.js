@@ -58,7 +58,7 @@ export default function getSelectedSort(data) {
   }
 
   function keySelect(e) {
-    if (e.target.id === 'btnListbox' && (e.code === 'ArrowDown' || 'ArrowUp')) {
+    if (e.target.id === 'btnListbox' && (['ArrowDown', 'ArrowUp'].includes(e.code))) {
       body.style.overflow = 'hidden';
       const valueTarget = e.target.querySelector('span');
       const result = [...liItems].filter((li) => {
