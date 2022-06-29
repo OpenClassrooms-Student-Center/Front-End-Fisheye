@@ -32,25 +32,23 @@ async function getPhotos(photographerId) {
       const dataMedias = data.media.filter(
         (photo) => photo.photographerId === parseInt(photographerId, 10),
       );
-      const mediaPage = data.photographers.filter(
+      const dataPhotographer = data.photographers.filter(
         (photographer) => photographer.id === parseInt(photographerId, 10),
       );
-      const medias = dataMedias.map((dataMedia) => mediaFactory(dataMedia, mediaPage[0].name));
-      const name2 = mediaPage[0];
-      console.log(name2);
-      const price = mediaPage[0];
+      const dataPage = dataPhotographer[0];
+      const medias = dataMedias.map((dataMedia) => mediaFactory(dataMedia, dataPage.name));
       const sortMedia = getSelectedSort(medias);
 
       const sumLikes = document.querySelector('.totalLikes__likes');
       sumLikes.innerHTML = totalLikes(sortMedia);
       const pricePerDay = document.querySelector('.totalLikes__price');
-      pricePerDay.innerHTML = `${price.price}€ /jour`;
+      pricePerDay.innerHTML = `${dataPage.price}€ /jour`;
 
       const modalContainer = document.getElementById('contact_modal');
       const modal = document.createElement('section');
       modalContainer.appendChild(modal);
-      modal.outerHTML = modalTemplate(name.name);
-      const modalData = new Modal(name.name);
+      modal.outerHTML = modalTemplate(dataPage.name);
+      const modalData = new Modal();
       const contactButton = document.querySelector('.contact_button');
       contactButton.addEventListener('click', () => modalData.displayModal());
     });

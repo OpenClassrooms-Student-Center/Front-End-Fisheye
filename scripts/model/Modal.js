@@ -1,6 +1,5 @@
 export default class Modal {
-  constructor(data) {
-    this._name = data;
+  constructor() {
     this.modal = document.querySelector('#contact_modal');
     this.body = document.querySelector('body');
     this._handlerCloseModal = this.closeModal.bind(this);
