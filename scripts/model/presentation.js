@@ -5,7 +5,7 @@ export default class Presentation {
     this._country = data.country;
     this._tagline = data.tagline;
     this._portrait = data.portrait;
-    this._pathPortrait = `../assets/Sample_Photos/PhotographersID/${this._portrait}`;
+    this._pathPortrait = `./assets/Sample_Photos/PhotographersID/${this._portrait}`;
   }
 
   get name() {

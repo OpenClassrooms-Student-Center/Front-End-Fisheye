@@ -1,6 +1,6 @@
 export default function createPhotographer(data) {
   const { name, portrait, id } = data;
-  const path = `../assets/Sample_Photos/PhotographersID/${portrait}`;
+  const path = `./assets/Sample_Photos/PhotographersID/${portrait}`;
   const nameSplit = name.split(/ |-/).join('');
 
   const article = document.createElement('article');
