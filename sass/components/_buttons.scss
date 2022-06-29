@@ -75,15 +75,24 @@
     }
 }
 
-// Boutons de la lightbox
+// Boutons de Fermeture du formulaire de contact et de la lightbox
 .btn_close {
-    position: fixed;
-    margin: 0 6.25rem;
     cursor: pointer;
-    top: 4rem;
-    right: 0;
     border: none;
-    color: $colorPrimary;
-    background-color: #ffffff;
-    font-size: map-get($map: $font-size, $key: text) + 2;
+    &--contact {
+        color: #ffffff;
+        background: none;
+        height: 50%;
+        margin-top: .375rem;
+        font-size: map-get($map: $font-size, $key: text) + 3;
+    }
+    &--lightbox {
+        position: fixed;
+        margin: 0 6.25rem;
+        top: 4rem;
+        right: 0;
+        color: $colorPrimary;
+        background-color: #ffffff;
+        font-size: map-get($map: $font-size, $key: text) + 2;
+    }
 }

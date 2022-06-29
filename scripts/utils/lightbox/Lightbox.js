@@ -45,7 +45,7 @@ class Lightbox {
         lightbox.setAttribute('aria-label', 'image closeup view')
         lightbox.innerHTML = `
             <button 
-                class="btn_close"
+                class="btn_close btn_close--lightbox"
                 aria-label="Close dialog"
             >
                 <i 

@@ -28,9 +28,7 @@
         </header>
         <main id="main">
             <div class="photographer_header">
-                <button class="btn" onclick="displayModal()">
-                    Contactez-moi
-                </button>
+                <button class="btn" id="btn_openContact">Contactez-moi</button>
             </div>
             <div class="sorter">
                 <span class="sorter__title" id="orderBy">Trier par</span>
@@ -92,20 +90,72 @@
         <div id="contact_modal">
             <div class="modal">
                 <header class="modal__header">
-                    <h2 class="modal__header__title">Contactez-moi</h2>
-                    <img
-                        src="assets/icons/close.svg"
-                        alt=""
-                        class="modal__header__img"
-                        onclick="closeModal()"
-                    />
+                    <h2 class="modal__header__title">
+                        Contactez-moi <br>
+                        <span class="modal__header__photographer_name"></span>
+                    </h2>
+                    <button
+                        class="btn_close btn_close--contact"
+                        id="btn_closeContact"
+                    >
+                        <i class="fa-solid fa-xmark" aria-hidden="true"> </i>
+                    </button>
                 </header>
-                <form class="form">
-                    <div>
-                        <label>Prénom</label>
-                        <input />
+                <form
+                    class="form"
+                    name="contactForm"
+                    action=""
+                    method="post"
+                    novalidate
+                >
+                    <div
+                        class="formData"
+                        data-error="Veuillez entrer 2 caractères ou plus pour le champ du prénom."
+                    >
+                        <label for="firstName">Prénom</label>
+                        <input
+                            class="text-control"
+                            type="text"
+                            name="firstName"
+                            id="firstName"
+                        />
                     </div>
-                    <button class="btn">Envoyer</button>
+                    <div
+                        class="formData"
+                        data-error="Veuillez entrer 2 caractères ou plus pour le champ du nom."
+                    >
+                        <label for="lastName">Nom</label>
+                        <input
+                            class="text-control"
+                            type="text"
+                            name="lastName"
+                            id="lastName"
+                        />
+                    </div>
+                    <div
+                        class="formData"
+                        data-error="Veuillez entrer une adresse email valide."
+                    >
+                        <label for="email">Email</label>
+                        <input
+                            class="text-control"
+                            type="text"
+                            name="email"
+                            id="email"
+                        />
+                    </div>
+                    <div
+                        class="formData"
+                        data-error="Veuillez indiquer votre message (5 caractères requis au minimum)."
+                    >
+                        <label for="message">Votre message</label>
+                        <textarea
+                            class="text-control"
+                            name="message"
+                            id="message"
+                        ></textarea>
+                    </div>
+                    <button class="btn" type="submit">Envoyer</button>
                 </form>
             </div>
         </div>

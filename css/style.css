@@ -105,12 +105,21 @@ body {
 }
 
 .btn_close {
+  cursor: pointer;
+  border: none;
+}
+.btn_close--contact {
+  color: #ffffff;
+  background: none;
+  height: 50%;
+  margin-top: 0.375rem;
+  font-size: 4.125rem;
+}
+.btn_close--lightbox {
   position: fixed;
   margin: 0 6.25rem;
-  cursor: pointer;
   top: 4rem;
   right: 0;
-  border: none;
   color: #901C1C;
   background-color: #ffffff;
   font-size: 3.125rem;
@@ -352,7 +361,7 @@ body {
   object-position: 50% 35%;
   width: 100%;
   height: 100%;
-  background-color: #C4C4C4;
+  background-color: #c4c4c4;
   padding-right: 0.313rem;
   border-radius: 0.313rem;
 }
@@ -366,6 +375,16 @@ body {
 
 #contact_modal {
   display: none;
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  height: 100%;
+  padding-top: 4rem;
+  z-index: 99;
+  background: rgba(196, 196, 196, 0.4);
+  overflow: auto;
 }
 
 .modal {
@@ -385,13 +404,11 @@ body {
   justify-content: space-between;
   width: 100%;
 }
-.modal__header__img {
-  cursor: pointer;
-}
 .modal__header__title {
   font-size: 4rem;
   font-weight: normal;
-  text-align: center;
+  text-align: left;
+  margin-top: 0;
 }
 
 .form {
@@ -405,17 +422,42 @@ body {
   flex-direction: column;
   width: 100%;
   align-items: self-start;
-  margin-bottom: 1.625rem;
 }
 .form label {
   color: #312E2E;
   font-size: 2.25rem;
 }
-.form input {
+.form input,
+.form textarea {
   width: 100%;
   height: 4.25rem;
   border: none;
   border-radius: 0.313rem;
+}
+.form textarea {
+  height: 16rem;
+}
+.form .text-control {
+  font-size: 1.5rem;
+}
+.form .formData[data-error]::after {
+  content: attr(data-error);
+  display: block;
+  margin: 0.5rem 0;
+  font-size: 1.125rem;
+  color: #ce1f31;
+  opacity: 0;
+  transition: all 0.3s;
+}
+.form .formData[data-error-visible=true]::after {
+  opacity: 1;
+}
+.form .formData[data-error-visible=true] .text-control {
+  border: 2px solid #ce1f31;
+}
+
+.no-scroll {
+  overflow: hidden;
 }
 
 /*# sourceMappingURL=style.css.map */

@@ -13,7 +13,7 @@ import { SorterForm } from '../templates/SorterForm.js'
 import { Sorter } from '../utils/sorter/Sorter.js'
 import { Lightbox } from '../utils/lightbox/Lightbox.js'
 
-class PhotographerPage {
+export class PhotographerPage {
     constructor() {
         // Elements du DOM
         this.main = document.getElementById('main')
@@ -187,8 +187,15 @@ class PhotographerPage {
             sorter
         )
 
-        // Initialise le formulaire 
+        // Initialise le formulaire
         sorterForm.init()
+
+        // Afficher le nom du photographe dans le formulaire de contact
+        const photographerNameContactForm = document.querySelector(
+            '.modal__header__photographer_name'
+        )
+
+        photographerNameContactForm.textContent = `${this.photographerFiltered.name}`
     }
 }
 
