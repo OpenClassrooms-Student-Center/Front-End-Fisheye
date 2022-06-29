@@ -196,7 +196,7 @@
     }
 }
 
-@media only screen and (max-width: $break-point-tablet){
+@media screen and (max-width: $break-point-tablet){
     #medias_section {
     @include flex-cc;
     flex-wrap: wrap;
@@ -212,7 +212,7 @@
         }
     }
 }
-@media only screen and (max-width: $break-point-mobile){
+@media screen and (max-width: $break-point-mobile){
     .logo{
         margin: auto;
     }
@@ -239,5 +239,7 @@
             text-align: center;
         }
     }
-    
+    .lightbox__container img{
+        z-index: 2;
+    }
 }

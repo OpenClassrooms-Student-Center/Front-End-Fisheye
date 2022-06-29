@@ -41,3 +41,24 @@ article a:focus-visible {
         transition: .2s;
     }
 }
+
+@media screen and (max-width: $break-point-tablet){
+    #photographer_section {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+@media screen and (max-width: $break-point-mobile){
+    .header__index{
+        flex-direction: column;
+        margin-top: 20px;
+        h1{
+            margin-right: 0;
+        }
+    }
+    #photographer_section {
+        grid-template-columns: 1fr;
+    }
+    #main{
+        margin-bottom: 80px;
+    }
+}

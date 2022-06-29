@@ -148,7 +148,7 @@ form .formData[data-error-visible=true] input, form .formData[data-error-visible
 
 .lightbox__prev {
   border: none;
-  background: url(/assets/icons/arrow.svg) center center/16px 28px no-repeat;
+  background: url(../assets/icons/arrow.svg) center center/16px 28px no-repeat;
   width: 50px;
   height: 75%;
   position: absolute;
@@ -159,7 +159,7 @@ form .formData[data-error-visible=true] input, form .formData[data-error-visible
 }
 .lightbox__next {
   border: none;
-  background: url(/assets/icons/arrow.svg) center center/16px 28px no-repeat;
+  background: url(../assets/icons/arrow.svg) center center/16px 28px no-repeat;
   width: 50px;
   height: 75%;
   position: absolute;
@@ -172,7 +172,7 @@ form .formData[data-error-visible=true] input, form .formData[data-error-visible
   height: 60px;
   cursor: pointer;
   border: none;
-  background: url(/assets/icons/close.svg) center center/30px 30px no-repeat;
+  background: url(../assets/icons/close.svg) center center/30px 30px no-repeat;
   position: absolute;
   top: 0px;
   right: 0px;
@@ -313,6 +313,28 @@ article a:focus-visible > img {
   transition: 0.2s;
 }
 
+@media screen and (max-width: 1400px) {
+  #photographer_section {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+@media screen and (max-width: 950px) {
+  .header__index {
+    flex-direction: column;
+    margin-top: 20px;
+  }
+  .header__index h1 {
+    margin-right: 0;
+  }
+
+  #photographer_section {
+    grid-template-columns: 1fr;
+  }
+
+  #main {
+    margin-bottom: 80px;
+  }
+}
 .photograph-header {
   background-color: #fafafa;
   height: 300px;
@@ -507,7 +529,7 @@ article a:focus-visible > img {
   margin-right: 40px;
 }
 
-@media only screen and (max-width: 1400px) {
+@media screen and (max-width: 1400px) {
   #medias_section {
     display: flex;
     justify-content: center;
@@ -526,7 +548,7 @@ article a:focus-visible > img {
     margin: 40px;
   }
 }
-@media only screen and (max-width: 950px) {
+@media screen and (max-width: 950px) {
   .logo {
     margin: auto;
   }
@@ -554,6 +576,10 @@ article a:focus-visible > img {
     left: 0px;
     border-radius: 0;
     text-align: center;
+  }
+
+  .lightbox__container img {
+    z-index: 2;
   }
 }
 
