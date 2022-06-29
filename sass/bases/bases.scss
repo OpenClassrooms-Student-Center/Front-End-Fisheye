@@ -4,8 +4,9 @@ body, * {
     box-sizing: border-box;
 
 }
-:focus-visible, button:focus-visible {  
-    border: 0.5rem solid #f1a9a0 ;
+:focus-visible, button:focus-visible, .media__likes:focus-visible  {  
+    border: 0.5rem solid #f1a9a0!important ;
+    // box-shadow: .5rem #f1a9a0;
     outline: none;
     
 }

@@ -5,24 +5,26 @@
     justify-content: space-between;
     align-items: stretch;
    
-    overflow: hidden;
+    // overflow: hidden;
 
     .media__aside{
         display: flex;
         flex-direction: row;
         justify-content: space-between;
-        align-items: flex-end;
+        align-items: center;
        
         font-style: normal;
         font-weight: 400;
-        margin-top: 3%;
+        margin-top: 1%;
     }
 
     .media {
+        width: 100%;
         aspect-ratio: 1/0.85;
         object-fit: cover;
         border-radius: 5px;
         cursor: pointer;
+        
     }
     .media__likes{
         width: 20%;
@@ -32,6 +34,7 @@
         justify-content: flex-end;
         align-items: center;
         cursor: pointer;
+        border: .5rem solid transparent ;
     }
 }
 

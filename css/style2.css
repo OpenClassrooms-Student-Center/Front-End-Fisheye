@@ -4,8 +4,8 @@ body, * {
   box-sizing: border-box;
 }
 
-:focus-visible, button:focus-visible {
-  border: 0.5rem solid #f1a9a0;
+:focus-visible, button:focus-visible, .media__likes:focus-visible {
+  border: 0.5rem solid #f1a9a0 !important;
   outline: none;
 }
 
@@ -66,18 +66,18 @@ body, * {
   width: 100%;
   justify-content: space-between;
   align-items: stretch;
-  overflow: hidden;
 }
 .cardMedia .media__aside {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  align-items: flex-end;
+  align-items: center;
   font-style: normal;
   font-weight: 400;
-  margin-top: 3%;
+  margin-top: 1%;
 }
 .cardMedia .media {
+  width: 100%;
   aspect-ratio: 1/0.85;
   object-fit: cover;
   border-radius: 5px;
@@ -91,6 +91,7 @@ body, * {
   justify-content: flex-end;
   align-items: center;
   cursor: pointer;
+  border: 0.5rem solid transparent;
 }
 
 .logo {
