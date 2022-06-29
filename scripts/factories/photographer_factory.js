@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 class PhotographerFactory {
 
     constructor(data) {
@@ -13,24 +14,24 @@ class PhotographerFactory {
         const hrefPhotographer = `./photographer.html?id=${this.id}`;
 
         //DOM elements of photographer
-        this.article = document.createElement('article');
-        this.a = document.createElement('a');
-        this.img = document.createElement('img');
-        this.h1 = document.createElement('h1');
-        this.h2 = document.createElement('h2');
-        this.divCity = document.createElement('div');
-        this.divTagline = document.createElement('div');
-        this.divPrice = document.createElement('div');
-        this.divPhotographerInfos = document.createElement('div');
+        this.article = document.createElement("article");
+        this.a = document.createElement("a");
+        this.img = document.createElement("img");
+        this.h1 = document.createElement("h1");
+        this.h2 = document.createElement("h2");
+        this.divCity = document.createElement("div");
+        this.divTagline = document.createElement("div");
+        this.divPrice = document.createElement("div");
+        this.divPhotographerInfos = document.createElement("div");
         
         //Set attributes and class for the CSS
         this.img.setAttribute("src", picture);
         this.a.setAttribute("href", hrefPhotographer);
         this.a.setAttribute("aria-label", this.name);
-        this.divCity.classList.add('city');
-        this.divTagline.classList.add('tagline');
-        this.divPrice.classList.add('price');
-        this.divPhotographerInfos.classList.add('photographer-infos');
+        this.divCity.classList.add("city");
+        this.divTagline.classList.add("tagline");
+        this.divPrice.classList.add("price");
+        this.divPhotographerInfos.classList.add("photographer-infos");
     }
 
     getUserCardDOM() {
