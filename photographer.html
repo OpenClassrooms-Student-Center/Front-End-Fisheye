@@ -35,19 +35,39 @@
         <img class="close-form" role="button" tabindex="-1" aria-label="Fermer le formulaire de contact"
           src="assets/icons/close.svg" />
       </header>
-      <form>
+      <form name="reserve" action="photographer.html" method="get">
         <div>
-          <label for="prenom">Prénom</label>
-          <input type="text" name="prenom" id="prenom" placeholder="Jean" required>
-          <label for="nom">Nom</label>
-          <input type="text" name="nom" id="nom" placeholder="Dupont" required>
-          <label for="email">Email</label>
-          <input type="email" name="email" id="email" placeholder="jean.dupont@gmail.com" required>
-          <label for="commentaire">Votre message</label>
-          <textarea name="commentaire" id="commentaire" rows="3" placeholder="Je prends contact avec vous..."
-            required></textarea>
+          <div class=" formData first-container">
+            <label for="first">Prénom</label>
+            <input class="text-control" type="text" id="first" name="first" placeholder="Jean" required>
+            <span class="error"></span>
+          </div>
+
+          <div class=" formData last-container">
+            <label for="last">Nom</label>
+            <input class="text-control" type="text" id="last" name="last" placeholder="Dupont" required>
+            <span class="error"></span>
+          </div>
+
+          <div class=" formData email-container">
+            <label for="email">Email</label>
+            <input class="text-control" type="email" name="email" id="email" placeholder="jean.dupont@gmail.com"
+              required>
+            <span class="error"></span>
+          </div>
+
+          <div class=" formData message-container">
+            <label for="message">Votre message</label>
+            <textarea class="text-control" name="message" id="message" rows="3"
+              placeholder="Je prends contact avec vous..." required></textarea>
+            <span class="error"></span>
+
+          </div>
+
         </div>
-        <button class="contact-button submit">Envoyer</button>
+
+        <input class="contact-button submit" type="submit" value="Envoyer" />
+
       </form>
     </div>
   </div>

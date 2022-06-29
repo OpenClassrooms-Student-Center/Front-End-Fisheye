@@ -338,6 +338,26 @@ form textarea {
     height: 150px;
     padding: 10px;
 }
+
+.formData[data-error]::after {
+  content: attr(data-error);
+  font-size: 1.2em;
+  color:crimson;
+  display: block;
+  margin-top: 10px;
+  margin-left: 7px;
+  margin-bottom: 7px;
+  text-align: left;
+  line-height: 0.3;
+  opacity: 0;
+  transition: 0.3s;
+}
+.formData[data-error-visible="true"]::after {
+  opacity: 1;
+}
+.formData[data-error-visible="true"] .text-control {
+  border: 2px solid #e54858;
+}
 .lightbox {
     position: fixed;
     top: 0;
@@ -399,4 +419,5 @@ form textarea {
     position: relative;
     top: 10px;
 }
+
 

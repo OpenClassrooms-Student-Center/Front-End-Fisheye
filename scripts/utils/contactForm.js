@@ -1,7 +1,9 @@
+import { checkUserInputs } from "./FormHelper/index.js";
+
 export class Form {
   constructor(photographer) {
     const photographerName = photographer.name;
-    this.form = document.getElementById("contact-modal");
+    this.modalForm = document.getElementById("contact-modal");
     this.closeButton = document.querySelector(".close-form");
 
     this.openForm = document.querySelector(".open-form");
@@ -15,18 +17,22 @@ export class Form {
   }
 
   displayModal(photographerName) {
-    const formh2 = document.querySelector(".header-modal h2");
-    formh2.innerHTML = "Contactez-moi<br>" + photographerName;
-    this.form.style.display = "flex";
+    const formH2 = document.querySelector(".header-modal h2");
+    formH2.innerHTML = "Contactez-moi<br>" + photographerName;
+    this.modalForm.style.display = "flex";
 
     // Hide background page of focus
     Array.from(document.body.children).forEach((child) => {
-      if (child !== this.form) {
+      if (child !== this.modalForm) {
         child.inert = true;
       }
     });
-    this.form.querySelector(".modal").focus();
+    this.modalForm.querySelector(".modal").focus();
   }
+
+  /**
+   * Close the modal dialog event handler
+   */
   manageEvent() {
     this.closeButton.addEventListener("click", () => {
       this.closeModal();
@@ -34,12 +40,19 @@ export class Form {
     this.submit.addEventListener("click", (e) => {
       e.stopImmediatePropagation();
       e.preventDefault();
-      this.submitData();
-      this.closeModal();
+      // this.submitData();
+      const isValidForm = checkUserInputs();
+      if (isValidForm) {
+        this.closeModal();
+      }
     });
   }
+
+  /**
+   * Close the modal keyboard
+   */
   keyboardNav() {
-    this.form.addEventListener("keydown", (e) => {
+    this.modalForm.addEventListener("keydown", (e) => {
       if (e.key === "Tab" && this.submit.contains(document.activeElement)) {
         e.preventDefault();
         this.closeButton.setAttribute("tabindex", "0");
@@ -55,26 +68,27 @@ export class Form {
       }
     });
   }
-  submitData() {
-    const inputs = document.querySelectorAll("form input");
-    const userMessage = [];
-    inputs.forEach((input) => {
-      console.log("user input ", input.value);
-      userMessage.push(input.value);
-    });
-    const textarea = document.querySelector("form textarea").value;
-    userMessage.push(textarea);
-    userMessage.forEach((data) => {
-      console.log(data);
-    });
-  }
+  // submitData() {
+  //   console.log("checkUserInputs", isValidForm);
+  //   const inputs = document.querySelectorAll("form input");
+
+  //   const userMessage = [];
+  //   inputs.forEach((input) => {
+  //     userMessage.push(input.value);
+  //   });
+  //   const textarea = document.querySelector("form textarea").value;
+  //   userMessage.push(textarea);
+  //   userMessage.forEach((data) => {
+  //     console.log(data);
+  //   });
+  // }
   closeModal(beforeElementFocus) {
-    this.form.style.display = "none";
+    this.modalForm.style.display = "none";
     this.closeButton.setAttribute("tabindex", "-1");
 
     // Make the page focusable again
     Array.from(document.body.children).forEach((child) => {
-      if (child !== this.form) {
+      if (child !== this.modalForm) {
         child.inert = false;
       }
     });
