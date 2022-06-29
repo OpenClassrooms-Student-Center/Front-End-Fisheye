@@ -33,9 +33,9 @@ export default function sliderFactory(firstMedia, sortMedia) {
   firstSlide.className += ' active';
   const body = document.querySelector('body');
   body.style.overflow = 'hidden';
-  cardContainer.tabindex = '-1';
-  presentation.tabindex = '-1';
-  filter.tabindex = '-1';
+  cardContainer.style.display = 'none';
+  presentation.style.display = 'none';
+  filter.style.display = 'none';
 
   const nbrSlider = slides.length;
   const totalLikes = document.querySelector('.totalLikes');
@@ -65,9 +65,9 @@ export default function sliderFactory(firstMedia, sortMedia) {
     slider.ariaHidden = 'true';
     totalLikes.style.display = 'grid';
     body.style.overflow = 'scroll';
-    cardContainer.tabindex = '';
-    presentation.tabindex = '';
-    filter.tabindex = '';
+    cardContainer.style.display = 'grid';
+    presentation.style.display = 'block';
+    filter.style.display = 'flex';
   }
   function addEventSlider() {
     const back = document.querySelector('.back');
