@@ -143,7 +143,7 @@ export class PhotographerPage {
     }
 
     async init() {
-        // Récupère les datas du photographes
+        // Récupère les datas du photographe
         this.photographerFiltered = await this.fetchPhotographerFiltered()
 
         // Affiche l'entête du photographe
@@ -187,7 +187,7 @@ export class PhotographerPage {
             sorter
         )
 
-        // Initialise le formulaire
+        // Initialise le formulaire des media
         sorterForm.init()
 
         // Afficher le nom du photographe dans le formulaire de contact
