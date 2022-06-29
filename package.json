@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "sass": "sass --watch ./sass/main.scss:./css/style.css",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "lint": "eslint ."
   },
   "repository": {
     "type": "git",
@@ -16,5 +17,8 @@
   "bugs": {
     "url": "https://github.com/Dwain06/Front-End-Fisheye/issues"
   },
-  "homepage": "https://github.com/Dwain06/Front-End-Fisheye#readme"
+  "homepage": "https://github.com/Dwain06/Front-End-Fisheye#readme",
+  "devDependencies": {
+    "eslint": "^8.18.0"
+  }
 }
