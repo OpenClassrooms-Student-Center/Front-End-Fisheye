@@ -13,6 +13,8 @@
 
 
 .back, .next, .close {
+    border: none;
+    background-color: transparent;
     font-size: 3rem;
     z-index: 1;
     color: #901C1C;
