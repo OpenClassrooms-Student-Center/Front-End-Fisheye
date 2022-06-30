@@ -199,8 +199,9 @@ header a {
     transition: 0.2s ease-in;
     color: #901C1C;
 }
-.portfolio article div span input:not(:checked) ~ label i{
-    color: #d6e0e0;
+.portfolio article div span input:not(:checked) ~ label i {
+    color:dimgray;
+  
 }
 
 @keyframes bounce {
