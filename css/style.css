@@ -30,8 +30,9 @@ h1 {
 .photographer_section {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
-  gap: 80px;
+  gap: 70px;
   margin-top: 100px;
+  margin-bottom: 50px;
 }
 
 .photographer_section article {
@@ -69,14 +70,14 @@ h1 {
   border-radius: 50%;
 }
 
-h2 {
+.h2 {
 color: #d3573c;
 font-size: 32px;
 font-weight: 500;
 }
 
-h3 {
-color: #d3573c;
+.h3 {
+color: #901c1c;
 font-size: 20px;
 font-weight: 300;
 margin-top: -20px;
@@ -92,6 +93,12 @@ margin-top: -15px;
     font-size: 14px;
     font-weight: 100;
     margin-top: -10px;
+}
+
+@media screen and (min-width:768px) and (max-width:991px){
+  .photographer_profil{
+    gap: 30px;
+  }
 }
 
 /* Photographer page */
