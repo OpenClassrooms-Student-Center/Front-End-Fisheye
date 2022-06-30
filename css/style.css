@@ -576,6 +576,7 @@ article a:focus-visible > img {
     left: 0px;
     border-radius: 0;
     text-align: center;
+    z-index: 1;
   }
 
   .lightbox__container img {
