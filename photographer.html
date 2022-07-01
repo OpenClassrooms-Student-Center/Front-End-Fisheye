@@ -88,15 +88,16 @@
             <div class="media"></div>
         </main>
         <div id="contact_modal">
-            <div class="modal">
+            <div class="modal" role="dialog" aria-labelledby="titleForm">
                 <header class="modal__header">
-                    <h2 class="modal__header__title">
-                        Contactez-moi <br>
+                    <h2 class="modal__header__title" id="titleForm">
+                        Contactez-moi <br />
                         <span class="modal__header__photographer_name"></span>
                     </h2>
                     <button
                         class="btn_close btn_close--contact"
                         id="btn_closeContact"
+                        aria-label="Close Contact form"
                     >
                         <i class="fa-solid fa-xmark" aria-hidden="true"> </i>
                     </button>
@@ -118,6 +119,7 @@
                             type="text"
                             name="firstName"
                             id="firstName"
+                            aria-labelledby="firstName"
                         />
                     </div>
                     <div
@@ -130,6 +132,7 @@
                             type="text"
                             name="lastName"
                             id="lastName"
+                            aria-labelledby="lastName"
                         />
                     </div>
                     <div
@@ -142,6 +145,7 @@
                             type="text"
                             name="email"
                             id="email"
+                            aria-labelledby="email"
                         />
                     </div>
                     <div
@@ -153,9 +157,12 @@
                             class="text-control"
                             name="message"
                             id="message"
+                            aria-labelledby="message"
                         ></textarea>
                     </div>
-                    <button class="btn" type="submit">Envoyer</button>
+                    <button class="btn" type="submit" aria-label="Send">
+                        Envoyer
+                    </button>
                 </form>
             </div>
         </div>
