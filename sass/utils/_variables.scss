@@ -8,3 +8,9 @@ $font-size: (
     title: 4rem,
     text: 1.125rem
 );
+
+$breakpoints: (
+    mobile: 425px, // Max-width mobile L
+    tablet: 768px, // Max-width tablet
+    laptop: 1024px, // Max-width laptop
+)

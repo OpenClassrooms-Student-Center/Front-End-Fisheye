@@ -12,4 +12,18 @@
         color: $colorPrimary;
         margin-right: 6.25rem;
     }
+    @include mobileAndTablet {
+        flex-direction: column;
+        height: auto;
+        & a {
+            display: block;
+            text-align: center;
+        }
+        &__logo {
+            margin: 3rem 0;
+        }
+        &__title {
+            margin-right: 0;
+        }
+    }
 }

@@ -37,6 +37,25 @@
     & button {
         order: 2;
     }
+    @include mobileAndTablet {
+        width: 85%;
+        margin: auto;
+    }
+    @include mobileAndTabletAndLaptopAndLaptopL {
+        flex-direction: column;
+        height: auto;
+        &__content {
+            order: 2;
+            text-align: center;
+        }
+        &__img {
+            order: 1;
+        }
+        & button {
+            order: 3;
+            margin-top: 1rem;
+        }
+    }
 }
 
 .sorter {
@@ -55,6 +74,15 @@
         list-style: none;
         margin: 0;
         padding: 0;
+    }
+    @include mobileAndTablet {
+        flex-direction: column;
+        align-items: center;
+        width: 85%;
+        margin: auto;
+        &__title {
+            margin: 2rem 0 1rem;
+        }
     }
 }
 
@@ -98,16 +126,33 @@
             }
         }
     }
+    @include mobileAndTablet {
+        grid-template-columns: 100%;
+        gap: 2rem 0;
+        width: 85%;
+        margin: 5rem auto;
+        &__item {
+            & img,
+            video {
+                width: 100%;
+            }
+        }
+    }
+    @include laptopOnly {
+        grid-template-columns: repeat(2, 46%);
+    }
 }
 
 .priceAndLikes {
     position: fixed;
     bottom: -0.25rem;
     right: 2rem;
+    z-index: 98;
     display: flex;
     flex-direction: row;
-    border-radius: 0.313rem;
+    justify-content: space-between;
     padding: 1rem 2rem 1.25rem 2rem;
+    border-radius: 0.313rem;
     background-color: $colorTertiary;
     font-size: map-get($map: $font-size, $key: text) + 0.375;
     & .likeContent {
@@ -122,6 +167,13 @@
     & .price {
         padding-left: 5rem;
     }
+    @include mobileOnly {
+        left: 10%;
+        right: 10%;
+        & .price {
+            padding-left: 2rem;
+        }
+    }
 }
 
 .lightbox {
@@ -135,7 +187,7 @@
     &__next,
     &__prev {
         position: fixed;
-        top: 50%;
+        top: 45%;
         right: 0;
         z-index: 11;
         border: 0.125rem;
@@ -145,7 +197,6 @@
         font-size: map-get($map: $font-size, $key: text) + 2;
     }
     &__prev {
-        right: auto;
         left: 0;
     }
     &__container {
@@ -176,6 +227,61 @@
             color: $colorPrimary;
         }
     }
+    @include mobileAndTabletAndLaptop {
+        & button {
+            margin: 0 1rem;
+        }
+        &__next, &__prev {
+            margin: 0 1rem;
+        }
+        &__container {
+            &__figure {
+                padding: 0;
+            }
+        }
+    }
+    @include mobileOnly {
+        & button {
+            top: 1rem;
+        }
+        &__next, &__prev {
+            top: 35%;
+        }
+        &__container {
+            margin: 0 2rem;
+            &__figure {
+                height: 72vh;
+            }
+        }
+    }
+    @include tabletOnly {
+        & button {
+            top: 2rem;
+        }
+        &__next, &__prev {
+            top: 40%;
+        }
+        &__container {
+            margin: 2rem 2rem 0;
+            &__figure {
+                height: 75vh;
+            }
+        }
+    }
+    @include laptopOnly {
+        & button {
+            top: 3rem;
+        }
+        &__container {
+            margin: 3rem 2rem 0;
+            &__figure {
+                padding: 0 18%;
+                &--mp4 {
+                    padding: 0;
+                }
+            }
+        }
+    }
 }
 
 #contact_modal {
@@ -190,6 +296,9 @@
     z-index: 99;
     background: rgba(196, 196, 196, 0.4);
     overflow: auto;
+    @include mobileAndTabletAndLaptop {
+        padding-top: 0;
+    }
 }
 
 .modal {
@@ -214,6 +323,20 @@
             margin-top: 0;
         }
     }
+    @include mobileAndTablet {
+        width: 100%;
+        padding: 1.375rem;
+        &__header {
+            &__title {
+                font-size: map-get($map: $font-size, $key: title) - 1.75;
+            }
+        }
+    }
+    @include laptopOnly {
+        width: 100%;
+        padding: 3rem;
+    }
+    
 }
 
 .form {
@@ -241,22 +364,19 @@
     & textarea {
         height: 16rem;
     }
-
     & .text-control {
         font-size: map-get($map: $font-size, $key: text) + 0.375;
     }
-
-    .formData[data-error]::after {
+    & .formData[data-error]::after {
         content: attr(data-error);
         display: block;
-        margin: .5rem 0;
+        margin: 0.5rem 0;
         font-size: map-get($map: $font-size, $key: text);
         color: #ce1f31;
         opacity: 0;
         transition: all 0.3s;
     }
-
-    .formData[data-error-visible="true"] {
+    & .formData[data-error-visible='true'] {
         &::after {
             opacity: 1;
         }
@@ -264,9 +384,13 @@
             border: 2px solid #ce1f31;
         }
     }
+    @include mobileAndTablet {
+        & label {
+            font-size: map-get($map: $font-size, $key: text) + 0.375;
+        }
+    }
 }
 
 .no-scroll {
     overflow: hidden;
 }
-

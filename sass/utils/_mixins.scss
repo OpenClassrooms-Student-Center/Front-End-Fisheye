@@ -1,8 +1,50 @@
 @mixin pseudoElement {
-    content: "";
+    content: '';
     position: absolute;
     top: 0;
     right: 0;
     bottom: 0;
     left: 0;
+}
+
+@mixin mobileOnly {
+    @media screen and (max-width: map-get($breakpoints, mobile)) {
+        @content;
+    }
+}
+
+@mixin mobileAndTablet {
+    @media screen and (max-width: map-get($breakpoints, tablet)) {
+        @content;
+    }
+}
+
+@mixin tabletOnly {
+    @media screen and (min-width: 426px) and (max-width: map-get($breakpoints, tablet)) {
+        @content;
+    }
+}
+
+@mixin mobileAndTabletAndLaptop {
+    @media screen and (max-width: map-get($breakpoints, laptop)) {
+        @content;
+    }
+}
+
+@mixin tabletAndLaptop {
+    @media screen and (min-width: 426px) and (max-width: map-get($breakpoints, laptop)) {
+        @content;
+    }
+}
+
+@mixin laptopOnly {
+    @media screen and (min-width: 769px) and (max-width: map-get($breakpoints, laptop)) {
+        @content;
+    }
+}
+
+@mixin  mobileAndTabletAndLaptopAndLaptopL {
+    @media screen and (max-width: 1275px) {
+        @content;
+    }
 }
