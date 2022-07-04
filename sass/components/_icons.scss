@@ -1,0 +1,10 @@
+.icon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: $colorPrimary;
+    font-size: map-get($map: $font-size, $key: text) + 0.125;
+    &--black {
+        color: #000000;
+    }
+}

@@ -1,36 +1,181 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <link href="css/style.css" rel="stylesheet" type="text/css" />
-    <meta charset="utf-8">
-    <link rel="icon" type="image/png" href="assets/favicon.png">
-    <link href="https://fonts.googleapis.com/css?family=DM+Sans&display=swap" rel="stylesheet">
-    <title>Fisheye - photographe </title>
-  </head>
-  <body>
-    <header>
-      <img src="assets/images/logo.png" class="logo" />
-    </header>
-    <main id="main">
-      <div class="photograph-header">
-        <button class="contact_button" onclick="displayModal()">Contactez-moi</button>
-      </div>
-    </main>
-    <div id="contact_modal">
-			<div class="modal">
-				<header>
-          <h2>Contactez-moi</h2>
-          <img src="assets/icons/close.svg" onclick="closeModal()" />
+<html lang="fr">
+    <head>
+        <title>Fisheye - photographe</title>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+        <!-- Style -->
+        <link href="./css/style.css" rel="stylesheet" type="text/css" />
+
+        <!-- Font -->
+        <link
+            href="https://fonts.googleapis.com/css?family=DM+Sans&display=swap"
+            rel="stylesheet"
+        />
+
+        <!-- Icon -->
+        <script
+            src="https://kit.fontawesome.com/3cca219877.js"
+            crossorigin="anonymous"
+        ></script>
+    </head>
+    <body>
+        <header class="header">
+            <a href="/index.html">
+                <img
+                    src="assets/images/logo.png"
+                    alt="Fisheye Home page"
+                    class="header__logo"
+                />
+            </a>
         </header>
-				<form>
-					<div>
-						<label>Prénom</label>
-						<input />
-					</div>
-          <button class="contact_button">Envoyer</button>
-				</form>
-			</div>
-		</div>
-    <script src="/scripts/utils/contactForm.js"></script>
-  </body>
+        <main id="main">
+            <div class="photographer_header">
+                <button class="btn" id="btn_openContact">Contactez-moi</button>
+            </div>
+            <div class="sorter">
+                <span class="sorter__title" id="orderBy">Trier par</span>
+                <button
+                    class="sorter__selected btn_sorter btn_sorter-4"
+                    aria-haspopup="listbox"
+                    aria-expanded="false"
+                    aria-controls="sorterList"
+                >
+                    <span class="sorter__selected__name">Popularité</span>
+                    <i
+                        class="fa-solid fa-chevron-down"
+                        aria-hidden="true"
+                        data-fa-transform="right-32"
+                    ></i>
+                </button>
+                <ul
+                    class="sorter__list"
+                    role="listbox"
+                    aria-labelledby="orderBy"
+                    aria-activedescendant="like"
+                >
+                    <li>
+                        <button
+                            id="like"
+                            class="sorter__list__option btn_sorter btn_sorter-1"
+                            role="option"
+                        >
+                            <span>Popularité</span>
+                            <i
+                                class="fa-solid fa-chevron-down fa-rotate-180"
+                                aria-hidden="true"
+                                data-fa-transform="right-25"
+                            ></i>
+                        </button>
+                    </li>
+                    <li>
+                        <button
+                            id="date"
+                            class="sorter__list__option btn_sorter btn_sorter-2"
+                            role="option"
+                        >
+                            <span>Date</span>
+                        </button>
+                    </li>
+                    <li>
+                        <button
+                            id="title"
+                            class="sorter__list__option btn_sorter btn_sorter-3"
+                            role="option"
+                        >
+                            <span>Titre</span>
+                        </button>
+                    </li>
+                </ul>
+            </div>
+            <div class="media"></div>
+        </main>
+        <div id="contact_modal">
+            <div class="modal" role="dialog" aria-labelledby="titleForm">
+                <header class="modal__header">
+                    <h2 class="modal__header__title" id="titleForm">
+                        Contactez-moi <br />
+                        <span class="modal__header__photographer_name"></span>
+                    </h2>
+                    <button
+                        class="btn_close btn_close--contact"
+                        id="btn_closeContact"
+                        aria-label="Close Contact form"
+                    >
+                        <i class="fa-solid fa-xmark" aria-hidden="true"> </i>
+                    </button>
+                </header>
+                <form
+                    class="form"
+                    name="contactForm"
+                    action=""
+                    method="post"
+                    novalidate
+                >
+                    <div
+                        class="formData"
+                        data-error="Veuillez entrer 2 caractères ou plus pour le champ du prénom."
+                    >
+                        <label for="firstName">Prénom</label>
+                        <input
+                            class="text-control"
+                            type="text"
+                            name="firstName"
+                            id="firstName"
+                            aria-labelledby="firstName"
+                        />
+                    </div>
+                    <div
+                        class="formData"
+                        data-error="Veuillez entrer 2 caractères ou plus pour le champ du nom."
+                    >
+                        <label for="lastName">Nom</label>
+                        <input
+                            class="text-control"
+                            type="text"
+                            name="lastName"
+                            id="lastName"
+                            aria-labelledby="lastName"
+                        />
+                    </div>
+                    <div
+                        class="formData"
+                        data-error="Veuillez entrer une adresse email valide."
+                    >
+                        <label for="email">Email</label>
+                        <input
+                            class="text-control"
+                            type="text"
+                            name="email"
+                            id="email"
+                            aria-labelledby="email"
+                        />
+                    </div>
+                    <div
+                        class="formData"
+                        data-error="Veuillez indiquer votre message (5 caractères requis au minimum)."
+                    >
+                        <label for="message">Votre message</label>
+                        <textarea
+                            class="text-control"
+                            name="message"
+                            id="message"
+                            aria-labelledby="message"
+                        ></textarea>
+                    </div>
+                    <button class="btn" type="submit" aria-label="Send">
+                        Envoyer
+                    </button>
+                </form>
+            </div>
+        </div>
+
+        <!-- Utils -->
+        <script src="scripts/utils/contact/contactForm.js"></script>
+
+        <!-- Pages -->
+        <script type="module" src="scripts/pages/photographer.js"></script>
+    </body>
 </html>

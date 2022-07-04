@@ -1,0 +1,21 @@
+{
+  "name": "wilfried",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "sass": "sass --watch ./sass/main.scss:./css/style.css",
+    "prefix": "postcss ./css/style.css --use autoprefixer -d ./css/style/prefixed/"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/WilfriedProm/Front-End-Fisheye.git"
+  },
+  "author": "Wilfried Prombo",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/WilfriedProm/Front-End-Fisheye/issues"
+  },
+  "homepage": "https://github.com/WilfriedProm/Front-End-Fisheye#readme"
+}

@@ -1,0 +1,98 @@
+// Boutons par défaut
+.btn {
+    position: relative;
+    z-index: 1;
+    font-size: map-get($map: $font-size, $key: text) + 0.125;
+    font-weight: bold;
+    color: white;
+    padding: 0.688rem;
+    width: 10.625rem;
+    height: 4.375rem;
+    border: none;
+    background-color: $colorPrimary;
+    border-radius: 0.313rem;
+    cursor: pointer;
+    &:hover {
+        color: #000000;
+        &::after {
+            opacity: 1;
+        }
+    }
+    &::after {
+        @include pseudoElement;
+        z-index: -1;
+        opacity: 0;
+        background-color: $colorTertiary;
+        border-radius: 0.313rem;
+        transition: opacity 250ms;
+    }
+}
+
+// Boutons du menu de tri
+.btn_sorter {
+    position: relative;
+    padding: 1rem 4rem 1rem 2rem;
+    cursor: pointer;
+    color: #ffffff;
+    background: none;
+    border: none;
+    width: 12rem;
+    font-size: map-get($map: $font-size, $key: text);
+    font-weight: 700;
+    text-align: start;
+    background-color: $colorPrimary;
+    &-1 {
+        display: flex;
+        flex-direction: row;
+        border-top-left-radius: 0.313rem;
+        border-top-right-radius: 0.313rem;
+    }
+    &-2 {
+        &::before {
+            @include pseudoElement;
+            left: 0.9rem;
+            width: 85%;
+            height: 0.063rem;
+            background-color: #ffffff;
+        }
+    }
+    &-3 {
+        border-bottom-left-radius: 0.313rem;
+        border-bottom-right-radius: 0.313rem;
+        &::before {
+            @include pseudoElement;
+            left: 0.9rem;
+            width: 85%;
+            height: 0.063rem;
+            background-color: #ffffff;
+        }
+    }
+    &-4 {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        border-radius: 0.313rem;
+    }
+}
+
+// Boutons de Fermeture du formulaire de contact et de la lightbox
+.btn_close {
+    cursor: pointer;
+    border: none;
+    &--contact {
+        color: #ffffff;
+        background: none;
+        height: 50%;
+        margin-top: .375rem;
+        font-size: map-get($map: $font-size, $key: text) + 3;
+    }
+    &--lightbox {
+        position: fixed;
+        margin: 0 6.25rem;
+        top: 4rem;
+        right: 0;
+        color: $colorPrimary;
+        background-color: #ffffff;
+        font-size: map-get($map: $font-size, $key: text) + 2;
+    }
+}

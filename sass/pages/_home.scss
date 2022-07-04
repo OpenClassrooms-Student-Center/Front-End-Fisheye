@@ -1,0 +1,57 @@
+.photographer_section {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 4.375rem;
+    margin: 6.25rem 0;
+    & article {
+        & a {
+            display: block;
+            display: flex;
+            align-items: center;
+            flex-direction: column;
+            & h2 {
+                color: $colorSecondary;
+                font-size: map-get($map: $font-size, $key: title) - 1.75;
+                margin-bottom: 0;
+                text-align: center;
+            }
+            & img {
+                height: 12.5rem;
+                width: 12.5rem;
+                object-fit: cover;
+                border-radius: 50%;
+                margin-top: 0.5rem;
+                box-shadow: 0 0 1rem rgba(185, 184, 184, 0.685);
+            }
+        }
+        & p {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            line-height: 1.5;
+            margin-top: 0;
+            text-align: center;
+            & .location {
+                font-size: map-get($map: $font-size, $key: text) + 0.375;
+                color: $colorPrimary;
+            }
+            & .tagline {
+                font-size: map-get($map: $font-size, $key: text);
+            }
+            & .price {
+                font-size: map-get($map: $font-size, $key: text);
+                color: #757575;
+            }
+        }
+    }
+    @include mobileAndTabletAndLaptop {
+        margin-left: 2rem;
+        margin-right: 2rem;
+    }
+    @include mobileOnly {
+        grid-template-columns: 1fr;
+    }
+    @include tabletAndLaptop {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}

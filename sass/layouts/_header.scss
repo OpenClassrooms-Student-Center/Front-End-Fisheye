@@ -1,0 +1,29 @@
+.header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    height: 5.625rem;
+    &__logo {
+        height: 3.125rem;
+        margin-left: 6.25rem;
+    }
+    &__title {
+        color: $colorPrimary;
+        margin-right: 6.25rem;
+    }
+    @include mobileAndTablet {
+        flex-direction: column;
+        height: auto;
+        & a {
+            display: block;
+            text-align: center;
+        }
+        &__logo {
+            margin: 3rem 0;
+        }
+        &__title {
+            margin-right: 0;
+        }
+    }
+}
