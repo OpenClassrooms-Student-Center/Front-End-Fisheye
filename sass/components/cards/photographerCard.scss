@@ -1,4 +1,4 @@
-.photographer_section article{
+.photographer__article{
     justify-self: center;
     display: flex;
     justify-content: space-between;
@@ -12,7 +12,7 @@
         align-items: center;
         flex-direction: column;
         text-decoration: none;
-
+        border: .5rem solid transparent ;
 
         h2 {
             color: #D3573C;

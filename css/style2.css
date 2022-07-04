@@ -4,56 +4,59 @@ body, * {
   box-sizing: border-box;
 }
 
-:focus-visible, button:focus-visible, .media__likes:focus-visible {
-  border: 0.5rem solid #f1a9a0 !important;
+:focus-visible, button:focus-visible,
+.media__aside .media__likes:focus-visible,
+.photographer__link:focus-visible {
+  border: 0.5rem solid #f1a9a0;
   outline: none;
 }
 
-.photographer_section article {
+.photographer__article {
   justify-self: center;
   display: flex;
   justify-content: space-between;
   align-items: center;
   flex-direction: column;
 }
-.photographer_section article a {
+.photographer__article a {
   justify-self: center;
   display: flex;
   justify-content: space-between;
   align-items: center;
   flex-direction: column;
   text-decoration: none;
+  border: 0.5rem solid transparent;
 }
-.photographer_section article a h2 {
+.photographer__article a h2 {
   color: #D3573C;
   font-size: 36px;
   font-weight: 400;
   text-align: center;
   margin: 5px;
 }
-.photographer_section article a .portrait {
+.photographer__article a .portrait {
   height: 200px;
   aspect-ratio: 1/1;
   border-radius: 50%;
   object-fit: cover;
 }
-.photographer_section article aside {
+.photographer__article aside {
   display: flex;
   align-items: center;
   flex-direction: column;
 }
-.photographer_section article aside .location {
+.photographer__article aside .location {
   color: #D3573C;
   font-size: 15px;
   font-weight: 400;
   text-align: center;
 }
-.photographer_section article aside .quote {
+.photographer__article aside .quote {
   font-size: 13px;
   font-weight: 400;
   text-align: center;
 }
-.photographer_section article aside .price {
+.photographer__article aside .price {
   color: #757575;
   font-size: 15px;
   font-weight: 400;

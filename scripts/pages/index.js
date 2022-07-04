@@ -1,4 +1,4 @@
-import createPhotographer from '../model/photographer.js';
+import linkFactory from '../factories/link.js';
 
 async function getPhotographers() {
   return fetch('../data/photographers.json')
@@ -6,7 +6,7 @@ async function getPhotographers() {
 }
 async function displayData(photographers) {
   photographers.forEach((photographer) => {
-    createPhotographer(photographer);
+    linkFactory(photographer);
   });
 }
 
