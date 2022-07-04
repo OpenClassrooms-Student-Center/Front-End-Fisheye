@@ -93,8 +93,8 @@ export class PhotographerPage {
     }
 
     displayPriceAndLikesOfMedia(likes, price) {
-        const priceAndLikesDiv = new PriceAndLikesCard(likes, price)
-        const divItem = priceAndLikesDiv.getPriceAndLikesDom()
+        const priceAndLikesCard = new PriceAndLikesCard(likes, price)
+        const divItem = priceAndLikesCard.getPriceAndLikesDom()
 
         // Affiche la div du prix et des likes
         this.main.appendChild(divItem)
