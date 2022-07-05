@@ -1,0 +1,42 @@
+@mixin flex-cc{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+@mixin flex-sc{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+@mixin flex-sb{
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+}
+
+@mixin profil-picture {
+    height: 200px;
+    width: 200px;
+    border-radius: 50%;
+    object-fit: cover;
+    box-shadow: 1px 1px 15px rgba(150, 150, 150, 0.5);
+}
+
+@mixin form-input {
+    width: 100%;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+@mixin NavBtn {
+    border: none;
+    background: url(../assets/icons/arrow.svg) center center / 16px 28px no-repeat;
+    width: 50px;
+    height: 75%;
+    position: absolute;
+    top: 15%;
+    cursor: pointer;
+}

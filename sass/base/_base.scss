@@ -1,0 +1,28 @@
+body {
+    font-family: "DM Sans", sans-serif;
+    margin: auto;
+    font-size: 14px;
+    max-width: 1400px;
+}
+
+header {
+    @include flex-sc;
+    flex-direction: row;
+    height: 90px;
+}
+
+h1 {
+    color: $color-primary-dark;
+    margin-right: 100px;
+}
+
+a {
+    text-decoration: none;
+}
+
+.logo {
+    margin-left: 100px;
+    img {
+        height: 50px;
+    }
+}
