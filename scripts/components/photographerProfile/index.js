@@ -4,17 +4,17 @@ export class PhotographerProfilHeader {
    * @param {Object} photographer
    */
   constructor(photographer) {
-    this.name = photographer.name;
-    this.alt = photographer.alt;
-    this.city = photographer.city;
-    this.country = photographer.country;
-    this.tagline = photographer.tagline;
-    this.portrait = photographer.portrait;
+    this.name = photographer?.name || "Joe is dead :)";
+    this.alt = photographer?.alt;
+    this.city = photographer?.city;
+    this.country = photographer?.country;
+    this.tagline = photographer?.tagline;
+    this.portrait = photographer?.portrait;
   }
 
   /**
    * build  photographer header
-   * @returns {HTMLElement} 
+   * @returns {HTMLElement}
    */
   createUserProfil() {
     const photographeCardHeader = `

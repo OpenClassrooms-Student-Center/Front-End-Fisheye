@@ -30,6 +30,21 @@ export class Form {
     this.modalForm.querySelector(".modal").focus();
   }
 
+  // submitData() {
+  //   const inputs = document.querySelectorAll("#first, #last, #email, #message");
+  //   let userMessage = [];
+  //   console.log("inputs == ", inputs);
+  //   inputs.forEach((input) => {
+  //     console.log("input", input.values);
+  //     userMessage.push(input.values);
+  //   });
+  //   const textarea = document.querySelector("form textarea").values;
+  //   userMessage.push(textarea);
+  //   userMessage.forEach((data) => {
+  //     console.log(data);
+  //   });
+  // }
+
   /**
    * Close the modal dialog event handler
    */
@@ -38,12 +53,34 @@ export class Form {
       this.closeModal();
     });
     this.submit.addEventListener("click", (e) => {
-      e.stopImmediatePropagation();
-      e.preventDefault();
+      // e.stopImmediatePropagation();
+      // e.preventDefault();
       // this.submitData();
-      const isValidForm = checkUserInputs();
-      if (isValidForm) {
+      const isValidFormData = checkUserInputs();
+      if (isValidFormData.isValid) {
+        console.log(isValidFormData.data);
         this.closeModal();
+
+        (function ($) {
+          showSwal = function (type) {
+            "use strict";
+            if (type === "success-message") {
+              swal({
+                title: "Congratulations!",
+                text: "You entered the correct answer",
+                type: "success",
+                button: {
+                  text: "Continue",
+                  value: true,
+                  visible: true,
+                  className: "btn btn-primary",
+                },
+              });
+            } else {
+              swal("Error occured !");
+            }
+          };
+        })(jQuery);
       }
     });
   }
@@ -68,20 +105,7 @@ export class Form {
       }
     });
   }
-  // submitData() {
-  //   console.log("checkUserInputs", isValidForm);
-  //   const inputs = document.querySelectorAll("form input");
 
-  //   const userMessage = [];
-  //   inputs.forEach((input) => {
-  //     userMessage.push(input.value);
-  //   });
-  //   const textarea = document.querySelector("form textarea").value;
-  //   userMessage.push(textarea);
-  //   userMessage.forEach((data) => {
-  //     console.log(data);
-  //   });
-  // }
   closeModal(beforeElementFocus) {
     this.modalForm.style.display = "none";
     this.closeButton.setAttribute("tabindex", "-1");

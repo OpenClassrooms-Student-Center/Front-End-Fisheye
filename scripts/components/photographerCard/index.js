@@ -4,14 +4,14 @@ export class PhotographerCard {
    * @param {Object} photographer
    */
   constructor(photographer) {
-    this.name = photographer.name;
-    this.alt = photographer.alt;
-    this.id = photographer.id;
-    this.city = photographer.city;
-    this.country = photographer.country;
-    this.tagline = photographer.tagline;
-    this.price = photographer.price;
-    this.portrait = photographer.portrait;
+    this.name = photographer?.name ;
+    this.alt = photographer?.alt;
+    this.id = photographer?.id;
+    this.city = photographer?.city;
+    this.country = photographer?.country;
+    this.tagline = photographer?.tagline;
+    this.price = photographer?.price;
+    this.portrait = photographer?.portrait;
   }
 
   /**

@@ -1,7 +1,6 @@
 // form contain user input
 const form = document.querySelector("form");
 const closeForm = document.querySelector(".close-form");
-const inputs = document.querySelectorAll("#first, #last, #email, #message");
 const formData = document.querySelectorAll(".formData");
 
 // user inputs
@@ -11,15 +10,6 @@ const emailInput = document.getElementById("email");
 const messageInput = document.getElementById("message");
 
 form.addEventListener("submit", (event) => validateForm(event));
-
-/**
- * The function `closeModal` is used to reset data form
- * and  close the modal window
- */
-// modalClose.addEventListener("click", () => {
-//   resetFormData();
-//   modalbg.style.display = "none";
-// });
 
 /**
  * reset form data
@@ -125,6 +115,7 @@ const validateForm = (event) => {
   event.preventDefault();
 
   const data = userInput();
+  let isValid = false;
 
   const errors = checkInputValues(data);
   console.log(errors);
@@ -139,10 +130,11 @@ const validateForm = (event) => {
 
   // if no error we confirm the form
   if (!errors.length) {
+    isValid = true;
     confirmForm(event);
-    return true;
+    return { isValid, data };
   }
-  return false;
+  return { isValid, data };
 };
 
 /**
