@@ -60,7 +60,8 @@ export class Form {
       if (isValidFormData.isValid) {
         console.log(isValidFormData.data);
         this.closeModal();
-
+      }
+    });
   }
 
   /**
