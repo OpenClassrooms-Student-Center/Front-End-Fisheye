@@ -30,20 +30,19 @@ export class Form {
     this.modalForm.querySelector(".modal").focus();
   }
 
-  // submitData() {
-  //   const inputs = document.querySelectorAll("#first, #last, #email, #message");
-  //   let userMessage = [];
-  //   console.log("inputs == ", inputs);
-  //   inputs.forEach((input) => {
-  //     console.log("input", input.values);
-  //     userMessage.push(input.values);
-  //   });
-  //   const textarea = document.querySelector("form textarea").values;
-  //   userMessage.push(textarea);
-  //   userMessage.forEach((data) => {
-  //     console.log(data);
-  //   });
-  // }
+  submitData() {
+    const inputs = document.querySelectorAll("#first, #last, #email, #message");
+    let userMessage = [];
+
+    inputs.forEach((input) => {
+      userMessage.push(input.values);
+    });
+    const textarea = document.querySelector("form textarea").values;
+    userMessage.push(textarea);
+    userMessage.forEach((data) => {
+      console.log(data);
+    });
+  }
 
   /**
    * Close the modal dialog event handler
@@ -53,12 +52,12 @@ export class Form {
       this.closeModal();
     });
     this.submit.addEventListener("click", (e) => {
-      // e.stopImmediatePropagation();
-      // e.preventDefault();
-      // this.submitData();
+      e.preventDefault();
+      this.submitData();
       const isValidFormData = checkUserInputs();
       if (isValidFormData.isValid) {
         console.log(isValidFormData.data);
+        e.stopImmediatePropagation();
         this.closeModal();
       }
     });
