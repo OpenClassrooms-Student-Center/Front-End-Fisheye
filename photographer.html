@@ -38,35 +38,38 @@
       <form name="user-message" action="message.html" method="get">
         <div>
           <div class=" formData first-container">
-            <label for="first">Prénom</label>
-            <input class="text-control" type="text" id="first" name="first" placeholder="Jean" required>
+            <label for="first" area-label="FirstName">Prénom</label>
+            <input class="text-control" type="text" id="first" name="first" placeholder="Jean" required
+              aria-required="true">
             <span class="error"></span>
           </div>
 
           <div class=" formData last-container">
-            <label for="last">Nom</label>
-            <input class="text-control" type="text" id="last" name="last" placeholder="Dupont" required>
+            <label for="last" area-label="lastName">Nom</label>
+            <input class="text-control" type="text" id="last" name="last" placeholder="Dupont" required
+              aria-required="true">
             <span class="error"></span>
           </div>
 
           <div class=" formData email-container">
-            <label for="email">Email</label>
+            <label for="email" aria-label="Email">Email</label>
             <input class="text-control" type="email" name="email" id="email" placeholder="jean.dupont@gmail.com"
-              required>
+              required aria-required="true">
             <span class="error"></span>
           </div>
 
           <div class=" formData message-container">
             <label for="message">Votre message</label>
             <textarea class="text-control" name="message" id="message" rows="3"
-              placeholder="Je prends contact avec vous..." required></textarea>
+              placeholder="Je prends contact avec vous..." required aria-required="true"></textarea>
             <span class="error"></span>
 
           </div>
 
         </div>
 
-        <input class="contact-button submit" type="submit" value="Envoyer" />
+        <input class="contact-button submit" type="submit" value="Envoyer" role="button"
+          aria-roledescription="Envoyer" />
 
       </form>
     </div>
