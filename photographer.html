@@ -8,9 +8,11 @@
       href="https://fonts.googleapis.com/css?family=DM+Sans&display=swap"
       rel="stylesheet"
     />
+    <script src="https://kit.fontawesome.com/7f6f7e9ee0.js" crossorigin="anonymous"></script>
     <title>Fisheye - photographe</title>
   </head>
   <body>
+
     <!-- Header avec logo -->
     <header>
       <a href="http://127.0.0.1:5500/Front-End-Fisheye/index.html">
@@ -35,6 +37,94 @@
           <p class="header_title_text">London, UK</p>
           <p class="header_text">Voir le beau dans le quotidien</p>
         </div>
+
+        <!--  Texte statique bord de page -->
+        <div class="text_border_right">
+          <div>
+          <span>297 081</span>
+          <i class="fa-regular fa-heart border_div_heart"></i></div>
+          <span>300€/jour</span>
+        </div>
+
+        <!--  Select label -->
+        <div class="photo_select">
+        <label for="photo_select"><strong>Trier par</strong></label>
+          <select name="order_by" class="order_by">
+            <option value="popularity" class="option">Popularité</option>
+            <option value="date" class="option">Date</option>
+            <option value="title" class="option">Titre</option>
+          </select>
+        </div>
+
+        <!--  Galerie Photos -->
+        <section class="photo_gallery">
+          <a href="#" alt="Lilac breasted roller, closeup view">
+                <img src="assets/Photo_photographer/Mimi/Animals_Rainbow.jpg" alt="Animal Rainbow" class="photography"/>
+                <div class="photo_description">
+                <span class="photo_title">Arc-en-ciel</span>
+                <div class="photo_like_div">
+                <span class="photo_like_number">11</span>
+                <i class="fa-regular fa-heart photo_like"></i>
+                </div>
+                </div>
+          </a>
+
+           <a href="#" alt="Lilac breasted roller, closeup view">
+                <img src="assets/Photo_photographer/Mimi/Travel_Lonesome.jpg" alt="Travel Lonesome" class="photography"/>
+                <div class="photo_description">
+                <span class="photo_title">Solitude</span>
+                <div class="photo_like_div">
+                <span class="photo_like_number">12</span>
+                <i class="fa-regular fa-heart photo_like"></i>
+                </div>
+                </div> 
+          </a>
+
+           <a href="#" alt="Lilac breasted roller, closeup view">
+                <img src="assets/Photo_photographer/Mimi/Event_SeasideWedding.jpg" alt="Event Seaside Wedding" class="photography"/>
+                <div class="photo_description">
+                <span class="photo_title">Mariage à la mer</span>
+                <div class="photo_like_div">
+                <span class="photo_like_number">12</span>
+                <i class="fa-regular fa-heart photo_like"></i>
+                </div>
+                </div>
+          </a>
+
+          <a href="#" alt="Lilac breasted roller, closeup view">
+                <img src="assets/Photo_photographer/Mimi/Portrait_Background.jpg" alt="Portrait Background" class="photography"/>
+                <div class="photo_description">
+                <span class="photo_title">Portrait noir & blanc</span>
+                <div class="photo_like_div">
+                <span class="photo_like_number">11</span>
+                <i class="fa-regular fa-heart photo_like"></i>
+                </div>
+                </div>
+          </a>
+
+          <a href="#" alt="Lilac breasted roller, closeup view">
+                <img src="assets/Photo_photographer/Mimi/Event_PintoWedding.jpg" alt="Event Pinto Wedding" class="photography"/>
+                <div class="photo_description">
+                <span class="photo_title">Mariage Pinto</span>
+                <div class="photo_like_div">
+                <span class="photo_like_number">11</span>
+                <i class="fa-regular fa-heart photo_like"></i>
+                </div>
+                </div>
+          </a>
+
+           <a href="#" alt="Lilac breasted roller, closeup view">
+                <img src="assets/Photo_photographer/Mimi/Portrait_Wednesday.jpg" alt="Portrait Wednesday" class="photography"/>
+                <div class="photo_description">
+                <span class="photo_title">Portrait Wednesday</span>
+                <div class="photo_like_div">
+                <span class="photo_like_number">11</span>
+                <i class="fa-regular fa-heart photo_like"></i>
+                </div>
+                </div>
+          </a>
+
+        </section>
     </main>
 
     <!--  Modale de contact -->
