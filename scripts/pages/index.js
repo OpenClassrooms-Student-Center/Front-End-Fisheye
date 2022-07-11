@@ -1,8 +1,23 @@
-    async function getPhotographers() {
+let photographersData = []; //tableau pour y stocker les données du json
+const fetchPhotographers = async () => {
+
+    let fetchUrl = "/data/photographers.json";
+    await fetch(fetchUrl) //asynchrone
+    .then((res) => res.json()) //promise
+    .then((data) => {
+        photographersData = data;
+        console.log(photographersData)
+    })
+}
+fetchPhotographers();
+
+
+async function getPhotographers() {
         // Penser à remplacer par les données récupérées dans le json
+       
         const photographers = [
             {
-                "name": "Ma data test",
+                "name": `bob`,
                 "id": 1,
                 "city": "Paris",
                 "country": "France",
@@ -18,7 +33,7 @@
                 "tagline": "Ceci est ma data test 2",
                 "price": 500,
                 "portrait": "account.png"
-            },
+            }
         ]
         // et bien retourner le tableau photographers seulement une fois
         return ({
