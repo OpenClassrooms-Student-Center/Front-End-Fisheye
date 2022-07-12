@@ -16,7 +16,6 @@
     <title>Fisheye - photographe</title>
   </head>
   <body>
-
     <!-- Header avec logo -->
     <header>
       <a href="http://127.0.0.1:5500/Front-End-Fisheye/index.html">
@@ -24,57 +23,69 @@
       /></a>
     </header>
 
-        <!--  Modale de contact -->
+    <!--  Modale de contact -->
     <div id="contact_modal">
       <div class="modal">
         <header>
           <h2>Contactez-moi</h2>
-          <img src="assets/icons/close.svg" id="close_btn"/>
+          <img src="assets/icons/close.svg" id="close_btn" />
         </header>
         <form>
           <h3>Mimi Keel</h3>
           <div>
-            <label>Prénom</label><br>
-            <input 
-            class="text_control" id="error_outline_firstName"
-            type="text"
-            id="firstName"
-            name="fistName"/>
-            <br>
-            <span class="error_message" id="error_message_firstName">Veuillez entrer votre prénom</span>
+            <label>Prénom</label><br />
+            <input
+              class="text_control error_outline_firstName"
+              type="text"
+              id="firstName"
+              name="fistName"
+            />
+            <br />
+            <span class="error_message error_message_firstName"
+              >Veuillez entrer votre prénom</span
+            >
           </div>
 
           <div>
-            <label>Nom</label><br>
+            <label>Nom</label><br />
             <input
-            class="text_control error_outline_lastName"
-            type="text"
-            id="lastName"
-            name="lastName"/>
-            <br>
-            <span class="error_message" id="error_message_lastName">Veuillez entrer votre nom</span>
+              class="text_control error_outline_lastName"
+              type="text"
+              id="lastName"
+              name="lastName"
+            />
+            <br />
+            <span class="error_message error_message_lastName"
+              >Veuillez entrer votre nom</span
+            >
           </div>
 
           <div>
-            <label>E-mail</label><br>
+            <label>E-mail</label><br />
             <input
-            class="text_control error_outline_email"
-            type="text"
-            id="email"
-            name="email"/>
-            <br>
-            <span class="error_message" id="error_message_email">Veuillez entrer une adresse mail valide</span>
+              class="text_control error_outline_email"
+              type="text"
+              id="email"
+              name="email"
+            />
+            <br />
+            <span class="error_message error_message_email"
+              >Veuillez entrer une adresse mail valide</span
+            >
           </div>
 
-            <div>
-            <label>Votre message</label><br>
+          <div>
+            <label>Votre message</label><br />
             <input
-            class="text_control error_outline_message"
-            type="text"
-            id="message"
-            name="message"/>
-            <br>
-            <span class="error_message" id="error_message_message">Votre texte doit être inférieur à 1000 caractères</span>
+              class="text_control error_outline_message"
+              type="text"
+              id="message"
+              name="message"
+            />
+            <br />
+            <span class="error_message error_message_message"
+              >Votre texte doit être inférieur à 1000 caractères</span
+            >
           </div>
           <button class="contact_button" id="submit_button">Envoyer</button>
         </form>
@@ -85,11 +96,7 @@
     <main id="main">
       <div id="header_profil">
         <h1 id="header_photographer_name">Mimi Keel</h1>
-        <button
-          class="contact_button"
-          id="contact_button"
-          onclick="displayModal()"
-        >
+        <button class="contact_button" id="contact_button">
           Contactez-moi
         </button>
         <img
@@ -215,7 +222,6 @@
         </a>
       </section>
     </main>
-
 
     <script src="./scripts/utils/contactForm.js"></script>
   </body>

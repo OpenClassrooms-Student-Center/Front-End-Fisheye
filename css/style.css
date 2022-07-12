@@ -240,9 +240,8 @@ select {
 }
 
 select option {
+  display: none;
   font-size: 18px;
   background-color: #901c1c;
   color: white;
 }
-
-
