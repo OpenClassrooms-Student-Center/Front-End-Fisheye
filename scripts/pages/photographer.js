@@ -25,7 +25,7 @@ currentMedias?.sort(function (a, b) {
   return b.likes - a.likes;
 });
 
-const PhotographerProfil = async (data, id) => {
+const PhotographerProfil = async () => {
   const sectionHeaderPhotographer = document.querySelector(
     ".section-photographe"
   );
@@ -160,7 +160,7 @@ const manageOptions = (widgetOpen, sortOptions, optionShowed, angleUp) => {
  * @param {*} toggleBox
  * @param {*} widgetOpen
  */
-const sortBy = (element, sortOptions, toggleBox, widgetOpen, optionShowed) => {
+const sortBy = (element, sortOptions, toggleBox) => {
   const { media: medias } = data;
   const currentMedias = medias?.filter((media) => media.photographerId === id);
   switch (element.value) {
@@ -195,14 +195,14 @@ const sortBy = (element, sortOptions, toggleBox, widgetOpen, optionShowed) => {
   );
   document.querySelector(".dropdown").appendChild(hideElement);
   document.querySelector(".hidden").appendChild(element);
-  optionShowed = document.querySelectorAll(".dropdown > button");
+  // optionShowed = document.querySelectorAll(".dropdown > button");
 
   // close the sortwidget after clicking on an option
   sortOptions.forEach((option) => {
     option.style.display = "none";
   });
 
-  widgetOpen = false;
+  // widgetOpen = false;
   toggleBox.focus();
 };
 
@@ -230,7 +230,7 @@ const getSortedMedias = () => {
   sortOptions.forEach((element) =>
     element.addEventListener("click", () => {
       angleDown.style.display = "block";
-      sortBy(element, sortOptions, toggleBox, widgetOpen, optionShowed);
+      sortBy(element, sortOptions, toggleBox);
       angleUp.style.display = "none";
     })
   );
