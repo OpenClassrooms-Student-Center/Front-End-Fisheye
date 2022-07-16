@@ -1,0 +1,63 @@
+.presentation__section{
+    margin: 20px 0px;
+}
+
+.photograph-header{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 3%;
+    gap: 3%;
+    background-color: #FAFAFA;
+    height: 300px;
+    
+
+    .photographer__presentation{
+        display: flex;
+        flex-direction:column;
+    
+        .photographer__name {
+            font-family: 'DM Sans';
+            font-style: normal;
+            font-weight: 400;
+            font-size: 64px;
+            line-height: 83px;
+            color: #D3573C;
+            margin-bottom: 10px;
+            margin-top: 0;
+
+        }
+
+        .photographer__location {
+
+            font-family: 'DM Sans';
+            font-style: normal;
+            font-weight: 400;
+            font-size: 24px;
+            line-height: 31px;
+            color: #901C1C;
+            padding-bottom: 15px;
+        }
+
+        .photographer__quote {
+
+            font-family: 'DM Sans';
+            font-style: normal;
+            font-weight: 400;
+            font-size: 18px;
+            line-height: 23px;
+            color: #525252;
+
+        }
+    }
+
+   
+    
+    .portrait {
+        height: 200px;
+        aspect-ratio: 1/1;
+        border-radius: 50%;
+        object-fit: cover;
+    }
+}

@@ -1,0 +1,19 @@
+.totalLikes{
+    background-color: #DB8876;
+    position : fixed;
+    right: 38px;
+    bottom: 0;
+    width: 376px;
+    height: 50px;
+    display: grid;
+    grid-template-columns: auto auto 1fr;
+    justify-content: start;
+    align-items: center;
+    gap: 3%;
+    padding: 0 3%;
+    border-radius: 5px 5px 0 0;
+}
+
+.totalLikes__price {
+    justify-self: end;
+}

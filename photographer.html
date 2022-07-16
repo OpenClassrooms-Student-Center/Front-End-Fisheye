@@ -1,36 +1,73 @@
 <!DOCTYPE html>
-<html>
+<html lang="fr">
   <head>
-    <link href="css/style.css" rel="stylesheet" type="text/css" />
+    <!-- <link href="css/style.css" rel="stylesheet" type="text/css" /> -->
+    <link href="css/style2.css" rel="stylesheet" type="text/css" />
     <meta charset="utf-8">
-    <link rel="icon" type="image/png" href="assets/favicon.png">
+    <script src="https://kit.fontawesome.com/a1ec1a490c.js" crossorigin="anonymous"></script>
     <link href="https://fonts.googleapis.com/css?family=DM+Sans&display=swap" rel="stylesheet">
     <title>Fisheye - photographe </title>
   </head>
   <body>
-    <header>
-      <img src="assets/images/logo.png" class="logo" />
+    <header >
+      <nav role="navigation" class="nav">
+        <a href="/index.html" aria-label="Retour à la page d'accueil Fisheye" role="Image link">
+          <img src="assets/images/logo.png" class="logo" alt="fisheyes"/>
+        </a>
+      </nav>
     </header>
     <main id="main">
-      <div class="photograph-header">
-        <button class="contact_button" onclick="displayModal()">Contactez-moi</button>
+
+      <section class="presentation__section">
+      </section>
+
+      <div class="filter">
+        <span class="filter__span">Trier par</span>
+        <div class="dropdown">
+          <button id="btnListbox" class="button__top" role="button" aria-haspopup="listbox" aria-expanded="false"  ariaHiden="false" ariaHiden="true">
+            <span class="btn__value"></span> 
+            <i class="fas fa-chevron-down"></i>
+          </button>
+          <ul class="filter__options" role="listbox" aria-hidden="true" aria-activedescendant="true" aria-haspopup="listbox"  aria-labelledby="btnListbox" tabindex="-1">
+            <li role="option">
+              <span class="first__option option" aria-hidden="true" aria-haspopup="true" aria-label="fitrer par ordre de popularité">Popularité</span> 
+            </li>
+            <li role="option">
+              <span class="option" aria-label="fitrer par date">Date</span>
+            </li>
+            <li role="option">
+              <span class="option" aria-label="fitrer par ordre alphabétique">Titre</span> 
+            </li>
+          </ul>
+        </div>
       </div>
+      
+      <section class="photo-field" role="dialog" aria-label="image de la vue de présentation">
+      </section>
+
+      <section class="slider">
+        <div class="slides__container"></div>
+        <button class="back" role="Link" aria-label="image précédente">
+          <i class="fas fa-chevron-left"></i>
+        </button>
+        <button class="next" role="Link" aria-label="image suivante">
+          <i class="fas fa-chevron-right"></i>
+        </button>
+        <button class="close" role="Buttons" aria-label="ferme la fenêtre">
+          <i class="fas fa-times"></i>
+        </button>
+      </section>
+      
+      <section class="totalLikes">
+        <p class="totalLikes__likes"></p>
+        <i class="fas fa-heart" role="Image" aria-label="likes"></i>
+        <p class="totalLikes__price">/jour</p>
+      </section>
     </main>
+    
     <div id="contact_modal">
-			<div class="modal">
-				<header>
-          <h2>Contactez-moi</h2>
-          <img src="assets/icons/close.svg" onclick="closeModal()" />
-        </header>
-				<form>
-					<div>
-						<label>Prénom</label>
-						<input />
-					</div>
-          <button class="contact_button">Envoyer</button>
-				</form>
-			</div>
 		</div>
-    <script src="/scripts/utils/contactForm.js"></script>
+
+    <script type="module" src="scripts/pages/photographer.js"></script>
   </body>
 </html>

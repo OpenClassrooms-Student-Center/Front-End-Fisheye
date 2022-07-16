@@ -1,0 +1,12 @@
+.photo-field {
+    display : grid;
+    height: 100%;
+    grid-template-columns: 1fr 1fr 1fr;
+    justify-content: space-between;
+    color: #901C1C;
+    justify-items: stretch;
+    width: 100%;
+    gap: 3% 8%;
+    margin-top: 100px;
+    padding-bottom: 140px;
+}
