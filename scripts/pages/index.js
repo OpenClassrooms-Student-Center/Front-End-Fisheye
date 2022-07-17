@@ -19,15 +19,15 @@
                 "price": 500,
                 "portrait": "account.png"
             },
-        ]
+          ]
         // et bien retourner le tableau photographers seulement une fois
         return ({
             photographers: [...photographers, ...photographers, ...photographers]})
-    }
+          }
+
 
     async function displayData(photographers) {
         const photographersSection = document.querySelector(".photographer_section");
-
         photographers.forEach((photographer) => {
             const photographerModel = photographerFactory(photographer);
             const userCardDOM = photographerModel.getUserCardDOM();
@@ -40,6 +40,5 @@
         const { photographers } = await getPhotographers();
         displayData(photographers);
     };
-    
+
     init();
-    
