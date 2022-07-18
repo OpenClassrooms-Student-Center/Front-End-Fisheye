@@ -1,45 +1,41 @@
-    async function getPhotographers() {
-        // Penser à remplacer par les données récupérées dans le json
-        const photographers = [
-            {
-                "name": "Ma data test",
-                "id": 1,
-                "city": "Paris",
-                "country": "France",
-                "tagline": "Ceci est ma data test",
-                "price": 400,
-                "portrait": "account.png"
-            },
-            {
-                "name": "Autre data test",
-                "id": 2,
-                "city": "Londres",
-                "country": "UK",
-                "tagline": "Ceci est ma data test 2",
-                "price": 500,
-                "portrait": "account.png"
-            },
-        ]
-        // et bien retourner le tableau photographers seulement une fois
-        return ({
-            photographers: [...photographers, ...photographers, ...photographers]})
-    }
+import { URL } from "../../constants/index.js";
+import { PhotographerCard } from "../components/photographerCard/index.js";
+import { getData } from "../services/getData.js";
 
-    async function displayData(photographers) {
-        const photographersSection = document.querySelector(".photographer_section");
+/**
+ * Get the data for the photographers
+ * @returns {Promise} data
+ */
+async function getPhotographers() {
+  const data = await getData(URL);
+  return data;
+}
 
-        photographers.forEach((photographer) => {
-            const photographerModel = photographerFactory(photographer);
-            const userCardDOM = photographerModel.getUserCardDOM();
-            photographersSection.appendChild(userCardDOM);
-        });
-    };
+/**
+ * Display photgrapher Card Infos
+ * @param {Collection} photographers
+ */
+async function displayData(photographers) {
+  const photographersSection = document.querySelector(".photographer_section");
 
-    async function init() {
-        // Récupère les datas des photographes
-        const { photographers } = await getPhotographers();
-        displayData(photographers);
-    };
-    
-    init();
-    
+  photographers.map((photographer) => {
+    const photographerModel = new PhotographerCard(photographer);
+    const userCardDOM = photographerModel.createPhotographerCard();
+
+    photographersSection.appendChild(userCardDOM);
+  });
+}
+
+/**
+ * Get data and display information
+ */
+async function init() {
+  // Récupère les datas des photographes
+  const data = await getPhotographers();
+  const { photographers } = data;
+  // adding alt property to photographer object
+  photographers.map((photographer) => (photographer.alt = photographer.name));
+  displayData(photographers);
+}
+
+init();

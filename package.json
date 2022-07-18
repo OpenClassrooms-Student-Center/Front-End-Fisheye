@@ -1,0 +1,23 @@
+{
+  "name": "lamine-messaci-29052022",
+  "version": "1.0.0",
+  "description": "Pas de dépendances à installer, il suffit d'ovrir le fichier `index.html` via votre nivigator",
+  "main": "index.js",
+ "type": "module",
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/laminemessaci/Front-End-Fisheye.git"
+  },
+  "author": "lamine messaci",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/laminemessaci/Front-End-Fisheye/issues"
+  },
+  "homepage": "https://github.com/laminemessaci/Front-End-Fisheye#readme",
+  "dependencies": {
+    "eslint": "^8.16.0"
+  }
+}

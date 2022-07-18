@@ -1,10 +1,14 @@
 @import url("photographer.css");
 
-body {
+body, p, h1, h2 {
     font-family: "DM Sans", sans-serif;
     margin: 0;
+    padding: 0;
 }
 
+a{
+    text-decoration: none;
+}
 
 header {
     display: flex;
@@ -37,14 +41,78 @@ h1 {
     justify-content: center;
     align-items: center;
     flex-direction: column;
+    font-size: 10px;
 }
 
 .photographer_section article h2 {
     color: #D3573C;
     font-size: 36px;
+    font-weight: normal;
+
+}
+
+.photographer_section article p:first-of-type {
+    font-size: 13px;
+    color: #D3573C;
+}
+
+.photographer_section article p:last-of-type {
+    font-size: 9px;
+}
+
+.photographer_section article a {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 }
 
 .photographer_section article img {
+    object-fit: cover;
     height: 200px;
     width: 200px;
+    border-radius: 10em;
+    box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.2);
+}
+/* Form Contact */
+#contact-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+    background: #fff;
+    z-index: 20;
+}
+.modal {
+    border-radius: 5px;
+    background-color: #DB8876;
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    padding: 25px 35px;
+    margin: auto;
+}
+.modal:focus {
+    outline: none;
+}
+
+.modal .header-modal {
+    justify-content: space-between;
+    width: 100%;
+    height: unset;
+}
+
+.modal .header-modal img {
+    cursor: pointer;
+}
+
+.modal .header-modal h2 {
+    font-size: 58px;
+    font-weight: normal;
+    margin-bottom: 10px;
 }

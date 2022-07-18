@@ -1,36 +1,86 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <link href="css/style.css" rel="stylesheet" type="text/css" />
-    <meta charset="utf-8">
-    <link rel="icon" type="image/png" href="assets/favicon.png">
-    <link href="https://fonts.googleapis.com/css?family=DM+Sans&display=swap" rel="stylesheet">
-    <title>Fisheye - photographe </title>
-  </head>
-  <body>
-    <header>
-      <img src="assets/images/logo.png" class="logo" />
-    </header>
-    <main id="main">
-      <div class="photograph-header">
-        <button class="contact_button" onclick="displayModal()">Contactez-moi</button>
+
+<head>
+  <link href="css/style.css" rel="stylesheet" type="text/css" />
+  <meta charset="utf-8">
+  <link rel="icon" type="image/png" href="assets/favicon.png">
+  <link href="https://fonts.googleapis.com/css?family=DM+Sans&display=swap" rel="stylesheet">
+  <title>Fisheye - photographe </title>
+</head>
+
+<body>
+  <header>
+    <a href="index.html" aria-label="redirige vers la page d'accueil">
+      <img src="assets/images/logo.png" class="logo" alt="Fisheye Home page" />
+    </a>
+  </header>
+  <main id="main">
+    <section class="section-photographe">
+      <!--Content of photographerProfile  here-->
+    </section>
+    <section class="portfolio-section">
+      <section class="filter">
+        <!-- Filter -->
+      </section>
+      <div class="portfolio">
+        <!--Content here-->
       </div>
-    </main>
-    <div id="contact_modal">
-			<div class="modal">
-				<header>
-          <h2>Contactez-moi</h2>
-          <img src="assets/icons/close.svg" onclick="closeModal()" />
-        </header>
-				<form>
-					<div>
-						<label>Prénom</label>
-						<input />
-					</div>
-          <button class="contact_button">Envoyer</button>
-				</form>
-			</div>
-		</div>
-    <script src="/scripts/utils/contactForm.js"></script>
-  </body>
+    </section>
+  </main>
+  <div id="contact-modal">
+    <div class="modal" role="dialog" aria-labelledby="modal-Title" tabindex="-1">
+      <header class="header-modal">
+        <h2 id="modal-Title">Contactez-moi<br></h2>
+        <img class="close-form" role="button" tabindex="-1" aria-label="Fermer le formulaire de contact"
+          src="assets/icons/close.svg" />
+      </header>
+      <form name="user-message" action="photographer.html" method="get">
+        <div>
+          <div class=" formData first-container">
+            <label for="first" area-label="FirstName">Prénom</label>
+            <input class="text-control" type="text" id="first" name="first" placeholder="Jean" required
+              aria-required="true">
+            <span class="error"></span>
+          </div>
+
+          <div class=" formData last-container">
+            <label for="last" area-label="lastName">Nom</label>
+            <input class="text-control" type="text" id="last" name="last" placeholder="Dupont" required
+              aria-required="true">
+            <span class="error"></span>
+          </div>
+
+          <div class=" formData email-container">
+            <label for="email" aria-label="Email">Email</label>
+            <input class="text-control" type="email" name="email" id="email" placeholder="jean.dupont@gmail.com"
+              required aria-required="true">
+            <span class="error"></span>
+          </div>
+
+          <div class=" formData message-container">
+            <label for="message">Votre message</label>
+            <textarea class="text-control" name="message" id="message" rows="3"
+              placeholder="Je prends contact avec vous..." required aria-required="true"></textarea>
+            <span class="error"></span>
+
+          </div>
+
+        </div>
+
+        <input class="contact-button submit" type="submit" value="Envoyer" role="button"
+          aria-roledescription="Envoyer" />
+
+      </form>
+    </div>
+  </div>
+  <script src="https://kit.fontawesome.com/0a21fd0714.js" crossorigin="anonymous"></script>
+  <!-- Page -->
+  <script type="module" src="scripts/pages/photographer.js"></script>
+  <script type="module" src="scripts/utils/contactForm.js"></script>
+  <script type="module" src="scripts/utils/FormHelper"></script>
+
+  <script src="scripts/utils/contactForm.js"></script>
+</body>
+
 </html>

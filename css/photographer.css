@@ -1,24 +1,17 @@
-#contact_modal {
+
+header a {
+    display: flex;
+}
+
+#contact-modal {
     display: none;
 }
+
 
 .photograph-header {
     background-color: #FAFAFA;
     height: 300px;
     margin: 0 100px;
-}
-
-.contact_button {
-    font-size: 20px;
-    font-weight: bold;
-    color: white;
-    padding: 11px;
-    width: 170px;
-    height: 70px;
-    border: none;
-    background-color: #901C1C;
-    border-radius: 5px;
-    cursor: pointer;
 }
 
 .modal {
@@ -48,6 +41,264 @@
     text-align: center;
 }
 
+.section-photographe {
+    background-color: #FAFAFA;
+    height: 300px;
+    margin: 0 100px;
+    padding: 0 50px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.section-photographe div {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+}
+
+.section-photographe div:first-child{
+    flex-direction: column;
+}
+
+.section-photographe div:first-child h1{
+    font-size: 64px;
+    color: #D3573C;
+    margin: 0;
+}
+
+.section-photographe div:first-child p:first-of-type{
+    font-size: 18px;
+    margin-bottom: 20px;
+    color: #901C1C;
+}
+
+.section-photographe div:last-child{
+    justify-content: right;
+}
+
+.section-photographe div:last-child img{
+    object-fit: cover;
+    height: 200px;
+    width: 200px;
+    border-radius: 10em;
+    box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.2);
+}
+
+
+.portfolio-section {
+    position: relative;
+    margin: 30px 100px;
+}
+
+.portfolio-filter {
+    display: flex;
+    font-size: 18px;
+}
+.portfolio-filter > p {
+    font-weight: bold;
+}
+.portfolio-filter .dropdown {
+    position: absolute;
+    top: -20px;
+    left: 100px;
+    display: flex;
+    flex-direction: column;
+    padding: 0px 10px;
+    background: #901C1C;
+    border-radius: 5px;
+    cursor: pointer;
+    z-index: 10;
+}
+.portfolio-filter .dropdown .toggle-listbox {
+    position: relative;
+    width: 130px;
+    color: #fff;
+}
+.portfolio-filter .dropdown .toggle-listbox .active-option {
+    padding: 20px 0px;
+}
+
+.portfolio-filter .dropdown .toggle-listbox i {
+    position: absolute;
+    right: 10px;
+    top: 23px;
+}
+.portfolio-filter .dropdown button {
+    font-family: inherit;
+    border: unset;
+    background: inherit;
+    font-size: inherit;
+    color: #fff;
+    padding: 20px 0px;
+    width: 130px;
+    text-align: start;
+    display: none;
+    cursor: pointer;
+}
+.portfolio-filter .dropdown > button:first-of-type {
+    border-top:1px solid #fff; 
+    border-bottom:1px solid #fff
+}
+.portfolio-filter .fa-angle-up{
+    display:none;
+}
+.portfolio-filter .hidden {
+    display: none;
+}
+
+.portfolio-section .portfolio{
+    margin: 80px 0;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);;
+    gap: 30px;
+}
+
+.portfolio article{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.portfolio article img, .portfolio article video{
+    object-fit: cover;
+    object-position: 50% 35%;
+    border-radius: 0.4em;
+    height: 300px;
+    width: 350px;
+    cursor: pointer;
+}
+
+.portfolio article > div{
+    width: 350px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 0px;
+    font-size: 20px;
+}
+
+.portfolio article div span{
+    color: #901C1C;
+}
+.portfolio article div span:nth-of-type(2){
+    margin: 0 10px 0 auto;
+}
+.portfolio article div span input{
+    display: none;
+}
+.portfolio article div span label i{
+    font-size: 20px;
+    color: #901C1C;
+    cursor: pointer;
+}
+.portfolio article div span input:checked ~ label i{
+    animation: 0.4s ease-in-out both bounce;
+    transition: 0.2s ease-in;
+    color: #901C1C;
+}
+.portfolio article div span input:not(:checked) ~ label i {
+    color:dimgray;
+  
+}
+
+@keyframes bounce {
+    0% { 
+        transform: scale(1); 
+    }
+    30%   { 
+        transform: scale(1.4); 
+    }
+    100%   { 
+        transform: scale(1); 
+    }
+  }
+
+  aside > div {
+    position: fixed;
+    display: flex;
+    justify-content: space-between;
+    bottom: 0;
+    right: 40px;
+    width: 250px;
+    background: #DB8876;
+    padding: 20px 30px;
+    border-radius: 5px;
+    font-size: 24px;
+}
+aside div .rowLikes {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    
+}
+aside .rowLikes i{
+    margin-left: 10px;
+}
+.play-circle{
+    font-size: 42px;
+    position: absolute;
+    align-items:center;
+    color: #901C1C;
+}
+.contact-button {
+    font-size: 20px;
+    font-weight: bold;
+    color: white;
+    padding: 11px;
+    width: 170px;
+    height: 70px;
+    border: none;
+    background-color: #901C1C;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+/* Form contact */
+#contact-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+    background: #fff;
+    z-index: 20;
+}
+.modal {
+    border-radius: 5px;
+    background-color: #DB8876;
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    padding: 25px 35px;
+    margin: auto;
+}
+.modal:focus {
+    outline: none;
+}
+
+.modal .header-modal {
+    justify-content: space-between;
+    width: 100%;
+    height: unset;
+}
+
+.modal .header-modal img {
+    cursor: pointer;
+}
+
+.modal .header-modal h2 {
+    font-size: 58px;
+    font-weight: normal;
+    margin-bottom: 10px;
+}
+
 form {
     display: flex;
     width: 100%;
@@ -68,9 +319,112 @@ form div {
     margin-bottom: 26px;
 }
 
-form input {
+form input, textarea {
+    font-family: inherit;
+    font-size: 32px;
+    padding: 0px 10px;
     width: 100%;
     height: 68px;
     border: none;
     border-radius: 5px;
+    box-sizing: border-box;
 }
+
+form input::placeholder, 
+form textarea::placeholder {
+    color: rgba(0, 0, 0, 0.2);
+}
+
+form textarea {
+    height: 150px;
+    padding: 10px;
+}
+
+.formData[data-error]::after {
+  content: attr(data-error);
+  font-size: 1.2em;
+  color:crimson;
+  display: block;
+  margin-top: 10px;
+  margin-left: 7px;
+  margin-bottom: 7px;
+  text-align: left;
+  line-height: 0.3;
+  opacity: 0;
+  transition: 0.3s;
+}
+.formData[data-error-visible="true"]::after {
+  opacity: 1;
+}
+.formData[data-error-visible="true"] .text-control {
+  border: 2px solid #e54858;
+}
+.lightbox {
+    position: fixed;
+    top: 0;
+    left: 0;
+    display: flex;
+    height: 100%;
+    width: 100%;
+    color: #901C1C;
+    background: #fff;
+    z-index: 20;
+}
+
+
+
+.lightbox:focus {
+    outline: none;
+}
+
+.lightbox button{
+    font-size: 58px;
+    border: none;
+    background-color: unset;
+    cursor: pointer;
+    color: inherit;
+}
+
+.lightbox .lightbox-left,.lightbox-right {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    flex: 1;
+}
+.lightbox .lightbox-right .close {
+    position: absolute;
+    top: 20px;
+    left: 50%;
+    transform: translate(-50%, 50%);
+}
+.lightbox .lightbox-content{
+    flex: 4;
+    display: flex;
+    justify-content: center;
+    padding: 60px 0px;
+    font-size: 24px;
+}
+.lightbox .lightbox-content div {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+   width: 100%;
+
+}
+.lightbox .lightbox-content div img, 
+.lightbox .lightbox-content div video {
+    object-fit: cover;
+    object-position: 50% 35%;
+    border-radius: 0.3em;
+    max-height: 100%;
+    max-width: 100%;
+    
+}
+.lightbox .lightbox-content div p {
+    position: relative;
+    top: 10px;
+}
+
+
