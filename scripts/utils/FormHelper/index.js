@@ -11,15 +11,7 @@ const messageInput = document.getElementById("message");
 
 form.addEventListener("submit", (event) => validateForm(event));
 
-/**
- * reset form data
- */
-const resetFormData = () => {
-  firstNameInput.value = "";
-  lastNameInput.value = "";
-  emailInput.value = "";
-  messageInput.value = "";
-};
+
 /**
  * Get user data
  * @returns data for user input form
@@ -100,7 +92,6 @@ const checkInputValues = (data) => {
 const confirmForm = (event) => {
   //stop event propagation
   event.preventDefault();
-  resetFormData();
   form.addEventListener("click", () => form.submit());
   closeForm.addEventListener("click", () => form.submit());
 };

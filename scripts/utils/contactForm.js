@@ -5,6 +5,7 @@ export class Form {
     const photographerName = photographer.name;
     this.modalForm = document.getElementById("contact-modal");
     this.closeButton = document.querySelector(".close-form");
+    this.form = document.querySelector("form");
 
     this.openForm = document.querySelector(".open-form");
     this.submit = document.querySelector(".submit");
@@ -20,7 +21,7 @@ export class Form {
     const formH2 = document.querySelector(".header-modal h2");
     formH2.innerHTML = "Contactez-moi<br>" + photographerName;
     this.modalForm.style.display = "flex";
-
+    this.form.reset();
     // Hide background page of focus
     Array.from(document.body.children).forEach((child) => {
       if (child !== this.modalForm) {
@@ -30,20 +31,7 @@ export class Form {
     this.modalForm.querySelector(".modal").focus();
   }
 
-  submitData() {
-    const inputs = document.querySelectorAll("#first, #last, #email, #message");
-    let userMessage = [];
-
-    inputs.forEach((input) => {
-      userMessage.push(input.values);
-    });
-    const textarea = document.querySelector("form textarea").values;
-    userMessage.push(textarea);
-    userMessage.forEach((data) => {
-      console.log(data);
-    });
-  }
-
+ 
   /**
    * Close the modal dialog event handler
    */
@@ -53,11 +41,11 @@ export class Form {
     });
     this.submit.addEventListener("click", (e) => {
       e.preventDefault();
-      this.submitData();
+       e.stopImmediatePropagation();
+     
       const isValidFormData = checkUserInputs();
       if (isValidFormData.isValid) {
-        console.log(isValidFormData.data);
-        e.stopImmediatePropagation();
+     console.log("User Data : ", isValidFormData.data)
         this.closeModal();
       }
     });
