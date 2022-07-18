@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="fr">
 
 <head>
   <link href="css/style.css" rel="stylesheet" type="text/css" />
@@ -12,7 +12,8 @@
 <body>
   <header>
     <a href="index.html" aria-label="redirige vers la page d'accueil">
-      <img src="assets/images/logo.png" class="logo" alt="Fisheye Home page" />
+      <img src="assets/images/logo.png" class="logo" alt="Fisheye Home page" title="FishEye Home Page"
+        aria-label="Go to Fisheye Home Page" />
     </a>
   </header>
   <main id="main">
@@ -33,35 +34,35 @@
       <header class="header-modal">
         <h2 id="modal-Title">Contactez-moi<br></h2>
         <img class="close-form" role="button" tabindex="-1" aria-label="Fermer le formulaire de contact"
-          src="assets/icons/close.svg" />
+          src="assets/icons/close.svg" alt="image de profil" />
       </header>
       <form name="user-message" action="photographer.html" method="get">
         <div>
           <div class=" formData first-container">
             <label for="first" area-label="FirstName">Prénom</label>
             <input class="text-control" type="text" id="first" name="first" placeholder="Jean" required
-              aria-required="true">
+              aria-required="true" aria-labelledby="first">
             <span class="error"></span>
           </div>
 
           <div class=" formData last-container">
             <label for="last" area-label="lastName">Nom</label>
             <input class="text-control" type="text" id="last" name="last" placeholder="Dupont" required
-              aria-required="true">
+              aria-required="true" aria-labelledby="last">
             <span class="error"></span>
           </div>
 
           <div class=" formData email-container">
             <label for="email" aria-label="Email">Email</label>
             <input class="text-control" type="email" name="email" id="email" placeholder="jean.dupont@gmail.com"
-              required aria-required="true">
+              required aria-required="true" aria-labelledby="email">
             <span class="error"></span>
           </div>
 
           <div class=" formData message-container">
             <label for="message">Votre message</label>
             <textarea class="text-control" name="message" id="message" rows="3"
-              placeholder="Je prends contact avec vous..." required aria-required="true"></textarea>
+              placeholder="Je prends contact avec vous..." aria-required="true" aria-labelledby="message"></textarea>
             <span class="error"></span>
 
           </div>

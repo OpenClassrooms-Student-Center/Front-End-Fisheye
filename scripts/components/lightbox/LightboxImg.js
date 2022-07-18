@@ -9,7 +9,7 @@ export class LightboxImg {
   }
   buildDOM() {
     const lightbox = `
-            <img src="${this.imageLink}" alt="${this.title}"/>
+            <img src="${this.imageLink}" alt="${this.title} role="image"/>
             <p>${this.title}</p>`;
     return lightbox;
   }
