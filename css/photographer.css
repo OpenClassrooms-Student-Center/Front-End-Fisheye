@@ -371,6 +371,8 @@ form textarea {
     z-index: 20;
 }
 
+
+
 .lightbox:focus {
     outline: none;
 }
@@ -408,13 +410,17 @@ form textarea {
     display: flex;
     flex-direction: column;
     justify-content: center;
+   width: 100%;
+
 }
 .lightbox .lightbox-content div img, 
 .lightbox .lightbox-content div video {
     object-fit: cover;
+    object-position: 50% 35%;
     border-radius: 0.3em;
     max-height: 100%;
     max-width: 100%;
+    
 }
 .lightbox .lightbox-content div p {
     position: relative;

@@ -34,6 +34,8 @@ export class Lightbox {
       });
     }
   }
+
+  
   constructor(mediaLink, tabLinks, title, tabTitles, beforeElementFocus) {
     this.mediaLink = mediaLink;
     this.tabLinks = tabLinks;
@@ -55,6 +57,8 @@ export class Lightbox {
     this.manageEvent();
     this.keyboardNav();
   }
+
+
   displayLightboxContent(mediaLink, title) {
     const contentContainer = this.lightbox.querySelector(
       ".lightbox-content div"
@@ -74,6 +78,8 @@ export class Lightbox {
       }
     });
   }
+
+
   manageEvent() {
     this.leftArrow.addEventListener("click", (e) => {
       e.stopPropagation();
@@ -88,6 +94,7 @@ export class Lightbox {
       this.close(this.beforeElementFocus);
     });
   }
+
   keyboardNav() {
     this.lightbox.addEventListener("keydown", (e) => {
       if (e.key === "Escape") {
@@ -117,6 +124,7 @@ export class Lightbox {
       this.tabTitles[currentPos + 1]
     );
   }
+
   previous() {
     let currentPos = this.tabLinks.findIndex(
       (mediaLink) => mediaLink == this.mediaLink
@@ -129,6 +137,7 @@ export class Lightbox {
       this.tabTitles[currentPos - 1]
     );
   }
+
   close(beforeElementFocus) {
     this.lightbox.remove();
 
