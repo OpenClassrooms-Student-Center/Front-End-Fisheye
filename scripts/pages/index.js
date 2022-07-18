@@ -1,7 +1,5 @@
 let photographers = []; //tableau pour y stocker les données du json
 
-
-
 async function getPhotographers() {
         // Penser à remplacer par les données récupérées dans le json
         let fetchUrl = "/data/photographers.json";
@@ -12,10 +10,8 @@ async function getPhotographers() {
             console.log(data)
             console.log(photographers)
         })
-        
       
     }
-
     async function displayData() {
         const photographersSection = document.querySelector(".photographer_section");
 
