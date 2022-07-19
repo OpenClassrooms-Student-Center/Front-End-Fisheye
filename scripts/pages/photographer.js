@@ -13,28 +13,25 @@ function getphotographerId() {
 async function getPresentation(photographerId) {
   fetch('../data/photographers.json')
     .then((res) => res.json())
-    .then((data) => data.photographers.filter(
-      (photographe) => photographe.id === parseInt(photographerId, 10),
-    ))
+    .then((data) => {
+      const dataPhotographer = data.photographers.filter(
+        (photographer) => photographer.id === parseInt(photographerId, 10),
+      );
+      const dataMedias = data.media.filter(
+        (photo) => photo.photographerId === parseInt(photographerId, 10),
+      );
+      return { dataPhotographer, dataMedias };
+    })
     .then((filtingphotographe) => {
-      const newPresentation = new Presentation(filtingphotographe[0]);
+      const { dataPhotographer } = filtingphotographe;
+      const { dataMedias } = filtingphotographe;
+
+      const newPresentation = new Presentation(dataPhotographer[0]);
       const section = document.createElement('section');
       section.innerHTML = presentationTemplate(newPresentation);
       document.querySelector('.presentation__section').appendChild(section);
       section.className = 'photograph-header';
-    });
-}
 
-async function getPhotos(photographerId) {
-  fetch('../data/photographers.json')
-    .then((res) => res.json())
-    .then((data) => {
-      const dataMedias = data.media.filter(
-        (photo) => photo.photographerId === parseInt(photographerId, 10),
-      );
-      const dataPhotographer = data.photographers.filter(
-        (photographer) => photographer.id === parseInt(photographerId, 10),
-      );
       const dataPage = dataPhotographer[0];
       const medias = dataMedias.map((dataMedia) => mediaFactory(dataMedia, dataPage.name));
       const sortMedia = getSelectedSort(medias);
@@ -57,7 +54,6 @@ async function getPhotos(photographerId) {
 async function initPhotographe() {
   const photographerId = getphotographerId();
   await getPresentation(photographerId);
-  await getPhotos(photographerId);
 }
 
 initPhotographe();
