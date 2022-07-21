@@ -9,8 +9,6 @@ async function getPhotographers() {
             photographers = data.photographers;
             medias = data.media;
             console.log(data)
-            console.log(medias)
- 
         })
       
     }

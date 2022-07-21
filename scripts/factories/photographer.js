@@ -21,11 +21,9 @@ function photographerFactory(data) {
         article.appendChild(h3);
         article.appendChild(h4);
         article.appendChild(prix);     
-       
+       //fonction onclick sur l'image d'un photographe, qui ouvre sa page en récupérant son id
         img.onclick = function () {     
-            window.location = `'/photographer-page.html?id="${idPhotographer}"'`;
-            console.log(idPhotographer);
-            
+            window.location = '/photographer-page.html?id='+`${idPhotographer}`;
         }
         return (article);
     }
