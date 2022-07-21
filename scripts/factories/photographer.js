@@ -1,8 +1,8 @@
 function photographerFactory(data) {
     const { name, portrait, city, country,tagline,price, id } = data;
-
+   
     const picture = `assets/photographers/${portrait}`;
-
+    
     function getUserCardDOM() {
         const article = document.createElement( 'article' );
         const img = document.createElement( 'img' );
@@ -20,9 +20,16 @@ function photographerFactory(data) {
         article.appendChild(h2);
         article.appendChild(h3);
         article.appendChild(h4);
-        article.appendChild(prix);
-        console.log(idPhotographer);
+        article.appendChild(prix);     
+       
+        img.onclick = function () {     
+            window.location = `'/photographer-page.html?id="${idPhotographer}"'`;
+            console.log(idPhotographer);
+            
+        }
         return (article);
     }
     return { name, picture,city,country,tagline,price,id, getUserCardDOM }
 }
+
+      

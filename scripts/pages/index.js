@@ -7,8 +7,10 @@ async function getPhotographers() {
         .then((res) => res.json()) //promise
         .then((data) => {
             photographers = data.photographers;
+            medias = data.media;
             console.log(data)
-            console.log(photographers)
+            console.log(medias)
+ 
         })
       
     }
@@ -27,9 +29,8 @@ async function getPhotographers() {
         //const { photographers } = await getPhotographers();
         //displayData(photographers);
         await getPhotographers()
-        console.log(photographers)
         displayData();
     };
-    
+  
     init();
     
