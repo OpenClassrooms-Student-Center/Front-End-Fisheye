@@ -3,7 +3,7 @@ function photographerFactory(data) {
     console.log({ name, portrait, city, country, tagline, price, id });
 
     const picture = `../assets/photos/Photographers ID Photos/${portrait}`;
-    const photographer = "./photographer/photographer.html/:id";
+    const photographer = `./photographer/photographer.html?id=${id}`;
 
     function getUserCardDOM() {
         const article = document.createElement( 'article' );
