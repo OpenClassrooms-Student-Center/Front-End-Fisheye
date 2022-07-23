@@ -1,0 +1,115 @@
+/* wanted colors */
+@import "photographer/photographer.css";
+body {
+  font-family: "DM Sans", sans-serif;
+  margin: 0;
+}
+
+a {
+  text-decoration: none;
+  color: black;
+}
+
+/*html, body {
+  height: 100%;
+}
+
+body {
+  font-family: "Roboto", sans-serif;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: "Shrikhand", cursive;
+  font-weight: normal;
+}
+
+h1 {
+  margin: 0;
+  font-size: 35px;
+  max-width: 400px;
+  @media screen and (max-width: 992px) {
+    font-size: 30px;
+    max-width: 350px;
+  }
+  @media screen and (max-width: 768px) {
+    font-size: 23px;
+    max-width: 300px;
+  }
+}
+
+h2 {
+  margin: 0;
+}
+
+section {
+  padding: 50px 5%;
+}
+*/
+/* wanted colors */
+header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  height: 90px;
+}
+header h1 {
+  color: #901C1C;
+  margin-right: 100px;
+}
+header .logo {
+  height: 50px;
+  margin-left: 100px;
+}
+
+.photographer_section {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 70px;
+  margin: 50px 0;
+}
+.photographer_section article {
+  justify-self: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+.photographer_section article a {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 10px;
+}
+.photographer_section article a:focus {
+  width: 400px;
+  border: 1px solid red;
+  outline: none;
+}
+.photographer_section article a img {
+  height: 200px;
+  width: 200px;
+  border-radius: 100%;
+  object-fit: cover;
+}
+.photographer_section article a h2 {
+  color: #D3573C;
+  font-size: 36px;
+  margin: 5px;
+}
+.photographer_section article .location {
+  color: #901C1C;
+  font-size: large;
+  margin: 0;
+}
+.photographer_section article .quote {
+  margin: 0;
+  font-size: small;
+}
+.photographer_section article .price {
+  margin: 0;
+  color: rgba(82, 82, 82, 0.4470588235);
+  font-size: small;
+}
+
+/*# sourceMappingURL=style.css.map */

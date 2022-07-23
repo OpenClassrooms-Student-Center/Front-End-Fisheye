@@ -1,3 +1,4 @@
+@import "../abstracts/variables";
 
 header {
   display: flex;
@@ -7,7 +8,7 @@ header {
   height: 90px;
 
   h1 {
-    color: #901C1C;
+    color: $dark-red;
     margin-right: 100px;
   }
 

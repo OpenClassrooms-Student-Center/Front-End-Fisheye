@@ -4,7 +4,7 @@ async function getPhotographers() {
             if (response.ok) {
                 return response.json()
                     .then(data => {
-                            return data.photographers
+                        return data.photographers
                         }
                     )
             } else {

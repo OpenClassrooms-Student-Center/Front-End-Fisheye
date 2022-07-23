@@ -1,0 +1,63 @@
+@import "../styles/abstracts/variables";
+@import "../styles/base/typography";
+@import "../styles/layouts/header";
+@import "photographer/photographer.css";
+
+.photographer_section {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 70px;
+  margin: 50px 0;
+
+  article {
+    justify-self: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+
+    a {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 10px;
+
+      &:focus {
+        width: 400px;
+        border: 1px solid red;
+        outline: none;
+      }
+
+      img {
+        height: 200px;
+        width: 200px;
+        border-radius: 100%;
+        object-fit: cover;
+      }
+
+      h2 {
+        color: $light-red;
+        font-size: 36px;
+        margin: 5px;
+      }
+    }
+
+    .location {
+      color: $dark-red;
+      font-size: large;
+      margin: 0;
+    }
+
+    .quote{
+      margin: 0;
+      font-size: small;
+    }
+
+    .price {
+      margin: 0;
+      color: $gray;
+      font-size: small;
+    }
+  }
+}
+
