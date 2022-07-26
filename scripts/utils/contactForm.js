@@ -74,7 +74,7 @@ const checkMessage = function (inputMessage) {
 };
 
 // Form validation
-const submitBtn = document.querySelector(".submit_button");
+const submitBtn = document.getElementById("submit_button");
 submitBtn.addEventListener("click", (event) => {
   event.preventDefault();
   let firstNameValue = document.getElementById("firstName").value;
