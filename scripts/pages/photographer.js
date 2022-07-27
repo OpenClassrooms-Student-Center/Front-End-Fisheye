@@ -1,10 +1,9 @@
 //Mettre le code JavaScript lié à la page photographer.html
-let photographer = {}; //tableau pour y stocker les données du json
-let medias = [];
+let photographer = {}; //objet pour stocke le photographe
+let medias = []; //tableau pour stocke les médias
 
 
 async function getPhotographerAndMedia() {
-        // Penser à remplacer par les données récupérées dans le json
         //récupérer l'id passé dans la page
 let str = window.location.href;
 let url = new URL(str);
@@ -39,6 +38,11 @@ console.log(id);
             //console.log(data.media)
         })
 }
+const displayPhotographerAndMedia = async () =>{
+    await getPhotographerAndMedia();
+    document.querySelector(".photographer").innerHTML = `<div class="flex"><h2>${photographer.name}</h2><h3>${photographer.city}, ${photographer.country}</h3><h4>${photographer.tagline}</h4></div><button class="contact_button">Contactez-moi</button><img src="/assets/photographers/${photographer.portrait}" alt="photo de ${photographer.name}"></img>`;
+};
 
+displayPhotographerAndMedia();
 
 getPhotographerAndMedia();
