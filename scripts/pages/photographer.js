@@ -1,12 +1,14 @@
-
+import {Lightbox} from '../utils/lightbox.js'
 
 //Mettre le code JavaScript lié à la page photographer.html
 function displayModal() {
-    const modal = document.getElementById("contact_modal");
-	modal.style.display = "block";
+  const modal = document.getElementById("contact_modal");
+    let contact_button = document.getElementById('contact_button')
+  if (contact_button.classList.contains('noDisplay')){
+    modal.style.display = "block";
+  }
 }
-
-function closeModal() {
+  function closeModal() {
     const modal = document.getElementById("contact_modal");
     modal.style.display = "none";  
     
@@ -21,11 +23,8 @@ const testPhotographer = async (data) => {
 
   
   
-  
 
   // Récupertation de l'id dans l'URL
-
-  const main_photographer = document.getElementById('section_profile')
 
   const queryString_url_id = window.location.search;
 
@@ -43,69 +42,27 @@ const testPhotographer = async (data) => {
   const photographerfiltred =  filterIdPhotographers(data, valueId)
   
   // recuperer les photos des photographers
-  const picturePhotgraphe = `./assets/photographers/${photographerfiltred.portrait}`
+  
   
 
   const photographerId = valueId
+  let structure = structurePhotographer(photographerfiltred)
 
-
-  
-  
-  
-  
-
-  const structurePhotographer = `
-  <div class="photograph-header"> 
-        
-    <div class="main_information  position_main_information">
-      <h1 id="profile_name">${photographerfiltred.name}</h1>
-      <p class="red">${photographerfiltred.city + ', ' + photographerfiltred.country  }</p>
-      <p id="profile_tagline">${photographerfiltred.tagline  }</p>
-    </div> 
-       
-    <div>
-      <button class="contact_button flexcenter" onclick="displayModal()">Contactez-moi</button>
-    </div>
-    <div class="main_information">
-      <p id="profile_picture">
-      <img class="img_profile" alt = "oui" src="${picturePhotgraphe}"></p>
-    </div>
-  </div> `
-
-  main_photographer.innerHTML = structurePhotographer
-  
   
   // Grille des medias des photographe
 
-  function gridOfMediaOfPhotographer() {
-    
-    const mediaFiltred = filterMediaOfPhotographer(data, photographerId)
-    
-    const test = TestMedia(mediaFiltred)
-    
 
-    if(test == 'mp4'){
-          
-      CreateVideo(mediaFiltred, valueId)
-      
-    } else  {
-      
-      CreateImage(mediaFiltred, valueId)
-      
-    }
-    
-  }
   const mediaFiltred = filterMediaOfPhotographer(data, photographerId)
-  
+  let mediaFiltredByName = filterMediaWithName(mediaFiltred)
+  let mediaFiltredByLikes = filterMediaByLikes(mediaFiltred)
+  let mediaFiltredByDate = filterMediaByDate(mediaFiltred)
   // Afficher la Grille
- 
-  filterMediaWithButton(mediaFiltred)
-  displayGrid(mediaFiltred, gridOfMediaOfPhotographer, filterMediaWithButton)
-
-  // trier la grille 
+  displayGrid(mediaFiltredByLikes)
+  filterMediaByLikes(mediaFiltred)
   
-
-
+  
+  
+  
 
   // rectangle des prix et des likes
   // prix
@@ -132,10 +89,8 @@ const getUsers = async function () {
     let response = await fetch(`/data/photographers.json`)
     if (response.ok) {
         let data = await response.json()
-        
         testPhotographer(data)
-        
-        
+        return data
 
     } else {
         console.error('Retour du serveur :', response.status)
@@ -146,10 +101,7 @@ getUsers()
 
 
 
-
-
 // launch modal event
-
 
 function filterIdPhotographers(data ,id){
 
@@ -189,16 +141,45 @@ function filterMediaOfPhotographer(data, photographerId){
 
 }
 
-function TestMedia(mediaFiltred){
-  
+
+function TestMedia(media){
   // Trouver quels medias sont des videos 
-  let test = mediaFiltred[a].image||mediaFiltred[a].video.substring(mediaFiltred[a].image||mediaFiltred[a].video.lastIndexOf('.')+1)
+  let test = media.image||media.video.substring(media.image||media.video.lastIndexOf('.')+1)
+  
   // renvoyer "mp4" lorsque le media est une video  
   return test
 }
+function structurePhotographer(photographerfiltred){
+  const main_photographer = document.getElementById('section_profile')
+  const picturePhotgraphe = `./assets/photographers/${photographerfiltred.portrait}
+  
+  `
+  const structurePhotographer = `
+  <div class="photograph-header"> 
+        
+    <div class="main_information  position_main_information">
+      <h1 id="profile_name">${photographerfiltred.name}</h1>
+      <p class="red">${photographerfiltred.city + ', ' + photographerfiltred.country  }</p>
+      <p id="profile_tagline">${photographerfiltred.tagline  }</p>
+    </div> 
+       
+    <div "id="contact_button" class="noDisplay">
+      <button class="contact_button flexcenter" onclick ="displayModal()"  >Contactez-moi</button>
+    </div>
+    <div class="main_information">
+      <p id="profile_picture">
+      <img class="img_profile" alt = "oui" src="${picturePhotgraphe}"></p>
+    </div>
+  </div> `
 
-function CreateVideo(mediaFiltred, valueId ){
+  
 
+  return main_photographer.innerHTML = structurePhotographer
+}
+
+function CreateVideo(media){
+  /* arraySort =  filterMediaByLikes(mediaFiltred) */
+   
   const div_grid_element = document.getElementById('element_of_photographer')
       
       
@@ -206,12 +187,12 @@ function CreateVideo(mediaFiltred, valueId ){
   
   
   let title_media = document.createElement('h2')
-  title_media.textContent = mediaFiltred[a].title
+  title_media.textContent = media.title
   title_media.classList.add('red')
   
 
   let likes_media = document.createElement('p')
-  likes_media.textContent = mediaFiltred[a].likes
+  likes_media.textContent = media.likes
   likes_media.classList.add('likes')
   
   let title_and_likes = document.createElement('div')
@@ -227,7 +208,7 @@ function CreateVideo(mediaFiltred, valueId ){
 
       
   let video_media = document.createElement('video')
-  let video_url = '/assets/photographers/Sample Photos/' + valueId + '/' + mediaFiltred[a].video
+  let video_url = '/assets/photographers/Sample Photos/' + media.photographerId + '/' + media.video
   video_media.src = video_url
   
   let aHref = document.createElement('a')
@@ -247,8 +228,8 @@ function CreateVideo(mediaFiltred, valueId ){
 
 }
 
-function CreateImage(mediaFiltred, valueId){
-
+function CreateImage( media){
+/* arraySort = filterMediaByLikes(mediaFiltred) */
   const div_grid_element = document.getElementById('element_of_photographer')
       
       
@@ -256,12 +237,12 @@ function CreateImage(mediaFiltred, valueId){
   
   
   let title_media = document.createElement('h2')
-  title_media.textContent = mediaFiltred[a].title
+  title_media.textContent = media.title
   title_media.classList.add('red')
   
 
   let likes_media = document.createElement('p')
-  likes_media.textContent = mediaFiltred[a].likes
+  likes_media.textContent = media.likes
   likes_media.classList.add('likes')
   
   let title_and_likes = document.createElement('div')
@@ -276,7 +257,7 @@ function CreateImage(mediaFiltred, valueId){
   heart.classList.add('heart')
 
   let img_media = document.createElement('img')
-  let media_photo = '/assets/photographers/Sample Photos/' + valueId + '/' + mediaFiltred[a].image
+  let media_photo = '/assets/photographers/Sample Photos/' + media.photographerId + '/' + media.image
   img_media.src = media_photo
   
   let aHref = document.createElement('a')
@@ -309,14 +290,29 @@ function totalOfLikes(mediaFiltred){
   i.forEach(likes => totalOfLikes += likes)
   return totalOfLikes
 }
-function displayGrid(mediaFiltred, gridOfMediaOfPhotographer, filterMediaWithButton){
-  /* const media */
-  for (a = 0; a < mediaFiltred.length; a++) {
-    gridOfMediaOfPhotographer(a)
+function gridOfMediaOfPhotographer(media) {
+    
+  const test = TestMedia(media)
+  
+
+  if(test == 'mp4'){
+        
+    CreateVideo(media)
+    
+  } else  {
+    
+    CreateImage(media)
     
   }
- 
   
+}
+function displayGrid(mediaFiltred){
+  
+  mediaFiltred.forEach(media => {
+    gridOfMediaOfPhotographer(media)
+  }); 
+
+
 }
 
 function addLike(mediaFiltred, allLikes){
@@ -384,7 +380,7 @@ function addLike(mediaFiltred, allLikes){
 }
 
 
-function filterMediaWithButton(mediaFiltred){
+function filterMediaByLikes(mediaFiltred){
   let a = []
 
   for (let i = 0; i < mediaFiltred.length; i++) {
@@ -398,33 +394,292 @@ function filterMediaWithButton(mediaFiltred){
   let BoardMostLikesToLessLikes = []
   for (let i = 0; i < boardOFLikes.length; i++) {
 
-    likes = boardOFLikes[i]
+    let likes = boardOFLikes[i]
     
     const findMediaWithLikes = mediaFiltred.find(element => element.likes === likes)
     BoardMostLikesToLessLikes.push(findMediaWithLikes)
   }
-  console.log(mediaFiltred);
-  console.log(BoardMostLikesToLessLikes);
   return BoardMostLikesToLessLikes
   
 }
-// Ouvrir le menu déroulant au clic
-function dropDown(){
-  document.getElementById('myDropDown').classList.toggle('show');
-// modifier le css lors de l'ouverture 
-  document.getElementById('dropbtn').classList.toggle('border_raduis_btn_down')
-  document.getElementById('dropbtn').classList.toggle('border_raduis_btn_up')
-  document.getElementById('cross').classList.toggle('icone_cross_button_nav_return')
+function filterMediaWithName(mediaFiltred){
+  let a = []
+  for (let i = 0; i < mediaFiltred.length; i++) {
+    
+    a.push(mediaFiltred[i].title)
+    
+  }
+  a.sort()
   
+  const BoardOfName = a
+  let BoardOfNameFilter = []
+  for (let i = 0; i < BoardOfName.length; i++) {
+    
+    let title = BoardOfName[i]
+    
+    const findMediaByTitle = mediaFiltred.find(element => element.title === title)
+    BoardOfNameFilter.push(findMediaByTitle)
+    
+  }
+  return BoardOfNameFilter
+}
+function filterMediaByDate(mediaFiltred){
+// creation d'un tableau 
+let dates= []
+// insertion des dates dans le tableau 
+for (let i = 0; i < mediaFiltred.length; i++) {
+  dates.push(mediaFiltred[i].date)
+  
+}
+// trier le tableau en fonction du temps 
+function compareTimes(a, b) {
+  if (a.valueOf() < b.valueOf()) return -1;
+  if (a.valueOf() > b.valueOf()) return 1;
+  return 0;
+}
+dates.sort(compareTimes)
+// creer un nouveau tableau pour insérer les infos des medias 
+let boardOfDateFilter = []
+// recuperer les medias en fonction des dates 
+for (let i = 0; i < mediaFiltred.length; i++) {
+  
+  let date = dates[i]
+  
+  const findMediaWithDate = mediaFiltred.find(element => element.date === date)
+  boardOfDateFilter.push(findMediaWithDate)
+  
+}
+return boardOfDateFilter
+}
+buttonFilter()
+function dropDown(){
+  let show =  document.getElementById('myDropDown')
+  show.classList.toggle('show');
+  
+ 
+ // modifier le css lors de l'ouverture 
+   document.getElementById('dropbtn').classList.toggle('border_raduis_btn_down')
+   document.getElementById('dropbtn').classList.toggle('border_raduis_btn_up')
+   document.getElementById('cross').classList.toggle('icone_cross_button_nav_return')
+   
+   ListenerBtnFilter ()
+   
+}
+// Menu déroulant 
+
+function buttonFilter() {
+
+const navFilter = document.getElementById('filter')                                                            
+const button = document.createElement('div')                                                                
+
+  button.innerHTML =    `
+  <div class="dropdown" id="test">
+  <button  id="dropbtn"  class="flexaround border_raduis_btn_up PopularityFirst ">Popularité 
+  <i class="icone_cross_button_nav" id="cross"></i>
+  
+   </button>
+  <div id="myDropDown" class="dropDownContent">
+    <a id="textSecondBtn" href="#"" >Date</a>
+    <div  id="secondBtn" class="border_design_btn"></div>
+    <a href="#" id="thirdBtn" class="border_raduis_btn_bottom">Titre</a>          
+  </div>
+</div>`
+
+
+
+navFilter.appendChild(button)
+  
+
 
 }
 
+const test = document.getElementById('test')
+test.addEventListener('click', function(){
+  dropDown()
+})
+function GetMedia(data){
+  const queryString_url_id = window.location.search;
+  const urlSearchParams = new URLSearchParams(queryString_url_id);
+  let id = urlSearchParams.get('id')
+
+  const valueId = parseInt(id, 10)
+  const photographerId = valueId
+
+  const BoardOfMedia = data.media
+
+
+  /* Je souhaite récupérer les medias d'un photographe à partir de son id */
+  const medias = BoardOfMedia.filter(element => element.photographerId === photographerId)
+  return medias
+}
+/* console.log(GetMedia); */
+
+function ListenerBtnFilter (){
+
+
+let firstBtn = document.getElementById('dropbtn')                                                          
+let secondBtn = document.getElementById('secondBtn')
+let thirdBtn = document.getElementById('thirdBtn')
+let myDropDown = document.getElementById('myDropDown')
+let textSecondBtn = document.getElementById('textSecondBtn')
+
+if (myDropDown.classList.contains('show')) {
+  if (firstBtn.classList.contains('PopularityFirst')) {
+    
+
+    secondBtn.addEventListener('click', function () {
+      firstBtn.innerHTML = 'Date <i class="icone_cross_button_nav" id="cross"></i>'          
+      textSecondBtn.innerHTML = 'Titre'
+      thirdBtn.innerHTML = 'Popularité'
+      firstBtn.classList.remove('PopularityFirst')
+      firstBtn.classList.add('DateFirst')
+      
+/*       const test = GetMedia()
+      console.log(test); */
+      // récuperer les data 
+      getUsers().then((data => {
+
+        const mediaFiltred = GetMedia(data)
+        
+        const element_of_photographer = document.getElementById('element_of_photographer')
+        element_of_photographer.innerHTML = ''
+        const mediaByDate = filterMediaByDate(mediaFiltred)
+        displayGrid(mediaByDate)
+        
+        
+         
+
+      }))
+      
+      
+    }) 
+    thirdBtn.addEventListener('click', function () {
+      firstBtn.innerHTML = 'Titre <i class="icone_cross_button_nav" id="cross"></i>'           
+      textSecondBtn.innerHTML = 'Popularité'
+      thirdBtn.innerHTML = 'Date'
+      firstBtn.classList.remove('PopularityFirst')
+      firstBtn.classList.add('TitleFirst')
+       
+      dropDown()
+            // récuperer les data 
+            getUsers().then((data => {
+            
+              const mediaFiltred = GetMedia(data)
+              const element_of_photographer = document.getElementById('element_of_photographer')
+              // mettre la page blanche
+              element_of_photographer.innerHTML = ''
+               // Afficher la nouvelle grille 
+              const mediaByName = filterMediaWithName(mediaFiltred)
+              displayGrid(mediaByName)
+              
+      
+      
+      
+            }))
+    }) 
+
+
+  } else if (firstBtn.classList.contains('DateFirst')){
+    
+
+    secondBtn.addEventListener('click', function () {
+      firstBtn.innerHTML = 'Titre <i class="icone_cross_button_nav" id="cross"></i>'           
+      textSecondBtn.innerHTML = 'Popularité'
+      thirdBtn.innerHTML = 'Date'
+      firstBtn.classList.remove('DateFirst')
+      firstBtn.classList.add('TitleFirst')
+      dropDown()
+      getUsers().then((data => {
+            
+          const mediaFiltred = GetMedia(data)
+          const element_of_photographer = document.getElementById('element_of_photographer')
+          // mettre la page blanche
+          element_of_photographer.innerHTML = ''
+           // Afficher la nouvelle grille 
+          const mediaByName = filterMediaWithName(mediaFiltred)
+          displayGrid(mediaByName)
+          
+  
+  
+  
+        }))
+    }) 
+    thirdBtn.addEventListener('click', function () {
+      firstBtn.innerHTML = 'Popularité<i class="icone_cross_button_nav" id="cross"></i>'           
+      textSecondBtn.innerHTML = 'Date'
+      thirdBtn.innerHTML = 'Titre'
+      firstBtn.classList.remove('DateFirst')
+      firstBtn.classList.add('PopularityFirst')
+      dropDown()
+      getUsers().then((data => {
+            
+          const mediaFiltred = GetMedia(data)
+          const element_of_photographer = document.getElementById('element_of_photographer')
+          // mettre la page blanche
+          element_of_photographer.innerHTML = ''
+           // Afficher la nouvelle grille 
+          const mediaByLikes = filterMediaByLikes(mediaFiltred)
+          displayGrid(mediaByLikes)
+          
+  
+  
+  
+        }))
+    }) 
+  
+  
+  } else if (firstBtn.classList.contains('TitleFirst')){
+    
+
+    secondBtn.addEventListener('click', function () {
+      firstBtn.innerHTML = 'Popularité<i class="icone_cross_button_nav" id="cross"></i>'           
+      textSecondBtn.innerHTML = 'Date'
+      thirdBtn.innerHTML = 'Titre'
+      firstBtn.classList.remove('TitleFirst')
+      firstBtn.classList.add('PopularityFirst')
+      dropDown()
+      getUsers().then((data => {
+            
+          const mediaFiltred = GetMedia(data)
+          const element_of_photographer = document.getElementById('element_of_photographer')
+          // mettre la page blanche
+          element_of_photographer.innerHTML = ''
+           // Afficher la nouvelle grille 
+          const mediaByLikes = filterMediaByLikes(mediaFiltred)
+          displayGrid(mediaByLikes)
+          
+  
+  
+  
+        }))
+    }) 
+    thirdBtn.addEventListener('click', function () {
+      firstBtn.innerHTML = 'Date<i class="icone_cross_button_nav" id="cross"></i>'           
+      textSecondBtn.innerHTML = 'Popularité'
+      thirdBtn.innerHTML = 'Titre'
+      firstBtn.classList.remove('TitleFirst')
+      firstBtn.classList.add('DateFirst')
+      dropDown()
+      getUsers().then((data => {
+        
+        const mediaFiltred = GetMedia(data)
+        const element_of_photographer = document.getElementById('element_of_photographer')
+        element_of_photographer.innerHTML = ''
+        const mediaByDate = filterMediaByDate(mediaFiltred)
+        displayGrid(mediaByDate)
+        
 
 
 
+      }))
+    }) 
+  }
+  
+} 
 
+}
+// Ouvrir le menu déroulant au clic
 
-// Photos / videos des photographer 
 
 
 
@@ -440,20 +695,6 @@ function dropDown(){
 
  
 
-/* grid.innerHTML = `
-        <a href="./assets/photographers/Sample Photos/Ellie Rose/Architecture_Connected_Curves.jpg">
-          <img class="photos_of_photographer" src="./assets/photographers/Sample Photos/Ellie Rose/Architecture_Connected_Curves.jpg" alt="">
-            <p class="">Arc en Ciel</p>
-        </a>
-        <a href="https://picsum.photos/id/1/200/300.jpg">
-          <img class="photos_of_photographer" src="https://picsum.photos/id/1/200/300.jpg" alt="">
-        </a>
-        <a href="/assets/photographers/Sample Photos/Marcel/Architecture_coverr_circle_empty_highway_in_buenos_aires_587740985637.mp4">
-          <img class="photos_of_photographer" src="/assets/photographers/Sample Photos/Marcel/Architecture_coverr_circle_empty_highway_in_buenos_aires_587740985637.mp4" alt="">
-        </a>
-        <a href="#">
-          <img class="photos_of_photographer" src="https://picsum.photos/id/210/900/1800" alt="">
-        </a>` */
 
 
 

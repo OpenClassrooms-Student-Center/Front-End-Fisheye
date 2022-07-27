@@ -63,9 +63,9 @@
     margin-left: 50px;
     margin-right: 50px;
 }
-.lightbox__container img video{
+.lightbox__container img {
     max-width: 100%;
-    height: auto;
+    max-height: 100vh;
     animation: lightboxIn .5s;
 }
 .lightbox__loader{

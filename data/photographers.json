@@ -134,7 +134,7 @@
 			"photographerId": 82,
 			"title": "Purple Tunnel",
 			"image": "Art_Purple_light.jpg",
-			"likes": 24,
+			"likes": 28,
 			"date": "2018-05-05",
 			"price": 55
 		},
@@ -153,7 +153,7 @@
 			"photographerId": 925,
 			"title": "8 Rows",
 			"image": "Sport_2000_with_8.jpg",
-			"likes": 52,
+			"likes": 55,
 			"date": "2013-02-30",
 			"price": 70
 		},
@@ -162,7 +162,7 @@
 			"photographerId": 925,
 			"title": "Fashion Wings",
 			"image": "Fashion_Wings.jpg",
-			"likes": 58,
+			"likes": 59,
 			"date": "2018-07-17",
 			"price": 70
 		},
@@ -198,7 +198,7 @@
 			"photographerId": 925,
 			"title": "Musical Festival Keyboard",
 			"image": "Event_KeyboardCheck.jpg",
-			"likes": 52,
+			"likes": 50,
 			"date": "2019-07-18",
 			"price": 70
 		},
@@ -216,7 +216,7 @@
 			"photographerId": 925,
 			"title": "Animal Majesty",
 			"image": "Animals_Majesty.jpg",
-			"likes": 52,
+			"likes": 58,
 			"date": "2017-03-13",
 			"price": 70
 		},
@@ -225,7 +225,7 @@
 			"photographerId": 925,
 			"title": "Cute puppy on sunset",
 			"video": "Animals_Puppiness.mp4",
-			"likes": 52,
+			"likes": 51,
 			"date": "2016-06-12",
 			"price": 70
 		},
