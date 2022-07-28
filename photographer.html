@@ -94,25 +94,21 @@
 
     <!--  Main avec profil du photographe -->
     <main id="main">
-      <!-- 
+      
       <div id="header_profil">
-        <h1 id="header_photographer_name">Mimi Keel</h1>
+        <h1 id="header_photographer_name"><!-- Mimi Keel--></h1>
         <button class="contact_button" id="contact_button">
           Contactez-moi
-        </button>
+        </button> 
         <img
-          src="assets/Photo_photographer/Mimi/Portrait_Nora.jpg"
-          alt="Portofolio Mimi Keel"
           class="picture_profil"
           id="photographer_picture"
         />
       </div>
       <div class="text">
-        <p class="header_title_text" id="photographer_city">London, UK</p>
-        <p class="header_text" id="photographer_tagline">
-          Voir le beau dans le quotidien
-        </p>
-      </div>  -->
+        <p class="header_title_text city_country_flex" id="photographer_city"><!-- London-->, <!--UK--></p>
+        <p class="header_text" id="photographer_tagline"><!-- Voir le beau dans le quotidien --></p>
+      </div>  
 
       <!--  Texte statique bord de page -->
       <div class="text_border_right">
@@ -120,7 +116,7 @@
           <span>297 081</span>
           <i class="fa-regular fa-heart border_div_heart"></i>
         </div>
-        <span>300€/jour</span>
+        <span id="photographer_price"><!-- 300-->€ / jour</span>
       </div>
 
       <!--  Select label -->
@@ -229,6 +225,6 @@
 
     <script src="./scripts/utils/contactForm.js"></script>
     <script src="./scripts/pages/photographer.js"></script>
-    <script src="./data/photographers.json"></script>
+    <script src="./photographers.json"></script>
   </body>
 </html>
