@@ -9,6 +9,8 @@ export default function sliderFactory(firstMedia, sortMedia) {
   const presentation = document.querySelector('.presentation__section');
   const cardContainer = document.querySelector('.photo-field');
   const filter = document.querySelector('.filter');
+  const header = document.querySelector('header');
+  const main = document.querySelector('#main');
 
   sortMedia.forEach((media, index) => {
     const slide = document.createElement('article');
@@ -24,11 +26,14 @@ export default function sliderFactory(firstMedia, sortMedia) {
     }
 
     slidesContainer.appendChild(slide);
+    slide.ariaHidden = 'true';
     slides.push(slide);
   });
 
   slider.classList.add('active');
   slider.ariaHidden = 'false';
+  header.ariaHidden = 'true';
+  main.ariaHidden = 'true';
   const firstSlide = slides[n];
   firstSlide.className += ' active';
   const body = document.querySelector('body');
@@ -68,6 +73,9 @@ export default function sliderFactory(firstMedia, sortMedia) {
     cardContainer.style.display = 'grid';
     presentation.style.display = 'block';
     filter.style.display = 'flex';
+    header.ariaHidden = 'false';
+    main.ariaHidden = 'false';
+    console.log(slider.ariaHidden);
   }
   function addEventSlider() {
     const back = document.querySelector('.back');

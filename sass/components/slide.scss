@@ -1,7 +1,9 @@
 .slide.active {
     z-index: 1;
+    display: block;
 }
 .slide {
+    display: none;
     position : absolute;
     height: 90%;
     max-width: 80%;
