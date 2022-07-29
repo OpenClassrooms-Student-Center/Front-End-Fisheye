@@ -4,7 +4,7 @@ async function getPhotographers() {
             if (response.ok) {
                 return response.json()
                     .then(data => {
-                        return data.photographers
+                            return data.photographers
                         }
                     )
             } else {
@@ -18,10 +18,10 @@ async function getPhotographers() {
 
 async function displayData(photographers) {
     const photographersSection = document.querySelector('.photographer_section');
-
+    console.log(photographersSection);
     photographers.forEach((photographer) => {
-        const photographerModel = photographerFactory(photographer);
-        const userCardDOM = photographerModel.getUserCardDOM();
+        console.log(photographer);
+        const userCardDOM = photographerFactory(photographer, "index");
         photographersSection.appendChild(userCardDOM);
     });
 }
@@ -29,9 +29,8 @@ async function displayData(photographers) {
 async function init() {
     // Récupère les datas des photographes
     const photographers = await getPhotographers();
+    console.log(photographers);
     await displayData(photographers);
 }
 
 init()
-
-
