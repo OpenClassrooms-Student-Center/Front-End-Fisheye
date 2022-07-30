@@ -7,21 +7,27 @@ function photographerFactory(data, template) {
 
     function getUsersCardDOM() {
         const article = document.createElement('article');
+        article.setAttribute('aria-label', name)
         const a = document.createElement('a');
-        a.setAttribute('href', photographer)
+        a.setAttribute('href', photographer);
+        a.setAttribute('aria-label', 'to ' + name + ' page')
         const img = document.createElement('img');
         img.setAttribute('src', pictures);
+        img.setAttribute('alt', name)
         const h2 = document.createElement('h2');
         h2.textContent = name;
         const location = document.createElement('p');
         location.textContent = city + ', ' + country;
-        location.className = ' location'
+        location.className = ' location';
+        location.setAttribute('aria-label', 'location')
         const quote = document.createElement('p');
         quote.textContent = tagline;
         quote.className = ' quote'
+        quote.setAttribute('aria-label', 'quote')
         const rate = document.createElement('p');
         rate.textContent = price + '€/jour';
-        rate.className = ' price'
+        rate.className = ' price';
+        rate.setAttribute('aria-label', 'rate')
         article.appendChild(a)
         a.appendChild(img);
         a.appendChild(h2);

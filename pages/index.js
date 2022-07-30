@@ -17,7 +17,7 @@ async function getPhotographers() {
 }
 
 async function displayData(photographers) {
-    const photographersSection = document.querySelector('.photographer_section');
+    const photographersSection = document.querySelector('.photographers');
     console.log(photographersSection);
     photographers.forEach((photographer) => {
         console.log(photographer);

@@ -4,7 +4,7 @@
 @import "../styles/layouts/header";
 @import "photographer/photographer.css";
 
-.photographer_section {
+section {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   gap: 70px;
