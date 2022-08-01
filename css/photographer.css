@@ -4,6 +4,7 @@
     z-index: 5;
     justify-content: center;
     align-items: center;
+    margin-top: -2300px;
     
 }
 
@@ -287,6 +288,8 @@ form input {
     width: 25px;
     background: url(../assets/images/heart_red.svg) center center / 100% 100% no-repeat;
     margin-right: 120px;
+    cursor: pointer;
+
 }
 .price_and_likes{
     position: fixed;

@@ -3,10 +3,8 @@ import {Lightbox} from '../utils/lightbox.js'
 //Mettre le code JavaScript lié à la page photographer.html
 function displayModal() {
   const modal = document.getElementById("contact_modal");
-    let contact_button = document.getElementById('contact_button')
-  if (contact_button.classList.contains('noDisplay')){
-    modal.style.display = "block";
-  }
+  modal.style.display = "block";
+ 
 }
   function closeModal() {
     const modal = document.getElementById("contact_modal");
@@ -15,7 +13,6 @@ function displayModal() {
     
 }
 closeModal()
-
 // Récuperation du nom JSON
 const testPhotographer = async (data) => {
   
@@ -62,7 +59,7 @@ const testPhotographer = async (data) => {
   
   
   
-  
+  // trier la grille 
 
   // rectangle des prix et des likes
   // prix
@@ -141,7 +138,6 @@ function filterMediaOfPhotographer(data, photographerId){
 
 }
 
-
 function TestMedia(media){
   // Trouver quels medias sont des videos 
   let test = media.image||media.video.substring(media.image||media.video.lastIndexOf('.')+1)
@@ -163,8 +159,8 @@ function structurePhotographer(photographerfiltred){
       <p id="profile_tagline">${photographerfiltred.tagline  }</p>
     </div> 
        
-    <div "id="contact_button" class="noDisplay">
-      <button class="contact_button flexcenter" onclick ="displayModal()"  >Contactez-moi</button>
+    <div>
+      <button id="contact_button" class="contact_button flexcenter"  >Contactez-moi</button>
     </div>
     <div class="main_information">
       <p id="profile_picture">
@@ -172,9 +168,12 @@ function structurePhotographer(photographerfiltred){
     </div>
   </div> `
 
+  main_photographer.innerHTML = structurePhotographer
+  main_photographer.querySelector('#contact_button').addEventListener('click', displayModal)
   
-
-  return main_photographer.innerHTML = structurePhotographer
+  const contact_modal = document.getElementById('contact_modal')
+  contact_modal.querySelector('#closeModal').addEventListener('click', closeModal)
+  return main_photographer
 }
 
 function CreateVideo(media){
@@ -311,7 +310,7 @@ function displayGrid(mediaFiltred){
   mediaFiltred.forEach(media => {
     gridOfMediaOfPhotographer(media)
   }); 
-
+  Lightbox.init()
 
 }
 
@@ -534,8 +533,7 @@ if (myDropDown.classList.contains('show')) {
       firstBtn.classList.remove('PopularityFirst')
       firstBtn.classList.add('DateFirst')
       
-/*       const test = GetMedia()
-      console.log(test); */
+
       // récuperer les data 
       getUsers().then((data => {
 
@@ -545,7 +543,6 @@ if (myDropDown.classList.contains('show')) {
         element_of_photographer.innerHTML = ''
         const mediaByDate = filterMediaByDate(mediaFiltred)
         displayGrid(mediaByDate)
-        
         
          
 
