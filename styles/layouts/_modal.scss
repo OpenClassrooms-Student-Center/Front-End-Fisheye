@@ -1,0 +1,78 @@
+#contact_modal {
+  display: none;
+  justify-content: center;
+
+  .modal {
+    position: absolute;
+    top: 50px;
+    border-radius: 5px;
+    background-color: #DB8876;
+    max-width: 700px;
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    padding: 35px;
+    margin: auto;
+
+    header {
+      justify-content: space-between;
+      align-items: flex-start;
+      width: 100%;
+      height: fit-content;
+      margin-bottom: 25px;
+
+      .photographer-modal-name {
+        h2 {
+          font-size: 64px;
+          font-weight: normal;
+          margin: 0;
+        }
+
+        p {
+          font-size: 54px;
+          font-weight: normal;
+          margin: 0;
+        }
+      }
+
+      img {
+        cursor: pointer;
+        margin: 15px 0;
+      }
+    }
+
+    form {
+      display: flex;
+      width: 100%;
+      flex-direction: column;
+      align-items: flex-start;
+
+      div {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        align-items: self-start;
+        margin-bottom: 26px;
+
+        label {
+          color: #312E2E;
+          font-size: 36px;
+        }
+
+        input {
+          width: 100%;
+          height: 68px;
+          border: none;
+          border-radius: 5px;
+        }
+
+        textarea {
+          width: 100%;
+          height: 200px;
+        }
+      }
+    }
+  }
+}

@@ -32,16 +32,17 @@ function getPhotographerId() {
 
 async function displayPhotographerData(photographer) {
     const photographHeader = document.querySelector('.photographer-header');
-    console.log(photographHeader);
+    const photographName = document.querySelector('.photographer-modal-name');
     const userCardDOM = photographerFactory(photographer, 'detail');
+    const userName = photographerFactory(photographer, 'modal');
     photographHeader.appendChild(userCardDOM);
+    photographName.appendChild(userName);
 }
 
 async function init() {
     // Récupère les datas des photographes
     const id = getPhotographerId();
     const photographer = await getPhotographer(id);
-    console.log(photographer);
     await displayPhotographerData(photographer);
 }
 

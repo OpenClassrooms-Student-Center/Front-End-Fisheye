@@ -63,8 +63,17 @@ function photographerFactory(data, template) {
         return (article);
     }
 
+    function getUserName() {
+        const photographerName = document.createElement('p');
+        photographerName.innerHTML = name;
+        return (photographerName);
+    }
+
     if (template === 'detail') {
         return getUserCardDOM()
+    }
+    if (template === 'modal') {
+        return getUserName()
     } else
         return getUsersCardDOM()
 }
