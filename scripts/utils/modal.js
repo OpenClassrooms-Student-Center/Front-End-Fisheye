@@ -12,7 +12,13 @@ contactMe.addEventListener('submit', function(e) {
   
      
           alert("Le formulaire est envoyé !");
-          form.submit();
+          let a = []
+          a.push('Prénom : '+ inputFirst.value)
+          a.push('Nom : '+ inputLast.value)
+          a.push('Email : '+ email.value)
+          a.push('Message : '+ text.value)
+          console.log(a);
+          /* contactMe.submit(); */
      
       }    
     
@@ -32,21 +38,16 @@ const validUser = function(input , nom ){
 
     let small = input.nextElementSibling;
     if (!/[a-zA-Z]{3,15}/.test(input.value)){
-    small.innerHTML = 'le ' + nom + ' doit contenir plus de 2 caractères'
-    small.classList.remove('label-valide')
-    small.classList.add('label-invalide')
+    small.innerHTML = 'Le ' + nom + ' doit contenir plus de 2 caractères'
     return false ;
   } else if 
       (/[0-9]/.test(input.value)) {
-        small.innerHTML = 'le ' + nom + ' ne doit pas contenir de chiffre'
-        small.classList.remove('label-valide')
-        small.classList.add('label-invalide')
+        small.innerHTML = 'Le ' + nom + ' ne doit pas contenir de chiffre'
         return false;
     } else if 
     (/[a-zA-Z]{3,15}/.test(input.value)) {
-       small.innerHTML = 'le ' + nom + ' est valide'  
-      small.classList.remove('label-invalide')
-      small.classList.add('label-valide')  
+       small.innerHTML = 'Le ' + nom + ' est valide'  
+
       return true;
       }
   }
@@ -63,25 +64,23 @@ const validUser = function(input , nom ){
       let small = inputEmail.nextElementSibling;
   
       if (emailRegExp.test(inputEmail.value)) {
-        small.innerHTML = "adresse valide"
-        small.classList.remove('label-invalide')
-        small.classList.add('label-valide')
+        small.innerHTML = "Adresse valide"
         return true;
       }  
-        small.innerHTML = 'adresse non valide'
-        small.classList.remove('label-valide')
-        small.classList.add('label-invalide')
+        small.innerHTML = 'Adresse non valide'
         return false;
       
   
   }
-const ValidTExt = function (inputText){
-    let small = inputEmail.nextElementSibling;
-    if(inputText == '' ){
-        console.log('non');
-
+const ValidText = function (inputText){
+    let small = inputText.nextElementSibling;
+    let a = ''
+    if((inputText.value) === ''){
+        small.innerHTML = 'Veuillez saisire le champ ci-dessus '
+      return false
     } else{
-        console.log('oui');
+      small.innerHTML = 'Champ valide '
+        return true
     }
 }
 
@@ -100,5 +99,8 @@ inputLast.addEventListener('change', function(){
 
 email.addEventListener('change', function() {
     validEmail(this);
+  });
+text.addEventListener('change', function() {
+    ValidText(this);
   });
 

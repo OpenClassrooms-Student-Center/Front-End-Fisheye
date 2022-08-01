@@ -316,3 +316,11 @@ form input {
     font-weight: bold;
     font-size: 20px;
 }
+.Modal_Text{
+    font-size: 25px;
+}
+.Modal_Text_error{
+    font-size: 20px;
+    color: #901C1C;
+}
+

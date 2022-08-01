@@ -41,7 +41,6 @@ class Lightbox{
     testUrl(url){
       
       let urlSubstring = url.substring(url.lastIndexOf('.')+1)
-      console.log(urlSubstring);
       if (urlSubstring === 'jpg'){
       this.loadImage(url)
     } else {
@@ -178,7 +177,6 @@ class Lightbox{
  */
 
 
-window.onload = Lightbox.init
 
 
 
