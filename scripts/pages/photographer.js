@@ -5,15 +5,34 @@
 fetch("./photographers.json").then((response)=>{
     return response.json();
 }).then((result)=>{
+
     let searchParams = new URLSearchParams(window.location.search);
+
     const photographerId = searchParams.get('id');
+
     const photographers = result.photographers;
+
+    const medias = result.media;
+
     const photographerInfo = photographers.find((photographer) => {
+
         if(photographer.id === Number(photographerId)) {
+
             return photographer;
         }
     });
-    photographerToDisplay(photographerInfo)
+
+    const photographerMedias = medias.filter((media)=>{
+
+         if(media.photographerId === Number(photographerId)){
+
+             return media;
+
+         }
+
+    });
+
+    photographerToDisplay(photographerInfo);
 })
 
 
@@ -21,28 +40,29 @@ fetch("./photographers.json").then((response)=>{
 
 function photographerToDisplay(photographerInfo){
     const {name, id, city, country, tagline, price, portrait} = photographerInfo;
+
     const picture = `../../assets/Photographers/${portrait}`;
 
-const photographerName = document.getElementById("header_photographer_name");
-photographerName.insertAdjacentHTML ("afterbegin" ,name);
 
-const photographerPicture = document.getElementById("photographer_picture");
-photographerPicture.insertAdjacentHTML("afterbegin", portrait);
-photographerPicture.setAttribute("alt", name);
-console.log(portrait)
+    const photographerName = document.getElementById("header_photographer_name");
+    photographerName.insertAdjacentHTML ("afterbegin" ,name);
 
-const photographerCity = document.getElementById("photographer_city");
-photographerCity.insertAdjacentHTML("afterbegin", city);
+    const photographerPicture = document.getElementById("photographer_picture");
+    photographerPicture.setAttribute("src", picture);
+    photographerPicture.setAttribute("alt", name);
 
-const photographerCountry = document.getElementById("photographer_city");
-photographerCountry.insertAdjacentHTML ("beforeend", country);
+    const photographerCity = document.getElementById("photographer_city");
+    photographerCity.insertAdjacentHTML("afterbegin", city);
 
-const photographerTagline = document.getElementById("photographer_tagline");
-photographerTagline.insertAdjacentHTML ("afterbegin" ,tagline);
+    const photographerCountry = document.getElementById("photographer_city");
+    photographerCountry.insertAdjacentHTML ("beforeend", country);
 
-const photograherPrice = document.getElementById("photographer_price");
-photograherPrice.insertAdjacentHTML("beforebegin", price);
+    const photographerTagline = document.getElementById("photographer_tagline");
+    photographerTagline.insertAdjacentHTML ("afterbegin" ,tagline);
 
-return photographerToDisplay;
+    const photograherPrice = document.getElementById("photographer_price");
+    photograherPrice.insertAdjacentHTML("beforebegin", price);
+
+    return true;
 }
 
