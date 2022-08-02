@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100;0,200;0,300;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Shrikhand&display=swap');
 @import url("photographer.css");
 
 body {
@@ -77,7 +78,6 @@ h1 {
 .photographer {
     justify-self: center;
     display: flex;
-    
     align-items: center;
     flex-direction: row;
     justify-content: space-around;
@@ -88,16 +88,13 @@ h1 {
     color: #D3573C;
     font-size: 36px;
     margin-bottom: 0;
-  
-    
     
 }
 .photographer  h3 {
     color: #901C1C;
     font-size: 24px;
     margin-top: 0;
-    margin-bottom: 0;
-   
+    margin-bottom: 0; 
 }
 .photographer h4 {
     color: #525252;
@@ -121,6 +118,52 @@ h1 {
     object-fit: cover;
    
 }
-.photographer button {
-  
+
+.photos {
+    display: flex;
+    /*flex-direction: row;*/
+    justify-content: space-around;
+    flex-wrap: wrap;
+    margin-top: 2rem;;
+}
+.media_img {
+    width: 350px;
+    height: 300px;
+    object-fit: cover;
+    cursor: pointer;
+    border-radius: 5px;
+}
+.fa-heart {
+    color: #901C1C;
+}
+.photos h3 {
+    color: #901C1C;
+    font-size: 24px;
+    font-family: 'Raleway', sans-serif;
+}
+.photos .flex {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.menu-deroulant .sort {
+    font-weight: 700;
+    font-size: 18px;
+    font-family: 'Raleway', sans-serif;
+    list-style-type: none;
+}
+.sort-ul {
+    width: 170px;
+   
+}
+.sort-li {
+    font-weight: 700;
+    border-radius: 5px;
+    font-size: 18px;
+    font-family: 'Raleway', sans-serif;
+    list-style-type: none; 
+    background-color:#901C1C ;
+    color:white;
+    padding:1rem;
+    /*height: 170px;*/
 }
