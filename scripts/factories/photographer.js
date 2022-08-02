@@ -27,7 +27,12 @@ function photographerFactory(data) {
         }
         return (article);
     }
-    return { name, picture,city,country,tagline,price,id, getUserCardDOM }
+    function getPhotographerCard() {
+        document.querySelector(
+            ".photographer"
+          ).innerHTML = `<div class="flex"><h2>${photographer.name}</h2><h3>${photographer.city}, ${photographer.country}</h3><h4>${photographer.tagline}</h4></div><button class="contact_button">Contactez-moi</button><img src="/assets/photographers/${photographer.portrait}" alt="photo de ${photographer.name}"></img>`;
+    } 
+    return { name, picture,city,country,tagline,price,id, getUserCardDOM, getPhotographerCard }
 }
 
       
