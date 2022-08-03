@@ -12,7 +12,7 @@
   <body>
     <header>
       <a href="index.html">
-        <img src="assets/images/logo.png" class="logo"/>
+        <img src="assets/images/logo.png" alt="logo" class="logo"/>
       </a>
     </header>
     <main id="main_profile">
@@ -44,31 +44,40 @@
 			<div class="modal">
 				<header>
           <h2>Contactez-moi</h2>
-          <img src="assets/icons/close.svg" id="closeModal" />
+          <img src="assets/icons/close.svg" alt="closeCross" id="closeModal" />
         </header>
-				<form id="modal_contact_me">
+				<form id="modal_contact_me" method="post">
 					<div>
-						<label for="prénom">Prénom</label>
-						<input type="text"
+            
+						<label for="first_name">Prénom</label>
+						<input 
+            type="text"
             id="first_name"
             name="first"
-            class="Modal_Text">
+            class="Modal_Text"
+            aria-label="Prénom"
+            />
+          
             <p class="Modal_Text_error"></p>
-            <label for="nom">Nom</label>
-            <input type="text"
+            <label for="last_name" >Nom</label>
+            <input 
             id="last_name"
             name="last"
-            class="Modal_Text">
+            class="Modal_Text"
+            type="text"
+            aria-label="Nom">
             <p class="Modal_Text_error"></p>
-            <label >Email</label>
-            <input type="text"
+            <label for="email_modal">Email</label>
+            <input 
             id="email_modal"
-            class="Modal_Text">
+            class="Modal_Text"/>
             <p class="Modal_Text_error"></p>
-            <label >Votre message</label>
-            <input type="text"
+            <label for="text_modal" >Votre message</label>
+            <input 
             id="text_modal"
-            class="Modal_Text">
+            class="Modal_Text"
+            type="text"
+            aria-label="Votre Message">
             <p class="Modal_Text_error"></p>
 					</div>
           <button class="contact_button" type="submit">Envoyer</button>
