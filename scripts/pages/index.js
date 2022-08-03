@@ -20,8 +20,21 @@ async function getPhotographers() {
             "portrait": "account.png"
         },
     ]
-    // et bien retourner le tableau photographers seulement une fois
-    return { photographers }
+
+
+    const url = './data/photographers.json'; // Data source .JSON 
+    const response = await fetch(url); // Wait for the Async Fecth Function 
+    
+    if (response.ok) {
+        const test = await response.json(); // Lecture du body & parse en JSON
+
+        console.log("test");
+        console.log(photographers);
+
+        return { photographers }
+    }
+
+
 }
 
 async function displayData(photographers) {
