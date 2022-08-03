@@ -23,16 +23,18 @@ async function getPhotographers() {
 
 
     const url = './data/photographers.json'; // Data source .JSON 
-    const response = await fetch(url); // Wait for the Async Fecth Function 
+    const response = await fetch(url); // Wait for the Async Fecth Function
+
+    // fetch retourne un objet avec une propriété response qui si est à false signifie que la connection n'est pas bonne 
+    if (!response.ok) { throw new Error('fetch failed url not working') }
+
     
-    if (response.ok) {
-        const test = await response.json(); // Lecture du body & parse en JSON
+    const jsonResponse = await response.json(); // Lecture du body & parse en JSON
 
-        console.log("test");
-        console.log(photographers);
+    console.log(photographers);
+    console.log(jsonResponse.map);
+    return { photographers }
 
-        return { photographers }
-    }
 
 
 }
@@ -50,7 +52,10 @@ async function displayData(photographers) {
 
 async function init() {
     // Récupère les datas des photographes
+    await getPhotographers().catch(error => console.log("error gerer page 404"));
     const { photographers } = await getPhotographers();
+
+
     displayData(photographers);
 };
 
