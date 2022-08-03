@@ -20,6 +20,7 @@ async function getPhotographers() {
             const userCardDOM = photographerModel.getUserCardDOM();
             photographersSection.appendChild(userCardDOM);
         });
+        //console.log(media)
     };
 
     async function init() {

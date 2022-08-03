@@ -136,7 +136,7 @@ h1 {
 .fa-heart {
     color: #901C1C;
 }
-.photos h3 {
+.photos h3,h4 {
     color: #901C1C;
     font-size: 24px;
     font-family: 'Raleway', sans-serif;
@@ -166,4 +166,25 @@ h1 {
     color:white;
     padding:1rem;
     /*height: 170px;*/
+}
+.total-likes {
+    background-color:#DB8876;
+    width: 170px;
+    height: 89px;
+    border-radius: 5px; 
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
+    margin:1rem;
+    position: absolute;
+    left: 81.5%;
+    right: 81%;
+    top: 49%;
+    
+}
+.total-likes .flex {
+    margin-left: 1rem;
+}
+.total-likes .fa-heart {
+    color:black;
 }

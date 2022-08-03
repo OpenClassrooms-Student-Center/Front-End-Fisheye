@@ -16,5 +16,6 @@ function mediaFactory(data) {
         </div>
         </div>`
     }
+   
     return {getMediaCard}
 }
