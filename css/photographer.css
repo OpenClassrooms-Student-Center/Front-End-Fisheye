@@ -67,6 +67,23 @@
     background-color: #d3573C;
 }
 
+.insert-like-price{
+    background-color: #d3573C;
+    border-radius: 10px 10px 0px 0px;
+    width: 18%;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    position: fixed;
+    bottom: 0;
+    left: 78vw;
+}
+
+.insert-like-price p{
+    font-weight: bold;
+    font-size: 18px;
+}
+
 .modal {
     border-radius: 5px;
     background-color: #DB8876;

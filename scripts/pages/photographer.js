@@ -28,11 +28,13 @@ init();
 
 function displayData(media, photographer) {
     console.log(media, photographer);
-    const { name, city, tagline, country} = photographer;
+    const { name, city, tagline, country, price} = photographer;
 
     const picture = `../assets/photographers/${photographer.portrait}`;
-
     const photographerHeader = document.querySelector(".photograph-header");
+    const main = document.querySelector("#main");
+
+    // Header Card
     const headerDetails = document.createElement( 'div' );
     headerDetails.setAttribute("class", "photograph-header-details")
     const elementName = document.createElement( 'h1' );
@@ -51,4 +53,21 @@ function displayData(media, photographer) {
     headerDetails.appendChild(elementLocation);
     headerDetails.appendChild(elementTagline);
     headerAvatar.appendChild(img);
+
+    // Insert like & price
+    let countLikes = 0;
+    media.map((value) => {
+        countLikes = countLikes + value.likes
+    })
+    
+    const insertDiv = document.createElement('div')
+    insertDiv.setAttribute("class", "insert-like-price")
+    const elementLike = document.createElement("p");
+    elementLike.textContent = `${countLikes} 🖤`;
+    const elementPrice = document.createElement("p");
+    elementPrice.textContent = `${price}€ / jour`;
+
+    main.appendChild(insertDiv);
+    insertDiv.appendChild(elementLike);
+    insertDiv.appendChild(elementPrice);
 }

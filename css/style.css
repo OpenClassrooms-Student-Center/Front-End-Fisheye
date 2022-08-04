@@ -90,3 +90,15 @@ h1 {
     width: 200px;
     overflow: hidden;
 }
+
+@media screen and (max-width: 1200px) {
+    .photographer_section { 
+        grid-template-columns: repeat(2, 1fr); 
+    }
+}
+
+@media screen and (max-width: 800px) {
+    .photographer_section { 
+        grid-template-columns: repeat(1, 1fr); 
+    }
+}
