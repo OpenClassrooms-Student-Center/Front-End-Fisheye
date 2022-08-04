@@ -1,14 +1,18 @@
-async function getPhotographers() {
 
-    const url = './data/photographers.json'; // Data source .JSON 
+async function fetchJSON(url, type) {
     const response = await fetch(url); // Wait for the Async Fecth Function
 
     // fetch retourne un objet avec une propriété response qui si est à false signifie que la connection n'est pas bonne et donc on stop la fonction 
     if (!response.ok) { throw new Error('fetch failed url not working') }
 
     let jsonResponse = await response.json(); // parse en JSON de la response
-    photographers = jsonResponse['photographers']; // Récuperers les data du tableau Photographers
+    jsonResponse = jsonResponse[type]; // Récuperers les data du tableau en question
+    return jsonResponse;
+}
 
+async function getPhotographers() {
+    const url = './data/photographers.json'; // Data source .JSON 
+    photographers = await fetchJSON(url, 'photographers');
     return { photographers } // Return les data de PhotoGraphers
 }
 
@@ -19,14 +23,14 @@ async function displayData(photographers) {
         console.log(photographer);
         const photographerModel = photographerFactory(photographer);
         const userCardDOM = photographerModel.getUserCardDOM();
+
         photographersSection.appendChild(userCardDOM);
     });
 };
 
 async function init() {
-    // Récupère les datas des photographes
-    await getPhotographers().catch(error => console.log("error gerer page 404"));
-    const { photographers } = await getPhotographers();
+     // Récupère les datas des photographes
+    const { photographers } = await getPhotographers().catch(error => console.log("error gerer page 404"));
     displayData(photographers);
 };
 
