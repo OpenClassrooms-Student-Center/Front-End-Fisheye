@@ -6,6 +6,47 @@
     background-color: #FAFAFA;
     height: 300px;
     margin: 0 100px;
+    display: flex;
+}
+
+.photograph-header-details {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 100%;
+    padding-left: 50px;
+}
+
+.photograph-header-details h1{
+    color: #d3573C;
+    font-size: 46px;
+    margin: 0;
+}
+
+.photograph-header-details h2{
+    color: #901C1C;
+    font-weight: 500;
+}
+
+.photograph-header-contact {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.photograph-header-avatar {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.photograph-header-avatar img {
+    height: 200px;
+    width: 200px;
+    border-radius: 100%;
+    object-fit: cover;
 }
 
 .contact_button {
@@ -19,6 +60,11 @@
     background-color: #901C1C;
     border-radius: 5px;
     cursor: pointer;
+    transition: background-color .5s ease-in-out;
+}
+
+.contact_button:hover {
+    background-color: #d3573C;
 }
 
 .modal {

@@ -6,7 +6,7 @@ function photographerFactory(data) {
     function getUserCardDOM() {
         const article = document.createElement( 'article' );
         const linkPhotographer = document.createElement('a');
-        linkPhotographer.setAttribute("href", `photographer.html?name=${name}&id=${id}.html`)
+        linkPhotographer.setAttribute("href", `photographer.html?name=${name}&id=${id}`)
         const containerImg = document.createElement( 'div' );
         containerImg.setAttribute("class", "container_img")
         const img = document.createElement( 'img' );
