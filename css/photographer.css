@@ -84,6 +84,16 @@
     font-size: 18px;
 }
 
+.photograph-main{
+    margin: 40px 100px;
+}
+
+.list-img{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 20px;
+}
+
 .modal {
     border-radius: 5px;
     background-color: #DB8876;
