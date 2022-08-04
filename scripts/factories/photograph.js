@@ -47,8 +47,17 @@ function imgFactory(media){
     const containerImg = document.createElement( 'div' );
     containerImg.setAttribute("class", "card-img");
     const img = document.createElement( 'img' );
+    const containerDetails = document.createElement( 'div' );
+    containerDetails.setAttribute("class", "card-img-details");
     img.setAttribute("src", `assets/images/${media.image}`);
+    const imgtitle = document.createElement( 'h2' );
+    imgtitle.textContent = media.title;
+    const imgLike = document.createElement( 'h2' );
+    imgLike.textContent = `${media.likes} 🖤`
 
-    containerImg.appendChild(img)
+    containerImg.appendChild(img);
+    containerImg.appendChild(containerDetails);
+    containerDetails.appendChild(imgtitle);
+    containerDetails.appendChild(imgLike);
     return containerImg
 }
