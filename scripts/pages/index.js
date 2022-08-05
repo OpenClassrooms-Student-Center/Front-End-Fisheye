@@ -29,7 +29,7 @@ async function displayData(photographers) {
 };
 
 async function init() {
-     // Récupère les datas des photographes
+    // Récupère les datas des photographes
     const { photographers } = await getPhotographers().catch(error => console.log("error gerer page 404"));
     displayData(photographers);
 };
