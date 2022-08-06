@@ -122,11 +122,11 @@
       <!--  Select label -->
       <div class="photo_select">
         <label for="photo_select"><strong>Trier par</strong></label>
-        <select name="order_by" class="order_by">
-          <option value="popularity" class="option">Popularité</option>
-          <option value="date" class="option">Date</option>
-          <option value="title" class="option">Titre</option>
-        </select>
+        <div class="div_select">
+          <button data-order="popularity" class="option border_bottom">Popularité<span class="arrow arrow_up"></span></button>
+          <button data-order="date" class="option border_bottom">Date</button>
+          <button data-order="title" class="option">Titre</button>
+        </div>
       </div>
 
       <!--  Galerie Photos -->

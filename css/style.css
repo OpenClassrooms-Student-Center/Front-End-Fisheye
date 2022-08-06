@@ -223,25 +223,48 @@ h1 {
   font-size: 18px;
 }
 
-.order_by {
-  margin-left: 30px;
+.div_select {
+  margin-left: 100px;
+  margin-top: -34px;
+  display: flex;
+  flex-direction: column;
+  padding: 0px 10px 0px 10px;
+  width: 150px;
+  border-radius: 5px;
+  border: 1px solid #901c1c;
+  background-color: #901c1c;
 }
 
-select {
-  padding: 10px 10px 10px 10px;
-  background-color: #901c1c;
+.option {
+  height: 50px;
   border: 0;
-  outline: 0;
-  border-radius: 5px;
   color: white;
   font-size: 16px;
   font-family: "DM Sans", sans-serif;
-  font-weight: bold;
+  font-weight: thin;
+  background-color: #901c1c;
+  text-align: left;
+  cursor: pointer;
 }
 
-select option {
-  display: none;
-  font-size: 18px;
-  background-color: #901c1c;
-  color: white;
+.border_bottom{
+border-bottom: 1px solid white;
 }
+
+.arrow{
+  position: relative;
+  right: -50px;
+  border: solid white;
+  border-width: 0 2px 2px 0;
+  display: inline-block;
+  padding: 3px;
+}
+
+.arrow_up{
+  transform: rotate(-135deg);
+}
+
+.div_select_hide{
+  display: none;
+} 
+
