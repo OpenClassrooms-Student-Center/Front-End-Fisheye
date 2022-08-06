@@ -6,35 +6,13 @@ function photographerFactory(data) {
 
 
     // Function for build DOM 
-    function appendChildText(parent, element, text) {
-        element.textContent = text;
+    function buildElement(parent, balise, value) {
+        const element = document.createElement(balise);
+        if (balise = "img") { element.setAttribute("src", value); }
+        else {
+            element.textContent = value;
+        }
         parent.appendChild(element);
-    }
-
-    function buildImg(parent) {
-        const img = document.createElement('img');
-        img.setAttribute("src", picture);
-        parent.appendChild(img);
-    }
-
-    function buildTitle(parent) {
-        const nameElement = document.createElement('h2');
-        appendChildText(parent, nameElement, name);
-    }
-
-    function buildCityCountry(parent) {
-        const cityCountryElement = document.createElement("h3");
-        appendChildText(parent, cityCountryElement, city + ", " + country);
-    }
-
-    function buildTagline(parent) {
-        const taglineElement = document.createElement("h4");
-        appendChildText(parent, taglineElement,tagline);
-    }
-
-    function buildPrice(parent) {
-        const priceElement = document.createElement("h5");
-        appendChildText(parent, priceElement, price);
     }
     // End Function for build DOM 
 
@@ -44,17 +22,17 @@ function photographerFactory(data) {
         if (name && id && portrait) {
             const article = document.createElement('article');
 
-            buildImg(article);
-            buildTitle(article);
+            buildElement(article, "img", picture);
+            buildElement(article, "h2", name);
 
             if (city && country) {
-                buildCityCountry(article);
+                buildElement(article, "h3", city + ", " + country)
             }
             if (tagline) {
-                buildTagline(article);
+                buildElement(article, "h4", tagline);
             }
             if (price) {
-                buildPrice(article);
+                buildElement(article, "h5", price);
             }
 
             return (article);
