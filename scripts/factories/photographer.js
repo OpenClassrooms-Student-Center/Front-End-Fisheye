@@ -6,44 +6,65 @@ function photographerFactory(data) {
 
 
     // Function for build DOM 
-    function buildImg(article) {
+    function appendChildText(parent, element, text) {
+        element.textContent = text;
+        parent.appendChild(element);
+    }
+
+    function buildImg(parent) {
         const img = document.createElement('img');
         img.setAttribute("src", picture);
-        article.appendChild(img);
+        parent.appendChild(img);
     }
 
-    function buildTitle(article)
-    {
-        const h2 = document.createElement('h2');
-        h2.textContent = name;
-        article.appendChild(h2);
+    function buildTitle(parent) {
+        const nameElement = document.createElement('h2');
+        appendChildText(parent, nameElement, name);
     }
 
-    function buildPrice(article) { }
+    function buildCityCountry(parent) {
+        const cityCountryElement = document.createElement("h3");
+        appendChildText(parent, cityCountryElement, city + ", " + country);
+    }
 
-    function buildTagline(article) { }
+    function buildTagline(parent) {
+        const taglineElement = document.createElement("h4");
+        appendChildText(parent, taglineElement,tagline);
+    }
 
-    function buildCity(article) { }
+    function buildPrice(parent) {
+        const priceElement = document.createElement("h5");
+        appendChildText(parent, priceElement, price);
+    }
     // End Function for build DOM 
 
-    function getUserCardDOM() {
 
+    function getUserCardDOM() {
         // On créer le Dom que seulement si on à une photo,un ID et un nom
         if (name && id && portrait) {
             const article = document.createElement('article');
 
             buildImg(article);
             buildTitle(article);
-         
+
+            if (city && country) {
+                buildCityCountry(article);
+            }
+            if (tagline) {
+                buildTagline(article);
+            }
+            if (price) {
+                buildPrice(article);
+            }
+
             return (article);
         }
-
-    }
-
-    function getUserMovieDOM() {
-        //
     }
 
 
     return { name, picture, getUserCardDOM }
+}
+
+function movieFactory(data) {
+
 }
