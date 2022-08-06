@@ -6,33 +6,36 @@ function photographerFactory(data) {
 
 
     // Function for build DOM 
-    function buildElement(parent, balise, value) {
+    function buildElement(balise, value) {
+        // Create balise 
         const element = document.createElement(balise);
+        // Set content or attribute for the new element 
         if (balise === "img") { element.setAttribute("src", value); }
         else {
             element.textContent = value;
         }
-        parent.appendChild(element);
+        return element;
     }
     // End Function for build DOM 
 
 
     function getUserCardDOM() {
-        // On créer le Dom que seulement si on à une photo,un ID et un nom
+        // Create DOM only if we got a picture a id and a name
         if (name && id && portrait) {
             const article = document.createElement('article');
 
-            buildElement(article, "img", picture);
-            buildElement(article, "h2", name);
+
+            article.appendChild(buildElement("img", picture));
+            article.appendChild(buildElement("h2", name));
 
             if (city && country) {
-                buildElement(article, "h3", city + ", " + country)
+                article.appendChild(buildElement("h3", city + ", " + country));
             }
             if (tagline) {
-                buildElement(article, "h4", tagline);
+                article.appendChild(buildElement("h4", tagline));
             }
             if (price) {
-                buildElement(article, "h5", price);
+                article.appendChild(buildElement("h5", price));
             }
 
             return (article);
