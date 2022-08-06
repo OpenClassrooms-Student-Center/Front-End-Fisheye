@@ -8,7 +8,7 @@ function photographerFactory(data) {
     // Function for build DOM 
     function buildElement(parent, balise, value) {
         const element = document.createElement(balise);
-        if (balise = "img") { element.setAttribute("src", value); }
+        if (balise === "img") { element.setAttribute("src", value); }
         else {
             element.textContent = value;
         }
