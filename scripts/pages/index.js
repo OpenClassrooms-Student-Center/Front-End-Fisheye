@@ -2,11 +2,11 @@
 async function fetchJSON(url, type) {
     const response = await fetch(url); // Wait for the Async Fecth Function
 
-    // fetch retourne un objet avec une propriété response qui si est à false signifie que la connection n'est pas bonne et donc on stop la fonction 
+    // fetch returns an object with a response property which if set to false means that the connection is not good and so we stop the function 
     if (!response.ok) { throw new Error("Thrown from fetchJSON()"); }
 
-    let jsonResponse = await response.json(); // parse en JSON de la response
-    jsonResponse = jsonResponse[type]; // Récuperers les data du tableau en question
+    let jsonResponse = await response.json(); // parsing JSON
+    jsonResponse = jsonResponse[type]; // Get data from the Array that we want
 
     return jsonResponse;
 }
@@ -14,7 +14,7 @@ async function fetchJSON(url, type) {
 async function getPhotographers() {
     const url = './data/photographers.json'; // Data source .JSON 
     photographers = await fetchJSON(url, 'photographers');
-    return { photographers } // Return les data de PhotoGraphers
+    return { photographers } // Return data of PhotoGraphers
 }
 
 async function displayData(photographers) {
@@ -30,7 +30,7 @@ async function displayData(photographers) {
 };
 
 async function init() {
-    // Récupère les datas des photographes
+    // Try to get data from photographes if error then redirect to 404 page
     try {
         const { photographers } = await getPhotographers();
         displayData(photographers);
