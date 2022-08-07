@@ -1,11 +1,20 @@
 #contact_modal {
-    display: none;
+    display: flex;
+    position: relative;
+    z-index: 5;
+    justify-content: center;
+    align-items: center;
+    margin-top: -2300px;
+    
 }
 
 .photograph-header {
     background-color: #FAFAFA;
     height: 300px;
     margin: 0 100px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
 }
 
 .contact_button {
@@ -19,6 +28,10 @@
     background-color: #901C1C;
     border-radius: 5px;
     cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
 }
 
 .modal {
@@ -31,6 +44,7 @@
     justify-content: space-between;
     padding: 35px;
     margin: auto;
+    margin-top: -300px;
 }
 
 .modal header {
@@ -74,3 +88,239 @@ form input {
     border: none;
     border-radius: 5px;
 }
+.flexcenter{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.flexaround{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+.flexbetween{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.flexstart{
+    display: flex;
+    align-items: center;
+    justify-content: start;
+}
+.main_information{
+    width: 400px;
+    height: 300px;
+    
+}
+#profile_name{
+    position: static;
+    font-weight: 100;
+    font-size: 60px;
+    color: #D3573C;
+    overflow-wrap: normal;
+    white-space: nowrap;
+    margin: 30px 0 0 0;
+}
+.red{
+    font-size: 25px;
+    color: #901C1C;
+    
+}
+#profile_tagline{
+    font-size: 20px;
+    color: #525252;
+    margin-top: -15px;
+}
+.position_main_information{
+    margin-left: -4%;
+    margin-top: 50px;
+}
+#profile_picture{
+    width: 300px ;
+    height: 300px;
+    border-radius: 50%;
+    
+}
+.img_profile{
+    border-radius: 50%;
+    width: 200px;
+    height: 200px;
+    margin-top: 30px;
+    margin-left: 80px;
+    object-fit: cover;
+}
+
+#select_menu{
+    margin-left: 25px;
+    margin-top: 40px;
+    padding: 20px 25px;
+    background-color: #901C1C;
+    color: white;
+    border: none;
+    border-radius: 5px 5px ;
+    list-style: 0;
+    font-size: 20px;
+}
+.select_menu{
+    font-weight: bold;
+    margin-top: 53px;   
+    font-size: 20px;
+    margin-left: 100px;
+    
+}
+
+/* Navigation */
+
+#dropbtn{
+    background-color: #901C1C;
+    color: white;
+    padding: 10px 0px 10px 10px;
+    height: 60px;
+    width: 200px;
+    font-size: 20px;
+    font-weight: bold;
+    border: none;
+    cursor: pointer; 
+    margin-left: 15px;
+    margin-top: 30px;
+    
+}
+.border_raduis_btn_up{
+    border-radius: 5px;
+}
+.border_raduis_btn_down{
+    border-radius: 5px 5px 0 0  ;
+}
+.border_raduis_btn_bottom{
+    border-radius: 0 0 5px 5px;
+}
+.dropDownContent a {
+    
+    padding: 15px 0px 15px 30px;
+    width: auto;    
+    text-decoration: none;
+    font-weight: bold;
+    display: block;
+    background-color: #901C1C;
+    font-size: 20px;
+    color: white;
+    z-index: 1;
+    
+}
+
+.border_design_btn{
+    margin: -57px 15px 0 15px;
+    height: 57px;
+    width: 170px;
+    border-top: solid 2px white;
+    border-bottom: solid 2px white; 
+    position: absolute;
+    cursor: pointer;
+    
+}
+
+
+.dropDownContent{
+    display: none;
+    position: absolute;
+    width: 200px;
+    height: 60px;
+    z-index: 1;
+    margin-left: 15px;
+}
+.dropdown{
+    position: relative;
+    display: inline-block;
+    
+}
+
+
+.show{
+    display: block;
+}
+
+/*  Section images  */
+
+.grid{
+    padding: 0 100px;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-gap: 70px;
+    margin-top: 50px;
+    
+    
+}
+.grid  img   {
+    width: 420px;
+    height: 400px;
+    display: block;
+    border-radius: 5px;
+    cursor: pointer;
+    object-fit: cover;
+}
+.grid video    {
+    width: 420px;
+    height: 400px;
+    display: block;
+    border-radius: 5px;
+    cursor: pointer;
+    object-fit: cover;
+}
+
+.icone_cross_button_nav{
+    height: 20px;
+    width: 20px;
+    right: 0;
+    background: url(../assets/images/arrow.svg) center center / 100% 100% no-repeat;
+    transform: rotate(90deg);
+}
+.icone_cross_button_nav_return{
+    transform: rotate(270deg);
+}
+
+.likes{
+
+    margin: 5px;
+}
+.heart {
+    height: 25px;
+    width: 25px;
+    background: url(../assets/images/heart_red.svg) center center / 100% 100% no-repeat;
+    margin-right: 120px;
+    cursor: pointer;
+
+}
+.price_and_likes{
+    position: fixed;
+    width:  376px ;
+    height: 65px;
+    background: #DB8876;
+    border-radius: 5px 5px 0 0;
+    right: 50px;
+    bottom: 0px;
+}
+#price_per_day{
+    margin-left: 100px;
+}
+#heart{
+    height: 25px;
+    width: 25px;
+    padding-left: 10px;
+    background: url(../assets/images/heart_black.svg) center center / 100% 100% no-repeat ;
+    color: black;
+}
+
+.position_of_price_and_likes{
+    margin: 20px 5% 0 5%;
+    font-weight: bold;
+    font-size: 20px;
+}
+.Modal_Text{
+    font-size: 25px;
+}
+.Modal_Text_error{
+    font-size: 20px;
+    color: #901C1C;
+}
+
