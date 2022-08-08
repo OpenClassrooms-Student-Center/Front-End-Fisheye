@@ -165,6 +165,7 @@ form input {
   grid-template-columns: 1fr 1fr 1fr;
   gap: 70px;
   margin-top: 75px;
+  margin-bottom: 75px;
 }
 
 #contact_modal {
@@ -178,5 +179,11 @@ form input {
 }
 
 /** IMPORT FOOTER STYLES **/
+footer {
+  height: 2px;
+  width: 100%;
+  background-color: white;
+  margin-top: 75px;
+}
 
 /*# sourceMappingURL=style.css.map */
