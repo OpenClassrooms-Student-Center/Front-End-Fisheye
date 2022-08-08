@@ -1,4 +1,8 @@
 /** Used to load all variables for this project about SCSS **/
+/** FONT **/
+/** END FONT **/
+/** COLOR VARIABLES **/
+/** END COLOR VARIABLES **/
 /** IMPORT GLOBAL CSS FOR FONTS HTML,* SELECTOR **/
 /********************** GENERAL **********************/
 html,
@@ -13,49 +17,77 @@ body {
 }
 
 /********************** END GENERAL **********************/
+/** IMPORT MIXIN **/
 /** IMPORT HEADER STYLES **/
 header {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  height: 90px;
+  height: 120px;
 }
 
 .logo {
   height: 50px;
-  margin-left: 100px;
+  margin-left: 115px;
 }
 
 header h1 {
   color: #901C1C;
-  margin-right: 100px;
+  margin-right: 140px;
 }
 
 /** IMPORT PHOTOGRAPHERS CARDS **/
-.photographer_cards {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  gap: 70px;
-  margin-top: 100px;
-}
-
-.photographer_cards article {
-  justify-self: center;
+.photographer-card {
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
-  flex-direction: column;
+  justify-self: center;
 }
 
-.photographer_cards article h2 {
+.photographer-card img {
+  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.25);
+  height: 200px;
+  width: 200px;
+  border-radius: 50%;
+}
+
+h2,
+h3,
+h4,
+h5 {
+  font-family: "DM Sans", sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  text-align: center;
+}
+
+.photographer-card h2 {
+  margin-top: 20px;
   color: #D3573C;
   font-size: 36px;
 }
 
-.photographer_cards article img {
-  height: 200px;
-  width: 200px;
+.photographer-card h3 {
+  font-size: 13px;
+  line-height: 17px;
+  color: #901C1C;
+}
+
+.photographer-card h4 {
+  margin-top: 2px;
+  font-size: 10px;
+  line-height: 13px;
+  color: #000000;
+}
+
+.photographer-card h5 {
+  margin-top: 2px;
+  font-size: 9px;
+  line-height: 12px;
+  text-align: center;
+  color: #757575;
 }
 
 /** IMPORT MODAL COMPONENT **/
@@ -94,7 +126,7 @@ form {
 }
 
 form label {
-  color: #312E2E;
+  color: #525252;
   font-size: 36px;
 }
 
@@ -128,6 +160,13 @@ form input {
 }
 
 /** IMPORT PAGES (other) Styles **/
+.photographer_section {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 70px;
+  margin-top: 75px;
+}
+
 #contact_modal {
   display: none;
 }

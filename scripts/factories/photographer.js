@@ -23,7 +23,7 @@ function photographerFactory(data) {
         // Create DOM only if we got a picture a id and a name
         if (name && id && portrait) {
             const article = document.createElement('article');
-
+            article.setAttribute("class","photographer-card");
 
             article.appendChild(buildElement("img", picture));
             article.appendChild(buildElement("h2", name));

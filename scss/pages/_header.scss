@@ -1,17 +1,14 @@
 header {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-    height: 90px;
+    @include flex-basic(row,null,null,space-between,center);
+    height: 120px;
 }
 
 .logo {
     height: 50px;
-    margin-left: 100px;
+    margin-left: 115px;
 }
 
 header h1 {
-    color: #901C1C;
-    margin-right: 100px;
+    color: $color_primary1;
+    margin-right: 140px;
 }

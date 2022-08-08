@@ -1,10 +1,19 @@
+//// MAIN PAGE /// 
+.photographer_section {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 70px;
+    margin-top: 75px;
+}
+///// END MAIN PAGE // 
+
 //////////////// PHOTOGRAPHER PAGE /////// 
 #contact_modal {
     display: none;
 }
 
 .photograph-header {
-    background-color: #FAFAFA;
+    background-color: $color_secondary2_bg;
     height: 300px;
     margin: 0 100px;
 }
