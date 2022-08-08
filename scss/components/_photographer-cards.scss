@@ -1,0 +1,25 @@
+.photographer_cards {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 70px;
+    margin-top: 100px;
+}
+
+.photographer_cards article {
+    justify-self: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.photographer_cards article h2 {
+    color: #D3573C;
+    font-size: 36px;
+}
+
+
+.photographer_cards article img {
+    height: 200px;
+    width: 200px;
+}
