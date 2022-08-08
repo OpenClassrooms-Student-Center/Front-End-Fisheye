@@ -1,29 +1,6 @@
-#contact_modal {
-    display: none;
-}
-
-.photograph-header {
-    background-color: #FAFAFA;
-    height: 300px;
-    margin: 0 100px;
-}
-
-.contact_button {
-    font-size: 20px;
-    font-weight: bold;
-    color: white;
-    padding: 11px;
-    width: 170px;
-    height: 70px;
-    border: none;
-    background-color: #901C1C;
-    border-radius: 5px;
-    cursor: pointer;
-}
-
 .modal {
     border-radius: 5px;
-    background-color: #DB8876;
+    background-color: $color_background;
     width: 50%;
     display: flex;
     flex-direction: column;
@@ -56,7 +33,7 @@ form {
 }
 
 form label {
-    color: #312E2E;
+    color: $color_secondary2;
     font-size: 36px;
 }
 

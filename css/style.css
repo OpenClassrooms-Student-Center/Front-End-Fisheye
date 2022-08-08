@@ -1,50 +1,189 @@
-@import url("photographer.css");
+/** Used to load all variables for this project about SCSS **/
+/** FONT **/
+/** END FONT **/
+/** COLOR VARIABLES **/
+/** END COLOR VARIABLES **/
+/** IMPORT GLOBAL CSS FOR FONTS HTML,* SELECTOR **/
+/********************** GENERAL **********************/
+html,
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 
 body {
-    font-family: "DM Sans", sans-serif;
-    margin: 0;
+  font-family: "DM Sans", sans-serif;
 }
 
-
+/********************** END GENERAL **********************/
+/** IMPORT MIXIN **/
+/** IMPORT HEADER STYLES **/
 header {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-    height: 90px;
-}
-
-h1 {
-    color: #901C1C;
-    margin-right: 100px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  height: 120px;
 }
 
 .logo {
-    height: 50px;
-    margin-left: 100px;
+  height: 50px;
+  margin-left: 115px;
 }
 
+header h1 {
+  color: #901C1C;
+  margin-right: 140px;
+}
+
+/** IMPORT PHOTOGRAPHERS CARDS **/
+.photographer-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  justify-self: center;
+}
+
+.photographer-card img {
+  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.25);
+  height: 200px;
+  width: 200px;
+  border-radius: 50%;
+}
+
+h2,
+h3,
+h4,
+h5 {
+  font-family: "DM Sans", sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  text-align: center;
+}
+
+.photographer-card h2 {
+  margin-top: 20px;
+  color: #D3573C;
+  font-size: 36px;
+}
+
+.photographer-card h3 {
+  font-size: 13px;
+  line-height: 17px;
+  color: #901C1C;
+}
+
+.photographer-card h4 {
+  margin-top: 2px;
+  font-size: 10px;
+  line-height: 13px;
+  color: #000000;
+}
+
+.photographer-card h5 {
+  margin-top: 2px;
+  font-size: 9px;
+  line-height: 12px;
+  text-align: center;
+  color: #757575;
+}
+
+/** IMPORT MODAL COMPONENT **/
+.modal {
+  border-radius: 5px;
+  background-color: #DB8876;
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  padding: 35px;
+  margin: auto;
+}
+
+.modal header {
+  justify-content: space-between;
+  width: 100%;
+}
+
+.modal header img {
+  cursor: pointer;
+}
+
+.modal header h2 {
+  font-size: 64px;
+  font-weight: normal;
+  text-align: center;
+}
+
+form {
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+form label {
+  color: #525252;
+  font-size: 36px;
+}
+
+form div {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  align-items: self-start;
+  margin-bottom: 26px;
+}
+
+form input {
+  width: 100%;
+  height: 68px;
+  border: none;
+  border-radius: 5px;
+}
+
+/** IMPORT CONTACT BUTTON COMPONENT **/
+.contact_button {
+  font-size: 20px;
+  font-weight: bold;
+  color: white;
+  padding: 11px;
+  width: 170px;
+  height: 70px;
+  border: none;
+  background-color: #901C1C;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+/** IMPORT PAGES (other) Styles **/
 .photographer_section {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    gap: 70px;
-    margin-top: 100px;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 70px;
+  margin-top: 75px;
+  margin-bottom: 75px;
 }
 
-.photographer_section article {
-    justify-self: center;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
+#contact_modal {
+  display: none;
 }
 
-.photographer_section article h2 {
-    color: #D3573C;
-    font-size: 36px;
+.photograph-header {
+  background-color: #FAFAFA;
+  height: 300px;
+  margin: 0 100px;
 }
 
-.photographer_section article img {
-    height: 200px;
-    width: 200px;
+/** IMPORT FOOTER STYLES **/
+footer {
+  height: 2px;
+  width: 100%;
+  background-color: white;
+  margin-top: 75px;
 }
+
+/*# sourceMappingURL=style.css.map */

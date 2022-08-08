@@ -1,0 +1,18 @@
+/** Used to load all variables for this project about SCSS **/ 
+@import "_variables.scss";
+/** IMPORT GLOBAL CSS FOR FONTS HTML,* SELECTOR **/
+@import "_global.scss";
+/** IMPORT MIXIN **/ 
+@import "_mixin.scss"; 
+/** IMPORT HEADER STYLES **/
+@import "pages/_header.scss";
+/** IMPORT PHOTOGRAPHERS CARDS **/ 
+@import "components/_photographer-cards.scss"; 
+/** IMPORT MODAL COMPONENT **/ 
+@import "components/_modal.scss"; 
+/** IMPORT CONTACT BUTTON COMPONENT **/
+@import "components/_contact-button.scss";
+/** IMPORT PAGES (other) Styles **/ 
+@import "pages/_pages.scss";
+/** IMPORT FOOTER STYLES **/ 
+@import "pages/_footer.scss"; 
