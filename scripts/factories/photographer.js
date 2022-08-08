@@ -35,7 +35,7 @@ function photographerFactory(data) {
                 article.appendChild(buildElement("h4", tagline));
             }
             if (price) {
-                article.appendChild(buildElement("h5", price));
+                article.appendChild(buildElement("h5", price + "€"));
             }
 
             return (article);
