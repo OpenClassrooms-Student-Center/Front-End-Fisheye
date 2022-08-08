@@ -1,0 +1,39 @@
+@mixin flex-basic($flex-direction,
+  $flex-wrap,
+  $align-content,
+  $justify-content,
+  $align-items) {
+  display: flex;
+  flex-direction: $flex-direction;
+
+  @if ($flex-wrap) {
+    flex-wrap: $flex-wrap;
+  }
+
+  @if ($align-content) {
+    align-content: $align-content;
+  }
+
+  @if ($justify-content) {
+    justify-content: $justify-content;
+  }
+
+  @if ($align-items) {
+    align-items: $align-items;
+  }
+}
+
+// @mixin mask-crossbrowser($value) {
+//   -webkit-mask: $value;
+//   mask: $value;
+// }
+
+// @mixin margin-left-and-right($value) {
+//   margin-left: $value;
+//   margin-right: $value;
+// }
+
+// @mixin padding-left-and-right($value) {
+//   padding-left: $value;
+//   padding-right: $value;
+// }
