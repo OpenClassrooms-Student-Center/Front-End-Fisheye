@@ -121,12 +121,12 @@
     border-radius: 5px;
     background-color: #DB8876;
     width: 50%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: space-between;
     padding: 35px;
-    margin: auto;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    height: 80%;
 }
 
 .modal header {
@@ -142,6 +142,7 @@
     font-size: 64px;
     font-weight: normal;
     text-align: center;
+    margin: 0;
 }
 
 form {
@@ -153,7 +154,7 @@ form {
 
 form label {
     color: #312E2E;
-    font-size: 36px;
+    font-size: 26px;
 }
 
 form div {
@@ -166,7 +167,14 @@ form div {
 
 form input {
     width: 100%;
-    height: 68px;
+    height: 30px;
+    border: none;
+    border-radius: 5px;
+}
+
+form textarea {
+    width: 100%;
+    height: 150px;
     border: none;
     border-radius: 5px;
 }
