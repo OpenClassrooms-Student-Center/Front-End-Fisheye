@@ -1,0 +1,25 @@
+{
+  "name": "oc-projet-6",
+  "version": "1.0.0",
+  "description": "Projet 6 - Créez un site accessible pour une plateforme de photographes",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/werner94fribourg/oc-projet-6.git"
+  },
+  "keywords": [
+    "projet",
+    "6",
+    "openclassrooms",
+    "fisheye"
+  ],
+  "author": "Werner Schmid",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/werner94fribourg/oc-projet-6/issues"
+  },
+  "homepage": "https://github.com/werner94fribourg/oc-projet-6#readme"
+}
