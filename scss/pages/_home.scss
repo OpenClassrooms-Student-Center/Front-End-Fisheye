@@ -1,0 +1,8 @@
+.main {
+  &__photographer-list {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 7rem;
+    margin-top: 10rem;
+  }
+}

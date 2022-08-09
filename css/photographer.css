@@ -1,76 +1,72 @@
-#contact_modal {
-    display: none;
+.main__photograph-infos {
+  background-color: #fafafa;
+  height: 30rem;
+  margin: 0 10rem;
 }
 
-.photograph-header {
-    background-color: #FAFAFA;
-    height: 300px;
-    margin: 0 100px;
+.btn {
+  font-size: 2rem;
+  font-weight: bold;
+  color: white;
+  padding: 1.1rem;
+  width: 17rem;
+  height: 7rem;
+  border: none;
+  background-color: #901c1c;
+  border-radius: 0.5rem;
+  cursor: pointer;
 }
 
-.contact_button {
-    font-size: 20px;
-    font-weight: bold;
-    color: white;
-    padding: 11px;
-    width: 170px;
-    height: 70px;
-    border: none;
-    background-color: #901C1C;
-    border-radius: 5px;
-    cursor: pointer;
+.form-modal {
+  border-radius: 0.5rem;
+  background-color: #db8876;
+  width: 50%;
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  padding: 3.5rem;
+  margin: auto;
 }
 
-.modal {
-    border-radius: 5px;
-    background-color: #DB8876;
-    width: 50%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: space-between;
-    padding: 35px;
-    margin: auto;
+.form-modal__header {
+  justify-content: space-between;
+  width: 100%;
 }
 
-.modal header {
-    justify-content: space-between;
-    width: 100%;
+.form-modal__close-btn {
+  cursor: pointer;
 }
 
-.modal header img {
-    cursor: pointer;
+.form-modal__title {
+  font-size: 6.4rem;
+  font-weight: normal;
+  text-align: center;
 }
 
-.modal header h2 {
-    font-size: 64px;
-    font-weight: normal;
-    text-align: center;
+.form-modal__form {
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  align-items: flex-start;
 }
 
-form {
-    display: flex;
-    width: 100%;
-    flex-direction: column;
-    align-items: flex-start;
+.form-modal__input {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  align-items: self-start;
+  margin-bottom: 2.6rem;
 }
 
-form label {
-    color: #312E2E;
-    font-size: 36px;
+.form-modal__input-label {
+  color: #312e2e;
+  font-size: 3.6rem;
 }
 
-form div {
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-    align-items: self-start;
-    margin-bottom: 26px;
-}
-
-form input {
-    width: 100%;
-    height: 68px;
-    border: none;
-    border-radius: 5px;
+.form-modal__input-field--text {
+  width: 100%;
+  height: 6.8rem;
+  border: none;
+  border-radius: 0.5rem;
 }
