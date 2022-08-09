@@ -1,0 +1,17 @@
+* {
+  box-sizing: inherit;
+  &::after,
+  &::before {
+    box-sizing: inherit;
+  }
+}
+
+html {
+  font-size: 62.5%; // 1rem : 10px since 10px/16px = 0.625
+}
+
+body {
+  box-sizing: border-box; // set all base box-sizing to border-box unless we redefine it
+  font-family: "DM Sans", sans-serif;
+  margin: 0;
+}

@@ -1,0 +1,15 @@
+.card {
+  &__link:visited,
+  &__link:link {
+    text-decoration: none;
+    color: inherit;
+  }
+  &__name {
+    color: var(--color-secondary);
+    font-size: 3.6rem;
+  }
+  &__portrait {
+    height: 20rem;
+    width: 20rem;
+  }
+}
