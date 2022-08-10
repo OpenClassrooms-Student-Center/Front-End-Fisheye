@@ -1,1 +1,11 @@
-//Mettre le code JavaScript lié à la page photographer.html
+
+async function getUrlParameter(parameter) {
+    const fullurl = windows.location.search;
+    console.log(fullurl);
+
+}
+async function init() {
+}
+
+
+init(); 
