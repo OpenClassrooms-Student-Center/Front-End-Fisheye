@@ -31,7 +31,7 @@
           <img src="assets/icons/close.svg" id="close_btn" />
         </header>
         <form>
-          <h3>Mimi Keel</h3>
+          <h3 id="modal_photographer_name"><!--Mimi Keel--></h3>
           <div>
             <label>Prénom</label><br />
             <input
@@ -87,28 +87,31 @@
               >Votre texte doit être inférieur à 1000 caractères</span
             >
           </div>
-          <button class="contact_button" id="submit_button">Envoyer</button>
+          <button class="contact_button modal_button" id="submit_button">
+            Envoyer
+          </button>
         </form>
       </div>
     </div>
 
     <!--  Main avec profil du photographe -->
     <main id="main">
-      
       <div id="header_profil">
         <h1 id="header_photographer_name"><!-- Mimi Keel--></h1>
         <button class="contact_button" id="contact_button">
           Contactez-moi
-        </button> 
-        <img
-          class="picture_profil"
-          id="photographer_picture"
-        />
+        </button>
+        <img class="picture_profil" id="photographer_picture" />
       </div>
       <div class="text">
-        <p class="header_title_text city_country_flex" id="photographer_city"><!-- London-->, <!--UK--></p>
-        <p class="header_text" id="photographer_tagline"><!-- Voir le beau dans le quotidien --></p>
-      </div>  
+        <p class="header_title_text city_country_flex" id="photographer_city">
+          <!-- London-->,
+          <!--UK-->
+        </p>
+        <p class="header_text" id="photographer_tagline">
+          <!-- Voir le beau dans le quotidien -->
+        </p>
+      </div>
 
       <!--  Texte statique bord de page -->
       <div class="text_border_right">
@@ -121,27 +124,30 @@
 
       <!--  Select label -->
       <div class="photo_select">
-        <label for="photo_select"><strong>Trier par</strong></label>
+        <div class="photo_select"><strong>Trier par</strong></div>
         <div class="div_select">
-          <button data-order="popularity" class="option border_bottom">Popularité<span class="arrow arrow_up"></span></button>
-          <button data-order="date" class="option border_bottom">Date</button>
-          <button data-order="title" class="option">Titre</button>
+          <button data-order="popularity" class="option" id="popularity_option">
+            Popularité<span class="arrow arrow_up"></span>
+          </button>
+          <button data-order="date" class="option hidden_option" id="date_option">Date</button>
+          <button data-order="title" class="option hidden_option" id="title_option">Titre</button>
         </div>
       </div>
 
       <!--  Galerie Photos -->
       <section class="photo_gallery">
+        <!-- 
         <a href="#" alt="Lilac breasted roller, closeup view">
           <img
             src="assets/Photo_photographer/Mimi/Animals_Rainbow.jpg"
             alt="Animal Rainbow"
             class="photography"
           />
-          <div class="photo_description">
-            <span class="photo_title">Arc-en-ciel</span>
-            <div class="photo_like_div">
-              <span class="photo_like_number">11</span>
-              <i class="fa-regular fa-heart photo_like"></i>
+          <div class="media_description">
+            <span class="media_title">Arc-en-ciel</span>
+              <div class="media_like_div">
+              <span class="media_like_number">11</span>
+              <i class="fa-regular fa-heart media_like"></i>
             </div>
           </div>
         </a>
@@ -152,11 +158,11 @@
             alt="Travel Lonesome"
             class="photography"
           />
-          <div class="photo_description">
-            <span class="photo_title">Solitude</span>
-            <div class="photo_like_div">
-              <span class="photo_like_number">12</span>
-              <i class="fa-regular fa-heart photo_like"></i>
+          <div class="media_description">
+            <span class="media_title">Solitude</span>
+            <div class="media_like_div">
+              <span class="media_like_number">12</span>
+              <i class="fa-regular fa-heart media_like"></i>
             </div>
           </div>
         </a>
@@ -167,11 +173,11 @@
             alt="Event Seaside Wedding"
             class="photography"
           />
-          <div class="photo_description">
-            <span class="photo_title">Mariage à la mer</span>
-            <div class="photo_like_div">
-              <span class="photo_like_number">12</span>
-              <i class="fa-regular fa-heart photo_like"></i>
+          <div class="media_description">
+            <span class="media_title">Mariage à la mer</span>
+            <div class="media_like_div">
+              <span class="media_like_number">12</span>
+              <i class="fa-regular fa-heart media_like"></i>
             </div>
           </div>
         </a>
@@ -182,11 +188,11 @@
             alt="Portrait Background"
             class="photography"
           />
-          <div class="photo_description">
-            <span class="photo_title">Portrait noir & blanc</span>
-            <div class="photo_like_div">
-              <span class="photo_like_number">11</span>
-              <i class="fa-regular fa-heart photo_like"></i>
+          <div class="media_description">
+            <span class="media_title">Portrait noir & blanc</span>
+            <div class="media_like_div">
+              <span class="media_like_number">11</span>
+              <i class="fa-regular fa-heart media_like"></i>
             </div>
           </div>
         </a>
@@ -197,11 +203,11 @@
             alt="Event Pinto Wedding"
             class="photography"
           />
-          <div class="photo_description">
-            <span class="photo_title">Mariage Pinto</span>
-            <div class="photo_like_div">
-              <span class="photo_like_number">11</span>
-              <i class="fa-regular fa-heart photo_like"></i>
+          <div class="media_description">
+            <span class="media_title">Mariage Pinto</span>
+            <div class="media_like_div">
+              <span class="media_like_number">11</span>
+              <i class="fa-regular fa-heart media_like"></i>
             </div>
           </div>
         </a>
@@ -212,14 +218,14 @@
             alt="Portrait Wednesday"
             class="photography"
           />
-          <div class="photo_description">
-            <span class="photo_title">Portrait Wednesday</span>
-            <div class="photo_like_div">
-              <span class="photo_like_number">11</span>
-              <i class="fa-regular fa-heart photo_like"></i>
+          <div class="media_description">
+            <span class="media_title">Portrait Wednesday</span>
+            <div class="media_like_div">
+              <span class="media_like_number">11</span>
+              <i class="fa-regular fa-heart media_like"></i>
             </div>
           </div>
-        </a>
+        </a>-->
       </section>
     </main>
 

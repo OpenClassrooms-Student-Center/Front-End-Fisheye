@@ -4,7 +4,7 @@ modalBtn.addEventListener("click", displayModal);
 function displayModal() {
   const modal = document.getElementById("contact_modal");
   modal.style.display = "block";
-}
+} 
 
 // close modal
 const modalCloseBtn = document.getElementById("close_btn");
