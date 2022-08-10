@@ -63,6 +63,3 @@ function photographerFactory(data) {
     return { name, picture, getUserCardDOM }
 }
 
-function movieFactory(data) {
-
-}
