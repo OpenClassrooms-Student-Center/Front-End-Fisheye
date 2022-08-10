@@ -1,11 +1,12 @@
 
 async function getUrlParameter(parameter) {
-    const fullurl = windows.location.search;
+    const fullurl = window.location.href;
     console.log(fullurl);
 
 }
 async function init() {
+    const test = await getUrlParameter("id");
 }
 
 
-init(); 
+init();

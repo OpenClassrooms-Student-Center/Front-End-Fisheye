@@ -14,6 +14,7 @@ function photographerFactory(data) {
         // Create balise 
         const element = document.createElement(balise);
 
+        // Set Attribute or TextContened depend of balise
         switch (balise) {
             case "a":
                 element.setAttribute("href", value);

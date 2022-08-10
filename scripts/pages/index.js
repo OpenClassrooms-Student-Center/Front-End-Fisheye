@@ -43,4 +43,6 @@ async function init() {
 
 };
 
+
+// DOCUMENT onload wait for HTML be loaded instead of windows.load which including CSS, images
 init();
