@@ -1,8 +1,9 @@
 //Mettre le code JavaScript lié à la page photographer.html
 let photographer = {}; //objet pour stocker le photographe
 let medias = []; //tableau pour stocker les médias
-let totalLikes = [];
-let sumLikes = [];
+let totalLikes = []; // sotcke les likes
+let sumLikes = []; //stocke la somme des likes
+
 async function getPhotographerAndMedia() {
   //récupérer l'id passé dans la page
   let str = window.location.href;
@@ -25,15 +26,17 @@ async function getPhotographerAndMedia() {
         
         return id === element.photographerId;
       });
-      likes = medias.filter(function (like) { //stockage des likes dans le tableau totalLikes
-        //console.log(like.likes)
+      medias.filter(function (like) { //stockage des likes dans le tableau totalLikes
+        //console.log(likes)
         return totalLikes.push(like.likes)
       })
+      
       sumLikes = totalLikes.reduce(function (a,b) { //function qui additionne les likes
         return (a + b);
         }, 0)
    
      });
+     
 }
 
 const displayPhotographerAndMedia = async () => {
@@ -47,10 +50,33 @@ const displayPhotographerAndMedia = async () => {
     )
     .join("");
     document.querySelector(".total-likes").innerHTML = `<div class="flex">${sumLikes} <i class="fa-solid fa-heart"></i> ${photographer.price}€ / jour</div>`; //affiche le nombre de likes
+    likeUpdate();
+    
+    
 };
+function likeUpdate() {
+    let selectLikes = document.querySelectorAll(".toggle-off");
+    //console.log(selectLikes);
+    selectLikes.forEach(element => {
+        console.log(element);
+        element.onclick = function (event) {
+            console.log(event.target.dataset.id)
+            let id = parseInt(event.target.dataset.id);
+            medias.forEach((media) => {
+                if(media.id === id) { //on ompare l'id d'element et celui de media.id
+                    
+                    console.log("media id = " + media.id)
+                    media.likes ++;
+                    document.querySelector(`#id-${id} span`).innerText = media.likes;
+                }
+            })
+        }
+    })  
+}
 
 
 
 displayPhotographerAndMedia();
 
 getPhotographerAndMedia();
+

@@ -8,14 +8,17 @@ function mediaFactory(data) {
         }
       }
     function getMediaCard() {
-        return `<div id="${data.id}">
+        return `<div id="id-${data.id}">
         ${getmedia(data)}
         <div class="flex">
         <h3>${data.title}</h3>
-        <h4>${data.likes} <i class="fa-solid fa-heart"></i></h4>
+        <h4><span>${data.likes}</span> <i class="fa-solid fa-heart toggle-off" data-id="${data.id}"></i></h4>
         </div>
         </div>`
+         
     }
    
-    return {getMediaCard}
+
+    return {getMediaCard, likeUpdate}
 }
+
