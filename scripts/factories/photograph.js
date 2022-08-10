@@ -5,7 +5,7 @@ function photographFactory(media, photographer) {
     const photographerHeader = document.querySelector(".photograph-header");
     const main = document.querySelector("#main");
 
-    // Header Card
+    // Header Card Photographer
     const headerDetails = document.createElement( 'div' );
     headerDetails.setAttribute("class", "photograph-header-details")
     const elementName = document.createElement( 'h1' );
@@ -30,17 +30,45 @@ function photographFactory(media, photographer) {
     media.map((value) => {
         countLikes = countLikes + value.likes
     })
-    
     const insertDiv = document.createElement('div')
     insertDiv.setAttribute("class", "insert-like-price")
     const elementLike = document.createElement("p");
     elementLike.textContent = `${countLikes} 🖤`;
     const elementPrice = document.createElement("p");
     elementPrice.textContent = `${price}€ / jour`;
-
     main.appendChild(insertDiv);
     insertDiv.appendChild(elementLike);
     insertDiv.appendChild(elementPrice);
+
+    // Modal
+    const modalName = document.querySelector("#photograph-name");
+    modalName.textContent = name;
+    const form = document.getElementById("form");
+    const formData = [...document.querySelectorAll("div.formData > input, textarea")];
+
+    let submitForm = (e) => {
+        e.preventDefault();
+        
+        let data = [];
+        const getValue = name => e.target[name].value;
+        formData.map((input) => {
+            const value = getValue(input.name)
+            if (value.length > 3) {
+                data.push({
+                    name: input.name,
+                    value
+                })
+            }
+        })
+        
+        if (data.length === formData.length) {
+            console.log(data);
+            formData.map((input) => {
+                input.value = '';
+            })
+        }
+    }
+    form.addEventListener('submit', submitForm);
 }
 
 function imgFactory(media){

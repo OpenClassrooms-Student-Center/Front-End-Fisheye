@@ -4,7 +4,7 @@
 
 .photograph-header {
     background-color: #FAFAFA;
-    height: 300px;
+    height: auto;
     margin: 0 100px;
     display: flex;
 }
@@ -88,6 +88,10 @@
     margin: 40px 100px;
 }
 
+.sort-list-img{
+    margin-bottom: 25px;
+}
+
 .list-img{
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -120,13 +124,12 @@
 .modal {
     border-radius: 5px;
     background-color: #DB8876;
-    width: 50%;
+    width: 30%;
     padding: 35px;
     position: fixed;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    height: 80%;
 }
 
 .modal header {
@@ -139,10 +142,13 @@
 }
 
 .modal header h2 {
-    font-size: 64px;
+    font-size: 40px;
     font-weight: normal;
-    text-align: center;
     margin: 0;
+}
+
+.header-modal-title{
+    display: block;
 }
 
 form {
@@ -150,6 +156,7 @@ form {
     width: 100%;
     flex-direction: column;
     align-items: flex-start;
+    margin-top: 30px;
 }
 
 form label {
@@ -177,4 +184,38 @@ form textarea {
     height: 150px;
     border: none;
     border-radius: 5px;
+}
+
+@media screen and (max-width: 1200px) {
+    .list-img { 
+        grid-template-columns: repeat(2, 1fr); 
+    }
+}
+
+@media screen and (max-width: 830px) {
+    .list-img { 
+        grid-template-columns: repeat(1, 1fr); 
+    }
+    .insert-like-price{
+        width: 26%;
+        left: 70vw;
+    }
+    .photograph-header{
+        flex-direction: column;
+    }
+    .photograph-header-details{
+        align-items: center;
+        padding: 0;
+        margin-bottom: 30px;
+    }
+    .photograph-header-contact{
+        align-items: center;
+        padding: 0;
+        margin-bottom: 30px;
+    }
+    .photograph-header-avatar{
+        align-items: center;
+        padding: 0;
+        margin-bottom: 30px;
+    }
 }

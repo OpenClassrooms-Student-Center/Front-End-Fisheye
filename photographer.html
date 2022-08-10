@@ -17,26 +17,36 @@
         </div>
       </div>
       <div class="photograph-main">
+        <div class="sort-list-img">
+          <label for="sortImg">Trier par</label>
+          <select name="sortImg" id="sortImg">
+            <option value="popularity">Popularité</option>
+            <option value="date">Date</option>
+            <option value="title">Titre</option>
+          </select>
+        </div>
         <div class="list-img"></div>
-
       </div>
     </main>
     <div id="contact_modal">
 			<div class="modal">
 				<header>
-          <h2>Contactez-moi</h2>
+          <div class="header-modal-title">
+            <h2>Contactez-moi</h2>
+            <h2 id="photograph-name"></h2>
+          </div>
           <img src="assets/icons/close.svg" onclick="closeModal()" />
         </header>
-				<form>
-					<div>
+				<form id="form">
+					<div class="formData">
 						<label for="firstName">Prénom</label>
-						<input type="text" name="firstName"/>
+						<input type="text" name="firstName" id="firstName" minlength="3"/>
             <label for="lastName">Nom</label>
-						<input type="text" name="lastName"/>
+						<input type="text" name="lastName" id="lastName" minlength="3"/>
             <label for="email">Email</label>
-						<input type="text" name="email"/>
+						<input type="email" name="email" id="email" minlength="3"/>
             <label for="messafe">Votre message</label>
-						<textarea name="message" id="" rows="10"></textarea>
+						<textarea name="message" name="message" id="" rows="10" minlength="10"></textarea>
 					</div>
           <button class="contact_button">Envoyer</button>
 				</form>
