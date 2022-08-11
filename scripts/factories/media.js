@@ -12,7 +12,7 @@ function mediaFactory(data) {
         ${getmedia(data)}
         <div class="flex">
         <h3>${data.title}</h3>
-        <h4><span>${data.likes}</span> <i class="fa-solid fa-heart toggle-off like" data-id="${data.id}"></i></h4>
+        <h4><span>${data.likes}</span> <i class="fa-solid fa-heart off like" data-id="${data.id}"></i></h4>
         </div>
         </div>`
          

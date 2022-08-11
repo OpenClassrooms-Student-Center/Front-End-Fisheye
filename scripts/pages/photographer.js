@@ -51,36 +51,36 @@ const displayPhotographerAndMedia = async () => {
     
 };
 function likeUpdate() {
-    let selectLikes = document.querySelectorAll(".toggle-off");
+    let selectLikes = document.querySelectorAll(".off");
     //console.log(selectLikes);
     selectLikes.forEach(element => {
-        console.log(element);
+        //console.log(element);
         element.onclick = function (event) {
             
             console.log(event.target.dataset)
             let id = parseInt(event.target.dataset.id);
             
-            if(event.target.classList.contains("toggle-off")){//on compare s'il y a la classe toggle-off, si oui on incrémente et on enleve toggle-off, et on rajoute toggle-on
+            if(event.target.classList.contains("off")){//on compare s'il y a la classe off, si oui on incrémente et on enleve off, et on rajoute on
                 medias.forEach((media) => {
                     if(media.id === id) { //on compare l'id d'element et celui de media.id
                         media.likes ++;
-                        document.querySelector(`#id-${id} span`).innerText = media.likes;
-                        sumLikes++;
-                        document.querySelector(".total-likes").innerHTML = `<div class="flex">${sumLikes} <i class="fa-solid fa-heart"></i> ${photographer.price}€ / jour</div>`;
-                        event.target.classList.remove("toggle-off");
-                        event.target.classList.add("toggle-on");
+                        document.querySelector(`#id-${id} span`).innerText = media.likes;//on update le like
+                        sumLikes++;//on rajoute 1 à la somme des likes
+                        document.querySelector(".total-likes").innerHTML = `<div class="flex">${sumLikes} <i class="fa-solid fa-heart"></i> ${photographer.price}€ / jour</div>`;//on re affiche le total des likes mis à jour
+                        event.target.classList.remove("off");
+                        event.target.classList.add("on");
                     }
                 })
             }
-            else if(event.target.classList.contains("toggle-on")) { // on compare s'il y a la class toggle-on, si oui, on diminue de 1 et on enleve toggle-on et on remplace par toggle-off
+            else if(event.target.classList.contains("on")) { // on compare s'il y a la class on, si oui, on diminue de 1 et on enleve on et on remplace par off
                 medias.forEach((media) => {
                     if(media.id === id) { //on compare l'id d'element et celui de media.id
                         media.likes --;
-                        document.querySelector(`#id-${id} span`).innerText = media.likes;
-                        sumLikes--;
-                        document.querySelector(".total-likes").innerHTML = `<div class="flex">${sumLikes} <i class="fa-solid fa-heart"></i> ${photographer.price}€ / jour</div>`;
-                        event.target.classList.add("toggle-off");
-                        event.target.classList.remove("toggle-on");
+                        document.querySelector(`#id-${id} span`).innerText = media.likes;//on update le like
+                        sumLikes--;//on soustrait 1 à la somme des likes
+                        document.querySelector(".total-likes").innerHTML = `<div class="flex">${sumLikes} <i class="fa-solid fa-heart"></i> ${photographer.price}€ / jour</div>`;//on re affiche le total des likes mis à jour
+                        event.target.classList.add("off");
+                        event.target.classList.remove("on");
                     }
                 })
             }

@@ -32,21 +32,61 @@
         <div class="photos"></div>
         <div class="total-likes"></div>
     </main>
-    <div id="contact_modal">
-			<div class="modal">
-				<header>
-          <h2>Contactez-moi</h2>
-          <img src="assets/icons/close.svg" onclick="closeModal()" />
+    <div id="contact_modal" tabindex="-1" aria-hidden="true" role="dialog" aria-modal="true">
+      <div class="modal">
+        <header aria-labelledby="h2Contact">
+          <h2 id="h2Contact">Contactez-moi</h2>
+          <img src="assets/icons/close.svg" onclick="closeModal()" id="closeForm" tabindex="0" alt="Bouton de fermeture"/>
         </header>
-				<form>
-					<div>
-						<label>Prénom</label>
-						<input />
-					</div>
-          <button class="contact_button">Envoyer</button>
-				</form>
-			</div>
-		</div>
+        <form id="formContact">
+          <div>
+            <div class="divField" id="divFirstname">
+              <label id="labelFirst">Prénom</label>
+              <input 
+              aria-labelledby="labelFirst" 
+              type="text" 
+              id="inputFirstname" 
+              name = "Prénom"
+              minlength="2" 
+              required/>
+            </div>          
+            
+            <div class="divField" id="divLastname">
+              <label id="labelName">Nom</label>
+              <input 
+              aria-labelledby="labelName" 
+              type="text" 
+              id="inputLastname"
+              name = "Nom"
+              minlength="2"
+              required/>
+            </div>          
+            
+            <div class="divField" id="divEmail">
+              <label id="labelEmail">Email</label>
+              <input 
+              aria-labelledby="labelEmail" 
+              type="email" 
+              name = "Email"
+              id="inputEmail"
+              required/>
+            </div>
+  
+            <div class="divField" id="divMessage">
+              <label id="labelMessage">Votre Message</label>
+              <textarea class="inputMessage" 
+              aria-labelledby="labelMessage" 
+              minlength="5" 
+              name = "Message"
+              id="inputMessage"
+              required></textarea>
+            </div>
+                      
+          </div>
+          <button class="contact_button" id="submitContact">Envoyer</button>
+        </form>
+      </div>
+    </div>
     <script src="scripts/factories/Photographer.js"></script>
     <script src="/scripts/utils/contactForm.js"></script>
     <!--<script src="scripts/pages/index.js"></script>
