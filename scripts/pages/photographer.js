@@ -26,11 +26,8 @@ async function getPhotographerAndMedia() {
         
         return id === element.photographerId;
       });
-      medias.filter(function (like) { //stockage des likes dans le tableau totalLikes
-        //console.log(likes)
-        return totalLikes.push(like.likes)
-      })
       
+      totalLikes = medias.map((media) => {return media.likes})//boucle pour mettre les likes dans totalLikes
       sumLikes = totalLikes.reduce(function (a,b) { //function qui additionne les likes
         return (a + b);
         }, 0)
@@ -59,6 +56,7 @@ function likeUpdate() {
     selectLikes.forEach(element => {
         console.log(element);
         element.onclick = function (event) {
+            
             console.log(event.target.dataset)
             let id = parseInt(event.target.dataset.id);
             
@@ -86,7 +84,7 @@ function likeUpdate() {
                     }
                 })
             }
-
+            
             
         }
     })  

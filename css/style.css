@@ -154,8 +154,15 @@ h1 {
     font-family: 'Raleway', sans-serif;
     list-style-type: none;
 }
+.sort {
+    justify-self: center;
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+}
 .sort-ul {
     width: 170px;
+    
    
 }
 .sort-li {

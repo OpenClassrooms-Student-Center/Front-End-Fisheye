@@ -17,8 +17,7 @@ function mediaFactory(data) {
         </div>`
          
     }
-   
-
+    
     return {getMediaCard, likeUpdate}
 }
 
