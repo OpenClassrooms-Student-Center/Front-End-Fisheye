@@ -10,7 +10,7 @@
     <header>
       <a href="/"><img src="assets/images/logo.png" class="logo"/></a>
     </header>
-    <main id="main">
+    <main id="main" aria-hidden="false">
       <div class="photograph-header">
         <div class="photograph-header-contact">
           <button class="contact_button" onclick="displayModal()">Contactez-moi</button>
@@ -29,24 +29,24 @@
       </div>
     </main>
     <div id="contact_modal">
-			<div class="modal">
+			<div class="modal" tabindex="-1" aria-labelledby="dialog contact">
 				<header>
           <div class="header-modal-title">
             <h2>Contactez-moi</h2>
             <h2 id="photograph-name"></h2>
           </div>
-          <img src="assets/icons/close.svg" onclick="closeModal()" />
+          <img src="assets/icons/close.svg" onclick="closeModal()" id="close"/>
         </header>
 				<form id="form">
 					<div class="formData">
 						<label for="firstName">Prénom</label>
-						<input type="text" name="firstName" id="firstName" minlength="3"/>
+						<input type="text" name="firstName" id="firstName" minlength="3" required/>
             <label for="lastName">Nom</label>
-						<input type="text" name="lastName" id="lastName" minlength="3"/>
+						<input type="text" name="lastName" id="lastName" minlength="3" required/>
             <label for="email">Email</label>
-						<input type="email" name="email" id="email" minlength="3"/>
+						<input type="email" name="email" id="email" minlength="3" required/>
             <label for="messafe">Votre message</label>
-						<textarea name="message" name="message" id="" rows="10" minlength="10"></textarea>
+						<textarea name="message" name="message" id="" rows="10" minlength="10" required></textarea>
 					</div>
           <button class="contact_button">Envoyer</button>
 				</form>

@@ -5,7 +5,7 @@ async function getPhotographer() {
 }
 
 async function displayImg(mediaData) {
-
+    // Create list of media
     const listImg = document.querySelector(".list-img");
     mediaData.map((img) => {
         const imgModel = imgFactory(img);
@@ -14,10 +14,14 @@ async function displayImg(mediaData) {
 };
 
 async function init() {
+    // Recovery data
     const photographer = await getPhotographer();
+
+    // Recovery id of photographer on url
     const url = (new URL(document.location)).searchParams;
     const id = url.get('id')
     
+    // Search photographer & media related to the good id
     if (id) {
         const mediaData = photographer.media.filter((value) => {
             return value.photographerId === Number(id);

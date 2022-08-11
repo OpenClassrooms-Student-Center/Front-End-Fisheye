@@ -22,6 +22,7 @@ function photographerFactory(data) {
         userPrice.setAttribute("class", "price")
         userPrice.textContent = `${price}€/jour`;
 
+        // display element
         article.appendChild(linkPhotographer)
         linkPhotographer.appendChild(containerImg)
         containerImg.appendChild(img);

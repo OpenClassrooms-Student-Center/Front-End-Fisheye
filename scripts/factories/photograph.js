@@ -18,6 +18,8 @@ function photographFactory(media, photographer) {
     headerAvatar.setAttribute("class", "photograph-header-avatar")
     const img = document.createElement( 'img' );
     img.setAttribute("src", picture);
+
+    // display Header Card Photographer element
     photographerHeader.insertBefore(headerDetails, photographerHeader.children[0]);
     photographerHeader.appendChild(headerAvatar);
     headerDetails.appendChild(elementName);
@@ -36,56 +38,46 @@ function photographFactory(media, photographer) {
     elementLike.textContent = `${countLikes} 🖤`;
     const elementPrice = document.createElement("p");
     elementPrice.textContent = `${price}€ / jour`;
+
+    // display Insert like & price element
     main.appendChild(insertDiv);
     insertDiv.appendChild(elementLike);
     insertDiv.appendChild(elementPrice);
 
-    // Modal
-    const modalName = document.querySelector("#photograph-name");
-    modalName.textContent = name;
-    const form = document.getElementById("form");
-    const formData = [...document.querySelectorAll("div.formData > input, textarea")];
-
-    let submitForm = (e) => {
-        e.preventDefault();
-        
-        let data = [];
-        const getValue = name => e.target[name].value;
-        formData.map((input) => {
-            const value = getValue(input.name)
-            if (value.length > 3) {
-                data.push({
-                    name: input.name,
-                    value
-                })
-            }
-        })
-        
-        if (data.length === formData.length) {
-            console.log(data);
-            formData.map((input) => {
-                input.value = '';
-            })
-        }
-    }
-    form.addEventListener('submit', submitForm);
+    // Modal contactForm.js
+    modal(name);
 }
 
 function imgFactory(media){
+    
     const containerImg = document.createElement( 'div' );
     containerImg.setAttribute("class", "card-img");
-    const img = document.createElement( 'img' );
+
+    // check if image or video
+    if (media.image) {
+        const img = document.createElement( 'img' );
+        img.setAttribute("src", `assets/images/${media.image}`);
+        img.setAttribute("alt", media.image);
+        containerImg.appendChild(img);
+    } else if (media.video) {
+        var video = document.createElement( 'video' );
+        video.setAttribute("src", `assets/videos/${media.video}`);
+        video.setAttribute("controls", true);
+        video.setAttribute("alt", media.video);
+        containerImg.appendChild(video);
+    }
+
+    
     const containerDetails = document.createElement( 'div' );
     containerDetails.setAttribute("class", "card-img-details");
-    img.setAttribute("src", `assets/images/${media.image}`);
     const imgtitle = document.createElement( 'h2' );
     imgtitle.textContent = media.title;
     const imgLike = document.createElement( 'h2' );
     imgLike.textContent = `${media.likes} 🖤`
 
-    containerImg.appendChild(img);
     containerImg.appendChild(containerDetails);
     containerDetails.appendChild(imgtitle);
     containerDetails.appendChild(imgLike);
+
     return containerImg
 }
