@@ -1,6 +1,5 @@
-function photographerFactory(data) {
+export const photographerFactory = data => {
   const { id, name, portrait, city, country, tagline, price } = data;
-  console.log(data);
 
   const picture = `assets/photographers/${portrait}`;
 
@@ -24,15 +23,7 @@ function photographerFactory(data) {
       </div>
     </article>
     `;
-    const article = document.createRange().createContextualFragment(markup);
-    /*const article = document.createElement("article");
-    const img = document.createElement("img");
-    img.setAttribute("src", picture);
-    const h2 = document.createElement("h2");
-    h2.textContent = name;
-    article.appendChild(img);
-    article.appendChild(h2);*/
-    return article;
+    return markup;
   }
   return { name, picture, getUserCardDOM };
-}
+};

@@ -1,11 +1,14 @@
-@import "vendors/normalize";
+@import 'vendors/normalize';
 
-@import "abstracts/variables";
+@import 'abstracts/variables';
 
-@import "layout/header";
+@import 'base/base';
 
-@import "components/card";
-@import "components/button";
+@import 'layout/header';
 
-@import "pages/home";
-@import "pages/photographer";
+@import 'components/button';
+@import 'components/card';
+@import 'components/form_modal';
+
+@import 'pages/home';
+@import 'pages/photographer';
