@@ -3,7 +3,7 @@ export const photographerFactory = data => {
 
   const picture = `assets/photographers/${portrait}`;
 
-  function getUserCardDOM() {
+  const getUserCardDOM = () => {
     const markup = `
     <article class="card">
       <a href="#" class="card__link" data-id="${id}">
@@ -24,6 +24,6 @@ export const photographerFactory = data => {
     </article>
     `;
     return markup;
-  }
+  };
   return { name, picture, getUserCardDOM };
 };

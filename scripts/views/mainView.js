@@ -1,5 +1,8 @@
-import PageComponentView from "./pageComponentView";
+import PageComponentView from './pageComponentView';
 
+/**
+ * A MainView represents a visual representation of the main semantic tag in the page
+ */
 class MainView extends PageComponentView {
   /**
    * constructor of the MainView class
@@ -8,7 +11,7 @@ class MainView extends PageComponentView {
    * @author Werner Schmid
    */
   constructor(errorMessage) {
-    super(document.querySelector(".main"), errorMessage);
+    super(document.querySelector('.main'), errorMessage);
   }
 
   /**
@@ -17,7 +20,7 @@ class MainView extends PageComponentView {
   _generateMarkup() {
     return `
     ${
-      this._data === "/"
+      this._data === '/'
         ? `
     <section class="main__photographer-list">
     </section>
@@ -31,4 +34,7 @@ class MainView extends PageComponentView {
   }
 }
 
-export default new MainView("Erreur de chargement du contenu");
+/**
+ * The module exports an instance of the MainView
+ */
+export default new MainView('Erreur de chargement du contenu');

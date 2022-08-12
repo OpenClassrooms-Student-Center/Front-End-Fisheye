@@ -1,7 +1,7 @@
 /**
  * A View represents a visual representation of the data in the application
  */
-export default class View {
+class View {
   /**
    * constructor of the View class
    * @param {HTMLElement} parentElement Root HTML element of the view in the document
@@ -42,6 +42,7 @@ export default class View {
    * @param {string} message Error message to be rendered in the error markup (by default : the default error message of the View)
    * @returns {undefined} No returned value by the function
    * @this {Object} the current View instance calling the renderError function
+   * @author Werner Schmid
    */
   renderError(message = this._errorMessage) {
     // Generate the error message markup
@@ -100,6 +101,7 @@ export default class View {
   /**
    * Used to set a new parent element for the View. This function is useful when the parent of the View doesn't exist in the DOM at its creation
    * @param {HTMLElement} newParent New parent element in the DOM for the View
+   * @author Werner Schmid
    */
   setParentElement(newParent) {
     this._parentElement = newParent;
@@ -115,3 +117,8 @@ export default class View {
     if (this._clearContent) this._parentElement.innerHTML = '';
   }
 }
+
+/**
+ * The module export the View class
+ */
+export default View;

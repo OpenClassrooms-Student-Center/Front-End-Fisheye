@@ -1,5 +1,8 @@
 import PageComponentView from './pageComponentView';
 
+/**
+ * A FormModalView represents the form used to contact a photographer
+ */
 class FormModalView extends PageComponentView {
   /**
    * constructor of the FormModalView class
@@ -37,6 +40,14 @@ class FormModalView extends PageComponentView {
     </div>
       `;
   }
+
+  /**
+   * Function used to add an event listener on the close button subcomponent in the View
+   * @param {function} handler Function that will be called when the click event happens to the close button of the form
+   * @returns {undefined} No returned value by the function
+   * @this {Object} the current FormModalView instance calling the addHandlerClick function
+   * @author Werner Schmid
+   */
   addHandlerClick(handler) {
     this._parentElement.addEventListener('click', e => {
       const btn = e.target.closest('.form-modal__close-btn');
@@ -47,6 +58,9 @@ class FormModalView extends PageComponentView {
   }
 }
 
+/**
+ * The module exports an instance of the FormModalView
+ */
 export default new FormModalView(
   'Erreur de chargement du formulaire de contact'
 );

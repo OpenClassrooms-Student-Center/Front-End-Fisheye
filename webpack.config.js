@@ -1,14 +1,13 @@
-const path = require("path");
-const HTMLWebpackPlugin = require("html-webpack-plugin");
+const path = require('path');
 
 module.exports = {
-  mode: "development",
+  mode: 'development',
   entry: {
-    bundle: path.resolve(__dirname, "scripts/controller.js"),
+    bundle: path.resolve(__dirname, 'scripts/controller.js'),
   },
   output: {
-    path: path.resolve(__dirname, "scripts/compiled"),
-    filename: "bundle[contenthash].js",
+    path: path.resolve(__dirname, 'scripts/compiled'),
+    filename: 'bundle[contenthash].js',
     clean: true,
   },
   module: {
@@ -17,9 +16,9 @@ module.exports = {
         test: /\.js$/,
         exclude: /node_modules/,
         use: {
-          loader: "babel-loader",
+          loader: 'babel-loader',
           options: {
-            presets: ["@babel/preset-env"],
+            presets: ['@babel/preset-env'],
           },
         },
       },
