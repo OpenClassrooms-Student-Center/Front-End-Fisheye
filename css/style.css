@@ -195,11 +195,36 @@ form input {
   margin: 0 115px;
 }
 
-.photograph-about, .photograph-button {
+.photograph-about,
+.photograph-button {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: flex-start;
+}
+
+.photograph-header h1,
+h2,
+h3 {
+  font-family: "DM Sans", sans-serif;
+}
+
+.photograph-header h1 {
+  font-size: 64px;
+  color: #D3573C;
+  line-height: 83px;
+}
+
+.photograph-header h2 {
+  font-size: 24px;
+  line-height: 31px;
+  color: #901C1C;
+}
+
+.photograph-header h3 {
+  font-size: 18px;
+  line-height: 23px;
+  color: #525252;
 }
 
 /** IMPORT FOOTER STYLES **/
