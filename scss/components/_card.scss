@@ -1,17 +1,52 @@
 .card {
   position: relative;
-  &__link:visited,
-  &__link:link {
-    text-decoration: none;
-    color: inherit;
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: center;
+  justify-content: space-between;
+  &__link {
+    min-height: 26rem;
+    display: flex;
+    flex-flow: column nowrap;
+    align-items: center;
+    justify-content: space-between;
+    &:visited,
+    &:link {
+      text-decoration: none;
+      color: inherit;
+    }
   }
   &__name {
     color: var(--color-secondary);
     font-size: 3.6rem;
     font-weight: bold;
+    white-space: nowrap;
   }
   &__portrait {
     height: 20rem;
     width: 20rem;
+    border-radius: 50%;
+    object-fit: cover;
+    object-position: center;
+  }
+  &__description {
+    display: flex;
+    flex-flow: column nowrap;
+    align-items: center;
+    > span {
+      display: block;
+    }
+  }
+  &__location {
+    color: var(--color-primary);
+    font-size: 1.1rem;
+    margin: 0.6rem;
+  }
+  &__tagline {
+    margin-bottom: 0.5rem;
+  }
+  &__price {
+    color: var(--color-grey-dark);
+    font-size: 0.9rem;
   }
 }

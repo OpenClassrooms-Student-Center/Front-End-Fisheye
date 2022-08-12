@@ -374,6 +374,17 @@ body {
 
 .card {
   position: relative;
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: center;
+  justify-content: space-between;
+}
+.card__link {
+  min-height: 26rem;
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: center;
+  justify-content: space-between;
 }
 .card__link:visited, .card__link:link {
   text-decoration: none;
@@ -383,10 +394,34 @@ body {
   color: var(--color-secondary);
   font-size: 3.6rem;
   font-weight: bold;
+  white-space: nowrap;
 }
 .card__portrait {
   height: 20rem;
   width: 20rem;
+  border-radius: 50%;
+  object-fit: cover;
+  object-position: center;
+}
+.card__description {
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: center;
+}
+.card__description > span {
+  display: block;
+}
+.card__location {
+  color: var(--color-primary);
+  font-size: 1.1rem;
+  margin: 0.6rem;
+}
+.card__tagline {
+  margin-bottom: 0.5rem;
+}
+.card__price {
+  color: var(--color-grey-dark);
+  font-size: 0.9rem;
 }
 
 .form-modal {
@@ -454,9 +489,11 @@ body {
 
 .main__photographer-list {
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-columns: repeat(auto-fit, minmax(30rem, 1fr));
   gap: 7rem;
   margin-top: 10rem;
+  padding: 0 5rem;
+  justify-content: center;
 }
 
 .main__photographer-infos {
