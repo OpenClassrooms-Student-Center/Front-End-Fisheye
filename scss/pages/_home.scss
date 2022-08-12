@@ -1,8 +1,10 @@
 .main {
   &__photographer-list {
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-columns: repeat(auto-fit, minmax(30rem, 1fr));
     gap: 7rem;
     margin-top: 10rem;
+    padding: 0 5rem;
+    justify-content: center;
   }
 }

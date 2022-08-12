@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "watch:sass": "sass --watch ./scss/main.scss:./css/style.css --style expanded",
-    "devserver": "live-server",
+    "devserver": "node server.js",
     "compile:sass": "sass ./scss/main.scss:./css/style.comp.css",
     "prefix:css": "postcss --use autoprefixer -b 'last 10 versions' ./css/style.comp.css -o ./css/style.prefix.css",
     "compress:css": "sass ./css/style.prefix.css:./css/style.css --style compressed",
@@ -41,5 +41,10 @@
     "postcss-cli": "^10.0.0",
     "webpack": "^5.74.0",
     "webpack-cli": "^4.10.0"
+  },
+  "dependencies": {
+    "ejs": "^3.1.8",
+    "express": "^4.18.1",
+    "glob": "^8.0.3"
   }
 }

@@ -8,6 +8,7 @@ import photographerListView from './views/photographerListView';
 import photographerHeaderView from './views/photographerHeaderView';
 import photographerPhotosView from './views/photographerPhotosView';
 import formModalView from './views/formModalView';
+import bodyView from './views/bodyView';
 
 /**
  * The method takes care of rendering the header semantic tag of the HTML page based on the url
@@ -102,7 +103,83 @@ const controlRenderMainPhotographerPage = async id => {
 };
 
 /**
- * Function used to initialize the whole web page and the initial state of the page
+ * Function used to handle the navigation in the site without reloading the page
+ * @returns {undefined} No returned value by the function
+ * @author Werner Schmid
+ */
+const navigateTo = url => {
+  model.setUrl(url);
+  history.pushState(null, null, model.state.url);
+  reload().catch(err => {
+    console.error(err.message);
+  });
+};
+
+/**
+ * Function used to render the views of the page
+ * @param {boolean} init Variable specifying if we are initializing the page for the first time (set to true by default)
+ * @returns {Promise} a resolved promise if it achieved to render the views and a rejected one otherwise
+ * @author Werner Schmid
+ */
+const renderComponents = async (init = true) => {
+  try {
+    // Non existing page
+    if (
+      model.state.url !== '/' &&
+      model.state.url.slice(0, 13) !== '/photographer'
+    ) {
+      throw new Error('Not Found');
+    }
+    if (model.state.url === '/') {
+      // Render the list of photographers if we are on the main page
+      // Add the event listeners for the main page
+      // DISPLAY
+      await controlRenderMainPage();
+      // EVENT LISTENERS
+      if (init) bodyView.addHandlerClick(navigateTo);
+      return;
+    }
+
+    // Render the photographer Header, the photographer Photo list and the form modal if we are on a photographer page
+    // Add the event listeners for a photographer page
+    if (model.state.url.slice(0, 13) === '/photographer') {
+      // Get the id of the photographer that has to be rendered
+      const id = Number(model.state.url.slice(14));
+      if (isNaN(id)) throw new Error('Not Found');
+      // DISPLAY
+      await controlRenderMainPhotographerPage(id);
+      controlRenderFormModal();
+
+      // EVENT LISTENERS
+      photographerHeaderView.addHandlerClick(displayModal);
+      formModalView.addHandlerClick(closeModal);
+      return;
+    }
+  } catch (err) {
+    throw err;
+  }
+};
+
+/**
+ * Function used to reload the views of the page
+ * @returns {Promise} a resolved promise if it achieved to reload the views and a rejected one otherwise
+ * @author Werner Schmid
+ */
+const reload = async () => {
+  try {
+    // Reload the Header and the Main View in the page
+    controlRenderHeader();
+    controlRenderMain();
+
+    // Render the components of the page
+    await renderComponents(false);
+  } catch (err) {
+    throw err;
+  }
+};
+
+/**
+ * Router function used to initialize the whole web page and the initial state of the page
  * @returns {undefined} No returned value by the function
  * @author Werner Schmid
  */
@@ -112,7 +189,7 @@ const init = async () => {
     const url = document.location.href.replace(document.location.origin, '');
 
     // Store the url into the state object
-    model.state.url = url;
+    model.setUrl(url);
 
     // Render the Header and the Main View in the page
     await Promise.all([
@@ -120,25 +197,8 @@ const init = async () => {
       mainView.addHandlerLoadPage(controlRenderMain),
     ]);
 
-    // Render the list of photographers if we are on the main page
-    // Add the event listeners for the main page
-    if (model.state.url === '/') {
-      // DISPLAY
-      await controlRenderMainPage();
-      return;
-    }
-
-    // Render the photographer Header, the photographer Photo list and the form modal if we are on a photographer page
-    // Add the event listeners for a photographer page
-    // TODO : Get the id of the photographer to be rendered
-    const id = 82;
-    // DISPLAY
-    await controlRenderMainPhotographerPage(id);
-    controlRenderFormModal();
-
-    // EVENT LISTENERS
-    photographerHeaderView.addHandlerClick(displayModal);
-    formModalView.addHandlerClick(closeModal);
+    // Render the components of the page
+    await renderComponents();
   } catch (err) {
     throw err;
   }
@@ -148,5 +208,10 @@ const init = async () => {
  * Initialisation of the application
  */
 init().catch(err => {
-  console.error(err);
+  console.error(err.message);
+});
+window.addEventListener('popstate', () => {
+  reload().catch(err => {
+    console.error(err.message);
+  });
 });

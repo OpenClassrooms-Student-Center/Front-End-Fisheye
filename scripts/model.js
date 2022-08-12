@@ -84,3 +84,11 @@ export const getPhotographerMedias = async id => {
     throw err;
   }
 };
+
+/**
+ * Function used to set the stored url of the state
+ * @param {string} url new url of the webpage
+ */
+export const setUrl = url => {
+  state.url = url;
+};
