@@ -6,6 +6,7 @@
     margin-top: 75px;
     margin-bottom: 75px;
 }
+
 ///// END MAIN PAGE // 
 
 //////////////// PHOTOGRAPHER PAGE /////// 
@@ -14,8 +15,16 @@
 }
 
 .photograph-header {
+    @include flex-basic(row, wrap, fled-end, space-between, null);
     background-color: $color_secondary2_bg;
     height: 300px;
-    margin: 0 100px;
+    margin: 0 115px;
 }
+
+.photograph-about,.photograph-button {
+    @include flex-basic(column, null, null, center, flex-start);
+}
+
+
+
 ////////////// END PHOTOGRAPHER PAGE ////////

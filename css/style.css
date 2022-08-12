@@ -164,6 +164,11 @@ form input {
   background-color: #901C1C;
   border-radius: 5px;
   cursor: pointer;
+  transition: color 0.5s ease-in, background-color 0.5s ease-in;
+}
+.contact_button:hover {
+  color: #000000;
+  background-color: #DB8876;
 }
 
 /** IMPORT PAGES (other) Styles **/
@@ -180,9 +185,21 @@ form input {
 }
 
 .photograph-header {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-content: fled-end;
+  justify-content: space-between;
   background-color: #FAFAFA;
   height: 300px;
-  margin: 0 100px;
+  margin: 0 115px;
+}
+
+.photograph-about, .photograph-button {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
 }
 
 /** IMPORT FOOTER STYLES **/

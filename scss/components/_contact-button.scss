@@ -1,7 +1,7 @@
 .contact_button {
     font-size: 20px;
     font-weight: bold;
-    color: white;
+    color: $default_color;
     padding: 11px;
     width: 170px;
     height: 70px;
@@ -9,4 +9,10 @@
     background-color: $color_primary1;
     border-radius: 5px;
     cursor: pointer;
+    transition: color 0.5s ease-in, background-color 0.5s ease-in;
+
+    &:hover {
+        color: $default_font_color;
+        background-color: $color_background;
+    }
 }
