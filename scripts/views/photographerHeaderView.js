@@ -1,5 +1,8 @@
 import View from './View';
 
+/**
+ * A PhotographerHeaderView represents the presentation header of a photographer page (Name, contact form, ...)
+ */
 class PhotographerHeaderView extends View {
   /**
    * constructor of the PhotographerHeaderView class
@@ -20,6 +23,13 @@ class PhotographerHeaderView extends View {
     `;
   }
 
+  /**
+   * Function used to add an event listener on the open button subcomponent in the View
+   * @param {function} handler Function that will be called when the click event happens to the open button
+   * @returns {undefined} No returned value by the function
+   * @this {Object} the current PhotographerHeaderView instance calling the addHandlerClick function
+   * @author Werner Schmid
+   */
   addHandlerClick(handler) {
     this._parentElement.addEventListener('click', e => {
       const btn = e.target.closest('.btn--open');
@@ -30,6 +40,9 @@ class PhotographerHeaderView extends View {
   }
 }
 
+/**
+ * The module exports an instance of the PhotographerHeaderView
+ */
 export default new PhotographerHeaderView(
   "Erreur de chargement de l'en-tête du photographe"
 );

@@ -4,6 +4,11 @@
   justify-content: space-between;
   align-items: center;
   height: 90px;
+  &__index-link:visited,
+  &__index-link:link {
+    text-decoration: none;
+    color: inherit;
+  }
   &__title {
     color: var(--color-primary);
     margin-right: 10rem;

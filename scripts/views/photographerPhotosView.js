@@ -1,5 +1,8 @@
-import View from "./View";
+import View from './View';
 
+/**
+ * A PhotographerPhotosView represents the list of all photos / videos appearing in a photographer page
+ */
 class PhotographerPhotosView extends View {
   /**
    * constructor of the PhotographerPhotosView class
@@ -8,7 +11,7 @@ class PhotographerPhotosView extends View {
    * @author Werner Schmid
    */
   constructor(errorMessage) {
-    super(document.querySelector(".main__photographer-photos"), errorMessage);
+    super(document.querySelector('.main__photographer-photos'), errorMessage);
   }
 
   /**
@@ -20,6 +23,9 @@ class PhotographerPhotosView extends View {
   }
 }
 
+/**
+ * The module exports an instance of the PhotographerPhotosView
+ */
 export default new PhotographerPhotosView(
-  "Erreur de chargement des photos du photographe"
+  'Erreur de chargement des photos du photographe'
 );

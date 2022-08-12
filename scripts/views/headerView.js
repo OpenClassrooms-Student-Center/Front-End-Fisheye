@@ -1,8 +1,8 @@
-import { LOGO_URL } from "../utils/config";
-import PageComponentView from "./pageComponentView";
+import { LOGO_URL } from '../utils/config';
+import PageComponentView from './pageComponentView';
 
 /**
- * A HeaderView represents a visual representation of the header in the application
+ * A HeaderView represents a visual representation of the header in the page
  */
 class HeaderView extends PageComponentView {
   /**
@@ -12,7 +12,7 @@ class HeaderView extends PageComponentView {
    * @author Werner Schmid
    */
   constructor(errorMessage) {
-    super(document.querySelector(".header"), errorMessage);
+    super(document.querySelector('.header'), errorMessage);
   }
 
   /**
@@ -21,7 +21,7 @@ class HeaderView extends PageComponentView {
   _generateMarkup() {
     return `
     ${this._generateHeaderLogoMarkup()}
-    ${this._data === "/" ? this._generateHeaderTitleMarkup() : ""}
+    ${this._data === '/' ? this._generateHeaderTitleMarkup() : ''}
     `;
   }
 
@@ -32,7 +32,9 @@ class HeaderView extends PageComponentView {
    */
   _generateHeaderLogoMarkup() {
     return `
-    <img src="${LOGO_URL}" class="header__logo" />
+    <a class="header__index-link" href="/" aria-label="Fisheye Home page">
+      <img role="img" aria-hidden="true" src="assets/images/logo.png" class="header__logo" alt="Fisheye Home page" />
+    </a>
     `;
   }
 
@@ -48,4 +50,7 @@ class HeaderView extends PageComponentView {
   }
 }
 
+/**
+ * The module exports an instance of the HeaderView
+ */
 export default new HeaderView("Erreur de chargement de l'en-tête");

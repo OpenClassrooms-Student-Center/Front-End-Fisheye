@@ -1,70 +1,86 @@
+/**
+ * File used to store the state of the application and all its method to retrieve data and modify its internal value
+ */
+import { AJAX_GET } from './utils/helpers';
+
+/**
+ *
+ * @param {Object} state Object representing the state of the application
+ * @param {string} state.url Current url of the application
+ * @param {array} state.photographers Current photographers in the application, retrieved using an AJAX call to the photographer data
+ * @param {Object} state.photographer Current photographer displayed in the application
+ * @param {Object} state.photographer.data Current photographer general informations (name, address, ...)
+ * @param {array} state.photographer.photos Current photographer's medias
+ * @author Werner Schmid
+ */
 export const state = {
-  url: "",
+  url: '',
   photographers: [],
   photographer: {
     data: {},
-    photos: [],
+    medias: [],
   },
 };
 
+/**
+ * Function used to retrieve the photographers data from the API and store it into the state
+ * @returns {Promise} A resolved Promised if the function succeeded in retrieving the data, a rejected one otherwise
+ * @author Werner Schmid
+ */
 export const getPhotographers = async () => {
-  // Penser à remplacer par les données récupérées dans le json
-  const photographers = [
-    {
-      name: "Ma data test",
-      id: 1,
-      city: "Paris",
-      country: "France",
-      tagline: "Ceci est ma data test",
-      price: 400,
-      portrait: "account.png",
-    },
-    {
-      name: "Autre data test",
-      id: 2,
-      city: "Londres",
-      country: "UK",
-      tagline: "Ceci est ma data test 2",
-      price: 500,
-      portrait: "account.png",
-    },
-  ];
-  state.photographers = [...photographers, ...photographers, ...photographers];
+  try {
+    // Retrieve the photographers from the JSON file
+    const { photographers } = await AJAX_GET(
+      __dirname + 'data/photographers.json'
+    );
+
+    // Store the datas into the model
+    state.photographers = photographers;
+  } catch (err) {
+    throw err;
+  }
 };
 
-export const getPhotographer = async (id) => {
-  const photographer = {
-    name: "Tracy Galindo",
-    id: 82,
-    city: "Montreal",
-    country: "Canada",
-    tagline: "Photographe freelance",
-    price: 500,
-    portrait: "TracyGalindo.jpg",
-  };
-  state.photographer.data = photographer;
+/**
+ * Function used to retrieve a single photographer from the API and store it into the state
+ * @param {number} id The id of the photographer we want to retrieve
+ * @returns {Promise} A resolve Promised if the function succeeded in retrieving the data, a rejected one otherwise
+ * @author Werner Schmid
+ */
+export const getPhotographer = async id => {
+  try {
+    // Retrieve the data of the photograph from the JSON file
+    const { photographers } = await AJAX_GET(
+      __dirname + 'data/photographers.json'
+    );
+    const photographer = photographers.find(
+      photographer => photographer.id === id
+    );
+
+    // Store the photograph into the model
+    state.photographer.data = photographer;
+  } catch (err) {
+    throw err;
+  }
 };
 
-export const getPhotographerPhotos = async (id) => {
-  const photos = [
-    {
-      id: 8523492,
-      photographerId: 82,
-      title: "Purple Tunnel",
-      image: "Art_Purple_light.jpg",
-      likes: 24,
-      date: "2018-05-05",
-      price: 55,
-    },
-    {
-      id: 75902334,
-      photographerId: 82,
-      title: "Art Mine",
-      image: "Art_Mine.jpg",
-      likes: 75,
-      date: "2019-11-25",
-      price: 55,
-    },
-  ];
-  state.photographer.photos = [...photos, ...photos, ...photos];
+/**
+ * Function used to retrieve the medias of a single photographer from the API and store it into the state
+ * @param {number} id The id of the photographer from whom we want to retrieve the medias
+ * @returns {Promise} A resolve Promised if the function succeeded in retrieving the data, a rejected one otherwise
+ * @author Werner Schmid
+ */
+export const getPhotographerMedias = async id => {
+  try {
+    // Retrieve the data of the medias from the JSON file
+    const { media } = await AJAX_GET(__dirname + 'data/photographers.json');
+
+    // Filter the medias by keeping only the medias done by the desired photographer
+    const photographerMedias = media.filter(item => item.photographerId === id);
+
+    // Store the medias in the model
+    state.photographer.medias = photographerMedias;
+  } catch (err) {
+    throw err;
+  }
 };
