@@ -22,7 +22,7 @@ class MainView extends PageComponentView {
     ${
       this._data === '/'
         ? `
-    <section class="main__photographer-list">
+    <section class="main__photographer-list" role="list">
     </section>
     `
         : `

@@ -7,13 +7,16 @@ class PageComponentView extends View {
   /**
    * Handles the load event to render
    * @param {function} handler handler function that will be invoked when the load event listener will be triggered
-   * @return {undefined} No returned value by the function
+   * @return {Promise} A Promise that will resolve once the whole page is rendered and the given handler executed
    * @author Werner Schmid
    */
   addHandlerLoadPage(handler) {
-    window.addEventListener('load', event => {
-      event.preventDefault();
-      handler();
+    return new Promise((resolve, _) => {
+      window.addEventListener('load', event => {
+        event.preventDefault();
+        handler();
+        resolve();
+      });
     });
   }
 }

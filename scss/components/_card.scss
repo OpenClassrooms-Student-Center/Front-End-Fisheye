@@ -1,4 +1,5 @@
 .card {
+  position: relative;
   &__link:visited,
   &__link:link {
     text-decoration: none;
@@ -7,6 +8,7 @@
   &__name {
     color: var(--color-secondary);
     font-size: 3.6rem;
+    font-weight: bold;
   }
   &__portrait {
     height: 20rem;

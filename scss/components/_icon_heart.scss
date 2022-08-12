@@ -1,0 +1,15 @@
+.icon-heart {
+  display: inline-block;
+  width: 5rem;
+  height: 5rem;
+  stroke: currentColor;
+  stroke-width: 0.1rem;
+  fill: none;
+  &--filled {
+    stroke-width: 0;
+    fill: currentColor;
+  }
+  &--rotated {
+    transform: rotate(90deg);
+  }
+}

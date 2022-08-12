@@ -2,13 +2,17 @@
 
 @import 'abstracts/variables';
 
+@import 'utils/hidden';
+
 @import 'base/base';
 
 @import 'layout/header';
 
 @import 'components/button';
 @import 'components/card';
+@import 'components/error';
 @import 'components/form_modal';
+@import 'components/icon_heart';
 
 @import 'pages/home';
 @import 'pages/photographer';

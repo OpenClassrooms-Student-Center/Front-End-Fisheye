@@ -317,6 +317,11 @@ template {
   --color-grey-dark: #312e2e;
 }
 
+.hidden {
+  position: absolute;
+  opacity: 0;
+}
+
 * {
   box-sizing: inherit;
 }
@@ -341,6 +346,10 @@ body {
   align-items: center;
   height: 90px;
 }
+.header__index-link:visited, .header__index-link:link {
+  text-decoration: none;
+  color: inherit;
+}
 .header__title {
   color: var(--color-primary);
   margin-right: 10rem;
@@ -363,6 +372,9 @@ body {
   cursor: pointer;
 }
 
+.card {
+  position: relative;
+}
 .card__link:visited, .card__link:link {
   text-decoration: none;
   color: inherit;
@@ -370,6 +382,7 @@ body {
 .card__name {
   color: var(--color-secondary);
   font-size: 3.6rem;
+  font-weight: bold;
 }
 .card__portrait {
   height: 20rem;
@@ -421,6 +434,22 @@ body {
   height: 6.8rem;
   border: none;
   border-radius: 0.5rem;
+}
+
+.icon-heart {
+  display: inline-block;
+  width: 5rem;
+  height: 5rem;
+  stroke: currentColor;
+  stroke-width: 0.1rem;
+  fill: none;
+}
+.icon-heart--filled {
+  stroke-width: 0;
+  fill: currentColor;
+}
+.icon-heart--rotated {
+  transform: rotate(90deg);
 }
 
 .main__photographer-list {
