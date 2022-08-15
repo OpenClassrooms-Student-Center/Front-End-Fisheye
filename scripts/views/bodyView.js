@@ -34,6 +34,11 @@ class BodyView extends PageComponentView {
 }
 
 /**
- * The module exports an instance of the BodyView
+ * The single existing instance of the BodyView in the application is instantiated
  */
-export default new BodyView('Erreur de chargement de la page');
+const bodyView = new BodyView('Erreur de chargement de la page');
+
+/**
+ * The module exports the single instance of the BodyView
+ */
+export default bodyView;
