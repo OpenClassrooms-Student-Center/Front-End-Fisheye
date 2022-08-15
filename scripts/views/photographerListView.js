@@ -26,8 +26,13 @@ class PhotographerListView extends View {
 }
 
 /**
- * The module exports an instance of the PhotographerListView
+ * The single existing instance of the PhotographerListView in the application is instantiated
  */
-export default new PhotographerListView(
+const photographerListView = new PhotographerListView(
   'Erreur de chargement de la liste des photographes'
 );
+
+/**
+ * The module exports an instance of the PhotographerListView
+ */
+export default photographerListView;

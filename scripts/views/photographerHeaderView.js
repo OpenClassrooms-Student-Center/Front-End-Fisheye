@@ -41,8 +41,13 @@ class PhotographerHeaderView extends View {
 }
 
 /**
- * The module exports an instance of the PhotographerHeaderView
+ * The single existing instance of the PhotographerHeaderView in the application is instantiated
  */
-export default new PhotographerHeaderView(
+const photographerHeaderView = new PhotographerHeaderView(
   "Erreur de chargement de l'en-tête du photographe"
 );
+
+/**
+ * The module exports an instance of the PhotographerHeaderView
+ */
+export default photographerHeaderView;

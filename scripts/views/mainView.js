@@ -35,6 +35,11 @@ class MainView extends PageComponentView {
 }
 
 /**
- * The module exports an instance of the MainView
+ * The single existing instance of the MainView in the application is instantiated
  */
-export default new MainView('Erreur de chargement du contenu');
+const mainView = new MainView('Erreur de chargement du contenu');
+
+/**
+ * The module exports the single instance of the MainView
+ */
+export default mainView;

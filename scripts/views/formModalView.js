@@ -59,8 +59,13 @@ class FormModalView extends PageComponentView {
 }
 
 /**
- * The module exports an instance of the FormModalView
+ * The single existing instance of the FormModalView in the application is instantiated
  */
-export default new FormModalView(
+const formModalView = new FormModalView(
   'Erreur de chargement du formulaire de contact'
 );
+
+/**
+ * The module exports the single instance of the FormModalView
+ */
+export default formModalView;

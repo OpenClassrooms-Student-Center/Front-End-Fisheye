@@ -51,6 +51,11 @@ class HeaderView extends PageComponentView {
 }
 
 /**
- * The module exports an instance of the HeaderView
+ * The single existing instance of the HeaderView in the application is instantiated
  */
-export default new HeaderView("Erreur de chargement de l'en-tête");
+const headerView = new HeaderView("Erreur de chargement de l'en-tête");
+
+/**
+ * The module exports the single instance of the HeaderView
+ */
+export default headerView;
