@@ -8,10 +8,14 @@
 
 html {
   font-size: 62.5%; // 1rem : 10px since 10px/16px = 0.625
+  // breakpoint at 992px
+  @include respond(tab-land) {
+    font-size: 50%;
+  }
 }
 
 body {
   box-sizing: border-box; // set all base box-sizing to border-box unless we redefine it
-  font-family: "DM Sans", sans-serif;
+  font-family: 'DM Sans', sans-serif;
   margin: 0;
 }

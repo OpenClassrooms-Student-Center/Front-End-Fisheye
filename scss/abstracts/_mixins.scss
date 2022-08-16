@@ -1,0 +1,38 @@
+/*
+    min-width and max-width breakpoint mixins definition
+    $break-value : min/max value for which the mixin will be applie in em
+*/
+@mixin respondMax($break-value) {
+  @media only screen and (max-width: #{$break-value}em) {
+    @content;
+  }
+}
+
+@mixin respondMin($break-value) {
+  @media only screen and (min-width: #{$break-value}em) {
+    @content;
+  }
+}
+
+/*
+Media Query Manager using a desktop-first approac
+1em : 16px => default browser font-size, which is not relative
+A media query isn't affected by the change of the user's font-size
+Normal CSS without media queries begins to apply for phone
+$breakpoint values :
+    - tab-land (min-width: 992px, i.e. 62em)
+    - mobile (min-width: 576px , i.e. 36em)
+*/
+
+@mixin respond($breakpoint) {
+  @if $breakpoint == tab-land {
+    @include respondMax(62) {
+      @content;
+    }
+  }
+  @if $breakpoint == mobile {
+    @include respondMax(36) {
+      @content;
+    }
+  }
+}

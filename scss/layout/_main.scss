@@ -1,0 +1,13 @@
+.main {
+  position: absolute;
+  top: 14.1rem;
+  padding: 0 1.2rem;
+  width: 100%;
+  height: calc(100vh - 14rem);
+  @include respond(tab-land) {
+    height: 0;
+  }
+  @include respond(mobile) {
+    top: 30vw;
+  }
+}
