@@ -4,9 +4,9 @@
 import * as model from './model';
 import headerView from './views/headerView';
 import mainView from './views/mainView';
+import indexMainView from './views/indexMainView';
 import photographerListView from './views/photographerListView';
-import photographerHeaderView from './views/photographerHeaderView';
-import photographerPhotosView from './views/photographerPhotosView';
+import photographerMainView from './views/photographerMainView';
 import formModalView from './views/formModalView';
 import bodyView from './views/bodyView';
 
@@ -67,11 +67,11 @@ const closeModal = () => {
  */
 const controlRenderMainPage = async () => {
   try {
+    // Get the list of all photographers
     await model.getPhotographers();
-    photographerListView.setParentElement(
-      document.querySelector('.main__photographer-list')
-    );
-    photographerListView.render(model.state.photographers);
+
+    // Render the main content of the index page
+    indexMainView.render(model.state.photographers);
   } catch (err) {
     throw err;
   }
@@ -85,18 +85,11 @@ const controlRenderMainPage = async () => {
  */
 const controlRenderMainPhotographerPage = async id => {
   try {
-    // Render the header of the photographer
+    // Get the photographer data from the API
     await model.getPhotographer(id);
-    photographerHeaderView.setParentElement(
-      document.querySelector('.main__photographer-infos')
-    );
-    photographerHeaderView.render(model.state.photographer.data);
-    // Render the list of photos of the photographer
-    await model.getPhotographerMedias(id);
-    photographerPhotosView.setParentElement(
-      document.querySelector('.main__photographer-photos')
-    );
-    photographerPhotosView.render(model.state.photographer.medias);
+
+    // Render the photographer main content
+    photographerMainView.render(model.state.photographer);
   } catch (err) {
     throw err;
   }
@@ -151,7 +144,7 @@ const renderComponents = async (init = true) => {
       controlRenderFormModal();
 
       // EVENT LISTENERS
-      photographerHeaderView.addHandlerClick(displayModal);
+      photographerMainView.addHandlerClick(displayModal);
       formModalView.addHandlerClick(closeModal);
       return;
     }
@@ -210,8 +203,7 @@ const init = async () => {
 init().catch(err => {
   console.error(err.message);
 });
-window.addEventListener('popstate', () => {
-  reload().catch(err => {
-    console.error(err.message);
-  });
+window.addEventListener('popstate', event => {
+  event.preventDefault();
+  navigateTo(document.location.href.replace(document.location.origin, ''));
 });

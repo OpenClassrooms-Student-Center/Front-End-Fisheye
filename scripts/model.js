@@ -47,7 +47,7 @@ export const getPhotographers = async () => {
  * @returns {Promise} A resolve Promised if the function succeeded in retrieving the data, a rejected one otherwise
  * @author Werner Schmid
  */
-export const getPhotographer = async id => {
+const getPhotographerData = async id => {
   try {
     // Retrieve the data of the photograph from the JSON file
     const { photographers } = await AJAX_GET(
@@ -80,6 +80,21 @@ export const getPhotographerMedias = async id => {
 
     // Store the medias in the model
     state.photographer.medias = photographerMedias;
+  } catch (err) {
+    throw err;
+  }
+};
+
+/**
+ * Function used to retrieve a single photographer and his media from the API and store it into the state
+ * @param {number} id The id of the photographer we want to retrieve
+ * @returns {Promise} A resolve Promised if the function succeeded in retrieving the data, a rejected one otherwise
+ * @author Werner Schmid
+ */
+export const getPhotographer = async id => {
+  try {
+    // Retrieve the data of the photograph and his medias
+    await Promise.all([getPhotographerData(id), getPhotographerMedias(id)]);
   } catch (err) {
     throw err;
   }

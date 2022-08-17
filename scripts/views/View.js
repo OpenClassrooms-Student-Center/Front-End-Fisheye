@@ -24,17 +24,32 @@ class View {
    * @author Werner Schmid
    */
   render(data) {
-    // Render error message if there isn't any data to display
-    if (!data || (Array.isArray(data) && data.length === 0))
-      return this.renderError();
-    // Set the data of the View to be equal to the data passed as a parameter
-    this._data = data;
+    // Check the passed data and render an error message if the data isn't set
+    if (!this._checkData(data)) return;
+
     // _generateMarkup() : template method used to generate the markup that will be displayed in the View : the method has to be overriden by the child classes
     const markup = this._generateMarkup();
     // Clear the content of the View
     this._clear();
     // Render the new markup in the parentElement in the View
     this._parentElement.insertAdjacentHTML('afterbegin', markup);
+  }
+
+  /**
+   * Check the passed data and renders an error if the data isn't valid
+   * @param {Object | Object[]} data The data to be rendered in the View
+   * @returns {boolean} true if the data is valid, false otherwise
+   * @author Werner Schmid
+   */
+  _checkData(data) {
+    // Render error message if there isn't any data to display
+    if (!data || (Array.isArray(data) && data.length === 0)) {
+      this.renderError();
+      return false;
+    }
+    // Set the data of the View to be equal to the data passed as a parameter
+    this._data = data;
+    return true;
   }
 
   /**

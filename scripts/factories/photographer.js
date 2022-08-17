@@ -1,11 +1,11 @@
 import { PROFILE_PICTURES_FOLDER } from '../utils/config';
 
-export const photographerFactory = data => {
+export const photographerFactory = (data, medias = []) => {
   const { id, name, portrait, city, country, tagline, price } = data;
 
   const picture = `${PROFILE_PICTURES_FOLDER}${portrait}`;
 
-  const getUserCardDOM = () => {
+  const getUserCard = () => {
     const markup = `
     <article class="card" role="listitem">
       <a href="/photographer/${id}" class="card__link" data-id="${id}" role="link" aria-labelledby="card__name--${id}" aria-describebdy="card__label-description--${id}">
@@ -29,5 +29,5 @@ export const photographerFactory = data => {
     `;
     return markup;
   };
-  return { name, picture, getUserCardDOM };
+  return { name, picture, getUserCard };
 };

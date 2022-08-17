@@ -4,12 +4,20 @@
   flex-flow: column nowrap;
   align-items: center;
   justify-content: space-between;
+  width: 20rem;
+  height: 31rem;
+  @include respond(mobile) {
+    height: 89vw;
+  }
   &__link {
-    min-height: 26rem;
+    height: 25rem;
     display: flex;
     flex-flow: column nowrap;
     align-items: center;
     justify-content: space-between;
+    @include respond(mobile) {
+      height: 73vw;
+    }
     &:visited,
     &:link {
       text-decoration: none;
@@ -21,18 +29,26 @@
     font-size: 3.6rem;
     font-weight: bold;
     white-space: nowrap;
+    @include respond(mobile) {
+      font-size: 7.2vw;
+    }
   }
   &__portrait {
-    height: 20rem;
-    width: 20rem;
+    height: 19rem;
+    width: 19rem;
     border-radius: 50%;
     object-fit: cover;
     object-position: center;
+    @include respond(mobile) {
+      height: 61vw;
+      width: 61vw;
+    }
   }
   &__description {
     display: flex;
     flex-flow: column nowrap;
     align-items: center;
+    margin-top: 0;
     > span {
       display: block;
     }
@@ -41,12 +57,24 @@
     color: var(--color-primary);
     font-size: 1.1rem;
     margin: 0.6rem;
+    white-space: nowrap;
+    @include respond(mobile) {
+      font-size: 4.1vw;
+    }
   }
   &__tagline {
     margin-bottom: 0.5rem;
+    white-space: nowrap;
+    @include respond(mobile) {
+      margin-bottom: 1.1vw;
+      font-size: 3vw;
+    }
   }
   &__price {
     color: var(--color-grey-dark);
     font-size: 0.9rem;
+    @include respond(mobile) {
+      font-size: 2.5vw;
+    }
   }
 }

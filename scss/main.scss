@@ -1,12 +1,16 @@
 @import 'vendors/normalize';
 
 @import 'abstracts/variables';
+@import 'abstracts/mixins';
+
+@import 'utils/hidden';
 
 @import 'utils/hidden';
 
 @import 'base/base';
 
 @import 'layout/header';
+@import 'layout/main';
 
 @import 'components/button';
 @import 'components/card';

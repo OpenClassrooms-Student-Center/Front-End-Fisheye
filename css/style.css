@@ -317,6 +317,19 @@ template {
   --color-grey-dark: #312e2e;
 }
 
+/*
+    min-width and max-width breakpoint mixins definition
+    $break-value : min/max value for which the mixin will be applie in em
+*/
+/*
+Media Query Manager using a desktop-first approac
+1em : 16px => default browser font-size, which is not relative
+A media query isn't affected by the change of the user's font-size
+Normal CSS without media queries begins to apply for phone
+$breakpoint values :
+    - tab-land (min-width: 992px, i.e. 62em)
+    - mobile (min-width: 576px , i.e. 36em)
+*/
 .hidden {
   position: absolute;
   opacity: 0;
@@ -332,6 +345,11 @@ template {
 html {
   font-size: 62.5%;
 }
+@media only screen and (max-width: 62em) {
+  html {
+    font-size: 50%;
+  }
+}
 
 body {
   box-sizing: border-box;
@@ -344,7 +362,29 @@ body {
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  height: 90px;
+  position: absolute;
+  width: 100%;
+  height: 12rem;
+  top: 1rem;
+  padding: 1rem;
+}
+@media only screen and (max-width: 36em) {
+  .header {
+    flex-direction: column;
+    gap: 2vw;
+    height: 0.16667vw;
+    top: 1vw;
+  }
+}
+@media only screen and (max-width: 36em) {
+  .header__index-link {
+    width: 100%;
+    text-align: center;
+  }
+}
+.header__index-link:visited, .header__index-link:link {
+  text-decoration: none;
+  color: inherit;
 }
 .header__index-link:visited, .header__index-link:link {
   text-decoration: none;
@@ -352,11 +392,59 @@ body {
 }
 .header__title {
   color: var(--color-primary);
-  margin-right: 10rem;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 3.6rem;
+  line-height: 4.7rem;
+  margin-right: 11.6rem;
+}
+@media only screen and (max-width: 62em) {
+  .header__title {
+    margin-right: 5.8rem;
+  }
+}
+@media only screen and (max-width: 36em) {
+  .header__title {
+    width: 100%;
+    margin-right: 0;
+    text-align: center;
+    font-size: 5vw;
+    line-height: 0;
+  }
 }
 .header__logo {
   height: 5rem;
-  margin-left: 10rem;
+  margin-left: 10.1rem;
+}
+@media only screen and (max-width: 62em) {
+  .header__logo {
+    margin-left: 5.1rem;
+  }
+}
+@media only screen and (max-width: 36em) {
+  .header__logo {
+    margin-left: 0;
+    text-align: center;
+    height: 7vw;
+  }
+}
+
+.main {
+  position: absolute;
+  top: 14.1rem;
+  padding: 0 1.2rem;
+  width: 100%;
+  height: calc(100vh - 14rem);
+}
+@media only screen and (max-width: 62em) {
+  .main {
+    height: 0;
+  }
+}
+@media only screen and (max-width: 36em) {
+  .main {
+    top: 30vw;
+  }
 }
 
 .btn {
@@ -378,13 +466,25 @@ body {
   flex-flow: column nowrap;
   align-items: center;
   justify-content: space-between;
+  width: 20rem;
+  height: 31rem;
+}
+@media only screen and (max-width: 36em) {
+  .card {
+    height: 89vw;
+  }
 }
 .card__link {
-  min-height: 26rem;
+  height: 25rem;
   display: flex;
   flex-flow: column nowrap;
   align-items: center;
   justify-content: space-between;
+}
+@media only screen and (max-width: 36em) {
+  .card__link {
+    height: 73vw;
+  }
 }
 .card__link:visited, .card__link:link {
   text-decoration: none;
@@ -396,17 +496,29 @@ body {
   font-weight: bold;
   white-space: nowrap;
 }
+@media only screen and (max-width: 36em) {
+  .card__name {
+    font-size: 7.2vw;
+  }
+}
 .card__portrait {
-  height: 20rem;
-  width: 20rem;
+  height: 19rem;
+  width: 19rem;
   border-radius: 50%;
   object-fit: cover;
   object-position: center;
+}
+@media only screen and (max-width: 36em) {
+  .card__portrait {
+    height: 61vw;
+    width: 61vw;
+  }
 }
 .card__description {
   display: flex;
   flex-flow: column nowrap;
   align-items: center;
+  margin-top: 0;
 }
 .card__description > span {
   display: block;
@@ -415,13 +527,31 @@ body {
   color: var(--color-primary);
   font-size: 1.1rem;
   margin: 0.6rem;
+  white-space: nowrap;
+}
+@media only screen and (max-width: 36em) {
+  .card__location {
+    font-size: 4.1vw;
+  }
 }
 .card__tagline {
   margin-bottom: 0.5rem;
+  white-space: nowrap;
+}
+@media only screen and (max-width: 36em) {
+  .card__tagline {
+    margin-bottom: 1.1vw;
+    font-size: 3vw;
+  }
 }
 .card__price {
   color: var(--color-grey-dark);
   font-size: 0.9rem;
+}
+@media only screen and (max-width: 36em) {
+  .card__price {
+    font-size: 2.5vw;
+  }
 }
 
 .form-modal {
@@ -488,12 +618,29 @@ body {
 }
 
 .main__photographer-list {
+  height: 90%;
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(30rem, 1fr));
   gap: 7rem;
-  margin-top: 10rem;
   padding: 0 5rem;
+  padding-top: 10rem;
   justify-content: center;
+  justify-items: center;
+  align-content: space-between;
+}
+@media only screen and (max-width: 62em) {
+  .main__photographer-list {
+    height: 0;
+    padding: 0 1rem;
+    gap: 5rem;
+    align-content: start;
+  }
+}
+@media only screen and (max-width: 36em) {
+  .main__photographer-list {
+    grid-template-columns: 1fr;
+    gap: 6vw;
+  }
 }
 
 .main__photographer-infos {
