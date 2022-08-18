@@ -33,36 +33,62 @@ function photographerFactory(data) {
     // End Function for build DOM 
 
 
+
+    // function append elements to the parent
+    function appendCity(article) {
+        if (city && country) {
+            article.appendChild(buildElement("h3", city + ", " + country));
+        }
+    }
+    function appendTagline(article) {
+        if (tagline) {
+            article.appendChild(buildElement("h4", tagline));
+        }
+    }
+    function appendPrice(article)
+    {
+        if (price) {
+            article.appendChild(buildElement("h5", price + "€/jour"));
+        }
+
+    }
+    function appendName(article)
+    {
+        article.appendChild(buildElement("h2", name));
+    }
+    // end function append elements to the parent 
+
     function getUserCardDOM() {
+
         // Create DOM only if we got a picture a id and a name
         if (name && id && portrait) {
             const article = document.createElement('article');
             article.setAttribute("class", "photographer-card");
 
-
             // Create Dynamique LINK with Picture
             const linkElement = article.appendChild(buildElement("a", "photographer.html?id=" + id));
             insertPictureInsideElement(linkElement, picture);
             // END Create Dynamique LINK with Picture
-
-            article.appendChild(buildElement("h2", name));
-
-            if (city && country) {
-                article.appendChild(buildElement("h3", city + ", " + country));
-            }
-            if (tagline) {
-                article.appendChild(buildElement("h4", tagline));
-            }
-            if (price) {
-                article.appendChild(buildElement("h5", price + "€/jour"));
-            }
-
+            appendName(article);
+            appendCity(article);
+            appendTagline(article);
+            appendPrice(article);
+      
             return (article);
         }
     }
 
 
 
-    return { name, picture, getUserCardDOM }
+    function getPhotographerHeader() {
+
+    }
+
+
+
+
+
+
+    return { name, picture, getUserCardDOM, getPhotographerHeader }
 }
 

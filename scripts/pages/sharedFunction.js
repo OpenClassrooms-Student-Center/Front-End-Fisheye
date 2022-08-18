@@ -1,23 +1,23 @@
 async function displayData(photographers, querySelector, id) {
 
-    function usePhotographerFactory(photographer) {
-        const photographerModel = photographerFactory(photographer);
-        const userCardDOM = photographerModel.getUserCardDOM();
-        photographersSection.appendChild(userCardDOM);
-    }
 
     const photographersSection = document.querySelector(querySelector);
     photographers.forEach((photographer) => {
         if (id) {
             if (photographer.id == id) {
                 // Then we are going use the PhotographerFactory to generate DOM
-                usePhotographerFactory(photographer);
+                console.log(photographer);
+                const photographerModel = photographerFactory(photographer);
+                const PhotographerHeader = photographerModel.getPhotographerHeader();
+                photographersSection.appendChild(PhotographerHeader);
                 // End of PhotographerFactory Work
             }
         }
         else {
             // Then we are going use the PhotographerFactory to generate DOM
-            usePhotographerFactory(photographer);
+            const photographerModel = photographerFactory(photographer);
+            const userCardDOM = photographerModel.getUserCardDOM();
+            photographersSection.appendChild(userCardDOM);
             // End of PhotographerFactory Work
         }
     });
