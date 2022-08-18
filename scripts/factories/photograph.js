@@ -35,13 +35,17 @@ function photographFactory(media, photographer) {
     const insertDiv = document.createElement('div')
     insertDiv.setAttribute("class", "insert-like-price")
     const elementLike = document.createElement("p");
-    elementLike.textContent = `${countLikes} 🖤`;
+    elementLike.textContent = `${countLikes}`;
+    elementLike.setAttribute('class', 'total-likes');
+    const iconLike = document.createElement( 'i' );
+    iconLike.setAttribute('class', 'fa-solid fa-heart');
     const elementPrice = document.createElement("p");
     elementPrice.textContent = `${price}€ / jour`;
 
     // display Insert like & price element
     main.appendChild(insertDiv);
     insertDiv.appendChild(elementLike);
+    insertDiv.appendChild(iconLike);
     insertDiv.appendChild(elementPrice);
 
     // Modal contactForm.js
@@ -66,18 +70,43 @@ function imgFactory(media){
         video.setAttribute("alt", media.video);
         containerImg.appendChild(video);
     }
-
     
     const containerDetails = document.createElement( 'div' );
     containerDetails.setAttribute("class", "card-img-details");
     const imgtitle = document.createElement( 'h2' );
     imgtitle.textContent = media.title;
-    const imgLike = document.createElement( 'h2' );
-    imgLike.textContent = `${media.likes} 🖤`
+    const containerLike = document.createElement('div');
+    containerLike.setAttribute("class", "card-img-details-likes");
+    const nbLike = document.createElement( 'h2' );
+    nbLike.textContent = `${media.likes}`
+    nbLike.setAttribute('class', 'nb-likes');
+    const iconLike = document.createElement( 'i' );
+    iconLike.setAttribute('class', 'fa-regular fa-heart');
+
+    let clickLike = false;
+
+    iconLike.onclick = function like() {
+        clickLike = !clickLike;
+        clickLike ? count = media.likes + 1 : count = media.likes;
+        nbLike.textContent = `${count}`;
+        clickLike ? iconLike.setAttribute('class', 'fa-solid fa-heart') : iconLike.setAttribute('class', 'fa-regular fa-heart')
+
+        const selectorLikes = [...document.querySelectorAll(".nb-likes")];
+
+        let totalCountLikes = 0;
+        selectorLikes.map((value) => {
+            totalCountLikes = totalCountLikes + Number(value.textContent);
+        })
+        
+        const selectorTotalLikes = document.querySelector(".total-likes");
+        selectorTotalLikes.textContent = totalCountLikes
+    }
 
     containerImg.appendChild(containerDetails);
     containerDetails.appendChild(imgtitle);
-    containerDetails.appendChild(imgLike);
+    containerDetails.appendChild(containerLike);
+    containerLike.appendChild(nbLike);
+    containerLike.appendChild(iconLike);
 
     return containerImg
 }

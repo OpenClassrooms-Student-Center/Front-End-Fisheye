@@ -115,11 +115,23 @@
 .card-img-details{
     display: flex;
     justify-content: space-between;
+    align-items: center;
 }
 
 .card-img-details h2{
     color: #d3573C;
     font-weight: 400;
+}
+
+.card-img-details i{
+    font-size: 24px;
+    margin-left: 10px;
+}
+
+.card-img-details-likes{
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .modal {
