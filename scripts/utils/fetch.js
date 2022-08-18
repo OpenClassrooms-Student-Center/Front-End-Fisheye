@@ -1,5 +1,3 @@
-
-
 async function fetchJSON(url, type) {
     const response = await fetch(url); // Wait for the Async Fecth Function
 

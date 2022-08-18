@@ -1,28 +1,11 @@
-
-
-async function getPhotographers() {
-    const url = './data/photographers.json'; // Data source .JSON 
-    photographers = await fetchJSON(url, 'photographers'); // use fetchJSON function from utils/fetch.js
-    return { photographers } // Return data of PhotoGraphers
-}
-
-async function displayData(photographers) {
-    const photographersSection = document.querySelector(".photographer_section");
-
-    photographers.forEach((photographer) => {
-        console.log(photographer);
-        const photographerModel = photographerFactory(photographer);
-        const userCardDOM = photographerModel.getUserCardDOM();
-
-        photographersSection.appendChild(userCardDOM);
-    });
-};
+// Shared function used by index.JS (home page) & photographer.js 
+// (photographer detail) are inside sharedFunction.JS
 
 async function init() {
     // Try to get data from photographes if error then redirect to 404 page
     try {
-        const { photographers } = await getPhotographers();
-        displayData(photographers);
+        const { photographers } = await getPhotographers(); // Function inside sharedFunction.js
+        displayData(photographers, ".photographer_section"); // Function inside sharedFunction.js
         console.log("Page initialiser avec succès depuis init()");
     }
     catch (e) {
