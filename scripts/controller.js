@@ -5,7 +5,6 @@ import * as model from './model';
 import headerView from './views/headerView';
 import mainView from './views/mainView';
 import indexMainView from './views/indexMainView';
-import photographerListView from './views/photographerListView';
 import photographerMainView from './views/photographerMainView';
 import formModalView from './views/formModalView';
 import bodyView from './views/bodyView';

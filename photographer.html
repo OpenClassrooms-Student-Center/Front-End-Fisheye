@@ -8,7 +8,6 @@
       href="https://fonts.googleapis.com/css?family=DM+Sans&display=swap"
       rel="stylesheet"
     />
-    <script defer src="scripts/compiled/bundle7c3f12738ed6474f6d4d.js"></script>
     <title>Fisheye - photographe</title>
   </head>
   <body>
@@ -24,11 +23,48 @@
       </a>
     </header>
     <main class="main" role="main">
-      <section class="main__photographer-infos">
+      <header class="main__photographer-infos">
+        <div class="main__photographer-text">
+          <h1 class="main__photographer-title">Mimi Keel</h1>
+          <p class="main__photographer-description">
+            <span class="main__photographer-location" aria-label="location">
+              <span class="main__photographer-city">London</span>,
+              <span class="main__photographer-country">UK</span>
+            </span>
+            <span class="main__photographer-tagline" aria-label="Slogan">
+              Voir le beau dans le quotidien
+            </span>
+          </p>
+        </div>
         <button class="btn btn--open">Contactez-moi</button>
+        <img
+          src="/assets/photographers/MimiKeel.jpg"
+          alt="Mimi Keel"
+          class="main__photographer-image"
+        />
+      </header>
+      <section class="main__photographer-photos">
+        <form action="/" class="main__photographer-filter-form">
+          <label for="filter" class="main__photographer-filter">
+            Trier par</label
+          >
+          <select
+            name="filter"
+            id="filter"
+            class="main__photographer-filter-input"
+          >
+            <option value="0" selected class="main__photographer-filter-option">
+              Popularité
+            </option>
+            <option value="1" class="main__photographer-filter-option">
+              Date
+            </option>
+            <option value="2" class="main__photographer-filter-option">
+              Titre
+            </option>
+          </select>
+        </form>
       </section>
-      <section class="main__photographer-photos"></section>
-      -->
     </main>
     <div class="form-modal">
       <header class="form-modal__header">

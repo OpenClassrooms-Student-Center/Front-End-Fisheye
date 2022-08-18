@@ -335,6 +335,11 @@ $breakpoint values :
   opacity: 0;
 }
 
+.hidden {
+  position: absolute;
+  opacity: 0;
+}
+
 * {
   box-sizing: inherit;
 }
@@ -381,10 +386,6 @@ body {
     width: 100%;
     text-align: center;
   }
-}
-.header__index-link:visited, .header__index-link:link {
-  text-decoration: none;
-  color: inherit;
 }
 .header__index-link:visited, .header__index-link:link {
   text-decoration: none;
@@ -647,6 +648,16 @@ body {
   background-color: var(--color-grey-light);
   height: 30rem;
   margin: 0 10rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.main__photographer-image {
+  height: 19rem;
+  width: 19rem;
+  border-radius: 50%;
+  object-fit: cover;
+  object-position: center;
 }
 
 /*# sourceMappingURL=style.css.map */

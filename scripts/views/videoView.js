@@ -3,7 +3,7 @@ import MediaView from './mediaView';
 /**
  * A VideoView represents the rendering of a video in the lightbox modal
  */
-export default class VideoView extends View {
+export default class VideoView extends MediaView {
   /**
    * @override
    */

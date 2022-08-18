@@ -1,4 +1,5 @@
 import View from './View';
+import { photographerFactory } from '../factories/photographer';
 
 /**
  * A PhotographerHeaderView represents the presentation header of a photographer page (Name, contact form, ...)
@@ -18,8 +19,15 @@ class PhotographerHeaderView extends View {
    * @override
    */
   _generateMarkup() {
+    const photographer = photographerFactory(this._data);
     return `
-    <button class="btn btn--open">Contactez-moi</button>
+      ${photographer.getUserHeader()}
+      <button class="btn btn--open">Contactez-moi</button>
+      <img
+        src="${photographer.picture}"
+        alt="${photographer.name}"
+        class="main__photographer-image" aria-hidden="true"
+      />
     `;
   }
 

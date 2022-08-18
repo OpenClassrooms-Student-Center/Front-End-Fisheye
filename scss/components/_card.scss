@@ -34,11 +34,7 @@
     }
   }
   &__portrait {
-    height: 19rem;
-    width: 19rem;
-    border-radius: 50%;
-    object-fit: cover;
-    object-position: center;
+    @include imageMixin;
     @include respond(mobile) {
       height: 61vw;
       width: 61vw;
