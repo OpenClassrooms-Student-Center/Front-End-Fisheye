@@ -126,6 +126,117 @@
 .card-img-details i{
     font-size: 24px;
     margin-left: 10px;
+    color: #d3573C;
+}
+
+.card-img-details-likes{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.dropdown{
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #901C1C;
+    z-index: 1;
+}
+
+.dropdown-content .items{
+    border-top: .5px white solid;
+    border-radius: 0px !important;
+}
+
+.items {
+    color: white;
+    padding: 12px 16px;
+    display: block;
+    background-color: #901C1C;
+    min-width: 90px;
+    border-radius: 6px;
+    margin: 0;
+    cursor: pointer;
+}
+
+.items:hover {
+    background-color: #d3573C;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+.dropdown:hover .items {
+    border-radius: 6px 6px 0px 0px;
+}
+
+.contact_button:hover {
+    background-color: #d3573C;
+}
+
+.insert-like-price{
+    background-color: #d3573C;
+    border-radius: 10px 10px 0px 0px;
+    width: 18%;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    position: fixed;
+    bottom: 0;
+    left: 78vw;
+}
+
+.insert-like-price p{
+    font-weight: bold;
+    font-size: 18px;
+}
+
+.photograph-main{
+    margin: 40px 100px;
+}
+
+.sort-list-img{
+    margin-bottom: 25px;
+}
+
+.list-img{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 80px;
+}
+
+.card-img{
+    display: flex;
+    flex-direction: column;
+    cursor: pointer;
+}
+
+.card-img img, video{
+    width: 100%;
+    height: 350px;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+.card-img-details{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.card-img-details h2{
+    color: #d3573C;
+    font-weight: 400;
+}
+
+.card-img-details i{
+    font-size: 24px;
+    margin-left: 10px;
 }
 
 .card-img-details-likes{

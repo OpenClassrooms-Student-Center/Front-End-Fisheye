@@ -20,12 +20,16 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css"
       </div>
       <div class="photograph-main">
         <div class="sort-list-img">
-          <label for="sortImg">Trier par</label>
-          <select name="sortImg" id="sortImg">
-            <option value="popularity">Popularité</option>
-            <option value="date">Date</option>
-            <option value="title">Titre</option>
-          </select>
+          <label>Trier par</label>
+
+          <div class="dropdown">
+            <p class="items">Popularité <i class="fa-solid fa-angle-down"></i></p>
+            <div class="dropdown-content">
+              <p class="items">Date</p>
+              <p class="items">Titre</p>
+            </div>
+          </div>
+
         </div>
         <div class="list-img"></div>
       </div>
