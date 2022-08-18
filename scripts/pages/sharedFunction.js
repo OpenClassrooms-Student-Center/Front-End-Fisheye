@@ -1,4 +1,5 @@
 async function displayData(photographers, querySelector, id) {
+ 
     photographers.forEach((photographer) => {
         if (id) {
             if (photographer.id == id) {
