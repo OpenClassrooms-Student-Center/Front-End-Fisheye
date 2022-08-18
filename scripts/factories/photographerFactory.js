@@ -26,6 +26,11 @@ function photographerFactory(data) {
         }
         return element;
     }
+
+    function setInnerHtml(querySelector, texte) {
+        const texteElement = document.querySelector(querySelector);
+        texteElement.innerHTML = texte;
+    }
     // End Function for build DOM
 
     function getUserCardDOM() {
@@ -58,27 +63,11 @@ function photographerFactory(data) {
     }
 
     function setPhotographerHeader() {
-
-        if (name) {
-            const h1 = document.querySelector(".photograph-header h1");
-            h1.innerHTML = name;
-        }
-        if (city && country) {
-            const h2 = document.querySelector(".photograph-header h2");
-            h2.innerHTML = city + ", " + country;
-        }
-        if (tagline) {
-            const h3 = document.querySelector(".photograph-header h3");
-            h3.innerHTML = tagline;
-        }
-
-        if (portrait) {
-            const imgProfile = document.querySelector(".photograph-header img");
-            if (portrait)
-
-                imgProfile.setAttribute("src", picture);
-
-        }
+        setInnerHtml(".photograph-header h1", name);
+        setInnerHtml(".photograph-header h2", city + ", " + country);
+        setInnerHtml(".photograph-header h3", tagline);
+        const imgProfile = document.querySelector(".photograph-header img");
+        imgProfile.setAttribute("src", picture);
     }
 
     return { name, picture, getUserCardDOM, setPhotographerHeader };
