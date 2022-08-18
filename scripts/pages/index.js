@@ -1,9 +1,8 @@
 
 
 async function getPhotographers() {
-
     const url = './data/photographers.json'; // Data source .JSON 
-    photographers = await fetchJSON(url, 'photographers');
+    photographers = await fetchJSON(url, 'photographers'); // use fetchJSON function from utils/fetch.js
     return { photographers } // Return data of PhotoGraphers
 }
 
