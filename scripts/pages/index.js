@@ -1,4 +1,4 @@
-// Shared function used by index.JS (home page) & photographer.js 
+// Shared function used by index.JS (home page) & photographer.js
 // (photographer detail) are inside sharedFunction.JS
 
 async function init() {
@@ -7,14 +7,11 @@ async function init() {
         const { photographers } = await getPhotographers(); // Function inside sharedFunction.js
         displayData(photographers, ".photographer_section"); // Function inside sharedFunction.js
         console.log("Page initialiser avec succès depuis init()");
-    }
-    catch (e) {
+    } catch (e) {
         console.error(e);
         console.log("Rediriger vers la page 404");
     }
-
-};
-
+}
 
 // DOCUMENT onload wait for HTML be loaded instead of windows.load which including CSS, images
 init();
