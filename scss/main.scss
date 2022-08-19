@@ -12,11 +12,13 @@
 @import "components/_modal.scss";
 /** IMPORT CONTACT BUTTON COMPONENT **/
 @import "components/_contact_button.scss";
+/** IMPORT PHOTOGRAPH HEADER COMPONENT **/
+@import "components/_photograph_header.scss";
 /** IMPORT SELECT FILTER COMPONENT **/
 @import "components/_select_filter.scss";
 /** IMPORT PAGES (other) Styles **/
 @import "pages/_pages.scss";
-/** IMPORT RESPONSIVE **/ 
+/** IMPORT RESPONSIVE STYLES for Non Components Elements **/ 
 @import "_responsive.scss"; 
 /** IMPORT FOOTER STYLES **/
 @import "pages/_footer.scss";

@@ -1,0 +1,52 @@
+.photograph_header {
+    @include flex-basic(row, wrap, fled-end, space-between, null);
+    background-color: $color_secondary2_bg;
+    height: 313px;
+    margin-top: 10px;
+    @include padding-left-and-right(30px);
+
+    div:nth-child(3) {
+        margin-right: 20px;
+    }
+
+
+    h1,
+    h2,
+    h3 {
+        font-family: $font_global;
+        font-weight: $font_weight_small;
+    }
+
+    h1 {
+        font-size: $font_size_photographer_header_h1;
+        margin-bottom: -15px;
+        color: $color_primary2;
+    }
+
+    h2 {
+        margin-top: 15px;
+        margin-bottom: 20px;
+        font-size: $font_size_photographer_header_h2;
+        color: $color_primary1;
+    }
+
+    h3 {
+        font-size: $font_size_photographer_header_h3;
+        color: $color_secondary2;
+    }
+
+    .photograph_about,
+    .photograph_button {
+        @include flex-basic(column, null, null, center, flex-start);
+    }
+
+    .photograph_button {
+        margin-top: 30px;
+        margin-right: 80px;
+    }
+
+    .photograph_about {
+        margin-left: 20px;
+        margin-bottom: 10px;
+    }
+}

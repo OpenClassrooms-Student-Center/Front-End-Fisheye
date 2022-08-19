@@ -107,6 +107,35 @@ header .logo_photographer {
   color: #757575;
 }
 
+@media (max-width: 1100px) {
+  .photographer_card h3 {
+    font-size: 16.9px;
+    margin-top: 10px;
+  }
+  .photographer_card h4 {
+    font-size: 13px;
+    margin-top: 10px;
+  }
+  .photographer_card h5 {
+    font-size: 11.7px;
+    margin-top: 10px;
+  }
+}
+@media (max-width: 700px) {
+  .photographer_card h3 {
+    font-size: 19.5px;
+  }
+  .photographer_card h4 {
+    font-size: 15px;
+  }
+  .photographer_card h5 {
+    font-size: 13.5px;
+  }
+  .photographer_card img {
+    width: 230px;
+    height: 230px;
+  }
+}
 /** IMPORT MODAL COMPONENT **/
 .modal {
   border-radius: 5px;
@@ -166,6 +195,7 @@ form input {
 .contact_button {
   font-size: 20px;
   font-weight: 700;
+  font-family: "DM Sans", sans-serif;
   color: white;
   padding: 11px;
   width: 170px;
@@ -181,36 +211,7 @@ form input {
   background-color: #DB8876;
 }
 
-/** IMPORT SELECT FILTER COMPONENT **/
-.filter_section {
-  display: flex;
-  flex-direction: row;
-  align-items: baseline;
-}
-.filter_section h5 {
-  font-family: "DM Sans", sans-serif;
-  font-weight: 700;
-  font-style: normal;
-  font-size: 18px;
-  color: #000000;
-}
-.filter_section select {
-  margin-left: 10px;
-}
-
-/** IMPORT PAGES (other) Styles **/
-.photographer_section {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  gap: 70px;
-  margin-top: 75px;
-  margin-bottom: 75px;
-}
-
-.margin_left_right {
-  margin: 0 100px;
-}
-
+/** IMPORT PHOTOGRAPH HEADER COMPONENT **/
 .photograph_header {
   display: flex;
   flex-direction: row;
@@ -222,6 +223,9 @@ form input {
   margin-top: 10px;
   padding-left: 30px;
   padding-right: 30px;
+}
+.photograph_header div:nth-child(3) {
+  margin-right: 20px;
 }
 .photograph_header h1,
 .photograph_header h2,
@@ -244,49 +248,135 @@ form input {
   font-size: 18px;
   color: #525252;
 }
-
-.photograph_header div:nth-child(3) {
-  margin-right: 20px;
-}
-
-.photograph_about,
-.photograph_button {
+.photograph_header .photograph_about,
+.photograph_header .photograph_button {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: flex-start;
 }
-
-.photograph_button {
+.photograph_header .photograph_button {
   margin-top: 30px;
   margin-right: 80px;
 }
-
-.photograph_about {
+.photograph_header .photograph_about {
   margin-left: 20px;
+  margin-bottom: 10px;
+}
+
+/** IMPORT SELECT FILTER COMPONENT **/
+.select_button {
+  text-align: left;
+  padding-left: 20px;
+  font-family: "DM Sans", sans-serif;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 18px;
+  background: #901C1C;
+  color: white;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+  border: none;
+  border-color: none;
+  width: 170px;
+  height: 70px;
+  cursor: pointer;
+}
+
+.select_button::after {
+  transition: transform 0.25s ease-in;
+  content: ">";
+  transform: rotate(90deg);
+  text-align: right;
+  float: right;
+  margin-right: 20px;
+}
+
+.select_filter {
+  position: relative;
+  display: inline-block;
+}
+
+.select_content {
+  display: none;
+  position: absolute;
+  background: #901C1C;
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+  min-width: 160px;
+  box-shadow: 0px 2px 8px 0px rgba(0, 0, 0, 0.2);
+  z-index: 1;
+}
+.select_content .whiteline {
+  width: 90%;
+  height: 1px;
+  background-color: white;
+  margin-left: 5%;
+}
+.select_content a {
+  font-family: "DM Sans", sans-serif;
+  font-weight: 700;
+  font-size: 18px;
+  color: white;
+  padding: 20px;
+  width: 170px;
+  height: 60px;
+  text-decoration: none;
+  display: block;
+}
+.select_content a:hover {
+  transition: all 0.5s ease-in;
+  color: #000000;
+}
+
+.select_filter:hover .select_content {
+  display: block;
+}
+
+.select_filter:hover .select_button::after {
+  transform: rotate(-90deg);
+  transition: transform 0.25s ease-in;
+}
+
+/** IMPORT PAGES (other) Styles **/
+.photographer_section {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 70px;
+  margin-top: 75px;
+  margin-bottom: 75px;
+}
+
+.margin_left_right {
+  margin: 0 100px;
+}
+
+.filter_section {
+  display: flex;
+  flex-direction: row;
+  align-items: baseline;
+}
+.filter_section h5:first-child {
+  margin-top: 20px;
+  margin-right: 28px;
+  font-family: "DM Sans", sans-serif;
+  font-weight: 700;
+  font-style: normal;
+  font-size: 18px;
+  color: #000000;
+}
+.filter_section .select_filter {
+  margin-top: 10px;
 }
 
 #contact_modal {
   display: none;
 }
 
-/** IMPORT RESPONSIVE **/
+/** IMPORT RESPONSIVE STYLES for Non Components Elements **/
 @media (max-width: 1100px) {
   .photographer_section {
     grid-template-columns: 1fr 1fr;
-  }
-
-  .photographer_card h3 {
-    font-size: 16.9px;
-    margin-top: 10px;
-  }
-  .photographer_card h4 {
-    font-size: 13px;
-    margin-top: 10px;
-  }
-  .photographer_card h5 {
-    font-size: 11.7px;
-    margin-top: 10px;
   }
 }
 @media (max-width: 800px) {
@@ -304,20 +394,6 @@ header h1 {
 @media (max-width: 700px) {
   .photographer_section {
     grid-template-columns: 1fr;
-  }
-
-  .photographer_card h3 {
-    font-size: 19.5px;
-  }
-  .photographer_card h4 {
-    font-size: 15px;
-  }
-  .photographer_card h5 {
-    font-size: 13.5px;
-  }
-  .photographer_card img {
-    width: 230px;
-    height: 230px;
   }
 }
 /** IMPORT FOOTER STYLES **/
