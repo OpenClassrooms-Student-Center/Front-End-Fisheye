@@ -90,7 +90,7 @@ header .logo_photographer {
   font-size: 36px;
 }
 .photographer_card h3 {
-  font-size: 13px;
+  font-size: 13.0010834236px;
   line-height: 17px;
   color: #901C1C;
 }
@@ -110,7 +110,7 @@ header .logo_photographer {
 
 @media (max-width: 1100px) {
   .photographer_card h3 {
-    font-size: 16.9px;
+    font-size: 16.9014084507px;
     margin-top: 10px;
   }
   .photographer_card h4 {
@@ -124,7 +124,7 @@ header .logo_photographer {
 }
 @media (max-width: 700px) {
   .photographer_card h3 {
-    font-size: 19.5px;
+    font-size: 19.5016251354px;
   }
   .photographer_card h4 {
     font-size: 15px;
@@ -160,7 +160,7 @@ header .logo_photographer {
 }
 
 .modal header h2 {
-  font-size: 64px;
+  font-size: 63.72px;
   font-weight: normal;
   text-align: center;
 }
@@ -199,8 +199,8 @@ form input {
   font-family: "DM Sans", sans-serif;
   color: white;
   padding: 11px;
-  width: 170px;
-  height: 70px;
+  min-width: 170px;
+  min-height: 70px;
   border: none;
   background-color: #901C1C;
   border-radius: 5px;
@@ -235,14 +235,14 @@ form input {
   font-weight: 400;
 }
 .photograph_header h1 {
-  font-size: 64px;
+  font-size: 63.72px;
   margin-bottom: -15px;
   color: #D3573C;
 }
 .photograph_header h2 {
   margin-top: 15px;
   margin-bottom: 20px;
-  font-size: 24px;
+  font-size: 23.2258064516px;
   color: #901C1C;
 }
 .photograph_header h3 {
@@ -353,8 +353,8 @@ form input {
   align-items: baseline;
   position: fixed;
   background-color: #DB8876;
-  width: 376px;
-  height: 89px;
+  min-width: 376px;
+  min-height: 89px;
   bottom: 0;
   right: 38px;
   z-index: 2;
@@ -366,15 +366,50 @@ form input {
   font-family: "DM Sans", sans-serif;
   font-style: normal;
   font-weight: 700;
-  font-size: 24px;
+  font-size: 23.2258064516px;
   line-height: 31px;
   color: #000000;
-  padding-top: 23px;
+  padding-top: 18px;
 }
 .photographer_statistic .total_like:after {
   padding-left: 5px;
   content: "♥";
-  font-size: 35px;
+  font-size: 30.8903225806px;
+}
+
+/** IMPORT PHOTOGRAPHER MEDIA CARDS COMPONENT **/
+.media_card {
+  display: flex;
+  flex-direction: column;
+  width: 350px;
+}
+.media_card img {
+  height: 300px;
+  width: 350px;
+  object-fit: cover;
+}
+.media_card img:hover {
+  cursor: pointer;
+  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.5);
+}
+.media_card .details {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-top: 5px;
+}
+.media_card h6 {
+  font-family: "DM Sans", sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 24px;
+  color: #901C1C;
+}
+.media_card h6:last-child::after {
+  font-size: 30px;
+  padding-left: 10px;
+  content: "♥";
 }
 
 /** IMPORT PAGES (other) Styles **/
@@ -406,6 +441,15 @@ form input {
 }
 .filter_section .select_filter {
   margin-top: 10px;
+}
+
+.media_section {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  row-gap: 30px;
+  column-gap: 95px;
+  margin-top: 20px;
+  margin-bottom: 75px;
 }
 
 #contact_modal {

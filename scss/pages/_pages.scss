@@ -6,6 +6,7 @@
     margin-top: 75px;
     margin-bottom: 75px;
 }
+
 ///// END MAIN PAGE // 
 
 //////////////// PHOTOGRAPHER PAGE /////// 
@@ -15,19 +16,31 @@
 
 .filter_section {
     @include flex-basic(row, null, null, null, baseline);
+
     h5:first-child {
         margin-top: 20px;
         margin-right: 28px;
         font-family: $font_global;
         font-weight: $font_weight_big;
         font-style: normal;
-        font-size: 18px;
+        font-size: $font-size / 2;
         color: $default_font_color;
     }
+
     .select_filter {
         margin-top: 10px;
     }
 }
+
+.media_section {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    row-gap: 30px;
+    column-gap: 95px;
+    margin-top: 20px;
+    margin-bottom: 75px;
+}
+
 ////////////// END PHOTOGRAPHER PAGE ////////
 
 

@@ -1,0 +1,35 @@
+.media_card {
+    @include flex-basic(column, null, null, null, null);
+    width: 350px;
+
+    img {
+        height: 300px;
+        width: 350px;
+        object-fit: cover;
+
+        &:hover {
+            cursor: pointer;
+            box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.50);
+        }
+    }
+
+    .details {
+        @include flex-basic(row, null, null, space-between, baseline);
+        margin-top: 5px;
+    }
+
+    h6 {
+        font-family: $font_global;
+        font-style: normal;
+        font-weight: $font_weight_small;
+        font-size: $font_size / 1.5;
+        color: $color_primary1;
+    }
+
+    h6:last-child::after {
+        font-size: $font_size / 1.5 * 1.25;
+        padding-left: 10px;
+        content: "♥";
+    }
+
+}

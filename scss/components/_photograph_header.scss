@@ -18,7 +18,7 @@
     }
 
     h1 {
-        font-size: $font_size_photographer_header_h1;
+        font-size: $font_size * 1.77;
         margin-bottom: -15px;
         color: $color_primary2;
     }
@@ -26,12 +26,12 @@
     h2 {
         margin-top: 15px;
         margin-bottom: 20px;
-        font-size: $font_size_photographer_header_h2;
+        font-size: $font_size / 1.55;
         color: $color_primary1;
     }
 
     h3 {
-        font-size: $font_size_photographer_header_h3;
+        font-size: $font-size / 2;
         color: $color_secondary2;
     }
 

@@ -1,11 +1,11 @@
 .contact_button {
-    font-size: 20px;
+    font-size: $font_size / 1.8;
     font-weight: $font_weight_big;
     font-family: $font_global;
     color: $default_color;
     padding: 11px;
-    width: 170px;
-    height: 70px;
+    min-width: 170px;
+    min-height: 70px;
     border: none;
     background-color: $color_primary1;
     border-radius: 5px;
