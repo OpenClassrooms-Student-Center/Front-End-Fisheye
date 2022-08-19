@@ -32,11 +32,11 @@
         <div class="photos"></div>
         <div class="total-likes"></div>
     </main>
-    <div id="contact_modal" tabindex="-1" aria-hidden="true" role="dialog" aria-modal="true">
+    <div id="contact_modal" tabindex="-1" aria-hidden="true" role="dialog" aria-modal="true" aria-describedby="h2Contact">
       <div class="modal">
         <header aria-labelledby="h2Contact">
           <h2 id="h2Contact">Contactez-moi</h2>
-          <img src="assets/icons/close.svg" onclick="closeModal()" id="closeForm" tabindex="0" alt="Bouton de fermeture"/>
+          <div id="closeButton"><img src="assets/icons/close.svg" onclick="closeModal()" id="closeForm" tabindex="0" alt="Bouton de fermeture"/></div>
         </header>
         <form id="formContact">
           <div>
