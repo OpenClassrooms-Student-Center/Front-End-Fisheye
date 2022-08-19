@@ -9,4 +9,13 @@
   background-color: var(--color-primary);
   border-radius: 0.5rem;
   cursor: pointer;
+  @include respond(mobile) {
+    &[data--main-page='false'] {
+      font-size: 2.44vw;
+      padding: 1.34vw;
+      width: 20.7vw;
+      height: 8.52vw;
+      border-radius: 0.61vw;
+    }
+  }
 }

@@ -10,9 +10,13 @@
   padding: 1rem;
   @include respond(mobile) {
     flex-direction: column;
+    position: relative;
     gap: 2vw;
-    height: 0.16667vw;
-    top: 1vw;
+    height: 16.667vw;
+    top: 2vw;
+    &[data--main-page='false'] {
+      height: 6.5vw;
+    }
   }
   &__index-link {
     @include respond(mobile) {

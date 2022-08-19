@@ -27,7 +27,7 @@ class MainView extends PageComponentView {
     `
         : `
     <header class="main__photographer-infos"></header>
-    <section class="main__photographer-photos"></section>
+    <section class="main__photographer-medias"></section>
     `
     }
       `;

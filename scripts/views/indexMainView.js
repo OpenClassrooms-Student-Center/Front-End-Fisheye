@@ -19,6 +19,8 @@ class IndexMainView extends View {
    * @override
    */
   render(data) {
+    // Set the data-main-page parameter to true on the main component
+    this._parentElement.dataset.MainPage = true;
     // Check the passed data and render an error message if the data isn't set
     if (!this._checkData(data)) return;
     // Update the parent elements of the subviews

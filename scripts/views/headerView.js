@@ -19,6 +19,8 @@ class HeaderView extends PageComponentView {
    * @override
    */
   _generateMarkup() {
+    // Set the data-main-page parameter on the header component
+    this._parentElement.dataset.MainPage = this._data === '/' ? true : false;
     return `
     ${this._generateHeaderLogoMarkup()}
     ${this._data === '/' ? this._generateHeaderTitleMarkup() : ''}

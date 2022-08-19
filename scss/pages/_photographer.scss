@@ -4,10 +4,73 @@
     height: 30rem;
     margin: 0 10rem;
     display: flex;
+    flex-direction: row;
     align-items: center;
     justify-content: space-between;
+    border-radius: 0.5rem;
+    padding: 5rem;
+    font-weight: 400;
+    @include respond(desktop) {
+      flex-direction: column;
+      height: 60rem;
+    }
+    @include respond(tab-land) {
+      margin: 0 5rem;
+    }
+    @include respond(mobile) {
+      height: 94vw;
+      margin: 0 5vw;
+      padding: 6.1vw;
+    }
+  }
+  &__photographer-text {
+    white-space: nowrap;
+    @include respond(desktop) {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      order: -1;
+    }
   }
   &__photographer-image {
     @include imageMixin;
+    @include respond(desktop) {
+      order: -2;
+    }
+    @include respond(mobile) {
+      height: 46vw;
+      width: 46vw;
+    }
+  }
+  &__photographer-description {
+    @include respond(desktop) {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+  }
+  &__photographer-title {
+    font-size: 6.4rem;
+    color: var(--color-secondary);
+    margin: -0.5rem;
+    @include respond(mobile) {
+      font-size: 8vw;
+    }
+  }
+  &__photographer-location {
+    display: block;
+    color: var(--color-primary);
+    font-size: 2.4rem;
+    margin-bottom: 2rem;
+    @include respond(mobile) {
+      font-size: 3vw;
+    }
+  }
+  &__photographer-tagline {
+    display: block;
+    font-size: 1.8rem;
+    @include respond(mobile) {
+      font-size: 2vw;
+    }
   }
 }

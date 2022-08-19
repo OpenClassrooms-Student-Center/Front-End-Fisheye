@@ -8,6 +8,8 @@
     height: 0;
   }
   @include respond(mobile) {
-    top: 30vw;
+    position: relative;
+    top: 8vw;
+    padding: 0;
   }
 }

@@ -20,6 +20,8 @@ class PhotographerMainView extends View {
    * @override
    */
   render(data) {
+    // Set the data-main-page parameter to false on the main component
+    this._parentElement.dataset.MainPage = false;
     // Check the passed data and render an error message if the data isn't set
     if (!this._checkData(data)) return;
     const { data: photographerData, medias } = data;
@@ -28,7 +30,7 @@ class PhotographerMainView extends View {
       document.querySelector('.main__photographer-infos')
     );
     photographerMediasView.setParentElement(
-      document.querySelector('.main__photographer-photos')
+      document.querySelector('.main__photographer-medias')
     );
 
     // Render the subviews

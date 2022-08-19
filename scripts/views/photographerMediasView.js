@@ -11,7 +11,7 @@ class PhotographerMediasView extends View {
    * @author Werner Schmid
    */
   constructor(errorMessage) {
-    super(document.querySelector('.main__photographer-photos'), errorMessage);
+    super(document.querySelector('.main__photographer-medias'), errorMessage);
   }
 
   /**

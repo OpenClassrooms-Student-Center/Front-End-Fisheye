@@ -28,8 +28,9 @@ Media Query Manager using a desktop-first approac
 A media query isn't affected by the change of the user's font-size
 Normal CSS without media queries begins to apply for phone
 $breakpoint values :
-    - tab-land (min-width: 992px, i.e. 62em)
-    - mobile (min-width: 576px , i.e. 36em)
+    - tab-land (max-width: 992px, i.e. 62em)
+    - mobile (max-width: 656px , i.e. 41em)
+    - desktop (min-width: 1200px, i.e. 75em)
 */
 
 @mixin respond($breakpoint) {
@@ -39,7 +40,12 @@ $breakpoint values :
     }
   }
   @if $breakpoint == mobile {
-    @include respondMax(36) {
+    @include respondMax(41) {
+      @content;
+    }
+  }
+  @if $breakpoint == desktop {
+    @include respondMax(75) {
       @content;
     }
   }

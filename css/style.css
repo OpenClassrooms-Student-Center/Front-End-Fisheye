@@ -327,8 +327,9 @@ Media Query Manager using a desktop-first approac
 A media query isn't affected by the change of the user's font-size
 Normal CSS without media queries begins to apply for phone
 $breakpoint values :
-    - tab-land (min-width: 992px, i.e. 62em)
-    - mobile (min-width: 576px , i.e. 36em)
+    - tab-land (max-width: 992px, i.e. 62em)
+    - mobile (max-width: 656px , i.e. 41em)
+    - desktop (min-width: 1200px, i.e. 75em)
 */
 .hidden {
   position: absolute;
@@ -373,15 +374,19 @@ body {
   top: 1rem;
   padding: 1rem;
 }
-@media only screen and (max-width: 36em) {
+@media only screen and (max-width: 41em) {
   .header {
     flex-direction: column;
+    position: relative;
     gap: 2vw;
-    height: 0.16667vw;
-    top: 1vw;
+    height: 16.667vw;
+    top: 2vw;
+  }
+  .header[data--main-page=false] {
+    height: 6.5vw;
   }
 }
-@media only screen and (max-width: 36em) {
+@media only screen and (max-width: 41em) {
   .header__index-link {
     width: 100%;
     text-align: center;
@@ -404,7 +409,7 @@ body {
     margin-right: 5.8rem;
   }
 }
-@media only screen and (max-width: 36em) {
+@media only screen and (max-width: 41em) {
   .header__title {
     width: 100%;
     margin-right: 0;
@@ -422,7 +427,7 @@ body {
     margin-left: 5.1rem;
   }
 }
-@media only screen and (max-width: 36em) {
+@media only screen and (max-width: 41em) {
   .header__logo {
     margin-left: 0;
     text-align: center;
@@ -442,9 +447,11 @@ body {
     height: 0;
   }
 }
-@media only screen and (max-width: 36em) {
+@media only screen and (max-width: 41em) {
   .main {
-    top: 30vw;
+    position: relative;
+    top: 8vw;
+    padding: 0;
   }
 }
 
@@ -460,6 +467,15 @@ body {
   border-radius: 0.5rem;
   cursor: pointer;
 }
+@media only screen and (max-width: 41em) {
+  .btn[data--main-page=false] {
+    font-size: 2.44vw;
+    padding: 1.34vw;
+    width: 20.7vw;
+    height: 8.52vw;
+    border-radius: 0.61vw;
+  }
+}
 
 .card {
   position: relative;
@@ -470,7 +486,7 @@ body {
   width: 20rem;
   height: 31rem;
 }
-@media only screen and (max-width: 36em) {
+@media only screen and (max-width: 41em) {
   .card {
     height: 89vw;
   }
@@ -482,7 +498,7 @@ body {
   align-items: center;
   justify-content: space-between;
 }
-@media only screen and (max-width: 36em) {
+@media only screen and (max-width: 41em) {
   .card__link {
     height: 73vw;
   }
@@ -497,7 +513,7 @@ body {
   font-weight: bold;
   white-space: nowrap;
 }
-@media only screen and (max-width: 36em) {
+@media only screen and (max-width: 41em) {
   .card__name {
     font-size: 7.2vw;
   }
@@ -509,7 +525,7 @@ body {
   object-fit: cover;
   object-position: center;
 }
-@media only screen and (max-width: 36em) {
+@media only screen and (max-width: 41em) {
   .card__portrait {
     height: 61vw;
     width: 61vw;
@@ -530,7 +546,7 @@ body {
   margin: 0.6rem;
   white-space: nowrap;
 }
-@media only screen and (max-width: 36em) {
+@media only screen and (max-width: 41em) {
   .card__location {
     font-size: 4.1vw;
   }
@@ -539,7 +555,7 @@ body {
   margin-bottom: 0.5rem;
   white-space: nowrap;
 }
-@media only screen and (max-width: 36em) {
+@media only screen and (max-width: 41em) {
   .card__tagline {
     margin-bottom: 1.1vw;
     font-size: 3vw;
@@ -549,7 +565,7 @@ body {
   color: var(--color-grey-dark);
   font-size: 0.9rem;
 }
-@media only screen and (max-width: 36em) {
+@media only screen and (max-width: 41em) {
   .card__price {
     font-size: 2.5vw;
   }
@@ -637,7 +653,7 @@ body {
     align-content: start;
   }
 }
-@media only screen and (max-width: 36em) {
+@media only screen and (max-width: 41em) {
   .main__photographer-list {
     grid-template-columns: 1fr;
     gap: 6vw;
@@ -649,8 +665,41 @@ body {
   height: 30rem;
   margin: 0 10rem;
   display: flex;
+  flex-direction: row;
   align-items: center;
   justify-content: space-between;
+  border-radius: 0.5rem;
+  padding: 5rem;
+  font-weight: 400;
+}
+@media only screen and (max-width: 75em) {
+  .main__photographer-infos {
+    flex-direction: column;
+    height: 60rem;
+  }
+}
+@media only screen and (max-width: 62em) {
+  .main__photographer-infos {
+    margin: 0 5rem;
+  }
+}
+@media only screen and (max-width: 41em) {
+  .main__photographer-infos {
+    height: 94vw;
+    margin: 0 5vw;
+    padding: 6.1vw;
+  }
+}
+.main__photographer-text {
+  white-space: nowrap;
+}
+@media only screen and (max-width: 75em) {
+  .main__photographer-text {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    order: -1;
+  }
 }
 .main__photographer-image {
   height: 19rem;
@@ -658,6 +707,54 @@ body {
   border-radius: 50%;
   object-fit: cover;
   object-position: center;
+}
+@media only screen and (max-width: 75em) {
+  .main__photographer-image {
+    order: -2;
+  }
+}
+@media only screen and (max-width: 41em) {
+  .main__photographer-image {
+    height: 46vw;
+    width: 46vw;
+  }
+}
+@media only screen and (max-width: 75em) {
+  .main__photographer-description {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+}
+.main__photographer-title {
+  font-size: 6.4rem;
+  color: var(--color-secondary);
+  margin: -0.5rem;
+}
+@media only screen and (max-width: 41em) {
+  .main__photographer-title {
+    font-size: 8vw;
+  }
+}
+.main__photographer-location {
+  display: block;
+  color: var(--color-primary);
+  font-size: 2.4rem;
+  margin-bottom: 2rem;
+}
+@media only screen and (max-width: 41em) {
+  .main__photographer-location {
+    font-size: 3vw;
+  }
+}
+.main__photographer-tagline {
+  display: block;
+  font-size: 1.8rem;
+}
+@media only screen and (max-width: 41em) {
+  .main__photographer-tagline {
+    font-size: 2vw;
+  }
 }
 
 /*# sourceMappingURL=style.css.map */
