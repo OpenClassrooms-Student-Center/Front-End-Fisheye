@@ -266,6 +266,10 @@ form input {
 
 /** IMPORT SELECT FILTER COMPONENT **/
 .select_button {
+  display: flex;
+  flex-direction: flex;
+  align-content: flex-end;
+  justify-content: space-between;
   text-align: left;
   padding-left: 20px;
   font-family: "DM Sans", sans-serif;
@@ -287,6 +291,7 @@ form input {
   transition: transform 0.25s ease-in;
   content: ">";
   transform: rotate(90deg);
+  font-size: 25px;
   text-align: right;
   float: right;
   margin-right: 20px;
