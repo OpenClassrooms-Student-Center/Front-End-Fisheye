@@ -59,6 +59,10 @@ const closeModal = () => {
   modal.style.display = 'none';
 };
 
+const addFocusAnimation = btn => {
+  btn.dataset.firstFocus = false;
+};
+
 /**
  * The method takes care of rendering the main semantic view content in the main page, containing the list of photographers
  * @returns {undefined} No returned value by the function
@@ -144,6 +148,7 @@ const renderComponents = async (init = true) => {
 
       // EVENT LISTENERS
       photographerMainView.addHandlerClick(displayModal);
+      photographerMainView.addHandlerFocus(addFocusAnimation);
       formModalView.addHandlerClick(closeModal);
       return;
     }

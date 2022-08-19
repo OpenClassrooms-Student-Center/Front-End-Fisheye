@@ -53,6 +53,24 @@ class PhotographerMainView extends View {
       handler();
     });
   }
+
+  /**
+   * Function used to add an event listener on the when we focus the open button in the View
+   * @param {function} handler Function that will be called when the focus or hover event happens to the open button
+   * @returns {undefined} No returned value by the function
+   * @this {Object} the current PhotographerMainView instance calling the addHandlerClick function
+   * @author Werner Schmid
+   */
+  addHandlerFocus(handler) {
+    [('focus', 'mouseover')].forEach(el => {
+      this._parentElement.addEventListener(el, e => {
+        const btn = e.target.closest('.btn--open');
+        if (!btn) return;
+
+        handler(btn);
+      });
+    });
+  }
 }
 
 /**

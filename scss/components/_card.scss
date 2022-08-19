@@ -6,6 +6,11 @@
   justify-content: space-between;
   width: 20rem;
   height: 31rem;
+  transition: all 1.2s ease-in-out;
+  &:hover {
+    transform: scale(1.1);
+    transition: all 0.5s ease-in-out;
+  }
   @include respond(mobile) {
     height: 89vw;
   }
@@ -23,18 +28,30 @@
       text-decoration: none;
       color: inherit;
     }
+    &:hover {
+      .card__portrait {
+        filter: grayscale(0.8);
+        transition: all 0.5s ease-in-out;
+      }
+      .card__name {
+        color: var(--color-primary);
+        transition: all 0.5s ease-in-out;
+      }
+    }
   }
   &__name {
     color: var(--color-secondary);
     font-size: 3.6rem;
     font-weight: bold;
     white-space: nowrap;
+    transition: all 0.5s ease-in-out;
     @include respond(mobile) {
       font-size: 7.2vw;
     }
   }
   &__portrait {
     @include imageMixin;
+    transition: all 0.5s ease-in-out;
     @include respond(mobile) {
       height: 61vw;
       width: 61vw;

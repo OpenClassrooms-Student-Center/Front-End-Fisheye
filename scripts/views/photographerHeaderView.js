@@ -22,7 +22,7 @@ class PhotographerHeaderView extends View {
     const photographer = photographerFactory(this._data);
     return `
       ${photographer.getUserHeader()}
-      <button class="btn btn--open" data--main-page="false">Contactez-moi</button>
+      <button class="btn btn--open" data--main-page="false" data-first-focus="true">Contactez-moi</button>
       <img
         src="${photographer.picture}"
         alt="${photographer.name}"
