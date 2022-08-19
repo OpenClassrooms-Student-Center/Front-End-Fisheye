@@ -8,9 +8,10 @@
     right: 38px;
     z-index: 2;
     margin-bottom: -22px;
-
     border-radius: 5px;
-    .total_like,.price_rate_daily {
+
+    .total_like,
+    .price_rate_daily {
         font-family: $font_global;
         font-style: normal;
         font-weight: $font_weight_big;

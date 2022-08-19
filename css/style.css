@@ -361,7 +361,8 @@ form input {
   margin-bottom: -22px;
   border-radius: 5px;
 }
-.photographer_statistic .total_like, .photographer_statistic .price_rate_daily {
+.photographer_statistic .total_like,
+.photographer_statistic .price_rate_daily {
   font-family: "DM Sans", sans-serif;
   font-style: normal;
   font-weight: 700;
