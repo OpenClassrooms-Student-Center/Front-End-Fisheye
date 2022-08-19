@@ -19,7 +19,7 @@ header h1 {
     color: $color_primary1;
     top: 44px;
     margin-right: 100px;
-    font-weight: 400;
-    font-size: 36px;
+    font-weight: $font_weight_small;
+    font-size: $font_size_header_h1;
     line-height: 47px;
 }

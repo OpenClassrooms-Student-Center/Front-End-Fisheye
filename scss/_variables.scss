@@ -1,5 +1,23 @@
 /** FONT **/
 $font_global: "DM Sans", sans-serif;
+$font_weight_small: 400;
+$font_weight_big: 700;
+
+$font_size_header_h1: 36px;
+
+$font_size_card_photographer_h2: $font_size_header_h1;
+$font_size_card_photographer_h3: 13px;
+$font_size_card_photographer_h4: 10px;
+$font_size_card_photographer_h5: 9px;
+
+$font_size_photographer_header_h1: 64px;
+$font_size_photographer_header_h2: 24px;
+$font_size_photographer_header_h3: 18px;
+
+$font_size_filter_h5: $font_size_photographer_header_h3;
+
+$font_size_modal_h2: $font_size_photographer_header_h1;
+$font_size_modal_label: $font_size_card_photographer_h2;
 /** END FONT **/
 
 /** COLOR VARIABLES **/
@@ -12,10 +30,3 @@ $color_secondary2: #525252;
 $color_secondary2_bg: #FAFAFA;
 $color_background: #DB8876;
 /** END COLOR VARIABLES **/
-
-
-
-
-
-
-

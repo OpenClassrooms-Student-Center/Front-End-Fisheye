@@ -190,6 +190,25 @@ form input {
   background-color: #DB8876;
 }
 
+/** IMPORT SELECT FILTER COMPONENT **/
+.filter_section {
+  display: flex;
+  flex-direction: row;
+  align-items: baseline;
+}
+
+.filter_section h5 {
+  font-family: "DM Sans", sans-serif;
+  font-weight: 700;
+  font-style: normal;
+  font-size: 18px;
+  color: #000000;
+}
+
+.filter_section select {
+  margin-left: 10px;
+}
+
 /** IMPORT PAGES (other) Styles **/
 .photographer_section {
   display: grid;
@@ -197,6 +216,10 @@ form input {
   gap: 70px;
   margin-top: 75px;
   margin-bottom: 75px;
+}
+
+.margin-left-right {
+  margin: 0 100px;
 }
 
 .photograph_header {
@@ -207,7 +230,6 @@ form input {
   justify-content: space-between;
   background-color: #FAFAFA;
   height: 313px;
-  margin: 0 100px;
   margin-top: 10px;
   padding-left: 30px;
   padding-right: 30px;
@@ -263,6 +285,55 @@ h3 {
   display: none;
 }
 
+/** IMPORT RESPONSIVE **/
+@media (max-width: 1100px) {
+  .photographer_section {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .photographer_card h3 {
+    font-size: 15.6px;
+  }
+  .photographer_card h4 {
+    font-size: 12px;
+  }
+  .photographer_card h5 {
+    font-size: 10.8px;
+  }
+}
+@media (max-width: 800px) {
+  .logo,
+header h1 {
+    margin-left: 20px;
+    margin-right: 20px;
+    font-size: 30px;
+  }
+}
+@media (max-width: 700px) {
+  header {
+    flex-direction: column;
+    margin-top: 40px;
+  }
+
+  .photographer_card img {
+    width: 230px;
+    height: 230px;
+  }
+
+  .photographer_section {
+    grid-template-columns: 1fr;
+  }
+
+  .photographer_card h3 {
+    font-size: 19.5px;
+  }
+  .photographer_card h4 {
+    font-size: 15px;
+  }
+  .photographer_card h5 {
+    font-size: 13.5px;
+  }
+}
 /** IMPORT FOOTER STYLES **/
 footer {
   height: 2px;

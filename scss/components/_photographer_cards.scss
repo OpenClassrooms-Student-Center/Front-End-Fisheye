@@ -25,32 +25,32 @@ h4,
 h5 {
     font-family: $font_global;
     font-style: normal;
-    font-weight: 400;
+    font-weight: $font_weight_small;
     text-align: center;
 }
 
 .photographer_card h2 {
     margin-top: 20px;
     color: $color_primary2;
-    font-size: 36px;
+    font-size: $font_size_card_photographer_h2;
 }
 
 .photographer_card h3 {
-    font-size: 13px;
+    font-size: $font_size_card_photographer_h3;
     line-height: 17px;
     color: $color_primary1;
 }
 
 .photographer_card h4 {
     margin-top: 2px;
-    font-size: 10px;
+    font-size: $font_size_card_photographer_h4;
     line-height: 13px;
     color: $default_font_color;
 }
 
 .photographer_card h5 {
     margin-top: 2px;
-    font-size: 9px;
+    font-size: $font_size_card_photographer_h5;
     line-height: 12px;
     text-align: center;
     color: $color_gray;

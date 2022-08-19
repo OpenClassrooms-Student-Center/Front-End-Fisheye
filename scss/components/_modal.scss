@@ -20,7 +20,7 @@
 }
 
 .modal header h2 {
-    font-size: 64px;
+    font-size: $font_size_modal_h2;
     font-weight: normal;
     text-align: center;
 }
@@ -34,7 +34,7 @@ form {
 
 form label {
     color: $color_secondary2;
-    font-size: 36px;
+    font-size: $font_size_modal_label;
 }
 
 form div {
