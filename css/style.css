@@ -41,13 +41,23 @@ header {
   margin-left: 115px;
 }
 
+.logo_photographer {
+  height: 50px;
+  margin-left: 100px;
+  margin-top: 10px;
+}
+
 header h1 {
   color: #901C1C;
-  margin-right: 140px;
+  top: 44px;
+  margin-right: 100px;
+  font-weight: 400;
+  font-size: 36px;
+  line-height: 47px;
 }
 
 /** IMPORT PHOTOGRAPHERS CARDS **/
-.photographer-card {
+.photographer_card {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -55,7 +65,7 @@ header h1 {
   justify-self: center;
 }
 
-.photographer-card img {
+.photographer_card img {
   box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.25);
   transition: box-shadow 1s;
   height: 200px;
@@ -64,7 +74,7 @@ header h1 {
   object-fit: cover;
 }
 
-.photographer-card img:hover {
+.photographer_card img:hover {
   cursor: pointer;
   box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.5);
 }
@@ -79,26 +89,26 @@ h5 {
   text-align: center;
 }
 
-.photographer-card h2 {
+.photographer_card h2 {
   margin-top: 20px;
   color: #D3573C;
   font-size: 36px;
 }
 
-.photographer-card h3 {
+.photographer_card h3 {
   font-size: 13px;
   line-height: 17px;
   color: #901C1C;
 }
 
-.photographer-card h4 {
+.photographer_card h4 {
   margin-top: 2px;
   font-size: 10px;
   line-height: 13px;
   color: #000000;
 }
 
-.photographer-card h5 {
+.photographer_card h5 {
   margin-top: 2px;
   font-size: 9px;
   line-height: 12px;
@@ -164,7 +174,7 @@ form input {
 /** IMPORT CONTACT BUTTON COMPONENT **/
 .contact_button {
   font-size: 20px;
-  font-weight: bold;
+  font-weight: 700;
   color: white;
   padding: 11px;
   width: 170px;
@@ -189,51 +199,68 @@ form input {
   margin-bottom: 75px;
 }
 
-#contact_modal {
-  display: none;
-}
-
-.photograph-header {
+.photograph_header {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
   align-content: fled-end;
   justify-content: space-between;
   background-color: #FAFAFA;
-  height: 300px;
-  margin: 0 115px;
+  height: 313px;
+  margin: 0 100px;
+  margin-top: 10px;
+  padding-left: 30px;
+  padding-right: 30px;
 }
 
-.photograph-about,
-.photograph-button {
+.photograph_about,
+.photograph_button {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: flex-start;
 }
 
-.photograph-header h1,
+.photograph_button {
+  margin-top: 30px;
+  margin-right: 80px;
+}
+
+.photograph_about {
+  margin-left: 20px;
+}
+
+.photograph_header div:nth-child(3) {
+  margin-right: 20px;
+}
+
+.photograph_header h1,
 h2,
 h3 {
   font-family: "DM Sans", sans-serif;
+  font-weight: 400;
 }
 
-.photograph-header h1 {
+.photograph_header h1 {
   font-size: 64px;
+  margin-bottom: -15px;
   color: #D3573C;
-  line-height: 83px;
 }
 
-.photograph-header h2 {
+.photograph_header h2 {
+  margin-top: 15px;
+  margin-bottom: 20px;
   font-size: 24px;
-  line-height: 31px;
   color: #901C1C;
 }
 
-.photograph-header h3 {
+.photograph_header h3 {
   font-size: 18px;
-  line-height: 23px;
   color: #525252;
+}
+
+#contact_modal {
+  display: none;
 }
 
 /** IMPORT FOOTER STYLES **/

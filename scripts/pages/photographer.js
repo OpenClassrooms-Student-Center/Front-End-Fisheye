@@ -13,7 +13,7 @@ async function init() {
         const idValue = await getUrlParameter("id");
         const { photographers } = await getPhotographers(); // Function inside sharedFunction.js
 
-        displayData(photographers, ".photograph-header", idValue); // Function inside sharedFunction.js
+        displayData(photographers, ".photograph_header", idValue); // Function inside sharedFunction.js
         console.log("Page initialiser avec succès depuis init()");
     } catch (e) {
         console.error(e);

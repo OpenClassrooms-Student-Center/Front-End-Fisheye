@@ -37,7 +37,7 @@ function photographerFactory(data) {
         // Create DOM only if we got a picture a id and a name
         if (name && id && portrait) {
             const article = document.createElement("article");
-            article.setAttribute("class", "photographer-card");
+            article.setAttribute("class", "photographer_card");
 
             // Create Dynamique LINK with Picture
             const linkElement = article.appendChild(
@@ -63,10 +63,10 @@ function photographerFactory(data) {
     }
 
     function setPhotographerHeader() {
-        setInnerHtml(".photograph-header h1", name);
-        setInnerHtml(".photograph-header h2", city + ", " + country);
-        setInnerHtml(".photograph-header h3", tagline);
-        const imgProfile = document.querySelector(".photograph-header img");
+        setInnerHtml(".photograph_header h1", name);
+        setInnerHtml(".photograph_header h2", city + ", " + country);
+        setInnerHtml(".photograph_header h3", tagline);
+        const imgProfile = document.querySelector(".photograph_header img");
         imgProfile.setAttribute("src", picture);
     }
 

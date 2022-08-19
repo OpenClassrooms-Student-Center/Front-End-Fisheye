@@ -10,46 +10,64 @@
 ///// END MAIN PAGE // 
 
 //////////////// PHOTOGRAPHER PAGE /////// 
-#contact_modal {
-    display: none;
-}
 
-.photograph-header {
+
+.photograph_header {
     @include flex-basic(row, wrap, fled-end, space-between, null);
     background-color: $color_secondary2_bg;
-    height: 300px;
-    margin: 0 115px;
+    height: 313px;
+    margin: 0 100px;
+    margin-top: 10px;
+    @include padding-left-and-right(30px);
 }
 
-.photograph-about,
-.photograph-button {
+.photograph_about,
+.photograph_button {
     @include flex-basic(column, null, null, center, flex-start);
 }
 
-.photograph-header h1,
+.photograph_button {
+    margin-top: 30px;
+    margin-right: 80px;
+}
+
+.photograph_about {
+    margin-left: 20px;
+}
+
+.photograph_header div:nth-child(3) {
+    margin-right: 20px;
+}
+
+.photograph_header h1,
 h2,
 h3 {
     font-family: $font_global;
+    font-weight: 400;
 }
 
-.photograph-header h1 {
+.photograph_header h1 {
     font-size: 64px;
+    margin-bottom: -15px;
     color: $color_primary2;
-    line-height: 83px;
 }
 
-.photograph-header h2 {
+.photograph_header h2 {
+    margin-top: 15px;
+    margin-bottom: 20px;
     font-size: 24px;
-    line-height: 31px;
     color: $color_primary1;
 }
 
-.photograph-header h3 {
+.photograph_header h3 {
     font-size: 18px;
-    line-height: 23px;
     color: $color_secondary2;
 }
 
-
-
 ////////////// END PHOTOGRAPHER PAGE ////////
+
+
+
+#contact_modal {
+    display: none;
+}

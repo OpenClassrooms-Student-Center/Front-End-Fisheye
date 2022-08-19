@@ -1,6 +1,7 @@
 header {
     @include flex-basic(row, null, null, space-between, center);
     height: 120px;
+
 }
 
 .logo {
@@ -8,7 +9,17 @@ header {
     margin-left: 115px;
 }
 
+.logo_photographer {
+    height: 50px;
+    margin-left: 100px;
+    margin-top: 10px;
+}
+
 header h1 {
     color: $color_primary1;
-    margin-right: 140px;
+    top: 44px;
+    margin-right: 100px;
+    font-weight: 400;
+    font-size: 36px;
+    line-height: 47px;
 }
