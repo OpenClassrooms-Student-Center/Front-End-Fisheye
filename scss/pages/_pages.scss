@@ -12,7 +12,7 @@
 //////////////// PHOTOGRAPHER PAGE /////// 
 
 
-.margin-left-right {
+.margin_left_right {
     margin: 0 100px;
 }
 
@@ -49,6 +49,10 @@
     }
 }
 
+.photograph_header div:nth-child(3) {
+    margin-right: 20px;
+}
+
 .photograph_about,
 .photograph_button {
     @include flex-basic(column, null, null, center, flex-start);
@@ -63,9 +67,6 @@
     margin-left: 20px;
 }
 
-.photograph_header div:nth-child(3) {
-    margin-right: 20px;
-}
 
 ////////////// END PHOTOGRAPHER PAGE ////////
 

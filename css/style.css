@@ -207,7 +207,7 @@ form input {
   margin-bottom: 75px;
 }
 
-.margin-left-right {
+.margin_left_right {
   margin: 0 100px;
 }
 
@@ -245,6 +245,10 @@ form input {
   color: #525252;
 }
 
+.photograph_header div:nth-child(3) {
+  margin-right: 20px;
+}
+
 .photograph_about,
 .photograph_button {
   display: flex;
@@ -260,10 +264,6 @@ form input {
 
 .photograph_about {
   margin-left: 20px;
-}
-
-.photograph_header div:nth-child(3) {
-  margin-right: 20px;
 }
 
 #contact_modal {
@@ -297,16 +297,11 @@ form input {
 
   .logo,
 header h1 {
-    margin-left: 20px;
+    margin-left: 20px !important;
     margin-right: 20px;
   }
 }
 @media (max-width: 700px) {
-  .photographer_card img {
-    width: 230px;
-    height: 230px;
-  }
-
   .photographer_section {
     grid-template-columns: 1fr;
   }
@@ -319,6 +314,10 @@ header h1 {
   }
   .photographer_card h5 {
     font-size: 13.5px;
+  }
+  .photographer_card img {
+    width: 230px;
+    height: 230px;
   }
 }
 /** IMPORT FOOTER STYLES **/
