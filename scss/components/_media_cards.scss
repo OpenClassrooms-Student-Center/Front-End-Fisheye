@@ -1,10 +1,11 @@
 .media_card {
     @include flex-basic(column, null, null, null, null);
-    width: 350px;
+    flex-wrap: wrap;
+    max-width: 350px;
 
     img {
-        height: 300px;
-        width: 350px;
+        max-height: 300px;
+        max-width: 350px;
         object-fit: cover;
 
         &:hover {

@@ -11,7 +11,7 @@
     border-radius: 5px;
 
 
-    
+
     .total_like,
     .price_rate_daily {
         font-family: $font_global;
@@ -28,6 +28,13 @@
         padding-left: 5px;
         content: "♥";
         font-size: $font_size / 1.55 * 1.33;
+    }
+
+}
+
+@media (max-width: 700px) {
+    .photographer_statistic {
+        display: none;
     }
 
 }

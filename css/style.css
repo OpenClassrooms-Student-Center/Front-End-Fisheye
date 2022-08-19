@@ -212,6 +212,11 @@ form input {
   background-color: #DB8876;
 }
 
+@media (max-width: 700px) {
+  .contact_button {
+    display: none;
+  }
+}
 /** IMPORT PHOTOGRAPH HEADER COMPONENT **/
 .photograph_header {
   display: flex;
@@ -265,6 +270,35 @@ form input {
   margin-bottom: 10px;
 }
 
+@media (max-width: 1100px) {
+  .photograph_header {
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-content: fled-end;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 15px;
+  }
+
+  .photograph_button {
+    margin-bottom: 30px;
+  }
+}
+@media (max-width: 800px) {
+  .photograph_header > .photograph_about {
+    margin-left: 0;
+  }
+
+  .photograph_header h1 {
+    font-size: 46.8px;
+  }
+
+  .photograph_header > .photographer_card {
+    display: none;
+  }
+}
 /** IMPORT SELECT FILTER COMPONENT **/
 .select_button {
   display: flex;
@@ -377,15 +411,21 @@ form input {
   font-size: 30.8903225806px;
 }
 
+@media (max-width: 700px) {
+  .photographer_statistic {
+    display: none;
+  }
+}
 /** IMPORT PHOTOGRAPHER MEDIA CARDS COMPONENT **/
 .media_card {
   display: flex;
   flex-direction: column;
-  width: 350px;
+  flex-wrap: wrap;
+  max-width: 350px;
 }
 .media_card img {
-  height: 300px;
-  width: 350px;
+  max-height: 300px;
+  max-width: 350px;
   object-fit: cover;
 }
 .media_card img:hover {
@@ -429,6 +469,7 @@ form input {
   display: flex;
   flex-direction: row;
   align-items: baseline;
+  margin-left: 0;
 }
 .filter_section h5:first-child {
   margin-top: 20px;
@@ -447,7 +488,7 @@ form input {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   row-gap: 30px;
-  column-gap: 95px;
+  column-gap: 6.6%;
   margin-top: 20px;
   margin-bottom: 75px;
 }
@@ -466,7 +507,8 @@ footer {
 
 /** IMPORT RESPONSIVE STYLES for Non Components Elements **/
 @media (max-width: 1100px) {
-  .photographer_section {
+  .photographer_section,
+.media_section {
     grid-template-columns: 1fr 1fr;
   }
 }
@@ -476,14 +518,29 @@ footer {
     margin-top: 40px;
   }
 
+  /** IMPORTANT ISSUE TO WORK ON*/
+  .logo_photographer {
+    margin-left: 0 !important;
+  }
+
   .logo,
 header h1 {
     margin-left: 20px !important;
-    margin-right: 20px;
+    margin-right: 20px !important;
+  }
+
+  /** IMPORTANT ISSUE TO WORK ON*/
+  .margin_left_right {
+    margin: 0 20px;
   }
 }
 @media (max-width: 700px) {
   .photographer_section {
+    grid-template-columns: 1fr;
+  }
+}
+@media (max-width: 500px) {
+  .media_section {
     grid-template-columns: 1fr;
   }
 }

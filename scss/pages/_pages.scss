@@ -16,6 +16,7 @@
 
 .filter_section {
     @include flex-basic(row, null, null, null, baseline);
+    margin-left: 0;
 
     h5:first-child {
         margin-top: 20px;
@@ -36,7 +37,7 @@
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     row-gap: 30px;
-    column-gap: 95px;
+    column-gap: 6.6%;
     margin-top: 20px;
     margin-bottom: 75px;
 }

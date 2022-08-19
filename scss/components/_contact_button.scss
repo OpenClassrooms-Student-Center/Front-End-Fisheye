@@ -17,3 +17,9 @@
         background-color: $color_background;
     }
 }
+
+@media (max-width: 700px) {
+    .contact_button {
+    display: none;
+    }
+}
