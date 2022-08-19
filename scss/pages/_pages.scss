@@ -22,6 +22,31 @@
     height: 313px;
     margin-top: 10px;
     @include padding-left-and-right(30px);
+
+    h1,
+    h2,
+    h3 {
+        font-family: $font_global;
+        font-weight: $font_weight_small;
+    }
+
+    h1 {
+        font-size: $font_size_photographer_header_h1;
+        margin-bottom: -15px;
+        color: $color_primary2;
+    }
+
+    h2 {
+        margin-top: 15px;
+        margin-bottom: 20px;
+        font-size: $font_size_photographer_header_h2;
+        color: $color_primary1;
+    }
+
+    h3 {
+        font-size: $font_size_photographer_header_h3;
+        color: $color_secondary2;
+    }
 }
 
 .photograph_about,
@@ -40,31 +65,6 @@
 
 .photograph_header div:nth-child(3) {
     margin-right: 20px;
-}
-
-.photograph_header h1,
-h2,
-h3 {
-    font-family: $font_global;
-    font-weight: $font_weight_small;
-}
-
-.photograph_header h1 {
-    font-size: $font_size_photographer_header_h1;
-    margin-bottom: -15px;
-    color: $color_primary2;
-}
-
-.photograph_header h2 {
-    margin-top: 15px;
-    margin-bottom: 20px;
-    font-size: $font_size_photographer_header_h2;
-    color: $color_primary1;
-}
-
-.photograph_header h3 {
-    font-size: $font_size_photographer_header_h3;
-    color: $color_secondary2;
 }
 
 ////////////// END PHOTOGRAPHER PAGE ////////

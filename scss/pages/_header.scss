@@ -2,24 +2,27 @@ header {
     @include flex-basic(row, null, null, space-between, center);
     height: 120px;
 
-}
 
-.logo {
-    height: 50px;
-    margin-left: 115px;
-}
+    h1 {
+        color: $color_primary1;
+        top: 44px;
+        margin-right: 100px;
+        font-weight: $font_weight_small;
+        font-size: $font_size_header_h1;
+        line-height: 47px;
+    }
 
-.logo_photographer {
-    height: 50px;
-    margin-left: 100px;
-    margin-top: 10px;
-}
+    .logo,
+    .logo_photographer {
+        height: 50px;
+    }
 
-header h1 {
-    color: $color_primary1;
-    top: 44px;
-    margin-right: 100px;
-    font-weight: $font_weight_small;
-    font-size: $font_size_header_h1;
-    line-height: 47px;
+    .logo {
+        margin-left: 115px;
+    }
+
+    .logo_photographer {
+        margin-left: 100px;
+        margin-top: 10px;
+    }
 }
