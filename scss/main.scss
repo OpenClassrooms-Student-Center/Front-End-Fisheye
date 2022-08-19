@@ -5,20 +5,22 @@
 /** IMPORT MIXIN **/
 @import "_mixin.scss";
 /** IMPORT HEADER STYLES **/
-@import "pages/_header.scss";
+@import "pages/header.scss";
 /** IMPORT PHOTOGRAPHERS CARDS **/
-@import "components/_photographer_cards.scss";
+@import "components/photographer_cards.scss";
 /** IMPORT MODAL COMPONENT **/
-@import "components/_modal.scss";
+@import "components/modal.scss";
 /** IMPORT CONTACT BUTTON COMPONENT **/
-@import "components/_contact_button.scss";
+@import "components/contact_button.scss";
 /** IMPORT PHOTOGRAPH HEADER COMPONENT **/
-@import "components/_photograph_header.scss";
+@import "components/photograph_header.scss";
 /** IMPORT SELECT FILTER COMPONENT **/
-@import "components/_select_filter.scss";
+@import "components/select_filter.scss";
+/** IMPORT PHOTOGRAPHER STATISTIC COMPONENT **/
+@import "components/photographer_statistic.scss";
 /** IMPORT PAGES (other) Styles **/
-@import "pages/_pages.scss";
-/** IMPORT RESPONSIVE STYLES for Non Components Elements **/ 
-@import "_responsive.scss"; 
+@import "pages/pages.scss";
 /** IMPORT FOOTER STYLES **/
-@import "pages/_footer.scss";
+@import "pages/footer.scss";
+/** IMPORT RESPONSIVE STYLES for Non Components Elements **/
+@import "_responsive.scss";

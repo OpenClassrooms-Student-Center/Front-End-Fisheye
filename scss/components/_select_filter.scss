@@ -1,5 +1,9 @@
 .select_button {
-    @include flex-basic(flex, null, flex-end, space-between, null);
+    display: flex;
+    align-content: flex-end;
+    align-items: center;
+    justify-content: space-between;
+
     text-align: left;
     padding-left: 20px;
     font-family: $font_global;

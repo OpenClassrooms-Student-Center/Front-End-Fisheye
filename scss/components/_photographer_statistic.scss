@@ -1,0 +1,30 @@
+.photographer_statistic {
+    @include flex-basic(row, null, flex-start, space-around, baseline);
+    position: fixed;
+    background-color: $color_background;
+    width: 376px;
+    height: 89px;
+    bottom: 0;
+    right: 38px;
+    z-index: 2;
+    margin-bottom: -22px;
+
+    border-radius: 5px;
+    .total_like,.price_rate_daily {
+        font-family: $font_global;
+        font-style: normal;
+        font-weight: $font_weight_big;
+        font-size: 24px;
+        line-height: 31px;
+        color: $default_font_color;
+        padding-top: 23px;
+
+    }
+
+    .total_like:after {
+        padding-left: 5px;
+        content: "♥";
+        font-size: 35px;
+    }
+
+}

@@ -1,3 +1,4 @@
+@charset "UTF-8";
 /** Used to load all variables for this project about SCSS **/
 /** FONT **/
 /** END FONT **/
@@ -267,8 +268,8 @@ form input {
 /** IMPORT SELECT FILTER COMPONENT **/
 .select_button {
   display: flex;
-  flex-direction: flex;
   align-content: flex-end;
+  align-items: center;
   justify-content: space-between;
   text-align: left;
   padding-left: 20px;
@@ -343,6 +344,38 @@ form input {
   transition: transform 0.25s ease-in;
 }
 
+/** IMPORT PHOTOGRAPHER STATISTIC COMPONENT **/
+.photographer_statistic {
+  display: flex;
+  flex-direction: row;
+  align-content: flex-start;
+  justify-content: space-around;
+  align-items: baseline;
+  position: fixed;
+  background-color: #DB8876;
+  width: 376px;
+  height: 89px;
+  bottom: 0;
+  right: 38px;
+  z-index: 2;
+  margin-bottom: -22px;
+  border-radius: 5px;
+}
+.photographer_statistic .total_like, .photographer_statistic .price_rate_daily {
+  font-family: "DM Sans", sans-serif;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 31px;
+  color: #000000;
+  padding-top: 23px;
+}
+.photographer_statistic .total_like:after {
+  padding-left: 5px;
+  content: "♥";
+  font-size: 35px;
+}
+
 /** IMPORT PAGES (other) Styles **/
 .photographer_section {
   display: grid;
@@ -378,6 +411,14 @@ form input {
   display: none;
 }
 
+/** IMPORT FOOTER STYLES **/
+footer {
+  height: 2px;
+  width: 100%;
+  background-color: white;
+  margin-top: 75px;
+}
+
 /** IMPORT RESPONSIVE STYLES for Non Components Elements **/
 @media (max-width: 1100px) {
   .photographer_section {
@@ -400,13 +441,6 @@ header h1 {
   .photographer_section {
     grid-template-columns: 1fr;
   }
-}
-/** IMPORT FOOTER STYLES **/
-footer {
-  height: 2px;
-  width: 100%;
-  background-color: white;
-  margin-top: 75px;
 }
 
 /*# sourceMappingURL=style.css.map */
