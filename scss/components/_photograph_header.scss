@@ -1,5 +1,5 @@
 .photograph_header {
-    @include flex-basic(row, wrap, fled-end, space-between, null);
+    @include flex-basic(row, no-wrap, fled-end, space-between, null);
     background-color: $color_secondary2_bg;
     height: 313px;
     margin-top: 10px;
@@ -59,8 +59,22 @@
         padding-top: 15px;
     }
 
+    .photograph_header h1 {
+        font-size: $font_size * 1.15;
+    }
+
+    .photograph_header h2 {
+        font-size: $font_size / 1.8;
+
+    }
+
+    .photograph_header h3 {
+        font-size: $font-size / 2.2;
+    }
+
     .photograph_button {
         margin-bottom: 30px;
+
 
     }
 
@@ -68,16 +82,32 @@
 }
 
 @media (max-width: 800px) {
+    .photograph_header {
+        @include flex-basic(column, null, fled-end, space-between, center);
+
+        .photograph_button {
+            align-items: inherit;
+            margin-right: 0px;
+            position: absolute;
+            margin-top: 200px;
+        }
+
+    }
 
     .photograph_header>.photograph_about {
         margin-left: 0;
+        align-items: center;
     }
 
-    .photograph_header h1 {
-        font-size: $font_size * 1.3;
+    .photograph_header h1,
+    h2,
+    h3 {
+        text-align: center;
     }
 
     .photograph_header>.photographer_card {
         display: none;
     }
+
+
 }

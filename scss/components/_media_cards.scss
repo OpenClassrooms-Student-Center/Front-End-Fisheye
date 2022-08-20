@@ -4,11 +4,14 @@
     max-width: 350px;
 
     img {
+        transition: box-shadow 1s;
         max-height: 300px;
         max-width: 350px;
         object-fit: cover;
+        border-radius: 5px;
 
         &:hover {
+            transition: box-shadow 1s;
             cursor: pointer;
             box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.50);
         }
@@ -33,4 +36,12 @@
         content: "♥";
     }
 
+}
+
+@media (max-width: 600px) {
+
+    .media_card img,
+    .media_card {
+        max-width: 100%;
+    }
 }

@@ -212,16 +212,11 @@ form input {
   background-color: #DB8876;
 }
 
-@media (max-width: 700px) {
-  .contact_button {
-    display: none;
-  }
-}
 /** IMPORT PHOTOGRAPH HEADER COMPONENT **/
 .photograph_header {
   display: flex;
   flex-direction: row;
-  flex-wrap: wrap;
+  flex-wrap: no-wrap;
   align-content: fled-end;
   justify-content: space-between;
   background-color: #FAFAFA;
@@ -282,17 +277,46 @@ form input {
     padding-top: 15px;
   }
 
+  .photograph_header h1 {
+    font-size: 41.4px;
+  }
+
+  .photograph_header h2 {
+    font-size: 20px;
+  }
+
+  .photograph_header h3 {
+    font-size: 16.3636363636px;
+  }
+
   .photograph_button {
     margin-bottom: 30px;
   }
 }
 @media (max-width: 800px) {
-  .photograph_header > .photograph_about {
-    margin-left: 0;
+  .photograph_header {
+    display: flex;
+    flex-direction: column;
+    align-content: fled-end;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .photograph_header .photograph_button {
+    align-items: inherit;
+    margin-right: 0px;
+    position: absolute;
+    margin-top: 200px;
   }
 
-  .photograph_header h1 {
-    font-size: 46.8px;
+  .photograph_header > .photograph_about {
+    margin-left: 0;
+    align-items: center;
+  }
+
+  .photograph_header h1,
+h2,
+h3 {
+    text-align: center;
   }
 
   .photograph_header > .photographer_card {
@@ -424,11 +448,14 @@ form input {
   max-width: 350px;
 }
 .media_card img {
+  transition: box-shadow 1s;
   max-height: 300px;
   max-width: 350px;
   object-fit: cover;
+  border-radius: 5px;
 }
 .media_card img:hover {
+  transition: box-shadow 1s;
   cursor: pointer;
   box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.5);
 }
@@ -452,6 +479,12 @@ form input {
   content: "♥";
 }
 
+@media (max-width: 600px) {
+  .media_card img,
+.media_card {
+    max-width: 100%;
+  }
+}
 /** IMPORT PAGES (other) Styles **/
 .photographer_section {
   display: grid;
@@ -516,22 +549,24 @@ footer {
   header {
     flex-direction: column;
     margin-top: 40px;
+    height: 100px;
   }
-
-  /** IMPORTANT ISSUE TO WORK ON*/
-  .logo_photographer {
-    margin-left: 0 !important;
+  header .logo_photographer {
+    margin-left: 0;
   }
-
-  .logo,
+  header .logo,
 header h1 {
-    margin-left: 20px !important;
-    margin-right: 20px !important;
+    margin-left: 20px;
+    margin-right: 20px;
+    font-size: 30px;
   }
 
-  /** IMPORTANT ISSUE TO WORK ON*/
   .margin_left_right {
     margin: 0 20px;
+  }
+
+  .filter_section {
+    justify-content: space-between;
   }
 }
 @media (max-width: 700px) {
@@ -539,7 +574,7 @@ header h1 {
     grid-template-columns: 1fr;
   }
 }
-@media (max-width: 500px) {
+@media (max-width: 600px) {
   .media_section {
     grid-template-columns: 1fr;
   }
