@@ -63,6 +63,9 @@ function updateModalData(photographer) {
 
 async function displayMediaData(media, name) {
     const photos = document.querySelector('.photo');
+    while (photos.firstChild) {
+        photos.removeChild(photos.lastChild);
+    }
     media.forEach((photo) => {
         const userPhoto = photographerFactory(photo, 'media', name);
         photos.appendChild(userPhoto);
@@ -89,15 +92,15 @@ async function sort(media) {
     const option = document.querySelectorAll('option')
 
     function sortPopular(media) {
-        media.sort((value1, value2) => value2.likes - value1.likes);
+        return media.sort((value1, value2) => value2.likes - value1.likes);
     }
 
     function sortDate(media) {
-        media.sort((value1, value2) => new Date(value2.date) - new Date(value1.date))
+        return media.sort((value1, value2) => new Date(value2.date) - new Date(value1.date))
     }
 
     function sortTitle(media) {
-        media.sort((value1, value2) => {
+        return media.sort((value1, value2) => {
             if (value1.title < value2.title) {
                 return -1;
             } else if (value1.title > value2.title) {
@@ -119,28 +122,38 @@ async function sort(media) {
         })
     }
 
-    if (option[0].selected === true) {
+    if (option[0].selected) {
         hideSelected();
         return sortPopular(media);
     }
-    if (option[1].selected === true) {
+    if (option[1].selected) {
         hideSelected();
         return sortDate(media);
     }
-    if (option[2].selected === true) {
+    if (option[2].selected) {
         hideSelected();
         return sortTitle(media);
     }
+    return media;
+}
+
+const id = getPhotographerId();
+let media = [];
+let photographer = undefined;
+
+async function updateSort() {
+    console.log(media);
+    media = await sort(media);
+    console.log(media);
+    await displayMediaData(media, photographer.name)
 }
 
 async function init() {
     // Récupère les datas des photographes
-    const id = getPhotographerId();
-    const photographer = await getPhotographer(id);
+    photographer = await getPhotographer(id);
+    media = await getMedia(id);
     await displayPhotographerData(photographer);
-    const media = await getMedia(id);
-    await sort(media);
-    await displayMediaData(media, photographer.name);
+    await updateSort();
 }
 
 init()

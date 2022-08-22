@@ -8,9 +8,9 @@
     <title>Fisheye - photographe </title>
 </head>
 <body>
-<header>
-    <a href="../index.html">
-        <img src="../../assets/images/logo.png" class="logo" alt="logo_fisheye"/>
+<header aria-label="header">
+    <a aria-label="to fisheye home page" href="../index.html">
+        <img src="../../assets/images/logo.png" class="logo" alt="logo fisheye"/>
     </a>
 </header>
 <main id="main">
@@ -19,13 +19,13 @@
         <div>
             <label for="menu">Trier par</label>
             <select id="menu">
-                <option id="popular" onclick="sort()">
+                <option id="popular" onclick="updateSort()">
                     Popularité
                 </option>
-                <option id="date" onclick="sort()">
+                <option id="date" onclick="updateSort()">
                     Date
                 </option>
-                <option id="title" onclick="sort()">
+                <option id="title" onclick="updateSort()">
                     Titre
                 </option>
             </select>
