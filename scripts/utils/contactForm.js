@@ -16,7 +16,7 @@ function displayModal() {
     //affichage du nom du photographe
     document.getElementById("h2Contact").innerHTML = "Contactez-moi </br> " + fullName; 
     //focus sur la croix de fermeture
-    document.getElementById("closeForm").focus(); //marche mais n'affiche pas le focus
+    document.getElementById("closeForm").focus();
     
     //fermeture avec la touche echap
     modal.addEventListener('keydown', e => {
@@ -24,6 +24,13 @@ function displayModal() {
             closeModal();
         }
     })
+    //fermeture avec la touchée entrée sur la croix de fermeture
+    document.getElementById("closeForm").addEventListener('keydown', e => {
+        if(e.key == "Enter") {
+            closeModal();
+        }
+    })
+    
 
 }
 
@@ -42,3 +49,24 @@ function closeModal() {
 
     
 }
+
+//validation du formulaire
+
+
+let submit = document.getElementById("submitContact");
+let prenom ="";
+let nom ="";
+let email ="";
+let message = "";
+submit.addEventListener("click", e => {
+    e.preventDefault();
+    prenom = document.getElementById("inputFirstname").value;
+   
+    nom = document.getElementById("inputLastname").value;
+    email = document.getElementById("inputEmail").value;
+    message = document.getElementById("inputMessage").value;
+    alert(prenom + nom + email + message);
+    
+    
+   
+})
