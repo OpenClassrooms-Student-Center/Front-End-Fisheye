@@ -445,6 +445,7 @@ body {
 .header__logo {
   height: 5rem;
   margin-left: 10.1rem;
+  transition: all 0.5s ease-in-out;
 }
 @media only screen and (max-width: 62em) {
   .header__logo {
@@ -550,7 +551,7 @@ body {
   justify-content: space-between;
   width: 20rem;
   height: 31rem;
-  transition: all 1.2s ease-in-out;
+  transition: all 0.5s ease-in-out;
 }
 .card:hover {
   transform: scale(1.1);

@@ -7,6 +7,7 @@ import { AJAX_GET } from './utils/helpers';
  *
  * @param {Object} state Object representing the state of the application
  * @param {string} state.url Current url of the application
+ * @param {boolean} state.reload Variable that states if the user is reload a page or if it is the first time it is accessing the site
  * @param {array} state.photographers Current photographers in the application, retrieved using an AJAX call to the photographer data
  * @param {Object} state.photographer Current photographer displayed in the application
  * @param {Object} state.photographer.data Current photographer general informations (name, address, ...)
@@ -15,6 +16,7 @@ import { AJAX_GET } from './utils/helpers';
  */
 export const state = {
   url: '',
+  reload: false,
   photographers: [],
   photographer: {
     data: {},
@@ -106,4 +108,12 @@ export const getPhotographer = async id => {
  */
 export const setUrl = url => {
   state.url = url;
+};
+
+/**
+ * Function used to change the value of the reload parameter
+ * @param {boolean} value New true/false value of the reload variable
+ */
+export const setReload = value => {
+  state.reload = value;
 };

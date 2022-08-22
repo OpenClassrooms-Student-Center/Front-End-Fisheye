@@ -57,6 +57,7 @@
   &__logo {
     height: 5rem;
     margin-left: 10.1rem;
+    transition: all 0.5s ease-in-out;
     @include respond(tab-land) {
       margin-left: 5.1rem;
     }

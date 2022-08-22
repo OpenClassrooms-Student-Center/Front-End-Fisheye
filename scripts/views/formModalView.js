@@ -20,13 +20,10 @@ class FormModalView extends PageComponentView {
    */
   _generateMarkup() {
     return `
-    <div class="form-modal">
+    <div class="form-modal" role="dialog" aria-labelledby="#form-modal__title" aria-modal="true">
       <header class="form-modal__header">
-        <h2 class="form-modal__title">Contactez-moi</h2>
-        <img
-          src="assets/icons/close.svg"
-          class="form-modal__close-btn"
-        />
+        <h2 id="form-modal__title" class="form-modal__title">Contactez-moi</h2>
+        <img src="assets/icons/close.svg" class="form-modal__close-btn" aria-label="Close" />
       </header>
       <form class="form-modal__form">
         <div class="form-modal__input">

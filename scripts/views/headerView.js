@@ -50,6 +50,28 @@ class HeaderView extends PageComponentView {
     <h1 class="header__title">Nos photographes</h1>
     `;
   }
+
+  /**
+   * Function called when the user reloads the page
+   * @returns {undefined} No returned value by the function
+   * @author Werner Schmid
+   */
+  reload(data) {
+    this._data = data;
+    // Set the data-main-page parameter on the header component
+    this._parentElement.dataset.MainPage = this._data === '/' ? true : false;
+    const headerTitle = this._parentElement.querySelector('.header__title');
+
+    if (headerTitle) {
+      if (this._data !== '/') this._parentElement.removeChild(headerTitle);
+      return;
+    }
+    if (this._data === '/')
+      this._parentElement.insertAdjacentHTML(
+        'beforeend',
+        this._generateHeaderTitleMarkup()
+      );
+  }
 }
 
 /**

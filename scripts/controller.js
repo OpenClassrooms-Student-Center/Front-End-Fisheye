@@ -16,6 +16,11 @@ import bodyView from './views/bodyView';
  */
 const controlRenderHeader = () => {
   // Render the header of the page
+  if (model.state.reload) {
+    headerView.reload(model.state.url);
+    return;
+  }
+
   headerView.render(model.state.url);
 };
 
@@ -113,11 +118,10 @@ const navigateTo = url => {
 
 /**
  * Function used to render the views of the page
- * @param {boolean} init Variable specifying if we are initializing the page for the first time (set to true by default)
  * @returns {Promise} a resolved promise if it achieved to render the views and a rejected one otherwise
  * @author Werner Schmid
  */
-const renderComponents = async (init = true) => {
+const renderComponents = async () => {
   try {
     // Non existing page
     if (
@@ -132,7 +136,7 @@ const renderComponents = async (init = true) => {
       // DISPLAY
       await controlRenderMainPage();
       // EVENT LISTENERS
-      if (init) bodyView.addHandlerClick(navigateTo);
+      if (!model.state.reload) bodyView.addHandlerClick(navigateTo);
       return;
     }
 
@@ -169,7 +173,7 @@ const reload = async () => {
     controlRenderMain();
 
     // Render the components of the page
-    await renderComponents(false);
+    await renderComponents();
   } catch (err) {
     throw err;
   }
@@ -196,6 +200,7 @@ const init = async () => {
 
     // Render the components of the page
     await renderComponents();
+    model.setReload(true);
   } catch (err) {
     throw err;
   }
