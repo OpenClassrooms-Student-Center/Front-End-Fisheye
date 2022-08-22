@@ -2,8 +2,9 @@
 <html lang="fr" xmlns="http://www.w3.org/1999/html">
 <head>
     <meta charset="utf-8">
-    <link href="../photographer/photographer.css" rel="stylesheet" type="text/css"/>
+    <link href="./photographer.css" rel="stylesheet" type="text/css"/>
     <link rel="icon" type="image/png" href="../../assets/images/logo.png">
+    <script src="https://kit.fontawesome.com/b0d4d543b2.js" crossorigin="anonymous"></script>
     <title>Fisheye - photographe </title>
 </head>
 <body>
@@ -14,7 +15,25 @@
 </header>
 <main id="main">
     <section class="photographer-header"></section>
+    <section>
+        <div>
+            <label for="menu">Trier par</label>
+            <select id="menu">
+                <option id="popular" onclick="sort()">
+                    Popularité
+                </option>
+                <option id="date" onclick="sort()">
+                    Date
+                </option>
+                <option id="title" onclick="sort()">
+                    Titre
+                </option>
+            </select>
+        </div>
+        <div class="photo"></div>
+    </section>
 </main>
+
 <div id="contact_modal">
     <div class="modal">
         <header>
@@ -44,6 +63,19 @@
         </form>
     </div>
 </div>
+
+<div id="lightbox_modal">
+    <div class="lightbox_modal">
+        <header>
+            <img src="../../assets/icons/closeLightbox.svg" onclick="closeLightbox()" alt="close_icon"/>
+        </header>
+        <div class="lightbox_img">
+
+        </div>
+    </div>
+</div>
+
+
 <script src="photographer.js"></script>
 <script src="../../scripts/factories/photographers.js"></script>
 <script src="/scripts/utils/contactForm.js"></script>

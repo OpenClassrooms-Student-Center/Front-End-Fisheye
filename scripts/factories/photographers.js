@@ -1,8 +1,7 @@
-function photographerFactory(data, template) {
+function photographerFactory(data, template, path) {
     const {name, portrait, city, country, tagline, price, id} = data;
-
+    const {title, image, video, likes} = data;
     const pictures = `../assets/photos/Photographers ID Photos/${portrait}`;
-    const picture = `../../assets/photos/Photographers ID Photos/${portrait}`;
     const photographer = `./photographer/photographer.html?id=${id}`;
 
     function getUsersCardDOM() {
@@ -25,10 +24,10 @@ function photographerFactory(data, template) {
         quote.className = ' quote'
         quote.setAttribute('aria-label', 'quote')
         const rate = document.createElement('p');
-        rate.textContent = price + '€/jour';
+        rate.textContent = price + '€ par jour';
         rate.className = ' price';
         rate.setAttribute('aria-label', 'rate')
-        article.appendChild(a)
+        article.appendChild(a);
         a.appendChild(img);
         a.appendChild(h2);
         article.appendChild(location);
@@ -37,14 +36,17 @@ function photographerFactory(data, template) {
         return (article);
     }
 
+    const picture = `../../assets/photos/Photographers ID Photos/${portrait}`;
+
     function getUserCardDOM() {
-        const article = document.createElement('article');
-        const img = document.createElement('img');
-        img.setAttribute('src', picture);
         const button = document.createElement('button');
         button.className = ' contact_button';
         button.innerText = 'Contactez-moi';
         button.setAttribute('onClick', 'displayModal()');
+        const article = document.createElement('article');
+        article.className = picture
+        const img = document.createElement('img');
+        img.setAttribute('src', picture);
         const div = document.createElement('div')
         const h1 = document.createElement('h1');
         h1.innerText = name;
@@ -69,11 +71,51 @@ function photographerFactory(data, template) {
         return (photographerName);
     }
 
+    const media = `../../assets/photos/${path}/${image}`;
+    const mp4Path = `../../assets/photos/${path}/${video}`;
+
+    function getMediaByUser() {
+        const button = document.createElement('button');
+        button.setAttribute('onClick', 'displayLightbox()');
+        const article = document.createElement('article');
+        if (image) {
+            const img = document.createElement('img');
+            img.setAttribute('src', media);
+            article.appendChild(img);
+        }
+        if (video) {
+            const mp4 = document.createElement('video');
+            mp4.setAttribute('src', mp4Path);
+            article.appendChild(mp4);
+        }
+        const content = document.createElement('div');
+        const compter = document.createElement('div');
+        const description = document.createElement('p');
+        description.innerHTML = title;
+        description.className = ' description';
+        const like = document.createElement('p');
+        like.innerText = likes;
+        like.className = ' like';
+        const icon = document.createElement('i');
+        icon.className = ' fa-solid fa-heart';
+        button.appendChild(article);
+        article.appendChild(content);
+        content.appendChild(description);
+        content.appendChild(compter);
+        compter.appendChild(like);
+        compter.appendChild(icon);
+        return (button);
+    }
+
     if (template === 'detail') {
-        return getUserCardDOM()
+        return getUserCardDOM();
     }
     if (template === 'modal') {
-        return getUserName()
-    } else
-        return getUsersCardDOM()
+        return getUserName();
+    }
+    if (template === 'media') {
+        return getMediaByUser();
+    }
+    else
+        return getUsersCardDOM();
 }

@@ -2,12 +2,13 @@
 @import "../../styles/abstracts/fonts";
 @import "../../styles/layouts/header";
 @import "../../styles/layouts/modal";
+@import "../../styles/layouts/lightbox_modal";
 @import "../../styles/components/button";
 
-section {
+.photographer-header {
   background-color: #FAFAFA;
   height: 300px;
-  margin: 0 100px;
+
 
   article {
     display: grid;
@@ -48,6 +49,74 @@ section {
       width: 200px;
       border-radius: 100%;
       object-fit: cover;
+    }
+  }
+}
+
+section {
+  margin: 20px 100px;
+
+  label {
+    font-size: 18px;
+    font-weight: bold;
+    margin-right: 10px;
+  }
+
+  select {
+    background-color: $dark-red;
+    color: white;
+    border: none;
+    font-size: 18px;
+    padding: 4px;
+
+    option {
+      padding-right: 200px;
+    }
+  }
+
+  .photo {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    margin: 50px 0;
+    align-items: center;
+    justify-items: center;
+    gap: 70px;
+
+    button {
+      background-color: white;
+      border: none;
+      cursor: pointer;
+
+      article {
+        img, video {
+          width: 500px;
+          height: 400px;
+          object-fit: cover;
+        }
+
+        div {
+          display: flex;
+          justify-content: space-between;
+
+          .description {
+            margin: 10px 0;
+            color: $dark-red;
+            font-size: 23px;
+          }
+
+          div {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 23px;
+            color: $dark-red;
+
+            .like {
+              margin: 0;
+            }
+          }
+        }
+      }
     }
   }
 }

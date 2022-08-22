@@ -1,9 +1,19 @@
 function displayModal() {
-    const modal = document.getElementById("contact_modal");
-	modal.style.display = "flex";
+    const contact = document.getElementById("contact_modal");
+	contact.style.display = "flex";
+}
+
+function displayLightbox() {
+    const lightbox = document.getElementById("lightbox_modal");
+	lightbox.style.display = "flex";
 }
 
 function closeModal() {
-    const modal = document.getElementById("contact_modal");
-    modal.style.display = "none";
+    const contact = document.getElementById("contact_modal");
+    contact.style.display = "none";
+}
+
+function closeLightbox() {
+    const lightbox = document.getElementById("lightbox_modal");
+    lightbox.style.display = "none";
 }
