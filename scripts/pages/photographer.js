@@ -7,7 +7,6 @@ fetch("./photographers.json")
     return response.json();
   })
   .then((result) => {
-
     let searchParams = new URLSearchParams(window.location.search);
 
     const photographerId = searchParams.get("id");
@@ -15,7 +14,7 @@ fetch("./photographers.json")
     const photographers = result.photographers;
 
     const medias = result.media;
- 
+
     const photographerInfo = photographers.find((photographer) => {
       if (photographer.id === Number(photographerId)) {
         return photographer;
@@ -29,6 +28,7 @@ fetch("./photographers.json")
     });
 
     photographerToDisplay(photographerInfo);
+    mediasToDisplay(photographerMedias);
   });
 
 // Afficher header photographer
@@ -80,17 +80,6 @@ function openSelection() {
   dateOption.style.borderBottom = "1px solid white";
 }
 
-const arrow = document.getElementById(".arrow");
-arrow.addEventListener("click", closeSelection);
-function closeSelection() {
-  dateOption.classList.add("hidden_option");
-  titleOption.classList.add("hidden_option");
-  popularityOption.style.borderBottom = "none";
-  dateOption.style.borderBottom = "none";
-}
-
-document.addEventListener("click", closeSelection);
-
 // Afficher la galerie
 
 function mediasFactory(media) {
@@ -102,37 +91,38 @@ function mediasFactory(media) {
 }
 
 function createImage(data) {
-  return `<img src="${data.image}" alt="${data.title}" />`;
+  return `<img src="./assets/medias_photographer/${data.image}" class="photography" alt="${data.title}" />`;
 }
 
 function createVideo(data) {
   return `
      
-        <video alt="${data.title}">
-            <source src=${data.video}" type="video/mp4">
+        <video alt="${data.title}" class="photography">
+            <source src="./assets/medias_photographer/${data.video}" type="video/mp4">
         </video>
         
     `;
 }
 
-let html = "";
-photographerMedias.forEach((media) => {
-   
+function mediasToDisplay(mediasArray) {
+  let html = "";
+  mediasArray.forEach((media) => {
     html += `
-    <a href="#" alt="Lilac breasted roller, closeup view">
+    <a href="#">
     
-          ${mediasFactory(media)}
+        ${mediasFactory(media)}
 
-          <div class="media_description">
+        <div class="media_description">
             <span class="media_title">${media.title}</span>
               <div class="media_like_div">
               <span class="media_like_number">${media.likes}</span>
               <i class="fa-regular fa-heart media_like"></i>
             </div>
-          </div>
-        </a>
+        </div>
+    </a>
     
     `;
-});
-console.log(html)
+  });
 
+  document.querySelector(".photo_gallery").innerHTML = html;
+}
