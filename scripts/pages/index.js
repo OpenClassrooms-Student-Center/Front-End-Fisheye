@@ -77,5 +77,5 @@
         displayData(photographers);
     };
     
-    init();
+    init(); 
     

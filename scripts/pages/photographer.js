@@ -7,6 +7,7 @@ fetch("./photographers.json")
     return response.json();
   })
   .then((result) => {
+
     let searchParams = new URLSearchParams(window.location.search);
 
     const photographerId = searchParams.get("id");
@@ -14,7 +15,7 @@ fetch("./photographers.json")
     const photographers = result.photographers;
 
     const medias = result.media;
-
+ 
     const photographerInfo = photographers.find((photographer) => {
       if (photographer.id === Number(photographerId)) {
         return photographer;
@@ -28,7 +29,6 @@ fetch("./photographers.json")
     });
 
     photographerToDisplay(photographerInfo);
-    mediaToDisplay(photographerMedias);
   });
 
 // Afficher header photographer
@@ -69,28 +69,27 @@ function photographerToDisplay(photographerInfo) {
 
 // Tri de sélection
 
-const popularityOption = document.querySelector("#popularity_option");
+const popularityOption = document.getElementById("popularity_option");
+const dateOption = document.getElementById("date_option");
+const titleOption = document.getElementById("title_option");
 popularityOption.addEventListener("click", openSelection);
 function openSelection() {
-  const dateOption = document.querySelector("#date_option");
-  const titleOption = document.querySelector("#title_option");
-  dateOption.style.display = "block";
-  titleOption.style.display = "block";
+  dateOption.classList.remove("hidden_option");
+  titleOption.classList.remove("hidden_option");
   popularityOption.style.borderBottom = "1px solid white";
   dateOption.style.borderBottom = "1px solid white";
 }
 
-const optionSelection = document.querySelector(".div_select");
-optionSelection.addEventListener("click", closeSelection);
+const arrow = document.getElementById(".arrow");
+arrow.addEventListener("click", closeSelection);
 function closeSelection() {
-  dateOption.style.display = "none";
-  titleOption.style.display = "none";
+  dateOption.classList.add("hidden_option");
+  titleOption.classList.add("hidden_option");
   popularityOption.style.borderBottom = "none";
   dateOption.style.borderBottom = "none";
 }
 
 document.addEventListener("click", closeSelection);
-
 
 // Afficher la galerie
 
@@ -116,37 +115,24 @@ function createVideo(data) {
     `;
 }
 
-let mediaHTML = "";
-    medias.forEach((media) => {
-      mediasHTML += `${mediasFactory(media)}`;
-    });
-
-function mediaToDisplay(photographerMedias){
-     const { title, image, video, likes, date, price} =
-       photographerMedias;
-
-        const link = document.createElement("a");
+let html = "";
+photographerMedias.forEach((media) => {
+   
+    html += `
+    <a href="#" alt="Lilac breasted roller, closeup view">
     
-        const divDescription = document.createElement("div");
-        divDescription.setAttribute("class", "media_description");
+          ${mediasFactory(media)}
 
-        const spanTitle = document.createElement("span");
-        spanTitle.setAttribute("class", "media_title");
-        spanTitle.textContent = `${title}`;
-        divDescription.appendChild(spanTitle);
+          <div class="media_description">
+            <span class="media_title">${media.title}</span>
+              <div class="media_like_div">
+              <span class="media_like_number">${media.likes}</span>
+              <i class="fa-regular fa-heart media_like"></i>
+            </div>
+          </div>
+        </a>
+    
+    `;
+});
+console.log(html)
 
-        const divMediaLike = document.createElement("div");
-        divMediaLike.setAttribute("class", "media_like_div");
-        divDescription.appendChild(divMediaLike);
-        const spanMediaLike = document.createElement("span");
-        spanMediaLike.setAttribute("class", "media_like_number");
-        spanMediaLike.textContent = `${likes}`;
-        divDescription.appendChild(spanMediaLike);
-
-        const iLike = document.createElement("i");
-        iLike.setAttribute("class", "fa-regular");
-        iLike.setAttribute("class", "fa-heart");
-        iLike.setAttribute("class", "media_like");
-        divDescription.appendChild(iLike);
-
-}
