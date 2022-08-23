@@ -41,7 +41,7 @@ const controlRenderMain = () => {
  */
 const controlRenderFormModal = () => {
   // Render the contact form on a photographer page
-  formModalView.render(model.state.photographer.data);
+  formModalView.render(model.state.photographer.data, false);
 };
 
 /**

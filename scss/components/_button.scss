@@ -1,14 +1,6 @@
 .btn {
-  font-size: 2rem;
-  font-weight: bold;
-  color: white;
-  padding: 1.1rem;
-  width: 17rem;
-  height: 7rem;
-  border: none;
+  @include buttonMixin;
   background-color: transparent;
-  border-radius: 0.5rem;
-  cursor: pointer;
   position: relative;
   z-index: 0;
   overflow: hidden;
@@ -24,6 +16,7 @@
   &:hover,
   &:focus {
     animation: focusButton 1.2s ease-in-out forwards;
+    color: black;
     &::after {
       opacity: 0;
       transition: all 1.2s ease-in-out;
@@ -50,15 +43,6 @@
   }
   &::before {
     opacity: 0;
-    background-color: var(--color-secondary);
-  }
-  @include respond(mobile) {
-    &[data--main-page='false'] {
-      font-size: 2.44vw;
-      padding: 1.34vw;
-      width: 20.7vw;
-      height: 8.52vw;
-      border-radius: 0.61vw;
-    }
+    background-color: var(--color-tertiary);
   }
 }

@@ -23,7 +23,7 @@ class View {
    * @this {Object} The current View instance calling the render function
    * @author Werner Schmid
    */
-  render(data) {
+  render(data, begin = true) {
     // Check the passed data and render an error message if the data isn't set
     if (!this._checkData(data)) return;
 
@@ -32,7 +32,10 @@ class View {
     // Clear the content of the View
     this._clear();
     // Render the new markup in the parentElement in the View
-    this._parentElement.insertAdjacentHTML('afterbegin', markup);
+    this._parentElement.insertAdjacentHTML(
+      begin ? 'afterbegin' : 'beforeend',
+      markup
+    );
   }
 
   /**
