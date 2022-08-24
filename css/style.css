@@ -419,7 +419,7 @@ h3 {
   margin-bottom: -22px;
   border-radius: 5px;
 }
-.photographer_statistic .total_like,
+.photographer_statistic .total_likes,
 .photographer_statistic .price_rate_daily {
   font-family: "DM Sans", sans-serif;
   font-style: normal;
@@ -429,7 +429,7 @@ h3 {
   color: #000000;
   padding-top: 18px;
 }
-.photographer_statistic .total_like:after {
+.photographer_statistic .total_likes:after {
   padding-left: 5px;
   content: "♥";
   font-size: 30.8903225806px;
@@ -447,14 +447,17 @@ h3 {
   flex-wrap: wrap;
   max-width: 350px;
 }
-.media_card img {
+.media_card img,
+.media_card video {
   transition: box-shadow 1s;
+  width: 100%;
   max-height: 300px;
-  max-width: 350px;
+  min-height: 300px;
   object-fit: cover;
   border-radius: 5px;
 }
-.media_card img:hover {
+.media_card img:hover,
+.media_card video:hover {
   transition: box-shadow 1s;
   cursor: pointer;
   box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.5);

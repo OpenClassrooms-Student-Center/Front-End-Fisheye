@@ -3,10 +3,12 @@
     flex-wrap: wrap;
     max-width: 350px;
 
-    img {
+    img,
+    video {
         transition: box-shadow 1s;
+        width: 100%;
         max-height: 300px;
-        max-width: 350px;
+        min-height: 300px;
         object-fit: cover;
         border-radius: 5px;
 
@@ -16,6 +18,8 @@
             box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.50);
         }
     }
+
+
 
     .details {
         @include flex-basic(row, null, null, space-between, baseline);

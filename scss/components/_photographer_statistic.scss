@@ -12,7 +12,7 @@
 
 
 
-    .total_like,
+    .total_likes,
     .price_rate_daily {
         font-family: $font_global;
         font-style: normal;
@@ -24,7 +24,7 @@
 
     }
 
-    .total_like:after {
+    .total_likes:after {
         padding-left: 5px;
         content: "♥";
         font-size: $font_size / 1.55 * 1.33;
