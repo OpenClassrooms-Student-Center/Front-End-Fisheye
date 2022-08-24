@@ -1,0 +1,107 @@
+.card-media {
+  width: 35rem;
+  height: 35.1rem;
+  overflow: hidden;
+  color: var(--color-primary);
+  font-size: 2.4rem;
+  transition: all 0.5s ease-in-out;
+  &:hover {
+    transform: scale(1.1);
+    transition: all 0.5s ease-in-out;
+  }
+  @include respond(desktop) {
+    width: 28rem;
+    height: 28.1rem;
+  }
+  @include respond(mobile) {
+    width: 80vw;
+    height: 76.7vw;
+    font-size: 5vw;
+  }
+  &__link {
+    &:visited,
+    &:link {
+      text-decoration: none;
+      color: inherit;
+    }
+    &:hover {
+      .card-media__img {
+        filter: grayscale(0.8);
+        transition: all 0.5s ease-in-out;
+      }
+      ~ .card-media__description {
+        color: var(--color-secondary);
+      }
+    }
+  }
+  &__img {
+    width: 35rem;
+    height: 30rem;
+    border-radius: 0.5rem;
+    object-fit: cover;
+    object-position: center;
+    transition: all 0.5s ease-in-out;
+    @include respond(desktop) {
+      width: 28rem;
+      height: 24rem;
+    }
+    @include respond(mobile) {
+      width: 80vw;
+      height: 68.53vw;
+      border-radius: 1.6vw;
+    }
+  }
+  &__description {
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: center;
+    justify-content: space-between;
+  }
+  &__title {
+    font-weight: 400;
+    margin: 0;
+  }
+  &__like-description {
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: center;
+    justify-content: right;
+  }
+  &__nb-likes {
+    font-weight: 500;
+    display: block;
+    padding: 0.5rem;
+    @include respond(mobile) {
+      padding: 0;
+      padding-right: 1.5vw;
+    }
+  }
+  &__like {
+    margin-top: 0.6rem;
+    @include respond(mobile) {
+      margin-top: 1.5vw;
+    }
+    &:visited,
+    &:link {
+      text-decoration: none;
+      color: inherit;
+    }
+    &:hover {
+      color: var(--color-secondary);
+      svg {
+        transform: scale(1.3) translateX(-5%);
+        transition: all 0.5s ease-in-out;
+      }
+    }
+    svg {
+      width: 2.1rem;
+      height: 2.4rem;
+      margin: 0;
+      transition: all 0.5s ease-in-out;
+      @include respond(mobile) {
+        width: 5vw;
+        height: 5.71vw;
+      }
+    }
+  }
+}

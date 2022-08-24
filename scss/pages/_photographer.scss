@@ -88,10 +88,10 @@
     grid-column-gap: 2rem;
     align-items: center;
     justify-items: left;
-    padding: 2rem 0;
+    padding: 4rem 0;
     @include respond(mobile) {
-      grid-column-gap: 2.45vw;
-      padding: 2.45vw 0;
+      grid-column-gap: 5.45vw;
+      padding: 4.45vw 0;
     }
   }
   &__photographer-filter-label {
@@ -160,6 +160,7 @@
       position: absolute;
       width: 90%;
       border: 0.15rem solid #fff;
+      background-color: #fff;
       left: 5%;
       z-index: 100;
       @include respond(mobile) {
@@ -187,6 +188,22 @@
     @include respond(mobile) {
       padding: 1.34vw;
       font-size: 2.44vw;
+    }
+  }
+  &__medias-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(35rem, 1fr));
+    grid-row-gap: 3rem;
+    grid-column-gap: 4rem;
+    justify-content: center;
+    justify-items: center;
+    align-content: space-between;
+    @include respond(desktop) {
+      grid-template-columns: repeat(auto-fit, minmax(28rem, 1fr));
+    }
+    @include respond(mobile) {
+      grid-template-columns: 1fr;
+      grid-row-gap: 8.66vw;
     }
   }
 }

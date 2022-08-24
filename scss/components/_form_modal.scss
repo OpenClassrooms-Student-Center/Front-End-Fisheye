@@ -1,29 +1,80 @@
 .form-modal {
+  &__background {
+    display: none;
+    visibility: hidden;
+    opacity: 0;
+    position: fixed;
+    z-index: 10000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(196, 196, 196, 0.4);
+    transition: all 0.5s ease-in-out;
+    &[data-hidden='false'] {
+      visibility: visible;
+      opacity: 1;
+      transition: all 0.5s ease-in-out;
+    }
+  }
   border-radius: 0.5rem;
   background-color: var(--color-tertiary);
   width: 50%;
-  display: none;
+  max-width: 70rem;
+  max-height: 95vh;
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
-  padding: 3.5rem;
+  padding: 1.5rem 3.5rem;
   margin: auto;
-  position: absolute;
+  position: fixed;
   top: 50vh;
   left: 50vw;
   transform: translate(-50%, -50%);
-  z-index: 10000;
-  &_header {
+  overflow-y: auto;
+  @include respond(desktop) {
+    width: 60%;
+  }
+  @include respond(mobile) {
+    width: 65%;
+    max-width: 100%;
+    border-radius: 0.609vw;
+    padding: 0.427vw 1.829vw;
+  }
+  &__header {
+    display: flex;
+    flex-flow: row nowrap;
     justify-content: space-between;
     width: 100%;
   }
   &__close-btn {
+    height: 3rem;
     cursor: pointer;
+    transform: translateY(2.4rem);
+    @include respond(desktop) {
+      transform: translateY(1.4rem);
+    }
+    @include respond(mobile) {
+      height: 3.66vw;
+      transform: translateY(1.71vw);
+    }
   }
   &__title {
     font-size: 6.4rem;
     font-weight: normal;
-    text-align: center;
+    text-align: left;
+    margin: 0;
+    display: flex;
+    flex-flow: column nowrap;
+    @include respond(desktop) {
+      font-size: 4.4rem;
+      margin-bottom: 1.1rem;
+    }
+    @include respond(mobile) {
+      font-size: 5.37vw;
+      margin-bottom: 1.34vw;
+    }
   }
   &__form {
     display: flex;
@@ -36,16 +87,39 @@
     flex-direction: column;
     width: 100%;
     align-items: self-start;
-    margin-bottom: 2.6rem;
   }
   &__input-label {
     color: var(--color-grey-dark);
     font-size: 3.6rem;
+    line-height: 4.7rem;
+    @include respond(mobile) {
+      font-size: 4.39vw;
+      line-height: 5.73vw;
+    }
   }
-  &__input-field--text {
+  &__input-field {
     width: 100%;
-    height: 6.8rem;
     border: none;
     border-radius: 0.5rem;
+    font-size: 3.6rem;
+    &--text {
+      height: 6.8rem;
+      @include respond(mobile) {
+        height: 8.29vw;
+      }
+    }
+    @include respond(mobile) {
+      border-radius: 0.609vw;
+      font-size: 4.39vw;
+    }
+  }
+  &__submit-btn {
+    margin: 2.6rem 0 1.6rem 0;
+    &::before {
+      background-color: var(--color-primary);
+    }
+    @include respond(mobile) {
+      margin: 3.17vw 0 1.95vw 0;
+    }
   }
 }

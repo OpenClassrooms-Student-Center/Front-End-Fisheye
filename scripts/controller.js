@@ -50,8 +50,11 @@ const controlRenderFormModal = () => {
  * @author Werner Schmid
  */
 const displayModal = () => {
-  const modal = document.querySelector('.form-modal');
-  modal.style.display = 'flex';
+  const modalBg = document.querySelector('.form-modal__background');
+  modalBg.style.display = 'block';
+  setTimeout(() => {
+    modalBg.dataset.hidden = false;
+  }, 500);
 };
 
 /**
@@ -60,8 +63,11 @@ const displayModal = () => {
  * @author Werner Schmid
  */
 const closeModal = () => {
-  const modal = document.querySelector('.form-modal');
-  modal.style.display = 'none';
+  const modalBg = document.querySelector('.form-modal__background');
+  modalBg.dataset.hidden = true;
+  setTimeout(() => {
+    modalBg.style.display = 'none';
+  }, 1000);
 };
 
 const addFocusAnimation = btn => {
