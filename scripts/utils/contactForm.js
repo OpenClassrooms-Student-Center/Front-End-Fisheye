@@ -52,20 +52,20 @@ function closeModal() {
 
 //validation du formulaire
 
-
-let submit = document.getElementById("submitContact");
+let submit = document.querySelector("#submitContact");
 let prenom ="";
 let nom ="";
 let email ="";
 let message = "";
 submit.addEventListener("click", e => {
+    console.log("test")
     e.preventDefault();
     prenom = document.getElementById("inputFirstname").value;
-   
     nom = document.getElementById("inputLastname").value;
     email = document.getElementById("inputEmail").value;
     message = document.getElementById("inputMessage").value;
-    alert(prenom + nom + email + message);
+    //alert(prenom + nom + email + message);
+    console.log(prenom + nom + email + message);
     
     
    

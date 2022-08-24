@@ -32,8 +32,8 @@
         <div class="photos"></div>
         <div class="total-likes"></div>
     </main>
-    <!--modale de la lightbox-->
-    <div class="lightbox" tabindex="0" role="dialog" aria-hidden="false" aria-modal="true" aria-label="Zoom sur le media">
+    <!--modale de la lightbox
+    <div class="lightbox" tabindex="-1" role="dialog" aria-hidden="true" aria-modal="true" aria-label="Zoom sur le media">
       <div class="content-lightbox">
         <button class="previous-media" aria-label="Media précédent"><i class="fa-solid fa-angle-left fa-4x"></i>
           
@@ -41,12 +41,12 @@
         <button class="next-media" aria-label="Media suivant"><i class="fa-solid fa-angle-right fa-4x"></i>
           
         </button>
-        <button class="close-media"><i class="fa-solid fa-xmark fa-4x"></i>
+        <button class="close-media" aria-label="Fermer le media"><i class="fa-solid fa-xmark fa-4x"></i>
           
         </button>
       </div>
     </div>
-    <!--Modale du formulaire-->
+    Modale du formulaire-->
     <div id="contact_modal" tabindex="-1" aria-hidden="true" role="dialog" aria-modal="true" aria-describedby="h2Contact">
       <div class="modal">
         <header aria-labelledby="h2Contact">
@@ -104,11 +104,11 @@
     </div>
     <script src="scripts/factories/Photographer.js"></script>
     <script src="/scripts/utils/contactForm.js"></script>
-    <script src="/scripts/utils/lightbox.js"></script>
     <!--<script src="scripts/pages/index.js"></script>
-    <script src="scripts/pages/photographer.js"></script>-->
-    <script src="scripts/pages/photographer.js"></script>
-    <script src="scripts/factories/media.js"></script>
-
+      <script src="scripts/pages/photographer.js"></script>-->
+      <script src="scripts/pages/photographer.js"></script>
+      <script src="scripts/factories/media.js"></script>
+      <script src="/scripts/utils/lightbox.js"></script>
+      
   </body>
 </html>
