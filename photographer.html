@@ -14,15 +14,9 @@
         <main id="main" class="margin_left_right">
             <div class="photograph_header">
                 <div class="photograph_about">
-                    <h1>
-                        ...
-                    </h1>
-                    <h2>
-                        ...
-                    </h2>
-                    <h3>
-                        ...
-                    </h3>
+                    <h1></h1>
+                    <h2></h2>
+                    <h3></h3>
                 </div>
                 <div class="photograph_button">
                     <button class="contact_button" onclick="displayModal()">Contactez-moi</button>
@@ -43,74 +37,35 @@
                     </div>
                 </div>
             </div>
-            <div class="media_section">
-                <article class="media_card">
-                    <img src="/assets/images/Animals_Majesty.jpg">
-                    <div class="details">
-                        <h6>Arc-en-Ciel</h6>
-                        <h6>11</h6>
-                    </div>
-                </article>
-            </article>
-            <article class="media_card">
-                    <img src="/assets/images/Animals_Majesty.jpg">
-                    <div class="details">
-                        <h6>Arc-en-Ciel</h6>
-                        <h6>11</h6>
-                    </div>
-                </article>
-            </article>
-            <article class="media_card">
-                    <img src="/assets/images/Animals_Majesty.jpg">
-                    <div class="details">
-                        <h6>Arc-en-Ciel</h6>
-                        <h6>11</h6>
-                    </div>
-                </article>
-            </article>
-            <article class="media_card">
-                    <img src="/assets/images/Animals_Majesty.jpg">
-                    <div class="details">
-                        <h6>Arc-en-Ciel</h6>
-                        <h6>11</h6>
-                    </div>
-                </article>
-            </article>
-            <article class="media_card">
-                    <img src="/assets/images/Animals_Majesty.jpg">
-                    <div class="details">
-                        <h6>Arc-en-Ciel</h6>
-                        <h6>11</h6>
-                    </div>
-                </article>
-            </article>
-            
-        </div>
-        <div id="contact_modal">
-            <div class="modal">
-                <header>
-                    <h2>Contactez-moi</h2>
-                    <img src="assets/icons/close.svg" onclick="closeModal()">
-                </header>
-                <form>
-                    <div>
-                        <label>Prénom</label>
-                        <input>
-                    </div>
-                    <button class="contact_button">Envoyer</button>
-                </form>
+            <div class="media_section"></div>
+            <div id="contact_modal">
+                <div class="modal">
+                    <header>
+                        <h2>Contactez-moi</h2>
+                        <img src="./assets/icons/close.svg" onclick="closeModal()">
+                    </header>
+                    <form>
+                        <div>
+                            <label>Prénom</label>
+                            <input>
+                        </div>
+                        <button class="contact_button">Envoyer</button>
+                    </form>
+                </div>
             </div>
-        </div>
-        <div class="photographer_statistic">
-            <div class="total_like">297 081</div>
-            <div class="price_rate_daily">300€ / jour</div>
-        </div>
-    </main>
-    <footer></footer>
-</body>
-<script src="scripts/utils/fetch.js"></script>
-<script src="scripts/utils/contactForm.js"></script>
-<script src="scripts/factories/photographerFactory.js"></script>
-<script src="scripts/pages/sharedFunction.js"></script>
-<script src="scripts/pages/photographer.js"></script>
+            <div class="photographer_statistic">
+                <div class="total_likes">297 081</div>
+                <div class="price_rate_daily"></div>
+            </div>
+        </main>
+        <footer></footer>
+    </body>
+    <script src="scripts/utils/fetch.js"></script>
+    <script src="scripts/utils/dom.js"></script>
+    <script src="scripts/utils/getUrlParameter.js"></script>
+    <script src="scripts/utils/contactForm.js"></script>
+    <script src="scripts/factories/mediaFactory.js"></script>
+    <script src="scripts/factories/photographerFactory.js"></script>
+    <script src="scripts/pages/sharedFunction.js"></script>
+    <script src="scripts/pages/photographer.js"></script>
 </html>
