@@ -1,4 +1,4 @@
-async function fetchJSON(url, type) {
+export async function fetchJSON(url, type) {
     const response = await fetch(url); // Wait for the Async Fecth Function
 
     // fetch returns an object with a response property which if set to false means that the connection is not good and so we stop the function 
@@ -11,14 +11,16 @@ async function fetchJSON(url, type) {
 }
 
 
-async function getPhotographers() {
+export async function getPhotographers() {
+    console.log("test")
     const url = "./data/photographers.json"; // Data source .JSON
-    photographers = await fetchJSON(url, "photographers"); // use fetchJSON function from utils/fetch.js
+    const photographers = await fetchJSON(url, "photographers"); // use fetchJSON function from utils/fetch.js
     return { photographers }; // Return data of PhotoGraphers
 }
 
-async function getMedias() {
+export async function getMedias() {
     const url = "./data/photographers.json"; // Data source .JSON
-    medias = await fetchJSON(url, "media"); // use fetchJSON function from utils/fetch.js
+    const medias = await fetchJSON(url, "media"); // use fetchJSON function from utils/fetch.js
     return { medias }; // Return data of Media
 }
+

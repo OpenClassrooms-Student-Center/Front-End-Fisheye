@@ -1,6 +1,7 @@
 
+import { photographerFactory } from "../factories/photographerFactory";
 
-async function displayData(photographers, querySelector, id) {
+export async function displayData(photographers, querySelector, id) {
 
     photographers.forEach((photographer) => {
         if (id) {
