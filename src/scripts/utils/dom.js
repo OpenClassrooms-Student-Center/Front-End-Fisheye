@@ -1,17 +1,17 @@
 // Function for build DOM
-function insertPictureInsideElement(element, picture) {
+export function insertPictureInsideElement(element, picture) {
     element.insertAdjacentHTML("beforeend", '<img src="' + picture + '">');
 }
 
-function insertVideoInsideElement(element, video) {
+export function insertVideoInsideElement(element, video) {
     element.insertAdjacentHTML("beforeend", '<video src="' + video + '">');
 }
 
-function insertHTMLAfterElement(element, html) {
+export function insertHTMLAfterElement(element, html) {
     element.insertAdjacentHTML("afterend", html);
 }
 
-function buildElement(balise, value) {
+export function buildElement(balise, value) {
     // Create balise
     const element = document.createElement(balise);
 
@@ -29,7 +29,7 @@ function buildElement(balise, value) {
     return element;
 }
 
-function setInnerHtml(querySelector, texte) {
+export function setInnerHtml(querySelector, texte) {
     const texteElement = document.querySelector(querySelector);
     texteElement.innerHTML = texte;
 }

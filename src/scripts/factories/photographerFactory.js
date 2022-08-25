@@ -1,4 +1,7 @@
-function photographerFactory(data) {
+
+import { buildElement,insertPictureInsideElement,setInnerHtml } from "../utils/dom";
+
+export function photographerFactory(data) {
     const { name, id, city, country, tagline, portrait, price } = data;
 
     // console.log(data);

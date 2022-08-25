@@ -1,4 +1,11 @@
-function mediaFactory(data) {
+import {
+    insertHTMLAfterElement,
+    insertVideoInsideElement,
+    insertPictureInsideElement,
+    buildElement
+} from "../utils/dom";
+
+export function mediaFactory(data) {
     const { id, photographerId, title, image, video, likes, date, price } = data;
 
     const movie = `assets/video/${video}`;
@@ -28,7 +35,8 @@ function mediaFactory(data) {
 
 
             if (title) {
-                title_h6 = "<h6>" + title + "</h6>";
+                let title_h6 = "<h6>" + title + "</h6>";
+                let likes_h6 = "<h6>" + 0 + "</h6>";
                 if (likes) {
                     likes_h6 = "<h6>" + likes + "</h6>";
                 }
