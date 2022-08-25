@@ -1,6 +1,8 @@
-
 import '../../scss/main.scss';
-import '../utils/fetch.js';
+import { getPhotographers,getMedias } from '../utils/fetch';
+import { displayData } from './displayData';
+import { displayMedia } from './displayMedia';
+import { getUrlParameter } from '../utils/getUrlParameter'; 
 
 async function init() {
     // Try to get data from photographers & media if error then redirect to 404 page

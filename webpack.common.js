@@ -23,7 +23,7 @@ module.exports = {
                                 "@babel/preset-env",
                                 {
                                     targets: {
-                                        browsers: ["since 2017", "ie >= 11"] // Support JS for old browser
+                                        browsers: ["> 0.5%"] // Support JS for old browser
                                     }
                                 }
                             ]
