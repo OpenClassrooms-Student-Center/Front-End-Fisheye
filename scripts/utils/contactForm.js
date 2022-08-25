@@ -64,8 +64,7 @@ submit.addEventListener("click", e => {
     nom = document.getElementById("inputLastname").value;
     email = document.getElementById("inputEmail").value;
     message = document.getElementById("inputMessage").value;
-    //alert(prenom + nom + email + message);
-    console.log(prenom + nom + email + message);
+    console.log("le prénom saisi est: " + prenom + " le nom saisis est: " + nom + " l'email saisi est: " + email + " le message saisi est: " + message);
     
     
    
