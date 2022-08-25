@@ -8,6 +8,7 @@ import indexMainView from './views/indexMainView';
 import photographerMainView from './views/photographerMainView';
 import formModalView from './views/formModalView';
 import bodyView from './views/bodyView';
+import { photographerFactory } from './factories/photographer';
 
 /**
  * The method takes care of rendering the header semantic tag of the HTML page based on the url
@@ -39,7 +40,10 @@ const controlRenderMain = () => {
  * @returns {undefined} No returned value by the function
  * @author Werner Schmid
  */
-const controlRenderFormModal = () => {
+const controlRenderFormModal = factory => {
+  // Set the photographer Factory for the view
+  formModalView.setPhotographerFactory(factory);
+
   // Render the contact form on a photographer page
   formModalView.render(model.state.photographer.data, false);
 };
@@ -92,9 +96,9 @@ const controlRenderMainPage = async () => {
 };
 
 /**
- * The method takes care of rendering the main semantic view of a photographer page
+ * The method takes care of rendering the main semantic view of a photographer page and instanciate the photographer factory for the page
  * @param {number} id ID of the photographer that will be rendered
- * @returns {undefined} No returned value by the function
+ * @returns {Object} The photographer factory for the user with the ID of id
  * @author Werner Schmid
  */
 const controlRenderMainPhotographerPage = async id => {
@@ -102,8 +106,17 @@ const controlRenderMainPhotographerPage = async id => {
     // Get the photographer data from the API
     await model.getPhotographer(id);
 
+    // Get the photographer factory from the model
+    const factory = photographerFactory(model.state.photographer);
+
+    // Set the photographer Factory for the view
+    photographerMainView.setPhotographerFactory(factory);
+
     // Render the photographer main content
     photographerMainView.render(model.state.photographer);
+
+    // Returns the photographer factory
+    return factory;
   } catch (err) {
     throw err;
   }
@@ -153,8 +166,8 @@ const renderComponents = async () => {
       const id = Number(model.state.url.slice(14));
       if (isNaN(id)) throw new Error('Not Found');
       // DISPLAY
-      await controlRenderMainPhotographerPage(id);
-      controlRenderFormModal();
+      const factory = await controlRenderMainPhotographerPage(id);
+      controlRenderFormModal(factory);
 
       // EVENT LISTENERS
       photographerMainView.addHandlerClick(displayModal);

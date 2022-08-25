@@ -36,6 +36,9 @@ class View {
       begin ? 'afterbegin' : 'beforeend',
       markup
     );
+
+    // _postRender() : template method used to do some works after the View has been rendered
+    this._postRender();
   }
 
   /**
@@ -106,6 +109,13 @@ class View {
   _generateMarkup() {
     return '';
   }
+
+  /**
+   * Template method used to do something after the markup has been rendered
+   * @returns {undefined} No returned value by the function
+   * @author Werner Schmid
+   */
+  _postRender() {}
 
   /**
    * Returns the parent element of the view

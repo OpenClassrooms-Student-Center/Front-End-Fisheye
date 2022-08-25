@@ -1,4 +1,5 @@
 import MediaView from './mediaView';
+import { MEDIAS_FOLDER } from '../utils/config';
 
 /**
  * A PhotoView represents the rendering of a photo in the lightbox modal
@@ -7,12 +8,9 @@ export default class PhotoView extends MediaView {
   /**
    * @override
    */
-  _generateMarkup() {
+  _generateMediaMarkup() {
     return `
-    <picture>
-      <source srcset="/media/cc0-images/surfer-240-200.jpg" media="(min-width: 800px)">
-      <img src="/media/cc0-images/painted-hand-298-332.jpg" alt="" />
-    </picture>
-        `;
+    <img src="${MEDIAS_FOLDER}photos/${this._data.image}" alt="${this._data.title}, closeup view" class="card-media__img" />
+    `;
   }
 }

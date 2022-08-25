@@ -15,7 +15,7 @@
   }
   @include respond(mobile) {
     width: 80vw;
-    height: 76.7vw;
+    height: 77.7vw;
     font-size: 5vw;
   }
   &__link {
@@ -60,6 +60,9 @@
   &__title {
     font-weight: 400;
     margin: 0;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
   }
   &__like-description {
     display: flex;

@@ -1,11 +1,11 @@
-import View from './View';
+import PhotographerPageComponentView from './photographerPageComponentView';
 import photographerMediasView from './photographerMediasView';
 import photographerHeaderView from './photographerHeaderView';
 
 /**
  * A PhotographerPhotosView represents the content of the main semantic view in a photographer page
  */
-class PhotographerMainView extends View {
+class PhotographerMainView extends PhotographerPageComponentView {
   /**
    * constructor of the PhotographerMainView class
    * @param {string} errorMessage Default error message to display when we fail to render the View
@@ -25,6 +25,7 @@ class PhotographerMainView extends View {
     // Check the passed data and render an error message if the data isn't set
     if (!this._checkData(data)) return;
     const { data: photographerData, medias } = data;
+
     // Update the parent elements of the subviews
     photographerHeaderView.setParentElement(
       document.querySelector('.main__photographer-infos')
@@ -70,6 +71,17 @@ class PhotographerMainView extends View {
         handler(btn);
       });
     });
+  }
+  /**
+   * @override
+   */
+  setPhotographerFactory(factory) {
+    // Set the photographer factory variable for the photographer View
+    this._photographerFactory = factory;
+
+    // Pass the photographer factory to the photographerHeaderView and the photographerMediasView
+    photographerHeaderView.setPhotographerFactory(factory);
+    photographerMediasView.setPhotographerFactory(factory);
   }
 }
 

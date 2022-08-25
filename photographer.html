@@ -364,6 +364,51 @@
               </div>
             </div>
           </article>
+          <article class="card-media" role="listitem">
+            <a
+              href="/media/952343423"
+              class="card-media__link"
+              data-id="952343423"
+              role="link"
+              aria-labelledby="card-media__title--952343423"
+            >
+              <video
+                class="card-media__img"
+                role="img"
+                aria-label="Tricks in te air, closeup view"
+              >
+                <source
+                  src="assets/works/videos/Sport_Tricks_in_the_air.mp4"
+                  type="video/mp4"
+                />
+                Your browser does not support the video tag.
+              </video>
+            </a>
+            <div class="card-media__description">
+              <h3 class="card-media__title" id="card-media__title--952343423">
+                Tricks in te air
+              </h3>
+              <div class="card-media__like-description">
+                <span class="card-media__nb-likes" aria-label="Nombre de likes"
+                  >150</span
+                >
+                <a
+                  href="/media/952343423/like"
+                  class="card-media__like"
+                  role="link"
+                  aria-label="Liker l'image"
+                >
+                  <svg
+                    class="icon-heart icon-heart--filled"
+                    role="img"
+                    aria-label="likes"
+                  >
+                    <use xlink:href="assets/icons/heart.svg#icon-heart"></use>
+                  </svg>
+                </a>
+              </div>
+            </div>
+          </article>
         </div>
       </section>
     </main>
@@ -481,7 +526,7 @@
       document
         .querySelectorAll('.main__photographer-filter-option-choice')
         .forEach(element => {
-          element.addEventListener('change', event => {
+          element.addEventListener('click', event => {
             const element = event.target;
             const checkedElement = document.querySelector(
               '.main__photographer-filter-option-choice[aria-checked="true"]'

@@ -20,7 +20,9 @@ class PhotographerListView extends View {
    */
   _generateMarkup() {
     return this._data
-      .map(result => photographerFactory(result).getUserCard())
+      .map(result =>
+        photographerFactory({ data: result, medias: [] }).getUserCard()
+      )
       .join('\n');
   }
 }

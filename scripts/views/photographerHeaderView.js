@@ -1,10 +1,9 @@
-import View from './View';
-import { photographerFactory } from '../factories/photographer';
+import PhotographerPageComponentView from './photographerPageComponentView';
 
 /**
  * A PhotographerHeaderView represents the presentation header of a photographer page (Name, contact form, ...)
  */
-class PhotographerHeaderView extends View {
+class PhotographerHeaderView extends PhotographerPageComponentView {
   /**
    * constructor of the PhotographerHeaderView class
    * @param {string} errorMessage Default error message to display when we fail to render the View
@@ -19,13 +18,12 @@ class PhotographerHeaderView extends View {
    * @override
    */
   _generateMarkup() {
-    const photographer = photographerFactory(this._data);
     return `
-      ${photographer.getUserHeader()}
+      ${this._photographerFactory.getUserHeader()}
       <button class="btn btn--open" data--main-page="false" data-first-focus="true">Contactez-moi</button>
       <img
-        src="${photographer.picture}"
-        alt="${photographer.name}"
+        src="${this._photographerFactory.picture}"
+        alt="${this._photographerFactory.name}"
         class="main__photographer-image" aria-hidden="true"
       />
     `;

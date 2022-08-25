@@ -102,9 +102,8 @@
   }
   &__photographer-filter-input {
     @include buttonMixin;
-    background-color: var(--color-primary);
+    @include optionLabelMixin;
     appearance: none;
-    position: relative;
     display: flex;
     align-items: center;
     input {
@@ -117,7 +116,7 @@
       }
       .main__photographer-filter-option-display {
         opacity: 1;
-        z-index: 100;
+        visibility: visible;
       }
     }
     svg {
@@ -148,7 +147,8 @@
     border-radius: 0.5rem;
     overflow: hidden;
     opacity: 0;
-    z-index: -1;
+    visibility: hidden;
+    z-index: 100;
     @include respond(mobile) {
       width: 20.7vw;
       height: 20.7vw;
@@ -175,12 +175,12 @@
     }
   }
   &__photographer-filter-option-label {
+    @include optionLabelMixin;
     color: #fff;
-    background-color: var(--color-primary);
+    background-color: transparent;
     font-size: 1.8rem;
     font-weight: 700;
     padding: 1.1rem;
-    position: relative;
     cursor: pointer;
     display: flex;
     align-items: center;

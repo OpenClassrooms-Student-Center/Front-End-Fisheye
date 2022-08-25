@@ -19,38 +19,34 @@ class FormModalView extends PageComponentView {
    * @override
    */
   _generateMarkup() {
-    return `
-    <div class="form-modal__background">
-      <div class="form-modal" role="dialog" aria-labelledby="#form-modal__title" aria-modal="true">
-        <header class="form-modal__header">
-          <h2 id="form-modal__title" class="form-modal__title">
-            <span class="form-modal__title-contact">Contactez-moi</span>
-            <span class="form-modal__title-name">${this._data.name}</span>
-          </h2>
-          <img src="assets/icons/close.svg" class="form-modal__close-btn" aria-label="Close" />
-        </header>
-        <form class="form-modal__form">
-          <div class="form-modal__input">
-            <label for="#firstname" class="form-modal__input-label">Prénom</label>
-            <input type="text" id="firstname" name="firstname" class="form-modal__input-field form-modal__input-field--text" />
-          </div>
-          <div class="form-modal__input">
-            <label for="#lastname" class="form-modal__input-label">Nom</label>
-            <input type="text" id="lastname" name="lastname" class="form-modal__input-field form-modal__input-field--text" />
-          </div>
-          <div class="form-modal__input">
-            <label for="#email" class="form-modal__input-label">Email</label>
-            <input type="email" id="email" name="email" class="form-modal__input-field form-modal__input-field--text" />
-          </div>
-          <div class="form-modal__input">
-            <label for="#message" class="form-modal__input-label">Votre message</label>
-            <textarea id="message" name="message" rows="4" class="form-modal__input-field form-modal__input-field--textarea"></textarea>
-          </div>
-          <button class="form-modal__submit-btn btn">Envoyer</button>
-        </form>
-      </div>
-    </div>
-      `;
+    return this._photographerFactory.getFormModal();
+  }
+
+  /**
+   * Store the photographer factory into the view
+   * @param {Object} factory the photographer factory
+   * @returns {undefined} No returned value by the function
+   * @this {Object} the current PhotographerMainView instance calling the addHandlerClick function
+   * @author Werner Schmid
+   */
+  setPhotographerFactory(factory) {
+    this._photographerFactory = factory;
+  }
+
+  /**
+   * Handles the load event to render
+   * @param {function} handler handler function that will be invoked when the load event listener will be triggered
+   * @return {Promise} A Promise that will resolve once the whole page is rendered and the given handler executed
+   * @author Werner Schmid
+   */
+  addHandlerLoadPage(handler) {
+    return new Promise((resolve, _) => {
+      window.addEventListener('load', event => {
+        event.preventDefault();
+        handler();
+        resolve();
+      });
+    });
   }
 
   /**

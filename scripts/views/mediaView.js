@@ -12,6 +12,48 @@ export default class MediaView extends View {
    * @author Werner Schmid
    */
   constructor(errorMessage) {
-    super(document.querySelector('.lightbox-modal'), errorMessage);
+    super(document.querySelector('.main__medias-list'), errorMessage);
+    this._clearContent = false;
+  }
+
+  /**
+   * @override
+   */
+  _generateMarkup() {
+    return `
+    <article class="card-media" role="listitem">
+      <a href="/media/${this._data.id}" class="card-media__link" data-id="${
+      this._data.id
+    }" role="link" aria-labelledby="card-media__title--${this._data.id}">
+        ${this._generateMediaMarkup()}
+      </a>
+      <div class="card-media__description">
+        <h3 class="card-media__title" id="card-media__title--${this._data.id}">
+          ${this._data.title}
+        </h3>
+        <div class="card-media__like-description">
+          <span class="card-media__nb-likes" aria-label="Nombre de likes">${
+            this._data.likes
+          }</span>
+          <a href="/media/${
+            this._data.id
+          }/like" class="card-media__like" role="link" aria-label="Liker l'image">
+            <svg class="icon-heart icon-heart--filled" role="img" aria-label="likes">
+              <use xlink:href="assets/icons/heart.svg#icon-heart"></use>
+            </svg>
+          </a>
+        </div>
+      </div>
+    </article>
+        `;
+  }
+
+  /**
+   * Template method used to generate the markup for a specific media
+   * @returns {string} The markup displayed by the Media
+   * @author Werner Schmid
+   */
+  _generateMediaMarkup() {
+    return '';
   }
 }
