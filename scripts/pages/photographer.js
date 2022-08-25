@@ -2,6 +2,7 @@
 // (photographer detail) are inside sharedFunction.JS
 
 async function init() {
+    // Try to get data from photographers & media if error then redirect to 404 page
     try {
         const idValue = await getUrlParameter("id");
         const { photographers } = await getPhotographers(); // Function inside sharedFunction.js
