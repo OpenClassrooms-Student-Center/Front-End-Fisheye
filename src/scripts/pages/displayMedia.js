@@ -11,9 +11,11 @@ export async function displayMedia(medias, querySelector, photographerId) {
                 // Then we are going use the MediaFactory to generate DOM
                 const mediasSection = document.querySelector(querySelector);
                 const mediaModel = mediaFactory(media);
-
                 const mediaDOM = mediaModel.getMediaDOM();
-                mediasSection.appendChild(mediaDOM);
+
+                if (mediaDOM) {
+                    mediasSection.appendChild(mediaDOM);
+                }
                 // End of MediaFactory Work
 
                 totalLikes += media.likes; // Count all likes

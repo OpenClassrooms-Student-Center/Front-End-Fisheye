@@ -14,7 +14,7 @@ export function mediaFactory(data) {
     function getMediaDOM() {
 
         // Create DOM only if we got ids and a Picture or a Video
-        if ((id && photographerId) && (image > 1 || video > 1)) {
+        if ((id && photographerId) && (image > 1 || video)) {
             const article = document.createElement("article");
             article.setAttribute("class", "media_card");
 
@@ -22,9 +22,10 @@ export function mediaFactory(data) {
                 buildElement("a", "photographer.html?id=" + id)
             );
 
+            console.log(image);
             // Check if image or video exists
             while (true) {
-                if (image)  {
+                if (image) {
                     insertPictureInsideElement(linkElement, picture);
                     break;
                 }
@@ -43,11 +44,11 @@ export function mediaFactory(data) {
                 insertHTMLAfterElement(linkElement, "<div class='details'>" + title_h6 + likes_h6 + "</div>");
             }
 
-
             return article;
 
-
-
+        }
+        else {
+            return false;
         }
     }
 
