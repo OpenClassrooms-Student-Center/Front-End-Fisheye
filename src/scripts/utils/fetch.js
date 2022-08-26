@@ -12,7 +12,6 @@ export async function fetchJSON(url, type) {
 
 
 export async function getPhotographers() {
-    console.log("test")
     const url = "./data/photographers.json"; // Data source .JSON
     const photographers = await fetchJSON(url, "photographers"); // use fetchJSON function from utils/fetch.js
     return { photographers }; // Return data of PhotoGraphers

@@ -1,5 +1,5 @@
 
-import { buildElement,insertPictureInsideElement,setInnerHtml } from "../utils/dom";
+import { buildElement, insertPictureInsideElement, setInnerHtml } from "../utils/dom";
 
 export function photographerFactory(data) {
     const { name, id, city, country, tagline, portrait, price } = data;
@@ -7,9 +7,8 @@ export function photographerFactory(data) {
     // console.log(data);
     const picture = `assets/images/${portrait}`;
 
-
-
     function getUserCardDOM() {
+
         // Create DOM only if we got a picture a id and a name
         if (name && id && portrait) {
             const article = document.createElement("article");
@@ -35,6 +34,9 @@ export function photographerFactory(data) {
             }
 
             return article;
+        }
+        else {
+            return false;
         }
     }
 

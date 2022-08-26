@@ -18,7 +18,10 @@ export async function displayData(photographers, querySelector, id) {
             const photographersSection = document.querySelector(querySelector);
             const photographerModel = photographerFactory(photographer);
             const userCardDOM = photographerModel.getUserCardDOM();
-            photographersSection.appendChild(userCardDOM);
+            
+            if (userCardDOM) {
+                photographersSection.appendChild(userCardDOM);
+            }
             // End of PhotographerFactory Work
         }
     });
