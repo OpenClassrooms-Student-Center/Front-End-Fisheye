@@ -4,10 +4,12 @@
     .media_section {
         grid-template-columns: 1fr 1fr;
     }
+    
 }
 
 
 @media (max-width: 800px) {
+
     header {
         flex-direction: column;
         margin-top: 40px;
@@ -21,13 +23,9 @@
        h1 {
             margin-left: 20px;
             margin-right: 20px;
-            font-size: $font_size / 1.20;
+            font-size: calc($font_size / 1.20);
         }
     }
-
-
-
-
 
     .margin_left_right {
         margin: 0 20px;
@@ -37,18 +35,21 @@
     .filter_section {
         justify-content: space-between;
     }
+
 }
 
 @media (max-width: 700px) {
-    .photographer_section {
 
+    .photographer_section {
         grid-template-columns: 1fr;
     }
+
 }
 
 @media (max-width: 600px) {
-    .media_section {
 
+    .media_section {
         grid-template-columns: 1fr;
     }
+
 }

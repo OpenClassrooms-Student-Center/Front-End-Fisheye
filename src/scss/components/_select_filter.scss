@@ -9,7 +9,7 @@
     font-family: $font_global;
     font-style: normal;
     font-weight: $font_weight_big;
-    font-size: $font_size / 2;
+    font-size: calc($font_size / 2);
     background: $color_primary1;
     color: $default_color;
     border-top-left-radius: 5px;
@@ -25,7 +25,7 @@
     transition: transform 0.25s ease-in;
     content: ">";
     transform: rotate(90deg);
-    font-size: $font_size / 1.44;
+    font-size: calc($font_size / 1.44);
     text-align: right;
     float: right;
     margin-right: 20px;
@@ -61,7 +61,7 @@
 
         font-family: $font_global;
         font-weight: $font_weight_big;
-        font-size: $font_size / 2;
+        font-size: calc($font_size / 2);
         color: $default_color;
         padding: 20px;
         width: 170px;
@@ -87,7 +87,3 @@
     transition: transform 0.25s ease-in;
 }
 
-// .select_filter:hover .select_button {
-//     background: $color_background;
-
-// }
