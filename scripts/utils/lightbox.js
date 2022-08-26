@@ -3,10 +3,9 @@ function initLightbox() {
     //création des éléments html de la lightbox
     const lightbox = document.createElement('div');
     const previousMedia = document.createElement("i");
-    const nextMedia = document.createElement("i");
     const closeMedia = document.createElement("i");
+    const nextMedia = document.createElement("i");
     const titleMedia = document.createElement("p");
-    
     //ajouts des attributs, classes etc sur les élements crées
     lightbox.id= 'lightbox';
     lightbox.ariaLabel= "Zoom sur le media";
@@ -16,12 +15,10 @@ function initLightbox() {
     nextMedia.className ="next-media fa-solid fa-angle-right fa-4x";
     closeMedia.className ="close-media fa-solid fa-xmark fa-4x";
     closeMedia.setAttribute("onclick","closeMedia()")
-    nextMedia.setAttribute("onclick","nextMedia()")
-    previousMedia.setAttribute("onclick","previousMedia()")
     //tabulation des i
     closeMedia.setAttribute("tabindex","0")
-    nextMedia.setAttribute("tabindex","2")
     previousMedia.setAttribute("tabindex","1")
+    nextMedia.setAttribute("tabindex","1")
     titleMedia.className = "title-media";
    
     document.body.appendChild(lightbox);
@@ -31,14 +28,15 @@ function initLightbox() {
     mediasHTML.forEach(media => {
         //console.log(media.tagName)
         media.addEventListener('click', e=> {
-            console.log(media)
-            console.log(media.dataset.id)
-            console.log(medias) //medias est appelé dans le fichier photographers.js
+            //console.log(media)
+            //console.log(media.dataset.id)
+            //console.log(medias) //medias est appelé dans le fichier photographers.js
             let index = medias.findIndex(element => { //function qui retourne l'index
                 return element.id == media.dataset.id
             })
-            console.log(index)
-            console.log(medias[index])
+            //console.log(index)
+            
+            //console.log(medias[index])
             let title = medias[index].title;
 
             //ajoute la classe active pour afficher la lightbox
@@ -61,30 +59,45 @@ function initLightbox() {
             }
             //créé les élements dans le DOM
             
+            lightbox.appendChild(closeMedia);
             lightbox.appendChild(previousMedia);
             lightbox.appendChild(nextMedia);
-            lightbox.appendChild(closeMedia);
             lightbox.appendChild(titleMedia);
             document.querySelector(".title-media").innerHTML = title;
-            
+            //focus sur la croix de fermeture
+            document.querySelector(".close-media").focus();
+            //evenements au click sur les fleches nextMedia et previousMedia           
             document.querySelector(".next-media").addEventListener("click", e => {
-                index++;
-                console.log(index)
-                console.log(medias[index+1].image)
+                if(index <= medias.length) {
+                    index++;
+                }
+                else {
+                    index=0;
+                }               
+                //console.log(medias[index+1].image)
                 let med = medias[index+1];
+                //changement du titre du média
                 document.querySelector(".title-media").innerHTML  = med.title
-                
+                //stockage du src de l'image avec le nom du photographe
                 let source = `http://127.0.0.1:5500/assets/photographers/${photographer.name}/`
+                //changement du src de l'image et affichage de l'image suivante
                 document.querySelector(".content-lightbox").setAttribute("src", source + med.image)
+                console.log(index)
 
             })
             document.querySelector(".previous-media").addEventListener("click", e => {
-                index--;
-                console.log(index)
-                document.querySelector(".title-media").innerHTML  = medias[index-1].title
+                if(index >=0) {
+                    index--;
+                }
+                else {
+                    index = medias.length
+                }
                 let med = medias[index-1];
+                document.querySelector(".title-media").innerHTML = med.title
+               
                 let source = `http://127.0.0.1:5500/assets/photographers/${photographer.name}/`
                 document.querySelector(".content-lightbox").setAttribute("src", source + med.image)   
+                console.log(index)
             })
         })   
        
@@ -93,21 +106,10 @@ function initLightbox() {
        
    }
    //timer pour attendre le chargement des médias
-   const myTimeout = setTimeout(initLightbox, 100); 
+   const myTimeout = setTimeout(initLightbox, 1000); 
    //fermeture de la lightbox
    function closeMedia() {
     //enleve la classe active et cache la lightbox
     lightbox.classList.remove('active')
     lightbox.innerHTML = ''; //reset l'affichage
-  }
-
-  
-
-  function nextMedia() {
-    console.log("ça clique next");
-  
-  }
-
-  function previousMedia() {
-    console.log("ça clique previous");
   }
