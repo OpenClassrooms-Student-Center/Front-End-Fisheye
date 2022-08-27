@@ -1,5 +1,6 @@
 import { mediaFactory } from "../factories/mediaFactory";
 import { setInnerHtml } from "../utils/dom";
+
 export async function displayMedia(medias, querySelector, photographerId) {
     let totalLikes = 0;
 
