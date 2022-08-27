@@ -9,29 +9,64 @@
     top: 50px;
     border-radius: 5px;
     background-color: white;
-    max-width: 1000px;
-    width: 50%;
+    width: 60%;
+    height: 710px;
     display: flex;
     flex-direction: column;
-    align-items: center;
-    justify-content: space-between;
+    justify-content: center;
     padding: 35px;
-    margin: auto;
 
     header {
-      width: 100%;
       height: fit-content;
       display: flex;
       justify-content: flex-end;
       margin-bottom: 25px;
+
+      button {
+        position: absolute;
+        top: 30px;
+        right: 90px;
+        cursor: pointer;
+        border: none;
+        background-color: transparent;
+
+        img {
+          width: 35px;
+        }
+      }
     }
 
-    .lightbox_img {
-      img, video {
-        width: 200px;
-        height: 200px;
-        object-fit: cover;
+    div {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 20px;
+
+      .fa-angle-left, .fa-angle-right {
+        cursor: pointer;
+        border: none;
+        background-color: transparent;
+        color: $dark-red;
+        font-size: xxx-large;
+      }
+
+      .lightbox_img {
+        display: flex;
+
+        img, video {
+          width: 900px;
+          height: 700px;
+          object-fit: cover;
+        }
       }
     }
   }
+
+
+  .title {
+    color: $dark-red;
+    font-size: x-large;
+    margin: 10px 130px;
+  }
 }
+

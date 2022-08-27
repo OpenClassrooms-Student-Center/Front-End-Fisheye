@@ -66,12 +66,15 @@
 
 <div id="lightbox_modal">
     <div class="lightbox_modal">
-        <header>
-            <img src="../../assets/icons/closeLightbox.svg" onclick="closeLightbox()" alt="close_icon"/>
-        </header>
-        <div class="lightbox_img">
-
+        <div>
+            <header>
+                <button id="close_modal" onclick="closeLightbox()" aria-label="close modal">
+                    <img src="../../assets/icons/closeLightbox.svg"  alt="close_icon"/>
+                </button>
+            </header>
+            <div class="lightbox_img"></div>
         </div>
+        <p class="title"></p>
     </div>
 </div>
 

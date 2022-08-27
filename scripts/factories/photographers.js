@@ -1,4 +1,4 @@
-function photographerFactory(data, template, path) {
+function photographerFactory(data, template, path, index) {
     const {name, portrait, city, country, tagline, price, id} = data;
     const {title, image, video, likes} = data;
     const pictures = `../assets/photos/Photographers ID Photos/${portrait}`;
@@ -76,7 +76,7 @@ function photographerFactory(data, template, path) {
 
     function getMediaByUser() {
         const button = document.createElement('button');
-        button.setAttribute('onClick', 'displayLightbox()');
+        button.setAttribute('onClick', `displayLightbox(${index})`);
         const article = document.createElement('article');
         if (image) {
             const img = document.createElement('img');

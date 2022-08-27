@@ -66,26 +66,35 @@ async function displayMediaData(media, name) {
     while (photos.firstChild) {
         photos.removeChild(photos.lastChild);
     }
-    media.forEach((photo) => {
-        const userPhoto = photographerFactory(photo, 'media', name);
+    media.forEach((photo, index) => {
+        const userPhoto = photographerFactory(photo, 'media', name, index);
         photos.appendChild(userPhoto);
-        updateLightboxData(photo, name)
     })
 }
 
-function updateLightboxData(photo, name) {
+function updateLightboxData(photo, index) {
     const lightbox = document.querySelector('.lightbox_img');
+    const close = document.querySelector('#close_modal')
+    close.focus()
+    const leftArrow = document.createElement('button');
+    leftArrow.className = ' fa-solid fa-angle-left'
+    leftArrow.setAttribute('onClick', `previousPhoto(${index})`)
+    lightbox.appendChild(leftArrow);
     if (photo.image) {
         const media = document.createElement('img');
-        media.className = photo.title;
-        media.setAttribute('src', `../../assets/photos/${name}/${photo.image}`);
+        media.setAttribute('src', `../../assets/photos/${photographer.name}/${photo.image}`);
         lightbox.appendChild(media);
     } else {
         const media = document.createElement('video');
-        media.className = photo.title;
-        media.setAttribute('src', `../../assets/photos/${name}/${photo.video}`);
+        media.setAttribute('src', `../../assets/photos/${photographer.name}/${photo.video}`);
         lightbox.appendChild(media);
     }
+    const rightArrow = document.createElement('button');
+    rightArrow.className = ' fa-solid fa-angle-right'
+    rightArrow.setAttribute('onClick', `nextPhoto(${index})`)
+    const title = document.querySelector('.title')
+    title.innerHTML = photo.title;
+    lightbox.appendChild(rightArrow);
 }
 
 async function sort(media) {
@@ -142,9 +151,7 @@ let media = [];
 let photographer = undefined;
 
 async function updateSort() {
-    console.log(media);
     media = await sort(media);
-    console.log(media);
     await displayMediaData(media, photographer.name)
 }
 
