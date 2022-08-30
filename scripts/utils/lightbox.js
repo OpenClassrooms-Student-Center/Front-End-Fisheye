@@ -24,41 +24,40 @@ function initLightbox() {
     document.body.appendChild(lightbox);
    
     const mediasHTML = document.querySelectorAll(".media_img")
-    
-    mediasHTML.forEach(media => {
-        //console.log(media.tagName)
-        media.addEventListener('click', e=> {
-            //console.log(media)
-            //console.log(media.dataset.id)
-            //console.log(medias) //medias est appelé dans le fichier photographers.js
-            let index = medias.findIndex(element => { //function qui retourne l'index
-                return element.id == media.dataset.id
-            })
-            //console.log(index)
-            
-            //console.log(medias[index])
-            let title = medias[index].title;
 
+    function displayImage(media) {
+   
+        document.querySelector(".content-lightbox").innerHTML = `
+        <img src="http://127.0.0.1:5500/assets/photographers/${photographer.name}/${media.image}">
+        `
+        
+    }
+    function displayVideo(media) {
+   
+        document.querySelector(".content-lightbox").innerHTML = `
+        <video controls>
+            <source src="http://127.0.0.1:5500/assets/photographers/${photographer.name}/${media.video}"></source>
+        </video>
+        `
+    }
+    mediasHTML.forEach(mediaHtml => {
+        mediaHtml.addEventListener('click', e=> {
+           
+            let index = medias.findIndex(element => { //function qui retourne l'index
+                return element.id == mediaHtml.dataset.id
+            })
+            let media = medias[index]
+            let title = medias[index].title;
             //ajoute la classe active pour afficher la lightbox
             lightbox.classList.add('active') 
-            if(media.tagName === 'VIDEO') {
-                const video = document.createElement('video')
-                video.classList.add("content-lightbox")
-                const source = document.createElement("source")
-                source.src = media.querySelector("source").src
-                video.appendChild(source)
-                video.setAttribute("controls", "true")//pour pouvoir lire la vidéo
-                lightbox.appendChild(video);   
+            lightbox.innerHTML = '<div class="content-lightbox"></div>'
+            if(mediaHtml.tagName === 'VIDEO') {
+                displayVideo(media)
             }
             else {
-                const img = document.createElement('img')
-                //ajoute la class pour le style css
-                img.classList.add("content-lightbox") 
-                img.src = media.src
-                lightbox.appendChild(img);
+                displayImage(media)
             }
             //créé les élements dans le DOM
-            
             lightbox.appendChild(closeMedia);
             lightbox.appendChild(previousMedia);
             lightbox.appendChild(nextMedia);
@@ -66,42 +65,52 @@ function initLightbox() {
             document.querySelector(".title-media").innerHTML = title;
             //focus sur la croix de fermeture
             document.querySelector(".close-media").focus();
-            //evenements au click sur les fleches nextMedia et previousMedia           
+
+            //evenements au click sur la fleche nextMedia          
             document.querySelector(".next-media").addEventListener("click", e => {
-                if(index <= medias.length) {
+                if(index < medias.length-1) {
                     index++;
                 }
                 else {
                     index=0;
-                }               
-                //console.log(medias[index+1].image)
-                let med = medias[index+1];
+                } 
+       
+                let med = medias[index];
                 //changement du titre du média
                 document.querySelector(".title-media").innerHTML  = med.title
-                //stockage du src de l'image avec le nom du photographe
-                let source = `http://127.0.0.1:5500/assets/photographers/${photographer.name}/`
-                //changement du src de l'image et affichage de l'image suivante
-                document.querySelector(".content-lightbox").setAttribute("src", source + med.image)
-                console.log(index)
+                if(medias[index].video){
+                    displayVideo(medias[index]) 
+    
+                }     
+                else {
+                    displayImage(medias[index]) 
+                }
 
             })
+
+            //previous media
             document.querySelector(".previous-media").addEventListener("click", e => {
-                if(index >=0) {
+                
+                if(index >0) {
                     index--;
                 }
                 else {
-                    index = medias.length
+                    index = medias.length-1
                 }
-                let med = medias[index-1];
-                document.querySelector(".title-media").innerHTML = med.title
+                document.querySelector(".title-media").innerHTML  = medias[index].title
+                console.log("on cherche le titre " + medias[index].title)
+             
+                if(medias[index].video){
+                    console.log("c'est une video: " + medias[index].video)
+                    displayVideo(medias[index]) 
+ 
+                }     
+                else {
+                    displayImage(medias[index]) 
+                }  
                
-                let source = `http://127.0.0.1:5500/assets/photographers/${photographer.name}/`
-                document.querySelector(".content-lightbox").setAttribute("src", source + med.image)   
-                console.log(index)
             })
-        })   
-       
-        
+        })     
     })
        
    }

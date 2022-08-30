@@ -249,7 +249,7 @@ h1 {
     color:#901C1C;
     cursor:pointer;
 }
-.content-lightbox {
+.content-lightbox img,video {
     display: flex;
     align-items:center ;
     justify-content: center;
