@@ -1,5 +1,15 @@
+/** Function to sort by Likes,Dates or Title */
+export function sortByLikes(a, b) {
+    if (a.likes > b.likes) {
+        return -1
+    }
+    if (a.likes < b.likes) {
+        return 1
+    }
+    return 0;
+}
 
-function sortByLikes(a, b) {
+export function sortByDate(a, b) {
     if (a.date > b.date) {
         return -1
     }
@@ -9,21 +19,11 @@ function sortByLikes(a, b) {
     return 0;
 }
 
-function sortByDate(a, b) {
-    if (a.date > b.date) {
+export function sortByTitle(a, b) {
+    if (a.title < b.title) {
         return -1
     }
-    if (a.date < b.date) {
-        return 1
-    }
-    return 0;
-}
-
-function sortByTitle(a, b) {
-    if (a.date > b.date) {
-        return -1
-    }
-    if (a.date < b.date) {
+    if (a.title > b.title) {
         return 1
     }
     return 0;

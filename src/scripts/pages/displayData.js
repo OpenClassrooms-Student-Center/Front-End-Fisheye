@@ -1,4 +1,3 @@
-
 import { photographerFactory } from "../factories/photographerFactory";
 
 export async function displayData(photographers, querySelector, id) {
