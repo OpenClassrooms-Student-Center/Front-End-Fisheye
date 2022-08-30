@@ -1,9 +1,4 @@
-import {
-    insertHTMLAfterElement,
-    insertVideoInsideElement,
-    insertPictureInsideElement,
-    buildElement
-} from "../utils/dom";
+import * as dom from "../utils/dom";
 
 export function mediaFactory(data) {
     const { id, photographerId, title, image, video, likes, date, price } = data;
@@ -19,17 +14,17 @@ export function mediaFactory(data) {
             article.setAttribute("class", "media_card");
 
             const linkElement = article.appendChild(
-                buildElement("a", "photographer.html?id=" + id)
+                dom.buildElement("a", "photographer.html?id=" + id)
             );
 
 
             // Check if image or video exists
             if (image) {
-                insertPictureInsideElement(linkElement, picture);
+                dom.insertPictureInsideElement(linkElement, picture);
 
             }
             else if (video) {
-                insertVideoInsideElement(linkElement, movie);
+                dom.insertVideoInsideElement(linkElement, movie);
             }
 
 
@@ -39,7 +34,7 @@ export function mediaFactory(data) {
                 if (likes) {
                     likes_h6 = "<h6>" + likes + "</h6>";
                 }
-                insertHTMLAfterElement(linkElement, "<div class='details'>" + title_h6 + likes_h6 + "</div>");
+                dom.insertHTMLAfterElement(linkElement, "<div class='details'>" + title_h6 + likes_h6 + "</div>");
             }
 
             return article;

@@ -1,4 +1,3 @@
-
 import { photographerFactory } from "../factories/photographerFactory";
 
 export async function displayData(photographers, querySelector, id) {
@@ -18,7 +17,8 @@ export async function displayData(photographers, querySelector, id) {
             const photographersSection = document.querySelector(querySelector);
             const photographerModel = photographerFactory(photographer);
             const userCardDOM = photographerModel.getUserCardDOM();
-            
+
+            console.log(photographer);
             if (userCardDOM) {
                 photographersSection.appendChild(userCardDOM);
             }
