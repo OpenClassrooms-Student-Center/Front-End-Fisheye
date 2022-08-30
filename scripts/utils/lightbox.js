@@ -68,29 +68,59 @@ function initLightbox() {
 
             //evenements au click sur la fleche nextMedia          
             document.querySelector(".next-media").addEventListener("click", e => {
+               nextMediaEvent();
+            })
+
+            //evenements au click sur la fleche previous media
+            document.querySelector(".previous-media").addEventListener("click", e => {
+                previousMediaEvent();
+               
+            })
+            //evenements flèche droite
+            lightbox.addEventListener("keydown", e => {
+                if(e.key =="ArrowRight") {
+                    nextMediaEvent();
+                } 
+               
+            })
+
+            //evenements flèche gauche 
+            lightbox.addEventListener("keydown", e => {
+                if(e.key == "ArrowLeft") {
+                    previousMediaEvent();
+                } 
+               
+            })
+            //evenementtouche echap
+            lightbox.addEventListener("keydown", e => {
+                if(e.key == "Escape") {
+                    lightbox.classList.remove('active')
+                    lightbox.innerHTML = '';
+                } 
+               
+            })
+            //fonctions
+            function nextMediaEvent() {
                 if(index < medias.length-1) {
                     index++;
                 }
                 else {
                     index=0;
                 } 
-       
+        
                 let med = medias[index];
                 //changement du titre du média
                 document.querySelector(".title-media").innerHTML  = med.title
                 if(medias[index].video){
                     displayVideo(medias[index]) 
-    
+        
                 }     
                 else {
                     displayImage(medias[index]) 
                 }
-
-            })
-
-            //previous media
-            document.querySelector(".previous-media").addEventListener("click", e => {
-                
+        
+            }
+            function previousMediaEvent() {
                 if(index >0) {
                     index--;
                 }
@@ -98,18 +128,14 @@ function initLightbox() {
                     index = medias.length-1
                 }
                 document.querySelector(".title-media").innerHTML  = medias[index].title
-                console.log("on cherche le titre " + medias[index].title)
              
                 if(medias[index].video){
-                    console.log("c'est une video: " + medias[index].video)
                     displayVideo(medias[index]) 
- 
                 }     
                 else {
                     displayImage(medias[index]) 
-                }  
-               
-            })
+                }      
+            }
         })     
     })
        
