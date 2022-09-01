@@ -1,5 +1,5 @@
 
-import { buildElement, insertPictureInsideElement, setInnerHtml } from "../utils/dom";
+import { buildElement, insertPictureInsideElement, setInnerHtml, setArielLabel } from "../utils/dom";
 
 export function photographerFactory(data) {
     const { name, id, city, country, tagline, portrait, price } = data;
@@ -16,9 +16,12 @@ export function photographerFactory(data) {
 
             // Create Dynamique LINK with Picture
             const linkElement = article.appendChild(
-                buildElement("a", "photographer.html?id=" + id)
+                buildElement("a", "photographer.html?id=" + id) // Build AHref
             );
-            insertPictureInsideElement(linkElement, picture);
+            setArielLabel(linkElement, "Link to " + name) // Set ArielLabel to AHref
+
+
+            insertPictureInsideElement(linkElement, picture, name);
             // END Create Dynamique LINK with Picture
 
             article.appendChild(buildElement("h2", name));

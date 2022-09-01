@@ -11,7 +11,7 @@ import { selectFilterComponent } from '../utils/selectFilter';
 async function init() {
     // Try to get data from photographers & media if error then redirect to 404 page
     try {
-        console.log(process.env);
+
         // SET Photographer Profile DATA
         const idURL = await getUrlParameter("id");
         const photographers = await getPhotographers();
