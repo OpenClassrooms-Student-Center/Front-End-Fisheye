@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="fr">
     <head>
         <meta charset="utf-8">
         <link rel="icon" type="image/png" href="assets/favicon.png">
@@ -8,7 +8,9 @@
     </head>
     <body>
         <header>
-            <img src="./assets/images/logo.png" class="logo_photographer">
+            <a href="index.html" ariel-label="Link to Fisheye Home Page">
+                <img src="./assets/images/logo.png" alt="Fisheye Home Page" class="logo">
+            </a>
         </header>
         <main id="main" class="margin_left_right">
             <div class="photograph_header">
@@ -18,21 +20,21 @@
                     <h3></h3>
                 </div>
                 <div class="photograph_button">
-                    <button class="contact_button" onclick="displayModal()">Contactez-moi</button>
+                    <button class="contact_button" aria-label="Contact Me" onclick="displayModal()">Contactez-moi</button>
                 </div>
                 <div class="photographer_card">
-                    <img src="test.jpg">
+                    <img src="" alt="profil photographer">
                 </div>
             </div>
             <div class="filter_section">
                 <h5>Trier par</h5>
                 <div class="select_filter">
-                    <button class="select_button">Popularité</button>
-                    <div class="select_content">
+                    <button class="select_button" role="button" aria-haspopup="listbox">Popularité</button>
+                    <div class="select_content" role="listbox">
                         <div class="whiteline"></div>
-                        <a id="select1" href="#">Date</a>
+                        <a id="select1">Date</a>
                         <div class="whiteline"></div>
-                        <a id="select2" href="#">Titre</a>
+                        <a id="select2">Titre</a>
                     </div>
                 </div>
             </div>
@@ -41,7 +43,7 @@
                 <div class="modal">
                     <header>
                         <h2>Contactez-moi</h2>
-                        <img src="./assets/icons/close.svg" onclick="closeModal()">
+                        <img src="./assets/icons/close.svg" alt="fermer" onclick="closeModal()">
                     </header>
                     <form>
                         <div>
@@ -60,12 +62,4 @@
         <footer></footer>
     </body>
     <script src="./dist/photographer.js"></script>
-    <!-- <script src="scripts/utils/fetch.js"></script>
-    <script src="scripts/utils/dom.js"></script>
-    <script src="scripts/utils/getUrlParameter.js"></script>
-    <script src="scripts/utils/contactForm.js"></script>
-    <script src="scripts/factories/mediaFactory.js"></script>
-    <script src="scripts/factories/photographerFactory.js"></script>
-    <script src="scripts/pages/sharedFunction.js"></script>
-    <script src="scripts/pages/photographer.js"></script> -->
 </html>
