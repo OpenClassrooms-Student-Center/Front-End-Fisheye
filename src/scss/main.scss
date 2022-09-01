@@ -24,5 +24,6 @@
 @import "pages/pages.scss";
 /** IMPORT FOOTER STYLES **/
 @import "pages/footer.scss";
-/** IMPORT RESPONSIVE STYLES for Non Components Elements **/
+/** IMPORT RESPONSIVE STYLES for Non Components Elements
+ (components Elements got their own Responsive Rules in their Stylesheet) **/
 @import "_responsive.scss";

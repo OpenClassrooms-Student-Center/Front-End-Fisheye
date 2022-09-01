@@ -1,7 +1,7 @@
 import '../../scss/main.scss';
 import { getPhotographers, getMedias } from '../utils/fetch';
-import { displayData } from './displayData';
-import { displayMedia } from './displayMedia';
+import { displayData } from '../pages/displayData';
+import { displayMedia } from '../pages/displayMedia';
 import { getUrlParameter } from '../utils/getUrlParameter';
 import { sortByLikes } from '../utils/sortBy';
 import { selectFilterComponent } from '../utils/selectFilter';
@@ -28,6 +28,8 @@ async function initMain() {
         console.log("Page principal initié avec succès depuis initMain()");
     } catch (e) {
         console.error(e);
+        // If it's a fail then we redirect to 404 Error Page since initMain() it's the minimal functionality
+        // Atm 404 error page doesn't exists must be write later
         console.log("Rediriger vers la page 404");
     }
 }
@@ -47,6 +49,8 @@ async function initContactForm() {
     }
 }
 
+// We init main page and contactForm in parallel so we don't use await there for fast response
+initMain();
+initContactForm();
 
-initMain(); // Init Main Page
-initContactForm();  // Init work about ContactForm 
+
