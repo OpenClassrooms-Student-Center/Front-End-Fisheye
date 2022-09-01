@@ -2,7 +2,7 @@ import '../../scss/main.scss';
 import { getPhotographers } from '../utils/fetch';
 import { displayData } from './displayData';
 
-async function init() {
+async function initMain() {
     // Try to get data from photographes if error then redirect to 404 page
     try {
         const photographers = await getPhotographers();
@@ -14,4 +14,4 @@ async function init() {
     }
 }
 
-init();
+initMain();

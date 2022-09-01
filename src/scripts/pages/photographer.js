@@ -5,10 +5,10 @@ import { displayMedia } from './displayMedia';
 import { getUrlParameter } from '../utils/getUrlParameter';
 import { sortByLikes } from '../utils/sortBy';
 import { selectFilterComponent } from '../utils/selectFilter';
+import * as contactForm from '../utils/contactForm';
 
 
-
-async function init() {
+async function initMain() {
     // Try to get data from photographers & media if error then redirect to 404 page
     try {
         // SET Photographer Profile DATA
@@ -25,12 +25,28 @@ async function init() {
         // Init selectFilter Component and his behavior, need to provide the Data to filter
         selectFilterComponent(medias, idURL);
 
-
-        console.log("Page initialiser avec succès depuis init()");
+        console.log("Page principal initié avec succès depuis initMain()");
     } catch (e) {
         console.error(e);
         console.log("Rediriger vers la page 404");
     }
 }
 
-init();
+async function initContactForm() {
+    try {
+        document.getElementById("openModal").addEventListener("click", function () {
+            contactForm.displayModal();
+        });
+        document.getElementById("closeModal").addEventListener("click", function () {
+            contactForm.closeModal();
+        });
+        console.log("Formulaire contact initié avec succès depuis initContactForm()");
+    }
+    catch (e) {
+        console.error(e);
+    }
+}
+
+
+initMain(); // Init Main Page
+initContactForm();  // Init work about ContactForm 

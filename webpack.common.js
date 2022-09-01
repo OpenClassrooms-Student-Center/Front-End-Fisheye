@@ -4,6 +4,7 @@ module.exports = {
     entry: {
         index: __dirname + "/src/scripts/pages/index.js",
         photographer: __dirname + "/src/scripts/pages/photographer.js"
+       
     },
 
     output: {

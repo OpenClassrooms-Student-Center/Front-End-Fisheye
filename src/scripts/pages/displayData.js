@@ -8,8 +8,8 @@ export async function displayData(photographers, querySelector, id) {
                 // Then we are going use the PhotographerFactory to set DOM
                 console.log(photographer);
                 const photographerModel = photographerFactory(photographer);
-                photographerModel.setPhotographerHeader();
-                photographerModel.setStickyBarPrice();
+                photographerModel.setPhotographerHeader(); 
+                photographerModel.setStickyBarPrice(); 
                 // End of PhotographerFactory Work
             }
         } else {

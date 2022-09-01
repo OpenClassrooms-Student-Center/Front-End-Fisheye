@@ -25,7 +25,7 @@ export function insertHTMLAfterElement(element, html) {
     element.insertAdjacentHTML("afterend", html);
 }
 
-export function buildElement(balise, value, alt) {
+export function buildElement(balise, value) {
     // Create balise
     const element = document.createElement(balise);
 
