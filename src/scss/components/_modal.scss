@@ -1,63 +1,71 @@
 #contact_modal {
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.25);
     display: flex;
     position: absolute;
-    top: 80px;
-    left: 25%;
-    right: 25%;
+    top: 30px;
+    left: 27%;
+    right: 27%;
     border-radius: 5px;
     background-color: $color_background;
-
+    align-items: baseline;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: space-between;
     padding: 35px;
     margin: auto;
-    overflow: visible;
+
+
+    .modal_header {
+        justify-content: space-between;
+        width: 100%;
+        margin-top: -20px;
+        margin-bottom: 10px;
+        display: flex;
+        align-items: baseline;
+
+        img {
+            cursor: pointer;
+        }
+
+        h2 {
+            font-size: calc($font_size * 1.77);
+            font-weight: normal;
+        }
+    }
+
+    form input {
+        font-size: calc($font_size);
+        margin-bottom: 5px;
+    }
+
+    form textarea {
+        font-size: calc($font_size /2);
+        margin-bottom: 20px;
+    }
+
+    form input,
+    form textarea {
+
+        width: 100%;
+        height: 68px;
+        border: none;
+        border-radius: 5px;
+
+    }
+
+
+    form label {
+        color: $default_font_color;
+        font-size: $font_size;
+    }
+
+    form label:last-child {
+        margin-top: 15px;
+    }
+
 }
 
-#contact_modal header {
-    justify-content: space-between;
-    width: 100%;
-}
-
-#contact_modal header img {
-    cursor: pointer;
-}
-
-#contact_modal header h2 {
-    font-size: calc($font_size * 1.77);
-    font-weight: normal;
-    text-align: center;
-}
-
-#contact_modal form {
-    display: flex;
-    width: 100%;
-    flex-direction: column;
-    align-items: flex-start;
-}
-
-#contact_modal form label {
-    color: $color_secondary2;
-    font-size: $font_size;
-}
-
-#contact_modal form div {
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-    align-items: self-start;
-    margin-bottom: 26px;
-}
-
-#contact_modal form input {
-    width: 100%;
-    height: 68px;
-    border: none;
-    border-radius: 5px;
-}
-
-#contact_modal {
-    display: none;
+.label_textarea {
+    margin-top: 15px;
 }
