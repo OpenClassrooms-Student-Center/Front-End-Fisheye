@@ -57,8 +57,9 @@ async function initMedia(idURL) {
 
 async function initContactForm() {
     try {
-        const contactFormModal = modalMaster("body", "main", "contact_modal"); // Create a Model Page Object
-        contactFormModal.addContactFormListener(); // Add listener for Contact Form Modal
+        const contactFormModal = modalMaster("body", "main", "contact_modal"); // Create a Model Master
+        const modelPage = contactFormModal.modalPage; // Get modelPage Object
+        contactFormModal.addContactFormListener(modelPage); // Add listener for Contact Form Modal
         console.log("Formulaire contact initié avec succès depuis initContactForm()");
     }
     catch (e) {
