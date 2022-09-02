@@ -8,10 +8,10 @@ export function insertPictureInsideElement(element, picture, alt) {
     }
 }
 
-export function insertVideoInsideElement(element, video, arielLabel) {
+export function insertVideoInsideElement(element, video, ariaLabel) {
 
-    if (arielLabel) {
-        element.insertAdjacentHTML("beforeend", '<video src="' + video + '" ' + 'aria-label="' + arielLabel + '">');
+    if (ariaLabel) {
+        element.insertAdjacentHTML("beforeend", '<video src="' + video + '" ' + 'aria-label="' + ariaLabel + '">');
 
     }
     else {

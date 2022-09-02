@@ -1,5 +1,5 @@
 
-import { buildElement, insertPictureInsideElement, setInnerHtml, setArielLabel } from "../utils/dom";
+import { buildElement, insertPictureInsideElement, setInnerHtml, setArialLabel } from "../utils/dom";
 
 export function photographerFactory(data) {
     const { name, id, city, country, tagline, portrait, price } = data;
