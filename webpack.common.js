@@ -19,6 +19,7 @@ module.exports = {
                 test: /\.m?js$/,
                 use: {
                     loader: "babel-loader",
+                    
                     options: {
                         presets: [
                             [

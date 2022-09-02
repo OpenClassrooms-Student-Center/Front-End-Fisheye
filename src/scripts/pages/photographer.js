@@ -5,7 +5,7 @@ import { displayMedia } from '../pages/displayMedia';
 import { getUrlParameter } from '../utils/getUrlParameter';
 import { sortByLikes } from '../utils/sortBy';
 import { selectFilterComponent } from '../utils/selectFilter';
-import * as contactForm from '../utils/contactForm';
+import { modalMaster } from '../utils/modalForm';
 
 
 async function initMain() {
@@ -36,12 +36,14 @@ async function initMain() {
 
 async function initContactForm() {
     try {
+        const contactForm = modalMaster("body","main","contact_modal"); // Create a contact Form object
         document.getElementById("openModal").addEventListener("click", function () {
             contactForm.displayModal();
         });
         document.getElementById("closeModal").addEventListener("click", function () {
             contactForm.closeModal();
         });
+
         console.log("Formulaire contact initié avec succès depuis initContactForm()");
     }
     catch (e) {

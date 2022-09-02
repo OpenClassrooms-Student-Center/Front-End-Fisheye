@@ -1,9 +1,9 @@
-#contact_modal {
+.modal {
     display: none;
     box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.25);
     position: absolute;
-    left: 27%;
-    right: 27%;
+    left: 25%;
+    right: 25%;
     border-radius: 5px;
     background-color: $color_background;
     align-items: baseline;
@@ -63,8 +63,39 @@
         margin-top: 15px;
     }
 
+    .label_textarea {
+        margin-top: 15px;
+    }
 }
 
-.label_textarea {
-    margin-top: 15px;
+
+.hide_content {
+    animation: 1s ease-in forwards fade-off;
+
+    @keyframes fade-off {
+        0% {
+            opacity: 1.0;
+        }
+
+        100% {
+            opacity: 0;
+        }
+    }
+}
+
+
+
+.show_content {
+    animation: 1s ease-in forwards fade-in;
+
+    @keyframes fade-in {
+        0% {
+            opacity: 0;
+        }
+
+        100% {
+            opacity: 1.0;
+        }
+    }
+
 }
