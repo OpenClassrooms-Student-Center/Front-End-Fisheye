@@ -13,6 +13,16 @@ export function modalMaster(bodyTag, mainTag, modalID) {
     modalPage = getDomPropriety(modalPage);
     /** END  */
 
+    function addContactFormListener() {
+        const modal = modelPage.modal;
+        document.getElementById("openModal").addEventListener("click", function () {
+            modal.displayModal();
+        });
+        document.getElementById("closeModal").addEventListener("click", function () {
+            modal.closeModal();
+        });
+
+    }
     function getDomPropriety(object) {
         object.bodyHTML = document.querySelector(modalPage.bodyHTML); // We target the body HTML tag
         object.mainHTML = document.querySelector(modalPage.mainHTML); // We target our main HTML tag
@@ -70,5 +80,5 @@ export function modalMaster(bodyTag, mainTag, modalID) {
     function sendMessage() {
 
     }
-    return { modalPage, displayModal, closeModal, sendMessage }
+    return { modalPage, addContactFormListener, displayModal, closeModal, sendMessage }
 }

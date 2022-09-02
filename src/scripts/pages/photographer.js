@@ -36,20 +36,16 @@ async function initMain() {
 
 async function initContactForm() {
     try {
-        const contactForm = modalMaster("body","main","contact_modal"); // Create a contact Form object
-        document.getElementById("openModal").addEventListener("click", function () {
-            contactForm.displayModal();
-        });
-        document.getElementById("closeModal").addEventListener("click", function () {
-            contactForm.closeModal();
-        });
-
+        const contactFormModal = modalMaster("body","main","contact_modal"); // Create a Model Page Object
+        contactFormModal.addContactFormListener(); // Add listener for Contact Form Modal
         console.log("Formulaire contact initié avec succès depuis initContactForm()");
     }
     catch (e) {
         console.error(e);
     }
 }
+
+
 
 // We init main page and contactForm in parallel so we don't use await there for fast response
 initMain();
