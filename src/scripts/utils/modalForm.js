@@ -1,4 +1,3 @@
-
 export function modalMaster(bodyTag, mainTag, modalID) {
 
 
@@ -6,6 +5,7 @@ export function modalMaster(bodyTag, mainTag, modalID) {
     let modalPage = {
         bodyHTML: bodyTag,
         mainHTML: mainTag,
+        modalHTML: modalID,
         modal: modalID,
         visible: 0,
     }
@@ -22,10 +22,13 @@ export function modalMaster(bodyTag, mainTag, modalID) {
         });
 
     }
+
+
+
     function getDomPropriety(object) {
         object.bodyHTML = document.querySelector(modalPage.bodyHTML); // We target the body HTML tag
         object.mainHTML = document.querySelector(modalPage.mainHTML); // We target our main HTML tag
-        object.modal = document.getElementById(modalPage.modal); // We target our modal
+        object.modalHTML = document.getElementById(modalPage.modal); // We target our modal
 
         return modalPage; // We return new propriety for our object modalPage 
     }
@@ -44,18 +47,18 @@ export function modalMaster(bodyTag, mainTag, modalID) {
     function effectAnimation(hideclass, showclass) {
         if (modalPage.visible === 0) {
             modalPage.mainHTML.classList.remove(showclass);
-            modalPage.modal.classList.remove(hideclass);
+            modalPage.modalHTML.classList.remove(hideclass);
 
             modalPage.mainHTML.classList.add(hideclass);
-            modalPage.modal.classList.add(showclass);
+            modalPage.modalHTML.classList.add(showclass);
 
             modalPage.visible = 1
         }
         else {
-            modalPage.modal.classList.remove(showclass);
+            modalPage.modalHTML.classList.remove(showclass);
             modalPage.mainHTML.classList.remove(hideclass);
 
-            modalPage.modal.classList.add(hideclass);
+            modalPage.modalHTML.classList.add(hideclass);
             modalPage.mainHTML.classList.add(showclass);
 
             modalPage.visible = 0
@@ -66,18 +69,20 @@ export function modalMaster(bodyTag, mainTag, modalID) {
     function displayModal() {
         effectAnimation("hide_content", "show_content");
         modalPage.bodyHTML.style.overflow = "hidden"; // Block Scroll
-        modalPage.modal.style.display = "block"; // Display the Modal at the screen
-        centerModal(modalPage.modal); // Center the Modal at the screen
+        modalPage.modalHTML.style.display = "block"; // Display the Modal at the screen
+        centerModal(modalPage.modalHTML); // Center the Modal at the screen
     }
 
     function closeModal() {
         effectAnimation("hide_content", "show_content");
         modalPage.bodyHTML.style.overflow = "visible"; // Allow scroll 
-        modalPage.modal.style.display = "none"; // Hide at the screen modal
+        modalPage.modalHTML.style.display = "none"; // Hide at the screen modal
     }
 
     function sendMessage() {
 
     }
+
+
     return { modalPage, addContactFormListener, displayModal, closeModal, sendMessage }
 }

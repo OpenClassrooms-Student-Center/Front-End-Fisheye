@@ -10,6 +10,8 @@ export async function displayData(photographers, querySelector, id) {
                 const photographerModel = photographerFactory(photographer);
                 photographerModel.setPhotographerHeader();
                 photographerModel.setStickyBarPrice();
+
+                return photographer.name; 
                 // End of PhotographerFactory Work
             }
         } else {
@@ -25,5 +27,7 @@ export async function displayData(photographers, querySelector, id) {
             // End of PhotographerFactory Work
         }
     });
+  
+
 }
 
