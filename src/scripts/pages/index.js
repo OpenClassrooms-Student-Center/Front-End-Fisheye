@@ -7,7 +7,7 @@ async function initMain() {
     try {
         const photographers = await getPhotographers();
         displayDataAll(photographers, ".photographer_section");
-        console.log("Page initialiser avec succès depuis init()");
+        console.log("Page initialiser avec succès depuis initMain()");
     } catch (e) {
         console.error(e);
         // If it's a fail then we redirect to 404 Error Page since initMain() it's the minimal functionality

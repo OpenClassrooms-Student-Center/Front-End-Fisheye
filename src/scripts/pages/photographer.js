@@ -18,7 +18,7 @@ async function initProfile(idURL) {
         displayData(photographers, idURL);
         // END SET Photographer Profile Data
 
-        console.log("Section Profile initié avec succès depuis initProfile()");
+        console.log("Section profile initié avec succès depuis initProfile()");
 
     } catch (e) {
         console.error(e);
@@ -69,6 +69,7 @@ async function initContactForm() {
 
 
 async function initMain() {
+    // We Wait for getUrlParameter() to be complete then we run tasks for generate page
     const idURL = await getUrlParameter("id");
     initProfile(idURL);
     initMedia(idURL);
