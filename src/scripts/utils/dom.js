@@ -14,11 +14,10 @@ export function insertVideoInsideElement(element, video, arielLabel) {
         element.insertAdjacentHTML("beforeend", '<video src="' + video + '" ' + 'aria-label="' + arielLabel + '">');
 
     }
-    else 
-    {
+    else {
         element.insertAdjacentHTML("beforeend", '<video src="' + video + '">');
     }
-   
+
 }
 
 export function insertHTMLAfterElement(element, html) {
@@ -44,8 +43,8 @@ export function buildElement(balise, value) {
 }
 
 
-export function setArielLabel(element, arielLabel) {
-    element.setAttribute("ariel-label", arielLabel);
+export function setArialLabel(element, arialabel) {
+    element.setAttribute("aria-label", arialabel);
 }
 
 export function setInnerHtml(querySelector, texte) {

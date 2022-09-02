@@ -11,7 +11,7 @@ export function mediaFactory(data) {
         // Create DOM only if we got ids and a Picture or a Video
         const hasPhotographer = id && photographerId;
         const hasContent = image || video
-        
+
         if (hasPhotographer && hasContent) {
             // CREATE A ARTICLE
             const article = document.createElement("article");
@@ -21,7 +21,7 @@ export function mediaFactory(data) {
             const linkElement = article.appendChild(
                 dom.buildElement("a", "photographer.html?id=" + id)
             );
-            dom.setArielLabel(linkElement, "Lilac breasted roller, closeup view") // Set ArielLabel to AHref
+            dom.setArialLabel(linkElement, "Lilac breasted roller, closeup view") // Set ArielLabel to AHref
 
 
             // Check if image or video exists
