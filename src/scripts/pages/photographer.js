@@ -1,7 +1,7 @@
 import '../../scss/main.scss';
 import { getPhotographers, getMedias } from '../utils/fetch';
-import { displayData } from '../pages/displayData';
-import { displayMedia } from '../pages/displayMedia';
+import { displayData } from '../data/displayData';
+import { displayMedia } from '../data/displayMedia';
 import { getUrlParameter } from '../utils/getUrlParameter';
 import { sortByLikes } from '../utils/sortBy';
 import { selectFilterComponent } from '../utils/selectFilter';
@@ -15,7 +15,7 @@ async function initProfile(idURL) {
     try {
         // SET Photographer Profile DATA
         const photographers = await getPhotographers();
-        displayData(photographers, ".photograph_header", idURL);
+        displayData(photographers, idURL);
         // END SET Photographer Profile Data
 
         console.log("Section Profile initié avec succès depuis initProfile()");

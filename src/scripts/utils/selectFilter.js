@@ -1,4 +1,4 @@
-import { displayMedia } from '../pages/displayMedia';
+import { displayMedia } from '../data/displayMedia';
 import { sortByLikes, sortByDate, sortByTitle } from '../utils/sortBy';
 
 

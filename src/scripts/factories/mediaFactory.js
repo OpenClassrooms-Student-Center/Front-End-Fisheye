@@ -1,7 +1,7 @@
 import * as dom from "../utils/dom";
 
 export function mediaFactory(data) {
-    const { id, photographerId, title, image, video, likes, date, price } = data;
+    const { id, photographerId, title, image, video, likes } = data;
 
     const movie = `assets/video/${video}`;
     const picture = `assets/images/${image}`;
@@ -9,7 +9,10 @@ export function mediaFactory(data) {
     function getMediaDOM() {
 
         // Create DOM only if we got ids and a Picture or a Video
-        if ((id && photographerId) && (image || video)) {
+        const hasPhotographer = id && photographerId;
+        const hasContent = image || video
+        
+        if (hasPhotographer && hasContent) {
             // CREATE A ARTICLE
             const article = document.createElement("article");
             article.setAttribute("class", "media_card");
