@@ -1,3 +1,5 @@
+import {displayModal} from '../utils/contactForm';
+
 export function photographerFactory(data, template, path, index) {
     const {name, portrait, city, country, tagline, price, id, title, image, video, likes} = data;
     const pictures = `../assets/photos/Photographers ID Photos/${portrait}`;
@@ -37,10 +39,10 @@ export function photographerFactory(data, template, path, index) {
 
     const picture = `../../assets/photos/Photographers ID Photos/${portrait}`;
 
-    function displayModal() {
+ /*   function displayModal() {
         const contact = document.getElementById('contact_modal');
         contact.style.display = 'flex';
-    }
+    }*/
 
     function getUserCardDOM() {
         const article = document.querySelector('.photographer-content');

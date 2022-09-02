@@ -1,0 +1,257 @@
+/* wanted colors */
+@import "https://fonts.googleapis.com/css?family=DM+Sans&display=swap";
+/* wanted colors */
+header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  height: 90px;
+}
+header h1 {
+  color: #901C1C;
+  margin-right: 100px;
+}
+header .logo {
+  height: 50px;
+  margin-left: 100px;
+}
+
+#contact_modal {
+  display: none;
+  justify-content: center;
+}
+#contact_modal .modal {
+  position: absolute;
+  top: 50px;
+  border-radius: 5px;
+  background-color: #DB8876;
+  max-width: 700px;
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  padding: 35px;
+  margin: auto;
+}
+#contact_modal .modal header {
+  justify-content: space-between;
+  align-items: flex-start;
+  width: 100%;
+  height: fit-content;
+  margin-bottom: 25px;
+}
+#contact_modal .modal header .photographer-modal-name h2 {
+  font-size: 64px;
+  font-weight: normal;
+  margin: 0;
+}
+#contact_modal .modal header .photographer-modal-name p {
+  font-size: 54px;
+  font-weight: normal;
+  margin: 0;
+}
+#contact_modal .modal header img {
+  cursor: pointer;
+  margin: 15px 0;
+}
+#contact_modal .modal form {
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  align-items: flex-start;
+}
+#contact_modal .modal form div {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  align-items: self-start;
+  margin-bottom: 26px;
+}
+#contact_modal .modal form div label {
+  color: #312E2E;
+  font-size: 36px;
+}
+#contact_modal .modal form div input {
+  width: 100%;
+  height: 68px;
+  border: none;
+  border-radius: 5px;
+}
+#contact_modal .modal form div textarea {
+  width: 100%;
+  height: 200px;
+}
+
+/* wanted colors */
+#lightbox_modal {
+  display: none;
+  justify-content: center;
+}
+#lightbox_modal .lightbox_modal {
+  position: fixed;
+  top: 50px;
+  border-radius: 5px;
+  background-color: white;
+  width: 60%;
+  height: 710px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 35px;
+}
+#lightbox_modal .lightbox_modal header {
+  height: fit-content;
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 25px;
+}
+#lightbox_modal .lightbox_modal header button {
+  position: absolute;
+  top: 30px;
+  right: 90px;
+  cursor: pointer;
+  border: none;
+  background-color: transparent;
+}
+#lightbox_modal .lightbox_modal header button img {
+  width: 35px;
+}
+#lightbox_modal .lightbox_modal div {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+}
+#lightbox_modal .lightbox_modal div .fa-angle-left, #lightbox_modal .lightbox_modal div .fa-angle-right {
+  cursor: pointer;
+  border: none;
+  background-color: transparent;
+  color: #901C1C;
+  font-size: xxx-large;
+}
+#lightbox_modal .lightbox_modal div .lightbox_img {
+  display: flex;
+}
+#lightbox_modal .lightbox_modal div .lightbox_img img, #lightbox_modal .lightbox_modal div .lightbox_img video {
+  width: 900px;
+  height: 700px;
+  object-fit: cover;
+}
+#lightbox_modal .title {
+  color: #901C1C;
+  font-size: x-large;
+  margin: 10px 130px;
+}
+
+.contact_button {
+  font-size: 20px;
+  font-weight: bold;
+  color: white;
+  padding: 11px;
+  width: 170px;
+  height: 70px;
+  border: none;
+  background-color: #901C1C;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.photographer-header {
+  background-color: #FAFAFA;
+  height: 300px;
+}
+.photographer-header article {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 70px;
+  height: 100%;
+  align-items: center;
+  justify-items: center;
+}
+.photographer-header article div {
+  display: flex;
+  flex-direction: column;
+}
+.photographer-header article div h1 {
+  color: #D3573C;
+  font-size: 60px;
+  font-weight: normal;
+  margin: 0;
+}
+.photographer-header article div p {
+  margin: 5px;
+}
+.photographer-header article div p.location {
+  color: #901C1C;
+  font-size: 23px;
+}
+.photographer-header article div p.quote {
+  color: rgba(82, 82, 82, 0.4470588235);
+  font-size: 20px;
+}
+.photographer-header article img {
+  height: 200px;
+  width: 200px;
+  border-radius: 100%;
+  object-fit: cover;
+}
+
+section {
+  margin: 20px 100px;
+}
+section label {
+  font-size: 18px;
+  font-weight: bold;
+  margin-right: 10px;
+}
+section select {
+  background-color: #901C1C;
+  color: white;
+  border: none;
+  font-size: 18px;
+  padding: 4px;
+}
+section select option {
+  padding-right: 200px;
+}
+section .photo {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  margin: 50px 0;
+  align-items: center;
+  justify-items: center;
+  gap: 70px;
+}
+section .photo button {
+  background-color: white;
+  border: none;
+  cursor: pointer;
+}
+section .photo button article img, section .photo button article video {
+  width: 500px;
+  height: 400px;
+  object-fit: cover;
+}
+section .photo button article div {
+  display: flex;
+  justify-content: space-between;
+}
+section .photo button article div .description {
+  margin: 10px 0;
+  color: #901C1C;
+  font-size: 23px;
+}
+section .photo button article div div {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 23px;
+  color: #901C1C;
+}
+section .photo button article div div .like {
+  margin: 0;
+}
+
+/*# sourceMappingURL=photographer.css.map */

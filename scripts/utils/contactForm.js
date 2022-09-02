@@ -1,15 +1,11 @@
-import {media, updateLightboxData} from '../../pages/photographer/photographer.js'
+/*import {media, updateLightboxData} from '../../pages/photographer/photographer.js'*/
 
 export function displayModal() {
     const contact = document.getElementById('contact_modal');
     contact.style.display = 'flex';
 }
 
-export function closeModal() {
-    const contact = document.getElementById('contact_modal');
-    contact.style.display = 'none';
-}
-
+/*
 function displayLightbox(i) {
     const lightbox = document.getElementById('lightbox_modal');
     lightbox.style.display = 'flex';
@@ -38,3 +34,4 @@ export function closeLightbox() {
     const lightbox = document.getElementById('lightbox_modal');
     lightbox.style.display = 'none';
 }
+*/
