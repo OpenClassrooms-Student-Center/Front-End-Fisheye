@@ -5,8 +5,8 @@ export async function fetchJSON(url, type) {
     if (!response.ok) { throw new Error("Thrown from fetchJSON()"); }
 
     let jsonResponse = await response.json(); // parsing JSON
-    jsonResponse = jsonResponse[type]; // Get data from the Array that we want
-    return jsonResponse;
+    return jsonResponse[type]; // Get data from the Array that we want
+
 }
 
 
