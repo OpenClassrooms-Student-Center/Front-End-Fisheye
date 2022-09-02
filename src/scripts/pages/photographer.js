@@ -11,7 +11,7 @@ import { modalMaster } from '../utils/modalForm';
 
 
 async function initProfile(idURL) {
-    // Try to get data from photographers & media if error then redirect to 404 page
+    // Try to get data from photographers if error then redirect to 404 page
     try {
         // SET Photographer Profile DATA
         const photographers = await getPhotographers();
@@ -31,7 +31,7 @@ async function initProfile(idURL) {
 
 
 async function initMedia(idURL) {
-    // Try to get data from photographers & media if error then redirect to 404 page
+    // Try to get data from media if error then redirect to 404 page
     try {
 
         // Build Medias Data
@@ -69,10 +69,10 @@ async function initContactForm() {
 
 async function initMain() {
     const idURL = await getUrlParameter("id");
-    initMedia(idURL);
     initProfile(idURL);
+    initMedia(idURL);
     initContactForm();
- 
+
 }
 
 
