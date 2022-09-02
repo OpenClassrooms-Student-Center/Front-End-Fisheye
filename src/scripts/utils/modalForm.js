@@ -14,12 +14,11 @@ export function modalMaster(bodyTag, mainTag, modalID) {
     /** END  */
 
     function addContactFormListener() {
-        const modal = modelPage.modal;
         document.getElementById("openModal").addEventListener("click", function () {
-            modal.displayModal();
+            displayModal();
         });
         document.getElementById("closeModal").addEventListener("click", function () {
-            modal.closeModal();
+            closeModal();
         });
 
     }
