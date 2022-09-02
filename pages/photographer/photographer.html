@@ -44,7 +44,9 @@
             <div class="photographer-modal-name">
                 <h2>Contactez-moi</h2>
             </div>
-            <img src="../../assets/icons/close.svg" onclick="closeModal()" alt="close_icon"/>
+            <button id="close_modal" aria-label="close modal">
+                <img src="../../assets/icons/close.svg" alt="close_icon"/>
+            </button>
         </header>
         <form>
             <div>
@@ -72,15 +74,17 @@
     <div class="lightbox_modal">
         <div>
             <header>
-                <button id="close_modal" onclick="closeLightbox()" aria-label="close modal">
+                <button id="close_lightbox" aria-label="close modal">
                     <img src="../../assets/icons/closeLightbox.svg" alt="close_icon"/>
                 </button>
             </header>
+            <button id="lightbox_left" class="fa-solid fa-angle-left"></button>
             <div class="lightbox_img"></div>
+            <button id="lightbox_right" class="fa-solid fa-angle-right"></button>
         </div>
         <p class="title"></p>
     </div>
 </div>
-<script src="photographer.js" type="module"></script>
+<script src="./photographer.js" type="module"></script>
 </body>
 </html>

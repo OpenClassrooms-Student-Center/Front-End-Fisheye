@@ -1,4 +1,4 @@
-import {photographerFactory} from '../scripts/factories/photographers.js';
+import { photographerFactory } from '../scripts/factories/photographers.js';
 
 // Récupère les données des photographes
 async function getPhotographers() {
@@ -7,8 +7,8 @@ async function getPhotographers() {
             if (response.ok) {
                 return response.json()
                     .then(data => {
-                            return data.photographers
-                        }
+                        return data.photographers
+                    }
                     )
             } else {
                 console.error('Retour du serveur : ', response.status)

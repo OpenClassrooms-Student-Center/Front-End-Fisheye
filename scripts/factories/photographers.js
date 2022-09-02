@@ -1,7 +1,7 @@
-import {displayModal} from '../utils/contactForm';
+import { displayLightbox, displayModal } from '../../scripts/utils/forms.js';
 
-export function photographerFactory(data, template, path, index) {
-    const {name, portrait, city, country, tagline, price, id, title, image, video, likes} = data;
+export function photographerFactory(data, template, path, index, updateLightboxData) {
+    const { name, portrait, city, country, tagline, price, id, title, image, video, likes } = data;
     const pictures = `../assets/photos/Photographers ID Photos/${portrait}`;
     const photographer = `./photographer/photographer.html?id=${id}`;
 
@@ -38,11 +38,6 @@ export function photographerFactory(data, template, path, index) {
     }
 
     const picture = `../../assets/photos/Photographers ID Photos/${portrait}`;
-
- /*   function displayModal() {
-        const contact = document.getElementById('contact_modal');
-        contact.style.display = 'flex';
-    }*/
 
     function getUserCardDOM() {
         const article = document.querySelector('.photographer-content');
@@ -82,7 +77,10 @@ export function photographerFactory(data, template, path, index) {
 
     function getMediaByUser() {
         const button = document.createElement('button');
-        button.setAttribute('onClick', `displayLightbox(${index})`);
+        button.onclick = () => {
+            displayLightbox();
+            updateLightboxData(index);
+        };
         const article = document.createElement('article');
         if (image) {
             const img = document.createElement('img');

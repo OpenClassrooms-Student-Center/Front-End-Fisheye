@@ -1,4 +1,4 @@
-import {photographerFactory} from '../../scripts/factories/photographers.js';
+import { photographerFactory } from '../../scripts/factories/photographers.js';
 
 async function getPhotographer(id) {
     const getPhotographer = fetch('../../data/photographers.json')
@@ -6,12 +6,12 @@ async function getPhotographer(id) {
             if (response.ok) {
                 return response.json()
                     .then(data => {
-                            for (let valeur of data.photographers) {
-                                if (valeur.id.toString() === id) {
-                                    return valeur;
-                                }
+                        for (let valeur of data.photographers) {
+                            if (valeur.id.toString() === id) {
+                                return valeur;
                             }
                         }
+                    }
                     )
             } else {
                 console.error('Retour du serveur : ', response.status);
@@ -51,7 +51,7 @@ async function getMedia(id) {
 
 async function displayPhotographerData(photographer) {
     const photographHeader = document.querySelector('.photographer-header');
-    const userCardDOM = photographerFactory(photographer, 'detail');
+    const userCardDOM = photographerFactory(photographer, 'detail', null, null, updateLightboxData);
     photographHeader.appendChild(userCardDOM);
     updateModalData(photographer);
 }
@@ -69,19 +69,24 @@ async function displayMediaData(media, name) {
         photos.removeChild(photos.lastChild);
     }
     media.forEach((photo, index) => {
-        const userPhoto = photographerFactory(photo, 'media', name, index);
+        const userPhoto = photographerFactory(photo, 'media', name, index, updateLightboxData);
         photos.appendChild(userPhoto);
     })
 }
 
-export function updateLightboxData(photo, index) {
+export function updateLightboxData(index) {
+    const photo = media[index];
     const lightbox = document.querySelector('.lightbox_img');
+    while (lightbox.firstChild) {
+        lightbox.removeChild(lightbox.lastChild);
+    }
     const close = document.querySelector('#close_modal')
     close.focus()
-    const leftArrow = document.createElement('button');
-    leftArrow.className = ' fa-solid fa-angle-left'
-    leftArrow.setAttribute('onClick', `previousPhoto(${index})`)
-    lightbox.appendChild(leftArrow);
+    const leftArrow = document.getElementById('lightbox_left');
+    leftArrow.onclick = () => {
+        if (index == 0) index = media.length;
+        updateLightboxData(index - 1);
+    };
     if (photo.image) {
         const media = document.createElement('img');
         media.setAttribute('src', `../../assets/photos/${photographer.name}/${photo.image}`);
@@ -91,12 +96,13 @@ export function updateLightboxData(photo, index) {
         media.setAttribute('src', `../../assets/photos/${photographer.name}/${photo.video}`);
         lightbox.appendChild(media);
     }
-    const rightArrow = document.createElement('button');
-    rightArrow.className = ' fa-solid fa-angle-right'
-    rightArrow.setAttribute('onClick', `nextPhoto(${index})`)
+    const rightArrow = document.getElementById('lightbox_right');
+    rightArrow.onclick = () => {
+        if (index == media.length - 1) index = -1;
+        updateLightboxData(index + 1);
+    };
     const title = document.querySelector('.title')
     title.innerHTML = photo.title;
-    lightbox.appendChild(rightArrow);
 }
 
 async function sort(media) {
