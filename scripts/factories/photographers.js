@@ -1,6 +1,5 @@
-function photographerFactory(data, template, path, index) {
-    const {name, portrait, city, country, tagline, price, id} = data;
-    const {title, image, video, likes} = data;
+export function photographerFactory(data, template, path, index) {
+    const {name, portrait, city, country, tagline, price, id, title, image, video, likes} = data;
     const pictures = `../assets/photos/Photographers ID Photos/${portrait}`;
     const photographer = `./photographer/photographer.html?id=${id}`;
 
@@ -38,13 +37,18 @@ function photographerFactory(data, template, path, index) {
 
     const picture = `../../assets/photos/Photographers ID Photos/${portrait}`;
 
+    function displayModal() {
+        const contact = document.getElementById('contact_modal');
+        contact.style.display = 'flex';
+    }
+
     function getUserCardDOM() {
+        const article = document.querySelector('.photographer-content');
         const button = document.createElement('button');
-        button.className = ' contact_button';
+        button.className = 'contact_button';
         button.innerText = 'Contactez-moi';
-        button.setAttribute('onClick', 'displayModal()');
-        const article = document.createElement('article');
-        article.className = picture
+        button.onclick = displayModal;
+        console.log(button);
         const img = document.createElement('img');
         img.setAttribute('src', picture);
         const div = document.createElement('div')
@@ -57,11 +61,11 @@ function photographerFactory(data, template, path, index) {
         quote.textContent = tagline;
         quote.className = ' quote';
         article.appendChild(div);
+        article.appendChild(button);
+        article.appendChild(img);
         div.appendChild(h1);
         div.appendChild(location);
         div.appendChild(quote);
-        article.appendChild(button);
-        article.appendChild(img);
         return (article);
     }
 
@@ -116,6 +120,9 @@ function photographerFactory(data, template, path, index) {
     if (template === 'media') {
         return getMediaByUser();
     }
-    else
+    if (template === 'index') {
         return getUsersCardDOM();
+    } else {
+        console.error('Template suivant incorrect :', template);
+    }
 }

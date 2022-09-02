@@ -1,9 +1,11 @@
-function displayModal() {
+import {media, updateLightboxData} from '../../pages/photographer/photographer.js'
+
+export function displayModal() {
     const contact = document.getElementById('contact_modal');
     contact.style.display = 'flex';
 }
 
-function closeModal() {
+export function closeModal() {
     const contact = document.getElementById('contact_modal');
     contact.style.display = 'none';
 }
@@ -18,21 +20,21 @@ function displayLightbox(i) {
     updateLightboxData(media[i], i)
 }
 
-function previousPhoto(i) {
+export function previousPhoto(i) {
     if (i === 0) {
         i = media.length;
     }
     displayLightbox(i - 1)
 }
 
-function nextPhoto(i) {
+export function nextPhoto(i) {
     if (i === media.length - 1) {
         i = -1;
     }
     displayLightbox(i + 1)
 }
 
-function closeLightbox() {
+export function closeLightbox() {
     const lightbox = document.getElementById('lightbox_modal');
     lightbox.style.display = 'none';
 }

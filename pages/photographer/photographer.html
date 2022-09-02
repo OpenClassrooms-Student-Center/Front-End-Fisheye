@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="fr" xmlns="http://www.w3.org/1999/html">
+<html lang="fr">
 <head>
     <meta charset="utf-8">
     <link href="./photographer.css" rel="stylesheet" type="text/css"/>
@@ -14,7 +14,11 @@
     </a>
 </header>
 <main id="main">
-    <section class="photographer-header"></section>
+    <section class="photographer-header">
+        <article class="photographer-content">
+
+        </article>
+    </section>
     <section>
         <div>
             <label for="menu">Trier par</label>
@@ -69,7 +73,7 @@
         <div>
             <header>
                 <button id="close_modal" onclick="closeLightbox()" aria-label="close modal">
-                    <img src="../../assets/icons/closeLightbox.svg"  alt="close_icon"/>
+                    <img src="../../assets/icons/closeLightbox.svg" alt="close_icon"/>
                 </button>
             </header>
             <div class="lightbox_img"></div>
@@ -77,10 +81,6 @@
         <p class="title"></p>
     </div>
 </div>
-
-
-<script src="photographer.js"></script>
-<script src="../../scripts/factories/photographers.js"></script>
-<script src="/scripts/utils/contactForm.js"></script>
+<script src="photographer.js" type="application/javascript"></script>
 </body>
 </html>

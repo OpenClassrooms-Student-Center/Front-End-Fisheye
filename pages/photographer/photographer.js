@@ -1,10 +1,12 @@
+import {photographerFactory} from '../../scripts/factories/photographers.js';
+
 async function getPhotographer(id) {
     const getPhotographer = fetch('../../data/photographers.json')
         .then(response => {
             if (response.ok) {
                 return response.json()
                     .then(data => {
-                            for (valeur of data.photographers) {
+                            for (let valeur of data.photographers) {
                                 if (valeur.id.toString() === id) {
                                     return valeur;
                                 }
@@ -72,7 +74,7 @@ async function displayMediaData(media, name) {
     })
 }
 
-function updateLightboxData(photo, index) {
+export function updateLightboxData(photo, index) {
     const lightbox = document.querySelector('.lightbox_img');
     const close = document.querySelector('#close_modal')
     close.focus()
@@ -146,9 +148,9 @@ async function sort(media) {
     return media;
 }
 
-const id = getPhotographerId();
-let media = [];
+export let media = [];
 let photographer = undefined;
+const id = getPhotographerId();
 
 async function updateSort() {
     media = await sort(media);
