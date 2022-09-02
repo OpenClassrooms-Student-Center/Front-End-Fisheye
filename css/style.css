@@ -19,6 +19,10 @@ h1 {
     margin-right: 100px;
 }
 
+a {
+    text-decoration: none;
+}
+
 .logo {
     height: 50px;
     margin-left: 100px;
@@ -45,6 +49,8 @@ h1 {
 }
 
 .photographer_section article img {
+    border-radius: 100px;
+    object-fit: cover;
     height: 200px;
     width: 200px;
 }

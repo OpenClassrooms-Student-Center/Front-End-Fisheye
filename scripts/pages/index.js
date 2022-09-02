@@ -1,6 +1,4 @@
     function getPhotographers() {
-        console.log('toto');
-        console.log(getPhotographers);
         // Penser à remplacer par les données récupérées dans le json
         const photographers = [
             {
@@ -59,13 +57,11 @@
             }
 
         ]
-        console.log(photographers);
 
         // et bien retourner le tableau photographers seulement une fois
         return ({
             photographers: photographers})
     }
-
     function displayData(photographers) {
         const photographersSection = document.querySelector(".photographer_section");
 
