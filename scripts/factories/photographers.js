@@ -45,7 +45,6 @@ export function photographerFactory(data, template, path, index, updateLightboxD
         button.className = 'contact_button';
         button.innerText = 'Contactez-moi';
         button.onclick = displayModal;
-        console.log(button);
         const img = document.createElement('img');
         img.setAttribute('src', picture);
         const div = document.createElement('div')

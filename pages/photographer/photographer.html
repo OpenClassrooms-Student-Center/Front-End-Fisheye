@@ -15,21 +15,19 @@
 </header>
 <main id="main">
     <section class="photographer-header">
-        <article class="photographer-content">
-
-        </article>
+        <article class="photographer-content"></article>
     </section>
     <section>
         <div>
             <label for="menu">Trier par</label>
             <select id="menu">
-                <option id="popular" onclick="updateSort()">
+                <option class="option">
                     Popularité
                 </option>
-                <option id="date" onclick="updateSort()">
+                <option class="option">
                     Date
                 </option>
-                <option id="title" onclick="updateSort()">
+                <option class="option">
                     Titre
                 </option>
             </select>
@@ -48,24 +46,24 @@
                 <img src="../../assets/icons/close.svg" alt="close_icon"/>
             </button>
         </header>
-        <form>
+        <form name="contact">
             <div>
                 <label for="first">Prénom</label>
-                <input id="first"/>
+                <input type="text"  id="first"/>
             </div>
             <div>
                 <label for="last">Nom</label>
-                <input id="last"/>
+                <input type="text" id="last"/>
             </div>
             <div>
                 <label for="mail">Email</label>
-                <input id="mail"/>
+                <input type="email" id="mail"/>
             </div>
             <div>
                 <label for="message">Votre message</label>
-                <textarea id="message"></textarea>
+                <textarea type="text" id="message"></textarea>
             </div>
-            <button class="contact_button">Envoyer</button>
+            <button type="button" class="contact_button validate">Envoyer</button>
         </form>
     </div>
 </div>

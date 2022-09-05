@@ -26,13 +26,13 @@ header .logo {
   top: 50px;
   border-radius: 5px;
   background-color: #DB8876;
-  max-width: 700px;
+  max-width: 650px;
   width: 50%;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
-  padding: 35px;
+  padding: 45px;
   margin: auto;
 }
 #contact_modal .modal header {
@@ -43,18 +43,26 @@ header .logo {
   margin-bottom: 25px;
 }
 #contact_modal .modal header .photographer-modal-name h2 {
-  font-size: 64px;
+  font-size: 74px;
   font-weight: normal;
   margin: 0;
 }
 #contact_modal .modal header .photographer-modal-name p {
-  font-size: 54px;
+  font-size: 64px;
   font-weight: normal;
   margin: 0;
 }
-#contact_modal .modal header img {
+#contact_modal .modal header button {
+  position: absolute;
+  top: 65px;
+  right: 35px;
   cursor: pointer;
-  margin: 15px 0;
+  border: none;
+  background-color: transparent;
+}
+#contact_modal .modal header button img {
+  cursor: pointer;
+  width: 50px;
 }
 #contact_modal .modal form {
   display: flex;
@@ -71,17 +79,21 @@ header .logo {
 }
 #contact_modal .modal form div label {
   color: #312E2E;
-  font-size: 36px;
+  font-size: 42px;
 }
 #contact_modal .modal form div input {
   width: 100%;
   height: 68px;
   border: none;
+  font-size: 32px;
   border-radius: 5px;
+  padding: 0 10px;
 }
 #contact_modal .modal form div textarea {
   width: 100%;
   height: 200px;
+  font-size: 32px;
+  padding: 5px 10px;
 }
 
 /* wanted colors */
@@ -165,7 +177,6 @@ header .logo {
 .photographer-header article {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
-  gap: 70px;
   height: 100%;
   align-items: center;
   justify-items: center;

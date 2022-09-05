@@ -1,4 +1,4 @@
-import { photographerFactory } from '../../scripts/factories/photographers.js';
+import {photographerFactory} from '../../scripts/factories/photographers.js';
 
 async function getPhotographer(id) {
     const getPhotographer = fetch('../../data/photographers.json')
@@ -6,12 +6,12 @@ async function getPhotographer(id) {
             if (response.ok) {
                 return response.json()
                     .then(data => {
-                        for (let valeur of data.photographers) {
-                            if (valeur.id.toString() === id) {
-                                return valeur;
+                            for (let valeur of data.photographers) {
+                                if (valeur.id.toString() === id) {
+                                    return valeur;
+                                }
                             }
                         }
-                    }
                     )
             } else {
                 console.error('Retour du serveur : ', response.status);
@@ -107,6 +107,7 @@ export function updateLightboxData(index) {
 
 async function sort(media) {
     const option = document.querySelectorAll('option')
+    option.forEach(option => option.onclick = updateSort)
 
     function sortPopular(media) {
         return media.sort((value1, value2) => value2.likes - value1.likes);
