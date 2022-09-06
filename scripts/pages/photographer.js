@@ -86,9 +86,9 @@ function likeUpdate() {
     })  
 }
 //tri des médias
+//par likes
 document.querySelector("select").addEventListener("change", e=> {
-  console.log("changement", e.target.value)
-  
+
   if(e.target.value == "popularity"){
     console.table(medias)
     medias.sort((mediaA, mediaB)=> {
@@ -98,9 +98,9 @@ document.querySelector("select").addEventListener("change", e=> {
     displayMedias();
   }
 })
+//par date
 document.querySelector("select").addEventListener("change", e=> {
-  console.log("changement", e.target.value)
-  
+
   if(e.target.value == "date"){
     console.table(medias)
     medias.sort((mediaA, mediaB)=> {
@@ -110,7 +110,26 @@ document.querySelector("select").addEventListener("change", e=> {
     displayMedias();
   }
 })
-new Date().valueOf()
+//par ordre alphabétique
+document.querySelector("select").addEventListener("change", e=> {
+
+  if(e.target.value == "title"){
+    console.table(medias)
+    medias.sort((mediasA, mediasB) =>{
+      if(medias.title > mediasB.title){
+        return 1;
+      }
+      else if(mediasA.title < mediasB.title){
+        return -1;
+      }
+      else {
+        return 0;
+      }
+    })
+    console.table(medias)
+    displayMedias();
+  }
+})
 
 //fonction pour afficher les médias
 function displayMedias() {
