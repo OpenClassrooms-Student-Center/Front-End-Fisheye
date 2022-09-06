@@ -46,8 +46,9 @@
         </main>
         <div id="contact_modal" class="modal">
             <div class="modal_header">
-                <h2></h2>
+                <h2 tabindex="0"></h2>
                 <img
+                    tabindex="6"
                     src="./assets/icons/close.svg"
                     role="button"
                     alt="Close Contact form"
@@ -57,15 +58,20 @@
             <form>
                 <div>
                     <label for="First name">Prénom</label>
-                    <input id="First name" required>
+                    <input id="First name" tabindex="1" required>
                     <label for="Last name">Nom</label>
-                    <input id="Last name" required>
+                    <input id="Last name" tabindex="2" required>
                     <label for="Email">Email</label>
-                    <input id="Email" required>
+                    <input id="Email" tabindex="3" required>
                     <label for="Your message">Votre message</label>
-                    <textarea id="Your Message"></textarea>
+                    <textarea id="Your Message" tabindex="4"></textarea>
                 </div>
-                <button aria-label="Send" id="contact_button" class="fisheye_button">Envoyer</button>
+                <button
+                    aria-label="Send"
+                    id="contact_button"
+                    class="fisheye_button"
+                    tabindex="5"
+                >Envoyer</button>
             </form>
         </div>
         <footer></footer>
