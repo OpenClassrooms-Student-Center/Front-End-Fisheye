@@ -2,7 +2,8 @@ import { photographerFactory } from "../factories/photographerFactory";
 
 
 export async function displayData(photographers, id) {
-
+    let photographerSelected = "";
+    
     photographers.forEach((photographer) => {
 
         if (photographer.id == id) {
@@ -12,11 +13,14 @@ export async function displayData(photographers, id) {
             photographerModel.setPhotographerHeader();
             photographerModel.setStickyBarPrice();
 
-            return photographer.name;
+            photographerSelected = photographer
             // End of PhotographerFactory Work
         }
-
+       
     });
+
+    return (photographerSelected); // Return the photographerShow at the end
+
 }
 
 export async function displayDataAll(photographers, querySelector) {

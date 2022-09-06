@@ -33,12 +33,12 @@
     }
 
     form input {
-        font-size: calc($font_size);
+        font-size: calc($font_size / 1.2);
         margin-bottom: 5px;
     }
 
     form textarea {
-        font-size: calc($font_size /2);
+        font-size: calc($font_size /1.5);
         margin-bottom: 20px;
         resize: vertical;
     }
@@ -70,7 +70,7 @@
 
 
 .hide_content {
-    animation: 1s ease-in forwards fade-off;
+    animation: 0.5s ease-in forwards fade-off;
 
     @keyframes fade-off {
         0% {
@@ -78,7 +78,7 @@
         }
 
         100% {
-            opacity: 0;
+            opacity: 0.4;
         }
     }
 }
@@ -86,11 +86,11 @@
 
 
 .show_content {
-    animation: 1s ease-in forwards fade-in;
+    animation: 0.5s ease-in forwards fade-in;
 
     @keyframes fade-in {
         0% {
-            opacity: 0;
+            opacity: 0.4;
         }
 
         100% {

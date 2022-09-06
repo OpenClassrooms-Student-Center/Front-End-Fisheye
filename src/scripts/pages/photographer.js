@@ -15,10 +15,12 @@ async function initProfile(idURL) {
     try {
         // SET Photographer Profile DATA
         const photographers = await getPhotographers();
-        displayData(photographers, idURL);
+        // Return the photographer Display
+        const photographerSelected = await displayData(photographers, idURL);
         // END SET Photographer Profile Data
 
         console.log("Section profile initié avec succès depuis initProfile()");
+        initContactForm(photographerSelected);
 
     } catch (e) {
         console.error(e);
@@ -27,6 +29,26 @@ async function initProfile(idURL) {
         console.log("Rediriger vers la page 404");
     }
 
+}
+
+async function initContactForm(photographerSelected) {
+    try {
+        const contactFormModal = modalMaster("body", "header", "main", "contact_modal"); // Create a Model Master
+        const modalPage = contactFormModal.modalPage; // Get modelPage Object
+        
+        contactFormModal.addContactFormListener(modalPage); // Add listener for Contact Form Modal
+       
+        const titleModal = "Contactez-moi " + photographerSelected.name;
+        contactFormModal.setTitleModal(modalPage, "h2", titleModal);
+
+        console.log("Formulaire contact initié avec succès depuis initContactForm()");
+    }
+    catch (e) {
+        console.error(e);
+        // If it's a fail then we redirect to 404 Error Page since  it's the minimal functionality
+        // Atm 404 error page doesn't exists must be write later
+        console.log("Rediriger vers la page 404");
+    }
 }
 
 
@@ -47,24 +69,8 @@ async function initMedia(idURL) {
 
     } catch (e) {
         console.error(e);
-        // If it's a fail then we redirect to 404 Error Page since  it's the minimal functionality
-        // Atm 404 error page doesn't exists must be write later
-        console.log("Rediriger vers la page 404");
     }
 
-}
-
-
-async function initContactForm() {
-    try {
-        const contactFormModal = modalMaster("body", "main", "contact_modal"); // Create a Model Master
-        const modelPage = contactFormModal.modalPage; // Get modelPage Object
-        contactFormModal.addContactFormListener(modelPage); // Add listener for Contact Form Modal
-        console.log("Formulaire contact initié avec succès depuis initContactForm()");
-    }
-    catch (e) {
-        console.error(e);
-    }
 }
 
 
@@ -73,8 +79,6 @@ async function initMain() {
     const idURL = await getUrlParameter("id");
     initProfile(idURL);
     initMedia(idURL);
-    initContactForm();
-
 }
 
 

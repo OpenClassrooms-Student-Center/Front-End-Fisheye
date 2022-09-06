@@ -1,12 +1,15 @@
-export function modalMaster(bodyTag, mainTag, modalID) {
+import { setInnerHtml } from '../utils/dom';
+
+export function modalMaster(bodyTag, headerTag, mainTag, modalID) {
 
 
     /** CREATE A OBJECT WITH ALL PROPRIETY FOR MODEL DOM NEED */
     let modalPage = {
         bodyHTML: document.querySelector(bodyTag),
+        headerHTML: document.querySelector(headerTag),
         mainHTML: document.querySelector(mainTag),
         modalHTML: document.getElementById(modalID),
-        modal: modalID,
+        modalID: modalID,
         visible: 0,
     }
     /** END  */
@@ -18,27 +21,37 @@ export function modalMaster(bodyTag, mainTag, modalID) {
         document.getElementById("closeModal").addEventListener("click", function () {
             closeModal(modalPage);
         });
-
+        document.getElementById("contact_button").addEventListener("click", function () {
+            event.preventDefault();
+            sendMessage(modalPage);
+        });
     }
 
 
-    function centerModal(modal) {
-        let Mwidth = modal.offsetWidth;
-        let Mheight = modal.offsetHeight;
+    function setTitleModal(modalPage, tagHTML, titleModal) {
+        return setInnerHtml("#" + modalPage.modalID + " " + tagHTML, titleModal);
+    }
+
+
+    function centerModal(modalID) {
+        let Mwidth = modalID.offsetWidth;
+        let Mheight = modalID.offsetHeight;
         let Wwidth = window.innerWidth;
         let Wheight = window.innerHeight;
 
-        modal.style.position = "absolute";
-        modal.style.top = ((Wheight - Mheight) / 2 + window.pageYOffset) + "px";
-        modal.style.left = ((Wwidth - Mwidth) / 2 + window.pageXOffset) + "px";
+        modalID.style.position = "absolute";
+        modalID.style.top = ((Wheight - Mheight) / 2 + window.pageYOffset) + "px";
+        modalID.style.left = ((Wwidth - Mwidth) / 2 + window.pageXOffset) + "px";
     }
 
     function effectAnimation(hideclass, showclass, modalPage) {
         if (modalPage.visible === 0) {
             modalPage.mainHTML.classList.remove(showclass);
+            modalPage.headerHTML.classList.remove(showclass);
             modalPage.modalHTML.classList.remove(hideclass);
 
             modalPage.mainHTML.classList.add(hideclass);
+            modalPage.headerHTML.classList.add(hideclass);
             modalPage.modalHTML.classList.add(showclass);
 
             modalPage.visible = 1
@@ -46,12 +59,15 @@ export function modalMaster(bodyTag, mainTag, modalID) {
         else {
             modalPage.modalHTML.classList.remove(showclass);
             modalPage.mainHTML.classList.remove(hideclass);
+            modalPage.headerHTML.classList.remove(hideclass);
 
             modalPage.modalHTML.classList.add(hideclass);
             modalPage.mainHTML.classList.add(showclass);
+            modalPage.headerHTML.classList.add(showclass);
 
             modalPage.visible = 0
         }
+
         return modalPage;
     }
 
@@ -68,10 +84,24 @@ export function modalMaster(bodyTag, mainTag, modalID) {
         modalPage.modalHTML.style.display = "none"; // Hide at the screen modal
     }
 
-    function sendMessage() {
+    function sendMessage(modalPage) {
 
+        const allInputs = document.querySelectorAll("#" + modalPage.modalID + " input");
+        const allTextArea = document.querySelectorAll("#" + modalPage.modalID + " textarea");
+
+        console.log("____Send Message_____");
+        allInputs.forEach(input => {
+            console.log(input.id + ": " + input.value);
+        });
+
+        allTextArea.forEach(textarea => {
+            console.log(textarea.id + ": " + textarea.value);
+        });
+
+        closeModal(modalPage);
+        alert("Message Envoyer !");
     }
 
 
-    return { modalPage, addContactFormListener, displayModal, closeModal, sendMessage }
+    return { modalPage, addContactFormListener, displayModal, closeModal, setTitleModal, sendMessage }
 }
