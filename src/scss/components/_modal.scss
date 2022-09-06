@@ -35,9 +35,11 @@
     form input {
         font-size: calc($font_size / 1.2);
         margin-bottom: 5px;
+        padding: 10px;
     }
 
     form textarea {
+        margin-top: 15px;
         font-size: calc($font_size /1.5);
         margin-bottom: 20px;
         resize: vertical;
@@ -63,9 +65,7 @@
         margin-top: 15px;
     }
 
-    .label_textarea {
-        margin-top: 15px;
-    }
+
 }
 
 

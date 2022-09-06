@@ -25,6 +25,7 @@ export function modalMaster(bodyTag, headerTag, mainTag, modalID) {
             event.preventDefault();
             sendMessage(modalPage);
         });
+        
     }
 
 
@@ -90,16 +91,28 @@ export function modalMaster(bodyTag, headerTag, mainTag, modalID) {
         const allTextArea = document.querySelectorAll("#" + modalPage.modalID + " textarea");
 
         console.log("____Send Message_____");
+
+        let fullmessage = "";
+
         allInputs.forEach(input => {
-            console.log(input.id + ": " + input.value);
+            fullmessage += '\n' + input.id + ": " + input.value;
         });
 
         allTextArea.forEach(textarea => {
-            console.log(textarea.id + ": " + textarea.value);
+            fullmessage += '\n' + textarea.id + ": " + textarea.value;
         });
 
-        closeModal(modalPage);
-        alert("Message Envoyer !");
+        if (fullmessage) {
+            console.log(fullmessage); 
+            alert("Message Envoyer !" + fullmessage);
+            closeModal(modalPage); // Close modal after message send
+        }
+        else {
+            console.error("Something wrong message no send because fullmessage is empty or don't exists from sendMessage()");
+            alert("Erreur message non envoyer :(");
+        }
+
+
     }
 
 

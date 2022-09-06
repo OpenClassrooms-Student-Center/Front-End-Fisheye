@@ -47,20 +47,25 @@
         <div id="contact_modal" class="modal">
             <div class="modal_header">
                 <h2></h2>
-                <img src="./assets/icons/close.svg" alt="Close Modal" id="closeModal">
+                <img
+                    src="./assets/icons/close.svg"
+                    role="button"
+                    alt="Close Contact form"
+                    id="closeModal"
+                >
             </div>
             <form>
                 <div>
-                    <label>Prénom</label>
-                    <input id="prenom">
-                    <label>Nom</label>
-                    <input id="nom">
-                    <label>Email</label>
-                    <input id="email">
-                    <label class="label_textarea">Votre message</label>
-                    <textarea id="message"></textarea>
+                    <label for="First name">Prénom</label>
+                    <input id="First name" required>
+                    <label for="Last name">Nom</label>
+                    <input id="Last name" required>
+                    <label for="Email">Email</label>
+                    <input id="Email" required>
+                    <label for="Your message">Votre message</label>
+                    <textarea id="Your Message"></textarea>
                 </div>
-                <button id="contact_button" class="fisheye_button">Envoyer</button>
+                <button aria-label="Send" id="contact_button" class="fisheye_button">Envoyer</button>
             </form>
         </div>
         <footer></footer>

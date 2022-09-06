@@ -35,11 +35,12 @@ async function initContactForm(photographerSelected) {
     try {
         const contactFormModal = modalMaster("body", "header", "main", "contact_modal"); // Create a Model Master
         const modalPage = contactFormModal.modalPage; // Get modelPage Object
-        
+
         contactFormModal.addContactFormListener(modalPage); // Add listener for Contact Form Modal
        
-        const titleModal = "Contactez-moi " + photographerSelected.name;
-        contactFormModal.setTitleModal(modalPage, "h2", titleModal);
+
+        const titleModal = "Contactez-moi " + photographerSelected.name; // Build the title Modal
+        contactFormModal.setTitleModal(modalPage, "h2", titleModal);  // Set the title Modal
 
         console.log("Formulaire contact initié avec succès depuis initContactForm()");
     }
