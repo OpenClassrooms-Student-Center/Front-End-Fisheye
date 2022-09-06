@@ -36,8 +36,8 @@ async function initContactForm(photographerSelected) {
         const contactFormModal = modalMaster("body", "header", "main", "contact_modal"); // Create a Model Master
         const modalPage = contactFormModal.modalPage; // Get modelPage Object
 
-        contactFormModal.addContactFormListener(modalPage); // Add listener for Contact Form Modal
-       
+        contactFormModal.addContactFormListener(modalPage); // Add specific listener to Contact Form Modal
+        contactFormModal.addKeyboardListener(modalPage); // Add listener keyboard to our Modal
 
         const titleModal = "Contactez-moi " + photographerSelected.name; // Build the title Modal
         contactFormModal.setTitleModal(modalPage, "h2", titleModal);  // Set the title Modal

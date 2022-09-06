@@ -3,20 +3,27 @@ import { setInnerHtml } from '../utils/dom';
 export function modalMaster(bodyTag, headerTag, mainTag, modalID) {
 
 
-    /** CREATE A OBJECT WITH ALL PROPRIETY FOR MODEL DOM NEED */
+    /** CREATE TWO OBJECT WITH ALL PROPRIETY FOR MODELMASTER NEED */
+    let backgroundPage = {
+        // This is the background object (behind modal)
+        bodyHTML: document.querySelector(bodyTag), // We want the <body> selected
+        headerHTML: document.querySelector(headerTag), // We want the <header> selected
+        mainHTML: document.querySelector(mainTag), // We want the <main> selected
+    }
+
     let modalPage = {
-        bodyHTML: document.querySelector(bodyTag),
-        headerHTML: document.querySelector(headerTag),
-        mainHTML: document.querySelector(mainTag),
+        // This is the modal Object (call ModalPage)
         modalHTML: document.getElementById(modalID),
         modalID: modalID,
         visible: 0,
     }
     /** END  */
 
+
     function addContactFormListener(modalPage) {
+        // This add listener about only contact form 
         document.getElementById("openModal").addEventListener("click", function () {
-            displayModal(modalPage);
+            openModal(modalPage);
         });
         document.getElementById("closeModal").addEventListener("click", function () {
             closeModal(modalPage);
@@ -25,18 +32,21 @@ export function modalMaster(bodyTag, headerTag, mainTag, modalID) {
             event.preventDefault();
             sendMessage(modalPage);
         });
+    }
 
 
-        // This add listener for Escape Touch Keyboard
-        document.onkeydown = function (evt) {
-            evt = evt || window.event;
-            if (evt.keyCode == 27) {
-                closeModal(modalPage);
+    function addKeyboardListener(modalPage) {
+        // This add listener for Keyboard and check if a key is pressed
+        document.onkeydown = function (event) {
+
+            if (modalPage.visible === 1) { // If modalPage is visible at the screen
+
+                if (event.key === "Escape") {
+                    closeModal(modalPage); 
+                }
+
             }
         };
-
-        // this add listener for Tab keyboard 
-
     }
 
 
@@ -56,26 +66,27 @@ export function modalMaster(bodyTag, headerTag, mainTag, modalID) {
         modalID.style.left = ((Wwidth - Mwidth) / 2 + window.pageXOffset) + "px";
     }
 
+
     function effectAnimation(hideclass, showclass, modalPage) {
         if (modalPage.visible === 0) {
-            modalPage.mainHTML.classList.remove(showclass);
-            modalPage.headerHTML.classList.remove(showclass);
+            backgroundPage.mainHTML.classList.remove(showclass);
+            backgroundPage.headerHTML.classList.remove(showclass);
             modalPage.modalHTML.classList.remove(hideclass);
 
-            modalPage.mainHTML.classList.add(hideclass);
-            modalPage.headerHTML.classList.add(hideclass);
+            backgroundPage.mainHTML.classList.add(hideclass);
+            backgroundPage.headerHTML.classList.add(hideclass);
             modalPage.modalHTML.classList.add(showclass);
 
             modalPage.visible = 1
         }
         else {
             modalPage.modalHTML.classList.remove(showclass);
-            modalPage.mainHTML.classList.remove(hideclass);
-            modalPage.headerHTML.classList.remove(hideclass);
+            backgroundPage.mainHTML.classList.remove(hideclass);
+            backgroundPage.headerHTML.classList.remove(hideclass);
 
             modalPage.modalHTML.classList.add(hideclass);
-            modalPage.mainHTML.classList.add(showclass);
-            modalPage.headerHTML.classList.add(showclass);
+            backgroundPage.mainHTML.classList.add(showclass);
+            backgroundPage.headerHTML.classList.add(showclass);
 
             modalPage.visible = 0
         }
@@ -83,31 +94,22 @@ export function modalMaster(bodyTag, headerTag, mainTag, modalID) {
         return modalPage;
     }
 
-    function displayModal(modalPage) {
+
+    function openModal(modalPage) {
         effectAnimation("hide_content", "show_content", modalPage);
-        modalPage.bodyHTML.style.overflow = "hidden"; // Block Scroll
+        backgroundPage.bodyHTML.style.overflow = "hidden"; // Block Scroll
         modalPage.modalHTML.style.display = "block"; // Display the Modal at the screen
         centerModal(modalPage.modalHTML); // Center the Modal at the screen
     }
 
     function closeModal(modalPage) {
         effectAnimation("hide_content", "show_content", modalPage);
-        modalPage.bodyHTML.style.overflow = "visible"; // Allow scroll 
+        backgroundPage.bodyHTML.style.overflow = "visible"; // Allow scroll 
         modalPage.modalHTML.style.display = "none"; // Hide at the screen modal
     }
 
-    function firstFocusModal(modalPage) { 
-        // mettre le focus sur le 1er input 
-    }
-    function focusTabModal(modalPage)
-    {
-         // counter les differents focus 
 
-
-        // A chaque tab on incrémente et on remet à 0 
-    }
     function sendMessage(modalPage) {
-
         const allInputs = document.querySelectorAll("#" + modalPage.modalID + " input");
         const allTextArea = document.querySelectorAll("#" + modalPage.modalID + " textarea");
 
@@ -132,10 +134,14 @@ export function modalMaster(bodyTag, headerTag, mainTag, modalID) {
             console.error("Something wrong message no send because fullmessage is empty or don't exists from sendMessage()");
             alert("Erreur message non envoyer :(");
         }
-
-
     }
 
 
-    return { modalPage, addContactFormListener, displayModal, closeModal, setTitleModal, sendMessage }
+    return {
+        backgroundPage, modalPage,
+        addContactFormListener, addKeyboardListener,
+        openModal, closeModal,
+        setTitleModal,
+        sendMessage
+    }
 }
