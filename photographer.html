@@ -44,9 +44,16 @@
                 <div class="price_rate_daily"></div>
             </div>
         </main>
-        <div id="contact_modal" class="modal">
+        <div
+            id="contact_modal"
+            class="modal"
+            aria-labelledby="dialogTitle"
+            aria-describedby="dialogDesc"
+            role="dialog"
+        >
             <div class="modal_header">
-                <h2 tabindex="0"></h2>
+                <h2 id="dialogTitle" tabindex="0"></h2>
+                <p id="dialogDesc" class="help_blind">Vous pouvez remplir ce formulaire avec les champs suivants afin de pouvoir envoyer un message au photographer que vous avez sélectionner.</p>
                 <img
                     tabindex="6"
                     src="./assets/icons/close.svg"

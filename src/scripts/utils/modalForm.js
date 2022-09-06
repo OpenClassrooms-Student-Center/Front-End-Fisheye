@@ -25,7 +25,15 @@ export function modalMaster(bodyTag, headerTag, mainTag, modalID) {
             event.preventDefault();
             sendMessage(modalPage);
         });
-        
+
+
+        // This add listener for Escape Touch Keyboard
+        document.onkeydown = function (evt) {
+            evt = evt || window.event;
+            if (evt.keyCode == 27) {
+                closeModal(modalPage);
+            }
+        };
     }
 
 
@@ -103,7 +111,7 @@ export function modalMaster(bodyTag, headerTag, mainTag, modalID) {
         });
 
         if (fullmessage) {
-            console.log(fullmessage); 
+            console.log(fullmessage);
             alert("Message Envoyer !" + fullmessage);
             closeModal(modalPage); // Close modal after message send
         }
