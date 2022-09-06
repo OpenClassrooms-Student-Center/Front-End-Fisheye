@@ -52,10 +52,9 @@
             role="dialog"
         >
             <div class="modal_header">
-                <h2 id="dialogTitle" tabindex="0"></h2>
+                <h2 id="dialogTitle"></h2>
                 <p id="dialogDesc" class="help_blind">Vous pouvez remplir ce formulaire avec les champs suivants afin de pouvoir envoyer un message au photographer que vous avez sélectionner.</p>
                 <img
-                    tabindex="6"
                     src="./assets/icons/close.svg"
                     role="button"
                     alt="Close Contact form"
@@ -65,20 +64,15 @@
             <form>
                 <div>
                     <label for="First name">Prénom</label>
-                    <input id="First name" tabindex="1" required>
+                    <input id="First name" required>
                     <label for="Last name">Nom</label>
-                    <input id="Last name" tabindex="2" required>
+                    <input id="Last name" required>
                     <label for="Email">Email</label>
-                    <input id="Email" tabindex="3" required>
+                    <input id="Email" required>
                     <label for="Your message">Votre message</label>
-                    <textarea id="Your Message" tabindex="4"></textarea>
+                    <textarea id="Your Message"></textarea>
                 </div>
-                <button
-                    aria-label="Send"
-                    id="contact_button"
-                    class="fisheye_button"
-                    tabindex="5"
-                >Envoyer</button>
+                <button aria-label="Send" id="contact_button" class="fisheye_button">Envoyer</button>
             </form>
         </div>
         <footer></footer>

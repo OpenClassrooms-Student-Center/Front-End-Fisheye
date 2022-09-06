@@ -34,6 +34,9 @@ export function modalMaster(bodyTag, headerTag, mainTag, modalID) {
                 closeModal(modalPage);
             }
         };
+
+        // this add listener for Tab keyboard 
+
     }
 
 
@@ -93,6 +96,16 @@ export function modalMaster(bodyTag, headerTag, mainTag, modalID) {
         modalPage.modalHTML.style.display = "none"; // Hide at the screen modal
     }
 
+    function firstFocusModal(modalPage) { 
+        // mettre le focus sur le 1er input 
+    }
+    function focusTabModal(modalPage)
+    {
+         // counter les differents focus 
+
+
+        // A chaque tab on incrémente et on remet à 0 
+    }
     function sendMessage(modalPage) {
 
         const allInputs = document.querySelectorAll("#" + modalPage.modalID + " input");
