@@ -40,12 +40,8 @@ const displayPhotographerAndMedia = async () => {
   await getPhotographerAndMedia();
   
   photographerFactory(photographer).getPhotographerCard() //appelle la function pour afficher le photographe
-
-  document.querySelector(".photos").innerHTML = medias
-    .map(
-      (media) => mediaFactory(media).getMediaCard() //appelle la fonction pour afficher les médias
-    )
-    .join("");
+  displayMedias()
+  
     document.querySelector(".total-likes").innerHTML = `<div class="flex">${sumLikes} <i class="fa-solid fa-heart"></i> ${photographer.price}€ / jour</div>`; //affiche le nombre de likes
     likeUpdate();
     
@@ -57,7 +53,7 @@ function likeUpdate() {
         //console.log(element);
         element.onclick = function (event) {
             
-            console.log(event.target.dataset)
+            //console.log(event.target.dataset)
             let id = parseInt(event.target.dataset.id);
             
             if(event.target.classList.contains("off")){//on compare s'il y a la classe off, si oui on incrémente et on enleve off, et on rajoute on
@@ -89,8 +85,41 @@ function likeUpdate() {
         }
     })  
 }
+//tri des médias
+document.querySelector("select").addEventListener("change", e=> {
+  console.log("changement", e.target.value)
+  
+  if(e.target.value == "popularity"){
+    console.table(medias)
+    medias.sort((mediaA, mediaB)=> {
+      return mediaA.likes - mediaB.likes
+    }).reverse() //du plus grand au plus petit
+    console.table(medias)
+    displayMedias();
+  }
+})
+document.querySelector("select").addEventListener("change", e=> {
+  console.log("changement", e.target.value)
+  
+  if(e.target.value == "date"){
+    console.table(medias)
+    medias.sort((mediaA, mediaB)=> {
+      return new Date().valueOf(mediaA.likes) - new Date().valueOf(mediaB.likes)
+    }).reverse() //du plus récent au plus ancien
+    console.table(medias)
+    displayMedias();
+  }
+})
+new Date().valueOf()
 
-
+//fonction pour afficher les médias
+function displayMedias() {
+  document.querySelector(".photos").innerHTML = medias
+  .map(
+    (media) => mediaFactory(media).getMediaCard() //appelle la fonction pour afficher les médias
+  )
+  .join("");
+}
 
 displayPhotographerAndMedia();
 
