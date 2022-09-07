@@ -55,7 +55,7 @@ export function modalMaster(bodyTag, headerTag, mainTag, modalID) {
 
 
     function setTitleModal(modalPage, tagHTML, titleModal) {
-        return setInnerHtml("#" + modalPage.modalID + " " + tagHTML, titleModal);
+        return setInnerHtml(`#${modalPage.modalID} ${tagHTML}`, titleModal);
     }
 
 
@@ -105,7 +105,7 @@ export function modalMaster(bodyTag, headerTag, mainTag, modalID) {
         backgroundPage.bodyHTML.style.overflow = "hidden"; // Block Scroll
         modalPage.modalHTML.style.display = "block"; // Display the Modal at the screen
         centerModal(modalPage.modalHTML); // Center the Modal at the screen
-        document.querySelector("#" + modalPage.modalID + " img").focus(); // Focus the Close Modal 
+        document.querySelector(`#${modalPage.modalID} #closeModal`).focus(); // Focus the Close Modal 
     }
 
     function closeModal(modalPage) {
@@ -116,8 +116,8 @@ export function modalMaster(bodyTag, headerTag, mainTag, modalID) {
 
 
     function sendMessage(modalPage) {
-        const allInputs = document.querySelectorAll("#" + modalPage.modalID + " input");
-        const allTextArea = document.querySelectorAll("#" + modalPage.modalID + " textarea");
+        const allInputs = document.querySelectorAll(`#${modalPage.modalID} input`);
+        const allTextArea = document.querySelectorAll(`#${modalPage.modalID} textarea`);
 
         console.log("____Send Message_____");
 
@@ -133,7 +133,7 @@ export function modalMaster(bodyTag, headerTag, mainTag, modalID) {
 
         if (fullmessage) {
             console.log(fullmessage);
-            alert("Message Envoyer !" + fullmessage);
+            alert(`Message Envoyer ! ${fullmessage}`);
             closeModal(modalPage); // Close modal after message send
         }
         else {

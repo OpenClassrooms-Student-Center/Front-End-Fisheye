@@ -1,13 +1,13 @@
 // Function for build DOM
 export function insertPictureInsideElement(element, picture, alt) {
-    // ?? operator 
-    element.insertAdjacentHTML("beforeend", '<img src="' + picture + '" ' + 'alt="' + alt + '">');
+    element.insertAdjacentHTML("beforeend", `<img src="${picture}" alt="${alt}">`);
 }
 
 export function insertVideoInsideElement(element, video, ariaLabel) {
 
     if (ariaLabel) {
-        element.insertAdjacentHTML("beforeend", '<video src="' + video + '" ' + 'aria-label="' + ariaLabel + '">');
+        element.insertAdjacentHTML("beforeend", 
+        `<video src="${video}" aria-label="${ariaLabel}">`);
 
     }
     else {

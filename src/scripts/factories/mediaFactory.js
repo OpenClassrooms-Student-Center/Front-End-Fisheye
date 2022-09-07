@@ -19,7 +19,7 @@ export function mediaFactory(data) {
 
             // Build A HREF ELEMENT
             const linkElement = article.appendChild(
-                dom.buildElement("a", "photographer.html?id=" + id)
+                dom.buildElement("a", `photographer.html?id=${id}`)
             );
             dom.setArialLabel(linkElement, "Lilac breasted roller, closeup view") // Set ArielLabel to AHref
 
@@ -30,17 +30,17 @@ export function mediaFactory(data) {
 
             }
             else if (video) {
-                dom.insertVideoInsideElement(linkElement, movie, "Movie " + video); // Insert Video with Ariel Label
+                dom.insertVideoInsideElement(linkElement, movie, `Movie ${video}`); // Insert Video with Ariel Label
             }
 
             // Generate Details (title + Likes)
             if (title) {
-                let title_h6 = "<h6>" + title + "</h6>";
-                let likes_h6 = "<h6 aria-label='likes'>" + 0 + "</h6>";
+                let title_h6 = `<h6>${title}</h6>`;
+                let likes_h6 = `<h6 aria-label='likes'>0</h6>`;
                 if (likes) {
-                    likes_h6 = "<h6 aria-label='likes'>" + likes + "</h6>";
+                    likes_h6 = `<h6 aria-label='likes'>${likes}</h6>`;
                 }
-                dom.insertHTMLAfterElement(linkElement, "<div class='details'>" + title_h6 + likes_h6 + "</div>");
+                dom.insertHTMLAfterElement(linkElement, `<div class='details'>${title_h6}${likes_h6}</div>`);
             }
 
             // Return Article

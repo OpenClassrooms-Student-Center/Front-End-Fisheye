@@ -38,7 +38,7 @@ async function initContactForm(photographerSelected) {
         contactFormModal.addContactFormListener(modalPage); // Add specific listener to Contact Form Modal
         contactFormModal.addKeyboardListener(modalPage); // Add listener keyboard to our Modal
 
-        const titleModal = "Contactez-moi " + photographerSelected.name; // Build the title Modal
+        const titleModal = `Contactez-moi ${photographerSelected.name}`; // Build the title Modal
         contactFormModal.setTitleModal(modalPage, "h2", titleModal);  // Set the title Modal
 
         console.log("Formulaire contact initié avec succès depuis initContactForm()");

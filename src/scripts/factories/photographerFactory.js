@@ -17,22 +17,22 @@ export function photographerFactory(data) {
 
             // Create Dynamique LINK with Picture
             const linkElement = article.appendChild(
-                buildElement("a", "photographer.html?id=" + id) // Build AHref
+                buildElement("a", `photographer.html?id=${id}`) // Build AHref
             );
-            setArialLabel(linkElement, "Link to " + name) // Set ArielLabel to AHref
+            setArialLabel(linkElement, `Link to ${name}`); // Set ArielLabel to AHref
             insertPictureInsideElement(linkElement, picture, name);
             // END Create Dynamique LINK with Picture
 
             article.appendChild(buildElement("h2", name));
 
             if (city && country) {
-                article.appendChild(buildElement("h3", city + ", " + country));
+                article.appendChild(buildElement("h3", `${city}, ${country}`));
             }
             if (tagline) {
                 article.appendChild(buildElement("h4", tagline));
             }
             if (price) {
-                article.appendChild(buildElement("h5", price + "€/jour"));
+                article.appendChild(buildElement("h5", `${price}€/jour`));
             }
 
             // RETURN A ARTICLE 
@@ -46,7 +46,7 @@ export function photographerFactory(data) {
     function setPhotographerHeader() {
         setInnerHtml(".photograph_header h1", name);
         if (city && country) {
-            setInnerHtml(".photograph_header h2", city + ", " + country);
+            setInnerHtml(".photograph_header h2", `${city}, ${country}`);
         }
         else {
             setInnerHtml(".photograph_header h2", "");
@@ -62,10 +62,10 @@ export function photographerFactory(data) {
 
     function setStickyBarPrice() {
         if (price) {
-            setInnerHtml(".price_rate_daily", price + " € / jour");
+            setInnerHtml(".price_rate_daily", `${price} € / jour`);
         }
         else {
-            setInnerHtml(".price_rate_daily", price + "");
+            setInnerHtml(".price_rate_daily", "");
         }
     }
 
