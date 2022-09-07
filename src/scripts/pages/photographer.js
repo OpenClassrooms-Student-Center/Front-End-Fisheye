@@ -1,5 +1,5 @@
-// import "core-js/stable";
-// import "regenerator-runtime/runtime";
+import "core-js/stable";
+import "regenerator-runtime/runtime";
 
 import '../../scss/main.scss';
 import { getPhotographers, getMedias } from '../utils/fetch';

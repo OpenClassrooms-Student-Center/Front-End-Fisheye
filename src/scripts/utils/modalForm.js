@@ -1,4 +1,3 @@
-import { forEach } from 'core-js/core/array';
 import { setInnerHtml } from '../utils/dom';
 
 export function modalMaster(bodyTag, headerTag, mainTag, modalID) {
@@ -100,9 +99,11 @@ export function modalMaster(bodyTag, headerTag, mainTag, modalID) {
     function openModal(modalPage) {
         effectAnimation("hide_content", "show_content", modalPage); // Effect Modal CSS
         backgroundPage.bodyHTML.style.overflow = "hidden"; // Block Scroll
-        backgroundPage.forEach(HTMLtag => {
-            console.log(HTMLtag);
-        });
+
+        // Disable click or focus with inert to the BackgroundPage 
+        backgroundPage.headerHTML.setAttribute("inert", ""); 
+        backgroundPage.mainHTML.setAttribute("inert", "");
+
         modalPage.modalHTML.style.display = "block"; // Display the Modal at the screen
         centerModal(modalPage.modalHTML); // Center the Modal at the screen
         addKeyboardListener(modalPage); // Add Keyboard Events
