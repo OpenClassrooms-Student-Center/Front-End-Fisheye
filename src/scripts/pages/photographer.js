@@ -9,7 +9,6 @@ import { modalMaster } from '../utils/modalForm';
 
 
 
-
 async function initProfile(idURL) {
     // Try to get data from photographers if error then redirect to 404 page
     try {

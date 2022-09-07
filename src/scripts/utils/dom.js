@@ -2,8 +2,6 @@
 export function insertPictureInsideElement(element, picture, alt) {
     // ?? operator 
     element.insertAdjacentHTML("beforeend", '<img src="' + picture + '" ' + 'alt="' + alt + '">');
-
-
 }
 
 export function insertVideoInsideElement(element, video, ariaLabel) {
@@ -15,7 +13,7 @@ export function insertVideoInsideElement(element, video, ariaLabel) {
     else {
         element.insertAdjacentHTML("beforeend", '<video src="' + video + '">');
     }
-
+    
 }
 
 export function insertHTMLAfterElement(element, html) {

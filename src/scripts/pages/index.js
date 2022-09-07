@@ -2,6 +2,8 @@ import '../../scss/main.scss';
 import { getPhotographers } from '../utils/fetch';
 import { displayDataAll } from '../data/displayData';
 
+
+
 async function initMain() {
     // Try to get data from photographes if error then redirect to 404 page
     try {
