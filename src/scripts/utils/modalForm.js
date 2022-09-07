@@ -1,3 +1,4 @@
+import { forEach } from 'core-js/core/array';
 import { setInnerHtml } from '../utils/dom';
 
 export function modalMaster(bodyTag, headerTag, mainTag, modalID) {
@@ -36,21 +37,17 @@ export function modalMaster(bodyTag, headerTag, mainTag, modalID) {
 
 
     function addKeyboardListener(modalPage) {
-        // This add listener for Keyboard and check if a key is pressed
-        document.onkeydown = function (event) {
+        if (modalPage.visible === 1) { // If modalPage is visible at the screen
 
-            if (modalPage.visible === 1) { // If modalPage is visible at the screen
+            // This add listener for Keyboard and check if a key is pressed
+            document.onkeydown = function (event) {
 
                 if (event.key === "Escape") {
                     closeModal(modalPage);
                 }
 
-                if (event.key === "ESC") {
-
-                }
-
-            }
-        };
+            };
+        }
     }
 
 
@@ -101,15 +98,19 @@ export function modalMaster(bodyTag, headerTag, mainTag, modalID) {
 
 
     function openModal(modalPage) {
-        effectAnimation("hide_content", "show_content", modalPage);
+        effectAnimation("hide_content", "show_content", modalPage); // Effect Modal CSS
         backgroundPage.bodyHTML.style.overflow = "hidden"; // Block Scroll
+        backgroundPage.forEach(HTMLtag => {
+            console.log(HTMLtag);
+        });
         modalPage.modalHTML.style.display = "block"; // Display the Modal at the screen
         centerModal(modalPage.modalHTML); // Center the Modal at the screen
+        addKeyboardListener(modalPage); // Add Keyboard Events
         document.querySelector(`#${modalPage.modalID} #closeModal`).focus(); // Focus the Close Modal 
     }
 
     function closeModal(modalPage) {
-        effectAnimation("hide_content", "show_content", modalPage);
+        effectAnimation("hide_content", "show_content", modalPage); // Effect Modal CSS
         backgroundPage.bodyHTML.style.overflow = "visible"; // Allow scroll 
         modalPage.modalHTML.style.display = "none"; // Hide at the screen modal
     }

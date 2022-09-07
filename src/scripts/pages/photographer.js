@@ -1,3 +1,6 @@
+// import "core-js/stable";
+// import "regenerator-runtime/runtime";
+
 import '../../scss/main.scss';
 import { getPhotographers, getMedias } from '../utils/fetch';
 import { displayData } from '../data/displayData';
@@ -6,6 +9,7 @@ import { getUrlParameter } from '../utils/getUrlParameter';
 import { sortByLikes } from '../utils/sortBy';
 import { selectFilterComponent } from '../utils/selectFilter';
 import { modalMaster } from '../utils/modalForm';
+
 
 
 
@@ -36,7 +40,6 @@ async function initContactForm(photographerSelected) {
         const modalPage = contactFormModal.modalPage; // Get modelPage Object
 
         contactFormModal.addContactFormListener(modalPage); // Add specific listener to Contact Form Modal
-        contactFormModal.addKeyboardListener(modalPage); // Add listener keyboard to our Modal
 
         const titleModal = `Contactez-moi ${photographerSelected.name}`; // Build the title Modal
         contactFormModal.setTitleModal(modalPage, "h2", titleModal);  // Set the title Modal

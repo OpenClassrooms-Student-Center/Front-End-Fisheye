@@ -4,7 +4,7 @@ module.exports = {
     entry: {
         index: __dirname + "/src/scripts/pages/index.js",
         photographer: __dirname + "/src/scripts/pages/photographer.js"
-       
+
     },
 
     output: {
@@ -14,20 +14,18 @@ module.exports = {
 
     module: {
         rules: [
-            
+
             {
                 test: /\.m?js$/,
                 use: {
                     loader: "babel-loader",
-                    
                     options: {
                         presets: [
                             [
                                 "@babel/preset-env",
                                 {
-                                    targets: {
-                                        browsers: ["> 0.5%"] // Support JS for old browser
-                                    }
+                                    // "useBuiltIns": "entry",
+                                    // "corejs": 3,
                                 }
                             ]
                         ]
@@ -49,10 +47,7 @@ module.exports = {
                             postcssOptions: {
                                 plugins: [
                                     [
-                                        "postcss-preset-env",
-                                        {
-                                            // Options
-                                        }
+                                        "postcss-preset-env"
                                     ]
                                 ]
                             }

@@ -1,7 +1,9 @@
+// import "core-js/stable";
+// import "regenerator-runtime/runtime";
+
 import '../../scss/main.scss';
 import { getPhotographers } from '../utils/fetch';
 import { displayDataAll } from '../data/displayData';
-
 
 
 async function initMain() {
