@@ -42,7 +42,11 @@ export function modalMaster(bodyTag, headerTag, mainTag, modalID) {
             if (modalPage.visible === 1) { // If modalPage is visible at the screen
 
                 if (event.key === "Escape") {
-                    closeModal(modalPage); 
+                    closeModal(modalPage);
+                }
+
+                if (event.key === "ESC") {
+
                 }
 
             }
@@ -95,11 +99,13 @@ export function modalMaster(bodyTag, headerTag, mainTag, modalID) {
     }
 
 
+
     function openModal(modalPage) {
         effectAnimation("hide_content", "show_content", modalPage);
         backgroundPage.bodyHTML.style.overflow = "hidden"; // Block Scroll
         modalPage.modalHTML.style.display = "block"; // Display the Modal at the screen
         centerModal(modalPage.modalHTML); // Center the Modal at the screen
+        document.querySelector("#" + modalPage.modalID + " img").focus(); // Focus the Close Modal 
     }
 
     function closeModal(modalPage) {

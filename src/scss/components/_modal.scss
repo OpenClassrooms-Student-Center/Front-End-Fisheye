@@ -22,9 +22,19 @@
         display: flex;
         align-items: baseline;
 
-        img {
+        #closeModal { 
+            // Close Modal Picture
             cursor: pointer;
+
+            .default_color {
+                fill: $default_color;
+            }
+
+            .color_primary1 {
+                fill: $color_primary1;
+            }
         }
+
 
         h2 {
             font-size: calc($font_size * 1.77);
