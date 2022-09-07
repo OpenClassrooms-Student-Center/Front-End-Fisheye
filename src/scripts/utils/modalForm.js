@@ -115,8 +115,11 @@ export function modalMaster(bodyTag, headerTag, mainTag, modalID) {
         modalPage.modalHTML.style.display = "none"; // Hide at the screen modal
 
         // Allow click or focus with inert to the BackgroundPage 
+
+
+        backgroundPage.mainHTML.removeAttribute("inert");
         backgroundPage.headerHTML.removeAttribute("inert");
-        backgroundPage.mainHTML.removeAttribute("inset")
+
     }
 
 
