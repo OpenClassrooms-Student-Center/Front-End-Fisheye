@@ -99,21 +99,24 @@ export function modalMaster(bodyTag, headerTag, mainTag, modalID) {
     function openModal(modalPage) {
         effectAnimation("hide_content", "show_content", modalPage); // Effect Modal CSS
         backgroundPage.bodyHTML.style.overflow = "hidden"; // Block Scroll
-
-        // Disable click or focus with inert to the BackgroundPage 
-        backgroundPage.headerHTML.setAttribute("inert", ""); 
-        backgroundPage.mainHTML.setAttribute("inert", "");
-
         modalPage.modalHTML.style.display = "block"; // Display the Modal at the screen
         centerModal(modalPage.modalHTML); // Center the Modal at the screen
         addKeyboardListener(modalPage); // Add Keyboard Events
         document.querySelector(`#${modalPage.modalID} #closeModal`).focus(); // Focus the Close Modal 
+
+        // Disable click or focus with inert to the BackgroundPage 
+        backgroundPage.headerHTML.setAttribute("inert", "");
+        backgroundPage.mainHTML.setAttribute("inert", "");
     }
 
     function closeModal(modalPage) {
         effectAnimation("hide_content", "show_content", modalPage); // Effect Modal CSS
         backgroundPage.bodyHTML.style.overflow = "visible"; // Allow scroll 
         modalPage.modalHTML.style.display = "none"; // Hide at the screen modal
+
+        // Allow click or focus with inert to the BackgroundPage 
+        backgroundPage.headerHTML.removeAttribute("inert");
+        backgroundPage.mainHTML.removeAttribute("inset")
     }
 
 
