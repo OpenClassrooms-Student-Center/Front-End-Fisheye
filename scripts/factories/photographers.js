@@ -1,7 +1,7 @@
-import { displayLightbox, displayModal } from '../../scripts/utils/forms.js';
+import {displayLightbox, displayModal} from '../../scripts/utils/forms.js';
 
-export function photographerFactory(data, template, path, index, updateLightboxData) {
-    const { name, portrait, city, country, tagline, price, id, title, image, video, likes } = data;
+export function photographerFactory(data, template, path, index, updateLightboxData, updateLikesModalData) {
+    const {name, portrait, city, country, tagline, price, id, title, image, video, likes} = data;
     const pictures = `../assets/photos/Photographers ID Photos/${portrait}`;
     const photographer = `./photographer/photographer.html?id=${id}`;
 
@@ -84,15 +84,17 @@ export function photographerFactory(data, template, path, index, updateLightboxD
         if (image) {
             const img = document.createElement('img');
             img.setAttribute('src', media);
-            article.appendChild(img);
+            button.appendChild(img);
         }
         if (video) {
             const mp4 = document.createElement('video');
             mp4.setAttribute('src', mp4Path);
-            article.appendChild(mp4);
+            button.appendChild(mp4);
         }
         const content = document.createElement('div');
         const compter = document.createElement('div');
+        const div = document.createElement('div');
+        div.className = ' heart';
         const description = document.createElement('p');
         description.innerHTML = title;
         description.className = ' description';
@@ -100,14 +102,24 @@ export function photographerFactory(data, template, path, index, updateLightboxD
         like.innerText = likes;
         like.className = ' like';
         const icon = document.createElement('i');
-        icon.className = ' fa-solid fa-heart';
-        button.appendChild(article);
+        icon.className = ' fa-regular fa-heart';
+        icon.onclick = () => {
+            updateLikesModalData(data, index);
+        };
+        const ico = document.createElement('i')
+        ico.className = ' fa-solid fa-heart'
+        ico.onclick = () => {
+            updateLikesModalData(data, index);
+        };
+        article.appendChild(button);
         article.appendChild(content);
         content.appendChild(description);
         content.appendChild(compter);
         compter.appendChild(like);
-        compter.appendChild(icon);
-        return (button);
+        compter.appendChild(div);
+        div.appendChild(ico);
+        div.appendChild(icon);
+        return (article);
     }
 
     if (template === 'detail') {
