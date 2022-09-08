@@ -8,7 +8,7 @@ import { displayMedia } from '../data/displayMedia';
 import { getUrlParameter } from '../utils/getUrlParameter';
 import { sortByLikes } from '../utils/sortBy';
 import { selectFilterComponent } from '../utils/selectFilter';
-import { modalMaster } from '../utils/modalForm';
+import { modalMaster } from '../utils/modalMaster';
 
 
 

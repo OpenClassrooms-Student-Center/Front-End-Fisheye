@@ -1,4 +1,4 @@
-import { setInnerHtml } from '../utils/dom';
+import { setInnerHtml } from './dom';
 
 export function modalMaster(bodyTag, headerTag, mainTag, modalID) {
 
