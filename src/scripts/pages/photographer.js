@@ -22,6 +22,7 @@ async function initProfile(idURL) {
         const photographerSelected = await displayData(photographers, idURL);
         // END SET Photographer Profile Data
 
+        console.log(photographerSelected);
         console.log("Section profile initié avec succès depuis initProfile()");
         initContactForm(photographerSelected);
 
