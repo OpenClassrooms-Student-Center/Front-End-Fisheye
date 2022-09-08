@@ -55,17 +55,8 @@ export function modalMaster(bodyTag, headerTag, mainTag, modalID) {
     }
 
 
-    function centerModal(modalID) {
-        let Mwidth = modalID.offsetWidth;
-        let Mheight = modalID.offsetHeight;
-        let Wwidth = window.innerWidth;
-        let Wheight = window.innerHeight;
 
-        modalID.style.position = "absolute";
-        modalID.style.top = ((Wheight - Mheight) / 2 + window.pageYOffset) + "px";
-        modalID.style.left = ((Wwidth - Mwidth) / 2 + window.pageXOffset) + "px";
-    }
-
+    
 
     function effectAnimation(hideclass, showclass, modalPage) {
         if (modalPage.visible === 0) {
@@ -98,9 +89,7 @@ export function modalMaster(bodyTag, headerTag, mainTag, modalID) {
 
     function openModal(modalPage) {
         effectAnimation("hide_content", "show_content", modalPage); // Effect Modal CSS
-        // backgroundPage.bodyHTML.style.overflow = "hidden"; // Block Scroll
         modalPage.modalHTML.style.display = "block"; // Display the Modal at the screen
-        //   centerModal(modalPage.modalHTML); // Center the Modal at the screen
         addKeyboardListener(modalPage); // Add Keyboard Events
         document.querySelector(`#${modalPage.modalID} #closeModal`).focus(); // Focus the Close Modal 
 
@@ -111,12 +100,9 @@ export function modalMaster(bodyTag, headerTag, mainTag, modalID) {
 
     function closeModal(modalPage) {
         effectAnimation("hide_content", "show_content", modalPage); // Effect Modal CSS
-        //     backgroundPage.bodyHTML.style.overflow = "visible"; // Allow scroll 
         modalPage.modalHTML.style.display = "none"; // Hide at the screen modal
 
         // Allow click or focus with inert to the BackgroundPage 
-
-
         backgroundPage.mainHTML.removeAttribute("inert");
         backgroundPage.headerHTML.removeAttribute("inert");
 
