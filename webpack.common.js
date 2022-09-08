@@ -3,7 +3,8 @@ module.exports = {
 
     entry: {
         index: __dirname + "/src/scripts/pages/index.js",
-        photographer: __dirname + "/src/scripts/pages/photographer.js"
+        photographer: __dirname + "/src/scripts/pages/photographer.js",
+        404: __dirname + "/src/scripts/pages/404.js"
 
     },
 
