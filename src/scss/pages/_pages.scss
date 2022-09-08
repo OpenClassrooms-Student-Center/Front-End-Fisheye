@@ -46,10 +46,16 @@
 
 //////////////// 404 PAGE /////// 
 .ERROR_404 {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+    margin-top: 5%;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    padding: 40px;
+
+    h1 {
+        text-align: center;
+        font-size: $font_size * 2;
+    }
 }
 
 ////////////// END 404 PAGE ////////
