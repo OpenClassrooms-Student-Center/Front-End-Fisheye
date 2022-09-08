@@ -1,21 +1,63 @@
+import "core-js/stable";
+import "regenerator-runtime/runtime";
+
 import '../../scss/main.scss';
 import { getPhotographers, getMedias } from '../utils/fetch';
-import { displayData } from './displayData';
-import { displayMedia } from './displayMedia';
+import { displayData } from '../data/displayData';
+import { displayMedia } from '../data/displayMedia';
 import { getUrlParameter } from '../utils/getUrlParameter';
 import { sortByLikes } from '../utils/sortBy';
 import { selectFilterComponent } from '../utils/selectFilter';
+import { modalMaster } from '../utils/modalMaster';
 
 
 
-async function init() {
-    // Try to get data from photographers & media if error then redirect to 404 page
+
+async function initProfile(idURL) {
+    // Try to get data from photographers if error then redirect to 404 page
     try {
         // SET Photographer Profile DATA
-        const idURL = await getUrlParameter("id");
         const photographers = await getPhotographers();
-        displayData(photographers, ".photograph_header", idURL);
+        // Return the photographer Display
+        const photographerSelected = await displayData(photographers, idURL);
         // END SET Photographer Profile Data
+
+        console.log("Section profile initié avec succès depuis initProfile()");
+        initContactForm(photographerSelected);
+
+    } catch (e) {
+        console.error(e);
+        // If it's a fail then we redirect to 404 Error Page since  it's the minimal functionality
+        // Atm 404 error page doesn't exists must be write later
+        console.log("Rediriger vers la page 404");
+    }
+
+}
+
+async function initContactForm(photographerSelected) {
+    try {
+        const contactFormModal = modalMaster("body", "header", "main", "contact_modal"); // Create a Model Master
+        const modalPage = contactFormModal.modalPage; // Get modelPage Object
+
+        contactFormModal.addContactFormListener(modalPage); // Add specific listener to Contact Form Modal
+
+        const titleModal = `Contactez-moi ${photographerSelected.name}`; // Build the title Modal
+        contactFormModal.setTitleModal(modalPage, "h2", titleModal);  // Set the title Modal
+
+        console.log("Formulaire contact initié avec succès depuis initContactForm()");
+    }
+    catch (e) {
+        console.error(e);
+        // If it's a fail then we redirect to 404 Error Page since  it's the minimal functionality
+        // Atm 404 error page doesn't exists must be write later
+        console.log("Rediriger vers la page 404");
+    }
+}
+
+
+async function initMedia(idURL) {
+    // Try to get data from media if error then redirect to 404 page
+    try {
 
         // Build Medias Data
         const medias = await getMedias();
@@ -26,11 +68,21 @@ async function init() {
         selectFilterComponent(medias, idURL);
 
 
-        console.log("Page initialiser avec succès depuis init()");
+        console.log("Section média initié avec succès depuis initMain()");
+
     } catch (e) {
         console.error(e);
-        console.log("Rediriger vers la page 404");
     }
+
 }
 
-init();
+
+async function initMain() {
+    // We Wait for getUrlParameter() to be complete then we run tasks for generate page
+    const idURL = await getUrlParameter("id");
+    initProfile(idURL);
+    initMedia(idURL);
+}
+
+
+initMain(); 

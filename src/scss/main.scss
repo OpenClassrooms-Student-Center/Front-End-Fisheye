@@ -9,9 +9,10 @@
 /** IMPORT PHOTOGRAPHERS CARDS **/
 @import "components/photographer_cards.scss";
 /** IMPORT MODAL COMPONENT **/
-@import "components/modal.scss";
+@import "components/modal/_contact.scss";
+@import "components/modal/_lightbox.scss";
 /** IMPORT CONTACT BUTTON COMPONENT **/
-@import "components/contact_button.scss";
+@import "components/fisheye_button.scss";
 /** IMPORT PHOTOGRAPH HEADER COMPONENT **/
 @import "components/photograph_header.scss";
 /** IMPORT SELECT FILTER COMPONENT **/
@@ -24,5 +25,6 @@
 @import "pages/pages.scss";
 /** IMPORT FOOTER STYLES **/
 @import "pages/footer.scss";
-/** IMPORT RESPONSIVE STYLES for Non Components Elements **/
+/** IMPORT RESPONSIVE STYLES for Non Components Elements
+ (components Elements got their own Responsive Rules in their Stylesheet) **/
 @import "_responsive.scss";

@@ -20,7 +20,7 @@
                     <h3></h3>
                 </div>
                 <div class="photograph_button">
-                    <button class="contact_button" aria-label="Contact Me" onclick="displayModal()">Contactez-moi</button>
+                    <button class="fisheye_button" aria-label="Contact Me" id="openModal">Contactez-moi</button>
                 </div>
                 <div class="photographer_card">
                     <img src="" alt="profil photographer">
@@ -39,26 +39,45 @@
                 </div>
             </div>
             <div class="media_section"></div>
-            <div id="contact_modal">
-                <div class="modal">
-                    <header>
-                        <h2>Contactez-moi</h2>
-                        <img src="./assets/icons/close.svg" alt="fermer" onclick="closeModal()">
-                    </header>
-                    <form>
-                        <div>
-                            <label>Prénom</label>
-                            <input>
-                        </div>
-                        <button class="contact_button">Envoyer</button>
-                    </form>
-                </div>
-            </div>
             <div class="photographer_statistic">
                 <div class="total_likes">297 081</div>
                 <div class="price_rate_daily"></div>
             </div>
         </main>
+        <div
+            id="contact_modal"
+            class="modal_contact"
+            aria-labelledby="dialogTitle"
+            aria-describedby="dialogDesc"
+            role="dialog"
+        >
+            <div class="modal_header">
+                <h2 id="dialogTitle"></h2>
+                <p id="dialogDesc" class="help_blind">Vous pouvez remplir ce formulaire avec les champs suivants afin de pouvoir envoyer un message au photographer que vous avez sélectionner.</p>
+                <img
+                    class="white"
+                    autofocus
+                    tabindex="0"
+                    src="./assets/icons/close.svg"
+                    role="button"
+                    alt="Close Contact form"
+                    id="closeModal"
+                >
+            </div>
+            <form>
+                <div>
+                    <label for="First name">Prénom</label>
+                    <input id="First name" required>
+                    <label for="Last name">Nom</label>
+                    <input id="Last name" required>
+                    <label for="Email">Email</label>
+                    <input id="Email" required>
+                    <label for="Your message">Votre message</label>
+                    <textarea id="Your Message"></textarea>
+                </div>
+                <button aria-label="Send" id="contact_button" class="fisheye_button">Envoyer</button>
+            </form>
+        </div>
         <footer></footer>
     </body>
     <script src="./dist/photographer.js"></script>

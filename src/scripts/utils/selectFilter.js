@@ -1,11 +1,11 @@
-import { displayMedia } from '../pages/displayMedia';
+import { displayMedia } from '../data/displayMedia';
 import { sortByLikes, sortByDate, sortByTitle } from '../utils/sortBy';
 
 
 /** GENERATE EVENT FOR SELECT FILTER COMPONENTS AND BEHAVIOR */
 export function selectFilterComponent(data, idURL) {
 
-    const selectFilterButton = document.querySelector('.select_filter .select_button'); // Button Select
+    const selectFilterButton = document.querySelector(".select_filter .select_button"); // Button Select
     const selectFilterSelect1 = document.getElementById("select1"); // First Select (by default Date)
     const selectFilterSelect2 = document.getElementById("select2"); // 2nd Select (by default Titre)
 

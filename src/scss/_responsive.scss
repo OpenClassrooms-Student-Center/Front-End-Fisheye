@@ -4,7 +4,7 @@
     .media_section {
         grid-template-columns: 1fr 1fr;
     }
-    
+
 }
 
 
@@ -13,14 +13,14 @@
     header {
         flex-direction: column;
         margin-top: 40px;
-        height:100px;
+        height: 100px;
 
         .logo_photographer {
             margin-left: 0;
         }
 
         .logo,
-       h1 {
+        h1 {
             margin-left: 20px;
             margin-right: 20px;
             font-size: calc($font_size / 1.20);

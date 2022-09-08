@@ -21,6 +21,7 @@
 
 
 
+
     .details {
         @include flex-basic(row, null, null, space-between, baseline);
         margin-top: 5px;
@@ -43,10 +44,6 @@
 }
 
 
-.media_card:has(video) {
-    content: "V";
-    border: 2px red solid;
-}
 
 @media (max-width: 600px) {
 

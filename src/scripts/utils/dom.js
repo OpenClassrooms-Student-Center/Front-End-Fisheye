@@ -1,31 +1,26 @@
 // Function for build DOM
 export function insertPictureInsideElement(element, picture, alt) {
-    if (alt) {
-        element.insertAdjacentHTML("beforeend", '<img src="' + picture + '" ' + 'alt="' + alt + '">');
-    }
-    else {
-        element.insertAdjacentHTML("beforeend", '<img src="' + picture + '">');
-    }
+    element.insertAdjacentHTML("beforeend", `<img src="${picture}" alt="${alt}">`);
 }
 
-export function insertVideoInsideElement(element, video, arielLabel) {
+export function insertVideoInsideElement(element, video, ariaLabel) {
 
-    if (arielLabel) {
-        element.insertAdjacentHTML("beforeend", '<video src="' + video + '" ' + 'aria-label="' + arielLabel + '">');
+    if (ariaLabel) {
+        element.insertAdjacentHTML("beforeend", 
+        `<video src="${video}" aria-label="${ariaLabel}">`);
 
     }
-    else 
-    {
+    else {
         element.insertAdjacentHTML("beforeend", '<video src="' + video + '">');
     }
-   
+    
 }
 
 export function insertHTMLAfterElement(element, html) {
     element.insertAdjacentHTML("afterend", html);
 }
 
-export function buildElement(balise, value, alt) {
+export function buildElement(balise, value) {
     // Create balise
     const element = document.createElement(balise);
 
@@ -44,8 +39,8 @@ export function buildElement(balise, value, alt) {
 }
 
 
-export function setArielLabel(element, arielLabel) {
-    element.setAttribute("ariel-label", arielLabel);
+export function setArialLabel(element, arialabel) {
+    element.setAttribute("aria-label", arialabel);
 }
 
 export function setInnerHtml(querySelector, texte) {
