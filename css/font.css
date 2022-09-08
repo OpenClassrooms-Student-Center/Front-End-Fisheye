@@ -1,0 +1,34 @@
+a:link 
+{ 
+ text-decoration:none; 
+}
+
+h1 {
+    color: #901C1C;
+    font-weight: 400;
+    font-size: 36px;
+    text-align: center;
+    line-height: 0px;
+}
+
+h2 {
+    color: #D3573C;
+    font-size: 36px;
+    line-height: 0px;
+}
+
+h3 {
+    color: #901C1C;
+    font-weight: 400;
+    font-size: 13px;
+    line-height: 0px;
+}
+
+p{
+    font-size: 10px;
+    line-height: 0px;
+}
+
+.profil-info-price{
+    color: #757575;
+}

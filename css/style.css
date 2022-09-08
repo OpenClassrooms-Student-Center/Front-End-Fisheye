@@ -1,10 +1,15 @@
 @import url("photographer.css");
+@import url("font.css");
 
 body {
     font-family: "DM Sans", sans-serif;
-    margin: 0;
-    padding: 0;
+    margin: 0px;
+    padding: 0px;
+    text-decoration: none; 
+    border: 0;
 }
+
+ 
 
 
 header {
@@ -13,24 +18,6 @@ header {
     justify-content: space-between;
     align-items: center;
     height: 90px;
-}
-
-h1 {
-    color: #901C1C;
-    font-weight: 400;
-    font-size: 36px;
-    line-height: 47px;
-}
-
-h3 {
-    color: #901C1C;
-    font-weight: 400;
-    font-size: 13px;
-    line-height: 17px;
-}
-
-p{
-    font-size: 10px;
 }
 
 .logo {
@@ -43,26 +30,30 @@ p{
     grid-template-columns: 1fr 1fr 1fr;
     gap: 70px;
     margin-top: 100px;
+    text-align: center;
 }
 
-.photographer_section a {
-    justify-self: center;
+.profil {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+
+}
+
+.profil-principal{
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
 }
 
-.photographer_section a h2 {
-    color: #D3573C;
-    font-size: 36px;
-}
-
-.photographer_section a img {
+.profil img {
     height: 200px;
     width: 200px;
     object-fit: cover;
     border-radius: 100%;
+    margin-bottom: 20px;
 }
 
 .profil-info{
@@ -70,5 +61,5 @@ p{
     flex-direction: column;
     align-items: center;
     justify-content: center;
-
 }
+
