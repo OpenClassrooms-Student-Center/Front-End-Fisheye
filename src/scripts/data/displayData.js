@@ -19,6 +19,7 @@ export async function displayData(photographers, id) {
        
     });
 
+    
     return (photographerSelected); // Return the photographerShow at the end
 
 }
