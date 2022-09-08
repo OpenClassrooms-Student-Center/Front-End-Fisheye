@@ -15,6 +15,7 @@ function photographerFactory(data) {
         //Création des éléments se trouvant dans la div clickable
         const img = document.createElement('img'); // Création de l'image
         img.setAttribute("src", picture)
+        img.setAttribute("alt",name);
         const h2 = document.createElement('h2');
 
         //Création des éléments se trouvant dans la div info
