@@ -22,14 +22,19 @@ async function initProfile(idURL) {
         const photographerSelected = await displayData(photographers, idURL);
         // END SET Photographer Profile Data
 
-        console.log("Section profile initié avec succès depuis initProfile()");
-        initContactForm(photographerSelected);
+        if (photographerSelected) {
+            console.log("Section profile initié avec succès depuis initProfile()");
+            initContactForm(photographerSelected);
+        }
+        else {
+            console.error("Error no selected photographer");
+        }
 
     } catch (e) {
         console.error(e);
         // If it's a fail then we redirect to 404 Error Page since  it's the minimal functionality
         // Atm 404 error page doesn't exists must be write later
-        console.log("Rediriger vers la page 404");
+        console.error("initProfile() failed redirect to 404 page");
     }
 
 }
@@ -50,7 +55,7 @@ async function initContactForm(photographerSelected) {
         console.error(e);
         // If it's a fail then we redirect to 404 Error Page since  it's the minimal functionality
         // Atm 404 error page doesn't exists must be write later
-        console.log("Rediriger vers la page 404");
+        console.error("initContactForm() failed redirect to 404 page");
     }
 }
 
