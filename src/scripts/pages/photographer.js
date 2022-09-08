@@ -28,13 +28,14 @@ async function initProfile(idURL) {
         }
         else {
             console.error("Error no selected photographer");
+            location.href = '404.html';
         }
 
     } catch (e) {
         console.error(e);
         // If it's a fail then we redirect to 404 Error Page since  it's the minimal functionality
-        // Atm 404 error page doesn't exists must be write later
         console.error("initProfile() failed redirect to 404 page");
+        location.href = '404.html';
     }
 
 }
@@ -54,8 +55,8 @@ async function initContactForm(photographerSelected) {
     catch (e) {
         console.error(e);
         // If it's a fail then we redirect to 404 Error Page since  it's the minimal functionality
-        // Atm 404 error page doesn't exists must be write later
         console.error("initContactForm() failed redirect to 404 page");
+        location.href = '404.html';
     }
 }
 
