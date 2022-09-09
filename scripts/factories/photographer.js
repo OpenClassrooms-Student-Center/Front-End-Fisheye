@@ -85,6 +85,7 @@ function photographerFactory(data) {
         return (section);
     }
 
-    
+
     return { name, picture, getUserCardDOM, infoUserDom}
 }
+

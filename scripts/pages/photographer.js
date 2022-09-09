@@ -17,10 +17,12 @@ function getId(){
  * @param {*} id 
  * @returns a photographer
  */
-async function getPhotographer(id) {
+async function getData(id) {
+    //Va chercher les données
     let response = fetch("../../data/photographers.json")
     let data = await (await response).json()
-    console.log(data.photographers);
+    let dataReturn = [];
+    //Pour les infos sur le photographe
     let photographers = data.photographers;
     let photographe;
     photographers.forEach(function(p){
@@ -28,19 +30,47 @@ async function getPhotographer(id) {
             photographe = p;
         }
     });
-    return photographe;
+    dataReturn.push(photographe);
+    //Va chercher le tableau de photo
+    let allPhotos = data.media;
+    let photos= [];
+    allPhotos.forEach(function(photo){
+        if(photo.photographerId == id){
+            photos.push(photo);
+        }
+    });
+    dataReturn.push(photos);
+
+    return dataReturn;
 }
+
 
 async function displayDataPhotographer(photographe) {
     const photographersSection = document.querySelector(".section-info");
-    console.log(photographe);
     const photographerModel = photographerFactory(photographe);
     const userCardDOM = photographerModel.infoUserDom();
     photographersSection.appendChild(userCardDOM);
 }
 
+function sumLike(photos){
+    let sumlike = 0;
+    photos.forEach(function(photo){
+        sumlike += photo.likes; 
+    });
+    return sumlike;
+}
+
+async function displayLikes(nblikes){
+    let p = document.querySelector(".section-stat-like-nombre");
+    p.textContent = nblikes;
+}
+
 async function init() {
-    displayDataPhotographer(await getPhotographer(getId()));
-};
+    let data = await getData(getId());
+    displayDataPhotographer(data[0]);
+    displayLikes(sumLike(data[1]));
+}
+
+
 
 init();
