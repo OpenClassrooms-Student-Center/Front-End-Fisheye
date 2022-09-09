@@ -52,6 +52,8 @@ async function displayDataPhotographer(photographe) {
     photographersSection.appendChild(userCardDOM);
 }
 
+
+
 function sumLike(photos){
     let sumlike = 0;
     photos.forEach(function(photo){
@@ -65,10 +67,16 @@ async function displayLikes(nblikes){
     p.textContent = nblikes;
 }
 
+async function displayPrice(price){
+    const priceP = document.querySelector(".section-stat-prix");
+    priceP.textContent = price + "€ / jour";
+}
+
 async function init() {
     let data = await getData(getId());
     displayDataPhotographer(data[0]);
     displayLikes(sumLike(data[1]));
+    displayPrice(data[0].price);
 }
 
 
