@@ -1,4 +1,4 @@
-.photograph-header {
+.photograph-info {
     background-color: #FAFAFA;
     height: 300px;
     margin: 0 100px;
@@ -27,6 +27,7 @@
     justify-content: space-between;
     padding: 35px;
     margin: auto;
+    visibility: hidden;
 }
 
 .modal header {

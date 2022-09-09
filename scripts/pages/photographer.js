@@ -9,8 +9,41 @@ Code JavaScript lié à la page photographer.html
 function getId(){
     let paramsUrl = new URLSearchParams(window.location.search);
     let id = paramsUrl.get('id');
-    console.log(id);
     return id;
 }
 
-getId();
+/**
+ * Get a photographer if he has the same id.
+ * @param {*} id 
+ * @returns a photographer
+ */
+async function getPhotographer(id) {
+    let response = fetch("../../data/photographers.json")
+    let data = await (await response).json()
+    console.log(data.photographers);
+    let photographers = data.photographers;
+    let photographe;
+    photographers.forEach(function(p){
+        if(p.id == id){
+            photographe = p;
+        }
+    });
+    return photographe;
+}
+
+async function displayDataPhotographer(photographer) {
+    const photographersSection = document.querySelector(".photograph-info");
+
+    const photographerModel = photographerFactory(photographer);
+    const userCardDOM = photographerModel.infoUserDom();
+    photographersSection.appendChild(userCardDOM);
+
+};
+
+async function init() {
+    // Récupère les datas des photographes
+    const { photographers } = await getPhotographers();
+    displayData(photographers);
+};
+
+getPhotographer(getId());

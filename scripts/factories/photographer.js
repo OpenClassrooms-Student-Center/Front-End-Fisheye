@@ -1,4 +1,4 @@
-function photographerFactory(data, nbid) {
+function photographerFactory(data) {
     const { name, city, country, id, price, tagline ,portrait } = data;
 
     const picture = `assets/photographers/${portrait}`;
@@ -47,8 +47,11 @@ function photographerFactory(data, nbid) {
         return (article);
     }
 
-    function getUserId() {
+    function infoUserDom(){
+        //Pour le layout
+        const text = document.createElement('div');
+        text.classList.add("photograph-info-text");
 
     }
-    return { name, picture, getUserCardDOM, getUserId}
+    return { name, picture, getUserCardDOM, infoUserDom}
 }
