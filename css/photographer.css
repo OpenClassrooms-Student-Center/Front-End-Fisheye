@@ -79,9 +79,9 @@
 
 /* Section stat */ 
 .section-stat{
-    position: absolute;
-    bottom: 0px;
-    right: 40px;
+    position: relative;
+    top : 100%;
+    left: 70%;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -90,6 +90,7 @@
     height: 60px;
     background: #DB8876;
     border-radius: 5px 5px 0px 0px;
+    z-index: 1;
 }
 
 .section-stat-like{
@@ -101,9 +102,17 @@
 
 /* Photos */
 .section-gallery{
-    background-color: aqua;
     display: grid;
+    padding-left: 100px;
+    margin-top: 60px;
     grid-template-columns: 1fr 1fr 1fr;
+}
+
+.section-gallery img{
+    width: 350px;
+    height: 300px;
+    border-radius: 5px;
+    object-fit: cover;
 }
 
 
@@ -118,7 +127,7 @@
     justify-content: space-between;
     padding: 35px;
     margin: auto;
-    visibility: hidden;
+    display: none;
 }
 
 .modal header {

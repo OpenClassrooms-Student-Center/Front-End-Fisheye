@@ -14,7 +14,7 @@ function photographerFactory(data) {
         cilckable.href = "photographer.html?id="+id; //Lien de la carte photo
         //Création des éléments se trouvant dans la div clickable
         const img = document.createElement('img'); // Création de l'image
-        img.setAttribute("src", picture)
+        img.setAttribute("src", picture);
         img.setAttribute("alt",name);
         const h2 = document.createElement('h2');
 

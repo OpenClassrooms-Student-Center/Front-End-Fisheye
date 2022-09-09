@@ -52,7 +52,15 @@ async function displayDataPhotographer(photographe) {
     photographersSection.appendChild(userCardDOM);
 }
 
-
+async function displayImage(data){
+    const photographersSection = document.querySelector(".section-gallery");
+    console.log(data);
+    data[1].forEach((photo) => {
+        const photographerModel = photoCardFactory(photo, data[0]);
+        const userCardDOM = photographerModel.getPhotoDOM();
+        photographersSection.appendChild(userCardDOM);
+    });
+}
 
 function sumLike(photos){
     let sumlike = 0;
@@ -75,6 +83,7 @@ async function displayPrice(price){
 async function init() {
     let data = await getData(getId());
     displayDataPhotographer(data[0]);
+    displayImage(data);
     displayLikes(sumLike(data[1]));
     displayPrice(data[0].price);
 }
