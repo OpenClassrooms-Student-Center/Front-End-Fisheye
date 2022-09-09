@@ -1,7 +1,28 @@
+
+/*Photograph-info*/
 .photograph-info {
     background-color: #FAFAFA;
+    border-radius: 5px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
     height: 300px;
     margin: 0 100px;
+    padding: 0px 50px 0px 50px;
+}
+
+.photograph-info-text{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.photograph-info img{
+    height: 200px;
+    width: 200px;
+    object-fit: cover;
+    border-radius: 100%;
+    margin-bottom: 20px;
 }
 
 .contact_button {

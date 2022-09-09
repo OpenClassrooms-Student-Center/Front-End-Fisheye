@@ -31,19 +31,16 @@ async function getPhotographer(id) {
     return photographe;
 }
 
-async function displayDataPhotographer(photographer) {
-    const photographersSection = document.querySelector(".photograph-info");
-
-    const photographerModel = photographerFactory(photographer);
+async function displayDataPhotographer(photographe) {
+    const photographersSection = document.querySelector("#main");
+    console.log(photographe);
+    const photographerModel = photographerFactory(photographe);
     const userCardDOM = photographerModel.infoUserDom();
     photographersSection.appendChild(userCardDOM);
-
 };
 
 async function init() {
-    // Récupère les datas des photographes
-    const { photographers } = await getPhotographers();
-    displayData(photographers);
+    displayDataPhotographer(await getPhotographer(getId()));
 };
 
-getPhotographer(getId());
+init();

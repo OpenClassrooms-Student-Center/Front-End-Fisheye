@@ -49,9 +49,40 @@ function photographerFactory(data) {
 
     function infoUserDom(){
         //Pour le layout
+        const section = document.createElement('section');
+        section.classList.add("photograph-info");
+
         const text = document.createElement('div');
         text.classList.add("photograph-info-text");
 
+        //Les elements
+        const titre = document.createElement('h1');
+        const location = document.createElement('h2');
+        const phrasing = document.createElement('p');
+
+        const button = document.createElement('button');
+        button.classList.add("contact_button");
+        button.setAttribute("onclick","displayModal()");
+
+        const img = document.createElement('img');
+
+        //set les elements
+        img.setAttribute("src", picture)
+        img.setAttribute("alt",name);
+        titre.textContent = name;
+        location.textContent = city + ", " + country;
+        phrasing.textContent = tagline;
+        button.textContent = "Contactez-Moi";
+
+        //Insertion dans le dom
+        text.appendChild(titre);
+        text.appendChild(location);
+        text.appendChild(phrasing);
+        section.appendChild(text);
+        section.appendChild(button);
+        section.appendChild(img);
+
+        return (section);
     }
     return { name, picture, getUserCardDOM, infoUserDom}
 }
