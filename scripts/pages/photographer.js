@@ -32,12 +32,12 @@ async function getPhotographer(id) {
 }
 
 async function displayDataPhotographer(photographe) {
-    const photographersSection = document.querySelector("#main");
+    const photographersSection = document.querySelector(".section-info");
     console.log(photographe);
     const photographerModel = photographerFactory(photographe);
     const userCardDOM = photographerModel.infoUserDom();
     photographersSection.appendChild(userCardDOM);
-};
+}
 
 async function init() {
     displayDataPhotographer(await getPhotographer(getId()));

@@ -49,7 +49,7 @@ function photographerFactory(data) {
 
     function infoUserDom(){
         //Pour le layout
-        const section = document.createElement('section');
+        const section = document.createElement('div');
         section.classList.add("photograph-info");
 
         const text = document.createElement('div');
@@ -84,5 +84,7 @@ function photographerFactory(data) {
 
         return (section);
     }
+
+    
     return { name, picture, getUserCardDOM, infoUserDom}
 }
