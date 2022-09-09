@@ -1,4 +1,4 @@
-function photographerFactory(data) {
+function photographerFactory(data, nbid) {
     const { name, city, country, id, price, tagline ,portrait } = data;
 
     const picture = `assets/photographers/${portrait}`;
@@ -11,7 +11,7 @@ function photographerFactory(data) {
         article.classList.add("profil"); // On donne la classe  
         info.classList.add("profil-info"); // On donne la classe a la div info
         cilckable.classList.add("profil-principal"); // On donne la classe a la div principal
-        cilckable.href = "test"; //Lien de la carte photo
+        cilckable.href = "photographer.html?id="+id; //Lien de la carte photo
         //Création des éléments se trouvant dans la div clickable
         const img = document.createElement('img'); // Création de l'image
         img.setAttribute("src", picture)
@@ -46,5 +46,9 @@ function photographerFactory(data) {
 
         return (article);
     }
-    return { name, picture, getUserCardDOM }
+
+    function getUserId() {
+
+    }
+    return { name, picture, getUserCardDOM, getUserId}
 }
