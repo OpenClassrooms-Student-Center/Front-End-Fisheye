@@ -34,6 +34,7 @@
   "devDependencies": {
     "@babel/core": "^7.18.10",
     "@babel/preset-env": "^7.18.10",
+    "@types/node": "^18.7.16",
     "autoprefixer": "^10.4.8",
     "babel-loader": "^8.2.5",
     "live-server": "^1.1.0",

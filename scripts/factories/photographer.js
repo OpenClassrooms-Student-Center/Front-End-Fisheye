@@ -5,6 +5,7 @@ export const photographerFactory = ({ data, medias }) => {
   const { id, name, portrait, city, country, tagline, price } = data;
 
   const picture = `${PROFILE_PICTURES_FOLDER}${portrait}`;
+  const nbLikes = medias.reduce((sum, media) => sum + media.likes, 0);
 
   const mediaViews = medias.map(media => {
     const type = media.image ? 'image' : 'video';
@@ -88,6 +89,18 @@ export const photographerFactory = ({ data, medias }) => {
       `;
     return markup;
   };
+  const getUserFooter = () => {
+    const markup = `
+      <div class="main__photographer-likes">
+        <span class="main__photographer-nb-likes" aria-label="Nombre de likes">${nbLikes}</span>
+        <svg class="icon-heart icon-heart--filled" role="img" aria-hidden="true">
+          <use xlink:href="assets/icons/heart.svg#icon-heart"></use>
+        </svg>
+      </div>
+      <span class="main__photographer-price" aria-label="Tarif journalier">${price}€ / jour</span>
+    `;
+    return markup;
+  };
   return {
     name,
     picture,
@@ -95,5 +108,6 @@ export const photographerFactory = ({ data, medias }) => {
     getUserHeader,
     getFormModal,
     mediaViews,
+    getUserFooter,
   };
 };

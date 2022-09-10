@@ -12,8 +12,7 @@ export default class MediaView extends View {
    * @author Werner Schmid
    */
   constructor(errorMessage) {
-    super(document.querySelector('.main__medias-list'), errorMessage);
-    this._clearContent = false;
+    super(document.querySelector('.main__medias-list'), errorMessage, false);
   }
 
   /**

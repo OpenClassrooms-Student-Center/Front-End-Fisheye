@@ -10,10 +10,10 @@ class View {
    * @returns {Object} The new View instance
    * @author Werner Schmid
    */
-  constructor(parentElement, errorMessage) {
+  constructor(parentElement, errorMessage, clearContent = true) {
     this._parentElement = parentElement;
     this._errorMessage = errorMessage;
-    this._clearContent = true;
+    this._clearContent = clearContent;
   }
 
   /**

@@ -1,6 +1,7 @@
 import PhotographerPageComponentView from './photographerPageComponentView';
 import photographerMediasView from './photographerMediasView';
 import photographerHeaderView from './photographerHeaderView';
+import photographerMainFooterView from './photographerFooterView';
 
 /**
  * A PhotographerPhotosView represents the content of the main semantic view in a photographer page
@@ -33,10 +34,14 @@ class PhotographerMainView extends PhotographerPageComponentView {
     photographerMediasView.setParentElement(
       document.querySelector('.main__photographer-medias')
     );
+    photographerMainFooterView.setParentElement(
+      document.querySelector('.main__photographer-footer')
+    );
 
     // Render the subviews
     photographerHeaderView.render(photographerData);
     photographerMediasView.render(medias);
+    photographerMainFooterView.render(photographerData);
   }
 
   /**
@@ -82,6 +87,7 @@ class PhotographerMainView extends PhotographerPageComponentView {
     // Pass the photographer factory to the photographerHeaderView and the photographerMediasView
     photographerHeaderView.setPhotographerFactory(factory);
     photographerMediasView.setPhotographerFactory(factory);
+    photographerMainFooterView.setPhotographerFactory(factory);
   }
 }
 
