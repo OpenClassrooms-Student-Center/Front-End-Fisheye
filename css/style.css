@@ -45,23 +45,6 @@ body {
   padding: 0 20px;
   overflow-y: scroll;
 }
-body.no-scroll {
-  overflow: hidden;
-}
-
-.msg-error {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 20px;
-}
-.msg-error p {
-  font-size: 1.5rem;
-  text-align: center;
-}
-.msg-error a {
-  color: #901c1c;
-}
 
 /* Fonts */
 /* Colors */
@@ -182,24 +165,6 @@ body.no-scroll {
 .photographers-list {
   display: grid;
   gap: 30px;
-}
-
-.direct-link-main {
-  position: fixed;
-  top: -35px;
-  left: 50%;
-  width: 187px;
-  padding: 3px 15px;
-  border-radius: 5px;
-  background-color: #DB8876;
-  font-size: 1.125rem;
-  font-weight: 500;
-  transform: translate3d(-50%, 0, 0);
-  transition: top 0.3s ease;
-  z-index: 100;
-}
-.direct-link-main:focus {
-  top: 6px;
 }
 
 .no-photographer {

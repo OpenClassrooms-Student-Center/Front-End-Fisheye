@@ -34,24 +34,4 @@ body {
     margin: 0 auto;
     padding: 0 20px;
     overflow-y: scroll;
-
-    &.no-scroll {
-        overflow: hidden;
-    }
-}
-
-.msg-error {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 20px;
-
-    p {
-        font-size: 1.5rem;
-        text-align: center;
-    }
-
-    a {
-        color: $main-color;
-    }
 }
