@@ -9,7 +9,7 @@ let photographerTarget = document.getElementById('photographers-list')
 /* ENG: Functions */
 /* FRA: Fonctions */
 
-const injectElement = (element, target) => {
+const dispatch = (element, target) => {
     target.appendChild(element)
 }
 
@@ -31,5 +31,5 @@ Api.getAllPhotographers().forEach(photographer => new Photographer(photographer)
 Photographer.instances.forEach(photographer => {
     /* ENG: We take the element for each photographer instance and inject to the photographerTarget which is the photographers-list element */
     /* FR: Nous prenons l'élément pour chaque instance de photographe et injectons dans le photographeTarget qui est l'élément de la liste des photographes */
-    injectElement(photographer.element, photographerTarget);
+    dispatch(photographer.element, photographerTarget);
 });
