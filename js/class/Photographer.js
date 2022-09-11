@@ -77,15 +77,17 @@ export default class Photographer {
         element.setAttribute('class', 'photographer-thumbnail')
 
         element.innerHTML =
-        `<a class="photographer__profile" href="photographer.html?id=${this.id}">
-            <img class="photographer__profile__img" src="assets/images/Photographers/${this.portrait}" alt="">
-            <h2 class="photographer__profile__name">${this.name}</h2>
-        </a>
-        <div class="photographer__infos">
-            <p class="photographer__infos__city">${this.city}, ${this.country}</p>
-            <p class="photographer__infos__tagline">${this.tagline}</p>
-            <p class="photographer__infos__price">${this.price}€/jour</p>
-        </div>`
+        `
+            <a class="photographer__profile" href="photographer.html?id=${this.id}">
+                <img class="photographer__profile__img" src="assets/images/Photographers/${this.portrait}" alt="">
+                <h2 class="photographer__profile__name">${this.name}</h2>
+            </a>
+            <div class="photographer__infos">
+                <p class="photographer__infos__city">${this.city}, ${this.country}</p>
+                <p class="photographer__infos__tagline">${this.tagline}</p>
+                <p class="photographer__infos__price">${this.price}€/jour</p>
+            </div>
+        `
 
         return element;
     }
