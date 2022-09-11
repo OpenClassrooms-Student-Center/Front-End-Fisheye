@@ -1,0 +1,57 @@
+@use "../utils" as *;
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-weight: 400;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+ul {
+    list-style: none;
+}
+
+select {
+    appearance: none;
+    border: none;
+    padding: 0;
+    margin: 0;
+    font-family: inherit;
+    font-size: inherit;
+    outline: none;
+}
+
+body {
+    font-family: $body-font;
+    font-size: 16px;
+    font-weight: 400;
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 0 20px;
+    overflow-y: scroll;
+
+    &.no-scroll {
+        overflow: hidden;
+    }
+}
+
+.msg-error {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+
+    p {
+        font-size: 1.5rem;
+        text-align: center;
+    }
+
+    a {
+        color: $main-color;
+    }
+}

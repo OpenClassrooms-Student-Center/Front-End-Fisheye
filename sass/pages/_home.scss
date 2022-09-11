@@ -1,0 +1,45 @@
+.photographers-list{
+    display: grid;
+    gap: 30px;
+}
+
+.direct-link-main{
+    position: fixed;
+    top: -35px;
+    left: 50%;
+    width: 187px;
+    padding: 3px 15px;
+    border-radius: $border-radius;
+    background-color: $secondary-color;
+
+    font-size: 1.125rem;
+    font-weight: 500;
+
+    transform: translate3d(-50%, 0, 0);
+    transition: top .3s ease;
+
+    z-index: 100;
+
+    &:focus{
+        top: 6px;
+    }
+}
+
+.no-photographer{
+    display: none;
+    text-align: center;
+    grid-area: 1 / 1 / 2 / 4;
+}
+
+@media screen and (min-width: 768px){
+    .photographers-list{
+        grid-template-columns: repeat(2, 1fr);
+        gap: 50px 30px;
+    }
+}
+
+@media screen and (min-width: 1024px){
+    .photographers-list{
+        grid-template-columns: repeat(3, 1fr);
+    }
+}

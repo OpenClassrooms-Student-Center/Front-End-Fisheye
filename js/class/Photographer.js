@@ -60,7 +60,7 @@ export default class Photographer {
             /* ENG: home page case we display the photographer's card */
             /* FR: Dans le cas de la homepage qui est la card avec les informations du photographe */
             case "index.html":
-                return this.card();  /* ENG: Photographer card view into homepage */ /* FRA: Card avec les informations du photographer sur le homepage */
+                return this.thumbnail();  /* ENG: Photographer card view into homepage */ /* FRA: Card avec les informations du photographer sur le homepage */
                 break;
             default:
                 break;
@@ -72,9 +72,9 @@ export default class Photographer {
      * FRA:  Element de la vue de la card du photographe sur la homepage
      * @returns {HTMLElement}
      */
-    card = () => {
+    thumbnail = () => {
         let element = document.createElement('article')
-        element.setAttribute('class', 'photographer-card')
+        element.setAttribute('class', 'photographer-thumbnail')
 
         element.innerHTML =
         `<a class="photographer__profile" href="photographer.html?id=${this.id}">
