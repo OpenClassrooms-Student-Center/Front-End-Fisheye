@@ -15,7 +15,7 @@ export default class Api {
         const request = await fetch('../../data/photographers.json');
 
         if (!request.ok) {
-            console.log('Data introuvable', request.status);
+            console.log('Data introuvable', `status code: ${request.status}`);
         }
 
         const data =  await request.json();
