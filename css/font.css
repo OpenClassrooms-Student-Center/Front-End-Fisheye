@@ -22,7 +22,6 @@ h3 {
     color: #901C1C;
     font-weight: 400;
     font-size: 13px;
-    line-height: 0px;
 }
 
 p{
@@ -54,4 +53,20 @@ p{
 .section-stat p{
     font-weight: 500;
     font-size: 24px;
+}
+
+/* Card photo/video */
+.card h3{
+    font-weight: 400;
+    font-size: 24px;
+}
+
+.card p{
+    font-size: 16px;
+    color: #911C1C;
+}
+
+.card i{
+    font-size: 16px;
+    color: #911C1C;
 }

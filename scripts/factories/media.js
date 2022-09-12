@@ -1,22 +1,25 @@
 function photoCardFactory(data, photographe) {
-    const { id, photographerId, title, image, likes,date,price} = data;
+    const { id, photographerId, title, image, video, likes,date,price} = data;
     const picture = `assets/photos/${photographe.id}/${image}`;
+    const videoLink = `assets/photos/${photographe.id}/${video}`;
+
 
     function getPhotoDOM(){
         //Création du layout
         const card = document.createElement('div');
-        const img = document.createElement('img');
+        card.setAttribute('class', 'card');
         const titleImage = document.createElement('h3');
+        
+        
 
-        console.log
-        img.setAttribute("src", picture);
-        img.setAttribute("alt",title);
+        
         const cardInfo = document.createElement('div');
-        cardInfo.classList.add ='card-info';
+        cardInfo.setAttribute('class', 'card-info');
         const cardInfoLike = document.createElement('div');
         const nblikes = document.createElement('p');
         const iconLike = document.createElement('i');
-        iconLike.classList.add ='fas fa-heart';
+        cardInfoLike.setAttribute('class', 'card-info-like');
+        iconLike.setAttribute('class', 'fas fa-heart');
         //Set les valeurs
         titleImage.textContent = title;
         nblikes.textContent = likes;
@@ -27,7 +30,21 @@ function photoCardFactory(data, photographe) {
         cardInfoLike.appendChild(iconLike);
         cardInfo.appendChild(titleImage);
         cardInfo.appendChild(cardInfoLike);
-        card.appendChild(img);
+
+        if (videoLink.match(/mp4/gm)){
+            const vid = document.createElement('video');
+            const source = document.createElement('source');
+            vid.setAttribute("controls", "controls");
+            source.setAttribute("src", videoLink); 
+            vid.appendChild(source);
+            card.appendChild(vid);
+        } else {
+            const img = document.createElement('img');
+            img.setAttribute("src", picture);
+            img.setAttribute("alt",title);
+            card.appendChild(img);
+        }
+
         card.appendChild(cardInfo);
         
         return (card);
