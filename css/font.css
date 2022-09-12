@@ -70,3 +70,12 @@ p{
     font-size: 16px;
     color: #911C1C;
 }
+
+/* Modal */
+.contact_modal_titre{
+    color: black;
+    text-align: left;
+    font-size: 64px;
+    line-height: 74px;
+    margin-top: -20px;
+}

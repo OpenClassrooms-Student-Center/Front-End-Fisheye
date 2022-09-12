@@ -80,12 +80,18 @@ async function displayPrice(price){
     priceP.textContent = price + "€ / jour";
 }
 
+async function displayContactName(name){
+    const priceP = document.querySelector(".contact_modal_titre");
+    priceP.textContent ="Contactez-moi " + name;
+}
+
 async function init() {
     let data = await getData(getId());
     displayDataPhotographer(data[0]);
     displayImage(data);
     displayLikes(sumLike(data[1]));
     displayPrice(data[0].price);
+    displayContactName(data[0].name);
 }
 
 
