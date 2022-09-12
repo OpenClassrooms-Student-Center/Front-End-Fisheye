@@ -210,6 +210,8 @@ form input {
     height: 68px;
     border: none;
     border-radius: 5px;
+    padding-left: 10px;
+    font-size: 24px;
 }
 
 textarea{
@@ -217,4 +219,6 @@ textarea{
     height: 100px;
     border: none;
     border-radius: 5px;
+    padding-left: 10px;
+    font-size: 24px;
 }
