@@ -81,8 +81,14 @@ async function displayPrice(price){
 }
 
 async function displayContactName(name){
-    const priceP = document.querySelector(".contact_modal_titre");
-    priceP.textContent ="Contactez-moi " + name;
+    const n = document.querySelector(".contact_modal_titre");
+    n.textContent ="Contactez-moi " + name;
+}
+
+async function urlForm(){
+    const url = window.location.href;
+    const form = document.querySelector("#reserve");
+    form.setAttribute("action", url);
 }
 
 async function init() {
@@ -92,6 +98,7 @@ async function init() {
     displayLikes(sumLike(data[1]));
     displayPrice(data[0].price);
     displayContactName(data[0].name);
+    urlForm();
 }
 
 

@@ -38,7 +38,7 @@
           <h1 class="contact_modal_titre">Contactez-moi</h1>
           <img src="assets/icons/close.svg" onclick="closeModal()" />
         </div>
-				<form>
+				<form id="reserve" method="get" onsubmit="return validate(event);">
 					<div class="formData">
 						<label for="first">Prénom</label>
 						<input class="text-control" type="text" id="first" name="first">
@@ -55,6 +55,7 @@
 						<label for="message">Votre message</label>
 						<textarea class="text-control" type="text-area" id="message" name="message"></textarea>
 					</div>
+          <p id="erreur"></p>
           <button class="contact_button">Envoyer</button>
 				</form>
 			</div>
