@@ -36,6 +36,12 @@
     background-color: #901C1C;
     border-radius: 5px;
     cursor: pointer;
+    transition: all 0.5s;
+}
+
+.contact_button:hover{
+    color: black;
+    background-color: #DB8876;
 }
 
 
