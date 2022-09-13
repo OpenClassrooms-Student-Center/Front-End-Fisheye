@@ -71,6 +71,18 @@ p{
     color: #911C1C;
 }
 
+.card-info-like:hover p{
+    color: #DB8876;
+    transition: all 0.6s;
+}
+
+
+.card-info-like:hover i{
+    color: #DB8876;
+    transition: all 0.6s;
+}
+
+
 /* Modal */
 .contact_modal_titre{
     color: black;

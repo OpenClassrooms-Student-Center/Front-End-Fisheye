@@ -8,20 +8,17 @@ function photoCardFactory(data, photographe) {
         //Création du layout
         const card = document.createElement('div');
         card.setAttribute('class', 'card');
-        card.setAttribute('onclick', 'displayLightbox(this.id)');
-        card.setAttribute('id', id);
-        const titleImage = document.createElement('h3');
         
-        
-
-        
+        const titleImage = document.createElement('h3');       
         const cardInfo = document.createElement('div');
         cardInfo.setAttribute('class', 'card-info');
         const cardInfoLike = document.createElement('div');
         const nblikes = document.createElement('p');
+        nblikes.setAttribute('class', 'card-info-nblikes'); 
         const iconLike = document.createElement('i');
         cardInfoLike.setAttribute('class', 'card-info-like'); 
         cardInfoLike.setAttribute('aria-label', 'likes'); 
+        cardInfoLike.setAttribute('onclick', 'like(this.firstChild)'); 
         iconLike.setAttribute('class', 'fas fa-heart');
         //Set les valeurs
         titleImage.textContent = title;
@@ -39,10 +36,14 @@ function photoCardFactory(data, photographe) {
             const source = document.createElement('source');
             //vid.setAttribute("controls", "controls");
             source.setAttribute("src", videoLink); 
+            vid.setAttribute('onclick', 'displayLightbox(this.id)');
+            vid.setAttribute('id', id);
             vid.appendChild(source);
             card.appendChild(vid);
         } else {
             const img = document.createElement('img');
+            img.setAttribute('onclick', 'displayLightbox(this.id)');
+            img.setAttribute('id', id);
             img.setAttribute("src", picture);
             img.setAttribute("alt",title);
             card.appendChild(img);
