@@ -47,8 +47,8 @@ async function initContactForm(photographerSelected) {
 
         contactFormModal.addContactFormListener(modalPage); // Add specific listener to Contact Form Modal
 
-        const titleModal = `Contactez-moi ${photographerSelected.name}`; // Build the title Modal
-        contactFormModal.setTitleModal(modalPage, "h2", titleModal);  // Set the title Modal
+        const titleModal = photographerSelected.name; // Build the title Modal
+        contactFormModal.setTitleModal(modalPage, "#dialogTitle", titleModal);  // Set the title Modal
 
         console.log("Formulaire contact initié avec succès depuis initContactForm()");
     }
@@ -59,6 +59,7 @@ async function initContactForm(photographerSelected) {
         location.href = '404.html';
     }
 }
+
 
 
 async function initMedia(idURL) {
@@ -73,6 +74,7 @@ async function initMedia(idURL) {
         // Init selectFilter Component and his behavior, need to provide the Data to filter
         selectFilterComponent(medias, idURL);
 
+        // Init LightBox Modal 
 
         console.log("Section média initié avec succès depuis initMain()");
 

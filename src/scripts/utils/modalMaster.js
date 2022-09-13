@@ -21,7 +21,7 @@ export function modalMaster(bodyTag, headerTag, mainTag, modalID) {
 
 
     function addContactFormListener(modalPage) {
-        // This add listener about only contact form 
+        // This add listener about only contact form modal
         document.getElementById("openModal").addEventListener("click", function () {
             openModal(modalPage);
         });
@@ -34,6 +34,16 @@ export function modalMaster(bodyTag, headerTag, mainTag, modalID) {
         });
     }
 
+    function addLightboxListener(modalPage) {
+        // This add listener about lightbox modal
+        document.getElementById("openModal").addEventListener("click", function () {
+            openModal(modalPage);
+        });
+
+        document.querySelector(`#${modalPage.modalID} #closeModal`).addEventListener("click", function () {
+            closeModal(modalPage);
+        });
+    }
 
     function addKeyboardListener(modalPage) {
         if (modalPage.visible === 1) { // If modalPage is visible at the screen
@@ -50,8 +60,8 @@ export function modalMaster(bodyTag, headerTag, mainTag, modalID) {
     }
 
 
-    function setTitleModal(modalPage, tagHTML, titleModal) {
-        return setInnerHtml(`#${modalPage.modalID} ${tagHTML}`, titleModal);
+    function setTitleModal(modalPage, targetSelector, titleModal) {
+        return setInnerHtml(`#${modalPage.modalID} ${targetSelector}`, titleModal);
     }
 
 
@@ -139,7 +149,7 @@ export function modalMaster(bodyTag, headerTag, mainTag, modalID) {
 
     return {
         backgroundPage, modalPage,
-        addContactFormListener, addKeyboardListener,
+        addContactFormListener, addLightboxListener, addKeyboardListener,
         openModal, closeModal,
         setTitleModal,
         sendMessage
