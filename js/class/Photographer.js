@@ -79,7 +79,7 @@ export default class Photographer {
         element.innerHTML =
         `
             <a class="photographer__profile" href="photographer.html?id=${this.id}">
-                <img class="photographer__profile__img" src="assets/images/Photographers/${this.portrait}" alt="">
+                <img class="photographer__profile__img" src="assets/images/Photographers/${this.portrait}" alt="${this.name}">
                 <h2 class="photographer__profile__name">${this.name}</h2>
             </a>
             <div class="photographer__infos">
