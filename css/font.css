@@ -79,3 +79,10 @@ p{
     line-height: 74px;
     margin-top: -20px;
 }
+
+/* Lightbox */
+.lightbox_modal_media h1{
+    font-weight: 400;
+    font-size: 24px;
+    color: #911C1C;
+}
