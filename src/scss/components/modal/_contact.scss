@@ -23,13 +23,17 @@
         #closeModal {
             // Close Modal Picture
             cursor: pointer;
+            transition: filter 0.5s ease-in;
+            &:hover {
+                filter: brightness(0) saturate(100%);
+            }
         }
 
 
         h2 {
             font-size: calc($font_size * 1.77);
             font-weight: normal;
-            text-align:left;
+            text-align: left;
         }
     }
 
