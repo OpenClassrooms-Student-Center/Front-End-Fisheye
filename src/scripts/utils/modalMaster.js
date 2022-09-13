@@ -1,4 +1,4 @@
-import { setInnerHtml } from './dom';
+import { setInnerHtml } from "./dom";
 
 export function modalMaster(bodyTag, headerTag, mainTag, modalID) {
 
@@ -51,17 +51,23 @@ export function modalMaster(bodyTag, headerTag, mainTag, modalID) {
 
     function loadLightboxContent(modalPage, link, medias) {
 
+        const previous_button = document.getElementById("previous_link");
+        const next_button = document.getElementById("next_link");
+        const picture_selected = document.getElementById("picture_selected");
+        const video_selected = document.getElementById("video_selected");
+
         if (process.env.NODE_ENV === 'development') {
             console.log("___LIGHTBOX___");
-            console.log(modalPage);
-            console.log(link.id); // Event has be fired by this LINK (where Link ID = Media ID)
-            console.log(medias); // Medias that are displayed in order to the main page
+            // console.log(modalPage);
+            // console.log(link.id); // Event has be fired by this LINK (where Link ID = Media ID)
+            // console.log(medias); // Medias that are displayed in order to the main page
         }
+
 
         /** GET THE PREVIOUS AND AFTER MEDIA THOUGH THE ARRAY */
         let previousID = 0;
         let nextID = 0;
-        let actualID = 0; 
+        let actualID = 0;
         for (let i = 0; i < medias.length; i++) {
             if (medias[i].id == link.id) {
                 previousID = medias[i - 1];
@@ -72,6 +78,8 @@ export function modalMaster(bodyTag, headerTag, mainTag, modalID) {
         }
 
         if (process.env.NODE_ENV === 'development') {
+            console.log("____ ACTUAL ID_______");
+            console.log(actualID);
             console.log("____ PREVIOUS ID_______");
             console.log(previousID);
             console.log("_______ NEXT ID _______");
@@ -81,12 +89,34 @@ export function modalMaster(bodyTag, headerTag, mainTag, modalID) {
 
 
         /** SET TITLE FORM */
-        setTitleModal(modalPage,"h2",actualID.title);
+        setTitleModal(modalPage, "h2", actualID.title);
         /** END */
 
-        
-        /** SET MEDIA */
+        /* REMOVE MEDIA */
+        if (picture_selected) {
+            picture_selected.remove();
+        }
+        if (video_selected) {
+            video_selected.remove();
+        }
+        /** END */
 
+        /** ADD MEDIA */
+        if (actualID.video) {
+            const video = `<video
+                id="video_selected"
+                autoplay
+                loop
+                muted
+            >
+                <source src="../../../assets/video/${actualID.video}" type="video/mp4">
+            </video>`;
+            previous_button.insertAdjacentHTML("afterend", video);
+        }
+        if (actualID.image) {
+            const picture = `../../../assets/images/${actualID.image}`;
+            previous_button.insertAdjacentHTML("afterend", `<img id="picture_selected" src="${picture}" alt="Lilac breasted roller">`);
+        }
         /** END */
 
 
