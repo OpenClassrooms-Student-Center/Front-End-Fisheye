@@ -117,6 +117,7 @@
 .card{
     margin: auto;
     width: 350px;
+    cursor: pointer;
 }
 
 .section-gallery img{
@@ -221,4 +222,60 @@ textarea{
     border-radius: 5px;
     padding-left: 10px;
     font-size: 24px;
+}
+
+/* LightBox */
+#lightbox_modal{
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.lightbox_modal_contain{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    gap: 30px;
+    background-color: #fff;
+    z-index: 1;
+    position: fixed;
+    left: 0;
+    top: 0;
+}
+
+.lightbox_modal_close{
+    cursor: pointer;
+    fill: #901C1C;
+    position: absolute;
+    top: 40px;
+    right: 120px;
+}
+
+.lightbox_modal_media img{
+    width: 900px;
+    height: 850px;
+    object-fit: cover;
+}
+
+.lightbox_modal_media video{
+    width: 900px;
+    height: 850px;
+    object-fit: cover;
+}
+
+.lightbox_modal_arrow{
+    cursor: pointer;
+}
+
+.lightbox_modal_arrow_left{
+    transform: rotate(180deg);
+}
+
+.lightbox_modal_box{
+    display: flex;
+    flex-direction: column;
+    align-items: baseline;
 }

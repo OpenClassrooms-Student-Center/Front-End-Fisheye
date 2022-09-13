@@ -8,6 +8,8 @@ function photoCardFactory(data, photographe) {
         //Création du layout
         const card = document.createElement('div');
         card.setAttribute('class', 'card');
+        card.setAttribute('onclick', 'displayLightbox(this.id)');
+        card.setAttribute('id', id);
         const titleImage = document.createElement('h3');
         
         
@@ -35,7 +37,7 @@ function photoCardFactory(data, photographe) {
         if (videoLink.match(/mp4/gm)){
             const vid = document.createElement('video');
             const source = document.createElement('source');
-            vid.setAttribute("controls", "controls");
+            //vid.setAttribute("controls", "controls");
             source.setAttribute("src", videoLink); 
             vid.appendChild(source);
             card.appendChild(vid);
@@ -51,6 +53,30 @@ function photoCardFactory(data, photographe) {
         return (card);
     }
 
-    return  {getPhotoDOM};
+    function getPhotoLightboxDOM(){
+        const card = document.createElement('div');
+        card.setAttribute('class', 'lightbox_modal_box');
+        const titre = document.createElement('h1');
+        titre.textContent = title;
+        
+
+        if (videoLink.match(/mp4/gm)){
+            const vid = document.createElement('video');
+            const source = document.createElement('source');
+            vid.setAttribute("controls", "controls");
+            source.setAttribute("src", videoLink); 
+            vid.appendChild(source);
+            card.appendChild(vid);
+        } else {
+            const img = document.createElement('img');
+            img.setAttribute("src", picture);
+            img.setAttribute("alt",title);
+            card.appendChild(img);
+        }
+        card.appendChild(titre);
+        return (card);
+    }
+
+    return  {getPhotoDOM, getPhotoLightboxDOM};
 
 }

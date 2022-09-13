@@ -1,68 +1,80 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <link href="css/style.css" rel="stylesheet" type="text/css" />
-    <meta charset="utf-8">
-    <link rel="icon" type="image/png" href="assets/favicon.png">
-    <link href="https://fonts.googleapis.com/css?family=DM+Sans&display=swap" rel="stylesheet">
-    <!-- Link icon -->
-    <script src="https://kit.fontawesome.com/e98437f901.js" crossorigin="anonymous"></script>
-    <title>Fisheye - photographe </title>
-  </head>
-  <body>
-    <header>
-      <a href="index.html"><img src="assets/images/logo.png" alt ="Fisheye Home page" class="logo"/></a>
-    </header>
-    <main id="main">
-      <section class="section-info"></section>
-      <section class="section-filtre">
-        <label for="filtres">Trier par</label>
-        <select class="section-filtre-select" name="filtres" id="filtres">
-          <option value="pop">Popularité</option>
-          <option value="date">Date</option>
-          <option value="titre">Titre</option>
-        </select>
-      </section>
-      <section class="section-gallery"></section>
-      <section class="section-stat">
-        <div class="section-stat-like">
-          <p class="section-stat-like-nombre"></p>
-          <i class='fas fa-heart'></i>
+
+<head>
+  <link href="css/style.css" rel="stylesheet" type="text/css" />
+  <meta charset="utf-8">
+  <link rel="icon" type="image/png" href="assets/favicon.png">
+  <link href="https://fonts.googleapis.com/css?family=DM+Sans&display=swap" rel="stylesheet">
+  <!-- Link icon -->
+  <script src="https://kit.fontawesome.com/e98437f901.js" crossorigin="anonymous"></script>
+  <title>Fisheye - photographe </title>
+</head>
+
+<body>
+  <header>
+    <a href="index.html"><img src="assets/images/logo.png" alt="Fisheye Home page" class="logo" /></a>
+  </header>
+  <main id="main">
+    <section class="section-info"></section>
+    <section class="section-filtre">
+      <label for="filtres">Trier par</label>
+      <select class="section-filtre-select" name="filtres" id="filtres">
+        <option value="pop">Popularité</option>
+        <option value="date">Date</option>
+        <option value="titre">Titre</option>
+      </select>
+    </section>
+    <section class="section-gallery"></section>
+    <section class="section-stat">
+      <div class="section-stat-like">
+        <p class="section-stat-like-nombre"></p>
+        <i class='fas fa-heart'></i>
+      </div>
+      <p class="section-stat-prix"></p>
+    </section>
+  </main>
+  <div id="contact_modal">
+    <div class="modal">
+      <div class="modal_header">
+        <h1 class="contact_modal_titre">Contactez-moi</h1>
+        <img src="assets/icons/close.svg" onclick="closeModal()" />
+      </div>
+      <form id="reserve" method="get" onsubmit="return validate(event);">
+        <div class="formData">
+          <label for="first">Prénom</label>
+          <input class="text-control" type="text" id="first" name="first">
         </div>
-        <p class="section-stat-prix"></p>
-      </section>
-    </main>
-    <div id="contact_modal">
-			<div class="modal">
-        <div class="modal_header">
-          <h1 class="contact_modal_titre">Contactez-moi</h1>
-          <img src="assets/icons/close.svg" onclick="closeModal()" />
+        <div class="formData">
+          <label for="last">Nom</label>
+          <input class="text-control" type="text" id="last" name="last">
         </div>
-				<form id="reserve" method="get" onsubmit="return validate(event);">
-					<div class="formData">
-						<label for="first">Prénom</label>
-						<input class="text-control" type="text" id="first" name="first">
-					</div>
-          <div class="formData">
-						<label for="last">Nom</label>
-						<input class="text-control" type="text" id="last" name="last">
-					</div>
-          <div class="formData">
-						<label for="email">Email</label>
-						<input class="text-control" type="email" id="email" name="email">
-					</div>
-          <div class="formData">
-						<label for="message">Votre message</label>
-						<textarea class="text-control" type="text-area" id="message" name="message"></textarea>
-					</div>
-          <p id="erreur"></p>
-          <button class="contact_button">Envoyer</button>
-				</form>
-			</div>
-		</div>
-    <script src="scripts/factories/photographer.js"></script>
-    <script src="scripts/factories/media.js"></script>
-    <script src="/scripts/pages/photographer.js"></script>
-    <script src="/scripts/utils/contactForm.js"></script>
-  </body>
+        <div class="formData">
+          <label for="email">Email</label>
+          <input class="text-control" type="email" id="email" name="email">
+        </div>
+        <div class="formData">
+          <label for="message">Votre message</label>
+          <textarea class="text-control" type="text-area" id="message" name="message"></textarea>
+        </div>
+        <p id="erreur"></p>
+        <button class="contact_button">Envoyer</button>
+      </form>
+    </div>
+  </div>
+  <div id="lightbox_modal">
+    <div class="lightbox_modal_contain">
+      <img src="assets/icons/closeRed.svg" class="lightbox_modal_close" onclick="closeLightbox()" />
+      <img src="assets/icons/arrow.svg" class="lightbox_modal_arrow lightbox_modal_arrow_left" onclick="" />
+      <div class="lightbox_modal_media"></div>
+      <img src="assets/icons/arrow.svg" class="lightbox_modal_arrow lightbox_modal_arrow_right" onclick="" />
+    </div>
+  </div>
+  <script src="scripts/factories/photographer.js"></script>
+  <script src="scripts/factories/media.js"></script>
+  <script src="/scripts/pages/photographer.js"></script>
+  <script src="/scripts/utils/contactForm.js"></script>
+  <script src="/scripts/utils/lightbox.js"></script>
+</body>
+
 </html>

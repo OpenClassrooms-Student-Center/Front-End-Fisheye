@@ -2,6 +2,9 @@
 Code JavaScript lié à la page photographer.html
 */
 
+//Variable globale : 
+var data;
+
 /**
  * Get id in URL
  * @returns id
@@ -60,7 +63,7 @@ async function displayImage(data){
         const userCardDOM = photographerModel.getPhotoDOM();
         photographersSection.appendChild(userCardDOM);
     });
-}
+} 
 
 function sumLike(photos){
     let sumlike = 0;
@@ -92,7 +95,7 @@ async function urlForm(){
 }
 
 async function init() {
-    let data = await getData(getId());
+    data = await getData(getId());
     displayDataPhotographer(data[0]);
     displayImage(data);
     displayLikes(sumLike(data[1]));
