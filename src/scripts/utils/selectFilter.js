@@ -1,9 +1,8 @@
-import { displayMedia } from '../data/displayMedia';
 import { sortByLikes, sortByDate, sortByTitle } from '../utils/sortBy';
-
+import * as photographer from '../pages/photographer';
 
 /** GENERATE EVENT FOR SELECT FILTER COMPONENTS AND BEHAVIOR */
-export function selectFilterComponent(data, idURL) {
+export function selectFilterComponent(idURL) {
 
     const selectFilterButton = document.querySelector(".select_filter .select_button"); // Button Select
     const selectFilterSelect1 = document.getElementById("select1"); // First Select (by default Date)
@@ -23,7 +22,7 @@ export function selectFilterComponent(data, idURL) {
 
                 document.querySelector('.media_section').innerHTML = "";
                 // Build Medias Data
-                displayMedia(data.sort(sortByDate), ".media_section", idURL);
+                photographer.initMedia(idURL, sortByDate);
                 // End build Medias Data
 
                 break;
@@ -35,7 +34,7 @@ export function selectFilterComponent(data, idURL) {
 
                 document.querySelector('.media_section').innerHTML = "";
                 // Build Medias Data
-                displayMedia(data.sort(sortByTitle), ".media_section", idURL);
+                photographer.initMedia(idURL, sortByTitle);
                 // End build Medias Data
 
                 break;
@@ -46,7 +45,7 @@ export function selectFilterComponent(data, idURL) {
 
                 document.querySelector('.media_section').innerHTML = "";
                 // Build Medias Data
-                displayMedia(data.sort(sortByLikes), ".media_section", idURL);
+                photographer.initMedia(idURL, sortByLikes);
                 // End build Medias Data
                 break;
             default:

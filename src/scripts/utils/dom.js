@@ -6,31 +6,31 @@ export function insertPictureInsideElement(element, picture, alt) {
 export function insertVideoInsideElement(element, video, ariaLabel) {
 
     if (ariaLabel) {
-        element.insertAdjacentHTML("beforeend", 
-        `<video src="${video}" aria-label="${ariaLabel}">`);
+        element.insertAdjacentHTML("beforeend",
+            `<video src="${video}" aria-label="${ariaLabel}">`);
 
     }
     else {
         element.insertAdjacentHTML("beforeend", '<video src="' + video + '">');
     }
-    
+
 }
 
 export function insertHTMLAfterElement(element, html) {
     element.insertAdjacentHTML("afterend", html);
 }
 
-export function buildElement(balise, value) {
+export function buildElement(balise, value, attribute) {
     // Create balise
     const element = document.createElement(balise);
 
     // Set Attribute or TextContened depend of balise
     switch (balise) {
         case "a":
-            element.setAttribute("href", value);
+            element.setAttribute(attribute, value);
             break;
         case "img":
-            element.setAttribute("src", value);
+            element.setAttribute(attribute, value);
             break;
         default:
             element.textContent = value;

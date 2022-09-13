@@ -19,7 +19,7 @@ export function mediaFactory(data) {
 
             // Build A HREF ELEMENT
             const linkElement = article.appendChild(
-                dom.buildElement("a", `photographer.html?id=${id}`)
+                dom.buildElement("a", `${id}`, "id")
             );
             dom.setArialLabel(linkElement, "Lilac breasted roller, closeup view") // Set ArielLabel to AHref
 

@@ -3,7 +3,7 @@ import { photographerFactory } from "../factories/photographerFactory";
 
 export async function displayData(photographers, id) {
     let photographerSelected = "";
-    
+
     photographers.forEach((photographer) => {
 
         if (photographer.id == id) {
@@ -16,10 +16,10 @@ export async function displayData(photographers, id) {
             photographerSelected = photographer
             // End of PhotographerFactory Work
         }
-       
+
     });
 
-    
+
     return (photographerSelected); // Return the photographerShow at the end
 
 }

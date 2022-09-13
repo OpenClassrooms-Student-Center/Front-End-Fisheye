@@ -34,15 +34,30 @@ export function modalMaster(bodyTag, headerTag, mainTag, modalID) {
         });
     }
 
-    function addLightboxListener(modalPage) {
+    function addLightboxListener(modalPage, querySelectorRequest, medias) {
         // This add listener about lightbox modal
-        document.getElementById("openModal").addEventListener("click", function () {
-            openModal(modalPage);
-        });
+        document.querySelectorAll(querySelectorRequest).forEach(link =>
+            link.addEventListener("click", function () {
+                loadLightboxContent(modalPage, link, medias);
+                openModal(modalPage);
+            }));
+
 
         document.querySelector(`#${modalPage.modalID} #closeModal`).addEventListener("click", function () {
             closeModal(modalPage);
         });
+    }
+
+    function loadLightboxContent(modalPage, e, medias) {
+        if (process.env.NODE_ENV === 'development') {
+            console.log("___LIGHTBOX___");
+            console.log(modalPage);
+            console.log(e);
+            console.log(medias);
+
+        }
+
+
     }
 
     function addKeyboardListener(modalPage) {
