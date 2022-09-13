@@ -48,7 +48,9 @@ export function modalMaster(bodyTag, headerTag, mainTag, modalID) {
         });
     }
 
+
     function loadLightboxContent(modalPage, link, medias) {
+
         if (process.env.NODE_ENV === 'development') {
             console.log("___LIGHTBOX___");
             console.log(modalPage);
@@ -56,13 +58,47 @@ export function modalMaster(bodyTag, headerTag, mainTag, modalID) {
             console.log(medias); // Medias that are displayed in order to the main page
         }
 
-        medias.forEach(media => {
+        /** GET THE PREVIOUS AND AFTER MEDIA THOUGH THE ARRAY */
+        let previousID = 0;
+        let nextID = 0;
+        let actualID = 0; 
+        for (let i = 0; i < medias.length; i++) {
+            if (medias[i].id == link.id) {
+                previousID = medias[i - 1];
+                nextID = medias[i + 1];
+                actualID = medias[i];
+                break;
+            }
+        }
 
-            console.log(media);
-            console.log("____");
-            // Do the stuff about Set the Page into LightBox and left & right arrow. then done 
-        });
+        if (process.env.NODE_ENV === 'development') {
+            console.log("____ PREVIOUS ID_______");
+            console.log(previousID);
+            console.log("_______ NEXT ID _______");
+            console.log(nextID);
+        }
+        /** END */
 
+
+        /** SET TITLE FORM */
+        setTitleModal(modalPage,"h2",actualID.title);
+        /** END */
+
+        
+        /** SET MEDIA */
+
+        /** END */
+
+
+        /** SET ARROW PREVIOUS */
+
+        /** END */
+
+
+
+        /** SET ARROW NEXT  */
+
+        /** END */
     }
 
     function addKeyboardListener(modalPage) {
