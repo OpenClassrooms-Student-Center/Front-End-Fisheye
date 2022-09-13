@@ -25,7 +25,7 @@ export function modalMaster(bodyTag, headerTag, mainTag, modalID) {
         document.getElementById("openModal").addEventListener("click", function () {
             openModal(modalPage);
         });
-        document.getElementById("closeModal").addEventListener("click", function () {
+        document.querySelector(`#${modalPage.modalID} #closeModal`).addEventListener("click", function () {
             closeModal(modalPage);
         });
         document.getElementById("contact_button").addEventListener("click", function () {
@@ -56,7 +56,7 @@ export function modalMaster(bodyTag, headerTag, mainTag, modalID) {
 
 
 
-    
+
 
     function effectAnimation(hideclass, showclass, modalPage) {
         if (modalPage.visible === 0) {

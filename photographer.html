@@ -40,7 +40,7 @@
             </div>
             <div class="media_section"></div>
             <div class="photographer_statistic">
-                <div class="total_likes">297 081</div>
+                <div class="total_likes"></div>
                 <div class="price_rate_daily"></div>
             </div>
         </main>
@@ -55,7 +55,6 @@
                 <h2 id="dialogTitle"></h2>
                 <p id="dialogDesc" class="help_blind">Vous pouvez remplir ce formulaire avec les champs suivants afin de pouvoir envoyer un message au photographer que vous avez sélectionner.</p>
                 <img
-                    class="white"
                     autofocus
                     tabindex="0"
                     src="./assets/icons/close.svg"
@@ -77,6 +76,38 @@
                 </div>
                 <button aria-label="Send" id="contact_button" class="fisheye_button">Envoyer</button>
             </form>
+        </div>
+        <div
+            id="lightbox_modal"
+            class="modal_lightbox"
+            aria-label="image closeup view"
+            aria-describedby="dialogDesc"
+            role="dialog"
+        >
+            <img
+                autofocus
+                tabindex="0"
+                src="./assets/icons/close.svg"
+                role="button"
+                alt="Close Dialog"
+                class="closeLightbox"
+                id="closeModal"
+            >
+            <div class="content_media">
+                <a href="test" aria-label="Previous Image"><</a>
+                <img alt="Lilac breasted roller" id="picture_selected" src="http://127.0.0.1:5500/assets/images/sport_water_tunnel.jpg">
+                <!-- <video
+                    id="video_selected"
+                    autoplay
+                    loop
+                    muted
+                >
+                    <source src="https://assets.codepen.io/6093409/river.mp4" type="video/mp4">
+                </video> -->
+                <a href="suivant" aria-label="Next image">></a>
+            </div>
+            <h2>Arc-en-Ciel</h2>
+            <p id="dialogDesc" class="help_blind">Vous pouvez observer le contenu média précédement sélectionner</p>
         </div>
         <footer></footer>
     </body>

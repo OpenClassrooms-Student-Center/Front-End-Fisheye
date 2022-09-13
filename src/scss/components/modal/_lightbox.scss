@@ -1,0 +1,97 @@
+.modal_lightbox {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    transition: width 0.5s ease-in;
+
+
+    .content_media {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    #video_selected,
+    #picture_selected {
+        box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.25);
+        border-radius: 5px;
+        width: 100%;
+        margin: auto;
+
+    }
+
+    a {
+        text-decoration: none;
+        font-size: $font_size * 2.5;
+        color: $color_primary1;
+        transition: color 0.5s ease-in;
+        padding: 25px;
+
+        &:hover {
+            color: $color_background;
+        }
+    }
+
+    .closeLightbox {
+        filter: brightness(0) saturate(100%) invert(18%) sepia(31%) saturate(4597%) hue-rotate(344deg) brightness(93%) contrast(95%);
+        // to target color CF: https: //codepen.io/sosuke/pen/Pjoqqp
+        position: absolute;
+        top: 10px;
+        right: -70px;
+        cursor: pointer;
+        transition: filter 0.5s ease-in;
+
+        &:hover {
+            filter: brightness(0) saturate(100%) invert(63%) sepia(43%) saturate(448%) hue-rotate(323deg) brightness(89%) contrast(92%);
+        }
+    }
+
+
+    h2 {
+        color: $color_primary1;
+        font-size: 24px;
+    }
+
+
+
+    .help_blind {
+        display: none;
+    }
+
+
+
+}
+
+.hide_content {
+    animation: 0.5s ease-in forwards fade-off;
+
+    @keyframes fade-off {
+        0% {
+            opacity: 1.0;
+        }
+
+        100% {
+            opacity: 0.4;
+        }
+    }
+}
+
+
+
+.show_content {
+    animation: 0.5s ease-in forwards fade-in;
+
+    @keyframes fade-in {
+        0% {
+            opacity: 0.4;
+        }
+
+        100% {
+            opacity: 1.0;
+        }
+    }
+
+
+}
