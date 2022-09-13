@@ -78,13 +78,13 @@ async function initLightbox(selectedMedias) {
 }
 
 export async function initMedia(idURL, sortBy) {
-    // Try to get data from media if error then redirect to 404 page
+    // Try to get data & build section media if error then redirect to 404 page
     try {
 
-        // Build Medias Data
+        // Build Medias 
         const medias = await getMedias();
-        const selectedMedias = displayMedia(medias.sort(sortBy), ".media_section", idURL); // SortBy must be a function of sort
-        // End build Medias Data
+        const selectedMedias = await displayMedia(medias.sort(sortBy), ".media_section", idURL); // SortBy must be a function of sort
+        // End build Medias 
         console.log("Section média initié avec succès depuis initMedia()");
 
         initLightbox(selectedMedias);  // Initialize LightBox Modal with selected medias

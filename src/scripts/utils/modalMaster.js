@@ -48,15 +48,20 @@ export function modalMaster(bodyTag, headerTag, mainTag, modalID) {
         });
     }
 
-    function loadLightboxContent(modalPage, e, medias) {
+    function loadLightboxContent(modalPage, link, medias) {
         if (process.env.NODE_ENV === 'development') {
             console.log("___LIGHTBOX___");
             console.log(modalPage);
-            console.log(e);
-            console.log(medias);
-
+            console.log(link.id); // Event has be fired by this LINK (where Link ID = Media ID)
+            console.log(medias); // Medias that are displayed in order to the main page
         }
 
+        medias.forEach(media => {
+
+            console.log(media);
+            console.log("____");
+            // Do the stuff about Set the Page into LightBox and left & right arrow. then done 
+        });
 
     }
 
