@@ -41,7 +41,7 @@ async function initProfile(idURL) {
 
 async function initContactForm(photographerSelected) {
     try {
-        const contactFormModal = modalMaster("body", "header", "main", "lightbox_modal"); // Create a Model Master
+        const contactFormModal = modalMaster("body", "header", "main", "contact_modal"); // Create a Model Master
         const modalPage = contactFormModal.modalPage; // Get modelPage Object
 
         contactFormModal.addContactFormListener(modalPage); // Add specific listener to Contact Form Modal

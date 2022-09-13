@@ -24,9 +24,10 @@
 
     a {
         text-decoration: none;
-        font-size: $font_size * 2;
+        font-size: $font_size * 2.5;
         color: $color_primary1;
         transition: color 0.5s ease-in;
+        padding: 25px;
 
         &:hover {
             color: $color_background;
@@ -34,9 +35,17 @@
     }
 
     .closeLightbox {
+        filter: brightness(0) saturate(100%) invert(18%) sepia(31%) saturate(4597%) hue-rotate(344deg) brightness(93%) contrast(95%);
+        // to target color CF: https: //codepen.io/sosuke/pen/Pjoqqp
         position: absolute;
+        top: 10px;
         right: -70px;
         cursor: pointer;
+        transition: filter 0.5s ease-in;
+
+        &:hover {
+            filter: brightness(0) saturate(100%) invert(63%) sepia(43%) saturate(448%) hue-rotate(323deg) brightness(89%) contrast(92%);
+        }
     }
 
 
