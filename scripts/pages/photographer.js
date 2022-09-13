@@ -96,6 +96,7 @@ document.querySelector("select").addEventListener("change", e=> {
     }).reverse() //du plus grand au plus petit
     console.table(medias)
     displayMedias();
+    initLightbox();
   }
 })
 //par date
@@ -108,6 +109,7 @@ document.querySelector("select").addEventListener("change", e=> {
     }).reverse() //du plus récent au plus ancien
     console.table(medias)
     displayMedias();
+    initLightbox();
   }
 })
 //par ordre alphabétique
@@ -128,6 +130,7 @@ document.querySelector("select").addEventListener("change", e=> {
     })
     console.table(medias)
     displayMedias();
+    initLightbox();
   }
 })
 
@@ -138,6 +141,8 @@ function displayMedias() {
     (media) => mediaFactory(media).getMediaCard() //appelle la fonction pour afficher les médias
   )
   .join("");
+  likeUpdate();
+  
 }
 
 displayPhotographerAndMedia();

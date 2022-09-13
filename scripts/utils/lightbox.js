@@ -26,13 +26,13 @@ function initLightbox() {
 
   function displayImage(media) {
     document.querySelector(".content-lightbox").innerHTML = `
-        <img src="http://127.0.0.1:5500/assets/photographers/${photographer.name}/${media.image}">
+        <img src="http://127.0.0.1:5500/assets/photographers/${photographer.name}/${media.image}" alt=${media.title}>
         `;
   }
   function displayVideo(media) {
     document.querySelector(".content-lightbox").innerHTML = `
         <video controls>
-            <source src="http://127.0.0.1:5500/assets/photographers/${photographer.name}/${media.video}"></source>
+            <source src="http://127.0.0.1:5500/assets/photographers/${photographer.name}/${media.video}" aria-label=${media.title}></source>
         </video>
         `;
   }
@@ -135,6 +135,8 @@ myTimeout();
 //fermeture de la lightbox
 function closeMedia() {
   //enleve la classe active et cache la lightbox
+  console.log("close media click");
+  const lightbox = document.querySelector("#lightbox.active");
   lightbox.classList.remove("active");
   lightbox.innerHTML = ""; //reset l'affichage
 }
