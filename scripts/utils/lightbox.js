@@ -128,7 +128,10 @@ function initLightbox() {
   });
 }
 //timer pour attendre le chargement des médias
-const myTimeout = setTimeout(initLightbox, 1000);
+function myTimeout(){
+  setTimeout(initLightbox, 1000);
+} 
+myTimeout();
 //fermeture de la lightbox
 function closeMedia() {
   //enleve la classe active et cache la lightbox

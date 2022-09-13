@@ -29,7 +29,7 @@ async function getPhotographers() {
         //displayData(photographers);
         await getPhotographers()
         displayData();
-    };
+    }
   
     init();
     
