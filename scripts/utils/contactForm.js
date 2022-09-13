@@ -42,6 +42,10 @@ function resetCssError(items, erreurId) {
     document.getElementById(erreurId).innerHTML = "";
 }
 
+/**
+ * Returns user input errors.
+ * @returns return a string containing the error
+*/
 function validate(e) {
     e.preventDefault();
     let inputs = document.getElementsByClassName("text-control");
@@ -49,14 +53,14 @@ function validate(e) {
 
     if (validateNames(inputs[0].value)) {
         erreur = false;
-        addCssError(inputs[0], "erreur" ,"Veillez remplir le correctement !");
+        addCssError(inputs[0], "erreur", "Veillez remplir le correctement !");
     } else {
         resetCssError(inputs[0], "erreur");
     }
 
     if (validateNames(inputs[1].value)) {
         erreur = false;
-        addCssError(inputs[1], "erreur" ,"Veillez remplir le correctement !");
+        addCssError(inputs[1], "erreur", "Veillez remplir le correctement !");
     } else {
         resetCssError(inputs[1], "erreur");
     }
@@ -65,14 +69,14 @@ function validate(e) {
     let emailValidate = inputs[2].value.match(regexEmail);
     if (!emailValidate) {
         erreur = false;
-        addCssError(inputs[2], "erreur" , "Veillez remplir le correctement !");
+        addCssError(inputs[2], "erreur", "Veillez remplir le correctement !");
     } else {
         resetCssError(inputs[2], "erreur");
     }
 
     if (!inputs[3].value) {
         erreur = false;
-        addCssError(inputs[3], "erreur" , "Veillez remplir le correctement !");
+        addCssError(inputs[3], "erreur", "Veillez remplir le correctement !");
     } else {
         resetCssError(inputs[3], "erreur");
     }
@@ -88,5 +92,4 @@ function validate(e) {
     }
 
     return erreur;
-
 }
