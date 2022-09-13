@@ -15,6 +15,21 @@ async function displayLightbox(id){
     lightbox_modal.style.display = "flex";
     document.documentElement.style.overflow = 'hidden';
     console.log("TEST: " + index);
+
+    document.addEventListener('keydown', (event) => {
+        const nomTouche = event.key;
+      
+        if (nomTouche === 'ArrowLeft') {
+            former()
+          return;
+        }
+        
+        else if ((nomTouche === 'ArrowRight') ){
+            next();
+        }
+    
+        console.log(index);
+      }, false);
 }
 
 async function closeLightbox() {
@@ -44,13 +59,19 @@ async function creationListe(id){
 }
 
 async function former(){
-    index--;
-    replaceContain();
+    if(index > 0){
+        index--;
+        replaceContain();
+    }
+    
 }
 
 async function next(){
-    index++;
-    replaceContain();
+    if(index < data[1].length){
+        index++;
+        replaceContain();
+    }
+    
 }
 
 function replaceContain(){
