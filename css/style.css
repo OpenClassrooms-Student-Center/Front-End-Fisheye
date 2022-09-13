@@ -148,24 +148,29 @@ h1 {
     align-items: center;
     justify-content: space-between;
 }
+/*tri*/
+.menu-deroulant {
+    justify-self: center;
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+}
 .menu-deroulant .sort {
     font-weight: 700;
     font-size: 18px;
     font-family: 'Raleway', sans-serif;
     list-style-type: none;
+    
 }
 .sort {
     justify-self: center;
     display: flex;
     align-items: center;
     flex-direction: row;
+    margin-left:1rem;
 }
-.sort-ul {
+select {
     width: 170px;
-    
-   
-}
-.sort-li {
     font-weight: 700;
     border-radius: 5px;
     font-size: 18px;
@@ -174,9 +179,9 @@ h1 {
     background-color:#901C1C ;
     color:white;
     padding:1rem;
-    
-    /*height: 170px;*/
+    margin-left:1rem;
 }
+
 /* Style du total des likes*/
 .total-likes {
     background-color:#DB8876;
