@@ -18,9 +18,10 @@ export function mediaFactory(data) {
             article.setAttribute("class", "media_card");
 
             // Build A HREF ELEMENT
-            const linkElement = article.appendChild(
-                dom.buildElement("a", `${id}`, "id")
-            );
+            const linkElement = dom.buildElement("a", `${id}`, "id");
+            linkElement.setAttribute("href", "javascript:void(0);")
+            article.appendChild(linkElement);
+
             dom.setArialLabel(linkElement, "Lilac breasted roller, closeup view") // Set ArielLabel to AHref
 
 
