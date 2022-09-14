@@ -46,50 +46,66 @@ export function modalMaster(bodyTag, headerTag, mainTag, modalID) {
         document.querySelector(`#${modalPage.modalID} #closeModal`).addEventListener("click", function () {
             closeModal(modalPage);
         });
+
+        const previous_link = document.querySelector(".content_media a:first-child");
+        const next_link = document.querySelector(".content_media a:last-child");
+
+        previous_link.addEventListener("click", function bce() {
+            closeModal(modalPage);
+            loadLightboxContent(modalPage, previous_link, medias);
+            openModal(modalPage);
+        });
+        next_link.addEventListener("click", function abc() {
+            closeModal(modalPage);
+            loadLightboxContent(modalPage, next_link, medias);
+            openModal(modalPage);
+        });
+
     }
 
 
     function loadLightboxContent(modalPage, link, medias) {
 
-        const previous_button = document.getElementById("previous_link");
-        const next_button = document.getElementById("next_link");
+        const previous_link = document.querySelector(".content_media a:first-child");
+        const next_link = document.querySelector(".content_media a:last-child");
         const picture_selected = document.getElementById("picture_selected");
         const video_selected = document.getElementById("video_selected");
 
         if (process.env.NODE_ENV === 'development') {
             console.log("___LIGHTBOX___");
             // console.log(modalPage);
-            // console.log(link.id); // Event has be fired by this LINK (where Link ID = Media ID)
-            // console.log(medias); // Medias that are displayed in order to the main page
+            console.log(link.id); // Event has be fired by this LINK (where Link ID = Media ID)
+            console.log(medias); // Medias that are displayed in order to the main page
         }
 
 
         /** GET THE PREVIOUS AND AFTER MEDIA THOUGH THE ARRAY */
-        let previousID = 0;
-        let nextID = 0;
-        let actualID = 0;
+        let previousMedia = 0;
+        let nextMedia = 0;
+        let actualMedia = 0;
+
         for (let i = 0; i < medias.length; i++) {
             if (medias[i].id == link.id) {
-                previousID = medias[i - 1];
-                nextID = medias[i + 1];
-                actualID = medias[i];
+                previousMedia = medias[i - 1];
+                nextMedia = medias[i + 1];
+                actualMedia = medias[i];
                 break;
             }
         }
 
         if (process.env.NODE_ENV === 'development') {
-            console.log("____ ACTUAL ID_______");
-            console.log(actualID);
+            console.log("____ ACTUAL MEDIA_______");
+            console.log(actualMedia);
             console.log("____ PREVIOUS ID_______");
-            console.log(previousID);
+            console.log(previousMedia);
             console.log("_______ NEXT ID _______");
-            console.log(nextID);
+            console.log(nextMedia);
         }
         /** END */
 
 
         /** SET TITLE FORM */
-        setTitleModal(modalPage, "h2", actualID.title);
+        setTitleModal(modalPage, "h2", actualMedia.title);
         /** END */
 
         /* REMOVE MEDIA */
@@ -102,32 +118,30 @@ export function modalMaster(bodyTag, headerTag, mainTag, modalID) {
         /** END */
 
         /** ADD MEDIA */
-        if (actualID.video) {
+        if (actualMedia.video) {
             const video = `<video
                 id="video_selected"
                 autoplay
                 loop
                 muted
             >
-                <source src="../../../assets/video/${actualID.video}" type="video/mp4">
+                <source src="../../../assets/video/${actualMedia.video}" type="video/mp4">
             </video>`;
-            previous_button.insertAdjacentHTML("afterend", video);
+            previous_link.insertAdjacentHTML("afterend", video);
         }
-        if (actualID.image) {
-            const picture = `../../../assets/images/${actualID.image}`;
-            previous_button.insertAdjacentHTML("afterend", `<img id="picture_selected" src="${picture}" alt="Lilac breasted roller">`);
+        if (actualMedia.image) {
+            const picture = `../../../assets/images/${actualMedia.image}`;
+            previous_link.insertAdjacentHTML("afterend", `<img id="picture_selected" src="${picture}" alt="Lilac breasted roller">`);
         }
         /** END */
 
 
         /** SET ARROW PREVIOUS */
-
+        previous_link.setAttribute("id", previousMedia.id);
         /** END */
 
-
-
         /** SET ARROW NEXT  */
-
+        next_link.setAttribute("id", nextMedia.id);
         /** END */
     }
 
