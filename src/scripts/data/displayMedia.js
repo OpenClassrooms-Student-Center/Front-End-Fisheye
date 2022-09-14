@@ -28,7 +28,7 @@ export async function displayMedia(medias, querySelector, photographerId) {
                 totalLikes += media.likes; // Count all likes
             }
             else {
-                console.warn("Theres is no like and totalLikes, look mediaFactory returned a object without likes propriety")
+                console.warn("Theres is no like and totalLikes, look mediaFactory returned a object without likes propriety");
             }
         }
 

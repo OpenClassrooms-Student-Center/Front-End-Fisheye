@@ -10,7 +10,7 @@ export function mediaFactory(data) {
 
         // Create DOM only if we got ids and a Picture or a Video
         const hasPhotographer = id && photographerId;
-        const hasContent = image || video
+        const hasContent = image || video;
 
         if (hasPhotographer && hasContent) {
             // CREATE A ARTICLE
@@ -19,10 +19,10 @@ export function mediaFactory(data) {
 
             // Build A HREF ELEMENT
             const linkElement = dom.buildElement("a", `${id}`, "id");
-            linkElement.setAttribute("href", "javascript:void(0);")
+            linkElement.setAttribute("href", "javascript:void(0);");
             article.appendChild(linkElement);
 
-            dom.setArialLabel(linkElement, "Lilac breasted roller, closeup view") // Set ArielLabel to AHref
+            dom.setArialLabel(linkElement, "Lilac breasted roller, closeup view"); // Set ArielLabel to AHref
 
 
             // Check if image or video exists

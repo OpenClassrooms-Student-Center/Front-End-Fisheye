@@ -13,7 +13,7 @@ export async function displayData(photographers, id) {
             photographerModel.setPhotographerHeader();
             photographerModel.setStickyBarPrice();
 
-            photographerSelected = photographer
+            photographerSelected = photographer;
             // End of PhotographerFactory Work
         }
 
