@@ -11,13 +11,13 @@ export async function fetchJSON(url, type) {
 
 
 export async function getPhotographers() {
-    const url = "../data/photographers.json"; // Data source .JSON
+    const url = "data/photographers.json"; // Data source .JSON
     const photographers = await fetchJSON(url, "photographers"); // use fetchJSON function from utils/fetch.js
     return photographers; // Return data of PhotoGraphers
 }
 
 export async function getMedias() {
-    const url = "../data/photographers.json"; // Data source .JSON
+    const url = "data/photographers.json"; // Data source .JSON
     const medias = await fetchJSON(url, "media"); // use fetchJSON function from utils/fetch.js
     return medias; // Return data of Media
 }
