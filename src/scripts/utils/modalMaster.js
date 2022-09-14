@@ -10,14 +10,14 @@ export function modalMaster(bodyTag, headerTag, mainTag, modalID) {
         bodyHTML: document.querySelector(bodyTag), // We want the <body> selected
         headerHTML: document.querySelector(headerTag), // We want the <header> selected
         mainHTML: document.querySelector(mainTag), // We want the <main> selected
-    }
+    };
 
     let modalPage = {
         // This is the modal Object (call ModalPage)
         modalHTML: document.getElementById(modalID),
         modalID: modalID,
         visible: 0,
-    }
+    };
     /** END  */
 
 
@@ -192,7 +192,7 @@ export function modalMaster(bodyTag, headerTag, mainTag, modalID) {
             backgroundPage.headerHTML.classList.add(hideclass);
             modalPage.modalHTML.classList.add(showclass);
 
-            modalPage.visible = 1
+            modalPage.visible = 1;
         }
         else {
             modalPage.modalHTML.classList.remove(showclass);
@@ -203,7 +203,7 @@ export function modalMaster(bodyTag, headerTag, mainTag, modalID) {
             backgroundPage.mainHTML.classList.add(showclass);
             backgroundPage.headerHTML.classList.add(showclass);
 
-            modalPage.visible = 0
+            modalPage.visible = 0;
         }
 
         return modalPage;
@@ -267,5 +267,5 @@ export function modalMaster(bodyTag, headerTag, mainTag, modalID) {
         openModal, closeModal,
         setTitleModal,
         sendMessage
-    }
+    };
 }
