@@ -50,12 +50,12 @@ export function modalMaster(bodyTag, headerTag, mainTag, modalID) {
         const previous_link = document.querySelector(".content_media a:first-child");
         const next_link = document.querySelector(".content_media a:last-child");
 
-        previous_link.addEventListener("click", function bce() {
+        previous_link.addEventListener("click", function () {
             closeModal(modalPage);
             loadLightboxContent(modalPage, previous_link, medias);
             openModal(modalPage);
         });
-        next_link.addEventListener("click", function abc() {
+        next_link.addEventListener("click", function () {
             closeModal(modalPage);
             loadLightboxContent(modalPage, next_link, medias);
             openModal(modalPage);
@@ -135,13 +135,26 @@ export function modalMaster(bodyTag, headerTag, mainTag, modalID) {
         }
         /** END */
 
-
         /** SET ARROW PREVIOUS */
-        previous_link.setAttribute("id", previousMedia.id);
+        if (previousMedia) {
+            previous_link.setAttribute("id", previousMedia.id);
+            previous_link.classList.remove("hide");
+
+        }
+        else {
+            previous_link.classList.add("hide");
+        }
         /** END */
 
         /** SET ARROW NEXT  */
-        next_link.setAttribute("id", nextMedia.id);
+        if (nextMedia) {
+            next_link.setAttribute("id", nextMedia.id);
+            next_link.classList.remove("hide");
+
+        }
+        else {
+            next_link.classList.add("hide");
+        }
         /** END */
     }
 

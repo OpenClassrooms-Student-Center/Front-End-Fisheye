@@ -28,7 +28,10 @@
         object-fit: cover;
     }
 
-  
+
+    .hide {
+        visibility: hidden;
+    }
 
     a {
         text-decoration: none;
