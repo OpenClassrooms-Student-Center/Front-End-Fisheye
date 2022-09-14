@@ -4,7 +4,6 @@
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    transition: width 0.5s ease-in;
 
 
     .content_media {
@@ -12,7 +11,8 @@
         justify-content: center;
         align-items: center;
         height: 700px;
-        width: 500px;
+        width: 600px;
+
     }
 
 
@@ -24,7 +24,8 @@
         margin: auto;
 
         height: inherit;
-        min-width: 500px;
+        min-width: 600px;
+
         object-fit: cover;
     }
 
@@ -105,4 +106,67 @@
     }
 
 
+}
+
+@media (max-width: 800px) {
+
+
+    .modal_lightbox {
+
+        .content_media {
+            height: 700px;
+            width: 500px;
+
+            a {
+                display: none;
+                padding: 0px;
+            }
+        }
+
+        #video_selected,
+        #picture_selected {
+            height: inherit;
+            width: 500px;
+        }
+    }
+}
+
+
+
+@media (max-width: 1100px) {
+
+    .modal_lightbox {
+
+        .content_media {
+            height: 700px;
+            width: 500px;
+        }
+
+        #video_selected,
+        #picture_selected {
+            height: inherit;
+            min-width: 500px;
+        }
+    }
+}
+
+@media (max-width: 800px) {
+    .modal_lightbox {
+        .closeLightbox {
+
+            left: 100%;
+            transform: translate(-50%, -50%);
+        }
+
+        .content_media {
+            height: 500px;
+            width: 300px;
+        }
+
+        #video_selected,
+        #picture_selected {
+            height: inherit;
+            min-width: 300px;
+        }
+    }
 }
