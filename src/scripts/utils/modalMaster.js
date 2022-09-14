@@ -126,12 +126,12 @@ export function modalMaster(bodyTag, headerTag, mainTag, modalID) {
                 loop
                 muted
             >
-                <source src="../../../assets/video/${actualMedia.video}" type="video/mp4">
+                <source src="./assets/video/${actualMedia.video}" type="video/mp4">
             </video>`;
             previous_link.insertAdjacentHTML("afterend", video);
         }
         if (actualMedia.image) {
-            const picture = `../../../assets/images/${actualMedia.image}`;
+            const picture = `./assets/images/${actualMedia.image}`;
             previous_link.insertAdjacentHTML("afterend", `<img id="picture_selected" src="${picture}" alt="Lilac breasted roller">`);
         }
         /** END */
