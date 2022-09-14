@@ -5,6 +5,7 @@ Code JavaScript lié à la page photographer.html
 //Variable globale : 
 var data;
 var nblikes = 0;
+var typeSort = document.getElementById('filtres').value;
 
 /**
  * Get id in URL
@@ -58,7 +59,7 @@ async function displayDataPhotographer(photographe) {
 
 async function displayImage(data){
     const photographersSection = document.querySelector(".section-gallery");
-    console.log(data);
+    photographersSection.innerHTML=""; //On vide le contenu
     data[1].forEach((photo) => {
         const photographerModel = photoCardFactory(photo, data[0]);
         const userCardDOM = photographerModel.getPhotoDOM();
@@ -74,7 +75,7 @@ function sumLike(photos){
     nblikes = sumlike;
 }
 
-async function displayLikes(nblikes){
+async function displayLikes(){
     let p = document.querySelector(".section-stat-like-nombre");
     p.textContent = nblikes;
 }
@@ -101,23 +102,22 @@ async function like(element){
         element.innerText = Number(element.innerText) + 1;
         element.setAttribute('class', 'liked');
         nblikes++;
-        displayLikes(nblikes);
+        displayLikes();
     } else {
         element.innerText = Number(element.innerText) - 1;
         element.setAttribute('class', '');
         nblikes--;
-        displayLikes(nblikes);
+        displayLikes();
     }
-    
-
 }
 
 async function init() {
     data = await getData(getId());
+    sortData();
     displayDataPhotographer(data[0]);
     displayImage(data);
     sumLike(data[1])
-    displayLikes(nblikes);
+    displayLikes();
     displayPrice(data[0].price);
     displayContactName(data[0].name);
     urlForm();
