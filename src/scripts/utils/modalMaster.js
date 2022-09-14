@@ -1,4 +1,5 @@
 import { setInnerHtml } from "./dom";
+import "wicg-inert";
 
 export function modalMaster(bodyTag, headerTag, mainTag, modalID) {
 
@@ -217,8 +218,8 @@ export function modalMaster(bodyTag, headerTag, mainTag, modalID) {
         document.querySelector(`#${modalPage.modalID} #closeModal`).focus(); // Focus the Close Modal 
 
         // Disable click or focus with inert to the BackgroundPage 
-        backgroundPage.headerHTML.setAttribute("inert", "");
-        backgroundPage.mainHTML.setAttribute("inert", "");
+        backgroundPage.headerHTML.inert = true;
+        backgroundPage.mainHTML.inert = true;
     }
 
     function closeModal(modalPage) {
@@ -226,8 +227,8 @@ export function modalMaster(bodyTag, headerTag, mainTag, modalID) {
         modalPage.modalHTML.style.display = "none"; // Hide at the screen modal
 
         // Allow click or focus with inert to the BackgroundPage 
-        backgroundPage.mainHTML.removeAttribute("inert");
-        backgroundPage.headerHTML.removeAttribute("inert");
+        backgroundPage.headerHTML.inert = false;
+        backgroundPage.mainHTML.inert = false;
 
     }
 
