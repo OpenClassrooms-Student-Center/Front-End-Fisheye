@@ -47,8 +47,8 @@ async function initContactForm(photographerSelected) {
 
         contactFormModal.addContactFormListener(modalPage); // Add specific listener to Contact Form Modal
 
-        const titleModal = `Contactez-moi ${photographerSelected.name}`; // Build the title Modal
-        contactFormModal.setTitleModal(modalPage, "h2", titleModal);  // Set the title Modal
+        const titleModal = photographerSelected.name; // Build the title Modal
+        contactFormModal.setTitleModal(modalPage, "#dialogTitle", titleModal);  // Set the title Modal
 
         console.log("Formulaire contact initié avec succès depuis initContactForm()");
     }
@@ -60,22 +60,34 @@ async function initContactForm(photographerSelected) {
     }
 }
 
+async function initLightbox(selectedMedias) {
+    try {
+        const lightBox = modalMaster("body", "header", "main", "lightbox_modal"); // Create a Model Master
+        const modalPage = lightBox.modalPage; // Get modelPage Object
 
-async function initMedia(idURL) {
-    // Try to get data from media if error then redirect to 404 page
+        // This add listener about lightbox modal on all link with Media Displayed at photographer page
+        lightBox.addLightboxListener(modalPage, ".media_section a", selectedMedias);
+
+        console.log("Popup LightBox initié avec succès depuis initLightBox()")
+    }
+    catch (e) {
+        console.error(e);
+
+    }
+
+}
+
+export async function initMedia(idURL, sortBy) {
+    // Try to get data & build section media if error then redirect to 404 page
     try {
 
-        // Build Medias Data
+        // Build Medias 
         const medias = await getMedias();
-        displayMedia(medias.sort(sortByLikes), ".media_section", idURL); // Sort by default by likes
-        // End build Medias Data
+        const selectedMedias = await displayMedia(medias.sort(sortBy), ".media_section", idURL); // SortBy must be a function of sort
+        // End build Medias 
+        console.log("Section média initié avec succès depuis initMedia()");
 
-        // Init selectFilter Component and his behavior, need to provide the Data to filter
-        selectFilterComponent(medias, idURL);
-
-
-        console.log("Section média initié avec succès depuis initMain()");
-
+        initLightbox(selectedMedias);  // Initialize LightBox Modal with selected medias
     } catch (e) {
         console.error(e);
     }
@@ -86,8 +98,9 @@ async function initMedia(idURL) {
 async function initMain() {
     // We Wait for getUrlParameter() to be complete then we run tasks for generate page
     const idURL = await getUrlParameter("id");
-    initProfile(idURL);
-    initMedia(idURL);
+    initProfile(idURL); // Init Profile section 
+    await initMedia(idURL, sortByLikes); // Get Medias & Init Media Section by Likes "import { sortByLikes } from '../utils/sortBy';
+    selectFilterComponent(idURL); // Initialize Select filter component 
 }
 
 

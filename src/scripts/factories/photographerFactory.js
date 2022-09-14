@@ -17,7 +17,7 @@ export function photographerFactory(data) {
 
             // Create Dynamique LINK with Picture
             const linkElement = article.appendChild(
-                buildElement("a", `photographer.html?id=${id}`) // Build AHref
+                buildElement("a", `photographer.html?id=${id}`, "href") // Build AHref
             );
             setArialLabel(linkElement, `Link to ${name}`); // Set ArielLabel to AHref
             insertPictureInsideElement(linkElement, picture, name);
