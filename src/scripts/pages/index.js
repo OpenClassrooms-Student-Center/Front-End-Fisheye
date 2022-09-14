@@ -15,7 +15,11 @@ async function initMain() {
     } catch (e) {
         console.error(e);
         // If it's a fail then we redirect to 404 Error Page since initMain() it's the minimal functionality
-        location.href = '404.html';
+
+        if (process.env.NODE_ENV === 'production') {
+            location.href = '404.html';
+        }
+
     }
 }
 

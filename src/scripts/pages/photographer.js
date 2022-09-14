@@ -28,14 +28,25 @@ async function initProfile(idURL) {
         }
         else {
             console.error("Error no selected photographer");
-            location.href = '404.html';
+
+
+            if (process.env.NODE_ENV === 'production') {
+                location.href = '404.html';
+            }
+
         }
+
+
 
     } catch (e) {
         console.error(e);
         // If it's a fail then we redirect to 404 Error Page since  it's the minimal functionality
         console.error("initProfile() failed redirect to 404 page");
-        location.href = '404.html';
+
+        if (process.env.NODE_ENV === 'production') {
+            location.href = '404.html';
+        }
+
     }
 
 }
@@ -56,7 +67,10 @@ async function initContactForm(photographerSelected) {
         console.error(e);
         // If it's a fail then we redirect to 404 Error Page since  it's the minimal functionality
         console.error("initContactForm() failed redirect to 404 page");
-        location.href = '404.html';
+
+        if (process.env.NODE_ENV === 'production') {
+            location.href = '404.html';
+        }
     }
 }
 
@@ -68,7 +82,7 @@ async function initLightbox(selectedMedias) {
         // This add listener about lightbox modal on all link with Media Displayed at photographer page
         lightBox.addLightboxListener(modalPage, ".media_section a", selectedMedias);
 
-        console.log("Popup LightBox initié avec succès depuis initLightBox()")
+        console.log("Popup LightBox initié avec succès depuis initLightBox()");
     }
     catch (e) {
         console.error(e);

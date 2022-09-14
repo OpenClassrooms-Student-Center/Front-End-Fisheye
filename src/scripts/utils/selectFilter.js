@@ -57,7 +57,7 @@ export function selectFilterComponent(idURL) {
 
 
 
-    selectFilterSelect1.addEventListener("click", handleFilterAction)
-    selectFilterSelect2.addEventListener("click", handleFilterAction)
+    selectFilterSelect1.addEventListener("click", handleFilterAction);
+    selectFilterSelect2.addEventListener("click", handleFilterAction);
 }
 /** END GENERATE EVENT FOR SELECT FILTER COMPONETNS AND BEHAVIOR */
