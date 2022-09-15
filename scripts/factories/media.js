@@ -1,7 +1,7 @@
 function mediaFactory(data) {
     function getmedia(media) {
         if(media.image){
-            return `<img data-id="${media.id}" src="/assets/photographers/${photographer.name}/${media.image}" class="media_img" alt="image de ${media.image}">`
+            return `<img data-id="${media.id}" src="/assets/photographers/${photographer.name}/${media.image}" class="media_img" alt="image de ${media.title}">`
         }
         else {
             return `<video data-id="${media.id}" controls class="media_img" aria-label="${media.title}"><source src="/assets/photographers/${photographer.name}/${media.video}" ></video>`
