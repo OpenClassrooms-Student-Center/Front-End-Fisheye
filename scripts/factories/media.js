@@ -1,5 +1,6 @@
+// eslint-disable-next-line no-unused-vars
 function photoCardFactory(data, photographe) {
-    const { id, photographerId, title, image, video, likes,date,price} = data;
+    const { id, title, image, video, likes} = data;
     const picture = `assets/photos/${photographe.id}/${image}`;
     const videoLink = `assets/photos/${photographe.id}/${video}`;
 

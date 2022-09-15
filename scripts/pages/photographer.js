@@ -2,10 +2,12 @@
 Code JavaScript lié à la page photographer.html
 */
 
+
 //Variable globale : 
 var data;
 var nblikes = 0;
-var typeSort = document.getElementById('filtres').value;
+var options = ["Popularité", "Date", "Titre"];
+var typeSort = options[0];
 
 /**
  * Get id in URL
@@ -113,6 +115,7 @@ async function like(element){
 
 async function init() {
     data = await getData(getId());
+    initFiltre();
     sortData();
     displayDataPhotographer(data[0]);
     displayImage(data);
@@ -122,6 +125,7 @@ async function init() {
     displayContactName(data[0].name);
     urlForm();
 }
+
 
 
 
