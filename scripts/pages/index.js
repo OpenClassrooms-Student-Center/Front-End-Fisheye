@@ -8,7 +8,7 @@ async function getPhotographers() {
         .then((data) => {
             photographers = data.photographers;
             medias = data.media;
-            console.log(data)
+            //console.log(data)
         })
       
     }
@@ -20,13 +20,10 @@ async function getPhotographers() {
             const userCardDOM = photographerModel.getUserCardDOM();
             photographersSection.appendChild(userCardDOM);
         });
-        //console.log(media)
-    };
+      
+    }
 
     async function init() {
-        // Récupère les datas des photographes
-        //const { photographers } = await getPhotographers();
-        //displayData(photographers);
         await getPhotographers()
         displayData();
     }

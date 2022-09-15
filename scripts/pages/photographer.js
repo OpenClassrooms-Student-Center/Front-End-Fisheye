@@ -10,13 +10,11 @@ async function getPhotographerAndMedia() {
   let url = new URL(str);
   let searchParams = new URLSearchParams(url.search);
   let id = parseInt(searchParams.get("id")); //parseInt pour transformer en nombre
-  //console.log(id);
   let fetchUrl = "/data/photographers.json";
   await fetch(fetchUrl) //asynchrone
     .then((res) => res.json()) //promise
     .then((data) => {
       for (let i = 0; i < data.photographers.length; i++) {
-        //console.log(data.photographers[i].id);
         if (id === data.photographers[i].id) {
           photographer = data.photographers[i];
           break;
@@ -48,12 +46,8 @@ const displayPhotographerAndMedia = async () => {
 };
 function likeUpdate() {
     let selectLikes = document.querySelectorAll(".off");
-    //console.log(selectLikes);
     selectLikes.forEach(element => {
-        //console.log(element);
         element.onclick = function (event) {
-            
-            //console.log(event.target.dataset)
             let id = parseInt(event.target.dataset.id);
             
             if(event.target.classList.contains("off")){//on compare s'il y a la classe off, si oui on incrémente et on enleve off, et on rajoute on
@@ -90,11 +84,11 @@ function likeUpdate() {
 document.querySelector("select").addEventListener("change", e=> {
 
   if(e.target.value == "popularity"){
-    console.table(medias)
+   
     medias.sort((mediaA, mediaB)=> {
       return mediaA.likes - mediaB.likes
     }).reverse() //du plus grand au plus petit
-    console.table(medias)
+    
     displayMedias();
     initLightbox();
   }
@@ -103,11 +97,11 @@ document.querySelector("select").addEventListener("change", e=> {
 document.querySelector("select").addEventListener("change", e=> {
 
   if(e.target.value == "date"){
-    console.table(medias)
+   
     medias.sort((mediaA, mediaB)=> {
       return new Date().valueOf(mediaA.likes) - new Date().valueOf(mediaB.likes)
     }).reverse() //du plus récent au plus ancien
-    console.table(medias)
+   
     displayMedias();
     initLightbox();
   }
@@ -116,7 +110,7 @@ document.querySelector("select").addEventListener("change", e=> {
 document.querySelector("select").addEventListener("change", e=> {
 
   if(e.target.value == "title"){
-    console.table(medias)
+ 
     medias.sort((mediasA, mediasB) =>{
       if(medias.title > mediasB.title){
         return 1;
@@ -128,7 +122,7 @@ document.querySelector("select").addEventListener("change", e=> {
         return 0;
       }
     })
-    console.table(medias)
+  
     displayMedias();
     initLightbox();
   }

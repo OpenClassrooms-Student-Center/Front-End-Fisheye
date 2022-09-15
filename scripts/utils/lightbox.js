@@ -136,7 +136,7 @@ myTimeout();
 function closeMedia() {
   //enleve la classe active et cache la lightbox
   console.log("close media click");
-  const lightbox = document.querySelector("#lightbox.active");
+  const lightbox = document.querySelector("#lightbox");
   lightbox.classList.remove("active");
   lightbox.innerHTML = ""; //reset l'affichage
 }
