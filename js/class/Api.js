@@ -45,4 +45,19 @@ export default class Api {
     static getAllPhotographers = () => {
         return Api.photographers;
     }
+
+    /**
+     * ENG: Get photographer by id
+     * FRA: Obtenir le photogaphe par son id
+     * @param {number} id 
+     * @returns {object}
+     */
+    static getPhotographerById = (id) => {
+        id = parseInt(id, 10);
+
+        if (!isNaN(id)) {
+            const res = Api.photographers.find(photographer => photographer.id === id)
+            return res || Error.print("Ce photographe n'existe pas", true);
+        }
+    }
 }

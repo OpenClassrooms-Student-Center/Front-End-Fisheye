@@ -30,6 +30,6 @@ Api.getAllPhotographers().forEach(photographer => new Photographer(photographer)
 /* FRA: Injecter les photographes */
 Photographer.instances.forEach(photographer => {
     /* ENG: We take the element for each photographer instance and inject to the photographerTarget which is the photographers-list element */
-    /* FR: Nous prenons l'élément pour chaque instance de photographe et injectons dans le photographeTarget qui est l'élément de la liste des photographes */
+    /* FRA: Nous prenons l'élément pour chaque instance de photographe et injectons dans le photographeTarget qui est l'élément de la liste des photographes */
     dispatch(photographer.element, photographerTarget);
 });

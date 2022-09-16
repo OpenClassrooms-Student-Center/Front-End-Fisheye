@@ -157,6 +157,256 @@ body {
 /* Typography */
 /* LOGO */
 /* Width */
+.btn {
+  min-width: 170px;
+  min-height: 35px;
+  border-radius: 5px;
+  background-color: #901c1c;
+  border: none;
+  font-size: 1.125rem;
+  font-weight: 500;
+  padding: 5px 10px;
+  font-family: "Dm Sans", sans-serif;
+  color: #FFF;
+  cursor: pointer;
+}
+.btn.btn-submit {
+  width: 170px;
+}
+.btn:hover {
+  background-color: #DB8876;
+  color: #000;
+}
+@media screen and (min-width: 950px) {
+  .btn {
+    min-height: 69px;
+    font-size: 1.25rem;
+  }
+}
+
+/* Fonts */
+/* Colors */
+/* Borders */
+/* Typography */
+/* LOGO */
+/* Width */
+.form-contact {
+  display: none;
+  position: fixed;
+  inset: 0;
+  font-size: 1.5rem;
+  overflow-y: auto;
+  z-index: 100;
+}
+.form-contact.open {
+  display: block;
+}
+.form-contact__container {
+  position: relative;
+  background-color: #DB8876;
+  padding: 30px 15px;
+}
+.form-contact__container .form-name {
+  font-size: 2.25rem;
+  margin-bottom: 20px;
+}
+.form-contact .form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+.form-contact .form .btn-submit {
+  align-self: center;
+}
+.form-contact .form__item {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+.form-contact .form__item label {
+  color: #312E2E;
+}
+.form-contact .form__item input, .form-contact .form__item textarea {
+  background-color: #FFF;
+  border: 2px solid transparent;
+  border-radius: 5px;
+  min-height: 52px;
+  width: 100%;
+  padding: 10px;
+  font-size: 1rem;
+}
+.form-contact .form__item textarea {
+  min-height: 185px;
+  min-width: 100%;
+  max-width: 100%;
+}
+.form-contact .form__item[data-error] .text-control {
+  border: 2px solid #901c1c;
+}
+.form-contact .form__item[data-error]::after {
+  content: attr(data-error);
+  display: block;
+  width: 100%;
+  font-size: 0.8rem;
+  color: #901c1c;
+}
+.form-contact .form__item[data-success] .text-control {
+  border: 2px solid #428e43;
+}
+.form-contact .form__item[data-success]::after {
+  content: attr(data-success);
+  display: block;
+  width: 100%;
+  font-size: 0.8rem;
+  color: #428e43;
+}
+.form-contact .close {
+  position: absolute;
+  top: 30px;
+  right: 20px;
+  width: 35px;
+  height: 35px;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+}
+.form-contact .close::before, .form-contact .close::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background-color: #FFF;
+  transform-origin: center;
+  transform: rotate(45deg);
+}
+.form-contact .close::after {
+  transform: rotate(-45deg);
+}
+@media screen and (min-width: 950px) {
+  .form-contact {
+    background-color: rgba(196, 196, 196, 0.4);
+  }
+  .form-contact__container {
+    padding: 35px;
+    width: 700px;
+    margin: 50px auto;
+    border-radius: 5px;
+  }
+  .form-contact__container .form-name {
+    font-size: 4rem;
+  }
+  .form-contact .form .btn-submit {
+    align-self: flex-start;
+  }
+  .form-contact .close {
+    width: 45px;
+    height: 45px;
+    top: 50px;
+    right: 35px;
+  }
+  .form-contact .close::before, .form-contact .close::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    background-color: #FFF;
+    transform-origin: center;
+    transform: rotate(45deg);
+  }
+  .form-contact .close::after {
+    transform: rotate(-45deg);
+  }
+}
+
+/* Fonts */
+/* Colors */
+/* Borders */
+/* Typography */
+/* LOGO */
+/* Width */
+.photographer-profil {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 20px;
+}
+.photographer-profil .photographer__infos {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 5px;
+  max-width: 400px;
+}
+.photographer-profil .photographer__infos__name {
+  font-size: 2.25rem;
+  color: #D3573C;
+}
+.photographer-profil .photographer__infos__city {
+  font-size: 0.8rem;
+  color: #901c1c;
+}
+.photographer-profil .photographer__infos__tagline {
+  font-size: 0.8rem;
+  color: #757575;
+}
+.photographer-profil .photographer__img {
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+  border-radius: 50%;
+  background-color: #dedede;
+  filter: drop-shadow(0px 4px 12px rgba(0, 0, 0, 0.25));
+  transition: transform 0.3s ease;
+}
+.photographer-profil .photographer__btn {
+  position: fixed;
+  bottom: 30px;
+  left: 50%;
+  transform: translate3d(-50%, 0, 0);
+  z-index: 10;
+}
+@media screen and (min-width: 950px) {
+  .photographer-profil {
+    background-color: #FAFAFA;
+    border-radius: 5px;
+    padding: 50px;
+    grid-template-columns: auto 1fr auto;
+  }
+  .photographer-profil .photographer__infos {
+    max-width: 410px;
+  }
+  .photographer-profil .photographer__infos__name {
+    font-size: 3rem;
+  }
+  .photographer-profil .photographer__infos__city {
+    font-size: 1.5rem;
+  }
+  .photographer-profil .photographer__infos__tagline {
+    font-size: 1.125rem;
+  }
+  .photographer-profil .photographer__infos .tag-item {
+    font-size: 0.8rem;
+  }
+  .photographer-profil .photographer__btn {
+    place-self: start;
+    position: static;
+    transform: translate3d(0, 0, 0);
+  }
+  .photographer-profil .photographer__img {
+    width: 200px;
+    height: 200px;
+  }
+}
+
+/* Fonts */
+/* Colors */
+/* Borders */
+/* Typography */
+/* LOGO */
+/* Width */
 .main {
   padding-top: 25px;
   padding-bottom: 100px;
