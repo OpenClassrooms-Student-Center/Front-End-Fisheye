@@ -7,13 +7,7 @@ export const photographerFactory = ({ data, medias }) => {
   const picture = `${PROFILE_PICTURES_FOLDER}${portrait}`;
   const nbLikes = medias.reduce((sum, media) => sum + media.likes, 0);
 
-  const mediaViews = medias.map(media => {
-    const type = media.image ? 'image' : 'video';
-    return {
-      data: media,
-      view: mediaFactory(type),
-    };
-  });
+  const mediasFactory = mediaFactory(medias);
 
   const getUserCard = () => {
     const markup = `
@@ -65,7 +59,7 @@ export const photographerFactory = ({ data, medias }) => {
           </h2>
           <img src="assets/icons/close.svg" class="form-modal__close-btn" aria-label="Close" />
         </header>
-        <form class="form-modal__form">
+        <form action="/contact" method="POST" class="form-modal__form">
           <div class="form-modal__input">
             <label for="#firstname" class="form-modal__input-label">Prénom</label>
             <input type="text" id="firstname" name="firstname" class="form-modal__input-field form-modal__input-field--text" />
@@ -82,7 +76,7 @@ export const photographerFactory = ({ data, medias }) => {
             <label for="#message" class="form-modal__input-label">Votre message</label>
             <textarea id="message" name="message" rows="4" class="form-modal__input-field form-modal__input-field--textarea"></textarea>
           </div>
-          <button class="form-modal__submit-btn btn">Envoyer</button>
+          <button type="submit" class="form-modal__submit-btn btn">Envoyer</button>
         </form>
       </div>
     </div>
@@ -107,7 +101,7 @@ export const photographerFactory = ({ data, medias }) => {
     getUserCard,
     getUserHeader,
     getFormModal,
-    mediaViews,
+    mediasFactory,
     getUserFooter,
   };
 };

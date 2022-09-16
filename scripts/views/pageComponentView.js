@@ -13,7 +13,6 @@ class PageComponentView extends View {
   addHandlerLoadPage(handler) {
     return new Promise((resolve, _) => {
       window.addEventListener('load', event => {
-        event.preventDefault();
         handler();
         resolve();
       });

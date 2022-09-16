@@ -1,0 +1,66 @@
+.lightbox-modal {
+  &__background {
+    @include modalBg;
+  }
+  border-radius: 0.5rem;
+  position: fixed;
+  width: 95%;
+  left: 2.5%;
+  padding: 1.5% 0;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: var(--color-grey-light);
+  color: var(--color-primary);
+  @include respond(tab-land) {
+    padding: 2.5% 0;
+  }
+  &__content {
+    display: grid;
+    grid-template-rows: repeat(2, max-content);
+    justify-content: center;
+  }
+  &__media {
+    max-height: 65vh;
+    max-width: 65vw;
+    object-fit: cover;
+    object-position: center;
+    margin: 0 auto;
+  }
+  &__header {
+    font-size: 5rem;
+    @include respond(mobile) {
+      font-size: 6.09vw;
+    }
+  }
+  &__navigation {
+    &:link,
+    &:visited {
+      text-decoration: none;
+      color: inherit;
+    }
+  }
+  &__close-btn {
+    @include modalCloseBtn;
+    position: absolute;
+    right: 1.5%;
+    color: var(--color-primary);
+    fill: var(--color-primary);
+  }
+  &__navigation {
+    position: absolute;
+    top: 50%;
+  }
+  &__previous-btn {
+    left: 1.5%;
+  }
+  &__next-btn {
+    right: 1.5%;
+  }
+  &__title {
+    font-size: 2.4rem;
+    margin-bottom: 0;
+    @include respond(mobile) {
+      font-size: 2.93vw;
+    }
+  }
+}

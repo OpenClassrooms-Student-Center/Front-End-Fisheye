@@ -22,6 +22,7 @@ export const state = {
     data: {},
     medias: [],
   },
+  displayedMedia: {},
 };
 
 /**
@@ -116,4 +117,12 @@ export const setUrl = url => {
  */
 export const setReload = value => {
   state.reload = value;
+};
+
+/**
+ * Function used to change the displayed media we are showing on the lightbox
+ * @param {Object} media New value for the stored media
+ */
+export const updateDisplayedMedia = media => {
+  state.displayedMedia = media;
 };

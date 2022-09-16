@@ -77,6 +77,7 @@ class PhotographerMainView extends PhotographerPageComponentView {
       });
     });
   }
+
   /**
    * @override
    */
@@ -88,6 +89,10 @@ class PhotographerMainView extends PhotographerPageComponentView {
     photographerHeaderView.setPhotographerFactory(factory);
     photographerMediasView.setPhotographerFactory(factory);
     photographerMainFooterView.setPhotographerFactory(factory);
+  }
+
+  addHandlerClickMedias(handler) {
+    photographerMediasView.addHandlerClick(handler);
   }
 }
 

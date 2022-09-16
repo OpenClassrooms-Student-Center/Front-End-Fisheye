@@ -33,22 +33,6 @@ class FormModalView extends PageComponentView {
   }
 
   /**
-   * Handles the load event to render
-   * @param {function} handler handler function that will be invoked when the load event listener will be triggered
-   * @return {Promise} A Promise that will resolve once the whole page is rendered and the given handler executed
-   * @author Werner Schmid
-   */
-  addHandlerLoadPage(handler) {
-    return new Promise((resolve, _) => {
-      window.addEventListener('load', event => {
-        event.preventDefault();
-        handler();
-        resolve();
-      });
-    });
-  }
-
-  /**
    * Function used to add an event listener on the close button subcomponent in the View
    * @param {function} handler Function that will be called when the click event happens to the close button of the form
    * @returns {undefined} No returned value by the function
@@ -62,6 +46,31 @@ class FormModalView extends PageComponentView {
 
       handler();
     });
+  }
+
+  /**
+   * Function used to handle the submission of the form contained in the View
+   * @param {function} handler Function that will be called when the click event happens to the form
+   * @returns {undefined} No returned value by the function
+   * @this {Object} the current FormModalView instance calling the addHandlerClick function
+   * @author Werner Schmid
+   */
+  addHandlerSubmit(handler) {
+    this._parentElement
+      .querySelector('.form-modal__form')
+      .addEventListener('submit', event => {
+        event.preventDefault();
+        const contactForm = event.target;
+        if (!contactForm) return;
+
+        const formElements = Array.from(contactForm.elements).filter(
+          element => element.type !== 'submit'
+        );
+        const datas = formElements.map(formElement => {
+          return { name: formElement.name, value: formElement.value };
+        });
+        handler(datas);
+      });
   }
 }
 

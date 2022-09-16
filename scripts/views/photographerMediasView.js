@@ -41,10 +41,30 @@ class PhotographerMediasView extends PhotographerPageComponentView {
   }
 
   /**
+   * Function used to add an event listener on the image links subcomponents in the View
+   * @param {function} handler Function that will be called when the click event happens to the close button of the form
+   * @returns {undefined} No returned value by the function
+   * @this {Object} the current FormModalView instance calling the addHandlerClick function
+   * @author Werner Schmid
+   */
+  addHandlerClick(handler) {
+    this._parentElement.addEventListener('click', e => {
+      const link = e.target.closest('.card-media__link');
+      if (!link) return;
+      e.preventDefault();
+
+      const mediaID = link.dataset.id;
+
+      handler(this._photographerFactory, mediaID);
+    });
+  }
+
+  /**
    * @override
    */
   _postRender() {
-    this._photographerFactory.mediaViews.forEach(({ data, view }) => {
+    this._mediaViews = this._photographerFactory.mediasFactory.getMediaViews();
+    this._mediaViews.forEach(({ data, view }) => {
       view.setParentElement(
         this._parentElement.querySelector('.main__medias-list')
       );

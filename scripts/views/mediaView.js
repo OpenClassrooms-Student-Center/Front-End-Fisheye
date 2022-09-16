@@ -21,9 +21,9 @@ export default class MediaView extends View {
   _generateMarkup() {
     return `
     <article class="card-media" role="listitem">
-      <a href="/media/${this._data.id}" class="card-media__link" data-id="${
-      this._data.id
-    }" role="link" aria-labelledby="card-media__title--${this._data.id}">
+      <a href="#" class="card-media__link" data-id="${
+        this._data.id
+      }" role="link" aria-labelledby="card-media__title--${this._data.id}">
         ${this._generateMediaMarkup()}
       </a>
       <div class="card-media__description">

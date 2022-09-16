@@ -493,6 +493,46 @@
         </form>
       </div>
     </div>
+    <div
+      class="lightbox-modal__background"
+      data-hidden="false"
+      style="display: block"
+    >
+      <div
+        class="lightbox-modal"
+        role="dialog"
+        aria-modal="true"
+        aria-label="Vue rapprochée de l'image"
+      >
+        <header class="lightbox-modal__header">
+          <img
+            src="assets/icons/close-red.svg"
+            class="lightbox-modal__close-btn"
+            aria-label="Close"
+          />
+          <a
+            href="mediaIdPreviousMedia"
+            class="lightbox-modal__navigation lightbox-modal__previous-btn"
+            aria-label="Image précédente"
+            >&#9001;</a
+          >
+          <a
+            href="mediaIdNextMedia"
+            class="lightbox-modal__navigation lightbox-modal__next-btn"
+            aria-label="Image suivante"
+            >&#9002;</a
+          >
+        </header>
+        <div class="lightbox-modal__content">
+          <img
+            class="lightbox-modal__media"
+            src="assets/works/photos/Event_SeasideWedding.jpg"
+            alt="Nom de limage"
+          />
+          <h2 class="lightbox-modal__title">Seaside</h2>
+        </div>
+      </div>
+    </div>
     <script type="text/javascript">
       const changeAriaChecked = (element, value) => {
         element.ariaChecked = value;

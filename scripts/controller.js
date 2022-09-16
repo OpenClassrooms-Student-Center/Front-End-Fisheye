@@ -7,6 +7,7 @@ import mainView from './views/mainView';
 import indexMainView from './views/indexMainView';
 import photographerMainView from './views/photographerMainView';
 import formModalView from './views/formModalView';
+import lightBoxModalView from './views/lightboxModalView';
 import bodyView from './views/bodyView';
 import { photographerFactory } from './factories/photographer';
 
@@ -72,6 +73,100 @@ const closeModal = () => {
   setTimeout(() => {
     modalBg.style.display = 'none';
   }, 1000);
+};
+
+/**
+ * Function used to handle the submission of the contact form
+ * @param {Object[]} datas Data transmitted by the form when submitting it
+ * @returns {undefined} No returned value by the function
+ * @author Werner Schmid
+ */
+const submitFormModalForm = datas => {
+  // Display an alert message
+  alert('Your request was submitted !');
+
+  // Print the data in the console
+  datas.forEach(data => {
+    console.log(`${data.name} : ${data.value}`);
+  });
+
+  // Close the contact form modal
+  closeModal();
+};
+
+/**
+ * Function used to render the lightbox containing the media to display
+ * @param {Object} factory The photographer factory
+ * @param {string} mediaId The id of the media we want to display
+ * @returns {undefined} No returned value by the function
+ * @author Werner Schmid
+ */
+const controlRenderLightboxModal = (factory, mediaId = '') => {
+  // Set the photographer Factory for the View
+  lightBoxModalView.setPhotographerFactory(factory);
+
+  // Update the media stored in the model
+  model.updateDisplayedMedia(factory.mediasFactory.currentMedia(mediaId));
+
+  // Render the lightbox modal view on a photographer page
+  lightBoxModalView.render(model.state.displayedMedia, false);
+};
+
+/**
+ * Function used to display the lightbox when hidden
+ * @param {Object} factory the photographer factory
+ * @param {string} mediaId The id of the media we want to display
+ * @returns {undefined} No returned value by the function
+ * @author Werner Schmid
+ */
+const displayLightBox = (factory, mediaId) => {
+  // Update the media in the model and the media displayed inside the view
+  updateItemLightBox(factory, mediaId);
+
+  // Display the lightbox view
+  const lightBoxBg = document.querySelector('.lightbox-modal__background');
+  lightBoxBg.style.display = 'block';
+  setTimeout(() => {
+    lightBoxBg.dataset.hidden = false;
+  }, 500);
+};
+
+/**
+ * Function used to close the lightbox when it is displayed
+ * @returns {undefined} No returned value by the function
+ * @author Werner Schmid
+ */
+const closeLightBox = () => {
+  const lightBoxBg = document.querySelector('.lightbox-modal__background');
+  lightBoxBg.dataset.hidden = true;
+  setTimeout(() => {
+    lightBoxBg.style.display = 'none';
+  }, 1000);
+};
+
+const navigateToAdjacentImage = (factory, behavior) => {
+  // Update the media element in the model
+  model.updateDisplayedMedia(factory.mediasFactory[behavior]());
+
+  // Update the media in the model and the media displayed inside the view
+  updateItemLightBox(factory, model.state.displayedMedia.id);
+};
+
+/**
+ * Function used to update the content inside the lightbox modal
+ * @param {Object} factory the photographer factory
+ * @param {string} mediaId The id of the media we want to display
+ * @returns {undefined} No returned value by the function
+ * @author Werner Schmid
+ */
+const updateItemLightBox = (factory, mediaId) => {
+  // Update the media stored in the model
+  model.updateDisplayedMedia(factory.mediasFactory.currentMedia(mediaId));
+
+  // Update the current media in the view
+  lightBoxModalView.updateMedia(model.state.displayedMedia).catch(err => {
+    console.error(err);
+  });
 };
 
 const addFocusAnimation = btn => {
@@ -168,11 +263,15 @@ const renderComponents = async () => {
       // DISPLAY
       const factory = await controlRenderMainPhotographerPage(id);
       controlRenderFormModal(factory);
+      controlRenderLightboxModal(factory);
 
       // EVENT LISTENERS
       photographerMainView.addHandlerClick(displayModal);
       photographerMainView.addHandlerFocus(addFocusAnimation);
+      photographerMainView.addHandlerClickMedias(displayLightBox);
       formModalView.addHandlerClick(closeModal);
+      formModalView.addHandlerSubmit(submitFormModalForm);
+      lightBoxModalView.addHandlerClick(closeLightBox, navigateToAdjacentImage);
       return;
     }
   } catch (err) {
