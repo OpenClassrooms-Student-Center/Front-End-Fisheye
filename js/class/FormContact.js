@@ -84,18 +84,31 @@ const init = () => {
     });
 }
 
+/**
+ * @param {HTMLElement} field 
+ * @returns {boolean}
+ */
 function minLengthValidator(field) {
+    console.log(field)
     field.parentElement.removeAttribute("data-success", formSuccess.valid);
     field.parentElement.setAttribute("data-error", formErrors.names.minLength);
     return false;
 }
 
+/**
+ * @param {HTMLElement} field 
+ * @returns {boolean}
+ */
 function emptyValidator(field) {
     field.parentElement.removeAttribute("data-success", formSuccess.valid);
     field.parentElement.setAttribute("data-error", formErrors.empty);
     return false;
 }
 
+/**
+ * @param {HTMLElement} field 
+ * @returns {boolean}
+ */
 function successValidator(field) {
     field.parentElement.removeAttribute("data-error");
     field.parentElement.setAttribute("data-success", formSuccess.valid);
@@ -110,6 +123,9 @@ function emptyEmailValidator(field) {
 
 /* ENG: Simple string or textarea checker */
 /* FRA: Checker de string simple ou textarea */
+/**
+ * @param {HTMLElement} field 
+ */
 function checkSimpleString(field) {
     if(field.nodeName === "INPUT") {
         if (field.value.length < 2) {
@@ -168,6 +184,12 @@ function checkMessage() {
 
 /* ENG: Form fields validation */
 /* FRA: Validation des champs du formulaire */
+/**
+ * 
+ * @param {*} element 
+ * @param {*} method 
+ * @param {*} event 
+ */
 function formFieldsValidation(element, method, event) {
     element.addEventListener(event, method);
 }
