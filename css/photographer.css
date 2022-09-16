@@ -54,6 +54,10 @@
     margin-left: 100px;
 }
 
+#filtre-titre{
+    width: 78px;
+}
+
 .section-filtres-select{
     background-color: #901C1C;
 }
@@ -89,8 +93,8 @@
 }
 
 .custom-select__main__arrow{
-    width: 10px;
-    height: 10px;
+    width: 8px;
+    height: 8px;
     border: solid white;
     border-width: 0 2px 2px 0;
     transform: rotate(45deg);
@@ -110,6 +114,22 @@
     border-radius: 0px 0px 5px 5px;
 }
 
+.ligne{
+    display: block;
+    width: 150px;
+    height: 1px;
+    margin-left: 15px;
+    z-index: 2;
+    background-color:#fff;
+}
+
+.separateur{
+    display: block;
+    width: 180px;
+    height: 2px;
+    background-color: #901C1C;
+
+}
 /* Section stat */ 
 .section-stat{
     position: fixed;
