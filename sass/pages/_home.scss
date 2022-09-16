@@ -1,0 +1,23 @@
+.photographers-list {
+    display: grid;
+    gap: 30px;
+}
+
+.no-photographer {
+    display: none;
+    text-align: center;
+    grid-area: 1 / 1 / 2 / 4;
+}
+
+@media screen and (min-width: 768px) {
+    .photographers-list {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 50px 30px;
+    }
+}
+
+@media screen and (min-width: 1024px) {
+    .photographers-list {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}

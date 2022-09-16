@@ -1,21 +1,32 @@
 <!DOCTYPE html>
-<html>
+<html lang="fr">
   <head>
-    <link href="css/style.css" rel="stylesheet" type="text/css" />
     <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <link rel="icon" type="image/png" href="assets/favicon.png">
     <link href="https://fonts.googleapis.com/css?family=DM+Sans&display=swap" rel="stylesheet">
-    <title>Fisheye</title>
+    <link href="css/style.css" rel="stylesheet" type="text/css" />
+    <script src="js/index.js" type="module"></script>
+    <title>Fisheye - Accueil</title>
   </head>
   <body>
-    <header>
-        <img src="assets/images/logo.png" class="logo" />
-        <h1>Nos photographes</h1>
+    <header class="header">
+      <a class="header__logo" href="index.html">
+        <img src="assets/images/logo.png" alt="FishEye Home page">
+      </a>
+      <nav id="categories" class="categories-list">
+        <ul id="tags" class="tag-list" aria-label="tags">
+          <!-- Element Injection -->
+        </ul>
+      </nav>
+      <h1>Nos photographes</h1>
     </header>
-    <main id="main">
-        <div class="photographer_section"></div>
+    <main id="main" class="main">
+      <section id="photographers-list" class="photographers-list">
+        <!-- Element Injection -->
+        <p id="no-photographer" class="no-photographer">Aucun photographe ne correspond à vos filtres</p>
+      </section>
     </main>
-    <script src="scripts/factories/photographer.js"></script>
-    <script src="scripts/pages/index.js"></script>
   </body>
 </html>
