@@ -1,3 +1,5 @@
+import FormContact from "./FormContact.js";
+
 /**
  * class Photographer
  */
@@ -31,9 +33,6 @@ export default class Photographer {
         /* ENG: Data photographer's price per day */
         /* FRA: Donnée  sur le prix par jour du photographe */
         this.price = data.price
-        /* ENG: Data photographer's tags (can have many tags) */
-        /* FRA: Donnée sur tout les tags possible du photographe */
-        this.tags = data.tags
         /* ENG: Put informations into the instance */
         /* FRA: Met les informations sur les photographes dans l'instance */
         Photographer.instances = [...Photographer.instances, this];
@@ -62,19 +61,22 @@ export default class Photographer {
             case "index.html":
                 return this.thumbnail();  /* ENG: Photographer card view into homepage */ /* FRA: Card avec les informations du photographer sur le homepage */
                 break;
+            case "photographer.html":
+                return this.profile();
+                break;
             default:
                 break;
         }
     }
 
     /**
-     * ENG: Photographer profile element view on the home page
+     * ENG: Photographer card element view on the home page
      * FRA:  Element de la vue de la card du photographe sur la homepage
      * @returns {HTMLElement}
      */
     thumbnail = () => {
-        let element = document.createElement('article')
-        element.setAttribute('class', 'photographer-thumbnail')
+        let element = document.createElement('article');
+        element.setAttribute('class', 'photographer-thumbnail');
 
         element.innerHTML =
         `
@@ -91,4 +93,54 @@ export default class Photographer {
 
         return element;
     }
+
+    /**
+     * ENG: Photographer profile element view on the photographer's page
+     * FR: Element profile de la vue du photographe sur la page photographe
+     * @returns {HTMLElement}
+     */
+     profile = () => {
+
+        /* FR: Elements du profil */
+        /* ENG: Profile elements */
+        let container = document.createElement('section');
+        container.setAttribute('id', 'photographer-profil');
+        container.setAttribute('class', 'photographer-profil');
+
+        let infosElement = document.createElement('div');
+        infosElement.setAttribute('class', 'photographer__infos');
+
+        let contactBtn = document.createElement('button');
+        contactBtn.setAttribute('id', 'contact-btn');
+        contactBtn.setAttribute('class', 'btn photographer__btn');
+        contactBtn.innerHTML = "Contactez-moi";
+
+        let pictureElement = document.createElement('img');
+        pictureElement.setAttribute('class', 'photographer__img');
+        pictureElement.setAttribute('alt', this.name);
+        pictureElement.setAttribute('src', `assets/images/photographers/${this.portrait}`);
+
+        
+        /* ENG: Infos Content Element */
+        /* FR: Contenu de l'element infos */
+        infosElement.innerHTML =
+        `
+            <h1 class="photographer__infos__name">${this.name}</h1>
+            <p class="photographer__infos__city">${this.city}, ${this.country}</p>
+            <p class="photographer__infos__tagline">${this.tagline}</p>
+        `
+
+        /* ENG: Add previous created element to the container */
+        /* FR: Ajout des elements créé précédement au container */
+        container.appendChild(infosElement);
+        container.appendChild(contactBtn);
+        container.appendChild(pictureElement);
+
+        /* ENG: Add event listener on the button click to open contact form*/
+        /* FR: Ajout d'une écoute d'evenement sur le clique du boutton pour ouvrir le formulaire de contact */
+        contactBtn.addEventListener('click', () => FormContact.open());
+
+        return container
+    }
+
 }

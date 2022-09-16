@@ -1,0 +1,140 @@
+@use "../utils" as *;
+
+.form-contact {
+    display: none;
+    position: fixed;
+    inset: 0;
+    font-size: 1.5rem;
+    overflow-y: auto;
+    z-index: 100;
+
+    &.open {
+        display: block;
+    }
+
+    &__container {
+        position: relative;
+        background-color: $secondary-color;
+        padding: 30px 15px;
+
+        .form-name { font-size: 2.25rem; margin-bottom: 20px; }
+    }
+
+    .form {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+
+        .btn-submit { align-self: center; }
+
+
+        &__item {
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+
+            label { color: #312E2E;}
+
+            input, textarea {
+                background-color: $white;
+                border: 2px solid transparent;
+                border-radius: $border-radius;
+                min-height: 52px;
+                width: 100%;
+                padding: 10px;
+                font-size: 1rem;
+            }
+    
+            textarea {
+                min-height: 185px;
+                min-width: 100%;
+                max-width: 100%;
+            }
+
+            &[data-error] .text-control { border: 2px solid $main-color; }
+            &[data-error]::after {
+                content: attr(data-error);
+                display: block;
+                width: 100%;
+                font-size: .8rem;
+                color: $main-color;
+            }
+
+            &[data-success] .text-control { border: 2px solid $green; }
+            &[data-success]::after {
+                content: attr(data-success);
+                display: block;
+                width: 100%;
+                font-size: .8rem;
+                color: $green;
+            }
+        }
+    }
+
+    .close {
+        position: absolute;
+        top: 30px;
+        right: 20px;
+        width: 35px;
+        height: 35px;
+        
+        background-color: transparent;
+        border: none;
+
+        cursor: pointer;
+
+        &::before, &::after{ 
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background-color: $white;
+            transform-origin: center;
+            transform: rotate(45deg);
+        }
+
+        &::after {
+            transform: rotate(-45deg);
+        }
+    }
+
+    @media screen and (min-width: 950px) {
+        background-color: rgba(#C4C4C4, .4);
+
+        &__container {
+            padding: 35px;
+            width: 700px;
+            margin: 50px auto;
+            border-radius: $border-radius;
+
+            .form-name { font-size: 4rem; }
+        }
+
+        .form .btn-submit { align-self: flex-start; }
+
+        .close {
+            width: 45px;
+            height: 45px;
+            top: 50px;
+            right: 35px;
+
+            &::before, &::after {
+                content: '';
+                position: absolute;
+                top: 50%;
+                left: 0;
+                width: 100%;
+                height: 4px;
+                background-color: $white;
+                transform-origin: center;
+                transform: rotate(45deg);
+            }
+    
+            &::after {
+                transform: rotate(-45deg);
+            }
+        }
+    }
+}

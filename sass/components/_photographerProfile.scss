@@ -1,0 +1,62 @@
+@use "../utils" as *;
+
+.photographer-profil {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 20px;
+
+    .photographer__infos {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        gap: 5px;
+        max-width: 400px;
+        &__name { font-size: 2.25rem; color: $orange; }
+        &__city { font-size: 0.8rem; color: $main-color; }
+        &__tagline { font-size: 0.8rem; color: $mediumGrey; }
+    }
+
+    .photographer__img {
+        width: 100px;
+        height: 100px;
+        object-fit: cover;
+        border-radius: 50%;
+        background-color: lighten($grey, 55%);
+        filter: drop-shadow(0px 4px 12px rgba(0,0,0, .25));
+        transition: transform .3s ease;
+    }
+
+    .photographer__btn {
+        position: fixed;
+        bottom: 30px;
+        left: 50%;
+        transform: translate3d(-50%, 0, 0);
+        z-index: 10;
+    }
+
+    @media screen and (min-width: 950px) {
+        background-color: $lightGrey;
+        border-radius: $border-radius;
+        padding: 50px;
+        grid-template-columns: auto 1fr auto;
+
+        .photographer__infos {
+            max-width: 410px;
+            &__name{ font-size: 3rem; }
+            &__city{ font-size: 1.5rem; }
+            &__tagline{ font-size: 1.125rem; }
+            & .tag-item{ font-size: .8rem; }
+        }
+
+        .photographer__btn {
+            place-self: start;
+            position: static;
+            transform: translate3d(0,0,0);
+        }
+
+        .photographer__img {
+            width: 200px;
+            height: 200px;
+        }
+    }
+}
