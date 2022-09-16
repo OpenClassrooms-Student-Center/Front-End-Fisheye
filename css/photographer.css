@@ -102,6 +102,14 @@
     -webkit-transform: rotate(-135deg);
 }
 
+#opt_2{
+    border-radius: 0;
+}
+
+#opt_3{
+    border-radius: 0px 0px 5px 5px;
+}
+
 /* Section stat */ 
 .section-stat{
     position: fixed;

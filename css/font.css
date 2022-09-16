@@ -100,7 +100,15 @@ p{
 }
 
 /* custom select element */
-.custom-select-element h1{
+
+#filtre-titre{
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 23px;
+    color: #000000;
+}
+
+.custom-select-element h2{
     color: #fff;
     font-size: 18px;
 }

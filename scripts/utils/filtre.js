@@ -1,26 +1,3 @@
-/**
- * Listens to the filter and returns its value.
- */
-document.getElementById('filtres').addEventListener('change', function () {
-    typeSort = this.value;
-    sortData();
-    displayImage(data);
-});
-
-
-async function sortData() {
-    if (typeSort === "pop") {
-        data[1].sort(function (a, b) { return a.likes - b.likes });
-        data[1].reverse();
-    } else if (typeSort === "date") {
-        data[1].sort(function (a, b) { return a.date - b.date });
-        data[1].reverse();
-    } else if (typeSort === "titre") {
-        data[1].sort((a, b) => a.title.localeCompare(b.title))
-    }
-}
-
-
 function initFiltre() {
     //On insert la liste des options dans les div
 
@@ -29,25 +6,46 @@ function initFiltre() {
     let arrow = document.getElementById("arrow");
 
     customSelect.addEventListener("click", function () {
-        arrow.classList.add("active");
-        customSelect.classList.add("custom-select_active");
+        //Si les divs sont ouverte (active)
+        if (arrow.classList[1] == "active"){
+            arrow.classList.remove("active");
+            customSelect.classList.remove("custom-select_active");
+            typeSort = options[0];
+            console.log(typeSort);
+            sortData();
+            displayImage(data);
+            document.getElementById("opt_1").setAttribute("style","border-radius: 5px;");
+        } else {
+            //Sinon on les rend active
+            arrow.classList.add("active");
+            customSelect.classList.add("custom-select_active");
+            document.getElementById("opt_1").setAttribute("style","border-radius: 5px 5px 0px 0px;");
+        }
+        
     });
 
 
 }
 
+document.getElementById("opt_1").addEventListener("click", function () {
+    let optionChoice = document.getElementById("opt_1").innerText;
+    let index = options.indexOf(optionChoice);
+    swapOptions(index)
+    swapTextDiv();
+});
 
 document.getElementById("opt_2").addEventListener("click", function () {
     let optionChoice = document.getElementById("opt_2").innerText;
     let index = options.indexOf(optionChoice);
     swapOptions(index)
     swapTextDiv();
+});
 
-
-    let sel = document.getElementById("custom-select");
-    console.log(sel.classList);
-    sel.classList.remove("custom-select_active");
-    console.log("apres: " + sel.classList);
+document.getElementById("opt_3").addEventListener("click", function () {
+    let optionChoice = document.getElementById("opt_3").innerText;
+    let index = options.indexOf(optionChoice);
+    swapOptions(index)
+    swapTextDiv();
 });
 
 function swapOptions(index) {
@@ -64,6 +62,14 @@ function swapTextDiv() {
     }
 }
 
-function closeFiltre() {
-
+async function sortData() {
+    if (typeSort === "Popularité") {
+        data[1].sort(function (a, b) { return a.likes - b.likes });
+        data[1].reverse();
+    } else if (typeSort === "Date") {
+        data[1].sort(function (a, b) { return a.date - b.date });
+        data[1].reverse();
+    } else if (typeSort === "Titre") {
+        data[1].sort((a, b) => a.title.localeCompare(b.title))
+    }
 }
