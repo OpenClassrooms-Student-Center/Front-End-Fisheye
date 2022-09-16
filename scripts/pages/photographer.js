@@ -631,11 +631,11 @@ console.log(photographerId)
 
 //chercher avec un .find dans photographers l'id qui m'interesse
 const currentPhotographer = photographers.find(photograph => photograph.id == photographerId); // => comparaison "sans regarder le type nombre, tetxt, tableau, objet.." que je veux apporter
-console.log(currentPhotographer)
-
+photographerFactory(currentPhotographer)
 //remplir le dom de la page 
 // .filter pour chercher dans les médias 
 
 const currentPhotographerMedias = medias.filter(mediaPhotographer => mediaPhotographer.photographerId == photographerId ); // => comparaison "sans regarder le type nombre, tetxt, tableau, objet.." que je veux apporter
 // .filter s'applique dataPhotographers.media (données json importé plus haut) ; il filtre les mediaPhotographer qui ont un photograherId equivalent à mes parametres d'id dans l'url
+// mediasFactory(currentPhotographerMedias)
 console.log(currentPhotographerMedias)
