@@ -1,10 +1,10 @@
 import Photographer from "./Photographer.js"
 
 const modalForm = document.getElementById('modal-form');
-const firstname = document.getElementById('first-name');
-const lastname = document.getElementById('last-name');
-const email = document.getElementById('email');
-const message = document.getElementById('message');
+const firstname = document.getElementById('form-first-name');
+const lastname = document.getElementById('form-last-name');
+const email = document.getElementById('form-email');
+const message = document.getElementById('form-message');
 const modalCloseButton = document.getElementById('closeModal');
 const modalSubmitButton = document.getElementById('submitForm');
 
@@ -184,22 +184,18 @@ function checkMessage() {
 
 /* ENG: Form fields validation */
 /* FRA: Validation des champs du formulaire */
-/**
- * 
- * @param {*} element 
- * @param {*} method 
- * @param {*} event 
- */
-function formFieldsValidation(element, method, event) {
-    element.addEventListener(event, method);
+function formFieldsValidation(element, method) {
+    if (element !== null) {
+        element.addEventListener('focusout', method);
+    } 
 }
 
 /* ENG: Add an event on the focus out */
 /* FRA: Ajout un event sur le defocus de l'input */
-formFieldsValidation(firstname, checkFirstName, 'focusout');
-formFieldsValidation(lastname, checkLastName, 'focusout');
-formFieldsValidation(email, checkEmail, 'focusout');
-formFieldsValidation(message, checkMessage, 'focusout');
+formFieldsValidation(firstname, checkFirstName);
+formFieldsValidation(lastname, checkLastName);
+formFieldsValidation(email, checkEmail);
+formFieldsValidation(message, checkMessage);
 
 /* ENG: Fields validation check */
 /* FRA: Check des champs de validation */

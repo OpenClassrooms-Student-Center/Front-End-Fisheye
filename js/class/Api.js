@@ -1,7 +1,7 @@
 /**
  * class Api
  */
-export default class Api {
+ export default class Api {
 
     static photographers
     static media
