@@ -1,4 +1,7 @@
 # FishEye Front-End
+
+![logo](https://github.com/digitstudio/Front-End-Fisheye/blob/main/assets/images/logo.png)
+
 FishEye est un site web qui permet aux photographes indépendants de présenter leurs meilleurs travaux. 
 Je suis en charge de la réalisation du code HTML,CSS/SCSS,JavaScript.
 
