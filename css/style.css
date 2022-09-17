@@ -1397,5 +1397,8 @@ body {
   width: 2.1rem;
   height: 2.4rem;
 }
+.main__photographer-submit-btn {
+  visibility: hidden;
+}
 
 /*# sourceMappingURL=style.css.map */

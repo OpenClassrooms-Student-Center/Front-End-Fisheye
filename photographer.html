@@ -493,11 +493,7 @@
         </form>
       </div>
     </div>
-    <div
-      class="lightbox-modal__background"
-      data-hidden="false"
-      style="display: block"
-    >
+    <div class="lightbox-modal__background">
       <div
         class="lightbox-modal"
         role="dialog"
@@ -533,75 +529,5 @@
         </div>
       </div>
     </div>
-    <script type="text/javascript">
-      const changeAriaChecked = (element, value) => {
-        element.ariaChecked = value;
-        element.setAttribute('aria-checked', value);
-
-        const id = element.getAttribute('id');
-
-        const label = document.querySelector(`label[for="${id}"]`);
-
-        value
-          ? label.setAttribute('style', 'grid-row: 1 / 2')
-          : label.style.removeProperty('grid-row');
-      };
-      const changeSortingOption = element => {
-        // Modify the aria-checked parameter of the element
-        changeAriaChecked(element, true);
-
-        // Change the position of the element in the list
-        element.style.gridRow = '1 / 2';
-
-        // Get the id of the element and the label of the element
-        const id = element.getAttribute('id');
-        const label = document.querySelector(`label[for="${id}"]`);
-
-        // Modify the choosen option displayed in the page
-        document.querySelector(
-          '.main__photographer-filter-choosen-option'
-        ).textContent = label.textContent;
-      };
-      window.addEventListener('load', event => {
-        // Retrieve the checked element
-        const checkedElement = document.querySelector(
-          '.main__photographer-filter-option-choice[aria-checked="true"]'
-        );
-        // Display and store the datas of the element
-        changeSortingOption(checkedElement);
-      });
-
-      document.addEventListener('mouseup', event => {
-        const target = event.target.closest('.main__photographer-filter-input');
-        const filterEl = document.querySelector(
-          '.main__photographer-filter-input'
-        );
-        if (!filterEl) return;
-
-        filterEl.dataset.clicked = target === filterEl ? true : false;
-      });
-      document
-        .querySelectorAll('.main__photographer-filter-option-choice')
-        .forEach(element => {
-          element.addEventListener('click', event => {
-            const element = event.target;
-            const checkedElement = document.querySelector(
-              '.main__photographer-filter-option-choice[aria-checked="true"]'
-            );
-            const filterEl = document.querySelector(
-              '.main__photographer-filter-input'
-            );
-            if (!filterEl || !checkedElement) return;
-
-            if (element !== checkedElement) {
-              changeAriaChecked(checkedElement, false);
-
-              changeSortingOption(element);
-            }
-
-            filterEl.dataset.clicked = false;
-          });
-        });
-    </script>
   </body>
 </html>

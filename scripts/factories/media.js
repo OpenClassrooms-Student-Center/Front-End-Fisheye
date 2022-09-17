@@ -3,8 +3,25 @@ import PhotoView from '../views/photoView';
 import VideoView from '../views/videoView';
 
 export const mediaFactory = mediaList => {
+  const orderByPopularity = () => {
+    mediaList = mediaList.sort((media1, media2) =>
+      media1.likes > media2.likes ? -1 : 1
+    );
+  };
+  const orderByDate = () => {
+    mediaList = mediaList.sort((media1, media2) =>
+      media1.date.getTime() > media2.date.getTime() ? -1 : 1
+    );
+  };
+  const orderByTitle = () => {
+    mediaList = mediaList.sort((media1, media2) =>
+      media1.title.localeCompare(media2.title, 'en', { sensitivity: 'base' })
+    );
+  };
+
   const nbMedias = mediaList.length;
   let currentViewIndex = 0;
+
   const next = () => {
     if (++currentViewIndex > nbMedias)
       currentViewIndex = currentViewIndex % nbMedias;
@@ -19,6 +36,7 @@ export const mediaFactory = mediaList => {
       ? mediaList.find(mediaItem => Number.parseInt(mediaId) === mediaItem.id)
       : mediaList[currentViewIndex];
   };
+
   const generateNewView = type => {
     switch (type) {
       case 'image':
@@ -28,7 +46,12 @@ export const mediaFactory = mediaList => {
     }
     return null;
   };
-  const getMediaViews = () => {
+  const getMediaViews = (filterValue = 0) => {
+    filterValue === 0
+      ? orderByPopularity()
+      : filterValue === 1
+      ? orderByDate()
+      : orderByTitle();
     return mediaList.map(media => {
       const type = media.image ? 'image' : 'video';
       return {
@@ -37,6 +60,7 @@ export const mediaFactory = mediaList => {
       };
     });
   };
+
   const getPhoto = media => {
     return `<img class="lightbox-modal__media" src="${MEDIAS_FOLDER}photos/${media.image}" alt="${media.title}" />`;
   };
@@ -66,6 +90,7 @@ export const mediaFactory = mediaList => {
     `;
     return markup;
   };
+
   return {
     getMediaViews,
     getPhoto,
@@ -74,5 +99,8 @@ export const mediaFactory = mediaList => {
     next,
     currentMedia,
     getLightBox,
+    orderByPopularity,
+    orderByDate,
+    orderByTitle,
   };
 };

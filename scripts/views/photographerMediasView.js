@@ -1,4 +1,5 @@
 import PhotographerPageComponentView from './photographerPageComponentView';
+import photographerFilterFormView from './photographerFilterFormView';
 
 /**
  * A PhotographerMediasView represents the list of all photos / videos appearing in a photographer page
@@ -20,21 +21,6 @@ class PhotographerMediasView extends PhotographerPageComponentView {
   _generateMarkup() {
     return `
     <form action="/" class="main__photographer-filter-form">
-      <label class="main__photographer-filter-label" id="main__photographer-filter-label">Trier par</label>
-      <div role="radiogroup" aria-labelledby="main__photographer-filter-label" class="main__photographer-filter-input">
-        <span class="main__photographer-filter-choosen-option" aria-hidden="true">Popularité</span>
-        <div class="main__photographer-filter-option-display" aria-hidden="true">
-          <label for="option-0" class="main__photographer-filter-option-label">Popularité</label>
-          <input id="option-0" role="radio" tabindex="0" aria-checked="true" type="radio" value="0" name="filter" checked class="main__photographer-filter-option-choice" />
-          <label for="option-1" class="main__photographer-filter-option-label">Date</label>
-          <input id="option-1" role="radio" tabindex="-1" aria-checked="false" type="radio" value="1" name="filter" class="main__photographer-filter-option-choice" />
-          <label for="option-2" class="main__photographer-filter-option-label">Titre</label>
-          <input id="option-2" role="radio" tabindex="-1" aria-checked="false" type="radio" value="2" name="filter" class="main__photographer-filter-option-choice" />
-        </div>
-        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="white" class="bi bi-chevron-down" viewBox="0 0 16 16" role="img" aria-hidden="true">
-          <path fill-rule="evenodd" d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z" />
-        </svg>
-      </div>
     </form>
     <div class="main__medias-list" role="list"></div>
     `;
@@ -60,10 +46,73 @@ class PhotographerMediasView extends PhotographerPageComponentView {
   }
 
   /**
+   * Function used to add an event listener when we click on the filter form
+   * @param {function} handler Function that will be called when the mouseup event happens on the form
+   * @returns {undefined} No returned value by the function
+   * @this {Object} the current PhotographerFilterFormView instance calling the addHandlerClick function
+   * @author Werner Schmid
+   */
+  addHandlerMouseUpFilterForm(handler) {
+    photographerFilterFormView.addHandlerMouseUp(handler);
+  }
+  /**
+   * Function used to add an event listener when we select an option on the filter form
+   * @param {function} handler Function that will be called when the click event happens on the form
+   * @returns {undefined} No returned value by the function
+   * @this {Object} the current PhotographerFilterFormView instance calling the addHandlerClick function
+   * @author Werner Schmid
+   */
+  addHandlerClickFilterFormOption(handler) {
+    photographerFilterFormView.addHandlerClick(handler);
+  }
+
+  /**
+   * Function used to add an event listener when we submit the filter option form
+   * @param {function} handler Function that will be called when the filter form is submitted
+   * @returns {undefined} No returned value by the function
+   * @this {Object} the current PhotographerFilterFormView instance calling the addHandlerClick function
+   * @author Werner Schmid
+   */
+  addHandlerSubmitFilterForm(handler) {
+    photographerFilterFormView.addHandlerSubmit(handler);
+  }
+
+  /**
    * @override
    */
   _postRender() {
-    this._mediaViews = this._photographerFactory.mediasFactory.getMediaViews();
+    this._renderMediaList();
+    photographerFilterFormView.setParentElement(
+      document.querySelector('.main__photographer-filter-form')
+    );
+    photographerFilterFormView.setPhotographerFactory(
+      this._photographerFactory
+    );
+    photographerFilterFormView.render(this._data);
+  }
+
+  /**
+   * Function used to clear the list of medias and re-render it
+   * @param {number} checkedValue the value that was checked in the form
+   * @returns {undefined} No returned value by the function
+   * @this {Object} the current PhotographerFilterFormView instance calling the addHandlerClick function
+   * @author Werner Schmid
+   */
+  updateMediaList(checkedValue) {
+    this._parentElement.querySelector('.main__medias-list').innerHTML = '';
+    this._renderMediaList(checkedValue);
+  }
+
+  /**
+   * Function used to render the list of medias in the view
+   * @param {number} checkedValue the value that was checked in the form
+   * @returns {undefined} No returned value by the function
+   * @this {Object} the current PhotographerFilterFormView instance calling the addHandlerClick function
+   * @author Werner Schmid
+   */
+  _renderMediaList(checkedValue = 0) {
+    this._mediaViews =
+      this._photographerFactory.mediasFactory.getMediaViews(checkedValue);
     this._mediaViews.forEach(({ data, view }) => {
       view.setParentElement(
         this._parentElement.querySelector('.main__medias-list')

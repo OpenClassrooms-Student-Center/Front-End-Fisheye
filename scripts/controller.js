@@ -10,6 +10,7 @@ import formModalView from './views/formModalView';
 import lightBoxModalView from './views/lightboxModalView';
 import bodyView from './views/bodyView';
 import { photographerFactory } from './factories/photographer';
+import photographerMediasView from './views/photographerMediasView';
 
 /**
  * The method takes care of rendering the header semantic tag of the HTML page based on the url
@@ -218,6 +219,105 @@ const controlRenderMainPhotographerPage = async id => {
 };
 
 /**
+ * Function used to handle the aria attribute of an input and its position inside the parent grid element
+ * @param {HTMLElement} element Element to which we want to change the aria-checked attribute
+ * @param {boolean} value New value taken by the aria-checked attribute (false or true)
+ * @returns {undefined} No returned value by the function
+ * @author Werner Schmid
+ */
+const handleFilterInputElement = (element, value) => {
+  // Set the aria-checked attribute of the element
+  element.ariaChecked = value;
+  element.setAttribute('aria-checked', value);
+
+  // Get the label related to the element
+  const id = element.getAttribute('id');
+
+  const label = document.querySelector(`label[for="${id}"]`);
+
+  // Display the label in the first position if the aria-checked value is true, display in its declaration order otherwise
+  value
+    ? label.setAttribute('style', 'grid-row: 1 / 2')
+    : label.style.removeProperty('grid-row');
+};
+
+/**
+ * Function used to change the displayed selected option in the filter form
+ * @param {HTMLElement} element choosen input option that will displayed in the filter form
+ */
+const changeDisplayedSortingOption = element => {
+  // Modify the aria-checked parameter of the element
+  handleFilterInputElement(element, true);
+
+  // Change the position of the element in the list
+  element.style.gridRow = '1 / 2';
+
+  // Get the id of the element and the label of the element
+  const id = element.getAttribute('id');
+  const label = document.querySelector(`label[for="${id}"]`);
+
+  // Modify the choosen option displayed in the page
+  document.querySelector(
+    '.main__photographer-filter-choosen-option'
+  ).textContent = label.textContent;
+};
+
+/**
+ * Function used to handle the click on the Filter form
+ * @param {target} target Targeted element when the user clicks on the filter form
+ */
+const mouseUpFilterForm = target => {
+  const filterInputContainer = document.querySelector(
+    '.main__photographer-filter-input'
+  );
+
+  filterInputContainer.dataset.clicked =
+    target === filterInputContainer ? true : false;
+};
+
+/**
+ * The method takes care of re-rendering the medias view based on the select option
+ * @param {HTMLElement} input the targeted input element by the user
+ * @param {HTMLElement} checkedInput the previously checked input option
+ * @param {HTMLElement} filterForm the filter form
+ * @returns {undefined} No returned value by the function
+ * @author Werner Schmid
+ */
+const controlSelectFilterOption = (input, checkedInput, filterForm) => {
+  const filterInputContainer = document.querySelector(
+    '.main__photographer-filter-input'
+  );
+
+  if (input != checkedInput) {
+    handleFilterInputElement(checkedInput, false);
+    changeDisplayedSortingOption(input);
+  }
+
+  filterInputContainer.dataset.clicked = false;
+
+  // Once the outputed value is changed, we submit the form
+  filterForm.querySelector('.main__photographer-submit-btn').click();
+};
+
+/**
+ * Function that takes care of handling the submission of the filter form and re-rendering the media list
+ * @param {HTMLElement} filterForm Filter form that was submitted
+ * @param {Object} photographerFactory The photographer factory, used to re-render the medias
+ * @returns {undefined} No returned value by the function
+ * @author Werner Schmid
+ */
+const submitFilterForm = (filterForm, photographerFactory) => {
+  // Retrieve the checked input
+  const [checkedInput] = Array.from(filterForm.elements).filter(
+    element => element.type === 'radio' && element.checked
+  );
+  const checkedValue = Number.parseInt(checkedInput.value);
+
+  //Re-render the list of medias
+  photographerMediasView.updateMediaList(checkedValue);
+};
+
+/**
  * Function used to handle the navigation in the site without reloading the page
  * @returns {undefined} No returned value by the function
  * @author Werner Schmid
@@ -269,6 +369,11 @@ const renderComponents = async () => {
       photographerMainView.addHandlerClick(displayModal);
       photographerMainView.addHandlerFocus(addFocusAnimation);
       photographerMainView.addHandlerClickMedias(displayLightBox);
+      photographerMainView.addHandlerMouseUpFilterForm(mouseUpFilterForm);
+      photographerMainView.addHandlerClickFilterFormOption(
+        controlSelectFilterOption
+      );
+      photographerMainView.addHandlerSubmitFilterForm(submitFilterForm);
       formModalView.addHandlerClick(closeModal);
       formModalView.addHandlerSubmit(submitFormModalForm);
       lightBoxModalView.addHandlerClick(closeLightBox, navigateToAdjacentImage);

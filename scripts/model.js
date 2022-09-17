@@ -79,7 +79,13 @@ export const getPhotographerMedias = async id => {
     const { media } = await AJAX_GET(__dirname + 'data/photographers.json');
 
     // Filter the medias by keeping only the medias done by the desired photographer
-    const photographerMedias = media.filter(item => item.photographerId === id);
+    const photographerMedias = media.filter(item => {
+      // Convert the item's date from a string to a date object
+      item.date = new Date(item.date);
+
+      // filter condition
+      return item.photographerId === id;
+    });
 
     // Store the medias in the model
     state.photographer.medias = photographerMedias;

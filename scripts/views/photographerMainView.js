@@ -91,8 +91,45 @@ class PhotographerMainView extends PhotographerPageComponentView {
     photographerMainFooterView.setPhotographerFactory(factory);
   }
 
+  /**
+   * Function used to handle when a click happens on a media element
+   * @param {function} handler Function called when we click on the media view
+   */
   addHandlerClickMedias(handler) {
     photographerMediasView.addHandlerClick(handler);
+  }
+
+  /**
+   * Function used to add an event listener when we click on the filter form
+   * @param {function} handler Function that will be called when the mouseup event happens on the form
+   * @returns {undefined} No returned value by the function
+   * @this {Object} the current PhotographerFilterFormView instance calling the addHandlerClick function
+   * @author Werner Schmid
+   */
+  addHandlerMouseUpFilterForm(handler) {
+    photographerMediasView.addHandlerMouseUpFilterForm(handler);
+  }
+
+  /**
+   * Function used to add an event listener when we select an option on the filter form
+   * @param {function} handler Function that will be called when the click event happens on the form
+   * @returns {undefined} No returned value by the function
+   * @this {Object} the current PhotographerFilterFormView instance calling the addHandlerClick function
+   * @author Werner Schmid
+   */
+  addHandlerClickFilterFormOption(handler) {
+    photographerMediasView.addHandlerClickFilterFormOption(handler);
+  }
+
+  /**
+   * Function used to add an event listener when we submit the filter option form
+   * @param {function} handler Function that will be called when the filter form is submitted
+   * @returns {undefined} No returned value by the function
+   * @this {Object} the current PhotographerFilterFormView instance calling the addHandlerClick function
+   * @author Werner Schmid
+   */
+  addHandlerSubmitFilterForm(handler) {
+    photographerMediasView.addHandlerSubmitFilterForm(handler);
   }
 }
 
