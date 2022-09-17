@@ -1,9 +1,13 @@
+![logo](https://github.com/digitstudio/Front-End-Fisheye/blob/main/assets/images/logo.png)
+
 # FishEye Front-End - Projet Parcours OpenClassRoom 2022
 
-![logo](https://github.com/digitstudio/Front-End-Fisheye/blob/main/assets/images/logo.png)
 
 FishEye est un site web qui permet aux photographes indépendants de présenter leurs meilleurs travaux. 
 Je suis en charge de la réalisation du code HTML,CSS/SCSS,JavaScript.
+
+![screenshoot1](https://github.com/digitstudio/Front-End-Fisheye/blob/main/assets/screenshoot/29ef5e6d36265b9d39e972da0889d33e.png)
+![screenshoot2](https://github.com/digitstudio/Front-End-Fisheye/blob/main/assets/screenshoot/597c339a0c62b6ab9e2c0d773adeb0f3.jpg)
 
 ## Démarrer le projet
 Télécharger le repot et exécuter un ```npm install package.json``` afin d'installer les packages suivants:
