@@ -1,4 +1,4 @@
-# FishEye Front-End
+# FishEye Front-End - Projet Parcours OpenClassRoom 2022
 
 ![logo](https://github.com/digitstudio/Front-End-Fisheye/blob/main/assets/images/logo.png)
 
