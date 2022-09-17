@@ -1,6 +1,7 @@
-![logo](https://github.com/digitstudio/Front-End-Fisheye/blob/main/assets/images/logo.png)
 
 # FishEye Front-End - Projet Parcours OpenClassRoom 2022
+
+![logo](https://github.com/digitstudio/Front-End-Fisheye/blob/main/assets/images/logo.png)
 
 
 FishEye est un site web qui permet aux photographes indépendants de présenter leurs meilleurs travaux. 
