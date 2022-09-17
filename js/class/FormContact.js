@@ -13,6 +13,10 @@ const formRegex = {
     email: /^([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_\-\.]+)\.([a-zA-Z]{2,5})$/
 }
 
+const formConstraints = {
+    length: 2
+}
+
 const formSuccess = {
     valid: "Champ valide."
 }
@@ -128,11 +132,11 @@ function emptyEmailValidator(field) {
  */
 function checkSimpleString(field) {
     if(field.nodeName === "INPUT") {
-        if (field.value.length < 2) {
+        if (field.value.length < formConstraints.length) {
             return minLengthValidator(field);
         }
     } else if(field.nodeName === "TEXTAREA") {
-        if (field.value.length < 2) {
+        if (field.value.length < formConstraints.length) {
             return minLengthValidator(field);
         }
     }

@@ -328,31 +328,31 @@ body {
 /* Typography */
 /* LOGO */
 /* Width */
-.photographer-profil {
+.photographer-profile {
   display: grid;
   grid-template-columns: 1fr auto;
   gap: 20px;
 }
-.photographer-profil .photographer__infos {
+.photographer-profile .photographer__infos {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   gap: 5px;
   max-width: 400px;
 }
-.photographer-profil .photographer__infos__name {
+.photographer-profile .photographer__infos__name {
   font-size: 2.25rem;
   color: #D3573C;
 }
-.photographer-profil .photographer__infos__city {
+.photographer-profile .photographer__infos__city {
   font-size: 0.8rem;
   color: #901c1c;
 }
-.photographer-profil .photographer__infos__tagline {
+.photographer-profile .photographer__infos__tagline {
   font-size: 0.8rem;
   color: #757575;
 }
-.photographer-profil .photographer__img {
+.photographer-profile .photographer__img {
   width: 100px;
   height: 100px;
   object-fit: cover;
@@ -361,7 +361,7 @@ body {
   filter: drop-shadow(0px 4px 12px rgba(0, 0, 0, 0.25));
   transition: transform 0.3s ease;
 }
-.photographer-profil .photographer__btn {
+.photographer-profile .photographer__btn {
   position: fixed;
   bottom: 30px;
   left: 50%;
@@ -369,33 +369,33 @@ body {
   z-index: 10;
 }
 @media screen and (min-width: 950px) {
-  .photographer-profil {
+  .photographer-profile {
     background-color: #FAFAFA;
     border-radius: 5px;
     padding: 50px;
     grid-template-columns: auto 1fr auto;
   }
-  .photographer-profil .photographer__infos {
+  .photographer-profile .photographer__infos {
     max-width: 410px;
   }
-  .photographer-profil .photographer__infos__name {
+  .photographer-profile .photographer__infos__name {
     font-size: 3rem;
   }
-  .photographer-profil .photographer__infos__city {
+  .photographer-profile .photographer__infos__city {
     font-size: 1.5rem;
   }
-  .photographer-profil .photographer__infos__tagline {
+  .photographer-profile .photographer__infos__tagline {
     font-size: 1.125rem;
   }
-  .photographer-profil .photographer__infos .tag-item {
+  .photographer-profile .photographer__infos .tag-item {
     font-size: 0.8rem;
   }
-  .photographer-profil .photographer__btn {
+  .photographer-profile .photographer__btn {
     place-self: start;
     position: static;
     transform: translate3d(0, 0, 0);
   }
-  .photographer-profil .photographer__img {
+  .photographer-profile .photographer__img {
     width: 200px;
     height: 200px;
   }

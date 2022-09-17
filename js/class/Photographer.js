@@ -104,8 +104,8 @@ export default class Photographer {
         /* FR: Elements du profil */
         /* ENG: Profile elements */
         let container = document.createElement('section');
-        container.setAttribute('id', 'photographer-profil');
-        container.setAttribute('class', 'photographer-profil');
+        container.setAttribute('id', 'photographer-profile');
+        container.setAttribute('class', 'photographer-profile');
 
         let infosElement = document.createElement('div');
         infosElement.setAttribute('class', 'photographer__infos');

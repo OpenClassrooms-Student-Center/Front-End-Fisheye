@@ -5,7 +5,7 @@ import FormContact from './class/FormContact.js'
 /* ENG: Targets */
 /* FRA: Cibles */
 
-const photographerTarget = document.getElementById('photographer-profil')
+const photographerTarget = document.getElementById('photographer-profile');
 
 /* ENG: Functions */
 /* FRA: Fonctions */
