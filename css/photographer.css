@@ -6,8 +6,15 @@
     background-color: #FAFAFA;
     height: 300px;
     margin: 0 100px;
+    padding: 0 2rem;
     display: flex;
     justify-content: space-around;
+    align-items: center;
+}
+
+.photograph_info h1 {
+    font-size: 4rem;
+    color: #DB8876;
 }
 
 .contact_button {

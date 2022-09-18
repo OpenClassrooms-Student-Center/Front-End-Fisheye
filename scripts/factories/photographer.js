@@ -7,13 +7,13 @@ function photographerFactory(data) {
 
     function getUserCardDOM() {
         const link = document.createElement("a"); /* Constant link pour créer mon élément "a" (href) qui apparaîtra dans mon DOM*/
-        link.setAttribute ("href", `photographer.html?id=${id}`); /* Je set un "href" + le "lien" de la page html avec l'"id" correspondant au click */
+        link.setAttribute("href", `photographer.html?id=${id}`); /* Je set un "href" + le "lien" de la page html avec l'"id" correspondant au click */
         console.log(link);
 
-        const article = document.createElement( 'article' );
-        const img = document.createElement( 'img' );
+        const article = document.createElement('article');
+        const img = document.createElement('img');
         img.setAttribute("src", picture)
-        const h2 = document.createElement( 'h2' );
+        const h2 = document.createElement('h2');
         h2.textContent = name;
         article.appendChild(img);
         article.appendChild(h2);
@@ -33,20 +33,39 @@ function photographerFactory(data) {
 
 // 1. 
 let getDivName = document.querySelector('.name');
+let getDivLocation = document.querySelector('.city');
+let getDivCitation = document.querySelector('.tagline');
+let getDivPicture = document.querySelector('.picture_photographer');
 
-function photographerFactory (data){
+function photographerPageFactory(data) {
     console.log(data);
-    const { name, portrait, id, title, image, likes, date, price  } = data; /* J'ajoute dans ma constante "id" pour chercher les "données" correspondantes*/
+    const { name, country, city, tagline, portrait, id, title, image, likes, date, price } = data; /* J'ajoute dans ma constante "id" pour chercher les "données" correspondantes*/
+    //TITRE
     // 2
-    let h1 = document.createElement ('h1');
-
+    let h1 = document.createElement('h1');
     // 3
     h1.textContent = name;
-
     // 4
     getDivName.appendChild(h1);
 
+    //CITY
+    let location = document.createElement('h2');
+    location.textContent = [city, country];
+    getDivLocation.appendChild(location);
+
+    //TAGLINE
+    let citation = document.createElement('p');
+    citation.textContent = tagline;
+    getDivCitation.appendChild(citation);
+
+    //PORTRAIT
+    /*const picture = `assets/photographers/${portrait}`;*/ // constant déja déclaré plus haut
+    let photo = document.createElement('img');
+    photo.setAttribute("src", portrait);
+    getDivPicture.appendChild(photo);
+
 
 }
+
 
 // Fcontion pour les MEDIAS qui sera un tableau d'objet COme sur l'index, boucle 

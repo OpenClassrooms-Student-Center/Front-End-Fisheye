@@ -602,7 +602,7 @@
 // TO DELETE          media: photographers, medias
 // TO DELETE     })
 // TO DELETE  }
-
+/*
 function georgi(media) {
     console.log('georgi est saoulé');
     const mediaSection = document.querySelector ("body");
@@ -620,7 +620,7 @@ async function georgiRecup() {
 };
 
 georgiRecup();
- 
+*/ 
 
 
 // Récupérer les parametres de l'url
@@ -631,7 +631,7 @@ console.log(photographerId)
 
 //chercher avec un .find dans photographers l'id qui m'interesse
 const currentPhotographer = photographers.find(photograph => photograph.id == photographerId); // => comparaison "sans regarder le type nombre, tetxt, tableau, objet.." que je veux apporter
-photographerFactory(currentPhotographer)
+photographerPageFactory(currentPhotographer)
 //remplir le dom de la page 
 // .filter pour chercher dans les médias 
 
