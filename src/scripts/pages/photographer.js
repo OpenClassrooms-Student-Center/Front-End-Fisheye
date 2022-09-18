@@ -110,11 +110,10 @@ export async function initMedia(idURL, sortBy) {
 
 
 async function initMain() {
-    // We Wait for getUrlParameter() to be complete then we run tasks for generate page
     const idURL = await getUrlParameter("id");
-    initProfile(idURL); // Init Profile section 
+    initProfile(idURL); // Init Profile section after getUrlParameter() completed
     await initMedia(idURL, sortByLikes); // Get Medias & Init Media Section by Likes "import { sortByLikes } from '../utils/sortBy';
-    selectFilterComponent(idURL); // Initialize Select filter component 
+    selectFilterComponent(idURL); // Initialize Select filter component after initMedia() completed
 }
 
 
