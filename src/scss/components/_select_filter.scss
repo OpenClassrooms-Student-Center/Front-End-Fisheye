@@ -1,92 +1,87 @@
-.select_button {
-    display: flex;
-    align-content: flex-end;
-    align-items: center;
-    justify-content: space-between;
-
-    text-align: left;
-    padding-left: 20px;
-    font-family: $font_global;
-    font-style: normal;
-    font-weight: $font_weight_big;
-    font-size: calc($font_size / 2);
-    background: $color_primary1;
-    color: $default_color;
-    border-top-left-radius: 5px;
-    border-top-right-radius: 5px;
-    border: none;
-    border-color: none;
-    width: 170px;
-    height: 70px;
-    cursor: pointer;
-}
-
-.select_button::after {
-    transition: transform 0.25s ease-in;
-    content: ">";
-    transform: rotate(90deg);
-    font-size: calc($font_size / 1.44);
-    text-align: right;
-    float: right;
-    margin-right: 20px;
-
-}
-
 .select_filter {
-
     position: relative;
     display: inline-block;
-}
 
+    &:hover .select_content {
 
-.select_content {
-    display: none;
-    position: absolute;
-    background: $color_primary1;
-    border-bottom-left-radius: 5px;
-    border-bottom-right-radius: 5px;
-    min-width: 160px;
-    box-shadow: 0px 2px 8px 0px rgba(0, 0, 0, 0.2);
-    z-index: 1;
-
-
-    .whiteline {
-        width: 90%;
-        height: 1px;
-        background-color: $default_color;
-        margin-left: 5%;
-    }
-
-    a {
-        transition: all 0.5s ease-in;
-        font-family: $font_global;
-        font-weight: $font_weight_big;
-        font-size: calc($font_size / 2);
-        color: $default_color;
-        padding: 20px;
-        width: 170px;
-        height: 60px;
-        text-decoration: none;
         display: block;
     }
 
-    a:hover {
+    &:hover .select_button::after {
+        transform: rotate(-90deg);
+        transition: transform 0.25s ease-in;
+    }
+
+    .select_button {
+        display: flex;
+        align-content: flex-end;
+        align-items: center;
+        justify-content: space-between;
+
+        text-align: left;
+        padding-left: 20px;
+        font-family: $font_global;
+        font-style: normal;
+        font-weight: $font_weight_big;
+        font-size: calc($font_size / 2);
+        background: $color_primary1;
+        color: $default_color;
+        border-top-left-radius: 5px;
+        border-top-right-radius: 5px;
+        border: none;
+        border-color: none;
+        width: 170px;
+        height: 70px;
         cursor: pointer;
-        transition: all 0.5s ease-in;
-        color: $default_font_color;
+
+        &::after {
+            transition: transform 0.25s ease-in;
+            content: ">";
+            transform: rotate(90deg);
+            font-size: calc($font_size / 1.44);
+            text-align: right;
+            float: right;
+            margin-right: 20px;
+        }
     }
 
 
+    .select_content {
+        display: none;
+        position: absolute;
+        background: $color_primary1;
+        border-bottom-left-radius: 5px;
+        border-bottom-right-radius: 5px;
+        min-width: 160px;
+        box-shadow: 0px 2px 8px 0px rgba(0, 0, 0, 0.2);
+        z-index: 1;
 
-}
 
+        .whiteline {
+            width: 90%;
+            height: 1px;
+            background-color: $default_color;
+            margin-left: 5%;
+        }
 
-.select_filter:hover .select_content {
+        a {
+            transition: all 0.5s ease-in;
+            font-family: $font_global;
+            font-weight: $font_weight_big;
+            font-size: calc($font_size / 2);
+            color: $default_color;
+            padding: 20px;
+            width: 170px;
+            height: 60px;
+            text-decoration: none;
+            display: block;
 
-    display: block;
-}
+            &:hover {
+                cursor: pointer;
+                transition: all 0.5s ease-in;
+                color: $default_font_color;
+            }
+        }
 
-.select_filter:hover .select_button::after {
-    transform: rotate(-90deg);
-    transition: transform 0.25s ease-in;
+    }
 }
