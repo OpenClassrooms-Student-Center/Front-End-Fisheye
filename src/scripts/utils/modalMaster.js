@@ -80,6 +80,7 @@ export function modalMaster(bodyTag, headerTag, mainTag, modalID) {
         }
 
 
+        
         /** GET THE PREVIOUS AND AFTER MEDIA THOUGH THE ARRAY */
         let previousMedia = 0;
         let nextMedia = 0;
