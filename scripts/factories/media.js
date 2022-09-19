@@ -36,7 +36,7 @@ function photoCardFactory(data, photographe) {
             const lienImage = document.createElement('a');
             const vid = document.createElement('video');
             const source = document.createElement('source');
-            vid.setAttribute("controls", "");
+            //vid.setAttribute("controls", "");
             source.setAttribute("src", videoLink); 
             lienImage.setAttribute('onclick', 'displayLightbox(this.id)');
             lienImage.setAttribute('id', id);
@@ -72,7 +72,7 @@ function photoCardFactory(data, photographe) {
         if (videoLink.match(/mp4/gm)){
             const vid = document.createElement('video');
             const source = document.createElement('source');
-            vid.setAttribute("controls", "controls");
+            //vid.setAttribute("controls", "");
             source.setAttribute("src", videoLink); 
             vid.appendChild(source);
             card.appendChild(vid);
