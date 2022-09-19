@@ -66,6 +66,7 @@ function photographerFactory(data) {
         button.setAttribute("onclick","displayModal()");
         button.setAttribute("role","Contact Me");
         button.setAttribute("aria-pressed","false"); 
+        button.setAttribute("id","button_contact"); 
         const img = document.createElement('img');
 
         //set les elements

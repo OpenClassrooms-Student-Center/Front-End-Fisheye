@@ -3,6 +3,7 @@ function displayModal() {
     modal.style.display = "flex";
     document.documentElement.style.overflow = 'hidden';
     modal.setAttribute('aria-hidden', 'false');
+    document.getElementById("first").focus();
     document.getElementById("main").setAttribute('aria-hidden', 'true');
 }
 
@@ -10,6 +11,9 @@ function closeModal() {
     const modal = document.getElementById("contact_modal");
     modal.style.display = "none";
     document.documentElement.style.overflow = 'visible';
+    modal.setAttribute('aria-hidden', 'true');
+    document.getElementById("main").setAttribute('aria-hidden', 'false');
+    document.getElementById("button_contact").focus();
 }
 
 /**

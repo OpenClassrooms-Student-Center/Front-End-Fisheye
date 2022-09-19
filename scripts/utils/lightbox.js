@@ -75,7 +75,7 @@ async function displayLightbox(id) {
 
     creationListe(id);
     replaceContain()
-
+    
     lightbox_modal.style.display = "flex";
     document.documentElement.style.overflow = 'hidden';
 }

@@ -15,7 +15,7 @@
   <header>
     <a href="index.html"><img src="assets/images/logo.png" alt="Fisheye Home page" class="logo" /></a>
   </header>
-  <main id="main">
+  <main id="main" aria-hidden="false">
     <section class="section-info"></section>
     <section class="section-filtre">
       <h1 id="filtre-titre">Trier par</h1>
@@ -47,7 +47,7 @@
       <p class="section-stat-prix"></p>
     </section>
   </main>
-  <div id="contact_modal">
+  <div id="contact_modal" aria-hidden="true" role="dialog" aria-describedby="modalContact">
     <div class="modal">
       <div class="modal_header">
         <h1 class="contact_modal_titre">Contactez-moi</h1>
@@ -75,7 +75,7 @@
       </form>
     </div>
   </div>
-  <div id="lightbox_modal">
+  <div id="lightbox_modal" aria-hidden="true" role="dialog" aria-describedby="modalLightbox">
     <div class="lightbox_modal_contain">
       <img src="assets/icons/closeRed.svg" class="lightbox_modal_close" onclick="closeLightbox()"/>
       <img src="assets/icons/arrow.svg" class="lightbox_modal_arrow lightbox_modal_arrow_left" id="lightbox_modal_arrow_left" onclick="former()"/>
