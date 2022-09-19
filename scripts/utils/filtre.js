@@ -15,11 +15,17 @@ function initFiltre() {
             sortData();
             displayImage(data);
             document.getElementById("opt_1").setAttribute("style","border-radius: 5px;");
+            //On doit rendre les option invisible pour une meilleure accessibiliter
+            document.getElementById("opt_2").setAttribute("style","visibility: hidden;");
+            document.getElementById("opt_3").setAttribute("style","visibility: hidden;");
+            
         } else {
             //Sinon on les rend active
             arrow.classList.add("active");
             customSelect.classList.add("custom-select_active");
             document.getElementById("opt_1").setAttribute("style","border-radius: 5px 5px 0px 0px;");
+            document.getElementById("opt_2").setAttribute("style","visibility: visible;");
+            document.getElementById("opt_3").setAttribute("style","visibility: visible;");
         }
         
     });

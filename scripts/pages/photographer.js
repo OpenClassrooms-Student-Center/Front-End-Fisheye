@@ -3,6 +3,8 @@ Code JavaScript lié à la page photographer.html
 */
 
 
+
+
 //Variable globale : 
 var data;
 var nblikes = 0;

@@ -78,20 +78,6 @@ async function displayLightbox(id) {
 
     lightbox_modal.style.display = "flex";
     document.documentElement.style.overflow = 'hidden';
-    console.log("TEST: " + index);
-
-    //Dans la fonction pour quelle ne marche que si le display est ouvert
-    document.addEventListener('keydown', (event) => {
-        const nomTouche = event.key;
-
-        if (nomTouche === 'ArrowLeft') {
-            former()
-        }
-
-        else if ((nomTouche === 'ArrowRight')) {
-            next();
-        }
-    });
 }
 
 /**
@@ -99,12 +85,22 @@ async function displayLightbox(id) {
  */
 async function closeLightbox() {
     const lightbox_modal = document.getElementById("lightbox_modal");
-
     resetContainer();
     lightbox_modal.style.display = "none";
     document.documentElement.style.overflow = 'visible';
 }
 
+//Dans la fonction pour quelle ne marche que si le display est ouvert
+document.addEventListener('keydown', (event) => {
+    const nomTouche = event.key;
 
+    if (nomTouche === 'ArrowLeft') {
+        former()
+    }
 
-
+    else if ((nomTouche === 'ArrowRight')) {
+        next();
+    } else if ((nomTouche === 'Escape')){
+        closeLightbox();
+    }
+});

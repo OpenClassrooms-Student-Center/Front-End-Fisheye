@@ -2,6 +2,8 @@ function displayModal() {
     const modal = document.getElementById("contact_modal");
     modal.style.display = "flex";
     document.documentElement.style.overflow = 'hidden';
+    modal.setAttribute('aria-hidden', 'false');
+    document.getElementById("main").setAttribute('aria-hidden', 'true');
 }
 
 function closeModal() {
@@ -53,14 +55,14 @@ function validate(e) {
 
     if (validateNames(inputs[0].value)) {
         erreur = false;
-        addCssError(inputs[0], "erreur", "Veillez remplir le correctement !");
+        addCssError(inputs[0], "erreur", "Veillez remplir le formulaire correctement !");
     } else {
         resetCssError(inputs[0], "erreur");
     }
 
     if (validateNames(inputs[1].value)) {
         erreur = false;
-        addCssError(inputs[1], "erreur", "Veillez remplir le correctement !");
+        addCssError(inputs[1], "erreur", "Veillez remplir le formulaire correctement !");
     } else {
         resetCssError(inputs[1], "erreur");
     }
@@ -69,14 +71,14 @@ function validate(e) {
     let emailValidate = inputs[2].value.match(regexEmail);
     if (!emailValidate) {
         erreur = false;
-        addCssError(inputs[2], "erreur", "Veillez remplir le correctement !");
+        addCssError(inputs[2], "erreur", "Veillez remplir le formulaire correctement !");
     } else {
         resetCssError(inputs[2], "erreur");
     }
 
     if (!inputs[3].value) {
         erreur = false;
-        addCssError(inputs[3], "erreur", "Veillez remplir le correctement !");
+        addCssError(inputs[3], "erreur", "Veillez remplir le formulaire correctement !");
     } else {
         resetCssError(inputs[3], "erreur");
     }
@@ -93,3 +95,10 @@ function validate(e) {
 
     return erreur;
 }
+
+document.addEventListener('keydown', (event) => {
+    const nomTouche = event.key;
+     if ((nomTouche === 'Escape')){
+        closeModal();
+    }
+});

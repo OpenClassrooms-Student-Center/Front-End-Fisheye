@@ -13,7 +13,7 @@ function photoCardFactory(data, photographe) {
         const titleImage = document.createElement('h3');       
         const cardInfo = document.createElement('div');
         cardInfo.setAttribute('class', 'card-info');
-        const cardInfoLike = document.createElement('div');
+        const cardInfoLike = document.createElement('button');
         const nblikes = document.createElement('p');
         nblikes.setAttribute('class', 'card-info-nblikes'); 
         const iconLike = document.createElement('i');
@@ -33,21 +33,28 @@ function photoCardFactory(data, photographe) {
         cardInfo.appendChild(cardInfoLike);
 
         if (videoLink.match(/mp4/gm)){
+            const lienImage = document.createElement('a');
             const vid = document.createElement('video');
             const source = document.createElement('source');
-            //vid.setAttribute("controls", "controls");
+            vid.setAttribute("controls", "");
             source.setAttribute("src", videoLink); 
-            vid.setAttribute('onclick', 'displayLightbox(this.id)');
-            vid.setAttribute('id', id);
+            lienImage.setAttribute('onclick', 'displayLightbox(this.id)');
+            lienImage.setAttribute('id', id);
+            lienImage.href = "#";
             vid.appendChild(source);
-            card.appendChild(vid);
+            lienImage.appendChild(vid);
+            card.appendChild(lienImage);
         } else {
+            const lienImage = document.createElement('a');
             const img = document.createElement('img');
-            img.setAttribute('onclick', 'displayLightbox(this.id)');
-            img.setAttribute('id', id);
+            lienImage.setAttribute('onclick', 'displayLightbox(this.id)');
+            lienImage.setAttribute('id', id);
+            lienImage.setAttribute('class', "lienImageLightbox");
             img.setAttribute("src", picture);
             img.setAttribute("alt",title);
-            card.appendChild(img);
+            lienImage.href = "#";
+            lienImage.appendChild(img);
+            card.appendChild(lienImage);
         }
 
         card.appendChild(cardInfo);
