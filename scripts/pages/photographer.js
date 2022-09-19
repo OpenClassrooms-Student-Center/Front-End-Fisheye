@@ -10,7 +10,7 @@ async function getPhotographerAndMedia() {
   let url = new URL(str);
   let searchParams = new URLSearchParams(url.search);
   let id = parseInt(searchParams.get("id")); //parseInt pour transformer en nombre
-  let fetchUrl = "/data/photographers.json";
+  let fetchUrl = "./data/photographers.json";
   await fetch(fetchUrl) //asynchrone
     .then((res) => res.json()) //promise
     .then((data) => {
