@@ -2,7 +2,7 @@ let photographers = []; //tableau pour y stocker les données du json
 
 async function getPhotographers() {
         // Penser à remplacer par les données récupérées dans le json
-        let fetchUrl = "/data/photographers.json";
+        let fetchUrl = "./data/photographers.json";
         await fetch(fetchUrl) //asynchrone
         .then((res) => res.json()) //promise
         .then((data) => {
