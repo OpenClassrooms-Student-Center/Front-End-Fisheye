@@ -20,11 +20,14 @@
      
         <div class="menu-deroulant">
           <p class="sort">Trier par</p>
-          <select>
-            <option value="popularity" class="sort-option">Popularité</option>
-            <option value="date" class="sort-option">Date</option>
-            <option value="title" class="sort-option">Titre</option>
-          </select>
+          <label for="select">
+            <select id="select">
+              <option value="popularity" class="sort-option">Popularité</option>
+              <option value="date" class="sort-option">Date</option>
+              <option value="title" class="sort-option">Titre</option>
+            </select>
+          </label>
+        
         </div>
         <div class="photos"></div>
         <div class="total-likes"></div>
@@ -38,7 +41,7 @@
         <form id="formContact">
           <div>
             <div class="divField" id="divFirstname">
-              <label id="labelFirst">Prénom</label>
+              <label for="inputFirstname">Prénom</label>
               <input 
               aria-labelledby="labelFirst" 
               type="text" 
@@ -49,7 +52,7 @@
             </div>          
             
             <div class="divField" id="divLastname">
-              <label id="labelName">Nom</label>
+              <label for="inputLastname">Nom</label>
               <input 
               aria-labelledby="labelName" 
               type="text" 
@@ -60,7 +63,7 @@
             </div>          
             
             <div class="divField" id="divEmail">
-              <label id="labelEmail">Email</label>
+              <label for="inputEmail">Email</label>
               <input 
               aria-labelledby="labelEmail" 
               type="email" 
@@ -70,7 +73,7 @@
             </div>
   
             <div class="divField" id="divMessage">
-              <label id="labelMessage">Votre Message</label>
+              <label for="inputMessage">Votre Message</label>
               <textarea class="inputMessage" 
               aria-labelledby="labelMessage" 
               minlength="5" 
