@@ -69,10 +69,11 @@
 }
 
 .custom-select{
-    width:100%;
+    width:170px;
     height: 69px;
     overflow: hidden;
     z-index: 1;
+    cursor: pointer;
 }
 
 .custom-select_active{
@@ -85,11 +86,12 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    width: 140px;
+    width: 170px;
     height: 69px;
     background-color: #901C1C;
     padding: 0px 20px 0px;
     border-radius: 5px;
+    border: none;
 }
 
 .custom-select__main__arrow{
@@ -107,10 +109,12 @@
 }
 
 #opt_2{
+    visibility: hidden;
     border-radius: 0;
 }
 
 #opt_3{
+    visibility: hidden;
     border-radius: 0px 0px 5px 5px;
 }
 
@@ -118,14 +122,14 @@
     display: block;
     width: 150px;
     height: 1px;
-    margin-left: 15px;
+    margin-left: 10px;
     z-index: 2;
     background-color:#fff;
 }
 
 .separateur{
     display: block;
-    width: 180px;
+    width: 170px;
     height: 2px;
     background-color: #901C1C;
 
@@ -194,6 +198,13 @@
     display: flex;
     align-items: center;
     gap: 4px;
+    border: none;
+    background-color: transparent;
+}
+
+.lienImageLightbox{
+    width: 350px;
+    height: 300px;
 }
 
 
@@ -253,7 +264,7 @@ form div {
     width: 100%;
     align-items: self-start;
     margin-bottom: 26px;
-}card-info-like
+}
 
 form input {
     width: 100%;
@@ -272,6 +283,8 @@ textarea{
     padding-left: 10px;
     font-size: 24px;
 }
+
+
 
 /* LightBox */
 #lightbox_modal{

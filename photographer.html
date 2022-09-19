@@ -19,23 +19,23 @@
     <section class="section-info"></section>
     <section class="section-filtre">
       <h1 id="filtre-titre">Trier par</h1>
-        <div class="custom-select" id="custom-select">
-          <div class="custom-select-element custom-select__main" id="opt_1">
+        <div aria-label="filtre" role="button" class="custom-select" id="custom-select">
+          <button class="custom-select-element custom-select__main" id="opt_1">
             <h2 class="custom-select__name"></h2>
             <span class="custom-select__main__arrow" id="arrow"></span>
-          </div>
+          </button>
           <span class="separateur">
             <span class="ligne"></span>
           </span>
-          <div class="custom-select-element" id="opt_2">
+          <button class="custom-select-element" id="opt_2">
             <h2 class="custom-select__name"></h2>
-          </div>
+          </button>
           <span class="separateur">
             <span class="ligne"></span>
           </span>
-          <div class="custom-select-element" id="opt_3">
+          <button class="custom-select-element" id="opt_3">
             <h2 class="custom-select__name"></h2>
-          </div>
+          </button>
         </div>
     </section>
     <section class="section-gallery"></section>
@@ -51,7 +51,7 @@
     <div class="modal">
       <div class="modal_header">
         <h1 class="contact_modal_titre">Contactez-moi</h1>
-        <img src="assets/icons/close.svg" onclick="closeModal()" />
+        <img src="assets/icons/close.svg" alt="Croix pour fermer le modal" onclick="closeModal()" />
       </div>
       <form id="reserve" method="get" onsubmit="return validate(event);">
         <div class="formData">
