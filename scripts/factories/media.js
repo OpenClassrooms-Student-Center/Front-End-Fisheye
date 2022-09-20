@@ -18,7 +18,6 @@ function photoCardFactory(data, photographe) {
         const iconLike = document.createElement('i');
         cardInfoLike.setAttribute('class', 'card-info-like'); 
         cardInfoLike.setAttribute('aria-label', 'likes'); 
-        cardInfoLike.setAttribute('onclick', 'like(this.firstChild)'); 
         iconLike.setAttribute('class', 'fas fa-heart');
         //Set les valeurs
         titleImage.textContent = title;
