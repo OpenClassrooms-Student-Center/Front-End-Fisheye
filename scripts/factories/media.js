@@ -37,8 +37,8 @@ function photoCardFactory(data, photographe) {
             const source = document.createElement('source');
             //vid.setAttribute("controls", "");
             source.setAttribute("src", videoLink); 
-            lienImage.setAttribute('onclick', 'displayLightbox(this.id)');
             lienImage.setAttribute('id', id);
+            lienImage.setAttribute('class', "lienImageLightbox");
             lienImage.href = "#";
             vid.appendChild(source);
             lienImage.appendChild(vid);
@@ -46,7 +46,6 @@ function photoCardFactory(data, photographe) {
         } else {
             const lienImage = document.createElement('a');
             const img = document.createElement('img');
-            lienImage.setAttribute('onclick', 'displayLightbox(this.id)');
             lienImage.setAttribute('id', id);
             lienImage.setAttribute('class', "lienImageLightbox");
             img.setAttribute("src", picture);

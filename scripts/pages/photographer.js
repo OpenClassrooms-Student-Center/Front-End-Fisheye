@@ -7,6 +7,8 @@ import { initFiltre, sortData } from "../utils/filtre.js";
 import { getData, getId } from "../utils/data.js";
 import {displayDataPhotographer, displayImage,
     displayPrice, displayContactName, urlForm} from "../utils/display.js";
+import { displayModal, closeModal, validate } from "../utils/contactForm.js";
+import { displayLightbox , closeLightbox} from "../utils/lightbox.js"
 
 var data;
 var nblikes = 0;
@@ -41,6 +43,15 @@ async function like(element){
     }
 }
 
+async function eventLightbox(){
+    let images = document.getElementsByClassName("lienImageLightbox");
+    console.log(images);
+    for (let i = 0; i < images.length; i++) {
+        console.log(images[i].id);
+        document.getElementById(images[i].id).addEventListener('click', displayLightbox);
+    }
+}
+
 
 async function init() {
     data = await getData(getId());
@@ -53,7 +64,14 @@ async function init() {
     displayPrice(data[0].price);
     displayContactName(data[0].name);
     urlForm();
+    console.log(document.getElementById("button_contact"));
+    document.getElementById("button_contact").addEventListener('click', displayModal);
+    document.getElementById("close_modal_image").addEventListener('click', closeModal);
+    document.getElementById("lightbox_modal_close").addEventListener('click', closeLightbox);
+    document.getElementById("reserve").addEventListener('submit', validate);
+    eventLightbox();
 }
 
 init();
+
 export {data};

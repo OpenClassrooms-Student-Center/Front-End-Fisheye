@@ -106,3 +106,5 @@ document.addEventListener('keydown', (event) => {
         closeModal();
     }
 });
+
+export {displayModal, closeModal, validate};

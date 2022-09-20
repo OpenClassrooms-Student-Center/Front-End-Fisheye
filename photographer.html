@@ -38,7 +38,7 @@
           </button>
         </div>
     </section>
-    <section class="section-gallery"></section>
+    <section class="section-gallery" id="section-gallery"></section>
     <section class="section-stat">
       <div class="section-stat-like">
         <p class="section-stat-like-nombre"></p>
@@ -51,9 +51,9 @@
     <div class="modal">
       <div class="modal_header">
         <h1 class="contact_modal_titre">Contactez-moi</h1>
-        <img src="assets/icons/close.svg" alt="Croix pour fermer le modal" onclick="closeModal()" />
+        <img id="close_modal_image" src="assets/icons/close.svg" alt="Croix pour fermer le modal"/>
       </div>
-      <form id="reserve" method="get" onsubmit="return validate(event);">
+      <form id="reserve" method="get">
         <div class="formData">
           <label for="first">Prénom</label>
           <input class="text-control" type="text" id="first" name="first">
@@ -77,7 +77,7 @@
   </div>
   <div id="lightbox_modal" aria-hidden="true" role="dialog" aria-describedby="modalLightbox">
     <div class="lightbox_modal_contain">
-      <img src="assets/icons/closeRed.svg" class="lightbox_modal_close" onclick="closeLightbox()"/>
+      <img src="assets/icons/closeRed.svg" id="lightbox_modal_close" class="lightbox_modal_close" onclick="closeLightbox()"/>
       <img src="assets/icons/arrow.svg" class="lightbox_modal_arrow lightbox_modal_arrow_left" id="lightbox_modal_arrow_left" onclick="former()"/>
       <div class="lightbox_modal_media"></div>
       <img src="assets/icons/arrow.svg" class="lightbox_modal_arrow lightbox_modal_arrow_right" id="lightbox_modal_arrow_right" onclick="next()"/>

@@ -111,3 +111,5 @@ document.addEventListener('keydown', (event) => {
         closeLightbox();
     }
 });
+
+export {displayLightbox, closeLightbox};
