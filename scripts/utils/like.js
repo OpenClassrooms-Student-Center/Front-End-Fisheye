@@ -1,5 +1,9 @@
 var nblikes = 0;
 
+/**
+ * Sum all the photos
+ * @param {*} photos 
+ */
 function sumLike(photos){
     let sumlike = 0;
     photos.forEach(function(photo){
@@ -8,13 +12,18 @@ function sumLike(photos){
     nblikes = sumlike;
 }
 
+/**
+ * Display likes
+ */
 async function displayLikes(){
     let p = document.querySelector(".section-stat-like-nombre");
     p.textContent = nblikes;
 }
 
 
-// eslint-disable-next-line no-unused-vars
+/**
+ * Takes care of adding or decreasing the likes of a photo.
+ */
 async function like(){
     let element = this.firstChild;
     if (!(element.className == 'liked')){
