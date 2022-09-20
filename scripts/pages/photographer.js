@@ -2,7 +2,7 @@
 Code JavaScript lié à la page photographer.html
 */
 
-
+import {photographerFactory} from "../factories/photographer.js";
 
 
 //Variable globale : 
