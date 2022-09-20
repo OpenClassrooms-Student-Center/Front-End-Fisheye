@@ -1,4 +1,5 @@
-//Variable Global
+import { photoCardFactory } from "../factories/media.js";
+import { data }from "../pages/photographer.js";
 /**
  * Index locating where the media is located in the data table
  */

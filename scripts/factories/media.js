@@ -1,4 +1,3 @@
-// eslint-disable-next-line no-unused-vars
 function photoCardFactory(data, photographe) {
     const { id, title, image, video, likes} = data;
     const picture = `assets/photos/${photographe.id}/${image}`;
@@ -89,3 +88,5 @@ function photoCardFactory(data, photographe) {
     return  {getPhotoDOM, getPhotoLightboxDOM};
 
 }
+
+export {photoCardFactory};

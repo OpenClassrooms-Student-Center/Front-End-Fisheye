@@ -1,6 +1,10 @@
-function initFiltre() {
-    //On insert la liste des options dans les div
+import { displayImage } from "./display.js";
 
+var options = ["Popularité", "Date", "Titre"];
+var typeSort = options[0];
+
+function initFiltre(data) {
+    //On insert la liste des options dans les div
     swapTextDiv();
     let customSelect = document.getElementById("custom-select");
     let arrow = document.getElementById("arrow");
@@ -12,7 +16,7 @@ function initFiltre() {
             customSelect.classList.remove("custom-select_active");
             typeSort = options[0];
             console.log(typeSort);
-            sortData();
+            sortData(data);
             displayImage(data);
             document.getElementById("opt_1").setAttribute("style","border-radius: 5px;");
             //On doit rendre les option invisible pour une meilleure accessibiliter
@@ -29,8 +33,6 @@ function initFiltre() {
         }
         
     });
-
-
 }
 
 document.getElementById("opt_1").addEventListener("click", function () {
@@ -68,7 +70,7 @@ function swapTextDiv() {
     }
 }
 
-async function sortData() {
+async function sortData(data) {
     if (typeSort === "Popularité") {
         data[1].sort(function (a, b) { return a.likes - b.likes });
         data[1].reverse();
@@ -79,3 +81,5 @@ async function sortData() {
         data[1].sort((a, b) => a.title.localeCompare(b.title))
     }
 }
+
+export {initFiltre, sortData};
