@@ -88,6 +88,7 @@ function initLightbox() {
       //evenement touche echap
       lightbox.addEventListener("keydown", (e) => {
         if (e.key == "Escape") {
+          //console.log("click")
           lightbox.classList.remove("active");
           lightbox.innerHTML = "";
         }
@@ -135,7 +136,7 @@ myTimeout();
 //fermeture de la lightbox
 function closeMedia() {
   //enleve la classe active et cache la lightbox
-  console.log("close media click");
+  
   const lightbox = document.querySelector("#lightbox");
   lightbox.classList.remove("active");
   lightbox.innerHTML = ""; //reset l'affichage
