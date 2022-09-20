@@ -75,8 +75,11 @@ async function displayLightbox(id) {
 
     creationListe(id);
     replaceContain()
-    
+
     lightbox_modal.style.display = "flex";
+    lightbox_modal.setAttribute('aria-hidden', 'false');
+    document.getElementById("main").setAttribute('aria-hidden', 'true');
+    document.getElementById("lightbox_modal").focus();
     document.documentElement.style.overflow = 'hidden';
 }
 
@@ -87,6 +90,9 @@ async function closeLightbox() {
     const lightbox_modal = document.getElementById("lightbox_modal");
     resetContainer();
     lightbox_modal.style.display = "none";
+    lightbox_modal.setAttribute('aria-hidden', 'true');
+    document.getElementById("main").setAttribute('aria-hidden', 'false');
+    document.getElementById("button_contact").focus();
     document.documentElement.style.overflow = 'visible';
 }
 
