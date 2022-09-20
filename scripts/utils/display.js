@@ -1,6 +1,7 @@
 import { photographerFactory } from "../factories/photographer.js";
 import { photoCardFactory } from "../factories/media.js"
 
+
 var nblikes = 0;
 
 async function displayDataPhotographer(photographe) {
@@ -35,6 +36,8 @@ async function urlForm(){
     const form = document.querySelector("#reserve");
     form.setAttribute("action", url);
 }
+
+
 
 export {displayDataPhotographer,
     displayImage,

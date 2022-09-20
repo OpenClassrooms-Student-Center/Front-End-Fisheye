@@ -1,4 +1,5 @@
-import { displayImage } from "./display.js";
+import { displayImage} from "./display.js";
+import { eventLightbox } from "./evenement.js";
 
 var options = ["Popularité", "Date", "Titre"];
 var typeSort = options[0];
@@ -18,10 +19,12 @@ function initFiltre(data) {
             console.log(typeSort);
             sortData(data);
             displayImage(data);
+            eventLightbox();
             document.getElementById("opt_1").setAttribute("style","border-radius: 5px;");
             //On doit rendre les option invisible pour une meilleure accessibiliter
             document.getElementById("opt_2").setAttribute("style","visibility: hidden;");
             document.getElementById("opt_3").setAttribute("style","visibility: hidden;");
+
             
         } else {
             //Sinon on les rend active

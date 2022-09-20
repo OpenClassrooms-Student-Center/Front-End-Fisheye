@@ -70,7 +70,8 @@ async function resetContainer() {
  * Open the Lightbox modal and listen for keyboard events.
  * @param {*} id 
  */
-async function displayLightbox(id) {
+async function displayLightbox() {
+    let id = this.id;
     const lightbox_modal = document.getElementById("lightbox_modal");
     console.log(id);
 
@@ -112,4 +113,4 @@ document.addEventListener('keydown', (event) => {
     }
 });
 
-export {displayLightbox, closeLightbox};
+export {displayLightbox, closeLightbox, next, former};
