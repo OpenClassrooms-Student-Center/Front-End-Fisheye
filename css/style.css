@@ -124,9 +124,11 @@ h1 {
 .photos {
     display: flex;
     /*flex-direction: row;*/
-    justify-content: space-around;
+    justify-content: space-between;
     flex-wrap: wrap;
-    margin-top: 2rem;;
+    margin-top: 2rem;
+    margin-right:5rem;
+    margin-left:5rem;
 }
 .media_img {
     width: 350px;
@@ -134,7 +136,7 @@ h1 {
     object-fit: cover;
     cursor: pointer;
     border-radius: 5px;
-  
+    padding-right:3rem;
 }
 .flex .fa-heart {
     color: #901C1C;
@@ -144,6 +146,9 @@ h1 {
     color: #901C1C;
     font-size: 24px;
     font-family: 'Raleway', sans-serif;
+}
+.photos h4 {
+    padding-right:3rem;
 }
 .photos .flex {
     display: flex;
@@ -188,17 +193,16 @@ select {
 /* Style du total des likes*/
 .total-likes {
     background-color:#DB8876;
-    width: 170px;
+    width: 376px;
     height: 89px;
     border-radius: 5px; 
     align-items: center;
     display: flex;
     justify-content: space-between;
-    margin:1rem;
-    position: absolute;
-    left: 78%;
-    
-    top: 38%;
+    margin:0.5rem;
+    position: fixed;
+    left: 72%;
+    top: 90%;
     
 }
 .total-likes .flex {
