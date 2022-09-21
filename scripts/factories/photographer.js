@@ -5,6 +5,7 @@ function photographerFactory(data) {
     
     function getUserCardDOM() {
         const article = document.createElement( 'article' );
+        article.setAttribute("tabindex", 0)
         const img = document.createElement( 'img' );
         img.setAttribute("src", picture)
         const h2 = document.createElement( 'h2' );
@@ -35,5 +36,3 @@ function photographerFactory(data) {
     } 
     return { name, picture,city,country,tagline,price,id, getUserCardDOM, getPhotographerCard }
 }
-
-      

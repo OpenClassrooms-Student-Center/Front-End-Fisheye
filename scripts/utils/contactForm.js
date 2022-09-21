@@ -67,5 +67,3 @@ submit.addEventListener("click", e => {
     console.log("le prénom saisi est: " + prenom + " le nom saisi est: " + nom + " l'email saisi est: " + email + " le message saisi est: " + message);
 
 })
-
-

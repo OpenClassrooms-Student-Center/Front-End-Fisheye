@@ -22,9 +22,4 @@ function mediaFactory(data) {
     return {getMediaCard, likeUpdate}
 }
 
-
-
-    
-  
-    
   

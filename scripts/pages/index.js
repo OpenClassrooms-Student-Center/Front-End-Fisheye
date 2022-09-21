@@ -28,4 +28,4 @@ async function getPhotographers() {
     }
   
     init();
-    
+
