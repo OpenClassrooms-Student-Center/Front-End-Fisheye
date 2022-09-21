@@ -198,15 +198,18 @@ select {
     border-radius: 5px; 
     align-items: center;
     display: flex;
-    justify-content: space-between;
+    justify-content: space-evenly;
     margin:0.5rem;
     position: fixed;
     left: 72%;
     top: 90%;
-    
+    font-size: 24px;
+    font-weight: 500;
+  
 }
 .total-likes .flex {
     margin-left: 1rem;
+ 
 }
 .total-likes .fa-heart {
     color:black;
