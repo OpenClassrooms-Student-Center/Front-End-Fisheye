@@ -67,6 +67,8 @@ function initLightbox() {
       document.querySelector(".next-media").addEventListener("click", (e) => {
         nextMediaEvent();
       });
+      
+     
 
       //evenement au click sur la fleche previous media
       document.querySelector(".previous-media").addEventListener("click", (e) => {
