@@ -279,5 +279,6 @@ select {
     font-family: "DM sans";
     display: flex;
     align-items:center ;
-    justify-content: center;
+    justify-content: left;
+    margin-left:14rem;
 }
