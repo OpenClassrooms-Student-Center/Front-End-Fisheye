@@ -1,3 +1,7 @@
+/**
+ * File that deals with different events.
+ */
+
 import { displayLightbox , closeLightbox, next, former} from "../utils/lightbox.js";
 import {displayModal, closeModal, validate} from "../utils/contactForm.js";
 import {like} from "../utils/like.js"

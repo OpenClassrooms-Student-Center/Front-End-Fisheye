@@ -1,5 +1,13 @@
+/**
+ * This file is used to manage the index page.
+ */
+
 import {photographerFactory} from "../factories/photographer.js";
 
+/**
+ * Returns data from photographers
+ * @returns 
+ */
 async function getPhotographers() {
     let response = fetch("../../data/photographers.json")
     let data = await (await response).json()
@@ -14,6 +22,10 @@ async function getPhotographers() {
     })
 }
 
+/**
+ * Displays the different photographer.
+ * @param {*} photographers 
+ */
 async function displayData(photographers) {
     const photographersSection = document.querySelector(".photographer_section");
 
@@ -24,6 +36,9 @@ async function displayData(photographers) {
     });
 }
 
+/**
+ * Initialize data.
+ */
 async function init() {
     // Récupère les datas des photographes
     const { photographers } = await getPhotographers();

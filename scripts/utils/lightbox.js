@@ -1,3 +1,7 @@
+/**
+ * This file takes care of the lightbox
+ */
+
 import { photoCardFactory } from "../factories/media.js";
 import { data }from "../pages/photographer.js";
 /**

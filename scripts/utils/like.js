@@ -1,3 +1,7 @@
+/**
+ * This file is busy with likes
+ */
+
 var nblikes = 0;
 
 /**

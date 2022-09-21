@@ -1,9 +1,18 @@
+/**
+ * Create the different media based on the data.
+ * @param {*} data 
+ * @param {*} photographe 
+ * @returns 
+ */
 function photoCardFactory(data, photographe) {
     const { id, title, image, video, likes} = data;
     const picture = `assets/photos/${photographe.id}/${image}`;
     const videoLink = `assets/photos/${photographe.id}/${video}`;
 
-
+    /**
+     * Create photo cards.
+     * @returns 
+     */
     function getPhotoDOM(){
         //Création du layout
         const card = document.createElement('div');
@@ -61,6 +70,10 @@ function photoCardFactory(data, photographe) {
         return (card);
     }
 
+    /**
+     * Inject the media into the lightbox
+     * @returns 
+     */
     function getPhotoLightboxDOM(){
         const card = document.createElement('div');
         card.setAttribute('class', 'lightbox_modal_box');

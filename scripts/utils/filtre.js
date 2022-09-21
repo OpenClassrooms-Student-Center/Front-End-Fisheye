@@ -1,9 +1,17 @@
+/**
+ * File dealing with filters.
+ */
+
 import { displayImage} from "./display.js";
 import { eventLightbox, eventLike } from "./evenement.js";
 
 var options = ["Popularité", "Date", "Titre"];
 var typeSort = options[0];
 
+/**
+ * Initialize the filter
+ * @param {*} data 
+ */
 function initFiltre(data) {
     //On insert la liste des options dans les div
     swapTextDiv();
@@ -39,6 +47,9 @@ function initFiltre(data) {
     });
 }
 
+/**
+ * Event for option 1 for sorting
+ */
 document.getElementById("opt_1").addEventListener("click", function () {
     let optionChoice = document.getElementById("opt_1").innerText;
     let index = options.indexOf(optionChoice);
@@ -46,6 +57,9 @@ document.getElementById("opt_1").addEventListener("click", function () {
     swapTextDiv();
 });
 
+/**
+ * Event for option 2 for sorting
+ */
 document.getElementById("opt_2").addEventListener("click", function () {
     let optionChoice = document.getElementById("opt_2").innerText;
     let index = options.indexOf(optionChoice);
@@ -53,6 +67,9 @@ document.getElementById("opt_2").addEventListener("click", function () {
     swapTextDiv();
 });
 
+/**
+ * Event for option 3 for sorting
+ */
 document.getElementById("opt_3").addEventListener("click", function () {
     let optionChoice = document.getElementById("opt_3").innerText;
     let index = options.indexOf(optionChoice);
@@ -60,12 +77,19 @@ document.getElementById("opt_3").addEventListener("click", function () {
     swapTextDiv();
 });
 
+/**
+ * Swap two options from the options array
+ * @param {*} index 
+ */
 function swapOptions(index) {
     let tmp = options[index];
     options[index] = options[0];
     options[0] = tmp;
 }
 
+/**
+ * Change the text inside the div.
+ */
 function swapTextDiv() {
     let divOptionsTitre = document.getElementsByClassName("custom-select__name");
 
@@ -74,6 +98,10 @@ function swapTextDiv() {
     }
 }
 
+/**
+ * Sort the photo list according to the desired sorting type.
+ * @param {*} data 
+ */
 async function sortData(data) {
     if (typeSort === "Popularité") {
         data[1].sort(function (a, b) { return a.likes - b.likes });

@@ -1,4 +1,8 @@
 /**
+ * File allowing to recover the data necessary for a photographer.
+ */
+
+/**
  * Get id in URL
  * @returns id
  */

@@ -1,7 +1,6 @@
-/*
-Code JavaScript lié à la page photographer.html
-*/
-
+/**
+ * Manages the various functions allowing the proper functioning of the photographer page.
+ */
 
 import { initFiltre, sortData } from "../utils/filtre.js";
 import { getData, getId } from "../utils/data.js";
@@ -12,7 +11,9 @@ import {displayLikes, sumLike, nblikes} from "../utils/like.js";
 var data;
 
 
-
+/**
+ * Initialize data.
+ */
 async function init() {
     data = await getData(getId());
     initFiltre(data);

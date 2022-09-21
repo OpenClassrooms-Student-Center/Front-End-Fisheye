@@ -1,8 +1,17 @@
+/**
+ * Generate the different html elements with the data received
+ * @param {*} data 
+ * @returns 
+ */
 function photographerFactory(data) {
     const { name, city, country, id, price, tagline ,portrait } = data;
 
     const picture = `assets/photographers/${portrait}`;
 
+    /**
+     * Generate the html for the different photographers of the reception
+     * @returns 
+     */
     function getUserCardDOM() {
         //Création de la sturcture
         const article = document.createElement('div'); // Créer la carte photographe
@@ -47,6 +56,10 @@ function photographerFactory(data) {
         return (article);
     }
 
+    /**
+     * Generate the html for a photographer's information
+     * @returns 
+     */
     function infoUserDom(){
         //Pour le layout
         const section = document.createElement('div');

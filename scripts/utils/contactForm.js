@@ -1,3 +1,10 @@
+/**
+ * File used to manage the form.
+ */
+
+/**
+ * Displays the contact form modal.
+ */
 function displayModal() {
     const modal = document.getElementById("contact_modal");
     modal.style.display = "flex";
@@ -7,6 +14,9 @@ function displayModal() {
     document.getElementById("main").setAttribute('aria-hidden', 'true');
 }
 
+/**
+ * Closed the contact form modal.
+ */
 function closeModal() {
     const modal = document.getElementById("contact_modal");
     modal.style.display = "none";
@@ -100,6 +110,9 @@ function validate(e) {
     return erreur;
 }
 
+/**
+ * Listen for the keyboard and close the form modal.
+ */
 document.addEventListener('keydown', (event) => {
     const nomTouche = event.key;
      if ((nomTouche === 'Escape')){
