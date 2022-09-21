@@ -19,22 +19,22 @@
     <section class="section-info"></section>
     <section class="section-filtre">
       <h1 id="filtre-titre">Trier par</h1>
-        <div aria-label="filtre" role="button" class="custom-select" id="custom-select">
-          <button class="custom-select-element custom-select__main" id="opt_1">
-            <h2 class="custom-select__name"></h2>
+        <div aria-label="Order by" aria-haspopup="listbox" aria-expanded="true" class="custom-select" id="custom-select">
+          <button  aria-activedescendant="opt_3" aria-selected="true" aria-labelledby="filtre" class="custom-select-element custom-select__main" id="opt_1">
+            <span class="custom-select__name"></span>
             <span class="custom-select__main__arrow" id="arrow"></span>
           </button>
           <span class="separateur">
             <span class="ligne"></span>
           </span>
-          <button class="custom-select-element" id="opt_2">
-            <h2 class="custom-select__name"></h2>
+          <button  aria-selected="false" aria-labelledby="filtre" class="custom-select-element" id="opt_2">
+            <span class="custom-select__name"></span>
           </button>
           <span class="separateur">
             <span class="ligne"></span>
           </span>
-          <button class="custom-select-element" id="opt_3">
-            <h2 class="custom-select__name"></h2>
+          <button aria-selected="false" aria-labelledby="filtre" class="custom-select-element" id="opt_3">
+            <span class="custom-select__name"></span>
           </button>
         </div>
     </section>
@@ -51,36 +51,36 @@
     <div class="modal">
       <div class="modal_header">
         <h1 class="contact_modal_titre">Contactez-moi</h1>
-        <img id="close_modal_image" src="assets/icons/close.svg" alt="Croix pour fermer le modal"/>
+        <img id="close_modal_image" src="assets/icons/close.svg" aria-label="Close Contact form" alt="Croix pour fermer le modal"/>
       </div>
       <form id="reserve" method="get">
         <div class="formData">
           <label for="first">Prénom</label>
-          <input class="text-control" type="text" id="first" name="first">
+          <input class="text-control" type="text" id="first" name="first" aria-label="Frist Name">
         </div>
         <div class="formData">
           <label for="last">Nom</label>
-          <input class="text-control" type="text" id="last" name="last">
+          <input class="text-control" type="text" id="last" name="last" aria-label="Last Name">
         </div>
         <div class="formData">
           <label for="email">Email</label>
-          <input class="text-control" type="email" id="email" name="email">
+          <input class="text-control" type="email" id="email" name="email" aria-label="Email">
         </div>
         <div class="formData">
           <label for="message">Votre message</label>
-          <textarea class="text-control" type="text-area" id="message" name="message"></textarea>
+          <textarea class="text-control" type="text-area" id="message" name="message" aria-label="Your message"></textarea>
         </div>
         <p id="erreur"></p>
-        <button class="contact_button">Envoyer</button>
+        <button class="contact_button" aria-label="Send">Envoyer</button>
       </form>
     </div>
   </div>
-  <div id="lightbox_modal" aria-hidden="true" role="dialog" aria-describedby="modalLightbox">
+  <div id="lightbox_modal" aria-label="image closeup view" aria-hidden="true" role="dialog">
     <div class="lightbox_modal_contain">
-      <img src="assets/icons/closeRed.svg" id="lightbox_modal_close" class="lightbox_modal_close"/>
-      <img src="assets/icons/arrow.svg" class="lightbox_modal_arrow lightbox_modal_arrow_left" id="lightbox_modal_arrow_left"/>
-      <div class="lightbox_modal_media"></div>
-      <img src="assets/icons/arrow.svg" class="lightbox_modal_arrow lightbox_modal_arrow_right" id="lightbox_modal_arrow_right"/>
+      <img src="assets/icons/closeRed.svg" aria-label="Close dialog" id="lightbox_modal_close" class="lightbox_modal_close"/>
+      <img src="assets/icons/arrow.svg" aria-label="Previous Image" class="lightbox_modal_arrow lightbox_modal_arrow_left" id="lightbox_modal_arrow_left"/>
+      <div class="lightbox_modal_media" aria-label="Lilac breasted roller"></div>
+      <img src="assets/icons/arrow.svg" aria-label="Next Image" class="lightbox_modal_arrow lightbox_modal_arrow_right" id="lightbox_modal_arrow_right"/>
     </div>
   </div>
   <script type="module" src="/scripts/pages/photographer.js"></script>

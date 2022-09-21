@@ -62,7 +62,6 @@ function photographerFactory(data) {
 
         const button = document.createElement('button');
         button.classList.add("contact_button");
-        button.setAttribute("role","Contact Me");
         button.setAttribute("aria-pressed","false"); 
         button.setAttribute("id","button_contact"); 
         const img = document.createElement('img');

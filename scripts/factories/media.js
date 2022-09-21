@@ -38,6 +38,7 @@ function photoCardFactory(data, photographe) {
             source.setAttribute("src", videoLink); 
             lienImage.setAttribute('id', id);
             lienImage.setAttribute('class', "lienImageLightbox");
+            vid.setAttribute('aria-label', 'Lilac breasted roller, closeup view');
             lienImage.href = "#";
             vid.appendChild(source);
             lienImage.appendChild(vid);
@@ -47,6 +48,7 @@ function photoCardFactory(data, photographe) {
             const img = document.createElement('img');
             lienImage.setAttribute('id', id);
             lienImage.setAttribute('class', "lienImageLightbox");
+            img.setAttribute('aria-label', 'Lilac breasted roller, closeup view');    
             img.setAttribute("src", picture);
             img.setAttribute("alt",title);
             lienImage.href = "#";
