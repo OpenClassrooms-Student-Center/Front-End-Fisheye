@@ -19,21 +19,21 @@
     <section class="section-info"></section>
     <section class="section-filtre">
       <h1 id="filtre-titre">Trier par</h1>
-        <div aria-label="Order by" aria-haspopup="listbox" aria-expanded="true" class="custom-select" id="custom-select">
-          <button  aria-activedescendant="opt_3" aria-selected="true" aria-labelledby="filtre" class="custom-select-element custom-select__main" id="opt_1">
+        <div class="custom-select" id="custom-select">
+          <button aria-haspopup="listbox" class="custom-select-element custom-select__main" id="opt_1">
             <span class="custom-select__name"></span>
             <span class="custom-select__main__arrow" id="arrow"></span>
           </button>
           <span class="separateur">
             <span class="ligne"></span>
           </span>
-          <button  aria-selected="false" aria-labelledby="filtre" class="custom-select-element" id="opt_2">
+          <button class="custom-select-element" id="opt_2">
             <span class="custom-select__name"></span>
           </button>
           <span class="separateur">
             <span class="ligne"></span>
           </span>
-          <button aria-selected="false" aria-labelledby="filtre" class="custom-select-element" id="opt_3">
+          <button class="custom-select-element" id="opt_3">
             <span class="custom-select__name"></span>
           </button>
         </div>
@@ -47,7 +47,7 @@
       <p class="section-stat-prix"></p>
     </section>
   </main>
-  <div id="contact_modal" aria-hidden="true" role="dialog" aria-describedby="modalContact">
+  <div id="contact_modal" aria-hidden="true" role="dialog">
     <div class="modal">
       <div class="modal_header">
         <h1 class="contact_modal_titre">Contactez-moi</h1>
@@ -68,7 +68,7 @@
         </div>
         <div class="formData">
           <label for="message">Votre message</label>
-          <textarea class="text-control" type="text-area" id="message" name="message" aria-label="Your message"></textarea>
+          <textarea class="text-control" id="message" name="message" aria-label="Your message"></textarea>
         </div>
         <p id="erreur"></p>
         <button class="contact_button" aria-label="Send">Envoyer</button>
@@ -77,10 +77,10 @@
   </div>
   <div id="lightbox_modal" aria-label="image closeup view" aria-hidden="true" role="dialog">
     <div class="lightbox_modal_contain">
-      <img src="assets/icons/closeRed.svg" aria-label="Close dialog" id="lightbox_modal_close" class="lightbox_modal_close"/>
-      <img src="assets/icons/arrow.svg" aria-label="Previous Image" class="lightbox_modal_arrow lightbox_modal_arrow_left" id="lightbox_modal_arrow_left"/>
+      <img src="assets/icons/closeRed.svg" alt="Previous Image" aria-label="Close dialog" id="lightbox_modal_close" class="lightbox_modal_close"/>
+      <img src="assets/icons/arrow.svg" alt="Previous Image" aria-label="Previous Image" class="lightbox_modal_arrow lightbox_modal_arrow_left" id="lightbox_modal_arrow_left"/>
       <div class="lightbox_modal_media" aria-label="Lilac breasted roller"></div>
-      <img src="assets/icons/arrow.svg" aria-label="Next Image" class="lightbox_modal_arrow lightbox_modal_arrow_right" id="lightbox_modal_arrow_right"/>
+      <img src="assets/icons/arrow.svg" alt="Next Image" aria-label="Next Image" class="lightbox_modal_arrow lightbox_modal_arrow_right" id="lightbox_modal_arrow_right"/>
     </div>
   </div>
   <script type="module" src="/scripts/pages/photographer.js"></script>
