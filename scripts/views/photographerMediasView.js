@@ -46,6 +46,19 @@ class PhotographerMediasView extends PhotographerPageComponentView {
   }
 
   /**
+   * Function used to add an event listener on the like buttons of the images
+   * @param {function} handler handler function when we click on a like button for an image
+   * @returns {undefined} No returned value by the function
+   * @this {Object} the current PhotographerFilterFormView instance calling the addHandlerClick function
+   * @author Werner Schmid
+   */
+  addHandlerLikeImage(handler) {
+    this._mediaViews.forEach(mediaView => {
+      mediaView.view.addHandlerLike(handler);
+    });
+  }
+
+  /**
    * Function used to add an event listener when we click on the filter form
    * @param {function} handler Function that will be called when the mouseup event happens on the form
    * @returns {undefined} No returned value by the function

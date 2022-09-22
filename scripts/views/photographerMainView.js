@@ -131,6 +131,17 @@ class PhotographerMainView extends PhotographerPageComponentView {
   addHandlerSubmitFilterForm(handler) {
     photographerMediasView.addHandlerSubmitFilterForm(handler);
   }
+
+  /**
+   * Function used to add an event listener on the like buttons of the images
+   * @param {function} handler handler function when we click on a like button for an image
+   * @returns {undefined} No returned value by the function
+   * @this {Object} the current PhotographerFilterFormView instance calling the addHandlerClick function
+   * @author Werner Schmid
+   */
+  addHandlerLikeImage(handler) {
+    photographerMediasView.addHandlerLikeImage(handler);
+  }
 }
 
 /**

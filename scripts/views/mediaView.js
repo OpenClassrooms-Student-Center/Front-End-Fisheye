@@ -34,10 +34,12 @@ export default class MediaView extends View {
           <span class="card-media__nb-likes" aria-label="Nombre de likes">${
             this._data.likes
           }</span>
-          <a href="/media/${
+          <a href="#" class="card-media__like" role="link" aria-label="Liker l'image" data-id="${
             this._data.id
-          }/like" class="card-media__like" role="link" aria-label="Liker l'image">
-            <svg class="icon-heart icon-heart--filled" role="img" aria-label="likes">
+          }" data-liked="${this._data.liked ? true : false}">
+            <svg class="icon-heart ${
+              this._data.liked ? 'icon-heart--filled' : ''
+            }" role="img" aria-label="likes">
               <use xlink:href="assets/icons/heart.svg#icon-heart"></use>
             </svg>
           </a>
@@ -45,6 +47,24 @@ export default class MediaView extends View {
       </div>
     </article>
         `;
+  }
+
+  /**
+   * Function used to add an event listener on the like buttons of the images
+   * @param {function} handler handler function when we click on a like button for an image
+   * @returns {undefined} No returned value by the function
+   * @this {Object} the current PhotographerFilterFormView instance calling the addHandlerClick function
+   * @author Werner Schmid
+   */
+  addHandlerLike(handler) {
+    this._parentElement.addEventListener('click', event => {
+      event.preventDefault();
+      event.stopImmediatePropagation();
+      const likeBtn = event.target.closest('.card-media__like');
+      if (!likeBtn) return;
+
+      handler(likeBtn);
+    });
   }
 
   /**

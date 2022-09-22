@@ -318,6 +318,41 @@ const submitFilterForm = (filterForm, photographerFactory) => {
 };
 
 /**
+ * Function that takes care of registering the like of the user on a media
+ * @param {HTMLElement} likeBtn Like btn link that was clicked
+ * @returns {undefined} No returned value by the function
+ * @author Werner Schmid
+ */
+const likeImage = likeBtn => {
+  const totalLikesSpan = document.querySelector('.main__photographer-nb-likes');
+  let totalLikes = Number.parseInt(totalLikesSpan.textContent);
+  const mediaId = Number.parseInt(likeBtn.dataset.id);
+  const newStatus = likeBtn.dataset.liked === 'true' ? false : true;
+
+  const nbLikesElement = likeBtn.parentElement.querySelector(
+    '.card-media__nb-likes'
+  );
+  let nbLikes = Number.parseInt(nbLikesElement.textContent);
+
+  // Store / Remove the like from the data (model function)
+  const likeResult = model.likeImage(mediaId, newStatus);
+  if (likeResult === 0) return;
+
+  // Update the number of likes on the media
+  nbLikesElement.textContent = nbLikes + likeResult;
+
+  // Fill the like heart
+  likeBtn
+    .querySelector('svg')
+    .classList[newStatus ? 'add' : 'remove']('icon-heart--filled');
+  // Set the media data-liked attribute to the new status
+  likeBtn.dataset.liked = newStatus;
+
+  // Re-render the photographer description likes
+  totalLikesSpan.textContent = totalLikes + likeResult;
+};
+
+/**
  * Function used to handle the navigation in the site without reloading the page
  * @returns {undefined} No returned value by the function
  * @author Werner Schmid
@@ -374,8 +409,11 @@ const renderComponents = async () => {
         controlSelectFilterOption
       );
       photographerMainView.addHandlerSubmitFilterForm(submitFilterForm);
+      photographerMainView.addHandlerLikeImage(likeImage);
+
       formModalView.addHandlerClick(closeModal);
       formModalView.addHandlerSubmit(submitFormModalForm);
+
       lightBoxModalView.addHandlerClick(closeLightBox, navigateToAdjacentImage);
       return;
     }
