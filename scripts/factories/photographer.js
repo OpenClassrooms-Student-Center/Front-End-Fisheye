@@ -4,8 +4,12 @@ function photographerFactory(data) {
     const picture = `assets/photographers/${portrait}`;
     
     function getUserCardDOM() {
-        const article = document.createElement( 'article' );
+        
+        const article = document.createElement( 'a' );
+        const idPhotographer = id;
+        article.setAttribute("href", '/photographer-page.html?id='+`${idPhotographer}`)
         article.setAttribute("tabindex", 0  )
+        article.classList.add("article")
         const img = document.createElement( 'img' );
         img.setAttribute("src", picture)
         const h2 = document.createElement( 'h2' );
@@ -17,17 +21,18 @@ function photographerFactory(data) {
         h4.textContent = tagline;
         const prix = document.createElement('div');
         prix.textContent = `${price}€/jour`;
-        const idPhotographer = id;
+        
         article.appendChild(img);
         article.appendChild(h2);
         article.appendChild(h3);
         article.appendChild(h4);
-        article.appendChild(prix);     
-       //fonction onclick sur l'image d'un photographe, qui ouvre sa page en récupérant son id
-        img.onclick = function () {     
-            window.location = '/photographer-page.html?id='+`${idPhotographer}`;
-        }
+        article.appendChild(prix);    
+        
+        
+        
+
         return (article);
+       
     }
     function getPhotographerCard() {
         document.querySelector(

@@ -34,42 +34,43 @@ h1 {
     margin-top: 100px;
 }
 
-.photographer_section article {
+.photographer_section .article {
     justify-self: center;
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
+    text-decoration:none;
 }
 
-.photographer_section article h2 {
+.photographer_section .article h2 {
     color: #D3573C;
     font-size: 36px;
     margin-bottom: 0;
-
+    
     
 }
 /*style créé pour le reste des articles*/
-.photographer_section article h3 {
+.photographer_section .article h3 {
     color: #901C1C;
     font-size: 24px;
     margin-top: 0;
     margin-bottom: 0;
 }
-.photographer_section article h4 {
+.photographer_section .article h4 {
     color: #525252;
     font-size: 18px;
     margin-top: 0;
     margin-bottom: 0;
 }
-.photographer_section article div {
+.photographer_section .article div {
     color: #757575;
     font-size: 12px;
     margin-top: 0;
     margin-bottom: 0;
 }
 
-.photographer_section article img {
+.photographer_section .article img {
     height: 200px;
     width: 200px;
     border-radius: 50%;

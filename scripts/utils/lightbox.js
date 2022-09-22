@@ -36,99 +36,111 @@ function initLightbox() {
         </video>
         `;
   }
-  mediasHTML.forEach((mediaHtml) => {
-    mediaHtml.addEventListener("click", (e) => {
-      let index = medias.findIndex((element) => {
-        //function qui retourne l'index
-        return element.id == mediaHtml.dataset.id;
-      });
-      let media = medias[index];
-      let title = medias[index].title;
-      //ajoute la classe active pour afficher la lightbox
-      lightbox.classList.add("active");
-      //création de la div pour la lightbox
-      lightbox.innerHTML = '<div class="content-lightbox"></div>';
-      //condition qui affiche une image ou une vidéo
-      if (mediaHtml.tagName === "VIDEO") {
-        displayVideo(media);
-      } else {
-        displayImage(media);
-      }
-      //créé les élements dans le DOM
-      lightbox.appendChild(closeMedia);
-      lightbox.appendChild(previousMedia);
-      lightbox.appendChild(nextMedia);
-      lightbox.appendChild(titleMedia);
-      document.querySelector(".title-media").innerHTML = title;
-      //focus sur la croix de fermeture
-      document.querySelector(".close-media").focus();
+  function openLightBox(mediaHtml){
+    let index = medias.findIndex((element) => {
+      //function qui retourne l'index
+      return element.id == mediaHtml.dataset.id;
+    });
+    let media = medias[index];
+    let title = medias[index].title;
+    //ajoute la classe active pour afficher la lightbox
+    lightbox.classList.add("active");
+    //création de la div pour la lightbox
+    lightbox.innerHTML = '<div class="content-lightbox"></div>';
+    //condition qui affiche une image ou une vidéo
+    if (mediaHtml.tagName === "VIDEO") {
+      displayVideo(media);
+    } else {
+      displayImage(media);
+    }
+    //créé les élements dans le DOM
+    lightbox.appendChild(closeMedia);
+    lightbox.appendChild(previousMedia);
+    lightbox.appendChild(nextMedia);
+    lightbox.appendChild(titleMedia);
+    document.querySelector(".title-media").innerHTML = title;
+    //focus sur la croix de fermeture
+    document.querySelector(".close-media").focus();
 
-      //evenement au click sur la fleche nextMedia
-      document.querySelector(".next-media").addEventListener("click", (e) => {
+    //evenement au click sur la fleche nextMedia
+    document.querySelector(".next-media").addEventListener("click", (e) => {
+      nextMediaEvent();
+    });
+    
+    //evenement au click sur la fleche previous media
+    document.querySelector(".previous-media").addEventListener("click", (e) => {
+        previousMediaEvent();
+      });
+    //evenement flèche droite
+    lightbox.addEventListener("keydown", (e) => {
+      if (e.key == "ArrowRight") {
         nextMediaEvent();
-      });
-      
-     
-
-      //evenement au click sur la fleche previous media
-      document.querySelector(".previous-media").addEventListener("click", (e) => {
-          previousMediaEvent();
-        });
-      //evenement flèche droite
-      lightbox.addEventListener("keydown", (e) => {
-        if (e.key == "ArrowRight") {
-          nextMediaEvent();
-        }
-      });
-
-      //evenement flèche gauche
-      lightbox.addEventListener("keydown", (e) => {
-        if (e.key == "ArrowLeft") {
-          previousMediaEvent();
-        }
-      });
-      //evenement touche echap
-      lightbox.addEventListener("keydown", (e) => {
-        if (e.key == "Escape") {
-          //console.log("click")
-          lightbox.classList.remove("active");
-          lightbox.innerHTML = "";
-        }
-      });
-      //fonctions
-      function nextMediaEvent() {
-        if (index < medias.length - 1) {
-          index++;
-        } else {
-          index = 0;
-        }
-
-        let med = medias[index];
-        //changement du titre du média
-        document.querySelector(".title-media").innerHTML = med.title;
-        //changement de l'image, vérification si c'es une image ou vidéo
-        if (medias[index].video) {
-          displayVideo(medias[index]);
-        } else {
-          displayImage(medias[index]);
-        }
-      }
-      function previousMediaEvent() {
-        if (index > 0) {
-          index--;
-        } else {
-          index = medias.length - 1;
-        }
-        document.querySelector(".title-media").innerHTML = medias[index].title;
-
-        if (medias[index].video) {
-          displayVideo(medias[index]);
-        } else {
-          displayImage(medias[index]);
-        }
       }
     });
-  });
+
+    //evenement flèche gauche
+    lightbox.addEventListener("keydown", (e) => {
+      if (e.key == "ArrowLeft") {
+        previousMediaEvent();
+      }
+    });
+    //evenement touche echap
+    lightbox.addEventListener("keydown", (e) => {
+      if (e.key == "Escape") {
+        //console.log("click")
+        lightbox.classList.remove("active");
+        lightbox.innerHTML = "";
+      }
+    });
+    //fonctions
+    function nextMediaEvent() {
+      if (index < medias.length - 1) {
+        index++;
+      } else {
+        index = 0;
+      }
+
+      let med = medias[index];
+      //changement du titre du média
+      document.querySelector(".title-media").innerHTML = med.title;
+      //changement de l'image, vérification si c'es une image ou vidéo
+      if (medias[index].video) {
+        displayVideo(medias[index]);
+      } else {
+        displayImage(medias[index]);
+      }
+    }
+    function previousMediaEvent() {
+      if (index > 0) {
+        index--;
+      } else {
+        index = medias.length - 1;
+      }
+      document.querySelector(".title-media").innerHTML = medias[index].title;
+
+      if (medias[index].video) {
+        displayVideo(medias[index]);
+      } else {
+        displayImage(medias[index]);
+      }
+    }
+  }
+  mediasHTML.forEach((mediaHtml) => {
+    mediaHtml.addEventListener("click", (e) => {
+      openLightBox(mediaHtml);
+    });
+
+    mediaHtml.addEventListener("keydown", (e) => {
+      if(e.key === "Enter"){
+        openLightBox(mediaHtml);
+      }
+    })
+  }
+  //lightbox au clavier
+  
+
+
+  );
 }
 //timer pour attendre le chargement des médias
 function myTimeout(){
