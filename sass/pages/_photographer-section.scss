@@ -1,0 +1,47 @@
+.photographer_section {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 70px;
+    margin-top: 100px;
+
+    article {
+        justify-self: center;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+    
+        h2 {
+            color: #D3573C;
+            font-size: 2em;
+            font-weight: 500;
+            margin: 0;
+        }
+        
+        img {
+            height: 200px;
+            width: 200px;
+            border-radius: 50%;
+            object-fit: cover;
+            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+            
+        }
+
+        p {
+            margin: 0;
+            font-size: 0.7em;
+        }
+    }
+
+    &__location {
+        color: #D3573C;
+    }
+
+    // &__tagline {
+
+    // }
+
+    &__price {
+        color: grey;
+    }
+}

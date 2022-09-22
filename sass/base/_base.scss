@@ -1,0 +1,24 @@
+body {
+    font-family: "DM Sans", sans-serif;
+    margin: 0;
+}
+
+
+header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    margin: 2rem;
+    height: 90px;
+
+    .logo {
+        height: 50px;
+        margin-left: 100px;
+    }
+
+    h1 {
+        color: #901C1C;
+        margin-right: 100px;
+    }
+}
