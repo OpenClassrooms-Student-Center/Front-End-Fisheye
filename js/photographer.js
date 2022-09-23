@@ -1,20 +1,26 @@
 import Api from './class/Api.js'
 import Photographer from './class/Photographer.js'
 import FormContact from './class/FormContact.js'
+import Media from './class/Media.js';
+import CardInfos from './class/CardInfos.js';
+import SortDropDown from './class/SortDropDown.js';
 
 /* ENG: Targets */
 /* FRA: Cibles */
 
 const photographerTarget = document.getElementById('photographer-profile');
+const mediaTarget = document.getElementById('gallery');
+const cardInfosTarget = document.getElementById('card-infos');
+const sortTarget = document.getElementById('sort');
 
 /* ENG: Functions */
 /* FRA: Fonctions */
 
 const dispatch = (element, target) => {
     if (element.id == target.id) {
-        target.parentNode.replaceChild(element, target);
+        target.parentNode.replaceChild(element, target)
     } else {
-        target.appendChild(element);
+        target.appendChild(element)
     }
 }
 
@@ -50,6 +56,22 @@ let photographer = new Photographer(Api.getPhotographerById(photographerId));
 Photographer.instances.forEach(photographer => {
     dispatch(photographer.element, photographerTarget);
 })
+
+const sort = new SortDropDown();
+
+dispatch(sort.getView(), sortTarget);
+
+/* ENG: Get photographer's media */
+/* FRA: Obtenir les media d'un photographe */
+const medias = Api.getPhotographerMedia(photographerId);
+
+medias.forEach(media => new Media(media, mediaTarget));
+
+Media.sortBy(SortDropDown.value);
+
+const cardInfos = new CardInfos(photographer.price);
+
+dispatch(cardInfos.getView(), cardInfosTarget)
 
 /* ENG: Contact Form Initialization */
 /* FR: Initialisation du formulaire de contact */

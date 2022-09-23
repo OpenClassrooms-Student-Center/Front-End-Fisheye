@@ -1,0 +1,37 @@
+.sort{ display: none; }
+
+@media screen and (min-width: 950px){
+
+    .sort{
+        display: flex;
+        align-items: baseline;
+        gap: 20px;
+        margin-top: 15px;
+    
+        &__label{ font-size: 1.125rem; }
+    
+        &__wrapper{
+            display: inline-block;
+            position: relative;
+    
+            .sort-btn{
+                display: inline-flex;
+                justify-content: space-around;
+                align-items: center;
+            }
+    
+            .sort-btn:after{
+                content: "";
+                border: solid $white;
+                border-width: 0 3px 3px 0;
+                display: inline-block;
+                padding: 4px;
+                transform: rotate(45deg) translate3d(-25%, -25%, 0);
+            }
+            .sort-btn:hover::after{
+                border: solid $black;
+                border-width: 0 3px 3px 0;
+            }
+        }
+    }
+}

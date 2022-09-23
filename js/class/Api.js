@@ -60,4 +60,13 @@
             return res || Error.print("Ce photographe n'existe pas", true);
         }
     }
+
+    /**
+     * ENG: Get photogapher's media
+     * FRA: Obtenir les media d'un photographe par son id
+     * @param {number} id 
+     */
+    static getPhotographerMedia = (id) => {
+        return Api.medias.filter(media => media.photographerId == id)
+    }
 }
