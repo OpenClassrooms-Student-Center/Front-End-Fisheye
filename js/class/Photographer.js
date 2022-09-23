@@ -4,7 +4,7 @@ import FormContact from "./FormContact.js";
  * class Photographer
  */
 export default class Photographer {
-    /* ENG: Instances will stock all photographers */
+    /* ENG: Instances will store all photographers */
     /* FR: Instances stockera tous les photographes */
     static instances = [];
     /* ENG: When we have nothing to show about photographers and it's empty, we display the div */

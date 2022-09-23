@@ -25,11 +25,11 @@
             console.log('Data introuvable', `status code: ${request.status}`);
         }
 
-        /* ENG: Stock json data from the request into a variable */
+        /* ENG: Store json data from the request into a variable */
         /* FRA: Stocker les données json de la requête dans une variable */
         const data =  await request.json();
 
-        /* ENG: Stock photographers data into the static photographers into Api class */
+        /* ENG: Store photographers data into the static photographers into Api class */
         /* FRA: Stocker les données des photographes dans static photographers dans Api class */
         Api.photographers = data.photographers;
         Api.medias = data.media;
@@ -57,7 +57,7 @@
 
         if (!isNaN(id)) {
             const res = Api.photographers.find(photographer => photographer.id === id)
-            return res || Error.print("Ce photographe n'existe pas", true);
+            return res;
         }
     }
 

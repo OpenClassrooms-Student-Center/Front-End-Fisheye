@@ -1,9 +1,11 @@
 import CardInfos from "./CardInfos.js"
 
 export default class Media {
-    
+
+    /* ENG: Target Element gallery */
+    /* FR: Cible de l'élement gallery */
     static target;
-    /* ENG: Instances will stock all medias */
+    /* ENG: Instances will store all medias */
     /* FR: Instances stockera tous les medias */
     static instances = [];
     /* ENG: Total likes number (displayed on the card photographer info) */
@@ -44,7 +46,6 @@ export default class Media {
         /* ENG: Store the specific view into the element */
         /* FRA: Sotck la vue specifique dans l'element */
         this.element = this.getView();
-        console.log(target)
         /* ENG: Target is the target where we'll store all the medias  to display them */
         /* FRA: Target est la cible on l'on va stocker tout les medias pour les afficher */
         Media.target = target
@@ -142,15 +143,23 @@ export default class Media {
         footer.setAttribute('class', 'media__infos')
         footer.innerHTML = `<p class="media__infos__title">${this.title}</p>`;
 
+        /* ENG: We create a div about the like */
+        /* FRA: On créer une div concernant le like */
         let like = document.createElement('div');
         like.setAttribute('class', 'media__infos__likes');
 
+        /* ENG: This span will be inside the div like */
+        /* FRA: Cette span sera à l'intérieur de la div like */
         let likeNb = document.createElement('span');
         likeNb.setAttribute('class', 'media__infos__likes-nb');
         likeNb.innerHTML = this.likes;
 
+        /* ENG: We store the span iin a variable likeCount preceded by a this */
+        /* FRA: on stock la span dans une variable likeCount précédé d'un this */
         this.likeCount = likeNb;
 
+        /* ENG: we append the child about the div like */
+        /* FRA: on fait apparaitre l'enfant à propos de la div like */
         like.appendChild(likeNb);
         like.appendChild(this.getLikeBtn());
         footer.appendChild(like);
@@ -161,12 +170,16 @@ export default class Media {
     }
 
     getLikeBtn = () => {
+        /* ENG: Like button from fontawesome */
+        /* FRA: Boutton like de fontawesome */
         let likeBtn = document.createElement('i');
         likeBtn.setAttribute('class', 'far fa-heart media__infos__likes-icon');
         likeBtn.setAttribute('aria-label', 'likes');
         likeBtn.setAttribute('role', 'button');
         likeBtn.setAttribute('tabindex', '0');
 
+        /* ENG: On click like button play the like function */
+        /* FRA: Sur le lick du boutton like on joue la fonction like */
         likeBtn.addEventListener('click', this.like);
         /* ENG: If we press Enter on the heart icon, we can like the content */
         /* FRA: Si on appuie sur Entrée sur l'icon du coeur, on peut liker le contenu */
