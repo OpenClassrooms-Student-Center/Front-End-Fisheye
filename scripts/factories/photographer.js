@@ -15,8 +15,10 @@ function photographerFactory(data) {
         // return article;
 
         return document.createRange().createContextualFragment(
-                            `<article id=""photographer--${id}">
-                                <img src="assets/photographers/${portrait}" alt="portrait de ${portrait}">
+                            `<article id="${id}">
+                                <a class="test" href="#">
+                                    <img src="assets/photographers/${portrait}" alt="portrait de ${portrait}">
+                                </a>
                                 <h2>${name}</h2>
                                 <p class="photographer_section__location">${city}, ${country}</p>
                                 <p class="photographer_section__tagline">${tagline}s</p>

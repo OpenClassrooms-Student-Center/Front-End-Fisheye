@@ -50,6 +50,7 @@ header h1 {
 .photographer_section article p {
   margin: 0;
   font-size: 0.7em;
+  font-weight: 600;
 }
 .photographer_section__location {
   color: #D3573C;
