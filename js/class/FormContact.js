@@ -74,6 +74,7 @@ const init = () => {
 
         if (validate() == true) {
             let data = new FormData(contactForm);
+            console.log(data.entries())
             console.group('Données du formulaire');
             for(let entry of data.entries()) {
                 const name = entry[0];
@@ -90,39 +91,35 @@ const init = () => {
 
 /**
  * @param {HTMLElement} field 
- * @returns {boolean}
  */
-function minLengthValidator(field) {
+function minLengthElementStyle(field) {
     console.log(field)
     field.parentElement.removeAttribute("data-success", formSuccess.valid);
     field.parentElement.setAttribute("data-error", formErrors.names.minLength);
-    return false;
 }
 
 /**
  * @param {HTMLElement} field 
- * @returns {boolean}
  */
-function emptyValidator(field) {
+function emptyElementStyle(field) {
     field.parentElement.removeAttribute("data-success", formSuccess.valid);
     field.parentElement.setAttribute("data-error", formErrors.empty);
-    return false;
 }
 
 /**
  * @param {HTMLElement} field 
- * @returns {boolean}
  */
-function successValidator(field) {
+function successElementStyle(field) {
     field.parentElement.removeAttribute("data-error");
     field.parentElement.setAttribute("data-success", formSuccess.valid);
-    return true;
 }
 
-function emptyEmailValidator(field) {
+/**
+ * @param {HTMLElement} field 
+ */
+function emptyEmailElementStyle(field) {
     field.parentElement.removeAttribute("data-success");
     field.parentElement.setAttribute("data-error", formErrors.email.empty);
-    return false;
 }
 
 /* ENG: Simple string or textarea checker */
@@ -133,20 +130,24 @@ function emptyEmailValidator(field) {
 function checkSimpleString(field) {
     if(field.nodeName === "INPUT") {
         if (field.value.length < formConstraints.length) {
-            return minLengthValidator(field);
+            minLengthElementStyle(field);
+            return false;
         }
     } else if(field.nodeName === "TEXTAREA") {
         if (field.value.length < formConstraints.length) {
-            return minLengthValidator(field);
+            minLengthElementStyle(field);
+            return false;
         }
     }
 
     if (field.value === '' || field.value === null) {
-        return emptyValidator(field);
+        emptyElementStyle(field);
+        return false;
     }
     
     if(field.value.match(formRegex.string)) {
-        return successValidator(field);
+        successElementStyle(field);
+        return true;
     }
 }
 
@@ -169,14 +170,16 @@ function checkLastName() {
 /* ENG/FRA: Email Check */
 function checkEmail() {    
     if (email.value === '' || email.value === null) {
-        return emptyEmailValidator(email);
+        emptyEmailElementStyle(email);
+        return false;
     }
     
     if(email.value.match(formRegex.email)) {
-        return successValidator(email);
+        successElementStyle(email);
+        return true;
     }
 
-    return emptyEmailValidator(email);
+    return emptyEmailElementStyle(email);
 }
 
 /* ENG/FRA: Message Check */
