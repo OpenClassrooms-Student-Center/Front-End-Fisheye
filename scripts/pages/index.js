@@ -1,5 +1,5 @@
 async function getPhotographers() {
-    // Penser à remplacer par les données récupérées dans le json
+
     const request = './data/photographers.json';
     const photographers = await fetch(request)
                                 .then(response => {
@@ -13,10 +13,8 @@ async function getPhotographers() {
                                 // })
                                 .catch(error => {
                                     // 
-                                });
-
-    // et bien retourner le tableau photographers seulement une fois
-    return ( /*{ photographers: [...photographers] }*/ photographers );
+                                });    
+    return ( photographers );
 }
 
 async function displayData(photographers) {
@@ -25,9 +23,16 @@ async function displayData(photographers) {
     photographers.forEach((photographer) => {
         const photographerModel = photographerFactory(photographer);
         const userCardDOM = photographerModel.getUserCardDOM();
-        console.log(userCardDOM.firstChild);
+        // console.log(userCardDOM.firstChild);
         photographersSection.appendChild(userCardDOM);
     });
+                                
+    const list = document.getElementsByClassName("test");
+    for (const el of list) {
+        el.addEventListener('click', () => {
+            console.log(photographers.filter(obj => { return obj.id == el.parentElement.id }));
+        });
+    }
 };
 
 async function init() {
@@ -37,4 +42,13 @@ async function init() {
 };
 
 init();
-    
+
+// document.getElementsByClassName('test').forEach(element => console.log(element.className));
+// console.log(document.getElementsByClassName('test'));
+
+// Array.from(document.getElementsByClassName("test")).forEach(function(item) {
+//     console.log(item.id);
+//  });
+//     element.addEventListener('click', () => {
+//     console.log(element.className);
+// }));
