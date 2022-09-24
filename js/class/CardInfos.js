@@ -20,8 +20,8 @@ export default class CardInfos {
         `<span id="counter-likes" class="nb-likes">${Media.totalLikes}</span>
         <i class="fas fa-heart" aria-label="likes"></i>`
 
-        container.appendChild(counterLike)
-        container.innerHTML += `<p>${this.price}€ / jour</p>`
+        container.appendChild(counterLike);
+        container.innerHTML = container.innerHTML + `<p>${this.price}€ / jour</p>`
 
         return container
     }

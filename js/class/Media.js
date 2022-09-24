@@ -51,7 +51,7 @@ export default class Media {
         Media.target = target
         /* ENG: Total like incrementation */
         /* FRA: Incrementation du total de like */
-        Media.totalLikes += this.likes;
+        Media.totalLikes = Media.totalLikes + this.likes; /* (or Media.totalLikes += this.likes) */
         /* ENG: Put informations into the instance */
         /* FRA: Met les informations sur les medias dans l'instance */
         Media.instances = [...Media.instances, this];
@@ -89,17 +89,17 @@ export default class Media {
         if (this.liked) {
             /* ENG: remove 1 to the media total like */
             /* FRA: enleve 1 au total de like d'un media */
-            this.likes -= 1;
+            this.likes = this.likes - 1; /* (or this.likes -= 1) */
             /* ENG: remove 1 to the total likes */
             /* FRA: enleve 1 au total de likes */
-            Media.totalLikes -= 1;
+            Media.totalLikes = Media.totalLikes - 1; /* (or Media.totalLikes -= 1) */
         } else {
             /* ENG: add 1 to the media total like */
             /* FRA: ajoute 1 au total de like d'un media */
-            this.likes += 1;
+            this.likes = this.likes + 1; /* (or this.likes += 1) */
             /* ENG: add 1 to the total likes */
             /* FRA: ajoute 1 au total de likes */
-            Media.totalLikes += 1;
+            Media.totalLikes = Media.totalLikes + 1; /* (or Media.totalLikes += 1) */
         }
 
         /* ENG: Toggle for filling the heart or not */
@@ -155,7 +155,7 @@ export default class Media {
         likeNb.innerHTML = this.likes;
 
         /* ENG: We store the span iin a variable likeCount preceded by a this */
-        /* FRA: on stock la span dans une variable likeCount précédé d'un this */
+        /* FRA: On stock la span dans une variable likeCount précédé d'un this */
         this.likeCount = likeNb;
 
         /* ENG: we append the child about the div like */
@@ -183,7 +183,7 @@ export default class Media {
         likeBtn.addEventListener('click', this.like);
         /* ENG: If we press Enter on the heart icon, we can like the content */
         /* FRA: Si on appuie sur Entrée sur l'icon du coeur, on peut liker le contenu */
-        likeBtn.addEventListener('keydown', (e)=> {
+        likeBtn.addEventListener('keydown', (e) => {
             if (e.key === "Enter") {
                 this.like();
             }

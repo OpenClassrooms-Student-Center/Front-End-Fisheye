@@ -22,11 +22,11 @@
         /* ENG: If the request is not ok we display a message and the status code */
         /* FRA: Si la requête n'est pas correct on affiche un message et le code du status */
         } else if (!request.ok) {
-            console.log('Data introuvable', `status code: ${request.status}`);
+            console.log('Data no found', `status code: ${request.status}`);
         }
 
         /* ENG: Store json data from the request into a variable */
-        /* FRA: Stocker les données json de la requête dans une variable */
+        /* FRA: Stocker les données json de la requête dan une variable */
         const data =  await request.json();
 
         /* ENG: Store photographers data into the static photographers into Api class */
