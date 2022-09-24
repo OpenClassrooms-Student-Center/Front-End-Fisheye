@@ -461,7 +461,6 @@ body {
 .card-infos {
   position: fixed;
   display: flex;
-  /* gap: 20px; */
   background-color: #DB8876;
   border-radius: 5px 5px 0 0;
   padding: 2px 15px;
@@ -477,6 +476,8 @@ body {
 
 @media screen and (min-width: 950px) {
   .card-infos {
+    left: unset;
+    transform: unset;
     gap: 65px;
     right: 35px;
     padding: 20px 30px;
