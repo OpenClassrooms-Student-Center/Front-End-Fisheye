@@ -1,19 +1,20 @@
 .card-infos {
     position: fixed;
     display: flex;
-    gap: 20px;
+    /* gap: 20px; */
     background-color: $secondary-color;
     border-radius: $border-radius $border-radius 0 0;
-    padding: 2px 10px;
+    padding: 2px 15px;
     font-size: 1rem;
     font-weight: 500;
     bottom: 0;
     left: 50%;
     transform: translate3d(-50%, 0, 0);
 
-    .nb-likes{
-        margin-right: 15px;
+    p {
+        margin-left: 5px;
     }
+
 }
 
 @media screen and (min-width: 950px){
@@ -22,5 +23,9 @@
         right: 35px;
         padding: 20px 30px;
         font-size: 1.5rem;
+    }
+    
+    .nb-likes{
+        margin-right: 15px;
     }
 }
