@@ -1,12 +1,6 @@
-export default class SortDropDown {
+export default class SortDropDownSelector {
     constructor() {
-        this.item = {
-            popularity: "Popularité",
-            date: "Date",
-            title: "Titre"
-        }
         this.defaultBtnValue = "Popularité"
-        this.state = false
     }
 
     static value = "popularity"

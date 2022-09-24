@@ -3,7 +3,7 @@ import Photographer from './class/Photographer.js'
 import FormContact from './class/FormContact.js'
 import Media from './class/Media.js';
 import CardInfos from './class/CardInfos.js';
-import SortDropDown from './class/SortDropDown.js';
+import SortDropDownSelector from './class/SortDropDownSelector.js';
 
 /* ENG: Targets */
 /* FRA: Cibles */
@@ -57,7 +57,7 @@ Photographer.instances.forEach(photographer => {
     dispatch(photographer.element, photographerTarget);
 })
 
-const sort = new SortDropDown();
+const sort = new SortDropDownSelector();
 
 dispatch(sort.getView(), sortTarget);
 
@@ -67,7 +67,7 @@ const medias = Api.getPhotographerMedia(photographerId);
 
 medias.forEach(media => new Media(media, mediaTarget));
 
-Media.sortBy(SortDropDown.value);
+Media.sortBy(SortDropDownSelector.value);
 
 const cardInfos = new CardInfos(photographer.price);
 
