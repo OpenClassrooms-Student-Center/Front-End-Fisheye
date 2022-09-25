@@ -1,4 +1,4 @@
-import FormContact from './FormContact.js'
+import FormContact from './FormContact.js';
 
 /**
  * class Photographer
@@ -6,40 +6,40 @@ import FormContact from './FormContact.js'
 export default class Photographer {
   /* ENG: Instances will store all photographers */
   /* FR: Instances stockera tous les photographes */
-  static instances = []
+  static instances = [];
   /* ENG: When we have nothing to show about photographers and it's empty, we display the div */
   /* FRA: Quand on n'a rien à montrer sur les photographes et que c'est vide, on affiche la div */
-  static emptyTarget = document.getElementById('no-photographer')
+  static emptyTarget = document.getElementById('no-photographer');
 
   constructor (data) {
     /* ENG: Data id */
     /* FRA: Donnée id */
-    this.id = data.id
+    this.id = data.id;
     /* ENG: Data photographer profile image */
     /* FRA: Donnée concernant la photo profil du photographe */
-    this.portrait = data.portrait
+    this.portrait = data.portrait;
     /* ENG: Data photographer's name */
     /* FRA: Donnée du nom du photographe */
-    this.name = data.name
+    this.name = data.name;
     /* ENG: Data photographer's city */
     /* FRA: Donnée de la ville du photographe */
-    this.city = data.city
+    this.city = data.city;
     /* ENG: Data photographer's country */
     /* FRA: Donnée du pays du photographe */
-    this.country = data.country
+    this.country = data.country;
     /* ENG: Data photographer's tagline */
     /* FRA: Donnée de la tagline du photographe */
-    this.tagline = data.tagline
+    this.tagline = data.tagline;
     /* ENG: Data photographer's price per day */
     /* FRA: Donnée  sur le prix par jour du photographe */
-    this.price = data.price
+    this.price = data.price;
     /* ENG: Put informations into the instance */
     /* FRA: Met les informations sur les photographes dans l'instance */
-    Photographer.instances = [...Photographer.instances, this]
+    Photographer.instances = [...Photographer.instances, this];
     /* ENG: store the specific view into the element (card view on homepage or header view on photographer profile) */
     /* FRA: Stock la vue specifique dans l'element (La vue de la card sur la page de la homepage ou la vue du header dans le profile du photographe) */
-    this.element = this.getView()
-  }
+    this.element = this.getView();
+  };
 
   /**
    * ENG: This function choose the photographer's view according the returned page
@@ -49,8 +49,8 @@ export default class Photographer {
   getView = () => {
     /* ENG: Get the url content after the '/' */
     /* FRA : Récupère le contenu de l'url après le '/' */
-    let path = window.location.pathname.split('/')
-    path = path[path.length - 1]
+    let path = window.location.pathname.split('/');
+    path = path[path.length - 1];
 
     switch (path) {
       /* ENG: This following code was necessary for the good function of the switch */
@@ -59,15 +59,15 @@ export default class Photographer {
       /* FR: Dans le cas de la homepage qui est la card avec les informations du photographe */
       case '':
       case 'index.html':
-        return this.thumbnail() /* ENG: Photographer card view into homepage */ /* FRA: Card avec les informations du photographer sur le homepage */
+        return this.thumbnail(); /* ENG: Photographer card view into homepage */ /* FRA: Card avec les informations du photographer sur le homepage */
         /* break */
       case 'photographer.html':
-        return this.profile()
+        return this.profile();
         /* break */
       default:
-        break
+        break;
     }
-  }
+  };
 
   /**
    * ENG: Photographer card element view on the home page
@@ -75,8 +75,8 @@ export default class Photographer {
    * @returns {HTMLElement}
    */
   thumbnail = () => {
-    const element = document.createElement('article')
-    element.setAttribute('class', 'photographer-thumbnail')
+    const element = document.createElement('article');
+    element.setAttribute('class', 'photographer-thumbnail');
 
     element.innerHTML =
     `
@@ -89,10 +89,10 @@ export default class Photographer {
         <p class="photographer__infos__tagline">${this.tagline}</p>
         <p class="photographer__infos__price">${this.price}€/jour</p>
       </div>
-    `
+    `;
 
-    return element
-  }
+    return element;
+  };
 
   /**
    * ENG: Photographer profile element view on the photographer's page
@@ -102,22 +102,22 @@ export default class Photographer {
   profile = () => {
     /* FR: Elements du profil */
     /* ENG: Profile elements */
-    const container = document.createElement('section')
-    container.setAttribute('id', 'photographer-profile')
-    container.setAttribute('class', 'photographer-profile')
+    const container = document.createElement('section');
+    container.setAttribute('id', 'photographer-profile');
+    container.setAttribute('class', 'photographer-profile');
 
-    const infosElement = document.createElement('div')
-    infosElement.setAttribute('class', 'photographer__infos')
+    const infosElement = document.createElement('div');
+    infosElement.setAttribute('class', 'photographer__infos');
 
-    const contactBtn = document.createElement('button')
-    contactBtn.setAttribute('id', 'contact-btn')
-    contactBtn.setAttribute('class', 'btn photographer__btn')
-    contactBtn.innerHTML = 'Contactez-moi'
+    const contactBtn = document.createElement('button');
+    contactBtn.setAttribute('id', 'contact-btn');
+    contactBtn.setAttribute('class', 'btn photographer__btn');
+    contactBtn.innerHTML = 'Contactez-moi';
 
-    const pictureElement = document.createElement('img')
-    pictureElement.setAttribute('class', 'photographer__img')
-    pictureElement.setAttribute('alt', this.name)
-    pictureElement.setAttribute('src', `assets/images/photographers/${this.portrait}`)
+    const pictureElement = document.createElement('img');
+    pictureElement.setAttribute('class', 'photographer__img');
+    pictureElement.setAttribute('alt', this.name);
+    pictureElement.setAttribute('src', `assets/images/photographers/${this.portrait}`);
 
     /* ENG: Infos Content Element */
     /* FR: Contenu de l'element infos */
@@ -126,18 +126,18 @@ export default class Photographer {
       <h1 class="photographer__infos__name">${this.name}</h1>
       <p class="photographer__infos__city">${this.city}, ${this.country}</p>
       <p class="photographer__infos__tagline">${this.tagline}</p>
-    `
+    `;
 
     /* ENG: Add previous created element to the container */
     /* FR: Ajout des elements créé précédement au container */
-    container.appendChild(infosElement)
-    container.appendChild(contactBtn)
-    container.appendChild(pictureElement)
+    container.appendChild(infosElement);
+    container.appendChild(contactBtn);
+    container.appendChild(pictureElement);
 
     /* ENG: Add event listener on the button click to open contact form */
     /* FR: Ajout d'une écoute d'evenement sur le clique du boutton pour ouvrir le formulaire de contact */
-    contactBtn.addEventListener('click', () => FormContact.open())
+    contactBtn.addEventListener('click', () => FormContact.open());
 
-    return container
-  }
+    return container;
+  };
 }
