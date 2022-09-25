@@ -598,30 +598,6 @@
         }
     ]
 
-// TO DELETE      return ({
-// TO DELETE          media: photographers, medias
-// TO DELETE     })
-// TO DELETE  }
-/*
-function georgi(media) {
-    console.log('georgi est saoulé');
-    const mediaSection = document.querySelector ("body");
-
-    media.forEach((media) => {
-        const mediaModel = mediaFactory(media);
-        const mediaCardDOM = mediaModel.getMediaCardDOM();
-        mediaSection.appendChild(mediaCardDOM);
-    });
-}
-
-async function georgiRecup() {
-    const { photographers, medias} = await georgiGetAll();
-    georgi(photographers, medias);
-};
-
-georgiRecup();
-*/ 
-
 
 // Récupérer les parametres de l'url
 const paramsString = window.location.search;
@@ -639,3 +615,5 @@ const currentPhotographerMedias = medias.filter(mediaPhotographer => mediaPhotog
 // .filter s'applique dataPhotographers.media (données json importé plus haut) ; il filtre les mediaPhotographer qui ont un photograherId equivalent à mes parametres d'id dans l'url
 // mediasFactory(currentPhotographerMedias)
 console.log(currentPhotographerMedias)
+
+

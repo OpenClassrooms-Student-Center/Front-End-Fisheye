@@ -15,21 +15,32 @@
   </header>
   <main id="main">
     <div class="photograph-header">
-      <!-- créer mes div -->
       <div class="photograph_info">
-        <div class="name">
-          <!-- <h1>Le nom</h1> -->
-          <div class="city">
-            <div class="tagline">
-            </div>
-          </div>
+        <div class="name"></div>
+        <div class="city"></div>
+        <div class="tagline"></div>
+      </div>
+      <button class="contact_button" onclick="displayModal()">Contactez-moi</button>
+      <div class="picture_photographer">
+      </div>
+    </div>
+    <div class="sortBy">
+      <div class="sortBy_text">
+        <p>Trier par</p>
+      </div>
+      <div class="sortBy_dropdown">
+        <button class="dropdown_button" onclick="openDropdown()">Popularité</button>
+        <div class="dropdown_content">
+          <hr>
+          <a href="#">Date</a>
+          <hr>
+          <a href="#">Titre</a>
         </div>
-
+      </div>
     </div>
-    <button class="contact_button" onclick="displayModal()">Contactez-moi</button>
-    <div class="picture_photographer">
+    <div class="thumbnail">
+      <div class="thumbnail_section"></div>
     </div>
-  </div>
   </main>
   <div id="contact_modal">
     <div class="modal">
