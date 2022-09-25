@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "sass": "sass --watch ./sass/main.scss:./css/style.css"
+    "sass": "sass --watch ./sass/main.scss:./css/style.css",
+    "lint": "eslint --max-warnings=0 ."
   },
   "repository": {
     "type": "git",
@@ -15,5 +16,12 @@
   "bugs": {
     "url": "https://github.com/AxelRaboit/OpenClassRooms-Front-End-Fisheye/issues"
   },
-  "homepage": "https://github.com/AxelRaboit/OpenClassRooms-Front-End-Fisheye#readme"
+  "homepage": "https://github.com/AxelRaboit/OpenClassRooms-Front-End-Fisheye#readme",
+  "devDependencies": {
+    "eslint": "^8.24.0",
+    "eslint-config-standard": "^17.0.0",
+    "eslint-plugin-import": "^2.26.0",
+    "eslint-plugin-n": "^15.3.0",
+    "eslint-plugin-promise": "^6.0.1"
+  }
 }
