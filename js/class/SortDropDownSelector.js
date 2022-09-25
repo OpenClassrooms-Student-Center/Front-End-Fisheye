@@ -1,9 +1,11 @@
 export default class SortDropDownSelector {
     constructor() {
+        /* ENG: Set a default dropdown button value */
+        /* FRA: Définir une valeur par defaut pour le bouton dropdown */
         this.defaultBtnValue = "Popularité"
     }
 
-    static value = "popularity"
+    static value = "popularity";
 
     getView = () => {
         let sortView = document.createElement('div');
@@ -22,9 +24,6 @@ export default class SortDropDownSelector {
         let sortBtn = document.createElement('button');
         sortBtn.setAttribute('id', 'sort-btn');
         sortBtn.setAttribute('class', 'btn sort-btn');
-        sortBtn.setAttribute('aria-expanded', 'false');
-        sortBtn.setAttribute('aria-haspopup', 'listbox');
-        sortBtn.setAttribute('labelledby', 'sort-label');
         sortBtn.innerHTML = this.defaultBtnValue;
         this.btn = sortBtn;
         sortBtn.addEventListener('click', this.toggleDropDown);
