@@ -112,6 +112,7 @@ export default class Photographer {
     const contactBtn = document.createElement('button');
     contactBtn.setAttribute('id', 'contact-btn');
     contactBtn.setAttribute('class', 'btn photographer__btn');
+    contactBtn.setAttribute('aria-label', 'Contacter le photographe');
     contactBtn.innerHTML = 'Contactez-moi';
 
     const pictureElement = document.createElement('img');

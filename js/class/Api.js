@@ -21,7 +21,7 @@ export default class Api {
     /* ENG: If the request is not ok we display a message and the status code */
     /* FRA: Si la requête n'est pas correct on affiche un message et le code du status */
     } else if (!request.ok) {
-      console.log('Data no found', `status code: ${request.status}`);
+      console.log('Data not found', `status code: ${request.status}`);
     };
 
     /* ENG: Store json data from the request into a variable */
@@ -42,7 +42,8 @@ export default class Api {
    * @returns {object}
    */
   static getAllPhotographers = () => {
-    return Api.photographers;
+    const res = Api.photographers;
+    return res;
   };
 
   /**
@@ -66,7 +67,11 @@ export default class Api {
    * @param {number} id
    */
   static getPhotographerMedia = (id) => {
-    id = parseInt(id);
-    return Api.medias.filter(media => media.photographerId === id);
+    id = parseInt(id, 10);
+
+    if (!isNaN(id)) {
+      const res = Api.medias.filter(media => media.photographerId === id);
+      return res;
+    }
   };
 }
