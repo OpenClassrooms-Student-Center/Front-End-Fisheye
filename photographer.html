@@ -8,6 +8,7 @@
     <link href="https://fonts.googleapis.com/css?family=DM+Sans&display=swap" rel="stylesheet">
     <link href="css/style.css" rel="stylesheet" type="text/css" />
     <script src="js/photographer.js" type="module"></script>
+    <script src="https://kit.fontawesome.com/443b62fe90.js" crossorigin="anonymous"></script>
     <title>Fisheye - Photographe</title>
     </head>
 <body>
@@ -18,10 +19,24 @@
     </header>
 
     <main class="main">
+        
         <section id="photographer-profile">
             <!-- Element Injection -->
         </section>
+
+        <div id="sort">
+            <!-- Element Injection -->
+        </div>
+        
+        <section id="gallery" class="gallery">
+            <!-- Element Injection -->
+        </section>
+
     </main>
+
+    <aside id="card-infos">
+        <!-- Injection de l'élément généré avec JavaScript ici -->
+    </aside>
 
     <aside id="modal-form" class="form-contact" tabindex="0" aria-label="Modal de contact" >
         <div class="form-contact__container">
@@ -43,7 +58,7 @@
                     <label for="message">Votre message</label>
                     <textarea class="text-control" name="message" id="form-message"></textarea>
                 </div>
-                <button type="submit" id="submitForm" class="btn btn-submit">Envoyer</button>
+                <button aria-label="Envoyer le formulaire"  type="submit" id="submitForm" class="btn btn-submit">Envoyer</button>
             </form>
             <button id="closeModal" class="close" aria-label="fermer le formulaire">
             </button>
