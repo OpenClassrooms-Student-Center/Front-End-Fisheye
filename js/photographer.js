@@ -71,13 +71,8 @@ dispatch(sort.getView(), sortTarget);
 /* FRA: Obtenir les media d'un photographe */
 const medias = Api.getPhotographerMedia(photographerId);
 
-medias.forEach(media => {
-  if (media.image) {
-    new Image(media, mediaTarget);
-  } else {
-    new Video(media, mediaTarget);
-  }
-});
+medias.filter(media => media.image).forEach(media => new Image(media, mediaTarget));
+medias.filter(media => media.video).forEach(media => new Video(media, mediaTarget));
 
 Media.sortBy(SortDropDownSelector.value);
 

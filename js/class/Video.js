@@ -64,12 +64,8 @@ export default class Video extends Media {
    * @returns {HTMLElement}
    */
   getThumbnail = () => {
-    if (this.video) {
-      return `<video class="media__link__video" aria-label="${this.title}">
-          <source src="assets/images/${this.photographerId}/${this.video}" type="video/mp4">
-      </video>`;
-    };
-
-    return "<p>Aucun média n'a été trouvé</p>";
+    return `<video class="media__link__video" aria-label="${this.title}">
+      <source src="assets/images/${this.photographerId}/${this.video}" type="video/mp4">
+    </video>`;
   };
 }

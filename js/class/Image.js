@@ -66,9 +66,6 @@ export default class Image extends Media {
    * @returns {HTMLElement}
    */
   getThumbnail = () => {
-    if (this.img) {
-      return `<img class="media__link__img" src="assets/images/${this.photographerId}/${this.img}" alt="${this.title}">`;
-    };
-    return "<p>Aucun média n'a été trouvé</p>";
+    return `<img class="media__link__img" src="assets/images/${this.photographerId}/${this.img}" alt="${this.title}">`;
   };
 }
