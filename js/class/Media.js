@@ -70,6 +70,13 @@ export default class Media {
   static sortBy = (params) => {
     const element = [...Media.instances];
     switch (params) {
+      case 'date':
+        element.sort((a, b) => new Date(b.date) - new Date(a.date));
+        break;
+      case 'title':
+        element.sort((a, b) => a.title.localeCompare(b.title));
+        break;
+
       default:
         element.sort((a, b) => a.likes - b.likes);
         break;
@@ -173,10 +180,13 @@ export default class Media {
     /* FRA: Boutton like de fontawesome */
     const likeBtn = document.createElement('i');
     likeBtn.setAttribute('class', 'far fa-heart media__infos__likes-icon');
+    /* ENG: The aria-label attribute is used to define a non-visible legend associated with an HTML element whose meaning is conveyed only by the visual. */
+    /* FRA: L'attribut aria-label est utilisé pour définir une légende non-visible associée à un élément HTML dont le sens est transmis uniquement par le visuel. */
     likeBtn.setAttribute('aria-label', 'likes');
     likeBtn.setAttribute('role', 'button');
+    /* ENG: tabindex will allow to make the element focusable in a precise order or to avoid it */
+    /* FRA: tabindex va permettre de rendre l'element focusable dans un ordre précis ou bien de l'éviter */
     likeBtn.setAttribute('tabindex', '0');
-
     /* ENG: On click like button play the like function */
     /* FRA: Sur le lick du boutton like on joue la fonction like */
     likeBtn.addEventListener('click', this.like);

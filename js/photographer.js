@@ -17,7 +17,11 @@ const sortTarget = document.getElementById('sort');
 /* FRA: Fonctions */
 
 const dispatch = (element, target) => {
+  /* ENG: Compare the element id which is example div id and the target div id */
+  /* FRA: Compare l'élement id qui est par exemple la div id et la target du div id */
   if (element.id === target.id) {
+    /* ENG: Take the target parent and replace the child (the parent in this case will be the section in the html) */
+    /* FRA: Prend la target du parent et remplace son enfant (le parent dans ce cas sera la section se trouvant dans le html) */
     target.parentNode.replaceChild(element, target);
   } else {
     target.appendChild(element);

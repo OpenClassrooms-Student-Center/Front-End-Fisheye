@@ -109,6 +109,15 @@ export default class Photographer {
     const infosElement = document.createElement('div');
     infosElement.setAttribute('class', 'photographer__infos');
 
+    /* ENG: Infos Content Element */
+    /* FR: Contenu de l'element infos */
+    infosElement.innerHTML =
+    `
+      <h1 class="photographer__infos__name">${this.name}</h1>
+      <p class="photographer__infos__city">${this.city}, ${this.country}</p>
+      <p class="photographer__infos__tagline">${this.tagline}</p>
+    `;
+
     const contactBtn = document.createElement('button');
     contactBtn.setAttribute('id', 'contact-btn');
     contactBtn.setAttribute('class', 'btn photographer__btn');
@@ -120,14 +129,6 @@ export default class Photographer {
     pictureElement.setAttribute('alt', this.name);
     pictureElement.setAttribute('src', `assets/images/photographers/${this.portrait}`);
 
-    /* ENG: Infos Content Element */
-    /* FR: Contenu de l'element infos */
-    infosElement.innerHTML =
-    `
-      <h1 class="photographer__infos__name">${this.name}</h1>
-      <p class="photographer__infos__city">${this.city}, ${this.country}</p>
-      <p class="photographer__infos__tagline">${this.tagline}</p>
-    `;
 
     /* ENG: Add previous created element to the container */
     /* FR: Ajout des elements créé précédement au container */
