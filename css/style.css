@@ -522,6 +522,32 @@ body {
     border: solid #000;
     border-width: 0 3px 3px 0;
   }
+  .sort__wrapper .sort-list {
+    display: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: #901c1c;
+    padding: 0 10px;
+    color: #FFF;
+    font-size: 1.25rem;
+    font-weight: 500;
+    border-radius: 5px;
+    z-index: 100;
+  }
+  .sort__wrapper .sort-list__item {
+    line-height: 49px;
+    padding: 10px;
+    cursor: pointer;
+    border-bottom: 2px solid #FFF;
+  }
+  .sort__wrapper .sort-list__item:last-child {
+    border-bottom: 0px;
+  }
+  .sort__wrapper.open .sort-btn::after {
+    transform: rotate(-135deg) translate3d(-10%, -10%, 0);
+  }
 }
 /* Fonts */
 /* Colors */
