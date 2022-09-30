@@ -27,24 +27,12 @@ export default class Media {
     /* ENG: Media title */
     /* FRA: Titre du media */
     this.title = data.title;
-    /* ENG: Media image */
-    /* FRA: Image du media */
-    this.img = data.image;
-    /* ENG: Media video */
-    /* FRA: Video du media */
-    this.video = data.video;
     /* ENG: Media price */
     /* FRA: Prix du media */
     this.price = data.price;
-    /* ENG: Media alt */
-    /* FRA: Alt du media */
-    this.alt = data.alt;
     /* ENG: Media liked which is false by default */
     /* FRA: Media liké, est false par defaut */
     this.liked = false;
-    /* ENG: Store the specific view into the element */
-    /* FRA: Sotck la vue specifique dans l'element */
-    this.element = this.getView();
     /* ENG: Target is the target where we'll store all the medias  to display them */
     /* FRA: Target est la cible on l'on va stocker tout les medias pour les afficher */
     Media.target = target;
@@ -125,56 +113,6 @@ export default class Media {
     CardInfos.updateTotalLike();
   };
 
-  /**
-   * ENG: This function will return the media card
-   * FRA: Cette fonction va retourner la vue d'une carte media
-   * @returns {HTMLElement}
-   */
-  getView = () => {
-    const container = document.createElement('article');
-    container.setAttribute('class', 'media');
-
-    const media = document.createElement('a');
-    media.setAttribute('href', '#');
-    media.setAttribute('role', 'button');
-    media.setAttribute('class', 'media__link');
-
-    if (this.video) {
-      media.classList.add('video-overlay');
-    };
-
-    media.innerHTML = this.getThumbnail();
-
-    const footer = document.createElement('footer');
-    footer.setAttribute('class', 'media__infos');
-    footer.innerHTML = `<p class="media__infos__title">${this.title}</p>`;
-
-    /* ENG: We create a div about the like */
-    /* FRA: On créer une div concernant le like */
-    const like = document.createElement('div');
-    like.setAttribute('class', 'media__infos__likes');
-
-    /* ENG: This span will be inside the div like */
-    /* FRA: Cette span sera à l'intérieur de la div like */
-    const likeNb = document.createElement('span');
-    likeNb.setAttribute('class', 'media__infos__likes-nb');
-    likeNb.innerHTML = this.likes;
-
-    /* ENG: We store the span iin a variable likeCount preceded by a this */
-    /* FRA: On stock la span dans une variable likeCount précédé d'un this */
-    this.likeCount = likeNb;
-
-    /* ENG: we append the child about the div like */
-    /* FRA: on fait apparaitre l'enfant à propos de la div like */
-    like.appendChild(likeNb);
-    like.appendChild(this.getLikeBtn());
-    footer.appendChild(like);
-    container.appendChild(media);
-    container.appendChild(footer);
-
-    return container;
-  };
-
   getLikeBtn = () => {
     /* ENG: Like button from fontawesome */
     /* FRA: Boutton like de fontawesome */
@@ -201,26 +139,5 @@ export default class Media {
     this.likeBtn = likeBtn;
 
     return likeBtn;
-  };
-
-  /**
-   * ENG: Image / video element of the media card
-   * FRA: Element image / video de la carte media
-   * @returns {HTMLElement}
-   */
-  getThumbnail = () => {
-    /* ENG: If it's an image return image tag, if it's a video then return video tag */
-    /* FRA: Si c'est une image on retourne une balise image, si c'est une video on retourne une balise video */
-    if (this.img) {
-      return `<img class="media__link__img" src="assets/images/${this.photographerId}/${this.img}" alt="${this.title}">`;
-    };
-
-    if (this.video) {
-      return `<video class="media__link__video" aria-label="${this.title}">
-          <source src="assets/images/${this.photographerId}/${this.video}" type="video/mp4">
-      </video>`;
-    };
-
-    return "<p>Aucun média n'a été trouvé</p>";
   };
 }
