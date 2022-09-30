@@ -1,7 +1,7 @@
 import Media from './Media.js';
 
 export default class Video extends Media {
-  constructor(data, target) {
+  constructor (data, target) {
     super(data, target);
     /* ENG: Media video */
     /* FRA: Video du media */
@@ -9,14 +9,14 @@ export default class Video extends Media {
     /* ENG: Store the specific view into the element */
     /* FRA: Sotck la vue specifique dans l'element */
     this.element = this.getView();
-  }
+  };
 
   /**
    * ENG: This function will return the media card
    * FRA: Cette fonction va retourner la vue d'une carte media
    * @returns {HTMLElement}
    */
-   getView = () => {
+  getView = () => {
     const container = document.createElement('article');
     container.setAttribute('class', 'media');
 
@@ -63,13 +63,13 @@ export default class Video extends Media {
    * FRA: Element image / video de la carte media
    * @returns {HTMLElement}
    */
-     getThumbnail = () => {  
-      if (this.video) {
-        return `<video class="media__link__video" aria-label="${this.title}">
-            <source src="assets/images/${this.photographerId}/${this.video}" type="video/mp4">
-        </video>`;
-      };
-  
-      return "<p>Aucun média n'a été trouvé</p>";
+  getThumbnail = () => {
+    if (this.video) {
+      return `<video class="media__link__video" aria-label="${this.title}">
+          <source src="assets/images/${this.photographerId}/${this.video}" type="video/mp4">
+      </video>`;
     };
+
+    return "<p>Aucun média n'a été trouvé</p>";
+  };
 }

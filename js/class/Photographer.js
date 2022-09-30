@@ -129,7 +129,6 @@ export default class Photographer {
     pictureElement.setAttribute('alt', this.name);
     pictureElement.setAttribute('src', `assets/images/photographers/${this.portrait}`);
 
-
     /* ENG: Add previous created element to the container */
     /* FR: Ajout des elements créé précédement au container */
     container.appendChild(infosElement);
