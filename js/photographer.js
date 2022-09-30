@@ -2,6 +2,8 @@ import Api from './class/Api.js';
 import Photographer from './class/Photographer.js';
 import FormContact from './class/FormContact.js';
 import Media from './class/Media.js';
+import Image from './class/Image.js';
+import Video from './class/Video.js';
 import CardInfos from './class/CardInfos.js';
 import SortDropDownSelector from './class/SortDropDownSelector.js';
 
@@ -69,7 +71,13 @@ dispatch(sort.getView(), sortTarget);
 /* FRA: Obtenir les media d'un photographe */
 const medias = Api.getPhotographerMedia(photographerId);
 
-medias.forEach(media => new Media(media, mediaTarget));
+medias.forEach(media => {
+  if (media.image) {
+    new Image(media, mediaTarget);
+  } else {
+    new Video(media, mediaTarget);
+  }
+});
 
 Media.sortBy(SortDropDownSelector.value);
 
