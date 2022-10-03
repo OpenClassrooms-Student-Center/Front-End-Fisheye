@@ -34,47 +34,62 @@
 
 .sortBy_text {
    margin-right: 25px;
+   font-weight: bold;
 }
 
-.sortBy_dropdown {
-    position: relative;
-    display: inline-block;
-}
-
-.dropdown_button {
-    font-size: 20px;
-    font-weight: bold;
+/*TEST DROPDOWN*/
+.dropdown_button{
+    background-color: #901C1C;
     color: white;
     padding: 11px;
-    width: 170px;
-    height: 70px;
+    font-size: 20px;
+    font-weight: bold;
     border: none;
-    background-color: #901C1C;
-    border-radius: 5px;
     cursor: pointer;
-    transition: 0.7s;
-}
-
-.dropdown_button:hover {
-    background-color: #DB8876;
-    color: #000000;
-}
-
-.dropdown_content {
+    border-radius: 5px;
+  }
+  
+  .dropdown {
+    position: relative;
+    display: inline-block;
+  }
+  
+  .dropdown-content {
     display: none;
     position: absolute;
     background-color: #901C1C;
-    border-radius: 0 0 5px 5px;
-    width: 170px;
+    color: #ffffff;
+    margin-top: -2px;
+    width: 100%;
     box-shadow: 0px 3px 2px 0px rgba(0,0,0,0.2);
-    z-index: 1; 
-}
-.dropdown_content a {
-    color:#FAFAFA;
+    border-radius: 0 0 5px 5px;
+    z-index: 1;
+  }
+  
+  .dropdown-content a {
+    color: white;
     padding: 12px 16px;
     text-decoration: none;
     display: block;
+    border-top: 1px solid;
   }
+  
+  .dropdown-content a:hover {
+      background-color: #DB8876;
+      color: #ffffff;
+  }
+  
+  .dropdown:hover .dropdown-content {
+    display: block;
+  }
+  
+  .dropdown:hover .dropdown_button {
+    background-color: #DB8876;
+  }
+
+  /* - - - - -  - -  - - - */
+
+  
 
 .contact_button {
     font-size: 20px;
@@ -101,6 +116,26 @@
     grid-template-columns: 1fr 1fr 1fr;
     gap: 70px;
     margin-top: 100px;
+}
+
+.thumbnail_section article {
+    justify-self: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.thumbnail_section article h2 {
+    color: #D3573C;
+    font-size: 36px;
+}
+
+.thumbnail_section article img {
+    border-radius: 5px;
+    object-fit: cover;
+    height: 200px;
+    width: 200px;
 }
 
 /*MODAL*/
