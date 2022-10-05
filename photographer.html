@@ -1,37 +1,100 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <link href="css/style.css" rel="stylesheet" type="text/css" />
-    <meta charset="utf-8">
-    <link rel="icon" type="image/png" href="assets/favicon.png">
-    <link href="https://fonts.googleapis.com/css?family=DM+Sans&display=swap" rel="stylesheet">
-    <title>Fisheye - photographe </title>
-  </head>
-  <body>
-    <header>
+<html lang="fr">
+
+<head>
+  <link href="css/style.css" rel="stylesheet" type="text/css" />
+  <meta charset="utf-8" />
+  <link rel="icon" type="image/png" href="assets/favicon.png" />
+  <link href="https://fonts.googleapis.com/css?family=DM+Sans&display=swap" rel="stylesheet" />
+  <script src="https://kit.fontawesome.com/716860e1f2.js" crossorigin="anonymous"></script>
+  <title>Fisheye - photographe</title>
+</head>
+
+<body>
+  <header>
+    <a href="index.html">
       <img src="assets/images/logo.png" class="logo" />
-    </header>
-    <main id="main">
-      <div class="photograph-header">
-        <button class="contact_button" onclick="displayModal()">Contactez-moi</button>
+    </a>
+  </header>
+  <main id="main">
+    <!--header photographer-->
+    <div class="photographer-header"></div>
+    <!-- Dropdown nav-->
+    <nav class="dropdown">
+      <h2>Trier par</h2>
+      <div class="select">
+        <button id="select-btn" aria-labelledby="select_option" aria-expanded="false" aria-haspopup="listbox"><img
+            id="arrow-down" src="assets/icons/arrow_down.svg" /></button>
+        <ul role="listbox" aria-labelledby="select_option">
+          <li role="option" aria-labelledby="select_option1" aria-selected="true">Popularité</li>
+          <li role="option" aria-labelledby="select_option2">Date</li>
+          <li role="option" aria-labelledby="select_option3">Titre</li>
+        </ul>
       </div>
-    </main>
-    <div id="contact_modal">
-			<div class="modal">
-				<header>
-          <h2>Contactez-moi</h2>
-          <img src="assets/icons/close.svg" onclick="closeModal()" />
-        </header>
-				<form>
-					<div>
-						<label>Prénom</label>
-						<input />
-					</div>
-          <button class="contact_button">Envoyer</button>
-				</form>
-			</div>
-		</div>
-    <script src="/scripts/pages/photographer.js"></script>
-    <script src="/scripts/utils/contactForm.js"></script>
-  </body>
+    </nav>
+
+    <div id="image-select">
+      <select>
+        <option value="Popularité">Popularité</option>
+        <option value="Date">Date</option>
+        <option value="Titre">Titre</option>
+      </select>
+    </div>
+
+    <!--section cards images-->
+    <section id="section"></section>
+  </main>
+  <!--Modal Formulaire-->
+  <!--<div class="contact"></div>-->
+  <div class="contact_modal" id="open-modal">
+    <div class="overlay"></div>
+    <div class="modal">
+      <header id="header-form">
+        <h2 id="title-form">Contactez-moi <br></h2>
+        <img src="assets/icons/close.svg" onclick="closeModal()" />
+      </header>
+      <form name="contact" action="photographer.html" method="get" onsubmit="">
+        <div class="formData">
+          <label for="prenom">Prénom</label>
+          <input class="text-control" type="text" id="prenom" name="prenom" aria-labelledby="prenom" minlength="2" />
+        </div>
+        <div class="formData">
+          <label for="nom">Nom</label>
+          <input class="text-control" type="text" id="nom" name="nom" aria-labelledby="nom" />
+        </div>
+        <div class="formData">
+          <label for="email">E-mail</label>
+          <input class="text-control" type="email" id="email" name="email" aria-labelledby="email" />
+        </div>
+        <div class="formData">
+          <label for="message">Votre message</label>
+          <textarea id="message" name="message" rows="4" required minlength="5" aria-labelledby="message" /></textarea>
+        </div>
+        <button class="contact_button" aria-label="Envoi du formulaire">Envoyer</button>
+      </form>
+    </div>
+  </div>
+  <!--Bloc total likes-->
+  <div class="bloc-stat"></div>
+  <!--Modal Lightbox-->
+  <div class="lightbox">
+    <img class="close-lightbox" src="assets/icons/close_lightbox.svg" />
+    <a class="left-arrow"><img src="assets/icons/arrow_left.svg" /></a>
+    <a class="right-arrow"><img src="assets/icons/arrow_right.svg" /></a>
+    <div class="lightbox-container">
+      <img src="assets/images/243/Animals_Rainbow.jpg" width="900" height="900">
+    </div>
+  </div>
+  <!-- Pages -->
+  <script type="module" src="/scripts/pages/photographer.js"></script>
+  <!--<script type="module" src="/scripts/pages/formContact.js"></script>-->
+  <script src="/scripts/utils/contactForm.js"></script>
+  <script src="/scripts/utils/likes.js"></script>
+</body>
+
 </html>
+
+<!-- 
+                                        => return renderImage()
+=> [Contructor]return renderMedia() => this.type 
+                                        => return renderVideo() -->
