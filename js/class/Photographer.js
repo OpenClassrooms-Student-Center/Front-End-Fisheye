@@ -60,10 +60,8 @@ export default class Photographer {
       case '':
       case 'index.html':
         return this.thumbnail(); /* ENG: Photographer card view into homepage */ /* FRA: Card avec les informations du photographer sur le homepage */
-        /* break */
       case 'photographer.html':
         return this.profile();
-        /* break */
       default:
         break;
     }
