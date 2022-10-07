@@ -1,4 +1,5 @@
 import Media from './Media.js';
+import LightBox from './LightBox.js';
 
 export default class Video extends Media {
   constructor (data, target) {
@@ -27,6 +28,10 @@ export default class Video extends Media {
     media.classList.add('video-overlay');
 
     media.innerHTML = this.getThumbnail();
+
+    /* ENG: On click to the media, display the lightbox */
+    /* FRA: Sur le clique du media, on affiche la lightbox */
+    media.addEventListener('click', () => new LightBox(Media.instances, Media.instances.indexOf(this)));
 
     const footer = document.createElement('footer');
     footer.setAttribute('class', 'media__infos');

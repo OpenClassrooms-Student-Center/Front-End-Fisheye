@@ -1,0 +1,83 @@
+.lightbox {
+    position: fixed;
+    inset: 0;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(222, 221, 222, 0.5);
+    z-index: 100;
+
+    &.open {
+        display: flex;
+    }
+
+    &__container {
+        position: relative;
+        background-color: $white;
+        display: inline-grid;
+        grid-template-columns: 40px minmax(130px, calc(100% - 100px)) 40px;
+        grid-template-rows: repeat(2, auto);
+        grid-column-gap: 10px;
+        grid-row-gap: 5px;
+        padding: 0 20px;
+        
+        max-width: 95%;
+
+        i { font-size: 1.5rem; color: $main-color; }
+    
+        .arrow-left { grid-area: 1 / 1 / 3 / 2; align-self: center;}
+        .arrow-right { grid-area: 1 / 3 / 3 / 4; align-self: center;}
+
+        .media-container {
+            grid-area: 1 / 2 / 2 / 3;
+            width: 100%;
+
+            .media {
+                margin-top: 20px;
+                object-fit: cover;
+                width: 100%;
+                max-width: 100%;
+                max-height: calc(100vh - 100px);
+                border-radius: $border-radius;
+            }
+        }
+        
+        .title {
+            grid-area: 2 / 2 / 3 / 3;
+            margin-bottom: 20px;
+            font-size: .8rem;
+            color: $main-color;
+        }
+    
+        .close {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            min-width: 40px;
+            min-height: 40px;
+            transform: translate3d(0, -12px, 0);
+        }
+
+        button {
+            background-color: transparent;
+            border: 0px;
+            cursor: pointer;
+        }
+    }
+
+    @media screen and (min-width: 950px) {
+        &__container {
+            grid-column-gap: 35px;
+
+            i { font-size: 3rem; }
+            .title { font-size: 1.75rem; }
+
+            .close {
+                position: absolute;
+                min-width: 40px;
+                min-height: 40px;
+                transform: translate3d(0, -7px, 0);
+            }
+        }
+    }
+}
