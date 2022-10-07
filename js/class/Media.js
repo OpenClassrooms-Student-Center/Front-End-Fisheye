@@ -47,7 +47,7 @@ export default class Media {
   static fill = () => {
     /* ENG: Reset the media target */
     /* FRA: Reset la cible ou on affiche les medias */
-    /* Media.target.innerHTML = ''; */
+    Media.target.innerHTML = '';
     /* ENG: Display the new sorted content */
     /* FRA: Afficher le nouveau contenu trié */
     Media.instances.forEach(media => Media.target.appendChild(media.element));
