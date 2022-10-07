@@ -2,16 +2,14 @@ import Api from './class/Api.js';
 import Photographer from './class/Photographer.js';
 import FormContact from './class/FormContact.js';
 import Media from './class/Media.js';
-import Image from './class/Image.js';
-import Video from './class/Video.js';
 import CardInfos from './class/CardInfos.js';
 import SortDropDownSelector from './class/SortDropDownSelector.js';
+import MediaFactory from './class/MediaFactory.js';
 
 /* ENG: Targets */
 /* FRA: Cibles */
 
 const photographerTarget = document.getElementById('photographer-profile');
-const mediaTarget = document.getElementById('gallery');
 const cardInfosTarget = document.getElementById('card-infos');
 const sortTarget = document.getElementById('sort');
 
@@ -71,8 +69,7 @@ dispatch(sort.getView(), sortTarget);
 /* FRA: Obtenir les media d'un photographe */
 const medias = Api.getPhotographerMedia(photographerId);
 
-medias.filter(media => media.image).forEach(media => new Image(media, mediaTarget));
-medias.filter(media => media.video).forEach(media => new Video(media, mediaTarget));
+MediaFactory.createMedia(medias);
 
 Media.sortBy(SortDropDownSelector.value);
 
