@@ -1,14 +1,14 @@
 import { photographerFactory } from "../factories/photographerFactory.js"
+import { createHeader } from "../templates/header.js"
 
 async function getPhotographers() {
   let photographers = []
   await fetch("../data/photographers.json")
     .then((res) => res.json())
     .then((data) => {
-      console.log(data)
       photographers = data.photographers
-      // const photographersPhotos = photographersData.media
-      // console.log(photographers)
+      const photographersPhotos = data.media
+      // console.log(photographersPhotos)
     })
     .catch((err) => {
       console.error(err)
@@ -17,19 +17,18 @@ async function getPhotographers() {
 }
 
 async function displayData(photographers) {
-  const photographersSection = document.querySelector(
-    ".photographer_section"
-  )
-  console.log(photographers)
   photographers.forEach((photographer) => {
     const photographerModel = photographerFactory(photographer)
     const userCardDOM = photographerModel.getUserCardDOM()
-    photographersSection.appendChild(userCardDOM)
+    document
+      .querySelector(".photographer_section")
+      .appendChild(userCardDOM)
   })
 }
 
 async function init() {
-  // Récupère les datas des photographes
+  // Récupère les datas des photographes et crée le header
+  createHeader("mainPage")
   const photographers = await getPhotographers()
   displayData(photographers)
 }
