@@ -57,6 +57,7 @@ export default class LightBox {
     /* FRA: Création d'un bouton de fermeture de la lightbox */
     const closeBtn = document.createElement('button');
     closeBtn.setAttribute('class', 'close');
+    closeBtn.setAttribute('id', 'close-lightbox');
     closeBtn.setAttribute('aria-label', 'fermer la vue rapproché');
     closeBtn.innerHTML = '<i class="fas fa-times"></i>';
     this.closeBtn = closeBtn;
@@ -77,7 +78,7 @@ export default class LightBox {
   /* ENG: Open the lightbox */
   /* FRA: Ouverture de la lightbox */
   openLightbox = () => {
-    this.target.classList.add('open');
+    this.target.classList.add('open');    
     document.body.classList.add('no-scroll');
     document.addEventListener('keydown', this.keyControl);
     this.target.focus();

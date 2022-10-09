@@ -26,6 +26,7 @@ export default class SortDropDownSelector {
     const sortLabel = document.createElement('span');
     sortLabel.setAttribute('id', 'sort-label');
     sortLabel.setAttribute('class', 'sort__label');
+    sortLabel.setAttribute('tabindex', '0');
     sortLabel.innerHTML = 'Trier par';
 
     const sortWrapper = document.createElement('div');

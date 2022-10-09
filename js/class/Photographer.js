@@ -106,14 +106,15 @@ export default class Photographer {
 
     const infosElement = document.createElement('div');
     infosElement.setAttribute('class', 'photographer__infos');
+    infosElement.setAttribute('tabindex', '0');
 
     /* ENG: Infos Content Element */
     /* FR: Contenu de l'element infos */
     infosElement.innerHTML =
     `
-      <h1 class="photographer__infos__name">${this.name}</h1>
-      <p class="photographer__infos__city">${this.city}, ${this.country}</p>
-      <p class="photographer__infos__tagline">${this.tagline}</p>
+      <h1 class="photographer__infos__name" tabindex="0">${this.name}</h1>
+      <p class="photographer__infos__city" tabindex="0">${this.city}, ${this.country}</p>
+      <p class="photographer__infos__tagline" tabindex="0">${this.tagline}</p>
     `;
 
     const contactBtn = document.createElement('button');

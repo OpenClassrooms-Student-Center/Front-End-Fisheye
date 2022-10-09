@@ -13,6 +13,7 @@ export default class CardInfos {
     const container = document.createElement('aside');
     container.setAttribute('id', 'card-infos');
     container.setAttribute('class', 'card-infos');
+    container.setAttribute('tabindex', '0');
 
     const counterLike = document.createElement('div');
     counterLike.setAttribute('class', 'card-infos__nb-likes');
