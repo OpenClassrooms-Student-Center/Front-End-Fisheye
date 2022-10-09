@@ -1,0 +1,14 @@
+{
+  "name": "fisheye",
+  "version": "1.0.0",
+  "description": "web site for independent photographer",
+  "main": "index.js",
+  "scripts": {
+    "dev": "http-server"
+  },
+  "author": "Piard Sylvian",
+  "license": "ISC",
+  "dependencies": {
+    "http-server": "^14.1.0"
+  }
+}
