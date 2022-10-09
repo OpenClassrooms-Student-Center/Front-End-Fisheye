@@ -128,6 +128,8 @@ export default class LightBox {
     this.id = (this.id + 1 >= this.elements.length) ? 0 : this.id + 1;
     this.current = this.elements[this.id];
     this.title.innerHTML = this.current.title;
+    /* ENG: We replace the old media with the new media */
+    /* FRA: On remplace l'ancien media par le nouveau media */
     this.mediaContainer.replaceChild(this.getMedia(), this.mediaContainer.children[0]);
   };
 
@@ -135,11 +137,14 @@ export default class LightBox {
     this.id = (this.id - 1 === -1) ? this.elements.length - 1 : this.id - 1;
     this.current = this.elements[this.id];
     this.title.innerHTML = this.current.title;
+    /* ENG: We replace the old media with the new media */
+    /* FRA: On remplace l'ancien media par le nouveau media */
     this.mediaContainer.replaceChild(this.getMedia(), this.mediaContainer.children[0]);
   };
 
   /**
-   * Cette fonction créer le html qui contient la media et le retourne
+   * ENG: This function creates the html that contains the media and returns it
+   * FRA: Cette fonction créer le html qui contient la media et le retourne
    * @returns {HTMLElement}
    */
   getMedia = () => {
@@ -153,6 +158,8 @@ export default class LightBox {
     } else {
       media = document.createElement('video');
       media.setAttribute('class', 'media');
+      /* ENG: activation of the buttons to start the video */
+      /* FRA: activation des boutons permettant de démarrer la video */
       media.setAttribute('controls', 'true');
       media.innerHTML = `<source src="assets/images/${this.current.photographerId}/${this.current.video}" type="video/mp4">`;
     };
@@ -163,7 +170,8 @@ export default class LightBox {
   };
 
   /**
-   * Cette fonction ajoute la vue au document
+   * ENG:This function adds the view to the document
+   * FRA: Cette fonction ajoute la vue au document
    */
   render = () => {
     this.target.innerHTML = '';
