@@ -114,30 +114,34 @@ export default class Media {
   };
 
   getLikeBtn = () => {
-    /* ENG: Like button from fontawesome */
-    /* FRA: Boutton like de fontawesome */
-    const likeBtn = document.createElement('i');
-    likeBtn.setAttribute('class', 'far fa-heart media__infos__likes-icon');
-    /* ENG: The aria-label attribute is used to define a non-visible legend associated with an HTML element whose meaning is conveyed only by the visual. */
-    /* FRA: L'attribut aria-label est utilisé pour définir une légende non-visible associée à un élément HTML dont le sens est transmis uniquement par le visuel. */
-    likeBtn.setAttribute('aria-label', 'likes');
-    likeBtn.setAttribute('role', 'button');
+    const containerButton = document.createElement('span');
+    containerButton.setAttribute('role', 'button');
     /* ENG: tabindex will allow to make the element focusable in a precise order or to avoid it */
     /* FRA: tabindex va permettre de rendre l'element focusable dans un ordre précis ou bien de l'éviter */
-    likeBtn.setAttribute('tabindex', '0');
+    containerButton.setAttribute('tabindex', '0');
+    /* ENG: The aria-label attribute is used to define a non-visible legend associated with an HTML element whose meaning is conveyed only by the visual. */
+    /* FRA: L'attribut aria-label est utilisé pour définir une légende non-visible associée à un élément HTML dont le sens est transmis uniquement par le visuel. */
+    containerButton.setAttribute('aria-label', 'likes');
+    containerButton.setAttribute('class', 'media__infos__container-likes');
+    /* ENG: Like button from fontawesome */
+    /* FRA: Boutton like de fontawesome */
+    const likeElement = document.createElement('i');
+    likeElement.setAttribute('class', 'far fa-heart media__infos__likes-icon');
     /* ENG: On click like button play the like function */
     /* FRA: Sur le lick du boutton like on joue la fonction like */
-    likeBtn.addEventListener('click', this.like);
+    likeElement.addEventListener('click', this.like);
     /* ENG: If we press Enter on the heart icon, we can like the content */
     /* FRA: Si on appuie sur Entrée sur l'icon du coeur, on peut liker le contenu */
-    likeBtn.addEventListener('keydown', (e) => {
+    containerButton.addEventListener('keydown', (e) => {
       if (e.key === 'Enter') {
         this.like();
       };
     });
 
-    this.likeBtn = likeBtn;
+    containerButton.appendChild(likeElement);
 
-    return likeBtn;
+    this.likeBtn = likeElement;
+
+    return containerButton;
   };
 }

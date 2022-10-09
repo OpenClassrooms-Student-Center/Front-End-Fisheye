@@ -537,8 +537,10 @@ body {
 .media__infos__title {
   font-size: 0.875rem;
 }
-.media__infos__likes-icon {
+.media__infos__container-likes {
   margin-left: 5px;
+}
+.media__infos__likes-icon {
   cursor: pointer;
 }
 

@@ -52,9 +52,8 @@
 
         &__title { font-size: 0.875rem; }
 
-        &__likes-icon {
-            margin-left: 5px;
-            cursor: pointer;
-        }
+        &__container-likes { margin-left: 5px; }
+
+        &__likes-icon { cursor: pointer; }
     }
 }

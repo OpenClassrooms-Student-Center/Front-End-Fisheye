@@ -36,12 +36,16 @@ const formErrors = {
 /* FRA: Affichage de la modal */
 const displayModal = () => {
   modalForm.classList.add('open');
+  document.body.classList.add('no-scroll');
+  modalForm.focus();
 };
 
 /* ENG: Close modal */
 /* FRA: Fermeture de la modal */
 const closeModal = (e) => {
   modalForm.classList.remove('open');
+  document.body.classList.add('no-scroll');
+  document.getElementById('contact-btn').focus();
 };
 
 /**
