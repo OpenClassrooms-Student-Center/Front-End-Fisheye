@@ -2,7 +2,8 @@
 // ------- Modal -------- //
 
 /**
- * affiche le nom du photographe dans le formulaire
+ * affiche le nom du photographe dans le formulaire 
+ * contact.js
  */
 const displayNameInForm = () => {
     // récup du nom dans le dom
@@ -15,7 +16,10 @@ const displayNameInForm = () => {
 
 // ------Ouuverture Fermeture Modal --------- //
 const contactButton = document.querySelector('.contact_modal');
-
+/**
+ * Ouverture de la modal formulaire
+ * contact.js
+ */
 function displayModal() {
     const openContact = document.getElementById('open-contact')
     openContact.addEventListener('click', (e) => {
@@ -24,12 +28,7 @@ function displayModal() {
         modal.style.display = "block";
     })
 }
-/*
-function displayModal() {
-    console.log('clic');
-    const modal = document.querySelector(".contact_modal");
-    modal.style.display = "block";
-}*/
+
 
 function closeModal() {
     const modal = document.querySelector(".contact_modal");
@@ -67,12 +66,19 @@ let formListener = () => {
 formListener()
 
 /**
- * Affichage du message de confirmation
+ * Console.log de confirmation
  */
 const formSubmit = (orderContact) => {
     console.log(orderContact);
-
+    // majForm
 }
+
+/*
+function displayModal() {
+    console.log('clic');
+    const modal = document.querySelector(".contact_modal");
+    modal.style.display = "block";
+}*/
 
 //------- Si besoin de traité les champs --------//
 /*
