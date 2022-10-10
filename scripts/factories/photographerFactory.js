@@ -6,9 +6,8 @@ export function photographerFactory(data) {
   function getUserCardDOM() {
     const cardContainer = document.createElement("article")
     const cardLink = document.createElement("a")
-    // const descriptionContainer = document.createElement("p")
     createCardProfile(name, cardLink, picture)
-    cardLink.href = "#"
+    cardLink.href = `photographer.html?id=${id}`
     cardLink.ariaLabel = name
     cardContainer.appendChild(cardLink)
     createCardDescription(
@@ -31,18 +30,17 @@ function createCardProfile(name, container, picture) {
   container.appendChild(photographerName)
 }
 
+// Create the lower part of the cards, containing the location, tagline and price of each photographer
 function createCardDescription(photographerInfo, container) {
-  const location = document.createElement("p")
-  const tagline = document.createElement("p")
-  const price = document.createElement("p")
-  console.log(photographerInfo)
-  location.textContent = `${photographerInfo.city}, ${photographerInfo.country}`
-  tagline.textContent = `${photographerInfo.tagline}`
-  price.textContent = `${photographerInfo.price}€/jour`
-  location.classList = "location"
-  tagline.classList = "tagline"
-  price.classList = "price"
-  container.appendChild(location)
-  container.appendChild(tagline)
-  container.appendChild(price)
+  let elementContent = {
+    location: `${photographerInfo.city}, ${photographerInfo.country}`,
+    tagline: `${photographerInfo.tagline}`,
+    price: `${photographerInfo.price}€/jour`,
+  }
+  for (let [key, value] of Object.entries(elementContent)) {
+    const newElement = document.createElement("p")
+    newElement.classList = key
+    newElement.textContent = value
+    container.appendChild(newElement)
+  }
 }
