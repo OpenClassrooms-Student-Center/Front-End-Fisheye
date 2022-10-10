@@ -1,45 +1,47 @@
-    async function getPhotographers() {
-        // Penser à remplacer par les données récupérées dans le json
-        const photographers = [
-            {
-                "name": "Ma data test",
-                "id": 1,
-                "city": "Paris",
-                "country": "France",
-                "tagline": "Ceci est ma data test",
-                "price": 400,
-                "portrait": "account.png"
-            },
-            {
-                "name": "Autre data test",
-                "id": 2,
-                "city": "Londres",
-                "country": "UK",
-                "tagline": "Ceci est ma data test 2",
-                "price": 500,
-                "portrait": "account.png"
-            },
-        ]
-        // et bien retourner le tableau photographers seulement une fois
-        return ({
-            photographers: [...photographers, ...photographers, ...photographers]})
-    }
+/**
+ * This file is used to manage the index page.
+ */
 
-    async function displayData(photographers) {
-        const photographersSection = document.querySelector(".photographer_section");
+import {photographerFactory} from "../factories/photographer.js";
 
-        photographers.forEach((photographer) => {
-            const photographerModel = photographerFactory(photographer);
-            const userCardDOM = photographerModel.getUserCardDOM();
-            photographersSection.appendChild(userCardDOM);
-        });
-    };
+/**
+ * Returns data from photographers
+ * @returns 
+ */
+async function getPhotographers() {
+    let response = fetch("../../data/photographers.json");
+    let data = await (await response).json();
 
-    async function init() {
-        // Récupère les datas des photographes
-        const { photographers } = await getPhotographers();
-        displayData(photographers);
-    };
-    
-    init();
-    
+    // Penser à remplacer par les données récupérées dans le json
+    const photographers = data.photographers;
+    // et bien retourner le tableau photographers seulement une fois
+
+    return ({
+        photographers: [...photographers]
+    })
+}
+
+/**
+ * Displays the different photographer.
+ * @param {*} photographers 
+ */
+async function displayData(photographers) {
+    const photographersSection = document.querySelector(".photographer_section");
+
+    photographers.forEach((photographer) => {
+        const photographerModel = photographerFactory(photographer);
+        const userCardDOM = photographerModel.getUserCardDOM();
+        photographersSection.appendChild(userCardDOM);
+    });
+}
+
+/**
+ * Initialize data.
+ */
+async function init() {
+    // Récupère les datas des photographes
+    const { photographers } = await getPhotographers();
+    displayData(photographers);
+}
+
+init();
