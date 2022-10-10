@@ -24,7 +24,6 @@ function initFiltre(data) {
             arrow.classList.remove("active");
             customSelect.classList.remove("custom-select_active");
             typeSort = options[0];
-            console.log(typeSort);
             sortData(data);
             displayImage(data);
             eventLightbox();

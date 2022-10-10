@@ -33,7 +33,6 @@ async function former() {
         index--;
         replaceContain();
     }
-
 }
 
 /**
@@ -77,8 +76,6 @@ async function resetContainer() {
 async function displayLightbox() {
     let id = this.id;
     const lightbox_modal = document.getElementById("lightbox_modal");
-    console.log(id);
-
     creationListe(id);
     replaceContain()
 
