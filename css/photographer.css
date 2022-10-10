@@ -93,6 +93,11 @@ i {
   margin-top: 3px;
   margin-left: 5px;
   font-size: 20px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+.likes i:hover {
+  transform: scale(1.4);
 }
 /**********Bloc total likes et price********/
 .bloc-stat p {
@@ -123,6 +128,11 @@ i {
   background-color: #901c1c;
   border-radius: 5px;
   cursor: pointer;
+  transition: 0.5s;
+}
+.contact_button:hover {
+  background-color: #d3573c;
+  color: #000000;
 }
 /***** Modal *****/
 .contact_modal {
@@ -246,68 +256,52 @@ form textarea {
 .dropdown {
   display: flex;
   margin-left: 250px;
+  height: 69px;
 }
-.dropdown h2 {
+.dropdown label {
   margin-right: 25px;
+  font-size: 18px;
+  font-weight: 700;
 }
+
+.selector {
+  padding: 1em;
+}
+
+#date,
+#title {
+  border-top: 2px solid white;
+}
+
 #select-btn {
   width: 170px;
+  width: 170px;
+  color: white;
   height: 69px;
   border: none;
-  background: #911c1c;
+  background-color: #911c1c;
   border-radius: 5px;
+  z-index: 100;
   position: relative;
 }
 #arrow-down {
   position: absolute;
   right: 20px;
-  top: 45%;
+  top: 33%;
+  cursor: pointer;
+}
+#selector-bloc {
+  display: none;
 }
 ul {
-  padding-left: 20px;
+  padding-left: 10px;
+  margin: 0;
+  padding-right: 10px;
+  background-color: #911c1c;
+  border-radius: 5px;
 }
 ul li {
+  padding-left: 15px;
   list-style-type: none;
-}
-/**** test en select dropdown ******/
-#image-select {
-  padding: 0;
-  margin: 0;
-  border: 1px solid #ccc;
-  width: 170px;
-  height: 69px;
-  border-radius: 5px;
-  overflow: hidden;
-  background: #911c1c;
-  position: relative;
-}
-#image-select select {
-  padding: 5px 8px;
-  width: 130%;
-  border: none;
-  box-shadow: none;
-  background-color: #db8876;
-  background-image: none;
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  appearance: none;
-}
-#image-select:after {
-  top: 50%;
-  left: 85%;
-  border: solid transparent;
-  content: " ";
-  height: 0;
-  width: 0;
-  position: absolute;
-  pointer-events: none;
-  border-color: rgba(0, 0, 0, 0);
-  border-top-color: #000000;
-  border-width: 5px;
-  margin-top: -2px;
-  z-index: 100;
-}
-
-#image-select select:focus {
-  outline: none;
+  cursor: pointer;
 }
