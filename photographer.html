@@ -20,26 +20,31 @@
     <!--header photographer-->
     <div class="photographer-header"></div>
     <!-- Dropdown nav-->
-    <nav class="dropdown">
-      <h2>Trier par</h2>
-      <div class="select">
-        <button id="select-btn" aria-labelledby="select_option" aria-expanded="false" aria-haspopup="listbox"><img
-            id="arrow-down" src="assets/icons/arrow_down.svg" /></button>
+    <div class="dropdown">
+      <label>Trier par</label>
+      <div id="select-btn" role="button" class="select" aria-labelledby="select_option" aria-haspopup="listbox">
+        <img id="arrow-down" src="assets/icons/arrow_down.svg" />
         <ul role="listbox" aria-labelledby="select_option">
-          <li role="option" aria-labelledby="select_option1" aria-selected="true">Popularité</li>
-          <li role="option" aria-labelledby="select_option2">Date</li>
-          <li role="option" aria-labelledby="select_option3">Titre</li>
+          <li id="popularity" class='selector' role="option" aria-labelledby="select_option1">Popularité</li>
+          <ul id="selector-bloc">
+            <li id="date" class="selector" role="option" aria-labelledby="select_option2">Date</li>
+            <li id="title" class="selector" role="option" aria-labelledby="select_option3">Titre</li>
+          </ul>
+
         </ul>
       </div>
-    </nav>
-
-    <div id="image-select">
-      <select>
-        <option value="Popularité">Popularité</option>
-        <option value="Date">Date</option>
-        <option value="Titre">Titre</option>
-      </select>
     </div>
+
+    <!--Select Dropdown nav-->
+    <!--<label for="image-select">Trier par</label>
+    <select name="image-select" id="image-select">
+      <option value="Popularité">Popularité</option>
+      <option value="Date">Date</option>
+      <option value="Titre">Titre</option>
+    </select>
+
+    -->
+
 
     <!--section cards images-->
     <section id="section"></section>
@@ -90,6 +95,7 @@
   <!--<script type="module" src="/scripts/pages/formContact.js"></script>-->
   <script src="/scripts/utils/contactForm.js"></script>
   <script src="/scripts/utils/likes.js"></script>
+  <script src="/scripts/utils/dropdown.js"></script>
 </body>
 
 </html>
