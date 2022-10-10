@@ -26,7 +26,7 @@ class AppFactory {
         // Récupération Photographe header et bloc stat template
         const headerTemplate = photographerModel.getPhotographerHeaderTemplate()
         const blocStatTemplate = photographerModel.getCardInfo()
-        console.log(blocStatTemplate);
+
         // Récuperation des éléments du dom
         const element = document.querySelector('.photographer-header')
         const eltBlocStat = document.querySelector('.bloc-stat')
@@ -39,10 +39,9 @@ class AppFactory {
         //---------------------------------------------------//
         //-- Affiche le nom du photographe dans le formulaire
         displayNameInForm()
+
         //------------------------------//
         // -- Ouvrture Modal -- //
-        const openContact = document.getElementById('open-contact')
-        console.log(openContact);
         displayModal()
 
         // ----------------------------------------------- //
@@ -51,9 +50,11 @@ class AppFactory {
         // récup les datas media
         const dataMedia = await this.Api.getMediaOnePhotographer(photographerId)
 
-        // on fabrique le photographe
+        // on fabrique les medias (renvoi le tableau des medias)
         let mediasList = dataMedia.map(media => new Media(media))
         console.log(mediasList)
+        // ---Trie par Popularité
+        sortLikes(mediasList)
         // render des medias
         let forIndex = ''
         let totalLikes = 0
@@ -66,6 +67,8 @@ class AppFactory {
         })
         const eltParent = document.getElementById('section')
         eltParent.insertAdjacentHTML('beforeend', forIndex)
+
+        //------------------------------------//
         // render total des likes
         // récup l élément html
         const blocStat = document.querySelector('.bloc-stat')
@@ -81,7 +84,7 @@ class AppFactory {
         blocStat.insertAdjacentHTML('afterbegin', totalLikesTemplate)
 
         //*****************************************************
-        //*********  TEST FONCTION LIKES A isoler dans likes.js***********/
+        //*********  TEST FONCTION LIKES isoler dans likes.js***********/
         console.log(totalLikes);
         // ---Traitement des likes et totalLikes
         addLikes()
