@@ -267,6 +267,9 @@ form textarea {
 .selector {
   padding: 1em;
 }
+.active {
+  color: aqua;
+}
 
 #date,
 #title {
@@ -275,23 +278,36 @@ form textarea {
 
 #select-btn {
   width: 170px;
-  width: 170px;
   color: white;
-  height: 69px;
+  height: 59px;
   border: none;
   background-color: #911c1c;
   border-radius: 5px;
   z-index: 100;
   position: relative;
 }
-#arrow-down {
+#select-btn span {
   position: absolute;
-  right: 20px;
+  right: 0;
   top: 33%;
   cursor: pointer;
+  width: 40px;
 }
-#selector-bloc {
-  display: none;
+#arrow-down {
+}
+
+.selector-bloc {
+  opacity: 0;
+}
+.selector-bloc.isVisible {
+  opacity: 1;
+  transition: 0.2;
+}
+
+.selector-list {
+  width: 170px;
+  padding: 0;
+  height: 59px;
 }
 ul {
   padding-left: 10px;
