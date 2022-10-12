@@ -24,7 +24,7 @@ export class Media {
 
     getAllMedia() {
 
-        const imageTemplate = `<img width='400px' height='350px' alt='${this.title}' src='${this.baseImage}/${this.photographerId}/${this.image}'>`
+        const imageTemplate = `<img class='picture' width='400px' height='350px' alt='${this.title}' src='${this.baseImage}/${this.photographerId}/${this.image}'>`
         const videoTemplate = `<video width='400px' height='350px' controls>
                                  <source alt='${this.title}' src='${this.baseImage}/${this.photographerId}/${this.video}' type="video/mp4" >
                                </video>
@@ -37,10 +37,11 @@ export class Media {
         }
 
         const mediaTemplate = `
-            <div class='card-image'>
+            <div id='${this.id}' class='card-image' data-id='${this.id}'>
                 <a>${media}</a>
                 <div class='img-info'>
                     <h3>${this.title}</h3>
+                    ${this.date}
                     <label class='likes'><p class='likes-value'>${this.likes}</p>
                         <input type="checkbox" name="fav" />
                         <i class="fa-solid fa-heart"></i>
