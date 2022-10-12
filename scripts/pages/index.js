@@ -30,6 +30,7 @@ async function getPhotographers() {
 }
 
 async function displayData(photographers) {
+  // la constante photographersSection selectionnne la class photographer_section
   const photographersSection = document.querySelector(".photographer_section");
 
   photographers.forEach((photographer) => {
