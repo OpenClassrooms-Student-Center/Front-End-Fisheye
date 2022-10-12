@@ -1,4 +1,5 @@
 async function getPhotographers() {
+  // la fonction asynchrone getPhotographers s'activera et affichera les infos de photographes
   // Penser à remplacer par les données récupérées dans le json
   const photographers = [
     {
@@ -19,7 +20,9 @@ async function getPhotographers() {
       price: 500,
       portrait: "account.png",
     },
+    
   ];
+  console.log(getPhotographers);
   // et bien retourner le tableau photographers seulement une fois
   return {
     photographers: [...photographers, ...photographers, ...photographers],

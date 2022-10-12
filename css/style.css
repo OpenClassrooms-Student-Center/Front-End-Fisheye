@@ -30,12 +30,21 @@ h1 {
   margin-top: 100px;
 }
 
+
+.photographLink{
+  text-decoration: none;
+}
 .photographer_section article {
   justify-self: center;
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
+}
+
+.photographer_section article:hover{
+  transform: scale(1.05);
+  transition: 1s;
 }
 
 .photographer_section article h2 {
