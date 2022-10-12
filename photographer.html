@@ -23,10 +23,11 @@
     <div class="dropdown">
       <label>Trier par</label>
       <div id="select-btn" role="button" class="select" aria-labelledby="select_option" aria-haspopup="listbox">
-        <img id="arrow-down" src="assets/icons/arrow_down.svg" />
-        <ul role="listbox" aria-labelledby="select_option">
-          <li id="popularity" class='selector' role="option" aria-labelledby="select_option1">Popularité</li>
-          <ul id="selector-bloc">
+        <span><img id="arrow-down" src="assets/icons/arrow_down.svg" /></span>
+        <ul class="selector-list" role="listbox" aria-labelledby="select_option">
+          <li id="popularity" class="selector active" role="option" aria-labelledby="select_option1">Popularité
+          </li>
+          <ul class="selector-bloc">
             <li id="date" class="selector" role="option" aria-labelledby="select_option2">Date</li>
             <li id="title" class="selector" role="option" aria-labelledby="select_option3">Titre</li>
           </ul>
@@ -34,23 +35,10 @@
         </ul>
       </div>
     </div>
-
-    <!--Select Dropdown nav-->
-    <!--<label for="image-select">Trier par</label>
-    <select name="image-select" id="image-select">
-      <option value="Popularité">Popularité</option>
-      <option value="Date">Date</option>
-      <option value="Titre">Titre</option>
-    </select>
-
-    -->
-
-
     <!--section cards images-->
     <section id="section"></section>
   </main>
   <!--Modal Formulaire-->
-  <!--<div class="contact"></div>-->
   <div class="contact_modal" id="open-modal">
     <div class="overlay"></div>
     <div class="modal">
@@ -87,10 +75,10 @@
     <a class="left-arrow"><img src="assets/icons/arrow_left.svg" /></a>
     <a class="right-arrow"><img src="assets/icons/arrow_right.svg" /></a>
     <div class="lightbox-container">
-      <img src="assets/images/243/Animals_Rainbow.jpg" width="900" height="900">
+      <!--<img src="assets/images/243/Animals_Rainbow.jpg" width="900" height="900">-->
     </div>
   </div>
-  <!-- Pages -->
+  <!-- Script-->
   <script type="module" src="/scripts/pages/photographer.js"></script>
   <!--<script type="module" src="/scripts/pages/formContact.js"></script>-->
   <script src="/scripts/utils/contactForm.js"></script>
