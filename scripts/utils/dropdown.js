@@ -3,15 +3,36 @@
 
 // ----- Ouverture et Fermeture du dropdown -----//
 // ---Récup élément html
-let listBottom = document.querySelector('#selector-bloc')
-let arrow = document.querySelector('#arrow-down')// boutton a changer en span !!!
+const listBottom = document.querySelector('.selector-bloc')// bloc de 2 li du bas
+const arrow = document.querySelector('#select-btn span')// boutton a changer en span !!!git add
+const selected = document.getElementById('popularity')
+const date = document.querySelector('#date')
+const title = document.querySelector('#title')
+const options = document.querySelectorAll('.selector')
 
-// ----- Ouverture
+// ----- Ouverture et Fermeture
+isVisible = false
+
 arrow.addEventListener('click', (e) => {
-    listBottom.style.display = "block"
-
+    //listBottom.classList.toggle("isVisible")  // method toggle()
+    isVisible = !isVisible  // version ternere
+    isVisible ? listBottom.classList.add("isVisible") : listBottom.classList.remove("isVisible")
 })
-// ----- Fermeture
+
+// ------ System de selection
+options.forEach(option => {
+
+    option.addEventListener('click', () => {
+
+        let value = selected.textContent
+        // lélément cliquer passe en 1
+        selected.textContent = option.textContent
+        // l élément 1 prend la place de l'élément cliqué
+        option.textContent = value
+        // ferme le dropdown
+        listBottom.classList.remove("isVisible")
+    })
+})
 
 
 //---------------------------------//
@@ -33,4 +54,16 @@ const sortLikes = (data) => {
     })
 }
 // ---Trier par Date
+const sortDate = (data) => {
+    let dataDate = data
+    dataDate.sort((a, b) => {
+        return new Date(b.date) - new Date(a.date)
+    })
+}
 // ---Trier par Titre
+const sortTitle = (data) => {
+    let dataTitle = data
+    dataTitle.sort((a, b) => {
+        return a.title.toLowerCase().localeCompare(b.title.toLowerCase())
+    })
+}
