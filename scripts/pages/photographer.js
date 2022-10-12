@@ -1,7 +1,7 @@
-//Mettre le code JavaScript lié à la page photographer.html
-
 import { createHeader } from "../templates/header.js"
+import { PhotographerCard } from "../templates/PhotographerCard.js"
 import { displayModal, closeModal } from "../utils/contactForm.js"
+// import { getPhotographers } from "./index.js"
 
 // 1- Variables
 // DOM
@@ -15,8 +15,30 @@ closeModalButton.addEventListener("click", closeModal)
 
 createHeader()
 
-// Get param from URL to display the selected photographer
-const params = new URL(document.location).searchParams
-const photographerId = params.get("id")
-
 // 3- Fonctions
+// Get param from URL to display the selected photographer
+// function getPhotographerId() {
+//   let photographerId
+//   const params = new URL(document.location).searchParams
+//   photographerId = params.get("id")
+//   return photographerId
+// }
+
+async function init() {
+  let photographerId
+  const params = new URL(document.location).searchParams
+  photographerId = params.get("id")
+  lookupPhotographer(photographerId)
+  const Template = new PhotographerCard
+  document.querySelector(".photograph-header").appendChild(Template.createPhotographerCard())
+}
+
+async function lookupPhotographer(photographerId) {
+  await getPhotographers()
+  .then((photographers) => {
+   const result = photographers.find(id => id = photographerId)
+  })
+  return result
+}
+
+init()
