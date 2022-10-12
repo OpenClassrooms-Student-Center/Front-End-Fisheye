@@ -134,7 +134,8 @@ i {
   background-color: #d3573c;
   color: #000000;
 }
-/***** Modal *****/
+/********************************/
+/*********** Modal *************/
 .contact_modal {
   display: none;
   position: fixed;
@@ -217,7 +218,8 @@ form textarea {
   border-radius: 5px;
   font-size: 24px;
 }
-/******** Lightbox ********/
+/*********************************/
+/*********** Lightbox **********/
 .lightbox {
   display: none;
   position: fixed;
@@ -225,9 +227,10 @@ form textarea {
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: #f7eeee;
-  z-index: 10;
+  background-color: #a4a1a1d3;
+  z-index: 100;
 }
+
 .left-arrow {
   position: fixed;
   top: 50%;
@@ -250,9 +253,18 @@ form textarea {
 .lightbox-container {
   display: flex;
   justify-content: center;
-  margin: 50px;
+  align-items: center;
+  width: 100%;
+  height: 100%;
 }
-/******** Dropdown *******/
+.lightbox-container img {
+  width: 1050px;
+  height: 900px;
+  display: flex;
+  align-items: center;
+}
+/********************************/
+/*********** Dropdown **********/
 .dropdown {
   display: flex;
   margin-left: 250px;
