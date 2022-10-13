@@ -8,6 +8,22 @@
   background-color: $theme-lightGray;
   height: 300px;
   margin: 0 100px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  & .photographer-name {
+    font-size: 64px;
+  }
+
+  & .photographer-location {
+    font-size: 24px;
+  }
+
+  & .photographer-tagline {
+    color: $theme-darkGray;
+    font-size: 18px;
+  }
 }
 
 .contact_button {

@@ -1,4 +1,5 @@
-export function displayModal() {
+export function displayModal(event) {
+    event.preventDefault()
     const modal = document.getElementById("contact_modal");
 	modal.style.display = "block";
 }

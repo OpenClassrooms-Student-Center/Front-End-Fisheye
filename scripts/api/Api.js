@@ -1,4 +1,4 @@
-export async function getPhotographers() {
+export async function getAllData() {
   let photographersData
   await fetch("../data/photographers.json")
     .then((res) => res.json())
@@ -8,5 +8,5 @@ export async function getPhotographers() {
     .catch((err) => {
       console.error(err)
     })
-    return photographersData
+  return photographersData
 }
