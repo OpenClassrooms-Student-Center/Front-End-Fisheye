@@ -611,7 +611,7 @@ photographerPageFactory(currentPhotographer)
 //remplir le dom de la page 
 // .filter pour chercher dans les médias 
 const currentPhotographerFirstName = currentPhotographer.name.split(" ")[0];
-const currentPhotographerMedias = medias.filter(mediaPhotographer => mediaPhotographer.photographerId == photographerId ); // => comparaison "sans regarder le type nombre, tetxt, tableau, objet.." que je veux apporter
+const currentPhotographerMedias = medias.filter(mediaPhotographer => mediaPhotographer.photographerId == photographerId ); // => comparaison "sans regarder le type nombre, text, tableau, objet.." que je veux apporter
 photographersMedias(currentPhotographerMedias, currentPhotographerFirstName)
 
 console.log(currentPhotographer.name);

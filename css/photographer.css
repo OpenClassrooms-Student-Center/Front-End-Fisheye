@@ -111,11 +111,15 @@
 }
 
 /*THUMBNAIL*/
+
+.thumbnail {
+    margin: 0 100px;
+}
+
 .thumbnail_section {
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    gap: 70px;
-    margin-top: 100px;
+    grid-template-columns: auto auto auto;
+    gap: 95px;
 }
 
 .thumbnail_section article {
@@ -124,19 +128,26 @@
     justify-content: center;
     align-items: center;
     flex-direction: column;
+    height: 400px;
 }
 
 .thumbnail_section article h2 {
-    color: #D3573C;
-    font-size: 36px;
+    color: #901C1C;
+    font-size: 1.5em;
 }
 
 .thumbnail_section article img {
     border-radius: 5px;
     object-fit: cover;
-    height: 200px;
-    width: 200px;
+    height: 350px;
+    width: 300px;
 }
+
+.thumbnail_section article video {
+    border-radius: 5px;
+    object-fit: cover;
+    height: 350px;
+    width: 300px;}
 
 /*MODAL*/
 .modal {

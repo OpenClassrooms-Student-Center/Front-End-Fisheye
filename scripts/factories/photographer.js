@@ -69,6 +69,8 @@ function photographerPageFactory(data) {
 // media est l'objet virtuel d'une seul occruence de la boucle
 // j'appelle displayDataMedia avec en parametre (media) qui est crée en bas
 
+
+
 function photographersMedias(data, name) {
     console.log(name);
     //boucle sur le tableau de media (soit video soit image)
@@ -86,23 +88,41 @@ function displayDataMedia(media, name) {
     // je decortique media 
     const {image, video, id, title, likes, date } = media;
     const picture = `assets/sample-photos/${name}/${image}`;
-    const mediaDiv = document.createElement("div");
+    const mediaDiv = document.createElement("article");
+    // CREER UNE DIV QUI ENGLBE MES DEUX H2
+    const titleMedia = document.createElement("h2");
+    titleMedia.textContent = title;
+    const likesMedia = document.createElement("h2");
+    likesMedia.textContent = likes;
+    /*
+    const faviconMedia = document.createElement('span');
+    faviconMedia.textContent = 
+    */
+
    // Le cas ou c'est une image
    if (media.image) {
     const mediaImg = document.createElement("img");
     mediaImg.src = picture;
     mediaDiv.appendChild (mediaImg);
-    /*
-   const thumnailImage = document.createElement("article");
-   thumnailImage.appendChild ()
-   */
+    mediaDiv.appendChild (titleMedia);
+    mediaDiv.appendChild (likesMedia);
 
-   } else    // Le cas ou c'est une video
+   
+   // const thumnailImage = document.createElement("article");
+   // thumnailImage.appendChild ()
+
+
+   } else  // Le cas ou c'est une video
  {
-    // balise video avec src
+    const mediaVideo = document.createElement("video");// balise video avec src
+    const videoSrc = `assets/sample-photos/${name}/${video}`;
+    mediaVideo.src = videoSrc;
+    mediaVideo.setAttribute("controls","controls")   
+    mediaDiv.appendChild(mediaVideo);
    }
     // afficher le titre, like ...
 
     // j'injestc un par un dans le DOM mediaDiv
-   thumbnailSection.appendChild(mediaDiv);
+   thumbnailSection.appendChild(mediaDiv, titleMedia , likesMedia);
 };
+
