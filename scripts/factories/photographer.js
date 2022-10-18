@@ -7,7 +7,7 @@ function photographerFactory(data) {
      et fera une interpolation de chaine
      dans ce chemin afin d'insérer un portrait dedans.
   */
-  const picture = `assets/photographers/${portrait}`;
+  const picture = `assets/photographersMini/${portrait}`;
   // la fonction getUserCardDOM permet :
   function getUserCardDOM() {
     // crée l'article mais n'existe que dans le javascript
