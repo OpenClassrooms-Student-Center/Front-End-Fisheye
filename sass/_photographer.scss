@@ -4,10 +4,13 @@
   display: none;
 }
 
+#main section {
+  margin: 0 100px;
+}
+
 .photograph-header {
   background-color: $theme-lightGray;
   height: 300px;
-  margin: 0 100px;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -22,7 +25,6 @@
 
   & .photographer-tagline {
     color: $theme-darkGray;
-    font-size: 18px;
   }
 }
 
@@ -85,4 +87,14 @@ form {
     border: none;
     border-radius: 5px;
   }
+}
+
+.dropdown-sort {
+  background: #911c1c;
+  color: white;
+  font-weight: 700px;
+  border-radius: 5px;
+  width: 170px;
+  height: 4em;
+  filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
 }

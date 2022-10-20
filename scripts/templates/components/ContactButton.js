@@ -3,7 +3,7 @@ import { displayModal } from "../../utils/contactForm.js"
 export class ContactButton {
   constructor() {}
 
-  createContactButton(wrapper) {
+  static createContactButton(wrapper) {
     // const wrapper = document.createElement("div")
     const contactButton = document.createElement("button")
     contactButton.textContent = "Contactez-moi"
