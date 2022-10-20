@@ -52,3 +52,20 @@ async function init() {
 init();
 
 
+// Nouvelle fonction ===>
+// créer une fonction permettant au moment ou on clique dessus, de pouvoir accéder à la page du photographer.html
+// en fonction du photographe qu'on clique, la page affichée sera celle du photographe ciblé
+// definir la variable pour chaque lien 
+// parametrer pour chaque photographe
+
+ let goToFotographPage = document.querySelector("photographLink");
+console.log(goToFotographPage);
+
+function goToThePAge (){
+  goToFotographPage;
+  console.log(goToThePAge);
+  return
+
+}
+
+

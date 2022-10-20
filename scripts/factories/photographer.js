@@ -12,7 +12,10 @@ function photographerFactory(data) {
   function getUserCardDOM() {
     // crée l'article mais n'existe que dans le javascript
     const article = document.createElement("article");
-    
+    // fonction permettant au moment ou on clique dessus, de pouvoir accéder à la page du photographer.html
+    article.onclick = function () {
+      location.href = "photographer.html";
+    };
 
     // create the image element
     const img = document.createElement("img");
@@ -22,7 +25,6 @@ function photographerFactory(data) {
     article.appendChild(img);
     img.style.borderRadius = "100%";
     img.style.objectFit = "cover";
-
 
     // create the h2 element to the article
     const h2 = document.createElement("h2");
