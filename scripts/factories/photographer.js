@@ -16,7 +16,7 @@ function photographerFactory(data) {
     article.onclick = function () {
       location.href = "photographer.html";
     };
-
+    article.style.cursor ="pointer";
     // create the image element
     const img = document.createElement("img");
     // le setAttribute montre le changement de la valeur src en picture

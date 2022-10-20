@@ -44,7 +44,7 @@ h1 {
 .photographer_section article:hover {
   transform: scale(1.05);
   transition: 1s;
-  cursor: pointer;
+
 }
 
 .photographer_section article h2 {
