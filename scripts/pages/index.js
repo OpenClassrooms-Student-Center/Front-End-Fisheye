@@ -48,7 +48,6 @@ async function init() {
   const { photographers } = await getPhotographers();
   displayData(photographers);
 }
-
 init();
 
 // Nouvelle fonction ===>

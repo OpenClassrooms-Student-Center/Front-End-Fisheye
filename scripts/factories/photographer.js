@@ -1,7 +1,7 @@
 // la fonction photographerFactory a pour paramêtre data (le photographers.json)
 function photographerFactory(data) {
   // la constante se compose d'un objet doté  de name et portrait et dont la valeur renvoi à data
-  const { city, country, name, tagline, portrait, price } = data;
+  const { city, country, name, tagline, portrait, price, id } = data;
   console.log(price);
   /* la constante picture à pour valeur le chemin assets/photographers
      et fera une interpolation de chaine
@@ -14,18 +14,19 @@ function photographerFactory(data) {
     const article = document.createElement("article");
     // fonction permettant au moment ou on clique dessus, de pouvoir accéder à la page du photographer.html
     article.onclick = function () {
-      location.href = "photographer.html";
+      location.href = `photographer.html?id=${id}`;
     };
-    article.style.cursor ="pointer";
     // create the image element
     const img = document.createElement("img");
-    // le setAttribute montre le changement de la valeur src en picture
-    // => le src renverra grâce à son lien à la picture
-    img.setAttribute("src", picture);
     article.appendChild(img);
     img.style.borderRadius = "100%";
     img.style.objectFit = "cover";
+    article.style.cursor = "pointer";
 
+    // le setAttribute montre le changement de la valeur src en picture
+    // => le src renverra grâce à son lien à la picture
+    img.setAttribute("src", picture);
+    img.alt = name;
     // create the h2 element to the article
     const h2 = document.createElement("h2");
     h2.textContent = name;
@@ -48,7 +49,7 @@ function photographerFactory(data) {
     const divPrice = document.createElement("div");
     divPrice.textContent = price + "€/jour";
     article.appendChild(divPrice);
-    divPrice.style.color = "grey";
+    divPrice.style.color = "#4D4D4D";
     divPrice.style.fontSize = "13px";
 
     // retourne à l'article
