@@ -15,6 +15,9 @@ header {
   justify-content: space-between;
   align-items: center;
   height: 90px;
+  & .header-title {
+    font-size: 36px;
+  }
 }
 
 h1 {
@@ -62,14 +65,14 @@ h1 {
 }
 
 .photographer-name {
-    color: $theme-lightRed;
-    margin-bottom: 0;
-    margin-top: 0;
-  }
+  color: $theme-lightRed;
+  margin-bottom: 0;
+  margin-top: 0;
+}
 
 .photographer-location {
-    color: $theme-darkRed;
-  }
+  color: $theme-darkRed;
+}
 .photographer-price {
-    color: $theme-darkGray;
-  }
+  color: $theme-darkGray;
+}

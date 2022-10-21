@@ -1,4 +1,4 @@
-import { ContactButton } from "./ContactButton.js"
+import { ModalDisplayButtons } from "./ModalDisplayButtons.js"
 
 export class PhotographerProfile {
   constructor(photographer) {
@@ -35,14 +35,18 @@ export class PhotographerProfile {
     }</p><p class="photographer-tagline">${
       this.photographer.tagline
     }</p>
-    ${page == "homePage"? `<p class="photographer-price">${this.photographer.price}€/jour</p>`:""}</article>`
+    ${
+      page == "homePage"
+        ? `<p class="photographer-price">${this.photographer.price}€/jour</p>`
+        : ""
+    }</article>`
     return wrapper
   }
 
   createPhotographerHeader() {
     const wrapper = document.querySelector(".photograph-header")
     this.createProfile(wrapper, "profilePage")
-    ContactButton.createContactButton(wrapper)
+    ModalDisplayButtons.createModalButton(wrapper)
     this.createPhotographerPicture(wrapper)
     return wrapper
   }
