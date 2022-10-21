@@ -4,15 +4,11 @@
   display: none;
 }
 
-#main section {
-  margin: 0 100px;
-}
-
 .photograph-header {
   background-color: $theme-lightGray;
   height: 300px;
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
   align-items: center;
 
   & .photographer-name {
@@ -28,7 +24,8 @@
   }
 }
 
-.contact_button, .open_modal_button {
+.contact_button,
+.open_modal_button {
   font-size: 20px;
   font-weight: bold;
   color: white;
@@ -89,6 +86,11 @@ form {
   }
 }
 
+.media-sorting-menu {
+  margin-top: 2%;
+  margin-bottom: 2%;
+}
+
 .dropdown-sort {
   background: #911c1c;
   color: white;
@@ -97,4 +99,43 @@ form {
   width: 170px;
   height: 4em;
   filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+}
+
+.photographer-media {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.mediaCard {
+  width: calc(100% / 3);
+  margin-bottom: 2%;
+  & > * {
+    width: 25em;
+  }
+  & img {
+    height: 20em;
+    border-radius: 5px;
+    object-fit: cover;
+  }
+}
+
+.media-addon {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 3em;
+  color: $theme-darkRed;
+  & figcaption,
+  .likes {
+    font-size: 24px;
+    line-height: 31px;
+  }
+}
+
+.likes {
+  & svg {
+    height: 22px;
+    width: 22px;
+    fill: $theme-darkRed;
+  }
 }

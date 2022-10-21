@@ -39,7 +39,7 @@ export class API {
           photographer: response.Photographer.find(
             (photographer) => photographer.id == photographerId
           ),
-          medias: response.Medias.filter(
+          media: response.Medias.filter(
             (medias) => medias.photographerId == photographerId
           ),
         }

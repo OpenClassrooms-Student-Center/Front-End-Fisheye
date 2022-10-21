@@ -3,6 +3,7 @@ import { API } from "../api/Api.js"
 import { createDropdownOrder } from "../components/SortingDropdown.js"
 import { createHeader } from "../components/WebsiteHeader.js"
 import { ModalDisplayButtons } from "../components/ModalDisplayButtons.js"
+import { Media } from "../models/Media.js"
 
 // 1- Variables
 // DOM
@@ -32,6 +33,10 @@ async function init() {
       response.photographer
     )
     createDropdownOrder()
+    Media.createMediaSection()
+    response.media.forEach((element) => {
+      new Media(element).displayMedia(element)
+    })
     addModalEventListeners()
   })
 }
