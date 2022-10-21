@@ -1,4 +1,4 @@
-import { PhotographerProfile } from "../templates/components/PhotographerProfile.js"
+import { PhotographerProfile } from "../components/PhotographerProfile.js"
 
 export class Photographer {
   constructor(data) {

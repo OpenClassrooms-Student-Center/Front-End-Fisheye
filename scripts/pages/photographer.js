@@ -1,8 +1,8 @@
 import { Photographer } from "../models/Photographer.js"
 import { API } from "../api/Api.js"
-import { createDropdownOrder } from "../templates/components/sortingDropdown.js"
-import { createHeader } from "../templates/components/WebsiteHeader.js"
-import { ModalDisplayButtons } from "../templates/components/ModalDisplayButtons.js"
+import { createDropdownOrder } from "../components/SortingDropdown.js"
+import { createHeader } from "../components/WebsiteHeader.js"
+import { ModalDisplayButtons } from "../components/ModalDisplayButtons.js"
 
 // 1- Variables
 // DOM
@@ -27,9 +27,9 @@ closeModalButton.addEventListener(
 // Get data from API, find the photographer with the same id as the param in search bar, then create elements of the page with it
 async function init() {
   createHeader("profilePage")
-  API.getPhotographersByID().then((matchingPhotographer) => {
-    new Photographer(matchingPhotographer).displayProfile(
-      matchingPhotographer
+  API.getPhotographersByID().then((response) => {
+    new Photographer(response.photographer).displayProfile(
+      response.photographer
     )
     createDropdownOrder()
     addModalEventListeners()
