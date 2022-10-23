@@ -3,6 +3,9 @@ import { API } from "../api/Api.js"
 import { createDropdownOrder } from "../components/SortingDropdown.js"
 import { createHeader } from "../components/WebsiteHeader.js"
 import { ModalDisplayButtons } from "../components/ModalDisplayButtons.js"
+import { PhotoMedia } from "../models/PhotoMedia.js"
+import { PhotographerMedia } from "../components/PhotographerMedia.js"
+import { MediaFactory } from "../factories/mediaFactory.js"
 import { Media } from "../models/Media.js"
 
 // 1- Variables
@@ -33,8 +36,12 @@ async function init() {
       response.photographer
     )
     createDropdownOrder()
-    Media.createMediaSection()
-    response.media.forEach((element) => {
+    PhotographerMedia.createMediaSection()
+    let resMedia = response.media.map(
+      (media) => new MediaFactory(media)
+    )
+    // console.log(resMedia)
+    resMedia.forEach((element) => {
       new Media(element).displayMedia(element)
     })
     addModalEventListeners()
