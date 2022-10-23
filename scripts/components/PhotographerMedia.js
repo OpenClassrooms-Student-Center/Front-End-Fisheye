@@ -19,7 +19,7 @@ export class PhotographerMedia {
     <source src="assets/${this.media.photographerId}/${this.media.video}" type="video/mp4" class="thumb-img">
     </video>`
     }
-    <div class="media-addon"><figcaption>${
+    <div class="media-legend"><figcaption>${
       this.media.title
     }</figcaption><aside class="likes">${
       this.media.likes

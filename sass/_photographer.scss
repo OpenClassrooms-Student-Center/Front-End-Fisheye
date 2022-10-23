@@ -108,6 +108,8 @@ form {
 }
 
 .mediaCard {
+  min-width: 250px;
+  min-height: 250px;
   width: 30%;
   margin: 0 0 2% 0;
   & > * {
@@ -121,16 +123,27 @@ form {
   }
 }
 
-.media-addon {
+.media-legend {
   padding: 10px 0 10px 0;
   display: flex;
   justify-content: space-between;
   align-items: center;
   color: $theme-darkRed;
+  min-height: 3em;
+  & .likes {
+    margin-left: 25px;
+  }
+  & figcaption, aside {
+    min-height: 1.4em;
+  }
   & figcaption,
   .likes {
-    font-size: 24px;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    font-size: 1.4em;
     & svg {
+      margin-left: 10px;
       height: 24px;
       width: 24px;
       fill: $theme-darkRed;
