@@ -1,13 +1,16 @@
 //-------------------------//
 // ------- Modal -------- //
+const modal = document.querySelector(".contact_modal");
 
+const contactButton = document.querySelector('.contact_modal');
+const openContact = document.getElementById('open-contact')
 /**
  * affiche le nom du photographe dans le formulaire 
  * contact.js
  */
 const displayNameInForm = () => {
     // récup du nom dans le dom
-    const photographerName = document.querySelector('.prenom-test').innerText
+    let photographerName = document.querySelector('.prenom-test').innerText
     console.log(photographerName);
     // insérer le nom dans le foemulaire
     document.querySelector('#title-form').insertAdjacentHTML("beforeend", photographerName)
@@ -15,7 +18,7 @@ const displayNameInForm = () => {
 }
 
 // ------Ouuverture Fermeture Modal --------- //
-const contactButton = document.querySelector('.contact_modal');
+//const contactButton = document.querySelector('.contact_modal');
 /**
  * Ouverture de la modal formulaire
  * contact.js
@@ -25,7 +28,7 @@ function displayModal() {
     openContact.addEventListener('click', (e) => {
         e.preventDefault()
         console.log(e);
-        const modal = document.querySelector(".contact_modal");
+        //const modal = document.querySelector(".contact_modal");
         modal.style.display = "block";
     })
 
@@ -40,12 +43,12 @@ function closeModal() {
     btnClosed.addEventListener('click', (e) => {
         e.preventDefault()
         console.log(e);
-        const modal = document.querySelector(".contact_modal");
+
         modal.style.display = "none";
     })
     // fermeture au clavier
     btnClosed.addEventListener('keypress', (e) => {
-        const modal = document.querySelector(".contact_modal");
+
         modal.style.display = "none";
 
     })
@@ -61,6 +64,7 @@ const firstName = document.querySelector('#prenom')
 const lastName = document.querySelector('#nom')
 const mail = document.querySelector('#email')
 const message = document.querySelector('#message')
+
 
 /**
    * Envoi du formulaire
@@ -88,5 +92,6 @@ formListener()
  */
 const formSubmit = (orderContact) => {
     console.log(orderContact);
-    // majForm
+
+    modal.style.display = "none";
 }

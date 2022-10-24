@@ -21,15 +21,16 @@
     <div class="photographer-header"></div>
     <!-- Dropdown nav-->
     <div class="dropdown">
-      <label>Trier par</label>
+      <label tabindex="0">Trier par</label>
       <div id="select-btn" role="button" class="select" aria-labelledby="select_option" aria-haspopup="listbox">
         <span tabindex="0"><img id="arrow-down" alt="fleche direction bas" src="assets/icons/arrow_down.svg" /></span>
         <ul class="selector-list" role="listbox" aria-labelledby="select_option">
-          <li id="popularity" class="selector active" role="option" aria-labelledby="select_option1">Popularité
+          <li tabindex="0" id="popularity" class="selector active" role="option" aria-labelledby="select_option1">
+            Popularité
           </li>
           <ul class="selector-bloc">
-            <li id="date" class="selector" role="option" aria-labelledby="select_option2">Date</li>
-            <li id="title" class="selector" role="option" aria-labelledby="select_option3">Titre</li>
+            <li tabindex="0" id="date" class="selector" role="option" aria-labelledby="select_option2">Date</li>
+            <li tabindex="0" id="title" class="selector" role="option" aria-labelledby="select_option3">Titre</li>
           </ul>
 
         </ul>
@@ -68,7 +69,7 @@
     </div>
   </div>
   <!--Bloc total likes-->
-  <div class="bloc-stat"></div>
+  <aside class="bloc-stat" tabindex="0"></aside>
   <!--Modal Lightbox-->
   <div class="lightbox">
     <img class="close-lightbox" alt="croix de fermeture" src="assets/icons/close_lightbox.svg" />
@@ -92,8 +93,3 @@
 </body>
 
 </html>
-
-<!-- 
-                                        => return renderImage()
-=> [Contructor]return renderMedia() => this.type 
-                                        => return renderVideo() -->

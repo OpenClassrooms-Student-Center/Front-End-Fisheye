@@ -40,10 +40,10 @@ export class Media {
             <div  class='card-image' >
                 <a data-id='${this.id}' data-date='${this.date}' data-title='${this.title}' data-likes='${this.likes}'>${media}</a>
                 <div class='img-info'>
-                    <h3>${this.title}</h3>
+                    <h3 tabindex="0">${this.title}</h3>
                     <label for'${this.id}' aria-label='favori' class='likes'><p class='likes-value'>${this.likes}</p>
-                        <input id='${this.id}' type="checkbox" name="fav" aria-label='favori' aria-labelledby="fav"/>
-                        <i class="fa-solid fa-heart"></i>
+                        <input  id='${this.id}' type="checkbox" name="fav" aria-label='${this.likes} favoris' aria-labelledby="fav"/>
+                        <i class="fa-solid fa-heart" tabindex="0"></i>
                     </label>
                  </div>
             </div>     

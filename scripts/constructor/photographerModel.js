@@ -41,7 +41,7 @@ export class Photographer {
                     <img src='${this.baseImage}/${this.portrait}' alt='photo de profil de ${this.name}'>
                     <h2>${this.name}</h2>
                 </a>
-                <div>
+                <div tabindex="0">
                     <p id='city'>${this.city}, ${this.country}</p>
                     <p>${this.tagline}</p>
                     <small>${this.price}€/jour</small>
@@ -59,12 +59,12 @@ export class Photographer {
         let header = `
             <div id='presentation'>
                 <div>
-                    <h1 id='title-3' class='prenom-test'>${this.name}</h1>
-                    <p>${this.city}, ${this.country}</p>
-                    <small>${this.tagline}</small>
+                    <h1 id='title-3' class='prenom-test' tabindex="0">${this.name}</h1>
+                    <p tabindex="0">${this.city}, ${this.country}</p>
+                    <small tabindex="0">${this.tagline}</small>
                 </div>
-                <button type="button" id="open-contact" class="contact_button" aria-label="Contacter ${this.name}">Contactez-moi</button>
-                <img id='photo' src='${this.baseImage}/${this.portrait}' alt='photo de profil de ${this.name}'>
+                <button type="button" id="open-contact" class="contact_button" aria-label="Contacter ${this.name}" aria-control="open-modal">Contactez-moi</button>
+                <img id='photo' src='${this.baseImage}/${this.portrait}' alt='photo de profil de ${this.name}' tabindex="0">
             </div>
         `
 
