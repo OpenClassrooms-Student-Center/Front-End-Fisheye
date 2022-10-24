@@ -23,7 +23,7 @@
     <div class="dropdown">
       <label>Trier par</label>
       <div id="select-btn" role="button" class="select" aria-labelledby="select_option" aria-haspopup="listbox">
-        <span><img id="arrow-down" src="assets/icons/arrow_down.svg" /></span>
+        <span tabindex="0"><img id="arrow-down" alt="fleche direction bas" src="assets/icons/arrow_down.svg" /></span>
         <ul class="selector-list" role="listbox" aria-labelledby="select_option">
           <li id="popularity" class="selector active" role="option" aria-labelledby="select_option1">Popularité
           </li>
@@ -44,7 +44,7 @@
     <div class="modal">
       <header id="header-form">
         <h2 id="title-form">Contactez-moi <br></h2>
-        <img src="assets/icons/close.svg" onclick="closeModal()" />
+        <img id="closed" src="assets/icons/close.svg" alt="croix de fermeture" tabindex="0" />
       </header>
       <form name="contact" action="photographer.html" method="get" onsubmit="">
         <div class="formData">
@@ -71,19 +71,24 @@
   <div class="bloc-stat"></div>
   <!--Modal Lightbox-->
   <div class="lightbox">
-    <img class="close-lightbox" src="assets/icons/close_lightbox.svg" />
-    <a class="left-arrow"><img src="assets/icons/arrow_left.svg" /></a>
-    <a class="right-arrow"><img src="assets/icons/arrow_right.svg" /></a>
+    <img class="close-lightbox" alt="croix de fermeture" src="assets/icons/close_lightbox.svg" />
+    <a class="left-arrow"><img alt="fleche direction gauche" src="assets/icons/arrow_left.svg" /></a>
+    <a class="right-arrow"><img alt="fleche direction droite" src="assets/icons/arrow_right.svg" /></a>
     <div class="lightbox-container">
       <!--<img src="assets/images/243/Animals_Rainbow.jpg" width="900" height="900">-->
     </div>
   </div>
   <!-- Script-->
+  <script src="/scripts/modals/lightbox.js"></script>
   <script type="module" src="/scripts/pages/photographer.js"></script>
+  <!-- <script type="module" src="/scripts/utils/lightbox.js" defer></script> -->
+
   <!--<script type="module" src="/scripts/pages/formContact.js"></script>-->
   <script src="/scripts/utils/contactForm.js"></script>
   <script src="/scripts/utils/likes.js"></script>
   <script src="/scripts/utils/dropdown.js"></script>
+
+
 </body>
 
 </html>

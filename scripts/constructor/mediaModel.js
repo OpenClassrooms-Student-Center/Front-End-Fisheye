@@ -24,8 +24,8 @@ export class Media {
 
     getAllMedia() {
 
-        const imageTemplate = `<img class='picture' width='400px' height='350px' alt='${this.title}' src='${this.baseImage}/${this.photographerId}/${this.image}'>`
-        const videoTemplate = `<video width='400px' height='350px' controls>
+        const imageTemplate = `<img id='${this.id}' class='picture' data-id='${this.id}' width='400px' height='350px' alt='photographie ${this.title}' src='${this.baseImage}/${this.photographerId}/${this.image}' tabindex="0">`
+        const videoTemplate = `<video  id='${this.id}' class='picture' data-id='${this.id}' width='400px' height='350px' tabindex="0">
                                  <source alt='${this.title}' src='${this.baseImage}/${this.photographerId}/${this.video}' type="video/mp4" >
                                </video>
                                `
@@ -37,13 +37,12 @@ export class Media {
         }
 
         const mediaTemplate = `
-            <div id='${this.id}' class='card-image' data-id='${this.id}'>
-                <a>${media}</a>
+            <div  class='card-image' >
+                <a data-id='${this.id}' data-date='${this.date}' data-title='${this.title}' data-likes='${this.likes}'>${media}</a>
                 <div class='img-info'>
                     <h3>${this.title}</h3>
-                    ${this.date}
-                    <label class='likes'><p class='likes-value'>${this.likes}</p>
-                        <input type="checkbox" name="fav" />
+                    <label for'${this.id}' aria-label='favori' class='likes'><p class='likes-value'>${this.likes}</p>
+                        <input id='${this.id}' type="checkbox" name="fav" aria-label='favori' aria-labelledby="fav"/>
                         <i class="fa-solid fa-heart"></i>
                     </label>
                  </div>

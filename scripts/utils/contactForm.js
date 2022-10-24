@@ -24,15 +24,33 @@ function displayModal() {
     const openContact = document.getElementById('open-contact')
     openContact.addEventListener('click', (e) => {
         e.preventDefault()
+        console.log(e);
         const modal = document.querySelector(".contact_modal");
         modal.style.display = "block";
     })
+
 }
 
-
+/**
+ * fermeture de la modal
+ * ecouteur sur elt closed
+ */
 function closeModal() {
-    const modal = document.querySelector(".contact_modal");
-    modal.style.display = "none";
+    const btnClosed = document.getElementById('closed')
+    btnClosed.addEventListener('click', (e) => {
+        e.preventDefault()
+        console.log(e);
+        const modal = document.querySelector(".contact_modal");
+        modal.style.display = "none";
+    })
+    // fermeture au clavier
+    btnClosed.addEventListener('keypress', (e) => {
+        const modal = document.querySelector(".contact_modal");
+        modal.style.display = "none";
+
+    })
+
+
 }
 
 //---------------------------------------------//
@@ -72,34 +90,3 @@ const formSubmit = (orderContact) => {
     console.log(orderContact);
     // majForm
 }
-
-/*
-function displayModal() {
-    console.log('clic');
-    const modal = document.querySelector(".contact_modal");
-    modal.style.display = "block";
-}*/
-
-//------- Si besoin de traité les champs --------//
-/*
-// Ecoute réactive de tout les champs
-firstName.addEventListener('input', function () { getFirstName() })
-lastName.addEventListener('input', function () { getLastName() })
-mail.addEventListener('input', function () { getEmail() })
-
-
-const getFirstName = () => {
-    console.log(firstName.value);   
-}
-
-const getLastName = () => {
-    console.log(lastName.value);   
-}
-
-const getEmail = () => {
-    console.log(mail.value);
-}*/
-
-/**
-   * Envoi du formulaire
-   */

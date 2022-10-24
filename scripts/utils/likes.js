@@ -1,9 +1,13 @@
 //-------------------------------//
 // ----Gestion d'ajout de likes
+let allLikes = []
+
 
 const addLikes = () => {
+    console.log('dans addLikes');
     // ---Récup des éléments likes par médias
-    let elts = document.querySelectorAll('.likes-value')
+    let allLikes = document.querySelectorAll('.likes-value')
+    console.log(allLikes);
     // ---Récup de l'élément du total des likes
     let eltsTotalLikes = document.querySelector('.bloc-stat p')
     // ---Récup la valeur de totalLikes
@@ -14,9 +18,10 @@ const addLikes = () => {
 
         checkbox[i].addEventListener('click', () => {
             //--récup des éléments like par média
-            let eltLikeByMedia = elts[i]
+            let eltLikeByMedia = allLikes[i]
             //--récup la valeur de like par média
-            let likeByMedia = parseInt(elts[i].innerText)
+            let likeByMedia = parseInt(allLikes[i].innerText)
+
             // si c liké
             if (checkbox[i].checked == true) {
                 // ---maj des likes par media
@@ -40,4 +45,9 @@ const addLikes = () => {
         })
     }
 
+}
+
+const refreshLikes = () => {
+    allLikes = document.querySelectorAll('.likes-value')
+    console.log('refreshlikes: ' + allLikes);
 }

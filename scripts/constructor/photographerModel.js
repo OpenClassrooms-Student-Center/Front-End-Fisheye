@@ -63,7 +63,7 @@ export class Photographer {
                     <p>${this.city}, ${this.country}</p>
                     <small>${this.tagline}</small>
                 </div>
-                <button id="open-contact" class="contact_button"  >Contactez-moi</button>
+                <button type="button" id="open-contact" class="contact_button" aria-label="Contacter ${this.name}">Contactez-moi</button>
                 <img id='photo' src='${this.baseImage}/${this.portrait}' alt='photo de profil de ${this.name}'>
             </div>
         `
@@ -72,8 +72,6 @@ export class Photographer {
     }
 
 
-    // besoin de => this.like => media(id) // totalLikes dans .map
-    //              this.price => photographer(id)
     getCardInfo() {
         let cardInfo = `<p>${this.price}€/jour</p>`
         return cardInfo
