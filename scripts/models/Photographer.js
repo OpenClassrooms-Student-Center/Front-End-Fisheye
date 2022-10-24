@@ -1,4 +1,7 @@
+import { PhotographerMedia } from "../components/PhotographerMedia.js"
 import { PhotographerProfile } from "../components/PhotographerProfile.js"
+import { MediaFactory } from "../factories/mediaFactory.js"
+import { Media } from "./Media.js"
 
 export class Photographer {
   constructor(data) {
@@ -19,10 +22,20 @@ export class Photographer {
     })
   }
 
-  displayProfile(photographer) {
-    const Template = new PhotographerProfile(photographer)
+  displayProfile(data) {
+    const Template = new PhotographerProfile(data.photographer)
     document
       .querySelector("#main")
       .appendChild(Template.createPhotographerHeader())
+    const newPhotographerMedia = new PhotographerMedia()
+    newPhotographerMedia.createDropdownOrder()
+    newPhotographerMedia.createMediaSection()
+    const photographerMedias = data.media.map(
+      (media) => new MediaFactory(media)
+    )
+    photographerMedias.forEach((element) => {
+      new Media(element).displayMedia(element)
+    })
+    Template.createprofilePageInsert()
   }
 }

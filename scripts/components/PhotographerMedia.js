@@ -3,10 +3,18 @@ export class PhotographerMedia {
     this.media = media
   }
 
-  static createMediaSection() {
+  createMediaSection() {
     const newSection = document.createElement("section")
     newSection.classList = "photographer-media"
     document.querySelector("#main").appendChild(newSection)
+  }
+
+  createDropdownOrder() {
+    const wrapper = document.createElement("div")
+    wrapper.classList = "media-sorting-menu"
+    document.querySelector("#main").appendChild(wrapper)
+    wrapper.innerHTML += `<label for="order-by">Trier par</label><select name="sort" id="order-by" class="dropdown-sort"><option value="popularite">Popularité</option><option value="date">Date</option><option value="titre">Titre</option></select>`
+    return wrapper
   }
 
   createMediaList() {

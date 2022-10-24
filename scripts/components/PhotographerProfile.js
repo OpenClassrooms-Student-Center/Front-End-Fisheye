@@ -13,9 +13,7 @@ export class PhotographerProfile {
     cardLink.href = `photographer.html?id=${this.photographer.id}`
     cardLink.ariaLabel = this.photographer.name
     this.createPhotographerPicture(cardLink)
-    document
-      .querySelector("main")
-      .appendChild(this.createProfile(cardContainer, "homePage"))
+    document.querySelector("main").appendChild(this.createProfile(cardContainer, "homePage"))
     return cardContainer
   }
 
@@ -32,13 +30,9 @@ export class PhotographerProfile {
         : `<h1 class="photographer-name">${this.photographer.name}</h1>`
     }<p class="photographer-location">${
       this.photographer.location
-    }</p><p class="photographer-tagline">${
-      this.photographer.tagline
-    }</p>
+    }</p><p class="photographer-tagline">${this.photographer.tagline}</p>
     ${
-      page == "homePage"
-        ? `<p class="photographer-price">${this.photographer.price}€/jour</p>`
-        : ""
+      page == "homePage" ? `<p class="photographer-price">${this.photographer.price}€/jour</p>` : ""
     }</article>`
     return wrapper
   }
@@ -48,6 +42,12 @@ export class PhotographerProfile {
     this.createProfile(wrapper, "profilePage")
     ModalDisplayButtons.createModalButton(wrapper)
     this.createPhotographerPicture(wrapper)
+    return wrapper
+  }
+
+  createprofilePageInsert() {
+    const wrapper = document.querySelector("#main")
+    wrapper.innerHTML += `<aside class="insert">Test</aside>`
     return wrapper
   }
 }

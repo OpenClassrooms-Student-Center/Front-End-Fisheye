@@ -1,5 +1,4 @@
 export class ModalDisplayButtons {
-  constructor() {}
 
   static createModalButton(wrapper) {
     const openModalButton = document.createElement("button")

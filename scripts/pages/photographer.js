@@ -1,12 +1,7 @@
 import { Photographer } from "../models/Photographer.js"
 import { API } from "../api/Api.js"
-import { createDropdownOrder } from "../components/SortingDropdown.js"
 import { createHeader } from "../components/WebsiteHeader.js"
 import { ModalDisplayButtons } from "../components/ModalDisplayButtons.js"
-import { PhotoMedia } from "../models/PhotoMedia.js"
-import { PhotographerMedia } from "../components/PhotographerMedia.js"
-import { MediaFactory } from "../factories/mediaFactory.js"
-import { Media } from "../models/Media.js"
 
 // 1- Variables
 // DOM
@@ -16,36 +11,21 @@ const closeModalButton = document.querySelector(".close_modal_button")
 // Adds event listener on corresponding buttons after they have been added to the DOM
 function addModalEventListeners() {
   const openModalButton = document.querySelector(".open_modal_button")
-  openModalButton.addEventListener(
-    "click",
-    ModalDisplayButtons.displayModal
-  )
+  openModalButton.addEventListener("click", ModalDisplayButtons.displayModal)
+  closeModalButton.addEventListener("click", ModalDisplayButtons.closeModal)
 }
 
-closeModalButton.addEventListener(
-  "click",
-  ModalDisplayButtons.closeModal
-)
 // 3- Fonctions
 
-// Get data from API, find the photographer with the same id as the param in search bar, then create elements of the page with it
+// Get data from API, find the photographer with the same id as the param in search bar, then create elements of the page with it, and adds event listeners to the modal buttons
 async function init() {
   createHeader("profilePage")
-  API.getPhotographersByID().then((response) => {
-    new Photographer(response.photographer).displayProfile(
-      response.photographer
-    )
-    createDropdownOrder()
-    PhotographerMedia.createMediaSection()
-    let resMedia = response.media.map(
-      (media) => new MediaFactory(media)
-    )
-    // console.log(resMedia)
-    resMedia.forEach((element) => {
-      new Media(element).displayMedia(element)
-    })
-    addModalEventListeners()
-  })
+  displayData(await API.getPhotographersByID())
+  addModalEventListeners()
+}
+
+function displayData(data) {
+  new Photographer(data).displayProfile(data)
 }
 
 init()
