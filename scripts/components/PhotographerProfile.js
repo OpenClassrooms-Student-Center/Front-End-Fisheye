@@ -1,3 +1,4 @@
+import { faHeartIcon } from "./faHeartIcon.js"
 import { ModalDisplayButtons } from "./ModalDisplayButtons.js"
 
 export class PhotographerProfile {
@@ -13,7 +14,9 @@ export class PhotographerProfile {
     cardLink.href = `photographer.html?id=${this.photographer.id}`
     cardLink.ariaLabel = this.photographer.name
     this.createPhotographerPicture(cardLink)
-    document.querySelector("main").appendChild(this.createProfile(cardContainer, "homePage"))
+    document
+      .querySelector("main")
+      .appendChild(this.createProfile(cardContainer, "homePage"))
     return cardContainer
   }
 
@@ -32,7 +35,9 @@ export class PhotographerProfile {
       this.photographer.location
     }</p><p class="photographer-tagline">${this.photographer.tagline}</p>
     ${
-      page == "homePage" ? `<p class="photographer-price">${this.photographer.price}€/jour</p>` : ""
+      page == "homePage"
+        ? `<p class="photographer-price">${this.photographer.price}€/jour</p>`
+        : ""
     }</article>`
     return wrapper
   }
@@ -47,7 +52,7 @@ export class PhotographerProfile {
 
   createprofilePageInsert() {
     const wrapper = document.querySelector("#main")
-    wrapper.innerHTML += `<aside class="insert">Test</aside>`
+    wrapper.innerHTML += `<aside class="insert">${this.photographer.likes} ${faHeartIcon} ${this.photographer.price}€ / jour</aside>`
     return wrapper
   }
 }

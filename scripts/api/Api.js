@@ -15,7 +15,7 @@ export class API {
           response = photographers
         } else if (page == "profilePage") {
           response = {
-            Photographer: photographers,
+            Photographer: data.photographers,
             Medias: data.media,
           }
         }
@@ -32,14 +32,26 @@ export class API {
     let photographerInfoAndMedia = {}
     await this.getAllData("profilePage")
       .then((response) => {
+        const matchingPhotographer = response.Photographer.filter(
+          (photographer) => photographer.id == photographerId
+        )
+        const matchingMedias = response.Medias.filter(
+          (medias) => medias.photographerId == photographerId
+        )
+        // Calculate the total likes of selected photographer
+        const photographerTotalLikes = matchingMedias
+          .map((value) => value.likes)
+          .reduce((previousValue, currentValue) => {
+            return previousValue + currentValue
+          })
+          matchingPhotographer.find((photographer) => photographer).totalLikes =
+          photographerTotalLikes
+
         photographerInfoAndMedia = {
-          photographer: response.Photographer.find(
-            (photographer) => photographer.id == photographerId
-          ),
-          media: response.Medias.filter(
-            (medias) => medias.photographerId == photographerId
-          ),
+          photographer: matchingPhotographer,
+          media: matchingMedias,
         }
+
       })
       .catch((err) => {
         console.error(err)

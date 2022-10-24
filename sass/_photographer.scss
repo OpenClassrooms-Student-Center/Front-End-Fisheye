@@ -16,7 +16,7 @@
   }
 
   & .photographer-location {
-    font-size: 24px;
+    font-size: 1.4em;
   }
 
   & .photographer-tagline {
@@ -143,12 +143,30 @@ form {
     display: flex;
     align-items: center;
     font-size: 1.4em;
-    & svg {
-      margin-left: 10px;
-      height: 24px;
-      width: 24px;
+    & .fa-heart {
       fill: $theme-darkRed;
-      text-overflow: ellipsis;
     }
+  }
+}
+
+.fa-heart {
+  margin-left: 10px;
+  height: 1.4em;
+  width: 1.4em;
+}
+
+.insert {
+  display: flex;
+  position: fixed;
+  top: 97%;
+  left: 70%;
+  width: 12em;
+  height: 2.5em;
+  border-radius: 5px;
+  padding: 5px;
+  background-color: $theme-lightRed;
+  font-size: 1.4em;
+  & .fa-heart {
+    margin-right: 10px;
   }
 }

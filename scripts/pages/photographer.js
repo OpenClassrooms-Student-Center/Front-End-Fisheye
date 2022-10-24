@@ -2,6 +2,8 @@ import { Photographer } from "../models/Photographer.js"
 import { API } from "../api/Api.js"
 import { createHeader } from "../components/WebsiteHeader.js"
 import { ModalDisplayButtons } from "../components/ModalDisplayButtons.js"
+import { MediaFactory } from "../factories/mediaFactory.js"
+import { PhotographerMedia } from "../components/PhotographerMedia.js"
 
 // 1- Variables
 // DOM
@@ -25,7 +27,19 @@ async function init() {
 }
 
 function displayData(data) {
-  new Photographer(data).displayProfile(data)
+  new Photographer(
+    data.photographer.find((photographer) => photographer)
+  ).displayProfile()
+  const photographerMedias = data.media.map(
+    (element) => new MediaFactory(element)
+  )
+  photographerMedias.forEach((element) => {
+    const Template = new PhotographerMedia(element)
+    Template.createMediaSection()
+    document
+      .querySelector(".photographer-media")
+      .appendChild(Template.createMediaList())
+  })
 }
 
 init()

@@ -6,11 +6,11 @@ import { createHeader } from "../components/WebsiteHeader.js"
 async function init() {
   // Create the main page header, then get photographers data and display them
   createHeader("mainPage")
-  displayData(await API.getAllData)
+  displayData(await API.getAllData("homePage"))
 }
 
-function displayData(photographers) {
-  new Photographer(photographers).displayHome(photographers)
+function displayData(data) {
+  new Photographer(data).displayHome(data)
 }
 
 init()

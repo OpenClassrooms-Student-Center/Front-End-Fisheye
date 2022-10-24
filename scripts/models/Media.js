@@ -1,5 +1,3 @@
-import { PhotographerMedia } from "../components/PhotographerMedia.js"
-
 export class Media {
   constructor(media) {
     this.date = media.date
@@ -8,12 +6,5 @@ export class Media {
     this.photographerId = media.photographerId
     this.price = media.price
     this.title = media.title
-  }
-
-  displayMedia(media) {
-    const Template = new PhotographerMedia(media)
-    document
-      .querySelector(".photographer-media")
-      .appendChild(Template.createMediaList(media))
   }
 }
