@@ -2,10 +2,10 @@
 <html lang="fr">
 
 <head>
-  <link href="css/style.css" rel="stylesheet" type="text/css" />
-  <meta charset="utf-8" />
-  <link rel="icon" type="image/png" href="assets/favicon.png" />
-  <link href="https://fonts.googleapis.com/css?family=DM+Sans&display=swap" rel="stylesheet" />
+  <link href="css/style.css" rel="stylesheet" type="text/css">
+  <meta charset="utf-8">
+  <link rel="icon" type="image/png" href="assets/favicon.png">
+  <link href="https://fonts.googleapis.com/css?family=DM+Sans&display=swap" rel="stylesheet">
   <script src="https://kit.fontawesome.com/716860e1f2.js" crossorigin="anonymous"></script>
   <title>Fisheye - photographe</title>
 </head>
@@ -13,7 +13,7 @@
 <body>
   <header>
     <a href="index.html">
-      <img src="assets/images/logo.png" class="logo" />
+      <img src="assets/images/logo.png" class="logo" alt="logo fisheye">
     </a>
   </header>
   <main id="main">
@@ -22,17 +22,16 @@
     <!-- Dropdown nav-->
     <div class="dropdown">
       <label tabindex="0">Trier par</label>
-      <div id="select-btn" role="button" class="select" aria-labelledby="select_option" aria-haspopup="listbox">
-        <span tabindex="0"><img id="arrow-down" alt="fleche direction bas" src="assets/icons/arrow_down.svg" /></span>
-        <ul class="selector-list" role="listbox" aria-labelledby="select_option">
-          <li tabindex="0" id="popularity" class="selector active" role="option" aria-labelledby="select_option1">
+      <div id="select-btn" class="select" aria-haspopup="listbox">
+        <span><img id="arrow-down" alt="fleche direction bas" src="assets/icons/arrow_down.svg"></span>
+        <ul class="selector-list">
+          <li tabindex="0" id="popularity" class="selector active">
             Popularité
           </li>
           <ul class="selector-bloc">
-            <li tabindex="0" id="date" class="selector" role="option" aria-labelledby="select_option2">Date</li>
-            <li tabindex="0" id="title" class="selector" role="option" aria-labelledby="select_option3">Titre</li>
+            <li tabindex="0" id="date" class="selector">Date</li>
+            <li tabindex="0" id="title" class="selector">Titre</li>
           </ul>
-
         </ul>
       </div>
     </div>
@@ -40,7 +39,7 @@
     <section id="section"></section>
   </main>
   <!--Modal Formulaire-->
-  <div class="contact_modal" id="open-modal">
+  <div class="contact_modal" id="open-modal" role="dialog" aria-describedby="title-form">
     <div class="overlay"></div>
     <div class="modal">
       <header id="header-form">
@@ -50,19 +49,23 @@
       <form name="contact" action="photographer.html" method="get" onsubmit="">
         <div class="formData">
           <label for="prenom">Prénom</label>
-          <input class="text-control" type="text" id="prenom" name="prenom" aria-labelledby="prenom" minlength="2" />
+          <input class="text-control" type="text" id="prenom" name="prenom" placeholder="entrer votre prénom"
+            aria-labelledby="prenom" minlength="2" />
         </div>
         <div class="formData">
           <label for="nom">Nom</label>
-          <input class="text-control" type="text" id="nom" name="nom" aria-labelledby="nom" />
+          <input class="text-control" type="text" id="nom" name="nom" placeholder="entrer votre nom"
+            aria-labelledby="nom" />
         </div>
         <div class="formData">
           <label for="email">E-mail</label>
-          <input class="text-control" type="email" id="email" name="email" aria-labelledby="email" />
+          <input class="text-control" type="email" id="email" name="email" placeholder="entrer votre mail"
+            aria-labelledby="email" />
         </div>
         <div class="formData">
           <label for="message">Votre message</label>
-          <textarea id="message" name="message" rows="4" required minlength="5" aria-labelledby="message" /></textarea>
+          <textarea id="message" name="message" rows="4" required minlength="5" placeholder="entrer votre méssage "
+            aria-labelledby="message"></textarea>
         </div>
         <button class="contact_button" aria-label="Envoi du formulaire">Envoyer</button>
       </form>
@@ -71,11 +74,11 @@
   <!--Bloc total likes-->
   <aside class="bloc-stat" tabindex="0"></aside>
   <!--Modal Lightbox-->
-  <div class="lightbox">
+  <div class="lightbox" role="dialog" aria-describedby="modalLightbox">
     <img class="close-lightbox" alt="croix de fermeture" src="assets/icons/close_lightbox.svg" />
     <a class="left-arrow"><img alt="fleche direction gauche" src="assets/icons/arrow_left.svg" /></a>
     <a class="right-arrow"><img alt="fleche direction droite" src="assets/icons/arrow_right.svg" /></a>
-    <div class="lightbox-container">
+    <div id="modalLightbox" class="lightbox-container">
       <!--<img src="assets/images/243/Animals_Rainbow.jpg" width="900" height="900">-->
     </div>
   </div>

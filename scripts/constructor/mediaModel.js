@@ -41,7 +41,7 @@ export class Media {
                 <a data-id='${this.id}' data-date='${this.date}' data-title='${this.title}' data-likes='${this.likes}'>${media}</a>
                 <div class='img-info'>
                     <h3 tabindex="0">${this.title}</h3>
-                    <label for'${this.id}' aria-label='favori' class='likes'><p class='likes-value'>${this.likes}</p>
+                    <label tabindex="0" for'${this.id}' aria-label='favori' class='likes'><p class='likes-value'>${this.likes}</p>
                         <input  id='${this.id}' type="checkbox" name="fav" aria-label='${this.likes} favoris' aria-labelledby="fav"/>
                         <i class="fa-solid fa-heart" tabindex="0"></i>
                     </label>

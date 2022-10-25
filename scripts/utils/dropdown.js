@@ -1,5 +1,6 @@
 
 // ----- Ouverture et Fermeture du dropdown -----//
+
 // ---Récup élément html
 const listBottom = document.querySelector('.selector-bloc')// bloc de 2 li du bas
 const arrow = document.querySelector('#select-btn span')
@@ -15,11 +16,19 @@ const section = document.querySelector('#section')
 // ----- Ouverture et Fermeture
 isVisible = false
 
-arrow.addEventListener('click', (e) => {
+const toggleDropdown = () => {
     //listBottom.classList.toggle("isVisible")  // method toggle()
     isVisible = !isVisible  // version ternere
     isVisible ? listBottom.classList.add("isVisible") : listBottom.classList.remove("isVisible")
     isVisible ? arrowImg.classList.add("rotate") : arrowImg.classList.remove("rotate")
+}
+
+arrow.addEventListener('click', (e) => { toggleDropdown() })
+// --- Commande clavier
+arrow.addEventListener('keypress', (e) => {
+    if (e.key === 'Enter') {
+        toggleDropdown()
+    }
 })
 
 let allCards = []
@@ -52,6 +61,31 @@ let startDropdownListener = () => {
             valueClickedContainer.innerHTML = firstcontainer;
 
             listBottom.classList.remove("isVisible")
+            arrowImg.classList.remove("rotate")
+            isVisible = false
+        })
+
+        option.addEventListener('keypress', (e) => {
+
+            if (e.key === 'Enter') {
+                let firstcontainer = selected.textContent
+                console.log(firstcontainer);
+                let valueClicked = e.target.innerHTML
+                console.log(valueClicked);
+                let valueClickedContainer = e.target
+                console.log(valueClickedContainer);
+
+                console.log(selected.innerHTML);
+                console.log(valueClickedContainer.innerHTML);
+                //Filtre media ici
+                sortMedia(valueClicked)
+                // lélément cliquer passe en 1
+                selected.innerHTML = valueClicked;
+                valueClickedContainer.innerHTML = firstcontainer;
+
+                listBottom.classList.remove("isVisible")
+            }
+
 
         })
     })

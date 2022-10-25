@@ -1,9 +1,12 @@
 //-------------------------//
 // ------- Modal -------- //
 const modal = document.querySelector(".contact_modal");
+const mainContainer = document.querySelector("#main");
 
 const contactButton = document.querySelector('.contact_modal');
 const openContact = document.getElementById('open-contact')
+
+const btnClosed = document.getElementById('closed')
 /**
  * affiche le nom du photographe dans le formulaire 
  * contact.js
@@ -30,6 +33,9 @@ function displayModal() {
         console.log(e);
         //const modal = document.querySelector(".contact_modal");
         modal.style.display = "block";
+        // accessibilité
+        mainContainer.setAttribute('aria-hidden', 'true')
+        btnClosed.focus()
     })
 
 }
@@ -45,6 +51,9 @@ function closeModal() {
         console.log(e);
 
         modal.style.display = "none";
+        // accessibilité
+        mainContainer.setAttribute('aria-hidden', 'false')
+        openContact.focus()
     })
     // fermeture au clavier
     btnClosed.addEventListener('keypress', (e) => {

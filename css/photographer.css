@@ -38,6 +38,7 @@
   justify-content: space-between;
   flex-wrap: wrap;
   margin: 0 250px;
+  margin-bottom: 70px;
 }
 #section img {
   border-radius: 5px;
@@ -146,6 +147,7 @@ i {
   width: 100vw;
   height: 100vh;
   top: 0;
+  z-index: 10;
 }
 
 .modal {
