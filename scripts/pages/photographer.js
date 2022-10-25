@@ -28,7 +28,7 @@ async function init() {
   addModalEventListeners()
 }
 
-function displayData(data) {
+export function displayData(data) {
   new Photographer(
     data.photographer.find((photographer) => photographer)
   ).displayProfile()
@@ -40,6 +40,24 @@ function displayData(data) {
       .querySelector(".photographer-media")
       .appendChild(Template.createMediaList())
     Template.addLikes()
+  })
+}
+
+export async function loadSortedMedia() {
+  const sortingParameter = document.getElementById("order-by").value
+  const mediaList = document.querySelectorAll(".mediaCard")
+  for (let mediaToRemove of mediaList) {
+    document.querySelector(".photographer-media").removeChild(mediaToRemove)
+  }
+  await API.getPhotographersByID(sortingParameter)
+  .then((data) => {
+    data.media.forEach((element) => {
+      const Template = new PhotographerMedia(element)
+      document
+        .querySelector(".photographer-media")
+        .appendChild(Template.createMediaList())
+      Template.addLikes()
+    })
   })
 }
 

@@ -1,4 +1,4 @@
-import { likedMedia } from "../pages/photographer.js"
+import { likedMedia, loadSortedMedia } from "../pages/photographer.js"
 import { faHeartIcon } from "./faHeartIcon.js"
 
 export class PhotographerMedia {
@@ -17,6 +17,8 @@ export class PhotographerMedia {
     wrapper.classList = "media-sorting-menu"
     document.querySelector("#main").appendChild(wrapper)
     wrapper.innerHTML += `<label class="sort-label" for="order-by">Trier par</label><select name="sort" id="order-by" class="dropdown-sort"><option value="popularite">Popularité</option><option value="date">Date</option><option value="titre">Titre</option></select>`
+    const sortingDropdown = document.getElementById("order-by")
+    sortingDropdown.addEventListener("change", this.sortMedia)
     return wrapper
   }
 
@@ -65,5 +67,9 @@ export class PhotographerMedia {
     }
     totalLikes.textContent = totalLikes.value
     this.previousSibling.textContent = this.previousSibling.value
+  }
+
+  static sortMedia() {
+    loadSortedMedia()
   }
 }
