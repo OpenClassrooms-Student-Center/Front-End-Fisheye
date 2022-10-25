@@ -32,6 +32,7 @@ function displayData(data) {
   new Photographer(
     data.photographer.find((photographer) => photographer)
   ).displayProfile()
+  PhotographerMedia.createDropdownOrder()
   new PhotographerMedia().createMediaSection()
   data.media.forEach((element) => {
     const Template = new PhotographerMedia(element)
