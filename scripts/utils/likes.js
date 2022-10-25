@@ -45,7 +45,7 @@ const addLikes = () => {
 
         })
         // Commande clavier
-        checkbox[i].addEventListener('keypress', (e) => {
+        checkbox[i].addEventListener('keyup', (e) => {
             if (e.key === 'Enter') {
                 console.log('enter');
             }

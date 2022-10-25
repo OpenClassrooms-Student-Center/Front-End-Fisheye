@@ -13,7 +13,7 @@
 <body>
   <header>
     <a href="index.html">
-      <img src="assets/images/logo.png" class="logo" alt="logo fisheye">
+      <img src="assets/images/logo.png" class="logo" alt="logo fisheye page d'accueil">
     </a>
   </header>
   <main id="main">
@@ -23,7 +23,8 @@
     <div class="dropdown">
       <label tabindex="0">Trier par</label>
       <div id="select-btn" class="select" aria-haspopup="listbox">
-        <span><img id="arrow-down" alt="fleche direction bas" src="assets/icons/arrow_down.svg"></span>
+        <span><img id="arrow-down" aria-label="ouverture fermeture menu de tri" alt="fleche direction bas" tabindex="0"
+            src="assets/icons/arrow_down.svg"></span>
         <ul class="selector-list">
           <li tabindex="0" id="popularity" class="selector active">
             Popularité
@@ -74,10 +75,10 @@
   <!--Bloc total likes-->
   <aside class="bloc-stat" tabindex="0"></aside>
   <!--Modal Lightbox-->
-  <div class="lightbox" role="dialog" aria-describedby="modalLightbox">
-    <img class="close-lightbox" alt="croix de fermeture" src="assets/icons/close_lightbox.svg" />
-    <a class="left-arrow"><img alt="fleche direction gauche" src="assets/icons/arrow_left.svg" /></a>
-    <a class="right-arrow"><img alt="fleche direction droite" src="assets/icons/arrow_right.svg" /></a>
+  <div tabindex="0" class="lightbox" role="dialog" aria-describedby="modalLightbox">
+    <img tabindex="0" class="close-lightbox" alt="croix de fermeture" src="assets/icons/close_lightbox.svg" />
+    <a class="left-arrow"><img tabindex="0" alt="fleche direction gauche" src="assets/icons/arrow_left.svg" /></a>
+    <a class="right-arrow"><img tabindex="0" alt="fleche direction droite" src="assets/icons/arrow_right.svg" /></a>
     <div id="modalLightbox" class="lightbox-container">
       <!--<img src="assets/images/243/Animals_Rainbow.jpg" width="900" height="900">-->
     </div>

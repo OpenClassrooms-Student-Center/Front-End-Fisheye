@@ -13,12 +13,16 @@ const title = document.querySelector('#title')
 const options = document.querySelectorAll('.selector')
 const section = document.querySelector('#section')
 
+
+
 // ----- Ouverture et Fermeture
 isVisible = false
 
 const toggleDropdown = () => {
     //listBottom.classList.toggle("isVisible")  // method toggle()
     isVisible = !isVisible  // version ternere
+    isVisible ? date.setAttribute('aria-hidden', 'false') : date.setAttribute('aria-hidden', 'true')
+    isVisible ? title.setAttribute('aria-hidden', 'false') : title.setAttribute('aria-hidden', 'true')
     isVisible ? listBottom.classList.add("isVisible") : listBottom.classList.remove("isVisible")
     isVisible ? arrowImg.classList.add("rotate") : arrowImg.classList.remove("rotate")
 }
@@ -65,7 +69,7 @@ let startDropdownListener = () => {
             isVisible = false
         })
 
-        option.addEventListener('keypress', (e) => {
+        option.addEventListener('keyup', (e) => {
 
             if (e.key === 'Enter') {
                 let firstcontainer = selected.textContent
