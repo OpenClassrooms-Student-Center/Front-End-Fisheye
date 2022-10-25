@@ -116,7 +116,8 @@ form {
   & > * {
     width: 100%;
   }
-  & img, video {
+  & img,
+  video {
     aspect-ratio: 1;
     border-radius: 5px;
     object-fit: cover;
@@ -134,7 +135,8 @@ form {
   & .likes {
     margin-left: 25px;
   }
-  & figcaption, aside {
+  & figcaption,
+  aside {
     min-height: 1.4em;
   }
   & figcaption,
@@ -145,28 +147,37 @@ form {
     font-size: 1.4em;
     & .fa-heart {
       fill: $theme-darkRed;
+      margin-left: 10px;
+      cursor: pointer;
     }
   }
 }
 
+data {
+  font-size: 1em;
+}
+
 .fa-heart {
-  margin-left: 10px;
-  height: 1.4em;
   width: 1.4em;
+  vertical-align: middle;
 }
 
 .insert {
   display: flex;
   position: fixed;
-  top: 97%;
+  justify-content: space-around;
+  top: 96.5%;
   left: 70%;
-  width: 12em;
-  height: 2.5em;
+  width: 20%;
+  height: 3.5%;
   border-radius: 5px;
-  padding: 5px;
   background-color: $theme-lightRed;
-  font-size: 1.4em;
-  & .fa-heart {
-    margin-right: 10px;
+  & div {
+    font-size: 1.4em;
+    line-height: 2em;
+    height: 100%;
+    & .fa-heart {
+      padding-bottom: 5px;
+    }
   }
 }

@@ -1,3 +1,4 @@
+import { MediaFactory } from "../factories/mediaFactory.js"
 import { Photographer } from "../models/Photographer.js"
 
 export class API {
@@ -44,14 +45,12 @@ export class API {
           .reduce((previousValue, currentValue) => {
             return previousValue + currentValue
           })
-          matchingPhotographer.find((photographer) => photographer).totalLikes =
+        matchingPhotographer.find((photographer) => photographer).totalLikes =
           photographerTotalLikes
-
         photographerInfoAndMedia = {
           photographer: matchingPhotographer,
-          media: matchingMedias,
+          media: matchingMedias.map((element) => new MediaFactory(element)),
         }
-
       })
       .catch((err) => {
         console.error(err)

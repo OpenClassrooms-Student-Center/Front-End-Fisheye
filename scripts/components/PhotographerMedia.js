@@ -1,3 +1,4 @@
+import { likedMedia } from "../pages/photographer.js"
 import { faHeartIcon } from "./faHeartIcon.js"
 
 export class PhotographerMedia {
@@ -22,6 +23,7 @@ export class PhotographerMedia {
   createMediaList() {
     const wrapper = document.createElement("figure")
     wrapper.classList = "mediaCard"
+    wrapper.id = `media-${this.media.id}`
     wrapper.innerHTML += `${
       this.media.photo
         ? `<img src="assets/${this.media.photographerId}/${this.media.photo}" alt="${this.media.title}" class="thumb-img">`
@@ -31,9 +33,37 @@ export class PhotographerMedia {
     }
     <div class="media-legend"><figcaption>${
       this.media.title
-    }</figcaption><aside class="likes">${
+    }</figcaption><aside class="likes"><data value='${this.media.likes}'>${
       this.media.likes
-    } ${faHeartIcon}</aside></div>`
+    } </data>${faHeartIcon}</aside></div>`
     return wrapper
-  }  
+  }
+
+  // Assigns a key-value pair to likedMedia array for each media, to keep track of its liked status
+  addLikes() {
+    likedMedia.push({ media: this.media.id, status: false })
+    const likeButton = document.querySelector(
+      `#media-${this.media.id} > .media-legend > .likes > .fa-heart`
+    )
+    likeButton.addEventListener("click", this.incrementLikes)
+  }
+
+  incrementLikes() {
+    const likedMediaId = this.closest(".mediaCard").id.replace("media-", "")
+    let likedMediaStatus = likedMedia.find(
+      (mediaId) => mediaId.media == likedMediaId
+    )
+    const totalLikes = document.querySelector(".total-likes")
+    if (likedMediaStatus.status === false) {
+      totalLikes.value++
+      this.previousSibling.value++
+      likedMediaStatus.status = true
+    } else {
+      totalLikes.value--
+      this.previousSibling.value--
+      likedMediaStatus.status = false
+    }
+    totalLikes.textContent = totalLikes.value
+    this.previousSibling.textContent = this.previousSibling.value
+  }
 }

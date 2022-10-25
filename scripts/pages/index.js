@@ -9,8 +9,10 @@ async function init() {
   displayData(await API.getAllData("homePage"))
 }
 
-function displayData(data) {
-  new Photographer(data).displayHome(data)
+function displayData(photographers) {
+  photographers.forEach((photographer) => {
+    new Photographer(photographer).displayHome()
+  })
 }
 
 init()
