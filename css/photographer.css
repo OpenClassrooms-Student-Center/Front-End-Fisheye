@@ -1,76 +1,357 @@
-#contact_modal {
-    display: none;
+#photo {
+  width: 180px;
+  height: 180px;
+  border-radius: 50%;
+  object-fit: cover;
 }
 
-.photograph-header {
-    background-color: #FAFAFA;
-    height: 300px;
-    margin: 0 100px;
+#presentation {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  margin: 0 40px;
+}
+#presentation p {
+  text-align: left;
+  color: #901c1c;
+  font-size: x-large;
+  padding-bottom: 15px;
+}
+#presentation h1 {
+  margin: 0;
+  font-size: 50px;
+  color: #d3573c;
+}
+#presentation small {
+  font-size: large;
+}
+.photographer-header {
+  background-color: #fafafa;
+  height: 300px;
+  margin: 50px 250px;
+  display: flex;
+  align-items: center;
+}
+#section {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  margin: 0 250px;
+  margin-bottom: 70px;
+}
+#section img {
+  border-radius: 5px;
+  object-fit: cover;
+}
+.card-image {
+  margin-bottom: 25px;
+}
+.card-image a img {
+  cursor: pointer;
+}
+video {
+  border-radius: 5px;
+  object-fit: cover;
+  cursor: pointer;
+}
+.img-info {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  color: #901c1c;
+}
+.img-info h3 {
+  font-weight: 400;
+  font-size: x-large;
+  margin: 0;
+}
+.img-info p {
+  font-weight: bold;
+  font-size: larger;
+}
+i {
+  height: 15px;
+  width: 15px;
+}
+.bloc-stat {
+  width: 400px;
+  height: 70px;
+  border-radius: 5px 5px 0 0;
+  background-color: #d3573c;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  position: fixed;
+  right: 20px;
+  bottom: 0;
+}
+/**********coeur card**************/
+.img-info label input[type="checkbox"] {
+  display: none;
+}
+.likes {
+  display: flex;
+  margin-right: 8px;
+}
+.likes i {
+  margin-top: 3px;
+  margin-left: 5px;
+  font-size: 20px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+.likes i:hover {
+  transform: scale(1.4);
+}
+/**********Bloc total likes et price********/
+.bloc-stat p {
+  color: black;
+  font-size: 30px;
+  font-weight: 600;
+}
+.bloc-stat i {
+  color: black;
+  font-size: 30px;
+  font-weight: 600;
+  margin-top: 5px;
+  margin-left: 5px;
 }
 
+#likes-content {
+  display: flex;
+}
+/***** Bouton modal ****/
 .contact_button {
-    font-size: 20px;
-    font-weight: bold;
-    color: white;
-    padding: 11px;
-    width: 170px;
-    height: 70px;
-    border: none;
-    background-color: #901C1C;
-    border-radius: 5px;
-    cursor: pointer;
+  font-size: 20px;
+  font-weight: bold;
+  color: white;
+  padding: 11px;
+  width: 170px;
+  height: 70px;
+  border: none;
+  background-color: #901c1c;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: 0.5s;
+}
+.contact_button:hover {
+  background-color: #d3573c;
+  color: #000000;
+}
+/********************************/
+/*********** Modal *************/
+.contact_modal {
+  display: none;
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  top: 0;
+  z-index: 10;
 }
 
 .modal {
-    border-radius: 5px;
-    background-color: #DB8876;
-    width: 50%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: space-between;
-    padding: 35px;
-    margin: auto;
+  border-radius: 5px;
+  background-color: #db8876;
+  width: 30%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  padding: 35px;
+  margin: auto;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.overlay {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: #a4a1a1d3;
 }
 
 .modal header {
-    justify-content: space-between;
-    width: 100%;
+  justify-content: space-between;
+  width: 100%;
+  margin-bottom: 25px;
 }
 
 .modal header img {
-    cursor: pointer;
+  cursor: pointer;
 }
 
 .modal header h2 {
-    font-size: 64px;
-    font-weight: normal;
-    text-align: center;
+  font-size: 55px;
+  font-weight: bold;
+  font-weight: normal;
+  padding-bottom: 20px;
+  padding-top: 20px;
 }
-
+/**** formulaire *****/
 form {
-    display: flex;
-    width: 100%;
-    flex-direction: column;
-    align-items: flex-start;
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  align-items: flex-start;
 }
 
 form label {
-    color: #312E2E;
-    font-size: 36px;
+  color: #312e2e;
+  font-size: 36px;
 }
 
 form div {
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-    align-items: self-start;
-    margin-bottom: 26px;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  align-items: self-start;
+  margin-bottom: 5px;
 }
 
 form input {
-    width: 100%;
-    height: 68px;
-    border: none;
-    border-radius: 5px;
+  width: 100%;
+  height: 49px;
+  border: none;
+  border-radius: 5px;
+  font-size: 24px;
+}
+form textarea {
+  width: 100%;
+  height: 150px;
+  border: none;
+  border-radius: 5px;
+  font-size: 24px;
+}
+/*********************************/
+/*********** Lightbox **********/
+.lightbox {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #918f8fd3;
+  z-index: 100;
+}
+
+.left-arrow {
+  position: fixed;
+  top: 50%;
+  left: 20px;
+}
+.right-arrow {
+  position: fixed;
+  top: 50%;
+  right: 20px;
+}
+.close-lightbox {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  color: #901c1c;
+}
+.close-lightbox img {
+  color: #901c1c;
+}
+.lightbox-container {
+  width: 900px;
+  height: 600px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+}
+.lightbox-container img {
+  width: 900px;
+  height: 600px;
+  display: flex;
+  align-items: center;
+  object-fit: cover;
+}
+.lightbox-container video {
+  width: 900px;
+  height: 600px;
+  display: flex;
+  align-items: center;
+}
+.lightbox-container h3 {
+  color: #901c1c;
+  font-size: x-large;
+  align-self: flex-start;
+  margin-left: 26%;
+}
+/********************************/
+/*********** Dropdown **********/
+.dropdown {
+  display: flex;
+  margin-left: 250px;
+  height: 69px;
+  margin-bottom: 50px;
+}
+.dropdown label {
+  margin-right: 25px;
+  font-size: 18px;
+  font-weight: 700;
+}
+
+.selector {
+  padding: 1em;
+}
+
+#date,
+#title {
+  border-top: 2px solid white;
+}
+
+#select-btn {
+  width: 170px;
+  color: white;
+  height: 54px;
+  border: none;
+  background-color: #911c1c;
+  border-radius: 5px;
+  position: relative;
+}
+#select-btn span {
+  position: absolute;
+  right: 0;
+  top: 31%;
+  cursor: pointer;
+  width: 40px;
+}
+.rotate {
+  transform: rotate(180deg);
+}
+.selector-bloc {
+  opacity: 0;
+}
+.selector-bloc.isVisible {
+  opacity: 1;
+  transition: 0.2;
+}
+
+.selector-list {
+  width: 170px;
+  padding: 0;
+  height: 40px;
+}
+ul {
+  padding: 0;
+  margin: 0;
+  background-color: #911c1c;
+  border-radius: 5px;
+}
+ul li {
+  padding-left: 15px;
+  list-style-type: none;
+  cursor: pointer;
+}
+li:hover {
+  background-color: #d3573c;
+  cursor: pointer;
 }

@@ -1,6 +1,23 @@
-# Base de code du projet P6 - Parcours Front-end
+# P6 FishEye
 
-## Démarrer le projet
+## Créez un site accessible pour une plateforme de photographes
 
-Rien à installer ici, il suffit d'ouvrir le fichier `index.html`.
+forked from OpenClassrooms-Student-Center/Front-End-Fisheye
 
+## Tech
+
+[![forthebadge](https://forthebadge.com/images/badges/uses-html.svg)](https://forthebadge.com)
+[![forthebadge](https://forthebadge.com/images/badges/uses-css.svg)](https://forthebadge.com)
+[![forthebadge](https://forthebadge.com/images/badges/made-with-javascript.svg)](https://forthebadge.com)
+
+## Installation
+
+Cloner le repository https://github.com/kriss57/Front-End-Fisheye.git
+
+```sh
+git clone https://github.com/kriss57/Front-End-Fisheye.git
+```
+
+## License
+
+OpenClassrooms-Student-Center
