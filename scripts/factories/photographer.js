@@ -72,7 +72,7 @@ function photographerPageFactory(data) {
 
 
 function photographersMedias(data, name) {
-    console.log(name);
+   // console.log(name);
     //boucle sur le tableau de media (soit video soit image)
     data.forEach((media) => {
         //j'appelle displayDataMedia avec media qui est un seul objet
@@ -82,21 +82,32 @@ function photographersMedias(data, name) {
 
 
 function displayDataMedia(media, name) {
-    console.log(media);
+   // console.log(media);
     // je recupere ma div parent la plus haute
     const thumbnailSection = document.querySelector(".thumbnail_section");
     // je decortique media 
     const {image, video, id, title, likes, date } = media;
     const picture = `assets/sample-photos/${name}/${image}`;
     const mediaDiv = document.createElement("article");
-    // CREER UNE DIV QUI ENGLBE MES DEUX H2
+    // CREER UNE DIV QUI ENGLOBE MES DEUX H2
+    /* const divUnderImage = document.querySelector(".under_image"); /* ESSAI */
+   // console.log(divUnderImage);
     const titleMedia = document.createElement("h2");
     titleMedia.textContent = title;
     const likesMedia = document.createElement("h2");
     likesMedia.textContent = likes;
+
     /*
     const faviconMedia = document.createElement('span');
-    faviconMedia.textContent = 
+    const favicon = `assets/${heart-solid.svg}`;
+    console.log(favicon)
+    faviconMedia.src = favicon;
+    */
+   /*
+    const cta = document.querySelector("callToAction_section");
+    const ctaDiv = document.createElement("h2");
+    totalLikes.textContent = likes;
+    ctaDiv.appendChild (cta);
     */
 
    // Le cas ou c'est une image
@@ -124,5 +135,5 @@ function displayDataMedia(media, name) {
 
     // j'injestc un par un dans le DOM mediaDiv
    thumbnailSection.appendChild(mediaDiv, titleMedia , likesMedia);
+   /*divUnderImage.appendChild(titleMedia, likesMedia);*/
 };
-

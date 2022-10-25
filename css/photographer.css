@@ -210,3 +210,17 @@ form input {
     height: 200px;
     width: 200px;
 }
+
+.callToAction {
+    display: flex;
+    justify-content: flex-end;
+}
+.callToAction_section {
+    background-color: #DB8876;
+    border-radius: 5px;
+    bottom: 0;
+    margin-right: 36px;
+    position: fixed;
+    width: 376px;
+    height: 89px;
+}
