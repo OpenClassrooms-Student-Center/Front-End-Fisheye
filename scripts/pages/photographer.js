@@ -5,6 +5,7 @@
  * @function displayPhotographerData
  * 
  */
+
  async function displayPhotographerData() {
     const { media, photographers } = await getData()
     const id = window.location.search.split('id=')[1];
