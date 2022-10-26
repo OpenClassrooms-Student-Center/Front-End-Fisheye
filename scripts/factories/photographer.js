@@ -103,12 +103,14 @@ function displayDataMedia(media, name) {
     console.log(favicon)
     faviconMedia.src = favicon;
     */
-   /*
     const cta = document.querySelector("callToAction_section");
     const ctaDiv = document.createElement("h2");
+   /*
     totalLikes.textContent = likes;
     ctaDiv.appendChild (cta);
     */
+
+
 
    // Le cas ou c'est une image
    if (media.image) {
@@ -137,3 +139,48 @@ function displayDataMedia(media, name) {
    thumbnailSection.appendChild(mediaDiv, titleMedia , likesMedia);
    /*divUnderImage.appendChild(titleMedia, likesMedia);*/
 };
+
+
+
+
+/////////
+document.body.onload = addElement;
+
+function addElement() {
+  // create a new div element
+  const newDiv = document.createElement("div");
+
+  // and give it some content
+  const newContent = document.createTextNode("Hi there and greetings!");
+
+  // add the text node to the newly created div
+  newDiv.appendChild(newContent);
+
+  // add the newly created element and its content into the DOM
+  const currentDiv = document.getElementById("div1");
+  document.body.insertBefore(newDiv, currentDiv);
+}
+
+////////
+
+// CALL TO ACTION
+function ctaElement() {
+    console.log('toto')
+    //const cta = document.createElement("h2");
+}
+
+//////////
+const nameForm = document.getElementById('nameForm');
+nameForm.innerHTML += 'Extra stuff';
+
+/*
+const getNameForm = document.querySelector('nameForm');
+console.log(getNameForm);
+function addPhotographerName(data) {
+    console.log(addPhotographerName);
+    const {name} = data;
+    const h1 = document.createElement('h1');
+    h1.textContent = name;
+    getNameForm.appendChild(h1);
+}
+*/
