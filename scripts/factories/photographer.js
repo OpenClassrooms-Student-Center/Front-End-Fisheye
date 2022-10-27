@@ -58,6 +58,18 @@ function photographerPageFactory(data) {
     console.log(portrait);
     photo.setAttribute("src", `assets/photographers/${portrait}`);
     getDivPicture.appendChild(photo);
+
+    // NAME FORM
+
+    const getNameForm = document.querySelector("#nameForm");
+
+    const nameForm = document.createElement("div");
+    nameForm.className = "nameContent";
+    nameForm.innerHTML = `
+        <h2>${name}</h2>
+        `;
+
+    getNameForm.appendChild(nameForm);
 }
 
 
@@ -91,22 +103,17 @@ function displayDataMedia(media, name) {
     const picture = `assets/sample-photos/${name}/${image}`;
     const mediaDiv = document.createElement("article");
     // CREER UNE DIV QUI ENGLOBE MES DEUX H2
-    /* const divUnderImage = document.querySelector(".under_image"); /* ESSAI */
-    // console.log(divUnderImage);
-    /*
-     const titleMedia = document.createElement("h2");
-     titleMedia.textContent = title;
-     const likesMedia = document.createElement("h2");
-     likesMedia.textContent = likes;
- */
-    //////////
     const divInformations = document.createElement("div");
     divInformations.className = "informationsContent";
     divInformations.innerHTML = `
         <h2 class="title">${title}</h2>
         <div class="likes">
             <h2>${likes}</h2>
-            <img src="assets/heart-solid.svg">
+            <img src="assets/heart-solid.svg" style="
+            height: 15px;
+            width: 18px;
+            color: #901C1C;
+        ">
         </div>
     `;
 
@@ -116,15 +123,6 @@ function displayDataMedia(media, name) {
         mediaImg.src = picture;
         mediaDiv.appendChild(mediaImg);
         mediaDiv.appendChild(divInformations);
-
-        /*
-        mediaDiv.appendChild (titleMedia);
-        mediaDiv.appendChild (likesMedia);
-    */
-
-        // const thumnailImage = document.createElement("article");
-        // thumnailImage.appendChild ()
-
 
     } else  // Le cas ou c'est une video
     {
@@ -138,47 +136,35 @@ function displayDataMedia(media, name) {
 
     // j'injestc un par un dans le DOM mediaDiv
     thumbnailSection.appendChild(mediaDiv);
-    /*divUnderImage.appendChild(titleMedia, likesMedia);*/
 };
 
 
-function displayCta (photos, photographer) {
+function displayCta(photos, photographer) {
     let counterLikes = 0; // créer une variable qui vaut zéro (point de depart du compteur)
     photos.forEach((photo) => { //je boucle sur LES "photos" pour accéder à chaque "photo"
         counterLikes += photo.likes; // j'ajoute à "counterLikes" le nombre de like à ma photo courante 
     });
-        // CALL TO ACTION
-        const callToAction = document.querySelector(".callToAction_section");
+    // CALL TO ACTION
+    const callToAction = document.querySelector(".callToAction_section");
 
-        const cta = document.createElement("div");
-        cta.className = "ctaContent";
-        cta.innerHTML = `
+    const cta = document.createElement("div");
+    cta.className = "ctaContent";
+    cta.innerHTML = `
             <p class="nombreLikes">${counterLikes}</p>
-            <img src="assets/heart-solid.svg">
+            <img src="assets/heart-solid.svg" style="
+            height: 15px;
+            width: 18px;">
+            <div class="pricePhotographer">
             <p>${photographer.price}</p>
             <p> € / jour</p>
+            </div>
         `;
-    
-        callToAction.appendChild(cta);
+
+    callToAction.appendChild(cta);
 }
 
-/////////
-document.body.onload = addElement;
 
-function addElement() {
-    // create a new div element
-    const newDiv = document.createElement("div");
 
-    // and give it some content
-    const newContent = document.createTextNode("Hi there and greetings!");
-
-    // add the text node to the newly created div
-    newDiv.appendChild(newContent);
-
-    // add the newly created element and its content into the DOM
-    const currentDiv = document.getElementById("div1");
-    document.body.insertBefore(newDiv, currentDiv);
-}
 
 
 /*

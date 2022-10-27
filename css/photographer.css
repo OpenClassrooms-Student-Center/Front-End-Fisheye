@@ -129,6 +129,7 @@
     align-items: center;
     flex-direction: column;
     height: 400px;
+    width: 350px;
 }
 
 .thumbnail_section article h2 {
@@ -221,6 +222,24 @@ form textarea {
     width: 200px;
 }
 
+.informationsContent {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.likes {
+    display: flex;
+    align-items: center;
+}
+
+.likes>img {
+    height: 17px;
+    width: 18px;
+    color: #901C1C;
+}
+
 .callToAction {
     display: flex;
     justify-content: flex-end;
@@ -233,4 +252,28 @@ form textarea {
     position: fixed;
     width: 376px;
     height: 89px;
+}
+
+.ctaContent {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+}
+
+.ctaContent p{
+    font-size: 24px;
+    font-weight: 500;
+}
+
+.pricePhotographer {
+    display: flex;
+    align-items: center;
+}
+
+/* NAME FORM*/
+
+.nameContent {
+    font-size: 64px;
+    color: #000000;
 }
