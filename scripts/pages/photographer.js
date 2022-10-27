@@ -37,30 +37,12 @@ export function displayData(data) {
   PhotographerMedia.createMediaSection()
   PhotographerMedia.sortMedia()
   thatPhotographerMedias[0].forEach((element) => {
-    const mediaIndex = thatPhotographerMedias[0].indexOf(element)
     const template = new PhotographerMedia(element)
     document
       .querySelector(".photographer-media")
-      .appendChild(template.createMediaList(mediaIndex))
+      .appendChild(template.createMediaList())
     template.addLikes()
   })
 }
-
-//export async function loadthatPhotographerMedias() {
-//  const sortingParameter = document.getElementById("order-by").value
-//  const mediaList = document.querySelectorAll(".mediaCard")
-//  for (let mediaToRemove of mediaList) {
-//    document.querySelector(".photographer-media").removeChild(mediaToRemove)
-//  }
-//  await API.getPhotographersByID(sortingParameter).then((data) => {
-//    data.media.forEach((element) => {
-//      const template = new PhotographerMedia(element)
-//      document
-//        .querySelector(".photographer-media")
-//        .appendChild(template.createMediaList())
-//      template.addLikes()
-//    })
-//  })
-//}
 
 init()

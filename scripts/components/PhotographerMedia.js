@@ -25,8 +25,9 @@ export class PhotographerMedia {
     return wrapper
   }
 
-  createMediaList(mediaIndex) {
+  createMediaList() {
     const wrapper = document.createElement("figure")
+    wrapper.tabIndex = 0
     wrapper.classList = "mediaCard"
     wrapper.dataset.mediaId = `${this.media.id}`
     wrapper.innerHTML += `${
@@ -72,6 +73,7 @@ export class PhotographerMedia {
     likeButton.previousSibling.textContent = likeButton.previousSibling.value
   }
 
+  // Gets the value of sorting dropdown menu, then reorders the medias accordingly. Default behavior is to sort by popularity (done on first page load)
   static sortMedia() {
     const sortingParameter = document.getElementById("order-by").value
     thatPhotographerMedias[0].sort((a, b) => {

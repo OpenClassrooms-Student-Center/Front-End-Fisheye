@@ -44,6 +44,7 @@ export class PhotographerProfile {
 
   createPhotographerHeader() {
     const wrapper = document.querySelector(".photograph-header")
+    wrapper.tabIndex = 0
     this.createProfile(wrapper, "profilePage")
     ModalDisplayButtons.createModalButton(wrapper)
     this.createPhotographerPicture(wrapper)
