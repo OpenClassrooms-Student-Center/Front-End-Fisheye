@@ -8,6 +8,7 @@ import { PhotographerMedia } from "../components/PhotographerMedia.js"
 
 // Global variable tracking the medias liked by user
 export const likedMediaList = []
+export let thatPhotographerMedias = []
 
 const closeModalButton = document.querySelector(".close_modal_button")
 
@@ -34,16 +35,18 @@ export function displayData(data) {
   ).displayProfile()
   PhotographerMedia.createDropdownOrder()
   PhotographerMedia.createMediaSection()
-  data.media.forEach((element) => {
+  PhotographerMedia.sortMedia()
+  thatPhotographerMedias[0].forEach((element) => {
+    const mediaIndex = thatPhotographerMedias[0].indexOf(element)
     const template = new PhotographerMedia(element)
     document
       .querySelector(".photographer-media")
-      .appendChild(template.createMediaList())
+      .appendChild(template.createMediaList(mediaIndex))
     template.addLikes()
   })
 }
 
-//export async function loadSortedMedia() {
+//export async function loadthatPhotographerMedias() {
 //  const sortingParameter = document.getElementById("order-by").value
 //  const mediaList = document.querySelectorAll(".mediaCard")
 //  for (let mediaToRemove of mediaList) {

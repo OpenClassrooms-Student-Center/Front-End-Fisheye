@@ -1,4 +1,7 @@
-import { likedMediaList } from "../pages/photographer.js"
+import {
+  likedMediaList,
+  thatPhotographerMedias,
+} from "../pages/photographer.js"
 import { faHeartIcon } from "./faHeartIcon.js"
 
 export class PhotographerMedia {
@@ -22,7 +25,7 @@ export class PhotographerMedia {
     return wrapper
   }
 
-  createMediaList() {
+  createMediaList(mediaIndex) {
     const wrapper = document.createElement("figure")
     wrapper.classList = "mediaCard"
     wrapper.dataset.mediaId = `${this.media.id}`
@@ -54,9 +57,7 @@ export class PhotographerMedia {
   }
 
   incrementLikes(likeButton, mediaId) {
-    let likedMedia = likedMediaList.find(
-      (element) => element.id == mediaId
-    )
+    let likedMedia = likedMediaList.find((element) => element.id == mediaId)
     const totalLikes = document.querySelector(".total-likes")
     if (likedMedia.status === false) {
       totalLikes.value++
@@ -72,22 +73,26 @@ export class PhotographerMedia {
   }
 
   static sortMedia() {
-    console.log("ok")
     const sortingParameter = document.getElementById("order-by").value
-    const mediaList = document.querySelectorAll(".mediaCard")
-    console.log(mediaList)
-    if (sortingParameter == "popularity" || sortingParameter == undefined) {
-      mediaList.sort((a, b) => {
+    thatPhotographerMedias[0].sort((a, b) => {
+      if (sortingParameter == "popularite" || sortingParameter == undefined) {
         return b.likes - a.likes
-      })
-    } else if (sortingParameter == "date") {
-      mediaList.sort((a, b) => {
+      } else if (sortingParameter == "date") {
         return b.date.localeCompare(a.date)
-      })
-    } else if (sortingParameter == "titre") {
-      mediaList.sort((a, b) => {
+      } else if (sortingParameter == "titre") {
         return a.title.localeCompare(b.title)
-      })
-    }
+      }
+    })
+
+    thatPhotographerMedias[0].forEach((element) => {
+      for (let media of document.querySelectorAll(".mediaCard")) {
+        let dataId = media.getAttribute("data-media-id")
+        if (dataId == element.id) {
+          document
+            .querySelector(".photographer-media")
+            .insertBefore(media, undefined)
+        }
+      }
+    })
   }
 }

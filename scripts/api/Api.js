@@ -1,5 +1,6 @@
 import { MediaFactory } from "../factories/mediaFactory.js"
 import { Photographer } from "../models/Photographer.js"
+import { thatPhotographerMedias } from "../pages/photographer.js"
 
 export class API {
   static url = "../data/photographers.json"
@@ -16,8 +17,8 @@ export class API {
           response = photographers
         } else if (page == "profilePage") {
           response = {
-            Photographer: photographers,
-            Medias: data.media,
+            photographer: photographers,
+            medias: data.media,
           }
         }
       })
@@ -33,10 +34,10 @@ export class API {
     let photographerInfoAndMedia = {}
     await this.getAllData("profilePage")
       .then((response) => {
-        const matchingPhotographer = response.Photographer.filter(
+        const matchingPhotographer = response.photographer.filter(
           (photographer) => photographer.id == photographerId
         )
-        const matchingMedias = response.Medias.filter(
+        const matchingMedias = response.medias.filter(
           (medias) => medias.photographerId == photographerId
         )
         // Calculate the total likes of selected photographer
@@ -51,6 +52,7 @@ export class API {
           photographer: matchingPhotographer,
           media: matchingMedias.map((element) => new MediaFactory(element)),
         }
+        thatPhotographerMedias.push(photographerInfoAndMedia.media)
       })
       .catch((err) => {
         console.error(err)
