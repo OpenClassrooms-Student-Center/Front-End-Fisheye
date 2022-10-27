@@ -16,7 +16,7 @@ export class API {
           response = photographers
         } else if (page == "profilePage") {
           response = {
-            Photographer: data.photographers,
+            Photographer: photographers,
             Medias: data.media,
           }
         }
@@ -28,7 +28,7 @@ export class API {
   }
 
   // Request data from API, finds the photographer with the corresponding ID and return its info and medias
-  static async getPhotographersByID(sortingParameter) {
+  static async getPhotographersByID() {
     const photographerId = new URL(document.location).searchParams.get("id")
     let photographerInfoAndMedia = {}
     await this.getAllData("profilePage")
@@ -39,8 +39,6 @@ export class API {
         const matchingMedias = response.Medias.filter(
           (medias) => medias.photographerId == photographerId
         )
-        this.sortingFunction(matchingMedias, sortingParameter)
-        console.log(matchingMedias)
         // Calculate the total likes of selected photographer
         const photographerTotalLikes = matchingMedias
           .map((value) => value.likes)
@@ -58,21 +56,5 @@ export class API {
         console.error(err)
       })
     return photographerInfoAndMedia
-  }
-
-  static sortingFunction(matchingMedias, sortingParameter) {
-    if (sortingParameter == "popularity" || sortingParameter == undefined) {
-      matchingMedias.sort((a, b) => {
-        return b.likes - a.likes
-      })
-    } else if (sortingParameter == "date") {
-      matchingMedias.sort((a, b) => {
-        return b.date.localeCompare(a.date)
-      })
-    } else if (sortingParameter == "titre") {
-      matchingMedias.sort((a, b) => {
-        return a.title.localeCompare(b.title)
-      })
-    }
   }
 }

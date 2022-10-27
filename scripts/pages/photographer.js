@@ -7,7 +7,7 @@ import { PhotographerMedia } from "../components/PhotographerMedia.js"
 // 1- Variables
 
 // Global variable tracking the medias liked by user
-export const likedMedia = []
+export const likedMediaList = []
 
 const closeModalButton = document.querySelector(".close_modal_button")
 
@@ -33,32 +33,31 @@ export function displayData(data) {
     data.photographer.find((photographer) => photographer)
   ).displayProfile()
   PhotographerMedia.createDropdownOrder()
-  new PhotographerMedia().createMediaSection()
+  PhotographerMedia.createMediaSection()
   data.media.forEach((element) => {
-    const Template = new PhotographerMedia(element)
+    const template = new PhotographerMedia(element)
     document
       .querySelector(".photographer-media")
-      .appendChild(Template.createMediaList())
-    Template.addLikes()
+      .appendChild(template.createMediaList())
+    template.addLikes()
   })
 }
 
-export async function loadSortedMedia() {
-  const sortingParameter = document.getElementById("order-by").value
-  const mediaList = document.querySelectorAll(".mediaCard")
-  for (let mediaToRemove of mediaList) {
-    document.querySelector(".photographer-media").removeChild(mediaToRemove)
-  }
-  await API.getPhotographersByID(sortingParameter)
-  .then((data) => {
-    data.media.forEach((element) => {
-      const Template = new PhotographerMedia(element)
-      document
-        .querySelector(".photographer-media")
-        .appendChild(Template.createMediaList())
-      Template.addLikes()
-    })
-  })
-}
+//export async function loadSortedMedia() {
+//  const sortingParameter = document.getElementById("order-by").value
+//  const mediaList = document.querySelectorAll(".mediaCard")
+//  for (let mediaToRemove of mediaList) {
+//    document.querySelector(".photographer-media").removeChild(mediaToRemove)
+//  }
+//  await API.getPhotographersByID(sortingParameter).then((data) => {
+//    data.media.forEach((element) => {
+//      const template = new PhotographerMedia(element)
+//      document
+//        .querySelector(".photographer-media")
+//        .appendChild(template.createMediaList())
+//      template.addLikes()
+//    })
+//  })
+//}
 
 init()

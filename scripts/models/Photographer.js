@@ -14,17 +14,17 @@ export class Photographer {
   }
 
   displayHome() {
-      const Template = new PhotographerProfile(this)
-      document
-        .querySelector(".photographer_section")
-        .appendChild(Template.createPhotographerCard())
+    const template = new PhotographerProfile(this)
+    document
+      .querySelector(".photographer_section")
+      .appendChild(template.createPhotographerCard())
   }
 
   displayProfile() {
-    const Template = new PhotographerProfile(this)
+    const template = new PhotographerProfile(this)
     document
       .querySelector("#main")
-      .appendChild(Template.createPhotographerHeader())
-    Template.createprofilePageInsert(this.likes)
+      .appendChild(template.createPhotographerHeader())
+    template.createprofilePageInsert(this.likes)
   }
 }
