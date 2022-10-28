@@ -1,0 +1,6 @@
+@mixin lightbox-position {
+  top: $lightbox_media-position;
+  left: $lightbox_media-position;
+  bottom: $lightbox_media-position;
+  right: $lightbox_media-position;
+}

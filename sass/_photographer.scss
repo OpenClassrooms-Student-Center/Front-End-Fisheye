@@ -1,4 +1,5 @@
 @import "variables.scss";
+@import "mixins.scss";
 
 #contact_modal {
   display: none;
@@ -102,7 +103,12 @@ form {
   border-radius: 5px;
   width: 170px;
   height: 4em;
+  padding-left: 20px;
   filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+  & option {
+    width: 170px;
+    height: 4em;
+  }
 }
 
 .photographer-media {
@@ -140,10 +146,6 @@ form {
     margin-left: 25px;
   }
   & figcaption,
-  aside {
-    min-height: 1.4em;
-  }
-  & figcaption,
   .likes {
     height: 100%;
     display: flex;
@@ -159,6 +161,10 @@ form {
 
 data {
   font-size: 1em;
+}
+
+.media-thumbnail {
+  cursor: pointer;
 }
 
 .fa-heart {
@@ -183,5 +189,52 @@ data {
     & .fa-heart {
       padding-bottom: 5px;
     }
+  }
+}
+
+.lightbox-background-hidden {
+  display: none;
+}
+
+.lightbox-container {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  @include lightbox-position;
+  & * {
+    color: $theme-darkRed;
+  }
+  & figcaption {
+    font-size: 1.5em;
+  }
+  & .lightbox_right-panel {
+    display: flex;
+    flex-direction: column;
+  }
+  & a {
+    font-size: 5em;
+    text-decoration: none;
+    text-align: center;
+  }
+  .lightbox_media-container {
+    width: 85%;
+    height: 90%;
+    & .lightbox_media {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      position: center;
+      border-radius: 5px;
+    }
+  }
+  .lightbox_close-button {
+    position: absolute;
+    top: 5%;
+    padding: 0;
+    background-color: transparent;
+    border: 0;
+    font-size: 3em;
+    cursor: pointer;
   }
 }

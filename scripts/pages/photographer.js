@@ -2,8 +2,6 @@ import { Photographer } from "../models/Photographer.js"
 import { API } from "../api/Api.js"
 import { createHeader } from "../components/WebsiteHeader.js"
 import { ModalDisplayButtons } from "../components/ModalDisplayButtons.js"
-import { PhotographerMedia } from "../components/PhotographerMedia.js"
-
 // 1- Variables
 
 // Global variable tracking the medias liked by user
@@ -29,20 +27,12 @@ async function init() {
   addModalEventListeners()
 }
 
-export function displayData(data) {
-  new Photographer(
-    data.photographer.find((photographer) => photographer)
-  ).displayProfile()
-  PhotographerMedia.createDropdownOrder()
-  PhotographerMedia.createMediaSection()
-  PhotographerMedia.sortMedia()
-  thatPhotographerMedias[0].forEach((element) => {
-    const template = new PhotographerMedia(element)
-    document
-      .querySelector(".photographer-media")
-      .appendChild(template.createMediaList())
-    template.addLikes()
-  })
+function displayData(data) {
+  const matchingPhotographer = data.photographer.find(
+    (photographer) => photographer
+  )
+  const thatPhotographer = new Photographer(matchingPhotographer)
+  thatPhotographer.displayProfile()
 }
 
 init()

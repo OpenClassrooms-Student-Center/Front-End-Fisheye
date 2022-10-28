@@ -1,8 +1,10 @@
+import { MediaFactory } from "../factories/mediaFactory.js"
 import {
   likedMediaList,
   thatPhotographerMedias,
 } from "../pages/photographer.js"
 import { faHeartIcon } from "./faHeartIcon.js"
+import { ModalLightbox } from "./Lightbox.js"
 
 export class PhotographerMedia {
   constructor(media) {
@@ -27,21 +29,12 @@ export class PhotographerMedia {
 
   createMediaList() {
     const wrapper = document.createElement("figure")
-    wrapper.tabIndex = 0
     wrapper.classList = "mediaCard"
     wrapper.dataset.mediaId = `${this.media.id}`
-    wrapper.innerHTML += `${
-      this.media.photo
-        ? `<img src="assets/${this.media.photographerId}/${this.media.photo}" alt="${this.media.title}" class="thumb-img">`
-        : `<video>${this.media.title}
-    <source src="assets/${this.media.photographerId}/${this.media.video}" type="video/mp4" class="thumb-img">
-    </video>`
-    }
-    <div class="media-legend"><figcaption>${
-      this.media.title
-    }</figcaption><aside class="likes"><data value='${this.media.likes}'>${
-      this.media.likes
-    } </data>${faHeartIcon}</aside></div>`
+    wrapper.tabIndex = 0
+    wrapper.innerHTML += new MediaFactory(this.media).createMedia(
+      "profileMedia"
+    )
     return wrapper
   }
 
@@ -49,6 +42,10 @@ export class PhotographerMedia {
   addLikes() {
     const mediaId = this.media.id
     likedMediaList.push({ id: mediaId, status: false })
+    const mediaCardLegend = document.querySelector(
+      `[data-media-id="${mediaId}"] .media-legend`
+    )
+    mediaCardLegend.innerHTML += `<aside class="likes"><data value='${this.media.likes}'>${this.media.likes} </data>${faHeartIcon}</aside>`
     const likeButton = document.querySelector(
       `[data-media-id="${mediaId}"] .fa-heart`
     )
@@ -96,5 +93,14 @@ export class PhotographerMedia {
         }
       }
     })
+  }
+
+  addLightboxEventListener() {
+    const lightboxLinks = document.querySelector(
+      `[data-media-id="${this.media.id}"] .media-thumbnail`
+    )
+    lightboxLinks.addEventListener("click", () =>
+      new ModalLightbox(this.media).createModalContainer(this.media)
+    )
   }
 }

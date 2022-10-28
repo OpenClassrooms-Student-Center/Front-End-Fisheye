@@ -3,6 +3,12 @@ import { Media } from "./Media.js"
 export class PhotoMedia extends Media {
   constructor(media) {
     super(media)
-    this.photo = media.image
+    this.image = media.image
+  }
+
+  createMedia(context) {
+    return `<img ${Media.addMediaClass(context)} src="assets/${this.photographerId}/${this.image}" alt="${this.title}" ><div ${Media.addMediaLegendClass(context)}><figcaption>${
+      this.title
+    }</figcaption></div>`
   }
 }

@@ -7,4 +7,21 @@ export class Media {
     this.price = media.price
     this.title = media.title
   }
+
+  // Add the relevant class to the media element, depending on the context (media list or lightbox)
+  static addMediaClass(context) {
+    if (context == "profileMedia") {
+      return "class='media-thumbnail'"
+    } else {
+      return "class='lightbox_media'"
+    }
+  }
+
+  static addMediaLegendClass(context) {
+    if (context == "profileMedia") {
+      return "class='media-legend'"
+    } else {
+      return ""
+    }
+  }
 }

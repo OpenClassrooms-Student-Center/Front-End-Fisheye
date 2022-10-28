@@ -5,4 +5,10 @@ export class VideoMedia extends Media {
     super(media)
     this.video = media.video
   }
+
+  createMedia(context) {
+    return `<video ${Media.addMediaClass(context)}>${this.title}
+    <source src="assets/${this.photographerId}/${this.video}" type="video/mp4">
+    </video><div ${Media.addMediaLegendClass(context)}><figcaption>${this.title}</figcaption></div>`
+  }
 }
