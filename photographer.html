@@ -32,8 +32,8 @@
       <div class="dropdown">
         <button class="dropdown_button">Popularité</button>
         <div class="dropdown-content">
-        <a href="#">Date</a>
-        <a href="#">Titre</a>
+          <a href="#">Date</a>
+          <a href="#">Titre</a>
         </div>
       </div>
     </div>
@@ -54,17 +54,55 @@
       <form>
         <div>
           <div id="nameForm"></div>
-          <label>Prénom</label>
-          <input />
-          <label>Nom</label>
-          <input />
-          <label>Email</label>
-          <input />
-          <label>Votre message</label>
-          <textarea id="comments" class="input-textarea" name="comment" placeholder=""></textarea>
-        </div>
-        <button class="contact_button">Envoyer</button>
+          <div class="formData">
+            <label>Prénom</label><br>
+            <input class="text-control" type="text" id="first" name="first" /><br>
+          </div>
+          <span class="error" id="errorfirstname"></span>
+
+          <div class="formData">
+            <label>Nom</label><br>
+            <input class="text-control" type="text" id="last" name="last" /><br>
+          </div>
+          <span class="error" id="errorlastname"></span>
+
+          <div class="formData">
+            <label>E-mail</label><br>
+            <input class="text-control" type="text" id="email" name="email" /><br>
+          </div>
+          <span class="error" id="errorEmail"></span>
+
+          <div class="formData">
+            <label>Votre message</label>
+            <textarea type="text" id="comments" class="input-textarea" name="comment" placeholder=""></textarea>
+          </div>
+          <span class="error" id="errorText"></span>
+
+          <button class="contact_button">Envoyer</button>
       </form>
+
+      <!--
+  <form id="form" name="reserve" onsubmit="submitForm()" method="get">
+            <div class="formData">
+              <label>Prénom</label><br>
+              <input class="text-control" type="text" id="first" name="first" /><br>
+            </div>
+            <span class="error" id="errorfirstname"></span>
+
+            <div class="formData">
+              <label>Nom</label><br>
+              <input class="text-control" type="text" id="last" name="last" /><br>
+            </div>
+            <span class="error" id="errorlastname"></span>
+
+            <div class="formData">
+              <label>E-mail</label><br>
+              <input class="text-control" type="text" id="email" name="email" /><br>
+            </div>
+            <span class="error" id="errorEmail"></span>
+          </form>
+-->
+
     </div>
   </div>
   <script src="./scripts/factories/photographer.js"></script>

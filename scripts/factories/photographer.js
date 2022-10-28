@@ -179,15 +179,60 @@ function displayCta(photos, photographer) {
     callToAction.appendChild(cta);
 }
 
-// CSS
+// CSS modal form ||||||||||| OK
 
-// LIGHTBOX avec +1 et -1 sur les index
+// LIGHTBOX avec +1 et -1 sur les index ||||||||||| 
 
-// VERIFIER LES CHAMPS CONTACT
 
-// FUNCTION LIKE POUR LES +1 DES LIKES eventListen sur les coeurs du DOM
 
-// TRIER les medias par date, popularités... au clic du boutton popularité
+
+
+
+
+
+// VERIFIER LES CHAMPS CONTACT ||||||||||| en cours
+// Définition des constantes
+const firstName = document.getElementById("first");
+
+// Définition des constantes d'erreurs
+const errorFirstName = document.getElementById("errorfirstname");
+
+function submitForm() {
+    event.preventDefault();
+
+    // POUR LE CHAMPS FIRST 
+    if (firstName.value.length < 2) {
+        errorFirstName.innerHTML = "Veuillez entrer 2 caractères ou plus pour le champ du prénom";
+        firstName.style.border = "2px solid #e54858";
+        firstNameValid = false;
+    } else {
+        firstName.style.border = "2px solid green";
+        errorFirstName.innerHTML = "";
+        firstNameValid = true;
+    }
+}
+
+// on vérifie si chaque champs est valide 
+if (firstNameValid === true);
+
+// on vide les champs du formulaire
+firstName.value = "";
+firstName.style.border = "none";
+
+
+
+
+
+
+
+
+
+
+
+
+// FUNCTION LIKE POUR LES +1 DES LIKES eventListen sur les coeurs du DOM |||||||||||
+
+// TRIER les medias par date, popularités... au clic du boutton popularité |||||||||||
 
 /*
 const getNameForm = document.querySelector('nameForm');

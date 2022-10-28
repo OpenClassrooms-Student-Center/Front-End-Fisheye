@@ -2,15 +2,20 @@
     display: none;
 }
 
+main {
+    width: auto;
+    height: auto;
+}
+
 .photograph-header {
     background-color: #FAFAFA;
-    height: 300px;
-    margin: 0 100px;
-    padding: 2rem;
     display: flex;
     justify-content: space-around;
     align-items: center;
-    height: 100%;
+    margin: 0 100px;
+    padding: 2rem;
+    height: auto;
+    width: auto;
 }
 .photograph_info {
     width: 33%;
@@ -118,7 +123,7 @@
 
 .thumbnail_section {
     display: grid;
-    grid-template-columns: auto auto auto;
+    grid-template-columns: 1fr 1fr 1fr;
     gap: 95px;
 }
 
