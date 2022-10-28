@@ -66,7 +66,7 @@ function photographerPageFactory(data) {
     const nameForm = document.createElement("div");
     nameForm.className = "nameContent";
     nameForm.innerHTML = `
-        <h2>${name}</h2>
+        <p>${name}</p>
         `;
 
     getNameForm.appendChild(nameForm);
@@ -102,6 +102,14 @@ function displayDataMedia(media, name) {
     const { image, video, title, likes, price } = media;
     const picture = `assets/sample-photos/${name}/${image}`;
     const mediaDiv = document.createElement("article");
+    /*
+    const thumbnailImage = document.createElement("div");
+    thumbnailImage.className = "thumbnailImg";
+    thumbnailImage.innerHTML= `
+    <img src="assets/sample-photos/${image}">
+`;
+*/
+
     // CREER UNE DIV QUI ENGLOBE MES DEUX H2
     const divInformations = document.createElement("div");
     divInformations.className = "informationsContent";
@@ -123,6 +131,9 @@ function displayDataMedia(media, name) {
         mediaImg.src = picture;
         mediaDiv.appendChild(mediaImg);
         mediaDiv.appendChild(divInformations);
+        /*
+        mediaDiv.appendChild(thumbnailImage);
+        */
 
     } else  // Le cas ou c'est une video
     {
@@ -131,6 +142,11 @@ function displayDataMedia(media, name) {
         mediaVideo.src = videoSrc;
         mediaVideo.setAttribute("controls", "controls")
         mediaDiv.appendChild(mediaVideo);
+        mediaDiv.appendChild(divInformations);
+        /*
+        mediaDiv.appendChild(thumbnailImage);
+        */
+
     }
     // afficher le titre, like ...
 
@@ -163,9 +179,15 @@ function displayCta(photos, photographer) {
     callToAction.appendChild(cta);
 }
 
+// CSS
 
+// LIGHTBOX avec +1 et -1 sur les index
 
+// VERIFIER LES CHAMPS CONTACT
 
+// FUNCTION LIKE POUR LES +1 DES LIKES eventListen sur les coeurs du DOM
+
+// TRIER les medias par date, popularités... au clic du boutton popularité
 
 /*
 const getNameForm = document.querySelector('nameForm');

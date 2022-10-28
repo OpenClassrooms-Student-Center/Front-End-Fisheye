@@ -141,17 +141,40 @@
     border-radius: 5px;
     object-fit: cover;
     height: 350px;
-    width: 300px;
+    width: 100%;
 }
 
 .thumbnail_section article video {
     border-radius: 5px;
     object-fit: cover;
     height: 350px;
-    width: 300px;}
+    width: 100%;
+}
 
 /*MODAL*/
+
+.modalForm {
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    position: fixed;
+    display: flex;
+    background-color: #00000039;
+    z-index: 99;
+    align-items: center;
+    justify-content: center;
+    overflow: scroll;
+}
+
 .modal {
+    border-radius: 5px;
+    background-color: #DB8876;
+    width: 40%;
+    display: block;
+    padding: 35px;
+    margin: 69px auto 55px auto;
+    /*
     border-radius: 5px;
     background-color: #DB8876;
     width: 50%;
@@ -163,7 +186,7 @@
     margin: auto;
     position: absolute;
     z-index: 1;
-    top: 56px;
+    */
 }
 
 .modal header {
@@ -179,6 +202,16 @@
     font-size: 64px;
     font-weight: normal;
     text-align: center;
+    color: #000000;
+}
+
+/* NAME FORM*/
+
+.nameContent p{
+    font-size: 64px;
+    color: #000000;
+    margin: 0;
+    padding: 0;
 }
 
 form {
@@ -234,10 +267,11 @@ form textarea {
     align-items: center;
 }
 
-.likes>img {
+.likes img {
     height: 17px;
     width: 18px;
     color: #901C1C;
+    padding: 0.5rem;
 }
 
 .callToAction {
@@ -271,9 +305,3 @@ form textarea {
     align-items: center;
 }
 
-/* NAME FORM*/
-
-.nameContent {
-    font-size: 64px;
-    color: #000000;
-}
