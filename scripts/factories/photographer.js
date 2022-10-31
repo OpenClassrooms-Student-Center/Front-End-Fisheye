@@ -1,3 +1,5 @@
+// Factory pour la page d'accueil
+
 // la fonction photographerFactory a pour paramêtre data (le photographers.json)
 function photographerFactory(data) {
   // la constante se compose d'un objet doté  de name et portrait et dont la valeur renvoi à data
@@ -57,3 +59,4 @@ function photographerFactory(data) {
   }
   return { name, picture, getUserCardDOM };
 }
+// Factory pour la page d'accueil End

@@ -29,7 +29,7 @@ async function getPhotographers() {
   //   };
   // fetch permet de faire une requete sur une url
 
-  return fetch("./data/photographers.json").then((response) => response.json());
+  return fetch("./data/photographers.json").then((response) => response.json()); 
 }
 
 async function displayData(photographers) {
