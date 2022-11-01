@@ -10,9 +10,7 @@ async function init() {
 }
 
 function displayData(photographers) {
-  photographers.forEach((photographer) => {
-    new Photographer(photographer).displayHome()
-  })
+photographers.map((photographer) => new Photographer(photographer).displayHome())
 }
 
 init()

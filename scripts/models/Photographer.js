@@ -1,7 +1,7 @@
 //import { ModalLightbox } from "../components/Lightbox.js"
 import { PhotographerMedia } from "../components/PhotographerMedia.js"
 import { PhotographerProfile } from "../components/PhotographerProfile.js"
-import { thatPhotographerMedias } from "../pages/photographer.js"
+import { displayedPhotographerData } from "../store/store.js"
 
 export class Photographer {
   constructor(photographer) {
@@ -13,7 +13,7 @@ export class Photographer {
     this.portrait = photographer.portrait
     this.price = photographer.price
     this.tagline = photographer.tagline
-    this.likes = photographer.totalLikes
+    this.totalLikes = photographer.totalLikes
   }
 
   displayHome() {
@@ -28,11 +28,10 @@ export class Photographer {
     document
       .querySelector("#main")
       .appendChild(template.createPhotographerHeader())
-    template.createprofilePageInsert(this.likes)
+    template.createprofilePageInsert()
     PhotographerMedia.createDropdownOrder()
     PhotographerMedia.createMediaSection()
-    PhotographerMedia.sortMedia()
-    thatPhotographerMedias[0].forEach((element) => {
+    displayedPhotographerData.media.forEach((element) => {
       const template = new PhotographerMedia(element)
       document
         .querySelector(".photographer-media")
@@ -40,6 +39,6 @@ export class Photographer {
       template.addLikes()
       template.addLightboxEventListener()
     })
-
+    PhotographerMedia.sortMedia()
   }
 }

@@ -5,8 +5,6 @@ import { ModalDisplayButtons } from "../components/ModalDisplayButtons.js"
 // 1- Variables
 
 // Global variable tracking the medias liked by user
-export const likedMediaList = []
-export let thatPhotographerMedias = []
 
 const closeModalButton = document.querySelector(".close_modal_button")
 
@@ -27,12 +25,8 @@ async function init() {
   addModalEventListeners()
 }
 
-function displayData(data) {
-  const matchingPhotographer = data.photographer.find(
-    (photographer) => photographer
-  )
-  const thatPhotographer = new Photographer(matchingPhotographer)
-  thatPhotographer.displayProfile()
+function displayData(photographer) {
+  new Photographer(photographer).displayProfile()
 }
 
 init()

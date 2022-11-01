@@ -54,7 +54,7 @@ export class PhotographerProfile {
   //TODO: Fix insert not displaying properly on different screen sizes
   createprofilePageInsert() {
     const wrapper = document.querySelector("#main")
-    wrapper.innerHTML += `<aside class="insert"><div><data value='${this.photographer.likes}' class="total-likes">${this.photographer.likes}</data> ${faHeartIcon}</div><div><data class="price" value='${this.photographer.price}'>${this.photographer.price}</data>€ / jour</div></aside>`
+    wrapper.innerHTML += `<aside class="insert"><div><data value='${this.photographer.totalLikes}' class="total-likes">${this.photographer.totalLikes}</data> ${faHeartIcon}</div><div><data class="price" value='${this.photographer.price}'>${this.photographer.price}</data>€ / jour</div></aside>`
     return wrapper
   }
 }

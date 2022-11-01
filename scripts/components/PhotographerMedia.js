@@ -1,8 +1,5 @@
 import { MediaFactory } from "../factories/mediaFactory.js"
-import {
-  likedMediaList,
-  thatPhotographerMedias,
-} from "../pages/photographer.js"
+import { likedMediaList, displayedPhotographerData } from "../store/store.js"
 import { faHeartIcon } from "./faHeartIcon.js"
 import { ModalLightbox } from "./Lightbox.js"
 
@@ -73,7 +70,7 @@ export class PhotographerMedia {
   // Gets the value of sorting dropdown menu, then reorders the medias accordingly. Default behavior is to sort by popularity (done on first page load)
   static sortMedia() {
     const sortingParameter = document.getElementById("order-by").value
-    thatPhotographerMedias[0].sort((a, b) => {
+    displayedPhotographerData.media.sort((a, b) => {
       if (sortingParameter == "popularite" || sortingParameter == undefined) {
         return b.likes - a.likes
       } else if (sortingParameter == "date") {
@@ -83,7 +80,7 @@ export class PhotographerMedia {
       }
     })
 
-    thatPhotographerMedias[0].forEach((element) => {
+    displayedPhotographerData.media.forEach((element) => {
       for (let media of document.querySelectorAll(".mediaCard")) {
         let dataId = media.getAttribute("data-media-id")
         if (dataId == element.id) {

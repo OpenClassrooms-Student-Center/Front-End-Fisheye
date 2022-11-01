@@ -1,6 +1,4 @@
-import { MediaFactory } from "../factories/mediaFactory.js"
-import { Photographer } from "../models/Photographer.js"
-import { thatPhotographerMedias } from "../pages/photographer.js"
+import { displayedPhotographerData } from "../store/store.js"
 
 export class API {
   static url = "../data/photographers.json"
@@ -10,16 +8,10 @@ export class API {
     await fetch(this.url)
       .then((res) => res.json())
       .then((data) => {
-        const photographers = data.photographers.map(
-          (photographer) => new Photographer(photographer)
-        )
         if (page == "homePage") {
-          response = photographers
+          response = data.photographers
         } else if (page == "profilePage") {
-          response = {
-            photographer: photographers,
-            medias: data.media,
-          }
+          response = data
         }
       })
       .catch((err) => {
@@ -31,32 +23,29 @@ export class API {
   // Request data from API, finds the photographer with the corresponding ID and return its info and medias
   static async getPhotographersByID() {
     const photographerId = new URL(document.location).searchParams.get("id")
-    let photographerInfoAndMedia = {}
+    let data = {}
     await this.getAllData("profilePage")
       .then((response) => {
-        const matchingPhotographer = response.photographer.filter(
+        data.photographer = response.photographers.filter(
           (photographer) => photographer.id == photographerId
-        )
-        const matchingMedias = response.medias.filter(
+        )[0]
+        data.media = response.media.filter(
           (medias) => medias.photographerId == photographerId
         )
         // Calculate the total likes of selected photographer
-        const photographerTotalLikes = matchingMedias
+        const photographerTotalLikes = data.media
           .map((value) => value.likes)
           .reduce((previousValue, currentValue) => {
             return previousValue + currentValue
           })
-        matchingPhotographer.find((photographer) => photographer).totalLikes =
-          photographerTotalLikes
-        photographerInfoAndMedia = {
-          photographer: matchingPhotographer,
-          media: matchingMedias.map((element) => new MediaFactory(element)),
-        }
-        thatPhotographerMedias.push(photographerInfoAndMedia.media)
+        data.photographer.totalLikes = photographerTotalLikes
+        // Exports data of currently displayed photographer profile to the store
+        displayedPhotographerData.photographer = data.photographer
+        displayedPhotographerData.media = data.media
       })
       .catch((err) => {
         console.error(err)
       })
-    return photographerInfoAndMedia
+    return data.photographer
   }
 }
