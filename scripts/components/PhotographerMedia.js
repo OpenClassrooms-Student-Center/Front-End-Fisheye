@@ -28,7 +28,6 @@ export class PhotographerMedia {
     const wrapper = document.createElement("figure")
     wrapper.classList = "mediaCard"
     wrapper.dataset.mediaId = `${this.media.id}`
-    wrapper.tabIndex = 0
     wrapper.innerHTML += new MediaFactory(this.media).createMedia(
       "profileMedia"
     )
@@ -42,13 +41,18 @@ export class PhotographerMedia {
     const mediaCardLegend = document.querySelector(
       `[data-media-id="${mediaId}"] .media-legend`
     )
-    mediaCardLegend.innerHTML += `<aside class="likes"><data value='${this.media.likes}'>${this.media.likes} </data>${faHeartIcon}</aside>`
+    mediaCardLegend.innerHTML += `<aside class="likes"><data value='${this.media.likes}'>${this.media.likes} </data><span tabindex="0" class="like-icon">${faHeartIcon}</span></aside>`
     const likeButton = document.querySelector(
-      `[data-media-id="${mediaId}"] .fa-heart`
+      `[data-media-id="${mediaId}"] .like-icon`
     )
     likeButton.addEventListener("click", () =>
       this.incrementLikes(likeButton, mediaId)
     )
+    likeButton.addEventListener("keydown", (event) => {
+      if (event.key == "Enter") {
+        this.incrementLikes(likeButton, mediaId)
+      }
+    })
   }
 
   incrementLikes(likeButton, mediaId) {
@@ -99,5 +103,13 @@ export class PhotographerMedia {
     lightboxLinks.addEventListener("click", () =>
       new ModalLightbox(this.media).createModalContainer(this.media)
     )
+    lightboxLinks.addEventListener("keydown", (event) => {
+      if (
+        event.key == "Enter" &&
+        !document.querySelector(".lightbox-container")
+      ) {
+        new ModalLightbox(this.media).createModalContainer(this.media)
+      }
+    })
   }
 }
