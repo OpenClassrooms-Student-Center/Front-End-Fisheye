@@ -23,6 +23,15 @@ export class ModalLightbox {
   createNavigation() {
     const closeLightboxButton = document.querySelector(".lightbox_close-button")
     closeLightboxButton.addEventListener("click", () => this.closeLightbox())
+    document.querySelector("body").addEventListener("keydown", (event) => {
+      if (
+        event.key == "Escape" &&
+        document.querySelector(".lightbox-container")
+      ) {
+        this.closeLightbox()
+      }
+    })
+    //closeLightboxButton.addEventListener("click", () => this.closeLightbox())
   }
 
   closeLightbox() {
