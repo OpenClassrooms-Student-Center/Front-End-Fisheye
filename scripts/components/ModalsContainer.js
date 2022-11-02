@@ -28,7 +28,7 @@ export class ModalsContainer {
     })
   }
 
-  // When closing modal button is pressed, removes the modal and display again the hidden elements
+  // When closing modal event is triggered, removes the modal and display again the hidden elements
   static closeModalEvent() {
     document.querySelector(".modal-container").remove()
     const backgroundElements = document.querySelectorAll("header, main")
