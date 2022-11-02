@@ -1,7 +1,7 @@
 import { displayedPhotographerData } from "../store/store.js"
 
 export class API {
-  static url = "../data/photographers.json"
+  static url = "data/photographers.json"
 
   static async getAllData(page) {
     let response = {}
