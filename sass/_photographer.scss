@@ -196,26 +196,33 @@ data {
   display: none;
 }
 
-.lightbox-container {
+.modal-container {
   position: absolute;
   display: flex;
-  align-items: center;
-  justify-content: space-around;
   @include lightbox-position;
+  & .modal_close-button {
+    position: absolute;
+    top: 5%;
+    right: 0;
+    background-color: transparent;
+    border: 0;
+    font-size: 3em;
+    cursor: pointer;
+  }
+}
+
+.lightbox-container {
+  align-items: center;
+  justify-content: space-between;
   & * {
     color: $theme-darkRed;
   }
   & figcaption {
     font-size: 1.5em;
   }
-  & .lightbox_right-panel {
-    display: flex;
-    flex-direction: column;
-  }
   & a {
     font-size: 5em;
     text-decoration: none;
-    text-align: center;
   }
   .lightbox_media-container {
     width: 85%;
@@ -227,14 +234,5 @@ data {
       position: center;
       border-radius: 5px;
     }
-  }
-  .lightbox_close-button {
-    position: absolute;
-    top: 5%;
-    padding: 0;
-    background-color: transparent;
-    border: 0;
-    font-size: 3em;
-    cursor: pointer;
   }
 }

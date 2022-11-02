@@ -1,20 +1,12 @@
 import { Photographer } from "../models/Photographer.js"
 import { API } from "../api/Api.js"
 import { createHeader } from "../components/WebsiteHeader.js"
-import { ModalDisplayButtons } from "../components/ModalDisplayButtons.js"
+//import { ContactModal } from "../components/contactModal.js"
 // 1- Variables
 
 // Global variable tracking the medias liked by user
 
-const closeModalButton = document.querySelector(".close_modal_button")
-
 // 2- Code moteur
-// Adds event listener on corresponding buttons after they have been added to the DOM
-function addModalEventListeners() {
-  const openModalButton = document.querySelector(".open_modal_button")
-  openModalButton.addEventListener("click", ModalDisplayButtons.displayModal)
-  closeModalButton.addEventListener("click", ModalDisplayButtons.closeModal)
-}
 
 // 3- Fonctions
 
@@ -22,7 +14,7 @@ function addModalEventListeners() {
 async function init() {
   createHeader("profilePage")
   displayData(await API.getPhotographersByID())
-  addModalEventListeners()
+  //addModalEventListeners()
 }
 
 function displayData(photographer) {

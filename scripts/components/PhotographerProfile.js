@@ -1,5 +1,5 @@
 import { faHeartIcon } from "./faHeartIcon.js"
-import { ModalDisplayButtons } from "./ModalDisplayButtons.js"
+import { ContactModal } from "./ContactModal.js"
 
 export class PhotographerProfile {
   constructor(photographer) {
@@ -46,7 +46,7 @@ export class PhotographerProfile {
     const wrapper = document.querySelector(".photograph-header")
     wrapper.tabIndex = 0
     this.createProfile(wrapper, "profilePage")
-    ModalDisplayButtons.createModalButton(wrapper)
+    new ContactModal(this.photographer).createModalButton(wrapper)
     this.createPhotographerPicture(wrapper)
     return wrapper
   }

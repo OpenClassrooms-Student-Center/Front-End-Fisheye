@@ -1,24 +1,19 @@
 import { MediaFactory } from "../factories/mediaFactory.js"
 import { displayedPhotographerData } from "../store/store.js"
+import { ModalsContainer } from "./ModalsContainer.js"
 
 export class ModalLightbox {
   constructor(media) {
     this.media = media
   }
 
-  createModalContainer() {
-    const body = document.querySelector("body")
-    const lightboxContainer = document.createElement("div")
-    lightboxContainer.classList = "lightbox-container"
-    body.appendChild(lightboxContainer)
-    const backgroundElements = document.querySelectorAll("header, main")
-    for (let el of backgroundElements) {
-      el.style = "display:none"
-    }
-    lightboxContainer.innerHTML = `<a href="#" tabindex="0" aria-label="Previous image" id="lightbox_previous-media-button"><</a><div class="lightbox_media-container">
-    </div><div class="lightbox_right-panel"><button class="lightbox_close-button" aria-label="Close dialog" tabindex="0">X</button><a href="#" tabindex="0" aria-label="Next image" id="lightbox_next-media-button">></a></div>`
+  async createModalContainer() {
+    const modalContainer =
+    await ModalsContainer.createModalContainer("lightbox-container")
+    modalContainer.innerHTML += `<a href="#" tabindex="0" aria-label="Previous image" id="lightbox_previous-media-button"><</a><div class="lightbox_media-container">
+    </div><a href="#" tabindex="0" aria-label="Next image" id="lightbox_next-media-button">></a>`
     this.displayMedia(this.media)
-    this.createNavigation(body)
+    this.createNavigation()
   }
 
   displayMedia(media) {
@@ -26,16 +21,14 @@ export class ModalLightbox {
     mediaContainer.innerHTML = new MediaFactory(media).createMedia()
   }
 
-  createNavigation(body) {
+  createNavigation() {
     const storedMediaList = displayedPhotographerData.media
-    const closeLightboxButton = document.querySelector(".lightbox_close-button")
     const previousMediaButton = document.querySelector(
       "#lightbox_previous-media-button"
     )
     const nextMediaButton = document.querySelector(
       "#lightbox_next-media-button"
     )
-    closeLightboxButton.addEventListener("click", () => this.closeLightbox())
     previousMediaButton.addEventListener("click", () =>
       this.displayPreviousMedia(storedMediaList)
     )
@@ -44,13 +37,8 @@ export class ModalLightbox {
     )
 
     // Enables keyboard navigation : escape to close modal, left arrow to display previous media, right arrow to display next media
-    body.addEventListener("keydown", (event) => {
+    document.querySelector("body").addEventListener("keydown", (event) => {
       if (
-        event.key == "Escape" &&
-        document.querySelector(".lightbox-container")
-      ) {
-        this.closeLightbox()
-      } else if (
         event.key == "ArrowLeft" &&
         document.querySelector(".lightbox-container")
       ) {
@@ -62,15 +50,6 @@ export class ModalLightbox {
         this.displayNextMedia(storedMediaList)
       }
     })
-  }
-
-  closeLightbox() {
-    document.querySelector(".lightbox-container").remove()
-    const backgroundElements = document.querySelectorAll("header, main")
-    for (let el of backgroundElements) {
-      el.style = "display:block"
-    }
-    return
   }
 
   // Get index of currently displayed media from the store, then get previous element in it. If displayed media is the first in the array, display the last media instead
