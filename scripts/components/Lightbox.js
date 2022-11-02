@@ -19,6 +19,9 @@ export class ModalLightbox {
   displayMedia(media) {
     const mediaContainer = document.querySelector(".lightbox_media-container")
     mediaContainer.innerHTML = new MediaFactory(media).createMedia()
+    if (media.video) {
+      document.querySelector(".lightbox_media").setAttribute("controls", "controls")
+    }
   }
 
   createNavigation() {

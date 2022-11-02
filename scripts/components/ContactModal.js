@@ -23,7 +23,6 @@ export class ContactModal {
   static displayModal(event) {
     event.preventDefault()
     const modal = ModalsContainer.createModalContainer("contact-modal")
-    //const modal = document.getElementById("contact_modal")
     modal.style.display = "block"
   }
 
