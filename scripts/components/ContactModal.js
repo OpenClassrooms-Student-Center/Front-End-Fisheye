@@ -1,33 +1,44 @@
-import { ModalsContainer } from "./ModalsContainer.js"
+//import { ModalsContainer } from "./ModalsContainer.js"
 
-export class ContactModal {
-  constructor(photographer) {
-    this.photographer = photographer
-  }
+//export class ContactModal {
+//  constructor(photographer) {
+//    this.photographer = photographer
+//  }
 
-  createModalButton(wrapper) {
-    const openModalButton = document.createElement("button")
-    openModalButton.textContent = "Contactez-moi"
-    openModalButton.classList = "open_modal_button"
-    wrapper.appendChild(openModalButton)
-    return wrapper
-  }
+//  static createModalButton(wrapper, photographer) {
+//    const openModalButton = document.createElement("button")
+//    openModalButton.textContent = "Contactez-moi"
+//    openModalButton.classList = "open_modal_button"
+//    openModalButton.id = "profile_contact-button"
+//    wrapper.appendChild(openModalButton)
 
-  static addModalEventListeners() {
-    const openModalButton = document.querySelector(".open_modal_button")
-    const closeModalButton = document.querySelector(".close_modal_button")
-    openModalButton.addEventListener("click", () => this.displayModal(event))
-    closeModalButton.addEventListener("click", () => this.closeModal())
-  }
-  
-  static displayModal(event) {
-    event.preventDefault()
-    const modal = ModalsContainer.createModalContainer("contact-modal")
-    modal.style.display = "block"
-  }
+//    document.querySelector("body").addEventListener("click", (event) => {
+//      if (event.target.classList == "open_modal_button") {
+//        new ContactModal(photographer.name).displayModal()
+//      }
+//    })
+//    return wrapper
+//  }
 
-  static closeModal() {
-    const modal = document.getElementById("contact_modal")
-    modal.style.display = "none"
-  }
-}
+//  displayModal() {
+//    (event) => event.preventDefault()
+//    const modal = new ModalsContainer(this.photographer).createModalContainer("contact-modal", event)
+//    modal.setAttribute("aria-modal", "true")
+//    modal.style.display = "block"
+//    modal.innerHTML += `  
+//  <form>
+//    <div>
+//      <label>Prénom</label>
+//      <input />
+//      <label>Nom</label>
+//      <input />
+//      <label>Email</label>
+//      <input />
+//      <label>Votre message</label>
+//      <input />
+//    </div>
+//    <button class="contact_button">Envoyer</button>
+//  </form>`
+//  modal.focus()
+//}
+//}

@@ -1,5 +1,6 @@
 import { faHeartIcon } from "./faHeartIcon.js"
-import { ContactModal } from "./ContactModal.js"
+//import { ContactModal } from "./ContactModal.js"
+import { ModalFactory } from "../factories/modalFactory.js"
 
 export class PhotographerProfile {
   constructor(photographer) {
@@ -46,7 +47,17 @@ export class PhotographerProfile {
     const wrapper = document.querySelector(".photograph-header")
     wrapper.tabIndex = 0
     this.createProfile(wrapper, "profilePage")
-    new ContactModal(this.photographer).createModalButton(wrapper)
+    const openModalButton = document.createElement("button")
+    openModalButton.textContent = "Contactez-moi"
+    openModalButton.classList = "open_modal_button"
+    openModalButton.id = "profile_contact-button"
+    wrapper.appendChild(openModalButton)
+    const body = document.querySelector("body")
+    body.addEventListener("click", (event) => {
+      if (event.target.classList == "open_modal_button") {
+        new ModalFactory("contact", this.photographer).displayModal(event)
+      }
+    })
     this.createPhotographerPicture(wrapper)
     return wrapper
   }

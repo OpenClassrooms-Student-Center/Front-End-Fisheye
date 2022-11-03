@@ -1,5 +1,5 @@
 //import { ModalLightbox } from "../components/Lightbox.js"
-import { ContactModal } from "../components/ContactModal.js"
+//import { ContactModal } from "../components/ContactModal.js"
 import { PhotographerMedia } from "../components/PhotographerMedia.js"
 import { PhotographerProfile } from "../components/PhotographerProfile.js"
 import { displayedPhotographerData } from "../store/store.js"
@@ -30,7 +30,7 @@ export class Photographer {
       .querySelector("#main")
       .appendChild(template.createPhotographerHeader())
     template.createprofilePageInsert()
-    ContactModal.addModalEventListeners()
+    //ContactModal.addModalEventListeners()
     PhotographerMedia.createDropdownOrder()
     PhotographerMedia.createMediaSection()
     displayedPhotographerData.media.forEach((element) => {

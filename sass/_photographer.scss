@@ -192,8 +192,12 @@ data {
   }
 }
 
-.lightbox-background-hidden {
+.modal-background-hidden {
   display: none;
+}
+
+.modal-background-faded {
+  opacity: 50%;
 }
 
 .modal-container {
@@ -235,4 +239,9 @@ data {
       border-radius: 5px;
     }
   }
+}
+
+.contact-modal {
+  flex-direction: column;
+  background-color: $theme-lightRed;
 }
