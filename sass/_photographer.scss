@@ -175,11 +175,11 @@ data {
 .insert {
   display: flex;
   position: fixed;
-  justify-content: space-around;
-  top: 96.5%;
-  left: 70%;
-  width: 20%;
-  height: 3.5%;
+  justify-content: space-between;
+  width: 17em;
+  bottom: 0;
+  right: 2em;
+  padding: 0px 35px 0px 35px;
   border-radius: 5px;
   background-color: $theme-lightRed;
   & div {
