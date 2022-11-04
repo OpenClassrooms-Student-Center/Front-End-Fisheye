@@ -151,9 +151,11 @@ form {
     display: flex;
     align-items: center;
     font-size: 1.4em;
+    & data {
+      margin-right: 15px;
+    }
     & .fa-heart {
       fill: $theme-darkRed;
-      margin-left: 10px;
       cursor: pointer;
     }
   }
@@ -189,6 +191,12 @@ data {
     & .fa-heart {
       padding-bottom: 5px;
     }
+  }
+  & .total-likes-container {
+    width: 80px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
   }
 }
 

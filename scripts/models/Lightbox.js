@@ -11,6 +11,7 @@ export class ModalLightbox extends Modal {
   getModalContainer() {
     const modalContainer = new Modal(this.media).createModalContainer()
     modalContainer.classList.add("lightbox-container")
+    modalContainer.setAttribute("aria-label", "image close-up view")
     modalContainer.innerHTML += `<a href="#" tabindex="0" aria-label="Previous image" id="lightbox_previous-media-button"><</a><div class="lightbox_media-container">
     </div><a href="#" tabindex="0" aria-label="Next image" id="lightbox_next-media-button">></a>`
     this.displayMedia(this.media)

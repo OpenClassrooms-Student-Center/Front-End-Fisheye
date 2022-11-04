@@ -1,7 +1,7 @@
 import { MediaFactory } from "../factories/mediaFactory.js"
 import { ModalFactory } from "../factories/modalFactory.js"
 import { likedMediaList, displayedPhotographerData } from "../store/store.js"
-import { faHeartIcon } from "./faHeartIcon.js"
+import { faHeartIcon, faHeartIconEmpty } from "./faHeartIcon.js"
 
 export class PhotographerMedia {
   constructor(media) {
@@ -41,7 +41,7 @@ export class PhotographerMedia {
     const mediaCardLegend = document.querySelector(
       `[data-media-id="${mediaId}"] .media-legend`
     )
-    mediaCardLegend.innerHTML += `<aside class="likes"><data value='${this.media.likes}'>${this.media.likes} </data><span tabindex="0" class="like-icon">${faHeartIcon}</span></aside>`
+    mediaCardLegend.innerHTML += `<aside class="likes"><data value='${this.media.likes}'>${this.media.likes} </data><span tabindex="0" class="like-icon">${faHeartIconEmpty}</span></aside>`
     const likeButton = document.querySelector(
       `[data-media-id="${mediaId}"] .like-icon`
     )
@@ -61,10 +61,12 @@ export class PhotographerMedia {
     if (likedMedia.status === false) {
       totalLikes.value++
       likeButton.previousSibling.value++
+      likeButton.innerHTML = faHeartIcon
       likedMedia.status = true
     } else {
       totalLikes.value--
       likeButton.previousSibling.value--
+      likeButton.innerHTML = faHeartIconEmpty
       likedMedia.status = false
     }
     totalLikes.textContent = totalLikes.value

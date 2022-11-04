@@ -45,7 +45,6 @@ export class PhotographerProfile {
 
   createPhotographerHeader() {
     const wrapper = document.querySelector(".photograph-header")
-    wrapper.tabIndex = 0
     this.createProfile(wrapper, "profilePage")
     const openModalButton = document.createElement("button")
     openModalButton.textContent = "Contactez-moi"
@@ -62,10 +61,9 @@ export class PhotographerProfile {
     return wrapper
   }
 
-  //TODO: Fix insert not displaying properly on different screen sizes
   createprofilePageInsert() {
     const wrapper = document.querySelector("#main")
-    wrapper.innerHTML += `<aside class="insert"><div><data value='${this.photographer.totalLikes}' class="total-likes">${this.photographer.totalLikes}</data> ${faHeartIcon}</div><div><data class="price" value='${this.photographer.price}'>${this.photographer.price}</data>€ / jour</div></aside>`
+    wrapper.innerHTML += `<aside class="insert"><div class="total-likes-container"><data aria-label="Total likes" value='${this.photographer.totalLikes}' class="total-likes">${this.photographer.totalLikes}</data> ${faHeartIcon}</div><div><data class="price" aria-label="Daily price" value='${this.photographer.price}'>${this.photographer.price}</data>€ / jour</div></aside>`
     return wrapper
   }
 }
