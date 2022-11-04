@@ -4,17 +4,29 @@ export class Modal {
   }
 
   // Creates a modal container ready to use and containing a closing button
-  static createModalContainer(modalName) {
+  createModalContainer() {
+    // Adds an overlay over background elements
     const backgroundElements = document.querySelectorAll("header, main")
-    this.createBackgroundOverlay(backgroundElements)
+    for (let el of backgroundElements) {
+      el.setAttribute("inert", true)
+      el.setAttribute("aria-hidden", true)
+      if (event.target.id == "profile_contact-button") {
+        el.classList.add("modal-background-faded")
+      } else {
+        el.classList.add("modal-background-hidden")
+      }
+    }
+
+    // Creates the modal
     const wrapper = document.querySelector("body")
     const modalContainer = document.createElement("section")
-    modalContainer.classList = `modal-container ${modalName}`
+    modalContainer.classList = `modal-container`
     modalContainer.setAttribute("aria-modal", true)
     modalContainer.setAttribute("role", "dialog")
     modalContainer.innerHTML = `<button class="modal_close-button" aria-label="Close dialog" tabindex="0">X</button>`
     wrapper.appendChild(modalContainer)
 
+    // Adds events to close the modal
     modalContainer.addEventListener("click", (event) => {
       if (event.target.classList == "modal_close-button") {
         this.closeModalEvent(backgroundElements)
@@ -29,25 +41,13 @@ export class Modal {
   }
 
   // When closing modal event is triggered, removes the modal and display again the hidden elements
-  static closeModalEvent(backgroundElements) {
+  closeModalEvent(backgroundElements) {
     document.querySelector(".modal-container").remove()
     for (let el of backgroundElements) {
       el.removeAttribute("inert")
       el.classList.remove("modal-background-faded")
       el.classList.remove("modal-background-hidden")
       el.removeAttribute("aria-hidden")
-    }
-  }
-
-  static createBackgroundOverlay(backgroundElements) {
-    for (let el of backgroundElements) {
-      el.setAttribute("inert", true)
-      el.setAttribute("aria-hidden", true)
-      if (event.target.id == "profile_contact-button") {
-        el.classList.add("modal-background-faded")
-      } else {
-        el.classList.add("modal-background-hidden")
-      }
     }
   }
 }

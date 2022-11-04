@@ -8,7 +8,9 @@ export class ContactModal extends Modal {
 
   displayModal(event) {
     event.preventDefault()
-    Modal.createModalContainer("contact-modal").innerHTML += `  
+    const modalContainer = new Modal(this.photographer).createModalContainer(event)
+    modalContainer.classList.add("contact-modal")
+    modalContainer.innerHTML += `  
     <h2>Contactez-moi <br>${this.photographer.name}</h2>
     <form>
     <div>
@@ -23,5 +25,5 @@ export class ContactModal extends Modal {
     </div>
     <button class="contact_button">Envoyer</button>
   </form>`
-}
+  }
 }

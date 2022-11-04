@@ -2,7 +2,6 @@ import { MediaFactory } from "../factories/mediaFactory.js"
 import { ModalFactory } from "../factories/modalFactory.js"
 import { likedMediaList, displayedPhotographerData } from "../store/store.js"
 import { faHeartIcon } from "./faHeartIcon.js"
-//import { ModalLightbox } from "./Lightbox.js"
 
 export class PhotographerMedia {
   constructor(media) {
@@ -102,14 +101,16 @@ export class PhotographerMedia {
       `[data-media-id="${this.media.id}"] .media-thumbnail`
     )
     lightboxLinks.addEventListener("click", () =>
-    new ModalFactory("lightbox", this.media).createModalContainer(this.media)
+      new ModalFactory("lightbox", this.media).createModalContainer(this.media)
     )
     lightboxLinks.addEventListener("keydown", (event) => {
       if (
         event.key == "Enter" &&
         !document.querySelector(".lightbox-container")
       ) {
-        new ModalFactory("lightbox", this.media).createModalContainer(this.media)
+        new ModalFactory("lightbox", this.media).createModalContainer(
+          this.media
+        )
       }
     })
   }

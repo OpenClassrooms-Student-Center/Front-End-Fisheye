@@ -23,6 +23,10 @@ export class API {
   // Request data from API, finds the photographer with the corresponding ID and return its info and medias
   static async getPhotographersByID() {
     const photographerId = new URL(document.location).searchParams.get("id")
+    // If accessing photographer page directly (without any photographer ID in param), redirects to home page
+    if (!photographerId) {
+      window.location.replace("http://127.0.0.1:5500/index.html")
+    }
     let data = {}
     await this.getAllData("profilePage")
       .then((response) => {
