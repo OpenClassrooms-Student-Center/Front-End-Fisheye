@@ -43,20 +43,21 @@ export class ModalLightbox extends Modal {
     )
 
     // Enables keyboard navigation : left arrow to display previous media, right arrow to display next media
-    if (document.querySelector(".lightbox-container")) {
-      document.querySelector("body").addEventListener("keydown", (event) => {
+    document.querySelector("body").addEventListener("keydown", (event) => {
+      if (document.querySelector(".lightbox-container") !== null) {
         if (event.key == "ArrowLeft") {
           this.modalNavigation(storedMediaList, "displayPreviousMedia")
         } else if (event.key == "ArrowRight") {
           this.modalNavigation(storedMediaList, "displayNextMedia")
         }
-      })
-    }
+      }
+    })
   }
 
   // Get index of currently displayed media from the store, then get previous/next element in it. If displayed media is the first/last in the array and user want the previous/next media, displays the last/first media instead.
 
   modalNavigation(storedMediaList, navigationDirection) {
+    console.log(event)
     const displayedMedia = storedMediaList.find(
       (media) => this.media.id == media.id
     )
