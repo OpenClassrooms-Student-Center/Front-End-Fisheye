@@ -30,16 +30,14 @@ export class Photographer {
       .querySelector("#main")
       .appendChild(template.createPhotographerHeader())
     template.createprofilePageInsert()
-    //ContactModal.addModalEventListeners()
-    PhotographerMedia.createDropdownOrder()
     PhotographerMedia.createMediaSection()
     displayedPhotographerData.media.forEach((element) => {
-      const template = new PhotographerMedia(element)
+      const mediaCard = new PhotographerMedia(element)
       document
         .querySelector(".photographer-media")
-        .appendChild(template.createMediaList())
-      template.addLikes()
-      template.addLightboxEventListener()
+        .appendChild(mediaCard.createMediaCard())
+      mediaCard.addLikes()
+      mediaCard.addLightboxEventListener()
     })
     PhotographerMedia.sortMedia()
   }

@@ -9,29 +9,29 @@ export class PhotographerMedia {
   }
 
   static createMediaSection() {
-    const newSection = document.createElement("section")
-    newSection.classList = "photographer-media"
-    document.querySelector("#main").appendChild(newSection)
-  }
-
-  static createDropdownOrder() {
-    const wrapper = document.createElement("div")
-    wrapper.classList = "media-sorting-menu"
-    document.querySelector("#main").appendChild(wrapper)
-    wrapper.innerHTML += `<label class="sort-label" for="order-by">Trier par</label><select name="sort" id="order-by" class="dropdown-sort"><option value="popularite">Popularité</option><option value="date">Date</option><option value="titre">Titre</option></select>`
+    // Creates dropdown to sort medias
+    const sortingMenu = document.createElement("div")
+    sortingMenu.classList = "media-sorting-menu"
+    document.querySelector("#main").appendChild(sortingMenu)
+    sortingMenu.innerHTML += `<label class="sort-label" for="order-by">Trier par</label><select name="sort" id="order-by" class="dropdown-sort"><option value="popularite">Popularité</option><option value="date">Date</option><option value="titre">Titre</option></select>`
     const sortingDropdown = document.getElementById("order-by")
     sortingDropdown.addEventListener("change", () => this.sortMedia())
-    return wrapper
+
+    // Creates media list container
+    const mediaListContainer = document.createElement("section")
+    mediaListContainer.classList = "photographer-media"
+    document.querySelector("#main").appendChild(mediaListContainer)
   }
 
-  createMediaList() {
-    const wrapper = document.createElement("figure")
-    wrapper.classList = "mediaCard"
-    wrapper.dataset.mediaId = `${this.media.id}`
-    wrapper.innerHTML += new MediaFactory(this.media).createMedia(
+  // Creates media cards
+  createMediaCard() {
+    const mediaCard = document.createElement("figure")
+    mediaCard.classList = "mediaCard"
+    mediaCard.dataset.mediaId = `${this.media.id}`
+    mediaCard.innerHTML += new MediaFactory(this.media).createMedia(
       "profileMedia"
     )
-    return wrapper
+    return mediaCard
   }
 
   // Assigns a key-value pair to likedMedia array for each media, to keep track of its liked status
@@ -101,16 +101,14 @@ export class PhotographerMedia {
       `[data-media-id="${this.media.id}"] .media-thumbnail`
     )
     lightboxLinks.addEventListener("click", () =>
-      new ModalFactory("lightbox", this.media).createModalContainer(this.media)
+      new ModalFactory("lightbox", this.media).getModalContainer(this.media)
     )
     lightboxLinks.addEventListener("keydown", (event) => {
       if (
         event.key == "Enter" &&
-        !document.querySelector(".lightbox-container")
+        document.querySelector(".lightbox-container") == null
       ) {
-        new ModalFactory("lightbox", this.media).createModalContainer(
-          this.media
-        )
+        new ModalFactory("lightbox", this.media).getModalContainer(this.media)
       }
     })
   }

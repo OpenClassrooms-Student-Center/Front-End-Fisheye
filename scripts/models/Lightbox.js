@@ -8,7 +8,7 @@ export class ModalLightbox extends Modal {
     this.media = media
   }
 
-  createModalContainer() {
+  getModalContainer() {
     const modalContainer = new Modal(this.media).createModalContainer()
     modalContainer.classList.add("lightbox-container")
     modalContainer.innerHTML += `<a href="#" tabindex="0" aria-label="Previous image" id="lightbox_previous-media-button"><</a><div class="lightbox_media-container">
@@ -57,7 +57,6 @@ export class ModalLightbox extends Modal {
   // Get index of currently displayed media from the store, then get previous/next element in it. If displayed media is the first/last in the array and user want the previous/next media, displays the last/first media instead.
 
   modalNavigation(storedMediaList, navigationDirection) {
-    console.log(event)
     const displayedMedia = storedMediaList.find(
       (media) => this.media.id == media.id
     )
