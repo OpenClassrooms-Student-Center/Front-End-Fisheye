@@ -88,13 +88,13 @@ function photographersMedias(photos, photographer) {
     //boucle sur le tableau de media (soit video soit image)
     photos.forEach((media) => {
         //j'appelle displayDataMedia avec media qui est un seul objet
-        displayDataMedia(media, currentPhotographerFirstName)
+        displayDataMedia(media, currentPhotographerFirstName, photos)
     });
     displayCta(photos, photographer);// jexcecute ma fonction
 };
 
 
-function displayDataMedia(media, name) {
+function displayDataMedia(media, name, photos) {
     // console.log(media);
     // je recupere ma div parent la plus haute
     const thumbnailSection = document.querySelector(".thumbnail_section");
@@ -131,9 +131,13 @@ function displayDataMedia(media, name) {
         mediaImg.src = picture;
         mediaDiv.appendChild(mediaImg);
         mediaDiv.appendChild(divInformations);
-        /*
-        mediaDiv.appendChild(thumbnailImage);
-        */
+        mediaImg.addEventListener('click', () => {
+            const photoIndex = photos.findIndex(photo => { // findIndex retrouve la position de l'element
+                return photo.id === media.id;
+            })
+            displayLightbox(photos, photoIndex, name)
+        })
+     
 
     } else  // Le cas ou c'est une video
     {
@@ -183,52 +187,21 @@ function displayCta(photos, photographer) {
 
 // LIGHTBOX avec +1 et -1 sur les index ||||||||||| 
 
+   function displayLightbox(images, imageToDisplayIndex, photographerName) {
+    const lightbox = document.getElementById('lightbox'); // balise <div>
+    const lightboxImage = document.getElementById('lightboxImage'); // balise <img>
+    const lightboxImageTitle = document.getElementById('lightboxImageTitle');
+    const imageToDisplay = images[imageToDisplayIndex];
+    lightboxImage.src = `assets/sample-photos/${photographerName}/${imageToDisplay.image}`; // On change la src de l'image à afficher
+    lightbox.classList.add("show"); // Class CSS show ajoute la propriété display: block
+    lightboxImageTitle.textContent = imageToDisplay.title;
+   }
+   
+   function closeLightbox() {
+    const lightbox = document.getElementById('lightbox'); // balise <div>
+    lightbox.classList.remove("show");
 
-
-
-
-
-
-
-// VERIFIER LES CHAMPS CONTACT ||||||||||| en cours
-// Définition des constantes
-const firstName = document.getElementById("first");
-
-// Définition des constantes d'erreurs
-const errorFirstName = document.getElementById("errorfirstname");
-
-function submitForm() {
-    event.preventDefault();
-
-    // POUR LE CHAMPS FIRST 
-    if (firstName.value.length < 2) {
-        errorFirstName.innerHTML = "Veuillez entrer 2 caractères ou plus pour le champ du prénom";
-        firstName.style.border = "2px solid #e54858";
-        firstNameValid = false;
-    } else {
-        firstName.style.border = "2px solid green";
-        errorFirstName.innerHTML = "";
-        firstNameValid = true;
-    }
-}
-
-// on vérifie si chaque champs est valide 
-if (firstNameValid === true);
-
-// on vide les champs du formulaire
-firstName.value = "";
-firstName.style.border = "none";
-
-
-
-
-
-
-
-
-
-
-
+   }
 
 // FUNCTION LIKE POUR LES +1 DES LIKES eventListen sur les coeurs du DOM |||||||||||
 
@@ -243,5 +216,11 @@ function addPhotographerName(data) {
     const h1 = document.createElement('h1');
     h1.textContent = name;
     getNameForm.appendChild(h1);
+}
+*/
+
+/*
+function displayLightBox (image) {
+
 }
 */

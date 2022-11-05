@@ -310,3 +310,27 @@ form textarea {
     align-items: center;
 }
 
+
+/* LIGHTBOX */
+
+.lightbox {
+    background-color: #7f2121;
+    display: none;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 70vw;
+    height: 70vh;
+
+}
+
+.lightbox img{
+    width: 90%;
+    height: 100%;
+    object-fit: contain;
+}
+
+.lightbox.show {
+    display: block;
+}
