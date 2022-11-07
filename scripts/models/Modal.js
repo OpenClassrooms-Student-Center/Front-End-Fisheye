@@ -33,7 +33,7 @@ export class Modal {
       }
     })
     document.querySelector("body").addEventListener("keydown", (event) => {
-      if (event.key == "Escape" && document.querySelector(".modal-container")) {
+      if (event.key == "Escape" && document.querySelector(".modal-container") !== null) {
         this.closeModalEvent(backgroundElements)
       }
     })

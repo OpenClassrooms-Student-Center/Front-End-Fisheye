@@ -8,22 +8,32 @@ export class ContactModal extends Modal {
 
   displayModal(event) {
     event.preventDefault()
-    const modalContainer = new Modal(this.photographer).createModalContainer(event)
+    const modalContainer = new Modal(this.photographer).createModalContainer(
+      event
+    )
     modalContainer.classList.add("contact-modal")
+    modalContainer.setAttribute(
+      "aria-label",
+      `Contact me ${this.photographer.name}`
+    )
+    modalContainer.setAttribute(
+      "labelled-by",
+      "#contact_modal-photographer-header"
+    )
     modalContainer.innerHTML += `  
-    <h2>Contactez-moi <br>${this.photographer.name}</h2>
+    <div class="contact-modal_container">
+    <h1 id="contact_modal-photographer-header" class="contact-modal_header">Contactez-moi <br>${this.photographer.name}</h1>
     <form>
-    <div>
-      <label>Prénom</label>
-      <input />
-      <label>Nom</label>
-      <input />
-      <label>Email</label>
-      <input />
-      <label>Votre message</label>
-      <input />
-    </div>
-    <button class="contact_button">Envoyer</button>
-  </form>`
+    <label>Prénom<input type="text" name="firstname"></label>
+    <label>Nom<input type="text" name="lastname" ></label>
+      <label>Email<input type="email" name="email"></label>
+      <label>Votre message<input type="text" class="contact-modal_message" name="message"></label>
+    <button class="contact_button contact-modal_submit-button" aria-label="Send" >Envoyer</button>
+  </form></div>`
+  const modalCloseButton = document.querySelector(".modal_close-button")
+  document.querySelector(".contact-modal_container > form").after(modalCloseButton)
+    document
+      .querySelector("body")
+      .addEventListener("submit", (event) => event.preventDefault())
   }
 }

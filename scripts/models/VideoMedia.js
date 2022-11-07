@@ -7,8 +7,12 @@ export class VideoMedia extends Media {
   }
 
   createMedia(context) {
-    return `<video tabindex="0" ${Media.addMediaClass(context)}>${this.title}
+    return `<video aria-labelledby="media-${
+      this.id
+    }" tabindex="0" ${Media.addMediaClass(context)}>${this.title}
     <source src="assets/${this.photographerId}/${this.video}" type="video/mp4">
-    </video><div ${Media.addMediaLegendClass(context)}><figcaption>${this.title}</figcaption></div>`
+    </video><div ${Media.addMediaLegendClass(context)}><figcaption id="media-${
+      this.id
+    }">${this.title}</figcaption></div>`
   }
 }

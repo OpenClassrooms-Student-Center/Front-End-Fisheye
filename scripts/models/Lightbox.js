@@ -10,10 +10,15 @@ export class ModalLightbox extends Modal {
 
   getModalContainer() {
     const modalContainer = new Modal(this.media).createModalContainer()
-    modalContainer.classList.add("lightbox-container")
-    modalContainer.setAttribute("aria-label", "image close-up view")
-    modalContainer.innerHTML += `<a href="#" tabindex="0" aria-label="Previous image" id="lightbox_previous-media-button"><</a><div class="lightbox_media-container">
-    </div><a href="#" tabindex="0" aria-label="Next image" id="lightbox_next-media-button">></a>`
+    const lightboxContainer = document.createElement("div")
+    modalContainer.appendChild(lightboxContainer)
+    lightboxContainer.classList.add("lightbox-container")
+    lightboxContainer.setAttribute("aria-label", "image close-up view")
+    lightboxContainer.innerHTML += `<a href="#" tabindex="0" aria-label="Previous image" id="lightbox_previous-media-button"><</a><div class="lightbox_media-container">
+    </div><div class="lightbox_right-panel"><a href="#" tabindex="0" aria-label="Next image" id="lightbox_next-media-button">></a></div>`
+    const modalCloseButton = document.querySelector(".modal_close-button")
+    // Aligns the button to close the lightbox to the right of the displayed media
+    document.querySelector("#lightbox_next-media-button").after(modalCloseButton)
     this.displayMedia(this.media)
     this.createNavigation()
   }
@@ -21,6 +26,9 @@ export class ModalLightbox extends Modal {
   displayMedia(media) {
     const mediaContainer = document.querySelector(".lightbox_media-container")
     mediaContainer.innerHTML = new MediaFactory(media).createMedia()
+    document
+        .querySelector(".lightbox_media")
+        .removeAttribute("tabindex")
     if (media.video) {
       document
         .querySelector(".lightbox_media")
@@ -36,6 +44,7 @@ export class ModalLightbox extends Modal {
     const nextMediaButton = document.querySelector(
       "#lightbox_next-media-button"
     )
+
     previousMediaButton.addEventListener("click", () =>
       this.modalNavigation(storedMediaList, "displayPreviousMedia")
     )

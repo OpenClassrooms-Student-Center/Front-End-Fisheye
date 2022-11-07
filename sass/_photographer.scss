@@ -68,22 +68,12 @@
 }
 
 form {
-  display: flex;
-  width: 100%;
-  flex-direction: column;
-  align-items: flex-start;
   & label {
     color: $theme-darkGray;
     font-size: 36px;
   }
-  & div {
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-    align-items: self-start;
-    margin-bottom: 26px;
-  }
   & input {
+    margin-bottom: 26px;
     width: 100%;
     height: 68px;
     border: none;
@@ -201,21 +191,34 @@ data {
 }
 
 .modal-background-hidden {
-  display: none;
+  //opacity: 0;
+  visibility: hidden;
 }
 
 .modal-background-faded {
   opacity: 50%;
 }
 
-.modal-container {
-  position: absolute;
+.lightbox_right-panel {
   display: flex;
-  @include lightbox-position;
+  flex-direction: column;
+  position: relative;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  width: 100vw;
+  position: fixed;
+  top: 0;
+  left: 0;
   & .modal_close-button {
     position: absolute;
-    top: 5%;
-    right: 0;
+    top: 0;
     background-color: transparent;
     border: 0;
     font-size: 3em;
@@ -224,8 +227,7 @@ data {
 }
 
 .lightbox-container {
-  align-items: center;
-  justify-content: space-between;
+  display: flex;
   & * {
     color: $theme-darkRed;
   }
@@ -237,19 +239,49 @@ data {
     text-decoration: none;
   }
   .lightbox_media-container {
-    width: 85%;
-    height: 90%;
+    height: 100%;
+    margin-left: 1em;
+    margin-right: 1em;
     & .lightbox_media {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      position: center;
+      max-width: 90vw;
+      max-height: 90vh;
       border-radius: 5px;
+      object-fit: contain;
     }
   }
 }
 
 .contact-modal {
-  flex-direction: column;
+  & .modal_close-button {
+    color: white;
+    right: 0.5em;
+    top: 1em;
+  }
+  & .contact-modal_header {
+    max-width: 90%;
+    font-size: 2.5em;
+    color: black;
+    margin: 0;
+  }
+  & label {
+    // Used padding instead of margin to provide a larger interactive size for better accessibility
+    padding-top: 0.5em;
+    padding-bottom: 1em;
+    width: 100%;
+  }
+  & .contact-modal_message {
+    height: 10em;
+  }
+}
+
+#lightbox_previous-media-button {
+  align-self: center;
+}
+
+.contact-modal_container {
+  position: relative;
+  width: 30%;
   background-color: $theme-lightRed;
+  padding: 2em;
+  border-radius: 5px;
 }

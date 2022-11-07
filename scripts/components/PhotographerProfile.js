@@ -14,6 +14,7 @@ export class PhotographerProfile {
     cardContainer.appendChild(cardLink)
     cardLink.href = `photographer.html?id=${this.photographer.id}`
     cardLink.ariaLabel = this.photographer.name
+    cardLink.setAttribute("id", "photographer-"+this.photographer.id)
     this.createPhotographerPicture(cardLink)
     document
       .querySelector("main")
@@ -23,15 +24,16 @@ export class PhotographerProfile {
 
   // Creates the photographer picture element on main page
   createPhotographerPicture(wrapper) {
-    wrapper.innerHTML += `<img src=assets/photographers/${this.photographer.portrait} alt=${this.photographer.name} class="photographer-portrait">`
+    wrapper.innerHTML += `<img src=assets/photographers/${this.photographer.portrait} class="photographer-portrait" aria-labelledby="photographer-${this.photographer.id}">`
   }
 
   // Create main info about photographers
   createProfile(wrapper, page) {
+    wrapper.setAttribute("aria-label", this.photographer.name)
     wrapper.innerHTML += `<article class="photographer-profile">${
       page == "homePage"
         ? `<h2 class="photographer-name">${this.photographer.name}</h2>`
-        : `<h1 class="photographer-name">${this.photographer.name}</h1>`
+        : `<h1 class="photographer-name" id="photographer-${this.photographer.id}">${this.photographer.name}</h1>`
     }<p class="photographer-location">${
       this.photographer.location
     }</p><p class="photographer-tagline">${this.photographer.tagline}</p>

@@ -7,7 +7,7 @@ export class PhotoMedia extends Media {
   }
 
   createMedia(context) {
-    return `<img tabindex="0" ${Media.addMediaClass(context)} src="assets/${this.photographerId}/${this.image}" alt="${this.title}" ><div ${Media.addMediaLegendClass(context)}><figcaption>${
+    return `<img tabindex="0" ${Media.addMediaClass(context)} src="assets/${this.photographerId}/${this.image}" aria-labelledby="media-${this.id}" ><div ${Media.addMediaLegendClass(context)}><figcaption id="media-${this.id}">${
       this.title
     }</figcaption></div>`
   }
