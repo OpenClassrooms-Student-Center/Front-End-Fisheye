@@ -8,6 +8,8 @@ function closeModal() {
     modal.style.display = "none";
 }
 
+const form = document.getElementById('form');
+form.addEventListener('submit', submitForm);
 
 // VERIFIER LES CHAMPS CONTACT ||||||||||| en cours
 // Définition des constantes
@@ -16,9 +18,10 @@ const firstName = document.getElementById("first");
 // Définition des constantes d'erreurs
 const errorFirstName = document.getElementById("errorfirstname");
 
-function submitForm() {
-    console.log('toto');
+let firstNameValid = null;
 
+function submitForm(event) {
+    console.log('toto');
     event.preventDefault();
 
     // POUR LE CHAMPS FIRST 
