@@ -358,6 +358,9 @@ form textarea {
     background-color: #901C1C;
     width: 10%;
     height: auto;
+    font-size: 100px;
+    color: #ffffff;
+    padding-top: 350px;
 }
 
 .lightboxContentCenter {

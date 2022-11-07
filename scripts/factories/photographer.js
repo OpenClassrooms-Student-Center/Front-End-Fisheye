@@ -91,6 +91,14 @@ function photographersMedias(photos, photographer) {
         displayDataMedia(media, currentPhotographerFirstName, photos)
     });
     displayCta(photos, photographer);// jexcecute ma fonction
+    const previousArrow = document.getElementById('previousArrow');
+    const nextArrow = document.getElementById('nextArrow');
+    previousArrow.addEventListener('click', function(){
+        goToPreviousImage(photos, currentPhotographerFirstName);   
+    })
+    nextArrow.addEventListener('click', function(){
+        goToNextImage(photos, currentPhotographerFirstName);  
+    })
 };
 
 
@@ -195,6 +203,10 @@ function displayCta(photos, photographer) {
     lightboxImage.src = `assets/sample-photos/${photographerName}/${imageToDisplay.image}`; // On change la src de l'image à afficher
     lightbox.classList.add("show"); // Class CSS show ajoute la propriété display: block
     lightboxImageTitle.textContent = imageToDisplay.title;
+    // stocker la position (l'index) de l'image qui vient d'etre ouverte
+    lightbox.dataset.indexImage = imageToDisplayIndex;
+
+    // Au clic sur les flêches, appeler les deux fonctions
    }
    
    function closeLightbox() {
@@ -202,6 +214,25 @@ function displayCta(photos, photographer) {
     lightbox.classList.remove("show");
 
    }
+
+// Définir deux fonctions : image précédente et image suivant au CLICK
+function goToPreviousImage(images, photographerName) {
+    const lightbox = document.getElementById('lightbox'); // getElement la lightbox
+    const indexImage = parseInt(lightbox.dataset.indexImage); // recuperr valeur de l'indexImage
+    const previousImage = indexImage === 0 ? images.length - 1 : indexImage - 1 ; // soustraire à mon index
+    displayLightbox(images, previousImage, photographerName);
+}
+
+function goToNextImage(images, photographerName) {
+    const lightbox = document.getElementById('lightbox'); // getElement la lightbox
+    const indexImage = parseInt(lightbox.dataset.indexImage); // recuperr valeur de l'indexImage
+    const nextImage = indexImage === images.length - 1 ? 0 : indexImage + 1 ; // additionner à mon index
+    console.log(nextImage);
+    displayLightbox(images, nextImage, photographerName);
+}
+
+// Afficher les flêches
+
 
 // FUNCTION LIKE POUR LES +1 DES LIKES eventListen sur les coeurs du DOM |||||||||||
 
