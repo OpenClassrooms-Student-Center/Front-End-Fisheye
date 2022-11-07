@@ -4,8 +4,27 @@
 
 .photograph-header {
   background-color: #fafafa;
-  height: 300px;
+  height: 200px;
   margin: 0 100px;
+  display: flex;
+  width: 1250px;
+  justify-content: space-around;
+}
+.contentHeader {
+  display: flex;
+  order: 0;
+  flex-direction: column;
+  align-self: center;
+}
+
+.imgPhotoPage {
+  width: 150px;
+  height: 150px;
+  border-radius: 100%;
+  object-fit: cover;
+  display: flex;
+  align-self: center;
+  order: 2;
 }
 
 .contact_button {
@@ -19,6 +38,9 @@
   background-color: #901c1c;
   border-radius: 5px;
   cursor: pointer;
+  display: flex;
+  align-self: center;
+  order: 1;
 }
 
 .modal {
