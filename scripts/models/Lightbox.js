@@ -13,12 +13,12 @@ export class ModalLightbox extends Modal {
     const lightboxContainer = document.createElement("div")
     modalContainer.appendChild(lightboxContainer)
     lightboxContainer.classList.add("lightbox-container")
+    const modalCloseButton = document.querySelector(".modal_close-button")
+    lightboxContainer.appendChild(modalCloseButton)
     lightboxContainer.setAttribute("aria-label", "image close-up view")
     lightboxContainer.innerHTML += `<a href="#" tabindex="0" aria-label="Previous image" id="lightbox_previous-media-button"><</a><div class="lightbox_media-container">
     </div><div class="lightbox_right-panel"><a href="#" tabindex="0" aria-label="Next image" id="lightbox_next-media-button">></a></div>`
-    const modalCloseButton = document.querySelector(".modal_close-button")
     // Aligns the button to close the lightbox to the right of the displayed media
-    document.querySelector("#lightbox_next-media-button").after(modalCloseButton)
     this.displayMedia(this.media)
     this.createNavigation()
   }

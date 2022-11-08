@@ -20,8 +20,12 @@ export class ContactModal extends Modal {
       "labelled-by",
       "#contact_modal-photographer-header"
     )
-    modalContainer.innerHTML += `  
-    <div class="contact-modal_container">
+    const contactContainer = document.createElement("div")
+    const modalCloseButton = document.querySelector(".modal_close-button")
+    modalContainer.appendChild(contactContainer)
+    contactContainer.appendChild(modalCloseButton)
+    contactContainer.classList = "contact-modal_container"
+    contactContainer.innerHTML += `
     <h1 id="contact_modal-photographer-header" class="contact-modal_header">Contactez-moi <br>${this.photographer.name}</h1>
     <form>
     <label>Prénom<input type="text" name="firstname"></label>
@@ -29,11 +33,17 @@ export class ContactModal extends Modal {
       <label>Email<input type="email" name="email"></label>
       <label>Votre message<input type="text" class="contact-modal_message" name="message"></label>
     <button class="contact_button contact-modal_submit-button" aria-label="Send" >Envoyer</button>
-  </form></div>`
-  const modalCloseButton = document.querySelector(".modal_close-button")
-  document.querySelector(".contact-modal_container > form").after(modalCloseButton)
+  </form>`
     document
       .querySelector("body")
-      .addEventListener("submit", (event) => event.preventDefault())
+      .addEventListener("submit", (event) => this.getFormContent(event))
+  }
+
+  getFormContent(event) {
+    event.preventDefault()
+    const formInputs = document.querySelectorAll("input")
+    for (let field of formInputs) {
+      console.log(field.value)
+    }
   }
 }
