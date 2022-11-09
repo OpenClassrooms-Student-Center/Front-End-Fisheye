@@ -1,5 +1,3 @@
-//import { ModalLightbox } from "../components/Lightbox.js"
-//import { ContactModal } from "../components/ContactModal.js"
 import { PhotographerMedia } from "../components/PhotographerMedia.js"
 import { PhotographerProfile } from "../components/PhotographerProfile.js"
 import { displayedPhotographerData } from "../store/store.js"
@@ -17,6 +15,7 @@ export class Photographer {
     this.totalLikes = photographer.totalLikes
   }
 
+  // Populates home page with photographers' cards
   displayHome() {
     const template = new PhotographerProfile(this)
     document
@@ -24,6 +23,7 @@ export class Photographer {
       .appendChild(template.createPhotographerCard())
   }
 
+  // Creates the photographer's profile page, and sorts media by popularity by default
   displayProfile() {
     const template = new PhotographerProfile(this)
     document

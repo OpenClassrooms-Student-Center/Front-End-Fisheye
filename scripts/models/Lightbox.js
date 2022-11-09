@@ -8,6 +8,7 @@ export class ModalLightbox extends Modal {
     this.media = media
   }
 
+  // Creates the structure of the modal
   getModalContainer() {
     new Modal(this.media).createModalContainer()
     const lightboxContainer = document.querySelector(".modal-container > div")
@@ -22,6 +23,7 @@ export class ModalLightbox extends Modal {
     this.createNavigation()
   }
 
+  // Displays the media in the lightbox, and adds video player controls if applicable
   displayMedia(media) {
     const mediaContainer = document.querySelector(".lightbox_media-container")
     mediaContainer.innerHTML = new MediaFactory(media).createMedia()
@@ -33,6 +35,7 @@ export class ModalLightbox extends Modal {
     }
   }
 
+  // Adds events to elements used for navigation
   createNavigation() {
     const storedMediaList = displayedPhotographerData.media
     const previousMediaButton = document.querySelector(

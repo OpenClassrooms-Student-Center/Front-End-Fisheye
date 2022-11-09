@@ -41,7 +41,7 @@ export class PhotographerMedia {
     const mediaCardLegend = document.querySelector(
       `[data-media-id="${mediaId}"] .media-legend`
     )
-    mediaCardLegend.innerHTML += `<aside class="likes"><data value='${this.media.likes}'>${this.media.likes} </data><span tabindex="0" class="like-icon">${faHeartIconEmpty}</span></aside>`
+    mediaCardLegend.innerHTML += `<aside class="likes" aria-label="likes"><data value='${this.media.likes}'>${this.media.likes} </data><span tabindex="0" class="like-icon">${faHeartIconEmpty}</span></aside>`
     const likeButton = document.querySelector(
       `[data-media-id="${mediaId}"] .like-icon`
     )
@@ -55,6 +55,7 @@ export class PhotographerMedia {
     })
   }
 
+  // Liking a media increase its likes count and the total like count by 1. Clicking a second time to unlike decrease both by 1.
   incrementLikes(likeButton, mediaId) {
     let likedMedia = likedMediaList.find((element) => element.id == mediaId)
     const totalLikes = document.querySelector(".total-likes")
@@ -76,6 +77,7 @@ export class PhotographerMedia {
   // Gets the value of sorting dropdown menu, then reorders the medias accordingly. Default behavior is to sort by popularity (done on first page load)
   static sortMedia() {
     const sortingParameter = document.getElementById("order-by").value
+    // Reorders the data in the store according to the sort parameter selected by user
     displayedPhotographerData.media.sort((a, b) => {
       if (sortingParameter == "popularite" || sortingParameter == undefined) {
         return b.likes - a.likes
@@ -86,6 +88,7 @@ export class PhotographerMedia {
       }
     })
 
+    // Reorders elements on the page based on their index in the reordered data in the store
     displayedPhotographerData.media.forEach((element) => {
       for (let media of document.querySelectorAll(".mediaCard")) {
         let dataId = media.getAttribute("data-media-id")
@@ -98,6 +101,7 @@ export class PhotographerMedia {
     })
   }
 
+  // Adds event listeners to media cards to open lightbox on click or pressing enter when focused
   addLightboxEventListener() {
     const lightboxLinks = document.querySelector(
       `[data-media-id="${this.media.id}"] .media-thumbnail`

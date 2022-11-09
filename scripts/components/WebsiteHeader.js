@@ -1,4 +1,4 @@
-// Create header for each page
+// Creates header for each page
 
 export function createHeader(page) {
   const header = document.querySelector("header")

@@ -6,6 +6,7 @@ export class ContactModal extends Modal {
     this.photographer = photographer
   }
 
+  // Creates the contact modal
   displayModal(event) {
     event.preventDefault()
     const modalContainer = new Modal(this.photographer).createModalContainer(
@@ -36,6 +37,7 @@ export class ContactModal extends Modal {
       .addEventListener("submit", (event) => this.getFormContent(event))
   }
 
+  // Displays the content of the form inputs in the console log on submit.
   getFormContent(event) {
     event.preventDefault()
     const formInputs = document.querySelectorAll("input")

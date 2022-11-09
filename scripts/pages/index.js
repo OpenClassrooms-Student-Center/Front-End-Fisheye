@@ -1,4 +1,3 @@
-//import { Photographer } from "../models/Photographer.js"
 import { API } from "../api/Api.js"
 import { Photographer } from "../models/Photographer.js"
 import { createHeader } from "../components/WebsiteHeader.js"
