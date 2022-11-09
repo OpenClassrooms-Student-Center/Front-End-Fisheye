@@ -2,7 +2,6 @@
   "name": "front-end-fisheye",
   "version": "1.0.0",
   "description": "Rien à installer ici, il suffit d'ouvrir le fichier `index.html`.",
-  "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },

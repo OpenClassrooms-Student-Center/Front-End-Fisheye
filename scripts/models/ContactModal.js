@@ -20,10 +20,7 @@ export class ContactModal extends Modal {
       "labelled-by",
       "#contact_modal-photographer-header"
     )
-    const contactContainer = document.createElement("div")
-    const modalCloseButton = document.querySelector(".modal_close-button")
-    modalContainer.appendChild(contactContainer)
-    contactContainer.appendChild(modalCloseButton)
+    const contactContainer = document.querySelector(".modal-container > div")
     contactContainer.classList = "contact-modal_container"
     contactContainer.innerHTML += `
     <h1 id="contact_modal-photographer-header" class="contact-modal_header">Contactez-moi <br>${this.photographer.name}</h1>

@@ -1,8 +1,6 @@
 @import "variables.scss";
 @import "mixins.scss";
 
-
-
 .photograph-header {
   background-color: $theme-lightGray;
   height: 300px;
@@ -204,6 +202,9 @@ data {
   position: relative;
   & * {
     color: $theme-darkRed;
+  }
+  & .modal_close-button {
+    z-index: 1;
   }
   & figcaption {
     font-size: 1.5em;
