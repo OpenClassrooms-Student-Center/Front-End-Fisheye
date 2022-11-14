@@ -1,0 +1,77 @@
+/* PHOTOGRAPHERS SECTION */
+.articlePh {
+    margin: .5rem;
+    padding: .3rem;
+    text-align: center;
+    width: 22rem;
+}
+
+.articlePh a {
+    text-decoration: none;
+}
+
+.filter {
+    display: flex;
+    justify-content: center;
+    margin-right: 3rem;
+    margin-top: .5rem;
+}
+
+.location {
+    color: #901C1C;
+    margin: .2rem;
+}
+
+.name {
+    color: #D3573C;
+    font-size: 1.7rem;
+    margin-bottom: .7rem;
+}
+
+.price {
+    color: #757575;
+    margin: 0;
+}
+
+.tagline {
+    margin: 0;
+}
+
+section {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    margin-bottom: 5rem;
+    margin-top: 7rem;
+    padding: 0;
+    width: 100%;
+}
+
+section img {
+    background-color: #e7c6e7;
+    border-radius: 50%;
+    box-shadow: 0 0 .8rem rgba(134, 134, 134, 0.432);
+    height: 12.5rem;
+    margin: 0 auto;
+    object-fit: cover;
+    overflow: hidden;
+    width: 12.5rem;
+}
+
+section img:hover {
+    box-shadow: 0 0 .8rem rgba(134, 134, 134, 0.432);
+    cursor: pointer;
+    transform: scale(1.05);
+}
+
+@media screen and (min-width: 1170px) {
+    .tags {
+        display: flex;
+        justify-content: center;
+        margin-right: 0;
+    }
+
+    section {
+        margin-top: 5rem;
+    }
+}

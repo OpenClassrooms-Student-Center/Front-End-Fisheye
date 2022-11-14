@@ -1,6 +1,3 @@
-# Base de code du projet P6 - Parcours Front-end
+Build a platform for Photographers
 
-## Démarrer le projet
-
-Rien à installer ici, il suffit d'ouvrir le fichier `index.html`.
-
+This project is the 6th project for OpenClassRooms( Javascript/ React)

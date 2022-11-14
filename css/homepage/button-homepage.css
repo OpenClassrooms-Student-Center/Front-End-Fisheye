@@ -1,0 +1,26 @@
+/* BUTTON 'Passer au contenu' */
+main>a {
+    background: #DB8876;
+    border-radius: .3125rem;
+    color: #000;
+    display: none;
+    flex-wrap: nowrap;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 18px;
+    font-weight: 700;
+    left: 0;
+    margin: 0 auto;
+    padding: 5px;
+    position: fixed;
+    right: 0;
+    text-align: center;
+    text-decoration: none;
+    top: 2%;
+    width: 182px;
+    z-index: 1;
+}
+
+main>a:hover {
+    background: #901C1C;
+    color: #fff;
+}

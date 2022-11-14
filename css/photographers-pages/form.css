@@ -1,0 +1,132 @@
+/* FORM */
+#form-dialog {
+    border: none;
+    border-radius: .3rem;
+    display: none;
+    left: 50%;
+    max-width: 42rem;
+    min-width: 18.75rem;
+    position: absolute;
+    right: 50%;
+    top: 0;
+    transform: translateX(-50%);
+    width: 100%;
+    z-index: 11;
+}
+
+.formData {
+    display: flex;
+    flex-direction: column;
+}
+
+.formData[data-error]::after {
+    color: #901c1c;
+    content: attr(data-error);
+    display: block;
+    flex-direction: column;
+    font-size: 1em;
+    line-height: 0.3;
+    margin-bottom: 7px;
+    margin-top: 7px;
+    opacity: 0;
+    text-align: left;
+    transition: .3s;
+}
+
+.formData[data-error-visible="true"]::after {
+    opacity: 1;
+}
+
+form {
+    background: #db8876;
+    border-radius: .3rem;
+    display: flex;
+    flex-direction: column;
+    padding: 1.5rem 2.2rem 2.2rem;
+}
+
+form #ph-form-name {
+    display: block;
+}
+
+form .close-form-icon {
+    color: #fff;
+    font-size: 2em;
+    margin-top: .6rem;
+}
+
+form .close-form-icon:hover,
+form .form-submit:hover {
+    cursor: pointer;
+}
+
+form .form-submit {
+    align-self: center;
+    background: #901c1c;
+    color: #fff;
+    font-size: 1em;
+    height: 2.2rem;
+    margin-top: 1.6rem;
+    width: 10.6rem;
+}
+
+form button {
+    background: none;
+    border: none;
+}
+
+form h1 {
+    font-size: 2.2em;
+    font-weight: 400;
+}
+
+form header {
+    display: flex;
+    justify-content: space-between;
+    margin: -.3rem .3rem 1.25rem 0;
+}
+
+form input,
+form textarea {
+    border: none;
+    border-radius: .3rem;
+    font-size: 1.2em;
+    padding: .3rem;
+}
+
+form label {
+    font-size: 1.2em;
+    margin: .3rem 0 .2rem;
+}
+
+input[data-error]::after {
+    color: #901c1c;
+    content: attr(data-error);
+    font-size: .6em;
+}
+
+@media (min-width: 600px) {
+    #form-dialog {
+        top: 4.3rem;
+        width: 95%;
+    }
+
+    form .close-form-icon {
+        font-size: 2.4em;
+    }
+
+    form .form-submit {
+        align-self: flex-start;
+        height: 4.4rem;
+    }
+
+    form h1 {
+        font-size: 2.6em;
+    }
+
+    form label,
+    form input,
+    form textarea {
+        font-size: 1.6em;
+    }
+}

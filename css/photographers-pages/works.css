@@ -1,0 +1,72 @@
+/* PH WORKS MEDIAS */
+#ph-works {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    margin: 2.8125rem 0;
+    padding: 0 1.25rem;
+}
+
+.btn-like {
+    background: none;
+    border: none;
+    color: #901c1c;
+    font-size: 1.1rem;
+    margin-left: -.3rem;
+}
+
+.ph-work-elt {
+    color: #901c1c;
+    font-size: 1.1em;
+    font-weight: 500;
+    margin: 0 0 .625rem;
+    width: 20.9375rem;
+}
+
+.ph-work-elt .fa-heart:hover,
+.ph-work-elt img:hover,
+.ph-work-elt video:hover {
+    cursor: pointer;
+}
+
+.ph-work-elt .ph-work-title {
+    width: 14.0625rem;
+}
+
+.ph-work-elt img,
+.ph-work-elt video {
+    border-radius: .3125rem;
+    height: 11.875rem;
+    object-fit: cover;
+    width: 20.9375rem;
+}
+
+.ph-work-elt-text {
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
+    margin-top: 0;
+}
+
+.ph-work-title {
+    font-size: 1em;
+    font-weight: 400;
+}
+
+@media (min-width: 1300px) {
+    #ph-works {
+        justify-content: space-between;
+        margin: 2.8125rem 6.25rem;
+        padding: 0;
+    }
+
+    .ph-work-elt {
+        width: 21.875rem;
+    }
+
+    .ph-work-elt img,
+    .ph-work-elt video {
+        height: 18.75rem;
+        width: 21.875rem;
+    }
+}

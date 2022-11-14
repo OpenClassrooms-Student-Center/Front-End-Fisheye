@@ -1,0 +1,58 @@
+/* HEADER */
+h1 {
+    color: #901C1C;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 14px;
+    width: fit-content;
+}
+
+header {
+    align-items: center;
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    margin-top: 2rem;
+    overflow: hidden;
+}
+
+header img {
+    width: 8rem;
+}
+
+header nav ul {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+    left: 0;
+    list-style: none;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 0;
+    position: absolute;
+    right: 0;
+    text-align: center;
+    top: 90px;
+}
+
+@media screen and (min-width: 1170px) {
+    h1 {
+        font-size: 1.8em;
+    }
+
+    header {
+        margin-top: 0;
+    }
+
+    header img {
+        width: 12.5rem;
+    }
+
+    header nav a {
+        margin-bottom: 0;
+    }
+
+    header nav ul {
+        top: 22px;
+        width: 39rem;
+    }
+}

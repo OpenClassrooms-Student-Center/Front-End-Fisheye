@@ -1,21 +1,46 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <link href="css/style.css" rel="stylesheet" type="text/css" />
-    <meta charset="utf-8">
-    <link rel="icon" type="image/png" href="assets/favicon.png">
-    <link href="https://fonts.googleapis.com/css?family=DM+Sans&display=swap" rel="stylesheet">
-    <title>Fisheye</title>
-  </head>
-  <body>
-    <header>
-        <img src="assets/images/logo.png" class="logo" />
-        <h1>Nos photographes</h1>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FishEye - Accueil</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/homepage.css">
+    <script type="module" src="js/main.js"></script>
+
+</head>
+
+<body>
+    <!-- BANNER -->
+    <header role="banner">
+        <a href="index.html" title="HomePage"><img
+                src="./assets/images/logo.png"
+                alt="FishEye Home Page"></a>
+        <!-- NAV -->
+        <nav class="filters" aria-label="photographer categories" role="navigation">
+            <ul>
+                <a href='#'><li data-filter="portrait">#portrait</li></a>
+                <a href='#'><li data-filter="art">#art</li></a>
+                <a href='#'><li data-filter="fashion">#fashion</li></a>
+                <a href='#'><li data-filter="architecture">#architecture</li></a>
+                <a href='#'><li data-filter="travel">#travel</li></a>
+                <a href='#'><li data-filter="sport">#sport</li></a>
+                <a href='#'><li data-filter="animals">#animals</li></a>
+                <a href='#'><li data-filter="events">#events</li></a>
+            </ul>
+        </nav>
+        <h1>Nos Photographes</h1>
     </header>
-    <main id="main">
-        <div class="photographer_section"></div>
+    <main>
+        <!-- BUTTON 'PASSER AU CONTENU' -->
+        <a id="main-photographers-link" href="#photographers">Passer au contenu</a>
+        <!-- PHOTOGRAPHERS -->
+        <section id="photographers" aria-label="photographers">
+        </section>
     </main>
-    <script src="scripts/factories/photographer.js"></script>
-    <script src="scripts/pages/index.js"></script>
-  </body>
+
+</body>
+
 </html>
