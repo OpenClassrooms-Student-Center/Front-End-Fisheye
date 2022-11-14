@@ -39,12 +39,44 @@ h1 {
     flex-direction: column;
 }
 
-.photographer_section article h2 {
-    color: #D3573C;
-    font-size: 36px;
+.photographer_section article div {
+    height: 200px;
+    width: 200px;
+    overflow: hidden;
+    border-radius: 100%;
 }
 
 .photographer_section article img {
-    height: 200px;
-    width: 200px;
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    scale: 1.5;
+}
+
+.photographer_section article h2 {
+    color: #D3573C;
+    font-size: 36px;
+    line-height: 47px;
+    margin: 0;
+}
+
+.photographer_section article h3 {
+    color: #901C1C;
+    font-size: 13px;
+    line-height: 17px;
+    margin: 0;
+}
+
+.photographer_section article h4 {
+    color: #000000;
+    font-size: 10px;
+    line-height: 13px;
+    margin: 0;
+}
+
+.photographer_section article p {
+    color: #757575;
+    font-size: 9px;
+    line-height: 12px;
+    margin: 0;
 }
