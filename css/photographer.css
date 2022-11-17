@@ -355,12 +355,10 @@ form textarea {
 }
 
 .arrow {
-    background-color: #901C1C;
-    width: 10%;
     height: auto;
     font-size: 100px;
-    color: #ffffff;
-    padding-top: 350px;
+    color: #901C1C;
+    padding: 350px 15px 0 15px;
 }
 
 .lightboxContentCenter {
@@ -375,7 +373,7 @@ form textarea {
     padding: 3rem;
 }
 .lightboxTitlePosition {
-    left: 25%;
+    left: 41%;
     position: fixed;
     
 }

@@ -32,6 +32,8 @@ let getDivLocation = document.querySelector('.city');
 let getDivCitation = document.querySelector('.tagline');
 let getDivPicture = document.querySelector('.picture_photographer');
 
+
+
 function photographerPageFactory(data) {
     const { name, country, city, tagline, portrait } = data; /* J'ajoute dans ma constante "id" pour chercher les "données" correspondantes*/
     //TITRE
@@ -82,7 +84,7 @@ function photographerPageFactory(data) {
 // j'appelle displayDataMedia avec en parametre (media) qui est crée en bas
 
 
-
+// Fonction qui affiche la galerie 
 function photographersMedias(photos, photographer) {
     const currentPhotographerFirstName = currentPhotographer.name.split(" ")[0];
     //boucle sur le tableau de media (soit video soit image)
@@ -101,6 +103,14 @@ function photographersMedias(photos, photographer) {
     })
 };
 
+// Dans le scope globale de mon fichier, stocker mes photos et les photographes
+// pour y avoir acces partout pour ne plus le passer en parametres 
+// Déféinire dans 2 variable globale dans ce fichier avec une valeur nul,
+// Re exetuter cette functions en parametres 
+
+// 1 - Ecouteru d'evenement sur mon select
+// 2 - Nouvelle funtion qui vient trier par rapport aux différents critères
+// 3 - Vider la galerie et la re rendre grace à ma fonction photographerMedias
 
 function displayDataMedia(media, name, photos) {
     // console.log(media);
