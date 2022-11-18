@@ -31,8 +31,7 @@ let getDivName = document.querySelector('.name');
 let getDivLocation = document.querySelector('.city');
 let getDivCitation = document.querySelector('.tagline');
 let getDivPicture = document.querySelector('.picture_photographer');
-
-
+const thumbnailSection = document.querySelector(".thumbnail_section");
 
 function photographerPageFactory(data) {
     const { name, country, city, tagline, portrait } = data; /* J'ajoute dans ma constante "id" pour chercher les "données" correspondantes*/
@@ -87,6 +86,8 @@ function photographerPageFactory(data) {
 // Fonction qui affiche la galerie 
 function photographersMedias(photos, photographer) {
     const currentPhotographerFirstName = currentPhotographer.name.split(" ")[0];
+    // vider le dom
+    thumbnailSection.innerHTML = ""
     //boucle sur le tableau de media (soit video soit image)
     photos.forEach((media) => {
         //j'appelle displayDataMedia avec media qui est un seul objet
@@ -115,7 +116,6 @@ function photographersMedias(photos, photographer) {
 function displayDataMedia(media, name, photos) {
     // console.log(media);
     // je recupere ma div parent la plus haute
-    const thumbnailSection = document.querySelector(".thumbnail_section");
     // je decortique media 
     const { image, video, title, likes, price } = media;
     const picture = `assets/sample-photos/${name}/${image}`;
