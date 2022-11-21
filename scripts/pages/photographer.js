@@ -602,16 +602,16 @@ const medias = [
 // Récupérer les parametres de l'url
 const paramsString = window.location.search;
 let searchParams = new URLSearchParams(paramsString);
-let photographerId = searchParams.get("id")
-console.log(photographerId)
+let photographerId = searchParams.get("id");
+console.log(photographerId);
 
 //chercher avec un .find dans photographers l'id qui m'interesse
 const currentPhotographer = photographers.find(photograph => photograph.id == photographerId); // => comparaison "sans regarder le type nombre, tetxt, tableau, objet.." que je veux apporter
-photographerPageFactory(currentPhotographer)
+photographerPageFactory(currentPhotographer);
 //remplir le dom de la page 
 // .filter pour chercher dans les médias 
 let currentPhotographerMedias = medias.filter(mediaPhotographer => mediaPhotographer.photographerId == photographerId); // => comparaison "sans regarder le type nombre, text, tableau, objet.." que je veux apporter
-let currentPhotographerMediasFiltered
+let currentPhotographerMediasFiltered;
 console.log(currentPhotographer.name);
 // .filter s'applique dataPhotographers.media (données json importé plus haut) ; il filtre les mediaPhotographer qui ont un photograherId equivalent à mes parametres d'id dans l'url
 // mediasFactory(currentPhotographerMedias)
@@ -627,7 +627,7 @@ function changeFilter() {
     } else if (filterValue === "Date") {
         currentPhotographerMediasFiltered = currentPhotographerMedias.sort((a, b) => new Date(b.date) - new Date(a.date));
     } else {
-        currentPhotographerMediasFiltered = currentPhotographerMedias.sort((a, b) => a.title.localeCompare(b.title))
+        currentPhotographerMediasFiltered = currentPhotographerMedias.sort((a, b) => a.title.localeCompare(b.title));
     }
     photographersMedias(currentPhotographerMediasFiltered, currentPhotographer)
 }

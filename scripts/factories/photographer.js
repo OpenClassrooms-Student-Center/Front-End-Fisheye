@@ -91,7 +91,7 @@ function photographersMedias(photos, photographer) {
     //boucle sur le tableau de media (soit video soit image)
     photos.forEach((media) => {
         //j'appelle displayDataMedia avec media qui est un seul objet
-        displayDataMedia(media, currentPhotographerFirstName, photos)
+        displayDataMedia(media, currentPhotographerFirstName, photos, photographer)
     });
     displayCta(photos, photographer);// jexcecute ma fonction
     const previousArrow = document.getElementById('previousArrow');
@@ -113,7 +113,7 @@ function photographersMedias(photos, photographer) {
 // 2 - Nouvelle funtion qui vient trier par rapport aux différents critères
 // 3 - Vider la galerie et la re rendre grace à ma fonction photographerMedias
 
-function displayDataMedia(media, name, photos) {
+function displayDataMedia(media, name, photos, photographer) {
     // console.log(media);
     // je recupere ma div parent la plus haute
     // je decortique media 
@@ -139,9 +139,24 @@ function displayDataMedia(media, name, photos) {
             height: 15px;
             width: 18px;
             color: #901C1C;
+            cursor: pointer;
         ">
         </div>
     `;
+     const likeButton = divInformations.children[1].children[1];
+     const likesNumber = divInformations.children[1].children[0];
+     likeButton.addEventListener('click', function() {
+        if (media.liked) {
+            media.likes = media.likes -1; 
+            media.liked = false;
+        } else {
+            media.likes = media.likes +1; 
+            media.liked = true;
+        }
+        likesNumber.innerHTML = media.likes;
+        displayCta(photos, photographer)
+     });
+    
 
     // Le cas ou c'est une image
     if (media.image) {
@@ -176,6 +191,14 @@ function displayDataMedia(media, name, photos) {
     thumbnailSection.appendChild(mediaDiv);
 };
 
+// au clic du coeur (si pas liké) on vient rajouter une propriété liked de la photo
+// au clic du coeur (si liké) on vient mettre la propriété liked à false et on retire un like du compteur
+// booleen (true ou false)
+// add prpopriété like sur la photo
+// add like au compteur
+
+// re declanche la function displayCta pour que le commpteur nous donne le bon nombre
+
 
 function displayCta(photos, photographer) {
     let counterLikes = 0; // créer une variable qui vaut zéro (point de depart du compteur)
@@ -184,6 +207,7 @@ function displayCta(photos, photographer) {
     });
     // CALL TO ACTION
     const callToAction = document.querySelector(".callToAction_section");
+    callToAction.innerHTML="";
 
     const cta = document.createElement("div");
     cta.className = "ctaContent";
