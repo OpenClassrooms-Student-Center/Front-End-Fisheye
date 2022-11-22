@@ -320,7 +320,7 @@ form textarea {
     bottom: 0;
     margin-right: 36px;
     position: fixed;
-    width: 376px;
+    width: 300px;
     height: 89px;
 }
 
@@ -345,7 +345,7 @@ form textarea {
 /* LIGHTBOX */
 
 .lightbox {
-    background-color: #E5E5E5;
+    background-color: #FFFFFF;
     display: none;
     position: absolute;
     top: 50%;

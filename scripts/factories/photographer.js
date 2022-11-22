@@ -172,7 +172,7 @@ function displayDataMedia(media, name, photos, photographer) {
         })
      
 
-    } else  // Le cas ou c'est une video
+    } else  // Le cas ou c'est une VIDEO
     {
         const mediaVideo = document.createElement("video");// balise video avec src
         const videoSrc = `assets/sample-photos/${name}/${video}`;
@@ -180,6 +180,12 @@ function displayDataMedia(media, name, photos, photographer) {
         mediaVideo.setAttribute("controls", "controls")
         mediaDiv.appendChild(mediaVideo);
         mediaDiv.appendChild(divInformations);
+        mediaVideo.addEventListener('click', () => {
+            const videoIndex = photos.findIndex(video => { // findIndex retrouve la position de l'element
+                return video.id === media.id;
+            })
+            displayLightbox(photos, videoIndex, name)
+        })
         /*
         mediaDiv.appendChild(thumbnailImage);
         */
