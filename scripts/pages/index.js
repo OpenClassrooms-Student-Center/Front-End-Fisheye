@@ -1,6 +1,7 @@
     async function getPhotographers() {
-        // Penser à remplacer par les données récupérées dans le json
-        const photographers = [
+        // Ceci est un exemple de données pour avoir un affichage de photographes de test dès le démarrage du projet, 
+        // mais il sera à remplacer avec une requête sur le fichier JSON en utilisant "fetch".
+        let photographers = [
             {
                 "name": "Ma data test",
                 "id": 1,
@@ -20,7 +21,7 @@
                 "portrait": "account.png"
             },
         ]
-        // et bien retourner le tableau photographers seulement une fois
+        // et bien retourner le tableau photographers seulement une fois récupéré
         return ({
             photographers: [...photographers, ...photographers, ...photographers]})
     }
