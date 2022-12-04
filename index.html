@@ -5,42 +5,34 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FishEye - Accueil</title>
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/homepage.css">
-    <script type="module" src="js/main.js"></script>
+    <link rel="stylesheet" href="./css/settings.css">
+    <link rel="stylesheet" href="./css/commons.css">
+    <link rel="stylesheet" href="./css/main-page.css">
+    <link rel="icon" href="./assets/LogoFisheye.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
 
+    <title>Fisheye</title>
 </head>
 
-<body>
-    <!-- BANNER -->
-    <header role="banner">
-        <a href="index.html" title="HomePage"><img
-                src="./assets/images/logo.png"
-                alt="FishEye Home Page"></a>
-        <!-- NAV -->
-        <nav class="filters" aria-label="photographer categories" role="navigation">
-            <ul>
-                <a href='#'><li data-filter="portrait">#portrait</li></a>
-                <a href='#'><li data-filter="art">#art</li></a>
-                <a href='#'><li data-filter="fashion">#fashion</li></a>
-                <a href='#'><li data-filter="architecture">#architecture</li></a>
-                <a href='#'><li data-filter="travel">#travel</li></a>
-                <a href='#'><li data-filter="sport">#sport</li></a>
-                <a href='#'><li data-filter="animals">#animals</li></a>
-                <a href='#'><li data-filter="events">#events</li></a>
-            </ul>
-        </nav>
-        <h1>Nos Photographes</h1>
+<body class = "main-page">
+    <header>
+        <a class = "main-btn hiden">Passer au contenu</a>
+        <div class = "return-top">Passez au contenu</div>
+        <div class = "header-menu">
+            <a href="./index.html">
+            <img class = 'logo' src="assets/logo.png"   alt = "fisheye main page">
+        </a>
+            <ul class="tags"></ul>
+         <h1 >Nos photographes</h1>
+        </div>
     </header>
     <main>
-        <!-- BUTTON PASSER AU CONTENU -->
-        <a id="main-photographers-link" href="#photographers">Passer au contenu</a>
-        <!-- PHOTOGRAPHERS -->
-        <section id="photographers" aria-label="photographers">
-        </section>
+      
     </main>
-
+    <script type="module" src="./javascript/mainPage.js"></script>
 </body>
 
 </html>
+

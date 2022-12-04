@@ -1,0 +1,166 @@
+.contact-form {
+  position: fixed;
+  top: 0;
+  left: 0;
+  min-height:100vh;
+  height: 100%;
+  width: 100vw;
+  z-index: 20;
+  background: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  cursor: default;
+  margin: 0;
+}
+.form-container {
+  width: 66vw;
+  max-width: 650px;
+  min-height: 86vh;
+  max-height: 90%;
+  background: #db8876;
+  border-radius: 5px;
+ /* display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;*/
+  padding: 2% ;
+  overflow: scroll;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+.form-container::-webkit-scrollbar {
+  display: none;
+}
+.form-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.form-header h2 {
+  margin: 0;
+  font-size: 64px;
+  line-height: 83px;
+  color: #000000;
+  max-width: 80%;
+  text-align: left;
+}
+.form-header i {
+  align-self: flex-start;
+  font-size: 42px;
+  color: white;
+}
+
+.form-data {
+  align-self: flex-start;
+  width: 100%;
+  position: relative;
+}
+.form-data label,
+.form-data input,
+.form-data textarea {
+  font-size: 36px;
+  line-height: 47px;
+  color: #312e2e;
+}
+.form-data input,
+.form-data textarea {
+  width: 100%;
+
+  border-radius: 5px;
+  border: none;
+}
+.form-data input {
+  height: 70px;
+}
+.form-data textarea {
+  height: 184px;
+}
+.alert {
+  display: none;
+  color: black;
+  font-size: 20px;
+  transition: 0.3s;
+  justify-content: flex-end;
+  text-align: start;
+  width: 100%;
+  margin-top: 1vh;
+}
+.alert-active {
+  display: flex;
+}
+.btn-send {
+  position : inherit;
+  margin: 1vh 0 0 0;
+}
+.btn-send:hover {
+  background: #911c1c;
+  opacity: 0.8;
+}
+@media screen and (max-width: 600px) {
+  
+
+  .form-container {
+    justify-content: space-between;
+    width: 96vw;
+    max-width: 96vw;
+    min-height: 96vh;
+    padding: 2vh 2vw 2vh 2vw;
+  }
+  .form-header {
+    justify-content: space-between;
+    max-width: 100%;
+    width: 100%;
+    margin-bottom: 4vh;
+  }
+  .form-header h2 {
+    font-size: 36px;
+    line-height: 47px;
+    max-width: 270px;
+  }
+  .form-header i {
+    font-size: 30px;
+    position: relative;
+    left : -2vw;
+  }
+  .form-data {
+    height : fit-content;
+  }
+  .form-data input {
+    height: 52px;
+  }
+
+  .form-container form {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+  }
+  .form-data label,
+  .form-data input,
+  .form-data textarea {
+    font-size: 24px;
+    line-height: 31px;
+  }
+  .form-data label{
+      margin-bottom:100px;
+  }
+  .form-data input, .form-data textarea{
+      width:98%;
+      margin-top: 10px;
+  }
+  .form-data textarea{
+      height : 184px;
+  }
+  .btn-send {
+    position: initial;
+    align-self: center;
+  }
+}
+@media screen and (max-width:350px){
+
+.form-container{
+    width: 305px;
+  }
+}
