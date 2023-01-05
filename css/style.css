@@ -69,3 +69,27 @@ h1 {
   color: #757575;
   line-height: 12px;
 }
+/* response display */
+@media screen and (max-width: 992px) {
+  .photographer_section {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  header {
+    flex-direction: column;
+  }
+  h1 {
+    width: 100%;
+    margin: 20px auto;
+    text-align: center;
+  }
+  .logo {
+    margin: 20px auto;
+  }
+  .photographer_section {
+    grid-template-columns: 1fr;
+    width: 100%;
+  }
+}
