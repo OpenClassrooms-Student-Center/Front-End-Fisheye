@@ -5,13 +5,13 @@
 async function getPhotographers() {
   const response = await fetch("./data/photographers.json");
   if (response.ok) {
-      const data = await response.json();
-      console.log(data.photographers);
-      return ({
-          photographers: data.photographers
-      })
+    const data = await response.json();
+    console.log(data.photographers);
+    return {
+      photographers: data.photographers,
+    };
   } else {
-      throw new Error("Données des photographes inaccessibles.");
+    throw new Error("Données des photographes inaccessibles.");
   }
 }
 
@@ -30,16 +30,12 @@ async function getPhotographerInfo() {
   );
 }
 
-
-
-//GetPhotoCardDOM
-
 function renderPhotographHeader(object) {
-    // Destructuring the photographer info object to extract to extract its properties
-    const { name, city, country, tagline, portrait } = object;
-  
-    // Create the HTML for the header section
-    const photographHeader = `
+  // Destructuring the photographer info object to extract to extract its properties
+  const { name, city, country, tagline, portrait } = object;
+
+  // Create the HTML for the header section
+  const photographHeader = `
       <section class="photograph-header">
         <div class="photograph-info">
           <h1 class="photograph-name">${name}</h1>
@@ -49,15 +45,14 @@ function renderPhotographHeader(object) {
         <img class="photograph-img" src="assets/photographers/${portrait}" alt="Photo de ${name}">
       </section>
     `;
-   // Add the footer HTML to the main element
-   const mainEl = document.querySelector("main");
-   mainEl.innerHTML += photographHeader;
-  }
+  // Add the footer HTML to the main element
+  const mainEl = document.querySelector("main");
+  mainEl.innerHTML += photographHeader;
+}
 
-  async function renderPhotographerPage() {
-    // Render the header section of the page with the photographer's name, location, tagline, and portrait
-    await renderPhotographHeader(photographerInfo);
-  }  
+async function renderPhotographerPage() {
+  // Render the header section of the page with the photographer's name, location, tagline, and portrait
+  await renderPhotographHeader(photographerInfo);
+}
 
-  renderPhotographerPage();
-
+renderPhotographerPage();
