@@ -1,24 +1,26 @@
 //Mettre le code JavaScript lié à la page photographer.html
-// import { getPhotographerInfo } from "../utils/getPhotographersInfo.js"
 
 // import { fetchJsonData } from "./fetchJsonData.js";
 
-async function fetchJsonData() {
-  try {
-    const jsonPath = "./data.photographers.json";
-    const response = await fetch(jsonPath);
-    const data = await response.json();
-    return data;
-  } catch (error) {
-    console.error(error);
+async function getPhotographers() {
+  const response = await fetch("./data/photographers.json");
+  if (response.ok) {
+      const data = await response.json();
+      console.log(data.photographers);
+      return ({
+          photographers: data.photographers
+      })
+  } else {
+      throw new Error("Données des photographes inaccessibles.");
   }
 }
+
 const photographerInfo = getPhotographerInfo();
 
 // Retrieve a photographer's info from the JSON data by their id
 async function getPhotographerInfo() {
   // Fetch the photographer object from the JSON data
-  const { photographers } = await fetchJsonData();
+  const { photographers } = await getPhotographers();
   // Retrieve the photographer's id from the URL parameters
   const params = new URL(document.location).searchParams;
   const photographerId = parseInt(params.get("id"));
@@ -44,20 +46,18 @@ function renderPhotographHeader(object) {
           <p class="photograph-location">${city}, ${country}</p>
           <p class="photograph-tagline">${tagline}</p>
         </div>
-        <button class="button" id="contactBtn" aria-label="Bouton d'ouverture du modal de contact">Contactez-moi</button>
         <img class="photograph-img" src="assets/photographers/${portrait}" alt="Photo de ${name}">
       </section>
     `;
    // Add the footer HTML to the main element
    const mainEl = document.querySelector("main");
    mainEl.innerHTML += photographHeader;
-   mainEl.append("photograph-header");
   }
 
-  async function renderPhotographMediaPage() {
+  async function renderPhotographerPage() {
     // Render the header section of the page with the photographer's name, location, tagline, and portrait
     await renderPhotographHeader(photographerInfo);
   }  
 
-  renderPhotographMediaPage();
+  renderPhotographerPage();
 
