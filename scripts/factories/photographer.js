@@ -39,10 +39,10 @@ function photographerFactory(data) {
         article.appendChild(h3);
         article.appendChild(p);
         article.appendChild(h4);
-        a.appendChild(h2);
-        a.appendChild(img);
+        a.appendChild(article);
         
-        return (article, a);
+        
+        return (a);
     }
     return {id, name, picture, city, price, country, getUserCardDOM }
 }
