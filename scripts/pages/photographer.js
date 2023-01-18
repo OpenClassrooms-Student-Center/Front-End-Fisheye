@@ -16,14 +16,16 @@ async function getPhotographers() {
 }
 
 // Retrieve a photographer's info from the JSON data by their id
-async function getPhotographerInfo() {
+async function getPhotographerInfo(photographerId) {
   // Fetch the photographer object from the JSON data
+  // console.log(photographerId);
+
   const { photographers } = await getPhotographers();
-  console.log(photographerId)
+  // console.log(photographerId)
   // Retrieve the photographer's id from the URL parameters
-  const params = new URL(document.location).searchParams;
-  const photographerId = parseInt(params.get("id"));
-  console.log(photographerId)
+  // const params = new URL(document.location).searchParams;
+  // const photographerId = parseInt(params.get("id"));
+  // console.log(photographerId)
   // Find the photographer object in the photographers array with the matching id
   return photographers.find(
     (photographer) => photographer.id === photographerId
@@ -51,7 +53,16 @@ function renderPhotographHeader(object) {
 }
 
 async function renderPhotographerPage() {
-  const photographerInfo = await getPhotographerInfo();
+
+  // const params = new URL(document.location).searchParams;
+  // const photographerId = parseInt(params.get("id"));
+  const url = new URL(window.location.href)
+const photographerId = parseInt(url.searchParams.get('id'))
+
+  const photographerInfo = await getPhotographerInfo(photographerId);
+  console.log('Test : objet photographers')
+  console.log(photographerId)
+
   // Render the header section of the page with the photographer's name, location, tagline, and portrait
 
   renderPhotographHeader(photographerInfo);
