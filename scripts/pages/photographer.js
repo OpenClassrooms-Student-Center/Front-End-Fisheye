@@ -44,6 +44,8 @@ function renderPhotographHeader(object) {
           <p class="photograph-location">${city}, ${country}</p>
           <p class="photograph-tagline">${tagline}</p>
         </div>
+        <button class="contact_button" onclick="displayModal()">Contactez-moi</button>
+        <div>
         <img class="photograph-img" src="./assets/photos/Photographers ID Photos/${portrait}" alt="Photo de ${name}">
       </section>
     `;

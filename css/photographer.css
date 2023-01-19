@@ -74,3 +74,36 @@ form input {
     border: none;
     border-radius: 5px;
 }
+
+.photograph-header {
+    display: flex;
+    justify-content:space-between;
+    align-items: center;
+    background-color: #FAFAFA;
+    height: 300px;
+    width:auto;
+    margin: 0 100px;
+    padding: 1em 3em;
+}
+
+.photograph-header h1{
+    font-weight: 400;
+    line-height: 83px;
+    color: #D3573C;
+    font-size: 64px;
+    margin: 0px 0;
+}
+
+.photograph-img {
+    object-fit:cover;
+    height: 200px;
+    width: 200px;
+    border-radius: 50%;
+    box-shadow: 5px 5px 10px #bebebe;
+}
+
+.photograph-location {
+    color: #901C1C;
+    font-size: 24px;
+    margin: 25px 0;
+}
