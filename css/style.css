@@ -40,7 +40,9 @@ h1 {
 
 .photographer_section article h2 {
   color: #d3573c;
+  font-weight: 400;
   font-size: 36px;
+  line-height: 47px;
 }
 
 .photographer_section article img {
