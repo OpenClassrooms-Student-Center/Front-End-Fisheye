@@ -71,7 +71,7 @@ h1 {
   color: #757575;
   line-height: 12px;
 }
-/* response display */
+/***** responsive display ******/
 @media screen and (max-width: 992px) {
   .photographer_section {
     grid-template-columns: 1fr 1fr;
