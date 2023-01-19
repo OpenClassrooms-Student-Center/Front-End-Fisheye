@@ -4,6 +4,7 @@ let params = new URL(document.location).searchParams;
 let photographerId = params.get("id");
 console.log(photographerId);
 
+/** récup les photographes **/
 async function getPhotographer() {
   const data = await (await fetch("../../data/photographers.json")).json();
   const photographer = data.photographers.find(
@@ -13,6 +14,19 @@ async function getPhotographer() {
   return photographer;
 }
 
+/** récup les médias des photographes **/
+async function getPhotographerMedias() {
+  const data = await (await fetch("../../data/photographers.json")).json();
+  const photographerMedias = data.media.filter(
+    (media) => media.photographerId == photographerId
+  );
+
+  return photographerMedias;
+}
+
+getPhotographerMedias();
+
+/** Affiche la data **/
 async function displayData(photographer) {
   const photographerHeader = document.querySelector(".photograph-header");
   const contactButton = document.querySelector(".contact_button");
