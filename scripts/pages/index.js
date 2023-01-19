@@ -11,7 +11,12 @@ async function displayData(photographers) {
   photographers.forEach((photographer) => {
     const photographerModel = photographerFactory(photographer);
     const userCardDOM = photographerModel.getUserCardDOM();
-    photographersSection.appendChild(userCardDOM);
+    const link = document.createElement("a");
+    link.setAttribute("href", `photographer.html?id=${photographer.id}`);
+    link.setAttribute("title", `Profils des ${photographer.name}`);
+    link.style.textDecoration = "none";
+    link.appendChild(userCardDOM);
+    photographersSection.appendChild(link);
   });
 }
 
