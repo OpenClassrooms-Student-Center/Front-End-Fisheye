@@ -14,7 +14,7 @@ function photographerFactory(data) {
         return listOfElements
     }
     
-    function createAttributesForHome(profileLinkElement, imageElement, presentationElement, locationElement, taglineElement, priceElement) {
+    function createAttributesHome(profileLinkElement, imageElement, presentationElement, locationElement, taglineElement, priceElement) {
 
         const listOfAttributes = [
             {
@@ -27,19 +27,32 @@ function photographerFactory(data) {
             },
             {
                 element: presentationElement,
-                attributes: ["aria-label", `Paragraphe de présentation du photographe ${name}`],
+                attributes: [["aria-label", `Paragraphe de présentation du photographe ${name}`]],
             },
             {
                 element: locationElement,
-                attributes: ["aria-label", `Location du photographe ${name}`],
+                attributes: [["aria-label", `Location du photographe ${name}`]],
             },
             {
                 element: taglineElement,
-                attributes: ["aria-label", `Tagline du photographe ${name}`],
+                attributes: [["aria-label", `Tagline du photographe ${name}`]],
             },
             {
                 element: priceElement,
-                attributes: ["aria-label", `Prix à la journée du photographe ${name}`],
+                attributes: [["aria-label", `Prix à la journée du photographe ${name}`]],
+            },
+
+        ] 
+
+        return listOfAttributes
+    }
+
+    function createAttributesProfileHeader(photographerPictureElement) {
+
+        const listOfAttributes = [
+            {
+                element: photographerPictureElement,
+                attributes: [["src", picture]]
             },
 
         ] 
@@ -122,28 +135,28 @@ function photographerFactory(data) {
         return listOfClasses
     }
 
-    function createClassesProfileHeader(presentationElement, nameElement, locationElement, taglineElement, imageElement) {
+    function createClassesProfileHeader(photographerPresentationElement, photographerNameElement, photographerLocationElement, photogragrapherTaglineElement, photographerPictureElement) {
 
         const listOfClasses = [
 
             {
-                element: presentationElement,
+                element: photographerPresentationElement,
                 classes: "presentation",
             },
             {
-                element: nameElement,
+                element: photographerNameElement,
                 classes: "presentation__name",
             },
             {
-                element: locationElement,
+                element: photographerLocationElement,
                 classes: "presentation__location",
             },
             {
-                element: taglineElement,
+                element: photogragrapherTaglineElement,
                 classes: "presentation__tagline",
             },
             {
-                element: imageElement,
+                element: photographerPictureElement,
                 classes: "photograph-header__picture",
             },
         ] 
@@ -177,12 +190,12 @@ function photographerFactory(data) {
         return listOfChilds
     }
 
-    function createChildsProfile(presentationElement, locationElement, taglineElement) {
+    function createChildsProfileHeader(photographerPresentationElement, photographerNameElement, photographerLocationElement, photogragrapherTaglineElement, photographerPictureElement) {
 
         const listOfChilds = [
             {
-                element: presentationElement,
-                childs: [locationElement, taglineElement],
+                element: photographerPresentationElement,
+                childs: [photographerNameElement, photographerLocationElement, photogragrapherTaglineElement],
             },
         ]
 
@@ -196,18 +209,22 @@ function photographerFactory(data) {
     
     function getUserCardDOM(profileScreen=false) {
 
+        let userCardDOM;
+
         if(profileScreen) {
-            getUserCardHomeDOM()
+            userCardDOM = getUserCardProfileDOM()
         } else {
-            getUserCardProfileDOM()
+            userCardDOM = getUserCardHomeDOM()
         }
+
+        return userCardDOM
     }
     
     function getUserCardHomeDOM() {
 
         const [article, profileLinkElement, imageElement, nameElement, presentationElement, locationElement, taglineElement, priceElement] = createElements('article', 'a', 'img', 'h2', 'p', 'span', 'span', 'span')
     
-        const listOfAttributes = createAttributesForHome(profileLinkElement, imageElement, nameElement, presentationElement, locationElement, taglineElement, priceElement)
+        const listOfAttributes = createAttributesHome(profileLinkElement, imageElement, nameElement, presentationElement, locationElement, taglineElement, priceElement)
         setAttributes(listOfAttributes)
     
         const listOfContents = createContent(nameElement, locationElement, taglineElement, priceElement)
@@ -223,30 +240,23 @@ function photographerFactory(data) {
     }
 
 
-    // function attachContentsProfile(photographer, photographerNameElement, photographerLocationElement, photogragrapherTaglineElement, photographerPictureElement) {
-
-    //     photographerNameElement.textContent = 
-
-    // }
-
     function getUserCardProfileDOM() {
         
         const [photographerPresentationElement, photographerNameElement, photographerLocationElement, photogragrapherTaglineElement, photographerPictureElement] = createElements('div', 'h2', 'span', 'span', 'img')
 
-        // const listOfAttributes = createAttributesForHome(profileLinkElement, imageElement, nameElement, presentationElement, locationElement, taglineElement, priceElement)
-        // setAttributes(listOfAttributes)
+        const listOfAttributes = createAttributesProfileHeader(photographerPictureElement)
+        console.log(listOfAttributes)
+        setAttributes(listOfAttributes)
 
-        const listOfContents = createContent(nameElement, locationElement, taglineElement)
+        const listOfContents = createContent(photographerNameElement, photographerLocationElement, photogragrapherTaglineElement)
         attachContent(listOfContents)
 
-        const listOfClasses = createClassesHome(article, profileLinkElement, presentationElement, locationElement, taglineElement, priceElement)
+        const listOfClasses = createClassesProfileHeader(photographerPresentationElement, photographerNameElement, photographerLocationElement, photogragrapherTaglineElement, photographerPictureElement)
         addClasses(listOfClasses)
         
-        const listOfChilds = createChildsHome(article, profileLinkElement, imageElement, nameElement, presentationElement, locationElement, taglineElement, priceElement)
+        const listOfChilds = createChildsProfileHeader(photographerPresentationElement, photographerNameElement, photographerLocationElement, photogragrapherTaglineElement, photographerPictureElement)
         appendChilds(listOfChilds)
 
-        attachContentsProfile(photographer, photographerNameElement, photographerLocationElement, photogragrapherTaglineElement, photographerPictureElement)
-console.log(photographerPresentationElement)
         return { photographerPresentationElement: photographerPresentationElement, photographerPictureElement: photographerPictureElement }
     }
 
