@@ -56,6 +56,10 @@ h1 {
     text-align: center;
 }
 
+.photographer-view__link {
+    text-decoration: none;
+}
+
 .photographer-view__presentation {
     display: flex;
     flex-direction: column;
