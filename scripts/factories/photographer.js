@@ -1,6 +1,8 @@
-function photographerFactory(data, priceBasis) {
+function photographerFactory(data) {
 
     const { name, portrait, id, city, country, tagline, price } = data;
+
+    const priceBasis = '€/jour';
 
     const picture = `assets/photographers/${portrait}`;
 
@@ -12,31 +14,31 @@ function photographerFactory(data, priceBasis) {
         return listOfElements
     }
     
-    function createAttributesForHome(profileLink, image, presentationParagraph, locationDiv, taglineDiv, priceDiv) {
+    function createAttributesForHome(profileLinkElement, imageElement, presentationElement, locationElement, taglineElement, priceElement) {
 
         const listOfAttributes = [
             {
-                element: profileLink,
+                element: profileLinkElement,
                 attributes: [['href', `./photographer.html?id=${id}`], ['aria-label', `Lien de redirection vers le profil du photographe ${name}`]],
             },
             {
-                element: image,
+                element: imageElement,
                 attributes: [['src', picture], ['alt', name]],
             },
             {
-                element: presentationParagraph,
+                element: presentationElement,
                 attributes: ["aria-label", `Paragraphe de présentation du photographe ${name}`],
             },
             {
-                element: locationDiv,
+                element: locationElement,
                 attributes: ["aria-label", `Location du photographe ${name}`],
             },
             {
-                element: taglineDiv,
+                element: taglineElement,
                 attributes: ["aria-label", `Tagline du photographe ${name}`],
             },
             {
-                element: priceDiv,
+                element: priceElement,
                 attributes: ["aria-label", `Prix à la journée du photographe ${name}`],
             },
 
@@ -50,52 +52,35 @@ function photographerFactory(data, priceBasis) {
             arg.element.setAttribute(attribute[0], attribute[1])))
     }
 
-    function createContentForHome(photographerNameH2, locationDiv, taglineDiv, priceDiv) {
+    function createContent(nameElement, locationElement, taglineElement, priceElement=undefined) {
 
-        const listOfContents = [
+        let listOfContents = [
             {
-                element: photographerNameH2,
+                element: nameElement,
                 content: name,
             },
             {
-                element: locationDiv,
+                element: locationElement,
                 content: `${city}, ${country}`,
             },
             {
-                element: taglineDiv,
+                element: taglineElement,
                 content: tagline,
             },
-            {
-                element: priceDiv,
+        ]
+        
+        if(priceElement) {
+
+            const priceContent = {
+                element: priceElement,
                 content: price + priceBasis,
-            },
-        ] 
+            }
+
+            listOfContents.push(priceContent)
+        }
 
         return listOfContents
-    }
-
-    function createContentForProfile(photographerNameH2, locationDiv, taglineDiv, priceDiv) {
-
-        const listOfContents = [
-            {
-                element: photographerNameH2,
-                content: name,
-            },
-            {
-                element: locationDiv,
-                content: `${city}, ${country}`,
-            },
-            {
-                element: taglineDiv,
-                content: tagline,
-            },
-            {
-                element: priceDiv,
-                content: price + priceBasis,
-            },
-        ] 
-
-        return listOfContents
+        
     }
 
 
@@ -104,7 +89,7 @@ function photographerFactory(data, priceBasis) {
     }
 
 
-    function createClassesHome(article, profileLink, presentationParagraph, locationDiv, taglineDiv, priceDiv) {
+    function createClassesHome(article, profileLinkElement, presentationElement, locationElement, taglineElement, priceElement) {
 
         const listOfClasses = [
 
@@ -113,24 +98,53 @@ function photographerFactory(data, priceBasis) {
                 classes: "photographer-view",
             },
             {
-                element: profileLink,
+                element: profileLinkElement,
                 classes: "photographer-view__link",
             },
             {
-                element: presentationParagraph,
+                element: presentationElement,
                 classes: "photographer-view__presentation",
             },
             {
-                element: locationDiv,
+                element: locationElement,
                 classes: "photographer-view__location",
             },
             {
-                element: taglineDiv,
+                element: taglineElement,
                 classes: "photographer-view__tagline",
             },
             {
-                element: priceDiv,
+                element: priceElement,
                 classes: "photographer-view__price",
+            },
+        ] 
+
+        return listOfClasses
+    }
+
+    function createClassesProfileHeader(presentationElement, nameElement, locationElement, taglineElement, imageElement) {
+
+        const listOfClasses = [
+
+            {
+                element: presentationElement,
+                classes: "presentation",
+            },
+            {
+                element: nameElement,
+                classes: "presentation__name",
+            },
+            {
+                element: locationElement,
+                classes: "presentation__location",
+            },
+            {
+                element: taglineElement,
+                classes: "presentation__tagline",
+            },
+            {
+                element: imageElement,
+                classes: "photograph-header__picture",
             },
         ] 
 
@@ -142,21 +156,33 @@ function photographerFactory(data, priceBasis) {
     }
 
     
-    function createChildsHome(article, profileLink, image, photographerNameH2, presentationParagraph, locationDiv, taglineDiv, priceDiv) {
+    function createChildsHome(article, profileLinkElement, imageElement, nameElement, presentationElement, locationElement, taglineElement, priceElement) {
 
         const listOfChilds = [
 
             {
-                element: presentationParagraph,
-                childs: [locationDiv, taglineDiv, priceDiv],
+                element: presentationElement,
+                childs: [locationElement, taglineElement, priceElement],
             },
             {
-                element: profileLink,
-                childs: [image, photographerNameH2],
+                element: profileLinkElement,
+                childs: [imageElement, nameElement],
             },
             {
                 element: article,
-                childs: [profileLink, presentationParagraph],
+                childs: [profileLinkElement, presentationElement],
+            },
+        ]
+
+        return listOfChilds
+    }
+
+    function createChildsProfile(presentationElement, locationElement, taglineElement) {
+
+        const listOfChilds = [
+            {
+                element: presentationElement,
+                childs: [locationElement, taglineElement],
             },
         ]
 
@@ -168,24 +194,34 @@ function photographerFactory(data, priceBasis) {
         args.forEach(arg => arg.childs.forEach(child => arg.element.appendChild(child)))
     }
     
-    function getUserCardDOM() {
+    function getUserCardDOM(profileScreen=false) {
 
-        const [article, profileLink, image, photographerNameH2, presentationParagraph, locationDiv, taglineDiv, priceDiv] = createElements('article', 'a', 'img', 'h2', 'p', 'span', 'span', 'span')
+        if(profileScreen) {
+            getUserCardHomeDOM()
+        } else {
+            getUserCardProfileDOM()
+        }
+    }
+    
+    function getUserCardHomeDOM() {
 
-        const listOfAttributes = createAttributesForHome(profileLink, image, photographerNameH2, presentationParagraph, locationDiv, taglineDiv, priceDiv)
+        const [article, profileLinkElement, imageElement, nameElement, presentationElement, locationElement, taglineElement, priceElement] = createElements('article', 'a', 'img', 'h2', 'p', 'span', 'span', 'span')
+    
+        const listOfAttributes = createAttributesForHome(profileLinkElement, imageElement, nameElement, presentationElement, locationElement, taglineElement, priceElement)
         setAttributes(listOfAttributes)
-
-        const listOfContents = createContentForHome(photographerNameH2, locationDiv, taglineDiv, priceDiv)
+    
+        const listOfContents = createContent(nameElement, locationElement, taglineElement, priceElement)
         attachContent(listOfContents)
-
-        const listOfClasses = createClassesHome(article, profileLink, presentationParagraph, locationDiv, taglineDiv, priceDiv)
+    
+        const listOfClasses = createClassesHome(article, profileLinkElement, presentationElement, locationElement, taglineElement, priceElement)
         addClasses(listOfClasses)
         
-        const listOfChilds = createChildsHome(article, profileLink, image, photographerNameH2, presentationParagraph, locationDiv, taglineDiv, priceDiv)
+        const listOfChilds = createChildsHome(article, profileLinkElement, imageElement, nameElement, presentationElement, locationElement, taglineElement, priceElement)
         appendChilds(listOfChilds)
-
+    
         return (article);
     }
+
 
     // function attachContentsProfile(photographer, photographerNameElement, photographerLocationElement, photogragrapherTaglineElement, photographerPictureElement) {
 
@@ -193,29 +229,26 @@ function photographerFactory(data, priceBasis) {
 
     // }
 
-    function getPhotographerProfileDom(photographer) {
+    function getUserCardProfileDOM() {
         
-        const photographerHeader = document.querySelector('.photograph-header')
+        const [photographerPresentationElement, photographerNameElement, photographerLocationElement, photogragrapherTaglineElement, photographerPictureElement] = createElements('div', 'h2', 'span', 'span', 'img')
 
-        const [photographerPresentationElement, photographerNameElement, photographerLocationElement, photogragrapherTaglineElement, articleElement, photographerPictureElement] = createElements('div', 'h2', 'span', 'span', 'article', 'img')
-
-        // const listOfAttributes = createAttributesForHome(profileLink, image, photographerNameH2, presentationParagraph, locationDiv, taglineDiv, priceDiv)
+        // const listOfAttributes = createAttributesForHome(profileLinkElement, imageElement, nameElement, presentationElement, locationElement, taglineElement, priceElement)
         // setAttributes(listOfAttributes)
 
-        const listOfContents = createContentForProfile(photographerNameH2, locationDiv, taglineDiv, priceDiv)
+        const listOfContents = createContent(nameElement, locationElement, taglineElement)
         attachContent(listOfContents)
 
-        const listOfClasses = createClassesHome(article, profileLink, presentationParagraph, locationDiv, taglineDiv, priceDiv)
+        const listOfClasses = createClassesHome(article, profileLinkElement, presentationElement, locationElement, taglineElement, priceElement)
         addClasses(listOfClasses)
         
-        const listOfChilds = createChildsHome(article, profileLink, image, photographerNameH2, presentationParagraph, locationDiv, taglineDiv, priceDiv)
+        const listOfChilds = createChildsHome(article, profileLinkElement, imageElement, nameElement, presentationElement, locationElement, taglineElement, priceElement)
         appendChilds(listOfChilds)
-                
 
         attachContentsProfile(photographer, photographerNameElement, photographerLocationElement, photogragrapherTaglineElement, photographerPictureElement)
-
-        return data
+console.log(photographerPresentationElement)
+        return { photographerPresentationElement: photographerPresentationElement, photographerPictureElement: photographerPictureElement }
     }
 
-    return { name, picture, getUserCardDOM, getPhotographerProfileDom }
+    return { name, picture, getUserCardDOM }
 }

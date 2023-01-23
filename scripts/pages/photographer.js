@@ -1,33 +1,23 @@
-//Mettre le code JavaScript lié à la page photographer.html
-function getPhotographerId() {
+async function displayPhotographerInformation(photographer) {
 
-    const paramsURL = (new URL(document.location)).searchParams,
-        id = paramsURL.get('id')
+    const photographerModel = photographerFactory(photographer);
 
-    return id
+    const { photographerPresentationElement, photographerPictureElement } = photographerModel.getUserCardDOM(true)
+
+    const photographerHeader = document.querySelector('.photograph-header')
+
+    const contactButton = document.querySelector('.contact_button')
+
+    photographerHeader.append(photographerPresentationElement, contactButton, photographerPictureElement)
+    // getPhotographerProfileDom(photographer)
+    // getPhotographerMediaDom(media)
+
 }
 
-async function getPhotographerData() {
+async function init() {
+    // Récupère les datas des photographes
+    const { photographer, photographerMedias } = await getPhotographerData();
+    displayPhotographerInformation(photographer);
+};
 
-    const id = parseInt(getPhotographerId())
-
-    const { photographers, media } = await getPhotographers()
-
-    const photographer = photographers.filter(item => item.id === id)[0],
-        photographerMedias = media.filter(item => item.photographerId === id)
-
-    return { photographer, photographerMedias}
-}
-
-// async function displayPhotographerData(photographer, media) {
-
-//     const photographerModel = photographerFactory(photographer);
-
-//     getPhotographerProfileDom(photographer)
-//     getPhotographerMediaDom(media)
-
-// }
-
-getPhotographerData()
-
-
+init();
