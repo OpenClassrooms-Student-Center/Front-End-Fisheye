@@ -1,6 +1,6 @@
-//Mettre le code JavaScript lié à la page photographer.html
+// fetch photographers from the JSON data
 
-// import { fetchJsonData } from "./fetchJsonData.js";
+// import { renderPhotographHeader } from "../factories/photographerFactory.js";
 
 async function getPhotographers() {
   const response = await fetch("./data/photographers.json");
@@ -17,15 +17,7 @@ async function getPhotographers() {
 
 // Retrieve a photographer's info from the JSON data by their id
 async function getPhotographerInfo(photographerId) {
-  // Fetch the photographer object from the JSON data
-  // console.log(photographerId);
-
   const { photographers } = await getPhotographers();
-  // console.log(photographerId)
-  // Retrieve the photographer's id from the URL parameters
-  // const params = new URL(document.location).searchParams;
-  // const photographerId = parseInt(params.get("id"));
-  // console.log(photographerId)
   // Find the photographer object in the photographers array with the matching id
   return photographers.find(
     (photographer) => photographer.id === photographerId
@@ -35,7 +27,6 @@ async function getPhotographerInfo(photographerId) {
 function renderPhotographHeader(object) {
   // Destructuring the photographer info object to extract to extract its properties
   const { name, city, country, tagline, portrait } = object;
-
   // Create the HTML for the header section
   const photographHeader = `
       <section class="photograph-header">
@@ -53,17 +44,17 @@ function renderPhotographHeader(object) {
   const mainEl = document.querySelector("main");
   mainEl.innerHTML += photographHeader;
 }
-
 async function renderPhotographerPage() {
-
   // const params = new URL(document.location).searchParams;
   // const photographerId = parseInt(params.get("id"));
-  const url = new URL(window.location.href)
-const photographerId = parseInt(url.searchParams.get('id'))
+  // Retrieve the photographer's id from the URL parameters
+
+  const url = new URL(window.location.href);
+  const photographerId = parseInt(url.searchParams.get("id"));
 
   const photographerInfo = await getPhotographerInfo(photographerId);
-  console.log('Test : objet photographers')
-  console.log(photographerId)
+  console.log("Test : objet photographers");
+  console.log(photographerId);
 
   // Render the header section of the page with the photographer's name, location, tagline, and portrait
 
