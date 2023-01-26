@@ -48,11 +48,26 @@
   border-radius: 5px;
   cursor: pointer;
 }
+/**** pop-up contact ****/
+
+#contact_modal {
+  position: fixed;
+  top: 0px;
+  bottom: 0px;
+  left: 0px;
+  right: 0px;
+  background-color: rgba(0, 0, 0, 0.5);
+}
 
 .modal {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
   border-radius: 5px;
   background-color: #db8876;
-  width: 50%;
+  width: 90%;
+  max-width: 600px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -62,8 +77,9 @@
 }
 
 .modal header {
-  justify-content: space-between;
   width: 100%;
+  height: auto;
+  justify-content: space-between;
 }
 
 .modal header img {
@@ -71,9 +87,11 @@
 }
 
 .modal header h2 {
+  width: 100%;
   font-size: 64px;
   font-weight: normal;
   text-align: center;
+  margin: 0;
 }
 
 form {
@@ -98,9 +116,22 @@ form div {
 
 form input {
   width: 100%;
-  height: 68px;
+  height: 50px;
   border: none;
   border-radius: 5px;
+}
+form textarea {
+  height: 120px;
+  resize: none;
+}
+
+form input,
+textarea {
+  width: 100%;
+  border: none;
+  border-radius: 5px;
+  padding: 5px;
+  font-size: 24px;
 }
 
 /** style des medias */
@@ -140,4 +171,52 @@ form input {
 .media-infos .likes {
   font-weight: 500;
   font-size: 18px;
+}
+
+@media screen and (max-width: 992px) {
+  .photograph-header {
+    height: auto;
+    flex-direction: column;
+    text-align: center;
+    padding: 20px;
+  }
+  .photograph-header h1 {
+    font-size: 40px;
+  }
+  .modal {
+    padding: 10px;
+  }
+  .modal header {
+    flex-direction: row;
+  }
+  .modal header img {
+    width: 30px;
+    height: 30px;
+  }
+  .modal header h2 {
+    font-size: 48px;
+  }
+  form label {
+    font-size: 24px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .modal {
+    max-width: 300px;
+  }
+  .modal header h2 {
+    font-size: 24px;
+  }
+  .modal header img {
+    width: 24px;
+    height: 24px;
+  }
+  form label {
+    font-size: 16px;
+  }
+  form input {
+    height: 40px;
+    font-size: 16px;
+  }
 }

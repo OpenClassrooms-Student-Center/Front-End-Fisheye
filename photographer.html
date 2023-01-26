@@ -19,21 +19,34 @@
   </header>
   <main id="main">
     <div class="photograph-header">
-      <button class="contact_button" onclick="displayModal()">Contactez-moi</button>
+      <button class="contact_button focusable-element">Contactez-moi</button>
     </div>
   </main>
-  <div id="contact_modal">
+  <div id="contact_modal" role="dialog" aria-hidden="true">
     <div class="modal">
       <header>
         <h2>Contactez-moi</h2>
-        <img src="assets/icons/close.svg" onclick="closeModal()" />
+        <img src="assets/icons/close.svg" class="close_button" role="button" alt="Fermer la fenêtre pop-up"
+          tabindex="0" />
       </header>
       <form>
         <div>
-          <label>Prénom</label>
-          <input />
+          <label for="firstname">Prénom</label>
+          <input type="text" id="firstname" name="firstname" required />
         </div>
-        <button class="contact_button">Envoyer</button>
+        <div>
+          <label for="name">Nom</label>
+          <input type="text" id="name" name="name" required />
+        </div>
+        <div>
+          <label for="email">Email</label>
+          <input type="email" id="email" name="email" required />
+        </div>
+        <div>
+          <label for="message">Votre message</label>
+          <textarea name="message" id="message" required></textarea>
+        </div>
+        <button type="submit" class="contact_button">Envoyer</button>
       </form>
     </div>
   </div>
