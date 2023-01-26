@@ -1,4 +1,4 @@
-export function bookFactory(data) {
+function bookFactory(data) {
   // Destructuring the data object to extract its properties
   const { id, photographerId, title, image } = data;
 
@@ -11,5 +11,5 @@ export function bookFactory(data) {
 
     return article;
   }
-  return getBookCardDOM;
+  return { id, photographerId, title, image, getBookCardDOM };
 }

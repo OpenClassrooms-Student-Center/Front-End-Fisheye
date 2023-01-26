@@ -4,9 +4,7 @@ function photographerFactory(data) {
   const { id, country, city, tagline, price, name, portrait } = data;
   const picture = `./assets/photos/Photographers ID Photos/${portrait}`;
 
-  function getUserCardDOM(page) {
-    // if (page === 'index.html') {}
-
+  function getUserCardDOM() {
     // manipulate the DOM
     const article = document.createElement("article");
     const img = document.createElement("img");
@@ -40,27 +38,55 @@ function photographerFactory(data) {
     return a;
   }
 
-  return { id, name, picture, city, price, country, getUserCardDOM };
-}
+  function renderBookSection(array) {
+    // Create a new div element to hold the media cards
+    const bookSection = document.createElement("div");
+    bookSection.className = "book-section";
 
-function renderBookSection(array) {
-  // Create a new div element to hold the media cards
-  const bookSection = document.createElement("div");
-  bookSection.className = "book-section";
+    // Append the media section to the main element
+    const mainEl = document.querySelector("main");
+    mainEl.append(bookSection);
 
-  // Append the media section to the main element
-  const mainEl = document.querySelector("main");
-  mainEl.append(bookSection);
-
-  // Iterate through each media item in the array
-  array.forEach((book) => {
-    // Create a media card model object from the media array
-    const bookCard = bookFactory(media);
-    // Get the DOM element for the media card
-    const bookCardDOM = bookCard.getBookCardDOM();
-    // Add the card to the media section
-    bookSection.append(bookCardDOM);
-  });
+    // Iterate through each media item in the array
+    array.forEach((book) => {
+      // Create a media card model object from the media array
+      const bookCard = bookFactory(book);
+      // Get the DOM element for the media card
+      const bookCardDOM = bookCard.getBookCardDOM();
+      // Add the card to the media section
+      bookSection.append(bookCardDOM);
+    });
+  }
+  function renderPhotographHeader() {
+    // Destructuring the photographer info object to extract to extract its properties
+    // Create the HTML for the header section
+    const photographHeader = `
+        <section class="photograph-header">
+          <div class="photograph-info">
+            <h1 class="photograph-name">${name}</h1>
+            <p class="photograph-location">${city}, ${country}</p>
+            <p class="photograph-tagline">${tagline}</p>
+          </div>
+          <button class="contact_button" onclick="displayModal()">Contactez-moi</button>
+          <div>
+          <img class="photograph-img" src="./assets/photos/Photographers ID Photos/${portrait}" alt="Photo de ${name}">
+        </section>
+      `;
+    // Add the footer HTML to the main element
+    const mainEl = document.querySelector("main");
+    mainEl.innerHTML += photographHeader;
+  }
+  return {
+    id,
+    name,
+    picture,
+    city,
+    price,
+    country,
+    getUserCardDOM,
+    renderBookSection,
+    renderPhotographHeader,
+  };
 }
 
 // function getPhotographerCardDOM(data) {

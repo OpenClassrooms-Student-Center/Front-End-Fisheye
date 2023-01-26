@@ -24,26 +24,6 @@ async function getPhotographerInfo(photographerId) {
   );
 }
 
-function renderPhotographHeader(object) {
-  // Destructuring the photographer info object to extract to extract its properties
-  const { name, city, country, tagline, portrait } = object;
-  // Create the HTML for the header section
-  const photographHeader = `
-      <section class="photograph-header">
-        <div class="photograph-info">
-          <h1 class="photograph-name">${name}</h1>
-          <p class="photograph-location">${city}, ${country}</p>
-          <p class="photograph-tagline">${tagline}</p>
-        </div>
-        <button class="contact_button" onclick="displayModal()">Contactez-moi</button>
-        <div>
-        <img class="photograph-img" src="./assets/photos/Photographers ID Photos/${portrait}" alt="Photo de ${name}">
-      </section>
-    `;
-  // Add the footer HTML to the main element
-  const mainEl = document.querySelector("main");
-  mainEl.innerHTML += photographHeader;
-}
 async function renderPhotographerPage() {
   // const params = new URL(document.location).searchParams;
   // const photographerId = parseInt(params.get("id"));
@@ -57,8 +37,9 @@ async function renderPhotographerPage() {
   console.log(photographerId);
 
   // Render the header section of the page with the photographer's name, location, tagline, and portrait
-
-  renderPhotographHeader(photographerInfo);
+  const photographModel = photographerFactory(photographerInfo);
+  photographModel.renderPhotographHeader();
+  photographModel.renderBookSection();
 }
 
 renderPhotographerPage();
