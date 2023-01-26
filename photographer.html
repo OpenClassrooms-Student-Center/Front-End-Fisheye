@@ -5,6 +5,7 @@
     <meta charset="utf-8">
     <link rel="icon" type="image/png" href="assets/favicon.png">
     <link href="https://fonts.googleapis.com/css?family=DM+Sans&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/ce3638eb6f.js" crossorigin="anonymous"></script>
     <title>Fisheye - photographe </title>
   </head>
   <body>
@@ -18,16 +19,61 @@
         <button class="contact_button" onclick="displayModal()">Contactez-moi</button>
       </div>
 
-      <div class="photographer-portfolio">
+      <div class="portfolio">
         
-        <div class="sort-sample">
+        <div class="sort-portfolio">
 
-            <label for="sort" class="sort-sample__label">Trier par</label>
-            <select name="sort" id="sort" class="sort-sample__options">
-                <option value="Popularité" class="sort-sample__option">Popularité</option>
-                <option value="Date" class="sort-sample__option">Date</option>
-                <option value="Titre" class="sort-sample__option">Titre</option>
+            <label for="sort" class="sort-portfolio__label">Trier par</label>
+            <select name="sort" id="sort" class="sort-portfolio__options">
+                <option value="Popularité" class="sort-portfolio__option">Popularité</option>
+                <option value="Date" class="sort-portfolio__option">Date</option>
+                <option value="Titre" class="sort-portfolio__option">Titre</option>
             </select>
+
+        </div>
+
+        <div class="gallery">
+
+            <article class="media">
+
+                <img src="assets/Sample Photos/Mimi/Animals_Rainbow.jpg" alt="" class="media__picture">
+
+                <div class="media__infos">
+                    <span class="media__name">Arc-en-ciel</span>
+                    <div class="media__likes">
+                        <span class="media__likes-number">11</span>
+                        <i class="fa-solid fa-heart media__like-btn"></i>
+                    </div>
+                </div>
+                
+            </article>
+            <article class="media">
+
+                <img src="assets/Sample Photos/Mimi/Animals_Rainbow.jpg" alt="" class="media__picture">
+
+                <div class="media__infos">
+                    <span class="media__name">Arc-en-ciel</span>
+                    <div class="media__likes">
+                        <span class="media__likes-number">11</span>
+                        <i class="fa-solid fa-heart media__like-btn"></i>
+                    </div>
+                </div>
+                
+            </article>
+            <article class="media">
+
+                <img src="assets/Sample Photos/Mimi/Animals_Rainbow.jpg" alt="" class="media__picture">
+
+                <div class="media__infos">
+                    <span class="media__name">Arc-en-ciel</span>
+                    <div class="media__likes">
+                        <span class="media__likes-number">11</span>
+                        <i class="fa-solid fa-heart media__like-btn"></i>
+                    </div>
+                </div>
+                
+            </article>
+
         </div>
 
       </div>
