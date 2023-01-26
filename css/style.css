@@ -43,6 +43,7 @@ h1 {
   font-weight: 400;
   font-size: 36px;
   line-height: 47px;
+  margin: 10px;
 }
 
 .photographer_section article img {
@@ -56,6 +57,7 @@ h1 {
   font-weight: 400;
   color: #901c1c;
   line-height: 17px;
+  margin: 0;
 }
 
 .photographer_section article .resume {
@@ -63,13 +65,15 @@ h1 {
   font-weight: 400;
   color: #000000;
   line-height: 13px;
+  margin: 10px 0px;
 }
 
 .photographer_section article .dailyRate {
-  font-size: 9px;
+  font-size: 10px;
   font-weight: 400;
   color: #757575;
   line-height: 12px;
+  margin: 0;
 }
 /***** responsive display ******/
 @media screen and (max-width: 992px) {
