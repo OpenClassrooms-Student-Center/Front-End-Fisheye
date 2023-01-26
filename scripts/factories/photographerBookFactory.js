@@ -7,6 +7,7 @@ function bookFactory(data) {
     // Create an article element to contain the media card
     const article = document.createElement("article");
     article.className += "book-card";
+
     article.id = id;
 
     return article;
