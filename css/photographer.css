@@ -15,7 +15,6 @@
 .presentation {
     display: flex;
     flex-direction: column;
-    row-gap: 25px;
 }
 
 .presentation__name {
@@ -27,6 +26,7 @@
 .presentation__location {
     color: #901C1C;
     font-size: 24px;
+    margin-bottom: 19px;
 }
 
 .presentation__tagline {

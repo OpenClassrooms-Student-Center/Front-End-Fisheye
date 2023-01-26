@@ -9,12 +9,29 @@
   </head>
   <body>
     <header>
-      <img src="assets/images/logo.png" class="logo" />
+        <a href="index.html">
+            <img src="assets/images/logo.png" class="logo" />
+        </a>
     </header>
     <main id="main">
       <div class="photograph-header">
         <button class="contact_button" onclick="displayModal()">Contactez-moi</button>
       </div>
+
+      <div class="photographer-portfolio">
+        
+        <div class="sort-sample">
+
+            <label for="sort" class="sort-sample__label">Trier par</label>
+            <select name="sort" id="sort" class="sort-sample__options">
+                <option value="Popularité" class="sort-sample__option">Popularité</option>
+                <option value="Date" class="sort-sample__option">Date</option>
+                <option value="Titre" class="sort-sample__option">Titre</option>
+            </select>
+        </div>
+
+      </div>
+
     </main>
     <div id="contact_modal">
 			<div class="modal">
