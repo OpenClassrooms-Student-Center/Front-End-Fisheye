@@ -3,9 +3,35 @@
 }
 
 .photograph-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
     background-color: #FAFAFA;
     height: 300px;
     margin: 0 100px;
+    padding: 0 50px;
+}
+
+.presentation {
+    display: flex;
+    flex-direction: column;
+    row-gap: 25px;
+}
+
+.presentation__name {
+    color: #D3573C;
+    margin: 0;
+    font-size: 64px;
+}
+
+.presentation__location {
+    color: #901C1C;
+    font-size: 24px;
+}
+
+.presentation__tagline {
+    font-size: 18px;
+    color: #525252;
 }
 
 .contact_button {
@@ -19,6 +45,14 @@
     background-color: #901C1C;
     border-radius: 5px;
     cursor: pointer;
+}
+
+.photograph-header__picture {
+    height: 200px;
+    width: 200px;
+    border-radius: 50%;
+    box-shadow: 0px 4px 12px rgb(0 0 0 / 25%);
+    object-fit: cover;
 }
 
 .modal {

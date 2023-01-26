@@ -242,7 +242,7 @@ function photographerFactory(data) {
 
     function getUserCardProfileDOM() {
         
-        const [photographerPresentationElement, photographerNameElement, photographerLocationElement, photogragrapherTaglineElement, photographerPictureElement] = createElements('div', 'h2', 'span', 'span', 'img')
+        const [photographerPresentationElement, photographerNameElement, photographerLocationElement, photogragrapherTaglineElement, photographerPictureElement] = createElements('div', 'h1', 'span', 'span', 'img')
 
         const listOfAttributes = createAttributesProfileHeader(photographerPictureElement)
         console.log(listOfAttributes)
