@@ -98,11 +98,40 @@
     color: #901C1C;
 }
 
-.media__like-btn {
-    font-size: 19px;
+.like {
+    font-size: 17px;
+    transform: scale(1, 1.05);
+}
+
+.like--red {
     color: #901C1C;
 }
 
+.additional-information {
+    width: 26%;
+    height: 68px;
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin-right: 35px;
+    background: #DB8876;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+}
+
+.additional-informations__likes {
+    display: flex;
+    align-items: center;
+    column-gap: 7px;
+}
+
+.additional-information__likes-number,  .additional-information__price {
+    font-size: 22px;
+    font-weight: 500;
+}
 
 .modal {
     border-radius: 5px;
