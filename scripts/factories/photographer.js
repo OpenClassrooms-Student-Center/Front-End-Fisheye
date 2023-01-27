@@ -59,6 +59,7 @@ function photographerFactory(data) {
 
         return listOfAttributes
     }
+  
 
     function setAttributes([ ...args ]= []) {
         args.forEach(arg => arg.attributes.forEach(attribute => 
@@ -96,7 +97,6 @@ function photographerFactory(data) {
         
     }
 
-
     function attachContent([ ...args ]) {
         args.forEach(arg => arg.element.textContent = arg.content)
     }
@@ -108,27 +108,27 @@ function photographerFactory(data) {
 
             {
                 element: article,
-                classes: "photographer-view",
+                classes: ["photographer-view"],
             },
             {
                 element: profileLinkElement,
-                classes: "photographer-view__link",
+                classes: ["photographer-view__link"],
             },
             {
                 element: presentationElement,
-                classes: "photographer-view__presentation",
+                classes: ["photographer-view__presentation"],
             },
             {
                 element: locationElement,
-                classes: "photographer-view__location",
+                classes: ["photographer-view__location"],
             },
             {
                 element: taglineElement,
-                classes: "photographer-view__tagline",
+                classes: ["photographer-view__tagline"],
             },
             {
                 element: priceElement,
-                classes: "photographer-view__price",
+                classes: ["photographer-view__price"],
             },
         ] 
 
@@ -141,23 +141,23 @@ function photographerFactory(data) {
 
             {
                 element: photographerPresentationElement,
-                classes: "presentation",
+                classes: ["presentation"],
             },
             {
                 element: photographerNameElement,
-                classes: "presentation__name",
+                classes: ["presentation__name"],
             },
             {
                 element: photographerLocationElement,
-                classes: "presentation__location",
+                classes: ["presentation__location"],
             },
             {
                 element: photogragrapherTaglineElement,
-                classes: "presentation__tagline",
+                classes: ["presentation__tagline"],
             },
             {
                 element: photographerPictureElement,
-                classes: "photograph-header__picture",
+                classes: ["photograph-header__picture"],
             },
         ] 
 
@@ -245,7 +245,6 @@ function photographerFactory(data) {
         const [photographerPresentationElement, photographerNameElement, photographerLocationElement, photogragrapherTaglineElement, photographerPictureElement] = createElements('div', 'h1', 'span', 'span', 'img')
 
         const listOfAttributes = createAttributesProfileHeader(photographerPictureElement)
-        console.log(listOfAttributes)
         setAttributes(listOfAttributes)
 
         const listOfContents = createContent(photographerNameElement, photographerLocationElement, photogragrapherTaglineElement)
@@ -261,4 +260,168 @@ function photographerFactory(data) {
     }
 
     return { name, picture, getUserCardDOM }
+}
+
+
+function MediaFactory(photographerName, { id, photographerId, title, image, likes, date }) {
+
+    function createElements(...args) {
+
+        let listOfElements = []
+        args.forEach(arg => listOfElements.push(document.createElement(arg)))
+
+        return listOfElements
+    }
+
+    function createAttributesMedia(mediaLink, media) {
+
+        const listOfAttributes = [
+            {
+                element: mediaLink,
+                attributes: [['href', `#`]],
+            },
+            {
+                element: media,
+                attributes: [['src', `../../assets/Sample Photos/${photographerName}/${image}`]],
+            }
+        ] 
+    
+        return listOfAttributes
+    }  
+    
+
+    function setAttributes([ ...args ]= []) {
+        args.forEach(arg => arg.attributes.forEach(attribute => 
+            arg.element.setAttribute(attribute[0], attribute[1])))
+    }
+    
+    function createClassesMedia(mediaArticle, mediaLink, media, mediaInfos, mediaName, mediaLikes, mediaLikesNumber, mediaLikeIcon) {
+
+        const listOfClasses = [
+
+            {
+                element: mediaArticle,
+                classes: ["media__article"],
+            },
+            {
+                element: mediaLink,
+                classes: ["media__link"],
+            },
+            {
+                element: media,
+                classes: ["media__picture"],
+            },
+            {
+                element: mediaInfos,
+                classes: ["media__infos"],
+            },
+            {
+                element: mediaName,
+                classes: ["media__name"],
+            },
+            {
+                element: mediaLikes,
+                classes: ["media__likes"],
+            },
+            {
+                element: mediaLikesNumber,
+                classes: ["media__likes-number"],
+            },
+            {
+                element: mediaLikeIcon,
+                classes: ["fa-solid", "fa-heart", "like", "like--btn"],
+            },
+        ] 
+
+        return listOfClasses
+    }
+
+    function createContentMedia(mediaName, mediaLikesNumber) {
+
+        let listOfContents = [
+            {
+                element: mediaName,
+                content: title,
+            },
+            {
+                element: mediaLikesNumber,
+                content: likes,
+            },
+        ]
+    
+        return listOfContents
+        
+    }
+
+
+    function attachContent([ ...args ]) {
+        args.forEach(arg => arg.element.textContent = arg.content)
+    }
+
+    function addClasses([ ...args ]) {
+        args.forEach(arg => arg.classes.forEach(className => arg.element.classList.add(className)))
+    }
+
+    function createChildsMedia(mediaArticle, mediaLink, media, mediaInfos, mediaName, mediaLikes, mediaLikesNumber, mediaLikeIcon) {
+
+        const listOfChilds = [
+
+            {
+                element: mediaLink,
+                childs: [media],
+            },
+            {
+                element: mediaLikes,
+                childs: [mediaLikesNumber, mediaLikeIcon],
+            },
+            {
+                element: mediaInfos,
+                childs: [mediaName, mediaLikes],
+            },
+            {
+                element: mediaArticle,
+                childs: [mediaLink, mediaInfos],
+            },
+        ]
+
+        return listOfChilds
+    }
+
+    function appendChilds([ ...args ]) {
+        args.forEach(arg => arg.childs.forEach(child => arg.element.appendChild(child)))
+    }
+
+    function getUserImageDOM({ id, photographerId, title, image, likes, date }) {
+
+        const [mediaArticle, mediaLink, media, mediaInfos, mediaName, mediaLikes, mediaLikesNumber, mediaLikeIcon] = createElements('article', 'a', 'img', 'div', 'span', 'div', 'span', 'i')
+        
+        const listOfAttributes = createAttributesMedia(mediaLink, media)
+        setAttributes(listOfAttributes)
+
+        const listOfContents = createContentMedia(mediaName, mediaLikesNumber)
+        attachContent(listOfContents)
+    
+        const listOfClasses = createClassesMedia(mediaArticle, mediaLink, media, mediaInfos, mediaName, mediaLikes, mediaLikesNumber, mediaLikeIcon)
+        addClasses(listOfClasses)
+        
+        const listOfChilds = createChildsMedia(mediaArticle, mediaLink, media, mediaInfos, mediaName, mediaLikes, mediaLikesNumber, mediaLikeIcon)
+        appendChilds(listOfChilds)
+    
+        console.log(mediaArticle)
+        return mediaArticle
+    }
+
+    function getUserMediaDOM(data) {
+
+        let mediaArticle;
+        if(data.hasOwnProperty('image')) {
+            mediaArticle = getUserImageDOM(data)
+        } else {
+            mediaArticle = console.log('else')
+        }
+
+        return mediaArticle
+    }
+    
+    return { getUserMediaDOM }
 }

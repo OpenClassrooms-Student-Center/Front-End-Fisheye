@@ -68,13 +68,21 @@
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     grid-column-gap: 95px;
+    grid-row-gap: 30px;
+}
+
+.media__link {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    overflow: hidden;
 }
 
 .media__picture {
     width: 100%;
-    aspect-ratio: 1/1;
-    border-radius: 5px;
-    margin-bottom: 10px;
+    height: 300px;
+    object-fit: cover;
 }
 
 .media__infos {
@@ -103,7 +111,7 @@
     transform: scale(1, 1.05);
 }
 
-.like--red {
+.like--btn {
     color: #901C1C;
 }
 
