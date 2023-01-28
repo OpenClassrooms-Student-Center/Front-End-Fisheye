@@ -20,7 +20,7 @@ function attachContent([ ...args ]) {
 
 
 function addClasses([ ...args ]) {
-    args.forEach(arg => arg.element.classList.add(arg.classes))        
+    args.forEach(arg => arg.classes.forEach(className => arg.element.classList.add(className)))
 }
 
 

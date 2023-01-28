@@ -1,5 +1,6 @@
 import { ApiJson } from "../services/Api.js"
 import photographerFactory from "../factories/photographer.js"
+import MediaFactory from "../factories/media.js"
 
 function getPhotographerId() {
 
@@ -48,21 +49,25 @@ function displayMedia(photographerName, media) {
 
     const mediaModel = MediaFactory(photographerName, media)
     
-    const mediaElement = mediaModel.getUserMediaDOM(media)
+    const mediaElement = mediaModel.getUserMediaDOM()
 
     const galleryElement = document.querySelector('.gallery')
 
     galleryElement.appendChild(mediaElement)
 }
 
+
+function displayMedias(photographerName, photographerMedias) {
+    photographerMedias.forEach(media => {
+        displayMedia(photographerName, media)
+    })
+}
+
 async function init() {
     // Récupère les datas des photographes
     const { photographer, photographerMedias } = await getPhotographerData();
     displayPhotographerInformation(photographer);
-
-    photographerMedias.forEach(media => {
-        displayMedia(photographer.name, media)
-    })
+    displayMedias(photographer.name, photographerMedias)
 };
 
 init();
