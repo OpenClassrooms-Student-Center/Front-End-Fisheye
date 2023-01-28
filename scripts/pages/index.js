@@ -1,4 +1,6 @@
-    async function displayData(photographers) {
+import { ApiJson } from "../services/Api.js";
+
+async function displayData(photographers) {
         const photographersSection = document.querySelector(".photographer_section");
 
         photographers.forEach((photographer) => {
@@ -9,8 +11,17 @@
     }; 
 
     async function init() {
-        // Récupère les datas des photographes
-        const { photographers } = await getPhotographers();
+
+        const fetchingURL = '../../data/photographers.json'; 
+
+        let data
+        try {
+            data = await ApiJson(fetchingURL);
+        } catch(err) {
+            console.log(err)
+        }
+
+        const { photographers } = data
         displayData(photographers);
     };
     

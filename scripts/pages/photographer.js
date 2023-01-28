@@ -1,3 +1,33 @@
+import { ApiJson } from "../services/Api.js"
+
+function getPhotographerId() {
+
+    const paramsURL = (new URL(document.location)).searchParams,
+        id = paramsURL.get('id')
+
+    return id
+}
+
+async function getPhotographerData() {
+
+    const id = parseInt(getPhotographerId())
+
+    let data 
+    try {
+        const fetchingURL = '../../data/photographers.json'; 
+        data  = await ApiJson(fetchingURL)
+    } catch(err) {
+        console.log(`Error while trying to get photographers: ${err}`)
+        throw new Error()
+    }
+
+    const { photographers, media } = data,
+        photographer = photographers.filter(item => item.id === id)[0],
+        photographerMedias = media.filter(item => item.photographerId === id)
+
+    return { photographer, photographerMedias}
+}
+
 async function displayPhotographerInformation(photographer) {
 
     const photographerModel = photographerFactory(photographer);
