@@ -1,4 +1,5 @@
 import { ApiJson } from "../services/Api.js"
+import photographerFactory from "../factories/photographer.js"
 
 function getPhotographerId() {
 
