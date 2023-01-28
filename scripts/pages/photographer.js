@@ -34,13 +34,15 @@ async function displayPhotographerInformation(photographer) {
 
     const photographerModel = photographerFactory(photographer);
 
-    const { photographerPresentationElement, photographerPictureElement } = photographerModel.getUserCardDOM(true)
+    const [photographerPresentationElement, photographerPictureElement] = photographerModel.getUserCardDOM(true)
 
     const photographerHeader = document.querySelector('.photograph-header')
 
     const contactButton = document.querySelector('.contact_button')
-
-    photographerHeader.append(photographerPresentationElement, contactButton, photographerPictureElement)
+    
+    photographerHeader.innerHTML = photographerPresentationElement
+    photographerHeader.insertAdjacentElement('beforeend', contactButton)
+    photographerHeader.insertAdjacentHTML('beforeend', photographerPictureElement)
 
 }
 
@@ -53,7 +55,7 @@ function displayMedia(photographerName, media) {
 
     const galleryElement = document.querySelector('.gallery')
 
-    galleryElement.appendChild(mediaElement)
+    galleryElement.insertAdjacentHTML('beforeend', mediaElement)
 }
 
 

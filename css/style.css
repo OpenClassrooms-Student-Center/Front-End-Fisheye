@@ -70,6 +70,7 @@ h1 {
 .photographer-view__presentation {
     display: flex;
     flex-direction: column;
+    align-items: center;
     row-gap: 1px;
     margin: 0;
 }
