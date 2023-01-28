@@ -65,11 +65,32 @@ function displayMedias(photographerName, photographerMedias) {
     })
 }
 
+
+
+function displayLikesTotalNumber(medias) {
+    const likesElement = document.querySelector('.additional-information__likes-number')
+    const likesTotalNumber = medias.reduce((acc, media) => acc + media.likes, 0)
+    likesElement.textContent = likesTotalNumber
+}
+
+
+function displayPrice(price) {
+    const priceElement = document.querySelector('.additional-information__price')
+    priceElement.textContent = price + '€ / jour'
+}
+
+
+function displayStickyBar(price, medias) {
+    displayLikesTotalNumber(medias)
+    displayPrice(price)
+}
+
 async function init() {
     // Récupère les datas des photographes
     const { photographer, photographerMedias } = await getPhotographerData();
     displayPhotographerInformation(photographer);
     displayMedias(photographer.name, photographerMedias)
+    displayStickyBar(photographer.price, photographerMedias)
 };
 
 init();
