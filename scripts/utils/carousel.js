@@ -28,6 +28,19 @@ window.addEventListener('load', () => {
     previousButton.addEventListener('click', () => goToPreviousSlide(mediasLength))
     nextButton.addEventListener('click', () => goToNextSlide(mediasLength))
 
+    document.addEventListener('keydown', e => {
+
+        e.preventDefault()
+
+        const keyName = e.keyCode ? e.keyCode : e.key
+        
+        if (keyName === 'ArrowRight' || keyName === 39) {
+            goToNextSlide(mediasLength)
+        } else if (keyName === 'ArrowLeft' || keyName === 37) {
+            goToPreviousSlide(mediasLength)
+        }
+    })    
+
 })    
 
 function displayCarouselModal() {
@@ -54,16 +67,6 @@ const setNodeAttributes = (currentItem, lastItem=undefined) => {
        lastItem.setAttribute('aria-hidden', 'true')
    }
 }
-
-document.addEventListener('keydown', e => {
-    const keyName = e.keyCode ? e.keyCode : e.key
-    
-    if (keyName === 'ArrowRight' || keyName === 39) {
-        goToNextSlide()
-    } else if (keyName === 'ArrowLeft' || keyName === 37) {
-        goToPreviousSlide()
-    }
-})
 
 
 const goToNextSlide = (mediasLength) => {
