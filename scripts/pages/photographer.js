@@ -2,6 +2,8 @@ import { ApiJson } from "../services/Api.js"
 import photographerFactory from "../factories/photographer.js"
 import MediaFactory from "../factories/media.js"
 
+var contactButton = document.querySelector('.contact_button')
+
 function getPhotographerId() {
 
     const paramsURL = (new URL(document.location)).searchParams,
@@ -38,8 +40,6 @@ async function displayPhotographerInformation(photographer) {
 
     const photographerHeader = document.querySelector('.photograph-header')
 
-    const contactButton = document.querySelector('.contact_button')
-    
     photographerHeader.innerHTML = photographerPresentationElement
     photographerHeader.insertAdjacentElement('beforeend', contactButton)
     photographerHeader.insertAdjacentHTML('beforeend', photographerPictureElement)
@@ -85,12 +85,25 @@ function displayStickyBar(price, medias) {
     displayPrice(price)
 }
 
+
+function onModalClick(name) {
+
+    contactButton.addEventListener('click', (e) => {
+        const modalTitle = document.querySelector('.modal__title')
+        modalTitle.innerHTML = `Contactez-moi <br> ${name}`
+    })
+}
+
+
 async function init() {
     // Récupère les datas des photographes
     const { photographer, photographerMedias } = await getPhotographerData();
     displayPhotographerInformation(photographer);
     displayMedias(photographer.name, photographerMedias)
+
     displayStickyBar(photographer.price, photographerMedias)
+
+    onModalClick(photographer.name)
 };
 
 init();

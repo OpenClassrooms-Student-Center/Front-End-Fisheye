@@ -6,7 +6,7 @@ body {
 }
 
 
-header {
+.home-header {
     display: flex;
     flex-direction: row;
     justify-content: space-between;

@@ -49,19 +49,64 @@
 
     </main>
 
-    <div id="contact_modal">
-			<div class="modal">
-				<header>
-          <h2>Contactez-moi</h2>
-          <img src="assets/icons/close.svg" onclick="closeModal()" />
-        </header>
-				<form>
-					<div>
-						<label>Prénom</label>
-						<input />
+    <div id="contact_modal" class="modal-container">
+        
+        <span class="confirmation-message">Merci ! Votre réservation a été reçue.</span>
+        
+        <div class="modal">
+
+            <header class="modal__header">
+                <h2 class="modal__title"></h2>
+                <img src="assets/icons/close.svg" onclick="closeModal()" />
+            </header>
+
+				<form class="contact-form">
+
+					<div class="contact-form__field">
+						<label for="firstName" class="contact-form__label">Prénom</label>
+						<input 
+                            type="text" 
+                            id="firstName"
+                            class="contact-form__input contact-form__input--single-line" 
+                            required
+                            minlength="2"
+                        />
 					</div>
-          <button class="contact_button">Envoyer</button>
+					<div class="contact-form__field">
+						<label for="lastName" class="contact-form__label">Nom</label>
+						<input 
+                            type="text" 
+                            id="lastName"
+                            class="contact-form__input contact-form__input--single-line" 
+                            required
+                            minlength="2"
+                        />
+					</div>
+					<div class="contact-form__field">
+						<label for="email" class="contact-form__label">Email</label>
+						<input 
+                            type="text" 
+                            id="email"
+                            class="contact-form__input contact-form__input--single-line" 
+                            required
+                        />
+					</div>
+					<div class="contact-form__field">
+						<label for="message" class="contact-form__label">Votre message</label>
+						<textarea 
+                            type="text" 
+                            id="message"
+                            class="contact-form__input contact-form__input--multiline" 
+                            required
+                            minlength="20"
+                        ></textarea>
+					</div>
+
+                    
+                    <button class="send-message">Envoyer</button>
+
 				</form>
+
 			</div>
 		</div>
         <script type="module" src="/scripts/pages/photographer.js"></script>
