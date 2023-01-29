@@ -7,8 +7,8 @@
     }
 }
 
-.modal-container {
-    display: none;
+.page-header {
+    margin-bottom: 40px;
 }
 
 .photograph-header {
@@ -148,6 +148,10 @@
 .additional-information__likes-number,  .additional-information__price {
     font-size: 22px;
     font-weight: 500;
+}
+
+.modal-container {
+    display: none;
 }
 
 .modal-container.visible {

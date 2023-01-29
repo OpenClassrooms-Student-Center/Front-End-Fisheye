@@ -30,6 +30,7 @@ const checks = {
 
     firstName: {
         selector: '#firstName',
+        label: 'First Name',
         func: checkName,
         valueMissingMessage: "Vous devez indiquer un prénom.",
         tooShortMessage: "Veuillez entrer 2 caractères ou plus pour le champ du prénom.",
@@ -38,6 +39,7 @@ const checks = {
 
     lastName: {
         selector: '#lastName',
+        label: 'Last Name',
         func: checkName,
         valueMissingMessage: "Vous devez indiquer un nom.",
         tooShortMessage: "Veuillez entrer 2 caractères ou plus pour le champ du nom.",
@@ -46,6 +48,7 @@ const checks = {
     
     email: {
         selector: '#email',
+        label: 'Email',
         func: checkEmail,
         valueMissingMessage: "Vous devez indiquer un email.",
         invalidFormatMessage: "Vérifiez votre email, le format ne semble pas correct."
@@ -53,6 +56,7 @@ const checks = {
 
     message: {
         selector: '#message',
+        label: 'Message',
         func: checkMessage,
         valueMissingMessage: "Vous devez écrire un message pour contacter la personne.",
         tooShortMessage: "Votre message doit avoir au moins 20 caractères.",
@@ -84,14 +88,13 @@ function contactPhotographer(e) {
 
     e.preventDefault()
 
-    let checkSuccess = true // Variable indiquant si le formulaire est considéré valide ou non
-
     // Lance l'ensemble des checks de validation pour chaque input
-    checkSuccess = checkInputs()
+    const { values, checkSuccess } = checkInputs()
 
     if(checkSuccess) {
     // Tous les checks ont été validés, on peut continuer 
         finishForSubmission()
+        consoleLog(values)
     } 
 }
 
@@ -104,16 +107,18 @@ function contactPhotographer(e) {
 */
 function checkInputs() {
 
-    let checkSuccess = true
+    let checkSuccess = true,
+        values = []
 
     // Boucle sur chaque check et l'effectue sur l'input associé
     Object.keys(checks).forEach(key => {
         const inputElement = document.querySelector(checks[key].selector),
             newCheckSuccess = checks[key].func(inputElement, checks[key])
         checkSuccess = checkSuccess && newCheckSuccess // Si le nouveau check ne passe pas, le formulaire est considéré invalide
+        values[checks[key].label] = inputElement.value
     })
 
-    return checkSuccess
+    return { values: values, checkSuccess: checkSuccess }
 }
 
 
@@ -190,7 +195,7 @@ function checkMessage(element, check) {
     let checkSuccess = false
 
     const parentElement = element.parentElement
-console.log(element.validity)
+
     if (element.validity.valueMissing) {
     // l'input est vide
         showText(parentElement, check.valueMissingMessage)
@@ -261,6 +266,11 @@ function finishForSubmission() {
     closeModal()
     window.scrollTo({top: 0, left: '50%'})
     showConfirmationPopup()
+}
+
+
+function consoleLog(values) {
+    console.table(values)
 }
 
 
