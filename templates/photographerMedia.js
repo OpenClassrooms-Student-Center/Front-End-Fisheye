@@ -105,7 +105,7 @@ const photographerMedia = {
 
         const articleElements = `
 
-            <article class="">
+            <article>
 
                 <a href="#" class="media__link">
                     <img src="assets/Sample Photos/${photographerName}/${image}" alt="" class="media__picture">
@@ -133,7 +133,7 @@ const photographerMedia = {
 
         const articleElements = `
 
-            <article class="">
+            <article>
 
                 <a href="#" class="media__link">
                     <video src="assets/Sample Photos/${photographerName}/${video}" alt="" class="media__picture">

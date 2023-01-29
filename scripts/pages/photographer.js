@@ -3,6 +3,8 @@ import photographerFactory from "../factories/photographer.js"
 import MediaFactory from "../factories/media.js"
 
 var contactButton = document.querySelector('.contact_button')
+const galleryElement = document.querySelector('.gallery'),
+    carouselItems = document.querySelector('.carousel__items')
 
 function getPhotographerId() {
 
@@ -47,21 +49,22 @@ async function displayPhotographerInformation(photographer) {
 }
 
 
-function displayMedia(photographerName, media) {
+function displayMedia(photographerName, media, index) {
 
     const mediaModel = MediaFactory(photographerName, media)
     
-    const mediaElement = mediaModel.getUserMediaDOM()
+    const { mediaArticle, carouselItem } = mediaModel.getUserMediaDOM(index)
+    
+    galleryElement.insertAdjacentHTML('beforeend', mediaArticle)
+    carouselItems.insertAdjacentHTML('beforeend', carouselItem)
 
-    const galleryElement = document.querySelector('.gallery')
-
-    galleryElement.insertAdjacentHTML('beforeend', mediaElement)
 }
 
 
+
 function displayMedias(photographerName, photographerMedias) {
-    photographerMedias.forEach(media => {
-        displayMedia(photographerName, media)
+    photographerMedias.forEach((media, index) => {
+        displayMedia(photographerName, media, index)
     })
 }
 
@@ -96,14 +99,17 @@ function onModalClick(name) {
 
 
 async function init() {
+
     // Récupère les datas des photographes
     const { photographer, photographerMedias } = await getPhotographerData();
+
     displayPhotographerInformation(photographer);
     displayMedias(photographer.name, photographerMedias)
 
     displayStickyBar(photographer.price, photographerMedias)
 
     onModalClick(photographer.name)
+
 };
 
 init();

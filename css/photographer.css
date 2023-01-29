@@ -285,6 +285,7 @@ form div {
 }
 
 .modal-carousel {
+    display: none;
     width: 80%;
     height: 95vh;
     position: fixed;
@@ -292,11 +293,14 @@ form div {
     left: 50%;
     translate: -50% -50%;
     z-index: 3;
-    display: flex;
     flex-direction: column;
     background: #DB8876;
     border-radius: 5px;
     overflow: hidden;
+}
+
+.modal-carousel.visible {
+    display: flex;
 }
 
 .modal-carousel__header {
@@ -339,15 +343,20 @@ form div {
 }
   
 .carousel__item {
+    display: none;
     list-style-type: none;
 }
 
-.carousel__picture {
+.carousel__item.visible {
+    display: block;
+}
+
+.carousel__picture, .carousel__video {
     width: 100%;
     aspect-ratio: 1.15;
 }
 
-.carousel__picture-name {
+.carousel__name {
     color: #901C1C;
 }
 
