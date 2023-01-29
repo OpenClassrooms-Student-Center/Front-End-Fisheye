@@ -259,6 +259,7 @@ function showText(element, message) {
 */
 function finishForSubmission() {
     closeModal()
+    window.scrollTo({top: 0, left: '50%'})
     showConfirmationPopup()
 }
 
