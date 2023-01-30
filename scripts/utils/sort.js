@@ -3,27 +3,10 @@ const filterButton = document.querySelector('#sort')
 
 async function sortPortfolio(medias, sortType) {
 
-    const mediaSortField = sortType === 'popularity' ? 'likes' : sortType
-    let mediasSorted = []
-console.log(medias)
-    mediasSorted = medias.sort((a, b) =>  a[mediaSortField] < b[mediaSortField] ? -1 : 1)
-    console.log(mediaSortField)
-console.log(mediasSorted)
-    // switch(sortType) {
-
-    //     case 'popularity':
-    //         mediasSorted = 
-    //         break;
-
-    //     case 'title':
-
-    //         mediasSorted = medias.sort((a, b) => (a.likes > b.likes))
-    //         break;
-
-    //     case 'date':
-    //         mediasSorted = medias.sort((a, b) => (a.date > b.date))
-    //         break;
-    // }
+    const mediaSortField = sortType === 'popularity' ? 'likes' : sortType,
+        returnValue = sortType === 'title' ? -1 : 1
+    
+    const mediasSorted = await medias.sort((a, b) =>  a[mediaSortField] < b[mediaSortField] ? returnValue : -returnValue)
 
     return mediasSorted
 

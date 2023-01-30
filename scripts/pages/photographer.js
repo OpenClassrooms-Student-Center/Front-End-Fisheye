@@ -6,7 +6,8 @@ import { sortPortfolio } from "../utils/sort.js"
 
 var contactButton = document.querySelector('.contact_button')
 const galleryElement = document.querySelector('.gallery'),
-    carouselItems = document.querySelector('.carousel__items')
+    carouselItems = document.querySelector('.carousel__items'),
+    mediasSortTypeDefault = 'date'
 
 function getPhotographerId() {
 
@@ -105,17 +106,18 @@ async function init() {
     // Récupère les datas des photographes
     const { photographer, photographerMedias } = await getPhotographerData();
 
-    displayPhotographerInformation(photographer);
-
-    await displayMedias(photographer.name, photographerMedias)
-
-    displayStickyBar(photographer.price, photographerMedias)
+    displayPhotographerInformation(photographer)
 
     onModalClick(photographer.name)
+    displayStickyBar(photographer.price, photographerMedias)
+
+
+    const mediasSorted = await sortPortfolio(photographerMedias, mediasSortTypeDefault)
+
+    await displayMedias(photographer.name, mediasSorted)
 
     setupCarousel(galleryElement, photographerMedias.length)
 
-    sortPortfolio(photographerMedias, 'popularity')
 
 };
 
