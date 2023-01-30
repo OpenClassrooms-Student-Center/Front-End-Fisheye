@@ -1,6 +1,8 @@
 import { ApiJson } from "../services/Api.js"
 import photographerFactory from "../factories/photographer.js"
 import MediaFactory from "../factories/media.js"
+import { setupCarousel } from "../utils/carousel.js"
+import { sortPortfolio } from "../utils/sort.js"
 
 var contactButton = document.querySelector('.contact_button')
 const galleryElement = document.querySelector('.gallery'),
@@ -104,12 +106,17 @@ async function init() {
     const { photographer, photographerMedias } = await getPhotographerData();
 
     displayPhotographerInformation(photographer);
-    displayMedias(photographer.name, photographerMedias)
+
+    await displayMedias(photographer.name, photographerMedias)
 
     displayStickyBar(photographer.price, photographerMedias)
 
     onModalClick(photographer.name)
 
+    setupCarousel(galleryElement, photographerMedias.length)
+
+    sortPortfolio(photographerMedias, 'popularity')
+
 };
 
-init();
+window.addEventListener('load', () => init())

@@ -1,24 +1,27 @@
-let currentItemPosition = 0,
-carouselInterval;
+let currentItemPosition = 0
 
-const modalCarousel = document.querySelector(".modal-carousel");
+const modalCarousel = document.querySelector(".modal-carousel"),
+    nextButton = document.querySelector('.carousel__paginate--right'),
+    previousButton = document.querySelector('.carousel__paginate--left'),
+    closeModalButton = document.querySelector('.modal-carousel__close')
 
-window.addEventListener('load', () => {
+function setupCarousel(gallery, mediasLength) {
 
-    const previousButton = document.querySelector('.carousel__paginate--left'),
-        nextButton = document.querySelector('.carousel__paginate--right'),
-        closeModalButton = document.querySelector('.modal-carousel__close'),        
-        gallery=document.querySelector('.gallery'),
-        medias = document.querySelectorAll('.media__link'),
-        mediasLength = medias.length,
+    const medias = gallery.querySelectorAll('.media__link'),
         carouselItems = document.querySelectorAll('.carousel__item')
 
     medias.forEach((media, index) => media.addEventListener('click', (e) => {
+
         e.preventDefault()
+        
+        let lastItem;
+        if (modalCarousel.className.includes('visible')) {
+            lastItem = document.querySelector(`.item-${currentItemPosition}`)
+        }
 
         currentItemPosition = index
         const currentItem = document.querySelector(`.item-${currentItemPosition}`)
-        setNodeAttributes(currentItem)
+        setNodeAttributes(currentItem, lastItem)
 
         displayCarouselModal()
     }))
@@ -40,8 +43,8 @@ window.addEventListener('load', () => {
             goToPreviousSlide(mediasLength)
         }
     })    
+}
 
-})    
 
 function displayCarouselModal() {
     modalCarousel.classList.add('visible')
@@ -115,3 +118,4 @@ const goToPreviousSlide = (mediasLength) => {
     setNodeAttributes(currentItem, lastItem)
 }
 
+export {setupCarousel} 

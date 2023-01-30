@@ -9,7 +9,7 @@ const photographerMedia = {
     //         },
     //         {
     //             element: media,
-    //             attributes: [['src', `../assets/Sample Photos/${photographerName}/${image}`]],
+    //             attributes: [['src', `../assets/Sample_Photos/${photographerName}/${image}`]],
     //         }
     //     ] 
     
@@ -108,7 +108,7 @@ const photographerMedia = {
             <article>
 
                 <a href="#" class="media__link">
-                    <img src="assets/Sample Photos/${photographerName}/${image}" alt="" class="media__picture">
+                    <img src="assets/Sample_Photos/${photographerName}/${image}" alt="" class="media__picture">
                 </a>
 
                 <div class="media__infos">
@@ -136,7 +136,7 @@ const photographerMedia = {
             <article>
 
                 <a href="#" class="media__link">
-                    <video src="assets/Sample Photos/${photographerName}/${video}" alt="" class="media__picture">
+                    <video src="assets/Sample_Photos/${photographerName}/${video}" alt="" class="media__picture">
                 </a>
 
                 <div class="media__infos">

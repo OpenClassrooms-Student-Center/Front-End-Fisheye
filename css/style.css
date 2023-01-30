@@ -5,8 +5,11 @@ body {
     margin: 0;
 }
 
+.header {
+    padding: 40px 0;
+}
 
-.home-header {
+.header--home {
     display: flex;
     flex-direction: row;
     justify-content: space-between;

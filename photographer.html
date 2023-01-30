@@ -9,7 +9,7 @@
     <title>Fisheye - photographe </title>
   </head>
   <body>
-    <header class="page-header">
+    <header class="header header--profile">
         <a href="index.html">
             <img src="assets/images/logo.png" class="logo" />
         </a>
@@ -27,9 +27,9 @@
 
             <label for="sort" class="sort-portfolio__label">Trier par</label>
             <select name="sort" id="sort" class="sort-portfolio__options">
-                <option value="Popularité" class="sort-portfolio__option">Popularité</option>
-                <option value="Date" class="sort-portfolio__option">Date</option>
-                <option value="Titre" class="sort-portfolio__option">Titre</option>
+                <option value="popularity" class="sort-portfolio__option">Popularité</option>
+                <option value="date" class="sort-portfolio__option">Date</option>
+                <option value="title" class="sort-portfolio__option">Titre</option>
             </select>
 
         </div>
@@ -140,8 +140,8 @@
 
         </div>
 
-        <script type="module" src="/scripts/pages/photographer.js"></script>
+        <script async type="module" src="/scripts/pages/photographer.js"></script>
         <script src="/scripts/utils/contactForm.js"></script>
-        <script type="module" src="/scripts/utils/carousel.js"></script>
+        <!-- <script defer type="module" src="/scripts/utils/sort.js"></script> -->
   </body>
 </html>

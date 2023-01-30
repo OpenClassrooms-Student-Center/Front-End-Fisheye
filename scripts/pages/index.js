@@ -2,29 +2,28 @@ import { ApiJson } from "../services/Api.js";
 import photographerFactory from "../factories/photographer.js";
 
 async function displayData(photographers) {
-        const photographersSection = document.querySelector(".photographer_section");
+    const photographersSection = document.querySelector(".photographer_section");
 
-        photographers.forEach((photographer) => {
-            const photographerModel = photographerFactory(photographer);
-            const userCardDOM = photographerModel.getUserCardDOM();
-            console.log(userCardDOM)
-            photographersSection.appendChild(userCardDOM);
-        });
-    }; 
+    photographers.forEach((photographer) => {
+        const photographerModel = photographerFactory(photographer);
+        const userCardDOM = photographerModel.getUserCardDOM();
+        photographersSection.appendChild(userCardDOM);
+    });
+}; 
 
-    async function init() {
+async function init() {
 
-        const fetchingURL = '../../data/photographers.json'; 
+    const fetchingURL = '../../data/photographers.json'; 
 
-        let data
-        try {
-            data = await ApiJson(fetchingURL);
-        } catch(err) {
-            console.log(err)
-        }
+    let data
+    try {
+        data = await ApiJson(fetchingURL);
+    } catch(err) {
+        console.log(err)
+    }
 
-        const { photographers } = data
-        displayData(photographers);
-    };
-    
-    init();
+    const { photographers } = data
+    displayData(photographers);
+};
+
+init();

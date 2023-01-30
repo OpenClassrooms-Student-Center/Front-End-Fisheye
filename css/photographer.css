@@ -7,10 +7,6 @@
     }
 }
 
-.page-header {
-    margin-bottom: 40px;
-}
-
 .photograph-header {
     display: flex;
     justify-content: space-between;
@@ -287,7 +283,6 @@ form div {
 .modal-carousel {
     display: none;
     width: 80%;
-    height: 95vh;
     position: fixed;
     top: 50%;
     left: 50%;
@@ -297,6 +292,7 @@ form div {
     background: #DB8876;
     border-radius: 5px;
     overflow: hidden;
+    padding: 10px 30px;
 }
 
 .modal-carousel.visible {
@@ -314,7 +310,6 @@ form div {
 }
 
 .carousel-container {
-    /* position: fixed; */
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -351,9 +346,16 @@ form div {
     display: block;
 }
 
+.carousel__media {
+    display: flex;
+    flex-direction: column;
+    row-gap: 5px;
+    padding-bottom: 10px;
+}
+
 .carousel__picture, .carousel__video {
     width: 100%;
-    aspect-ratio: 1.15;
+    max-height: 600px;
 }
 
 .carousel__name {
