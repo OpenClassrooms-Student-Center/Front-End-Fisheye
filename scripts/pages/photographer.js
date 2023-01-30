@@ -4,10 +4,12 @@ import MediaFactory from "../factories/media.js"
 import { setupCarousel } from "../utils/carousel.js"
 import { sortPortfolio } from "../utils/sort.js"
 
-var contactButton = document.querySelector('.contact_button')
 const galleryElement = document.querySelector('.gallery'),
     carouselItems = document.querySelector('.carousel__items'),
-    mediasSortTypeDefault = 'date'
+    mediasSortTypeDefault = 'popularity',
+    filterButton = document.querySelector('#sort'),
+    contactButton = document.querySelector('.contact_button')
+
 
 function getPhotographerId() {
 
@@ -101,6 +103,19 @@ function onModalClick(name) {
 }
 
 
+async function setupSortPortfolioEvent(photographerName, medias) {
+
+    let mediasSorted;
+
+    filterButton.addEventListener('change', async (e) => {
+        mediasSorted = await sortPortfolio(medias, e.target.value)
+        galleryElement.innerHTML = ''
+        carouselItems.innerHTML = ''        
+        displayMedias(photographerName, mediasSorted)
+    })
+}
+
+
 async function init() {
 
     // Récupère les datas des photographes
@@ -117,8 +132,9 @@ async function init() {
     await displayMedias(photographer.name, mediasSorted)
 
     setupCarousel(galleryElement, photographerMedias.length)
-
+    setupSortPortfolioEvent(photographer.name, mediasSorted)
 
 };
 
 window.addEventListener('load', () => init())
+

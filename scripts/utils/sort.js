@@ -1,6 +1,3 @@
-const filterButton = document.querySelector('#sort')
-
-
 async function sortPortfolio(medias, sortType) {
 
     const mediaSortField = sortType === 'popularity' ? 'likes' : sortType,
@@ -12,12 +9,8 @@ async function sortPortfolio(medias, sortType) {
 
 }
 
-const photographerName = document.querySelector('.presentation__name'),
-    medias = document.querySelectorAll('.media__link')
 
-filterButton.addEventListener('change', (e) => {
-    
-})
+
 
 
 export { sortPortfolio }
