@@ -1,48 +1,43 @@
+/*  Fonction mediaFactory pr la data */
 function mediaFactory(data) {
   const { id, image, likes, price, title, date, photographerId, video } = data;
 
-  function getPhotographerDom() {
-    const article = document.createElement("article");
-    const mediaInfos = document.createElement("div");
-    mediaInfos.classList.add("media-infos");
+  /* fonction pr obtenir les medias des photographes */
+  function getPhotographerMediaCards() {
+    const mediaCard = document.createElement("div");
+    mediaCard.classList.add("media-card");
 
-    const mediaTitle = document.createElement("span");
-    mediaTitle.classList.add("title");
-    mediaTitle.innerText = title;
-
-    const medialLikes = document.createElement("span");
-    medialLikes.innerHTML = `<span>${likes}</span> <i class="fa-solid fa-heart"></i>`;
-    medialLikes.classList.add("likes");
-
-    mediaInfos.appendChild(mediaTitle);
-    mediaInfos.appendChild(medialLikes);
-
+    /* gestion des img */
     if (image) {
-      const mediaMiniature = document.createElement("img");
-      mediaMiniature.setAttribute("src", `../../assets/images/medias/${image}`);
-      mediaMiniature.setAttribute("alt", `Titre: ${title}`);
-      mediaMiniature.classList.add("media-miniature");
-      article.appendChild(mediaMiniature);
-    }
-    if (video) {
-      const mediaMiniature = document.createElement("video");
-      const source = document.createElement("source");
-      source.setAttribute("src", `../../assets/images/medias/${video}`);
-      source.setAttribute("type", "video/mp4");
-      const error = document.createElement("p");
-      error.innerText =
-        "Votre navigateur ne permet pas l'affichage de ce media.";
-      mediaMiniature.setAttribute("controls", "");
-      mediaMiniature.classList.add("media-miniature");
-      mediaMiniature.appendChild(source);
-      mediaMiniature.appendChild(error);
-      article.appendChild(mediaMiniature);
+      mediaCard.innerHTML = `
+            <img class="media-miniature" src="../../assets/images/medias/${image}" alt="Image de ${title}"/>
+            <div class="media-infos">
+                <span class="title">${title}</span>
+                <span class="likes">
+                    <span>${likes}</span> <i aria-label="likes" class="fa-solid fa-heart"></i>
+                </span>
+            </div>
+            `;
+      return mediaCard;
     }
 
-    article.appendChild(mediaInfos);
-    article.classList.add("media-article");
-    return article;
+    /* gestion des videos */
+    if (video) {
+      mediaCard.innerHTML = `
+            <video class="media-miniature" autoplay>
+                <source src="../../assets/images/medias/${video}" type="video/mp4">
+                <p>Impossible d'afficher ce media sur votre navigateur.</p>
+            </video>
+            <div class="media-infos">
+                <span class="title">${title}</span>
+                <span class="likes">
+                    <span>${likes}</span> <i aria-label="likes" class="fa-solid fa-heart"></i>
+                </span>
+            </div>
+            `;
+      return mediaCard;
+    }
   }
 
-  return { getPhotographerDom };
+  return { getPhotographerMediaCards };
 }

@@ -5,8 +5,8 @@ let photographerId = params.get("id");
 
 console.log(photographerId);
 
-/** récup les photographes **/
-async function getPhotographer() {
+/** fonction pr récup les photographes **/
+async function getPhotographers() {
   const data = await (await fetch("../../data/photographers.json")).json();
   const photographer = data.photographers.find(
     (photographer) => photographer.id == photographerId
@@ -31,7 +31,7 @@ async function displayData(photographer, medias) {
   const photographerHeader = document.querySelector(".photograph-header");
   const contactButton = document.querySelector(".contact_button");
   const photographerModel = photographerFactory(photographer);
-  const photographerInfos = photographerModel.getPhotographerInfoDOM();
+  const photographerInfos = photographerModel.getPhotographerProfileHeader();
   photographerHeader.insertBefore(photographerInfos, contactButton);
 
   const photographerImage = document.createElement("img");
@@ -43,17 +43,28 @@ async function displayData(photographer, medias) {
   const mediasContainer = document.createElement("div");
   mediasContainer.classList.add("media-container");
 
+  let totalLikes = 0;
+
   medias.forEach((media) => {
     const medialModel = mediaFactory(media);
-    const mediaCard = medialModel.getPhotographerDom();
+    const mediaCard = medialModel.getPhotographerMediaCards();
     mediasContainer.appendChild(mediaCard);
+    totalLikes += media.likes;
   });
 
   main.appendChild(mediasContainer);
+
+  const infosBlock = document.createElement("div");
+  infosBlock.classList.add("info-block");
+  infosBlock.innerHTML = `
+    <span>${totalLikes}<i aria-label="likes" class="fa-solid fa-heart"></i></span>
+    <span>${photographer.price}€ / jour</span>`;
+
+  main.appendChild(infosBlock);
 }
 
 async function init() {
-  const photographer = await getPhotographer();
+  const photographer = await getPhotographers();
   const medias = await getPhotographerMedias();
   displayData(photographer, medias);
 }
