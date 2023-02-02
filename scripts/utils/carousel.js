@@ -31,6 +31,7 @@ function openCarousel(media, medias, index) {
       "src",
       `../../assets/images/medias/${medias[index].image}`
     );
+    image.setAttribute("alt", `Titre de l'image: ${medias[index].title}`);
   }
   if (media.video) {
     video.style.display = "block";
@@ -50,6 +51,11 @@ function showPrevious() {
         "src",
         `../../assets/images/medias/${mediasSlide[currentIndex - 1].image}`
       );
+      image.setAttribute(
+        "alt",
+        `Titre de l'image: ${mediasSlide[currentIndex - 1].title}`
+      );
+
       video.style.display = "none";
       image.style.display = "block";
     } else {
@@ -94,6 +100,11 @@ function showNext() {
         "src",
         `../../assets/images/medias/${mediasSlide[currentIndex + 1].image}`
       );
+      image.setAttribute(
+        "alt",
+        `Titre de l'image: ${mediasSlide[currentIndex + 1].title}`
+      );
+
       video.style.display = "none";
       image.style.display = "block";
     } else {
