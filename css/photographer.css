@@ -173,6 +173,91 @@ textarea {
   font-size: 18px;
 }
 
+#carousel_modal {
+  display: none;
+  position: fixed;
+  background-color: white;
+  width: 100vw;
+  height: 100vh;
+  top: 0px;
+  left: 0px;
+  right: 0px;
+  bottom: 0px;
+}
+
+.carousel {
+  position: absolute;
+  width: 90%;
+  height: 90%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+}
+
+.carousel-media-container {
+  position: relative;
+  width: calc(100% - 100px);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.carousel-media-container img {
+  position: absolute;
+  height: 80%;
+  max-width: 90%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  object-fit: cover;
+}
+
+.carousel-media-container video {
+  position: absolute;
+  height: auto;
+  max-width: 90%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  object-fit: cover;
+}
+
+.carousel-media-container h2 {
+  position: absolute;
+  width: 100%;
+  bottom: 20px;
+  font-size: 20px;
+  text-align: center;
+  color: #901c1c;
+}
+
+.close-carousel {
+  position: absolute;
+  top: 10px;
+  right: 20px;
+  font-size: 42px;
+  color: #901c1c;
+}
+
+.left-panel,
+.right-panel {
+  width: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 42px;
+  color: #901c1c;
+}
+
+.close-carousel,
+.previous-slide,
+.next-slide {
+  cursor: pointer;
+}
+
+/****** RESPONSIVE **********/
+
 @media screen and (max-width: 992px) {
   .photograph-header {
     height: auto;
@@ -200,7 +285,6 @@ textarea {
     font-size: 24px;
   }
 }
-
 @media screen and (max-width: 768px) {
   .modal {
     max-width: 300px;
