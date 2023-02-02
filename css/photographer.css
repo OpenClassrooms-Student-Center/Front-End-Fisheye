@@ -118,13 +118,9 @@
     justify-content: space-between;
 }
 
-/* .custom-select-arrow {
-    color: #ffffff; 
+.custom-select__option.invisible {
+    display: none;
 }
-
-.custom-select-arrow--active {
-
-} */
 
 .custom-select__option--selected:after {
     content: '';
@@ -143,11 +139,6 @@
     transform: rotate(315deg);
 }
 
-.custom-select__option--selected.select-arrow-active:after {
-    border-color: transparent transparent #fff transparent;
-    top: 7px;
-}
-  
 .custom-select__option--hidden {
     border-top: 1px solid #ffffff;
 }
