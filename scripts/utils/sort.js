@@ -63,7 +63,7 @@ customSelectedOptionElement.addEventListener('click', function(e) {
     e.stopPropagation()
 
     this.nextSibling.classList.toggle("custom-select__options--hidden");
-    this.classList.toggle("select-arrow-active");
+    this.classList.toggle("custom-select__option--open");
 })
 
 export { sortPortfolio }
