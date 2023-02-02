@@ -51,7 +51,7 @@ const photographerMedia = {
     //         },
     //         {
     //             element: mediaLikeIcon,
-    //             classes: ["fa-solid", "fa-heart", "like", "like--btn"],
+    //             classes: ["fa-solid", "fa-heart", "like-icon", "like-icon--btn"],
     //         },
     //     ] 
 
@@ -117,7 +117,7 @@ const photographerMedia = {
 
                     <div class="media__likes">
                         <span class="media__likes-number">${likes}</span>
-                        <i class="fa-solid fa-heart like like--btn"></i>
+                        <i class="fa-solid fa-heart like-icon like-btn like-btn--disliked"></i>
                     </div>
 
                 </div>
@@ -145,7 +145,7 @@ const photographerMedia = {
 
                     <div class="media__likes">
                         <span class="media__likes-number">${likes}</span>
-                        <i class="fa-solid fa-heart like like--btn"></i>
+                        <i class="fa-solid fa-heart like-icon like-btn like-btn--disliked"></i>
                     </div>
 
                 </div>

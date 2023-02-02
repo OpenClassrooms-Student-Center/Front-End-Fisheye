@@ -3,6 +3,7 @@ import photographerFactory from "../factories/photographer.js"
 import MediaFactory from "../factories/media.js"
 import { setupCarousel } from "../utils/carousel.js"
 import { sortPortfolio } from "../utils/sort.js"
+import { updateMediaLikes } from "../utils/likes.js"
 
 const galleryElement = document.querySelector('.gallery'),
     carouselItems = document.querySelector('.carousel__items'),
@@ -116,6 +117,12 @@ async function setupSortPortfolioEvent(photographerName, medias) {
 }
 
 
+function setupLikesBehaviour(gallery) {
+    const likeElements = gallery.querySelectorAll('.like-btn')
+    updateMediaLikes(likeElements)
+}
+
+
 async function init() {
 
     // Récupère les datas des photographes
@@ -133,7 +140,7 @@ async function init() {
 
     setupCarousel(galleryElement, photographerMedias.length)
     setupSortPortfolioEvent(photographer.name, mediasSorted)
-
+    setupLikesBehaviour(galleryElement)
 };
 
 window.addEventListener('load', () => init())

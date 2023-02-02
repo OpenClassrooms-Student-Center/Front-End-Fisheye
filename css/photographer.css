@@ -196,13 +196,21 @@
     color: #901C1C;
 }
 
-.like {
+.like-icon {
     font-size: 17px;
     transform: scale(1, 1.05);
 }
 
-.like--btn {
+.like-btn {
+    cursor: pointer;
+}
+
+.like-btn--disliked {
     color: #901C1C;
+}
+
+.like-btn--liked {
+    color: #D3573C;
 }
 
 .additional-information {
