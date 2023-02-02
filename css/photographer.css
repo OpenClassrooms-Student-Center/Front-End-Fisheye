@@ -62,11 +62,96 @@
 }
 
 .portfolio {
+    position: relative;
     padding: 0 100px;
 }
 
 .sort-portfolio {
-    margin-bottom: 60px;
+    position: relative;
+    display: flex;
+    align-items: center;
+    column-gap: 30px;
+    padding-bottom: 60px;
+    cursor: pointer;
+}
+
+.sort-portfolio__label {
+    font-size: 18px;
+    font-weight: 700;
+}
+
+.custom-select {
+    position: absolute;
+    top: 0;
+    left: 100px;    
+    right: 0;
+    z-index: 2;
+    width: 170px;
+    border-radius: 5px;
+    overflow: hidden;
+    background-color: #901C1C;
+}
+  
+.sort-portfolio__options {
+    display: none; 
+}
+  
+.custom-select__options--hidden {
+    display: none;
+}
+  
+.custom-select__option {
+    color: #ffffff;
+    padding: 15px 16px;
+    border: none;
+    cursor: pointer;
+    font-size: 18px;
+    font-weight: 700;
+    height: 20px;
+    margin-left: 5px;
+    margin-right: 5px;    
+}
+
+.custom-select__option--selected {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.custom-select__option--selected:after {
+    position: absolute;
+    content: "";
+    top: 20px;
+    right: 10px;
+    width: 0;
+    height: 0;
+    border: 6px solid transparent;
+    border-color: #fff transparent transparent transparent;
+}
+  
+.custom-select__option--selected.select-arrow-active:after {
+    border-color: transparent transparent #fff transparent;
+    top: 7px;
+}
+  
+.custom-select__option--hidden {
+    border-top: 1px solid #ffffff;
+}
+
+.custom-select__option--hidden:hover {
+    background-color: rgba(0, 0, 0, 0.1);
+}
+
+.divider {
+    margin-right: 5px;
+    margin-left: 5px;
+    border-top: 1px solid;
+    border-top-color: #ffffff;
+}
+
+.custom-select__option--bordered {
+    border-top-color:  #ffffff;    
+    border-bottom-color:  #ffffff;    
 }
 
 .gallery {
@@ -287,7 +372,7 @@ form div {
     top: 50%;
     left: 50%;
     translate: -50% -50%;
-    z-index: 3;
+    z-index: 999999;
     flex-direction: column;
     background: #DB8876;
     border-radius: 5px;
