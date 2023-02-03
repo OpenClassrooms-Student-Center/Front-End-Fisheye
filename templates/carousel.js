@@ -9,7 +9,11 @@ const carousel = {
             <li class="carousel__item item-${index}" aria-hidden="false">
 
                 <div class="carousel__media">
-                    <img class="carousel__picture"  src="assets/Sample_Photos/${photographerName}/${media.image}">
+                    <img 
+                        src="assets/Sample_Photos/${photographerName}/${media.image}"
+                        class="carousel__picture"
+                        alt="${media.title}"
+                    >
                     <span class="carousel__name">${media.title}</span>
                 </div>                                  
 
@@ -26,7 +30,10 @@ const carousel = {
             <li class="carousel__item item-${index} invisible" aria-hidden="true">
 
                 <div class="carousel__media">
-                    <video class="carousel__video" controls>
+                    <video 
+                        class="carousel__video" controls
+                        aria-label="${media.title}"
+                    />
                         <source src="assets/Sample_Photos/${photographerName}/${media.video}" type="video/mp4">
                     </video>
                     <span class="carousel__name">${media.title}</span>

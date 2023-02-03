@@ -244,11 +244,11 @@
     font-weight: 500;
 }
 
-.modal-container {
+.modal-contact {
     display: none;
 }
 
-.modal-container.visible {
+.modal-contact.visible {
     width: 100%;
     position: absolute;
     top: 10%;

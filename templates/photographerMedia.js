@@ -108,7 +108,7 @@ const photographerMedia = {
             <article>
 
                 <a href="#" class="media__link">
-                    <img src="assets/Sample_Photos/${photographerName}/${image}" alt="" class="media__picture">
+                    <img src="assets/Sample_Photos/${photographerName}/${image}" alt="${title}" class="media__picture"/>
                 </a>
 
                 <div class="media__infos">
@@ -136,7 +136,11 @@ const photographerMedia = {
             <article>
 
                 <a href="#" class="media__link">
-                    <video src="assets/Sample_Photos/${photographerName}/${video}" alt="" class="media__picture">
+                    <video 
+                        src="assets/Sample_Photos/${photographerName}/${video}" 
+                        class="media__picture"
+                        aria-label="${title}"
+                    />
                 </a>
 
                 <div class="media__infos">
@@ -145,7 +149,10 @@ const photographerMedia = {
 
                     <div class="media__likes">
                         <span class="media__likes-number">${likes}</span>
-                        <i class="fa-solid fa-heart like-icon like-btn like-btn--disliked"></i>
+                        <i 
+                            class="fa-solid fa-heart like-icon like-btn like-btn--disliked"
+                            aria-label="likes"
+                        ></i>
                     </div>
 
                 </div>

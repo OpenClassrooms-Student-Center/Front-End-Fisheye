@@ -93,6 +93,7 @@ const photographerProfile = {
             <img 
                 src="${picture}" 
                 class="photograph-header__picture"
+                alt="${name}"
             >
         `
 

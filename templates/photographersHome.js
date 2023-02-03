@@ -125,8 +125,8 @@ const photographerHome = {
 
             <a 
                 href="./photographer.html?id=${id}" 
-                aria-label="Lien de redirection vers le profil du photographe ${name}" 
                 class="photographer-view__link"
+                aria-label="Lien de redirection vers le profil du photographe ${name}" 
             >
                 <img src="${picture}" alt="${name}">
                 <h2 aria-label="Paragraphe de présentation du photographe ${name}">${name}</h2>

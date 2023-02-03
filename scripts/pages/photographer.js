@@ -98,8 +98,11 @@ function displayStickyBar(price, medias) {
 function onModalClick(name) {
 
     contactButton.addEventListener('click', (e) => {
-        const modalTitle = document.querySelector('.modal__title')
+        const modalTitle = document.querySelector('.modal__title'),
+            modalContact = document.querySelector('.modal-contact')
+
         modalTitle.innerHTML = `Contactez-moi <br> ${name}`
+        modalContact.setAttribute('aria-label', `Contactez-Moi ${name}`)
     })
 }
 

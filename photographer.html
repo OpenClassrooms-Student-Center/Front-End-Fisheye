@@ -1,150 +1,191 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <link href="css/style.css" rel="stylesheet" type="text/css" />
-    <meta charset="utf-8">
-    <link rel="icon" type="image/png" href="assets/favicon.png">
-    <link href="https://fonts.googleapis.com/css?family=DM+Sans&display=swap" rel="stylesheet">
-    <script src="https://kit.fontawesome.com/ce3638eb6f.js" crossorigin="anonymous"></script>
-    <title>Fisheye - photographe </title>
-  </head>
-  <body>
-    <header class="header header--profile">
-        <a href="index.html">
-            <img src="assets/images/logo.png" class="logo" />
-        </a>
-    </header>
-    <main id="main">
-      <div class="photograph-header">
-        <button class="contact_button" onclick="displayModal()">Contactez-moi</button>
-      </div>
 
-      <span class="confirmation-message">Merci ! Votre réservation a été reçue.</span>
+    <head>
+        <link href="css/style.css" rel="stylesheet" type="text/css" />
+        <meta charset="utf-8">
+        <link rel="icon" type="image/png" href="assets/favicon.png">
+        <link href="https://fonts.googleapis.com/css?family=DM+Sans&display=swap" rel="stylesheet">
+        <script src="https://kit.fontawesome.com/ce3638eb6f.js" crossorigin="anonymous"></script>
+        <title>Fisheye - photographe </title>
+    </head>
 
-      <div class="portfolio">
-        
-        <div class="sort-portfolio">
+    <body>
 
-            <label for="sort" class="sort-portfolio__label">Trier par</label>
-            
-            <div class="custom-select">
-                <select name="sort" id="sort" class="sort-portfolio__options">
-                    <option value="popularity" class="sort-portfolio__option">Popularité</option>
-                    <option value="date" class="sort-portfolio__option">Date</option>
-                    <option value="title" class="sort-portfolio__option">Titre</option>
-                </select>
+        <header class="header header--profile">
+            <a href="index.html">
+                <img src="assets/images/logo.png" class="logo" alt="Page d'accueil Fisheye"/>
+            </a>
+        </header>
+
+        <main id="main">
+
+            <div class="photograph-header" role="region">
+                <button
+                    class="contact_button" 
+                    onclick="displayModal()"
+                    aria-label="Contactez-Moi"
+                >
+                    Contactez-moi
+                </button>
             </div>
 
-        </div>
+            <span class="confirmation-message">Merci ! Votre réservation a été reçue.</span>
 
-        <div class="gallery"></div>
+            <div class="portfolio" role="region">
+                
+                <div class="sort-portfolio">
 
-      </div>
-
-        <div class="additional-information">
-
-            <div class="additional-informations__likes">
-                <span class="additional-information__likes-number"></span>
-                <i class="fa-solid fa-heart like like-icon"></i>
-            </div>
-
-            <span class="additional-information__price"></span>
-
-        </div>  
-
-    </main>
-
-    <div id="contact_modal" class="modal-container">
-
-        <div class="modal">
-
-            <header class="modal__header">
-                <h2 class="modal__title"></h2>
-                <img src="assets/icons/close.svg" onclick="closeModal()" />
-            </header>
-
-				<form class="contact-form">
-
-					<div class="contact-form__field">
-						<label for="firstName" class="contact-form__label">Prénom</label>
-						<input 
-                            type="text" 
-                            id="firstName"
-                            class="contact-form__input contact-form__input--single-line" 
-                            required
-                            minlength="2"
-                        />
-					</div>
-					<div class="contact-form__field">
-						<label for="lastName" class="contact-form__label">Nom</label>
-						<input 
-                            type="text" 
-                            id="lastName"
-                            class="contact-form__input contact-form__input--single-line" 
-                            required
-                            minlength="2"
-                        />
-					</div>
-					<div class="contact-form__field">
-						<label for="email" class="contact-form__label">Email</label>
-						<input 
-                            type="text" 
-                            id="email"
-                            class="contact-form__input contact-form__input--single-line" 
-                            required
-                        />
-					</div>
-					<div class="contact-form__field">
-						<label for="message" class="contact-form__label">Votre message</label>
-						<textarea 
-                            type="text" 
-                            id="message"
-                            class="contact-form__input contact-form__input--multiline" 
-                            required
-                            minlength="20"
-                        ></textarea>
-					</div>
-
+                    <label id="sort-label" for="sort" class="sort-portfolio__label">Trier par</label>
                     
-                    <button class="send-message">Envoyer</button>
+                    <div class="custom-select">
+                        <select name="sort" id="sort" class="sort-portfolio__options">
+                            <option value="popularity" class="sort-portfolio__option">Popularité</option>
+                            <option value="date" class="sort-portfolio__option">Date</option>
+                            <option value="title" class="sort-portfolio__option">Titre</option>
+                        </select>
+                    </div>
 
-				</form>
-
-			</div>
-		</div>
-
-        <div class="modal-carousel" aria-hidden="true">
-
-            <header class="modal-carousel__header">
-                <img src="assets/icons/close.svg" class="modal-carousel__close" />
-            </header>
-
-            <div id="carousel-wrapper" class="carousel-container" aria-hidden="true">
-
-                <div class="carousel__paginate carousel__paginate--left"role="button" class="controls controls-left">
-                    <span class="carousel__arrow">
-                        <i aria-hidden="true" class="fa fa-arrow-circle-left"></i>
-                    </span>
-                    <p class="sr-only">Previous</p>
                 </div>
 
-                <div class="carousel">
-                    <ul class="carousel__items" aria-label="Our selection of Recipes"> </ul>
-                </div>
-                
-                <div class="carousel__paginate carousel__paginate--right" role="button" class="controls controls-right">
-                    <span class="carousel__arrow">
-                        <i aria-hidden="true" class="fa fa-arrow-circle-right"></i>
-                    </span>
-                    <p class="sr-only">Next</p>
-                </div>
-                
+                <div class="gallery"></div>
+
             </div>
 
-        </div>
+            <div class="additional-information" role="contentinfo">
 
-        <script async type="module" src="/scripts/pages/photographer.js"></script>
-        <script src="/scripts/utils/contactForm.js"></script>
-        <script type="module" src="/scripts/utils/sort.js"></script>
-  </body>
+                <div class="additional-informations__likes">
+                    <span class="additional-information__likes-number"></span>
+                    <i class="fa-solid fa-heart like like-icon"></i>
+                </div>
+
+                <span class="additional-information__price"></span>
+
+            </div>  
+
+        </main>
+
+        <div 
+            id="contact_modal" 
+            class="modal-contact" 
+            role="dialog"
+            aria-labelledby="contact-modal-title"
+        >
+
+            <div class="modal">
+
+                <header class="modal__header">
+                    <h2 id="contact-modal-title" class="modal__title"></h2>
+                    <img src="assets/icons/close.svg" onclick="closeModal()" role="button" aria-label="Fermer le formulaire de contact"/>
+                </header>
+
+                    <form class="contact-form">
+
+                        <div class="contact-form__field">
+                            <label id="firstNameLabel" for="firstName" class="contact-form__label">Prénom</label>
+                            <input 
+                                type="text" 
+                                id="firstName"
+                                class="contact-form__input contact-form__input--single-line" 
+                                required
+                                minlength="2"
+                                aria-labelledby="firstNameLabel"
+                            />
+                        </div>
+                        <div class="contact-form__field">
+                            <label id="lastNameLabel" for="lastName" class="contact-form__label">Nom</label>
+                            <input 
+                                type="text" 
+                                id="lastName"
+                                class="contact-form__input contact-form__input--single-line" 
+                                required
+                                minlength="2"
+                                aria-labelledby="lastNameLabel"
+                            />
+                        </div>
+                        <div class="contact-form__field">
+                            <label id="emailLabel" for="email" class="contact-form__label">Email</label>
+                            <input 
+                                type="text" 
+                                id="email"
+                                class="contact-form__input contact-form__input--single-line" 
+                                required
+                                aria-labelledby="emailLabel"
+                            />
+                        </div>
+                        <div class="contact-form__field">
+                            <label id="MessageLabel" for="message" class="contact-form__label">Votre message</label>
+                            <textarea 
+                                type="text" 
+                                id="message"
+                                class="contact-form__input contact-form__input--multiline" 
+                                required
+                                minlength="20"
+                                aria-labelledby="MessageLabel"
+                            ></textarea>
+                        </div>
+
+                        
+                        <button class="send-message" aria-label="Envoyer">Envoyer</button>
+
+                    </form>
+
+                </div>
+            </div>
+
+            <div 
+                class="modal-carousel" 
+                role="dialog"
+                aria-hidden="true" 
+                aria-label="Image en gros plan"
+            >
+
+                <header class="modal-carousel__header">
+                    <img 
+                        src="assets/icons/close.svg" 
+                        class="modal-carousel__close" 
+                        role="button" 
+                        aria-label="Fermer carousel"
+                    />
+                </header>
+
+                <div id="carousel-wrapper" class="carousel-container" aria-hidden="true">
+
+                    <div 
+                        class="carousel__paginate carousel__paginate--left" 
+                        role="link" 
+                        class="controls controls-left"
+                        alt="Image précédente"
+                    >
+                        <span class="carousel__arrow">
+                            <i aria-hidden="true" class="fa fa-arrow-circle-left"></i>
+                        </span>
+                        <p class="sr-only">Previous</p>
+                    </div>
+
+                    <div class="carousel">
+                        <ul class="carousel__items"> </ul>
+                    </div>
+                    
+                    <div 
+                        class="carousel__paginate carousel__paginate--right" 
+                        role="link" 
+                        class="controls controls-right"
+                        alt="Image suivante"
+                    >
+                        <span class="carousel__arrow">
+                            <i aria-hidden="true" class="fa fa-arrow-circle-right"></i>
+                        </span>
+                        <p class="sr-only">Next</p>
+                    </div>
+                    
+                </div>
+
+            </div>
+
+            <script async type="module" src="/scripts/pages/photographer.js"></script>
+            <script src="/scripts/utils/contactForm.js"></script>
+            <script type="module" src="/scripts/utils/sort.js"></script>
+    </body>
+
 </html>

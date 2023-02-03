@@ -2,7 +2,7 @@ import { ApiJson } from "../services/Api.js";
 import photographerFactory from "../factories/photographer.js";
 
 async function displayData(photographers) {
-    const photographersSection = document.querySelector(".photographer_section");
+    const photographersSection = document.querySelector(".photographers_section");
 
     photographers.forEach((photographer) => {
         const photographerModel = photographerFactory(photographer);

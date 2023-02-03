@@ -15,11 +15,12 @@ const customSelectElement = document.querySelector('.custom-select'),
     selectOptionsLength = selectElement.length
     // selectOptions = Array.from(selectElement.children).map(child => child.textContent)
 
-
-const customSelectedOptionElement = document.createElement('div')
-customSelectedOptionElement.classList.add('custom-select__option', 'custom-select__option--selected')
-customSelectedOptionElement.innerHTML = selectElement.options[selectElement.selectedIndex].innerHTML
-
+    
+    const customSelectedOptionElement = document.createElement('div')
+    customSelectedOptionElement.classList.add('custom-select__option', 'custom-select__option--selected')
+    customSelectedOptionElement.innerHTML = selectElement.options[selectElement.selectedIndex].innerHTML
+    
+customSelectElement.setAttribute('aria-label', `Trier par ${selectElement.value}`)
 customSelectElement.appendChild(customSelectedOptionElement)
 
 const dividerLine = document.createElement('div')
@@ -40,26 +41,28 @@ for(let i=0; i < selectOptionsLength; i++) {
     customOptionElement.innerHTML = selectElement.options[i].innerHTML
 
     customOptionElement.addEventListener('click', function(e) {
-                
+        
+        
         let selectedOption = this.parentNode.previousSibling
         const previousContent = selectedOption.textContent
         selectedOption.textContent = this.textContent
-
+        
         let customOptions = Array.from(customOptionsElement.children)
         const positionSelectedOption = customOptions.indexOf(this)
-
+        
         const lastOptions = customOptions.slice(-(selectOptionsLength-positionSelectedOption))
         const firstOptions = customOptions.slice(0, -(selectOptionsLength-positionSelectedOption))
         customOptions = lastOptions.concat(firstOptions)
         // const selectedOptionToMove = customOptions.shift()
         // customOptions.push(selectedOptionToMove)
         customOptionsElement.append(...customOptions)
-
+        
         for(let j=0; j < selectOptionsLength ; j++) {
             
             if (this.innerHTML == selectElement.options[j].innerHTML) {
                 selectElement.selectedIndex = j;
                 selectElement.dispatchEvent(new Event('change'))
+                customSelectElement.setAttribute('aria-label', `Trier par ${selectElement.value}`)
                 
                 // this.textContent = previousContent
                 // customOptions[j].style.display = 'none'
