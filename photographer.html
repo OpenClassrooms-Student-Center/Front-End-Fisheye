@@ -31,7 +31,7 @@
 
             <span class="confirmation-message">Merci ! Votre réservation a été reçue.</span>
 
-            <div class="portfolio" role="region">
+            <div class="portfolio" role="region" aria-label="Le portfolio du phographe">
                 
                 <div class="sort-portfolio">
 
@@ -51,7 +51,7 @@
 
             </div>
 
-            <div class="additional-information" role="contentinfo">
+            <div class="additional-information" role="complementary">
 
                 <div class="additional-informations__likes">
                     <span class="additional-information__likes-number"></span>
@@ -154,34 +154,32 @@
                     />
                 </header>
 
-                <div id="carousel-wrapper" class="carousel-container" aria-hidden="true">
+                <div id="carousel-wrapper" class="carousel-container">
 
                     <div 
                         class="carousel__paginate carousel__paginate--left" 
                         role="link" 
                         class="controls controls-left"
-                        alt="Image précédente"
                     >
                         <span class="carousel__arrow">
                             <i aria-hidden="true" class="fa fa-arrow-circle-left"></i>
                         </span>
-                        <p class="sr-only">Previous</p>
+                        <p class="sr-only">Image précédente</p>
                     </div>
 
                     <div class="carousel">
-                        <ul class="carousel__items"> </ul>
+                        <ul class="carousel__items" role="presentation"> </ul>
                     </div>
                     
                     <div 
                         class="carousel__paginate carousel__paginate--right" 
                         role="link" 
                         class="controls controls-right"
-                        alt="Image suivante"
                     >
                         <span class="carousel__arrow">
                             <i aria-hidden="true" class="fa fa-arrow-circle-right"></i>
                         </span>
-                        <p class="sr-only">Next</p>
+                        <p class="sr-only">Image suivante</p>
                     </div>
                     
                 </div>

@@ -29,10 +29,16 @@
     font-size: 64px;
 }
 
+.presentation__infos {
+    display: flex;
+    flex-direction: column;
+    row-gap: 19px;
+    margin: 0;
+}
+
 .presentation__location {
     color: #901C1C;
     font-size: 24px;
-    margin-bottom: 19px;
 }
 
 .presentation__tagline {
@@ -201,6 +207,10 @@
     color: #901C1C;
 }
 
+.media__likes-number.liked {
+    color: #D3573C;
+}
+
 .like-icon {
     font-size: 17px;
     transform: scale(1, 1.05);
@@ -208,13 +218,10 @@
 
 .like-btn {
     cursor: pointer;
-}
-
-.like-btn--disliked {
     color: #901C1C;
 }
 
-.like-btn--liked {
+.like-btn.liked {
     color: #D3573C;
 }
 
@@ -387,7 +394,7 @@ form div {
     translate: -50% -50%;
     z-index: 999999;
     flex-direction: column;
-    background: #DB8876;
+    background: #ffffff;
     border-radius: 5px;
     overflow: hidden;
     padding: 10px 30px;
@@ -444,14 +451,14 @@ form div {
     display: block;
 }
 
-.carousel__media {
+.carousel__creation {
     display: flex;
     flex-direction: column;
     row-gap: 5px;
     padding-bottom: 10px;
 }
 
-.carousel__picture, .carousel__video {
+.carousel__media {
     width: 100%;
     max-height: 600px;
 }

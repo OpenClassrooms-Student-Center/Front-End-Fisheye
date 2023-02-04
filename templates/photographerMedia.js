@@ -107,17 +107,26 @@ const photographerMedia = {
 
             <article>
 
-                <a href="#" class="media__link">
-                    <img src="assets/Sample_Photos/${photographerName}/${image}" alt="${title}" class="media__picture"/>
+                <a href="#" class="media__link" aria-label="${title}, gros plan">
+                    <img 
+                        src="assets/Sample_Photos/${photographerName}/${image}" 
+                        class="media__picture"
+                        alt="" 
+                    />
                 </a>
 
                 <div class="media__infos">
-
-                    <span class="media__name">${title}</span>
+                    <span class="media__name" aria-hidden="true">${title}</span>
 
                     <div class="media__likes">
-                        <span class="media__likes-number">${likes}</span>
-                        <i class="fa-solid fa-heart like-icon like-btn like-btn--disliked"></i>
+                        <span class="media__likes-number" aria-hidden="true">${likes}</span>
+                        <span class="sr-only">Nombre de likes, ${likes}</span>
+                        <i 
+                            class="fa-solid fa-heart like-icon like-btn"
+                            role="button"
+                            aria-label="Aimer la création"
+                        >
+                        </i>
                     </div>
 
                 </div>
@@ -135,23 +144,24 @@ const photographerMedia = {
 
             <article>
 
-                <a href="#" class="media__link">
+                <a href="#" class="media__link" aria-label="${title}, gros plan">
                     <video 
                         src="assets/Sample_Photos/${photographerName}/${video}" 
                         class="media__picture"
-                        aria-label="${title}"
                     />
                 </a>
 
                 <div class="media__infos">
 
-                    <span class="media__name">${title}</span>
+                    <span class="media__name" aria-hidden="true">${title}</span>
 
                     <div class="media__likes">
-                        <span class="media__likes-number">${likes}</span>
+                        <span class="media__likes-number" aria-hidden="true">${likes}</span>
+                        <span class="sr-only">Nombre de likes, ${likes}</span>
                         <i 
-                            class="fa-solid fa-heart like-icon like-btn like-btn--disliked"
-                            aria-label="likes"
+                            class="fa-solid fa-heart like-icon like-btn"
+                            role="button"
+                            aria-label="Aimer la création"
                         ></i>
                     </div>
 

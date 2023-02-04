@@ -33,12 +33,14 @@ for(let i=0; i < selectOptionsLength; i++) {
 
     const customOptionElement = document.createElement('div')
     customOptionElement.classList.add('custom-select__option', 'custom-select__option--hidden')
+    customOptionElement.setAttribute("role", "option");
 
     if (i===0) {
         customOptionElement.classList.add('invisible')
     }
 
     customOptionElement.innerHTML = selectElement.options[i].innerHTML
+    customOptionElement.setAttribute('id', `value-${i}`)
 
     customOptionElement.addEventListener('click', function(e) {
         
@@ -63,6 +65,8 @@ for(let i=0; i < selectOptionsLength; i++) {
                 selectElement.selectedIndex = j;
                 selectElement.dispatchEvent(new Event('change'))
                 customSelectElement.setAttribute('aria-label', `Trier par ${selectElement.value}`)
+                customSelectElement.setAttribute('aria-activedescendant', `value-${i}`)
+                this.setAttribute('aria-selected', "true")
                 
                 // this.textContent = previousContent
                 // customOptions[j].style.display = 'none'

@@ -120,7 +120,7 @@ const photographerHome = {
     createHTML: function(id, name, city, country, tagline, price, picture) {
 
         const article = document.createElement('article')
-        article.setAttribute('aria-label', "Aperçu du photographe indiquant sa location, sa tagline et son prix")
+        article.setAttribute('aria-describedby', "profile-desc")
 
         const articleElements = 
             `<a 
@@ -129,10 +129,15 @@ const photographerHome = {
                 aria-labelledby="id"
             >
                 <img src="${picture}" alt="">
-                <h2 id="${id}">${name}</h2>
+                <h2 id="${id}" aria-hidden="true">${name}</h2>
             </a>
 
             <div class="photographer-view__presentation">
+
+                <span id="profile-desc" class="sr-only">
+                    Aperçu du photographe indiquant sa location, sa tagline et son prix"
+                </span>
+
                 <span class="photographer-view__location" > ${city}, ${country} </span>
 
                 <span class="photographer-view__tagline" > 

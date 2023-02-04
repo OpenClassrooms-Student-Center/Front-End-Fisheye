@@ -3,29 +3,30 @@ let currentItemPosition = 0
 const modalCarousel = document.querySelector(".modal-carousel"),
     nextButton = document.querySelector('.carousel__paginate--right'),
     previousButton = document.querySelector('.carousel__paginate--left'),
-    closeModalButton = document.querySelector('.modal-carousel__close')
+    closeModalButton = document.querySelector('.modal-carousel__close'),
+    mainElement = document.querySelector('main'),
+    headerElement = document.querySelector('header')    
 
 function setupCarousel(gallery, mediasLength) {
 
     const medias = gallery.querySelectorAll('.media__link'),
         carouselItems = document.querySelectorAll('.carousel__item')
 
-    medias.forEach((media, index) => media.addEventListener('click', (e) => {
+    medias.forEach((media, index) => {
 
-        e.preventDefault()
-        
-        let lastItem;
-        if (modalCarousel.className.includes('visible')) {
-            lastItem = document.querySelector(`.item-${currentItemPosition}`)
-        }
+        media.addEventListener('click', (e) => {
+            initCarousel(e, index)
+        })
 
-        currentItemPosition = index
-        const currentItem = document.querySelector(`.item-${currentItemPosition}`)
-        setNodeAttributes(currentItem, lastItem)
+        media.addEventListener('keydown', (e) => {
 
-        displayCarouselModal()
-    }))
-
+            const keyName = e.keyCode ? e.keyCode : e.key
+            
+            if (keyName === 'Enter' || keyName === 13 || keyName == 32 || keyName == "Space") {
+                initCarousel(e, index)
+            }
+        })
+    }) 
     
     closeModalButton.addEventListener('click', () => closeCarouselModal(carouselItems))
     previousButton.addEventListener('click', () => goToPreviousSlide(mediasLength))
@@ -35,24 +36,56 @@ function setupCarousel(gallery, mediasLength) {
 
         e.preventDefault()
 
-        const keyName = e.keyCode ? e.keyCode : e.key
-        
-        if (keyName === 'ArrowRight' || keyName === 39) {
-            goToNextSlide(mediasLength)
-        } else if (keyName === 'ArrowLeft' || keyName === 37) {
-            goToPreviousSlide(mediasLength)
+        if (modalCarousel.className.includes('visible')) {
+
+            const keyName = e.keyCode ? e.keyCode : e.key
+            
+            if (keyName === 'ArrowRight' || keyName === 39) {
+                goToNextSlide(mediasLength)
+            } else if (keyName === 'ArrowLeft' || keyName === 37) {
+                goToPreviousSlide(mediasLength)
+            } else if (keyName === 'Escape' || keyName === 27) {
+                closeCarouselModal(carouselItems)
+            }
         }
     })    
 }
 
 
+function initCarousel(e, index) {
+
+    e.preventDefault()
+        
+    let lastItem;
+    if (modalCarousel.className.includes('visible')) {
+        lastItem = document.querySelector(`.item-${currentItemPosition}`)
+    }
+
+    currentItemPosition = index
+    const currentItem = document.querySelector(`.item-${currentItemPosition}`)
+    setNodeAttributes(currentItem, lastItem)
+
+    mainElement.setAttribute('aria-hidden', "true")
+    headerElement.setAttribute('aria-hidden', "true")
+    
+    displayCarouselModal()
+    const mainFocusableElement = currentItem.querySelector('.carousel__media')
+    mainFocusableElement.focus()
+
+}
+
+
 function displayCarouselModal() {
     modalCarousel.classList.add('visible')
+    modalCarousel.setAttribute('aria-hidden', 'false')
 }
 
 function closeCarouselModal(elements) {
     modalCarousel.classList.remove('visible')
     removeDisplay(elements)
+    mainElement.setAttribute('aria-hidden', "false")
+    headerElement.setAttribute('aria-hidden', "false")
+    modalCarousel.setAttribute('aria-hidden', 'true')
 }
 
 
@@ -117,5 +150,6 @@ const goToPreviousSlide = (mediasLength) => {
 
     setNodeAttributes(currentItem, lastItem)
 }
+
 
 export {setupCarousel} 

@@ -9,15 +9,15 @@ async function updateMediaLikes(likesButtons) {
                 likesNumber = parseInt(likesNumberContent)
 
             let updateOperation = 1;
-            if (this.className.includes('like-btn--liked')) {
+            if (this.className.includes('liked')) {
                 likesNumberElement.textContent = likesNumber - 1
                 updateOperation = -1
             } else {
                 likesNumberElement.textContent = likesNumber + 1
             }
 
-            this.classList.toggle('like-btn--liked')
-
+            this.classList.toggle('liked')
+            this.parentNode.children[0].classList.toggle('liked')
             updateTotalLikes(updateOperation)
         })
     })
