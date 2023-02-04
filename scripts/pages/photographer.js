@@ -4,6 +4,7 @@ let params = new URL(document.location).searchParams;
 let photographerId = params.get("id");
 
 let totalLikes = 0;
+let photographerPrice = 0;
 
 console.log(photographerId);
 
@@ -29,6 +30,8 @@ getPhotographerMedias();
 
 /** Affiche la data **/
 async function displayData(photographer, medias) {
+  photographerPrice = photographer.price;
+
   const main = document.getElementById("main");
   const photographerHeader = document.querySelector(".photograph-header");
   const contactButton = document.querySelector(".contact_button");
@@ -56,7 +59,7 @@ async function displayData(photographer, medias) {
     const likeButton = mediaCard.querySelector(".likes");
     likeButton.addEventListener("click", (e) => {
       liked = !liked;
-      likeMedia(e, media, liked, mediaCard);
+      likeMedia(e, media, liked, mediaCard, totalLikes);
     });
 
     mediaCard.setAttribute("tabindex", 0);
@@ -73,13 +76,11 @@ async function displayData(photographer, medias) {
 
   main.appendChild(mediasContainer);
 
-  const infosBlock = document.createElement("div");
-  infosBlock.classList.add("info-block");
-  infosBlock.innerHTML = `
-    <span>${totalLikes} <i aria-label="likes" class="fa-solid fa-heart"></i></span>
-    <span>${photographer.price}€ / jour</span>`;
-
-  main.appendChild(infosBlock);
+  const infosBlock = document.querySelector(".info-block");
+  const totalLikesDisplay = infosBlock.querySelector(".info-block-likes");
+  const priceDisplay = infosBlock.querySelector(".info-block-price");
+  totalLikesDisplay.innerHTML = `${totalLikes} <i aria-label="likes" class="fa-solid fa-heart"></i>`;
+  priceDisplay.innerHTML = `${photographerPrice} €/jour`;
 }
 
 async function init() {

@@ -173,6 +173,20 @@ textarea {
   font-size: 18px;
 }
 
+.info-block {
+  display: flex;
+  position: fixed;
+  background-color: #db8876;
+  border-radius: 10px 10px 0px 0px;
+  justify-content: space-between;
+  font-size: 22px;
+  padding: 10px;
+  width: 300px;
+  bottom: 0px;
+  right: 1%;
+  gap: 80px;
+}
+
 #carousel_modal {
   display: none;
   position: fixed;
@@ -187,12 +201,12 @@ textarea {
 
 .carousel {
   position: absolute;
+  display: flex;
   width: 90%;
   height: 90%;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  display: flex;
 }
 
 .carousel-media-container {
