@@ -13,8 +13,13 @@ let mediasSlide = [];
 
 /****** addEventListener *******/
 carouselCloseButton.addEventListener("click", closeCarousel);
+carouselCloseButton.addEventListener("keypress", closeCarousel);
+
 previousButton.addEventListener("click", showPrevious);
+previousButton.addEventListener("keypress", showPrevious);
+
 nextButton.addEventListener("click", showNext);
+nextButton.addEventListener("keypress", showNext);
 
 /** fonction openCarousel */
 function openCarousel(media, medias, index) {
@@ -22,6 +27,7 @@ function openCarousel(media, medias, index) {
   currentIndex = index;
 
   carouselModal.style.display = "block";
+  carouselCloseButton.focus();
   title.textContent = medias[index].title;
 
   if (media.image) {
