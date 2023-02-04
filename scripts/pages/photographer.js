@@ -79,7 +79,7 @@ async function displayData(photographer, medias) {
   const infosBlock = document.querySelector(".info-block");
   const totalLikesDisplay = infosBlock.querySelector(".info-block-likes");
   const priceDisplay = infosBlock.querySelector(".info-block-price");
-  totalLikesDisplay.innerHTML = `${totalLikes} <i aria-label="likes" class="fa-solid fa-heart"></i>`;
+  totalLikesDisplay.textContent = totalLikes;
   priceDisplay.innerHTML = `${photographerPrice} €/jour`;
 }
 

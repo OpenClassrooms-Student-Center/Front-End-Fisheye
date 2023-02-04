@@ -14,5 +14,5 @@ function likeMedia(e, media, liked, mediaCard) {
   }
   const likesCounter = mediaCard.querySelector(".likes-counter");
   likesCounter.textContent = likesCount;
-  totalLikesDisplay.innerHTML = `${totalLikes} <i aria-label="likes" class="fa-solid fa-heart"></i>`;
+  totalLikesDisplay.textContent = totalLikes;
 }
