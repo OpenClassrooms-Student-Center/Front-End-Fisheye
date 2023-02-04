@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="fr">
 
     <head>
         <link href="css/style.css" rel="stylesheet" type="text/css" />
@@ -24,7 +24,6 @@
                 <button
                     class="contact_button" 
                     onclick="displayModal()"
-                    aria-label="Contactez-Moi"
                 >
                     Contactez-moi
                 </button>
@@ -56,7 +55,7 @@
 
                 <div class="additional-informations__likes">
                     <span class="additional-information__likes-number"></span>
-                    <i class="fa-solid fa-heart like like-icon"></i>
+                    <i class="fa-solid fa-heart like like-icon" aria-hidden="true"></i>
                 </div>
 
                 <span class="additional-information__price"></span>
@@ -81,7 +80,7 @@
 
                     <form class="contact-form">
 
-                        <div class="contact-form__field">
+                        <div class="contact-form__field" role="group" aria-labelledby="firstNameLabel">
                             <label id="firstNameLabel" for="firstName" class="contact-form__label">Prénom</label>
                             <input 
                                 type="text" 
@@ -90,9 +89,11 @@
                                 required
                                 minlength="2"
                                 aria-labelledby="firstNameLabel"
+                                placeholder="Renseigner le prénom"
                             />
                         </div>
-                        <div class="contact-form__field">
+
+                        <div class="contact-form__field" role="group" aria-labelledby="lastNameLabel">
                             <label id="lastNameLabel" for="lastName" class="contact-form__label">Nom</label>
                             <input 
                                 type="text" 
@@ -101,9 +102,10 @@
                                 required
                                 minlength="2"
                                 aria-labelledby="lastNameLabel"
+                                placeholder="Renseigner le nom"
                             />
                         </div>
-                        <div class="contact-form__field">
+                        <div class="contact-form__field" role="group" aria-labelledby="emailLabel">
                             <label id="emailLabel" for="email" class="contact-form__label">Email</label>
                             <input 
                                 type="text" 
@@ -111,9 +113,11 @@
                                 class="contact-form__input contact-form__input--single-line" 
                                 required
                                 aria-labelledby="emailLabel"
+                                placeholder="Renseigner l'email"
                             />
                         </div>
-                        <div class="contact-form__field">
+
+                        <div class="contact-form__field" role="group" aria-labelledby="MessageLabel">
                             <label id="MessageLabel" for="message" class="contact-form__label">Votre message</label>
                             <textarea 
                                 type="text" 
@@ -122,6 +126,7 @@
                                 required
                                 minlength="20"
                                 aria-labelledby="MessageLabel"
+                                placeholder="Ecrire un message pour le(la) photographe"
                             ></textarea>
                         </div>
 

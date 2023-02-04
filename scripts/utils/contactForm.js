@@ -252,6 +252,7 @@ function checkRegexFormat(value, regExp, element, message) {
 function showText(element, message) {
     element.setAttribute(errorAttributeName, message)
     element.setAttribute(errorVisibleAttributeName, true)
+    element.setAttribute('aria-invalid', true)
 }
 
 

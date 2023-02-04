@@ -84,8 +84,18 @@ const photographerProfile = {
 
             <div class="presentation">
                 <h1 class="presentation__name">${name}</h1>
-                <span class="presentation__location">${city}, ${country}</span>
-                <span class="presentation__tagline">${tagline}</span>
+                <p 
+                    class="presentation__infos presentation__location"
+                    aria-label="Sa location: ${city}, ${country}"
+                >
+                    ${city}, ${country}
+                </p>
+                <p 
+                    class="presentation__infos presentation__tagline"
+                    aria-label="Sa tagline: ${tagline}"
+                >
+                    ${tagline}
+                </p>
             </div>
         `
 

@@ -120,43 +120,27 @@ const photographerHome = {
     createHTML: function(id, name, city, country, tagline, price, picture) {
 
         const article = document.createElement('article')
+        article.setAttribute('aria-label', "Aperçu du photographe indiquant sa location, sa tagline et son prix")
 
-        const articleElements = `
-
-            <a 
+        const articleElements = 
+            `<a 
                 href="./photographer.html?id=${id}" 
                 class="photographer-view__link"
-                aria-label="Lien de redirection vers le profil du photographe ${name}" 
+                aria-labelledby="id"
             >
-                <img src="${picture}" alt="${name}">
-                <h2 aria-label="Paragraphe de présentation du photographe ${name}">${name}</h2>
+                <img src="${picture}" alt="">
+                <h2 id="${id}">${name}</h2>
             </a>
 
-            <p 
-                aria-label="Location du photographe ${name}" 
-                class="photographer-view__presentation"
-            >
-                <span 
-                    aria-label="Tagline du photographe ${name}" 
-                    class="photographer-view__location"
-                >
-                    ${city}, ${country}
-                </span>
+            <div class="photographer-view__presentation">
+                <span class="photographer-view__location" > ${city}, ${country} </span>
 
-                <span 
-                    aria-label="Prix à la journée du photographe ${name}" 
-                    class="photographer-view__tagline"
-                >
+                <span class="photographer-view__tagline" > 
                     ${tagline}
                 </span>
 
-                <span
-                    class="photographer-view__price"
-                >
-                    ${price}€/jour
-                </span>
-                
-            </p>
+                <span class="photographer-view__price" > ${price}€/jour </span>
+            </div>
         `
 
         article.innerHTML = articleElements

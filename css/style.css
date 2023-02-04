@@ -78,6 +78,10 @@ h1 {
     margin: 0;
 }
 
+.photographer-view__infos {
+    margin: 0;
+}
+
 .photographer-view__location {
     color: #901C1C;
     font-size: 13px;
