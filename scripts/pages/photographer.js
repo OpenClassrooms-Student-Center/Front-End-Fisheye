@@ -3,6 +3,8 @@
 let params = new URL(document.location).searchParams;
 let photographerId = params.get("id");
 
+let totalLikes = 0;
+
 console.log(photographerId);
 
 /** fonction pr récup les photographes **/
@@ -43,18 +45,26 @@ async function displayData(photographer, medias) {
   const mediasContainer = document.createElement("div");
   mediasContainer.classList.add("media-container");
 
-  let totalLikes = 0;
-
   medias.forEach((media, index) => {
+    totalLikes += media.likes;
+
+    let liked = false;
+
     const medialModel = mediaFactory(media);
     const mediaCard = medialModel.getPhotographerMediaCards();
+
+    const likeButton = mediaCard.querySelector(".likes");
+    likeButton.addEventListener("click", (e) => {
+      liked = !liked;
+      likeMedia(e, media, liked, mediaCard);
+    });
 
     mediaCard.setAttribute("tabindex", 0);
     mediaCard.addEventListener("click", () =>
       openCarousel(main, media, medias, index)
     );
     mediaCard.addEventListener("keypress", () =>
-      openCarousel(main, media, medias, index)
+      openCarousel(main, media, medias, index, totalLikes)
     );
 
     mediasContainer.appendChild(mediaCard);
@@ -66,7 +76,7 @@ async function displayData(photographer, medias) {
   const infosBlock = document.createElement("div");
   infosBlock.classList.add("info-block");
   infosBlock.innerHTML = `
-    <span>${totalLikes}<i aria-label="likes" class="fa-solid fa-heart"></i></span>
+    <span>${totalLikes} <i aria-label="likes" class="fa-solid fa-heart"></i></span>
     <span>${photographer.price}€ / jour</span>`;
 
   main.appendChild(infosBlock);
