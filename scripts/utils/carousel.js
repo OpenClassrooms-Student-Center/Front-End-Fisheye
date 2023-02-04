@@ -10,6 +10,7 @@ const title = carouselModal.querySelector("h2");
 
 let currentIndex = undefined;
 let mediasSlide = [];
+let mediaCards = [];
 
 /****** addEventListener *******/
 carouselCloseButton.addEventListener("click", closeCarousel);
@@ -22,7 +23,12 @@ nextButton.addEventListener("click", showNext);
 nextButton.addEventListener("keypress", showNext);
 
 /** fonction openCarousel */
-function openCarousel(media, medias, index) {
+function openCarousel(main, media, medias, index) {
+  main.setAttribute("aria-hidden", true);
+  mediaCards = Array.from(main.querySelectorAll(".media-card"));
+  mediaCards.forEach((card) => card.setAttribute("tabindex", -1));
+  carouselModal.setAttribute("aria-hidden", false);
+
   mediasSlide = medias;
   currentIndex = index;
 
@@ -96,6 +102,7 @@ function showPrevious() {
     currentIndex = mediasSlide.length - 1;
   }
   title.textContent = mediasSlide[currentIndex].title;
+  console.log("mediaindex :", currentIndex);
 }
 
 /** fonction showNext */
@@ -146,4 +153,7 @@ function showNext() {
 /** fonction closeCarousel ***/
 function closeCarousel() {
   carouselModal.style.display = "none";
+  main.setAttribute("aria-hidden", false);
+  mediaCards.forEach((card) => card.setAttribute("tabindex", 0));
+  carouselModal.setAttribute("aria-hidden", true);
 }
