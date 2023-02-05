@@ -1,8 +1,26 @@
 @import url("photographer.css");
+@import url("loaders.css");
 
 body {
     font-family: "DM Sans", sans-serif;
     margin: 0;
+}
+
+@keyframes load-page-elements {
+    100% {
+        visibility: visible;
+        opacity: 1;
+    }
+}
+
+/* Tout le contenu de la page doit être invisible au démarrage
+On collapse aussi le contenu pour réduire la hauteur de la page
+L'animation permet de faire apparaître le contenu après un certain délai
+dépendant du loader utilisé */
+.page__home {
+    opacity: 0;
+    visibility: collapse;
+    animation: load-page-elements 1500ms 2500ms ease-in-out forwards;
 }
 
 .header {
