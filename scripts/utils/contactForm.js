@@ -1,11 +1,20 @@
-const modal = document.getElementById("contact_modal");
+const modal = document.getElementById("contact_modal"),
+    mainElement = document.querySelector('main'),
+    headerElement = document.querySelector('header')
 
 function displayModal() {
     modal.classList.add('visible')
+    modal.setAttribute('aria-hidden', 'false')
+    mainElement.setAttribute('aria-hidden', "true")
+    headerElement.setAttribute('aria-hidden', "true")   
+    modal.querySelector('input').focus()
 }
 
 function closeModal() {
     modal.classList.remove('visible')
+    modal.setAttribute('aria-hidden', 'true')
+    mainElement.setAttribute('aria-hidden', "false")
+    headerElement.setAttribute('aria-hidden', "false")    
 }
 
  
@@ -289,3 +298,39 @@ function showConfirmationPopup() {
     }, 2000);
 }
 
+function trapFocus(element) {
+
+    const focusableElements = element.querySelectorAll('input, textarea')
+
+    const firstFocusableElement = focusableElements[0],
+        lastFocusableElement = focusableElements[focusableElements.length - 1];
+console.log(focusableElements)
+    document.addEventListener('keydown', function(e) {
+console.log('in funct')
+        const isTabPressed = (e.key === 'Tab' || e.keyCode === 9);
+
+        if (!isTabPressed) { 
+            return; 
+        }
+
+        if ( e.shiftKey ) {
+            
+            if (document.activeElement === firstFocusableElement) {
+                e.preventDefault();
+                lastFocusableElement.focus();
+            }
+
+        } else {
+console.log(document.activeElement)
+console.log(lastFocusableElement)
+            if (document.activeElement === lastFocusableElement) {
+                document.activeElement
+                firstFocusableElement.focus();
+                e.preventDefault();
+            }
+        }
+    });
+
+}
+
+trapFocus(modal)

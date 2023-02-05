@@ -77,15 +77,22 @@ function displayMedias(photographerName, photographerMedias) {
 
 
 function displayLikesTotalNumber(medias) {
-    const likesElement = document.querySelector('.additional-information__likes-number')
+    const likesElement = document.querySelector('.additional-information__likes-number'),
+        likesElementSR = likesElement.nextElementSibling
+
     const likesTotalNumber = medias.reduce((acc, media) => acc + media.likes, 0)
     likesElement.textContent = likesTotalNumber
+    likesElementSR.textContent = `Nombre total de likes, ${likesTotalNumber}`
 }
 
 
 function displayPrice(price) {
-    const priceElement = document.querySelector('.additional-information__price')
+    const priceElement = document.querySelector('.additional-information__price'),
+        priceElementSR = priceElement.nextElementSibling
+
     priceElement.textContent = price + '€ / jour'
+    priceElementSR.textContent = `Tarif du photographe, ${price}€ par jour`
+    
 }
 
 
@@ -104,7 +111,18 @@ function onModalClick(name) {
         modalTitle.innerHTML = `Contactez-moi <br> ${name}`
         modalContact.setAttribute('aria-label', `Contactez-Moi ${name}`)
     })
+
+    contactButton.addEventListener('keydown', (e) => {
+
+        const keyName = e.keyCode ? e.keyCode : e.key
+
+        if ( (keyName === 'Enter' || keyName === 13) || ( (keyName === 'Alt' || keyName === 18 || e.altKey) && (keyName === 'Control' || keyName === 17 || key.ctrlKey) && (keyName === ' ' || keyName === 32 || key.Space) ) ) {
+            displayModal(e, index)
+        }
+    })    
 }
+
+
 
 
 async function setupSortPortfolioEvent(photographerName, medias) {
@@ -147,4 +165,13 @@ async function init() {
 };
 
 window.addEventListener('load', () => init())
+
+document.addEventListener('keydown', (e) => {
+
+    const keyName = e.keyCode ? e.keyCode : e.key
+
+    if (keyName === 'Escape' || keyName === 27) {
+        closeModal()
+    }
+})
 

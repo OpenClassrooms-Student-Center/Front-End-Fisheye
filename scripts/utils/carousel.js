@@ -21,8 +21,8 @@ function setupCarousel(gallery, mediasLength) {
         media.addEventListener('keydown', (e) => {
 
             const keyName = e.keyCode ? e.keyCode : e.key
-            
-            if (keyName === 'Enter' || keyName === 13 || keyName == 32 || keyName == "Space") {
+
+            if ( (keyName === 'Enter' || keyName === 13) || ( (keyName === 'Alt' || keyName === 18 || e.altKey) && (keyName === 'Control' || keyName === 17 || key.ctrlKey) && (keyName === ' ' || keyName === 32 || key.Space) ) ) {
                 initCarousel(e, index)
             }
         })

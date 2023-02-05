@@ -54,11 +54,13 @@
             <div class="additional-information" role="complementary">
 
                 <div class="additional-informations__likes">
-                    <span class="additional-information__likes-number"></span>
+                    <span class="additional-information__likes-number" aria-hidden="true"></span>
+                    <span class="sr-only"></span>
                     <i class="fa-solid fa-heart like like-icon" aria-hidden="true"></i>
                 </div>
-
-                <span class="additional-information__price"></span>
+                
+                <span class="additional-information__price" aria-hidden="true"></span>
+                <span class="sr-only"></span>
 
             </div>  
 
@@ -69,6 +71,7 @@
             class="modal-contact" 
             role="dialog"
             aria-labelledby="contact-modal-title"
+            aria-hidden="true"
         >
 
             <div class="modal">
@@ -78,117 +81,117 @@
                     <img src="assets/icons/close.svg" onclick="closeModal()" role="button" aria-label="Fermer le formulaire de contact"/>
                 </header>
 
-                    <form class="contact-form">
+                <form class="contact-form">
 
-                        <div class="contact-form__field" role="group" aria-labelledby="firstNameLabel">
-                            <label id="firstNameLabel" for="firstName" class="contact-form__label">Prénom</label>
-                            <input 
-                                type="text" 
-                                id="firstName"
-                                class="contact-form__input contact-form__input--single-line" 
-                                required
-                                minlength="2"
-                                aria-labelledby="firstNameLabel"
-                                placeholder="Renseigner le prénom"
-                            />
-                        </div>
-
-                        <div class="contact-form__field" role="group" aria-labelledby="lastNameLabel">
-                            <label id="lastNameLabel" for="lastName" class="contact-form__label">Nom</label>
-                            <input 
-                                type="text" 
-                                id="lastName"
-                                class="contact-form__input contact-form__input--single-line" 
-                                required
-                                minlength="2"
-                                aria-labelledby="lastNameLabel"
-                                placeholder="Renseigner le nom"
-                            />
-                        </div>
-                        <div class="contact-form__field" role="group" aria-labelledby="emailLabel">
-                            <label id="emailLabel" for="email" class="contact-form__label">Email</label>
-                            <input 
-                                type="text" 
-                                id="email"
-                                class="contact-form__input contact-form__input--single-line" 
-                                required
-                                aria-labelledby="emailLabel"
-                                placeholder="Renseigner l'email"
-                            />
-                        </div>
-
-                        <div class="contact-form__field" role="group" aria-labelledby="MessageLabel">
-                            <label id="MessageLabel" for="message" class="contact-form__label">Votre message</label>
-                            <textarea 
-                                type="text" 
-                                id="message"
-                                class="contact-form__input contact-form__input--multiline" 
-                                required
-                                minlength="20"
-                                aria-labelledby="MessageLabel"
-                                placeholder="Ecrire un message pour le(la) photographe"
-                            ></textarea>
-                        </div>
-
-                        
-                        <button class="send-message" aria-label="Envoyer">Envoyer</button>
-
-                    </form>
-
-                </div>
-            </div>
-
-            <div 
-                class="modal-carousel" 
-                role="dialog"
-                aria-hidden="true" 
-                aria-label="Image en gros plan"
-            >
-
-                <header class="modal-carousel__header">
-                    <img 
-                        src="assets/icons/close.svg" 
-                        class="modal-carousel__close" 
-                        role="button" 
-                        aria-label="Fermer carousel"
-                    />
-                </header>
-
-                <div id="carousel-wrapper" class="carousel-container">
-
-                    <div 
-                        class="carousel__paginate carousel__paginate--left" 
-                        role="link" 
-                        class="controls controls-left"
-                    >
-                        <span class="carousel__arrow">
-                            <i aria-hidden="true" class="fa fa-arrow-circle-left"></i>
-                        </span>
-                        <p class="sr-only">Image précédente</p>
+                    <div class="contact-form__field" aria-labelledby="firstNameLabel">
+                        <label id="firstNameLabel" for="firstName" class="contact-form__label">Prénom</label>
+                        <input 
+                            type="text" 
+                            id="firstName"
+                            class="contact-form__input contact-form__input--single-line" 
+                            required
+                            aria-required=true
+                            minlength="2"
+                            aria-labelledby="firstNameLabel"
+                        />
                     </div>
 
-                    <div class="carousel">
-                        <ul class="carousel__items" role="presentation"> </ul>
+                    <div class="contact-form__field" role="group" aria-labelledby="lastNameLabel">
+                        <label id="lastNameLabel" for="lastName" class="contact-form__label">Nom</label>
+                        <input 
+                            type="text" 
+                            id="lastName"
+                            class="contact-form__input contact-form__input--single-line" 
+                            required
+                            aria-required=true
+                            minlength="2"
+                            aria-labelledby="lastNameLabel"
+                        />
                     </div>
+                    <div class="contact-form__field" role="group" aria-labelledby="emailLabel">
+                        <label id="emailLabel" for="email" class="contact-form__label">Email</label>
+                        <input 
+                            type="text" 
+                            id="email"
+                            class="contact-form__input contact-form__input--single-line" 
+                            required
+                            aria-required=true
+                            aria-labelledby="emailLabel"
+                        />
+                    </div>
+
+                    <div class="contact-form__field" role="group" aria-labelledby="MessageLabel">
+                        <label id="MessageLabel" for="message" class="contact-form__label">Votre message</label>
+                        <textarea 
+                            type="text" 
+                            id="message"
+                            class="contact-form__input contact-form__input--multiline" 
+                            required
+                            aria-required=true
+                            minlength="20"
+                            aria-labelledby="MessageLabel"
+                        ></textarea>
+                    </div>
+
                     
-                    <div 
-                        class="carousel__paginate carousel__paginate--right" 
-                        role="link" 
-                        class="controls controls-right"
-                    >
-                        <span class="carousel__arrow">
-                            <i aria-hidden="true" class="fa fa-arrow-circle-right"></i>
-                        </span>
-                        <p class="sr-only">Image suivante</p>
-                    </div>
-                    
-                </div>
+                    <button class="send-message" aria-label="Envoyer">Envoyer</button>
+
+                </form>
 
             </div>
+        </div>
 
-            <script async type="module" src="/scripts/pages/photographer.js"></script>
-            <script src="/scripts/utils/contactForm.js"></script>
-            <script type="module" src="/scripts/utils/sort.js"></script>
+        <div 
+            class="modal-carousel" 
+            role="dialog"
+            aria-hidden="true" 
+            aria-label="Image en gros plan"
+        >
+
+            <header class="modal-carousel__header">
+                <img 
+                    src="assets/icons/close.svg" 
+                    class="modal-carousel__close" 
+                    role="button" 
+                    aria-label="Fermer carousel"
+                />
+            </header>
+
+            <div id="carousel-wrapper" class="carousel-container">
+
+                <div 
+                    class="carousel__paginate carousel__paginate--left" 
+                    role="link" 
+                    class="controls controls-left"
+                >
+                    <span class="carousel__arrow">
+                        <i aria-hidden="true" class="fa fa-arrow-circle-left"></i>
+                    </span>
+                    <p class="sr-only">Image précédente</p>
+                </div>
+
+                <div class="carousel">
+                    <ul class="carousel__items" role="presentation"> </ul>
+                </div>
+                
+                <div 
+                    class="carousel__paginate carousel__paginate--right" 
+                    role="link" 
+                    class="controls controls-right"
+                >
+                    <span class="carousel__arrow">
+                        <i aria-hidden="true" class="fa fa-arrow-circle-right"></i>
+                    </span>
+                    <p class="sr-only">Image suivante</p>
+                </div>
+                
+            </div>
+
+        </div>
+
+        <script async type="module" src="/scripts/pages/photographer.js"></script>
+        <script src="/scripts/utils/contactForm.js"></script>
+        <script type="module" src="/scripts/utils/sort.js"></script>
     </body>
 
 </html>
