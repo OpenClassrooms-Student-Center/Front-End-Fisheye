@@ -8,7 +8,7 @@ import { updateMediaLikes } from "../utils/likes.js"
 const galleryElement = document.querySelector('.gallery'),
     carouselItems = document.querySelector('.carousel__items'),
     mediasSortTypeDefault = 'popularity',
-    filterButton = document.querySelector('#sort'),
+    filterButton = document.querySelector('#sort-portfolio'),
     contactButton = document.querySelector('.contact_button')
 
 

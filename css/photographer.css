@@ -98,10 +98,6 @@
     background-color: #901C1C;
 }
   
-.sort-portfolio__options {
-    display: none; 
-}
-  
 .custom-select__options--hidden {
     display: none;
 }

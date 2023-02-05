@@ -35,14 +35,15 @@
                 
                 <div class="sort-portfolio">
 
-                    <label id="sort-label" for="sort" class="sort-portfolio__label">Trier par</label>
+                    <label id="sort-label" for="sort-portfolio" class="sort-portfolio__label">Trier par</label>
                     
-                    <div class="custom-select">
-                        <select name="sort" id="sort" class="sort-portfolio__options">
-                            <option value="popularity" class="sort-portfolio__option">Popularité</option>
-                            <option value="date" class="sort-portfolio__option">Date</option>
-                            <option value="title" class="sort-portfolio__option">Titre</option>
-                        </select>
+                    <select name="sort" id="sort-portfolio" class="sort-portfolio__options sr-only">
+                        <option value="popularity" class="sort-portfolio__option">Popularité</option>
+                        <option value="date" class="sort-portfolio__option">Date</option>
+                        <option value="title" class="sort-portfolio__option">Titre</option>
+                    </select>
+
+                    <div class="custom-select" aria-hidden="true">
                     </div>
 
                 </div>
