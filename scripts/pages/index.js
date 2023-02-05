@@ -1,8 +1,46 @@
 
 // --------------- FICHIER DE CONTRÔLE DE LA PAGE D'ACCUEIL --------------- 
 
-import { getDataFromApi } from "../services/Api.js";
+
+
+/****************************** MODULES **************************************** */
+/********************************************************************** */
+import { fetchDataFromApi } from "../services/Api.js";
 import photographerFactory from "../factories/photographer.js";
+import updateLoaderText from "../utils/loaders.js";
+
+
+/****************************** PROCÉDURES **************************************** */
+/********************************************************************** */
+
+init();
+
+
+/****************************** FUNCTIONS **************************************** */
+/********************************************************************** */
+
+/* Lance les différentes étapes nécessaires pour le bon affichage de la page
+    Paramètres :
+        - Aucun
+    Renvoie :
+        - Rien
+*/
+async function init() {
+    
+    // Pour les SR : indique que la page est chargée
+    setTimeout(updateLoaderText, 3000)
+
+    const fetchingURL = '../../data/photographers.json'; 
+
+    const data = await fetchDataFromApi(fetchingURL).catch(error => {
+        console.log(error)
+        throw new Error()
+    })
+
+    const { photographers } = data
+    await displayPhotographers(photographers).catch(error => console.log(error))
+    
+};
 
 
 /* Affiche les différents photographes sur la page 
@@ -26,30 +64,3 @@ async function displayPhotographers(photographers) {
         photographersSection.appendChild(userCardDOM);
     });
 }; 
-
-
-/* Lance les différentes étapes nécessaires pour le bon affichage de la page
-    Paramètres :
-        - Aucun
-    Renvoie :
-        - Rien
-*/
-async function init() {
-    
-    const fetchingURL = '../../data/photographers.json'; 
-
-    // Récupère la data des photographes
-    const data = await getDataFromApi(fetchingURL).catch(error => {
-        console.log(error)
-        throw new Error()
-    })
-
-    const { photographers } = data
-    await displayPhotographers(photographers).catch(error => console.log(error))
-
-    // L'élément ne doit être lu qu'une seule fois au moment du chargement, on le fait donc disparaître une fois les photographes affichés
-    const loadingTextElement = document.querySelector('.loading-text')
-    loadingTextElement.style.display = 'none'
-};
-
-init();

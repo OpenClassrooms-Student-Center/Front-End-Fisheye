@@ -12,18 +12,24 @@
 
     <body>
 
+        <!-- L'animation est remplacé par ce texte pour les screen readers -->
+        <span class="sr-only loading-text">La page se charge</span>
+
         <header class="header header--profile">
             <a href="index.html">
                 <img src="assets/images/logo.png" class="logo" alt="Page d'accueil Fisheye"/>
             </a>
         </header>
 
-        <main id="main">
+        <!-- Animation de chargement pendant que les datas des photographes sont chargées -->
+        <div class="spinner" aria-hidden="true"></div>
+
+        <main id="main-2" class="main__container">
 
             <div class="photograph-header" role="region">
                 <button
                     class="contact_button" 
-                    onclick="displayModal()"
+                    tabindex="0"
                 >
                     Contactez-moi
                 </button>
@@ -48,11 +54,11 @@
 
                 </div>
 
-                <div class="gallery"></div>
+                <!-- <div class="gallery"></div> -->
 
             </div>
 
-            <div class="additional-information" role="complementary">
+            <div class="additional-information" role="complementary" tabindex="0">
 
                 <div class="additional-informations__likes">
                     <span class="additional-information__likes-number" aria-hidden="true"></span>
@@ -69,66 +75,77 @@
 
         <div 
             id="contact_modal" 
-            class="modal-contact" 
+            class="modal-contact modal-container" 
             role="dialog"
             aria-labelledby="contact-modal-title"
             aria-hidden="true"
+            tabindex="0"
         >
 
             <div class="modal">
 
                 <header class="modal__header">
-                    <h2 id="contact-modal-title" class="modal__title"></h2>
-                    <img src="assets/icons/close.svg" onclick="closeModal()" role="button" aria-label="Fermer le formulaire de contact"/>
+                    <h2 
+                        id="contact-modal-title" 
+                        class="modal__title" 
+                    >
+                    </h2>
+                    <img 
+                        src="assets/icons/close.svg" 
+                        class="modal-contact__close"
+                        role="button" 
+                        aria-label="Fermer le formulaire de contact"
+                        tabindex="0"
+                    />
                 </header>
 
                 <form class="contact-form">
 
-                    <div class="contact-form__field" aria-labelledby="firstNameLabel">
-                        <label id="firstNameLabel" for="firstName" class="contact-form__label">Prénom</label>
+                    <div class="contact-form__field">
+                        <label id="firstNameLabel" for="firstName" class="contact-form__label" aria-hidden="true">Prénom</label>
                         <input 
                             type="text" 
                             id="firstName"
                             class="contact-form__input contact-form__input--single-line" 
                             required
-                            aria-required=true
+                            aria-required="true"
                             minlength="2"
                             aria-labelledby="firstNameLabel"
                         />
                     </div>
 
-                    <div class="contact-form__field" role="group" aria-labelledby="lastNameLabel">
-                        <label id="lastNameLabel" for="lastName" class="contact-form__label">Nom</label>
+                    <div class="contact-form__field">
+                        <label id="lastNameLabel" for="lastName" class="contact-form__label" aria-hidden="true">Nom</label>
                         <input 
                             type="text" 
                             id="lastName"
                             class="contact-form__input contact-form__input--single-line" 
                             required
-                            aria-required=true
+                            aria-required="true"
                             minlength="2"
                             aria-labelledby="lastNameLabel"
                         />
                     </div>
-                    <div class="contact-form__field" role="group" aria-labelledby="emailLabel">
-                        <label id="emailLabel" for="email" class="contact-form__label">Email</label>
+                    <div class="contact-form__field">
+                        <label id="emailLabel" for="email" class="contact-form__label" aria-hidden="true">Email</label>
                         <input 
-                            type="text" 
+                            type="email" 
                             id="email"
                             class="contact-form__input contact-form__input--single-line" 
                             required
-                            aria-required=true
+                            aria-required="true"
                             aria-labelledby="emailLabel"
                         />
                     </div>
 
-                    <div class="contact-form__field" role="group" aria-labelledby="MessageLabel">
-                        <label id="MessageLabel" for="message" class="contact-form__label">Votre message</label>
+                    <div class="contact-form__field">
+                        <label id="MessageLabel" for="message" class="contact-form__label" aria-hidden="true">Votre message</label>
                         <textarea 
                             type="text" 
                             id="message"
                             class="contact-form__input contact-form__input--multiline" 
                             required
-                            aria-required=true
+                            aria-required="true"
                             minlength="20"
                             aria-labelledby="MessageLabel"
                         ></textarea>
@@ -143,7 +160,7 @@
         </div>
 
         <div 
-            class="modal-carousel" 
+            class="modal-carousel modal-container" 
             role="dialog"
             aria-hidden="true" 
             aria-label="Image en gros plan"
@@ -191,7 +208,6 @@
         </div>
 
         <script async type="module" src="/scripts/pages/photographer.js"></script>
-        <script src="/scripts/utils/contactForm.js"></script>
         <script type="module" src="/scripts/utils/sort.js"></script>
     </body>
 

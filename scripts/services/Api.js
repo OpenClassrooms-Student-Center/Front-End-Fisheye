@@ -6,7 +6,7 @@
     Renvoie :
         - la réponse reçue par le serveur au bon format 
 */
-async function getDataFromApi(url) {
+async function fetchDataFromApi(url) {
 
     const response = await fetch(url)
     
@@ -62,4 +62,4 @@ async function getJsonData(response) {
     return results 
 }
 
-export { getDataFromApi }
+export { fetchDataFromApi }

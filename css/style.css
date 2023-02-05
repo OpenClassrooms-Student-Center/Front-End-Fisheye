@@ -17,7 +17,7 @@ body {
 On collapse aussi le contenu pour réduire la hauteur de la page
 L'animation permet de faire apparaître le contenu après un certain délai
 dépendant du loader utilisé */
-.page__home {
+.main__container {
     opacity: 0;
     visibility: collapse;
     animation: load-page-elements 1500ms 2500ms ease-in-out forwards;
@@ -99,11 +99,6 @@ h1 {
 .photographer-view__infos {
     margin: 0;
 }
-
-.photographer-view__description {
-    display: none;
-}
-
 
 .photographer-view__location {
     color: #901C1C;

@@ -1,9 +1,22 @@
-import { ApiJson } from "../services/Api.js"
+
+// --------------- FICHIER DE CONTRÔLE DE LA PAGE DE PROFIL D'UN PHOTOGRAPHE --------------- 
+
+
+/****************************** MODULES **************************************** */
+/********************************************************************** */
+
+import { fetchDataFromApi } from "../services/Api.js"
 import photographerFactory from "../factories/photographer.js"
+import { setupContactModalBehaviour } from "../utils/modals/index.js"
 import MediaFactory from "../factories/media.js"
 import { setupCarousel } from "../utils/carousel.js"
 import { sortPortfolio } from "../utils/sort.js"
 import { updateMediaLikes } from "../utils/likes.js"
+import updateLoaderText from "../utils/loaders.js"
+
+
+/****************************** PROCEDURES **************************************** */
+/********************************************************************** */
 
 const galleryElement = document.querySelector('.gallery'),
     carouselItems = document.querySelector('.carousel__items'),
@@ -11,7 +24,76 @@ const galleryElement = document.querySelector('.gallery'),
     filterButton = document.querySelector('#sort-portfolio'),
     contactButton = document.querySelector('.contact_button')
 
+init();
 
+
+/****************************** FUNCTIONS **************************************** */
+/********************************************************************** */
+
+/* Lance les différentes étapes nécessaires pour le bon affichage de la page
+    Paramètres :
+        - Acun
+    Renvoie :
+        - Rien
+*/
+async function init() {
+
+    // Pour les SR : indique que la page est chargée
+    setTimeout(updateLoaderText, 3000)
+
+    const { photographer, photographerMedias } = await getPhotographerData();
+
+    displayPhotographerHeader(photographer)
+
+    // Apparition du formulaire de contact
+    setupContactModalBehaviour(photographer.name)
+
+    // Affichage de l'encart
+    displayStickyBar(photographer.price, photographerMedias)
+
+
+    const mediasSorted = await sortPortfolio(photographerMedias, mediasSortTypeDefault)
+
+    await displayMedias(photographer.name, mediasSorted)
+
+    setupCarousel(galleryElement, photographerMedias.length)
+    setupSortPortfolioEvent(photographer.name, mediasSorted)
+    setupLikesBehaviour(galleryElement)
+
+};
+
+
+/* Récupère les infos du photographe ainsi que ses créations
+    Paramètres :
+        - Aucun
+    Renvoie :
+        - Un objet contenant l'objet relatif aux infos du photographe 
+        et une liste regroupant l'ensemble de ses créations
+*/
+async function getPhotographerData() {
+
+    const id = parseInt(getPhotographerId())
+
+    const fetchingURL = '../../data/photographers.json'; 
+
+    const data  = await fetchDataFromApi(fetchingURL)
+
+    const { photographers, media } = data,
+        // Chaque photographe est associé à un id unique
+        photographer = photographers.filter(item => item.id === id)[0],
+        // Chaque création est un objet où l'id du photographe est indiqué
+        photographerMedias = media.filter(item => item.photographerId === id)
+
+    return { photographer, photographerMedias}
+}
+
+
+/* Récupère le paramètre id d'une url
+    Paramètres :
+        - Aucun
+    Renvoie :
+        - l'id
+*/
 function getPhotographerId() {
 
     const paramsURL = (new URL(document.location)).searchParams,
@@ -20,30 +102,16 @@ function getPhotographerId() {
     return id
 }
 
-async function getPhotographerData() {
+/* Dispose les éléments dans le bloc présentant les infos du photographe
+    Paramètres :
+        - Un objet représentant un photographe
+    Renvoie :
+        - Rien 
+*/
+function displayPhotographerHeader(photographer) {
 
-    const id = parseInt(getPhotographerId())
-
-    let data 
-    try {
-        const fetchingURL = '../../data/photographers.json'; 
-        data  = await ApiJson(fetchingURL)
-    } catch(err) {
-        console.log(`Error while trying to get photographers: ${err}`)
-        throw new Error()
-    }
-
-    const { photographers, media } = data,
-        photographer = photographers.filter(item => item.id === id)[0],
-        photographerMedias = media.filter(item => item.photographerId === id)
-
-    return { photographer, photographerMedias}
-}
-
-async function displayPhotographerInformation(photographer) {
-
+    // Création des éléments adéquats via la méthode getUserCardDOM 
     const photographerModel = photographerFactory(photographer);
-
     const [photographerPresentationElement, photographerPictureElement] = photographerModel.getUserCardDOM(true)
 
     const photographerHeader = document.querySelector('.photograph-header')
@@ -53,6 +121,7 @@ async function displayPhotographerInformation(photographer) {
     photographerHeader.insertAdjacentHTML('beforeend', photographerPictureElement)
 
 }
+
 
 
 function displayMedia(photographerName, media, index) {
@@ -102,28 +171,6 @@ function displayStickyBar(price, medias) {
 }
 
 
-function onModalClick(name) {
-
-    contactButton.addEventListener('click', (e) => {
-        const modalTitle = document.querySelector('.modal__title'),
-            modalContact = document.querySelector('.modal-contact')
-
-        modalTitle.innerHTML = `Contactez-moi <br> ${name}`
-        modalContact.setAttribute('aria-label', `Contactez-Moi ${name}`)
-    })
-
-    contactButton.addEventListener('keydown', (e) => {
-
-        const keyName = e.keyCode ? e.keyCode : e.key
-
-        if ( (keyName === 'Enter' || keyName === 13) || ( (keyName === 'Alt' || keyName === 18 || e.altKey) && (keyName === 'Control' || keyName === 17 || key.ctrlKey) && (keyName === ' ' || keyName === 32 || key.Space) ) ) {
-            displayModal(e, index)
-        }
-    })    
-}
-
-
-
 
 async function setupSortPortfolioEvent(photographerName, medias) {
 
@@ -142,36 +189,3 @@ function setupLikesBehaviour(gallery) {
     const likeElements = gallery.querySelectorAll('.like-btn')
     updateMediaLikes(likeElements)
 }
-
-
-async function init() {
-
-    // Récupère les datas des photographes
-    const { photographer, photographerMedias } = await getPhotographerData();
-
-    displayPhotographerInformation(photographer)
-
-    onModalClick(photographer.name)
-    displayStickyBar(photographer.price, photographerMedias)
-
-
-    const mediasSorted = await sortPortfolio(photographerMedias, mediasSortTypeDefault)
-
-    await displayMedias(photographer.name, mediasSorted)
-
-    setupCarousel(galleryElement, photographerMedias.length)
-    setupSortPortfolioEvent(photographer.name, mediasSorted)
-    setupLikesBehaviour(galleryElement)
-};
-
-window.addEventListener('load', () => init())
-
-document.addEventListener('keydown', (e) => {
-
-    const keyName = e.keyCode ? e.keyCode : e.key
-
-    if (keyName === 'Escape' || keyName === 27) {
-        closeModal()
-    }
-})
-

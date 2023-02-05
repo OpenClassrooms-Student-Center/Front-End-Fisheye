@@ -1,15 +1,17 @@
 
+// --------------- TEMPLATE HTML POUR LA CARTE D'INFORMATIONS D'UN PHOTOGRAPHE SUR LA PAGE D'ACCUEIL --------------- 
 
+/* Crée les éléments html associé au bloc d'informations d'un photographe affiché sur la page d'accueil
+    Paramètres :
+        - Un objet représentant un photographe
+    Renvoie :
+        - Un élément HTML article
+*/
 function createHTML(data) {
 
     const { id, name, city, country, tagline, price, picture } = data
 
     const article = document.createElement('article')
-
-    /* On veut que le SR puisse décrire à la personne à quoi correspondent les cartes
-        Sinon la personne va entendre le nom d'une ville et une tagline sans aucun contexte
-        On rend donc le paragraphe focusable et on y ajoute une description 
-    */
 
     const articleElements = 
         `<a 
@@ -21,11 +23,7 @@ function createHTML(data) {
             <h2 id="${id}" aria-hidden="true">${name}</h2>
         </a>
 
-        <p class="photographer-view__presentation" tabindex="0" aria-describedby="profile-desc">
-
-            <span id="profile-desc" class="photographer-view__description" aria-hidden="true">
-                Aperçu du photographe indiquant sa location, sa tagline et son prix"
-            </span>
+        <p class="photographer-view__presentation" tabindex="0" aria-label="Location, tagline et tarif du photographe">
 
             <span class="photographer-view__location" > ${city}, ${country} </span>
 

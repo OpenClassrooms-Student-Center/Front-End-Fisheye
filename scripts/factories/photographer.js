@@ -1,11 +1,11 @@
 
 // --------------- FACTORY PATTERN POUR GERER LA CREATION D'UNE CARTE D'UN PHOTOGRAPHE --------------- 
 
-import { createHTML as createPhotographerHomeCard } from "../../templates/photographersHome.js";
-import photographerProfile from "../../templates/photographerProfile.js";
+import { createHTML as createPhotographerHomeElements } from "../../templates/photographersHome.js";
+import { createHTML as createPhotographerProfileElements } from "../../templates/photographerProfile.js";
 
 
-/* Choisis la méthode de création du bloc d'informations du photographe 
+/* Crée une fonction de factory pour gérer la création du bloc d'informations d'un photographe
     Paramètres :
         - Un objet représentant les informations d'un photographe
     Renvoie :
@@ -17,7 +17,7 @@ function photographerFactory(data) {
     const picture = `assets/photographers/${newData.portrait}`;
     newData.picture = picture
 
-    /* Crée le bloc HTML d'informations du photographe 
+    /* Crée le bloc HTML d'informations du photographe en fonction de la page visitée
         Paramètres :
             - Un booléen indiquand si l'on est sur la page de profil
         Renvoie :
@@ -28,9 +28,9 @@ function photographerFactory(data) {
         let userCardDOM;
 
         if(profileScreen) {
-            userCardDOM = photographerProfile.createHTML(newData)
+            userCardDOM = createPhotographerProfileElements(newData)
         } else {
-            userCardDOM = createPhotographerHomeCard(newData)
+            userCardDOM = createPhotographerHomeElements(newData)
         }
 
         return userCardDOM
