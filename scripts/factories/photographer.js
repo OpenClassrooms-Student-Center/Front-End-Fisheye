@@ -1,67 +1,42 @@
-import photographersHome from "../../templates/photographersHome.js";
-import photographerProfile from "../../templates/photographerProfile.js";
-// import { createElements, setAttributes, attachContent, addClasses, appendChilds  } from "../../templates/generic.js";
 
+// --------------- FACTORY PATTERN POUR GERER LA CREATION D'UNE CARTE D'UN PHOTOGRAPHE --------------- 
+
+import { createHTML as createPhotographerHomeCard } from "../../templates/photographersHome.js";
+import photographerProfile from "../../templates/photographerProfile.js";
+
+
+/* Choisis la méthode de création du bloc d'informations du photographe 
+    Paramètres :
+        - Un objet représentant les informations d'un photographe
+    Renvoie :
+        - la fonction retenue
+*/
 function photographerFactory(data) {
 
-    const { name, portrait, id, city, country, tagline, price } = data;
+    let newData = Object.assign(data)
+    const picture = `assets/photographers/${newData.portrait}`;
+    newData.picture = picture
 
-    const picture = `assets/photographers/${portrait}`;
-
-    
+    /* Crée le bloc HTML d'informations du photographe 
+        Paramètres :
+            - Un booléen indiquand si l'on est sur la page de profil
+        Renvoie :
+            - Le bloc d'informations
+    */    
     function getUserCardDOM(profileScreen=false) {
 
         let userCardDOM;
 
         if(profileScreen) {
-            userCardDOM = photographerProfile.createHTML(name, city, country, tagline, picture)
+            userCardDOM = photographerProfile.createHTML(newData)
         } else {
-            userCardDOM = photographersHome.createHTML(id, name, city, country, tagline, price, picture)
+            userCardDOM = createPhotographerHomeCard(newData)
         }
 
         return userCardDOM
     }
-    
-    // function getUserCardHomeDOM() {
 
-    //     const [article, profileLinkElement, imageElement, nameElement, presentationElement, locationElement, taglineElement, priceElement] = createElements('article', 'a', 'img', 'h2', 'p', 'span', 'span', 'span')
-    
-    //     const listOfAttributes = photographersHome.createAttributes(id, name, picture, profileLinkElement, imageElement, nameElement, presentationElement, locationElement, taglineElement, priceElement)
-    //     setAttributes(listOfAttributes)
-    
-    //     const listOfContents = photographersHome.createContent(name, city, country, tagline, price, nameElement, locationElement, taglineElement, priceElement)
-    //     attachContent(listOfContents)
-    
-    //     const listOfClasses = photographersHome.createClasses(article, profileLinkElement, presentationElement, locationElement, taglineElement, priceElement)
-    //     addClasses(listOfClasses)
-        
-    //     const listOfChilds = photographersHome.createChilds(article, profileLinkElement, imageElement, nameElement, presentationElement, locationElement, taglineElement, priceElement)
-    //     appendChilds(listOfChilds)
-    
-    //     return (article);
-    // }
-
-
-    // function getUserCardProfileDOM() {
-        
-    //     const [photographerPresentationElement, photographerNameElement, photographerLocationElement, photogragrapherTaglineElement, photographerPictureElement] = createElements('div', 'h1', 'span', 'span', 'img')
-
-    //     const listOfAttributes = photographerProfile.createAttributes(picture, photographerPictureElement)
-    //     setAttributes(listOfAttributes)
-
-    //     const listOfContents = photographerProfile.createContent(name, city, country, tagline, photographerNameElement, photographerLocationElement, photogragrapherTaglineElement)
-    //     attachContent(listOfContents)
-
-    //     const listOfClasses = photographerProfile.createClasses(photographerPresentationElement, photographerNameElement, photographerLocationElement, photogragrapherTaglineElement, photographerPictureElement)
-    //     addClasses(listOfClasses)
-        
-    //     const listOfChilds = photographerProfile.createChilds(photographerPresentationElement, photographerNameElement, photographerLocationElement, photogragrapherTaglineElement, photographerPictureElement)
-    //     appendChilds(listOfChilds)
-
-    //     return { photographerPresentationElement: photographerPresentationElement, photographerPictureElement: photographerPictureElement }
-    // }
-
-    return { name, picture, getUserCardDOM }
+    return { getUserCardDOM }
 }
 
 

@@ -1,25 +1,65 @@
-async function Api(url) {
+// --------------- FONCTIONS ASSOCIEES AUX REQUETES D'API (ici juste fichiers internes) --------------- 
+
+/* Fetch une url
+    Paramètres :
+        - une url
+    Renvoie :
+        - la réponse reçue par le serveur au bon format 
+*/
+async function getDataFromApi(url) {
+
     const response = await fetch(url)
-    return response 
-}
-
-
-async function ApiJson(url) {
-
-    let response;
-    try {
-        response = await Api(url)
-    } catch(err) {
-        throw new Error(`Network failure - ${err}`)
-    }
-
-    let results;
+    
+    let getDataMethod;
     if(response.ok) {
-        results = await response.json()
-        return results 
+        getDataMethod = getDataTreatmentMethod(response)
     } else {
-        throw new Error(`Network response - ${response}`)
+        throw new Error(`Mauvaise réponse du serveur - ${response}`)
     }
+
+    const results = await getDataMethod(response)
+    
+    return results 
 }
 
-export { ApiJson }
+
+/* Identifie la fonction permettant de traiter la réponse reçue par le serveur
+    Paramètres :
+        - une réponse du serveur
+    Renvoie :
+        - La fonction appropriée
+*/
+function getDataTreatmentMethod(response) {
+
+    const headerContentType = response.headers.get("content-type")
+    const contentType = headerContentType ? headerContentType.split(';')[0] : null
+
+    let getDataMethod
+
+    switch (contentType) {
+
+        case 'application/json':
+            getDataMethod = getJsonData
+            break;
+
+        default:
+            getDataMethod = getJsonData
+            break;                
+    }    
+
+    return getDataMethod
+}
+
+
+/* Sort la data d'un fichier json
+    Paramètres :
+        - une réponse du serveur
+    Renvoie :
+        - la data incluse dans la réponse
+*/
+async function getJsonData(response) {
+    const results = await response.json()
+    return results 
+}
+
+export { getDataFromApi }

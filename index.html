@@ -11,8 +11,10 @@
 
     <body>
 
+        <!-- Animation de chargement pendant que les datas des photographes sont chargées -->
         <div class="spinner" aria-hidden="true"></div>
-        <span class="sr-only">La page se charge</span>
+        <!-- L'animation est remplacé par ce texte pour les screen readers -->
+        <span class="sr-only loading-text">La page se charge</span>
         
         <header class="header header--home">
             <a href="index.html">
@@ -22,6 +24,7 @@
         </header>
 
         <main id="main" class="page__home">
+            <!-- Bloc alimenté dynamiquement via JS -->
             <div class="photographers_section" role="region"></div>
         </main>
 
