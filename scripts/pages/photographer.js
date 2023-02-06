@@ -10,7 +10,7 @@ import photographerFactory from "../factories/photographer.js"
 import { setupContactModalBehaviour } from "../utils/modals/index.js"
 import MediaFactory from "../factories/media.js"
 import { setupCarousel } from "../utils/carousel.js"
-import { sortPortfolio } from "../utils/sort.js"
+import { getMediasorted } from "../utils/sort.js"
 import { updateMediaLikes } from "../utils/likes.js"
 import updateLoaderText from "../utils/loaders.js"
 
@@ -20,7 +20,6 @@ import updateLoaderText from "../utils/loaders.js"
 
 const galleryElement = document.querySelector('.gallery'),
     carouselItems = document.querySelector('.carousel__items'),
-    mediasSortTypeDefault = 'popularity',
     filterButton = document.querySelector('#sort-portfolio'),
     contactButton = document.querySelector('.contact_button')
 
@@ -51,14 +50,16 @@ async function init() {
     // Affichage de l'encart
     displayStickyBar(photographer.price, photographerMedias)
 
-    const mediasSorted = await sortPortfolio(photographerMedias, mediasSortTypeDefault)
-
-    await displayMedias(photographer.name, mediasSorted)
+    // Affichage par défaut
+    sortPortfolioAndDisplayMedias(photographer.name, photographerMedias)
 
     setupCarousel(galleryElement, photographerMedias.length)
-    setupSortPortfolioEvent(photographer.name, mediasSorted)
     setupLikesBehaviour(galleryElement)
 
+    // Affichage quand changement de tri
+    filterButton.addEventListener('change', async (e) => {
+        sortPortfolioAndDisplayMedias(photographer.name, photographerMedias, e.target.value)
+    })
 };
 
 
@@ -73,9 +74,9 @@ async function getPhotographerData() {
 
     const id = parseInt(getPhotographerId())
 
-    const fetchingURL = '../../data/photographers.json'; 
+    const fetchingURL = '../../data/photographers.json';
 
-    const data  = await fetchDataFromApi(fetchingURL)
+    const data = await fetchDataFromApi(fetchingURL)
 
     const { photographers, media } = data,
         // Chaque photographe est associé à un id unique
@@ -83,7 +84,7 @@ async function getPhotographerData() {
         // Chaque création est un objet où l'id du photographe est indiqué
         photographerMedias = media.filter(item => item.photographerId === id)
 
-    return { photographer, photographerMedias}
+    return { photographer, photographerMedias }
 }
 
 
@@ -175,7 +176,7 @@ function displayPrice(element, price) {
     priceElement.textContent = price + '€ / jour'
 
     const priceElementSR = `Tarif du photographe, ${price}€ par jour`
-    
+
     return priceElementSR
 }
 
@@ -183,9 +184,9 @@ function displayPrice(element, price) {
 function displayMedia(photographerName, media, index) {
 
     const mediaModel = MediaFactory(photographerName, media)
-    
+
     const { mediaArticle, carouselItem } = mediaModel.getUserMediaDOM(index)
-    
+
     galleryElement.insertAdjacentHTML('beforeend', mediaArticle)
     carouselItems.insertAdjacentHTML('beforeend', carouselItem)
 
@@ -200,16 +201,11 @@ function displayMedias(photographerName, photographerMedias) {
 }
 
 
-async function setupSortPortfolioEvent(photographerName, medias) {
-
-    let mediasSorted;
-
-    filterButton.addEventListener('change', async (e) => {
-        mediasSorted = await sortPortfolio(medias, e.target.value)
-        galleryElement.innerHTML = ''
-        carouselItems.innerHTML = ''        
-        displayMedias(photographerName, mediasSorted)
-    })
+async function sortPortfolioAndDisplayMedias(photographerName, medias, sortType = 'popularity') {
+    const mediasSorted = await getMediasorted(medias, sortType);
+    galleryElement.innerHTML = ''
+    carouselItems.innerHTML = ''
+    displayMedias(photographerName, mediasSorted)
 }
 
 

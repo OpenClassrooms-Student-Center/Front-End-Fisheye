@@ -1,4 +1,4 @@
-async function sortPortfolio(medias, sortType) {
+async function getMediasorted(medias, sortType) {
 
     const mediaSortField = sortType === 'popularity' ? 'likes' : sortType,
         returnValue = sortType === 'title' ? -1 : 1
@@ -91,4 +91,4 @@ customSelectedOptionElement.addEventListener('click', function(e) {
     this.classList.toggle("custom-select__option--open");
 })
 
-export { sortPortfolio }
+export { getMediasorted }
