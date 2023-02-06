@@ -88,6 +88,7 @@
                     <h2 
                         id="contact-modal-title" 
                         class="modal__title" 
+                        tabindex="0"
                     >
                     </h2>
                     <img 
@@ -102,6 +103,7 @@
                 <form class="contact-form">
 
                     <div class="contact-form__field">
+                        <!-- Label caché au SR car input déjà labelisé par le label, évite donc une répétition qui risque d'embrouiller l'utilisateur  -->
                         <label id="firstNameLabel" for="firstName" class="contact-form__label" aria-hidden="true">Prénom</label>
                         <input 
                             type="text" 

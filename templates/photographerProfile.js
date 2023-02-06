@@ -14,7 +14,7 @@ function createHTML(data) {
     const presentationElement = `
 
         <div class="presentation">
-            <h1 class="presentation__name">${name}</h1>
+            <h1 class="presentation__name" tabindex="0">${name}</h1>
             <p 
                 class="presentation__infos presentation__location"
                 tabindex="0" 
@@ -31,6 +31,7 @@ function createHTML(data) {
             src="${picture}" 
             class="photograph-header__picture"
             alt="${name}"
+            tabindex="0"
         >
     `
 
