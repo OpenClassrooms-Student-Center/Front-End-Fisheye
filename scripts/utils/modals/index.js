@@ -1,3 +1,3 @@
-import { init as setupContactModalBehaviour, displayModal as displayContactModal } from "./contactModal.js";
+import {createModalBehaviour as createContactModalBehaviour} from "./contactModal.js";
 
-export  { setupContactModalBehaviour, displayContactModal } 
+export  { createContactModalBehaviour } 

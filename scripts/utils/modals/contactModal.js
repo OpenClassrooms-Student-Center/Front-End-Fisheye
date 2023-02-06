@@ -2,39 +2,63 @@
 
 import genericUtils from '../generic.js';
 
-const closeModalButton = document.querySelector('.modal-contact__close');
 
 /* Configure le comportement du modal et du formulaire
-    Paramètres :
-        - Aucun
-    Renvoie :
-        - Rien
+Paramètres :
+- Aucun
+Renvoie :
+- Rien
 */
-function init(modal) {
+function createModalBehaviour(modal) {
+    
+    const modalTitle = modal.querySelector('.modal__title'),
+        errorAttributeName = 'data-error',
+        errorVisibleAttributeName = 'data-error-visible';
 
-    closeModalButton.addEventListener('click', closeModal)
-    document.addEventListener('keydown', (e) => setModalBehaviourOnKeyDown(e))
+    function init() {
+
+        const closeModalButton = document.querySelector('.modal-contact__close')
+    
+        closeModalButton.addEventListener('click', closeModal)
+        document.addEventListener('keydown', (e) => setModalBehaviourOnKeyDown(e))
+    
+        // Conserve le focus dans le modal
+        const focusableElements = modal.querySelectorAll('button, input, textarea, [tabindex]:not([tabindex="-1"])')
+        genericUtils.trapFocusOnModal(modal, focusableElements, modalTitle, closeModalButton)
+    
+        // L'ensemble des checks de validation à effectuer sur le formulaire
+        const checks = getFormChecksToPerform()
+    
+        Object.keys(checks).forEach(key =>  {
+            const inputElement = document.querySelector(checks[key].selector)
+            // Écoute d'un évènement input -> La saisie de l'utilisateur déclenchera les fonctions définies dans l'event listener
+            inputElement.addEventListener('input', e => checks[key].func(e.target, checks[key]))
+        })
+    
+        // Ecoute sur le bouton d'envoi du formulaire
+        document.querySelector(".send-message").addEventListener('click', (e) => contactPhotographer(e))
+    }
+    
 
 
     /****************************** FONCTIONS **************************************** */
 
-    const errorAttributeName = 'data-error',
-        errorVisibleAttributeName = 'data-error-visible'
+    /* Affiche le modal et cache pour les SR le reste de la page
+        Paramètres :
+            - Un modal
+            - Le nom d'un photographe
+        Renvoie :
+            - Rien
+    */
+    function displayModal(photographerName) {
 
-    // L'ensemble des checks de validation à effectuer sur le formulaire
-    const checks = getFormChecksToPerform()
+        modalTitle.innerHTML = `Contactez-moi <br> ${photographerName}` 
 
-    Object.keys(checks).forEach(key =>  {
-        const inputElement = document.querySelector(checks[key].selector)
-        // Écoute d'un évènement input -> La saisie de l'utilisateur déclenchera les fonctions définies dans l'event listener
-        inputElement.addEventListener('input', e => checks[key].func(e.target, checks[key]))
-    })
+        modal.showModal()
+        modal.classList.toggle('visible')
+        modal.setAttribute('aria-hidden', 'false')
 
-    // Ecoute sur le bouton d'envoi du formulaire
-    document.querySelector(".send-message").addEventListener('click', (e) => contactPhotographer(e))
-
-
-    /****************************** FONCTIONS **************************************** */
+    }
 
     /* Définit l'action si l'utilisateur presse échap
         Paramètres :
@@ -57,7 +81,8 @@ function init(modal) {
             - Rien
     */    
     function closeModal() {
-        modal.classList.remove('visible')
+        modal.close()
+        modal.classList.toggle('visible')
         modal.setAttribute('aria-hidden', 'true')
     }
     
@@ -346,28 +371,9 @@ function init(modal) {
             confirmationMessageElement.classList.toggle('visible')
         }, 2000);
     }
+
+    return { init, displayModal }
 }
 
 
-/* Affiche le modal et cache pour les SR le reste de la page
-    Paramètres :
-        - Un modal
-        - Le nom d'un photographe
-    Renvoie :
-        - Rien
-*/
-function displayModal(modal, photographerName) {
-
-    const modalTitle = modal.querySelector('.modal__title')
-    modalTitle.innerHTML = `Contactez-moi <br> ${photographerName}`
-            
-    modal.classList.add('visible')
-    modal.setAttribute('aria-hidden', 'false')
-
-    const focusableElements = modal.querySelectorAll('button, input, textarea, [tabindex]:not([tabindex="-1"])')
-
-    // Conserve le focus dans le modal
-    genericUtils.trapFocusOnModal(focusableElements, modalTitle, closeModalButton)
-}
-
-export { init, displayModal }
+export  { createModalBehaviour }

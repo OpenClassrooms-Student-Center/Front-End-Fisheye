@@ -8,8 +8,7 @@
 import { fetchDataFromApi } from "../services/Api.js"
 import photographerFactory from "../factories/photographer.js"
 import sorter from "../utils/sort.js"
-import { setupContactModalBehaviour, displayContactModal } from "../utils/modals/index.js"
-import genericUtils from "../utils/generic.js"
+import { createContactModalBehaviour } from "../utils/modals/index.js"
 import MediaFactory from "../factories/media.js"
 import { setupCarousel } from "../utils/carousel.js"
 import { updateMediaLikes } from "../utils/likes.js"
@@ -42,28 +41,37 @@ async function init() {
     // Pour les SR : indique que la page est chargée
     setTimeout(updateLoaderText, 3000)
 
-    const { photographer, photographerMedias } = await getPhotographerData();
+    const { photographer, photographerMedias } = await getPhotographerData(),
+        photographerName = photographer.name;
 
     displayPhotographerHeader(photographer)
 
     // Affichage de l'encart
     displayStickyBar(photographer.price, photographerMedias)
     
-    // Affichage des médias avec le tri par défaut
-    const portfolioSorter = sorter(photographer.name, photographerMedias)
+    // Récupère l'objet associé à la fonction de tri
+    const portfolioSorter = sorter(photographerName, photographerMedias)
     portfolioSorter.init()
-    sortPortfolioAndDisplayMedias(portfolioSorter.getMediasorted, photographer.name, photographerMedias)
 
-    setupContactModalBehaviour(modal)
+    // Affichage des médias avec le tri par défaut
+    sortPortfolioAndDisplayMedias(portfolioSorter.getMediasorted, photographerName, photographerMedias)
+
+    // Configure le comportement du formulaire
+    const contactModalBehaviour = createContactModalBehaviour(modal)
+    contactModalBehaviour.init()
+    
+    // Configure le comportement du carousel
     setupCarousel(galleryElement, photographerMedias.length)
+
+    // Configure la fonctionnalité de like des créations
     setupLikesBehaviour(galleryElement)
     
-    // Apparition du formulaire de contact
-    contactButton.addEventListener('click', () => displayContactModal(modal, photographer.name))  
+    // Gère l'apparition du formulaire de contact
+    contactButton.addEventListener('click', () => contactModalBehaviour.displayModal(photographerName))  
 
-    // Affichage quand changement de tri
+    // Gère le comportement suite à un changement de critère de tri
     filterButton.addEventListener('change', async (e) => {
-        sortPortfolioAndDisplayMedias(portfolioSorter.getMediasorted, photographer.name, photographerMedias, e.target.value)
+        sortPortfolioAndDisplayMedias(portfolioSorter.getMediasorted, photographerName, photographerMedias, e.target.value)
     })
 };
 
@@ -177,7 +185,7 @@ function displayLikesTotalNumber(element, medias) {
 */
 function displayPrice(element, price) {
 
-    const priceElement = document.querySelector('.additional-information__price')
+    const priceElement = element.querySelector('.additional-information__price')
     priceElement.textContent = price + '€ / jour'
 
     const priceElementSR = `Tarif du photographe, ${price}€ par jour`
@@ -186,19 +194,32 @@ function displayPrice(element, price) {
 }
 
 
+/* Ajoute une création à la gallerie et au carousel
+    Paramètres :
+        - Le nom d'un photographe
+        - Une créations du photographe
+        - La position de la création dans la liste des créations
+    Renvoie :
+        - Rien
+*/
 function displayMedia(photographerName, media, index) {
 
+    // Instanciation de l'objet possédant la méthode de construction de l'élément
     const mediaModel = MediaFactory(photographerName, media)
 
     const { mediaArticle, carouselItem } = mediaModel.getUserMediaDOM(index)
-
     galleryElement.insertAdjacentHTML('beforeend', mediaArticle)
     carouselItems.insertAdjacentHTML('beforeend', carouselItem)
-
 }
 
 
-
+/* Dispose les créations d'un photographe dans le DOM
+    Paramètres :
+        - Un nom de photographe
+        - Les créations d'un photographe
+    Renvoie :
+        - Rien
+*/
 function displayMedias(photographerName, photographerMedias) {
     photographerMedias.forEach((media, index) => {
         displayMedia(photographerName, media, index)
@@ -208,16 +229,20 @@ function displayMedias(photographerName, photographerMedias) {
 
 /* Tri les vidéos et les dispose dans le DOM 
     Paramètres :
-        - Un nom de photographe
+        - Une fonction de tri
+        - Le nom d'un photographe
         - Les créations d'un photographe
-        - le critère de tri
+        - Le critère de tri
     Renvoie :
         - Rien
 */
 async function sortPortfolioAndDisplayMedias(sortingFunction, photographerName, medias, sortType = 'popularity') {
+    
+    // Réception des médias triés selon le critère
     const mediasSorted = await sortingFunction(medias, sortType);
     galleryElement.innerHTML = ''
     carouselItems.innerHTML = ''
+    // Disposition des créations sur le DOM
     displayMedias(photographerName, mediasSorted)
 }
 

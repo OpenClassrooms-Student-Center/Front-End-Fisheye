@@ -1,27 +1,6 @@
 // --------------- FICHIER REGROUPANT DES FONCTIONNALITES GENERIQUES UTILISEES AUTRE PART --------------- 
 
-import MediaFactory from "../factories/media.js"
-
 const genericUtils = {
-
-    displayMedia: function(photographerName, media, index, galleryElement, carouselItems) {
-    
-        const mediaModel = MediaFactory(photographerName, media)
-        
-        const { mediaArticle, carouselItem } = mediaModel.getUserMediaDOM(index)
-        
-        galleryElement.insertAdjacentHTML('beforeend', mediaArticle)
-        carouselItems.insertAdjacentHTML('beforeend', carouselItem)
-    
-    },
-    
-    
-    displayMedias: function(photographerName, photographerMedias, galleryElement, carouselItems) {
-        photographerMedias.forEach((media, index) => {
-            this.displayMedia(photographerName, media, index, galleryElement, carouselItems)
-        })
-    },
-    
     
     /* Encloisonne le focus dans le modal
         Paramètres :
@@ -32,20 +11,21 @@ const genericUtils = {
             - Rien
     */
     
-    trapFocusOnModal: function(focusableElements, firstElementToFocus, lastElementToFocus) {
-    
+    trapFocusOnModal: function(element, focusableElements, firstElementToFocus, lastElementToFocus) {
+        
         // Tous les éléments focusables
+        
         const focusableElementsArray = Array.from(focusableElements),
             positionFirstElementToFocus = focusableElementsArray.indexOf(firstElementToFocus),
             positionLastElementToFocus = focusableElementsArray.indexOf(lastElementToFocus)
     
         const firstFocusableElement = focusableElementsArray[0],
             lastFocusableElement = focusableElementsArray[focusableElementsArray.length-1];
-    
-        document.addEventListener('keydown', function(e) {
+  
+        element.addEventListener('keydown', function(e) {
     
             const keyName = e.keyCode ? e.keyCode : e.key
-                
+
             /* L'ensemble du code ci-dessus permet de bloquer le focus dans le modal
             Pour cela il faut boucler autour des éléments, 
             c'est à dire lorsque le focus est sur le dernier focus et l'utilisateur navigue vers le prochain focus il est redirigé vers le premier focus
@@ -56,9 +36,8 @@ const genericUtils = {
             Pour une approche plus complète, il faudrait donner un ordre de focus à chaque élément focusable
             */            
             if ( keyName === 'Tab' || keyName === 9 ) {
-    
                 const activeElement = document.activeElement,
-                    positionActiveElement = focusableElementsArray.indexOf(activeElement)
+                positionActiveElement = focusableElementsArray.indexOf(activeElement)
     
                 let elementToFocus;
                 if ( e.shiftKey ) {
@@ -128,13 +107,13 @@ const genericUtils = {
     
                 if (elementToFocus) {
                 // Une des conditions ci-dessus a été réalisée
+                    elementToFocus.focus()         
                     e.preventDefault()
-                    elementToFocus.focus()            
                 }
             }
     
         });
-    
+ 
         firstElementToFocus.focus()
     }
 }

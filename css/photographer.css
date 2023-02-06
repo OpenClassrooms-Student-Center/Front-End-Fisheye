@@ -234,6 +234,7 @@
     background: #DB8876;
     border-top-left-radius: 5px;
     border-top-right-radius: 5px;
+    z-index: 2;
 }
 
 .additional-informations__likes {
@@ -247,8 +248,8 @@
     font-weight: 500;
 }
 
-.modal-contact {
-    display: none;
+.modal-container::backdrop {
+    background-color: #c4c4c4;
 }
 
 .modal-contact.visible {
