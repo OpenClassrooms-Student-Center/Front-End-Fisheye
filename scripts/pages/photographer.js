@@ -7,7 +7,8 @@
 
 import { fetchDataFromApi } from "../services/Api.js"
 import photographerFactory from "../factories/photographer.js"
-import { setupContactModalBehaviour } from "../utils/modals/index.js"
+import { setupContactModalBehaviour, displayContactModal } from "../utils/modals/index.js"
+import genericUtils from "../utils/generic.js"
 import MediaFactory from "../factories/media.js"
 import { setupCarousel } from "../utils/carousel.js"
 import { getMediasorted } from "../utils/sort.js"
@@ -21,7 +22,8 @@ import updateLoaderText from "../utils/loaders.js"
 const galleryElement = document.querySelector('.gallery'),
     carouselItems = document.querySelector('.carousel__items'),
     filterButton = document.querySelector('#sort-portfolio'),
-    contactButton = document.querySelector('.contact_button')
+    contactButton = document.querySelector('.contact_button'),
+    modal = document.querySelector('.modal-contact');
 
 init();
 
@@ -44,17 +46,18 @@ async function init() {
 
     displayPhotographerHeader(photographer)
 
-    // Apparition du formulaire de contact
-    setupContactModalBehaviour(photographer.name)
-
     // Affichage de l'encart
     displayStickyBar(photographer.price, photographerMedias)
-
-    // Affichage par défaut
+    
+    // Affichage des médias avec le tri par défaut
     sortPortfolioAndDisplayMedias(photographer.name, photographerMedias)
-
+    
+    setupContactModalBehaviour(modal)
     setupCarousel(galleryElement, photographerMedias.length)
     setupLikesBehaviour(galleryElement)
+    
+    // Apparition du formulaire de contact
+    contactButton.addEventListener('click', () => displayContactModal(modal, photographer.name))  
 
     // Affichage quand changement de tri
     filterButton.addEventListener('change', async (e) => {
@@ -201,6 +204,14 @@ function displayMedias(photographerName, photographerMedias) {
 }
 
 
+/* Tri les vidéos et les dispose dans le DOM 
+    Paramètres :
+        - Un nom de photographe
+        - Les créations d'un photographe
+        - le critère de tri
+    Renvoie :
+        - Rien
+*/
 async function sortPortfolioAndDisplayMedias(photographerName, medias, sortType = 'popularity') {
     const mediasSorted = await getMediasorted(medias, sortType);
     galleryElement.innerHTML = ''

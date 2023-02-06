@@ -13,7 +13,6 @@ async function getMediasorted(medias, sortType) {
 const customSelectElement = document.querySelector('.custom-select'),
     selectElement = document.querySelector('.sort-portfolio__options'),
     selectOptionsLength = selectElement.length
-    // selectOptions = Array.from(selectElement.children).map(child => child.textContent)
 
     
     const customSelectedOptionElement = document.createElement('div')
@@ -42,6 +41,18 @@ for(let i=0; i < selectOptionsLength; i++) {
 
     customOptionElement.addEventListener('click', function(e) {
         
+        for(let j=0; j < selectOptionsLength ; j++) {
+            
+            if (this.innerHTML == selectElement.options[j].innerHTML) {
+                selectElement.selectedIndex = j;
+                selectElement.dispatchEvent(new Event('change'))
+                customSelectElement.setAttribute('aria-label', `Trier par ${selectElement.value}`)
+                
+                break;
+            } 
+
+        }
+        
         let selectedOption = this.parentNode.previousSibling
         const previousContent = selectedOption.textContent
         selectedOption.textContent = this.textContent
@@ -52,25 +63,9 @@ for(let i=0; i < selectOptionsLength; i++) {
         const lastOptions = customOptions.slice(-(selectOptionsLength-positionSelectedOption))
         const firstOptions = customOptions.slice(0, -(selectOptionsLength-positionSelectedOption))
         customOptions = lastOptions.concat(firstOptions)
-        // const selectedOptionToMove = customOptions.shift()
-        // customOptions.push(selectedOptionToMove)
+
         customOptionsElement.append(...customOptions)
         
-        for(let j=0; j < selectOptionsLength ; j++) {
-            
-            if (this.innerHTML == selectElement.options[j].innerHTML) {
-                selectElement.selectedIndex = j;
-                selectElement.dispatchEvent(new Event('change'))
-                customSelectElement.setAttribute('aria-label', `Trier par ${selectElement.value}`)
-                
-                // this.textContent = previousContent
-                // customOptions[j].style.display = 'none'
-                // const newPositionSelectedOption = customOptions.indexOf(this)
-                // customOptions[newPositionSelectedOption].textContent = previousContent
-                break;
-            } 
-
-        }
 
         selectedOption.click()
         const hiddenOption = this.parentNode.querySelector('.invisible')
