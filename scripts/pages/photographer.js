@@ -7,11 +7,11 @@
 
 import { fetchDataFromApi } from "../services/Api.js"
 import photographerFactory from "../factories/photographer.js"
+import sorter from "../utils/sort.js"
 import { setupContactModalBehaviour, displayContactModal } from "../utils/modals/index.js"
 import genericUtils from "../utils/generic.js"
 import MediaFactory from "../factories/media.js"
 import { setupCarousel } from "../utils/carousel.js"
-import { getMediasorted } from "../utils/sort.js"
 import { updateMediaLikes } from "../utils/likes.js"
 import updateLoaderText from "../utils/loaders.js"
 
@@ -50,8 +50,10 @@ async function init() {
     displayStickyBar(photographer.price, photographerMedias)
     
     // Affichage des médias avec le tri par défaut
-    sortPortfolioAndDisplayMedias(photographer.name, photographerMedias)
-    
+    const portfolioSorter = sorter(photographer.name, photographerMedias)
+    portfolioSorter.init()
+    sortPortfolioAndDisplayMedias(portfolioSorter.getMediasorted, photographer.name, photographerMedias)
+
     setupContactModalBehaviour(modal)
     setupCarousel(galleryElement, photographerMedias.length)
     setupLikesBehaviour(galleryElement)
@@ -61,7 +63,7 @@ async function init() {
 
     // Affichage quand changement de tri
     filterButton.addEventListener('change', async (e) => {
-        sortPortfolioAndDisplayMedias(photographer.name, photographerMedias, e.target.value)
+        sortPortfolioAndDisplayMedias(portfolioSorter.getMediasorted, photographer.name, photographerMedias, e.target.value)
     })
 };
 
@@ -212,8 +214,8 @@ function displayMedias(photographerName, photographerMedias) {
     Renvoie :
         - Rien
 */
-async function sortPortfolioAndDisplayMedias(photographerName, medias, sortType = 'popularity') {
-    const mediasSorted = await getMediasorted(medias, sortType);
+async function sortPortfolioAndDisplayMedias(sortingFunction, photographerName, medias, sortType = 'popularity') {
+    const mediasSorted = await sortingFunction(medias, sortType);
     galleryElement.innerHTML = ''
     carouselItems.innerHTML = ''
     displayMedias(photographerName, mediasSorted)
