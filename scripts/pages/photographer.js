@@ -56,10 +56,10 @@ async function init() {
     // Affichage des médias avec le tri par défaut
     sortPortfolioAndDisplayMedias(portfolioSorter.getMediasorted, photographerName, photographerMedias)
 
-    // Configure le comportement du formulaire
+    // Initie la configuration le comportement du formulaire
     const contactModalBehaviour = createContactModalBehaviour(modal)
     contactModalBehaviour.init()
-    
+
     // Configure le comportement du carousel
     setupCarousel(galleryElement, photographerMedias.length)
 

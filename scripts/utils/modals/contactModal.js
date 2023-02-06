@@ -24,7 +24,7 @@ function createModalBehaviour(modal) {
     
         // Conserve le focus dans le modal
         const focusableElements = modal.querySelectorAll('button, input, textarea, [tabindex]:not([tabindex="-1"])')
-        genericUtils.trapFocusOnModal(modal, focusableElements, modalTitle, closeModalButton)
+        genericUtils.trapFocusOnModal(focusableElements, modalTitle, closeModalButton)
     
         // L'ensemble des checks de validation à effectuer sur le formulaire
         const checks = getFormChecksToPerform()
@@ -55,7 +55,7 @@ function createModalBehaviour(modal) {
         modalTitle.innerHTML = `Contactez-moi <br> ${photographerName}` 
 
         modal.showModal()
-        modal.classList.toggle('visible')
+        modal.classList.add('visible')
         modal.setAttribute('aria-hidden', 'false')
 
     }
@@ -82,7 +82,7 @@ function createModalBehaviour(modal) {
     */    
     function closeModal() {
         modal.close()
-        modal.classList.toggle('visible')
+        modal.classList.remove('visible')
         modal.setAttribute('aria-hidden', 'true')
     }
     

@@ -84,7 +84,7 @@
             tabindex="0"
         >
 
-            <div class="modal">
+            <div class="form-container">
 
                 <header class="modal__header">
                     <h2 
@@ -95,7 +95,7 @@
                     </h2>
                     <img 
                         src="assets/icons/close.svg" 
-                        class="modal-contact__close"
+                        class="modal-contact__close modal__close"
                         role="button" 
                         aria-label="Fermer le formulaire de contact"
                         tabindex="0"
@@ -163,53 +163,56 @@
             </div>
         </dialog>
 
-        <div 
+        <dialog 
             class="modal-carousel modal-container" 
-            role="dialog"
             aria-hidden="true" 
             aria-label="Image en gros plan"
+            tabindex="0"
         >
 
-            <header class="modal-carousel__header">
-                <img 
-                    src="assets/icons/close.svg" 
-                    class="modal-carousel__close" 
-                    role="button" 
-                    aria-label="Fermer carousel"
-                />
-            </header>
-
-            <div id="carousel-wrapper" class="carousel-container">
+            <div class="carousel-container">
 
                 <div 
                     class="carousel__paginate carousel__paginate--left" 
                     role="link" 
                     class="controls controls-left"
+                    tabindex="4"
                 >
-                    <span class="carousel__arrow">
-                        <i aria-hidden="true" class="fa fa-arrow-circle-left"></i>
-                    </span>
+                    <i aria-hidden="true" class="fa-solid fa-chevron-left carousel__arrow carousel__arrow--left"></i>
                     <p class="sr-only">Image précédente</p>
                 </div>
 
                 <div class="carousel">
                     <ul class="carousel__items" role="presentation"> </ul>
                 </div>
-                
-                <div 
-                    class="carousel__paginate carousel__paginate--right" 
-                    role="link" 
-                    class="controls controls-right"
-                >
-                    <span class="carousel__arrow">
-                        <i aria-hidden="true" class="fa fa-arrow-circle-right"></i>
-                    </span>
-                    <p class="sr-only">Image suivante</p>
+
+                <div class="carousel__right-side">
+
+                    <svg 
+                        role="button" 
+                        class="modal-carousel__close"
+                        viewBox="0 0 42 42" 
+                        xmlns="http://www.w3.org/2000/svg"
+                        aria-label="Fermer carousel"
+                        tabindex="6"
+                    >
+                        <path d="M42 4.23L37.77 0L21 16.77L4.23 0L0 4.23L16.77 21L0 37.77L4.23 42L21 25.23L37.77 42L42 37.77L25.23 21L42 4.23Z" />
+                    </svg> 
+    
+                    <div 
+                        class="carousel__paginate carousel__paginate--right" 
+                        role="link" 
+                        class="controls controls-right"
+                        tabindex="5"
+                    >
+                        <i aria-hidden="true" class="fa-solid fa-chevron-right carousel__arrow"></i>
+                        <p class="sr-only">Image suivante</p>
+                    </div>
                 </div>
-                
+
             </div>
 
-        </div>
+        </dialog>
 
         <script async type="module" src="/scripts/pages/photographer.js"></script>
     </body>

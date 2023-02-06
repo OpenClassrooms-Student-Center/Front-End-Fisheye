@@ -11,7 +11,7 @@ const genericUtils = {
             - Rien
     */
     
-    trapFocusOnModal: function(element, focusableElements, firstElementToFocus, lastElementToFocus) {
+    trapFocusOnModal: function(focusableElements, firstElementToFocus, lastElementToFocus) {
         
         // Tous les éléments focusables
         
@@ -22,7 +22,7 @@ const genericUtils = {
         const firstFocusableElement = focusableElementsArray[0],
             lastFocusableElement = focusableElementsArray[focusableElementsArray.length-1];
   
-        element.addEventListener('keydown', function(e) {
+        document.addEventListener('keydown', function(e) {
     
             const keyName = e.keyCode ? e.keyCode : e.key
 

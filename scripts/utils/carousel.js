@@ -1,46 +1,17 @@
 let currentItemPosition = 0
 
-const modalCarousel = document.querySelector(".modal-carousel"),
+const modal = document.querySelector(".modal-carousel"),
     nextButton = document.querySelector('.carousel__paginate--right'),
     previousButton = document.querySelector('.carousel__paginate--left'),
     closeModalButton = document.querySelector('.modal-carousel__close'),
-    mainElement = document.querySelector('main'),
-    headerElement = document.querySelector('header'),
-    rootItemSelector = 'article'
+    rootItemSelector = '.media__link'
 
 function setupCarousel(gallery, mediasLength) {
 
-    const carouselItems = document.querySelectorAll('.carousel__item')
+    gallery.addEventListener('click', e => onMediaClickEvent(e))
+    gallery.addEventListener('keydown', e => onMediaClickEvent(e, 'keydown'))
 
-    gallery.addEventListener('click', e => {
-        const rootElement = e.target.closest(rootItemSelector)
-
-        if (!rootElement) return
-
-        const listElement = rootElement.parentNode.querySelectorAll(rootItemSelector)
-        const index = [...listElement].indexOf(rootElement);
-    
-        e.preventDefault()
-        initCarousel(index)
-    })
-
-    gallery.addEventListener('keydown', e => {
-        const rootElement = e.target.closest(rootItemSelector)
-
-        if (!rootElement) return
-
-        const listElement = rootElement.parentNode.querySelectorAll(rootItemSelector)
-        const index = [...listElement].indexOf(rootElement);
-        const keyName = e.keyCode ? e.keyCode : e.key
-        
-        if ((keyName === 'Enter' || keyName === 13) || ((keyName === 'Alt' || keyName === 18 || e.altKey) && (keyName === 'Control' || keyName === 17 || key.ctrlKey) && (keyName === ' ' || keyName === 32 || key.Space))) {
-            e.preventDefault()
-            initCarousel(index)
-        }
-    })
-
-
-    closeModalButton.addEventListener('click', () => closeCarouselModal(carouselItems))
+    closeModalButton.addEventListener('click', () => closeModal)
     previousButton.addEventListener('click', () => goToPreviousSlide(mediasLength))
     nextButton.addEventListener('click', () => goToNextSlide(mediasLength))
 
@@ -50,7 +21,7 @@ function setupCarousel(gallery, mediasLength) {
 
         const keyName = e.keyCode ? e.keyCode : e.key
         
-        if (!validKeys.includes(keyName) || !modalCarousel.className.includes('visible')) return;
+        if (!validKeys.includes(keyName) || !modal.className.includes('visible')) return;
         
         e.preventDefault();
 
@@ -59,16 +30,45 @@ function setupCarousel(gallery, mediasLength) {
         } else if (keyName === 'ArrowLeft' || keyName === 37) {
             goToPreviousSlide(mediasLength)
         } else if (keyName === 'Escape' || keyName === 27) {
-            closeCarouselModal(carouselItems)
+            closeModal()
         }
     })
 }
 
 
+function onMediaClickEvent(e, eventType='click') {
+
+    const rootElement = e.target.closest(rootItemSelector)
+    if (!rootElement) return
+    
+    if(eventType === 'keydown') {
+
+        const keyName = e.keyCode ? e.keyCode : e.key
+        
+        if (keyName !== 'Enter' && keyName !== 13) {
+            return;
+        }
+    }
+
+    e.preventDefault()
+    const index = getMediaIndex(rootElement, rootItemSelector)         
+    initCarousel(index)
+
+}
+
+
+function getMediaIndex(element, rootItemSelector) {
+
+    const listElement = element.parentNode.parentNode.querySelectorAll(rootItemSelector)
+    const index = [...listElement].indexOf(element);
+
+    return index
+}
+
 function initCarousel(index) {
 
     let lastItem;
-    if (modalCarousel.className.includes('visible')) {
+    if (modal.className.includes('visible')) {
         lastItem = document.querySelector(`.item-${currentItemPosition}`)
     }
 
@@ -76,27 +76,29 @@ function initCarousel(index) {
     const currentItem = document.querySelector(`.item-${currentItemPosition}`)
     setNodeAttributes(currentItem, lastItem)
 
-    mainElement.setAttribute('aria-hidden', "true")
-    headerElement.setAttribute('aria-hidden', "true")
+    displayModal()
 
-    displayCarouselModal()
     const mainFocusableElement = currentItem.querySelector('.carousel__media')
     mainFocusableElement.focus()
 
 }
 
 
-function displayCarouselModal() {
-    modalCarousel.classList.add('visible')
-    modalCarousel.setAttribute('aria-hidden', 'false')
+function displayModal() {
+    modal.showModal()
+    modal.classList.add('visible')
+    modal.setAttribute('aria-hidden', 'false')
 }
 
-function closeCarouselModal(elements) {
-    modalCarousel.classList.remove('visible')
-    removeDisplay(elements)
-    mainElement.setAttribute('aria-hidden', "false")
-    headerElement.setAttribute('aria-hidden', "false")
-    modalCarousel.setAttribute('aria-hidden', 'true')
+function closeModal() {
+
+    const carouselItems = document.querySelectorAll('.carousel__item')
+
+    removeDisplay(carouselItems)
+    modal.close()
+    console.log(modal.classList)
+    modal.classList.remove('visible')
+    modal.setAttribute('aria-hidden', 'true')
 }
 
 
@@ -106,7 +108,7 @@ function removeDisplay(elements) {
 
 const setNodeAttributes = (currentItem, lastItem = undefined) => {
 
-    currentItem.style.display = 'block'
+    currentItem.style.display = 'flex'
     currentItem.setAttribute('aria-hidden', 'false')
 
     if (lastItem) {

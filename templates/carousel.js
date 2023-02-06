@@ -7,16 +7,14 @@ const carousel = {
         const carouselItem = `
 
             <li class="carousel__item item-${index}" aria-hidden="false">
-
-                <div class="carousel__creation">
-                    <img 
-                        src="assets/Sample_Photos/${photographerName}/${media.image}"
-                        class="carousel__media"
-                        alt="${media.title}"
-                        tabindex="0"
-                    >
-                    <span class="carousel__name" aria-hidden="true">${media.title}</span>
-                </div>                                  
+                
+                <img 
+                    src="assets/Sample_Photos/${photographerName}/${media.image}"
+                    class="carousel__media"
+                    alt="${media.title}"
+                    tabindex="2"
+                >
+                <span class="carousel__name" aria-hidden="true" tabindex="3">${media.title}</span>
 
             </li>
         `
@@ -30,16 +28,14 @@ const carousel = {
 
             <li class="carousel__item item-${index}" aria-hidden="true">
 
-                <div class="carousel__creation">
-                    <video 
-                        class="carousel__media" 
-                        controls
-                        aria-label="${media.title}"
-                    />
-                        <source src="assets/Sample_Photos/${photographerName}/${media.video}" type="video/mp4">
-                    </video>
-                    <span class="carousel__name" aria-hidden="true">${media.title}</span>
-                </div>                                  
+                <video 
+                    class="carousel__media" 
+                    controls
+                    aria-label="${media.title}"
+                />
+                    <source src="assets/Sample_Photos/${photographerName}/${media.video}" type="video/mp4">
+                </video>
+                <span class="carousel__name" aria-hidden="true">${media.title}</span>
 
             </li>
         `
