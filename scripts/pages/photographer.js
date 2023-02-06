@@ -51,7 +51,6 @@ async function init() {
     // Affichage de l'encart
     displayStickyBar(photographer.price, photographerMedias)
 
-
     const mediasSorted = await sortPortfolio(photographerMedias, mediasSortTypeDefault)
 
     await displayMedias(photographer.name, mediasSorted)
@@ -123,6 +122,63 @@ function displayPhotographerHeader(photographer) {
 }
 
 
+/* Remplis l'encart des informations nécessaires
+    Paramètres :
+        - Le tarif d'un photographe
+        - les créations d'un photographe
+    Renvoie :
+        - Rien 
+*/
+
+function displayStickyBar(price, medias) {
+
+    const additionalInformationsElement = document.querySelector('.additional-information')
+
+    // Les texte à lire par les SR
+    const likesForSR = displayLikesTotalNumber(additionalInformationsElement, medias)
+    const priceForSR = displayPrice(additionalInformationsElement, price)
+
+    additionalInformationsElement.setAttribute('aria-label', `${likesForSR}, ${priceForSR}`)
+}
+
+
+/* Calcule le nombre de likes reçus par un photographe
+    Paramètres :
+        - Un élement HTML contenant le bloc concerné
+        - Les créations d'un photographe
+    Renvoie :
+        - Du texte indiquant le nombre de likes
+*/
+function displayLikesTotalNumber(element, medias) {
+
+    const likesElement = element.querySelector('.additional-information__likes-number')
+    const likesTotalNumber = medias.reduce((acc, media) => acc + media.likes, 0)
+    likesElement.textContent = likesTotalNumber
+
+    // Texte pour SR
+    const likesElementSR = `Nombre total de likes, ${likesTotalNumber}`
+
+    return likesElementSR
+}
+
+
+/* Définit le texte à afficher concernant le tarif d'un photographe
+    Paramètres :
+        - Un élement HTML contenant le bloc concerné
+        - Le tarif du photographe
+    Renvoie :
+        - Du texte indiquant le tarif
+*/
+function displayPrice(element, price) {
+
+    const priceElement = document.querySelector('.additional-information__price')
+    priceElement.textContent = price + '€ / jour'
+
+    const priceElementSR = `Tarif du photographe, ${price}€ par jour`
+    
+    return priceElementSR
+}
+
 
 function displayMedia(photographerName, media, index) {
 
@@ -142,34 +198,6 @@ function displayMedias(photographerName, photographerMedias) {
         displayMedia(photographerName, media, index)
     })
 }
-
-
-
-function displayLikesTotalNumber(medias) {
-    const likesElement = document.querySelector('.additional-information__likes-number'),
-        likesElementSR = likesElement.nextElementSibling
-
-    const likesTotalNumber = medias.reduce((acc, media) => acc + media.likes, 0)
-    likesElement.textContent = likesTotalNumber
-    likesElementSR.textContent = `Nombre total de likes, ${likesTotalNumber}`
-}
-
-
-function displayPrice(price) {
-    const priceElement = document.querySelector('.additional-information__price'),
-        priceElementSR = priceElement.nextElementSibling
-
-    priceElement.textContent = price + '€ / jour'
-    priceElementSR.textContent = `Tarif du photographe, ${price}€ par jour`
-    
-}
-
-
-function displayStickyBar(price, medias) {
-    displayLikesTotalNumber(medias)
-    displayPrice(price)
-}
-
 
 
 async function setupSortPortfolioEvent(photographerName, medias) {
