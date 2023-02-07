@@ -8,9 +8,8 @@
 import { fetchDataFromApi } from "../services/Api.js"
 import photographerFactory from "../factories/photographer.js"
 import sorter from "../utils/sort.js"
-import { createContactModalBehaviour } from "../utils/modals/index.js"
+import { createContactModalBehaviour, createCarouselModalBehaviour } from "../utils/modals/index.js"
 import MediaFactory from "../factories/media.js"
-import { setupCarousel } from "../utils/carousel.js"
 import { updateMediaLikes } from "../utils/likes.js"
 import updateLoaderText from "../utils/loaders.js"
 
@@ -61,7 +60,7 @@ async function init() {
     contactModalBehaviour.init()
 
     // Configure le comportement du carousel
-    setupCarousel(galleryElement, photographerMedias.length)
+    createCarouselModalBehaviour(galleryElement, photographerMedias.length)
 
     // Configure la fonctionnalité de like des créations
     setupLikesBehaviour(galleryElement)

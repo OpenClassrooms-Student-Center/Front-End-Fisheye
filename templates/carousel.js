@@ -8,13 +8,14 @@ const carousel = {
 
             <li class="carousel__item item-${index}" aria-hidden="false">
                 
-                <img 
-                    src="assets/Sample_Photos/${photographerName}/${media.image}"
-                    class="carousel__media"
-                    alt="${media.title}"
-                    tabindex="2"
-                >
-                <span class="carousel__name" aria-hidden="true" tabindex="3">${media.title}</span>
+                <a tabindex="2" class="carousel__media-container" aria-labelledby="title-${index}">
+                    <img 
+                        src="assets/Sample_Photos/${photographerName}/${media.image}"
+                        class="carousel__media"
+                        alt="${media.title}"
+                    >
+                </a>
+                <span id="title-${index}" class="carousel__name" aria-hidden="true" tabindex="3">${media.title}</span>
 
             </li>
         `

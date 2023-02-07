@@ -467,6 +467,8 @@ form div {
     display: flex;
     flex-direction: column;
     justify-content: center;
+    align-self: center;
+    height: fit-content;
 } 
 
 .carousel__paginate--left {

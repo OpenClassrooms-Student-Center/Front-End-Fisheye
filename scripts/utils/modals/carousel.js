@@ -1,3 +1,5 @@
+import genericUtils from '../generic.js';
+
 let currentItemPosition = 0
 
 const modal = document.querySelector(".modal-carousel"),
@@ -6,7 +8,9 @@ const modal = document.querySelector(".modal-carousel"),
     closeModalButton = document.querySelector('.modal-carousel__close'),
     rootItemSelector = '.media__link'
 
-function setupCarousel(gallery, mediasLength) {
+let modalFirstOpen = true
+
+function createModalBehaviour(gallery, mediasLength) {
 
     gallery.addEventListener('click', e => onMediaClickEvent(e))
     gallery.addEventListener('keydown', e => onMediaClickEvent(e, 'keydown'))
@@ -51,8 +55,20 @@ function onMediaClickEvent(e, eventType='click') {
     }
 
     e.preventDefault()
+
+    if (modalFirstOpen) {
+        // Le modal vient d'être ouvert pour la première fois
+            modalFirstOpen = false
+    
+        // Lance les étapes pour conserver le focus dans le modal. 
+        const focusableElements = modal.querySelectorAll('[tabindex]:not([tabindex="-1"])')
+        genericUtils.trapFocusOnModal(modal, focusableElements, modal, closeModalButton)        
+    }
+
     const index = getMediaIndex(rootElement, rootItemSelector)         
-    initCarousel(index)
+    updateCarousel(index)
+
+    displayModal()
 
 }
 
@@ -65,7 +81,7 @@ function getMediaIndex(element, rootItemSelector) {
     return index
 }
 
-function initCarousel(index) {
+function updateCarousel(index) {
 
     let lastItem;
     if (modal.className.includes('visible')) {
@@ -75,12 +91,6 @@ function initCarousel(index) {
     currentItemPosition = index
     const currentItem = document.querySelector(`.item-${currentItemPosition}`)
     setNodeAttributes(currentItem, lastItem)
-
-    displayModal()
-
-    const mainFocusableElement = currentItem.querySelector('.carousel__media')
-    mainFocusableElement.focus()
-
 }
 
 
@@ -88,6 +98,7 @@ function displayModal() {
     modal.showModal()
     modal.classList.add('visible')
     modal.setAttribute('aria-hidden', 'false')
+    modal.focus()
 }
 
 function closeModal() {
@@ -96,7 +107,6 @@ function closeModal() {
 
     removeDisplay(carouselItems)
     modal.close()
-    console.log(modal.classList)
     modal.classList.remove('visible')
     modal.setAttribute('aria-hidden', 'true')
 }
@@ -165,4 +175,4 @@ const goToPreviousSlide = (mediasLength) => {
 }
 
 
-export { setupCarousel } 
+export { createModalBehaviour } 

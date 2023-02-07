@@ -90,7 +90,7 @@
                     <h2 
                         id="contact-modal-title" 
                         class="modal__title" 
-                        tabindex="0"
+                        aria-hidden="true"
                     >
                     </h2>
                     <img 
@@ -167,7 +167,7 @@
             class="modal-carousel modal-container" 
             aria-hidden="true" 
             aria-label="Image en gros plan"
-            tabindex="0"
+            tabindex="1"
         >
 
             <div class="carousel-container">
@@ -176,10 +176,11 @@
                     class="carousel__paginate carousel__paginate--left" 
                     role="link" 
                     class="controls controls-left"
+                    aria-labelledby="previous-image"
                     tabindex="4"
                 >
                     <i aria-hidden="true" class="fa-solid fa-chevron-left carousel__arrow carousel__arrow--left"></i>
-                    <p class="sr-only">Image précédente</p>
+                    <p id="previous-image" class="sr-only" aria-hidden="true">Image précédente</p>
                 </div>
 
                 <div class="carousel">
@@ -203,10 +204,11 @@
                         class="carousel__paginate carousel__paginate--right" 
                         role="link" 
                         class="controls controls-right"
+                        aria-labelledby="next-image"
                         tabindex="5"
                     >
                         <i aria-hidden="true" class="fa-solid fa-chevron-right carousel__arrow"></i>
-                        <p class="sr-only">Image suivante</p>
+                        <p id="next-image" class="sr-only">Image suivante</p>
                     </div>
                 </div>
 

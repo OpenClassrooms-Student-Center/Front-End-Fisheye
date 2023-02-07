@@ -24,7 +24,7 @@ function createModalBehaviour(modal) {
     
         // Conserve le focus dans le modal
         const focusableElements = modal.querySelectorAll('button, input, textarea, [tabindex]:not([tabindex="-1"])')
-        genericUtils.trapFocusOnModal(focusableElements, modalTitle, closeModalButton)
+        genericUtils.trapFocusOnModal(modal, focusableElements, modal, closeModalButton)
     
         // L'ensemble des checks de validation à effectuer sur le formulaire
         const checks = getFormChecksToPerform()
@@ -57,6 +57,8 @@ function createModalBehaviour(modal) {
         modal.showModal()
         modal.classList.add('visible')
         modal.setAttribute('aria-hidden', 'false')
+
+        modal.focus()
 
     }
 

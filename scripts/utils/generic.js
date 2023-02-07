@@ -11,18 +11,22 @@ const genericUtils = {
             - Rien
     */
     
-    trapFocusOnModal: function(focusableElements, firstElementToFocus, lastElementToFocus) {
+    trapFocusOnModal: function(element, focusableElements, firstCustomElement=undefined, lastCustomElement=undefined) {
         
         // Tous les éléments focusables
         
-        const focusableElementsArray = Array.from(focusableElements),
-            positionFirstElementToFocus = focusableElementsArray.indexOf(firstElementToFocus),
-            positionLastElementToFocus = focusableElementsArray.indexOf(lastElementToFocus)
-    
+        let focusableElementsArray = Array.from(focusableElements)
+        focusableElementsArray.splice(0, 0, element)
+        
         const firstFocusableElement = focusableElementsArray[0],
-            lastFocusableElement = focusableElementsArray[focusableElementsArray.length-1];
+            lastFocusableElement = focusableElementsArray[focusableElementsArray.length-1],
+            firstElementToFocus = firstCustomElement ? firstCustomElement : firstFocusableElement,
+            lastElementToFocus = lastCustomElement ? lastCustomElement : lastFocusableElement
   
-        document.addEventListener('keydown', function(e) {
+        const positionFirstElementToFocus = focusableElementsArray.indexOf(firstElementToFocus),
+            positionLastElementToFocus = focusableElementsArray.indexOf(lastElementToFocus)
+
+        element.addEventListener('keydown', function(e) {
     
             const keyName = e.keyCode ? e.keyCode : e.key
 
@@ -111,10 +115,7 @@ const genericUtils = {
                     e.preventDefault()
                 }
             }
-    
         });
- 
-        firstElementToFocus.focus()
     }
 }
 
