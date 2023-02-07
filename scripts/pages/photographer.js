@@ -246,7 +246,13 @@ async function sortPortfolioAndDisplayMedias(sortingFunction, photographerName, 
 }
 
 
-function setupLikesBehaviour(gallery) {
-    const likeElements = gallery.querySelectorAll('.like-btn')
-    updateMediaLikes(likeElements)
+function setupLikesBehaviour() {
+
+    const rootItemSelector = '.like-btn'
+
+    galleryElement.addEventListener('click', e => {
+        const rootElement = e.target.closest(rootItemSelector)
+        if (!rootElement) return
+        updateMediaLikes(rootElement)
+    })
 }
