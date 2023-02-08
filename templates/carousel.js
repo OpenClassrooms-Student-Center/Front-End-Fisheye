@@ -29,14 +29,16 @@ const carousel = {
 
             <li class="carousel__item item-${index}" aria-hidden="true">
 
-                <video 
-                    class="carousel__media" 
-                    controls
-                    aria-label="${media.title}"
-                />
-                    <source src="assets/Sample_Photos/${photographerName}/${media.video}" type="video/mp4">
-                </video>
-                <span class="carousel__name" aria-hidden="true">${media.title}</span>
+                <a tabindex="2" class="carousel__media-container" aria-labelledby="title-${index}">
+                    <video 
+                        class="carousel__media" 
+                        controls
+                        aria-label="${media.title}"
+                    />
+                        <source src="assets/Sample_Photos/${photographerName}/${media.video}" type="video/mp4">
+                    </video>
+                </a>
+                <span id="title-${index}" class="carousel__name" aria-hidden="true" tabindex="3">${media.title}</span>
 
             </li>
         `
