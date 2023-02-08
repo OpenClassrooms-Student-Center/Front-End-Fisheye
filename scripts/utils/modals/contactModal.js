@@ -57,7 +57,7 @@ function createModalBehaviour(modal) {
         modal.showModal()
         modal.classList.add('visible')
         modal.setAttribute('aria-hidden', 'false')
-
+        
         modal.focus()
 
     }

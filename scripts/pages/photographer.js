@@ -246,6 +246,12 @@ async function sortPortfolioAndDisplayMedias(sortingFunction, photographerName, 
 }
 
 
+/* Update les likes d'une création si le bouton like est cliqué
+    Paramètres :
+        - Aucun
+    Renvoie :
+        - Rien
+*/
 function setupLikesBehaviour() {
 
     const rootItemSelector = '.like-btn'
@@ -253,6 +259,7 @@ function setupLikesBehaviour() {
     galleryElement.addEventListener('click', e => {
         const rootElement = e.target.closest(rootItemSelector)
         if (!rootElement) return
+        // Le click a été effectué sur un bouton de like, on update le nombre de likes
         updateMediaLikes(rootElement)
     })
 }
