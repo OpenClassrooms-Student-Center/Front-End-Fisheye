@@ -56,15 +56,14 @@
                 
                 <div class="sort-portfolio">
 
-                    <label id="sort-label" for="sort-portfolio" class="sort-portfolio__label">Trier par</label>
+                    <label aria-hidden="true" id="sort-label" for="sort-portfolio" class="sort-portfolio__label">Trier par</label>
                     
-                    <select name="sort" id="sort-portfolio" class="sort-portfolio__options sr-only">
-                        <option value="popularity" class="sort-portfolio__option">Popularité</option>
-                        <option value="date" class="sort-portfolio__option">Date</option>
-                        <option value="title" class="sort-portfolio__option">Titre</option>
-                    </select>
-
-                    <div class="custom-select" aria-hidden="true">
+                    <div class="custom-select">
+                        <select aria-hidden="true" name="sort" id="sort-portfolio" class="sort-portfolio__options">
+                            <option value="popularity" class="sort-portfolio__option">Popularité</option>
+                            <option value="date" class="sort-portfolio__option">Date</option>
+                            <option value="title" class="sort-portfolio__option">Titre</option>
+                        </select>
                     </div>
 
                 </div>
@@ -91,7 +90,7 @@
                         id="contact-modal-title" 
                         class="modal__title" 
                         aria-hidden="true"
-                    >jknsdfjnsdjfn
+                    >
                     </h1>
                     <img 
                         src="assets/icons/close.svg" 

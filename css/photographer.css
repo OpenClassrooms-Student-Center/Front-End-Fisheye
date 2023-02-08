@@ -97,7 +97,11 @@
     overflow: hidden;
     background-color: #901C1C;
 }
-  
+
+.sort-portfolio__options {
+    display: none;
+}
+
 .custom-select__options--hidden {
     display: none;
 }
@@ -145,7 +149,7 @@
     border-top: 1px solid #ffffff;
 }
 
-.custom-select__option--hidden:hover {
+.custom-select__option--hidden:hover, .custom-select__option--hidden:focus{
     background-color: rgba(0, 0, 0, 0.1);
 }
 
@@ -291,6 +295,7 @@
 
 .modal__title {
     font-size: 64px;
+    color: #000000;
     font-weight: normal;
     text-align: left;
     margin: 0;
@@ -456,6 +461,7 @@ form div {
 
 .carousel__name {
     color: #901C1C;
+    align-self: flex-start;
 }
 
 .carousel__right-side {

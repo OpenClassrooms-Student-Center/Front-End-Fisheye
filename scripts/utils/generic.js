@@ -12,19 +12,6 @@ const genericUtils = {
     */
     
     trapFocusOnModal: function(element, focusableElements, firstCustomElement=undefined, lastCustomElement=undefined) {
-        
-        // Tous les éléments focusables
-        
-        let focusableElementsArray = Array.from(focusableElements)
-        focusableElementsArray.splice(0, 0, element)
-        
-        const firstFocusableElement = focusableElementsArray[0],
-            lastFocusableElement = focusableElementsArray[focusableElementsArray.length-1],
-            firstElementToFocus = firstCustomElement ? firstCustomElement : firstFocusableElement,
-            lastElementToFocus = lastCustomElement ? lastCustomElement : lastFocusableElement
-  
-        const positionFirstElementToFocus = focusableElementsArray.indexOf(firstElementToFocus),
-            positionLastElementToFocus = focusableElementsArray.indexOf(lastElementToFocus)
 
         element.addEventListener('keydown', function(e) {
     
@@ -40,6 +27,20 @@ const genericUtils = {
             Pour une approche plus complète, il faudrait donner un ordre de focus à chaque élément focusable
             */            
             if ( keyName === 'Tab' || keyName === 9 ) {
+
+                // Tous les éléments focusables
+                
+                let focusableElementsArray = Array.from(focusableElements)
+                focusableElementsArray.splice(0, 0, element)
+                
+                const firstFocusableElement = focusableElementsArray[0],
+                    lastFocusableElement = focusableElementsArray[focusableElementsArray.length-1],
+                    firstElementToFocus = firstCustomElement ? firstCustomElement : firstFocusableElement,
+                    lastElementToFocus = lastCustomElement ? lastCustomElement : lastFocusableElement
+        
+                const positionFirstElementToFocus = focusableElementsArray.indexOf(firstElementToFocus),
+                    positionLastElementToFocus = focusableElementsArray.indexOf(lastElementToFocus)
+                                    
                 const activeElement = document.activeElement,
                 positionActiveElement = focusableElementsArray.indexOf(activeElement)
     
