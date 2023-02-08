@@ -43,6 +43,21 @@ h1 {
     color: #D3573C;
     font-size: 36px;
 }
+.photographer_section article h3 {
+    color: #901c1c;
+    font-size: 22px;
+    font-style: italic;
+}
+
+.photographer_section article h4 {
+    color: #901c1c;
+    font-size: 22px;
+}
+
+.photographer_section article h5 {
+    color: #901c1c;
+    font-size: 20px;
+}
 
 .photographer_section article img {
     height: 200px;

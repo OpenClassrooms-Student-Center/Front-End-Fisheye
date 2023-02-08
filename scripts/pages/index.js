@@ -1,29 +1,30 @@
+    // Our datas before fetch
+    let photographers = [];
+    // Array that will contain the result of the fetch
+    let InfosPhotographers = []
+    
+    // Function to fetch and return data
     async function getPhotographers() {
-        // Ceci est un exemple de données pour avoir un affichage de photographes de test dès le démarrage du projet, 
-        // mais il sera à remplacer avec une requête sur le fichier JSON en utilisant "fetch".
-        let photographers = [
-            {
-                "name": "Ma data test",
-                "id": 1,
-                "city": "Paris",
-                "country": "France",
-                "tagline": "Ceci est ma data test",
-                "price": 400,
-                "portrait": "account.png"
-            },
-            {
-                "name": "Autre data test",
-                "id": 2,
-                "city": "Londres",
-                "country": "UK",
-                "tagline": "Ceci est ma data test 2",
-                "price": 500,
-                "portrait": "account.png"
-            },
-        ]
-        // et bien retourner le tableau photographers seulement une fois récupéré
+       // We fetch our json file with a GET method
+        await fetch(`../data/photographers.json`, {
+        method: 'GET'
+       })
+       .then(response => {
+        return response.json();
+      }).then(photographers => {
+        // We retrieve our datas and insert them into our array infosPhotographers
+       for(i= 0; i < photographers.photographers.length; i++){
+        InfosPhotographers.push(photographers.photographers[i])     
+        console.log(InfosPhotographers)
+        console.log(InfosPhotographers)
+       }       
+      }).catch(err => {
+        console.log("error")
+      });
+        
+        // We return our array 
         return ({
-            photographers: [...photographers, ...photographers, ...photographers]})
+            photographers: InfosPhotographers})
     }
 
     async function displayData(photographers) {
