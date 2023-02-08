@@ -38,14 +38,24 @@ h1 {
     align-items: center;
     flex-direction: column;
 }
-
+.photographer_section article:hover{
+    transform: scale(1.05);
+    animation-delay: 0.5s;
+    animation-duration: 0.5s;
+    cursor: pointer;
+}
+.photographer_section article:focus{
+    transform: scale(1.05);
+    animation-delay: 0.5s;
+    cursor: pointer;
+}
 .photographer_section article h2 {
     color: #D3573C;
     font-size: 36px;
 }
 .photographer_section article h3 {
     color: #901c1c;
-    font-size: 22px;
+    font-size: 25px;
     font-style: italic;
 }
 
@@ -56,7 +66,7 @@ h1 {
 
 .photographer_section article h5 {
     color: #901c1c;
-    font-size: 20px;
+    font-size: 25px;
 }
 
 .photographer_section article img {

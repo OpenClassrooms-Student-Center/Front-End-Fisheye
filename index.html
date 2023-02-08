@@ -8,12 +8,16 @@
     <title>Fisheye</title>
   </head>
   <body>
-    <header>
-        <img src="assets/images/logo.png" class="logo" />
+    <!-- Added role = banner to the header -->
+    <header role="banner">
+      <!-- Added alt for img -->
+        <img src="assets/images/logo.png" class="logo" alt="logo de la marque Fisheye"/>
         <h1>Nos photographes</h1>
     </header>
-    <main id="main">
-        <div class="photographer_section"></div>
+    <!-- Added role = main to <main> -->
+    <main id="main" role="main">
+      <!-- Added aria-label for photographer section -->
+        <div class="photographer_section" aria-label="section des photographes"></div>
     </main>
     <script src="scripts/factories/photographer.js"></script>
     <script src="scripts/pages/index.js"></script>
