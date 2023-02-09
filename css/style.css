@@ -73,3 +73,15 @@ h1 {
     height: 200px;
     width: 200px;
 }
+.photographer_section article a {
+    font-size: 26px;
+    text-decoration: none;
+    color: #D3573C;
+    border: 1px solid #901c1c;
+    padding: 15px;
+}
+.photographer_section article a:hover{
+    color: #901c1c;
+    border: 1px solid #D3573C;
+    padding: 10px;
+}

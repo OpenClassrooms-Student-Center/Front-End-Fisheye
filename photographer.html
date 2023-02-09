@@ -8,26 +8,32 @@
     <title>Fisheye - photographe </title>
   </head>
   <body>
-    <header>
-      <img src="assets/images/logo.png" class="logo" />
+    <!-- Added role, alt, aria-label for every part where it's needed -->
+    <header role="header">
+      <img src="assets/images/logo.png" class="logo" alt="logo de la marque fisheye"/>
     </header>
-    <main id="main">
-      <div class="photograph-header">
-        <button class="contact_button" onclick="displayModal()">Contactez-moi</button>
+    <main id="main" role="main">
+      <div class="medias_section">
+        
+      </div>
+      <div class="photograph-header" aria-label="photograph header">
+        <button class="contact_button" onclick="displayModal()" role="contact" aria-label="cliquez pour entrer en contact avec le photographe">Contactez-moi</button>
       </div>
     </main>
     <div id="contact_modal">
 			<div class="modal">
 				<header>
           <h2>Contactez-moi</h2>
-          <img src="assets/icons/close.svg" onclick="closeModal()" />
+          <img src="assets/icons/close.svg" onclick="closeModal()" alt="closure button" aria-label="cliquez pour refermer la fenêtre"  />
         </header>
-				<form>
+				<form role="form">
 					<div>
-						<label>Prénom</label>
+						<label for="firstName" id="firstName">Prénom</label>
 						<input />
 					</div>
-          <button class="contact_button">Envoyer</button>
+          <!-- Added type="submit" for the button-->
+          <button type="submit"
+          class="contact_button" role="send" aria-label="cliquez pour valider le formulaire et l'envoyer">Envoyer</button>
 				</form>
 			</div>
 		</div>

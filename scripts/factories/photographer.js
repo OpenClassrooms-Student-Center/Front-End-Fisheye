@@ -26,6 +26,10 @@ function photographerFactory(data) {
     // Our Countries
     const getCountries = `${country}`
     console.log(getCountries)
+    console.log(getId)
+    //Our Photographer
+    const getPhotographer = `/photographer.html?id=${getId}`
+    
 
     function getUserCardDOM() {
         const article = document.createElement( 'article' );
@@ -42,13 +46,36 @@ function photographerFactory(data) {
         h4.textContent = getCountries
         const h5 = document.createElement('h5')
         h5.textContent = getPrices+" € /h"
+        const a = document.createElement('a')
+        a.textContent = "Voir le profil"
+        a.href=getPhotographer;
+        
         article.appendChild(img);
         article.appendChild(h2);
         article.appendChild(h3);
         article.appendChild(h4);
         article.appendChild(h5);
+        article.appendChild(a);
+        
+            article.addEventListener("click", () => {
+                innerHTML.links(`<a href=photographer.html?id=${getId}>`);
+            })
+
+       /* let ahref = document.getElementsByTagName("article");
+        console.log(ahref[0] +"ahref[0]")
+        let links = ahref[0]
+        console.log(links)
+        let numberahref = ahref.length;
+        console.log(numberahref  + "numberahref");
+        for (let i = 0; i < numberahref; i++) {
+          links.forEach((links) => {
+            links.addEventListener("click", () => {
+              innerHTML.links(`<a href="photographer.html?id=${photographers[i]._id}">`);
+            });
+          });
+        }*/
         return (article);
     }
     // We added every data of our photographers
-    return { name, portrait, id, tagline, city, price, country, getUserCardDOM }
+    return { name, portrait, id, tagline, city, price, country,  getUserCardDOM }
 }
