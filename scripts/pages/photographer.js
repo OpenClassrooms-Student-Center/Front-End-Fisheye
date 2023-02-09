@@ -1,33 +1,30 @@
 
-// --------------- FICHIER DE CONTRÔLE DE LA PAGE DE PROFIL D'UN PHOTOGRAPHE --------------- 
+// --------------- FICHIER DE CONTRÔLE DE LA PAGE DE PROFIL D'UN PHOTOGRAPHE ---------------
 
+/** **************************** MODULES **************************************** */
+/** ******************************************************************** */
 
-/****************************** MODULES **************************************** */
-/********************************************************************** */
+import { fetchDataFromApi } from '../services/Api.js'
+import photographerFactory from '../factories/photographer.js'
+import sorter from '../utils/sort.js'
+import { createContactModalBehaviour, createCarouselModalBehaviour } from '../utils/modals/index.js'
+import MediaFactory from '../factories/media.js'
+import { updateMediaLikes } from '../utils/likes.js'
+import updateLoaderText from '../utils/loaders.js'
 
-import { fetchDataFromApi } from "../services/Api.js"
-import photographerFactory from "../factories/photographer.js"
-import sorter from "../utils/sort.js"
-import { createContactModalBehaviour, createCarouselModalBehaviour } from "../utils/modals/index.js"
-import MediaFactory from "../factories/media.js"
-import { updateMediaLikes } from "../utils/likes.js"
-import updateLoaderText from "../utils/loaders.js"
+/** **************************** PROCEDURES **************************************** */
+/** ******************************************************************** */
 
+const galleryElement = document.querySelector('.gallery')
+const carouselItems = document.querySelector('.carousel__items')
+const filterButton = document.querySelector('#sort-portfolio')
+const contactButton = document.querySelector('.contact_button')
+const modal = document.querySelector('.modal-contact')
 
-/****************************** PROCEDURES **************************************** */
-/********************************************************************** */
+init()
 
-const galleryElement = document.querySelector('.gallery'),
-    carouselItems = document.querySelector('.carousel__items'),
-    filterButton = document.querySelector('#sort-portfolio'),
-    contactButton = document.querySelector('.contact_button'),
-    modal = document.querySelector('.modal-contact');
-
-init();
-
-
-/****************************** FUNCTIONS **************************************** */
-/********************************************************************** */
+/** **************************** FUNCTIONS **************************************** */
+/** ******************************************************************** */
 
 /* Lance les différentes étapes nécessaires pour le bon affichage de la page
     Paramètres :
@@ -35,19 +32,18 @@ init();
     Renvoie :
         - Rien
 */
-async function init() {
-
+async function init () {
     // Pour les SR : indique que la page est chargée
     setTimeout(updateLoaderText, 3000)
 
-    const { photographer, photographerMedias } = await getPhotographerData(),
-        photographerName = photographer.name;
+    const { photographer, photographerMedias } = await getPhotographerData()
+    const photographerName = photographer.name
 
     displayPhotographerHeader(photographer)
 
     // Affichage de l'encart
     displayStickyBar(photographer.price, photographerMedias)
-    
+
     // Récupère l'objet associé à la fonction de tri
     const portfolioSorter = sorter(photographerName, photographerMedias)
     portfolioSorter.init()
@@ -64,9 +60,9 @@ async function init() {
 
     // Configure la fonctionnalité de like des créations
     setupLikesBehaviour(galleryElement)
-    
+
     // Gère l'apparition du formulaire de contact
-    contactButton.addEventListener('click', () => contactModalBehaviour.displayModal(photographerName))  
+    contactButton.addEventListener('click', () => contactModalBehaviour.displayModal(photographerName))
 
     // Gère le comportement suite à un changement de critère de tri
     filterButton.addEventListener('change', async (e) => {
@@ -74,31 +70,28 @@ async function init() {
     })
 };
 
-
 /* Récupère les infos du photographe ainsi que ses créations
     Paramètres :
         - Aucun
     Renvoie :
-        - Un objet contenant l'objet relatif aux infos du photographe 
+        - Un objet contenant l'objet relatif aux infos du photographe
         et une liste regroupant l'ensemble de ses créations
 */
-async function getPhotographerData() {
-
+async function getPhotographerData () {
     const id = parseInt(getPhotographerId())
 
-    const fetchingURL = '../../data/photographers.json';
+    const fetchingURL = '../../data/photographers.json'
 
     const data = await fetchDataFromApi(fetchingURL)
 
-    const { photographers, media } = data,
-        // Chaque photographe est associé à un id unique
-        photographer = photographers.filter(item => item.id === id)[0],
-        // Chaque création est un objet où l'id du photographe est indiqué
-        photographerMedias = media.filter(item => item.photographerId === id)
+    const { photographers, media } = data
+    // Chaque photographe est associé à un id unique
+    const photographer = photographers.filter(item => item.id === id)[0]
+    // Chaque création est un objet où l'id du photographe est indiqué
+    const photographerMedias = media.filter(item => item.photographerId === id)
 
     return { photographer, photographerMedias }
 }
-
 
 /* Récupère le paramètre id d'une url
     Paramètres :
@@ -106,10 +99,9 @@ async function getPhotographerData() {
     Renvoie :
         - l'id
 */
-function getPhotographerId() {
-
-    const paramsURL = (new URL(document.location)).searchParams,
-        id = paramsURL.get('id')
+function getPhotographerId () {
+    const paramsURL = (new URL(document.location)).searchParams
+    const id = paramsURL.get('id')
 
     return id
 }
@@ -118,12 +110,11 @@ function getPhotographerId() {
     Paramètres :
         - Un objet représentant un photographe
     Renvoie :
-        - Rien 
+        - Rien
 */
-function displayPhotographerHeader(photographer) {
-
-    // Création des éléments adéquats via la méthode getUserCardDOM 
-    const photographerModel = photographerFactory(photographer);
+function displayPhotographerHeader (photographer) {
+    // Création des éléments adéquats via la méthode getUserCardDOM
+    const photographerModel = photographerFactory(photographer)
     const [photographerPresentationElement, photographerPictureElement] = photographerModel.getUserCardDOM(true)
 
     const photographerHeader = document.querySelector('.photograph-header')
@@ -131,20 +122,17 @@ function displayPhotographerHeader(photographer) {
     photographerHeader.innerHTML = photographerPresentationElement
     photographerHeader.insertAdjacentElement('beforeend', contactButton)
     photographerHeader.insertAdjacentHTML('beforeend', photographerPictureElement)
-
 }
-
 
 /* Remplis l'encart des informations nécessaires
     Paramètres :
         - Le tarif d'un photographe
         - les créations d'un photographe
     Renvoie :
-        - Rien 
+        - Rien
 */
 
-function displayStickyBar(price, medias) {
-
+function displayStickyBar (price, medias) {
     const additionalInformationsElement = document.querySelector('.additional-information')
 
     // Les texte à lire par les SR
@@ -154,7 +142,6 @@ function displayStickyBar(price, medias) {
     additionalInformationsElement.setAttribute('aria-label', `${likesForSR}, ${priceForSR}`)
 }
 
-
 /* Calcule le nombre de likes reçus par un photographe
     Paramètres :
         - Un élement HTML contenant le bloc concerné
@@ -162,8 +149,7 @@ function displayStickyBar(price, medias) {
     Renvoie :
         - Du texte indiquant le nombre de likes
 */
-function displayLikesTotalNumber(element, medias) {
-
+function displayLikesTotalNumber (element, medias) {
     const likesElement = element.querySelector('.additional-information__likes-number')
     const likesTotalNumber = medias.reduce((acc, media) => acc + media.likes, 0)
     likesElement.textContent = likesTotalNumber
@@ -174,7 +160,6 @@ function displayLikesTotalNumber(element, medias) {
     return likesElementSR
 }
 
-
 /* Définit le texte à afficher concernant le tarif d'un photographe
     Paramètres :
         - Un élement HTML contenant le bloc concerné
@@ -182,8 +167,7 @@ function displayLikesTotalNumber(element, medias) {
     Renvoie :
         - Du texte indiquant le tarif
 */
-function displayPrice(element, price) {
-
+function displayPrice (element, price) {
     const priceElement = element.querySelector('.additional-information__price')
     priceElement.textContent = price + '€ / jour'
 
@@ -191,7 +175,6 @@ function displayPrice(element, price) {
 
     return priceElementSR
 }
-
 
 /* Ajoute une création à la gallerie et au carousel
     Paramètres :
@@ -201,8 +184,7 @@ function displayPrice(element, price) {
     Renvoie :
         - Rien
 */
-function displayMedia(photographerName, media, index) {
-
+function displayMedia (photographerName, media, index) {
     // Instanciation de l'objet possédant la méthode de construction de l'élément
     const mediaModel = MediaFactory(photographerName, media)
 
@@ -211,7 +193,6 @@ function displayMedia(photographerName, media, index) {
     carouselItems.insertAdjacentHTML('beforeend', carouselItem)
 }
 
-
 /* Dispose les créations d'un photographe dans le DOM
     Paramètres :
         - Un nom de photographe
@@ -219,14 +200,13 @@ function displayMedia(photographerName, media, index) {
     Renvoie :
         - Rien
 */
-function displayMedias(photographerName, photographerMedias) {
+function displayMedias (photographerName, photographerMedias) {
     photographerMedias.forEach((media, index) => {
         displayMedia(photographerName, media, index)
     })
 }
 
-
-/* Tri les vidéos et les dispose dans le DOM 
+/* Tri les vidéos et les dispose dans le DOM
     Paramètres :
         - Une fonction de tri
         - Le nom d'un photographe
@@ -235,16 +215,14 @@ function displayMedias(photographerName, photographerMedias) {
     Renvoie :
         - Rien
 */
-async function sortPortfolioAndDisplayMedias(sortingFunction, photographerName, medias, sortType = 'popularity') {
-    
+async function sortPortfolioAndDisplayMedias (sortingFunction, photographerName, medias, sortType = 'popularity') {
     // Réception des médias triés selon le critère
-    const mediasSorted = await sortingFunction(medias, sortType);
+    const mediasSorted = await sortingFunction(medias, sortType)
     galleryElement.innerHTML = ''
     carouselItems.innerHTML = ''
     // Disposition des créations sur le DOM
     displayMedias(photographerName, mediasSorted)
 }
-
 
 /* Update les likes d'une création si le bouton like est cliqué
     Paramètres :
@@ -252,8 +230,7 @@ async function sortPortfolioAndDisplayMedias(sortingFunction, photographerName, 
     Renvoie :
         - Rien
 */
-function setupLikesBehaviour() {
-
+function setupLikesBehaviour () {
     const rootItemSelector = '.like-btn'
 
     galleryElement.addEventListener('click', e => {
@@ -267,7 +244,7 @@ function setupLikesBehaviour() {
         const rootElement = e.target.closest(rootItemSelector)
         if (!rootElement) return
 
-        const keyName = e.key || e.keyCode 
+        const keyName = e.key || e.keyCode
         // Le touche a été appuyée sur un bouton de like, on update le nombre de likes
         if (keyName === 'Enter' || keyName === 13) updateMediaLikes(rootElement)
     })

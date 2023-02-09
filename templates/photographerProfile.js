@@ -1,5 +1,5 @@
 
-// --------------- TEMPLATE HTML POUR LA CARTE D'INFORMATIONS D'UN PHOTOGRAPHE SUR LA PAGE DE PROFIL  --------------- 
+// --------------- TEMPLATE HTML POUR LA CARTE D'INFORMATIONS D'UN PHOTOGRAPHE SUR LA PAGE DE PROFIL  ---------------
 
 /* Crée les éléments html associé au bloc d'informations d'un photographe affiché sur sa page de profil
     Paramètres :
@@ -7,8 +7,7 @@
     Renvoie :
         - Deux élément HTML div et img
 */
-function createHTML(data) {
-
+function createHTML (data) {
     const { name, city, country, tagline, picture } = data
 
     const presentationElement = `
@@ -37,7 +36,6 @@ function createHTML(data) {
 
     // Deux éléments sont renvoyés car ensuite ils devront être ajoutés séparément dans le DOM
     return [presentationElement, pictureElement]
-}    
-
+}
 
 export { createHTML }

@@ -1,7 +1,6 @@
 const photographerMedia = {
-    
-    createImageHTML: function(photographerName, {image, title, likes}) {
 
+    createImageHTML: function (photographerName, { image, title, likes }) {
         const articleElements = `
 
             <article>
@@ -34,11 +33,9 @@ const photographerMedia = {
         `
 
         return articleElements
-
     },
 
-    createVideoHTML: function(photographerName, { video, title, likes }) {
-
+    createVideoHTML: function (photographerName, { video, title, likes }) {
         const articleElements = `
 
             <article>
@@ -71,7 +68,7 @@ const photographerMedia = {
 
         return articleElements
     }
-    
+
 }
 
 export default photographerMedia

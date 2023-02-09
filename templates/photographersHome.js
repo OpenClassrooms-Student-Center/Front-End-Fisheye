@@ -1,5 +1,5 @@
 
-// --------------- TEMPLATE HTML POUR LA CARTE D'INFORMATIONS D'UN PHOTOGRAPHE SUR LA PAGE D'ACCUEIL --------------- 
+// --------------- TEMPLATE HTML POUR LA CARTE D'INFORMATIONS D'UN PHOTOGRAPHE SUR LA PAGE D'ACCUEIL ---------------
 
 /* Crée les éléments html associé au bloc d'informations d'un photographe affiché sur la page d'accueil
     Paramètres :
@@ -7,13 +7,12 @@
     Renvoie :
         - Un élément HTML article
 */
-function createHTML(data) {
-
+function createHTML (data) {
     const { id, name, city, country, tagline, price, picture } = data
 
     const article = document.createElement('article')
 
-    const articleElements = 
+    const articleElements =
         `<a 
             href="./photographer.html?id=${id}" 
             class="photographer-view__link"
@@ -41,4 +40,4 @@ function createHTML(data) {
     return article
 }
 
-export {createHTML}
+export { createHTML }

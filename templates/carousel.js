@@ -1,9 +1,7 @@
 
 const carousel = {
 
-    
-    createImageHTML: function(photographerName, media, index) {
-
+    createImageHTML: function (photographerName, media, index) {
         const carouselItem = `
 
             <li class="carousel__item item-${index}" aria-hidden="false">
@@ -23,8 +21,7 @@ const carousel = {
         return carouselItem
     },
 
-    createVideoHTML: function(photographerName, media, index) {
-
+    createVideoHTML: function (photographerName, media, index) {
         const carouselItem = `
 
             <li class="carousel__item item-${index}" aria-hidden="true">
