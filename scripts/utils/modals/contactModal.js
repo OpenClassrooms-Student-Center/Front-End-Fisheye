@@ -17,7 +17,8 @@ function createModalBehaviour(modal) {
 
     function init() {
 
-        const closeModalButton = document.querySelector('.modal-contact__close')
+        const closeModalButton = document.querySelector('.modal-contact__close'),
+            sendMessageButton = document.querySelector(".send-message")
     
         closeModalButton.addEventListener('click', closeModal)
         closeModalButton.addEventListener('keydown', (e) => {
@@ -43,7 +44,10 @@ function createModalBehaviour(modal) {
         })
     
         // Ecoute sur le bouton d'envoi du formulaire
-        document.querySelector(".send-message").addEventListener('click', (e) => contactPhotographer(e))
+        sendMessageButton.addEventListener('click', (e) => contactPhotographer(e, checks))
+        sendMessageButton.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter' || e.keyCode === 13) contactPhotographer(e, checks)
+        })
     }
     
 
@@ -102,12 +106,12 @@ function createModalBehaviour(modal) {
         Renvoie :
             - console log la data renseignée par l'utilisateur
     */
-    function contactPhotographer(e) {
+    function contactPhotographer(e, checks) {
     
         e.preventDefault()
     
         // Lance l'ensemble des checks de validation pour chaque input
-        const { values, checkSuccess } = checkInputs()
+        const { values, checkSuccess } = checkInputs(checks)
     
         if(checkSuccess) {
         // Tous les checks ont été validés, on peut continuer 
@@ -137,7 +141,7 @@ function createModalBehaviour(modal) {
             - les valeurs du champ du formulaire
             - Un booléen. Vrai si le check passe, faut s'il y a une erreur de saisie 
     */
-    function checkInputs() {
+    function checkInputs(checks) {
     
         let checkSuccess = true,
             values = []
