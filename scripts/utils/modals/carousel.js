@@ -29,6 +29,13 @@ function createModalBehaviour(gallery, mediasLength) {
     gallery.addEventListener('keydown', e => onMediaClickEvent(e, 'keydown'))
 
     closeModalButton.addEventListener('click', closeModal)
+    closeModalButton.addEventListener('keydown', (e) => {
+        if (e.keyCode === 13 || e.key === 'Enter') {
+            e.preventDefault()
+            closeModal()
+        } 
+    })
+        
     previousButton.addEventListener('click', () => goToPreviousSlide(mediasLength))
     nextButton.addEventListener('click', () => goToNextSlide(mediasLength))
 

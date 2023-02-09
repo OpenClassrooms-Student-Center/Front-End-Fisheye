@@ -20,6 +20,13 @@ function createModalBehaviour(modal) {
         const closeModalButton = document.querySelector('.modal-contact__close')
     
         closeModalButton.addEventListener('click', closeModal)
+        closeModalButton.addEventListener('keydown', (e) => {
+            if (e.keyCode === 13 || e.key === 'Enter') {
+                e.preventDefault()
+                closeModal()
+            } 
+        })
+
         document.addEventListener('keydown', (e) => setModalBehaviourOnKeyDown(e))
     
         // Conserve le focus dans le modal
