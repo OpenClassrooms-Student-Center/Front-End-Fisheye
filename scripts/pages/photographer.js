@@ -262,4 +262,13 @@ function setupLikesBehaviour() {
         // Le click a été effectué sur un bouton de like, on update le nombre de likes
         updateMediaLikes(rootElement)
     })
+
+    galleryElement.addEventListener('keydown', e => {
+        const rootElement = e.target.closest(rootItemSelector)
+        if (!rootElement) return
+
+        const keyName = e.key || e.keyCode 
+        // Le touche a été appuyée sur un bouton de like, on update le nombre de likes
+        if (keyName === 'Enter' || keyName === 13) updateMediaLikes(rootElement)
+    })
 }

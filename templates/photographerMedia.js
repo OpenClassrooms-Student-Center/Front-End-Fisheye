@@ -17,12 +17,12 @@ const photographerMedia = {
                 <div class="media__infos">
                     <span class="media__name" aria-hidden="true">${title}</span>
 
-                    <div class="media__likes">
+                    <div class="media__likes" tabindex="0" aria-label="Nombre de likes, ${likes}">
                         <span class="media__likes-number" aria-hidden="true">${likes}</span>
-                        <span class="sr-only">Nombre de likes, ${likes}</span>
                         <i 
                             class="fa-solid fa-heart like-icon like-btn"
                             role="button"
+                            tabindex="0"
                             aria-label="Aimer la création"
                         >
                         </i>
@@ -54,12 +54,12 @@ const photographerMedia = {
 
                     <span class="media__name" aria-hidden="true">${title}</span>
 
-                    <div class="media__likes">
+                    <div class="media__likes" tabindex="0" aria-label="Nombre de likes, ${likes}">
                         <span class="media__likes-number" aria-hidden="true">${likes}</span>
-                        <span class="sr-only">Nombre de likes, ${likes}</span>
                         <i 
                             class="fa-solid fa-heart like-icon like-btn"
                             role="button"
+                            tabindex="0"
                             aria-label="Aimer la création"
                         ></i>
                     </div>

@@ -17,10 +17,10 @@ function createHTML(data) {
         `<a 
             href="./photographer.html?id=${id}" 
             class="photographer-view__link"
-            aria-labelledby="id"
+            aria-labelledby="photographer-name-${id}"
         >
             <img src="${picture}" alt="">
-            <h2 id="${id}" aria-hidden="true">${name}</h2>
+            <h2 id="photographer-name-${id}" aria-hidden="true">${name}</h2>
         </a>
 
         <p class="photographer-view__presentation" tabindex="0" aria-label="Location, tagline et tarif du photographe">

@@ -14,8 +14,8 @@ const carousel = {
                         class="carousel__media"
                         alt="${media.title}"
                     >
+                    <span id="title-${index}" class="carousel__name" aria-hidden="true" tabindex="3">${media.title}</span>
                 </a>
-                <span id="title-${index}" class="carousel__name" aria-hidden="true" tabindex="3">${media.title}</span>
 
             </li>
         `
@@ -37,8 +37,8 @@ const carousel = {
                     />
                         <source src="assets/Sample_Photos/${photographerName}/${media.video}" type="video/mp4">
                     </video>
+                    <span id="title-${index}" class="carousel__name" aria-hidden="true" tabindex="3">${media.title}</span>
                 </a>
-                <span id="title-${index}" class="carousel__name" aria-hidden="true" tabindex="3">${media.title}</span>
 
             </li>
         `
