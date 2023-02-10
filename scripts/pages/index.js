@@ -16,7 +16,6 @@
        for(i= 0; i < photographers.photographers.length; i++){
         InfosPhotographers.push(photographers.photographers[i])     
         console.log(InfosPhotographers)
-        console.log(InfosPhotographers)
        }       
       }).catch(err => {
         console.log("error")

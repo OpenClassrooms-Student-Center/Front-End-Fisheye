@@ -9,24 +9,19 @@ function photographerFactory(data) {
 
     // Our Ids
     const getId = `${id}`
-    console.log(getId)
 
     // Our taglines
     const getTagline = `${tagline}`
-    console.log(getTagline)
 
     // Our Cities
     const getCity = `${city}`
-    console.log(getCity)
 
     // Our Prices
     const getPrices = `${price}`
-    console.log(getPrices)
 
     // Our Countries
     const getCountries = `${country}`
-    console.log(getCountries)
-    console.log(getId)
+    
     //Our Photographer
     const getPhotographer = `/photographer.html?id=${getId}`
     

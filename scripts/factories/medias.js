@@ -3,33 +3,26 @@ function mediaFactory(data) {
 
     ////////////Getting all infos ////////////////////
 // Getting our Pictures
-const getImages = `assets/images/${photographerId}/${image}`;
-console.log(getImages)
+const getImages = `assets/images/medias/${image}`;
 
 // Our Dates
 const getDate = `${date}`
-console.log(getDate)
 
 // Our Ids
 const getId = `${id}`
-console.log(getId)
 
 // Our Titles
 const getTitle = `${title}`
-console.log(getTitle)
 
 
 // Our Prices
 const getPrices = `${price}`
-console.log(getPrices)
 
 //Our PhotographerId
 const getPhotographerId = `${photographerId}`
-console.log(getPhotographerId)
 
 //Our Medias likes
 const getLikes = `${likes}`
-console.log(getLikes)
 
 function getMediaCardDOM() {
     const article = document.createElement( 'article' );

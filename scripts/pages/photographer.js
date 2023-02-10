@@ -2,24 +2,14 @@
 
 const photographerId = window.location.search.split("?id=").join("");
 console.log(photographerId);
+
+/* Medias and photographer Handling */
+
 let aboutPhotographer = [];
 let mediasAboutPhotographer = [];
 
-/*
- Fonction asynchrone permettant de fetch un photograhe
- Les données du photographe iront dans la variable (tableau) aboutPhotographer
-*/
-/*const fetchMedias = async () => {
-  await fetch(`../data/photographers.json`)
-    .then((res) => res.json())
-    .then((promise) => {
-        aboutPhotographer = promise;
-      console.log(promise);
-    });
-    return ({
-        aboutPhotographer: mediasAboutPhotographer})
-}
-*/
+let OurPhotographer = [];
+
 async function fetchMedias() {
     // We fetch our json file with a GET method
      await fetch(`../data/photographers.json`, {
@@ -28,16 +18,23 @@ async function fetchMedias() {
     .then(response => {
      return response.json();
    }).then(aboutPhotographer => {
-    console.log(aboutPhotographer)
      // We retrieve our datas and insert them into our array infosPhotographers
     for(i= 0; i < aboutPhotographer.media.length; i++){
         if(aboutPhotographer.media[i].photographerId == photographerId){
-            mediasAboutPhotographer.push(aboutPhotographer.media[i])     
-     console.log(mediasAboutPhotographer)
-     
-        }else{
+            mediasAboutPhotographer.push(aboutPhotographer.media[i])  }   
+        else{
             console.log("rentre pas")
         }
+    } 
+    for(i= 0; i < aboutPhotographer.photographers.length; i++){
+        console.log("rentre for")
+    if(aboutPhotographer.photographers[i].id == photographerId){
+        console.log("rentre if")
+        OurPhotographer.push(aboutPhotographer.photographers[i])
+        console.log(OurPhotographer)
+}else{
+    console.log("rentre pas if")
+}
         
     }       
    }).catch(err => {
@@ -46,7 +43,7 @@ async function fetchMedias() {
      
      // We return our array 
      return ({
-         aboutPhotographers: mediasAboutPhotographer})
+         aboutPhotographers: mediasAboutPhotographer, OurPhotographer})
  }
  async function displayData(mediasAboutPhotographer) {
     const mediasSection = document.querySelector(".medias_section");
@@ -57,12 +54,23 @@ async function fetchMedias() {
         mediasSection.appendChild(userCardDOM);
     });
 };
+async function displayDataPhotographer(OurPhotographer) {
+    const photographerSection = document.querySelector(".photograph-header");
 
+    OurPhotographer.forEach((OurPhotographer) => {
+        const photographerModel = photographerFactory(OurPhotographer);
+        const userCardDOM = photographerModel.getUserCardDOM();
+        photographerSection.appendChild(userCardDOM);
+    });
+};
 async function init() {
     // Récupère les datas des photographes
     const { photographers } = await fetchMedias();
     displayData(mediasAboutPhotographer);
+    displayDataPhotographer(OurPhotographer);
     console.log(mediasAboutPhotographer)
+    console.log(OurPhotographer)
 };
 
 init();
+/* -------------------------------------------------------------------- */

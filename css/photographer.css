@@ -121,7 +121,45 @@ form input {
 
 .svg:hover{
    fill:#901C1C;
+   transform: scale(1.2);
+   animation : 2s ease-out;
  }
  .svg:focus{
     fill:#901C1C;
+  }
+/* Photograph section */
+
+  .photograph-header article{
+    justify-self: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    gap: 65px;
+  }
+  .photograph-header article img{
+    height: 200px;
+    width: 200px;
+    padding-bottom: 20px;
+    border-radius: 15px 15px;
+  }
+  .photograph-header article h2{
+    font-size: 35px;
+    color: #901C1C;
+  }
+  .photograph-header article h3{
+    font-size: 20px;
+    color: #D3573C;
+    font-style: italic;
+  }
+  .photograph-header article h4{
+    font-size: 22px;
+    color: #D3573C;
+  }
+  .photograph-header article h5{
+    font-size: 22px;
+    color: #D3573C;
+  }
+  .photograph-header article a{
+    display: none;
   }
