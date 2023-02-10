@@ -74,3 +74,54 @@ form input {
     border: none;
     border-radius: 5px;
 }
+.medias_section {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 70px;
+    margin-top: 100px;
+}
+
+.medias_section article {
+    justify-self: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding: 15px;
+    margin: 15px;
+}
+.medias_section article:hover{
+    transform: scale(1.05);
+    animation-delay: 0.5s;
+    animation-duration: 0.5s;
+    cursor: pointer;
+}
+.medias_section article:focus{
+    transform: scale(1.05);
+    animation-delay: 0.5s;
+    cursor: pointer;
+}
+.medias_section article img{
+    height: 400px;
+    width: 400px;
+}
+.medias_section article h2{
+    font-size: 30px;
+    color: #901C1C;
+}
+.medias_section article h3{
+    font-size: 30px;
+    color: #D3573C;
+}
+.svg{
+   height: 40px;
+   width: 40px;
+   margin-left: 20px;
+}
+
+.svg:hover{
+   fill:#901C1C;
+ }
+ .svg:focus{
+    fill:#901C1C;
+  }
