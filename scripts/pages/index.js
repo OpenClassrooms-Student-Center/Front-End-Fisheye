@@ -31,7 +31,7 @@
 
         photographers.forEach((photographer) => {
             const photographerModel = photographerFactory(photographer);
-            const mediaCardDOM = photographerModel.getMediaCardDOM();
+            const mediaCardDOM = photographerModel.getUserCardDOM();
             photographersSection.appendChild(mediaCardDOM);
         });
     };

@@ -49,8 +49,8 @@ async function fetchMedias() {
     const mediasSection = document.querySelector(".medias_section");
 
     mediasAboutPhotographer.forEach((mediasAboutPhotographer) => {
-        const photographerModel = mediaFactory(mediasAboutPhotographer);
-        const userCardDOM = photographerModel.getMediaCardDOM();
+        const mediaModel = mediaFactory(mediasAboutPhotographer);
+        const userCardDOM = mediaModel.getMediaCardDOM();
         mediasSection.appendChild(userCardDOM);
     });
 };
@@ -58,8 +58,8 @@ async function displayDataPhotographer(OurPhotographer) {
     const photographerSection = document.querySelector(".photograph-header");
 
     OurPhotographer.forEach((OurPhotographer) => {
-        const photographerModel = photographerFactory(OurPhotographer);
-        const userCardDOM = photographerModel.getUserCardDOM();
+        const photographerModel = OurPhotographerFactory(OurPhotographer);
+        const userCardDOM = photographerModel.getOurUserCardDOM();
         photographerSection.appendChild(userCardDOM);
     });
 };

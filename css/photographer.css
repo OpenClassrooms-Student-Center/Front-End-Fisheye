@@ -19,6 +19,10 @@
     background-color: #901C1C;
     border-radius: 5px;
     cursor: pointer;
+    /* Modified our button localisation */
+    position: relative;
+    left: 45%;
+    top: 35%;
 }
 
 .modal {
@@ -129,37 +133,57 @@ form input {
   }
 /* Photograph section */
 
+  h2, h3, h4, img{
+    margin-block-start: 0em;
+    margin-block-end: 0em;
+  }
+  .photographer-section{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap:100px;
+    width: 100%;
+  }
   .photograph-header article{
-    justify-self: center;
     display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: row;
-    gap: 65px;
+    flex-direction: column;
+    padding-left: 5%;
+    padding-bottom: 5%;
+    min-width: 500px;
+    gap: 10px;
   }
   .photograph-header article img{
-    height: 200px;
-    width: 200px;
-    padding-bottom: 20px;
-    border-radius: 15px 15px;
+    width: 210px;
+    height: 210px;
+    border-radius: 50%;
+    position: absolute;
+    right: 10%;
+    bottom: 65%;
   }
   .photograph-header article h2{
-    font-size: 35px;
-    color: #901C1C;
+    font-size: 55px;
+    color: #D3573C;
+    font-weight: 300;
   }
   .photograph-header article h3{
-    font-size: 20px;
-    color: #D3573C;
-    font-style: italic;
+    font-size: 25px;
+    color: #901C1C;
+    font-weight: 300;
   }
   .photograph-header article h4{
-    font-size: 22px;
-    color: #D3573C;
+    font-size: 18px;
+    color: black;
+    padding-top: 1%;
+    font-weight: 300;
   }
   .photograph-header article h5{
     font-size: 22px;
     color: #D3573C;
   }
   .photograph-header article a{
-    display: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    gap: 85px;
+    text-decoration: none;
   }
