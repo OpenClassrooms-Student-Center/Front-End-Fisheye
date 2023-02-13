@@ -108,28 +108,44 @@ form input {
 .medias_section article img{
     height: 400px;
     width: 400px;
+    border-radius: 2%;
 }
 .medias_section article h2{
-    font-size: 30px;
+    font-size: 28px;
     color: #901C1C;
 }
 .medias_section article h3{
-    font-size: 30px;
-    color: #D3573C;
+    font-size: 23px;
+    color: black;
+    display: inline-block;
+    margin-left : 0.1%;
 }
-.svg{
-   height: 40px;
-   width: 40px;
-   margin-left: 20px;
+svg{
+   height: 25px;
+   width: 25px;
+   margin-left: 10px;
+   margin-right: 10px;
+   fill: #901C1C;
 }
 
-.svg:hover{
-   fill:#901C1C;
-   transform: scale(1.2);
+.medias_section article h3:hover svg {
+   transform: scale(1.05);
    animation : 2s ease-out;
  }
- .svg:focus{
+
+ .medias_section article h3:hover {
+  color: #901C1C;
+  transform: scale(1.1);
+ }
+ .medias_section article h3:focus{
     fill:#901C1C;
+  }
+  .infosAboutPhoto{
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    padding-top: 0.5em;
+    word-wrap: wrap;
   }
 /* Photograph section */
 
