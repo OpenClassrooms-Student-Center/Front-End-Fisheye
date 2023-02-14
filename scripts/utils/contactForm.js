@@ -1,6 +1,7 @@
 function displayModal() {
     const modal = document.getElementById("contact_modal");
     const contactButton = document.querySelector(".contact_button");
+
     contactButton.style.visibility = "hidden";
 	modal.style.display = "block";
     // Added behaviour for the rest of the page

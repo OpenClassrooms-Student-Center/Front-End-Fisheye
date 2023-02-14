@@ -13,30 +13,49 @@
       <img src="assets/images/logo.png" class="logo" alt="logo de la marque fisheye"/>
     </header>
     <main id="main" role="main">
-      <div class="photograph-header" aria-label="photograph header">
+      <div class="photograph-header" aria-label="photograph header" id="photograph_header">
         <button class="contact_button" onclick="displayModal()" role="contact" aria-label="cliquez pour entrer en contact avec le photographe">Contactez-moi</button>
-      
-
       </div>
     </main>
-    <div id="contact_modal">
+    <div id="contact_modal" role="dialog">
 			<div class="modal">
 				<header>
           <h2>Contactez-moi</h2>
-          <img src="assets/icons/close.svg" onclick="closeModal()" alt="closure button" aria-label="cliquez pour refermer la fenêtre"  />
+          <img src="assets/icons/close.svg" onclick="closeModal()" alt="closure button" aria-label="cliquez pour refermer la fenêtre"  role="closure button"/>
         </header>
-				<form role="form">
+        <!-- Added inputs to form with label -->
+				<form id="form" role="form">
 					<div>
-						<label for="firstName" id="firstName">Prénom</label>
-						<input />
-					</div>
+						<label for="firstName">Prénom</label>
+						<input type="text" id="firstName" aria-label="entrez votre prénom" required/>
+            <!-- We add our <p> with the id that we have in our js file -->
+              <p id="firstNameError"></p>
+              <!------------------------------------------------------------>
+            <label for="lastName" >Nom</label>
+						<input type="text" id="lastName" aria-label="entrez votre nom" required/>
+            <!-- We add our <p> with the id that we have in our js file -->
+              <p id="lastNameError"></p>
+              <!------------------------------------------------------------>
+            <label for="email" >Email</label>
+						<input type="email" id="email" aria-label="entrez votre nom" required/>
+            <!-- We add our <p> with the id that we have in our js file -->
+              <p id="emailError"></p>
+              <!------------------------------------------------------------>
+            <label for="message" >Votre message</label>
+						<textarea rows="5" cols="1" id="message" class="textarea" aria-label="entrez votre message" required></textarea>
+              <!-- We add our <p> with the id that we have in our js file -->
+                <p id="messageError"></p>
+                <!------------------------------------------------------------>
+          </div>
           <!-- Added type="submit" for the button-->
           <button type="submit"
-          class="contact_button" role="send" aria-label="cliquez pour valider le formulaire et l'envoyer">Envoyer</button>
+          class="contact_button_send" id="btn-submit" role="send" aria-label="cliquez pour valider le formulaire et l'envoyer">Envoyer</button>
 				</form>
 			</div></div>
-      
-      <div class="medias_section">
+      <div class="modal_location">
+      <div id="medias_modal" class="carousel" role="dialog">
+      </div></div>
+      <div class="medias_section" id="medias">
 		</div>
     <!-- Added our factories -->
     
