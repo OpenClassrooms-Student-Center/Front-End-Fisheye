@@ -85,8 +85,10 @@ h5{
 }
 
 .photographer_section article img {
-    height: 270px;
-    border-radius: 90%;
+    height: 260px;
+    border-radius: 50%;
+    object-fit: cover;
+    object-position: center;
 }
 .photographer_section article a {
     text-decoration: none;

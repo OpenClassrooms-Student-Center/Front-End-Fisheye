@@ -109,6 +109,15 @@ form input {
     height: 400px;
     width: 400px;
     border-radius: 2%;
+    aspect-ratio: 1/1;
+    object-position: center;
+    object-fit: cover;  
+}
+.medias_section article video{
+  height: 400px;
+  width: 400px;
+  border-radius: 2%;
+  object-fit: cover;
 }
 .medias_section article h2{
     font-size: 28px;
@@ -174,9 +183,10 @@ svg{
     position: absolute;
     right: 10%;
     bottom: 65%;
+    object-fit: cover;
   }
   .photograph-header article h2{
-    font-size: 55px;
+    font-size: 35px;
     color: #D3573C;
     font-weight: 300;
   }
@@ -184,6 +194,7 @@ svg{
     font-size: 25px;
     color: #901C1C;
     font-weight: 300;
+    margin-left: 0.1%;
   }
   .photograph-header article h4{
     font-size: 18px;
@@ -191,9 +202,10 @@ svg{
     padding-top: 1%;
     font-weight: 300;
   }
-  .photograph-header article h5{
+  .photograph-header div h5{
     font-size: 22px;
-    color: #D3573C;
+    color: black;
+    font-weight: 300;
   }
   .photograph-header article a{
     display: flex;
@@ -203,3 +215,13 @@ svg{
     gap: 85px;
     text-decoration: none;
   }
+.aside{
+  background-color: #D3573C;
+  padding: 1.2em;
+  color: black;
+  position: fixed;
+  bottom: 0;
+  right: 2%;
+  border-radius: 10px 10px 0px 0px;
+  letter-spacing: 0.1em;
+}

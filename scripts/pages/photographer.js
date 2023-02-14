@@ -22,20 +22,12 @@ async function fetchMedias() {
     for(i= 0; i < aboutPhotographer.media.length; i++){
         if(aboutPhotographer.media[i].photographerId == photographerId){
             mediasAboutPhotographer.push(aboutPhotographer.media[i])  }   
-        else{
-            console.log("rentre pas")
-        }
     } 
     for(i= 0; i < aboutPhotographer.photographers.length; i++){
-        console.log("rentre for")
     if(aboutPhotographer.photographers[i].id == photographerId){
-        console.log("rentre if")
         OurPhotographer.push(aboutPhotographer.photographers[i])
         console.log(OurPhotographer)
-}else{
-    console.log("rentre pas if")
-}
-        
+}       
     }       
    }).catch(err => {
      console.log("error")

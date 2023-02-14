@@ -43,8 +43,12 @@ function OurPhotographerFactory(data) {
         //a.href=getPhotographer;
         const div = document.createElement('div')
         div.classList.add("photographer-section")
+        const aside = document.createElement('div')
+        aside.classList.add('aside')
         const imgContainer = document.createElement('article');
         div.appendChild(article)
+        div.appendChild(aside)
+        aside.appendChild(h5)
         div.appendChild(imgContainer)
         article.appendChild(h2);
         article.appendChild(h3);
