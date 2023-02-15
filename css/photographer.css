@@ -1,3 +1,9 @@
+*, ::before, ::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
 #contact_modal {
     display: none;
 }
@@ -302,10 +308,28 @@ input{
   position: relative;
   left: 21%;
 }
-.img_carousel{
+.img_carousel {
+  max-width: 100%;
+  display: none;
+}
+.img_carousel.active{
   height: 85%;
+  display: block;
+  animation: fade 0.8s;
   display: flex;
   align-items: center;
   justify-content: center;
   padding: 1%;
+}
+@keyframes fade {
+  from{
+    opacity: 0;
+  }
+  to{
+    opacity: 1;
+  }
+}
+.arrow{
+  color: #901C1C;
+  font-size: 65px;
 }

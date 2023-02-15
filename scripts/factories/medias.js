@@ -1,30 +1,47 @@
 function mediaFactory(data) {
     const { date, id, image, likes, photographerId, price, title, video } = data;
-
     const getVideo = `assets/images/medias/${video}`;
     console.log(getVideo)
 
 function getMediaCardDOM() {
+
         console.log("2 =>", "fonctionne")
         if(video == undefined){
             console.log("1 =>", data.video)
             const article = document.createElement( 'article' );
             const img = document.createElement( 'img' );
             img.setAttribute("src", `assets/images/medias/${image}`)
+            // Launch carousel on click
             img.onclick = function(){
+                // Oppening carousel
                 const carousel = document.getElementById('medias_modal')
                 carousel.style.display ="flex"
+                //Hiding the rest of the page
                 mediasSection = document.getElementById("medias")
                 mediasSection.style.display="none"
                 photographSection = document.getElementById('photograph_header')
                 photographSection.style.display = "none"
+                //Creating our elements and setting them with attributes
+                img.setAttribute("name", "image_carousel")
                 img.classList.add("img_carousel")
+                img.classList.add("active")
                 const button = document.createElement('img')
                 button.setAttribute("src", "assets/icons/test.svg")
                 button.classList.add('closure_button')
+                // Creating our arrow
+                const arrowRight = document.createElement('span')
+                arrowRight.innerHTML=">"
+                arrowRight.classList.add('arrow')
+                //Getting all our img's
+                const items = document.querySelectorAll("img")
                 carousel.appendChild(button);
-                carousel.appendChild(img);
+                carousel.appendChild(arrowRight)
+                carousel.appendChild(img)
+                //carousel.appendChild(img);
                 carousel.appendChild(h2);
+
+                // close carousel on click
+                
                 button.onclick = function(){
                     const carousel = document.getElementById('medias_modal')
                     carousel.style.display ="none"
@@ -32,7 +49,47 @@ function getMediaCardDOM() {
                     photographSection.style.display = "block"
                     mediasSection = document.getElementById("medias")
                     mediasSection.style.display="grid"
+                    window.location.reload()
                 }
+
+                //Change image for next on click
+
+                arrowRight.onclick = function(){
+                    const items = document.querySelectorAll("img")
+                    photos = []
+                    photos.push(items)
+                    console.log("photos", photos)
+                    img.classList.remove("active")
+                    items.forEach(item => {
+                        let nbSlide = items.length
+                        goodSlides = photos.splice(4)
+                        console.log("goodSlides", goodSlides)
+                        let count = 4;
+                            carousel.appendChild(item);
+                            item.classList.add("img_carousel")
+                            
+                            items[count].classList.remove('active')
+                                    if(count < nbSlide - 1){
+                                        console.log("nbSlide", nbSlide)
+                                        count++;
+                                        console.log("count", count)
+                                        items[count].classList.add('active')
+                                        /*items[count].classList.remove('img_carousel')
+                                        items[count].classList.remove('active')
+                                        items[count].classList.add('img_carousel')*/
+                                
+                                        
+                                    }else{
+                                        console.log("on a terminé le slider")
+                                        count = 0;
+                                    }
+                                    
+                                    /*items[count].classList.remove('img_carousel')
+                                    items[count].classList.add('active')
+                                    console.log("count2 => ", count);*/      
+                        })
+                        
+                   }
             }
             // For accessibility, we add an alt = photo of photographer and an aria-label to tell that you can click on the image to see more infos
            // img.setAttribute("alt", `profil de ${name}`)
@@ -57,15 +114,32 @@ function getMediaCardDOM() {
                 span.classList.add("infosAboutPhoto")
                 const h4 = document.createElement('video')
                 h4.setAttribute("src", `assets/images/medias/${video}`)
+                h4.classList.add("img_carousel")
                 article.appendChild(h4);
                 article.appendChild(span);
                 span.appendChild(h2);
                 span.appendChild(h3);
-                
+            
                 console.log("rentre dans condition")
-                return (article)
+                h4.onclick = function(){
+                    const carousel = document.getElementById('medias_modal')
+                    carousel.style.display ="flex"
+                    mediasSection = document.getElementById("medias")
+                    mediasSection.style.display="none"
+                    photographSection = document.getElementById('photograph_header')
+                    photographSection.style.display = "none"
+                    h4.classList.add("img_carousel")
+                    const button = document.createElement('img')
+                    button.setAttribute("src", "assets/icons/test.svg")
+                    button.classList.add('closure_button')
+                    carousel.appendChild(button);
+                    carousel.appendChild(h4);
+                    carousel.appendChild(h2);
+                    h4.setAttribute("controls", "true")
+                    h4.setAttribute("id", "video")
+                }
+return (article)
             }
-
 
 }
 return { date, id, image, likes, photographerId, price, title, video, getMediaCardDOM }

@@ -39,7 +39,7 @@ function OurPhotographerFactory(data) {
         const h4 = document.createElement('h4')
         h4.textContent = getTagline
         const h5 = document.createElement('h5')
-        h5.textContent = getPrices+" €/jour"
+        h5.textContent = getPrices+"€ / jour"
         //a.href=getPhotographer;
         const div = document.createElement('div')
         div.classList.add("photographer-section")

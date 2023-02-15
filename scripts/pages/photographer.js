@@ -55,6 +55,7 @@ async function displayDataPhotographer(OurPhotographer) {
         photographerSection.appendChild(userCardDOM);
     });
 };
+
 async function init() {
     // Récupère les datas des photographes
     const { photographers } = await fetchMedias();
