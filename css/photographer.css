@@ -331,5 +331,11 @@ input{
 }
 .arrow{
   color: #901C1C;
-  font-size: 65px;
+  font-size: 85px;
+  position: absolute;
+  right: 5%;
+}
+.arrow:hover{
+  transform: scale(1.2);
+  cursor: pointer;
 }
