@@ -42,6 +42,7 @@ async function fetchMedias() {
 
     mediasAboutPhotographer.forEach((mediasAboutPhotographer) => {
         const mediaModel = mediaFactory(mediasAboutPhotographer);
+        console.log(mediasAboutPhotographer, "mediasAboutPhotographer")
         const mediaCardDOM = mediaModel.getMediaCardDOM();
         mediasSection.appendChild(mediaCardDOM);
     });

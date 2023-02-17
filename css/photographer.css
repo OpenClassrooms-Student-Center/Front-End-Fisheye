@@ -290,15 +290,16 @@ input{
   height: 800px;
   z-index: 2;
 }
-.closure_button{
+.carousel img.closure_button{
   fill:#901C1C;
-  height: 60px;
+  height: 110px;
   position: absolute;
   right: 0;
   top: 0;
   z-index: 1;
+  display: flex !important;
 }
-.closure_button:hover{
+.carousel img.closure_button:hover{
   cursor: pointer;
   transform: scale(1.3)
 }
@@ -307,14 +308,11 @@ input{
   width: 100%;
   position: relative;
   left: 21%;
+  display: flex;
 }
-.img_carousel {
-  max-width: 100%;
-  display: none;
-}
-.img_carousel.active{
+
+.carousel img.active{
   height: 85%;
-  display: block;
   animation: fade 0.8s;
   display: flex;
   align-items: center;
@@ -339,3 +337,16 @@ input{
   transform: scale(1.2);
   cursor: pointer;
 }
+.carousel img{
+width: 700px;
+  height: 500px;
+  animation: fade 0.8s;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.carousel video{
+  height: 700px;
+  width: 900px;
+  padding-bottom: 1%;
+} 

@@ -1,7 +1,7 @@
 const items = document.getElementById("image_carousel")
 console.log("items =>", items)
 const nbSlide = items.length
-const suivant = querySelector('click')
+const suivant = document.getElementsByClassName('active')
 let count = 0;
 
 export function slideSuivante(){
