@@ -1,0 +1,8 @@
+1 fetch le json sur la page index
+2 page photographe : fetch titres sur json et gallerie
+3 gestion des likes
+4 gestion du tri popularité/titre
+5 ouverture lightbox
+6 navigation lightbox
+7 formulaire contact modal
+8 révision accessibilité
