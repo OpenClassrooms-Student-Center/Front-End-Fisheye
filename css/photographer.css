@@ -74,3 +74,11 @@ form input {
     border: none;
     border-radius: 5px;
 }
+
+form textArea {
+    width : 100%;
+    height : 205px;
+    border : none;
+    border-radius: 5px;
+    resize : none;
+}
