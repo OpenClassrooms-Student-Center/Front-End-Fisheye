@@ -26,6 +26,29 @@
 					<div>
 						<label>Prénom</label>
 						<input />
+				<form id="form" name="contact" action="php/php" method="post">
+					<div class="formData" data-validation-type="name"
+           data-error ="Prénom trop court (2 caractères) ou caractères invalides.">
+						<label for="first">Prénom</label>
+						<input class="text-control" type="text" id="first" name="first" minlength="2" maxlength="15">
+					</div>
+
+          <div class="formData" data-validation-type="name"
+           data-error ="Nom trop court (2 caractères) ou caractères invalides.">
+						<label for="last">Nom</label>
+						<input class="text-control" type="text" id="last" name="last" minlength="2" maxlength="40">
+					</div>
+
+          <div class="formData" data-validation-type="email"
+           data-error ="Veuillez entrer une adresse email valide.">
+						<label for="email">Email</label>
+						<input class="text-control lowCase" type="email" id="email" name="email">
+					</div>
+
+          <div class="formData" data-validation-type="message"
+           data-error ="Veuillez entrer un message de plus de 10 caractères.">
+						<label for="message">Votre message</label>
+						<input class="text-control textArea" type="textarea" row="4" id="message" name="message" minlength="10"></textarea>
 					</div>
           <button class="contact_button">Envoyer</button>
 				</form>
