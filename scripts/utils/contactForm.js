@@ -33,7 +33,7 @@ function closeValidModal(){
     let msgN = document.getElementById('message').value;
 
     setTimeout(console.log(firstN+ ', '+ lastN+ ', '+ emailN + ', '+ msgN) ,800);
-    formSuccessMsg.innerHTML='Merci de votre message, '+firstN.charAt(0).toUpperCase()+firstN.slice(1).toLowerCase();
+    formSuccessMsg.innerHTML='Merci de votre message, '+firstN.charAt(0).toUpperCase()+firstN.slice(1).toLowerCase()+'.';
     closeModal();
     displayModal();
     
