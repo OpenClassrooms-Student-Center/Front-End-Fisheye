@@ -1,36 +1,49 @@
-function displayModal() {
-    const modal = document.getElementById("contact_modal");
-	modal.style.display = "block";
-}
-
-function closeModal() {
-    const modal = document.getElementById("contact_modal");
-    modal.style.display = "none";
-}
-
-function closeValidModal(){
-    closeBtn.style.display='block';
-    setTimeout(console.log(formData),800);
-    closeModal();
-    displayModal();
-    
-  }
 // DOM Elements
 
-const toHide =document.querySelectorAll(".toHide")   
+const modal = document.getElementById("contact_modal")
+const main = document.getElementById("main")
 const success =document.querySelectorAll(".formSuccessMessage")
 const modalBtn = document.querySelectorAll(".contact_button")
 const closeBtn = document.querySelector(".btn-close")
 const form = document.querySelector("form")
 const formData = document.querySelectorAll(".formData")
-const formDataToValidate = document.querySelectorAll(
-  ".formData[data-validation-type]"
-)
+const formDataToValidate = document.querySelectorAll(".formData[data-validation-type]")
+const formSuccessMsg= document.getElementById("formSuccessMessage")
+
+
+function displayModal() {
+	modal.style.display = "block";
+  main.style.opacity = '.2';
+}
+
+function closeModal() {
+    modal.style.display = "none";
+}
+function resetThenCloseModal(){
+  setTimeout(form.reset(),2000);
+  location.reload();
+  closeModal();
+}
+
+function closeValidModal(){
+    closeBtn.style.display='block';
+    let firstN = document.getElementById('first').value;
+    let lastN = document.getElementById('last').value;
+    let emailN = document.getElementById('email').value;
+    let msgN = document.getElementById('message').value;
+
+    setTimeout(console.log(firstN+ ', '+ lastN+ ', '+ emailN + ', '+ msgN) ,800);
+    formSuccessMsg.innerHTML='Merci de votre message, '+firstN.charAt(0).toUpperCase()+firstN.slice(1).toLowerCase();
+    closeModal();
+    displayModal();
+    
+  }
+
 
 // Regex pour les tests input
 let validName = /^[A-Za-zÀ-ÖØ-öø-ÿ '-]{2,}$/;
 let validEmail = /^[a-z0-9._-]+@[a-z0-9]{1,}[a-z0-9.-]{1,62}\.[a-z]{2,4}$/;
-let validMssg = /^[A-Za-zÀ-ÖØ-öø-ÿ '-.,;?!()€$%:<>]{10,}$/;
+let validMssg = /^[0-9A-Za-zÀ-ÖØ-öø-ÿ '-.,;?!()€$%:<>]{10,}$/;
 
 
 // Validation unitaire booléen de l'array element(input)/attribut (value) comparaison avec le regex

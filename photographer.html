@@ -9,50 +9,54 @@
   </head>
   <body>
     <header>
-      <img src="assets/images/logo.png" class="logo" />
+      <img src="assets/images/logo.png" class="logo" alt="logo fisheye">
     </header>
     <main id="main">
       <div class="photograph-header">
-        <button class="contact_button" onclick="displayModal()">Contactez-moi</button>
+        <button class="contact_button" onclick="displayModal()" aria-label="ouverture du formulaire">Contactez-moi</button>
       </div>
     </main>
     <div id="contact_modal">
-			<div class="modal">
+      <div class="modal">
 				<header>
           <h2>Contactez-moi</h2>
-          <img src="assets/icons/close.svg" onclick="closeModal()" />
+          <img src="assets/icons/close.svg" onclick="closeModal()" aria-label="fermeture du formulaire" label="close" tabindex="0">
         </header>
-				<form>
-					<div>
-						<label>Prénom</label>
-						<input />
-				<form id="form" name="contact" action="php/php" method="post">
+				
+				<form id="form" name="contact" action="php/php" method="post" role="formulaire de contact">
 					<div class="formData" data-validation-type="name"
-           data-error ="Prénom trop court (2 caractères) ou caractères invalides.">
+           data-error ="Prénom trop court (2 caractères) ou caractères invalides."
+           aria-errormessage="Prénom trop court (2 caractères) ou caractères invalides.">
 						<label for="first">Prénom</label>
-						<input class="text-control" type="text" id="first" name="first" minlength="2" maxlength="15">
+						<input class="text-control" type="text" id="first" name="first" minlength="2" maxlength="15" aria-label="prénom">
 					</div>
 
           <div class="formData" data-validation-type="name"
-           data-error ="Nom trop court (2 caractères) ou caractères invalides.">
+           data-error ="Nom trop court (2 caractères) ou caractères invalides."
+           aria-errormessage="Nom trop court (2 caractères) ou caractères invalides.">
 						<label for="last">Nom</label>
-						<input class="text-control" type="text" id="last" name="last" minlength="2" maxlength="40">
+						<input class="text-control" type="text" id="last" name="last" minlength="2" maxlength="40" aria-label="nom">
 					</div>
 
           <div class="formData" data-validation-type="email"
-           data-error ="Veuillez entrer une adresse email valide.">
+           data-error ="Veuillez entrer une adresse email valide."
+           aria-errormessage="Veuillez entrer une adresse email valide.">
 						<label for="email">Email</label>
-						<input class="text-control lowCase" type="email" id="email" name="email">
+						<input class="text-control lowCase" type="email" id="email" name="email" aria-label="email">
 					</div>
 
           <div class="formData" data-validation-type="message"
-           data-error ="Veuillez entrer un message de plus de 10 caractères.">
+           data-error ="Veuillez entrer un message de plus de 10 caractères."
+           aria-errormessage="Veuillez entrer un message de plus de 10 caractères.">
 						<label for="message">Votre message</label>
-						<input class="text-control textArea" type="textarea" row="4" id="message" name="message" minlength="10"></textarea>
+						<input class="text-control textArea" type="textarea" row="4" id="message" name="message" minlength="10" aria-label="message">
 					</div>
-          <button class="contact_button">Envoyer</button>
+
+          <button class="contact_button" aria-label="envoi du formulaire">Envoyer</button>
+          <p class="formSuccessMessage" id="formSuccessMessage"></p>
+          <input class="btn-close" type="reset" id="btn-close" aria-label="fermer" value="Fermer" onclick="resetThenCloseModal()">
 				</form>
-			</div>
+      </div>
 		</div>
     <script src="/scripts/pages/photographer.js"></script>
     <script src="/scripts/utils/contactForm.js"></script>
