@@ -2,7 +2,7 @@
 let JsonData={}
 let photographers=[]
 
-fetch('/data/photographers.json')
+fetch('./data/photographers.json')
   .then(
   function(response) {
       if (response.status !== 200) {
