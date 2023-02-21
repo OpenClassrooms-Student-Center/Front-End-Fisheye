@@ -11,7 +11,7 @@
 function photographerFactory(data) {
     const { name, id, city, country, tagline, price, portrait } = data;
 
-    const picture = `assets/photographers/zzportrait/${portrait}`;
+    const picture = `./assets/photographers/zzportrait/${portrait}`;
     const photographerpath = `photographer.html?id=${id}`;
 
 
