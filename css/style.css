@@ -31,20 +31,45 @@ h1 {
     margin-top: 100px;
 }
 
-.photographer_section article {
+.photographer_section article a{
     justify-self: center;
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
+    text-decoration: none;
 }
 
-.photographer_section article h2 {
+.photographer_section a h2 {
     color: #D3573C;
     font-size: 36px;
+    margin : auto;
+    margin-top : -40px;
 }
 
-.photographer_section article img {
-    height: 200px;
-    width: 200px;
+.photographer_section a .location {
+    color: #901C1C;
+    font-size: 100%;
+}
+
+.photographer_section a .tagline {
+    color: black;
+    font-size: 100%;
+}
+
+.photographer_section a .price {
+    color: grey;
+    font-size: 100%;
+}
+
+.photographer_section a img {
+    height: 300px;
+    width: 300px;
+    object-fit: cover;
+    border-radius: 50%;
+    border : 50px solid white;
+}
+
+.photographer_section article {
+    justify-self: center;
 }
