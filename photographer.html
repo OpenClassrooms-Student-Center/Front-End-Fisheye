@@ -25,12 +25,12 @@
     <!-- systeme de tri -->
     <div class="sort-section">
       <label for="sortMedias">Trier par : </label>
-      <select name="sortMedias" id="sortMedias">
-        <option value="likes">Popularité</option>
-        <option value="date">Date</option>
-        <option value="title">Titre</option>
-      </select>
-    </div>
+      <div role="button" id="sortSystem" title="Trier les medias" class="custom-select" tabindex="0">
+        <i class="arrow fa-solid fa-chevron-down"></i>
+        <div role="button" class="custom-select-option visible" data-value="likes">Popularité</div>
+        <div role="button" class="custom-select-option" data-value="date">Date</div>
+        <div role="button" class="custom-select-option" data-value="title">Titre</div>
+      </div>
     </div>
 
     <div class="media-container"></div>

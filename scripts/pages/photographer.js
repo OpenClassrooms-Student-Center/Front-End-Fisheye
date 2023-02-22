@@ -9,16 +9,63 @@ let photographerPrice = 0;
 console.log(photographerId);
 
 const mediaContainer = document.querySelector(".media-container");
+let selectedOption = "likes";
 
-const select = document.querySelector("select");
-select.addEventListener("change", async (e) => {
+/********** Custom select input start **********/
+
+const customSelect = document.querySelector(".custom-select");
+const arrow = document.querySelector(".arrow");
+const options = Array.from(
+  customSelect.querySelectorAll(".custom-select-option")
+);
+
+customSelect.addEventListener("click", () => handleSelectClick(customSelect));
+customSelect.addEventListener("keypress", () =>
+  handleSelectClick(customSelect)
+);
+
+options.forEach((option) =>
+  option.addEventListener("click", (e) => handleOptionClick(e))
+);
+options.forEach((option) =>
+  option.addEventListener("keypress", (e) => handleOptionClick(e))
+);
+
+async function handleOptionClick(e) {
+  e.stopPropagation();
+  const value = e.target.getAttribute("data-value");
+  selectedOption = value;
+  console.log("Option de tri choisie : " + selectedOption);
+  const optionsToHide = options.filter(
+    (option) => option.textContent !== e.target.textContent
+  );
+  optionsToHide.forEach((option) => option.classList.remove("visible"));
+  options.forEach((option) => {
+    option.classList.remove("clickable");
+    option.removeAttribute("tabindex");
+  });
+
+  customSelect.classList.remove("opened");
+  arrow.classList.remove("opened");
+  customSelect.setAttribute("tabindex", 1);
+
   mediaContainer.innerHTML = ``;
   totalLikes = 0;
   const medias = await getPhotographerMedias();
-  const sortBy = e.target.value;
-  const sortedMedias = sortSystem(medias, sortBy);
+  //const sortBy = e.target.value;
+  const sortedMedias = sortSystem(medias, value);
   displayMedias(sortedMedias);
-});
+}
+
+function handleSelectClick(element) {
+  element.setAttribute("tabindex", -1);
+  element.classList.toggle("opened");
+  arrow.classList.toggle("opened");
+  options.forEach((option) => {
+    option.classList.add("visible", "clickable");
+    option.setAttribute("tabindex", 1);
+  });
+}
 
 /** fonction pr récup les photographes **/
 async function getPhotographers() {
