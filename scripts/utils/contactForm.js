@@ -101,7 +101,7 @@ async function formFail(){
   form.classList.toggle("formFail");
 }
 // fonction au submit : conserver les input et lancer la validation,
-// afficher le message formsuccess et boutton fermer si validation true
+// afficher le message formsuccess et bouton fermer si validation true
 // lancer formfail si validation false
 form.addEventListener("submit", (e) => {
   e.preventDefault();
