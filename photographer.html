@@ -29,7 +29,8 @@
     <div id="contact_modal">
       <div class="modal">
 				<header>
-          <h2>Contactez-moi</h2><br>
+          <h2>Contactez-moi</h2>
+          
           <img src="assets/icons/close.svg" onclick="closeModal()" aria-label="fermeture du formulaire" label="close" tabindex="0">
         </header>
         
@@ -60,7 +61,8 @@
            data-error ="Veuillez entrer un message de plus de 10 caractères."
            aria-errormessage="Veuillez entrer un message de plus de 10 caractères.">
 						<label for="message">Votre message</label>
-						<input class="text-control textArea" type="textarea" row="4" id="message" name="message" minlength="10" aria-label="message">
+						<input class="text-control textArea" type="textarea" row="4" cols="50" id="message" name="message" 
+              overflow="auto" minlength="10" aria-label="message" placeholder="Votre message ici...">
 					</div>
 
           <button class="contact_button" aria-label="envoi du formulaire">Envoyer</button>
