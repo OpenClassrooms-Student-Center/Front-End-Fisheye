@@ -22,6 +22,18 @@
     <div class="photograph-header">
       <button class="contact_button focusable-element">Contactez-moi</button>
     </div>
+    <!-- systeme de tri -->
+    <div class="sort-section">
+      <label for="sortMedias">Trier par : </label>
+      <select name="sortMedias" id="sortMedias">
+        <option value="likes">Popularité</option>
+        <option value="date">Date</option>
+        <option value="title">Titre</option>
+      </select>
+    </div>
+    </div>
+
+    <div class="media-container"></div>
   </main>
   <!-- pr les technologies d'assistances role="dialog", decrire l'etat aria-hidden, dcrire le contenu aria-describedby-->
   <div id="contact_modal" role="dialog" aria-hidden="true" aria-describedby="modal de contact">
@@ -86,6 +98,8 @@
   <script src="/scripts/factories/media.js"></script>
   <script src="/scripts/utils/carousel.js"></script>
   <script src="/scripts/utils/likes.js"></script>
+  <script src="/scripts/utils/sort-systeme.js"></script>
+
 </body>
 
 </html>
