@@ -7,12 +7,14 @@
 			"price": nb,
 			"portrait": string
 		},*/
+let artistNb=0;
 
 function photographerFactory(data) {
     const { name, id, city, country, tagline, price, portrait } = data;
 
     const picture = `./assets/photographers/zzportrait/${portrait}`;
-    const photographerpath = `photographer.html?id=${id}`;
+    let path=id+(artistNb.toString()).padStart(4, '0');
+    const photographerpath = `photographer.html?id=${path}`;
 
 
     function getUserCardDOM() {
@@ -52,11 +54,12 @@ function photographerFactory(data) {
 
 async function displayData(photographers) {
     const photographersSection = document.querySelector(".photographer_section");
-
+    
     photographers.forEach((photographer) => {
             const photographerModel = photographerFactory(photographer);
             const userCardDOM = photographerModel.getUserCardDOM();
             photographersSection.appendChild(userCardDOM);
+            artistNb++;
      });
 };
 
