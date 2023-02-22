@@ -84,14 +84,18 @@ form input {
     height: 68px;
     border: none;
     border-radius: 5px;
+    font-size:150%;
 }
 
 form textArea {
     width : 100%;
-    height : 205px;
+    max-width: 100%;
+    height : 180px;
+    font-size: 150%;
     border : none;
     border-radius: 5px;
     resize : none;
+    overflow-wrap:normal;
 }
 
 .photograph-header article {
@@ -141,3 +145,83 @@ form textArea {
     bottom : 5px;
     background : #D3573C;
 }
+/*-------------éléments du formulaire------------------*/
+form .textArea {
+    width : 100%;
+    height : 150px;
+    border : none;
+    border-radius: 5px;
+    resize : none;
+    
+}
+.lowCase{
+    text-transform: lowercase;
+}
+
+.formSuccessMessage {   /*message invisible apparition à la validation du formulaire**/
+    text-align: center;
+    font-size:160%;
+    color: black;
+    display: none;
+}
+
+.formSuccess .formSuccessMessage {
+    display: block;
+}
+
+.formSuccess .contact_button {     /*disparition du bouton si formulaire valide********/
+    display: none;
+}
+
+.formFail .contact_button {        /*lancement de l'animation hochement négatif si formulaire invalide*/
+    animation: shake .15s 0s 3;
+}
+
+@keyframes shake {
+    0%{transform:translateX(0);}
+    25%{transform:translateX(-20px);}
+    75%{transform:translateX(20px);}
+    100%{transform:translateX(0);}
+}
+@-webkit-keyframes shake {
+    0%{transform:translateX(0);}
+    25%{transform:translateX(-20px);}
+    75%{transform:translateX(20px);}
+    100%{transform:translateX(0);}
+}
+.formData[data-error]::after {   /*positionnement message d'erreur selon input***/
+    content: attr(data-error);
+    font-size: 1.1em;
+    font-weight: 600;
+    color: white;
+    text-shadow: red 2px 2px;
+    display: block;   
+    margin-top: -7px;
+    margin-bottom: 7px;
+    text-align: right;
+    line-height: 0.3;
+    opacity: 0;
+    transition: 0.3s;
+  }
+  .formData[data-error-visible="true"]::after {
+    opacity: 1;
+  }
+  .formData[data-error-visible="true"] .text-control {
+    border: 3px solid red;
+    background-color: #e54858;
+  }
+  .formData[data-error-visible="false"] .text-control {
+    border: 3px solid green;
+    background-color: lightgreen;
+  }
+
+  .btn-close {         /*bouton invisible apparition à la validation du formulaire****/
+    background: #eb4242;
+    color: #fff;
+    display: none;
+    margin: 0 auto;
+    border-radius: 7px;
+    font-size: 1rem;
+    padding: 12px 82px;
+    border: 0;
+  }
