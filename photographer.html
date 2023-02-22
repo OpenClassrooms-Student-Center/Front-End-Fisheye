@@ -6,6 +6,8 @@
     <meta charset="utf-8">
     <link rel="icon" type="image/png" href="assets/favicon.png">
     <link href="https://fonts.googleapis.com/css?family=DM+Sans&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans&display=swap" rel="stylesheet">
+
     <title>Fisheye - photographe </title>
   </head>
   <body>
@@ -27,11 +29,12 @@
     <div id="contact_modal">
       <div class="modal">
 				<header>
-          <h2>Contactez-moi</h2>
+          <h2>Contactez-moi</h2><br>
           <img src="assets/icons/close.svg" onclick="closeModal()" aria-label="fermeture du formulaire" label="close" tabindex="0">
         </header>
-				
+        
 				<form id="form" name="contact" action="php/php" method="post" role="formulaire de contact">
+          <p class="contactMe"><!--photographer name here--></p>
 					<div class="formData" data-validation-type="name"
            data-error ="Prénom trop court (2 caractères) ou caractères invalides."
            aria-errormessage="Prénom trop court (2 caractères) ou caractères invalides.">

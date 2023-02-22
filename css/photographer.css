@@ -4,7 +4,7 @@
 
 .photograph-header {
     background-color: #FAFAFA;
-    height: 300px;
+    padding:40px;
     margin: 0 100px;
 }
 
@@ -31,6 +31,9 @@
     justify-content: space-between;
     padding: 35px;
     margin: auto;
+    position: absolute;
+    top: 50px;
+    left: 25%;
 }
 
 .modal header {
@@ -43,9 +46,17 @@
 }
 
 .modal header h2 {
-    font-size: 64px;
+    font-size: 270%;
     font-weight: normal;
     text-align: center;
+}
+
+
+.contactMe {
+    font-size: 260%;
+    font-weight: 800;
+    text-align: left;
+    margin: -20px 0px 20px 0px;
 }
 
 form {
@@ -86,7 +97,7 @@ form textArea {
 .photograph-header article {
     justify-self: center;
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
     align-items: center;
     flex-direction: row;
     text-decoration: none;
@@ -94,19 +105,19 @@ form textArea {
 
 .photograph-header article h2 {
     color: #D3573C;
-    font-size: 36px;
+    font-size: 300%;
     margin : auto;
-    margin-top : -40px;
 }
 
 .photograph-header article .location {
     color: #901C1C;
-    font-size: 100%;
+    font-size: 150%;
 }
 
 .photograph-header article .tagline {
     color: black;
     font-size: 100%;
+    margin-top: 10px;
 }
 
 .photograph-header article .price {
@@ -117,11 +128,12 @@ form textArea {
 }
 
 .photograph-header article img {
-    height: 300px;
-    width: 300px;
+    height: 200px;
+    width: 200px;
     object-fit: cover;
     border-radius: 50%;
-    border : 50px solid white;
+    border : 1px solid white;
+    vertical-align: middle;
 }
 .anchored {
     position : sticky;

@@ -59,7 +59,7 @@ function photographerFactory(data) {
         leftCol.appendChild(motto);
         middleCol.appendChild(displayModal);
         rightCol.appendChild(img);
-        //article.appendChild(tarif);
+        
 
         return (article);
     }
@@ -90,6 +90,9 @@ fetch('./data/photographers.json')
         response.json().then(function(data) {
             displayData(data.photographers[artistId]); 
             console.log(data.photographers[artistId]);
+            const contactMe = document.querySelector(".contactMe");
+            contactMe.textContent = contactMe.textContent.concat("\n",data.photographers[artistId].name);
+            
         });
     })
     .catch(function(err) {
