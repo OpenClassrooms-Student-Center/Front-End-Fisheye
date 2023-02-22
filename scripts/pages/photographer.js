@@ -8,6 +8,18 @@ let photographerPrice = 0;
 
 console.log(photographerId);
 
+const mediaContainer = document.querySelector(".media-container");
+
+const select = document.querySelector("select");
+select.addEventListener("change", async (e) => {
+  mediaContainer.innerHTML = ``;
+  totalLikes = 0;
+  const medias = await getPhotographerMedias();
+  const sortBy = e.target.value;
+  const sortedMedias = sort(medias, sortBy);
+  displayMedias(sortedMedias);
+});
+
 /** fonction pr récup les photographes **/
 async function getPhotographers() {
   const data = await (await fetch("../../data/photographers.json")).json();
@@ -29,7 +41,7 @@ async function getPhotographerMedias() {
 getPhotographerMedias();
 
 /** Affiche la data **/
-async function displayData(photographer, medias) {
+async function displayPhotographerData(photographer) {
   photographerPrice = photographer.price;
 
   const main = document.getElementById("main");
@@ -47,7 +59,9 @@ async function displayData(photographer, medias) {
 
   const mediasContainer = document.createElement("div");
   mediasContainer.classList.add("media-container");
+}
 
+async function displayMedias(medias) {
   medias.forEach((media, index) => {
     totalLikes += media.likes;
 
@@ -70,23 +84,38 @@ async function displayData(photographer, medias) {
       openCarousel(main, media, medias, index, totalLikes)
     );
 
-    mediasContainer.appendChild(mediaCard);
+    mediaContainer.appendChild(mediaCard);
+
+    const infosBlock = document.querySelector(".info-block");
+    const totalLikesDisplay = infosBlock.querySelector(".info-block-likes");
+    const priceDisplay = infosBlock.querySelector(".info-block-price");
+    totalLikesDisplay.textContent = totalLikes;
+    priceDisplay.innerHTML = `${photographerPrice} €/jour`;
+
     totalLikes += media.likes;
   });
-
-  main.appendChild(mediasContainer);
-
-  const infosBlock = document.querySelector(".info-block");
-  const totalLikesDisplay = infosBlock.querySelector(".info-block-likes");
-  const priceDisplay = infosBlock.querySelector(".info-block-price");
-  totalLikesDisplay.textContent = totalLikes;
-  priceDisplay.innerHTML = `${photographerPrice} €/jour`;
 }
 
+/** Fonction pour le systeme de tri **/
+function sort(array, value) {
+  const sortedArray = array.sort(function (a, b) {
+    if (typeof a[value] === "string" && typeof b[value] === "string") {
+      return a[value].localeCompare(b[value]);
+    }
+    return a[value] - b[value];
+  });
+  if (value === "likes") {
+    sortedArray.reverse();
+  }
+  return sortedArray;
+}
+
+/** fonction init **/
 async function init() {
   const photographer = await getPhotographers();
   const medias = await getPhotographerMedias();
-  displayData(photographer, medias);
+  displayPhotographerData(photographer);
+  displayMedias(medias);
 }
 
 init();
