@@ -1,5 +1,6 @@
 // DOM Elements
-const main = document.getElementById("main");
+const main = document.getElementById("main")
+const header = document.getElementById("header")
 const modal = document.getElementById("contact_modal");
 const toHide =document.querySelectorAll(".toHide")   
 const success =document.querySelectorAll(".formSuccessMessage")
@@ -13,10 +14,13 @@ const formSuccessMsg= document.getElementById("formSuccessMessage");
 
 function displayModal() {
 	modal.style.display = "block";
-    main.style.opacity = '.2';
+    main.style.opacity = '.8';
+    header.style.opacity = '.2';
 }
 function closeModal() {
     modal.style.display = "none";
+    main.style.opacity = '1';
+    header.style.opacity = '1';
 }
 function resetThenCloseModal(){
     setTimeout(form.reset(),2000);
@@ -83,6 +87,8 @@ function validateWholeForm() {
   )
   return isFormValid
 }
+
+
 
 //fonction d'attente
 function delay(ms) {

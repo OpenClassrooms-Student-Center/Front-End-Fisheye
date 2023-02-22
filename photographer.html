@@ -11,7 +11,7 @@
     <title>Fisheye - photographe </title>
   </head>
   <body>
-    <header>
+    <header id="header">
       <a href='index.html' aria-label="retour à la page d'accueil">
          <img src="assets/images/logo.png" class="logo" alt="logo fisheye">
       </a>
@@ -58,8 +58,8 @@
 					</div>
 
           <div class="formData" data-validation-type="message"
-           data-error ="Veuillez entrer un message de plus de 10 caractères."
-           aria-errormessage="Veuillez entrer un message de plus de 10 caractères.">
+           data-error ="Message trop court (10 caractères) ou symboles invalides"
+           aria-errormessage="Veuillez entrer un message de plus de 10 caractères sans symboles spéciaux.">
 						<label for="message">Votre message</label>
 						<input class="text-control textArea" type="textarea" row="4" cols="50" id="message" name="message" 
               overflow="auto" minlength="10" aria-label="message" placeholder="Votre message ici...">

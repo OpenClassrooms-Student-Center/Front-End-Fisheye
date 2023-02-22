@@ -177,6 +177,10 @@ form .textArea {
     animation: shake .15s 0s 3;
 }
 
+.formFail .formData[data-error-visible="true"] .text-control {
+    animation: shake .15s 0s 3;
+}   
+
 @keyframes shake {
     0%{transform:translateX(0);}
     25%{transform:translateX(-20px);}
@@ -196,7 +200,7 @@ form .textArea {
     color: white;
     text-shadow: red 2px 2px;
     display: block;   
-    margin-top: -7px;
+    margin-top: -9px;
     margin-bottom: 7px;
     text-align: right;
     line-height: 0.3;
@@ -208,20 +212,29 @@ form .textArea {
   }
   .formData[data-error-visible="true"] .text-control {
     border: 3px solid red;
-    background-color: #e54858;
+    border-bottom: 22px solid red;
+    background-color: rgb(255, 180, 180);
+    background-image: url("/assets/icons/sadface-red.png");
+    background-repeat: no-repeat;
+    background-position: bottom 5px right 5px;
+    background-size: 60px 60px;
   }
   .formData[data-error-visible="false"] .text-control {
     border: 3px solid green;
-    background-color: lightgreen;
+    background-color: rgb(180, 255, 180);
+    background-image: url("/assets/icons/happyface-green.png");
+    background-repeat: no-repeat;
+    background-position: bottom 5px right 5px;
+    background-size: 60px 60px;
   }
 
   .btn-close {         /*bouton invisible apparition à la validation du formulaire****/
-    background: #eb4242;
+    background: green;
     color: #fff;
     display: none;
     margin: 0 auto;
     border-radius: 7px;
-    font-size: 1rem;
+    font-size: 160%;
     padding: 12px 82px;
     border: 0;
   }
