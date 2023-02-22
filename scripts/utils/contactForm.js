@@ -14,7 +14,7 @@ const formSuccessMsg= document.getElementById("formSuccessMessage");
 
 function displayModal() {
 	modal.style.display = "block";
-    main.style.opacity = '.8';
+    main.style.opacity = '.2';
     header.style.opacity = '.2';
 }
 function closeModal() {
