@@ -350,3 +350,6 @@ width: 700px;
   width: 900px;
   padding-bottom: 1%;
 } 
+.none{
+  display: none;
+}
