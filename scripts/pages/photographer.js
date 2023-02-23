@@ -6,7 +6,7 @@ console.log(photographerId);
 /* Medias and photographer Handling */
 
 let aboutPhotographer = [];
-let mediasAboutPhotographer = [];
+let mediasOfPhotographer = [];
 
 let OurPhotographer = [];
 
@@ -18,11 +18,11 @@ async function fetchMedias() {
     .then(response => {
      return response.json();
    }).then(aboutPhotographer => {
-     // We retrieve our datas and insert them into our array infosPhotographers
+     // We retrieve our medias and insert them into our array mediasOfPhotographer
     for(i= 0; i < aboutPhotographer.media.length; i++){
         if(aboutPhotographer.media[i].photographerId == photographerId){
-            mediasAboutPhotographer.push(aboutPhotographer.media[i])  }   
-    } 
+            mediasOfPhotographer.push(aboutPhotographer.media[i])  }   
+    }  // We retrieve our photographer infos and insert them into our array OurPhotographer
     for(i= 0; i < aboutPhotographer.photographers.length; i++){
     if(aboutPhotographer.photographers[i].id == photographerId){
         OurPhotographer.push(aboutPhotographer.photographers[i])
@@ -35,16 +35,18 @@ async function fetchMedias() {
      
      // We return our array 
      return ({
-         aboutPhotographers: mediasAboutPhotographer, OurPhotographer})
+         aboutPhotographers: mediasOfPhotographer, OurPhotographer})
  }
- async function displayData(mediasAboutPhotographer) {
+ async function displayData(mediasOfPhotographer) {
+  let position = 1;
     const mediasSection = document.querySelector(".medias_section");
   
-    mediasAboutPhotographer.forEach((mediasAboutPhotographer) => {
-        const mediaModel = mediaFactory(mediasAboutPhotographer);
-        console.log(mediasAboutPhotographer, "mediasAboutPhotographer")
+    mediasOfPhotographer.forEach((mediasOfPhotographer) => {
+        const mediaModel = mediaFactory(mediasOfPhotographer, position);
         const mediaCardDOM = mediaModel.getMediaCardDOM();
         mediasSection.appendChild(mediaCardDOM);
+        position += 1;
+        console.log(position, "position")
     });
 };
 async function displayDataPhotographer(OurPhotographer) {
@@ -57,35 +59,33 @@ async function displayDataPhotographer(OurPhotographer) {
     });
 };
 
-async function init() {
-    // Récupère les datas des photographes
-    const { photographers } = await fetchMedias();
-    displayData(mediasAboutPhotographer);
-    displayDataPhotographer(OurPhotographer);
-    console.log(mediasAboutPhotographer)
-    console.log(OurPhotographer)
-};
+
 
 //// TO MODIFY NOT DEFINITIVE /////
 
 function openGallery(object){
 
   let img = object.getElementsByTagName('img')[0] ?? object.getElementsByTagName('video')[0];
-  let modal = document.getElementById("gallery_modal");
 
   if(img.getAttribute('data-type') == 'img'){
+    img.setAttribute("class", "gallery-item-img")
+    //img.setAttribute("data-type", "img")
       document.getElementById("medias_modal_video").classList.add('none');
-      document.getElementById("medias_modal").classList.remove('none');
-      document.getElementById("medias_modal").src = img.getAttribute('src');
+      document.getElementById("medias_modal_img").classList.remove('none');
+      document.getElementById("gallery-img").src = img.getAttribute('src');
+      
+      
   } else {
-      document.getElementById("medias_modal").classList.add('none');
+    //img.setAttribute("data-type", "video")
+      document.getElementById("medias_modal_img").classList.add('none');
       document.getElementById("medias_modal_video").classList.remove('none');
-      document.getElementById("medias_modal_video").src = img.getAttribute('src');
-  }
+      //document.getElementById("medias_modal_video").src = img.getAttribute('src');
+      
+    }
 
   document.getElementById("gallery-title").innerHTML = img.getAttribute('data-title');
-  document.getElementById("gallery-previous").setAttribute('src-current', img.getAttribute('data-position'));
-  document.getElementById("gallery-next").setAttribute('src-current', img.getAttribute('data-position'));
+  //document.getElementById("gallery-previous").setAttribute('src-current', img.getAttribute('data-position'));
+  //document.getElementById("gallery-next").setAttribute('src-current', img.getAttribute('data-position'));
   
   const carousel = document.getElementById('medias_modal')
   carousel.style.display = "flex";
@@ -95,13 +95,23 @@ function openGallery(object){
   photographSection = document.getElementById('photograph_header')
   photographSection.style.display = "none"
 //Creating our elements and setting them with attributes
-  const button = document.createElement('img')
-  button.setAttribute("src", "assets/icons/test.svg")
+  const button = document.getElementById('gallery-close')
+  button.setAttribute("src", "assets/icons/close.svg")
   button.classList.add('closure_button')
-
+  console.log(object, "object")
+    button.appendChild(object)
 }
 
 //////////////
+
+async function init() {
+  // Récupère les datas des photographes
+  const { photographers } = await fetchMedias();
+  displayData(mediasOfPhotographer);
+  displayDataPhotographer(OurPhotographer);
+  console.log(mediasOfPhotographer)
+  console.log(OurPhotographer)
+};
 
 init();
 /* -------------------------------------------------------------------- */

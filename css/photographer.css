@@ -119,13 +119,15 @@ form input {
     width: 400px;
     border-radius: 2%;
     aspect-ratio: 1/1;
-    object-position: center;
+    
     object-fit: cover;  
 }
 .medias_section article video{
   height: 400px;
   width: 400px;
+  aspect-ratio: 1/1;
   border-radius: 2%;
+  object-position: center;
   object-fit: cover;
 }
 .medias_section article h2{
@@ -290,14 +292,19 @@ input{
   height: 800px;
   z-index: 2;
 }
-.carousel img.closure_button{
+.light-button{
   fill:#901C1C;
-  height: 110px;
+  height: 50px;
+  width: 40px;;
   position: absolute;
-  right: 0;
-  top: 0;
+  right: 1%;
+  top: 1%;
   z-index: 1;
   display: flex !important;
+}
+.light-button:hover{
+  width: 50px;
+  cursor: pointer;
 }
 .carousel img.closure_button:hover{
   cursor: pointer;
@@ -310,14 +317,28 @@ input{
   left: 21%;
   display: flex;
 }
-
-.carousel img.active{
-  height: 85%;
-  animation: fade 0.8s;
+.icons{
+  height: 50px;
+  padding: 5%;
   display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 1%;
+  background-color: white;
+}
+.arrow_left{
+  position: absolute;
+  bottom: 48%;
+  left: 1%;
+  border: none;
+}
+.arrow_right{
+  position: absolute;
+  bottom: 48%;
+  right: 1%;
+  border: none;
+}
+.icons:hover {
+  cursor: pointer;
+  opacity: 0.8;
+  width: 5em;
 }
 @keyframes fade {
   from{
@@ -337,19 +358,22 @@ input{
   transform: scale(1.2);
   cursor: pointer;
 }
-.carousel img{
-width: 700px;
-  height: 500px;
-  animation: fade 0.8s;
+.gallery-item-img{
   display: flex;
-  justify-content: center;
   align-items: center;
+  justify-content: center;
+  height: 0px;
+  width: 10%;
 }
-.carousel video{
-  height: 700px;
-  width: 900px;
-  padding-bottom: 1%;
-} 
 .none{
   display: none;
+}
+#gallery-img{
+  height: 750px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 55%;
+  margin-bottom: 45%;
+  box-sizing: initial;
 }
