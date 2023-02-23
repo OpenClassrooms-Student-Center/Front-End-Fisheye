@@ -9,77 +9,76 @@
 			"price": nb
 		},*/
 let artistFirstName="Mimi";
-let subGalerie={};
+let subGalerie=[];
+let contentPath=""
 
-/*
 function photographerFactory(data) {
     const { id, photographerId, title, image, video, likes, date, price_unit} = data;
-    if (image.length!=0){
-        const contentPath = `./assets/photographers/${artistFirstName}/${image}`;
+    if (data.hasOwnProperty('image')){
+        contentPath = `./assets/photographers/${artistFirstName}/${image}`
     }
-    else {const contentPath = `./assets/photographers/${artistFirstName}/${video}`;}
+    else if (data.hasOwnProperty('video')){
+        contentPath = `./assets/photographers/${artistFirstName}/${video}`
+    }
+    else {contentPath ="blank"}
                 
               
             function getUserCardDOM() {
-                const article = document.createElement( 'article' );   
-                article.setAttribute("class", "content_card");
-                article.setAttribute("aria-label", `galerie de ${photographer}`);
+                const articleGalerie = document.createElement( 'article' );   
+                articleGalerie.setAttribute("class", "content_card");
+                articleGalerie.setAttribute("aria-label", `galerie de ${artistFirstName}`);
         
-                const leftCol = document.createElement( 'div' );
-                leftCol.setAttribute( 'class', 'leftCol');
-                article.appendChild(leftCol);
-                const middleCol = document.createElement( 'div' );
-                middleCol.setAttribute( 'class', 'middleCol');
-                article.appendChild(middleCol);
-                const rightCol = document.createElement( 'div' );
-                rightCol.setAttribute( 'class', 'rightCol');
-                article.appendChild(rightCol);
-        
-                const h2 = document.createElement( 'h2' );
-                h2.textContent = name;
+                const leftDiv = document.createElement( 'div' );
+                leftDiv.setAttribute( 'class', 'leftDiv');
+                articleGalerie.appendChild(leftDiv);
                 
-                const location = document.createElement( 'div' );
-                location.setAttribute( 'class', 'location');
-                location.textContent = city+', '+country;
+                const rightDiv = document.createElement( 'div' );
+                rightDiv.setAttribute( 'class', 'rightDiv');
+                articleGalerie.appendChild(rightDiv);
                 
-                const motto = document.createElement( 'div' );
-                motto.setAttribute( 'class', 'tagline');
-                motto.textContent = tagline;
+                if (data.hasOwnProperty('image')){
+                    const artistImg = document.createElement( 'img' );
+                    artistImg.setAttribute( 'src', contentPath);  
+                    articleGalerie.appendChild(artistImg);  
+                }
+                else if (data.hasOwnProperty('video')){
+                    const artistVideo = document.createElement( 'video' );
+                    artistVideo.setAttribute( 'width', '500px');  
+                    artistVideo.setAttribute( 'height', '500px');  
+                    articleGalerie.appendChild(artistVideo);
+                    const videoSource = document.createElement( 'source' );
+                    videoSource.setAttribute( 'src', contentPath);
+                    artistVideo.appendChild(videoSource);
+                }
                 
-                const displayModal = document.createElement( 'button');
-                displayModal.setAttribute("class","contact_button");
-                displayModal.setAttribute("onclick","displayModal()");
-                displayModal.setAttribute("aria-label","ouverture du formulaire");
-                displayModal.textContent="Contactez-moi";
-        
-                const img = document.createElement( 'img' );
-                img.setAttribute("src", picture);
-                img.setAttribute("label", name);
-        
-                const tarif = document.createElement( 'div' );
-                tarif.setAttribute( 'class', 'price anchored');
-                tarif.textContent = price.toString()+'€/jour';
+                const mediaTitle = document.createElement( 'div' );
+                mediaTitle.setAttribute( 'class', 'media-title');
+                mediaTitle.textContent = title;
+                      
+                const mediaLikes = document.createElement( 'div' );
+                mediaLikes.setAttribute( 'class', 'likes');
+                mediaLikes.textContent = likes.toString()+'<3';
                 
-                leftCol.appendChild(h2);
-                leftCol.appendChild(location);
-                leftCol.appendChild(motto);
-                middleCol.appendChild(displayModal);
-                rightCol.appendChild(img);
+                leftDiv.appendChild(mediaTitle);
+                rightDiv.appendChild(mediaLikes);
                 
         
-                return (article);
+                return (articleGalerie);
             }
-            return { name, picture, getUserCardDOM }
+            return { artistFirstName, artistFirstName, getUserCardDOM }
         }
                 
-        async function displayData(photographer) {
-            const photographersSection = document.querySelector(".photograph-header");
-                const photographerModel = photographerFactory(photographer);
-                const userCardDOM = photographerModel.getUserCardDOM();
-                photographersSection.appendChild(userCardDOM);
-                          
+
+async function displayData(_subGalerie) {
+    const galerieSection = document.querySelector(".galerie-section");
+    
+    _subGalerie.forEach((medium) => {
+            const mediaCard = photographerFactory(medium);
+            const userCardDOM = mediaCard.getUserCardDOM();
+            galerieSection.appendChild(userCardDOM);
+            
+     });
 };
-*/
                 
         // Récupère les datas du photographe choisi et initialise l'affichage
 const artist=parseInt(window.location.search.slice(-4,));
@@ -96,17 +95,16 @@ fetch('./data/photographers.json')
                 
         response.json().then(function(data) {
             artistFirstName=data.photographers[artist].name.split(' ')[0];
-            console.log(data.photographers[artist].name.split(' ')[0]);
+            alert(artistFirstName);
             const artistNb=data.photographers[artist].id;
             console.log(artistNb);            
-            for (let i=0; i<=data.media.length; i++){
+            for (let i=0; i<data.media.length; i++){
                 if(data.media[i].photographerId==artistNb){
-                    subGalerie = Object.assign(subGalerie, data.media[i]);
+                    subGalerie.push(data.media[i]);
                     }    
             }
-            console.log(subGalerie);
-                  
-      //    displayData(subGalerie); 
+            console.log(subGalerie);                  
+            displayData(subGalerie); 
         });
     })
     .catch(function(err) {

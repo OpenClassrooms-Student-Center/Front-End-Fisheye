@@ -16,7 +16,7 @@ function photographerFactory(data) {
         
     function getUserCardDOM() {
         const article = document.createElement( 'article' );   
-        article.setAttribute("class", "book_header");
+        article.setAttribute("class", "galerie-header");
         article.setAttribute("aria-label", `galerie de ${name}`);
 
         const leftCol = document.createElement( 'div' );

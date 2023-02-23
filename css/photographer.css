@@ -17,7 +17,7 @@ main {
     font-weight: bold;
     color: white;
     padding: 11px;
-    width: 170px;
+    width: 200px;
     height: 70px;
     border: none;
     background-color: #901C1C;
@@ -277,4 +277,30 @@ form .textArea {
     border-radius: 5px;
     border-bottom:1px solid white;
     cursor: pointer;
+}
+/*-------------éléments de l'affichage galerie------------------*/
+
+
+.galerie-section {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 50px;
+    margin-top: 50px;
+}
+
+.galerie-section article {
+    justify-self: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    text-decoration: none;
+}
+
+.galerie-section img {
+    height: 500px;
+    width: 500px;
+    object-fit: cover;
+    border-radius: 2px;
+    border : 2px solid white;
 }
