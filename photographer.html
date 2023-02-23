@@ -22,10 +22,18 @@
         <!---------------création dynamique de contenu dans cette div par photographer.js ---------------->
       </div>
       <div class="sort-selection">
-
+        <form class="choix" id="sort" name="choix" action="php/php" method="post" role="menu déroulant choix de tri">
+          <label for="sort-select" aria-haspopup="true">Trier par &nbsp;</label>
+        
+          <select name="selection" id="sort-select">
+            <option value="populaire">Popularité</option>
+            <option value="date">Date</option>
+            <option value="titre">Titre</option>
+          </select>
+        </form>
       </div>
       <div class="galerie">
-
+          <!---------------création dynamique de contenu dans cette div par sortGalerie.js ---------------->
       </div>
     </main>
 

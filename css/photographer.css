@@ -1,6 +1,10 @@
 #contact_modal {
     display: none;
 }
+main {
+    width: 95%;
+    margin: auto;
+}
 
 .photograph-header {
     background-color: #FAFAFA;
@@ -145,7 +149,7 @@ form textArea {
     bottom : 5px;
     background : #D3573C;
 }
-/*-------------éléments du formulaire------------------*/
+/*-------------éléments du formulaire modal message------------------*/
 form .textArea {
     width : 100%;
     height : 150px;
@@ -214,7 +218,7 @@ form .textArea {
     border: 3px solid red;
     border-bottom: 22px solid red;
     background-color: rgb(255, 180, 180);
-    background-image: url("./assets/icons/sadface-red.png");
+    background-image: url("../assets/icons/sadface-red.png");
     background-repeat: no-repeat;
     background-position: bottom 5px right 5px;
     background-size: 60px 60px;
@@ -222,7 +226,7 @@ form .textArea {
   .formData[data-error-visible="false"] .text-control {
     border: 3px solid green;
     background-color: rgb(180, 255, 180);
-    background-image: url("./assets/icons/happyface-green.png");
+    background-image: url("../assets/icons/happyface-green.png");
     background-repeat: no-repeat;
     background-position: bottom 5px right 5px;
     background-size: 60px 60px;
@@ -237,4 +241,57 @@ form .textArea {
     font-size: 160%;
     padding: 12px 82px;
     border: 0;
+  }
+/*-------------éléments du formulaire tri------------------*/
+.choix {
+    display: flex;
+    width: 100%;
+    flex-direction: row;
+    align-items: flex-start;
+}  
+
+.sort-selection label {
+    display: inline;
+    width: 11rem;
+    margin-right: 1rem;
+}
+
+#sort-select {
+    display: inline;
+    font-size: 140%;
+    font-weight: 700;
+    color: white;
+    padding: 11px;
+    min-width: 180px;
+    height: 70px;
+    border: none;
+    background-color: #901C1C;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+#sort-select div.header {
+    content: "↓";
+    display: flex;
+    flex: 1;
+    align-items: center;
+    padding: 0;
+    position: relative;
+    width: auto;
+    box-sizing: border-box;
+    border-width: 1px;
+    border-style: inherit;
+    border-color: inherit;
+    border-radius: inherit;
+  }
+  
+  #sort-select div.header::after {
+    content: "↓";
+    align-self: stretch;
+    display: flex;
+    align-content: center;
+    justify-content: center;
+    justify-items: center;
+    align-items: center;
+    padding: 0.5em;
   }
