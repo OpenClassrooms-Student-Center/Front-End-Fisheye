@@ -214,7 +214,7 @@ form .textArea {
     border: 3px solid red;
     border-bottom: 22px solid red;
     background-color: rgb(255, 180, 180);
-    background-image: url("/assets/icons/sadface-red.png");
+    background-image: url("./assets/icons/sadface-red.png");
     background-repeat: no-repeat;
     background-position: bottom 5px right 5px;
     background-size: 60px 60px;
@@ -222,7 +222,7 @@ form .textArea {
   .formData[data-error-visible="false"] .text-control {
     border: 3px solid green;
     background-color: rgb(180, 255, 180);
-    background-image: url("/assets/icons/happyface-green.png");
+    background-image: url("./assets/icons/happyface-green.png");
     background-repeat: no-repeat;
     background-position: bottom 5px right 5px;
     background-size: 60px 60px;
