@@ -22,7 +22,7 @@
         <!---------------création dynamique de contenu dans cette div par photographer.js ---------------->
       </div>
       <div class="sort-selection">
-        <form class="choix" id="sort" name="choix" action="php/php" method="post" role="menu déroulant choix de tri">
+        
           <label for="sort-select" aria-haspopup="true">Trier par &nbsp;</label>
         
           <select name="selection" id="sort-select">
@@ -30,7 +30,7 @@
             <option value="date">Date</option>
             <option value="titre">Titre</option>
           </select>
-        </form>
+        
       </div>
       <div class="galerie">
           <!---------------création dynamique de contenu dans cette div par sortGalerie.js ---------------->
@@ -49,7 +49,7 @@
           <img src="assets/icons/close.svg" onclick="closeModal()" aria-label="fermeture du formulaire" label="close" tabindex="0">
         </header>
         
-				<form id="form" name="contact" action="php/php" method="post" role="formulaire de contact">
+				<form id="form" name="contact" role="formulaire de contact"> <!--action & method-->
           <p class="contactMe"><!--photographer name here--></p>
 					<div class="formData" data-validation-type="name"
            data-error ="Prénom trop court (2 caractères) ou caractères invalides."
