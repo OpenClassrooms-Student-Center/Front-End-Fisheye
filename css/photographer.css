@@ -31,7 +31,7 @@ main {
     cursor: pointer;
 }
 
-.contact_button :hover {
+.contact_button:hover {
     background-color: #DB8876;
     color:red;
 }
