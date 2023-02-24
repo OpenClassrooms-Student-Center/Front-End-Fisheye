@@ -53,24 +53,15 @@ function galerieFactory(dataGal) {
                 titleDiv.setAttribute( 'class', 'titleDiv');
                 articleGalerie.appendChild(titleDiv);
 
-                const leftDiv = document.createElement( 'div' );
-                leftDiv.setAttribute( 'class', 'leftDiv');
-                titleDiv.appendChild(leftDiv);
-                
-                const rightDiv = document.createElement( 'div' );
-                rightDiv.setAttribute( 'class', 'rightDiv');
-                titleDiv.appendChild(rightDiv);
-
                 const mediaTitle = document.createElement( 'div' );
                 mediaTitle.setAttribute( 'class', 'media-title');
                 mediaTitle.textContent = title;
-                leftDiv.appendChild(mediaTitle);
-                      
+                titleDiv.appendChild(mediaTitle);
+                
                 const mediaLikes = document.createElement( 'div' );
                 mediaLikes.setAttribute( 'class', 'likes');
-                mediaLikes.textContent = '<3 : '+likes.toString();            
-                rightDiv.appendChild(mediaLikes);
-                
+                mediaLikes.textContent = '<3 : '+likes.toString(); 
+                titleDiv.appendChild(mediaLikes);
         
                 return (articleGalerie);
             }
