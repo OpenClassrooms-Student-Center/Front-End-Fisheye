@@ -1,8 +1,9 @@
 @import url("photographer.css");
 
 body {
+    max-width:1400px;
     font-family: "Noto Sans", sans-serif;
-    margin: 0;
+    margin: auto;
 }
 
 

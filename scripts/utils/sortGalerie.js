@@ -39,7 +39,7 @@ function galerieFactory(dataGal) {
                 }
                 else if (dataGal.hasOwnProperty('video')){
                     const artistVideo = document.createElement( 'video' );
-                    let attributes ={width :'500px', height :'500px', controls:'true', muted:'true'};
+                    let attributes ={width :'350px', height :'300px', controls:'true', muted:'true'};
                     setListOfAttributes(artistVideo, attributes)
                     //artistVideo.setAttribute( 'width', '500px');  
                     //artistVideo.setAttribute( 'height', '500px');  

@@ -1,3 +1,9 @@
+body{
+    max-width:1400px;
+    margin:auto;
+    
+}
+
 #contact_modal {
     display: none;
 }
@@ -286,7 +292,6 @@ form .textArea {
     grid-template-columns: 1fr 1fr 1fr;
     gap: 50px;
     margin-top: 50px;
-    font-size: 140%;
 }
 
 .galerie-section article {
@@ -299,16 +304,19 @@ form .textArea {
 }
 
 .galerie-section img {
-    height: 500px;
-    width: 500px;
+    height: 300px;
+    width: 350px;
     object-fit: cover;
     border-radius: 2px;
     border : 2px solid white;
 }
 
-.titleDiv {
+.galerie-section .titleDiv {
     width:99%;
     display:flex;
     flex-direction: row;
     justify-content: space-between;
+    font-size: 140%;
+    color:#901C1C;
+    padding-top:5px;
 }
