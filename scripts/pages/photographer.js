@@ -57,7 +57,7 @@ function photographerFactory(data) {
         leftCol.appendChild(h2);
         leftCol.appendChild(location);
         leftCol.appendChild(motto);
-       // middleCol.appendChild(displayModal);
+        middleCol.appendChild(displayModal);
         rightCol.appendChild(img);
         
 

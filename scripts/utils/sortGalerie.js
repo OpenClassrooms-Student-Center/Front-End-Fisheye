@@ -10,7 +10,15 @@
 		},*/
 let artistFirstName="Mimi";
 let subGalerie=[];
-let contentPath=""
+let contentPath="";
+let artistTotalLikes=0;
+let artistTarif=0;
+
+function sortingBy(_arr,_sV){
+    _arr.sort((s1, s2) => {
+        return s1._sV - s2._sV;})
+}
+
 
 function setListOfAttributes(el, attrs) {
     Object.keys(attrs).forEach(key => el.setAttribute(key, attrs[key]));
@@ -60,7 +68,7 @@ function galerieFactory(dataGal) {
                 
                 const mediaLikes = document.createElement( 'div' );
                 mediaLikes.setAttribute( 'class', 'likes');
-                mediaLikes.textContent = '<3 : '+likes.toString(); 
+                mediaLikes.textContent = likes.toString()+'❤'; 
                 titleDiv.appendChild(mediaLikes);
         
                 return (articleGalerie);
@@ -75,9 +83,16 @@ function galerieFactory(dataGal) {
     sub.forEach((medium) => {
             const mediaCard = galerieFactory(medium);
             const userCardDOM = mediaCard.getUserCardDOM();
-            galerieSection.appendChild(userCardDOM);
-            
+            galerieSection.appendChild(userCardDOM);       
      });
+    
+    const stickyDiv = document.querySelector(".stickyDiv");
+    const artistLikes =document.createElement('div');
+    artistLikes.textContent=artistTotalLikes+'❤';
+    stickyDiv.appendChild(artistLikes);
+    const artistPrice =document.createElement('div');
+    artistPrice.textContent=artistTarif;
+    stickyDiv.appendChild(artistPrice);
 };
                 
         // Récupère les datas du photographe choisi et initialise l'affichage
@@ -95,14 +110,17 @@ fetch('./data/photographers.json')
                 
         responseGal.json().then(function(dataGal) {
             artistFirstName=dataGal.photographers[artist].name.split(' ')[0];
-            alert(artistFirstName);
             const artistNb=dataGal.photographers[artist].id;
+            artistTarif=dataGal.photographers[artist].price+'€/jour';
             console.log(artistNb);            
             for (let i=0; i<dataGal.media.length; i++){
                 if(dataGal.media[i].photographerId==artistNb){
-                    subGalerie.push(dataGal.media[i]);
+                    subGalerie.push(dataGal.media[i]);      
+                    artistTotalLikes += dataGal.media[i].likes;
                     }    
             }
+            
+            
             console.log(subGalerie);                  
             displayDataG(subGalerie); 
         });

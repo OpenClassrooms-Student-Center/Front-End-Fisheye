@@ -22,24 +22,27 @@
         
         <!---------------création dynamique de contenu dans cette div par photographer.js ---------------->
       </div>
-      
+     
       <div class="sort-selection">
         
-        <label for="sort-select" aria-haspopup="true">Trier par &nbsp;</label>
-      
-        <select name="selection" id="sort-select">
-          <option value="populaire">Popularité</option>
-          <option value="date">Date</option>
-          <option value="titre">Titre</option>
-        </select>
+        <span>Trier par &nbsp;</span>
+        
+        <div class="dropdown">
+            <button class="dropbtn">Popularité&nbsp;&nbsp;🠿</button>
+            <ul class="dropdown-content">
+              <li onclick="sortingBy(like)">Popularité&nbsp;&nbsp;🠽</li>
+              <li onclick="sortingBy(date)">Date</li>
+              <li onclick="sortingBy(title)">Title</li>
+            </ul>
+        </div> 
+          
       
       </div>
       <div class="galerie-section">
-        
-        
+        <!---------------création dynamique de contenu dans cette div par sortGalerie.js ---------------->
       </div>
-          <!---------------création dynamique de contenu dans cette div par sortGalerie.js ---------------->
-      </div>
+          
+      
     </main>
 
 
@@ -91,6 +94,7 @@
 				</form>
       </div>
 		</div>
+    <div class="stickyDiv"></div>
     <script src="./scripts/pages/photographer.js"></script>
     <script src="./scripts/utils/contactForm.js"></script>
     <script src="./scripts/utils/sortGalerie.js"></script>
