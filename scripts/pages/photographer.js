@@ -66,7 +66,7 @@ function photographerFactory(data) {
     return { name, picture, getUserCardDOM }
 }
         
-async function displayData(photographer) {
+/*async*/ function displayData(photographer) {
     const photographersSection = document.querySelector(".photograph-header");
         const photographerModel = photographerFactory(photographer);
         const userCardDOM = photographerModel.getUserCardDOM();
@@ -88,8 +88,8 @@ fetch('./data/photographers.json')
         }
         
         response.json().then(function(data) {
-            displayData(data.photographers[artistId]); 
             console.log(data.photographers[artistId]);
+            displayData(data.photographers[artistId]); 
             const contactMe = document.querySelector(".contactMe");
             contactMe.textContent = contactMe.textContent.concat("\n",data.photographers[artistId].name);
             

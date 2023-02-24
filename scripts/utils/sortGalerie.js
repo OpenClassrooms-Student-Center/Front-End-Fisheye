@@ -12,12 +12,12 @@ let artistFirstName="Mimi";
 let subGalerie=[];
 let contentPath=""
 
-function photographerFactory(data) {
-    const { id, photographerId, title, image, video, likes, date, price_unit} = data;
-    if (data.hasOwnProperty('image')){
+function galerieFactory(dataGal) {
+    const { id, photographerId, title, image, video, likes, date, price_unit} = dataGal;
+    if (dataGal.hasOwnProperty('image')){
         contentPath = `./assets/photographers/${artistFirstName}/${image}`
     }
-    else if (data.hasOwnProperty('video')){
+    else if (dataGal.hasOwnProperty('video')){
         contentPath = `./assets/photographers/${artistFirstName}/${video}`
     }
     else {contentPath ="blank"}
@@ -36,12 +36,12 @@ function photographerFactory(data) {
                 rightDiv.setAttribute( 'class', 'rightDiv');
                 articleGalerie.appendChild(rightDiv);
                 
-                if (data.hasOwnProperty('image')){
+                if (dataGal.hasOwnProperty('image')){
                     const artistImg = document.createElement( 'img' );
                     artistImg.setAttribute( 'src', contentPath);  
                     articleGalerie.appendChild(artistImg);  
                 }
-                else if (data.hasOwnProperty('video')){
+                else if (dataGal.hasOwnProperty('video')){
                     const artistVideo = document.createElement( 'video' );
                     artistVideo.setAttribute( 'width', '500px');  
                     artistVideo.setAttribute( 'height', '500px');  
@@ -69,11 +69,11 @@ function photographerFactory(data) {
         }
                 
 
-async function displayData(_subGalerie) {
+/*async*/ function displayDataG(sub) {
     const galerieSection = document.querySelector(".galerie-section");
     
-    _subGalerie.forEach((medium) => {
-            const mediaCard = photographerFactory(medium);
+    sub.forEach((medium) => {
+            const mediaCard = galerieFactory(medium);
             const userCardDOM = mediaCard.getUserCardDOM();
             galerieSection.appendChild(userCardDOM);
             
@@ -87,24 +87,24 @@ console.log(artist);
 
 fetch('./data/photographers.json')
     .then(
-        function(response) {
-        if (response.status !== 200) {
-            console.log('Problem. Status Code: ' +response.status);
+        function(responseGal) {
+        if (responseGal.status !== 200) {
+            console.log('Problem. Status Code: ' +responseGal.status);
             return;
         }
                 
-        response.json().then(function(data) {
-            artistFirstName=data.photographers[artist].name.split(' ')[0];
+        responseGal.json().then(function(dataGal) {
+            artistFirstName=dataGal.photographers[artist].name.split(' ')[0];
             alert(artistFirstName);
-            const artistNb=data.photographers[artist].id;
+            const artistNb=dataGal.photographers[artist].id;
             console.log(artistNb);            
-            for (let i=0; i<data.media.length; i++){
-                if(data.media[i].photographerId==artistNb){
-                    subGalerie.push(data.media[i]);
+            for (let i=0; i<dataGal.media.length; i++){
+                if(dataGal.media[i].photographerId==artistNb){
+                    subGalerie.push(dataGal.media[i]);
                     }    
             }
             console.log(subGalerie);                  
-            displayData(subGalerie); 
+            displayDataG(subGalerie); 
         });
     })
     .catch(function(err) {
