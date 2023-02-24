@@ -286,6 +286,7 @@ form .textArea {
     grid-template-columns: 1fr 1fr 1fr;
     gap: 50px;
     margin-top: 50px;
+    font-size: 140%;
 }
 
 .galerie-section article {
@@ -303,4 +304,10 @@ form .textArea {
     object-fit: cover;
     border-radius: 2px;
     border : 2px solid white;
+}
+
+.titleDiv {
+    display:flex;
+    flex-direction: row;
+    justify-content: space-between;
 }

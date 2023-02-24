@@ -12,6 +12,10 @@ let artistFirstName="Mimi";
 let subGalerie=[];
 let contentPath=""
 
+function setListOfAttributes(el, attrs) {
+    Object.keys(attrs).forEach(key => el.setAttribute(key, attrs[key]));
+}
+
 function galerieFactory(dataGal) {
     const { id, photographerId, title, image, video, likes, date, price_unit} = dataGal;
     if (dataGal.hasOwnProperty('image')){
@@ -27,15 +31,7 @@ function galerieFactory(dataGal) {
                 const articleGalerie = document.createElement( 'article' );   
                 articleGalerie.setAttribute("class", "content_card");
                 articleGalerie.setAttribute("aria-label", `galerie de ${artistFirstName}`);
-        
-                const leftDiv = document.createElement( 'div' );
-                leftDiv.setAttribute( 'class', 'leftDiv');
-                articleGalerie.appendChild(leftDiv);
-                
-                const rightDiv = document.createElement( 'div' );
-                rightDiv.setAttribute( 'class', 'rightDiv');
-                articleGalerie.appendChild(rightDiv);
-                
+                      
                 if (dataGal.hasOwnProperty('image')){
                     const artistImg = document.createElement( 'img' );
                     artistImg.setAttribute( 'src', contentPath);  
@@ -43,23 +39,36 @@ function galerieFactory(dataGal) {
                 }
                 else if (dataGal.hasOwnProperty('video')){
                     const artistVideo = document.createElement( 'video' );
-                    artistVideo.setAttribute( 'width', '500px');  
-                    artistVideo.setAttribute( 'height', '500px');  
+                    let attributes ={width :'500px', height :'500px', controls:'true', muted:'true'};
+                    setListOfAttributes(artistVideo, attributes)
+                    //artistVideo.setAttribute( 'width', '500px');  
+                    //artistVideo.setAttribute( 'height', '500px');  
                     articleGalerie.appendChild(artistVideo);
                     const videoSource = document.createElement( 'source' );
                     videoSource.setAttribute( 'src', contentPath);
                     artistVideo.appendChild(videoSource);
                 }
+
+                const titleDiv = document.createElement( 'div' );
+                titleDiv.setAttribute( 'class', 'titleDiv');
+                articleGalerie.appendChild(titleDiv);
+
+                const leftDiv = document.createElement( 'div' );
+                leftDiv.setAttribute( 'class', 'leftDiv');
+                titleDiv.appendChild(leftDiv);
                 
+                const rightDiv = document.createElement( 'div' );
+                rightDiv.setAttribute( 'class', 'rightDiv');
+                titleDiv.appendChild(rightDiv);
+
                 const mediaTitle = document.createElement( 'div' );
                 mediaTitle.setAttribute( 'class', 'media-title');
                 mediaTitle.textContent = title;
+                leftDiv.appendChild(mediaTitle);
                       
                 const mediaLikes = document.createElement( 'div' );
                 mediaLikes.setAttribute( 'class', 'likes');
-                mediaLikes.textContent = likes.toString()+'<3';
-                
-                leftDiv.appendChild(mediaTitle);
+                mediaLikes.textContent = '<3 : '+likes.toString();            
                 rightDiv.appendChild(mediaLikes);
                 
         
