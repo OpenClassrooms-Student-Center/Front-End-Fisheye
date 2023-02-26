@@ -19,11 +19,11 @@
     </a>
   </header>
   <main id="main">
-    <div class="photograph-header">
+    <section class="photograph-header">
       <button class="contact_button focusable-element">Contactez-moi</button>
-    </div>
+    </section>
     <!-- systeme de tri -->
-    <div class="sort-section">
+    <section class="sort-section">
       <p>Trier par : </p>
       <div role="button" id="sortSystem" title="Trier les medias" class="custom-select" tabindex="0">
         <i class="arrow fa-solid fa-chevron-down"></i>
@@ -31,10 +31,11 @@
         <div role="button" class="custom-select-option" data-value="date">Date</div>
         <div role="button" class="custom-select-option" data-value="title">Titre</div>
       </div>
-    </div>
+    </section>
 
-    <div class="media-container"></div>
+    <section class="media-container"></section>
   </main>
+  <!--CONTACT MODAL-->
   <!-- pr les technologies d'assistances role="dialog", decrire l'etat aria-hidden, dcrire le contenu aria-describedby-->
   <div id="contact_modal" role="dialog" aria-hidden="true" aria-describedby="modal de contact">
     <div class="modal">
@@ -63,14 +64,13 @@
       </form>
     </div>
   </div>
-
+  <!--CAROUSEL-->
   <div id="carousel_modal" role="dialog" aria-hidden="true">
     <div class="carousel">
       <i class="close-carousel fa-solid fa-xmark" role="button" tabindex="0"></i>
       <div class="left-panel">
         <i class="previous-slide fa-solid fa-chevron-left" role="button" tabindex="0"></i>
       </div>
-
       <div class="carousel-media-container">
         <img src="" alt="">
         <video controls autoplay>
@@ -79,19 +79,18 @@
         </video>
         <h2>Titre de l image</h2>
       </div>
-
       <div class="right-panel">
         <i class="next-slide fa-solid fa-chevron-right" role="button" tabindex="0"></i>
       </div>
     </div>
   </div>
-
+  <!--INFO BLOCK-->
   <div class="info-block">
     <span>
       <span class="info-block-likes"></span> <i aria-label="total-likes" class="fa-solid fa-heart"></i>
     </span> <span class="info-block-price"></span>
   </div>
-
+  <!--SCRIPT-->
   <script src="/scripts/pages/photographer.js"></script>
   <script src="/scripts/utils/contactForm.js"></script>
   <script src="/scripts/factories/photographer.js"></script>
@@ -99,7 +98,6 @@
   <script src="/scripts/utils/carousel.js"></script>
   <script src="/scripts/utils/likes.js"></script>
   <script src="/scripts/utils/sortSystem.js"></script>
-
 </body>
 
 </html>
