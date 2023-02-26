@@ -47,7 +47,7 @@ async function handleOptionClick(e) {
 
   customSelect.classList.remove("opened");
   arrow.classList.remove("opened");
-  customSelect.setAttribute("tabindex", 1);
+  customSelect.setAttribute("tabindex", 0);
 
   mediaContainer.innerHTML = ``;
   totalLikes = 0;

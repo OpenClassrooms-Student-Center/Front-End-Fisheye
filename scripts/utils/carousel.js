@@ -22,6 +22,16 @@ previousButton.addEventListener("keypress", showPrevious);
 nextButton.addEventListener("click", showNext);
 nextButton.addEventListener("keypress", showNext);
 
+document.addEventListener("keydown", (e) => {
+  if (e.key === "ArrowLeft") {
+    showPrevious();
+  } else if (e.key === "ArrowRight") {
+    showNext();
+  } else if (e.key === "Escape") {
+    closeCarousel();
+  }
+});
+
 /** fonction openCarousel */
 function openCarousel(main, media, medias, index) {
   main.setAttribute("aria-hidden", true);
