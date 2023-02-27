@@ -114,7 +114,7 @@ form input {
     animation-delay: 0.5s;
     cursor: pointer;
 }
-.medias_section article img{
+.gallery-item-img {
     height: 400px;
     width: 400px;
     border-radius: 2%;
@@ -133,33 +133,31 @@ form input {
 .medias_section article h2{
     font-size: 28px;
     color: #901C1C;
+    word-wrap: break-word;
+    display: inline-block;
+    display: flex;
+    align-items: flex-start;
 }
 .medias_section article h3{
     font-size: 23px;
     color: black;
-    display: inline-block;
-    margin-left : 0.1%;
+    display: flex;
+    align-items: flex-end;
+  word-wrap: break-word;
 }
-svg{
+.container_heart{
+  display: flex;
+  align-items: flex-start;
+}
+.heart{
    height: 25px;
    width: 25px;
    margin-left: 10px;
-   margin-right: 10px;
-   fill: #901C1C;
 }
-
-.medias_section article h3:hover svg {
-   transform: scale(1.05);
-   animation : 2s ease-out;
- }
-
- .medias_section article h3:hover {
-  color: #901C1C;
-  transform: scale(1.1);
- }
- .medias_section article h3:focus{
-    fill:#901C1C;
-  }
+.heart:hover{
+  height: 30px;
+   width: 30px;
+}
   .infosAboutPhoto{
     display: flex;
     justify-content: space-between;
@@ -213,11 +211,7 @@ svg{
     padding-top: 1%;
     font-weight: 300;
   }
-  .photograph-header div h5{
-    font-size: 22px;
-    color: black;
-    font-weight: 300;
-  }
+
   .photograph-header article a{
     display: flex;
     justify-content: center;
@@ -235,6 +229,29 @@ svg{
   right: 2%;
   border-radius: 10px 10px 0px 0px;
   letter-spacing: 0.1em;
+  display: flex;
+  gap: 1em;
+  z-index: 99999999999;
+}
+.heart-total{
+  height: auto;
+  width: 35px;
+}
+.container_total_likes{
+  display: flex;
+  gap: 1em;
+  margin-right: 2em;
+}
+.container_total_price h5{
+  font-size: 27px;
+  display: flex;
+}
+#totalLikes{
+  font-size: 27px;
+  display: flex;
+  align-items: baseline;
+  position: relative;
+  bottom: 0;
 }
 /* Handling modal form */
 
@@ -292,20 +309,6 @@ input{
   height: 800px;
   z-index: 2;
 }
-.light-button{
-  fill:#901C1C;
-  height: 50px;
-  width: 40px;;
-  position: absolute;
-  right: 1%;
-  top: 1%;
-  z-index: 1;
-  display: flex !important;
-}
-.light-button:hover{
-  width: 50px;
-  cursor: pointer;
-}
 .carousel img.closure_button:hover{
   cursor: pointer;
   transform: scale(1.3)
@@ -358,22 +361,52 @@ input{
   transform: scale(1.2);
   cursor: pointer;
 }
-.gallery-item-img{
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 0px;
-  width: 10%;
-}
+
 .none{
   display: none;
 }
 #gallery-img{
-  height: 750px;
+  height: 720px;
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-top: 55%;
-  margin-bottom: 45%;
   box-sizing: initial;
+}
+#medias_modal_img{
+  margin-top: 7%;
+  margin-bottom: 10%;
+}
+
+#gallery-video{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 700px;
+  outline: none;
+}
+.modal_gallery{
+  font-size: 2em;
+  position: absolute;
+  bottom: 1%;
+  padding-top: 1%;
+  color: #901C1C;
+}
+.light-button{
+  display: flex !important;
+  fill:#901C1C;
+  height: 50px;
+  width: 40px;;
+}
+#gallery-close{
+  background-color: transparent;
+  border: none;
+  position: absolute;
+  right: 1%;
+  top: 1%;
+  z-index: 1;
+}
+.light-button:hover{
+  width: 50px;
+  height: 55px;
+  cursor: pointer;
 }

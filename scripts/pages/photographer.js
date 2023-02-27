@@ -1,7 +1,6 @@
 //Mettre le code JavaScript lié à la page photographer.html
 
 const photographerId = window.location.search.split("?id=").join("");
-console.log(photographerId);
 
 /* Medias and photographer Handling */
 
@@ -26,7 +25,6 @@ async function fetchMedias() {
     for(i= 0; i < aboutPhotographer.photographers.length; i++){
     if(aboutPhotographer.photographers[i].id == photographerId){
         OurPhotographer.push(aboutPhotographer.photographers[i])
-        console.log(OurPhotographer)
 }       
     }       
    }).catch(err => {
@@ -37,69 +35,71 @@ async function fetchMedias() {
      return ({
          aboutPhotographers: mediasOfPhotographer, OurPhotographer})
  }
+
+ async function displayDataPhotographer(OurPhotographer) {
+  const photographerSection = document.querySelector(".photograph-header");
+
+  OurPhotographer.forEach((OurPhotographer) => {
+      const photographerModel = OurPhotographerFactory(OurPhotographer);
+      const userCardDOM = photographerModel.getOurUserCardDOM();
+      photographerSection.appendChild(userCardDOM);
+  });
+};
+
  async function displayData(mediasOfPhotographer) {
-  let position = 1;
+  let position = 0;
+  let count = 0;
+  console.log("1 => ", count)
     const mediasSection = document.querySelector(".medias_section");
   
     mediasOfPhotographer.forEach((mediasOfPhotographer) => {
+      console.log("2 => ", count)
+      count += mediasOfPhotographer.likes;
+      console.log("3 => ", count)
+      console.log(mediasOfPhotographer, position)
         const mediaModel = mediaFactory(mediasOfPhotographer, position);
         const mediaCardDOM = mediaModel.getMediaCardDOM();
         mediasSection.appendChild(mediaCardDOM);
         position += 1;
-        console.log(position, "position")
     });
+    console.log("4 => ", count)
+    document.getElementById('totalLikes').innerHTML = count 
 };
-async function displayDataPhotographer(OurPhotographer) {
-    const photographerSection = document.querySelector(".photograph-header");
-
-    OurPhotographer.forEach((OurPhotographer) => {
-        const photographerModel = OurPhotographerFactory(OurPhotographer);
-        const userCardDOM = photographerModel.getOurUserCardDOM();
-        photographerSection.appendChild(userCardDOM);
-    });
-};
-
-
-
-//// TO MODIFY NOT DEFINITIVE /////
 
 function openGallery(object){
+
+  //Getting all our elements
+  let modalVideo = document.getElementById("medias_modal_video");
+  let modalImg = document.getElementById("medias_modal_img");
+  let galleryImg = document.getElementById("gallery-img");
+  let galleryVideo = document.getElementById("gallery-video");
+  let galleryTitle = document.getElementById("gallery-title")
+  /////////////////////////
 
   let img = object.getElementsByTagName('img')[0] ?? object.getElementsByTagName('video')[0];
 
   if(img.getAttribute('data-type') == 'img'){
     img.setAttribute("class", "gallery-item-img")
-    //img.setAttribute("data-type", "img")
-      document.getElementById("medias_modal_video").classList.add('none');
-      document.getElementById("medias_modal_img").classList.remove('none');
-      document.getElementById("gallery-img").src = img.getAttribute('src');
-      
-      
+    modalVideo.classList.add('none');
+    galleryImg.classList.remove('none');
+    galleryImg.src = img.getAttribute('src');    
   } else {
-    //img.setAttribute("data-type", "video")
-      document.getElementById("medias_modal_img").classList.add('none');
-      document.getElementById("medias_modal_video").classList.remove('none');
-      //document.getElementById("medias_modal_video").src = img.getAttribute('src');
-      
-    }
-
-  document.getElementById("gallery-title").innerHTML = img.getAttribute('data-title');
-  //document.getElementById("gallery-previous").setAttribute('src-current', img.getAttribute('data-position'));
-  //document.getElementById("gallery-next").setAttribute('src-current', img.getAttribute('data-position'));
+    modalImg.classList.add('none');
+    galleryVideo.classList.remove('none');
+    galleryVideo.src = img.getAttribute('src');
+  }
+  galleryTitle.innerHTML = img.getAttribute('data-title');
+  galleryTitle.classList.add("modal_gallery")
+  document.getElementById("gallery-previous").setAttribute('src-current', img.getAttribute('data-position'));
+  document.getElementById("gallery-next").setAttribute('src-current', img.getAttribute('data-position'));
   
+  // Showing only carousel modal
   const carousel = document.getElementById('medias_modal')
   carousel.style.display = "flex";
-  
   mediasSection = document.getElementById("medias")
   mediasSection.style.display="none"
   photographSection = document.getElementById('photograph_header')
   photographSection.style.display = "none"
-//Creating our elements and setting them with attributes
-  const button = document.getElementById('gallery-close')
-  button.setAttribute("src", "assets/icons/close.svg")
-  button.classList.add('closure_button')
-  console.log(object, "object")
-    button.appendChild(object)
 }
 
 //////////////
@@ -107,10 +107,8 @@ function openGallery(object){
 async function init() {
   // Récupère les datas des photographes
   const { photographers } = await fetchMedias();
-  displayData(mediasOfPhotographer);
   displayDataPhotographer(OurPhotographer);
-  console.log(mediasOfPhotographer)
-  console.log(OurPhotographer)
+  displayData(mediasOfPhotographer);
 };
 
 init();
