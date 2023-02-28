@@ -1,11 +1,23 @@
 @import url("photographer.css");
 
+/* sr-only class */
+.sr-only {
+	border: 0 !important;
+	clip: rect(1px, 1px, 1px, 1px) !important;
+	-webkit-clip-path: inset(50%) !important;
+			clip-path: inset(50%) !important;
+	height: 1px !important;
+	overflow: hidden !important;
+	padding: 0 !important;
+	position: absolute !important;
+	width: 1px !important;
+	white-space: nowrap !important;
+}
+/* general */
 body {
     font-family: "DM Sans", sans-serif;
     margin: 0;
 }
-
-
 header {
     display: flex;
     flex-direction: row;
@@ -13,24 +25,22 @@ header {
     align-items: center;
     height: 90px;
 }
-
 h1 {
     color: #901C1C;
     margin-right: 100px;
 }
-
 .logo {
     height: 50px;
     margin-left: 100px;
 }
 
+/* photographer_section */
 .photographer_section {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     gap: 50px;
     margin-top: 60px;
 }
-
 .photographer_section article {
     justify-self: center;
     display: flex;
@@ -38,7 +48,6 @@ h1 {
     align-items: center;
     flex-direction: column;
 }
-
 .photographer_section article a {
     display: flex;
     flex-direction: column;
@@ -46,35 +55,30 @@ h1 {
     align-items: center;
     text-decoration: none;
 }
-
 .photographer_section article a img {
     height: 200px;
     width: 200px;
     border-radius: 50%;
     object-fit: cover;
 }
-
 .photographer_section article a h2 {
     color: #D3573C;
     font-size: 36px;
     font-weight: 400;
     margin-bottom: 0;
 }
-
 .photographer_section article .photograph-location {
     color: #901C1C;
     font-size: 13px;
     font-weight: 400;
     margin-bottom: 3px;
 }
-
 .photographer_section article .photograph-tagline {
     color: #000;
     font-size: 10px;
     font-weight: 400;
     margin: 0;
 }
-
 .photographer_section article .photograph-price {
     color: #757575;
     font-size: 9px;
