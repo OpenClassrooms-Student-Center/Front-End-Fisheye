@@ -39,7 +39,7 @@ function photographerFactory(data) {
 
         // price
         const pricing = document.createElement('span')
-        pricing.textContent = `${price}/jour`
+        pricing.textContent = `${price}€/jour`
         pricing.classList.add("photograph-price")
         article.appendChild(pricing)
 
