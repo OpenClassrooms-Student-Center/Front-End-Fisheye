@@ -77,13 +77,24 @@ function getMediaCardDOM() {
             ///////////////////////
 
             // Handling Likes number and heart image
-            const titlePost = document.createElement('h3')
-            titlePost.innerHTML = likes
             const containerHeartAndText = document.createElement('div')
-            containerHeartAndText.setAttribute('class', 'container_heart')
-            const heart = document.createElement('img')
-            heart.setAttribute('src', "/assets/icons/heart-solid.svg")
-            heart.setAttribute('class', 'heart')
+        containerHeartAndText.setAttribute('class', 'container_heart')
+        containerHeartAndText.setAttribute('data-like', '1')
+        
+
+        const titlePost = document.createElement('h3')
+        titlePost.setAttribute("id", "like-" + id);
+        titlePost.innerHTML = likes
+        
+        const heart = document.createElement('img')
+        heart.setAttribute('src', "/assets/icons/heart-solid.svg")
+        heart.setAttribute('class', 'heart')
+        heart.setAttribute('data-id', "like-" + id)
+        heart.setAttribute("data-like", "1")
+        heart.setAttribute("id", "like-" + id)
+        heart.setAttribute("alt", "likes");
+        heart.setAttribute('data-id', id)
+        ///////////////////////
             ///////////////////////
             
             // Creating clickable div to contain our video tag

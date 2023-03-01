@@ -60,7 +60,6 @@ async function fetchMedias() {
         position += 1;
     });
     document.getElementById('totalLikes').innerHTML = count 
-
 };
 
 /////////////////////////////////////////////
