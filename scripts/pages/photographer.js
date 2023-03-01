@@ -49,22 +49,61 @@ async function fetchMedias() {
  async function displayData(mediasOfPhotographer) {
   let position = 0;
   let count = 0;
-  console.log("1 => ", count)
     const mediasSection = document.querySelector(".medias_section");
   
     mediasOfPhotographer.forEach((mediasOfPhotographer) => {
-      console.log("2 => ", count)
       count += mediasOfPhotographer.likes;
-      console.log("3 => ", count)
       console.log(mediasOfPhotographer, position)
         const mediaModel = mediaFactory(mediasOfPhotographer, position);
         const mediaCardDOM = mediaModel.getMediaCardDOM();
         mediasSection.appendChild(mediaCardDOM);
         position += 1;
     });
-    console.log("4 => ", count)
     document.getElementById('totalLikes').innerHTML = count 
+
 };
+
+/////////////////////////////////////////////
+let likes = document.getElementsByClassName("heart");
+window.onload = function(){
+  testFunction()
+}
+async function testFunction(){
+await fetchMedias()
+
+console.log("rentre dans fonction")
+  // GESTION DES CLICKS SUR LES LIKES
+  let likes = document.getElementsByClassName("heart");
+
+  let likeAction = function() {
+      let count = parseInt(this.getAttribute("data-like"));
+      console.log(count, "count")
+      let id = this.getAttribute("data-id");
+      console.log(id, "ID")
+      let total = parseInt(document.getElementById("totalLikes").innerHTML);
+      let current = parseInt(document.getElementById("like-"+id).innerHTML);
+      let img = this.getElementsByTagName('img')[0];
+
+      if(count===1){
+          document.getElementById("totalLikes").innerHTML = total+1;
+          document.getElementById("like-"+ id).innerHTML = current+1;
+          this.setAttribute('data-like', 0);
+          this.setAttribute('src', 'assets/icons/heart-solid-black.svg');
+      } else {
+          document.getElementById("totalLikes").innerHTML = total-1;
+          document.getElementById("like-"+ id).innerHTML = current-1;
+          this.setAttribute('data-like', 1);
+          this.setAttribute('src', 'assets/icons/heart-solid.svg');
+      }
+
+  };
+
+  for (let i = 0; i < likes.length; i++) {
+      likes[i].addEventListener('click', likeAction, false);
+  }
+
+}
+//////////////////////////////////////////////////////////////////
 
 function openGallery(object){
 

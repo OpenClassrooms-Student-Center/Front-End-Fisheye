@@ -50,7 +50,7 @@ function OurPhotographerFactory(data) {
         totalLikes.setAttribute('id', 'totalLikes')
 
         const heartContainer = document.createElement('img')
-        heartContainer.setAttribute('src', "/assets/icons/heart-solid.svg")
+        heartContainer.setAttribute('src', "/assets/icons/heart-solid-black.svg")
         heartContainer.setAttribute('class', "heart-total")
 
         const imgContainer = document.createElement('article');

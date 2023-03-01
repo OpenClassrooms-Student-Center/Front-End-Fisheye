@@ -235,23 +235,21 @@ form input {
 }
 .heart-total{
   height: auto;
-  width: 35px;
+  width: 22px;
 }
 .container_total_likes{
   display: flex;
-  gap: 1em;
+  gap: 0.5em;
   margin-right: 2em;
 }
 .container_total_price h5{
-  font-size: 27px;
+  font-size: 22px;
   display: flex;
+  font-weight: 600;
 }
 #totalLikes{
-  font-size: 27px;
+  font-size: 22px;
   display: flex;
-  align-items: baseline;
-  position: relative;
-  bottom: 0;
 }
 /* Handling modal form */
 
