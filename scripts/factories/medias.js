@@ -9,8 +9,6 @@ function getMediaCardDOM() {
     //Handling Images 
     const span = document.createElement('span')
     span.classList.add("infosAboutPhoto")
-    span.setAttribute("data-like", "1");
-    span.setAttribute("data-id", id)
 
     if(image)
         {
@@ -43,13 +41,12 @@ function getMediaCardDOM() {
         titlePost.innerHTML = likes
         
         const heart = document.createElement('img')
-        heart.setAttribute('src', "/assets/icons/heart-solid.svg")
+        heart.setAttribute('src', "/assets/icons/heart-solid-black.svg")
         heart.setAttribute('class', 'heart')
-        heart.setAttribute('data-id', "like-" + id)
-        heart.setAttribute("data-like", "1")
+        heart.setAttribute("post-like", "1")
         heart.setAttribute("id", "like-" + id)
-        heart.setAttribute("alt", "likes");
-        heart.setAttribute('data-id', id)
+        heart.setAttribute("alt", "likes of : "+ title);
+        heart.setAttribute('post-id', id)
         ///////////////////////
 
         // Container for image
@@ -87,15 +84,13 @@ function getMediaCardDOM() {
         titlePost.innerHTML = likes
         
         const heart = document.createElement('img')
-        heart.setAttribute('src', "/assets/icons/heart-solid.svg")
+        heart.setAttribute('src', "/assets/icons/heart-solid-black.svg")
         heart.setAttribute('class', 'heart')
-        heart.setAttribute('data-id', "like-" + id)
-        heart.setAttribute("data-like", "1")
+        heart.setAttribute("post-like", "1")
         heart.setAttribute("id", "like-" + id)
         heart.setAttribute("alt", "likes");
-        heart.setAttribute('data-id', id)
+        heart.setAttribute('post-id', id)
         ///////////////////////
-            ///////////////////////
             
             // Creating clickable div to contain our video tag
             const divVideo = document.createElement('div')

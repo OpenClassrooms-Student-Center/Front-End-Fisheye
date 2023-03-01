@@ -4,6 +4,79 @@
   box-sizing: border-box;
 }
 
+
+/*--------------*/
+#selectBox{
+  background-color: #901C1C;
+  padding-right: 3%;
+  padding-left: 1%;
+  padding-top: 1%;
+  padding-bottom: 1%;
+  border: none;
+  border-radius: 10px 10px 10px 10px;
+  display: flex;
+}
+#hidden_options button::before{
+  content: '';
+  border-bottom: 1px solid white;
+  width: 100%;
+  display: block;
+  margin-bottom: 12%;
+}
+
+.arrow_selection{
+  height: 1.2em;
+  position: relative;
+  margin-top: 10%;
+  left: 15%;
+}
+.arrow_selection:hover{
+  cursor: pointer;
+  height: 1.5em;
+}
+.container_arrow_first_choice{
+  display: flex;
+}
+#selectBox:focus{
+  outline: none;
+}
+.selectBox_container{
+  display: flex;
+  gap: 1em;
+  position: absolute;
+  left: 5%;
+  top: 43%;
+  width:80%; 
+}
+.container_name_selectBox{
+  font-size: 1.5em;
+  padding-top: 0.8%;
+  font-weight: 600;
+}
+#hidden_options{
+  border-radius: 0px 0px 10px 10px;
+}
+.btn-choice{
+  background-color: transparent;
+  border: none;
+  color: white;
+  font-size: 1.3em;
+  margin: 7%;
+  padding: 2%;
+}
+.btn-choice:hover{
+  color: #D3573C;
+  cursor: pointer;
+}
+#hidden_options button{
+  background-color: transparent;
+  border: none;
+  font-size: 1.3em;
+  width: 100%;
+  text-align: start;
+}
+
+/*--------------*/
 #contact_modal {
     display: none;
 }

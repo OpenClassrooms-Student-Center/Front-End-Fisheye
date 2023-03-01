@@ -60,6 +60,7 @@ async function fetchMedias() {
         position += 1;
     });
     document.getElementById('totalLikes').innerHTML = count 
+
 };
 
 /////////////////////////////////////////////
@@ -68,37 +69,36 @@ window.onload = function(){
   testFunction()
 }
 async function testFunction(){
+  // Without await we don't have the right infos
 await fetchMedias()
 
-console.log("rentre dans fonction")
-  // GESTION DES CLICKS SUR LES LIKES
+  // Getting all our likes buttons
   let likes = document.getElementsByClassName("heart");
 
-  let likeAction = function() {
-      let count = parseInt(this.getAttribute("data-like"));
-      console.log(count, "count")
-      let id = this.getAttribute("data-id");
-      console.log(id, "ID")
+  let likingPost = function() {
+      // Count, if it's 1, the post has been already liked, else no
+      let count = parseInt(this.getAttribute("post-like"));
+      // Getting the id of the post with data-id
+      let id = this.getAttribute("post-id");
       let total = parseInt(document.getElementById("totalLikes").innerHTML);
       let current = parseInt(document.getElementById("like-"+id).innerHTML);
-      let img = this.getElementsByTagName('img')[0];
 
       if(count===1){
           document.getElementById("totalLikes").innerHTML = total+1;
           document.getElementById("like-"+ id).innerHTML = current+1;
-          this.setAttribute('data-like', 0);
-          this.setAttribute('src', 'assets/icons/heart-solid-black.svg');
+          this.setAttribute('post-like', 0);
+          this.setAttribute('src', 'assets/icons/heart-solid.svg');
       } else {
           document.getElementById("totalLikes").innerHTML = total-1;
           document.getElementById("like-"+ id).innerHTML = current-1;
-          this.setAttribute('data-like', 1);
-          this.setAttribute('src', 'assets/icons/heart-solid.svg');
+          this.setAttribute('post-like', 1);
+          this.setAttribute('src', 'assets/icons/heart-solid-black.svg');
       }
 
   };
 
   for (let i = 0; i < likes.length; i++) {
-      likes[i].addEventListener('click', likeAction, false);
+      likes[i].addEventListener('click', likingPost, false);
   }
 
 }
@@ -138,8 +138,9 @@ function openGallery(object){
   mediasSection.style.display="none"
   photographSection = document.getElementById('photograph_header')
   photographSection.style.display = "none"
+  const selector = document.querySelector(".selectBox_container");
+  selector.style.display="none"
 }
-
 //////////////
 
 async function init() {

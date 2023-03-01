@@ -5,6 +5,8 @@ document.getElementById("gallery-close").onclick = function(){
     mediasSection.style.display = "grid";
     const photographSection = document.getElementById('photograph_header')
     photographSection.style.display = "block";
+    const selector = document.querySelector(".selectBox_container");
+    selector.style.display="flex"
 };
 
 document.getElementById("gallery-next").onclick = function(){
