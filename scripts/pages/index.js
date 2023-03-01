@@ -3,7 +3,7 @@
         const photographer = await fetch('../data/photographers.json')
             // promise => response
             .then((data) => data.json())
-        // return variable
+        // return promise
         return photographer
     }
 

@@ -60,6 +60,7 @@ h1 {
     width: 200px;
     border-radius: 50%;
     object-fit: cover;
+    image-rendering: -webkit-optimize-contrast; /* better contrast */
 }
 .photographer_section article a h2 {
     color: #D3573C;
