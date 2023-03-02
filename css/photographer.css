@@ -3,14 +3,14 @@
 }
 
 .photograph-header {
+  display: flex;
+  flex-direction: row;
   background-color: #fafafa;
   height: 300px;
   margin: 0 100px;
   width: 90%;
   margin: 0 auto;
   padding: 10px 20px;
-  display: flex;
-  flex-direction: row;
   justify-content: space-between;
   align-items: center;
   gap: 20px;
@@ -60,6 +60,9 @@
 }
 
 .modal {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
   position: absolute;
   top: 50%;
   left: 50%;
@@ -68,10 +71,7 @@
   background-color: #db8876;
   width: 90%;
   max-width: 600px;
-  display: flex;
-  flex-direction: column;
   align-items: center;
-  justify-content: space-between;
   padding: 35px;
   margin: auto;
 }
@@ -88,10 +88,10 @@
 
 .modal header h2 {
   width: 100%;
+  margin: 0;
   font-size: 64px;
   font-weight: normal;
   text-align: center;
-  margin: 0;
 }
 
 form {
@@ -190,9 +190,10 @@ textarea {
 #carousel_modal {
   display: none;
   position: fixed;
-  background-color: white;
   width: 100vw;
   height: 100vh;
+  background-color: white;
+  z-index: 3;
   top: 0px;
   left: 0px;
   right: 0px;
@@ -252,6 +253,7 @@ textarea {
   right: 20px;
   font-size: 42px;
   color: #901c1c;
+  cursor: pointer;
 }
 
 .left-panel,
@@ -262,11 +264,6 @@ textarea {
   align-items: center;
   font-size: 42px;
   color: #901c1c;
-}
-
-.close-carousel,
-.previous-slide,
-.next-slide {
   cursor: pointer;
 }
 
@@ -299,6 +296,7 @@ textarea {
   font-weight: bold;
   overflow: hidden;
 }
+
 .custom-select.opened {
   height: auto;
 }

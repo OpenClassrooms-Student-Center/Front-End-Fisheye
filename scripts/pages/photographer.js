@@ -11,7 +11,7 @@ console.log(photographerId);
 const mediaContainer = document.querySelector(".media-container");
 let selectedOption = "likes";
 
-/********** Custom select input start **********/
+/********** Custom select input **********/
 
 const customSelect = document.querySelector(".custom-select");
 const arrow = document.querySelector(".arrow");
@@ -35,7 +35,7 @@ async function handleOptionClick(e) {
   e.stopPropagation();
   const value = e.target.getAttribute("data-value");
   selectedOption = value;
-  console.log("Option de tri choisie : " + selectedOption);
+  console.log("Filtre choisi : " + selectedOption);
   const optionsToHide = options.filter(
     (option) => option.textContent !== e.target.textContent
   );
@@ -52,7 +52,6 @@ async function handleOptionClick(e) {
   mediaContainer.innerHTML = ``;
   totalLikes = 0;
   const medias = await getPhotographerMedias();
-  //const sortBy = e.target.value;
   const sortedMedias = sortSystem(medias, value);
   displayMedias(sortedMedias);
 }
@@ -122,13 +121,17 @@ async function displayMedias(medias) {
       liked = !liked;
       likeMedia(e, media, liked, mediaCard, totalLikes);
     });
+    likeButton.addEventListener("keypress", (e) => {
+      liked = !liked;
+      likeMedia(e, media, liked, mediaCard, totalLikes);
+    });
 
     mediaCard.setAttribute("tabindex", 0);
     mediaCard.addEventListener("click", () =>
       openCarousel(main, media, medias, index)
     );
     mediaCard.addEventListener("keypress", () =>
-      openCarousel(main, media, medias, index, totalLikes)
+      openCarousel(main, media, medias, index)
     );
 
     mediaContainer.appendChild(mediaCard);
@@ -138,8 +141,6 @@ async function displayMedias(medias) {
     const priceDisplay = infosBlock.querySelector(".info-block-price");
     totalLikesDisplay.textContent = totalLikes;
     priceDisplay.innerHTML = `${photographerPrice} €/jour`;
-
-    totalLikes += media.likes;
   });
 }
 
