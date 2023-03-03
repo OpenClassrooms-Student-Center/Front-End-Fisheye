@@ -7,12 +7,12 @@ selector.innerHTML = `
         <div id="selectBox">
         <div id="selectBoxVisible">
             <div class="container_arrow_first_choice">
-                <button class="btn-choice" id="first-choice">Popularité</button>
+                <button type="button" class="btn-choice" id="first-choice" data-filtre="likes">Popularité</button>
                     <img src="/assets/icons/chevron-up-solid.svg" class="arrow_selection" id="arrow_selection"/> 
             </div>
             <span id="hidden_options" class="hidden_options">
-            <button class="btn-choice border-top">Date</button>
-            <button class="btn-choice">Titre</button>
+            <button type="button" class="btn-choice border-top" data-filtre="date">Date</button>
+            <button type="button" class="btn-choice" data-filtre="title">Titre</button>
             </span>
             </div>
         </div>`;
@@ -22,22 +22,59 @@ hiddenOptions = document.getElementById("hidden_options")
 hiddenOptions.style.display = "none";
 let arrow = document.getElementById("arrow_selection");
 let isOpen = false;
+let firstOption = document.getElementById("first-choice");
+const selectOptions = document.getElementById("OurSelectBox");
+const allButtons = selectOptions.querySelectorAll("button");
+let firstOptionText = firstOption.textContent;
+
+//Handling opening and closure of the list
     arrow.onclick = function(){
         if(!isOpen){
             hiddenOptions = document.getElementById("hidden_options")
-            hiddenOptions.style.display = "block";
-            
+            hiddenOptions.style.display = "block";   
             isOpen = true;
         } else{
             hiddenOptions = document.getElementById("hidden_options")
             hiddenOptions.style.display = "none";
-            
             isOpen = false;
-        }
-        
+        }   
     }
-/*
-let isOpen = false;
+///////////////////////////////////
+
+let items = document.querySelectorAll('.gallery-item');
+
+// Handling click on first option
+
+//const sortValue = button.dataset.filtre;
+
+document.getElementById("first-choice").addEventListener("click", () => {
+  if (isOpen === false) {
+    console.log("SELECT FIRST")
+    return handleButtonsOptions();
+  }
+});
+
+function closeSelect() {
+  // On ferme le faux select
+
+  hiddenOptions.style.display = "none";
+
+  return (isOpen = false);
+}
+
+function handleButtonsOptions() {
+  allButtons.forEach((button) => {
+    button.onclick = () => {
+      console.log('rentre dans handleButtons')
+      const buttonText = button.textContent;
+
+      button.innerHTML = firstOption.textContent;
+      console.log(firstOptionText)
+      firstOption.innerHTML = buttonText;
+      return closeSelect()
+    }})}
+    
+/*let isOpen = false;
 
 const selectOptions = document.querySelector("#select-block-options");
 
@@ -48,33 +85,6 @@ const arrow = document.querySelector(".arrow-down-open");
 const optionsButtons = selectOptions.querySelectorAll("button");
 
 const select = document.querySelector(".sort-base");
-
-document.querySelector("#select-first-option").addEventListener("click", () => {
-  arrow.classList.toggle("arrow-down-open");
-  if (isOpen === false) {
-    // On ouvre le faux select
-
-    selectOptions.style.display = "block";
-    select.style.borderRadius = "7px 7px 0 0";
-
-    isOpen = true;
-
-    return handleButtonsOptions();
-  }
-
-  if (isOpen === true) {
-    return closeSelect();
-  }
-});
-
-function closeSelect() {
-  // On ferme le faux select
-
-  selectOptions.style.display = "none";
-  select.style.borderRadius = "7px";
-
-  return (isOpen = false);
-}
 
 function handleButtonsOptions() {
   optionsButtons.forEach((button) => {

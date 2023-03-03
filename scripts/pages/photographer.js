@@ -53,7 +53,6 @@ async function fetchMedias() {
   
     mediasOfPhotographer.forEach((mediasOfPhotographer) => {
       count += mediasOfPhotographer.likes;
-      console.log(mediasOfPhotographer, position)
         const mediaModel = mediaFactory(mediasOfPhotographer, position);
         const mediaCardDOM = mediaModel.getMediaCardDOM();
         mediasSection.appendChild(mediaCardDOM);

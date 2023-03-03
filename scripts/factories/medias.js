@@ -6,6 +6,7 @@ function mediaFactory(data, position) {
 function getMediaCardDOM() {
     const article = document.createElement( 'article' );
     article.setAttribute("data-likes", likes);
+    article.setAttribute("class", "gallery-item");
     //Handling Images 
     const span = document.createElement('span')
     span.classList.add("infosAboutPhoto")
