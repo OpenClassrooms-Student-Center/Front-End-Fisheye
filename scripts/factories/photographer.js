@@ -185,6 +185,8 @@ function displayDataMedia(media, name, photos, photographer) {
                 return video.id === media.id;
             })
             displayLightbox(photos, videoIndex, name)
+            consol.log(displayLightbox);
+
         })
         /*
         mediaDiv.appendChild(thumbnailImage);
@@ -235,7 +237,7 @@ function displayCta(photos, photographer) {
 
 // LIGHTBOX avec +1 et -1 sur les index ||||||||||| 
 
-   function displayLightbox(images, imageToDisplayIndex, photographerName) {
+   function displayLightbox(images, imageToDisplayIndex, photographerName, ) {
     const lightbox = document.getElementById('lightbox'); // balise <div>
     const lightboxImage = document.getElementById('lightboxImage'); // balise <img>
     const lightboxImageTitle = document.getElementById('lightboxImageTitle');
