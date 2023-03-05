@@ -18,7 +18,7 @@ function createHTML (data) {
             class="photographer-view__link"
             aria-labelledby="photographer-name-${id}"
         >
-            <img src="${picture}" alt="">
+            <img src="${picture}" alt="Photo de profil de ${name}">
             <h2 id="photographer-name-${id}" aria-hidden="true">${name}</h2>
         </a>
 

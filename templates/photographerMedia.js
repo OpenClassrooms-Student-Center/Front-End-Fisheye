@@ -9,7 +9,7 @@ const photographerMedia = {
                     <img 
                         src="assets/Sample_Photos/${photographerName}/${image}" 
                         class="media__picture"
-                        alt="" 
+                        alt="Photo représentant la photo ${title}"
                     />
                 </a>
 
@@ -44,7 +44,8 @@ const photographerMedia = {
                     <video 
                         src="assets/Sample_Photos/${photographerName}/${video}" 
                         class="media__picture"
-                    />
+                    >
+                    </video>
                 </a>
 
                 <div class="media__infos">

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="fr" xml:lang="fr">
 
     <head>
         <link href="css/style.css" rel="stylesheet" type="text/css" />
@@ -16,7 +16,7 @@
         <span class="sr-only loading-text">La page se charge</span>
 
         <header class="header header--profile">
-            <a href="index.html">
+            <a href="index.html" tabindex="0">
                 <img src="assets/images/logo.png" class="logo" alt="Page d'accueil Fisheye"/>
             </a>
         </header>
@@ -80,7 +80,6 @@
             id="contact_modal" 
             class="modal-contact modal-container" 
             aria-labelledby="contact-modal-title"
-            aria-hidden="true"
             tabindex="0"
         >
 
@@ -99,6 +98,7 @@
                         role="button" 
                         aria-label="Fermer le formulaire de contact"
                         tabindex="0"
+                        alt="icone de fermeture du modal"
                     />
                 </header>
 

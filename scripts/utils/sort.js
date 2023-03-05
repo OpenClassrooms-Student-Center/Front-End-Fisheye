@@ -149,7 +149,7 @@ function sorter () {
             // Boucle pour trouver à quelle option du select natif le choix correspond
             // Le but étant d'update le select natif pour activer une action une fois l'event reçu
             for (let j = 0; j < selectOptionsLength; j++) {
-                if (this.innerHTML == selectElement.options[j].innerHTML) {
+                if (this.innerHTML === selectElement.options[j].innerHTML) {
                     selectElement.selectedIndex = j
                     selectElement.dispatchEvent(new Event('change'))
 

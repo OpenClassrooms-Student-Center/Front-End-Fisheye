@@ -3,11 +3,9 @@ import photographerMedia from '../../templates/photographerMedia.js'
 // import { createElements, setAttributes, attachContent, addClasses, appendChilds  } from "../../templates/generic.js";
 
 function MediaFactory (photographerName, media) {
-    const { title, image, likes } = media
-
     function getUserMediaDOM (index) {
         let mediaArticle, carouselItem
-        if (media.hasOwnProperty('image')) {
+        if (media.image) {
             mediaArticle = photographerMedia.createImageHTML(photographerName, media)
             carouselItem = carousel.createImageHTML(photographerName, media, index)
         } else {
