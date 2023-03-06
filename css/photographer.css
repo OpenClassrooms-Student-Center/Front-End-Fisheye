@@ -449,6 +449,7 @@ Néanmoins, entraine une déformation des photos */
 .carousel__media {
     width: 100%;
     max-height: 700px;
+    object-fit: cover;
     border-radius: 5px;
 }
 
