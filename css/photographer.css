@@ -1,14 +1,52 @@
-#contact_modal {
-    display: none;
+@keyframes anim-opacity {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
 }
 
 .photograph-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
     background-color: #FAFAFA;
     height: 300px;
     margin: 0 100px;
+    padding: 0 50px;
+    margin-bottom: 25px;
 }
 
-.contact_button {
+.presentation {
+    display: flex;
+    flex-direction: column;
+}
+
+.presentation__name {
+    color: #D3573C;
+    margin: 0;
+    font-size: 64px;
+}
+
+.presentation__infos {
+    display: flex;
+    flex-direction: column;
+    row-gap: 19px;
+    margin: 0;
+}
+
+.presentation__location {
+    color: #901C1C;
+    font-size: 24px;
+}
+
+.presentation__tagline {
+    font-size: 18px;
+    color: #525252;
+}
+
+.contact_button, .send-message {
     font-size: 20px;
     font-weight: bold;
     color: white;
@@ -21,31 +59,246 @@
     cursor: pointer;
 }
 
-.modal {
+.photograph-header__picture {
+    height: 200px;
+    width: 200px;
+    border-radius: 50%;
+    box-shadow: 0px 4px 12px rgb(0 0 0 / 25%);
+    object-fit: cover;
+}
+
+.portfolio {
+    position: relative;
+    padding: 0 100px;
+}
+
+.sort-portfolio {
+    position: relative;
+    display: flex;
+    align-items: center;
+    column-gap: 30px;
+    padding-bottom: 60px;
+    cursor: pointer;
+}
+
+.sort-portfolio__label {
+    font-size: 18px;
+    font-weight: 700;
+}
+
+.custom-select {
+    position: absolute;
+    top: 0;
+    left: 100px;    
+    right: 0;
+    z-index: 2;
+    width: 170px;
+    border-radius: 5px;
+    overflow: hidden;
+    background-color: #901C1C;
+}
+
+.sort-portfolio__options {
+    display: none;
+}
+
+.custom-select__options--hidden {
+    display: none;
+}
+  
+.custom-select__option {
+    color: #ffffff;
+    padding: 15px 16px;
+    border: none;
+    cursor: pointer;
+    font-size: 18px;
+    font-weight: 700;
+    height: 20px;
+    margin-left: 5px;
+    margin-right: 5px;    
+}
+
+.custom-select__option--selected {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.custom-select__option.invisible {
+    display: none;
+}
+
+.custom-select__option--selected:after {
+    content: '';
+    display: inline-block;
+    width: .5rem;
+    height: .5rem;
+    border-top: 1px solid #ffffff;
+    border-right: 1px solid #ffffff;
+    border-top-right-radius: 2px;
+    transform: rotate(135deg);
+    transform-origin: center center;
+    transition: transform ease-in-out 100ms
+}
+
+.custom-select__option--open:after  {
+    transform: rotate(315deg);
+}
+
+.custom-select__option--hidden {
+    border-top: 1px solid #ffffff;
+}
+
+.custom-select__option--hidden:hover, .custom-select__option--hidden:focus{
+    background-color: rgba(0, 0, 0, 0.1);
+}
+
+.divider {
+    margin-right: 5px;
+    margin-left: 5px;
+    border-top: 1px solid;
+    border-top-color: #ffffff;
+}
+
+.custom-select__option--bordered {
+    border-top-color:  #ffffff;    
+    border-bottom-color:  #ffffff;    
+}
+
+.gallery {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-column-gap: 95px;
+    grid-row-gap: 30px;
+}
+
+.media__link {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+.media__picture {
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+}
+
+.media__infos {
+    display: flex;
+    justify-content: space-between;
+}
+
+.media__name {
+    font-size: 24px;
+    color: #911C1C;
+}
+
+.media__likes {
+    display: flex;
+    align-items: center;
+    column-gap: 6px;
+}
+
+.media__likes-number {
+    font-size: 24px;
+    color: #901C1C;
+}
+
+.media__likes-number.liked {
+    color: #D3573C;
+}
+
+.like-icon {
+    font-size: 17px;
+    transform: scale(1, 1.05);
+}
+
+.like-btn {
+    cursor: pointer;
+    color: #901C1C;
+}
+
+.like-btn.liked {
+    color: #D3573C;
+}
+
+.additional-information {
+    width: 26%;
+    height: 68px;
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin-right: 35px;
+    background: #DB8876;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    z-index: 2;
+}
+
+.additional-informations__likes {
+    display: flex;
+    align-items: center;
+    column-gap: 7px;
+}
+
+.additional-information__likes-number,  .additional-information__price {
+    font-size: 22px;
+    font-weight: 500;
+}
+
+.modal-container.visible {
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: auto;
+    max-height: none;
+    background: rgba(0, 0, 0, 0.1);
+    border: none;
+    animation: anim-opacity 1s;
+}
+
+.modal-contact {
+    align-items: center;
+}
+
+.form-container {
     border-radius: 5px;
     background-color: #DB8876;
     width: 50%;
+    max-width: 600px;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: space-between;
-    padding: 35px;
-    margin: auto;
+    padding: 20px 35px;
+    box-sizing: border-box;
 }
 
-.modal header {
+.modal__header {
+    display: flex;
     justify-content: space-between;
+    align-items: flex-start;
     width: 100%;
+    margin-bottom: 10px;
 }
 
 .modal header img {
     cursor: pointer;
 }
 
-.modal header h2 {
-    font-size: 64px;
+.modal__title {
+    font-size: 60px;
+    color: #000000;
     font-weight: normal;
-    text-align: center;
+    text-align: left;
+    margin: 0;
 }
 
 form {
@@ -57,7 +310,7 @@ form {
 
 form label {
     color: #312E2E;
-    font-size: 36px;
+    font-size: 30px;
 }
 
 form div {
@@ -65,12 +318,180 @@ form div {
     flex-direction: column;
     width: 100%;
     align-items: self-start;
-    margin-bottom: 26px;
 }
 
-form input {
+.contact-form__input {
     width: 100%;
-    height: 68px;
+    font-size: 22px;
     border: none;
     border-radius: 5px;
+}
+
+.contact-form__input--single-line {
+    height: 40px;
+}
+
+.contact-form__input--multiline {
+    height: 100px;    
+}
+
+.send-message {
+    margin-top: 15px;
+}
+
+.contact-form__field[data-error]::after {
+  content: attr(data-error);
+  font-size: 18px;
+  color: #ffffff;
+  display: block;
+  text-align: left;
+  line-height: 1;
+  opacity: 0;
+  transition: 0.3s;
+}
+
+.contact-form__field[data-error-visible="true"]::after {
+  opacity: 1;
+}
+
+.contact-form__field[data-error-visible="true"] .text-control {
+  border: 2px solid #e54858;
+}
+
+.confirmation-message {
+    visibility: hidden;
+    position: absolute;
+    top: 50%;
+    left: 35%;
+    width: 30%;
+    height: fit-content;
+    background-color: #901C1C;
+    color: #ffffff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 35px 10px;
+}
+
+.confirmation-message.visible {
+    visibility: visible;
+    animation: anim-opacity 1s;
+}
+
+@keyframes anim-opacity {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+.modal-carousel {
+    justify-content: center;
+    overflow: hidden;
+}
+
+.carousel-container {
+    display: grid;
+    grid-template-columns: 1fr 15fr 1fr;
+    column-gap: 35px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    background-color: #ffffff;
+}
+
+.modal-carousel__close  {
+    width: 42px;
+    aspect-ratio: 1/1;
+    fill: #901C1C;
+}
+
+.sr-only {
+    position:absolute;
+    width:1px;
+    height:1px;
+    padding:0;
+    margin:-1px;
+    overflow:hidden;
+    clip: rect(0,0,0,0);
+    white-space:nowrap;
+    border:0
+ }
+
+.carousel {
+    display: flex;
+    flex-direction: column;
+}
+
+.carousel__items {
+    padding: 0;
+    margin: 0;
+}
+  
+.carousel__item {
+    display: none;
+    list-style-type: none;
+    flex-direction: column;
+    align-items: center;
+    row-gap: 5px;
+}
+
+.carousel__item.visible {
+    display: block;
+}
+
+/* Permet d'avoir l'image prenant toute la largeur du carousel. 
+Néanmoins, entraine une déformation des photos */
+/* .carousel__media-container {
+    width: 100%;
+} */
+
+.carousel__media {
+    width: 100%;
+    max-height: 700px;
+    object-fit: cover;
+    border-radius: 5px;
+}
+
+.carousel__name {
+    color: #901C1C;
+    align-self: flex-start;
+}
+
+.carousel__right-side {
+    display: grid;
+    grid-template-rows: 1fr 1fr 1fr;
+}
+
+.carousel__paginate {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-self: center;
+    height: fit-content;
+} 
+
+.carousel__paginate--left {
+    align-items: flex-end;
+}
+
+.carousel__arrow {
+    height: 40px;
+    width: 40px;
+    font-size: 50px;
+    color: #901C1C;
+    cursor: pointer;
+}
+
+.carousel__arrow--left {
+    justify-content: flex-end;
+}
+
+.fa-arrow-circle-left,
+.fa-arrow-circle-right {
+    font-size: 30px;
+}
+
+.modal__close {
+    cursor: pointer;
 }

@@ -1,0 +1,55 @@
+:root {
+    --circle-duration: 1000ms;
+    --loading-total-duration: 3000ms;
+    --loading-spinning-number: 3;
+    --terminate-load-duration: 2000ms;
+    --terminate-load-delay: 1000ms;
+}
+
+@keyframes spinner {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes terminate-load {
+    100% {
+        opacity: 0;
+    }
+}
+
+@keyframes remove-spinner {
+    to {
+        width: 0px;
+    }
+}
+
+.spinner {
+    aspect-ratio: 1/1;
+    width: 50%;
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    margin-top: -12.25%;
+    margin-left: -12.25%;
+
+    /* Le spinner disparaîtra progressivement en jouant sur l'opacité,
+    et une fois l'animation terminée, on réduira sa taille à 0 afin de 
+    laisser les autres éléments être disposés à sa place */
+    animation: terminate-load var(--terminate-load-duration) var(--terminate-load-delay) ease-out forwards, remove-spinner 0s var(--loading-total-duration) linear forwards;
+}
+
+.spinner::before {
+    content: '';
+    box-sizing: border-box;
+    position: absolute;
+    aspect-ratio: 1/1;
+    width: 50%;
+    border-radius: 50%;
+    border: 2px solid #ffffff;
+    border-top-color: #D3573C;
+    border-bottom-color: #901C1C;
+
+    /* Le spinner tourne pendant un certain temps et fait un nombre complet de tours durant cette durée */
+    animation: spinner var(--circle-duration) ease-out var(--loading-spinning-number);
+}

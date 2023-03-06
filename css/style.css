@@ -1,12 +1,34 @@
 @import url("photographer.css");
+@import url("loaders.css");
 
 body {
     font-family: "DM Sans", sans-serif;
     margin: 0;
+    padding-bottom: 100px;
 }
 
+@keyframes load-page-elements {
+    100% {
+        visibility: visible;
+        opacity: 1;
+    }
+}
 
-header {
+/* Tout le contenu de la page doit être invisible au démarrage
+On collapse aussi le contenu pour réduire la hauteur de la page
+L'animation permet de faire apparaître le contenu après un certain délai
+dépendant du loader utilisé */
+.main__container {
+    opacity: 0;
+    visibility: collapse;
+    animation: load-page-elements 1500ms 2500ms ease-in-out forwards;
+}
+
+.header {
+    padding: 40px 0;
+}
+
+.header--home {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -24,14 +46,14 @@ h1 {
     margin-left: 100px;
 }
 
-.photographer_section {
+.photographers_section {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     gap: 70px;
     margin-top: 100px;
 }
 
-.photographer_section article {
+.photographers_section article {
     justify-self: center;
     display: flex;
     justify-content: center;
@@ -39,12 +61,59 @@ h1 {
     flex-direction: column;
 }
 
-.photographer_section article h2 {
-    color: #D3573C;
-    font-size: 36px;
+.photographer-view__link {
+    text-decoration: none;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
-.photographer_section article img {
+.photographers_section article h2 {
+    color: #D3573C;
+    font-size: 36px;
+    margin: 0;
+    margin-bottom: 4px;
+}
+
+.photographers_section article img {
     height: 200px;
     width: 200px;
+    border-radius: 50%;
+    box-shadow: 0px 4px 12px rgb(0 0 0 / 25%);
+    object-fit: cover;
+    margin-bottom: 20px;
 }
+
+.photographer-view {
+    text-align: center;
+}
+
+
+.photographer-view__presentation {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    row-gap: 1px;
+    margin: 0;
+}
+
+.photographer-view__infos {
+    margin: 0;
+}
+
+.photographer-view__location {
+    color: #901C1C;
+    font-size: 13px;
+}
+
+.photographer-view__tagline {
+    font-size: 10px;
+    font-weight: bold;
+    color: #525252;
+}
+
+.photographer-view__price {
+    font-size: 9px;
+    color: #757575;
+}
+

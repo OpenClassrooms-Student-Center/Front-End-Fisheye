@@ -1,46 +1,57 @@
-    async function getPhotographers() {
-        // Ceci est un exemple de données pour avoir un affichage de photographes de test dès le démarrage du projet, 
-        // mais il sera à remplacer avec une requête sur le fichier JSON en utilisant "fetch".
-        let photographers = [
-            {
-                "name": "Ma data test",
-                "id": 1,
-                "city": "Paris",
-                "country": "France",
-                "tagline": "Ceci est ma data test",
-                "price": 400,
-                "portrait": "account.png"
-            },
-            {
-                "name": "Autre data test",
-                "id": 2,
-                "city": "Londres",
-                "country": "UK",
-                "tagline": "Ceci est ma data test 2",
-                "price": 500,
-                "portrait": "account.png"
-            },
-        ]
-        // et bien retourner le tableau photographers seulement une fois récupéré
-        return ({
-            photographers: [...photographers, ...photographers, ...photographers]})
-    }
 
-    async function displayData(photographers) {
-        const photographersSection = document.querySelector(".photographer_section");
+// --------------- FICHIER DE CONTRÔLE DE LA PAGE D'ACCUEIL ---------------
 
-        photographers.forEach((photographer) => {
-            const photographerModel = photographerFactory(photographer);
-            const userCardDOM = photographerModel.getUserCardDOM();
-            photographersSection.appendChild(userCardDOM);
-        });
-    };
+/* ***************************** MODULES **************************************** */
+/* ********************************************************************* */
+import { fetchDataFromApi } from '../services/Api.js'
+import photographerFactory from '../factories/photographer.js'
+import updateLoaderText from '../utils/loaders.js'
 
-    async function init() {
-        // Récupère les datas des photographes
-        const { photographers } = await getPhotographers();
-        displayData(photographers);
-    };
-    
-    init();
-    
+/** **************************** PROCÉDURES **************************************** */
+/** ******************************************************************** */
+
+init()
+
+/** **************************** FUNCTIONS **************************************** */
+/** ******************************************************************** */
+
+/* Lance les différentes étapes nécessaires pour le bon affichage de la page
+    Paramètres :
+        - Aucun
+    Renvoie :
+        - Rien
+*/
+async function init () {
+    // Pour les SR : indique que la page est chargée
+    setTimeout(updateLoaderText, 3000)
+
+    const fetchingURL = '../../data/photographers.json'
+
+    const data = await fetchDataFromApi(fetchingURL).catch(error => {
+        console.log(error)
+        throw new Error()
+    })
+
+    const { photographers } = data
+    await displayPhotographers(photographers).catch(error => console.log(error))
+};
+
+/* Affiche les différents photographes sur la page
+    Paramètres :
+        - l'objet regroupant l'ensemble des photographes et leurs infos
+    Renvoie :
+        - Rien
+*/
+async function displayPhotographers (photographers) {
+    // Il s'agit de la section où les photographes sont affichés un par un
+    const photographersSection = document.querySelector('.photographers_section')
+
+    // Boucle sur chaque photographe pour lui créer la carte avec ses informations principales
+    photographers.forEach((photographer) => {
+        // Création de la carte du photographe via la méthode getUserCardDOM
+        const photographerModel = photographerFactory(photographer)
+        const userCardDOM = photographerModel.getUserCardDOM()
+
+        photographersSection.appendChild(userCardDOM)
+    })
+};

@@ -1,21 +1,36 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <link href="css/style.css" rel="stylesheet" type="text/css" />
-    <meta charset="utf-8">
-    <link rel="icon" type="image/png" href="assets/favicon.png">
-    <link href="https://fonts.googleapis.com/css?family=DM+Sans&display=swap" rel="stylesheet">
-    <title>Fisheye</title>
-  </head>
-  <body>
-    <header>
-        <img src="assets/images/logo.png" class="logo" />
-        <h1>Nos photographes</h1>
-    </header>
-    <main id="main">
-        <div class="photographer_section"></div>
-    </main>
-    <script src="scripts/factories/photographer.js"></script>
-    <script src="scripts/pages/index.js"></script>
-  </body>
+<html lang="fr" xml:lang="fr">
+
+    <head>
+        <link href="css/style.css" rel="stylesheet" type="text/css" />
+        <meta charset="utf-8">
+        <link rel="icon" type="image/png" href="assets/favicon.png">
+        <link href="https://fonts.googleapis.com/css?family=DM+Sans&display=swap" rel="stylesheet">
+        <title>Fisheye</title>
+    </head>
+
+    <body>
+
+        <!-- L'animation est remplacé par ce texte pour les screen readers -->
+        <span class="sr-only loading-text">La page se charge</span>
+        
+        <header class="header header--home">
+            <a href="index.html" tabindex="0">
+                <img src="assets/images/logo.png" class="logo" alt="Page d'accueil Fisheye"/>
+            </a>
+            <h1 tabindex="0">Nos photographes</h1>
+        </header>
+
+        <!-- Animation de chargement pendant que les datas des photographes sont chargées -->
+        <div class="spinner" aria-hidden="true"></div>
+
+        <main id="main" class="main__container">
+            <!-- Bloc alimenté dynamiquement via JS -->
+            <div class="photographers_section" role="region"></div>
+        </main>
+
+        <script type="module" src="scripts/pages/index.js"></script>
+
+    </body>
+
 </html>

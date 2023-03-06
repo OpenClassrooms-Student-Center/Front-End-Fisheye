@@ -1,37 +1,221 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <link href="css/style.css" rel="stylesheet" type="text/css" />
-    <meta charset="utf-8">
-    <link rel="icon" type="image/png" href="assets/favicon.png">
-    <link href="https://fonts.googleapis.com/css?family=DM+Sans&display=swap" rel="stylesheet">
-    <title>Fisheye - photographe </title>
-  </head>
-  <body>
-    <header>
-      <img src="assets/images/logo.png" class="logo" />
-    </header>
-    <main id="main">
-      <div class="photograph-header">
-        <button class="contact_button" onclick="displayModal()">Contactez-moi</button>
-      </div>
-    </main>
-    <div id="contact_modal">
-			<div class="modal">
-				<header>
-          <h2>Contactez-moi</h2>
-          <img src="assets/icons/close.svg" onclick="closeModal()" />
+<html lang="fr" xml:lang="fr">
+
+    <head>
+        <link href="css/style.css" rel="stylesheet" type="text/css" />
+        <meta charset="utf-8">
+        <link rel="icon" type="image/png" href="assets/favicon.png">
+        <link href="https://fonts.googleapis.com/css?family=DM+Sans&display=swap" rel="stylesheet">
+        <script src="https://kit.fontawesome.com/ce3638eb6f.js" crossorigin="anonymous"></script>
+        <title>Fisheye - photographe </title>
+    </head>
+
+    <body>
+
+        <!-- L'animation est remplacé par ce texte pour les screen readers -->
+        <span class="sr-only loading-text">La page se charge</span>
+
+        <header class="header header--profile">
+            <a href="index.html" tabindex="0">
+                <img src="assets/images/logo.png" class="logo" alt="Page d'accueil Fisheye"/>
+            </a>
         </header>
-				<form>
-					<div>
-						<label>Prénom</label>
-						<input />
-					</div>
-          <button class="contact_button">Envoyer</button>
-				</form>
-			</div>
-		</div>
-    <script src="/scripts/pages/photographer.js"></script>
-    <script src="/scripts/utils/contactForm.js"></script>
-  </body>
+
+        <!-- Animation de chargement pendant que les datas des photographes sont chargées -->
+        <div class="spinner" aria-hidden="true"></div>
+
+        <main id="main-2" class="main__container">
+
+            <div class="photograph-header" role="region"  aria-label="Présentation du photographe">
+                <button
+                    class="contact_button" 
+                    tabindex="0"
+                >
+                    Contactez-moi
+                </button>
+            </div>
+
+            <div 
+                class="additional-information" 
+                role="complementary" 
+                tabindex="0"
+            >
+
+                <p class="additional-informations__likes" aria-hidden="true">
+                    <span class="additional-information__likes-number"></span>
+                    <i class="fa-solid fa-heart like like-icon"></i>
+                </p>
+                
+                <span class="additional-information__price" aria-hidden="true"></span>
+
+            </div>  
+            
+            <span class="confirmation-message">Merci ! Votre réservation a été reçue.</span>
+
+            <div class="portfolio" role="region" aria-label="Portfolio du photographe">
+                
+                <div class="sort-portfolio">
+
+                    <label aria-hidden="true" id="sort-label" for="sort-portfolio" class="sort-portfolio__label">Trier par</label>
+                    
+                    <div class="custom-select">
+                        <select aria-hidden="true" name="sort" id="sort-portfolio" class="sort-portfolio__options">
+                            <option value="popularity" class="sort-portfolio__option">Popularité</option>
+                            <option value="date" class="sort-portfolio__option">Date</option>
+                            <option value="title" class="sort-portfolio__option">Titre</option>
+                        </select>
+                    </div>
+
+                </div>
+
+                <!-- <div class="gallery" tabindex="0" aria-label="Portfolio du photographe"></div> -->
+                <div class="gallery"></div>
+
+            </div>
+
+
+        </main>
+
+        <dialog 
+            id="contact_modal" 
+            class="modal-contact modal-container" 
+            aria-labelledby="contact-modal-title"
+            tabindex="0"
+        >
+
+            <div class="form-container">
+
+                <header class="modal__header">
+                    <h1
+                        id="contact-modal-title" 
+                        class="modal__title" 
+                        aria-hidden="true"
+                    >
+                    </h1>
+                    <img 
+                        src="assets/icons/close.svg" 
+                        class="modal-contact__close modal__close"
+                        role="button" 
+                        aria-label="Fermer le formulaire de contact"
+                        tabindex="0"
+                        alt="icone de fermeture du modal"
+                    />
+                </header>
+
+                <form class="contact-form">
+
+                    <div class="contact-form__field">
+                        <!-- Label caché au SR car input déjà labelisé par le label, évite donc une répétition qui risque d'embrouiller l'utilisateur  -->
+                        <label id="firstNameLabel" for="firstName" class="contact-form__label" aria-hidden="true">Prénom</label>
+                        <input 
+                            type="text" 
+                            id="firstName"
+                            class="contact-form__input contact-form__input--single-line" 
+                            required
+                            aria-required="true"
+                            minlength="2"
+                            aria-labelledby="firstNameLabel"
+                        />
+                    </div>
+
+                    <div class="contact-form__field">
+                        <label id="lastNameLabel" for="lastName" class="contact-form__label" aria-hidden="true">Nom</label>
+                        <input 
+                            type="text" 
+                            id="lastName"
+                            class="contact-form__input contact-form__input--single-line" 
+                            required
+                            aria-required="true"
+                            minlength="2"
+                            aria-labelledby="lastNameLabel"
+                        />
+                    </div>
+                    <div class="contact-form__field">
+                        <label id="emailLabel" for="email" class="contact-form__label" aria-hidden="true">Email</label>
+                        <input 
+                            type="email" 
+                            id="email"
+                            class="contact-form__input contact-form__input--single-line" 
+                            required
+                            aria-required="true"
+                            aria-labelledby="emailLabel"
+                        />
+                    </div>
+
+                    <div class="contact-form__field">
+                        <label id="MessageLabel" for="message" class="contact-form__label" aria-hidden="true">Votre message</label>
+                        <textarea 
+                            type="text" 
+                            id="message"
+                            class="contact-form__input contact-form__input--multiline" 
+                            required
+                            aria-required="true"
+                            minlength="20"
+                            aria-labelledby="MessageLabel"
+                        ></textarea>
+                    </div>
+                    
+                    <button class="send-message" aria-label="Envoyer">Envoyer</button>
+
+                </form>
+
+            </div>
+        </dialog>
+
+        <dialog 
+            class="modal-carousel modal-container" 
+            aria-hidden="true" 
+            aria-label="Image en gros plan"
+            tabindex="1"
+        >
+
+            <div class="carousel-container">
+
+                <div 
+                    class="carousel__paginate carousel__paginate--left" 
+                    role="link" 
+                    class="controls controls-left"
+                    aria-labelledby="previous-image"
+                    tabindex="4"
+                >
+                    <i aria-hidden="true" class="fa-solid fa-chevron-left carousel__arrow carousel__arrow--left"></i>
+                    <p id="previous-image" class="sr-only" aria-hidden="true">Image précédente</p>
+                </div>
+
+                <div class="carousel">
+                    <ul class="carousel__items" role="presentation"> </ul>
+                </div>
+
+                <div class="carousel__right-side">
+
+                    <svg 
+                        role="button" 
+                        class="modal-carousel__close modal__close"
+                        viewBox="0 0 42 42" 
+                        xmlns="http://www.w3.org/2000/svg"
+                        aria-label="Fermer carousel"
+                        tabindex="6"
+                    >
+                        <path d="M42 4.23L37.77 0L21 16.77L4.23 0L0 4.23L16.77 21L0 37.77L4.23 42L21 25.23L37.77 42L42 37.77L25.23 21L42 4.23Z" />
+                    </svg> 
+    
+                    <div 
+                        class="carousel__paginate carousel__paginate--right" 
+                        role="link" 
+                        class="controls controls-right"
+                        aria-labelledby="next-image"
+                        tabindex="5"
+                    >
+                        <i aria-hidden="true" class="fa-solid fa-chevron-right carousel__arrow"></i>
+                        <p id="next-image" class="sr-only">Image suivante</p>
+                    </div>
+                </div>
+
+            </div>
+
+        </dialog>
+
+        <script async type="module" src="/scripts/pages/photographer.js"></script>
+    </body>
+
 </html>
