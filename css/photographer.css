@@ -15,6 +15,7 @@
   border: none;
   border-radius: 10px 10px 10px 10px;
   display: flex;
+  z-index: 5000000;
 }
 #hidden_options button::before{
   content: '';

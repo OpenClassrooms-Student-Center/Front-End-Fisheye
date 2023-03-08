@@ -1,5 +1,8 @@
+// Getting where we're going to insert our Selectbox
+
 const selector = document.querySelector(".selectBox_container");
 
+// Creating Selectbox
 selector.innerHTML = `
         <div class="container_name_selectBox">
           <p>Trier par :</p>
@@ -17,25 +20,29 @@ selector.innerHTML = `
             </div>
         </div>`;
 
-
+// Our second and third buttons of selectbox are hidden
 hiddenOptions = document.getElementById("hidden_options")
 hiddenOptions.style.display = "none";
+// Getting our arrow for selectbox
 let arrow = document.getElementById("arrow_selection");
+// IsOpen to check if the selectbox box is open
 let isOpen = false;
+// Our first button of the selectbox
 let firstOption = document.getElementById("first-choice");
+// Getting all the selectbox
 const selectOptions = document.getElementById("OurSelectBox");
+// Getting all buttons of the selectbox
 const allButtons = selectOptions.querySelectorAll("button");
-let firstOptionText = firstOption.textContent;
 
-//Handling opening and closure of the list
+// Handling opening and closure of the list
     arrow.onclick = function(){
         if(!isOpen){
             hiddenOptions = document.getElementById("hidden_options")
-            hiddenOptions.style.display = "block";   
+            hiddenOptions.style.display = "block";
             isOpen = true;
         } else{
             hiddenOptions = document.getElementById("hidden_options")
-            hiddenOptions.style.display = "none";
+            hiddenOptions.style.display = "none"; 
             isOpen = false;
         }   
     }
@@ -44,79 +51,63 @@ let firstOptionText = firstOption.textContent;
 let items = document.querySelectorAll('.gallery-item');
 
 // Handling click on first option
+firstOption.addEventListener("click", handleButtonsOptions())
+/////////////////////////////////
 
-//const sortValue = button.dataset.filtre;
-
-document.getElementById("first-choice").addEventListener("click", () => {
-  if (isOpen === false) {
-    console.log("SELECT FIRST")
+// Handling click on arrow 
+arrow.addEventListener("click", () => {
+  if(isOpen){
     return handleButtonsOptions();
-  }
+  } 
 });
+//////////////////////////
 
+// Handling closure of the selectBox
 function closeSelect() {
-  // On ferme le faux select
-
   hiddenOptions.style.display = "none";
-
   return (isOpen = false);
 }
+/////////////////////////////////////
 
+// Function that first, handles the changing of text inside first button on click
 function handleButtonsOptions() {
   allButtons.forEach((button) => {
     button.onclick = () => {
-      console.log('rentre dans handleButtons')
-      const buttonText = button.textContent;
+//Getting infos about the clicked button, to, adapt the selectbox and filter datas
+    const buttonText = button.textContent;
+    const sortValue = button.dataset.filtre;
 
-      button.innerHTML = firstOption.textContent;
-      console.log(firstOptionText)
-      firstOption.innerHTML = buttonText;
-      return closeSelect()
-    }})}
-    
-/*let isOpen = false;
+    button.innerHTML = firstOption.textContent;
+    button.dataset.filtre = firstOption.dataset.filtre;
 
-const selectOptions = document.querySelector("#select-block-options");
-
-let firstButtonText = document.querySelector("#select-first-option-text");
-
-const arrow = document.querySelector(".arrow-down-open");
-
-const optionsButtons = selectOptions.querySelectorAll("button");
-
-const select = document.querySelector(".sort-base");
-
-function handleButtonsOptions() {
-  optionsButtons.forEach((button) => {
-    button.onclick = () => {
-
-      const buttonText = button.textContent;
-
-      const sortValue = button.dataset.filtre;
-
-      button.innerHTML = firstButtonText.textContent;
-      button.dataset.filtre = firstButtonText.dataset.filtre;
-
-      firstButtonText.innerHTML = buttonText;
-      firstButtonText.dataset.filtre = sortValue;
-
+    firstOption.innerHTML = buttonText;
+    firstOption.dataset.filtre = sortValue;
+//////////////
+// Then we close the selectbox
       closeSelect();
-      //
+//////////////////////////////////////
 
+// We first get all our medias inside an array
       let items = document.querySelectorAll('.gallery-item');
-
-      [].slice.call(items).sort(function(a, b) {
-          let textA = a.getAttribute('data-'+sortValue);
-          let textB = b.getAttribute('data-'+sortValue);
-          if(sortValue == 'likes'){
-              return (parseInt(textA) < parseInt(textB)) ? -1 : (parseInt(textA) > parseInt(textB)) ? 1 : 0;
-          } else {
-              return (textA < textB) ? -1 : (textA > textB) ? 1 : 0;
-          }
-  
-      }).forEach(function(el) {el.parentNode.appendChild(el)});
-
-    };
-  });
-}
-*/
+      let medias = [];
+        items.forEach((item) => {
+          medias.push(item)
+          return item;
+        })
+//////////////////////////////////////
+    
+// Sort on the array containing all the medias
+      medias.sort(function(a, b) {
+// We get our attribute, likes, title or date and filter with it
+        let mediaA = a.getAttribute('post-'+sortValue);
+        let mediaB = b.getAttribute('post-'+sortValue);
+        if(sortValue == 'likes'){
+            return (parseInt(mediaA) < parseInt(mediaB)) ? -1 : (parseInt(mediaA) > parseInt(mediaB)) ? 1 : 0;
+        } else {
+            return (mediaA < mediaB) ? -1 : (mediaA > mediaB) ? 1 : 0;
+        }
+    }).forEach(function(filteredMedia) {
+      filteredMedia.parentNode.appendChild(filteredMedia)
+    });
+    }
+  })}

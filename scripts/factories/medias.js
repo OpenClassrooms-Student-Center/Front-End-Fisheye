@@ -5,7 +5,9 @@ function mediaFactory(data, position) {
 
 function getMediaCardDOM() {
     const article = document.createElement( 'article' );
-    article.setAttribute("data-likes", likes);
+    article.setAttribute("post-likes", likes);
+    article.setAttribute("post-date", date);
+    article.setAttribute("post-title", title);
     article.setAttribute("class", "gallery-item");
     //Handling Images 
     const span = document.createElement('span')
@@ -67,7 +69,7 @@ function getMediaCardDOM() {
         return (article)
             } 
         if(video != null) { 
-            const article = document.createElement( 'article' );
+            
 
             // Handling Title
             const h2 = document.createElement( 'h2' );
