@@ -15,8 +15,9 @@ header {
 }
 
 h1 {
-    color: #901C1C;
+    color: #901c1c;
     margin-right: 100px;
+    font-weight: 58 00;
 }
 
 .logo {
@@ -93,4 +94,7 @@ h5{
 .photographer_section article a {
     text-decoration: none;
     width: 100%;
+}
+.photographer_section article a:focus {
+    transform: scale(1.2);
 }

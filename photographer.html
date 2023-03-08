@@ -10,7 +10,7 @@
   <body>
     <!-- Added role, alt, aria-label for every part where it's needed -->
     <header role="header">
-      <img src="assets/images/logo.png" class="logo" alt="logo de la marque fisheye"/>
+      <a href="./index.html"><img src="assets/images/logo.png" class="logo" alt="Fisheye Home page"/></a>
     </header>
     <main id="main" role="main">
       <div class="photograph-header" aria-label="photograph header" id="photograph_header">
@@ -21,7 +21,7 @@
 			<div class="modal">
 				<header>
           <h2>Contactez-moi</h2>
-          <img src="assets/icons/close.svg" onclick="closeModal()" alt="closure button" aria-label="cliquez pour refermer la fenêtre"  role="closure button"/>
+          <img src="assets/icons/close.svg" onclick="closeModal()" alt="closure button" aria-label="cliquez pour refermer la fenêtre"  role="closure button" id="modal_closure"/>
         </header>
         <!-- Added inputs to form with label -->
 				<form id="form" role="form">

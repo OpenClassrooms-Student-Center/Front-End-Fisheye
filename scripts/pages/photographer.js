@@ -340,7 +340,7 @@ message.addEventListener("input", (e) => {
     // Form Validation by our variables IsValid...
   
   if(!isValidFirst || !isValidLast || !isValidMail || !isValidMessage){
-    alert("formulaire invalide (pensez à remplir tous les champs sans erreurs, à cocher le lieu souhaité du tournoi et accepter les conditions d'utilisation")
+    
   } 
   else {
     // Closing modal, display validation modal
@@ -358,3 +358,17 @@ message.addEventListener("input", (e) => {
   };
   /* ---------------------------------------------------------- */
  submit.addEventListener("click", validateForm);
+
+ document.onkeydown = (e) => {
+  e = e || window.event;
+  if (e.key === 'ArrowLeft') {
+      document.getElementById('gallery-previous').click();
+  } else if (e.key === 'ArrowRight') {
+      document.getElementById('gallery-next').click();
+  } else if (e.key === 'Escape') {
+      document.getElementById('gallery-close').click();
+      document.getElementById('modal_closure').click();
+  } else if (e.key === "Enter") {
+      document.getElementById('btn-submit').click();
+  }
+}

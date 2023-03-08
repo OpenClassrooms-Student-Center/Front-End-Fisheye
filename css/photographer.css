@@ -26,14 +26,15 @@
 }
 
 .arrow_selection{
-  height: 1.2em;
+  height: 1.5em;
   position: relative;
   margin-top: 10%;
   left: 15%;
 }
 .arrow_selection:hover{
   cursor: pointer;
-  height: 1.5em;
+  margin-top: 8%;
+  height: 1.7em;
 }
 .container_arrow_first_choice{
   display: flex;

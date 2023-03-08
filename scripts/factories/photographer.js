@@ -42,9 +42,9 @@ function photographerFactory(data) {
     div.appendChild(a);
     a.appendChild(img);
     a.appendChild(h2);
-    a.appendChild(h3);
-    a.appendChild(h4);
-    a.appendChild(h5);
+    div.appendChild(h3);
+    div.appendChild(h4);
+    div.appendChild(h5);
 
     return (article);
     }
