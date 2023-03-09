@@ -14,8 +14,8 @@ selector.innerHTML = `
                     <img src="/assets/icons/chevron-up-solid.svg" class="arrow_selection" id="arrow_selection"/> 
             </div>
             <span id="hidden_options" class="hidden_options">
-            <button type="button" class="btn-choice border-top" data-filtre="date">Date</button>
-            <button type="button" class="btn-choice" data-filtre="title">Titre</button>
+            <button type="button" class="btn-choice" data-filtre="date" id="second-choice">Date</button>
+            <button type="button" class="btn-choice" data-filtre="title" id="third-choice">Titre</button>
             </span>
             </div>
         </div>`;

@@ -22,7 +22,7 @@ function getMediaCardDOM() {
         img.setAttribute("data-type", "img");
         img.setAttribute("data-position", position);
         img.setAttribute("data-likes", "1");
-        img.setAttribute("alt", title);
+        img.setAttribute("alt", title + ", closeup view");
         img.setAttribute("aria-label", "click to open slider");
         img.setAttribute('data-title', title)
         ///////////////////////
@@ -42,6 +42,7 @@ function getMediaCardDOM() {
         const titlePost = document.createElement('h3')
         titlePost.setAttribute("id", "like-" + id);
         titlePost.innerHTML = likes
+        titlePost.setAttribute("aria-label", "likes");
         
         const heart = document.createElement('img')
         heart.setAttribute('src', "/assets/icons/heart-solid-black.svg")

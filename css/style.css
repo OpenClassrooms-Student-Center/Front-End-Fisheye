@@ -24,6 +24,13 @@ h1 {
     height: 50px;
     margin-left: 100px;
 }
+.logo:hover{
+    cursor: pointer;
+    transform: scale(1.2);
+}
+.logo:focus{
+    transform: scale(1.2);
+}
 
 .photographer_section {
     display: grid;
