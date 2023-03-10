@@ -1,5 +1,5 @@
 function photographerFactory(data) {
-    const { name, portrait, tagline, city, country, price } = data;
+    const { name, portrait, tagline, city, country, price, alternative } = data;
 
     const picture = `assets/photographers/${portrait}`;
     
@@ -11,6 +11,7 @@ function photographerFactory(data) {
         const pricing = document.createElement( 'p' );
         
         img.setAttribute("src", picture)
+        img.setAttribute("alt", alternative)
         const h2 = document.createElement( 'h2' );
         h2.textContent = name;
         location.textContent = city + ', ' + country;
