@@ -1,6 +1,6 @@
 // fetch photographers from the JSON data
 
-// import { renderPhotographHeader } from "../factories/photographerFactory.js";
+//import { renderBookSection } from "../factories/photographerFactory.js";
 
 async function getPhotographers() {
   const response = await fetch("./data/photographers.json");
@@ -15,13 +15,28 @@ async function getPhotographers() {
   }
 }
 
+async function getPhotographerMedias() {
+  const response = await fetch("./data/photographers.json");
+  if (response.ok) {
+    const data = await response.json();
+    console.log(data.media);
+    return {
+      medias: data.media,
+    };
+  } else {
+    throw new Error("Données des photographes inaccessibles.");
+  }
+}
+
 // Retrieve a photographer's info from the JSON data by their id
 async function getPhotographerInfo(photographerId) {
   const { photographers } = await getPhotographers();
   // Find the photographer object in the photographers array with the matching id
-  return photographers.find(
+  let ph = photographers.find(
     (photographer) => photographer.id === photographerId
   );
+  //ph.medias = getPhotographerMedias();
+  return ph;
 }
 
 async function renderPhotographerPage() {
@@ -35,11 +50,14 @@ async function renderPhotographerPage() {
   const photographerInfo = await getPhotographerInfo(photographerId);
   console.log("Test : objet photographers");
   console.log(photographerId);
+  const photographerMedia = await getPhotographerMedias(photographerId);
+  console.log("Test : objet medias");
 
   // Render the header section of the page with the photographer's name, location, tagline, and portrait
   const photographModel = photographerFactory(photographerInfo);
+  const mediaModel = photographerFactory(photographerMedia);
+  mediaModel.renderBookSection();
   photographModel.renderPhotographHeader();
-  photographModel.renderBookSection();
 }
 
 renderPhotographerPage();

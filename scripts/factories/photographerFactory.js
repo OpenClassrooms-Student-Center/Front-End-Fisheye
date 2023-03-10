@@ -1,7 +1,7 @@
 //Mettre le code JavaScript lié à la page photographer.html
 
 function photographerFactory(data) {
-  const { id, country, city, tagline, price, name, portrait } = data;
+  const { id, country, city, tagline, price, name, portrait, medias } = data;
   const picture = `./assets/photos/Photographers ID Photos/${portrait}`;
 
   function getUserCardDOM() {
@@ -38,7 +38,18 @@ function photographerFactory(data) {
     return a;
   }
 
-  async function renderBookSection(array) {
+  // function getBookCardDOM() {
+  //   // Create an article element to contain the media card
+  //   const article = document.createElement("article");
+  //   article.className += "book-card";
+
+  //   article.id = id;
+
+  //   return article;
+  // }
+  // return { getBookCardDOM };
+
+  function renderBookSection() {
     // Create a new div element to hold the media cards
     const bookSection = document.createElement("div");
     bookSection.className = "book-section";
@@ -47,28 +58,24 @@ function photographerFactory(data) {
     const mainEl = document.querySelector("main");
     mainEl.append(bookSection);
 
-    // Iterate through each media item in the array
-    array.forEach((book) => {
+    //Iterate through each media item in the array
+    medias.forEach((data) => {
       // Create a media card model object from the media array
-      const bookCard = bookFactory(book);
+      const bookCard = photographerFactory(data);
       // Get the DOM element for the media card
-      const bookCardDOM = bookCard.getBookCardDOM();
+      const bookCardDOM = bookCard.getUserCardDOM();
       // Add the card to the media section
       bookSection.append(bookCardDOM);
     });
   }
 
-  //   // Defining a function that will return a DOM element for the media card
-  //   function getBookCardDOM() {
-  //     // Create an article element to contain the media card
-  //     const article = document.createElement("article");
-  //     article.className += "book-card";
-
-  //     article.id = id;
-
-  //     return article;
-  //   }
-
+  // Defining a function that will return a DOM element for the media card
+  function getBookCardDOM() {
+    // Create an article element to contain the media card
+    const article = document.createElement("article");
+    article.className += "book-card";
+    return article;
+  }
   function renderPhotographHeader() {
     // Destructuring the photographer info object to extract to extract its properties
     // Create the HTML for the header section
@@ -95,7 +102,9 @@ function photographerFactory(data) {
     city,
     price,
     country,
+    medias,
     getUserCardDOM,
+    getBookCardDOM,
     renderBookSection,
     renderPhotographHeader,
   };
