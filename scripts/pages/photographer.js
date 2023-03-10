@@ -6,7 +6,6 @@ async function getPhotographers() {
   const response = await fetch("./data/photographers.json");
   if (response.ok) {
     const data = await response.json();
-    console.log(data.photographers);
     return {
       photographers: data.photographers,
     };
@@ -15,13 +14,12 @@ async function getPhotographers() {
   }
 }
 
-async function getPhotographerMedias() {
+async function getPhotographerMedias(id) {
   const response = await fetch("./data/photographers.json");
   if (response.ok) {
     const data = await response.json();
-    console.log(data.media);
     return {
-      medias: data.media,
+      medias: data.media.filter(media => media.photographerId == id)
     };
   } else {
     throw new Error("Données des photographes inaccessibles.");
@@ -48,15 +46,13 @@ async function renderPhotographerPage() {
   const photographerId = parseInt(url.searchParams.get("id"));
 
   const photographerInfo = await getPhotographerInfo(photographerId);
-  console.log("Test : objet photographers");
-  console.log(photographerId);
   const photographerMedia = await getPhotographerMedias(photographerId);
-  console.log("Test : objet medias");
+  photographerInfo.medias = photographerMedia.medias;
 
   // Render the header section of the page with the photographer's name, location, tagline, and portrait
   const photographModel = photographerFactory(photographerInfo);
-  const mediaModel = photographerFactory(photographerMedia);
-  mediaModel.renderBookSection();
+
+  photographModel.renderBookSection();
   photographModel.renderPhotographHeader();
 }
 

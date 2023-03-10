@@ -38,17 +38,6 @@ function photographerFactory(data) {
     return a;
   }
 
-  // function getBookCardDOM() {
-  //   // Create an article element to contain the media card
-  //   const article = document.createElement("article");
-  //   article.className += "book-card";
-
-  //   article.id = id;
-
-  //   return article;
-  // }
-  // return { getBookCardDOM };
-
   function renderBookSection() {
     // Create a new div element to hold the media cards
     const bookSection = document.createElement("div");
@@ -59,11 +48,12 @@ function photographerFactory(data) {
     mainEl.append(bookSection);
 
     //Iterate through each media item in the array
-    medias.forEach((data) => {
+    medias.forEach((media) => {
+      media.name = name;
       // Create a media card model object from the media array
-      const bookCard = photographerFactory(data);
+      const bookCard = photographerBookFactory(media);
       // Get the DOM element for the media card
-      const bookCardDOM = bookCard.getUserCardDOM();
+      const bookCardDOM = bookCard.getBookCardDOM();
       // Add the card to the media section
       bookSection.append(bookCardDOM);
     });
@@ -92,8 +82,8 @@ function photographerFactory(data) {
         </section>
       `;
     // Add the footer HTML to the main element
-    const mainEl = document.querySelector("main");
-    mainEl.innerHTML += photographHeader;
+    const headerElt = document.querySelector("header");
+    headerElt.innerHTML += photographHeader;
   }
   return {
     id,
