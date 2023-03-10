@@ -11,16 +11,13 @@
   display: flex;
   z-index: 5000000;
 }
-#hidden_options button::before{
+/*#hidden_options button::before{
   content: '';
   border-bottom: 1px solid white;
   width: 80%;
   display: flex;
-  margin-bottom: 15%;
-  margin-left: 1%;
-  margin-right: 1%;
   text-align: center;
-}
+}*/
 
 .arrow_selection{
   height: 1.5em;
@@ -56,11 +53,20 @@
 color: black;
 font-weight: 700;
 }
+#third-choice{
+  padding-top: 10%;
+  border-top: 1px solid white;
+}
+#second-choice{
+  padding-top: 10%;
+  border-top: 1px solid white;
+}
  #second-choice:hover{
   color: black;
   font-weight: 700;
   background-color: #D3573C;
 }
+
 #third-choice:hover{
   color: black;
   font-weight: 700;
@@ -74,13 +80,14 @@ font-weight: 700;
   outline: none;
 }
 #second-choice{
+  padding-bottom: 15%;
   height: 3em;
 }
 #second-choice:hover{
   background-color: #D3573C;
 }
 #third-choice{
-  padding-bottom: 5%;
+  padding-bottom: 15%;
 }
 #third-choice:hover{
   background-color: #D3573C;
@@ -106,7 +113,7 @@ font-weight: 700;
   border: none;
   color: white;
   font-size: 1.3em;
-  margin-right: 15%;
+  margin-right: 12%;
   padding-left: 7%;
   padding-right: 7%;
 }
@@ -115,7 +122,6 @@ font-weight: 700;
 }
 #hidden_options button{
   background-color: transparent;
-  border: none;
   font-size: 1.3em;
   width: 100%;
   text-align: start;
@@ -168,7 +174,7 @@ font-weight: 700;
     width: 50%;
     display: flex;
     flex-direction: column;
-    align-items: center;
+    align-items: baseline;
     justify-content: space-between;
     padding: 35px;
     margin: auto;
@@ -411,10 +417,6 @@ input{
     background-color: #901C1C;
     border-radius: 5px;
     cursor: pointer;
-    /* Modified our button localisation */
-    position: relative;
-    left: 45%;
-    top: 35%;
 }
 .modal_location{
   width: 100%;
@@ -480,11 +482,10 @@ input{
 .arrow{
   color: #901C1C;
   font-size: 85px;
-  position: absolute;
-  right: 5%;
+
+
 }
 .arrow:hover{
-  transform: scale(1.2);
   cursor: pointer;
 }
 

@@ -360,6 +360,7 @@ message.addEventListener("input", (e) => {
  submit.addEventListener("click", validateForm);
 
  document.onkeydown = (e) => {
+  let modal = document.getElementById("contact_modal")
   e = e || window.event;
   if (e.key === 'ArrowLeft') {
       document.getElementById('gallery-previous').click();
@@ -368,7 +369,7 @@ message.addEventListener("input", (e) => {
   } else if (e.key === 'Escape') {
       document.getElementById('gallery-close').click();
       document.getElementById('modal_closure').click();
-  } else if (e.key === "Enter") {
+  } else if (e.key === "Enter" && modal.style.display === "block") {
       document.getElementById('btn-submit').click();
   }
 }
