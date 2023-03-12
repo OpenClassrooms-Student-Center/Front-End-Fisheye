@@ -9,13 +9,13 @@ function photographerFactory(data) {
         // create link for each photographer with id
         const link = document.createElement("a")
 		link.href = `./photographer.html?id=${id}`
-        link.title=`Aller vers la page de ${name}`
+        link.title = `Aller vers la page de ${name}`
 		article.append(link);
 
         //img
         const img = document.createElement('img')
         img.setAttribute('src', picture)
-        img.title=`${portrait}`.replace(/.jpg/g,'')
+        img.title = name
         article.appendChild(img)
         link.appendChild(img) // put <img> into <a>
 
@@ -43,8 +43,7 @@ function photographerFactory(data) {
         pricing.classList.add("photograph-price")
         article.appendChild(pricing)
 
-        // return article
-        return (article);
+        return article
     }
     return { picture, getUserCardDOM }
 }
