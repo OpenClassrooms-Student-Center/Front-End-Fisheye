@@ -1,5 +1,6 @@
+/* eslint-disable */
 function mediaFactory(data, position) {
-    const { date, id, image, likes, photographerId, price, title, video } = data;
+    const { date, id, image, likes, title, video } = data;
     const getVideo = `assets/images/medias/${video}`;
     const getImage = `assets/images/medias/${image}`;
 

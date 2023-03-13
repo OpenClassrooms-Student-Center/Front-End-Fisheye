@@ -1,6 +1,4 @@
-    // Our datas before fetch
-    let photographers = [];
-    // Array that will contain the result of the fetch
+// Array that will contain the result of the fetch
     let InfosPhotographers = []
     
     // Function to fetch and return data
@@ -13,12 +11,11 @@
         return response.json();
       }).then(photographers => {
         // We retrieve our datas and insert them into our array infosPhotographers
-       for(i= 0; i < photographers.photographers.length; i++){
+       for(let i= 0; i < photographers.photographers.length; i++){
         InfosPhotographers.push(photographers.photographers[i])     
-        console.log(InfosPhotographers)
        }       
       }).catch(err => {
-        console.log("error")
+        console.log(err + "error")
       });
         
         // We return our array 
@@ -30,6 +27,7 @@
         const photographersSection = document.querySelector(".photographer_section");
 
         photographers.forEach((photographer) => {
+          /* eslint-disable */
             const photographerModel = photographerFactory(photographer);
             const mediaCardDOM = photographerModel.getUserCardDOM();
             photographersSection.appendChild(mediaCardDOM);

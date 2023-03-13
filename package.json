@@ -1,0 +1,21 @@
+{
+  "root": true,
+  "parserOptions": {
+    "ecmaVersion": 2023,
+    "sourceType": "module",
+    "parser": "babel-eslint"
+  },
+    "scripts": {
+    "lint": "eslint ."
+  },
+  "env": {
+    "browser": true,
+    "es6": true
+  },
+  "extends": [
+    "eslint:recommended"
+  ],
+  "devDependencies": {
+    "eslint": "^8.36.0"
+  }
+}

@@ -1,10 +1,8 @@
 //Mettre le code JavaScript lié à la page photographer.html
-
 const photographerId = window.location.search.split("?id=").join("");
 
 /* Medias and photographer Handling */
 
-let aboutPhotographer = [];
 let mediasOfPhotographer = [];
 
 let OurPhotographer = [];
@@ -18,17 +16,17 @@ async function fetchMedias() {
      return response.json();
    }).then(aboutPhotographer => {
      // We retrieve our medias and insert them into our array mediasOfPhotographer
-    for(i= 0; i < aboutPhotographer.media.length; i++){
+    for(let i= 0; i < aboutPhotographer.media.length; i++){
         if(aboutPhotographer.media[i].photographerId == photographerId){
             mediasOfPhotographer.push(aboutPhotographer.media[i])  }   
     }  // We retrieve our photographer infos and insert them into our array OurPhotographer
-    for(i= 0; i < aboutPhotographer.photographers.length; i++){
+    for(let i= 0; i < aboutPhotographer.photographers.length; i++){
     if(aboutPhotographer.photographers[i].id == photographerId){
         OurPhotographer.push(aboutPhotographer.photographers[i])
 }       
     }       
    }).catch(err => {
-     console.log("error")
+     console.log(err + "error")
    });
      
      // We return our array 
@@ -40,11 +38,12 @@ async function fetchMedias() {
   const photographerSection = document.querySelector(".photograph-header");
 
   OurPhotographer.forEach((OurPhotographer) => {
+    /* eslint-disable */
       const photographerModel = OurPhotographerFactory(OurPhotographer);
       const userCardDOM = photographerModel.getOurUserCardDOM();
       photographerSection.appendChild(userCardDOM);
   });
-};
+}
 
  async function displayData(mediasOfPhotographer) {
   let position = 0;
@@ -53,6 +52,7 @@ async function fetchMedias() {
   
     mediasOfPhotographer.forEach((mediasOfPhotographer) => {
       count += mediasOfPhotographer.likes;
+      /* eslint-disable */
         const mediaModel = mediaFactory(mediasOfPhotographer, position);
         const mediaCardDOM = mediaModel.getMediaCardDOM();
         mediasSection.appendChild(mediaCardDOM);
@@ -60,14 +60,13 @@ async function fetchMedias() {
     });
     document.getElementById('totalLikes').innerHTML = count 
 
-};
+}
 
 /////////////////////////////////////////////
-let likes = document.getElementsByClassName("heart");
 window.onload = function(){
-  testFunction()
+  LoadLikes()
 }
-async function testFunction(){
+async function LoadLikes(){
   // Without await we don't have the right infos
 await fetchMedias()
 
@@ -102,7 +101,7 @@ await fetchMedias()
 
 }
 //////////////////////////////////////////////////////////////////
-
+/* eslint-disable */
 function openGallery(object){
 
   //Getting all our elements
@@ -114,7 +113,7 @@ function openGallery(object){
   let galleryTitle = document.getElementById("gallery-title")
   /////////////////////////
 
-  let img = object.getElementsByTagName('img')[0] ?? object.getElementsByTagName('video')[0];
+  let img = object.getElementsByTagName('img')[0] ?? object.getElementsByTagName('video')[0]
 
   if(img.getAttribute('data-type') == 'img'){
     img.setAttribute("class", "gallery-item-img")
@@ -142,9 +141,9 @@ function openGallery(object){
   // Showing only carousel modal
   const carousel = document.getElementById('medias_modal')
   carousel.style.display = "flex";
-  mediasSection = document.getElementById("medias")
+  let mediasSection = document.getElementById("medias")
   mediasSection.style.display="none"
-  photographSection = document.getElementById('photograph_header')
+  let photographSection = document.getElementById('photograph_header')
   photographSection.style.display = "none"
   const selector = document.querySelector(".selectBox_container");
   selector.style.display="none"
@@ -153,10 +152,10 @@ function openGallery(object){
 
 async function init() {
   // Récupère les datas des photographes
-  const { photographers } = await fetchMedias();
+   await fetchMedias();
   displayDataPhotographer(OurPhotographer);
   displayData(mediasOfPhotographer);
-};
+}
 
 init();
 /* -------------------------------------------------------------------- */
@@ -187,29 +186,36 @@ let isValidLast = false;
 let isValidMail = false;
 let isValidMessage = false;
 
+let valueFirstName = null;
+let valueLastName = null;
+let valueEmail = null;
+let valueMessage = null;
+
 //  firstName Errors
 
 firstName.addEventListener("input", (e) => {
     // If nothing was written in this input, value null and isValidFirst false
     if (e.target.value.length == 0) {
       firstNameError.innerHTML = "Le prénom doit comporter entre 2 et 25 caractères";
-      valueFirstName = null;
+      let valueFirstName = null;
       isValidFirst = false;
-      console.log(valueFirstName);
+      return valueFirstName, isValidFirst
     // If we are not between 2 and 25 characters, we display an error message, value null and isValidFirst false
     } else if (e.target.value.length < 2 || e.target.value.length > 25) {
       firstNameError.classList.add("errorMsg")
       firstNameError.innerHTML =
         "Le prénom doit comporter entre 2 et 25 caractères";
-      valueFirstName = null;
+      let valueFirstName = null;
       isValidFirst = false;
+      return valueFirstName, isValidFirst
     }
     // If we are between 3 and 25 characters, we display a green message, value equal to what is written and isValid true
     if (e.target.value.match(/^[a-z A-Z]{2,25}$/)) {
       firstNameError.classList.remove("errorMsg")
       firstNameError.innerHTML = "";
-      valueFirstName = e.target.value;
+      let valueFirstName = e.target.value;
       isValidFirst = true;
+      return valueFirstName, isValidFirst
     }
     // If we are between 3 and 25 characters, but some special characters are there, we delete our class for green messages and add a class for errors. display a green message, value null and isValid false
     if (
@@ -221,7 +227,8 @@ firstName.addEventListener("input", (e) => {
       firstNameError.innerHTML =
         "le prénom ne doit pas contenir de caractère spécial (accent, chiffre)";
       isValidFirst = false;
-      valueFirstName = null;
+      let valueFirstName = null;
+      return valueFirstName, isValidFirst
     }
   });
   
@@ -267,14 +274,14 @@ firstName.addEventListener("input", (e) => {
       emailError.innerHTML = "";
       valueEmail = null;
       isValidMail = false;
-    } else if (e.target.value.match(/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/)) {
+    } else if (e.target.value.match(/^[\w-.]+@([\w-]+\.)+[\w-]{2,4}$/)) {
       emailError.classList.remove("errorMsg")
       emailError.innerHTML = "";
       valueEmail = e.target.value;
       isValidMail = true;
     }
     if (
-      !e.target.value.match(/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/) &&
+      !e.target.value.match(/^[\w-.]+@([\w-]+\.)+[\w-]{2,4}$/) &&
       !e.target.value == 0
     ) {
       emailError.classList.add("errorMsg")
@@ -349,7 +356,7 @@ message.addEventListener("input", (e) => {
     // Form Validation by our variables IsValid...
   
   if(!isValidFirst || !isValidLast || !isValidMail || !isValidMessage){
-    
+    alert("formulaire invalide")
   } 
   else {
     // Closing modal, display validation modal

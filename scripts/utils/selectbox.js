@@ -21,7 +21,7 @@ selector.innerHTML = `
         </div>`;
 
 // Our second and third buttons of selectbox are hidden
-hiddenOptions = document.getElementById("hidden_options")
+let hiddenOptions = document.getElementById("hidden_options")
 hiddenOptions.style.display = "none";
 // Getting our arrow for selectbox
 let arrow = document.getElementById("arrow_selection");
@@ -47,8 +47,6 @@ const allButtons = selectOptions.querySelectorAll("button");
         }   
     }
 ///////////////////////////////////
-
-let items = document.querySelectorAll('.gallery-item');
 
 // Handling click on first option
 firstOption.addEventListener("click", handleButtonsOptions())
