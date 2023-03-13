@@ -110,6 +110,7 @@ function openGallery(object){
   let modalImg = document.getElementById("medias_modal_img");
   let galleryImg = document.getElementById("gallery-img");
   let galleryVideo = document.getElementById("gallery-video");
+  let sourceVideo = document.getElementById("source-video");
   let galleryTitle = document.getElementById("gallery-title")
   /////////////////////////
 
@@ -117,13 +118,21 @@ function openGallery(object){
 
   if(img.getAttribute('data-type') == 'img'){
     img.setAttribute("class", "gallery-item-img")
+    let title = img.getAttribute("data-title")
+    console.log(title)
+    galleryImg.removeAttribute("alt", title)
+    galleryImg.setAttribute("alt", title)
     modalVideo.classList.add('none');
     galleryImg.classList.remove('none');
     galleryImg.src = img.getAttribute('src');    
   } else {
+    let title = img.getAttribute("data-title")
+    sourceVideo.removeAttribute("title", title)
+    sourceVideo.setAttribute("title", title)
     modalImg.classList.add('none');
     galleryVideo.classList.remove('none');
     galleryVideo.src = img.getAttribute('src');
+    sourceVideo.src = img.getAttribute('src');
   }
   galleryTitle.innerHTML = img.getAttribute('data-title');
   galleryTitle.classList.add("modal_gallery")

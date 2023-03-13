@@ -22,3 +22,9 @@ function closeModal() {
     const selector = document.querySelector(".selectBox_container");
     selector.style.display="flex"
 }
+
+let open = document.getElementById("modal_oppening");
+let close = document.getElementById("modal_closure");
+
+open.addEventListener("click", displayModal)
+close.addEventListener("click", closeModal)

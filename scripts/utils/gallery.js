@@ -42,13 +42,17 @@ function changeImage(next){
         document.getElementById("medias_modal_video").classList.add('none');
         document.getElementById("medias_modal_img").classList.remove('none');
         document.getElementById("gallery-img").src = imgs[next].getAttribute('src');
-        console.log(imgs[next].getAttribute('src'), "Insertion de l'image")
-
+        let title = imgs[next].getAttribute("data-title")
+        let galleryImg = document.getElementById("gallery-img");
+        galleryImg.setAttribute('alt', title);
     } else {
         console.log("data-type == ", imgs[next]);
         document.getElementById("medias_modal_img").classList.add('none');
         document.getElementById("medias_modal_video").classList.remove('none');
         document.getElementById("gallery-video").src = imgs[next].getAttribute('src');
+        let title = imgs[next].getAttribute("data-title")
+        let galleryVideo = document.getElementById("source-video");
+        galleryVideo.setAttribute('title', title);
     }
 
     document.getElementById("gallery-title").innerHTML = imgs[next].getAttribute('data-title');
