@@ -4,21 +4,15 @@
   box-sizing: border-box;
 }
 
-
+.gallery-open:focus{
+  transform: scale(1.2);
+}
 /*--------------*/
 .selectBox_container{
   border: none;
   display: flex;
   z-index: 5000000;
 }
-/*#hidden_options button::before{
-  content: '';
-  border-bottom: 1px solid white;
-  width: 80%;
-  display: flex;
-  text-align: center;
-}*/
-
 .arrow_selection{
   height: 1.5em;
   margin-top: 10%;
@@ -134,13 +128,11 @@ font-weight: 700;
 #medias_modal{
   display: none;
 }
-
 .photograph-header {
     background-color: #FAFAFA;
     height: 300px;
     margin: 0 100px;
 }
-
 .contact_button {
     font-size: 20px;
     font-weight: bold;
@@ -167,7 +159,6 @@ font-weight: 700;
   color: black;
   cursor: pointer;
 }
-
 .modal {
     border-radius: 5px;
     background-color: #DB8876;
@@ -179,34 +170,28 @@ font-weight: 700;
     padding: 35px;
     margin: auto;
 }
-
 .modal header {
     justify-content: space-between;
     width: 100%;
 }
-
 .modal header img {
     cursor: pointer;
 }
-
 .modal header h2 {
     font-size: 64px;
     font-weight: normal;
     text-align: center;
 }
-
 form {
     display: flex;
     width: 100%;
     flex-direction: column;
     align-items: flex-start;
 }
-
 form label {
     color: #312E2E;
     font-size: 36px;
 }
-
 form div {
     display: flex;
     flex-direction: column;
@@ -214,7 +199,6 @@ form div {
     align-items: self-start;
     margin-bottom: 26px;
 }
-
 form input {
     width: 100%;
     height: 68px;
@@ -227,7 +211,6 @@ form input {
     gap: 70px;
     margin-top: 100px;
 }
-
 .medias_section article {
     justify-self: center;
     display: flex;
@@ -243,7 +226,7 @@ form input {
     animation-duration: 0.5s;
     cursor: pointer;
 }
-.medias_section article:focus{
+.medias_section article span:focus{
     transform: scale(1.05);
     animation-delay: 0.5s;
     cursor: pointer;
@@ -253,7 +236,6 @@ form input {
     width: 400px;
     border-radius: 2%;
     aspect-ratio: 1/1;
-    
     object-fit: cover;  
 }
 .medias_section article video{
@@ -300,7 +282,6 @@ form input {
     word-wrap: wrap;
   }
 /* Photograph section */
-
   h2, h3, h4, img{
     margin-block-start: 0em;
     margin-block-end: 0em;
@@ -345,7 +326,6 @@ form input {
     padding-top: 1%;
     font-weight: 300;
   }
-
   .photograph-header article a{
     display: flex;
     justify-content: center;
@@ -386,7 +366,6 @@ form input {
   display: flex;
 }
 /* Handling modal form */
-
 .textarea{
   height: 200px;
   resize: none;
@@ -482,13 +461,10 @@ input{
 .arrow{
   color: #901C1C;
   font-size: 85px;
-
-
 }
 .arrow:hover{
   cursor: pointer;
 }
-
 .none{
   display: none;
 }
@@ -503,7 +479,6 @@ input{
   margin-top: 7%;
   margin-bottom: 10%;
 }
-
 #gallery-video{
   display: flex;
   align-items: center;

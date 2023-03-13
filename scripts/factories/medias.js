@@ -57,6 +57,7 @@ function getMediaCardDOM() {
         // Container for image
         const containerImg = document.createElement('span')
         containerImg.setAttribute("onclick", "openGallery(this)")
+        containerImg.setAttribute("class", "gallery-open")
         ///////////////////////
 
         //AppendChild to handling our images
