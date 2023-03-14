@@ -1,0 +1,33 @@
+.item-name {
+    color: rgb(211, 32, 32);
+}
+
+.photographer-link{
+
+    display: flex;
+    flex-flow: column nowrap;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    text-align: center;
+
+}
+
+.photo-img {
+    height: 20rem;
+    width: 20rem;
+    -o-object-fit: cover;
+       object-fit: cover;
+    border-radius: 50%;
+    margin-bottom: 1em;
+  }
+
+  h2 {
+    color: #d3573c;
+    font-weight: 400;
+    font-size: 1rem;
+  }
+
+  h3 {
+    color: #901C1C;
+  }

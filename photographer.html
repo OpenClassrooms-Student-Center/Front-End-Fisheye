@@ -9,12 +9,11 @@
   </head>
   <body>
     <header>
+      <a href="./index.html">
       <img src="assets/images/logo.png" class="logo" />
+    </a>
     </header>
     <main id="main">
-      <div class="photograph-header">
-        <button class="contact_button" onclick="displayModal()">Contactez-moi</button>
-      </div>
     </main>
     <div id="contact_modal">
 			<div class="modal">
@@ -25,13 +24,25 @@
 				<form>
 					<div>
 						<label>Prénom</label>
+            <input class="modal-input" type="text" id="firstName" name="firstName" minlength="2" pattern="(?!^ +$)^.+$"
+            required>
+            <label>Nom</label>
+            <input class="modal-input" type="text" id="lastName" name="lastName" minlength="2" pattern="(?!^ +$)^.+$"
+            required>
+            <label>Email</label>
+            <input class="modal-input" type="email" id="email" name="email" required>
+            <label>Votre message</label>
+            <input class="modal-input modal-msg" type="text" id="message" name="message" minlength="10" maxlength="100"
+            pattern="(?!^ +$)^.+$" required>
 						<input />
 					</div>
           <button class="contact_button">Envoyer</button>
 				</form>
 			</div>
 		</div>
-    <script src="/scripts/pages/photographer.js"></script>
+    <script src="scripts/factories/photographerFactory.js"></script>
+    <script src="scripts/factories/photographerBookFactory.js"></script>
+    <script src="/scripts/pages/photographer.js" type="module"></script>
     <script src="/scripts/utils/contactForm.js"></script>
   </body>
 </html>

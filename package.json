@@ -1,0 +1,6 @@
+{
+  "dependencies": {
+    "node-fetch": "^2.6.8",
+    "paquet": "^1.4.0"
+  }
+}
