@@ -1,29 +1,28 @@
-async function getMedias() {
-    // get datas with fetch
-    const media = await fetch('../data/photographers.json')
-        // promise => response
-        .then((data) => data.json())
-    // return promise
-    return media
+async function getPhotographers() {
+    // get data with fetch
+    const photographer = await fetch('../data/photographers.json')
+        .then((data) => data.json());
+    return photographer;
 }
-
-async function displayData(medias) {
-    const photographerHeader = document.querySelector('.photograph-header');
-    const photographerBody = document.querySelector('.photograph-body');
-};
-
-// get the id of photographers from URL
+  
 function getPhotographerId() {
     const parameters = new URLSearchParams(window.location.search);
     const idString = parameters.get('id');
+
+    // return a number
     return parseInt(idString);
 }
+ 
+// get photographer medias with "photographerId" & getPhotographerId()
+async function getPhotographerMedia() {
+    const photographer = await getPhotographers();
+    const photographerId = getPhotographerId();
 
-async function init() {
-    // Récupère les datas de l'array media
-    const { media } = await getMedias();
-    displayData(media);
-};
+    // filtering media items & comparing them with photographer IDs
+    const media = photographer.media
+        .filter(item => item.photographerId === photographerId);
 
-init();
-
+    return media;
+}
+  
+  

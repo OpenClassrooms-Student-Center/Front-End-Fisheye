@@ -1,17 +1,18 @@
-function getMedias(data) {
+function getMediaItems(data) {
     const { id, name, city, country, tagline, title, image, likes, date, price } = data;
     const picture = `assets/images/Photographers/${portrait}`
 
     function getDOM() {
-        // columnOne
-        const columnOne = document.createElement( '.columnOne' )
+        // lineOne
+        const lineOne = document.createElement('div')
+        lineOne.classList.add('item');
 
-        columnOne.innerHTML = `
+        lineOne.innerHTML = `
         <h1>${name}</h1>
         <h3>${city} ${country}</h3>
         <p>${tagline}</p>
         `
-        return columnOne 
+        return lineOne 
     }
     return { picture, getDOM }
 }
