@@ -20,6 +20,7 @@ function photographerFactory(data) {
         const img = document.createElement("img");
         img.setAttribute("src", picture);
         img.style.borderRadius = "50%";
+        img.setAttribute("alt", name);
         figure.appendChild(img);
 
         const h2 = document.createElement("h2");
@@ -50,6 +51,6 @@ function photographerFactory(data) {
 
         return (article);
     }
-    
+
     return { name, picture, city, country, price, getUserCardDOM }
 }
