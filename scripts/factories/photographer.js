@@ -45,5 +45,13 @@ function photographerFactory(data) {
 
         return article
     }
-    return { picture, getUserCardDOM }
+
+    function getPhotographerHeaderDOM() {
+        const test = document.createElement('h1')
+
+        test.textContent = 'test'
+        return test
+    }
+
+    return { picture, getUserCardDOM, getPhotographerHeaderDOM }
 }

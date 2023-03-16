@@ -1,28 +1,32 @@
-async function getPhotographers() {
-    // get data with fetch
-    const photographer = await fetch('../data/photographers.json')
-        .then((data) => data.json());
-    return photographer;
-}
-  
-function getPhotographerId() {
+async function getPhotographer() {
     const parameters = new URLSearchParams(window.location.search);
     const idString = parameters.get('id');
+    
+    // get data with fetch
+    const photographer = await fetch('../data/photographers.json')
+        .then((data) => data.json())
+        .then(data => data.photographers.filter(photographer => photographer.id == idString))
 
-    // return a number
-    return parseInt(idString);
+        console.log(photographer)
+
+    return photographer;
 }
- 
-// get photographer medias with "photographerId" & getPhotographerId()
-async function getPhotographerMedia() {
-    const photographer = await getPhotographers();
-    const photographerId = getPhotographerId();
 
-    // filtering media items & comparing them with photographer IDs
-    const media = photographer.media
-        .filter(item => item.photographerId === photographerId);
+async function displayHeader(photographer) {
+    // console.log(photographer)
+    const photographerHeader = document.querySelector('.photograph-header');
+    const photographerModel = photographerFactory(photographer);
+    const photographerHeaderDOM = photographerModel.getPhotographerHeaderDOM();
 
-    return media;
-}
-  
-  
+    photographerHeader.appendChild(photographerHeaderDOM);
+    
+};
+
+async function init() {
+    // Récupère les datas des photographes
+    const photographer = await getPhotographer();
+    displayHeader(photographer);
+    console.log(photographer)
+};
+
+init();

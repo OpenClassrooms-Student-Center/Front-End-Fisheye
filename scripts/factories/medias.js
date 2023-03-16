@@ -1,6 +1,7 @@
 function getMediaItems(data) {
     const { id, name, city, country, tagline, title, image, likes, date, price } = data;
     const picture = `assets/images/Photographers/${portrait}`
+    const PhotographerMedia =  getPhotographerMedia()
 
     function getDOM() {
         // lineOne
