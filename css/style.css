@@ -44,7 +44,19 @@ h1 {
   align-items: center;
   flex-direction: column;
   padding: 10px;
+  cursor: pointer;
 }
+
+article figure {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  flex-direction: column;
+  height: auto;
+  width: 100%;
+}
+
 
 .photographer_section article:hover {
   box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2);

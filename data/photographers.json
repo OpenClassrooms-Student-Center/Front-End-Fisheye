@@ -9,7 +9,8 @@
 			"price": 400,
 			"portrait": "MimiKeel.jpg",
 			"alternative": "Portrait de Mimi Keel",
-			"ariaLabel": "Mimi Keel, London, UK, Voir le beau dans le quotidien, 400€/jour. Cliquer pour voir sa page photos",
+			"ariaFigcaptionLabel": "Mimi Keel, London, UK",
+			"ariaSectionLabel": "Voir le beau dans le quotidien, 400€/jour. Cliquer pour voir sa page photos",
 			"tabindex": "0"
 		},
 		{
@@ -21,7 +22,8 @@
 			"price": 250,
 			"portrait": "EllieRoseWilkens.jpg",
 			"alternative": "Portrait d'Ellie-Rose Wilkens",
-			"ariaLabel": "Ellie-Rose Wilkens, Paris, France, Capturer des compositions complexes, 250€/jour. Cliquer pour voir sa page photos",
+			"ariaFigcaptionLabel": "Ellie-Rose Wilkens, Paris, France",
+			"ariaSectionLabel": "Capturer des compositions complexes, 250€/jour. Cliquer pour voir sa page photos",
 			"tabindex": "0"
 		},
 		{
@@ -33,7 +35,8 @@
 			"price": 500,
 			"portrait": "TracyGalindo.jpg",
 			"alternative": "Portrait de Tracy Galindo",
-			"ariaLabel": "Tracy Galindo, Montreal, Canada, Photographe freelance, 500€/jour. Cliquer pour voir sa page photos",
+			"ariaFigcaptionLabel": "Tracy Galindo, Montreal, Canada",
+			"ariaSectionLabel": "Photographe freelance, 500€/jour. Cliquer pour voir sa page photos",
 			"tabindex": "0"
 		},
 		{
@@ -45,7 +48,8 @@
 			"price": 350,
 			"portrait": "NabeelBradford.jpg",
 			"alternative": "Portrait de Nabeel Bradford",
-			"ariaLabel": "Nabeel Bradford, Mexico City, Mexico, Toujours aller de l'avant, 350€/jour. Cliquer pour voir sa page photos",
+			"ariaFigcaptionLabel": "Nabeel Bradford, Mexico City, Mexico",
+			"ariaSectionLabel": "Toujours aller de l'avant, 350€/jour. Cliquer pour voir sa page photos",
 			"tabindex": "0"
 		},
 		{
@@ -57,7 +61,8 @@
 			"price": 275,
 			"portrait": "RhodeDubois.jpg",
 			"alternative": "Portrait de Rhode Dubois",
-			"ariaLabel": "Rhode Dubois, Barcelona, Spain, Je crée des souvenirs, 275€/jour. Cliquer pour voir sa page photos",
+			"ariaFigcaptionLabel": "Rhode Dubois, Barcelona, Spain",
+			"ariaSectionLabel": "Je crée des souvenirs, 275€/jour. Cliquer pour voir sa page photos",
 			"tabindex": "0"
 		},
 		{
@@ -69,7 +74,8 @@
 			"price": 300,
 			"portrait": "MarcelNikolic.jpg",
 			"alternative": "Portrait de Marcel Nikolic",
-			"ariaLabel": "Marcel Nikolic, Berlin, Germany, Toujours à la recherche de LA photo, 300€/jour. Cliquer pour voir sa page photos",
+			"ariaFigcaptionLabel": "Marcel Nikolic, Berlin, Germany",
+			"ariaSectionLabel": "Toujours à la recherche de LA photo, 300€/jour. Cliquer pour voir sa page photos",
 			"tabindex": "0"
 		}
 	],
