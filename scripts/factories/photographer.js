@@ -47,10 +47,15 @@ function photographerFactory(data) {
     }
 
     function getPhotographerHeaderDOM() {
-        const test = document.createElement('h1')
+        const divHeader = document.createElement('div')
 
-        test.textContent = 'test'
-        return test
+        divHeader.innerHTML = `
+        <h1>${name}</h1>
+        <h3>${city} ${country}</h3>
+        <p>${tagline}</p>
+        `
+        
+        return divHeader
     }
 
     return { picture, getUserCardDOM, getPhotographerHeaderDOM }
