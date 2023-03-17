@@ -1,28 +1,57 @@
 function photographerFactory(data) {
-    const { name, portrait, tagline, city, country, price } = data;
+  const {
+    name,
+    portrait,
+    tagline,
+    city,
+    country,
+    price,
+    alternative,
+    ariaFigcaptionLabel,
+    ariaSectionLabel,
+    tabindex,
+    id,
+  } = data;
+  const picture = `assets/photographers/${portrait}`;
+  const labelForPrice = "€/jour";
 
-    const picture = `assets/photographers/${portrait}`;
-    
-    function getUserCardDOM() {
-        const article = document.createElement( 'article' );
-        const img = document.createElement( 'img' );
-        const location = document.createElement( 'p' );
-        const tag = document.createElement( 'p' );
-        const pricing = document.createElement( 'p' );
-        
-        img.setAttribute("src", picture)
-        const h2 = document.createElement( 'h2' );
-        h2.textContent = name;
-        location.textContent = city + ', ' + country;
-        tag.textContent = tagline;
-        pricing.textContent = price + '€/jour';
+  const article = document.createElement("article");
+  const [figure, figcaption, section] = ["figure", "figcaption", "div"].map(
+    (elem) => document.createElement(elem)
+  );
+  const [img, h2, location, tag, pricing] = ["img", "h2", "h3", "p", "p"].map(
+    (elem) => document.createElement(elem)
+  );
 
-        article.appendChild(img);
-        article.appendChild(h2);
-        article.appendChild(location);
-        article.appendChild(tag);
-        article.appendChild(pricing);
-        return (article);
+  img.setAttribute("src", picture);
+  img.setAttribute("alt", alternative);
+  figcaption.setAttribute("aria-label", ariaFigcaptionLabel);
+  figcaption.setAttribute("tabindex", tabindex);
+  section.setAttribute("aria-label", ariaSectionLabel);
+  section.setAttribute("tabindex", tabindex);
+  article.setAttribute("data-id", id);
+
+  article.addEventListener("click", (event) => {
+    const photographerId = event.currentTarget.getAttribute("data-id");
+    // console.log("L'id de l'utilisateur est " + photographerId);
+    window.location.href = `photographer.html?id=${photographerId}`;
+  });
+  article.addEventListener("keydown", (event) => {
+    if (event.key === "Enter") {
+      window.location.href = `photographer.html?id=${id}`;
     }
-    return { name, picture, getUserCardDOM }
+  });
+
+  h2.textContent = name;
+  location.textContent = `${city}, ${country}`;
+  tag.textContent = tagline;
+  pricing.textContent = `${price}${labelForPrice}`;
+
+  [img, h2].forEach((elem) => figcaption.appendChild(elem));
+  [location, tag, pricing].forEach((elem) => section.appendChild(elem));
+  [figcaption, section].forEach((elem) => figure.appendChild(elem));
+
+  article.appendChild(figure);
+
+  return { getUserCardDOM: () => article };
 }

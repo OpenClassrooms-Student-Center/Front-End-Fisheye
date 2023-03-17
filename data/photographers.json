@@ -7,7 +7,11 @@
 			"country": "UK",
 			"tagline": "Voir le beau dans le quotidien",
 			"price": 400,
-			"portrait": "MimiKeel.jpg"
+			"portrait": "MimiKeel.jpg",
+			"alternative": "Portrait de Mimi Keel",
+			"ariaFigcaptionLabel": "Mimi Keel, London, UK",
+			"ariaSectionLabel": "Voir le beau dans le quotidien, 400€/jour. Cliquer pour voir sa page photos",
+			"tabindex": "0"
 		},
 		{
 			"name": "Ellie-Rose Wilkens",
@@ -16,7 +20,11 @@
 			"country": "France",
 			"tagline": "Capturer des compositions complexes",
 			"price": 250,
-			"portrait": "EllieRoseWilkens.jpg"
+			"portrait": "EllieRoseWilkens.jpg",
+			"alternative": "Portrait d'Ellie-Rose Wilkens",
+			"ariaFigcaptionLabel": "Ellie-Rose Wilkens, Paris, France",
+			"ariaSectionLabel": "Capturer des compositions complexes, 250€/jour. Cliquer pour voir sa page photos",
+			"tabindex": "0"
 		},
 		{
 			"name": "Tracy Galindo",
@@ -25,7 +33,11 @@
 			"country": "Canada",
 			"tagline": "Photographe freelance",
 			"price": 500,
-			"portrait": "TracyGalindo.jpg"
+			"portrait": "TracyGalindo.jpg",
+			"alternative": "Portrait de Tracy Galindo",
+			"ariaFigcaptionLabel": "Tracy Galindo, Montreal, Canada",
+			"ariaSectionLabel": "Photographe freelance, 500€/jour. Cliquer pour voir sa page photos",
+			"tabindex": "0"
 		},
 		{
 			"name": "Nabeel Bradford",
@@ -34,7 +46,11 @@
 			"country": "Mexico",
 			"tagline": "Toujours aller de l'avant",
 			"price": 350,
-			"portrait": "NabeelBradford.jpg"
+			"portrait": "NabeelBradford.jpg",
+			"alternative": "Portrait de Nabeel Bradford",
+			"ariaFigcaptionLabel": "Nabeel Bradford, Mexico City, Mexico",
+			"ariaSectionLabel": "Toujours aller de l'avant, 350€/jour. Cliquer pour voir sa page photos",
+			"tabindex": "0"
 		},
 		{
 			"name": "Rhode Dubois",
@@ -43,7 +59,11 @@
 			"country": "Spain",
 			"tagline": "Je crée des souvenirs",
 			"price": 275,
-			"portrait": "RhodeDubois.jpg"
+			"portrait": "RhodeDubois.jpg",
+			"alternative": "Portrait de Rhode Dubois",
+			"ariaFigcaptionLabel": "Rhode Dubois, Barcelona, Spain",
+			"ariaSectionLabel": "Je crée des souvenirs, 275€/jour. Cliquer pour voir sa page photos",
+			"tabindex": "0"
 		},
 		{
 			"name": "Marcel Nikolic",
@@ -52,7 +72,11 @@
 			"country": "Germany",
 			"tagline": "Toujours à la recherche de LA photo",
 			"price": 300,
-			"portrait": "MarcelNikolic.jpg"
+			"portrait": "MarcelNikolic.jpg",
+			"alternative": "Portrait de Marcel Nikolic",
+			"ariaFigcaptionLabel": "Marcel Nikolic, Berlin, Germany",
+			"ariaSectionLabel": "Toujours à la recherche de LA photo, 300€/jour. Cliquer pour voir sa page photos",
+			"tabindex": "0"
 		}
 	],
 	"media": [
