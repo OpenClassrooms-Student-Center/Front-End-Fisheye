@@ -8,20 +8,24 @@ async function getPhotographers() {
     return photographers;
 }
 
+// get photographer
 async function getPhotographer() {
     const { photographers } = await getPhotographers();
 
     const query = window.location.search;
     const name = new URLSearchParams(query).get('name');
 
-    const photographer = photographers.filter(function(photographer) {
+    const photographer  = photographers.filter((photographer) => {
         return photographer.name == name;
     });
+
+    displayData(photographer);
+}
+
+async function displayData(photographer) {
+    photographerPageFactory(photographer);
     
-    return photographer;
 }
 
 getPhotographer();
-
-
 
