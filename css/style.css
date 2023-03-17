@@ -35,6 +35,13 @@ h1 {
   gap: 40px;
 }
 
+.photographer_section div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
 .photographer_section article {
   width: 250px;
   height: 250px;
