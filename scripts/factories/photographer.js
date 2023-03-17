@@ -1,31 +1,46 @@
 function photographerFactory(data) {
-    const { name, portrait, tagline, city, country, price, alternative, ariaLabel, tabindex } = data;
+  const {
+    name,
+    portrait,
+    tagline,
+    city,
+    country,
+    price,
+    alternative,
+    ariaLabel,
+    tabindex,
+    id,
+  } = data;
+  const picture = `assets/photographers/${portrait}`;
 
-    const picture = `assets/photographers/${portrait}`;
-    
-    function getUserCardDOM() {
-        const article = document.createElement( 'article' );
-        const img = document.createElement( 'img' );
-        const location = document.createElement( 'p' );
-        const tag = document.createElement( 'p' );
-        const pricing = document.createElement( 'p' );
-        
-        img.setAttribute("src", picture)
-        img.setAttribute("alt", alternative)
-        article.setAttribute("aria-label", ariaLabel)
-        article.setAttribute("tabindex", tabindex)
-        const h2 = document.createElement( 'h2' );
-        h2.textContent = name;
-        location.textContent = city + ', ' + country;
-        tag.textContent = tagline;
-        pricing.textContent = price + '€/jour';
+  const article = document.createElement("article");
+  const [img, h2, location, tag, pricing] = ["img", "h2", "h3", "p", "p"].map(
+    (elem) => document.createElement(elem)
+  );
 
-        article.appendChild(img);
-        article.appendChild(h2);
-        article.appendChild(location);
-        article.appendChild(tag);
-        article.appendChild(pricing);
-        return (article);
+  img.setAttribute("src", picture);
+  img.setAttribute("alt", alternative);
+  article.setAttribute("aria-label", ariaLabel);
+  article.setAttribute("tabindex", tabindex);
+  article.setAttribute("data-id", id);
+  article.addEventListener("click", (event) => {
+    const photographerId = event.currentTarget.getAttribute("data-id");
+    window.location.href = `photographer.html?id=${photographerId}`;
+  });
+  article.addEventListener("keydown", (event) => {
+    if (event.key === "Enter") {
+      window.location.href = `photographer.html?id=${id}`;
     }
-    return { name, picture, getUserCardDOM }
+  });
+
+  h2.textContent = name;
+  location.textContent = `${city}, ${country}`;
+  tag.textContent = tagline;
+  pricing.textContent = `${price}€/jour`;
+
+  [img, h2, location, tag, pricing].forEach((elem) =>
+    article.appendChild(elem)
+  );
+
+  return { getUserCardDOM: () => article };
 }
