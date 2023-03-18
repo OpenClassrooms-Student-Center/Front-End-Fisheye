@@ -13,40 +13,43 @@ function figureElement(figure, a) {
     a.appendChild(figure);
 }
 
-function imgElement(name, picture, img, figure) {
+function photographerImg(name, picture, img, figure) {
     img.setAttribute("src", picture);
     img.style.borderRadius = "50%";
     img.setAttribute("alt", name);
     figure.appendChild(img);
 }
 
-function hDeuxElement(name, h2, figure) {
-    h2.style.margin = "15px 0 0 0";
-    h2.textContent = name;
-    figure.appendChild(h2);
+function photographerName(name, hName, figure) {
+    hName.style.margin = "15px 0 0 0";
+    hName.textContent = name;
+    hName.style.color = "#D3573C";
+    figure.appendChild(hName);
 }
 
 function figCaptionElement(figure, figCaption) {
     figure.appendChild(figCaption);
 }
 
-function hTroisElement(city, country, h3, figCaption) {
-    h3.style.margin = "0 0";
-    h3.textContent = `${city}, ${country}`;
-    h3.style.color = "#D3573C";
-    figCaption.appendChild(h3);
+function photographerCountry(city, country, hCountry, figCaption) {
+    hCountry.style.margin = "0 0";
+    hCountry.textContent = `${city}, ${country}`;
+    hCountry.style.color = "#D3573C";
+    figCaption.appendChild(hCountry);
 }
 
-function pTaglineElement(tagline, pTagline, figCaption) {
+function photographerTagline(tagline, pTagline, figCaption) {
     pTagline.style.margin = "0 0";
     pTagline.textContent = tagline;
+    pTagline.style.fontSize = "0.8rem";
     pTagline.style.color = "#000";
     figCaption.appendChild(pTagline);
 }
 
-function pPriceElement(price, pPrice, figCaption) {
+function photographerPrice(price, pPrice, figCaption) {
     pPrice.style.margin = "0 0";
     pPrice.textContent = `${price}/jour`;
+    pPrice.style.fontSize = "0.8rem";
     pPrice.style.color = "#000";
     figCaption.appendChild(pPrice);
 }
@@ -54,27 +57,26 @@ function pPriceElement(price, pPrice, figCaption) {
 function photographerFactory(data) {
     const { id, name, portrait, city, country, tagline, price } = data;
     const picture = `assets/photographers/${portrait}`;
-    
+
     const article = document.createElement("article");
     const a = document.createElement("a");
     const figure = document.createElement("figure");
     const img = document.createElement("img");
-    const h2 = document.createElement("h2");
+    const hName = document.createElement("h2");
     const figCaption = document.createElement("figCaption");
-    const h3 = document.createElement("h3");
+    const hCountry = document.createElement("h3");
     const pTagline = document.createElement("p");
     const pPrice = document.createElement("p");
 
     function getUserCardDOM() {
-    
         linkElement(name, a, article);
         figureElement(figure, a);
-        imgElement(name, picture, img, figure);
-        hDeuxElement(name, h2, figure);
+        photographerImg(name, picture, img, figure);
+        photographerName(name, hName, figure);
         figCaptionElement(figure, figCaption);
-        hTroisElement(city, country, h3, figCaption);
-        pTaglineElement(tagline, pTagline, figCaption);
-        pPriceElement(price, pPrice, figCaption);
+        photographerCountry(city, country, hCountry, figCaption);
+        photographerTagline(tagline, pTagline, figCaption);
+        photographerPrice(price, pPrice, figCaption);
     
         return (article);
     }
