@@ -14,7 +14,6 @@ async function getPhotographer() {
 
     const query = window.location.search;
     const name = new URLSearchParams(query).get('name');
-
     const photographer  = photographers.filter((photographer) => {
         return photographer.name == name;
     });
@@ -24,7 +23,6 @@ async function getPhotographer() {
 
 async function displayData(photographer) {
     photographerPageFactory(photographer);
-    
 }
 
 getPhotographer();
