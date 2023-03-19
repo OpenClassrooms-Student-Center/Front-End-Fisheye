@@ -31,6 +31,7 @@ function figCaptionElement(figure, figCaption) {
     figure.appendChild(figCaption);
 }
 
+// create h element that display photographer tagline
 function photographerCountry(city, country, hCountry, figCaption) {
     hCountry.style.margin = "0 0";
     hCountry.textContent = `${city}, ${country}`;
@@ -38,6 +39,7 @@ function photographerCountry(city, country, hCountry, figCaption) {
     figCaption.appendChild(hCountry);
 }
 
+// create p element that display photographer tabline
 function photographerTagline(tagline, pTagline, figCaption) {
     pTagline.style.margin = "0 0";
     pTagline.textContent = tagline;
@@ -54,6 +56,7 @@ function photographerPrice(price, pPrice, figCaption) {
     figCaption.appendChild(pPrice);
 }
 
+// displaying photographers data
 function photographerFactory(data) {
     const { id, name, portrait, city, country, tagline, price } = data;
     const picture = `assets/photographers/${portrait}`;

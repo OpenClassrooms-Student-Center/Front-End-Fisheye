@@ -1,13 +1,18 @@
 "use_strict";
 
+// DOM elements
 const form = document.querySelector("form");
 
+// functions
+
+// create first field
 function firstField() {
     const first = document.querySelector("form div:nth-child(1) input");
     first.setAttribute("type","text");
     first.setAttribute("name","first");
 }
 
+// create last field
 function lastField() {
     const divLast = document.createElement("div");
     const last = document.createElement("input");
@@ -19,6 +24,7 @@ function lastField() {
     divLast.appendChild(last);
 }
 
+// create email field
 function emailField() {
     const divEmail = document.createElement("div");
     const email = document.createElement("input");
@@ -30,6 +36,7 @@ function emailField() {
     divEmail.appendChild(email);
 }
 
+// create message field
 function messageField() {
     const divMessage = document.createElement("div");
     const labelMessage = document.createElement("label");
@@ -42,12 +49,14 @@ function messageField() {
     divMessage.appendChild(message);
 }
 
+// move button element to end of form
 function buttonElement() {
     const lastDiv = document.querySelector("form div:last-child");
     const sendButton = document.querySelector("form .contact_button");
     lastDiv.after(sendButton);
 }
 
+// open modal
 function displayModal() {
     const modal = document.getElementById("contact_modal");
 	modal.style.display = "block";
@@ -57,9 +66,9 @@ function displayModal() {
     emailField();
     messageField();
     buttonElement();
-    
 }
 
+// close modal
 function closeModal() {
     const modal = document.getElementById("contact_modal");
     modal.style.display = "none";

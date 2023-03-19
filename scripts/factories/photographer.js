@@ -18,6 +18,7 @@ function headerMain(header) {
     header.setAttribute("class","photograph-header");
 }
 
+// append ul element in header main
 function ulHeader(header, ul) {
     ul.style.margin = "0";
     ul.style.padding = "0 40px";
@@ -33,6 +34,7 @@ function liPhotographerData(liData, ul) {
     ul.appendChild(liData);
 }
 
+// displaying photographer name
 function photographerName(pName, liData, name) {
     pName.style.margin = "10px 0";
     pName.textContent = name;
@@ -41,6 +43,7 @@ function photographerName(pName, liData, name) {
     liData.appendChild(pName);
 }
 
+// displaying photographer country
 function photographerCountry(pCountry, liData, city, country) {
     pCountry.style.margin = "10px 0";
     pCountry.style.color = "#D3573C";
@@ -49,6 +52,7 @@ function photographerCountry(pCountry, liData, city, country) {
     liData.appendChild(pCountry);
 }
 
+// displaying photographer tagline
 function photographerTagline(liData, pTagline, tagline) {
     pTagline.style.margin = "10px 0";
     pTagline.textContent = tagline;
@@ -60,6 +64,7 @@ function contactButton(liContact, ul, contact) {
     ul.appendChild(liContact).appendChild(contact);
 }
 
+// displaying photographer image
 function photographerImg(ul, liImg, img, picture) {
     liImg.style.display = "block";
     ul.appendChild(liImg);
@@ -70,7 +75,7 @@ function photographerImg(ul, liImg, img, picture) {
     liImg.appendChild(img);
 }
 
-// creating header main
+// displaying photographer data on header main
 function photographerPageFactory(photographer) {
     const [{ name, portrait, city, country, tagline }] = photographer;
     const picture = `assets/photographers/${portrait}`;
