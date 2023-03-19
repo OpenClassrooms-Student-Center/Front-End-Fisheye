@@ -21,8 +21,8 @@
     background-color: #FAFAFA;
     display: flex;
     height: 300px;
-    width: 80vw;
-    margin: 0 100px;
+    width: 90vw;
+    margin: auto;
 }
 
 .photograph-header figure {
@@ -32,6 +32,33 @@
     align-items: center;
     box-sizing: border-box;
 }
+
+.filter-list {
+    width: 100%;
+    color: black;
+}
+
+select {
+    width: 150px;
+    height: 50px;
+    font-size: 1.5rem;
+    font-weight: normal;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    background-color: #901C1C;
+    cursor: pointer;
+}
+
+option {
+    font-size: 1.5rem;
+    font-weight: normal;
+    color: white;
+    border: none;
+    background-color: #901C1C;
+    cursor: pointer;
+}
+
 figcaption  {
     width: 200px;
 }
@@ -70,6 +97,7 @@ figure img {
     font-weight: bold;
     color: white;
     padding: 11px;
+    margin: 5px;
     width: 170px;
     height: 70px;
     border: none;
@@ -105,6 +133,50 @@ figure img {
     text-align: center;
 }
 
+.photograph-media {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 100px auto;
+    height: auto;
+    width: 90vw;
+    justify-content: space-between;
+}
+
+.cards {
+    display: flex;
+    flex-direction: column-reverse;
+    justify-content: space-between;
+    box-sizing: border-box;
+    position: relative;
+    height: 300px;
+    width: 350px;
+}
+.cards img, video {
+    width: 100%;
+    height: 80%;
+    object-fit: cover;
+    border-radius: 5px;
+    position: absolute;
+    top: 0;
+}
+.descriptionBox {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
+    align-items: center;
+    color: #901C1C;
+    font-size: 1.2rem;
+}
+
+.descriptionBox p {
+    margin-left: auto;
+}
+
+.descriptionBox i {
+    padding: 0 5px 0 5px;
+}
+
 form {
     display: flex;
     width: 100%;
@@ -130,4 +202,24 @@ form input {
     height: 68px;
     border: none;
     border-radius: 5px;
+}
+
+.banner {
+    position: fixed;
+    bottom: 0;
+    right: 50px;
+    width: 200px;
+    background-color: #901C1C;
+    color: #FAFAFA;
+    z-index: 1;
+    padding: 20px;
+    margin: 0;
+    border-radius:  10px 10px 0 0;
+    font-size: 1.5rem;
+    display: flex;
+    justify-content: space-between;
+}
+
+.banner i {
+    padding: 0 5px 0 5px;
 }

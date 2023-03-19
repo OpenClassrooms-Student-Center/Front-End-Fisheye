@@ -7,7 +7,13 @@ html {
 body {
   font-family: "DM Sans", sans-serif;
   margin: 0;
+  padding: 0;
   caret-color: transparent;
+}
+
+header {
+  width: 90vw;
+  margin: auto;
 }
 
 header > div {
@@ -26,7 +32,7 @@ h1 {
 
 .logo {
   height: 50px;
-  margin-left: 100px;
+  padding: 30px 0;
 }
 
 .photographer_section {
