@@ -180,6 +180,10 @@ button:focus {
     cursor: pointer;
 }
 
+.modal button:focus-visible {
+    background-color: #d3573c;
+}
+
 .photograph-media {
     display: flex;
     flex-wrap: wrap;
