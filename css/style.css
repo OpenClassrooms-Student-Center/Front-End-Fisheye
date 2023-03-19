@@ -6,8 +6,6 @@ html {
 
 body {
   font-family: "DM Sans", sans-serif;
-  margin: 0;
-  padding: 0;
   caret-color: transparent;
 }
 
@@ -22,7 +20,6 @@ header > div {
   justify-content: space-between;
   align-items: center;
   width: 100%;
-  height: 90px;
 }
 
 h1 {

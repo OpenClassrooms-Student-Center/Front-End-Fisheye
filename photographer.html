@@ -12,7 +12,7 @@
   </head>
   <body>
     <header>
-      <img src="assets/images/logo.png" class="logo" alt="Symbole de fisheye" />
+    <a href="./index.html" title="retour à la page d'accueil"><img src="assets/images/logo.png" class="logo" alt="Symbole de fisheye"  aria-label="Cette image contient le nom fisheye, cliquer dessus pour revenir à la page d'accueil"/></a>
     </header>
     <main id="main">
       <article class="photograph-header">
@@ -29,18 +29,22 @@
     </main>
     <div id="contact_modal">
       <div class="modal">
-        <header>
-          <h2>Contactez-moi</h2>
-          <img
-            src="assets/icons/close.svg"
-            onclick="closeModal()"
-            alt="fermeture de modale"
-          />
+        <header class="contact_header">
+          
+          <!-- add dynamic user name -->
         </header>
         <form>
           <div>
-            <label>Prénom</label>
-            <input />
+            <label for="prenom">Prénom</label>
+            <input name="prenom" id="prenom"  type="text" placeholder="entrer son prénom"/>
+            <label for="nom">Nom</label>
+            <input name="nom" id="nom"  type="text" placeholder="entrer son nom"/>
+            <label for="Email">Email</label>
+            <input name="Email" id="Email"  type="email" placeholder="entrer son Email"/>
+            <label for="message">Message</label>
+            <textarea name="message" id="message" placeholder="entrer son message">
+
+            </textarea>
           </div>
           <button class="contact_button">Envoyer</button>
         </form>
