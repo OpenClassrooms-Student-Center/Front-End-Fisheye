@@ -84,7 +84,7 @@ async function getPhotographerData() {
 
   namedForm.innerHTML = `
   <h2>Contacter:</h2>
-  <button aria-label="fermer le formulaire" onclick="closeModal()">X</button>
+  <button aria-label="fermer le formulaire" tabindex="0" onclick="closeModal()">X</button>
   <h3>${photographer[0].name}</h3>
   `;
 }
