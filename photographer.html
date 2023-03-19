@@ -12,7 +12,7 @@
   </head>
   <body>
     <header>
-    <a href="./index.html" title="retour à la page d'accueil"><img src="assets/images/logo.png" class="logo" alt="Symbole de fisheye"  aria-label="Cette image contient le nom fisheye, cliquer dessus pour revenir à la page d'accueil"/></a>
+    <a href="./index.html" title="retour à la page d'accueil"  tabindex="1" ><img src="assets/images/logo.png" class="logo" alt="Symbole de fisheye" aria-label="Cette image contient le nom fisheye, cliquer dessus pour revenir à la page d'accueil"/></a>
     </header>
     <main id="main">
       <article class="photograph-header">
@@ -33,18 +33,16 @@
           
           <!-- add dynamic user name -->
         </header>
-        <form>
+        <form type="submit">
           <div>
             <label for="prenom">Prénom</label>
-            <input name="prenom" id="prenom"  type="text" placeholder="entrer son prénom"/>
+            <input name="prenom" id="prenom" autofocus="true" required type="text" placeholder="entrer son prénom"/>
             <label for="nom">Nom</label>
-            <input name="nom" id="nom"  type="text" placeholder="entrer son nom"/>
-            <label for="Email">Email</label>
-            <input name="Email" id="Email"  type="email" placeholder="entrer son Email"/>
+            <input name="nom" id="nom"  type="text" required placeholder="entrer son nom"/>
+            <label for="email">Email</label>
+            <input name="email" id="email"  type="email" required placeholder="entrer son Email"/>
             <label for="message">Message</label>
-            <textarea name="message" id="message" placeholder="entrer son message">
-
-            </textarea>
+            <textarea name="message" id="message" placeholder="entrer son message"></textarea>
           </div>
           <button class="contact_button">Envoyer</button>
         </form>

@@ -30,12 +30,12 @@ async function getPhotographerData() {
     <figcaption tabindex=${photographer[0].tabindex}>
       <img src="assets/photographers/${
         photographer[0].portrait
-      }" alt="portrait de ${photographer[0].name}" >
+      }" alt="portrait de ${photographer[0].name} aria-label="profil de  ${photographer[0].name}" " >
     </figcaption>
-    <button class="contact_button" onclick="displayModal()">Contactez-moi</button>
+    <button class="contact_button" onclick="displayModal()" tabindex=${photographer[0].tabindex} >Contactez-moi</button>
     <div class="photograph-info">
-      <h1 tabindex=${photographer[0].tabindex}>${photographer[0].name}</h1>
-      <div tabindex=${photographer[0].tabindex}> 
+      <h1 tabindex=${photographer[0].tabindex + 1}>${photographer[0].name}</h1>
+      <div tabindex=${photographer[0].tabindex + 1}> 
       <h2>${photographer[0].city}, ${photographer[0].country}</h2>
       <p>${photographer[0].tagline}</p>
       </div>
@@ -84,7 +84,7 @@ async function getPhotographerData() {
 
   namedForm.innerHTML = `
   <h2>Contacter:</h2>
-  <button onclick="closeModal()">X</button>
+  <button aria-label="fermer le formulaire" onclick="closeModal()">X</button>
   <h3>${photographer[0].name}</h3>
   `;
 }
