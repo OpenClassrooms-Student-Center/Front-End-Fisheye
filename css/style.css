@@ -6,8 +6,12 @@ html {
 
 body {
   font-family: "DM Sans", sans-serif;
-  margin: 0;
   caret-color: transparent;
+}
+
+header {
+  width: 90vw;
+  margin: auto;
 }
 
 header > div {
@@ -16,7 +20,6 @@ header > div {
   justify-content: space-between;
   align-items: center;
   width: 100%;
-  height: 90px;
 }
 
 h1 {
@@ -26,13 +29,20 @@ h1 {
 
 .logo {
   height: 50px;
-  margin-left: 100px;
+  padding: 30px 0;
 }
 
 .photographer_section {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   gap: 40px;
+}
+
+.photographer_section div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
 .photographer_section article {

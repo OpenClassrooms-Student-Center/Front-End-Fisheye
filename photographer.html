@@ -2,35 +2,56 @@
 <html>
   <head>
     <link href="css/style.css" rel="stylesheet" type="text/css" />
-    <meta charset="utf-8">
-    <link rel="icon" type="image/png" href="assets/icons/favicon.png">
-    <link href="https://fonts.googleapis.com/css?family=DM+Sans&display=swap" rel="stylesheet">
-    <title>Fisheye - photographe </title>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/png" href="assets/icons/favicon.png" />
+    <link
+      href="https://fonts.googleapis.com/css?family=DM+Sans&display=swap"
+      rel="stylesheet"
+    />    
+    <title>Fisheye - photographe</title>
   </head>
   <body>
     <header>
-      <img src="assets/images/logo.png" class="logo" alt="Symbole de fisheye" />
+    <a href="./index.html" title="retour à la page d'accueil"  tabindex="1" ><img src="assets/images/logo.png" class="logo" alt="Symbole de fisheye" aria-label="Cette image contient le nom fisheye, cliquer dessus pour revenir à la page d'accueil"/></a>
     </header>
     <main id="main">
-      <div class="photograph-header">
-        <button class="contact_button" onclick="displayModal()">Contactez-moi</button>
-      </div>
+      <article class="photograph-header">
+      </article>
+      <article class="photograph-media">
+        <h1 class="filter-list">Trié par
+          <select>
+            <option value="popularite">Popularité</option>
+            <option value="date">Date</option>
+            <option value="titre">Titre</option>
+          </select>
+        </h1>
+      </article>
     </main>
     <div id="contact_modal">
-			<div class="modal">
-				<header>
-          <h2>Contactez-moi</h2>
-          <img src="assets/icons/close.svg" onclick="closeModal()" alt="fermeture de modale" />
+      <div class="modal">
+        <header class="contact_header">
+          
+          <!-- add dynamic user name -->
         </header>
-				<form>
-					<div>
-						<label>Prénom</label>
-						<input />
-					</div>
+        <form type="submit">
+          <div>
+            <label for="prenom">Prénom</label>
+            <input name="prenom" id="prenom" autofocus="true" required type="text" placeholder="entrer son prénom"/>
+            <label for="nom">Nom</label>
+            <input name="nom" id="nom"  type="text" required placeholder="entrer son nom"/>
+            <label for="email">Email</label>
+            <input name="email" id="email"  type="email" required placeholder="entrer son Email"/>
+            <label for="message">Message</label>
+            <textarea name="message" id="message" placeholder="entrer son message"></textarea>
+          </div>
           <button class="contact_button">Envoyer</button>
-				</form>
-			</div>
-		</div>
+        </form>
+      </div>
+    </div>
+    <script
+      src="https://kit.fontawesome.com/2c36e9b7b1.js"
+      crossorigin="anonymous"
+    ></script>
     <script src="/scripts/pages/photographer.js"></script>
     <script src="/scripts/utils/contactForm.js"></script>
   </body>
