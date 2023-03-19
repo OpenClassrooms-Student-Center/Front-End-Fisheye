@@ -42,6 +42,12 @@ function messageField() {
     divMessage.appendChild(message);
 }
 
+function buttonElement() {
+    const lastDiv = document.querySelector("form div:last-child");
+    const sendButton = document.querySelector("form .contact_button");
+    lastDiv.after(sendButton);
+}
+
 function displayModal() {
     const modal = document.getElementById("contact_modal");
 	modal.style.display = "block";
@@ -50,6 +56,7 @@ function displayModal() {
     lastField();
     emailField();
     messageField();
+    buttonElement();
     
 }
 
