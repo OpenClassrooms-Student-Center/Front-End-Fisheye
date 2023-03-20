@@ -1,6 +1,7 @@
 "use_strict";
 
-// DOM elements
+// header main elements
+const main = document.querySelector("main");
 const divMain = document.querySelector("main .photograph-header");
 const header = document.createElement("header");
 const ul = document.createElement("ul");
@@ -76,7 +77,7 @@ function photographerImg(ul, liImg, img, picture) {
 }
 
 // displaying photographer data on header main
-function photographerPageFactory(photographer) {
+function photographerFactory(photographer) {
     const [{ name, portrait, city, country, tagline }] = photographer;
     const picture = `assets/photographers/${portrait}`;
 
@@ -90,4 +91,116 @@ function photographerPageFactory(photographer) {
     photographerImg(ul, liImg, img, picture);
     
     divMain.replaceWith(header);
+}
+
+function sectionMedia(section) {
+    section.style.margin = "60px 100px";
+    section.setAttribute("id","media");
+    main.appendChild(section);
+}
+
+function ulSectionMedia(section, ulMedia) {
+    ulMedia.style.padding = "0";
+    ulMedia.style.display = "flex";
+    ulMedia.style.gap = "80px";
+    ulMedia.style.flexWrap= "wrap";
+    section.appendChild(ulMedia);
+}
+
+function liSectionMedia(liMedia, ulMedia) {
+    liMedia.style.display = "block";
+    ulMedia.appendChild(liMedia);
+}
+
+function linkSectionMedia(liMedia, linkMedia) {
+    linkMedia.setAttribute("href","#");
+    linkMedia.style.textDecoration = "none";
+    liMedia.appendChild(linkMedia);
+}
+
+function figureSection(figureMedia, linkMedia) {
+    figureMedia.style.margin = "0";
+    linkMedia.appendChild(figureMedia);
+}
+
+function imgSection(imgMedia, figureMedia, picture) {
+    imgMedia.setAttribute("src", picture);
+    imgMedia.style.width = "300px";
+    imgMedia.style.height = "300px";
+    imgMedia.style.borderRadius = "5px";
+    figureMedia.appendChild(imgMedia);
+}
+
+function figcaptionSection(figCaptionMedia, figureMedia) {
+    figCaptionMedia.style.display = "flex";
+    figCaptionMedia.style.justifyContent = "space-between";
+    figCaptionMedia.style.alignItems = "center";
+    figCaptionMedia.style.margin = "8px 0";
+    figureMedia.appendChild(figCaptionMedia);
+}
+
+function figcaptionHeaderSection(figcaptionHeader, figCaptionMedia) {
+    figcaptionHeader.style.height = "0";
+    figCaptionMedia.appendChild(figcaptionHeader);
+}
+
+function titleMediaSection(title, titleMedia, figcaptionHeader) {
+    titleMedia.textContent = title;
+    titleMedia.style.color = "#901C1C";
+    figcaptionHeader.appendChild(titleMedia);
+}
+
+function figureLikeSection(figureLike, figCaptionMedia) {
+    figureLike.style.margin = "0";
+    figureLike.style.color = "#901C1C";
+    figCaptionMedia.appendChild(figureLike);
+}
+
+function likeMediaSection(likeMedia, figureLike, likes) {
+    likeMedia.textContent = likes;
+    likeMedia.style.paddingRight = "5px";
+    figureLike.appendChild(likeMedia);
+}
+
+function iconMediaSection(figureLike, iconMedia) {
+    iconMedia.setAttribute("class","fa-solid fa-heart");
+    figureLike.appendChild(iconMedia);
+}
+
+// displaying photographerMedia data on section main
+function photographerMediaFactory(photographerMedia) {
+
+    const section = document.createElement("section");
+    const ulMedia = document.createElement("ul");
+
+    sectionMedia(section);
+    ulSectionMedia(section, ulMedia);
+
+    photographerMedia.forEach(media => {
+        const { title, image, likes, date, price } = media;
+        const picture = `assets/media/${image}`;
+
+        // section main elements
+        const liMedia = document.createElement("li");
+        const linkMedia = document.createElement("a");
+        const figureMedia = document.createElement("figure");
+        const imgMedia = document.createElement("img");
+        const figCaptionMedia = document.createElement("figcaption");
+        const figcaptionHeader = document.createElement("header");
+        const titleMedia = document.createElement("h3");
+        const figureLike = document.createElement("figure");
+        const likeMedia = document.createElement("span");
+        const iconMedia = document.createElement("i");
+
+        liSectionMedia(liMedia, ulMedia);
+        linkSectionMedia(liMedia, linkMedia);
+        figureSection(figureMedia, linkMedia);
+        imgSection(imgMedia, figureMedia, picture);
+        figcaptionSection(figCaptionMedia, figureMedia);
+        figcaptionHeaderSection(figcaptionHeader, figCaptionMedia);
+        titleMediaSection(title, titleMedia, figcaptionHeader);
+        figureLikeSection(figureLike, figCaptionMedia);
+        likeMediaSection(likeMedia, figureLike, likes);
+        iconMediaSection(figureLike, iconMedia);
+    });
 }

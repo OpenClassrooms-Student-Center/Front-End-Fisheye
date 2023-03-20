@@ -2,8 +2,8 @@
 
 // Functions
 
-function linkElement(name, a, article) {
-    a.setAttribute("href","photographer.html?name=" + name);
+function linkElement(id, name, a, article) {
+    a.setAttribute("href","photographer.html?name=" + name + "&id=" + id);
     a.style.textDecoration = "none";
     article.appendChild(a);
 }
@@ -72,7 +72,7 @@ function photographerFactory(data) {
     const pPrice = document.createElement("p");
 
     function getUserCardDOM() {
-        linkElement(name, a, article);
+        linkElement(id, name, a, article);
         figureElement(figure, a);
         photographerImg(name, picture, img, figure);
         photographerName(name, hName, figure);

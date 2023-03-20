@@ -10,19 +10,26 @@ async function getPhotographers() {
 
 // get photographer
 async function getPhotographer() {
-    const { photographers } = await getPhotographers();
-
+    const { photographers, media } = await getPhotographers();
+    
     const query = window.location.search;
     const name = new URLSearchParams(query).get('name');
-    const photographer  = photographers.filter((photographer) => {
-        return photographer.name == name;
+    const id = new URLSearchParams(query).get('id');
+
+    const photographerMedia = media.filter((media) => {
+        return media.photographerId == id;
     });
 
-    displayData(photographer);
+    const photographer = photographers.filter((photographer) => {
+        return photographer.name == name;
+    });
+   
+    displayData(photographer, photographerMedia);
 }
 
-async function displayData(photographer) {
-    photographerPageFactory(photographer);
+async function displayData(photographer, photographerMedia) {
+    photographerFactory(photographer);
+    photographerMediaFactory(photographerMedia);
 }
 
 getPhotographer();
