@@ -2,58 +2,58 @@
 
 // Functions
 
-function linkElement(id, name, a, article) {
-    a.setAttribute("href","photographer.html?name=" + name + "&id=" + id);
-    a.style.textDecoration = "none";
-    article.appendChild(a);
+function addLinkElt(id, name, aElt, articleElt) {
+    aElt.setAttribute("href","photographer.html?name=" + name + "&id=" + id);
+    aElt.style.textDecoration = "none";
+    articleElt.appendChild(aElt);
 }
 
-function figureElement(figure, a) {
-    figure.style.textAlign = "center"
-    a.appendChild(figure);
+function addFigureElt(figureElt, aElt) {
+    figureElt.style.textAlign = "center"
+    aElt.appendChild(figureElt);
 }
 
-function photographerImg(name, picture, img, figure) {
-    img.setAttribute("src", picture);
-    img.style.borderRadius = "50%";
-    img.setAttribute("alt", name);
-    figure.appendChild(img);
+function setPhotographerImg(name, picture, imgElt, figureElt) {
+    imgElt.setAttribute("src", picture);
+    imgElt.style.borderRadius = "50%";
+    imgElt.setAttribute("alt", name);
+    figureElt.appendChild(imgElt);
 }
 
-function photographerName(name, hName, figure) {
-    hName.style.margin = "15px 0 0 0";
-    hName.textContent = name;
-    hName.style.color = "#D3573C";
-    figure.appendChild(hName);
+function setPhotographerName(name, nameElt, figureElt) {
+    nameElt.style.margin = "15px 0 0 0";
+    nameElt.textContent = name;
+    nameElt.style.color = "#D3573C";
+    figureElt.appendChild(nameElt);
 }
 
-function figCaptionElement(figure, figCaption) {
-    figure.appendChild(figCaption);
+function addFigCaptionElt(figureElt, figCaptionElt) {
+    figureElt.appendChild(figCaptionElt);
 }
 
 // create h element that display photographer tagline
-function photographerCountry(city, country, hCountry, figCaption) {
-    hCountry.style.margin = "0 0";
-    hCountry.textContent = `${city}, ${country}`;
-    hCountry.style.color = "#D3573C";
-    figCaption.appendChild(hCountry);
+function setPhotographerCountry(city, country, countryElt, figCaptionElt) {
+    countryElt.style.margin = "0 0";
+    countryElt.textContent = `${city}, ${country}`;
+    countryElt.style.color = "#D3573C";
+    figCaptionElt.appendChild(countryElt);
 }
 
 // create p element that display photographer tabline
-function photographerTagline(tagline, pTagline, figCaption) {
-    pTagline.style.margin = "0 0";
-    pTagline.textContent = tagline;
-    pTagline.style.fontSize = "0.8rem";
-    pTagline.style.color = "#000";
-    figCaption.appendChild(pTagline);
+function setPhotographerTagline(tagline, taglineElt, figCaptionElt) {
+    taglineElt.style.margin = "0 0";
+    taglineElt.textContent = tagline;
+    taglineElt.style.fontSize = "0.8rem";
+    taglineElt.style.color = "#000";
+    figCaptionElt.appendChild(taglineElt);
 }
 
-function photographerPrice(price, pPrice, figCaption) {
-    pPrice.style.margin = "0 0";
-    pPrice.textContent = `${price}/jour`;
-    pPrice.style.fontSize = "0.8rem";
-    pPrice.style.color = "#000";
-    figCaption.appendChild(pPrice);
+function setPhotographerPrice(price, priceElt, figCaptionElt) {
+    priceElt.style.margin = "0 0";
+    priceElt.textContent = `${price}/jour`;
+    priceElt.style.fontSize = "0.8rem";
+    priceElt.style.color = "#000";
+    figCaptionElt.appendChild(priceElt);
 }
 
 // displaying photographers data
@@ -61,27 +61,27 @@ function photographerFactory(data) {
     const { id, name, portrait, city, country, tagline, price } = data;
     const picture = `assets/photographers/${portrait}`;
 
-    const article = document.createElement("article");
-    const a = document.createElement("a");
-    const figure = document.createElement("figure");
-    const img = document.createElement("img");
-    const hName = document.createElement("h2");
-    const figCaption = document.createElement("figCaption");
-    const hCountry = document.createElement("h3");
-    const pTagline = document.createElement("p");
-    const pPrice = document.createElement("p");
+    const articleElt = document.createElement("article");
+    const aElt = document.createElement("a");
+    const figureElt = document.createElement("figure");
+    const imgElt = document.createElement("img");
+    const nameElt = document.createElement("h2");
+    const figCaptionElt = document.createElement("figCaption");
+    const countryElt = document.createElement("h3");
+    const taglineElt = document.createElement("p");
+    const priceElt = document.createElement("p");
 
     function getUserCardDOM() {
-        linkElement(id, name, a, article);
-        figureElement(figure, a);
-        photographerImg(name, picture, img, figure);
-        photographerName(name, hName, figure);
-        figCaptionElement(figure, figCaption);
-        photographerCountry(city, country, hCountry, figCaption);
-        photographerTagline(tagline, pTagline, figCaption);
-        photographerPrice(price, pPrice, figCaption);
+        addLinkElt(id, name, aElt, articleElt);
+        addFigureElt(figureElt, aElt);
+        setPhotographerImg(name, picture, imgElt, figureElt);
+        setPhotographerName(name, nameElt, figureElt);
+        addFigCaptionElt(figureElt, figCaptionElt);
+        setPhotographerTagline(tagline, taglineElt, figCaptionElt);
+        setPhotographerCountry(city, country, countryElt, figCaptionElt);
+        setPhotographerPrice(price, priceElt, figCaptionElt);
     
-        return (article);
+        return (articleElt);
     }
 
     return { id, name, picture, city, country, price, getUserCardDOM }
