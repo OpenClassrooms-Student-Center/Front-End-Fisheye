@@ -4,39 +4,65 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" type="image/png" href="assets/favicon.png">
-    <link href="css/style.css" rel="stylesheet" type="text/css" />
+    <link rel="icon" type="image/png" href="./assets/favicon.png">
+    <link href="./stylesheets/css/style.css" rel="stylesheet" type="text/css" />
     <link href="https://fonts.googleapis.com/css?family=DM+Sans&display=swap" rel="stylesheet">
     <script src="https://kit.fontawesome.com/c498a47d8b.js" crossorigin="anonymous"></script>
     <title>Fisheye - photographe </title>
   </head>
   <body>
     <header>
-      <a class="logo" href="index.html">
-        <img src="assets/images/logo.png" class="logo" />
+      <a class="logo" href="./index.html">
+        <img src="./assets/images/logo.png" alt="Fisheye Home page" />
       </a>
     </header>
+
     <main id="main">
       <div class="photograph-header">
-        <button class="contact_button" onclick="displayModal()">Contactez-moi</button>
+        <button class="button contact_form" name="Contact me" onclick="displayModal()">
+          Contactez-moi
+        </button>
       </div>
+      <div id="medias_section"></div>
     </main>
-    <div id="contact_modal">
+
+    <div id="contact_modal" aria-hidden="true" role="dialog" aria-describedby="modalTitle">
 			<div class="modal">
 				<header>
-          <h2>Contactez-moi</h2>
-          <img src="assets/icons/close.svg" onclick="closeModal()" />
+          <h2 id="modalTitle">Contactez-moi</h2>
+          <button class="close_form" name="close form">
+            <img src="assets/icons/close.svg" class="close_form" alt="Close contact form" />
+          </button>
         </header>
-				<form>
-					<div>
-						<label>Prénom</label>
-						<input />
-					</div>
-          <button class="contact_button">Envoyer</button>
+
+        <form name="contact" id="form">
+
+          <div class="formData">
+            <label for="first">Prénom</label>
+            <input type="text" id="first" name="first name"/>
+          </div>
+
+          <div class="formData">
+            <label for="last">Nom</label>
+            <input type="text" id="last" name="last name"/>
+          </div>
+
+          <div class="formData">
+            <label for="email">E-mail</label>
+            <input type="email" id="email" name="email"/>
+          </div>
+
+          <div class="formData">
+            <label for="message">Votre message</label>
+            <textarea id="message" name="your message"></textarea>
+          </div>
+
+          <button class="button send_form" name="send">Envoyer</button>
 				</form>
 			</div>
 		</div>
-    <script src="/scripts/pages/photographer.js"></script>
-    <script src="/scripts/utils/contactForm.js"></script>
+
+    <script src="./scripts/pages/photographer.js"></script>
+    <script src="./scripts/utils/contactForm.js"></script>
   </body>
 </html>

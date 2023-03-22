@@ -1,6 +1,6 @@
 {
   "scripts": {
-    "sass": "sass --watch ./sass/main.scss:./css/style.css"
+    "sass": "sass --watch ./stylesheets/sass/main.scss:./stylesheets/css/style.css"
   },
   "dependencies": {
     "sass": "^1.59.3"
