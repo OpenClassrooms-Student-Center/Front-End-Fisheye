@@ -5,13 +5,13 @@ const mainElt = document.querySelector("main");
 const divMainElt = document.querySelector("main .photograph-header");
 const headerMainElt = document.createElement("header");
 const ulHeaderElt = document.createElement("ul");
-const liHeaderElt = document.createElement("li");
+const liContactElt = document.createElement("li");
+const liPhotographerDataElt = document.createElement("li");
+const liImgElt = document.createElement("li");
 const nameElt = document.createElement("p");
 const countryElt = document.createElement("p");
 const taglineElt = document.createElement("p");
-const liContactElt = document.createElement("li");
 const buttonElt = document.querySelector("button[class='contact_button']");
-const liImgElt = document.createElement("li");
 const imgElt = document.createElement("img");
 
 // header functions 
@@ -30,34 +30,34 @@ function addUlHeader(headerMainElt, ulHeaderElt) {
     headerMainElt.appendChild(ulHeaderElt);
 }
 
-function addLiHeader(liHeaderElt, ulHeaderElt) {
-    liHeaderElt.style.display = "block";
-    ulHeaderElt.appendChild(liHeaderElt);
+function addLiPhotographerData(liPhotographerDataElt, ulHeaderElt) {
+    liPhotographerDataElt.style.display = "block";
+    ulHeaderElt.appendChild(liPhotographerDataElt);
 }
 
 // displaying photographer name
-function setPhotographerName(nameElt, liHeaderElt, name) {
+function setPhotographerName(nameElt, liPhotographerDataElt, name) {
     nameElt.style.margin = "10px 0";
     nameElt.textContent = name;
     nameElt.style.fontSize = "2.4rem";
     nameElt.style.color = "#D3573C";
-    liHeaderElt.appendChild(nameElt);
+    liPhotographerDataElt.appendChild(nameElt);
 }
 
 // displaying photographer country
-function setPhotographerCountry(countryElt, liHeaderElt, city, country) {
+function setPhotographerCountry(countryElt, liPhotographerDataElt, city, country) {
     countryElt.style.margin = "10px 0";
     countryElt.style.color = "#D3573C";
     countryElt.style.fontSize = "1.2rem";
     countryElt.textContent = `${city}, ${country}`;
-    liHeaderElt.appendChild(countryElt);
+    liPhotographerDataElt.appendChild(countryElt);
 }
 
 // displaying photographer tagline
-function setPhotographerTagline(liHeaderElt, taglineElt, tagline) {
+function setPhotographerTagline(liPhotographerDataElt, taglineElt, tagline) {
     taglineElt.style.margin = "10px 0";
     taglineElt.textContent = tagline;
-    liHeaderElt.appendChild(taglineElt);
+    liPhotographerDataElt.appendChild(taglineElt);
 }
 
 function addContactButton(liContactElt, ulHeaderElt, buttonElt) {
@@ -68,12 +68,11 @@ function addContactButton(liContactElt, ulHeaderElt, buttonElt) {
 // displaying photographer image
 function setPhotographerImg(ulHeaderElt, liImgElt, imgElt, picture) {
     liImgElt.style.display = "block";
-    ulHeaderElt.appendChild(liImgElt);
     imgElt.setAttribute("src", picture);
     imgElt.style.width = "150px";
     imgElt.style.height = "150px";
     imgElt.style.borderRadius = "50%";
-    liImgElt.appendChild(imgElt);
+    ulHeaderElt.appendChild(liImgElt).appendChild(imgElt);
 }
 
 // displaying photographer data on header main
@@ -84,10 +83,10 @@ function photographerFactory(photographer) {
     divMainElt.replaceWith(headerMainElt);
     addAttributeToHeaderMain(headerMainElt);
     addUlHeader(headerMainElt, ulHeaderElt);
-    addLiHeader(liHeaderElt, ulHeaderElt);
-    setPhotographerName(nameElt, liHeaderElt, name);
-    setPhotographerCountry(countryElt, liHeaderElt, city, country);
-    setPhotographerTagline(liHeaderElt, taglineElt, tagline);
+    addLiPhotographerData(liPhotographerDataElt, ulHeaderElt);
+    setPhotographerName(nameElt, liPhotographerDataElt, name);
+    setPhotographerCountry(countryElt, liPhotographerDataElt, city, country);
+    setPhotographerTagline(liPhotographerDataElt, taglineElt, tagline);
     addContactButton(liContactElt, ulHeaderElt, buttonElt);
     setPhotographerImg(ulHeaderElt, liImgElt, imgElt, picture);
 }
@@ -95,21 +94,23 @@ function photographerFactory(photographer) {
 // media section functions 
 
 function addSectionMedia(section) {
-    section.style.margin = "60px 100px";
     section.setAttribute("id","media");
+    section.style.margin = "60px 100px";
+    section.style.maxWidth = "100%"
     mainElt.appendChild(section);
 }
 
 function addUlMedia(section, ulMediaElt) {
     ulMediaElt.style.padding = "0";
     ulMediaElt.style.display = "flex";
-    ulMediaElt.style.gap = "80px";
+    ulMediaElt.style.justifyContent = "space-between";
     ulMediaElt.style.flexWrap= "wrap";
     section.appendChild(ulMediaElt);
 }
 
 function addLiMedia(liMediaElt, ulMediaElt) {
     liMediaElt.style.display = "block";
+    liMediaElt.style.marginBottom = "30px";
     ulMediaElt.appendChild(liMediaElt);
 }
 
@@ -126,8 +127,8 @@ function addFigureMedia(figureMediaElt, linkMediaElt) {
 
 function setImgMedia(imgMediaElt, figureMediaElt, picture) {
     imgMediaElt.setAttribute("src", picture);
-    imgMediaElt.style.width = "300px";
-    imgMediaElt.style.height = "300px";
+    imgMediaElt.style.width = "360px";
+    imgMediaElt.style.height = "360px";
     imgMediaElt.style.borderRadius = "5px";
     figureMediaElt.appendChild(imgMediaElt);
 }

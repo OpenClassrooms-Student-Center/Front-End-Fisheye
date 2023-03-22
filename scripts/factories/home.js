@@ -5,6 +5,7 @@
 function addLinkElt(id, name, aElt, articleElt) {
     aElt.setAttribute("href","photographer.html?name=" + name + "&id=" + id);
     aElt.style.textDecoration = "none";
+    articleElt.style.width = "max-content";
     articleElt.appendChild(aElt);
 }
 
@@ -16,6 +17,7 @@ function addFigureElt(figureElt, aElt) {
 function setPhotographerImg(name, picture, imgElt, figureElt) {
     imgElt.setAttribute("src", picture);
     imgElt.style.borderRadius = "50%";
+    imgElt.style.objectFit = "cover";
     imgElt.setAttribute("alt", name);
     figureElt.appendChild(imgElt);
 }
@@ -77,8 +79,8 @@ function photographerFactory(data) {
         setPhotographerImg(name, picture, imgElt, figureElt);
         setPhotographerName(name, nameElt, figureElt);
         addFigCaptionElt(figureElt, figCaptionElt);
-        setPhotographerTagline(tagline, taglineElt, figCaptionElt);
         setPhotographerCountry(city, country, countryElt, figCaptionElt);
+        setPhotographerTagline(tagline, taglineElt, figCaptionElt);
         setPhotographerPrice(price, priceElt, figCaptionElt);
     
         return (articleElt);
