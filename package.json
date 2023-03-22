@@ -1,8 +1,6 @@
 {
   "scripts": {
-    "sass": "sass --watch ./sass/main.scss:./css/style.css",
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "lint": "eslint ."
+    "sass": "sass --watch ./sass/main.scss:./css/style.css"
   },
   "dependencies": {
     "sass": "^1.59.3"

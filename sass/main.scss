@@ -4,5 +4,10 @@
 
 @import "./base/base";
 
+@import "./components/buttons";
+
+@import "./layouts/lightbox";
+@import "./layouts/modal";
+
 @import "./pages/index";
 @import "./pages/photographer";
