@@ -1,0 +1,125 @@
+.contact_modal {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: $bg-modal;
+  overflow: auto;
+  transition: opacity .3s;
+  z-index: 2;
+}
+
+.fade-out {
+  opacity: 0;
+}
+
+.modal {
+  position: absolute;
+  top: 100px;
+  left: 50%;
+  transform: translate(-50%);
+
+  border-radius: 5px;
+  background-color: $bg-modal-color;
+  width: 550px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 35px;
+  margin: auto;
+
+
+  header {
+    justify-content: space-between;
+    width: 100%;
+    margin-top: 20px;
+    margin-bottom: 50px;
+    img {
+      cursor: pointer;
+      margin-top: 0px;
+    }
+    h2 {
+      font-size: 50px;
+      font-weight: normal;
+      line-height: 1.2;
+    }
+  }
+}
+
+.close_form {
+  margin-top: -50px;
+  height: 40px;
+  width: 40px;
+  background: transparent;
+  border: none;
+  padding: 0;
+  transition: .4s ease-in-out;
+  &:focus-visible{
+    outline: none;
+    transform: rotate(180deg);
+    opacity: 0.6;
+    transition: .4s ease-in-out;
+  }
+}
+
+form {
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  align-items: flex-start;
+
+  label {
+    color: $label-dark;
+    font-size: 28px;
+  }
+  div {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    align-items: self-start;
+    margin-bottom: 26px;
+  }
+  input {
+    @include form-input;
+    height: 60px;
+  }
+  textarea {
+    @include form-input;
+    height: 150px;
+    resize:none;
+  }
+  input:focus, textarea:focus, button:focus {
+    outline: 2px solid $primary-dark;
+  }
+  .formData[data-error]::after {
+    content: attr(data-error);
+    font-size: 15px;
+    font-weight: 700;
+    color: $inputData;
+    display: block;
+    margin-top: 10px;
+    margin-bottom: 0px;
+    text-align: left;
+    line-height: 0.3;
+  }
+  .formData[data-error-visible="true"] {
+    input, textarea{
+      border: 2px solid $b-inputData;
+      background: $bg-inputData;
+    }
+  }
+}
+
+@media only screen and (max-width: $mobile){
+  .modal {
+    width: 80%;
+  }
+  #modalTitle {
+    font-size: 30px;
+  }
+  .formData label {
+    font-size: 20px;
+  }
+}

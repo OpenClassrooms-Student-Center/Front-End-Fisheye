@@ -15,7 +15,7 @@ body {
 //   height: 90px;
 // }
 header {
-  @include flex-sc;
+  @include itemSpaceCenter;
   flex-direction: row;
   height: 90px;
 }

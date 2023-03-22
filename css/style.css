@@ -1,4 +1,4 @@
-@keyframes lightboxIn {
+@keyframes lightboxFrames {
   from {
     opacity: 0;
   }
@@ -37,6 +37,235 @@ a {
   height: 50px;
 }
 
+.button {
+  font-size: 20px;
+  font-weight: bold;
+  color: white;
+  padding: 11px;
+  width: 170px;
+  height: 70px;
+  border: none;
+  background: #901C1C;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background ease 0.2s;
+}
+.button:hover, .button:focus-visible {
+  background: #D3573C;
+  outline: none;
+  transition: background ease 0.2s;
+}
+
+.lightbox {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(100, 100, 100, 0.8);
+  overflow: auto;
+  z-index: 2;
+  animation: lightboxFrames 0.5s;
+  transition: opacity 0.3s;
+}
+
+.lightbox__prev {
+  border: none;
+  background: url(../assets/icons/arrow.svg) center center/16px 28px no-repeat;
+  width: 50px;
+  height: 75%;
+  position: absolute;
+  top: 15%;
+  cursor: pointer;
+  left: 0;
+  transform: rotate(180deg);
+}
+.lightbox__next {
+  border: none;
+  background: url(../assets/icons/arrow.svg) center center/16px 28px no-repeat;
+  width: 50px;
+  height: 75%;
+  position: absolute;
+  top: 15%;
+  cursor: pointer;
+  right: 0;
+}
+.lightbox__close {
+  width: 60px;
+  height: 60px;
+  cursor: pointer;
+  border: none;
+  background: url(../assets/icons/close.svg) center center/30px 30px no-repeat;
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  z-index: 3;
+}
+
+.lightbox button {
+  opacity: 1;
+  transition: opacity 0.3s;
+}
+.lightbox button:hover {
+  opacity: 0.5;
+}
+.lightbox button:focus {
+  border: 2px solid #D3573C;
+  opacity: 1;
+}
+
+.lightbox__container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-left: 50px;
+  margin-right: 50px;
+  min-height: 100vh;
+}
+.lightbox__container img, .lightbox__container video {
+  max-width: 100%;
+  max-height: 95vh;
+  animation: lightboxFrames 0.5s;
+}
+
+@media only screen and (max-width: 950px) {
+  .lightbox__prev {
+    transform: scale(2) rotate(180deg);
+  }
+  .lightbox__next {
+    transform: scale(2);
+  }
+  .lightbox__close {
+    transform: scale(2);
+    right: 10px;
+    top: 10px;
+  }
+}
+.contact_modal {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(100, 100, 100, 0.8);
+  overflow: auto;
+  transition: opacity 0.3s;
+  z-index: 2;
+}
+
+.fade-out {
+  opacity: 0;
+}
+
+.modal {
+  position: absolute;
+  top: 100px;
+  left: 50%;
+  transform: translate(-50%);
+  border-radius: 5px;
+  background-color: #DB8876;
+  width: 550px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 35px;
+  margin: auto;
+}
+.modal header {
+  justify-content: space-between;
+  width: 100%;
+  margin-top: 20px;
+  margin-bottom: 50px;
+}
+.modal header img {
+  cursor: pointer;
+  margin-top: 0px;
+}
+.modal header h2 {
+  font-size: 50px;
+  font-weight: normal;
+  line-height: 1.2;
+}
+
+.close_form {
+  margin-top: -50px;
+  height: 40px;
+  width: 40px;
+  background: transparent;
+  border: none;
+  padding: 0;
+  transition: 0.4s ease-in-out;
+}
+.close_form:focus-visible {
+  outline: none;
+  transform: rotate(180deg);
+  opacity: 0.6;
+  transition: 0.4s ease-in-out;
+}
+
+form {
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  align-items: flex-start;
+}
+form label {
+  color: #312E2E;
+  font-size: 28px;
+}
+form div {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  align-items: self-start;
+  margin-bottom: 26px;
+}
+form input {
+  width: 100%;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  height: 60px;
+}
+form textarea {
+  width: 100%;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  height: 150px;
+  resize: none;
+}
+form input:focus, form textarea:focus, form button:focus {
+  outline: 2px solid #901C1C;
+}
+form .formData[data-error]::after {
+  content: attr(data-error);
+  font-size: 15px;
+  font-weight: 700;
+  color: #c90519;
+  display: block;
+  margin-top: 10px;
+  margin-bottom: 0px;
+  text-align: left;
+  line-height: 0.3;
+}
+form .formData[data-error-visible=true] input, form .formData[data-error-visible=true] textarea {
+  border: 2px solid #e54858;
+  background: rgb(255, 220, 220);
+}
+
+@media only screen and (max-width: 950px) {
+  .modal {
+    width: 80%;
+  }
+  #modalTitle {
+    font-size: 30px;
+  }
+  .formData label {
+    font-size: 20px;
+  }
+}
 #photographer_section {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;

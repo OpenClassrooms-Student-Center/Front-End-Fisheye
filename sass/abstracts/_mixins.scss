@@ -1,22 +1,22 @@
-@mixin flex-cc{
+@mixin itemCenter{
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
-@mixin flex-sc{
+@mixin itemSpaceCenter{
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
 
-@mixin flex-sb{
+@mixin itemSpaceBaseline{
   display: flex;
   justify-content: space-between;
   align-items: baseline;
 }
 
-@mixin profil-picture {
+@mixin pictureProfil {
   height: 200px;
   width: 200px;
   border-radius: 50%;

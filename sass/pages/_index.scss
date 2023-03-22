@@ -6,7 +6,7 @@
   margin-top: 100px;
 }
 #photographer_section article, #photographer_section a {
-  @include flex-cc;
+  @include itemCenter;
   justify-self: center;
   flex-direction: column;
 
@@ -18,7 +18,7 @@
   }
 
   img {
-      @include profil-picture;
+      @include pictureProfil;
       transition: .2s;
   }
 
