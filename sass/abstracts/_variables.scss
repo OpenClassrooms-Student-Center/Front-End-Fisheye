@@ -1,9 +1,10 @@
-$color-primary-dark: #901C1C;
-$color-primary-light: #D3573C;
-$color-secondary-dark: #525252;
-$color-secondary-light: #fafafa;
+// Color
+$primary-dark: #901C1C;
+$primary-light: #D3573C;
+$secondary-dark: #525252;
+$secondary-light: #fafafa;
+$bg-modal: rgba(100, 100, 100, 0.8);
 
-$color-bg-modal: rgba(100, 100, 100, 0.8);
-
-$break-point-tablet: 1400px;
-$break-point-mobile: 950px;
+// Breakpoint
+$tablet: 1400px;
+$mobile: 950px;

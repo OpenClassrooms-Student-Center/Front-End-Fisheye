@@ -12,7 +12,7 @@
 
   h2 {
       margin: 15px auto 5px;
-      color: $color-primary-light;
+      color: $primary-light;
       font-weight: 400;
       font-size: 36px;
   }
@@ -23,12 +23,12 @@
   }
 
   .city {
-      color: $color-primary-dark;
+      color: $primary-dark;
       font-size: 18px;
   }
 
   .price {
-      color: $color-secondary-dark;
+      color: $secondary-dark;
   }
 }
 
@@ -44,12 +44,12 @@ article a:focus-visible {
 }
 
 // Media query
-@media screen and (max-width: $break-point-tablet){
+@media screen and (max-width: $tablet){
   #photographer_section {
       grid-template-columns: 1fr 1fr;
   }
 }
-@media screen and (max-width: $break-point-mobile){
+@media screen and (max-width: $mobile){
   .header__index{
       flex-direction: column;
       margin-top: 20px;

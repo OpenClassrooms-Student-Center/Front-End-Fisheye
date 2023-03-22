@@ -7,28 +7,24 @@ body {
 }
 
 // Header
+// header {
+//   display: flex;
+//   flex-direction: row;
+//   justify-content: space-between;
+//   align-items: center;
+//   height: 90px;
+// }
 header {
-  display: flex;
+  @include flex-sc;
   flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
   height: 90px;
 }
-// header {
-// @include flex-sc;
-// flex-direction: row;
-// height: 90px;
-// }
 
 // Title
 h1 {
-  color: #901C1C;
+  color: $primary-dark;
   margin-right: 100px;
 }
-// h1 {
-//   color: $color-primary-dark;
-//   margin-right: 100px;
-// }
 
 // Link
 a {
@@ -37,12 +33,8 @@ a {
 
 // Logo
 .logo {
-  height: 50px;
   margin-left: 100px;
+  img {
+      height: 50px;
+  }
 }
-// .logo {
-//   margin-left: 100px;
-//   img {
-//       height: 50px;
-//   }
-// }

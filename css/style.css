@@ -15,9 +15,9 @@ body {
 
 header {
   display: flex;
-  flex-direction: row;
   justify-content: space-between;
   align-items: center;
+  flex-direction: row;
   height: 90px;
 }
 
@@ -31,8 +31,10 @@ a {
 }
 
 .logo {
-  height: 50px;
   margin-left: 100px;
+}
+.logo img {
+  height: 50px;
 }
 
 #photographer_section {
