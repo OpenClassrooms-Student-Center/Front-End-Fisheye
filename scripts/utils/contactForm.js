@@ -1,77 +1,76 @@
 "use_strict";
 
 // DOM elements
-const form = document.querySelector("form");
+const formElt = document.querySelector("form");
+const modalElt = document.getElementById("contact_modal");
 
 // functions
-
 // create first field
-function firstField() {
-    const first = document.querySelector("form div:nth-child(1) input");
-    first.setAttribute("type","text");
-    first.setAttribute("name","first");
+function createFirstField() {
+    const firstElt = document.querySelector("form div:nth-child(1) input");
+    firstElt.setAttribute("type","text");
+    firstElt.setAttribute("name","first");
 }
 
 // create last field
-function lastField() {
-    const divLast = document.createElement("div");
-    const last = document.createElement("input");
-    const labelLast = document.createElement("label");
-    form.appendChild(divLast).appendChild(labelLast);
-    labelLast.append("Nom");
-    last.setAttribute("type","text");
-    last.setAttribute("name","last");
-    divLast.appendChild(last);
+function createLastField() {
+    const divLastElt = document.createElement("div");
+    const lastElt = document.createElement("input");
+    const labelLastElt = document.createElement("label");
+    formElt.appendChild(divLastElt).appendChild(labelLastElt);
+    labelLastElt.append("Nom");
+    lastElt.setAttribute("type","text");
+    lastElt.setAttribute("name","last");
+    divLastElt.appendChild(lastElt);
 }
 
 // create email field
-function emailField() {
-    const divEmail = document.createElement("div");
-    const email = document.createElement("input");
-    const labelEmail = document.createElement("label");
-    form.appendChild(divEmail).appendChild(labelEmail);
-    labelEmail.append("Email");
-    email.setAttribute("type","email");
-    email.setAttribute("name","email");
-    divEmail.appendChild(email);
+function createEmailField() {
+    const divEmailElt = document.createElement("div");
+    const emailElt = document.createElement("input");
+    const labelEmailElt = document.createElement("label");
+    formElt.appendChild(divEmailElt).appendChild(labelEmailElt);
+    labelEmailElt.append("Email");
+    emailElt.setAttribute("type","email");
+    emailElt.setAttribute("name","email");
+    divEmailElt.appendChild(emailElt);
 }
 
 // create message field
-function messageField() {
-    const divMessage = document.createElement("div");
-    const labelMessage = document.createElement("label");
-    const message = document.createElement("textarea");
-    form.appendChild(divMessage).appendChild(labelMessage);
-    labelMessage.append("Votre message");
-    message.setAttribute("name","message");
-    message.style.width = "100%";
-    message.style.height = "180px"
-    divMessage.appendChild(message);
+function createMessageField() {
+    const divMessageElt = document.createElement("div");
+    const labelMessageElt = document.createElement("label");
+    const messageElt = document.createElement("textarea");
+    formElt.appendChild(divMessageElt).appendChild(labelMessageElt);
+    labelMessageElt.append("Votre message");
+    messageElt.setAttribute("name","message");
+    messageElt.style.width = "100%";
+    messageElt.style.height = "180px"
+    divMessageElt.appendChild(messageElt);
 }
 
 // move button element to end of form
-function buttonElement() {
-    const lastDiv = document.querySelector("form div:last-child");
-    const sendButton = document.querySelector("form .contact_button");
-    lastDiv.after(sendButton);
+function moveSendButtonElt() {
+    const lastDivElt = document.querySelector("form div:last-child");
+    const sendButtonElt = document.querySelector("form .contact_button");
+    lastDivElt.after(sendButtonElt);
 }
 
 // open modal
 function displayModal() {
-    const modal = document.getElementById("contact_modal");
-	modal.style.display = "block";
+	modalElt.style.display = "block";
+    modalElt.style.position = "absolute";
+    modalElt.style.top = "60px";
+    modalElt.style.width = "100%";
 
-    firstField();
-    lastField();
-    emailField();
-    messageField();
-    buttonElement();
+    createFirstField();
+    createLastField();
+    createEmailField();
+    createMessageField();
+    moveSendButtonElt();
 }
 
 // close modal
 function closeModal() {
-    const modal = document.getElementById("contact_modal");
-    modal.style.display = "none";
+    modalElt.style.display = "none";
 }
-
-
