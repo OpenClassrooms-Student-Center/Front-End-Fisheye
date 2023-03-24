@@ -16,7 +16,7 @@ const imgElt = document.createElement("img");
 
 // header functions 
 function addAttributeToHeaderMain(headerMainElt) {
-    headerMainElt.setAttribute("class","photograph-header");
+    headerMainElt.className = "photograph-header";
 }
 
 // append ul element in header main
@@ -165,7 +165,7 @@ function setLikesMedia(spanLikeElt, figureLikeElt, likes) {
 }
 
 function addIconLikeMedia(figureLikeElt, iMediaElt) {
-    iMediaElt.setAttribute("class","fa-solid fa-heart");
+    iMediaElt.className = "fa-solid fa-heart";
     figureLikeElt.appendChild(iMediaElt);
 }
 
