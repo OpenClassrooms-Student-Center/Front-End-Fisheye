@@ -1,4 +1,5 @@
 // Récupérer l'id de l'url
+
 async function getPhotographerData() {
   const url = new URL(window.location.href);
   const id = url.searchParams.get("id");
@@ -41,7 +42,7 @@ async function getPhotographerData() {
       </div>
     </div>
     </figure>
-    <p class="banner"><span>${getLikes(
+    <p class="banner" tabindex="0"><span>${getLikes(
       id
     )}<i class="fas fa-heart"></i></span> ${photographer[0].price}€/jour</p>
   `;
@@ -84,7 +85,7 @@ async function getPhotographerData() {
 
   namedForm.innerHTML = `
   <h2>Contacter:</h2>
-  <button aria-label="fermer le formulaire" tabindex="0" onclick="closeModal()">X</button>
+  <button aria-label="fermer le formulaire" id="close" onclick="closeModal()">X</button>
   <h3>${photographer[0].name}</h3>
   `;
 }
