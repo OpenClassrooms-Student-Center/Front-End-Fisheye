@@ -20,11 +20,15 @@ async function getPhotographer() {
         return media.photographerId == id;
     });
 
+    const photographerPopularMedia = photographerMedia.sort(function(a,b) {
+        return b.likes - a.likes;
+    })
+
     const photographer = photographers.filter((photographer) => {
         return photographer.name == name;
     });
    
-    displayData(photographer, photographerMedia);
+    displayData(photographer, photographerPopularMedia);
 }
 
 async function displayData(photographer, photographerMedia) {
