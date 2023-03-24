@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="fr">
   <head>
     <link href="css/style.css" rel="stylesheet" type="text/css" />
     <meta charset="utf-8" />
@@ -7,18 +7,24 @@
     <link
       href="https://fonts.googleapis.com/css?family=DM+Sans&display=swap"
       rel="stylesheet"
-    />    
+    />
     <title>Fisheye - photographe</title>
   </head>
   <body>
     <header>
-    <a href="./index.html" title="retour à la page d'accueil"  tabindex="1" ><img src="assets/images/logo.png" class="logo" alt="Symbole de fisheye" aria-label="Cette image contient le nom fisheye, cliquer dessus pour revenir à la page d'accueil"/></a>
+      <a href="./index.html" title="retour à la page d'accueil" tabindex="1"
+        ><img
+          src="assets/images/logo.png"
+          class="logo"
+          alt="Symbole de fisheye"
+          aria-label="Cette image contient le nom fisheye, cliquer dessus pour revenir à la page d'accueil"
+      /></a>
     </header>
     <main id="main">
-      <article class="photograph-header">
-      </article>
+      <article class="photograph-header"></article>
       <article class="photograph-media">
-        <h1 class="filter-list">Trié par
+        <h1 class="filter-list">
+          Trié par
           <select>
             <option value="popularite">Popularité</option>
             <option value="date">Date</option>
@@ -28,21 +34,51 @@
       </article>
     </main>
     <div id="contact_modal">
-      <div class="modal">
+      <div class="modal" id="modal" tabindex="0" role="dialog" aria-hidden="true">
         <header class="contact_header">
-          
           <!-- add dynamic user name -->
         </header>
         <form type="submit">
           <div>
             <label for="prenom">Prénom</label>
-            <input name="prenom" id="prenom" autofocus="true" required type="text" placeholder="entrer son prénom"/>
+            <input
+              aria-describedby="champs pour le prenom"
+              placeholder="entrer son prénom"
+              aria-labelledby="prenom"
+              name="prenom"
+              id="prenom"
+              type="text"
+              required
+            />
             <label for="nom">Nom</label>
-            <input name="nom" id="nom"  type="text" required placeholder="entrer son nom"/>
+            <input
+              aria-describedby="champs pour le nom"
+              aria-labelledby="nom"
+              placeholder="entrer son nom"
+              type="text"
+              name="nom"
+              required
+              id="nom"
+            />
             <label for="email">Email</label>
-            <input name="email" id="email"  type="email" required placeholder="entrer son Email"/>
+            <input
+              aria-describedby="champs pour l'email"
+              placeholder="entrer son Email"
+              aria-labelledby="email"
+              name="email"
+              type="email"
+              id="email"
+              required
+            />
             <label for="message">Message</label>
-            <textarea name="message" id="message" placeholder="entrer son message"></textarea>
+            <textarea
+              aria-describedby="champs pour le message (optionel)"
+              placeholder="entrer son message"
+              aria-labelledby="message"
+              name="message"
+              id="message"
+              required
+            ></textarea>
           </div>
           <button class="contact_button">Envoyer</button>
         </form>
