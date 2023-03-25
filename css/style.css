@@ -43,6 +43,9 @@ h1 {
     text-align: center;
     color: black;
 }
+.photographer_section article a:focus-visible {
+    outline-color: #901C1C;
+}
 
 .photographer_section a h2 {
     color: #D3573C;
@@ -50,17 +53,17 @@ h1 {
     margin-bottom: 0;
 }
 
-.photographer_section a h3 {
+.photographer_section article h3 {
     color: #901C1C;
     font-size: 13px;
     margin-bottom: 0;
 }
-.photographer_section a p {
+.photographer_section article p {
     font-size: 12px;
     margin-bottom: 0;
 }
 
-.photographer_section a .price {
+.photographer_section article .price {
     font-size: 12px;
     color: #757575;
 }
