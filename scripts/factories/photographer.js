@@ -76,7 +76,7 @@ function setPhotographerImg(ulHeaderElt, liImgElt, imgElt, picture) {
 }
 
 // displaying photographer data on header main
-function photographerFactory(photographer) {
+function photographerContactFactory(photographer) {
     const [{ name, portrait, city, country, tagline }] = photographer;
     const picture = `assets/photographers/${portrait}`;
 

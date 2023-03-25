@@ -8,33 +8,40 @@ async function getPhotographers() {
     return photographers;
 }
 
-// get photographer
-async function getPhotographer() {
-    const { photographers, media } = await getPhotographers();
-    
-    const query = window.location.search;
+function getPhotographer(query, photographers) {
     const name = new URLSearchParams(query).get('name');
+
+    return photographers.filter((photographerByName) => { 
+        return photographerByName.name == name 
+    });
+}
+
+function getPhotographerPopularMedia(query, media) {
     const id = new URLSearchParams(query).get('id');
 
-    const photographerMedia = media.filter((media) => {
-        return media.photographerId == id;
+    return media.filter((media) => { 
+        return media.photographerId == id 
+    }).sort(function(a,b) { 
+        return b.likes - a.likes 
     });
-
-    const photographerPopularMedia = photographerMedia.sort(function(a,b) {
-        return b.likes - a.likes;
-    })
-
-    const photographer = photographers.filter((photographer) => {
-        return photographer.name == name;
-    });
-   
-    displayData(photographer, photographerPopularMedia);
 }
 
-async function displayData(photographer, photographerMedia) {
-    photographerFactory(photographer);
-    photographerMediaFactory(photographerMedia);
+async function displayData(photographer, photographerPopularMedia, photographerName) {
+    photographerContactFactory(photographer);
+    photographerMediaFactory(photographerPopularMedia);
+    photographerNameFactory(photographerName);
 }
 
-getPhotographer();
+// get photographerData
+async function getPhotographerData() {
+    const { photographers, media } = await getPhotographers();
+    const query = window.location.search;
+    const photographer = getPhotographer(query, photographers);
+    const photographerPopularMedia = getPhotographerPopularMedia(query, media);
+    const photographerName = getPhotographer(query, photographers);
+
+    displayData(photographer, photographerPopularMedia, photographerName);
+}
+
+getPhotographerData();
 

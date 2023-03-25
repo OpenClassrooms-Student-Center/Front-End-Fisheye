@@ -56,6 +56,25 @@ function moveSendButtonElt() {
     lastDivElt.after(sendButtonElt);
 }
 
+function photographerNameFactory(photographerName) {
+    const [{ name }] = photographerName;
+
+    const nameElt = document.createTextNode(" " + name);
+    const titleElt = document.querySelector("#contact_modal h2");
+    titleElt.style.textAlign = "left";
+    titleElt.appendChild(nameElt);
+}
+
+function editForm() {
+    formElt.style.marginTop = "50px";
+
+    createFirstField();
+    createLastField();
+    createEmailField();
+    createMessageField();
+    moveSendButtonElt();
+}
+
 // open modal
 function displayModal() {
 	modalElt.style.display = "block";
@@ -63,11 +82,7 @@ function displayModal() {
     modalElt.style.top = "60px";
     modalElt.style.width = "100%";
 
-    createFirstField();
-    createLastField();
-    createEmailField();
-    createMessageField();
-    moveSendButtonElt();
+    editForm();
 }
 
 // close modal
