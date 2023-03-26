@@ -5,6 +5,17 @@ const formElt = document.querySelector("form");
 const modalElt = document.getElementById("contact_modal");
 
 // functions
+
+function editModal() {
+    modalElt.style.position = "absolute";
+    modalElt.style.top = "60px";
+    modalElt.style.width = "100%";
+}
+
+function editForm() {
+    formElt.style.marginTop = "50px";
+}
+
 // create first field
 function createFirstField() {
     const firstElt = document.querySelector("form div:nth-child(1) input");
@@ -56,33 +67,30 @@ function moveSendButtonElt() {
     lastDivElt.after(sendButtonElt);
 }
 
-function photographerNameFactory(photographerName) {
+function photographerContactFormFactory(photographerName) {
     const [{ name }] = photographerName;
 
-    const nameElt = document.createTextNode(" " + name);
-    const titleElt = document.querySelector("#contact_modal h2");
-    titleElt.style.textAlign = "left";
-    titleElt.appendChild(nameElt);
-}
+    function getUserContactFormDOM() {
+        const titleFormElt = document.querySelector("#contact_modal h2");
+        titleFormElt.style.textAlign = "left";
+        const namePhotographerFormElt = document.createTextNode(" " + name);
+        titleFormElt.appendChild(namePhotographerFormElt);
 
-function editForm() {
-    formElt.style.marginTop = "50px";
+        editModal();
+        editForm();
+        createFirstField();
+        createLastField();
+        createEmailField();
+        createMessageField();
+        moveSendButtonElt();
+    }
 
-    createFirstField();
-    createLastField();
-    createEmailField();
-    createMessageField();
-    moveSendButtonElt();
+    return { getUserContactFormDOM }
 }
 
 // open modal
 function displayModal() {
 	modalElt.style.display = "block";
-    modalElt.style.position = "absolute";
-    modalElt.style.top = "60px";
-    modalElt.style.width = "100%";
-
-    editForm();
 }
 
 // close modal

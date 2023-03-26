@@ -26,10 +26,16 @@ function getPhotographerPopularMedia(query, media) {
     });
 }
 
-async function displayData(photographer, photographerPopularMedia, photographerName) {
+async function displayData(photographer, photographerPopularMedia) {
     photographerContactFactory(photographer);
     photographerMediaFactory(photographerPopularMedia);
-    photographerNameFactory(photographerName);
+}
+
+async function displayContactForm(photographerName) {
+    const photographerContactFormModel = photographerContactFormFactory(photographerName);
+    const contactFormDOM = photographerContactFormModel.getUserContactFormDOM();
+
+    return contactFormDOM;
 }
 
 // get photographerData
@@ -40,7 +46,8 @@ async function getPhotographerData() {
     const photographerPopularMedia = getPhotographerPopularMedia(query, media);
     const photographerName = getPhotographer(query, photographers);
 
-    displayData(photographer, photographerPopularMedia, photographerName);
+    displayData(photographer, photographerPopularMedia);
+    displayContactForm(photographerName);
 }
 
 getPhotographerData();
