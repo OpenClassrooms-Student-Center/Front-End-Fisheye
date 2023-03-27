@@ -3,7 +3,6 @@
 async function getPhotographerData() {
   const url = new URL(window.location.href);
   const id = url.searchParams.get("id");
-  console.log(id);
   const response = await fetch("../data/photographers.json");
   const data = await response.json();
   const photographer = data.photographers.filter(
@@ -24,9 +23,7 @@ async function getPhotographerData() {
     return likes;
   }
 
-  // Créer la carte du photographe
   const photographerCard = document.querySelector(".photograph-header");
-
   photographerCard.innerHTML = `
   <figure>
     <figcaption tabindex=${photographer[0].tabindex}>
@@ -76,6 +73,11 @@ async function getPhotographerData() {
     mediaCard.classList.add("cards");
     // ajouter un evenement au click nomé displayPhotos
     mediaCard.addEventListener("click", displayPhotos);
+    mediaCard.addEventListener("keyup", (e) => {
+      if (e.key === "Enter") {
+        displayPhotos(mediaCard.id);
+      }
+    });
     mediaCard.id = photographer.id;
     mediaCard.setAttribute("tabindex", "0");
     mediaCard.innerHTML = `
@@ -89,21 +91,87 @@ async function getPhotographerData() {
     // Ajouter la carte du média à la liste des médias
     mediaList.appendChild(mediaCard);
 
-    document.getElementById(mediaCard.id).addEventListener("click", () => {
-      console.log(mediaCard.id);
-      // recupérer le tableau des images
-    });
+    const carrousel = document.querySelector(".carrousel-media");
+    carrousel.innerHTML = "";
+    media.forEach((media) => {
 
-    // Ajouter un écouteur d'événement en pressant sur entrer
-    mediaCard.addEventListener("keydown", (e) => {
-      if (e.key === "Enter") {
-        console.log(mediaCard.id);
+      let mediaElement;
+      if (media.hasOwnProperty("video")) {
+        // Si le média contient une vidéo, créer une balise vidéo et y ajouter l'URL de la vidéo
+        mediaElement = document.createElement("video");
+        mediaElement.setAttribute(
+          "aria-label",
+          "video de " + media.title
+        );
+        mediaElement.classList.add("mediaElement");
+        mediaElement.src = `assets/videos/${media.video}`;
+        mediaElement.controls = true;
+      } else {
+        // Si le média ne contient pas de vidéo, créer une balise img et y ajouter l'URL de l'image
+        mediaElement = document.createElement("img");
+        mediaElement.classList.add("mediaElement");
+        mediaElement.setAttribute(
+          "aria-label",
+          "image de " + media.title
+        );
+        mediaElement.setAttribute("tabindex", "0");
+        mediaElement.src = `assets/photos/${media.image}`;
+        mediaElement.alt = media.title;
       }
+      const mediaCard = document.createElement("div");
+      mediaCard.classList.add("images");
+      mediaCard.id = media.id;
+
+      mediaCard.appendChild(mediaElement);
+      carrousel.appendChild(mediaCard);
+
+      // ajouter le titre du média à la carte du média
+      // const mediaTitle = document.createElement("h2");
+      // mediaTitle.innerHTML = media.title;
+      // mediaTitle.classList.add("mediaTitle");
+      // mediaCard.appendChild(mediaTitle);
     });
-  });
+  
 
+  // au click sur entrer ouvrir le carrousel
+  document.getElementById(mediaCard.id).addEventListener("keyup", (e) => {
+    if (e.key === "Enter") {
+      // afficher le tableau de média
+      const carrousel = document.querySelector(".carrousel-media");
+      carrousel.innerHTML = "";
+      media.forEach((media) => {
+        let mediaElement;
+        if (media.hasOwnProperty("video")) {
+          // Si le média contient une vidéo, créer une balise vidéo et y ajouter l'URL de la vidéo
+          mediaElement = document.createElement("video");
+          mediaElement.setAttribute("aria-label", "video de " + media.title);
+          mediaElement.classList.add("mediaElement");
+          mediaElement.src = `assets/videos/${media.video}`;
+          mediaElement.controls = true;
+        } else {
+          // Si le média ne contient pas de vidéo, créer une balise img et y ajouter l'URL de l'image
+          mediaElement = document.createElement("img");
+          mediaElement.classList.add("mediaElement");
+          mediaElement.setAttribute(
+            "aria-label",
+            "image de " + media.title
+          );
+          mediaElement.setAttribute("tabindex", "0");
+          mediaElement.src = `assets/photos/${media.image}`;
+          mediaElement.alt = media.title;
+        }
+        const mediaCard = document.createElement("div");
+        mediaCard.classList.add("images");
+        mediaCard.id = media.id;
+
+        mediaCard.appendChild(mediaElement);
+        carrousel.appendChild(mediaCard);
+      });
+    }
+  })
+});
+  
   const namedForm = document.querySelector(".contact_header");
-
   namedForm.innerHTML = `
   <h2>Contacter:</h2>
   <button aria-label="fermer le formulaire" id="close" onclick="closeModal()">X</button>
@@ -111,13 +179,16 @@ async function getPhotographerData() {
   `;
 }
 
+
 getPhotographerData();
 
-// au click sur le slider
+//au click sur le slider
 function previousImg() {
   console.log("previous");
   const slider = document.querySelector("#carrousel").offsetWidth;
   document.querySelector(".carrousel-media").scrollLeft -= slider;
+  // mediaTile should slide with the slider
+
 }
 
 function nextImg() {

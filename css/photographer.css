@@ -279,15 +279,15 @@ form textarea {
 
 #carrousel {
     display: none;
-    height: 800px;
-    width: 900px;
+    height: 700px;
+    width: 800px;
     position: relative;
     margin: auto;
     border: 1px solid black;
 }
 .carrousel-media {
     width: 90%;
-    height: 700px;
+    height: 600px;
     display: flex;
     overflow: hidden;
     flex-direction: row;
@@ -320,16 +320,16 @@ form textarea {
 } */
 
 .images {
-    flex-direction: row;
-    width: 100%;
+    flex-direction: column;
     height: 100%;
     object-fit: cover;
 }
-.images img {
-    width: 900px;
+.mediaElement {
+    width: 800px;
     object-fit: cover;
     box-sizing: border-box;
-    height: 900px;
+    height: 100%;
+    position: relative;
 }
 
 .left, .right {
@@ -340,11 +340,11 @@ form textarea {
     border: none;
 }
 
-#carrousel h1 {
-    position: absolute;
-    left: 20px;
-    bottom: 5px;
-}
+/* .mediaTitle {
+    position: relative;
+    bottom: -20px;
+  
+} */
 
 .close-button {
     position: absolute;
