@@ -45,6 +45,9 @@ function displayModal() {
         // mettre le focus sur l'élément suivant ou précédent
         focusableElements[nextIndex].focus();
       }
+      if (event.key === "Escape") {
+        closeModal();
+      }
     });
   }
 }
@@ -66,7 +69,8 @@ function closeModal() {
   hiddeBanner();
 }
 
-function hiddeBanner() {
+// cacher la bannière fixe
+function hiddeBanner() { 
   if (isOpen) {
     const banner = document.querySelector(".banner");
     banner.style.display = "none";
@@ -77,7 +81,6 @@ function hiddeBanner() {
 }
 
 // recupérer la valeur entrée dans chaque input du formulaire et faire un console.log au moment du submit
-
 const form = document.querySelector("form");
 
 form.addEventListener("submit", (e) => {
@@ -96,3 +99,4 @@ form.addEventListener("submit", (e) => {
     console.log(error);
   }
 });
+
