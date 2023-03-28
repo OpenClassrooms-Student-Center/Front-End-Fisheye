@@ -2,33 +2,15 @@
 
 // header main elements
 const mainElt = document.querySelector("main");
-const divMainElt = document.querySelector("main .photograph-header");
-const headerMainElt = document.createElement("header");
-const ulHeaderElt = document.createElement("ul");
-const liContactElt = document.createElement("li");
+const ulHeaderElt = document.querySelector(".photograph-header ul");
 const liPhotographerDataElt = document.createElement("li");
+const liContactElt = document.createElement("li");
 const liImgElt = document.createElement("li");
 const nameElt = document.createElement("p");
 const countryElt = document.createElement("p");
 const taglineElt = document.createElement("p");
 const buttonElt = document.querySelector("button[class='contact_button']");
 const imgElt = document.createElement("img");
-
-// header functions 
-function addAttributeToHeaderMain(headerMainElt) {
-    headerMainElt.className = "photograph-header";
-}
-
-// append ul element in header main
-function addUlHeader(headerMainElt, ulHeaderElt) {
-    ulHeaderElt.style.margin = "0";
-    ulHeaderElt.style.padding = "0 40px";
-    ulHeaderElt.style.display = "flex";
-    ulHeaderElt.style.width = "100%";
-    ulHeaderElt.style.justifyContent = "space-between";
-    ulHeaderElt.style.alignItems = "center";
-    headerMainElt.appendChild(ulHeaderElt);
-}
 
 function addLiPhotographerData(liPhotographerDataElt, ulHeaderElt) {
     liPhotographerDataElt.style.display = "block";
@@ -80,9 +62,6 @@ function photographerContactFactory(photographer) {
     const [{ name, portrait, city, country, tagline }] = photographer;
     const picture = `assets/photographers/${portrait}`;
 
-    divMainElt.replaceWith(headerMainElt);
-    addAttributeToHeaderMain(headerMainElt);
-    addUlHeader(headerMainElt, ulHeaderElt);
     addLiPhotographerData(liPhotographerDataElt, ulHeaderElt);
     setPhotographerName(nameElt, liPhotographerDataElt, name);
     setPhotographerCountry(countryElt, liPhotographerDataElt, city, country);
@@ -174,7 +153,6 @@ function photographerMediaFactory(photographerMedia) {
 
     const sectionElt = document.createElement("section");
     const ulMediaElt = document.createElement("ul");
-
     addSectionMedia(sectionElt);
     addUlMedia(sectionElt, ulMediaElt);
 
