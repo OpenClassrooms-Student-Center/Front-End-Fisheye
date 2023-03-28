@@ -86,5 +86,5 @@ function photographerFactory(data) {
         return (articleElt);
     }
 
-    return { id, name, picture, city, country, price, getUserCardDOM }
+    return { getUserCardDOM }
 }

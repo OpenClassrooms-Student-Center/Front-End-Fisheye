@@ -72,21 +72,6 @@ function photographerContactFactory(photographer) {
 
 // media section functions 
 
-function addSectionMedia(section) {
-    section.setAttribute("id","media");
-    section.style.margin = "60px 100px";
-    section.style.maxWidth = "100%"
-    mainElt.appendChild(section);
-}
-
-function addUlMedia(section, ulMediaElt) {
-    ulMediaElt.style.padding = "0";
-    ulMediaElt.style.display = "flex";
-    ulMediaElt.style.justifyContent = "space-between";
-    ulMediaElt.style.flexWrap= "wrap";
-    section.appendChild(ulMediaElt);
-}
-
 function addLiMedia(liMediaElt, ulMediaElt) {
     liMediaElt.style.display = "block";
     liMediaElt.style.marginBottom = "30px";
@@ -150,11 +135,7 @@ function addIconLikeMedia(figureLikeElt, iMediaElt) {
 
 // displaying photographerMedia data on section main
 function photographerMediaFactory(photographerMedia) {
-
-    const sectionElt = document.createElement("section");
-    const ulMediaElt = document.createElement("ul");
-    addSectionMedia(sectionElt);
-    addUlMedia(sectionElt, ulMediaElt);
+    const ulMediaElt = document.querySelector("#media ul");
 
     photographerMedia.forEach(media => {
         const { title, image, likes, date, price } = media;

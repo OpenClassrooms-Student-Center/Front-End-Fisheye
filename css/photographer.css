@@ -33,6 +33,17 @@
     cursor: pointer;
 }
 
+#media {
+    margin: 60px 100px;
+}
+
+#media ul {
+    padding: 0;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
 .modal {
     border-radius: 5px;
     background-color: #DB8876;
