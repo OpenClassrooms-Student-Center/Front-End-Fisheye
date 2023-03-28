@@ -368,3 +368,19 @@ form textarea {
     display: block;
 } 
 
+.likes {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    color: #901C1C;
+    align-items: center;
+    width: 70px;
+    text-align: center;
+    border: none;
+    background-color: transparent;
+}
+
+.likes:hover {
+    color: white ;
+    background-color: #d3573c;
+}
