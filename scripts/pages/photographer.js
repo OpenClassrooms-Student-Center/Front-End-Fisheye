@@ -31,8 +31,8 @@ async function displayData(photographer, photographerPopularMedia) {
     photographerMediaFactory(photographerPopularMedia);
 }
 
-async function displayContactForm(photographerName) {
-    const photographerContactFormModel = photographerContactFormFactory(photographerName);
+async function displayContactForm(photographer) {
+    const photographerContactFormModel = photographerContactFormFactory(photographer);
     const contactFormDOM = photographerContactFormModel.getUserContactFormDOM();
 
     return contactFormDOM;
@@ -44,10 +44,9 @@ async function getPhotographerData() {
     const query = window.location.search;
     const photographer = getPhotographer(query, photographers);
     const photographerPopularMedia = getPhotographerPopularMedia(query, media);
-    const photographerName = getPhotographer(query, photographers);
 
     displayData(photographer, photographerPopularMedia);
-    displayContactForm(photographerName);
+    displayContactForm(photographer);
 }
 
 getPhotographerData();

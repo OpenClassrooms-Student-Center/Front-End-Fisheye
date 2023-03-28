@@ -26,7 +26,19 @@
 				<form method="get">
 					<div>
 						<label>Prénom</label>
-						<input />
+						<input type="text" name="first"/>
+					</div>
+          <div>
+						<label>Nom</label>
+						<input type="text" name="last"/>
+					</div>
+          <div>
+						<label>Email</label>
+						<input type="email" name="email"/>
+					</div>
+          <div>
+						<label>Message</label>
+						<textarea name="message"></textarea>
 					</div>
           <button class="contact_button" onclick="return displayUserDataInConsole();">Envoyer</button>
 				</form>
