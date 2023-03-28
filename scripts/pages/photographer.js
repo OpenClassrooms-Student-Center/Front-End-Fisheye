@@ -1,13 +1,15 @@
-// Récupérer l'id de l'url
-
+//Récupérer l'id de l'url
 async function getPhotographerData() {
+
   const url = new URL(window.location.href);
   const id = url.searchParams.get("id");
+
   const response = await fetch("../data/photographers.json");
   const data = await response.json();
   const photographer = data.photographers.filter(
     (photographer) => photographer.id == id
   );
+
   const responseMedia = await fetch("../data/photographers.json");
   const dataMedia = await responseMedia.json();
   const media = dataMedia.media.filter((media) => media.photographerId == id);
@@ -46,7 +48,7 @@ async function getPhotographerData() {
     </figure>
     <p class="banner" tabindex="0"><span>${getLikes(
       id
-    )}<i class="fas fa-heart"></i></span> ${photographer[0].price}€/jour</p>
+    )}<i class="fas fa-heart" aria-label=" fois liké">  </i></span> ${photographer[0].price}€/jour</p>
   `;
 
   // Créer la liste des photos du photographe en créeant un élément html div
@@ -71,11 +73,10 @@ async function getPhotographerData() {
     // Créer un élément div pour chaque média et y ajouter le mediaElement et les autres éléments
     const mediaCard = document.createElement("div");
     mediaCard.classList.add("cards");
-    // ajouter un evenement au click nomé displayPhotos
-    mediaCard.addEventListener("click", displayPhotos);
+    mediaCard.addEventListener("click", displaySlider);
     mediaCard.addEventListener("keyup", (e) => {
       if (e.key === "Enter") {
-        displayPhotos(mediaCard.id);
+        displaySlider(mediaCard.id);
       }
     });
     mediaCard.id = photographer.id;
@@ -122,16 +123,20 @@ async function getPhotographerData() {
       mediaCard.classList.add("images");
       mediaCard.id = media.id;
 
-      mediaCard.appendChild(mediaElement);
+      const imageContainer = document.createElement("div");
+      imageContainer.classList.add("imageContainer");
+
+      mediaCard.appendChild(imageContainer);
       carrousel.appendChild(mediaCard);
 
-      // ajouter le titre du média à la carte du média
-      // const mediaTitle = document.createElement("h2");
-      // mediaTitle.innerHTML = media.title;
-      // mediaTitle.classList.add("mediaTitle");
-      // mediaCard.appendChild(mediaTitle);
-    });
-  
+      imageContainer.appendChild(mediaElement);
+
+      //ajouter le titre du média à la carte du média
+      const mediaTitle = document.createElement("h2");
+      mediaTitle.innerHTML = media.title;
+      mediaTitle.classList.add("mediaTitle");
+      mediaCard.appendChild(mediaTitle);
+  });
 
   // au click sur entrer ouvrir le carrousel
   document.getElementById(mediaCard.id).addEventListener("keyup", (e) => {
@@ -146,12 +151,15 @@ async function getPhotographerData() {
           mediaElement = document.createElement("video");
           mediaElement.setAttribute("aria-label", "video de " + media.title);
           mediaElement.classList.add("mediaElement");
+          // add a size to the video to avoid the video to be bigger than the screen
+          mediaElement.width = 720;
           mediaElement.src = `assets/videos/${media.video}`;
           mediaElement.controls = true;
         } else {
           // Si le média ne contient pas de vidéo, créer une balise img et y ajouter l'URL de l'image
           mediaElement = document.createElement("img");
           mediaElement.classList.add("mediaElement");
+          mediaElement.width = 720;
           mediaElement.setAttribute(
             "aria-label",
             "image de " + media.title
@@ -179,28 +187,22 @@ async function getPhotographerData() {
   `;
 }
 
-
 getPhotographerData();
 
 //au click sur le slider
 function previousImg() {
   console.log("previous");
-  const slider = document.querySelector("#carrousel").offsetWidth;
-  document.querySelector(".carrousel-media").scrollLeft -= slider;
-  // mediaTile should slide with the slider
-
+  const slider = document.querySelector("#carrousel").width = 720;
+  document.querySelector(".carrousel-media").scrollLeft -= slider;    
 }
 
 function nextImg() {
-  const slider = document.querySelector("#carrousel").offsetWidth;
+  const slider = document.querySelector("#carrousel").width = 720;
   console.log("next");
   document.querySelector(".carrousel-media").scrollLeft += slider;
-
-  const itemsSlider = document.querySelectorAll(".carrousel-media img");
-  console.log(itemsSlider.length);
 }
 
-function displayPhotos() {
+function displaySlider() {
   const container = document.querySelector("#carrousel");
   container.style.display = "block";
   // add aria-hidden to false to the modal
@@ -209,10 +211,13 @@ function displayPhotos() {
   photograph.style.display = "none";
 }
 
-function closeImgModal() {
+function closeSliderModal(event) {
   const container = document.querySelector("#carrousel");
   container.style.display = "none";
   container.setAttribute("aria-hidden", "true");
   const photograph = document.querySelector("#photographer-main");
   photograph.style.display = "block";
 }
+
+
+

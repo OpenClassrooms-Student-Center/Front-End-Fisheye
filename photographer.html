@@ -34,16 +34,14 @@
       </article>
     </main>
     <main id="carrousel" aria-hidden="true">
-      <button onclick="closeImgModal()" class="close-button" aria-label="fermer le groupe images">X</button>
+      <button onclick="closeSliderModal()" class="close-button" aria-label="fermer le groupe images">X</button>
         <div class="carrousel-media">
 
-            <!-- add images here-->
-            
-         
+            <!-- add images here-->       
         </div>
         <div class="carrousel-media-icon">
-              <button onclick="previousImg()" class="left"><i  class="fas fa-chevron-left"></i></button>
-              <button onclick="nextImg()" class="right"><i class="fas fa-chevron-right"></i></button>
+              <button onclick="previousImg()" aria-label="Cliquer pour défiler vers la gauche" class="left"><i  class="fas fa-chevron-left" ></i></button>
+              <button onclick="nextImg()" aria-label="Cliquer pour défiler vers la droite" class="right"><i class="fas fa-chevron-right"></i></button>
         </div>
     </main>
     <div id="contact_modal">

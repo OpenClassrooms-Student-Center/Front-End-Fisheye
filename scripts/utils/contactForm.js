@@ -11,9 +11,6 @@ function displayModal() {
   for (let i = 0; i < modalChildren.length; i++) {
     modalChildren[i].setAttribute("tabindex", "0");
   }
-
-  
-
   if (isOpen) {
     modal.style.display = "block";
     page.setAttribute("aria-hidden", "true");
