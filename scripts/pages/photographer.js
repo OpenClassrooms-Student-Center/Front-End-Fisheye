@@ -13,11 +13,9 @@ async function getPhotographer() {
 async function displayHeader(photographer) {
     // console.log(photographer)
     const photographerHeader = document.querySelector('.photograph-header');
-    const photographerModel = photographerFactory(photographer);
+    const photographerModel = photographerFactory(photographer[0]);
     const photographerHeaderDOM = photographerModel.getPhotographerHeaderDOM();
-    photographerHeader.appendChild(photographerHeaderDOM);  
-    
-    console.log(photographerModel)
+    photographerHeader.appendChild(photographerHeaderDOM);
 };
 
 async function init() {

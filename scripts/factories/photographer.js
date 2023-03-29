@@ -1,4 +1,5 @@
 function photographerFactory(data) {
+
     const { name, portrait, city, country, tagline, price, id } = data;
     const picture = `assets/images/Photographers/${portrait}`
 
@@ -53,6 +54,7 @@ function photographerFactory(data) {
         <h1>${name}</h1>
         <h3>${city} ${country}</h3>
         <p>${tagline}</p>
+        <img src="${picture}" alt="${name}"></img>
         `
         
         return divHeader
