@@ -56,9 +56,9 @@ function validateLastName() {
     const removeErrorMessage = document.querySelector("form div:nth-child(3) span");
     
     if (!lastNameElt.value.match(/^[a-z]{2,}$/i)) {
-        const divLastElt = document.querySelector("form div:nth-child(2)");
+        const divLastElt = document.querySelector("form div:nth-child(3)");
         const errorMessage = "Nom obligatoire avec au minimum 2 lettres";
-        const spanErrorMessage = document.querySelectorAll("form div:nth-child(2) span");
+        const spanErrorMessage = document.querySelectorAll("form div:nth-child(3) span");
         
         createErrorMessage(divLastElt, errorMessage, spanErrorMessage);
 
