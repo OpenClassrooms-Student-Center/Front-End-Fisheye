@@ -78,23 +78,23 @@ function addLiMedia(liMediaElt, ulMediaElt) {
     ulMediaElt.appendChild(liMediaElt);
 }
 
-function addLinkMedia(liMediaElt, linkMediaElt) {
+function addFigureMedia(figureMediaElt, liMediaElt) {
+    figureMediaElt.style.margin = "0";
+    liMediaElt.appendChild(figureMediaElt);
+}
+
+function addLinkMedia(figureMediaElt, linkMediaElt) {
     linkMediaElt.setAttribute("href","#");
     linkMediaElt.style.textDecoration = "none";
-    liMediaElt.appendChild(linkMediaElt);
+    figureMediaElt.appendChild(linkMediaElt);
 }
 
-function addFigureMedia(figureMediaElt, linkMediaElt) {
-    figureMediaElt.style.margin = "0";
-    linkMediaElt.appendChild(figureMediaElt);
-}
-
-function setImgMedia(imgMediaElt, figureMediaElt, picture) {
+function setImgMedia(imgMediaElt, linkMediaElt, picture) {
     imgMediaElt.setAttribute("src", picture);
     imgMediaElt.style.width = "360px";
     imgMediaElt.style.height = "360px";
     imgMediaElt.style.borderRadius = "5px";
-    figureMediaElt.appendChild(imgMediaElt);
+    linkMediaElt.appendChild(imgMediaElt);
 }
 
 function addFigcaptionMedia(figCaptionMediaElt, figureMediaElt) {
@@ -130,6 +130,7 @@ function setLikesMedia(spanLikeElt, figureLikeElt, likes) {
 
 function addIconLikeMedia(figureLikeElt, iMediaElt) {
     iMediaElt.className = "fa-solid fa-heart";
+    iMediaElt.style.cursor = "pointer";
     figureLikeElt.appendChild(iMediaElt);
 }
 
@@ -143,8 +144,8 @@ function photographerMediaFactory(photographerMedia) {
 
         // section main elements
         const liMediaElt = document.createElement("li");
-        const linkMediaElt = document.createElement("a");
         const figureMediaElt = document.createElement("figure");
+        const linkMediaElt = document.createElement("a");
         const imgMediaElt = document.createElement("img");
         const figCaptionMediaElt = document.createElement("figcaption");
         const figcaptionHeaderElt = document.createElement("header");
@@ -154,9 +155,9 @@ function photographerMediaFactory(photographerMedia) {
         const iMediaElt = document.createElement("i");
 
         addLiMedia(liMediaElt, ulMediaElt);
-        addLinkMedia(liMediaElt, linkMediaElt);
-        addFigureMedia(figureMediaElt, linkMediaElt);
-        setImgMedia(imgMediaElt, figureMediaElt, picture);
+        addFigureMedia(figureMediaElt, liMediaElt);
+        addLinkMedia(figureMediaElt, linkMediaElt);
+        setImgMedia(imgMediaElt, linkMediaElt, picture);
         addFigcaptionMedia(figCaptionMediaElt, figureMediaElt);
         addFigcaptionHeaderMedia(figcaptionHeaderElt, figCaptionMediaElt);
         setTitleMedia(title, titleElt, figcaptionHeaderElt);
@@ -165,3 +166,9 @@ function photographerMediaFactory(photographerMedia) {
         addIconLikeMedia(figureLikeElt, iMediaElt);
     });
 }
+
+
+
+
+
+
