@@ -47,7 +47,7 @@
 .modal {
     border-radius: 5px;
     background-color: #DB8876;
-    width: 50%;
+    width: 60%;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -59,6 +59,7 @@
 .modal header {
     justify-content: space-between;
     width: 100%;
+    height: auto;
 }
 
 .modal header img {
@@ -66,6 +67,7 @@
 }
 
 .modal header h2 {
+    margin: 0;
     font-size: 64px;
     font-weight: normal;
     text-align: center;
@@ -73,7 +75,6 @@
 
 form {
     display: flex;
-    margin-top: 50px;
     width: 100%;
     flex-direction: column;
     align-items: flex-start;
@@ -90,6 +91,10 @@ form div {
     width: 100%;
     align-items: self-start;
     margin-bottom: 26px;
+}
+
+form div:nth-child(1) {
+    text-align: center;
 }
 
 form input {
