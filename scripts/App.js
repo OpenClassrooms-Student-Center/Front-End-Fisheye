@@ -1,22 +1,20 @@
 // Je crée une classe qui sera mon point d'éntrée de l'application 
-
 class App {
     constructor() {
         this.photographArticle = document.querySelector('.photographer_section');
         //j'instancie ma classe GetPhotographers 
-        this.getPhotographers = new GetPhotographers('./data/photographers.json');
+        this.getPhotographers = new GetPhotographers('/data/photographers.json');
     }
-
+    
     async init() {
-        const photographers = await this.getPhotographers.getPhotograph();
+        const photographersData = await this.getPhotographers.getPhotograph();
 
-        photographers.forEach(photographer => {
+        photographersData.forEach(photographer => {
             //j'instancie mon objet PhotographersCard
-            const Template = new PhotographersCard(photographer)
+            const Template = new PhotographersCard(photographer);
             this.photographArticle.appendChild(Template.createPhotographerCard())
         });
     }
 }
-
 const app = new App();
 app.init();

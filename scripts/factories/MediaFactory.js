@@ -1,10 +1,10 @@
 
 class typeMediaFactory {
-    constructor(data, type) {
+    constructor(media, type) {
         if(type === "image"){
-            return data.image;
+            return media.image;
         } else if(type === "video") {
-            return data.video;
+            return media.video;
         } else {
             return "Unknow format type !"
         }

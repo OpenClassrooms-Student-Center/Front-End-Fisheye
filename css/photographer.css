@@ -4,21 +4,46 @@
 
 .photograph-header {
     background-color: #FAFAFA;
-    height: 300px;
+    height: 200px;
     margin: 0 100px;
 }
-
+.cardPhotographer {
+    display: flex;
+    justify-content: space-around; 
+}
+.cardPhotographer__infos {
+    margin: 20px 0;
+}
+.cardPhotographer__infos > h2{
+    color: #D3573C;
+    font-size: 30px;
+    margin-bottom: 10px;
+}
+.cardPhotographer__infos > h3{
+    color: #901C1C;
+    font-size: 15px;
+    margin: 0;
+}
+.cardPhotographer > img {
+    height: 150px;
+    width: 150px;
+    object-fit: cover;
+    border-radius: 50%;
+    overflow: hidden;
+    margin: 25px 0;
+}
 .contact_button {
-    font-size: 20px;
+    font-size: 18px;
     font-weight: bold;
     color: white;
-    padding: 11px;
-    width: 170px;
-    height: 70px;
+    padding: 10px;
+    width: 145px;
+    height: 60px;
     border: none;
     background-color: #901C1C;
     border-radius: 5px;
     cursor: pointer;
+    margin: 60px 0;
 }
 
 .modal {

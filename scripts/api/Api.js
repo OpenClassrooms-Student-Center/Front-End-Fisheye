@@ -7,10 +7,16 @@ class Api {
         this._url = url
     }
 
-    async get() {
+    async getData() {
         return fetch(this._url)
         .then(res => res.json())
         .then(res => res.photographers)
+        .catch(err => console.log('Erreur de chargement du fichier', err));
+    }
+    async getMedia() {
+        return fetch(this._url)
+        .then(res => res.json())
+        .then(res => res.media)
         .catch(err => console.log('Erreur de chargement du fichier', err));
     }
 }
@@ -26,6 +32,10 @@ class GetPhotographers extends Api {
     }
 
     async getPhotograph() {
-        return await this.get()
+        return await this.getData()
+    }
+    
+    async getMedias() {
+        return await this.getMedia()
     }
 }
