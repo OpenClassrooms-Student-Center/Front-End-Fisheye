@@ -6,6 +6,53 @@
     background-color: #FAFAFA;
     height: 300px;
     margin: 0 100px;
+    display: flex;
+    flex-direction: row;
+}
+
+.headerMain {
+    display: flex;
+    flex-direction: row;
+    flex-grow: 1;
+}
+.colOne, .colTwo, .colThree {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    flex-grow: 1;
+    padding: 0 2rem;
+}
+
+.photograph-header .headerName {
+    color: #D3573C;
+    font-size: 64px;
+    font-weight: 400;
+    margin: 0;
+}
+
+.photograph-header .headerLocation {
+    color: #901C1C;
+    font-size: 24px;
+    font-weight: 400;
+    margin: 0;
+}
+
+.photograph-header .headerTagline {
+    font-size: 18px;
+    font-weight: 400;
+    color: #525252;
+}
+
+.colOne {
+    align-items: start !important;
+}
+
+.colThree img {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    object-fit: cover;
 }
 
 .contact_button {

@@ -49,12 +49,20 @@ function photographerFactory(data) {
 
     function getPhotographerHeaderDOM() {
         const divHeader = document.createElement('div')
-
+        divHeader.className = "headerMain"
+        
         divHeader.innerHTML = `
-        <h1>${name}</h1>
-        <h3>${city} ${country}</h3>
-        <p>${tagline}</p>
-        <img src="${picture}" alt="${name}"></img>
+        <div class="colOne">
+            <h1 class="headerName">${name}</h1>
+            <h3 class="headerLocation">${city}, ${country}</h3>
+            <p class="headerTagline">${tagline}</p>
+        </div>
+        <div class="colTwo">
+            <button class="contact_button" onclick="displayModal()">Contactez-moi</button>
+        </div>
+        <div class="colThree">
+            <img class="headerPicture" src="${picture}" alt="${name}"></img>
+        </div>
         `
         
         return divHeader
