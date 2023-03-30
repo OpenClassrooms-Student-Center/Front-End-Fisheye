@@ -47,6 +47,7 @@ function photographerFactory(data) {
         return article
     }
 
+    // add Header infos for Photographer's single page
     function getPhotographerHeaderDOM() {
         const divHeader = document.createElement('div')
         divHeader.className = "headerMain"
@@ -64,7 +65,6 @@ function photographerFactory(data) {
             <img class="headerPicture" src="${picture}" alt="${name}"></img>
         </div>
         `
-        
         return divHeader
     }
 
