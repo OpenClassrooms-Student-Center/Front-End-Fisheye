@@ -136,7 +136,7 @@ function addIconLikeMedia(figureLikeElt, iMediaElt) {
 
 // displaying photographerMedia data on section main
 function photographerMediaFactory(photographerMedia) {
-    const ulMediaElt = document.querySelector("#media ul");
+    const ulMediaElt = document.querySelector(".media ul");
 
     photographerMedia.forEach(media => {
         const { title, image, likes, date, price } = media;

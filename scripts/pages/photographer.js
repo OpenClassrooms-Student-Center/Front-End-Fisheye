@@ -1,4 +1,5 @@
 "use_strict";
+const selectDivElt = document.querySelector(".selectdiv");
 
 // get photographers
 async function getPhotographers() {
@@ -49,5 +50,20 @@ async function getPhotographerData() {
     displayContactForm(photographer);
 }
 
+function turnChevronDropdownList() {
+    let direction = false;
+
+    selectDivElt.addEventListener("click", () => {
+        if (direction == false) {
+            selectDivElt.style.setProperty('--selectdivAfterTransform','rotate(-90deg)');
+            direction = true;
+        } else {
+            selectDivElt.style.setProperty('--selectdivAfterTransform','rotate(90deg)');
+            direction = false;
+        }
+    });
+}
+
 getPhotographerData();
+turnChevronDropdownList();
 

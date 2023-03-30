@@ -1,3 +1,7 @@
+main {
+    margin: 0 100px;
+}
+
 #contact_modal {
     display: none;
     position: absolute;
@@ -8,7 +12,6 @@
 .photograph-header {
     background-color: #FAFAFA;
     height: 300px;
-    margin: 0 100px;
 }
 
 .photograph-header ul {
@@ -33,11 +36,49 @@
     cursor: pointer;
 }
 
-#media {
-    margin: 60px 100px;
+.selectdiv::after {
+    position: absolute;
+    right: 15px;
+    top: 15px;
+    content: ' >';
+    transform: var(--selectdivAfterTransform, rotate(90deg));
+    pointer-events: none;
+    color: #fff;
 }
 
-#media ul {
+.selectdiv {
+    position: relative;
+    margin: 0;
+    width: 140px;
+    font-size: 16px;
+    font-weight: bold;
+}
+  
+.selectdiv select {
+    border: none;
+    border-radius: 5px;
+    padding: 0px 14px;
+    appearance: none;
+    height: 50px;
+    width: 100%;
+    color: #FFF;
+    background-color: #901C1C;
+    font-size: inherit;
+}
+
+.filter form {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    height: inherit;
+}
+
+.filter {
+    height: 60px;
+    margin: 10px 0 40px 0;
+}
+
+.media ul {
     padding: 0;
     display: flex;
     justify-content: space-between;
@@ -73,24 +114,8 @@
     text-align: center;
 }
 
-form {
-    display: flex;
+.selectdiv label {
     width: 100%;
-    flex-direction: column;
-    align-items: flex-start;
-}
-
-form label {
-    color: #312E2E;
-    font-size: 36px;
-}
-
-form div {
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-    align-items: self-start;
-    margin-bottom: 26px;
 }
 
 form div:nth-child(1) {
