@@ -27,7 +27,6 @@ async function getPhotographerMedias() {
     )
     return media
   }
-  
 
 async function displayHeader(photographer) {
     const photographerHeader = document.querySelector('.photograph-header');

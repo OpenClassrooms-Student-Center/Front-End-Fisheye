@@ -16,26 +16,48 @@
     </header>
     <main id="main">
       <div class="photograph-header"></div>
+      <div class="photograph-filter">
+        <!-- filter button -->
+        <div class="filter-container">
+          <label for="filter-select">Trier par</label>
+          <select id="filter-select">
+            <option value="popularity">Popularité</option>
+            <option value="date">Date</option>
+            <option value="title">Titre</option>
+          </select>
+        </div>        
+        <!-- /filter button -->
+      </div>
       <div class="photograph-body"></div>
     </main>
-    <div id="contact_modal">
-			<div class="modal">
-				<header>
-          <h2>Contactez-moi</h2>
-          <img src="assets/icons/close.svg" onclick="closeModal()" />
+    <div id="contact_modal" role="dialog" aria-modal="true" aria-labelledby="contact_modal_title" aria-describedby="contact_modal_desc">
+      <div class="modal" role="document">
+        <header>
+          <h2 id="contact_modal_title">Contactez-moi</h2>
+          <button class="modal_close_button" aria-label="Fermer la boîte de dialogue" onclick="closeModal()"><img src="assets/icons/close.svg" alt="Fermer la boîte de dialogue" /></button>
         </header>
-				<form>
-					<div>
-						<label>Prénom</label>
-						<input />
-					</div>
-          <button class="contact_button">Envoyer</button>
-				</form>
-			</div>
-		</div>
+        <div id="contact_modal_desc">Remplissez le formulaire ci-dessous pour me contacter</div>
+        <form>
+          <div>
+            <label for="prenom">Prénom:</label>
+            <input type="text" id="prenom" name="prenom" required aria-required="true" />
+          </div>
+          <button type="submit" class="contact_button" aria-describedby="contact_modal_desc">Envoyer</button>
+        </form>
+      </div>
+    </div>    
     <script src="/scripts/factories/photographer.js"></script>
     <script src="/scripts/factories/medias.js"></script>
     <script src="/scripts/pages/photographer.js"></script>
     <script src="/scripts/utils/contactForm.js"></script>
+    <script>
+      const filterSelect = document.getElementById('filter-select');
+      filterSelect.addEventListener('change', function() {
+        const selectedOption = this.value;
+        // TODO: Implement filtering based on selected option
+      });
+
+      filterSelect.value = 'popularity';
+    </script>
   </body>
 </html>

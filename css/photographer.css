@@ -70,6 +70,11 @@
     cursor: pointer;
 }
 
+.photograph-filter {
+    margin: 20px 100px 0 100px;
+    display: flex;
+}
+
 .photograph-body {
     display: flex;
     flex-wrap: wrap;
@@ -156,6 +161,42 @@
     justify-content: end;
 }
 
+.filter-container {
+    display: flex;
+    align-items: center;
+    margin-top: 30px;
+  }
+  
+  .filter-container label {
+    font-size: 14px;
+    font-weight: bold;
+    margin-right: 20px;
+  }
+  
+  .filter-container select {
+    font-size: 14px;
+    font-weight: 400;
+    color: white;
+    padding: 12px 24px;
+    width: auto;
+    border: none;
+    background-color: #901C1C;
+    border-radius: 5px;
+    cursor: pointer;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+  }
+  
+  .filter-container select::-ms-expand {
+    display: none;
+  }
+  
+  .filter-container select option {
+    background-color: #901C1C;
+  }
+  
+
 
 .modal {
     border-radius: 5px;
@@ -209,4 +250,17 @@ form input {
     height: 68px;
     border: none;
     border-radius: 5px;
+}
+
+.visually-hidden {
+    position: absolute;
+    position: absolute !important;
+    width: 1px !important;
+    height: 1px !important;
+    padding: 0 !important;
+    margin: -1px !important;
+    overflow: hidden !important;
+    clip: rect(0,0,0,0) !important;
+    white-space: nowrap !important;
+    border: 0 !important;
 }
