@@ -86,9 +86,14 @@ async function init() {
 
     // display photographer's price
     displayCounts(photographer);
+
+    // Add photographer's name to contact form title
+    const contactModalTitle = document.querySelector('#contact_modal_title');
+    contactModalTitle.innerHTML = `Contactez ${photographer.name}`;
 }
   
 init();
+
   
 
 
