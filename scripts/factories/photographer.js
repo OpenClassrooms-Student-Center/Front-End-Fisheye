@@ -65,8 +65,23 @@ function photographerFactory(data) {
             <img class="headerPicture" src="${picture}" alt="${name}"></img>
         </div>
         `
+
         return divHeader
     }
 
-    return { picture, getUserCardDOM, getPhotographerHeaderDOM }
+    function getCounter() {
+        // add price and likes
+        const divBottomFixed = document.createElement('div')
+        divBottomFixed.className = "counter"
+        
+        divBottomFixed.innerHTML = `
+        <div class="counter-infos">
+            <h3 class="counter-price">${price}</h1>
+            <h3 class="counter-likes">Likes</h3>
+        </div>
+        `
+        return divBottomFixed
+    }
+
+    return { picture, getUserCardDOM, getPhotographerHeaderDOM, getCounter }
 }

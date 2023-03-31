@@ -1,3 +1,5 @@
+@import url('https://pro.fontawesome.com/releases/v5.15.3/css/all.css');
+
 #contact_modal {
     display: none;
 }
@@ -66,6 +68,70 @@
     background-color: #901C1C;
     border-radius: 5px;
     cursor: pointer;
+}
+
+.photograph-body {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin: 20px 100px 0 100px;
+  }
+  
+  .photograph-media {
+    flex: 1 1 30%;
+    padding: 10px;
+  }
+
+  .photograph-media-link {
+    text-decoration: none;
+  }
+
+  .photograph-media-img, .photograph-media-video {
+    width: 100%;
+    border-radius: 5px;
+    height: 350px;
+    object-fit: cover;
+  }
+
+  .photograph-media-info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.5rem;
+  }
+  
+  .photograph-media-title {
+    margin: 0;
+    font-size: 1.2rem;
+    font-weight: bold;
+    text-align: left;
+    justify-content: start;
+    color: #901C1C;
+  }
+  
+  .photograph-media-likes {
+    display: flex;
+    align-items: center;
+    justify-content: end;
+    font-size: 1rem;
+    text-align: right;
+    color: #901C1C;
+  }
+
+  .photograph-media-likes i:hover {
+    cursor: pointer;
+  }
+  
+  .photograph-media-likes-count {
+    margin-right: 0.5rem;
+  }  
+
+.counter {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    background: #DB8876;
+    border-radius: 5px;
 }
 
 .modal {
