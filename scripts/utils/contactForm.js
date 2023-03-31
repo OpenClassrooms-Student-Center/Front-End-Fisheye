@@ -2,11 +2,11 @@
 
 // DOM elements
 const modalElt = document.getElementById("contact_modal");
-const firstNameElt = document.querySelector("form div:nth-child(2) input");
-const lastNameElt = document.querySelector("form div:nth-child(3) input");
-const emailElt = document.querySelector("form div:nth-child(4) input");
-const messageElt = document.querySelector("form div:nth-child(5) textarea");
-const formElt = document.querySelector("form");
+const firstNameElt = document.querySelector(".modal div:nth-child(2) input");
+const lastNameElt = document.querySelector(".modal div:nth-child(3) input");
+const emailElt = document.querySelector(".modal div:nth-child(4) input");
+const messageElt = document.querySelector(".modal div:nth-child(5) textarea");
+const formElt = document.querySelector(".modal form");
 
 // functions
 function photographerContactFormFactory(photographer) {
@@ -14,7 +14,6 @@ function photographerContactFormFactory(photographer) {
 
     function getUserContactFormDOM() {
         const titleFormElt = document.querySelector("#contact_modal h2");
-        titleFormElt.style.textAlign = "left";
         const namePhotographerFormElt = document.createTextNode(" " + name);
         titleFormElt.appendChild(namePhotographerFormElt);
     }
@@ -34,11 +33,11 @@ function closeModal() {
 }
 
 function validateFirstName() {
-    const removeErrorMessage = document.querySelector("form div:nth-child(2) span");
+    const removeErrorMessage = document.querySelector(".modal div:nth-child(2) span");
 
     if (!firstNameElt.value.match(/^[a-z]{2,}$/i)) {
-        const divFirstElt = document.querySelector("form div:nth-child(2)");
-        const spanErrorMessage = document.querySelectorAll("form div:nth-child(2) span");
+        const divFirstElt = document.querySelector(".modal div:nth-child(2)");
+        const spanErrorMessage = document.querySelectorAll(".modal div:nth-child(2) span");
         const errorMessage = "Prénom obligatoire avec au minimum 2 lettres";
 
         createErrorMessage(divFirstElt, errorMessage, spanErrorMessage);
@@ -53,12 +52,12 @@ function validateFirstName() {
 }
 
 function validateLastName() {
-    const removeErrorMessage = document.querySelector("form div:nth-child(3) span");
+    const removeErrorMessage = document.querySelector(".modal div:nth-child(3) span");
     
     if (!lastNameElt.value.match(/^[a-z]{2,}$/i)) {
-        const divLastElt = document.querySelector("form div:nth-child(3)");
+        const divLastElt = document.querySelector(".modal div:nth-child(3)");
         const errorMessage = "Nom obligatoire avec au minimum 2 lettres";
-        const spanErrorMessage = document.querySelectorAll("form div:nth-child(3) span");
+        const spanErrorMessage = document.querySelectorAll(".modal div:nth-child(3) span");
         
         createErrorMessage(divLastElt, errorMessage, spanErrorMessage);
 
@@ -71,12 +70,12 @@ function validateLastName() {
 }
 
 function validateEmail() {
-    const removeErrorMessage = document.querySelector("form div:nth-child(4) span");
+    const removeErrorMessage = document.querySelector(".modal div:nth-child(4) span");
     
     if (!emailElt.value.match(/^[\w\-.]{2,}@[a-zA-Z]{2,}\.[a-zA-Z]{2,4}$/)) {
-        const divEmailElt = document.querySelector("form div:nth-child(4)");
+        const divEmailElt = document.querySelector(".modal div:nth-child(4)");
         const errorMessage = "Veuillez renseigner une adresse mail valide";
-        const spanErrorMessage = document.querySelectorAll("form div:nth-child(4) span");
+        const spanErrorMessage = document.querySelectorAll(".modal div:nth-child(4) span");
         
         createErrorMessage(divEmailElt, errorMessage, spanErrorMessage);
 
@@ -89,12 +88,12 @@ function validateEmail() {
 }
 
 function validateMessage() {
-    const removeErrorMessage = document.querySelector("form div:nth-child(5) span");
+    const removeErrorMessage = document.querySelector(".modal div:nth-child(5) span");
     
     if (!messageElt.value.match(/^[\w\-.?!+*\/\n, ()&#:;'"áàâäãåçéèêëíìîïñóòôöõúùûüýÿæœÁÀÂÄÃÅÇÉÈÊËÍÌÎÏÑÓÒÔÖÕÚÙÛÜÝŸÆŒ]{20,700}$/)) {
-        const divMessageElt = document.querySelector("form div:nth-child(5)");
+        const divMessageElt = document.querySelector(".modal div:nth-child(5)");
         const errorMessage = "Votre message doit etre compris entre 20 et 700 caractères";
-        const spanErrorMessage = document.querySelectorAll("form div:nth-child(5) span");
+        const spanErrorMessage = document.querySelectorAll(".modal div:nth-child(5) span");
         
         createErrorMessage(divMessageElt, errorMessage, spanErrorMessage);
 
@@ -117,7 +116,7 @@ function createErrorMessage(divElt, errorMessage, spanErrorMessage) {
 }
 
 function displaySuccessMessage() {
-    const successMessageElt = document.querySelector("form div:nth-child(1) span");
+    const successMessageElt = document.querySelector(".modal div:nth-child(1) span");
     successMessageElt.textContent = "Votre message ainsi vos coordonnées sont affichés avec succès dans la console";
     successMessageElt.style.color = "#901C1C";
     successMessageElt.style.width = "100%";

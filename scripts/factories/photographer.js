@@ -2,7 +2,7 @@
 
 // header main elements
 const mainElt = document.querySelector("main");
-const ulHeaderElt = document.querySelector(".photograph-header ul");
+const ulHeaderElt = document.querySelector(".photograph_header ul");
 const liPhotographerDataElt = document.createElement("li");
 const liContactElt = document.createElement("li");
 const liImgElt = document.createElement("li");
@@ -29,7 +29,7 @@ function setPhotographerName(nameElt, liPhotographerDataElt, name) {
 // displaying photographer country
 function setPhotographerCountry(countryElt, liPhotographerDataElt, city, country) {
     countryElt.style.margin = "10px 0";
-    countryElt.style.color = "#D3573C";
+    countryElt.style.color = "#901C1C";
     countryElt.style.fontSize = "1.2rem";
     countryElt.textContent = `${city}, ${country}`;
     liPhotographerDataElt.appendChild(countryElt);
@@ -38,6 +38,7 @@ function setPhotographerCountry(countryElt, liPhotographerDataElt, city, country
 // displaying photographer tagline
 function setPhotographerTagline(liPhotographerDataElt, taglineElt, tagline) {
     taglineElt.style.margin = "10px 0";
+    taglineElt.style.color = "#525252";
     taglineElt.textContent = tagline;
     liPhotographerDataElt.appendChild(taglineElt);
 }

@@ -23,13 +23,14 @@ function setPhotographerImg(name, picture, imgElt, figureElt) {
 }
 
 function setPhotographerName(name, nameElt, figureElt) {
-    nameElt.style.margin = "15px 0 0 0";
+    nameElt.style.margin = "15px 0 10px 0";
     nameElt.textContent = name;
     nameElt.style.color = "#D3573C";
     figureElt.appendChild(nameElt);
 }
 
 function addFigCaptionElt(figureElt, figCaptionElt) {
+    figCaptionElt.style.lineHeight = "1.3rem";
     figureElt.appendChild(figCaptionElt);
 }
 
@@ -37,7 +38,7 @@ function addFigCaptionElt(figureElt, figCaptionElt) {
 function setPhotographerCountry(city, country, countryElt, figCaptionElt) {
     countryElt.style.margin = "0 0";
     countryElt.textContent = `${city}, ${country}`;
-    countryElt.style.color = "#D3573C";
+    countryElt.style.color = "#901C1C";
     figCaptionElt.appendChild(countryElt);
 }
 
@@ -54,7 +55,7 @@ function setPhotographerPrice(price, priceElt, figCaptionElt) {
     priceElt.style.margin = "0 0";
     priceElt.textContent = `${price}/jour`;
     priceElt.style.fontSize = "0.8rem";
-    priceElt.style.color = "#000";
+    priceElt.style.color = "#525252";
     figCaptionElt.appendChild(priceElt);
 }
 
