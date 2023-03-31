@@ -24,7 +24,7 @@ function mediaFactory(media) {
           mediaElement.src = `assets/images/${media.photographerId}/${media.image}`;
           mediaElement.alt = media.title;
         }
-        
+  
         mediaLink.appendChild(mediaElement);
         mediaDOM.appendChild(mediaLink);
   
@@ -60,6 +60,16 @@ function mediaFactory(media) {
             likeButton.classList.add('liked');
           }
           likeCount.innerText = media.likes;
+  
+          // Update the total likes count in .counter
+          const likesList = document.querySelectorAll('.photograph-media-likes-count');
+          let totalLikes = 0;
+          likesList.forEach(likesDiv => {
+            const likes = parseInt(likesDiv.textContent);
+            totalLikes += likes;
+          });
+          const counterLikes = document.querySelector('.counter-likes');
+          counterLikes.innerHTML = `${totalLikes} <i class="fas fa-heart"></i>`;
         });
         mediaLikes.appendChild(likeButton);
   
@@ -73,12 +83,3 @@ function mediaFactory(media) {
     };
   }
   
-  
-
-  
-
-  // const mediaPrice = document.createElement('div');
-        // mediaPrice.classList.add('photograph-media-price');
-        // mediaPrice.innerText = `$${media.price}`;
-
-        // mediaLink.appendChild(mediaPrice);

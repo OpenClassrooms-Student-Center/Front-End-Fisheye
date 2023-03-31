@@ -29,12 +29,40 @@ async function getPhotographerMedias() {
   }
   
 
-  async function displayHeader(photographer) {
+async function displayHeader(photographer) {
     const photographerHeader = document.querySelector('.photograph-header');
     const photographerModel = photographerFactory(photographer);
     const photographerHeaderDOM = photographerModel.getPhotographerHeaderDOM();
     photographerHeader.appendChild(photographerHeaderDOM);
 };
+
+// price per day photographer
+async function displayCounts(photographer) {
+    const main = document.querySelector('main');
+    const countDOM = document.createElement('div');
+    countDOM.classList.add('counter');
+
+    // Get all divs with the class .photograph-media-likes-count
+    const likesList = document.querySelectorAll('.photograph-media-likes-count');
+
+    let totalLikes = 0;
+    // Iterate through each div and add up the total likes
+    likesList.forEach(likesDiv => {
+        const likes = parseInt(likesDiv.textContent);
+        totalLikes += likes;
+    });
+
+    countDOM.innerHTML = 
+    `<div class="counter-likes">
+        ${totalLikes} <i class="fas fa-heart"></i>
+    </div>
+    <div class="counter-daily">
+        ${photographer.price} <span>€ /jour</span>
+    </div>`;
+
+    main.appendChild(countDOM);
+};
+
 
 async function displayMedia(media) {
     const mediaContainer = document.querySelector('.photograph-body');
@@ -47,7 +75,6 @@ async function displayMedia(media) {
         });
     }
 };
- 
 
 async function init() {
     // get photographers infos
@@ -57,6 +84,9 @@ async function init() {
     // get photographers media
     const photographerMedias = await getPhotographerMedias();
     displayMedia(photographerMedias);
+
+    // display photographer's price
+    displayCounts(photographer);
 }
   
 init();
