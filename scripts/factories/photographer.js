@@ -75,7 +75,6 @@ function photographerContactFactory(photographer) {
 
 function addLiMedia(liMediaElt, ulMediaElt) {
     liMediaElt.style.display = "block";
-    liMediaElt.style.marginBottom = "30px";
     ulMediaElt.appendChild(liMediaElt);
 }
 
@@ -92,10 +91,21 @@ function addLinkMedia(figureMediaElt, linkMediaElt) {
 
 function setImgMedia(imgMediaElt, linkMediaElt, picture) {
     imgMediaElt.setAttribute("src", picture);
-    imgMediaElt.style.width = "360px";
-    imgMediaElt.style.height = "360px";
+    imgMediaElt.style.width = "400px";
+    imgMediaElt.style.height = "400px";
     imgMediaElt.style.borderRadius = "5px";
     linkMediaElt.appendChild(imgMediaElt);
+    
+}
+
+function setVideoMedia(videoMediaElt, linkMediaElt, srcVideo) {
+    const srcElt = document.createElement("source");
+    srcElt.setAttribute("src", srcVideo)
+    srcElt.setAttribute("type","video/mp4");
+    videoMediaElt.style.width = "400px";
+    videoMediaElt.style.height = "400px";
+    videoMediaElt.appendChild(srcElt);
+    linkMediaElt.appendChild(videoMediaElt);
 }
 
 function addFigcaptionMedia(figCaptionMediaElt, figureMediaElt) {
@@ -140,14 +150,16 @@ function photographerMediaFactory(photographerMedia) {
     const ulMediaElt = document.querySelector(".media ul");
 
     photographerMedia.forEach(media => {
-        const { title, image, likes, date, price } = media;
+        const { title, image, video, likes, date, price } = media;
         const picture = `assets/media/${image}`;
-
+        const srcVideo = `assets/media/${video}`;
+        
         // section main elements
         const liMediaElt = document.createElement("li");
         const figureMediaElt = document.createElement("figure");
         const linkMediaElt = document.createElement("a");
         const imgMediaElt = document.createElement("img");
+        const videoMediaElt = document.createElement("video");
         const figCaptionMediaElt = document.createElement("figcaption");
         const figcaptionHeaderElt = document.createElement("header");
         const titleElt = document.createElement("h3");
@@ -155,10 +167,11 @@ function photographerMediaFactory(photographerMedia) {
         const spanLikeElt = document.createElement("span");
         const iMediaElt = document.createElement("i");
 
+        image ? setImgMedia(imgMediaElt, linkMediaElt, picture) : setVideoMedia(videoMediaElt, linkMediaElt, srcVideo);
+
         addLiMedia(liMediaElt, ulMediaElt);
         addFigureMedia(figureMediaElt, liMediaElt);
         addLinkMedia(figureMediaElt, linkMediaElt);
-        setImgMedia(imgMediaElt, linkMediaElt, picture);
         addFigcaptionMedia(figCaptionMediaElt, figureMediaElt);
         addFigcaptionHeaderMedia(figcaptionHeaderElt, figCaptionMediaElt);
         setTitleMedia(title, titleElt, figcaptionHeaderElt);
@@ -167,9 +180,3 @@ function photographerMediaFactory(photographerMedia) {
         addIconLikeMedia(figureLikeElt, iMediaElt);
     });
 }
-
-
-
-
-
-

@@ -163,6 +163,6 @@ main {
 .media ul {
     padding: 0;
     display: flex;
-    justify-content: space-between;
+    gap: 50px 100px;
     flex-wrap: wrap;
 }
