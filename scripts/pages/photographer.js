@@ -89,7 +89,7 @@ async function init() {
 
     // Add photographer's name to contact form title
     const contactModalTitle = document.querySelector('#contact_modal_title');
-    contactModalTitle.innerHTML = `Contactez ${photographer.name}`;
+    contactModalTitle.innerHTML = `Contactez-moi ${photographer.name}`;
 }
   
 init();

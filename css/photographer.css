@@ -222,7 +222,7 @@
     left: 0;
     right: 0;
     bottom: 0;
-    background-color: rgba(0, 0, 0, 0.85);
+    background-color: rgba(255, 255, 255, 0.65);
     z-index: 999;
   }  
 
@@ -230,6 +230,7 @@
     justify-content: space-between;
     width: 100%;
     height: auto;
+    align-items: start;
 }
 
 .modal header img {
@@ -251,6 +252,8 @@
 .modal_close_button {
     background: transparent;
     border: 0;
+    justify-content: start;
+    align-items: start;
 }
 
 form {
@@ -315,3 +318,65 @@ form textarea {
     white-space: nowrap !important;
     border: 0 !important;
 }
+
+/* The lightbox container */
+.lightbox {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.8); /* semi-transparent black background */
+    z-index: 10000; /* ensure the lightbox is on top of other elements */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+  }
+  
+  /* The media element inside the lightbox */
+  .lightbox-media {
+    max-width: 80vw; /* adjust the max width as needed */
+    max-height: 80vh; /* adjust the max height as needed */
+    display: block;
+    margin: auto;
+  }
+  
+  /* The title element below the media element */
+  .lightbox-title {
+    color: white;
+    font-size: 1.2rem;
+    text-align: center;
+    margin-top: 1rem;
+  }
+  
+  /* The button to close the lightbox */
+  .lightbox-close {
+    position: absolute;
+    top: 0.5rem;
+    right: 0.5rem;
+    color: white;
+    font-size: 1.5rem;
+    cursor: pointer;
+    background: transparent;
+    border: 0;
+  }
+  
+  /* The left and right arrow buttons */
+  .lightbox-arrow {
+    position: absolute;
+    top: 50%;
+    color: white;
+    font-size: 3rem;
+    cursor: pointer;
+    transform: translateY(-50%);
+  }
+  
+  .lightbox-arrow-left {
+    left: 0.5rem;
+  }
+  
+  .lightbox-arrow-right {
+    right: 0.5rem;
+  }
+  
