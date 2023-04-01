@@ -4,6 +4,7 @@ function mediaFactory(media) {
         const mediaDOM = document.createElement('div');
         mediaDOM.classList.add('photograph-media');
   
+        // define if video or img for the source link
         const mediaLink = document.createElement('a');
         mediaLink.classList.add('photograph-media-link');
         if (media.video) {
@@ -11,6 +12,7 @@ function mediaFactory(media) {
         } else {
           mediaLink.href = `assets/images/${media.photographerId}/${media.image}`;
         }
+        // open lightbox on click
         mediaLink.addEventListener('click', function (e) {
           e.preventDefault();
           openLightbox(media);
@@ -33,32 +35,37 @@ function mediaFactory(media) {
   
         mediaLink.appendChild(mediaElement);
         mediaDOM.appendChild(mediaLink);
-  
+        
+        // mediaInfo
         const mediaInfo = document.createElement('div');
         mediaInfo.classList.add('photograph-media-info');
-  
+        
+        // mediaTitle
         const mediaTitle = document.createElement('h2');
         mediaTitle.classList.add('photograph-media-title');
         mediaTitle.innerText = media.title;
         mediaTitle.setAttribute('role', 'heading');
         mediaTitle.setAttribute('aria-level', '2');
-  
+        
+        // mediaLikes
         const mediaLikes = document.createElement('div');
         mediaLikes.classList.add('photograph-media-likes');
   
+        // likes per media
         const likeCount = document.createElement('span');
         likeCount.classList.add('photograph-media-likes-count');
         likeCount.innerText = media.likes;
         likeCount.setAttribute('role', 'text');
         mediaLikes.appendChild(likeCount);
   
+        // like button 
         const likeButton = document.createElement('i');
         likeButton.classList.add('fas', 'fa-heart');
         if (media.isLiked) {
           likeButton.classList.add('liked');
         }
         likeButton.addEventListener('click', function () {
-          // Handle the click event here
+          // Handle the click event for adding or removing a like
           if (media.isLiked) {
             media.likes--;
             media.isLiked = false;
@@ -83,10 +90,8 @@ function mediaFactory(media) {
         likeButton.setAttribute('role', 'button');
         likeButton.setAttribute('aria-label', 'Like');
         mediaLikes.appendChild(likeButton);
-  
         mediaInfo.appendChild(mediaTitle);
         mediaInfo.appendChild(mediaLikes);
-  
         mediaDOM.appendChild(mediaInfo);
   
         return mediaDOM;
