@@ -35,6 +35,18 @@ async function displayHeader(photographer) {
     photographerHeader.appendChild(photographerHeaderDOM);
 };
 
+async function displayMedia(media) {
+    const mediaContainer = document.querySelector('.photograph-body');
+
+    if (mediaContainer) {
+        media.forEach((mediaObj) => {
+            const mediaModel = mediaFactory(mediaObj);
+            const mediaDOM = mediaModel.getMediaDOM();
+            mediaContainer.appendChild(mediaDOM);
+        });
+    }
+};
+
 // price per day photographer
 async function displayCounts(photographer) {
     const main = document.querySelector('main');
@@ -60,19 +72,6 @@ async function displayCounts(photographer) {
     </div>`;
 
     main.appendChild(countDOM);
-};
-
-
-async function displayMedia(media) {
-    const mediaContainer = document.querySelector('.photograph-body');
-
-    if (mediaContainer) {
-        media.forEach((mediaObj) => {
-            const mediaModel = mediaFactory(mediaObj);
-            const mediaDOM = mediaModel.getMediaDOM();
-            mediaContainer.appendChild(mediaDOM);
-        });
-    }
 };
 
 async function init() {
