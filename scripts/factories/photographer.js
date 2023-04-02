@@ -146,7 +146,7 @@ function addIconLikeMedia(figureLikeElt, iMediaElt) {
 
 // displaying photographerMedia data on section main
 function photographerMediaFactory(media) {
-    const { title, image, video, likes, date, price } = media;
+    const { title, image, video, likes } = media;
     const picture = `assets/media/${image}`;
     const srcVideo = `assets/media/${video}`;
     
@@ -179,6 +179,23 @@ function photographerMediaFactory(media) {
     }
 
     return { getMediaCardDOM };
+}
+
+// displaying total number likes + price per day
+function photographerPriceAndTotalLikesFactory(photographer, totalLikes) {
+    const [{ price }] = photographer;
+    
+    const priceAndLikesElt = document.querySelector(".price-and-likes");
+    const totalLikesElt = document.createElement("p");
+    const heartElt = document.createElement("i");
+    const priceElt = document.createElement("p");
+
+    heartElt.className = "fa-solid fa-heart";
+    totalLikesElt.textContent = totalLikes;
+    totalLikesElt.appendChild(heartElt);
+    priceAndLikesElt.appendChild(totalLikesElt);
+    priceElt.textContent = `${price}€ / jour`;
+    priceAndLikesElt.appendChild(priceElt);
 }
 
 

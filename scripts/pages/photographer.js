@@ -1,4 +1,5 @@
 "use_strict";
+
 const selectDivElt = document.querySelector(".selectdiv");
 
 // get photographers
@@ -28,16 +29,24 @@ function getPhotographerPopularMedia(query, media) {
 }
 
 async function displayData(photographer, photographerPopularMedia) {
-    photographerContactFactory(photographer);
-
     const ulMediaElt = document.querySelector(".media ul");
+    let totalLikes = getPhotographerTotalLikes(photographerPopularMedia);
+
     photographerPopularMedia.forEach(media => {
         const photographerMediaModel = photographerMediaFactory(media);
         const mediaCardDOM = photographerMediaModel.getMediaCardDOM();
         ulMediaElt.appendChild(mediaCardDOM);
     });
-
+    
+    photographerPriceAndTotalLikesFactory(photographer, totalLikes);
+    photographerContactFactory(photographer);
     likePhotographerMedia();
+}
+
+function getPhotographerTotalLikes(photographerPopularMedia) {
+    const likes = photographerPopularMedia.map(media => (media.likes));
+
+    return likes.reduce((a, b) => a + b, 0);
 }
 
 async function displayContactForm(photographer) {

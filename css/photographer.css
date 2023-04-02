@@ -166,3 +166,22 @@ main {
     gap: 50px 100px;
     flex-wrap: wrap;
 }
+
+.price-and-likes {
+    position: fixed;
+    right: 30px;
+    bottom: 0px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    border-radius: 5px 5px 0 0;
+    padding: 10px 0;
+    width: 300px;
+    height: 40px;
+    font-size: 1.2rem;
+    background-color: #D3573C;
+}
+
+.price-and-likes i {
+    margin-left: 5px;
+}
