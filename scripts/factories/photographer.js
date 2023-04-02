@@ -179,4 +179,31 @@ function photographerMediaFactory(photographerMedia) {
         setLikesMedia(spanLikeElt, figureLikeElt, likes);
         addIconLikeMedia(figureLikeElt, iMediaElt);
     });
+
+    likePhotographerMedia();
+    
 }
+
+// like photographer media
+function likePhotographerMedia() {
+    const loveElts = document.querySelectorAll(".media i");
+    const likesNumberElts = document.querySelectorAll(".media span");
+
+    for (i = 0; i < loveElts.length; i++) {
+        const loveElt = loveElts[i];
+        const likesNumberElt = likesNumberElts[i];
+        let likesNumber = likesNumberElts[i].textContent;
+        let liked = false;
+        
+        loveElt.addEventListener("click", () => {
+            if (liked === false) {
+                likesNumberElt.textContent = likesNumber ++;
+                liked = true;
+            } else {
+                likesNumberElt.textContent = likesNumber --;
+                liked = false;
+            }
+        });
+    }
+}
+
