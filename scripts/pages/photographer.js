@@ -29,7 +29,15 @@ function getPhotographerPopularMedia(query, media) {
 
 async function displayData(photographer, photographerPopularMedia) {
     photographerContactFactory(photographer);
-    photographerMediaFactory(photographerPopularMedia);
+
+    const ulMediaElt = document.querySelector(".media ul");
+    photographerPopularMedia.forEach(media => {
+        const photographerMediaModel = photographerMediaFactory(media);
+        const mediaCardDOM = photographerMediaModel.getMediaCardDOM();
+        ulMediaElt.appendChild(mediaCardDOM);
+    });
+
+    likePhotographerMedia();
 }
 
 async function displayContactForm(photographer) {
@@ -50,6 +58,7 @@ async function getPhotographerData() {
     displayContactForm(photographer);
 }
 
+// turn chevron dropdown list
 function turnChevronDropdownList() {
     let direction = false;
 
@@ -62,6 +71,29 @@ function turnChevronDropdownList() {
             direction = false;
         }
     });
+}
+
+// like photographer media
+function likePhotographerMedia() {
+    const loveElts = document.querySelectorAll(".media i");
+    const likesNumberElts = document.querySelectorAll(".media span");
+
+    for (i = 0; i < loveElts.length; i++) {
+        const loveElt = loveElts[i];
+        const likesNumberElt = likesNumberElts[i];
+        let likesNumber = likesNumberElts[i].textContent;
+        let liked = false;
+        
+        loveElt.addEventListener("click", () => {
+            if (liked === false) {
+                likesNumberElt.textContent = likesNumber ++;
+                liked = true;
+            } else {
+                likesNumberElt.textContent = likesNumber --;
+                liked = false;
+            }
+        });
+    }
 }
 
 getPhotographerData();

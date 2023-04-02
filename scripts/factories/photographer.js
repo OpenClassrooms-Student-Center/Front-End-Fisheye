@@ -73,9 +73,8 @@ function photographerContactFactory(photographer) {
 
 // media section functions 
 
-function addLiMedia(liMediaElt, ulMediaElt) {
+function addLiMedia(liMediaElt) {
     liMediaElt.style.display = "block";
-    ulMediaElt.appendChild(liMediaElt);
 }
 
 function addFigureMedia(figureMediaElt, liMediaElt) {
@@ -146,30 +145,27 @@ function addIconLikeMedia(figureLikeElt, iMediaElt) {
 }
 
 // displaying photographerMedia data on section main
-function photographerMediaFactory(photographerMedia) {
-    const ulMediaElt = document.querySelector(".media ul");
+function photographerMediaFactory(media) {
+    const { title, image, video, likes, date, price } = media;
+    const picture = `assets/media/${image}`;
+    const srcVideo = `assets/media/${video}`;
+    
+    // section media elements
+    const liMediaElt = document.createElement("li");
+    const figureMediaElt = document.createElement("figure");
+    const linkMediaElt = document.createElement("a");
+    const imgMediaElt = document.createElement("img");
+    const videoMediaElt = document.createElement("video");
+    const figCaptionMediaElt = document.createElement("figcaption");
+    const figcaptionHeaderElt = document.createElement("header");
+    const titleElt = document.createElement("h3");
+    const figureLikeElt = document.createElement("figure");
+    const spanLikeElt = document.createElement("span");
+    const iMediaElt = document.createElement("i");
 
-    photographerMedia.forEach(media => {
-        const { title, image, video, likes, date, price } = media;
-        const picture = `assets/media/${image}`;
-        const srcVideo = `assets/media/${video}`;
-        
-        // section main elements
-        const liMediaElt = document.createElement("li");
-        const figureMediaElt = document.createElement("figure");
-        const linkMediaElt = document.createElement("a");
-        const imgMediaElt = document.createElement("img");
-        const videoMediaElt = document.createElement("video");
-        const figCaptionMediaElt = document.createElement("figcaption");
-        const figcaptionHeaderElt = document.createElement("header");
-        const titleElt = document.createElement("h3");
-        const figureLikeElt = document.createElement("figure");
-        const spanLikeElt = document.createElement("span");
-        const iMediaElt = document.createElement("i");
-
+    function getMediaCardDOM() {
         image ? setImgMedia(imgMediaElt, linkMediaElt, picture) : setVideoMedia(videoMediaElt, linkMediaElt, srcVideo);
-
-        addLiMedia(liMediaElt, ulMediaElt);
+        addLiMedia(liMediaElt);
         addFigureMedia(figureMediaElt, liMediaElt);
         addLinkMedia(figureMediaElt, linkMediaElt);
         addFigcaptionMedia(figCaptionMediaElt, figureMediaElt);
@@ -178,32 +174,11 @@ function photographerMediaFactory(photographerMedia) {
         addLikeMedia(figureLikeElt, figCaptionMediaElt);
         setLikesMedia(spanLikeElt, figureLikeElt, likes);
         addIconLikeMedia(figureLikeElt, iMediaElt);
-    });
 
-    likePhotographerMedia();
-    
-}
-
-// like photographer media
-function likePhotographerMedia() {
-    const loveElts = document.querySelectorAll(".media i");
-    const likesNumberElts = document.querySelectorAll(".media span");
-
-    for (i = 0; i < loveElts.length; i++) {
-        const loveElt = loveElts[i];
-        const likesNumberElt = likesNumberElts[i];
-        let likesNumber = likesNumberElts[i].textContent;
-        let liked = false;
-        
-        loveElt.addEventListener("click", () => {
-            if (liked === false) {
-                likesNumberElt.textContent = likesNumber ++;
-                liked = true;
-            } else {
-                likesNumberElt.textContent = likesNumber --;
-                liked = false;
-            }
-        });
+        return (liMediaElt);
     }
+
+    return { getMediaCardDOM };
 }
+
 
