@@ -225,6 +225,10 @@ select {
     */
 }
 
+.modal img {
+    width: 42px;
+}
+
 .modal header {
     justify-content: space-between;
     width: 100%;
@@ -405,6 +409,7 @@ form textarea {
 }
 .lightboxTitlePosition {
     left: 41%;
+    top: 80%;
     position: fixed;
     
 }

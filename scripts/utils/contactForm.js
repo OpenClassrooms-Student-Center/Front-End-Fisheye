@@ -111,3 +111,10 @@ if (firstNameValid === true, lastNameValid === true, emailValid === true, textVa
 
     conditionUser.checked = "";
 }
+
+document.onkeydown = function(e) {
+    e = e || window.event;
+    if (e.keyCode == 27) {
+        closeModal();
+    }
+};

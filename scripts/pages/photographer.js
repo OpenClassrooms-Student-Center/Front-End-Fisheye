@@ -1,3 +1,9 @@
+document.addEventListener('keyup', function(e) {
+    e = e || window.event;
+    if (e.keyCode == 27) {
+        closeLightbox();
+    }
+});
 // Mettre le code JavaScript lié à la page photographer.html
 
 // chercher avec un .find l'id que je veux pour afficher mle photographe correspondant

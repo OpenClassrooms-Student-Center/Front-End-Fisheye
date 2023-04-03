@@ -11,21 +11,23 @@
 
 <body>
   <header>
-    <img src="assets/images/logo.png" class="logo" />
+    <img src="assets/images/logo.png" class="logo" tabindex="0"/>
   </header>
-  <main id="main">
+  <main aria-describedy="main" id="main">
     <div class="photograph-header">
       <div class="photograph_info">
-        <div class="name"></div>
-        <div class="city"></div>
-        <div class="tagline"></div>
+        <div class="name" tabindex="1"></div>
+        <div tabindex="2">
+          <div class="city"></div>
+          <div class="tagline"></div>
+        </div>
       </div>
-      <button class="contact_button" onclick="displayModal()">Contactez-moi</button>
-      <div class="picture_photographer">
+      <button class="contact_button" onclick="displayModal()" tabindex="3">Contactez-moi</button>
+      <div class="picture_photographer" tabindex="5">
       </div>
     </div>
     <div class="sortBy">
-      <div class="sortBy_text">
+      <div class="sortBy_text" tabindex="6">
         <p>Trier par</p>
       </div>
       <!--DROPDOWN-->
@@ -38,12 +40,12 @@
           <a href="#">Titre</a>
         </div>
         -->
-      <div class="dropdown">
+      <div class="dropdown" tabindex="7">
         <select name="filter" id="filter">
           <div class="dropdown-content">
-            <option value="Popularité">Popularité</option>
-            <option value="Date">Date</option>
-            <option value="Titre">Titre</option>
+            <option tabindex="7" value="Popularité">Popularité</option>
+            <option tabindex="7" value="Date">Date</option>
+            <option tabindex="7" value="Titre">Titre</option>
           </div>
         </select>
       </div>
@@ -59,37 +61,37 @@
   <div class="modalForm" id="contact_modal">
     <div class="modal">
       <header>
-        <h2>Contactez-moi</h2>
-        <img src="assets/icons/close.svg" onclick="closeModal()" />
+        <h2 tabindex="9">Contactez-moi</h2>
+        <img tabindex="19" src="assets/icons/close.svg" onclick="closeModal()" />
       </header>
       <form id="form">
         <div>
           <div id="nameForm"></div>
           <div class="formData">
-            <label>Prénom</label><br>
-            <input class="text-control" type="text" id="first" name="first" /><br>
+            <label tabindex="10">Prénom</label><br>
+            <input tabindex="11" class="text-control" type="text" id="first" name="first" /><br>
           </div>
           <span class="error" id="errorfirstname"></span>
 
           <div class="formData">
-            <label>Nom</label><br>
-            <input class="text-control" type="text" id="last" name="last" /><br>
+            <label tabindex="12">Nom</label><br>
+            <input tabindex="13" class="text-control" type="text" id="last" name="last" /><br>
           </div>
           <span class="error" id="errorlastname"></span>
 
           <div class="formData">
-            <label>E-mail</label><br>
-            <input class="text-control" type="text" id="email" name="email" /><br>
+            <label tabindex="14">E-mail</label><br>
+            <input tabindex="15" class="text-control" type="text" id="email" name="email" /><br>
           </div>
           <span class="error" id="errorEmail"></span>
 
           <div class="formData">
-            <label>Votre message</label>
-            <textarea type="text" id="comments" class="input-textarea" name="comment" placeholder=""></textarea>
+            <label tabindex="16">Votre message</label>
+            <textarea tabindex="17" type="text" id="comments" class="input-textarea" name="comment" placeholder=""></textarea>
           </div>
           <span class="error" id="errorText"></span>
 
-          <button class="contact_button">Envoyer</button>
+          <button tabindex="18" class="contact_button">Envoyer</button>
       </form>
 
     </div>

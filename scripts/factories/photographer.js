@@ -1,3 +1,20 @@
+const dropdown = document.querySelector('.dropdown');
+console.log(dropdown);
+
+function openDropdown() {
+    console.log('toto');
+}
+
+// function openDropdown() {
+//     document.onkeydown = function (e) {
+//         e = e || window.event;
+//         if (e.keyCode == 13)
+//         openDropdown();
+//     }
+// }
+
+
+
 function photographerFactory(data) {
     const { name, portrait, id } = data; /* J'ajoute dans ma constante "id" pour chercher les "données" correspondantes*/
     const picture = `assets/photographers/${portrait}`;
@@ -6,6 +23,7 @@ function photographerFactory(data) {
         const link = document.createElement("a"); /* Constant link pour créer mon élément "a" (href) qui apparaîtra dans mon DOM*/
         link.setAttribute("href", `photographer.html?id=${id}`); /* Je set un "href" + le "lien" de la page html avec l'"id" correspondant au click */
         const article = document.createElement('article');
+        console.log(article);
         const img = document.createElement('img');
         img.setAttribute("src", picture)
         const h2 = document.createElement('h2');
@@ -96,12 +114,27 @@ function photographersMedias(photos, photographer) {
     displayCta(photos, photographer);// jexcecute ma fonction
     const previousArrow = document.getElementById('previousArrow');
     const nextArrow = document.getElementById('nextArrow');
-    previousArrow.addEventListener('click', function(){
-        goToPreviousImage(photos, currentPhotographerFirstName);   
+    previousArrow.addEventListener('click', function () {
+        goToPreviousImage(photos, currentPhotographerFirstName);
     })
-    nextArrow.addEventListener('click', function(){
-        goToNextImage(photos, currentPhotographerFirstName);  
+    nextArrow.addEventListener('click', function () {
+        goToNextImage(photos, currentPhotographerFirstName);
     })
+
+    document.onkeydown = function (e) {
+        console.log('toto');
+        e = e || window.event;
+        if (e.keyCode == 37) {
+            goToPreviousImage(photos, currentPhotographerFirstName);
+        }
+    };
+
+    document.onkeyup = function (e) {
+        e = e || window.event;
+        if (e.keyCode == 39) {
+            goToNextImage(photos, currentPhotographerFirstName);
+        }
+    };
 };
 
 // Dans le scope globale de mon fichier, stocker mes photos et les photographes
@@ -120,22 +153,16 @@ function displayDataMedia(media, name, photos, photographer) {
     const { image, video, title, likes, price } = media;
     const picture = `assets/sample-photos/${name}/${image}`;
     const mediaDiv = document.createElement("article");
-    /*
-    const thumbnailImage = document.createElement("div");
-    thumbnailImage.className = "thumbnailImg";
-    thumbnailImage.innerHTML= `
-    <img src="assets/sample-photos/${image}">
-`;
-*/
+
 
     // CREER UNE DIV QUI ENGLOBE MES DEUX H2
     const divInformations = document.createElement("div");
     divInformations.className = "informationsContent";
     divInformations.innerHTML = `
-        <h2 class="title">${title}</h2>
+        <h2 tabindex="8" class="title">${title}</h2>
         <div class="likes">
             <h2>${likes}</h2>
-            <img src="assets/heart-solid.svg" style="
+            <img tabindex="8" src="assets/heart-solid.svg" style="
             height: 15px;
             width: 18px;
             color: #901C1C;
@@ -143,25 +170,27 @@ function displayDataMedia(media, name, photos, photographer) {
         ">
         </div>
     `;
-     const likeButton = divInformations.children[1].children[1];
-     const likesNumber = divInformations.children[1].children[0];
-     likeButton.addEventListener('click', function() {
+    const likeButton = divInformations.children[1].children[1];
+    const likesNumber = divInformations.children[1].children[0];
+    likeButton.addEventListener('click', function () {
         if (media.liked) {
-            media.likes = media.likes -1; 
+            media.likes = media.likes - 1;
             media.liked = false;
         } else {
-            media.likes = media.likes +1; 
+            media.likes = media.likes + 1;
             media.liked = true;
         }
         likesNumber.innerHTML = media.likes;
         displayCta(photos, photographer)
-     });
-    
+    });
+
 
     // Le cas ou c'est une image
     if (media.image) {
         const mediaImg = document.createElement("img");
         mediaImg.src = picture;
+        mediaImg.alt = title;
+        mediaImg.tabIndex = "8";
         mediaDiv.appendChild(mediaImg);
         mediaDiv.appendChild(divInformations);
         mediaImg.addEventListener('click', () => {
@@ -170,13 +199,23 @@ function displayDataMedia(media, name, photos, photographer) {
             })
             displayLightbox(photos, photoIndex, name)
         })
-     
+
+        mediaImg.onkeydown = function (e) {
+            e = e || window.event;
+            if (e.keyCode == 13) {
+                const photoIndex = photos.findIndex(photo => { // findIndex retrouve la position de l'element
+                    return photo.id === media.id;
+                })
+                displayLightbox(photos, photoIndex, name)
+            }
+        }
 
     } else  // Le cas ou c'est une VIDEO
     {
         const mediaVideo = document.createElement("video");// balise video avec src
         const videoSrc = `assets/sample-photos/${name}/${video}`;
         mediaVideo.src = videoSrc;
+        mediaVideo.alt = title;
         mediaVideo.setAttribute("controls", "controls")
         mediaDiv.appendChild(mediaVideo);
         mediaDiv.appendChild(divInformations);
@@ -215,7 +254,7 @@ function displayCta(photos, photographer) {
     });
     // CALL TO ACTION
     const callToAction = document.querySelector(".callToAction_section");
-    callToAction.innerHTML="";
+    callToAction.innerHTML = "";
 
     const cta = document.createElement("div");
     cta.className = "ctaContent";
@@ -237,7 +276,7 @@ function displayCta(photos, photographer) {
 
 // LIGHTBOX avec +1 et -1 sur les index ||||||||||| 
 
-   function displayLightbox(images, imageToDisplayIndex, photographerName, ) {
+function displayLightbox(images, imageToDisplayIndex, photographerName,) {
     const lightbox = document.getElementById('lightbox'); // balise <div>
     const lightboxImage = document.getElementById('lightboxImage'); // balise <img>
     const lightboxImageTitle = document.getElementById('lightboxImageTitle');
@@ -249,51 +288,31 @@ function displayCta(photos, photographer) {
     lightbox.dataset.indexImage = imageToDisplayIndex;
 
     // Au clic sur les flêches, appeler les deux fonctions
-   }
-   
-   function closeLightbox() {
+}
+
+function closeLightbox() {
     const lightbox = document.getElementById('lightbox'); // balise <div>
     lightbox.classList.remove("show");
-
-   }
+}
 
 // Définir deux fonctions : image précédente et image suivant au CLICK
 function goToPreviousImage(images, photographerName) {
+    console.log('goToPreviousImage');
     const lightbox = document.getElementById('lightbox'); // getElement la lightbox
     const indexImage = parseInt(lightbox.dataset.indexImage); // recuperr valeur de l'indexImage
-    const previousImage = indexImage === 0 ? images.length - 1 : indexImage - 1 ; // soustraire à mon index
+    const previousImage = indexImage === 0 ? images.length - 1 : indexImage - 1; // soustraire à mon index
     displayLightbox(images, previousImage, photographerName);
+
 }
 
 function goToNextImage(images, photographerName) {
     const lightbox = document.getElementById('lightbox'); // getElement la lightbox
     const indexImage = parseInt(lightbox.dataset.indexImage); // recuperr valeur de l'indexImage
-    const nextImage = indexImage === images.length - 1 ? 0 : indexImage + 1 ; // additionner à mon index
+    const nextImage = indexImage === images.length - 1 ? 0 : indexImage + 1; // additionner à mon index
     console.log(nextImage);
     displayLightbox(images, nextImage, photographerName);
 }
 
-// Afficher les flêches
 
 
-// FUNCTION LIKE POUR LES +1 DES LIKES eventListen sur les coeurs du DOM |||||||||||
 
-// TRIER les medias par date, popularités... au clic du boutton popularité |||||||||||
-
-/*
-const getNameForm = document.querySelector('nameForm');
-console.log(getNameForm);
-function addPhotographerName(data) {
-    console.log(addPhotographerName);
-    const {name} = data;
-    const h1 = document.createElement('h1');
-    h1.textContent = name;
-    getNameForm.appendChild(h1);
-}
-*/
-
-/*
-function displayLightBox (image) {
-
-}
-*/
