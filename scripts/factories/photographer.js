@@ -12,12 +12,12 @@ const taglineElt = document.createElement("p");
 const buttonElt = document.querySelector("button[class='contact_button']");
 const imgElt = document.createElement("img");
 
+// header section content
 function addLiPhotographerData(liPhotographerDataElt, ulHeaderElt) {
     liPhotographerDataElt.style.display = "block";
     ulHeaderElt.appendChild(liPhotographerDataElt);
 }
 
-// displaying photographer name
 function setPhotographerName(nameElt, liPhotographerDataElt, name) {
     nameElt.style.margin = "10px 0";
     nameElt.textContent = name;
@@ -26,7 +26,6 @@ function setPhotographerName(nameElt, liPhotographerDataElt, name) {
     liPhotographerDataElt.appendChild(nameElt);
 }
 
-// displaying photographer country
 function setPhotographerCountry(countryElt, liPhotographerDataElt, city, country) {
     countryElt.style.margin = "10px 0";
     countryElt.style.color = "#901C1C";
@@ -35,7 +34,6 @@ function setPhotographerCountry(countryElt, liPhotographerDataElt, city, country
     liPhotographerDataElt.appendChild(countryElt);
 }
 
-// displaying photographer tagline
 function setPhotographerTagline(liPhotographerDataElt, taglineElt, tagline) {
     taglineElt.style.margin = "10px 0";
     taglineElt.style.color = "#525252";
@@ -48,7 +46,6 @@ function addContactButton(liContactElt, ulHeaderElt, buttonElt) {
     ulHeaderElt.appendChild(liContactElt).appendChild(buttonElt);
 }
 
-// displaying photographer image
 function setPhotographerImg(ulHeaderElt, liImgElt, imgElt, picture) {
     liImgElt.style.display = "block";
     imgElt.setAttribute("src", picture);
@@ -72,7 +69,6 @@ function photographerContactFactory(photographer) {
 }
 
 // media section functions 
-
 function addLiMedia(liMediaElt) {
     liMediaElt.style.display = "block";
 }
@@ -103,6 +99,8 @@ function setVideoMedia(videoMediaElt, linkMediaElt, srcVideo) {
     srcElt.setAttribute("type","video/mp4");
     videoMediaElt.style.width = "400px";
     videoMediaElt.style.height = "400px";
+    videoMediaElt.setAttribute("controls","controls");
+    
     videoMediaElt.appendChild(srcElt);
     linkMediaElt.appendChild(videoMediaElt);
 }
