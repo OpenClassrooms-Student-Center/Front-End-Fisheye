@@ -79,7 +79,6 @@ button.addEventListener('click', (event) => {
     return;
   }
 
-  // If we got this far, the form is valid, so submit it
-  form.submit();
+  form.submit(submitForm);
 });
 
