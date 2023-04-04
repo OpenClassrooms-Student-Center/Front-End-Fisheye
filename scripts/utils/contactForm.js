@@ -1,11 +1,11 @@
 function displayModal() {
-    const modal = document.getElementById("contact_modal");
-	modal.style.display = "block";
+  const modal = document.getElementById("contact_modal");
+  modal.style.display = "block";
 }
 
 function closeModal() {
-    const modal = document.getElementById("contact_modal");
-    modal.style.display = "none";
+  const modal = document.getElementById("contact_modal");
+  modal.style.display = "none";
 }
 
 // Get references to the form and error div
@@ -79,6 +79,12 @@ button.addEventListener('click', (event) => {
     return;
   }
 
-  form.submit(submitForm);
-});
+  // Build the alert message
+  const alertMessage = `Prénom: ${prenomInput.value}\nNom: ${nomInput.value}\nEmail: ${emailInput.value}\nMessage: ${messageInput.value}`;
 
+  // Show the alert message
+  alert(alertMessage);
+
+  // Close the modal
+  closeModal();
+});
