@@ -126,40 +126,6 @@ main {
     height: inherit;
 }
 
-.selectdiv label {
-    width: 100%;
-}
-
-.selectdiv::after {
-    position: absolute;
-    right: 15px;
-    top: 15px;
-    content: ' >';
-    transform: var(--selectdivAfterTransform, rotate(90deg));
-    pointer-events: none;
-    color: #fff;
-}
-
-.selectdiv {
-    position: relative;
-    margin: 0;
-    width: 140px;
-    font-size: 16px;
-    font-weight: bold;
-}
-  
-.selectdiv select {
-    border: none;
-    border-radius: 5px;
-    padding: 0px 14px;
-    appearance: none;
-    height: 50px;
-    width: 100%;
-    color: #FFF;
-    background-color: #901C1C;
-    font-size: inherit;
-}
-
 .media ul {
     padding: 0;
     display: flex;
@@ -184,4 +150,79 @@ main {
 
 .price-and-likes i {
     margin-left: 5px;
+}
+
+.dropdown-wrapper {
+    position: relative;
+    border: none;
+    border-radius: 5px;
+    appearance: none;
+    height: 40px;
+    width: 140px;
+    background-color: #901C1C;
+    color: #FFF;
+    font-size: inherit;
+    cursor: pointer;
+}
+
+.dropdown-wrapper .dropdown-ul {
+    position: absolute;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    visibility: hidden;
+    opacity: 0;
+    transition: .3s;
+    width: 100%;
+    color: #FFF;
+    left: 0;
+}
+
+.dropdown-wrapper .dropdown-label::after {
+    position: absolute;
+    right: 25px;
+    content: ' >';
+    transform: var(--selectdivAfterTransform, rotate(90deg));
+    pointer-events: none;
+}
+
+.dropdown-wrapper .dropdown-ul li {
+    margin-top: 0;
+    padding: 0 10px 10px 10px;
+    background-color: #901C1C;
+}
+
+.dropdown-wrapper .dropdown-ul li:nth-child(3) {
+    border-radius: 0 0 5px 5px;
+}
+
+.dropdown-wrapper .dropdown-ul a {
+    display: block;
+    padding-left: 5px;
+    text-decoration: none;
+    color: #FFF;
+}
+
+.dropdown-wrapper .dropdown-label {
+    position: relative;
+    right: 0;
+    display: block;
+    width: 100%;
+    /* height: 50px; */
+    padding-top: 10px;
+    padding-left: 10px;
+}
+
+.dropdown-wrapper .dropdown-chk:checked ~ .dropdown-ul {
+    visibility: visible;
+    opacity: 1;
+}
+
+hr {
+    margin-bottom: 0;
+    color: #FFF;
+}
+
+input[type="checkbox"] {
+    display: none;
 }

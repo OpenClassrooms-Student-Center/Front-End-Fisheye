@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="fr">
   <head>
     <meta charset="utf-8">
     <title>Fisheye - photographe </title>
@@ -22,14 +22,16 @@
       <section class="filter">
         <form> 
           <label>Trier par</label>
-          <div class="selectdiv">
-            <select>  
-              <option value="#">Popularité</option>
-              <option value="#">Date</option> 
-              <option value="#">Titre</option> 
-            </select>
-          </div>   
-          </form> 
+          <div class="dropdown-wrapper">
+            <input type="checkbox" class="dropdown-chk" id="check1" />
+            <label for="check1" class="dropdown-label">Popularité</label>
+            <ul class="dropdown-ul">
+              <li><hr></li>
+              <li class="mediaDateDesc">Date<hr></li>
+              <li class="mediaTitleAsc">Titre</li>
+            </ul>
+          </div>
+        </form>
       </section>
       <section class="media">
         <ul>
@@ -71,5 +73,6 @@
     <script src="scripts/pages/photographer.js"></script>
     <script src="scripts/factories/photographer.js"></script>
     <script src="scripts/utils/contactForm.js"></script>
+    <script src="scripts/utils/lightbox.js "></script>
   </body>
 </html>

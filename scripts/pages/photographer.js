@@ -1,6 +1,7 @@
 "use_strict";
 
-const selectDivElt = document.querySelector(".selectdiv");
+const selectDivElt = document.querySelector(".dropdown-label");
+const ulMediaElt = document.querySelector(".media ul");
 
 async function getPhotographers() {
     const response = await fetch("data/photographers.json");
@@ -29,21 +30,83 @@ function getPhotographerMedia(media) {
 
 function getPhotographerMediaByPopular(media) {
     const photographerMedia = getPhotographerMedia(media);
+
     return photographerMedia.sort(function(a,b) { 
         return b.likes - a.likes 
     });
 }
 
-async function displayData(photographer, photographerPopularMedia) {
-    const ulMediaElt = document.querySelector(".media ul");
+function getPhotographerMediaByDateDesc(media) {
+    const photographerMedia = getPhotographerMedia(media);
+
+    return photographerMedia.sort(function(a,b) { 
+        const dateA = new Date(a.date);
+        const dateB = new Date(b.date);
+
+        return dateB - dateA;
+    });
+}
+
+function getPhotographerMediaByTitleAsc(media) {
+    const photographerMedia = getPhotographerMedia(media);
+
+    return photographerMedia.sort(function(a,b) { 
+        if (a.title < b.title) {
+            return -1;
+        } else if (a.title > b.title) {
+            return 1;
+        } else {
+            return 0;
+        }
+    });
+}
+
+function insertMediaDOM(media) {
+    const photographerMediaModel = photographerMediaFactory(media);
+    const mediaCardDOM = photographerMediaModel.getMediaCardDOM();
+    ulMediaElt.appendChild(mediaCardDOM);
+}
+
+function setPhotographerPopularMedia(photographerPopularMedia) {
+    const mediaByPopularElt = document.querySelector(".dropdown-label");
+
+    mediaByPopularElt.addEventListener("click", () => {
+        ulMediaElt.innerHTML = "";
+        photographerPopularMedia.forEach(media => {
+            insertMediaDOM(media);
+        })
+    });
+}
+
+function setMediaByDateDesc(mediaByDateDesc) {
+    const mediaDateDescElt = document.querySelector(".mediaDateDesc");
+
+    mediaDateDescElt.addEventListener("click", () => {
+        ulMediaElt.innerHTML = "";
+        mediaByDateDesc.forEach(media => {
+            insertMediaDOM(media);
+        });
+    });
+}
+
+function setMediaByTitleAsc(mediaByTitleAsc) {
+    const mediaTitleAscElt = document.querySelector(".mediaTitleAsc");
+
+    mediaTitleAscElt.addEventListener("click", () => {
+        ulMediaElt.innerHTML = "";
+        mediaByTitleAsc.forEach(media => {
+            insertMediaDOM(media);
+        })
+    });
+}
+
+async function displayData(photographer, photographerPopularMedia, mediaByDateDesc, mediaByTitleAsc) {
     let totalLikes = getPhotographerTotalLikes(photographerPopularMedia);
 
-    photographerPopularMedia.forEach(media => {
-        const photographerMediaModel = photographerMediaFactory(media);
-        const mediaCardDOM = photographerMediaModel.getMediaCardDOM();
-        ulMediaElt.appendChild(mediaCardDOM);
-    });
-    
+    photographerPopularMedia.forEach(media => { insertMediaDOM(media) });
+    setPhotographerPopularMedia(photographerPopularMedia);
+    setMediaByDateDesc(mediaByDateDesc)
+    setMediaByTitleAsc(mediaByTitleAsc);
     photographerContactFactory(photographer);
     likePhotographerMedia();
     photographerPriceAndTotalLikesFactory(photographer, totalLikes);
@@ -67,8 +130,10 @@ async function getPhotographerData() {
     
     const photographer = getPhotographerByName(photographers);
     const photographerPopularMedia = getPhotographerMediaByPopular(media);
+    const mediaByDateDesc = getPhotographerMediaByDateDesc(media);
+    const mediaByTitleAsc = getPhotographerMediaByTitleAsc(media);
 
-    displayData(photographer, photographerPopularMedia);
+    displayData(photographer, photographerPopularMedia, mediaByDateDesc, mediaByTitleAsc);
     displayContactForm(photographer);
 }
 
@@ -110,3 +175,4 @@ function likePhotographerMedia() {
 
 getPhotographerData();
 turnChevronDropdownList();
+
