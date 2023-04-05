@@ -40,20 +40,31 @@ class PhotographerPage {
         $articlePage.innerHTML = photographerPage;
         return $articlePage;
     }
+    renderMedia(media) {
+        if(media.image) {
+            return `<img src="/assets/photographers/${this._photographer.name}/${media.image}"  alt="${media.title}"/>`;
+        } else if (media.video) {
+            return `<video src="/assets/photographers/${this._photographer.name}/${media.video}" poster="${media.video}" alt="${media.title}"></video>`
+        }
+    }
 
     createPhotographerMedia() {
         const $articleMedias = document.createElement('article');
+
         const displayMedias = 
         `
         <div class="mediaDisplay_bloc">
             <a href="#" class="mediaDisplay_link">
-                <img src="/assets/photographers/${this._photographer.name}/${this._media.image}" alt="${this.title}"/>
+                ${this.renderMedia(this._media)}
                 <p class="mediaDisplay_infosTitle">${this._media.title}</p>
             </a>
             <div class="mediaDisplay_boxLike">
                 <p class="mediaDisplay_infosLike">${this._media.likes}</p>
-                <i class="fa-solid fa-heart"></i>
+                <i class="fa-solid fa-heart mediaDisplay_heart"></i>
             </div>
+        </div>
+        <div class="displayTarif">
+            <p class="displayTarif_likes"></p>
         </div>
         `
 

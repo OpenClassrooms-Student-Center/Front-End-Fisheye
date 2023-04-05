@@ -1,12 +1,12 @@
 
 class TypedataFactory {
-    constructor(media, type) {
-        if(type === "image"){
-            return new PhotographerMedia(media);
-        } else if(type === "video") {
-            return new PhotographerMedia(media);
+    constructor(media) {
+        if(media.image){
+            return new PhotographerMedia(media)
+        } else if(media.video) {
+            return new PhotographerMedia(media)
         } else {
-            return "Unknow format type !"
+            throw "Unknow format type !"
         }
     }
 }

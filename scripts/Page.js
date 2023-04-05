@@ -20,20 +20,25 @@ class Pages {
         const filteredMediaByPhotographer = mediaPhotographer.filter((media) => media.photographerId == photographerUrlId);
         const filteredPhotographer = PhotographersFile.filter((photographer) => photographer.id == photographerUrlId)[0];
         
-        console.log(filteredMediaByPhotographer );
+        const allMedias = filteredMediaByPhotographer.map(media => new TypedataFactory(media));
+        // const video = filteredMediaByPhotographer.map(media => new TypedataFactory(media, "video"));
+        // const fullMedia = image;
+        // const allMedias = new Set([...image, ...video]);
+        // console.log(allMedias)
         // je génère la vue de mes données en instanciant ma classe PhotographerPage
         const pagesPhotograph = new PhotographerPage(filteredPhotographer, filteredMediaByPhotographer).createPhotographerPage();
         this.photographPage.appendChild(pagesPhotograph);
         
-        // Je boucle sur les medias pour générer la vue  
+        // Je boucle sur les medias pour générer la vue    
+        console.log(allMedias);
+
         filteredMediaByPhotographer
         .forEach(filteredMediaByPhotographer => { 
             const TemplateMedia = new PhotographerPage(filteredPhotographer, filteredMediaByPhotographer).createPhotographerMedia()
             this.mediasPhotograph.appendChild(TemplateMedia)
         });
-         
+
     }
-    
 }
 const pages = new Pages();
 pages.main();
