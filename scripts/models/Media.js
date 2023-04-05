@@ -1,8 +1,10 @@
 class PhotographerMedia {
     constructor(media) {
+        // this._media = media
         this._photographerId = media.photographerId
         this._title = media.title
         this._image = media.image
+        this._video = media.video
         this._likes = media.likes
         this._date = media.date
         this._price = media.price
@@ -29,7 +31,11 @@ class PhotographerMedia {
     }
 
     get image() {
-        return `/assets/photographers/${Photographer(this._photographer._name)}/${this._image}`
+        return this._image
+    }
+
+    get video() {
+        return this._video
     }
 
     get id() {
