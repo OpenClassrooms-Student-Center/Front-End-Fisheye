@@ -1,6 +1,5 @@
 console.log("Window location:", window.location)
 
-const urlSearchParams = URL.searchParams;
 let params = (new URL(window.location)).searchParams;
 
 console.log("parametres:", params)
@@ -55,30 +54,45 @@ async function filterData() {
 
 // FONCTION MEDIAS PHOTOGRAPHE
 
-// async function mediaData() {
-//     const photographersMedia = document.querySelector("main");
-//     const media = mediaFactory(mediaSelectedById);
-//     const photographerMediaDOM= media.getUserMediaDOM();
-//     photographersMedia.appendChild(photographerMediaDOM);
-// }
-
 async function mediaData(mediaSelectedById) {
     const photographersMedia = document.querySelector("main");
-    const photographersSection = document.createElement('section')
-    photographersSection.classList.add('photographes_section')
+    const photographiesSection = document.createElement('section')
+    photographiesSection.classList.add('photographies_section')
     mediaSelectedById.forEach((media) => {
         const mediaModel = mediaFactory(media);
         const photographerMediaDOM= mediaModel.getUserMediaDOM();
-        photographersMedia.appendChild(photographersSection);
-        photographersSection.appendChild(photographerMediaDOM);
+        photographersMedia.appendChild(photographiesSection);
+        photographiesSection.appendChild(photographerMediaDOM);
     });    
 }
+
+// FONCTION ENCARD PRIX PHOTOGRAPHE
+
+async function likePriceData(photographeSelectedById) {
+    const photographersLikePrice = document.querySelector("main");
+    const photographerPrice = photographerFactory(photographeSelectedById);
+    const userPriceDOM = photographerPrice.getLikesPrice();
+    photographersLikePrice.appendChild(userPriceDOM);
+};
+
+
+// FONCTION MODAL FORM
+function formData() {
+    const formSelect = document.querySelector("main");
+    const formGen = contactForm(photographeSelectedById);
+    const formDOM = formGen.getContactFormDOM();
+    formSelect.appendChild(formDOM);
+};
+
+
 
 async function init() {
     // Récupère les datas des photographes et créé la bannière
     bannerData(photographeSelectedById);
     filterData();
     mediaData(mediaSelectedById);
+    likePriceData(photographeSelectedById);
+    formData(photographeSelectedById);
 };
     
 init();

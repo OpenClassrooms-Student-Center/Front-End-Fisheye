@@ -1,6 +1,5 @@
 function photographerFactory(data) {
-    const { id, name, city, country, tagline, price, portrait } = data;
-
+    const { name, id, city, country, tagline, price, portrait } = data;
     // Template card photographe page d'accueil
 
     const wrapper = document.createElement('div');
@@ -36,7 +35,8 @@ function photographerFactory(data) {
     wrapperBanner.setAttribute('data-hidden-on-modal', '');
 
     function getUserBannerDOM() {
-        const banner = `
+        const banner = 
+        `
             <article aria-label = "Profil du photographe">
                 <div class="profil_description">
                     <h2>${name}</h2>
@@ -44,7 +44,7 @@ function photographerFactory(data) {
                     <h4>${tagline}</h4>
                 </div>
                 <div class="profil_description_button">
-                    <button class="contact_button" aria-label="Contacter ${name}" onclick="${displayModal()}">Contactez-moi</button>
+                    <button class="contact_button" aria-label="Contacter ${name}" onmouseover="" onclick="displayModal()">Contactez-moi</button>
                 </div>
                 <div class="profil_picture">
                     <img src="${picture}" alt="${portrait}">
@@ -59,7 +59,6 @@ function photographerFactory(data) {
 
     const wrapperMediaFilter = document.createElement('div');
     wrapperMediaFilter.classList.add('photographe_filter');
-    let observer
 
     function getUserMediaFilterDOM() {
         const filter = `
@@ -78,8 +77,28 @@ function photographerFactory(data) {
         return wrapperMediaFilter
     }
 
+    // Template encard prix photographe
+    const wrapperLikesPrice = document.createElement('div');
+    wrapperLikesPrice.classList.add('likes_price');
 
-    return { id, name, city, country, tagline, price, picture, getUserCardDOM, getUserBannerDOM, getUserMediaFilterDOM }
+    function getLikesPrice() {
+        const LikesPrice = `
+            <div id="total-likes">${sumLikes()}<span class="material-symbols-outlined">favorite</span></div>
+            <span>${price}€ / jour</span>
+        `
+
+        wrapperLikesPrice.innerHTML=LikesPrice;
+        sumLikes ()
+        return wrapperLikesPrice
+    }
+
+    function sumLikes () {
+        let sum = 0 
+        mediaSelectedById.forEach(media => {
+        sum += media.likes
+    })
+        return sum
+    }
+
+    return { id, name, city, country, tagline, price, picture, getUserCardDOM, getUserBannerDOM, getUserMediaFilterDOM, getLikesPrice}
 }
-
-
