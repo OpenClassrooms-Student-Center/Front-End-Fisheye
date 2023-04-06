@@ -67,35 +67,38 @@ function insertMediaDOM(media) {
     ulMediaElt.appendChild(mediaCardDOM);
 }
 
-function setPhotographerPopularMedia(photographerPopularMedia) {
+function setPhotographerPopularMedia(photographerPopularMedia, totalLikes) {
     const mediaByPopularElt = document.querySelector(".dropdown-label");
 
     mediaByPopularElt.addEventListener("click", () => {
         ulMediaElt.innerHTML = "";
         photographerPopularMedia.forEach(media => {
             insertMediaDOM(media);
-        })
+            likePhotographerMedia(totalLikes);
+        });
     });
 }
 
-function setMediaByDateDesc(mediaByDateDesc) {
+function setMediaByDateDesc(mediaByDateDesc, totalLikes) {
     const mediaDateDescElt = document.querySelector(".mediaDateDesc");
 
     mediaDateDescElt.addEventListener("click", () => {
         ulMediaElt.innerHTML = "";
         mediaByDateDesc.forEach(media => {
             insertMediaDOM(media);
+            likePhotographerMedia(totalLikes);
         });
     });
 }
 
-function setMediaByTitleAsc(mediaByTitleAsc) {
+function setMediaByTitleAsc(mediaByTitleAsc, totalLikes) {
     const mediaTitleAscElt = document.querySelector(".mediaTitleAsc");
 
     mediaTitleAscElt.addEventListener("click", () => {
         ulMediaElt.innerHTML = "";
         mediaByTitleAsc.forEach(media => {
             insertMediaDOM(media);
+            likePhotographerMedia(totalLikes);
         })
     });
 }
@@ -104,11 +107,11 @@ async function displayData(photographer, photographerPopularMedia, mediaByDateDe
     let totalLikes = getPhotographerTotalLikes(photographerPopularMedia);
 
     photographerPopularMedia.forEach(media => { insertMediaDOM(media) });
-    setPhotographerPopularMedia(photographerPopularMedia);
-    setMediaByDateDesc(mediaByDateDesc)
-    setMediaByTitleAsc(mediaByTitleAsc);
+    likePhotographerMedia(totalLikes);
+    setPhotographerPopularMedia(photographerPopularMedia, totalLikes);
+    setMediaByDateDesc(mediaByDateDesc, totalLikes)
+    setMediaByTitleAsc(mediaByTitleAsc, totalLikes);
     photographerContactFactory(photographer);
-    likePhotographerMedia();
     photographerPriceAndTotalLikesFactory(photographer, totalLikes);
 }
 
@@ -151,24 +154,33 @@ function turnChevronDropdownList() {
     });
 }
 
-function likePhotographerMedia() {
+function likePhotographerMedia(totalLikes) {
     const loveElts = document.querySelectorAll(".media i");
     const likesNumberElts = document.querySelectorAll(".media span");
 
     for (i = 0; i < loveElts.length; i++) {
         const loveElt = loveElts[i];
         const likesNumberElt = likesNumberElts[i];
-        let likesNumber = likesNumberElts[i].textContent;
-        let liked = false;
-        
-        loveElt.addEventListener("click", () => {
-            if (liked === false) {
-                likesNumberElt.textContent = likesNumber ++;
-                liked = true;
-            } else {
-                likesNumberElt.textContent = likesNumber --;
+        let likesNumber = likesNumberElt.textContent;
+
+        let liked = true;
+        loveElt.addEventListener("click", (event) => {
+            const totalLikesElt = document.querySelector(".total-likes b");
+
+            if (liked === true) {
+                likesNumber++;
+                totalLikes++;
+                likesNumberElt.textContent = likesNumber;
+                totalLikesElt.textContent = totalLikes;
                 liked = false;
+            } else {
+                likesNumber--;
+                totalLikes--;
+                likesNumberElt.textContent = likesNumber;
+                totalLikesElt.textContent = totalLikes;
+                liked = true;
             }
+            event.preventDefault();
         });
     }
 }
