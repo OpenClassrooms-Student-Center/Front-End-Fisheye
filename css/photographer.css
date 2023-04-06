@@ -2,12 +2,12 @@ main {
     margin: 0 100px;
 }
 
-.photograph_header {
+.photograph-header {
     background-color: #FAFAFA;
     height: 300px;
 }
 
-.photograph_header ul {
+.photograph-header ul {
     margin: 0;
     padding: 0 40px;
     display: flex;
@@ -16,7 +16,7 @@ main {
     width: 100%;
 }
 
-.contact_button {
+.contact-button {
     border: none;
     border-radius: 5px;
     font-weight: bold;
@@ -25,20 +25,20 @@ main {
     cursor: pointer;
 }
 
-.photograph_header .contact_button {
+.photograph-header .contact-button {
     padding: 11px;
     width: 170px;
     height: 60px;
     font-size: 18px;
 }
 
-.modal form .contact_button {
+.modal form .contact-button {
     width: 140px;
     height: 60px;
     font-size: 16px;
 }
 
-#contact_modal {
+#contact-modal {
     display: none;
     position: absolute;
     top: 60px;
@@ -91,8 +91,8 @@ main {
     text-align: center;
 }
 
-.photograph_header .contact_button:hover,
-.photograph_header .contact_button:focus {
+.photograph-header .contact-button:hover,
+.photograph-header .contact-button:focus {
     background-color: #D3573C;
     color: #000;
 }

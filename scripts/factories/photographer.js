@@ -2,14 +2,14 @@
 
 // header main elements
 const mainElt = document.querySelector("main");
-const ulHeaderElt = document.querySelector(".photograph_header ul");
+const ulHeaderElt = document.querySelector(".photograph-header ul");
 const liPhotographerDataElt = document.createElement("li");
 const liContactElt = document.createElement("li");
 const liImgElt = document.createElement("li");
 const nameElt = document.createElement("p");
 const countryElt = document.createElement("p");
 const taglineElt = document.createElement("p");
-const buttonElt = document.querySelector("button[class='contact_button']");
+const buttonElt = document.querySelector("button[class='contact-button']");
 const imgElt = document.createElement("img");
 
 // header section content

@@ -1,7 +1,7 @@
 "use_strict";
 
 // DOM elements
-const modalElt = document.getElementById("contact_modal");
+const modalElt = document.getElementById("contact-modal");
 const firstNameElt = document.querySelector(".modal div:nth-child(2) input");
 const lastNameElt = document.querySelector(".modal div:nth-child(3) input");
 const emailElt = document.querySelector(".modal div:nth-child(4) input");
@@ -14,7 +14,7 @@ function photographerContactFormFactory(photographer) {
     const [{ name }] = photographer;
 
     function getUserContactFormDOM() {
-        const titleFormElt = document.querySelector("#contact_modal h2");
+        const titleFormElt = document.querySelector("#contact-modal h2");
         const namePhotographerFormElt = document.createTextNode(" " + name);
         titleFormElt.appendChild(namePhotographerFormElt);
     }
