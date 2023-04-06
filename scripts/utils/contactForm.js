@@ -7,6 +7,7 @@ const lastNameElt = document.querySelector(".modal div:nth-child(3) input");
 const emailElt = document.querySelector(".modal div:nth-child(4) input");
 const messageElt = document.querySelector(".modal div:nth-child(5) textarea");
 const formElt = document.querySelector(".modal form");
+const successMessageElt = document.querySelector(".modal div:nth-child(1) p");
 
 // functions
 function photographerContactFormFactory(photographer) {
@@ -29,7 +30,12 @@ function displayModal() {
 // close modal
 function closeModal() {
     modalElt.style.display = "none";
-    location.reload();
+    formElt.reset();
+    successMessageElt.remove();
+    const spanElts = document.querySelectorAll("span");
+    spanElts.forEach((spanElt) => {
+        spanElt.remove();
+    });
 }
 
 function validateFirstName() {
@@ -116,7 +122,6 @@ function createErrorMessage(divElt, errorMessage, spanErrorMessage) {
 }
 
 function displaySuccessMessage() {
-    const successMessageElt = document.querySelector(".modal div:nth-child(1) span");
     successMessageElt.textContent = "Votre message ainsi vos coordonnées sont affichés avec succès dans la console";
     successMessageElt.style.color = "#901C1C";
     successMessageElt.style.width = "100%";
@@ -125,20 +130,19 @@ function displaySuccessMessage() {
 
 // display user data in console
 function displayUserDataInConsole() {
-
     const firstName = validateFirstName();
     const lastName = validateLastName();
     const email = validateEmail();
     const message = validateMessage();
     
     if (firstName && lastName && email && message) {
-        console.log(" ================================ ");
-        console.log("Prénom: " + firstNameElt.value);
-        console.log("Nom: " + lastNameElt.value);
-        console.log("Email: " + emailElt.value);
-        console.log("Message: " + messageElt.value);
-
         formElt.addEventListener("submit", (event) => {
+            console.log(" ================================ ");
+            console.log("Prénom: " + firstNameElt.value);
+            console.log("Nom: " + lastNameElt.value);
+            console.log("Email: " + emailElt.value);
+            console.log("Message: " + messageElt.value);
+
             event.preventDefault();
             formElt.reset();
             displaySuccessMessage();
