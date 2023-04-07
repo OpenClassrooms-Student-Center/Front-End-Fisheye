@@ -9,7 +9,7 @@ import { getPhotographers } from "../api/api.js";
 //     throw new Error ('Impossible de contacter le serveur')
 // }
 
-getPhotographers().then(photographers => console.log(photographers))
+getPhotographers().then(photographers => console.log('photographes :', photographers))
 
 async function displayData(photographers) {
     const photographersSection = document.querySelector(".photographer_section");

@@ -1,36 +1,48 @@
-import { parentDOM, mediaArrayById, arrByID, userId} from "../models/photographer.js";
+import { parentDOM, mediaArrayById, userId} from "../models/photographer.js";
 import { enableBodyScroll, disableBodyScroll } from "./bodyScrollLock.js";
 /**
  * 
  * @property {HTMLElement} element
- * @property {string[]} images 
- * @property {string} url image actuellement visible
+ * @property {{ id: number, src: string, title: string, type: "img" | "video" }[]} images 
+ * @property {number} id current id
  */
 export class Lightbox {
 
     static init () {
-        // const data = Array.from(mediaSelectedById)
-        const links = Array.from(document.querySelectorAll('img[src$=".jpg"], video[src$=".mp4"]'))
-        // console.log(links)
-        const images = links.map(link => link.getAttribute('href'))
+        let links = Array.from(document.querySelectorAll('img[src$=".jpg"], video[src$=".mp4"]'))
+        let images = links.map(link => {
+            let id = link.getAttribute('id')
+            let src = link.getAttribute('src')
+            let title = link.getAttribute('alt')
+            let type = src.split(".")[1] === "mp4" ? "video" : "img"
+
+            return {id, src, title, type}
+        })
 
         links.forEach(link => link.addEventListener('click', e => {
-                e.preventDefault()
-                new Lightbox(e.currentTarget.getAttribute('src'), images)
-            }))
+            e.preventDefault()
+            let {id, alt, src} = e.target
+            let currentType = e.target.localName
+            new Lightbox(images, id, src, alt, currentType)
+        }))
     }
     
     /**
      * 
-     * @param {string} url URL de l'image
+     * @param {number} id
      */
-    constructor(url, images, title, id) {
+    constructor(images, id, url, title, type) {
+        // init variables
         this.id = id
         this.images = images
-        this.title = title
+
         this.element = this.buildDom(url)
         // this.loadFactory(url)
-        this.loadImage(url)
+        if(type === "img"){
+            this.loadImage(id, url, title)
+        }else{
+            this.loadVideo(id, url, title)
+        }
         // this.loadVideo(url)
         this.onKeyUp = this.onKeyUp.bind(this)
         parentDOM.appendChild(this.element)
@@ -43,75 +55,71 @@ export class Lightbox {
      * 
      * @param {Media} media factory image ou une video
      */
-    // loadFactory(url) {
-    //     if (url.type === 'picture') {
-    //         this.loadImage()
-    //     } else if (url.type === 'video') {
-    //         this.loadVideo()
-    //     } else {
-    //         throw new Error('Error de chargement media')
-    //     }
-    // }
+    loadFactory(url) {
+        if (url.type === 'picture') {
+            this.loadImage()
+        } else if (url.type === 'video') {
+            this.loadVideo()
+        } else {
+            throw new Error('Error de chargement media')
+        }
+    }
 
 
 
     /**
      * 
-     * @param {string} url URL de l'image
+     * @param {number} id Image URL 
+     * @param {string} url Image URL 
+     * @param {string} title Image title 
      */
-    loadImage (url) {
-        this.url = null
+    loadImage (id, url, title) {
+        this.id = null
         const image = new Image()
         const container = this.element.querySelector('.lightbox__container')
+
+        // loader
         const loader = document.createElement('div')
         loader.classList.add('lightbox__loader')
         container.innerHTML = ''
         container.appendChild(loader)
+
+        // title
+        const titleContainer  = document.createElement('h2')
+        titleContainer.classList.add('lightbox__title')
+        titleContainer.innerHTML = title
+        
+
         image.onload = () => {
           container.removeChild(loader)
           container.appendChild(image)
-          container.appendChild(this.title)
-          this.url = url
+          container.appendChild(titleContainer)
+          this.id = id
         }
+
         image.src = url
-
-        // titre 
-        // const arrByID = mediaArrayById.filter(function(mediaId){
-        //     if(mediaId.photographerId == userId){
-        //         return mediaId.title
-        //     } 
-        // });
-
-        // console.log("liste des media:", arrByID)
-
-        const title = document.createElement('h2')
-        title.id= 'media-title'
-        title.innerHTML = arrByID
-        console.log(url) 
-        this.title = title
-        console.log('le titre est :', arrByID)
     }  
 
-    loadVideo(url) {
-        const video = document.createElement('video')
+    // loadVideo(id, url, title) {
+    //     const video = document.createElement('video')
 
-        const container = this.element.querySelector('.lightbox__container')
-        // const loader = document.createElement('div')
-        // // loader.classList.add('lightbox__loader')
-        // // container.appendChild(loader)
-        container.appendChild(video)
+    //     const container = this.element.querySelector('.lightbox__container')
+    //     // const loader = document.createElement('div')
+    //     // // loader.classList.add('lightbox__loader')
+    //     // // container.appendChild(loader)
+    //     container.appendChild(video)
 
-        // const title = document.createElement('h2')
-        // title.id= 'media-title'
-        // title.innerHTML = mediaSelectedById.find((element) => element.title = title)
-        // this.$title = title
+    //     const title = document.createElement('h2')
+    //     title.id= 'media-title'
+    //     title.innerHTML = mediaSelectedById.find((element) => element.title = title)
+    //     this.$title = title
 
-        // video.onload = function () {
-        //     container.removeChild(loader)
-        //     container.appendChild(video)
-        // }
-        video.src = url
-    }
+    //     // video.onload = function () {
+    //     //     container.removeChild(loader)
+    //     //     container.appendChild(video)
+    //     // }
+    //     video.src = url
+    // }
 
     /**
      * 
@@ -148,11 +156,12 @@ export class Lightbox {
      */
     next(e) {
         e.preventDefault()
-        let i = this.images.findIndex(image => image === this.url)
-        if (i === this.images.length - 1) {
-            i = -1
+        let currentIndex = this.images.findIndex(image => image.id === this.id)
+        if (currentIndex === this.images.length - 1) {
+            currentIndex = -1
         }
-        this.loadImage(this.images[i + 1])
+        let {id, src, title} = this.images[currentIndex + 1]
+        this.loadImage(id, src, title)
     }
 
       /**
@@ -161,11 +170,12 @@ export class Lightbox {
      */
     prev (e) {
         e.preventDefault()
-        let i = this.images.findIndex(image => image.id === this.url.id)
-        if (i === 0) {
-        i = this.images.length
+        let currentIndex = this.images.findIndex(image => image.id === this.id)
+        if (currentIndex === 0) {
+            currentIndex = this.images.length
         }
-        this.loadImage(this.images[i - 1])
+        let {id, src, title} = this.images[currentIndex - 1]
+        this.loadImage(id, src, title)
     }
 
     /**

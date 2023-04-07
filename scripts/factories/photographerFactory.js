@@ -1,6 +1,6 @@
-// import { mediaSelectedById } from "../pages/photographer.js";
-
-/*export*/ function photographerFactory(data) {
+import { mediaArrayById } from "../models/photographer.js";
+console.log(mediaArrayById)
+export function photographerFactory(data) {
     const { name, id, city, country, tagline, price, portrait } = data;
 
     // Template card photographe page d'accueil

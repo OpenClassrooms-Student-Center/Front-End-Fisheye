@@ -478,6 +478,10 @@ form input {
     background: url(../assets/icons/loader.svg) center center / 100% 100% no-repeat;
 }
 
+.lightbox__title{
+    color: #fff
+}
+
 #media-title {
     z-index: 3;
 }

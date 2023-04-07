@@ -3,12 +3,15 @@ export function mediaFactory(data) {
     const { id, photographerId, title, image, video, likes, date, price } = data;
     
     // Template media
-
+    // console.log(title)
     const wrapper = document.createElement('article');
     wrapper.classList.add("photographies")
 
     const picture = `assets/images/${data.photographerId}/${image}`;
     const mediaVideo = `assets/images/${data.photographerId}/${video}`;
+
+    // const media = data
+    // console.log(media.title)
     let compteur = likes
 
     function getUserMediaDOM() {
@@ -18,7 +21,7 @@ export function mediaFactory(data) {
                 <a href="${picture}" aria-label="lien vers l'image">
                     <article class="picture_block">
                         <div class="picture">
-                            <img src="${picture}" alt="${title}">
+                            <img id="${id}" src="${picture}" alt="${title}">
                         </div>
                     </article>
                 </a>
@@ -35,7 +38,7 @@ export function mediaFactory(data) {
                 <a href="${mediaVideo}" aria-label="lien vers l'image">
                     <article class="picture_block">
                         <div class="picture">
-                            <video src="${mediaVideo}" alt="${title}"></video>
+                            <video id="${id}" src="${mediaVideo}" alt="${title}"></video>
                         </div>
                     </article>
                 </a>
@@ -77,7 +80,7 @@ export function mediaFactory(data) {
         `
     
         wrapperLikesPrice.innerHTML=LikesPrice;
-        sumLikes ()
+        sumLikes()
         return wrapperLikesPrice
     }
     

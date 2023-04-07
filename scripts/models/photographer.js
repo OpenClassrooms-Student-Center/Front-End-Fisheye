@@ -1,21 +1,24 @@
 import { mediaFactory } from "../factories/mediaFactory.js";
+import { photographerFactory } from "../factories/photographerFactory.js";
 import { Lightbox } from "../factories/lightboxFactory.js";
-import { getPhotographers, getPhotographerById, getMediaByPhotographerId } from "../api/api.js";
+import { getPhotographers } from "../api/api.js";
 console.log("Window location:", window.location)
 
-// FETCH SUR LA CLASS API
+// RECUPERATION DES DATA DEPUIS L'API
 const data = await getPhotographers()
 console.log('la data', data)
+
 // RECUPERATION DES PARAM URL
 let params = (new URL(window.location)).searchParams;
 export let userId = params.get("id");
-console.log("id:", userId)
+console.log("id:", userId)   
 
 // RECUPERTATION DES DATA DES PHOTOGRAPHES
 const photographesData = data.photographers
 export const photographer = photographesData.find((element) => element.id == userId);
-console.log("liste des photographes:", photographer)
+console.log("liste des photographes:", photographer.price)
 
+// RECUPERTATION DES MEDIA DES PHOTOGRAPHES
 export const mediaArrayById = []
 const gallerieData = data.media
 gallerieData.forEach(element => {
@@ -24,11 +27,13 @@ gallerieData.forEach(element => {
     }
 })
 
-export const arrByID = mediaArrayById.filter(function(mediaId){
-    if(mediaId.photographerId == userId){
-        return mediaId.title
-    } 
-});
+console.log('gros test :', mediaArrayById)
+
+// const arrByID = mediaArrayById.filter(function(mediaId){
+//     if(mediaId.photographerId == userId){
+//         return console.log([mediaId.title])
+//     } 
+// });
 
 // console.log('gros test :', arrByID)
 
