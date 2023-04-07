@@ -21,18 +21,14 @@ class Pages {
         const filteredPhotographer = PhotographersFile.filter((photographer) => photographer.id == photographerUrlId)[0];
         
         const allMedias = filteredMediaByPhotographer.map(media => new TypedataFactory(media));
-        // const video = filteredMediaByPhotographer.map(media => new TypedataFactory(media, "video"));
-        // const fullMedia = image;
-        // const allMedias = new Set([...image, ...video]);
-        // console.log(allMedias)
-        // je génère la vue de mes données en instanciant ma classe PhotographerPage
+        
         const pagesPhotograph = new PhotographerPage(filteredPhotographer, filteredMediaByPhotographer).createPhotographerPage();
         this.photographPage.appendChild(pagesPhotograph);
         
         // Je boucle sur les medias pour générer la vue    
-        console.log(allMedias);
+        // console.log(allMedias);
 
-        filteredMediaByPhotographer
+        allMedias
         .forEach(filteredMediaByPhotographer => { 
             const TemplateMedia = new PhotographerPage(filteredPhotographer, filteredMediaByPhotographer).createPhotographerMedia()
             this.mediasPhotograph.appendChild(TemplateMedia)
