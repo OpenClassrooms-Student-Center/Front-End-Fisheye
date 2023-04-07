@@ -13,7 +13,8 @@ async function getPhotographer() {
     return photographer
 }
 
-async function getPhotographerMedias() {
+// get medias and set popularity by filtering default
+async function getPhotographerMedias(sortBy = 'popularity') {
     const parameters = new URLSearchParams(window.location.search)
     const idString = parameters.get('id')
   
@@ -21,10 +22,20 @@ async function getPhotographerMedias() {
     const photographerData = await fetch('../data/photographers.json')
       .then((data) => data.json())
   
-    // extract media objects for photographer
-    const media = photographerData.media.filter(
+    // extract media objects by photographer ID
+    let media = photographerData.media.filter(
       (mediaObj) => mediaObj.photographerId == idString
     )
+
+    // sort the media by the specified property for filtering options
+    if (sortBy === 'popularity') {
+      media.sort((a, b) => b.likes - a.likes)
+    } else if (sortBy === 'date') {
+      media.sort((a, b) => new Date(b.date) - new Date(a.date))
+    } else if (sortBy === 'title') {
+      media.sort((a, b) => a.title.localeCompare(b.title))
+    }
+
     return media
 }
 
@@ -75,22 +86,38 @@ async function displayCounts(photographer) {
     main.appendChild(countDOM);
 };
 
+// Get the select element and add an event listener to it
+const filterSelect = document.querySelector('#filter-select');
+filterSelect.addEventListener('change', (event) => {
+  // Get the selected option value
+  const sortBy = event.target.value;
+
+  // Update the URL with the selected option value
+  const parameters = new URLSearchParams(window.location.search);
+  parameters.set('sort', sortBy);
+  window.location.search = parameters.toString();
+});
+
 async function init() {
-    // get photographers infos
-    const photographer = await getPhotographer();
-    displayHeader(photographer);
-  
-    // get photographers media
-    const photographerMedias = await getPhotographerMedias();
-    displayMedia(photographerMedias);
+  // Get the sort filter from the URL parameters
+  const parameters = new URLSearchParams(window.location.search);
+  const sortBy = parameters.get('sort');
 
-    // display photographer's price
-    displayCounts(photographer);
+  // Get photographers infos
+  const photographer = await getPhotographer();
+  displayHeader(photographer);
 
-    // Add photographer's name to contact form title
-    const contactModalTitle = document.querySelector('#contact_modal_title');
-    contactModalTitle.innerHTML = `Contactez-moi ${photographer.name}`;
+  // Get photographers media with the specified sort filter
+  const photographerMedias = await getPhotographerMedias(sortBy);
+  displayMedia(photographerMedias);
+
+  // Display photographer's price
+  displayCounts(photographer);
+
+  // Add photographer's name to contact form title
+  const contactModalTitle = document.querySelector('#contact_modal_title');
+  contactModalTitle.innerHTML = `Contactez-moi ${photographer.name}`;
 }
-  
+
 init();
 

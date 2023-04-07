@@ -23,9 +23,9 @@
           <select id="filter-select" name="filter-select">
             <option value="popularité" selected>Popularité</option>
             <option value="date">Date</option>
-            <option value="titre">Titre</option>
+            <option value="title">Titre</option>
           </select>          
-        </div>              
+        </div>                    
         <!-- /filter button -->
       </div>
       <div class="photograph-body"></div>
@@ -62,17 +62,7 @@
     <script src="/scripts/factories/photographer.js"></script>
     <script src="/scripts/factories/medias.js"></script>
     <script src="/scripts/factories/lightbox.js"></script>
-    <script src="/scripts/factories/filter.js"></script>
     <script src="/scripts/pages/photographer.js"></script>
     <script src="/scripts/utils/contactForm.js"></script>
-    <script>
-      const filterSelect = document.getElementById('filter-select');
-      filterSelect.addEventListener('change', function() {
-        const selectedOption = this.value;
-        // TODO: Implement filtering based on selected option
-      });
-
-      filterSelect.value = 'popularity';
-    </script>
   </body>
 </html>
