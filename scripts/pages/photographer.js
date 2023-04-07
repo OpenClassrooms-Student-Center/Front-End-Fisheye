@@ -26,7 +26,7 @@ async function getPhotographerMedias() {
       (mediaObj) => mediaObj.photographerId == idString
     )
     return media
-  }
+}
 
 async function displayHeader(photographer) {
     const photographerHeader = document.querySelector('.photograph-header');
@@ -36,6 +36,7 @@ async function displayHeader(photographer) {
 };
 
 async function displayMedia(media) {
+    console.log(media)
     const mediaContainer = document.querySelector('.photograph-body');
 
     if (mediaContainer) {
@@ -92,6 +93,4 @@ async function init() {
 }
   
 init();
-
-  
 
