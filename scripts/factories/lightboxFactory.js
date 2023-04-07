@@ -1,4 +1,4 @@
-import { parentDOM, mediaSelectedById } from "../models/photographer.js";
+import { parentDOM, mediaArrayById, arrByID, userId} from "../models/photographer.js";
 import { enableBodyScroll, disableBodyScroll } from "./bodyScrollLock.js";
 /**
  * 
@@ -38,6 +38,7 @@ export class Lightbox {
         document.addEventListener('keyup', this.onKeyUp)
     }
 
+    
     /**
      * 
      * @param {Media} media factory image ou une video
@@ -75,12 +76,20 @@ export class Lightbox {
         image.src = url
 
         // titre 
+        // const arrByID = mediaArrayById.filter(function(mediaId){
+        //     if(mediaId.photographerId == userId){
+        //         return mediaId.title
+        //     } 
+        // });
+
+        // console.log("liste des media:", arrByID)
+
         const title = document.createElement('h2')
         title.id= 'media-title'
-        title.innerHTML = mediaSelectedById[1].title
-        console.log(url)
+        title.innerHTML = arrByID
+        console.log(url) 
         this.title = title
-        console.log(title.innerHTML)
+        console.log('le titre est :', arrByID)
     }  
 
     loadVideo(url) {

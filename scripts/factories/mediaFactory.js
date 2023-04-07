@@ -1,4 +1,4 @@
-import { mediaSelectedById, photographeSelectedById } from "../models/photographer.js";
+import { mediaArrayById, photographer } from "../models/photographer.js";
 export function mediaFactory(data) {
     const { id, photographerId, title, image, video, likes, date, price } = data;
     
@@ -73,7 +73,7 @@ export function mediaFactory(data) {
     function getLikesPrice() {
         const LikesPrice = `
             <div id="total-likes">${sumLikes()}<span class="material-symbols-outlined">favorite</span></div>
-            <span>${photographeSelectedById.price}€ / jour</span>
+            <span>${photographer.price}€ / jour</span>
         `
     
         wrapperLikesPrice.innerHTML=LikesPrice;
@@ -83,7 +83,7 @@ export function mediaFactory(data) {
     
     function sumLikes () {
         let sum = 0 
-        mediaSelectedById.forEach(media => {
+        mediaArrayById.forEach(media => {
         sum += media.likes
         })
         return sum

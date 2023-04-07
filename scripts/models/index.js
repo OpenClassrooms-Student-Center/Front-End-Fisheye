@@ -1,10 +1,13 @@
-async function getPhotographers() {
-    let photographers = await fetch('data/photographers.json')
-    if (photographers.ok === true) {
-        return photographers.json();
-    }
-    throw new Error ('Impossible de contacter le serveur')
-}
+import { getPhotographers } from "../api/api.js";
+// SAVE TEST
+
+// async function getPhotographers() {
+//     let photographers = await fetch('data/photographers.json')
+//     if (photographers.ok === true) {
+//         return photographers.json();
+//     }
+//     throw new Error ('Impossible de contacter le serveur')
+// }
 
 getPhotographers().then(photographers => console.log(photographers))
 
