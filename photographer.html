@@ -12,7 +12,7 @@
     <header role="banner">
       <img src="assets/images/logo.png" class="logo" alt="logo fishEye"/>
     </header>
-    <main id="main" aria-hidden="false">
+    <main id="main" role="main">
       <div class="photograph-header">
       
       </div>
@@ -21,10 +21,10 @@
       </div>
     </main>
     <div id="contact_modal">
-			<div class="modal" role="dialog" aria-hidden="true">
+			<div class="modal" role="dialog">
 				<header>
           <h2>Contactez-moi</h2>
-          <img src="assets/icons/close.svg" onclick="closeModal()" />
+          <img src="assets/icons/close.svg" onclick="closeModal()"/>
         </header>
 				<form id="formContact" action="photographer.html" name="contact" method="get" oninvalid="false" onsubmit="validData()">
           <div role="group" aria-labelledby="coordonées">
@@ -65,6 +65,7 @@
     <!-- utils  -->
     <script src="/scripts/utils/contactForm.js"></script>
     <script src="/scripts/utils/displayChevron.js"></script>
+    <script src="/scripts/utils/accessibility.js"></script>
     <!-- point d'entrée  -->
     <script src="scripts/Page.js"></script>
   </body>

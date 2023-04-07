@@ -13,20 +13,20 @@ class PhotographerPage {
         const $articlePage = document.createElement('article');
         const photographerPage =
         `
-        <article class="cardPhotographer" role="main">
+        <article class="cardPhotographer">
         
         <div class="cardPhotographer__infos">
         <h2>${this._photographer.name}</h2>
         <h3>${this._photographer.city}, ${this._photographer.country}</h3>
         <p>${this._photographer.tagline}</p>
         </div>
-        <button class="contact_button" onclick="displayModal()">Contactez-moi</button>
+        <button class="contact_button" onclick="displayModal()" aria-label="contactez-moi">Contactez-moi</button>
         <img src="${this._photographer.portrait}" alt="${altImg}"/>
         </article>
         
         <div class="filter">
         <p>Trier par</p>
-        <button class="filter_btn" onclick="displayChevron()">
+        <button class="filter_btn" onclick="displayChevron()" role="menubar" aria-expanded="false">
         <ul class="filter_list">
         <li class="filter_popular">Popularité<span class="chevron-down"><i class="fa-solid fa-chevron-down"></i></span> <span class="chevron-up"><i class="fa-solid fa-chevron-up"></i></span></li>
         <li class="filter_date">Date</li>

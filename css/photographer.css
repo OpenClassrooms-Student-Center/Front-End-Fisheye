@@ -179,14 +179,14 @@
     position: absolute;
     border-radius: 5px;
     background-color: #DB8876;
-    width: 50%;
+    width: 40%;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: space-between;
     padding: 35px;
     margin: auto;
-    top: 50%;
+    top: 70%;
     left: 50%;
     transform: translate(-50%, -50%);
 }
@@ -253,4 +253,7 @@ form textarea {
 }
 .success > textarea {
     border: 2px solid green;
+}
+[aria-hidden="true"] {
+    opacity: 0.5;
 }

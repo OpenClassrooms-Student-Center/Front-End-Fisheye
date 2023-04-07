@@ -1,11 +1,19 @@
 function displayModal() {
     const modal = document.getElementById("contact_modal");
+    const modalAttribute = document.querySelector(".modal");
+    const main = document.getElementById("main");
 	modal.style.display = "block";
+    modalAttribute.setAttribute("aria-hidden", "false");
+    main.setAttribute("aria-hidden", "true");
 }
 
 function closeModal() {
     const modal = document.getElementById("contact_modal");
+    const modalAttribute = document.querySelector(".modal");
+    const main = document.getElementById("main");
     modal.style.display = "none";
+    modalAttribute.setAttribute("aria-hidden", "true");
+    main.setAttribute("aria-hidden", "false");
 }
 
 const form = document.getElementById('formContact');
@@ -65,7 +73,6 @@ const validData = () => {
         setError(messageForm, "Saisissez un message de plus de 10 caractères");
     } else {
         setSuccess(messageForm);
-    }
-
-
+    }   
 }
+
