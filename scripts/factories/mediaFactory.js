@@ -1,8 +1,10 @@
-function mediaFactory(data) {
+import { mediaSelectedById, photographeSelectedById } from "../models/photographer.js";
+export function mediaFactory(data) {
     const { id, photographerId, title, image, video, likes, date, price } = data;
+    
     // Template media
 
-    const wrapper = document.createElement('div');
+    const wrapper = document.createElement('article');
     wrapper.classList.add("photographies")
 
     const picture = `assets/images/${data.photographerId}/${image}`;
@@ -51,7 +53,7 @@ function mediaFactory(data) {
         return wrapper;
     }
 
-    //compteur like
+    // Compteur like
     function compteurLike() {
         wrapper.querySelector('input[type="checkbox"]').addEventListener('click', (event) => {
             if(event.target.checked) {
@@ -64,5 +66,29 @@ function mediaFactory(data) {
         })
     }
 
-    return { id, photographerId, title, picture, video, compteur, date, price, getUserMediaDOM}
+    // Template encard prix photographe
+    const wrapperLikesPrice = document.createElement('div');
+    wrapperLikesPrice.classList.add('likes_price');
+    
+    function getLikesPrice() {
+        const LikesPrice = `
+            <div id="total-likes">${sumLikes()}<span class="material-symbols-outlined">favorite</span></div>
+            <span>${photographeSelectedById.price}€ / jour</span>
+        `
+    
+        wrapperLikesPrice.innerHTML=LikesPrice;
+        sumLikes ()
+        return wrapperLikesPrice
+    }
+    
+    function sumLikes () {
+        let sum = 0 
+        mediaSelectedById.forEach(media => {
+        sum += media.likes
+        })
+        return sum
+    }
+
+    // Lightbox 
+    return { id, photographerId, title, picture, video, compteur, date, price, getUserMediaDOM, getLikesPrice}
 }

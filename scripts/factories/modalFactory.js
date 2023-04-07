@@ -44,5 +44,6 @@ function contactForm(data) {
       wrapper.innerHTML=form
       return wrapper;
     }
+
     return { getContactFormDOM }
 }

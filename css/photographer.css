@@ -4,6 +4,27 @@
     padding: 0;
 }
 
+::-webkit-scrollbar {
+    width: 9px;
+}
+
+::-webkit-scrollbar-track {
+    background: #fff;
+    padding: 1px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #901C1C;
+    padding: 1px;
+    border-radius: 3px;
+}
+
+.lightbox::-webkit-scrollbar-thumb {
+    opacity: 0.5;
+    padding: 1px;
+    border-radius: 3px;
+}
+
 html, body {
     height: 100%;
 }
@@ -157,7 +178,7 @@ main {
     width: 350px;
     height: 350px;
     justify-self: center;
-    margin-top: 15px;
+    margin-top: 27px;
 }
 
 .photographies a {
@@ -193,7 +214,7 @@ main {
 
 .picture_title {
     color:#901C1C;
-    height: 50px;
+    height: 70px;
     display: flex;
     position: relative;
     justify-content: space-between;
@@ -202,37 +223,66 @@ main {
 .picture_title h6 {
     font-weight:400;
     font-size: 24px;
-    line-height: 49px;
-    margin: 0;
-    width: 70%;
+    margin-top: 10px;
     justify-content: flex-start;
+    width: 85%;
 }
 
 .media_compteur_like {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    align-items: center;
+    margin-top: 10px;
 }
 
 .compteur_like {
     font-size: 18px;
     margin-right: 3px;
     color: #901c1c;
+    font-weight: 600;
     justify-self: center;
+    position: absolute;
+    right: 23px;
+    top: 14px;
 }
 
 .likes {
-    position: relative;
+    position: absolute;
     color: #901c1c;
     height: 25px;
     width: 25px;
     background-color: transparent;
     appearance: none;
     cursor: pointer;
-    border:2px solid #000000;
+    right: -1px;
+    top: 15px;
 }
 
+.likes::before,
+.likes::after {
+    position: absolute;
+    /* top:1px;
+    left:-2px; */
+    content: '\e87e';
+    font-family: 'Material Icons';
+    font-style: normal;
+    font-size: 22px;
+    font-weight: 400;
+    z-index: 0;
+}
 
+.likes:hover {
+    animation: zoom .6s;
+}
+
+.likes::after {
+    content: '\e87d';
+    opacity: .5;
+    transition: opacity .2s ease-in-out;
+}
+
+.likes:checked::after {
+    opacity: 1;
+}
 
 
 
@@ -271,6 +321,9 @@ main {
 
 .contact_modal {
     display: none;
+    /* position: fixed;
+    top: 0px;
+    left: 25%; */
 }
 
 .modal {
@@ -282,6 +335,9 @@ main {
     justify-content: space-between;
     padding: 35px;
     margin: auto;
+    position: fixed;
+    top: 0px;
+    left: 25%;
 }
 
 .modal header {
@@ -327,3 +383,126 @@ form input {
     border: none;
     border-radius: 5px;
 }
+
+
+/* LIGHTBOX */
+
+.lightbox {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    max-height: 100vh;
+    height: 100%;
+    background-color: rgba(0, 0, 0, .3);
+    z-index: 1;
+    overflow: auto;
+    animation: lightboxIn 0.5s;
+    transition: opacity 0.3s;
+}
+
+.lightbox.fadeOut {
+    opacity: 0;
+}
+
+.lightbox__next,
+.lightbox__prev{
+    border: none;
+    background: url(../assets/icons/arrow.svg) center center / 100% 100% no-repeat;
+    width: 50px;
+    height: 100%;
+    position: fixed;
+    right: 20px;
+    top: 0px;
+    margin-top: -14px;
+    z-index: 2;
+    text-indent: -30000px;
+    opacity: 0.5;
+    cursor: pointer;
+    transition: opacity 0.3s;
+}
+
+.lightbox__prev{
+    right: auto;
+    left: 20px;
+    transform: rotate(180deg);
+}
+
+
+.lightbox__close{
+    width: 38px;
+    height: 38px;
+    border: none;
+    background: url(../assets/icons/closeBis.svg) center center / 100% 100% transparent;
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 3;
+    text-indent: -30000px;  
+    opacity: 0.5;
+    cursor: pointer;
+    transition: opacity 0.3s;
+}
+
+.lightbox__prev:hover,
+.lightbox__next:hover,
+.lightbox__close:hover {
+    opacity: 1;
+}
+
+.lightbox button:hover {
+    opacity: 1;
+}
+
+.lightbox__container {
+    margin-left: 70px;
+    margin-right: 70px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    min-height: 100vh;
+    animation: lightboxIn 0.5s;
+}
+
+.lightbox__container img {
+    max-width: 100%;
+    max-height: 90vh;
+    height: auto;
+}
+
+.lightbox__loader {
+    width: 50px;
+    height: 50px;
+    opacity: .5;
+    background: url(../assets/icons/loader.svg) center center / 100% 100% no-repeat;
+}
+
+#media-title {
+    z-index: 3;
+}
+
+/* KEYFRAMES */
+@keyframes zoom {
+    25% {
+      transform: scale(0.7);
+    }
+  
+    50% {
+      transform: scale(0.8);
+    }
+  
+    75% {
+        transform: scale(0.9);
+    }
+
+    100% {
+      transform: scale(1);
+    }
+}
+
+@keyframes lightboxIn {
+    from {opacity: 0;}
+    to {opacity: 1;}
+}
+

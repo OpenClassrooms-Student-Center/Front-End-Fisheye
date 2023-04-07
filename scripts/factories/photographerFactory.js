@@ -1,8 +1,10 @@
-function photographerFactory(data) {
-    const { name, id, city, country, tagline, price, portrait } = data;
-    // Template card photographe page d'accueil
+// import { mediaSelectedById } from "../pages/photographer.js";
 
-    const wrapper = document.createElement('div');
+/*export*/ function photographerFactory(data) {
+    const { name, id, city, country, tagline, price, portrait } = data;
+
+    // Template card photographe page d'accueil
+    const wrapper = document.createElement('section');
     wrapper.classList.add("photographes")
 
     const picture = `assets/photographers/${portrait}`;
@@ -30,7 +32,7 @@ function photographerFactory(data) {
 
     // Template banner page photographe
 
-    const wrapperBanner = document.createElement('div');
+    const wrapperBanner = document.createElement('section');
     wrapperBanner.classList.add('photographe_banner');
     wrapperBanner.setAttribute('data-hidden-on-modal', '');
 
@@ -57,7 +59,7 @@ function photographerFactory(data) {
 
     // Template filtres
 
-    const wrapperMediaFilter = document.createElement('div');
+    const wrapperMediaFilter = document.createElement('section');
     wrapperMediaFilter.classList.add('photographe_filter');
 
     function getUserMediaFilterDOM() {
@@ -73,32 +75,31 @@ function photographerFactory(data) {
             </div>
         `
         wrapperMediaFilter.innerHTML=filter;
-        observer = wrapperMediaFilter.querySelector('.selector')
         return wrapperMediaFilter
     }
 
-    // Template encard prix photographe
-    const wrapperLikesPrice = document.createElement('div');
-    wrapperLikesPrice.classList.add('likes_price');
+    // // Template encard prix photographe
+    // const wrapperLikesPrice = document.createElement('div');
+    // wrapperLikesPrice.classList.add('likes_price');
 
-    function getLikesPrice() {
-        const LikesPrice = `
-            <div id="total-likes">${sumLikes()}<span class="material-symbols-outlined">favorite</span></div>
-            <span>${price}€ / jour</span>
-        `
+    // function getLikesPrice() {
+    //     const LikesPrice = `
+    //         <div id="total-likes">${sumLikes()}<span class="material-symbols-outlined">favorite</span></div>
+    //         <span>${price}€ / jour</span>
+    //     `
 
-        wrapperLikesPrice.innerHTML=LikesPrice;
-        sumLikes ()
-        return wrapperLikesPrice
-    }
+    //     wrapperLikesPrice.innerHTML=LikesPrice;
+    //     sumLikes ()
+    //     return wrapperLikesPrice
+    // }
 
-    function sumLikes () {
-        let sum = 0 
-        mediaSelectedById.forEach(media => {
-        sum += media.likes
-    })
-        return sum
-    }
+    // function sumLikes () {
+    //     let sum = 0 
+    //     mediaSelectedById.forEach(media => {
+    //     sum += media.likes
+    // })
+    //     return sum
+    // }
 
-    return { id, name, city, country, tagline, price, picture, getUserCardDOM, getUserBannerDOM, getUserMediaFilterDOM, getLikesPrice}
+    return { id, name, city, country, tagline, price, picture, getUserCardDOM, getUserBannerDOM, getUserMediaFilterDOM/*, getLikesPrice*/}
 }
