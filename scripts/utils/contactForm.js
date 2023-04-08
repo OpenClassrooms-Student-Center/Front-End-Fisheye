@@ -49,16 +49,19 @@ const validData = () => {
     const lastName = document.getElementById('lastName');
     const mail = document.getElementById('email');
     const messageForm = document.getElementById('message');
+    const formValid = [];
 
     if(firstName.value.trim() == "") {
         setError(firstName, "Saisissez votre prénom");
     } else {
         setSuccess(firstName);
+        formValid.push("prenom: " + firstName.value);
     }
     if(lastName.value.trim() == "") {
         setError(lastName, "Saisissez votre Nom");
     } else {
          setSuccess(lastName);
+         formValid.push("Nom: " + lastName.value);
     }
     if(mail.value.trim() == "") {
         setError(mail, "Saisissez une adresse mail");
@@ -66,6 +69,7 @@ const validData = () => {
         setError(mail, "Saisissez une adresse mail valide");
     } else {
         setSuccess(mail);
+        formValid.push("Email: " + mail.value);
     }
     if(messageForm.value.trim() == "") {
         setError(messageForm, "Saisissez un message")
@@ -73,6 +77,9 @@ const validData = () => {
         setError(messageForm, "Saisissez un message de plus de 10 caractères");
     } else {
         setSuccess(messageForm);
+        formValid.push("Message: " + messageForm.value);
     }   
+    closeModal();
+    return console.log(formValid);
 }
 

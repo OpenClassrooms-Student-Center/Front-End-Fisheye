@@ -14,12 +14,12 @@
 .cardPhotographer__infos {
     margin: 20px 0;
 }
-.cardPhotographer__infos > h2{
+.cardPhotographer__infos > h1{
     color: #D3573C;
     font-size: 30px;
     margin-bottom: 10px;
 }
-.cardPhotographer__infos > h3{
+.cardPhotographer__infos > h2{
     color: #901C1C;
     font-size: 15px;
     margin: 0;
@@ -43,7 +43,7 @@
     background-color: #901C1C;
     border-radius: 5px;
     cursor: pointer;
-    margin: 70px 0;
+    margin: 65px 50px 0 0;
 }
 
 .filter {
@@ -242,17 +242,20 @@ form textarea {
 }
 .error > .errorMessage {
     font-size: 20px;
-    color: red;
+    color: black;
 }
 .error > input {
-    border: 2px solid red;
+    border: 2px solid #901C1C;
+}
+.error > textarea {
+    border: 2px solid #901C1C;
 }
 
 .success > input {
-    border: 2px solid green;
+    border: 2px solid #DB8876;
 }
 .success > textarea {
-    border: 2px solid green;
+    border: 2px solid #DB8876;
 }
 [aria-hidden="true"] {
     opacity: 0.5;

@@ -16,8 +16,8 @@ class PhotographerPage {
         <article class="cardPhotographer">
         
         <div class="cardPhotographer__infos">
-        <h2>${this._photographer.name}</h2>
-        <h3>${this._photographer.city}, ${this._photographer.country}</h3>
+        <h1>${this._photographer.name}</h1>
+        <h2>${this._photographer.city}, ${this._photographer.country}</h2>
         <p>${this._photographer.tagline}</p>
         </div>
         <button class="contact_button" onclick="displayModal()" aria-label="contactez-moi">Contactez-moi</button>
