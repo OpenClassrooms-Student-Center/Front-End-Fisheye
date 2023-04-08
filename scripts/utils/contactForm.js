@@ -18,6 +18,7 @@ function closeModal() {
 
 const form = document.getElementById('formContact');
 var formData = document.querySelectorAll(".formData");
+var formValid = [];
 const mailValid = /^[a-zA-Z0-9.-_]+[@]{1}[a-zA-Z0-9.-_]+[.]{1}[a-z]{2,10}$/;
 
 form.addEventListener('submit', function(e) {
@@ -45,23 +46,22 @@ const setSuccess = (element) => {
 }
 
 const validData = () => {
+    const formData = document.querySelectorAll(".formData");
+    const success = document.querySelectorAll(".success");
     const firstName = document.getElementById('firstName');
     const lastName = document.getElementById('lastName');
     const mail = document.getElementById('email');
     const messageForm = document.getElementById('message');
-    const formValid = [];
 
     if(firstName.value.trim() == "") {
         setError(firstName, "Saisissez votre prénom");
     } else {
-        setSuccess(firstName);
-        formValid.push("prenom: " + firstName.value);
+        setSuccess(firstName);       
     }
     if(lastName.value.trim() == "") {
         setError(lastName, "Saisissez votre Nom");
     } else {
-         setSuccess(lastName);
-         formValid.push("Nom: " + lastName.value);
+         setSuccess(lastName);    
     }
     if(mail.value.trim() == "") {
         setError(mail, "Saisissez une adresse mail");
@@ -69,17 +69,27 @@ const validData = () => {
         setError(mail, "Saisissez une adresse mail valide");
     } else {
         setSuccess(mail);
-        formValid.push("Email: " + mail.value);
     }
     if(messageForm.value.trim() == "") {
         setError(messageForm, "Saisissez un message")
     } else if( messageForm.value.trim().length < 10) {
         setError(messageForm, "Saisissez un message de plus de 10 caractères");
     } else {
-        setSuccess(messageForm);
-        formValid.push("Message: " + messageForm.value);
+        setSuccess(messageForm);    
     }   
-    closeModal();
-    return console.log(formValid);
+    
+    if(formData.length == success.length){
+        formValid.push("prenom: " + firstName.value);
+        formValid.push("Nom: " + lastName.value);
+        formValid.push("Email: " + mail.value);
+        formValid.push("Message: " + messageForm.value);
+        closeModal();
+        // window.location.reload();
+        return console.log(formValid);
+    } 
 }
 
+
+
+
+// Test de récupération des données
