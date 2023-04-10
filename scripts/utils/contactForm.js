@@ -9,7 +9,11 @@ const messageElt = document.querySelector(".modal div:nth-child(5) textarea");
 const formElt = document.querySelector(".modal form");
 const successMessageElt = document.querySelector(".modal div:nth-child(1) p");
 
-// functions
+/**
+ * 
+ * @param {object} photographer 
+ * @returns {HTMLElement}
+ */
 function photographerContactFormFactory(photographer) {
     const [{ name }] = photographer;
 
@@ -22,12 +26,10 @@ function photographerContactFormFactory(photographer) {
     return { getUserContactFormDOM }
 }
 
-// open modal
 function displayModal() {
 	modalElt.style.display = "block";
 }
 
-// close modal
 function closeModal() {
     modalElt.style.display = "none";
     formElt.reset();
@@ -38,6 +40,10 @@ function closeModal() {
     });
 }
 
+/**
+ * 
+ * @returns {boolean}
+ */
 function validateFirstName() {
     const removeErrorMessage = document.querySelector(".modal div:nth-child(2) span");
 
@@ -57,6 +63,10 @@ function validateFirstName() {
     return true
 }
 
+/**
+ * 
+ * @returns {boolean}
+ */
 function validateLastName() {
     const removeErrorMessage = document.querySelector(".modal div:nth-child(3) span");
     
@@ -75,6 +85,10 @@ function validateLastName() {
     return true;
 }
 
+/**
+ * 
+ * @returns {boolean}
+ */
 function validateEmail() {
     const removeErrorMessage = document.querySelector(".modal div:nth-child(4) span");
     
@@ -93,6 +107,10 @@ function validateEmail() {
     return true;
 }
 
+/**
+ * 
+ * @returns {boolean}
+ */
 function validateMessage() {
     const removeErrorMessage = document.querySelector(".modal div:nth-child(5) span");
     
@@ -111,6 +129,12 @@ function validateMessage() {
     return true;
 }
 
+/**
+ * 
+ * @param {HTMLElement} divElt 
+ * @param {string} errorMessage 
+ * @param {HTMLElement} spanErrorMessage 
+ */
 function createErrorMessage(divElt, errorMessage, spanErrorMessage) {
     const spanElt = document.createElement("span");
     spanElt.textContent = errorMessage;

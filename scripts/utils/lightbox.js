@@ -5,7 +5,6 @@ const slidesToScroll = 1;
 const slidesVisibles = 1;
 let currentItem = 0; 
     
-// functions 
 function openlightboxModal() {
 	modalLightboxElt.style.display = "block";
     setWidthCarouselItem();
@@ -30,6 +29,10 @@ function prev() {
     scrollToItem(currentItem - slidesToScroll);
 }
 
+/**
+ * 
+ * @param {number} index
+ */
 function scrollToItem(index) {
     let itemsElt = document.querySelectorAll(".carousel-item");
 

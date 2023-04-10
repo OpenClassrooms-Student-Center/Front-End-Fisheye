@@ -1,7 +1,12 @@
 "use_strict";
 
-// Functions
-
+/**
+ * 
+ * @param {number} id 
+ * @param {string} name 
+ * @param {HTMLElement} aElt 
+ * @param {HTMLElement} articleElt 
+ */
 function addLinkElt(id, name, aElt, articleElt) {
     aElt.setAttribute("href","photographer.html?name=" + name + "&id=" + id);
     aElt.style.textDecoration = "none";
@@ -9,11 +14,23 @@ function addLinkElt(id, name, aElt, articleElt) {
     articleElt.appendChild(aElt);
 }
 
+/**
+ * 
+ * @param {HTMLElement} figureElt 
+ * @param {HTMLElement} aElt 
+ */
 function addFigureElt(figureElt, aElt) {
     figureElt.style.textAlign = "center"
     aElt.appendChild(figureElt);
 }
 
+/**
+ * 
+ * @param {string} name 
+ * @param {string} picture 
+ * @param {HTMLElement} imgElt 
+ * @param {HTMLElement} figureElt 
+ */
 function setPhotographerImg(name, picture, imgElt, figureElt) {
     imgElt.setAttribute("src", picture);
     imgElt.style.borderRadius = "50%";
@@ -22,6 +39,12 @@ function setPhotographerImg(name, picture, imgElt, figureElt) {
     figureElt.appendChild(imgElt);
 }
 
+/**
+ * 
+ * @param {string} name 
+ * @param {HTMLElement} nameElt 
+ * @param {HTMLElement} figureElt 
+ */
 function setPhotographerName(name, nameElt, figureElt) {
     nameElt.style.margin = "15px 0 10px 0";
     nameElt.textContent = name;
@@ -29,12 +52,23 @@ function setPhotographerName(name, nameElt, figureElt) {
     figureElt.appendChild(nameElt);
 }
 
+/**
+ * 
+ * @param {HTMLElement} figureElt 
+ * @param {HTMLElement} figCaptionElt 
+ */
 function addFigCaptionElt(figureElt, figCaptionElt) {
     figCaptionElt.style.lineHeight = "1.3rem";
     figureElt.appendChild(figCaptionElt);
 }
 
-// create h element that display photographer tagline
+/**
+ * 
+ * @param {string} city 
+ * @param {string} country 
+ * @param {HTMLElement} countryElt 
+ * @param {HTMLElement} figCaptionElt 
+ */
 function setPhotographerCountry(city, country, countryElt, figCaptionElt) {
     countryElt.style.margin = "0 0";
     countryElt.textContent = `${city}, ${country}`;
@@ -42,7 +76,12 @@ function setPhotographerCountry(city, country, countryElt, figCaptionElt) {
     figCaptionElt.appendChild(countryElt);
 }
 
-// create p element that display photographer tabline
+/**
+ * 
+ * @param {string} tagline 
+ * @param {HTMLElement} taglineElt 
+ * @param {HTMLElement} figCaptionElt 
+ */
 function setPhotographerTagline(tagline, taglineElt, figCaptionElt) {
     taglineElt.style.margin = "0 0";
     taglineElt.textContent = tagline;
@@ -51,6 +90,12 @@ function setPhotographerTagline(tagline, taglineElt, figCaptionElt) {
     figCaptionElt.appendChild(taglineElt);
 }
 
+/**
+ * 
+ * @param {number} price 
+ * @param {HTMLElement} priceElt 
+ * @param {HTMLElement} figCaptionElt 
+ */
 function setPhotographerPrice(price, priceElt, figCaptionElt) {
     priceElt.style.margin = "0 0";
     priceElt.textContent = `${price}/jour`;
@@ -59,7 +104,11 @@ function setPhotographerPrice(price, priceElt, figCaptionElt) {
     figCaptionElt.appendChild(priceElt);
 }
 
-// displaying photographers data
+/**
+ * 
+ * @param {object} data 
+ * @returns {HTMLElement}
+ */
 function photographerFactory(data) {
     const { id, name, portrait, city, country, tagline, price } = data;
     const picture = `assets/photographers/${portrait}`;

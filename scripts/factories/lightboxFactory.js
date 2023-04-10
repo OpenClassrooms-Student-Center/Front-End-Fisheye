@@ -1,11 +1,22 @@
 
-// functions 
+// functions
+
+/**
+ * 
+ * @param {string} picture 
+ * @param {HTMLElement} itemElt 
+ */
 function addImgMedia(picture, itemElt) {
     const imgMediaElt = document.createElement("img");
     imgMediaElt.setAttribute("src", picture);
     itemElt.appendChild(imgMediaElt);
 }
 
+/**
+ * 
+ * @param {string} srcVideo 
+ * @param {HTMLElement} itemElt
+ */
 function addVideoMedia(srcVideo, itemElt) {
     const videoMediaElt = document.createElement("video");
     const srcElt = document.createElement("source");
@@ -16,12 +27,21 @@ function addVideoMedia(srcVideo, itemElt) {
     itemElt.appendChild(videoMediaElt);
 }
 
+/**
+ * 
+ * @param {string} title 
+ * @param {HTMLElement} itemElt 
+ */
 function addTitleMedia(title, itemElt) {
     const titleMediaElt = document.createElement("h3");
     titleMediaElt.textContent = title;
     itemElt.appendChild(titleMediaElt);
 }
 
+/**
+ * 
+ * @param {object} media 
+ */
 function photographerLightboxFactory(media) {
     const { image, title, video } = media;
     const picture = `assets/media/${image}`;

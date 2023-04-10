@@ -3,6 +3,10 @@
 const selectDivElt = document.querySelector(".dropdown-label");
 const ulMediaElt = document.querySelector(".media ul");
 
+/**
+ * 
+ * @returns {object} - return photographers data and media
+ */
 async function getPhotographers() {
     const response = await fetch("data/photographers.json");
     const photographers = response.json();
@@ -10,6 +14,11 @@ async function getPhotographers() {
     return photographers;
 }
 
+/**
+ * 
+ * @param {object} photographers 
+ * @returns {object} - return photographer by name
+ */
 function getPhotographerByName(photographers) {
     const query = window.location.search;
     const name = new URLSearchParams(query).get('name');
@@ -19,6 +28,11 @@ function getPhotographerByName(photographers) {
     });
 }
 
+/**
+ * 
+ * @param {object} media 
+ * @returns {object} - return media photographer
+ */
 function getPhotographerMedia(media) {
     const query = window.location.search;
     const id = new URLSearchParams(query).get('id');
@@ -28,6 +42,11 @@ function getPhotographerMedia(media) {
     })
 }
 
+/**
+ * 
+ * @param {object} media 
+ * @returns {object} - return popular media of photographer
+ */
 function getPhotographerMediaByPopular(media) {
     const photographerMedia = getPhotographerMedia(media);
 
@@ -36,6 +55,11 @@ function getPhotographerMediaByPopular(media) {
     });
 }
 
+/**
+ * 
+ * @param {object} media - return photographer media by descending date
+ * @returns {object}
+ */
 function getPhotographerMediaByDateDesc(media) {
     const photographerMedia = getPhotographerMedia(media);
 
@@ -47,6 +71,11 @@ function getPhotographerMediaByDateDesc(media) {
     });
 }
 
+/**
+ * 
+ * @param {object} media - return photographer media by ascending title
+ * @returns {object}
+ */
 function getPhotographerMediaByTitleAsc(media) {
     const photographerMedia = getPhotographerMedia(media);
 
@@ -61,12 +90,21 @@ function getPhotographerMediaByTitleAsc(media) {
     });
 }
 
+/**
+ * 
+ * @param {object} media
+ */
 function insertMediaDOM(media) {
     const photographerMediaModel = photographerMediaFactory(media);
     const mediaCardDOM = photographerMediaModel.getMediaCardDOM();
     ulMediaElt.appendChild(mediaCardDOM);
 }
 
+/**
+ * 
+ * @param {HTMLElement} photographerPopularMedia 
+ * @param {HTMLElement} totalLikes
+ */
 function setPhotographerPopularMedia(photographerPopularMedia, totalLikes) {
     const mediaByPopularElt = document.querySelector(".dropdown-label");
 
@@ -79,6 +117,11 @@ function setPhotographerPopularMedia(photographerPopularMedia, totalLikes) {
     });
 }
 
+/**
+ * 
+ * @param {object} mediaByDateDesc 
+ * @param {number} totalLikes
+ */
 function setMediaByDateDesc(mediaByDateDesc, totalLikes) {
     const mediaDateDescElt = document.querySelector(".mediaDateDesc");
 
@@ -91,6 +134,11 @@ function setMediaByDateDesc(mediaByDateDesc, totalLikes) {
     });
 }
 
+/**
+ * 
+ * @param {object} mediaByTitleAsc 
+ * @param {number} totalLikes 
+ */
 function setMediaByTitleAsc(mediaByTitleAsc, totalLikes) {
     const mediaTitleAscElt = document.querySelector(".mediaTitleAsc");
 
@@ -103,6 +151,13 @@ function setMediaByTitleAsc(mediaByTitleAsc, totalLikes) {
     });
 }
 
+/**
+ * 
+ * @param {object} photographer 
+ * @param {object} photographerPopularMedia 
+ * @param {object} mediaByDateDesc 
+ * @param {object} mediaByTitleAsc 
+ */
 async function displayData(photographer, photographerPopularMedia, mediaByDateDesc, mediaByTitleAsc) {
     let totalLikes = getPhotographerTotalLikes(photographerPopularMedia);
 
@@ -115,12 +170,22 @@ async function displayData(photographer, photographerPopularMedia, mediaByDateDe
     photographerPriceAndTotalLikesFactory(photographer, totalLikes);
 }
 
+/**
+ * 
+ * @param {object} photographerPopularMedia 
+ * @returns {object}
+ */
 function getPhotographerTotalLikes(photographerPopularMedia) {
     const likes = photographerPopularMedia.map(media => (media.likes));
 
     return likes.reduce((a, b) => a + b, 0);
 }
 
+/**
+ * 
+ * @param {object} photographer 
+ * @returns {HTMLElement}
+ */
 async function displayContactForm(photographer) {
     const photographerContactFormModel = photographerContactFormFactory(photographer);
     const contactFormDOM = photographerContactFormModel.getUserContactFormDOM();
@@ -128,6 +193,10 @@ async function displayContactForm(photographer) {
     return contactFormDOM;
 }
 
+/**
+ * 
+ * @param {object} photographerMedia 
+ */
 async function displayLightboxModal(photographerMedia) {
     photographerMedia.forEach(media => {
         photographerLightboxFactory(media);
@@ -161,6 +230,10 @@ function turnChevronDropdownList() {
     });
 }
 
+/**
+ * 
+ * @param {number} totalLikes
+ */
 function likePhotographerMedia(totalLikes) {
     const loveElts = document.querySelectorAll(".media i");
     const likesNumberElts = document.querySelectorAll(".media span");
