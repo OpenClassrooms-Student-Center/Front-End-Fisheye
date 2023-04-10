@@ -128,16 +128,23 @@ async function displayContactForm(photographer) {
     return contactFormDOM;
 }
 
+async function displayLightboxModal(photographerMedia) {
+    photographerMedia.forEach(media => {
+        photographerLightboxFactory(media);
+    });
+}
+
 async function getPhotographerData() {
     const { photographers, media } = await getPhotographers();
-    
     const photographer = getPhotographerByName(photographers);
     const photographerPopularMedia = getPhotographerMediaByPopular(media);
     const mediaByDateDesc = getPhotographerMediaByDateDesc(media);
     const mediaByTitleAsc = getPhotographerMediaByTitleAsc(media);
+    const photographerMedia = getPhotographerMedia(media);
 
     displayData(photographer, photographerPopularMedia, mediaByDateDesc, mediaByTitleAsc);
     displayContactForm(photographer);
+    displayLightboxModal(photographerMedia);
 }
 
 function turnChevronDropdownList() {

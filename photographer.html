@@ -71,9 +71,23 @@
 				</form>
 			</div>
 		</div>
+    <div id="lightbox-modal">
+      <div class="content-modal">
+        <div class="close-modal">
+          <i class="fa-sharp fa-solid fa-xmark fa-2xl" onclick="closeLightboxModal()"></i>
+        </div>
+        <button class="carousel-prev" onclick="return prev()"><i class="fa-sharp fa-solid fa-chevron-left fa-2xl"></i></button>
+        <div class="carousel">
+          <div class="carousel-container">
+          </div>
+        </div>
+        <button class="carousel-next" onclick="return next()"><i class="fa-sharp fa-solid fa-chevron-right fa-2xl"></i></button>
+      </div>
+    </div>
     <script src="scripts/pages/photographer.js"></script>
     <script src="scripts/factories/photographer.js"></script>
     <script src="scripts/utils/contactForm.js"></script>
     <script src="scripts/utils/lightbox.js "></script>
+    <script src="scripts/factories/lightboxFactory.js"></script>
   </body>
 </html>

@@ -78,19 +78,13 @@ function addFigureMedia(figureMediaElt, liMediaElt) {
     liMediaElt.appendChild(figureMediaElt);
 }
 
-function addLinkMedia(figureMediaElt, linkMediaElt) {
-    linkMediaElt.setAttribute("href","#");
-    linkMediaElt.style.textDecoration = "none";
-    figureMediaElt.appendChild(linkMediaElt);
-}
-
-function setImgMedia(imgMediaElt, linkMediaElt, picture) {
+function setImgMedia(imgMediaElt, figureMediaElt, picture) {
     imgMediaElt.setAttribute("src", picture);
+    imgMediaElt.setAttribute("onclick", "openlightboxModal()");
     imgMediaElt.style.width = "400px";
     imgMediaElt.style.height = "400px";
     imgMediaElt.style.borderRadius = "5px";
-    linkMediaElt.appendChild(imgMediaElt);
-    
+    figureMediaElt.appendChild(imgMediaElt);
 }
 
 function setVideoMedia(videoMediaElt, linkMediaElt, srcVideo) {
@@ -100,7 +94,6 @@ function setVideoMedia(videoMediaElt, linkMediaElt, srcVideo) {
     videoMediaElt.style.width = "400px";
     videoMediaElt.style.height = "400px";
     videoMediaElt.setAttribute("controls","controls");
-    
     videoMediaElt.appendChild(srcElt);
     linkMediaElt.appendChild(videoMediaElt);
 }
@@ -151,7 +144,6 @@ function photographerMediaFactory(media) {
     // section media elements
     const liMediaElt = document.createElement("li");
     const figureMediaElt = document.createElement("figure");
-    const linkMediaElt = document.createElement("a");
     const imgMediaElt = document.createElement("img");
     const videoMediaElt = document.createElement("video");
     const figCaptionMediaElt = document.createElement("figcaption");
@@ -162,10 +154,9 @@ function photographerMediaFactory(media) {
     const iMediaElt = document.createElement("i");
 
     function getMediaCardDOM() {
-        image ? setImgMedia(imgMediaElt, linkMediaElt, picture) : setVideoMedia(videoMediaElt, linkMediaElt, srcVideo);
+        image ? setImgMedia(imgMediaElt, figureMediaElt, picture) : setVideoMedia(videoMediaElt, figureMediaElt, srcVideo);
         addLiMedia(liMediaElt);
         addFigureMedia(figureMediaElt, liMediaElt);
-        addLinkMedia(figureMediaElt, linkMediaElt);
         addFigcaptionMedia(figCaptionMediaElt, figureMediaElt);
         addFigcaptionHeaderMedia(figcaptionHeaderElt, figCaptionMediaElt);
         setTitleMedia(title, titleElt, figcaptionHeaderElt);
@@ -182,7 +173,6 @@ function photographerMediaFactory(media) {
 // displaying total number likes + price per day
 function photographerPriceAndTotalLikesFactory(photographer, totalLikes) {
     const [{ price }] = photographer;
-    
     const totalLikesElt = document.querySelector(".total-likes");
     const priceAndLikesElt = document.querySelector(".price-and-likes");
     const totalElt = document.createElement("b");
@@ -197,5 +187,4 @@ function photographerPriceAndTotalLikesFactory(photographer, totalLikes) {
     priceElt.textContent = `${price}€ / jour`;
     priceAndLikesElt.appendChild(priceElt);
 }
-
 

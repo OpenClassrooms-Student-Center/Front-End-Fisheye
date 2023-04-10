@@ -226,3 +226,62 @@ hr {
 input[type="checkbox"] {
     display: none;
 }
+
+#lightbox-modal {
+    display: none;
+    position: absolute;
+    top: 60px;
+    width: 100%;
+}
+
+.content-modal {
+    position: relative;
+    border-radius: 5px;
+    background-color: #FFF;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 50px;
+    margin: auto;
+    width: 70%;
+}
+
+.close-modal {
+    position: absolute;
+    top: 30px;
+    right: 40px;
+}
+
+#lightbox-modal i {
+    color: #901C1C;
+}
+
+#lightbox-modal figure h3 {
+    margin-top: 5px;
+    color: #D3573C;
+}
+
+.carousel {
+    position: relative;
+    margin: 20px;
+    overflow: hidden;
+    width: 100%;
+}
+
+.carousel-item {
+    float: left;
+}
+
+.item {
+    margin: 0;
+}
+
+.item img, .item video {
+    width: 100%;
+    height: 680px;
+}
+
+.content-modal button {
+    background-color: transparent;
+    border: none;
+}
