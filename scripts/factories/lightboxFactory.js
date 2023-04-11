@@ -4,7 +4,7 @@
 /**
  * 
  * @param {string} picture 
- * @param {HTMLElement} itemElt 
+ * @param {object} itemElt 
  */
 function addImgMedia(picture, itemElt) {
     const imgMediaElt = document.createElement("img");
@@ -15,7 +15,7 @@ function addImgMedia(picture, itemElt) {
 /**
  * 
  * @param {string} srcVideo 
- * @param {HTMLElement} itemElt
+ * @param {object} itemElt
  */
 function addVideoMedia(srcVideo, itemElt) {
     const videoMediaElt = document.createElement("video");
@@ -30,7 +30,7 @@ function addVideoMedia(srcVideo, itemElt) {
 /**
  * 
  * @param {string} title 
- * @param {HTMLElement} itemElt 
+ * @param {object} itemElt 
  */
 function addTitleMedia(title, itemElt) {
     const titleMediaElt = document.createElement("h3");

@@ -12,7 +12,7 @@ const successMessageElt = document.querySelector(".modal div:nth-child(1) p");
 /**
  * 
  * @param {object} photographer 
- * @returns {HTMLElement}
+ * @returns {object}
  */
 function photographerContactFormFactory(photographer) {
     const [{ name }] = photographer;
@@ -131,9 +131,9 @@ function validateMessage() {
 
 /**
  * 
- * @param {HTMLElement} divElt 
+ * @param {object} divElt 
  * @param {string} errorMessage 
- * @param {HTMLElement} spanErrorMessage 
+ * @param {object} spanErrorMessage 
  */
 function createErrorMessage(divElt, errorMessage, spanErrorMessage) {
     const spanElt = document.createElement("span");

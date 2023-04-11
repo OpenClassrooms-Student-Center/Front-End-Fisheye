@@ -102,8 +102,8 @@ function insertMediaDOM(media) {
 
 /**
  * 
- * @param {HTMLElement} photographerPopularMedia 
- * @param {HTMLElement} totalLikes
+ * @param {object} photographerPopularMedia 
+ * @param {object} totalLikes
  */
 function setPhotographerPopularMedia(photographerPopularMedia, totalLikes) {
     const mediaByPopularElt = document.querySelector(".dropdown-label");
@@ -184,7 +184,7 @@ function getPhotographerTotalLikes(photographerPopularMedia) {
 /**
  * 
  * @param {object} photographer 
- * @returns {HTMLElement}
+ * @returns {object}
  */
 async function displayContactForm(photographer) {
     const photographerContactFormModel = photographerContactFormFactory(photographer);

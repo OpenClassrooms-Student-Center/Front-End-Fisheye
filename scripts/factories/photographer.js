@@ -15,8 +15,8 @@ const imgElt = document.createElement("img");
 /**
  * header section content
  * 
- * @param {HTMLElement} liPhotographerDataElt 
- * @param {HTMLElement} ulHeaderElt
+ * @param {object} liPhotographerDataElt 
+ * @param {object} ulHeaderElt
  */
 function addLiPhotographerData(liPhotographerDataElt, ulHeaderElt) {
     liPhotographerDataElt.style.display = "block";
@@ -25,8 +25,8 @@ function addLiPhotographerData(liPhotographerDataElt, ulHeaderElt) {
 
 /**
  * 
- * @param {HTMLElement} nameElt 
- * @param {HTMLElement} liPhotographerDataElt 
+ * @param {object} nameElt 
+ * @param {object} liPhotographerDataElt 
  * @param {string} name
  */
 function setPhotographerName(nameElt, liPhotographerDataElt, name) {
@@ -39,8 +39,8 @@ function setPhotographerName(nameElt, liPhotographerDataElt, name) {
 
 /**
  * 
- * @param {HTMLElement} countryElt 
- * @param {HTMLElement} liPhotographerDataElt 
+ * @param {object} countryElt 
+ * @param {object} liPhotographerDataElt 
  * @param {string} city 
  * @param {string} country
  */
@@ -54,8 +54,8 @@ function setPhotographerCountry(countryElt, liPhotographerDataElt, city, country
 
 /**
  * 
- * @param {HTMLElement} liPhotographerDataElt 
- * @param {HTMLElement} taglineElt 
+ * @param {object} liPhotographerDataElt 
+ * @param {object} taglineElt 
  * @param {string} tagline 
  */
 function setPhotographerTagline(liPhotographerDataElt, taglineElt, tagline) {
@@ -67,9 +67,9 @@ function setPhotographerTagline(liPhotographerDataElt, taglineElt, tagline) {
 
 /**
  * 
- * @param {HTMLElement} liContactElt 
- * @param {HTMLElement} ulHeaderElt 
- * @param {HTMLElement} buttonElt 
+ * @param {object} liContactElt 
+ * @param {object} ulHeaderElt 
+ * @param {object} buttonElt 
  */
 function addContactButton(liContactElt, ulHeaderElt, buttonElt) {
     liContactElt.style.display = "block";
@@ -78,12 +78,13 @@ function addContactButton(liContactElt, ulHeaderElt, buttonElt) {
 
 /**
  * 
- * @param {HTMLElement} ulHeaderElt 
- * @param {HTMLElement} liImgElt 
- * @param {HTMLElement} imgElt 
+ * @param {object} ulHeaderElt 
+ * @param {object} liImgElt 
+ * @param {object} imgElt 
  * @param {string} picture
  */
 function setPhotographerImg(ulHeaderElt, liImgElt, imgElt, picture) {
+    console.log(typeof ulHeaderElt);
     liImgElt.style.display = "block";
     imgElt.setAttribute("src", picture);
     imgElt.style.width = "150px";
@@ -113,7 +114,7 @@ function photographerContactFactory(photographer) {
 
 /**
  * 
- * @param {HTMLElement} liMediaElt
+ * @param {object} liMediaElt
  */
 function addLiMedia(liMediaElt) {
     liMediaElt.style.display = "block";
@@ -121,8 +122,8 @@ function addLiMedia(liMediaElt) {
 
 /**
  * 
- * @param {HTMLElement} figureMediaElt 
- * @param {HTMLElement} liMediaElt 
+ * @param {object} figureMediaElt 
+ * @param {object} liMediaElt 
  */
 function addFigureMedia(figureMediaElt, liMediaElt) {
     figureMediaElt.style.margin = "0";
@@ -131,8 +132,8 @@ function addFigureMedia(figureMediaElt, liMediaElt) {
 
 /**
  * 
- * @param {HTMLElement} imgMediaElt 
- * @param {HTMLElement} figureMediaElt 
+ * @param {object} imgMediaElt 
+ * @param {object} figureMediaElt 
  * @param {string} picture
  */
 function setImgMedia(imgMediaElt, figureMediaElt, picture) {
@@ -146,8 +147,8 @@ function setImgMedia(imgMediaElt, figureMediaElt, picture) {
 
 /**
  * 
- * @param {HTMLElement} videoMediaElt 
- * @param {HTMLElement} linkMediaElt 
+ * @param {object} videoMediaElt 
+ * @param {object} linkMediaElt 
  * @param {string} srcVideo
  */
 function setVideoMedia(videoMediaElt, linkMediaElt, srcVideo) {
@@ -163,8 +164,8 @@ function setVideoMedia(videoMediaElt, linkMediaElt, srcVideo) {
 
 /**
  * 
- * @param {HTMLElement} figCaptionMediaElt 
- * @param {HTMLElement} figureMediaElt 
+ * @param {object} figCaptionMediaElt 
+ * @param {object} figureMediaElt 
  */
 function addFigcaptionMedia(figCaptionMediaElt, figureMediaElt) {
     figCaptionMediaElt.style.display = "flex";
@@ -176,8 +177,8 @@ function addFigcaptionMedia(figCaptionMediaElt, figureMediaElt) {
 
 /**
  * 
- * @param {HTMLElement} figcaptionHeaderElt 
- * @param {HTMLElement} figCaptionMediaElt 
+ * @param {object} figcaptionHeaderElt 
+ * @param {object} figCaptionMediaElt 
  */
 function addFigcaptionHeaderMedia(figcaptionHeaderElt, figCaptionMediaElt) {
     figcaptionHeaderElt.style.height = "0";
@@ -187,8 +188,8 @@ function addFigcaptionHeaderMedia(figcaptionHeaderElt, figCaptionMediaElt) {
 /**
  * 
  * @param {string} title 
- * @param {HTMLElement} titleElt 
- * @param {HTMLElement} figcaptionHeaderElt 
+ * @param {object} titleElt 
+ * @param {object} figcaptionHeaderElt 
  */
 function setTitleMedia(title, titleElt, figcaptionHeaderElt) {
     titleElt.textContent = title;
@@ -198,8 +199,8 @@ function setTitleMedia(title, titleElt, figcaptionHeaderElt) {
 
 /**
  * 
- * @param {HTMLElement} figureLikeElt 
- * @param {HTMLElement} figCaptionMediaElt 
+ * @param {object} figureLikeElt 
+ * @param {object} figCaptionMediaElt 
  */
 function addLikeMedia(figureLikeElt, figCaptionMediaElt) {
     figureLikeElt.style.margin = "0";
@@ -209,8 +210,8 @@ function addLikeMedia(figureLikeElt, figCaptionMediaElt) {
 
 /**
  * 
- * @param {HTMLElement} spanLikeElt 
- * @param {HTMLElement} figureLikeElt 
+ * @param {object} spanLikeElt 
+ * @param {object} figureLikeElt 
  * @param {number} likes 
  */
 function setLikesMedia(spanLikeElt, figureLikeElt, likes) {
@@ -221,8 +222,8 @@ function setLikesMedia(spanLikeElt, figureLikeElt, likes) {
 
 /**
  * 
- * @param {HTMLElement} figureLikeElt 
- * @param {HTMLElement} iMediaElt 
+ * @param {object} figureLikeElt 
+ * @param {object} iMediaElt 
  */
 function addIconLikeMedia(figureLikeElt, iMediaElt) {
     iMediaElt.className = "fa-solid fa-heart";
@@ -234,7 +235,7 @@ function addIconLikeMedia(figureLikeElt, iMediaElt) {
  * displaying photographerMedia data on section main
  * 
  * @param {object} media 
- * @returns {HTMLElement}
+ * @returns {object}
  */
 function photographerMediaFactory(media) {
     const { title, image, video, likes } = media;

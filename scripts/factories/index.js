@@ -4,8 +4,8 @@
  * 
  * @param {number} id 
  * @param {string} name 
- * @param {HTMLElement} aElt 
- * @param {HTMLElement} articleElt 
+ * @param {object} aElt 
+ * @param {object} articleElt 
  */
 function addLinkElt(id, name, aElt, articleElt) {
     aElt.setAttribute("href","photographer.html?name=" + name + "&id=" + id);
@@ -16,8 +16,8 @@ function addLinkElt(id, name, aElt, articleElt) {
 
 /**
  * 
- * @param {HTMLElement} figureElt 
- * @param {HTMLElement} aElt 
+ * @param {object} figureElt 
+ * @param {object} aElt 
  */
 function addFigureElt(figureElt, aElt) {
     figureElt.style.textAlign = "center"
@@ -28,8 +28,8 @@ function addFigureElt(figureElt, aElt) {
  * 
  * @param {string} name 
  * @param {string} picture 
- * @param {HTMLElement} imgElt 
- * @param {HTMLElement} figureElt 
+ * @param {object} imgElt 
+ * @param {object} figureElt 
  */
 function setPhotographerImg(name, picture, imgElt, figureElt) {
     imgElt.setAttribute("src", picture);
@@ -42,8 +42,8 @@ function setPhotographerImg(name, picture, imgElt, figureElt) {
 /**
  * 
  * @param {string} name 
- * @param {HTMLElement} nameElt 
- * @param {HTMLElement} figureElt 
+ * @param {object} nameElt 
+ * @param {object} figureElt 
  */
 function setPhotographerName(name, nameElt, figureElt) {
     nameElt.style.margin = "15px 0 10px 0";
@@ -54,8 +54,8 @@ function setPhotographerName(name, nameElt, figureElt) {
 
 /**
  * 
- * @param {HTMLElement} figureElt 
- * @param {HTMLElement} figCaptionElt 
+ * @param {object} figureElt 
+ * @param {object} figCaptionElt 
  */
 function addFigCaptionElt(figureElt, figCaptionElt) {
     figCaptionElt.style.lineHeight = "1.3rem";
@@ -66,8 +66,8 @@ function addFigCaptionElt(figureElt, figCaptionElt) {
  * 
  * @param {string} city 
  * @param {string} country 
- * @param {HTMLElement} countryElt 
- * @param {HTMLElement} figCaptionElt 
+ * @param {object} countryElt 
+ * @param {object} figCaptionElt 
  */
 function setPhotographerCountry(city, country, countryElt, figCaptionElt) {
     countryElt.style.margin = "0 0";
@@ -79,8 +79,8 @@ function setPhotographerCountry(city, country, countryElt, figCaptionElt) {
 /**
  * 
  * @param {string} tagline 
- * @param {HTMLElement} taglineElt 
- * @param {HTMLElement} figCaptionElt 
+ * @param {object} taglineElt 
+ * @param {object} figCaptionElt 
  */
 function setPhotographerTagline(tagline, taglineElt, figCaptionElt) {
     taglineElt.style.margin = "0 0";
@@ -93,8 +93,8 @@ function setPhotographerTagline(tagline, taglineElt, figCaptionElt) {
 /**
  * 
  * @param {number} price 
- * @param {HTMLElement} priceElt 
- * @param {HTMLElement} figCaptionElt 
+ * @param {object} priceElt 
+ * @param {object} figCaptionElt 
  */
 function setPhotographerPrice(price, priceElt, figCaptionElt) {
     priceElt.style.margin = "0 0";
@@ -107,7 +107,7 @@ function setPhotographerPrice(price, priceElt, figCaptionElt) {
 /**
  * 
  * @param {object} data 
- * @returns {HTMLElement}
+ * @returns {object}
  */
 function photographerFactory(data) {
     const { id, name, portrait, city, country, tagline, price } = data;
