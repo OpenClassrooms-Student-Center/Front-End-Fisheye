@@ -1,24 +1,48 @@
-#contact_modal {
-    display: none;
+main {
+    margin: 0 100px;
 }
 
 .photograph-header {
     background-color: #FAFAFA;
     height: 300px;
-    margin: 0 100px;
 }
 
-.contact_button {
-    font-size: 20px;
+.photograph-header ul {
+    margin: 0;
+    padding: 0 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+
+.contact-button {
+    border: none;
+    border-radius: 5px;
     font-weight: bold;
-    color: white;
+    color: #FAFAFA;
+    background-color: #901C1C;
+    cursor: pointer;
+}
+
+.photograph-header .contact-button {
     padding: 11px;
     width: 170px;
-    height: 70px;
-    border: none;
-    background-color: #901C1C;
-    border-radius: 5px;
-    cursor: pointer;
+    height: 60px;
+    font-size: 18px;
+}
+
+.modal form .contact-button {
+    width: 140px;
+    height: 60px;
+    font-size: 16px;
+}
+
+#contact-modal {
+    display: none;
+    position: absolute;
+    top: 60px;
+    width: 100%;
 }
 
 .modal {
@@ -36,31 +60,26 @@
 .modal header {
     justify-content: space-between;
     width: 100%;
+    height: auto;
 }
 
-.modal header img {
+.modal img, select {
     cursor: pointer;
 }
 
-.modal header h2 {
-    font-size: 64px;
+.modal h2 {
+    margin: 0;
+    font-size: 44px;
     font-weight: normal;
-    text-align: center;
 }
 
-form {
+.modal form {
     display: flex;
     width: 100%;
     flex-direction: column;
-    align-items: flex-start;
 }
 
-form label {
-    color: #312E2E;
-    font-size: 36px;
-}
-
-form div {
+.modal div {
     display: flex;
     flex-direction: column;
     width: 100%;
@@ -68,9 +87,201 @@ form div {
     margin-bottom: 26px;
 }
 
-form input {
+.modal form div:nth-child(1) {
+    text-align: center;
+}
+
+.photograph-header .contact-button:hover,
+.photograph-header .contact-button:focus {
+    background-color: #D3573C;
+    color: #000;
+}
+
+.modal form label {
+    color: #312E2E;
+    font-size: 30px;
+}
+
+.modal form input {
     width: 100%;
     height: 68px;
     border: none;
     border-radius: 5px;
+}
+
+.modal form textarea {
+    width: 100%;
+    height: 180px;
+}
+
+.filter {
+    height: 60px;
+    margin: 10px 0 40px 0;
+}
+
+.filter form {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    height: inherit;
+}
+
+.media ul {
+    padding: 0;
+    display: flex;
+    gap: 50px 100px;
+    flex-wrap: wrap;
+}
+
+.price-and-likes {
+    position: fixed;
+    right: 30px;
+    bottom: 0px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    border-radius: 5px 5px 0 0;
+    padding: 10px 0;
+    width: 300px;
+    height: 40px;
+    font-size: 1.2rem;
+    background-color: #D3573C;
+}
+
+.price-and-likes i {
+    margin-left: 5px;
+}
+
+.dropdown-wrapper {
+    position: relative;
+    border: none;
+    border-radius: 5px;
+    appearance: none;
+    height: 40px;
+    width: 140px;
+    background-color: #901C1C;
+    color: #FFF;
+    font-size: inherit;
+    cursor: pointer;
+}
+
+.dropdown-wrapper .dropdown-ul {
+    position: absolute;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    visibility: hidden;
+    opacity: 0;
+    transition: .3s;
+    width: 100%;
+    color: #FFF;
+    left: 0;
+}
+
+.dropdown-wrapper .dropdown-label::after {
+    position: absolute;
+    right: 25px;
+    content: ' >';
+    transform: var(--selectdivAfterTransform, rotate(90deg));
+    pointer-events: none;
+}
+
+.dropdown-wrapper .dropdown-ul li {
+    margin-top: 0;
+    padding: 0 10px 10px 10px;
+    background-color: #901C1C;
+}
+
+.dropdown-wrapper .dropdown-ul li:nth-child(3) {
+    border-radius: 0 0 5px 5px;
+}
+
+.dropdown-wrapper .dropdown-ul a {
+    display: block;
+    padding-left: 5px;
+    text-decoration: none;
+    color: #FFF;
+}
+
+.dropdown-wrapper .dropdown-label {
+    position: relative;
+    right: 0;
+    display: block;
+    width: 100%;
+    /* height: 50px; */
+    padding-top: 10px;
+    padding-left: 10px;
+}
+
+.dropdown-wrapper .dropdown-chk:checked ~ .dropdown-ul {
+    visibility: visible;
+    opacity: 1;
+}
+
+hr {
+    margin-bottom: 0;
+    color: #FFF;
+}
+
+input[type="checkbox"] {
+    display: none;
+}
+
+#lightbox-modal {
+    display: none;
+    position: absolute;
+    top: 60px;
+    width: 100%;
+}
+
+.content-modal {
+    position: relative;
+    border-radius: 5px;
+    background-color: #FFF;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 50px;
+    margin: auto;
+    width: 70%;
+}
+
+.close-modal {
+    position: absolute;
+    top: 30px;
+    right: 40px;
+}
+
+#lightbox-modal i {
+    color: #901C1C;
+}
+
+#lightbox-modal figure h3 {
+    margin-top: 5px;
+    color: #D3573C;
+}
+
+.carousel {
+    position: relative;
+    margin: 20px;
+    overflow: hidden;
+    width: 100%;
+}
+
+.carousel-item {
+    float: left;
+}
+
+.item {
+    margin: 0;
+}
+
+.item img, .item video {
+    width: 100%;
+    height: 680px;
+}
+
+.content-modal button {
+    background-color: transparent;
+    border: none;
 }

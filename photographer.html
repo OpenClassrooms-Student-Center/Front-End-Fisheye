@@ -1,37 +1,93 @@
 <!DOCTYPE html>
-<html>
+<html lang="fr">
   <head>
-    <link href="css/style.css" rel="stylesheet" type="text/css" />
     <meta charset="utf-8">
+    <title>Fisheye - photographe </title>
     <link rel="icon" type="image/png" href="assets/favicon.png">
     <link href="https://fonts.googleapis.com/css?family=DM+Sans&display=swap" rel="stylesheet">
-    <title>Fisheye - photographe </title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer">
+    <link href="https://necolas.github.io/normalize.css/8.0.1/normalize.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet" type="text/css" />
   </head>
   <body>
     <header>
       <img src="assets/images/logo.png" class="logo" />
     </header>
     <main id="main">
-      <div class="photograph-header">
-        <button class="contact_button" onclick="displayModal()">Contactez-moi</button>
+      <header class="photograph-header">
+        <ul>
+        </ul>
+        <button class="contact-button" onclick="displayModal()">Contactez-moi</button>
+      </header>
+      <section class="filter">
+        <form> 
+          <label>Trier par</label>
+          <div class="dropdown-wrapper">
+            <input type="checkbox" class="dropdown-chk" id="check1" />
+            <label for="check1" class="dropdown-label">Popularité</label>
+            <ul class="dropdown-ul">
+              <li><hr></li>
+              <li class="mediaDateDesc">Date<hr></li>
+              <li class="mediaTitleAsc">Titre</li>
+            </ul>
+          </div>
+        </form>
+      </section>
+      <section class="media">
+        <ul>
+        </ul>
+      </section>
+      <div class="price-and-likes">
+        <div class="total-likes"></div>
       </div>
     </main>
-    <div id="contact_modal">
+    <div id="contact-modal">
 			<div class="modal">
 				<header>
           <h2>Contactez-moi</h2>
           <img src="assets/icons/close.svg" onclick="closeModal()" />
         </header>
-				<form>
+				<form method="get">
+          <div>
+            <p></p>
+          </div>
 					<div>
 						<label>Prénom</label>
-						<input />
+						<input type="text" name="first"/>
 					</div>
-          <button class="contact_button">Envoyer</button>
+          <div>
+						<label>Nom</label>
+						<input type="text" name="last"/>
+					</div>
+          <div>
+						<label>Email</label>
+						<input type="email" name="email"/>
+					</div>
+          <div>
+						<label>Votre message</label>
+						<textarea name="message"></textarea>
+					</div>
+          <button class="contact-button" onclick="return displayUserDataInConsole();">Envoyer</button>
 				</form>
 			</div>
 		</div>
-    <script src="/scripts/pages/photographer.js"></script>
-    <script src="/scripts/utils/contactForm.js"></script>
+    <div id="lightbox-modal">
+      <div class="content-modal">
+        <div class="close-modal">
+          <i class="fa-sharp fa-solid fa-xmark fa-2xl" onclick="closeLightboxModal()"></i>
+        </div>
+        <button class="carousel-prev" onclick="return prev()"><i class="fa-sharp fa-solid fa-chevron-left fa-2xl"></i></button>
+        <div class="carousel">
+          <div class="carousel-container">
+          </div>
+        </div>
+        <button class="carousel-next" onclick="return next()"><i class="fa-sharp fa-solid fa-chevron-right fa-2xl"></i></button>
+      </div>
+    </div>
+    <script src="scripts/pages/photographer.js"></script>
+    <script src="scripts/factories/photographer.js"></script>
+    <script src="scripts/utils/contactForm.js"></script>
+    <script src="scripts/utils/lightbox.js "></script>
+    <script src="scripts/factories/lightboxFactory.js"></script>
   </body>
 </html>
