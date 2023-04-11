@@ -9,8 +9,6 @@
  */
 function addLinkElt(id, name, aElt, articleElt) {
     aElt.setAttribute("href","photographer.html?name=" + name + "&id=" + id);
-    aElt.style.textDecoration = "none";
-    articleElt.style.width = "max-content";
     articleElt.appendChild(aElt);
 }
 
@@ -20,7 +18,6 @@ function addLinkElt(id, name, aElt, articleElt) {
  * @param {object} aElt 
  */
 function addFigureElt(figureElt, aElt) {
-    figureElt.style.textAlign = "center"
     aElt.appendChild(figureElt);
 }
 
@@ -34,8 +31,6 @@ function addFigureElt(figureElt, aElt) {
 function setPhotographerImg(name, picture, imgElt, figureElt) {
     imgElt.setAttribute("src", picture);
     imgElt.setAttribute("alt", name);
-    imgElt.style.borderRadius = "50%";
-    imgElt.style.objectFit = "cover";
     figureElt.appendChild(imgElt);
 }
 
@@ -46,9 +41,7 @@ function setPhotographerImg(name, picture, imgElt, figureElt) {
  * @param {object} figureElt 
  */
 function setPhotographerName(name, nameElt, figureElt) {
-    nameElt.style.margin = "15px 0 10px 0";
     nameElt.textContent = name;
-    nameElt.style.color = "#D3573C";
     figureElt.appendChild(nameElt);
 }
 
@@ -58,7 +51,6 @@ function setPhotographerName(name, nameElt, figureElt) {
  * @param {object} figCaptionElt 
  */
 function addFigCaptionElt(figureElt, figCaptionElt) {
-    figCaptionElt.style.lineHeight = "1.3rem";
     figureElt.appendChild(figCaptionElt);
 }
 
@@ -70,9 +62,7 @@ function addFigCaptionElt(figureElt, figCaptionElt) {
  * @param {object} figCaptionElt 
  */
 function setPhotographerCountry(city, country, countryElt, figCaptionElt) {
-    countryElt.style.margin = "0 0";
     countryElt.textContent = `${city}, ${country}`;
-    countryElt.style.color = "#901C1C";
     figCaptionElt.appendChild(countryElt);
 }
 
@@ -83,10 +73,7 @@ function setPhotographerCountry(city, country, countryElt, figCaptionElt) {
  * @param {object} figCaptionElt 
  */
 function setPhotographerTagline(tagline, taglineElt, figCaptionElt) {
-    taglineElt.style.margin = "0 0";
     taglineElt.textContent = tagline;
-    taglineElt.style.fontSize = "0.8rem";
-    taglineElt.style.color = "#000";
     figCaptionElt.appendChild(taglineElt);
 }
 
@@ -97,10 +84,7 @@ function setPhotographerTagline(tagline, taglineElt, figCaptionElt) {
  * @param {object} figCaptionElt 
  */
 function setPhotographerPrice(price, priceElt, figCaptionElt) {
-    priceElt.style.margin = "0 0";
     priceElt.textContent = `${price}/jour`;
-    priceElt.style.fontSize = "0.8rem";
-    priceElt.style.color = "#525252";
     figCaptionElt.appendChild(priceElt);
 }
 
