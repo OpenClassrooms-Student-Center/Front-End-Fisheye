@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="fr">
   <head>
     <link href="css/style.css" rel="stylesheet" type="text/css" />
     <meta charset="utf-8">
@@ -8,51 +8,31 @@
     <link href="https://fonts.googleapis.com/css?family=DM+Sans&display=swap" rel="stylesheet">
     <title>Fisheye - photographe </title>
   </head>
-  <body>
+  <body id="body">
     <header role="banner">
       <img src="assets/images/logo.png" class="logo" alt="logo fishEye"/>
     </header>
     <main id="main" role="main">
       <div class="photograph-header">
-      
+        <!-- information du photographe  -->
       </div>
       <div class="mediaDisplay">
-        
+        <!-- affichage des médias du photographe trié par son id  -->
       </div>
     </main>
     <div id="contact_modal">
-			<div class="modal" role="dialog">
-				<header>
-          <h2>Contactez-moi</h2>
-          <img src="assets/icons/close.svg" onclick="closeModal()"/>
-        </header>
-				<form id="formContact" action="photographer.html" name="contact" method="get" oninvalid="false" onsubmit="validData()">
-          <div role="group" aria-labelledby="coordonees">
-            <div class="formData">
-              <label for="firstName">Prénom</label>
-              <input type="text" id="firstName" name="firstName" aria-labelledby="prenom" aria-describedby=""/>
-              <span class="errorMessage"></span>
-            </div>
-            <div class="formData">
-              <label for="lastName">Nom</label>
-              <input type="text" id="lastName" name="lastName"/>
-              <span class="errorMessage"></span>
-            </div>
-            <div class="formData">
-              <label for="email">Email</label>
-              <input type="text" id="email" name="email"/>
-              <span class="errorMessage"></span>
-            </div>
-            <div class="formData">
-              <label for="message">Votre Message</label>
-              <textarea type="text" id="message" name="message"></textarea>
-              <span class="errorMessage"></span>
-            </div>
-          </div>  
-          <button class="contact_button">Envoyer</button>
-				</form>
-			</div>
+			<!-- affichage de la modale de contact -->
 		</div>
+    <section id="carousel">
+      <div id="bodyCarousel" role="document" aria-hidden="true">
+        <img src="assets/icons/closeCarousel.svg" onclick="closeCarousel()" onfocus() class="closeCarousel" aria-controls="document" alt="Fermer"/>
+        <i class="fa-solid fa-chevron-left"></i>
+        <ul class="carouselModal">
+          <!-- Affichage du carousel des medias -->
+        </ul>
+        <i class="fa-solid fa-chevron-right"></i>
+      </div>
+    </section>
     <!-- Api  -->
     <script src="scripts/api/Api.js"></script>
     <!-- factory  -->
@@ -65,6 +45,7 @@
     <!-- utils  -->
     <script src="/scripts/utils/contactForm.js"></script>
     <script src="/scripts/utils/displayChevron.js"></script>
+    <script src="/scripts/utils/carousel.js"></script>
     <!-- point d'entrée  -->
     <script src="scripts/Page.js"></script>
   </body>

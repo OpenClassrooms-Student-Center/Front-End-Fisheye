@@ -1,58 +1,71 @@
 function displayModal() {
     const modal = document.getElementById("contact_modal");
-    const modalAttribute = document.querySelector(".modal");
-    const main = document.getElementById("main");
 	modal.style.display = "block";
-    modalAttribute.setAttribute("aria-hidden", "false");
-    main.setAttribute("aria-hidden", "true");
+    const modalAttribute = document.querySelector(".modal");
+    modalAttribute.setAttribute("aria-modal", "true");
+    const main = document.getElementById("main");
+    main.setAttribute("aria-modal", "false");
+    const close = document.querySelector('.btnClose');
+    const form = document.getElementById('formContact');
+    modalAttribute.focus();
+    close.addEventListener("keydown", (ev) => {
+        if(ev.key == "Enter") {
+            modal.style.display = "none";  
+            main.setAttribute("aria-modal", "true"); 
+            modalAttribute.setAttribute("aria-modal", "false");
+        }
+    })
+    form.addEventListener('submit', function(e) { 
+        e.preventDefault();
+        
+        validForm();
+    });
 }
+
+
 
 function closeModal() {
     const modal = document.getElementById("contact_modal");
+    const btnModal = document.querySelector(".contact_button");
     const modalAttribute = document.querySelector(".modal");
     const main = document.getElementById("main");
+    const body = document.getElementById("body");
     modal.style.display = "none";
-    modalAttribute.setAttribute("aria-hidden", "true");
-    main.setAttribute("aria-hidden", "false");
+    modalAttribute.setAttribute("aria-modal", "false");
+    main.setAttribute("aria-modal", "true");
+    body.classList.remove("no-scroll");
+    btnModal.focus();
 }
 
-const form = document.getElementById('formContact');
-var formData = document.querySelectorAll(".formData");
-var formValid = [];
-const mailValid = /^[a-zA-Z0-9.-_]+[@]{1}[a-zA-Z0-9.-_]+[.]{1}[a-z]{2,10}$/;
 
-form.addEventListener('submit', function(e) {
-    e.preventDefault();
-
-    validData();
-});
-
-const setError = (element, message) => {
-    const formData = element.parentElement;
-    const errorDisplay = formData.querySelector('.errorMessage');
-
-    errorDisplay.innerHTML = message;
-    formData.classList.add("error");
-    formData.classList.remove("success");
-}
-
-const setSuccess = (element) => {
-    const formData = element.parentElement;
-    const errorDisplay = formData.querySelector('.errorMessage');
-
-    errorDisplay.innerHTML = "";
-    formData.classList.add("success");
-    formData.classList.remove("error");
-}
-
-const validData = () => {
+const validForm = () => {
     const formData = document.querySelectorAll(".formData");
+    var formValid = [];
+    const mailValid = /^[a-zA-Z0-9.-_]+[@]{1}[a-zA-Z0-9.-_]+[.]{1}[a-z]{2,10}$/;
+    const setError = (element, message) => {
+        const formData = element.parentElement;
+        const errorDisplay = formData.querySelector('.errorMessage');
+    
+        errorDisplay.innerHTML = message;
+        formData.classList.add("error");
+        formData.classList.remove("success");
+    }
+    
+    const setSuccess = (element) => {
+        const formData = element.parentElement;
+        const errorDisplay = formData.querySelector('.errorMessage');
+    
+        errorDisplay.innerHTML = "";
+        formData.classList.add("success");
+        formData.classList.remove("error");
+    }
+
     const success = document.querySelectorAll(".success");
-    const firstName = document.getElementById('firstName');
-    const lastName = document.getElementById('lastName');
+    const firstName = document.getElementById('prenom');
+    const lastName = document.getElementById('nom');
     const mail = document.getElementById('email');
     const messageForm = document.getElementById('message');
-
+    
     if(firstName.value.trim() == "") {
         setError(firstName, "Saisissez votre prénom");
     } else {
@@ -79,12 +92,12 @@ const validData = () => {
     }   
     
     if(formData.length == success.length){
-        formValid.push("prenom: " + firstName.value);
+        formValid.push("Prenom: " + firstName.value);
         formValid.push("Nom: " + lastName.value);
         formValid.push("Email: " + mail.value);
         formValid.push("Message: " + messageForm.value);
         closeModal();
-        // window.location.reload();
+        
         return console.log(formValid);
     } 
 }
@@ -92,4 +105,7 @@ const validData = () => {
 
 
 
-// Test de récupération des données
+        
+
+    
+            

@@ -2,6 +2,8 @@ class Pages {
     constructor() {
         this.photographPage = document.querySelector('.photograph-header');
         this.mediasPhotograph = document.querySelector('.mediaDisplay');
+        this.modalContact = document.getElementById('contact_modal');
+        this.carouselMedias = document.querySelector('.carouselModal');
         //j'instancie ma classe GetPhotographers 
         this.getPhotographers = new GetPhotographers('/data/photographers.json');
     }
@@ -34,6 +36,15 @@ class Pages {
             this.mediasPhotograph.appendChild(TemplateMedia)
         });
 
+        const contactModalDisplay = new PhotographerPage(filteredPhotographer, filteredMediaByPhotographer).createModalDisplay();
+        this.modalContact.appendChild(contactModalDisplay);
+
+        
+        allMedias
+        .forEach(filteredMediaByPhotographer => {
+            const carouselMediasDisplay = new PhotographerPage(filteredPhotographer, filteredMediaByPhotographer).createCarousel();
+            this.carouselMedias.appendChild(carouselMediasDisplay);
+        })
     }
 }
 const pages = new Pages();
