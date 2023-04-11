@@ -19,7 +19,6 @@ const imgElt = document.createElement("img");
  * @param {object} ulHeaderElt
  */
 function addLiPhotographerData(liPhotographerDataElt, ulHeaderElt) {
-    liPhotographerDataElt.style.display = "block";
     ulHeaderElt.appendChild(liPhotographerDataElt);
 }
 
@@ -30,10 +29,7 @@ function addLiPhotographerData(liPhotographerDataElt, ulHeaderElt) {
  * @param {string} name
  */
 function setPhotographerName(nameElt, liPhotographerDataElt, name) {
-    nameElt.style.margin = "10px 0";
     nameElt.textContent = name;
-    nameElt.style.fontSize = "2.4rem";
-    nameElt.style.color = "#D3573C";
     liPhotographerDataElt.appendChild(nameElt);
 }
 
@@ -45,9 +41,6 @@ function setPhotographerName(nameElt, liPhotographerDataElt, name) {
  * @param {string} country
  */
 function setPhotographerCountry(countryElt, liPhotographerDataElt, city, country) {
-    countryElt.style.margin = "10px 0";
-    countryElt.style.color = "#901C1C";
-    countryElt.style.fontSize = "1.2rem";
     countryElt.textContent = `${city}, ${country}`;
     liPhotographerDataElt.appendChild(countryElt);
 }
@@ -59,8 +52,6 @@ function setPhotographerCountry(countryElt, liPhotographerDataElt, city, country
  * @param {string} tagline 
  */
 function setPhotographerTagline(liPhotographerDataElt, taglineElt, tagline) {
-    taglineElt.style.margin = "10px 0";
-    taglineElt.style.color = "#525252";
     taglineElt.textContent = tagline;
     liPhotographerDataElt.appendChild(taglineElt);
 }
@@ -72,7 +63,6 @@ function setPhotographerTagline(liPhotographerDataElt, taglineElt, tagline) {
  * @param {object} buttonElt 
  */
 function addContactButton(liContactElt, ulHeaderElt, buttonElt) {
-    liContactElt.style.display = "block";
     ulHeaderElt.appendChild(liContactElt).appendChild(buttonElt);
 }
 
@@ -84,12 +74,8 @@ function addContactButton(liContactElt, ulHeaderElt, buttonElt) {
  * @param {string} picture
  */
 function setPhotographerImg(ulHeaderElt, liImgElt, imgElt, picture, name) {
-    liImgElt.style.display = "block";
     imgElt.setAttribute("src", picture);
     imgElt.setAttribute("alt", name);
-    imgElt.style.width = "150px";
-    imgElt.style.height = "150px";
-    imgElt.style.borderRadius = "50%";
     ulHeaderElt.appendChild(liImgElt).appendChild(imgElt);
 }
 
@@ -114,19 +100,10 @@ function photographerContactFactory(photographer) {
 
 /**
  * 
- * @param {object} liMediaElt
- */
-function addLiMedia(liMediaElt) {
-    liMediaElt.style.display = "block";
-}
-
-/**
- * 
  * @param {object} figureMediaElt 
  * @param {object} liMediaElt 
  */
 function addFigureMedia(figureMediaElt, liMediaElt) {
-    figureMediaElt.style.margin = "0";
     liMediaElt.appendChild(figureMediaElt);
 }
 
@@ -140,9 +117,6 @@ function setImgMedia(imgMediaElt, figureMediaElt, picture, title) {
     imgMediaElt.setAttribute("src", picture);
     imgMediaElt.setAttribute("alt", title);
     imgMediaElt.setAttribute("onclick", "openlightboxModal()");
-    imgMediaElt.style.width = "400px";
-    imgMediaElt.style.height = "400px";
-    imgMediaElt.style.borderRadius = "5px";
     figureMediaElt.appendChild(imgMediaElt);
 }
 
@@ -156,8 +130,6 @@ function setVideoMedia(videoMediaElt, linkMediaElt, srcVideo) {
     const srcElt = document.createElement("source");
     srcElt.setAttribute("src", srcVideo)
     srcElt.setAttribute("type","video/mp4");
-    videoMediaElt.style.width = "400px";
-    videoMediaElt.style.height = "400px";
     videoMediaElt.setAttribute("controls","controls");
     videoMediaElt.appendChild(srcElt);
     linkMediaElt.appendChild(videoMediaElt);
@@ -169,10 +141,6 @@ function setVideoMedia(videoMediaElt, linkMediaElt, srcVideo) {
  * @param {object} figureMediaElt 
  */
 function addFigcaptionMedia(figCaptionMediaElt, figureMediaElt) {
-    figCaptionMediaElt.style.display = "flex";
-    figCaptionMediaElt.style.justifyContent = "space-between";
-    figCaptionMediaElt.style.alignItems = "center";
-    figCaptionMediaElt.style.margin = "8px 0";
     figureMediaElt.appendChild(figCaptionMediaElt);
 }
 
@@ -182,7 +150,6 @@ function addFigcaptionMedia(figCaptionMediaElt, figureMediaElt) {
  * @param {object} figCaptionMediaElt 
  */
 function addFigcaptionHeaderMedia(figcaptionHeaderElt, figCaptionMediaElt) {
-    figcaptionHeaderElt.style.height = "0";
     figCaptionMediaElt.appendChild(figcaptionHeaderElt);
 }
 
@@ -194,7 +161,6 @@ function addFigcaptionHeaderMedia(figcaptionHeaderElt, figCaptionMediaElt) {
  */
 function setTitleMedia(title, titleElt, figcaptionHeaderElt) {
     titleElt.textContent = title;
-    titleElt.style.color = "#901C1C";
     figcaptionHeaderElt.appendChild(titleElt);
 }
 
@@ -204,8 +170,6 @@ function setTitleMedia(title, titleElt, figcaptionHeaderElt) {
  * @param {object} figCaptionMediaElt 
  */
 function addLikeMedia(figureLikeElt, figCaptionMediaElt) {
-    figureLikeElt.style.margin = "0";
-    figureLikeElt.style.color = "#901C1C";
     figCaptionMediaElt.appendChild(figureLikeElt);
 }
 
@@ -217,7 +181,6 @@ function addLikeMedia(figureLikeElt, figCaptionMediaElt) {
  */
 function setLikesMedia(spanLikeElt, figureLikeElt, likes) {
     spanLikeElt.textContent = likes;
-    spanLikeElt.style.paddingRight = "5px";
     figureLikeElt.appendChild(spanLikeElt);
 }
 
@@ -228,7 +191,6 @@ function setLikesMedia(spanLikeElt, figureLikeElt, likes) {
  */
 function addIconLikeMedia(figureLikeElt, iMediaElt) {
     iMediaElt.className = "fa-solid fa-heart";
-    iMediaElt.style.cursor = "pointer";
     figureLikeElt.appendChild(iMediaElt);
 }
 
@@ -257,7 +219,6 @@ function photographerMediaFactory(media) {
 
     function getMediaCardDOM() {
         image ? setImgMedia(imgMediaElt, figureMediaElt, picture, title) : setVideoMedia(videoMediaElt, figureMediaElt, srcVideo);
-        addLiMedia(liMediaElt);
         addFigureMedia(figureMediaElt, liMediaElt);
         addFigcaptionMedia(figCaptionMediaElt, figureMediaElt);
         addFigcaptionHeaderMedia(figcaptionHeaderElt, figCaptionMediaElt);

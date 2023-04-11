@@ -1,20 +1,4 @@
-body {
-    font-family: "DM Sans", sans-serif;
-    margin: 0;
-}
-
-header {
-    margin: 0 100px;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-    height: 90px;
-}
-
-header img {
-    height: 50px;
-}
+@import url("style.css");
 
 main {
     margin: 50px 100px;

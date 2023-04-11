@@ -1,10 +1,14 @@
+@import url("style.css");
+
 main {
-    margin: 0 100px;
+   margin: 0 100px; 
 }
 
 .photograph-header {
     background-color: #FAFAFA;
     height: 300px;
+    display: flex;
+    flex-direction: row;
 }
 
 .photograph-header ul {
@@ -14,6 +18,28 @@ main {
     justify-content: space-between;
     align-items: center;
     width: 100%;
+}
+
+.photograph-header li {
+    display: block;
+}
+
+.photograph-header p {
+    margin: 10px 0;
+}
+
+.photograph-header p:nth-child(1) {
+    font-size: 2.4rem;
+    color: #D3573C;
+}
+
+.photograph-header p:nth-child(2) {
+    font-size: 1.2rem;
+    color: #901C1C;
+}
+
+.photograph-header p:nth-child(3) {
+    color: #525252;
 }
 
 .contact-button {
@@ -30,6 +56,12 @@ main {
     width: 170px;
     height: 60px;
     font-size: 18px;
+}
+
+.photograph-header img {
+    border-radius: 50%;
+    width: 150px;
+    height: 150px;
 }
 
 .modal form .contact-button {
@@ -131,6 +163,49 @@ main {
     display: flex;
     gap: 50px 100px;
     flex-wrap: wrap;
+}
+
+.media li {
+    display: block;
+}
+
+.media figure {
+    margin: 0;
+}
+
+.media img, .media video {
+    border-radius: 5px;
+    width: 400px;
+    height: 400px;
+}
+
+.media figcaption {
+    margin: 8px 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.media figcaption header {
+    height: 30px;
+}
+
+.media h3 {
+    margin: 0;
+    color: #901C1C;
+}
+
+.media figcaption figure {
+    margin: 0;
+    color: #901C1C;
+}
+
+.media figure span {
+    padding-right: 5px;
+}
+
+.media figure i {
+    cursor: pointer;
 }
 
 .price-and-likes {
