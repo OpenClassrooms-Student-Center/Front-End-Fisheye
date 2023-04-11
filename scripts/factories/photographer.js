@@ -84,7 +84,6 @@ function addContactButton(liContactElt, ulHeaderElt, buttonElt) {
  * @param {string} picture
  */
 function setPhotographerImg(ulHeaderElt, liImgElt, imgElt, picture) {
-    console.log(typeof ulHeaderElt);
     liImgElt.style.display = "block";
     imgElt.setAttribute("src", picture);
     imgElt.style.width = "150px";
