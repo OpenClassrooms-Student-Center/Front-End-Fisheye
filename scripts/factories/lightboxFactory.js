@@ -6,9 +6,10 @@
  * @param {string} picture 
  * @param {object} itemElt 
  */
-function addImgMedia(picture, itemElt) {
+function addImgMedia(picture, title, itemElt) {
     const imgMediaElt = document.createElement("img");
     imgMediaElt.setAttribute("src", picture);
+    imgMediaElt.setAttribute("alt", title);
     itemElt.appendChild(imgMediaElt);
 }
 
@@ -52,7 +53,7 @@ function photographerLightboxFactory(media) {
 
     itemElt.classList.add("item");
     carousselItemElt.classList.add("carousel-item");
-    image ? addImgMedia(picture, itemElt) : addVideoMedia(srcVideo, itemElt);
+    image ? addImgMedia(picture, title, itemElt) : addVideoMedia(srcVideo, itemElt);
     addTitleMedia(title, itemElt);
     carouselContainerElt.appendChild(carousselItemElt).appendChild(itemElt);
 }

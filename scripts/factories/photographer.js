@@ -136,8 +136,9 @@ function addFigureMedia(figureMediaElt, liMediaElt) {
  * @param {object} figureMediaElt 
  * @param {string} picture
  */
-function setImgMedia(imgMediaElt, figureMediaElt, picture) {
+function setImgMedia(imgMediaElt, figureMediaElt, picture, title) {
     imgMediaElt.setAttribute("src", picture);
+    imgMediaElt.setAttribute("alt", title);
     imgMediaElt.setAttribute("onclick", "openlightboxModal()");
     imgMediaElt.style.width = "400px";
     imgMediaElt.style.height = "400px";
@@ -255,7 +256,7 @@ function photographerMediaFactory(media) {
     const iMediaElt = document.createElement("i");
 
     function getMediaCardDOM() {
-        image ? setImgMedia(imgMediaElt, figureMediaElt, picture) : setVideoMedia(videoMediaElt, figureMediaElt, srcVideo);
+        image ? setImgMedia(imgMediaElt, figureMediaElt, picture, title) : setVideoMedia(videoMediaElt, figureMediaElt, srcVideo);
         addLiMedia(liMediaElt);
         addFigureMedia(figureMediaElt, liMediaElt);
         addFigcaptionMedia(figCaptionMediaElt, figureMediaElt);
