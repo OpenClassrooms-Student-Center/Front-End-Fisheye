@@ -67,12 +67,9 @@ h3 {
 p {
     margin: 0;
     font-size: 0.8rem;
-}
-
-figcaption p:nth-child(1) {
     color: #000;
 }
 
-figcaption p:nth-child(2) {
+figcaption p:nth-child(3) {
     color: #525252;
 }
