@@ -83,9 +83,10 @@ function addContactButton(liContactElt, ulHeaderElt, buttonElt) {
  * @param {object} imgElt 
  * @param {string} picture
  */
-function setPhotographerImg(ulHeaderElt, liImgElt, imgElt, picture) {
+function setPhotographerImg(ulHeaderElt, liImgElt, imgElt, picture, name) {
     liImgElt.style.display = "block";
     imgElt.setAttribute("src", picture);
+    imgElt.setAttribute("alt", name);
     imgElt.style.width = "150px";
     imgElt.style.height = "150px";
     imgElt.style.borderRadius = "50%";
@@ -106,7 +107,7 @@ function photographerContactFactory(photographer) {
     setPhotographerCountry(countryElt, liPhotographerDataElt, city, country);
     setPhotographerTagline(liPhotographerDataElt, taglineElt, tagline);
     addContactButton(liContactElt, ulHeaderElt, buttonElt);
-    setPhotographerImg(ulHeaderElt, liImgElt, imgElt, picture);
+    setPhotographerImg(ulHeaderElt, liImgElt, imgElt, picture, name);
 }
 
 // media section functions

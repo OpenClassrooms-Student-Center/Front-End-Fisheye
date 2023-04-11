@@ -33,9 +33,9 @@ function addFigureElt(figureElt, aElt) {
  */
 function setPhotographerImg(name, picture, imgElt, figureElt) {
     imgElt.setAttribute("src", picture);
+    imgElt.setAttribute("alt", name);
     imgElt.style.borderRadius = "50%";
     imgElt.style.objectFit = "cover";
-    imgElt.setAttribute("alt", name);
     figureElt.appendChild(imgElt);
 }
 
