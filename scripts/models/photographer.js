@@ -1,5 +1,4 @@
 import { mediaFactory } from "../factories/mediaFactory.js";
-import { photographerFactory } from "../factories/photographerFactory.js";
 import { Lightbox } from "../factories/lightboxFactory.js";
 import { getPhotographers } from "../api/api.js";
 console.log("Window location:", window.location)

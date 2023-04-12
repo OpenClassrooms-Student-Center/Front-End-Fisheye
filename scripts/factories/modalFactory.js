@@ -7,7 +7,7 @@ function contactForm(data) {
 
     function getContactFormDOM() {
         const form = `
-          <div class="modal" role="document">
+        <div class="modal" role="document">
           <br>
           <header>
             <h2 class="modal_title" tabindex="0">Contactez-moi <br> ${name}
