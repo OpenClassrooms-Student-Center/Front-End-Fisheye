@@ -102,3 +102,49 @@ form input {
     box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.25);
     object-fit:cover;
 }
+
+.gallery{
+    display: grid;
+    grid-template-columns: repeat(3, 33%);
+    grid-template-rows: 1fr;
+    margin: 0 100px;
+    align-items: center;
+    justify-items: center;
+}
+.media{
+    width: 65%;
+    height: 65%;
+}
+
+.media video{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+.media img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+.img-content{
+    display: flex;
+    justify-content: space-between;
+}
+
+.media p{
+    color: #901C1C;
+}
+
+.boxPrice-photographer{
+    position: fixed;
+    bottom: 0;
+    right: 10%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 25%;
+    height: 7%;
+    background-color: #DB8876;
+    border-radius: 5px;
+    font-size: 20px;
+}
