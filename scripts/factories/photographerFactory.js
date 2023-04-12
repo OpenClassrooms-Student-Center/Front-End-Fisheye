@@ -1,6 +1,8 @@
-function photographerFactory(data) {
-    const { name, id, city, country, tagline, price, portrait } = data;
-
+import {mediaArrayById, photographer} from '../pages/photographerController.js'
+// console.log("test export array :", mediaArrayById)
+export function photographerFactory(photographer) {
+    const { name, id, city, country, tagline, price, portrait, likes } = photographer;
+    console.log("test export array :", mediaArrayById)
     // Template card photographe page d'accueil
     const wrapper = document.createElement('section');
     wrapper.classList.add("photographes")
@@ -55,27 +57,6 @@ function photographerFactory(data) {
         return wrapperBanner
     }
 
-    // Template filtres
-
-    const wrapperMediaFilter = document.createElement('section');
-    wrapperMediaFilter.classList.add('photographe_filter');
-
-    function getUserMediaFilterDOM() {
-        const filter = `
-            <h5 id="filter__title" tabindex="0">Trier par</h5>
-            <div class="selector" data-filter-value="popularity">
-                <button id="filter__toggle" aria-labelledby="filter__title filter__option1" class="selector__toggle" aria-expanded="false" aria-haspopup="listbox"><span class="material-symbols-outlined">expand_more</span>
-                <ul id="filter__list-items" role="listbox" class="selector__list" tabindex="-1" aria-activedescendant="filter__option1" aria-labelledby="filter__title">
-                    <li class="selector__element selector__element1" role="option" tabindex="-1" data-filter-option="popularity" aria-labelledby="filter__title filter__option1" aria-selected="true">Popularité</li>
-                    <li class="selector__element selector__element2" role="option" tabindex="-1" data-filter-option="date" aria-labelledby="filter__title filter__option2">Date</li>
-                    <li class="selector__element selector__element3" role="option" tabindex="-1" data-filter-option="title" aria-labelledby="filter__title filter__option3">Titre</li>
-                </ul>
-            </div>
-        `
-        wrapperMediaFilter.innerHTML=filter;
-        return wrapperMediaFilter
-    }
-
     // // Template encard prix photographe
     // const wrapperLikesPrice = document.createElement('div');
     // wrapperLikesPrice.classList.add('likes_price');
@@ -99,5 +80,5 @@ function photographerFactory(data) {
     //     return sum
     // }
 
-    return { id, name, city, country, tagline, price, picture, getUserCardDOM, getUserBannerDOM, getUserMediaFilterDOM/*, getLikesPrice*/}
+    return { id, name, city, country, tagline, price, picture, getUserCardDOM, getUserBannerDOM, /*getUserMediaFilterDOM, getLikesPrice*/}
 }

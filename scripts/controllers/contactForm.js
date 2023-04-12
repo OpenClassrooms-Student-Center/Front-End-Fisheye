@@ -1,9 +1,8 @@
-const body = document.getElementById('body');
-const mainWrapper = document.getElementById('main');
-const openModalBtn = document.querySelector('.contact_button');
-const modalTitle = document.querySelector('.modal_title');
-const closeModalBtn = document.querySelector('.modal_close_btn');
-const form = document.querySelector(".form");
+const body = document.getElementById('body')
+const mainWrapper = document.getElementById('main')
+const openModalBtn = document.querySelector('.contact_button')
+const modalTitle = document.querySelector('.modal_title')
+const closeModalBtn = document.querySelector('.modal_close_btn')
 
 function displayModal() {
     const modal = document.querySelector(".contact_modal");
