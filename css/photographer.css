@@ -326,9 +326,8 @@ input[type="checkbox"] {
 
 .content-modal > img {
     position: absolute;
-    top: 70px;
+    top: 30px;
     right: 40px;
-    width: 30px;
 }
 
 #lightbox-modal i {

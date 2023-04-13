@@ -191,6 +191,8 @@ function setLikesMedia(likeElt, figureLikeElt, likes) {
  */
 function addIconLikeMedia(figureLikeElt, iMediaElt) {
     iMediaElt.className = "fa-solid fa-heart";
+    iMediaElt.setAttribute("title","liker ou disliker le media");
+    iMediaElt.setAttribute("aria-hidden","true");
     figureLikeElt.appendChild(iMediaElt);
 }
 
