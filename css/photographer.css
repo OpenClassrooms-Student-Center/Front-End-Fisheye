@@ -90,12 +90,15 @@ main {
 }
 
 .modal header {
+    display: flex;
     justify-content: space-between;
     width: 100%;
     height: auto;
 }
 
-.modal img, select {
+.modal img {
+    width: 42px;
+    height: 42px;
     cursor: pointer;
 }
 
@@ -200,7 +203,7 @@ main {
     color: #901C1C;
 }
 
-.media figure span {
+.media b {
     padding-right: 5px;
 }
 
@@ -321,10 +324,11 @@ input[type="checkbox"] {
     width: 70%;
 }
 
-.close-modal {
+.content-modal > img {
     position: absolute;
-    top: 30px;
+    top: 70px;
     right: 40px;
+    width: 30px;
 }
 
 #lightbox-modal i {

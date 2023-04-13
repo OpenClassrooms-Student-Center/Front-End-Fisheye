@@ -11,8 +11,8 @@ body > header {
     height: 90px;
 }
 
-header img {
-    height: 50px;
+.logo {
+    height: 40px;
 }
 
 

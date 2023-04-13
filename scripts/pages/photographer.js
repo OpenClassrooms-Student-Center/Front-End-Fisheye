@@ -236,7 +236,7 @@ function turnChevronDropdownList() {
  */
 function likePhotographerMedia(totalLikes) {
     const loveElts = document.querySelectorAll(".media i");
-    const likesNumberElts = document.querySelectorAll(".media span");
+    const likesNumberElts = document.querySelectorAll(".media b");
 
     for (i = 0; i < loveElts.length; i++) {
         const loveElt = loveElts[i];

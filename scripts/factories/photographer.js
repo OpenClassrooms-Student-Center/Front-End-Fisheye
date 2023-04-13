@@ -175,13 +175,13 @@ function addLikeMedia(figureLikeElt, figCaptionMediaElt) {
 
 /**
  * 
- * @param {object} spanLikeElt 
+ * @param {object} likeElt 
  * @param {object} figureLikeElt 
  * @param {number} likes 
  */
-function setLikesMedia(spanLikeElt, figureLikeElt, likes) {
-    spanLikeElt.textContent = likes;
-    figureLikeElt.appendChild(spanLikeElt);
+function setLikesMedia(likeElt, figureLikeElt, likes) {
+    likeElt.textContent = likes;
+    figureLikeElt.appendChild(likeElt);
 }
 
 /**
@@ -214,7 +214,7 @@ function photographerMediaFactory(media) {
     const figcaptionHeaderElt = document.createElement("header");
     const titleElt = document.createElement("h3");
     const figureLikeElt = document.createElement("figure");
-    const spanLikeElt = document.createElement("span");
+    const likeElt = document.createElement("b");
     const iMediaElt = document.createElement("i");
 
     function getMediaCardDOM() {
@@ -224,7 +224,7 @@ function photographerMediaFactory(media) {
         addFigcaptionHeaderMedia(figcaptionHeaderElt, figCaptionMediaElt);
         setTitleMedia(title, titleElt, figcaptionHeaderElt);
         addLikeMedia(figureLikeElt, figCaptionMediaElt);
-        setLikesMedia(spanLikeElt, figureLikeElt, likes);
+        setLikesMedia(likeElt, figureLikeElt, likes);
         addIconLikeMedia(figureLikeElt, iMediaElt);
 
         return (liMediaElt);
