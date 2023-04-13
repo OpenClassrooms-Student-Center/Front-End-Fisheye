@@ -1,4 +1,4 @@
-async function getPhotographer() {
+  async function getPhotographer() {
     const parameters = new URLSearchParams(window.location.search)
     const idString = parameters.get('id')
   
@@ -39,6 +39,7 @@ async function getPhotographer() {
     return media
   }
   
+  // photographers
   async function displayHeader(photographer) {
     const photographerHeader = document.querySelector('.photograph-header');
     const photographerModel = photographerFactory(photographer);
@@ -46,6 +47,7 @@ async function getPhotographer() {
     photographerHeader.appendChild(photographerHeaderDOM);
   };
   
+  // medias
   async function displayMedia(media) {
     const mediaContainer = document.querySelector('.photograph-body');
   
@@ -56,6 +58,7 @@ async function getPhotographer() {
         mediaContainer.appendChild(mediaDOM);
       });
     }
+    console.log(media)
   };
   
   // price per day photographer
@@ -100,19 +103,20 @@ filterSelect.addEventListener('change', (event) => {
   filterSelect.value = sortBy;
 });
   
-  async function init() {
-    // Get the sort filter from the URL parameters
-    const parameters = new URLSearchParams(window.location.search);
-    const sortBy = parameters.get('sort');
-  
+async function init() {
+
     // Get photographers infos
     const photographer = await getPhotographer();
     displayHeader(photographer);
   
+    // Get the sort filter from the URL parameters
+    const parameters = new URLSearchParams(window.location.search);
+    const sortBy = parameters.get('sort');
+  
     // Get photographers media with the specified sort filter
     const photographerMedias = await getPhotographerMedias(sortBy);
     displayMedia(photographerMedias);
-  
+    
     // Display photographer's price
     displayCounts(photographer);
   
@@ -130,6 +134,4 @@ filterSelect.addEventListener('change', (event) => {
     }
   }
   
-  init();
-  
-     
+  init();  

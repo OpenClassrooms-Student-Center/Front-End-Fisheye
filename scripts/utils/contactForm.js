@@ -83,7 +83,7 @@ button.addEventListener('click', (event) => {
   const alertMessage = `Prénom: ${prenomInput.value}\nNom: ${nomInput.value}\nEmail: ${emailInput.value}\nMessage: ${messageInput.value}`;
 
   // Show the alert message
-  alert(alertMessage);
+  console.log(alertMessage);
 
   // Close the modal
   closeModal();
