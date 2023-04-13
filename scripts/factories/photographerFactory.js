@@ -1,8 +1,14 @@
-import {mediaArrayById, photographer} from '../pages/photographerController.js'
-// console.log("test export array :", mediaArrayById)
+// import { PhotographersModel } from '../models/photographersModel.js';
+import {mediaArrayById} from '../pages/photographerController.js'
+
+// let userId = (new URL(window.location)).searchParams.get("id");
+// const mediaData = new PhotographersModel('data/photographers.json');
+// const media = await mediaData.getMediaForOnePhotographer(userId);
+// console.log("test export array :", media)
+
 export function photographerFactory(photographer) {
     const { name, id, city, country, tagline, price, portrait, likes } = photographer;
-    console.log("test export array :", mediaArrayById)
+    // console.log("test export array :", mediaArrayById)
     // Template card photographe page d'accueil
     const wrapper = document.createElement('section');
     wrapper.classList.add("photographes")
@@ -57,28 +63,28 @@ export function photographerFactory(photographer) {
         return wrapperBanner
     }
 
-    // // Template encard prix photographe
-    // const wrapperLikesPrice = document.createElement('div');
-    // wrapperLikesPrice.classList.add('likes_price');
+    // Template encard prix photographe
+    const wrapperLikesPrice = document.createElement('div');
+    wrapperLikesPrice.classList.add('likes_price');
+    
+    function getLikesPrice() {
+        const LikesPrice = `
+            <div id="total-likes">${sumLikes()}<span class="material-symbols-outlined">favorite</span></div>
+            <span>${price}€ / jour</span>
+        `
+    
+        wrapperLikesPrice.innerHTML=LikesPrice;
+        sumLikes()
+        return wrapperLikesPrice
+    }
+    
+    function sumLikes () {
+        let sum = 0 
+        mediaArrayById.forEach(media => {
+        sum += media.likes
+        })
+        return sum
+    }
 
-    // function getLikesPrice() {
-    //     const LikesPrice = `
-    //         <div id="total-likes">${sumLikes()}<span class="material-symbols-outlined">favorite</span></div>
-    //         <span>${price}€ / jour</span>
-    //     `
-
-    //     wrapperLikesPrice.innerHTML=LikesPrice;
-    //     sumLikes ()
-    //     return wrapperLikesPrice
-    // }
-
-    // function sumLikes () {
-    //     let sum = 0 
-    //     mediaSelectedById.forEach(media => {
-    //     sum += media.likes
-    // })
-    //     return sum
-    // }
-
-    return { id, name, city, country, tagline, price, picture, getUserCardDOM, getUserBannerDOM, /*getUserMediaFilterDOM, getLikesPrice*/}
+    return { id, name, city, country, tagline, price, picture, getUserCardDOM, getUserBannerDOM, /*getUserMediaFilterDOM,*/ getLikesPrice}
 }

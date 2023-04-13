@@ -119,9 +119,109 @@ main {
     flex-wrap: nowrap;
     width: 100%;
     height: 60px;
+    margin: 0 100px;
 }
 
-.selector {
+h5 {
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 23px;
+    margin-top: 10px;
+}
+
+.dropdown {
+    min-width: 8em;
+    position: relative;
+    margin: 0em 2em;
+}
+
+.dropdown * {
+    box-sizing: border-box;
+}
+
+.select {
+    background: #901C1C;
+    color: #FAFAFA;
+    display: grid;
+    grid-template-columns: 1fr 0.3fr;
+    justify-content: space-between;
+    align-items: center;
+    border: 2px #901C1C solid;
+    border-radius: 0.5em;
+    padding: 0.9em 0.6em;
+    cursor: pointer;
+    transition: background .3s ease-in-out;
+}
+
+.selected {
+    font-size: 18px;
+    color: #ffffff;
+    text-align: start;
+}
+
+#material {
+    color: #ffffff;   
+    transition: 0.3s;
+}
+
+.select-clicked {
+    box-shadow: 0 0 0.8em #c36699;
+    border: 2px #D3573C solid;
+    border-radius: 0.5em 0.5em 0 0;
+}
+
+.select:hover {
+    background-color: #D3573C;
+}
+
+/* .material-symbols-outlined {
+    transition: 0.3s;
+    color: #FAFAFA;
+} */
+
+.material-symbols-outlined-rotate {
+    transform: rotate(180deg);
+}
+
+.menu {
+    list-style: none;
+    /* padding: 0.2em 0.5em; */
+    background: #901C1C;
+    border: 2px #D3573C solid;
+    border-top: none;
+    border-radius: 0 0 0.5em 0.5em;
+    color: #fff;
+    position: absolute;
+    width: 100%;
+    top: 60px;
+    opacity: 0;
+    display: none;
+    transition: 0.2s;
+    z-index: 1;
+}
+
+.menu li {
+    padding: 0.9em 0.5em;
+    font-size: 18px;
+    cursor: pointer;
+    border-top: 2px #FAFAFA solid;
+}
+
+.menu li:hover {
+    background: #D3573C;
+}
+
+.active {
+    background: #901C1C;
+}
+
+.menu-open {
+    display: block;
+    opacity: 1;
+}
+
+/* .selector {
+    padding: 10px;
     position: relative;
     margin: 0;
     background: #901c1c;
@@ -132,41 +232,12 @@ main {
     width: 170px;
     font-size: 18px;
     cursor: pointer;
-}
+    transition: all .3s ease-in-out;
+    z-index: 2;
+} */
 
 
 
-
-
-.selector button {
-    position: absolute;
-    background: none;
-    border: none;
-    color: #fff;
-    top: 0;
-    right: 0;
-    height: 45px;
-    width: 100%;
-    border-radius: 5px;
-    cursor: pointer;
-    z-index: 1;
-}
-
-
-
-.selector ul li {
-    list-style: none;
-}
-
-.material-symbols-outlined {
-    font-family: 'material-symbols-outlined';
-    font-weight: normal;
-    font-style: normal;
-    font-size: 24px;
-    line-height: 1;
-    direction: ltr;
-
-}
 
 /* GALERIE */
 .photographies_section {

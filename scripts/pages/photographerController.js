@@ -1,4 +1,4 @@
-import { mediaFactory } from "../factories/mediaFactory.js";
+// import { mediaFactory } from "../factories/mediaFactory.js";
 import { photographerFactory } from "../factories/photographerFactory.js";
 import { Lightbox } from "../factories/lightboxFactory.js";
 import { PhotographersModel } from "../models/photographersModel.js";
@@ -9,17 +9,12 @@ export let userId = (new URL(window.location)).searchParams.get("id");
 
 const photographersModel = new PhotographersModel('data/photographers.json');
 export const parentDOM = document.querySelector("main");
-// export const mediaArrayById = []
 
-export const photographer = await photographersModel.getPhotographerById(userId);
+const photographer = await photographersModel.getPhotographerById(userId);
 export const mediaArrayById = await photographersModel.getMediaForOnePhotographer(userId);
 
+// const test = mediaArrayById.map(media => media.price)
 
-// photographerMedia.forEach(element => {
-//     mediaArrayById.push(element)
-// })
-
-console.log("liste des medias :", photographersModel)
 
 // FONCTION BANNER PHOTOGRAPHE
 async function bannerData() {
@@ -28,10 +23,10 @@ async function bannerData() {
     parentDOM.appendChild(userBannerDOM);
 };
 
-// FONCTION FILTRE MEDIA
-async function filterData() {
-    const filter = mediaFactory(mediaArrayById);
-    const photographerFilterDOM = filter.getUserMediaFilterDOM();
+// FONCTION SORT MEDIA
+async function mediaSort() {
+    const sort = mediaFactory(mediaArrayById);   
+    const photographerFilterDOM = sort.getUserMediaSortDOM();
     parentDOM.appendChild(photographerFilterDOM);
 }
 
@@ -44,12 +39,13 @@ async function mediaData(mediaArrayById) {
         const photographerMediaDOM = mediaModel.getUserMediaDOM();
         parentDOM.appendChild(photographiesSection);
         photographiesSection.appendChild(photographerMediaDOM);
+
     });
 }
 
 // FONCTION ENCARD PRIX PHOTOGRAPHE
 async function likePriceData(mediaArrayById) {
-    const photographerPrice = mediaFactory(mediaArrayById);
+    const photographerPrice = photographerFactory(photographer);
     const userPriceDOM = photographerPrice.getLikesPrice();
     parentDOM.appendChild(userPriceDOM);
 };
@@ -74,7 +70,7 @@ async function init() {
 
     // Récupère les datas des photographes et créé la bannière
     bannerData(photographer);
-    filterData();
+    mediaSort();
     mediaData(mediaArrayById);
     likePriceData(mediaArrayById);
     formData(photographer);

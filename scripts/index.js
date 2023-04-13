@@ -1,4 +1,5 @@
 import { PhotographersModel } from "./models/photographersModel.js";
+import { photographerFactory } from "./factories/photographerFactory.js";
 
 
 async function init() {

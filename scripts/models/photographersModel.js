@@ -47,4 +47,8 @@ export class PhotographersModel {
             throw new Error('Impossible de contacter le serveur pour getPhotographersById')
         })
     }
+
+    sortFakeData(){
+        return []
+    }
 }
