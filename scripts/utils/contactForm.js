@@ -11,7 +11,7 @@ const successMessageElt = document.querySelector(".modal div:nth-child(1) p");
 
 /**
  * 
- * @param {object} photographer 
+ * @param {object} photographer
  * @returns {object}
  */
 function photographerContactFormFactory(photographer) {
@@ -28,10 +28,20 @@ function photographerContactFormFactory(photographer) {
 
 function displayModal() {
 	modalElt.style.display = "block";
+    mainElt.setAttribute("aria-hidden","true");
+    modalElt.setAttribute("aria-hidden","false");
+
+    document.addEventListener("keydown", (e) => {
+        if (e.keyCode === 27) {
+            closeModal();
+        }
+     });
 }
 
 function closeModal() {
     modalElt.style.display = "none";
+    mainElt.setAttribute("aria-hidden","false");
+    modalElt.setAttribute("aria-hidden","true");
     formElt.reset();
     successMessageElt.remove();
     const spanElts = document.querySelectorAll("span");
@@ -51,8 +61,8 @@ function validateFirstName() {
         const divFirstElt = document.querySelector(".modal div:nth-child(2)");
         const spanErrorMessage = document.querySelectorAll(".modal div:nth-child(2) span");
         const errorMessage = "Prénom obligatoire avec au minimum 2 lettres";
-
-        createErrorMessage(divFirstElt, errorMessage, spanErrorMessage);
+        const ariaDescription = "first-validate";
+        createErrorMessage(divFirstElt, errorMessage, spanErrorMessage, ariaDescription);
 
         return false;
     } 
@@ -74,8 +84,8 @@ function validateLastName() {
         const divLastElt = document.querySelector(".modal div:nth-child(3)");
         const errorMessage = "Nom obligatoire avec au minimum 2 lettres";
         const spanErrorMessage = document.querySelectorAll(".modal div:nth-child(3) span");
-        
-        createErrorMessage(divLastElt, errorMessage, spanErrorMessage);
+        const ariaDescription = "last-validate";
+        createErrorMessage(divLastElt, errorMessage, spanErrorMessage, ariaDescription);
 
         return false;
     } else if (removeErrorMessage) {
@@ -96,8 +106,8 @@ function validateEmail() {
         const divEmailElt = document.querySelector(".modal div:nth-child(4)");
         const errorMessage = "Veuillez renseigner une adresse mail valide";
         const spanErrorMessage = document.querySelectorAll(".modal div:nth-child(4) span");
-        
-        createErrorMessage(divEmailElt, errorMessage, spanErrorMessage);
+        const ariaDescription = "email-validate";
+        createErrorMessage(divEmailElt, errorMessage, spanErrorMessage, ariaDescription);
 
         return false;
     } else if (removeErrorMessage) {
@@ -118,8 +128,9 @@ function validateMessage() {
         const divMessageElt = document.querySelector(".modal div:nth-child(5)");
         const errorMessage = "Votre message doit etre compris entre 20 et 700 caractères";
         const spanErrorMessage = document.querySelectorAll(".modal div:nth-child(5) span");
+        const ariaDescription = "message-validate";
         
-        createErrorMessage(divMessageElt, errorMessage, spanErrorMessage);
+        createErrorMessage(divMessageElt, errorMessage, spanErrorMessage, ariaDescription);
 
         return false;
     } else if (removeErrorMessage) {
@@ -135,8 +146,9 @@ function validateMessage() {
  * @param {string} errorMessage 
  * @param {object} spanErrorMessage 
  */
-function createErrorMessage(divElt, errorMessage, spanErrorMessage) {
+function createErrorMessage(divElt, errorMessage, spanErrorMessage, ariaDescription) {
     const spanElt = document.createElement("span");
+    spanElt.setAttribute("id",ariaDescription);
     spanElt.textContent = errorMessage;
     divElt.appendChild(spanElt);
 

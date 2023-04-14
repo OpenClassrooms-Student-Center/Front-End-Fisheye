@@ -115,10 +115,10 @@ main {
 }
 
 .modal div {
-    display: flex;
-    flex-direction: column;
+    /* display: flex;
+    flex-direction: column; */
     width: 100%;
-    align-items: self-start;
+    /* align-items: self-start; */
     margin-bottom: 26px;
 }
 

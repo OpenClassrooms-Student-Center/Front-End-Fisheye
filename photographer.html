@@ -11,14 +11,15 @@
   </head>
   <body>
     <header>
-      <img src="assets/images/logo.png" class="logo" alt="logo de Fisheye"/>
+      <a href="index.html"><img src="assets/images/logo.png" class="logo" alt="logo de Fisheye - Page d'accueil"/></a>
     </header>
-    <main id="main">
+    <main id="main" aria-hidden="false">
       <header class="photograph-header">
         <ul>
         </ul>
         <button class="contact-button" onclick="displayModal()">Contactez-moi</button>
       </header>
+      <!-- filters -->
       <section class="filter">
         <form> 
           <label>Trier par</label>
@@ -33,18 +34,24 @@
           </div>
         </form>
       </section>
+
+      <!-- media -->
       <section class="media">
         <ul>
         </ul>
       </section>
+
+      <!-- price and total likes photographer -->
       <div class="price-and-likes">
         <div class="total-likes"></div>
       </div>
     </main>
-    <div id="contact-modal">
+
+    <!-- form contact modal -->
+    <div id="contact-modal" role="dialog" aria-hidden="true" aria-describedby="modalTitle">
 			<div class="modal">
 				<header>
-          <h2>Contactez-moi</h2>
+          <h2 id="modalTitle">Contactez-moi</h2>
           <img src="assets/icons/whiteClose.svg" alt="ferme le formulaire de contact" onclick="closeModal()"/>
         </header>
 				<form method="get">
@@ -52,34 +59,36 @@
             <p></p>
           </div>
 					<div>
-						<label>Prénom</label>
-						<input type="text" name="first"/>
+						<label for="first">Prénom</label>
+						<input type="text" name="first" id="first" aria-describedby="first-validate"/>
 					</div>
           <div>
-						<label>Nom</label>
-						<input type="text" name="last"/>
+						<label for="last">Nom</label>
+						<input type="text" name="last" id="last" aria-describedby="last-validate"/>
 					</div>
           <div>
-						<label>Email</label>
-						<input type="email" name="email"/>
+						<label for="email">Email</label>
+						<input type="email" name="email" id="email" aria-describedby="email-validate"/>
 					</div>
           <div>
-						<label>Votre message</label>
-						<textarea name="message"></textarea>
+						<label for="message">Votre message</label>
+						<textarea name="message" id="message" aria-describedby="message-validate"></textarea>
 					</div>
-          <button class="contact-button" onclick="return displayUserDataInConsole();">Envoyer</button>
+          <button class="contact-button" onclick="return displayUserDataInConsole()">Envoyer</button>
 				</form>
 			</div>
 		</div>
+
+    <!-- lightbox modal -->
     <div id="lightbox-modal">
       <div class="content-modal">
         <img src="assets/icons/brownClose.svg" alt="ferme le carousel des medias du photographe" onclick="closeLightboxModal()" />
-        <button class="carousel-prev" onclick="return prev()"><i class="fa-sharp fa-solid fa-chevron-left fa-2xl" title="naviguer vers le media précedent"></i></button>
+        <button class="carousel-prev" onclick="return prev()"><em class="fa-sharp fa-solid fa-chevron-left fa-2xl" title="naviguer vers le media précedent"></em></button>
         <div class="carousel">
           <div class="carousel-container">
           </div>
         </div>
-        <button class="carousel-next" onclick="return next()"><i class="fa-sharp fa-solid fa-chevron-right fa-2xl" title="naviguer vers le media suivant"></i></button>
+        <button class="carousel-next" onclick="return next()"><em class="fa-sharp fa-solid fa-chevron-right fa-2xl" title="naviguer vers le media suivant"></em></button>
       </div>
     </div>
     <script src="scripts/pages/photographer.js"></script>

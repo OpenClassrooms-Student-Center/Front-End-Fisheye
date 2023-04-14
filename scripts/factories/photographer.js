@@ -128,7 +128,7 @@ function setImgMedia(imgMediaElt, figureMediaElt, picture, title) {
  */
 function setVideoMedia(videoMediaElt, linkMediaElt, srcVideo) {
     const srcElt = document.createElement("source");
-    srcElt.setAttribute("src", srcVideo)
+    srcElt.setAttribute("src", srcVideo);
     srcElt.setAttribute("type","video/mp4");
     videoMediaElt.setAttribute("controls","controls");
     videoMediaElt.appendChild(srcElt);
