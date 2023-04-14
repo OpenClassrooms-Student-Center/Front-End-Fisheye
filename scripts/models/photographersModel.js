@@ -4,8 +4,6 @@ export class PhotographersModel {
         this.url = url
     }
 
-    //
-
     async getPhotographers() {
         return fetch(this.url)
             .then(response => response.json())
@@ -49,6 +47,7 @@ export class PhotographersModel {
     }
 
     sortFakeData(){
+        console.log("sort fake data")
         return []
     }
 }

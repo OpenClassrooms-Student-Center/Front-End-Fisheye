@@ -1,23 +1,44 @@
-import {mediaArrayById} from '../pages/photographerController.js'
+import {mediaPhotographer, mediaData} from '../pages/photographerController.js'
 
 const popularityBtn = document.querySelector('.selector__element1')
 const dateBtn = document.querySelector('.selector__element2')
 const titleBtn = document.querySelector('.selector__element3')
 
-// Listener sort by likes
+// --- Utils function --- //
 
+// Sort data by date
+const sortByDate = (data) => {
+    const copyData = [...data]
+
+    return copyData.sort((a, b) => {
+        const dateA = new Date(a.date).valueOf();
+        const dateB = new Date(b.date).valueOf();
+        if( dateA > dateB) {
+            return -1;
+        }
+        if( dateA < dateB) {
+            return 1;
+        }
+    
+        return 0
+    });
+}
+
+
+// Listener sort by likes
 popularityBtn.addEventListener("click", function () {
-    const popularityArray = Array.from(mediaArrayById);
+    const popularityArray = Array.from(mediaPhotographer);
     popularityArray.sort(function (a, b) {
         return b.likes - a.likes
     });
-    console.log('sort by popularity :', popularityArray)
+
+    mediaData(popularityArray)
 })
 
 // Listener sort by title
 
 titleBtn.addEventListener("click", function () {
-    const titleArray = Array.from(mediaArrayById);
+    const titleArray = Array.from(mediaPhotographer);
     titleArray.sort((a, b) => {
         const titleA = a.title.toUpperCase();
         const titleB = b.title.toUpperCase();
@@ -30,26 +51,14 @@ titleBtn.addEventListener("click", function () {
     
         return 0
     });
-    console.log('sort by title :', titleArray)
+    mediaData(titleArray)
 })
 
 // Listener sort by date
 
 dateBtn.addEventListener('click', function () {
-    const dateArray = Array.from(mediaArrayById);
-    dateArray.sort((a, b) => {
-        const dateA = new Date(a.date).valueOf();
-        const dateB = new Date(b.date).valueOf();
-        if( dateA > dateB) {
-            return -1;
-        }
-        if( dateA < dateB) {
-            return 1;
-        }
-    
-        return 0
-    });
-    console.log('sort by date :', dateArray)
+    const dataSorted = sortByDate(mediaPhotographer)
+    mediaData(dataSorted)
 })
 
 // Sort menu 

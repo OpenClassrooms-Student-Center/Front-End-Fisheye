@@ -1,47 +1,63 @@
-// import { mediaFactory } from "../factories/mediaFactory.js";
 import { photographerFactory } from "../factories/photographerFactory.js";
 import { Lightbox } from "../factories/lightboxFactory.js";
 import { PhotographersModel } from "../models/photographersModel.js";
 
-console.log("Window location:", window.location)
-export let userId = (new URL(window.location)).searchParams.get("id");
-
-
-const photographersModel = new PhotographersModel('data/photographers.json');
 export const parentDOM = document.querySelector("main");
+export const urlPhotographerId = (new URL(window.location)).searchParams.get("id");
 
-const photographer = await photographersModel.getPhotographerById(userId);
-export const mediaArrayById = await photographersModel.getMediaForOnePhotographer(userId);
+const PhotographersModelContsructor = new PhotographersModel('data/photographers.json');
+const photographer = await PhotographersModelContsructor.getPhotographerById(urlPhotographerId);
+export const mediaPhotographer = await PhotographersModelContsructor.getMediaForOnePhotographer(urlPhotographerId);
 
-// const test = mediaArrayById.map(media => media.price)
+const mediaDataContainer = document.querySelector(".photographer-media-container")
+const filterContainer = document.querySelector(".photographer-filter-container")
+const bannerContainer = document.querySelector(".photographer-banner-container")
 
+
+function sleep(ms) {
+    return new Promise(resolve => setTimeout(resolve, ms));
+}
+
+
+async function init() {
+    // Récupère les datas des photographes et créé la bannière
+    bannerData(photographer);
+    
+    likePriceData(mediaPhotographer);
+    formData(photographer);
+    
+    mediaData(mediaPhotographer);
+    mediaSort(mediaPhotographer);
+
+    Lightbox.init()
+};
+
+init();
 
 // FONCTION BANNER PHOTOGRAPHE
-async function bannerData() {
-    const photographerModel = photographerFactory(photographer);
+async function bannerData(data) {
+    const photographerModel = photographerFactory(data);
     const userBannerDOM = photographerModel.getUserBannerDOM();
-    parentDOM.appendChild(userBannerDOM);
+    bannerContainer.appendChild(userBannerDOM);
 };
 
 // FONCTION SORT MEDIA
-async function mediaSort() {
-    const sort = mediaFactory(mediaArrayById);   
-    const photographerFilterDOM = sort.getUserMediaSortDOM();
-    parentDOM.appendChild(photographerFilterDOM);
+async function mediaSort(data) {
+    const photographerFilterDOM = mediaFactory(data).getUserMediaSortDOM();
+    filterContainer.appendChild(photographerFilterDOM);
 }
 
 // FONCTION GALERIE MEDIAS PHOTOGRAPHE
-async function mediaData(mediaArrayById) {
-    const photographiesSection = document.createElement('section')
-    photographiesSection.classList.add('photographies_section')
-    mediaArrayById.forEach((media) => {
-        const mediaModel = mediaFactory(media);
-        const photographerMediaDOM = mediaModel.getUserMediaDOM();
-        parentDOM.appendChild(photographiesSection);
-        photographiesSection.appendChild(photographerMediaDOM);
-
+export async function mediaData(data) {
+    mediaDataContainer.innerHTML = "";
+    data.forEach((media) => {
+        const mediaModel = mediaFactory(media).getUserMediaDOM();
+        mediaDataContainer.appendChild(mediaModel);
     });
 }
+
+
+
 
 // FONCTION ENCARD PRIX PHOTOGRAPHE
 async function likePriceData(mediaArrayById) {
@@ -57,23 +73,3 @@ function formData() {
     parentDOM.appendChild(formDOM);
 };
 
-
-async function init() {
-    // console.log("Window location:", window.location)
-
-    // let userId = (new URL(window.location)).searchParams.get("id");
-
-    // let photographer = await photographersModel.getPhotographerById(userId);
-    // const mediaArrayById = [];
-
-    // mediaArrayById.push(photographersModel.getMediaForOnePhotographer(userId))
-
-    // Récupère les datas des photographes et créé la bannière
-    bannerData(photographer);
-    mediaSort();
-    mediaData(mediaArrayById);
-    likePriceData(mediaArrayById);
-    formData(photographer);
-    Lightbox.init()
-};
-init();

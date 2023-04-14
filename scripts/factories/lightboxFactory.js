@@ -1,7 +1,5 @@
-import { parentDOM, userId } from "../pages/photographerController.js";
+import { parentDOM, urlPhotographerId } from "../pages/photographerController.js";
 import { enableBodyScroll, disableBodyScroll } from "./bodyScrollLock.js";
-
-
 
 /**
  * 
@@ -38,10 +36,10 @@ export class Lightbox {
         // init variables
         this.id = id
         this.images = images
-
+        this.type = type
         this.element = this.buildDom(url)
-        // this.loadFactory(url)
-        if (type === "img") {
+        // this.loadFactory(id, url, title, type)
+        if (this.type === "img") {
             this.loadImage(id, url, title)
         } else {
             this.loadVideo(id, url, title)
@@ -58,15 +56,27 @@ export class Lightbox {
      * 
      * @param {Media} media factory image ou une video
      */
-    loadFactory(url) {
-        if (url.type === 'picture') {
-            this.loadImage()
-        } else if (url.type === 'video') {
-            this.loadVideo()
-        } else {
-            throw new Error('Error de chargement media')
-        }
-    }
+
+    // loadFactory(id, url, title) {
+    //     if (this.type === "img") {
+    //         this.loadImage(id, url, title)
+    //     } else if(this.type === "video"){
+    //         this.loadVideo(id, url, title)       
+    //     } else {
+    //         throw new Error('Error de chargement media')
+    //     }
+    // }
+
+
+    // loadFactory(url) {
+    //     if (url.type === 'picture') {
+    //         this.loadImage()
+    //     } else if (url.type === 'video') {
+    //         this.loadVideo()
+    //     } else {
+    //         throw new Error('Error de chargement media')
+    //     }
+    // }
 
 
 
@@ -103,26 +113,27 @@ export class Lightbox {
         image.src = url
     }
 
-    // loadVideo(id, url, title) {
-    //     const video = document.createElement('video')
+    loadVideo(id, url, title) {
+        this.id = id
+        const video = document.createElement('video')
+        
 
-    //     const container = this.element.querySelector('.lightbox__container')
-    //     // const loader = document.createElement('div')
-    //     // // loader.classList.add('lightbox__loader')
-    //     // // container.appendChild(loader)
-    //     container.appendChild(video)
+        const container = this.element.querySelector('.lightbox__container')
+        // const loader = document.createElement('div')
+        // // loader.classList.add('lightbox__loader')
+        // // container.appendChild(loader)
+        container.appendChild(video)
 
-    //     const title = document.createElement('h2')
-    //     title.id= 'media-title'
-    //     title.innerHTML = mediaSelectedById.find((element) => element.title = title)
-    //     this.$title = title
+        // title
+        const titleContainer = document.createElement('h2')
+        titleContainer.classList.add('lightbox__title')
+        titleContainer.innerHTML = title
 
-    //     // video.onload = function () {
-    //     //     container.removeChild(loader)
-    //     //     container.appendChild(video)
-    //     // }
-    //     video.src = url
-    // }
+
+
+        video.src = url
+    }
+
 
     /**
      * 

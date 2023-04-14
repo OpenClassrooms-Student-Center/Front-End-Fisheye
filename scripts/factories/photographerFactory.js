@@ -1,5 +1,5 @@
 // import { PhotographersModel } from '../models/photographersModel.js';
-import {mediaArrayById} from '../pages/photographerController.js'
+import {mediaPhotographer} from '../pages/photographerController.js'
 
 // let userId = (new URL(window.location)).searchParams.get("id");
 // const mediaData = new PhotographersModel('data/photographers.json');
@@ -80,7 +80,7 @@ export function photographerFactory(photographer) {
     
     function sumLikes () {
         let sum = 0 
-        mediaArrayById.forEach(media => {
+        mediaPhotographer.forEach(media => {
         sum += media.likes
         })
         return sum

@@ -240,7 +240,7 @@ h5 {
 
 
 /* GALERIE */
-.photographies_section {
+.photographer-media-container  {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
 }
