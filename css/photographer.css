@@ -330,7 +330,7 @@ input[type="checkbox"] {
     right: 40px;
 }
 
-#lightbox-modal i {
+#lightbox-modal em {
     color: #901C1C;
 }
 
@@ -344,6 +344,10 @@ input[type="checkbox"] {
     margin: 20px;
     overflow: hidden;
     width: 100%;
+}
+
+.carousel-container {
+    padding: 0;
 }
 
 .carousel-item {

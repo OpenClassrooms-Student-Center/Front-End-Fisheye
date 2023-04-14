@@ -8,10 +8,28 @@ let currentItem = 0;
 function openlightboxModal() {
 	modalLightboxElt.style.display = "block";
     setWidthCarouselItem();
+    mainElt.setAttribute("aria-hidden","true");
+    modalLightboxElt.setAttribute("aria-hidden","false");
+
+    document.addEventListener("keydown", function(e) {
+        if(e.keyCode === 39) {
+            next();
+        } else if(e.keyCode === 37) {
+            prev();
+        }
+    });
+
+    document.addEventListener("keydown", (e) => {
+        if (e.keyCode === 27) {
+            closeLightboxModal();
+        }
+     });
 }
 
 function closeLightboxModal() {
     modalLightboxElt.style.display = "none";
+    mainElt.setAttribute("aria-hidden","false");
+    modalLightboxElt.setAttribute("aria-hidden","true");
 }
 
 function setWidthCarouselItem() {
@@ -46,9 +64,3 @@ function scrollToItem(index) {
     containerElt.style.transform = "translate(" + translateX + "%)";
     currentItem = index;
 }
-
-
-
-
-
-

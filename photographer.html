@@ -34,19 +34,16 @@
           </div>
         </form>
       </section>
-
       <!-- media -->
       <section class="media">
         <ul>
         </ul>
       </section>
-
       <!-- price and total likes photographer -->
       <div class="price-and-likes">
         <div class="total-likes"></div>
       </div>
     </main>
-
     <!-- form contact modal -->
     <div id="contact-modal" role="dialog" aria-hidden="true" aria-describedby="modalTitle">
 			<div class="modal">
@@ -84,13 +81,14 @@
       <div class="content-modal">
         <img src="assets/icons/brownClose.svg" alt="ferme le carousel des medias du photographe" onclick="closeLightboxModal()" />
         <button class="carousel-prev" onclick="return prev()"><em class="fa-sharp fa-solid fa-chevron-left fa-2xl" title="naviguer vers le media précedent"></em></button>
-        <div class="carousel">
-          <div class="carousel-container">
-          </div>
+        <div class="carousel" aria-label="les medias du photographer">
+          <ul class="carousel-container">
+          </ul>
         </div>
         <button class="carousel-next" onclick="return next()"><em class="fa-sharp fa-solid fa-chevron-right fa-2xl" title="naviguer vers le media suivant"></em></button>
       </div>
     </div>
+    
     <script src="scripts/pages/photographer.js"></script>
     <script src="scripts/factories/photographer.js"></script>
     <script src="scripts/utils/contactForm.js"></script>
