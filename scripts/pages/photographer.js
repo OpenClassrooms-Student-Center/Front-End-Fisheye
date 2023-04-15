@@ -1,7 +1,12 @@
 "use_strict";
 
-const selectDivElt = document.querySelector(".dropdown-label");
+const filterLabelElt = document.querySelector(".dropdown-label");
 const ulMediaElt = document.querySelector(".media ul");
+const mediaByPopularElt = document.querySelector(".popularMedia");
+const mediaDateDescElt = document.querySelector(".mediaDateDesc");
+const mediaTitleAscElt = document.querySelector(".mediaTitleAsc");
+const hrDateElt = document.querySelector(".mediaDateDesc hr");
+const filterDropdownUlElt = document.querySelector(".dropdown-ul");
 
 /**
  * 
@@ -106,9 +111,16 @@ function insertMediaDOM(media) {
  * @param {object} totalLikes
  */
 function setPhotographerPopularMedia(photographerPopularMedia, totalLikes) {
-    const mediaByPopularElt = document.querySelector(".dropdown-label");
+    filterLabelElt.textContent = mediaByPopularElt.textContent;
+    mediaByPopularElt.style.display = "none";
 
     mediaByPopularElt.addEventListener("click", () => {
+        filterLabelElt.textContent = mediaByPopularElt.textContent;
+        mediaByPopularElt.style.display = "none";
+        mediaDateDescElt.style.display = "block";
+        mediaTitleAscElt.style.display = "block";
+        hrDateElt.style.display = "block";
+
         ulMediaElt.innerHTML = "";
         photographerPopularMedia.forEach(media => {
             insertMediaDOM(media);
@@ -123,9 +135,12 @@ function setPhotographerPopularMedia(photographerPopularMedia, totalLikes) {
  * @param {number} totalLikes
  */
 function setMediaByDateDesc(mediaByDateDesc, totalLikes) {
-    const mediaDateDescElt = document.querySelector(".mediaDateDesc");
-
     mediaDateDescElt.addEventListener("click", () => {
+        filterLabelElt.textContent = mediaDateDescElt.textContent;
+        mediaDateDescElt.style.display = "none";
+        mediaByPopularElt.style.display = "block";
+        mediaTitleAscElt.style.display = "block";
+
         ulMediaElt.innerHTML = "";
         mediaByDateDesc.forEach(media => {
             insertMediaDOM(media);
@@ -140,14 +155,18 @@ function setMediaByDateDesc(mediaByDateDesc, totalLikes) {
  * @param {number} totalLikes 
  */
 function setMediaByTitleAsc(mediaByTitleAsc, totalLikes) {
-    const mediaTitleAscElt = document.querySelector(".mediaTitleAsc");
-
     mediaTitleAscElt.addEventListener("click", () => {
+        filterLabelElt.textContent = mediaTitleAscElt.textContent;
+        mediaTitleAscElt.style.display = "none";
+        mediaByPopularElt.style.display = "block";
+        mediaDateDescElt.style.display = "block";
+        hrDateElt.style.display = "none";
+
         ulMediaElt.innerHTML = "";
         mediaByTitleAsc.forEach(media => {
             insertMediaDOM(media);
             likePhotographerMedia(totalLikes);
-        })
+        });
     });
 }
 
@@ -218,13 +237,16 @@ async function getPhotographerData() {
 
 function turnChevronDropdownList() {
     let direction = false;
-
-    selectDivElt.addEventListener("click", () => {
+    
+    filterLabelElt.addEventListener("click", () => {
+        const dropdownElt = document.querySelector(".dropdown-wrapper");
         if (direction == false) {
-            selectDivElt.style.setProperty('--selectdivAfterTransform','rotate(-90deg)');
+            filterLabelElt.style.setProperty('--selectdivAfterTransform','rotate(-90deg)');
+            dropdownElt.style.borderRadius = "5px 5px 0 0";
             direction = true;
         } else {
-            selectDivElt.style.setProperty('--selectdivAfterTransform','rotate(90deg)');
+            filterLabelElt.style.setProperty('--selectdivAfterTransform','rotate(90deg)');
+            dropdownElt.style.borderRadius = "5px";
             direction = false;
         }
     });

@@ -3,8 +3,9 @@
 main {
     margin: 50px 100px;
     display: flex;
+    justify-content: space-between;
     flex-wrap: wrap;
-    gap: 0px 160px;
+    gap: 0px 100px;
 }
 
 article {
