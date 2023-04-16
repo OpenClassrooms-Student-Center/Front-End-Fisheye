@@ -1,6 +1,3 @@
-
-// functions
-
 /**
  * 
  * @param {string} picture 

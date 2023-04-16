@@ -115,10 +115,10 @@ function setPhotographerPopularMedia(photographerPopularMedia, totalLikes) {
     mediaByPopularElt.style.display = "none";
 
     mediaByPopularElt.addEventListener("click", () => {
-
         clickFilterHandler("Popularité");
         hrDateElt.style.display = "block";
         ulMediaElt.innerHTML = "";
+        
         photographerPopularMedia.forEach(media => {
             insertMediaDOM(media);
             likePhotographerMedia(totalLikes);
@@ -190,7 +190,7 @@ async function displayData(photographer, photographerPopularMedia, mediaByDateDe
     photographerPopularMedia.forEach(media => { insertMediaDOM(media) });
     likePhotographerMedia(totalLikes);
     setPhotographerPopularMedia(photographerPopularMedia, totalLikes);
-    setMediaByDateDesc(mediaByDateDesc, totalLikes)
+    setMediaByDateDesc(mediaByDateDesc, totalLikes);
     setMediaByTitleAsc(mediaByTitleAsc, totalLikes);
     photographerContactFactory(photographer);
     photographerPriceAndTotalLikesFactory(photographer, totalLikes);
@@ -242,23 +242,6 @@ async function getPhotographerData() {
     displayLightboxModal(photographerMedia);
 }
 
-function turnChevronDropdownList() {
-    let direction = false;
-    
-    filterLabelElt.addEventListener("click", () => {
-        
-        if (direction == false) {
-            filterLabelElt.style.setProperty('--selectdivAfterTransform','rotate(-90deg)');
-            dropdownElt.style.borderRadius = "5px 5px 0 0";
-            direction = true;
-        } else {
-            filterLabelElt.style.setProperty('--selectdivAfterTransform','rotate(90deg)');
-            dropdownElt.style.borderRadius = "5px";
-            direction = false;
-        }
-    });
-}
-
 /**
  * 
  * @param {number} totalLikes
@@ -295,5 +278,3 @@ function likePhotographerMedia(totalLikes) {
 }
 
 getPhotographerData();
-turnChevronDropdownList();
-

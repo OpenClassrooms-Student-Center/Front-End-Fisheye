@@ -7,10 +7,24 @@ let currentItem = 0;
     
 function openlightboxModal() {
 	modalLightboxElt.style.display = "block";
-    setWidthCarouselItem();
     mainElt.setAttribute("aria-hidden","true");
     modalLightboxElt.setAttribute("aria-hidden","false");
+    setWidthCarouselItem();
+    closeLightboxWithKeyboard();
+    navigateOnLightboxWithKeyboard();
+}
 
+// close modal on keydown "echap" keyborad button
+function closeLightboxWithKeyboard() {
+    document.addEventListener("keydown", (e) => {
+        if (e.keyCode === 27) {
+            closeLightboxModal();
+        }
+     });
+}
+
+// navigate on lightbox with keyboard arrow keys
+function navigateOnLightboxWithKeyboard() {
     document.addEventListener("keydown", function(e) {
         if(e.keyCode === 39) {
             next();
@@ -18,12 +32,6 @@ function openlightboxModal() {
             prev();
         }
     });
-
-    document.addEventListener("keydown", (e) => {
-        if (e.keyCode === 27) {
-            closeLightboxModal();
-        }
-     });
 }
 
 function closeLightboxModal() {

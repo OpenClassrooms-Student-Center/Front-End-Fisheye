@@ -1,103 +1,5 @@
 "use_strict";
 
-// header main elements
-const mainElt = document.querySelector("main");
-const ulHeaderElt = document.querySelector(".photograph-header ul");
-const liPhotographerDataElt = document.createElement("li");
-const liContactElt = document.createElement("li");
-const liImgElt = document.createElement("li");
-const nameElt = document.createElement("h1");
-const countryElt = document.createElement("h2");
-const taglineElt = document.createElement("p");
-const buttonElt = document.querySelector("button[class='contact-button']");
-const imgElt = document.createElement("img");
-
-/**
- * header section content
- * 
- * @param {object} liPhotographerDataElt 
- * @param {object} ulHeaderElt
- */
-function addLiPhotographerData(liPhotographerDataElt, ulHeaderElt) {
-    ulHeaderElt.appendChild(liPhotographerDataElt);
-}
-
-/**
- * 
- * @param {object} nameElt 
- * @param {object} liPhotographerDataElt 
- * @param {string} name
- */
-function setPhotographerName(nameElt, liPhotographerDataElt, name) {
-    nameElt.textContent = name;
-    liPhotographerDataElt.appendChild(nameElt);
-}
-
-/**
- * 
- * @param {object} countryElt 
- * @param {object} liPhotographerDataElt 
- * @param {string} city 
- * @param {string} country
- */
-function setPhotographerCountry(countryElt, liPhotographerDataElt, city, country) {
-    countryElt.textContent = `${city}, ${country}`;
-    liPhotographerDataElt.appendChild(countryElt);
-}
-
-/**
- * 
- * @param {object} liPhotographerDataElt 
- * @param {object} taglineElt 
- * @param {string} tagline 
- */
-function setPhotographerTagline(liPhotographerDataElt, taglineElt, tagline) {
-    taglineElt.textContent = tagline;
-    liPhotographerDataElt.appendChild(taglineElt);
-}
-
-/**
- * 
- * @param {object} liContactElt 
- * @param {object} ulHeaderElt 
- * @param {object} buttonElt 
- */
-function addContactButton(liContactElt, ulHeaderElt, buttonElt) {
-    ulHeaderElt.appendChild(liContactElt).appendChild(buttonElt);
-}
-
-/**
- * 
- * @param {object} ulHeaderElt 
- * @param {object} liImgElt 
- * @param {object} imgElt 
- * @param {string} picture
- */
-function setPhotographerImg(ulHeaderElt, liImgElt, imgElt, picture, name) {
-    imgElt.setAttribute("src", picture);
-    imgElt.setAttribute("alt", name);
-    ulHeaderElt.appendChild(liImgElt).appendChild(imgElt);
-}
-
-/**
- * displaying photographer data on header main
- * 
- * @param {string} photographer 
- */
-function photographerContactFactory(photographer) {
-    const [{ name, portrait, city, country, tagline }] = photographer;
-    const picture = `assets/photographers/${portrait}`;
-
-    addLiPhotographerData(liPhotographerDataElt, ulHeaderElt);
-    setPhotographerName(nameElt, liPhotographerDataElt, name);
-    setPhotographerCountry(countryElt, liPhotographerDataElt, city, country);
-    setPhotographerTagline(liPhotographerDataElt, taglineElt, tagline);
-    addContactButton(liContactElt, ulHeaderElt, buttonElt);
-    setPhotographerImg(ulHeaderElt, liImgElt, imgElt, picture, name);
-}
-
-// media section functions
-
 /**
  * 
  * @param {object} figureMediaElt 
@@ -207,7 +109,7 @@ function photographerMediaFactory(media) {
     const picture = `assets/media/${image}`;
     const srcVideo = `assets/media/${video}`;
     
-    // section media elements
+    // DOM elements
     const liMediaElt = document.createElement("li");
     const figureMediaElt = document.createElement("figure");
     const imgMediaElt = document.createElement("img");
@@ -233,28 +135,5 @@ function photographerMediaFactory(media) {
     }
 
     return { getMediaCardDOM };
-}
-
-/**
- * displaying total number likes + price per day
- * 
- * @param {object} photographer 
- * @param {number} totalLikes 
- */
-function photographerPriceAndTotalLikesFactory(photographer, totalLikes) {
-    const [{ price }] = photographer;
-    const totalLikesElt = document.querySelector(".total-likes");
-    const priceAndLikesElt = document.querySelector(".price-and-likes");
-    const totalElt = document.createElement("b");
-    const heartElt = document.createElement("i");
-    const priceElt = document.createElement("b");
-
-    priceAndLikesElt.appendChild(totalLikesElt);
-    totalElt.textContent = totalLikes;
-    totalLikesElt.appendChild(totalElt);
-    heartElt.className = "fa-solid fa-heart";
-    totalLikesElt.appendChild(heartElt);
-    priceElt.textContent = `${price}€ / jour`;
-    priceAndLikesElt.appendChild(priceElt);
 }
 
