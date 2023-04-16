@@ -5,7 +5,6 @@ body {
     margin: 0;
 }
 
-
 header {
     display: flex;
     flex-direction: row;
@@ -25,9 +24,9 @@ h1 {
 }
 
 .photographer_section {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    gap: 70px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
     margin-top: 100px;
 }
 
@@ -47,4 +46,6 @@ h1 {
 .photographer_section article img {
     height: 200px;
     width: 200px;
+    object-fit: cover;
+    border-radius: 50%;
 }

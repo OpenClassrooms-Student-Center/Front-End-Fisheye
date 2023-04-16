@@ -4,14 +4,14 @@ function photographerFactory(data) {
     const picture = `assets/photographers/${portrait}`;
 
     function getUserCardDOM() {
-        const article = document.createElement( 'article' );
-        const img = document.createElement( 'img' );
-        img.setAttribute("src", picture)
-        const h2 = document.createElement( 'h2' );
-        h2.textContent = name;
-        article.appendChild(img);
-        article.appendChild(h2);
-        return (article);
+        const article = 
+        `<article>
+            <img src="${picture}" alt="${name}" />
+            <h2>${name}</h2>
+        </article>`
+        const section = document.createElement('section');
+        section.innerHTML = article;
+        return section.firstElementChild;
     }
     return { name, picture, getUserCardDOM }
 }
