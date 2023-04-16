@@ -6,7 +6,7 @@ const mediaByPopularElt = document.querySelector(".popularMedia");
 const mediaDateDescElt = document.querySelector(".mediaDateDesc");
 const mediaTitleAscElt = document.querySelector(".mediaTitleAsc");
 const hrDateElt = document.querySelector(".mediaDateDesc hr");
-const filterDropdownUlElt = document.querySelector(".dropdown-ul");
+const dropdownElt = document.querySelector(".dropdown-wrapper");
 
 /**
  * 
@@ -115,12 +115,9 @@ function setPhotographerPopularMedia(photographerPopularMedia, totalLikes) {
     mediaByPopularElt.style.display = "none";
 
     mediaByPopularElt.addEventListener("click", () => {
-        filterLabelElt.textContent = mediaByPopularElt.textContent;
-        mediaByPopularElt.style.display = "none";
-        mediaDateDescElt.style.display = "block";
-        mediaTitleAscElt.style.display = "block";
-        hrDateElt.style.display = "block";
 
+        clickFilterHandler("Popularité");
+        hrDateElt.style.display = "block";
         ulMediaElt.innerHTML = "";
         photographerPopularMedia.forEach(media => {
             insertMediaDOM(media);
@@ -135,13 +132,11 @@ function setPhotographerPopularMedia(photographerPopularMedia, totalLikes) {
  * @param {number} totalLikes
  */
 function setMediaByDateDesc(mediaByDateDesc, totalLikes) {
-    mediaDateDescElt.addEventListener("click", () => {
-        filterLabelElt.textContent = mediaDateDescElt.textContent;
-        mediaDateDescElt.style.display = "none";
-        mediaByPopularElt.style.display = "block";
-        mediaTitleAscElt.style.display = "block";
 
+    mediaDateDescElt.addEventListener("click", () => {
+        clickFilterHandler("Date");
         ulMediaElt.innerHTML = "";
+
         mediaByDateDesc.forEach(media => {
             insertMediaDOM(media);
             likePhotographerMedia(totalLikes);
@@ -155,18 +150,30 @@ function setMediaByDateDesc(mediaByDateDesc, totalLikes) {
  * @param {number} totalLikes 
  */
 function setMediaByTitleAsc(mediaByTitleAsc, totalLikes) {
-    mediaTitleAscElt.addEventListener("click", () => {
-        filterLabelElt.textContent = mediaTitleAscElt.textContent;
-        mediaTitleAscElt.style.display = "none";
-        mediaByPopularElt.style.display = "block";
-        mediaDateDescElt.style.display = "block";
-        hrDateElt.style.display = "none";
 
+    mediaTitleAscElt.addEventListener("click", () => {
+        clickFilterHandler("Titre");
+        hrDateElt.style.display = "none";
         ulMediaElt.innerHTML = "";
+
         mediaByTitleAsc.forEach(media => {
             insertMediaDOM(media);
             likePhotographerMedia(totalLikes);
         });
+    });
+}
+
+function clickFilterHandler(filterName) {
+    const unclickedFilters = document.querySelectorAll(".dropdown-ul li");
+    unclickedFilters.forEach((filter) => {
+
+        if (filter.textContent === filterName) {
+            filterLabelElt.textContent = filter.textContent;
+            filter.style.display = "none";
+            
+        } else {
+            filter.style.display = "block";
+        }
     });
 }
 
@@ -239,7 +246,7 @@ function turnChevronDropdownList() {
     let direction = false;
     
     filterLabelElt.addEventListener("click", () => {
-        const dropdownElt = document.querySelector(".dropdown-wrapper");
+        
         if (direction == false) {
             filterLabelElt.style.setProperty('--selectdivAfterTransform','rotate(-90deg)');
             dropdownElt.style.borderRadius = "5px 5px 0 0";
