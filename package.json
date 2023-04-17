@@ -1,0 +1,23 @@
+{
+  "name": "front-end-fisheye",
+  "version": "1.0.0",
+  "description": "Photographers website",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Halima-DERRAHI/Front-End-Fisheye.git"
+  },
+  "keywords": [
+    "Front-End-Fisheye"
+  ],
+  "author": "Halima",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Halima-DERRAHI/Front-End-Fisheye/issues"
+  },
+  "homepage": "https://github.com/Halima-DERRAHI/Front-End-Fisheye#readme"
+}
