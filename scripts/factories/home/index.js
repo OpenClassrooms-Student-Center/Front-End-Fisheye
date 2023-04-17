@@ -9,6 +9,11 @@
  */
 function addLinkElt(id, name, aElt, articleElt) {
     aElt.setAttribute("href","photographer.html?name=" + name + "&id=" + id);
+    articleElt.setAttribute(
+        "aria-description","cette carte présente le photographe" 
+        + name + "au clique sur la carte, vous serez redirigez vers la page de" 
+        + name
+        );
     articleElt.appendChild(aElt);
 }
 

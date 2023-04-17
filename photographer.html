@@ -10,38 +10,38 @@
     <link href="css/photographer.css" rel="stylesheet" type="text/css" />
   </head>
   <body>
-    <header>
+    <header aria-label="entete de la page">
       <a href="index.html"><img src="assets/images/logo.png" class="logo" alt="logo de Fisheye - Page d'accueil"/></a>
     </header>
     <main id="main" aria-hidden="false">
-      <header class="photograph-header">
+      <header class="photograph-header" aria-label="cette région contient les informations et contacts du photographe">
         <ul>
         </ul>
         <button class="contact-button" onclick="displayModal()">Contactez-moi</button>
       </header>
       <!-- filters -->
-      <section class="filter">
+      <section class="filter" aria-label="cette région permet de filtrer l'affichage des media du photographe">
         <form> 
           <label for="filter">Trier par</label>
-          <div class="dropdown-wrapper">
+          <div class="dropdown-wrapper" role="listbox">
             <input type="checkbox" class="dropdown-chk" id="check1" />
             <label for="check1" class="dropdown-label"></label>
             <ul class="dropdown-ul">
               <li><hr></li>
-              <li class="popularMedia">Popularité<hr></li>
-              <li class="mediaDateDesc">Date<hr></li>
-              <li class="mediaTitleAsc">Titre</li>
+              <li class="popularMedia" role="option">Popularité<hr></li>
+              <li class="mediaDateDesc" role="option">Date<hr></li>
+              <li class="mediaTitleAsc" role="option">Titre</li>
             </ul>
           </div>
         </form>
       </section>
       <!-- media -->
-      <section class="media">
+      <section class="media" aria-label="cette région affiche les media du photographer">
         <ul>
         </ul>
       </section>
       <!-- price and total likes photographer -->
-      <div class="price-and-likes">
+      <div class="price-and-likes" role="region" aria-label="cette région nous informe du nombre total des likes et le prix par jour d'un photographer">
         <div class="total-likes"></div>
       </div>
     </main>
@@ -50,9 +50,14 @@
 			<div class="modal">
 				<header>
           <h2 id="modalTitle">Contactez-moi</h2>
-          <img src="assets/icons/whiteClose.svg" alt="ferme le formulaire de contact" onclick="closeModal()"/>
+          <a aria-disabled="true">
+            <img src="assets/icons/whiteClose.svg" 
+            alt="" 
+            aria-label="au clique sur ce bouton, le formulaire de contact se ferme" 
+            onclick="closeModal()"/>
+          </a>
         </header>
-				<form method="get">
+				<form method="get" aria-label="contactez le photographe">
           <div>
             <p></p>
           </div>
@@ -76,7 +81,6 @@
 				</form>
 			</div>
 		</div>
-
     <!-- lightbox modal -->
     <div id="lightbox-modal">
       <div class="content-modal">
@@ -89,7 +93,6 @@
         <button class="carousel-next" onclick="return next()"><em class="fa-sharp fa-solid fa-chevron-right fa-2xl" title="naviguer vers le media suivant"></em></button>
       </div>
     </div>
-    
     <script src="scripts/pages/photographer.js"></script>
     <script src="scripts/factories/photographer/photographerHeader.js"></script>
     <script src="scripts/factories/photographer/lightbox.js"></script>
