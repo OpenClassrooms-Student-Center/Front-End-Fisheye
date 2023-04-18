@@ -3,7 +3,7 @@ import { photographerFactory } from "../factories/photographer.js";
 
 export async function getPhotographers() {
 	// Récupèrer les données du fichier JSON
-	const reponse = await fetch("../data/photographers.json");
+	const reponse = await fetch("data/photographers.json");
 	const photographers = await reponse.json();
 
 	return photographers;
