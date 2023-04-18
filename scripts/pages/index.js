@@ -1,9 +1,11 @@
-    async function getPhotographers() {
-        // Ceci est un exemple de données pour avoir un affichage de photographes de test dès le démarrage du projet, 
-        // mais il sera à remplacer avec une requête sur le fichier JSON en utilisant "fetch".
+   document.onload = function() {
+     localStorage.removeItem('id');
+   }
+   
+   async function getPhotographers() {
         let response = await fetch("../data/photographers.json")
-        // et bien retourner le tableau photographers seulement une fois récupéré
-        photographers = await response.json();
+        //retourner le tableau photographers seulement une fois récupéré
+        let photographers = await response.json();
         return photographers;
     }
 
@@ -17,11 +19,22 @@
         });
     };
 
+    function SetId(e) {
+        if (e.target.classList.contains('pageLink')) {
+            const id = e.target.getAttribute('id');
+            localStorage.setItem('id', id);
+            console.log(id);
+        }
+    }
+    
+    
+
     async function init() {
         // Récupère les datas des photographes
         const { photographers } = await getPhotographers();
         displayData(photographers);
     };
+    document.addEventListener('click', SetId);
     
     init();
     
