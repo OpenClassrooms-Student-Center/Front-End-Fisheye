@@ -61,6 +61,7 @@ main {
     border-radius: 50%;
     width: 150px;
     height: 150px;
+    object-fit: cover;
 }
 
 .modal form .contact-button {
@@ -176,6 +177,7 @@ main {
     border-radius: 5px;
     width: 400px;
     height: 400px;
+    object-fit: cover;
 }
 
 .media figcaption {
@@ -356,6 +358,7 @@ input[type="checkbox"] {
 .item img, .item video {
     width: 100%;
     height: 680px;
+    object-fit: cover;
 }
 
 .content-modal button {
