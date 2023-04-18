@@ -284,7 +284,6 @@ main {
 }
 
 .dropdown-wrapper .dropdown-chk:checked ~ .dropdown-ul {
-    visibility: visible;
     opacity: 1;
 }
 

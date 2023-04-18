@@ -110,7 +110,7 @@ function insertMediaDOM(media) {
  * @param {object} photographerPopularMedia 
  * @param {object} totalLikes
  */
-function setPhotographerPopularMedia(photographerPopularMedia, totalLikes) {
+function setPhotographerPopularMedia(photographerPopularMedia, totalLikes, totalLikesElt) {
     filterLabelElt.textContent = mediaByPopularElt.textContent;
     mediaByPopularElt.style.display = "none";
 
@@ -121,7 +121,8 @@ function setPhotographerPopularMedia(photographerPopularMedia, totalLikes) {
         
         photographerPopularMedia.forEach(media => {
             insertMediaDOM(media);
-            likePhotographerMedia(totalLikes);
+            likePhotographerMedia(totalLikes, totalLikesElt);
+            totalLikesElt.textContent = totalLikes;
         });
     });
 }
@@ -131,7 +132,7 @@ function setPhotographerPopularMedia(photographerPopularMedia, totalLikes) {
  * @param {object} mediaByDateDesc 
  * @param {number} totalLikes
  */
-function setMediaByDateDesc(mediaByDateDesc, totalLikes) {
+function setMediaByDateDesc(mediaByDateDesc, totalLikes, totalLikesElt) {
 
     mediaDateDescElt.addEventListener("click", () => {
         clickFilterHandler("Date");
@@ -139,7 +140,8 @@ function setMediaByDateDesc(mediaByDateDesc, totalLikes) {
 
         mediaByDateDesc.forEach(media => {
             insertMediaDOM(media);
-            likePhotographerMedia(totalLikes);
+            likePhotographerMedia(totalLikes, totalLikesElt);
+            totalLikesElt.textContent = totalLikes;
         });
     });
 }
@@ -149,7 +151,7 @@ function setMediaByDateDesc(mediaByDateDesc, totalLikes) {
  * @param {object} mediaByTitleAsc 
  * @param {number} totalLikes 
  */
-function setMediaByTitleAsc(mediaByTitleAsc, totalLikes) {
+function setMediaByTitleAsc(mediaByTitleAsc, totalLikes, totalLikesElt) {
 
     mediaTitleAscElt.addEventListener("click", () => {
         clickFilterHandler("Titre");
@@ -158,7 +160,8 @@ function setMediaByTitleAsc(mediaByTitleAsc, totalLikes) {
 
         mediaByTitleAsc.forEach(media => {
             insertMediaDOM(media);
-            likePhotographerMedia(totalLikes);
+            likePhotographerMedia(totalLikes, totalLikesElt);
+            totalLikesElt.textContent = totalLikes;
         });
     });
 }
@@ -185,15 +188,17 @@ function clickFilterHandler(filterName) {
  * @param {object} mediaByTitleAsc 
  */
 async function displayData(photographer, photographerPopularMedia, mediaByDateDesc, mediaByTitleAsc) {
+    
     let totalLikes = getPhotographerTotalLikes(photographerPopularMedia);
-
     photographerPopularMedia.forEach(media => { insertMediaDOM(media) });
-    likePhotographerMedia(totalLikes);
-    setPhotographerPopularMedia(photographerPopularMedia, totalLikes);
-    setMediaByDateDesc(mediaByDateDesc, totalLikes);
-    setMediaByTitleAsc(mediaByTitleAsc, totalLikes);
     photographerContactFactory(photographer);
     photographerPriceAndTotalLikesFactory(photographer, totalLikes);
+    
+    const totalLikesElt = document.querySelector(".total-likes b");
+    likePhotographerMedia(totalLikes, totalLikesElt);
+    setPhotographerPopularMedia(photographerPopularMedia, totalLikes, totalLikesElt);
+    setMediaByDateDesc(mediaByDateDesc, totalLikes, totalLikesElt);
+    setMediaByTitleAsc(mediaByTitleAsc, totalLikes, totalLikesElt);
 }
 
 /**
@@ -246,7 +251,7 @@ async function getPhotographerData() {
  * 
  * @param {number} totalLikes
  */
-function likePhotographerMedia(totalLikes) {
+function likePhotographerMedia(totalLikes, totalLikesElt) {
     const loveElts = document.querySelectorAll(".media i");
     const likesNumberElts = document.querySelectorAll(".media b");
 
@@ -257,7 +262,6 @@ function likePhotographerMedia(totalLikes) {
 
         let liked = true;
         loveElt.addEventListener("click", (event) => {
-            const totalLikesElt = document.querySelector(".total-likes b");
 
             if (liked === true) {
                 likesNumber++;
