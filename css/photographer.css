@@ -96,6 +96,12 @@ main {
     height: auto;
 }
 
+.modal header button {
+    border: none;
+    background: transparent;
+    height: 50px;
+}
+
 .modal img {
     width: 42px;
     height: 42px;
@@ -321,7 +327,7 @@ input[type="checkbox"] {
     width: 70%;
 }
 
-.content-modal > img {
+.content-modal .close-lightbox-modal {
     position: absolute;
     top: 30px;
     right: 40px;
@@ -361,7 +367,18 @@ input[type="checkbox"] {
     object-fit: cover;
 }
 
-.content-modal button {
+.close-contact-modal, 
+.close-lightbox-modal,
+.carousel-prev,
+.carousel-next {
     border: none;
-    background-color: transparent;    
+    background-color: transparent;
+    height: 50px;    
+}
+
+.close-contact-modal:focus, 
+.close-lightbox-modal:focus,
+.carousel-prev:focus,
+.carousel-next:focus {
+    border: 2px solid #901C1C;
 }

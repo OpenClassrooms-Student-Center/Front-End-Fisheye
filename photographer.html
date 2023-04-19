@@ -50,12 +50,12 @@
 			<div class="modal">
 				<header>
           <h2 id="modalTitle">Contactez-moi</h2>
-          <a aria-disabled="true">
+          <button class="close-contact-modal">
             <img src="assets/icons/whiteClose.svg" 
             alt="" 
             aria-label="au clique sur ce bouton, le formulaire de contact se ferme" 
             onclick="closeModal()"/>
-          </a>
+          </button>
         </header>
 				<form method="get" aria-label="contactez le photographe">
           <div>
@@ -84,7 +84,7 @@
     <!-- lightbox modal -->
     <div id="lightbox-modal">
       <div class="content-modal">
-        <img src="assets/icons/brownClose.svg" alt="ferme le carousel des medias du photographe" onclick="closeLightboxModal()" />
+        <button class="close-lightbox-modal"><img src="assets/icons/brownClose.svg" alt="ferme le carousel des medias du photographe" onclick="closeLightboxModal()" /></button>
         <button class="carousel-prev" onclick="return prev()"><em class="fa-sharp fa-solid fa-chevron-left fa-2xl" title="naviguer vers le media précedent"></em></button>
         <div class="carousel" aria-label="les medias du photographer">
           <ul class="carousel-container">

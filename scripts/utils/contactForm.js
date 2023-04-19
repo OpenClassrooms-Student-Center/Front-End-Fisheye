@@ -36,7 +36,7 @@ function displayModal() {
 // close modal on keydown "echap" keyborad button
 function closeFormModalWithKeyboard() {
     document.addEventListener("keydown", (e) => {
-        if (e.keyCode === 27) {
+        if (e.key.toLowerCase() === "escape") {
             closeModal();
         }
      });

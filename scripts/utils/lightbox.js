@@ -19,7 +19,7 @@ function openlightboxModal() {
 // close modal on keydown "echap" keyborad button
 function closeLightboxWithKeyboard() {
     document.addEventListener("keydown", (e) => {
-        if (e.keyCode === 27) {
+        if (e.key.toLowerCase() === "escape") {
             closeLightboxModal();
         }
      });
@@ -28,9 +28,9 @@ function closeLightboxWithKeyboard() {
 // navigate on lightbox with keyboard arrow keys
 function navigateOnLightboxWithKeyboard() {
     document.addEventListener("keydown", function(e) {
-        if(e.keyCode === 39) {
+        if(e.key.toLowerCase() === "arrowright") {
             next();
-        } else if(e.keyCode === 37) {
+        } else if(e.key.toLowerCase() === "arrowleft") {
             prev();
         }
     });
