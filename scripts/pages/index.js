@@ -1,4 +1,3 @@
-/* eslint-disable indent */
 import { photographerFactory } from "../factories/photographer.js";
 
 export async function getPhotographers() {

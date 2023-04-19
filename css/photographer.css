@@ -6,6 +6,34 @@
     background-color: #FAFAFA;
     height: 300px;
     margin: 0 100px;
+    padding: 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.photograph-header img {
+    height: 200px;
+    width: 200px;
+    border-radius: 50%;
+    object-fit: cover;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+}
+.photograph-header div h2 {
+    color: #D3573C;
+    font-size: 36px;
+}
+.photograph-header div h3 {
+    color: #901C1C;
+    font-size: 13px;
+    margin-top: 5px;
+}
+.photograph-header div h4 {
+    font-size: 10px;
+    margin: 5px;
+}
+.photograph-header div p {
+    color: #757575;
+    font-size: 9px;
 }
 
 .contact_button {
