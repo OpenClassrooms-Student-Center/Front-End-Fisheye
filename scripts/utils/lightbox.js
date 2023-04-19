@@ -1,3 +1,5 @@
+"use_strict";
+
 // DOM elements
 const modalLightboxElt = document.getElementById("lightbox-modal");
 const containerElt = document.querySelector(".carousel-container");
