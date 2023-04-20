@@ -10,7 +10,7 @@ function closeLightbox() {
   document.querySelector('.lightbox').style.display = "none";
 
   // reset the video element to stop playback
-  var video = document.querySelector('.photograph-media-video');
+  const video = document.querySelector('.photograph-media-video');
   if (video) {
     video.pause();
     video.currentTime = 0;
@@ -37,7 +37,7 @@ function handleKeyPress(event) {
 
 
 // add an event listener to the close button
-var closeButton = document.querySelector('.close-btn');
+const closeButton = document.querySelector('.close-btn');
 if (closeButton) {
   closeButton.addEventListener('click', closeLightbox);
 }
@@ -46,19 +46,19 @@ if (closeButton) {
 document.addEventListener('keydown', handleKeyPress);
 
 // add next and previous button functionality
-var nextButton = document.createElement('button');
+const nextButton = document.createElement('button');
 nextButton.className = 'fa fa-chevron-right next-btn';
 nextButton.addEventListener('click', function () {
   showNextMediaItem();
 });
 
-var prevButton = document.createElement('button');
+const prevButton = document.createElement('button');
 prevButton.className = 'fa fa-chevron-left prev-btn';
 prevButton.addEventListener('click', function () {
   showPrevMediaItem();
 });
 
-var lightboxContainer = document.querySelector('.lightbox-container');
+const lightboxContainer = document.querySelector('.lightbox-container');
 if (lightboxContainer) {
   lightboxContainer.appendChild(nextButton);
   lightboxContainer.appendChild(prevButton);
@@ -66,11 +66,11 @@ if (lightboxContainer) {
 
 // show next media item
 function showNextMediaItem() {
-  var mediaItems = document.querySelectorAll('.media-lightbox');
-  for (var i = 0; i < mediaItems.length; i++) {
-    var currentMediaItem = mediaItems[i];
+  const mediaItems = document.querySelectorAll('.media-lightbox');
+  for (let i = 0; i < mediaItems.length; i++) {
+    let currentMediaItem = mediaItems[i];
     if (currentMediaItem.style.display === 'flex') {
-      var nextMediaItem = mediaItems[i + 1];
+      let nextMediaItem = mediaItems[i + 1];
       if (nextMediaItem) {
         currentMediaItem.style.display = 'none';
         nextMediaItem.style.display = 'flex';
@@ -82,11 +82,11 @@ function showNextMediaItem() {
 
 // show previous media item
 function showPrevMediaItem() {
-  var mediaItems = document.querySelectorAll('.media-lightbox');
-  for (var i = 0; i < mediaItems.length; i++) {
-    var currentMediaItem = mediaItems[i];
+  const mediaItems = document.querySelectorAll('.media-lightbox');
+  for (let i = 0; i < mediaItems.length; i++) {
+    let currentMediaItem = mediaItems[i];
     if (currentMediaItem.style.display === 'flex') {
-      var prevMediaItem = mediaItems[i - 1];
+      let prevMediaItem = mediaItems[i - 1];
       if (prevMediaItem) {
         currentMediaItem.style.display = 'none';
         prevMediaItem.style.display = 'flex';
