@@ -130,7 +130,7 @@
     text-align: end;
 }
 
-.mediaDisplay {
+#mediaDisplay {
     position: relative;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
@@ -273,60 +273,91 @@ form textarea {
     opacity: 0.3;
 }
 
-#bodyCarousel {
-    width: 100%;
-    display: none;
+#lightbox {
+   display: none;  
+   position: fixed;
+   top: 0;
+   left: 0;
+   width: 100%;
+   height: 100%;
+   background-color: rgba(0, 0, 0, .8);
+   z-index: 10; 
+}
+.prev{
+    position: fixed;
+    cursor: pointer;
+    top: 50%;
+    left: 50px;
+    transform: translate(-50%, -50%); 
+    z-index: 11;
+}
+.next {
+    position: fixed;
+    cursor: pointer;
+    top: 50%;
+    right: 25px;
+    transform: translate(-25%, -50%); 
+    z-index: 11;
 }
 
-.carouselModal {
-    position: absolute;
+.prev, .next {
+    background: none;
+    border: none;
+}
+.prev > i:hover, .next > i:hover {
+    color: #DB8876;
+}
+.closeLightbox {
+    position: fixed;
+    cursor: pointer;
+    top: 30px;
+    right: 30px;
+    z-index: 11;
+}
+
+#bodyLightbox {
+    position: fixed;
     border-radius: 5px;
-    width: 80%;
+    width: 100%;
+    height: 600px;
+    display: flex;
+    justify-content: center;
+    top: 50%;
+    left: 40%;
+    transform: translate(-40%, -50%);      
+}
+
+
+.lightbox__container {
+    position: fixed;
+    width: 84%;
+    min-height: 100vh;
     display: flex;
     align-items: center;
-    justify-content: space-between;
-    padding: 35px;
+    justify-content: center;
     margin: auto;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);  
+    overflow: hidden;  
+}
 
-}
-.carouselModal > li {
-    list-style-type: none;
-}
-.carouselModal-item > img, .carouselModal-item > video{
+.lightbox__container > img, 
+.lightbox__container > video {
     width: 100%;
     height: 600px;
+    border-radius: 5px;
     object-fit: cover;
+    /* position: fixed; */
+    z-index: 11;
 }
-.closeCarousel {
-    position: absolute;
-    cursor: pointer;
-    top: 80px;
-    right: 30px;
-    z-index: 1;
-}
+
 .fa-chevron-left, .fa-chevron-right {
     color: #901C1C;
     font-size: 50px;
     cursor: pointer;
 }
-.fa-chevron-left {
-    position: absolute;
-    cursor: pointer;
-    top: 50%;
-    left: 30px;
-    z-index: 1;
-    
-}
-.fa-chevron-right {
-    position: absolute;
-    cursor: pointer;
-    top: 50%;
-    right: 30px;
-    z-index: 1;
-}
-[aria-hidden="true"] {
+
+/* [aria-hidden="true"] {
     opacity: 0.1;
-}
+} */

@@ -18,6 +18,10 @@ class PhotographerMedia {
         return this._title
     }
 
+    //j'ajoute un setter pour pouvoir modifier le nombre de likes
+    set likes(newLikes) {
+        this._likes = newLikes
+    }
     get likes() {
         return this._likes
     }
