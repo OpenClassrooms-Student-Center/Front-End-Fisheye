@@ -13,12 +13,6 @@ function mediaFactory(media) {
         mediaLink.href = `assets/images/${media.photographerId}/${media.image}`;
       }
 
-      // open lightbox on click
-      mediaLink.addEventListener('click', function (e) {
-        e.preventDefault();
-        openLightbox(media);
-      });
-
       // check if video or img
       let mediaLinkElement, mediaLightboxElement;
 
@@ -27,6 +21,7 @@ function mediaFactory(media) {
         mediaElement.classList.add('photograph-media-video');
         mediaElement.src = `assets/images/${media.photographerId}/${media.video}`;
         mediaElement.setAttribute('role', 'img');
+        mediaElement.setAttribute('mediaID', `${media.id}`)
 
         mediaLinkElement = mediaElement.cloneNode(true);
         mediaLinkElement.href = `assets/images/${media.photographerId}/${media.video}`;
@@ -47,12 +42,14 @@ function mediaFactory(media) {
         mediaElement.src = `assets/images/${media.photographerId}/${media.image}`;
         mediaElement.alt = media.title;
         mediaElement.setAttribute('role', 'img');
+        mediaElement.setAttribute('mediaID', `${media.id}`)
 
         mediaLinkElement = mediaElement.cloneNode(true);
         mediaLinkElement.href = `assets/images/${media.photographerId}/${media.image}`;
         mediaLinkElement.target = '_blank';
 
-        // Create a new <img> element and append it to both the .photograph-media-link and .media-lightbox elements
+        // Create a new <img> element and append it to both the 
+        // .photograph-media-link and .media-lightbox elements
         const mediaLinkImgElement = mediaElement.cloneNode(true);
         mediaLink.appendChild(mediaLinkImgElement);
         const mediaLightboxImgElement = mediaElement.cloneNode(true);
@@ -67,7 +64,34 @@ function mediaFactory(media) {
       mediaLightboxContainer.classList.add('media-lightbox-container');
       mediaLightboxContainer.appendChild(mediaLightboxElement);
 
-      document.body.appendChild(mediaLightboxContainer);
+      // append into .lightbox-content
+      const lightboxMedia = document.querySelector('.lightbox-content');
+      lightboxMedia.appendChild(mediaLightboxContainer);
+
+      // compare mediaid lablel and open lightbox onClick
+      const mediaLinks = document.querySelectorAll('.photograph-media-link');
+      const mediaLightboxCount = document.querySelectorAll('.media-lightbox').length;
+
+      mediaLinks.forEach(function (mediaLink) {
+        mediaLink.addEventListener('click', function (e) {
+          e.preventDefault();
+          const mediaid = mediaLink.querySelector('img, video').getAttribute('mediaid');
+
+          // Find the media-lightbox element with the same mediaid
+          for (let i = 0; i < mediaLightboxCount; i++) {
+            const mediaLightboxElement = document.querySelectorAll('.media-lightbox')[i];
+            const mediaLightboxMediaid = mediaLightboxElement.querySelector('img, video').getAttribute('mediaid');
+            if (mediaLightboxMediaid === mediaid) {
+              // Display the media-lightbox element
+              mediaLightboxElement.style.display = 'flex';
+            } else {
+              // Hide the other media-lightbox elements
+              mediaLightboxElement.style.display = 'none';
+            }
+          }
+          openLightbox();
+        });
+      });
 
       // mediaInfo
       const mediaInfo = document.createElement('div');

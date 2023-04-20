@@ -58,7 +58,6 @@
         mediaContainer.appendChild(mediaDOM);
       });
     }
-    console.log(media)
   };
   
   // price per day photographer
