@@ -181,9 +181,23 @@ main {
 
 .media img, .media video {
     border-radius: 5px;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.media button {
+    border: none;
+    border-radius: 5px;
+    padding: 0;
     width: 400px;
     height: 400px;
-    object-fit: cover;
+    cursor: pointer;
+    background-color: inherit;
+}
+
+.media button:focus {
+    outline: 1px auto;
 }
 
 .media figcaption {
@@ -289,6 +303,7 @@ main {
     right: 0;
     padding: 10px;
     display: block;
+    cursor: pointer;
 }
 
 .dropdown-wrapper .dropdown-chk:checked ~ .dropdown-ul {
@@ -357,6 +372,24 @@ input[type="checkbox"] {
     float: left;
 }
 
+.close-contact-modal, 
+.close-lightbox-modal,
+.carousel-prev,
+.carousel-next {
+    border: none;
+    background-color: inherit;
+    height: 50px;    
+    padding: 0;
+}
+
+.close-contact-modal:focus, 
+.close-lightbox-modal:focus,
+.carousel-prev:focus,
+.carousel-next:focus,
+.contact-button:focus {
+    outline: 1px auto;
+}
+
 .item {
     margin: 0;
 }
@@ -365,20 +398,4 @@ input[type="checkbox"] {
     width: 100%;
     height: 680px;
     object-fit: cover;
-}
-
-.close-contact-modal, 
-.close-lightbox-modal,
-.carousel-prev,
-.carousel-next {
-    border: none;
-    background-color: transparent;
-    height: 50px;    
-}
-
-.close-contact-modal:focus, 
-.close-lightbox-modal:focus,
-.carousel-prev:focus,
-.carousel-next:focus {
-    border: 2px solid #901C1C;
 }

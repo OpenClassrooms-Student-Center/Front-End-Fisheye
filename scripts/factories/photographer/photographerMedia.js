@@ -9,17 +9,22 @@ function addFigureMedia(figureMediaElt, liMediaElt) {
     liMediaElt.appendChild(figureMediaElt);
 }
 
+function addButtonMedia(buttonMediaElt, figureMediaElt) {
+    buttonMediaElt.setAttribute("onclick", "openlightboxModal()");
+    buttonMediaElt.setAttribute("aria-hidden","true");
+    figureMediaElt.appendChild(buttonMediaElt);
+}
+
 /**
  * 
  * @param {object} imgMediaElt 
  * @param {object} figureMediaElt 
  * @param {string} picture
  */
-function setImgMedia(imgMediaElt, figureMediaElt, picture, title) {
+function setImgMedia(imgMediaElt, buttonMediaElt, picture, title) {
     imgMediaElt.setAttribute("src", picture);
     imgMediaElt.setAttribute("alt", title);
-    imgMediaElt.setAttribute("onclick", "openlightboxModal()");
-    figureMediaElt.appendChild(imgMediaElt);
+    buttonMediaElt.appendChild(imgMediaElt);
 }
 
 /**
@@ -28,13 +33,13 @@ function setImgMedia(imgMediaElt, figureMediaElt, picture, title) {
  * @param {object} linkMediaElt 
  * @param {string} srcVideo
  */
-function setVideoMedia(videoMediaElt, linkMediaElt, srcVideo) {
+function setVideoMedia(videoMediaElt, buttonMediaElt, srcVideo) {
     const srcElt = document.createElement("source");
     srcElt.setAttribute("src", srcVideo);
     srcElt.setAttribute("type","video/mp4");
     videoMediaElt.setAttribute("controls","controls");
     videoMediaElt.appendChild(srcElt);
-    linkMediaElt.appendChild(videoMediaElt);
+    buttonMediaElt.appendChild(videoMediaElt);
 }
 
 /**
@@ -83,6 +88,7 @@ function addLikeMedia(figureLikeElt, figCaptionMediaElt) {
  */
 function setLikesMedia(likeElt, figureLikeElt, likes) {
     likeElt.textContent = likes;
+    likeElt.setAttribute("title","likes");
     figureLikeElt.appendChild(likeElt);
 }
 
@@ -94,7 +100,6 @@ function setLikesMedia(likeElt, figureLikeElt, likes) {
 function addIconLikeMedia(figureLikeElt, iMediaElt) {
     iMediaElt.className = "fa-solid fa-heart";
     iMediaElt.setAttribute("title","liker ou disliker le media");
-    iMediaElt.setAttribute("aria-hidden","true");
     figureLikeElt.appendChild(iMediaElt);
 }
 
@@ -112,6 +117,7 @@ function photographerMediaFactory(media) {
     // DOM elements
     const liMediaElt = document.createElement("li");
     const figureMediaElt = document.createElement("figure");
+    const buttonMediaElt = document.createElement("button");
     const imgMediaElt = document.createElement("img");
     const videoMediaElt = document.createElement("video");
     const figCaptionMediaElt = document.createElement("figcaption");
@@ -122,7 +128,8 @@ function photographerMediaFactory(media) {
     const iMediaElt = document.createElement("i");
 
     function getMediaCardDOM() {
-        image ? setImgMedia(imgMediaElt, figureMediaElt, picture, title) : setVideoMedia(videoMediaElt, figureMediaElt, srcVideo);
+        addButtonMedia(buttonMediaElt, figureMediaElt);
+        image ? setImgMedia(imgMediaElt, buttonMediaElt, picture, title) : setVideoMedia(videoMediaElt, buttonMediaElt, srcVideo);
         addFigureMedia(figureMediaElt, liMediaElt);
         addFigcaptionMedia(figCaptionMediaElt, figureMediaElt);
         addFigcaptionHeaderMedia(figcaptionHeaderElt, figCaptionMediaElt);

@@ -5,10 +5,12 @@ const modalLightboxElt = document.getElementById("lightbox-modal");
 const containerElt = document.querySelector(".carousel-container");
 const slidesToScroll = 1;
 const slidesVisibles = 1;
-let currentItem = 0; 
+let currentItem = 0;
     
 function openlightboxModal() {
 	modalLightboxElt.style.display = "block";
+    const closeLightboxElt = document.querySelector(".close-lightbox-modal");
+    closeLightboxElt.focus();
     mainElt.setAttribute("aria-hidden","true");
     modalLightboxElt.setAttribute("aria-hidden","false");
     setWidthCarouselItem();

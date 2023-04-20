@@ -27,9 +27,11 @@ function photographerContactFormFactory(photographer) {
 }
 
 function displayModal() {
+    const closeModalElt = document.querySelector(".close-contact-modal");
 	modalElt.style.display = "block";
     mainElt.setAttribute("aria-hidden","true");
     modalElt.setAttribute("aria-hidden","false");
+    closeModalElt.focus();
     closeFormModalWithKeyboard();
 }
 

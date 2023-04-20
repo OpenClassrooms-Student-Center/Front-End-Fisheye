@@ -23,14 +23,14 @@
       <section class="filter" aria-label="cette région permet de filtrer l'affichage des media du photographe">
         <form> 
           <label for="filter">Trier par</label>
-          <div class="dropdown-wrapper" role="listbox">
-            <input type="checkbox" class="dropdown-chk" id="check1" />
+          <div class="dropdown-wrapper">
+            <input type="checkbox" class="dropdown-chk" id="check1"/>
             <label for="check1" class="dropdown-label"></label>
             <ul class="dropdown-ul">
               <li><hr></li>
-              <li class="popularMedia" role="option">Popularité<hr></li>
-              <li class="mediaDateDesc" role="option">Date<hr></li>
-              <li class="mediaTitleAsc" role="option">Titre</li>
+              <li class="popularMedia">Popularité<hr></li>
+              <li class="mediaDateDesc">Date<hr></li>
+              <li class="mediaTitleAsc">Titre</li>
             </ul>
           </div>
         </form>
@@ -52,12 +52,11 @@
           <h2 id="modalTitle">Contactez-moi</h2>
           <button class="close-contact-modal">
             <img src="assets/icons/whiteClose.svg" 
-            alt="" 
-            aria-label="au clique sur ce bouton, le formulaire de contact se ferme" 
+            alt="fermer le formulaire de contact" 
             onclick="closeModal()"/>
           </button>
         </header>
-				<form method="get" aria-label="contactez le photographe">
+				<form method="get">
           <div>
             <p></p>
           </div>
@@ -77,7 +76,8 @@
 						<label for="message">Votre message</label>
 						<textarea name="message" id="message" aria-describedby="message-validate"></textarea>
 					</div>
-          <button class="contact-button" onclick="return displayUserDataInConsole()">Envoyer</button>
+          <button class="contact-button" onclick="return displayUserDataInConsole()" 
+          aria-label="cliquez sur ce bouton pour envoyer le formulaire de contact">Envoyer</button>
 				</form>
 			</div>
 		</div>
@@ -85,7 +85,7 @@
     <div id="lightbox-modal">
       <div class="content-modal">
         <button class="close-lightbox-modal"><img src="assets/icons/brownClose.svg" alt="ferme le carousel des medias du photographe" onclick="closeLightboxModal()" /></button>
-        <button class="carousel-prev" onclick="return prev()"><em class="fa-sharp fa-solid fa-chevron-left fa-2xl" title="naviguer vers le media précedent"></em></button>
+        <button class="carousel-prev" onclick="return prev()"><em class="fa-sharp fa-solid fa-chevron-left fa-2xl" title="naviguer vers le media précédant"></em></button>
         <div class="carousel" aria-label="les medias du photographer">
           <ul class="carousel-container">
           </ul>
