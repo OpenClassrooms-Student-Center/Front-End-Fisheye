@@ -375,11 +375,6 @@ form textarea {
   display: flex;
 }
 
-/* display the first media-lightbox-container as a block element */
-.media-lightbox-container:first-child {
-  display: block;
-}
-
 /* set the width and height of the media-lightbox-container */
 .media-lightbox-container {
   width: 100%;
