@@ -22,8 +22,6 @@ function displayModal() {
     });
 }
 
-
-
 function closeModal() {
     const modal = document.getElementById("contact_modal");
     const btnModal = document.querySelector(".contact_button");

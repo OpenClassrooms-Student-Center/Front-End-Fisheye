@@ -39,6 +39,7 @@ class Pages {
             //je génère la vue pour l'affichage des médias
             const TemplateMedia = new PhotographerPage(filteredPhotographer, filteredMediaByPhotographer).createPhotographerMedia();
             this.mediasPhotograph.appendChild(TemplateMedia);
+            new PhotographerPage(filteredPhotographer, filteredMediaByPhotographer).sortMedia();
         });
 
         // je génère la vue de la modale de contact 
@@ -46,9 +47,9 @@ class Pages {
         this.modalContact.appendChild(contactModalDisplay);
         
         // je génère la vue de la lightbox 
-        this.lightboxMedias.appendChild(new PhotographerPage(filteredPhotographer, filteredMediaByPhotographer).createDivVideo());
-        this.lightboxMedias.appendChild(new PhotographerPage(filteredPhotographer, filteredMediaByPhotographer).createDivImage());
-        new PhotographerPage(filteredPhotographer, filteredMediaByPhotographer).displayLightBox();
+        this.lightboxMedias.appendChild(new PhotographerPage(filteredPhotographer, filteredMediaByPhotographer).displayLightBox());
+        // this.lightboxMedias.appendChild(new PhotographerPage(filteredPhotographer, filteredMediaByPhotographer).createDivImage());
+        // new PhotographerPage(filteredPhotographer, filteredMediaByPhotographer).displayLightBox();
         
         
         // Je calcule le total des likes avec la methode reduce
