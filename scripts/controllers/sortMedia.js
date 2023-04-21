@@ -64,7 +64,6 @@ dateBtn.addEventListener('click', function () {
 // Sort menu 
 
 const dropdowns = document.querySelectorAll('.dropdown');
-
 dropdowns.forEach(dropdown => {
     const select = dropdown.querySelector('.select');
     const caret = dropdown.querySelector('.material-symbols-outlined');
@@ -77,11 +76,14 @@ dropdowns.forEach(dropdown => {
         select.classList.toggle('select-clicked');
         caret.classList.toggle('material-symbols-outlined-rotate');
         menu.classList.toggle('menu-open');
+        selected.setAttribute('aria-expanded', 'true')
+        // dropdowns.setAttribute('aria-expanded')
     });
 
     options.forEach(option => {
         option.addEventListener('click', () => {
             selected.innerText = option.innerText;
+            selected.setAttribute('aria-expanded', 'false')
             select.classList.remove('select-clicked');
             caret.classList.remove('material-symbols-outlined-rotate');
             menu.classList.remove('menu-open');

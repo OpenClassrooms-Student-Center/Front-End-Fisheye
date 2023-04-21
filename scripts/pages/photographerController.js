@@ -1,12 +1,12 @@
-import { photographerFactory } from "../factories/photographerFactory.js";
+import { mediaFactory } from "../factories/mediaFactory.js";
 import { Lightbox } from "../factories/lightboxFactory.js";
 import { PhotographersModel } from "../models/photographersModel.js";
 
 export const parentDOM = document.querySelector("main");
 export const urlPhotographerId = (new URL(window.location)).searchParams.get("id");
 
-const PhotographersModelContsructor = new PhotographersModel('data/photographers.json');
-const photographer = await PhotographersModelContsructor.getPhotographerById(urlPhotographerId);
+const PhotographersModelContsructor = new PhotographersModel();
+export const photographer = await PhotographersModelContsructor.getPhotographerById(urlPhotographerId);
 export const mediaPhotographer = await PhotographersModelContsructor.getMediaForOnePhotographer(urlPhotographerId);
 
 const mediaDataContainer = document.querySelector(".photographer-media-container")
@@ -23,7 +23,7 @@ async function init() {
     // Récupère les datas des photographes et créé la bannière
     bannerData(photographer);
     
-    likePriceData(mediaPhotographer);
+    likePriceData(photographer);
     formData(photographer);
     
     mediaData(mediaPhotographer);
@@ -60,8 +60,8 @@ export async function mediaData(data) {
 
 
 // FONCTION ENCARD PRIX PHOTOGRAPHE
-async function likePriceData(mediaArrayById) {
-    const photographerPrice = photographerFactory(photographer);
+async function likePriceData(data) {
+    const photographerPrice = mediaFactory(data);
     const userPriceDOM = photographerPrice.getLikesPrice();
     parentDOM.appendChild(userPriceDOM);
 };

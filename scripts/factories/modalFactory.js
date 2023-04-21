@@ -16,25 +16,22 @@ function contactForm(data) {
           </header>
           <br>
           <br>
-          <form id="form" method="post">
-            <div class="formData">
+          <form class="form" method="post">
+            <div class="formData" data-error="Veuillez saisir au moins deux caractères">
               <label for="form-firstname" tabindex="0">Prénom</label>
-              <input type="text" name="firstname" id="form-firstname" pattern="^[A-Za-z-]+$" aria-labelledby="label-form-firstname" required minlength="2"/>
+              <input type="text" name="firstname" id="form-firstname" pattern="^[A-Za-z-]+$" aria-labelledby="form-firstname" required minlength="2"/>
             </div>
-            <br>
-            <div class="formData">
+            <div class="formData" data-error="Veuillez saisir au moins deux caractères">
               <label for="form-lastname" tabindex="0">Nom</label>
-              <input type="text" name="lastname" id="form-lastname" pattern="^[A-Za-z-]+$" aria-labelledby="label-form-lastname" required minlength="2"/>
+              <input type="text" name="lastname" id="form-lastname" pattern="^[A-Za-z-]+$" aria-labelledby="form-lastname" required minlength="2"/>
             </div>
-            <br>
-            <div class="formData">
+            <div class="formData" data-error="Veuillez saisir une adresse mail valide">
               <label for="form-email" tabindex="0">Email</label>
-              <input type="email" name="email" id="form-email" aria-labelledby="label-form-email" required/>
+              <input type="email" name="email" id="form-email" aria-labelledby="form-email" required/>
             </div>
-            <br>
-            <div class="formData">
+            <div class="formData" data-error="Veuillez saisir au moins deux caractères">
               <label for="form-message" tabindex="0">Votre message</label>
-              <input type="text" name="message" id="form-message" aria-labelledby="label-form-message"/>
+              <input type="text" name="message" id="form-message" aria-labelledby="form-message" minlength="2" required/>
             </div>
             <br>
             <button class="contact_button" type="submit" aria-label="Envoyer le formulaire">Envoyer</button>

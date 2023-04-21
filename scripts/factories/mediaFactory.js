@@ -1,6 +1,6 @@
-// import {mediaArrayById, photographer} from '../pages/photographerController.js'
+import {photographer, mediaPhotographer} from '../pages/photographerController.js'
 
-function mediaFactory(media) {
+export function mediaFactory(media) {
     const { id, photographerId, title, image, video, likes, date, price } = media;
 
     const wrapper = document.createElement('article');
@@ -70,7 +70,7 @@ function mediaFactory(media) {
         <h5 id="filter__title" tabindex="0">Trier par</h5>
         <div class="dropdown">
             <div class="select" data-filter-value="popularity">
-                <span class="selected" aria-labelledby="filter__title filter__option1" aria-expanded="false" aria-haspopup="listbox">Popularité</span>
+                <span class="selected" aria-labelledby="filter__title" aria-expanded="false" aria-haspopup="listbox">Popularité</span>
                 <span id = "material" class="material-symbols-outlined">expand_more</span>
             </div>
             <ul role="listbox" class="menu" aria-activedescendant="filter__option1" aria-labelledby="filter__title">
@@ -84,12 +84,32 @@ function mediaFactory(media) {
     return wrapperMediaSort
     }
 
-    // Template media
-
-    let compteur = likes
-
     // Compteur like
+    let compteur = likes
+    
 
-    // Lightbox 
-return { id, photographerId, title, picture, video, compteur, date, price, getUserMediaSortDOM, getUserMediaDOM}
+    // Template encard prix photographe
+    const wrapperLikesPrice = document.createElement('div');
+    wrapperLikesPrice.classList.add('likes_price');
+    
+    function getLikesPrice() {
+        const LikesPrice = `
+            <div id="total-likes">${sumLikes()}<span class="material-symbols-outlined">favorite</span></div>
+            <span>${photographer.price}€ / jour</span>
+        `
+    
+        wrapperLikesPrice.innerHTML=LikesPrice;
+        sumLikes()
+        return wrapperLikesPrice
+    }
+    
+    function sumLikes () {
+        let sum = 0 
+        mediaPhotographer.forEach(media => {
+        sum += media.likes
+        })
+        return sum
+    }
+
+return { id, photographerId, title, picture, video, compteur, date, price, getUserMediaSortDOM, getUserMediaDOM, getLikesPrice}
 }

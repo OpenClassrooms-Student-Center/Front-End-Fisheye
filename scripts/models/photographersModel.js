@@ -1,8 +1,8 @@
 export class PhotographersModel {
 
-    constructor (url) {
-        this.url = url
-    }
+    // constructor (url) {
+    url = 'data/photographers.json'
+    // }
 
     async getPhotographers() {
         return fetch(this.url)
