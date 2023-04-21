@@ -306,17 +306,13 @@ main {
     cursor: pointer;
 }
 
-.dropdown-wrapper .dropdown-chk:checked ~ .dropdown-ul {
-    opacity: 1;
-}
-
 hr {
-    margin-bottom: 0;
+    margin: 0;
     color: #FFF;
 }
 
-.dropdown-ul li:nth-child(1) hr {
-    margin-top: 0;
+.dropdown-ul li:nth-child(1) {
+    display: none;
 }
 
 input[type="checkbox"] {

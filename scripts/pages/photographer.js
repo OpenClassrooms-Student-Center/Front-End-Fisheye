@@ -5,8 +5,6 @@ const ulMediaElt = document.querySelector(".media ul");
 const mediaByPopularElt = document.querySelector(".popularMedia");
 const mediaDateDescElt = document.querySelector(".mediaDateDesc");
 const mediaTitleAscElt = document.querySelector(".mediaTitleAsc");
-const hrDateElt = document.querySelector(".mediaDateDesc hr");
-const dropdownElt = document.querySelector(".dropdown-wrapper");
 
 /**
  * 
@@ -111,12 +109,13 @@ function insertMediaDOM(media) {
  * @param {object} totalLikes
  */
 function setPhotographerPopularMedia(photographerPopularMedia, totalLikes, totalLikesElt) {
+    const hrPopularElt = document.querySelector(".dropdown-ul li:nth-child(1)");
     filterLabelElt.textContent = mediaByPopularElt.textContent;
     mediaByPopularElt.style.display = "none";
 
     mediaByPopularElt.addEventListener("click", () => {
         clickFilterHandler("Popularité");
-        hrDateElt.style.display = "block";
+        hrPopularElt.style.display = "none";
         ulMediaElt.innerHTML = "";
         
         photographerPopularMedia.forEach(media => {
@@ -124,6 +123,20 @@ function setPhotographerPopularMedia(photographerPopularMedia, totalLikes, total
             likePhotographerMedia(totalLikes, totalLikesElt);
             totalLikesElt.textContent = totalLikes;
         });
+    });
+
+    mediaByPopularElt.addEventListener("keydown", (e) => {
+        if (e.key.toLowerCase() === "enter") {
+            clickFilterHandler("Popularité");
+            hrPopularElt.style.display = "none";
+            ulMediaElt.innerHTML = "";
+
+            photographerPopularMedia.forEach(media => {
+                insertMediaDOM(media);
+                likePhotographerMedia(totalLikes, totalLikesElt);
+                totalLikesElt.textContent = totalLikes;
+            });
+        }
     });
 }
 
@@ -133,9 +146,11 @@ function setPhotographerPopularMedia(photographerPopularMedia, totalLikes, total
  * @param {number} totalLikes
  */
 function setMediaByDateDesc(mediaByDateDesc, totalLikes, totalLikesElt) {
+    const hrDateElt = document.querySelector(".dropdown-ul li:nth-child(3)");
 
     mediaDateDescElt.addEventListener("click", () => {
         clickFilterHandler("Date");
+        hrDateElt.style.display = "none";
         ulMediaElt.innerHTML = "";
 
         mediaByDateDesc.forEach(media => {
@@ -144,18 +159,33 @@ function setMediaByDateDesc(mediaByDateDesc, totalLikes, totalLikesElt) {
             totalLikesElt.textContent = totalLikes;
         });
     });
+
+    mediaDateDescElt.addEventListener("keydown", (e) => {
+        if (e.key.toLowerCase() === "enter") {
+            clickFilterHandler("Date");
+            hrDateElt.style.display = "none";
+            ulMediaElt.innerHTML = "";
+
+            mediaByDateDesc.forEach(media => {
+                insertMediaDOM(media);
+                likePhotographerMedia(totalLikes, totalLikesElt);
+                totalLikesElt.textContent = totalLikes;
+            });
+        }
+    });
 }
 
 /**
  * 
- * @param {object} mediaByTitleAsc 
+ * @param {object} mediaByTitleAsc
  * @param {number} totalLikes 
  */
 function setMediaByTitleAsc(mediaByTitleAsc, totalLikes, totalLikesElt) {
+    const hrTitleElt = document.querySelector(".dropdown-ul li:nth-child(5)");
 
     mediaTitleAscElt.addEventListener("click", () => {
         clickFilterHandler("Titre");
-        hrDateElt.style.display = "none";
+        hrTitleElt.style.display = "none";
         ulMediaElt.innerHTML = "";
 
         mediaByTitleAsc.forEach(media => {
@@ -164,16 +194,29 @@ function setMediaByTitleAsc(mediaByTitleAsc, totalLikes, totalLikesElt) {
             totalLikesElt.textContent = totalLikes;
         });
     });
+
+    mediaTitleAscElt.addEventListener("keydown", (e) => {
+        if (e.key.toLowerCase() === "enter") {
+            clickFilterHandler("Titre");
+            hrTitleElt.style.display = "none";
+            ulMediaElt.innerHTML = "";
+
+            mediaByTitleAsc.forEach(media => {
+                insertMediaDOM(media);
+                likePhotographerMedia(totalLikes, totalLikesElt);
+                totalLikesElt.textContent = totalLikes;
+            });
+        }
+    });
 }
 
 function clickFilterHandler(filterName) {
     const unclickedFilters = document.querySelectorAll(".dropdown-ul li");
-    unclickedFilters.forEach((filter) => {
 
+    unclickedFilters.forEach((filter) => {
         if (filter.textContent === filterName) {
             filterLabelElt.textContent = filter.textContent;
             filter.style.display = "none";
-            
         } else {
             filter.style.display = "block";
         }

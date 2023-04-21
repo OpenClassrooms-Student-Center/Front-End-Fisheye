@@ -23,14 +23,16 @@
       <section class="filter" aria-label="cette région permet de filtrer l'affichage des media du photographe">
         <form> 
           <label for="filter">Trier par</label>
-          <div class="dropdown-wrapper">
+          <div class="dropdown-wrapper" tabindex="0">
             <input type="checkbox" class="dropdown-chk" id="check1"/>
             <label for="check1" class="dropdown-label"></label>
-            <ul class="dropdown-ul">
+            <ul class="dropdown-ul" role="listbox">
               <li><hr></li>
-              <li class="popularMedia">Popularité<hr></li>
-              <li class="mediaDateDesc">Date<hr></li>
-              <li class="mediaTitleAsc">Titre</li>
+              <li class="popularMedia" role="option" tabindex="0">Popularité</li>
+              <li><hr></li>
+              <li class="mediaDateDesc" role="option" tabindex="0">Date</li>
+              <li><hr></li>
+              <li class="mediaTitleAsc" role="option" tabindex="0">Titre</li>
             </ul>
           </div>
         </form>
