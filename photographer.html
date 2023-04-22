@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+
 <html lang="fr">
   <head>
     <meta charset="utf-8">
@@ -9,26 +10,35 @@
     <link href="https://necolas.github.io/normalize.css/8.0.1/normalize.css" rel="stylesheet">
     <link href="css/photographer.css" rel="stylesheet" type="text/css" />
   </head>
+
   <body>
     <header aria-label="entete de la page">
       <a href="index.html"><img src="assets/images/logo.png" class="logo" alt="logo de Fisheye - Page d'accueil"/></a>
     </header>
+
     <main id="main" aria-hidden="false">
-      <header class="photograph-header" aria-label="cette région contient les informations et contacts du photographe">
+      <header 
+      class="photograph-header" 
+      aria-label="cette région contient les informations et contacts du photographe"
+      >
         <ul>
         </ul>
         <button class="contact-button" onclick="displayModal()">Contactez-moi</button>
       </header>
+
       <!-- filters -->
-      <section class="filter" aria-label="cette région permet de filtrer l'affichage des media du photographe">
+      <section 
+      class="filter" 
+      aria-label="cette région permet de filtrer l'affichage des media du photographe">
         <form> 
           <label for="filter">Trier par</label>
-          <div class="dropdown-wrapper" tabindex="0">
+          <div class="dropdown-wrapper">
             <input type="checkbox" class="dropdown-chk" id="check1"/>
-            <label for="check1" class="dropdown-label"></label>
+            <label for="check1" class="dropdown-label" tabindex="0"></label>
             <ul class="dropdown-ul" role="listbox">
               <li><hr></li>
-              <li aria-label="filtrer par nombre de like décroissant" class="popularMedia" role="option" tabindex="0">Popularité</li>
+              <li 
+              aria-label="filtrer par media populaires" class="popularMedia" role="option" tabindex="0">Popularité</li>
               <li><hr></li>
               <li aria-label="filtrer par date" class="mediaDateDesc" role="option" tabindex="0">Date</li>
               <li><hr></li>
@@ -37,18 +47,30 @@
           </div>
         </form>
       </section>
+
       <!-- media -->
-      <section class="media" aria-label="cette région affiche les media du photographer">
+      <section 
+      class="media" 
+      aria-label="cette région affiche les media du photographer">
         <ul>
         </ul>
       </section>
+
       <!-- price and total likes photographer -->
-      <div class="price-and-likes" role="region" aria-label="cette région nous informe du nombre total des likes et le prix par jour d'un photographer">
+      <div 
+      class="price-and-likes" 
+      role="region" 
+      aria-label="cette région nous informe du nombre total des likes et le prix par jour d'un photographer">
         <div class="total-likes"></div>
       </div>
     </main>
+
     <!-- form contact modal -->
-    <div id="contact-modal" role="dialog" aria-hidden="true" aria-describedby="modalTitle">
+    <div 
+    id="contact-modal" 
+    role="dialog" 
+    aria-hidden="true" 
+    aria-describedby="modalTitle">
 			<div class="modal">
 				<header>
           <h2 id="modalTitle">Contactez-moi</h2>
@@ -83,6 +105,7 @@
 				</form>
 			</div>
 		</div>
+
     <!-- lightbox modal -->
     <div id="lightbox-modal">
       <div class="content-modal">
@@ -95,6 +118,7 @@
         <button class="carousel-next" onclick="return next()"><em class="fa-sharp fa-solid fa-chevron-right fa-2xl" title="naviguer vers le media suivant"></em></button>
       </div>
     </div>
+
     <script src="scripts/pages/photographer.js"></script>
     <script src="scripts/factories/photographer/photographerHeader.js"></script>
     <script src="scripts/factories/photographer/lightbox.js"></script>

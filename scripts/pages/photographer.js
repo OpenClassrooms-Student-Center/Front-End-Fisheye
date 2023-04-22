@@ -116,8 +116,8 @@ function setPhotographerPopularMedia(photographerPopularMedia, totalLikes, total
     mediaByPopularElt.addEventListener("click", () => {
         clickFilterHandler("Popularité");
         hrPopularElt.style.display = "none";
+
         ulMediaElt.innerHTML = "";
-        
         photographerPopularMedia.forEach(media => {
             insertMediaDOM(media);
             likePhotographerMedia(totalLikes, totalLikesElt);
@@ -129,8 +129,8 @@ function setPhotographerPopularMedia(photographerPopularMedia, totalLikes, total
         if (e.key.toLowerCase() === "enter") {
             clickFilterHandler("Popularité");
             hrPopularElt.style.display = "none";
-            ulMediaElt.innerHTML = "";
 
+            ulMediaElt.innerHTML = "";
             photographerPopularMedia.forEach(media => {
                 insertMediaDOM(media);
                 likePhotographerMedia(totalLikes, totalLikesElt);
@@ -151,8 +151,8 @@ function setMediaByDateDesc(mediaByDateDesc, totalLikes, totalLikesElt) {
     mediaDateDescElt.addEventListener("click", () => {
         clickFilterHandler("Date");
         hrDateElt.style.display = "none";
-        ulMediaElt.innerHTML = "";
 
+        ulMediaElt.innerHTML = "";
         mediaByDateDesc.forEach(media => {
             insertMediaDOM(media);
             likePhotographerMedia(totalLikes, totalLikesElt);
@@ -186,8 +186,8 @@ function setMediaByTitleAsc(mediaByTitleAsc, totalLikes, totalLikesElt) {
     mediaTitleAscElt.addEventListener("click", () => {
         clickFilterHandler("Titre");
         hrTitleElt.style.display = "none";
-        ulMediaElt.innerHTML = "";
 
+        ulMediaElt.innerHTML = "";
         mediaByTitleAsc.forEach(media => {
             insertMediaDOM(media);
             likePhotographerMedia(totalLikes, totalLikesElt);

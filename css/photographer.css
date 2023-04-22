@@ -301,6 +301,7 @@ main {
 .dropdown-wrapper .dropdown-label {
     position: relative;
     right: 0;
+    border-radius: 5px;
     padding: 10px;
     display: block;
     cursor: pointer;

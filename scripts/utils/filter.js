@@ -3,44 +3,49 @@
 const dropdownUlElt = document.querySelector(".dropdown-ul");
 const dropdownElt = document.querySelector(".dropdown-wrapper");
 
+function openDropdownList() {
+    dropdownUlElt.style.opacity = "1";
+    filterLabelElt.style.setProperty('--selectdivAfterTransform','rotate(-90deg)');
+    dropdownElt.style.borderRadius = "5px 5px 0 0";
+}
+
+function closeDropdownList() {  
+    dropdownUlElt.style.opacity = "0";
+    filterLabelElt.style.setProperty('--selectdivAfterTransform','rotate(90deg)');
+    dropdownElt.style.borderRadius = "5px";
+}
+
 // open and close filter on keydown "enter" keyborad button
 function navigateOnFilterWithKeyboard() {
     let direction = false;
 
-    dropdownElt.addEventListener("keydown", (e) => {
+    filterLabelElt.addEventListener("keydown", (e) => {
         if (e.key.toLowerCase() === "enter") {
             if (direction === false) {
-                dropdownUlElt.style.opacity = "1";
-                filterLabelElt.style.setProperty('--selectdivAfterTransform','rotate(-90deg)');
-                dropdownElt.style.borderRadius = "5px 5px 0 0";
+                openDropdownList();
                 direction = true;
             } else {
-                dropdownUlElt.style.opacity = "0";
-                filterLabelElt.style.setProperty('--selectdivAfterTransform','rotate(90deg)');
-                dropdownElt.style.borderRadius = "5px";
+                closeDropdownList();
                 direction = false;
             }
         }
     });
 }
 
-function turnChevronDropdownList() {
+function navigateOnFilterWithMouse() {
     let direction = false;
     
     filterLabelElt.addEventListener("click", () => {
         if (direction === false) {
-            dropdownUlElt.style.opacity = "1";
-            filterLabelElt.style.setProperty('--selectdivAfterTransform','rotate(-90deg)');
-            dropdownElt.style.borderRadius = "5px 5px 0 0";
+            openDropdownList();
             direction = true;
         } else {
-            dropdownUlElt.style.opacity = "0";
-            filterLabelElt.style.setProperty('--selectdivAfterTransform','rotate(90deg)');
-            dropdownElt.style.borderRadius = "5px";
+            closeDropdownList();
             direction = false;
         }
     });
 }
 
-turnChevronDropdownList();
 navigateOnFilterWithKeyboard();
+navigateOnFilterWithMouse();
+
