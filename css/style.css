@@ -45,6 +45,7 @@ h1 {
 }
 .photographer_section .photographersCard a {
     text-decoration: none;
+    cursor:pointer
 }
 
 

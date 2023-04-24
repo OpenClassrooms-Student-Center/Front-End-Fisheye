@@ -1,0 +1,116 @@
+{
+    "data": [
+        {
+            "title": "Predator",
+            "synopsis": "Le commando de forces spéciales mené par le major Dutch Schaeffer est engagé par la CIA pour sauver les survivants d’un crash d’hélicoptère au cœur d’une jungle d’Amérique Centrale",
+            "picture": "predator.jpg",
+            "duration": "1h47",
+            "released_in": 1987
+        },
+        {
+            "title": "Terminator",
+            "synopsis": "En 2029, la surface de la Terre rasée par une guerre nucléaire, voit une poignée de survivants se battre contre les machines qui tentent de prendre le pouvoir.",
+            "picture": "terminator.jpg",
+            "duration": "1h47",
+            "released_in": 1984
+        },
+        {
+            "title": "Last Action Hero",
+            "synopsis": "Grâce a un billet magique, Danny Madigan, un enfant de onze ans, parvient à vivre les aventures de son héros de cinéma préféré, Jack Slater.",
+            "picture": "last-action-hero.jpg",
+            "duration": "2h10",
+            "released_in": 1993
+        },
+        {
+            "title": "Terminator 2",
+            "synopsis": "En 2029, après son échec pour éliminer Sarah Connor, Skynet programme un nouveau Terminator, le T-1000, pour retourner dans le passé et éliminer son fils John Connor, futur leader de la résistance humaine.",
+            "picture": "terminator-2.jpg",
+            "duration": "2h17",
+            "released_in": 1991
+        },
+        {
+            "title": "Total Recall",
+            "synopsis": "En 2048, Mars a été colonisée. Doug Quaid, ouvrier de chantier, est hanté par un cauchemar qui l'entraîne chaque nuit sur la planète rouge.",
+            "picture": "total-recall.jpg",
+            "duration": "1h53",
+            "released_in": 1990
+        },
+        {
+            "title": "Expendables : Unité spéciale",
+            "synopsis": "Un agent de la CIA engage un groupe de mercenaires experts, qui n'obéissent à aucun gouvernement, pour éliminer un général sud-américain.",
+            "picture": "expendables-unite-speciale.jpg",
+            "duration": "1h43",
+            "released_in": 2010
+        },
+        {
+            "title": "Batman & Robin",
+            "synopsis": "Une vague de froid s'est abattue sur Gotham City. Un criminel d'un genre nouveau fait souffler sur la métropole un vent glacé.",
+            "picture": "batman-robin.jpg",
+            "duration": "2h05",
+            "released_in": 1997
+        },
+        {
+            "title": "Terminator 3",
+            "synopsis": "2004. John Connor vit en marge de la société afin d'échapper au T-X robot ultra-sophistiqué envoyé par Skynet qui vient du futur pour l'anéantir, lui et sa future femme.",
+            "picture": "terminator-3.jpg",
+            "duration": "1h49",
+            "released_in": 2003
+        },
+        {
+            "title": "True Lies",
+            "synopsis": "Depuis 15 ans, Harry Tasker mène une double vie. Pour sa femme, Helen, c'est un banal représentant en informatique.",
+            "picture": "true-lies.jpg",
+            "duration": "2h21",
+            "released_in": 1994
+        },
+        {
+            "title": "Conan le Barbare",
+            "synopsis": "Encore enfant, Conan assiste impuissant au massacre de ses parents par le cruel Thulsa Doom, et est réduit en esclavage.",
+            "picture": "conan-le-barbare.jpg",
+            "duration": "2h09",
+            "released_in": 1982
+        },
+        {
+            "title": "La Course au jouet",
+            "synopsis": "La veille de Noël, un homme d'affaires et un facteur affrontent toutes sortes d'obstacles pour mettre la main sur un jouet rarissime, le Turbo Man, commandé au Père Noël par leurs fils respectifs.",
+            "picture": "la-course-au-jouet.jpg",
+            "duration": "1h29",
+            "released_in": 1996
+        },
+        {
+            "title": "Commando",
+            "synopsis": "Afin de retrouver sa fille kidnappée, un membre des commandos se lance dans une guerre solitaire contre un gang de criminels en Amérique du sud.",
+            "picture": "commando.jpg",
+            "duration": "1h30",
+            "released_in": 1986
+        },
+        {
+            "title": "Un flic à la maternelle",
+            "synopsis": "John Kimble, excellent flic, poursuit inlassablement les barons de la drogue. Après quatre années de traque, il finit par arrêter Cullen Crisp, dangereux criminel.",
+            "picture": "un-flic-a-la-maternelle.jpg",
+            "duration": "1h51",
+            "released_in": 1991
+        },
+        {
+            "title": "À l'aube du 6ème jour",
+            "synopsis": "À l'heure où la génétique a fait d’énormes progrès, éradiquant les maladies et mettant fin aux famines, le pilote d’hélicoptère Adam Gibson est quelque peu perplexe quant à l’évolution du monde.",
+            "picture": "a-l-aube-du-6eme-jour.jpg",
+            "duration": "2h03",
+            "released_in": 2000
+        },
+        {
+            "title": "Jumeaux",
+            "synopsis": "En 1953 est tentée l’expérience de donner naissance a un être exceptionnel, compose des gènes de 6 hommes aux multiples qualités.",
+            "picture": "jumeaux.jpg",
+            "duration": "1h47",
+            "released_in": 1988
+        },
+        {
+            "title": "Junior",
+            "synopsis": "Afin de mener à bien une étude sur la fertilité, le docteur Arbogast injecte un produit au docteur Hesse et fait de lui le premier homme... enceint !",
+            "picture": "junior.jpg",
+            "duration": "1h49",
+            "released_in": 1995
+        }
+    ]
+}

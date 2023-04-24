@@ -1,5 +1,9 @@
 #contact_modal {
     display: none;
+    position:absolute;
+    width:100%;
+    height:100%;
+    z-index:2
 }
 
 .photograph-header {
@@ -8,6 +12,7 @@
     margin: 0 100px;
 }
 
+.submit-form-btn,
 .contact_button {
     font-size: 20px;
     font-weight: bold;
@@ -21,6 +26,8 @@
     cursor: pointer;
 }
 
+
+
 .modal {
     border-radius: 5px;
     background-color: #DB8876;
@@ -31,6 +38,7 @@
     justify-content: space-between;
     padding: 35px;
     margin: auto;
+    
 }
 
 .modal header {
@@ -54,7 +62,7 @@ form {
     flex-direction: column;
     align-items: flex-start;
 }
-
+.text-control,
 form label {
     color: #312E2E;
     font-size: 36px;
