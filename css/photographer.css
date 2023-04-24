@@ -4,9 +4,14 @@ main {
    margin: 0 100px; 
 }
 
+#contact-modal, #lightbox-modal {
+    margin: auto;
+    max-width: 1400px;
+}
+
 .photograph-header {
     background-color: #FAFAFA;
-    height: 300px;
+    height: 250px;
     display: flex;
     flex-direction: row;
 }
@@ -168,7 +173,7 @@ main {
     padding: 0;
     display: flex;
     flex-wrap: wrap;
-    gap: 50px 100px;
+    gap: 10px 90px;
 }
 
 .media li {
@@ -190,8 +195,8 @@ main {
     border: none;
     border-radius: 5px;
     padding: 0;
-    width: 400px;
-    height: 400px;
+    width: 340px;
+    height: 340px;
     cursor: pointer;
     background-color: inherit;
 }

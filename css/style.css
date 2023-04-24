@@ -1,5 +1,7 @@
 body {
     font-family: "DM Sans", sans-serif;
+    margin: auto;
+    max-width: 1400px;
 }
 
 body > header {
@@ -13,6 +15,12 @@ body > header {
 
 .logo {
     height: 40px;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+    object-fit: contain;
 }
 
 
