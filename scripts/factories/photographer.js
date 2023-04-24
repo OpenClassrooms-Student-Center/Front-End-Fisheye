@@ -1,10 +1,18 @@
 const dropdown = document.querySelector('.dropdown');
+dropdown.addEventListener('click', (event) => {
+    console.log(" Jai cliqué ");
+});
 console.log(dropdown);
 
-function openDropdown() {
-    console.log('toto');
-}
+document.onkeydown = function(e) {
+    e = e || window.event;
+    if (e.keyCode == 27) {
+        dropdown();
+    }
+};
 
+
+// get element byId
 // function openDropdown() {
 //     document.onkeydown = function (e) {
 //         e = e || window.event;
@@ -121,18 +129,15 @@ function photographersMedias(photos, photographer) {
         goToNextImage(photos, currentPhotographerFirstName);
     })
 
-    document.onkeydown = function (e) {
-        console.log('toto');
-        e = e || window.event;
-        if (e.keyCode == 37) {
-            goToPreviousImage(photos, currentPhotographerFirstName);
-        }
-    };
 
     document.onkeyup = function (e) {
         e = e || window.event;
         if (e.keyCode == 39) {
             goToNextImage(photos, currentPhotographerFirstName);
+        } 
+        if (e.keyCode == 37) {
+            console.log('previous');
+            goToPreviousImage(photos, currentPhotographerFirstName);
         }
     };
 };
@@ -224,8 +229,6 @@ function displayDataMedia(media, name, photos, photographer) {
                 return video.id === media.id;
             })
             displayLightbox(photos, videoIndex, name)
-            consol.log(displayLightbox);
-
         })
         /*
         mediaDiv.appendChild(thumbnailImage);
@@ -272,22 +275,25 @@ function displayCta(photos, photographer) {
     callToAction.appendChild(cta);
 }
 
-// CSS modal form ||||||||||| OK
 
-// LIGHTBOX avec +1 et -1 sur les index ||||||||||| 
+// LIGHTBOX avec +1 et -1 sur les index 
 
 function displayLightbox(images, imageToDisplayIndex, photographerName,) {
     const lightbox = document.getElementById('lightbox'); // balise <div>
     const lightboxImage = document.getElementById('lightboxImage'); // balise <img>
+    const lightboxVideo = document.getElementById('lightboxVideo'); // balise <video>
     const lightboxImageTitle = document.getElementById('lightboxImageTitle');
     const imageToDisplay = images[imageToDisplayIndex];
-    lightboxImage.src = `assets/sample-photos/${photographerName}/${imageToDisplay.image}`; // On change la src de l'image à afficher
-    lightbox.classList.add("show"); // Class CSS show ajoute la propriété display: block
-    lightboxImageTitle.textContent = imageToDisplay.title;
-    // stocker la position (l'index) de l'image qui vient d'etre ouverte
-    lightbox.dataset.indexImage = imageToDisplayIndex;
-
-    // Au clic sur les flêches, appeler les deux fonctions
+    if (imageToDisplay.image) {
+        lightboxImage.src = `assets/sample-photos/${photographerName}/${imageToDisplay.image}`; // On change la src de l'image à afficher
+        lightbox.classList.add("show"); // Class CSS show ajoute la propriété display: block
+        lightboxImageTitle.textContent = imageToDisplay.title;
+        // stocker la position (l'index) de l'image qui vient d'etre ouverte
+        lightbox.dataset.indexImage = imageToDisplayIndex;
+            // Au clic sur les flêches, appeler les deux fonctions
+    } else {
+        lightboxVideo.src = `assets/sample-photos/${photographerName}/${imageToDisplay.image}`;
+    }
 }
 
 function closeLightbox() {
@@ -297,7 +303,7 @@ function closeLightbox() {
 
 // Définir deux fonctions : image précédente et image suivant au CLICK
 function goToPreviousImage(images, photographerName) {
-    console.log('goToPreviousImage');
+    console.log(images);
     const lightbox = document.getElementById('lightbox'); // getElement la lightbox
     const indexImage = parseInt(lightbox.dataset.indexImage); // recuperr valeur de l'indexImage
     const previousImage = indexImage === 0 ? images.length - 1 : indexImage - 1; // soustraire à mon index

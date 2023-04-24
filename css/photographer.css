@@ -164,8 +164,8 @@ select {
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    height: 400px;
-    width: 350px;
+    max-height: 400px;
+    width: 400px;
 }
 
 .thumbnail_section article h2 {
@@ -176,14 +176,14 @@ select {
 .thumbnail_section article img {
     border-radius: 5px;
     object-fit: cover;
-    height: 350px;
+    height: 80%;
     width: 100%;
 }
 
 .thumbnail_section article video {
     border-radius: 5px;
     object-fit: cover;
-    height: 350px;
+    height: 80%;
     width: 100%;
 }
 
@@ -322,7 +322,7 @@ form textarea {
     background-color: #DB8876;
     border-radius: 5px;
     bottom: 0;
-    margin-right: 36px;
+    margin-right: 100px;
     position: fixed;
     width: 300px;
     height: 89px;
@@ -409,7 +409,7 @@ form textarea {
 }
 .lightboxTitlePosition {
     left: 41%;
-    top: 80%;
+    top: 90%;
     position: fixed;
     
 }
