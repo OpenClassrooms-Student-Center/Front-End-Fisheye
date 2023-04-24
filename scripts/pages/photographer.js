@@ -16,9 +16,10 @@ function get_ID_from_url() { // Fonction pour récupérer l'id du photographe da
 // Affichage des elements de la page
 async function displayData() {
   
-      const photographer = photographerFactory(get_ID_from_url).getPhotographerData();
+      const photographerDatas = photographerFactory(get_ID_from_url).getPhotographerData();
       const photographerMedias = photographerFactory(get_ID_from_url).getPhotographerMedia(); 
-    
+    console.log(photographerDatas);
+    console.log(photographerMedias);
   };    
 
 

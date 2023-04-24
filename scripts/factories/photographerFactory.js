@@ -1,12 +1,45 @@
 import { get_ID_from_url } from "../pages/photographer.js";
 
-function photographerFactory(data) {
+//créer une classe média
+class Media {
+  constructor(data) {
+    this.id = data.id;
+    this.photographerId = data.photographerId;
+    this.title = data.title;
+    if (data.image) {
+      this.image = data.image;
+    } 
+    if (data.video) {
+      this.video = data.video;
+    }
+    this.likes = data.likes;
+    this.date = data.date;
+    this.price = data.price;
+  }
+}
+
+function photographerFactory(data) {//récupérer les données du photographe
   const { name, id, city, country, tagline, price, portrait } = data;
   const picture = `assets/photographers/${portrait}`;
   const user = id;
+  class Media {
+    constructor(data) {
+      this.id = data.id;
+      this.photographerId = data.photographerId;
+      this.title = data.title;
+      if (data.image) {
+        this.image = data.image;
+      } 
+      if (data.video) {
+        this.video = data.video;
+      }
+      this.likes = data.likes;
+      this.date = data.date;
+      this.price = data.price;
+    }
+  }
+  function getUserCardDOM() {//Création de la carte du photographe
 
-  //Création de la carte du photographe
-  function getUserCardDOM() {
     //Création des cartes
     const article = document.createElement("article");
     article.classList.add("photographersCard");
@@ -60,46 +93,32 @@ function photographerFactory(data) {
     return article;
   }
 
-  async function getPhotographerMedia() {
-    // fonction pour récupérer les médias du photographe
+  async function getPhotographerMedia() {//pour récupérer les données sur le photographe
     const response = await fetch("../data/photographers.json");
     const data = await response.json();
     const mediaData = data.media.filter((media) => media.photographerId == get_ID_from_url());
     mediaData.forEach((element) => {//boucle pour afficher les images et vidéos du photographe
-      if (element.image) {
-        console.log("image: " + element.image); //affiche les images
-      } else if (element.video) {
-        console.log("video: " + element.video); //affiche les vidéos
-      }
-    });
-
-    //return mediaData;
+      const media = new Media(element);//construction d'un nouvel objet pour chaque média
+    }
+    );
+  return mediaData;
   }
 
-  async function getPhotographerData() {
-    // fonction pour récupérer les données sur le photographe
+  async function getPhotographerData() {    // fonction pour récupérer les données sur le photographe
+
     const response = await fetch("../data/photographers.json");
     const data = await response.json();
     const photographer = data.photographers.filter((photographer) => photographer.id == get_ID_from_url());
-    console.log(photographer);
     return photographer;
   }
 
-  //Récupération de l'id du photographe lors du click
-  function handleClick(e) {
+  function handleClick(e) {  //Récupération de l'id du photographe lors du click
     e.preventDefault();
     window.location.href = `photographer.html?id=${id}`;
     return id;
   }
 
-  return {
-    user,
-    name,
-    picture,
-    getUserCardDOM,
-    getPhotographerMedia,
-    getPhotographerData,
-  };
+  return {user,name,picture,getUserCardDOM,getPhotographerMedia,getPhotographerData};
 }
 
 export { photographerFactory };
