@@ -109,13 +109,19 @@
     <!-- lightbox modal -->
     <div id="lightbox-modal">
       <div class="content-modal">
-        <button class="close-lightbox-modal"><img src="assets/icons/brownClose.svg" alt="ferme le carousel des medias du photographe" onclick="closeLightboxModal()" /></button>
-        <button class="carousel-prev" onclick="return prev()"><em class="fa-sharp fa-solid fa-chevron-left fa-2xl" title="naviguer vers le media précédant"></em></button>
+        <button class="close-lightbox-modal">
+          <img src="assets/icons/brownClose.svg" alt="ferme le carousel des medias du photographe" onclick="closeLightboxWithMouse()"/>
+        </button>
+        <button class="carousel-prev" onclick="return prev()">
+          <em class="fa-sharp fa-solid fa-chevron-left fa-2xl" title="naviguer vers le media précédant"></em>
+        </button>
         <div class="carousel" aria-label="les medias du photographer">
           <ul class="carousel-container">
           </ul>
         </div>
-        <button class="carousel-next" onclick="return next()"><em class="fa-sharp fa-solid fa-chevron-right fa-2xl" title="naviguer vers le media suivant"></em></button>
+        <button class="carousel-next" onclick="return next()">
+          <em class="fa-sharp fa-solid fa-chevron-right fa-2xl" title="naviguer vers le media suivant"></em>
+        </button>
       </div>
     </div>
 

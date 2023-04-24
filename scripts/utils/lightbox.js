@@ -7,24 +7,30 @@ const slidesToScroll = 1;
 const slidesVisibles = 1;
 let currentItem = 0;
     
-function openlightboxModal() {
+function openLightboxWithMouse() {
 	modalLightboxElt.style.display = "block";
     const closeLightboxElt = document.querySelector(".close-lightbox-modal");
     closeLightboxElt.focus();
     mainElt.setAttribute("aria-hidden","true");
     modalLightboxElt.setAttribute("aria-hidden","false");
-    setWidthCarouselItem();
-    closeLightboxWithKeyboard();
-    navigateOnLightboxWithKeyboard();
+
+    const idClickedMedia = document.querySelector(".media button:hover > span").textContent;
+    displayDataLightbox(idClickedMedia);
+}
+
+function closeLightboxWithMouse() {
+    modalLightboxElt.style.display = "none";
+    mainElt.setAttribute("aria-hidden","false");
+    modalLightboxElt.setAttribute("aria-hidden","true");
 }
 
 // close modal on keydown "echap" keyborad button
 function closeLightboxWithKeyboard() {
     document.addEventListener("keydown", (e) => {
         if (e.key.toLowerCase() === "escape") {
-            closeLightboxModal();
+            closeLightboxWithMouse();
         }
-     });
+    });
 }
 
 // navigate on lightbox with keyboard arrow keys
@@ -38,15 +44,49 @@ function navigateOnLightboxWithKeyboard() {
     });
 }
 
-function closeLightboxModal() {
-    modalLightboxElt.style.display = "none";
-    mainElt.setAttribute("aria-hidden","false");
-    modalLightboxElt.setAttribute("aria-hidden","true");
+/**
+ * 
+ * @param {number} idClickedMedia - return clicked media id
+ */
+async function displayDataLightbox(idClickedMedia) {
+    const { media } = await getPhotographers();
+    const photographerMedia = getPhotographerMedia(media);
+
+    const sliceEnd = photographerMedia.length;
+    const KeyClickedMedia =  getKeyClickedMedia(photographerMedia, idClickedMedia);
+    const slicedMedia = photographerMedia.slice(KeyClickedMedia);
+    slicedMedia.reverse();
+    slicedMedia.forEach(media => {
+        photographerMedia.unshift(media);
+    });
+
+    const finalArrPhotographerMedia = photographerMedia.slice(0,sliceEnd);
+    finalArrPhotographerMedia.forEach(media => {
+        photographerLightboxFactory(media);
+    });
+
+    setWidthCarouselItem();
+}
+
+/**
+ * 
+ * @param {object} photographerMedia 
+ * @param {number} idClickedMedia
+ * @returns 
+ */
+function getKeyClickedMedia(photographerMedia, idClickedMedia) {
+    for (const [key, value] of photographerMedia.entries()) {
+        if(value.id == idClickedMedia) {
+            return key;
+        }
+    }
 }
 
 function setWidthCarouselItem() {
     let itemsElt = document.querySelectorAll(".carousel-item");
+    console.log(itemsElt);
     let ratio = itemsElt.length / slidesVisibles;
+    console.log(ratio);
     containerElt.style.width = (ratio * 100) + "%";
     itemsElt.forEach(item => item.style.width = ((100 / slidesVisibles) / ratio) + "%");
 }
@@ -76,3 +116,10 @@ function scrollToItem(index) {
     containerElt.style.transform = "translate(" + translateX + "%)";
     currentItem = index;
 }
+
+closeLightboxWithKeyboard();
+navigateOnLightboxWithKeyboard();
+
+
+
+

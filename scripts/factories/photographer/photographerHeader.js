@@ -9,7 +9,7 @@ const liImgElt = document.createElement("li");
 const nameElt = document.createElement("h1");
 const countryElt = document.createElement("h2");
 const taglineElt = document.createElement("p");
-const buttonElt = document.querySelector("button[class='contact-button']");
+const buttonHeaderElt = document.querySelector("button[class='contact-button']");
 const imgElt = document.createElement("img");
 
 /**
@@ -59,10 +59,10 @@ function setPhotographerTagline(liPhotographerDataElt, taglineElt, tagline) {
  * 
  * @param {object} liContactElt 
  * @param {object} ulHeaderElt 
- * @param {object} buttonElt 
+ * @param {object} buttonHeaderElt 
  */
-function addContactButton(liContactElt, ulHeaderElt, buttonElt) {
-    ulHeaderElt.appendChild(liContactElt).appendChild(buttonElt);
+function addContactButton(liContactElt, ulHeaderElt, buttonHeaderElt) {
+    ulHeaderElt.appendChild(liContactElt).appendChild(buttonHeaderElt);
 }
 
 /**
@@ -91,6 +91,6 @@ function photographerContactFactory(photographer) {
     setPhotographerName(nameElt, liPhotographerDataElt, name);
     setPhotographerCountry(countryElt, liPhotographerDataElt, city, country);
     setPhotographerTagline(liPhotographerDataElt, taglineElt, tagline);
-    addContactButton(liContactElt, ulHeaderElt, buttonElt);
+    addContactButton(liContactElt, ulHeaderElt, buttonHeaderElt);
     setPhotographerImg(ulHeaderElt, liImgElt, imgElt, picture, name);
 }

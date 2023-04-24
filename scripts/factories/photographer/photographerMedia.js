@@ -10,7 +10,7 @@ function addFigureMedia(figureMediaElt, liMediaElt) {
 }
 
 function addButtonMedia(buttonMediaElt, figureMediaElt) {
-    buttonMediaElt.setAttribute("onclick", "openlightboxModal()");
+    buttonMediaElt.setAttribute("onclick", "openLightboxWithMouse()");
     buttonMediaElt.setAttribute("aria-hidden","true");
     figureMediaElt.appendChild(buttonMediaElt);
 }
@@ -25,6 +25,13 @@ function setImgMedia(imgMediaElt, buttonMediaElt, picture, title) {
     imgMediaElt.setAttribute("src", picture);
     imgMediaElt.setAttribute("alt", title);
     buttonMediaElt.appendChild(imgMediaElt);
+}
+
+function setIdMedia(idElt, id, buttonMediaElt) {
+    idElt.textContent = id;
+    idElt.setAttribute("class","id-media");
+    // idElt.style.display = "none";
+    buttonMediaElt.appendChild(idElt);
 }
 
 /**
@@ -110,7 +117,7 @@ function addIconLikeMedia(figureLikeElt, iMediaElt) {
  * @returns {object}
  */
 function photographerMediaFactory(media) {
-    const { title, image, video, likes } = media;
+    const { id, title, image, video, likes } = media;
     const picture = `assets/media/${image}`;
     const srcVideo = `assets/media/${video}`;
     
@@ -126,10 +133,12 @@ function photographerMediaFactory(media) {
     const figureLikeElt = document.createElement("figure");
     const likeElt = document.createElement("b");
     const iMediaElt = document.createElement("i");
+    const idElt = document.createElement("span");
 
     function getMediaCardDOM() {
         addButtonMedia(buttonMediaElt, figureMediaElt);
         image ? setImgMedia(imgMediaElt, buttonMediaElt, picture, title) : setVideoMedia(videoMediaElt, buttonMediaElt, srcVideo);
+        setIdMedia(idElt, id, buttonMediaElt);
         addFigureMedia(figureMediaElt, liMediaElt);
         addFigcaptionMedia(figCaptionMediaElt, figureMediaElt);
         addFigcaptionHeaderMedia(figcaptionHeaderElt, figCaptionMediaElt);
