@@ -4,6 +4,9 @@ class Pages {
         this.mediasPhotograph = document.querySelector('#mediaDisplay');
         this.modalContact = document.getElementById('contact_modal');
         this.lightboxMedias = document.getElementById('bodyLightbox');
+        this.popular = document.querySelector('.filter_popular');
+        this.date = document.querySelector('.filter_date');
+        this.title = document.querySelector('.filter_title');
 
         //j'instancie ma classe GetPhotographers 
         this.getPhotographers = new GetPhotographers('/data/photographers.json');
@@ -26,7 +29,7 @@ class Pages {
         // je rassemble tous mes medias par type video et image 
         const allMedias = filteredMediaByPhotographer.map(media => new TypedataFactory(media));
         
-        //Je récupère tous les likes contenus dans allMedias
+        //Je recupère tous les likes contenus dans allMedias
         const allLikes = allMedias.map(media => media.likes);
         
         // je génère la vue de la bannière du header contenant les informations du photographe 
@@ -39,17 +42,14 @@ class Pages {
             //je génère la vue pour l'affichage des médias
             const TemplateMedia = new PhotographerPage(filteredPhotographer, filteredMediaByPhotographer).createPhotographerMedia();
             this.mediasPhotograph.appendChild(TemplateMedia);
-            new PhotographerPage(filteredPhotographer, filteredMediaByPhotographer).sortMedia();
         });
-
+        
         // je génère la vue de la modale de contact 
         const contactModalDisplay = new PhotographerPage(filteredPhotographer, filteredMediaByPhotographer).createModalDisplay();
         this.modalContact.appendChild(contactModalDisplay);
         
         // je génère la vue de la lightbox 
         this.lightboxMedias.appendChild(new PhotographerPage(filteredPhotographer, filteredMediaByPhotographer).displayLightBox());
-        // this.lightboxMedias.appendChild(new PhotographerPage(filteredPhotographer, filteredMediaByPhotographer).createDivImage());
-        // new PhotographerPage(filteredPhotographer, filteredMediaByPhotographer).displayLightBox();
         
         
         // Je calcule le total des likes avec la methode reduce
@@ -57,12 +57,97 @@ class Pages {
         // je génère la vue pour l'affichage des likes
         const likes = new PhotographerPage(filteredPhotographer, filteredMediaByPhotographer).createLikes(totalLikes);
         this.mediasPhotograph.appendChild(likes);
-
+        
         //j'incrémente le nombres de likes en fonction du click sur le bouton like
         new PhotographerPage(filteredPhotographer, filteredMediaByPhotographer).incrementLikes(totalLikes);
 
-    }
+
+        // je filtre les medias en fonction du filtre choisi par l'utilisateur
+        const mediasDisplay = document.getElementById('mediaDisplay');
+        let popular = document.querySelector('.filter_popular');
+        let date = document.querySelector('.filter_date');
+        let title = document.querySelector('.filter_title');
+        popular.addEventListener('click', () => {
+            const mediasPopularity = allMedias.sort(function(a, b){return b._likes - a._likes});
+            mediasDisplay.innerHTML = '';
+            mediasPopularity.forEach(filteredMediaByPhotographer => {
+                const TemplateMedia = new PhotographerPage(filteredPhotographer, filteredMediaByPhotographer).createPhotographerMedia();
+                mediasDisplay.appendChild(TemplateMedia);
+            });
+            // je génère la vue de la modale de contact 
+            this.modalContact.innerHTML = '';
+            const contactModalDisplay = new PhotographerPage(filteredPhotographer, filteredMediaByPhotographer).createModalDisplay();
+            this.modalContact.appendChild(contactModalDisplay);
+            
+            // je génère la vue de la lightbox 
+            this.lightboxMedias.innerHTML = '';
+            this.lightboxMedias.appendChild(new PhotographerPage(filteredPhotographer, filteredMediaByPhotographer).displayLightBox());
+            
+            
+            // Je calcule le total des likes avec la methode reduce
+            const totalLikes = allLikes.reduce((a, b) => a + b, 0);
+            // je génère la vue pour l'affichage des likes
+            const likes = new PhotographerPage(filteredPhotographer, filteredMediaByPhotographer).createLikes(totalLikes);
+            this.mediasPhotograph.appendChild(likes);
+            
+            //j'incrémente le nombres de likes en fonction du click sur le bouton like
+            new PhotographerPage(filteredPhotographer, filteredMediaByPhotographer).incrementLikes(totalLikes);
+        });
+        date.addEventListener('click', () => {
+            const mediasDate = allMedias.sort((a, b) => new Date(b.date) - new Date(a.date));
+            mediasDisplay.innerHTML = '';
+            mediasDate.forEach(filteredMediaByPhotographer => {
+                const TemplateMedia = new PhotographerPage(filteredPhotographer, filteredMediaByPhotographer).createPhotographerMedia();
+                mediasDisplay.appendChild(TemplateMedia);
+            });
+            // je génère la vue de la modale de contact
+            this.modalContact.innerHTML = ''; 
+            const contactModalDisplay = new PhotographerPage(filteredPhotographer, filteredMediaByPhotographer).createModalDisplay();
+            this.modalContact.appendChild(contactModalDisplay);
+            
+            // je génère la vue de la lightbox
+            this.lightboxMedias.innerHTML = '';
+            this.lightboxMedias.appendChild(new PhotographerPage(filteredPhotographer, filteredMediaByPhotographer).displayLightBox());
+            
+            
+            // Je calcule le total des likes avec la methode reduce
+            const totalLikes = allLikes.reduce((a, b) => a + b, 0);
+            // je génère la vue pour l'affichage des likes
+            const likes = new PhotographerPage(filteredPhotographer, filteredMediaByPhotographer).createLikes(totalLikes);
+            this.mediasPhotograph.appendChild(likes);
+            
+            //j'incrémente le nombres de likes en fonction du click sur le bouton like
+            new PhotographerPage(filteredPhotographer, filteredMediaByPhotographer).incrementLikes(totalLikes);
+        });
+        title.addEventListener('click', () => {
+            const mediasTitle = allMedias.sort((a, b) => a.title.localeCompare(b.title));
+            mediasDisplay.innerHTML = '';
+            mediasTitle.forEach(filteredMediaByPhotographer => {
+                const TemplateMedia = new PhotographerPage(filteredPhotographer, filteredMediaByPhotographer).createPhotographerMedia();
+                mediasDisplay.appendChild(TemplateMedia);
+            });
+        // je génère la vue de la modale de contact 
+            this.modalContact.innerHTML = '';
+            const contactModalDisplay = new PhotographerPage(filteredPhotographer, filteredMediaByPhotographer).createModalDisplay();
+            this.modalContact.appendChild(contactModalDisplay);
+            
+            // je génère la vue de la lightbox 
+            this.lightboxMedias.innerHTML = '';
+            this.lightboxMedias.appendChild(new PhotographerPage(filteredPhotographer, filteredMediaByPhotographer).displayLightBox());
+            
+            
+            // Je calcule le total des likes avec la methode reduce
+            const totalLikes = allLikes.reduce((a, b) => a + b, 0);
+            // je génère la vue pour l'affichage des likes
+            const likes = new PhotographerPage(filteredPhotographer, filteredMediaByPhotographer).createLikes(totalLikes);
+            this.mediasPhotograph.appendChild(likes);
+            
+            //j'incrémente le nombres de likes en fonction du click sur le bouton like
+            new PhotographerPage(filteredPhotographer, filteredMediaByPhotographer).incrementLikes(totalLikes);
+        });
+    }   
 }
 const pages = new Pages();
 pages.main();
+
 

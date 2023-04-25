@@ -4,9 +4,8 @@ class PhotographerPage {
     constructor(photographer, media){
         this._photographer = new Photographer(photographer);
         this._media = new PhotographerMedia(media);
- 
-        // console.log('model = ' + this._media._title);
     }
+
     createPhotographerPage() {
         const altImg = `${this._photographer._name}, ${this._photographer._city}, ${this._photographer._tagline}, ${this._photographer.price}€ par jour`;
         
@@ -26,50 +25,19 @@ class PhotographerPage {
         
         <div class="filter">
         <p>Trier par</p>
-        <button class="filter_btn" onclick="displayChevron()" role="menubar" aria-expanded="false" aria-orientation="vertical">
-        <ul class="filter_list" role="menuitem">
-        <li class="filter_popular">Popularité<span class="chevron-down"><i class="fa-solid fa-chevron-down"></i></span> <span class="chevron-up"><i class="fa-solid fa-chevron-up"></i></span></li>
-        <li class="filter_date">Date</li>
-        <li class="filter_title">Titre</li>
-        </ul>
-        </div> 
+          <div class="filter_btn" onclick="displayChevron()" role="menubar" aria-expanded="false" aria-orientation="vertical">
+          <span class="chevron-down"><i class="fa-solid fa-chevron-down"></i></span> <span class="chevron-up"><i class="fa-solid fa-chevron-up"></i></span>
+            <div class="filter_list"  aria-label="Trier par">
+              <button class="filter_popular" role="listbox" aria-selected="true">Popularité</button>
+              <button class="filter_date" role="listbox" aria-selected="false">Date</button>
+              <button class="filter_title" role="listbox" aria-selected="false">Titre</button>
+            </div>
+          </div> 
+        </div>
         `
         $articlePage.innerHTML = photographerPage;
         return $articlePage;
     }
-
-  sortMedia() {
-    const popular = document.querySelector('.filter_popular');
-    const date = document.querySelector('.filter_date');
-    const title = document.querySelector('.filter_title');
-    const media = document.querySelectorAll('.mediaDisplay');
-    const mediaArray = Array.from(media);
-    popular.addEventListener('click', () => {
-        mediaArray.sort((a, b) => {
-            return b.dataset.likes - a.dataset.likes;
-        });
-        mediaArray.forEach((media) => {
-            media.parentNode.appendChild(media);
-        });
-    });
-    date.addEventListener('click', () => {
-        mediaArray.sort((a, b) => {
-            return new Date(b.dataset.date) - new Date(a.dataset.date);
-        });
-        mediaArray.forEach((media) => {
-            media.parentNode.appendChild(media);
-        });
-    });
-    title.addEventListener('click', () => {
-        mediaArray.sort((a, b) => {
-            return a.dataset.title.localeCompare(b.dataset.title);
-        });
-        mediaArray.forEach((media) => {
-            media.parentNode.appendChild(media);
-        });
-    });
-  }
-
 
     createLikes(totalLikes) {
       const $articleLikes = document.createElement('article');
@@ -131,7 +99,7 @@ class PhotographerPage {
       const displayMedias = 
       `
       <div class="mediaDisplay_bloc">
-      <a href="${this.linkMedia(this._media)}" name="${this._media.title}" data-mediaId="${this._media.id}" class="mediaDisplay_link">
+      <a href="${this.linkMedia(this._media)}" name="${this._media.title}" aria-label="${this._media.title}" class="mediaDisplay_link">
       ${this.renderMedia(this._media)}
       </a>
       
@@ -194,43 +162,7 @@ class PhotographerPage {
       $displayModal.innerHTML = modalDisplay;
       return $displayModal;
     }
-
-    // insertBalise(media) {
-    //   if(media.image) {
-    //     return `<img id="media" src=""></img>`
-    //   } else if(media.video) {
-    //     return `<video id="mediaVideo" src="" controls type="video/mp4"></video>`
-    //   }
-    // }
-
-    // createDivVideo() {  
-    //   const $content = document.createElement('div');
-    //   $content.setAttribute('class', 'lightbox__container');
-    //   const $mediasVideo = document.createElement('video');
-    //   $mediasVideo.setAttribute('id', 'mediasVideo');
-    //   $mediasVideo.setAttribute('src', "");
-    //   $mediasVideo.setAttribute('type', "video/mp4");
-    //   $mediasVideo.setAttribute('poster', "");
-    //   $mediasVideo.setAttribute('controls', "");
-    //   $content.appendChild($mediasVideo);
-    //   return $content;
-    // }
-    // createDiv() {
-    //   const $content = document.createElement('div');
-    //   $content.setAttribute('class', 'lightbox__container');
-    //   return $content;
-    // }
-
-    // createDivImage() {
-    //   const $content = document.createElement('div');
-    //   $content.setAttribute('class', 'lightbox__container');
-    //   const $mediasImage = document.createElement('img');
-    //   $mediasImage.setAttribute('id', 'media');
-    //   $mediasImage.setAttribute('src', "");
-    //   $content.appendChild($mediasImage);
-    //   return $content;
-    // }
-
+    
     displayLightBox() {  
       const $content = document.createElement('div');
       $content.setAttribute('class', 'lightbox__container');
@@ -255,6 +187,7 @@ class PhotographerPage {
             var titleMedia = document.createElement('p');
             titleMedia.setAttribute('class', 'titleMedia');
             linkElement.setAttribute('src', linkSrc);
+            linkElement.setAttribute('alt', link.name);
             titleMedia.innerHTML = `${link.name}`;
             $content.appendChild(linkElement);
             $content.appendChild(titleMedia);
@@ -263,6 +196,7 @@ class PhotographerPage {
             var titleMedia = document.createElement('p');
             titleMedia.setAttribute('class', 'titleMedia');
             linkElement.setAttribute('src', linkSrc);
+            linkElement.setAttribute('alt', link.name);
             linkElement.setAttribute('controls', true);
             linkElement.setAttribute('autoplay', true);
             titleMedia.innerHTML = `${link.name}`;
@@ -287,6 +221,7 @@ class PhotographerPage {
           $content.innerHTML = "";
           var linkElement = document.createElement('img');
           linkElement.setAttribute('src', `${linkSrc}`);
+          linkElement.setAttribute('alt', `${links[compteur].name}`);
           var titleMedia = document.createElement('p');
           titleMedia.setAttribute('class', 'titleMedia');
           $content.appendChild(linkElement);
@@ -298,6 +233,7 @@ class PhotographerPage {
           linkElement.setAttribute('src', `${linkSrc}`);
           linkElement.setAttribute('controls', true);
           linkElement.setAttribute('autoplay', true);
+          linkElement.setAttribute('alt', `${links[compteur].name}`);
           var titleMedia = document.createElement('p');
           titleMedia.setAttribute('class', 'titleMedia');
           titleMedia.innerHTML = `${links[compteur].name}`;
@@ -316,6 +252,7 @@ class PhotographerPage {
           $content.innerHTML = "";
           var linkElement = document.createElement('img');
           linkElement.setAttribute('src', `${linkSrc}`);
+          linkElement.setAttribute('alt', `${links[compteur].name}`);
           var titleMedia = document.createElement('p');
           titleMedia.setAttribute('class', 'titleMedia');
           titleMedia.innerHTML = `${links[compteur].name}`;
@@ -327,6 +264,7 @@ class PhotographerPage {
           linkElement.setAttribute('src', `${linkSrc}`);
           linkElement.setAttribute('controls', true);
           linkElement.setAttribute('autoplay', true);
+          linkElement.setAttribute('alt', `${links[compteur].name}`);
           var titleMedia = document.createElement('p');
           titleMedia.setAttribute('class', 'titleMedia');
           titleMedia.innerHTML = `${links[compteur].name}`;
@@ -335,7 +273,6 @@ class PhotographerPage {
         }
       });  
       $close.addEventListener('click', function() {
-        // e.preventDefault();
         modalLightbox.setAttribute('aria-hidden', 'true')
         bodyLightbox.setAttribute('aria-hidden', 'true')
         main.setAttribute('aria-hidden', 'false');
@@ -343,7 +280,6 @@ class PhotographerPage {
         $content.innerHTML = "";
       });
       document.addEventListener('keydown', (e) => {
-        console.log('ok => ' + e.key);
         if(e.key == "ArrowRight") {
           compteur++;
           if(compteur === links.length) {

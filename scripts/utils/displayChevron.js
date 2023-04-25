@@ -15,13 +15,3 @@ function displayChevron() {
         chevronDown.classList.add('disactive');
     }
 }
-
-// function likesCounter() {
-//     const heart = document.querySelector('.mediaDisplay_heart');
-    
-//     heart.addEventListener('click', () => {
-        
-//         console.log(likes);
-        
-//     })
-// }

@@ -10,7 +10,9 @@
   </head>
   <body id="body">
     <header role="banner">
-      <img src="assets/images/logo.png" class="logo" alt="logo fishEye"/>
+      <a href="index.html" alt="retour Accueil">
+        <img src="assets/images/logo.png" class="logo" alt="logo fishEye"/>
+      </a>
     </header>
     <main id="main" role="main">
       <div class="photograph-header">
@@ -23,14 +25,14 @@
     <div id="contact_modal">
 			<!-- affichage de la modale de contact -->
 		</div> 
-    <div id="lightbox">
-      <img src="assets/icons/closeCarousel.svg" onfocus() class="closeLightbox" aria-controls="document" alt="Fermer"/>
+    <dialog id="lightbox" aria-label="image closeup view">
+      <img src="assets/icons/closeCarousel.svg" onfocus() class="closeLightbox" aria-controls="document" alt="Fermer" role="button"/>
       <button class="prev" aria-label="précédent"><i class="fa-solid fa-chevron-left"></i></button>
       <button class="next" aria-label="suivant"><i class="fa-solid fa-chevron-right"></i></button>
-      <div id="bodyLightbox">
+      <div id="bodyLightbox" >
           <!-- affichage des médias du photographe dans la lightbox  -->
       </div>
-    </div>
+    </dialog>
 
     <!-- Api  -->
     <script src="scripts/api/Api.js"></script>
@@ -44,7 +46,6 @@
     <!-- utils  -->
     <script src="/scripts/utils/contactForm.js"></script>
     <script src="/scripts/utils/displayChevron.js"></script>
-    <script src="/scripts/utils/lightbox.js"></script>
     <!-- point d'entrée  -->
     <script src="scripts/Page.js"></script>
   </body>
