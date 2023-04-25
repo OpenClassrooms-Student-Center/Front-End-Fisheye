@@ -84,9 +84,7 @@ function getKeyClickedMedia(photographerMedia, idClickedMedia) {
 
 function setWidthCarouselItem() {
     let itemsElt = document.querySelectorAll(".carousel-item");
-    console.log(itemsElt);
     let ratio = itemsElt.length / slidesVisibles;
-    console.log(ratio);
     containerElt.style.width = (ratio * 100) + "%";
     itemsElt.forEach(item => item.style.width = ((100 / slidesVisibles) / ratio) + "%");
 }

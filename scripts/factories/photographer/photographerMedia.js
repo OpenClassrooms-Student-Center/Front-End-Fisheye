@@ -30,7 +30,6 @@ function setImgMedia(imgMediaElt, buttonMediaElt, picture, title) {
 function setIdMedia(idElt, id, buttonMediaElt) {
     idElt.textContent = id;
     idElt.setAttribute("class","id-media");
-    // idElt.style.display = "none";
     buttonMediaElt.appendChild(idElt);
 }
 
