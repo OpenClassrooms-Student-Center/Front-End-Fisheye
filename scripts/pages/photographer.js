@@ -25,12 +25,12 @@ class PhotographerPage {
         
         <div class="filter">
         <p>Trier par</p>
-          <div class="filter_btn" onclick="displayChevron()" role="menubar" aria-expanded="false" aria-orientation="vertical">
+          <div class="filter_btn" onclick="displayChevron()" type="menubar" aria-expanded="false" >
           <span class="chevron-down"><i class="fa-solid fa-chevron-down"></i></span> <span class="chevron-up"><i class="fa-solid fa-chevron-up"></i></span>
-            <div class="filter_list"  aria-label="Trier par">
-              <button class="filter_popular" role="listbox" aria-selected="true">Popularité</button>
-              <button class="filter_date" role="listbox" aria-selected="false">Date</button>
-              <button class="filter_title" role="listbox" aria-selected="false">Titre</button>
+            <div class="filter_list"  aria-label="Trier les medias par">
+              <button class="filter_popular" type="menuitem" aria-selected="true">Popularité</button>
+              <button class="filter_date" type="menuitem" aria-selected="false">Date</button>
+              <button class="filter_title" type="menuitem" aria-selected="false">Titre</button>
             </div>
           </div> 
         </div>
@@ -44,8 +44,8 @@ class PhotographerPage {
       const displayLikes = 
       `
       <div class="displayTarif">
-      <p class="displayTarif_likes">${totalLikes} <i class="fa-solid fa-heart likesDisplay_heart"></i></p>
-      <p class="displayTarif_price">${this._photographer.price}€/Jour</p>
+      <p class="displayTarif_likes" aria-label="total de likes">${totalLikes} <i class="fa-solid fa-heart likesDisplay_heart"></i></p>
+      <p class="displayTarif_price" aria-label="tarif journalier">${this._photographer.price}€/Jour</p>
       `
       $articleLikes.innerHTML = displayLikes;
       return $articleLikes;
@@ -82,7 +82,7 @@ class PhotographerPage {
         if(media.image) {
             return `<img class="linkRenderMedia" data-id="${media.id}" src="/assets/photographers/${this._photographer.name}/${media.image}"  alt="${media.title}"/>`;
         } else if (media.video) {
-            return `<video class="linkRenderMedia" data-id="${media.id}" src="/assets/photographers/${this._photographer.name}/${media.video}" poster="" alt="${media.title}"></video>`;
+            return `<video class="linkRenderMedia" data-id="${media.id}" src="/assets/photographers/${this._photographer.name}/${media.video}" poster="" type="video/mp4" aria-label="${media.title}"></video>`;
         }
     }
 
@@ -105,8 +105,8 @@ class PhotographerPage {
       
       <p class="mediaDisplay_infosTitle">${this._media.title}</p>
       <div class="mediaDisplay_boxLike">
-      <p class="mediaDisplay_infosLike" onclick="">${this._media.likes}</p>
-      <i class="fa-solid fa-heart mediaDisplay_heart"></i>
+      <p class="mediaDisplay_infosLike" aria-label="aimé ${this._media.likes} fois">${this._media.likes}</p>
+      <i class="fa-solid fa-heart mediaDisplay_heart" aria-label="Coeur, Cliquez ici pour aimer"></i>
       </div>
       </div>   
       `
@@ -130,7 +130,7 @@ class PhotographerPage {
       <header>
         <h2 id="modalTitle">Contactez-moi <br>${this._photographer.name}</h2>
         <button class="btnClose" type="button" aria-label="Fermer" title="Fermer cette modale">
-          <img src="assets/icons/close.svg" onclick="closeModal()" onfocus() class="closeModal" aria-controls="dialog" alt="Fermer"/>
+          <img src="assets/icons/close.svg" onclick="closeModal()" class="closeModal" aria-controls="dialog" alt="Fermer"/>
         </button>
       </header>
       <form id="formContact" action="photographer.html" name="contact" method="get" oninvalid="false" onsubmit="validForm()">

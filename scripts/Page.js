@@ -68,6 +68,9 @@ class Pages {
         let date = document.querySelector('.filter_date');
         let title = document.querySelector('.filter_title');
         popular.addEventListener('click', () => {
+            popular.ariaSelected = true;
+            date.ariaSelected = false;
+            title.ariaSelected = false;
             const mediasPopularity = allMedias.sort(function(a, b){return b._likes - a._likes});
             mediasDisplay.innerHTML = '';
             mediasPopularity.forEach(filteredMediaByPhotographer => {
@@ -94,6 +97,9 @@ class Pages {
             new PhotographerPage(filteredPhotographer, filteredMediaByPhotographer).incrementLikes(totalLikes);
         });
         date.addEventListener('click', () => {
+            popular.ariaSelected = false;
+            date.ariaSelected = true;
+            title.ariaSelected = false;
             const mediasDate = allMedias.sort((a, b) => new Date(b.date) - new Date(a.date));
             mediasDisplay.innerHTML = '';
             mediasDate.forEach(filteredMediaByPhotographer => {
@@ -120,6 +126,9 @@ class Pages {
             new PhotographerPage(filteredPhotographer, filteredMediaByPhotographer).incrementLikes(totalLikes);
         });
         title.addEventListener('click', () => {
+            popular.ariaSelected = false;
+            date.ariaSelected = false;
+            title.ariaSelected = true;
             const mediasTitle = allMedias.sort((a, b) => a.title.localeCompare(b.title));
             mediasDisplay.innerHTML = '';
             mediasTitle.forEach(filteredMediaByPhotographer => {
