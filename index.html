@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="fr">
   <head>
     <link href="css/style.css" rel="stylesheet" type="text/css" />
     <meta charset="utf-8">
@@ -8,14 +8,23 @@
     <title>Fisheye</title>
   </head>
   <body>
-    <header>
-        <img src="assets/images/logo.png" class="logo" />
+    <header role="banner">
+        <img src="assets/images/logo.png" class="logo" alt="Logo FishEye" />
         <h1>Nos photographes</h1>
     </header>
-    <main id="main">
+    <main id="main" role="main">
         <div class="photographer_section"></div>
     </main>
-    <script src="scripts/factories/photographer.js"></script>
+    <p>
+        <img src="https://achecker.achecks.ca/images/icon_W2_aaa.jpg" alt="WCAG 2.0 (Niveau AAA)" height="32" width="102" />
+    </p>
+    <!-- Api  -->
+    <script src="scripts/api/Api.js"></script>
+    <!-- models  -->
+    <script src="scripts/models/Photographers.js"></script>
+    <!-- pages  -->
     <script src="scripts/pages/index.js"></script>
+    <!-- point d'entrée  -->
+    <script src="scripts/App.js"></script>
   </body>
 </html>

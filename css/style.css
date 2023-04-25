@@ -38,13 +38,44 @@ h1 {
     align-items: center;
     flex-direction: column;
 }
+.photographer_section article a {
+    text-decoration: none;
+    text-align: center;
+    color: black;
+}
+.photographer_section article a:focus-visible {
+    outline-color: #901C1C;
+}
 
-.photographer_section article h2 {
+.photographer_section a h2 {
     color: #D3573C;
-    font-size: 36px;
+    font-size: 30px;
+    margin-bottom: 0;
+}
+
+.photographer_section article h3 {
+    color: #901C1C;
+    font-size: 13px;
+    margin-bottom: 0;
+}
+.photographer_section article p {
+    font-size: 12px;
+    margin-bottom: 0;
+}
+
+.photographer_section article .price {
+    font-size: 12px;
+    color: #757575;
 }
 
 .photographer_section article img {
     height: 200px;
     width: 200px;
+    object-fit: cover;
+    border-radius: 50%;
+    overflow: hidden;
+}
+
+.photographer_section article img:hover {
+    transform: scale(1.05);
 }
