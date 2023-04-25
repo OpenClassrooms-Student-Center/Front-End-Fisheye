@@ -1,10 +1,19 @@
+@import url("style.css");
+
 main {
-    margin: 0 100px;
+   margin: 0 100px; 
+}
+
+#contact-modal, #lightbox-modal {
+    margin: auto;
+    max-width: 1400px;
 }
 
 .photograph-header {
     background-color: #FAFAFA;
-    height: 300px;
+    height: 250px;
+    display: flex;
+    flex-direction: row;
 }
 
 .photograph-header ul {
@@ -14,6 +23,27 @@ main {
     justify-content: space-between;
     align-items: center;
     width: 100%;
+}
+
+.photograph-header li {
+    display: block;
+}
+
+.photograph-header h1 {
+    margin: 10px 0;
+    font-size: 2.2rem;
+    color: #D3573C;
+}
+
+.photograph-header h2 {
+    margin: 10px 0;
+    font-size: 1.2rem;
+    color: #901C1C;
+}
+
+.photograph-header p {
+    margin: 10px 0;
+    color: #525252;
 }
 
 .contact-button {
@@ -30,6 +60,13 @@ main {
     width: 170px;
     height: 60px;
     font-size: 18px;
+}
+
+.photograph-header img {
+    border-radius: 50%;
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
 }
 
 .modal form .contact-button {
@@ -58,12 +95,21 @@ main {
 }
 
 .modal header {
+    display: flex;
     justify-content: space-between;
     width: 100%;
     height: auto;
 }
 
-.modal img, select {
+.modal header button {
+    border: none;
+    background: transparent;
+    height: 42px;
+}
+
+.modal img {
+    width: 42px;
+    height: 42px;
     cursor: pointer;
 }
 
@@ -75,16 +121,13 @@ main {
 
 .modal form {
     display: flex;
-    width: 100%;
     flex-direction: column;
+    width: 100%;
 }
 
 .modal div {
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-    align-items: self-start;
     margin-bottom: 26px;
+    width: 100%;
 }
 
 .modal form div:nth-child(1) {
@@ -103,10 +146,10 @@ main {
 }
 
 .modal form input {
-    width: 100%;
-    height: 68px;
     border: none;
     border-radius: 5px;
+    width: 100%;
+    height: 68px;
 }
 
 .modal form textarea {
@@ -115,8 +158,8 @@ main {
 }
 
 .filter {
-    height: 60px;
     margin: 10px 0 40px 0;
+    height: 60px;
 }
 
 .filter form {
@@ -129,19 +172,81 @@ main {
 .media ul {
     padding: 0;
     display: flex;
-    gap: 50px 100px;
     flex-wrap: wrap;
+    gap: 10px 90px;
+}
+
+.media li {
+    display: block;
+}
+
+.media figure {
+    margin: 0;
+}
+
+.media img, .media video {
+    border-radius: 5px;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.media button {
+    border: none;
+    border-radius: 5px;
+    padding: 0;
+    width: 340px;
+    height: 340px;
+    cursor: pointer;
+    background-color: inherit;
+}
+
+.media button:focus {
+    outline: 1px auto;
+}
+
+.media button span {
+    display: none;
+}
+
+.media figcaption {
+    margin: 8px 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.media figcaption header {
+    height: 30px;
+}
+
+.media h3 {
+    margin: 0;
+    color: #901C1C;
+}
+
+.media figcaption figure {
+    margin: 0;
+    color: #901C1C;
+}
+
+.media b {
+    padding-right: 5px;
+}
+
+.media figure i {
+    cursor: pointer;
 }
 
 .price-and-likes {
     position: fixed;
     right: 30px;
     bottom: 0px;
+    border-radius: 5px 5px 0 0;
+    padding: 10px 0;
     display: flex;
     justify-content: space-around;
     align-items: center;
-    border-radius: 5px 5px 0 0;
-    padding: 10px 0;
     width: 300px;
     height: 40px;
     font-size: 1.2rem;
@@ -167,20 +272,19 @@ main {
 
 .dropdown-wrapper .dropdown-ul {
     position: absolute;
+    left: 0;
     margin: 0;
     padding: 0;
     list-style: none;
-    visibility: hidden;
     opacity: 0;
     transition: .3s;
     width: 100%;
     color: #FFF;
-    left: 0;
 }
 
 .dropdown-wrapper .dropdown-label::after {
     position: absolute;
-    right: 25px;
+    right: 15px;
     content: ' >';
     transform: var(--selectdivAfterTransform, rotate(90deg));
     pointer-events: none;
@@ -192,7 +296,7 @@ main {
     background-color: #901C1C;
 }
 
-.dropdown-wrapper .dropdown-ul li:nth-child(3) {
+.dropdown-wrapper .dropdown-ul li:last-child {
     border-radius: 0 0 5px 5px;
 }
 
@@ -206,21 +310,19 @@ main {
 .dropdown-wrapper .dropdown-label {
     position: relative;
     right: 0;
+    border-radius: 5px;
+    padding: 10px;
     display: block;
-    width: 100%;
-    /* height: 50px; */
-    padding-top: 10px;
-    padding-left: 10px;
-}
-
-.dropdown-wrapper .dropdown-chk:checked ~ .dropdown-ul {
-    visibility: visible;
-    opacity: 1;
+    cursor: pointer;
 }
 
 hr {
-    margin-bottom: 0;
+    margin: 0;
     color: #FFF;
+}
+
+.dropdown-ul li:nth-child(1) {
+    display: none;
 }
 
 input[type="checkbox"] {
@@ -228,31 +330,31 @@ input[type="checkbox"] {
 }
 
 #lightbox-modal {
-    display: none;
     position: absolute;
     top: 60px;
+    display: none;
     width: 100%;
 }
 
 .content-modal {
     position: relative;
+    margin: auto;
     border-radius: 5px;
+    padding: 0 50px;
     background-color: #FFF;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 0 50px;
-    margin: auto;
     width: 70%;
 }
 
-.close-modal {
+.content-modal .close-lightbox-modal {
     position: absolute;
     top: 30px;
     right: 40px;
 }
 
-#lightbox-modal i {
+#lightbox-modal em {
     color: #901C1C;
 }
 
@@ -268,8 +370,30 @@ input[type="checkbox"] {
     width: 100%;
 }
 
+.carousel-container {
+    padding: 0;
+}
+
 .carousel-item {
     float: left;
+}
+
+.close-contact-modal, 
+.close-lightbox-modal,
+.carousel-prev,
+.carousel-next {
+    border: none;
+    background-color: inherit;
+    height: 30px;    
+    padding: 0;
+}
+
+.close-contact-modal:focus, 
+.close-lightbox-modal:focus,
+.carousel-prev:focus,
+.carousel-next:focus,
+.contact-button:focus {
+    outline: 1px auto;
 }
 
 .item {
@@ -279,9 +403,5 @@ input[type="checkbox"] {
 .item img, .item video {
     width: 100%;
     height: 680px;
-}
-
-.content-modal button {
-    background-color: transparent;
-    border: none;
+    object-fit: cover;
 }
