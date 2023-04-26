@@ -18,7 +18,7 @@ function openLightboxWithMouse() {
     displayDataLightbox(idClickedMedia);
 }
 
-function closeLightboxWithMouse() {
+function closeLightbox() {
     modalLightboxElt.style.display = "none";
     mainElt.setAttribute("aria-hidden","false");
     modalLightboxElt.setAttribute("aria-hidden","true");
@@ -29,9 +29,10 @@ function closeLightboxWithMouse() {
 function closeLightboxWithKeyboard() {
     document.addEventListener("keydown", (e) => {
         if (e.key.toLowerCase() === "escape") {
-            closeLightboxWithMouse();
+            closeLightbox();
         }
     });
+    carouselContainerElt.innerHTML = "";
 }
 
 // navigate on lightbox with keyboard arrow keys

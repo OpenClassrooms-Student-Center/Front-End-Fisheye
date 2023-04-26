@@ -11,7 +11,6 @@ function addFigureMedia(figureMediaElt, liMediaElt) {
 
 function addButtonMedia(buttonMediaElt, figureMediaElt) {
     buttonMediaElt.setAttribute("onclick", "openLightboxWithMouse()");
-    // buttonMediaElt.setAttribute("onkeydown", "openLightboxWithKeyboard()");
     buttonMediaElt.setAttribute("aria-hidden","true");
     figureMediaElt.appendChild(buttonMediaElt);
 }
