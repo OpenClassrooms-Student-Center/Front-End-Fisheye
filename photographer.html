@@ -14,11 +14,42 @@
     </header>
     <main id="main">
       <div class="photograph-header">
-        <button class="contact_button" onclick="displayModal()">Contactez-moi</button>
+        <button class="contact_button" name="Contact Me" onclick="displayModal()">Contactez-moi</button>
       </div>
-
       <div class="media-container"></div>
+      <div class="footer"></div>
+      <div id="contact_modal">
+        <div class="modal">
+          <header>
+            <h2>Contactez-moi</h2>
+            <img src="assets/icons/close.svg" onclick="closeModal()" />
+          </header>
+          <h2></h2>
+          <form>
+            <div>
+              <label>Prénom</label>
+              <input type="text"/>
+            </div>
+            <div>
+              <label>Nom</label>
+              <input type="text" />
+            </div>
+            <div>
+              <label>Email</label>
+              <input type="email"/>
+            </div>
+            <div>
+              <label>Votre message</label>
+              <input class="textarea" type="textarea"/>
+            </div>
+            <button class="contact_button">Envoyer</button>
+          </form>
+        </div>
+      </div>
     </main>
+    <footer>
+      <div class="footer-info"></div>
+    </footer>
     <div id="contact_modal">
 			<div class="modal">
 				<header>
@@ -41,7 +72,7 @@
 					</div>
           <div>
 						<label>Votre message</label>
-						<input type="textarea"/>
+						<input class="textarea" type="textarea"/>
 					</div>
           <button class="contact_button">Envoyer</button>
 				</form>
