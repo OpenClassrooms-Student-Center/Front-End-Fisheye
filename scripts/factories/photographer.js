@@ -57,8 +57,27 @@ function photographerFactory(photographer) {
     const response = await fetch("data/photographers.json");
     const data = await response.json();
     const medias = data.media;
-    return medias.filter((media) => media.photographerId == id);
+    const filteredMedias = medias.filter((media) => media.photographerId == id);
+    const formattedMedias = filteredMedias.map((media, index, array) => {
+      media.previousMedia = array[index - 1]
+        ? array[index - 1]
+        : array[array.length - 1];
+      media.nextMedia = array[index + 1] ? array[index + 1] : array[0];
+      return media;
+    });
+    return formattedMedias;
   }
 
-  return { getPhotographerCard, getPhotographerHeaderElements, getMedias };
+  async function getTotalLikes() {
+    const medias = await getMedias();
+    return medias.reduce((acc, media) => acc + media.likes, 0);
+  }
+
+  return {
+    name,
+    getPhotographerCard,
+    getPhotographerHeaderElements,
+    getMedias,
+    getTotalLikes,
+  };
 }
