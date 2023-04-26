@@ -9,11 +9,7 @@
  */
 function addLinkElt(id, name, aElt, articleElt) {
     aElt.setAttribute("href","photographer.html?name=" + name + "&id=" + id);
-    articleElt.setAttribute(
-        "aria-description","cette carte présente le photographe" 
-        + name + "au clique sur la carte, vous serez redirigez vers la page de" 
-        + name
-        );
+    articleElt.setAttribute("aria-description","cette carte présente" + name);
     articleElt.appendChild(aElt);
 }
 
@@ -36,6 +32,7 @@ function addFigureElt(figureElt, aElt) {
 function setPhotographerImg(name, picture, imgElt, figureElt) {
     imgElt.setAttribute("src", picture);
     imgElt.setAttribute("alt", name);
+    imgElt.setAttribute("role","none");
     figureElt.appendChild(imgElt);
 }
 
@@ -47,6 +44,7 @@ function setPhotographerImg(name, picture, imgElt, figureElt) {
  */
 function setPhotographerName(name, nameElt, figureElt) {
     nameElt.textContent = name;
+    nameElt.setAttribute("aria-hidden","true");
     figureElt.appendChild(nameElt);
 }
 
@@ -56,6 +54,8 @@ function setPhotographerName(name, nameElt, figureElt) {
  * @param {object} figCaptionElt 
  */
 function addFigCaptionElt(figureElt, figCaptionElt) {
+    figureElt.setAttribute("role","none");
+    figCaptionElt.setAttribute("role","none");
     figureElt.appendChild(figCaptionElt);
 }
 
@@ -67,6 +67,8 @@ function addFigCaptionElt(figureElt, figCaptionElt) {
  * @param {object} figCaptionElt 
  */
 function setPhotographerCountry(city, country, countryElt, figCaptionElt) {
+    countryElt.setAttribute("aria-label","venant de" + city +"," + country);
+    countryElt.setAttribute("id","photographer-country");
     countryElt.textContent = `${city}, ${country}`;
     figCaptionElt.appendChild(countryElt);
 }

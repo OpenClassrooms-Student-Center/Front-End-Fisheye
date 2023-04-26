@@ -191,7 +191,7 @@ main {
     object-fit: cover;
 }
 
-.media button {
+.btn-media {
     border: none;
     border-radius: 5px;
     padding: 0;
@@ -234,9 +234,17 @@ main {
     padding-right: 5px;
 }
 
-.media figure i {
+.btn-like-media {
+    border: none;
     cursor: pointer;
+    background-color: inherit;
 }
+
+.btn-like-media i {
+    color: #901C1C;
+}
+
+
 
 .price-and-likes {
     position: fixed;

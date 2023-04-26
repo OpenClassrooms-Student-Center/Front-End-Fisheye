@@ -12,11 +12,11 @@
   </head>
 
   <body>
-    <header aria-label="entete de la page">
-      <a href="index.html"><img src="assets/images/logo.png" class="logo" alt="logo de Fisheye - Page d'accueil"/></a>
+    <header role="none">
+      <a href="index.html"><img src="assets/images/logo.png" class="logo" alt="logo de Fisheye - Page photographe"/></a>
     </header>
 
-    <main id="main" aria-hidden="false">
+    <main id="main" aria-hidden="false" role="none">
       <header 
       class="photograph-header" 
       aria-label="cette région contient les informations et contacts du photographe"
@@ -27,22 +27,19 @@
       </header>
 
       <!-- filters -->
-      <section 
-      class="filter" 
-      aria-label="cette région permet de filtrer l'affichage des media du photographe">
+      <section class="filter">
         <form> 
           <label for="filter">Trier par</label>
           <div class="dropdown-wrapper">
             <input type="checkbox" class="dropdown-chk" id="check1"/>
             <label for="check1" class="dropdown-label" tabindex="0"></label>
             <ul class="dropdown-ul" role="listbox">
-              <li><hr></li>
-              <li 
-              aria-label="filtrer par media populaires" class="popularMedia" role="option" tabindex="0">Popularité</li>
-              <li><hr></li>
-              <li aria-label="filtrer par date" class="mediaDateDesc" role="option" tabindex="0">Date</li>
-              <li><hr></li>
-              <li aria-label="filtrer par titre" class="mediaTitleAsc" role="option" tabindex="0">Titre</li>
+              <li aria-hidden="true"><hr></li>
+              <li aria-label="trier les media par populaires" class="popularMedia" role="option" tabindex="0">Popularité</li>
+              <li aria-hidden="true"><hr></li>
+              <li aria-label="trier les media par date" class="mediaDateDesc" role="option" tabindex="0">Date</li>
+              <li aria-hidden="true"><hr></li>
+              <li aria-label="trier les media par titre" class="mediaTitleAsc" role="option" tabindex="0">Titre</li>
             </ul>
           </div>
         </form>
@@ -50,9 +47,8 @@
 
       <!-- media -->
       <section 
-      class="media" 
-      aria-label="cette région affiche les media du photographer">
-        <ul>
+      class="media">
+        <ul role="none">
         </ul>
       </section>
 
@@ -71,12 +67,10 @@
     aria-hidden="true" 
     aria-describedby="modalTitle">
 			<div class="modal">
-				<header>
+				<header role="none">
           <h2 id="modalTitle">Contactez-moi</h2>
-          <button class="close-contact-modal">
-            <img src="assets/icons/whiteClose.svg" 
-            alt="fermer le formulaire de contact" 
-            onclick="closeModal()"/>
+          <button class="close-contact-modal" role="none">
+            <img src="assets/icons/whiteClose.svg" alt="fermer le formulaire de contact" onclick="closeModal()"/>
           </button>
         </header>
 				<form method="get">
@@ -112,14 +106,14 @@
           <img src="assets/icons/brownClose.svg" alt="ferme le carousel des medias du photographe" onclick="closeLightbox()"/>
         </button>
         <button class="carousel-prev" onclick="return prev()">
-          <em class="fa-sharp fa-solid fa-chevron-left fa-2xl" title="naviguer vers le media précédant"></em>
+          <em class="fa-sharp fa-solid fa-chevron-left fa-2xl" aria-label="naviguer vers le media précédant"></em>
         </button>
         <div class="carousel" aria-label="les medias du photographer">
           <ul class="carousel-container">
           </ul>
         </div>
         <button class="carousel-next" onclick="return next()">
-          <em class="fa-sharp fa-solid fa-chevron-right fa-2xl" title="naviguer vers le media suivant"></em>
+          <em class="fa-sharp fa-solid fa-chevron-right fa-2xl" aria-label="naviguer vers le media suivant"></em>
         </button>
       </div>
     </div>
