@@ -36,10 +36,26 @@ async function displayMedias(photographer) {
   main.appendChild(mediasSection);
 }
 
+async function displayTotalLikesAndPrice(photographer) {
+  const totalLikesAndPriceTag = document.querySelector(".total-likes");
+
+  const totalLikesTag = document.createElement("span");
+  const priceTag = document.createElement("span");
+
+  const photographerModel = photographerFactory(photographer);
+  const totalLikes = await photographerModel.getTotalLikes();
+
+  totalLikesTag.textContent = `${totalLikes} ❤`;
+  priceTag.textContent = `${photographer.price}€/jour`;
+  totalLikesAndPriceTag.appendChild(totalLikesTag);
+  totalLikesAndPriceTag.appendChild(priceTag);
+}
+
 async function init() {
   const photographer = await getPhotographer();
   displayHeaderData(photographer);
   displayMedias(photographer);
+  displayTotalLikesAndPrice(photographer);
 }
 
 init();

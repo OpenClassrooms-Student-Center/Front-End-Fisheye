@@ -22,25 +22,33 @@
           Contactez-moi
         </button>
       </div>
+      <div class="total-likes"></div>
     </main>
     <div id="contact_modal">
       <div class="modal">
-        <header>
-          <h2>Contactez-moi</h2>
+        <header class="header_modal">
           <img src="assets/icons/close.svg" onclick="closeModal()" />
         </header>
         <form>
           <div>
-            <label>Prénom</label>
-            <input />
+            <label for="first-name">Prénom</label>
+            <input type="text" id="first-name" name="first-name" />
+            <label for="last-name">Nom</label>
+            <input type="text" id="last-name" name="last-name" />
+            <label for="email">Email</label>
+            <input type="text" id="email" name="email" />
+            <label for="message">Votre message</label>
+            <textarea type="text" id="message" name="message"></textarea>
           </div>
-          <button class="contact_button">Envoyer</button>
+          <button class="contact_button submit_button">Envoyer</button>
         </form>
       </div>
     </div>
-    <script src="scripts/factories/photographer.js"></script>
-    <script src="scripts/factories/media.js"></script>
+    <div id="light-box-modal"></div>
+    <script src="/scripts/factories/photographer.js"></script>
+    <script src="/scripts/factories/media.js"></script>
     <script src="/scripts/pages/photographer.js"></script>
+    <script src="/scripts/utils/lightBox.js"></script>
     <script src="/scripts/utils/contactForm.js"></script>
   </body>
 </html>
