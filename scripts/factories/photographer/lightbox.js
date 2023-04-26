@@ -44,7 +44,6 @@ function photographerLightboxFactory(media) {
     const { image, title, video } = media;
     const picture = `assets/media/${image}`;
     const srcVideo = `assets/media/${video}`;
-    const carouselContainerElt =  document.querySelector(".carousel-container");
     const itemElt = document.createElement("figure");
     const carousselItemElt = document.createElement("li");
 

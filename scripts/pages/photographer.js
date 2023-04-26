@@ -285,7 +285,7 @@ function likePhotographerMedia(totalLikes, totalLikesElt) {
     const loveElts = document.querySelectorAll(".media i");
     const likesNumberElts = document.querySelectorAll(".media b");
 
-    for (i = 0; i < loveElts.length; i++) {
+    for (let i = 0; i < loveElts.length; i++) {
         const loveElt = loveElts[i];
         const likesNumberElt = likesNumberElts[i];
         let likesNumber = likesNumberElt.textContent;
