@@ -7,7 +7,6 @@
     <link rel="icon" type="image/png" href="./assets/favicon.png">
     <link href="./stylesheets/css/style.css" rel="stylesheet" type="text/css" />
     <link href="https://fonts.googleapis.com/css?family=DM+Sans&display=swap" rel="stylesheet">
-    <script src="https://kit.fontawesome.com/c498a47d8b.js" crossorigin="anonymous"></script>
     <title>Fisheye - photographe </title>
   </head>
   <body>
@@ -18,8 +17,8 @@
     </header>
 
     <main id="main">
-      <div class="photograph-header">
-        <button class="button contact_form contact_button" aria-label="Contact me" onclick="displayModal()">
+      <div id="photographer_header">
+        <button class="button" aria-label="Contact me" onclick="displayModal()">
           Contactez-moi
         </button>
       </div>
@@ -34,11 +33,11 @@
     </main>
 
     <div id="contact_modal">
-			<div class="modal">
-				<header>
+      <div class="modal">
+        <header>
           <h2 id="modal_title"></h2>
           <button class="close_form" name="close form">
-            <img src="assets/icons/close.svg" class="close_form" alt="Close contact form" onclick="closeModal()" tabindex="0" />
+            <img src="assets/icons/close.svg" class="close_form" alt="Close contact form" onclick="closeModal()" />
           </button>
         </header>
 
@@ -59,17 +58,9 @@
 			</div>
 		</div>
 
-    <!-- <div class="corner-insert">
-      <p class="likes-wrapper">
-        <span class="likes"></span>
-        <svg class="likes-icon" width="19" height="19" viewBox="0 0 19 19" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="likes">
-          <path d="M9.5 18.35L8.23125 17.03C3.725 12.36 0.75 9.28 0.75 5.5C0.75 2.42 2.8675 0 5.5625 0C7.085 0 8.54625 0.81 9.5 2.09C10.4537 0.81 11.915 0 13.4375 0C16.1325 0 18.25 2.42 18.25 5.5C18.25 9.28 15.275 12.36 10.7688 17.04L9.5 18.35Z" fill="#000000"/>
-        </svg>
-      </p>
-      <p class="tariff"></p>
-    </div> -->
-
-    <script src="./scripts/pages/photographer.js"></script>
+    <script src="./scripts/factories/photographer_factory.js"></script>
     <script src="./scripts/utils/contactForm.js"></script>
+    <script type="module" src="./scripts/pages/photographer.js"></script>
+    <script src="https://kit.fontawesome.com/c498a47d8b.js" crossorigin="anonymous"></script>
   </body>
-</html>
+  </html>

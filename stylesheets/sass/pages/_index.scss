@@ -11,56 +11,55 @@
   flex-direction: column;
 
   h2 {
-      margin: 15px auto 5px;
-      color: $primary-light;
-      font-weight: 400;
-      font-size: 36px;
+    margin: 15px auto 5px;
+    color: $primary-light;
+    font-weight: 400;
+    font-size: 36px;
   }
-
   img {
-      @include pictureProfil;
-      transition: .2s;
+    @include pictureProfil;
+    transition: .2s;
   }
-
+  .description {
+  text-align: center;
+  }
   .city {
-      color: $primary-dark;
-      font-size: 18px;
+    color: $primary-dark;
+    font-size: 18px;
   }
-
   .price {
-      color: $secondary-dark;
+    color: $secondary-dark;
   }
 }
 
 // Article
 article a:focus-visible {
   outline: none;
-
   & > img {
-      transform: scale(1.2);
-      opacity: 0.85;
-      transition: .2s;
+    transform: scale(1.2);
+    opacity: 0.85;
+    transition: .2s;
   }
 }
 
 // Media query
 @media screen and (max-width: $tablet){
   #photographer_section {
-      grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1fr 1fr;
   }
 }
 @media screen and (max-width: $mobile){
   .header__index{
-      flex-direction: column;
-      margin-top: 20px;
-      h1{
-          margin-right: 0;
-      }
+    flex-direction: column;
+    margin-top: 20px;
+    h1{
+      margin-right: 0;
+    }
   }
   #photographer_section {
-      grid-template-columns: 1fr;
+    grid-template-columns: 1fr;
   }
   #main{
-      margin-bottom: 80px;
+    margin-bottom: 80px;
   }
 }

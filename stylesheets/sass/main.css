@@ -290,12 +290,10 @@ form .formData[data-error-visible=true] input, form .formData[data-error-visible
   height: 200px;
   width: 200px;
   border-radius: 50%;
-  object-fit: cover;
+  -o-object-fit: cover;
+     object-fit: cover;
   box-shadow: 1px 1px 15px rgba(150, 150, 150, 0.5);
   transition: 0.2s;
-}
-#photographer_section article .description, #photographer_section a .description {
-  text-align: center;
 }
 #photographer_section article .city, #photographer_section a .city {
   color: #901C1C;
@@ -334,8 +332,7 @@ article a:focus-visible > img {
     margin-bottom: 80px;
   }
 }
-#photographer_header {
-  display: block;
+.photograph-header {
   background-color: #fafafa;
   height: 300px;
   margin: 0 100px;
@@ -345,7 +342,7 @@ article a:focus-visible > img {
   justify-content: space-between;
   align-items: center;
 }
-#photographer_header h1 {
+.photograph-header h1 {
   font-size: 60px;
   font-weight: 400;
   color: #D3573C;
@@ -353,16 +350,17 @@ article a:focus-visible > img {
   margin: 0 0 20px 0;
   line-height: 0.8;
 }
-#photographer_header .city {
+.photograph-header .city {
   font-size: 22px;
   color: #901C1C;
   margin-bottom: 20px;
 }
-#photographer_header img {
+.photograph-header img {
   height: 200px;
   width: 200px;
   border-radius: 50%;
-  object-fit: cover;
+  -o-object-fit: cover;
+     object-fit: cover;
   box-shadow: 1px 1px 15px rgba(150, 150, 150, 0.5);
   margin-left: 200px;
 }
@@ -475,7 +473,8 @@ article a:focus-visible > img {
   height: 300px;
   width: 100%;
   border-radius: 5px;
-  object-fit: cover;
+  -o-object-fit: cover;
+     object-fit: cover;
   cursor: pointer;
   transition: 0.2s;
 }
@@ -577,6 +576,4 @@ article a:focus-visible > img {
   .lightbox__container img {
     z-index: 2;
   }
-}
-
-/*# sourceMappingURL=style.css.map */
+}/*# sourceMappingURL=main.css.map */
