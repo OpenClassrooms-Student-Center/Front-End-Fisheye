@@ -105,6 +105,43 @@ function insertMediaDOM(media) {
 
 /**
  * 
+ * @param {object} hrElt 
+ * @param {object} photographerMedia 
+ * @param {number} totalLikes 
+ * @param {object} totalLikesElt
+ * @param {string} criteria 
+ */
+function filterMediaByCriteria(hrElt, photographerMedia, totalLikes, totalLikesElt, criteria) {
+    clickFilterHandler(criteria);
+    hrElt.style.display = "none";
+
+    ulMediaElt.innerHTML = "";
+    photographerMedia.forEach(media => {
+        insertMediaDOM(media);
+        likePhotographerMedia(totalLikes, totalLikesElt);
+        totalLikesElt.textContent = totalLikes;
+    });
+}
+
+/**
+ * 
+ * @param {string} filterName 
+ */
+function clickFilterHandler(filterName) {
+    const unclickedFilters = document.querySelectorAll(".dropdown-ul li");
+
+    unclickedFilters.forEach((filter) => {
+        if (filter.textContent === filterName) {
+            filterLabelElt.textContent = filter.textContent;
+            filter.style.display = "none";
+        } else {
+            filter.style.display = "block";
+        }
+    });
+}
+
+/**
+ * 
  * @param {object} photographerPopularMedia 
  * @param {object} totalLikes
  */
@@ -113,29 +150,14 @@ function setPhotographerPopularMedia(photographerPopularMedia, totalLikes, total
     filterLabelElt.textContent = mediaByPopularElt.textContent;
     mediaByPopularElt.style.display = "none";
 
+    const criteria = "Popularité";
     mediaByPopularElt.addEventListener("click", () => {
-        clickFilterHandler("Popularité");
-        hrPopularElt.style.display = "none";
-
-        ulMediaElt.innerHTML = "";
-        photographerPopularMedia.forEach(media => {
-            insertMediaDOM(media);
-            likePhotographerMedia(totalLikes, totalLikesElt);
-            totalLikesElt.textContent = totalLikes;
-        });
+        filterMediaByCriteria(hrPopularElt, photographerPopularMedia, totalLikes, totalLikesElt, criteria);
     });
 
     mediaByPopularElt.addEventListener("keydown", (e) => {
         if (e.key.toLowerCase() === "enter") {
-            clickFilterHandler("Popularité");
-            hrPopularElt.style.display = "none";
-
-            ulMediaElt.innerHTML = "";
-            photographerPopularMedia.forEach(media => {
-                insertMediaDOM(media);
-                likePhotographerMedia(totalLikes, totalLikesElt);
-                totalLikesElt.textContent = totalLikes;
-            });
+            filterMediaByCriteria(hrPopularElt, photographerPopularMedia, totalLikes, totalLikesElt, criteria);
         }
     });
 }
@@ -147,30 +169,15 @@ function setPhotographerPopularMedia(photographerPopularMedia, totalLikes, total
  */
 function setMediaByDateDesc(mediaByDateDesc, totalLikes, totalLikesElt) {
     const hrDateElt = document.querySelector(".dropdown-ul li:nth-child(3)");
-
+    const criteria = "Date";
+    
     mediaDateDescElt.addEventListener("click", () => {
-        clickFilterHandler("Date");
-        hrDateElt.style.display = "none";
-
-        ulMediaElt.innerHTML = "";
-        mediaByDateDesc.forEach(media => {
-            insertMediaDOM(media);
-            likePhotographerMedia(totalLikes, totalLikesElt);
-            totalLikesElt.textContent = totalLikes;
-        });
+        filterMediaByCriteria(hrDateElt, mediaByDateDesc, totalLikes, totalLikesElt, criteria);
     });
 
     mediaDateDescElt.addEventListener("keydown", (e) => {
         if (e.key.toLowerCase() === "enter") {
-            clickFilterHandler("Date");
-            hrDateElt.style.display = "none";
-            ulMediaElt.innerHTML = "";
-
-            mediaByDateDesc.forEach(media => {
-                insertMediaDOM(media);
-                likePhotographerMedia(totalLikes, totalLikesElt);
-                totalLikesElt.textContent = totalLikes;
-            });
+            filterMediaByCriteria(hrDateElt, mediaByDateDesc, totalLikes, totalLikesElt, criteria);
         }
     });
 }
@@ -182,43 +189,15 @@ function setMediaByDateDesc(mediaByDateDesc, totalLikes, totalLikesElt) {
  */
 function setMediaByTitleAsc(mediaByTitleAsc, totalLikes, totalLikesElt) {
     const hrTitleElt = document.querySelector(".dropdown-ul li:nth-child(5)");
+    const criteria = "Titre";
 
     mediaTitleAscElt.addEventListener("click", () => {
-        clickFilterHandler("Titre");
-        hrTitleElt.style.display = "none";
-
-        ulMediaElt.innerHTML = "";
-        mediaByTitleAsc.forEach(media => {
-            insertMediaDOM(media);
-            likePhotographerMedia(totalLikes, totalLikesElt);
-            totalLikesElt.textContent = totalLikes;
-        });
+        filterMediaByCriteria(hrTitleElt, mediaByTitleAsc, totalLikes, totalLikesElt, criteria);
     });
 
     mediaTitleAscElt.addEventListener("keydown", (e) => {
         if (e.key.toLowerCase() === "enter") {
-            clickFilterHandler("Titre");
-            hrTitleElt.style.display = "none";
-            ulMediaElt.innerHTML = "";
-
-            mediaByTitleAsc.forEach(media => {
-                insertMediaDOM(media);
-                likePhotographerMedia(totalLikes, totalLikesElt);
-                totalLikesElt.textContent = totalLikes;
-            });
-        }
-    });
-}
-
-function clickFilterHandler(filterName) {
-    const unclickedFilters = document.querySelectorAll(".dropdown-ul li");
-
-    unclickedFilters.forEach((filter) => {
-        if (filter.textContent === filterName) {
-            filterLabelElt.textContent = filter.textContent;
-            filter.style.display = "none";
-        } else {
-            filter.style.display = "block";
+            filterMediaByCriteria(hrTitleElt, mediaByTitleAsc, totalLikes, totalLikesElt, criteria);
         }
     });
 }
@@ -285,7 +264,7 @@ function likePhotographerMedia(totalLikes, totalLikesElt) {
     const loveElts = document.querySelectorAll(".media i");
     const likesNumberElts = document.querySelectorAll(".media b");
 
-    for (i = 0; i < loveElts.length; i++) {
+    for (let i = 0; i < loveElts.length; i++) {
         const loveElt = loveElts[i];
         const likesNumberElt = likesNumberElts[i];
         let likesNumber = likesNumberElt.textContent;

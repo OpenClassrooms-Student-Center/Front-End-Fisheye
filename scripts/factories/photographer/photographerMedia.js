@@ -11,7 +11,8 @@ function addFigureMedia(figureMediaElt, liMediaElt) {
 
 function addButtonMedia(buttonMediaElt, figureMediaElt) {
     buttonMediaElt.setAttribute("onclick", "openLightboxWithMouse()");
-    buttonMediaElt.setAttribute("aria-hidden","true");
+    buttonMediaElt.setAttribute("class","btn-media");
+    buttonMediaElt.setAttribute("aria-label","cliquez le bouton entrer pour ouvrir le média dans la modale");
     figureMediaElt.appendChild(buttonMediaElt);
 }
 
@@ -74,6 +75,7 @@ function addFigcaptionHeaderMedia(figcaptionHeaderElt, figCaptionMediaElt) {
  */
 function setTitleMedia(title, titleElt, figcaptionHeaderElt) {
     titleElt.textContent = title;
+    titleElt.setAttribute("role","none");
     figcaptionHeaderElt.appendChild(titleElt);
 }
 
@@ -103,10 +105,11 @@ function setLikesMedia(likeElt, figureLikeElt, likes) {
  * @param {object} figureLikeElt 
  * @param {object} iMediaElt 
  */
-function addIconLikeMedia(figureLikeElt, iMediaElt) {
+function addIconLikeMedia(figureLikeElt, iMediaElt, buttonLikeMediaElt) {
+    buttonLikeMediaElt.setAttribute("class","btn-like-media");
+    buttonLikeMediaElt.setAttribute("aria-label","aimer le média");
     iMediaElt.className = "fa-solid fa-heart";
-    iMediaElt.setAttribute("aria-label","liker ou dislaker le média");
-    figureLikeElt.appendChild(iMediaElt);
+    figureLikeElt.appendChild(buttonLikeMediaElt).appendChild(iMediaElt);
 }
 
 /**
@@ -133,6 +136,7 @@ function photographerMediaFactory(media) {
     const likeElt = document.createElement("b");
     const iMediaElt = document.createElement("i");
     const idElt = document.createElement("span");
+    const buttonLikeMediaElt = document.createElement("button");
 
     function getMediaCardDOM() {
         addButtonMedia(buttonMediaElt, figureMediaElt);
@@ -144,7 +148,7 @@ function photographerMediaFactory(media) {
         setTitleMedia(title, titleElt, figcaptionHeaderElt);
         addLikeMedia(figureLikeElt, figCaptionMediaElt);
         setLikesMedia(likeElt, figureLikeElt, likes);
-        addIconLikeMedia(figureLikeElt, iMediaElt);
+        addIconLikeMedia(figureLikeElt, iMediaElt, buttonLikeMediaElt);
 
         return (liMediaElt);
     }

@@ -2,7 +2,7 @@
 
 // DOM elements
 const modalLightboxElt = document.getElementById("lightbox-modal");
-const containerElt = document.querySelector(".carousel-container");
+const carouselContainerElt =  document.querySelector(".carousel-container");
 const slidesToScroll = 1;
 const slidesVisibles = 1;
 let currentItem = 0;
@@ -18,19 +18,21 @@ function openLightboxWithMouse() {
     displayDataLightbox(idClickedMedia);
 }
 
-function closeLightboxWithMouse() {
+function closeLightbox() {
     modalLightboxElt.style.display = "none";
     mainElt.setAttribute("aria-hidden","false");
     modalLightboxElt.setAttribute("aria-hidden","true");
+    carouselContainerElt.innerHTML = "";
 }
 
 // close modal on keydown "echap" keyborad button
 function closeLightboxWithKeyboard() {
     document.addEventListener("keydown", (e) => {
         if (e.key.toLowerCase() === "escape") {
-            closeLightboxWithMouse();
+            closeLightbox();
         }
     });
+    carouselContainerElt.innerHTML = "";
 }
 
 // navigate on lightbox with keyboard arrow keys
@@ -61,8 +63,8 @@ async function displayDataLightbox(idClickedMedia) {
     });
 
     const finalArrPhotographerMedia = photographerMedia.slice(0,sliceEnd);
-    finalArrPhotographerMedia.forEach(media => {
-        photographerLightboxFactory(media);
+    finalArrPhotographerMedia.forEach(clickedMedia => {
+        photographerLightboxFactory(clickedMedia);
     });
 
     setWidthCarouselItem();
@@ -85,7 +87,7 @@ function getKeyClickedMedia(photographerMedia, idClickedMedia) {
 function setWidthCarouselItem() {
     let itemsElt = document.querySelectorAll(".carousel-item");
     let ratio = itemsElt.length / slidesVisibles;
-    containerElt.style.width = (ratio * 100) + "%";
+    carouselContainerElt.style.width = (ratio * 100) + "%";
     itemsElt.forEach(item => item.style.width = ((100 / slidesVisibles) / ratio) + "%");
 }
 
@@ -111,7 +113,7 @@ function scrollToItem(index) {
     }
 
     let translateX = index * -100 / itemsElt.length;
-    containerElt.style.transform = "translate(" + translateX + "%)";
+    carouselContainerElt.style.transform = "translate(" + translateX + "%)";
     currentItem = index;
 }
 
