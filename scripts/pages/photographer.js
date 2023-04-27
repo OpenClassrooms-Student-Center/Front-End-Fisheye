@@ -45,7 +45,7 @@
     const photographerModel = photographerFactory(photographer);
     const photographerHeaderDOM = photographerModel.getPhotographerHeaderDOM();
     photographerHeader.appendChild(photographerHeaderDOM);
-  };
+  }
   
   // medias
   async function displayMedia(media) {
@@ -58,7 +58,7 @@
         mediaContainer.appendChild(mediaDOM);
       });
     }
-  };
+  }
   
   // price per day photographer
   async function displayCounts(photographer) {
@@ -85,7 +85,7 @@
       </div>`;
   
     main.appendChild(countDOM);
-  };
+  }
   
 // Get the select element and add an event listener to it
 const filterSelect = document.querySelector('#filter-select');
