@@ -17,6 +17,7 @@ function photographerFactory(data) {
         const img = document.createElement('img')
         img.setAttribute('src', picture)
         img.title = name
+        img.alt = `Photo de ${name}`
         article.appendChild(img)
         link.appendChild(img) // put <img> into <a>
 
