@@ -1,37 +1,130 @@
 <!DOCTYPE html>
-<html>
+
+<html lang="fr">
   <head>
-    <link href="css/style.css" rel="stylesheet" type="text/css" />
     <meta charset="utf-8">
+    <title>Fisheye - photographe </title>
     <link rel="icon" type="image/png" href="assets/favicon.png">
     <link href="https://fonts.googleapis.com/css?family=DM+Sans&display=swap" rel="stylesheet">
-    <title>Fisheye - photographe </title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer">
+    <link href="https://necolas.github.io/normalize.css/8.0.1/normalize.css" rel="stylesheet">
+    <link href="css/photographer.css" rel="stylesheet" type="text/css" />
   </head>
+
   <body>
-    <header>
-      <img src="assets/images/logo.png" class="logo" />
+    <header role="none">
+      <a href="index.html"><img src="assets/images/logo.png" class="logo" alt="logo de Fisheye - Page photographe"/></a>
     </header>
-    <main id="main">
-      <div class="photograph-header">
-        <button class="contact_button" onclick="displayModal()">Contactez-moi</button>
+
+    <main id="main" aria-hidden="false" role="none">
+      <header 
+      class="photograph-header" 
+      aria-label="cette région contient les informations et contacts du photographe"
+      >
+        <ul>
+        </ul>
+        <button class="contact-button" onclick="displayModal()">Contactez-moi</button>
+      </header>
+
+      <!-- filters -->
+      <section class="filter">
+        <form> 
+          <label for="filter">Trier par</label>
+          <div class="dropdown-wrapper">
+            <input type="checkbox" class="dropdown-chk" id="check1"/>
+            <label for="check1" class="dropdown-label" tabindex="0"></label>
+            <ul class="dropdown-ul" role="listbox">
+              <li aria-hidden="true"><hr></li>
+              <li aria-label="trier les media par populaires" class="popularMedia" role="option" tabindex="0">Popularité</li>
+              <li aria-hidden="true"><hr></li>
+              <li aria-label="trier les media par date" class="mediaDateDesc" role="option" tabindex="0">Date</li>
+              <li aria-hidden="true"><hr></li>
+              <li aria-label="trier les media par titre" class="mediaTitleAsc" role="option" tabindex="0">Titre</li>
+            </ul>
+          </div>
+        </form>
+      </section>
+
+      <!-- media -->
+      <section 
+      class="media">
+        <ul role="none">
+        </ul>
+      </section>
+
+      <!-- price and total likes photographer -->
+      <div 
+      class="price-and-likes" 
+      role="region" 
+      aria-label="cette région nous informe du nombre total des likes et le prix par jour d'un photographer">
+        <div class="total-likes"></div>
       </div>
     </main>
-    <div id="contact_modal">
+
+    <!-- form contact modal -->
+    <div id="contact-modal" 
+    role="dialog" 
+    aria-hidden="true" 
+    aria-describedby="modalTitle">
 			<div class="modal">
-				<header>
-          <h2>Contactez-moi</h2>
-          <img src="assets/icons/close.svg" onclick="closeModal()" />
+				<header role="none">
+          <h2 id="modalTitle">Contactez-moi</h2>
+          <button class="close-contact-modal" role="none">
+            <img src="assets/icons/whiteClose.svg" alt="fermer le formulaire de contact" onclick="closeModal()"/>
+          </button>
         </header>
-				<form>
+				<form method="get">
+          <div>
+            <p></p>
+          </div>
 					<div>
-						<label>Prénom</label>
-						<input />
+						<label for="first">Prénom</label>
+						<input type="text" name="first" id="first" aria-describedby="first-validate"/>
 					</div>
-          <button class="contact_button">Envoyer</button>
+          <div>
+						<label for="last">Nom</label>
+						<input type="text" name="last" id="last" aria-describedby="last-validate"/>
+					</div>
+          <div>
+						<label for="email">Email</label>
+						<input type="email" name="email" id="email" aria-describedby="email-validate"/>
+					</div>
+          <div>
+						<label for="message">Votre message</label>
+						<textarea name="message" id="message" aria-describedby="message-validate"></textarea>
+					</div>
+          <button class="contact-button" onclick="return displayUserDataInConsole()" 
+          aria-label="cliquez sur ce bouton pour envoyer le formulaire de contact">Envoyer</button>
 				</form>
 			</div>
 		</div>
-    <script src="/scripts/pages/photographer.js"></script>
-    <script src="/scripts/utils/contactForm.js"></script>
+
+    <!-- lightbox modal -->
+    <div id="lightbox-modal">
+      <div class="content-modal">
+        <button class="close-lightbox-modal">
+          <img src="assets/icons/brownClose.svg" alt="ferme le carousel des medias du photographe" onclick="closeLightbox()"/>
+        </button>
+        <button class="carousel-prev" onclick="return prev()">
+          <em class="fa-sharp fa-solid fa-chevron-left fa-2xl" aria-label="naviguer vers le media précédant"></em>
+        </button>
+        <div class="carousel" aria-label="les medias du photographer">
+          <ul class="carousel-container">
+          </ul>
+        </div>
+        <button class="carousel-next" onclick="return next()">
+          <em class="fa-sharp fa-solid fa-chevron-right fa-2xl" aria-label="naviguer vers le media suivant"></em>
+        </button>
+      </div>
+    </div>
+
+    <script src="scripts/pages/photographer.js"></script>
+    <script src="scripts/factories/photographer/photographerHeader.js"></script>
+    <script src="scripts/factories/photographer/lightbox.js"></script>
+    <script src="scripts/factories/photographer/photographerMedia.js"></script>
+    <script src="scripts/factories/photographer/priceAndTotalLikes.js"></script>
+    <script src="scripts/utils/contactForm.js"></script>
+    <script src="scripts/utils/lightbox.js"></script>
+    <script src="scripts/utils/filter.js"></script>
   </body>
 </html>
