@@ -258,10 +258,11 @@ async function getPhotographerData() {
 
 /**
  * 
- * @param {number} totalLikes
+ * @param {number} totalLikes 
+ * @param {object} totalLikesElt 
  */
 function likePhotographerMedia(totalLikes, totalLikesElt) {
-    const loveElts = document.querySelectorAll(".media i");
+    const loveElts = document.querySelectorAll(".btn-like-media");
     const likesNumberElts = document.querySelectorAll(".media b");
 
     for (let i = 0; i < loveElts.length; i++) {
@@ -270,8 +271,8 @@ function likePhotographerMedia(totalLikes, totalLikesElt) {
         let likesNumber = likesNumberElt.textContent;
 
         let liked = true;
-        loveElt.addEventListener("click", (event) => {
-
+        // like or dislike media onclick mouse
+        loveElt.addEventListener("click", () => {
             if (liked === true) {
                 likesNumber++;
                 totalLikes++;
@@ -285,7 +286,25 @@ function likePhotographerMedia(totalLikes, totalLikesElt) {
                 totalLikesElt.textContent = totalLikes;
                 liked = true;
             }
-            event.preventDefault();
+        });
+
+        // like or dislike media on keydown enter button keyboard
+        loveElt.addEventListener("keydown", (event) => {
+            if (event.key.toLowerCase() === "enter") {
+                if (liked === true) {
+                    likesNumber++;
+                    totalLikes++;
+                    likesNumberElt.textContent = likesNumber;
+                    totalLikesElt.textContent = totalLikes;
+                    liked = false;
+                } else {
+                    likesNumber--;
+                    totalLikes--;
+                    likesNumberElt.textContent = likesNumber;
+                    totalLikesElt.textContent = totalLikes;
+                    liked = true;
+                }
+            }
         });
     }
 }

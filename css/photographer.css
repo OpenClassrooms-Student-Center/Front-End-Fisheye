@@ -236,6 +236,7 @@ main {
 
 .btn-like-media {
     border: none;
+    padding: 0;
     cursor: pointer;
     background-color: inherit;
 }
