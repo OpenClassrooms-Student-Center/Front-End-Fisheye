@@ -42,10 +42,12 @@ async function displayTotalLikesAndPrice(photographer) {
   const totalLikesTag = document.createElement("span");
   const priceTag = document.createElement("span");
 
+  totalLikesTag.setAttribute("class", "total-likes__likes");
+
   const photographerModel = photographerFactory(photographer);
   const totalLikes = await photographerModel.getTotalLikes();
 
-  totalLikesTag.textContent = `${totalLikes} ❤`;
+  totalLikesTag.textContent = `${totalLikes} ♥`;
   priceTag.textContent = `${photographer.price}€/jour`;
   totalLikesAndPriceTag.appendChild(totalLikesTag);
   totalLikesAndPriceTag.appendChild(priceTag);

@@ -28,7 +28,7 @@ async function buildLightBox(mediaId) {
   const currentMediaTitle = document.createElement("h3");
   const nextButton = document.createElement("img");
   const closeButton = document.createElement("img");
-  
+
   lightBoxContent.classList.add("light-box-content");
   previousButton.classList.add("previous-button");
   currentMediaContainer.classList.add("current-media-container");
@@ -53,10 +53,10 @@ async function buildLightBox(mediaId) {
   lightBoxModal.appendChild(lightBoxContent);
 
   previousButton.addEventListener("click", () => {
-    buildLightBox(media.previousMedia.id)
+    buildLightBox(media.previousMedia.id);
   });
   nextButton.addEventListener("click", () => {
-    buildLightBox(media.nextMedia.id)
+    buildLightBox(media.nextMedia.id);
   });
   closeButton.addEventListener("click", () => {
     closeLightBox();

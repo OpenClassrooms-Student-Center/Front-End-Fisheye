@@ -63,6 +63,7 @@ function photographerFactory(photographer) {
         ? array[index - 1]
         : array[array.length - 1];
       media.nextMedia = array[index + 1] ? array[index + 1] : array[0];
+      media.isLiked = false;
       return media;
     });
     return formattedMedias;
