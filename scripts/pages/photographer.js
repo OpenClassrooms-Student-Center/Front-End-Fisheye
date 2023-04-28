@@ -3,7 +3,7 @@
     const idString = parameters.get('id')
   
     // get photographers data with fetch
-    const photographerData = await fetch('../data/photographers.json')
+    const photographerData = await fetch('./data/photographers.json')
       .then((data) => data.json());
   
     // extract photographer object
