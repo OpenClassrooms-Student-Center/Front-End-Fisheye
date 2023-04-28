@@ -11,7 +11,7 @@ function photographerFactory(data) {
         const link = document.createElement("a")
 		link.href = `./photographer.html?id=${id}&sort=popularity` // set ordering by popularity
         link.title = `Aller vers la page de ${name}`
-		article.append(link);
+		article.append(link); 
 
         //img
         const img = document.createElement('img')
