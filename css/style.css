@@ -18,6 +18,9 @@ h1 {
     color: #901C1C;
     margin-right: 100px;
 }
+h3{
+    color: #D3573C;
+}
 
 .logo {
     height: 50px;
@@ -29,6 +32,7 @@ h1 {
     grid-template-columns: 1fr 1fr 1fr;
     gap: 70px;
     margin-top: 100px;
+    
 }
 
 .photographer_section article {
@@ -41,10 +45,16 @@ h1 {
 
 .photographer_section article h2 {
     color: #D3573C;
-    font-size: 36px;
+    font-size: 26px;
 }
 
 .photographer_section article img {
     height: 200px;
     width: 200px;
+    border-radius: 50%;
+    object-fit: cover;
+   
 }
+
+
+
