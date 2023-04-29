@@ -49,7 +49,7 @@ document.addEventListener('keydown', handleKeyPress);
 const nextButton = document.createElement('button');
 nextButton.className = 'fa fa-chevron-right next-btn';
 nextButton.setAttribute('role', 'button')
-prevButton.setAttribute('aria-label', 'got to next media')
+nextButton.setAttribute('aria-label', 'got to next media')
 nextButton.addEventListener('click', function () {
   showNextMediaItem();
 });
