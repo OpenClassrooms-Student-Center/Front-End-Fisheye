@@ -8,9 +8,9 @@ function mediaFactory(media) {
       const mediaLink = document.createElement('a');
       mediaLink.classList.add('photograph-media-link');
       if (media.video) {
-        mediaLink.href = `./assets/images/${media.photographerId}/${media.video}`;
+        mediaLink.href = `../assets/images/${media.photographerId}/${media.video}`;
       } else {
-        mediaLink.href = `./assets/images/${media.photographerId}/${media.image}`;
+        mediaLink.href = `../assets/images/${media.photographerId}/${media.image}`;
       }
 
       // check if video or img
@@ -19,7 +19,7 @@ function mediaFactory(media) {
       if (media.video) {
         const mediaElement = document.createElement('video');
         mediaElement.classList.add('photograph-media-video');
-        mediaElement.src = `./assets/images/${media.photographerId}/${media.video}`;
+        mediaElement.src = `../assets/images/${media.photographerId}/${media.video}`;
         mediaElement.setAttribute('role', 'img');
         mediaElement.setAttribute('mediaID', `${media.id}`);
 
@@ -42,7 +42,7 @@ function mediaFactory(media) {
 
         // Add a <source> element to the mediaLightboxVideoElement to specify the video file type
         const sourceElement = document.createElement('source');
-        sourceElement.src = `./assets/images/${media.photographerId}/${media.video}`;
+        sourceElement.src = `../assets/images/${media.photographerId}/${media.video}`;
         sourceElement.type = 'video/mp4';
         mediaLightboxVideoElement.appendChild(sourceElement);
 
@@ -55,7 +55,7 @@ function mediaFactory(media) {
       } else {
         const mediaElement = document.createElement('img');
         mediaElement.classList.add('photograph-media-img');
-        mediaElement.src = `./assets/images/${media.photographerId}/${media.image}`;
+        mediaElement.src = `../assets/images/${media.photographerId}/${media.image}`;
         mediaElement.alt = media.title;
         mediaElement.setAttribute('role', 'img');
         mediaElement.setAttribute('mediaID', `${media.id}`)
