@@ -38,6 +38,7 @@ function handleKeyPress(event) {
 
 // add an event listener to the close button
 const closeButton = document.querySelector('.close-btn');
+closeButton.setAttribute('aria-label', 'close')
 if (closeButton) {
   closeButton.addEventListener('click', closeLightbox);
 }
@@ -49,7 +50,7 @@ document.addEventListener('keydown', handleKeyPress);
 const nextButton = document.createElement('button');
 nextButton.className = 'fa fa-chevron-right next-btn';
 nextButton.setAttribute('role', 'button')
-nextButton.setAttribute('aria-label', 'got to next media')
+nextButton.setAttribute('aria-label', 'next media')
 nextButton.addEventListener('click', function () {
   showNextMediaItem();
 });
@@ -57,7 +58,7 @@ nextButton.addEventListener('click', function () {
 const prevButton = document.createElement('button');
 prevButton.className = 'fa fa-chevron-left prev-btn';
 prevButton.setAttribute('role', 'button')
-prevButton.setAttribute('aria-label', 'got to previous media')
+prevButton.setAttribute('aria-label', 'previous media')
 prevButton.addEventListener('click', function () {
   showPrevMediaItem();
 });
