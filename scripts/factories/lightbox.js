@@ -48,12 +48,16 @@ document.addEventListener('keydown', handleKeyPress);
 // add next and previous button functionality
 const nextButton = document.createElement('button');
 nextButton.className = 'fa fa-chevron-right next-btn';
+nextButton.setAttribute('role', 'button')
+prevButton.setAttribute('aria-label', 'got to next media')
 nextButton.addEventListener('click', function () {
   showNextMediaItem();
 });
 
 const prevButton = document.createElement('button');
 prevButton.className = 'fa fa-chevron-left prev-btn';
+prevButton.setAttribute('role', 'button')
+prevButton.setAttribute('aria-label', 'got to previous media')
 prevButton.addEventListener('click', function () {
   showPrevMediaItem();
 });
