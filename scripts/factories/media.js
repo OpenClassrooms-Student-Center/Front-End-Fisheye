@@ -10,11 +10,14 @@ function mediaFactory(media) {
 
     article.setAttribute("class", "media");
     div.setAttribute("class", "media-infos");
+    mediaTag.setAttribute("class", "media-tag");
     mediaTag.setAttribute("id", id);
+    mediaTag.setAttribute("alt", title);
     mediaTag.style.cursor = "pointer";
     h2.textContent = title;
     likesTag.textContent = `${likes} ♡`;
     likesTag.setAttribute("class", "likes");
+    likesTag.style.cursor = "pointer";
 
     mediaTag.addEventListener("click", (event) => {
       displayLightBox(event.target.id);
