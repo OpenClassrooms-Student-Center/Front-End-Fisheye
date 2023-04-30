@@ -1,25 +1,16 @@
 //Mettre le code JavaScript lié à la page photographer.html
 let params = new URL(document.location).searchParams;
 let photographerId = params.get("id");
-console.log(params.get("id"))
 
 async function getData() {
-    // Ceci est un exemple de données pour avoir un affichage de photographes de test dès le démarrage du projet, 
-    // mais il sera à remplacer avec une requête sur le fichier JSON en utilisant "fetch".
-    // fecther les données du JSON
     let reponse = await fetch('data/photographers.json');
     let data = (await reponse).json();
-    // et bien retourner le tableau photographers seulement une fois récupéré
+    // bien retourner les tableaux une fois récupéré
     return data;
 }
 
-async function headerPhotographer(){
-    // recupération des données du photographe dans le tableau
-    const getResponse = await getData();
-    const arrayPhotographer = getResponse.photographers;
-    const arrayMedia = getResponse.media;
-    // trouver le nom du photographe pour les images
-    const foundPhotographer = arrayPhotographer.find(element => element.id == photographerId);
+
+async function headerPhotographer(foundPhotographer){
     // fabrication du header
     //selection Header
     const photographerHeader = document.querySelector('.photograph-header');
@@ -29,55 +20,89 @@ async function headerPhotographer(){
     // créer le contenu du header
     photographerHeader.appendChild(userContentDOM);
     photographerHeader.appendChild(userHeaderDOM);
+}
 
-    // filtrer les image du photographe
-    const media = arrayMedia.filter(m => m.photographerId === parseInt(photographerId));
+async function displayMedia(photo){
     const main = document.querySelector('#main')
     const gallery = document.createElement('div')
     gallery.classList.add('gallery')
-    // initialisaton total de likes 
-    let totalLikes = 0
     // affichage des images et du contenu
-    media.forEach((img) => {
+    photo.forEach((img) => {
         // creer une par une les images
-        const libraryTemplate  = mediaFact(img)
+        const libraryTemplate  = mediaFactory(img)
         const displayImg = libraryTemplate.createMedia()
         gallery.appendChild(displayImg)
         main.appendChild(gallery)
-
-        // calculer le nbr de like
-        totalLikes += img.likes
-
-        return totalLikes
     })
+
+    
+}
+
+async function priceContainer({foundPhotographer, photo}){
     //affichage du Prix et nbr de like du photographe
     const boxPrice = document.createElement('div');
     boxPrice.classList.add('boxPrice-photographer')
     // recuperer le prix 
     const photographPrice = document.createElement('p')
-    photographPrice.textContent = `${foundPhotographer.price}€/jour`
-    // recuperer le nbr de likes
-    const likesContainer = document.createElement('p');
-    likesContainer.classList.add('photographer-likes');
-    likesContainer.textContent = totalLikes;
+    photographPrice.textContent = `${foundPhotographer.price} €/jour`
+
+    // nombre de likes
+    const likeContainer = document.createElement('p');
+    likeContainer.classList.add('photographer-likes');
+    // calcul du nombre total de likes
+     var totalLikes = 0
+    photo.forEach((like) => {
+        totalLikes += like.likes
+    })
+    likeContainer.textContent = totalLikes;
+
     // ajout de l'icone
     const icone = document.createElement('i')
     icone.classList.add('fa-solid', 'fa-heart')
     // ajouter tout ensemble
-    likesContainer.appendChild(icone)
-    boxPrice.appendChild(likesContainer)
+    likeContainer.appendChild(icone)
+    boxPrice.appendChild(likeContainer)
     boxPrice.appendChild(photographPrice)
     main.appendChild(boxPrice)
+
+    // Ecouter les boutons et les transformer d'une nodeList a un tableau 
+    const selectionButton = document.querySelectorAll('.like-button')
+    const buttonisNotLiked = Array.from(selectionButton)
+    //  Aller chercher les elemnts contenant le nbr de likes et les transformer d'une nodeList a un tableau
+    const LikesImg = document.querySelectorAll('.nbr_of_likes')
+    const nbrlike = Array.from(LikesImg)
+    // mapper le tableau pour n'afficher que les chiffres des elements avec parseInt()
+    let nbrLikesImg = nbrlike.map(element => parseInt(element.textContent))
+
+
+    // ajouter une boucle pour permettre de faire un like au clic et retrait d'un like au reclic
+    buttonisNotLiked.forEach( (buttons, i) => {
+        buttons.addEventListener('click', function(){            
+            if(this.classList.contains('--liked')){
+                this.classList.remove('--liked')
+                nbrLikesImg[i]--
+                totalLikes--
+                likeContainer.innerHTML = totalLikes
+                nbrlike[i].innerHTML = nbrLikesImg[i]
+            }else{
+                this.classList.toggle('--liked')
+                nbrLikesImg[i]++
+                totalLikes++
+                likeContainer.innerHTML = totalLikes
+                nbrlike[i].innerHTML = nbrLikesImg[i]                
+            }
+        })
+    });
 }
 
-
-
-
-async function init(){
+async function initPhotographer(){
     const { photographers, media } = await getData();
-    headerPhotographer(photographers, media);
-
+    // trouver le nom du photographe pour les images
+    const foundPhotographer = photographers.find(element => element.id == photographerId);
+    // filtrer les image du photographe
+    const photo = media.filter(m => m.photographerId === parseInt(photographerId));
+    headerPhotographer(foundPhotographer);
+    displayMedia(photo);
+    priceContainer({foundPhotographer, photo});
 }
-init();
-
-
+initPhotographer();
