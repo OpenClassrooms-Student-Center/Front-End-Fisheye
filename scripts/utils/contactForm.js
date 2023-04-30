@@ -1,3 +1,11 @@
+const contactForm = {
+  firstName: document.getElementById("first-name"),
+  lastName: document.getElementById("last-name"),
+  email: document.getElementById("email"),
+  message: document.getElementById("message"),
+  submitBtn: document.querySelector(".submit_button"),
+};
+
 async function getPhotographer() {
   const response = await fetch("data/photographers.json");
   const data = await response.json();
@@ -13,23 +21,22 @@ async function displayModal() {
   const headerModal = document.querySelector(".header_modal");
   const modalTitle = document.createElement("h2");
 
+  modalTitle.classList.add("modal_title");
   modalTitle.innerHTML = `Contactez-moi<br> ${photographer.name}`;
   modalTitle.style.textAlign = "left";
   headerModal.prepend(modalTitle);
+
   modal.style.display = "flex";
 }
 
 function closeModal() {
   const modal = document.getElementById("contact_modal");
+  const modalTitle = document.querySelector(".modal_title");
+
+  modalTitle.remove();
+
   modal.style.display = "none";
 }
-
-const contactForm = {
-  firstName: document.getElementById("first-name"),
-  lastName: document.getElementById("last-name"),
-  email: document.getElementById("email"),
-  message: document.getElementById("message"),
-};
 
 function checkForm() {}
 
@@ -49,8 +56,7 @@ function submitForm() {
   console.log("Form submitted", form);
 }
 
-const contact_button = document.querySelector(".submit_button");
-contact_button.addEventListener("click", (event) => {
+contactForm.submitBtn.addEventListener("click", (event) => {
   event.preventDefault();
   submitForm();
   resetForm();

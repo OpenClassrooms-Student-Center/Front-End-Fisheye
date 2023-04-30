@@ -58,14 +58,7 @@ function photographerFactory(photographer) {
     const data = await response.json();
     const medias = data.media;
     const filteredMedias = medias.filter((media) => media.photographerId == id);
-    const formattedMedias = filteredMedias.map((media, index, array) => {
-      media.previousMedia = array[index - 1]
-        ? array[index - 1]
-        : array[array.length - 1];
-      media.nextMedia = array[index + 1] ? array[index + 1] : array[0];
-      return media;
-    });
-    return formattedMedias;
+    return filteredMedias;
   }
 
   async function getTotalLikes() {

@@ -7,12 +7,9 @@ async function getPhotographer() {
   return photographers.find((photographer) => photographer.id == id);
 }
 
-function displayMediasSortByDate(medias) {
+function displaySortedMedias(sortedMedias) {
   const mediasSection = document.querySelector(".medias");
   mediasSection.innerHTML = "";
-
-  const sortedMedias = medias.sort((a, b) => new Date(b.date) - new Date(a.date));
-
   sortedMedias.forEach((media) => {
     const mediaModel = mediaFactory(media);
     const mediaCard = mediaModel.getMediaCard();
@@ -20,63 +17,46 @@ function displayMediasSortByDate(medias) {
   });
 }
 
-function displayMediasSortByPopularity(medias) {
-  const mediasSection = document.querySelector(".medias");
-  mediasSection.innerHTML = "";
-
-  const sortedMedias = medias.sort((a, b) => b.likes - a.likes);
-
-  sortedMedias.forEach((media) => {
-    const mediaModel = mediaFactory(media);
-    const mediaCard = mediaModel.getMediaCard();
-    mediasSection.appendChild(mediaCard);
-  });
+function displayFilteredMedias(filter, medias) {
+  if (filter === "Popularité") {
+    const sortedMedias = medias.sort((a, b) => b.likes - a.likes);
+    displaySortedMedias(sortedMedias);
+  }
+  if (filter === "Titre") {
+    const sortedMedias = medias.sort((a, b) => a.title.localeCompare(b.title));
+    displaySortedMedias(sortedMedias);
+  }
+  if (filter === "Date") {
+    const sortedMedias = medias.sort(
+      (a, b) => new Date(b.date) - new Date(a.date)
+    );
+    displaySortedMedias(sortedMedias);
+  }
 }
 
-function displayMediasSortByTitle(medias) {
-  const mediasSection = document.querySelector(".medias");
-  mediasSection.innerHTML = "";
-  const sortedMedias = medias.sort((a, b) => a.title.localeCompare(b.title));
-  
-  sortedMedias.forEach((media) => {
-    const mediaModel = mediaFactory(media);
-    const mediaCard = mediaModel.getMediaCard();
-    mediasSection.appendChild(mediaCard);
-  });
-}
-
-async function initFilters() {
+async function init() {
   const photographer = await getPhotographer();
   const photographerModel = photographerFactory(photographer);
   const medias = await photographerModel.getMedias();
 
   const filtersTag = document.querySelector("#filters");
-const filtersDropdown = document.querySelector(".filters-options");
+  const filtersDropdown = document.querySelector(".filters-options");
   filtersTag.addEventListener("click", () => {
     filtersDropdown.classList.toggle("display-options");
     filtersTag.classList.toggle("hide-border-radius");
   });
 
   const filtersOptions = document.querySelectorAll(".filters-options");
-  let selectedFilter;
 
   filtersOptions.forEach((option) => {
     option.addEventListener("click", (event) => {
-      selectedFilter = event.target.innerText;
-      if(selectedFilter === "Popularité") {
-        displayMediasSortByPopularity(medias);
-      }
-      if(selectedFilter === "Titre") {
-        displayMediasSortByTitle(medias);
-      }
-      if(selectedFilter === "Date") {
-        displayMediasSortByDate(medias);
-      }
+      const filter = event.target.innerText;
+      displayFilteredMedias(filter, medias);
       filtersDropdown.classList.toggle("display-options");
       filtersTag.classList.toggle("hide-border-radius");
-      filtersTag.innerText = event.target.innerText;
+      filtersTag.innerText = filter;
     });
   });
 }
 
-initFilters();
+init();
