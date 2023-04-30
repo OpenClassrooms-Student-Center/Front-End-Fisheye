@@ -148,3 +148,8 @@ form input {
     border-radius: 5px;
     font-size: 20px;
 }
+
+.like__container{
+    display: flex;
+    flex-direction: row;
+}
