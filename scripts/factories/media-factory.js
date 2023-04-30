@@ -1,24 +1,4 @@
-// function mediaFactory(mediaData){
-//     const { name, photographerId, title, image, likes} = mediaData; 
-
-//     const pictureMedia = `assets/photographers/Sample_Photos/${name}/${image}`;
-
-//     function showImage(){
-//         const mediatheque = document.createElement('img');
-//         mediatheque.setAttribute("src", pictureMedia);
-
-//         const mediaName = document.createElement('p');
-//         mediaName.textContent = title;
-
-//         const mediaLikes = document.createElement('p');
-//         mediaLikes.textContent = likes;
-        
-//     }
-//     return {photographerId, pictureMedia, name, showImage};
-// }
-
-
-function mediaFact(dataMedia){
+function mediaFactory(dataMedia){
     const {likes, title, image, video, photographerId, price} = dataMedia;
     // cette fonction c'est juste un pattern pour creer
     // une image avec les likes et le titre
@@ -40,24 +20,30 @@ function mediaFact(dataMedia){
         //afficher le content de l'image
         const imgContent = document.createElement('div')
         imgContent.classList.add('img-content')
-        //une ligne qui va chercher le nombre de likes dans le json
-        const nbrOfLikes = document.createElement('p');
-        nbrOfLikes.textContent = likes;
-        // ajout de l'icone
-        const icone = document.createElement('i')
-        icone.classList.add('fa-solid', 'fa-heart')
         //une ligne qui va chercher le titre dans le json
         const imgTitle = document.createElement('p');
         imgTitle.textContent = title;
+        // creation du bouton contenant le nbr de like et le bouton coeur
+        const likeButton = document.createElement('button');
+        likeButton.classList.add('like-button');
+        //une ligne qui va chercher le nombre de likes dans le json
+        const nbrOfLikes = document.createElement('p');
+        nbrOfLikes.classList.add('nbr_of_likes');
+        nbrOfLikes.textContent = likes;
+        // creation de l'icone
+        const icone = document.createElement('i');
+        icone.classList.add('fa-solid', 'fa-heart');
 
-        boxMedia.appendChild(mediaPhotograph)
         imgContent.appendChild(imgTitle)
-        imgContent.appendChild(nbrOfLikes)
-        nbrOfLikes.appendChild(icone)
+        imgContent.appendChild(likeButton)
+        likeButton.appendChild(nbrOfLikes)
+        likeButton.appendChild(icone)
+        boxMedia.appendChild(mediaPhotograph)
         boxMedia.appendChild(imgContent)
 
         //et on retourne la div
         return boxMedia
     }
+
     return {picture , video, createMedia}
 }
