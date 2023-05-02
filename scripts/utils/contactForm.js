@@ -1,8 +1,29 @@
 const contactForm = {
-  firstName: document.getElementById("first-name"),
-  lastName: document.getElementById("last-name"),
-  email: document.getElementById("email"),
-  message: document.getElementById("message"),
+  firstName: {
+    element: document.getElementById("first-name"),
+    test: () => document.getElementById("first-name").value.length >= 2,
+    errorMessage:
+      "Veuillez entrer au moins 2 caractères (uniquement des lettres).",
+  },
+  lastName: {
+    element: document.getElementById("last-name"),
+    test: () => document.getElementById("last-name").value.length >= 2,
+    errorMessage:
+      "Veuillez entrer au moins 2 caractères (uniquement des lettres).",
+  },
+  email: {
+    element: document.getElementById("email"),
+    test: () =>
+      /^[^\s@]+@[^\s@]+\.[^\s@]+$/g.test(
+        document.getElementById("email").value
+      ),
+    errorMessage: "Veuillez entrer une adresse email valide.",
+  },
+  message: {
+    element: document.getElementById("message"),
+    test: () => document.getElementById("message").value.length >= 10,
+    errorMessage: "Veuillez entrer au moins 10 caractères.",
+  },
   submitBtn: document.querySelector(".submit_button"),
 };
 
@@ -23,7 +44,6 @@ async function displayModal() {
 
   modalTitle.classList.add("modal_title");
   modalTitle.innerHTML = `Contactez-moi<br> ${photographer.name}`;
-  modalTitle.style.textAlign = "left";
   headerModal.prepend(modalTitle);
 
   modal.style.display = "flex";
@@ -31,18 +51,42 @@ async function displayModal() {
 
 function closeModal() {
   const modal = document.getElementById("contact_modal");
+  const modalContent = document.querySelector(".modal");
   const modalTitle = document.querySelector(".modal_title");
+  const confirmationModal = document.querySelector(".submit-confirmation");
 
   modalTitle.remove();
 
   modal.style.display = "none";
+  modalContent.style.display = "flex";
+  confirmationModal.style.display = "none";
 }
 
-function checkForm() {}
+function checkForm() {
+  let isValid = true;
+  Object.keys(contactForm).forEach((key) => {
+    if (key !== "submitBtn") {
+      if (!contactForm[key].test()) {
+        contactForm[key].element.setAttribute(
+          "placeholder",
+          `${contactForm[key].errorMessage}`
+        );
+        contactForm[key].element.style.border = "1px solid red";
+        isValid = false;
+      } else {
+        contactForm[key].element.setAttribute("placeholder", "");
+        contactForm[key].element.style.border = "1px solid #fff";
+      }
+    }
+  });
+  return isValid;
+}
 
 function resetForm() {
   Object.keys(contactForm).forEach((key) => {
-    contactForm[key].value = "";
+    if (key !== "submitBtn") {
+      contactForm[key].element.value = "";
+    }
   });
 }
 
@@ -58,6 +102,11 @@ function submitForm() {
 
 contactForm.submitBtn.addEventListener("click", (event) => {
   event.preventDefault();
+  if (!checkForm()) {
+    return console.log("Form not submitted");
+  }
   submitForm();
   resetForm();
+  document.querySelector(".modal").style.display = "none";
+  document.querySelector(".submit-confirmation").style.display = "flex";
 });

@@ -18,20 +18,17 @@ function displaySortedMedias(sortedMedias) {
 }
 
 function displayFilteredMedias(filter, medias) {
+  let sortedMedias;
   if (filter === "Popularité") {
-    const sortedMedias = medias.sort((a, b) => b.likes - a.likes);
-    displaySortedMedias(sortedMedias);
+    sortedMedias = medias.sort((a, b) => b.likes - a.likes);
   }
   if (filter === "Titre") {
-    const sortedMedias = medias.sort((a, b) => a.title.localeCompare(b.title));
-    displaySortedMedias(sortedMedias);
+    sortedMedias = medias.sort((a, b) => a.title.localeCompare(b.title));
   }
   if (filter === "Date") {
-    const sortedMedias = medias.sort(
-      (a, b) => new Date(b.date) - new Date(a.date)
-    );
-    displaySortedMedias(sortedMedias);
+    sortedMedias = medias.sort((a, b) => new Date(b.date) - new Date(a.date));
   }
+  return displaySortedMedias(sortedMedias);
 }
 
 async function init() {
@@ -41,6 +38,7 @@ async function init() {
 
   const filtersTag = document.querySelector("#filters");
   const filtersDropdown = document.querySelector(".filters-options");
+
   filtersTag.addEventListener("click", () => {
     filtersDropdown.classList.toggle("display-options");
     filtersTag.classList.toggle("hide-border-radius");
