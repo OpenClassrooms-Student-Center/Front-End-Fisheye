@@ -101,9 +101,6 @@ function addLikes(media, likesNumber) {
 }
 
 
-// Lightbox factory function
-
-
 function lightboxFactory(mediaContainer) {
 
 	const lightbox = document.getElementById("lightbox");
@@ -146,26 +143,29 @@ function closeLightBox() {
 	lightbox.classList.remove("active");
 }
 
+// Get current media index
+
+
+//const currentIndex = medias.findIndex(media => [media.querySelector("img"), media.querySelector("video")].includes(currentMedia));
+//if (currentIndex == 0) {
+//	iconPrev.style.color = "white";
+//}
+
 
 // Next lightbox
-
 
 const iconNext = document.querySelector(".next");
 iconNext.addEventListener("click", () => nextLightbox(currentMedia));
 
-function nextLightbox(currentMedia) {
-	console.log(currentMedia);
-	const currentIndex = medias.findIndex( media => currentMedia === media.querySelector("img") || media.querySelector("video"));
-	console.log(currentIndex);
+function nextLightbox() {
+	const currentIndex = medias.findIndex(media => [media.querySelector("img"), media.querySelector("video")].includes(currentMedia));
 	const nextIndex = currentIndex + 1 ;
-	console.log(nextIndex);
+
 	if (nextIndex === medias.length) {
 		return;
 	}
 
 	const nextMedia = medias[nextIndex];
-	console.log(nextMedia);
-
 	lightboxFactory(nextMedia);
 }
 
@@ -176,10 +176,13 @@ function nextLightbox(currentMedia) {
 const iconPrev = document.querySelector(".prev");
 iconPrev.addEventListener("click", () => prevLightbox(currentMedia));
 
-async function prevLightbox(currentMedia) {
-	const currentIndex = medias.findIndex( media => currentMedia === media.querySelector("img") || media.querySelector("video"));
+async function prevLightbox() {
+	const currentIndex = medias.findIndex(media => [media.querySelector("img"), media.querySelector("video")].includes(currentMedia));
 	const prevIndex = currentIndex - 1 ;
 	if (prevIndex === -1) {
+
+		//iconPrev.style.color = "white";
+
 		return; 
 	}
 	const nextMedia = medias[prevIndex];
