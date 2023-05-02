@@ -1,7 +1,11 @@
 // le code JavaScript lié à la page photographer.html
-import { getPhotographers } from "./index.js";
-import { mediaFactory } from "../factories/media.js";
-import {photographHeaderFactory , photographerFooterFactory} from "../factories/photographer-info.js";
+async function getPhotographers() {
+	// Récupèrer les données du fichier JSON
+	const reponse = await fetch("data/photographers.json");
+	const photographers = await reponse.json();
+
+	return photographers;
+}
 
 const url = document.location.href;
 const urlId = new URL(url);
@@ -53,4 +57,7 @@ async function init() {
 
 }   
 
-await init();
+window.onload = function()
+{
+	init();
+};

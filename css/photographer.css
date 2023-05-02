@@ -2,6 +2,9 @@ main {
     max-width: 1400px;
     margin: auto;
 }
+
+/* Header */
+
 .photograph-header {
     background-color: #FAFAFA;
     height: 300px;
@@ -57,6 +60,8 @@ main {
     cursor: pointer;
 }
 
+/* Media */
+
 .media-container {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -77,10 +82,16 @@ main {
     width: 100%;
     object-fit: cover;
 }
+.media_video {
+    max-width: 360px;
+    height: 300px;
+    margin: 0;
+    cursor: pointer;
+}
 .media_video video {
 	width: 100%;
-	height: auto;
-    padding: auto;
+    height: 100%;
+    object-fit: cover;
 }
 .media_info {
     display: flex;
@@ -94,12 +105,15 @@ main {
     display: inline-block;
     font-size: 24px;
     overflow: hidden;
+    white-space: nowrap;
     text-overflow: ellipsis;
 }
 .media_likes {
     display: inline-block;
     white-space: nowrap;
 }
+
+/* Contact form */
 
 #contact_modal {
     display: none;
@@ -168,6 +182,17 @@ form input {
     border: none;
     border-radius: 5px;
 }
+textarea {
+    width: 100%;
+    border: none;
+    border-radius: 5px;
+    margin: 1px;
+    font-size: 20px;
+    height: 150px;
+}
+
+/* Likes and Price */
+
 .footer {
     height: 100px;
 }
@@ -193,6 +218,8 @@ p {
     cursor: pointer;
 }
 
+/* Lightbox */
+
 #lightbox {
     position: fixed;
     z-index: 1000;
@@ -202,32 +229,67 @@ p {
     background-color: #C4C4C466;
     display: none;
 }
-#lightbox div {
-    background-color: white;
-    width: 85%;
-    height: 95%;
-    margin: 1% auto;
-    position: relative;
-    max-width: 1400px;
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
-}
-.new_media { 
-    max-width: 80%;
-    max-height: 80%;
-}
-.new_media_title {
-    font-size: 24px;
-    color: #911C1C;
-    padding: 10px;
-}
-.closeLightBox {
-    width: 35px;
-    background-color: #901C1C;
-}
 #lightbox.active {
     display: flex;
     justify-content: center;
     align-items: center;
 }
+.lightbox-container {
+    background-color: white;
+    width: auto;
+    max-width: 80%;
+    height: 90%;
+    position: relative;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.lightbox-media {
+    display: flex;
+    justify-content: space-around;
+    flex-direction: row;
+    max-height: 100%;
+}
+.lightbox-media .prev,
+.lightbox-media .next {
+  font-size: 36px;
+  color: #911C1C;
+  cursor: pointer;
+  align-self: center;
+  margin: 35px;
+}
+
+.lightbox-media .lightbox-image{
+    display: flex;
+    flex-direction: column;
+    max-height: 80%;
+    max-width: 100%;
+    margin-top: 57px;
+}
+.lightbox-image img { 
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+    
+}
+.lightbox-image video { 
+    max-width: 100%;
+    max-height: 100%;
+}
+.new_media_title {
+    font-size: 24px;
+    color: #911C1C;
+    float: left;
+    padding: 10px;
+}
+.lightbox-close img {
+    position: absolute;
+    width: 30px;
+    right: 2%;
+    top: 2%;
+    cursor: pointer;
+    margin: 25px;
+}
+

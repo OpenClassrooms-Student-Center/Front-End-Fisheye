@@ -1,4 +1,4 @@
-export function photographHeaderFactory(photographer) {
+function photographHeaderFactory(photographer) {
 
 	const { name, portrait, city, country, tagline } = photographer;
 	const picture = `assets/photographers/${portrait}`;
@@ -24,7 +24,7 @@ export function photographHeaderFactory(photographer) {
 	return {div, img};
 }
 
-export function photographerFooterFactory(totalLikes, photographer) {
+function photographerFooterFactory(totalLikes, photographer) {
 
 	const footerInfo = document.querySelector(".footer-info");
 
