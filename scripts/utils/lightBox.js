@@ -8,19 +8,21 @@ function formatMedias() {
         : array[array.length - 1];
       const nextMedia = array[index + 1] ? array[index + 1] : array[0];
 
+      const src =
+        mediaTag.nodeName === "IMG"
+          ? mediaTag.getAttribute("src")
+          : mediaTag.firstChild.getAttribute("src");
+
       return {
         id: mediaTag.getAttribute("id"),
+        type: mediaTag.nodeName,
         title: mediaTag.getAttribute("alt"),
-        url: mediaTag.getAttribute("src"),
+        url: src,
         previousMedia: {
           id: previousMedia.getAttribute("id"),
-          title: previousMedia.getAttribute("alt"),
-          url: previousMedia.getAttribute("src"),
         },
         nextMedia: {
           id: nextMedia.getAttribute("id"),
-          title: nextMedia.getAttribute("alt"),
-          url: nextMedia.getAttribute("src"),
         },
       };
     }
@@ -51,7 +53,7 @@ async function buildLightBox(mediaId) {
   const lightBoxContent = document.createElement("div");
   const previousButton = document.createElement("img");
   const currentMediaContainer = document.createElement("div");
-  const currentMediaTag = document.createElement("img");
+  let currentMediaTag = document.createElement("img");
   const currentMediaTitle = document.createElement("h3");
   const nextButton = document.createElement("img");
   const closeButton = document.createElement("img");
@@ -64,10 +66,19 @@ async function buildLightBox(mediaId) {
   nextButton.classList.add("next-button");
   closeButton.classList.add("close-light-box-button");
 
-  previousButton.src = "assets/icons/arrow-left.svg";
   currentMediaTag.src = `${currentMedia.url}`;
+  previousButton.src = "assets/icons/arrow-left.svg";
   nextButton.src = "assets/icons/arrow-right.svg";
   closeButton.src = "assets/icons/close-red.svg";
+
+  if (currentMedia.type === "VIDEO") {
+    const source = document.createElement("source");
+    source.setAttribute("src", `${currentMedia.url}`);
+
+    currentMediaTag = document.createElement("video");
+    currentMediaTag.controls = true;
+    currentMediaTag.appendChild(source);
+  }
 
   currentMediaTitle.textContent = currentMedia.title;
 

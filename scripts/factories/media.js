@@ -3,25 +3,17 @@ function mediaFactory(media) {
 
   function getMediaCard() {
     const article = document.createElement("article");
-    const div = document.createElement("div");
+    const mediaInfos = document.createElement("div");
     let mediaTag = document.createElement("img");
     const h2 = document.createElement("h2");
     const likesTag = document.createElement("span");
 
     article.setAttribute("class", "media");
-    div.setAttribute("class", "media-infos");
-    mediaTag.setAttribute("class", "media-tag");
-    mediaTag.setAttribute("id", id);
-    mediaTag.setAttribute("alt", title);
-    mediaTag.style.cursor = "pointer";
+    mediaInfos.setAttribute("class", "media-infos");
     h2.textContent = title;
     likesTag.textContent = `${likes} ♡`;
     likesTag.setAttribute("class", "likes");
     likesTag.style.cursor = "pointer";
-
-    mediaTag.addEventListener("click", (event) => {
-      displayLightBox(event.target.id);
-    });
 
     likesTag.addEventListener("click", () => {
       const totalLikesTag = document.querySelector(".total-likes__likes");
@@ -47,18 +39,26 @@ function mediaFactory(media) {
       article.appendChild(mediaTag);
     } else {
       mediaTag = document.createElement("video");
-      mediaTag.controls = true;
       const source = document.createElement("source");
       source.setAttribute(
         "src",
         `assets/images/medias/${photographerId}/${video}`
       );
       mediaTag.appendChild(source);
-      article.appendChild(mediaTag);
     }
-    article.appendChild(div);
-    div.appendChild(h2);
-    div.appendChild(likesTag);
+
+    mediaTag.setAttribute("class", "media-tag");
+    mediaTag.setAttribute("id", id);
+    mediaTag.setAttribute("alt", title);
+    mediaTag.style.cursor = "pointer";
+    mediaTag.addEventListener("click", (event) => {
+      displayLightBox(event.target.id);
+    });
+
+    mediaInfos.appendChild(h2);
+    mediaInfos.appendChild(likesTag);
+    article.appendChild(mediaTag);
+    article.appendChild(mediaInfos);
 
     return article;
   }
