@@ -189,20 +189,21 @@
 }
 
 .modal {
-  border-radius: 5px;
-  background-color: #db8876;
-  width: 50%;
   display: flex;
   flex-direction: column;
-  align-items: center;
   justify-content: space-between;
-  padding: 35px;
+  align-items: center;
+  width: 670px;
   margin: auto;
-  opacity: 1 !important;
+  padding: 35px;
+  border-radius: 5px;
+  background-color: #db8876;
+  filter: drop-shadow(-5px 10px 30px rgba(0, 0, 0, 0.25));
 }
 
 .modal header {
   justify-content: space-between;
+  align-items: flex-start;
   width: 100%;
 }
 
@@ -211,9 +212,10 @@
 }
 
 .modal header h2 {
+  margin: 0;
   font-size: 64px;
   font-weight: normal;
-  text-align: center;
+  line-height: 1;
 }
 
 form {
@@ -221,6 +223,7 @@ form {
   width: 100%;
   flex-direction: column;
   align-items: flex-start;
+  margin-top: 60px;
 }
 
 form label {
@@ -238,10 +241,39 @@ form div {
 
 form input,
 form textarea {
+  box-sizing: border-box;
   width: 100%;
   height: 68px;
-  border: none;
+  padding: 16px 24px;
+  border: 1px solid #fff;
   border-radius: 5px;
+}
+
+#message {
+  height: 170px;
+}
+
+.submit-confirmation {
+  position: absolute;
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 500px;
+  height: 300px;
+  font-size: 24px;
+  color: #fff;
+  background-color: #3bc14a;
+  border-radius: 5px;
+}
+
+.submit-confirmation button {
+  padding: 12px 24px;
+  color: #312e2e;
+  border: 2px solid #fff;
+  border-radius: 5px;
+  background-color: #fff;
+  cursor: pointer;
 }
 
 #light-box-modal {

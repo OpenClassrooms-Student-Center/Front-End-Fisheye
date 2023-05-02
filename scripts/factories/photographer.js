@@ -41,8 +41,8 @@ function photographerFactory(photographer) {
     const h1 = document.createElement("h1");
 
     infos.setAttribute("class", "photographer-infos");
-    h1.textContent = name;
     h1.setAttribute("class", "photographer-heading");
+    h1.textContent = name;
 
     infos.appendChild(h1);
     infos.appendChild(locationTag);
