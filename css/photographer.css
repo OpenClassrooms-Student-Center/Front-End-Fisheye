@@ -312,7 +312,8 @@ form textarea {
   align-self: flex-start;
 }
 
-.current-media-container img {
+.current-media-container img,
+.current-media-container video {
   width: 950px;
   height: 800px;
   object-fit: cover;
