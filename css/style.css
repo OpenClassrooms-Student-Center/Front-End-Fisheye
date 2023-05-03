@@ -1,5 +1,9 @@
 @import url("photographer.css");
 
+* {
+    font-weight: bold;
+}
+
 body {
     font-family: "DM Sans", sans-serif;
     margin: 0;
@@ -42,9 +46,30 @@ h1 {
 .photographer_section article h2 {
     color: #D3573C;
     font-size: 36px;
+    margin-bottom: 0;
 }
 
 .photographer_section article img {
     height: 200px;
     width: 200px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.photographer_section article p {
+    margin: 8px 0 0 0;
+}
+
+.photographer_section article a {
+    text-decoration: none;
+    text-align: center;
+}
+
+.ville{
+    color: #901C1C;
+}
+
+
+.price {
+    color: grey;
 }
