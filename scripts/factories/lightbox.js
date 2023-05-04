@@ -2,12 +2,14 @@
 function openLightbox() {
   // display the lightbox with the clicked image
   document.querySelector('.lightbox').style.display = 'block';
+  document.querySelector('.lightbox').setAttribute('aria-hidden', 'false');
 }
 
 // CLOSE
 function closeLightbox() {
   // hide the lightbox
   document.querySelector('.lightbox').style.display = "none";
+  document.querySelector('.lightbox').setAttribute('aria-hidden', 'true');
 
   // reset the video element to stop playback
   const video = document.querySelector('.photograph-media-video');
