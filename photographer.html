@@ -1,37 +1,137 @@
 <!DOCTYPE html>
-<html>
+<html lang="fr">
   <head>
     <link href="css/style.css" rel="stylesheet" type="text/css" />
-    <meta charset="utf-8">
-    <link rel="icon" type="image/png" href="assets/favicon.png">
-    <link href="https://fonts.googleapis.com/css?family=DM+Sans&display=swap" rel="stylesheet">
-    <title>Fisheye - photographe </title>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/png" href="assets/favicon.png" />
+    <link
+      href="https://fonts.googleapis.com/css?family=DM+Sans&display=swap"
+      rel="stylesheet"
+    />
+    <script
+      src="https://kit.fontawesome.com/d663a427cf.js"
+      crossorigin="anonymous"
+    ></script>
+    <title>Fisheye - photographe</title>
   </head>
-  <body>
+  <body id="body">
     <header>
-      <img src="assets/images/logo.png" class="logo" />
+      <a href="index.html" tabindex="0">
+        <img
+          src="assets/images/logo.png"
+          class="logo"
+          alt="Fisheye Home page"
+        />
+      </a>
     </header>
-    <main id="main">
-      <div class="photograph-header">
-        <button class="contact_button" onclick="displayModal()">Contactez-moi</button>
+
+    <main id="main" aria-hidden="false">
+      <!--ENCART TOTAL LIKES et PRIX-->
+      <div class="photogLikesAndPrices" aria-label="likes and price">
+        <div class="likesBox">
+          <p class="likesSum"></p>
+          <i class="fa-solid fa-heart"></i>
+        </div>
+        <p class="askingPrice"></p>
       </div>
+
+      <!--SECTION PRESENTATION DU PHOTOGRAPHE-->
+      <section class="photograph-header">
+        <article class="photographer_intro">
+          <h1 class="fullname"></h1>
+          <p class="location"></p>
+          <p class="quote"></p>
+        </article>
+
+        <!-- BOUTON POUR OUVRIR LA MODALE DU FORMULAIRE -->
+        <button
+          id="contactBtn"
+          class="contact_button"
+          onclick="displayModal()"
+          title="contactez-moi"
+        >
+          Contactez-moi
+        </button>
+        <img src="" class="profil-picture" alt="Contactez-moi" />
+      </section>
+
+      <!-- SECTION DU SELECT POUR TRIER LES PHOTOS -->
+      <section class="sort_gallery">
+        <label id="sortLabel" name="Trier par" for="sort">Trier par</label>
+        <select id="sort" aria-labelledby="sortLabel">
+          <option value="popular">Popularité</option>
+          <option value="date">Date</option>
+          <option value="title">Titre</option>
+        </select>
+      </section>
+
+      <!-- SECTION GALERIE PHOTO - GENERÉ PAR JS -->
+      <section class="photographer_gallery"></section>
     </main>
-    <div id="contact_modal">
-			<div class="modal">
-				<header>
-          <h2>Contactez-moi</h2>
-          <img src="assets/icons/close.svg" onclick="closeModal()" />
-        </header>
-				<form>
-					<div>
-						<label>Prénom</label>
-						<input />
-					</div>
-          <button class="contact_button">Envoyer</button>
-				</form>
-			</div>
-		</div>
-    <script src="/scripts/pages/photographer.js"></script>
-    <script src="/scripts/utils/contactForm.js"></script>
+
+    <!-- MODALE DU FORMULAIRE -->
+    <div
+      id="formModal"
+      class="contact_modal modal"
+      aria-hidden="true"
+      role="dialog"
+      aria-describedby="modalTitle"
+    >
+      <header>
+        <h2 id="modalTitle" class="formTitle"></h2>
+        <img
+          src="assets/icons/close.svg"
+          id="closeBtn"
+          onclick="closeModal()"
+          aria-label="Close Contact form"
+          tabindex="0"
+          alt="close button"
+        />
+      </header>
+      <form>
+        <div>
+          <label for="firstname">Prénom</label>
+          <input aria-labelledby="firstname" type="text" id="firstname" />
+          <label for="lastname">Nom</label>
+          <input aria-labelledby="lastname" type="text" id="lastname" />
+          <label for="email">Email</label>
+          <input aria-labelledby="email" type="email" id="email" />
+          <label for="yourmessage">Votre message</label>
+          <textarea aria-labelledby="yourmessage" id="yourmessage"></textarea>
+        </div>
+        <button
+          aria-label="Envoyer le formulaire"
+          id="send"
+          class="send contact_button"
+        >
+          Envoyer
+        </button>
+      </form>
+    </div>
+
+    <!-- LIGHTBOX-->
+    <div id="lightbox" class="lightbox" role="lightbox">
+      <i class="fa-solid fa-xmark icon close-icon" title="Close lightbox"> </i>
+      <i
+        id="previous"
+        class="fa-solid fa-chevron-left icon prev-icon"
+        title="previous image"
+      ></i>
+      <i
+        id="next"
+        class="fa-solid fa-chevron-right icon next-icon"
+        title="next image"
+      ></i>
+    </div>
+
+    <script
+      src="https://kit.fontawesome.com/d663a427cf.js"
+      crossorigin="anonymous"
+    ></script>
+    <script src="scripts/factories/photographerPageFactory.js"></script>
+    <script src="scripts/pages/photographer.js"></script>
+    <script src="scripts/pages/modal.js"></script>
+    <script src="scripts/pages/lightbox.js"></script>
+    <script src="scripts/pages/likesCounter.js"></script>
   </body>
 </html>

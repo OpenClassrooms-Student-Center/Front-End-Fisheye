@@ -1,50 +1,89 @@
 @import url("photographer.css");
 
 body {
-    font-family: "DM Sans", sans-serif;
-    margin: 0;
+  font-family: "DM Sans", sans-serif;
+  margin: 0;
 }
 
-
 header {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-    height: 90px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  height: 90px;
 }
 
 h1 {
-    color: #901C1C;
-    margin-right: 100px;
+  color: #901c1c;
+  margin-right: 100px;
 }
 
 .logo {
-    height: 50px;
-    margin-left: 100px;
+  height: 50px;
+  margin-left: 100px;
 }
 
+a {
+  cursor: pointer;
+  text-decoration: none;
+}
 .photographer_section {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 50px;
+  margin-top: 100px;
+}
+
+.photographer_section article,
+a {
+  justify-self: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.fullname {
+  color: #d3573c;
+  font-size: 36px;
+  margin-top: 10px;
+  margin-bottom: 5px;
+  margin-right: 0;
+}
+
+.location,
+.quote,
+.fees {
+  margin: 0 0 5px 0;
+}
+
+.location {
+  color: #901c1c;
+  font-weight: 700;
+}
+
+.quote {
+  font-size: 14px;
+}
+
+.fees {
+  opacity: 0.5;
+  font-size: 14px;
+}
+
+.profil-picture {
+  height: 200px;
+  width: 200px;
+  border-radius: 50%;
+  object-fit: cover;
+  image-rendering: auto;
+}
+
+/* MEDIA QUERIES */
+
+@media (min-width: 481px) and (max-width: 1024px) {
+  .photographer_section {
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    gap: 70px;
-    margin-top: 100px;
-}
-
-.photographer_section article {
-    justify-self: center;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-}
-
-.photographer_section article h2 {
-    color: #D3573C;
-    font-size: 36px;
-}
-
-.photographer_section article img {
-    height: 200px;
-    width: 200px;
+    grid-template-columns: 1fr 1fr;
+  }
 }

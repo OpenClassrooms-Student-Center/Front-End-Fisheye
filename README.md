@@ -2,5 +2,7 @@
 
 ## Démarrer le projet
 
-Rien à installer ici, il suffit d'ouvrir le fichier `index.html`.
+Ouvrir le projet et dans le terminal taper : npm --install
+afin d'installer le node module.
+
 

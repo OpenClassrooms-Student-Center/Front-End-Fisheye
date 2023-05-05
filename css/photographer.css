@@ -1,76 +1,266 @@
-#contact_modal {
-    display: none;
+.visible {
+  display: block;
 }
 
 .photograph-header {
-    background-color: #FAFAFA;
-    height: 300px;
-    margin: 0 100px;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  align-items: center;
+  justify-items: center;
+  margin-top: 100px;
+  background-color: #fafafa;
+  height: 200px;
+  margin: 0 100px;
 }
+
+.photogLikesAndPrices {
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  height: 49px;
+  width: 250px;
+  border-radius: 5px;
+  background: #db8876;
+  color: black;
+  font-size: 18px;
+  font-weight: 600;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  gap: 20px;
+}
+
+.likesBox {
+  display: flex;
+  align-items: center;
+}
+
+.likesSum {
+  margin-left: 5px;
+  margin-right: 5px;
+}
+
+.photographer_intro {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  padding-left: 10px;
+}
+
+.sort_gallery {
+  margin: 50px 100px;
+}
+
+.sort_gallery label {
+  margin-right: 10px;
+}
+
+.sort_gallery select {
+  background-color: #901c1c;
+  color: white;
+  width: 110px;
+  height: 40px;
+  padding: 10px;
+  border-radius: 5px;
+}
+
+.photographer_gallery {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 20px;
+  justify-content: space-between;
+  align-content: center;
+  justify-items: center;
+  margin: 0 50px;
+}
+
+.photographer_gallery img,
+video {
+  height: 220px;
+  width: 280px;
+  border-radius: 5px;
+  object-fit: cover;
+  cursor: pointer;
+}
+
+figure {
+  margin: 0;
+}
+
+.img_details {
+  display: flex;
+  justify-content: space-between;
+  color: #901c1c;
+  font-size: 14px;
+  margin: 0;
+}
+
+.img_likes {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+.img_likes p {
+  margin: 0;
+  font-weight: 600;
+}
+
+.heart-icon {
+  cursor: pointer;
+}
+
+/* BUTTON*/
 
 .contact_button {
-    font-size: 20px;
-    font-weight: bold;
-    color: white;
-    padding: 11px;
-    width: 170px;
-    height: 70px;
-    border: none;
-    background-color: #901C1C;
-    border-radius: 5px;
-    cursor: pointer;
+  font-size: 20px;
+  font-weight: bold;
+  color: white;
+  padding: 11px;
+  width: 170px;
+  height: 70px;
+  border: none;
+  background-color: #901c1c;
+  border-radius: 5px;
+  cursor: pointer;
 }
 
+.contact_button:hover {
+  background-color: #d3573c;
+}
+
+.contact_button:focus {
+  background-color: #d3573c;
+}
+
+/******* LIGHTBOX *******/
+
+.lightbox {
+  display: none;
+  position: fixed;
+  z-index: 1000;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: white;
+}
+
+.figureLightbox {
+  display: flex;
+  flex-direction: column-reverse;
+}
+
+.captionLightbox {
+  padding-top: 10px;
+  color: #901c1c;
+  font-weight: 600;
+  font-size: 24px;
+}
+
+.active {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.lightbox img,
+.lightbox video {
+  height: 70vh;
+  width: auto;
+}
+
+.icon {
+  position: absolute;
+  font-size: 40px;
+  color: #901c1c;
+  cursor: pointer;
+}
+
+.close-icon {
+  right: 7%;
+  top: 5%;
+}
+
+.prev-icon {
+  left: 5%;
+}
+
+.next-icon {
+  right: 5%;
+}
+/******* FORMULAIRE *******/
+
 .modal {
-    border-radius: 5px;
-    background-color: #DB8876;
-    width: 50%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: space-between;
-    padding: 35px;
-    margin: auto;
+  position: absolute;
+  top: 10vh;
+  left: 50vh;
+  border-radius: 5px;
+  background-color: #db8876;
+  width: 500px;
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  padding: 35px;
+  margin: auto;
+  z-index: 2;
 }
 
 .modal header {
-    justify-content: space-between;
-    width: 100%;
+  justify-content: space-between;
+  width: 100%;
+  margin-bottom: 30px;
 }
 
 .modal header img {
-    cursor: pointer;
+  cursor: pointer;
 }
 
 .modal header h2 {
-    font-size: 64px;
-    font-weight: normal;
-    text-align: center;
+  font-size: 54px;
+  font-weight: normal;
+  text-align: center;
 }
 
 form {
-    display: flex;
-    width: 100%;
-    flex-direction: column;
-    align-items: flex-start;
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  align-items: flex-start;
 }
 
 form label {
-    color: #312E2E;
-    font-size: 36px;
+  color: #312e2e;
+  font-size: 36px;
+  padding-top: 15px;
 }
 
 form div {
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-    align-items: self-start;
-    margin-bottom: 26px;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  align-items: self-start;
+  margin-bottom: 26px;
 }
 
-form input {
-    width: 100%;
-    height: 68px;
-    border: none;
-    border-radius: 5px;
+form input,
+textarea {
+  width: 100%;
+  height: 68px;
+  border: none;
+  border-radius: 5px;
+  font-size: 34px;
+}
+
+form textarea {
+  height: 100px;
+  resize: none;
+}
+
+/* MEDIA QUERIES*/
+
+@media (min-width: 481px) and (max-width: 767px) {
+  .photographer_gallery {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
 }
