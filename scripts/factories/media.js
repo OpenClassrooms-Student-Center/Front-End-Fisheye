@@ -13,7 +13,26 @@ function mediaFactory(media) {
     h2.textContent = title;
     likesTag.textContent = `${likes} ♡`;
     likesTag.setAttribute("class", "likes");
+    likesTag.setAttribute("aria-label", "likes");
+    likesTag.setAttribute("tabindex", "0");
     likesTag.style.cursor = "pointer";
+    likesTag.addEventListener("keyup", (event) => {
+      if (event.key === "Enter") {
+        const totalLikesTag = document.querySelector(".total-likes__likes");
+        const totalLikes = parseInt(totalLikesTag.textContent);
+        if (!media.isLiked) {
+          media.isLiked = true;
+          media.likes++;
+          likesTag.textContent = `${media.likes} ♥`;
+          totalLikesTag.textContent = `${totalLikes + 1} ♥`;
+        } else {
+          media.isLiked = false;
+          media.likes--;
+          likesTag.textContent = `${media.likes} ♡`;
+          totalLikesTag.textContent = `${totalLikes - 1} ♥`;
+        }
+      }
+    });
 
     likesTag.addEventListener("click", () => {
       const totalLikesTag = document.querySelector(".total-likes__likes");
@@ -50,9 +69,15 @@ function mediaFactory(media) {
     mediaTag.setAttribute("class", "media-tag");
     mediaTag.setAttribute("id", id);
     mediaTag.setAttribute("alt", title);
+    mediaTag.setAttribute("tabindex", "0");
     mediaTag.style.cursor = "pointer";
     mediaTag.addEventListener("click", (event) => {
       displayLightBox(event.target.id);
+    });
+    mediaTag.addEventListener("keyup", (event) => {
+      if (event.key === "Enter") {
+        displayLightBox(event.target.id);
+      }
     });
 
     mediaInfos.appendChild(h2);

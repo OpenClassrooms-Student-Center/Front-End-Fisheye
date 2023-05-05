@@ -5,6 +5,7 @@ function photographerFactory(photographer) {
   const avatarSrc = `assets/images/photographers/${portrait}`;
   const avatar = document.createElement("img");
   avatar.setAttribute("src", avatarSrc);
+  avatar.setAttribute("alt", name);
 
   const locationTag = document.createElement("span");
   locationTag.setAttribute("class", "location");

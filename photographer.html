@@ -13,10 +13,14 @@
   <body>
     <header>
       <a href="index.html">
-        <img src="assets/images/logo.png" class="logo" />
+        <img
+          src="assets/images/logo.png"
+          class="logo"
+          alt="Fisheye home page"
+        />
       </a>
     </header>
-    <main id="main">
+    <main id="main" aria-hidden="false">
       <div class="photographer-header">
         <button class="contact_button" onclick="displayModal()">
           Contactez-moi
@@ -42,10 +46,26 @@
       </div>
       <div class="total-likes"></div>
     </main>
-    <div id="contact_modal">
-      <div class="modal">
+    <div
+      id="contact_modal"
+      role="dialog"
+      aria-label="Envoyer un message"
+      aria-hidden="true"
+    >
+      <div
+        class="modal"
+        role="dialog"
+        aria-label="Formulaire de contact"
+        aria-hidden="true"
+      >
         <header class="header_modal">
-          <img src="assets/icons/close.svg" onclick="closeModal()" />
+          <img
+            class="close_modal"
+            src="assets/icons/close.svg"
+            onclick="closeModal()"
+            aria-label="Fermer la modale"
+            tabindex="0"
+          />
         </header>
         <form>
           <div>
@@ -58,15 +78,36 @@
             <label for="message">Votre message</label>
             <textarea type="text" id="message" name="message"></textarea>
           </div>
-          <button class="contact_button submit_button">Envoyer</button>
+          <button
+            class="contact_button submit_button"
+            aria-label="Envoyer le formulaire de contact"
+          >
+            Envoyer
+          </button>
         </form>
       </div>
-      <div class="submit-confirmation">
+      <div
+        class="submit-confirmation"
+        role="dialog"
+        aria-label="Confirmation d'envoi du formulaire de contact"
+        aria-hidden="true"
+      >
         <p>Votre message a bien été envoyé.</p>
-        <button onclick="closeModal()">Fermer</button>
+        <button
+          onclick="closeModal()"
+          aria-label="Fermer la modale"
+          tabindex="0"
+        >
+          Fermer
+        </button>
       </div>
     </div>
-    <div id="light-box-modal"></div>
+    <div
+      id="light-box-modal"
+      role="dialog"
+      aria-label="Caroussel"
+      aria-hidden="true"
+    ></div>
     <script src="/scripts/factories/photographer.js"></script>
     <script src="/scripts/factories/media.js"></script>
     <script src="/scripts/pages/photographer.js"></script>
