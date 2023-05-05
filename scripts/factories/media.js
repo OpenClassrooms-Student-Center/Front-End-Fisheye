@@ -1,6 +1,5 @@
 let medias = [];
 let currentMedia;
-let clicked;
 
 // Media factory function
 
@@ -51,9 +50,7 @@ async function mediaFactory(photographerName, media) {
 	return {title, likes, getMediaCardDOM};
 }
 
-
 // Media infos factory (informations , likes)
-
 
 function mediaInfoFactory(title, likes, media, mediaElement ) {
 
@@ -71,35 +68,41 @@ function mediaInfoFactory(title, likes, media, mediaElement ) {
 	likesNumber.textContent = likes;
 
 	const likesIcon = document.createElement("i");
-	likesIcon.setAttribute("class", "fas fa-heart icon");
+	likesIcon.setAttribute("class", "fa-sharp fa-regular fa-heart");
 	likesIcon.setAttribute("area-label", "likes");
-	likesIcon.addEventListener("click" , () => { addLikes(media, likesNumber);});
+	likesIcon.addEventListener("click" , () => { manageLikes(media, likesNumber ,likesIcon );});
 	mediaLikes.appendChild(likesNumber);
 	mediaLikes.appendChild(likesIcon);
 	mediaInfo.appendChild(mediaTitle);
 	mediaInfo.appendChild(mediaLikes);
 	mediaElement.appendChild(mediaInfo);
-
 }
-
 
 // Likes click
 
+function manageLikes(media, likesNumber , likesIcon) {
+	const totalLikes = document.querySelector(".total-likes");
+	const imageLikes = media.likes;
 
-function addLikes(media, likesNumber) {
-	
-	if (!clicked){
-		const totalLikes = document.querySelector(".total-likes");
-		const imageLikes = media.likes;
+	if (likesIcon.classList.contains("fa-regular")) {
 		const newLikes = imageLikes + 1;
 		media.likes = newLikes;
 		
 		likesNumber.textContent = newLikes;
 		totalLikes.textContent = parseInt(totalLikes.textContent) + 1;
-		clicked = true;
+		likesIcon.className = "fa-sharp fa-solid fa-heart";
+	}
+	else {
+		const newLikes = imageLikes - 1;
+		media.likes = newLikes;
+
+		likesNumber.textContent = newLikes;
+		totalLikes.textContent = parseInt(totalLikes.textContent) - 1;
+		likesIcon.className = "fa-sharp fa-regular fa-heart";
 	}
 }
 
+// lightbox factory function
 
 function lightboxFactory(mediaContainer) {
 
@@ -145,12 +148,10 @@ function closeLightBox() {
 
 // Get current media index
 
-
 //const currentIndex = medias.findIndex(media => [media.querySelector("img"), media.querySelector("video")].includes(currentMedia));
 //if (currentIndex == 0) {
 //	iconPrev.style.color = "white";
 //}
-
 
 // Next lightbox
 
@@ -159,34 +160,64 @@ iconNext.addEventListener("click", () => nextLightbox(currentMedia));
 
 function nextLightbox() {
 	const currentIndex = medias.findIndex(media => [media.querySelector("img"), media.querySelector("video")].includes(currentMedia));
-	const nextIndex = currentIndex + 1 ;
+	let nextIndex = currentIndex + 1 ;
 
 	if (nextIndex === medias.length) {
-		return;
+		nextIndex = 0;
 	}
 
 	const nextMedia = medias[nextIndex];
 	lightboxFactory(nextMedia);
 }
 
-
 // Previous lightbox
-
 
 const iconPrev = document.querySelector(".prev");
 iconPrev.addEventListener("click", () => prevLightbox(currentMedia));
 
 async function prevLightbox() {
 	const currentIndex = medias.findIndex(media => [media.querySelector("img"), media.querySelector("video")].includes(currentMedia));
-	const prevIndex = currentIndex - 1 ;
+	let prevIndex = currentIndex - 1 ;
 	if (prevIndex === -1) {
-
-		//iconPrev.style.color = "white";
-
-		return; 
+		prevIndex = medias.length - 1;
 	}
 	const nextMedia = medias[prevIndex];
 	lightboxFactory(nextMedia);
 }
 
-console.log(medias);
+// select options
+
+const selectContainer = document.querySelector(".select-container");
+const selectElement = selectContainer.querySelector("select");
+const selectedElement = document.createElement("div");
+const optionsList = document.createElement("div");
+
+selectedElement.classList.add("select-selected");
+selectedElement.textContent = selectElement.options[selectElement.selectedIndex].textContent;
+selectContainer.appendChild(selectedElement);
+
+optionsList.classList.add("select-items", "select-hide");
+
+for (let option of selectElement.options) {
+	
+	const optionItem = document.createElement("div");
+	optionItem.textContent = option.textContent;
+	optionItem.addEventListener("click", () => {
+		//optionItem.value = selectElement.value;
+		optionItem.textContent = selectedElement.textContent;
+		selectElement.value = option.value;
+		selectedElement.textContent = option.textContent;
+		optionsList.classList.add("select-hide");
+	});
+	if (!option.selected) {
+		optionsList.appendChild(optionItem);
+	}
+}
+
+selectContainer.appendChild(optionsList);
+
+selectedElement.addEventListener("click", (e) => {
+	e.stopPropagation();
+	optionsList.classList.toggle("select-hide");
+	selectedElement.classList.toggle("select-arrow-active");
+});

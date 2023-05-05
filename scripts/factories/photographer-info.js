@@ -8,6 +8,7 @@ function photographHeaderFactory(photographer) {
 	img.setAttribute ("title", `${name}`);
 
 	const h2 = document.createElement( "h2" );
+	h2.className = "photographer-name";
 	h2.textContent = name;
 
 	const h3 = document.createElement( "h3" );
