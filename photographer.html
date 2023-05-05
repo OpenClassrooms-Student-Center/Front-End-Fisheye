@@ -5,6 +5,8 @@
     <meta charset="utf-8">
     <link rel="icon" type="image/png" href="assets/favicon.png">
     <link href="https://fonts.googleapis.com/css?family=DM+Sans&display=swap" rel="stylesheet">
+    <script type="module" src="/scripts/pages/photographer.js"></script>
+    <script type="module" src="/scripts/utils/contactForm.js"></script>
     <title>Fisheye - photographe </title>
   </head>
   <body>
@@ -16,25 +18,40 @@
     </header>
     <main id="main">
       <div class="photograph-header">
-        <button class="contact_button" onclick="displayModal()">Contactez-moi</button>
+        <button class="contact_button" >Contactez-moi</button>
       </div>
     </main>
-    <div id="contact_modal">
+    <dialog id="contact_modal" aria-labelledby="title">
 			<div class="modal">
 				<header>
-          <h2>Contactez-moi</h2>
-          <img src="assets/icons/close.svg" onclick="closeModal()" />
+          <h2 id="title">Contactez-moi</h2>
+          <p class="photographerName"></p>
+          <button class="close" aria-label="fermeture du formulaire">
+            <img src="assets/icons/close.svg" class="close"/>
+          </button>
+          
         </header>
-				<form>
+				<form class="form">
 					<div>
-						<label>Prénom</label>
-						<input />
+						<label for="firstname">Prénom</label>
+						<input name="firstname" id="firstname" type="text" placeholder="Saisissez votre prénom"/>  
 					</div>
+          <div>
+            <label for="lastname">Nom</label>
+            <input name="lastname" id="lastname" type="text" placeholder="Saisissez votre nom">
+          </div>
+          <div>
+            <label for="email">Email</label>
+            <input name="email" id="email" type="email" placeholder="Saisissez votre adresse email">
+          </div>
+          <div>
+            <label for="message">Votre message</label>
+            <textarea name="message" id="message" rows="4" placeholder="Saisissez votre message"></textarea>
+          </div>
           <button class="contact_button">Envoyer</button>
 				</form>
 			</div>
-		</div>
-    <script src="/scripts/pages/photographer.js"></script>
-    <script src="/scripts/utils/contactForm.js"></script>
+		</dialog>
+
   </body>
 </html>
