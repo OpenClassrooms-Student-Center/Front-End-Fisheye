@@ -9,11 +9,15 @@
   </head>
   <body>
     <header>
-      <img src="assets/images/logo.png" class="logo" />
+      <a href="index.html">
+        <img src="assets/images/logo.png" class="logo" />
+      </a>
     </header>
     <main id="main">
+      
       <div class="photograph-header">
-        <button class="contact_button" onclick="displayModal()">Contactez-moi</button>
+        <div class="photograph_section"></div>
+        
       </div>
     </main>
     <div id="contact_modal">
@@ -31,6 +35,21 @@
 				</form>
 			</div>
 		</div>
+    <div id="tri">
+      <p>Trier par</p>
+      <select name="photo" id="photo-select">
+        <option value="Popularité">Popularité</option>
+        <option value="Date">Date</option>
+        <option value="Titre">Titre</option>
+      </select>
+    </div>
+    <div class="media_section"></div>
+    <!-- Models -->
+    <script src="scripts/models/media.js"></script>
+    <script src="scripts/models/photographer.js"></script>
+    <!-- Templates -->
+    <script src="scripts/templates/mediaCard.js"></script>
+
     <script src="/scripts/pages/photographer.js"></script>
     <script src="/scripts/utils/contactForm.js"></script>
   </body>

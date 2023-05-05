@@ -28,7 +28,7 @@ h1 {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     gap: 70px;
-    margin-top: 100px;
+    margin: 100px 0;
 }
 
 .photographer_section article {
@@ -42,9 +42,32 @@ h1 {
 .photographer_section article h2 {
     color: #D3573C;
     font-size: 36px;
+    margin: 5px 0;
 }
 
 .photographer_section article img {
     height: 200px;
     width: 200px;
+    border-radius:50%;
+    object-fit: cover;
+    object-position: center;
+}
+
+.photographer_section article p {
+    display: contents;
+    vertical-align: middle;
+    font-size: 10px;
+}
+
+.photographer_section article p strong{
+    color:#D3573C;
+    font-size:14px;
+}
+
+.photographer_section article p span{
+    color: gray;
+}
+
+.photographer_section a{
+    text-decoration: none;
 }

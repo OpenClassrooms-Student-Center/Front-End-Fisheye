@@ -74,3 +74,75 @@ form input {
     border: none;
     border-radius: 5px;
 }
+
+.photograph_section  {
+    justify-self: center;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: row;
+}
+
+.photograph_section h2 {
+    color: #D3573C;
+    font-size: 36px;
+    margin: 5px 0;
+}
+
+.photograph_section img {
+    height: 200px;
+    width: 200px;
+    border-radius:50%;
+    object-fit: cover;
+    object-position: center;
+}
+
+.media_section {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 70px;
+    margin: 100px 0;
+}
+
+.media_section article {
+    justify-self: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+.media_section article div {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width:100%;
+}
+.media_section article h2 {
+    color: #D3573C;
+    font-size: 12px;
+    vertical-align: middle;
+    margin: 4px 0;
+}
+
+.media_section article img, video {
+    height: 200px;
+    width: 200px;
+    object-fit: cover;
+    object-position: center;
+}
+
+.media_section article p {
+    display: contents;
+    vertical-align: middle;
+    font-size: 10px;
+}
+
+#tri {
+    display: flex;
+    flex-direction: row;
+}
+
+#tri select{
+    background-color: #901C1C;
+    color: white;
+}
