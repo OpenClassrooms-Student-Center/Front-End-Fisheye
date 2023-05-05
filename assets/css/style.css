@@ -9,9 +9,9 @@ body {
     margin: 0;
 }
 
+
 header {
     display: flex;
-    flex-direction: row;
     justify-content: space-between;
     align-items: center;
     height: 90px;
@@ -46,6 +46,11 @@ h1 {
     color: #D3573C;
     font-size: 1.8rem;
     margin-bottom: 0;
+}
+
+.photographer_section article a {
+    text-decoration: none;
+    text-align: center;
 }
 
 .photographer_section article img {
