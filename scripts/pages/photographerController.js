@@ -1,75 +1,58 @@
-import { mediaFactory } from "../factories/mediaFactory.js";
-import { Lightbox } from "../factories/lightboxFactory.js";
-import { PhotographersModel } from "../models/photographersModel.js";
+import {mediaFactory} from "../factories/mediaFactory.js";
+// import {Lightbox} from "../factories/lightboxFactory.js";
+import {PhotographersModel} from "../models/photographersModel.js";
 
 export const parentDOM = document.querySelector("main");
 export const urlPhotographerId = (new URL(window.location)).searchParams.get("id");
 
-const PhotographersModelContsructor = new PhotographersModel();
-export const photographer = await PhotographersModelContsructor.getPhotographerById(urlPhotographerId);
-export const mediaPhotographer = await PhotographersModelContsructor.getMediaForOnePhotographer(urlPhotographerId);
+const photographersModel = new PhotographersModel();
+export const photographer = await photographersModel.getPhotographerById(urlPhotographerId);
 
+export const mediaPhotographer = await photographersModel.getMediaForOnePhotographer(urlPhotographerId);
+
+console.log("photographer media : " + mediaPhotographer);
 const mediaDataContainer = document.querySelector(".photographer-media-container")
 const filterContainer = document.querySelector(".photographer-filter-container")
 const bannerContainer = document.querySelector(".photographer-banner-container")
 
+async function init() {
+  console.log("photographer : " + photographer);
+  await bannerData(photographer);
+  await likePriceData(photographer);
+  formData(photographer);
+  await mediaData(mediaPhotographer);
+  await mediaSort(mediaPhotographer);
 
-function sleep(ms) {
-    return new Promise(resolve => setTimeout(resolve, ms));
+  // Lightbox.init()
 }
 
-
-async function init() {
-    // Récupère les datas des photographes et créé la bannière
-    bannerData(photographer);
-    
-    likePriceData(photographer);
-    formData(photographer);
-    
-    mediaData(mediaPhotographer);
-    mediaSort(mediaPhotographer);
-
-    Lightbox.init()
-};
-
-init();
+await init();
 
 // FONCTION BANNER PHOTOGRAPHE
 async function bannerData(data) {
-    const photographerModel = photographerFactory(data);
-    const userBannerDOM = photographerModel.getUserBannerDOM();
-    bannerContainer.appendChild(userBannerDOM);
-};
+  bannerContainer.appendChild(photographerFactory(data).getUserBannerDOM());
+}
 
 // FONCTION SORT MEDIA
 async function mediaSort(data) {
-    const photographerFilterDOM = mediaFactory(data).getUserMediaSortDOM();
-    filterContainer.appendChild(photographerFilterDOM);
+  filterContainer.appendChild(mediaFactory(data).getUserMediaSortDOM());
 }
 
 // FONCTION GALERIE MEDIAS PHOTOGRAPHE
 export async function mediaData(data) {
-    mediaDataContainer.innerHTML = "";
-    data.forEach((media) => {
-        const mediaModel = mediaFactory(media).getUserMediaDOM();
-        mediaDataContainer.appendChild(mediaModel);
-    });
+  mediaDataContainer.innerHTML = "";
+  data.forEach((media) => {
+    mediaDataContainer.appendChild(mediaFactory(media).getUserMediaDOM());
+  });
 }
-
-
-
 
 // FONCTION ENCARD PRIX PHOTOGRAPHE
 async function likePriceData(data) {
-    const photographerPrice = mediaFactory(data);
-    const userPriceDOM = photographerPrice.getLikesPrice();
-    parentDOM.appendChild(userPriceDOM);
-};
+  parentDOM.appendChild(mediaFactory(data).getLikesPrice());
+}
 
 // FONCTION MODAL FORM
 function formData() {
-    const formGen = contactForm(photographer);
-    const formDOM = formGen.getContactFormDOM();
-    parentDOM.appendChild(formDOM);
-};
+  parentDOM.appendChild(contactForm(photographer).getContactFormDOM());
+}
 

@@ -1,36 +1,49 @@
 <!DOCTYPE html>
 <html lang="fr">
-  <head>
-    <link href="css/style.css" rel="stylesheet" type="text/css" />
-    <meta charset="utf-8">
-    <link rel="icon" type="image/png" href="assets/favicon.png">
-    <link href="https://fonts.googleapis.com/css?family=DM+Sans&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,1,0" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <title>Fisheye - photographe </title>
-  </head>
-  <body id="body">
-    <header>
-      <a href="index.html">
-        <img src="assets/images/logo.png" alt="Fisheye Home Page" class="logo" />
-      </a>
-    </header>
-    <main id="main" aria-hidden="false">
-      <!-- Banner -->
-      <section class="photographer-banner-container"></section>
-      <!-- Filters -->
-      <section class="photographer-filter-container"></section>
-      <!-- Media List -->
-      <section class="photographer-media-container"></section>
-    </main>
-    <script src="scripts/factories/modalFactory.js"></script>
-    <script src="scripts/controllers/contactForm.js"></script>
-    <script src="scripts/controllers/sortMedia.js" type="module"></script>
-    <script src="scripts/factories/photographerFactory.js"></script>
-    <script src="scripts/factories/mediaFactory.js" type="module"></script>
-    <script src="scripts/factories/lightboxFactory.js" type="module" defer></script>
-    <script src="scripts/pages/photographerController.js" type="module"></script>
-    <script src="scripts/models/photographersModel.js" type="module"></script>
-  </body>
+<head>
+  <link href="css/style.css" rel="stylesheet" type="text/css"/>
+  <meta charset="utf-8">
+  <link href="assets/favicon.png" rel="icon" type="image/png">
+  <link href="https://fonts.googleapis.com/css?family=DM+Sans&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,1,0"
+        rel="stylesheet"/>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <title>Fisheye - photographe </title>
+</head>
+<body id="body">
+<header>
+  <a href="index.html">
+    <img alt="Fisheye Home Page" class="logo" src="assets/images/logo.png"/>
+  </a>
+</header>
+<main aria-hidden="false" id="main">
+  <!-- Banner -->
+  <section class="photographer-banner-container"></section>
+  <!-- Filters -->
+  <section class="photographer-filter-container"></section>
+  <!-- Media List -->
+  <section class="photographer-media-container"></section>
+  <div id="lightbox">
+    <div id="lightbox-content">
+      <video controls id="lightbox-media" src="" autoplay></video>
+      <img alt="" id="lightbox-image" src="">
+      <button id="close-button">Close</button>
+      <button id="previous-button">Previous</button>
+      <button id="next-button">Next</button>
+      <h2 id="media-title"></h2>
+    </div>
+  </div>  
+</main>
+
+<script src="scripts/factories/modalFactory.js"></script>
+<script src="scripts/controllers/contactForm.js"></script>
+<script src="scripts/controllers/sortMedia.js" type="module"></script>
+<script src="scripts/factories/photographerFactory.js"></script>
+<script src="scripts/factories/mediaFactory.js" type="module"></script>
+<script src="clement/clement.js" type="module"></script>
+<!-- <script defer src="scripts/factories/lightboxFactory.js" type="module"></script> -->
+<script src="scripts/pages/photographerController.js" type="module"></script>
+<script src="scripts/models/photographersModel.js" type="module"></script>
+</body>
 </html>

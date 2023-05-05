@@ -1,12 +1,12 @@
 function contactForm(data) {
-    const wrapper = document.createElement('div');
-    wrapper.classList.add("contact_modal")
-    wrapper.setAttribute('aria-hidden', 'true')
-    wrapper.setAttribute('tabindex', '-1')
-    const {name} = data
+  const wrapper = document.createElement('div');
+  wrapper.classList.add("contact_modal")
+  wrapper.setAttribute('aria-hidden', 'true')
+  wrapper.setAttribute('tabindex', '-1')
+  const {name} = data
 
-    function getContactFormDOM() {
-        const form = `
+  function getContactFormDOM() {
+    wrapper.innerHTML = `
           <div class="modal" role="document">
           <br>
           <header>
@@ -16,7 +16,7 @@ function contactForm(data) {
           </header>
           <br>
           <br>
-          <form class="form" method="post">
+          <form class="form" method="post" onsubmit="event.preventDefault();validate()">
             <div class="formData" data-error="Veuillez saisir au moins deux caractères">
               <label for="form-firstname" tabindex="0">Prénom</label>
               <input type="text" name="firstname" id="form-firstname" pattern="^[A-Za-z-]+$" aria-labelledby="form-firstname" required minlength="2"/>
@@ -38,9 +38,8 @@ function contactForm(data) {
           </form>
         </div>
       `
-      wrapper.innerHTML=form
-      return wrapper;
-    }
+    return wrapper;
+  }
 
-    return { getContactFormDOM }
+  return {getContactFormDOM}
 }

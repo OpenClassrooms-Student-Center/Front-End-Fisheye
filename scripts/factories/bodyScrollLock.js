@@ -96,7 +96,7 @@ const setPositionFixed = () => window.requestAnimationFrame(() => {
     };
 
     // Update the dom inside an animation frame
-    const { scrollY, scrollX, innerHeight } = window;
+    const {scrollY, scrollX, innerHeight} = window;
     document.body.style.position = 'fixed';
     document.body.style.top = `${-scrollY}px`;
     document.body.style.left = `${-scrollX}px`;
@@ -195,7 +195,7 @@ export const disableBodyScroll = (targetElement, options) => {
     };
 
     if (!documentListenerAdded) {
-      document.addEventListener('touchmove', preventDefault, hasPassiveEvents ? { passive: false } : undefined);
+      document.addEventListener('touchmove', preventDefault, hasPassiveEvents ? {passive: false} : undefined);
       documentListenerAdded = true;
     }
   }
@@ -210,7 +210,7 @@ export const clearAllBodyScrollLocks = () => {
     });
 
     if (documentListenerAdded) {
-      document.removeEventListener('touchmove', preventDefault, hasPassiveEvents ? { passive: false } : undefined);
+      document.removeEventListener('touchmove', preventDefault, hasPassiveEvents ? {passive: false} : undefined);
       documentListenerAdded = false;
     }
 
@@ -241,7 +241,7 @@ export const enableBodyScroll = targetElement => {
     targetElement.ontouchmove = null;
 
     if (documentListenerAdded && locks.length === 0) {
-      document.removeEventListener('touchmove', preventDefault, hasPassiveEvents ? { passive: false } : undefined);
+      document.removeEventListener('touchmove', preventDefault, hasPassiveEvents ? {passive: false} : undefined);
       documentListenerAdded = false;
     }
   }

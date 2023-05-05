@@ -1,26 +1,24 @@
-import {photographer, mediaPhotographer} from '../pages/photographerController.js'
+import {mediaPhotographer, photographer} from '../pages/photographerController.js'
 
 export function mediaFactory(media) {
-    const { id, photographerId, title, image, video, likes, date, price } = media;
+  const {id, photographerId, title, image, video, likes, date, price} = media;
 
-    const wrapper = document.createElement('article');
-    wrapper.classList.add("photographies")
+  const wrapper = document.createElement('article');
+  wrapper.classList.add("photographies")
 
-    const picture = `assets/images/${media.photographerId}/${image}`;
-    const mediaVideo = `assets/images/${media.photographerId}/${video}`;
+  const picture = `assets/images/${media.photographerId}/${image}`;
+  const mediaVideo = `assets/images/${media.photographerId}/${video}`;
 
-    // Generate Card article
-    function getUserMediaDOM() {
-        let mediaDOM;
-        if(media.image) {
-            mediaDOM = `
-                <a href="${picture}" aria-label="lien vers l'image">
-                    <article class="picture_block">
-                        <div class="picture">
-                            <img id="${id}" src="${picture}" alt="${title}">
-                        </div>
-                    </article>
-                </a>
+  // Generate Card article
+  function getUserMediaDOM() {
+    let mediaDOM;
+    if (media.image) {
+      mediaDOM = `
+                <article class="picture_block" aria-label="lien vers l'image">
+                    <div class="picture">
+                        <img id="${id}" src="${picture}" alt="${title}">
+                    </div>
+                </article>
                 <div class="picture_title">
                     <h6>${title}</h6>
                     <div class="media_compteur_like">
@@ -29,15 +27,13 @@ export function mediaFactory(media) {
                     </div>
                 </div>
             `
-        } else {
-            mediaDOM = `
-                <a href="${mediaVideo}" aria-label="lien vers l'image">
-                    <article class="picture_block">
-                        <div class="picture">
-                            <video id="${id}" src="${mediaVideo}" alt="${title}"></video>
-                        </div>
-                    </article>
-                </a>
+    } else {
+      mediaDOM = `
+                <article class="picture_block" aria-label="lien vers l'image">
+                    <div class="picture">
+                        <video id="${id}" src="${mediaVideo}" alt="${title}"></video>
+                    </div>
+                </article>
                 <div class="picture_title">
                     <h6>${title}</h6>
                     <div class="media_compteur_like">
@@ -46,27 +42,27 @@ export function mediaFactory(media) {
                     </div>
                 </div>
             `
-        }
-        wrapper.innerHTML=mediaDOM
-        wrapper.querySelector('.likes').addEventListener('click', (event) => {
-            if(event.target.checked) {
-                compteur += 1
-            } else {
-                compteur -= 1
-            }
-            wrapper.querySelector('label.compteur_like').innerHTML=compteur;
-            wrapper.querySelector('input.likes').setAttribute('aria-label', `${compteur} likes`)
-        })
-        return wrapper;
     }
+    wrapper.innerHTML = mediaDOM
+    wrapper.querySelector('.likes').addEventListener('click', (event) => {
+      if (event.target.checked) {
+        compteur += 1
+      } else {
+        compteur -= 1
+      }
+      wrapper.querySelector('label.compteur_like').innerHTML = compteur;
+      wrapper.querySelector('input.likes').setAttribute('aria-label', `${compteur} likes`)
+    })
+    return wrapper;
+  }
 
-    // Template filtres
+  // Template filtres
 
-    const wrapperMediaSort = document.createElement('section');
-    wrapperMediaSort.classList.add('photographe_filter');
-    
-    function getUserMediaSortDOM() {
-        const sort = `
+  const wrapperMediaSort = document.createElement('section');
+  wrapperMediaSort.classList.add('photographe_filter');
+
+  function getUserMediaSortDOM() {
+    const sort = `
         <h5 id="filter__title" tabindex="0">Trier par</h5>
         <div class="dropdown">
             <div class="select" data-filter-value="popularity">
@@ -80,36 +76,48 @@ export function mediaFactory(media) {
             </ul>
         </div>
     `
-    wrapperMediaSort.innerHTML=sort;
+    wrapperMediaSort.innerHTML = sort;
     return wrapperMediaSort
-    }
+  }
 
-    // Compteur like
-    let compteur = likes
-    
+  // Compteur like
+  let compteur = likes
 
-    // Template encard prix photographe
-    const wrapperLikesPrice = document.createElement('div');
-    wrapperLikesPrice.classList.add('likes_price');
-    
-    function getLikesPrice() {
-        const LikesPrice = `
+
+  // Template encard prix photographe
+  const wrapperLikesPrice = document.createElement('div');
+  wrapperLikesPrice.classList.add('likes_price');
+
+  function getLikesPrice() {
+    const LikesPrice = `
             <div id="total-likes">${sumLikes()}<span class="material-symbols-outlined">favorite</span></div>
             <span>${photographer.price}€ / jour</span>
         `
-    
-        wrapperLikesPrice.innerHTML=LikesPrice;
-        sumLikes()
-        return wrapperLikesPrice
-    }
-    
-    function sumLikes () {
-        let sum = 0 
-        mediaPhotographer.forEach(media => {
-        sum += media.likes
-        })
-        return sum
-    }
 
-return { id, photographerId, title, picture, video, compteur, date, price, getUserMediaSortDOM, getUserMediaDOM, getLikesPrice}
+    wrapperLikesPrice.innerHTML = LikesPrice;
+    sumLikes()
+    return wrapperLikesPrice
+  }
+
+  function sumLikes() {
+    let sum = 0
+    mediaPhotographer.forEach(media => {
+      sum += media.likes
+    })
+    return sum
+  }
+
+  return {
+    id,
+    photographerId,
+    title,
+    picture,
+    video,
+    compteur,
+    date,
+    price,
+    getUserMediaSortDOM,
+    getUserMediaDOM,
+    getLikesPrice
+  }
 }

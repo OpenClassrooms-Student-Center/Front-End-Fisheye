@@ -1,14 +1,12 @@
 function photographerFactory(photographer) {
-    const { name, id, city, country, tagline, price, portrait, likes } = photographer;
-    // console.log("test export array :", mediaArrayById)
-    // Template card photographe page d'accueil
+  const {name, id, city, country, tagline, price, portrait} = photographer;
+
+  const picture = `assets/photographers/${portrait}`;
+
+  function getUserCardDOM() {
     const wrapper = document.createElement('section');
     wrapper.classList.add("photographes")
-
-    const picture = `assets/photographers/${portrait}`;
-
-    function getUserCardDOM() {
-        const card = `
+    wrapper.innerHTML = `
             <a href="./photographer.html?id=${id}" aria-label="${name}">
                 <article aria-label = "Profil du photographe">
                     <div class="profil_picture">
@@ -23,20 +21,15 @@ function photographerFactory(photographer) {
                 </article>
             </a>
         `
-        wrapper.innerHTML=card
-        console.log(id)
-        return wrapper;
-    }
+    return wrapper;
+  }
 
-    // Template banner page photographe
-
+  function getUserBannerDOM() {
     const wrapperBanner = document.createElement('section');
     wrapperBanner.classList.add('photographe_banner');
     wrapperBanner.setAttribute('data-hidden-on-modal', '');
 
-    function getUserBannerDOM() {
-        const banner = 
-        `
+    wrapperBanner.innerHTML = `
             <article aria-label = "Profil du photographe">
                 <div class="profil_description">
                     <h2>${name}</h2>
@@ -51,9 +44,8 @@ function photographerFactory(photographer) {
                 </div>
             </article>
         `
-        wrapperBanner.innerHTML=banner
-        return wrapperBanner
-    }
+    return wrapperBanner
+  }
 
-    return { id, name, city, country, tagline, price, picture, getUserCardDOM, getUserBannerDOM }
+  return {id, name, city, country, tagline, price, picture, getUserCardDOM, getUserBannerDOM}
 }
