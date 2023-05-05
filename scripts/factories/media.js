@@ -68,9 +68,9 @@ function mediaInfoFactory(title, likes, media, mediaElement ) {
 	likesNumber.textContent = likes;
 
 	const likesIcon = document.createElement("i");
-	likesIcon.setAttribute("class", "fas fa-heart icon");
+	likesIcon.setAttribute("class", "fa-sharp fa-regular fa-heart");
 	likesIcon.setAttribute("area-label", "likes");
-	likesIcon.addEventListener("click" , () => { addLikes(media, likesNumber);});
+	likesIcon.addEventListener("click" , () => { manageLikes(media, likesNumber ,likesIcon );});
 	mediaLikes.appendChild(likesNumber);
 	mediaLikes.appendChild(likesIcon);
 	mediaInfo.appendChild(mediaTitle);
@@ -80,17 +80,25 @@ function mediaInfoFactory(title, likes, media, mediaElement ) {
 
 // Likes click
 
-function addLikes(media, likesNumber) {
+function manageLikes(media, likesNumber , likesIcon) {
 	const totalLikes = document.querySelector(".total-likes");
+	const imageLikes = media.likes;
 
-	if (!likesNumber.classList.contains("liked")) {
-		const imageLikes = media.likes;
+	if (likesIcon.classList.contains("fa-regular")) {
 		const newLikes = imageLikes + 1;
 		media.likes = newLikes;
 		
 		likesNumber.textContent = newLikes;
 		totalLikes.textContent = parseInt(totalLikes.textContent) + 1;
-		likesNumber.classList.add("liked");
+		likesIcon.className = "fa-sharp fa-solid fa-heart";
+	}
+	else {
+		const newLikes = imageLikes - 1;
+		media.likes = newLikes;
+
+		likesNumber.textContent = newLikes;
+		totalLikes.textContent = parseInt(totalLikes.textContent) - 1;
+		likesIcon.className = "fa-sharp fa-regular fa-heart";
 	}
 }
 
@@ -152,10 +160,10 @@ iconNext.addEventListener("click", () => nextLightbox(currentMedia));
 
 function nextLightbox() {
 	const currentIndex = medias.findIndex(media => [media.querySelector("img"), media.querySelector("video")].includes(currentMedia));
-	const nextIndex = currentIndex + 1 ;
+	let nextIndex = currentIndex + 1 ;
 
 	if (nextIndex === medias.length) {
-		return;
+		nextIndex = 0;
 	}
 
 	const nextMedia = medias[nextIndex];
@@ -169,21 +177,17 @@ iconPrev.addEventListener("click", () => prevLightbox(currentMedia));
 
 async function prevLightbox() {
 	const currentIndex = medias.findIndex(media => [media.querySelector("img"), media.querySelector("video")].includes(currentMedia));
-	const prevIndex = currentIndex - 1 ;
+	let prevIndex = currentIndex - 1 ;
 	if (prevIndex === -1) {
-
-		//iconPrev.style.color = "white";
-
-		return; 
+		prevIndex = medias.length - 1;
 	}
 	const nextMedia = medias[prevIndex];
 	lightboxFactory(nextMedia);
 }
 
-// select 
+// select options
 
 const selectContainer = document.querySelector(".select-container");
-
 const selectElement = selectContainer.querySelector("select");
 const selectedElement = document.createElement("div");
 const optionsList = document.createElement("div");
@@ -193,17 +197,23 @@ selectedElement.textContent = selectElement.options[selectElement.selectedIndex]
 selectContainer.appendChild(selectedElement);
 
 optionsList.classList.add("select-items", "select-hide");
+
 for (let option of selectElement.options) {
+	
 	const optionItem = document.createElement("div");
 	optionItem.textContent = option.textContent;
 	optionItem.addEventListener("click", () => {
+		//optionItem.value = selectElement.value;
+		optionItem.textContent = selectedElement.textContent;
 		selectElement.value = option.value;
 		selectedElement.textContent = option.textContent;
-		optionItem.classList.add("same-as-selected");
 		optionsList.classList.add("select-hide");
 	});
-	optionsList.appendChild(optionItem);
+	if (!option.selected) {
+		optionsList.appendChild(optionItem);
+	}
 }
+
 selectContainer.appendChild(optionsList);
 
 selectedElement.addEventListener("click", (e) => {
