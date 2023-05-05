@@ -314,17 +314,17 @@ form textarea {
 
 .current-media-container img,
 .current-media-container video {
-  width: 950px;
-  height: 800px;
+  width: 850px;
+  height: 700px;
   object-fit: cover;
-  margin: 0 40px;
+  margin: 0 30px 30px 30px;
   border-radius: 5px;
   background-color: red;
 }
 
 .current-media-title {
-  align-self: flex-start;
-  padding-left: 40px;
+  display: initial;
+  padding-left: 60px;
   font-size: 24px;
   line-height: 1;
   color: #901c1c;

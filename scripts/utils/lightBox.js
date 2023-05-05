@@ -35,15 +35,35 @@ function bindLightBox(previousButton, nextButton, closeButton, currentMedia) {
   previousButton.addEventListener("click", () => {
     buildLightBox(currentMedia.previousMedia.id);
   });
+  document.addEventListener("keyup", (event) => {
+    if (event.key === "ArrowLeft") {
+      buildLightBox(currentMedia.previousMedia.id);
+    }
+  });
   nextButton.addEventListener("click", () => {
     buildLightBox(currentMedia.nextMedia.id);
+  });
+  document.addEventListener("keyup", (event) => {
+    if (event.key === "ArrowRight") {
+      buildLightBox(currentMedia.nextMedia.id);
+    }
   });
   closeButton.addEventListener("click", () => {
     closeLightBox();
   });
+  closeButton.addEventListener("keyup", (event) => {
+    if (event.key === "Escape") {
+      closeLightBox();
+    }
+  });
 }
 
-async function buildLightBox(mediaId) {
+function buildLightBox(mediaId) {
+  const oldLightBoxContent = document.querySelector(".light-box-content");
+  if (oldLightBoxContent) {
+    oldLightBoxContent.remove();
+  }
+
   const formattedMedias = formatMedias();
   const currentMedia = formattedMedias.find((media) => media.id == mediaId);
 
@@ -51,6 +71,7 @@ async function buildLightBox(mediaId) {
   lightBoxModal.innerHTML = "";
 
   const lightBoxContent = document.createElement("div");
+  const lightBoxWrapper = document.createElement("div");
   const previousButton = document.createElement("img");
   const currentMediaContainer = document.createElement("div");
   let currentMediaTag = document.createElement("img");
@@ -71,6 +92,13 @@ async function buildLightBox(mediaId) {
   nextButton.src = "assets/icons/arrow-right.svg";
   closeButton.src = "assets/icons/close-red.svg";
 
+  currentMediaTag.setAttribute("alt", currentMedia.title);
+  currentMediaTag.setAttribute("aria-label", "Image close-up view");
+  previousButton.setAttribute("aria-label", "Image précédente");
+  nextButton.setAttribute("aria-label", "Image suivante");
+  closeButton.setAttribute("aria-label", "Fermer la lightbox");
+  closeButton.setAttribute("tabindex", "0");
+
   if (currentMedia.type === "VIDEO") {
     const source = document.createElement("source");
     source.setAttribute("src", `${currentMedia.url}`);
@@ -83,23 +111,35 @@ async function buildLightBox(mediaId) {
   currentMediaTitle.textContent = currentMedia.title;
 
   currentMediaContainer.appendChild(currentMediaTag);
-  currentMediaContainer.appendChild(currentMediaTitle);
   lightBoxContent.appendChild(previousButton);
   lightBoxContent.appendChild(currentMediaContainer);
   lightBoxContent.appendChild(nextButton);
   lightBoxContent.appendChild(closeButton);
-  lightBoxModal.appendChild(lightBoxContent);
+  lightBoxWrapper.appendChild(lightBoxContent);
+  lightBoxWrapper.appendChild(currentMediaTitle);
+  lightBoxModal.appendChild(lightBoxWrapper);
 
   bindLightBox(previousButton, nextButton, closeButton, currentMedia);
+
+  closeButton.focus();
 }
 
 function displayLightBox(mediaId) {
+  const main = document.querySelector("main");
+  main.setAttribute("aria-hidden", "true");
+
   const modal = document.getElementById("light-box-modal");
   modal.style.display = "flex";
+  modal.setAttribute("aria-hidden", "false");
+
   buildLightBox(mediaId);
 }
 
 function closeLightBox() {
+  const main = document.querySelector("main");
+  main.setAttribute("aria-hidden", "false");
+
   const modal = document.getElementById("light-box-modal");
+  modal.setAttribute("aria-hidden", "true");
   modal.style.display = "none";
 }

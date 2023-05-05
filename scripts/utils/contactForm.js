@@ -38,28 +38,54 @@ async function getPhotographer() {
 
 async function displayModal() {
   const photographer = await getPhotographer();
-  const modal = document.getElementById("contact_modal");
+  const main = document.querySelector("main");
+  const modalContainer = document.getElementById("contact_modal");
+  const modal = document.querySelector(".modal");
   const headerModal = document.querySelector(".header_modal");
   const modalTitle = document.createElement("h2");
+  const closeButton = document.querySelector(".close_modal");
 
   modalTitle.classList.add("modal_title");
   modalTitle.innerHTML = `Contactez-moi<br> ${photographer.name}`;
   headerModal.prepend(modalTitle);
 
+  modalContainer.style.display = "flex";
+  modalContainer.setAttribute("aria-hidden", "false");
+
   modal.style.display = "flex";
+  modal.setAttribute("aria-hidden", "false");
+
+  main.setAttribute("aria-hidden", "true");
+
+  closeButton.addEventListener("keyup", (event) => {
+    if (event.key === "Escape") {
+      closeModal();
+    }
+  });
+  closeButton.focus();
 }
 
 function closeModal() {
-  const modal = document.getElementById("contact_modal");
-  const modalContent = document.querySelector(".modal");
+  const main = document.querySelector("main");
+  const modalContainer = document.getElementById("contact_modal");
+  const modal = document.querySelector(".modal");
   const modalTitle = document.querySelector(".modal_title");
   const confirmationModal = document.querySelector(".submit-confirmation");
 
   modalTitle.remove();
 
+  modalContainer.style.display = "none";
+  modalContainer.setAttribute("aria-hidden", "true");
+
   modal.style.display = "none";
-  modalContent.style.display = "flex";
+  modal.setAttribute("aria-hidden", "true");
+
   confirmationModal.style.display = "none";
+  confirmationModal.setAttribute("aria-hidden", "true");
+
+  main.setAttribute("aria-hidden", "false");
+
+  resetForm();
 }
 
 function checkForm() {
@@ -107,6 +133,13 @@ contactForm.submitBtn.addEventListener("click", (event) => {
   }
   submitForm();
   resetForm();
-  document.querySelector(".modal").style.display = "none";
-  document.querySelector(".submit-confirmation").style.display = "flex";
+
+  const contactModal = document.querySelector(".modal");
+  contactModal.style.display = "none";
+  contactModal.setAttribute("aria-hidden", "true");
+
+  const confirmationModal = document.querySelector(".submit-confirmation");
+  confirmationModal.style.display = "flex";
+  confirmationModal.setAttribute("aria-hidden", "false");
+  document.querySelector(".submit-confirmation button").focus();
 });
