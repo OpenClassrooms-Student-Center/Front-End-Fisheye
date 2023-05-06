@@ -1,0 +1,22 @@
+{
+  "name": "index",
+  "version": "1.0.0",
+  "description": "eslint package",
+  "main": ".eslintrc.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bep42/Fisheye.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/bep42/Fisheye/issues"
+  },
+  "homepage": "https://github.com/bep42/Fisheye#readme",
+  "devDependencies": {
+    "eslint": "^8.38.0"
+  }
+}

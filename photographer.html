@@ -1,37 +1,77 @@
 <!DOCTYPE html>
-<html>
+<html lang="fr">
   <head>
     <link href="css/style.css" rel="stylesheet" type="text/css" />
     <meta charset="utf-8">
     <link rel="icon" type="image/png" href="assets/favicon.png">
     <link href="https://fonts.googleapis.com/css?family=DM+Sans&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <title>Fisheye - photographe </title>
   </head>
   <body>
     <header>
-      <img src="assets/images/logo.png" class="logo" />
+      <a href="index.html">
+        <img src="assets/images/logo.png" class="logo" alt="Fisheye logo" />
+      </a>
     </header>
     <main id="main">
-      <div class="photograph-header">
-        <button class="contact_button" onclick="displayModal()">Contactez-moi</button>
+      <div class="photograph-header"></div>
+      <div class="photograph-filter">
+        <!-- filter button -->
+        <div class="filter-container">
+          <label for="filter-select">Trier par :</label>
+          <select id="filter-select" name="filter-select">
+            <option value="popularity">Popularité</option>
+            <option value="date">Date</option>
+            <option value="title">Titre</option>
+          </select>          
+        </div>                    
+        <!-- /filter button -->
       </div>
+      <div class="photograph-body"></div>
     </main>
-    <div id="contact_modal">
-			<div class="modal">
-				<header>
-          <h2>Contactez-moi</h2>
-          <img src="assets/icons/close.svg" onclick="closeModal()" />
+    <div id="contact_modal" role="dialog" aria-modal="true" aria-labelledby="contact_modal_title" aria-hidden="true">
+      <div class="modal-backdrop" onclick="closeModal()"></div>
+      <div class="modal" role="document">
+        <header>
+          <h2 id="contact_modal_title"></h2>
+          <button class="modal_close_button" aria-label="Fermer la boîte de dialogue" onclick="closeModal()">
+            <img src="assets/icons/close.svg" alt="Fermer la boîte de dialogue" />
+          </button>
         </header>
-				<form>
-					<div>
-						<label>Prénom</label>
-						<input />
-					</div>
-          <button class="contact_button">Envoyer</button>
-				</form>
-			</div>
-		</div>
-    <script src="/scripts/pages/photographer.js"></script>
-    <script src="/scripts/utils/contactForm.js"></script>
+        <form id="contact">
+          <div>
+            <label for="prenom">Prénom:</label>
+            <input type="text" id="prenom" name="prenom" required aria-required="true" />
+          </div>
+          <div>
+            <label for="nom">Nom:</label>
+            <input type="text" id="nom" name="nom" required aria-required="true" />
+          </div>
+          <div>
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required aria-required="true" />
+          </div>
+          <div>
+            <label for="message">Message:</label>
+            <textarea id="message" name="message" required aria-required="true"></textarea>
+          </div>
+          <button type="submit" class="contact_button">Envoyer</button>
+        </form>
+      </div>
+    </div>
+    <!-- lightbox -->
+    <div class="lightbox" role="dialog">
+      <div class="lightbox-container">
+        <button class="close-btn">&times;</button>
+        <div class="lightbox-content"></div>
+      </div>
+    </div>
+        
+    <script src="./scripts/factories/photographer.js"></script>
+    <script src="./scripts/factories/medias.js"></script>
+    <script src="./scripts/factories/lightbox.js"></script>
+    <script src="./scripts/pages/photographer.js"></script>
+    <script src="./scripts/utils/contactForm.js"></script>
   </body>
 </html>
