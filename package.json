@@ -1,0 +1,9 @@
+{
+  "scripts": {
+    "lint": "eslint ."
+  },
+  "devDependencies": {
+    "eslint": "8.40.0",
+    "eslint-config-prettier": "8.8.0"
+  }
+}
