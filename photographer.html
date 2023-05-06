@@ -34,14 +34,19 @@
             id="filters"
             aria-haspopup="true"
             aria-expanded="false"
+            tabindex="0"
           >
-            ↓
+            <span class="current-filter">Popularité</span>
+            <img class="arrow-y" src="assets/icons/arrow-y.svg" alt="" />
           </div>
         </div>
-        <div class="filters-options">
-          <div class="filters-option">Popularité</div>
-          <div class="filters-option">Titre</div>
-          <div class="filters-option">Date</div>
+        <div class="filters-options" aria-hidden="true">
+          <div class="filters-option" tabindex="0" aria-label="Trier par">
+            Titre
+          </div>
+          <div class="filters-option" tabindex="0" aria-label="Trier par ">
+            Date
+          </div>
         </div>
       </div>
       <div class="total-likes"></div>

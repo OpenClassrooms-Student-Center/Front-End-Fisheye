@@ -31,30 +31,62 @@ function displayFilteredMedias(filter, medias) {
   return displaySortedMedias(sortedMedias);
 }
 
+function openDropdown() {
+  const filtersTag = document.querySelector("#filters");
+  const filtersDropdown = document.querySelector(".filters-options");
+  const arrow = document.querySelector(".arrow-y");
+  arrow.classList.toggle("rotate-arrow");
+  filtersTag.classList.toggle("hide-border-radius");
+  filtersDropdown.classList.toggle("display-options");
+}
+
+function selectFilter(event, option, medias) {
+  const currentFilterTag = document.querySelector(".current-filter");
+  const selectedFilter = event.target.innerText;
+  const filtersDropdown = document.querySelector(".filters-options");
+  const filtersTag = document.querySelector("#filters");
+
+  displayFilteredMedias(selectedFilter, medias);
+
+  option.innerText = currentFilterTag.innerText;
+  currentFilterTag.innerText = selectedFilter;
+
+  filtersDropdown.classList.toggle("display-options");
+  filtersTag.classList.toggle("hide-border-radius");
+
+  const arrow = document.querySelector(".arrow-y");
+  arrow.classList.remove("rotate-arrow");
+}
+
 async function init() {
   const photographer = await getPhotographer();
   const photographerModel = photographerFactory(photographer);
   const medias = await photographerModel.getMedias();
 
   const filtersTag = document.querySelector("#filters");
-  const filtersDropdown = document.querySelector(".filters-options");
+  const filtersOptions = document.querySelectorAll(".filters-option");
 
   filtersTag.addEventListener("click", () => {
-    filtersDropdown.classList.toggle("display-options");
-    filtersTag.classList.toggle("hide-border-radius");
+    openDropdown();
   });
-
-  const filtersOptions = document.querySelectorAll(".filters-options");
-
+  filtersTag.addEventListener("keyup", (event) => {
+    if (event.key === "Enter") {
+      openDropdown();
+    }
+  });
   filtersOptions.forEach((option) => {
     option.addEventListener("click", (event) => {
-      const filter = event.target.innerText;
-      displayFilteredMedias(filter, medias);
-      filtersDropdown.classList.toggle("display-options");
-      filtersTag.classList.toggle("hide-border-radius");
-      filtersTag.innerText = filter;
+      selectFilter(event, option, medias);
+    });
+    option.addEventListener("keyup", (event) => {
+      if (event.key === "Enter") {
+        selectFilter(event, option, medias);
+        filtersTag.focus();
+      }
     });
   });
+
+  displayFilteredMedias("Popularité", medias);
 }
 
 init();
