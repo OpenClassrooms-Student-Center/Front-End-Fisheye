@@ -1,6 +1,6 @@
 export class PhotographersModel {
 
-  url = 'data/photographers.json'
+  url = 'data/photographers.json';
 
   async getPhotographers() {
     return fetch(this.url)

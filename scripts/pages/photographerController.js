@@ -1,5 +1,4 @@
 import {mediaFactory} from "../factories/mediaFactory.js";
-// import {Lightbox} from "../factories/lightboxFactory.js";
 import {PhotographersModel} from "../models/photographersModel.js";
 
 export const parentDOM = document.querySelector("main");

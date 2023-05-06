@@ -70,9 +70,9 @@ export function mediaFactory(media) {
                 <span id = "material" class="material-symbols-outlined">expand_more</span>
             </div>
             <ul role="listbox" class="menu" aria-activedescendant="filter__option1" aria-labelledby="filter__title">
-                <li class="selector__element selector__element1 active" role="option" tabindex="-1" data-filter-option="popularity" aria-labelledby="filter__title filter__option1" aria-selected="true">Popularité</li>
-                <li class="selector__element selector__element2" role="option" tabindex="-1" data-filter-option="date" aria-labelledby="filter__title filter__option2">Date</li>
-                <li class="selector__element selector__element3" role="option" tabindex="-1" data-filter-option="title" aria-labelledby="filter__title filter__option3">Titre</li>
+                <li class="selector__element selector__element1 active" role="option" tabindex="-1" data-filter-option="popularity" aria-labelledby="filter__title" aria-selected="true">Popularité</li>
+                <li class="selector__element selector__element2" role="option" tabindex="-1" data-filter-option="date" aria-labelledby="filter__title">Date</li>
+                <li class="selector__element selector__element3" role="option" tabindex="-1" data-filter-option="title" aria-labelledby="filter__title">Titre</li>
             </ul>
         </div>
     `

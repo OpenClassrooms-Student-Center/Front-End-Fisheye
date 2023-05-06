@@ -24,14 +24,18 @@
   <section class="photographer-filter-container"></section>
   <!-- Media List -->
   <section class="photographer-media-container"></section>
-  <div id="lightbox">
+  <div id="lightbox" aria-label="image closeup view">
     <div id="lightbox-content">
-      <video controls id="lightbox-media" src="" autoplay></video>
-      <img alt="" id="lightbox-image" src="">
-      <button id="close-button">Close</button>
-      <button id="previous-button">Previous</button>
-      <button id="next-button">Next</button>
-      <h2 id="media-title"></h2>
+      <div>
+        <video controls id="lightbox-media" src="" autoplay></video>
+        <img alt="" id="lightbox-image" src="">
+        <button id="close-button" aria-label ="Close dialog ">Close</button>
+        <button id="previous-button" aria-label ="Previous image">Previous</button>
+        <button id="next-button" aria-label ="Next image">Next</button>
+      </div>
+      <div>
+        <h2 id="media-title"></h2>
+      </div>    
     </div>
   </div>  
 </main>
@@ -39,10 +43,9 @@
 <script src="scripts/factories/modalFactory.js"></script>
 <script src="scripts/controllers/contactForm.js"></script>
 <script src="scripts/controllers/sortMedia.js" type="module"></script>
-<script src="scripts/factories/photographerFactory.js"></script>
 <script src="scripts/factories/mediaFactory.js" type="module"></script>
-<script src="clement/clement.js" type="module"></script>
-<!-- <script defer src="scripts/factories/lightboxFactory.js" type="module"></script> -->
+<script src="scripts/factories/photographerFactory.js"></script>
+<script defer src="scripts/factories/lightboxFactory.js" type="module"></script>
 <script src="scripts/pages/photographerController.js" type="module"></script>
 <script src="scripts/models/photographersModel.js" type="module"></script>
 </body>

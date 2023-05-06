@@ -11,5 +11,6 @@
   },
   "extends": [
     "eslint:recommended"
-  ]
+  ],
+  "ignorePatterns":["contactForm.js", "modalFactory.js", "photographerFactory.js", "index.js", "photographerController.js", "photographersModel.js"]
 }

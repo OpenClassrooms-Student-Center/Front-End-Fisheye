@@ -1,206 +1,113 @@
-import {parentDOM} from "../pages/photographerController.js";
+import {mediaPhotographer} from '../pages/photographerController.js'
 import {disableBodyScroll, enableBodyScroll} from "./bodyScrollLock.js";
 
-/**
- *
- * @property {HTMLElement} element
- * @property {{ id: number, src: string, title: string, type: "img" | "video" }[]} images
- * @property {number} id current id
- */
-export class Lightbox {
+// Récupérez tous les éléments nécessaires
+const lightbox = document.getElementById('lightbox');
+// const lightboxContent = document.getElementById('lightbox-content');
+const lightboxImage = document.getElementById('lightbox-image');
+const lightboxMedia = document.getElementById('lightbox-media');
+const closeButton = document.getElementById('close-button');
+const previousButton = document.getElementById('previous-button');
+const nextButton = document.getElementById('next-button');
+const mediaTitle = document.getElementById('media-title');
 
-  /**
-   *
-   * @param images
-   * @param {number} id
-   * @param url
-   * @param title
-   * @param currentType
-   */
-  constructor(images, id, url, title, currentType) {
-    // init variables
-    this.id = id
-    this.images = images
-    this.type = currentType
-    this.title = title
-    this.element = this.buildDom()
+let currentIndex = -1;
+let mediaElements = [];
 
-    if (currentType === "img" || currentType === "video") {
-      this.loadImage(id, url, title, currentType)
-    } else {
-      throw new Error('Error de chargement media')
-    }
-    this.onKeyUp = this.onKeyUp.bind(this)
-    parentDOM.appendChild(this.element)
-    disableBodyScroll(this.element)
-    document.addEventListener('keyup', this.onKeyUp)
+
+console.log('medias data:', mediaPhotographer)
+
+// Fonction pour ouvrir la lightbox
+function openLightbox(index) {
+  lightbox.style.display = 'flex'
+
+  currentIndex = index;
+  const mediaElement = mediaElements[currentIndex];
+
+  let title = mediaElement.getAttribute('alt')
+  console.log('affichage element:' , mediaElement)
+  console.log('affichage du titre:' ,title)
+  mediaTitle.innerHTML=title
+
+  const isVideo = mediaElement.tagName === 'VIDEO';
+  if (isVideo) {
+    lightboxMedia.src = mediaElement.src;
+    lightboxMedia.style.display = 'block';
+    lightboxImage.style.display = 'none';
+  } else {
+    lightboxImage.src = mediaElement.src;
+    lightboxImage.style.display = 'block';
+    lightboxMedia.style.display = 'none';
   }
+  lightbox.classList.add('open');
+  disableBodyScroll(lightbox)
+}
 
-  static init() {
-    let links = Array.from(document.querySelectorAll('.picture img[src$=".jpg"], .picture video'))
-    let images = links.map(link => {
-      let id = link.getAttribute('id')
-      let src = link.getAttribute('src')
-      let title = link.getAttribute('alt')
-      let type = src.split(".")[1] === "mp4" ? "video" : "img"
-      return {id, src, title, type}
-    })
+// Fonction pour fermer la lightbox
+function closeLightbox() {
+  lightbox.classList.remove('open');
+  lightbox.classList.add('fadeOut')
+  lightbox.style.display = 'none'
+  lightboxMedia.pause();
+  lightboxMedia.currentTime = 0;
+  enableBodyScroll(lightbox)
+}
 
-    links.forEach(link => link.addEventListener('click', e => {
-      e.preventDefault()
+// Fonction pour passer à la photo suivante
+function nextMedia() {
+  currentIndex = (currentIndex + 1) % mediaElements.length;
+  openLightbox(currentIndex);
+}
 
+// Fonction pour passer à la photo précédente
+function previousMedia() {
+  currentIndex = (currentIndex - 1 + mediaElements.length) % mediaElements.length;
+  openLightbox(currentIndex);
+}
 
-      //TODO: je ne comprend pas ce code la e.target vaut {} ... à quoi cela sert ?
-      let {id, alt, src} = e.target
-      let currentType = e.target.localName
-      console.log("init id : " + id);
-      console.log("init src : " + src);
-      console.log("init alt : " + alt);
-      new Lightbox(images, id, src, alt, currentType)
-    }))
+// Événement pour ouvrir la lightbox lorsqu'une image ou une vidéo est cliquée
+// mediaElements = document.querySelectorAll('img, video');
+mediaElements = document.querySelectorAll('.picture img[src$=".jpg"], .picture video');
+console.log(mediaElements)
+mediaElements.forEach((mediaElement, index) => {
+  mediaElement.addEventListener('click', () => {
+    openLightbox(index);
+  });
+});
+
+// Événement pour fermer la lightbox lorsqu'on clique sur le bouton de fermeture
+closeButton.addEventListener('click', closeLightbox);
+
+// Événement pour fermer la lightbox lorsqu'on clique sur la zone grise en dehors de la lightbox
+lightbox.addEventListener('click', (event) => {
+  if (event.target === lightbox) {
+    closeLightbox();
   }
+});
 
+// Événement pour passer à la photo suivante lorsqu'on clique sur le bouton "Suivant"
+nextButton.addEventListener('click', nextMedia);
 
-  /**
-   *
-   * @param {number} id Image URL
-   * @param {string} url Image URL
-   * @param {string} title Image title
-   */
-  loadImage(id, url, title, type) {
-    this.id = null
+// Événement pour passer à la photo précédente lorsqu'on clique sur le bouton "Précédent"
+previousButton.addEventListener('click', previousMedia);
 
-    const container = this.element.querySelector('.lightbox__container')
-
-    // loader
-    const loader = document.createElement('div')
-    loader.classList.add('lightbox__loader')
-    container.innerHTML = ''
-    container.appendChild(loader)
-
-    // title
-    const titleContainer = document.createElement('h2')
-    titleContainer.classList.add('lightbox__title')
-    titleContainer.innerHTML = title
-
-    console.log("type : " + type)
-    if (type === "img") {
-      const image = new Image()
-      image.onload = () => {
-        container.removeChild(loader)
-        container.appendChild(image)
-        container.appendChild(titleContainer)
-        this.id = id
-      }
-      image.src = url
-      image.setAttribute('alt', title)
-    } else if (type === "video") {
-      console.log("video")
-      alert("coucou")
-      const video = document.createElement('video')
-      video.setAttribute('type', 'video/mp4')
-      video.autoplay = true
-      video.setAttribute('alt', title)
-
-      const src = document.createElement('source')
-      src.setAttribute('src', url)
-      video.appendChild(src)
-
-      video.onload = () => {
-        container.removeChild(loader)
-        container.appendChild(video)
-        container.appendChild(titleContainer)
-        this.id = id
-      }
-    }
+// Événements pour naviguer au clavier et quitter la lightbox 
+document.onkeyup = (event) => {
+  if (event.key === 'Escape') {
+    closeLightbox();
   }
+}
 
-  /**
-   *
-   * @param {KeyboardEvent} e
-   */
-  onKeyUp(e) {
-    if (e.key == 'Escape') {
-      this.close(e)
-    } else if (e.key === 'ArrowLeft') {
-      this.prev(e)
-    } else if (e.key === 'ArrowRight') {
-      this.next(e)
-    }
+document.addEventListener('keydown', keyHandler);
+function keyHandler(e) {
+  // Left Arrow
+  if (e.key === 'ArrowLeft') {
+    
+    previousMedia();
   }
-
-
-  /**
-   * Ferme la lightbox
-   * @param {MouseEvent|KeyboardEvent} e
-   */
-  close(e) {
-    e.preventDefault()
-    this.element.classList.add('fadeOut')
-    enableBodyScroll(this.element)
-    window.setTimeout(() => {
-      this.element.parentElement.removeChild(this.element)
-    }, 500)
-    document.removeEventListener('keyup', this.onKeyUp)
+  // Right Arrow
+  if  (e.key === 'ArrowRight') {
+    
+    nextMedia();
   }
-
-  /**
-   * Image suivante
-   * @param {MouseEvent|KeyboardEvent} e
-   */
-  next(e) {
-    e.preventDefault()
-    let currentIndex = this.images.findIndex(image => image.id === this.id)
-    if (currentIndex === this.images.length - 1) {
-      currentIndex = -1
-    }
-    let {id, src, title} = this.images[currentIndex + 1]
-    if (this.type === "img" || this.type === "video") {
-      this.loadImage(id, src, title, this.type)
-    } else {
-      throw new Error('Error de chargement media')
-    }
-  }
-
-  /**
-   * Image precedente
-   * @param {MouseEvent|KeyboardEvent} e
-   */
-  prev(e) {
-    e.preventDefault()
-    let currentIndex = this.images.findIndex(image => image.id === this.id)
-    if (currentIndex === 0) {
-      currentIndex = this.images.length
-    }
-    let {id, src, title} = this.images[currentIndex - 1]
-    if (this.type === "img" || this.type === "video") {
-      this.loadImage(id, src, title, this.type)
-    } else {
-      throw new Error('Error de chargement media')
-    }
-  }
-
-  /**
-   *
-   * @param {string} url URL de l'image
-   * @return {HTMLElement}
-   */
-  buildDom() {
-    const dom = document.createElement('div')
-    dom.classList.add('lightbox')
-    dom.setAttribute('aria-label', 'image closeup view')
-    dom.innerHTML = `
-            <button class="lightbox__close" aria-label ="Close dialog ">Fermer</button>
-            <button class="lightbox__next" aria-label ="Next image">Suivant</button>
-            <button class="lightbox__prev" aria-label ="Previous image">Précédent</button>
-            <div class="lightbox__container">
-            </div>
-        `
-    dom.querySelector('.lightbox__close').addEventListener('click', this.close.bind(this))
-    dom.querySelector('.lightbox__next').addEventListener('click', this.next.bind(this))
-    dom.querySelector('.lightbox__prev').addEventListener('click', this.prev.bind(this))
-    return dom
-  }
-
-
 }
