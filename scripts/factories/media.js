@@ -1,4 +1,3 @@
-
 let medias = [];
 let currentMedia;
 
