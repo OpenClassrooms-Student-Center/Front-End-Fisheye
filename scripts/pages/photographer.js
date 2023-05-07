@@ -32,6 +32,7 @@ let mediasToSort = [];
 let photographerNameToSort;
 
 async function displayPhotographerMedia(photographers, photographer) {
+
 	photographers.media.sort((a, b) => b.likes - a.likes);
 	const photographerName = photographer.name.replace(/\s+/g, "_");
 	photographerNameToSort = photographerName;

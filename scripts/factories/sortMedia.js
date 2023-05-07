@@ -51,13 +51,19 @@ async function displaySortMedia(photographerName, media) {
 		let sortedMedia = [];
 
 		if (sortBy === "Titre") {
-			sortedMedia = titleSorting();
+			sortedMedia = media.sort((a, z) => {
+				return a.title.localeCompare(z.title);
+			});
 		} 
 		if (sortBy === "Date") {
-			sortedMedia = dateSorting();
+			sortedMedia = media.sort((a, z) => {
+				return new Date(a.date).valueOf() - new Date(z.date).valueOf();
+			});
 		}
 		if (sortBy === "Popularité") {
-			sortedMedia = popularSorting();
+			sortedMedia = media.sort((a, z) => {
+				return parseInt(z.likes) - parseInt(a.likes);
+			});
 		}
 
 		const mediaContainer = document.querySelector(".media-container");
@@ -69,20 +75,4 @@ async function displaySortMedia(photographerName, media) {
 			mediaContainer.appendChild(sortedMediaCardDOM);
 		});
 	}
-	function popularSorting() {
-		media.sort((a, z) => {
-			return parseInt(z.likes) - parseInt(a.likes);
-		});
-	}
-	function dateSorting() { 
-		media.sort((a, z) => {
-			return new Date(a.date).valueOf() - new Date(z.date).valueOf();
-		});
-	}
-	function titleSorting() {
-		media.sort((a, z) => {
-			return a.title.localeCompare(z.title);
-		});
-	}
 }
-
