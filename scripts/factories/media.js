@@ -1,10 +1,10 @@
-let medias = [];
-let currentMedia;
+var medias = [];
+var currentMedia;
 
 // Media factory function
 
 async function mediaFactory(photographerName, media) {
-
+	
 	const { title, likes } = media;
 
 	function getMediaCardDOM () {
@@ -46,7 +46,6 @@ async function mediaFactory(photographerName, media) {
 
 		return mediaElement;
 	}
-	
 	return {title, likes, getMediaCardDOM};
 }
 
@@ -146,17 +145,10 @@ function closeLightBox() {
 	lightbox.classList.remove("active");
 }
 
-// Get current media index
-
-//const currentIndex = medias.findIndex(media => [media.querySelector("img"), media.querySelector("video")].includes(currentMedia));
-//if (currentIndex == 0) {
-//	iconPrev.style.color = "white";
-//}
-
 // Next lightbox
 
 const iconNext = document.querySelector(".next");
-iconNext.addEventListener("click", () => nextLightbox(currentMedia));
+iconNext.addEventListener("click", () => nextLightbox());
 
 function nextLightbox() {
 	const currentIndex = medias.findIndex(media => [media.querySelector("img"), media.querySelector("video")].includes(currentMedia));
@@ -173,7 +165,7 @@ function nextLightbox() {
 // Previous lightbox
 
 const iconPrev = document.querySelector(".prev");
-iconPrev.addEventListener("click", () => prevLightbox(currentMedia));
+iconPrev.addEventListener("click", () => prevLightbox());
 
 async function prevLightbox() {
 	const currentIndex = medias.findIndex(media => [media.querySelector("img"), media.querySelector("video")].includes(currentMedia));
@@ -184,40 +176,3 @@ async function prevLightbox() {
 	const nextMedia = medias[prevIndex];
 	lightboxFactory(nextMedia);
 }
-
-// select options
-
-const selectContainer = document.querySelector(".select-container");
-const selectElement = selectContainer.querySelector("select");
-const selectedElement = document.createElement("div");
-const optionsList = document.createElement("div");
-
-selectedElement.classList.add("select-selected");
-selectedElement.textContent = selectElement.options[selectElement.selectedIndex].textContent;
-selectContainer.appendChild(selectedElement);
-
-optionsList.classList.add("select-items", "select-hide");
-
-for (let option of selectElement.options) {
-	
-	const optionItem = document.createElement("div");
-	optionItem.textContent = option.textContent;
-	optionItem.addEventListener("click", () => {
-		//optionItem.value = selectElement.value;
-		optionItem.textContent = selectedElement.textContent;
-		selectElement.value = option.value;
-		selectedElement.textContent = option.textContent;
-		optionsList.classList.add("select-hide");
-	});
-	if (!option.selected) {
-		optionsList.appendChild(optionItem);
-	}
-}
-
-selectContainer.appendChild(optionsList);
-
-selectedElement.addEventListener("click", (e) => {
-	e.stopPropagation();
-	optionsList.classList.toggle("select-hide");
-	selectedElement.classList.toggle("select-arrow-active");
-});

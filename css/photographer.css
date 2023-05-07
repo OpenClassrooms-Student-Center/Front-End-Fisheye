@@ -59,7 +59,10 @@ main {
     border-radius: 5px;
     cursor: pointer;
 }
-
+.contact_button:hover {
+    background-color: #DB8876;
+    color: black;
+}
 
 /* Select */
 
@@ -79,30 +82,33 @@ main {
     display: none;
 }
 .select-selected {
+    padding: 15px 16px;
     background-color: #901C1C;
-    border-top-left-radius: 5px;
-    border-top-right-radius: 5px;
+    position: relative;
 }
-.select-selected:after {
+.select-selected::after {
+    font-family: "Font Awesome 5 Free";
+    font-weight: 900;
+    content: "\f104";
     position: absolute;
-    content: "";
-    top: 14px;
-    right: 10px;
-    width: 0;
-    height: 0;
-    border: 6px solid transparent;
-    border-color: #fff transparent transparent transparent;
+    top: 50%;
+    right: 18px;
+    transform: translate(-50%, -50%) rotate(90deg);
+    color: #fff;
+    font-size: 20px;
+    pointer-events: none;
+    z-index: 2;
+    transition: all 250ms ease-in-out;
 }
-.select-selected.select-arrow-active:after {
-    border-color: transparent transparent #fff transparent;
-    top: 7px;
+.select-selected.select-arrow-active::after {
+    transform: translate(-50%, -50%) rotate(90deg) scaleX(-1);
 }
-.select-items div,.select-selected {
-    color: #ffffff;
-    padding: 8px 16px;
-
-    cursor: pointer;
-    }
+.select-selected.select-arrow-active { 
+    border-radius: 5px 5px 0 0;
+}
+.select-selected:not(.select-arrow-active) {
+    border-radius: 5px ;
+}
 .select-items {
     position: absolute;
     background-color: #901C1C;
@@ -110,13 +116,29 @@ main {
     left: 0;
     right: 0;
     z-index: 99;
+    padding: 0px 16px 8px 16px;
+    border-radius: 0 0 5px 5px;
+} 
+.select-items div,.select-selected {
+    color: #ffffff;
+    padding: 15px 16px;
+    height: 25px;
+    cursor: pointer;
 }
+.select-items div {
+    padding-left: 0;
+}
+.select-items div:nth-child(2){   
+    border-top: 1px solid white;
+    border-bottom: 1px solid white;
+} 
 .select-hide {
     display: none;
+}  
+.select-hide-option {
+    display: none;
 }
-.select-items div:nth-child(1) {   
-    border: 1px solid white;
-} 
+
 
 
 /* Media */

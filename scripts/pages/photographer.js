@@ -28,8 +28,13 @@ async function displayPhotographerHeader(photographer) {
 	photographHeader.appendChild(img);
 }
 
+let mediasToSort = [];
+let photographerNameToSort;
+
 async function displayPhotographerMedia(photographers, photographer) {
+	photographers.media.sort((a, b) => b.likes - a.likes);
 	const photographerName = photographer.name.replace(/\s+/g, "_");
+	photographerNameToSort = photographerName;
 	const mediaContainer = document.querySelector(".media-container");
 	let totalLikes = 0;
 
@@ -40,11 +45,11 @@ async function displayPhotographerMedia(photographers, photographer) {
 			const photographMedia = await mediaFactory(photographerName, media);
 			const mediaCardDOM = photographMedia.getMediaCardDOM();
 			
-			totalLikes+= parseInt(media.likes);
 			mediaContainer.appendChild(mediaCardDOM);
+			totalLikes+= parseInt(media.likes);
+			mediasToSort.push(media);
 		}
 	}
-	
 	photographerFooterFactory(totalLikes, photographer);
 }
 
@@ -54,7 +59,7 @@ async function init() {
 	const photographer = await getPhotographer();
 	displayPhotographerHeader(photographer);
 	displayPhotographerMedia(photographers, photographer);
-
+	displaySortMedia(photographerNameToSort , mediasToSort);
 }   
 
 window.onload = function()
