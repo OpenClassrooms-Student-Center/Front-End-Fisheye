@@ -1,6 +1,6 @@
 let medias = [];
 let currentMedia;
-
+ 
 // Media factory function
 
 async function mediaFactory(photographerName, media) {
