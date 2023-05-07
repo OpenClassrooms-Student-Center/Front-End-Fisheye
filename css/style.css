@@ -44,6 +44,17 @@ h1 {
     color: #D3573C;
     font-size: 36px;
 }
+.photographer_section article div {
+    justify-self: center;
+    display: flex;
+    flex-direction: column;
+    /* justify-content: center; */
+    align-items: center;
+}
+.photographer_section article h3 {
+    color: #901C1C;
+    font-size: 13px;
+}
 
 .photographer_section article img {
     height: 200px;
