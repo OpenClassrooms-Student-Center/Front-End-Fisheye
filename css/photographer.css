@@ -293,12 +293,6 @@ form textarea {
   cursor: pointer;
 }
 
-.submit-confirmation button:hover,
-.submit-confirmation button:focus {
-  color: #000;
-  background-color: #d3573c;
-}
-
 #light-box-modal {
   position: fixed;
   top: 0;

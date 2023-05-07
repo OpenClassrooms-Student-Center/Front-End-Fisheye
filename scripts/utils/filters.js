@@ -1,3 +1,8 @@
+const filtersTag = document.querySelector('#filters');
+const filtersDropdown = document.querySelector('.filters-options');
+const filtersOptions = document.querySelectorAll('.filters-option');
+const arrow = document.querySelector('.arrow-y');
+
 async function getPhotographer() {
   const response = await fetch('data/photographers.json');
   const data = await response.json();
@@ -32,19 +37,32 @@ function displayFilteredMedias(filter, medias) {
 }
 
 function openDropdown() {
-  const filtersTag = document.querySelector('#filters');
-  const filtersDropdown = document.querySelector('.filters-options');
-  const arrow = document.querySelector('.arrow-y');
   arrow.classList.toggle('rotate-arrow');
   filtersTag.classList.toggle('hide-border-radius');
   filtersDropdown.classList.toggle('display-options');
 }
 
+function resetAriaAttributes() {
+  filtersTag.setAttribute('aria-expanded', 'false');
+  filtersDropdown.setAttribute('aria-hidden', 'true');
+
+  filtersTag.focus();
+}
+
+function toggleAriaAttributes() {
+  const isExpanded = filtersTag.getAttribute('aria-expanded');
+  if (isExpanded === 'false') {
+    filtersTag.setAttribute('aria-expanded', 'true');
+    filtersDropdown.setAttribute('aria-hidden', 'false');
+  } else {
+    filtersTag.setAttribute('aria-expanded', 'false');
+    filtersDropdown.setAttribute('aria-hidden', 'true');
+  }
+}
+
 function selectFilter(event, option, medias) {
   const currentFilterTag = document.querySelector('.current-filter');
   const selectedFilter = event.target.innerText;
-  const filtersDropdown = document.querySelector('.filters-options');
-  const filtersTag = document.querySelector('#filters');
 
   displayFilteredMedias(selectedFilter, medias);
 
@@ -54,7 +72,6 @@ function selectFilter(event, option, medias) {
   filtersDropdown.classList.toggle('display-options');
   filtersTag.classList.toggle('hide-border-radius');
 
-  const arrow = document.querySelector('.arrow-y');
   arrow.classList.remove('rotate-arrow');
 }
 
@@ -63,25 +80,25 @@ async function init() {
   const photographerModel = photographerFactory(photographer);
   const medias = await photographerModel.getMedias();
 
-  const filtersTag = document.querySelector('#filters');
-  const filtersOptions = document.querySelectorAll('.filters-option');
-
   filtersTag.addEventListener('click', () => {
     openDropdown();
+    toggleAriaAttributes();
   });
   filtersTag.addEventListener('keyup', (event) => {
     if (event.key === 'Enter') {
       openDropdown();
+      toggleAriaAttributes();
     }
   });
   filtersOptions.forEach((option) => {
     option.addEventListener('click', (event) => {
       selectFilter(event, option, medias);
+      resetAriaAttributes();
     });
     option.addEventListener('keyup', (event) => {
       if (event.key === 'Enter') {
         selectFilter(event, option, medias);
-        filtersTag.focus();
+        resetAriaAttributes();
       }
     });
   });

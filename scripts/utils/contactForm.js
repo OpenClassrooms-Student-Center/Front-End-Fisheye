@@ -1,13 +1,17 @@
 const contactForm = {
   firstName: {
     element: document.getElementById('first-name'),
-    test: () => document.getElementById('first-name').value.length >= 2,
+    test: () => /^[a-zA-ZÀ-ÖØ-öø-ÿ-]{2,}$/g.test(
+      document.getElementById('first-name').value,
+    ),
     errorMessage:
       'Veuillez entrer au moins 2 caractères (uniquement des lettres).',
   },
   lastName: {
     element: document.getElementById('last-name'),
-    test: () => document.getElementById('last-name').value.length >= 2,
+    test: () => /^[a-zA-ZÀ-ÖØ-öø-ÿ-]{2,}$/g.test(
+      document.getElementById('last-name').value,
+    ),
     errorMessage:
       'Veuillez entrer au moins 2 caractères (uniquement des lettres).',
   },
@@ -25,6 +29,11 @@ const contactForm = {
   },
   submitBtn: document.querySelector('.submit_button'),
 };
+
+const mainTag = document.querySelector('main');
+const modalContainer = document.querySelector('#contact_modal');
+const modal = document.querySelector('.modal');
+const confirmationModal = document.querySelector('.submit-confirmation');
 
 async function getPhotographer() {
   const response = await fetch('data/photographers.json');
@@ -44,12 +53,7 @@ function resetForm() {
 }
 
 function closeModal() {
-  const main = document.querySelector('main');
-  const modalContainer = document.getElementById('contact_modal');
-  const modal = document.querySelector('.modal');
   const modalTitle = document.querySelector('.modal_title');
-  const confirmationModal = document.querySelector('.submit-confirmation');
-
   modalTitle.remove();
 
   modalContainer.style.display = 'none';
@@ -61,23 +65,18 @@ function closeModal() {
   confirmationModal.style.display = 'none';
   confirmationModal.setAttribute('aria-hidden', 'true');
 
-  main.setAttribute('aria-hidden', 'false');
+  mainTag.setAttribute('aria-hidden', 'false');
 
   resetForm();
 }
 
 async function displayModal() {
   const photographer = await getPhotographer();
-  const main = document.querySelector('main');
-  const modalContainer = document.getElementById('contact_modal');
-  const modal = document.querySelector('.modal');
-  const headerModal = document.querySelector('.header_modal');
-  const modalTitle = document.createElement('h2');
-  const closeButton = document.querySelector('.close_modal');
 
+  const modalTitle = document.createElement('h2');
   modalTitle.classList.add('modal_title');
   modalTitle.innerHTML = `Contactez-moi<br> ${photographer.name}`;
-  headerModal.prepend(modalTitle);
+  document.querySelector('.header_modal').prepend(modalTitle);
 
   modalContainer.style.display = 'flex';
   modalContainer.setAttribute('aria-hidden', 'false');
@@ -85,14 +84,14 @@ async function displayModal() {
   modal.style.display = 'flex';
   modal.setAttribute('aria-hidden', 'false');
 
-  main.setAttribute('aria-hidden', 'true');
+  mainTag.setAttribute('aria-hidden', 'true');
 
-  closeButton.addEventListener('keyup', (event) => {
+  document.querySelector('.close_modal').addEventListener('keyup', (event) => {
     if (event.key === 'Escape') {
       closeModal();
     }
   });
-  closeButton.focus();
+  document.querySelector('.close_modal').focus();
 }
 
 function checkForm() {
@@ -133,11 +132,9 @@ contactForm.submitBtn.addEventListener('click', (event) => {
   submitForm();
   resetForm();
 
-  const contactModal = document.querySelector('.modal');
-  contactModal.style.display = 'none';
-  contactModal.setAttribute('aria-hidden', 'true');
+  modal.style.display = 'none';
+  modal.setAttribute('aria-hidden', 'true');
 
-  const confirmationModal = document.querySelector('.submit-confirmation');
   confirmationModal.style.display = 'flex';
   confirmationModal.setAttribute('aria-hidden', 'false');
   document.querySelector('.submit-confirmation button').focus();

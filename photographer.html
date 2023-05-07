@@ -32,7 +32,8 @@
           <div
             name="filters"
             id="filters"
-            aria-haspopup="true"
+            role="button"
+            aria-haspopup="listbox"
             aria-expanded="false"
             tabindex="0"
           >
@@ -40,7 +41,7 @@
             <img class="arrow-y" src="assets/icons/arrow-y.svg" alt="" />
           </div>
         </div>
-        <div class="filters-options" aria-hidden="true">
+        <div class="filters-options" role="listbox" aria-hidden="true">
           <div class="filters-option" tabindex="0" aria-label="Trier par">
             Titre
           </div>

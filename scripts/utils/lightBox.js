@@ -1,8 +1,9 @@
-function formatMedias() {
-  const mediaTags = document.querySelectorAll('.media-tag');
+const lightBoxModal = document.querySelector('#light-box-modal');
+const main = document.querySelector('main');
 
-  const formattedMedias = Array.from(mediaTags).map(
-    (mediaTag, index, array) => {
+function formatMedias() {
+  const formattedMedias = Array.from(document.querySelectorAll('.media-tag'))
+    .map((mediaTag, index, array) => {
       const previousMedia = array[index - 1]
         ? array[index - 1]
         : array[array.length - 1];
@@ -24,22 +25,19 @@ function formatMedias() {
           id: nextMedia.getAttribute('id'),
         },
       };
-    },
-  );
+    });
 
   return formattedMedias;
 }
 
 function buildLightBox(mediaId) {
-  const oldLightBoxContent = document.querySelector('.light-box-content');
-  if (oldLightBoxContent) {
-    oldLightBoxContent.remove();
+  if (document.querySelector('.light-box-content')) {
+    document.querySelector('.light-box-content').remove();
   }
 
   const formattedMedias = formatMedias();
   const currentMedia = formattedMedias.find((media) => media.id === mediaId);
 
-  const lightBoxModal = document.querySelector('#light-box-modal');
   lightBoxModal.innerHTML = '';
 
   const lightBoxContent = document.createElement('div');
@@ -97,23 +95,19 @@ function buildLightBox(mediaId) {
 }
 
 function displayLightBox(mediaId) {
-  const main = document.querySelector('main');
   main.setAttribute('aria-hidden', 'true');
 
-  const modal = document.getElementById('light-box-modal');
-  modal.style.display = 'flex';
-  modal.setAttribute('aria-hidden', 'false');
+  lightBoxModal.style.display = 'flex';
+  lightBoxModal.setAttribute('aria-hidden', 'false');
 
   buildLightBox(mediaId);
 }
 
 function closeLightBox() {
-  const main = document.querySelector('main');
   main.setAttribute('aria-hidden', 'false');
 
-  const modal = document.getElementById('light-box-modal');
-  modal.setAttribute('aria-hidden', 'true');
-  modal.style.display = 'none';
+  lightBoxModal.setAttribute('aria-hidden', 'true');
+  lightBoxModal.style.display = 'none';
 }
 
 function bindLightBox(previousButton, nextButton, closeButton, currentMedia) {
