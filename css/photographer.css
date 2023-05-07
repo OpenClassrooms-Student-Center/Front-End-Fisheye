@@ -1,14 +1,13 @@
-#contact_modal {
-  display: none;
-}
-
 .photograph-header {
   background-color: #FAFAFA;
   height: 300px;
   margin: 0 100px;
 }
 
-.contact_button {
+.contact__modal {
+  display: none;
+}
+.contact__button {
   font-size: 20px;
   font-weight: bold;
   color: white;
@@ -19,6 +18,10 @@
   background-color: #901C1C;
   border-radius: 5px;
   cursor: pointer;
+}
+.contact__button:hover, .contact__button:focus {
+  background-color: #D3573C;
+  color: black;
 }
 
 .modal {
