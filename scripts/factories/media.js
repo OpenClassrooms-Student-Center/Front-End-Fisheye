@@ -1,5 +1,6 @@
-var medias = [];
-var currentMedia;
+
+let medias = [];
+let currentMedia;
 
 // Media factory function
 

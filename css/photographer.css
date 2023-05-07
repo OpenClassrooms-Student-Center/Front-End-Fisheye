@@ -141,6 +141,65 @@ main {
 
 
 
+
+/* Select */
+
+.select-element{
+    margin: 30px 100px;
+}
+.select-element p {
+    font-size: 18px;
+    font-weight: 700;
+}
+.select-container {
+    display: inline-block;
+    position: relative;
+    width: 150px;
+}
+.select-container select {
+    display: none;
+}
+.select-selected {
+    background-color: #901C1C;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+}
+.select-selected:after {
+    position: absolute;
+    content: "";
+    top: 14px;
+    right: 10px;
+    width: 0;
+    height: 0;
+    border: 6px solid transparent;
+    border-color: #fff transparent transparent transparent;
+}
+.select-selected.select-arrow-active:after {
+    border-color: transparent transparent #fff transparent;
+    top: 7px;
+}
+.select-items div,.select-selected {
+    color: #ffffff;
+    padding: 8px 16px;
+
+    cursor: pointer;
+    }
+.select-items {
+    position: absolute;
+    background-color: #901C1C;
+    top: 100%;
+    left: 0;
+    right: 0;
+    z-index: 99;
+}
+.select-hide {
+    display: none;
+}
+.select-items div:nth-child(1) {   
+    border: 1px solid white;
+} 
+
+
 /* Media */
 
 .media-container {
