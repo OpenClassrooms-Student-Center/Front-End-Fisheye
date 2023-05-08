@@ -11,12 +11,12 @@ function photographHeaderFactory(data) {
             aria-label="Résumé du photographe ${name}; Ville: ${city}, ${country}; Slogan: ${tagline}; Tarif : ${price} euros par jour"
         >
             <div>
-                <h2 
+                <h1 
                     class="photographe_article_name photograph-header-details-name" 
                     aria-label="Nom du photographe : ${name}"
                 >
                     ${name}
-                </h2>
+                </h1>
 
                 <p 
                     class="photographe_article_infos photographe_article_city photograph-header-details-city" 

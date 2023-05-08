@@ -14,7 +14,7 @@ a:focus-visible {
     outline-color: #901C1C;
 }
 
-header {
+.header {
     display: flex;
     flex-direction: row;
     justify-content: space-between;

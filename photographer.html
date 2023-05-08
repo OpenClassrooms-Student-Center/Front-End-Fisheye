@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="fr">
   <head>
     <link href="css/style.css" rel="stylesheet" type="text/css" />
     <meta charset="utf-8">
@@ -8,31 +8,61 @@
     <title>Fisheye - photographe </title>
   </head>
   <body>
-    <header>
+    <header class="header">
       <a href="index.html" title="Accueil" aria-label="FishEye" class="logo_link">
-        <img src="assets/images/logo.png" class="logo" />
+        <img src="assets/images/logo.png" alt="Fisheye Home Page" class="logo" />
       </a>
     </header>
     <main id="main">
       <div class="photograph-header">
       </div>
     </main>
-    <div id="contact_modal">
+    <div id="contact-modal">
 			<div class="modal">
-				<header>
+				<header class="modal-header">
           <h2>Contactez-moi</h2>
-          <img src="assets/icons/close.svg" onclick="closeModal()" />
+          <img src="assets/icons/close.svg" alt="" onclick="closeModal()" class="cross-close-modal" />
         </header>
-				<form>
-					<div>
-						<label>Prénom</label>
-						<input />
-					</div>
-          <button class="contact_button">Envoyer</button>
-				</form>
+          <form>
+            <label for="firstname">Prénom</label>
+              <input
+                type="text"
+                id="firstname"
+                name="firstname"
+                minlength="2"
+                maxlength="20"
+                required 
+              />
+            
+            <label for="lastname">Nom</label>
+              <input
+                type="text"
+                id="lastname"
+                name="lastname"
+                minlength="2"
+                maxlength="20"
+                required 
+              />
+            
+            <label for="email">Email</label>
+              <input
+                type="email"
+                id="email"
+                name="email"
+                required 
+              />
+            
+            <label for="message">Votre message</label>
+              <textarea
+                id="message"
+                name="message" 
+                required
+              ></textarea>
+            <button class="contact_button">Envoyer</button>
+          </form>
 			</div>
 		</div>
-    <script src="/scripts/factories/photographHeader.factories.js"></script>
+    <script src="/scripts/factories/photographHeaderFactory.js"></script>
     <script src="/scripts/pages/photographer.js"></script>
     <script src="/scripts/utils/contactForm.js"></script>
   </body>
