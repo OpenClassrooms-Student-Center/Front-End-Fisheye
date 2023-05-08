@@ -1,6 +1,8 @@
 export class PhotographersModel {
 
-  url = 'data/photographers.json';
+  constructor (url) {
+    this.url = url
+  }
 
   async getPhotographers() {
     return fetch(this.url)
@@ -8,7 +10,7 @@ export class PhotographersModel {
       .then(response => {
         return response.photographers
       })
-      .catch(err => {
+      .catch(() => {
         throw new Error('Impossible de contacter le serveur pour getPhotographers')
       })
   }
@@ -19,7 +21,7 @@ export class PhotographersModel {
       .then(response => {
         return response.photographers.find((element) => element.id.toString() === userId)
       })
-      .catch(err => {
+      .catch(() => {
         throw new Error('Impossible de contacter le serveur pour getPhotographersById')
       })
   }
@@ -30,7 +32,7 @@ export class PhotographersModel {
       .then(response => {
         return response.media.filter(media => media.photographerId.toString() === userId)
       })
-      .catch(err => {
+      .catch(() => {
         throw new Error('Impossible de contacter le serveur pour getPhotographersById')
       })
   }

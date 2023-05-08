@@ -5,7 +5,7 @@ import {PhotographersModel} from "../models/photographersModel.js";
 export const parentDOM = document.querySelector("main");
 export const urlPhotographerId = (new URL(window.location)).searchParams.get("id");
 
-const photographersModel = new PhotographersModel();
+const photographersModel = new PhotographersModel('data/photographers.json');
 export const photographer = await photographersModel.getPhotographerById(urlPhotographerId);
 
 export const mediaPhotographer = await photographersModel.getMediaForOnePhotographer(urlPhotographerId);

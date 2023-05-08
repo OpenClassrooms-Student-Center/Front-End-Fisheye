@@ -1,7 +1,7 @@
 import {PhotographersModel} from "./models/photographersModel.js";
 
 async function init() {
-  let photographersModel = new PhotographersModel();
+  let photographersModel = new PhotographersModel('data/photographers.json');
 
   const photographers = await photographersModel.getPhotographers();
   const photographersSection = document.querySelector(".photographer_section");
