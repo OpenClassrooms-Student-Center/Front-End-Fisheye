@@ -24,22 +24,23 @@ const sortByDate = (data) => {
   });
 }
 
+export const arrayToSort = Array.from(mediaPhotographer);
 
 // Listener sort by likes
 popularityBtn.addEventListener("click", function () {
-  const popularityArray = Array.from(mediaPhotographer);
-  popularityArray.sort(function (a, b) {
+  // const popularityArray = Array.from(mediaPhotographer);
+  arrayToSort.sort(function (a, b) {
     return b.likes - a.likes
   });
 
-  mediaData(popularityArray)
+  mediaData(arrayToSort)
 })
 
 // Listener sort by title
 
 titleBtn.addEventListener("click", function () {
-  const titleArray = Array.from(mediaPhotographer);
-  titleArray.sort((a, b) => {
+  // const titleArray = Array.from(mediaPhotographer);
+  arrayToSort.sort((a, b) => {
     const titleA = a.title.toUpperCase();
     const titleB = b.title.toUpperCase();
     if (titleA < titleB) {
@@ -51,7 +52,7 @@ titleBtn.addEventListener("click", function () {
 
     return 0
   });
-  mediaData(titleArray)
+  mediaData(arrayToSort)
 })
 
 // Listener sort by date

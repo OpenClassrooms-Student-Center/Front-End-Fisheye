@@ -1,5 +1,6 @@
 import {mediaPhotographer} from '../pages/photographerController.js'
 import {disableBodyScroll, enableBodyScroll} from "./bodyScrollLock.js";
+import  {arrayToSort} from '../controllers/sortMedia.js';
 
 // Récupérez tous les éléments nécessaires
 const lightbox = document.getElementById('lightbox');
@@ -16,6 +17,8 @@ let mediaElements = [];
 
 
 console.log('medias data:', mediaPhotographer)
+console.log('medias SORT:', arrayToSort)
+
 
 // Fonction pour ouvrir la lightbox
 function openLightbox(index) {
@@ -66,7 +69,6 @@ function previousMedia() {
 }
 
 // Événement pour ouvrir la lightbox lorsqu'une image ou une vidéo est cliquée
-// mediaElements = document.querySelectorAll('img, video');
 mediaElements = document.querySelectorAll('.picture img[src$=".jpg"], .picture video');
 console.log(mediaElements)
 mediaElements.forEach((mediaElement, index) => {
@@ -74,6 +76,7 @@ mediaElements.forEach((mediaElement, index) => {
     openLightbox(index);
   });
 });
+
 
 // Événement pour fermer la lightbox lorsqu'on clique sur le bouton de fermeture
 closeButton.addEventListener('click', closeLightbox);

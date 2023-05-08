@@ -31,7 +31,8 @@ function contactForm(data) {
             </div>
             <div class="formData" data-error="Veuillez saisir au moins deux caractères">
               <label for="form-message" tabindex="0">Votre message</label>
-              <input type="text" name="message" id="form-message" aria-labelledby="form-message" minlength="2" required/>
+
+              <textarea name="message" id="form-message" cols="30" rows="10" aria-labelledby="form-message" minlength="2" required/></textarea>
             </div>
             <br>
             <button class="contact_button" type="submit" aria-label="Envoyer le formulaire">Envoyer</button>
