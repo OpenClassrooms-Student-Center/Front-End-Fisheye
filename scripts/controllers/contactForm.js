@@ -6,6 +6,7 @@ const mediaDom = document.querySelector('.photographer-media-container')
 const filterDom = document.querySelector('.photographer-filter-container')
 const header = document.querySelector('header')
 
+// eslint-disable-next-line no-unused-vars
 function displayModal() {
   const modal = document.querySelector(".contact_modal");
   const encard = document.querySelector('.likes_price');
@@ -32,7 +33,6 @@ function closeModal() {
   mainWrapper.setAttribute('aria-hidden', 'false');
   modal.setAttribute('aria-hidden', 'true');
   body.classList.remove('no-scroll');
-  //TODO: traiter cela avec une classe
   mediaDom.style.opacity = "1";
   bannerDom.style.opacity = "1";
   filterDom.style.opacity = "1";
@@ -41,6 +41,7 @@ function closeModal() {
 }
 
 
+// eslint-disable-next-line no-unused-vars
 function validate() {
   const form = document.querySelector(".form");
   const formData = new FormData(form)
