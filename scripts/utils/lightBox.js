@@ -1,18 +1,23 @@
 const lightBoxModal = document.querySelector('#light-box-modal');
 const main = document.querySelector('main');
 
+// Format medias to build lightbox
 function formatMedias() {
+  // Map through media's DOM elements to build objects easy to use
   const formattedMedias = Array.from(document.querySelectorAll('.media-tag'))
     .map((mediaTag, index, array) => {
+      // Get previous and next media for each media using indexes
       const previousMedia = array[index - 1]
         ? array[index - 1]
         : array[array.length - 1];
       const nextMedia = array[index + 1] ? array[index + 1] : array[0];
 
+      // Get media's path based on its type (because of video gets two tags)
       const src = mediaTag.nodeName === 'IMG'
         ? mediaTag.getAttribute('src')
         : mediaTag.firstChild.getAttribute('src');
 
+      // Return an object with all the data needed to build lightbox
       return {
         id: mediaTag.getAttribute('id'),
         type: mediaTag.nodeName,
@@ -31,15 +36,16 @@ function formatMedias() {
 }
 
 function buildLightBox(mediaId) {
+  // Prevent from building lightbox if it's already built
   if (document.querySelector('.light-box-content')) {
     document.querySelector('.light-box-content').remove();
   }
+  lightBoxModal.innerHTML = '';
 
   const formattedMedias = formatMedias();
   const currentMedia = formattedMedias.find((media) => media.id === mediaId);
 
-  lightBoxModal.innerHTML = '';
-
+  // Create all the elements needed to build lightbox based on current media
   const lightBoxContent = document.createElement('div');
   const lightBoxWrapper = document.createElement('div');
   const previousButton = document.createElement('img');
@@ -69,6 +75,7 @@ function buildLightBox(mediaId) {
   closeButton.setAttribute('aria-label', 'Fermer la lightbox');
   closeButton.setAttribute('tabindex', '0');
 
+  // If current media is a video, create video and souce tags instead of image tag
   if (currentMedia.type === 'VIDEO') {
     const source = document.createElement('source');
     source.setAttribute('src', `${currentMedia.url}`);
@@ -110,6 +117,8 @@ function closeLightBox() {
   lightBoxModal.style.display = 'none';
 }
 
+// Allow to navigate through lightbox and close it with keyboard and mouse
+// and rebuild lightbox each time a new media is displayed
 function bindLightBox(previousButton, nextButton, closeButton, currentMedia) {
   previousButton.addEventListener('click', () => {
     buildLightBox(currentMedia.previousMedia.id);
@@ -119,6 +128,7 @@ function bindLightBox(previousButton, nextButton, closeButton, currentMedia) {
       buildLightBox(currentMedia.previousMedia.id);
     }
   });
+
   nextButton.addEventListener('click', () => {
     buildLightBox(currentMedia.nextMedia.id);
   });
@@ -127,6 +137,7 @@ function bindLightBox(previousButton, nextButton, closeButton, currentMedia) {
       buildLightBox(currentMedia.nextMedia.id);
     }
   });
+
   closeButton.addEventListener('click', () => {
     closeLightBox();
   });

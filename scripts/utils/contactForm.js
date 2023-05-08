@@ -1,3 +1,4 @@
+// Create a contactForm object to easily handle form validation
 const contactForm = {
   firstName: {
     element: document.getElementById('first-name'),
@@ -70,6 +71,7 @@ function closeModal() {
   resetForm();
 }
 
+// eslint-disable-next-line no-unused-vars
 async function displayModal() {
   const photographer = await getPhotographer();
 
@@ -94,6 +96,7 @@ async function displayModal() {
   document.querySelector('.close_modal').focus();
 }
 
+// Loop through contactForm object to check if all inputs are valid
 function checkForm() {
   let isValid = true;
   Object.keys(contactForm).forEach((key) => {
@@ -121,6 +124,7 @@ function submitForm() {
     email: document.getElementById('email').value,
     message: document.getElementById('message').value,
   };
+  // eslint-disable-next-line no-console
   console.log('Form submitted', form);
 }
 

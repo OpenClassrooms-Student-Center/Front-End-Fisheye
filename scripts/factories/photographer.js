@@ -1,9 +1,11 @@
+// eslint-disable-next-line no-unused-vars
 function photographerFactory(photographer) {
+  // Destructuring photographer object to get all the properties
   const {
     name, id, city, country, tagline, price, portrait,
   } = photographer;
 
-  // Recurring elements
+  // Recurring elements that will be used in the photographer card and header
   const avatarSrc = `assets/images/photographers/${portrait}`;
   const avatar = document.createElement('img');
   avatar.setAttribute('src', avatarSrc);

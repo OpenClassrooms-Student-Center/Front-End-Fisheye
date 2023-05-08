@@ -16,12 +16,14 @@ function displaySortedMedias(sortedMedias) {
   const mediasSection = document.querySelector('.medias');
   mediasSection.innerHTML = '';
   sortedMedias.forEach((media) => {
+    // eslint-disable-next-line no-undef
     const mediaModel = mediaFactory(media);
     const mediaCard = mediaModel.getMediaCard();
     mediasSection.appendChild(mediaCard);
   });
 }
 
+// Sort and display medias depending on the selected filter
 function displayFilteredMedias(filter, medias) {
   let sortedMedias;
   if (filter === 'Popularité') {
@@ -60,12 +62,14 @@ function toggleAriaAttributes() {
   }
 }
 
+// Select a filter and display the medias depending on the selected filter
 function selectFilter(event, option, medias) {
   const currentFilterTag = document.querySelector('.current-filter');
   const selectedFilter = event.target.innerText;
 
   displayFilteredMedias(selectedFilter, medias);
 
+  // eslint-disable-next-line no-param-reassign
   option.innerText = currentFilterTag.innerText;
   currentFilterTag.innerText = selectedFilter;
 
@@ -75,8 +79,10 @@ function selectFilter(event, option, medias) {
   arrow.classList.remove('rotate-arrow');
 }
 
+// Bind events to the filters and init the page based on popularity filter
 async function init() {
   const photographer = await getPhotographer();
+  // eslint-disable-next-line no-undef
   const photographerModel = photographerFactory(photographer);
   const medias = await photographerModel.getMedias();
 

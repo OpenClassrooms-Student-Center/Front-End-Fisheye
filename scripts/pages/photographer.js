@@ -1,3 +1,4 @@
+// Get the photographer's id from the url and return the photographer
 async function getPhotographer() {
   const response = await fetch('data/photographers.json');
   const data = await response.json();
@@ -7,6 +8,7 @@ async function getPhotographer() {
   return photographers.find((photographer) => photographer.id === id);
 }
 
+// Get the photographer's header data from model and display it
 async function displayHeaderData(photographer) {
   const photographerHeader = document.querySelector('.photographer-header');
   const photographerModel = photographerFactory(photographer);
@@ -18,6 +20,7 @@ async function displayHeaderData(photographer) {
   photographerHeader.appendChild(avatar);
 }
 
+// Get the photographer's medias from model and display them
 async function displayMedias(photographer) {
   const main = document.querySelector('#main');
 
@@ -36,6 +39,7 @@ async function displayMedias(photographer) {
   main.appendChild(mediasSection);
 }
 
+// Get the photographer's total likes and price from model and display them
 async function displayTotalLikesAndPrice(photographer) {
   const totalLikesAndPriceTag = document.querySelector('.total-likes');
 
@@ -53,6 +57,7 @@ async function displayTotalLikesAndPrice(photographer) {
   totalLikesAndPriceTag.appendChild(priceTag);
 }
 
+// Display the photographer's page
 async function init() {
   const photographer = await getPhotographer();
   displayHeaderData(photographer);
