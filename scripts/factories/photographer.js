@@ -5,6 +5,7 @@ function photographerFactory(data) {
 
     function getUserCardDOM() {
         const article = document.createElement( 'article' );
+        article.classList.add('article');
 
         // ajout d'un attribut "data-id" à l'élément article
         article.setAttribute('data-id', id);

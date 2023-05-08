@@ -13,8 +13,8 @@
     font-weight: bold;
     color: white;
     padding: 11px;
-    width: 120px;
-    height: 50px;
+    width: 150px;
+    height: 60px;
     border: none;
     background-color: #901C1C;
     border-radius: 5px;
@@ -50,6 +50,7 @@ dialog {
 .modal header {
     justify-content: space-between;
     width: 100%;
+    margin-bottom: 2em;
 }
 
 .modal header img {
@@ -60,6 +61,19 @@ dialog {
     font-size: 64px;
     font-weight: normal;
     text-align: center;
+    font-size: 2.5em;
+    line-height: 50px;
+    margin: 0;
+}
+
+.nameContact {
+    display: flex;
+    flex-direction: column;
+}
+
+.photographerName {
+    margin: 0;
+    font-size: 2.5em;
 }
 
 form {
@@ -106,26 +120,6 @@ form input {
     align-items: center;
 }
 
-header {
-    margin-bottom: 2em;
-}
-
-.nameContact {
-    display: flex;
-    flex-direction: column;
-}
-
-#title {
-    font-size: 2.5em;
-    line-height: 50px;
-    margin: 0;
-}
-
-.photographerName {
-    margin: 0;
-    font-size: 2.5em;
-}
-
 #message {
     width: 100%;
     height: 80%;
@@ -165,3 +159,54 @@ header {
     font-size: 18px;
     line-height: 23px;
 }
+
+.likes-price {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    background-color: #DB8876;
+    border-radius: 5px 5px 0 0;
+    position: fixed;
+    width: 376px;
+    right: 40px;
+    bottom: 0;
+}
+
+.likes, .pricePhotographer {
+    font-size: 20px;
+    font-weight: 500;
+}
+
+.containerMedia {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 50px;
+    margin: 100px;
+    justify-content: space-between;
+    align-content: center;
+}
+
+.articleMedia {
+    width: 100%;
+    
+}
+
+.articleMedia > div {
+    width: 100%;
+}
+
+.mediaImg {
+    width: 100%;
+    object-fit: cover;
+    height: 300px;
+
+}
+
+.mediaVideo {
+    width: 100%;
+    object-fit: cover;
+    height: 300px;
+
+}
+
+
