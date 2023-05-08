@@ -1,4 +1,5 @@
 import {mediaFactory} from "../factories/mediaFactory.js";
+// import {openLightbox} from "../factories/lightboxFactory.js";
 import {PhotographersModel} from "../models/photographersModel.js";
 
 export const parentDOM = document.querySelector("main");
@@ -9,13 +10,12 @@ export const photographer = await photographersModel.getPhotographerById(urlPhot
 
 export const mediaPhotographer = await photographersModel.getMediaForOnePhotographer(urlPhotographerId);
 
-console.log("photographer media : " + mediaPhotographer);
 const mediaDataContainer = document.querySelector(".photographer-media-container")
 const filterContainer = document.querySelector(".photographer-filter-container")
 const bannerContainer = document.querySelector(".photographer-banner-container")
 
 async function init() {
-  console.log("photographer : " + photographer);
+  console.log(photographer);
   await bannerData(photographer);
   await likePriceData(photographer);
   formData(photographer);
@@ -37,11 +37,19 @@ async function mediaSort(data) {
   filterContainer.appendChild(mediaFactory(data).getUserMediaSortDOM());
 }
 
+let mediaElements = []
+
+const lightbox = document.getElementById('lightbox');
+const lightboxMedia = document.getElementById('lightbox-media');
+const lightboxImage = document.getElementById('lightbox-image');
+
+
+
 // FONCTION GALERIE MEDIAS PHOTOGRAPHE
 export async function mediaData(data) {
   mediaDataContainer.innerHTML = "";
   data.forEach((media) => {
-    mediaDataContainer.appendChild(mediaFactory(media).getUserMediaDOM());
+    mediaDataContainer.appendChild(mediaFactory(media).getUserMediaDOM())
   });
 }
 

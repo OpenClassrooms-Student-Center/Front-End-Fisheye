@@ -7,6 +7,7 @@ async function init() {
   const photographersSection = document.querySelector(".photographer_section");
 
   photographers.forEach((photographer) => {
+    // eslint-disable-next-line no-undef
     photographersSection.appendChild(photographerFactory(photographer).getUserCardDOM());
   });
 }

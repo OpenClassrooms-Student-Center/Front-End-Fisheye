@@ -1,6 +1,7 @@
 import {mediaPhotographer} from '../pages/photographerController.js'
+// import {sortByDate} from'../controllers/sortMedia.js'
 import {disableBodyScroll, enableBodyScroll} from "./bodyScrollLock.js";
-import  {arrayToSort} from '../controllers/sortMedia.js';
+// import  {arrayToSort} from '../controllers/sortMedia.js';
 
 // Récupérez tous les éléments nécessaires
 const lightbox = document.getElementById('lightbox');
@@ -17,19 +18,16 @@ let mediaElements = [];
 
 
 console.log('medias data:', mediaPhotographer)
-console.log('medias SORT:', arrayToSort)
+// console.log('medias SORT:', arrayToSort)
 
 
 // Fonction pour ouvrir la lightbox
-function openLightbox(index) {
+function openLightbox(index, medias) {
   lightbox.style.display = 'flex'
 
   currentIndex = index;
-  const mediaElement = mediaElements[currentIndex];
-
+  const mediaElement = medias[currentIndex];
   let title = mediaElement.getAttribute('alt')
-  console.log('affichage element:' , mediaElement)
-  console.log('affichage du titre:' ,title)
   mediaTitle.innerHTML=title
 
   const isVideo = mediaElement.tagName === 'VIDEO';
@@ -58,22 +56,22 @@ function closeLightbox() {
 
 // Fonction pour passer à la photo suivante
 function nextMedia() {
+  mediaElements = document.querySelectorAll('.picture img[src$=".jpg"], .picture video')
   currentIndex = (currentIndex + 1) % mediaElements.length;
-  openLightbox(currentIndex);
+  openLightbox(currentIndex, mediaElements);
 }
 
 // Fonction pour passer à la photo précédente
 function previousMedia() {
+  mediaElements = document.querySelectorAll('.picture img[src$=".jpg"], .picture video')
   currentIndex = (currentIndex - 1 + mediaElements.length) % mediaElements.length;
-  openLightbox(currentIndex);
+  openLightbox(currentIndex, mediaElements);
 }
 
-// Événement pour ouvrir la lightbox lorsqu'une image ou une vidéo est cliquée
 mediaElements = document.querySelectorAll('.picture img[src$=".jpg"], .picture video');
-console.log(mediaElements)
 mediaElements.forEach((mediaElement, index) => {
   mediaElement.addEventListener('click', () => {
-    openLightbox(index);
+    openLightbox(index, mediaElements);
   });
 });
 
@@ -114,3 +112,49 @@ function keyHandler(e) {
     nextMedia();
   }
 }
+
+
+// Listener Lightbox sort by likes
+const popularityBtn = document.querySelector('.selector__element1')
+
+popularityBtn.addEventListener("click", function () {
+  // const arrayToSort = Array.from(mediaPhotographer);
+  // arrayToSort.sort(function (a, b) {
+  //   return b.likes - a.likes
+  // });
+  // mediaData(arrayToSort)
+
+  mediaElements = document.querySelectorAll('.picture img[src$=".jpg"], .picture video')
+  mediaElements.forEach((mediaElement, index) => {
+    mediaElement.addEventListener('click', () => {
+      openLightbox(index, mediaElements)
+    });
+  });
+})
+
+// Listener Lightbox sort by title
+
+const titleBtn = document.querySelector('.selector__element3')
+
+titleBtn.addEventListener("click", function () {
+  mediaElements = document.querySelectorAll('.picture img[src$=".jpg"], .picture video')
+  mediaElements.forEach((mediaElement, index) => {
+    mediaElement.addEventListener('click', () => {
+      openLightbox(index, mediaElements)
+    });
+  });
+})
+
+const dateBtn = document.querySelector('.selector__element2')
+
+// Listener Lightbox sort by date
+
+dateBtn.addEventListener('click', function () {
+  mediaElements = document.querySelectorAll('.picture img[src$=".jpg"], .picture video')
+  mediaElements.forEach((mediaElement, index) => {
+    mediaElement.addEventListener('click', () => {
+      openLightbox(index, mediaElements)
+    });
+  });
+})
+

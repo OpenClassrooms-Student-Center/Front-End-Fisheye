@@ -1,13 +1,14 @@
 import {mediaData, mediaPhotographer} from '../pages/photographerController.js'
 
-const popularityBtn = document.querySelector('.selector__element1')
+
 const dateBtn = document.querySelector('.selector__element2')
+const popularityBtn = document.querySelector('.selector__element1')
 const titleBtn = document.querySelector('.selector__element3')
 
 // --- Utils function --- //
 
 // Sort data by date
-const sortByDate = (data) => {
+export const sortByDate = (data) => {
   const copyData = [...data]
 
   return copyData.sort((a, b) => {
@@ -21,26 +22,29 @@ const sortByDate = (data) => {
     }
 
     return 0
-  });
+  }); 
 }
 
-export const arrayToSort = Array.from(mediaPhotographer);
+// Listener sort by date
+dateBtn.addEventListener('click', function () {
+  const dataSorted = sortByDate(mediaPhotographer)
+  mediaData(dataSorted)
+})
 
-// Listener sort by likes
+// // Listener sort by likes
 popularityBtn.addEventListener("click", function () {
-  // const popularityArray = Array.from(mediaPhotographer);
-  arrayToSort.sort(function (a, b) {
+  const popularityArray = Array.from(mediaPhotographer);
+  popularityArray.sort(function (a, b) {
     return b.likes - a.likes
   });
 
-  mediaData(arrayToSort)
+  mediaData(popularityArray)
 })
 
 // Listener sort by title
-
 titleBtn.addEventListener("click", function () {
-  // const titleArray = Array.from(mediaPhotographer);
-  arrayToSort.sort((a, b) => {
+  const titleArray = Array.from(mediaPhotographer);
+  titleArray.sort((a, b) => {
     const titleA = a.title.toUpperCase();
     const titleB = b.title.toUpperCase();
     if (titleA < titleB) {
@@ -52,15 +56,9 @@ titleBtn.addEventListener("click", function () {
 
     return 0
   });
-  mediaData(arrayToSort)
+  mediaData(titleArray)
 })
 
-// Listener sort by date
-
-dateBtn.addEventListener('click', function () {
-  const dataSorted = sortByDate(mediaPhotographer)
-  mediaData(dataSorted)
-})
 
 // Sort menu
 

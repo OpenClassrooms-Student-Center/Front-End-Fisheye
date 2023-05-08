@@ -1,3 +1,4 @@
+// eslint-disable-next-line no-unused-vars
 function contactForm(data) {
   const wrapper = document.createElement('div');
   wrapper.classList.add("contact_modal")

@@ -14,8 +14,8 @@ export function mediaFactory(media) {
     let mediaDOM;
     if (media.image) {
       mediaDOM = `
-                <article class="picture_block" aria-label="lien vers l'image">
-                    <div class="picture">
+                <article class="picture_block" aria-label="lien vers l'image" >
+                    <div class="picture" data="${id}">
                         <img id="${id}" src="${picture}" alt="${title}">
                     </div>
                 </article>
@@ -42,7 +42,7 @@ export function mediaFactory(media) {
                     </div>
                 </div>
             `
-    }
+    }    
     wrapper.innerHTML = mediaDOM
     wrapper.querySelector('.likes').addEventListener('click', (event) => {
       if (event.target.checked) {
