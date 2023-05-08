@@ -1,6 +1,6 @@
 //Mettre le code JavaScript lié à la page photographer.html ici.
 import { photographerFactory } from "../factories/photographer.js";
-// import { mediaFactory } from "../factories/mediaFactory.js";
+import { mediaFactory } from "../factories/mediaFactory.js";
 let mediaPhotographer = [];
 async function dataPhotographer(file) {
     const response = await fetch(file);
@@ -32,9 +32,52 @@ function header(photographer){
     modalContact.setAttribute("aria-label", `Contactez-moi ${photographer.name}`);
 }
 
+const totalLikes = (mediaPhotographer) =>{
+    const total = mediaPhotographer.reduce((acc, media) => acc + media.likes, 0);
+    return total;    
+};
+
+function displayLikesPrice(mediaPhotographer, photographer){
+    const total = totalLikes(mediaPhotographer);
+    const price = photographer.price;
+    const likesPrice = document.createElement( 'div');
+    likesPrice.classList.add('likesPrice');
+
+    const pPrice = document.createElement( 'p');
+    pPrice.classList.add('pPrice');
+
+    const pLikes = document.createElement( 'p');
+    pLikes.classList.add('pLikes');
+
+    pPrice.innerHTML = `${price}€/jour`;
+    pLikes.innerHTML = `${total} <i class="fas fa-heart"></i>`;
+
+    likesPrice.appendChild(pLikes);
+    likesPrice.appendChild(pPrice);
+    
+
+    const main = document.querySelector("#main");
+    main.appendChild(likesPrice);
+};
 
 
 
+function addFromMediaFactory(idPhotographer, mediaPhotographer, containerMedias){
+    mediaPhotographer.forEach(media => {
+        media.photographerId = idPhotographer;
+        const factoryMedia = mediaFactory(media);
+        const mediaDOM = factoryMedia.querySelector('.mediaArticle');
+        containerMedias.appendChild(factoryMedia);
+    });
+};
+
+function displayMedias(media, idPhotographer){
+    const containerMedias = document.createElement('div');
+    containerMedias.classList.add('containerMedias');
+    const main = document.querySelector("main");
+    main.appendChild(containerMedias);
+    addFromMediaFactory(idPhotographer, media, containerMedias);
+};
 
 async function init(){
     const data = await dataPhotographer('../../data/photographers.json');
@@ -46,13 +89,17 @@ async function init(){
     const photographer = foundPhotographer(photographers, idPhotographer);
     const photographerName = document.querySelector(".photographerName");
     photographerName.textContent = photographer.name;
-    
+
     mediaPhotographer = foundMedia(media, idPhotographer);
     
     header(photographer);
-    foundMedia(media, idPhotographer);
-    foundPhotographer(photographers, idPhotographer);
-    
+    // foundMedia(media, idPhotographer);
+    // foundPhotographer(photographers, idPhotographer);
+    // totalLikes(mediaPhotographer);
+    displayLikesPrice(mediaPhotographer, photographer);
+    displayMedias(mediaPhotographer, idPhotographer);
 };
 
 init();
+
+

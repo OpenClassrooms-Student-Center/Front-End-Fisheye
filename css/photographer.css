@@ -43,6 +43,9 @@
 .close{
     border: none;
     background-color: unset;
+    position: absolute;
+    top: 15px;
+    right: 15px;
 }
 
 .imgPhotographer{
@@ -52,17 +55,15 @@
     object-fit: cover;
 }
 
-
-
 .modal {
+    width: 30em;
     border-radius: 5px;
     background-color: #DB8876;
-    /* width: 100%; */
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: space-between;
-    padding: 35px;
+    padding: 4em;
     margin: auto;
     position: fixed;
     top: 50%;
@@ -70,6 +71,7 @@
     transform: translate(-50%, -50%);
     z-index: 9999;
 }
+
 
 #contact_modal{
     padding: 0;
@@ -79,20 +81,36 @@ dialog{
     border: none;
 }
 
-.modal header {
+header {
+    margin-bottom: 2em;
+}
+
+.modal header{
     justify-content: space-between;
     width: 100%;
+    margin-bottom: 2em;
 }
 
 .modal header img {
     cursor: pointer;
 }
 
-.modal header h2 {
-    font-size: 64px;
-    font-weight: normal;
-    text-align: center;
+.nameContact {
+    display: flex;
+    flex-direction: column;
 }
+
+#title{
+    font-size: 3.5em;
+    line-height: 50px;
+    margin: 0;
+}
+
+.photographerName {
+    margin: 5px 0 45px 0;
+    font-size: 3.5em;
+}
+
 
 form {
     display: flex;
@@ -103,7 +121,7 @@ form {
 
 form label {
     color: #312E2E;
-    font-size: 36px;
+    font-size: 1.5em;
 }
 
 form div {
@@ -127,3 +145,22 @@ form input {
     border: none;
     border-radius: 5px;
 }
+
+.likesPrice{
+    display: flex;
+    position: fixed;
+    right: 40px;
+    bottom: 0;
+    background-color: #DB8876;
+    border-radius: 5px 5px 0 0;
+    width: 376px;
+    height: 89px;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.likesPrice > p{
+    font-size: 24px;   
+}
+
+

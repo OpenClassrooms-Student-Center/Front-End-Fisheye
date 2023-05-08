@@ -1,14 +1,12 @@
 @import url("photographer.css");
 
 * {
-    font-weight: bold;
+    font-weight: 400;
 }
 
 body {
     font-family: "DM Sans", sans-serif;
     margin: auto;
-    max-width: 1440px;
-    
 }
 
 
