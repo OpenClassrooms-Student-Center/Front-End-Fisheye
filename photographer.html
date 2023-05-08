@@ -7,7 +7,12 @@
     <link rel="icon" type="image/png" href="./assets/favicon.png">
     <link href="./stylesheets/css/style.css" rel="stylesheet" type="text/css" />
     <link href="https://fonts.googleapis.com/css?family=DM+Sans&display=swap" rel="stylesheet">
-    <title>Fisheye - photographe </title>
+    <title>Fisheye - photographe</title>
+    <script src="./scripts/factories/media_factory.js"></script>
+    <script src="./scripts/models/media.js"></script>
+    <script src="./scripts/models/photographer.js"></script>
+    <script type="module" src="./scripts/pages/photographer.js"></script>
+    <script src="https://kit.fontawesome.com/c498a47d8b.js" crossorigin="anonymous"></script>
   </head>
   <body>
     <header>
@@ -16,20 +21,17 @@
       </a>
     </header>
 
-    <main id="main">
-      <div id="photographer_header">
-        <button class="button" aria-label="Contact me" onclick="displayModal()">
-          Contactez-moi
-        </button>
-      </div>
+    <main class="main">
+      <div class="photographer-header"></div>
       <div class="filter-wrapper">
-        <label for="filter" class="input-label">Trier par</label>
+        <!-- <label for="filter" class="input-label">Trier par</label>
         <select id="filter" aria-label="Order by">
           <option value="likes">Popularité</option>
           <option value="date">Date</option>
           <option value="title">Titre</option>
-        </select>
+        </select> -->
       </div>
+      <div class="medias-section"></div>
     </main>
 
     <div id="contact_modal">
@@ -58,9 +60,6 @@
 			</div>
 		</div>
 
-    <script src="./scripts/factories/photographer_factory.js"></script>
     <script src="./scripts/utils/contactForm.js"></script>
-    <script type="module" src="./scripts/pages/photographer.js"></script>
-    <script src="https://kit.fontawesome.com/c498a47d8b.js" crossorigin="anonymous"></script>
   </body>
-  </html>
+</html>

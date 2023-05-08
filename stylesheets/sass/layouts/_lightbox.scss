@@ -60,7 +60,7 @@
   }
 }
 
-@media only screen and (max-width: $mobile){
+@media only screen and (max-width: $small){
   .lightbox {
     &__prev {
       transform: scale(2) rotate(180deg);

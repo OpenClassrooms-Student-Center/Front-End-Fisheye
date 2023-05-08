@@ -1,30 +1,33 @@
-#photographer_header {
-  display: block;
+.photographer-header {
   background-color: $secondary-light;
   height: 300px;
   margin: 0 100px;
   padding: 40px;
-  flex-wrap: wrap;
   @include itemSpaceCenter;
-
   h1{
     font-size: 60px;
     font-weight: 400;
     color: $primary-light;
-    width: 400px;
     margin: 0 0 20px 0;
     line-height: 0.8;
   }
-
   .city {
     font-size: 22px;
     color: $primary-dark;
     margin-bottom: 20px;
   }
-
+  .description {
+    width: 40%;
+    text-align: center;
+  }
   img {
     @include pictureProfil;
-    margin-left: 200px;
+  }
+  .photographers{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
   }
 }
 
@@ -35,7 +38,6 @@
   z-index: 1;
   margin-top: 15px;
   margin-left: 100px;
-
   label {
     font-weight: 700;
     font-size: 16px;
@@ -109,7 +111,7 @@
   transition: .2s linear;
 }
 
-#medias_section {
+.medias-section {
   display: grid;
   grid-template-columns: repeat(3, 400px);
   grid-gap: 20px;
@@ -192,8 +194,8 @@
   }
 }
 
-@media screen and (max-width: $tablet){
-  #medias_section {
+@media screen and (max-width: $medium){
+  .medias-section {
   @include itemCenter;
   flex-wrap: wrap;
   margin-right: 80px;
@@ -208,7 +210,7 @@
     }
   }
 }
-@media screen and (max-width: $mobile){
+@media screen and (max-width: $small){
   .logo{
     margin: auto;
   }
@@ -216,7 +218,7 @@
     flex-direction: column;
     padding: 20px;
     h1{
-        width: auto;
+      width: auto;
     }
     button{
       margin-top: 20px;
@@ -225,9 +227,8 @@
   .sort_section{
     margin: 20px;
   }
-  #medias_section {
+  .medias-section {
     margin: auto;
-
     .likes-price {
       width: 90%;
       left: 0px;

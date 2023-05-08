@@ -8,18 +8,18 @@
     <link href="./stylesheets/css/style.css" rel="stylesheet" type="text/css" />
     <link href="https://fonts.googleapis.com/css?family=DM+Sans&display=swap" rel="stylesheet">
     <title>Fisheye</title>
+    <script src="./scripts/models/photographer.js"></script>
+    <script type="module" src="./scripts/pages/index.js"></script>
   </head>
   <body>
-    <header class="header__index">
+    <header id="header__index">
       <a class="logo" href="./index.html">
         <img src="./assets/images/logo.png" alt="Fisheye Home page" />
       </a>
-      <h1>Nos photographes</h1>
+      <h1 class="photographers-link">Nos photographes</h1>
     </header>
-    <main id="main">
-      <div id="photographer_section"></div>
+    <main class="main">
+      <div class="photographers-index"></div>
     </main>
-    <script src="./scripts/factories/photographer_factory.js"></script>
-    <script type="module" src="./scripts/pages/index.js"></script>
   </body>
 </html>

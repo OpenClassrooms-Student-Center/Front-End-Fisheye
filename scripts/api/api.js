@@ -1,6 +1,6 @@
 export class Api {
   constructor(url) {
-    this.url = url
+    this.url = url;
   }
 
   async getPhotographers() {
@@ -14,16 +14,18 @@ export class Api {
       }
       data = await response.json();
     } catch (apiError) {
-      throw new Error ('Failed to retrieve ressources')
+      throw new Error ('Failed to retrieve ressources');
     }
+    console.log(data)
     return data.photographers;
   }
 
-  async getPhotographerId() {
+  async getPhotographerById() {
     let data = undefined;
     const currentUrl = new URL(document.location.href);
     const id = currentUrl.searchParams.get("id");
     let currentPhotographer = undefined;
+    let currentMedia = undefined;
     try {
       let response = await fetch(this.url);
       if (!response.ok) {
@@ -33,15 +35,19 @@ export class Api {
       }
       data = await response.json();
     } catch (apiError) {
-      throw new Error ('Failed to retrieve ressources')
+      throw new Error ('Failed to retrieve ressources');
     }
     data.photographers.forEach((photographer) => {
       if (photographer.id == id) {
-        console.log("photographer :", photographer.id, photographer.name, photographer)
-        currentPhotographer = photographer
+        currentPhotographer = photographer;
       }
     });
-    return currentPhotographer
+    data.media.forEach(medias => {
+      if (medias.photographerId == id) {
+        currentMedia = medias;
+      }
+    });
+    return currentPhotographer;
   }
 }
 
@@ -54,7 +60,7 @@ export class PhotographersApi extends Api {
     return this.getPhotographers();
   }
 
-  getPhotographerBanner() {
-    return this.getPhotographerId();
+  getPhotographerPages() {
+    return this.getPhotographerById();
   }
 }

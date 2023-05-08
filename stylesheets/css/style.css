@@ -21,11 +21,6 @@ header {
   height: 90px;
 }
 
-h1 {
-  color: #901C1C;
-  margin-right: 100px;
-}
-
 a {
   text-decoration: none;
 }
@@ -37,6 +32,11 @@ a {
   height: 50px;
 }
 
+@media screen and (max-width: 950px) {
+  .main {
+    margin-bottom: 80px;
+  }
+}
 .button {
   font-size: 20px;
   font-weight: bold;
@@ -116,7 +116,7 @@ a {
 
 .lightbox__container {
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
   margin-left: 50px;
   margin-right: 50px;
@@ -266,27 +266,32 @@ form .formData[data-error-visible=true] input, form .formData[data-error-visible
     font-size: 20px;
   }
 }
-#photographer_section {
+.photographers-link {
+  color: #901C1C;
+  margin-right: 100px;
+}
+
+.photographers-index {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   gap: 70px;
   margin-top: 100px;
 }
-
-#photographer_section article, #photographer_section a {
+.photographers-index .photographer__link {
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
   justify-self: center;
   flex-direction: column;
 }
-#photographer_section article h2, #photographer_section a h2 {
+
+.photographer__link--name {
   margin: 15px auto 5px;
   color: #D3573C;
   font-weight: 400;
   font-size: 36px;
 }
-#photographer_section article img, #photographer_section a img {
+.photographer__link--photo {
   height: 200px;
   width: 200px;
   border-radius: 50%;
@@ -294,77 +299,79 @@ form .formData[data-error-visible=true] input, form .formData[data-error-visible
   box-shadow: 1px 1px 15px rgba(150, 150, 150, 0.5);
   transition: 0.2s;
 }
-#photographer_section article .description, #photographer_section a .description {
+.photographer__description {
   text-align: center;
 }
-#photographer_section article .city, #photographer_section a .city {
+.photographer__description--city {
   color: #901C1C;
   font-size: 18px;
 }
-#photographer_section article .price, #photographer_section a .price {
+.photographer__description--price {
   color: #525252;
 }
-
-article a:focus-visible {
+.photographer__link:focus-visible {
   outline: none;
 }
-article a:focus-visible > img {
+.photographer__link:focus-visible--photo {
   transform: scale(1.2);
   opacity: 0.85;
   transition: 0.2s;
 }
 
 @media screen and (max-width: 1400px) {
-  #photographer_section {
+  .photographers-index {
     grid-template-columns: 1fr 1fr;
   }
 }
 @media screen and (max-width: 950px) {
-  .header__index {
+  #header__index {
     flex-direction: column;
     margin-top: 20px;
   }
-  .header__index h1 {
+  #header__index h1 {
     margin-right: 0;
   }
-  #photographer_section {
+  .photographers-index {
     grid-template-columns: 1fr;
   }
-  #main {
-    margin-bottom: 80px;
-  }
 }
-#photographer_header {
-  display: block;
+.photographer-header {
   background-color: #fafafa;
   height: 300px;
   margin: 0 100px;
   padding: 40px;
-  flex-wrap: wrap;
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
-#photographer_header h1 {
+.photographer-header h1 {
   font-size: 60px;
   font-weight: 400;
   color: #D3573C;
-  width: 400px;
   margin: 0 0 20px 0;
   line-height: 0.8;
 }
-#photographer_header .city {
+.photographer-header .city {
   font-size: 22px;
   color: #901C1C;
   margin-bottom: 20px;
 }
-#photographer_header img {
+.photographer-header .description {
+  width: 40%;
+  text-align: center;
+}
+.photographer-header img {
   height: 200px;
   width: 200px;
   border-radius: 50%;
   object-fit: cover;
   box-shadow: 1px 1px 15px rgba(150, 150, 150, 0.5);
-  margin-left: 200px;
+}
+.photographer-header .photographers {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
 .sort_section {
@@ -446,7 +453,7 @@ article a:focus-visible > img {
   transition: 0.2s linear;
 }
 
-#medias_section {
+.medias-section {
   display: grid;
   grid-template-columns: repeat(3, 400px);
   grid-gap: 20px;
@@ -454,12 +461,12 @@ article a:focus-visible > img {
   max-width: 1200px;
   margin-left: 80px;
 }
-#medias_section figure {
+.medias-section figure {
   position: relative;
   width: 360px;
   margin: 20px;
 }
-#medias_section figure video + figcaption:after {
+.medias-section figure video + figcaption:after {
   pointer-events: none;
   content: " ";
   padding: 70px 70px;
@@ -471,7 +478,7 @@ article a:focus-visible > img {
   top: 65px;
   right: 90px;
 }
-#medias_section figure img, #medias_section figure video {
+.medias-section figure img, .medias-section figure video {
   height: 300px;
   width: 100%;
   border-radius: 5px;
@@ -479,13 +486,13 @@ article a:focus-visible > img {
   cursor: pointer;
   transition: 0.2s;
 }
-#medias_section figure img:focus-visible, #medias_section figure video:focus-visible {
+.medias-section figure img:focus-visible, .medias-section figure video:focus-visible {
   transform: scale(1.03);
   opacity: 0.85;
   outline: 3px solid #901C1C;
   transition: 0.2s;
 }
-#medias_section figcaption {
+.medias-section figcaption {
   display: flex;
   justify-content: space-between;
   align-items: baseline;
@@ -493,13 +500,13 @@ article a:focus-visible > img {
   color: #901C1C;
   width: 100%;
 }
-#medias_section figcaption p {
+.medias-section figcaption p {
   margin-top: 8px;
 }
-#medias_section figcaption .likes {
+.medias-section figcaption .likes {
   white-space: nowrap;
 }
-#medias_section figcaption button {
+.medias-section figcaption button {
   margin-left: 8px;
   cursor: pointer;
   background: none;
@@ -508,13 +515,13 @@ article a:focus-visible > img {
   font-size: inherit;
   transition: 0.2s;
 }
-#medias_section figcaption button:focus-visible {
+.medias-section figcaption button:focus-visible {
   outline: none;
   color: #D3573C;
   transform: scale(1.5);
   transition: 0.2s;
 }
-#medias_section .likes-price {
+.medias-section .likes-price {
   background: #D3573C;
   padding: 20px 40px;
   position: fixed;
@@ -524,15 +531,15 @@ article a:focus-visible > img {
   font-weight: 700;
   font-size: 20px;
 }
-#medias_section .likes-price i {
+.medias-section .likes-price i {
   margin-left: 10px;
   margin-right: 40px;
 }
 
 @media screen and (max-width: 1400px) {
-  #medias_section {
+  .medias-section {
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
     flex-wrap: wrap;
     margin-right: 80px;
@@ -564,10 +571,10 @@ article a:focus-visible > img {
   .sort_section {
     margin: 20px;
   }
-  #medias_section {
+  .medias-section {
     margin: auto;
   }
-  #medias_section .likes-price {
+  .medias-section .likes-price {
     width: 90%;
     left: 0px;
     border-radius: 0;

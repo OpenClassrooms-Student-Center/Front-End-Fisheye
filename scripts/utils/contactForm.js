@@ -3,9 +3,9 @@ const modal = document.getElementById("contact_modal");
 function displayModal() {
   const contactMeText = document.getElementById("modal_title");
   const firstNameInput = document.getElementById("first-name");
-  const btn = document.getElementsByClassName("send_form");
-  const closeBtn = document.getElementsByClassName("close_form");
-  const photographerName = document.getElementsByClassName("photographer_header").innerText;
+  const btn = document.querySelector(".send_form");
+  const closeBtn = document.querySelector(".close_form");
+  const photographerName = document.querySelector(".photographer__link--name").innerText;
 
   modal.setAttribute("aria-label", "Contact me " + photographerName);
   contactMeText.innerHTML = `Contactez-moi <br/> ${ photographerName }`;

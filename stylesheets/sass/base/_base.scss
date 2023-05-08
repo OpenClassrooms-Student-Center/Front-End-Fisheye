@@ -6,24 +6,10 @@ body {
   max-width: 1400px;
 }
 
-// Header
-// header {
-//   display: flex;
-//   flex-direction: row;
-//   justify-content: space-between;
-//   align-items: center;
-//   height: 90px;
-// }
 header {
   @include itemSpaceCenter;
   flex-direction: row;
   height: 90px;
-}
-
-// Title
-h1 {
-  color: $primary-dark;
-  margin-right: 100px;
 }
 
 // Link
@@ -35,6 +21,13 @@ a {
 .logo {
   margin-left: 100px;
   img {
-      height: 50px;
+    height: 50px;
+  }
+}
+
+// Media screen Main
+@media screen and (max-width: $small){
+  .main{
+    margin-bottom: 80px;
   }
 }

@@ -7,21 +7,17 @@ class IndexApp {
 
   async displayData(photographers) {
     // Display photographers
-    const photographersSection = document.querySelector("#photographer_section");
-    console.log("aaaa", photographersSection)
+    const photographersSection = document.querySelector(".photographers-index");
     photographers.forEach((photographer) => {
-      const photographerModel = new PhotographerFactory(photographer);
-      const userCardDOM = photographerModel.getUserCardDOM();
-      photographersSection.appendChild(userCardDOM.article);
+      const photographerModel = new PhotographerModel(photographer);
+      photographersSection.append(photographerModel.getUserCardDOM());
     });
   };
 
   async init() {
     // Récupère les datas des photographes
-    const photographerData = await this.usersDataApi.getPhotographerData();
-    this.displayData(photographerData);
+    this.displayData(await this.usersDataApi.getPhotographerData());
   };
 }
 
-const launchApp = new IndexApp();
-launchApp.init()
+new IndexApp().init();
