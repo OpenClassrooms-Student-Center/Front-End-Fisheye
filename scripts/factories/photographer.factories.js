@@ -9,7 +9,7 @@ function photographerFactory(data) {
         `<article 
             class="photographe_article" 
             tabindex="0" 
-            aria-label="Résumé du photographe ${name}"
+            aria-label="Résumé du photographe ${name}; Ville: ${city}, ${country}; Slogan: ${tagline}; Tarif : ${price} euros par jour"
         >
             <a 
                 href="./photographer.html?id=${id}" 
@@ -21,35 +21,30 @@ function photographerFactory(data) {
                     src="${picture}" 
                     alt="${name}" 
                     aria-label="Photo de profil de ${name}" 
-                    class="photographe_article_img" tabindex="0" 
+                    class="photographe_article_img"
                 />
                 <h2 
                     class="photographe_article_name" 
-                    aria-label="Nom du photographe : ${name}" 
-                    tabindex="0"
+                    aria-label="Nom du photographe : ${name}"
                 >
                     ${name}
                 </h2>
             </a>
             <p 
                 class="photographe_article_infos photographe_article_city" 
-                aria-label="Ville de ${name} : ${city}, ${country}" 
-                tabindex="0"
+                aria-label="Ville de ${name} : ${city}, ${country}"
             >
                 ${city}, ${country}
             </p>
             <p 
-                class="photographe_article_infos 
-                photographe_article_tagline" 
+                class="photographe_article_infos photographe_article_tagline" 
                 aria-label="Slogan de ${name} : ${tagline}" 
-                tabindex="0"
             >
                 ${tagline}
             </p>
             <p 
                 class="photographe_article_infos photographe_article_price" 
                 aria-label="Prix par jour de ${name} : ${price} euros par jour" 
-                tabindex="0"
             >
                 ${price}€/jour
             </p>

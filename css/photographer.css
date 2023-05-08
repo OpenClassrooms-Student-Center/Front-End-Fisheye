@@ -4,8 +4,22 @@
 
 .photograph-header {
     background-color: #FAFAFA;
-    height: 300px;
-    margin: 0 100px;
+    margin: 1rem 100px;
+}
+
+.photograph-header-details {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    padding: 2rem;
+}
+
+.photograph-header-details-name {
+    margin: inherit;
+}
+
+.photograph-header .photograph-header-details-city {
+    margin: 1rem 0;
 }
 
 .contact_button {
