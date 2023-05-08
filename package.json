@@ -1,0 +1,10 @@
+{
+  "devDependencies": {
+    "eslint": "^8.39.0"
+  },
+  "scripts": {
+    "lint": "eslint --max-warnings=0 ."
+  }
+} 
+
+

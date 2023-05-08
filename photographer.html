@@ -1,37 +1,52 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <link href="css/style.css" rel="stylesheet" type="text/css" />
-    <meta charset="utf-8">
-    <link rel="icon" type="image/png" href="assets/favicon.png">
-    <link href="https://fonts.googleapis.com/css?family=DM+Sans&display=swap" rel="stylesheet">
-    <title>Fisheye - photographe </title>
-  </head>
-  <body>
-    <header>
-      <img src="assets/images/logo.png" class="logo" />
-    </header>
-    <main id="main">
-      <div class="photograph-header">
-        <button class="contact_button" onclick="displayModal()">Contactez-moi</button>
+<html lang="fr">
+<head>
+  <link href="css/style.css" rel="stylesheet" type="text/css"/>
+  <meta charset="utf-8">
+  <link href="assets/favicon.png" rel="icon" type="image/png">
+  <link href="https://fonts.googleapis.com/css?family=DM+Sans&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,1,0"
+        rel="stylesheet"/>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <title>Fisheye - photographe </title>
+</head>
+<body id="body">
+<header>
+  <a href="index.html">
+    <img alt="Fisheye Home Page" class="logo" src="assets/images/logo.png"/>
+  </a>
+</header>
+<main aria-hidden="false" id="main">
+  <!-- Banner -->
+  <section class="photographer-banner-container"></section>
+  <!-- Filters -->
+  <section class="photographer-filter-container"></section>
+  <!-- Media List -->
+  <section class="photographer-media-container"></section>
+  <div id="lightbox" aria-label="image closeup view">
+    <div id="lightbox-content">
+      <div>
+        <video controls id="lightbox-media" src="" autoplay></video>
+        <img alt="" id="lightbox-image" src="">
+        <button id="close-button" aria-label ="Close dialog ">Close</button>
+        <button id="previous-button" aria-label ="Previous image">Previous</button>
+        <button id="next-button" aria-label ="Next image">Next</button>
       </div>
-    </main>
-    <div id="contact_modal">
-			<div class="modal">
-				<header>
-          <h2>Contactez-moi</h2>
-          <img src="assets/icons/close.svg" onclick="closeModal()" />
-        </header>
-				<form>
-					<div>
-						<label>Prénom</label>
-						<input />
-					</div>
-          <button class="contact_button">Envoyer</button>
-				</form>
-			</div>
-		</div>
-    <script src="/scripts/pages/photographer.js"></script>
-    <script src="/scripts/utils/contactForm.js"></script>
-  </body>
+      <div>
+        <h2 id="media-title"></h2>
+      </div>    
+    </div>
+  </div>  
+</main>
+
+<script src="scripts/factories/modalFactory.js"></script>
+<script src="scripts/controllers/contactForm.js"></script>
+<script src="scripts/controllers/sortMedia.js" type="module"></script>
+<script src="scripts/factories/mediaFactory.js" type="module"></script>
+<script src="scripts/factories/photographerFactory.js"></script>
+<script defer src="scripts/factories/lightboxFactory.js" type="module"></script>
+<script src="scripts/pages/photographerController.js" type="module"></script>
+<script src="scripts/models/photographersModel.js" type="module"></script>
+</body>
 </html>

@@ -1,21 +1,24 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <link href="css/style.css" rel="stylesheet" type="text/css" />
-    <meta charset="utf-8">
-    <link rel="icon" type="image/png" href="assets/favicon.png">
-    <link href="https://fonts.googleapis.com/css?family=DM+Sans&display=swap" rel="stylesheet">
-    <title>Fisheye</title>
-  </head>
-  <body>
-    <header>
-        <img src="assets/images/logo.png" class="logo" />
-        <h1>Nos photographes</h1>
-    </header>
-    <main id="main">
-        <div class="photographer_section"></div>
-    </main>
-    <script src="scripts/factories/photographer.js"></script>
-    <script src="scripts/pages/index.js"></script>
-  </body>
+<html lang="fr">
+<head>
+  <link href="css/style.css" rel="stylesheet" type="text/css"/>
+  <meta charset="utf-8">
+  <link href="assets/favicon.png" rel="icon" type="image/png">
+  <link href="https://fonts.googleapis.com/css?family=DM+Sans&display=swap" rel="stylesheet">
+  <title>Fisheye</title>
+</head>
+<body>
+<header role="banner">
+  <a href="index.html">
+    <img alt="Fisheye Home Page" class="logo" src="assets/images/logo.png"/>
+  </a>
+  <h1>Nos photographes</h1>
+</header>
+<main id="main">
+  <div aria-label="Liste des photographes" class="photographer_section"></div>
+</main>
+<script src="scripts/index.js" type="module"></script>
+<script src="scripts/factories/photographerFactory.js"></script>
+
+</body>
 </html>
