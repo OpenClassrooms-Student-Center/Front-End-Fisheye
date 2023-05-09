@@ -13,6 +13,7 @@ function photographerFactory(data) {
 
         const photographerImg = document.createElement( 'img' );
         photographerImg.setAttribute("src", picture);
+        photographerImg.setAttribute("alt", name);
         photographerImg.className += "photographer-card__img";
 
         const photographerName = document.createElement( 'h2' );
