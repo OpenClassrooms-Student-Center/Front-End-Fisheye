@@ -46,6 +46,14 @@ h1 {
   align-items: center;
   flex-direction: column;
 
+  &__link {
+    text-decoration: none;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
   &__img {
     height: 200px;
     width: 200px;

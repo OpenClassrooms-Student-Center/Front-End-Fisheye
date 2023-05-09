@@ -45,6 +45,13 @@ h1 {
   align-items: center;
   flex-direction: column;
 }
+.photographer-card__link {
+  text-decoration: none;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
 .photographer-card__img {
   height: 200px;
   width: 200px;
