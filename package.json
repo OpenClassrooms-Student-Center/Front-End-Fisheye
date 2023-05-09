@@ -7,7 +7,8 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "sass": "sass --watch ./sass/main.scss:./css/style.css ./sass/photographer.scss:./css/photographer.css"
+    "sass": "sass --watch ./sass/main.scss:./css/style.css ./sass/photographer.scss:./css/photographer.css",
+    "lint": "eslint ."
   },
   "repository": {
     "type": "git",
@@ -18,5 +19,8 @@
   "bugs": {
     "url": "https://github.com/daddyjanno/Front-End-Fisheye/issues"
   },
-  "homepage": "https://github.com/daddyjanno/Front-End-Fisheye#readme"
+  "homepage": "https://github.com/daddyjanno/Front-End-Fisheye#readme",
+  "devDependencies": {
+    "eslint": "^8.40.0"
+  }
 }

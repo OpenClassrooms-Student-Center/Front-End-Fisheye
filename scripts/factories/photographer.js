@@ -1,4 +1,4 @@
-function photographerFactory(data) {
+export function photographerFactory(data) {
     const { id, name, portrait, city, country, tagline, price } = data;
 
     const picture = `assets/photographers/${portrait}`;
@@ -8,7 +8,7 @@ function photographerFactory(data) {
         article.className += "photographer-card"
 
         const photographerLink = document.createElement("a");
-        photographerLink.setAttribute("href", id);
+        photographerLink.setAttribute("href", `/photographer.html?id=${id}`);
         photographerLink.className += "photographer-card__link"
 
         const photographerImg = document.createElement( 'img' );
