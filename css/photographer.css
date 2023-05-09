@@ -57,6 +57,10 @@
   border: none;
   border-radius: 5px;
 }
+.modal__close {
+  background-color: transparent;
+  border: none;
+}
 
 form {
   display: flex;

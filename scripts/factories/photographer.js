@@ -1,4 +1,4 @@
-export function photographerFactory(data) {
+function photographerFactory(data) {
     const { id, name, portrait, city, country, tagline, price } = data;
 
     const picture = `assets/photographers/${portrait}`;
@@ -9,6 +9,7 @@ export function photographerFactory(data) {
 
         const photographerLink = document.createElement("a");
         photographerLink.setAttribute("href", `/photographer.html?id=${id}`);
+        photographerLink.setAttribute("aria-label", `lien vers le portfolio de ${name}`);
         photographerLink.className += "photographer-card__link"
 
         const photographerImg = document.createElement( 'img' );

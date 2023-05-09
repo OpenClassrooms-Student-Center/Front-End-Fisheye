@@ -1,4 +1,4 @@
-    import { photographerFactory } from "../factories/photographer";
+// import { photographerFactory } from "photographer.js";
 
     async function getPhotographers() {
 

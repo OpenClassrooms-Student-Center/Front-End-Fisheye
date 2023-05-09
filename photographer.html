@@ -9,7 +9,7 @@
   </head>
   <body>
     <header>
-      <img src="assets/images/logo.png" class="logo" />
+      <a href="./index.html"><img src="assets/images/logo.png" class="logo" alt="Fisheye Home page" /></a>
     </header>
     <main id="main">
       <div class="photograph-header">
@@ -20,7 +20,9 @@
 			<div class="modal">
 				<header class="modal__header">
           <h2 class="modal__title">Contactez-moi</h2>
-          <img class="modal__img" src="assets/icons/close.svg" onclick="closeModal()" />
+          <button aria-label="Bouton de fermeture de la fenêtre de formulaire" class="modal__close">
+            <img class="modal__img" src="assets/icons/close.svg" onclick="closeModal()" alt="Close button icon" />
+          </button>
         </header>
         <br>
 				<form class="form">
