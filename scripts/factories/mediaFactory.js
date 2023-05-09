@@ -1,14 +1,25 @@
-function mediaFactory(data){
+function mediaFactory(data, lightboxOpen = false){
     const {image, video, id, photographerId, title, likes, date} = data;
     const mediaImage = `assets/images/${photographerId}/${image}`;
     const mediaVideo = `assets/images/${photographerId}/${video}`;
 
     
     const article = document.createElement( 'article' );
-    const pMedia = document.createElement( 'p' );
-    pMedia.classList.add('pMedia');
-    article.classList.add('mediaArticle');
     article.setAttribute('data-id',data.id);
+    const pMedia = document.createElement( 'p' );
+    
+
+    if (lightboxOpen){
+        article.classList.add('lightboxArticle');
+        pMedia.classList.add('pLightbox');
+    } else {
+        article.classList.add('mediaArticle');
+        pMedia.classList.add('pMedia');
+    }
+
+    
+    
+
     if (image){
         const img = document.createElement( 'img' );
         img.setAttribute("src", mediaImage);
