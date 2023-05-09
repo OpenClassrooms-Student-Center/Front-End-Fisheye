@@ -163,4 +163,37 @@ form input {
     font-size: 24px;   
 }
 
+.containerMedias{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 70px;
+    margin: 100px;
+    
+}
+
+
+.mediaImg{
+    width: 100%;
+    object-fit: cover;
+    height: 300px;
+    border-radius: 5px;
+}
+
+
+.mediaVideo{
+    width: 100%;
+    object-fit: cover;
+    height: 300px;
+    border-radius: 5px;
+}
+
+.pMedia{
+    display: flex;
+    color: #901C1C;
+    justify-content: space-between;
+    margin-top: 5px;
+    font-size: 24px;
+    font-weight: 400;
+    line-height: 31px;
+}
 

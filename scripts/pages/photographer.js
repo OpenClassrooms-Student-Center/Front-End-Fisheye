@@ -79,6 +79,8 @@ function displayMedias(media, idPhotographer){
     addFromMediaFactory(idPhotographer, media, containerMedias);
 };
 
+
+
 async function init(){
     const data = await dataPhotographer('../../data/photographers.json');
     const {photographers, media} = data;
@@ -93,9 +95,6 @@ async function init(){
     mediaPhotographer = foundMedia(media, idPhotographer);
     
     header(photographer);
-    // foundMedia(media, idPhotographer);
-    // foundPhotographer(photographers, idPhotographer);
-    // totalLikes(mediaPhotographer);
     displayLikesPrice(mediaPhotographer, photographer);
     displayMedias(mediaPhotographer, idPhotographer);
 };
