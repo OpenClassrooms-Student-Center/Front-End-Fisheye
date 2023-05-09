@@ -8,7 +8,7 @@ async function getPhotographers() {
 // Disposer les photographes avec photographerFactory
 async function displayPhotographers() {
     const photographers = await getPhotographers();
-    const photographersSection = document.querySelector(".photographer_section");
+    const photographersSection = document.querySelector(".photographer-section");
 
     photographers.forEach((photographer) => {
         const photographerModel = photographerFactory(photographer);

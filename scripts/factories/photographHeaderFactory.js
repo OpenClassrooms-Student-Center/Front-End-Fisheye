@@ -11,36 +11,26 @@ function photographHeaderFactory(data) {
             aria-label="Résumé du photographe ${name}; Ville: ${city}, ${country}; Slogan: ${tagline}; Tarif : ${price} euros par jour"
         >
             <div>
-                <h1 
-                    class="photographe_article_name photograph-header-details-name" 
-                    aria-label="Nom du photographe : ${name}"
-                >
+                <h1 class="photographe-article-name photograph-header-details-name">
                     ${name}
                 </h1>
 
-                <p 
-                    class="photographe_article_infos photographe_article_city photograph-header-details-city" 
-                    aria-label="Ville de ${name} : ${city}, ${country}"
-                >
+                <p class="photographe-article-infos photographe-article-city photograph-header-details-city">
                     ${city}, ${country}
                 </p>
 
-                <p 
-                    class="photographe_article_infos photographe_article_tagline" 
-                    aria-label="Slogan de ${name} : ${tagline}" 
-                >
+                <p class="photographe-article-infos photographe-article-tagline">
                     ${tagline}
                 </p>
             </div>
             
-            <button class="contact_button" onclick="displayModal()">Contactez-moi</button>
+            <button class="contact-button" onclick="displayModal()">Contactez-moi</button>
         
             <img 
                 src="${picture}" 
-                alt="${name}" 
-                aria-label="Photo de profil de ${name}" 
-                class="photographe_article_img"
-            />
+                alt="${name}"  
+                class="photographe-article-img"
+            >
         </article>`
 
         const section = document.createElement('article');

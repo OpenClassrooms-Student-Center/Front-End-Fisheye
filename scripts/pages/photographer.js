@@ -6,7 +6,6 @@ async function getPhotographDetails() {
     const response = await fetch('data/photographers.json');
     const photographersData = await response.json();
     const photographDetails = photographersData.photographers.find(item => item.id === parseInt(id))
-    console.log(photographDetails)
     return photographDetails;
 }
 
@@ -26,6 +25,3 @@ async function init() {
 };
 
 init();
-
-
-

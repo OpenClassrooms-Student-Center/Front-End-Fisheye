@@ -5,6 +5,11 @@ body {
     margin: 0;
 }
 
+textarea {
+    font-family: "DM Sans", sans-serif;
+    font-size: 18px;
+}
+
 a {
     text-decoration: none;
 }
@@ -31,18 +36,18 @@ h1 {
     height: 50px;
 }
 
-.logo_link {
+.logo-link {
     margin-left: 100px;
 }
 
-.photographer_section {
+.photographer-section {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-around;
     margin-top: 80px;
 }
 
-.photographe_article {
+.photographe-article {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -52,37 +57,37 @@ h1 {
     margin: 0 0.5rem 4rem 0.5rem;
 }
 
-.photographe_article_link {
+.photographe-article-link {
     text-decoration: none;
 }
 
-.photographe_article_img {
+.photographe-article-img {
     height: 200px;
     width: 200px;
     object-fit: cover;
     border-radius: 50%;
 }
 
-.photographe_article_name {
+.photographe-article-name {
     color: #D3573C;
     font-size: 33px;
     margin-bottom: 0rem;
 }
 
-.photographe_article_infos {
+.photographe-article-infos {
     margin: 0;
 }
 
-.photographe_article_city {
+.photographe-article-city {
     color: #901C1C;
     font-size: 16px;
 }
 
-.photographe_article_tagline {
+.photographe-article-tagline {
     font-size: 15px;
 }
 
-.photographe_article_price {
+.photographe-article-price {
     color: #717171;
     font-size: 14px;
 }

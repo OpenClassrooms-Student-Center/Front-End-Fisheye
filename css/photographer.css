@@ -1,7 +1,3 @@
-#contact_modal {
-    display: none;
-}
-
 .photograph-header {
     background-color: #FAFAFA;
     margin: 1rem 100px;
@@ -22,7 +18,7 @@
     margin: 1rem 0;
 }
 
-.contact_button {
+.contact-button {
     font-size: 20px;
     font-weight: bold;
     color: white;
@@ -33,12 +29,17 @@
     background-color: #901C1C;
     border-radius: 5px;
     cursor: pointer;
+    transition: all 350ms ease-in-out;
+}
+
+.contact-button:hover {
+    background-color: #D3573C;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
 }
 
 /* MODAL */
-
 #contact-modal {
-    display: block;
+    display: none;
     position: fixed;
     top: 0;
     bottom: 0;
@@ -49,7 +50,7 @@
 
 .modal {
     border-radius: 10px;
-    background-color: #dd9585;
+    background-color: #ddbab2;
     width: 35%;
     display: flex;
     flex-direction: column;
@@ -109,6 +110,12 @@ form input {
     border-radius: 5px;
     margin-bottom: 15px;
     font-size: 18px;
+}
+
+.input-error {
+    margin-top: -10px;
+    color: darkred;
+    font-weight: bold;
 }
 
 form input:focus {
