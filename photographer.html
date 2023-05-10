@@ -16,12 +16,14 @@
     <main id="main">
       <div class="photograph-header">
       </div>
+      <div class="medias-container">
+      </div>
     </main>
     <div id="contact-modal">
 			<div class="modal">
 				<header class="modal-header">
           <h2>Contactez-moi</h2>
-          <img src="assets/icons/close.svg" alt="" onclick="closeModal()" class="cross-close-modal">
+          <img src="assets/icons/close.svg" alt="" onclick="closeModal()" class="cross-close-modal" tabindex="0">
         </header>
           <form id="form">
             <label for="firstname">Prénom</label>
@@ -71,6 +73,7 @@
           </form>
 			</div>
 		</div>
+    <script src="/scripts/factories/mediaFactory.js"></script>
     <script src="/scripts/factories/photographHeaderFactory.js"></script>
     <script src="/scripts/pages/photographer.js"></script>
     <script src="/scripts/utils/contactForm.js"></script>
