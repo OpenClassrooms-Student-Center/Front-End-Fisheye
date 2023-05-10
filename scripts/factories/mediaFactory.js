@@ -39,6 +39,34 @@ function mediaFactory(data, lightboxOpen = false){
         article.appendChild(video);
         article.appendChild(pMedia);
     }
+
+    if(!lightboxOpen){
+        const linkInfos = document.createElement('a');
+        linkInfos.classList.add('linkInfos');
+        const mediaInfos = document.createElement('div');
+        mediaInfos.classList.add('mediaInfos');
+        const mediaTitle = document.createElement('h3');
+        mediaTitle.classList.add('mediaTitle');
+        const mediaLikes = document.createElement('p');
+        mediaLikes.classList.add('mediaLikes');
+
+        linkInfos.setAttribute("href", "#");
+        linkInfos.setAttribute("aria-label", `Média ${title}`);
+        mediaTitle.textContent = title;
+        mediaTitle.setAttribute("lang", "en");
+
+        mediaLikes.textContent = `${likes} `;
+        mediaLikes.setAttribute("aria-label", `Nombre de likes ${likes}`);
+        mediaLikes.setAttribute("aria-live", "polite");
+        mediaLikes.setAttribute("role", "status");
+
+        linkInfos.appendChild(mediaInfos);
+        mediaInfos.appendChild(mediaTitle);
+        mediaInfos.appendChild(mediaLikes);
+
+        article.appendChild(linkInfos);
+    }
+
     return article;
 }
 
