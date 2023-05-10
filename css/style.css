@@ -38,41 +38,120 @@ h1 {
   margin-bottom: 100px;
 }
 
-.photographer-card {
+.photographer {
   justify-self: center;
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
 }
-.photographer-card__link {
+.photographer__link {
   text-decoration: none;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
 }
-.photographer-card__img {
+.photographer__img {
   height: 200px;
   width: 200px;
   border-radius: 50%;
 }
-.photographer-card__name {
+.photographer__name {
   color: #D3573C;
   font-size: 36px;
   text-align: center;
 }
-.photographer-card__location {
+.photographer__location {
   color: #901C1C;
   font-size: 13px;
 }
-.photographer-card__tagline {
+.photographer__tagline {
   color: black;
   font-size: 10px;
 }
-.photographer-card__price {
+.photographer__price {
   color: #757575;
   font-size: 9px;
+}
+
+.contact__modal {
+  display: none;
+}
+.contact__button {
+  font-size: 20px;
+  font-weight: bold;
+  color: white;
+  padding: 11px;
+  width: 170px;
+  height: 70px;
+  border: none;
+  background-color: #901C1C;
+  border-radius: 5px;
+  cursor: pointer;
+}
+.contact__button:hover, .contact__button:focus {
+  background-color: #D3573C;
+  color: black;
+}
+
+.modal {
+  border-radius: 5px;
+  background-color: #DB8876;
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  padding: 35px;
+  margin: auto;
+}
+.modal__header {
+  justify-content: space-between;
+  width: 100%;
+}
+.modal__title {
+  font-size: 64px;
+  font-weight: normal;
+  text-align: center;
+}
+.modal__img {
+  cursor: pointer;
+}
+.modal__label {
+  color: #312E2E;
+  font-size: 36px;
+}
+.modal__input {
+  width: 100%;
+  height: 68px;
+  border: none;
+  border-radius: 5px;
+}
+.modal__close {
+  background-color: transparent;
+  border: none;
+}
+
+form {
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+form div {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  align-items: self-start;
+  margin-bottom: 26px;
+}
+
+.photograph-header {
+  background-color: #FAFAFA;
+  height: 300px;
+  margin: 0 100px;
 }
 
 /*# sourceMappingURL=style.css.map */

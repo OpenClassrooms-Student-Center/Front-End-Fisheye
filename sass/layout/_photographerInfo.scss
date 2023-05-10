@@ -1,0 +1,46 @@
+.photographer_section {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 70px;
+  margin-top: 100px;
+  margin-bottom: 100px;
+}
+
+.photographer {
+justify-self: center;
+display: flex;
+justify-content: center;
+align-items: center;
+flex-direction: column;
+
+  &__link {
+    text-decoration: none;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  &__img {
+    height: 200px;
+    width: 200px;
+    border-radius: 50%;
+  }
+  &__name {
+    color: #D3573C;
+    font-size: 36px;
+    text-align: center;
+  }
+  &__location {
+    color: #901C1C;
+    font-size: 13px;
+  }
+  &__tagline {
+    color: black;
+    font-size: 10px;
+  }
+  &__price {
+    color: #757575;
+    font-size: 9px;
+  }
+}

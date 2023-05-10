@@ -5,33 +5,33 @@ export function photographerFactory(data) {
 
     function getUserCardDOM() {
         const article = document.createElement( 'article' );
-        article.className += "photographer-card"
+        article.className += "photographer"
 
         const photographerLink = document.createElement("a");
         photographerLink.setAttribute("href", `/photographer.html?id=${id}`);
         photographerLink.setAttribute("aria-label", `lien vers le portfolio de ${name}`);
-        photographerLink.className += "photographer-card__link"
+        photographerLink.className += "photographer__link"
 
         const photographerImg = document.createElement( 'img' );
         photographerImg.setAttribute("src", picture);
         photographerImg.setAttribute("alt", name);
-        photographerImg.className += "photographer-card__img";
+        photographerImg.className += "photographer__img";
 
         const photographerName = document.createElement( 'h2' );
         photographerName.textContent = name;
-        photographerName.className += "photographer-card__name";
+        photographerName.className += "photographer__name";
 
         const photographerLocation = document.createElement("h3");
         photographerLocation.textContent = `${city}, ${country}`;
-        photographerLocation.className += "photographer-card__location";
+        photographerLocation.className += "photographer__location";
 
         const photographerTagline = document.createElement("p");
         photographerTagline.textContent = tagline;
-        photographerTagline.className += "photographer-card__tagline"
+        photographerTagline.className += "photographer__tagline"
 
         const photographerPrice = document.createElement("p");
         photographerPrice.textContent = `${price}€/jour`;
-        photographerPrice.className += "photographer-card__price"
+        photographerPrice.className += "photographer__price"
 
         article.appendChild(photographerLink)
         photographerLink.appendChild(photographerImg)

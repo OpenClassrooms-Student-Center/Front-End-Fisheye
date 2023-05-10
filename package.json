@@ -7,7 +7,7 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "sass": "sass --watch ./sass/main.scss:./css/style.css ./sass/photographer.scss:./css/photographer.css",
+    "sass": "sass --watch ./sass/main.scss:./css/style.css",
     "lint": "eslint ."
   },
   "repository": {
@@ -22,10 +22,6 @@
   "homepage": "https://github.com/daddyjanno/Front-End-Fisheye#readme",
   "devDependencies": {
     "eslint": "^8.40.0",
-    "eslint-config-recommended": "^4.1.0",
-    "eslint-config-standard": "^17.0.0",
-    "eslint-plugin-import": "^2.27.5",
-    "eslint-plugin-n": "^15.7.0",
-    "eslint-plugin-promise": "^6.1.1"
+    "eslint-config-recommended": "^4.1.0"
   }
 }

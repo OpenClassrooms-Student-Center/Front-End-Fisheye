@@ -1,79 +1,22 @@
 @import url("photographer.css");
 
-*,
-*:before,
-*:after {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
 
-body {
-    font-family: "DM Sans", sans-serif;
-    margin: 0;
-}
 
-header {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-    height: 90px;
-}
+// Abstracts
 
-h1 {
-    color: #901C1C;
-    margin-right: 100px;
-}
+// Vendors
 
-.logo {
-    height: 50px;
-    margin-left: 100px;
-}
+// Base
+@import "./base/reset";
+@import "./base/typography";
 
-.photographer_section {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    gap: 70px;
-    margin-top: 100px;
-    margin-bottom: 100px;
-}
+// Layout
+@import "./layout/photographerInfo";
 
-.photographer-card {
-  justify-self: center;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
+// Components
+@import "./components/contactForm";
 
-  &__link {
-    text-decoration: none;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-  }
+// Pages
+@import "./pages/photographer"
 
-  &__img {
-    height: 200px;
-    width: 200px;
-    border-radius: 50%;
-  }
-  &__name {
-    color: #D3573C;
-    font-size: 36px;
-    text-align: center;
-  }
-  &__location {
-    color: #901C1C;
-    font-size: 13px;
-  }
-  &__tagline {
-    color: black;
-    font-size: 10px;
-  }
-  &__price {
-    color: #757575;
-    font-size: 9px;
-  }
-}
+// Themes
