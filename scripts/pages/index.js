@@ -1,11 +1,12 @@
+import { photographerFactory } from "../factories/photographer.js";
+import { getPhotographers } from "../utils/fetchData.js";
 
-async function getPhotographers() {
-    const response = await fetch("./data/photographers.json");
-    const photographers = await response.json();
-    // console.log(photographers.photographers)
+// async function getPhotographers() {
+//     const response = await fetch("./data/photographers.json");
+//     const photographers = await response.json();
 
-    return photographers;
-}
+//     return photographers;
+//   }
 
 async function displayData(photographers) {
     const photographersSection = document.querySelector(".photographer_section");
