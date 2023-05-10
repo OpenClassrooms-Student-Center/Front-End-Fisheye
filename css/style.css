@@ -52,6 +52,18 @@ h1 {
   justify-content: center;
   align-items: center;
 }
+.photographer__header {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  background-color: #FAFAFA;
+  height: 300px;
+  margin: 0 100px;
+}
+.photographer__info {
+  display: flex;
+  flex-direction: column;
+}
 .photographer__img {
   height: 200px;
   width: 200px;
@@ -60,7 +72,6 @@ h1 {
 .photographer__name {
   color: #D3573C;
   font-size: 36px;
-  text-align: center;
 }
 .photographer__location {
   color: #901C1C;
@@ -146,12 +157,6 @@ form div {
   width: 100%;
   align-items: self-start;
   margin-bottom: 26px;
-}
-
-.photograph-header {
-  background-color: #FAFAFA;
-  height: 300px;
-  margin: 0 100px;
 }
 
 /*# sourceMappingURL=style.css.map */
