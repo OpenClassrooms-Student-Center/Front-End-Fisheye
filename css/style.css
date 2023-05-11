@@ -14,6 +14,10 @@ header {
     height: 90px;
 }
 
+main {
+    margin-bottom: 2rem;
+}
+
 h1 {
     color: #901C1C;
     margin-right: 100px;
@@ -34,17 +38,43 @@ h1 {
 .photographer_section article {
     justify-self: center;
     display: flex;
-    justify-content: center;
     align-items: center;
     flex-direction: column;
+    gap: 0.3rem;
 }
 
 .photographer_section article h2 {
     color: #D3573C;
-    font-size: 36px;
+    font-size: 1.8rem;
 }
 
 .photographer_section article img {
     height: 200px;
     width: 200px;
+    object-fit: cover;
+    border-radius: 50%;
+    margin-bottom: 1rem;
+}
+
+.photographer_section article {
+    text-align: center;
+    font-weight: normal;
+}
+
+.photographer_section article > :is(h2, h3, h4, h5, p) {
+    margin-block: 0;
+    font-weight: normal;
+}
+
+.photographer_section article > h3 {
+    font-size: 1rem;
+    color: #901C1C;
+}
+
+.photographer_section article > h5 {
+    color: #757575;
+}
+
+.photographer_section article > :is(p, h5) {
+    font-size: 0.8rem;
 }
