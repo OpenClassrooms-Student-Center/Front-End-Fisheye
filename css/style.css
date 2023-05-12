@@ -113,14 +113,15 @@ h1 {
 .form__body {
   display: flex;
   flex-direction: column;
-  width: 100%;
   align-items: self-start;
-  margin-bottom: 26px;
+  justify-content: center;
+  width: 100%;
+  margin-bottom: 2em;
 }
 .form__title {
-  font-size: 64px;
-  font-weight: normal;
-  text-align: center;
+  font-size: 4em;
+  font-weight: 400;
+  vertical-align: top;
 }
 .form__img {
   cursor: pointer;

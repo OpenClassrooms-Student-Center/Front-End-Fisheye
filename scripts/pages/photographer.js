@@ -24,10 +24,18 @@ function renderPhotographerHeader() {
   main.innerHTML += photographerHeader;
 }
 
+function displayNameInModal() {
+  const { name } = photographer
+  const title = document.querySelector(".form__title")
+  title.innerHTML += `<br>${name}`
+}
+
 function openContactModal() {
   const contactBtn = document.querySelector(".contact__button");
   contactBtn.addEventListener("click", displayModal)
+  displayNameInModal();
 }
+
 function closeContactModal() {
   const contactBtn = document.querySelector(".form__close");
   console.log(contactBtn)
@@ -39,6 +47,7 @@ function closeContactModal() {
     }
   })
 }
+
 
 
 
