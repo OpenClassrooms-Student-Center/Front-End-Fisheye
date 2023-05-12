@@ -1,7 +1,8 @@
-export function photographerFactory(data) {
-    const { id, name, portrait, city, country, tagline, price } = data;
+export function photographerFactory(photographer) {
+    const { id, name, portrait, city, country, tagline, price } = photographer;
+    console.log(photographer);
 
-    const picture = `assets/photographers/${portrait}`;
+    const picture = `assets/photographers/${portrait}.webp`;
 
     function getUserCardDOM() {
         const article = document.createElement( 'article' );
@@ -52,14 +53,10 @@ export function photographerFactory(data) {
                  <p class="photographer__tagline photographer__tagline--doubled">${tagline}</p>
             </div>
             <button class="contact__button button" aria-label="contact me">Contactez-moi</button>
-            <img src="./assets/photographers/${portrait}" alt="${name}" class="photographer__img">
+            <img src="./assets/photographers/${portrait}.webp" alt="${name}" class="photographer__img">
         </section>
         `
-
-    // const main = document.querySelector("main");
-
-    // main.innerHTML += photographerHeader;
-    return photographerHeader
+        return photographerHeader
     }
     return { name, picture, getUserCardDOM, getUserHeader }
 }

@@ -38,13 +38,13 @@
           </div>
           <div class="form__body">
             <label class="form__label" for="firstName">Prénom</label>
-            <input class="form__input" type="text" id="firstName" name="firstName" required/>
+            <input class="form__input" type="text" id="firstName" name="firstName" minlength="2" required/>
             <label class="form__label" for="lastName">Nom</label>
-            <input class="form__input" type="text" id="lastName" name="lastName" required/>
+            <input class="form__input" type="text" id="lastName" name="lastName" minlength="2" required/>
             <label class="form__label" for="email">Email</label>
-            <input class="form__input" type="email" id="email" name="email" required/>
+            <input class="form__input" type="email" id="email" name="email" pattern="\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$" required/>
             <label class="form__label" for="message">Message</label>
-            <input class="form__input" type="text" id="message" name="message" required/>
+            <input class="form__input" type="text" id="message" name="message" minlength="10" maxlength="100" required/>
           </div>
           <button class="form__button button">Envoyer</button>
         </form>

@@ -7,7 +7,7 @@
 			"country": "UK",
 			"tagline": "Voir le beau dans le quotidien",
 			"price": 400,
-			"portrait": "MimiKeel.webp"
+			"portrait": "MimiKeel"
 		},
 		{
 			"name": "Ellie-Rose Wilkens",
@@ -16,7 +16,7 @@
 			"country": "France",
 			"tagline": "Capturer des compositions complexes",
 			"price": 250,
-			"portrait": "EllieRoseWilkens.webp"
+			"portrait": "EllieRoseWilkens"
 		},
 		{
 			"name": "Tracy Galindo",
@@ -25,7 +25,7 @@
 			"country": "Canada",
 			"tagline": "Photographe freelance",
 			"price": 500,
-			"portrait": "TracyGalindo.webp"
+			"portrait": "TracyGalindo"
 		},
 		{
 			"name": "Nabeel Bradford",
@@ -34,7 +34,7 @@
 			"country": "Mexico",
 			"tagline": "Toujours aller de l'avant",
 			"price": 350,
-			"portrait": "NabeelBradford.webp"
+			"portrait": "NabeelBradford"
 		},
 		{
 			"name": "Rhode Dubois",
@@ -43,7 +43,7 @@
 			"country": "Spain",
 			"tagline": "Je crée des souvenirs",
 			"price": 275,
-			"portrait": "RhodeDubois.webp"
+			"portrait": "RhodeDubois"
 		},
 		{
 			"name": "Marcel Nikolic",
@@ -52,7 +52,7 @@
 			"country": "Germany",
 			"tagline": "Toujours à la recherche de LA photo",
 			"price": 300,
-			"portrait": "MarcelNikolic.webp"
+			"portrait": "MarcelNikolic"
 		}
 	],
 	"media": [
