@@ -3,6 +3,7 @@
 
 
 // Abstracts
+@import "./abstracts/variables";
 
 // Vendors
 
@@ -18,7 +19,8 @@
 @import "./components/contactForm";
 
 // Pages
-@import "./pages/modal"
+@import "./pages/modal";
+
 
 
 // Themes

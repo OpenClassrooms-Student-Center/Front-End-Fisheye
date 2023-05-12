@@ -1,3 +1,5 @@
+@use "../abstracts/variables";
+
 .photographer_section {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
@@ -7,54 +9,63 @@
 }
 
 .photographer {
-justify-self: center;
-display: flex;
-justify-content: center;
-align-items: center;
-flex-direction: column;
+  justify-self: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  width: 30vw;
 
-  &__link {
-    text-decoration: none;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+    &__info {
+      display: flex;
+      flex-direction: column;
+    }
+    &__link {
+      text-decoration: none;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+    &__header {
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      background-color: #FAFAFA;
+      height: 18.75em;
+      margin: 0 6.25em;
+    }
+    &__img {
+      height: 12.5em;
+      width: 12.5em;
+      border-radius: 50%;
+    }
+    &__name {
+      color: #D3573C;
+      font-size: $name-size;
+      &--doubled {
+        font-size: $name-size * 2;
+      }
+    }
+    &__location {
+      color: #901C1C;
+      font-size: $location-size;
+      &--doubled {
+        font-size: $location-size * 2;
+      }
+    }
+    &__tagline {
+      color: black;
+      font-size: $tagline-size;
+      &--doubled {
+        font-size: $tagline-size * 2;
+      }
+    }
+    &__price {
+      color: #757575;
+      font-size: $price-size;
+      &--doubled {
+        font-size: $price-size * 2;
+      }
+    }
   }
-
-  &__header {
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    background-color: #FAFAFA;
-    height: 18.75em;
-    margin: 0 6.25em;
-  }
-
-  &__info {
-    display: flex;
-    flex-direction: column;
-    // align-items: center;
-  }
-
-  &__img {
-    height: 12.5em;
-    width: 12.5em;
-    border-radius: 50%;
-  }
-  &__name {
-    color: #D3573C;
-    font-size: 2em;
-  }
-  &__location {
-    color: #901C1C;
-    font-size: 1em;
-  }
-  &__tagline {
-    color: black;
-    font-size: 0.8em;
-  }
-  &__price {
-    color: #757575;
-    font-size: 0.8em;
-  }
-}
