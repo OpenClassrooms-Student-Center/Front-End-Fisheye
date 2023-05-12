@@ -1,0 +1,113 @@
+.lightbox-Bg {
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  backdrop-filter: blur(10px);
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.lightbox {
+  flex-direction: column;
+  position: relative;
+  height: 90%;
+  width: 70%;
+  background-color: white;
+  align-items: center;
+  justify-content: center;
+  padding: 10px;
+  overflow: hidden;
+}
+
+.lightbox_close_btn-div {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.lightbox_Close-btn {
+  margin: 20px;
+  width: 30px;
+}
+
+.lightbox_Close-btn:hover{
+  transform: scale(1.2)
+}
+
+.lightbox_controls-Div {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+}
+
+.next-Btn,
+.prev-Btn {
+  position: relative;
+  margin:0 auto;
+  padding:15px;
+  font-size: 2rem;
+  width:80px;
+  height:80px;
+  top:-70px;
+}
+
+.next-Btn {
+  order: 2;
+  transform: rotate(0);
+}
+
+.next-Btn:hover {
+  transform: scale(1.1) rotate(0);
+}
+
+.prev-Btn {
+  order: 0;
+  transform: rotate(180deg);
+}
+
+.prev-Btn:hover {
+  transform: scale(1.1) rotate(180deg);
+}
+
+.lightbox_media-Container {
+  display: flex;
+  flex-direction: row;
+  position: relative;
+  top: -80px;
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+  order: 1;
+}
+
+.lightbox_media-slider {
+  height: 100%;
+}
+
+.lightbox_media-card {
+  display: flex;
+  flex-direction: column;
+  justify-self: center;
+  width: 100%;
+  height: 100%;
+}
+
+.lightbox_media-card .media {
+  width: 100%;
+  object-fit: cover;
+  object-position: center;
+  height: 95%;
+  position: relative;
+  //top: 70px;
+}
+.lightbox_media-card figcaption .media-title {
+  width: 100%;
+  height: 100%;
+  color: #911c1c;
+  padding: 10px;
+  font-size:1rem
+}

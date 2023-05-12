@@ -1,84 +1,339 @@
-#contact_modal {
-    display: none;
-    position:absolute;
-    width:100%;
-    height:100%;
-    z-index:2
+*, *::before, *::after {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
 }
 
+.hidden {
+  display: none;
+  opacity: 0;
+}
+
+.visible {
+  display: flex;
+  opacity: 1;
+}
+
+.error {
+ margin-bottom: 0;
+}
+
+#main-photographer {
+  display: block;
+  margin: 0 100px;
+}
+
+#photographerName {
+  display: flex;
+  margin-top5px;
+}
+
+#txtMsg {
+  height: 100px;
+}
+//CREATION DE L'EN TETE DU PHOTOGRAPHE
+
 .photograph-header {
-    background-color: #FAFAFA;
-    height: 300px;
-    margin: 0 100px;
+  background-color: #fafafa;
+  height: 300px;
+  width: 100%;
+  margin: 0 100px;
+  width: 100%;
+}
+
+.photographContainer {
+  display: flex;
+  justify-content: space-between;
+  margin: 0;
+  background: #fafafa;
+  padding: 20px;
+}
+
+.UserInfosText {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: start;
+  margin: 0;
+  padding: 20px;
+  order: 0;
+  width: 33%;
+}
+
+.UserInfosText .artisteName {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #d3573c;
+  font-size: 2.5rem;
+  font-weight: 500;
+}
+
+.portraitContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: end;
+  margin: 20px;
+
+  width: 200px;
+  height: 200px;
+  order: 2;
+  border-radius: 50%;
+
+  overflow: hidden;
+}
+
+.portrait {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  scale: 1.25;
+}
+
+.photograph-body {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  margin: 0;
+  padding: 20px;
+}
+
+.filterField {
+  display: flex;
+  text-align: center;
+  margin: 0;
+  padding: 20px;
+}
+
+#filterbtn {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0;
+  padding: 10px 20px;
+}
+
+.MediasContainer {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  margin: 0;
+  padding: 20px;
+}
+
+.media-card {
+  width: 300px;
+  height: 350px;
+  background-color: #fafafa;
+  margin: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  border-radius: 5px;
+  overflow: hidden;
+}
+
+.media-container {
+  width: 100%;
+  height: 300px;
+  object-fit: cover;
+  object-position: center;
+  overflow: hidden;
+}
+
+.media {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+.media-infos {
+  width: 100%;
+  height: 50px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 20px;
+  background-color: white;
+}
+
+
+
+.media-infos .media-title {
+  font-size: 12px;
+  font-weight: bold;
+  color: #901c1c;
+  text-align: center;
+}
+
+.media-likes {
+  font-size: 12px;
+  font-weight: bold;
+}
+
+.fa-heart {
+  color: #901c1c;
 }
 
 .submit-form-btn,
 .contact_button {
-    font-size: 20px;
-    font-weight: bold;
-    color: white;
-    padding: 11px;
-    width: 170px;
-    height: 70px;
-    border: none;
-    background-color: #901C1C;
-    border-radius: 5px;
-    cursor: pointer;
+  display: flex;
+  order: 1;
+  font-size: 20px;
+  font-weight: bold;
+  color: white;
+  padding: 11px;
+  width: 170px;
+  height: 70px;
+  border: none;
+  background-color: #901c1c;
+  border-radius: 5px;
+  cursor: pointer;
+  align-items: center;
+  justify-content: center;
+  margin: auto;
 }
 
+.submit-form-btn {
+  margin: 20px auto;
+}
 
+.contact_button {
+  margin: auto auto auto 60px;
+}
+
+.contact_modal {
+  position: fixed;
+
+  justify-content: center;
+  align-items: center;
+  top: 0px;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  background-color: rgba(0, 0, 0, 0.5);
+}
 
 .modal {
-    border-radius: 5px;
-    background-color: #DB8876;
-    width: 50%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: space-between;
-    padding: 35px;
-    margin: auto;
-    
+  border-radius: 5px;
+  background-color: #db8876;
+  width: 600px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: stretch;
+  padding: 5px 35px;
+
+  box-sizing: border-box;
 }
 
 .modal header {
-    justify-content: space-between;
-    width: 100%;
-}
-
-.modal header img {
-    cursor: pointer;
+  justify-content: space-between;
+  align-content: start;
+  width: 100%;
+  padding-top: 20px;
+  height: 10%;
+  box-sizing: content-box;
 }
 
 .modal header h2 {
-    font-size: 64px;
-    font-weight: normal;
-    text-align: center;
+  font-size: 48px;
+  font-weight: normal;
+  text-align: start;
+  align-self: start;
+  line-height: 1;
+}
+
+.close {
+  cursor: pointer;
+  display: flex;
+  align-self: flex-start;
 }
 
 form {
-    display: flex;
-    width: 100%;
-    flex-direction: column;
-    align-items: flex-start;
+  display: flex;
+  width: 100%;
+  height: 90%;
+  flex-direction: column;
+  align-items: flex-start;
+  padding-top: 10%;
 }
+
 .text-control,
 form label {
-    color: #312E2E;
-    font-size: 36px;
+  color: #312e2e;
+  font-size: 1.5rem;
+  line-height: 1;
+}
+
+.text-control {
+  height: 50px;
+}
+
+form label {
+  margin-bottom: 5px;
 }
 
 form div {
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-    align-items: self-start;
-    margin-bottom: 26px;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  margin-bottom: 1.2rem;
 }
 
+form textarea,
 form input {
-    width: 100%;
-    height: 68px;
-    border: none;
-    border-radius: 5px;
+  width: 100%;
+  height: 68px;
+  border: none;
+  border-radius: 5px;
 }
+
+.formData[data-error]::after {
+  content: attr(data-error);
+  font-size: 1rem;
+  color: #760a15;
+  display: block;
+  margin: 7px 0;
+  text-align: right;
+  line-height: 0.3;
+  opacity: 0;
+  -webkit-transition: 0.3s;
+  -o-transition: 0.3s;
+  transition: 0.3s;
+  font-weight: unset;
+}
+.formData[data-error-visible="true"]::after {
+  opacity: 1;
+}
+.formData[data-error-visible="true"] .text-control {
+  border: 2px solid #760a15;
+}
+
+
+.resumeContainer{
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  position: fixed;
+  bottom:0px;
+  right:100px;
+  height:50px;
+  width: 400px;
+  background-color: #db8876;
+  font-weight: bold;
+}
+
+.resumeContainer i{
+  color: black;
+}
+
+.artistePricing{
+  order:1;
+}
+
+
