@@ -14,7 +14,7 @@ function renderPhotographerHeader() {
       <p class="photographer__location">${city}, ${country}</p>
       <p class="photographer__tagline">${tagline}</p>
     </div>
-    <button class="contact__button" aria-label="contact me"xz>Contactez-moi</button>
+    <button class="contact__button button" aria-label="contact me"xz>Contactez-moi</button>
     <img src="./assets/photographers/${portrait}" alt="${name}" class="photographer__img">
   </section>
   `
@@ -29,7 +29,7 @@ function openContactModal() {
   contactBtn.addEventListener("click", displayModal)
 }
 function closeContactModal() {
-  const contactBtn = document.querySelector(".modal__close  ");
+  const contactBtn = document.querySelector(".form__close");
   console.log(contactBtn)
   contactBtn.addEventListener("click", closeModal)
   contactBtn.addEventListener("keydown", function(event) {

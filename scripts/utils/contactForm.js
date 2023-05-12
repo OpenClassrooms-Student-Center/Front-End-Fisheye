@@ -1,5 +1,5 @@
 const main = document.querySelector("#main");
-const modal = document.querySelector(".contact__modal");
+const modal = document.querySelector(".modal");
 
 export function displayModal() {
 	main.setAttribute("aria-hidden", "true");
