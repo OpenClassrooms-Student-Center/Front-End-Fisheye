@@ -31,12 +31,6 @@ function openContactModal() {
 function closeContactModal() {
     const contactBtn = document.querySelector(".form__close");
     contactBtn.addEventListener("click", closeModal)
-    contactBtn.addEventListener("keydown", function(event) {
-      event.preventDefault();
-      if (event.key === "Enter") {
-          closeModal();
-        }
-      })
     }
 
 init();
