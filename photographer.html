@@ -11,20 +11,20 @@
     <link href="css/style.css" rel="stylesheet" type="text/css"/>
   </head>
 
-  <body>
+  <body id="body">
     <header>
       <a href="./index.html"><img src="assets/images/logo.png" class="logo" alt="Fisheye Home page" /></a>
     </header>
-    <main id="main">
+    <main id="main" aria-hidden="false">
 
     </main>
     <div class="contact__modal">
-			<div class="modal">
-				<header class="modal__header">
+			<div class="modal" aria-hiiden="true" role="dialog">
+        <header class="modal__header">
           <h2 class="modal__title">Contactez-moi</h2>
-          <button aria-label="Bouton de fermeture de la fenêtre de formulaire" class="modal__close">
-            <img class="modal__img" src="assets/icons/close.svg"  alt="Close button icon"/>
-          </button>
+          <!-- <button aria-label="Bouton de fermeture de la fenêtre de formulaire" class="modal__close"> -->
+            <img class="modal__img modal__close" src="assets/icons/close.svg"  alt="Close button icon" role="button"/>
+          <!-- </button>   -->
         </header>
         <br>
 				<form class="form">
@@ -43,6 +43,6 @@
 			</div>
 		</div>
     <script type="module" src="/scripts/pages/photographer.js"></script>
-    <script src="/scripts/utils/contactForm.js"></script>
+    <script type="module" src="/scripts/utils/contactForm.js"></script>
   </body>
 </html>

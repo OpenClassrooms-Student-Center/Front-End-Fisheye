@@ -1,11 +1,16 @@
+const main = document.querySelector("#main");
+const modal = document.querySelector(".contact__modal");
 
-function displayModal() {
-    const modal = document.querySelector(".contact__modal");
-	modal.style.display = "block";
-}
-function closeModal() {
-    const modal = document.querySelector(".contact__modal");
-    modal.style.display = "none";
+export function displayModal() {
+	main.setAttribute("aria-hidden", "true");
+    modal.setAttribute("aria-hidden", "false");
+    modal.style.display = "block"
 }
 
-export { displayModal, closeModal};
+
+export function closeModal() {
+    main.setAttribute("aria-hidden", "false");
+    modal.setAttribute("aria-hidden", "true");
+    modal.style.display = "none"
+
+}
