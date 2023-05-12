@@ -1,27 +1,19 @@
+// import { displayModal } from "../utils/contactForm.js";
 import { getPhotographersById } from "../utils/getPhotographerById.js";
 import { displayModal, closeModal } from "../utils/contactForm.js";
-
+import { photographerFactory } from "../factories/photographer.js";
 
 const photographer = await getPhotographersById();
 
-function renderPhotographerHeader() {
-  const {name, city, country, tagline, portrait } = photographer
-
-  const photographerHeader = `
-  <section class="photographer__header">
-    <div class="photographer__info">
-      <h2 class="photographer__name photographer__name--doubled">${name}</h2>
-      <p class="photographer__location photographer__location--doubled">${city}, ${country}</p>
-      <p class="photographer__tagline photographer__tagline--doubled">${tagline}</p>
-    </div>
-    <button class="contact__button button" aria-label="contact me">Contactez-moi</button>
-    <img src="./assets/photographers/${portrait}" alt="${name}" class="photographer__img">
-  </section>
-  `
-
+async function displayData() {
+  const datas = photographerFactory(photographer);
+  const photographerHeader = datas.getUserHeader()
   const main = document.querySelector("main");
-
   main.innerHTML += photographerHeader;
+}
+
+async function init() {
+  displayData(photographer);
 }
 
 function displayNameInModal() {
@@ -37,21 +29,16 @@ function openContactModal() {
 }
 
 function closeContactModal() {
-  const contactBtn = document.querySelector(".form__close");
-  console.log(contactBtn)
-  contactBtn.addEventListener("click", closeModal)
-  contactBtn.addEventListener("keydown", function(event) {
-    event.preventDefault();
-    if (event.key === "Enter") {
-      closeModal();
+    const contactBtn = document.querySelector(".form__close");
+    contactBtn.addEventListener("click", closeModal)
+    contactBtn.addEventListener("keydown", function(event) {
+      event.preventDefault();
+      if (event.key === "Enter") {
+          closeModal();
+        }
+      })
     }
-  })
-}
 
-
-
-
-
-renderPhotographerHeader();
+init();
 openContactModal();
 closeContactModal();
