@@ -18,33 +18,38 @@
     <main id="main" aria-hidden="false">
 
     </main>
-    <div class="modal" aria-hidden="true" role="dialog">
 
-      <form class="form">
-        <div class="form__header">
-          <h2 class="form__title">Contactez-moi</h2>
-          <button
-            type="button"
-            aria-label="Bouton de fermeture de la fenêtre de formulaire"
-            class="form__close"
-            data-dismiss="modal">
-            &times;
-          </button>
-        </div>
-        <div class="form__body">
-          <label class="form__label" for="firstName">Prénom</label>
-          <input class="form__input" type="text" id="firstName" name="firstName" required/>
-          <label class="form__label" for="lastName">Nom</label>
-          <input class="form__input" type="text" id="lastName" name="lastName" required/>
-          <label class="form__label" for="email">Email</label>
-          <input class="form__input" type="email" id="email" name="email" required/>
-          <label class="form__label" for="message">Message</label>
-          <input class="form__input" type="text" id="message" name="message" required/>
-        </div>
-        <button class="form__button button">Envoyer</button>
-      </form>
+    <footer>
 
-		</div>
+    </footer>
+
+    <div class="modal" aria-hidden="true">
+      <div class="modal__window" aria-hidden="true" role="dialog">
+        <form class="form">
+          <div class="form__header">
+            <h2 class="form__title">Contactez-moi</h2>
+            <button
+              type="button"
+              aria-label="Bouton de fermeture de la fenêtre de formulaire"
+              class="form__close"
+              data-dismiss="modal">
+              &times;
+            </button>
+          </div>
+          <div class="form__body">
+            <label class="form__label" for="firstName">Prénom</label>
+            <input class="form__input" type="text" id="firstName" name="firstName" required/>
+            <label class="form__label" for="lastName">Nom</label>
+            <input class="form__input" type="text" id="lastName" name="lastName" required/>
+            <label class="form__label" for="email">Email</label>
+            <input class="form__input" type="email" id="email" name="email" required/>
+            <label class="form__label" for="message">Message</label>
+            <input class="form__input" type="text" id="message" name="message" required/>
+          </div>
+          <button class="form__button button">Envoyer</button>
+        </form>
+      </div>
+    </div>
     <script type="module" src="/scripts/pages/photographer.js"></script>
     <script type="module" src="/scripts/utils/contactForm.js"></script>
   </body>

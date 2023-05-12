@@ -167,13 +167,22 @@ h1 {
 }
 
 .modal {
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(117, 117, 117, 0.5);
+  border: 2px solid red;
   display: none;
-  border: none;
+}
+.modal__window {
   border-radius: 0.3em;
   background-color: #DB8876;
-  width: 50%;
+  width: 70em;
   padding: 2em;
-  margin: auto;
 }
 
 /*# sourceMappingURL=style.css.map */

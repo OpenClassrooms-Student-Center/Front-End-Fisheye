@@ -1,9 +1,18 @@
 .modal {
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(#757575, 0.5);
+  border: 2px solid red;
   display: none;
-  border: none;
-  border-radius: .3em;
-  background-color: #DB8876;
-  width: 50%;
-  padding: 2em;
-  margin: auto;
+  &__window {
+    border-radius: .3em;
+    background-color: #DB8876;
+    width: 70em;
+    padding: 2em;
+  }
 }

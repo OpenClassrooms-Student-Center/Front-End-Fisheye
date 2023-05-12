@@ -4,7 +4,7 @@ const modal = document.querySelector(".modal");
 export function displayModal() {
 	main.setAttribute("aria-hidden", "true");
     modal.setAttribute("aria-hidden", "false");
-    modal.style.display = "block"
+    modal.style.display = "flex"
 }
 
 
