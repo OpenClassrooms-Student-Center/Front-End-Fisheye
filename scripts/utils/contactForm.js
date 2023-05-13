@@ -1,12 +1,8 @@
-function closeModal() {
-  modal.style.display = "none";
-}
-
 /////////////////////////////////////////////// RECUPERATION DES ELEMENTS //////////////////////////////////////////
 
 //Récupération de la modale
-const modal = document.getElementById("contact_modal");
-const modalbg = document.querySelector(".modal-bg");
+const modal = document.querySelector(".contact_modal");
+const Body = document.getElementById("main-photographer"); // Ajout de la lightbox au body
 const contentmodal = document.querySelector(".content");
 //Récupération  des boutons de la modale
 const openModalBtn = document.querySelector(".contact_button"); // Bouton d'ouverture de la modale
@@ -45,7 +41,7 @@ const formfieldsObjects = [
   {
     // Objet E-mail
     formfield: inputEmail, // Champ input e-mail
-    condition: () => !regexpEmail.test(inputEmail.value), // Vérifier si l'email est valide
+    condition: () => !validateEmail(), // Vérifier si l'email est valide
     message: "Veuillez entrer une adresse e-mail valide.", // Message de retour en cas d'erreur
   },
   {
@@ -60,20 +56,22 @@ const formfieldsObjects = [
 let alreadyValidate = false;
 //////////////////////////////////////////////// GESTION MODALE //////////////////////////////////////////
 
-
 //// OUVERTURE MODALE
 
-// Événement de lancement de la modale
-openModalBtn.addEventListener("click", displayModal); // Lancement de la modale au clic sur le bouton
-
-function displayModal() {// Lancement de la modale
-  
-  if (alreadyValidate) { // Si le formulaire a été validé alors il raffiche le message de confirmation sinon il affiche la modale vierge
-   
-    modal.style.display = "block"; // Affichage de la modale
+function displayModal() {
+  // Lancement de la modale
+  modal.setAttribute("aria-hidden", "false"); // Affichage de la modale
+  Body.setAttribute("aria-hidden", "true"); // Masquage du body
+  if (alreadyValidate) {
+    // Si le formulaire a été validé alors il raffiche le message de confirmation sinon il affiche la modale vierge
+    modal.classList.add("visible"); // Affichage de la modale
   } else {
-    modal.style.display = "block"; // Affichage de la modale
-    modal.opacity = "1"; // apparition progressive via l'opacity
+    modal.classList.remove("hidden");
+    modal.setAttribute("aria-hidden", "false"); // Affichage de la modale
+    Body.setAttribute("aria-hidden", "true"); // Masquage du body
+    closeModalBtn.focus(); // Focus sur le bouton de fermeture de la modale
+
+    modal.classList.add("visible"); // Affichage de la modale // apparition progressive via l'opacity
   }
 }
 
@@ -82,29 +80,41 @@ function displayModal() {// Lancement de la modale
 // Événement de fermeture de la modale
 closeModalBtn.addEventListener("click", closeForm); // Fermeture de la modale au clic sur la X
 
-document.addEventListener("click", (e) => {if (e.target == modal) closeForm();}); // Fermeture de la modale au clic en dehors de la modale
+window.addEventListener("keydown", (e) => {
+  if (e.key === "Escape" || e.key === 27) {
+    if (modal) {
+      closeForm();
+    }
+  }
+}); // Fermeture de la modale au clic sur la touche Echap
+document.addEventListener("click", (e) => {
+  if (e.target == modal) closeForm();
+}); // Fermeture de la modale au clic en dehors de la modale
 
 function closeForm() {
   // Fermeture de la modale
 
-  modal.opacity = "0"; // disparition progressive via l'opacity
   setTimeout(() => {
-    modal.style.display = "none";
+    modal.classList.remove("visible"); // Disparition progressive via l'opacity
+    modal.classList.add("hidden"); // Disparition de la modale
   }, 100); // Fermeture de la modale au bout de 500ms
 }
-//// SOUMISSION DE LA MODALE
-// Événement d'envoi du formulaire
+
+//////////////////////////////////////////////// GESTION DES CHAMPS DU FORMULAIRE //////////////////////////////////////////
+
 document.forms["reserve"].addEventListener("submit", confirmValidation); // Fonction de confirmation de la modale
-document.forms["reserve"].addEventListener( // Fonction de validation des données des champs inut
+document.forms["reserve"].addEventListener(
+  // Fonction de validation des données des champs inut
   "submit",
-  (e) => {e.preventDefault(); // Annuler l'envoi du formulaireavant la validation
+  (e) => {
+    e.preventDefault(); // Annuler l'envoi du formulaireavant la validation
     validate(); // Vérifier si les données sont valides
   }
 );
 
-// Fonction de confirmation de la modale
 function confirmValidation() {
   // Fonction de confirmation de la modale
+
   if (validate()) {
     // Si la fonction de validation retourne true
     console.log(inputFirstName.value);
@@ -116,7 +126,7 @@ function confirmValidation() {
   }
 }
 
-//////////////////////////////////////////////// GESTION DU FORMULAIRE //////////////////////////////////////////
+// Fonction de validation des données des champs input
 function validateFirstName() {
   // Fonction de validation du prénom
   if (inputFirstName.value.trim().length < 2) {
@@ -170,8 +180,7 @@ function validateEmail() {
 function validateText() {
   if (inputText.value.trim().length < 10) {
     // Si le texte est inférieur à 10 caractères
-    formfieldsObjects[3].message =
-      "Veuillez entrer au minimum 10 caractères pour le message."; // Message de retour en cas d'erreur
+    formfieldsObjects[3].message = "Veuillez entrer au minimum 50 caractères."; // Message de retour en cas d'erreur
     return false; // Si le texte est invalide
   } else {
     return true; // Si le texte est valide
@@ -187,6 +196,7 @@ function validate() {
     let message = formfieldsObjects[i].message; // Récupération du message d'erreur
     if (condition) {
       // Si la condition de validation est fausse
+
       console.log("formNotOk = " + formfieldsObjects[i].message); // Affichage du message d'erreur
       formfieldsObjects[i].formfield.parentElement.setAttribute(
         "data-error",
@@ -196,6 +206,7 @@ function validate() {
         "data-error-visible",
         "true"
       );
+      formfieldsObjects[i].formfield.parentElement.classList.add("error"); // Affichage du message d'erreur
       formfieldsObjects[i].formfield.focus(); // Focus sur le champ input
       formIsTrue = false;
     } else {
@@ -207,7 +218,10 @@ function validate() {
         "data-error-visible",
         "false"
       );
+      formfieldsObjects[i].formfield.parentElement.classList.remove("error"); // Suppression du message d'erreur
     }
   }
   return formIsTrue; // Retourne la valeur de validation globale du formulaire
 }
+
+export { displayModal };
