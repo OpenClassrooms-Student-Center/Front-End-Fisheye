@@ -1,17 +1,17 @@
 // Importer la fonction photographerFactory() du fichier photographerFactory.js
-import { photographerFactory } from "../factories/photographerFactory.js";
+import { photographerFactory } from "./../factories/photographerFactory.js";
 
 // Importer la fonction MediaFactory() du fichier mediaFactory.js
-import { MediaFactory } from "../factories/mediaFactory.js";
+import { MediaFactory } from "./../factories/mediaFactory.js";
 
 // Importer la fonction getPhotographers() du fichier photographerFactory.js
-import { get_Datas } from "../utils/get_datas.js";
+import { get_Datas } from "./../utils/get_datas.js";
 
 // Importer la fonction displayModal depuis le fichier "utils.js
-import { displayModal } from "../utils/contactForm.js";
+import { displayModal } from "./../utils/contactForm.js";
 
 //Import lightbox.js
-import { openLightBox,  lightboxMediaContainer, lightboxMediaSlider} from "../utils/lightbox.js";
+import { openLightBox,  lightboxMediaContainer, lightboxMediaSlider} from "./../utils/lightbox.js";
 
 // Fonction pour récupérer l'id du photographe dans l'url
 function get_ID_from_url() {
