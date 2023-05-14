@@ -13,8 +13,11 @@ const mediaArray = Array.from(document.querySelectorAll(".lightbox_media-card"))
 
 // Écouteur d'événement pour fermer la lightbox
 lightbox_Close_btn.addEventListener("click", (e) => {
-    if ((e).target === lightbox_Close_btn|| e.key === "Escape") {
+    if ((e).target === lightbox_Close_btn|| (e).target === lightboxBG) {
         closeLightBox();
+    }
+    if ((e).keycode === "Escape"){
+        closeLightBox()
     }
 });
 
