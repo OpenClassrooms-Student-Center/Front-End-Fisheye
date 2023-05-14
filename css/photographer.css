@@ -150,6 +150,7 @@ form button {
 
 .media-figure {
     width: 30%;
+    min-width: 300px;
     margin: 0;
 }
 
@@ -164,4 +165,18 @@ form button {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    color: #901C1C;
+    margin-bottom: 20px;
+}
+
+.media-figure-figcaption-title {
+    margin: 0;
+    font-size: 20px;
+}
+
+.media-figure-figcaption-btn {
+    border: none;
+    background-color: transparent;
+    color: #901C1C;
+    font-size: 17px;
 }

@@ -3,7 +3,8 @@ function mediaFactory(data) {
     function getMediaDOM() {
         let mediaHtml = "";
         for (let i = 0; i < data.length; i++) {
-            const { title, image, video, likes } = data[i];
+            const { id, title, image, video, likes } = data[i];
+            console.log(id, likes)
             let mediaSrc;
             let tagHTML;
 
@@ -24,7 +25,7 @@ function mediaFactory(data) {
                     >
                     <figcaption class="media-figure-figcaption">
                         <h2 class="media-figure-figcaption-title">${title}</h2>
-                        <p class="media-figure-figcaption-like">${likes} Likes</p>
+                        <button id="like-${id}" class="media-figure-figcaption-btn" onclick="incrementLikes(${id}, ${likes})">${likes} <i class="fa-regular fa-heart"></i></i></button>
                     </figcaption>
                 </figure>
             `;
@@ -36,4 +37,21 @@ function mediaFactory(data) {
     }
 
     return { getMediaDOM }
+}
+
+const incrementLikes = (id, likes) => {
+    let mediaLikes = likes;
+    let mediaLiked = mediaLikes += 1;
+
+    // Mettre à jour le nombre de likes et l'icône
+    const likeBtn = document.getElementById(`like-${id}`);
+    if (!likeBtn.classList.contains('dislike')) {
+        mediaLikes += 1
+        likeBtn.classList.add('dislike')
+        likeBtn.innerHTML = `${mediaLiked} <i class="fa-solid fa-heart"></i>`;
+    } else {
+        mediaLiked -= 1;
+        likeBtn.classList.remove('dislike')
+        likeBtn.innerHTML = `${mediaLiked} <i class="fa-regular fa-heart"></i>`;
+    }
 }
