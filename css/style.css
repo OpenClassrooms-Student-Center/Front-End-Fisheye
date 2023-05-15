@@ -118,6 +118,7 @@ h1 {
 .form {
   display: flex;
   width: 100%;
+  height: 100%;
   flex-direction: column;
 }
 .form__header {
@@ -135,7 +136,7 @@ h1 {
   margin-bottom: 2em;
 }
 .form__title {
-  font-size: 4em;
+  font-size: 3em;
   font-weight: 400;
   vertical-align: top;
 }
@@ -144,18 +145,20 @@ h1 {
 }
 .form__label {
   color: #312E2E;
-  font-size: 2em;
+  font-size: 1.3em;
+  padding-top: 0.5rem;
+  padding-bottom: 0.2rem;
 }
 .form__input {
   width: 100%;
-  height: 2em;
+  height: 1.5em;
   border: none;
   border-radius: 0.2em;
   font-size: 2em;
   padding: 0em 0.5em;
 }
 .form__input[id=message] {
-  height: 4em;
+  height: 3em;
 }
 .form__close {
   color: white;
@@ -185,6 +188,7 @@ h1 {
   background-color: #DB8876;
   width: 41.875em;
   padding: 2em;
+  height: 95vh;
 }
 
 /*# sourceMappingURL=style.css.map */

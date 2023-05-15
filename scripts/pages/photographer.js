@@ -24,14 +24,19 @@ function displayNameInModal() {
 
 function openContactModal() {
   const contactBtn = document.querySelector(".contact__button");
-  contactBtn.addEventListener("click", displayModal)
+  contactBtn.addEventListener("click", displayModal);
+  contactBtn.focus();
   displayNameInModal();
 }
 
 function closeContactModal() {
-    const contactBtn = document.querySelector(".form__close");
-    contactBtn.addEventListener("click", closeModal)
-    }
+  const closeBtn = document.querySelector(".form__close");
+  closeBtn.addEventListener("click", closeModal);
+  const contactBtn = document.querySelector(".contact__button");
+  console.log(contactBtn);
+  contactBtn.focus();
+
+}
 
 init();
 openContactModal();

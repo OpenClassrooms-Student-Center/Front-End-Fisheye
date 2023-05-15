@@ -11,10 +11,12 @@
   background-color: rgba(#757575, 0.5);
   // border: 2px solid red;
   display: none;
+
   &__window {
     border-radius: .3em;
     background-color: #DB8876;
     width: 41.875em;
     padding: 2em;
+    height: 95vh;
   }
 }

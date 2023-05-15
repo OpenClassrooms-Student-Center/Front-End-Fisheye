@@ -1,6 +1,6 @@
 export function photographerFactory(photographer) {
     const { id, name, portrait, city, country, tagline, price } = photographer;
-    console.log(photographer);
+    // console.log(photographer);
 
     const picture = `assets/photographers/${portrait}.webp`;
 
