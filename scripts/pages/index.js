@@ -4,10 +4,10 @@
         let photographers = [];
         const res = await fetch("./data/photographers.json");
         const data = await res.json();
-        console.log(data);
         // et bien retourner le tableau photographers seulement une fois récupéré
         return ({
-            photographers: [...data.photographers]})
+            photographers: [...data.photographers]}
+            );
     }
 
     async function displayData(photographers) {
@@ -20,9 +20,16 @@
         });
     };
 
+    function photographerUrl(id) {
+        document.location = "photographer.html?id=" + id;
+    }
+
     async function init() {
         // Récupère les datas des photographes
         const { photographers } = await getPhotographers();
+
+        console.log(photographers);
+        
         displayData(photographers);
     };
     
