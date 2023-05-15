@@ -1,0 +1,13 @@
+.media{
+  display: flex;
+  flex-direction: column;
+  width: 10rem;
+
+  &__img, &__video {
+    width: 21rem;
+    height: 21rem;
+    object-fit: cover;
+    border-radius: 0.2rem;
+    padding-bottom: 1rem;
+  }
+}

@@ -1,23 +1,40 @@
 export function mediaFactory(media) {
   const { id, date, image, video, likes, photographerId, price, title} = media
 
-  const picture = `assets/photographers/${photographerId}/${title}`;
+  const source = `assets/photographers/${photographerId}/${image}`;
 
   function getMediaCardDom() {
-    const article = document.createElement( 'article' );
-    article.className += "media";
-    article.id = id;
 
-    // const mediaLink = document.createElement("a");
-    // mediaLink.setAttribute("href", `/photographer.html?id=${id}`);
-    // mediaLink.setAttribute("aria-label", `lien vers le portfolio de ${name}`);
-    // mediaLink.className += "photographer__link"
+    const article = document.createElement("article");
+    article.classList.add("media");
+    const mediaSection = document.querySelector(".photographer__content");
+    // console.log(mediaSection);
+    mediaSection.appendChild(article)
 
-    const photographerImg = document.createElement("img");
-    photographerImg.setAttribute("src", picture);
-    photographerImg.setAttribute("alt", title);
-    photographerImg.className += "photographer__img";
+    if (image) {
+      const img = document.createElement("img");
+      img.setAttribute("src", source);
+      img.setAttribute("alt", title);
+      img.className += "media__img";
+      article.appendChild(img)
+    }
+    if (video) {
+      const video = document.createElement("video");
+      video.setAttribute("src", source);
+      video.setAttribute("alt", title);
+      video.className += "media__video";
+      article.appendChild(video)
+    }
 
+    const mediaTitle = document.createElement("p");
+    mediaTitle.classList.add("media__title")
+    mediaTitle.innerText = title
+    // console.log(mediaTitle);
+    article.appendChild(mediaTitle);
+    // console.log(article);
 
+    return (article)
   }
+
+  return { title, likes, getMediaCardDom}
 }
