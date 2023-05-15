@@ -1,5 +1,8 @@
+
+
 const Body = document.querySelector("#main-photographer");
 const lightboxBG = document.querySelector(".lightbox-Bg");
+const lightboxopen = lightboxBG.getElementsByClassName("visible") ;
 const lightbox = document.querySelector(".lightbox")//;
 const lightboxMediaContainer = document.querySelector(".lightbox_media-Container");
 const lightboxMediaSlider = document.querySelector(".lightbox_media-slider");
@@ -12,14 +15,21 @@ const mediaArray = Array.from(document.querySelectorAll(".lightbox_media-card"))
 ///////////////////////Event listener///////////////////////////
 
 // Écouteur d'événement pour fermer la lightbox
-lightbox_Close_btn.addEventListener("click", (e) => {
-    if ((e).target === lightbox_Close_btn|| (e).target === lightboxBG) {
+lightbox_Close_btn.addEventListener("click", closeLightBox)
+
+window.addEventListener("keydown", (e) => {
+    if (e.key === "Escape" || e.key === 27) {
+      if (lightboxopen) {
+        closeLightBox();
+      }
+    }
+  });
+
+  document.addEventListener("click", (e) => {
+    if (e.target == lightboxBG && e.target !== lightbox) {
         closeLightBox();
     }
-    if ((e).keycode === "Escape"){
-        closeLightBox()
-    }
-});
+  });
 
 // Écouteurs d'événements pour les flèches gauche et droite
 lightboxArrowLeft.addEventListener("click", () => {

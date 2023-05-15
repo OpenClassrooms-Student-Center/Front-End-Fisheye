@@ -4,8 +4,8 @@ import { photographerFactory } from "./../factories/photographerFactory.js";
 // Importer la fonction MediaFactory() du fichier mediaFactory.js
 import { MediaFactory } from "./../factories/mediaFactory.js";
 
-// Importer la fonction getPhotographers() du fichier photographerFactory.js
-import { get_Datas } from "./../utils/get_datas.js";
+// Importer les fonctions utilitaires du fichier utils.js
+import { datas, id, photographer,  get_ID_from_url, get_name_by_id, sortbyPops, sortbyDate, sortbyTitle } from "../utils/utils.js";
 
 // Importer la fonction displayModal depuis le fichier "utils.js
 import { displayModal } from "./../utils/contactForm.js";
@@ -13,41 +13,9 @@ import { displayModal } from "./../utils/contactForm.js";
 //Import lightbox.js
 import { openLightBox,  lightboxMediaContainer, lightboxMediaSlider} from "./../utils/lightbox.js";
 
-// Fonction pour récupérer l'id du photographe dans l'url
-function get_ID_from_url() {
-  let url = window.location.search; // Récupère l'url
-  let urlParams = new URLSearchParams(url); // Récupère les paramètres de l'url
-  let id = urlParams.get("id"); // Récupère l'id de l'url
-  return id;
-}
-
-function get_name_by_id() {
-  // Fonction pour récupérer le nom du photographe par son id
-  let photographer = photographers.find(
-    (photographer) => photographer.id == id
-  ); // Récupère les données du photographe
-  let fullname = photographer.name; // Récupère le nom du photographe
-  const Pname = fullname.split(" ")[0]; // Récupère le prénom du photographe
-  return Pname;
-}
-
-
-// Récupération de l'id du photographe dans l'url
-const id = get_ID_from_url();
-
-// Récupération des données brutes
-const datas = await get_Datas();
-
-// Récupération des photographes
-const photographers = datas.photographers;
 
 // Récupération des médias
 const fullmedias = datas.media;
-
-// Récupération des donnes  du photographe selon l'id de la page 
-const photographer = photographers.find(
-  (photographer) => photographer.id == id
-);
 
 // Récupération des médias du photographe
 const Usermedias = fullmedias.filter((media) => media.photographerId == id);
@@ -56,6 +24,24 @@ const Usermedias = fullmedias.filter((media) => media.photographerId == id);
 const photographerModel = photographerFactory(photographer);
 const photographerPageDOM = photographerModel.getUserPageDOM();
 const Resume = document.querySelector(".resumeContainer");
+const filterBtn = document.querySelector(".filterField_select");
+const filters = document.querySelectorAll(".filterField_select-list.hidden");
+const _filters = Array.from(filters);
+const selectLabel = document.getElementById("filterField_select-label");
+
+filterBtn.addEventListener("click", () => {
+  filterBtn.setAttribute("aria-expanded", "true");
+  selectLabel.classList.add("hidden");
+  filters.forEach((filter) => {
+    filter.classList.remove("hidden");
+  });
+});
+
+
+
+
+
+
 
 // Affichage des éléments de la page
 function displayData(photograph, medias) {
@@ -66,18 +52,7 @@ function displayData(photograph, medias) {
   const carrouselDOM = document.createElement("div");
   carrouselDOM.classList.add("MediasContainer");
 
-  // Création du champ de filtre
-  const filterField = document.createElement("section");
-  filterField.classList.add("filterField");
-  filterField.innerHTML = "Trier par :";
-  Pbody.appendChild(filterField);
-
-  // Création du bouton de filtre
-  const filterbtn = document.createElement("button");
-  filterbtn.id = "filterbtn";
-  filterbtn.setAttribute("role", "aria-listbox");
-  filterField.appendChild(filterbtn);
-
+  
   // Création du corps pour les médias
   const MediasContainer = document.createElement("section");
   MediasContainer.classList.add("MediasContainer");
@@ -90,7 +65,20 @@ function displayData(photograph, medias) {
   const TotalLikes = document.createElement("div");
   TotalLikes.classList.add("TotalLikes");
   TotalLikes.innerHTML = `${Totalizer} <i aria-label="likes" class="fas fa-heart"></i>`;
- 
+  
+  // Affichage des filtres
+  filterBtn.addEventListener("toggle", () => {
+    for (let filter in _filters) {
+      filter.classList.remove("hidden");
+          
+    }
+    selectLabel.classList.add("hidden");
+  });
+
+  
+
+
+
   // Affichage des médias
   if (medias) {
     for (let i = 0; i < mediaModels.length; i++) {

@@ -99,19 +99,52 @@
   padding: 20px;
 }
 
-.filterField {
+.FilterField {
   display: flex;
   text-align: center;
+  align-items:center;
   margin: 0;
   padding: 20px;
 }
 
-#filterbtn {
+.filterField_select {
+  line-height:1;
   display: flex;
-  justify-content: space-between;
+  flex-direction: column;
+  justify-items:start;
   align-items: center;
-  margin: 0;
-  padding: 10px 20px;
+  position:relative;
+  background-color: #901C1C;
+  color:white;
+  width:100px;
+  font-size:1.1rem
+}
+
+.filterField_select-list{
+  display:flex;
+  flex-direction:column;
+  list-style:none;
+  position: relative;
+  top: 0;
+  left: 0;
+  margin: 0 10px;
+  width:100px;
+}
+
+.filterField_select-label{
+  
+  
+  padding:10px 20px;
+  background-color: #901C1C;
+  cursor:pointer;
+  width:100px;
+}
+
+.filterField_select-list-item{
+  display:none;
+  padding:10px 20px;
+  background-color: #901C1C;
+  
 }
 
 .MediasContainer {

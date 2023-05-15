@@ -1,49 +1,90 @@
 <!DOCTYPE html>
 <html>
+  <head>
+    <link href="./css/style.css" rel="stylesheet" type="text/css" />
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/png" href="./assets/favicon.png" />
 
-<head>
-  <link href="./css/style.css" rel="stylesheet" type="text/css" />
-  <meta charset="utf-8" />
-  <link rel="icon" type="image/png" href="./assets/favicon.png" />
+    <link
+      href="https://fonts.googleapis.com/css?family=DM+Sans&display=swap"
+      rel="stylesheet"
+    />
+    <script
+      src="https://kit.fontawesome.com/c6b75d90fa.js"
+      crossorigin="anonymous"
+    ></script>
 
-  <link href="https://fonts.googleapis.com/css?family=DM+Sans&display=swap" rel="stylesheet" />
-  <script src="https://kit.fontawesome.com/c6b75d90fa.js" crossorigin="anonymous"></script>
+    <title>Fisheye - photographe</title>
+  </head>
 
-  <title>Fisheye - photographe</title>
-</head>
+  <body>
+    <header role="banner">
+      <a href="./index.html">
+        <img
+          src="./assets/images/logo.png"
+          class="logo"
+          alt="Fisheye Home Page"
+        />
+      </a>
+    </header>
+    <main id="main-photographer" aria-hidden="false">
+      <section class="photograph-header"></section>
+      <section class="photograph-body">
+       
+          <div class="FilterField" >
+            Trier par :
+            <div role="listbox" class="filterField_select" aria-expanded="false">
+              <span id="filterField_select-label">Popularité</span>
+              <ul class="filterField_select-list hidden">
+                <li role="option" class="filterField_select-list-item">
+                  Popularité
+                </li>
+                <li role="option" class="filterField_select-list-item">
+                  Date
+                </li>
+                <li role="option" class="filterField_select-list-item">
+                  Titre
+                </li>
+              </ul>
+            </div>
+          </div>
+      </section>
+    </main>
+    <div class="lightbox-Bg hidden" aria-hidden="true">
+      <div class="lightbox" role="dialog">
+        <div class="lightbox_close_btn-div">
+          <img
+            role="button"
+            class="lightbox_Close-btn"
+            aria-label="fermer la lightbox"
+            src="./assets/icons/LightboxCloseBtn.svg"
+          />
+        </div>
 
-<body>
-  <header role="banner">
+        <div class="lightbox_controls-Div">
+          <img
+            class="next-Btn"
+            src="./assets/icons/LightboxArrow.svg"
+            alt="image suivante"
+          />
+          <img
+            class="prev-Btn"
+            src="./assets/icons/LightboxArrow.svg"
+            alt="image précédente"
+          />
 
-    <a href="./index.html">
-      <img src="./assets/images/logo.png" class="logo" alt="Fisheye Home Page" />
-
-    </a>
-  </header>
-  <main id="main-photographer" aria-hidden="false">
-    <section class="photograph-header"></section>
-    <section class="photograph-body"></section>
-  </main>
-  <div class="lightbox-Bg hidden" aria-hidden="true">
-    <div class="lightbox" role="dialog">
-      <div class="lightbox_close_btn-div">
-        <img role="button" class="lightbox_Close-btn" aria-label="fermer la lightbox"
-
-          src="./assets/icons/LightboxCloseBtn.svg">
-      </div>
-
-      <div class="lightbox_controls-Div">
-        <img class="next-Btn" src="./assets/icons/LightboxArrow.svg" alt="image suivante" />
-        <img class="prev-Btn" src="./assets/icons/LightboxArrow.svg" alt="image précédente" />
-
-        <div class="lightbox_media-Container">
-          <div class="lightbox_media-slider"></div>
+          <div class="lightbox_media-Container">
+            <div class="lightbox_media-slider"></div>
+          </div>
         </div>
       </div>
-
     </div>
-    </div>
-    <div class="contact_modal hidden" role="dialog" aria-hidden="true" aria-describedby="modalTitle">
+    <div
+      class="contact_modal hidden"
+      role="dialog"
+      aria-hidden="true"
+      aria-describedby="modalTitle"
+    >
       <div class="modal">
         <header>
           <h2 id="modalTitle">
@@ -57,11 +98,23 @@
         <form name="reserve">
           <div class="formData">
             <label class="text-label" for="first">Prénom</label>
-            <input class="text-control" type="text" id="first" name="first" minlength="2" />
+            <input
+              class="text-control"
+              type="text"
+              id="first"
+              name="first"
+              minlength="2"
+            />
           </div>
           <div class="formData">
             <label class="text-label" for="last">Nom</label>
-            <input class="text-control" type="text" id="last" name="last" minlength="2" />
+            <input
+              class="text-control"
+              type="text"
+              id="last"
+              name="last"
+              minlength="2"
+            />
           </div>
           <div class="formData">
             <label class="text-label" for="email">E-mail</label>
@@ -69,17 +122,26 @@
           </div>
           <div class="formData">
             <label class="text-label" for="txtMsg">Votre message</label>
-            <textarea id="txtMsg" class="text-control" name="txtMsg" minlength="50" maxlength="200"></textarea>
+            <textarea
+              role="textbox"
+              id="txtMsg"
+              class="text-control"
+              name="txtMsg"
+              minlength="50"
+              maxlength="200"
+            ></textarea>
           </div>
           <button class="submit-form-btn" type="submit">Envoyer</button>
         </form>
       </div>
     </div>
-    <script type="module" src="./scripts/factories/photographerFactory.js"></script>
+    <script
+      type="module"
+      src="./scripts/factories/photographerFactory.js"
+    ></script>
     <script src="./scripts/pages/photographer.js" type="module"></script>
     <script src="./scripts/utils/contactForm.js" type="module"></script>
     <script src="./scripts/pages/index.js" type="module"></script>
     <script src="./scripts/utils/lightbox.js" type="module"></script>
-</body>
-
+  </body>
 </html>
