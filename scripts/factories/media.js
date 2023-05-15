@@ -26,12 +26,19 @@ export function mediaFactory(media) {
       article.appendChild(video)
     }
 
+    const mediaInfo = document.createElement("div");
+    mediaInfo.classList.add("media__info")
+    article.appendChild(mediaInfo);
+
     const mediaTitle = document.createElement("p");
     mediaTitle.classList.add("media__title")
     mediaTitle.innerText = title
-    // console.log(mediaTitle);
-    article.appendChild(mediaTitle);
-    // console.log(article);
+    mediaInfo.appendChild(mediaTitle);
+
+    const mediaLike = document.createElement("p");
+    mediaLike.classList.add("media__like");
+    mediaLike.innerHTML = `${likes} <i class="fa-solid fa-heart "></i>`
+    mediaInfo.appendChild(mediaLike);
 
     return (article)
   }

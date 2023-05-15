@@ -29,6 +29,14 @@ h1 {
   margin-left: 100px;
 }
 
+#main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 0rem 4rem;
+  border: 1px solid red;
+}
+
 .photographer_section {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
@@ -46,6 +54,7 @@ h1 {
   width: 30vw;
 }
 .photographer__header {
+  width: 100%;
   display: flex;
   justify-content: space-around;
   align-items: center;
@@ -56,7 +65,8 @@ h1 {
 .photographer__content {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
-  gap: 4.3em;
+  width: 100%;
+  gap: 2rem;
   margin-top: 6.25em;
   margin-bottom: 6.25em;
 }
@@ -108,14 +118,23 @@ h1 {
 .media {
   display: flex;
   flex-direction: column;
-  width: 10rem;
+  justify-content: center;
+  align-items: center;
+}
+.media__info {
+  display: flex;
+  width: 28vw;
+  justify-content: space-between;
 }
 .media__img, .media__video {
-  width: 21rem;
-  height: 21rem;
+  width: 28vw;
+  height: 28vw;
   object-fit: cover;
   border-radius: 0.2rem;
   padding-bottom: 1rem;
+}
+.media__like {
+  color: red;
 }
 
 .button {
