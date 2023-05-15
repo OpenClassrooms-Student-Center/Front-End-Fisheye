@@ -1,6 +1,6 @@
 // import { displayModal } from "../utils/contactForm.js";
 import { getPhotographersById } from "../utils/getPhotographerById.js";
-import { displayModal, closeModal } from "../utils/contactForm.js";
+import { displayModal, closeModal, closeModalWithEsc } from "../utils/contactForm.js";
 import { photographerFactory } from "../factories/photographer.js";
 
 const photographer = await getPhotographersById();
@@ -35,9 +35,10 @@ function closeContactModal() {
   const contactBtn = document.querySelector(".contact__button");
   console.log(contactBtn);
   contactBtn.focus();
-
 }
+
 
 init();
 openContactModal();
 closeContactModal();
+closeModalWithEsc();

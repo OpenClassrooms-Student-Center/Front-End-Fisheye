@@ -18,3 +18,12 @@ export function closeModal() {
     body.classList.remove("no-scroll");
     modal.style.display = "none"
 }
+
+export function closeModalWithEsc() {
+    document.addEventListener('keydown', event => {
+        const code = event.code
+        if (modal.getAttribute('aria-hidden') == 'false' && code === "Escape") {
+            closeModal()
+        }
+    })
+}
