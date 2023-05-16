@@ -7,7 +7,6 @@ import { getMediasByPhotographer } from "../utils/getMediasByPhotographer.js";
 import { sortMedias } from "../utils/sortMedias.js";
 
 const main = document.querySelector("main");
-const orderBtn = document.getElementById("sort__by");
 
 const photographer = await getPhotographersById();
 
@@ -20,30 +19,44 @@ async function displayPhotographerHeader() {
 }
 
 async function displayPhotographerMedias() {
+  const sortSection = document.createElement("section");
+  sortSection.classList.add("sort")
+  sortSection.innerHTML += `
+  <label for="sort__by">Trier par</label>
+  <select id="sort__by" aria-label="button">
+  <option class="sort__value" value="Popularity">Popularité</option>
+  <option class="sort__value" value="Date">Date</option>
+      <option class="sort__value" value="Title">Titre</option>
+      </select>
+      `
+  main.appendChild(sortSection)
+
+
   const mediaSection = document.createElement("section");
   mediaSection.classList.add("photographer__content");
   main.appendChild(mediaSection);
+
+
   const sortedMedias = await sortMedias();
   console.log(sortedMedias);
   sortedMedias.forEach(media => {
     const data = mediaFactory(media);
     data.getMediaCardDom();
   });
-  displayLikes();
 }
 
-
-orderBtn.addEventListener("change", sortMedias)
-
-
 async function init() {
-  displayPhotographerHeader(photographer);
+  displayPhotographerHeader(photographer)
   displayPhotographerMedias()
-  // displayLikes();
   openContactModal();
   closeContactModal();
   closeModalWithEsc();
 }
 
 init();
+
+const orderBtn = document.getElementById("sort__by");
+console.log(orderBtn);
+
+orderBtn.addEventListener("change", sortMedias)
 // sortMedias()
