@@ -5,5 +5,30 @@ export async function getMediasByPhotographer() {
   const params = (new URL(document.location).searchParams);
   const id = parseInt(params.get("id"));
 
-  return media.filter(media => media.photographerId === id)
+  // console.log(media.filter(media => media.photographerId === id))
+  const medias =  media.filter(media => media.photographerId === id)
+  return medias
+}
+
+export async function sortMedias() {
+  const dropdown = document.getElementById("sort__by").value;
+  const data = await getMediasByPhotographer();
+
+  switch (dropdown) {
+    case "Popularity":
+      data.sort(function(a, b){
+        return b.likes - a.likes
+      })
+      break;
+    case "Date":
+      data.sort(function(a, b){
+        return b.date - a.date
+      })
+      break;
+    case "Title":
+      data.sort(function(a, b){
+        return a.title - b.title
+      })
+      break;
+  }
 }

@@ -211,6 +211,11 @@ h1 {
   overflow: hidden;
 }
 
+.sort {
+  display: flex;
+  justify-content: flex-start;
+}
+
 .modal {
   justify-content: center;
   align-items: center;

@@ -1,9 +1,9 @@
-// import { displayModal } from "../utils/contactForm.js";
+
 import { getPhotographersById } from "../utils/getPhotographerById.js";
 import { displayModal, closeModal, closeModalWithEsc } from "../utils/contactForm.js";
 import { photographerFactory } from "../factories/photographer.js";
 import { mediaFactory } from "../factories/media.js";
-import { getMediasByPhotographer } from "../utils/getMediasByPhotographer.js";
+import { sortMedias, getMediasByPhotographer } from "../utils/getMediasByPhotographer.js";
 
 const main = document.querySelector("main");
 
@@ -15,8 +15,24 @@ async function displayPhotographerHeader() {
   main.innerHTML += photographerHeader;
 }
 
+async function displaySortButton() {
+  const sortButton = `
+  <div class="sort">
+  <label for="sort__by">Trier par</label>
+
+  <select id="sort__by" aria-label="button">
+  <option class="sort__value" value="Popularity">Popularité</option>
+  <option class="sort__value" value="Date">Date</option>
+  <option class="sort__value" value="Title">Titre</option>
+  </select>
+  </div>
+  `;
+  main.innerHTML += sortButton;
+  const dropdown__btn = document.querySelector("#sort__by");
+  dropdown__btn.addEventListener("change", sortMedias)
+}
+
 const medias = await getMediasByPhotographer();
-// console.log(medias);
 
 async function displayPhotographerMedias() {
   const mediaSection = document.createElement("section");
@@ -24,17 +40,14 @@ async function displayPhotographerMedias() {
   main.appendChild(mediaSection);
 
   medias.forEach(media => {
-    // console.log(media);
     const data = mediaFactory(media);
     const medias = data.getMediaCardDom();
-    // main.innerHTML += medias
   });
-
 }
-
 
 async function init() {
   displayPhotographerHeader(photographer);
+  displaySortButton();
   displayPhotographerMedias()
 }
 
@@ -55,7 +68,6 @@ function closeContactModal() {
   const closeBtn = document.querySelector(".form__close");
   closeBtn.addEventListener("click", closeModal);
   const contactBtn = document.querySelector(".contact__button");
-  // console.log(contactBtn);
   contactBtn.focus();
 }
 
