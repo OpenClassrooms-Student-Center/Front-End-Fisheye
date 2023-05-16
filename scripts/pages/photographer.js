@@ -35,17 +35,20 @@ async function displayPhotographerMedias() {
   main.appendChild(mediaSection);
 
   const sortedMedias = await sortMedias();
+  let totalLikes = 0;
+
   console.log(sortedMedias);
   sortedMedias.forEach(media => {
     const data = mediaFactory(media);
     data.getMediaCardDom();
+    totalLikes += media.likes
   });
 
   const likesDiv = document.createElement("div");
   likesDiv.classList.add("likes__counter")
   main.appendChild(likesDiv)
   likesDiv.innerHTML += `
-  <p>Nombre de likes: <i class="fa-solid fa-heart "></i> Prix: </p>
+  <p>${totalLikes} <i class="fa-solid fa-heart "></i>   Prix: </p>
   `
 }
 

@@ -11,21 +11,21 @@ export async function sortMedias() {
       sortedDatas = data.sort(function(a,b) {
         b.likes - a.likes
       });
-      console.log(`by like: ${sortedDatas.map(o => [o.title, o.likes, o.date])}`);
+      // console.log(`by like: ${sortedDatas.map(o => [o.title, o.likes, o.date])}`);
       // console.log(sortedDatas);
       return sortedDatas
     case "Date":
       sortedDatas = data.sort(function(a,b) {
         b.date - a.date
       });
-      console.log(`by date: ${sortedDatas.map(o => [o.title, o.likes, o.date])}`);
+      // console.log(`by date: ${sortedDatas.map(o => [o.title, o.likes, o.date])}`);
       // console.log(sortedDatas);
       return sortedDatas
     case "Title":
       sortedDatas = data.sort(function(a,b) {
         a.title - b.title
       });
-      console.log(`by title: ${sortedDatas.map(o => [o.title, o.likes, o.date])}`);
+      // console.log(`by title: ${sortedDatas.map(o => [o.title, o.likes, o.date])}`);
       // console.log(sortedDatas);
       return sortedDatas
     default:
