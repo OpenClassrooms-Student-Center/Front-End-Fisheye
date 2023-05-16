@@ -10,26 +10,11 @@ const main = document.querySelector("main");
 const photographer = await getPhotographersById();
 
 async function displayPhotographerHeader() {
-  const datas = photographerFactory(photographer);
-  const photographerHeader = datas.getUserHeader()
-  main.innerHTML += photographerHeader;
-}
-
-async function displaySortButton() {
-  const sortButton = `
-  <div class="sort">
-  <label for="sort__by">Trier par</label>
-
-  <select id="sort__by" aria-label="button">
-  <option class="sort__value" value="Popularity">Popularité</option>
-  <option class="sort__value" value="Date">Date</option>
-  <option class="sort__value" value="Title">Titre</option>
-  </select>
-  </div>
-  `;
-  main.innerHTML += sortButton;
-  const dropdown__btn = document.querySelector("#sort__by");
-  dropdown__btn.addEventListener("change", sortMedias)
+  const datas = photographerFactory(photographer).getUserHeader();
+  const photographerHeader = document.createElement("section");
+  photographerHeader.classList.add("photographer__header");
+  photographerHeader.innerHTML = datas
+  main.prepend(photographerHeader);
 }
 
 const medias = await getMediasByPhotographer();
@@ -47,7 +32,6 @@ async function displayPhotographerMedias() {
 
 async function init() {
   displayPhotographerHeader(photographer);
-  displaySortButton();
   displayPhotographerMedias()
 }
 

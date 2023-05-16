@@ -7,11 +7,15 @@ export async function getMediasByPhotographer() {
 
   // console.log(media.filter(media => media.photographerId === id))
   const medias =  media.filter(media => media.photographerId === id)
+  // console.log(medias);
+  const dropdown = document.getElementById("sort__by");
+  // console.log(dropdown);
   return medias
 }
 
 export async function sortMedias() {
   const dropdown = document.getElementById("sort__by").value;
+  // console.log(dropdown);
   const data = await getMediasByPhotographer();
 
   switch (dropdown) {

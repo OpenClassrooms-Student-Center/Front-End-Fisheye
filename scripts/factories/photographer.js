@@ -46,15 +46,13 @@ export function photographerFactory(photographer) {
 
     function getUserHeader() {
         const photographerHeader = `
-        <section class="photographer__header">
-            <div class="photographer__info">
-                <h2 class="photographer__name photographer__name--doubled">${name}</h2>
-                 <p class="photographer__location photographer__location--doubled">${city}, ${country}</p>
-                 <p class="photographer__tagline photographer__tagline--doubled">${tagline}</p>
-            </div>
-            <button class="contact__button button" aria-label="contact me">Contactez-moi</button>
-            <img src="./assets/photographers/${portrait}.webp" alt="${name}" class="photographer__img">
-        </section>
+        <div class="photographer__info">
+            <h2 class="photographer__name photographer__name--doubled">${name}</h2>
+                <p class="photographer__location photographer__location--doubled">${city}, ${country}</p>
+                <p class="photographer__tagline photographer__tagline--doubled">${tagline}</p>
+        </div>
+        <button class="contact__button button" aria-label="contact me">Contactez-moi</button>
+        <img src="./assets/photographers/${portrait}.webp" alt="${name}" class="photographer__img">
         `
         return photographerHeader
     }
