@@ -1,9 +1,10 @@
 
 import { getPhotographersById } from "../utils/getPhotographerById.js";
-import { displayModal, closeModal, closeModalWithEsc } from "../utils/contactForm.js";
+import { closeContactModal, openContactModal, closeModalWithEsc } from "../utils/contactForm.js";
 import { photographerFactory } from "../factories/photographer.js";
 import { mediaFactory } from "../factories/media.js";
 import { getMediasByPhotographer } from "../utils/getMediasByPhotographer.js";
+import { sortMedias } from "../utils/sortMedias.js";
 
 const main = document.querySelector("main");
 
@@ -17,49 +18,29 @@ async function displayPhotographerHeader() {
   main.prepend(photographerHeader);
 }
 
-
 async function displayPhotographerMedias() {
   const medias = await getMediasByPhotographer();
+  // console.log(medias);
   const mediaSection = document.createElement("section");
   mediaSection.classList.add("photographer__content");
   main.appendChild(mediaSection);
 
+  sortMedias(medias);
+
   medias.forEach(media => {
     const data = mediaFactory(media);
-    const medias = data.getMediaCardDom();
+    // console.log(data);
+    // data.getMediaCardDom();
   });
 }
-
-
 
 async function init() {
   displayPhotographerHeader(photographer);
   displayPhotographerMedias()
+  openContactModal();
+  closeContactModal();
+  closeModalWithEsc();
 }
-
-function displayNameInModal() {
-  const { name } = photographer
-  const title = document.querySelector(".form__title")
-  title.innerHTML += `<br>${name}`
-}
-
-function openContactModal() {
-  const contactBtn = document.querySelector(".contact__button");
-  contactBtn.addEventListener("click", displayModal);
-  contactBtn.focus();
-  displayNameInModal();
-}
-
-function closeContactModal() {
-  const closeBtn = document.querySelector(".form__close");
-  closeBtn.addEventListener("click", closeModal);
-  const contactBtn = document.querySelector(".contact__button");
-  contactBtn.focus();
-}
-
 
 init();
 // sortMedias()
-openContactModal();
-closeContactModal();
-closeModalWithEsc();

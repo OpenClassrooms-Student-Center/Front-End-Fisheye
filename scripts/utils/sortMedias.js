@@ -1,26 +1,31 @@
-import { getMediasByPhotographer } from "./getMediasByPhotographer";
+// import { getMediasByPhotographer } from "./getMediasByPhotographer";
 
-export async function sortMedias() {
+
+export async function sortMedias(data) {
   const dropdown = document.getElementById("sort__by").value;
-  const data = await getMediasByPhotographer;
+  console.log(dropdown);
+  // const data = await getMediasByPhotographer();
+  // console.log(data);
   let result
 
   switch (dropdown) {
     case "Popularity":
       result = data.sort(function(a, b){
-        return b.likes - a.likes
+         b.likes - a.likes
       })
       break;
     case "Date":
       result = data.sort(function(a, b){
-        return b.date - a.date
+         b.date - a.date
       })
       break;
     case "Title":
       result = data.sort(function(a, b){
-        return a.title - b.title
+         a.title - b.title
       })
       break;
+      default:
+        break;
     }
     console.log(result);
 }
