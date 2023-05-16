@@ -5,5 +5,7 @@ export async function getPhotographersById() {
   const params = (new URL(document.location).searchParams);
   const id = parseInt(params.get("id"));
 
-  return photographers.find(photographers => photographers.id === id)
+  const photographer = photographers.find(photographers => photographers.id === id);
+
+  return photographer
 }

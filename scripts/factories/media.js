@@ -1,5 +1,5 @@
 export function mediaFactory(media) {
-  const { id, date, image, video, likes, photographerId, price, title} = media
+  const { image, video, likes, photographerId, title} = media
 
 
   function getMediaCardDom() {

@@ -56,5 +56,5 @@ export function photographerFactory(photographer) {
         `
         return photographerHeader
     }
-    return { name, picture, getUserCardDOM, getUserHeader }
+    return { name, picture, price, getUserCardDOM, getUserHeader }
 }
