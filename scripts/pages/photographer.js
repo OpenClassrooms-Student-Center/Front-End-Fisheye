@@ -3,7 +3,7 @@ import { getPhotographersById } from "../utils/getPhotographerById.js";
 import { displayModal, closeModal, closeModalWithEsc } from "../utils/contactForm.js";
 import { photographerFactory } from "../factories/photographer.js";
 import { mediaFactory } from "../factories/media.js";
-import { sortMedias, getMediasByPhotographer } from "../utils/getMediasByPhotographer.js";
+import { getMediasByPhotographer } from "../utils/getMediasByPhotographer.js";
 
 const main = document.querySelector("main");
 
@@ -17,9 +17,9 @@ async function displayPhotographerHeader() {
   main.prepend(photographerHeader);
 }
 
-const medias = await getMediasByPhotographer();
 
 async function displayPhotographerMedias() {
+  const medias = await getMediasByPhotographer();
   const mediaSection = document.createElement("section");
   mediaSection.classList.add("photographer__content");
   main.appendChild(mediaSection);
@@ -29,6 +29,8 @@ async function displayPhotographerMedias() {
     const medias = data.getMediaCardDom();
   });
 }
+
+
 
 async function init() {
   displayPhotographerHeader(photographer);
@@ -57,6 +59,7 @@ function closeContactModal() {
 
 
 init();
+// sortMedias()
 openContactModal();
 closeContactModal();
 closeModalWithEsc();

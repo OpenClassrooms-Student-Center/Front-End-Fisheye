@@ -1,7 +1,6 @@
 export function mediaFactory(media) {
   const { id, date, image, video, likes, photographerId, price, title} = media
 
-  const source = `assets/photographers/${photographerId}/${image}`;
 
   function getMediaCardDom() {
 
@@ -12,6 +11,7 @@ export function mediaFactory(media) {
     mediaSection.appendChild(article)
 
     if (image) {
+      const source = `assets/photographers/${photographerId}/${image}`;
       const img = document.createElement("img");
       img.setAttribute("src", source);
       img.setAttribute("alt", title);
@@ -19,11 +19,12 @@ export function mediaFactory(media) {
       article.appendChild(img)
     }
     if (video) {
-      const video = document.createElement("video");
-      video.setAttribute("src", source);
-      video.setAttribute("alt", title);
-      video.className += "media__video";
-      article.appendChild(video)
+      const source = `assets/photographers/${photographerId}/${video}`;
+      const vid = document.createElement("video");
+      vid.setAttribute("src", source);
+      vid.setAttribute("alt", title);
+      vid.className += "media__video";
+      article.appendChild(vid)
     }
 
     const mediaInfo = document.createElement("div");
