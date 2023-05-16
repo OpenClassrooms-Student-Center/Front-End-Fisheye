@@ -44,15 +44,5 @@ export function mediaFactory(media) {
     return (article)
   }
 
-  function displayLikes() {
-    const likesDiv = document.createElement("div");
-    likesDiv.classList.add("likes__counter")
-    main.appendChild(likesDiv)
-    likesDiv.innerHTML += `
-    <p>Nombre de likes: <i class="fa-solid fa-heart "></i> Prix: </p>
-    `
-    return (likesDiv)
-  }
-
-  return { title, likes, getMediaCardDom, displayLikes};
+  return { title, likes, getMediaCardDom};
 }

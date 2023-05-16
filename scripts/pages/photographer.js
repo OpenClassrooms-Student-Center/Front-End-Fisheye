@@ -3,7 +3,6 @@ import { getPhotographersById } from "../utils/getPhotographerById.js";
 import { closeContactModal, openContactModal, closeModalWithEsc } from "../utils/contactForm.js";
 import { photographerFactory } from "../factories/photographer.js";
 import { mediaFactory } from "../factories/media.js";
-import { getMediasByPhotographer } from "../utils/getMediasByPhotographer.js";
 import { sortMedias } from "../utils/sortMedias.js";
 
 const main = document.querySelector("main");
@@ -22,20 +21,18 @@ async function displayPhotographerMedias() {
   const sortSection = document.createElement("section");
   sortSection.classList.add("sort")
   sortSection.innerHTML += `
-  <label for="sort__by">Trier par</label>
-  <select id="sort__by" aria-label="button">
-  <option class="sort__value" value="Popularity">Popularité</option>
-  <option class="sort__value" value="Date">Date</option>
+    <label for="sort__by">Trier par</label>
+    <select id="sort__by" aria-label="button">
+      <option class="sort__value" value="Popularity">Popularité</option>
+      <option class="sort__value" value="Date">Date</option>
       <option class="sort__value" value="Title">Titre</option>
-      </select>
-      `
+    </select>
+  `
   main.appendChild(sortSection)
-
 
   const mediaSection = document.createElement("section");
   mediaSection.classList.add("photographer__content");
   main.appendChild(mediaSection);
-
 
   const sortedMedias = await sortMedias();
   console.log(sortedMedias);
@@ -43,6 +40,13 @@ async function displayPhotographerMedias() {
     const data = mediaFactory(media);
     data.getMediaCardDom();
   });
+
+  const likesDiv = document.createElement("div");
+  likesDiv.classList.add("likes__counter")
+  main.appendChild(likesDiv)
+  likesDiv.innerHTML += `
+  <p>Nombre de likes: <i class="fa-solid fa-heart "></i> Prix: </p>
+  `
 }
 
 async function init() {
@@ -56,7 +60,5 @@ async function init() {
 init();
 
 const orderBtn = document.getElementById("sort__by");
-console.log(orderBtn);
-
 orderBtn.addEventListener("change", sortMedias)
 // sortMedias()

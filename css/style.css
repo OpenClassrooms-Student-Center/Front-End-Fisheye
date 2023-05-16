@@ -136,6 +136,14 @@ h1 {
   color: red;
 }
 
+.likes__counter {
+  position: sticky;
+  bottom: 0rem;
+  left: 70rem;
+  background-color: #D3573C;
+  padding: 2rem;
+}
+
 .button {
   font-size: 1.2em;
   font-weight: bold;
@@ -212,7 +220,7 @@ h1 {
 
 .sort {
   display: flex;
-  text-align: left;
+  justify-content: flex-start;
 }
 
 .modal {
