@@ -1,31 +1,34 @@
-// import { getMediasByPhotographer } from "./getMediasByPhotographer";
+import { getMediasByPhotographer } from "./getMediasByPhotographer.js";
 
-
-export async function sortMedias(data) {
+export async function sortMedias() {
   const dropdown = document.getElementById("sort__by").value;
   console.log(dropdown);
-  // const data = await getMediasByPhotographer();
-  // console.log(data);
-  let result
+  const data = await getMediasByPhotographer();
+  let sortedDatas;
 
   switch (dropdown) {
     case "Popularity":
-      result = data.sort(function(a, b){
-         b.likes - a.likes
-      })
-      break;
+      sortedDatas = data.sort(function(a,b) {
+        b.likes - a.likes
+      });
+      console.log(`by like: ${sortedDatas.map(o => [o.title, o.likes, o.date])}`);
+      // console.log(sortedDatas);
+      return sortedDatas
     case "Date":
-      result = data.sort(function(a, b){
-         b.date - a.date
-      })
-      break;
+      sortedDatas = data.sort(function(a,b) {
+        b.date - a.date
+      });
+      console.log(`by date: ${sortedDatas.map(o => [o.title, o.likes, o.date])}`);
+      // console.log(sortedDatas);
+      return sortedDatas
     case "Title":
-      result = data.sort(function(a, b){
-         a.title - b.title
-      })
+      sortedDatas = data.sort(function(a,b) {
+        a.title - b.title
+      });
+      console.log(`by title: ${sortedDatas.map(o => [o.title, o.likes, o.date])}`);
+      // console.log(sortedDatas);
+      return sortedDatas
+    default:
       break;
-      default:
-        break;
     }
-    console.log(result);
 }

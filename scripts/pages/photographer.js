@@ -7,6 +7,7 @@ import { getMediasByPhotographer } from "../utils/getMediasByPhotographer.js";
 import { sortMedias } from "../utils/sortMedias.js";
 
 const main = document.querySelector("main");
+const orderBtn = document.getElementById("sort__by");
 
 const photographer = await getPhotographersById();
 
@@ -19,24 +20,26 @@ async function displayPhotographerHeader() {
 }
 
 async function displayPhotographerMedias() {
-  const medias = await getMediasByPhotographer();
-  // console.log(medias);
   const mediaSection = document.createElement("section");
   mediaSection.classList.add("photographer__content");
   main.appendChild(mediaSection);
-
-  sortMedias(medias);
-
-  medias.forEach(media => {
+  const sortedMedias = await sortMedias();
+  console.log(sortedMedias);
+  sortedMedias.forEach(media => {
     const data = mediaFactory(media);
-    // console.log(data);
-    // data.getMediaCardDom();
+    data.getMediaCardDom();
   });
+  displayLikes();
 }
+
+
+orderBtn.addEventListener("change", sortMedias)
+
 
 async function init() {
   displayPhotographerHeader(photographer);
   displayPhotographerMedias()
+  // displayLikes();
   openContactModal();
   closeContactModal();
   closeModalWithEsc();
