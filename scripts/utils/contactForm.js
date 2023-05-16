@@ -1,12 +1,11 @@
 const modal = document.getElementById("contact_modal");
 
 function displayModal() {
-	modal.style.display = "block";
+    modal.showModal();
 }
 
 function closeModal() {
-    // const modal = document.getElementById("contact_modal");
-    modal.style.display = "none";
+    modal.close();
 }
 
 let contact_data = [];

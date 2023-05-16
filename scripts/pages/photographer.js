@@ -66,12 +66,11 @@ function addFromMediaFactory(idPhotographer, mediaPhotographer, containerMedias)
     mediaPhotographer.forEach(media => {
         media.photographerId = idPhotographer;
         const factoryMedia = mediaFactory(media);
-        const mediaDOM = factoryMedia.querySelector('.mediaArticle');
+        const heart = factoryMedia.querySelector('.isole-heart');
         containerMedias.appendChild(factoryMedia);
         factoryMedia.addEventListener('click', openLightBox);
-
-        // mediaDOM.addEventListener('click', 'toggleLike');
-        // mediaDOM.addEventListener('keydown', 'toggleLike');
+        heart.addEventListener('click', addLikes);
+        heart.addEventListener('keydown', addLikes);
     });
 };
 
@@ -120,16 +119,20 @@ function createLightBox(){
     });
 };
 
+
+
 let clickArrow = 0;
 
 function openLightBox(event){
+    if (event.target.classList.contains('isole-heart')){
+        return;
+    }
     const clickMedia = event.target.closest('.mediaArticle');
     clickArrow = mediaPhotographer.findIndex(media => media.id === parseInt(clickMedia.getAttribute('data-id')));
 
     const lightbox = document.querySelector('.lightbox');
     updateLightbox(clickArrow);
     lightbox.showModal();
-    // lightbox.style.display = 'block';
 }
 
 function createCloseButton(){
@@ -139,7 +142,6 @@ function createCloseButton(){
 
     closeButton.addEventListener('click', () => {
         const lightbox = document.querySelector('.lightbox');
-        // lightbox.style.display = 'none';
         lightbox.close();
     });
 
@@ -169,14 +171,14 @@ function createLightBoxContent(chooseMedia){
 
     if(chooseMedia.image){
         const lightboxImageContainer = document.createElement('div');
-        lightboxImageContainer.classList.add('lightboxImage');
+        lightboxImageContainer.classList.add('lightbox-Image');
         lightboxImage.setAttribute('src', `assets/images/${chooseMedia.photographerId}/${chooseMedia.image}`);
         lightboxImage.setAttribute('alt', `${chooseMedia.alt}`);
         lightboxImageContainer.appendChild(lightboxImage);
         lightboxLink.appendChild(lightboxImageContainer);
     } else if (chooseMedia.video){
         const lightboxVideoContainer = document.createElement('div');
-        lightboxVideoContainer.classList.add('lightboxVideo');
+        lightboxVideoContainer.classList.add('lightbox-Video');
         lightboxVideo.setAttribute('src', `assets/images/${chooseMedia.photographerId}/${chooseMedia.video}`);
         lightboxVideo.setAttribute('alt', `${chooseMedia.alt}`);
         lightboxVideo.controls = true;
@@ -193,6 +195,30 @@ function updateLightbox(clickArrow){
     createLightBoxContent(chooseMedia);
 }
 
+function addLikes(event){
+    if(event.type === "click" || event.key === "Enter"){
+        event.preventDefault();
+        const heart = event.target;
+        const mediaLikes = heart.parentElement.querySelector('.incrementLike');
+        const isLicked = heart.getAttribute("data-isLiked") === "true";
+        updateLikes(heart, mediaLikes, !isLicked);
+        
+    }
+};
+
+function updateLikes(heart, mediaLikes, isLiked){
+    const totalLikesElement = document.querySelector('.pLikes');
+    const currentTotalLikes = parseInt(totalLikesElement.textContent);
+    const currentLikes = parseInt(mediaLikes.textContent);
+    const newLikes = isLiked ? currentLikes + 1 : currentLikes - 1;
+    mediaLikes.textContent = newLikes;
+    isLiked ? heart.setAttribute("data-isLiked", "true") : heart.setAttribute("data-isLiked", "false");
+    isLiked ? heart.classList.add("liked") : heart.classList.remove("liked");
+    const eventName = isLiked ? "like" : "unlike";
+    const mediaEvent = new CustomEvent(eventName);
+    document.dispatchEvent(mediaEvent);
+    totalLikesElement.textContent = isLiked ? `${currentTotalLikes + 1}` : `${currentTotalLikes - 1}`;
+};
 
 
 
@@ -228,7 +254,7 @@ async function init(){
     header(photographer);
     displayLikesPrice(mediaPhotographer, photographer);
     displayMedias(mediaPhotographer, idPhotographer);
-    
+    addLikes();
     
 };
 
