@@ -1,51 +1,66 @@
 import { getPhotographersById } from "./getPhotographerById.js";
+import { closeModal, displayModal } from "./modal.js";
 
-const body = document.querySelector("body");
-const main = document.querySelector("#main");
 const modal = document.querySelector(".modal");
-// const closeBtn = document.querySelector(".form__close");
-const input = document.querySelector(".form__input");
+const form = document.querySelector(".form");
 
-function displayModal() {
-	main.setAttribute("aria-hidden", "true");
-    modal.setAttribute("aria-hidden", "false");
-    body.classList.add("no-scroll");
-    modal.style.display = "flex";
-    input.focus();
-}
-
-async function displayNameInModal() {
+async function displayNameInForm() {
     const photographer = await getPhotographersById();
     const { name } = photographer
     const title = document.querySelector(".form__title")
-    title.innerHTML += `<br>${name}`
+    title.innerHTML = `Contactez-moi<br>${name}`
 }
 
-export function openContactModal() {
-const contactBtn = document.querySelector(".contact__button");
-contactBtn.addEventListener("click", displayModal);
-contactBtn.focus();
-displayNameInModal();
+function displayForm() {
+    displayModal();
+    displayNameInForm();
+    form.style.display = "flex";
+    const input = document.querySelector(".form__input");
+    input.focus();
 }
 
-function closeModal() {
-    main.setAttribute("aria-hidden", "false");
-    modal.setAttribute("aria-hidden", "true");
-    body.classList.remove("no-scroll");
-    modal.style.display = "none"
+export function openContactForm() {
+    const contactBtn = document.querySelector(".contact__button");
+    contactBtn.addEventListener("click", displayForm);
 }
 
-export function closeContactModal() {
-const closeBtn = document.querySelector(".form__close");
-closeBtn.addEventListener("click", closeModal);
-const contactBtn = document.querySelector(".contact__button");
-contactBtn.focus();
+function closeForm() {
+    closeModal();
+    form.style.display = "none";
+    const contactBtn = document.querySelector(".contact__button");
+    contactBtn.focus();
 }
-export function closeModalWithEsc() {
+
+export function closeContactForm() {
+    const closeBtn = document.querySelector(".form__close");
+    closeBtn.addEventListener("click", closeForm);
+}
+
+export function closeFormWithEsc() {
     document.addEventListener('keydown', event => {
         const code = event.code
         if (modal.getAttribute('aria-hidden') == 'false' && code === "Escape") {
-            closeModal()
+            closeForm()
         }
     })
 }
+
+function submitForm() {
+    form.addEventListener("submit", function(event) {
+        event.preventDefault();
+        const firstName = document.getElementById("firstName");
+        const lastName = document.getElementById("lastName");
+        const email = document.getElementById("email");
+        const message = document.getElementById("message");
+
+        console.log({
+            firstName: firstName.value,
+            lastName: lastName.value,
+            email: email.value,
+            message: message.value
+        });
+        form.reset();
+        closeForm();
+    })
+}
+submitForm();

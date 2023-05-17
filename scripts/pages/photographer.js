@@ -1,9 +1,8 @@
-
 import { getPhotographersById } from "../utils/getPhotographerById.js";
-import { closeContactModal, openContactModal, closeModalWithEsc } from "../utils/contactForm.js";
 import { photographerFactory } from "../factories/photographer.js";
 import { displaySortedMedias } from "../utils/displaySortedMedias.js";
 import { getMediasByPhotographer } from "../utils/getMediasByPhotographer.js";
+import { openContactForm, closeContactForm, closeFormWithEsc } from "../utils/contactForm.js";
 
 const main = document.querySelector("main");
 
@@ -32,7 +31,6 @@ async function displaySortSection() {
   main.appendChild(sortSection)
 }
 
-
 async function displayPhotographerMedias() {
   const mediaSection = document.createElement("section");
   mediaSection.classList.add("photographer__content");
@@ -59,11 +57,11 @@ async function init() {
   getPhotographersById();
   displayPhotographerHeader(photographer)
   displaySortSection();
-  displayPhotographerMedias()
+  displayPhotographerMedias();
   displayLikesCounter();
-  openContactModal();
-  closeContactModal();
-  closeModalWithEsc();
+  openContactForm();
+  closeContactForm();
+  closeFormWithEsc();
 }
 
 init();
