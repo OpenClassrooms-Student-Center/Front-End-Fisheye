@@ -3,7 +3,8 @@ import { getPhotographersById } from "../utils/getPhotographerById.js";
 import { closeContactModal, openContactModal, closeModalWithEsc } from "../utils/contactForm.js";
 import { photographerFactory } from "../factories/photographer.js";
 import { mediaFactory } from "../factories/media.js";
-import { sortMedias } from "../utils/displaySortedMedias.js";
+import { displaySortedMedias, sortMedias } from "../utils/displaySortedMedias.js";
+import { getMediasByPhotographer } from "../utils/getMediasByPhotographer.js";
 
 const main = document.querySelector("main");
 
@@ -32,24 +33,31 @@ async function displaySortSection() {
   main.appendChild(sortSection)
 }
 
+
 async function displayPhotographerMedias() {
+  // document.querySelector(".photographer__content").innerHTML = "<section></section>"
   const mediaSection = document.createElement("section");
   mediaSection.classList.add("photographer__content");
+  // mediaSection.innerHTML = "";
   main.appendChild(mediaSection);
 
-  const sortedMedias = await sortMedias();
-  // console.log(sortedMedias);
-  // let totalLikes = 0;
-  // sortedMedias.forEach(media => {
-  //   totalLikes += media.likes
-  // });
+  displaySortedMedias();
 
+
+}
+
+async function displayLikesCounter() {
   const likesDiv = document.createElement("div");
   likesDiv.classList.add("likes__counter")
   main.appendChild(likesDiv)
-  // likesDiv.innerHTML += `
-  // <p>${totalLikes} <i class="fa-solid fa-heart "></i>   Prix: ${photographer.price}/jour</p>
-  // `
+  const medias = await getMediasByPhotographer();
+  let totalLikes = 0;
+  medias.forEach(media => {
+    totalLikes += media.likes
+  });
+  likesDiv.innerHTML += `
+  <p>${totalLikes} <i class="fa-solid fa-heart "></i>   Prix: ${photographer.price}/jour</p>
+  `
 }
 
 async function init() {
@@ -57,6 +65,7 @@ async function init() {
   displayPhotographerHeader(photographer)
   displaySortSection();
   displayPhotographerMedias()
+  displayLikesCounter();
   openContactModal();
   closeContactModal();
   closeModalWithEsc();

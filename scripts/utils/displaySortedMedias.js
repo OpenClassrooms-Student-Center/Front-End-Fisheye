@@ -9,7 +9,7 @@ import { getMediasByPhotographer } from "./getMediasByPhotographer.js";
 // });
 export async function sortMedias() {
   const dropdown = document.getElementById("sort__by").value;
-  console.log(dropdown);
+  // console.log(dropdown);
   const data = await getMediasByPhotographer();
   let sortedMedias;
 
@@ -34,11 +34,16 @@ export async function sortMedias() {
     default:
       break;
   }
-  // console.log(sortedMedias);
+  return sortedMedias;
+}
+
+export async function displaySortedMedias() {
+
+  const sortedMedias = await sortMedias();
   sortedMedias.forEach(media => {
     const data = mediaFactory(media);
     data.getMediaCardDom();
   });
-  console.log(sortedMedias);
-  return sortedMedias;
+  // console.log(sortedMedias);
+
 }

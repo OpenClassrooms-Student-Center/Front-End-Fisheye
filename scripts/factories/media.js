@@ -7,7 +7,6 @@ export function mediaFactory(media) {
     const article = document.createElement("article");
     article.classList.add("media");
     const mediaSection = document.querySelector(".photographer__content");
-    // console.log(mediaSection);
     mediaSection.appendChild(article)
 
     if (image) {
@@ -44,5 +43,5 @@ export function mediaFactory(media) {
     return (article)
   }
 
-  return { title, likes, getMediaCardDom};
+  return { title, likes, getMediaCardDom };
 }
