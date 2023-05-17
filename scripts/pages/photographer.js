@@ -35,15 +35,10 @@ async function displaySortSection() {
 
 
 async function displayPhotographerMedias() {
-  // document.querySelector(".photographer__content").innerHTML = "<section></section>"
   const mediaSection = document.createElement("section");
   mediaSection.classList.add("photographer__content");
-  // mediaSection.innerHTML = "";
   main.appendChild(mediaSection);
-
   displaySortedMedias();
-
-
 }
 
 async function displayLikesCounter() {
@@ -75,5 +70,7 @@ init();
 
 const orderBtn = document.getElementById("sort__by");
 // console.log(orderBtn);
-orderBtn.addEventListener("change", displayPhotographerMedias)
-// sortMedias()
+orderBtn.addEventListener("change", function() {
+  document.querySelector(".photographer__content").remove();
+  displayPhotographerMedias();
+})
