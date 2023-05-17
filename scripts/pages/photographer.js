@@ -3,7 +3,7 @@ import { getPhotographersById } from "../utils/getPhotographerById.js";
 import { closeContactModal, openContactModal, closeModalWithEsc } from "../utils/contactForm.js";
 import { photographerFactory } from "../factories/photographer.js";
 import { mediaFactory } from "../factories/media.js";
-import { sortMedias } from "../utils/sortMedias.js";
+import { sortMedias } from "../utils/displaySortedMedias.js";
 
 const main = document.querySelector("main");
 
@@ -18,7 +18,7 @@ async function displayPhotographerHeader() {
   main.appendChild(photographerHeader);
 }
 
-async function displayPhotographerMedias() {
+async function displaySortSection() {
   const sortSection = document.createElement("section");
   sortSection.classList.add("sort")
   sortSection.innerHTML += `
@@ -30,34 +30,33 @@ async function displayPhotographerMedias() {
     </select>
   `
   main.appendChild(sortSection)
+}
 
+async function displayPhotographerMedias() {
   const mediaSection = document.createElement("section");
   mediaSection.classList.add("photographer__content");
   main.appendChild(mediaSection);
 
   const sortedMedias = await sortMedias();
-  console.log(sortedMedias);
-  let totalLikes = 0;
-
   // console.log(sortedMedias);
-  sortedMedias.forEach(media => {
-    const data = mediaFactory(media);
-    data.getMediaCardDom();
-    totalLikes += media.likes
-  });
+  // let totalLikes = 0;
+  // sortedMedias.forEach(media => {
+  //   totalLikes += media.likes
+  // });
 
   const likesDiv = document.createElement("div");
   likesDiv.classList.add("likes__counter")
   main.appendChild(likesDiv)
-  likesDiv.innerHTML += `
-  <p>${totalLikes} <i class="fa-solid fa-heart "></i>   Prix: ${photographer.price}/jour</p>
-  `
+  // likesDiv.innerHTML += `
+  // <p>${totalLikes} <i class="fa-solid fa-heart "></i>   Prix: ${photographer.price}/jour</p>
+  // `
 }
 
 async function init() {
   getPhotographersById();
   displayPhotographerHeader(photographer)
-  // displayPhotographerMedias()
+  displaySortSection();
+  displayPhotographerMedias()
   openContactModal();
   closeContactModal();
   closeModalWithEsc();
@@ -66,5 +65,6 @@ async function init() {
 init();
 
 const orderBtn = document.getElementById("sort__by");
+// console.log(orderBtn);
 orderBtn.addEventListener("change", displayPhotographerMedias)
 // sortMedias()
