@@ -10,20 +10,28 @@ export function mediaFactory(media) {
     mediaSection.appendChild(article)
 
     if (image) {
-      const source = `assets/photographers/${photographerId}/${image}`;
+      const link = document.createElement("a");
+      link.setAttribute("href", "#");
+      article.appendChild(link);
+      const thumbnail = `assets/photographers/${photographerId}/${image}`;
       const img = document.createElement("img");
-      img.setAttribute("src", source);
+      img.setAttribute("src", thumbnail);
       img.setAttribute("alt", title);
       img.className += "media__img";
-      article.appendChild(img)
+      link.appendChild(img)
     }
     if (video) {
-      const source = `assets/photographers/${photographerId}/${video}`;
+      const link = document.createElement("a");
+      link.setAttribute("href", "#");
+      article.appendChild(link);
+      const thumbnail = `assets/photographers/${photographerId}/${video}`;
       const vid = document.createElement("video");
-      vid.setAttribute("src", source);
-      vid.setAttribute("alt", title);
+      // vid.setAttribute("controls", "true")
+      vid.setAttribute("src", thumbnail)
+      vid.setAttribute("type", "video/mp4")
+      vid.innerHTML = "Votre navigateur ne permet pas de lire les vidéos. Mais vous pouvez toujours <a href=`${thumbnail}`>la télécharger</a> !";
       vid.className += "media__video";
-      article.appendChild(vid)
+      link.appendChild(vid);
     }
 
     const mediaInfo = document.createElement("div");
