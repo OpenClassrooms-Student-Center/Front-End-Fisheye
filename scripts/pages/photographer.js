@@ -2,8 +2,7 @@
 import { getPhotographersById } from "../utils/getPhotographerById.js";
 import { closeContactModal, openContactModal, closeModalWithEsc } from "../utils/contactForm.js";
 import { photographerFactory } from "../factories/photographer.js";
-import { mediaFactory } from "../factories/media.js";
-import { displaySortedMedias, sortMedias } from "../utils/displaySortedMedias.js";
+import { displaySortedMedias } from "../utils/displaySortedMedias.js";
 import { getMediasByPhotographer } from "../utils/getMediasByPhotographer.js";
 
 const main = document.querySelector("main");
@@ -51,7 +50,8 @@ async function displayLikesCounter() {
     totalLikes += media.likes
   });
   likesDiv.innerHTML += `
-  <p>${totalLikes} <i class="fa-solid fa-heart "></i>   Prix: ${photographer.price}/jour</p>
+  <p class="likes">${totalLikes} <i class="fa-solid fa-heart "></i></p>
+  <p class="price">${photographer.price}€ / jour</p>
   `
 }
 

@@ -137,9 +137,14 @@ h1 {
 }
 
 .likes__counter {
-  position: sticky;
+  position: fixed;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
   bottom: 0rem;
-  left: 70rem;
+  width: 15rem;
+  height: 4rem;
+  right: 10%;
   background-color: #D3573C;
   padding: 2rem;
 }

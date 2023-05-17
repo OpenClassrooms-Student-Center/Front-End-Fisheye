@@ -7,9 +7,8 @@ import { getMediasByPhotographer } from "./getMediasByPhotographer.js";
 //   data.getMediaCardDom();
 //   totalLikes += media.likes
 // });
-export async function sortMedias() {
+async function sortMedias() {
   const dropdown = document.getElementById("sort__by").value;
-  // console.log(dropdown);
   const data = await getMediasByPhotographer();
   let sortedMedias;
 
@@ -44,6 +43,4 @@ export async function displaySortedMedias() {
     const data = mediaFactory(media);
     data.getMediaCardDom();
   });
-  // console.log(sortedMedias);
-
 }
