@@ -54,6 +54,14 @@ async function displayLikesCounter() {
   `
 }
 
+function renderLightBox() {
+  const mediaButtons = document.querySelectorAll(".media__btn");
+  console.log(mediaButtons);
+  mediaButtons.forEach(btn => {
+    btn.addEventListener("click", displayLightBox)
+  })
+}
+
 async function init() {
   getPhotographersById();
   displayPhotographerHeader(photographer)
@@ -63,7 +71,7 @@ async function init() {
   openContactForm();
   closeContactForm();
   closeFormWithEsc();
-  displayLightBox();
+  renderLightBox();
 }
 
 init();

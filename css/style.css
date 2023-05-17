@@ -138,7 +138,6 @@ h1 {
 .media__btn {
   border: none;
   cursor: pointer;
-  background-color: transparent;
 }
 
 .likes__counter {

@@ -1,15 +1,20 @@
 import { getMediasByPhotographer } from "./getMediasByPhotographer.js";
 import { getPhotographersById } from "./getPhotographerById.js";
+import { displayModal } from "./modal.js";
 
-export async function displayLightBox() {
+async function createLightBox() {
   const photographer = await getPhotographersById();
   const medias = await getMediasByPhotographer();
-  console.log(medias);
+  // console.log(medias);
   const modal = document.querySelector(".modal__window");
+  const carouselWrapper = document.createElement("div");
+  carouselWrapper.classList.add("carousel")
+  carouselWrapper.setAttribute("aria-label",`media carousel for ${photographer.name}`);
+
   const list = document.createElement("ul");
-  list.classList.add("carousel");
-  list.setAttribute("aria-label",`media carousel for ${photographer.name}`);
-  modal.appendChild(list);
+  list.classList.add("carousel__list");
+  modal.appendChild(carouselWrapper);
+  carouselWrapper.appendChild(list);
 
   medias.forEach(media => {
     const listItem = document.createElement("li");
@@ -34,5 +39,14 @@ export async function displayLightBox() {
     `
     list.appendChild(listItem);
   });
-  return list
+  // return list
+}
+createLightBox();
+
+export function displayLightBox() {
+  displayModal();
+  // createLightBox();
+  const lightBox = document.querySelector(".carousel");
+  lightBox.style.display = "flex"
+  console.log("click");
 }
