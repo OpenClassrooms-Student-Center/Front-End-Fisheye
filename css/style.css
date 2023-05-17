@@ -135,6 +135,11 @@ h1 {
 .media__like {
   color: red;
 }
+.media__btn {
+  border: none;
+  cursor: pointer;
+  background-color: transparent;
+}
 
 .likes__counter {
   position: fixed;

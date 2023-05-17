@@ -10,28 +10,30 @@ export function mediaFactory(media) {
     mediaSection.appendChild(article)
 
     if (image) {
-      const link = document.createElement("a");
-      link.setAttribute("href", "#");
-      article.appendChild(link);
+      const btn = document.createElement("button");
+      btn.setAttribute("aria-label", "ouverture du carousel");
+      btn.classList.add("media__btn")
+      article.appendChild(btn);
       const thumbnail = `assets/photographers/${photographerId}/${image}`;
       const img = document.createElement("img");
+      img.classList.add("media__img")
       img.setAttribute("src", thumbnail);
       img.setAttribute("alt", title);
-      img.className += "media__img";
-      link.appendChild(img)
+      btn.appendChild(img)
     }
     if (video) {
-      const link = document.createElement("a");
-      link.setAttribute("href", "#");
-      article.appendChild(link);
+      const btn = document.createElement("button");
+      btn.setAttribute("aria-label", "ouverture du carousel");
+      btn.classList.add("media__btn")
+      article.appendChild(btn);
       const thumbnail = `assets/photographers/${photographerId}/${video}`;
       const vid = document.createElement("video");
-      // vid.setAttribute("controls", "true")
+      vid.setAttribute("controls", "true")
       vid.setAttribute("src", thumbnail)
       vid.setAttribute("type", "video/mp4")
       vid.innerHTML = "Votre navigateur ne permet pas de lire les vidéos. Mais vous pouvez toujours <a href=`${thumbnail}`>la télécharger</a> !";
       vid.className += "media__video";
-      link.appendChild(vid);
+      btn.appendChild(vid);
     }
 
     const mediaInfo = document.createElement("div");

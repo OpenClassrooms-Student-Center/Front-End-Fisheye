@@ -22,4 +22,10 @@
   &__like {
     color: red;
   }
+
+  &__btn {
+    border: none;
+    cursor: pointer;
+    background-color: transparent;
+  }
 }

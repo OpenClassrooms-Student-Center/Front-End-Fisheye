@@ -1,7 +1,6 @@
 import { getMediasByPhotographer } from "./getMediasByPhotographer.js";
 import { getPhotographersById } from "./getPhotographerById.js";
 
-
 export async function displayLightBox() {
   const photographer = await getPhotographersById();
   const medias = await getMediasByPhotographer();
@@ -14,25 +13,25 @@ export async function displayLightBox() {
 
   medias.forEach(media => {
     const listItem = document.createElement("li");
-    listItem.classList.add(`carousel__item,item-${medias.indexOf(media)}`);
+    listItem.classList.add("carousel__item", `item-${medias.indexOf(media)}`);
     listItem.setAttribute("aria-hidden", "false");
-    // listItem.innerHTML = `
-    // <div role="button" class="controls controls-left">
-    //   <span class="img prev-image">
-    //     <i aria-hidden="true" class="fa fa-arrow-circle-left"></i>
-    //   </span>
-    //   <p class="sr-only">Previous</p>
-    // </div>
-    // <div role="button" class="controls controls-right">
-    //     <span class="img next-image">
-    //         <i aria-hidden="true" class="fa fa-arrow-circle-right"></i>
-    //     </span>
-    //     <p class="sr-only">Next</p>
-    // </div>
-    // <div class="caroussel-title">
-    //     <img src="assets/photographers/${photographer.id}/${media.image}}"
-    // </div>
-    // `
+    listItem.innerHTML = `
+    <div role="button" class="controls controls-left">
+      <span class="img prev-image">
+        <i aria-hidden="true" class="fa fa-arrow-circle-left"></i>
+      </span>
+      <p class="sr-only">Previous</p>
+    </div>
+    <div role="button" class="controls controls-right">
+        <span class="img next-image">
+            <i aria-hidden="true" class="fa fa-arrow-circle-right"></i>
+        </span>
+        <p class="sr-only">Next</p>
+    </div>
+    <div class="caroussel-title">
+    </div>
+      <img src="../../assets/photographers/${photographer.id}/${media.image}"
+    `
     list.appendChild(listItem);
   });
   return list
