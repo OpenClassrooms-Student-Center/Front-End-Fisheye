@@ -3,6 +3,7 @@ import { photographerFactory } from "../factories/photographer.js";
 import { displaySortedMedias } from "../utils/displaySortedMedias.js";
 import { getMediasByPhotographer } from "../utils/getMediasByPhotographer.js";
 import { openContactForm, closeContactForm, closeFormWithEsc } from "../utils/contactForm.js";
+import { displayLightBox } from "../utils/lightBox.js";
 
 const main = document.querySelector("main");
 
@@ -62,6 +63,7 @@ async function init() {
   openContactForm();
   closeContactForm();
   closeFormWithEsc();
+  displayLightBox();
 }
 
 init();
