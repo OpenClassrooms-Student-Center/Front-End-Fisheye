@@ -1,24 +1,46 @@
 //Mettre le code JavaScript lié à la page photographer.html
-let params = (new URL(document.location)).searchParams;
-let id = params.get('id');
+let params = new URL(document.location).searchParams;
+let id = params.get("id");
 
-async function getMedias() {
-    const res = await fetch("./data/photographers.json");
-    const data = await res.json();
+async function getPhotographerDetail() {
+  const res = await fetch("./data/photographers.json");
+  const data = await res.json();
 
-    const photographer = ({medias: [...data.media]});
+  const photographer = {
+    photographers: [...data.photographers],
+    medias: [...data.media],
+  };
 
-    const result = photographer.medias.filter(media => media.photographerId == id);
+  const mediaDetails = photographer.medias.filter(
+    (media) => media.photographerId == id
+  );
 
-    console.log(result);
+  const photographerDetails = photographer.photographers.filter(
+    (photographer) => photographer.id == id
+  );
 
-    // const array = data.media;
-    // const result = array.filter(media => media.photographerId == id);
-    // console.log(result);
+  return {
+    photographer: {
+      photographerDetails: [...photographerDetails],
+      mediaDetails: [...mediaDetails],
+    },
+  };
 }
 
-getMedias();
-// console.log(id);
+async function displayData(photographer) {
+  const photographersSection = document.querySelector(".photograph-header");
 
-// utiliser la method "find()" pour récup photographe specifique
-// utiliser la method "filter()" pour récup photo du photographe (media)
+  photographer.photographerDetails.forEach((photographer) => {
+    const photographerModel = photographerFactory(photographer);
+    const userHeaderDOM = photographerModel.getUserDetailDOM();
+    photographersSection.appendChild(userHeaderDOM);
+  });
+}
+
+async function init() {
+  // Récupère les datas des photographes
+  const { photographer } = await getPhotographerDetail();
+  displayData(photographer);
+}
+
+init();
