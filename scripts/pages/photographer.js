@@ -64,6 +64,7 @@ async function init() {
   closeContactForm();
   closeFormWithEsc();
   // displayLightBox();
+  // lightBox();
 }
 
 init();
@@ -73,18 +74,4 @@ const orderBtn = document.getElementById("sort__by");
 orderBtn.addEventListener("change", function() {
   document.querySelector(".photographer__content").remove();
   displayPhotographerMedias();
-})
-
-// document.addEventListener("click", function(event) {
-//   console.log(event.target);
-// })
-const mediasCollection = document.getElementsByClassName("media");
-const medias = Array.from(mediasCollection);
-console.log(medias);
-medias.forEach(media => {
-  console.log(media);
-  media.addEventListener("click", function() {
-    console.log("click");
-    displayLightBox
-  })
 })

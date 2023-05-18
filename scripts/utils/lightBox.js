@@ -1,6 +1,5 @@
 import { getMediasByPhotographer } from "./getMediasByPhotographer.js";
 import { getPhotographersById } from "./getPhotographerById.js";
-import { displayModal } from "./modal.js";
 
 async function createLightBox() {
   const photographer = await getPhotographersById();
@@ -40,13 +39,13 @@ async function createLightBox() {
     `
     list.appendChild(listItem);
   });
-  // return list
+  return list
 }
-// createLightBox();
+createLightBox();
 
 export function displayLightBox() {
   displayModal();
-  createLightBox();
+  // createLightBox();
   const lightBox = document.querySelector(".carousel");
   lightBox.style.display = "flex"
   console.log("click");
