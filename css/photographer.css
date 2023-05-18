@@ -1,11 +1,28 @@
-#contact_modal {
-    display: none;
-}
+
 
 .photograph-header {
+    display: flex;
     background-color: #FAFAFA;
     height: 300px;
     margin: 0 100px;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.infoPhotographer h2 {
+    font-size: 4em;
+    color: #D3573C;
+    margin-bottom: 0;
+}
+
+.ville{
+    font-size: 1.5em;
+    color : #901C1C;
+}
+
+.tagline{
+    font-size: 1.1em;
+    color: #525252;
 }
 
 .contact_button {
@@ -21,32 +38,81 @@
     cursor: pointer;
 }
 
+.close{
+    border: none;
+    background-color: unset;
+    position: absolute;
+    top: 15px;
+    right: 15px;
+}
+
+.imgPhotographer{
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
 .modal {
+    width: 30em;
     border-radius: 5px;
     background-color: #DB8876;
-    width: 50%;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: space-between;
-    padding: 35px;
+    padding: 4em;
     margin: auto;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 9999;
 }
 
-.modal header {
+
+#contact_modal{
+    padding: 0;
+}
+
+dialog{
+    border: none;
+}
+
+dialog::backdrop{
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+header {
+    margin-bottom: 2em;
+}
+
+.modal header{
     justify-content: space-between;
     width: 100%;
+    margin-bottom: 2em;
 }
 
 .modal header img {
     cursor: pointer;
 }
 
-.modal header h2 {
-    font-size: 64px;
-    font-weight: normal;
-    text-align: center;
+.nameContact {
+    display: flex;
+    flex-direction: column;
 }
+
+#title{
+    font-size: 3.5em;
+    line-height: 50px;
+    margin: 0;
+}
+
+.photographerName {
+    margin: 5px 0 45px 0;
+    font-size: 3.5em;
+}
+
 
 form {
     display: flex;
@@ -57,7 +123,7 @@ form {
 
 form label {
     color: #312E2E;
-    font-size: 36px;
+    font-size: 1.5em;
 }
 
 form div {
@@ -73,4 +139,138 @@ form input {
     height: 68px;
     border: none;
     border-radius: 5px;
+}
+
+#message{
+    width: 100%;
+    height: 10em;
+    border: none;
+    border-radius: 5px;
+}
+
+.likesPrice{
+    display: flex;
+    position: fixed;
+    right: 40px;
+    bottom: 0;
+    background-color: #DB8876;
+    border-radius: 5px 5px 0 0;
+    width: 376px;
+    height: 89px;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.likesPrice > p{
+    font-size: 24px;   
+}
+
+.containerMedias{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 70px;
+    margin: 100px;
+    
+}
+
+
+.mediaImg{
+    width: 100%;
+    object-fit: cover;
+    height: 300px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+
+.mediaVideo{
+    width: 100%;
+    object-fit: cover;
+    height: 300px;
+    border-radius: 5px;
+}
+
+.pMedia{
+    display: flex;
+    color: #901C1C;
+    justify-content: space-between;
+    margin-top: 5px;
+    font-size: 24px;
+    font-weight: 400;
+    line-height: 31px;
+    cursor: pointer;
+}
+
+.likes-heart{
+    display: inline;
+    color: #901C1C;
+    font-size: 24px;
+    cursor: pointer;
+}
+
+.lightbox{
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+
+.mediaLightbox{
+    width: 85%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.lbCloseButton{
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    border: none;
+    background-color: unset;
+    color: #901C1C;
+    font-size: 80px;
+    cursor: pointer;
+}
+
+.previousArrow{
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    left: 15px;
+    border: none;
+    background-color: unset;
+    color: #901C1C;
+    font-size: 80px;
+    cursor: pointer;
+}
+
+.nextArrow{
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    right: 15px;
+    border: none;
+    background-color: unset;
+    color: #901C1C;
+    font-size: 80px;
+    cursor: pointer;
+}
+
+.lightboxImage{
+    width: 100%;
+    height: 90vh;
+    border-radius: 5px;
+    object-fit: cover;
+}
+
+.lightboxTitle{
+    color: #901C1C;
+}
+
+.lightboxVideo{
+    width: 100%;
+    height: 90vh;
+    border-radius: 5px;
+    object-fit: cover;
 }

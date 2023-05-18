@@ -1,46 +1,42 @@
+    // importation de la fonction "photographerFactory" depuis le fichier "../factories/photographer.js
+    import { photographerFactory } from "../factories/photographer.js";
+    
+    //Focntion asynchrone qui récupère les données des photographes
     async function getPhotographers() {
-        // Ceci est un exemple de données pour avoir un affichage de photographes de test dès le démarrage du projet, 
-        // mais il sera à remplacer avec une requête sur le fichier JSON en utilisant "fetch".
-        let photographers = [
-            {
-                "name": "Ma data test",
-                "id": 1,
-                "city": "Paris",
-                "country": "France",
-                "tagline": "Ceci est ma data test",
-                "price": 400,
-                "portrait": "account.png"
-            },
-            {
-                "name": "Autre data test",
-                "id": 2,
-                "city": "Londres",
-                "country": "UK",
-                "tagline": "Ceci est ma data test 2",
-                "price": 500,
-                "portrait": "account.png"
-            },
-        ]
-        // et bien retourner le tableau photographers seulement une fois récupéré
-        return ({
-            photographers: [...photographers, ...photographers, ...photographers]})
+            // Effectue une requête pour récupérer les données des photographes à partir de photographers.json
+            const response = await fetch('../../data/photographers.json');
+            // Transforme la réponse au format JSON en objet JavaScript
+            const data = await response.json();
+            // Extrait les données des photographes
+            const photographers = data.photographers; 
+            // Retourne les données des photographes
+            return photographers;    
     }
 
-    async function displayData(photographers) {
+    // Fonction qui affiche les données des photographes
+    function displayData(photographers) {
+        // Sélectionne la section HTML avec la classe "photographer_section"
         const photographersSection = document.querySelector(".photographer_section");
 
+        // Parcours les données des photographes
         photographers.forEach((photographer) => {
+            // Crée un modèle de photographe à partir des données du photographe
             const photographerModel = photographerFactory(photographer);
+            // Obtient la représentation DOM de la carte utilisateur du photographe
             const userCardDOM = photographerModel.getUserCardDOM();
+            // Ajoute la carte utilisateur du photographe à la section des photographes
             photographersSection.appendChild(userCardDOM);
         });
     };
 
+
     async function init() {
         // Récupère les datas des photographes
-        const { photographers } = await getPhotographers();
+        const  photographers  = await getPhotographers();
+        // Affiche les données des photographes en appelant la fonction 'displayData'
         displayData(photographers);
     };
     
+    // Appelle la fonction init
     init();
     
