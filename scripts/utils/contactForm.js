@@ -1,6 +1,7 @@
 import { getPhotographersById } from "./getPhotographerById.js";
-import { closeModal, displayModal } from "./modal.js";
 
+const body = document.querySelector("body");
+const main = document.querySelector("#main");
 const modal = document.querySelector(".modal");
 const form = document.querySelector(".form");
 
@@ -12,7 +13,10 @@ async function displayNameInForm() {
 }
 
 function displayForm() {
-    displayModal();
+    main.setAttribute("aria-hidden", "true");
+    modal.setAttribute("aria-hidden", "false");
+    body.classList.add("no-scroll");
+    modal.style.display = "flex";
     displayNameInForm();
     form.style.display = "flex";
     const input = document.querySelector(".form__input");
@@ -25,7 +29,10 @@ export function openContactForm() {
 }
 
 function closeForm() {
-    closeModal();
+    main.setAttribute("aria-hidden", "false");
+    modal.setAttribute("aria-hidden", "true");
+    body.classList.remove("no-scroll");
+    modal.style.display = "none"
     form.style.display = "none";
     const contactBtn = document.querySelector(".contact__button");
     contactBtn.focus();

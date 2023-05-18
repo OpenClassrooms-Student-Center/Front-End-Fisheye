@@ -10,10 +10,6 @@ export function mediaFactory(media) {
     mediaSection.appendChild(article)
 
     if (image) {
-      // const btn = document.createElement("button");
-      // btn.setAttribute("aria-label", "ouverture du carousel");
-      // btn.classList.add("media__btn")
-      // article.appendChild(btn);
       const thumbnail = `assets/photographers/${photographerId}/${image}`;
       const img = document.createElement("img");
       img.classList.add("media__img")
@@ -22,10 +18,6 @@ export function mediaFactory(media) {
       article.appendChild(img)
     }
     if (video) {
-      // const btn = document.createElement("button");
-      // btn.setAttribute("aria-label", "ouverture du carousel");
-      // btn.classList.add("media__btn")
-      // article.appendChild(btn);
       const thumbnail = `assets/photographers/${photographerId}/${video}`;
       const vid = document.createElement("video");
       vid.setAttribute("controls", "true")
