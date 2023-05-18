@@ -3,6 +3,7 @@ import { photographerFactory } from "../factories/photographer.js";
 import { displaySortedMedias } from "../utils/displaySortedMedias.js";
 import { getMediasByPhotographer } from "../utils/getMediasByPhotographer.js";
 import { openContactForm, closeContactForm, closeFormWithEsc } from "../utils/contactForm.js";
+import { closeLightboxModal, displayLightboxModal } from "../utils/lightBox.js";
 
 const main = document.querySelector("main");
 
@@ -61,13 +62,16 @@ function sortMedia() {
   })
 }
 
-function displayLightbox(){
+function openLightbox(){
   const mediaColl = document.querySelectorAll(".media");
   const medias = Array.from(mediaColl);
   console.log(medias);
-  medias.forEach(media => media.addEventListener("click", function() {
-    console.log(media)
-  }))
+  medias.forEach(media => media.addEventListener("click", displayLightboxModal))
+}
+
+function closeLightbox() {
+  const closeBtn = document.querySelector(".lightbox__close");
+  closeBtn.addEventListener("click", closeLightboxModal);
 }
 
 async function init() {
@@ -80,7 +84,8 @@ async function init() {
   closeContactForm();
   closeFormWithEsc();
   sortMedia();
-  displayLightbox();
+  openLightbox();
+  closeLightbox();
 }
 
 init();
