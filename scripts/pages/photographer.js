@@ -34,17 +34,15 @@ async function displayPhotographDetails() {
 };
 
 async function displayPhotographMedias() {
-    const media = await getMediaDetails();
+    const mediaData = await getMediaDetails();
     const mediasContainer = document.querySelector('.medias-container');
-    
-    const mediaCardModel = mediaFactory(media);
-    const mediaCardDOM = mediaCardModel.getMediaDOM();
 
-    let remainingLength = mediaCardDOM.length;
-    while (remainingLength > 0) {
-        mediasContainer.appendChild(mediaCardDOM[0]);
-        remainingLength--;
-    }
+    const mediaFactory = createMediaFactory(mediaData);
+    const mediaDOM = Array.from(mediaFactory.getMediaDOM());
+
+    mediaDOM.forEach((mediaElement) => {
+        mediasContainer.appendChild(mediaElement);
+    });
 }
 
 async function init() {
