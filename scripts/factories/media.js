@@ -10,22 +10,22 @@ export function mediaFactory(media) {
     mediaSection.appendChild(article)
 
     if (image) {
-      const btn = document.createElement("button");
-      btn.setAttribute("aria-label", "ouverture du carousel");
-      btn.classList.add("media__btn")
-      article.appendChild(btn);
+      // const btn = document.createElement("button");
+      // btn.setAttribute("aria-label", "ouverture du carousel");
+      // btn.classList.add("media__btn")
+      // article.appendChild(btn);
       const thumbnail = `assets/photographers/${photographerId}/${image}`;
       const img = document.createElement("img");
       img.classList.add("media__img")
       img.setAttribute("src", thumbnail);
       img.setAttribute("alt", title);
-      btn.appendChild(img)
+      article.appendChild(img)
     }
     if (video) {
-      const btn = document.createElement("button");
-      btn.setAttribute("aria-label", "ouverture du carousel");
-      btn.classList.add("media__btn")
-      article.appendChild(btn);
+      // const btn = document.createElement("button");
+      // btn.setAttribute("aria-label", "ouverture du carousel");
+      // btn.classList.add("media__btn")
+      // article.appendChild(btn);
       const thumbnail = `assets/photographers/${photographerId}/${video}`;
       const vid = document.createElement("video");
       vid.setAttribute("controls", "true")
@@ -33,7 +33,7 @@ export function mediaFactory(media) {
       vid.setAttribute("type", "video/mp4")
       vid.innerHTML = "Votre navigateur ne permet pas de lire les vidéos. Mais vous pouvez toujours <a href=`${thumbnail}`>la télécharger</a> !";
       vid.className += "media__video";
-      btn.appendChild(vid);
+      article.appendChild(vid);
     }
 
     const mediaInfo = document.createElement("div");

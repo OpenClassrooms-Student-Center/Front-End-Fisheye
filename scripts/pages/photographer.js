@@ -54,14 +54,6 @@ async function displayLikesCounter() {
   `
 }
 
-function renderLightBox() {
-  const mediaButtons = document.querySelectorAll(".media__btn");
-  console.log(mediaButtons);
-  mediaButtons.forEach(btn => {
-    btn.addEventListener("click", displayLightBox)
-  })
-}
-
 async function init() {
   getPhotographersById();
   displayPhotographerHeader(photographer)
@@ -71,7 +63,7 @@ async function init() {
   openContactForm();
   closeContactForm();
   closeFormWithEsc();
-  renderLightBox();
+  // displayLightBox();
 }
 
 init();
@@ -81,4 +73,18 @@ const orderBtn = document.getElementById("sort__by");
 orderBtn.addEventListener("change", function() {
   document.querySelector(".photographer__content").remove();
   displayPhotographerMedias();
+})
+
+// document.addEventListener("click", function(event) {
+//   console.log(event.target);
+// })
+const mediasCollection = document.getElementsByClassName("media");
+const medias = Array.from(mediasCollection);
+console.log(medias);
+medias.forEach(media => {
+  console.log(media);
+  media.addEventListener("click", function() {
+    console.log("click");
+    displayLightBox
+  })
 })

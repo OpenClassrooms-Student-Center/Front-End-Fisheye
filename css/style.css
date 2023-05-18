@@ -131,6 +131,7 @@ h1 {
   object-fit: cover;
   border-radius: 0.2rem;
   padding-bottom: 1rem;
+  cursor: pointer;
 }
 .media__like {
   color: red;
@@ -227,6 +228,7 @@ h1 {
   background-color: transparent;
   border: none;
   font-size: 4em;
+  cursor: pointer;
 }
 
 .no-scroll {

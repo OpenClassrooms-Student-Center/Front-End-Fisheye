@@ -8,7 +8,8 @@ async function createLightBox() {
   // console.log(medias);
   const modal = document.querySelector(".modal__window");
   const carouselWrapper = document.createElement("div");
-  carouselWrapper.classList.add("carousel")
+  carouselWrapper.classList.add("carousel");
+  carouselWrapper.style.display = "none"
   carouselWrapper.setAttribute("aria-label",`media carousel for ${photographer.name}`);
 
   const list = document.createElement("ul");
@@ -41,11 +42,11 @@ async function createLightBox() {
   });
   // return list
 }
-createLightBox();
+// createLightBox();
 
 export function displayLightBox() {
   displayModal();
-  // createLightBox();
+  createLightBox();
   const lightBox = document.querySelector(".carousel");
   lightBox.style.display = "flex"
   console.log("click");
