@@ -240,6 +240,39 @@ h1 {
   justify-content: flex-start;
 }
 
+.lightboxModal {
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(117, 117, 117, 0.5);
+  display: none;
+}
+.lightboxModal__wrapper {
+  display: grid;
+  grid-template-columns: 8% 84% 8%;
+}
+.lightboxModal__left, .lightboxModal__right {
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
+}
+.lightboxModal__left {
+  grid-column: 1;
+  align-items: flex-end;
+}
+.lightboxModal__center {
+  grid-column: 2;
+}
+.lightboxModal__right {
+  position: relative;
+  grid-column: 3;
+  align-items: flex-start;
+}
+
 .modal {
   justify-content: center;
   align-items: center;

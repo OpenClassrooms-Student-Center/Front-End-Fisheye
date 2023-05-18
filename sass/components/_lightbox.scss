@@ -1,0 +1,36 @@
+.lightboxModal {
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(#757575, 0.5);
+  // border: 2px solid red;
+  display: none;
+
+  &__wrapper {
+    display: grid;
+    grid-template-columns: 8% 84% 8%;
+  }
+
+  &__left, &__right {
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: center;
+  }
+
+  &__left {
+    grid-column: 1;
+    align-items: flex-end;
+  }
+  &__center {
+    grid-column: 2;
+  }
+  &__right {
+    position: relative;
+      grid-column: 3;
+      align-items: flex-start;
+  }
+}
