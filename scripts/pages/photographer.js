@@ -3,7 +3,6 @@ import { photographerFactory } from "../factories/photographer.js";
 import { displaySortedMedias } from "../utils/displaySortedMedias.js";
 import { getMediasByPhotographer } from "../utils/getMediasByPhotographer.js";
 import { openContactForm, closeContactForm, closeFormWithEsc } from "../utils/contactForm.js";
-import { displayLightBox } from "../utils/lightBox.js";
 
 const main = document.querySelector("main");
 
@@ -54,24 +53,34 @@ async function displayLikesCounter() {
   `
 }
 
+function sortMedia() {
+  const orderBtn = document.getElementById("sort__by");
+  orderBtn.addEventListener("change", function() {
+    document.querySelector(".photographer__content").remove();
+    displayPhotographerMedias();
+  })
+}
+
+function displayLightbox(){
+  const mediaColl = document.querySelectorAll(".media");
+  const medias = Array.from(mediaColl);
+  console.log(medias);
+  medias.forEach(media => media.addEventListener("click", function() {
+    console.log(media)
+  }))
+}
+
 async function init() {
-  getPhotographersById();
-  displayPhotographerHeader(photographer)
-  displaySortSection();
-  displayPhotographerMedias();
-  displayLikesCounter();
+  await getPhotographersById();
+  await displayPhotographerHeader(photographer)
+  await displaySortSection();
+  await displayPhotographerMedias();
+  await displayLikesCounter();
   openContactForm();
   closeContactForm();
   closeFormWithEsc();
-  // displayLightBox();
-  // lightBox();
+  sortMedia();
+  displayLightbox();
 }
 
 init();
-
-const orderBtn = document.getElementById("sort__by");
-// console.log(orderBtn);
-orderBtn.addEventListener("change", function() {
-  document.querySelector(".photographer__content").remove();
-  displayPhotographerMedias();
-})
