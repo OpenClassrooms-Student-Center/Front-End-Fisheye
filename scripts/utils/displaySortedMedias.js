@@ -25,7 +25,6 @@ export function selectOption() {
 
 async function sortMedias() {
   const dropdown = document.querySelector(".sort__select").innerText;
-  console.log(dropdown);
   const data = await getMediasByPhotographer();
   let sortedMedias;
 

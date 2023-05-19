@@ -1,7 +1,6 @@
 @use "../abstracts/variables";
 
 .sort {
-  position: relative;
   width: 100%;
   padding-top: 1rem;
   padding-bottom: 3rem;
@@ -9,28 +8,26 @@
   font-size: 1.2rem;
 
   &__menu {
-    width: 300px;
-    cursor: pointer;
     position: relative;
+    width: 20rem;
+    cursor: pointer;
 
     & i {
       color: white;
-
     }
   }
   &__select {
-    background-color: $color-primary;
-    padding: 1rem;
-    color: white;
-    font-weight: 500;
-    border-radius: 0.2rem;
     display: flex;
     align-items: center;
     justify-content: space-between;
+    width: 10rem;
+    padding: 1rem;
+    border-radius: 0.2rem;
+    background-color: $color-primary;
+    color: white;
   }
   &__list {
     position: absolute;
-    width: 100%;
     background-color: $color-primary;
     color: white;
     border-radius: 0.2rem;
@@ -42,10 +39,11 @@
     height: 0;
   }
   &__option {
-    padding: 8px 0;
+    padding: 0.5rem 0;
     border-bottom: 1px solid white;
   }
 }
 .active {
   height: 20rem;
+  width: 10rem;
 }
