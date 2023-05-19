@@ -23,7 +23,7 @@ export function selectOption() {
   });
 }
 
-async function sortMedias() {
+export async function sortMedias() {
   const dropdown = document.querySelector(".sort__select").innerText;
   const data = await getMediasByPhotographer();
   let sortedMedias;

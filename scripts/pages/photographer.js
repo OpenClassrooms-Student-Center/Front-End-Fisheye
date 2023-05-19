@@ -1,6 +1,6 @@
 import { getPhotographersById } from "../utils/getPhotographerById.js";
 import { photographerFactory } from "../factories/photographer.js";
-import { selectOption, toggleOptionsList, displaySortedMedias} from "../utils/displaySortedMedias.js";
+import { selectOption, toggleOptionsList, displaySortedMedias, sortMedias} from "../utils/displaySortedMedias.js";
 import { getMediasByPhotographer } from "../utils/getMediasByPhotographer.js";
 import { openContactForm, closeContactForm, closeFormWithEsc } from "../utils/contactForm.js";
 import { closeLightboxModal, displayLightboxModal } from "../utils/lightBox.js";
@@ -70,13 +70,19 @@ function sortMedia() {
   })
 }
 
-async function displayMediaInLightbox() {
-  displayLightboxModal();
+async function displayMediaInLightbox(event) {
 
-  const medias = await getMediasByPhotographer();
+  const target = event.currentTarget;
+  console.log(target);
+  const medias = await sortMedias();
   console.log(medias);
-  const mediaObj = medias.find(media => media.id === mediaId);
-  console.log(mediaObj);
+  console.log(medias.length);
+  const index = medias.indexOf(target);
+  console.log(index);
+
+
+
+
   // const { title, image, video, photographerId } = mediaObj;
 
   // const lightboxMedia = document.querySelector(".lightbox__center");
@@ -97,8 +103,7 @@ function openLightbox(){
   const mediaColl = document.querySelectorAll(".media");
   const medias = Array.from(mediaColl);
   medias.forEach(media => media.addEventListener("click", function(event) {
-    console.log(event.target);
-    displayMediaInLightbox();
+    displayMediaInLightbox(event);
   }))
 }
 
