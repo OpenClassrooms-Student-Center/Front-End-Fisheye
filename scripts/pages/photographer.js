@@ -64,18 +64,42 @@ async function displayLikesCounter() {
 
 function sortMedia() {
   const orderBtn = document.querySelector(".sort__list");
-  console.log(orderBtn.innerText);
   orderBtn.addEventListener("click", function() {
-    console.log(orderBtn.innerText);
     document.querySelector(".photographer__content").remove();
     displayPhotographerMedias();
   })
 }
 
+async function displayMediaInLightbox() {
+  displayLightboxModal();
+
+  const medias = await getMediasByPhotographer();
+  console.log(medias);
+  const mediaObj = medias.find(media => media.id === mediaId);
+  console.log(mediaObj);
+  // const { title, image, video, photographerId } = mediaObj;
+
+  // const lightboxMedia = document.querySelector(".lightbox__center");
+  // if (image) {
+  //   lightboxMedia.innerHTML = `<img class="lightbox__image" src="assets/images/${photographerId}/${image}" alt="${title}>
+  //   <figcaption class="lightbox__caption">${title}</figcaption>
+  //   `
+  // } else if (video) {
+  //   lightboxMedia.innerHTML = `<video class="lightbox__video" title="${title}" controls>
+  //     <source src="assets/images/${photographerId}/${video}" type="video/mp4">
+  //   </video>
+  //   <figcaption class="lightbox__caption">${title}</figcaption>
+  //   `
+  // }
+}
+
 function openLightbox(){
   const mediaColl = document.querySelectorAll(".media");
   const medias = Array.from(mediaColl);
-  medias.forEach(media => media.addEventListener("click", displayLightboxModal))
+  medias.forEach(media => media.addEventListener("click", function(event) {
+    console.log(event.target);
+    displayMediaInLightbox();
+  }))
 }
 
 function closeLightbox() {
@@ -95,6 +119,7 @@ async function init() {
   sortMedia();
   openLightbox();
   closeLightbox();
+  // displayLightboxModal();
   selectOption();
   toggleOptionsList();
 }

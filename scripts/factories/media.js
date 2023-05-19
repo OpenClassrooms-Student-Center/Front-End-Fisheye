@@ -12,7 +12,8 @@ export function mediaFactory(media) {
     if (image) {
       const thumbnail = `assets/photographers/${photographerId}/${image}`;
       const img = document.createElement("img");
-      img.classList.add("media__img")
+      img.classList.add("media__img");
+      img.setAttribute("loading", "lazy");
       img.setAttribute("src", thumbnail);
       img.setAttribute("alt", title);
       article.appendChild(img)
@@ -20,6 +21,7 @@ export function mediaFactory(media) {
     if (video) {
       const thumbnail = `assets/photographers/${photographerId}/${video}`;
       const vid = document.createElement("video");
+      vid.setAttribute("loading", "lazy");
       // vid.setAttribute("controls", "true");
       vid.setAttribute("src", thumbnail);
       vid.setAttribute("type", "video/mp4")

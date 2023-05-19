@@ -236,7 +236,6 @@ h1 {
 }
 
 .sort {
-  position: relative;
   width: 100%;
   padding-top: 1rem;
   padding-bottom: 3rem;
@@ -244,26 +243,25 @@ h1 {
   font-size: 1.2rem;
 }
 .sort__menu {
-  width: 300px;
-  cursor: pointer;
   position: relative;
+  width: 20rem;
+  cursor: pointer;
 }
 .sort__menu i {
   color: white;
 }
 .sort__select {
-  background-color: #901C1C;
-  padding: 1rem;
-  color: white;
-  font-weight: 500;
-  border-radius: 0.2rem;
   display: flex;
   align-items: center;
   justify-content: space-between;
+  width: 10rem;
+  padding: 1rem;
+  border-radius: 0.2rem;
+  background-color: #901C1C;
+  color: white;
 }
 .sort__list {
   position: absolute;
-  width: 100%;
   background-color: #901C1C;
   color: white;
   border-radius: 0.2rem;
@@ -275,12 +273,13 @@ h1 {
   height: 0;
 }
 .sort__option {
-  padding: 8px 0;
+  padding: 0.5rem 0;
   border-bottom: 1px solid white;
 }
 
 .active {
   height: 20rem;
+  width: 10rem;
 }
 
 .lightboxModal {
@@ -315,9 +314,50 @@ h1 {
   grid-column: 3;
   align-items: flex-start;
 }
+.lightboxModal-media {
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
+  align-items: flex-start;
+  max-width: 100%;
+  max-height: 100%;
+  overflow: hidden;
+  margin: 0 1em;
+}
+.lightboxModal-img, .lightboxModal-video {
+  max-width: 100%;
+  max-height: 100%;
+  overflow: hidden;
+  object-fit: scale-down;
+}
+.lightboxModal-close {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 3rem;
+  height: 3rem;
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+}
+.lightboxModal-close-img {
+  width: 100%;
+  height: 100%;
+}
+.lightboxModal-previous, .lightboxModal-next {
+  font-size: 4rem;
+  border: none;
+  background-color: transparent;
+  color: #911c1c;
+  cursor: pointer;
+}
+.lightboxModal-caption {
+  font-size: 3rem;
+  color: #911c1c;
+  margin: 0.5em 0;
+}
 
 .sort {
-  position: relative;
   width: 100%;
   padding-top: 1rem;
   padding-bottom: 3rem;
@@ -325,26 +365,25 @@ h1 {
   font-size: 1.2rem;
 }
 .sort__menu {
-  width: 300px;
-  cursor: pointer;
   position: relative;
+  width: 20rem;
+  cursor: pointer;
 }
 .sort__menu i {
   color: white;
 }
 .sort__select {
-  background-color: #901C1C;
-  padding: 1rem;
-  color: white;
-  font-weight: 500;
-  border-radius: 0.2rem;
   display: flex;
   align-items: center;
   justify-content: space-between;
+  width: 10rem;
+  padding: 1rem;
+  border-radius: 0.2rem;
+  background-color: #901C1C;
+  color: white;
 }
 .sort__list {
   position: absolute;
-  width: 100%;
   background-color: #901C1C;
   color: white;
   border-radius: 0.2rem;
@@ -356,12 +395,13 @@ h1 {
   height: 0;
 }
 .sort__option {
-  padding: 8px 0;
+  padding: 0.5rem 0;
   border-bottom: 1px solid white;
 }
 
 .active {
   height: 20rem;
+  width: 10rem;
 }
 
 .modal {
