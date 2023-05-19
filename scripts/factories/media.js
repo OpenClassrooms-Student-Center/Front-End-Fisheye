@@ -20,8 +20,8 @@ export function mediaFactory(media) {
     if (video) {
       const thumbnail = `assets/photographers/${photographerId}/${video}`;
       const vid = document.createElement("video");
-      vid.setAttribute("controls", "true")
-      vid.setAttribute("src", thumbnail)
+      // vid.setAttribute("controls", "true");
+      vid.setAttribute("src", thumbnail);
       vid.setAttribute("type", "video/mp4")
       vid.innerHTML = "Votre navigateur ne permet pas de lire les vidéos. Mais vous pouvez toujours <a href=`${thumbnail}`>la télécharger</a> !";
       vid.className += "media__video";

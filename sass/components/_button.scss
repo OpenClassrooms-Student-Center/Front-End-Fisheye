@@ -1,3 +1,4 @@
+@use "../abstracts/variables";
 // button style
 
 .button {
@@ -8,12 +9,12 @@
   width: 10.5em;
   height: 4.3em;
   border: none;
-  background-color: #901C1C;
+  background-color: $color-primary;
   border-radius: 0.2em;
   cursor: pointer;
 
   &:hover, &:focus{
-    background-color: #D3573C;
+    background-color: $color-secondary;
     color: black;
   }
 }
