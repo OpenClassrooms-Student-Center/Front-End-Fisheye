@@ -1,6 +1,6 @@
 import { getPhotographersById } from "../utils/getPhotographerById.js";
 import { photographerFactory } from "../factories/photographer.js";
-import { displaySortedMedias } from "../utils/displaySortedMedias.js";
+import { selectOption, toggleOptionsList, displaySortedMedias} from "../utils/displaySortedMedias.js";
 import { getMediasByPhotographer } from "../utils/getMediasByPhotographer.js";
 import { openContactForm, closeContactForm, closeFormWithEsc } from "../utils/contactForm.js";
 import { closeLightboxModal, displayLightboxModal } from "../utils/lightBox.js";
@@ -20,16 +20,24 @@ async function displayPhotographerHeader() {
 
 async function displaySortSection() {
   const sortSection = document.createElement("section");
-  sortSection.classList.add("sort")
-  sortSection.innerHTML += `
-    <label for="sort__by">Trier par</label>
-    <select id="sort__by" aria-label="button">
-      <option class="sort__value" value="Popularity">Popularité</option>
-      <option class="sort__value" value="Date">Date</option>
-      <option class="sort__value" value="Title">Titre</option>
-    </select>
-  `
+  sortSection.classList.add("sort");
   main.appendChild(sortSection)
+
+  const selectDiv = document.createElement("div");
+  selectDiv.classList.add("sort__menu");
+  selectDiv.innerHTML += `
+  <span> Trier par </span>
+  <div class="sort__select" aria-label="button">
+    Popularité
+    <i class="fa-solid fa-caret-down"></i>
+    </div>
+  <div class="sort__list">
+    <option class="sort__option" value="Popularity">Popularité</option>
+    <option class="sort__option" value="Date">Date</option>
+    <option class="sort__option" value="Title">Titre</option>
+  </div>
+  `
+  sortSection.appendChild(selectDiv);
 }
 
 async function displayPhotographerMedias() {
@@ -55,8 +63,10 @@ async function displayLikesCounter() {
 }
 
 function sortMedia() {
-  const orderBtn = document.getElementById("sort__by");
-  orderBtn.addEventListener("change", function() {
+  const orderBtn = document.querySelector(".sort__list");
+  console.log(orderBtn.innerText);
+  orderBtn.addEventListener("click", function() {
+    console.log(orderBtn.innerText);
     document.querySelector(".photographer__content").remove();
     displayPhotographerMedias();
   })
@@ -65,7 +75,6 @@ function sortMedia() {
 function openLightbox(){
   const mediaColl = document.querySelectorAll(".media");
   const medias = Array.from(mediaColl);
-  console.log(medias);
   medias.forEach(media => media.addEventListener("click", displayLightboxModal))
 }
 
@@ -86,6 +95,8 @@ async function init() {
   sortMedia();
   openLightbox();
   closeLightbox();
+  selectOption();
+  toggleOptionsList();
 }
 
 init();

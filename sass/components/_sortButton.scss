@@ -3,7 +3,8 @@
 .sort {
   position: relative;
   width: 100%;
-  padding-top: 2rem;
+  padding-top: 1rem;
+  padding-bottom: 3rem;
   font-weight: bold;
   font-size: 1.2rem;
 
@@ -11,13 +12,18 @@
     width: 300px;
     cursor: pointer;
     position: relative;
+
+    & i {
+      color: white;
+
+    }
   }
   &__select {
-    background-color: #201e1e;
-    padding: 20px;
-    color: #fff;
+    background-color: $color-primary;
+    padding: 1rem;
+    color: white;
     font-weight: 500;
-    border-radius: 6px;
+    border-radius: 0.2rem;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -25,20 +31,21 @@
   &__list {
     position: absolute;
     width: 100%;
-    background-color: #f9f9f9;
-    border-radius: 6px;
-    margin-top: 14px;
-    padding: 0 20px;
-    max-height: 180px;
+    background-color: $color-primary;
+    color: white;
+    border-radius: 0.2rem;
+    margin-top: 1rem;
+    padding: 0 1rem;
+    max-height: 7.75rem;
     overflow-y: auto;
+    z-index: 1;
     height: 0;
   }
   &__option {
     padding: 8px 0;
-    font-weight: 500;
-    font-size: 14px;
+    border-bottom: 1px solid white;
   }
 }
 .active {
-  height: 180px;
+  height: 20rem;
 }
