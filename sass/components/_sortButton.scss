@@ -1,4 +1,44 @@
+@use "../abstracts/variables";
+
 .sort {
-  display: flex;
-  justify-content: flex-start;
+  position: relative;
+  width: 100%;
+  padding-top: 2rem;
+  font-weight: bold;
+  font-size: 1.2rem;
+
+  &__menu {
+    width: 300px;
+    cursor: pointer;
+    position: relative;
+  }
+  &__select {
+    background-color: #201e1e;
+    padding: 20px;
+    color: #fff;
+    font-weight: 500;
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  &__list {
+    position: absolute;
+    width: 100%;
+    background-color: #f9f9f9;
+    border-radius: 6px;
+    margin-top: 14px;
+    padding: 0 20px;
+    max-height: 180px;
+    overflow-y: auto;
+    height: 0;
+  }
+  &__option {
+    padding: 8px 0;
+    font-weight: 500;
+    font-size: 14px;
+  }
+}
+.active {
+  height: 180px;
 }
