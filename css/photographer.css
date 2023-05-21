@@ -227,3 +227,78 @@ form button {
     height: 600px;
     object-fit: cover;
 }
+
+/* Sort Button */
+.buttons-container {
+    position: relative;
+    color: #901C1C;
+    font-size: 20px;
+    margin: 30px 100px;
+    display: flex;
+    /* align-items: center; */
+}
+  
+.sort-button {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    color: white;
+    padding: 0;
+    font-size: 16px;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.sort-button.selected {
+    font-weight: bold;
+}
+
+.dropdown-menu {
+    position: absolute;
+    top: -0.7rem;
+    left: 6rem;
+    z-index: 1;
+    background-color: #901C1C;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    padding: 10px;
+    border-radius: 5px;
+    width: 120px;
+}
+
+.dropdown-menu .sort-button {
+    display: none;
+    padding: 5px;
+}
+
+.dropdown-menu .sort-button.selected, .show .sort-button {
+    display: flex;
+}
+
+.show .separate-button {
+    display: block;
+}
+
+.dropdown-menu .sort-button:hover {
+    font-weight: bold;
+}
+
+.dropdown-menu .sort-button .fa-chevron-down {
+    display: none;
+}
+
+.dropdown-menu .sort-button.selected .fa-chevron-down {
+    display: block;
+    transition: all 350ms ease-in-out;
+}
+
+.show .sort-button.selected .fa-chevron-down {
+    transform: rotate(180deg);
+}
+
+.separate-button {
+    display: none;
+    height: 2px;
+    background-color: white;
+    margin: 10px 0;
+}

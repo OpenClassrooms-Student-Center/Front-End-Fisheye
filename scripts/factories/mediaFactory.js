@@ -58,13 +58,25 @@ const factory = (type, options) => {
 };
 
 // Créer une figure contenant les informations de chaque photographe
-function createMediaFactory(data) {
+function createMediaFactory(data, sortBy = 'popularity') {
     console.log(data)
 
+    function sortMedia(a, b) {
+        if (sortBy === 'popularity') {
+            return b.likes - a.likes;
+        } else if (sortBy === 'title') {
+            return a.title.localeCompare(b.title);
+        } else if (sortBy === 'date') {
+            return new Date(b.date) - new Date(a.date);
+        }
+    }
+
     function getMediaDOM() {
+        const sortedData = data.sort(sortMedia);
+
         let mediaHtml = "";
-        for (let i = 0; i < data.length; i++) {
-            const { id, title, likes, image, video } = data[i];
+        for (let i = 0; i < sortedData.length; i++) {
+            const { id, title, likes, image, video } = sortedData[i];
             let media;
 
             if (image) {
