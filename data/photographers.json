@@ -9,7 +9,7 @@
 			"price": 400,
 			"portrait": "MimiKeel.jpg",
 			"description": "",
-			"link": "photographer.index"
+			"target": "photographer.html"
 
 		},
 		{
@@ -21,7 +21,7 @@
 			"price": 250,
 			"portrait": "EllieRoseWilkens.jpg",
 			"description": "",
-			"link": "photographer.index"
+			"target": "photographer.html"
 
 		},
 		{
@@ -33,7 +33,7 @@
 			"price": 500,
 			"portrait": "TracyGalindo.jpg",
 			"description": "",
-			"link": "photographer.index"
+			"target": "photographer.html"
 		},
 		{
 			"name": "Nabeel Bradford",
@@ -44,7 +44,7 @@
 			"price": 350,
 			"portrait": "NabeelBradford.jpg",
 			"description": "",
-			"link": "photographer.index"
+			"target": "photographer.html"
 		},
 		{
 			"name": "Rhode Dubois",
@@ -55,7 +55,7 @@
 			"price": 275,
 			"portrait": "RhodeDubois.jpg",
 			"description": "",
-			"link": "photographer.index"
+			"target": "photographer.html"
 		},
 		{
 			"name": "Marcel Nikolic",
@@ -66,7 +66,7 @@
 			"price": 300,
 			"portrait": "MarcelNikolic.jpg",
 			"description": "",
-			"link": "photographer.index"
+			"target": "photographer.html"
 		}
 	],
 	"media": [

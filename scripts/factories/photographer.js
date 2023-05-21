@@ -1,21 +1,21 @@
 function photographerFactory(data) {
-    const { name, portrait, city, country, tagline, price, description, link, id } = data;    
+    const { name, portrait, city, country, tagline, price, description, target, id } = data;    
     const picture = `assets/photographers/${portrait}`;
-    
+        
     // card creation
     function getUserCardDOM() {
         // create different elements in the DOM
-        const article = document.createElement('article');
-        const personalPhoto = document.createElement('section');
-        personalPhoto.setAttribute('tabindex', '0');
-        personalPhoto.setAttribute('role' , 'region');
-        personalPhoto.setAttribute("aria-label" , name);
-        personalPhoto.setAttribute("id" , id);
-        const a = document.createElement ('a');
-        a.setAttribute("href", link);
-        const img = document.createElement('img');
-        img.setAttribute("src", picture);
-        img.setAttribute("alt", description);
+        const card = document.createElement('article');
+        const personalSection = document.createElement('section');
+        personalSection.setAttribute('tabindex', '0');
+        personalSection.setAttribute('role' , 'region');
+        personalSection.setAttribute("aria-label" , name);
+        personalSection.setAttribute("id" , id);
+        const link = document.createElement ('a');
+        link.setAttribute("href", target);
+        const image = document.createElement('img');
+        image.setAttribute("src", picture);
+        image.setAttribute("alt", description);
         const h2 = document.createElement('h2');
         h2.textContent = name;
         const h4 = document.createElement('h4');
@@ -29,20 +29,28 @@ function photographerFactory(data) {
         const p2 = document.createElement('p');
         p2.textContent = `${price}€/jour`;
         // attach elements to their parents after craetion in the DOM
-        article.appendChild(personalPhoto);
-        personalPhoto.appendChild(a);
-        a.appendChild(img);
-        a.appendChild(h2);
-        article.appendChild(personalInfo);
+        card.appendChild(personalSection);
+        personalSection.appendChild(link);
+        link.appendChild(image);
+        link.appendChild(h2);
+        card.appendChild(personalInfo);
         personalInfo.appendChild(h4);
         personalInfo.appendChild(p1);
         personalInfo.appendChild(p2);
-        return (article);
+        return (card);
     }
     return {getUserCardDOM}
 }
 
-const onClick = (event) => {
-    console.log(event.target.id);
+function handleClick(event) {
+    let elementId = event.target.id;
+    console.log("Clicked element ID: ", elementId);
+    // You can perform any additional actions with the element ID here
+    let currentUrl = window.location.href;
+    console.log(currentUrl);
+    let updatedUrl = currentUrl + "#" + elementId;
+    window.location.href = updatedUrl;
+    console.log("updated url:", updatedUrl);
   }
-  window.addEventListener('click', onClick);
+  document.addEventListener("click", handleClick);
+
