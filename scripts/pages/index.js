@@ -1,22 +1,19 @@
-import { PhotographersApi } from '../api/api.js';
+import { PhotographerApi } from "../api/photographerApi.js";
+import { PhotographerModel } from "../models/photographer.js";
 
 class IndexApp {
-  constructor() {
-    this.usersDataApi = new PhotographersApi("../data/photographers.json");
-  }
-
   async displayData(photographers) {
     // Display photographers
     const photographersSection = document.querySelector(".photographers-index");
-    photographers.forEach((photographer) => {
+    photographers.photographers.map((photographer) => {
       const photographerModel = new PhotographerModel(photographer);
       photographersSection.append(photographerModel.getUserCardDOM());
     });
   };
 
   async init() {
-    // Récupère les datas des photographes
-    this.displayData(await this.usersDataApi.getPhotographerData());
+    // Get photographers Datas
+    this.displayData(await PhotographerApi.getPhotographers());
   };
 }
 

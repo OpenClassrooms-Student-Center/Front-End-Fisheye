@@ -1,4 +1,4 @@
-class PhotographerModel {
+export class PhotographerModel {
   constructor(data) {
     this.id = data.id;
     this.name = data.name;
@@ -8,10 +8,8 @@ class PhotographerModel {
     this.price = data.price;
     this.portrait = data.portrait;
     this.hrefPhotographer = `./photographer.html?id=${this.id}`;
-    this.picture = `./assets/photographers/photographer/${this.portrait}`;
+    this.picture = `./assets/photographers/${this.portrait}`;
     this.userDiv = document.createElement("div");
-
-    // this.article = document.getElementById("photographer_header");
   }
 
   /**
@@ -21,7 +19,7 @@ class PhotographerModel {
    */
   _setUserImage(picture, name) {
     const userImage = document.createElement("img");
-    userImage.classList.add('photographer__link--photo')
+    userImage.classList.add('photographer__link--photo');
     userImage.setAttribute("src", picture);
     userImage.setAttribute("alt", name);
     return userImage;
@@ -29,7 +27,7 @@ class PhotographerModel {
 
   _setUserName(name) {
     const userName = document.createElement("h2");
-    userName.classList.add('photographer__link--name')
+    userName.classList.add('photographer__link--name');
     userName.textContent = name;
     return userName;
   }
