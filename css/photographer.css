@@ -180,3 +180,50 @@ form button {
     color: #901C1C;
     font-size: 17px;
 }
+
+/* LIGHTBOX */
+.light-box {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: white;
+    z-index: 100;
+}
+
+.element-light-box {
+    display: none;
+    position: absolute;
+    cursor: pointer;
+    font-size: 35px;
+    color: #901C1C;
+}
+
+.element-light-box-cross {
+    top: 6.3rem;
+    right: 9.5rem;
+}
+
+.element-light-box-arrowLeft {
+    left: 9.5rem;
+}
+
+.element-light-box-arrowRight {
+    right: 9.5rem;
+}
+
+.element-light-box-title {
+    bottom: 2.3rem;
+    left: 11.8rem;
+    font-size: 30px;
+}
+
+.light-box img, .light-box iframe {
+    width: 70%;
+    height: 600px;
+    object-fit: cover;
+}
