@@ -5,13 +5,16 @@ body {
     margin: 0;
 }
 
-
 header {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
     height: 90px;
+}
+
+header a {
+    text-decoration: none;
 }
 
 h1 {
@@ -39,12 +42,36 @@ h1 {
     flex-direction: column;
 }
 
+article a {
+    text-decoration: none;
+    justify-self: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
 .photographer_section article h2 {
     color: #D3573C;
     font-size: 36px;
+    margin-top: 0;
+    margin: 0;
 }
 
 .photographer_section article img {
     height: 200px;
     width: 200px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.photographer_section article h4 {
+    margin: 0;
+    color: #D3573C;
+    text-align: center;
+}
+
+.photographer_section article p {
+    margin: 0;
+    text-align: center;
 }
