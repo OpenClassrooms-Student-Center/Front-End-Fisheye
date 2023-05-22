@@ -20,8 +20,7 @@
 			"tagline": "Capturer des compositions complexes",
 			"price": 250,
 			"portrait": "EllieRoseWilkens.jpg",
-			"description": "",
-			"target": "photographer.html"
+			"description": ""
 
 		},
 		{
@@ -32,8 +31,7 @@
 			"tagline": "Photographe freelance",
 			"price": 500,
 			"portrait": "TracyGalindo.jpg",
-			"description": "",
-			"target": "photographer.html"
+			"description": ""
 		},
 		{
 			"name": "Nabeel Bradford",
@@ -43,8 +41,7 @@
 			"tagline": "Toujours aller de l'avant",
 			"price": 350,
 			"portrait": "NabeelBradford.jpg",
-			"description": "",
-			"target": "photographer.html"
+			"description": ""
 		},
 		{
 			"name": "Rhode Dubois",
@@ -54,8 +51,7 @@
 			"tagline": "Je crée des souvenirs",
 			"price": 275,
 			"portrait": "RhodeDubois.jpg",
-			"description": "",
-			"target": "photographer.html"
+			"description": ""
 		},
 		{
 			"name": "Marcel Nikolic",

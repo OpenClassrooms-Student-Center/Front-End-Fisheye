@@ -3,16 +3,19 @@ function photographerFactory(data) {
     const picture = `assets/photographers/${portrait}`;
         
     // card creation
-    function getUserCardDOM() {
+    function getUserCardDOM(){
         // create different elements in the DOM
+        // const result = idGen();
         const card = document.createElement('article');
         const personalSection = document.createElement('section');
         personalSection.setAttribute('tabindex', '0');
         personalSection.setAttribute('role' , 'region');
-        personalSection.setAttribute("aria-label" , name);
         personalSection.setAttribute("id" , id);
+        personalSection.setAttribute("class" , 'frame');
         const link = document.createElement ('a');
+        const target = 'photographer.html?id=' + id;
         link.setAttribute("href", target);
+        link.setAttribute("aria-label" , name);
         const image = document.createElement('img');
         image.setAttribute("src", picture);
         image.setAttribute("alt", description);
@@ -37,20 +40,8 @@ function photographerFactory(data) {
         personalInfo.appendChild(h4);
         personalInfo.appendChild(p1);
         personalInfo.appendChild(p2);
-        return (card);
+
+    return (card);
     }
     return {getUserCardDOM}
 }
-
-function handleClick(event) {
-    let elementId = event.target.id;
-    console.log("Clicked element ID: ", elementId);
-    // You can perform any additional actions with the element ID here
-    let currentUrl = window.location.href;
-    console.log(currentUrl);
-    let updatedUrl = currentUrl + "#" + elementId;
-    window.location.href = updatedUrl;
-    console.log("updated url:", updatedUrl);
-  }
-  document.addEventListener("click", handleClick);
-
