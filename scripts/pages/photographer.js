@@ -70,24 +70,18 @@ function sortMedia() {
   })
 }
 
-async function displayMediaInLightbox(event) {
 
-  const target = event.currentTarget;
-  console.log(target);
-  const medias = await sortMedias();
-  console.log(medias);
-  console.log(medias.length);
-  const index = medias.indexOf(target);
-  console.log(index);
+// async function displayMediaInLightbox() {
 
-
-
+//   const lightbox = document.querySelector(".lightboxModal");
+//   lightbox.createElement("img");
+//   lightbox.src =
 
   // const { title, image, video, photographerId } = mediaObj;
 
   // const lightboxMedia = document.querySelector(".lightbox__center");
   // if (image) {
-  //   lightboxMedia.innerHTML = `<img class="lightbox__image" src="assets/images/${photographerId}/${image}" alt="${title}>
+  //   lightboxMedia.innerHTML = `<img class="lightbox__image" src="assets/photographers/82/Art_Mine.webp" alt="${title}>
   //   <figcaption class="lightbox__caption">${title}</figcaption>
   //   `
   // } else if (video) {
@@ -97,13 +91,20 @@ async function displayMediaInLightbox(event) {
   //   <figcaption class="lightbox__caption">${title}</figcaption>
   //   `
   // }
-}
+// }
 
 function openLightbox(){
   const mediaColl = document.querySelectorAll(".media");
   const medias = Array.from(mediaColl);
   medias.forEach(media => media.addEventListener("click", function(event) {
-    displayMediaInLightbox(event);
+    const mediaSource = event.currentTarget.firstChild.src;
+    console.log(mediaSource);
+    const lightbox = document.querySelector(".lightboxModal");
+    const lightboxImg = document.createElement("img");
+    lightboxImg.src = mediaSource;
+    lightboxImg.classList.add("lightboxModal__img")
+    lightbox.prepend(lightboxImg);
+    displayLightboxModal();
   }))
 }
 
@@ -124,7 +125,6 @@ async function init() {
   sortMedia();
   openLightbox();
   closeLightbox();
-  // displayLightboxModal();
   selectOption();
   toggleOptionsList();
 }

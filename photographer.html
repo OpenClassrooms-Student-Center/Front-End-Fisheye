@@ -53,29 +53,21 @@
       </div>
     </div>
     <div class="lightboxModal" id="lightboxModal" aria-label="carousel modal" aria-hidden="true">
-      <div class="lightbox__wrapper">
-          <div class="lightbox__left">
-            <button class="lightbox__previous">
-              <i class="fa-solid fa-caret-left"></i>
-            </button>
-          </div>
-          <div class="lightbox__center"></div>
+      <button class="lightboxModal__previous">
+        <i class="fa-solid fa-caret-left"></i>
+      </button>
 
-          <div class="lightbox__right">
-            <button
-              type="button"
-              aria-label="Bouton de fermeture du carousel"
-              class="lightbox__close"
-              data-dismiss="lightboxModal">
-              &times;
-            </button>
-            <button class="lightbox__next">
-              <i class="fa-solid fa-caret-right"></i>
-            </button>
-          </div>
-      </div>
+      <button
+        aria-label="Bouton de fermeture du carousel"
+        class="lightboxModal__close"
+        data-dismiss="lightboxModal">
+        <i class="fa-solid fa-xmark"></i>
+      </button>
+      <button class="lightboxModal__next">
+        <i class="fa-solid fa-caret-right"></i>
+      </button>
     </div>
-    <script type="module" src="/scripts/pages/photographer.js"></script>
     <script type="module" src="/scripts/utils/contactForm.js"></script>
+    <script type="module" src="/scripts/pages/photographer.js"></script>
   </body>
 </html>
