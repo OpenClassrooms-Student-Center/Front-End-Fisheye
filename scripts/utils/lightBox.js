@@ -7,7 +7,6 @@ export function displayLightboxModal() {
   lightboxModal.setAttribute("aria-hidden", "false");
   body.classList.add("no-scroll");
   lightboxModal.style.display = "flex";
-
 }
 
 export function closeLightboxModal() {

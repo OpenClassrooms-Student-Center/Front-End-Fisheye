@@ -71,46 +71,89 @@ function sortMedia() {
 }
 
 
-// async function displayMediaInLightbox() {
+async function displayMediaInLightbox() {
 
-//   const lightbox = document.querySelector(".lightboxModal");
-//   lightbox.createElement("img");
-//   lightbox.src =
+  const lightbox = document.querySelector(".lightboxModal");
+  const mediaObj = await getMediasByPhotographer();
 
-  // const { title, image, video, photographerId } = mediaObj;
+  const { title, image, video, photographerId } = mediaObj;
 
-  // const lightboxMedia = document.querySelector(".lightbox__center");
+  const mediaColl = document.querySelectorAll(".media");
+  const medias = Array.from(mediaColl);
+  medias.forEach(media => media.addEventListener("click", function(event) {
+      console.log(media);
+      const mediaAlt = event.currentTarget.firstChild.alt;
+      const mediaSource = event.currentTarget.firstChild.src;
+      const currentMedia = mediaObj.find((media) => media.title === mediaAlt);
+      const index = mediaObj.indexOf(currentMedia);
+      console.log(index);
+      console.log(currentMedia);
+
+      if (currentMedia.image) {
+        const lightboxImg = document.createElement("img");
+        lightboxImg.src = mediaSource;
+        lightboxImg.classList.add("lightboxModal__img")
+        lightbox.prepend(lightboxImg);
+      }
+      else if (currentMedia.video) {
+        const lightboxVideo = document.createElement("video");
+        lightboxVideo.controls = "true";
+        lightboxVideo.classList.add("lightboxModal__video")
+        lightbox.prepend(lightboxVideo);
+        const lightboxVideoSrc = document.createElement("source");
+        lightboxVideoSrc.src = mediaSource;
+        lightboxVideoSrc.type = "video/mp4";
+        lightboxVideo.appendChild(lightboxVideoSrc);
+
+      }
+
+
+  }))
+
+
+
+  // const lightboxMedia = document.querySelector(".lightboxModal");
   // if (image) {
-  //   lightboxMedia.innerHTML = `<img class="lightbox__image" src="assets/photographers/82/Art_Mine.webp" alt="${title}>
+  //   lightboxMedia.innerHTML += `<img class="lightbox__image" src="assets/images/${photographerId}/${image}" alt="${title}>
   //   <figcaption class="lightbox__caption">${title}</figcaption>
   //   `
   // } else if (video) {
-  //   lightboxMedia.innerHTML = `<video class="lightbox__video" title="${title}" controls>
+  //   lightboxMedia.innerHTML += `<video class="lightbox__video" title="${title}" controls>
   //     <source src="assets/images/${photographerId}/${video}" type="video/mp4">
   //   </video>
   //   <figcaption class="lightbox__caption">${title}</figcaption>
   //   `
   // }
-// }
+}
 
 function openLightbox(){
   const mediaColl = document.querySelectorAll(".media");
   const medias = Array.from(mediaColl);
-  medias.forEach(media => media.addEventListener("click", function(event) {
-    const mediaSource = event.currentTarget.firstChild.src;
-    console.log(mediaSource);
-    const lightbox = document.querySelector(".lightboxModal");
-    const lightboxImg = document.createElement("img");
-    lightboxImg.src = mediaSource;
-    lightboxImg.classList.add("lightboxModal__img")
-    lightbox.prepend(lightboxImg);
+  medias.forEach(media => media.addEventListener("click", function() {
+    // console.log(media);
+    // const mediaSource = event.currentTarget.firstChild.src;
+    // console.log(mediaSource);
+    // const lightbox = document.querySelector(".lightboxModal");
+
+    // if (media.img) {
+    //   console.log("img");
+    // }
+    // const lightboxImg = document.createElement("img");
+    // lightboxImg.src = mediaSource;
+    // lightboxImg.classList.add("lightboxModal__img")
+    // lightbox.prepend(lightboxImg);
+
     displayLightboxModal();
   }))
 }
 
 function closeLightbox() {
-  const closeBtn = document.querySelector(".lightbox__close");
-  closeBtn.addEventListener("click", closeLightboxModal);
+  const closeBtn = document.querySelector(".lightboxModal__close");
+  closeBtn.addEventListener("click", function() {
+    const lightboxImg = document.querySelector(".lightboxModal__img");
+    lightboxImg.remove();
+    closeLightboxModal();
+  })
 }
 
 async function init() {
@@ -125,6 +168,7 @@ async function init() {
   sortMedia();
   openLightbox();
   closeLightbox();
+  displayMediaInLightbox();
   selectOption();
   toggleOptionsList();
 }
