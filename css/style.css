@@ -306,10 +306,10 @@ h1 {
   margin: 0 1em;
 }
 .lightboxModal__img, .lightboxModal__video {
-  max-width: 70%;
-  max-height: 70%;
+  max-width: 90%;
+  max-height: 90%;
   overflow: hidden;
-  object-fit: scale-down;
+  object-fit: cover;
 }
 .lightboxModal__close {
   position: absolute;
@@ -322,10 +322,6 @@ h1 {
   border: none;
   background-color: transparent;
   cursor: pointer;
-}
-.lightboxModal__close__img {
-  width: 100%;
-  height: 100%;
 }
 .lightboxModal__previous, .lightboxModal__next {
   font-size: 4rem;
