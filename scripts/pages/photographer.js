@@ -1,6 +1,6 @@
 import { getPhotographersById } from "../utils/getPhotographerById.js";
 import { photographerFactory } from "../factories/photographer.js";
-import { selectOption, toggleOptionsList, displaySortedMedias, sortMedias} from "../utils/displaySortedMedias.js";
+import { selectOption, openOptionsList, displaySortedMedias, sortMedias} from "../utils/displaySortedMedias.js";
 import { getMediasByPhotographer } from "../utils/getMediasByPhotographer.js";
 import { openContactForm, closeContactForm, closeFormWithEsc } from "../utils/contactForm.js";
 import { closeLightboxModal, displayLightboxModal } from "../utils/lightBox.js";
@@ -72,32 +72,16 @@ async function displaySortSection() {
   `
 
   selectDiv.appendChild(sortList);
-
-
-
-
-  // selectDiv.innerHTML += `
-  // <span> Trier par </span>
-  // <div class="sort__select" aria-label="button">
-  //   Popularité
-  //   <i class="fa-solid fa-caret-down"></i>
-  //   </div>
-  // <div class="sort__list">
-  //   <option class="sort__option" value="Popularity">Popularité</option>
-  //   <option class="sort__option" value="Date">Date</option>
-  //   <option class="sort__option" value="Title">Titre</option>
-  // </div>
-  // `
   sortSection.appendChild(selectLabel);
   sortSection.appendChild(selectDiv);
 }
 
-// async function displayPhotographerMedias() {
-//   const mediaSection = document.createElement("section");
-//   mediaSection.classList.add("photographer__content");
-//   main.appendChild(mediaSection);
-//   displaySortedMedias();
-// }
+async function displayPhotographerMedias() {
+  const mediaSection = document.createElement("section");
+  mediaSection.classList.add("photographer__content");
+  main.appendChild(mediaSection);
+  displaySortedMedias();
+}
 
 async function displayLikesCounter() {
   const likesDiv = document.createElement("div");
@@ -114,13 +98,13 @@ async function displayLikesCounter() {
   `
 }
 
-// function sortMedia() {
-//   const orderBtn = document.querySelector(".sort__list");
-//   orderBtn.addEventListener("click", function() {
-//     document.querySelector(".photographer__content").remove();
-//     displayPhotographerMedias();
-//   })
-// }
+function sortMedia() {
+  const orderBtn = document.querySelector(".sort__button");
+  orderBtn.addEventListener("click", function() {
+    document.querySelector(".photographer__content").remove();
+    displayPhotographerMedias();
+  })
+}
 
 
 async function displayMediaInLightbox() {
@@ -214,17 +198,17 @@ async function init() {
   await getPhotographersById();
   await displayPhotographerHeader(photographer)
   await displaySortSection();
-  // await displayPhotographerMedias();
+  await displayPhotographerMedias();
   await displayLikesCounter();
   openContactForm();
   closeContactForm();
   closeFormWithEsc();
-  // sortMedias();
+  sortMedia();
   openLightbox();
   closeLightbox();
   displayMediaInLightbox();
   selectOption();
-  toggleOptionsList();
+  openOptionsList();
 }
 
 init();
