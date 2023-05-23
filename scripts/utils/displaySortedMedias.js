@@ -2,25 +2,31 @@ import { mediaFactory } from "../factories/media.js";
 import { getMediasByPhotographer } from "./getMediasByPhotographer.js";
 
 export function toggleOptionsList() {
-  const select = document.querySelector(".sort__select");
-  const sort_list = document.querySelector(".sort__list");
-  select.addEventListener("click", () => {
-    sort_list.classList.toggle("active");
-    select.querySelector("i").classList.toggle("fa-caret-down");
-    select.querySelector("i").classList.toggle("fa-caret-up");
-  });
+
+  const button = document.querySelector(".sort__button");
+  button.addEventListener("click", function() {
+    const sort = document.querySelector(".sort__select");
+    sort.classList.toggle("sort__select-open");
+    if (sort.classList.contains("sort__select-open")) {
+      button.setAttribute("aria-expanded", "true");
+      sort.querySelector("i").classList.add("fa-caret-up");
+      sort.querySelector("i").classList.remove("fa-caret-down");
+    } else {
+      button.setAttribute("aria-expanded", "false");
+      sort.querySelector("i").classList.add("fa-caret-down");
+      sort.querySelector("i").classList.remove("fa-caret-up");
+    }
+  })
 }
 
 export function selectOption() {
-  const select = document.querySelector(".sort__select");
-  const sort_list = document.querySelector(".sort__list");
-  const options = document.querySelectorAll(".sort__option");
-  options.forEach((option) => {
-    option.addEventListener("click", () => {
-      select.innerHTML = `${option.innerText} <i class="fa-solid fa-caret-down"></i>`;
-      sort_list.classList.toggle("active");
-    });
-  });
+  const currentOption = document.querySelectorAll(".sort__hide");
+  currentOption.forEach(option => {
+    option.addEventListener("click", function(event) {
+      console.log(event.target)
+    })
+  })
+
 }
 
 export async function sortMedias() {

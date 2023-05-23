@@ -23,20 +23,70 @@ async function displaySortSection() {
   sortSection.classList.add("sort");
   main.appendChild(sortSection)
 
+  const selectLabel = document.createElement("label");
+  selectLabel.classList.add("sort__label");
+  selectLabel.innerText = "Trier par"
+
   const selectDiv = document.createElement("div");
-  selectDiv.classList.add("sort__menu");
-  selectDiv.innerHTML += `
-  <span> Trier par </span>
-  <div class="sort__select" aria-label="button">
-    Popularité
-    <i class="fa-solid fa-caret-down"></i>
-    </div>
-  <div class="sort__list">
-    <option class="sort__option" value="Popularity">Popularité</option>
-    <option class="sort__option" value="Date">Date</option>
-    <option class="sort__option" value="Title">Titre</option>
-  </div>
+  selectDiv.classList.add("sort__select");
+  selectDiv.setAttribute("aria-label", "Order by");
+
+  const sortBtn = document.createElement("button");
+  sortBtn.innerText = "Popularité";
+  sortBtn.setAttribute("aria-haspopup", "list");
+  sortBtn.id = "sort__button";
+  sortBtn.classList.add("sort__button");
+  selectDiv.appendChild(sortBtn);
+
+  const arrow = document.createElement("i");
+  // arrow.alt = "arrow down";
+  arrow.classList.add("sort__down", "fa-solid", "fa-caret-down");
+  selectDiv.appendChild(arrow);
+
+  const sortList = document.createElement("ul");
+  sortList.classList.add("sort__options");
+  sortList.setAttribute("role", "list");
+  sortList.setAttribute("aria-labelledby", "sort__button");
+  sortList.setAttribute("aria-activedescendant", "popularity");
+
+  sortList.innerHTML = `
+  <li
+    class="sort__hide"
+    data-value="popularity"
+    role="option"
+    id="popularity"
+    aria-selected="true"
+    tabindex="0">Popularité</li>
+<li
+    data-value="date"
+    role="option"
+    id="date"
+    tabindex="0">Date</li>
+<li
+    data-value="title"
+    role="option"
+    id="title"
+    tabindex="0">Titre</li>
   `
+
+  selectDiv.appendChild(sortList);
+
+
+
+
+  // selectDiv.innerHTML += `
+  // <span> Trier par </span>
+  // <div class="sort__select" aria-label="button">
+  //   Popularité
+  //   <i class="fa-solid fa-caret-down"></i>
+  //   </div>
+  // <div class="sort__list">
+  //   <option class="sort__option" value="Popularity">Popularité</option>
+  //   <option class="sort__option" value="Date">Date</option>
+  //   <option class="sort__option" value="Title">Titre</option>
+  // </div>
+  // `
+  sortSection.appendChild(selectLabel);
   sortSection.appendChild(selectDiv);
 }
 
@@ -62,13 +112,13 @@ async function displayLikesCounter() {
   `
 }
 
-function sortMedia() {
-  const orderBtn = document.querySelector(".sort__list");
-  orderBtn.addEventListener("click", function() {
-    document.querySelector(".photographer__content").remove();
-    displayPhotographerMedias();
-  })
-}
+// function sortMedia() {
+//   const orderBtn = document.querySelector(".sort__list");
+//   orderBtn.addEventListener("click", function() {
+//     document.querySelector(".photographer__content").remove();
+//     displayPhotographerMedias();
+//   })
+// }
 
 
 async function displayMediaInLightbox() {
@@ -151,7 +201,9 @@ function closeLightbox() {
   const closeBtn = document.querySelector(".lightboxModal__close");
   closeBtn.addEventListener("click", function() {
     const lightboxImg = document.querySelector(".lightboxModal__img");
-    lightboxImg.remove();
+    if (lightboxImg) {lightboxImg.remove()};
+    const lightboxVideo = document.querySelector(".lightboxModal__video");
+    if (lightboxVideo) {lightboxVideo.remove()};
     closeLightboxModal();
   })
 }
@@ -160,12 +212,12 @@ async function init() {
   await getPhotographersById();
   await displayPhotographerHeader(photographer)
   await displaySortSection();
-  await displayPhotographerMedias();
+  // await displayPhotographerMedias();
   await displayLikesCounter();
   openContactForm();
   closeContactForm();
   closeFormWithEsc();
-  sortMedia();
+  // sortMedia();
   openLightbox();
   closeLightbox();
   displayMediaInLightbox();
