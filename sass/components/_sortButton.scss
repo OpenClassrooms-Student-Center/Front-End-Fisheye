@@ -7,43 +7,83 @@
   font-weight: bold;
   font-size: 1.2rem;
 
-  &__menu {
+  &__select {
     position: relative;
-    width: 20rem;
+    display: inline-block;
+    margin-left: 2rem;
+    padding: 0;
+    box-sizing: border-box;
+    width: 11rem;
+    background-color: $color-primary;
+    border-radius: 0.5rem;
+    border: none;
+    color: white;
+    text-align: start;
     cursor: pointer;
 
-    & i {
-      color: white;
+    &-open {
+      // display: block;
+      border-radius: 0.5rem 0.5rem 0 0;
     }
   }
-  &__select {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    width: 10rem;
-    padding: 1rem;
-    border-radius: 0.2rem;
+  &__button {
     background-color: $color-primary;
     color: white;
+    padding: 2rem;
+    border: none;
+    border-radius: 0.5rem;
+    font-size: 1.2rem;
+    cursor: pointer;
   }
-  &__list {
+
+  & i {
     position: absolute;
-    background-color: $color-primary;
+    top: 2rem;
+    right: 1rem;
     color: white;
-    border-radius: 0.2rem;
-    margin-top: 1rem;
-    padding: 0 1rem;
-    max-height: 7.75rem;
-    overflow-y: auto;
+    cursor: pointer;
+    transform: none;
+    pointer-events: none;
+  }
+  &__options &__select-open {
+    display: block;
+  }
+
+  &__options {
+    position: absolute;
+    display: none;
+    background-color: $color-primary;
+    top: 100%;
+    left: 0;
     z-index: 1;
-    height: 0;
+    width: 100%;
+    padding: 0;
+    margin: 0;
+    border-radius: 0 0 0.5rem 0.5rem;
+
+    & li{
+      padding: 2rem;
+
+      &:after {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 10px;
+        width: 150px;
+        height: 1px;
+        background: white;
+      }
+    }
   }
   &__option {
-    padding: 0.5rem 0;
-    border-bottom: 1px solid white;
+    position: relative;
+    padding: 2rem;
+  }
+  &__hide {
+    display: none;
   }
 }
-.active {
-  height: 20rem;
-  width: 10rem;
+
+.sort__options li:not(.sort__hide)~li:not(.sort__hide){
+  padding: 2rem;
 }

@@ -4,29 +4,30 @@ import { getMediasByPhotographer } from "./getMediasByPhotographer.js";
 export function toggleOptionsList() {
 
   const button = document.querySelector(".sort__button");
+  const list = document.querySelector(".sort__options");
   button.addEventListener("click", function() {
     const sort = document.querySelector(".sort__select");
     sort.classList.toggle("sort__select-open");
     if (sort.classList.contains("sort__select-open")) {
       button.setAttribute("aria-expanded", "true");
-      sort.querySelector("i").classList.add("fa-caret-up");
+      sort.querySelector("i").classList.toggle("fa-caret-up");
       sort.querySelector("i").classList.remove("fa-caret-down");
+      list.style.display = "block"
     } else {
       button.setAttribute("aria-expanded", "false");
       sort.querySelector("i").classList.add("fa-caret-down");
       sort.querySelector("i").classList.remove("fa-caret-up");
+      list.style.display = "none"
     }
   })
 }
 
 export function selectOption() {
-  const currentOption = document.querySelectorAll(".sort__hide");
-  currentOption.forEach(option => {
-    option.addEventListener("click", function(event) {
-      console.log(event.target)
-    })
+  const currentOption = document.querySelector(".sort__hide");
+  currentOption.addEventListener("click", function() {
+      currentOption.classList.remove("sort__hide");
+      currentOption.setAttribute("aria-expanded", "false");
   })
-
 }
 
 export async function sortMedias() {

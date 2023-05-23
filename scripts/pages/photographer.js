@@ -30,6 +30,7 @@ async function displaySortSection() {
   const selectDiv = document.createElement("div");
   selectDiv.classList.add("sort__select");
   selectDiv.setAttribute("aria-label", "Order by");
+  selectDiv.setAttribute("data-value", "popularity");
 
   const sortBtn = document.createElement("button");
   sortBtn.innerText = "Popularité";
@@ -39,7 +40,6 @@ async function displaySortSection() {
   selectDiv.appendChild(sortBtn);
 
   const arrow = document.createElement("i");
-  // arrow.alt = "arrow down";
   arrow.classList.add("sort__down", "fa-solid", "fa-caret-down");
   selectDiv.appendChild(arrow);
 
@@ -51,18 +51,20 @@ async function displaySortSection() {
 
   sortList.innerHTML = `
   <li
-    class="sort__hide"
+    class="sort__hide sort__option"
     data-value="popularity"
     role="option"
     id="popularity"
     aria-selected="true"
     tabindex="0">Popularité</li>
-<li
+  <li
+    class="sort__option"
     data-value="date"
     role="option"
     id="date"
     tabindex="0">Date</li>
-<li
+  <li
+    class="sort__option"
     data-value="title"
     role="option"
     id="title"
@@ -90,12 +92,12 @@ async function displaySortSection() {
   sortSection.appendChild(selectDiv);
 }
 
-async function displayPhotographerMedias() {
-  const mediaSection = document.createElement("section");
-  mediaSection.classList.add("photographer__content");
-  main.appendChild(mediaSection);
-  displaySortedMedias();
-}
+// async function displayPhotographerMedias() {
+//   const mediaSection = document.createElement("section");
+//   mediaSection.classList.add("photographer__content");
+//   main.appendChild(mediaSection);
+//   displaySortedMedias();
+// }
 
 async function displayLikesCounter() {
   const likesDiv = document.createElement("div");
@@ -217,7 +219,7 @@ async function init() {
   openContactForm();
   closeContactForm();
   closeFormWithEsc();
-  // sortMedia();
+  // sortMedias();
   openLightbox();
   closeLightbox();
   displayMediaInLightbox();

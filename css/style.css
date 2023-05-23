@@ -242,44 +242,78 @@ h1 {
   font-weight: bold;
   font-size: 1.2rem;
 }
-.sort__menu {
+.sort__select {
   position: relative;
-  width: 20rem;
+  display: inline-block;
+  margin-left: 2rem;
+  padding: 0;
+  box-sizing: border-box;
+  width: 11rem;
+  background-color: #901C1C;
+  border-radius: 0.5rem;
+  border: none;
+  color: white;
+  text-align: start;
   cursor: pointer;
 }
-.sort__menu i {
-  color: white;
+.sort__select-open {
+  border-radius: 0.5rem 0.5rem 0 0;
 }
-.sort__select {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  width: 10rem;
-  padding: 1rem;
-  border-radius: 0.2rem;
+.sort__button {
   background-color: #901C1C;
   color: white;
+  padding: 2rem;
+  border: none;
+  border-radius: 0.5rem;
+  font-size: 1.2rem;
+  cursor: pointer;
 }
-.sort__list {
+.sort i {
   position: absolute;
-  background-color: #901C1C;
+  top: 2rem;
+  right: 1rem;
   color: white;
-  border-radius: 0.2rem;
-  margin-top: 1rem;
-  padding: 0 1rem;
-  max-height: 7.75rem;
-  overflow-y: auto;
+  cursor: pointer;
+  transform: none;
+  pointer-events: none;
+}
+.sort__options .sort__select-open {
+  display: block;
+}
+.sort__options {
+  position: absolute;
+  display: none;
+  background-color: #901C1C;
+  top: 100%;
+  left: 0;
   z-index: 1;
-  height: 0;
+  width: 100%;
+  padding: 0;
+  margin: 0;
+  border-radius: 0 0 0.5rem 0.5rem;
+}
+.sort__options li {
+  padding: 2rem;
+}
+.sort__options li:after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 10px;
+  width: 150px;
+  height: 1px;
+  background: white;
 }
 .sort__option {
-  padding: 0.5rem 0;
-  border-bottom: 1px solid white;
+  position: relative;
+  padding: 2rem;
+}
+.sort__hide {
+  display: none;
 }
 
-.active {
-  height: 20rem;
-  width: 10rem;
+.sort__options li:not(.sort__hide) ~ li:not(.sort__hide) {
+  padding: 2rem;
 }
 
 .lightboxModal {
@@ -351,44 +385,78 @@ h1 {
   font-weight: bold;
   font-size: 1.2rem;
 }
-.sort__menu {
+.sort__select {
   position: relative;
-  width: 20rem;
+  display: inline-block;
+  margin-left: 2rem;
+  padding: 0;
+  box-sizing: border-box;
+  width: 11rem;
+  background-color: #901C1C;
+  border-radius: 0.5rem;
+  border: none;
+  color: white;
+  text-align: start;
   cursor: pointer;
 }
-.sort__menu i {
-  color: white;
+.sort__select-open {
+  border-radius: 0.5rem 0.5rem 0 0;
 }
-.sort__select {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  width: 10rem;
-  padding: 1rem;
-  border-radius: 0.2rem;
+.sort__button {
   background-color: #901C1C;
   color: white;
+  padding: 2rem;
+  border: none;
+  border-radius: 0.5rem;
+  font-size: 1.2rem;
+  cursor: pointer;
 }
-.sort__list {
+.sort i {
   position: absolute;
-  background-color: #901C1C;
+  top: 2rem;
+  right: 1rem;
   color: white;
-  border-radius: 0.2rem;
-  margin-top: 1rem;
-  padding: 0 1rem;
-  max-height: 7.75rem;
-  overflow-y: auto;
+  cursor: pointer;
+  transform: none;
+  pointer-events: none;
+}
+.sort__options .sort__select-open {
+  display: block;
+}
+.sort__options {
+  position: absolute;
+  display: none;
+  background-color: #901C1C;
+  top: 100%;
+  left: 0;
   z-index: 1;
-  height: 0;
+  width: 100%;
+  padding: 0;
+  margin: 0;
+  border-radius: 0 0 0.5rem 0.5rem;
+}
+.sort__options li {
+  padding: 2rem;
+}
+.sort__options li:after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 10px;
+  width: 150px;
+  height: 1px;
+  background: white;
 }
 .sort__option {
-  padding: 0.5rem 0;
-  border-bottom: 1px solid white;
+  position: relative;
+  padding: 2rem;
+}
+.sort__hide {
+  display: none;
 }
 
-.active {
-  height: 20rem;
-  width: 10rem;
+.sort__options li:not(.sort__hide) ~ li:not(.sort__hide) {
+  padding: 2rem;
 }
 
 .modal {
