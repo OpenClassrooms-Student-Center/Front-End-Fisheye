@@ -1,6 +1,7 @@
 import { getPhotographersById } from "../utils/getPhotographerById.js";
 import { photographerFactory } from "../factories/photographer.js";
-import { selectOption, openOptionsList, displaySortedMedias, sortMedias} from "../utils/displaySortedMedias.js";
+import { openOptionsList, selectOption } from "../utils/sortButton.js";
+import { displaySortedMedias, sortMedias} from "../utils/displaySortedMedias.js";
 import { getMediasByPhotographer } from "../utils/getMediasByPhotographer.js";
 import { openContactForm, closeContactForm, closeFormWithEsc } from "../utils/contactForm.js";
 import { closeLightboxModal, displayLightboxModal } from "../utils/lightBox.js";
@@ -56,6 +57,7 @@ async function displaySortSection() {
     role="option"
     id="popularity"
     aria-selected="true"
+    style="display: none;"
     tabindex="0">Popularité</li>
   <li
     class="sort__option"
@@ -98,11 +100,16 @@ async function displayLikesCounter() {
   `
 }
 
-function sortMedia() {
-  const orderBtn = document.querySelector(".sort__button");
-  orderBtn.addEventListener("click", function() {
-    document.querySelector(".photographer__content").remove();
-    displayPhotographerMedias();
+async function sortMedia() {
+  const options = document.querySelectorAll(".sort__option");
+  console.log(options);
+  options.forEach(option => {
+    option.addEventListener("click", function() {
+      console.log(option);
+      document.querySelector(".photographer__content").remove();
+      displayPhotographerMedias();
+    })
+
   })
 }
 
@@ -200,10 +207,10 @@ async function init() {
   await displaySortSection();
   await displayPhotographerMedias();
   await displayLikesCounter();
+  await sortMedia();
   openContactForm();
   closeContactForm();
   closeFormWithEsc();
-  sortMedia();
   openLightbox();
   closeLightbox();
   displayMediaInLightbox();
