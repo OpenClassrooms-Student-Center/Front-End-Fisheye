@@ -17,7 +17,8 @@ class Image extends Media {
     
     getDom() {
         return `
-            <img 
+            <img
+                id="img-${this.id}" 
                 src="assets/medias/${this.src}" 
                 alt="${this.title}" 
                 class="media-figure-img"
@@ -36,6 +37,7 @@ class Video extends Media {
     getDom() {
         return `
             <iframe
+                id="img-${this.id}"
                 src="assets/medias/${this.src}" 
                 class="media-figure-img"
                 aria-label="Vidéo nommée ${this.title}, cliquez ou appuyez sur entrée pour agrandir" 
@@ -89,7 +91,7 @@ function createMediaFactory(data, sortBy = 'popularity') {
 
             mediaHtml += `
                 <figure class="media-figure">
-                    <div id="media-${id}" onclick="launchLightBox(${id}, event)" aria-label="Ouvrir le média">
+                    <div id="media-${id}" onclick="launchLightBox(${id}, event, ${i})" aria-label="Ouvrir le média">
                         <span 
                             class="element-light-box element-light-box-cross" 
                             onclick="launchLightBox(${id}, event)" 
@@ -138,7 +140,7 @@ function createMediaFactory(data, sortBy = 'popularity') {
 }
 
 // Fonctions pour LightBox
-const launchLightBox = (id, event) => {
+const launchLightBox = (id, event, index) => {
     event.stopPropagation();
 
     const media = document.getElementById(`media-${id}`);
@@ -147,6 +149,7 @@ const launchLightBox = (id, event) => {
     if (!media.classList.contains('light-box')) {
         media.classList.add('light-box');
         elmts.forEach(elmt => elmt.style.display = 'block');
+        currentIndex = index;
         console.log('open')
     } else {
         media.classList.remove('light-box');
@@ -154,8 +157,6 @@ const launchLightBox = (id, event) => {
         console.log('close');
     }
 }
-
-let currentIndex = 0;
 
 const showNextMedia = (event) => {
     event.stopPropagation();
@@ -206,6 +207,12 @@ document.addEventListener('keydown', (event) => {
         const lightBox = document.querySelector('.light-box');
         if (lightBox) {
             const mediaId = lightBox.id.split('-')[1];
+            launchLightBox(mediaId, event);
+        }
+    } else if (event.key === 'Enter') {
+        const activeElement = document.activeElement;
+        if (activeElement.classList.contains('media-figure-img')) {
+            const mediaId = activeElement.id.split('-')[1];
             launchLightBox(mediaId, event);
         }
     }

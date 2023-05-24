@@ -204,21 +204,21 @@ form button {
 }
 
 .element-light-box-cross {
-    top: 6.3rem;
-    right: 9.5rem;
+    top: 6.27rem;
+    right: 10%;
 }
 
 .element-light-box-arrowLeft {
-    left: 9.5rem;
+    left: 10%;
 }
 
 .element-light-box-arrowRight {
-    right: 9.5rem;
+    right: 10%;
 }
 
 .element-light-box-title {
     bottom: 2.3rem;
-    left: 11.8rem;
+    left: 15%;
     font-size: 30px;
 }
 
