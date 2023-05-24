@@ -200,16 +200,16 @@ async function init() {
   await displayPhotographerHeader(photographer)
   await displaySortSection();
   await displayLikesCounter();
-  await sortMedia();
-  await displayPhotographerMedias();
-  openContactForm();
-  closeContactForm();
-  closeFormWithEsc();
   openOptionsList();
   selectOption();
-  openLightbox();
-  closeLightbox();
-  displayMediaInLightbox();
+  // await sortMedia();
+  // await displayPhotographerMedias();
+  // openContactForm();
+  // closeContactForm();
+  // closeFormWithEsc();
+  // openLightbox();
+  // closeLightbox();
+  // displayMediaInLightbox();
 }
 
 init();

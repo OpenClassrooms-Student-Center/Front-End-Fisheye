@@ -17,6 +17,7 @@ export function openOptionsList() {
     }
   })
 }
+
 function closeOptionsList() {
   const button = document.querySelector(".sort__button");
   const list = document.querySelector(".sort__options");
@@ -36,17 +37,16 @@ export function selectOption() {
     option.classList.remove("sort__hide");
     option.addEventListener("click", (event) => {
       orderBtn.innerText = event.target.innerText;
-      option.classList.add("sort__hide");
-      option.setAttribute("aria-selected", "true");
-      closeOptionsList();
-      const selectedOption = Array.from(options).find(option => option.innerText === orderBtn.innerText);
-      selectedOption.style.display = "none"
-      const otherOptions = Array.from(options).filter(option => option.innerText !== orderBtn.innerText);
-      otherOptions.forEach(option => function() {
+
+      options.forEach(option => {
         option.style.display = "block";
         option.setAttribute("aria-selected", "false");
-        option.style.display = "block"
       })
+      option.classList.add("sort__hide");
+      option.setAttribute("aria-selected", "true");
+      option.style.display = "none"
+
+      closeOptionsList();
     })
   })
 }

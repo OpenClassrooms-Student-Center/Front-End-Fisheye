@@ -295,7 +295,7 @@ h1 {
   border-radius: 0 0 0.2rem 0.2rem;
 }
 .sort__options li {
-  padding: 2rem;
+  padding: 1.5rem;
 }
 .sort__options li:after {
   content: "";
@@ -308,14 +308,14 @@ h1 {
 }
 .sort__option {
   position: relative;
-  padding: 2rem;
+  padding: 1.5rem;
 }
 .sort__hide {
   display: none;
 }
 
 .sort__options li:not(.sort__hide) ~ li:not(.sort__hide) {
-  padding: 2rem;
+  padding: 1.5rem;
 }
 
 .lightboxModal {
@@ -442,7 +442,7 @@ h1 {
   border-radius: 0 0 0.2rem 0.2rem;
 }
 .sort__options li {
-  padding: 2rem;
+  padding: 1.5rem;
 }
 .sort__options li:after {
   content: "";
@@ -455,14 +455,14 @@ h1 {
 }
 .sort__option {
   position: relative;
-  padding: 2rem;
+  padding: 1.5rem;
 }
 .sort__hide {
   display: none;
 }
 
 .sort__options li:not(.sort__hide) ~ li:not(.sort__hide) {
-  padding: 2rem;
+  padding: 1.5rem;
 }
 
 .modal {
