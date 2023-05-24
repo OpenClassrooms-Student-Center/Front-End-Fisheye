@@ -1,7 +1,7 @@
 import { getPhotographersById } from "../utils/getPhotographerById.js";
 import { photographerFactory } from "../factories/photographer.js";
 import { openOptionsList, selectOption } from "../utils/sortButton.js";
-import { displaySortedMedias, sortMedias} from "../utils/displaySortedMedias.js";
+import { displaySortedMedias } from "../utils/displaySortedMedias.js";
 import { getMediasByPhotographer } from "../utils/getMediasByPhotographer.js";
 import { openContactForm, closeContactForm, closeFormWithEsc } from "../utils/contactForm.js";
 import { closeLightboxModal, displayLightboxModal } from "../utils/lightBox.js";
@@ -202,11 +202,11 @@ async function init() {
   await displayLikesCounter();
   openOptionsList();
   selectOption();
-  // await sortMedia();
-  // await displayPhotographerMedias();
-  // openContactForm();
-  // closeContactForm();
-  // closeFormWithEsc();
+  await sortMedia();
+  await displayPhotographerMedias();
+  openContactForm();
+  closeContactForm();
+  closeFormWithEsc();
   // openLightbox();
   // closeLightbox();
   // displayMediaInLightbox();
