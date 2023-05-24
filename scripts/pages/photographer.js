@@ -37,7 +37,7 @@ async function displaySortSection() {
   sortBtn.innerText = "Popularité";
   sortBtn.setAttribute("aria-haspopup", "list");
   sortBtn.id = "sort__button";
-  sortBtn.classList.add("sort__button");
+  sortBtn.classList.add("sort__button", "button");
   selectDiv.appendChild(sortBtn);
 
   const arrow = document.createElement("i");
@@ -82,7 +82,18 @@ async function displayPhotographerMedias() {
   const mediaSection = document.createElement("section");
   mediaSection.classList.add("photographer__content");
   main.appendChild(mediaSection);
-  displaySortedMedias();
+  await displaySortedMedias();
+}
+
+async function sortMedia() {
+  const options = document.querySelectorAll(".sort__option");
+  options.forEach(option => {
+    option.addEventListener("click", function() {
+      document.querySelector(".photographer__content").remove();
+      displayPhotographerMedias();
+    })
+
+  })
 }
 
 async function displayLikesCounter() {
@@ -100,20 +111,6 @@ async function displayLikesCounter() {
   `
 }
 
-async function sortMedia() {
-  const options = document.querySelectorAll(".sort__option");
-  console.log(options);
-  options.forEach(option => {
-    option.addEventListener("click", function() {
-      console.log(option);
-      document.querySelector(".photographer__content").remove();
-      displayPhotographerMedias();
-    })
-
-  })
-}
-
-
 async function displayMediaInLightbox() {
 
   const lightbox = document.querySelector(".lightboxModal");
@@ -124,33 +121,30 @@ async function displayMediaInLightbox() {
   const mediaColl = document.querySelectorAll(".media");
   const medias = Array.from(mediaColl);
   medias.forEach(media => media.addEventListener("click", function(event) {
-      console.log(media);
-      const mediaAlt = event.currentTarget.firstChild.alt;
-      const mediaSource = event.currentTarget.firstChild.src;
-      const currentMedia = mediaObj.find((media) => media.title === mediaAlt);
-      const index = mediaObj.indexOf(currentMedia);
-      console.log(index);
-      console.log(currentMedia);
+    console.log(media);
+    const mediaAlt = event.currentTarget.firstChild.alt;
+    const mediaSource = event.currentTarget.firstChild.src;
+    const currentMedia = mediaObj.find((media) => media.title === mediaAlt);
+    const index = mediaObj.indexOf(currentMedia);
+    console.log(index);
+    console.log(currentMedia);
 
-      if (currentMedia.image) {
-        const lightboxImg = document.createElement("img");
-        lightboxImg.src = mediaSource;
-        lightboxImg.classList.add("lightboxModal__img")
-        lightbox.prepend(lightboxImg);
-      }
-      else if (currentMedia.video) {
-        const lightboxVideo = document.createElement("video");
-        lightboxVideo.controls = "true";
-        lightboxVideo.classList.add("lightboxModal__video")
-        lightbox.prepend(lightboxVideo);
-        const lightboxVideoSrc = document.createElement("source");
-        lightboxVideoSrc.src = mediaSource;
-        lightboxVideoSrc.type = "video/mp4";
-        lightboxVideo.appendChild(lightboxVideoSrc);
-
-      }
-
-
+    if (currentMedia.image) {
+      const lightboxImg = document.createElement("img");
+      lightboxImg.src = mediaSource;
+      lightboxImg.classList.add("lightboxModal__img")
+      lightbox.prepend(lightboxImg);
+    }
+    else if (currentMedia.video) {
+      const lightboxVideo = document.createElement("video");
+      lightboxVideo.controls = "true";
+      lightboxVideo.classList.add("lightboxModal__video")
+      lightbox.prepend(lightboxVideo);
+      const lightboxVideoSrc = document.createElement("source");
+      lightboxVideoSrc.src = mediaSource;
+      lightboxVideoSrc.type = "video/mp4";
+      lightboxVideo.appendChild(lightboxVideoSrc);
+    }
   }))
 
 
@@ -205,17 +199,17 @@ async function init() {
   await getPhotographersById();
   await displayPhotographerHeader(photographer)
   await displaySortSection();
-  await displayPhotographerMedias();
   await displayLikesCounter();
   await sortMedia();
+  await displayPhotographerMedias();
   openContactForm();
   closeContactForm();
   closeFormWithEsc();
+  openOptionsList();
+  selectOption();
   openLightbox();
   closeLightbox();
   displayMediaInLightbox();
-  selectOption();
-  openOptionsList();
 }
 
 init();

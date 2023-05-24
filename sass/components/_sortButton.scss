@@ -15,7 +15,7 @@
     box-sizing: border-box;
     width: 11rem;
     background-color: $color-primary;
-    border-radius: 0.5rem;
+    border-radius: 0.2rem;
     border: none;
     color: white;
     text-align: start;
@@ -23,22 +23,26 @@
 
     &-open {
       // display: block;
-      border-radius: 0.5rem 0.5rem 0 0;
+      border-radius: 0.2rem 0.2rem 0 0;
     }
   }
   &__button {
     background-color: $color-primary;
     color: white;
-    padding: 2rem;
-    border: none;
-    border-radius: 0.5rem;
+    font-weight: 400;
     font-size: 1.2rem;
+    width: 11rem;
     cursor: pointer;
+    text-align: start;
+    &:hover, &:focus {
+      background-color: $color-primary;
+      color: white;
+    }
   }
 
   & i {
     position: absolute;
-    top: 2rem;
+    top: 1.7rem;
     right: 1rem;
     color: white;
     cursor: pointer;
@@ -59,7 +63,7 @@
     width: 100%;
     padding: 0;
     margin: 0;
-    border-radius: 0 0 0.5rem 0.5rem;
+    border-radius: 0 0 0.2rem 0.2rem;
 
     & li{
       padding: 2rem;
