@@ -114,28 +114,28 @@ async function displayLikesCounter() {
 async function displayMediaInLightbox() {
 
   const lightbox = document.querySelector(".lightboxModal");
-  const mediaObj = await getMediasByPhotographer();
-
-  const { title, image, video, photographerId } = mediaObj;
-
   const mediaColl = document.querySelectorAll(".media");
-  const medias = Array.from(mediaColl);
-  medias.forEach(media => media.addEventListener("click", function(event) {
-    console.log(media);
-    const mediaAlt = event.currentTarget.firstChild.alt;
-    const mediaSource = event.currentTarget.firstChild.src;
-    const currentMedia = mediaObj.find((media) => media.title === mediaAlt);
-    const index = mediaObj.indexOf(currentMedia);
-    console.log(index);
-    console.log(currentMedia);
 
-    if (currentMedia.image) {
+  const medias = Array.from(mediaColl);
+  const mediasLength = medias.length;
+  console.log(mediasLength);
+
+  medias.forEach(media => {
+    media.addEventListener("click", (event) => {
+      const mediaAlt = event.currentTarget.firstChild.alt;
+      const mediaSource = event.currentTarget.firstChild.src;
+      const currentMedia = medias.find(media => media.firstChild.alt === mediaAlt)
+      const index = medias.indexOf(currentMedia);
+      console.log(index);
+      console.log(currentMedia.firstChild);
+
+    if (currentMedia.firstChild.classList.contains("media__img")) {
       const lightboxImg = document.createElement("img");
       lightboxImg.src = mediaSource;
       lightboxImg.classList.add("lightboxModal__img")
       lightbox.prepend(lightboxImg);
     }
-    else if (currentMedia.video) {
+    else if (currentMedia.firstChild.classList.contains("media__video")) {
       const lightboxVideo = document.createElement("video");
       lightboxVideo.controls = "true";
       lightboxVideo.classList.add("lightboxModal__video")
@@ -145,7 +145,8 @@ async function displayMediaInLightbox() {
       lightboxVideoSrc.type = "video/mp4";
       lightboxVideo.appendChild(lightboxVideoSrc);
     }
-  }))
+  })
+})
 
 
 
@@ -207,9 +208,9 @@ async function init() {
   openContactForm();
   closeContactForm();
   closeFormWithEsc();
-  // openLightbox();
-  // closeLightbox();
-  // displayMediaInLightbox();
+  openLightbox();
+  closeLightbox();
+  displayMediaInLightbox();
 }
 
 init();
