@@ -2,6 +2,7 @@ const qStr = window.location.search;
 const urlParams = new URLSearchParams(qStr);
 const id = urlParams.get('id');
 
+// PHOTOGRAPHES
 async function getPhotographDetails() {
     const response = await fetch('data/photographers.json');
     const photographersData = await response.json();
@@ -9,6 +10,17 @@ async function getPhotographDetails() {
     return photographDetails;
 }
 
+async function displayPhotographDetails() {
+    const photograph = await getPhotographDetails();
+    const photographHeader = document.querySelector(".photograph-header");
+    
+    const photographModel = photographHeaderFactory(photograph);
+    const userHeaderDOM = photographModel.getUserHeaderDOM();
+    
+    photographHeader.appendChild(userHeaderDOM);
+};
+
+// MEDIAS
 async function getMediaDetails() {
     const response = await fetch('data/photographers.json');
     const mediaData = await response.json();
@@ -22,16 +34,6 @@ async function getMediaDetails() {
     
     return mediaDetails;
 }
-
-async function displayPhotographDetails() {
-    const photograph = await getPhotographDetails();
-    const photographHeader = document.querySelector(".photograph-header");
-    
-    const photographModel = photographHeaderFactory(photograph);
-    const userHeaderDOM = photographModel.getUserHeaderDOM();
-    
-    photographHeader.appendChild(userHeaderDOM);
-};
 
 async function displayPhotographMedias() {
     const mediaData = await getMediaDetails();

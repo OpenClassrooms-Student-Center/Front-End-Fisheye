@@ -23,7 +23,6 @@ class Image extends Media {
                 alt="${this.title}" 
                 class="media-figure-img"
                 aria-label="Photo nommée ${this.title}, cliquez ou appuyez sur entrée pour agrandir" 
-                tabindex=0
             >
         `;
     }
@@ -41,7 +40,6 @@ class Video extends Media {
                 src="assets/medias/${this.src}" 
                 class="media-figure-img"
                 aria-label="Vidéo nommée ${this.title}, cliquez ou appuyez sur entrée pour agrandir" 
-                tabindex=0
             ></iframe>
         `;
     }
@@ -59,10 +57,8 @@ const factory = (type, options) => {
     throw new Error('Invalid media type');
 };
 
-// Créer une figure contenant les informations de chaque photographe
-function createMediaFactory(data, sortBy = 'popularity') {
-    console.log(data)
-
+// Créer une figure contenant un média de photographe
+function createMediaFactory(mediasData, sortBy = 'popularity') {
     function sortMedia(a, b) {
         if (sortBy === 'popularity') {
             return b.likes - a.likes;
@@ -74,11 +70,11 @@ function createMediaFactory(data, sortBy = 'popularity') {
     }
 
     function getMediaDOM() {
-        const sortedData = data.sort(sortMedia);
+        const sortedMediasData = mediasData.sort(sortMedia);
 
         let mediaHtml = "";
-        for (let i = 0; i < sortedData.length; i++) {
-            const { id, title, likes, image, video } = sortedData[i];
+        for (let i = 0; i < sortedMediasData.length; i++) {
+            const { id, title, likes, image, video } = sortedMediasData[i];
             let media;
 
             if (image) {
@@ -91,7 +87,7 @@ function createMediaFactory(data, sortBy = 'popularity') {
 
             mediaHtml += `
                 <figure class="media-figure">
-                    <div id="media-${id}" onclick="launchLightBox(${id}, event, ${i})" aria-label="Ouvrir le média">
+                    <div id="media-${id}" data-index="${i}" tabindex="0" onclick="launchLightBox(${id}, event, ${i})" onkeydown="launchLightBoxWithKey(${id}, event, ${i})" aria-label="Ouvrir le média">
                         <span 
                             class="element-light-box element-light-box-cross" 
                             onclick="launchLightBox(${id}, event)" 
@@ -150,11 +146,11 @@ const launchLightBox = (id, event, index) => {
         media.classList.add('light-box');
         elmts.forEach(elmt => elmt.style.display = 'block');
         currentIndex = index;
-        console.log('open')
+        media.addEventListener('keydown', lightBoxKeyDown);
     } else {
         media.classList.remove('light-box');
         elmts.forEach(elmt => elmt.style.display = 'none');
-        console.log('close');
+        media.removeEventListener('keydown', lightBoxKeyDown);
     }
 }
 
@@ -178,8 +174,9 @@ const showPreviousMedia = (event) => {
     }
 }
 
-const showMediaAtIndex = () => {
+const showMediaAtIndex = (currentIndex) => {
     const media = document.getElementsByClassName('media-figure');
+
     const currentMedia = media[currentIndex];
     const currentElmt = currentMedia.querySelector('.media-figure > div');
 
@@ -198,7 +195,7 @@ const showMediaAtIndex = () => {
 }
 
 // Events clavier
-document.addEventListener('keydown', (event) => {
+const lightBoxKeyDown = (event) => {
     if (event.key === 'ArrowRight') {
         showNextMedia(event);
     } else if (event.key === 'ArrowLeft') {
@@ -209,14 +206,14 @@ document.addEventListener('keydown', (event) => {
             const mediaId = lightBox.id.split('-')[1];
             launchLightBox(mediaId, event);
         }
-    } else if (event.key === 'Enter') {
-        const activeElement = document.activeElement;
-        if (activeElement.classList.contains('media-figure-img')) {
-            const mediaId = activeElement.id.split('-')[1];
-            launchLightBox(mediaId, event);
-        }
     }
-});
+};
+
+const launchLightBoxWithKey = (id, event, index) => {
+    if (event.key === 'Enter') {
+        launchLightBox(id, event, index);
+    }
+}
 
 // Fonction d'incrémentation et décrémentation de Likes
 const incrementLikes = (id, likes) => {

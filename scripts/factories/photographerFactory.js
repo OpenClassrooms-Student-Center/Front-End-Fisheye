@@ -1,6 +1,6 @@
 // Créer un article contenant les informations de chaque photographe
-function photographerFactory(data) {
-    const { id, name, portrait, city, country, tagline, price } = data;
+function photographerFactory(photographerData) {
+    const { id, name, portrait, city, country, tagline, price } = photographerData;
 
     const picture = `assets/photographers/${portrait}`;
 
