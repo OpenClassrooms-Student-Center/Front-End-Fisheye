@@ -1,14 +1,14 @@
 function photographHeaderFactory(photographerData) {
-    const { id, name, portrait, city, country, tagline, price } = photographerData;
+    const { name, portrait, city, country, tagline } = photographerData;
 
     const picture = `assets/photographers/${portrait}`;
 
-    function getUserHeaderDOM() {
+    function getPhotographHeaderDOM() {
         const article = 
         `<article 
             class="photograph-header-details" 
             tabindex="0" 
-            aria-label="Résumé du photographe ${name}; Ville: ${city}, ${country}; Slogan: ${tagline}; Tarif : ${price} euros par jour"
+            aria-label="Résumé du photographe ${name}; Ville: ${city}, ${country}; Slogan: ${tagline}."
         >
             <div>
                 <h1 class="photographe-article-name photograph-header-details-name">
@@ -38,5 +38,5 @@ function photographHeaderFactory(photographerData) {
         return section.firstElementChild;
     }
 
-    return { name, picture, getUserHeaderDOM }
+    return { getPhotographHeaderDOM }
 }

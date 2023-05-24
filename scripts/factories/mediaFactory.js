@@ -35,12 +35,13 @@ class Video extends Media {
 
     getDom() {
         return `
-            <iframe
+            <video
                 id="img-${this.id}"
                 src="assets/medias/${this.src}" 
                 class="media-figure-img"
                 aria-label="Vidéo nommée ${this.title}, cliquez ou appuyez sur entrée pour agrandir" 
-            ></iframe>
+                controls
+                ></video>
         `;
     }
 }
@@ -120,7 +121,7 @@ function createMediaFactory(mediasData, sortBy = 'popularity') {
                             class="media-figure-figcaption-btn" 
                             onclick="incrementLikes(${id}, ${likes})"
                             aria-label="Ajouter un like à l'image : ${title}">
-                                ${likes} <i class="fa-regular fa-heart"></i>
+                                ${likes} <i class="fa-regular fa-heart like-icon"></i>
                         </button>
                     </figcaption>
                 </figure>
@@ -216,21 +217,21 @@ const launchLightBoxWithKey = (id, event, index) => {
 }
 
 // Fonction d'incrémentation et décrémentation de Likes
-const incrementLikes = (id, likes) => {
-    let mediaLikes = likes;
-    let mediaLiked = mediaLikes += 1;
+// const incrementLikes = (id, likes) => {
+//     let mediaLikes = likes;
+//     let mediaLiked = mediaLikes += 1;
 
-    // Mettre à jour le nombre de likes et l'icône
-    const likeBtn = document.getElementById(`like-${id}`);
-    if (!likeBtn.classList.contains('dislike')) {
-        mediaLikes += 1
-        likeBtn.classList.add('dislike')
-        likeBtn.innerHTML = `${mediaLiked} <i class="fa-solid fa-heart"></i>`;
-        likeBtn.ariaLabel = `Retirer votre like de l'image"`
-    } else {
-        mediaLiked -= 1;
-        likeBtn.classList.remove('dislike')
-        likeBtn.innerHTML = `${mediaLiked} <i class="fa-regular fa-heart"></i>`;
-        likeBtn.ariaLabel = `Ajouter un like à l'image"`
-    }
-}
+//     // Mettre à jour le nombre de likes et l'icône
+//     const likeBtn = document.getElementById(`like-${id}`);
+//     if (!likeBtn.classList.contains('dislike')) {
+//         mediaLikes += 1
+//         likeBtn.classList.add('dislike')
+//         likeBtn.innerHTML = `${mediaLiked} <i class="fa-solid fa-heart"></i>`;
+//         likeBtn.ariaLabel = "Retirer votre like de l'image"
+//     } else {
+//         mediaLiked -= 1;
+//         likeBtn.classList.remove('dislike')
+//         likeBtn.innerHTML = `${mediaLiked} <i class="fa-regular fa-heart"></i>`;
+//         likeBtn.ariaLabel = "Ajouter un like à l'image"
+//     }
+// }

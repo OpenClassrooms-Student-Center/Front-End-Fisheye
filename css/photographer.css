@@ -159,6 +159,13 @@ form button {
     height: 300px;
     object-fit: cover;
     border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    cursor: zoom-in;
+    transition: all 350ms ease-in-out;
+}
+
+.media-figure-img:hover {
+    transform: scale(1.02);
 }
 
 .media-figure-figcaption {
@@ -179,6 +186,34 @@ form button {
     background-color: transparent;
     color: #901C1C;
     font-size: 17px;
+}
+
+.media-figure-figcaption-btn-icon {
+    cursor: pointer;
+}
+
+.media-figure-figcaption-btn-likes {
+    margin-right: 20px;
+}
+
+.icon-container {
+    position: relative;
+}
+
+.icon-container i {
+    position: absolute;
+}
+
+.dislike-icon {
+    display: none;
+}
+
+.dislike .dislike-icon {
+    display: block;
+}
+
+.dislike .like-icon {
+    display: none;
 }
 
 /* LIGHTBOX */
@@ -222,7 +257,7 @@ form button {
     font-size: 30px;
 }
 
-.light-box img, .light-box iframe {
+.light-box img, .light-box video {
     width: 70%;
     height: 600px;
     object-fit: cover;
@@ -301,4 +336,25 @@ form button {
     height: 2px;
     background-color: white;
     margin: 10px 0;
+}
+
+/* FOOTER */
+.footer {
+    position: fixed;
+    bottom: 0;
+    right: 5%;
+    background-color: #DB8876;
+    border-radius: 5px 5px 0 0;
+    padding: 15px;
+}
+
+.footer-container {
+    display: flex;
+    justify-content: space-between;
+    width: 200px;
+}
+
+.footer-container p {
+    margin: 0;
+    font-size: 20px;
 }

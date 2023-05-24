@@ -1,8 +1,9 @@
+// GET ID BY PARAMS
 const qStr = window.location.search;
 const urlParams = new URLSearchParams(qStr);
 const id = urlParams.get('id');
 
-// PHOTOGRAPHES
+// HEADER
 async function getPhotographDetails() {
     const response = await fetch('data/photographers.json');
     const photographersData = await response.json();
@@ -14,13 +15,13 @@ async function displayPhotographDetails() {
     const photograph = await getPhotographDetails();
     const photographHeader = document.querySelector(".photograph-header");
     
-    const photographModel = photographHeaderFactory(photograph);
-    const userHeaderDOM = photographModel.getUserHeaderDOM();
+    const headerModel = photographHeaderFactory(photograph);
+    const photographHeaderDOM = headerModel.getPhotographHeaderDOM();
     
-    photographHeader.appendChild(userHeaderDOM);
+    photographHeader.appendChild(photographHeaderDOM);
 };
 
-// MEDIAS
+// MEDIA
 async function getMediaDetails() {
     const response = await fetch('data/photographers.json');
     const mediaData = await response.json();
@@ -33,6 +34,15 @@ async function getMediaDetails() {
     });
     
     return mediaDetails;
+}
+
+async function getMediaLikes() {
+    const mediaData = await getMediaDetails();
+    let mediaNbLikes = mediaData.reduce(function (accumulator, media) {
+        return accumulator + media.likes;
+    }, 0)
+
+    return mediaNbLikes;
 }
 
 async function displayPhotographMedias() {
@@ -161,11 +171,52 @@ async function displayPhotographMedias() {
     toggleButtonState('sort-button-popularity');
 }
 
+// FOOTER
+async function displayFooter() {
+    const photograph = await getPhotographDetails();
+    const photographPrice = photograph.price;
+
+    const mediaNbLikes = await getMediaLikes();
+
+    const photographFooter = document.querySelector('.footer');
+
+    const footerModel = photographFooterFactory(photographPrice, mediaNbLikes)
+    const photographFooterDOM = footerModel.getPhotographFooterDOM();
+
+    photographFooter.appendChild(photographFooterDOM);
+}
+
+// Mettre à jour le nombre de like et l'icône
+function incrementLikes(id, likes) {
+    const likeBtn = document.getElementById(`like-${id}`);
+    const mediaTotalLikes = document.getElementById('total-likes');
+
+    let mediaLikes = likes;
+    let mediaLiked = mediaLikes += 1;
+    let totalLikes = parseInt(mediaTotalLikes.innerText);
+    
+    if (!likeBtn.classList.contains('dislike')) {
+        mediaLikes += 1;
+        likeBtn.classList.add('dislike');
+        likeBtn.innerHTML = `${mediaLiked} <i class="fa-solid fa-heart"></i>`;
+        likeBtn.ariaLabel = "Retirer votre like de l'image";
+        mediaTotalLikes.innerText = totalLikes += 1;
+    } else {
+        mediaLiked -= 1;
+        likeBtn.classList.remove('dislike');
+        likeBtn.innerHTML = `${mediaLiked} <i class="fa-regular fa-heart"></i>`;
+        likeBtn.ariaLabel = "Ajouter un like à l'image";
+        mediaTotalLikes.innerText = totalLikes -= 1;
+    }
+}
+
+// ON INIT
 async function init() {
     const { photograph } = await getPhotographDetails();
     const { media } = await getMediaDetails();
     displayPhotographDetails(photograph);
     displayPhotographMedias(media);
+    displayFooter(photograph, media);
 };
 
 init();
