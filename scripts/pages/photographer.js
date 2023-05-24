@@ -111,77 +111,69 @@ async function displayLikesCounter() {
   `
 }
 
-async function displayMediaInLightbox() {
-
-  const lightbox = document.querySelector(".lightboxModal");
+function displayMediasInLightbox() {
   const mediaColl = document.querySelectorAll(".media");
-
   const medias = Array.from(mediaColl);
   const mediasLength = medias.length;
   console.log(mediasLength);
 
+  displayCurrentMedia(medias);
+
+
+}
+
+
+
+function findCurrentMedia(event, medias) {
+  const mediaAlt = event.currentTarget.firstChild.alt;
+  const mediaSource = event.currentTarget.firstChild.src;
+  const currentMedia = medias.find(media => media.firstChild.alt === mediaAlt)
+  const index = medias.indexOf(currentMedia);
+  const lightbox = document.querySelector(".lightboxModal");
+  console.log(index);
+  console.log(currentMedia.firstChild);
+
+  if (currentMedia.firstChild.classList.contains("media__img")) {
+    const lightboxImg = document.createElement("img");
+    lightboxImg.src = mediaSource;
+    lightboxImg.classList.add("lightboxModal__img")
+    lightbox.prepend(lightboxImg);
+  }
+  else if (currentMedia.firstChild.classList.contains("media__video")) {
+    const lightboxVideo = document.createElement("video");
+    lightboxVideo.controls = "true";
+    lightboxVideo.classList.add("lightboxModal__video")
+    lightbox.prepend(lightboxVideo);
+    const lightboxVideoSrc = document.createElement("source");
+    lightboxVideoSrc.src = mediaSource;
+    lightboxVideoSrc.type = "video/mp4";
+    lightboxVideo.appendChild(lightboxVideoSrc);
+  }
+}
+
+function displayCurrentMedia(medias) {
   medias.forEach(media => {
-    media.addEventListener("click", (event) => {
-      const mediaAlt = event.currentTarget.firstChild.alt;
-      const mediaSource = event.currentTarget.firstChild.src;
-      const currentMedia = medias.find(media => media.firstChild.alt === mediaAlt)
-      const index = medias.indexOf(currentMedia);
-      console.log(index);
-      console.log(currentMedia.firstChild);
-
-    if (currentMedia.firstChild.classList.contains("media__img")) {
-      const lightboxImg = document.createElement("img");
-      lightboxImg.src = mediaSource;
-      lightboxImg.classList.add("lightboxModal__img")
-      lightbox.prepend(lightboxImg);
-    }
-    else if (currentMedia.firstChild.classList.contains("media__video")) {
-      const lightboxVideo = document.createElement("video");
-      lightboxVideo.controls = "true";
-      lightboxVideo.classList.add("lightboxModal__video")
-      lightbox.prepend(lightboxVideo);
-      const lightboxVideoSrc = document.createElement("source");
-      lightboxVideoSrc.src = mediaSource;
-      lightboxVideoSrc.type = "video/mp4";
-      lightboxVideo.appendChild(lightboxVideoSrc);
-    }
+    media.addEventListener("click", (event) => findCurrentMedia(event, medias))
   })
-})
+}
 
+function findNextMedia(medias) {
 
+}
 
-  // const lightboxMedia = document.querySelector(".lightboxModal");
-  // if (image) {
-  //   lightboxMedia.innerHTML += `<img class="lightbox__image" src="assets/images/${photographerId}/${image}" alt="${title}>
-  //   <figcaption class="lightbox__caption">${title}</figcaption>
-  //   `
-  // } else if (video) {
-  //   lightboxMedia.innerHTML += `<video class="lightbox__video" title="${title}" controls>
-  //     <source src="assets/images/${photographerId}/${video}" type="video/mp4">
-  //   </video>
-  //   <figcaption class="lightbox__caption">${title}</figcaption>
-  //   `
-  // }
+function displayNextMedia() {
+  const next = document.querySelector(".lightboxModal__next");
+  next.addEventListener("click", findNextMedia)
 }
 
 function openLightbox(){
   const mediaColl = document.querySelectorAll(".media");
   const medias = Array.from(mediaColl);
   medias.forEach(media => media.addEventListener("click", function() {
-    // console.log(media);
-    // const mediaSource = event.currentTarget.firstChild.src;
-    // console.log(mediaSource);
-    // const lightbox = document.querySelector(".lightboxModal");
-
-    // if (media.img) {
-    //   console.log("img");
-    // }
-    // const lightboxImg = document.createElement("img");
-    // lightboxImg.src = mediaSource;
-    // lightboxImg.classList.add("lightboxModal__img")
-    // lightbox.prepend(lightboxImg);
 
     displayLightboxModal();
+    displayNextMedia();
+    closeLightbox();
   }))
 }
 
@@ -209,8 +201,7 @@ async function init() {
   closeContactForm();
   closeFormWithEsc();
   openLightbox();
-  closeLightbox();
-  displayMediaInLightbox();
+  displayMediasInLightbox();
 }
 
 init();
