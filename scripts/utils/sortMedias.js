@@ -2,7 +2,8 @@ import { mediaFactory } from "../factories/media.js";
 import { getMediasByPhotographer } from "./getMediasByPhotographer.js";
 
 async function sortMedias() {
-  const dropdown = document.querySelector(".sort__select").innerText;
+  const dropdown = document.querySelector(".sort__button").innerText;
+  console.log(dropdown);
   const data = await getMediasByPhotographer();
   let sortedMedias;
 
@@ -33,6 +34,7 @@ async function sortMedias() {
 export async function createSortedMediasCards() {
 
   const sortedMedias = await sortMedias();
+  console.log(sortedMedias);
   sortedMedias.forEach(media => {
     const data = mediaFactory(media);
     data.getMediaCardDom();

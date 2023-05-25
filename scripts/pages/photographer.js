@@ -86,9 +86,11 @@ async function displayPhotographerMedias() {
 function displaySortedMedias() {
   const options = document.querySelectorAll(".sort__option");
   options.forEach(option => {
-    option.addEventListener("click", function() {
-      document.querySelector(".photographer__content").remove();
-      displayPhotographerMedias();
+    option.addEventListener("click", () => {
+      document.querySelector(".photographer__content").innerHTML = "";
+      setTimeout(() => {
+        createSortedMediasCards();
+      }, 1);
     })
   })
 }
@@ -208,10 +210,10 @@ async function init() {
   await displayPhotographerHeader()
   await displaySortSection();
   await displayLikesCounter();
+  await displayPhotographerMedias();
+  await displaySortedMedias();
   openOptionsList();
   selectOption();
-  displaySortedMedias();
-  await displayPhotographerMedias();
   openContactForm();
   displayMediasInLightbox();
 }
