@@ -39,43 +39,113 @@ async function setMedia(medias, photographers) {
                 x=x+1;
             }
         });
+        let e=0;
 //on a mis uniquement les media d'un photographe et on les tri par like puis on les affiches
     table.sort((a,b)=>(a._likes <b._likes ? 1 : -1))   
     table.forEach(( media) => {                      
             const Template = new MediaCard(media, photographe)
-            mediaSection.appendChild(Template.getMediaCardDOM())        
+            mediaSection.appendChild(Template.getMediaCardDOM(e))
+            e=e+1;        
     });
-};
 
+//on récupère et affiche le total des likes et le prix
+
+    const likeAndPrice = document.getElementById("likeAndPrice");
+    let nbrLike = 0;
+    table.forEach((media)=>{
+
+        nbrLike = nbrLike + media._likes;
+    })
+    likeAndPrice.innerHTML = `
+        <span>${nbrLike}<i class="fa-solid fa-heart"></i></span>
+        <span>${photographe._price}€/jour</span>
+    `
+
+};
+// modification du tri des images par date/titre/popularité
 const sort = document.getElementById("photo-select")
-console.log(sort.value);
 sort.addEventListener("change", modifySort)
 
 function modifySort(){
     const mediaSection = document.querySelector(".media_section");
     mediaSection.innerHTML="";
+    let e=0;
     if(sort.value == "Date"){
         table.sort((a,b)=>(a._date <b._date ? 1 : -1))
         table.forEach(( media) => {                      
             const Template = new MediaCard(media, photographe)
-            mediaSection.appendChild(Template.getMediaCardDOM())        
+            mediaSection.appendChild(Template.getMediaCardDOM(e)) 
+            e=e+1;       
     });
     }
     else if(sort.value == "Titre"){
         table.sort((a,b)=>(a._title >b._title ? 1 : -1))
         table.forEach(( media) => {                      
             const Template = new MediaCard(media, photographe)
-            mediaSection.appendChild(Template.getMediaCardDOM())        
+            mediaSection.appendChild(Template.getMediaCardDOM(e)) 
+            e=e+1;       
     });
     }
     else if(sort.value == "Popularité"){
         table.sort((a,b)=>(a._likes <b._likes ? 1 : -1))
         table.forEach(( media) => {                      
             const Template = new MediaCard(media, photographe)
-            mediaSection.appendChild(Template.getMediaCardDOM())        
+            mediaSection.appendChild(Template.getMediaCardDOM(e))
+            e=e+1;        
     });
     }
     
+}
+
+//lightbox
+
+function lightboxOn(e){
+    const lightbox = document.getElementById("imageCloseUp");
+	lightbox.style.display = "block";
+    console.log(table[e]);
+    if(table[e]._image){
+        console.log("test");
+        let box = `
+            <div class="lightbox">
+                <span class="close" onclick="lightboxOff()">X</span>
+                <span id="previous" onclick="lightboxOn(${e-1})"><</span>
+                <img id="truc" src="/assets/photographers/${table[e]._photographerId}/${table[e]._image}"  />
+                <span id="next" onclick="lightboxOn(${e+1})">></span> 
+            </div>
+            `
+            lightbox.innerHTML= box;
+    }
+    else if(table[e]._video){
+        const ext = table[e]._video.split(".",2)[1]
+        let box = `
+            <div class="lightbox">
+                <span class="close" onclick="lightboxOff()">X</span>
+                <span id="previous" onclick="lightboxOn(${e-1})"><</span>
+                <video controls >
+                <source src="/assets/photographers/${table[e]._photographerId}/${table[e]._video}" type="video/${ext}">
+                </video>
+                <span id="next" onclick="lightboxOn(${e+1})">></span> 
+            </div>
+            `
+            lightbox.innerHTML= box;
+    }
+       
+        
+
+        
+        if(e == table.length-1){
+            const next = document.getElementById("next");
+            next.style.display = "none"
+        }
+        if(e == 0){
+            const previous = document.getElementById("previous");
+            previous.style.display = "none"
+        }
+}
+
+function lightboxOff(){
+    const lightbox = document.getElementById("imageCloseUp");
+	lightbox.style.display = "none";
 }
 
 async function initMedia() {

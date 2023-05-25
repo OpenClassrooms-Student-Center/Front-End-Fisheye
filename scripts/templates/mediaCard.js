@@ -30,18 +30,19 @@ class MediaCard {
         this._photographer = photographer
     }
     
-    getMediaCardDOM(){
-        const article = document.createElement('article');
+    getMediaCardDOM(e){
+        const article = document.createElement('article'); 
+        
         let userCard=``
         if(this._media.image){
 
          userCard = `
-            <img alt="${this._media.title}" src="/assets/photographers/${this._photographer.name.split(" ",1)}/${this._media.image}"/>
+            <img alt="${this._media.title}" src="/assets/photographers/${this._media.photographerId}/${this._media.image}" onclick="lightboxOn(${e})"/>
             <div>
             <h2>${this._media.title}</h2>
-            <p>    
-                ${this._media.likes}
-            </p> 
+            <span>    
+                ${this._media.likes}<i class="fa-solid fa-heart"></i>
+            </span> 
             </div>
         `
         }
@@ -49,14 +50,14 @@ class MediaCard {
             
             const ext = this._media.video.split(".",2)[1]
             userCard = `
-            <video controls>
-                <source src="/assets/photographers/${this._photographer.name.split(" ",1)}/${this._media.video}" type="video/${ext}">
+            <video onclick="lightboxOn(${e})" >
+                <source src="/assets/photographers/${this._media.photographerId}/${this._media.video}" type="video/${ext}">
             </video>
             <div>
             <h2>${this._media.title}</h2>
-            <p>    
-                ${this._media.likes}
-            </p> 
+            <span>    
+                ${this._media.likes}<i class="fa-solid fa-heart"></i>
+            </span> 
             </div>
         `
         }
