@@ -47,6 +47,8 @@ function photographerFactory(data) {
     const img = document.createElement("img");
 
     img.setAttribute("src", picture);
+    h1.setAttribute("aria-label", "Nom du photographe");
+    h1.setAttribute("data-name", `${name}`);
 
     h1.textContent = name;
     h2.textContent = `${city}, ${country}`;

@@ -97,3 +97,31 @@ form input {
   border: none;
   border-radius: 5px;
 }
+
+.photographer-media {
+  display: grid;
+  grid-template-columns: 0fr 1fr 0fr;
+  margin: 0 100px;
+  justify-items: center;
+  gap: 3rem;
+}
+
+.photographer-media .media {}
+
+.photographer-media .media img {
+  width: 350px;
+  height: 300px;
+  object-fit: cover;
+  border-radius: 5px;
+}
+
+.photographer-media video[data-video="style"] {
+  object-fit: cover;
+  border-radius: 5px !important;
+}
+
+.photographer-media .media h3 {
+  margin-block: 0;
+  color: #901C1C;
+  font-weight: normal;
+}

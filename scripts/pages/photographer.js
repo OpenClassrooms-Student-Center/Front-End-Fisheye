@@ -1,5 +1,4 @@
 //Mettre le code JavaScript lié à la page photographer.html
-// import mediaFactory from "./../factories/mediaFactory.js";
 
 let params = new URL(document.location).searchParams;
 let id = params.get("id");
@@ -29,9 +28,18 @@ async function displayData(photographer) {
   });
 }
 
+async function displayMediaData(photographer) {
+  const photographerFirstName = photographer.photographerDetails[0].name.split(' ')[0].replace(/-/g,' ');
+
+  photographer.mediaDetails.forEach((media) => {
+    mediaFactory(media, photographerFirstName).getMediaDOM();
+  })
+}
+
 async function init() {
   const { photographer } = await getPhotographerDetail();
   displayData(photographer);
+  displayMediaData(photographer);
 }
 
 init();
