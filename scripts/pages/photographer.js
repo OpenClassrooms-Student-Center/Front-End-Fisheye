@@ -1,7 +1,7 @@
 import { getPhotographersById } from "../utils/getPhotographerById.js";
 import { photographerFactory } from "../factories/photographer.js";
 import { openOptionsList, selectOption } from "../utils/sortButton.js";
-import { createSortedMediasCards } from "../utils/sortedMedias.js";
+import { createSortedMediasCards } from "../utils/sortMedias.js";
 import { getMediasByPhotographer } from "../utils/getMediasByPhotographer.js";
 import { openContactForm } from "../utils/contactForm.js";
 import { openLightbox } from "../utils/lightBox.js";
