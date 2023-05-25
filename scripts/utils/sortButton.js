@@ -17,7 +17,6 @@ export function openOptionsList() {
     }
   })
 }
-
 function closeOptionsList() {
   const button = document.querySelector(".sort__button");
   const list = document.querySelector(".sort__options");
@@ -32,7 +31,6 @@ function closeOptionsList() {
 export function selectOption() {
   const options = document.querySelectorAll(".sort__option");
   const orderBtn = document.querySelector(".sort__button");
-
   options.forEach(option => {
     option.classList.remove("sort__hide");
     option.addEventListener("click", (event) => {
