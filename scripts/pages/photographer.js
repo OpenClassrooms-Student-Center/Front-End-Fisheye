@@ -77,19 +77,22 @@ async function displaySortSection() {
 }
 
 async function displayPhotographerMedias() {
+
   const mediaSection = document.createElement("section");
   mediaSection.classList.add("photographer__content");
   main.appendChild(mediaSection);
   await createSortedMediasCards();
+  displayMediasInLightbox();
 }
 
 function displaySortedMedias() {
+
   const options = document.querySelectorAll(".sort__option");
   options.forEach(option => {
     option.addEventListener("click", () => {
       document.querySelector(".photographer__content").innerHTML = "";
-      setTimeout(() => {
-        createSortedMediasCards();
+      setTimeout(async() => {
+        await displayPhotographerMedias();
       }, 1);
     })
   })
@@ -211,11 +214,10 @@ async function init() {
   await displaySortSection();
   await displayLikesCounter();
   await displayPhotographerMedias();
-  await displaySortedMedias();
+  displaySortedMedias();
   openOptionsList();
   selectOption();
   openContactForm();
-  displayMediasInLightbox();
 }
 
 init();
