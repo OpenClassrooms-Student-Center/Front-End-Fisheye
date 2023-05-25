@@ -30,7 +30,7 @@ async function sortMedias() {
   return sortedMedias;
 }
 
-export async function displaySortedMedias() {
+export async function createSortedMediasCards() {
 
   const sortedMedias = await sortMedias();
   sortedMedias.forEach(media => {

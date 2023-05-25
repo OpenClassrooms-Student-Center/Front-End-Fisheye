@@ -21,6 +21,8 @@ function displayForm() {
     form.style.display = "flex";
     const input = document.querySelector(".form__input");
     input.focus();
+    closeContactForm();
+    closeFormWithEsc();
 }
 
 export function openContactForm() {
@@ -38,12 +40,12 @@ function closeForm() {
     contactBtn.focus();
 }
 
-export function closeContactForm() {
+function closeContactForm() {
     const closeBtn = document.querySelector(".form__close");
     closeBtn.addEventListener("click", closeForm);
 }
 
-export function closeFormWithEsc() {
+function closeFormWithEsc() {
     document.addEventListener('keydown', event => {
         const code = event.code
         if (modal.getAttribute('aria-hidden') == 'false' && code === "Escape") {
