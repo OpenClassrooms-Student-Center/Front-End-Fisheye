@@ -27,6 +27,21 @@ function closeLightbox() {
   })
 }
 
+export function disableLightboxButtons(index, mediasLength) {
+  const previous = document.querySelector(".lightboxModal__previous");
+  const next = document.querySelector(".lightboxModal__next");
+  if (index === 0) {
+    previous.style.display = "none";
+    next.style.display = "block";
+  } else if (index === mediasLength -1) {
+    next.style.display = "none";
+    previous.style.display = "block";
+  } else {
+    next.style.display = "block";
+    previous.style.display = "block";
+  }
+}
+
 export function openLightbox(){
     displayLightboxModal();
     closeLightbox();
