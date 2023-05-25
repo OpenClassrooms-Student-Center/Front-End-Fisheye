@@ -118,82 +118,57 @@ function displayMediasInLightbox() {
   const mediaColl = document.querySelectorAll(".media");
   const medias = Array.from(mediaColl);
   medias.forEach(media => media.addEventListener("click", () => {
-    // displayCurrentMedia(medias);
     openLightbox();
-    console.log(media);
+    // findCurrentMedia(medias, event);
+    const index = findCurrentMediaIndex(medias, media);
+    console.log(index);
+
+    const mediaSource = media.firstChild.src;
+    const lightbox = document.querySelector(".lightboxModal");
+
+    if (media.firstChild.classList.contains("media__img")) {
+      const lightboxImg = document.createElement("img");
+      lightboxImg.src = mediaSource;
+      lightboxImg.classList.add("lightboxModal__img")
+      lightbox.prepend(lightboxImg);
+    } else if (media.firstChild.classList.contains("media__video")) {
+      const lightboxVideo = document.createElement("video");
+      lightboxVideo.controls = "true";
+      lightboxVideo.classList.add("lightboxModal__video")
+      lightbox.prepend(lightboxVideo);
+      const lightboxVideoSrc = document.createElement("source");
+      lightboxVideoSrc.src = mediaSource;
+      lightboxVideoSrc.type = "video/mp4";
+      lightboxVideo.appendChild(lightboxVideoSrc);
+    }
+
+    const previous = document.querySelector(".lightboxModal__previous");
+    const next = document.querySelector(".lightboxModal__next");
+    if (index === 0) {
+      previous.style.display = "none";
+    } else if (index === medias.length -1) {
+      next.style.display = "none";
+    } else {
+      next.style.display = "block";
+      previous.style.display = "block";
+    }
   }))
 }
 
-// // function findCurrentMedia() {
-// //   const mediaColl = document.querySelectorAll(".media");
-// //   const medias = Array.from(mediaColl);
-// //   medias.forEach(media => {
-// //     media.addEventListener("click", (event) => {
-// //       const mediaAlt = event.currentTarget.firstChild.alt;
-// //       const currentMedia = medias.find(media => media.firstChild.alt === mediaAlt)
-// //       return currentMedia
-// //     })
-// //   })
-// // }
 
-// function displayCurrentMedia() {
+function findCurrentMedia(medias, event) {
+  const mediaAlt = event.currentTarget.firstChild.alt;
+  const currentMedia = medias.find(media => media.firstChild.alt === mediaAlt)
+  console.log(currentMedia);
+  return currentMedia
+}
+function findCurrentMediaIndex(medias, media) {
+  const mediaAlt = media.firstChild.alt;
+  const currentMedia = medias.find(media => media.firstChild.alt === mediaAlt)
+  const index = medias.indexOf(currentMedia);
+  return index;
+}
 
-//   const currentMediaIndex = findCurrentMediaIndex();
-//   console.log(currentMediaIndex);
-//   const mediaColl = document.querySelectorAll(".media");
-//   const medias = Array.from(mediaColl);
-//   const currentMedia = medias[currentMediaIndex];
-//   console.log(currentMedia);
-//   const mediaSource = currentMedia.firstChild.src;
-//   const lightbox = document.querySelector(".lightboxModal");
-
-//   // medias.forEach(media => {
-//   //   media.addEventListener("click", (event) => {
-//   //     const mediaAlt = event.currentTarget.firstChild.alt;
-//   //     const currentMedia = medias.find(media => media.firstChild.alt === mediaAlt)
-//   //     const index = medias.indexOf(currentMedia);
-//   //     console.log(index);
-//   if (currentMedia.firstChild.classList.contains("media__img")) {
-//     const lightboxImg = document.createElement("img");
-//     lightboxImg.src = mediaSource;
-//     lightboxImg.classList.add("lightboxModal__img")
-//     lightbox.prepend(lightboxImg);
-//   }
-//   else if (currentMedia.firstChild.classList.contains("media__video")) {
-//     const lightboxVideo = document.createElement("video");
-//     lightboxVideo.controls = "true";
-//     lightboxVideo.classList.add("lightboxModal__video")
-//     lightbox.prepend(lightboxVideo);
-//     const lightboxVideoSrc = document.createElement("source");
-//     lightboxVideoSrc.src = mediaSource;
-//     lightboxVideoSrc.type = "video/mp4";
-//     lightboxVideo.appendChild(lightboxVideoSrc);
-//   }
-//   //   })
-//   // })
-// }
-
-// function findCurrentMediaIndex() {
-
-//   const mediaColl = document.querySelectorAll(".media");
-//   const medias = Array.from(mediaColl);
-//   medias.forEach(media => () => {
-//     media.addEventListener("click", () => {
-//       const mediaAlt = media.firstChild.alt;
-//       const currentMedia = medias.find(media => media.firstChild.alt === mediaAlt)
-//       const index = medias.indexOf(currentMedia);
-//       // console.log(medias[index].firstChild);
-//       return medias[index];
-//     })
-//   })
-
-//   // const mediaAlt = media.firstChild.alt;
-//   // const currentMedia = medias.find(media => media.firstChild.alt === mediaAlt)
-//   // const index = medias.indexOf(currentMedia);
-//   // console.log(medias[index].firstChild);
-//   // return medias[index];
-
-// }
 
 // function findNextMedia(event, medias) {
 //   const mediaAlt = event.currentTarget.firstChild.alt;
