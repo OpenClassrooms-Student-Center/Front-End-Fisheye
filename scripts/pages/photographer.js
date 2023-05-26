@@ -1,10 +1,10 @@
 import { getPhotographersById } from "../utils/getPhotographerById.js";
 import { photographerFactory } from "../factories/photographer.js";
 import { openOptionsList, selectOption } from "../utils/sortButton.js";
-import { createSortedMediasCards } from "../utils/sortMedias.js";
+import { createSortedMediasCards, sortMedias } from "../utils/sortMedias.js";
 import { getMediasByPhotographer } from "../utils/getMediasByPhotographer.js";
 import { openContactForm } from "../utils/contactForm.js";
-import { disableLightboxButtons, openLightbox } from "../utils/lightBox.js";
+import { openLightbox, disableLightboxButtons } from "../utils/lightBox.js";
 
 const main = document.querySelector("main");
 let mediaLightboxId = 0;
@@ -124,91 +124,109 @@ async function displayLikesCounter() {
   `
 }
 
-// récupère la valuer de data-index pour le média actuel
-// function findCurrentMediaIndex(media) {
-//   console.log(media);
-//   const index = parseInt(media.dataset.index, 10);
-//   console.log(index);
-//   return index;
-// }
-
-// function nextMedia(media, medias) {
-//   let index = findCurrentMediaIndex(media)
-//   if (index < medias.length - 2) {
-//     index = index + 1
-//   }
-//   return index;
-// }
-
-// function previousMedia(media) {
-//   // const previous = document.querySelector(".lightboxModal__previous");
-//   let index = findCurrentMediaIndex(media)
-//   if (index > 0) {
-//     index = index - 1
-//   }
-//   console.log(index);
-//   // previous.parentElement.firstChild.remove();
-// }
-
-// fonction qui crée la card du média, en fonction de si c'est une image ou une vidéo
 async function renderMedia(mediaId) {
-  const medias = await getMediasByPhotographer();
+  // fonction qui crée la card du média, en fonction de si c'est une image ou une vidéo
+  const medias = await sortMedias();
+
   const media = medias.find((media) => media.id == mediaId)
-  const { title, image, video, photographerId} = media
+  const { title, image, video, photographerId } = media;
   mediaLightboxId = mediaId;
   const lightbox = document.querySelector(".lightboxModal");
-  console.log(media);
 
   if (media.image) {
+    const content = document.createElement("figure");
+    content.classList.add("lightboxModal__figure")
+
     const lightboxImg = document.createElement("img");
     lightboxImg.src = `assets/photographers/${photographerId}/${image}`;
     lightboxImg.alt = `${title}`;
     lightboxImg.classList.add("lightboxModal__img");
-    lightbox.prepend(lightboxImg);
+    content.appendChild(lightboxImg);
+
+    const caption = document.createElement("figcaption");
+    caption.classList.add("lightboxModal__caption");
+    caption.innerText = `${title}`;
+    content.appendChild(caption);
+
+    lightbox.prepend(content);
+
   } else if (media.video) {
+
+    const content = document.createElement("figure");
+    content.classList.add("lightboxModal__figure")
+
     const lightboxVideo = document.createElement("video");
     lightboxVideo.controls = "true";
     lightboxVideo.classList.add("lightboxModal__video")
-    lightbox.prepend(lightboxVideo);
+    content.appendChild(lightboxVideo);
+
     const lightboxVideoSrc = document.createElement("source");
     lightboxVideoSrc.src = `assets/photographers/${photographerId}/${video}`;
     lightboxVideoSrc.type = "video/mp4";
     lightboxVideo.appendChild(lightboxVideoSrc);
+
+    const caption = document.createElement("figcaption");
+    caption.classList.add("lightboxModal__caption");
+    caption.innerText = `${title}`;
+    content.appendChild(caption);
+
+    lightbox.prepend(content);
+  }
+}
+
+async function renderNextMedia() {
+  const medias = await sortMedias();
+  const currentMedia = medias.find((media) => media.id == mediaLightboxId);
+  const currentMediaIndex = medias.indexOf(currentMedia);
+
+  if (currentMediaIndex < medias.length - 1) {
+    let nextIndex = currentMediaIndex + 1;
+    const nextMediaId = medias[nextIndex].id;
+    renderMedia(nextMediaId);
+    disableLightboxButtons(nextIndex, medias.length)
+  }
+}
+async function renderPreviousMedia() {
+  const medias = await sortMedias();
+  const currentMedia = medias.find((media) => media.id == mediaLightboxId);
+  const currentMediaIndex = medias.indexOf(currentMedia);
+
+  if (currentMediaIndex > 0) {
+    let previousIndex = currentMediaIndex - 1;
+    const previousMediaId = medias[previousIndex].id;
+    renderMedia(previousMediaId);
+    disableLightboxButtons(previousIndex, medias.length)
   }
 }
 
 // au click sur un média, on récupère son index dans l'array de média trié, et on l'affiche en fonction de son index dans la lightbox
-function displayMediasInLightbox() {
+async function displayMediasInLightbox() {
   const mediaColl = document.querySelectorAll(".media");
   const medias = Array.from(mediaColl);
-  const mediasLength = medias.length;
   medias.forEach(media => {
-    media.addEventListener("click", (event) => {
+    media.addEventListener("click", async () => {
       const mediaId = media.id
       openLightbox();
-      renderMedia(mediaId);
-      // disableLightboxButtons(index, mediasLength);
+      await renderMedia(mediaId);
     })
   })
 
   // au click sur le bouton next, on récupère le nouvel index, et on rappelle la fonction pour créer l'html du média
   const next = document.querySelector(".lightboxModal__next");
-
-  next.addEventListener("click", (event) => {
-    console.log(event.currentTarget.parentElement);
-    console.log(event.currentTarget.parentElement.firstChild);
-
-    const modal = document.querySelector(".lightboxModal");
-    modal.firstChild.remove();
-    console.log(modal);
-    // event.currentTarget.parentElement.firstChild.remove();
-  //   const media = medias.find(media => media.id)
-  //   const mediaIndex = findCurrentMediaIndex(media)
-  //   console.log(media);
-  //   const nextIndex = nextMedia(media, medias);
-  //   createMedia(nextIndex, medias);
+  next.addEventListener("click", () => {
+    const figure = document.querySelector(".lightboxModal__figure");
+    figure.remove();
+    disableLightboxButtons()
+    renderNextMedia();
   })
 
+  const previous = document.querySelector(".lightboxModal__previous");
+  previous.addEventListener("click", () => {
+    const figure = document.querySelector(".lightboxModal__figure");
+    figure.remove();
+    disableLightboxButtons()
+    renderPreviousMedia();
+  })
 
 }
 
@@ -217,11 +235,11 @@ async function init() {
   await displaySortSection();
   await displayLikesCounter();
   await displayPhotographerMedias();
-  displaySortedMedias();
+  await displayMediasInLightbox();
   openOptionsList();
   selectOption();
   openContactForm();
-  displayMediasInLightbox()
+  displaySortedMedias();
 }
 
 init();
