@@ -1,11 +1,12 @@
 export function mediaFactory(media) {
-  const { image, video, likes, photographerId, title} = media
+  const { id, image, video, likes, photographerId, title} = media
 
 
   function getMediaCardDom() {
 
     const article = document.createElement("article");
     article.classList.add("media");
+    article.id = id
     const mediaSection = document.querySelector(".photographer__content");
     mediaSection.appendChild(article)
 
@@ -16,17 +17,18 @@ export function mediaFactory(media) {
       img.setAttribute("loading", "lazy");
       img.setAttribute("src", thumbnail);
       img.setAttribute("alt", title);
+      img.id = id
       article.appendChild(img)
     }
     if (video) {
       const thumbnail = `assets/photographers/${photographerId}/${video}`;
       const vid = document.createElement("video");
       vid.setAttribute("loading", "lazy");
-      // vid.setAttribute("controls", "true");
       vid.setAttribute("src", thumbnail);
       vid.setAttribute("type", "video/mp4")
       vid.innerHTML = "Votre navigateur ne permet pas de lire les vidéos. Mais vous pouvez toujours <a href=`${thumbnail}`>la télécharger</a> !";
       vid.className += "media__video";
+      vid.id = id
       article.appendChild(vid);
     }
 

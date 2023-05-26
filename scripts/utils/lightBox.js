@@ -22,9 +22,9 @@ function closeLightbox() {
   const closeBtn = document.querySelector(".lightboxModal__close");
   closeBtn.addEventListener("click", function() {
     const lightboxImg = document.querySelector(".lightboxModal__img");
-    if (lightboxImg) {lightboxImg.remove()}
     const lightboxVideo = document.querySelector(".lightboxModal__video");
-    if (lightboxVideo) {lightboxVideo.remove()}
+    if (lightboxImg) {lightboxImg.remove()}
+    else if (lightboxVideo) {lightboxVideo.remove()}
     closeLightboxModal();
   })
 }

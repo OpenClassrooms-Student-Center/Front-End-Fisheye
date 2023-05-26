@@ -7,8 +7,10 @@ import { openContactForm } from "../utils/contactForm.js";
 import { disableLightboxButtons, openLightbox } from "../utils/lightBox.js";
 
 const main = document.querySelector("main");
+let mediaLightboxId = 0;
 
 async function displayPhotographerHeader() {
+  // affiche les informations de chaque photographe
   const photographer = await getPhotographersById();
   const datas = photographerFactory(photographer).getUserHeader();
   const photographerHeader = document.createElement("section");
@@ -18,6 +20,7 @@ async function displayPhotographerHeader() {
 }
 
 async function displaySortSection() {
+  // affiche la section qui contient le bouton de tri des medias
   const sortSection = document.createElement("section");
   sortSection.classList.add("sort");
   main.appendChild(sortSection)
@@ -77,15 +80,21 @@ async function displaySortSection() {
 }
 
 async function displayPhotographerMedias() {
+  // affiche la section contenant les medias des photographes, et appelle la fonction créant les cards pour chaque média
 
   const mediaSection = document.createElement("section");
   mediaSection.classList.add("photographer__content");
   main.appendChild(mediaSection);
   await createSortedMediasCards();
-  displayMediasInLightbox();
-}
+  const medias = document.querySelectorAll(".media");
 
+  // pour chaque média, on crée un attribut indexNumber correspondant au numéro d'index dans l'array de médias
+  for (let i = 0; i < medias.length; i++) {
+    medias[i].dataset.index = i
+  }
+}
 function displaySortedMedias() {
+  // affiche les médias en fonction du tri demandé lors du click sur le choix de tri
 
   const options = document.querySelectorAll(".sort__option");
   options.forEach(option => {
@@ -99,6 +108,7 @@ function displaySortedMedias() {
 }
 
 async function displayLikesCounter() {
+  // crée et affiche une div contenant le total de like et le prix journalier du photographe
   const photographer = await getPhotographersById();
   const likesDiv = document.createElement("div");
   likesDiv.classList.add("likes__counter")
@@ -114,86 +124,93 @@ async function displayLikesCounter() {
   `
 }
 
-function displayMediasInLightbox() {
-  const mediaColl = document.querySelectorAll(".media");
-  const medias = Array.from(mediaColl);
-  const mediasLength = medias.length;
-  let index = 0
-  medias.forEach(media => {
-    media.addEventListener("click", (event) => {
-      const currentMedia = event.currentTarget.firstChild;
-      console.log(currentMedia);
-      // nextMedia(medias, media);
-      // previousMedia(medias, media)
-      index = findCurrentMediaIndex(media, medias);
-      console.log(index);
-      openLightbox();
-      createMedia(index);
-      disableLightboxButtons(index, mediasLength);
-    })
-  })
+// récupère la valuer de data-index pour le média actuel
+// function findCurrentMediaIndex(media) {
+//   console.log(media);
+//   const index = parseInt(media.dataset.index, 10);
+//   console.log(index);
+//   return index;
+// }
 
-  const next = document.querySelector(".lightboxModal__next");
-  next.addEventListener("click", (event) => {
-    let index = nextMedia(event.currentTarget.firstChild, medias);
-    createMedia(index);
-  })
-}
+// function nextMedia(media, medias) {
+//   let index = findCurrentMediaIndex(media)
+//   if (index < medias.length - 2) {
+//     index = index + 1
+//   }
+//   return index;
+// }
 
-function createMedia(index) {
-  const mediaColl = document.querySelectorAll(".media");
-  const medias = Array.from(mediaColl);
-  const mediaSource = medias[index].firstChild.src;
+// function previousMedia(media) {
+//   // const previous = document.querySelector(".lightboxModal__previous");
+//   let index = findCurrentMediaIndex(media)
+//   if (index > 0) {
+//     index = index - 1
+//   }
+//   console.log(index);
+//   // previous.parentElement.firstChild.remove();
+// }
+
+// fonction qui crée la card du média, en fonction de si c'est une image ou une vidéo
+async function renderMedia(mediaId) {
+  const medias = await getMediasByPhotographer();
+  const media = medias.find((media) => media.id == mediaId)
+  const { title, image, video, photographerId} = media
+  mediaLightboxId = mediaId;
   const lightbox = document.querySelector(".lightboxModal");
+  console.log(media);
 
-  if (medias[index].firstChild.classList.contains("media__img")) {
+  if (media.image) {
     const lightboxImg = document.createElement("img");
-    lightboxImg.src = mediaSource;
-    lightboxImg.classList.add("lightboxModal__img")
+    lightboxImg.src = `assets/photographers/${photographerId}/${image}`;
+    lightboxImg.alt = `${title}`;
+    lightboxImg.classList.add("lightboxModal__img");
     lightbox.prepend(lightboxImg);
-  } else if (medias[index].firstChild.classList.contains("media__video")) {
+  } else if (media.video) {
     const lightboxVideo = document.createElement("video");
     lightboxVideo.controls = "true";
     lightboxVideo.classList.add("lightboxModal__video")
     lightbox.prepend(lightboxVideo);
     const lightboxVideoSrc = document.createElement("source");
-    lightboxVideoSrc.src = mediaSource;
+    lightboxVideoSrc.src = `assets/photographers/${photographerId}/${video}`;
     lightboxVideoSrc.type = "video/mp4";
     lightboxVideo.appendChild(lightboxVideoSrc);
   }
 }
 
-function findCurrentMediaIndex(media, medias) {
-  const mediaAlt = media.firstChild.alt
-  const currentMedia = medias.find(media => media.firstChild.alt === mediaAlt)
-  const index = medias.indexOf(currentMedia);
-  console.log(index);
-  return index;
-}
+// au click sur un média, on récupère son index dans l'array de média trié, et on l'affiche en fonction de son index dans la lightbox
+function displayMediasInLightbox() {
+  const mediaColl = document.querySelectorAll(".media");
+  const medias = Array.from(mediaColl);
+  const mediasLength = medias.length;
+  medias.forEach(media => {
+    media.addEventListener("click", (event) => {
+      const mediaId = media.id
+      openLightbox();
+      renderMedia(mediaId);
+      // disableLightboxButtons(index, mediasLength);
+    })
+  })
 
-function nextMedia(media, medias) {
+  // au click sur le bouton next, on récupère le nouvel index, et on rappelle la fonction pour créer l'html du média
   const next = document.querySelector(".lightboxModal__next");
-  let index = findCurrentMediaIndex(media, medias)
-  if (index < medias.length - 2) {
-    index = index + 1
-  }
-  console.log(index);
-  next.parentElement.firstChild.remove();
-  return index;
+
+  next.addEventListener("click", (event) => {
+    console.log(event.currentTarget.parentElement);
+    console.log(event.currentTarget.parentElement.firstChild);
+
+    const modal = document.querySelector(".lightboxModal");
+    modal.firstChild.remove();
+    console.log(modal);
+    // event.currentTarget.parentElement.firstChild.remove();
+  //   const media = medias.find(media => media.id)
+  //   const mediaIndex = findCurrentMediaIndex(media)
+  //   console.log(media);
+  //   const nextIndex = nextMedia(media, medias);
+  //   createMedia(nextIndex, medias);
+  })
+
+
 }
-// function previousMedia(medias, media) {
-//   const previous = document.querySelector(".lightboxModal__previous");
-//   previous.addEventListener("click", () => {
-//     let index = findCurrentMediaIndex(medias, media)
-//     console.log("previous index is", index);
-//     if (index > 0) {
-//       index = index - 1
-//     }
-//     console.log(index);
-//     previous.parentElement.firstChild.remove();
-//     createMedia(index, medias)
-//   })
-// }
 
 async function init() {
   await displayPhotographerHeader()
@@ -204,6 +221,7 @@ async function init() {
   openOptionsList();
   selectOption();
   openContactForm();
+  displayMediasInLightbox()
 }
 
 init();
