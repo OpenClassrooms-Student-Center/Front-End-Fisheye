@@ -21,10 +21,11 @@ function closeLightboxModal() {
 function closeLightbox() {
   const closeBtn = document.querySelector(".lightboxModal__close");
   closeBtn.addEventListener("click", function() {
-    const lightboxImg = document.querySelector(".lightboxModal__img");
-    const lightboxVideo = document.querySelector(".lightboxModal__video");
-    if (lightboxImg) {lightboxImg.remove()}
-    else if (lightboxVideo) {lightboxVideo.remove()}
+    const lightboxFigure = document.querySelector(".lightboxModal__figure");
+    // const lightboxVideo = document.querySelector(".lightboxModal__video");
+    // if (lightboxImg) {lightboxImg.remove()}
+    // else if (lightboxVideo) {lightboxVideo.remove()}
+    if (lightboxFigure) {lightboxFigure.remove()}
     closeLightboxModal();
   })
 }
@@ -46,6 +47,7 @@ export function disableLightboxButtons(index, mediasLength) {
 }
 
 export function openLightbox(){
-    displayLightboxModal();
-    closeLightbox();
+  disableLightboxButtons()
+  displayLightboxModal();
+  closeLightbox();
 }
