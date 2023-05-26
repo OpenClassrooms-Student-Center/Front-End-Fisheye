@@ -32,7 +32,7 @@ class MediaCard {
     
     getMediaCardDOM(e){
         const article = document.createElement('article'); 
-        
+        article.classList = `article-${e}`;
         let userCard=``
         if(this._media.image){
 
@@ -40,9 +40,9 @@ class MediaCard {
             <img alt="${this._media.title}" src="/assets/photographers/${this._media.photographerId}/${this._media.image}" onclick="lightboxOn(${e})"/>
             <div>
             <h2>${this._media.title}</h2>
-            <span>    
-                ${this._media.likes}<i class="fa-solid fa-heart"></i>
-            </span> 
+            <p class="like-${e}">    
+               <span class="nbrLike-${e}"> ${this._media.likes} </span><i class="fa-regular fa-heart" onclick="like(${e})"></i>
+            </p> 
             </div>
         `
         }
@@ -55,9 +55,9 @@ class MediaCard {
             </video>
             <div>
             <h2>${this._media.title}</h2>
-            <span>    
-                ${this._media.likes}<i class="fa-solid fa-heart"></i>
-            </span> 
+            <p class="like-${e}">    
+               <span class="nbrLike-${e}"> ${this._media.likes} </span><i class="fa-regular fa-heart" onclick="like(${e})"></i>
+            </p> 
             </div>
         `
         }

@@ -128,10 +128,17 @@ form textarea{
     justify-content: space-between;
     width:100%;
 }
-.media_section article h2, .media_section article span{
+.media_section article h2{
     color: #D3573C;
     font-size: 12px;
     vertical-align: middle;
+    margin: 4px 0;
+}
+
+.media_section article p{
+    display:block;
+    color: #D3573C;
+    font-size: 12px;
     margin: 4px 0;
 }
 
@@ -142,11 +149,7 @@ form textarea{
     object-position: center;
 }
 
-.media_section article p {
-    display: contents;
-    vertical-align: middle;
-    font-size: 10px;
-}
+
 
 #tri {
     display: flex;
@@ -171,6 +174,9 @@ form textarea{
     padding:0 3mm;
 }
 
+#likeTotal{
+    padding: 0;
+}
 .imageCloseUp{
     display:none;
 }

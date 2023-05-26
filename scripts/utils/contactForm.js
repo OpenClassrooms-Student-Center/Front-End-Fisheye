@@ -11,3 +11,36 @@ function closeModal() {
     const html = document.querySelector("html");
     html.style.overflowY = "visible";
 }
+
+function envoi(){
+    closeModal();
+    console.log(contact);
+    document.form.reset();
+}
+
+const contact={
+    firstName : "",
+    lastName : "",
+    email : "",
+    message : "",
+  }
+  //firstName
+  form[0].addEventListener("input",function(e){
+    contact.firstName=e.target.value;
+  });
+  
+  //lastName
+  form[1].addEventListener("input",function(e){
+    contact.lastName=e.target.value;
+    });
+    
+  //Email
+  form[2].addEventListener("input",function(e){
+    contact.email=e.target.value;
+  });
+  
+  //Number of tournament
+  form[3].addEventListener("input",function(e){
+    contact.message=e.target.value;
+  });
+  

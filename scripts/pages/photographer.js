@@ -57,7 +57,8 @@ async function setMedia(medias, photographers) {
         nbrLike = nbrLike + media._likes;
     })
     likeAndPrice.innerHTML = `
-        <span>${nbrLike}<i class="fa-solid fa-heart"></i></span>
+        <span>
+        <span id="likeTotal">${nbrLike}</span> <i class="fa-solid fa-heart"></i></span>
         <span>${photographe._price}€/jour</span>
     `
 
@@ -128,11 +129,7 @@ function lightboxOn(e){
             </div>
             `
             lightbox.innerHTML= box;
-    }
-       
-        
-
-        
+    }  
         if(e == table.length-1){
             const next = document.getElementById("next");
             next.style.display = "none"
@@ -146,6 +143,28 @@ function lightboxOn(e){
 function lightboxOff(){
     const lightbox = document.getElementById("imageCloseUp");
 	lightbox.style.display = "none";
+}
+
+
+//like et dislike
+
+function like(e){
+    const like = document.getElementsByClassName(`like-${e}`);
+    const nbrLike = document.getElementsByClassName(`nbrLike-${e}`);
+    let a= Number(nbrLike[0].outerText) + 1;
+    like[0].innerHTML = `<span class="nbrLike-${e}"> ${a} </span><i class="fa-solid fa-heart" onclick="dislike(${e})"></i>` ;
+    const likeTotal = document.getElementById("likeTotal");
+    let b = Number(likeTotal.innerText) + 1;
+    likeTotal.innerText = b;
+}
+
+function dislike(e){
+    const like = document.getElementsByClassName(`like-${e}`);
+    const nbrLike = document.getElementsByClassName(`nbrLike-${e}`);
+    let a= Number(nbrLike[0].outerText) - 1;
+    like[0].innerHTML = `<span class="nbrLike-${e}"> ${a} </span><i class="fa-regular fa-heart" onclick="like(${e})"></i>` ;
+    let b = Number(likeTotal.innerText) - 1;
+    likeTotal.innerText = b;
 }
 
 async function initMedia() {
