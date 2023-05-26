@@ -128,7 +128,8 @@ async function renderMedia(mediaId) {
   // fonction qui crée la card du média, en fonction de si c'est une image ou une vidéo
   const medias = await sortMedias();
 
-  const media = medias.find((media) => media.id == mediaId)
+  const media = medias.find((media) => media.id == mediaId);
+  const mediaIndex = medias.findIndex((media) => media.id == mediaId);
   const { title, image, video, photographerId } = media;
   mediaLightboxId = mediaId;
   const lightbox = document.querySelector(".lightboxModal");
@@ -172,6 +173,7 @@ async function renderMedia(mediaId) {
 
     lightbox.prepend(content);
   }
+  disableLightboxButtons(mediaIndex, medias.length)
 }
 
 async function renderNextMedia() {
@@ -220,6 +222,7 @@ async function displayMediasInLightbox() {
     renderNextMedia();
   })
 
+   // au click sur le bouton previous, on récupère le nouvel index, et on rappelle la fonction pour créer l'html du média
   const previous = document.querySelector(".lightboxModal__previous");
   previous.addEventListener("click", () => {
     const figure = document.querySelector(".lightboxModal__figure");
