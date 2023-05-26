@@ -1,5 +1,4 @@
 // affiche la div contenant la liste des options , et change le sens de la flèche en fonction
-
 export function openOptionsList() {
   const button = document.querySelector(".sort__button");
   const list = document.querySelector(".sort__options");

@@ -5,7 +5,7 @@ import { getMediasByPhotographer } from "./getMediasByPhotographer.js";
 // en fonction de l'option choisie, et donc du texte contenu dans le bouton, trie l'array de media en fonction, et retourne l'array trié
 async function sortMedias() {
   const dropdown = document.querySelector(".sort__button").innerText;
-  console.log(dropdown);
+  // console.log(dropdown);
   const data = await getMediasByPhotographer();
   let sortedMedias;
 
@@ -13,6 +13,7 @@ async function sortMedias() {
     case "Popularité":
       sortedMedias = data.sort((a,b) => b.likes - a.likes);
       break;
+
     case "Date":
       sortedMedias = data.sort((a,b) => b.date - a.date);
       break;
@@ -38,7 +39,6 @@ async function sortMedias() {
 export async function createSortedMediasCards() {
 
   const sortedMedias = await sortMedias();
-  console.log(sortedMedias);
   sortedMedias.forEach(media => {
     const data = mediaFactory(media);
     data.getMediaCardDom();
