@@ -5,6 +5,7 @@ const main = document.querySelector("#main");
 const modal = document.querySelector(".modal");
 const form = document.querySelector(".form");
 
+// get the name of the photographer and display it in the form head
 async function displayNameInForm() {
     const photographer = await getPhotographersById();
     const { name } = photographer

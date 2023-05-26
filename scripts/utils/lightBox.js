@@ -2,13 +2,14 @@ const body = document.querySelector("body");
 const main = document.querySelector("#main");
 const lightboxModal = document.querySelector(".lightboxModal");
 
+// modifie les attributs pour que la modale soit visible
 function displayLightboxModal() {
   main.setAttribute("aria-hidden", "true");
   lightboxModal.setAttribute("aria-hidden", "false");
   body.classList.add("no-scroll");
   lightboxModal.style.display = "flex";
 }
-
+// modifie les attributs pour que la modale ne soit pas visible
 function closeLightboxModal() {
   main.setAttribute("aria-hidden", "false");
   lightboxModal.setAttribute("aria-hidden", "true");
@@ -16,6 +17,7 @@ function closeLightboxModal() {
   lightboxModal.style.display = "none";
 }
 
+// au click sur le bouton close, on vide la modale de son media et on appelle la fonction qui ferme la modale
 function closeLightbox() {
   const closeBtn = document.querySelector(".lightboxModal__close");
   closeBtn.addEventListener("click", function() {
@@ -27,6 +29,7 @@ function closeLightbox() {
   })
 }
 
+// si le media visionné dans la modale est le premier ou le dernier de l'array, on n'affiche pas le bouton previous ou next
 export function disableLightboxButtons(index, mediasLength) {
   const previous = document.querySelector(".lightboxModal__previous");
   const next = document.querySelector(".lightboxModal__next");
