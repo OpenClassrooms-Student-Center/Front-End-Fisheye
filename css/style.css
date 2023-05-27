@@ -266,9 +266,8 @@ h1 {
   cursor: pointer;
   text-align: start;
 }
-.sort__button:hover, .sort__button:focus {
-  background-color: #901C1C;
-  color: white;
+.sort__button:hover, .sort__button:focus > i {
+  color: black;
 }
 .sort__optionBtn {
   border: none;
@@ -281,8 +280,8 @@ h1 {
   text-align: start;
 }
 .sort__optionBtn:hover, .sort__optionBtn:focus {
-  background-color: #901C1C;
-  color: white;
+  background-color: #D3573C;
+  color: black;
 }
 .sort i {
   position: absolute;
@@ -438,9 +437,8 @@ h1 {
   cursor: pointer;
   text-align: start;
 }
-.sort__button:hover, .sort__button:focus {
-  background-color: #901C1C;
-  color: white;
+.sort__button:hover, .sort__button:focus > i {
+  color: black;
 }
 .sort__optionBtn {
   border: none;
@@ -453,8 +451,8 @@ h1 {
   text-align: start;
 }
 .sort__optionBtn:hover, .sort__optionBtn:focus {
-  background-color: #901C1C;
-  color: white;
+  background-color: #D3573C;
+  color: black;
 }
 .sort i {
   position: absolute;

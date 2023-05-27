@@ -36,14 +36,15 @@ async function displaySortSection() {
 
   const sortBtn = document.createElement("button");
   sortBtn.innerText = "Popularité";
-  sortBtn.setAttribute("aria-haspopup", "list");
+  sortBtn.setAttribute("aria-haspopup", "listbox");
+  sortBtn.setAttribute("aria-expanded", "");
   sortBtn.id = "sort__button";
   sortBtn.classList.add("sort__button", "button");
   selectDiv.appendChild(sortBtn);
 
   const arrow = document.createElement("i");
   arrow.classList.add("sort__down", "fa-solid", "fa-caret-down");
-  selectDiv.appendChild(arrow);
+  sortBtn.appendChild(arrow);
 
   const sortList = document.createElement("div");
   sortList.classList.add("sort__options");
@@ -54,7 +55,7 @@ async function displaySortSection() {
   sortList.innerHTML = `
   <button class="sort__optionBtn sort__hide sort__option"
     data-value="popularity"
-    role="option"
+    role="listbox"
     id="popularity"
     aria-selected="true"
     style="display: none;"
@@ -62,13 +63,13 @@ async function displaySortSection() {
   </button>
   <button class="sort__optionBtn sort__option"
     data-value="date"
-    role="option"
+    role="listbox"
     id="date"
     tabindex="0">Date
     </button>
     <button class="sort__optionBtn sort__option"
     data-value="title"
-    role="option"
+    role="listbox"
     id="title"
     tabindex="0">Titre
     </button>

@@ -34,9 +34,9 @@
     width: 11rem;
     cursor: pointer;
     text-align: start;
-    &:hover, &:focus {
-      background-color: $color-primary;
-      color: white;
+
+    &:hover, &:focus > i {
+      color: black;
     }
   }
   &__optionBtn {
@@ -49,8 +49,8 @@
     cursor: pointer;
     text-align: start;
     &:hover, &:focus {
-      background-color: $color-primary;
-      color: white;
+      background-color: $color-secondary;
+      color: black;
     }
   }
 
