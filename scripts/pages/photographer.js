@@ -87,6 +87,7 @@ async function displayPhotographerMedias() {
   mediaSection.classList.add("photographer__content");
   main.appendChild(mediaSection);
   const results = await createSortedMediasCards();
+  displayMediasInLightbox();
   return results
 
   // const medias = document.querySelectorAll(".media");
@@ -95,21 +96,6 @@ async function displayPhotographerMedias() {
   //   medias[i].dataset.index = i
   // }
 }
-
-// async function displaySortedMedias() {
-//   // affiche les médias en fonction du tri demandé lors du click sur le choix de tri
-
-//   const options = document.querySelectorAll(".sort__option");
-//   options.forEach(option => {
-//     option.addEventListener("click", async () => {
-//       document.querySelector(".photographer__content").remove();
-//       const medias = await displayPhotographerMedias();
-//       console.log(medias);
-//       // setTimeout(async() => {
-//       // }, 1);
-//     })
-//   })
-// }
 
 async function displayLikesCounter() {
   // crée et affiche une div contenant le total de like et le prix journalier du photographe
@@ -139,31 +125,31 @@ async function renderMedia(mediaId) {
   const lightbox = document.querySelector(".lightboxModal");
 
   if (media.image) {
-    const content = document.createElement("figure");
-    content.classList.add("lightboxModal__figure")
+    const figure = document.createElement("figure");
+    figure.classList.add("lightboxModal__figure")
 
     const lightboxImg = document.createElement("img");
     lightboxImg.src = `assets/photographers/${photographerId}/${image}`;
     lightboxImg.alt = `${title}`;
     lightboxImg.classList.add("lightboxModal__img");
-    content.appendChild(lightboxImg);
+    figure.appendChild(lightboxImg);
 
     const caption = document.createElement("figcaption");
     caption.classList.add("lightboxModal__caption");
     caption.innerText = `${title}`;
-    content.appendChild(caption);
+    figure.appendChild(caption);
 
-    lightbox.prepend(content);
+    lightbox.prepend(figure);
 
   } else if (media.video) {
 
-    const content = document.createElement("figure");
-    content.classList.add("lightboxModal__figure")
+    const figure = document.createElement("figure");
+    figure.classList.add("lightboxModal__figure")
 
     const lightboxVideo = document.createElement("video");
     lightboxVideo.controls = "true";
     lightboxVideo.classList.add("lightboxModal__video")
-    content.appendChild(lightboxVideo);
+    figure.appendChild(lightboxVideo);
 
     const lightboxVideoSrc = document.createElement("source");
     lightboxVideoSrc.src = `assets/photographers/${photographerId}/${video}`;
@@ -173,9 +159,9 @@ async function renderMedia(mediaId) {
     const caption = document.createElement("figcaption");
     caption.classList.add("lightboxModal__caption");
     caption.innerText = `${title}`;
-    content.appendChild(caption);
+    figure.appendChild(caption);
 
-    lightbox.prepend(content);
+    lightbox.prepend(figure);
   }
   disableLightboxButtons(mediaIndex, medias.length)
 }
@@ -205,6 +191,23 @@ async function renderPreviousMedia() {
     disableLightboxButtons(previousIndex, medias.length)
   }
 }
+
+
+
+async function init() {
+  await displayPhotographerHeader()
+  await displaySortSection();
+  await displayLikesCounter();
+  await displayPhotographerMedias();
+  openOptionsList();
+  selectOption();
+  openContactForm();
+  // displaySortedMedias();
+  renderSortedMedias();
+  // await displayMediasInLightbox();
+}
+
+init();
 
 async function displayMediasInLightbox() {
   // au click sur un média, on récupère son index dans l'array de média trié, et on l'affiche en fonction de son index dans la lightbox
@@ -238,28 +241,16 @@ async function displayMediasInLightbox() {
 
 }
 
-async function init() {
-  await displayPhotographerHeader()
-  await displaySortSection();
-  await displayLikesCounter();
-  await displayPhotographerMedias();
-  openOptionsList();
-  selectOption();
-  openContactForm();
-  // displaySortedMedias();
-  await displayMediasInLightbox();
-}
-
-init();
-
-
-const options = document.querySelectorAll(".sort__option");
-options.forEach(option => {
-  option.addEventListener("click", async () => {
-    document.querySelector(".photographer__content").remove();
-    const medias = await displayPhotographerMedias();
-    console.log(medias);
-    // setTimeout(async() => {
-    // }, 1);
+async function renderSortedMedias() {
+  const options = document.querySelectorAll(".sort__option");
+  options.forEach(option => {
+    option.addEventListener("click", async () => {
+      document.querySelector(".photographer__content").remove();
+      await displayPhotographerMedias();
+      // console.log(medias);
+      // setTimeout(async() => {
+      // }, 1);
+    })
   })
-})
+  // displayMediasInLightbox();
+}
