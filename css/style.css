@@ -270,6 +270,20 @@ h1 {
   background-color: #901C1C;
   color: white;
 }
+.sort__optionBtn {
+  border: none;
+  background-color: transparent;
+  color: white;
+  font-weight: 400;
+  font-size: 1.2rem;
+  width: 11rem;
+  cursor: pointer;
+  text-align: start;
+}
+.sort__optionBtn:hover, .sort__optionBtn:focus {
+  background-color: #901C1C;
+  color: white;
+}
 .sort i {
   position: absolute;
   top: 1.7rem;
@@ -328,7 +342,7 @@ h1 {
   top: 0rem;
   width: 100vw;
   height: 100vh;
-  background-color: rgba(255, 255, 255, 0.5);
+  background-color: rgba(255, 255, 255, 0.8);
   backdrop-filter: blur(2px);
 }
 .lightboxModal__media {
@@ -342,8 +356,8 @@ h1 {
   margin: 0 1em;
 }
 .lightboxModal__img, .lightboxModal__video {
-  max-width: 100%;
-  max-height: 100%;
+  max-width: 90%;
+  max-height: 90%;
   overflow: hidden;
   object-fit: cover;
 }
@@ -352,8 +366,8 @@ h1 {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  width: 80%;
-  height: 80%;
+  width: 90%;
+  height: 95%;
 }
 .lightboxModal__caption {
   justify-items: flex-start;
@@ -379,11 +393,11 @@ h1 {
 }
 .lightboxModal__previous {
   position: absolute;
-  left: 10rem;
+  left: 5rem;
 }
 .lightboxModal__next {
   position: absolute;
-  right: 10rem;
+  right: 5rem;
 }
 .lightboxModal__caption {
   font-size: 3rem;
@@ -425,6 +439,20 @@ h1 {
   text-align: start;
 }
 .sort__button:hover, .sort__button:focus {
+  background-color: #901C1C;
+  color: white;
+}
+.sort__optionBtn {
+  border: none;
+  background-color: transparent;
+  color: white;
+  font-weight: 400;
+  font-size: 1.2rem;
+  width: 11rem;
+  cursor: pointer;
+  text-align: start;
+}
+.sort__optionBtn:hover, .sort__optionBtn:focus {
   background-color: #901C1C;
   color: white;
 }

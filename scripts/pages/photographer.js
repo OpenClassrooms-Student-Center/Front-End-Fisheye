@@ -45,33 +45,33 @@ async function displaySortSection() {
   arrow.classList.add("sort__down", "fa-solid", "fa-caret-down");
   selectDiv.appendChild(arrow);
 
-  const sortList = document.createElement("ul");
+  const sortList = document.createElement("div");
   sortList.classList.add("sort__options");
   sortList.setAttribute("role", "list");
   sortList.setAttribute("aria-labelledby", "sort__button");
   sortList.setAttribute("aria-activedescendant", "popularity");
 
   sortList.innerHTML = `
-  <li
-    class="sort__hide sort__option"
+  <button class="sort__optionBtn sort__hide sort__option"
     data-value="popularity"
     role="option"
     id="popularity"
     aria-selected="true"
     style="display: none;"
-    tabindex="0">Popularité</li>
-  <li
-    class="sort__option"
+    tabindex="-1">Popularité
+  </button>
+  <button class="sort__optionBtn sort__option"
     data-value="date"
     role="option"
     id="date"
-    tabindex="0">Date</li>
-  <li
-    class="sort__option"
+    tabindex="0">Date
+    </button>
+    <button class="sort__optionBtn sort__option"
     data-value="title"
     role="option"
     id="title"
-    tabindex="0">Titre</li>
+    tabindex="0">Titre
+    </button>
   `
 
   selectDiv.appendChild(sortList);
@@ -85,24 +85,28 @@ async function displayPhotographerMedias() {
   const mediaSection = document.createElement("section");
   mediaSection.classList.add("photographer__content");
   main.appendChild(mediaSection);
-  await createSortedMediasCards();
+  const result = await createSortedMediasCards();
+  console.log(result);
   const medias = document.querySelectorAll(".media");
+  console.log(medias);
 
   // pour chaque média, on crée un attribut indexNumber correspondant au numéro d'index dans l'array de médias
-  for (let i = 0; i < medias.length; i++) {
-    medias[i].dataset.index = i
-  }
+  // for (let i = 0; i < medias.length; i++) {
+  //   medias[i].dataset.index = i
+  // }
 }
-function displaySortedMedias() {
+
+async function displaySortedMedias() {
   // affiche les médias en fonction du tri demandé lors du click sur le choix de tri
 
   const options = document.querySelectorAll(".sort__option");
   options.forEach(option => {
-    option.addEventListener("click", () => {
-      document.querySelector(".photographer__content").innerHTML = "";
-      setTimeout(async() => {
-        await displayPhotographerMedias();
-      }, 1);
+    option.addEventListener("click", async () => {
+      document.querySelector(".photographer__content").remove();
+      const medias = await displayPhotographerMedias();
+      console.log(medias);
+      // setTimeout(async() => {
+      // }, 1);
     })
   })
 }
@@ -188,6 +192,7 @@ async function renderNextMedia() {
     disableLightboxButtons(nextIndex, medias.length)
   }
 }
+
 async function renderPreviousMedia() {
   const medias = await sortMedias();
   const currentMedia = medias.find((media) => media.id == mediaLightboxId);
@@ -201,8 +206,8 @@ async function renderPreviousMedia() {
   }
 }
 
-// au click sur un média, on récupère son index dans l'array de média trié, et on l'affiche en fonction de son index dans la lightbox
 async function displayMediasInLightbox() {
+  // au click sur un média, on récupère son index dans l'array de média trié, et on l'affiche en fonction de son index dans la lightbox
   const mediaColl = document.querySelectorAll(".media");
   const medias = Array.from(mediaColl);
   medias.forEach(media => {
@@ -238,11 +243,11 @@ async function init() {
   await displaySortSection();
   await displayLikesCounter();
   await displayPhotographerMedias();
-  await displayMediasInLightbox();
   openOptionsList();
   selectOption();
   openContactForm();
   displaySortedMedias();
+  await displayMediasInLightbox();
 }
 
 init();
