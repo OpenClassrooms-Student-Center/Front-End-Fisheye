@@ -41,6 +41,9 @@ export function selectOption() {
     option.addEventListener("click", (event) => {
 
       orderBtn.innerText = event.target.innerText;
+      const arrow = document.createElement("i");
+      arrow.classList.add("sort__down", "fa-solid", "fa-caret-down");
+      orderBtn.appendChild(arrow);
 
       options.forEach(option => {
         // option.parentElement.style.display = "block";
