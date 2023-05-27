@@ -35,7 +35,7 @@
     cursor: pointer;
     text-align: start;
 
-    &:hover, &:focus > i {
+    &:hover > i, &:focus > i {
       color: black;
     }
   }

@@ -86,31 +86,30 @@ async function displayPhotographerMedias() {
   const mediaSection = document.createElement("section");
   mediaSection.classList.add("photographer__content");
   main.appendChild(mediaSection);
-  const result = await createSortedMediasCards();
-  console.log(result);
-  const medias = document.querySelectorAll(".media");
-  console.log(medias);
+  const results = await createSortedMediasCards();
+  return results
 
+  // const medias = document.querySelectorAll(".media");
   // pour chaque média, on crée un attribut indexNumber correspondant au numéro d'index dans l'array de médias
   // for (let i = 0; i < medias.length; i++) {
   //   medias[i].dataset.index = i
   // }
 }
 
-async function displaySortedMedias() {
-  // affiche les médias en fonction du tri demandé lors du click sur le choix de tri
+// async function displaySortedMedias() {
+//   // affiche les médias en fonction du tri demandé lors du click sur le choix de tri
 
-  const options = document.querySelectorAll(".sort__option");
-  options.forEach(option => {
-    option.addEventListener("click", async () => {
-      document.querySelector(".photographer__content").remove();
-      const medias = await displayPhotographerMedias();
-      console.log(medias);
-      // setTimeout(async() => {
-      // }, 1);
-    })
-  })
-}
+//   const options = document.querySelectorAll(".sort__option");
+//   options.forEach(option => {
+//     option.addEventListener("click", async () => {
+//       document.querySelector(".photographer__content").remove();
+//       const medias = await displayPhotographerMedias();
+//       console.log(medias);
+//       // setTimeout(async() => {
+//       // }, 1);
+//     })
+//   })
+// }
 
 async function displayLikesCounter() {
   // crée et affiche une div contenant le total de like et le prix journalier du photographe
@@ -247,8 +246,20 @@ async function init() {
   openOptionsList();
   selectOption();
   openContactForm();
-  displaySortedMedias();
+  // displaySortedMedias();
   await displayMediasInLightbox();
 }
 
 init();
+
+
+const options = document.querySelectorAll(".sort__option");
+options.forEach(option => {
+  option.addEventListener("click", async () => {
+    document.querySelector(".photographer__content").remove();
+    const medias = await displayPhotographerMedias();
+    console.log(medias);
+    // setTimeout(async() => {
+    // }, 1);
+  })
+})
