@@ -2,10 +2,71 @@
     display: none;
 }
 
+.logo {
+    height: 50px;
+    margin-left: 100px;
+}
+
+h1 {
+    display: none;
+}
+
+.photograph-header{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 70px;
+    margin-top: 100px;
+}
+
+.photograph-header article {
+    justify-self: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+article a {
+    text-decoration: none;
+    justify-self: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
 .photograph-header {
     background-color: #FAFAFA;
     height: 300px;
     margin: 0 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.photograph-header article h2 {
+    color: #D3573C;
+    font-size: 36px;
+    margin-top: 0;
+    margin: 0;
+}
+
+.photograph-header article img {
+    height: 200px;
+    width: 200px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.photograph-header article h4 {
+    margin: 0;
+    color: #D3573C;
+    text-align: center;
+}
+
+.photograph-header article p {
+    margin: 0;
+    text-align: center;
 }
 
 .contact_button {
