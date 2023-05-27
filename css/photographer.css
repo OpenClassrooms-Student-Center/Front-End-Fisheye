@@ -7,23 +7,12 @@
     margin-left: 100px;
 }
 
-h1 {
-    display: none;
-}
-
-.photograph-header{
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    gap: 70px;
-    margin-top: 100px;
-}
-
-.photograph-header article {
-    justify-self: center;
+.mainArticle{
     display: flex;
-    justify-content: center;
+    justify-content: space-around;
     align-items: center;
-    flex-direction: column;
+    gap: 70px;
+    margin-top: 2em;
 }
 
 article a {
@@ -37,17 +26,16 @@ article a {
 
 .photograph-header {
     background-color: #FAFAFA;
-    height: 300px;
-    margin: 0 100px;
-    display: flex;
+    margin: 0;
+    /* display: flex;
     justify-content: center;
-    align-items: center;
+    align-items: center; */
 }
 
 .photograph-header article h2 {
     color: #D3573C;
     font-size: 36px;
-    margin-top: 0;
+    text-align: center;
     margin: 0;
 }
 
@@ -56,6 +44,7 @@ article a {
     width: 200px;
     border-radius: 50%;
     object-fit: cover;
+    order: 3;
 }
 
 .photograph-header article h4 {
@@ -134,4 +123,15 @@ form input {
     height: 68px;
     border: none;
     border-radius: 5px;
+}
+
+.sr-only {
+    border: 0;
+    clip: rect(0 0 0 0);
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    width: 1px;
 }

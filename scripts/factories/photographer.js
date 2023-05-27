@@ -7,11 +7,12 @@
             // create different elements in the DOM
             // const result = idGen();
             const card = document.createElement('article');
+            card.setAttribute('class', 'mainArticle');
             const personalSection = document.createElement('section');
             personalSection.setAttribute('tabindex', '0');
             personalSection.setAttribute('role' , 'region');
-            personalSection.setAttribute("id" , id);
-            personalSection.setAttribute("class" , 'frame');
+            personalSection.setAttribute('id' , id);
+            personalSection.setAttribute('class' , 'frame');
             const link = document.createElement ('a');
             const target = 'photographer.html?id=' + id;
     
@@ -51,8 +52,8 @@
             card.appendChild(personalSection);
             personalSection.appendChild(link);
             link.appendChild(image);
-            link.appendChild(h2);
             card.appendChild(personalInfo);
+            personalInfo.appendChild(h2);
             personalInfo.appendChild(h4);
             personalInfo.appendChild(p1);
             personalInfo.appendChild(p2);
