@@ -36,16 +36,24 @@ export function selectOption() {
   const orderBtn = document.querySelector(".sort__button");
   options.forEach(option => {
     option.classList.remove("sort__hide");
+    // option.parentElement.style.display = "block";
+    option.display = "block";
     option.addEventListener("click", (event) => {
+
       orderBtn.innerText = event.target.innerText;
 
       options.forEach(option => {
+        // option.parentElement.style.display = "block";
         option.style.display = "block";
+        option.setAttribute("tabindex", "0")
         option.setAttribute("aria-selected", "false");
       })
       option.classList.add("sort__hide");
       option.setAttribute("aria-selected", "true");
-      option.style.display = "none"
+      // option.parentElement.style.display = "none";
+      // option.parentElement.setAttribute("tabindex", "-1")
+      option.setAttribute("tabindex", "-1")
+      option.style.display = "none";
 
       closeOptionsList();
     })

@@ -39,6 +39,20 @@
       color: white;
     }
   }
+  &__optionBtn {
+    border: none;
+    background-color: transparent;
+    color: white;
+    font-weight: 400;
+    font-size: 1.2rem;
+    width: 11rem;
+    cursor: pointer;
+    text-align: start;
+    &:hover, &:focus {
+      background-color: $color-primary;
+      color: white;
+    }
+  }
 
   & i {
     position: absolute;
