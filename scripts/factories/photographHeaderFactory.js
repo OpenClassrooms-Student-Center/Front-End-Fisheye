@@ -11,7 +11,7 @@ function photographHeaderFactory(photographerData) {
             aria-label="Résumé du photographe ${name}; Ville: ${city}, ${country}; Slogan: ${tagline}."
         >
             <div>
-                <h1 class="photographe-article-name photograph-header-details-name">
+                <h1 id="name-photographer" class="photographe-article-name photograph-header-details-name">
                     ${name}
                 </h1>
 
@@ -24,7 +24,13 @@ function photographHeaderFactory(photographerData) {
                 </p>
             </div>
             
-            <button class="contact-button" onclick="displayModal()">Contactez-moi</button>
+            <button 
+                id="header-contact-button" 
+                class="contact-button"
+                aria-label="Cliquez ou appuyez sur 'Enter' pour ouvrir le formulaire de contact."
+            >
+                Contactez-moi
+            </button>
         
             <img 
                 src="${picture}" 

@@ -1,5 +1,10 @@
 @import url("photographer.css");
 
+:focus {
+    /* outline: 2px solid black; */
+    border-radius: 5px;
+}
+
 body {
     position: relative;
     font-family: "DM Sans", sans-serif;

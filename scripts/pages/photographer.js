@@ -19,7 +19,11 @@ async function displayPhotographDetails() {
     const photographHeaderDOM = headerModel.getPhotographHeaderDOM();
     
     photographHeader.appendChild(photographHeaderDOM);
+
+    const headerBtn = document.getElementById('header-contact-button');
+    headerBtn.addEventListener('click', displayModal);
 };
+
 
 // MEDIA
 async function getMediaDetails() {
@@ -102,10 +106,10 @@ async function displayPhotographMedias() {
         sortButtons.forEach((button) => {
             if (button.classList.contains(buttonClass)) {
                 button.classList.add('selected');
-                button.setAttribute('aria-pressed', 'true');
+                button.ariaPressed = true;
             } else {
                 button.classList.remove('selected');
-                button.setAttribute('aria-pressed', 'false');
+                button.ariaPressed = false;
             }
         });
     }
@@ -114,17 +118,24 @@ async function displayPhotographMedias() {
         const button = document.createElement('button');
         button.classList.add('sort-button', buttonClass);
         button.textContent = text;
+        button.ariaLabel = `Cliquez ou appuyez sur 'Enter' pour trier les médias par : ${text}.`;
         button.addEventListener('click', () => {
           sortByFunction();
           toggleDropdownMenu();
         });
+        button.addEventListener('keydown', (event) => {
+            if (event.key === 'Enter') {
+                sortByFunction();
+                toggleDropdownMenu();
+            }
+        })
 
         const icon = document.createElement('i');
         icon.classList.add('fa-solid', 'fa-chevron-down');
         button.appendChild(icon);
       
         return button;
-      }
+    }
 
     const popularityButton = createSortButton('Popularité', 'sort-button-popularity', sortByPopularity);
     const titleButton = createSortButton('Titre', 'sort-button-title', sortByTitle);
@@ -186,7 +197,7 @@ async function displayFooter() {
     photographFooter.appendChild(photographFooterDOM);
 }
 
-// Mettre à jour le nombre de like et l'icône
+// Mettre à jour le nombre de like et icône
 function incrementLikes(id, likes) {
     const likeBtn = document.getElementById(`like-${id}`);
     const mediaTotalLikes = document.getElementById('total-likes');

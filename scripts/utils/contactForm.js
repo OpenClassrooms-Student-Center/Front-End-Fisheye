@@ -1,22 +1,39 @@
+// Get photograph name with title
+const h1Element = document.getElementsByTagName('h1');
+const h3Element = document.getElementsByTagName('h3');
+
 // Open/Close Modal
 const main = document.getElementById('main-wrapper');
 const modal = document.getElementById("contact-modal");
 const closeIcon = document.querySelector('.cross-close-modal');
+
 function displayModal() {
 	modal.style.display = "block";
     main.ariaHidden = true;
     modal.ariaHidden = false;
+    modal.tabIndex = 0;
+    modal.focus();
+    const namePhotograph = h1Element[0].innerText;
+    h3Element[0].innerText = namePhotograph
 }
 
 function closeModal() {
     modal.style.display = "none";
-    main.ariaHidden = false;
     modal.ariaHidden = true;
+    main.ariaHidden = false;
+    main.tabIndex = 0;
+    main.focus();
 }
 
+// Events Modal
 closeIcon.addEventListener('click', closeModal);
+closeIcon.addEventListener('keydown', (event) => {
+    if (event.key === 'Enter') {
+        closeModal();
+    }
+})
 
-document.addEventListener('keydown', (event) => {
+modal.addEventListener('keydown', (event) => {
     if (event.key === 'Escape') {
         closeModal();
     }
@@ -42,16 +59,24 @@ const emailRegex = /[a-z0-9]+@[a-z]+\.[a-z]{2,3}/;
 const validFirstname = function(inputFirstname) {
     if (inputFirstname.value.trim() === "" || inputFirstname.value.length < 2) {
         firstnameError.textContent = "Veuillez saisir votre prénom (2 caractères minimum).";
+        firstnameError.ariaHidden = false;
+        firstnameError.tabIndex = 0;
         firstname.classList.add("invalid");
-        firstname.attributes.add('aria-invalid=true')
+        firstname.ariaInvalid = true;
         return false;
     } else if (!nameRegex.test(inputFirstname.value)) {
         firstnameError.textContent = "Veuillez saisir un prénom valide, sans chiffre, ni caractère spécial.";
+        firstnameError.ariaHidden = false;
+        firstnameError.tabIndex = 0;
         firstname.classList.add("invalid");
+        firstname.ariaInvalid = true;
         return false;
     } else {
         firstnameError.textContent = "";
+        firstnameError.tabIndex = -1;
         firstname.classList.remove("invalid");
+        firstname.removeAttribute('aria-invalid');
+        firstname.removeAttribute('aria-describedby');
         return true;
     }
 }
