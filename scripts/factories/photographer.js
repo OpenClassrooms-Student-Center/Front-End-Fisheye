@@ -5,14 +5,13 @@
         // card creation
         function getUserCardDOM(){
             // create different elements in the DOM
-            // const result = idGen();
             const card = document.createElement('article');
             card.setAttribute('class', 'mainArticle');
             const personalSection = document.createElement('section');
             personalSection.setAttribute('tabindex', '0');
-            personalSection.setAttribute('role' , 'region');
-            personalSection.setAttribute('id' , id);
-            personalSection.setAttribute('class' , 'frame');
+            personalSection.setAttribute('role', 'region');
+            personalSection.setAttribute('id', id);
+            personalSection.setAttribute('class', 'frame');
             const link = document.createElement ('a');
             const target = 'photographer.html?id=' + id;
     
@@ -48,6 +47,7 @@
             p1.textContent = tagline;
             const p2 = document.createElement('p');
             p2.textContent = `${price}€/jour`;
+            p2.setAttribute('id', 'price');
             // attach elements to their parents after craetion in the DOM
             card.appendChild(personalSection);
             personalSection.appendChild(link);

@@ -1,6 +1,6 @@
-    // fetching information from json file and transforming json objects into jsobjects using json()
+    // fetching information from json file and transforming json objects into JSobjects using json()
     async function photographerPage(){
-        const photographerResponse = await fetch ("./data/photographers.json");
+        const photographerResponse = await fetch ('./data/photographers.json');
         const photographerResults = await photographerResponse.json();
         console.log(photographerResults);
         return photographerResults;
@@ -34,20 +34,52 @@
         btn.setAttribute("class" , 'contact_button'); 
         btn.textContent = 'Contactez-moi' ;
         btnNewPosition.appendChild(btn);
+        // display modal onclick
+        btn.addEventListener('click', function(){
+            displayModal();
+        });
 
         // adjusting the elements as required in the maquette
         const flexOrdering = document.querySelector('.frame');
         flexOrdering.style.order = 3;
-        flexOrdering.setAttribute('tabIndex', '6');
+        flexOrdering.setAttribute('tabIndex', '0');
+
+        // removing price from header
     };
 
-    async function initPhotographerPage() {
+    async function initPhotographerPage(){
         // get the photographer data in the photographer page
         const { photographers } = await photographerPage();
         displayPhotographer(photographers);
     };
-    
     // calling the function to create the elements in photographer page
     initPhotographerPage();
+
+
+    async function displayMedia(media){
+        // // creating the artwork for each photographer
+        const mediaDiv = document.querySelector('.media-div');
+        let params = (new URL(document.location)).searchParams;
+        // getting the id from the search params
+        let id = params.get('id');
+        console.log(id);
+        // getting the corosponding object (photographer) related to the id from the search params
+        let medias = media.filter(sameId => sameId.photographerId == id);
+        console.log(id);
+        console.log(medias);
+
+        medias.forEach((medias) => {
+            const mediaSection = mediaFactory(medias);
+            const mediaArts = mediaSection.getUserArtDOM();
+            mediaDiv.appendChild(mediaArts);
+        });
+    };
+
+    async function photographersMedia(){
+        const { media } = await photographerPage();
+        displayMedia(media);
+    };
+    photographersMedia();
+
 
     

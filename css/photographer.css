@@ -49,16 +49,19 @@ article a {
 
 .photograph-header article h4 {
     margin: 0;
-    color: #D3573C;
-    text-align: center;
+    color: #901C1C;
+    text-align: left;
+    font-size: 1.5em;
+    margin-top: 0.5em;
 }
 
 .photograph-header article p {
     margin: 0;
-    text-align: center;
+    text-align: left;
+    margin-top: 0.5em;
 }
 
-.contact_button {
+.contact_button, .select-button {
     font-size: 20px;
     font-weight: bold;
     color: white;
@@ -69,6 +72,14 @@ article a {
     background-color: #901C1C;
     border-radius: 5px;
     cursor: pointer;
+}
+
+.selectors {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;    
+    gap: 1em;
+    margin-left: 2em;
 }
 
 .modal {
@@ -135,3 +146,23 @@ form input {
     position: absolute;
     width: 1px;
 }
+
+.media-div {
+    margin-top: 8em;
+    margin-inline: 2em;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 2.5em;
+}
+
+.grid-item {
+    width: 90%;
+    height: 80%;
+    object-fit: cover;
+    /* gap: 1.5em; */
+  }
+
+.media-div h3 {
+    color: #901C1C;
+}
+
