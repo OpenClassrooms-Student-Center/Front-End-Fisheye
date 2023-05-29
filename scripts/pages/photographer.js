@@ -197,7 +197,7 @@ async function displayFooter() {
     photographFooter.appendChild(photographFooterDOM);
 }
 
-// Mettre à jour le nombre de like et icône
+// LIKES
 function incrementLikes(id, likes) {
     const likeBtn = document.getElementById(`like-${id}`);
     const mediaTotalLikes = document.getElementById('total-likes');

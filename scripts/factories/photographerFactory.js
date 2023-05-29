@@ -41,5 +41,5 @@ function photographerFactory(photographerData) {
         return section.firstElementChild;
     }
 
-    return { name, picture, getUserCardDOM }
+    return { getUserCardDOM }
 }

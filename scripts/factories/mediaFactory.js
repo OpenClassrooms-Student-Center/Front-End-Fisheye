@@ -88,25 +88,30 @@ function createMediaFactory(mediasData, sortBy = 'popularity') {
 
             mediaHtml += `
                 <figure class="media-figure">
-                    <div id="media-${id}" data-index="${i}" tabindex="0" onclick="launchLightBox(${id}, event, ${i})" onkeydown="launchLightBoxWithKey(${id}, event, ${i})" aria-label="Ouvrir le média">
+                    <div 
+                        id="media-${id}" data-index="${i}" 
+                        tabindex="0" onclick="launchLightBox(${id}, event, ${i})" 
+                        onkeydown="launchLightBoxWithKey(${id}, event, ${i})" 
+                        aria-label="Cliquez ou appuyez sur 'Enter' pour ouvrir le média. Vous pouvez naviguer entre les médias avec les flèches du clavier et quitter à tout moment avec la touche 'Echap'."
+                    >
                         <span 
                             class="element-light-box element-light-box-cross" 
                             onclick="launchLightBox(${id}, event)" 
-                            aria-label="Fermer le média"
+                            title="Fermer le média"
                         >
                             <i class="fa-solid fa-xmark"></i>
                         </span>
                         <span 
                             class="element-light-box element-light-box-arrowLeft" 
                             onclick="showPreviousMedia(event)" 
-                            aria-label="Média suivant"
+                            title="Média suivant"
                         >
                             <i class="fa-solid fa-chevron-left"></i>
                         </span>
                         <span 
                             class="element-light-box element-light-box-arrowRight" 
                             onclick="showNextMedia(event)" 
-                            aria-label="Média précédent"
+                            title="Média précédent"
                         >
                             <i class="fa-solid fa-chevron-right"></i>
                         </span>
@@ -134,84 +139,4 @@ function createMediaFactory(mediasData, sortBy = 'popularity') {
     }
 
     return { getMediaDOM }
-}
-
-// Fonctions pour LightBox
-const launchLightBox = (id, event, index) => {
-    event.stopPropagation();
-
-    const media = document.getElementById(`media-${id}`);
-    const elmts = document.querySelectorAll('.element-light-box');
-
-    if (!media.classList.contains('light-box')) {
-        media.classList.add('light-box');
-        elmts.forEach(elmt => elmt.style.display = 'block');
-        currentIndex = index;
-        media.addEventListener('keydown', lightBoxKeyDown);
-    } else {
-        media.classList.remove('light-box');
-        elmts.forEach(elmt => elmt.style.display = 'none');
-        media.removeEventListener('keydown', lightBoxKeyDown);
-    }
-}
-
-const showNextMedia = (event) => {
-    event.stopPropagation();
-
-    const media = document.getElementsByClassName('media-figure');
-    if (media.length > 0) {
-        currentIndex = (currentIndex + 1) % media.length;
-        showMediaAtIndex(currentIndex);
-    }
-}
-
-const showPreviousMedia = (event) => {
-    event.stopPropagation();
-    
-    const media = document.getElementsByClassName('media-figure');
-    if (media.length > 0) {
-        currentIndex = (currentIndex - 1 + media.length) % media.length;
-        showMediaAtIndex(currentIndex);
-    }
-}
-
-const showMediaAtIndex = (currentIndex) => {
-    const media = document.getElementsByClassName('media-figure');
-
-    const currentMedia = media[currentIndex];
-    const currentElmt = currentMedia.querySelector('.media-figure > div');
-
-    // Fermer toutes les autres light-box
-    const lightBoxes = document.querySelectorAll('.light-box');
-    lightBoxes.forEach(lightBox => {
-        lightBox.classList.remove('light-box');
-        const elements = lightBox.querySelectorAll('.element-light-box');
-        elements.forEach(element => element.style.display = 'none');
-    });
-
-    // Ouvrir la light-box du média sélectionnée
-    currentElmt.classList.add('light-box');
-    const elements = currentElmt.querySelectorAll('.element-light-box');
-    elements.forEach(element => element.style.display = 'block');
-}
-
-// Events clavier
-const lightBoxKeyDown = (event) => {
-    if (event.key === 'ArrowRight') {
-        showNextMedia(event);
-    } else if (event.key === 'ArrowLeft') {
-        showPreviousMedia(event);
-    } else if (event.key === 'Escape') {
-        const lightBox = document.querySelector('.light-box');
-        if (lightBox) {
-            const mediaId = lightBox.id.split('-')[1];
-            launchLightBox(mediaId, event);
-        }
-    }
-};
-
-const launchLightBoxWithKey = (id, event, index) => {
-    if (event.key === 'Enter') {
-        launchLightBox(id, event, index);
-    }
 }
