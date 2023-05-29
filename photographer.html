@@ -10,67 +10,78 @@
     <title>Fisheye - photographe </title>
   </head>
   <body>
-    <header class="header">
-      <a href="index.html" title="Accueil" aria-label="FishEye" class="logo-link">
-        <img src="assets/images/logo.png" alt="Fisheye Home Page" class="logo">
-      </a>
-    </header>
-    <main id="main">
-      <section class="photograph-header"></section>
-      <section class="medias-container"></section>
-    </main>
-    <footer class="footer"></footer>
-    <div id="contact-modal">
-			<div class="modal">
-				<header class="modal-header">
+    <div id="main-wrapper" aria-hidden="false">
+      <header class="header">
+        <a href="index.html" title="Accueil" aria-label="FishEye" class="logo-link">
+          <img src="assets/images/logo.png" alt="Fisheye Home Page" class="logo">
+        </a>
+      </header>
+      <main id="main">
+        <section class="photograph-header"></section>
+        <section class="medias-container"></section>
+      </main>
+      <footer class="footer"></footer>
+    </div>
+    <div id="contact-modal" aria-hidden="true">
+			<div class="modal" tabindex="0">
+				<header class="modal-header" tabindex="0">
           <h2>Contactez-moi</h2>
-          <img src="assets/icons/close.svg" alt="" onclick="closeModal()" class="cross-close-modal" tabindex="0">
+          <img src="assets/icons/close.svg" alt="" class="cross-close-modal" tabindex="0">
         </header>
           <form id="form">
-            <label for="firstname">Prénom</label>
+            <label for="firstname">Votre prénom :</label>
               <input
                 type="text"
                 id="firstname"
                 name="firstname"
                 class="modal-input"
+                aria-label="Veuillez renseigner votre prénom dans ce champ"
+                aria-required=true
                 minlength="2"
                 maxlength="20"
                 required 
               >
             <span id="error-firstname" class="input-error"></span>
             
-            <label for="lastname">Nom</label>
+            <label for="lastname">Votre nom :</label>
               <input
                 type="text"
                 id="lastname"
                 name="lastname"
                 class="modal-input"
+                aria-label="Veuillez renseigner votre nom dans ce champ"
+                aria-required=true
                 minlength="2"
                 maxlength="20"
                 required 
               >
             <span id="error-lastname" class="input-error"></span>
 
-            <label for="email">Email</label>
+            <label for="email">Votre email :</label>
               <input
                 type="email"
                 id="email"
                 name="email"
                 class="modal-input"
+                placeholder="exemple@mail.com"
+                aria-label="Veuillez renseigner votre email dans ce champ"
+                aria-required=true
                 required 
               >
             <span id="error-email" class="input-error"></span>
             
-            <label for="message">Votre message</label>
+            <label for="message">Votre message :</label>
               <textarea
                 id="message"
                 name="message"
-                class="modal-input" 
+                class="modal-input"
+                aria-label="Veuillez renseigner votre message dans ce champ"
+                aria-required=true 
                 required
               ></textarea>
             <span id="error-message" class="input-error"></span>
 
-            <button type="submit" class="contact-button">Envoyer</button>
+            <button type="submit" class="contact-button" aria-label="Soumettre le formulaire">Envoyer</button>
           </form>
 			</div>
 		</div>

@@ -215,23 +215,3 @@ const launchLightBoxWithKey = (id, event, index) => {
         launchLightBox(id, event, index);
     }
 }
-
-// Fonction d'incrémentation et décrémentation de Likes
-// const incrementLikes = (id, likes) => {
-//     let mediaLikes = likes;
-//     let mediaLiked = mediaLikes += 1;
-
-//     // Mettre à jour le nombre de likes et l'icône
-//     const likeBtn = document.getElementById(`like-${id}`);
-//     if (!likeBtn.classList.contains('dislike')) {
-//         mediaLikes += 1
-//         likeBtn.classList.add('dislike')
-//         likeBtn.innerHTML = `${mediaLiked} <i class="fa-solid fa-heart"></i>`;
-//         likeBtn.ariaLabel = "Retirer votre like de l'image"
-//     } else {
-//         mediaLiked -= 1;
-//         likeBtn.classList.remove('dislike')
-//         likeBtn.innerHTML = `${mediaLiked} <i class="fa-regular fa-heart"></i>`;
-//         likeBtn.ariaLabel = "Ajouter un like à l'image"
-//     }
-// }

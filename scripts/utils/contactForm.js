@@ -1,13 +1,26 @@
 // Open/Close Modal
+const main = document.getElementById('main-wrapper');
+const modal = document.getElementById("contact-modal");
+const closeIcon = document.querySelector('.cross-close-modal');
 function displayModal() {
-    const modal = document.getElementById("contact-modal");
 	modal.style.display = "block";
+    main.ariaHidden = true;
+    modal.ariaHidden = false;
 }
 
 function closeModal() {
-    const modal = document.getElementById("contact-modal");
     modal.style.display = "none";
+    main.ariaHidden = false;
+    modal.ariaHidden = true;
 }
+
+closeIcon.addEventListener('click', closeModal);
+
+document.addEventListener('keydown', (event) => {
+    if (event.key === 'Escape') {
+        closeModal();
+    }
+})
 
 // FORM DOM
 const form = document.getElementById('form');
@@ -30,6 +43,7 @@ const validFirstname = function(inputFirstname) {
     if (inputFirstname.value.trim() === "" || inputFirstname.value.length < 2) {
         firstnameError.textContent = "Veuillez saisir votre prénom (2 caractères minimum).";
         firstname.classList.add("invalid");
+        firstname.attributes.add('aria-invalid=true')
         return false;
     } else if (!nameRegex.test(inputFirstname.value)) {
         firstnameError.textContent = "Veuillez saisir un prénom valide, sans chiffre, ni caractère spécial.";
