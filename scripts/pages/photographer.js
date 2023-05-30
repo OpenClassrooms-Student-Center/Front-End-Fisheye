@@ -129,18 +129,15 @@ async function likeMedia() {
         likeBtn.classList.toggle("fa-regular");
         likeBtn.classList.toggle("fa-solid");
         likesNumber -= 1
-        media.querySelector(".media__like").innerText = likesNumber
+        media.querySelector(".media__likeNumber").innerText = likesNumber
       }
-      console.log(likesNumber);
-      return likesNumber
+      updateLikes()
     })
-    updateLikes()
   })
 }
 function updateLikes() {
-  const likes = document.querySelectorAll(".media__like");
+  const likes = document.querySelectorAll(".media__likeNumber");
   const totalLikes = document.querySelector(".likes");
-  console.log(totalLikes);
   let total = 0
   likes.forEach(like => total += parseInt(like.textContent));
   totalLikes.textContent = total
