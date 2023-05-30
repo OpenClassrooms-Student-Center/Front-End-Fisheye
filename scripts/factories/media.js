@@ -43,7 +43,7 @@ export function mediaFactory(media) {
 
     const mediaLike = document.createElement("p");
     mediaLike.classList.add("media__like");
-    mediaLike.innerHTML = `${likes} <i class="fa-solid fa-heart "></i>`
+    mediaLike.innerHTML = `${likes} <i class="fa-regular fa-heart media__likeIcon"></i>`
     mediaInfo.appendChild(mediaLike);
 
     return (article)

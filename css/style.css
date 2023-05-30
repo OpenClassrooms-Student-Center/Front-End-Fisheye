@@ -136,6 +136,9 @@ h1 {
 .media__like {
   color: red;
 }
+.media__likeIcon {
+  cursor: pointer;
+}
 .media__btn {
   border: none;
   cursor: pointer;
