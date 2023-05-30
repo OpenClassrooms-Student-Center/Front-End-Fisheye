@@ -111,7 +111,7 @@ async function displayLikesCounter() {
 async function likeMedia() {
   const medias = document.querySelectorAll(".media");
   medias.forEach(media => {
-    let likesNumber = parseInt(media.querySelector(".media__like").innerText);
+    let likesNumber = parseInt(media.querySelector(".media__likeNumber").innerText);
     const likeBtn = media.querySelector(".media__likeIcon");
 
     likeBtn.addEventListener("click", () => {

@@ -39,10 +39,17 @@ export function mediaFactory(media) {
     mediaTitle.innerText = title
     mediaInfo.appendChild(mediaTitle);
 
-    const mediaLike = document.createElement("p");
-    mediaLike.classList.add("media__like");
-    mediaLike.innerHTML = `${likes} <i class="fa-regular fa-heart media__likeIcon"></i>`
+    const mediaLike = document.createElement("div");
+    mediaLike.classList.add("media__likes");
+    const para = document.createElement("p");
+    para.classList.add("media__likeNumber");
+    para.innerText = likes;
+    const icon = document.createElement("i");
+    icon.classList.add("fa-regular", "fa-heart", "media__likeIcon");
     mediaInfo.appendChild(mediaLike);
+    mediaLike.appendChild(para)
+    mediaLike.appendChild(icon)
+
 
     return (article)
   }
