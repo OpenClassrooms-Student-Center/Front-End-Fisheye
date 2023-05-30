@@ -133,15 +133,31 @@ h1 {
   padding-bottom: 1rem;
   cursor: pointer;
 }
-.media__like {
+.media__title {
+  color: #901C1C;
+  font-size: 1.75rem;
+}
+.media__likes {
   color: red;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.4rem;
+}
+.media__likeIcon {
+  cursor: pointer;
+  font-size: 1.3rem;
+}
+.media__likeNumber {
+  color: red;
+  font-size: 1.3rem;
 }
 .media__btn {
   border: none;
   cursor: pointer;
 }
 
-.likes__counter {
+.counter {
   position: fixed;
   display: flex;
   justify-content: space-around;
@@ -152,6 +168,12 @@ h1 {
   right: 10%;
   background-color: #D3573C;
   padding: 2rem;
+}
+.counter__likes {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.6rem;
 }
 
 .button {
@@ -266,7 +288,7 @@ h1 {
   cursor: pointer;
   text-align: start;
 }
-.sort__button:hover, .sort__button:focus > i {
+.sort__button:hover > i, .sort__button:focus > i {
   color: black;
 }
 .sort__optionBtn {
@@ -437,7 +459,7 @@ h1 {
   cursor: pointer;
   text-align: start;
 }
-.sort__button:hover, .sort__button:focus > i {
+.sort__button:hover > i, .sort__button:focus > i {
   color: black;
 }
 .sort__optionBtn {
