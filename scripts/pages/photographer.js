@@ -87,7 +87,7 @@ async function displayPhotographerMedias() {
   mediaSection.classList.add("photographer__content");
   main.appendChild(mediaSection);
   const results = await createSortedMediasCards();
-  displayMediasInLightbox();
+  // displayMediasInLightbox();
   return results
 }
 
@@ -119,17 +119,28 @@ async function likeMedia() {
         likeBtn.toggleAttribute("clicked");
         likeBtn.classList.toggle("fa-regular");
         likeBtn.classList.toggle("fa-solid");
-        // console.log(likesNumber);
-        return likesNumber += 1
+        likesNumber += 1
+        media.querySelector(".media__like").innerText = likesNumber
       } else {
         likeBtn.toggleAttribute("clicked");
         likeBtn.classList.toggle("fa-regular");
         likeBtn.classList.toggle("fa-solid");
-        // console.log(likesNumber);
-        return likesNumber -= 1
+        likesNumber -= 1
+        media.querySelector(".media__like").innerText = likesNumber
       }
+      console.log(likesNumber);
+      return likesNumber
     })
+    updateLikes()
   })
+}
+function updateLikes() {
+  const likes = document.querySelectorAll(".media__like");
+  const totalLikes = document.querySelector(".likes");
+  console.log(totalLikes);
+  let total = 0
+  likes.forEach(like => total += parseInt(like.textContent));
+  totalLikes.textContent = total
 }
 
 async function renderMedia(mediaId) {
@@ -190,10 +201,12 @@ async function renderNextMedia() {
   const medias = await sortMedias();
   const currentMedia = medias.find((media) => media.id == mediaLightboxId);
   const currentMediaIndex = medias.indexOf(currentMedia);
+  console.log("render next media");
 
   if (currentMediaIndex < medias.length - 1) {
     let nextIndex = currentMediaIndex + 1;
     const nextMediaId = medias[nextIndex].id;
+    console.log("condition render next media");
     renderMedia(nextMediaId);
     // return nextMediaId
     // disableLightboxButtons(nextIndex, medias.length)
@@ -224,17 +237,27 @@ async function displayMediasInLightbox() {
       const mediaId = media.id
       openLightbox();
       renderMedia(mediaId);
+      console.log("displayMediaInLightbox");
     })
   })
 
   // au click sur le bouton next, on récupère le nouvel index, et on rappelle la fonction pour créer l'html du média
   const next = document.querySelector(".lightboxModal__next");
+  console.log("next", document.querySelector(".lightboxModal__figure")
+
+  );
   next.addEventListener("click", () => {
-    document.querySelector(".lightboxModal__figure").remove();
-    // figure.remove();
+    // event.preventDefault();
+    // event.stopPropagation();
+    console.log("click", document.querySelector(".lightboxModal__figure"))
+    // document.querySelector(".lightboxModal__figure").remove();
+    if (document.querySelector(".lightboxModal__figure")) {
+      document.querySelector(".lightboxModal__figure").remove()
+      // document.querySelectorAll(".lightboxModal__figure").forEach(el => el.remove())
+      renderNextMedia();
+    }
     // console.log(figure);
     // if (figure) {figure.remove()}
-    renderNextMedia();
 
   })
 
@@ -274,10 +297,10 @@ async function init() {
   selectOption();
   openContactForm();
   renderSortedMedias();
-  likeMedia();
   await displayLikesCounter();
+  likeMedia();
   // displaySortedMedias();
-  // await displayMediasInLightbox();
+  await displayMediasInLightbox();
 }
 
 init();

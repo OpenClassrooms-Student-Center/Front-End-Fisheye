@@ -1,9 +1,7 @@
 export function mediaFactory(media) {
   const { id, image, video, likes, photographerId, title} = media
 
-
   function getMediaCardDom() {
-
     const article = document.createElement("article");
     article.classList.add("media");
     article.id = id
