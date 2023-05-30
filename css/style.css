@@ -157,7 +157,7 @@ h1 {
   cursor: pointer;
 }
 
-.likes__counter {
+.counter {
   position: fixed;
   display: flex;
   justify-content: space-around;
@@ -168,6 +168,12 @@ h1 {
   right: 10%;
   background-color: #D3573C;
   padding: 2rem;
+}
+.counter__likes {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.6rem;
 }
 
 .button {

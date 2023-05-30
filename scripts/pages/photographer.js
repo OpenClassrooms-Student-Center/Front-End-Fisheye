@@ -95,7 +95,7 @@ async function displayLikesCounter() {
   // crée et affiche une div contenant le total de like et le prix journalier du photographe
   const photographer = await getPhotographersById();
   const likesDiv = document.createElement("div");
-  likesDiv.classList.add("likes__counter")
+  likesDiv.classList.add("counter")
   main.appendChild(likesDiv)
   const medias = await getMediasByPhotographer();
   let totalLikes = 0;
@@ -103,7 +103,10 @@ async function displayLikesCounter() {
     totalLikes += media.likes
   });
   likesDiv.innerHTML += `
-  <p class="likes">${totalLikes} <i class="fa-solid fa-heart "></i></p>
+  <div class="counter__likes">
+    <p class="likes">${totalLikes} </p>
+    <i class="fa-solid fa-heart "></i>
+  </div>
   <p class="price">${photographer.price}€ / jour</p>
   `
 }
@@ -120,7 +123,7 @@ async function likeMedia() {
         likeBtn.classList.toggle("fa-regular");
         likeBtn.classList.toggle("fa-solid");
         likesNumber += 1
-        media.querySelector(".media__like").innerText = likesNumber
+        media.querySelector(".media__likeNumber").innerText = likesNumber
       } else {
         likeBtn.toggleAttribute("clicked");
         likeBtn.classList.toggle("fa-regular");
