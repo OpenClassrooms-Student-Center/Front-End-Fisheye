@@ -230,12 +230,11 @@ async function findPreviousMedia() {
 }
 
 async function displayMediasInLightbox() {
-
   // au click sur un média, on récupère son index dans l'array de média trié, et on l'affiche en fonction de son index dans la lightbox
   const mediaColl = document.querySelectorAll(".media");
   const medias = Array.from(mediaColl);
   medias.forEach(media => {
-    media.firstChild.addEventListener("click", async (event) => {
+    media.firstChild.addEventListener("click", async () => {
       const mediaId = media.id
       openLightbox();
       renderMedia(mediaId);
@@ -265,26 +264,32 @@ async function displayMediasInLightbox() {
 
 function nextMediaWithArrow() {
   const lightbox = document.querySelector(".lightboxModal");
+  const next = document.querySelector(".lightboxModal__next");
   document.addEventListener("keydown", async (event) => {
-    const code = event.code
-    if (lightbox.getAttribute('aria-hidden') == 'false' && code === "ArrowRight") {
-      if (document.querySelector(".lightboxModal__figure")) {
-        const nextId = await findNextMedia();
-        renderMedia(nextId)
-        document.querySelector(".lightboxModal__figure").remove()
+    if (next.style.display === "block") {
+      const code = event.code
+      if (lightbox.getAttribute('aria-hidden') == 'false' && code === "ArrowRight") {
+        if (document.querySelector(".lightboxModal__figure")) {
+          document.querySelector(".lightboxModal__figure").remove()
+          const nextId = await findNextMedia();
+          renderMedia(nextId)
+        }
       }
     }
   })
 }
 function previousMediaWithArrow() {
   const lightbox = document.querySelector(".lightboxModal");
+  const previous = document.querySelector(".lightboxModal__previous");
   document.addEventListener("keydown", async (event) => {
-    const code = event.code
-    if (lightbox.getAttribute('aria-hidden') == 'false' && code === "ArrowLeft") {
-      if (document.querySelector(".lightboxModal__figure")) {
-        const previousId = await findPreviousMedia();
-        renderMedia(previousId)
-        document.querySelector(".lightboxModal__figure").remove()
+    if (previous.style.display === "block") {
+      const code = event.code
+      if (lightbox.getAttribute('aria-hidden') == 'false' && code === "ArrowLeft") {
+        if (document.querySelector(".lightboxModal__figure")) {
+          document.querySelector(".lightboxModal__figure").remove()
+          const previousId = await findPreviousMedia();
+          renderMedia(previousId)
+        }
       }
     }
   })
