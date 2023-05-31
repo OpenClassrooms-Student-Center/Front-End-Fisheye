@@ -15,6 +15,7 @@ export function mediaFactory(media) {
       img.setAttribute("loading", "lazy");
       img.setAttribute("src", thumbnail);
       img.setAttribute("alt", title);
+      img.setAttribute("tabindex", "0")
       img.id = id
       article.appendChild(img)
     }
@@ -23,7 +24,8 @@ export function mediaFactory(media) {
       const vid = document.createElement("video");
       vid.setAttribute("loading", "lazy");
       vid.setAttribute("src", thumbnail);
-      vid.setAttribute("type", "video/mp4")
+      vid.setAttribute("type", "video/mp4");
+      vid.setAttribute("tabindex", "0");
       vid.innerHTML = "Votre navigateur ne permet pas de lire les vidéos. Mais vous pouvez toujours <a href=`${thumbnail}`>la télécharger</a> !";
       vid.className += "media__video";
       vid.id = id

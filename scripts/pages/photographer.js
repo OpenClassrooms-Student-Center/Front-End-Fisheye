@@ -133,7 +133,6 @@ async function likeMedia() {
     const likeBtn = media.querySelector(".media__likeIcon");
 
     likeBtn.addEventListener("click", () => {
-      console.log("likebtn");
       if (!likeBtn.hasAttribute("clicked")) {
         likeBtn.toggleAttribute("clicked");
         likeBtn.classList.toggle("fa-regular");
