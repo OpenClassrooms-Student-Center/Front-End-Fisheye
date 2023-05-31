@@ -39,18 +39,18 @@
             </button>
           </div>
           <fieldset class="form__body">
-            <label class="form__label" id="firstName" for="firstName">Prénom</label>
-            <input class="form__input" aria-labelledby="firstName" type="text" id="firstName" name="firstName" minlength="2" required/>
+            <label class="form__label" id="firstName" for="prenom">Prénom</label>
+            <input class="form__input" aria-labelledby="firstName" type="text" id="prenom" name="firstName" minlength="2" required/>
 
-            <label class="form__label" id="lastName" for="lastName">Nom</label>
-            <input class="form__input" aria-labelledby="lastName" type="text" id="lastName" name="lastName" minlength="2" required/>
+            <label class="form__label" id="lastName" for="nom">Nom</label>
+            <input class="form__input" aria-labelledby="lastName" type="text" id="nom" name="lastName" minlength="2" required/>
 
-            <label class="form__label" id="email" for="email">Email</label>
-            <input class="form__input" aria-labelledby="email" aria-describedby="email-format" type="email" id="email" name="email" pattern="\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$" required/>
+            <label class="form__label" id="email" for="e-mail">Email</label>
+            <input class="form__input" aria-labelledby="email" aria-describedby="email-format" type="email" id="e-mail" name="email" pattern="\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$" required/>
             <span id="email-format" class="hidden">xy@abc.xyz</span>
 
-            <label class="form__label" id="message" for="message">Message</label>
-            <input class="form__input" aria-labelledby="message" type="text" id="message" name="message" minlength="10" maxlength="100" required/>
+            <label class="form__label" id="form-message" for="message">Message</label>
+            <input class="form__input" aria-labelledby="form-message" type="text" id="message" name="message" minlength="10" maxlength="100" required/>
           </fieldset>
           <button class="form__button button submit">Envoyer</button>
         </form>

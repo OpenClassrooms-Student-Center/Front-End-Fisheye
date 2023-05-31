@@ -42,7 +42,7 @@ h1 {
   overflow: hidden;
   position: absolute;
   top: -10000px;
-  width: 0px;
+  width: 1px;
 }
 
 .photographer_section {
@@ -272,6 +272,8 @@ h1 {
   padding-bottom: 3rem;
   font-weight: bold;
   font-size: 1.2rem;
+  display: flex;
+  align-items: center;
 }
 .sort__select {
   position: relative;
@@ -443,6 +445,8 @@ h1 {
   padding-bottom: 3rem;
   font-weight: bold;
   font-size: 1.2rem;
+  display: flex;
+  align-items: center;
 }
 .sort__select {
   position: relative;

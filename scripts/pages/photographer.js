@@ -25,7 +25,7 @@ async function displaySortSection() {
   sortSection.classList.add("sort");
   main.appendChild(sortSection)
 
-  const selectLabel = document.createElement("label");
+  const selectLabel = document.createElement("p");
   selectLabel.classList.add("sort__label");
   selectLabel.innerText = "Trier par"
 
@@ -90,7 +90,7 @@ async function displayPhotographerMedias() {
   likeMedia();
   // return results
 }
-async function renderSortedMedias() {
+async function renderSortedMediasOnClick() {
   const options = document.querySelectorAll(".sort__option");
   options.forEach(option => {
     option.addEventListener("click", async () => {
@@ -284,7 +284,7 @@ async function init() {
   openOptionsList();
   selectOption();
   openContactForm();
-  renderSortedMedias();
+  renderSortedMediasOnClick();
   // await displayMediasInLightbox();
   await displayLikesCounter();
 
