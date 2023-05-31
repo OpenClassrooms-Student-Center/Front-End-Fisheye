@@ -88,23 +88,15 @@ async function displayPhotographerMedias() {
   await createSortedMediasCards();
   displayMediasInLightbox();
   likeMedia();
-  // return results
 }
-async function renderSortedMediasOnClick() {
+async function renderSortedMedias() {
   const options = document.querySelectorAll(".sort__option");
   options.forEach(option => {
     option.addEventListener("click", async () => {
       document.querySelector(".photographer__content").remove();
       await displayPhotographerMedias();
-      // likeMedia();
-      // await createSortedMediasCards();
-      // displayMediasInLightbox();
-      // console.log(medias);
-      // setTimeout(async() => {
-      // }, 1);
     })
   })
-  // displayMediasInLightbox();
 }
 
 async function displayLikesCounter() {
@@ -207,7 +199,6 @@ async function renderMedia(mediaId) {
     figure.appendChild(caption);
 
     lightbox.prepend(figure);
-    console.log(figure);
   }
   disableLightboxButtons(mediaIndex, medias.length)
 }
@@ -244,26 +235,23 @@ async function displayMediasInLightbox() {
   const mediaColl = document.querySelectorAll(".media");
   const medias = Array.from(mediaColl);
   medias.forEach(media => {
-    media.firstChild.addEventListener("click", async () => {
+    media.firstChild.addEventListener("click", async (event) => {
       const mediaId = media.id
       openLightbox();
       renderMedia(mediaId);
+      nextMediaWithArrow();
+      previousMediaWithArrow();
     })
   })
-
   // au click sur le bouton next, on récupère le nouvel index, et on rappelle la fonction pour créer l'html du média
   const next = document.querySelector(".lightboxModal__next");
-  // console.log("next", document.querySelector(".lightboxModal__figure")
-
   next.addEventListener("click", async () => {
     if (document.querySelector(".lightboxModal__figure")) {
       document.querySelector(".lightboxModal__figure").remove()
-      // document.querySelectorAll(".lightboxModal__figure").forEach(el => el.remove())
       const nextId = await findNextMedia()
       renderMedia(nextId);
     }
   })
-
    // au click sur le bouton previous, on récupère le nouvel index, et on rappelle la fonction pour créer l'html du média
   const previous = document.querySelector(".lightboxModal__previous");
   previous.addEventListener("click", async () => {
@@ -275,6 +263,32 @@ async function displayMediasInLightbox() {
   })
 }
 
+function nextMediaWithArrow() {
+  const lightbox = document.querySelector(".lightboxModal");
+  document.addEventListener("keydown", async (event) => {
+    const code = event.code
+    if (lightbox.getAttribute('aria-hidden') == 'false' && code === "ArrowRight") {
+      if (document.querySelector(".lightboxModal__figure")) {
+        const nextId = await findNextMedia();
+        renderMedia(nextId)
+        document.querySelector(".lightboxModal__figure").remove()
+      }
+    }
+  })
+}
+function previousMediaWithArrow() {
+  const lightbox = document.querySelector(".lightboxModal");
+  document.addEventListener("keydown", async (event) => {
+    const code = event.code
+    if (lightbox.getAttribute('aria-hidden') == 'false' && code === "ArrowLeft") {
+      if (document.querySelector(".lightboxModal__figure")) {
+        const previousId = await findPreviousMedia();
+        renderMedia(previousId)
+        document.querySelector(".lightboxModal__figure").remove()
+      }
+    }
+  })
+}
 
 
 async function init() {
@@ -284,7 +298,7 @@ async function init() {
   openOptionsList();
   selectOption();
   openContactForm();
-  renderSortedMediasOnClick();
+  renderSortedMedias();
   // await displayMediasInLightbox();
   await displayLikesCounter();
 
