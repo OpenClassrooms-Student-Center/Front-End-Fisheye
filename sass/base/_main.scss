@@ -5,3 +5,12 @@
   margin: 0rem 4rem;
   // border: 1px solid red;
 }
+
+.hidden {
+    height: 1px;
+    left: 0;
+    overflow: hidden;
+    position: absolute;
+    top: -10000px;
+    width: 1px;
+}

@@ -36,6 +36,15 @@ h1 {
   margin: 0rem 4rem;
 }
 
+.hidden {
+  height: 1px;
+  left: 0;
+  overflow: hidden;
+  position: absolute;
+  top: -10000px;
+  width: 0px;
+}
+
 .photographer_section {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
@@ -217,6 +226,7 @@ h1 {
   justify-content: center;
   width: 100%;
   margin-bottom: 2em;
+  border: none;
 }
 .form__title {
   font-size: 3em;
@@ -398,8 +408,8 @@ h1 {
   position: absolute;
   top: 5rem;
   right: 5rem;
-  width: 3rem;
-  height: 3rem;
+  width: 3.2rem;
+  height: 3.2rem;
   color: #901C1C;
   font-size: 3rem;
   border: none;
