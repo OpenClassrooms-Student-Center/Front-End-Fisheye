@@ -104,16 +104,14 @@ async function renderSortedMedias() {
 async function displayLikesCounter() {
   // crée et affiche une div contenant le total de like et le prix journalier du photographe
   const photographer = await getPhotographersById();
-  // const likesDiv = document.createElement("div");
   footer.classList.add("counter");
   footer.setAttribute("aria-label", "Total of likes and price per day")
-  // footer.appendChild(likesDiv)
   const medias = await getMediasByPhotographer();
   let totalLikes = 0;
   medias.forEach(media => {
     totalLikes += media.likes
   });
-  footer.innerHTML += `
+  footer.innerHTML = `
   <div class="counter__likes" aria-label="likes counter">
     <p class="likes">${totalLikes}</p>
     <i class="fa-solid fa-heart"></i>

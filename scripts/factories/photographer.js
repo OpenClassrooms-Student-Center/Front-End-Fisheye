@@ -46,7 +46,7 @@ export function photographerFactory(photographer) {
 
     function getUserHeader() {
         const photographerHeader = `
-        <div class="photographer__info" aria-label="Photographer informations">
+        <div class="photographer__info" aria-label="Photographer informations" role="presentation">
             <h2 class="photographer__name photographer__name--doubled">${name}</h2>
                 <p class="photographer__location photographer__location--doubled">${city}, ${country}</p>
                 <p class="photographer__tagline photographer__tagline--doubled">${tagline}</p>
