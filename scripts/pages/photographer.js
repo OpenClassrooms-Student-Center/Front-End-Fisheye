@@ -114,7 +114,7 @@ async function displayLikesCounter() {
   footer.innerHTML = `
   <div class="counter__likes" aria-label="likes counter">
     <p class="likes">${totalLikes}</p>
-    <i class="fa-solid fa-heart"></i>
+    <i class="fa-solid fa-heart" role="icon"></i>
   </div>
   <p class="price">${photographer.price}€ / jour</p>
   `
