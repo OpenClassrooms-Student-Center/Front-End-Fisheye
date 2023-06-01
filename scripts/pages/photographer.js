@@ -7,6 +7,7 @@ import { openContactForm } from "../utils/contactForm.js";
 import { openLightbox, disableLightboxButtons } from "../utils/lightBox.js";
 
 const main = document.querySelector("main");
+const footer = document.querySelector("footer");
 let mediaLightboxId = 0;
 
 async function displayPhotographerHeader() {
@@ -33,6 +34,7 @@ async function displaySortSection() {
   selectDiv.classList.add("sort__select");
   selectDiv.setAttribute("aria-label", "Order by");
   selectDiv.setAttribute("data-value", "popularity");
+  selectDiv.setAttribute("aria-label", "dropdown");
 
   const sortBtn = document.createElement("button");
   sortBtn.innerText = "Popularité";
@@ -102,18 +104,19 @@ async function renderSortedMedias() {
 async function displayLikesCounter() {
   // crée et affiche une div contenant le total de like et le prix journalier du photographe
   const photographer = await getPhotographersById();
-  const likesDiv = document.createElement("div");
-  likesDiv.classList.add("counter")
-  main.appendChild(likesDiv)
+  // const likesDiv = document.createElement("div");
+  footer.classList.add("counter");
+  footer.setAttribute("aria-label", "Total of likes and price per day")
+  // footer.appendChild(likesDiv)
   const medias = await getMediasByPhotographer();
   let totalLikes = 0;
   medias.forEach(media => {
     totalLikes += media.likes
   });
-  likesDiv.innerHTML += `
-  <div class="counter__likes">
-    <p class="likes">${totalLikes} </p>
-    <i class="fa-solid fa-heart "></i>
+  footer.innerHTML += `
+  <div class="counter__likes" aria-label="likes counter">
+    <p class="likes">${totalLikes}</p>
+    <i class="fa-solid fa-heart"></i>
   </div>
   <p class="price">${photographer.price}€ / jour</p>
   `
@@ -304,7 +307,6 @@ async function init() {
   selectOption();
   openContactForm();
   renderSortedMedias();
-  // await displayMediasInLightbox();
   await displayLikesCounter();
 
 }

@@ -170,9 +170,10 @@ h1 {
   position: fixed;
   display: flex;
   justify-content: space-around;
+  gap: 2rem;
   align-items: center;
   bottom: 0rem;
-  width: 18rem;
+  width: 20rem;
   height: 6rem;
   right: 10%;
   background-color: #D3573C;
