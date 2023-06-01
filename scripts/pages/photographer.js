@@ -60,43 +60,67 @@ async function displayPhotographMedias() {
         mediasContainer.appendChild(mediaElement);
     });
 
+    // Ajouter les événements aux médias
+    function resetEventListener() {
+        const mediaItems = document.querySelectorAll('.media-item');
+        const regex = /\d+/g;
+        
+        mediaItems.forEach(mediaItem => {
+            const id = mediaItem.id.match(regex);
+            const media = document.getElementById(`media-${id}`)
+            
+            media.addEventListener('click', (event) => {
+                const index = Array.from(mediaItems).findIndex((element) => element.id === mediaItem.id);
+                launchLightBox(id, event, index)
+            });
+            media.addEventListener('keydown', (event) => {
+                const lightBoxOpen = document.querySelector('.light-box');
+                if (event.key === 'Enter') {
+                    const index = Array.from(mediaItems).findIndex((element) => element.id === mediaItem.id);
+                    launchLightBox(id, event, index)
+                } else if (event.key === 'ArrowRight' && lightBoxOpen) {
+                    showNextMedia(event);
+                } else if (event.key === 'ArrowLeft' && lightBoxOpen) {
+                    showPreviousMedia(event);
+                } else if (event.key === 'Escape' && lightBoxOpen) {
+                    const mediaId = lightBoxOpen.id.split('-')[1];
+                    launchLightBox(mediaId, event);
+                }
+            });
+        });
+    }
+
+    // Trier les médias et réinitialiser les événements
+    function updateMediaOrder(mediaElements) {
+        mediasContainer.innerHTML = '';
+        mediaElements.forEach((mediaElement) => {
+            mediasContainer.appendChild(mediaElement);
+        });
+        resetEventListener();
+    }
+
     // Tri par popularité ou titre ou date
     function sortByPopularity() {
-        mediasContainer.innerHTML = '';
-
         const mediaFactory = createMediaFactory(mediaData, 'popularity');
         const mediaDOM = Array.from(mediaFactory.getMediaDOM());
 
-        mediaDOM.forEach((mediaElement) => {
-            mediasContainer.appendChild(mediaElement);
-        });
-
+        updateMediaOrder(mediaDOM);
         toggleButtonState('sort-button-popularity');
     }
 
     function sortByTitle() {
-        mediasContainer.innerHTML = '';
-
         const mediaFactory = createMediaFactory(mediaData, 'title');
         const mediaDOM = Array.from(mediaFactory.getMediaDOM());
 
-        mediaDOM.forEach((mediaElement) => {
-            mediasContainer.appendChild(mediaElement);
-        });
-
+        updateMediaOrder(mediaDOM);
         toggleButtonState('sort-button-title');
     }
 
     function sortByDate() {
-        mediasContainer.innerHTML = '';
-
         const mediaFactory = createMediaFactory(mediaData, 'date');
         const mediaDOM = Array.from(mediaFactory.getMediaDOM());
 
-        mediaDOM.forEach((mediaElement) => {
-            mediasContainer.appendChild(mediaElement);
-        });
-
+        updateMediaOrder(mediaDOM);
         toggleButtonState('sort-button-date');
     }
 
@@ -119,10 +143,12 @@ async function displayPhotographMedias() {
         button.classList.add('sort-button', buttonClass);
         button.textContent = text;
         button.ariaLabel = `Cliquez ou appuyez sur 'Enter' pour trier les médias par : ${text}.`;
+        
         button.addEventListener('click', () => {
-          sortByFunction();
-          toggleDropdownMenu();
+            sortByFunction();
+            toggleDropdownMenu();
         });
+        
         button.addEventListener('keydown', (event) => {
             if (event.key === 'Enter') {
                 sortByFunction();
@@ -141,7 +167,7 @@ async function displayPhotographMedias() {
     const titleButton = createSortButton('Titre', 'sort-button-title', sortByTitle);
     const dateButton = createSortButton('Date', 'sort-button-date', sortByDate);
 
-    // Créer le menu dropdown
+    // Créer le menu dropdown et mettre le bouton sélectionné en haut
     function toggleDropdownMenu() {
         const dropdownMenu = document.querySelector('.dropdown-menu');
         dropdownMenu.classList.toggle('show');
@@ -178,8 +204,12 @@ async function displayPhotographMedias() {
     buttonsContainer.innerText = 'Trier par : '
     buttonsContainer.appendChild(dropdownMenu);
 
+    // Afficher les boutons de tri avant les médias
     mediasContainer.parentNode.insertBefore(buttonsContainer, mediasContainer);
     toggleButtonState('sort-button-popularity');
+
+    // Réinitialiser les événements des médias
+    resetEventListener();
 }
 
 // FOOTER

@@ -22,7 +22,7 @@ class Image extends Media {
                 src="assets/medias/${this.src}" 
                 alt="${this.title}" 
                 class="media-figure-img"
-                aria-label="Photo nommée ${this.title}, cliquez ou appuyez sur entrée pour agrandir" 
+                aria-label="Photo nommée ${this.title}" 
             >
         `;
     }
@@ -37,11 +37,12 @@ class Video extends Media {
         return `
             <video
                 id="img-${this.id}"
-                src="assets/medias/${this.src}" 
+                src="assets/medias/${this.src}"
+                alt="${this.title}" 
                 class="media-figure-img"
-                aria-label="Vidéo nommée ${this.title}, cliquez ou appuyez sur entrée pour agrandir" 
+                aria-label="Vidéo nommée ${this.title}" 
                 controls
-                ></video>
+            ></video>
         `;
     }
 }
@@ -89,9 +90,9 @@ function createMediaFactory(mediasData, sortBy = 'popularity') {
             mediaHtml += `
                 <figure class="media-figure">
                     <div 
-                        id="media-${id}" data-index="${i}" 
-                        tabindex="0" onclick="launchLightBox(${id}, event, ${i})" 
-                        onkeydown="launchLightBoxWithKey(${id}, event, ${i})" 
+                        id="media-${id}"
+                        class="media-item"
+                        tabindex="0"
                         aria-label="Cliquez ou appuyez sur 'Enter' pour ouvrir le média. Vous pouvez naviguer entre les médias avec les flèches du clavier et quitter à tout moment avec la touche 'Echap'."
                     >
                         <span 
@@ -133,7 +134,7 @@ function createMediaFactory(mediasData, sortBy = 'popularity') {
             `;
         }
 
-        const figure = document.createElement('figure');
+        const figure = document.createElement('div');
         figure.innerHTML = mediaHtml;
         return figure.children;
     }

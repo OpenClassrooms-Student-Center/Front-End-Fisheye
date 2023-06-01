@@ -56,21 +56,6 @@ const showMediaAtIndex = (currentIndex) => {
     elements.forEach(element => element.style.display = 'block');
 }
 
-// Events clavier
-document.addEventListener('keydown', (event) => {
-    if (event.key === 'ArrowRight') {
-        showNextMedia(event);
-    } else if (event.key === 'ArrowLeft') {
-        showPreviousMedia(event);
-    } else if (event.key === 'Escape') {
-        const lightBox = document.querySelector('.light-box');
-        if (lightBox) {
-            const mediaId = lightBox.id.split('-')[1];
-            launchLightBox(mediaId, event);
-        }
-    }
-})
-
 const launchLightBoxWithKey = (id, event, index) => {
     if (event.key === 'Enter') {
         launchLightBox(id, event, index);
