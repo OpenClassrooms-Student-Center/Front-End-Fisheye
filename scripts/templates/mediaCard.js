@@ -51,7 +51,8 @@ class MediaCard {
             const ext = this._media.video.split(".",2)[1]
             userCard = `
             <video onclick="lightboxOn(${e})" >
-                <source src="/assets/photographers/${this._media.photographerId}/${this._media.video}" type="video/${ext}">
+                <source src="/assets/photographers/${this._media.photographerId}/${this._media.video}" type="video/${ext} ">
+                <p>Votre navigateur ne prend pas en charge les vidéos</p>
             </video>
             <div>
             <h2>${this._media.title}</h2>

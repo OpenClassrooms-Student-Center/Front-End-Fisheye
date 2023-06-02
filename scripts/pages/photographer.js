@@ -99,13 +99,14 @@ function modifySort(){
 }
 
 //lightbox
-
+let index=0;
 function lightboxOn(e){
+    index=e
     const lightbox = document.getElementById("imageCloseUp");
 	lightbox.style.display = "block";
-    console.log(table[e]);
+    const html = document.querySelector("html");
+    html.style.overflowY = "hidden";
     if(table[e]._image){
-        console.log("test");
         let box = `
             <div class="lightbox">
                 <span class="close" onclick="lightboxOff()">X</span>
@@ -143,8 +144,31 @@ function lightboxOn(e){
 function lightboxOff(){
     const lightbox = document.getElementById("imageCloseUp");
 	lightbox.style.display = "none";
+    const html = document.querySelector("html");
+    html.style.overflowY = "visible";
 }
 
+
+window.addEventListener('keydown', function (event) {
+    const lightbox = document.getElementById("imageCloseUp");
+	if(lightbox.style.display == "block"){
+        if (event.key == "ArrowLeft") {
+           if(index > 0){                    
+            lightboxOn(index-1);
+            console.log("test--")
+           }
+        }
+        else if(event.key == "ArrowRight"){
+            if(index < table.length-1){
+                lightboxOn(index+1);
+                console.log("test++")
+            }
+        }
+        else if (event.key == "Escape"){
+            lightboxOff()
+        }  
+    }
+})
 
 //like et dislike
 

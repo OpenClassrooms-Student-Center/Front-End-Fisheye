@@ -1,6 +1,6 @@
 function displayModal() {
     const modal = document.getElementById("contact_modal");
-	modal.style.display = "block";
+	  modal.style.display = "block";
     const html = document.querySelector("html");
     html.style.overflowY = "hidden";
 }
@@ -44,3 +44,12 @@ const contact={
     contact.message=e.target.value;
   });
   
+
+  window.addEventListener('keydown', function (event) {
+    const modal = document.getElementById("contact_modal");
+	  if(modal.style.display == "block"){
+        if (event.key == "Escape"){
+          closeModal()
+        }  
+      }
+  })
