@@ -17,7 +17,7 @@ async function displayPhotographer(photographers) {
   console.log(id);
   console.log(photographers);
   // getting the corosponding object (photographer) related to the id from the search params
-  let photographer = photographers.find((myId) => myId.id == id);
+  let photographer = photographers.find(myId => myId.id == id);
   console.log(id);
   console.log(photographer);
 
@@ -29,22 +29,23 @@ async function displayPhotographer(photographers) {
   // creating a contact me  button
   const btnNewPosition = document.querySelector(".mainArticle");
   const btn = document.createElement("button");
-  btn.setAttribute("tabindex", "0");
+  btn.setAttribute("tabindex", "0 ");
   btn.setAttribute("role", "button");
   btn.setAttribute("class", "contact_button");
   btn.textContent = "Contactez-moi";
   btnNewPosition.appendChild(btn);
   // display modal onclick
-  btn.addEventListener("click", function () {
+  btn.addEventListener("click", function() {
     displayModal();
   });
 
   // adjusting the elements as required in the maquette
   const flexOrdering = document.querySelector(".frame");
-  flexOrdering.style.order = 3;
+  flexOrdering.style.order = 1;
   flexOrdering.setAttribute("tabIndex", "0");
 
   // removing price from header
+  // document.getElementById("price").classList.add("sr-only");
 }
 
 async function initPhotographerPage() {
@@ -55,33 +56,68 @@ async function initPhotographerPage() {
 // calling the function to create the elements in photographer page
 initPhotographerPage();
 
-async function displayMedia(media, sortingParameter) {
-  // // creating the artwork for each photographer
+async function displayMedia(photographerMedia) {
   const mediaDiv = document.querySelector(".media-div");
-  let params = new URL(document.location).searchParams;
-  // getting the id from the search params
-  let id = params.get("id");
-  console.log(id);
-  // getting the corosponding object (photographer) related to the id from the search params
-  let mediaById = media.filter((sameId) => sameId.photographerId == id);
 
-  // sorting medias
-  let filteredArray = mediaById;
-  if (sortingParameter) {
-    filteredArray = mediaById.sort(
-      (a, b) => a[sortingParameter] - b[sortingParameter]
-    );
-  }
-  console.log("filteredArray", filteredArray);
-  filteredArray.forEach((media) => {
+  mediaDiv.innerHTML = "";
+  photographerMedia.forEach(media => {
     const mediaSection = mediaFactory(media);
-    const mediaArts = mediaSection.getUserArtDOM(media);
+    const mediaArts = mediaSection.getUserArtDOM(media, totalCount);
     mediaDiv.appendChild(mediaArts);
   });
 }
 
 async function photographersMedia() {
   const { media } = await photographerPage();
-  displayMedia(media, "date");
+  // creating the artwork for each photographer
+  let params = new URL(document.location).searchParams;
+  // getting the id from the search params
+  let id = params.get("id");
+  console.log(id);
+  // getting the corosponding object (photographer) related to the id from the search params
+  let photographerMedia = media.filter(m => m.photographerId == id);
+  // maping and adding the sum of likes for each photographer
+  const photographerLikes = photographerMedia.map(k => k.likes);
+  let likesCounter = 0;
+  for (i = 0; i < photographerLikes.length; i++) {
+    totalCount += photographerLikes[i];
+  }
+  console.log("photographerMedia", photographerMedia);
+  console.log(photographerLikes);
+
+  // creating a general span for the photographer
+  const likesCounterSpan = document.getElementById("generalCounter");
+  const totalLikes = document.createElement("p");
+  totalLikes.setAttribute("id", "totalLikes");
+  totalLikes.innerHTML = totalCount;
+  const likeCounterSpanIcon = document.createElement("i");
+  likeCounterSpanIcon.classList.add("fa-heart", "fas");
+  likeCounterSpanIcon.style.color = "black";
+  const likesDiv = document.createElement("div");
+  likesDiv.classList.add("likesDiv");
+  const dayPrice = document.getElementById("price");
+  // append children to the span
+  likesDiv.appendChild(totalLikes);
+  likesDiv.appendChild(likeCounterSpanIcon);
+  likesCounterSpan.appendChild(likesDiv);
+  likesCounterSpan.appendChild(dayPrice);
+
+  displayMedia(photographerMedia);
+  // addEventListener of selector
+  let selector = document.getElementById("selecting-div");
+  selector.addEventListener("change", function() {
+    if (selector.value == "0") {
+      sortingParameter = true;
+      photographerMedia.sort(
+        (a, b) => parseFloat(b.likes) - parseFloat(a.likes)
+      );
+    } else if (selector.value == "1") {
+      sortingParameter = false;
+      photographerMedia.sort((a, b) => new Date(b.date) - new Date(a.date));
+    }
+
+    displayMedia(photographerMedia);
+    return sortingParameter;
+  });
 }
 photographersMedia();

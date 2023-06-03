@@ -17,12 +17,11 @@
     </header>
     <main id="main">
       <div class="photograph-header">
-        <!-- <button class="contact_button" onclick="displayModal()">Contactez-moi</button> -->
       </div>
       <div class="selectors">
         <p> Tirer par</p>
-        <div class="select-button" style="width:200px;">
-          <select>
+        <div class="select-button">
+          <select id="selecting-div">
             <option value="0">Popularité</option>
             <option value="1">Date</option>
             <option value="2">Titre</option>
@@ -30,9 +29,8 @@
         </div>
       </div>
       <div class=" media-div">
-        <!-- <i class="fa-regular fa-heart"></i> -->
-        
       </div>
+      <span id="generalCounter"></span>        
     </main>
     <div id="contact_modal">
 			<div class="modal">
@@ -40,10 +38,45 @@
           <h2>Contactez-moi</h2>
           <img src="assets/icons/close.svg" onclick="closeModal()" />
         </header>
-				<form>
+				<form 
+          name="reserve"
+          action="index.html"
+          method="get"
+          id="form">
 					<div>
-						<label>Prénom</label>
-						<input />
+						<label for="first">Prénom</label>
+						<input  
+            class="text-control"
+            type="text"
+            id="first"
+            name="first"/>
+            <span id="first_error" class="errors"> </span><br>
+					</div>
+          <div>
+						<label for="last">Nom</label>
+						<input 
+            class="text-control"
+                  type="text"
+                  id="last"
+                  name="last"/>
+            <span id="last_error" class="errors"> </span><br>
+					</div>
+          <div>
+						<label for="email">e-mail</label>
+						<input 
+            class="text-control"
+            id="email"
+            name="email"
+            type="email"/>
+            <span id="email_error" class="errors"> </span><br>
+					</div>
+          <div>
+						<label>Votre message</label>
+            <textarea 
+            id="textarea"
+            rows="10" 
+            name="comment">
+            </textarea>
 					</div>
           <button class="contact_button">Envoyer</button>
 				</form>
