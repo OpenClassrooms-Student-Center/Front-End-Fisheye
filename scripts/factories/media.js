@@ -1,7 +1,7 @@
 
 // global variable counting likes
 let totalCount = 0;
-
+let addingALike = 0;
 
 // produce a media factory
 function mediaFactory(mediaItems) {
@@ -13,7 +13,7 @@ function mediaFactory(mediaItems) {
   const mediaDiv = document.querySelector(".media-div");
   
   // verify image or video
-  function getUserArtDOM(media, totalCount) {
+  function getUserArtDOM(media) {
     console.log("media", media);
     // totalCount += media.likes;
     console.log(totalCount);
@@ -44,21 +44,22 @@ function mediaFactory(mediaItems) {
     likesNo.style.fontSize = "1.2em";
     const iconSvg = document.createElement("i");
     iconSvg.classList.add("fa-heart","fas");
+
     // Attach the click event listener here
-    iconSvg.addEventListener('click', function(event) {
+    iconSvg.addEventListener('click', function onClick(event) {
       console.log('Clicked!', event.target);
-      console.log(media);
+      iconSvg.removeEventListener('click', onClick);
+      console.log("Event fired once, no more click will be handled");
       // media likes updated for every element 
-      console.log(totalCount);
+      console.log('total likes ', totalCount);
       media.likes += 1;
       likesNo.textContent = media.likes;
+      console.log(media.likes);
       // medial likes total count
-      totalCount += 1;
+      addingALike += 1;   
       let totalLikeDiv = document.getElementById('totalLikes');
-      totalLikeDiv.innerHTML = totalCount;
+      totalLikeDiv.innerHTML = totalCount + addingALike;
     });
-    
-
     // attach the media elements to parents
     mediaDiv.appendChild(artCard);
     artCard.appendChild(artWork);

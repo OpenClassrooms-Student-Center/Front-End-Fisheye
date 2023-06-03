@@ -43,9 +43,6 @@ async function displayPhotographer(photographers) {
   const flexOrdering = document.querySelector(".frame");
   flexOrdering.style.order = 1;
   flexOrdering.setAttribute("tabIndex", "0");
-
-  // removing price from header
-  // document.getElementById("price").classList.add("sr-only");
 }
 
 async function initPhotographerPage() {
@@ -62,7 +59,7 @@ async function displayMedia(photographerMedia) {
   mediaDiv.innerHTML = "";
   photographerMedia.forEach(media => {
     const mediaSection = mediaFactory(media);
-    const mediaArts = mediaSection.getUserArtDOM(media, totalCount);
+    const mediaArts = mediaSection.getUserArtDOM(media);
     mediaDiv.appendChild(mediaArts);
   });
 }
@@ -80,10 +77,8 @@ async function photographersMedia() {
   const photographerLikes = photographerMedia.map(k => k.likes);
   let likesCounter = 0;
   for (i = 0; i < photographerLikes.length; i++) {
-    totalCount += photographerLikes[i];
+    totalCount += photographerLikes[i] + addingALike;
   }
-  console.log("photographerMedia", photographerMedia);
-  console.log(photographerLikes);
 
   // creating a general span for the photographer
   const likesCounterSpan = document.getElementById("generalCounter");
@@ -107,17 +102,17 @@ async function photographersMedia() {
   let selector = document.getElementById("selecting-div");
   selector.addEventListener("change", function() {
     if (selector.value == "0") {
-      sortingParameter = true;
       photographerMedia.sort(
         (a, b) => parseFloat(b.likes) - parseFloat(a.likes)
       );
     } else if (selector.value == "1") {
-      sortingParameter = false;
       photographerMedia.sort((a, b) => new Date(b.date) - new Date(a.date));
+    } else if (selector.value == "2") {
+      photographerMedia.sort((a, b) => a.title < b.title);
+      // photographerMedia.sort();
     }
 
     displayMedia(photographerMedia);
-    return sortingParameter;
   });
 }
 photographersMedia();
