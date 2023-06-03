@@ -15,7 +15,7 @@ export function photographerFactory(photographer) {
 
         const photographerImg = document.createElement( 'img' );
         photographerImg.setAttribute("src", picture);
-        photographerImg.setAttribute("alt", name);
+        photographerImg.setAttribute("alt", `${name} - photographer page`);
         photographerImg.className += "photographer__img";
 
         const photographerName = document.createElement( 'h2' );

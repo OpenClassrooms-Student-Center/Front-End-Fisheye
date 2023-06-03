@@ -46,6 +46,7 @@ async function displaySortSection() {
 
   const arrow = document.createElement("i");
   arrow.classList.add("sort__down", "fa-solid", "fa-caret-down");
+  arrow.setAttribute("aria-hidden", "true")
   sortBtn.appendChild(arrow);
 
   const sortList = document.createElement("div");
@@ -114,7 +115,7 @@ async function displayLikesCounter() {
   footer.innerHTML = `
   <div class="counter__likes" aria-label="likes counter">
     <p class="likes">${totalLikes}</p>
-    <i class="fa-solid fa-heart" role="icon"></i>
+    <i class="fa-solid fa-heart" aria-hidden="true" role="icon"></i>
   </div>
   <p class="price">${photographer.price}€ / jour</p>
   `
