@@ -38,7 +38,7 @@ async function displaySortSection() {
 
   const sortBtn = document.createElement("button");
   sortBtn.innerText = "Popularité";
-  sortBtn.setAttribute("aria-haspopup", "listbox");
+  sortBtn.setAttribute("role", "listbox");
   sortBtn.setAttribute("aria-expanded", "");
   sortBtn.id = "sort__button";
   sortBtn.classList.add("sort__button", "button");
@@ -167,13 +167,13 @@ async function renderMedia(mediaId) {
 
     const lightboxImg = document.createElement("img");
     lightboxImg.src = `assets/photographers/${photographerId}/${image}`;
-    lightboxImg.alt = `${title}`;
+    lightboxImg.alt = title;
     lightboxImg.classList.add("lightboxModal__img");
     figure.appendChild(lightboxImg);
 
     const caption = document.createElement("figcaption");
     caption.classList.add("lightboxModal__caption");
-    caption.innerText = `${title}`;
+    caption.innerText = title;
     figure.appendChild(caption);
 
     lightbox.prepend(figure);
@@ -196,7 +196,7 @@ async function renderMedia(mediaId) {
 
     const caption = document.createElement("figcaption");
     caption.classList.add("lightboxModal__caption");
-    caption.innerText = `${title}`;
+    caption.innerText = title;
     figure.appendChild(caption);
 
     lightbox.prepend(figure);
