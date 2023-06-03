@@ -62,40 +62,37 @@ async function displayPhotographMedias() {
 
     // Ajouter les événements aux médias
     function resetEventListener() {
+
         const mediaItems = document.querySelectorAll('.media-item');
         const regex = /\d+/g;
         
         mediaItems.forEach(mediaItem => {
             const id = mediaItem.id.match(regex);
             const media = document.getElementById(`media-${id}`);
-            console.log('media:', media)
-            const mediaModal = document.getElementById(`media-modal-${id}`);
-            console.log('mediaModal:', mediaModal)
+            const index = Array.from(mediaItems).findIndex((element) => element.id === mediaItem.id);
             
             media.addEventListener('click', (event) => {
-                const index = Array.from(mediaItems).findIndex((element) => element.id === mediaItem.id);
                 launchLightBox(id, event, index)
             });
             media.addEventListener('keydown', (event) => {
                 if (event.key === 'Enter') {
-                    const index = Array.from(mediaItems).findIndex((element) => element.id === mediaItem.id);
                     launchLightBox(id, event, index)
                 }
             });
-            
-            mediaModal.addEventListener('keydown', (event) => {
-                const lightBoxOpen = document.querySelector('.light-box');
+        });
+
+        document.addEventListener('keydown', (event) => {
+            const lightBoxOpen = document.querySelector('.light-box');
+            if (lightBoxOpen) {
                 if (event.key === 'ArrowRight') {
                     showNextMedia(event);
-                    console.log('droite')
                 } else if (event.key === 'ArrowLeft') {
                     showPreviousMedia(event);
-                    console.log('gauche')
                 } else if (event.key === 'Escape') {
-                    const mediaId = lightBoxOpen.id.split('-')[1];
+                    const mediaId = lightBoxOpen.id.match(regex);
                     launchLightBox(mediaId, event);
                 }
-            });
+            }
         });
     }
 

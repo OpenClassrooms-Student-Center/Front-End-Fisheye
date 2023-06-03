@@ -88,14 +88,16 @@ function createMediaFactory(mediasData, sortBy = 'popularity') {
             }
 
             mediaHtml += `
-                <figure
-                    id="media-${id}"
-                    class="media-figure media-item"
-                    tabindex="0"
-                    aria-hidden=false
-                    aria-label="Cliquez ou appuyez sur 'Enter' pour ouvrir le média. Vous pouvez naviguer entre les médias avec les flèches du clavier et quitter à tout moment avec la touche 'Echap'." 
-                >
-                    ${media.getDom()}
+                <figure class="media-figure">
+                    <div
+                        id="media-${id}"
+                        class="media-item"
+                        tabindex="0"
+                        aria-hidden=false
+                        aria-label="Cliquez ou appuyez sur 'Enter' pour ouvrir le média. Vous pouvez naviguer entre les médias avec les flèches du clavier et quitter à tout moment avec la touche 'Echap'."
+                    >
+                        ${media.getDom()}
+                    </div>
                     <figcaption class="media-figure-figcaption">
                         <h2 class="media-figure-figcaption-title">${title}</h2>
                         <button 
@@ -107,7 +109,11 @@ function createMediaFactory(mediasData, sortBy = 'popularity') {
                         </button>
                     </figcaption>
                 </figure>
-                <div id="media-modal-${id}" class="media-modal" aria-hidden=true>
+                <div 
+                    id="media-modal-${id}" 
+                    class="media-modal" 
+                    aria-hidden=true tabindex=-1
+                >
                     <span 
                         class="element-light-box element-light-box-cross" 
                         onclick="launchLightBox(${id}, event)" 

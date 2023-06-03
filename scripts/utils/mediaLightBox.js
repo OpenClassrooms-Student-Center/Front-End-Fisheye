@@ -4,17 +4,22 @@ const launchLightBox = (id, event, index) => {
 
     const media = document.getElementById(`media-${id}`);
     const mediaModal = document.getElementById(`media-modal-${id}`);
-    const elmts = document.querySelectorAll('.element-light-box');
 
     if (!mediaModal.classList.contains('light-box')) {
-        media.ariaHidden = true;
+        media.setAttribute('aria-hidden', 'true');
+        media.setAttribute('tabindex', '-1');
         mediaModal.classList.add('light-box');
-        mediaModal.ariaHidden = false;
+        mediaModal.setAttribute('aria-hidden', 'false');
+        mediaModal.setAttribute('tabindex', '0');
+        mediaModal.focus();
         currentIndex = index;
     } else {
         mediaModal.classList.remove('light-box');
-        media.ariaHidden = false;
-        mediaModal.ariaHidden = true;
+        media.setAttribute('aria-hidden', 'false');
+        media.setAttribute('tabindex', '0');
+        mediaModal.setAttribute('aria-hidden', 'true');
+        mediaModal.setAttribute('tabindex', '-1');
+        media.focus();
     }
 }
 
@@ -30,7 +35,7 @@ const showNextMedia = (event) => {
 
 const showPreviousMedia = (event) => {
     event.stopPropagation();
-    
+
     const media = document.getElementsByClassName('media-figure');
     if (media.length > 0) {
         currentIndex = (currentIndex - 1 + media.length) % media.length;
@@ -46,19 +51,9 @@ const showMediaAtIndex = (currentIndex) => {
     const lightBoxes = document.querySelectorAll('.light-box');
     lightBoxes.forEach(lightBox => {
         lightBox.classList.remove('light-box');
-        // const elements = lightBox.querySelectorAll('.element-light-box');
-        // elements.forEach(element => element.style.display = 'none');
     });
 
     // Ouvrir la light-box du média sélectionnée
     currentElmt.classList.add('light-box');
     currentElmt.tabIndex = 0;
-    // const elements = currentElmt.querySelectorAll('.element-light-box');
-    // elements.forEach(element => element.style.display = 'block');
 }
-
-// const launchLightBoxWithKey = (id, event, index) => {
-//     if (event.key === 'Enter') {
-//         launchLightBox(id, event, index);
-//     }
-// }
