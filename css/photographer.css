@@ -231,6 +231,10 @@ form button {
 }
 
 /* LIGHTBOX */
+.media-modal {
+    display: none;
+}
+
 .light-box {
     position: fixed;
     top: 0;
@@ -245,7 +249,6 @@ form button {
 }
 
 .element-light-box {
-    display: none;
     position: absolute;
     cursor: pointer;
     font-size: 35px;
@@ -289,7 +292,6 @@ form button {
     font-size: 20px;
     margin: 30px 100px;
     display: flex;
-    /* align-items: center; */
 }
   
 .sort-button {

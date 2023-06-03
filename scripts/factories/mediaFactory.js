@@ -88,38 +88,14 @@ function createMediaFactory(mediasData, sortBy = 'popularity') {
             }
 
             mediaHtml += `
-                <figure class="media-figure">
-                    <div 
-                        id="media-${id}"
-                        class="media-item"
-                        tabindex="0"
-                        aria-label="Cliquez ou appuyez sur 'Enter' pour ouvrir le média. Vous pouvez naviguer entre les médias avec les flèches du clavier et quitter à tout moment avec la touche 'Echap'."
-                    >
-                        <span 
-                            class="element-light-box element-light-box-cross" 
-                            onclick="launchLightBox(${id}, event)" 
-                            title="Fermer le média"
-                        >
-                            <i class="fa-solid fa-xmark"></i>
-                        </span>
-                        <span 
-                            class="element-light-box element-light-box-arrowLeft" 
-                            onclick="showPreviousMedia(event)" 
-                            title="Média suivant"
-                        >
-                            <i class="fa-solid fa-chevron-left"></i>
-                        </span>
-                        <span 
-                            class="element-light-box element-light-box-arrowRight" 
-                            onclick="showNextMedia(event)" 
-                            title="Média précédent"
-                        >
-                            <i class="fa-solid fa-chevron-right"></i>
-                        </span>
-                        <p class="element-light-box element-light-box-title">${title}</p>
-                        ${media.getDom()}
-                    </div>
-
+                <figure
+                    id="media-${id}"
+                    class="media-figure media-item"
+                    tabindex="0"
+                    aria-hidden=false
+                    aria-label="Cliquez ou appuyez sur 'Enter' pour ouvrir le média. Vous pouvez naviguer entre les médias avec les flèches du clavier et quitter à tout moment avec la touche 'Echap'." 
+                >
+                    ${media.getDom()}
                     <figcaption class="media-figure-figcaption">
                         <h2 class="media-figure-figcaption-title">${title}</h2>
                         <button 
@@ -131,10 +107,35 @@ function createMediaFactory(mediasData, sortBy = 'popularity') {
                         </button>
                     </figcaption>
                 </figure>
+                <div id="media-modal-${id}" class="media-modal" aria-hidden=true>
+                    <span 
+                        class="element-light-box element-light-box-cross" 
+                        onclick="launchLightBox(${id}, event)" 
+                        title="Fermer le média"
+                    >
+                        <i class="fa-solid fa-xmark"></i>
+                    </span>
+                    <span 
+                        class="element-light-box element-light-box-arrowLeft" 
+                        onclick="showPreviousMedia(event)"
+                        title="Média suivant"
+                    >
+                        <i class="fa-solid fa-chevron-left"></i>
+                    </span>
+                    <span 
+                        class="element-light-box element-light-box-arrowRight" 
+                        onclick="showNextMedia(event)" 
+                        title="Média précédent"
+                    >
+                        <i class="fa-solid fa-chevron-right"></i>
+                    </span>
+                    <p class="element-light-box element-light-box-title">${title}</p>
+                    ${media.getDom()}
+                </div>
             `;
         }
 
-        const figure = document.createElement('div');
+        const figure = document.createElement('figure');
         figure.innerHTML = mediaHtml;
         return figure.children;
     }
