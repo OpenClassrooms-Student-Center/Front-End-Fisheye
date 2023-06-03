@@ -1,4 +1,4 @@
-import { mediaFactory } from "../factories/media.js";
+import { mediaFactory } from "../factories/mediaFactory.js";
 import { getMediasByPhotographer } from "./getMediasByPhotographer.js";
 
 

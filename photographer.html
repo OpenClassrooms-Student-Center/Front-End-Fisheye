@@ -12,63 +12,62 @@
     <link href="css/style.css" rel="stylesheet" type="text/css"/>
   </head>
 
-  <body id="body">
+  <body>
     <header>
       <a href="./index.html"><img src="assets/images/logo.png" class="logo" alt="Fisheye Logo - Home page"/></a>
     </header>
     <main id="main" aria-hidden="false"></main>
 
-    <footer></footer>
+    <!-- <div w3-include-html="modal.html"></div> -->
+    <div class="modal" aria-hidden="true" role="dialog" aria-label="contact form">
+      <div class="modal__window" aria-hidden="true">
+        <form class="form">
+          <div class="form__header" aria-describedby="formTitle">
+            <h2 id="formTitle" class="form__title">Contactez-moi</h2>
+            <button
+              type="button"
+              aria-label="Bouton de fermeture de la fenêtre de formulaire"
+              class="form__close"
+              data-dismiss="modal">
+              &times;
+            </button>
+          </div>
+          <fieldset class="form__body">
+            <label class="form__label" id="firstName" for="prenom">Prénom</label>
+            <input class="form__input" aria-labelledby="firstName" type="text" id="prenom" name="firstName" minlength="2" required/>
 
+            <label class="form__label" id="lastName" for="nom">Nom</label>
+            <input class="form__input" aria-labelledby="lastName" type="text" id="nom" name="lastName" minlength="2" required/>
+
+            <label class="form__label" id="email" for="e-mail">Email</label>
+            <input class="form__input" aria-labelledby="email" aria-describedby="email-format" type="email" id="e-mail" name="email" pattern="\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$" required/>
+            <span id="email-format" class="hidden">xy@abc.xyz</span>
+
+            <label class="form__label" id="form-message" for="message">Message</label>
+            <input class="form__input" aria-labelledby="form-message" type="text" id="message" name="message" minlength="10" maxlength="100" required/>
+          </fieldset>
+          <button class="form__button button submit">Envoyer</button>
+        </form>
+      </div>
+    </div>
+    <div class="lightboxModal" id="lightboxModal" aria-label="lightbox modal" aria-hidden="true" role="dialog">
+
+      <button class="lightboxModal__previous" tabindex="1">
+        <i class="fa-solid fa-caret-left" role="button"></i>
+      </button>
+
+      <button
+        aria-label="Bouton de fermeture du carousel"
+        class="lightboxModal__close"
+        data-dismiss="lightboxModal"
+        tabindex="3">
+        <i class="fa-solid fa-xmark" role="button"></i>
+      </button>
+      <button class="lightboxModal__next" tabindex="2">
+        <i class="fa-solid fa-caret-right" role="button"></i>
+      </button>
+    </div>
     <script type="module" src="/scripts/utils/contactForm.js"></script>
     <script type="module" src="/scripts/pages/photographer.js"></script>
   </body>
-  <div class="modal" aria-hidden="true" role="dialog" aria-label="contact form">
-    <div class="modal__window" aria-hidden="true">
-      <form class="form">
-        <div class="form__header" aria-describedby="formTitle">
-          <h2 id="formTitle" class="form__title">Contactez-moi</h2>
-          <button
-            type="button"
-            aria-label="Bouton de fermeture de la fenêtre de formulaire"
-            class="form__close"
-            data-dismiss="modal">
-            &times;
-          </button>
-        </div>
-        <fieldset class="form__body">
-          <label class="form__label" id="firstName" for="prenom">Prénom</label>
-          <input class="form__input" aria-labelledby="firstName" type="text" id="prenom" name="firstName" minlength="2" required/>
-
-          <label class="form__label" id="lastName" for="nom">Nom</label>
-          <input class="form__input" aria-labelledby="lastName" type="text" id="nom" name="lastName" minlength="2" required/>
-
-          <label class="form__label" id="email" for="e-mail">Email</label>
-          <input class="form__input" aria-labelledby="email" aria-describedby="email-format" type="email" id="e-mail" name="email" pattern="\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$" required/>
-          <span id="email-format" class="hidden">xy@abc.xyz</span>
-
-          <label class="form__label" id="form-message" for="message">Message</label>
-          <input class="form__input" aria-labelledby="form-message" type="text" id="message" name="message" minlength="10" maxlength="100" required/>
-        </fieldset>
-        <button class="form__button button submit">Envoyer</button>
-      </form>
-    </div>
-  </div>
-  <div class="lightboxModal" id="lightboxModal" aria-label="lightbox modal" aria-hidden="true" role="dialog">
-
-    <button class="lightboxModal__previous" tabindex="1">
-      <i class="fa-solid fa-caret-left" role="button"></i>
-    </button>
-
-    <button
-      aria-label="Bouton de fermeture du carousel"
-      class="lightboxModal__close"
-      data-dismiss="lightboxModal"
-      tabindex="3">
-      <i class="fa-solid fa-xmark" role="button"></i>
-    </button>
-    <button class="lightboxModal__next" tabindex="2">
-      <i class="fa-solid fa-caret-right" role="button"></i>
-    </button>
-  </div>
 </html>

@@ -46,7 +46,7 @@ export function disableLightboxButtons(index, mediasLength) {
   }
 }
 
-export function openLightbox(){
+export function initLightbox(){
   disableLightboxButtons()
   displayLightboxModal();
   closeLightbox();

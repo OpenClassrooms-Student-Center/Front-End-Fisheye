@@ -1,27 +1,40 @@
 import { getPhotographersById } from "../utils/getPhotographerById.js";
-import { photographerFactory } from "../factories/photographer.js";
-import { openOptionsList, selectOption } from "../utils/sortButton.js";
+import { photographerFactory } from "../factories/photographerFactory.js";
+import { initOptionsList } from "../utils/sortButton.js";
 import { createSortedMediasCards, sortMedias } from "../utils/sortMedias.js";
 import { getMediasByPhotographer } from "../utils/getMediasByPhotographer.js";
 import { openContactForm } from "../utils/contactForm.js";
-import { openLightbox, disableLightboxButtons } from "../utils/lightBox.js";
+import { initLightbox, disableLightboxButtons } from "../utils/lightBox.js";
 
 const main = document.querySelector("main");
-const footer = document.querySelector("footer");
+const body = document.querySelector("body");
+// const footer = document.querySelector("footer");
 let mediaLightboxId = 0;
+let photographer = null;
+let factory = null;
 
-async function displayPhotographerHeader() {
-  // affiche les informations de chaque photographe
-  const photographer = await getPhotographersById();
-  const datas = photographerFactory(photographer).getUserHeader();
+async function init() {
+  photographer = await getPhotographersById();
+  factory = photographerFactory(photographer);
+  await renderHeader();
+  await renderSortSection();
+  await renderMedias();
+  initOptionsList();
+  openContactForm();
+  renderSortedMedias();
+  await displayLikesCounter();
+}
+
+async function renderHeader() {
   const photographerHeader = document.createElement("section");
   photographerHeader.classList.add("photographer__header");
-  photographerHeader.innerHTML = datas
+  photographerHeader.innerHTML = factory.getUserHeader();
   main.appendChild(photographerHeader);
 }
 
-async function displaySortSection() {
-  // affiche la section qui contient le bouton de tri des medias
+
+// à mettre directement dans le html
+async function renderSortSection() {
   const sortSection = document.createElement("section");
   sortSection.classList.add("sort");
   main.appendChild(sortSection)
@@ -83,21 +96,21 @@ async function displaySortSection() {
   sortSection.appendChild(selectDiv);
 }
 
-async function displayPhotographerMedias() {
+async function renderMedias() {
   // affiche la section contenant les medias des photographes, et appelle la fonction créant les cards pour chaque média
   const mediaSection = document.createElement("section");
   mediaSection.classList.add("photographer__content");
   main.appendChild(mediaSection);
   await createSortedMediasCards();
-  displayMediasInLightbox();
-  likeMedia();
+  renderLightbox();
+  renderLikeMedia();
 }
 async function renderSortedMedias() {
   const options = document.querySelectorAll(".sort__option");
   options.forEach(option => {
     option.addEventListener("click", async () => {
       document.querySelector(".photographer__content").remove();
-      await displayPhotographerMedias();
+      await renderMedias();
     })
   })
 }
@@ -105,6 +118,7 @@ async function renderSortedMedias() {
 async function displayLikesCounter() {
   // crée et affiche une div contenant le total de like et le prix journalier du photographe
   const photographer = await getPhotographersById();
+  const footer = document.createElement("footer")
   footer.classList.add("counter");
   footer.setAttribute("aria-label", "Total of likes and price per day")
   const medias = await getMediasByPhotographer();
@@ -119,8 +133,9 @@ async function displayLikesCounter() {
   </div>
   <p class="price">${photographer.price}€ / jour</p>
   `
+  body.appendChild(footer);
 }
-async function likeMedia() {
+async function renderLikeMedia() {
   const medias = document.querySelectorAll(".media");
   medias.forEach(media => {
     let likesNumber = parseInt(media.querySelector(".media__likeNumber").innerText);
@@ -231,14 +246,14 @@ async function findPreviousMedia() {
   }
 }
 
-async function displayMediasInLightbox() {
+async function renderLightbox() {
   // au click sur un média, on récupère son index dans l'array de média trié, et on l'affiche en fonction de son index dans la lightbox
   const mediaColl = document.querySelectorAll(".media");
   const medias = Array.from(mediaColl);
   medias.forEach(media => {
     media.firstChild.addEventListener("click", async () => {
       const mediaId = media.id
-      openLightbox();
+      initLightbox();
       renderMedia(mediaId);
       nextMediaWithArrow();
       previousMediaWithArrow();
@@ -298,16 +313,5 @@ function previousMediaWithArrow() {
 }
 
 
-async function init() {
-  await displayPhotographerHeader()
-  await displaySortSection();
-  await displayPhotographerMedias();
-  openOptionsList();
-  selectOption();
-  openContactForm();
-  renderSortedMedias();
-  await displayLikesCounter();
-
-}
 
 init();

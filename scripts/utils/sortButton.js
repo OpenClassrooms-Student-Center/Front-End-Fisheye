@@ -1,5 +1,5 @@
 // affiche la div contenant la liste des options , et change le sens de la flèche en fonction
-export function openOptionsList() {
+function renderOptionsList() {
   const button = document.querySelector(".sort__button");
   const list = document.querySelector(".sort__options");
   button.addEventListener("click", function() {
@@ -31,7 +31,7 @@ function closeOptionsList() {
 }
 
 // au click, donne au bouton la valeur de l'option choisie, et applique display= none sur l'option choisie
-export function selectOption() {
+function selectOption() {
   const options = document.querySelectorAll(".sort__option");
   const orderBtn = document.querySelector(".sort__button");
   options.forEach(option => {
@@ -61,4 +61,10 @@ export function selectOption() {
       closeOptionsList();
     })
   })
+}
+
+export function initOptionsList() {
+  renderOptionsList();
+  closeOptionsList();
+  selectOption();
 }
