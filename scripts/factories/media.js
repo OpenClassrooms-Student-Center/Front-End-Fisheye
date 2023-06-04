@@ -30,6 +30,7 @@ function mediaFactory(mediaItems) {
     if (!isImage) {
       artWork.setAttribute("type", "video/mp4");
     }
+
     artWork.classList.add("grid-item");
     const artTitle = document.createElement("h3");
     const info = document.createElement("section");
@@ -60,6 +61,15 @@ function mediaFactory(mediaItems) {
       let totalLikeDiv = document.getElementById('totalLikes');
       totalLikeDiv.innerHTML = totalCount + addingALike;
     });
+
+    // adding listener for media lightbox
+    artWork.addEventListener('click', function(){
+      let modal = document.getElementById("myModal-img");
+      modal.style.display = "block";
+      console.log('modal', modal);
+
+    });
+
     // attach the media elements to parents
     mediaDiv.appendChild(artCard);
     artCard.appendChild(artWork);

@@ -1,25 +1,32 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <meta charset="utf-8">
+    <meta charset="utf-8" />
 
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" rel="stylesheet">
-    <link rel="icon" type="image/png" href="assets/favicon.png">
-    <link href="https://fonts.googleapis.com/css?family=DM+Sans&display=swap" rel="stylesheet">
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
+      rel="stylesheet"
+    />
+    <link rel="icon" type="image/png" href="assets/favicon.png" />
+    <link
+      href="https://fonts.googleapis.com/css?family=DM+Sans&display=swap"
+      rel="stylesheet"
+    />
     <link href="css/style.css" rel="stylesheet" type="text/css" />
-    
-    <title>Fisheye - photographe </title>
+
+    <title>Fisheye - photographe</title>
   </head>
   <body>
     <header role="banner">
-      <a href="index.html" aria-label="fisheye home page" aria-current="page"><img src="assets/images/logo.png" alt="" class="logo"/></a>
-      <h1 class="sr-only" tabindex="0"> Nos photographes</h1>
+      <a href="index.html" aria-label="fisheye home page" aria-current="page"
+        ><img src="assets/images/logo.png" alt="" class="logo"
+      /></a>
+      <h1 class="sr-only" tabindex="0">Nos photographes</h1>
     </header>
     <main id="main">
-      <div class="photograph-header">
-      </div>
+      <div class="photograph-header"></div>
       <div class="selectors">
-        <p> Tirer par</p>
+        <p>Tirer par</p>
         <div class="select-button">
           <select id="selecting-div">
             <option value="0">Popularité</option>
@@ -43,60 +50,40 @@
           </div>
         </div> -->
       </div>
-      <div class=" media-div">
-      </div>
-      <span id="generalCounter"></span>        
+      <div class="media-div"></div>
+      <div class="modal-img"></div>
+      <span id="generalCounter"></span>
     </main>
     <div id="contact_modal">
-			<div class="modal">
-				<header>
+      <div class="modal">
+        <header>
           <h2>Contactez-moi</h2>
-          <img src="assets/icons/close.svg"  id="closeX" />
+          <img src="assets/icons/close.svg" id="closeX" />
         </header>
-				<form 
-          name="reserve"
-          action="index.html"
-          method="get"
-          id="form">
-					<div>
-						<label for="first">Prénom</label>
-						<input  
-            class="text-control"
-            type="text"
-            id="first"
-            name="first"/>
-            <span id="first_error" class="errors"> </span><br>
-					</div>
+        <form name="reserve" action="index.html" method="get" id="form">
           <div>
-						<label for="last">Nom</label>
-						<input 
-            class="text-control"
-                  type="text"
-                  id="last"
-                  name="last"/>
-            <span id="last_error" class="errors"> </span><br>
-					</div>
+            <label for="first">Prénom</label>
+            <input class="text-control" type="text" id="first" name="first" />
+            <span id="first_error" class="errors"> </span><br />
+          </div>
           <div>
-						<label for="email">e-mail</label>
-						<input 
-            class="text-control"
-            id="email"
-            name="email"
-            type="email"/>
-            <span id="email_error" class="errors"> </span><br>
-					</div>
+            <label for="last">Nom</label>
+            <input class="text-control" type="text" id="last" name="last" />
+            <span id="last_error" class="errors"> </span><br />
+          </div>
           <div>
-						<label>Votre message</label>
-            <textarea 
-            id="textarea"
-            rows="10" 
-            name="comment">
-            </textarea>
-					</div>
+            <label for="email">e-mail</label>
+            <input class="text-control" id="email" name="email" type="email" />
+            <span id="email_error" class="errors"> </span><br />
+          </div>
+          <div>
+            <label>Votre message</label>
+            <textarea id="textarea" rows="10" name="comment"> </textarea>
+          </div>
           <button class="contact_button">Envoyer</button>
-				</form>
-			</div>
-		</div>
+        </form>
+      </div>
+    </div>
     <script src="scripts/factories/photographer.js"></script>
     <script src="/scripts/factories/media.js"></script>
     <script src="/scripts/pages/photographer.js"></script>

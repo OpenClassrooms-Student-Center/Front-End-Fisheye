@@ -63,6 +63,42 @@ async function displayMedia(photographerMedia) {
     const mediaArts = mediaSection.getUserArtDOM(media);
     mediaDiv.appendChild(mediaArts);
   });
+  displayImgSlides(photographerMedia);
+}
+
+function displayImgSlides(array) {
+  const modalDiv = document.querySelector(".modal-img");
+
+  const slideBtn = document.createElement("button");
+  // const modalDiv = document.createElement("div");
+  const modalCloseIcon = document.createElement("span");
+  const modalContent = document.createElement("div");
+  const text = document.createElement("p");
+  const nextBtn = document.createElement("a");
+  const prevBtn = document.createElement("a");
+
+  slideBtn.setAttribute("id", "modal-btn");
+  // modalDiv.setAttribute("id", "modal-img");
+  modalCloseIcon.classList.add("modal-content");
+  modalContent.classList.add("mySlides");
+  nextBtn.classList.add("next");
+  prevBtn.classList.add("prev");
+
+  // const modalDiv = document.getElementById("modal-img");
+  // modalDiv.appendChild(modalDiv);
+  modalDiv.appendChild(modalCloseIcon);
+  modalDiv.appendChild(nextBtn);
+  modalDiv.appendChild(prevBtn);
+  modalContent.appendChild(slides);
+  for (const iterator of object) {
+    const slides = document.createElement("div");
+    const img = document.createElement("img");
+    const { image } = iterator;
+    const src = `assets/media/gallery/${image}`;
+    img.setAttribute("src", src);
+    slides.appendChild(text);
+    slides.appendChild(img);
+  }
 }
 
 async function photographersMedia() {
