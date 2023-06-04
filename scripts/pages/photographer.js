@@ -35,9 +35,10 @@ async function displayPhotographer(photographers) {
   btn.textContent = "Contactez-moi";
   btnNewPosition.appendChild(btn);
   // display modal onclick
-  btn.addEventListener("click", function() {
-    displayModal();
-  });
+  btn.addEventListener("click", displayModal);
+  // close modal onclick
+  const closingModal = document.getElementById("closeX");
+  closingModal.addEventListener("click", closeModal);
 
   // adjusting the elements as required in the maquette
   const flexOrdering = document.querySelector(".frame");
