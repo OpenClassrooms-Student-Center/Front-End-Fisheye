@@ -1,4 +1,19 @@
 // LIGHTBOX
+document.addEventListener('keydown', (event) => {
+    const regex = /\d+/g;
+    const lightBoxOpen = document.querySelector('.light-box');
+    if (lightBoxOpen) {
+        if (event.key === 'ArrowRight') {
+            showNextMedia(event);
+        } else if (event.key === 'ArrowLeft') {
+            showPreviousMedia(event);
+        } else if (event.key === 'Escape') {
+            const mediaId = lightBoxOpen.id.match(regex);
+            launchLightBox(mediaId, event);
+        }
+    }
+});
+
 const launchLightBox = (id, event, index) => {
     event.stopPropagation();
 
