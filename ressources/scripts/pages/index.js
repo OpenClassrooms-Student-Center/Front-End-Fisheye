@@ -1,7 +1,14 @@
 import { getPhotographers } from "../utils/fetchData.js";
 import { photographerFactory } from "../factories/photographerFactory.js";
 
-async function displayData(photographers) {
+
+async function init() {
+    const { photographers } = await getPhotographers();
+    displayData(photographers);
+}
+
+
+function displayData(photographers) {
     const photographersSection = document.querySelector(".photographer_section");
 
     photographers.forEach((photographer) => {
@@ -11,9 +18,6 @@ async function displayData(photographers) {
     });
 }
 
-async function init() {
-    const { photographers } = await getPhotographers();
-    displayData(photographers);
-}
+
 
 init();
