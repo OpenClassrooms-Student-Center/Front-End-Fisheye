@@ -36,8 +36,15 @@
 
     </main>
 
+    <footer class="counter" aria-label="Total of likes and price per day">
+      <div class="counter__likes" aria-label="likes counter">
+        <p class="likes"></p>
+        <i class="fa-solid fa-heart" aria-hidden="true" role="icon"></i>
+      </div>
+      <p class="price"></p>
+    </footer>
+
     <div class="modal" aria-hidden="true" role="dialog" aria-label="contact form">
-      <div class="modal__window" aria-hidden="true">
         <form class="form">
           <div class="form__header" aria-describedby="formTitle">
             <h2 id="formTitle" class="form__title">Contactez-moi</h2>
@@ -65,7 +72,6 @@
           </fieldset>
           <button class="form__button button submit">Envoyer</button>
         </form>
-      </div>
     </div>
     <div class="lightboxModal" id="lightboxModal" aria-label="lightbox modal" aria-hidden="true" role="dialog">
 

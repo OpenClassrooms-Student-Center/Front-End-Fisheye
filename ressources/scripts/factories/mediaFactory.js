@@ -12,6 +12,7 @@ export function mediaFactory(media) {
       const thumbnail = `../ressources/assets/photographers/${photographerId}/${image}`;
       const button = document.createElement("button");
       button.classList.add("media__btn");
+      button.setAttribute("aria-label", `${title} - closup view`)
       const img = document.createElement("img");
       img.classList.add("media__img");
       img.setAttribute("loading", "lazy");
@@ -25,6 +26,7 @@ export function mediaFactory(media) {
       const thumbnail = `../ressources/assets/photographers/${photographerId}/${video}`;
       const button = document.createElement("button");
       button.classList.add("media__btn");
+      button.setAttribute("aria-label", `${title} - closup view`)
       const vid = document.createElement("video");
       vid.setAttribute("loading", "lazy");
       vid.setAttribute("src", thumbnail);
@@ -41,17 +43,20 @@ export function mediaFactory(media) {
     article.appendChild(mediaInfo);
 
     const mediaTitle = document.createElement("p");
-    mediaTitle.classList.add("media__title")
+    mediaTitle.classList.add("media__title");
     mediaTitle.innerText = title
     mediaInfo.appendChild(mediaTitle);
 
     const mediaLike = document.createElement("div");
     mediaLike.classList.add("media__likes");
     const para = document.createElement("p");
+    para.setAttribute("aria_label", "likes");
+    para.setAttribute("id", "likes");
     para.classList.add("media__likeNumber");
     para.innerText = likes;
     const icon = document.createElement("i");
     icon.classList.add("fa-regular", "fa-heart", "media__likeIcon");
+    icon.setAttribute("aria-labelledby", "likes");
     mediaInfo.appendChild(mediaLike);
     mediaLike.appendChild(para)
     mediaLike.appendChild(icon)

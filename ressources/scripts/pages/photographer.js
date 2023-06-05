@@ -7,7 +7,6 @@ import { openContactForm } from "../utils/contactForm.js";
 import { initLightbox, disableLightboxButtons } from "../utils/lightBox.js";
 
 const main = document.querySelector("main");
-const body = document.querySelector("body");
 let mediaLightboxId = 0;
 let photographer = null;
 let factory = null;
@@ -38,6 +37,7 @@ async function renderMedias() {
   renderLightbox();
   renderLikeMedia();
 }
+
 async function renderSortedMedias() {
   const options = document.querySelectorAll(".sort__option");
   options.forEach(option => {
@@ -50,23 +50,17 @@ async function renderSortedMedias() {
 
 async function renderLikesCounter() {
   const photographer = await getPhotographersById();
-  const footer = document.createElement("footer")
-  footer.classList.add("counter");
-  footer.setAttribute("aria-label", "Total of likes and price per day")
   const medias = await getMediasByPhotographer();
   let totalLikes = 0;
   medias.forEach(media => {
     totalLikes += media.likes
   });
-  footer.innerHTML = `
-  <div class="counter__likes" aria-label="likes counter">
-    <p class="likes">${totalLikes}</p>
-    <i class="fa-solid fa-heart" aria-hidden="true" role="icon"></i>
-  </div>
-  <p class="price">${photographer.price}€ / jour</p>
-  `
-  body.appendChild(footer);
+  const likesNb = document.querySelector(".likes");
+  likesNb.innerText = totalLikes;
+  const price = document.querySelector(".price");
+  price.innerText = `${photographer.price}€ / jour`
 }
+
 async function renderLikeMedia() {
   const medias = document.querySelectorAll(".media");
   medias.forEach(media => {
@@ -91,6 +85,7 @@ async function renderLikeMedia() {
     })
   })
 }
+
 function updateLikes() {
   const likes = document.querySelectorAll(".media__likeNumber");
   const totalLikes = document.querySelector(".likes");
@@ -100,7 +95,6 @@ function updateLikes() {
 }
 
 async function renderMedia(mediaId) {
-  // fonction qui crée la card du média, en fonction de si c'est une image ou une vidéo
   const medias = await sortMedias();
 
   const media = medias.find((media) => media.id == mediaId);
@@ -115,7 +109,7 @@ async function renderMedia(mediaId) {
 
     const lightboxImg = document.createElement("img");
     lightboxImg.src = `../../ressources/assets/photographers/${photographerId}/${image}`;
-    lightboxImg.alt = title;
+    lightboxImg.alt = `${title} - closup view`;
     lightboxImg.classList.add("lightboxModal__img");
     figure.appendChild(lightboxImg);
 
@@ -171,14 +165,11 @@ async function findPreviousMedia() {
   if (currentMediaIndex > 0) {
     let previousIndex = currentMediaIndex - 1;
     const previousMediaId = medias[previousIndex].id;
-    // renderMedia(previousMediaId);
     return previousMediaId
-    // disableLightboxButtons(previousIndex, medias.length)
   }
 }
 
 async function renderLightbox() {
-  // au click sur un média, on récupère son index dans l'array de média trié, et on l'affiche en fonction de son index dans la lightbox
   const mediaColl = document.querySelectorAll(".media");
   const medias = Array.from(mediaColl);
   medias.forEach(media => {
@@ -190,7 +181,7 @@ async function renderLightbox() {
       previousMediaWithArrow();
     })
   })
-  // au click sur le bouton next, on récupère le nouvel index, et on rappelle la fonction pour créer l'html du média
+
   const next = document.querySelector(".lightboxModal__next");
   next.addEventListener("click", async () => {
     if (document.querySelector(".lightboxModal__figure")) {
@@ -199,7 +190,7 @@ async function renderLightbox() {
       renderMedia(nextId);
     }
   })
-   // au click sur le bouton previous, on récupère le nouvel index, et on rappelle la fonction pour créer l'html du média
+
   const previous = document.querySelector(".lightboxModal__previous");
   previous.addEventListener("click", async () => {
     if (document.querySelector(".lightboxModal__figure")) {
@@ -226,6 +217,7 @@ function nextMediaWithArrow() {
     }
   })
 }
+
 function previousMediaWithArrow() {
   const lightbox = document.querySelector(".lightboxModal");
   const previous = document.querySelector(".lightboxModal__previous");
@@ -242,7 +234,5 @@ function previousMediaWithArrow() {
     }
   })
 }
-
-
 
 init();
