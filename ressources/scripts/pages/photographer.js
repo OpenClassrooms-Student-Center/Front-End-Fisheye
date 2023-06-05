@@ -125,7 +125,6 @@ async function renderMedia(mediaId) {
     figure.appendChild(caption);
 
     lightbox.prepend(figure);
-    // console.log(figure);
 
   } else if (media.video) {
 

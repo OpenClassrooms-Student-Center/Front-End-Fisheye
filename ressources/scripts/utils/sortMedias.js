@@ -5,7 +5,6 @@ import { getMediasByPhotographer } from "./getMediasByPhotographer.js";
 // en fonction de l'option choisie, et donc du texte contenu dans le bouton, trie l'array de media en fonction, et retourne l'array trié
 export async function sortMedias() {
   const dropdown = document.querySelector(".sort__button").innerText;
-  // console.log(dropdown);
   const data = await getMediasByPhotographer();
   let sortedMedias;
 
