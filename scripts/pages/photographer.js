@@ -4,6 +4,7 @@ const urlParams = new URLSearchParams(qStr);
 const id = urlParams.get('id');
 
 // HEADER
+// PHOTOGRAPH
 async function getPhotographDetails() {
     const response = await fetch('data/photographers.json');
     const photographersData = await response.json();
@@ -64,6 +65,7 @@ async function displayPhotographMedias() {
     function resetEventListener() {
 
         const mediaItems = document.querySelectorAll('.media-item');
+        const mediaModals = document.querySelectorAll('.media-modal')
         const regex = /\d+/g;
         
         mediaItems.forEach(mediaItem => {
@@ -78,6 +80,39 @@ async function displayPhotographMedias() {
                 if (event.key === 'Enter') {
                     launchLightBox(id, event, index)
                 }
+            });
+
+            const mediaLikeBtn = document.getElementById(`like-${id}`);
+            const mediaLikes = document.querySelector(`#like-${id} > .nbr-likes`);
+            const likes = parseInt(mediaLikes.innerHTML);
+
+            mediaLikeBtn.addEventListener('click', () => {
+                incrementLikes(id, likes);
+            });
+
+            mediaLikeBtn.addEventListener('keydown', (event) => {
+                if (event.key === 'Enter') {
+                    incrementLikes(id, likes);
+                }
+            });
+        });
+
+        mediaModals.forEach(mediaModal => {
+            const id = mediaModal.id.match(regex);
+            const modalElmtCross = document.querySelector(`#media-modal-${id} > .element-light-box-cross`);
+            const modalElmtArrowLeft = document.querySelector(`#media-modal-${id} > .element-light-box-arrowLeft`);
+            const modalElmtArrowRight = document.querySelector(`#media-modal-${id} > .element-light-box-arrowRight`);
+            
+            modalElmtCross.addEventListener('click', (event) => {
+                launchLightBox(id, event);
+            });
+
+            modalElmtArrowLeft.addEventListener('click', (event) => {
+                showPreviousMedia(event);
+            });
+
+            modalElmtArrowRight.addEventListener('click', (event) => {
+                showNextMedia(event);
             });
         });
     }
@@ -137,16 +172,24 @@ async function displayPhotographMedias() {
         button.ariaLabel = `Cliquez ou appuyez sur 'Enter' pour trier les médias par : ${text}.`;
         
         button.addEventListener('click', () => {
-            sortByFunction();
-            toggleDropdownMenu();
+            if (button === document.querySelector('.sort-button:first-child')) {
+                toggleDropdownMenu();
+            } else {
+                sortByFunction();
+                toggleDropdownMenu();
+            }
         });
         
         button.addEventListener('keydown', (event) => {
             if (event.key === 'Enter') {
-                sortByFunction();
-                toggleDropdownMenu();
+                if (button === document.querySelector('.sort-button:first-child')) {
+                    toggleDropdownMenu();
+                } else {
+                    sortByFunction();
+                    toggleDropdownMenu();
+                }
             }
-        })
+        });
 
         const icon = document.createElement('i');
         icon.classList.add('fa-solid', 'fa-chevron-down');

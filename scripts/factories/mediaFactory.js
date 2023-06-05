@@ -102,10 +102,9 @@ function createMediaFactory(mediasData, sortBy = 'popularity') {
                         <h2 class="media-figure-figcaption-title">${title}</h2>
                         <button 
                             id="like-${id}" 
-                            class="media-figure-figcaption-btn" 
-                            onclick="incrementLikes(${id}, ${likes})"
-                            aria-label="Ajouter un like à l'image : ${title}">
-                                ${likes} <i class="fa-regular fa-heart like-icon"></i>
+                            class="media-figure-figcaption-btn"
+                            aria-label="Ajouter un like au media : ${title}">
+                                <span class="nbr-likes">${likes}</span> <i class="fa-regular fa-heart like-icon"></i>
                         </button>
                     </figcaption>
                 </figure>
@@ -115,23 +114,20 @@ function createMediaFactory(mediasData, sortBy = 'popularity') {
                     aria-hidden=true tabindex=-1
                 >
                     <span 
-                        class="element-light-box element-light-box-cross" 
-                        onclick="launchLightBox(${id}, event)" 
-                        title="Fermer le média"
+                        class="element-light-box element-light-box-cross"
+                        aria-label="Fermer le média"
                     >
                         <i class="fa-solid fa-xmark"></i>
                     </span>
                     <span 
-                        class="element-light-box element-light-box-arrowLeft" 
-                        onclick="showPreviousMedia(event)"
-                        title="Média suivant"
+                        class="element-light-box element-light-box-arrowLeft"
+                        aria-label="Média suivant"
                     >
                         <i class="fa-solid fa-chevron-left"></i>
                     </span>
                     <span 
-                        class="element-light-box element-light-box-arrowRight" 
-                        onclick="showNextMedia(event)" 
-                        title="Média précédent"
+                        class="element-light-box element-light-box-arrowRight"
+                        aria-label="Média précédent"
                     >
                         <i class="fa-solid fa-chevron-right"></i>
                     </span>
