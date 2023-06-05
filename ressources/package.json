@@ -7,7 +7,7 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "sass": "sass --watch ./sass/main.scss:./css/style.css",
+    "sass": "sass --watch ../styles/sass/main.scss:../styles/css/style.css",
     "lint": "eslint ."
   },
   "repository": {

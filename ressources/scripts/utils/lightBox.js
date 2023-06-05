@@ -1,10 +1,31 @@
 const body = document.querySelector("body");
-const main = document.querySelector("#main");
+const main = document.querySelector("main");
+const header = document.querySelector("header");
+const mainButtons = main.querySelectorAll("button");
+console.log(mainButtons);
+const a = document.querySelector("a");
+
+
 const lightboxModal = document.querySelector(".lightboxModal");
 
 // modifie les attributs pour que la modale soit visible
 function displayLightboxModal() {
   main.setAttribute("aria-hidden", "true");
+  header.setAttribute("aria-hidden", "true");
+  a.setAttribute("aria-hidden", "true");
+  a.setAttribute("tabindex", "-1");
+
+  const mediaButtons = document.querySelectorAll(".media__btn");
+  mediaButtons.forEach(function(button) {
+    button.setAttribute("tabindex", "-1");
+  });
+  const formButton = document.querySelector(".contact__button");
+  console.log(formButton);
+  formButton.setAttribute("tabindex", "-1")
+  mainButtons.forEach(function(button) {
+    button.setAttribute("tabindex", "-1");
+  });
+
   lightboxModal.setAttribute("aria-hidden", "false");
   body.classList.add("no-scroll");
   lightboxModal.style.display = "flex";
@@ -12,6 +33,21 @@ function displayLightboxModal() {
 // modifie les attributs pour que la modale ne soit pas visible
 function closeLightboxModal() {
   main.setAttribute("aria-hidden", "false");
+  header.setAttribute("aria-hidden", "false");
+  a.setAttribute("aria-hidden", "false");
+  a.setAttribute("tabindex", "0");
+
+  const mediaButtons = document.querySelectorAll(".media__btn");
+  mediaButtons.forEach(function(button) {
+    button.setAttribute("tabindex", "0");
+  });
+  const formButton = document.querySelector(".contact__button");
+  console.log(formButton);
+  formButton.setAttribute("tabindex", "0")
+  mainButtons.forEach(function(button) {
+    button.setAttribute("tabindex", "0");
+  });
+
   lightboxModal.setAttribute("aria-hidden", "true");
   body.classList.remove("no-scroll");
   lightboxModal.style.display = "none";

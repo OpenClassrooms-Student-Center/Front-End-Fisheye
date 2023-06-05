@@ -29,7 +29,7 @@ h1 {
   margin-left: 100px;
 }
 
-#main {
+main {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -164,6 +164,7 @@ h1 {
 .media__btn {
   border: none;
   cursor: pointer;
+  background-color: transparent;
 }
 
 .counter {
