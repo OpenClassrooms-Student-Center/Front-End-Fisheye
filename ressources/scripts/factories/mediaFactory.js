@@ -10,16 +10,21 @@ export function mediaFactory(media) {
 
     if (image) {
       const thumbnail = `../ressources/assets/photographers/${photographerId}/${image}`;
+      const button = document.createElement("button");
+      button.classList.add("media__btn");
       const img = document.createElement("img");
       img.classList.add("media__img");
       img.setAttribute("loading", "lazy");
       img.setAttribute("src", thumbnail);
       img.setAttribute("alt", title);
       img.id = id
-      article.appendChild(img)
+      article.appendChild(button);
+      button.appendChild(img)
     }
     if (video) {
       const thumbnail = `../ressources/assets/photographers/${photographerId}/${video}`;
+      const button = document.createElement("button");
+      button.classList.add("media__btn");
       const vid = document.createElement("video");
       vid.setAttribute("loading", "lazy");
       vid.setAttribute("src", thumbnail);
@@ -27,7 +32,8 @@ export function mediaFactory(media) {
       vid.innerHTML = "Votre navigateur ne permet pas de lire les vidéos. Mais vous pouvez toujours <a href=`${thumbnail}`>la télécharger</a> !";
       vid.className += "media__video";
       vid.id = id
-      article.appendChild(vid);
+      article.appendChild(button);
+      button.appendChild(vid)
     }
 
     const mediaInfo = document.createElement("div");

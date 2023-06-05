@@ -1,7 +1,7 @@
 import { getPhotographersById } from "./getPhotographerById.js";
 
 const body = document.querySelector("body");
-const main = document.querySelector("#main");
+const main = document.querySelector("main");
 const modal = document.querySelector(".modal");
 const form = document.querySelector(".form");
 
