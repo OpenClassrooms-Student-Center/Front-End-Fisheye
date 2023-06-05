@@ -1,4 +1,4 @@
-import { getPhotographers } from "./fetchData.js";
+import { getPhotographers } from "../utils/fetchData.js";
 
 export async function getPhotographersById() {
   const { photographers } = await getPhotographers();

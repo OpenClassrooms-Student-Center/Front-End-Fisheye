@@ -2,14 +2,14 @@ export function photographerFactory(photographer) {
     const { id, name, portrait, city, country, tagline, price } = photographer;
     // console.log(photographer);
 
-    const picture = `assets/photographers/${portrait}.webp`;
+    const picture = `../ressources/assets/photographers/${portrait}.webp`;
 
     function getUserCardDOM() {
         const article = document.createElement( 'article' );
         article.className += "photographer"
 
         const photographerLink = document.createElement("a");
-        photographerLink.setAttribute("href", `/photographer.html?id=${id}`);
+        photographerLink.setAttribute("href", `./photographer.html?id=${id}`);
         photographerLink.setAttribute("aria-label", `lien vers le portfolio de ${name}`);
         photographerLink.className += "photographer__link"
 
@@ -52,7 +52,7 @@ export function photographerFactory(photographer) {
                 <p class="photographer__tagline photographer__tagline--doubled">${tagline}</p>
         </div>
         <button class="contact__button button" aria-label="contact me">Contactez-moi</button>
-        <img src="./assets/photographers/${portrait}.webp" alt="${name}" class="photographer__img" aria-label="picture of ${name}">
+        <img src="../ressources/assets/photographers/${portrait}.webp" alt="${name}" class="photographer__img" aria-label="picture of ${name}">
         `
         return photographerHeader
     }
