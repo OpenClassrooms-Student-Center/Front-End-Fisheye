@@ -1,4 +1,4 @@
-function photographerFactory(data) {
+function photographerTemplate(data) {
     const { name, portrait } = data;
 
     const picture = `assets/photographers/${portrait}`;
