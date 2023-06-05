@@ -8,7 +8,6 @@ import { initLightbox, disableLightboxButtons } from "../utils/lightBox.js";
 
 const main = document.querySelector("main");
 const body = document.querySelector("body");
-// const footer = document.querySelector("footer");
 let mediaLightboxId = 0;
 let photographer = null;
 let factory = null;
@@ -17,87 +16,21 @@ async function init() {
   photographer = await getPhotographersById();
   factory = photographerFactory(photographer);
   await renderHeader();
-  await renderSortSection();
   await renderMedias();
   initOptionsList();
   openContactForm();
   renderSortedMedias();
-  await displayLikesCounter();
+  await renderLikesCounter();
 }
 
 async function renderHeader() {
   const photographerHeader = document.createElement("section");
   photographerHeader.classList.add("photographer__header");
   photographerHeader.innerHTML = factory.getUserHeader();
-  main.appendChild(photographerHeader);
-}
-
-
-// à mettre directement dans le html
-async function renderSortSection() {
-  const sortSection = document.createElement("section");
-  sortSection.classList.add("sort");
-  main.appendChild(sortSection)
-
-  const selectLabel = document.createElement("p");
-  selectLabel.classList.add("sort__label");
-  selectLabel.innerText = "Trier par"
-
-  const selectDiv = document.createElement("div");
-  selectDiv.classList.add("sort__select");
-  selectDiv.setAttribute("aria-label", "Order by");
-  selectDiv.setAttribute("data-value", "popularity");
-  selectDiv.setAttribute("aria-label", "dropdown");
-
-  const sortBtn = document.createElement("button");
-  sortBtn.innerText = "Popularité";
-  sortBtn.setAttribute("role", "listbox");
-  sortBtn.setAttribute("aria-expanded", "");
-  sortBtn.id = "sort__button";
-  sortBtn.classList.add("sort__button", "button");
-  selectDiv.appendChild(sortBtn);
-
-  const arrow = document.createElement("i");
-  arrow.classList.add("sort__down", "fa-solid", "fa-caret-down");
-  arrow.setAttribute("aria-hidden", "true")
-  sortBtn.appendChild(arrow);
-
-  const sortList = document.createElement("div");
-  sortList.classList.add("sort__options");
-  sortList.setAttribute("role", "list");
-  sortList.setAttribute("aria-labelledby", "sort__button");
-  sortList.setAttribute("aria-activedescendant", "popularity");
-
-  sortList.innerHTML = `
-  <button class="sort__optionBtn sort__hide sort__option"
-    data-value="popularity"
-    role="listbox"
-    id="popularity"
-    aria-selected="true"
-    style="display: none;"
-    tabindex="-1">Popularité
-  </button>
-  <button class="sort__optionBtn sort__option"
-    data-value="date"
-    role="listbox"
-    id="date"
-    tabindex="0">Date
-    </button>
-    <button class="sort__optionBtn sort__option"
-    data-value="title"
-    role="listbox"
-    id="title"
-    tabindex="0">Titre
-    </button>
-  `
-
-  selectDiv.appendChild(sortList);
-  sortSection.appendChild(selectLabel);
-  sortSection.appendChild(selectDiv);
+  main.prepend(photographerHeader);
 }
 
 async function renderMedias() {
-  // affiche la section contenant les medias des photographes, et appelle la fonction créant les cards pour chaque média
   const mediaSection = document.createElement("section");
   mediaSection.classList.add("photographer__content");
   main.appendChild(mediaSection);
@@ -115,8 +48,7 @@ async function renderSortedMedias() {
   })
 }
 
-async function displayLikesCounter() {
-  // crée et affiche une div contenant le total de like et le prix journalier du photographe
+async function renderLikesCounter() {
   const photographer = await getPhotographersById();
   const footer = document.createElement("footer")
   footer.classList.add("counter");
