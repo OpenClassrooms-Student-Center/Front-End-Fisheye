@@ -28,7 +28,7 @@ h1 {
   height: 50px;
 }
 .logo__link {
-  padding: 1rem;
+  padding: 0.8rem;
   margin-left: 100px;
 }
 .logo__link:focus-visible {
@@ -191,11 +191,11 @@ button:focus-visible {
   align-items: center;
   bottom: 0rem;
   width: 20rem;
-  height: 6rem;
+  height: 4.5rem;
   right: 10%;
   background-color: #D3573C;
   padding: 2rem;
-  font-size: 1.5rem;
+  font-size: 1.3rem;
 }
 .counter__likes {
   display: flex;
@@ -279,7 +279,7 @@ button:focus-visible {
   color: green;
   font-size: 2rem;
   position: absolute;
-  top: 2.5rem;
+  top: 2.2rem;
   right: 1.5rem;
 }
 .form__input:focus-visible {
@@ -305,7 +305,7 @@ button:focus-visible {
 }
 
 fieldset#message-fieldset > i {
-  top: 4rem;
+  top: 3.5rem;
 }
 
 .no-scroll {
