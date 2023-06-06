@@ -10,7 +10,7 @@
   "scripts": {
     "sass": "sass --watch ../styles/sass/main.scss:../styles/css/style.css",
     "lint": "eslint .",
-    "prefix": "postcss --watch ../styles/css/style.css --use autoprefixer -d ../styles/css/prefixed"
+    "prefix": "postcss --watch ./styles/css/style.css --use autoprefixer -d ./styles/css/prefixed/"
   },
   "repository": {
     "type": "git",
