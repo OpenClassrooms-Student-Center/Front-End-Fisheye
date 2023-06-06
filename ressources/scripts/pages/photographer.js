@@ -218,6 +218,7 @@ function nextMediaWithArrow() {
   })
 }
 
+
 function previousMediaWithArrow() {
   const lightbox = document.querySelector(".lightboxModal");
   const previous = document.querySelector(".lightboxModal__previous");

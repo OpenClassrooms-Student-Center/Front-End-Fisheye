@@ -51,8 +51,22 @@ function closeForm() {
     body.classList.remove("no-scroll");
     modal.style.display = "none"
     form.style.display = "none";
+    header.setAttribute("aria-hidden", "false");
+    footer.setAttribute("aria-hidden", "false");
+    a.setAttribute("aria-hidden", "false");
+    a.setAttribute("tabindex", "0");
     const contactBtn = document.querySelector(".contact__button");
     contactBtn.focus();
+
+    const mediaButtons = document.querySelectorAll(".media__btn");
+    mediaButtons.forEach(function(button) {
+        button.setAttribute("tabindex", "0");
+    });
+    const formButton = document.querySelector(".contact__button");
+    formButton.setAttribute("tabindex", "0")
+    mainButtons.forEach(function(button) {
+        button.setAttribute("tabindex", "0");
+    });
 }
 function closeContactFormOnClick() {
     const closeBtn = document.querySelector(".form__close");
@@ -66,6 +80,8 @@ function closeFormWithEsc() {
         }
     })
 }
+
+
 function submitForm() {
     form.addEventListener("submit", function(event) {
         event.preventDefault();
