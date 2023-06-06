@@ -17,4 +17,7 @@
     background-color: $color-secondary;
     color: black;
   }
+  &:focus-visible {
+    outline: solid 2px $color-primary;
+  }
 }

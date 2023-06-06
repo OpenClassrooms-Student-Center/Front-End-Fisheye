@@ -26,7 +26,13 @@ h1 {
 
 .logo {
   height: 50px;
+}
+.logo__link {
+  padding: 1rem;
   margin-left: 100px;
+}
+.logo :focus-visible {
+  outline: solid 2px #901C1C;
 }
 
 main {
@@ -34,6 +40,10 @@ main {
   flex-direction: column;
   align-items: center;
   margin: 0rem 4rem;
+}
+
+button:focus-visible {
+  outline: solid 2px #901C1C;
 }
 
 .hidden {
@@ -88,6 +98,9 @@ main {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+}
+.photographer__link:focus-visible {
+  outline: solid 2px #901C1C;
 }
 .photographer__img {
   height: 12.5em;
@@ -166,6 +179,9 @@ main {
   cursor: pointer;
   background-color: transparent;
 }
+.media__btn:focus-visible {
+  outline: solid 2px #901C1C;
+}
 
 .counter {
   position: fixed;
@@ -202,13 +218,16 @@ main {
   background-color: #D3573C;
   color: black;
 }
+.button:focus-visible {
+  outline: solid 2px #901C1C;
+}
 
 .form {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   width: 40%;
-  height: 70%;
+  height: 85%;
   border-radius: 0.3em;
   background-color: #DB8876;
   padding: 2em;
@@ -239,19 +258,30 @@ main {
 .form__label {
   color: #312E2E;
   font-size: 1.3em;
-  padding-top: 0.5rem;
-  padding-bottom: 0.2rem;
 }
 .form__input {
+  position: relative;
   width: 100%;
   height: 1.5em;
   border: none;
   border-radius: 0.2em;
   font-size: 2em;
   padding: 0em 0.5em;
+  margin-top: 0.2em;
+  margin-bottom: 0.2em;
 }
 .form__input[id=message] {
   height: 3em;
+}
+.form__input-valid {
+  color: green;
+  font-size: 2rem;
+  position: absolute;
+  top: 2.5rem;
+  right: 1.5rem;
+}
+.form__input:focus-visible {
+  outline: solid 2px #901C1C;
 }
 .form__close {
   color: white;
@@ -260,6 +290,20 @@ main {
   border: none;
   font-size: 4em;
   cursor: pointer;
+}
+.form__close:focus-visible {
+  outline: solid 2px #901C1C;
+}
+
+.fieldset {
+  position: relative;
+  width: 100%;
+  padding-bottom: 1em;
+  border: none;
+}
+
+fieldset#message > i {
+  top: 4rem;
 }
 
 .no-scroll {
@@ -418,6 +462,9 @@ main {
   background-color: transparent;
   cursor: pointer;
 }
+.lightboxModal__close:focus-visible {
+  outline: solid 2px #901C1C;
+}
 .lightboxModal__previous, .lightboxModal__next {
   font-size: 4rem;
   border: none;
@@ -429,9 +476,15 @@ main {
   position: absolute;
   left: 5rem;
 }
+.lightboxModal__previous:focus-visible {
+  outline: solid 2px #901C1C;
+}
 .lightboxModal__next {
   position: absolute;
   right: 5rem;
+}
+.lightboxModal__next:focus-visible {
+  outline: solid 2px #901C1C;
 }
 .lightboxModal__caption {
   font-size: 3rem;
