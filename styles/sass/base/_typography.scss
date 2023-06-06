@@ -18,5 +18,12 @@ h1 {
 
 .logo {
   height: 50px;
-  margin-left: 100px;
+  &__link {
+    padding: 1rem;
+    margin-left: 100px;
+  }
+  :focus-visible {
+    outline: solid 2px $color-primary;
+  }
+
 }
