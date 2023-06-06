@@ -3,7 +3,7 @@ import { photographerFactory } from "../factories/photographerFactory.js";
 import { initOptionsList } from "../utils/sortButton.js";
 import { createSortedMediasCards, sortMedias } from "../utils/sortMedias.js";
 import { getMediasByPhotographer } from "../utils/getMediasByPhotographer.js";
-import { openContactForm } from "../utils/contactForm.js";
+import { initForm } from "../utils/contactForm.js";
 import { initLightbox, disableLightboxButtons } from "../utils/lightBox.js";
 
 const main = document.querySelector("main");
@@ -17,7 +17,7 @@ async function init() {
   await renderHeader();
   await renderMedias();
   initOptionsList();
-  openContactForm();
+  initForm();
   renderSortedMedias();
   await renderLikesCounter();
 }

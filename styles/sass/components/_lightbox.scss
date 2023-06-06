@@ -51,7 +51,11 @@
     border: none;
     background-color: transparent;
     cursor: pointer;
-}
+  }
+  &__close:focus-visible {
+    outline: solid 2px $color-primary;
+  }
+
   &__previous,
   &__next {
     font-size: 4rem;
@@ -64,9 +68,15 @@
     position: absolute;
     left: 5rem;
   }
+  &__previous:focus-visible {
+    outline: solid 2px $color-primary;
+  }
   &__next {
     position: absolute;
     right: 5rem;
+  }
+  &__next:focus-visible {
+    outline: solid 2px $color-primary;
   }
   &__caption {
     font-size: 3rem;

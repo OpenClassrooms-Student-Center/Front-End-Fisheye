@@ -5,6 +5,9 @@ main {
   margin: 0rem 4rem;
   // border: 1px solid red;
 }
+button:focus-visible {
+  outline: solid 2px $color-primary;
+}
 
 .hidden {
     height: 1px;

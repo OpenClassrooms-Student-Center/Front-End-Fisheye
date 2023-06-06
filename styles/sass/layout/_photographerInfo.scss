@@ -48,6 +48,9 @@
     justify-content: center;
     align-items: center;
   }
+  &__link:focus-visible {
+    outline: solid 2px $color-primary;
+  }
   &__img {
     height: 12.5em;
     width: 12.5em;
