@@ -1,14 +1,10 @@
 const body = document.querySelector("body");
 const main = document.querySelector("main");
 const header = document.querySelector("header");
+const lightboxModal = document.querySelector(".lightboxModal");
 const mainButtons = main.querySelectorAll("button");
-console.log(mainButtons);
 const a = document.querySelector("a");
 
-
-const lightboxModal = document.querySelector(".lightboxModal");
-
-// modifie les attributs pour que la modale soit visible
 function displayLightboxModal() {
   main.setAttribute("aria-hidden", "true");
   header.setAttribute("aria-hidden", "true");
@@ -53,15 +49,21 @@ function closeLightboxModal() {
   lightboxModal.style.display = "none";
 }
 
-function closeLightbox() {
+function closeLightboxOnClick() {
   const closeBtn = document.querySelector(".lightboxModal__close");
   closeBtn.addEventListener("click", function() {
     const lightboxFigure = document.querySelector(".lightboxModal__figure");
-    // const lightboxVideo = document.querySelector(".lightboxModal__video");
-    // if (lightboxImg) {lightboxImg.remove()}
-    // else if (lightboxVideo) {lightboxVideo.remove()}
     if (lightboxFigure) {lightboxFigure.remove()}
     closeLightboxModal();
+  })
+}
+
+function closeLightboxWithEsc() {
+  document.addEventListener('keydown', event => {
+      const code = event.code
+      if (lightboxModal.getAttribute('aria-hidden') == 'false' && code === "Escape") {
+          closeLightboxModal()
+      }
   })
 }
 
@@ -83,5 +85,6 @@ export function disableLightboxButtons(index, mediasLength) {
 export function initLightbox(){
   disableLightboxButtons()
   displayLightboxModal();
-  closeLightbox();
+  closeLightboxOnClick();
+  closeLightboxWithEsc();
 }
