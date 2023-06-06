@@ -44,13 +44,13 @@
       <p class="price"></p>
     </footer>
 
-    <div class="modal" aria-hidden="true" role="dialog" aria-label="contact form">
+    <div class="modal" aria-hidden="true" role="dialog" aria-label="contact form" aria-labelledby="formTitle">
         <form class="form">
           <div class="form__header" aria-describedby="formTitle">
             <h2 id="formTitle" class="form__title">Contactez-moi</h2>
             <button
               type="button"
-              aria-label="Bouton de fermeture de la fenêtre de formulaire"
+              aria-label="Close contact form"
               class="form__close"
               data-dismiss="modal">
               &times;
@@ -59,39 +59,39 @@
           <fieldset class="form__body">
             <fieldset id="firstName" class="fieldset">
               <label class="form__label" id="firstName" for="prenom">Prénom</label>
-              <input class="form__input" aria-labelledby="firstName" type="text" id="prenom" name="firstName" minlength="2" required/>
+              <input class="form__input" aria-labelledby="firstName" type="text" id="prenom" name="firstName" minlength="2" required aria-required="true"/>
             </fieldset>
             <fieldset id="lastName" class="fieldset">
               <label class="form__label" id="lastName" for="nom">Nom</label>
-              <input class="form__input" aria-labelledby="lastName" type="text" id="nom" name="lastName" minlength="2" required/>
+              <input class="form__input" aria-labelledby="lastName" type="text" id="nom" name="lastName" minlength="2" required aria-required="true"/>
             </fieldset>
             <fieldset id="email" class="fieldset">
               <label class="form__label" id="email" for="e-mail">Email</label>
-              <input class="form__input" aria-labelledby="email" aria-describedby="email-format" type="email" id="e-mail" name="email" pattern="\w+([\.\-]?\w+)*@\w+([\.\-]?\w+)*(\.\w{2,3})+$" required/>
+              <input class="form__input" aria-labelledby="email" aria-describedby="email-format" type="email" id="e-mail" name="email" pattern="\w+([\.\-]?\w+)*@\w+([\.\-]?\w+)*(\.\w{2,3})+$" required aria-required="true"/>
               <span id="email-format" class="hidden">xy@abc.xyz</span>
             </fieldset>
             <fieldset id="message" class="fieldset">
               <label class="form__label" id="form-message" for="message">Message</label>
-              <input class="form__input" aria-labelledby="form-message" type="text" id="message" name="message" minlength="10" maxlength="100" required/>
+              <input class="form__input" aria-labelledby="form-message" type="text" id="message" name="message" minlength="10" maxlength="100" required aria-required="true"/>
             </fieldset>
           </fieldset>
-          <button class="form__button button submit">Envoyer</button>
+          <button class="form__button button submit" aria-label="Send">Envoyer</button>
         </form>
     </div>
     <div class="lightboxModal" id="lightboxModal" aria-label="lightbox modal" aria-hidden="true" role="dialog">
 
-      <button class="lightboxModal__previous" tabindex="1">
+      <button class="lightboxModal__previous" tabindex="1" aria-label="previous image">
         <i class="fa-solid fa-caret-left" role="button"></i>
       </button>
 
       <button
-        aria-label="Bouton de fermeture du carousel"
+        aria-label="close dialog"
         class="lightboxModal__close"
         data-dismiss="lightboxModal"
         tabindex="3">
         <i class="fa-solid fa-xmark" role="button"></i>
       </button>
-      <button class="lightboxModal__next" tabindex="2">
+      <button class="lightboxModal__next" tabindex="2" aria-label="next image">
         <i class="fa-solid fa-caret-right" role="button"></i>
       </button>
     </div>

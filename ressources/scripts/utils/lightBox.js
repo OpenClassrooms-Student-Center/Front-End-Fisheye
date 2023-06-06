@@ -16,7 +16,6 @@ function displayLightboxModal() {
     button.setAttribute("tabindex", "-1");
   });
   const formButton = document.querySelector(".contact__button");
-  console.log(formButton);
   formButton.setAttribute("tabindex", "-1")
   mainButtons.forEach(function(button) {
     button.setAttribute("tabindex", "-1");
@@ -38,7 +37,6 @@ function closeLightboxModal() {
     button.setAttribute("tabindex", "0");
   });
   const formButton = document.querySelector(".contact__button");
-  console.log(formButton);
   formButton.setAttribute("tabindex", "0")
   mainButtons.forEach(function(button) {
     button.setAttribute("tabindex", "0");
