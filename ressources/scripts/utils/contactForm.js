@@ -5,14 +5,12 @@ const main = document.querySelector("main");
 const modal = document.querySelector(".modal");
 const form = document.querySelector(".form");
 
-// get the name of the photographer and display it in the form head
 async function displayNameInForm() {
     const photographer = await getPhotographersById();
     const { name } = photographer
     const title = document.querySelector(".form__title")
     title.innerHTML = `Contactez-moi<br>${name}`
 }
-
 function displayForm() {
     main.setAttribute("aria-hidden", "true");
     modal.setAttribute("aria-hidden", "false");
@@ -22,15 +20,13 @@ function displayForm() {
     form.style.display = "flex";
     const input = document.querySelector(".form__input");
     input.focus();
-    closeContactForm();
+    closeContactFormOnClick();
     closeFormWithEsc();
 }
-
-export function openContactForm() {
+function openContactForm() {
     const contactBtn = document.querySelector(".contact__button");
     contactBtn.addEventListener("click", displayForm);
 }
-
 function closeForm() {
     main.setAttribute("aria-hidden", "false");
     modal.setAttribute("aria-hidden", "true");
@@ -40,12 +36,10 @@ function closeForm() {
     const contactBtn = document.querySelector(".contact__button");
     contactBtn.focus();
 }
-
-function closeContactForm() {
+function closeContactFormOnClick() {
     const closeBtn = document.querySelector(".form__close");
     closeBtn.addEventListener("click", closeForm);
 }
-
 function closeFormWithEsc() {
     document.addEventListener('keydown', event => {
         const code = event.code
@@ -54,13 +48,12 @@ function closeFormWithEsc() {
         }
     })
 }
-
 function submitForm() {
     form.addEventListener("submit", function(event) {
         event.preventDefault();
-        const firstName = document.getElementById("firstName");
-        const lastName = document.getElementById("lastName");
-        const email = document.getElementById("email");
+        const firstName = document.getElementById("prenom");
+        const lastName = document.getElementById("nom");
+        const email = document.getElementById("e-mail");
         const message = document.getElementById("message");
 
         console.log({
@@ -73,4 +66,63 @@ function submitForm() {
         closeForm();
     })
 }
-submitForm();
+
+
+let informationObject = {
+    "prenom": {
+        regex: /\w{2,}/,
+        errorMessage: "Le champ doit contenir au moins 2 caractères"
+    },
+    "nom": {
+        regex: /\w{2,}/,
+        errorMessage: "Le champ doit contenir au moins 2 caractères"
+    },
+    "e-mail": {
+        regex: /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/,
+        errorMessage: "L'adresse mail doit être valide"
+    },
+    "message": {
+        regex: /^.{10,100}$/,
+        errorMessage: "doit contenir entre 10 et 100 caractères"
+    }
+};
+function validateInput(fieldset) {
+    const input = fieldset.querySelector("input");
+    const inputSpan = document.createElement("span");
+
+    input.addEventListener("input", function() {
+        const inputName = input.id;
+
+        if (informationObject[inputName].regex.test(input.value)) {
+            inputSpan.innerText = "";
+            const icon = fieldset.querySelector(".form__input-valid");
+            if (!icon) {
+                const i = document.createElement("i")
+                i.classList.add("fa-solid", "fa-check", "form__input-valid");
+                fieldset.appendChild(i)
+            }
+        } else {
+            inputSpan.innerText = informationObject[inputName].errorMessage;
+            fieldset.appendChild(inputSpan);
+            const icon = fieldset.querySelector(".form__input-valid");
+            if (icon) {
+                icon.remove();
+            }
+        }
+    });
+}
+
+export function initForm() {
+    openContactForm();
+    closeContactFormOnClick()
+    closeFormWithEsc()
+    // validateInput()
+    // const inputs = form.querySelectorAll("input");
+    const fieldset = document.querySelector("fieldset");
+    const fieldsets = fieldset.querySelectorAll("fieldset");
+    fieldsets.forEach(fieldset => {
+        validateInput(fieldset)
+    })
+
+    submitForm()
+}
