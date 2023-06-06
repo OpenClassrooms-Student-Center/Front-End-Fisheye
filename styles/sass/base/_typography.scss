@@ -18,11 +18,12 @@ h1 {
 
 .logo {
   height: 50px;
+
   &__link {
     padding: 1rem;
     margin-left: 100px;
   }
-  :focus-visible {
+  &__link:focus-visible {
     outline: solid 2px $color-primary;
   }
 

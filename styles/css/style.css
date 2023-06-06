@@ -31,7 +31,7 @@ h1 {
   padding: 1rem;
   margin-left: 100px;
 }
-.logo :focus-visible {
+.logo__link:focus-visible {
   outline: solid 2px #901C1C;
 }
 
