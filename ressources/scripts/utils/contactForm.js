@@ -95,6 +95,7 @@ function validateInput(fieldset) {
 
         if (informationObject[inputName].regex.test(input.value)) {
             inputSpan.innerText = "";
+            input.removeAttribute("aria-invalid")
             const icon = fieldset.querySelector(".form__input-valid");
             if (!icon) {
                 const i = document.createElement("i")
@@ -103,6 +104,8 @@ function validateInput(fieldset) {
             }
         } else {
             inputSpan.innerText = informationObject[inputName].errorMessage;
+            inputSpan.setAttribute("aria-label", inputSpan.innerText);
+            input.setAttribute("aria-invalid", "true");
             fieldset.appendChild(inputSpan);
             const icon = fieldset.querySelector(".form__input-valid");
             if (icon) {
@@ -116,13 +119,10 @@ export function initForm() {
     openContactForm();
     closeContactFormOnClick()
     closeFormWithEsc()
-    // validateInput()
-    // const inputs = form.querySelectorAll("input");
     const fieldset = document.querySelector("fieldset");
     const fieldsets = fieldset.querySelectorAll("fieldset");
     fieldsets.forEach(fieldset => {
         validateInput(fieldset)
     })
-
     submitForm()
 }

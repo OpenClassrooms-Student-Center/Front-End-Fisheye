@@ -1,13 +1,15 @@
 const body = document.querySelector("body");
 const main = document.querySelector("main");
 const header = document.querySelector("header");
+const footer = document.querySelector("footer");
 const lightboxModal = document.querySelector(".lightboxModal");
 const mainButtons = main.querySelectorAll("button");
 const a = document.querySelector("a");
 
-function displayLightboxModal() {
+function renderLightboxModal() {
   main.setAttribute("aria-hidden", "true");
   header.setAttribute("aria-hidden", "true");
+  footer.setAttribute("aria-hidden", "true");
   a.setAttribute("aria-hidden", "true");
   a.setAttribute("tabindex", "-1");
 
@@ -29,6 +31,7 @@ function displayLightboxModal() {
 function closeLightboxModal() {
   main.setAttribute("aria-hidden", "false");
   header.setAttribute("aria-hidden", "false");
+  footer.setAttribute("aria-hidden", "false");
   a.setAttribute("aria-hidden", "false");
   a.setAttribute("tabindex", "0");
 
@@ -82,7 +85,7 @@ export function disableLightboxButtons(index, mediasLength) {
 
 export function initLightbox(){
   disableLightboxButtons()
-  displayLightboxModal();
+  renderLightboxModal();
   closeLightboxOnClick();
   closeLightboxWithEsc();
 }
