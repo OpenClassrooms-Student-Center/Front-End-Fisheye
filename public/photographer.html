@@ -57,23 +57,23 @@
             </button>
           </div>
           <fieldset class="form__body">
-            <fieldset id="firstName" class="fieldset">
-              <label class="form__label" id="firstName" for="prenom">Prénom</label>
-              <input class="form__input" aria-labelledby="firstName" aria-describedby="firsname-format" type="text" id="prenom" name="firstName" minlength="2" required aria-required="true"/>
-              <span id="firstname-format" class="hidden">Au moins 2 caractères</span>
+            <fieldset id="firstName-fieldset" class="fieldset">
+              <label class="form__label" id="firstName-label" for="prenom">Prénom</label>
+              <input class="form__input" aria-labelledby="firstName-label" aria-describedby="firstName-format" type="text" id="prenom" name="firstName" minlength="2" required aria-required="true"/>
+              <span id="firstName-format" class="hidden">Au moins 2 caractères</span>
             </fieldset>
-            <fieldset id="lastName" class="fieldset">
-              <label class="form__label" id="lastName" for="nom">Nom</label>
-              <input class="form__input" aria-labelledby="lastName" aria-describedby="lastname-format" type="text" id="nom" name="lastName" minlength="2" required aria-required="true"/>
-              <span id="lastname-format" class="hidden">Au moins 2 caractères</span>
+            <fieldset id="lastName-fieldset" class="fieldset">
+              <label class="form__label" id="lastName-label" for="nom">Nom</label>
+              <input class="form__input" aria-labelledby="lastName-label" aria-describedby="lastName-format" type="text" id="nom" name="lastName" minlength="2" required aria-required="true"/>
+              <span id="lastName-format" class="hidden">Au moins 2 caractères</span>
             </fieldset>
-            <fieldset id="email" class="fieldset">
-              <label class="form__label" id="email" for="e-mail">Email</label>
-              <input class="form__input" aria-labelledby="email" aria-describedby="email-format" type="email" id="e-mail" name="email" pattern="\w+([\.\-]?\w+)*@\w+([\.\-]?\w+)*(\.\w{2,3})+$" required aria-required="true"/>
+            <fieldset id="email-fieldset" class="fieldset">
+              <label class="form__label" id="email-label" for="e-mail">Email</label>
+              <input class="form__input" aria-labelledby="email-label" aria-describedby="email-format" type="email" id="e-mail" name="email" pattern="\w+([\.\-]?\w+)*@\w+([\.\-]?\w+)*(\.\w{2,3})+$" required aria-required="true"/>
               <span id="email-format" class="hidden">xy@abc.xyz</span>
             </fieldset>
-            <fieldset id="message" class="fieldset">
-              <label class="form__label" id="form-message" for="message">Message</label>
+            <fieldset id="message-fieldset" class="fieldset">
+              <label class="form__label" id="form-message-label" for="message">Message</label>
               <input class="form__input" aria-labelledby="form-message" aria-describedby="message-format" type="text" id="message" name="message" minlength="10" maxlength="100" required aria-required="true"/>
               <span id="message-format" class="hidden">Entre 10 et 100 caractères</span>
             </fieldset>

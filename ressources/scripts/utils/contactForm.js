@@ -80,8 +80,6 @@ function closeFormWithEsc() {
         }
     })
 }
-
-
 function submitForm() {
     form.addEventListener("submit", function(event) {
         event.preventDefault();
@@ -97,11 +95,11 @@ function submitForm() {
             message: message.value
         });
         form.reset();
+        const icons = document.querySelectorAll(".form__input-valid");
+        icons.forEach(icon => icon.remove())
         closeForm();
     })
 }
-
-
 let informationObject = {
     "prenom": {
         regex: /\w{2,}/,

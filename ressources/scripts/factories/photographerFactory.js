@@ -50,7 +50,7 @@ export function photographerFactory(photographer) {
                 <p class="photographer__location photographer__location--doubled">${city}, ${country}</p>
                 <p class="photographer__tagline photographer__tagline--doubled">${tagline}</p>
         </div>
-        <button class="contact__button button" aria-label="contact me">Contactez-moi</button>
+        <button class="contact__button button" aria-label="contact ${name}">Contactez-moi</button>
         <img src="../ressources/assets/photographers/${portrait}.webp" alt="${name}" class="photographer__img" aria-label="picture of ${name}">
         `
         return photographerHeader
