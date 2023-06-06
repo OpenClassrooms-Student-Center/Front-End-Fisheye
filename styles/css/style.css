@@ -229,7 +229,7 @@ button:focus-visible {
   width: 40%;
   max-width: 600px;
   height: 85%;
-  max-height: 1000px;
+  max-height: 700px;
   border-radius: 0.3em;
   background-color: #DB8876;
   padding: 2em;
@@ -246,11 +246,11 @@ button:focus-visible {
   align-items: self-start;
   justify-content: center;
   width: 100%;
-  margin-bottom: 2em;
+  margin-bottom: 1em;
   border: none;
 }
 .form__title {
-  font-size: 3em;
+  font-size: 2em;
   font-weight: 400;
   vertical-align: top;
 }
@@ -259,7 +259,7 @@ button:focus-visible {
 }
 .form__label {
   color: #312E2E;
-  font-size: 1.3em;
+  font-size: 1em;
 }
 .form__input {
   position: relative;
@@ -268,7 +268,7 @@ button:focus-visible {
   border: none;
   border-radius: 0.2em;
   font-size: 2em;
-  padding: 0em 0.5em;
+  padding: 0em 0.2em;
   margin-top: 0.2em;
   margin-bottom: 0.2em;
 }
