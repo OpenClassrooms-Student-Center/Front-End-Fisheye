@@ -227,7 +227,9 @@ button:focus-visible {
   flex-direction: column;
   justify-content: space-between;
   width: 40%;
+  max-width: 600px;
   height: 85%;
+  max-height: 800px;
   border-radius: 0.3em;
   background-color: #DB8876;
   padding: 2em;
@@ -601,7 +603,8 @@ fieldset#message > i {
   top: 0;
   width: 100vw;
   height: 100vh;
-  background-color: rgba(117, 117, 117, 0.5);
+  background-color: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(2px);
 }
 
 /*# sourceMappingURL=style.css.map */

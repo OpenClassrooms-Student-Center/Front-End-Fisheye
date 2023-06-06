@@ -4,19 +4,37 @@ const body = document.querySelector("body");
 const main = document.querySelector("main");
 const modal = document.querySelector(".modal");
 const form = document.querySelector(".form");
+const header = document.querySelector("header");
+const footer = document.querySelector("footer");
+const mainButtons = main.querySelectorAll("button");
+const a = document.querySelector("a");
 
-async function displayNameInForm() {
+async function renderNameInForm() {
     const photographer = await getPhotographersById();
     const { name } = photographer
     const title = document.querySelector(".form__title")
     title.innerHTML = `Contactez-moi<br>${name}`
 }
-function displayForm() {
+function renderForm() {
     main.setAttribute("aria-hidden", "true");
     modal.setAttribute("aria-hidden", "false");
     body.classList.add("no-scroll");
     modal.style.display = "flex";
-    displayNameInForm();
+    header.setAttribute("aria-hidden", "true");
+    footer.setAttribute("aria-hidden", "true");
+    a.setAttribute("aria-hidden", "true");
+    a.setAttribute("tabindex", "-1");
+
+    const mediaButtons = document.querySelectorAll(".media__btn");
+    mediaButtons.forEach(function(button) {
+      button.setAttribute("tabindex", "-1");
+    });
+    const formButton = document.querySelector(".contact__button");
+    formButton.setAttribute("tabindex", "-1")
+    mainButtons.forEach(function(button) {
+      button.setAttribute("tabindex", "-1");
+    });
+    renderNameInForm();
     form.style.display = "flex";
     const input = document.querySelector(".form__input");
     input.focus();
@@ -25,7 +43,7 @@ function displayForm() {
 }
 function openContactForm() {
     const contactBtn = document.querySelector(".contact__button");
-    contactBtn.addEventListener("click", displayForm);
+    contactBtn.addEventListener("click", renderForm);
 }
 function closeForm() {
     main.setAttribute("aria-hidden", "false");

@@ -9,8 +9,8 @@
   top: 0;
   width: 100vw;
   height: 100vh;
-  background-color: rgba(#757575, 0.5);
-  // border: 2px solid red;
+  background-color: rgba(white, 0.8);
+  backdrop-filter: blur(2px);
 
   // &__window {
   //   border-radius: .3em;
