@@ -24,6 +24,10 @@ h1 {
   margin-right: 6.25rem;
 }
 
+p {
+  line-height: 1.5;
+}
+
 .logo {
   height: 3.125rem;
 }
@@ -42,10 +46,6 @@ main {
   margin: 0rem 4rem;
 }
 
-button:focus-visible {
-  outline: solid 2px #901C1C;
-}
-
 .hidden {
   height: 1px;
   left: 0;
@@ -58,7 +58,7 @@ button:focus-visible {
 .photographer_section {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
-  gap: 4.3em;
+  gap: 2.5em;
   margin-top: 6.25em;
   margin-bottom: 6.25em;
 }
@@ -204,6 +204,10 @@ button:focus-visible {
   gap: 0.6rem;
 }
 
+button:focus-visible {
+  outline: solid 2px #901C1C;
+}
+
 .button {
   font-size: 1.2em;
   font-weight: bold;
@@ -217,9 +221,6 @@ button:focus-visible {
 .button:hover, .button:focus {
   background-color: #D3573C;
   color: black;
-}
-.button:focus-visible {
-  outline: solid 2px #901C1C;
 }
 
 .form {
