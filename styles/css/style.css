@@ -1,9 +1,27 @@
+/** reset **/
 *,
 *:before,
 *:after {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
+}
+
+/** typography **/
+h1 {
+  color: #901C1C;
+  margin-right: 6.25rem;
+}
+
+p {
+  line-height: 1.5;
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 0rem 4rem;
 }
 
 body {
@@ -19,31 +37,9 @@ header {
   height: 5.625rem;
 }
 
-h1 {
-  color: #901C1C;
-  margin-right: 6.25rem;
-}
-
-p {
-  line-height: 1.5;
-}
-
-.logo {
-  height: 3.125rem;
-}
-.logo__link {
-  padding: 0.8rem;
-  margin-left: 6.25rem;
-}
-.logo__link:focus-visible {
-  outline: solid 2px #901C1C;
-}
-
-main {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin: 0rem 4rem;
+/** shared classes **/
+.no-scroll {
+  overflow: hidden;
 }
 
 .hidden {
@@ -55,6 +51,7 @@ main {
   width: 1px;
 }
 
+/** Photographer section style **/
 .photographer_section {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
@@ -136,6 +133,7 @@ main {
   font-size: 1.6em;
 }
 
+/** media card style **/
 .media {
   display: flex;
   flex-direction: column;
@@ -183,6 +181,7 @@ main {
   outline: solid 2px #901C1C;
 }
 
+/** like counter style **/
 .counter {
   position: fixed;
   display: flex;
@@ -204,6 +203,7 @@ main {
   gap: 0.6rem;
 }
 
+/** button style **/
 button:focus-visible {
   outline: solid 2px #901C1C;
 }
@@ -223,6 +223,7 @@ button:focus-visible {
   color: black;
 }
 
+/** Contact form style **/
 .form {
   display: flex;
   flex-direction: column;
@@ -309,10 +310,7 @@ fieldset#message-fieldset > i {
   top: 3.5rem;
 }
 
-.no-scroll {
-  overflow: hidden;
-}
-
+/** sort section and button **/
 .sort {
   width: 100%;
   padding-top: 1rem;
@@ -413,6 +411,7 @@ fieldset#message-fieldset > i {
   padding: 1.5rem;
 }
 
+/** lightbox style **/
 .lightboxModal {
   display: none;
   position: fixed;
@@ -495,6 +494,7 @@ fieldset#message-fieldset > i {
   margin: 0.5em 0;
 }
 
+/** sort section and button **/
 .sort {
   width: 100%;
   padding-top: 1rem;
@@ -595,6 +595,19 @@ fieldset#message-fieldset > i {
   padding: 1.5rem;
 }
 
+/** logo style **/
+.logo {
+  height: 3.125rem;
+}
+.logo__link {
+  padding: 0.8rem;
+  margin-left: 6.25rem;
+}
+.logo__link:focus-visible {
+  outline: solid 2px #901C1C;
+}
+
+/** modal style **/
 .modal {
   display: none;
   justify-content: center;
@@ -607,5 +620,6 @@ fieldset#message-fieldset > i {
   background-color: rgba(255, 255, 255, 0.8);
   backdrop-filter: blur(2px);
 }
+
 
 /*# sourceMappingURL=style.css.map */

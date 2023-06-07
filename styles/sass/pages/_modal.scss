@@ -1,4 +1,4 @@
-// Modal style
+/** modal style **/
 
 .modal {
   display: none;
@@ -11,12 +11,4 @@
   height: 100vh;
   background-color: rgba(white, 0.8);
   backdrop-filter: blur(2px);
-
-  // &__window {
-  //   border-radius: .3em;
-  //   background-color: #DB8876;
-  //   width: 41.875em;
-  //   padding: 2em;
-  //   height: 95vh;
-  // }
 }
