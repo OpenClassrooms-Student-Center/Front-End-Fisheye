@@ -1,26 +1,35 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="en">
+
 <head>
-    <link href="./css/style.css" rel="stylesheet" type="text/css" >
-    <meta charset="utf-8" >
-    <link rel="icon" type="image/png" href="./assets/favicon.png" >
-    <link href="https://fonts.googleapis.com/css?family=DM+Sans&display=swap"rel="stylesheet">
+    <!-- Lien vers la feuille de style CSS -->
+    <link href="./css/style.css" rel="stylesheet" type="text/css">
+    <meta charset="utf-8">
+    <!-- Icône du site -->
+    <link rel="icon" type="image/png" href="./assets/favicon.png">
+    <!-- Lien vers la police de caractères -->
+    <link href="https://fonts.googleapis.com/css?family=DM+Sans&display=swap" rel="stylesheet">
+    <!-- Titre de la page -->
     <title>Fisheye</title>
-  </head>
-  <body>
+</head>
+
+<body>
     <header>
-      <a href="./index.html">
-        <img src="./assets/images/logo.png" class="logo" alt="FishEye Home Page">
-      </a>
-      <h1>Nos photographes</h1>
+        <!-- Lien vers la page d'accueil -->
+        <a href="./index.html">
+            <!-- Logo du site -->
+            <img src="./assets/images/logo.png" class="logo" alt="FishEye Home Page">
+        </a>
+        <!-- Titre de la page -->
+        <h1>Nos photographes</h1>
     </header>
     <main id="main">
-      <section class="photographer_section"></section>
+        <!-- Section pour afficher les photographes -->
+        <section class="photographer_section"></section>
     </main>
-    <script
-      type="module"
-      src="./scripts/factories/photographerFactory.js"
-    ></script>
+    <!-- Script pour générer les photographes à partir des données -->
+    <!-- Script de la page d'index -->
     <script type="module" src="./scripts/pages/index.js"></script>
-  </body>
+</body>
+
 </html>

@@ -1,7 +1,9 @@
 @import url("photographer.css");
 @import url("lightBox.css");
 
-
+/*======================
+        GÉNÉRAL
+========================*/
 
 body {
   display: flex;
@@ -19,9 +21,12 @@ main {
 
 #main {
   display: flex;
-
   margin: 0;
 }
+
+/*======================
+        EN-TÊTE
+========================*/
 
 header {
   display: flex;
@@ -40,6 +45,10 @@ h1 {
   height: 2.78rem;
   margin-left: 7rem;
 }
+
+/*======================
+        SECTION PHOTOGRAPHE
+========================*/
 
 .photographer_section {
   display: flex;
@@ -86,6 +95,7 @@ h1 {
   object-position: center;
   border-radius: 50%;
 }
+
 .photographer_section .artisteName {
   display: flex;
   justify-content: center;

@@ -1,9 +1,13 @@
-*, *::before, *::after {
+/* Réinitialisation du style */
+*,
+*::before,
+*::after {
   padding: 0;
   margin: 0;
   box-sizing: border-box;
 }
 
+/* Classes utilitaires */
 .hidden {
   display: none;
   opacity: 0;
@@ -15,29 +19,44 @@
 }
 
 .error {
- margin-bottom: 0;
+  margin-bottom: 0;
 }
 
+/* Styles généraux */
 #main-photographer {
-  display: block;
+  display: flex;
   margin: 0 100px;
 }
 
-#photographerName {
+#photographName {
   display: flex;
-  margin-top5px;
+  justify-content: start;
+  color: #d3573c;
+  font-size: 2.5rem;
+  font-weight: 500;
+  width: 100%;
 }
 
 #txtMsg {
   height: 100px;
 }
-//CREATION DE L'EN TETE DU PHOTOGRAPHE
 
+#sortType {
+  display: flex;
+  left: 20px;
+  top: 10px;
+  cursor: pointer;
+  background-color: #901c1c;
+  color: white;
+  border-radius: 4px;
+  margin-right: 20px;
+  padding: 10px 0;
+}
+
+/* En-tête du photographe */
 .photograph-header {
   background-color: #fafafa;
-  height: 300px;
-  width: 100%;
-  margin: 0 100px;
+  margin: 0 auto;
   width: 100%;
 }
 
@@ -57,10 +76,10 @@
   margin: 0;
   padding: 20px;
   order: 0;
-  width: 33%;
+  width: 33.33%;
 }
 
-.UserInfosText .artisteName {
+.artisteName {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -74,12 +93,10 @@
   flex-direction: column;
   align-items: end;
   margin: 20px;
-
   width: 200px;
   height: 200px;
   order: 2;
   border-radius: 50%;
-
   overflow: hidden;
 }
 
@@ -102,49 +119,71 @@
 .FilterField {
   display: flex;
   text-align: center;
-  align-items:center;
+  align-items: center;
   margin: 0;
   padding: 20px;
+  width:fit-content
 }
 
 .filterField_select {
-  line-height:1;
   display: flex;
-  flex-direction: column;
-  justify-items:start;
+  flex-direction: row;
+  justify-content: center;
   align-items: center;
-  position:relative;
-  background-color: #901C1C;
-  color:white;
-  width:100px;
-  font-size:1.1rem
+  position: relative;
+  cursor: pointer;
+  padding: 4px 8px;
+  background-color: #901c1c;
+  color: white;
+  margin: 0 20px;
+  width: 130px;
+  border-radius: 4px;
+  border: none;
 }
 
-.filterField_select-list{
-  display:flex;
-  flex-direction:column;
-  list-style:none;
-  position: relative;
+#filterField_select-label {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+#select-arrow.down {
+  width: 15px;
+  height: 15px;
+  transform: rotate(90deg);
+  position: absolute;
+  right: 10px;
+}
+
+.filterField_select-list {
+  flex-direction: column;
+  position: absolute;
+  z-index: 1;
   top: 0;
   left: 0;
-  margin: 0 10px;
-  width:100px;
+  list-style: none;
+  background-color: #fff;
+  padding: 0;
+  border-radius: 4px;
+  max-height: 200px;
+  overflow: hidden;
 }
 
-.filterField_select-label{
-  
-  
-  padding:10px 20px;
-  background-color: #901C1C;
-  cursor:pointer;
-  width:100px;
+.filterField_select-list-item {
+  padding: 4px 8px;
+  margin: 0 auto;
+  cursor: pointer;
+  background-color: #901c1c;
+  color: white;
+  border-bottom: 1px solid #fff;
+  width: 130px;
 }
 
-.filterField_select-list-item{
-  display:none;
-  padding:10px 20px;
-  background-color: #901C1C;
-  
+.filterField_select-list-item:hover {
+  scale: 1.05;
+  border: 2px solid #fff;
+  font-weight: 550;
 }
 
 .MediasContainer {
@@ -193,8 +232,6 @@
   background-color: white;
 }
 
-
-
 .media-infos .media-title {
   font-size: 12px;
   font-weight: bold;
@@ -203,12 +240,46 @@
 }
 
 .media-likes {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   font-size: 12px;
   font-weight: bold;
 }
 
+.media-likes.liked i {
+  animation: pulse 0.2s;
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.2);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.media-link {
+  cursor: pointer;
+}
+
+.TotalLikes {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  font-size: 1rem;
+  font-weight: bold;
+  width: 50px;
+}
+
 .fa-heart {
   color: #901c1c;
+  font-size: 1.2rem;
+  padding-left: 5px;
 }
 
 .submit-form-btn,
@@ -216,7 +287,7 @@
   display: flex;
   order: 1;
   font-size: 20px;
-  font-weight: bold;
+  font-weight: 550;
   color: white;
   padding: 11px;
   width: 170px;
@@ -227,7 +298,25 @@
   cursor: pointer;
   align-items: center;
   justify-content: center;
-  margin: auto;
+  margin: 33%;
+}
+
+#btn-close {
+  margin: 20px auto;
+  font-size: 1.4rem;
+  height: 50px;
+  width: 100px;
+  order: 1;
+  font-size: 20px;
+  font-weight: 550;
+  color: white;
+  padding: 11px;
+  border: none;
+  background-color: #901c1c;
+  border-radius: 5px;
+  cursor: pointer;
+  align-items: center;
+  justify-content: center;
 }
 
 .submit-form-btn {
@@ -235,12 +324,16 @@
 }
 
 .contact_button {
-  margin: auto auto auto 60px;
+  margin: auto auto auto 10%;
+}
+
+.contact_button:hover {
+  font-weight: bolder;
+  box-sizing: border-box;
 }
 
 .contact_modal {
   position: fixed;
-
   justify-content: center;
   align-items: center;
   top: 0px;
@@ -260,7 +353,6 @@
   align-items: center;
   justify-content: stretch;
   padding: 5px 35px;
-
   box-sizing: border-box;
 }
 
@@ -273,7 +365,9 @@
   box-sizing: content-box;
 }
 
-.modal header h2 {
+#modalTitle,
+#modalTitle_Validate {
+  flex-direction: column;
   font-size: 48px;
   font-weight: normal;
   text-align: start;
@@ -281,10 +375,26 @@
   line-height: 1;
 }
 
+#modalTitle_Validate {
+  font-size: 36px;
+  width: 100%;
+  margin: 0 -50px 0 auto;
+  font-weight: normal;
+  text-align: center;
+  align-self: center;
+  line-height: 1;
+}
+
 .close {
   cursor: pointer;
   display: flex;
   align-self: flex-start;
+}
+.modal_validate {
+  display: block;
+  text-align: center;
+  margin: 20px auto;
+  font-weight: bold;
 }
 
 form {
@@ -335,38 +445,38 @@ form input {
   text-align: right;
   line-height: 0.3;
   opacity: 0;
-  -webkit-transition: 0.3s;
-  -o-transition: 0.3s;
   transition: 0.3s;
   font-weight: unset;
 }
+
 .formData[data-error-visible="true"]::after {
   opacity: 1;
 }
+
 .formData[data-error-visible="true"] .text-control {
   border: 2px solid #760a15;
 }
 
-
-.resumeContainer{
+.resumeContainer {
   display: flex;
   justify-content: space-around;
   align-items: center;
+  text-align: center;
+  line-height: 1.2rem;
   position: fixed;
-  bottom:0px;
-  right:100px;
-  height:50px;
+  bottom: 0px;
+  right: 100px;
+  height: 50px;
   width: 400px;
   background-color: #db8876;
   font-weight: bold;
 }
 
-.resumeContainer i{
+.resumeContainer i {
   color: black;
+  font-size: 1.2rem;
 }
 
-.artistePricing{
-  order:1;
+.artistePricing {
+  order: 1;
 }
-
-

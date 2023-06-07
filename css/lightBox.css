@@ -1,115 +1,146 @@
 .lightbox-Bg {
+  /* Position et dimensionnement de la lightbox */
   justify-content: center;
   align-items: center;
   position: fixed;
   top: 0;
   left: 0;
-  width: 100%;
-  height: 100%;
+  width: 100vw;
+  height: 100vh;
+  /* Effet de flou de l'arrière-plan */
   backdrop-filter: blur(10px);
+  /* Couleur de fond semi-transparente */
   background-color: rgba(0, 0, 0, 0.5);
-  z-index: 0
+  /* Z-index pour la superposition */
+  z-index: 0;
 }
 
 .lightbox {
+  /* Conteneur de la lightbox */
+  display: flex;
   flex-direction: column;
   position: relative;
-  height: 90%;
+  height: 95%;
   width: 70%;
+  opacity: 1;
+  max-width: 110vh;
   background-color: white;
-  align-items: center;
-  justify-content: center;
+  /* Centrage du contenu de la lightbox */
+  margin: auto;
+  /* Marge intérieure */
   padding: 10px;
+  /* Gestion du débordement */
   overflow: hidden;
+  /* Z-index pour la superposition */
   z-index: 1;
+  /* Animation d'ouverture */
+  animation: lightboxIn 0.7s ease;
+}
+
+@keyframes lightboxIn {
+  0% {
+    transform: scale(0);
+    opacity: 0;
+  }
+  50% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
 }
 
 .lightbox_close_btn-div {
-  display: flex;
-  justify-content: flex-end;
+  /* Positionnement du bouton de fermeture */
+  top: 10px;
+  right: 10px;
+  position: absolute;
 }
 
 .lightbox_Close-btn {
+  /* Style du bouton de fermeture */
   margin: 20px;
   width: 30px;
+  opacity: 0.4;
+  transition: opacity 0.5s ease;
 }
 
-.lightbox_Close-btn:hover{
-  transform: scale(1.2)
+.lightbox_Close-btn:hover {
+  /* Effet d'agrandissement au survol */
+  transform: scale(1.2);
+  opacity: 1;
 }
 
-.lightbox_controls-Div {
-  height: 100%;
-  width: 100%;
-  display: flex;
-  align-items: center;
-  overflow: hidden;
+.prev,
+.next {
+  /* Boutons précédent et suivant */
+  position: absolute;
+  top: 50%;
+  height: 80px;
+  opacity: 0.4;
 }
 
-.next-Btn,
-.prev-Btn {
-  position: relative;
-  margin:0 auto;
-  padding:15px;
-  font-size: 2rem;
-  width:80px;
-  height:80px;
-  top:-70px;
+.next {
+  /* Style du bouton suivant */
+  right: 25px;
+  transform: translateY(-50%) rotate(0);
+  transition: opacity 0.5s ease;
 }
 
-.next-Btn {
-  order: 2;
-  transform: rotate(0);
+.next:hover {
+  /* Effet d'agrandissement et rotation au survol */
+  transform: translateY(-50%) scale(1.1) rotate(0);
+  opacity: 1;
 }
 
-.next-Btn:hover {
-  transform: scale(1.1) rotate(0);
+.prev {
+  /* Style du bouton précédent */
+  left: 25px;
+  top: 50%;
+  transform: translateY(-50%) rotate(180deg);
+
+  transition: opacity 0.5s ease;
 }
 
-.prev-Btn {
-  order: 0;
-  transform: rotate(180deg);
-}
-
-.prev-Btn:hover {
-  transform: scale(1.1) rotate(180deg);
+.prev:hover {
+  /* Effet d'agrandissement et rotation au survol */
+  transform: translateY(-50%) scale(1.1) rotate(180deg);
+  opacity: 1;
 }
 
 .lightbox_media-Container {
-  display: flex;
-  flex-direction: row;
-  position: relative;
-  top: -80px;
-  height: 100%;
-  width: 100%;
-  overflow: hidden;
-  order: 1;
-}
-
-.lightbox_media-slider {
-  height: 100%;
-}
-
-.lightbox_media-card {
+  /* Conteneur des médias */
   display: flex;
   flex-direction: column;
-  justify-self: center;
-  width: 100%;
-  height: 100%;
+  height: 90vh;
+  width: 80vh;
+  max-width: 80%;
+  /* Gestion du débordement */
+  overflow: hidden;
+  /* Ordre d'affichage */
+  order: 1;
+  margin: auto;
 }
 
-.lightbox_media-card .media {
-  width: 100%;
+.LightboxIn {
+  /* Carte des médias */
+  display: flex;
   object-fit: cover;
   object-position: center;
+  width: 99%;
   height: 95%;
-  position: relative;
-  //top: 70px;
+  box-shadow: 2px 0 0 0px lightgrey;
+  box-sizing: content-box;
+  border-radius: 5px;
+  right: -1px;
 }
-.lightbox_media-card figcaption .media-title {
-  width: 100%;
-  height: 100%;
-  color: #911c1c;
-  padding: 10px;
-  font-size:1rem
+
+.LightboxInTitle {
+  /* Titre de la carte des médias */
+  height: 5%;
+  font-size: 125%;
+  font-weight: bold;
+  color: #901c1c;
+  padding-top: 10px;
 }

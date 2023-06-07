@@ -1,147 +1,123 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <link href="./css/style.css" rel="stylesheet" type="text/css" />
-    <meta charset="utf-8" />
-    <link rel="icon" type="image/png" href="./assets/favicon.png" />
+<html lang='en'>
 
-    <link
-      href="https://fonts.googleapis.com/css?family=DM+Sans&display=swap"
-      rel="stylesheet"
-    />
-    <script
-      src="https://kit.fontawesome.com/c6b75d90fa.js"
-      crossorigin="anonymous"
-    ></script>
+<head>
+    <!-- Lien vers la feuille de style CSS -->
+    <link href='./css/style.css' rel='stylesheet' type='text/css'>
+    <meta charset='utf-8'>
+    <!-- Icône du site -->
+    <link rel='icon' type='image/png' href='./assets/favicon.png'>
 
+    <!-- Lien vers la police de caractères -->
+    <link href='https://fonts.googleapis.com/css?family=DM+Sans&display=swap' rel='stylesheet'>
+    <!-- Script pour utiliser les icônes de Font Awesome -->
+    <script src='https://kit.fontawesome.com/c6b75d90fa.js' crossorigin='anonymous'></script>
+
+    <!-- Titre de la page -->
     <title>Fisheye - photographe</title>
-  </head>
+</head>
 
-  <body>
-    <header role="banner">
-      <a href="./index.html">
-        <img
-          src="./assets/images/logo.png"
-          class="logo"
-          alt="Fisheye Home Page"
-        />
-      </a>
+<body>
+    <header>
+        <!-- Lien vers la page d'accueil -->
+        <a href='./index.html'>
+            <!-- Logo du site -->
+            <img src='./assets/images/logo.png' class='logo' alt='Fisheye Home Page'>
+        </a>
+        </h1>
     </header>
-    <main id="main-photographer" aria-hidden="false">
-      <section class="photograph-header"></section>
-      <section class="photograph-body">
-       
-          <div class="FilterField" >
-            Trier par :
-            <div role="listbox" class="filterField_select" aria-expanded="false">
-              <span id="filterField_select-label">Popularité</span>
-              <ul class="filterField_select-list hidden">
-                <li role="option" class="filterField_select-list-item">
-                  Popularité
-                </li>
-                <li role="option" class="filterField_select-list-item">
-                  Date
-                </li>
-                <li role="option" class="filterField_select-list-item">
-                  Titre
-                </li>
-              </ul>
+    <main id='main-photographer' aria-hidden='false'>
+        <!-- Section pour l'en-tête du photographe -->
+        <div class='photograph-header' ></div>
+        <!-- Section pour le corps du photographe -->
+        <div class='photograph-body'>
+            <div class='FilterField'>
+                Trier par :
+                <button tabindex='0' class='filterField_select' aria-expanded='false' aria-haspopup='true' >
+                    <span id='filterField_select-label'>
+                        <span id='sortType'>Popularité </span>
+                        <img id='select-arrow' class='down' src='./assets/icons/LightboxArrowlist.svg' alt='decrease sense'>
+                    </span>
+                    <ul role='listbox' class='filterField_select-list hidden'>
+                        <li role='option' id='pop' aria-selected='false' class='filterField_select-list-item'>Popularité</li>
+                        <li role='option' id='date' aria-selected='false' class='filterField_select-list-item'>Date</li>
+                        <li role='option' id='titre' aria-selected='false' class='filterField_select-list-item'>Titre</li>
+                    </ul>
+                </button>
             </div>
-          </div>
-      </section>
+        </div>
+        
     </main>
-    <div class="lightbox-Bg hidden" aria-hidden="true">
-      <div class="lightbox" role="dialog">
-        <div class="lightbox_close_btn-div">
-          <img
-            role="button"
-            class="lightbox_Close-btn"
-            aria-label="fermer la lightbox"
-            src="./assets/icons/LightboxCloseBtn.svg"
-          />
+    <!-- Lightbox -->
+
+    <div class='lightbox-Bg hidden' aria-hidden='true'>
+        <div class='lightbox' role='dialog' aria-label='Vue rapprochée'>
+            <div class='lightbox_close_btn-div'>
+                <!-- Bouton de fermeture de la lightbox -->
+                <img role='button' class='lightbox_Close-btn' aria-label='Close dialog' aria-roledescription="Fermer la lightbox"
+                    src='./assets/icons/LightboxCloseBtn.svg' alt='Bouton de fermeture'>
+            </div>
+            <figure class='lightbox_media-Container'>
+            </figure>
+            <img class='prev' role='button' src='assets/icons/LightboxArrow.svg' alt='media précédent'>
+            <img class='next' role='button' src='assets/icons/LightboxArrow.svg' alt='media suivant'>
         </div>
-
-        <div class="lightbox_controls-Div">
-          <img
-            class="next-Btn"
-            src="./assets/icons/LightboxArrow.svg"
-            alt="image suivante"
-          />
-          <img
-            class="prev-Btn"
-            src="./assets/icons/LightboxArrow.svg"
-            alt="image précédente"
-          />
-
-          <div class="lightbox_media-Container">
-            <div class="lightbox_media-slider"></div>
-          </div>
-        </div>
-      </div>
     </div>
-    <div
-      class="contact_modal hidden"
-      role="dialog"
-      aria-hidden="true"
-      aria-describedby="modalTitle"
-    >
-      <div class="modal">
-        <header>
-          <h2 id="modalTitle">
-            Contactez-moi
-            <br />
-            <span id="photographerName"></span>
-          </h2>
 
-          <img class="close" src="./assets/icons/close.svg" />
-        </header>
-        <form name="reserve">
-          <div class="formData">
-            <label class="text-label" for="first">Prénom</label>
-            <input
-              class="text-control"
-              type="text"
-              id="first"
-              name="first"
-              minlength="2"
-            />
-          </div>
-          <div class="formData">
-            <label class="text-label" for="last">Nom</label>
-            <input
-              class="text-control"
-              type="text"
-              id="last"
-              name="last"
-              minlength="2"
-            />
-          </div>
-          <div class="formData">
-            <label class="text-label" for="email">E-mail</label>
-            <input class="text-control" type="email" id="email" name="email" />
-          </div>
-          <div class="formData">
-            <label class="text-label" for="txtMsg">Votre message</label>
-            <textarea
-              role="textbox"
-              id="txtMsg"
-              class="text-control"
-              name="txtMsg"
-              minlength="50"
-              maxlength="200"
-            ></textarea>
-          </div>
-          <button class="submit-form-btn" type="submit">Envoyer</button>
-        </form>
-      </div>
+    <!-- Modal de contact -->
+    <div class='contact_modal hidden' role='dialog' aria-hidden='true'>
+        <div class='modal' aria-labelledby=' modalTitle'>
+            <header>
+                <h2 id='modalTitle' class='visible'>
+                    <!-- Titre de la modal de contact -->
+                    Contactez-moi
+                    <br>
+                    <span id='photographerName'></span>
+                </h2>
+
+
+                <h2 id='modalTitle_Validate' class='hidden'>
+                    <!-- Titre de la modal de contact -->
+                    Merci !
+                </h2>
+
+                <!-- Bouton de fermeture de la modal de contact -->
+                <img role='button' tabindex='0' class='close' aria-label='bouton de cloture de la modale'
+                    src='./assets/icons/close.svg' alt=''>
+            </header>
+            <form name='reserve' class='reserve visible'>
+                <div class='formData'>
+                    <label for='first' id='firstLabel' class='text-label'>Prénom</label>
+                    <input class='text-control' type='text' id='first' name='first' minlength='2'
+                        autocomplete='given-name' aria-autocomplete='inline' aria-labelledby='firstLabel'>
+                </div>
+                <div class='formData'>
+                    <label for='last' id='lastLabel' class='text-label'>Nom</label>
+                    <input class='text-control' type='text' id='last' name='last' minlength='2'
+                        autocomplete='family-name' aria-autocomplete='inline' aria-labelledby='lastLabel'>
+                </div>
+                <div class='formData'>
+                    <label for='email' id='emailLabel' class='text-label'>E-mail</label>
+                    <input class='text-control' type='email' id='email' name='email' autocomplete='off'
+                         aria-labelledby='emailLabel'>
+                </div>
+                <div class='formData'>
+                    <label for='txtMsg' id='txtMsgLabel' class='text-label'>Votre message</label>
+                    <textarea id='txtMsg' class='text-control' name='txtMsg' minlength='50' maxlength='200'
+                        aria-labelledby='txtMsgLabel'></textarea>
+                </div>
+                <button class='submit-form-btn' type='submit' aria-label='Send'>Envoyer</button>
+            </form>
+
+            <p class='modal_validate hidden'> Votre message a bien été envoyé!</p>
+
+            <button id='btn-close' class='hidden' aria-label="Close Contact Form">Fermer</button>
+        </div>`
     </div>
-    <script
-      type="module"
-      src="./scripts/factories/photographerFactory.js"
-    ></script>
-    <script src="./scripts/pages/photographer.js" type="module"></script>
-    <script src="./scripts/utils/contactForm.js" type="module"></script>
-    <script src="./scripts/pages/index.js" type="module"></script>
-    <script src="./scripts/utils/lightbox.js" type="module"></script>
-  </body>
+    <!-- Scripts -->
+
+    <script src='./scripts/pages/photographer.js' type='module'></script>
+
+</body>
+
 </html>
