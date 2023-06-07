@@ -71,6 +71,7 @@ async function displayPhotographMedias() {
         mediaItems.forEach(mediaItem => {
             const id = mediaItem.id.match(regex);
             const media = document.getElementById(`media-${id}`);
+            const mediaLikeBtn = document.getElementById(`like-${id}`);
             const index = Array.from(mediaItems).findIndex((element) => element.id === mediaItem.id);
             
             media.addEventListener('click', (event) => {
@@ -82,20 +83,16 @@ async function displayPhotographMedias() {
                 }
             });
 
-            const mediaLikeBtn = document.getElementById(`like-${id}`);
-            const mediaLikes = document.querySelector(`#like-${id} > .nbr-likes`);
-            const likes = parseInt(mediaLikes.innerHTML);
-
             mediaLikeBtn.addEventListener('click', () => {
-                incrementLikes(id, likes);
+                incrementLikes(id);
             });
 
-            mediaLikeBtn.addEventListener('keydown', (event) => {
-                console.log(event.key, id, likes)
-                if (event.key === 'Enter') {
-                    incrementLikes(id, likes);
-                }
-            });
+            // mediaLikeBtn.addEventListener('keydown', (event) => {
+            //     console.log(event.key, id)
+            //     if (event.key === 'Enter') {
+            //         incrementLikes(id);
+            //     }
+            // });
         });
 
         mediaModals.forEach(mediaModal => {
@@ -249,28 +246,39 @@ async function displayPhotographMedias() {
     resetEventListener();
 
     // LIKES
-    function incrementLikes(id, likes) {
+    function incrementLikes(id) {
         const likeBtn = document.getElementById(`like-${id}`);
         const mediaTotalLikes = document.getElementById('total-likes');
-
-        let mediaLikes = likes;
+        const media = mediaData.find(media => media.id === parseInt(id));
         let totalLikes = parseInt(mediaTotalLikes.innerText);
-        
-        if (!likeBtn.classList.contains('dislike')) {
-            mediaLikes += 1;
+
+        if (!likeBtn.classList.contains('dislike') || currentSortOrder !== 'popularity') {
+            media.likes += 1;
             likeBtn.classList.add('dislike');
-            likeBtn.innerHTML = `${mediaLikes} <i class="fa-solid fa-heart"></i>`;
+            likeBtn.innerHTML = `${media.likes} <i class="fa-solid fa-heart"></i>`;
             likeBtn.ariaLabel = "Retirer votre like de l'image";
             mediaTotalLikes.innerText = totalLikes += 1;
-            if (currentSortOrder === 'popularity') {
-                sortByPopularity();
-            }
+            console.log('1', likeBtn.classList);
+            // if (currentSortOrder === 'popularity') {
+            //     sortByPopularity();
+            //     console.log('2 OUI', likeBtn);
+            // }
         } else {
             likeBtn.classList.remove('dislike');
-            likeBtn.innerHTML = `${mediaLikes} <i class="fa-regular fa-heart"></i>`;
+            media.likes -= 1;
+            likeBtn.innerHTML = `${media.likes} <i class="fa-regular fa-heart"></i>`;
             likeBtn.ariaLabel = "Ajouter un like à l'image";
             mediaTotalLikes.innerText = totalLikes -= 1;
+            console.log('3 (else)', likeBtn);
+            // if (currentSortOrder === 'popularity') {
+            //     sortByPopularity();
+            // }
         }
+
+        // if (currentSortOrder === 'popularity') {
+        //     sortByPopularity();
+        //     console.log('2 OUI', likeBtn);
+        // }
     }
 }
 
