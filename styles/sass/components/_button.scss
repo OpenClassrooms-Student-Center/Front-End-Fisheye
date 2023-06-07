@@ -1,6 +1,10 @@
 // button style
 @use "../abstracts/variables";
 
+button:focus-visible {
+  outline: solid 2px $color-primary;
+}
+
 .button {
   font-size: 1.2em;
   font-weight: bold;
@@ -14,8 +18,5 @@
   &:hover, &:focus{
     background-color: $color-secondary;
     color: black;
-  }
-  &:focus-visible {
-    outline: solid 2px $color-primary;
   }
 }

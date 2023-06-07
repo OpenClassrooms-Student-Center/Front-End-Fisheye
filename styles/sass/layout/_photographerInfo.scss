@@ -1,13 +1,12 @@
-// Photographer section style
 @use "../abstracts/variables";
 
+// Photographer section style
 .photographer_section {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
-  gap: 4.3em;
+  gap: 2.5em;
   margin-top: 6.25em;
   margin-bottom: 6.25em;
-  // width: 100%;
 }
 
 .photographer {
@@ -30,7 +29,6 @@
   &__content {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
-    // padding: 2rem auto;
     width: 100%;
     gap: 2rem;
     margin-top: 6.25em;
