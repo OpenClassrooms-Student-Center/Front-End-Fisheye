@@ -146,4 +146,5 @@ function validFormAndGetValues() {
 form.addEventListener('submit', function(e) {
     e.preventDefault();
     validFormAndGetValues();
+    form.reset();
 });
