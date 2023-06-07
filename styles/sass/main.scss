@@ -8,6 +8,7 @@
 @import "./base/reset";
 @import "./base/typography";
 @import "./base/main";
+@import "./base/shared";
 
 // Layout
 @import "./layout/photographerInfo";
@@ -20,10 +21,9 @@
 @import "./components/sortButton";
 @import "./components/lightbox";
 @import "./components/sortButton";
+@import "./components/logo";
 
 // Pages
 @import "./pages/modal";
-
-
 
 // Themes

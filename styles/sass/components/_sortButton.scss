@@ -1,5 +1,7 @@
 @use "../abstracts/variables";
 
+/** sort section and button **/
+
 .sort {
   width: 100%;
   padding-top: 1rem;
@@ -24,7 +26,6 @@
     cursor: pointer;
 
     &-open {
-      // display: block;
       border-radius: 0.2rem 0.2rem 0 0;
     }
   }

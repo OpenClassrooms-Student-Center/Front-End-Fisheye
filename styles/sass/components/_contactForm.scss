@@ -1,7 +1,6 @@
 @use "../abstracts/variables";
 
-// Contact form style
-
+/** Contact form style **/
 
 .form {
   display: flex;
@@ -94,8 +93,4 @@ fieldset#message-fieldset {
   & > i {
     top: 3.5rem;
   }
-}
-
-.no-scroll {
-  overflow: hidden;
 }

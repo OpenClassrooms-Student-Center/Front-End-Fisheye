@@ -1,16 +1,4 @@
-body {
-  font-family: "DM Sans", sans-serif;
-  margin: 0;
-}
-
-header {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
-  height: 5.625rem;
-}
-
+/** typography **/
 h1 {
   color: #901C1C;
   margin-right: 6.25rem;
@@ -18,17 +6,4 @@ h1 {
 
 p {
   line-height: 1.5;
-}
-
-.logo {
-  height: 3.125rem;
-
-  &__link {
-    padding: 0.8rem;
-    margin-left: 6.25rem;
-  }
-  &__link:focus-visible {
-    outline: solid 2px $color-primary;
-  }
-
 }

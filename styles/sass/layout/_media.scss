@@ -1,9 +1,10 @@
+/** media card style **/
+
 .media{
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  // width:
 
   &__info{
     display: flex;
@@ -14,7 +15,6 @@
     width: 28vw;
     height: 28vw;
     object-fit: cover;
-    // object-position: top;
     border-radius: 0.2rem;
     padding-bottom: 1rem;
     cursor: pointer;
