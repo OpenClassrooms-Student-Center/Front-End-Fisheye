@@ -16,20 +16,20 @@ header {
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  height: 90px;
+  height: 5.625rem;
 }
 
 h1 {
   color: #901C1C;
-  margin-right: 100px;
+  margin-right: 6.25rem;
 }
 
 .logo {
-  height: 50px;
+  height: 3.125rem;
 }
 .logo__link {
   padding: 0.8rem;
-  margin-left: 100px;
+  margin-left: 6.25rem;
 }
 .logo__link:focus-visible {
   outline: solid 2px #901C1C;
@@ -227,9 +227,9 @@ button:focus-visible {
   flex-direction: column;
   justify-content: space-between;
   width: 40%;
-  max-width: 600px;
+  max-width: 37.5rem;
   height: 85%;
-  max-height: 700px;
+  max-height: 43.75rem;
   border-radius: 0.3em;
   background-color: #DB8876;
   padding: 2em;
@@ -395,8 +395,8 @@ fieldset#message-fieldset > i {
   content: "";
   position: absolute;
   top: 0;
-  left: 10px;
-  width: 150px;
+  left: 0.625rem;
+  width: 9.375rem;
   height: 1px;
   background: white;
 }
@@ -577,8 +577,8 @@ fieldset#message-fieldset > i {
   content: "";
   position: absolute;
   top: 0;
-  left: 10px;
-  width: 150px;
+  left: 0.625rem;
+  width: 9.375rem;
   height: 1px;
   background: white;
 }

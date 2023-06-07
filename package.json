@@ -8,7 +8,7 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "sass": "sass --watch ../styles/sass/main.scss:../styles/css/style.css",
+    "sass": "sass --watch ./styles/sass/main.scss:./styles/css/style.css",
     "lint": "eslint .",
     "prefix": "postcss --watch ./styles/css/style.css --use autoprefixer -d ./styles/css/prefixed/"
   },

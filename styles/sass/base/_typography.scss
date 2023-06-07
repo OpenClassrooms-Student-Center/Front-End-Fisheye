@@ -8,20 +8,20 @@ header {
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  height: 90px;
+  height: 5.625rem;
 }
 
 h1 {
   color: #901C1C;
-  margin-right: 100px;
+  margin-right: 6.25rem;
 }
 
 .logo {
-  height: 50px;
+  height: 3.125rem;
 
   &__link {
     padding: 0.8rem;
-    margin-left: 100px;
+    margin-left: 6.25rem;
   }
   &__link:focus-visible {
     outline: solid 2px $color-primary;
