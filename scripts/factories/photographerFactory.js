@@ -40,11 +40,13 @@ function photographerFactory(data) {
   // function qui affichera la page d'un seul photographe (id)
   function getUserDetailDOM() {
     const header = document.querySelector(".photograph-header");
+    const card = document.querySelector(".card-info");
     const formHeader = document.querySelector(".contact-name");
     const div = document.createElement("div");
     const h1 = document.createElement("h1");
     const h2 = document.createElement("h2");
-    const paragraph = document.createElement("p");
+    const pTagline = document.createElement("p");
+    const pInfo = document.createElement("p");
     const img = document.createElement("img");
 
     img.setAttribute("src", picture);
@@ -53,17 +55,20 @@ function photographerFactory(data) {
 
     h1.textContent = name;
     h2.textContent = `${city}, ${country}`;
-    paragraph.textContent = tagline;
+    pTagline.textContent = tagline;
     img.textContent;
 
     formHeader.innerHTML += ` ${name}`;
 
     div.appendChild(h1);
     div.appendChild(h2);
-    div.appendChild(paragraph);
+    div.appendChild(pTagline);
     header.appendChild(img);
 
     header.prepend(div);
+
+    pInfo.textContent = `${price}€ / jour`;
+    card.appendChild(pInfo);
   }
 
   return { getUserCardDOM, getUserDetailDOM };

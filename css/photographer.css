@@ -150,3 +150,29 @@ form textarea[data-error="true"] {
   color: #901C1C;
   font-weight: normal;
 }
+
+.card-info {
+  display: flex;
+  flex-direction: row;
+  gap: 2.5rem;
+  background: #DB8876;
+  width: fit-content;
+  padding: 0.7rem 1.5rem 0.6rem;
+  margin-block: 0;
+  bottom: 0;
+  position: fixed;
+  right: 36px;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+}
+
+.card-info p {
+  margin-block: 0;
+  font-weight: bold;
+}
+
+@media screen and (max-width: 1341px) {
+  .photographer-media {
+    grid-template-columns: 1fr 1fr;
+  }
+}
