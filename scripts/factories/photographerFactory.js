@@ -40,6 +40,7 @@ function photographerFactory(data) {
   // function qui affichera la page d'un seul photographe (id)
   function getUserDetailDOM() {
     const header = document.querySelector(".photograph-header");
+    const formHeader = document.querySelector(".contact-name");
     const div = document.createElement("div");
     const h1 = document.createElement("h1");
     const h2 = document.createElement("h2");
@@ -54,6 +55,8 @@ function photographerFactory(data) {
     h2.textContent = `${city}, ${country}`;
     paragraph.textContent = tagline;
     img.textContent;
+
+    formHeader.innerHTML += ` ${name}`;
 
     div.appendChild(h1);
     div.appendChild(h2);
