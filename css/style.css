@@ -37,6 +37,7 @@ h1 {
     justify-content: center;
     align-items: center;
     flex-direction: column;
+    text-align: center;
 }
 
 .photographer_section article h2 {
@@ -46,21 +47,22 @@ h1 {
 }
 
 .photographer_section article img {
-    height: 200px;
-    width: 200px;
+    height: 250px;
+    width: 250px;
     border-radius:50%;
     object-fit: cover;
     object-position: center;
 }
 
 .photographer_section article p {
-    display: contents;
+    display: flex;
+    flex-direction: column;
     vertical-align: middle;
     font-size: 10px;
 }
 
 .photographer_section article p strong{
-    color:#D3573C;
+    color:#901c1c;
     font-size:14px;
 }
 

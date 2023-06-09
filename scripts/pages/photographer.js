@@ -106,12 +106,16 @@ function lightboxOn(e){
 	lightbox.style.display = "block";
     const html = document.querySelector("html");
     html.style.overflowY = "hidden";
+    console.log(table[e])
     if(table[e]._image){
         let box = `
             <div class="lightbox">
                 <span class="close" onclick="lightboxOff()">X</span>
                 <span id="previous" onclick="lightboxOn(${e-1})"><</span>
+                <div>
                 <img id="truc" src="/assets/photographers/${table[e]._photographerId}/${table[e]._image}"  />
+                <p>${table[e]._title}</p>
+                </div>
                 <span id="next" onclick="lightboxOn(${e+1})">></span> 
             </div>
             `
@@ -123,9 +127,12 @@ function lightboxOn(e){
             <div class="lightbox">
                 <span class="close" onclick="lightboxOff()">X</span>
                 <span id="previous" onclick="lightboxOn(${e-1})"><</span>
+                <div>
                 <video controls >
                 <source src="/assets/photographers/${table[e]._photographerId}/${table[e]._video}" type="video/${ext}">
                 </video>
+                <p>${table[e]._title}</p>
+                </div>
                 <span id="next" onclick="lightboxOn(${e+1})">></span> 
             </div>
             `
@@ -133,11 +140,11 @@ function lightboxOn(e){
     }  
         if(e == table.length-1){
             const next = document.getElementById("next");
-            next.style.display = "none"
+            next.innerHTML = ""
         }
         if(e == 0){
             const previous = document.getElementById("previous");
-            previous.style.display = "none"
+            previous.innerHTML = ""
         }
 }
 

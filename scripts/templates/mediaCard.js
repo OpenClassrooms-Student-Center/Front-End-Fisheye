@@ -7,7 +7,7 @@ class PhotographCard {
     getPhotographCardDOM(){
 
         const photographCard = `
-            <div>
+            <div aria-label="photographe ${this._photographer.name} de ${this._photographer.city}, ${this._photographer.country}">
             <h2>${this._photographer.name}</h2>
             <p>
                 <strong>${this._photographer.city}, ${this._photographer.country}</strong>
@@ -37,7 +37,7 @@ class MediaCard {
         if(this._media.image){
 
          userCard = `
-            <img alt="${this._media.title}" src="/assets/photographers/${this._media.photographerId}/${this._media.image}" onclick="lightboxOn(${e})"/>
+            <img alt="${this._media.title}" src="/assets/photographers/${this._media.photographerId}/${this._media.image}" onclick="lightboxOn(${e})" aria-label="image, cliquer pour agrandire"/>
             <div>
             <h2>${this._media.title}</h2>
             <p class="like-${e}">    
@@ -50,7 +50,7 @@ class MediaCard {
             
             const ext = this._media.video.split(".",2)[1]
             userCard = `
-            <video onclick="lightboxOn(${e})" >
+            <video onclick="lightboxOn(${e})" aria-label="Vidéo, cliquer pour lire">
                 <source src="/assets/photographers/${this._media.photographerId}/${this._media.video}" type="video/${ext} ">
                 <p>Votre navigateur ne prend pas en charge les vidéos</p>
             </video>

@@ -1,6 +1,6 @@
 #contact_modal {
     display: none;
-    position: absolute;
+    position: fixed;
     top: 0px;
     left: 0px;
     width: 100%;
@@ -10,7 +10,7 @@
 
 .photograph-header {
     background-color: #FAFAFA;
-    height: 300px;
+    height: 250px;
     margin: 0 100px;
 }
 
@@ -79,24 +79,27 @@ form input {
     height: 68px;
     border: none;
     border-radius: 5px;
+    font-size: 20pt;
 }
 
 form textarea{
     width: inherit;
     height: 50mm;
+    font-size: 20pt;
 }
 
 .photograph_section  {
-    justify-self: center;
     display: flex;
     justify-content: space-between;
     align-items: center;
     flex-direction: row;
+    padding:0 10mm;
+    height:250px;
 }
 
 .photograph_section h2 {
     color: #D3573C;
-    font-size: 36px;
+    font-size: 36pt;
     margin: 5px 0;
 }
 
@@ -106,6 +109,16 @@ form textarea{
     border-radius:50%;
     object-fit: cover;
     object-position: center;
+}
+
+.photograph_section p{
+    display: flex;
+    flex-direction: column;
+    font-size:10pt;
+}
+.photograph_section p strong{
+    color:#901c1c;
+    font-size:14pt;
 }
 
 .media_section {
@@ -127,18 +140,20 @@ form textarea{
     flex-direction: row;
     justify-content: space-between;
     width:100%;
+    margin-top: 5px;
 }
 .media_section article h2{
-    color: #D3573C;
-    font-size: 12px;
+    color: #901C1C;
+    font-size: 12pt;
     vertical-align: middle;
     margin: 4px 0;
+    font-weight: 500;
 }
 
 .media_section article p{
     display:block;
-    color: #D3573C;
-    font-size: 12px;
+    color: #901C1C;
+    font-size: 12pt;
     margin: 4px 0;
 }
 
@@ -154,11 +169,14 @@ form textarea{
 #tri {
     display: flex;
     flex-direction: row;
+    margin-left: 100px;
+    margin-top: 5px
 }
 
 #tri select{
     background-color: #901C1C;
     color: white;
+    padding: 0 20px 0 10px;
 }
 
 #likeAndPrice{
@@ -167,14 +185,14 @@ form textarea{
     bottom: 0;
     right: 10mm;
     background-color: #DB8876;
-    padding: 3mm;
+    padding: 3mm 0;
 }
 
 #likeAndPrice span{
     padding:0 3mm;
 }
 
-#likeTotal{
+#likeAndPrice #likeTotal{
     padding: 0;
 }
 .imageCloseUp{
@@ -183,13 +201,13 @@ form textarea{
 
 .lightbox{
     position:fixed;
-    width:90%;
+    width:70%;
     height:80%;
-    top:0;
-    margin: 5%;
+    top:10%;
+    left: 15%;
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: space-between;
 
 }
 
@@ -198,12 +216,18 @@ form textarea{
     top: 0;
     right: 0;
 }
-
+.lightbox div{
+    height: 100%;
+}
 .lightbox img,.lightbox video {
-    height:100%;
+    height:90%;
     width:auto;
 } 
-
+.lightbox p{
+    color: #901c1c;
+    font-size: 15pt;
+    margin-top: 5px;
+}
 .lightbox span{
     color:#901C1C;
     vertical-align: middle;

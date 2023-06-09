@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="fr">
   <head>
     <link href="css/style.css" rel="stylesheet" type="text/css" />
     <meta charset="utf-8">
@@ -11,38 +11,66 @@
   <body>
     <header>
       <a href="index.html">
-        <img src="assets/images/logo.png" class="logo" />
+        <img src="assets/images/logo.png" class="logo" aria-label ="logo-Fisheye, Aller à la page d'accueil" />
       </a>
     </header>
-    <main id="main">
+    <main id="main-wrapper" aria-hidden="false">
       
       <div class="photograph-header">
-        <div class="photograph_section"></div>
-        
+        <div class="photograph_section">
+        </div> 
       </div>
     </main>
-    <div id="contact_modal">
-			<div class="modal">
+    <div id="contact_modal" >
+			<div class="modal" aria-hidden="true" role="dialog" aria-describedby="modalTitle">
 				<header>
-          <h2>Contactez-moi</h2>
-          <img src="assets/icons/close.svg" onclick="closeModal()" />
+          <h2 id="modalTitle" class="modal-title">Contactez-moi</h2>
+          <img src="assets/icons/close.svg" class="modal-close-btn" onclick="closeModal()" />
         </header>
 				<form name="form">
 					<div>
 						<label>Prénom</label>
-						<input />
+						<input
+            type="text"
+            id="firstname"
+            name="firstname"
+            tabindex="0"
+            aria-labelledby="firstname"
+            aria-required="true"
+            required  />
 					</div>
           <div>
 						<label>Nom</label>
-						<input />
+						<input 
+            type="text"
+            id="lastname"
+            name="lastname"
+            tabindex="0"
+            aria-labelledby="lastname"
+            aria-required="true"
+            required/>
 					</div>
           <div>
 						<label>Email</label>
-						<input />
+						<input 
+            type="email"
+            id="email"
+            name="email"
+            aria-labelledby="email"
+            tabindex="0"
+            aria-required="true"
+            required/>
 					</div>
           <div>
 						<label>Votre message</label>
-						<textarea></textarea>
+						<textarea
+            rows = "4"
+            id="message"
+            name="message"
+            tabindex="0"
+            aria-required="true"
+            aria-labelledby="message"
+            required></textarea>
 					</div>
           <button class="contact_button" type="button" onclick="envoi()">Envoyer</button>
 				</form>
@@ -57,7 +85,7 @@
       </select>
     </div>
     <div class="media_section"></div>
-    <div id="imageCloseUp"></div>
+    <div id="imageCloseUp" aria-label="lightbox, image closeup view"></div>
     <div id="likeAndPrice"></div>
     <!-- Models -->
     <script src="scripts/models/media.js"></script>
