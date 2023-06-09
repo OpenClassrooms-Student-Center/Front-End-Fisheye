@@ -3,6 +3,7 @@ const submit = document.querySelector('#submit');
 const form = document.querySelector('form');
 const inputPrenom = document.querySelector('#prenom');
 const inputNom = document.querySelector('#nom');
+const inputEmail = document.querySelector('#email');
 const inputMessage = document.querySelector('#message');
 
 function displayModal() {
@@ -17,33 +18,41 @@ submit.addEventListener('click', (e) => {
     document.getElementById("demo").innerHTML = '';
 
     if (!inputMessage.checkValidity()) {
-        document.getElementById("demo").innerHTML = inputMessage.validationMessage + ' (message)';
+        document.getElementById("demo").innerHTML = inputMessage.validationMessage;
+        inputMessage.setAttribute("data-error", "true");
         e.preventDefault();
+    } else {
+        inputMessage.setAttribute("data-error", "false");
+    }
+
+    if (!inputEmail.checkValidity()) {
+        document.getElementById("demo").innerHTML = inputEmail.validationMessage;
+        inputEmail.setAttribute("data-error", "true");
+        e.preventDefault();
+    } else {
+        inputEmail.setAttribute("data-error", "false");
     }
 
     if (!inputNom.checkValidity()) {
-        document.getElementById("demo").innerHTML = inputNom.validationMessage + ' (nom)';
+        document.getElementById("demo").innerHTML = inputNom.validationMessage;
+        inputNom.setAttribute("data-error", "true");
         e.preventDefault();
+    } else {
+        inputNom.setAttribute("data-error", "false");
     }
 
     if (!inputPrenom.checkValidity()) {
-        document.getElementById("demo").innerHTML = inputPrenom.validationMessage + ' (prénom)';
+        document.getElementById("demo").innerHTML = inputPrenom.validationMessage;
+        inputPrenom.setAttribute("data-error", "true");
         e.preventDefault();
+    } else {
+        inputPrenom.setAttribute("data-error", "false");
     }
 
     const formData = new FormData(form);
-    const prenom = formData.get('prenom');
-    const nom = formData.get('nom');
-    const email = formData.get('email');
-    const message = formData.get('message');
-
-    console.log(prenom, nom, email, message);
+    for (const [key, value] of formData.entries()) {
+        console.log(value);
+    }
 
     e.preventDefault();
 });
-
-// Regarder la maquette
-// Utiliser Check validity pour le formulaire
-// Utiliser new FormData (js)
-// Ne pas oublier : aria label & required
-// voir "aria-describedby" si utile dans un form: label/input

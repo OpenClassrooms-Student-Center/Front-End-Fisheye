@@ -33,19 +33,19 @@
         <form action="/" method="POST">
           <div>
             <label for="prenom">Prénom</label>
-            <input aria-describedby="prenom" id="prenom" aria-label="prenom" name="prenom" type="text" required />
+            <input aria-describedby="prenom" id="prenom" aria-label="prenom" name="prenom" type="text" data-error="false" required />
           </div>
           <div>
             <label for="nom">Nom</label>
-            <input aria-describedby="nom" id="nom" aria-label="nom" name="nom" type="text" required />
+            <input aria-describedby="nom" id="nom" aria-label="nom" name="nom" type="text" data-error="false" required />
           </div>
           <div>
             <label for="email">Email</label>
-            <input aria-describedby="email" id="email" aria-label="email" name="email" type="email" required />
+            <input aria-describedby="email" id="email" aria-label="email" name="email" type="email" data-error="false" required />
           </div>
           <div>
             <label for="message">Votre message</label>
-            <textarea aria-describedby="message" id="message" aria-label="message" name="message" required></textarea>
+            <textarea aria-describedby="message" id="message" aria-label="message" name="message" data-error="false" required></textarea>
           </div>
           <button id="submit" class="contact_button">Envoyer</button>
           <p id="demo"></p>

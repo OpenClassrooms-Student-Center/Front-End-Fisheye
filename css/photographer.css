@@ -115,6 +115,14 @@ form textarea {
   height: 100px;
 }
 
+form input[data-error="true"] {
+  border: 2px solid red;
+}
+
+form textarea[data-error="true"] {
+  border: 2px solid red;
+}
+
 .photographer-media {
   display: grid;
   grid-template-columns: 0fr 1fr 0fr;
