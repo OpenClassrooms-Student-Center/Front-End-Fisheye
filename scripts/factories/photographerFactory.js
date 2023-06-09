@@ -57,7 +57,7 @@ function photographerFactory(data) {
     h2.textContent = `${city}, ${country}`;
     pTagline.textContent = tagline;
     img.textContent;
-
+    pInfo.textContent = `${price}€ / jour`;
     formHeader.innerHTML += ` ${name}`;
 
     div.appendChild(h1);
@@ -66,8 +66,7 @@ function photographerFactory(data) {
     header.appendChild(img);
 
     header.prepend(div);
-
-    pInfo.textContent = `${price}€ / jour`;
+    
     card.appendChild(pInfo);
   }
 
