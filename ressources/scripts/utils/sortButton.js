@@ -19,6 +19,7 @@ function renderOptionsList() {
   })
 }
 
+// fonction inverse à renderOptionList(), on ne display pas la liste d'options
 function closeOptionsList() {
   const button = document.querySelector(".sort__button");
   const list = document.querySelector(".sort__options");
@@ -36,7 +37,6 @@ function selectOption() {
   const orderBtn = document.querySelector(".sort__button");
   options.forEach(option => {
     option.classList.remove("sort__hide");
-    // option.parentElement.style.display = "block";
     option.display = "block";
     option.addEventListener("click", (event) => {
 
@@ -46,15 +46,12 @@ function selectOption() {
       orderBtn.appendChild(arrow);
 
       options.forEach(option => {
-        // option.parentElement.style.display = "block";
         option.style.display = "block";
         option.setAttribute("tabindex", "0")
         option.setAttribute("aria-selected", "false");
       })
       option.classList.add("sort__hide");
       option.setAttribute("aria-selected", "true");
-      // option.parentElement.style.display = "none";
-      // option.parentElement.setAttribute("tabindex", "-1")
       option.setAttribute("tabindex", "-1")
       option.style.display = "none";
 

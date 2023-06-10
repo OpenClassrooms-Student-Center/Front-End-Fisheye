@@ -9,12 +9,16 @@ const footer = document.querySelector("footer");
 const mainButtons = main.querySelectorAll("button");
 const a = document.querySelector("a");
 
+
+// récupération du nom du photographe et injection de ce nom dans le html
 async function renderNameInForm() {
     const photographer = await getPhotographersById();
     const { name } = photographer
     const title = document.querySelector(".form__title")
     title.innerHTML = `Contactez-moi<br>${name}`
 }
+
+// on affiche le formulaire avec display flex en passant également l'aria-hidden à false. Tout le reste de la page est en aria-hidden true afin qu'il ne soit pas pris en compte par les lecteurs d'écran. De même on passe tous les élements extérieurs à la modale en tabindex = -1 afin de ne pas pouvoir naviguer dessus à l'aide du clavier lorsque la modale est ouverte
 function renderForm() {
     main.setAttribute("aria-hidden", "true");
     modal.setAttribute("aria-hidden", "false");
@@ -41,10 +45,13 @@ function renderForm() {
     closeContactFormOnClick();
     closeFormWithEsc();
 }
+// Appel de la fonction renderForm() au click sur le bouton contact
 function openContactForm() {
     const contactBtn = document.querySelector(".contact__button");
     contactBtn.addEventListener("click", renderForm);
 }
+
+// Fonction inverse à renderForm(), passage de aria-hidden à true pour la modale et remsie en place des tabindex pour pouvoir naviquer à l'aide du clavier
 function closeForm() {
     main.setAttribute("aria-hidden", "false");
     modal.setAttribute("aria-hidden", "true");
@@ -68,10 +75,13 @@ function closeForm() {
         button.setAttribute("tabindex", "0");
     });
 }
+
+// Appel de la fonction closeForm() au click sur le bouton de fermeture de la modale
 function closeContactFormOnClick() {
     const closeBtn = document.querySelector(".form__close");
     closeBtn.addEventListener("click", closeForm);
 }
+// Possibilité pour l'utilisateur d'appeler la fonction closeForm() à l'aide du bouton Echap du clavier
 function closeFormWithEsc() {
     document.addEventListener('keydown', event => {
         const code = event.code
@@ -80,6 +90,8 @@ function closeFormWithEsc() {
         }
     })
 }
+
+// Si le formulaire est valide, on log en console un tableau avec les valeurs d'input, puis on reset le formulaire et on le ferme
 function submitForm() {
     form.addEventListener("submit", function(event) {
         event.preventDefault();
@@ -100,6 +112,8 @@ function submitForm() {
         closeForm();
     })
 }
+
+// Création d'un objet contenant les informations nécessaires pour chaque input
 let informationObject = {
     "prenom": {
         regex: /\w{2,}/,
@@ -118,6 +132,8 @@ let informationObject = {
         errorMessage: "doit contenir entre 10 et 100 caractères"
     }
 };
+
+// On teste la validité de la valeur renseignée pour chaque input, si valide, on affiche un check vert pour donner du feedback visuel à l'utilisateur, sinon on affiche une span détaillant ce qui est attendu
 function validateInput(fieldset) {
     const input = fieldset.querySelector("input");
     const inputSpan = document.createElement("span");

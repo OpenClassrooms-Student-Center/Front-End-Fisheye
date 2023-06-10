@@ -6,6 +6,7 @@ const lightboxModal = document.querySelector(".lightboxModal");
 const mainButtons = main.querySelectorAll("button");
 const a = document.querySelector("a");
 
+// on affiche la lightbox avec display flex en passant également l'aria-hidden à false. Tout le reste de la page est en aria-hidden true afin qu'il ne soit pas pris en compte par les lecteurs d'écran. De même on passe tous les élements extérieurs à la modale en tabindex = -1 afin de ne pas pouvoir naviguer dessus à l'aide du clavier lorsque la modale est ouverte
 function renderLightboxModal() {
   main.setAttribute("aria-hidden", "true");
   header.setAttribute("aria-hidden", "true");
@@ -28,6 +29,7 @@ function renderLightboxModal() {
   lightboxModal.style.display = "flex";
 }
 
+// fonction inverse à la précédente, on repasse toute la page en aria-hidden false, avec tabindex = 0
 function closeLightboxModal() {
   main.setAttribute("aria-hidden", "false");
   header.setAttribute("aria-hidden", "false");
@@ -50,6 +52,7 @@ function closeLightboxModal() {
   lightboxModal.style.display = "none";
 }
 
+// appel de la fonction closeLightboxModal() au click sur le bouton de fermeture, et on en profite pour vider le contenu de la lightbox
 function closeLightboxOnClick() {
   const closeBtn = document.querySelector(".lightboxModal__close");
   closeBtn.addEventListener("click", function() {
@@ -59,6 +62,7 @@ function closeLightboxOnClick() {
   })
 }
 
+// possibilité pour l'utilisateur d'appeler la fonction closeLightboxModal() en clickant sur Echap
 function closeLightboxWithEsc() {
   document.addEventListener('keydown', event => {
       const code = event.code
@@ -68,6 +72,7 @@ function closeLightboxWithEsc() {
   })
 }
 
+// on compare l'index du média affiché dans la lightbox avec la longueur de l'array de média triés. Si c'est le premier média, on n'affiche pas le bouton "précedent", si c'est le dernier, on n'affiche pas le bouton "suivant".
 export function disableLightboxButtons(index, mediasLength) {
   const previous = document.querySelector(".lightboxModal__previous");
   const next = document.querySelector(".lightboxModal__next");

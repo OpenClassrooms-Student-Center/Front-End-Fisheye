@@ -22,6 +22,7 @@ async function init() {
   await renderLikesCounter();
 }
 
+// utilisation de photographerFactory pour créer le header en fonction du photographe sélectionné
 async function renderHeader() {
   const photographerHeader = document.createElement("section");
   photographerHeader.classList.add("photographer__header");
@@ -29,6 +30,7 @@ async function renderHeader() {
   main.prepend(photographerHeader);
 }
 
+// affichage des médias triés ainsi que du nombre de like total par photographe
 async function renderMedias() {
   const mediaSection = document.createElement("section");
   mediaSection.classList.add("photographer__content");
@@ -38,6 +40,7 @@ async function renderMedias() {
   renderLikeMedia();
 }
 
+// appel de la fonction renderMedias() au click sur une option de tri
 async function renderSortedMedias() {
   const options = document.querySelectorAll(".sort__option");
   options.forEach(option => {
@@ -48,6 +51,7 @@ async function renderSortedMedias() {
   })
 }
 
+// affichage du nombre total de likes des médias par photographe
 async function renderLikesCounter() {
   const photographer = await getPhotographersById();
   const medias = await getMediasByPhotographer();
@@ -61,6 +65,7 @@ async function renderLikesCounter() {
   price.innerText = `${photographer.price}€ / jour`
 }
 
+// fonction qui permet de liker/déliker un média, avec impact sur l'icon et sur le nombre de like du média
 async function renderLikeMedia() {
   const medias = document.querySelectorAll(".media");
   medias.forEach(media => {
@@ -86,6 +91,7 @@ async function renderLikeMedia() {
   })
 }
 
+// fonction qui permet de mettre à jour le nombre total de like
 function updateLikes() {
   const likes = document.querySelectorAll(".media__likeNumber");
   const totalLikes = document.querySelector(".likes");
@@ -94,6 +100,7 @@ function updateLikes() {
   totalLikes.textContent = total
 }
 
+// fonction qui récupère le media en fonction de son id grâce au mediaId passé en argument. Création d'une figure en fonction de si le media est une image ou une vidéo, et affichage de cette figure dans la lightbox
 async function renderMedia(mediaId) {
   const medias = await sortMedias();
 
@@ -145,6 +152,7 @@ async function renderMedia(mediaId) {
   disableLightboxButtons(mediaIndex, medias.length)
 }
 
+// fonction qui retourne l'index suivant l'index du média actuel
 async function findNextMedia() {
   const medias = await sortMedias();
   const currentMedia = medias.find((media) => media.id == mediaLightboxId);
@@ -157,6 +165,7 @@ async function findNextMedia() {
   }
 }
 
+// fonction qui retourne l'index précédent l'index du média actuel
 async function findPreviousMedia() {
   const medias = await sortMedias();
   const currentMedia = medias.find((media) => media.id == mediaLightboxId);
@@ -169,6 +178,7 @@ async function findPreviousMedia() {
   }
 }
 
+// appel des différentes fonctions nécessaires au bon comportement et à l'affichage de la lightbox lorsque l'on clique sur un média
 async function renderLightbox() {
   const mediaColl = document.querySelectorAll(".media");
   const medias = Array.from(mediaColl);
@@ -182,6 +192,7 @@ async function renderLightbox() {
     })
   })
 
+  // affichage du média suivant au click sur le bouton suivant
   const next = document.querySelector(".lightboxModal__next");
   next.addEventListener("click", async () => {
     if (document.querySelector(".lightboxModal__figure")) {
@@ -191,6 +202,7 @@ async function renderLightbox() {
     }
   })
 
+  // affichage du média précedent au click sur le bouton précedent
   const previous = document.querySelector(".lightboxModal__previous");
   previous.addEventListener("click", async () => {
     if (document.querySelector(".lightboxModal__figure")) {
@@ -201,6 +213,7 @@ async function renderLightbox() {
   })
 }
 
+// fonction qui permet à l'utilisateur de naviguer entre les médias dans la lightbox à l'aide de la touche droite du clavier
 function nextMediaWithArrow() {
   const lightbox = document.querySelector(".lightboxModal");
   const next = document.querySelector(".lightboxModal__next");
@@ -218,7 +231,7 @@ function nextMediaWithArrow() {
   })
 }
 
-
+// fonction qui permet à l'utilisateur de naviguer entre les médias dans la lightbox à l'aide de la touche gauche du clavier
 function previousMediaWithArrow() {
   const lightbox = document.querySelector(".lightboxModal");
   const previous = document.querySelector(".lightboxModal__previous");
