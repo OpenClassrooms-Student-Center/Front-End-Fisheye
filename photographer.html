@@ -16,17 +16,17 @@
 
     <title>Fisheye - photographe</title>
   </head>
-  <body>
+  <body id="body">
     <header role="banner">
       <a href="index.html" aria-label="fisheye home page" aria-current="page"
         ><img src="assets/images/logo.png" alt="" class="logo"
       /></a>
       <h1 class="sr-only" tabindex="0">Nos photographes</h1>
     </header>
-    <main id="main">
+    <main id="mainWrapper" aria-hidden="false">
       <div class="photograph-header"></div>
       <div class="selectors">
-        <p>Tirer par</p>
+        <p role="input label">Tirer par</p>
         <div class="select-button">
           <select id="selecting-div">
             <option value="0">Popularité</option>
@@ -54,32 +54,52 @@
       <div class="modal-img"></div>
       <span id="generalCounter"></span>
     </main>
-    <div id="contact_modal">
-      <div class="modal">
+    <div id="contact_modal" role="dialog">
+      <div
+        id="modal"
+        class="modal"
+        aria-hidden="true"
+        role="dialog"
+        aria-describedby="modalTitle"
+      >
         <header>
-          <h2>Contactez-moi</h2>
+          <h2 id="modalTitle" class="modal-title">Contactez-moi</h2>
           <img src="assets/icons/close.svg" id="closeX" />
         </header>
+        <span id="photographer-name"></span>
         <form name="reserve" action="index.html" method="get" id="form">
-          <div>
+          <div role="group" aria-labelledby="coordonnees">
             <label for="first">Prénom</label>
-            <input class="text-control" type="text" id="first" name="first" />
+            <input
+              class="text-control"
+              type="text"
+              id="first"
+              name="first"
+              placeholder="Alexandre"
+            />
             <span id="first_error" class="errors"> </span><br />
-          </div>
-          <div>
             <label for="last">Nom</label>
-            <input class="text-control" type="text" id="last" name="last" />
+            <input
+              class="text-control"
+              type="text"
+              id="last"
+              name="last"
+              placeholder="Ballion"
+            />
             <span id="last_error" class="errors"> </span><br />
-          </div>
-          <div>
             <label for="email">e-mail</label>
-            <input class="text-control" id="email" name="email" type="email" />
+            <input
+              class="text-control"
+              id="email"
+              name="email"
+              type="email"
+              placeholder="alexandre.ballion@hotmail.com"
+            />
             <span id="email_error" class="errors"> </span><br />
-          </div>
-          <div>
-            <label>Votre message</label>
-            <textarea id="textarea" rows="10" name="comment"> </textarea>
-          </div>
+            <label for="textarea">Votre message</label>
+            <textarea id="textarea" rows="9" name="comment"
+              placeholder=" Je voudrais vous contacter pour ..."></textarea>
+        </div>
           <button class="contact_button">Envoyer</button>
         </form>
       </div>

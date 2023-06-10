@@ -2,7 +2,6 @@
 async function photographerPage() {
   const photographerResponse = await fetch("./data/photographers.json");
   const photographerResults = await photographerResponse.json();
-  console.log(photographerResults);
   return photographerResults;
 }
 
@@ -14,28 +13,37 @@ async function displayPhotographer(photographers) {
   let params = new URL(document.location).searchParams;
   // getting the id from the search params
   let id = params.get("id");
-  console.log(id);
-  console.log(photographers);
   // getting the corosponding object (photographer) related to the id from the search params
   let photographer = photographers.find(myId => myId.id == id);
-  console.log(id);
-  console.log(photographer);
 
   // displaying the photographer information
   const photographerSection = photographerFactory(photographer);
   const infoPhotographer = photographerSection.getUserCardDOM();
   photographerHeaderZone.appendChild(infoPhotographer);
 
-  // creating a contact me  button
+  // creating a contact us  button
   const btnNewPosition = document.querySelector(".mainArticle");
-  const btn = document.createElement("button");
-  btn.setAttribute("tabindex", "0 ");
-  btn.setAttribute("role", "button");
-  btn.setAttribute("class", "contact_button");
-  btn.textContent = "Contactez-moi";
-  btnNewPosition.appendChild(btn);
+  const ContactUsbtn = document.createElement("button");
+  ContactUsbtn.setAttribute("tabindex", "0 ");
+  ContactUsbtn.setAttribute("role", "button");
+  ContactUsbtn.setAttribute("class", "contact_button");
+  ContactUsbtn.setAttribute("id", "open-modal-btn");
+  ContactUsbtn.setAttribute("aria-label", "contact me");
+  ContactUsbtn.textContent = "Contactez-moi";
+  btnNewPosition.appendChild(ContactUsbtn);
+
+  // accessibility items for the modal
+  const dialog = document.getElementById("contact_modal");
+  // dialog.setAttribute
+
   // display modal onclick
-  btn.addEventListener("click", displayModal);
+  ContactUsbtn.addEventListener("click", function() {
+    displayModal();
+    const photographerName = (document.getElementById(
+      "photographer-name"
+    ).innerText =
+      photographer.name);
+  });
   // close modal onclick
   const closingModal = document.getElementById("closeX");
   closingModal.addEventListener("click", closeModal);
@@ -63,43 +71,43 @@ async function displayMedia(photographerMedia) {
     const mediaArts = mediaSection.getUserArtDOM(media);
     mediaDiv.appendChild(mediaArts);
   });
-  displayImgSlides(photographerMedia);
+  // displayImgSlides(photographerMedia);
 }
 
-function displayImgSlides(array) {
-  const modalDiv = document.querySelector(".modal-img");
+// function displayImgSlides(array) {
+//   const modalDiv = document.querySelector(".modal-img");
+//   // const slideBtn = document.createElement("button");
+//   // const modalDiv = document.createElement("div");
+//   const modalCloseIcon = document.createElement("span");
+//   const modalContent = document.createElement("div");
+//   const slides = document.createElement("div");
+//   const text = document.createElement("p");
+//   const nextBtn = document.createElement("a");
+//   const prevBtn = document.createElement("a");
 
-  const slideBtn = document.createElement("button");
-  // const modalDiv = document.createElement("div");
-  const modalCloseIcon = document.createElement("span");
-  const modalContent = document.createElement("div");
-  const text = document.createElement("p");
-  const nextBtn = document.createElement("a");
-  const prevBtn = document.createElement("a");
+//   // slideBtn.setAttribute("id", "modal-btn");
+//   // modalDiv.setAttribute("id", "modal-img");
+//   modalCloseIcon.classList.add("modal-content");
+//   modalContent.classList.add("mySlides");
+//   nextBtn.classList.add("next");
+//   prevBtn.classList.add("prev");
 
-  slideBtn.setAttribute("id", "modal-btn");
-  // modalDiv.setAttribute("id", "modal-img");
-  modalCloseIcon.classList.add("modal-content");
-  modalContent.classList.add("mySlides");
-  nextBtn.classList.add("next");
-  prevBtn.classList.add("prev");
-
-  // const modalDiv = document.getElementById("modal-img");
-  // modalDiv.appendChild(modalDiv);
-  modalDiv.appendChild(modalCloseIcon);
-  modalDiv.appendChild(nextBtn);
-  modalDiv.appendChild(prevBtn);
-  modalContent.appendChild(slides);
-  for (const iterator of object) {
-    const slides = document.createElement("div");
-    const img = document.createElement("img");
-    const { image } = iterator;
-    const src = `assets/media/gallery/${image}`;
-    img.setAttribute("src", src);
-    slides.appendChild(text);
-    slides.appendChild(img);
-  }
-}
+//   // const modalDiv = document.getElementById("modal-img");
+//   // modalDiv.appendChild(modalDiv);
+//   modalDiv.appendChild(modalCloseIcon);
+//   modalDiv.appendChild(nextBtn);
+//   modalDiv.appendChild(prevBtn);
+//   modalContent.appendChild(slides);
+//   for (const iterator of object) {
+//     const slides = document.createElement("div");
+//     const img = document.createElement("img");
+//     const { image } = iterator;
+//     const src = `assets/media/gallery/${image}`;
+//     img.setAttribute("src", src);
+//     slides.appendChild(text);
+//     slides.appendChild(img);
+//   }
+// }
 
 async function photographersMedia() {
   const { media } = await photographerPage();
@@ -145,7 +153,8 @@ async function photographersMedia() {
     } else if (selector.value == "1") {
       photographerMedia.sort((a, b) => new Date(b.date) - new Date(a.date));
     } else if (selector.value == "2") {
-      photographerMedia.sort((a, b) => a.title < b.title);
+      photographerMedia.sort((a, b) => (a.title < b.title ? -1 : 1));
+
       // photographerMedia.sort();
     }
 

@@ -1,17 +1,45 @@
 // global variables
 const form = document.getElementById("form");
 const modal = document.getElementById("contact_modal");
+const mainWrapper = document.getElementById("mainWrapper");
+const body = document.getElementById("body");
+const modalCloseBtn = document.getElementById("closeX");
+const modalOpenBtn = document.getElementById("open-modal-btn");
+const photographerName = document.getElementById("photographer-name");
+
+const onOpenModal = () => {
+  mainWrapper.setAttribute("aria-hidden", "true");
+  body.classList.add("no-scroll");
+  modalCloseBtn.focus();
+};
+
+const onCloseModal = () => {
+  mainWrapper.setAttribute("aria-hidden", "false");
+  body.classList.remove("no-scroll");
+  openModalBtn.focus();
+};
 
 // opening modal
 function displayModal() {
   modal.style.display = "block";
+  onOpenModal();
 }
 
 // closing modal
 function closeModal() {
   modal.style.display = "none";
   form.reset();
+  onCloseModal();
 }
+
+// Close modal when espace key is pressed
+document.on("keydown", e => {
+  const keyCode = e.keyCode ? e.keyCode : e.which;
+
+  if (modal.attr("aria-hidden") == "false" && keyCode === 27) {
+    closeModal();
+  }
+});
 
 form.addEventListener("submit", function(event) {
   event.preventDefault();
