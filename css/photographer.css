@@ -215,7 +215,7 @@ form button {
     position: absolute;
 }
 
-.dislike-icon {
+/* .dislike-icon {
     display: none;
 }
 
@@ -225,7 +225,7 @@ form button {
 
 .dislike .like-icon {
     display: none;
-}
+} */
 
 /* LIGHTBOX */
 .media-modal {

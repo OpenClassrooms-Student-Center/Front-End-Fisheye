@@ -65,7 +65,7 @@ async function displayPhotographMedias() {
     function resetEventListener() {
 
         const mediaItems = document.querySelectorAll('.media-item');
-        const mediaModals = document.querySelectorAll('.media-modal')
+        const mediaModals = document.querySelectorAll('.media-modal');
         const regex = /\d+/g;
         
         mediaItems.forEach(mediaItem => {
@@ -86,13 +86,6 @@ async function displayPhotographMedias() {
             mediaLikeBtn.addEventListener('click', () => {
                 incrementLikes(id);
             });
-
-            // mediaLikeBtn.addEventListener('keydown', (event) => {
-            //     console.log(event.key, id)
-            //     if (event.key === 'Enter') {
-            //         incrementLikes(id);
-            //     }
-            // });
         });
 
         mediaModals.forEach(mediaModal => {
@@ -246,39 +239,38 @@ async function displayPhotographMedias() {
     resetEventListener();
 
     // LIKES
+    let mediasLiked = [];
     function incrementLikes(id) {
+        const parseId = parseInt(id)
         const likeBtn = document.getElementById(`like-${id}`);
         const mediaTotalLikes = document.getElementById('total-likes');
-        const media = mediaData.find(media => media.id === parseInt(id));
+        const media = mediaData.find(media => media.id === parseId);
         let totalLikes = parseInt(mediaTotalLikes.innerText);
 
-        if (!likeBtn.classList.contains('dislike') || currentSortOrder !== 'popularity') {
+        const mediaIndex = mediasLiked.indexOf(parseId);
+
+        // Ajouter l'id au tableau sinon le retirer
+        if (mediaIndex === -1) {
+            mediasLiked.push(parseId);
             media.likes += 1;
             likeBtn.classList.add('dislike');
             likeBtn.innerHTML = `${media.likes} <i class="fa-solid fa-heart"></i>`;
-            likeBtn.ariaLabel = "Retirer votre like de l'image";
+            likeBtn.setAttribute('aria-label', 'Retirer votre like de l\'image');
             mediaTotalLikes.innerText = totalLikes += 1;
-            console.log('1', likeBtn.classList);
+            console.log('1 : like', likeBtn.classList, likeBtn.innerHTML);
             // if (currentSortOrder === 'popularity') {
             //     sortByPopularity();
-            //     console.log('2 OUI', likeBtn);
+            //     console.log('2 : like with sortbypop', likeBtn.classList, likeBtn.innerHTML);
             // }
         } else {
-            likeBtn.classList.remove('dislike');
+            mediasLiked.splice(mediaIndex, 1);
             media.likes -= 1;
+            likeBtn.classList.remove('dislike');
             likeBtn.innerHTML = `${media.likes} <i class="fa-regular fa-heart"></i>`;
-            likeBtn.ariaLabel = "Ajouter un like à l'image";
+            likeBtn.setAttribute('aria-label', 'Ajouter un like à l\'image');
             mediaTotalLikes.innerText = totalLikes -= 1;
-            console.log('3 (else)', likeBtn);
-            // if (currentSortOrder === 'popularity') {
-            //     sortByPopularity();
-            // }
+            console.log('3 : dislike', likeBtn.classList, likeBtn.innerHTML);
         }
-
-        // if (currentSortOrder === 'popularity') {
-        //     sortByPopularity();
-        //     console.log('2 OUI', likeBtn);
-        // }
     }
 }
 
