@@ -27,29 +27,24 @@
       <div class="photograph-header"></div>
       <div class="selectors">
         <p role="input label">Tirer par</p>
-        <div class="select-button">
-          <select id="selecting-div">
-            <option value="0">Popularité</option>
-            <option value="1">Date</option>
-            <option value="2">Titre</option>
-          </select>
-        </div>
-        <!-- <div class="user-box">
-          <div class="user-id">
-            <div class="user-name">
-              DU7S
-            </div>
-            <div class="dropdown-arrow"></div>
-            <div class="dropdown-menu">
-              <ul>
-                <li>Settings</li>
-                <li>Sports</li>
-                <li>Log Out</li>
-              </ul>
-            </div>
+        <div class="dropdown">
+          <div class="select">
+            <span class="selected"> Popularité </span>
+            <div class="caret"></div>
           </div>
-        </div> -->
+          <!-- <hr/> -->
+          <ul class="menu">
+            <hr id="hr0"/>
+            <li id="popularity">Popularité </li>
+            <hr id="hr1"/>
+            <li id="date">Date </li>
+            <hr id="hr2"/>
+            <li id="title">Titre </li>
+            <hr id="hr3"/>
+          </ul>
+        </div>
       </div>
+
       <div class="media-div"></div>
       <div class="modal-img"></div>
       <span id="generalCounter"></span>

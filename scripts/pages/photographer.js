@@ -143,21 +143,92 @@ async function photographersMedia() {
   likesCounterSpan.appendChild(dayPrice);
 
   displayMedia(photographerMedia);
+
+  // create dropown menu
+  // get all drop downs 
+  const dropdowns = document.querySelectorAll(".dropdown");
+
+  // loop though all dropdown elements 
+  dropdowns.forEach(dropdown => {
+    // get inner elements from each dropdown
+    const select = dropdown.querySelector(".select");
+    const caret = dropdown.querySelector(".caret");
+    const menu = dropdown.querySelector(".menu");
+    const options = dropdown.querySelectorAll(".menu li");
+    const selected = dropdown.querySelector(".selected");
+  
+    // a click event to select element
+    select.addEventListener("click", () => {
+      // add the clicked selected style to the element
+      select.classList.toggle("select-clicked");
+      // add the rotate caret to the element
+      caret.classList.toggle("caret-rotate");
+      // add the open styles to the menu elements
+      menu.classList.toggle("menu-open");
+      });
+      // remove active class from all option elements
+      options.forEach(option => {
+      // add a click event to the option element
+      option.addEventListener("click", () => {
+      // change select inner text to clicked element
+      selected.innerText = option.innerText;
+      // add the clicked select style to the select element
+      select.classList.remove("select-clicked");
+      // add the rotate styles to the caret element
+      caret.classList.remove("caret-rotate");
+      // add the open styles to the menu element
+      menu.classList.remove("menu-open");
+      // remove active class from all option elements
+      options.forEach(option => {
+        option.classList.remove("active");
+      });
+      // add active class to clicked option element
+      option.classList.add("active");
+      });
+    });
+  });
+
   // addEventListener of selector
-  let selector = document.getElementById("selecting-div");
-  selector.addEventListener("change", function() {
-    if (selector.value == "0") {
+  const selector = document.querySelector(".dropdown");
+  let selected = document.querySelector(".selected");
+  console.log("selected", selected.innerText);
+  const popElement = document.getElementById("popularity");
+  const dateElement = document.getElementById("date");
+  const titleElement = document.getElementById("title");
+  const hr0 = document.getElementById("hr0");
+  const hr1 = document.getElementById("hr1");
+  const hr2 = document.getElementById("hr2");
+  const hr3 = document.getElementById("hr3");
+
+
+  selector.addEventListener("click", function() {
+    if (selected.innerText == "Popularité") {
+      popElement.classList.add("sr-only");
+      dateElement.classList.remove("sr-only");
+      titleElement.classList.remove("sr-only");
+      hr1.style.display = "none";
+      // hr2.style.display = "block";
+      hr3.style.display = "none";
       photographerMedia.sort(
         (a, b) => parseFloat(b.likes) - parseFloat(a.likes)
       );
-    } else if (selector.value == "1") {
+    } else if (selected.innerText == "Date") {
+      popElement.classList.remove("sr-only");
+      dateElement.classList.add("sr-only");
+      titleElement.classList.remove("sr-only");
+      hr1.style.display = "block";
+      hr2.style.display = "none";
+      hr3.style.display = "none";
       photographerMedia.sort((a, b) => new Date(b.date) - new Date(a.date));
-    } else if (selector.value == "2") {
+    } else if (selected.innerText == "Titre") {
+      popElement.classList.remove("sr-only");
+      dateElement.classList.remove("sr-only");
+      titleElement.classList.add("sr-only");
+      hr1.style.display = "block";
+      hr2.style.display = "none";
+      hr3.style.display = "none";
       photographerMedia.sort((a, b) => (a.title < b.title ? -1 : 1));
-
-      // photographerMedia.sort();
     }
-
     displayMedia(photographerMedia);
   });
 }
