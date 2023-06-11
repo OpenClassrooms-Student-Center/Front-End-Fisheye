@@ -18,7 +18,7 @@ export function mediaFactory(media) {
       img.setAttribute("loading", "lazy");
       img.setAttribute("src", thumbnail);
       img.setAttribute("alt", title);
-      img.id = id
+      // img.id = id
       article.appendChild(button);
       button.appendChild(img)
     }
@@ -28,12 +28,12 @@ export function mediaFactory(media) {
       button.classList.add("media__btn");
       button.setAttribute("aria-label", `${title} - closup view`)
       const vid = document.createElement("video");
-      vid.setAttribute("loading", "lazy");
+      // vid.setAttribute("loading", "lazy");
       vid.setAttribute("src", thumbnail);
       vid.setAttribute("type", "video/mp4");
-      vid.innerHTML = "Votre navigateur ne permet pas de lire les vidéos. Mais vous pouvez toujours <a href=`${thumbnail}`>la télécharger</a> !";
+      // vid.innerHTML = "Votre navigateur ne permet pas de lire les vidéos. Mais vous pouvez toujours <a href=thumbnail>la télécharger</a> !";
       vid.className += "media__video";
-      vid.id = id
+      // vid.id = id
       article.appendChild(button);
       button.appendChild(vid)
     }
@@ -50,13 +50,13 @@ export function mediaFactory(media) {
     const mediaLike = document.createElement("div");
     mediaLike.classList.add("media__likes");
     const para = document.createElement("p");
-    para.setAttribute("aria_label", "likes");
-    para.setAttribute("id", "likes");
+    // para.setAttribute("aria_label", "likes");
+    // para.setAttribute("id", "likes");
     para.classList.add("media__likeNumber");
     para.innerText = likes;
     const icon = document.createElement("i");
     icon.classList.add("fa-regular", "fa-heart", "media__likeIcon");
-    icon.setAttribute("aria-labelledby", "likes");
+    // icon.setAttribute("aria-labelledby", "likes");
     mediaInfo.appendChild(mediaLike);
     mediaLike.appendChild(para)
     mediaLike.appendChild(icon)

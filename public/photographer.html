@@ -15,20 +15,20 @@
     <header>
       <a href="./index.html" tabindex="1" class="logo__link"><img src="../ressources/assets/images/logo.png" class="logo" alt="Fisheye Logo - Home page"/></a>
     </header>
-    <main id="main" aria-hidden="false">
+    <main aria-hidden="false">
 
       <section class="sort">
         <p class="sort__label">Trier par</p>
         <div class="sort__select sort__select-open" aria-label="dropdown" data-value="popularity">
-          <button role="listbox" aria-expanded="false" id="sort__button" class="sort__button button">Popularité
+          <button aria-expanded="false" id="sort__button" class="sort__button button">Popularité
             <i class="sort__down fa-solid fa-caret-down" aria-hidden="true"></i>
           </button>
           <div class="sort__options" role="list" aria-labelledby="sort__button" aria-activedescendant="popularity" style="display: none;">
-            <button class="sort__optionBtn sort__option" data-value="popularity" role="listbox" id="popularity" aria-selected="true" style="display: none;" tabindex="-1">Popularité
+            <button class="sort__optionBtn sort__option" data-value="popularity" id="popularity" aria-selected="true" style="display: none;" tabindex="-1" role="button">Popularité
             </button>
-            <button class="sort__optionBtn sort__option" data-value="date" role="listbox" id="date" tabindex="0">Date
+            <button class="sort__optionBtn sort__option" data-value="date" id="date" tabindex="0" role="button">Date
             </button>
-            <button class="sort__optionBtn sort__option" data-value="title" role="listbox" id="title" tabindex="0">Titre
+            <button class="sort__optionBtn sort__option" data-value="title" id="title" tabindex="0" role="button">Titre
             </button>
           </div>
        </div>
@@ -74,7 +74,7 @@
             </fieldset>
             <fieldset id="message-fieldset" class="fieldset">
               <label class="form__label" id="form-message-label" for="message">Message</label>
-              <input class="form__input" aria-labelledby="form-message" aria-describedby="message-format" type="text" id="message" name="message" minlength="10" maxlength="100" required aria-required="true"/>
+              <input class="form__input" aria-labelledby="form-message-label" aria-describedby="message-format" type="text" id="message" name="message" minlength="10" maxlength="100" required aria-required="true"/>
               <span id="message-format" class="hidden">Entre 10 et 100 caractères</span>
             </fieldset>
           </fieldset>
