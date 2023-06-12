@@ -62,7 +62,7 @@ article a {
     margin-top: 0.5em;
 }
 
-.contact_button {
+.contact_button , .closing{
     font-size: 20px;
     font-weight: bold;
     color: white;
@@ -157,6 +157,7 @@ form input {
 
 .media-div h3 {
     color: #901C1C;
+    font-weight: normal;
 }
 
 .infoSection {
@@ -204,9 +205,9 @@ form input {
     position: fixed;
     z-index: 1;
     left: 24%;
-    top: 5em;
+    top: 2.3em;
     width: 50%;
-    height: 83%;
+    /* height: 100%; */
     overflow: auto;
     border-radius: 10px;
     background-color: #DB8876;
@@ -214,7 +215,7 @@ form input {
     flex-direction: column;
     align-items: center;
     justify-content: space-between;
-    padding: 35px;
+    padding: 25px;
     margin: auto;
 }
 
@@ -270,7 +271,7 @@ form input {
     align-items: center;
     border: 2px #901C1C solid;
     border-radius: 0.5em;
-    padding: 1em;
+    padding: 1.1em;
     cursor: pointer;
     transition: background 0.3s;
     
@@ -311,7 +312,7 @@ form input {
 .menu li {
     padding: 0.7em 0.5em;
     margin: 0.3em 0;
-    border-radius: 0.5em;
+    /* border-radius: 0.5em; */
     cursor: pointer;
 }
 

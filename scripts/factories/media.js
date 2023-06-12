@@ -13,7 +13,7 @@ function mediaFactory(mediaItems) {
   const mediaDiv = document.querySelector(".media-div");
   
   // verify image or video
-  function getUserArtDOM(media) {
+  function getUserArtDOM(media, slideIndex , showSlides, photographerMedia, currentSlide, plusSlides, loopCurrentIndex) {
     console.log("media", media);
     // totalCount += media.likes;
     console.log(totalCount);
@@ -26,6 +26,8 @@ function mediaFactory(mediaItems) {
     // construct DOM elements
     const artCard = document.createElement("section");
     const artWork = document.createElement(isImage ? "img" : "video");
+    artWork.setAttribute("alt" , "image link closeup view");
+    artWork.setAttribute("tabindex", "0");
     artWork.setAttribute("src", isImage ? photoUrl : videoUrl);
     if (!isImage) {
       artWork.setAttribute("type", "video/mp4");
@@ -33,18 +35,22 @@ function mediaFactory(mediaItems) {
 
     artWork.classList.add("grid-item");
     const artTitle = document.createElement("h3");
+    artTitle.setAttribute("tabindex", "0");
     const info = document.createElement("section");
     info.classList.add('infoSection');
     artTitle.innerText = title;
     const likesCounter = document.createElement("section");
     likesCounter.classList.add('likesCounter');
     const likesNo = document.createElement("span");
+    likesNo.setAttribute("tabindex", "0");
+    likesNo.setAttribute ("aria-label", "likes");
     likesNo.classList.add('likesNo');
     likesNo.innerText = likes;
     likesNo.style.color = "#901C1C";
     likesNo.style.fontSize = "1.2em";
     const iconSvg = document.createElement("i");
     iconSvg.classList.add("fa-heart","fas");
+    iconSvg.setAttribute("tabindex", "0");
 
     // Attach the click event listener here
     iconSvg.addEventListener('click', function onClick(event) {
@@ -63,11 +69,19 @@ function mediaFactory(mediaItems) {
     });
 
     // adding listener for media lightbox
-    artWork.addEventListener('click', function(){
-      let modal = document.getElementById("myModal-img");
-      modal.style.display = "block";
-      console.log('modal', modal);
+    artWork.addEventListener("click", function onClick(event) {
+      console.log("event artwork", media);
 
+      let modal = document.getElementById("myModal");
+      modal.style.display = "block";
+
+      const index = photographerMedia.findIndex(function (obj) {
+        return obj.id === media.id;
+      });
+
+      console.log("index", index);
+      console.log("loopCurrentIndex", loopCurrentIndex);
+      currentSlide(loopCurrentIndex + 1);
     });
 
     // attach the media elements to parents

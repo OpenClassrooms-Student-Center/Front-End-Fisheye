@@ -22,8 +22,11 @@ body {
     width: 25%;
   }
   
+  #myModal {
+    display: none;
+  }
   /* The Modal (background) */
-  .modal {
+  .modal-slides {
     display: none;
     position: fixed;
     z-index: 1;

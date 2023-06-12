@@ -1,3 +1,45 @@
+// lightbox
+let slideIndex = 1;
+
+function plusSlides(n) {
+  console.log("slideIndex", slideIndex, n);
+  slideIndex += n;
+  showSlides();
+}
+
+function currentSlide(n) {
+  slideIndex = n;
+  showSlides();
+}
+
+function closeModal() {
+  document.getElementById("myModal").style.display = "none";
+}
+
+function showSlides() {
+  let i;
+  let slides = document.getElementsByClassName("mySlides");
+  // var dots = document.getElementsByClassName("demo");
+  // var captionText = document.getElementById("caption");
+
+  console.log("-----------------------------------");
+  console.log("slides.length", slides.length);
+  console.log("slide index", slideIndex);
+  console.log("-----------------------------------");
+
+  if (slideIndex > slides.length) {
+    slideIndex = 1;
+  }
+  if (slideIndex < 1) {
+    slideIndex = slides.length;
+  }
+  for (i = 0; i < slides.length; i++) {
+    slides[i].style.display = "none";
+  }
+  slides[slideIndex - 1].style.display = "block";
+  slides[slideIndex - 1].style.width = 300;
+  slides[slideIndex - 1].style.height = 300;
+}
 // fetching information from json file and transforming json objects into JSobjects using json()
 async function photographerPage() {
   const photographerResponse = await fetch("./data/photographers.json");
@@ -39,14 +81,13 @@ async function displayPhotographer(photographers) {
   // display modal onclick
   ContactUsbtn.addEventListener("click", function() {
     displayModal();
-    const photographerName = (document.getElementById(
-      "photographer-name"
-    ).innerText =
-      photographer.name);
+    const photographerName = (document.getElementById("photographer-name").innerText = photographer.name);
   });
   // close modal onclick
   const closingModal = document.getElementById("closeX");
-  closingModal.addEventListener("click", closeModal);
+  closingModal.addEventListener("click", function() {
+    closeModal();
+  });
 
   // adjusting the elements as required in the maquette
   const flexOrdering = document.querySelector(".frame");
@@ -66,48 +107,94 @@ async function displayMedia(photographerMedia) {
   const mediaDiv = document.querySelector(".media-div");
 
   mediaDiv.innerHTML = "";
-  photographerMedia.forEach(media => {
+
+  photographerMedia.forEach((media, index) => {
     const mediaSection = mediaFactory(media);
-    const mediaArts = mediaSection.getUserArtDOM(media);
+    const mediaArts = mediaSection.getUserArtDOM(
+      media,
+      slideIndex,
+      showSlides,
+      photographerMedia,
+      currentSlide,
+      plusSlides,
+      index
+    );
     mediaDiv.appendChild(mediaArts);
   });
-  // displayImgSlides(photographerMedia);
+
+  displayImgSlides(photographerMedia);
 }
 
-// function displayImgSlides(array) {
-//   const modalDiv = document.querySelector(".modal-img");
-//   // const slideBtn = document.createElement("button");
-//   // const modalDiv = document.createElement("div");
-//   const modalCloseIcon = document.createElement("span");
-//   const modalContent = document.createElement("div");
-//   const slides = document.createElement("div");
-//   const text = document.createElement("p");
-//   const nextBtn = document.createElement("a");
-//   const prevBtn = document.createElement("a");
+function displayImgSlides(array) {
+  const myImages = document.getElementById("myImages");
 
-//   // slideBtn.setAttribute("id", "modal-btn");
-//   // modalDiv.setAttribute("id", "modal-img");
-//   modalCloseIcon.classList.add("modal-content");
-//   modalContent.classList.add("mySlides");
-//   nextBtn.classList.add("next");
-//   prevBtn.classList.add("prev");
+  array.map((iterator, index) => {
+    console.log("---------------------------------");
+    console.log("iterator", iterator);
+    console.log("---------------------------------");
 
-//   // const modalDiv = document.getElementById("modal-img");
-//   // modalDiv.appendChild(modalDiv);
-//   modalDiv.appendChild(modalCloseIcon);
-//   modalDiv.appendChild(nextBtn);
-//   modalDiv.appendChild(prevBtn);
-//   modalContent.appendChild(slides);
-//   for (const iterator of object) {
-//     const slides = document.createElement("div");
-//     const img = document.createElement("img");
-//     const { image } = iterator;
-//     const src = `assets/media/gallery/${image}`;
-//     img.setAttribute("src", src);
-//     slides.appendChild(text);
-//     slides.appendChild(img);
-//   }
-// }
+    const isImage = iterator?.video ? false : true;
+
+    const slides = document.createElement("div");
+    slides.classList.add("mySlides");
+
+    let img;
+    if (isImage) {
+      img = document.createElement("img");
+      const { image } = iterator;
+      console.log("iterator", iterator)
+      const src = `assets/media/gallery/${image}`;
+      img.style.width = "100%";
+      img.style.height = "20%";
+      img.style.display = "block";
+      // img.style.objectFit = "contain";
+      img.setAttribute("src", src);
+    } else {
+      img = document.createElement("video");
+      const { video } = iterator;
+      let source = document.createElement("source");
+      const src = `assets/media/gallery/${video}`;
+      source.setAttribute("src", src);
+      source.setAttribute("type", "video/mp4");
+      img.style.width = "100%";
+      img.controls = true;
+      img.loop = true;
+      img.autoplay = true;
+      img.appendChild(source);
+    }
+    slides.appendChild(img);
+    myImages.appendChild(slides);
+
+    const closeElement = document.getElementById("myModalClose");
+    closeElement.addEventListener("click", function () {
+      console.log("close button", iterator);
+
+      let modal = document.getElementById("myModal");
+      modal.style.display = "none";
+    });
+
+    const prevBtn = document.getElementById("prevBtn");
+    prevBtn.addEventListener("click", function () {
+      console.log("prevBtn button", iterator);
+      plusSlides(-1);
+    });
+
+    const nextBtn = document.getElementById("nextBtn");
+    nextBtn.addEventListener("click", function () {
+      console.log("nextBtn button", iterator);
+      plusSlides(1);
+
+      console.log("---------------------------------");
+      console.log("updated", myImages);
+      console.log("---------------------------------");
+    });
+  });
+
+  console.log("---------------------------------");
+  console.log("myImages", myImages);
+  console.log("---------------------------------");
+}
+
 
 async function photographersMedia() {
   const { media } = await photographerPage();
@@ -207,7 +294,7 @@ async function photographersMedia() {
       dateElement.classList.remove("sr-only");
       titleElement.classList.remove("sr-only");
       hr1.style.display = "none";
-      // hr2.style.display = "block";
+      hr2.style.display = "block";
       hr3.style.display = "none";
       photographerMedia.sort(
         (a, b) => parseFloat(b.likes) - parseFloat(a.likes)
@@ -233,3 +320,4 @@ async function photographersMedia() {
   });
 }
 photographersMedia();
+

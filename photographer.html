@@ -13,6 +13,7 @@
       rel="stylesheet"
     />
     <link href="css/style.css" rel="stylesheet" type="text/css" />
+    <link href="css/slides.css" rel="stylesheet" type="text/css">
 
     <title>Fisheye - photographe</title>
   </head>
@@ -33,18 +34,17 @@
             <div class="caret"></div>
           </div>
           <!-- <hr/> -->
-          <ul class="menu">
+          <ul  role="button" aria-haspopup="listbox" aria-expanded activedescendant="popularity" tabindex="0" class="menu">
             <hr id="hr0"/>
-            <li id="popularity">Popularité </li>
+            <li role="option" id="popularity">Popularité </li>
             <hr id="hr1"/>
-            <li id="date">Date </li>
+            <li role="option" id="date">Date </li>
             <hr id="hr2"/>
-            <li id="title">Titre </li>
+            <li role="option" id="title">Titre </li>
             <hr id="hr3"/>
           </ul>
         </div>
       </div>
-
       <div class="media-div"></div>
       <div class="modal-img"></div>
       <span id="generalCounter"></span>
@@ -57,48 +57,92 @@
         role="dialog"
         aria-describedby="modalTitle"
       >
-        <header>
-          <h2 id="modalTitle" class="modal-title">Contactez-moi</h2>
-          <img src="assets/icons/close.svg" id="closeX" />
-        </header>
-        <span id="photographer-name"></span>
         <form name="reserve" action="index.html" method="get" id="form">
+          <header>
+            <h2 id="modalTitle" class="modal-title">Contactez-moi</h2>
+            <img src="assets/icons/close.svg" id="closeX" tabindex="0"/>
+          </header>
+          <span id="photographer-name"></span>
           <div role="group" aria-labelledby="coordonnees">
-            <label for="first">Prénom</label>
+            <label id="first-name" role="label" for="first">Prénom</label>
             <input
               class="text-control"
               type="text"
               id="first"
               name="first"
               placeholder="Alexandre"
+              role="text field"
+              aria-labelledby="first-name"
+              required
+              aria-required=true
             />
             <span id="first_error" class="errors"> </span><br />
-            <label for="last">Nom</label>
+            <label id="last-name" for="last">Nom</label>
             <input
               class="text-control"
               type="text"
               id="last"
               name="last"
               placeholder="Ballion"
+              aria-labelledby="last-name"
+              required
+              aria-required=true
             />
             <span id="last_error" class="errors"> </span><br />
-            <label for="email">e-mail</label>
+            <label id="email-address" for="email">e-mail</label>
             <input
               class="text-control"
               id="email"
               name="email"
               type="email"
               placeholder="alexandre.ballion@hotmail.com"
+              aria-labelledby="email-address"
+              required
+              aria-required=true
             />
             <span id="email_error" class="errors"> </span><br />
-            <label for="textarea">Votre message</label>
+            <label id="message" for="textarea">Votre message</label>
             <textarea id="textarea" rows="9" name="comment"
-              placeholder=" Je voudrais vous contacter pour ..."></textarea>
+              aria-labelledby="message" placeholder=" Je voudrais vous contacter pour ..."></textarea>
         </div>
           <button class="contact_button">Envoyer</button>
         </form>
+        <div class="closingDev" id="closingDev">
+          <span id="personalMessage"></span>
+          <button class="closing"> Fermer </button>
+        </div>
       </div>
     </div>
+    <div id="myModal" class="modal-slides">
+      <span class="close cursor" id="myModalClose" onclick="closeModal()"
+        >&times;</span>
+      <div id="myImages" class="modal-content">
+        <!-- <div></div> -->
+
+        <!-- <div class="mySlides">
+          <div class="numbertext">2 / 4</div>
+          <img src="" style="width: 100%" />
+        </div> -->
+
+        <!--<div class="mySlides">
+          <div class="numbertext">3 / 4</div>
+          <img src="" style="width: 100%" />
+        </div>
+
+        <div class="mySlides">
+          <div class="numbertext">4 / 4</div>
+          <img src="" style="width: 100%" />
+        </div> -->
+
+        <a class="prev" id="prevBtn">&#10094;</a>
+        <a class="next" id="nextBtn">&#10095;</a>
+
+        <div class="caption-container">
+          <p id="caption"></p>
+        </div>
+      </div>
+    </div>
+
     <script src="scripts/factories/photographer.js"></script>
     <script src="/scripts/factories/media.js"></script>
     <script src="/scripts/pages/photographer.js"></script>

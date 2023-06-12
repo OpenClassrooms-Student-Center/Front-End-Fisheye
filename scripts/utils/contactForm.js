@@ -4,39 +4,45 @@ const modal = document.getElementById("contact_modal");
 const mainWrapper = document.getElementById("mainWrapper");
 const body = document.getElementById("body");
 const modalCloseBtn = document.getElementById("closeX");
+const closeBtn = document.querySelector(".closing");
 const modalOpenBtn = document.getElementById("open-modal-btn");
 const photographerName = document.getElementById("photographer-name");
+
+closeBtn.addEventListener("click", closeModal);
+// hide elements when form is not valide
+closeBtn.style.display = "none";
 
 const onOpenModal = () => {
   mainWrapper.setAttribute("aria-hidden", "true");
   body.classList.add("no-scroll");
+  console.log(modalOpenBtn);
   modalCloseBtn.focus();
 };
 
 const onCloseModal = () => {
   mainWrapper.setAttribute("aria-hidden", "false");
   body.classList.remove("no-scroll");
-  openModalBtn.focus();
+  modalOpenBtn.focus();
 };
 
 // opening modal
 function displayModal() {
   modal.style.display = "block";
+  form.style.display = "block";
   onOpenModal();
 }
 
 // closing modal
 function closeModal() {
   modal.style.display = "none";
-  form.reset();
   onCloseModal();
+  form.reset();
 }
 
 // Close modal when espace key is pressed
-document.on("keydown", e => {
-  const keyCode = e.keyCode ? e.keyCode : e.which;
-
-  if (modal.attr("aria-hidden") == "false" && keyCode === 27) {
+document.addEventListener("keydown", e => {
+  let keyCode = e.keyCode ? e.keyCode : e.which;
+  if (modal.getAttribute("aria-hidden") == "false" && keyCode === 27) {
     closeModal();
   }
 });
@@ -58,6 +64,7 @@ form.addEventListener("submit", function(event) {
     document.getElementById("first_error").innerHTML = "";
     document.getElementById("first").style.borderColor = "";
   }
+  console.log(first.value);
 
   // last name minimum 2 letters
   let lastName = document.getElementById("last").value;
@@ -72,6 +79,7 @@ form.addEventListener("submit", function(event) {
     document.getElementById("last_error").innerHTML = "";
     document.getElementById("last").style.borderColor = "";
   }
+  console.log(last.value);
 
   // e-mail validation
   let mailformat = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
@@ -87,16 +95,25 @@ form.addEventListener("submit", function(event) {
     document.getElementById("email_error").innerHTML = "";
     document.getElementById("email").style.borderColor = "";
   }
+  const messageForm = document.getElementById("textarea");
+  console.log(email.value);
+  console.log(messageForm.value);
 
   // Validation
   if (errorCounter === 0) {
+    form.reset();
     form.style.display = "none";
-    document.getElementById("message").innerHTML =
-      "Merci pour votre inscription";
+    document.getElementById("personalMessage").innerHTML = "Merci pour votre message";
     closeBtn.style.display = "block";
-    document.getElementById("closingDev").style.display = "flex";
+    const closingMessage =  document.getElementById("closingDev");
+    closingMessage.style.display = "flex";
+    closingMessage.style.flexDirection = "column";
+    closingMessage.style.alignItems = "center";
+    closingMessage.style.gap = "5em";
   } else {
     document.getElementById("message").innerHTML = "";
     document.getElementById("closingDev").style.display = "none";
   }
 });
+
+
