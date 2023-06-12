@@ -257,11 +257,6 @@ async function displayPhotographMedias() {
             likeBtn.innerHTML = `${media.likes} <i class="fa-solid fa-heart"></i>`;
             likeBtn.setAttribute('aria-label', 'Retirer votre like de l\'image');
             mediaTotalLikes.innerText = totalLikes += 1;
-            console.log('1 : like', likeBtn.classList, likeBtn.innerHTML);
-            // if (currentSortOrder === 'popularity') {
-            //     sortByPopularity();
-            //     console.log('2 : like with sortbypop', likeBtn.classList, likeBtn.innerHTML);
-            // }
         } else {
             mediasLiked.splice(mediaIndex, 1);
             media.likes -= 1;
@@ -269,7 +264,6 @@ async function displayPhotographMedias() {
             likeBtn.innerHTML = `${media.likes} <i class="fa-regular fa-heart"></i>`;
             likeBtn.setAttribute('aria-label', 'Ajouter un like à l\'image');
             mediaTotalLikes.innerText = totalLikes -= 1;
-            console.log('3 : dislike', likeBtn.classList, likeBtn.innerHTML);
         }
     }
 }
