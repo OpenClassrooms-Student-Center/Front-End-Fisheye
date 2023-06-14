@@ -16,7 +16,6 @@ function photographerFactory(data) {
 
     // const target = "photographer.html?id=" + id;
     let target = new URL("photographer.html", window.location.origin);
-    console.log("target:" + target);
     let params = target.searchParams;
     // add "topic" parameter id
     params.set("id", id);

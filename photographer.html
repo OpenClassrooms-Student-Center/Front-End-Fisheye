@@ -3,25 +3,20 @@
   <head>
     <meta charset="utf-8" />
 
-    <link
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
-      rel="stylesheet"
-    />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" rel="stylesheet"/>
     <link rel="icon" type="image/png" href="assets/favicon.png" />
-    <link
-      href="https://fonts.googleapis.com/css?family=DM+Sans&display=swap"
-      rel="stylesheet"
-    />
+    <link href="https://fonts.googleapis.com/css?family=DM+Sans&display=swap" rel="stylesheet"/>
     <link href="css/style.css" rel="stylesheet" type="text/css" />
-    <link href="css/slides.css" rel="stylesheet" type="text/css">
+    <link href="css/slides.css" rel="stylesheet" type="text/css" />
 
     <title>Fisheye - photographe</title>
   </head>
+
   <body id="body">
     <header role="banner">
-      <a href="index.html" aria-label="fisheye home page" aria-current="page"
-        ><img src="assets/images/logo.png" alt="" class="logo"
-      /></a>
+      <a href="index.html" aria-label="fisheye home page" aria-current="page">
+        <img src="assets/images/logo.png" alt="" class="logo"/>
+      </a>
       <h1 class="sr-only" tabindex="0">Nos photographes</h1>
     </header>
     <main id="mainWrapper" aria-hidden="false">
@@ -33,8 +28,7 @@
             <span class="selected"> Popularité </span>
             <div class="caret"></div>
           </div>
-          <!-- <hr/> -->
-          <ul  role="button" aria-haspopup="listbox" aria-expanded activedescendant="popularity" tabindex="0" class="menu">
+           <ul  role="button" aria-haspopup="listbox" aria-expanded activedescendant="popularity" tabindex="0" class="menu">
             <hr id="hr0"/>
             <li role="option" id="popularity">Popularité </li>
             <hr id="hr1"/>
@@ -113,38 +107,22 @@
         </div>
       </div>
     </div>
-
-    <div id="myModal" class="modal-slides">
+    <div id="myModal" class="modal" role="dialog" aria-label="image closeup view">
       <span class="close cursor" id="myModalClose" onclick="closeModal()"
-        >&times;</span>
+        role="button" aria-label="close dialog" >&times;</span>
       <div class="modal-content">
         <div id="myImages"></div>
-
-        <div class="mySlides">
+        <div class="mySlides" id="dummy">
           <div class="numbertext">2 / 4</div>
-          <img src="" style="width: 100%" />
-        </div>
-
-        <div class="mySlides">
-          <div class="numbertext">3 / 4</div>
-          <img src="" style="width: 100%" />
-        </div>
-
-        <div class="mySlides">
-          <div class="numbertext">4 / 4</div>
-          <img src="" style="width: 100%" />
-        </div> 
-
-        <a class="prev" id="prevBtn">&#10094;</a>
-        <a class="next" id="nextBtn">&#10095;</a>
-
-        <div class="caption-container">
-          <p id="caption"></p>
+          <img src="img_snow_wide.jpg" style="width: 100%" />
         </div>
       </div>
+      <a class="prev" id="prevBtn" role="link" aria-label="previous image">&#10094;</a>
+      <a class="next" id="nextBtn" role="link" aria-label="next image">&#10095;</a>
+      <div class="caption-container">
+        <p id="caption" role="text"></p>
+      </div>
     </div>
-
-   
 
     <script src="scripts/factories/photographer.js"></script>
     <script src="/scripts/factories/media.js"></script>

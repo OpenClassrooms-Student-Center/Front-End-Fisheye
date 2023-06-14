@@ -13,36 +13,37 @@ closeBtn.addEventListener("click", closeModal);
 closeBtn.style.display = "none";
 
 const onOpenModal = () => {
-  mainWrapper.setAttribute("aria-hidden", "true");
+  mainWrapper.setAttribute("aria-hidden", "false");
+  modal.setAttribute("aria-hidden", "false");
   body.classList.add("no-scroll");
   console.log(modalOpenBtn);
   modalCloseBtn.focus();
 };
 
 const onCloseModal = () => {
-  mainWrapper.setAttribute("aria-hidden", "false");
+  mainWrapper.setAttribute("aria-hidden", "true");
+  modal.setAttribute("aria-hidden", "true");
   body.classList.remove("no-scroll");
   modalOpenBtn.focus();
 };
 
 // opening modal
 function displayModal() {
+  onOpenModal();
   modal.style.display = "block";
   form.style.display = "block";
-  onOpenModal();
 }
 
 // closing modal
 function closeModal() {
+  form.reset();
   modal.style.display = "none";
   onCloseModal();
-  form.reset();
 }
 
 // Close modal when espace key is pressed
-document.addEventListener("keydown", e => {
-  let keyCode = e.keyCode ? e.keyCode : e.which;
-  if (modal.getAttribute("aria-hidden") == "false" && keyCode === 27) {
+window.addEventListener("keydown", e => {
+  if (modal.getAttribute("aria-hidden") == "false" && e.key === "Escape") {
     closeModal();
   }
 });

@@ -1,4 +1,3 @@
-
 // global variable counting likes
 let totalCount = 0;
 let addingALike = 0;
@@ -13,16 +12,8 @@ function mediaFactory(mediaItems) {
   const mediaDiv = document.querySelector(".media-div");
   
   // verify image or video
-  function getUserArtDOM(media,
-    slideIndex,
-    showSlides,
-    photographerMedia,
-    currentSlide,
-    plusSlides,
-    loopCurrentIndex) {
-    console.log("media", media);
+  function getUserArtDOM(media, slideIndex, showSlides, photographerMedia, currentSlide, plusSlides, loopCurrentIndex) {
     // totalCount += media.likes;
-    console.log(totalCount);
     let isImage = true;
     // ?. returns undefined instead of throwing an error
     if (media?.video) {
@@ -32,7 +23,7 @@ function mediaFactory(mediaItems) {
     // construct DOM elements
     const artCard = document.createElement("section");
     const artWork = document.createElement(isImage ? "img" : "video");
-    artWork.setAttribute("alt" , "image link closeup view");
+    artWork.setAttribute("alt" , title);
     artWork.setAttribute("tabindex", "0");
     artWork.setAttribute("src", isImage ? photoUrl : videoUrl);
     if (!isImage) {
@@ -60,14 +51,10 @@ function mediaFactory(mediaItems) {
 
     // Attach the click event listener here
     iconSvg.addEventListener('click', function onClick(event) {
-      console.log('Clicked!', event.target);
       iconSvg.removeEventListener('click', onClick);
-      console.log("Event fired once, no more click will be handled");
       // media likes updated for every element 
-      console.log('total likes ', totalCount);
       media.likes += 1;
       likesNo.textContent = media.likes;
-      console.log(media.likes);
       // medial likes total count
       addingALike += 1;   
       let totalLikeDiv = document.getElementById('totalLikes');
@@ -76,7 +63,6 @@ function mediaFactory(mediaItems) {
 
     // adding listener for media lightbox
     artWork.addEventListener("click", function onClick(event) {
-      console.log("event artwork", media);
 
       let modal = document.getElementById("myModal");
       modal.style.display = "block";
@@ -84,9 +70,6 @@ function mediaFactory(mediaItems) {
       const index = photographerMedia.findIndex(function (obj) {
         return obj.id === media.id;
       });
-
-      console.log("index", index);
-      console.log("loopCurrentIndex", loopCurrentIndex);
       currentSlide(loopCurrentIndex + 1);
     });
 

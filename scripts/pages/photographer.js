@@ -1,44 +1,49 @@
-// lightbox
 let slideIndex = 1;
 
 function plusSlides(n) {
-  console.log("slideIndex", slideIndex, n);
-  slideIndex += n;
-  showSlides();
+  showSlides((slideIndex += n));
 }
 
 function currentSlide(n) {
-  slideIndex = n;
-  showSlides();
+  showSlides((slideIndex = n));
 }
 
 function closeModal() {
   document.getElementById("myModal").style.display = "none";
 }
 
-function showSlides() {
+function showSlides(n) {
   let i;
   let slides = document.getElementsByClassName("mySlides");
-  // var dots = document.getElementsByClassName("demo");
-  // var captionText = document.getElementById("caption");
+  let dots = document.getElementsByClassName("grid-item");
+  let captionText = document.getElementById("caption");
 
-  console.log("-----------------------------------");
-  console.log("slides.length", slides.length);
-  console.log("slide index", slideIndex);
-  console.log("-----------------------------------");
+  if (n > slides.length) {
+    // previous slide
 
-  if (slideIndex > slides.length) {
     slideIndex = 1;
   }
-  if (slideIndex < 1) {
+  if (n < 1) {
+    // next slide
     slideIndex = slides.length;
   }
   for (i = 0; i < slides.length; i++) {
     slides[i].style.display = "none";
   }
-  slides[slideIndex - 1].style.display = "block";
-  slides[slideIndex - 1].style.width = 300;
-  slides[slideIndex - 1].style.height = 300;
+  for (i = 0; i < dots.length; i++) {
+    dots[i].className = dots[i].className.replace(" active", "");
+  }
+
+  let currentIndex = slideIndex - 1;
+
+  if (currentIndex + 1 === slides.length) {
+    currentIndex = 0;
+  }
+  slides[currentIndex].style.display = "block";
+  slides[currentIndex].style.width = 400;
+  slides[currentIndex].style.height = 400;
+  dots[currentIndex].className += " active";
+  captionText.innerHTML = dots[currentIndex].alt;
 }
 
 // fetching information from json file and transforming json objects into JSobjects using json()
@@ -104,44 +109,52 @@ async function initPhotographerPage() {
 // calling the function to create the elements in photographer page
 initPhotographerPage();
 
-async function displayMedia(photographerMedia) {
+async function displayMedia(photographerMedia, render) {
   const mediaDiv = document.querySelector(".media-div");
 
   mediaDiv.innerHTML = "";
 
   photographerMedia.forEach((media, index) => {
     const mediaSection = mediaFactory(media);
-    const mediaArts = mediaSection.getUserArtDOM(media);
+    const mediaArts = mediaSection.getUserArtDOM(media, slideIndex, showSlides, photographerMedia, currentSlide, plusSlides, index);
     mediaDiv.appendChild(mediaArts);
   });
 
-  displayImgSlides(photographerMedia);
+  displayImgSlides(photographerMedia, render);
+}
+
+function prevBtnClick(event) {
+  plusSlides(-1);
+}
+
+function nextBtnClick(event) {
+  plusSlides(1);
 }
 
 function displayImgSlides(array) {
   const myImages = document.getElementById("myImages");
+  myImages.innerHTML = "";
 
   array.map((iterator, index) => {
-    console.log("---------------------------------");
-    console.log("iterator", iterator);
-
-    console.log("---------------------------------");
-
     const isImage = iterator?.video ? false : true;
 
     const slides = document.createElement("div");
     slides.classList.add("mySlides");
-    slides.style.display = "none";
+    // slides.setAttribute("value", JSON.stringify(iterator));
 
     let img;
     if (isImage) {
       img = document.createElement("img");
       const { image } = iterator;
-      console.log("iterator", iterator)
       const src = `assets/media/gallery/${image}`;
-      img.style.width = "100%";
-      img.style.height = "20%";
       img.style.display = "block";
+      img.style.width = "100%";
+      img.style.height = "1100px";
+      img.style.objectFit = "cover";
+      img.setAttribute("src", src);
+      img.setAttribute("role", "img");
+      img.setAttribute("aria-label", "viewing individual images");
+      img.setAttribute("alt", title);
     } else {
       img = document.createElement("video");
       const { video } = iterator;
@@ -150,44 +163,30 @@ function displayImgSlides(array) {
       source.setAttribute("src", src);
       source.setAttribute("type", "video/mp4");
       img.style.width = "100%";
+      img.style.height = "1100px";
       img.controls = true;
       img.loop = true;
       img.autoplay = true;
       img.appendChild(source);
     }
+
+    // slides.appendChild(text);
     slides.appendChild(img);
     myImages.appendChild(slides);
 
     const closeElement = document.getElementById("myModalClose");
-    closeElement.addEventListener("click", function () {
-      console.log("close button", iterator);
+    closeElement.addEventListener("click", function onClick(event) {
+      // console.log("close button", iterator);
 
       let modal = document.getElementById("myModal");
       modal.style.display = "none";
     });
-
-    const prevBtn = document.getElementById("prevBtn");
-    prevBtn.addEventListener("click", function () {
-      console.log("prevBtn button", iterator);
-      plusSlides(-1);
-    });
-
     const nextBtn = document.getElementById("nextBtn");
-    nextBtn.addEventListener("click", function () {
-      console.log("nextBtn button", iterator);
-      plusSlides(1);
-
-      console.log("---------------------------------");
-      console.log("updated", myImages);
-      console.log("---------------------------------");
-    });
+    const prevBtn = document.getElementById("prevBtn");
+    prevBtn.addEventListener("click", prevBtnClick);
+    nextBtn.addEventListener("click", nextBtnClick);
   });
-
-  console.log("---------------------------------");
-  console.log("myImages", myImages);
-  console.log("---------------------------------");
 }
-
 
 async function photographersMedia() {
   const { media } = await photographerPage();
@@ -210,22 +209,21 @@ async function photographersMedia() {
   const totalLikes = document.createElement("p");
   totalLikes.setAttribute("id", "totalLikes");
   totalLikes.innerHTML = totalCount;
+  totalLikes.setAttribute("tabindex", 0);
   const likeCounterSpanIcon = document.createElement("i");
   likeCounterSpanIcon.classList.add("fa-heart", "fas");
   likeCounterSpanIcon.style.color = "black";
   const likesDiv = document.createElement("div");
   likesDiv.classList.add("likesDiv");
   const dayPrice = document.getElementById("price");
+  dayPrice.setAttribute("tabindex", 0);
   // append children to the span
   likesDiv.appendChild(totalLikes);
   likesDiv.appendChild(likeCounterSpanIcon);
   likesCounterSpan.appendChild(likesDiv);
   likesCounterSpan.appendChild(dayPrice);
 
-  displayMedia(photographerMedia);
-
-  // create dropown menu
-  // get all drop downs 
+  // create dropown menu -> get all drop downs 
   const dropdowns = document.querySelectorAll(".dropdown");
 
   // loop though all dropdown elements 
@@ -236,7 +234,10 @@ async function photographersMedia() {
     const menu = dropdown.querySelector(".menu");
     const options = dropdown.querySelectorAll(".menu li");
     const selected = dropdown.querySelector(".selected");
-  
+
+    // focus on elements
+        select.setAttribute("tabindex", 0);
+
     // a click event to select element
     select.addEventListener("click", () => {
       // add the clicked selected style to the element
@@ -281,6 +282,9 @@ async function photographersMedia() {
   const hr3 = document.getElementById("hr3");
 
   selector.addEventListener("click", function() {
+    let modified = [...photographerMedia];
+    let sortedArray;
+
     if (selected.innerText == "Popularité") {
       popElement.classList.add("sr-only");
       dateElement.classList.remove("sr-only");
@@ -288,9 +292,11 @@ async function photographersMedia() {
       hr1.style.display = "none";
       hr2.style.display = "block";
       hr3.style.display = "none";
-      photographerMedia.sort(
+      sortedArray = modified.sort(
         (a, b) => parseFloat(b.likes) - parseFloat(a.likes)
       );
+      const myImages = document.getElementById("myImages");
+      myImages.innerHTML = "";
     } else if (selected.innerText == "Date") {
       popElement.classList.remove("sr-only");
       dateElement.classList.add("sr-only");
@@ -298,7 +304,9 @@ async function photographersMedia() {
       hr1.style.display = "block";
       hr2.style.display = "none";
       hr3.style.display = "none";
-      photographerMedia.sort((a, b) => new Date(b.date) - new Date(a.date));
+      sortedArray = modified.sort((a, b) => new Date(b.date) - new Date(a.date));
+      const myImages = document.getElementById("myImages");
+      myImages.innerHTML = "";
     } else if (selected.innerText == "Titre") {
       popElement.classList.remove("sr-only");
       dateElement.classList.remove("sr-only");
@@ -306,10 +314,31 @@ async function photographersMedia() {
       hr1.style.display = "block";
       hr2.style.display = "none";
       hr3.style.display = "none";
-      photographerMedia.sort((a, b) => (a.title < b.title ? -1 : 1));
+      sortedArray = modified.sort((a, b) => (a.title < b.title ? -1 : 1));
+      const myImages = document.getElementById("myImages");
+      myImages.innerHTML = "";
     }
-    displayMedia(photographerMedia);
+    displayMedia(sortedArray);
   });
+
+  displayMedia(photographerMedia);
+}
+
+function removeListeners() {
+  const parentElement = document.getElementById("myImages");
+
+  const listElements = parentElement.getElementsByClassName("mySlides");
+
+  while (listElements.length > 0) {
+    const element = listElements[0];
+
+    const nextBtn = element.getElementById("nextBtn");
+    const prevBtn = element.getElementById("prevBtn");
+
+    nextBtn.removeEventListener("click", prevBtnClick);
+    prevBtn.removeEventListener("click", nextBtnClick);
+
+    element.remove();
+  }
 }
 photographersMedia();
-
