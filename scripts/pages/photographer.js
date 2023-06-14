@@ -74,6 +74,7 @@ async function displayPhotographer(photographers) {
   const ContactUsbtn = document.createElement("button");
   ContactUsbtn.setAttribute("tabindex", "0 ");
   ContactUsbtn.setAttribute("role", "button");
+  ContactUsbtn.setAttribute("aria-haspopup", "listbox");
   ContactUsbtn.setAttribute("class", "contact_button");
   ContactUsbtn.setAttribute("id", "open-modal-btn");
   ContactUsbtn.setAttribute("aria-label", "contact me");
@@ -155,6 +156,7 @@ function displayImgSlides(array) {
       img.setAttribute("role", "img");
       img.setAttribute("aria-label", "viewing individual images");
       img.setAttribute("alt", title);
+      img.setAttribute("tabindex", 0);
     } else {
       img = document.createElement("video");
       const { video } = iterator;
@@ -168,6 +170,7 @@ function displayImgSlides(array) {
       img.loop = true;
       img.autoplay = true;
       img.appendChild(source);
+      img.setAttribute("tabindex", 0);
     }
 
     // slides.appendChild(text);
@@ -208,6 +211,7 @@ async function photographersMedia() {
   const likesCounterSpan = document.getElementById("generalCounter");
   const totalLikes = document.createElement("p");
   totalLikes.setAttribute("id", "totalLikes");
+  totalLikes.setAttribute("role", "selecton menu name");
   totalLikes.innerHTML = totalCount;
   totalLikes.setAttribute("tabindex", 0);
   const likeCounterSpanIcon = document.createElement("i");

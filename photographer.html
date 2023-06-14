@@ -15,7 +15,7 @@
   <body id="body">
     <header role="banner">
       <a href="index.html" aria-label="fisheye home page" aria-current="page">
-        <img src="assets/images/logo.png" alt="" class="logo"/>
+        <img src="assets/images/logo.png" alt="" class="logo" role="image link" aria-label="Fisheye home page">
       </a>
       <h1 class="sr-only" tabindex="0">Nos photographes</h1>
     </header>
@@ -54,7 +54,7 @@
         <form name="reserve" action="index.html" method="get" id="form">
           <header>
             <h2 id="modalTitle" class="modal-title">Contactez-moi</h2>
-            <img src="assets/icons/close.svg" id="closeX" tabindex="0"/>
+            <img src="assets/icons/close.svg" id="closeX" tabindex="0" role="button" aria-label="close contact form"/>
           </header>
           <span id="photographer-name"></span>
           <div role="group" aria-labelledby="coordonnees">
@@ -71,8 +71,9 @@
               aria-required=true
             />
             <span id="first_error" class="errors"> </span><br />
-            <label id="last-name" for="last">Nom</label>
+            <label id="last-name" for="last" role="label">Nom</label>
             <input
+              role="text field"
               class="text-control"
               type="text"
               id="last"
@@ -83,8 +84,9 @@
               aria-required=true
             />
             <span id="last_error" class="errors"> </span><br />
-            <label id="email-address" for="email">e-mail</label>
+            <label id="email-address" for="email" role="label">e-mail</label>
             <input
+              role="text field"
               class="text-control"
               id="email"
               name="email"
@@ -95,21 +97,21 @@
               aria-required=true
             />
             <span id="email_error" class="errors"> </span><br />
-            <label id="message" for="textarea">Votre message</label>
-            <textarea id="textarea" rows="9" name="comment"
-              aria-labelledby="message" placeholder=" Je voudrais vous contacter pour ..."></textarea>
+            <label id="message" for="textarea" role="label">Votre message</label>
+            <textarea role="text field" id="textarea" rows="9" name="comment"
+              aria-labelledby="your message" placeholder=" Je voudrais vous contacter pour ..." ></textarea>
         </div>
-          <button class="contact_button">Envoyer</button>
+          <button class="contact_button" role="button" aria-label=" send message button">Envoyer</button>
         </form>
         <div class="closingDev" id="closingDev">
           <span id="personalMessage"></span>
-          <button class="closing"> Fermer </button>
+          <button class="closing" role="button" aria-label="close button"> Fermer </button>
         </div>
       </div>
     </div>
     <div id="myModal" class="modal" role="dialog" aria-label="image closeup view">
       <span class="close cursor" id="myModalClose" onclick="closeModal()"
-        role="button" aria-label="close dialog" >&times;</span>
+        role="button" aria-label="close dialog" tabindex="0" >&times;</span>
       <div class="modal-content">
         <div id="myImages"></div>
         <div class="mySlides" id="dummy">
@@ -117,10 +119,10 @@
           <img src="img_snow_wide.jpg" style="width: 100%" />
         </div>
       </div>
-      <a class="prev" id="prevBtn" role="link" aria-label="previous image">&#10094;</a>
-      <a class="next" id="nextBtn" role="link" aria-label="next image">&#10095;</a>
+      <a class="prev" id="prevBtn" role="link" aria-label="previous image" tabindex="0">&#10094;</a>
+      <a class="next" id="nextBtn" role="link" aria-label="next image" tabindex="0">&#10095;</a>
       <div class="caption-container">
-        <p id="caption" role="text"></p>
+        <p id="caption" role="text" tabindex="0"></p>
       </div>
     </div>
 

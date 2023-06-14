@@ -36,6 +36,7 @@ function mediaFactory(mediaItems) {
     const info = document.createElement("section");
     info.classList.add('infoSection');
     artTitle.innerText = title;
+    artTitle.setAttribute("role", "text");
     const likesCounter = document.createElement("section");
     likesCounter.classList.add('likesCounter');
     const likesNo = document.createElement("span");

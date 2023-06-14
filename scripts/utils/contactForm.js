@@ -8,6 +8,8 @@ const closeBtn = document.querySelector(".closing");
 const modalOpenBtn = document.getElementById("open-modal-btn");
 const photographerName = document.getElementById("photographer-name");
 
+modal.setAttribute("aria-labelledBy", `contact me ${photographer.name}`);
+document.getElementById("modalTitle").setAttribute("role", photographer.name);
 closeBtn.addEventListener("click", closeModal);
 // hide elements when form is not valide
 closeBtn.style.display = "none";

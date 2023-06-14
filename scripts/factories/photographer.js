@@ -24,13 +24,16 @@ function photographerFactory(data) {
 
     const image = document.createElement("img");
     image.setAttribute("src", picture);
+    image.setAttribute("role", "img");
     image.setAttribute("alt", description);
     const h2 = document.createElement("h2");
     h2.textContent = name;
     const h4 = document.createElement("h4");
     h4.textContent = `${city}, ${country}`;
+    h4.setAttribute("role", "text");
     const p1 = document.createElement("p");
     p1.textContent = tagline;
+    p1.setAttribute("role", "text");
     const personalInfo = document.createElement("section");
     personalInfo.setAttribute("tabindex", "0");
     personalInfo.setAttribute("role", "region");
@@ -39,6 +42,7 @@ function photographerFactory(data) {
     const p2 = document.createElement("p");
     p2.textContent = `${price}€/jour`;
     p2.setAttribute("id", "price");
+
     // attach elements to their parents after craetion in the DOM
     card.appendChild(personalSection);
     personalSection.appendChild(link);
