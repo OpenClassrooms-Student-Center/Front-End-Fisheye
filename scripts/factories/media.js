@@ -13,7 +13,13 @@ function mediaFactory(mediaItems) {
   const mediaDiv = document.querySelector(".media-div");
   
   // verify image or video
-  function getUserArtDOM(media, slideIndex , showSlides, photographerMedia, currentSlide, plusSlides, loopCurrentIndex) {
+  function getUserArtDOM(media,
+    slideIndex,
+    showSlides,
+    photographerMedia,
+    currentSlide,
+    plusSlides,
+    loopCurrentIndex) {
     console.log("media", media);
     // totalCount += media.likes;
     console.log(totalCount);

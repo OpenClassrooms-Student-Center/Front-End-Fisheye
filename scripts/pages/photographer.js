@@ -40,6 +40,7 @@ function showSlides() {
   slides[slideIndex - 1].style.width = 300;
   slides[slideIndex - 1].style.height = 300;
 }
+
 // fetching information from json file and transforming json objects into JSobjects using json()
 async function photographerPage() {
   const photographerResponse = await fetch("./data/photographers.json");
@@ -110,15 +111,7 @@ async function displayMedia(photographerMedia) {
 
   photographerMedia.forEach((media, index) => {
     const mediaSection = mediaFactory(media);
-    const mediaArts = mediaSection.getUserArtDOM(
-      media,
-      slideIndex,
-      showSlides,
-      photographerMedia,
-      currentSlide,
-      plusSlides,
-      index
-    );
+    const mediaArts = mediaSection.getUserArtDOM(media);
     mediaDiv.appendChild(mediaArts);
   });
 
@@ -131,12 +124,14 @@ function displayImgSlides(array) {
   array.map((iterator, index) => {
     console.log("---------------------------------");
     console.log("iterator", iterator);
+
     console.log("---------------------------------");
 
     const isImage = iterator?.video ? false : true;
 
     const slides = document.createElement("div");
     slides.classList.add("mySlides");
+    slides.style.display = "none";
 
     let img;
     if (isImage) {
@@ -147,8 +142,6 @@ function displayImgSlides(array) {
       img.style.width = "100%";
       img.style.height = "20%";
       img.style.display = "block";
-      // img.style.objectFit = "contain";
-      img.setAttribute("src", src);
     } else {
       img = document.createElement("video");
       const { video } = iterator;
@@ -286,7 +279,6 @@ async function photographersMedia() {
   const hr1 = document.getElementById("hr1");
   const hr2 = document.getElementById("hr2");
   const hr3 = document.getElementById("hr3");
-
 
   selector.addEventListener("click", function() {
     if (selected.innerText == "Popularité") {

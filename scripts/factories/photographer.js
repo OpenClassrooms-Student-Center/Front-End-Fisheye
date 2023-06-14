@@ -1,14 +1,5 @@
 function photographerFactory(data) {
-  const {
-    name,
-    portrait,
-    city,
-    country,
-    tagline,
-    price,
-    description,
-    id
-  } = data;
+  const { name, portrait, city, country, tagline, price, description, id } = data;
   const picture = `assets/photographers/${portrait}`;
 
   // card creation
@@ -22,8 +13,8 @@ function photographerFactory(data) {
     personalSection.setAttribute("id", id);
     personalSection.setAttribute("class", "frame");
     const link = document.createElement("a");
-    // const target = "photographer.html?id=" + id;
 
+    // const target = "photographer.html?id=" + id;
     let target = new URL("photographer.html", window.location.origin);
     console.log("target:" + target);
     let params = target.searchParams;
