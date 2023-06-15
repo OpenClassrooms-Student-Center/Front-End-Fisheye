@@ -8,8 +8,6 @@ const closeBtn = document.querySelector(".closing");
 const modalOpenBtn = document.getElementById("open-modal-btn");
 const photographerName = document.getElementById("photographer-name");
 
-modal.setAttribute("aria-labelledBy", `contact me ${photographer.name}`);
-document.getElementById("modalTitle").setAttribute("role", photographer.name);
 closeBtn.addEventListener("click", closeModal);
 // hide elements when form is not valide
 closeBtn.style.display = "none";
@@ -31,9 +29,9 @@ const onCloseModal = () => {
 
 // opening modal
 function displayModal() {
-  onOpenModal();
   modal.style.display = "block";
   form.style.display = "block";
+  onOpenModal();
 }
 
 // closing modal
@@ -46,6 +44,13 @@ function closeModal() {
 // Close modal when espace key is pressed
 window.addEventListener("keydown", e => {
   if (modal.getAttribute("aria-hidden") == "false" && e.key === "Escape") {
+    closeModal();
+  }
+});
+
+// Close modal when enter and focused on X
+window.addEventListener("keydown", e => {
+  if (document.activeElement == modalCloseBtn && e.key === "Enter") {
     closeModal();
   }
 });
@@ -104,7 +109,8 @@ form.addEventListener("submit", function(event) {
 
   // Validation
   if (errorCounter === 0) {
-    form.reset();
+    console.log(errorCounter);
+    // form.reset();
     form.style.display = "none";
     document.getElementById("personalMessage").innerHTML = "Merci pour votre message";
     closeBtn.style.display = "block";

@@ -83,12 +83,12 @@ async function displayPhotographer(photographers) {
 
   // accessibility items for the modal
   const dialog = document.getElementById("contact_modal");
-  // dialog.setAttribute
-
+  const photographerName = (document.getElementById("photographer-name").innerText = photographer.name);
+  dialog.setAttribute("aria-labelledBy", `contact me ${photographerName}`);
+  document.getElementById("modalTitle").setAttribute("role", photographerName);
   // display modal onclick
   ContactUsbtn.addEventListener("click", function() {
     displayModal();
-    const photographerName = (document.getElementById("photographer-name").innerText = photographer.name);
   });
   // close modal onclick
   const closingModal = document.getElementById("closeX");
@@ -112,9 +112,7 @@ initPhotographerPage();
 
 async function displayMedia(photographerMedia, render) {
   const mediaDiv = document.querySelector(".media-div");
-
-  mediaDiv.innerHTML = "";
-
+  mediaDiv.innerHTML = ""
   photographerMedia.forEach((media, index) => {
     const mediaSection = mediaFactory(media);
     const mediaArts = mediaSection.getUserArtDOM(media, slideIndex, showSlides, photographerMedia, currentSlide, plusSlides, index);
@@ -180,7 +178,6 @@ function displayImgSlides(array) {
     const closeElement = document.getElementById("myModalClose");
     closeElement.addEventListener("click", function onClick(event) {
       // console.log("close button", iterator);
-
       let modal = document.getElementById("myModal");
       modal.style.display = "none";
     });
@@ -188,10 +185,31 @@ function displayImgSlides(array) {
     const prevBtn = document.getElementById("prevBtn");
     prevBtn.addEventListener("click", prevBtnClick);
     nextBtn.addEventListener("click", nextBtnClick);
+
+    // previous media with keyboard => mouse + keyboard
+    prevBtn.addEventListener("keydown", e => {
+      if (e.key === "Enter") {
+        prevBtnClick();
+      }  
+    });
+
+      // next media with keyboard => mouse + keyboard
+      nextBtn.addEventListener("keydown", e => {
+      if (e.key === "Enter") {
+        nextBtnClick();
+      }  
+    });
+    
+      // Close modal when enter and focused on X
+      window.addEventListener("keydown", e => {
+        if (document.activeElement == closeElement && e.key === "Enter") {
+          closeModal();
+        }
+      });
   });
 }
 
-async function photographersMedia() {
+ async function photographersMedia() {
   const { media } = await photographerPage();
   // creating the artwork for each photographer
   let params = new URL(document.location).searchParams;
