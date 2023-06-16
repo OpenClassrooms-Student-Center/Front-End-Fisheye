@@ -9,7 +9,7 @@ export function mediaFactory(media) {
     mediaSection.appendChild(article)
 
     if (image) {
-      const thumbnail = `../ressources/assets/photographers/${photographerId}/${image}`;
+      const thumbnail = `./ressources/assets/photographers/${photographerId}/${image}`;
       const button = document.createElement("button");
       button.classList.add("media__btn");
       button.setAttribute("aria-label", `${title} - closup view`)
@@ -23,7 +23,7 @@ export function mediaFactory(media) {
       button.appendChild(img)
     }
     if (video) {
-      const thumbnail = `../ressources/assets/photographers/${photographerId}/${video}`;
+      const thumbnail = `./ressources/assets/photographers/${photographerId}/${video}`;
       const button = document.createElement("button");
       button.classList.add("media__btn");
       button.setAttribute("aria-label", `${title} - closup view`)

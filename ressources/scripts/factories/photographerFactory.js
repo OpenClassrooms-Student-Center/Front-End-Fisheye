@@ -1,7 +1,7 @@
 export function photographerFactory(photographer) {
     const { id, name, portrait, city, country, tagline, price } = photographer;
 
-    const picture = `../ressources/assets/photographers/${portrait}.webp`;
+    const picture = `./ressources/assets/photographers/${portrait}.webp`;
 
     function getUserCardDOM() {
         const article = document.createElement( 'article' );
