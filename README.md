@@ -1,4 +1,4 @@
-![FishEye ](/assets/img/logo.png)
+![FishEye ](ressources/assets/images/logo.png)
 
 ![html][html5-badge]
 ![css][css3-badge]
