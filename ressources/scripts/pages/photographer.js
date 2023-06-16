@@ -115,8 +115,8 @@ async function renderMedia(mediaId) {
     figure.classList.add("lightboxModal__figure")
 
     const lightboxImg = document.createElement("img");
-    lightboxImg.src = `/ressources/assets/photographers/${photographerId}/${image}`;
-    lightboxImg.alt = `${title} - closup view`;
+    lightboxImg.src = `./ressources/assets/photographers/${photographerId}/${image}`;
+    lightboxImg.alt = `${title} - close-up view`;
     lightboxImg.classList.add("lightboxModal__img");
     figure.appendChild(lightboxImg);
 
