@@ -15,14 +15,14 @@ Ceci est un projet réalisé dans le cadre du programme de formation Développeu
 
 Lien des maquettes : https://www.figma.com/file/PJYL4Y8G1Zi9TcyLUPijlK/UI-Design-FishEye-FR-(Copy)?type=design&t=6DLSmi1W43ivFFVC-0
 
-> Créez un site accessible pour une plateforme de photographes
->
-> #### Compétences évaluées :
->
-> -   Développer une application web modulaire avec des design patterns
-> -   Assurer l'accessibilité d'un site web
-> -   Ecrire du code JavaScript maintenable
-> -   Gérer les évènements d'un site avec JavaScript
+Créez un site accessible pour une plateforme de photographes
+
+#### Compétences évaluées :
+
+-   Développer une application web modulaire avec des design patterns
+-   Assurer l'accessibilité d'un site web
+-   Ecrire du code JavaScript maintenable
+-   Gérer les évènements d'un site avec JavaScript
 
 ### Situation (fictive) du projet :
 
