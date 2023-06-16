@@ -115,7 +115,7 @@ async function renderMedia(mediaId) {
     figure.classList.add("lightboxModal__figure")
 
     const lightboxImg = document.createElement("img");
-    lightboxImg.src = `../../ressources/assets/photographers/${photographerId}/${image}`;
+    lightboxImg.src = `/ressources/assets/photographers/${photographerId}/${image}`;
     lightboxImg.alt = `${title} - closup view`;
     lightboxImg.classList.add("lightboxModal__img");
     figure.appendChild(lightboxImg);
@@ -138,7 +138,7 @@ async function renderMedia(mediaId) {
     figure.appendChild(lightboxVideo);
 
     const lightboxVideoSrc = document.createElement("source");
-    lightboxVideoSrc.src = `../../ressources/assets/photographers/${photographerId}/${video}`;
+    lightboxVideoSrc.src = `/ressources/assets/photographers/${photographerId}/${video}`;
     lightboxVideoSrc.type = "video/mp4";
     lightboxVideo.appendChild(lightboxVideoSrc);
 
