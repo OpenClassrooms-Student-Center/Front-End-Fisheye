@@ -27,6 +27,8 @@ function renderLightboxModal() {
   lightboxModal.setAttribute("aria-hidden", "false");
   body.classList.add("no-scroll");
   lightboxModal.style.display = "flex";
+  const close = document.querySelector(".lightboxModal__close");
+  close.focus();
 }
 
 // fonction inverse à la précédente, on repasse toute la page en aria-hidden false, avec tabindex = 0
@@ -67,7 +69,9 @@ function closeLightboxWithEsc() {
   document.addEventListener('keydown', event => {
       const code = event.code
       if (lightboxModal.getAttribute('aria-hidden') == 'false' && code === "Escape") {
-          closeLightboxModal()
+        const lightboxFigure = document.querySelector(".lightboxModal__figure");
+        if (lightboxFigure) {lightboxFigure.remove()}
+        closeLightboxModal()
       }
   })
 }
