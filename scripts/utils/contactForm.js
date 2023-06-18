@@ -14,7 +14,7 @@ function displayModal() {
     modal.tabIndex = 0;
     modal.focus();
     const namePhotograph = h1Element[0].innerText;
-    h3Element[0].innerText = namePhotograph
+    h3Element[0].innerText = namePhotograph;
 }
 
 function closeModal() {

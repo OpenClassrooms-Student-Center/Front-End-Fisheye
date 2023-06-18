@@ -25,7 +25,7 @@ async function displayPhotographDetails() {
     headerBtn.addEventListener('click', displayModal);
 };
 
-
+// MAIN
 // MEDIA
 async function getMediaDetails() {
     const response = await fetch('data/photographers.json');
@@ -109,7 +109,6 @@ async function displayPhotographMedias() {
     }
 
     // SORT
-    let currentSortOrder = 'popularity';
     function updateMediaOrder(mediaElements) {
         mediasContainer.innerHTML = '';
         mediaElements.forEach((mediaElement) => {
@@ -120,7 +119,6 @@ async function displayPhotographMedias() {
 
     // Tri par popularité ou titre ou date
     function sortByPopularity() {
-        currentSortOrder = 'popularity';
         const mediaFactory = createMediaFactory(mediaData, 'popularity');
         const mediaDOM = Array.from(mediaFactory.getMediaDOM());
 
@@ -129,7 +127,6 @@ async function displayPhotographMedias() {
     }
 
     function sortByTitle() {
-        currentSortOrder = 'title';
         const mediaFactory = createMediaFactory(mediaData, 'title');
         const mediaDOM = Array.from(mediaFactory.getMediaDOM());
 
@@ -138,7 +135,6 @@ async function displayPhotographMedias() {
     }
 
     function sortByDate() {
-        currentSortOrder = 'date';
         const mediaFactory = createMediaFactory(mediaData, 'date');
         const mediaDOM = Array.from(mediaFactory.getMediaDOM());
 

@@ -1,7 +1,8 @@
 @import url("photographer.css");
 
 :focus {
-    /* outline: 2px solid black; */
+    /* outline-offset: 1px;
+    outline-color: #901C1C; */
     border-radius: 5px;
 }
 
@@ -20,10 +21,10 @@ a {
     text-decoration: none;
 }
 
-a:focus-visible {
+/* a:focus-visible {
     outline-offset: 1px;
     outline-color: #901C1C;
-}
+} */
 
 .header {
     display: flex;

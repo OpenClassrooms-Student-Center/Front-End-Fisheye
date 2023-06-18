@@ -48,6 +48,7 @@
     left: 0;
     right: 0;
     background: rgba(0, 0, 0, 0.3);
+    z-index: 100;
 }
 
 .modal {
@@ -215,18 +216,6 @@ form button {
     position: absolute;
 }
 
-/* .dislike-icon {
-    display: none;
-}
-
-.dislike .dislike-icon {
-    display: block;
-}
-
-.dislike .like-icon {
-    display: none;
-} */
-
 /* LIGHTBOX */
 .media-modal {
     display: none;
@@ -282,7 +271,7 @@ form button {
     transform: none;
 }
 
-/* SORT BUTTON */
+/* SORT BUTTONS */
 .buttons-container {
     position: relative;
     color: #901C1C;

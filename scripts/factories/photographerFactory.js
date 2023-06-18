@@ -6,17 +6,13 @@ function photographerFactory(photographerData) {
 
     function getUserCardDOM() {
         const article = 
-        `<article 
-            class="photographe-article" 
-            tabindex="0" 
-            aria-label="Résumé du photographe ${name}; Ville: ${city}, ${country}; Slogan: ${tagline}; Tarif : ${price} euros par jour"
-        >
+        `<article class="photographe-article">
             <a 
                 href="./photographer.html?id=${id}" 
                 tabindex="0" 
                 class="photographe-article-link" 
                 title="Page du photographe ${name}" 
-                aria-label="Visiter la page du photographe ${name}"
+                aria-label="Visiter la page du photographe ${name}; Ville: ${city}, ${country}; Slogan: ${tagline}; Tarif : ${price} euros par jour"
             >
                 <img 
                     src="${picture}" 
