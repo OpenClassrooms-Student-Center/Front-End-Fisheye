@@ -4,7 +4,7 @@ export let addingALike = 0;
 
 // produce a media factory
 export function mediaFactory(mediaItems) {
-  const { id, photographerId, title, image, likes, date, price, video } = mediaItems;
+  const { title, image, likes, video } = mediaItems;
 
   const photoUrl = `assets/media/gallery/${image}`;
   const videoUrl = `assets/media/gallery/${video}`;

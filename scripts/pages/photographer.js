@@ -91,7 +91,7 @@ async function displayPhotographer(photographers) {
   // accessibility items for the modal
   const dialog = document.getElementById("contact_modal");
   const photographerName = (document.getElementById("photographer-name").innerText = photographer.name);
-  dialog.setAttribute("aria-labelledBy", `contact me ${photographerName}`);
+  dialog.setAttribute("aria-label", `contact me ${photographerName}`);
   document.getElementById("modalTitle").setAttribute("role", photographerName);
   // display modal onclick
   ContactUsbtn.addEventListener("click", function() {
@@ -120,7 +120,6 @@ async function displayMedia(photographerMedia, render) {
     const mediaArts = mediaSection.getUserArtDOM(media, slideIndex, showSlides, photographerMedia, currentSlide, plusSlides, index);
     mediaDiv.appendChild(mediaArts);
   });
-
   displayImgSlides(photographerMedia, render);
 }
 
@@ -154,7 +153,6 @@ function displayImgSlides(array) {
       img.style.objectFit = "cover";
       img.setAttribute("src", src);
       img.setAttribute("aria-label", "viewing individual images");
-      img.setAttribute("alt", title);
       img.setAttribute("tabindex", 0);
     } else {
       img = document.createElement("video");
@@ -320,7 +318,6 @@ function displayImgSlides(array) {
       sortedArray = modified.sort(
         (a, b) => parseFloat(b.likes) - parseFloat(a.likes)
       );
-      console.log(sortedArray);
       const myImages = document.getElementById("myImages");
       myImages.innerHTML = "";
     } else if (selected.innerText == "Date") {
@@ -331,7 +328,6 @@ function displayImgSlides(array) {
       hr2.style.display = "none";
       hr3.style.display = "none";
       sortedArray = modified.sort((a, b) => new Date(b.date) - new Date(a.date));
-      console.log(sortedArray);
       const myImages = document.getElementById("myImages");
       myImages.innerHTML = "";
     } else if (selected.innerText == "Titre") {
@@ -342,7 +338,6 @@ function displayImgSlides(array) {
       hr2.style.display = "none";
       hr3.style.display = "none";
       sortedArray = modified.sort((a, b) => (a.title < b.title ? -1 : 1));
-      console.log(sortedArray);
       const myImages = document.getElementById("myImages");
       myImages.innerHTML = "";
     }

@@ -6,24 +6,11 @@ const body = document.getElementById("body");
 const modalCloseBtn = document.getElementById("closeX");
 const closeBtn = document.querySelector(".closing");
 
-closeBtn.addEventListener("click", closeModal);
-modalCloseBtn.addEventListener("click", closeModal);
+closeBtn.addEventListener("click", closeContactModal);
+modalCloseBtn.addEventListener("click", closeContactModal);
 
 // hide elements when form is not valide
 closeBtn.style.display = "none";
-
-// const onOpenModal = () => {
-
-//   body.classList.add("no-scroll");
-//   console.log(modalOpenBtn);
-//   modalCloseBtn.focus();
-// }
-
-// const onCloseModal = () => {
-
-//   body.classList.remove("no-scroll");
-//   modalOpenBtn.focus();
-// }
 
 //opening modal
 export function displayModal() {
@@ -36,8 +23,7 @@ export function displayModal() {
 }
 
 // closing modal
-function closeModal() {
-  console.log("close");
+function closeContactModal() {
   mainWrapper.setAttribute("aria-hidden", "true");
   modal.setAttribute("aria-hidden", "true");
   form.reset();
@@ -50,14 +36,14 @@ function closeModal() {
 // Close modal when espace key is pressed
 window.addEventListener("keydown", e => {
   if (modal.getAttribute("aria-hidden") == "false" && e.key === "Escape") {
-    closeModal();
+    closeContactModal();
   }
 });
 
 // Close modal when enter and focused on X
 window.addEventListener("keydown", e => {
   if (document.activeElement == modalCloseBtn && e.key === "Enter") {
-    closeModal();
+    closeContactModal();
   }
 });
 
@@ -96,7 +82,7 @@ form.addEventListener("submit", function(event) {
   console.log(lastName);
 
   // e-mail validation
-  let mailformat = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+  let mailformat = /^\w+(\.-?\w+)*@\w+(\.-?\w+)*(\.\w{2,3})+$/;
   let email = document.getElementById("email");
   let sendEmail = !document.getElementById("email").value.match(mailformat);
   if (sendEmail) {
