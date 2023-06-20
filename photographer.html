@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html>
+<html lang="fr">
+
   <head>
     <meta charset="utf-8" />
 
@@ -9,13 +10,16 @@
     <link href="css/style.css" rel="stylesheet" type="text/css" />
     <link href="css/slides.css" rel="stylesheet" type="text/css" />
 
+        <!-- <script src="/scripts/factories/media.js"></script> -->
+    <!-- <script src="/scripts/factories/photographer.js"></script> -->
+    <script type="module" src="/scripts/pages/photographer.js" defer></script>    
     <title>Fisheye - photographe</title>
   </head>
 
   <body id="body">
     <header role="banner">
       <a href="index.html" aria-label="fisheye home page" aria-current="page">
-        <img src="assets/images/logo.png" alt="" class="logo" aria-label="Fisheye home page">
+        <img src="assets/images/logo.png" alt="" class="logo" aria-roledescription="Fisheye logo">
       </a>
       <h1 class="sr-only" tabindex="0">Nos photographes</h1>
     </header>
@@ -106,13 +110,13 @@
       </div>
     </div>
     <div id="myModal" class="modal" role="dialog" aria-label="image closeup view">
-      <span class="close cursor" id="myModalClose" onclick="closeModal()"
+      <span class="close cursor" id="myModalClose"
         role="button" aria-label="close dialog" tabindex="0" >&times;</span>
       <div class="modal-content">
         <div id="myImages"></div>
         <div class="mySlides" id="dummy">
           <div class="numbertext">2 / 4</div>
-          <img src="img_snow_wide.jpg" style="width: 100%" alt=""/>
+          <img src="" style="width: 100%" alt=""/>
         </div>
       </div>
       <a class="prev" id="prevBtn" role="link" aria-label="previous image" tabindex="0">&#10094;</a>
@@ -122,9 +126,6 @@
       </div>
     </div>
 
-    <script src="scripts/factories/photographer.js"></script>
-    <script src="/scripts/factories/media.js"></script>
-    <script src="/scripts/pages/photographer.js"></script>
-    <script src="/scripts/utils/contactForm.js"></script>
+
   </body>
 </html>

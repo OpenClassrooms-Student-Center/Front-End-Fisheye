@@ -1,4 +1,6 @@
 # ignore files
 .DS_Store
-/ css/.DS_Store
+/css/.DS_Store
+node_modules
+
 

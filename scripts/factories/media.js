@@ -1,11 +1,10 @@
 // global variable counting likes
-let totalCount = 0;
-let addingALike = 0;
+import { totalCount } from "../pages/photographer.js";
+export let addingALike = 0;
 
 // produce a media factory
-function mediaFactory(mediaItems) {
-  const { id, photographerId, title, image, likes, date, price, video } =
-    mediaItems;
+export function mediaFactory(mediaItems) {
+  const { id, photographerId, title, image, likes, date, price, video } = mediaItems;
 
   const photoUrl = `assets/media/gallery/${image}`;
   const videoUrl = `assets/media/gallery/${video}`;
@@ -36,7 +35,6 @@ function mediaFactory(mediaItems) {
     const info = document.createElement("section");
     info.classList.add('infoSection');
     artTitle.innerText = title;
-    artTitle.setAttribute("role", "text");
     const likesCounter = document.createElement("section");
     likesCounter.classList.add('likesCounter');
     const likesNo = document.createElement("span");
@@ -51,7 +49,7 @@ function mediaFactory(mediaItems) {
     iconSvg.setAttribute("tabindex", "0");
 
     // Attach the click event listener here
-    iconSvg.addEventListener('click', function onClick(event) {
+    iconSvg.addEventListener('click', function onClick() {
       iconSvg.removeEventListener('click', onClick);
       // media likes updated for every element 
       media.likes += 1;
@@ -63,14 +61,14 @@ function mediaFactory(mediaItems) {
     });
 
     // adding listener for media lightbox
-    artWork.addEventListener("click", function onClick(event) {
+    artWork.addEventListener("click", function onClick() {
 
       let modal = document.getElementById("myModal");
       modal.style.display = "block";
 
-      const index = photographerMedia.findIndex(function (obj) {
-        return obj.id === media.id;
-      });
+      // const index = photographerMedia.findIndex(function (obj) {
+      //   return obj.id === media.id;
+      // });
       currentSlide(loopCurrentIndex + 1);
     });
 

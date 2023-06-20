@@ -1,3 +1,10 @@
+import { mediaFactory, addingALike } from "../factories/media.js";
+import { photographerFactory } from "../factories/photographer.js";
+import { displayModal } from "../utils/contactForm.js";
+
+export let totalCount = 0 ;
+
+
 let slideIndex = 1;
 
 function plusSlides(n) {
@@ -90,11 +97,6 @@ async function displayPhotographer(photographers) {
   ContactUsbtn.addEventListener("click", function() {
     displayModal();
   });
-  // close modal onclick
-  const closingModal = document.getElementById("closeX");
-  closingModal.addEventListener("click", function() {
-    closeModal();
-  });
 
   // adjusting the elements as required in the maquette
   const flexOrdering = document.querySelector(".frame");
@@ -122,11 +124,11 @@ async function displayMedia(photographerMedia, render) {
   displayImgSlides(photographerMedia, render);
 }
 
-function prevBtnClick(event) {
+function prevBtnClick() {
   plusSlides(-1);
 }
 
-function nextBtnClick(event) {
+function nextBtnClick() {
   plusSlides(1);
 }
 
@@ -134,7 +136,7 @@ function displayImgSlides(array) {
   const myImages = document.getElementById("myImages");
   myImages.innerHTML = "";
 
-  array.map((iterator, index) => {
+  array.map((iterator) => {
     const isImage = iterator?.video ? false : true;
 
     const slides = document.createElement("div");
@@ -151,7 +153,6 @@ function displayImgSlides(array) {
       img.style.height = "1100px";
       img.style.objectFit = "cover";
       img.setAttribute("src", src);
-      img.setAttribute("role", "img");
       img.setAttribute("aria-label", "viewing individual images");
       img.setAttribute("alt", title);
       img.setAttribute("tabindex", 0);
@@ -176,8 +177,7 @@ function displayImgSlides(array) {
     myImages.appendChild(slides);
 
     const closeElement = document.getElementById("myModalClose");
-    closeElement.addEventListener("click", function onClick(event) {
-      // console.log("close button", iterator);
+    closeElement.addEventListener("click", function() {
       let modal = document.getElementById("myModal");
       modal.style.display = "none";
     });
@@ -185,6 +185,13 @@ function displayImgSlides(array) {
     const prevBtn = document.getElementById("prevBtn");
     prevBtn.addEventListener("click", prevBtnClick);
     nextBtn.addEventListener("click", nextBtnClick);
+
+    // close modal when press Escape
+    window.addEventListener("keydown", e => {
+      if (e.key === "Escape") {
+        let modal = document.getElementById("myModal");
+        modal.style.display = "none";      }  
+    });
 
     // previous media with keyboard => mouse + keyboard
     prevBtn.addEventListener("keydown", e => {
@@ -215,14 +222,12 @@ function displayImgSlides(array) {
   let params = new URL(document.location).searchParams;
   // getting the id from the search params
   let id = params.get("id");
-  console.log(id);
   // getting the corosponding object (photographer) related to the id from the search params
   let photographerMedia = media.filter(m => m.photographerId == id);
   // maping and adding the sum of likes for each photographer
   const photographerLikes = photographerMedia.map(k => k.likes);
-  let likesCounter = 0;
-  for (i = 0; i < photographerLikes.length; i++) {
-    totalCount += photographerLikes[i] + addingALike;
+  for (let i = 0; i < photographerLikes.length; i++) {
+     totalCount += photographerLikes[i] + addingALike;
   }
 
   // creating a general span for the photographer
@@ -237,7 +242,7 @@ function displayImgSlides(array) {
   likeCounterSpanIcon.style.color = "black";
   const likesDiv = document.createElement("div");
   likesDiv.classList.add("likesDiv");
-  const dayPrice = document.getElementById("price");
+  const dayPrice = document.querySelector(".price");
   dayPrice.setAttribute("tabindex", 0);
   // append children to the span
   likesDiv.appendChild(totalLikes);
@@ -294,11 +299,9 @@ function displayImgSlides(array) {
   // addEventListener of selector
   const selector = document.querySelector(".dropdown");
   let selected = document.querySelector(".selected");
-  console.log("selected", selected.innerText);
   const popElement = document.getElementById("popularity");
   const dateElement = document.getElementById("date");
   const titleElement = document.getElementById("title");
-  const hr0 = document.getElementById("hr0");
   const hr1 = document.getElementById("hr1");
   const hr2 = document.getElementById("hr2");
   const hr3 = document.getElementById("hr3");
@@ -317,6 +320,7 @@ function displayImgSlides(array) {
       sortedArray = modified.sort(
         (a, b) => parseFloat(b.likes) - parseFloat(a.likes)
       );
+      console.log(sortedArray);
       const myImages = document.getElementById("myImages");
       myImages.innerHTML = "";
     } else if (selected.innerText == "Date") {
@@ -327,6 +331,7 @@ function displayImgSlides(array) {
       hr2.style.display = "none";
       hr3.style.display = "none";
       sortedArray = modified.sort((a, b) => new Date(b.date) - new Date(a.date));
+      console.log(sortedArray);
       const myImages = document.getElementById("myImages");
       myImages.innerHTML = "";
     } else if (selected.innerText == "Titre") {
@@ -337,6 +342,7 @@ function displayImgSlides(array) {
       hr2.style.display = "none";
       hr3.style.display = "none";
       sortedArray = modified.sort((a, b) => (a.title < b.title ? -1 : 1));
+      console.log(sortedArray);
       const myImages = document.getElementById("myImages");
       myImages.innerHTML = "";
     }
@@ -345,22 +351,18 @@ function displayImgSlides(array) {
 
   displayMedia(photographerMedia);
 }
-
-function removeListeners() {
+  // removing the event listeners from the next/previous buttons
   const parentElement = document.getElementById("myImages");
-
   const listElements = parentElement.getElementsByClassName("mySlides");
 
   while (listElements.length > 0) {
     const element = listElements[0];
-
     const nextBtn = element.getElementById("nextBtn");
     const prevBtn = element.getElementById("prevBtn");
-
     nextBtn.removeEventListener("click", prevBtnClick);
     prevBtn.removeEventListener("click", nextBtnClick);
-
     element.remove();
   }
-}
 photographersMedia();
+
+

@@ -5,40 +5,46 @@ const mainWrapper = document.getElementById("mainWrapper");
 const body = document.getElementById("body");
 const modalCloseBtn = document.getElementById("closeX");
 const closeBtn = document.querySelector(".closing");
-const modalOpenBtn = document.getElementById("open-modal-btn");
-const photographerName = document.getElementById("photographer-name");
 
 closeBtn.addEventListener("click", closeModal);
+modalCloseBtn.addEventListener("click", closeModal);
+
 // hide elements when form is not valide
 closeBtn.style.display = "none";
 
-const onOpenModal = () => {
+// const onOpenModal = () => {
+
+//   body.classList.add("no-scroll");
+//   console.log(modalOpenBtn);
+//   modalCloseBtn.focus();
+// }
+
+// const onCloseModal = () => {
+
+//   body.classList.remove("no-scroll");
+//   modalOpenBtn.focus();
+// }
+
+//opening modal
+export function displayModal() {
+  modal.style.display = "block";
+  form.style.display = "block";
   mainWrapper.setAttribute("aria-hidden", "false");
   modal.setAttribute("aria-hidden", "false");
   body.classList.add("no-scroll");
-  console.log(modalOpenBtn);
   modalCloseBtn.focus();
-};
-
-const onCloseModal = () => {
-  mainWrapper.setAttribute("aria-hidden", "true");
-  modal.setAttribute("aria-hidden", "true");
-  body.classList.remove("no-scroll");
-  modalOpenBtn.focus();
-};
-
-// opening modal
-function displayModal() {
-  modal.style.display = "block";
-  form.style.display = "block";
-  onOpenModal();
 }
 
 // closing modal
 function closeModal() {
+  console.log("close");
+  mainWrapper.setAttribute("aria-hidden", "true");
+  modal.setAttribute("aria-hidden", "true");
   form.reset();
   modal.style.display = "none";
-  onCloseModal();
+  body.classList.remove("no-scroll");
+  const modalOpenBtn = document.getElementById("open-modal-btn");
+  modalOpenBtn.focus();
 }
 
 // Close modal when espace key is pressed
@@ -72,7 +78,7 @@ form.addEventListener("submit", function(event) {
     document.getElementById("first_error").innerHTML = "";
     document.getElementById("first").style.borderColor = "";
   }
-  console.log(first.value);
+  console.log(firstName);
 
   // last name minimum 2 letters
   let lastName = document.getElementById("last").value;
@@ -87,10 +93,11 @@ form.addEventListener("submit", function(event) {
     document.getElementById("last_error").innerHTML = "";
     document.getElementById("last").style.borderColor = "";
   }
-  console.log(last.value);
+  console.log(lastName);
 
   // e-mail validation
   let mailformat = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+  let email = document.getElementById("email");
   let sendEmail = !document.getElementById("email").value.match(mailformat);
   if (sendEmail) {
     // alert("Veuillez-ajouter un email valide");
@@ -109,7 +116,6 @@ form.addEventListener("submit", function(event) {
 
   // Validation
   if (errorCounter === 0) {
-    console.log(errorCounter);
     // form.reset();
     form.style.display = "none";
     document.getElementById("personalMessage").innerHTML = "Merci pour votre message";

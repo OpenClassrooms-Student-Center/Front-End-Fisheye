@@ -1,16 +1,20 @@
 <!DOCTYPE html>
 <html lang="fr">
   <head>
-    <link href="css/style.css" rel="stylesheet" type="text/css" />
     <meta charset="utf-8">
+
+    <link href="css/style.css" rel="stylesheet" type="text/css" />
     <link href="https://fonts.googleapis.com/css?family=DM+Sans&display=swap" rel="stylesheet">
+
+    <script type="module" src="scripts/pages/index.js" defer></script>
+    
     <title>Fisheye</title>
   </head>
   <body>
     <header role="banner">
-        <div role="region" aria-label="logo section" tabindex="1">
+        <div role="region" aria-label="logo section">
           <a href="index.html" aria-label="fisheye home page" aria-current="page" >
-            <img src="assets/images/logo.png" alt="logo" class="logo"/>
+            <img src="assets/images/logo.png" alt="logo" class="logo" aria-roledescription="Fisheye logo"/>
           </a>
         </div>
         <h1 tabindex="0"> Nos photographes</h1>
@@ -18,7 +22,5 @@
     <main id="main">
         <div class="photographer_section"></div>
     </main>
-    <script src="scripts/pages/index.js"></script>
-    <script src="scripts/factories/photographer.js"></script>
   </body>
 </html>

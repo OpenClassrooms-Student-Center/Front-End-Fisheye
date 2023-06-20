@@ -1,4 +1,4 @@
-function photographerFactory(data) {
+export function photographerFactory(data) {
   const { name, portrait, city, country, tagline, price, description, id } = data;
   const picture = `assets/photographers/${portrait}`;
 
@@ -9,7 +9,6 @@ function photographerFactory(data) {
     card.setAttribute("class", "mainArticle");
     const personalSection = document.createElement("section");
     personalSection.setAttribute("tabindex", "0");
-    personalSection.setAttribute("role", "region");
     personalSection.setAttribute("id", id);
     personalSection.setAttribute("class", "frame");
     const link = document.createElement("a");
@@ -24,24 +23,19 @@ function photographerFactory(data) {
 
     const image = document.createElement("img");
     image.setAttribute("src", picture);
-    image.setAttribute("role", "img");
     image.setAttribute("alt", description);
     const h2 = document.createElement("h2");
     h2.textContent = name;
-    const h4 = document.createElement("h4");
-    h4.textContent = `${city}, ${country}`;
-    h4.setAttribute("role", "text");
+    const h3 = document.createElement("h3");
+    h3.textContent = `${city}, ${country}`;
     const p1 = document.createElement("p");
     p1.textContent = tagline;
-    p1.setAttribute("role", "text");
     const personalInfo = document.createElement("section");
     personalInfo.setAttribute("tabindex", "0");
-    personalInfo.setAttribute("role", "region");
     personalInfo.setAttribute("aria-labelledby", "photographer information");
-    personalInfo.setAttribute("id", "personalInfo");
     const p2 = document.createElement("p");
     p2.textContent = `${price}€/jour`;
-    p2.setAttribute("id", "price");
+    p2.setAttribute("class", "price");
 
     // attach elements to their parents after craetion in the DOM
     card.appendChild(personalSection);
@@ -49,7 +43,7 @@ function photographerFactory(data) {
     link.appendChild(image);
     card.appendChild(personalInfo);
     personalInfo.appendChild(h2);
-    personalInfo.appendChild(h4);
+    personalInfo.appendChild(h3);
     personalInfo.appendChild(p1);
     personalInfo.appendChild(p2);
     return card;
