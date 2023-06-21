@@ -8,7 +8,6 @@ const closeBtn = document.querySelector(".closing");
 
 closeBtn.addEventListener("click", closeContactModal);
 modalCloseBtn.addEventListener("click", closeContactModal);
-
 // hide elements when form is not valide
 closeBtn.style.display = "none";
 
@@ -43,7 +42,7 @@ window.addEventListener("keydown", e => {
 // Close modal when enter and focused on X
 window.addEventListener("keydown", e => {
   if (document.activeElement == modalCloseBtn && e.key === "Enter") {
-    closeContactModal();
+    modal.style.display = "none";
   }
 });
 

@@ -10,9 +10,7 @@
     <link href="css/style.css" rel="stylesheet" type="text/css" />
     <link href="css/slides.css" rel="stylesheet" type="text/css" />
 
-        <!-- <script src="/scripts/factories/media.js"></script> -->
-    <!-- <script src="/scripts/factories/photographer.js"></script> -->
-    <script type="module" src="/scripts/pages/photographer.js" defer></script>    
+    <script type="module" src="./scripts/pages/photographer.js" defer></script>    
     <title>Fisheye - photographe</title>
   </head>
 
@@ -33,13 +31,20 @@
             <div class="caret"></div>
           </div>
            <ul aria-haspopup="listbox" aria-expanded tabindex="0" class="menu">
-            <hr id="hr0"/>
-            <li id="popularity">Popularité </li>
+            <!-- <hr id="hr0"/> -->
+            <!-- <li aria-hidden=true><hr id="hr0"/></li> -->
+            <li aria-hidden=true id="popularity" ><hr id="hr1"/>Popularité</li>
+            <li aria-hidden=true id="date"><hr id="hr2"/>Date</li>
+            <li aria-hidden=true id="title"><hr id="hr3"/>Titre</li>
+            <li aria-hidden=true><hr id="hr4"/></li>
+
+
+            <!-- <li id="popularity">Popularité </li>
             <hr id="hr1"/>
             <li id="date">Date </li>
             <hr id="hr2"/>
             <li id="title">Titre </li>
-            <hr id="hr3"/>
+            <hr id="hr3"/> -->
           </ul>
         </div>
       </div>
@@ -116,7 +121,7 @@
         <div id="myImages"></div>
         <div class="mySlides" id="dummy">
           <div class="numbertext">2 / 4</div>
-          <img src="" style="width: 100%" alt=""/>
+          <!-- <img src="" style="width: 100%" alt=""/> -->
         </div>
       </div>
       <a class="prev" id="prevBtn" role="link" aria-label="previous image" tabindex="0">&#10094;</a>

@@ -1,9 +1,7 @@
 import { mediaFactory, addingALike } from "../factories/media.js";
 import { photographerFactory } from "../factories/photographer.js";
 import { displayModal } from "../utils/contactForm.js";
-
 export let totalCount = 0 ;
-
 
 let slideIndex = 1;
 
@@ -182,27 +180,16 @@ function displayImgSlides(array) {
     const nextBtn = document.getElementById("nextBtn");
     const prevBtn = document.getElementById("prevBtn");
     prevBtn.addEventListener("click", prevBtnClick);
+    prevBtn.addEventListener("keydown", prevBtnClick);
     nextBtn.addEventListener("click", nextBtnClick);
+    nextBtn.addEventListener("keydown", nextBtnClick);
 
     // close modal when press Escape
     window.addEventListener("keydown", e => {
       if (e.key === "Escape") {
         let modal = document.getElementById("myModal");
-        modal.style.display = "none";      }  
-    });
-
-    // previous media with keyboard => mouse + keyboard
-    prevBtn.addEventListener("keydown", e => {
-      if (e.key === "Enter") {
-        prevBtnClick();
-      }  
-    });
-
-      // next media with keyboard => mouse + keyboard
-      nextBtn.addEventListener("keydown", e => {
-      if (e.key === "Enter") {
-        nextBtnClick();
-      }  
+        modal.style.display = "none";
+        }  
     });
     
       // Close modal when enter and focused on X
@@ -303,6 +290,7 @@ function displayImgSlides(array) {
   const hr1 = document.getElementById("hr1");
   const hr2 = document.getElementById("hr2");
   const hr3 = document.getElementById("hr3");
+  const hr4 = document.getElementById("hr4");
 
   selector.addEventListener("click", function() {
     let modified = [...photographerMedia];
@@ -314,7 +302,8 @@ function displayImgSlides(array) {
       titleElement.classList.remove("sr-only");
       hr1.style.display = "none";
       hr2.style.display = "block";
-      hr3.style.display = "none";
+      hr3.style.display = "block";
+      hr4.style.display = "none";
       sortedArray = modified.sort(
         (a, b) => parseFloat(b.likes) - parseFloat(a.likes)
       );
@@ -326,7 +315,8 @@ function displayImgSlides(array) {
       titleElement.classList.remove("sr-only");
       hr1.style.display = "block";
       hr2.style.display = "none";
-      hr3.style.display = "none";
+      hr3.style.display = "block";
+      hr4.style.display = "none";
       sortedArray = modified.sort((a, b) => new Date(b.date) - new Date(a.date));
       const myImages = document.getElementById("myImages");
       myImages.innerHTML = "";
@@ -335,8 +325,9 @@ function displayImgSlides(array) {
       dateElement.classList.remove("sr-only");
       titleElement.classList.add("sr-only");
       hr1.style.display = "block";
-      hr2.style.display = "none";
-      hr3.style.display = "none";
+      hr2.style.display = "block";
+      hr3.style.display = "block";
+      hr4.style.display = "none";
       sortedArray = modified.sort((a, b) => (a.title < b.title ? -1 : 1));
       const myImages = document.getElementById("myImages");
       myImages.innerHTML = "";
@@ -346,18 +337,6 @@ function displayImgSlides(array) {
 
   displayMedia(photographerMedia);
 }
-  // removing the event listeners from the next/previous buttons
-  const parentElement = document.getElementById("myImages");
-  const listElements = parentElement.getElementsByClassName("mySlides");
-
-  while (listElements.length > 0) {
-    const element = listElements[0];
-    const nextBtn = element.getElementById("nextBtn");
-    const prevBtn = element.getElementById("prevBtn");
-    nextBtn.removeEventListener("click", prevBtnClick);
-    prevBtn.removeEventListener("click", nextBtnClick);
-    element.remove();
-  }
 photographersMedia();
 
 
