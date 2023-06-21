@@ -183,7 +183,7 @@ function displayImgSlides(array) {
     prevBtn.addEventListener("keydown", prevBtnClick);
     nextBtn.addEventListener("click", nextBtnClick);
     nextBtn.addEventListener("keydown", nextBtnClick);
-
+    
     // close modal when press Escape
     window.addEventListener("keydown", e => {
       if (e.key === "Escape") {
