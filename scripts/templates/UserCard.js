@@ -1,11 +1,11 @@
 class UserCard {
     constructor(photographer) {
-        this._photographer = photographer
+        this._photographer = photographer;
     }
 
     
     getUserCardDOM(){
-        const article = document.createElement('article');
+        const article = document.createElement("article");
 
         const userCard = `
         <div aria-label="Photographe ${this._photographer.name} de ${this._photographer.city}, ${this._photographer.country}">
@@ -21,10 +21,10 @@ class UserCard {
                 <span>${this._photographer.price}€/jour</span>
             </p> 
         </div>
-        `
+        `;
 
-        article.innerHTML = userCard
-        return article
+        article.innerHTML = userCard;
+        return article;
     }
 
 }

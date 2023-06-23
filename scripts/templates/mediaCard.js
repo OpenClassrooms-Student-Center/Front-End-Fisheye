@@ -1,6 +1,6 @@
 class PhotographCard {
     constructor(photographer) {
-        this._photographer = photographer
+        this._photographer = photographer;
     }
 
     
@@ -17,23 +17,23 @@ class PhotographCard {
             </div>
             <button class="contact_button" onclick="displayModal()">Contactez-moi</button>
             <div><img alt="${this._photographer.name}" src="${this._photographer.portrait}"/></div>
-        `
+        `;
 
-        return photographCard
+        return photographCard;
     }
 
 }
 
 class MediaCard {
     constructor(media,photographer) {
-        this._media = media
-        this._photographer = photographer
+        this._media = media;
+        this._photographer = photographer;
     }
     
     getMediaCardDOM(e){
-        const article = document.createElement('article'); 
+        const article = document.createElement("article"); 
         article.classList = `article-${e}`;
-        let userCard=``
+        let userCard="";
         if(this._media.image){
 
          userCard = `
@@ -44,11 +44,11 @@ class MediaCard {
                <span class="nbrLike-${e}"> ${this._media.likes} </span><i class="fa-regular fa-heart" onclick="like(${e})"></i>
             </p> 
             </div>
-        `
+        `;
         }
         else{
             
-            const ext = this._media.video.split(".",2)[1]
+            const ext = this._media.video.split(".",2)[1];
             userCard = `
             <video onclick="lightboxOn(${e})" aria-label="Vidéo, cliquer pour lire">
                 <source src="/assets/photographers/${this._media.photographerId}/${this._media.video}" type="video/${ext} ">
@@ -60,10 +60,10 @@ class MediaCard {
                <span class="nbrLike-${e}"> ${this._media.likes} </span><i class="fa-regular fa-heart" onclick="like(${e})"></i>
             </p> 
             </div>
-        `
+        `;
         }
-        article.innerHTML = userCard
-        return article
+        article.innerHTML = userCard;
+        return article;
     }
 
 }

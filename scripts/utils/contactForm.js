@@ -1,6 +1,6 @@
 function displayModal() {
     const modal = document.getElementById("contact_modal");
-	  modal.style.display = "block";
+    modal.style.display = "block";
     const html = document.querySelector("html");
     html.style.overflowY = "hidden";
 }
@@ -23,7 +23,7 @@ const contact={
     lastName : "",
     email : "",
     message : "",
-  }
+  };
   //firstName
   form[0].addEventListener("input",function(e){
     contact.firstName=e.target.value;
@@ -45,11 +45,11 @@ const contact={
   });
   
 
-  window.addEventListener('keydown', function (event) {
+  window.addEventListener("keydown", function (event) {
     const modal = document.getElementById("contact_modal");
 	  if(modal.style.display == "block"){
         if (event.key == "Escape"){
-          closeModal()
+          closeModal();
         }  
       }
-  })
+  });

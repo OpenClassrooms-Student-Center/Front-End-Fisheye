@@ -5,28 +5,28 @@
         await fetch("../data/photographers.json")
             .then((res)=> res.json())
             .then((data) => (photographers = data))
-            .catch(err => console.log('oh no', err))
+            .catch(err => console.log("oh no", err));
         // et bien retourner le tableau photographers seulement une fois récupéré
-        return photographers
+        return photographers;
     }
 
     async function displayData(photographers) {
         const photographersSection = document.querySelector(".photographer_section");
-        const PhotographersData = photographers
+        const PhotographersData = photographers;
 
         PhotographersData
             .map(photographer =>  new Photographer(photographer))
             .forEach((photographer) => {           
-                const Template = new UserCard(photographer)
-                photographersSection.appendChild(Template.getUserCardDOM())
+                const Template = new UserCard(photographer);
+                photographersSection.appendChild(Template.getUserCardDOM());
         });
-    };
+    }
 
     async function init() {
         // Récupère les datas des photographes
         const { photographers } = await getPhotographers();
         displayData(photographers);
-    };
+    }
     
     init();
     
