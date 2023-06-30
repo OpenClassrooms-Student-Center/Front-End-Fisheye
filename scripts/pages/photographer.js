@@ -34,6 +34,8 @@ async function displayMediaData(photographer) {
   photographer.mediaDetails.forEach((media) => {
     mediaFactory(media, photographerFirstName).getMediaDOM();
   })
+
+  lightbox(photographer, photographerFirstName)
 }
 
 async function init() {

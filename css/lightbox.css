@@ -1,0 +1,55 @@
+#modal-lightbox {
+    display: none;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: #fff;
+}
+
+.card {
+    /* display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between; */
+    padding: 35px;
+    margin: auto;
+    width: 85%;
+    color: #901C1C;
+}
+
+.card img {
+    width: 100%;
+    height: 540px;
+    object-fit: cover;
+}
+
+.card video {
+    width: 100%;
+    height: 540px;
+    object-fit: cover;
+}
+
+.arrow {
+    font-size: 2.5rem;
+    position: absolute;
+    top: 40%;
+    margin-top: -30px;
+}
+
+.fa-chevron-right {
+    right: 30px;
+}
+
+.fa-chevron-left {
+    left: 30px;
+}
+
+.close {
+    cursor: pointer;
+    font-size: 2.5rem;
+    border-color: #000;
+    position: absolute;
+    top: 3.5%;
+    right: 30px;
+}
