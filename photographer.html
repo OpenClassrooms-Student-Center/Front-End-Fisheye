@@ -1,37 +1,84 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <link href="css/style.css" rel="stylesheet" type="text/css" />
-    <meta charset="utf-8">
-    <link rel="icon" type="image/png" href="assets/favicon.png">
-    <link href="https://fonts.googleapis.com/css?family=DM+Sans&display=swap" rel="stylesheet">
-    <title>Fisheye - photographe </title>
-  </head>
-  <body>
-    <header>
-      <img src="assets/images/logo.png" class="logo" />
+<html lang="fr">
+
+<head>
+  <meta charset="utf-8">
+  <title>Fisheye - Portfolio</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Fisheye - Portfolio du photographe">
+  <link rel="icon" type="image/png" href="assets/favicon.png">
+  <link rel="stylesheet" type="text/css" href="css/all.min.css">
+  <link rel="stylesheet" type="text/css" href="css/style.css">
+</head>
+
+<body>
+  <header class="header">
+    <a class="header-link" href="./index.html" aria-label="Lien vers la page d'accueil">
+      <img src="assets/images/logo.png" class="header-logo" alt="Fisheye Logo">
+    </a>
+  </header>
+
+  <main>
+  </main>
+
+  <footer>
+  </footer>
+
+  <dialog class="modal" id="contactModal" aria-hidden="true">
+    <header class="modal-header">
+      <h2 class="modal-title">Contactez-moi</h2>
+      <button class="modal-close" aria-label="Bouton de fermeture du modal de contact" id="modalCloseBtn">
+        <img class="modal-close-img" src="assets/icons/close-white.svg" alt="White close button icon">
+      </button>
     </header>
-    <main id="main">
-      <div class="photograph-header">
-        <button class="contact_button" onclick="displayModal()">Contactez-moi</button>
+    <form class="modal-form" id="modalForm">
+      <label class="modal-label" for="firstName">Prénom</label><br>
+      <input class="modal-input" type="text" id="firstName" name="firstName" minlength="2" pattern="(?!^ +$)^.+$"
+        required><br>
+
+      <label class="modal-label" for="lastName">Nom</label><br>
+      <input class="modal-input" type="text" id="lastName" name="lastName" minlength="2" pattern="(?!^ +$)^.+$"
+        required><br>
+
+      <label class="modal-label" for="email">E-mail</label><br>
+      <input class="modal-input" type="email" id="email" name="email" required><br>
+
+      <label class="modal-label" for="message">Votre message</label><br>
+      <input class="modal-input modal-msg" type="text" id="message" name="message" minlength="10" maxlength="100"
+        pattern="(?!^ +$)^.+$" required><br>
+
+      <button class="button modal-submit" aria-label="Bouton de soumission du formulaire du modal de contact"
+        id="submitButton" type="submit">Envoyer</button>
+    </form>
+  </dialog>
+
+  <dialog class="lightbox" id="lightboxModal" aria-hidden="true">
+    <div class="lightbox-container">
+
+      <div class="lightbox-grid1">
+        <button class="lightbox-previous" aria-label="Bouton précédent du modal de lightbox" id="lightboxPreviousBtn">
+          <em class="fa-solid fa-chevron-left"></em>
+        </button>
       </div>
-    </main>
-    <div id="contact_modal">
-			<div class="modal">
-				<header>
-          <h2>Contactez-moi</h2>
-          <img src="assets/icons/close.svg" onclick="closeModal()" />
-        </header>
-				<form>
-					<div>
-						<label>Prénom</label>
-						<input />
-					</div>
-          <button class="contact_button">Envoyer</button>
-				</form>
-			</div>
-		</div>
-    <script src="/scripts/pages/photographer.js"></script>
-    <script src="/scripts/utils/contactForm.js"></script>
-  </body>
+
+      <figure class="lightbox-grid2 lightbox-media" id="lightboxMedia"></figure>
+
+      <div class="lightbox-grid3">
+        <button class="lightbox-close" aria-label="Bouton de fermeture du modal de lightbox" id="lightboxCloseBtn">
+          <img class="lightbox-close-img" src="assets/icons/close-red.svg" alt="Red close button icon">
+        </button>
+        <button class="lightbox-next" aria-label="Bouton suivant du modal de lightbox" id="lightboxNextBtn">
+          <em class="fa-solid fa-chevron-right"></em>
+        </button>
+      </div>
+
+
+
+    </div>
+  </dialog>
+
+
+  <script type="module" src="scripts/pages/photographer.js"></script>
+</body>
+
 </html>
