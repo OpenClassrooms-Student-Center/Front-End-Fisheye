@@ -33,7 +33,6 @@ En tant que développeur, vous êtes chargé de la réalisation du prototype du 
 - Développer une application web modulaire avec des design patterns
 
 ## Contact
-
 Ghassen HAJLAOUI
 
 [![linkedin][linkedin-badge]][linkedin-url]
@@ -50,6 +49,6 @@ Ghassen HAJLAOUI
 [vscode-badge]: https://img.shields.io/badge/Made%20with-VSCode-1f425f.svg?style=for-the-badge&logoColor=white
 [w3c-badge]: https://img.shields.io/w3c-validation/default?style=for-the-badge&logoColor=white&targetUrl=https%3A%2F%2Ffisheye-vza.netlify.app
 [linkedin-badge]: https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white
-[linkedin-url]: https://www.linkedin.com/in/vzamboulingame
+[linkedin-url]: https://www.linkedin.com/in/ghassen-hajlaoui-a7177560
 [github-badge]: https://img.shields.io/badge/GitHub-0a0a0a?style=for-the-badge&logo=github&logoColor=white
 [github-url]: https://github.com/ghassenhajlaoui
