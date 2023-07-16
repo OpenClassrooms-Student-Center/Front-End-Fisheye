@@ -34,7 +34,7 @@ En tant que développeur, vous êtes chargé de la réalisation du prototype du 
 
 ## Contact
 
-Vinodh Zamboulingame
+Ghassen HAJLAOUI
 
 [![linkedin][linkedin-badge]][linkedin-url]
 [![github][github-badge]][github-url]
