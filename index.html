@@ -1,21 +1,27 @@
 <!DOCTYPE html>
 <html lang="fr">
-  <head>
-    <link href="css/style.css" rel="stylesheet" type="text/css" />
-    <meta charset="utf-8">
-    <link rel="icon" type="image/png" href="assets/favicon.png">
-    <link href="https://fonts.googleapis.com/css?family=DM+Sans&display=swap" rel="stylesheet">
-    <title>Fisheye</title>
-  </head>
-  <body>
-    <header>
-        <img src="assets/images/logo.png" class="logo" alt="fisheye logo"/>
-        <h1>Nos photographes</h1>
-    </header>
-    <main id="main">
-        <div class="photographer_section"></div>
-    </main>
-    <script src="scripts/templates/photographer.js"></script>
-    <script src="scripts/pages/index.js"></script>
-  </body>
+
+<head>
+  <meta charset="utf-8">
+  <title>Fisheye - Portfolio pour photographes</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Fisheye - Nos photographes">
+  <link rel="icon" type="image/png" href="assets/favicon.png">
+  <link rel="stylesheet" type="text/css" href="css/all.min.css">
+  <link rel="stylesheet" type="text/css" href="css/style.css">
+</head>
+
+<body>
+  <header class="header">
+    <a class="header-link" href="./index.html" aria-label="Lien vers la page d'accueil">
+      <img src="assets/images/logo.png" class="header-logo" alt="Fisheye Logo">
+    </a>
+    <h1 class="title">Nos photographes</h1>
+  </header>
+  <main id="main">
+    <div class="photographer-section"></div>
+  </main>
+  <script type="module" src="scripts/pages/index.js"></script>
+</body>
+
 </html>
