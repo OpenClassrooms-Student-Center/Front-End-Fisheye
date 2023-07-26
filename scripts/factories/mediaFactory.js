@@ -17,7 +17,6 @@ function mediaFactory(data, photographerName, length) {
         if (image) {
             const images = `assets/medias/${firstName}/${image}`;
             
-
             img.setAttribute("src", images);
 
             h3.textContent = title;
