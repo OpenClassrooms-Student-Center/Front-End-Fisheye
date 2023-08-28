@@ -1,17 +1,44 @@
-function photographerTemplate(data) {
-    const { name, portrait } = data;
+function photographerTemplate(photographer) {
+  //créationdu template "photographer_section"
 
-    const picture = `assets/photographers/${portrait}`;
+  const cardContainer = document.createElement("div");
+  cardContainer.classList.add("photographer-card");
 
-    function getUserCardDOM() {
-        const article = document.createElement( 'article' );
-        const img = document.createElement( 'img' );
-        img.setAttribute("src", picture)
-        const h2 = document.createElement( 'h2' );
-        h2.textContent = name;
-        article.appendChild(img);
-        article.appendChild(h2);
-        return (article);
-    }
-    return { name, picture, getUserCardDOM }
+  // Construct the path to the image using the correct folder structure
+  const imagePath = `assets/images/Photographers ID Photos/${photographer.portrait}`;
+
+  const portraitElement = document.createElement("img");
+  portraitElement.src = imagePath; // Use the imagePath instead of just photographer.portrait
+  portraitElement.alt = photographer.name;
+
+  const titleElement = document.createElement("h2");
+  titleElement.innerHTML = photographer.name;
+
+  const cityContainer = document.createElement("div");
+  cityContainer.classList.add("city-container");
+
+  const cityElement = document.createElement("p");
+  cityElement.innerHTML = `${photographer.city},`;
+
+  const countryElement = document.createElement("p");
+  countryElement.innerHTML = photographer.country;
+
+  cityContainer.appendChild(cityElement);
+  cityContainer.appendChild(countryElement);
+
+  const taglineElement = document.createElement("p");
+  taglineElement.innerHTML = photographer.tagline;
+
+  const priceElement = document.createElement("p");
+  priceElement.innerHTML = `${photographer.price} €/jour`;
+
+  cardContainer.appendChild(portraitElement);
+  cardContainer.appendChild(titleElement);
+  cardContainer.appendChild(cityContainer);
+  cardContainer.appendChild(taglineElement);
+  cardContainer.appendChild(priceElement);
+
+  return {
+    getUserCardDOM: () => cardContainer,
+  };
 }

@@ -75,6 +75,47 @@ form input {
   border-radius: 5px;
 }
 
+.photographer-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 2em;
+  margin: 2em;
+}
 .photographer-card img {
-  width: 30px;
+  backgroud-color: green;
+  width: 15em;
+  height: 15em;
+  border-radius: 50%;
+  object-fit: cover;
+}
+.photographer-card h2 {
+  color: #d3573c;
+  font-size: 36px;
+  margin-bottom: 10px;
+}
+.photographer-card p {
+  margin: 0.2em;
+}
+
+.photographer-card > .city-container {
+  color: #901c1c;
+  font-size: 13px;
+}
+.photographer-card > p:nth-of-type(1) {
+  font-size: 10px;
+}
+.photographer-card > p:nth-of-type(2) {
+  color: #901c1c;
+  font-size: 10px;
+}
+.photographer-card > p:nth-last-of-type(1) {
+  color: #757575;
+  font-size: 9px;
+}
+
+.city-container {
+  display: flex;
+  color: #901c1c;
+  font-size: 13px;
 }
