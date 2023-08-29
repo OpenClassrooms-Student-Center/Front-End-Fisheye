@@ -25,6 +25,7 @@ async function init() {
   try {
     const photographers = await getPhotographers();
     displayData(photographers);
+    console.log(photographers);
   } catch (error) {
     console.error("Error fetching photographers data:", error);
   }
