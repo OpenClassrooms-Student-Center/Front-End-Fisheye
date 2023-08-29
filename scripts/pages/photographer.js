@@ -1,11 +1,10 @@
-//Mettre le code JavaScript lié à la page photographer.html
-//meme structure que pour index.js
+// Get the photographer ID from the URL parameter
 let id = new URLSearchParams(window.location.search).get("id");
-console.log(id);
 
 //------------------------------------------------------------------------
+
 async function getPhotographers() {
-  //récupération des photographes
+  // Retrieve photographers
   const photographersResponse = await fetch("photographers.json");
   const photographersData = await photographersResponse.json();
   console.log("photographersData", photographersData);
@@ -16,22 +15,31 @@ async function getPhotographers() {
 //------------------------------------------------------------------------
 
 async function displayData(photographers) {
-  //création de la section photographes
+  // Find the photographer with the matching id
+  const photographer = photographers.find(
+    (photographer) => photographer.id === Number(id)
+  );
+  if (!photographer) {
+    console.log("Photographer not found");
+    return;
+  }
+
+  // Create the photographer's template
+  const photographerModel = photographerPageTemplate(photographer);
+  const userCardDOM = photographerModel.getUserCardDOM();
+
+  // Add the elements to the "photograph-header" class
   const photographerInfo = document.querySelector(".photograph-header");
+  photographerInfo.appendChild(userCardDOM);
 
-  //boucle sur le json
-  photographers.forEach((photographer) => {
-    const photographerModel = photographerPageTemplate(photographer);
-    const userCardDOM = photographerModel.getUserCardDOM();
-
-    //ajout des éléments à la classe "photograph-header"
-    photographerInfo.appendChild(userCardDOM);
-  });
+  // Update the page title
+  document.title = `Fisheye - ${photographer.name}`;
 }
+
 //------------------------------------------------------------------------
 
 async function init() {
-  // Récupère les datas des photographes
+  // Get photographer data
   try {
     const photographers = await getPhotographers();
     displayData(photographers);
@@ -41,10 +49,3 @@ async function init() {
 }
 
 init();
-
-// Define Photographer Pages class
-// class photographerPage{
-//     constructor(){
-
-//     }
-// }
