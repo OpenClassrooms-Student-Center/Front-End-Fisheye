@@ -88,12 +88,14 @@ form input {
   border-radius: 50%;
   object-fit: cover;
 }
-.photographer-card h2 {
+.photographer-card h2,
+.photographer-info h2 {
   color: #d3573c;
   font-size: 36px;
   margin-bottom: 10px;
 }
-.photographer-card p {
+.photographer-card p,
+.photographer-info p {
   margin: 0.2em;
 }
 
@@ -117,4 +119,19 @@ form input {
   display: flex;
   color: #901c1c;
   font-size: 13px;
+}
+
+.photographer-info {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 2em;
+  margin: 2em;
+}
+
+.photographer-info img {
+  width: 15em;
+  height: 15em;
+  border-radius: 50%;
+  object-fit: cover;
 }

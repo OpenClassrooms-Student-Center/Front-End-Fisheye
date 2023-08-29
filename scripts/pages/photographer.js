@@ -17,14 +17,14 @@ async function getPhotographers() {
 
 async function displayData(photographers) {
   //création de la section photographes
-  const photographerInfo = document.querySelector(".photographer_info");
+  const photographerInfo = document.querySelector(".photograph-header");
 
   //boucle sur le json
   photographers.forEach((photographer) => {
-    const photographerModel = photographerTemplate(photographer);
+    const photographerModel = photographerPageTemplate(photographer);
     const userCardDOM = photographerModel.getUserCardDOM();
 
-    //ajout des éléments à la classe "photographer_info"
+    //ajout des éléments à la classe "photograph-header"
     photographerInfo.appendChild(userCardDOM);
   });
 }
@@ -35,7 +35,6 @@ async function init() {
   try {
     const photographers = await getPhotographers();
     displayData(photographers);
-    console.log(photographers);
   } catch (error) {
     console.error("Error fetching photographers data:", error);
   }
