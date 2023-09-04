@@ -15,7 +15,7 @@ class Api {
   }
 }
 
-class PhotographersApi extends Api {
+class MediasApi extends Api {
   /**
    *
    * @param {string} url
@@ -29,4 +29,4 @@ class PhotographersApi extends Api {
   }
 }
 
-export { PhotographersApi };
+export { MediasApi };

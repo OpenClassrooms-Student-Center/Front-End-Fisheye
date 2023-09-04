@@ -2,7 +2,7 @@
 // class App {
 //   constructor() {
 //     // Get data
-//     this.photographersApi = new PhotographersApi("../photographers.json");
+//     this.MediasApi = new MediasApi("../photographers.json");
 //     // Get element
 //     this.$photographersListWrapper = document.querySelector(
 //       ".photographer_section"
