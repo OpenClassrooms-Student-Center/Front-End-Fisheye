@@ -19,6 +19,10 @@ h1 {
     margin-right: 100px;
 }
 
+article {
+    cursor: pointer;
+}
+
 .logo {
     height: 50px;
     margin-left: 100px;
