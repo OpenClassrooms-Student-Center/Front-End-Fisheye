@@ -6,6 +6,7 @@ function photographerTemplate(data) {
     function getUserCardDOM() {
         const article = document.createElement('article');
         article.setAttribute('onclick', 'linkURL('+id+')');
+        article.setAttribute('aria-label', 'Lien vers la page de '+name);
 
         const div = document.createElement('div');
         div.classList.add('card-text');
