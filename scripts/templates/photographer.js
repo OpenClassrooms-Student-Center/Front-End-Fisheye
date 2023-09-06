@@ -1,3 +1,5 @@
+//fonction pour créer et afficher un photographe sur la page d'index
+//function to create and display a phtographer on index page
 function photographerTemplate(data) {
   const { name, id, city, portrait, country, tagline, price } = data;
 
