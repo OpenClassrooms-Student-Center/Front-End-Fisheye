@@ -7,7 +7,7 @@
   --secondary-color: #901c1c;
 }
 
-.photograph-header {
+.photograph_header {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   justify-content: center;
@@ -59,7 +59,7 @@ h3 {
   text-align: right;
 }
 
-.like_and_sum_container {
+.like_and_price_container {
   display: flex;
   align-items: center;
   position: absolute;
@@ -72,6 +72,10 @@ h3 {
   color: #000;
   padding: 14px 32px;
   gap: 64px;
+}
+
+.like_and_price_container p {
+  margin: 0;
 }
 
 .likes_container {
