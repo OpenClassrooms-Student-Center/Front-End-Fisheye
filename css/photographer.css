@@ -74,3 +74,20 @@ form input {
     border: none;
     border-radius: 5px;
 }
+
+#select {
+	margin: 25px 100px;
+}
+
+#select > label {
+	margin-right: 25px;
+	font-weight: bold;
+}
+
+#orderSelect {
+	height: 50px;
+	padding: 0 10px;
+	background-color: #901c1c;
+	border-radius: 5px;
+	color: white;
+}
