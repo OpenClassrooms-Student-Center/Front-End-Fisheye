@@ -15,11 +15,11 @@ function photographerTemplate(photographerData, mediasData) {
     const imgTitleLink = document.createElement('a');
     imgTitleLink.href = url;
     const profilePicture = createProfilePicture(picture, name);
-    const h2 = document.createElement('h2');
-    h2.textContent = name;
     
     imgTitleLink.appendChild(profilePicture);
-    imgTitleLink.appendChild(h2);
+
+    const h2 = document.createElement('h2');
+    h2.textContent = name;
 
     // Photograph informations
     const h3 = document.createElement('h3');
@@ -30,6 +30,7 @@ function photographerTemplate(photographerData, mediasData) {
     span.textContent = `${price}€/jour`;
 
     article.appendChild(imgTitleLink);
+    article.appendChild(h2);
     article.appendChild(h3);
     article.appendChild(p);
     article.appendChild(span);

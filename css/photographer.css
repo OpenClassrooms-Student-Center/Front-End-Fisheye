@@ -30,6 +30,7 @@ h3 {
   font-size: 24px;
   font-weight: 400;
   margin: 0;
+  padding: 0;
 }
 
 .photograp_header > p {
@@ -62,7 +63,7 @@ h3 {
 .like_and_price_container {
   display: flex;
   align-items: center;
-  position: absolute;
+  position: fixed;
   overflow: hidden;
   bottom: 0;
   right: 36px;
@@ -74,7 +75,8 @@ h3 {
   gap: 64px;
 }
 
-.like_and_price_container p {
+.like_and_price_container p,
+.like_count_container p {
   margin: 0;
 }
 
@@ -86,6 +88,36 @@ h3 {
 
 .hidden {
   display: none;
+}
+
+.photograph_medias {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  margin: 58px 100px;
+  column-gap: 95px;
+  row-gap: 30px;
+}
+
+.media {
+  object-fit: cover;
+  width: 100%;
+  height: 300px;
+  border-radius: 5px;
+}
+
+.media_title_and_like_container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 10px;
+}
+
+.like_count_container {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 24px;
+  color: var(--primary-bg-color);
 }
 
 .modal {
