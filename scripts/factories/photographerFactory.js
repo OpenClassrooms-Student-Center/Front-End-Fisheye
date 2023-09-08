@@ -66,7 +66,7 @@ function photographerFactory(data) {
     header.appendChild(img);
 
     header.prepend(div);
-    
+
     card.appendChild(pInfo);
   }
 

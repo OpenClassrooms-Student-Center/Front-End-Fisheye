@@ -1,55 +1,79 @@
-#modal-lightbox {
-    display: none;
+#lightbox {
+    overflow: hidden;
     position: fixed;
     top: 0;
     width: 100%;
     height: 100%;
     background: #fff;
-}
-
-.card {
-    /* display: flex;
+    display: none;
     flex-direction: column;
+    justify-content: center;
     align-items: center;
-    justify-content: space-between; */
-    padding: 35px;
-    margin: auto;
-    width: 85%;
     color: #901C1C;
 }
 
-.card img {
-    width: 100%;
-    height: 540px;
-    object-fit: cover;
+.slider-container {
+    display: flex;
+    overflow-x: scroll;
+    scroll-snap-type: x mandatory;
+    white-space: nowrap;
 }
 
-.card video {
-    width: 100%;
-    height: 540px;
-    object-fit: cover;
+/* Masque la barre de défilement pour Chrome et Safari */
+.slider-container::-webkit-scrollbar {
+    display: none;
 }
 
-.arrow {
-    font-size: 2.5rem;
+/* Masque la barre de défilement pour Firefox */
+.slider-container {
+scrollbar-width: none;
+-ms-overflow-style: none; /* Pour les anciennes versions de Edge */
+}
+  
+.slider-content {
+    margin: auto;
+    width: 100vh;
+    display: flex;
+}
+
+.slider-content div > img {
+    object-fit: cover;
+    height: 80vh;
+    width: 100vh;
+}
+
+.slider-content div > video {
+    object-fit: cover;
+    height: 80vh;
+    width: 100vh;
+}
+
+.slider-content div > div {
+    font-size: 1.3rem;
+}
+
+.slider-button {
     position: absolute;
-    top: 40%;
-    margin-top: -30px;
-}
-
-.fa-chevron-right {
-    right: 30px;
-}
-
-.fa-chevron-left {
-    left: 30px;
+    /* top: 50%;
+    transform: translateY(-50%);
+    padding: 10px 15px; */
+    cursor: pointer;
 }
 
 .close {
+    position: fixed;
+    font-size: 3rem;
+    right: 0;
+    top: 0;
     cursor: pointer;
-    font-size: 2.5rem;
-    border-color: #000;
-    position: absolute;
-    top: 3.5%;
-    right: 30px;
+}
+
+.next {
+    right: 0;
+    font-size: 3rem;
+}
+
+.prev {
+    left: 0;
+    font-size: 3rem;
 }

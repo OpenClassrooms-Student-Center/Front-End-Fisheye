@@ -129,15 +129,16 @@ form textarea[data-error="true"] {
   margin: 0 100px;
   justify-items: center;
   gap: 3rem;
+  padding-bottom: 30px;
 }
-
-.photographer-media .media {}
 
 .photographer-media .media img {
   width: 350px;
   height: 300px;
   object-fit: cover;
   border-radius: 5px;
+  margin-bottom: 5px;
+  cursor: pointer;
 }
 
 .photographer-media video[data-video="style"] {
@@ -147,7 +148,6 @@ form textarea[data-error="true"] {
 
 .photographer-media .media h3 {
   margin-block: 0;
-  color: #901C1C;
   font-weight: normal;
 }
 
@@ -175,4 +175,38 @@ form textarea[data-error="true"] {
   .photographer-media {
     grid-template-columns: 1fr 1fr;
   }
+}
+
+.like {
+  display: flex !important;
+  flex-direction: row-reverse;
+  gap: 0.3rem;
+  cursor: pointer;
+  user-select: none;
+}
+
+.likes {
+  display: flex !important;
+  flex-direction: row-reverse;
+  gap: 0.3rem;
+}
+
+.like:hover {
+  color: #dd1a1a;
+}
+
+.info {
+  display: flex;
+  justify-content: space-between;
+  color: #901C1C;
+  align-items: center;
+}
+
+.sort {
+  margin: 0 100px;
+  margin-bottom: 2rem;
+}
+
+.sort-select > label {
+  font-weight: bold;
 }

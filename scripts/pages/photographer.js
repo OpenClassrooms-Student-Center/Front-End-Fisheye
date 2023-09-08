@@ -29,15 +29,22 @@ async function displayData(photographer) {
 }
 
 async function displayMediaData(photographer) {
-  const photographerFirstName = photographer.photographerDetails[0].name.split(' ')[0].replace(/-/g,' ');
+  const photographerFirstName = photographer.photographerDetails[0].name
+    .split(" ")[0]
+    .replace(/-/g, " ");
   let newMediaDetails = [];
 
   photographer.mediaDetails.forEach((media) => {
     mediaFactory(media, photographerFirstName).getMediaDOM();
-    newMediaDetails.push({title: media.title, source: media.image||media.video, like: media.likes})
-  })
+    newMediaDetails.push({
+      title: media.title,
+      source: media.image || media.video,
+      like: media.likes,
+    });
+  });
 
-  lightbox(newMediaDetails, photographerFirstName)
+  addMediaDOM(newMediaDetails, photographerFirstName);
+  // lightbox(newMediaDetails, photographerFirstName);
 }
 
 async function init() {

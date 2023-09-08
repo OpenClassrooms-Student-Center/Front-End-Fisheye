@@ -23,6 +23,17 @@
         </button>
       </div>
     </main>
+    <div class="sort">
+      <div class="sort-select">
+        <label for="sort-title">Trier par</label>
+        <select name="pets" id="sort">
+          <option selected="true" disabled="disabled">Choisir</option>    
+          <option value="popularity">Popularité</option>
+          <option value="date">Date</option>
+          <option value="title">Titre</option>
+        </select>
+      </div>
+    </div>
     <div class="photographer-media">
     </div>
     <div id="contact_modal">
@@ -55,17 +66,20 @@
     </div>
     <div class="card-info">
     </div>
-    <div id="modal-lightbox">
-      <div class="card">
-          <i class="close fa-solid fa-xmark"></i>
-          <i class="arrow next fa-solid fa-chevron-right"></i>
-          <i class="arrow previous fa-solid fa-chevron-left"></i>
+    <div id="lightbox">
+      <div class="slider-container">
+        <div class="slider-content"></div>
       </div>
+      <i class="close fa-solid fa-xmark"></i>
+      <i class="slider-button next fa-solid fa-chevron-right"></i>
+      <i class="slider-button prev fa-solid fa-chevron-left"></i>
     </div>
     <script src="./scripts/factories/photographerFactory.js"></script>
     <script src="./scripts/factories/mediaFactory.js"></script>
     <script src="./scripts/pages/photographer.js"></script>
     <script src="./scripts/utils/contactForm.js"></script>
     <script src="./scripts/utils/lightbox.js"></script>
+    <script src="./scripts/utils/like.js"></script>
+    <script src="./scripts/utils/sort.js"></script>
   </body>
 </html>
