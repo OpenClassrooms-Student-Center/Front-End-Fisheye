@@ -9,8 +9,8 @@ function displayData(photographer, medias) {
   const mediasContainer = document.createElement('section');
   mediasContainer.classList.add('photograph_medias');
   
-  medias.forEach(media => {
-    const mediaModel = mediaTemplate(media, photographer);
+  medias.forEach((media, index, list) => {
+    const mediaModel = mediaTemplate(media, photographer, list);
     const mediaDOM = mediaModel.mediaDOM();
     mediasContainer.appendChild(mediaDOM);
   });
