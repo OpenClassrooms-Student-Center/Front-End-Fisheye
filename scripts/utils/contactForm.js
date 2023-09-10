@@ -3,7 +3,7 @@ function displayModal() {
     modal.classList.remove('hidden');
 }
 
-function closeModal() {
+function closeContactModal() {
     const modal = document.getElementById("contact_modal");
     modal.classList.toggle('hidden');
 
