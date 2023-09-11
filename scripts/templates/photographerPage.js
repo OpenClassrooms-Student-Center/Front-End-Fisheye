@@ -23,6 +23,8 @@ export function photographerPageTemplate(photographer) {
   contactButton.onclick = displayModal;
 
   // Create the close contact button element
+  const closingModal = document.getElementById("modalClose");
+  closingModal.onclick = closeModal;
 
   //   Construct the path to the image using the correct folder structure
   const imagePath = `assets/images/Photographers ID Photos/${photographer.portrait}`;
