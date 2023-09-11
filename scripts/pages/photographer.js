@@ -49,7 +49,7 @@ class PhotographerPages {
   }
 
   //displays photographer info
-  async main() {
+  async photographer() {
     try {
       const medias = await this.mediasApi.getMedias();
       console.log("medias", medias);
@@ -80,12 +80,11 @@ class PhotographerPages {
   }
 }
 
-const app = new PhotographerPages();
-app.main();
 //------------------------------------------------------------------------
 
 async function init() {
-  const photographerPages = new PhotographerPages();
+  const app = new PhotographerPages();
+  app.photographer();
 
   // Get photographer data
   try {
