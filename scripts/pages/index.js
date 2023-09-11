@@ -7,7 +7,8 @@ async function getPhotographers() {
 
   return photographersData;
 }
-async function displayData(photographersData) {
+
+async function displayPhotographerData(photographersData) {
   console.log("photographersArray", photographersData);
   //création de la section photographes
   const photographersSection = document.querySelector(".photographer_section");
@@ -26,7 +27,7 @@ async function init() {
   // Récupère les datas des photographes
   try {
     const photographers = await getPhotographers();
-    displayData(photographers);
+    displayPhotographerData(photographers);
     console.log(photographers);
   } catch (error) {
     console.error("Error fetching photographers data:", error);

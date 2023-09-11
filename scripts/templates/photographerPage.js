@@ -1,11 +1,9 @@
 import { displayModal, closeModal } from "../utils/contactForm.js";
 
-//template for index page
+//template for photographer section for photographer page
 export function photographerPageTemplate(photographer) {
-  //créationdu template "photographer_section"
-
+  //création du template "photographer_section"
   const photographHeader = document.querySelector(".photograph-header");
-  //   const contactButton = document.querySelector(".contact_button");
 
   const cardContainer = document.createElement("div");
   cardContainer.classList.add("photographer-info");
@@ -80,5 +78,34 @@ export function photographerPageTemplate(photographer) {
 
   return {
     getUserCardDOM: () => cardContainer,
+  };
+}
+
+//template for media section for photographer page
+export function photographerMediaTemplate(filteredMedias) {
+  console.log("filteredMedias1", filteredMedias);
+  const mediasWrapper = document.querySelector(".medias-wrapper");
+
+  const mediaContainer = document.createElement("div");
+  mediaContainer.classList.add("media-info");
+
+  // //-------------------------------------------------------------------
+
+  //container parent
+  const mediaDetails = document.createElement("div");
+  mediaDetails.classList.add("media-details");
+
+  //container child
+  const filteredMedia = document.createElement("p");
+  filteredMedia.innerHTML = filteredMedias.id;
+
+  //-------------------------------------------------------------------
+
+  mediasWrapper.appendChild(mediaContainer);
+  mediaContainer.appendChild(mediaDetails);
+  mediaDetails.appendChild(filteredMedia);
+
+  return {
+    getUserCardDOM: () => mediaContainer,
   };
 }

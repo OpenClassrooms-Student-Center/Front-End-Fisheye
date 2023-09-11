@@ -1,5 +1,8 @@
 import { MediasApi } from "../api/api.js";
-import { photographerPageTemplate } from "../templates/photographerPage.js";
+import {
+  photographerPageTemplate,
+  photographerMediaTemplate,
+} from "../templates/photographerPage.js";
 
 async function getPhotographerById(id) {
   // Retrieve photographers
@@ -15,7 +18,7 @@ async function getPhotographerById(id) {
 
 //------------------------------------------------------------------------
 
-async function displayData() {
+async function displayPhotographerData() {
   // Find the photographer with the matching id
   let id = new URLSearchParams(window.location.search).get("id");
 
@@ -42,38 +45,30 @@ async function displayData() {
 }
 
 //------------------------------------------------------------------------
-class PhotographerPages {
+class PhotographerPagesMedia {
   constructor() {
     this.$mediasWrapper = document.querySelector(".medias-wrapper");
     this.mediasApi = new MediasApi("/data/photographers.json");
   }
 
-  //displays photographer info
-  async photographer() {
-    try {
-      const medias = await this.mediasApi.getMedias();
-      console.log("medias", medias);
-    } catch (error) {
-      console.error("An error occurred while fetching media data:", error);
-    }
-  }
-
-  //displays media info
+  // displays media info with similar id
   async medias() {
     try {
-      console.log("MediasApi URL:", this.mediasApi._url);
-      const photographer = await this.photographer();
-      const mediasData = await this.media();
+      const medias = await this.mediasApi.getMedias();
+      // console.log("medias", medias);
+      const id = new URLSearchParams(window.location.search).get("id");
+      const filteredMedias = medias.filter(
+        (media) => media.photographerId === Number(id)
+      );
 
-      mediasData.forEach((media) => {
-        const template = new MediaCard(media, photographer);
-        this.$mediasWrapper.appendChild(template.createMediaCard());
+      console.log("filteredMedias2", filteredMedias);
+
+      // Loop through filteredMedias and create templates for each media
+      filteredMedias.forEach((media) => {
+        const mediaModel = photographerMediaTemplate(media);
+        const mediaDOM = mediaModel.getUserCardDOM();
+        mediaDetails.appendChild(mediaDOM); // Append each mediaDOM to mediaDetails
       });
-
-      // Log the filtered media data
-      console.log("mediasDataFiltered:", mediasData);
-
-      // You can also log other data or variables here
     } catch (error) {
       console.error("Error fetching media data:", error);
     }
@@ -83,13 +78,13 @@ class PhotographerPages {
 //------------------------------------------------------------------------
 
 async function init() {
-  const app = new PhotographerPages();
-  app.photographer();
+  const app = new PhotographerPagesMedia();
+  app.medias();
 
   // Get photographer data
   try {
     const photographers = await getPhotographerById();
-    displayData(photographers);
+    displayPhotographerData(photographers);
   } catch (error) {
     console.error("Error fetching photographers data:", error);
   }
