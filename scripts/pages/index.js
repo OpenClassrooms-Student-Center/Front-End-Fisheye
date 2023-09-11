@@ -1,14 +1,14 @@
     async function getPhotographers() {
-        // Récuperer le json
+        //Récuperer le json
         let liste = [];
         try {
-            let response = await fetch("../data/photographers.json");
+            let response = await fetch("./data/photographers.json");
             let data = await response.json();
             liste = data.photographers;
         } catch (error) {
             console.error(error);
         }
-        
+
         return ({liste})
     }
 
@@ -25,7 +25,7 @@
     async function init() {
         // Récupère les datas des photographes
         const {liste}  = await getPhotographers();
-        displayData(liste);
+        await displayData(liste);
     }
     
     init();
