@@ -46,7 +46,7 @@ function photographerTemplate(photographerData, mediasData) {
     const photographerInformations = createPhotographerInformations(name, city, country, tagline);
     
     // Create contact button
-    const buttonContainer = createContactButton()
+    const buttonContainer = createContactButton(photographerData);
 
     // Create profile picture
     const photographImgContainer = createProfilePicture(picture, name);
@@ -98,13 +98,13 @@ function createPhotographerInformations(name, city, country, tagline) {
  * Create the contact button
  * @returns div containing contact button
  */
-function createContactButton() {
+function createContactButton(photographerData) {
   const div = document.createElement('div');
   div.classList.add('btn_container');
   const contactMeButton = document.createElement('button');
   contactMeButton.classList.add('contact_button');
   contactMeButton.textContent = 'Contactez-moi';
-  contactMeButton.addEventListener('click', displayModal);
+  contactMeButton.addEventListener('click', () => openContactModal(photographerData));
 
   div.appendChild(contactMeButton)
 

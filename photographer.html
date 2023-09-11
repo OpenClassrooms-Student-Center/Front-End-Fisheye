@@ -8,13 +8,13 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
     integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w=="
     crossorigin="anonymous" referrerpolicy="no-referrer">
-  <link href="css/style.css" rel="stylesheet" type="text/css" />
+  <link href="css/style.css" rel="stylesheet" type="text/css">
   <title>Fisheye - photographe </title>
 </head>
 
 <body>
   <header>
-    <img src="assets/images/logo.png" class="logo" />
+    <img src="assets/images/logo.png" class="logo">
   </header>
 
   <main id="main"></main>
@@ -26,13 +26,28 @@
   <div id="contact_modal" class="hidden">
     <div class="modal">
       <header>
-        <h2>Contactez-moi</h2>
-        <img src="assets/icons/close.svg" onclick="closeContactModal()" />
+        <div class="contact_me_container">
+          <h2>Contactez-moi</h2>
+          <img src="assets/icons/close.svg" alt="Close Form">
+        </div>
+        <h2></h2>
       </header>
-      <form>
-        <div>
-          <label>Prénom</label>
-          <input />
+      <form id="contact_form" method="get" action="">
+        <div class="form_data">
+          <label for="firstname">Prénom</label>
+          <input id="firstname" name="firstname" required>
+        </div>
+        <div class="form_data">
+          <label for="lastname">Nom</label>
+          <input id="lastname" name="lastname" required>
+        </div>
+        <div class="form_data">
+          <label for="mail">Email</label>
+          <input type="email" id="mail" name="mail" required>
+        </div>
+        <div class="form_data">
+          <label for="message">Votre message</label>
+          <textarea id="message" name="message" required></textarea>
         </div>
         <button class="contact_button">Envoyer</button>
       </form>

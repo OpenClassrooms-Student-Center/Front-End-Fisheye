@@ -1,5 +1,3 @@
-//Mettre le code JavaScript lié à la page photographer.html
-
 function displayData(photographer, medias) {
   const mainElt = document.querySelector('main');
 
@@ -23,8 +21,13 @@ function displayData(photographer, medias) {
 async function init() {
   const params =  new URL(document.location).searchParams;
   const id = parseInt(params.get('id'));
-  const photographerData = await getPhotographerById(id);
-  displayData(photographerData.photographer, photographerData.media);
+
+  try {
+    const photographerData = await getPhotographerById(id);
+    displayData(photographerData.photographer, photographerData.media);
+  } catch (error) {
+    console.log(`error`, error);
+  }
 }
 
 init();
