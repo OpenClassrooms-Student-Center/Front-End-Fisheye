@@ -130,3 +130,37 @@ form input {
 .text-price {
     color: #757575;
 }
+
+/* MEDIA */
+
+.photograph-media {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    justify-content: center;
+    margin: 50px 100px;
+}
+
+.cardMedia {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.cardMedia img {
+    width: 350px;
+    height: 350px;
+    object-fit: cover;
+    align-content: center;
+}
+
+.textMedia {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: 350px;
+}
+
+.textMedia h2 {
+    text-align: start;
+    margin: 10px 0;
+}

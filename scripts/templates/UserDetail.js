@@ -37,28 +37,43 @@ function detailUserTemplate(data) {
 }
 
 function detailMediaTemplate(data) {
-    const { id, image, title, date, like } = data;
+    const { id, image, video, title, date, likes } = data;
 
     const picture = `assets/media/${image}`;
+    const urlLike = 'assets/icons/like.svg';
 
     function getMediaDOM() {
+
         const div = document.createElement('div');
         div.classList.add('cardMedia');
 
         const img = document.createElement( 'img' );
         img.setAttribute("src", picture);
 
+        const divText = document.createElement('div');
+        divText.classList.add('textMedia');
+
         const h2 = document.createElement( 'h2' );
-        h2.classList.add('title-img');
         h2.textContent = title;
+
+        const divLike = document.createElement('div');
+        divLike.classList.add('like-container');
 
         const p = document.createElement('p');
         p.classList.add('text-like');
-        p.textContent = like;
+        p.textContent = likes;
+
+        const icon = document.createElement('img');
+        icon.setAttribute("src", urlLike);
+        icon.setAttribute("alt", "icon like");
+        icon.classList.add('like-icon');
 
         div.appendChild(img);
-        div.appendChild(h2);
-        div.appendChild(p);
+        divLike.appendChild(p);
+        divLike.appendChild(icon);
+        divText.appendChild(h2);
+        divText.appendChild(divLike);
+        div.appendChild(divText);
         return (div);
     }
     return { name, image, getMediaDOM}

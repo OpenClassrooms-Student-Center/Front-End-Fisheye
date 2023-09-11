@@ -74,3 +74,19 @@ article {
 .text-price {
     color: #757575;
 }
+
+.like-container {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.like-container img {
+    height: 1.5rem;
+    width: 1.5rem;
+}
+
+.text-like {
+    font-size: 1.3rem;
+    font-weight: 600;
+}
