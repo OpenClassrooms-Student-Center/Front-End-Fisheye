@@ -15,6 +15,7 @@ class Api {
   }
 }
 
+// Define MediasApi class with Api
 class MediasApi extends Api {
   /**
    *
@@ -23,9 +24,9 @@ class MediasApi extends Api {
   constructor(url) {
     super(url);
   }
-
-  async getPhotographers() {
-    return await this.get("res.photographers");
+  // Get Medias data
+  async getMedias() {
+    return await this.get("res.media");
   }
 }
 

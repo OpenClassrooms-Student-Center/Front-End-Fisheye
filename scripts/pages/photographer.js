@@ -1,14 +1,13 @@
 async function getPhotographerById(id) {
   // Retrieve photographers
-  const photographersResponse = await fetch("photographers.json");
+  const photographersResponse = await fetch("data/photographers.json");
   const photographersData = await photographersResponse.json();
-  console.log("photographersData", photographersData);
 
-  const photographer = photographersData.find(
+  const fetchedPhotographer = photographersData.photographers.find(
     (photographer) => photographer.id === Number(id)
   );
 
-  return photographer;
+  return fetchedPhotographer;
 }
 
 //------------------------------------------------------------------------
