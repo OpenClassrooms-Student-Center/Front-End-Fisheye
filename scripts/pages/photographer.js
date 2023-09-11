@@ -7,7 +7,7 @@ async function getPhotographers() {
     // Récuperer le json
     let liste = [];
     try {
-        let response = await fetch("../data/photographers.json");
+        let response = await fetch("./data/photographers.json");
         let data = await response.json();
         
         liste = {
@@ -22,13 +22,14 @@ async function getPhotographers() {
     return (liste)
 }
 
-async function displayUser(photographers) {
-    const photographersSection = document.querySelector(".photograph-header");
-    photographers.forEach((photographer) => {
-        const photographerModel = photographerTemplate(photographer);
-        const userCardDOM = photographerModel.getUserCardDOM();
-        photographersSection.appendChild(userCardDOM);
-    });
+async function displayUser(user) {
+    console.log(user);
+
+    const photographersHeader = document.querySelector(".photograph-header");
+
+    const detailUser = detailUserTemplate(user);
+    const detailDOM = detailUser.getDetailDOM();
+    photographersHeader.appendChild(detailDOM);
 }
 
 async function init() {
@@ -36,8 +37,7 @@ async function init() {
     const liste  = await getPhotographers();
     const user = liste.user[0];
     console.log(liste.media);
-    console.log(user);
-    displayUser(user);
+    await displayUser(user);
 }
 
 init();
