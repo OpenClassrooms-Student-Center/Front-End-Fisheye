@@ -1,14 +1,19 @@
 const contactModal = document.getElementById("contact_modal");
 const form = document.getElementById('contact_form');
+// Prevent submit and just close modal
 form.addEventListener('submit', (e) => {
     e.preventDefault();
     closeContactModal();
 });
 let photographerName = '';
 
+// Add close function on close modal btn
 const closeModalBtn = document.querySelector('.contact_me_container img');
 closeModalBtn.addEventListener('click', closeContactModal);
 
+/**
+ * Show form modal, set photographer name on open and reset data
+ */
 function openContactModal(photographerData) {
     contactModal.classList.remove('hidden');
     const photographerNameElt = document.querySelector('.modal header > h2');
@@ -17,6 +22,9 @@ function openContactModal(photographerData) {
     formDatas.forEach(field => field.value = '');
 }
 
+/**
+ * Hide form modal
+ */
 function closeContactModal() {
     contactModal.classList.toggle('hidden');
 }
