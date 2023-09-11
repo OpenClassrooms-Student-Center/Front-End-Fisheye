@@ -1,3 +1,5 @@
+import { photographerTemplate } from "../templates/photographer.js";
+
 async function getPhotographers() {
   //récupération des photographes
   const photographersResponse = await fetch("data/photographers.json");
@@ -6,7 +8,6 @@ async function getPhotographers() {
   return photographersData;
 }
 async function displayData(photographersData) {
-
   console.log("photographersArray", photographersData);
   //création de la section photographes
   const photographersSection = document.querySelector(".photographer_section");

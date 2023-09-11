@@ -1,3 +1,6 @@
+import { MediasApi } from "../api/api.js";
+import { photographerPageTemplate } from "../templates/photographerPage.js";
+
 async function getPhotographerById(id) {
   // Retrieve photographers
   const photographersResponse = await fetch("data/photographers.json");
@@ -40,7 +43,38 @@ async function displayData() {
 
 //------------------------------------------------------------------------
 
+class PhotographerPages {
+  constructor() {
+    this.mediasApi = new MediasApi("assets/images");
+
+    this.media = async () => {
+      const mediasData = await this.mediasApi.getMedias();
+      mediasData.map((media) => new MediasFactory(media));
+      const mediasDataFiltered = mediasData.filter(
+        (photographer) => photographer.photographerId == id
+      );
+
+      console.log("mediasDataFiltered", mediasDataFiltered);
+      return mediasDataFiltered;
+    };
+  }
+  async medias() {
+    const photographer = await this.photographer();
+    const mediasData = await this.media();
+
+    mediasData.forEach((media) => {
+      const template = new MediaCard(media, photographer);
+      this.$mediasWrapper.appendChild(template.createMediaCard());
+    });
+    newValue("about-photographer-likes-count", allLikes);
+  }
+}
+
+//------------------------------------------------------------------------
+
 async function init() {
+  const photographerPages = new PhotographerPages();
+
   // Get photographer data
   try {
     const photographers = await getPhotographerById();

@@ -1,5 +1,7 @@
+import { displayModal, closeModal } from "../utils/contactForm.js";
+
 //template for index page
-function photographerPageTemplate(photographer) {
+export function photographerPageTemplate(photographer) {
   //créationdu template "photographer_section"
 
   const photographHeader = document.querySelector(".photograph-header");
@@ -19,6 +21,8 @@ function photographerPageTemplate(photographer) {
   contactButton.classList.add("contact_button"); // Add the class "contact_button"
   contactButton.textContent = "Contactez-moi";
   contactButton.onclick = displayModal;
+
+  // Create the close contact button element
 
   //   Construct the path to the image using the correct folder structure
   const imagePath = `assets/images/Photographers ID Photos/${photographer.portrait}`;

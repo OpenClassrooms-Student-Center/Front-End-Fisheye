@@ -1,5 +1,5 @@
 //template for index page
-function photographerTemplate(photographer) {
+export function photographerTemplate(photographer) {
   //créationdu template "photographer_section"
 
   const cardContainer = document.createElement("div");
