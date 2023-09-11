@@ -61,13 +61,9 @@ class PhotographerPagesMedia {
         (media) => media.photographerId === Number(id)
       );
 
-      console.log("filteredMedias2", filteredMedias);
-
       // Loop through filteredMedias and create templates for each media
       filteredMedias.forEach((media) => {
         const mediaModel = photographerMediaTemplate(media);
-        const mediaDOM = mediaModel.getUserCardDOM();
-        mediaDetails.appendChild(mediaDOM); // Append each mediaDOM to mediaDetails
       });
     } catch (error) {
       console.error("Error fetching media data:", error);
