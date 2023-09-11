@@ -32,12 +32,25 @@ async function displayUser(user) {
     photographersHeader.appendChild(detailDOM);
 }
 
+async function displayMedia(medias) {
+    console.log(medias);
+
+    const photographersHeader = document.querySelector(".photograph-media");
+
+    medias.forEach((media) => {
+        const detailUser = detailMediaTemplate(media);
+        const detailMediaDOM = detailUser.getMediaDOM();
+        photographersHeader.appendChild(detailMediaDOM);
+    });
+}
+
 async function init() {
     // Récupère les datas des photographes
     const liste  = await getPhotographers();
     const user = liste.user[0];
-    console.log(liste.media);
+    const media = liste.media;
     await displayUser(user);
+    await displayMedia(media);
 }
 
 init();
