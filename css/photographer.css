@@ -50,6 +50,33 @@
     object-fit: cover;
 }
 
+.photograph-galary {
+    margin: 2rem 0;
+}
+
+.photograph-galary .galary-wrapper,
+.photograph-galary .card > div {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 2.5rem;
+    color: #901C1C;
+}
+
+.photograph-galary .card img {
+    width: 350px;
+    height: 300px;
+    border-radius: 10px;
+    object-fit: cover;
+    /* object-position: top; */
+}
+
+.photograph-galary .card > div h2 {
+    font-size: 1.2rem;
+    font-weight: 200;
+}
+
 /* Modal section */
 .modal {
     border-radius: 5px;
