@@ -9,7 +9,20 @@ function displayData(photographer, medias) {
 
   const photographerDetails = displayPhotographerData();
 
-  const sortedByContainer = createSortedByContainerElement();
+  const dropdownOptions = [{
+    value: 'likes',
+    text: 'Popularité',
+    isSelected: true
+  }, {
+    value: 'title',
+    text: 'Titre',
+    isSelected: false
+  }, {
+    value: 'date',
+    text: 'Date',
+    isSelected: false
+  }]
+  const sortedByContainer = createDropdown(dropdownOptions);
 
   const mediasContainer = document.createElement('section');
   mediasContainer.classList.add('photograph_medias');

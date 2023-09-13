@@ -1,7 +1,7 @@
 /**
  * Create the container of dropdown title and dropdown
  */
-function createSortedByContainerElement() {
+function createDropdown(dropdownOptions) {
   // Containt title and dropdown list
   const sortedByContainer = document.createElement('div');
   sortedByContainer.classList.add('sorted_by_container');
@@ -9,45 +9,30 @@ function createSortedByContainerElement() {
   const sortedByTitle = document.createElement('h3');
   sortedByTitle.textContent = 'Trier par';
 
-  // Dropdown container (button + dropdown div)
+  // Dropdown container (button + dropdown list)
   const dropdownContainer = document.createElement('div');
   dropdownContainer.classList.add('dropdown_container');
 
-  // Button
-  const sortButton = createSortButton();
+  // Create button dynamically
+  const sortButton = createSortButton(dropdownOptions);
+  // window.addEventListener('click', closeDropdown);
 
   dropdownContainer.appendChild(sortButton);
-
   // Dropdown div
   const dropdownElt = document.createElement('div');
   dropdownElt.classList.add('dropdown_list');
   dropdownElt.classList.add('hidden');
   
-  // Dropdown option
-  const opt1Container = document.createElement('div');
-  opt1Container.classList.add('dropdown_option_container');
-  const opt1 = document.createElement('span');
-  opt1.textContent = 'Titre';
-  opt1.dataset.value = 'title'
-  opt1.classList.add('dropdown_option');
-  opt1Container.appendChild(opt1);
-  opt1Container.addEventListener('click', (e) => selectOpt(opt1.dataset.value, opt1.textContent, e));
-
-  
-  const opt2Container = document.createElement('div');
-  opt2Container.classList.add('dropdown_option_container');
-  const opt2 = document.createElement('span');
-  opt2.textContent = 'Date';
-  opt2.dataset.value = 'date'
-  opt2.classList.add('dropdown_option');
-  opt2Container.appendChild(opt2);
-  opt2Container.addEventListener('click', (e) => selectOpt(opt2.dataset.value, opt2.textContent, e));
-
-  dropdownElt.appendChild(opt1Container);
-  dropdownElt.appendChild(opt2Container);
-  
+  // Create options dynamically
+  dropdownOptions.filter(opt => !opt.isSelected).forEach(opt => {
+    const divider = document.createElement('div');
+    divider.classList.add('divider');
+    const option = createOption(opt);
+    dropdownElt.appendChild(divider);
+    dropdownElt.appendChild(option);
+  });
   dropdownContainer.appendChild(dropdownElt);
-  
+
   sortedByContainer.appendChild(sortedByTitle);
   sortedByContainer.appendChild(dropdownContainer);
 
@@ -58,13 +43,14 @@ function createSortedByContainerElement() {
  * Create the button dropdown to sort medias
  * @returns button
  */
-function createSortButton() {
+function createSortButton(dropdownOptions) {
+  const selectedOption = dropdownOptions.find(opt => opt.isSelected);
   const sortButton = document.createElement('button');
   sortButton.classList.add('sort_btn');
-  sortButton.dataset.value = 'likes';
+  sortButton.dataset.value = selectedOption.value;
   const btnText = document.createElement('p');
-  btnText.textContent = 'Popularité';
-  sortButton.addEventListener('click', openDropdown);
+  btnText.textContent = selectedOption.text;
+  sortButton.addEventListener('click', (e) => openDropdown(e), true);
   const btnIcon = document.createElement('span');
   btnIcon.className = 'fa-solid fa-chevron-down';
   sortButton.appendChild(btnText);
@@ -74,11 +60,45 @@ function createSortButton() {
 }
 
 /**
+ * Create option
+ * @param {*} opt 
+ */
+function createOption(opt) {
+  const optContainer = document.createElement('div');
+  optContainer.classList.add('dropdown_option_container');
+  const option = document.createElement('span');
+  option.dataset.value = opt.value
+  option.textContent = opt.text;
+  option.classList.add('dropdown_option');
+  optContainer.appendChild(option);
+  optContainer.addEventListener('click', () => selectOpt(option.dataset.value, option.textContent));
+
+  return optContainer;
+}
+
+/**
  * On click on dropdown, toggle sort button icon and is_opened class
  */
-function openDropdown() {
+function openDropdown(e) {
+  e.stopPropagation();
+  window.addEventListener('click', closeDropdown);
+
   toggleSortIcon();
   toggleIsOpenedAndHidden();
+  
+}
+
+/**
+ * Close the dropdown when click outside
+ */
+function closeDropdown() {
+  const btnIcon = document.querySelector('.sorted_by_container .sort_btn span');
+  btnIcon.className = 'fa-solid fa-chevron-down';
+  const sortBtn = document.querySelector('.sort_btn');
+  sortBtn.classList.remove('opened');
+  const dropdownElt = document.querySelector('.dropdown_list');
+  dropdownElt.classList.add('hidden');
+  window.removeEventListener('click', closeDropdown);
 }
 
 /**
@@ -87,9 +107,8 @@ function openDropdown() {
  * and finally display new medias list
  * @param {*} value
  * @param {*} text
- * @param {*} e
  */
-function selectOpt(value, text, e) {
+function selectOpt(value, text) {
   sortMedias(value);
   const mediasContainer = document.querySelector('.photograph_medias');
   mediasContainer.innerHTML = '';
@@ -111,7 +130,6 @@ function selectOpt(value, text, e) {
  * @returns new sorted list
  */
 function sortMedias(property) {
-  console.log(`property`, property);
   return mediasSorted.sort((a, b) => {
     if (property === 'likes') {
       return b[property] - a[property]
@@ -138,6 +156,10 @@ function toggleIsOpenedAndHidden() {
   sortBtn.classList.toggle('opened');
   const dropdownElt = document.querySelector('.dropdown_list');
   dropdownElt.classList.toggle('hidden');
+  
+  if (dropdownElt.classList.contains('hidden')) {
+    window.removeEventListener('click', closeDropdown);
+  }
 }
 
 /**
@@ -158,7 +180,7 @@ function setSortButtonValues(sortButtonElt, sortButtonTextElt, value, text) {
  * @param {*} text 
  */
 function setOptValues(value, text, oldValue) {
-  const opt1 = document.querySelector(`[data-value="${oldValue}"]`);
-  opt1.dataset.value = value;
-  opt1.textContent = text;
+  const opt = document.querySelector(`[data-value="${oldValue}"]`);
+  opt.dataset.value = value;
+  opt.textContent = text;
 }

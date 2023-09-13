@@ -133,11 +133,12 @@ h3 {
   border-bottom-right-radius: 0 !important;
 }
 
-.dropdown_container .dropdown_list {
+.dropdown_list {
   position: absolute;
-  bottom: -136px;
+  bottom: 0;
   left: 0;
-  right: 0;
+  transform-origin: top;
+  animation: openDropdown 300ms both;
   z-index: 1;
   border-bottom-left-radius: 5px;
   border-bottom-right-radius: 5px;
@@ -145,23 +146,38 @@ h3 {
   color: #fff;
 }
 
+@keyframes openDropdown {
+  from {
+    transform: translateY(100%) scaleY(0);
+  }
+  to {
+    transform: translateY(100%) scaleY(1);
+  }
+}
+
+.divider {
+  width: 90%;
+  height: 2px;
+  margin: 0 auto;
+  background-color: #fff;
+}
+
 .dropdown_option_container {
   display: flex;
   align-items: center;
   justify-content: baseline;
   cursor: default;
-  height: 69px;
   width: 170px;
   font-size: 18px;
   font-weight: 700;
-  padding: 10px;
+  padding: 0 10px;
   box-sizing: border-box;
 }
 
 .dropdown_option {
   width: 100%;
   padding: 20px 20px 14px 10px;
-  border-top: #fff solid 2px !important;
+  /* border-top: #fff solid 2px !important; */
 }
 
 /*
