@@ -62,6 +62,8 @@ function photographerTemplate(photographerData, mediasData) {
     return photographHeader
   }
 
+  
+
   return {
     name,
     picture,
