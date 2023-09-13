@@ -9,7 +9,6 @@ function closeModal() {
 }
 
 // DOM Elements
-const modalbg = document.querySelector(".bground");
 const modalBtn = document.querySelectorAll(".modal-btn");
 const modalCloseBtn = document.querySelector(".close"); 
 const formData = document.querySelectorAll(".formData");
@@ -29,11 +28,6 @@ function closeNav() {
 const close = document.querySelectorAll("#close");
 close.forEach((closed) => closed.addEventListener("click", closeModal));
 
-// Fermeture de la modale
-function closeModal() {
-  modalSuccess.style.display = "none";
-  location.reload();
-}
 // Modale de validation
 function modalValidation() {
   const modalSuccess = document.querySelector("#modalSuccess");
@@ -123,14 +117,14 @@ function checkValidateAll() {
   firstnameValidation();
   lastnameValidation();
   emailValidation();
-  messageBoxValidation()
+  messageBoxValidation();
 }
 function validate() {
   if (
     firstnameValidation() &&
     lastnameValidation() &&
     emailValidation() &&
-    messageBoxValidation
+    messageBoxValidation()
   ) {
     return true;
   }
