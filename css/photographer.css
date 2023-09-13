@@ -4,8 +4,29 @@
 
 .photograph-header {
     background-color: #FAFAFA;
-    height: 300px;
-    margin: 0 100px;
+    height: 260px;
+    padding: 0 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.photograph-header .content {
+    height: 140px;
+    display: flex;
+    justify-content: space-between;
+    align-items: left;
+    flex-direction: column;
+}
+
+.photograph-header h1 {
+    font-size: 3rem;
+    color: #D3573C;
+}
+
+.photograph-header .content p:first-of-type {
+    font-size: 1.3rem;
+    color: #D3573C;
 }
 
 .contact_button {
@@ -21,6 +42,15 @@
     cursor: pointer;
 }
 
+.photograph-header img {
+    height: 180px;
+    width: 180px;
+    margin-bottom: 20px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+/* Modal section */
 .modal {
     border-radius: 5px;
     background-color: #DB8876;

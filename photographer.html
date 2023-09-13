@@ -12,14 +12,12 @@
 	</head>
 	<body>
 		<header>
-			<img src="assets/images/logo.png" class="logo" />
+			<a href="/">
+				<img src="assets/images/logo.png" class="logo" />
+			</a>
 		</header>
 		<main id="main">
-			<div class="photograph-header">
-				<button class="contact_button" onclick="displayModal()">
-					Contactez-moi
-				</button>
-			</div>
+			<section class="photograph-header"></section>
 		</main>
 		<div id="contact_modal">
 			<div class="modal">
@@ -36,6 +34,7 @@
 				</form>
 			</div>
 		</div>
+		<script src="/scripts/utils/fetchData.js"></script>
 		<script src="/scripts/pages/photographer.js"></script>
 		<script src="/scripts/utils/contactForm.js"></script>
 	</body>
