@@ -7,31 +7,22 @@ function displayData(photographer, medias) {
   mediasSorted = medias;
   currentPhotographer = photographer;
 
-  // const mainElt = document.querySelector('main');
-
-  // const photographerModel = photographerTemplate(photographer, medias);
-  // const photographerDetails = photographerModel.getPhotographerDetails();
-
-  // const sortedByContainer = createSortedByContainerElement();
-  
-  // const mediasContainer = document.createElement('section');
-  // mediasContainer.classList.add('photograph_medias');
-  
-  // mediasSorted = sortMedias('likes');
-
-  // mediasSorted.forEach((media, index, list) => {
-  //   const mediaModel = mediaTemplate(media, photographer, list);
-  //   const mediaDOM = mediaModel.mediaDOM();
-  //   mediasContainer.appendChild(mediaDOM);
-  // });
-  
-  // mainElt.appendChild(photographerDetails);
-  // mainElt.appendChild(sortedByContainer);
-  // mainElt.appendChild(mediasContainer);
-
   const photographerDetails = displayPhotographerData();
 
-  const sortedByContainer = createSortedByContainerElement();
+  const dropdownOptions = [{
+    value: 'likes',
+    text: 'Popularité',
+    isSelected: true
+  }, {
+    value: 'title',
+    text: 'Titre',
+    isSelected: false
+  }, {
+    value: 'date',
+    text: 'Date',
+    isSelected: false
+  }]
+  const sortedByContainer = createDropdown(dropdownOptions);
 
   const mediasContainer = document.createElement('section');
   mediasContainer.classList.add('photograph_medias');
@@ -54,8 +45,6 @@ function displayPhotographerData() {
 }
 
 function displayMedias(mediasContainer) {
-
-  console.log(`dans displayMedias`, mediasSorted);
   mediasSorted.forEach((media, index, list) => {
     const mediaModel = mediaTemplate(media, currentPhotographer, list);
     const mediaDOM = mediaModel.mediaDOM();
