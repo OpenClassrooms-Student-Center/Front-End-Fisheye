@@ -1,59 +1,79 @@
 <!DOCTYPE html>
 <html lang="fr">
-  <head>
-    <link href="css/style.css" rel="stylesheet" type="text/css" />
-    <meta charset="utf-8" />
-    <link rel="icon" type="image/png" href="assets/favicon.png" />
-    <link
-      href="https://fonts.googleapis.com/css?family=DM+Sans&display=swap"
-      rel="stylesheet"
-    />
-    <title>Fisheye - photographe</title>
-  </head>
-  <body>
-    <header>
-      <a href="./index.html">
-        <img
-          src="assets/images/logo.png"
-          alt="Fisheye Home Page"
-          class="logo"
-      >
-      </a>
-    </header>
-    <main id="main">
-      <div class="photograph-header">
-        <button class="contact_button" onclick="displayModal()">
-          Contactez-moi
-        </button>
-      </div>
-    </main>
-    <div id="select">
-      <label for="orderSelect">Trier par</label>
-      <select name="orderSelect" id="orderSelect">
-        <option value="popularity">Popularité</option>
-        <option value="date">Date</option>
-        <option value="title">Titre</option>
-      </select>
+
+<head>
+  <link href="css/style.css" rel="stylesheet" type="text/css" />
+  <meta charset="utf-8" />
+  <link rel="icon" type="image/png" href="assets/favicon.png" />
+  <link href="https://fonts.googleapis.com/css?family=DM+Sans&display=swap" rel="stylesheet" />
+  <title>Fisheye - photographe</title>
+</head>
+
+<body>
+  <header>
+    <a href="./index.html">
+      <img src="assets/images/logo.png" alt="Fisheye Home Page" class="logo">
+    </a>
+  </header>
+  <main id="main">
+    <div class="photograph-header">
+      <button class="contact_button" onclick="displayModal()">
+        Contactez-moi
+      </button>
     </div>
-    <div id="contact_modal">
-      <div class="modal">
-        <header>
-          <h2>Contactez-moi</h2>
-          <img
-            src="assets/icons/close.svg"
-            alt="Close Contact Form"
-            onclick="closeModal()"
-          />
-        </header>
-        <form>
-          <div>
-            <label>Prénom</label>
+  </main>
+  <div id="select">
+    <label for="orderSelect">Trier par</label>
+    <select name="orderSelect" id="orderSelect">
+      <option value="popularity">Popularité</option>
+      <option value="date">Date</option>
+      <option value="title">Titre</option>
+    </select>
+  </div>
+  <div id="contact_modal">
+    <div class="modal">
+      <header>
+        <h2>Contactez-moi</h2>
+        <img src="assets/icons/close.svg" alt="Close Contact Form" onclick="closeModal()" alt="X pour fermer le modal" />
+      </header>
+      <div class="bground">
+        <div class="content">
+          <span class="close"></span>
+          <div class="modal-body">
+            <form id="form" name="reserve" action="index.html" method="get" onsubmit="return validate();" novalidate>
+              <div class="formData">
+                <label>Prénom</label><br>
+                <input class="text-control" type="text" id="first" name="first" minlength="2" /><br>
+                <p id="firstNameErrorMsg">
+                  <!-- ci est un message d'erreur -->
+                </p>
+              </div>
+              <div class="formData">
+                <label>Nom</label><br>
+                <input class="text-control" type="text" id="last" name="last" /><br>
+                <p id="lastNameErrorMsg">
+                  <!-- ci est un message d'erreur -->
+                </p>
+              </div>
+              <div class="formData">
+                <label>E-mail</label><br>
+                <input class="text-control" type="email" id="email" name="email" /><br>
+                <p id="emailErrorMsg">
+                  <!-- ci est un message d'erreur -->
+                </p>
+              </div>
+              <div class="formDate">
+                <label>Votre message</label>
+                <input class="text-control" type="text" id="messageBox" name="messageBox">
+                <p id="messageBoxErrorMsg"></p>
+              </div>
+              <button class="contact_button">Envoyer</button>
+            </form>
           </div>
-          <button class="contact_button">Envoyer</button>
-        </form>
+        </div>
       </div>
-    </div>
-    <script src="/scripts/pages/photographer.js"></script>
-    <script src="/scripts/utils/contactForm.js"></script>
-  </body>
+      <script src="/scripts/pages/photographer.js"></script>
+      <script src="/scripts/utils/contactForm.js"></script>
+</body>
+
 </html>
