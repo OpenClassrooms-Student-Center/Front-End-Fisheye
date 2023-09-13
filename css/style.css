@@ -20,6 +20,10 @@ header {
     height: 90px;
 }
 
+a {
+    text-decoration: none;
+}
+
 h1 {
     color: #901C1C;
     margin-right: 100px;
@@ -37,7 +41,7 @@ h1 {
     margin-top: 50px;
 }
 
-.photographer-section article {
+.photographer-section article div {
     justify-self: center;
     display: flex;
     justify-content: center;
