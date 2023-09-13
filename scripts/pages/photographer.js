@@ -30,27 +30,79 @@ async function getPhotographerInfos(idPhotographer) {
 async function displayInfos(photographer) {
     const photographerHeader = document.querySelector(".photograph-header");
 
-    const photographerModel = photographerTemplate(photographer);
-    console.log(photographerModel);
+    const photographerModel = photographerFactory(photographer);
     const userCardDOM = photographerModel.getPhotographerDataDOM();
     photographerHeader.appendChild(userCardDOM);
+
+    // dans la modale
+    const photographerNameElt = document.getElementById("photographer-name");
+    photographerNameElt.textContent = photographer.name;
 };
+
+/**
+ * Récupération des photos du photographe depuis le fichier JSON
+ */
+async function getPhotographerPhotos(id) {
+    if (photosFromJSON == "") {
+        const photographers = await getJSON();
+        photosFromJSON = photographers;
+        return photographers.media.filter(media => media.photographerId == id);
+    } else {
+        return photosFromJSON.media.filter(media => media.photographerId == id);
+    }
+}
+
+/** 
+ * Affichage des photos du photographe
+*/
+function displayPhotos(photos) {
+    const listPhotos = document.querySelector(".photos-list");
+    listPhotos.innerHTML = '';
+
+    let cptr = 0;
+    photos.forEach((photo) => {
+        const photosModel = mediaFactory(photo, photographerName, cptr);
+        const photosDOM = photosModel.getPhotosDOM();
+        listPhotos.appendChild(photosDOM);
+        cptr++;
+    });
+};
+
+/** 
+ * Affichage des prix du photographe
+*/
+function displayPrice(price) {
+    const priceHtml = document.getElementById("price");
+    priceHtml.textContent = price + "€ / jour";
+};
+
+
 
 /**
  * recupère les données du fichier JSON
  */
 async function getJSON() {
-  const reponse = await fetch("data/photographers.json");
-  const photographers = await reponse.json();
-  return photographers;
+    const reponse = await fetch("data/photographers.json");
+    const photographers = await reponse.json();
+    return photographers;
 }
 
-async function init() { 
+/**
+ * Récupère les données du photographe
+ */
+async function init() {
 
-  const id = getPhotographerId();
+    const id = getPhotographerId();
 
-  const data = await getPhotographerInfos(id);
-  displayInfos(data);
+    const data = await getPhotographerInfos(id);
+    displayInfos(data);
+
+    const photos = await getPhotographerPhotos(id);
+    displayPhotos(photos);
+
 };
 
 init();
+
+
+

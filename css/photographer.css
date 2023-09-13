@@ -1,273 +1,273 @@
 #contact_modal {
-  display: none;
+    display: none;
 }
 
 .photograph-header {
-  background-color: #FAFAFA;
-  height: 300px;
-  margin: 0 100px;
+    background-color: #FAFAFA;
+    height: 300px;
+    margin: 0 100px;
 }
 
 .photograph-header>div {
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
 }
 
 .photograph-header h1 {
-  color: #D3573C;
-  font-weight: 400;
-  font-size: 64px;
-  margin-right: 0;
+    color: #D3573C;
+    font-weight: 400;
+    font-size: 64px;
+    margin-right: 0;
 }
 
 .photograph-header h2 {
-  color: #D3573C;
-  font-weight: 400;
-  font-size: 24px;
+    color: #D3573C;
+    font-weight: 400;
+    font-size: 24px;
 }
 
 .photograph-header p {
-  margin-top: 1em;
-  font-weight: 400;
-  font-size: 18px;
+    margin-top: 1em;
+    font-weight: 400;
+    font-size: 18px;
 }
 
 .photograph-header img {
-  height: 200px;
-  width: 200px;
-  border-radius: 50%;
-  object-fit: cover;
+    height: 200px;
+    width: 200px;
+    border-radius: 50%;
+    object-fit: cover;
 }
 
 .contact_button {
-  font-size: 20px;
-  font-weight: bold;
-  color: white;
-  padding: 11px;
-  margin-top: 20px;
-  width: 170px;
-  height: 70px;
-  border: none;
-  background-color: #901C1C;
-  border-radius: 5px;
-  cursor: pointer;
+    font-size: 20px;
+    font-weight: bold;
+    color: white;
+    padding: 11px;
+    margin-top: 20px;
+    width: 170px;
+    height: 70px;
+    border: none;
+    background-color: #901C1C;
+    border-radius: 5px;
+    cursor: pointer;
 }
 
 .contact_button:hover {
-  color: black;
-  background-color: #DB8876;
+    color: black;
+    background-color: #DB8876;
 }
 
 .contact_button:active {
-  color: black;
-  background-color: #DB8876;
+    color: black;
+    background-color: #DB8876;
 }
 
 .photos {
-  margin: 0 6em 5em 6em;
+    margin: 0 6em 5em 6em;
 }
 
 .photos label {
-  font-weight: 700;
-  font-size: 18px;
-  margin-right: 1em;
+    font-weight: 700;
+    font-size: 18px;
+    margin-right: 1em;
 }
 
 .select {
-  font-weight: 700;
-  font-size: 18px;
-  color: white;
-  padding: 11px;
-  width: 170px;
-  height: 60px;
-  border: none;
-  background-color: #901C1C;
-  border-radius: 5px;
-  cursor: pointer;
-  margin-bottom: 58px;
-  border-right: solid 15px #901C1C
+    font-weight: 700;
+    font-size: 18px;
+    color: white;
+    padding: 11px;
+    width: 170px;
+    height: 60px;
+    border: none;
+    background-color: #901C1C;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-bottom: 58px;
+    border-right: solid 15px #901C1C
 }
 
 .photos img,
 .photos video {
-  width: 350px;
-  height: 300px;
-  object-fit: cover;
+    width: 350px;
+    height: 300px;
+    object-fit: cover;
 }
 
 .photos-list {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
 }
 
 .line {
-  display: flex;
-  justify-content: space-between;
-  font-weight: 400;
+    display: flex;
+    justify-content: space-between;
+    font-weight: 400;
 }
 
 .marginV {
-  margin: 10px 0 30px 0;
+    margin: 10px 0 30px 0;
 }
 
 .fa-heart {
-  cursor: pointer;
-  border: none;
-  text-decoration: none;
-  margin-top: 3px;
-  margin-left: 5px;
+    cursor: pointer;
+    border: none;
+    text-decoration: none;
+    margin-top: 3px;
+    margin-left: 5px;
 }
 
 #price-and-likes {
-  position: fixed;
-  bottom: 0;
-  right: 20px;
-  border-radius: 5px;
-  background-color: #DB8876;
-  padding: 24px;
-  font-size: 24px;
+    position: fixed;
+    bottom: 0;
+    right: 20px;
+    border-radius: 5px;
+    background-color: #DB8876;
+    padding: 24px;
+    font-size: 24px;
 }
 
 .modal {
-  position: fixed;
-  top: 0;
-  left: 25%;
-  border-radius: 5px;
-  background-color: #DB8876;
-  width: 50%;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  padding: 1em 3em;
-  margin: auto;
+    position: fixed;
+    top: 0;
+    left: 25%;
+    border-radius: 5px;
+    background-color: #DB8876;
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 1em 3em;
+    margin: auto;
 }
 
 .modal header {
-  justify-content: space-between;
-  width: 100%;
+    justify-content: space-between;
+    width: 100%;
 }
 
 .modal header img,
 .lightbox-container i,
 article img,
 article video {
-  cursor: pointer;
+    cursor: pointer;
 }
 
 .modal header h2 {
-  font-size: 58px;
-  font-weight: normal;
-  text-align: center;
+    font-size: 58px;
+    font-weight: normal;
+    text-align: center;
 }
 
 #photographer-name {
-  font-weight: 400;
-  font-size: 58px;
+    font-weight: 400;
+    font-size: 58px;
 }
 
 form {
-  display: flex;
-  width: 100%;
-  flex-direction: column;
-  align-items: flex-start;
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    align-items: flex-start;
 }
 
 form label {
-  color: #312E2E;
-  font-size: 36px;
+    color: #312E2E;
+    font-size: 36px;
 }
 
 form div {
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-  align-items: self-start;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    align-items: self-start;
 }
 
 form input {
-  width: 100%;
-  height: 68px;
-  border: none;
-  border-radius: 5px;
-  font-weight: 400;
-  font-size: 20px;
+    width: 100%;
+    height: 68px;
+    border: none;
+    border-radius: 5px;
+    font-weight: 400;
+    font-size: 20px;
 }
 
 form textarea {
-  width: 100%;
-  height: 170px;
-  border: none;
-  border-radius: 5px;
-  font-weight: 400;
-  font-size: 20px;
+    width: 100%;
+    height: 170px;
+    border: none;
+    border-radius: 5px;
+    font-weight: 400;
+    font-size: 20px;
 }
 
 #lightbox {
-  display: none;
-  padding-top: 2.5em;
-  position: fixed;
-  top: 0;
-  border-radius: 5px;
-  color: #901C1C;
-  width: 100%;
-  height: 100%;
-  background: rgb(0 0 0 / 70%);
+    display: none;
+    padding-top: 2.5em;
+    position: fixed;
+    top: 0;
+    border-radius: 5px;
+    color: #901C1C;
+    width: 100%;
+    height: 100%;
+    background: rgb(0 0 0 / 70%);
 }
 
 .fixed {
-  position: fixed;
-  top: 1em;
+    position: fixed;
+    top: 1em;
 }
 
 .lightbox i {
-  cursor: pointer;
+    cursor: pointer;
 }
 
 .lightbox-container {
-  display: flex;
-  width: 80%;
-  margin: auto;
+    display: flex;
+    width: 80%;
+    margin: auto;
 }
 
 .lightbox-container-left {
-  padding: 4%;
-  display: flex;
-  align-items: center;
-  font-size: 50px;
-  background-color: white;
+    padding: 4%;
+    display: flex;
+    align-items: center;
+    font-size: 50px;
+    background-color: white;
 
 }
 
 .lightbox-container-center {
-  width: 80%;
-  background: white;
-  padding: 1em;
+    width: 80%;
+    background: white;
+    padding: 1em;
 }
 
 .lightbox-container-right {
-  padding: 4%;
-  display: flex;
-  align-items: center;
-  font-size: 50px;
-  background-color: white;
+    padding: 4%;
+    display: flex;
+    align-items: center;
+    font-size: 50px;
+    background-color: white;
 
 }
 
 #lightbox-media img,
 #lightbox-media video {
-  object-fit: cover;
-  width: 100%;
-  height: 800px;
+    object-fit: cover;
+    width: 100%;
+    height: 800px;
 }
 
 #lightbox-photo-title {
-  font-size: 24px;
+    font-size: 24px;
 }
 
 .sr-only {
-  width: 0;
-  height: 0;
-  overflow: hidden;
+    width: 0;
+    height: 0;
+    overflow: hidden;
 }
