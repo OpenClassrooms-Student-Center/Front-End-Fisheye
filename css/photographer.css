@@ -135,9 +135,10 @@ h3 {
 
 .dropdown_container .dropdown_list {
   position: absolute;
-  bottom: -68px;
+  bottom: -136px;
   left: 0;
   right: 0;
+  z-index: 1;
   border-bottom-left-radius: 5px;
   border-bottom-right-radius: 5px;
   background-color: var(--primary-bg-color);

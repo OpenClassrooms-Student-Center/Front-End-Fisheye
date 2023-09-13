@@ -28,12 +28,23 @@ function createSortedByContainerElement() {
   opt1Container.classList.add('dropdown_option_container');
   const opt1 = document.createElement('span');
   opt1.textContent = 'Titre';
-  opt1.dataValue = 'title'
+  opt1.dataset.value = 'title'
   opt1.classList.add('dropdown_option');
   opt1Container.appendChild(opt1);
-  opt1Container.addEventListener('click', (e) => selectOpt(opt1.dataValue, opt1.textContent, e));
+  opt1Container.addEventListener('click', (e) => selectOpt(opt1.dataset.value, opt1.textContent, e));
+
+  
+  const opt2Container = document.createElement('div');
+  opt2Container.classList.add('dropdown_option_container');
+  const opt2 = document.createElement('span');
+  opt2.textContent = 'Date';
+  opt2.dataset.value = 'date'
+  opt2.classList.add('dropdown_option');
+  opt2Container.appendChild(opt2);
+  opt2Container.addEventListener('click', (e) => selectOpt(opt2.dataset.value, opt2.textContent, e));
 
   dropdownElt.appendChild(opt1Container);
+  dropdownElt.appendChild(opt2Container);
   
   dropdownContainer.appendChild(dropdownElt);
   
@@ -50,7 +61,7 @@ function createSortedByContainerElement() {
 function createSortButton() {
   const sortButton = document.createElement('button');
   sortButton.classList.add('sort_btn');
-  sortButton.dataValue = 'likes';
+  sortButton.dataset.value = 'likes';
   const btnText = document.createElement('p');
   btnText.textContent = 'Popularité';
   sortButton.addEventListener('click', openDropdown);
@@ -79,7 +90,6 @@ function openDropdown() {
  * @param {*} e
  */
 function selectOpt(value, text, e) {
-  e.stopPropagation();
   sortMedias(value);
   const mediasContainer = document.querySelector('.photograph_medias');
   mediasContainer.innerHTML = '';
@@ -89,7 +99,7 @@ function selectOpt(value, text, e) {
 
   const sortButton = document.querySelector('.sort_btn');
   const sortButtonText = document.querySelector('.sort_btn p');
-  setOptValues(sortButton.dataValue, sortButtonText.textContent);
+  setOptValues(sortButton.dataset.value, sortButtonText.textContent, value);
   setSortButtonValues(sortButton, sortButtonText, value, text);
 
   displayMedias(mediasContainer);
@@ -101,6 +111,7 @@ function selectOpt(value, text, e) {
  * @returns new sorted list
  */
 function sortMedias(property) {
+  console.log(`property`, property);
   return mediasSorted.sort((a, b) => {
     if (property === 'likes') {
       return b[property] - a[property]
@@ -137,17 +148,17 @@ function toggleIsOpenedAndHidden() {
  * @param {*} text 
  */
 function setSortButtonValues(sortButtonElt, sortButtonTextElt, value, text) {
-  sortButtonElt.dataValue = value;
+  sortButtonElt.dataset.value = value;
   sortButtonTextElt.textContent = text;
 }
 
 /**
- * Set the nex value of dropdown opt
+ * Set the new value of dropdown opt
  * @param {*} value 
  * @param {*} text 
  */
-function setOptValues(value, text) {
-  const opt1 = document.querySelector('.dropdown_option');
-  opt1.dataValue = value;
+function setOptValues(value, text, oldValue) {
+  const opt1 = document.querySelector(`[data-value="${oldValue}"]`);
+  opt1.dataset.value = value;
   opt1.textContent = text;
 }
