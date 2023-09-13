@@ -3,7 +3,10 @@
 }
 
 .photograph-header {
-    background-color: #FAFAFA;
+    background-color: darkcyan;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
     height: 300px;
     margin: 0 100px;
 }
