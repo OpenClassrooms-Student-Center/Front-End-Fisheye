@@ -20,6 +20,10 @@ header {
     height: 90px;
 }
 
+main {
+    padding: 0 100px;
+}
+
 a {
     text-decoration: none;
 }

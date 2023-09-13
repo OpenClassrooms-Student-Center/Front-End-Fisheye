@@ -6,16 +6,16 @@ function photographerTemplate(data) {
     function getUserCardDOM() {
         const elements = `
             <article>
-                <a href="${id}">
-                <div>
-                    <img src="${picture}" alt="${name}">
-                    <h2>${name}</h2>
-                </div>
+                <a href="photographer.html?id=${id}">
+                    <div>
+                        <img src="${picture}" alt="${name}">
+                        <h2>${name}</h2>
+                    </div>
                 </a>
                 <div>
                     <p>${city}, ${country}</p>
                     <p>${tagline}</p>
-                    <small>${price}/jour</small>
+                    <small>${price}€/jour</small>
                 </div>
             </article>
         `;
@@ -23,4 +23,4 @@ function photographerTemplate(data) {
         return ( elements );
     }
     return { name, picture, getUserCardDOM }
-} 
+};
