@@ -12,7 +12,7 @@ function mediaTemplate(media, photographer, mediasList) {
    * @returns div
    */
   function mediaDOM() {
-    const mediaContainer = document.createElement('div');
+    const mediaContainer = document.createElement('article');
     
     const mediaElt = media.image ? createImage() : createVideo();
     mediaElt.classList.add('media');
