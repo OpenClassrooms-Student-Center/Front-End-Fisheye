@@ -1,8 +1,11 @@
 const contactModal = document.getElementById("contact_modal");
 const form = document.getElementById('contact_form');
+const formDatas = document.querySelectorAll('#contact_form .form_data input, #contact_form .form_data textarea');
+
 // Prevent submit and just close modal
 form.addEventListener('submit', (e) => {
     e.preventDefault();
+    formDatas.forEach(elt => console.log(`${elt.name}: ${elt.value}`))
     closeContactModal();
 });
 let photographerName = '';
