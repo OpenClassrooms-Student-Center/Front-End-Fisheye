@@ -1,6 +1,6 @@
 async function getPhotographers() {
   try {
-      const response = await fetch('../data/photographers.json');
+      const response = await fetch('data/photographers.json');
       if (!response.ok) {
           throw new Error('Impossible de récupérer les données des photographes.');
       }
