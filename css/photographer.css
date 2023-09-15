@@ -99,7 +99,7 @@ form input {
     margin: 0 100px;
 }
 
-.photograph-header article h2 {
+.photograph-header article h1 {
     color: #D3573C;
     font-size: 36px;
     margin-bottom: 0;
@@ -135,6 +135,7 @@ form input {
 
 .photograph-media {
     display: grid;
+    row-gap: 1.2em;
     grid-template-columns: repeat(3, 1fr);
     justify-content: center;
     margin: 50px 100px;
@@ -187,6 +188,7 @@ form input {
     display: flex;
     flex-direction: row;
     justify-content: center;
+    gap: 5px;
 }
 
 .photograph-detail div p {

@@ -13,10 +13,11 @@ function detailUserTemplate(data) {
 
         const img = document.createElement( 'img' );
         img.setAttribute("src", picture);
+        img.setAttribute("atr", name);
 
-        const h2 = document.createElement( 'h2' );
-        h2.classList.add('title-name');
-        h2.textContent = name;
+        const h1 = document.createElement( 'h1' );
+        h1.classList.add('title-name');
+        h1.textContent = name;
 
         const pZone = document.createElement('p');
         pZone.classList.add('text-zone');
@@ -27,7 +28,7 @@ function detailUserTemplate(data) {
         pTagline.textContent = tagline;
 
         article.appendChild(img);
-        div.appendChild(h2);
+        div.appendChild(h1);
         div.appendChild(pZone);
         div.appendChild(pTagline);
         article.appendChild(div)
@@ -48,6 +49,7 @@ function detailMediaTemplate(data) {
 
         const div = document.createElement('div');
         div.classList.add('cardMedia');
+        div.setAttribute("alt", "Lilac breasted roller, closeup view")
 
         const img = document.createElement( 'img' );
         const mp4 = document.createElement( 'video' );
@@ -58,7 +60,6 @@ function detailMediaTemplate(data) {
             mp4.src = movie;
             mp4.autoplay = false;
             mp4.controls = true;
-            mp4.muted = false;
             mp4.height = 350;
             mp4.width = 350;
         }
@@ -78,7 +79,7 @@ function detailMediaTemplate(data) {
 
         const icon = document.createElement('img');
         icon.setAttribute("src", urlLike);
-        icon.setAttribute("alt", "icon like");
+        icon.setAttribute("alt", "likes");
         icon.classList.add('like-icon');
 
         if (image) {
