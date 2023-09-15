@@ -22,26 +22,34 @@ async function getPhotographers() {
     return (liste)
 }
 
+// Affichage du bandeau photographe
 async function displayUser(user) {
-    console.log(user);
-
     const photographersHeader = document.querySelector(".photograph-header");
 
+    // Récuperation des données photographe puis création de l'affichage
     const detailUser = detailUserTemplate(user);
-    const detailDOM = detailUser.getDetailDOM();
-    photographersHeader.appendChild(detailDOM);
+    const detailUserDOM = detailUser.getDetailDOM();
+    photographersHeader.appendChild(detailUserDOM);
 }
 
-async function displayMedia(medias) {
-    console.log(medias);
-
+// Affichage des médias
+async function displayMedia(medias, user) {
     const photographersHeader = document.querySelector(".photograph-media");
+    const photographersDetail = document.querySelector(".photograph-detail");
+    let totalLikes = 0;
 
     medias.forEach((media) => {
-        const detailUser = detailMediaTemplate(media);
-        const detailMediaDOM = detailUser.getMediaDOM();
+        // Faire la somme des likes
+        totalLikes = totalLikes + media.likes;
+
+        // Récuperation des données média puis création de l'affichage
+        const detailMedia = detailMediaTemplate(media);
+        const detailMediaDOM = detailMedia.getMediaDOM();
         photographersHeader.appendChild(detailMediaDOM);
     });
+
+    // Affichage du totalLikes et du prix
+    await detailTemplate(totalLikes, user.price);
 }
 
 async function init() {
@@ -50,7 +58,7 @@ async function init() {
     const user = liste.user[0];
     const media = liste.media;
     await displayUser(user);
-    await displayMedia(media);
+    await displayMedia(media, user);
 }
 
 init();

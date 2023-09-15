@@ -164,3 +164,33 @@ form input {
     text-align: start;
     margin: 10px 0;
 }
+
+.photograph-detail {
+    position: fixed;
+    width: 325px;
+    height: 50px;
+    bottom: 0;
+    right: 35px;
+    background: #db8876;
+    border-radius: 5px 5px 0 0 ;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.photograph-detail div {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.photograph-detail div p {
+    margin-right: 0;
+}
+
+.photograph-detail p {
+    font-size: 24px;
+    font-weight: 500;
+    margin: 0 30px;
+}

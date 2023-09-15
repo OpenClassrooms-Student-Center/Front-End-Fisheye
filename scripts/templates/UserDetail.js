@@ -78,3 +78,24 @@ function detailMediaTemplate(data) {
     }
     return { name, image, getMediaDOM}
 }
+
+function detailTemplate(totalLikes, tarif) {
+    const photographersDetail = document.querySelector(".photograph-detail");
+    const divLikes = document.createElement('div');
+    const pLikes = document.createElement('p');
+    const pTarif = document.createElement('p');
+    const urlLike = 'assets/icons/like.svg';
+
+    pLikes.textContent = totalLikes;
+    pTarif.textContent = tarif + '€ / jour';
+
+    const icon = document.createElement('img');
+    icon.setAttribute("src", urlLike);
+    icon.setAttribute("alt", "icon like");
+    icon.classList.add('like-icon');
+
+    divLikes.appendChild(pLikes);
+    divLikes.appendChild(icon);
+    photographersDetail.appendChild(divLikes);
+    photographersDetail.appendChild(pTarif);
+}
