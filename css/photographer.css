@@ -152,6 +152,10 @@ form input {
     align-content: center;
 }
 
+.cardMedia video {
+    background: #232327;
+}
+
 .textMedia {
     display: flex;
     flex-direction: row;

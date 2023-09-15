@@ -40,15 +40,28 @@ function detailMediaTemplate(data) {
     const { id, image, video, title, date, likes } = data;
 
     const picture = `assets/media/${image}`;
+    const movie = `assets/media/${video}`;
     const urlLike = 'assets/icons/like.svg';
 
+    console.log(picture);
     function getMediaDOM() {
 
         const div = document.createElement('div');
         div.classList.add('cardMedia');
 
         const img = document.createElement( 'img' );
-        img.setAttribute("src", picture);
+        const mp4 = document.createElement( 'video' );
+
+        if (image) {
+            img.setAttribute("src", picture);
+        } else {
+            mp4.src = movie;
+            mp4.autoplay = false;
+            mp4.controls = true;
+            mp4.muted = false;
+            mp4.height = 350;
+            mp4.width = 350;
+        }
 
         const divText = document.createElement('div');
         divText.classList.add('textMedia');
@@ -68,7 +81,11 @@ function detailMediaTemplate(data) {
         icon.setAttribute("alt", "icon like");
         icon.classList.add('like-icon');
 
-        div.appendChild(img);
+        if (image) {
+            div.appendChild(img);
+        } else {
+            div.appendChild(mp4);
+        }
         divLike.appendChild(p);
         divLike.appendChild(icon);
         divText.appendChild(h2);
