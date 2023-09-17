@@ -5,17 +5,18 @@ export class Onephotographer {
 
     const response = await fetch("../../data/photographers.json");
     const data = await response.json();
-    const photographer = data.photographers.find((onePhotographer) => onePhotographer.id === id);
+    const photographer = data.photographers.find(
+      (onePhotographer) => onePhotographer.id === id
+    );
     console.log(photographer);
     this.insertHeaderPhotographer(photographer);
   }
 
-
   insertHeaderPhotographer(photographer) {
     const photographHeader = document.getElementById("photograph-header");
-    const { name, portrait, city, country, tagline, } = photographer;
+    const { name, portrait, city, country, tagline } = photographer;
 
-    const picture = `assets/photographers/${portrait}`;
+    const picture = `../../assets/photographers/${portrait}`;
     photographHeader.innerHTML = `
             <div>
              <h1 aria-label="${name}">${name}</h1>

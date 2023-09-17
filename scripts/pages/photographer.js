@@ -1,4 +1,4 @@
-import { Onephotographer } from "../factories/Onephotographer.1.js"
+import { Onephotographer } from "../factories/onePhotographer.js"
 
 document.addEventListener("DOMContentLoaded", async () =>{
     const onePhotographer = new Onephotographer()
