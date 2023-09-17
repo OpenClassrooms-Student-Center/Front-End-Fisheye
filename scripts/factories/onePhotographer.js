@@ -14,8 +14,8 @@ export class Onephotographer{
       insertHeaderPhotographer(photographer) {
         const {name, portrait, city, country, tagline} = photographer
         const nameElement = document.querySelector('.photograph_infos > h1')
-        const locationElement = document.querySelector('.photograph_infos > p')
-        const taglineElement = document.querySelector('.photograph_infos > p2')
+        const locationElement = document.querySelector('.photograph_infos > span')
+        const taglineElement = document.querySelector('.photograph_infos > p')
       
         nameElement.textContent = name
         locationElement.textContent = city + ', ' + country
