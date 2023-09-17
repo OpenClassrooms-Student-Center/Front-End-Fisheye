@@ -12,7 +12,22 @@ export class Onephotographer{
     
 
       insertHeaderPhotographer(photographer) {
-        const {name, portrait, city, country, tagline, price} = photographer
-        console.log(name)
+        const {name, portrait, city, country, tagline} = photographer
+        const nameElement = document.querySelector('.photograph_infos > h1')
+        const locationElement = document.querySelector('.photograph_infos > p')
+        const taglineElement = document.querySelector('.photograph_infos > p2')
+      
+        nameElement.textContent = name
+        locationElement.textContent = city + ', ' + country
+        taglineElement.textContent = tagline
+      
+        const header = document.querySelector('.photograph-header')
+        const image = document.createElement('img')
+      
+        image.src = `../../assets/photographers/${portrait}`
+        image.alt = photographer.name
+      
+        header.appendChild(image)
+      }      
       }
-    }
+    
