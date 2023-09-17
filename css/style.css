@@ -59,7 +59,11 @@ a {
     object-fit: cover;
     border-radius: 100%;
 }
-
+.photograph-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+  }
 .photograph-header h1 {
     color: #d3573c;
     font-size: 64px;
