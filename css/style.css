@@ -81,8 +81,6 @@ a {
 .photograph-header img {
     width: 200px;
     height: 200px;
-    top: 56px;
-    left: 990px;
     border-radius: 50%;
     object-fit: cover;
 }
