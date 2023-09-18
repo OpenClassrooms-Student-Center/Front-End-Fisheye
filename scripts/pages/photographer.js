@@ -38,9 +38,13 @@ async function displayMedia(medias, user) {
     const photographersDetail = document.querySelector(".photograph-detail");
     let totalLikes = 0;
 
-    medias.forEach((media) => {
+        medias.forEach((media) => {
         // Faire la somme des likes
-        totalLikes = totalLikes + media.likes;
+        // totalLikes = totalLikes + media.likes;
+        totalLikes = media.reduce((acc, cur) => {
+            return acc.likes + cur
+        }, 0);
+        console.log(totalLikes);
 
         // Récuperation des données média puis création de l'affichage
         const detailMedia = detailMediaTemplate(media);
