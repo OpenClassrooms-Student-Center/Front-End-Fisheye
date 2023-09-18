@@ -17,13 +17,14 @@ async function getPhotographerById(id) {
 }
 
 //------------------------------------------------------------------------
+// Find the photographer with the matching id
+const id = new URLSearchParams(window.location.search).get("id");
+//------------------------------------------------------------------------
 
-async function displayPhotographerData() {
-  // Find the photographer with the matching id
-  let id = new URLSearchParams(window.location.search).get("id");
-
+async function displayPhotographerData(id) {
   try {
     const photographer = await getPhotographerById(id);
+
     if (!photographer) {
       console.log("Photographer not found");
       return;
@@ -39,6 +40,9 @@ async function displayPhotographerData() {
 
     // Update the page title
     document.title = `Fisheye - ${photographer.name}`;
+
+    // Pass photographer to photographerMediaTemplate
+    photographerMediaTemplate(id);
   } catch (error) {
     console.error("Error fetching photographer data:", error);
   }
@@ -52,19 +56,14 @@ class PhotographerPagesMedia {
   }
 
   // displays media info with similar id
-  async medias() {
+  async medias(id) {
     try {
       const medias = await this.mediasApi.getMedias();
-      // console.log("medias", medias);
-      const id = new URLSearchParams(window.location.search).get("id");
       const filteredMedias = medias.filter(
         (media) => media.photographerId === Number(id)
       );
 
-      // Loop through filteredMedias and create templates for each media
-      filteredMedias.forEach((media) => {
-        const mediaModel = photographerMediaTemplate(media);
-      });
+      return photographerMediaTemplate(filteredMedias);
     } catch (error) {
       console.error("Error fetching media data:", error);
     }
@@ -74,13 +73,14 @@ class PhotographerPagesMedia {
 //------------------------------------------------------------------------
 
 async function init() {
+  const id = new URLSearchParams(window.location.search).get("id");
   const app = new PhotographerPagesMedia();
-  app.medias();
+  const mediaData = await app.medias(id);
+  // app.medias();
 
   // Get photographer data
   try {
-    const photographers = await getPhotographerById();
-    displayPhotographerData(photographers);
+    await displayPhotographerData(id);
   } catch (error) {
     console.error("Error fetching photographers data:", error);
   }

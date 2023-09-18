@@ -2,6 +2,7 @@ import { displayModal, closeModal } from "../utils/contactForm.js";
 
 //template for photographer section for photographer page
 export function photographerPageTemplate(photographer) {
+  // console.log("photographer", photographer);
   //création du template "photographer_section"
   const photographHeader = document.querySelector(".photograph-header");
 
@@ -82,28 +83,49 @@ export function photographerPageTemplate(photographer) {
 }
 
 //template for media section for photographer page
-export function photographerMediaTemplate(filteredMedias) {
-  console.log("filteredMedias1", filteredMedias);
-  const mediasWrapper = document.querySelector(".medias-wrapper");
+export function photographerMediaTemplate(filteredMedias, photographer) {
+  console.log("photographerName", photographer);
+  filteredMedias.forEach((media, photographer) => {
+    const mediasWrapper = document.querySelector(".medias-wrapper");
+    // Create a container for each media item
+    const mediaContainer = document.createElement("div");
+    mediaContainer.classList.add("media-info");
 
-  const mediaContainer = document.createElement("div");
-  mediaContainer.classList.add("media-info");
+    // Create a container for media details
+    const mediaDetails = document.createElement("div");
+    mediaDetails.classList.add("media-details");
 
-  // //-------------------------------------------------------------------
+    // Create a <p> element for the media ID
+    const mediaIdElement = document.createElement("p");
+    mediaIdElement.innerHTML = `ID: ${media.id}`;
 
-  //container parent
-  const mediaDetails = document.createElement("div");
-  mediaDetails.classList.add("media-details");
+    // Create a <p> element for the media title
+    const mediaTitleElement = document.createElement("p");
+    mediaTitleElement.innerHTML = `Title: ${media.title}`;
 
-  //container child
-  const filteredMedia = document.createElement("p");
-  filteredMedia.innerHTML = filteredMedias.id;
+    //   Construct the path to the image using the correct folder structure
+    console.log(photographer);
+    const imagePath = `assets/images/${photographer.name}/${media.image}`;
+    //   append to link
+    const imageDiv = document.createElement("img");
+    imageDiv.src = imagePath; // Use the imagePath instead of just photographer.portrait
+    imageDiv.alt = media.image;
+    // Create a <p> element for the media title
+    const mediaImageElement = document.createElement("p");
+    mediaImageElement.innerHTML = `Image: ${media.image}`;
 
-  //-------------------------------------------------------------------
+    // Add the media details elements to the media details container
+    mediaDetails.appendChild(mediaIdElement);
+    mediaDetails.appendChild(mediaTitleElement);
+    mediaDetails.appendChild(mediaImageElement);
+    mediaDetails.appendChild(imageDiv);
 
-  mediasWrapper.appendChild(mediaContainer);
-  mediaContainer.appendChild(mediaDetails);
-  mediaDetails.appendChild(filteredMedia);
+    // Add the media details container to the media container
+    mediaContainer.appendChild(mediaDetails);
+
+    // Add the media container to the medias wrapper
+    mediasWrapper.appendChild(mediaContainer);
+  });
 
   return {
     getUserCardDOM: () => mediaContainer,
