@@ -92,12 +92,11 @@ form input {
 }
 .price {
   position: fixed;
-  right:0;
+  right: 2rem;
   bottom:0;
   background: #DB8876 ;
   width: 376px;
   height: 89px;
-  top: 13px;
   border-radius: 5px 5px 0 0;
   display: flex;
   justify-content: space-around;
