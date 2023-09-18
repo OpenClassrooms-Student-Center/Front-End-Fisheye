@@ -14,8 +14,9 @@ export class Onephotographer {
 
   insertHeaderPhotographer(photographer) {
     const photographHeader = document.getElementById("photograph-header");
-    const { name, portrait, city, country, tagline } = photographer;
-
+    const { name, portrait, city, country, tagline, price } = photographer;
+    const spanPrice = document.querySelector("#price");
+    spanPrice.innerText = `${price}€ / jour`;
     const picture = `../../assets/photographers/${portrait}`;
     photographHeader.innerHTML = `
             <div>
