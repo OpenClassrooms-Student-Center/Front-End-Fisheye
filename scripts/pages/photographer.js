@@ -56,14 +56,16 @@ class PhotographerPagesMedia {
   }
 
   // displays media info with similar id
-  async medias(id) {
+  async medias(id, photographer) {
     try {
+      const photographer = await getPhotographerById(id);
+      console.log("photographer999", photographer.name);
       const medias = await this.mediasApi.getMedias();
       const filteredMedias = medias.filter(
         (media) => media.photographerId === Number(id)
       );
 
-      return photographerMediaTemplate(filteredMedias);
+      return photographerMediaTemplate(filteredMedias, photographer);
     } catch (error) {
       console.error("Error fetching media data:", error);
     }

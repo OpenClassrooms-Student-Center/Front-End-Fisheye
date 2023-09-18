@@ -83,9 +83,12 @@ export function photographerPageTemplate(photographer) {
 }
 
 //template for media section for photographer page
+// PhotographerPage.js
+
+//template for media section for photographer page
 export function photographerMediaTemplate(filteredMedias, photographer) {
-  console.log("photographerName", photographer);
-  filteredMedias.forEach((media, photographer) => {
+  console.log("photographerName", photographer.name);
+  filteredMedias.forEach((media) => {
     const mediasWrapper = document.querySelector(".medias-wrapper");
     // Create a container for each media item
     const mediaContainer = document.createElement("div");
@@ -104,7 +107,7 @@ export function photographerMediaTemplate(filteredMedias, photographer) {
     mediaTitleElement.innerHTML = `Title: ${media.title}`;
 
     //   Construct the path to the image using the correct folder structure
-    console.log(photographer);
+    // console.log(photographer);
     const imagePath = `assets/images/${photographer.name}/${media.image}`;
     //   append to link
     const imageDiv = document.createElement("img");
