@@ -28,7 +28,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: space-between;
+  justify-content: space-around;
   padding: 35px;
   margin: auto;
 }
@@ -133,5 +133,44 @@ form input {
   width: 15em;
   height: 15em;
   border-radius: 50%;
+  object-fit: cover;
+}
+
+.medias-wrapper {
+  width: 100%;
+  width: auto;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  padding: 3em;
+}
+
+.media-details {
+  display: flex;
+  justify-content: space-between;
+  /* background-color: lightblue; */
+  text-align: center;
+  align-items: center;
+}
+
+.media-like {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+.media-like .fa-solid {
+  padding: 1em;
+  color: #901c1c;
+}
+
+.media-info {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.media-info img {
+  width: 100%;
+  height: 15em;
   object-fit: cover;
 }

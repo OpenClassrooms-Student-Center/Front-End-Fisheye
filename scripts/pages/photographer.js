@@ -56,7 +56,7 @@ class PhotographerPagesMedia {
   }
 
   // displays media info with similar id
-  async medias(id, photographer) {
+  async medias(id) {
     try {
       const photographer = await getPhotographerById(id);
       console.log("photographer999", photographer.name);
