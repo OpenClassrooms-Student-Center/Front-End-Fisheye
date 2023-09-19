@@ -1,3 +1,7 @@
+
+let dropdownContainer = document.querySelector('.dropdown_container') ?? null;
+let focusableElts = [];
+
 /**
  * Create the container of dropdown title and dropdown
  */
@@ -10,14 +14,17 @@ function createDropdown(dropdownOptions) {
   sortedByTitle.textContent = 'Trier par';
 
   // Dropdown container (button + dropdown list)
-  const dropdownContainer = document.createElement('div');
+  dropdownContainer = document.createElement('div');
   dropdownContainer.classList.add('dropdown_container');
 
   // Create button dynamically
   const sortButton = createSortButton(dropdownOptions);
-  // window.addEventListener('click', closeDropdown);
-
+  sortButton.role = 'listbox';
+  sortButton.ariaHasPopup = true;
+  sortButton.ariaExpanded = false;
+  sortButton.classList.add('sort_btn');
   dropdownContainer.appendChild(sortButton);
+
   // Dropdown div
   const dropdownElt = document.createElement('div');
   dropdownElt.classList.add('dropdown_list');
@@ -28,6 +35,8 @@ function createDropdown(dropdownOptions) {
     const divider = document.createElement('div');
     divider.classList.add('divider');
     const option = createOption(opt);
+    option.role = 'option';
+    option.tabIndex = 0;
     dropdownElt.appendChild(divider);
     dropdownElt.appendChild(option);
   });
@@ -46,12 +55,12 @@ function createDropdown(dropdownOptions) {
 function createSortButton(dropdownOptions) {
   const selectedOption = dropdownOptions.find(opt => opt.isSelected);
   const sortButton = document.createElement('button');
-  sortButton.classList.add('sort_btn');
   sortButton.dataset.value = selectedOption.value;
   const btnText = document.createElement('p');
   btnText.textContent = selectedOption.text;
-  sortButton.addEventListener('click', (e) => openDropdown(e), true);
+  sortButton.addEventListener('click', openDropdown, true);
   const btnIcon = document.createElement('span');
+  btnIcon.ariaHidden = true;
   btnIcon.className = 'fa-solid fa-chevron-down';
   sortButton.appendChild(btnText);
   sortButton.appendChild(btnIcon);
@@ -81,6 +90,9 @@ function createOption(opt) {
  */
 function openDropdown(e) {
   e.stopPropagation();
+  handleAriaExpanded();
+  focusableElts = Array.from(dropdownContainer.querySelectorAll('button, .dropdown_option_container'));
+  trapFocusInDropdown(dropdownContainer);
   window.addEventListener('click', closeDropdown);
 
   toggleSortIcon();
@@ -96,9 +108,13 @@ function closeDropdown() {
   btnIcon.className = 'fa-solid fa-chevron-down';
   const sortBtn = document.querySelector('.sort_btn');
   sortBtn.classList.remove('opened');
+
   const dropdownElt = document.querySelector('.dropdown_list');
   dropdownElt.classList.add('hidden');
+  handleAriaExpanded();
+
   window.removeEventListener('click', closeDropdown);
+  dropdownContainer.removeEventListener('keydown', handleKeydownOnDropdown);
 }
 
 /**
@@ -122,6 +138,7 @@ function selectOpt(value, text) {
   setSortButtonValues(sortButton, sortButtonText, value, text);
 
   displayMedias(mediasContainer);
+  dropdownContainer.removeEventListener('keydown', handleKeydownOnDropdown);
 }
 
 /**
@@ -130,10 +147,12 @@ function selectOpt(value, text) {
  * @returns new sorted list
  */
 function sortMedias(property) {
+  console.log(`property`, property);
   return mediasSorted.sort((a, b) => {
     if (property === 'likes') {
       return b[property] - a[property]
     }
+    console.log(`a et b`, a, b);
     return a[property].localeCompare(b[property])
   })
 }
@@ -159,6 +178,12 @@ function toggleIsOpenedAndHidden() {
   
   if (dropdownElt.classList.contains('hidden')) {
     window.removeEventListener('click', closeDropdown);
+  } else {
+    const options = document.querySelectorAll('.dropdown_option_container');
+    options.forEach(opt => {
+      opt.tabIndex = 0;
+    })
+    // ajouter aussi option sur le bouton, ou au moins le label
   }
 }
 
@@ -183,4 +208,62 @@ function setOptValues(value, text, oldValue) {
   const opt = document.querySelector(`[data-value="${oldValue}"]`);
   opt.dataset.value = value;
   opt.textContent = text;
+}
+
+/**
+ * Handle dropdown aria-expanded
+ */
+function handleAriaExpanded() {
+  const sortButton = document.querySelector('.sort_btn');
+  sortButton.setAttribute('aria-expanded', `${!(sortButton.getAttribute('aria-expanded') === 'true')}`)
+}
+
+function trapFocusInDropdown() {
+  dropdownContainer.addEventListener('keydown', handleKeydownOnDropdown);
+}
+
+function handleKeydownOnDropdown(e) {
+  const keyCode = e.key;
+  const firstFocusableElt = focusableElts[0];
+  const lastFocusableElt = focusableElts[focusableElts.length - 1];
+  currentEltIndex = focusableElts.findIndex(elt => elt === document.activeElement);
+  const dropdownElt = document.querySelector('.dropdown_list');
+
+  if (keyCode === 'Escape') {
+    closeDropdown();
+  } else if (e.key === 'Enter') {
+    if (!dropdownElt.classList.contains('hidden')) {
+      const opt = e.currentTarget.querySelector('.dropdown_option');
+      selectOpt(opt.dataset.value, opt.textContent);
+      dropdownContainer.removeEventListener('keydown', handleKeydownOnDropdown);
+    }
+  } else if (keyCode === 'ArrowUp') {
+    e.preventDefault();
+    if (document.activeElement === firstFocusableElt) {
+      lastFocusableElt.focus();
+    } else {
+      currentEltIndex -= 1;
+      focusableElts[currentEltIndex].focus();
+    }
+  } else if (keyCode === 'ArrowDown') {
+    e.preventDefault();
+    if (document.activeElement === lastFocusableElt) {
+      firstFocusableElt.focus();
+    } else {
+      currentEltIndex += 1;
+      focusableElts[currentEltIndex].focus();
+    }
+  } else if (keyCode === 'Tab') {
+    if (e.shiftKey) {
+      if (document.activeElement === firstFocusableElt) {
+        lastFocusableElt.focus();
+        e.preventDefault();
+      }
+    } else {
+      if (document.activeElement === lastFocusableElt) {
+        firstFocusableElt.focus();
+        e.preventDefault();
+      }
+    }
+  }
 }

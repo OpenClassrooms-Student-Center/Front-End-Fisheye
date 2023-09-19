@@ -2,6 +2,7 @@ let mediasSorted = [];
 let currentFilter = 'likes';
 let currentPhotographer = null;
 const mainElt = document.querySelector('main');
+console.log(`mainElt`, mainElt);
 
 function displayData(photographer, medias) {
   mediasSorted = medias;
@@ -25,6 +26,7 @@ function displayData(photographer, medias) {
   const sortedByContainer = createDropdown(dropdownOptions);
 
   const mediasContainer = document.createElement('section');
+  mediasContainer.ariaLabel = 'Médias du photographe';
   mediasContainer.classList.add('photograph_medias');
 
   mediasSorted = sortMedias(currentFilter);
