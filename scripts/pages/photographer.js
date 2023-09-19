@@ -36,6 +36,7 @@ async function displayMediaData(photographer) {
 
   photographer.mediaDetails.forEach((media) => {
     mediaFactory(media, photographerFirstName).getMediaDOM();
+
     newMediaDetails.push({
       title: media.title,
       source: media.image || media.video,
@@ -43,8 +44,7 @@ async function displayMediaData(photographer) {
     });
   });
 
-  addMediaDOM(newMediaDetails, photographerFirstName);
-  // lightbox(newMediaDetails, photographerFirstName);
+  lightboxFactory(newMediaDetails, photographerFirstName).addMediaDOM();
 }
 
 async function init() {

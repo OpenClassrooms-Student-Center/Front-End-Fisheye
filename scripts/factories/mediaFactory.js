@@ -1,4 +1,4 @@
-function mediaFactory(data, photographerName, length) {
+function mediaFactory(data, photographerName) {
   const { title, image, video, likes, date } = data;
   const firstName = photographerName;
 
@@ -27,7 +27,6 @@ function mediaFactory(data, photographerName, length) {
       h3.innerHTML = title;
       like.innerHTML = likes;
 
-      // divMedia.appendChild(h3);
       divInfo.appendChild(h3);
       divInfo.appendChild(like);
 
