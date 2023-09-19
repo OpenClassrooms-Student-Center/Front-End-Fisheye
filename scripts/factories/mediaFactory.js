@@ -18,10 +18,14 @@ function mediaFactory(data, photographerName) {
     img.classList.add("media-source", "image");
     videoElement.classList.add("media-source", "video");
 
+    divMedia.setAttribute("role", "img");
+    divMedia.setAttribute("aria-label", `C'est une image de ${title}`);
+
     if (image) {
       const images = `assets/medias/${firstName}/${image}`;
 
       img.setAttribute("src", images);
+      img.setAttribute("alt", title);
       divMedia.setAttribute("data-date", date);
 
       h3.innerHTML = title;

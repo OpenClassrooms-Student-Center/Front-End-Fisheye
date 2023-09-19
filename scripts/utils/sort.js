@@ -2,8 +2,13 @@ const options = document.querySelectorAll("option");
 const select = document.getElementById("sort");
 const mediaContainer = document.querySelector(".photographer-media");
 
+select.setAttribute("aria-label", "Trier les photos");
+
 select.addEventListener("change", () => {
   var selected = select.value;
+
+  // Cacher l'option par défaut après avoir choisi une option
+  options[0].style.display = "none";
 
   // Sélectionnez tous les éléments de média à trier
   const medias = Array.from(mediaContainer.querySelectorAll(".media"));

@@ -1,0 +1,29 @@
+/* Style pour le select */
+select {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    background: transparent;
+    background-image: url("data:image/svg+xml;utf8,<svg fill='white' height='24' viewBox='0 0 24 24' width='24' xmlns='http://www.w3.org/2000/svg'><path d='M7 10l5 5 5-5z'/><path d='M0 0h24v24H0z' fill='none'/></svg>");
+    background-repeat: no-repeat;
+    background-position-x: 95%;
+    background-position-y: 13px;
+}
+
+select#sort {
+    font-size: 1rem;
+    font-weight: bold;
+    color: white;
+    padding: 11px;
+    width: 150px;
+    height: 50px;
+    border: none;
+    background-color: #901c1c;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.sort-select {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}

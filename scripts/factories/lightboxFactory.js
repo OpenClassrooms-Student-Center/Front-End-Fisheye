@@ -16,8 +16,11 @@ function lightboxFactory(datas, photographerName) {
       // Image
       if (data.source.includes("jpg")) {
         img.setAttribute("src", `assets/medias/${firstName}/${data.source}`);
+        img.setAttribute("alt", data.title);
         div.setAttribute("data-id", id);
         div.classList.add("content");
+        div.setAttribute("role", "img");
+        div.setAttribute("aria-label", `C'est une image de ${data.title}`);
         title.innerHTML = data.title;
         div.appendChild(img);
         div.appendChild(title);
