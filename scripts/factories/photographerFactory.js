@@ -12,11 +12,12 @@ function photographerTemplate(photographerData, mediasData) {
     const article = document.createElement( 'article' );
 
     // Image and title photograph
-    const imgTitleLink = document.createElement('a');
-    imgTitleLink.href = url;
+    const imgLink = document.createElement('a');
+    imgLink.href = url;
+    imgLink.ariaLabel = name;
     const profilePicture = createProfilePicture(picture, name);
     
-    imgTitleLink.appendChild(profilePicture);
+    imgLink.appendChild(profilePicture);
 
     const h2 = document.createElement('h2');
     h2.textContent = name;
@@ -29,7 +30,7 @@ function photographerTemplate(photographerData, mediasData) {
     const span = document.createElement('span');
     span.textContent = `${price}€/jour`;
 
-    article.appendChild(imgTitleLink);
+    article.appendChild(imgLink);
     article.appendChild(h2);
     article.appendChild(h3);
     article.appendChild(p);
@@ -40,6 +41,7 @@ function photographerTemplate(photographerData, mediasData) {
 
   function getPhotographerDetails() {
     const photographHeader = document.createElement('section');
+    photographHeader.ariaLabel = 'Détails du photographe';
     photographHeader.classList.add('photograph_header');
 
     // Create photographer informations div
@@ -149,6 +151,7 @@ function createLikeAndPrice(mediasData, price) {
   const likesCount = document.createElement('p');
   likesCount.textContent = totalLikes;
   const likesIcon = document.createElement('span');
+  likesIcon.ariaHidden = true;
   likesIcon.className = 'fa-solid fa-heart';
 
   const priceInformation = document.createElement('p');

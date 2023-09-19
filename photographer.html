@@ -13,43 +13,60 @@
 </head>
 
 <body>
-  <header>
+  <header role="banner" aria-hidden="false">
     <a href="./index.html">
-      <img src="assets/images/logo.png" class="logo">
+      <img src="assets/images/logo.png" class="logo" alt="Logo Fisheye - Page d'accueil">
     </a>
   </header>
 
-  <main id="main"></main>
+  <main id="main" aria-hidden="false"></main>
 
-  <div id="lightbox_modal" class="hidden">
+  <div id="lightbox_modal" role="dialog" aria-hidden="true" class="hidden">
     <div class="lightbox"></div>
   </div>
 
-  <div id="contact_modal" class="hidden">
+  <div id="contact_modal" role="dialog" aria-hidden="true" aria-describedby="formTitle" class="hidden">
     <div class="modal">
       <header>
         <div class="contact_me_container">
-          <h2>Contactez-moi</h2>
-          <img src="assets/icons/close.svg" alt="Close Form">
+          <h2 id="formTitle">Contactez-moi</h2>
+          <img src="assets/icons/close.svg" alt="Fermer le formulaire" aria-hidden="true" tabindex="0">
         </div>
         <h2></h2>
       </header>
-      <form id="contact_form" method="get" action="">
-        <div class="form_data">
+      <form id="contact_form" method="get" action="" novalidate>
+        <div class="form-data">
           <label for="firstname">Prénom</label>
-          <input id="firstname" name="firstname" required>
+          <span>
+            <input type="text" class="text-control" id="firstname" name="firstname" aria-describedby="firstname-format">
+            <span id="firstname-format" class="sr-only">Le prénom doit faire au moins 2 caractères et ne contenir que
+              des lettres, tiret ou
+              espace.</span>
+          </span>
         </div>
-        <div class="form_data">
+        <div class="form-data">
           <label for="lastname">Nom</label>
-          <input id="lastname" name="lastname" required>
+          <span>
+            <input type="text" class="text-control" id="lastname" name="lastname" aria-describedby="lastname-format">
+            <span id="lastname-format" class="sr-only">Le nom doit faire au moins 2 caractères et ne contenir que des
+              lettres, tiret ou
+              espace.</span>
+          </span>
         </div>
-        <div class="form_data">
-          <label for="mail">Email</label>
-          <input type="email" id="mail" name="mail" required>
+        <div class="form-data">
+          <label id="email" for="mail">Email</label>
+          <span>
+            <input type="email" id="mail" class="text-control" name="mail" aria-labelledby="email"
+              aria-describedby="email-format">
+            <span id="email-format" class="sr-only">Format XXX@XXX.XX</span>
+          </span>
         </div>
-        <div class="form_data">
+        <div class="form-data">
           <label for="message">Votre message</label>
-          <textarea id="message" name="message" required></textarea>
+          <span>
+            <textarea id="message" class="text-control" name="message" aria-describedby="message-format"></textarea>
+            <span id="message-format" class="sr-only">Le message doit faire au moins 2 caractères</span>
+          </span>
         </div>
         <button class="contact_button">Envoyer</button>
       </form>
