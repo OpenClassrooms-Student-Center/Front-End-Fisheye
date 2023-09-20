@@ -7,7 +7,53 @@
   height: 300px;
   margin: 0 100px;
 }
+.photograph-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+.photograph-header h1 {
+  color: #d3573c;
+  font-size: 64px;
+  margin: 0;
+  font-weight: 400;
+}
 
+.photograph-header span {
+  color: #901c1c;
+  font-size: 24px;
+  font-weight: 400;
+}
+
+.photograph-header p {
+  color: #525252;
+  font-size: 18px;
+}
+
+.photograph-header img {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+.containerCards {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 95px;
+  margin: 100px 0;
+}
+.card img {
+  width: 350px;
+  height: 300px;
+  border-radius: 5px;
+}
+video{
+  width: 525px;
+  height: 300px;
+  border-radius: 5px;
+}
 .contact_button {
   font-size: 20px;
   font-weight: bold;

@@ -47,7 +47,7 @@ export class Onephotographer {
     mediaHtml = `<img src="${picture}" alt="${title}" tabIndex="0" />`;
   } else if (video?.endsWith(".mp4")) {
     picture = `assets/images/${result}/${video}`;
-    mediaHtml = `<video src="${picture}" tabIndex="0"></video>`;
+    mediaHtml = `<video controls src="${picture}" tabIndex="0"></video>`;
   }
   card.innerHTML = `
   <div class="card" id="card" >
