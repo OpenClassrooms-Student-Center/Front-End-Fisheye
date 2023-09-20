@@ -52,9 +52,9 @@ export class Onephotographer {
   card.innerHTML = `
   <div class="card" id="card" >
     ${mediaHtml}
-    <div class="containerInfo" >
+    <div class="containerInfos" >
       <h2>${title}</h2>
-      <div>
+      <div class="containerLikes_i">
        <span class="like" id="like-${id}">${likes}</span>
        <i id="heart-${id}" class="fa-solid fa-heart heart" aria-label="likes" tabIndex="0"></i>
       </div>
