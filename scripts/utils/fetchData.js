@@ -1,4 +1,4 @@
-const getPhotographers = async () => {
+const fetchPhotographers = async () => {
     try {
         const response = await fetch('../../data/photographers.json');
 

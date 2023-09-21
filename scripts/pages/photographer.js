@@ -1,7 +1,7 @@
 const setPhotographerData = async () => {
     const ID = new URL(document.location.href).searchParams.get('id');
 
-    const data = await getPhotographers();
+    const data = await fetchPhotographers();
 
     const filteredPhotographer = data.photographers.find(photographer => photographer.id == ID);
     const filteredPhotographerMedia = data.media.filter(media => media.photographerId == ID);
