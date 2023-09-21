@@ -1,7 +1,3 @@
-#contact_modal {
-    display: none;
-}
-
 .photograph-header {
     background-color: #FAFAFA;
     height: 260px;
@@ -64,7 +60,8 @@
     color: #901C1C;
 }
 
-.photograph-galary .card img {
+.photograph-galary .card img,
+.photograph-galary .card video {
     width: 350px;
     height: 300px;
     border-radius: 10px;
@@ -78,6 +75,10 @@
 }
 
 /* Modal section */
+#contact_modal {
+    display: none;
+}
+
 .modal {
     border-radius: 5px;
     background-color: #DB8876;
