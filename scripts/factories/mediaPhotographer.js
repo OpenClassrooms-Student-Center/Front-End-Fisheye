@@ -1,4 +1,4 @@
-export class Onephotographer {
+export class Mediaphotographer {
   async getOnePhotographer() {
     const url = new URLSearchParams(document.location.search);
     const id = parseInt(url.get("id"));

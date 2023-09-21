@@ -1,8 +1,6 @@
-import { Onephotographer } from "../factories/onePhotographer.js"
-import { Insertmedias } from "../factories/Medias.js"
+import { Mediaphotographer } from "../factories/mediaPhotographer.js"
 
 document.addEventListener("DOMContentLoaded", async () =>{
-    const onePhotographer = new Onephotographer()
+    const onePhotographer = new Mediaphotographer()
     await onePhotographer.getOnePhotographer()
-    Insertmedias.init
 })
