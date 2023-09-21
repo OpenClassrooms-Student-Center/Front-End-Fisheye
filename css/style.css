@@ -11,13 +11,12 @@
   fieldset, form, label, legend,
   table, caption, tbody, tfoot, thead, tr, th, td,
   article, aside, canvas, details, embed,
-  figure, figcaption, footer, header, hgroup,
+  figure, figcaption, footer, hgroup,
   menu, nav, output, ruby, section, summary,
   time, mark, audio, video {
     margin: 0;
     padding: 0;
     border: 0;
-    font-size: 100%;
     font: inherit;
     vertical-align: baseline;
   }
@@ -29,11 +28,11 @@ body {
 }
 
 
-header {
+nav {
     align-items: center;
     display: flex;
     flex-direction: row;
-    height: 90px;
+    height: 120px;
     justify-content: space-between;
 }
 
@@ -77,6 +76,7 @@ h1 {
 .photographer_section article h2 {
     color: #D3573C;
     font-size: 36px;
+    white-space: nowrap;
 }
 
 .photographer_section article img {

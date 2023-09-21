@@ -13,23 +13,23 @@ async function getPhotographers() {
   }
 }
 
-    async function displayData(photographers) {
-        const photographersSection = document.querySelector(".photographer_section");
+async function displayData(photographers) {
+    const photographersSection = document.querySelector(".photographer_section");
 
-        photographers.forEach((photographer) => {
-            const photographerModel = photographerTemplate(photographer);
-            const userCardDOM = photographerModel.getUserCardDOM();
-            photographersSection.appendChild(userCardDOM);
-        });
-    }
+    photographers.forEach((photographer) => {
+        const photographerModel = homepageTemplate(photographer);
+        const userCardDOM = photographerModel.getUserCardDOM();
+        photographersSection.appendChild(userCardDOM);
+    });
+}
 
-    async function init() {
-      try {
-        const photographers = await getPhotographers();
-        displayData(photographers);
-      } catch (error) {
-          console.error(error);
-      }
-    }
+async function init() {
+  try {
+    const photographers = await getPhotographers();
+    displayData(photographers);
+  } catch (error) {
+      console.error(error);
+  }
+}
 
-    init();
+init();
