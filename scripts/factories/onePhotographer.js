@@ -2,6 +2,7 @@ export class Onephotographer {
   async getOnePhotographer() {
     const url = new URLSearchParams(document.location.search);
     const id = parseInt(url.get("id"));
+    
 
     const response = await fetch("../../data/photographers.json");
     const data = await response.json();
