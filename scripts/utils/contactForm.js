@@ -1,143 +1,104 @@
+const contactCloseBtn = document.querySelector('contact-modal__close-btn');
+const contactModal = document.getElementById('contact-modal');
+const mainDocument = document.getElementById('main');
+
+contactCloseBtn.addEventListener('click', closeContactModal);
+
+// open modal for contact
+// eslint-disable-next-line no-unused-vars
 function displayModal() {
-    const modal = document.getElementById("contact_modal");
-	modal.style.display = "block";
+  // create white lightbox for contact form
+  const lightbox = document.createElement('div');
+  lightbox.setAttribute('id', 'contact-modal-lightbox');
+  mainDocument.setAttribute('aria-hidden', 'true');
+  document.body.appendChild(lightbox);
+
+  // show contact form
+  contactModal.style.display = 'block';
+  contactModal.setAttribute('aria-modal', 'true');
+  contactModal.setAttribute('aria-hidden', 'false');
+  document.getElementById('contact-lastName').focus();
+  trapFocusContactModal();
+
+  const contactForm = document.forms['contact-form'];
+  contactForm.addEventListener('submit', (e) => {
+    e.preventDefault();
+    formValidation(contactForm);
+  });
 }
 
-function closeModal() {
-    const modal = document.getElementById("contact_modal");
-    modal.style.display = "none";
-}
+// check inputs for contact form
+function formValidation(form) {
+  const contactFirstName = document.getElementById('contact-firstName');
+  const contactLastName = document.getElementById('contact-lastName');
+  const contactEmail = document.getElementById('contact-email');
+  const contactMessage = document.getElementById('contact-message');
 
-// DOM Elements
-const modalBtn = document.querySelectorAll(".modal-btn");
-const modalCloseBtn = document.querySelector(".close"); 
-const formData = document.querySelectorAll(".formData");
-
-// lance l'événement bouton de la modale
-modalBtn.forEach((btn) => btn.addEventListener("click", launchModal));
-
-modalCloseBtn.addEventListener("click", closeNav);
-//// lance le formulaire modal
-function launchModal() {
-  modalbg.style.display = "block";
-}
-// Fermeture de la nav
-function closeNav() {
-  modalbg.style.display = "none";
-}
-const close = document.querySelectorAll("#close");
-close.forEach((closed) => closed.addEventListener("click", closeModal));
-
-// Modale de validation
-function modalValidation() {
-  const modalSuccess = document.querySelector("#modalSuccess");
-  modalSuccess.style.display = "block";
-  modalbg.style.display = "none";
-}
-// Function générique pour génèrer les erreurs
-function error(message) {
-  return message;
-}
-
-//Test du champs firstname (prénoms)
-function firstnameValidation() {
-  let firstName = document.querySelector("#first").value;
-  const firstnameError = document.getElementById("firstNameErrorMsg");
-  if (firstName === "") {
-    firstnameError.innerText = error ("Champs obligatoire ");
-    firstnameError.style.color = "red";
-    firstnameError.style.fontSize = "12px"
-    return false;
-  } else if (firstName.trim().length < 2) {
-    firstnameError.innerText = error("Veuillez entrer 2 caractères ou plus");
-    firstnameError.style.color = "red";
-    firstnameError.style.fontSize = "12px";
-
-    return false;
-  } else {
-    firstnameError.innerText = error("");
-    return true;
+  if (contactLastName.value === '') {
+    alert('Veuillez indiquer votre prénom.');
+    return;
   }
-}
 
-//Test du champs lastname (nom de famille)
-function lastnameValidation() {
-  let lastName = document.querySelector("#last").value;
-  const lastnameError = document.getElementById("lastNameErrorMsg");
-  if (lastName === "") {
-    lastnameError.innerText = error ("Champs obligatoire ");
-    lastnameError.style.color = "red";
-    lastnameError.style.fontSize = "12px"
-    return false;
-  } else if (lastName.trim().length < 2) {
-    lastnameError.innerText = error("Veuillez entrer 2 caractères ou plus");
-    lastnameError.style.color = "red";
-    lastnameError.style.fontSize = "12px";
-
-    return false;
-  } else {
-    lastnameError.innerText = error("");
-    return true;
+  if (contactFirstName.value === '') {
+    alert('Veuillez indiquer votre nom.');
+    return;
   }
-}
-//Test du champs email
-function emailValidation() {
-  let email = document.querySelector("#email").value;
-  let regexEmail = /.+\@.+\..+/;
-  const emailError = document.getElementById("emailErrorMsg");
-  if (email === "") {
-    emailError.innerText = error("Champs obligatoire ");
-    emailError.style.color = "red";
-    emailError.style.fontSize = "12px";
 
-    return false;
-  } else if (regexEmail.test(email) === false) {
-    emailError.innerText = error("Merci d'inscrire une adresse mail correcte");
-    emailError.style.color = "red";
-    emailError.style.fontSize = "12px";
-    return false;
-  } else {
-    emailError.innerText = error("");
-    return true;
+  const regex = /^[\w-.]+@([\w-]+\.)+[\w-]{2,4}$/;
+  if (contactEmail.value === '' || !regex.test(contactEmail.value)) {
+    alert('Veuillez indiquer votre adresse mail.');
+    return;
   }
-}
-function messageBoxValidation(){
-let messageBoxValidation = document.querySelector("#messageBox").value;
-const messageError = document.getElementById("messageBoxErrorMsg")
-if (messageBoxValidation === ''){
-  messageError.innerText = error("Champs obligatoire ");
-  messageError.style.color = "red";
-  messageError.style.fontSize = "12px";
-}
-return false
+
+  if (contactMessage.value === '') {
+    alert('Veuillez ajouter un message.');
+    return;
+  }
+
+  console.log('====================================');
+  console.log(`Prénom: ${contactFirstName.value}`);
+  console.log(`Nom: ${contactLastName.value}`);
+  console.log(`Email: ${contactEmail.value}`);
+  console.log(`Message: ${contactMessage.value}`);
+  console.log('====================================');
+  console.log('Form successfully submitted!');
+
+  form.reset();
+  alert('Message envoyé avec succès !');
+  closeContactModal();
 }
 
-//Fonction qui vérifie que tous les champs du formulaire sont true en verifiant la valeur retournée par chaque fonction
-function checkValidateAll() {
-  firstnameValidation();
-  lastnameValidation();
-  emailValidation();
-  messageBoxValidation();
-}
-function validate() {
-  if (
-    firstnameValidation() &&
-    lastnameValidation() &&
-    emailValidation() &&
-    messageBoxValidation()
-  ) {
-    return true;
-  }
-  return false;
+// close contact modal and update aria hidden attributes
+function closeContactModal() {
+  contactModal.style.display = 'none';
+  contactModal.setAttribute('aria-hidden', 'true');
+  mainDocument.setAttribute('aria-hidden', 'false');
+  document.getElementById('contact-modal-lightbox').remove();
 }
 
-//Event au click submit pour permettre de valider le formulaire si tout est true
-const form = document.getElementById("form");
-form.addEventListener("submit", (event) => {
-  event.preventDefault();
-  if (validate()) {
-    modalValidation();
-  } else {
-    checkValidateAll();
-  }
-});
+// used to be able to keep the focus in the form while tabbing
+function trapFocusContactModal() {
+  const focusItems = contactModal.querySelectorAll('button:not([disabled]), textarea:not([disabled]), input[type="text"]:not([disabled])');
+  const firstFocusItem = focusItems[0];
+  const lastFocusItem = focusItems[focusItems.length - 1];
+
+  contactModal.addEventListener('keydown', function(e) {
+    const isTabPressed = (e.key === 'Tab');
+
+    if (!isTabPressed) { return; }
+
+    // if shift + tab is pressed (preventDefault avoids button to be skipped over)
+    if (e.shiftKey) {
+      if (document.activeElement === firstFocusItem) {
+        lastFocusItem.focus();
+        e.preventDefault();
+      }
+    // else = tab only is pressed
+    } else {
+      if (document.activeElement === lastFocusItem) {
+        firstFocusItem.focus();
+        e.preventDefault();
+      }
+    }
+  });
+}

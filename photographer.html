@@ -18,11 +18,11 @@
   </header>
   <main id="main">
     <div id="photograph-header" class="photograph-header">
-          <div class="photograph_infos">
-      <button class="contact_button" onclick="displayModal()">
-        Contactez-moi
-      </button>
-    </div>
+      <div class="photograph_infos">
+        <button class="contact_button" onclick="displayModal()">
+          Contactez-moi
+        </button>
+      </div>
   </main>
   <div id="select">
     <label for="orderSelect">Trier par</label>
@@ -36,49 +36,30 @@
   <section id="card" class="price">
     <span id="price"></span>
   </section>
-  <div id="contact_modal">
-    <div class="modal">
-      <header>
-        <h2>Contactez-moi</h2>
-        <img src="assets/icons/close.svg" alt="Close Contact Form" onclick="closeModal()" alt="X pour fermer le modal" />
-      </header>
-        <div class="content">
-          <span class="close"></span>
-          <div class="modal-body">
-            <form id="form" name="reserve" action="index.html" method="get" onsubmit="return validate();" novalidate>
-              <div class="formData">
-                <label>Prénom</label><br>
-                <input class="text-control" type="text" id="first" name="first" minlength="2" /><br>
-                <p id="firstNameErrorMsg">
-                  <!-- ci est un message d'erreur -->
-                </p>
-              </div>
-              <div class="formData">
-                <label>Nom</label><br>
-                <input class="text-control" type="text" id="last" name="last" /><br>
-                <p id="lastNameErrorMsg">
-                  <!-- ci est un message d'erreur -->
-                </p>
-              </div>
-              <div class="formData">
-                <label>E-mail</label><br>
-                <input class="text-control" type="email" id="email" name="email" /><br>
-                <p id="emailErrorMsg">
-                  <!-- ci est un message d'erreur -->
-                </p>
-              </div>
-              <div class="formData">
-                <label>Votre message</label>
-                <input class="text-control" type="text" id="messageBox" name="messageBox">
-                <p id="messageBoxErrorMsg"></p>
-              </div>
-              <button class="contact_button">Envoyer</button>
-            </form>
-          </div>
-        </div>
+  <div id="contact-modal" class="modal" role="dialog" aria-modal="true" aria-hidden="false" style="display: block;">
+    <div class="contact-header">
+      <div>
+        <strong>Contactez-moi</strong>
+        <strong id="contact-modal__photographer-name">Mimi Keel</strong>
       </div>
-      <script src="/scripts/pages/photographer.js" type="module"></script>
-      <script src="/scripts/utils/contactForm.js"></script>
+      <button type="button" class="contact-modal__close-btn" title="Fermeture du formulaire"
+        aria-label="Fermeture du formulaire de contact">×</button>
+    </div>
+    <form id="contact-form" method="" action="index.html" name="signup"><label
+        for="contact-lastName">Prénom</label><input type="text" name="contact-lastName" id="contact-lastName"
+        aria-labelledby="" autofocus=""><label for="contact-firstName">Nom</label><input type="text"
+        name="contact-firstName" id="contact-firstName"><label for="contact-email">Email</label><input type="email"
+        name="contact-email" id="contact-email"><label for="contact-message">Votre message</label><textarea type="text"
+        name="contact-message" id="contact-message"></textarea><button id="contact-submit-btn"
+        type="submit">Envoyer</button></form>
+  </div>
+      <header>
+        <img src="assets/icons/close.svg" alt="Close Contact Form" onclick="closeModal()"
+          alt="X pour fermer le modal" />
+      </header>
+  </div>
+</div>
+  <script src="/scripts/pages/photographer.js" type="module"></script>
+  <script src="/scripts/utils/contactForm.js"></script>
 </body>
-
 </html>
