@@ -19,7 +19,9 @@ export class Mediaphotographer {
 
   insertHeaderPhotographer(photographer) {
     const photographHeader = document.getElementById("photograph-header");
+    const h1Name = document.getElementById("h1Name");
     const { name, portrait, city, country, tagline, price } = photographer;
+    h1Name.innerText = `Contactez-moi ${name}`;
     const spanPrice = document.querySelector("#price");
     spanPrice.innerText = `${price}€ / jour`;
     const picture = `../../assets/photographers/${portrait}`;
