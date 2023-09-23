@@ -63,7 +63,6 @@
   display: none;
   max-width: 500px;
   z-index: 10;
-  filter: drop-shadow(0em 0.2em 0.4em rgba(0, 0, 0, 0.4));
 }
 #contact-modal-lightbox {
   position: fixed;
@@ -91,14 +90,14 @@
   cursor: pointer;
   align-self: baseline;
   padding: 0;
-  font-size: 3em;
+  font-size: 1em;
   color: white;
   background-color: transparent;
   border: none;
 }
 #contact-modal textarea {
   width: 100%;
-  height: 7em;
+  height: 5em;
   margin-bottom: 2em;
   border-radius: 5px;
   resize: none;
@@ -166,7 +165,7 @@ form div {
 
 form input {
   width: 100%;
-  height: 68px;
+  height: 2.5em;
   border: none;
   border-radius: 5px;
 }
