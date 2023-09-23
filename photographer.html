@@ -19,9 +19,6 @@
   <main id="main">
     <div id="photograph-header" class="photograph-header">
       <div class="photograph_infos">
-        <button class="contact_button" onclick="displayModal()">
-          Contactez-moi
-        </button>
       </div>
   </main>
   <div id="select">
@@ -40,11 +37,14 @@
     <div class="contact-header">
       <div>
         <strong>Contactez-moi</strong>
-        <strong id="contact-modal__photographer-name">Mimi Keel</strong>
+        <strong id="contact-modal__photographer-name"></strong>
       </div>
-      <button type="button" class="contact-modal__close-btn" title="Fermeture du formulaire"
-        aria-label="Fermeture du formulaire de contact"></button>
+      <header>
+        <button type="button" class="contact-modal__close-btn" title="Fermeture du formulaire"
+          aria-label="Fermeture du formulaire de contact"> <img src="assets/icons/close.svg"
+            aria-labelledby="closeContactModal" onclick="closeModal()" alt="X pour fermer le modal" /></button>
     </div>
+    </header>
     <form id="contact-form" method="" action="index.html" name="signup"><label
         for="contact-lastName">Prénom</label><input type="text" name="contact-lastName" id="contact-lastName"
         aria-labelledby="" autofocus=""><label for="contact-firstName">Nom</label><input type="text"
@@ -53,13 +53,11 @@
         name="contact-message" id="contact-message"></textarea><button id="contact_button"
         type="submit">Envoyer</button></form>
   </div>
-      <header>
-        <img src="assets/icons/close.svg" aria-labelledby="closeContactModal" onclick="closeModal()"
-          alt="X pour fermer le modal" />
-      </header>
+
   </div>
-</div>
+  </div>
   <script src="/scripts/pages/photographer.js" type="module"></script>
   <script src="/scripts/utils/contactForm.js"></script>
 </body>
+
 </html>

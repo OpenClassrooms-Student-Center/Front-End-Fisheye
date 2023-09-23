@@ -4,10 +4,8 @@ const mainDocument = document.getElementById('main');
 
 contactCloseBtn.addEventListener('click', closeContactModal);
 
-// open modal for contact
-// eslint-disable-next-line no-unused-vars
+
 function displayModal() {
-  // create white lightbox for contact form
   const lightbox = document.createElement('div');
   lightbox.setAttribute('id', 'contact-modal-lightbox');
   mainDocument.setAttribute('aria-hidden', 'true');
