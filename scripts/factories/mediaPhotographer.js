@@ -14,7 +14,6 @@ export class Mediaphotographer {
     for (const element of allMedias) {
       this.insertMedias(element, photographer)
     }
-    console.log(photographer);
     this.insertHeaderPhotographer(photographer);
   }
 
