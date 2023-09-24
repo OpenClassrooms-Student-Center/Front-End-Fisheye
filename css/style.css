@@ -43,6 +43,11 @@ h1 {
     margin: 0;
 }
 
+.photographer_section article a {
+    text-align: center;
+    text-decoration: none;
+}
+
 .photographer_section article h2 {
     color: #D3573C;
     font-size: 36px;

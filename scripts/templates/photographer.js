@@ -5,13 +5,18 @@ function photographerTemplate(data) {
 
 	function getUserCardDOM() {
 		const article = document.createElement("article");
+
+		const link = document.createElement("a");
+		link.setAttribute("href", `photographer.html?id=${id}`);
+		link.setAttribute("aria-label", name);
 		const img = document.createElement("img");
 		img.setAttribute("src", picture);
 		img.setAttribute("alt", `Portrait de ${name}`);
 		const h2 = document.createElement("h2");
 		h2.textContent = name;
-		article.appendChild(img);
-		article.appendChild(h2);
+		link.appendChild(img);
+		link.appendChild(h2);
+		article.appendChild(link);
 
 		const h3_city = document.createElement("h3");
 		h3_city.innerText = city;
