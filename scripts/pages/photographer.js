@@ -3,6 +3,7 @@ import {
   photographerPageTemplate,
   photographerMediaTemplate,
 } from "../templates/photographerPage.js";
+import { MediasFactory } from "../factories/MediasFactory.js";
 
 async function getPhotographerById(id) {
   // Retrieve photographers
@@ -52,25 +53,47 @@ async function displayPhotographerData(id) {
 class PhotographerPagesMedia {
   constructor() {
     this.$mediasWrapper = document.querySelector(".medias-wrapper");
-    this.mediasApi = new MediasApi("/data/photographers.json");
   }
 
-  // displays media info with similar id
-  async medias(id) {
-    try {
-      const photographer = await getPhotographerById(id);
-      console.log("photographer999", photographer.name);
-      const medias = await this.mediasApi.getMedias();
-      const filteredMedias = medias.filter(
-        (media) => media.photographerId === Number(id)
-      );
+  // Fetch photographer data (You can implement this method)
+  async photographer() {
+    // Implement your logic to fetch photographer data here
+  }
 
-      return photographerMediaTemplate(filteredMedias, photographer);
+  // Fetch media data
+  async media() {
+    try {
+      const mediasApi = new MediasApi("../../data/photographers.json"); // Replace with the actual JSON data path
+      const mediasData = await mediasApi.getMedias();
+      return mediasData;
     } catch (error) {
       console.error("Error fetching media data:", error);
+      return [];
+    }
+  }
+
+  // Render medias
+  async medias() {
+    try {
+      const photographer = await this.photographer();
+      const mediasData = await this.media();
+
+      mediasData.forEach((mediaData) => {
+        // Use the factory to create media objects
+        const media = MediasFactory.createMedia(mediaData);
+
+        // Log media information to the console
+        console.log("Media:", media);
+      });
+    } catch (error) {
+      console.error("Error rendering media:", error);
     }
   }
 }
+
+// Create an instance of the class and call the medias method
+const photographerPagesMedia = new PhotographerPagesMedia();
+photographerPagesMedia.medias();
 
 //------------------------------------------------------------------------
 
