@@ -77,10 +77,13 @@ class PhotographerPagesMedia {
     try {
       const photographer = await getPhotographerById(id);
       const mediasData = await this.media();
-      
+      const filteredMedias = mediasData.filter(
+        (media) => media.photographerId === Number(id)
+      );
+      return photographerMediaTemplate(filteredMedias, photographer);
 
       const mediaArray = Array.isArray(mediasData) ? mediasData : [mediasData];
-      console.log("mediaArray", mediaArray);
+      // console.log("mediaArray", mediaArray);
       mediaArray.forEach((mediaData) => {
         // console.log("fetchedPhotographer", fetchedPhotographer); // Access photographerId
         // console.log("mediaData", mediaData);
