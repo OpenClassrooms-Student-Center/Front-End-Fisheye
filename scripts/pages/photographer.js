@@ -55,10 +55,10 @@ class PhotographerPagesMedia {
     this.$mediasWrapper = document.querySelector(".medias-wrapper");
   }
 
-  // Fetch photographer data (You can implement this method)
-  async photographer() {
-    // Implement your logic to fetch photographer data here
-  }
+  // // Fetch photographer data (You can implement this method)
+  // async photographer() {
+  //   // Implement your logic to fetch photographer data here
+  // }
 
   // Fetch media data
   async media() {
@@ -73,14 +73,17 @@ class PhotographerPagesMedia {
   }
 
   // Render medias
-  async medias() {
+  async medias(id) {
     try {
-      const photographer = await this.photographer();
+      const photographer = await getPhotographerById(id);
       const mediasData = await this.media();
+      
 
       const mediaArray = Array.isArray(mediasData) ? mediasData : [mediasData];
-
+      console.log("mediaArray", mediaArray);
       mediaArray.forEach((mediaData) => {
+        // console.log("fetchedPhotographer", fetchedPhotographer); // Access photographerId
+        // console.log("mediaData", mediaData);
         // Use the factory to create media objects
         const media = MediasFactory.createMedia(mediaData);
         // Create a template for the media using photographerMediaTemplate
