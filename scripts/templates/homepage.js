@@ -1,7 +1,7 @@
 function homepageTemplate(data) {
     const { name, portrait, city, country, tagline, price, id } = data;
 
-    const picture = `assets/images/Sample Photos/Photographers ID Photos/${portrait}`;
+    const picture = `assets/medias/IDPhotos/${portrait}`;
 
     function getUserCardDOM() {
         const article = document.createElement( 'article' );
