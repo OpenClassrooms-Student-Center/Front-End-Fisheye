@@ -8,9 +8,10 @@ async function getDataPhotographers() {
 
 async function displayInfo(photographers) {
     const photographersInfo = document.querySelector(".photograph-info");
+    const { id } = data;
 
-    photographers.forEach((photographer) => {
-        const photographerModel = photographInfoTemplate(photographer);
+    photographers.forEach((id) => {
+        const photographerModel = photographInfoTemplate(id);
         const userInfoDOM = photographerModel.getUserInfoDOM();
         photographersInfo.appendChild(userInfoDOM);
 
