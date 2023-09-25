@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="fr">
 	<head>
 		<link href="css/style.css" rel="stylesheet" type="text/css" />
 		<meta charset="utf-8" />
@@ -22,12 +22,18 @@
 		</header>
 		<main id="main">
 			<div class="photograph-header">
-				<button class="contact_button" onclick="displayModal()">
+				<button
+					class="contact_button"
+					onclick="displayModal()"
+					aria-label="Contact Me"
+				>
 					Contactez-moi
 				</button>
 			</div>
+			<div class="media_section"></div>
 		</main>
-		<div id="contact_modal">
+		<div class="photographer-info"></div>
+		<div id="contact_modal" aria-hidden="true">
 			<div class="modal">
 				<header>
 					<h2>Contactez-moi</h2>
@@ -42,6 +48,10 @@
 				</form>
 			</div>
 		</div>
+		<script src="scripts/templates/element.js"></script>
+		<script src="scripts/templates/mediaFactory.js"></script>
+		<script src="scripts/templates/photographer.js"></script>
+		<script src="scripts/api/api.js"></script>
 		<script src="/scripts/pages/photographer.js"></script>
 		<script src="/scripts/utils/contactForm.js"></script>
 	</body>

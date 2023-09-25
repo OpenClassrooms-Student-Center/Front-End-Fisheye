@@ -1,21 +1,35 @@
 //Mettre le code JavaScript lié à la page photographer.html
-async function getPhotographer(id) {
-	const response = await fetch("./data/photographers.json");
+async function displayMediaData(media) {
+	const mediaSection = document.querySelector(
+		".media_section"
+	);
 
-	const { photographers } = await response.json();
+	media.forEach((media) => {
+		const mediaModel = mediaFactory(media);
 
-	return { photographer: photographers.find((p) => p.id == id) };
+		const userCardDOM = mediaModel.createMediaCardDOM();
+		mediaSection.appendChild(userCardDOM);
+	});
 }
 
 async function init() {
 	const params = new URL(document.location).searchParams;
-
 	const id = params.get("id");
+	const api = await fetchApi();
 
-	// Récupère les datas des photographe
-	const { photographer } = await getPhotographer(id);
+	// Récupère les datas du photographe
+	const { photographer } = api.getOnePhotographer(id);
+	const { media } = api.getMedia(id);
 
-	console.log(photographer);
+	const photographerModel = photographerTemplate(photographer);
+	photographerModel.addUserHeaderDOM(
+		document.querySelector(".photograph-header")
+	);
+	photographerModel.addPhotographInfoDOM(
+		document.querySelector(".photographer-info")
+	);
+
+	displayMediaData(media);
 }
 
 init();
