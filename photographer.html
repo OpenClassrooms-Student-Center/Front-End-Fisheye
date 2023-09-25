@@ -5,17 +5,48 @@
     <meta charset="utf-8">
     <link rel="icon" type="image/png" href="assets/favicon.png">
     <link href="https://fonts.googleapis.com/css?family=DM+Sans&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/8f5705fdf5.js" crossorigin="anonymous"></script>
     <title>Fisheye - photographe </title>
   </head>
   <body>
-    <header>
-      <img src="assets/images/logo.png" class="logo" />
-    </header>
-    <main id="main">
-      <div class="photograph-header">
+    <nav>
+      <a href="index.html" class="homepage-link" aria-label="Logo du site redirigeant vers la page d'accueil"> <img src="assets/medias/logo.png" class="logo" alt="Fisheye Home page"/> </a>
+    </nav>
+
+      <header>
+        <div class="photographer-content">
+            <h2 class="photographer-name"></h2>
+          <div class="photographer-informations">
+            <h3 class="photographer-location"></h3>
+            <p class="photographer-description"></p>
+          </div>
+        </div>
         <button class="contact_button" onclick="displayModal()">Contactez-moi</button>
+        <img class="photographer-photo">
+      </header>
+
+      <main id="main">
+      <div class="sort_by">
+        <h4 class="sort_title">Trier par </h4>
+
+
+        <div class="dropdown">
+          <button class="dropbtn"><span>Popularité</span> &#9660;</button>
+          <div class="dropdown-content">
+            <button class="dropbtn"><span>Date</span></button>
+            <button class="dropbtn"><span>Titre</span></button>
+          </div>
+        </div>
       </div>
+
+      <section id="medias-container">
+
+      </section>
     </main>
+
+
+
+    <!-- Modal -->
     <div id="contact_modal">
 			<div class="modal">
 				<header>
@@ -31,7 +62,11 @@
 				</form>
 			</div>
 		</div>
-    <script src="/scripts/pages/photographer.js"></script>
-    <script src="/scripts/utils/contactForm.js"></script>
+    <!-- Modal -->
+
+
+    <script src="/scripts/templates/photographer.js" ></script>
+    <script src="/scripts/utils/contactForm.js" ></script>
+    <script src="/scripts/pages/photographer.js" ></script>
   </body>
 </html>

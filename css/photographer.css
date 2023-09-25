@@ -2,35 +2,122 @@
     display: none;
 }
 
-.photograph-header {
-    background-color: #FAFAFA;
-    height: 300px;
-    margin: 0 100px;
+/****************** Header ******************/
+header {
+    align-items: center;
+    background-color: lightgray;
+    display: flex;
+    height: 200px;
+    justify-content: space-between;
+    margin: 0 100px 10px;
+    width: auto;
+}
+
+.photographer-content {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  height: 120px;
+  width: 35%;
+  margin-left: 5%;
+}
+
+.photographer-name {
+  align-items: center;
+  box-sizing: border-box;
+  color: #D3573C;
+  display: flex;
+  font-size: 1.5rem;
+  height: 40%;
+  width: 100%;
+}
+
+.photographer-informations {
+  height: 60%;
+  width: 100%;
+}
+
+.photographer-location {
+  align-items: center;
+  box-sizing: border-box;
+  color: #901C1C;
+  display: flex;
+  font-size: 1.1rem;
+  height: 50%;
+  width: 100%;
+}
+
+.photographer-description {
+  align-items: center;
+  box-sizing: border-box;
+  color: #525252;
+  display: flex;
+  font-size: 0.8rem;
+  height: 50%;
+  width: 100%;
 }
 
 .contact_button {
-    font-size: 20px;
-    font-weight: bold;
-    color: white;
-    padding: 11px;
-    width: 170px;
-    height: 70px;
-    border: none;
-    background-color: #901C1C;
-    border-radius: 5px;
-    cursor: pointer;
+  background-color: #901C1C;
+  border: none;
+  border-radius: 5px;
+  color: white;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: bold;
+  margin-left: -20%;
+  padding: 10px 1px;
+  width: 15%;
 }
 
+.photographer-photo {
+  border-radius: 50%;
+  height: 130px;
+  margin-right: 5%;
+  object-fit: cover;
+  object-position: center;
+  width: 130px;
+}
+
+/****************** Header ******************/
+
+
+/****************** Main ******************/
+
+  /****************** Sort ******************/
+    .sort_by {
+      display: flex;
+      gap: 10px;
+      margin-left: 100px;
+      width: auto;
+    }
+
+    .sort_title {
+      font-size: 1.2rem;
+      font-weight: 900;
+    }
+
+    #choices {
+      background-color: #901C1C;
+      color: white;
+      padding: 10px;
+    }
+  /****************** Sort ******************/
+
+/****************** Main ******************/
+
+
+/****************** Modal ******************/
 .modal {
-    border-radius: 5px;
+    align-items: center;
     background-color: #DB8876;
-    width: 50%;
+    border-radius: 5px;
     display: flex;
     flex-direction: column;
-    align-items: center;
     justify-content: space-between;
-    padding: 35px;
     margin: auto;
+    padding: 35px;
+    width: 50%;
 }
 
 .modal header {
@@ -49,10 +136,10 @@
 }
 
 form {
-    display: flex;
-    width: 100%;
-    flex-direction: column;
     align-items: flex-start;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
 }
 
 form label {
@@ -61,16 +148,143 @@ form label {
 }
 
 form div {
+    align-items: self-start;
     display: flex;
     flex-direction: column;
-    width: 100%;
-    align-items: self-start;
     margin-bottom: 26px;
+    width: 100%;
 }
 
 form input {
-    width: 100%;
-    height: 68px;
     border: none;
     border-radius: 5px;
+    height: 68px;
+    width: 100%;
 }
+/****************** Modal ******************/
+
+/****************** DropDown Menu ******************/
+    /* Dropdown menu button style */
+      .dropbtn {
+        background-color: #901C1C;
+        border: none;
+        color: white;
+        min-width: 114px;
+        padding: 12px 10px;
+        text-align: start;
+        border-radius: 5px;
+      }
+
+      .dropbtn span{
+        padding-right: 16px;
+      }
+
+    /* Dropdown menu div style */
+      .dropdown {
+        background-color: #901C1C;
+        display: inline-block;
+        position: relative;
+        border-radius: 5px;
+      }
+
+    /* Style of the dropdown menu content (initially hidden) */
+      .dropdown-content {
+        background-color: #901C1C;
+        box-shadow: 0px 4px 4px 0px rgba(0,0,0,0.25);
+        display: none;
+        min-width: 110px;
+        position: absolute;
+        text-decoration: none;
+        z-index: 1;
+      }
+
+      .dropdown-content:hover {
+        background-color: #901C1C;
+        box-shadow: 0px 4px 4px 0px rgba(0,0,0,0.25);
+        display: flex;
+        min-width: 110px;
+        position: absolute;
+        text-decoration: none;
+        z-index: 1;
+      }
+
+    /* When hovering over the options, change the background color */
+      .dropbtn:hover {
+        background-color: rgba(244, 28, 28, 0.5);
+      }
+
+    /* Display the dropdown menu content when the button is hovered over */
+      .dropdown:hover .dropdown-content {
+        display: block;
+        border-radius: 5px;
+      }
+
+      .dropbtn::after {
+        content: "";
+        display: block;
+        position: absolute;
+        left: 5%;
+        right: 5%;
+        top: 40px;
+        width: 90%;
+        border-top: 1px solid white;
+        z-index: 2;
+      }
+
+/****************** DropDown Menu ******************/
+
+/****************** Medias ******************/
+  #medias-container {
+    display: grid;
+    height: auto;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 60px;
+    margin: 30px 100px 50px;
+    width: auto;
+  }
+
+  .medias-item {
+    background-color: white;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 250px;
+    width: auto;
+    box-sizing: border-box;
+  }
+
+  .img-container {
+    position: relative;
+    width: 100%;
+    height: 300px;
+  }
+
+  .media-item  {
+    position: absolute;
+    top: 0;
+    left: 0;
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+    border-radius: 5px;
+  }
+
+  .item-content  {
+    display: flex;
+    justify-content: space-between;
+    color: #901C1C;
+    margin-top: 10px;
+    box-sizing: border-box;
+  }
+
+  .likes  {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .likes-icon {
+    margin-left: 5px;
+  }
+
+/****************** Medias ******************/

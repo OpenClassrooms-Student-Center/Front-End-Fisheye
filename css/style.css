@@ -1,21 +1,44 @@
 @import url("photographer.css");
 
+/* Reset CSS */
+  html, body, div, span, applet, object, iframe,
+  h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+  a, abbr, acronym, address, big, cite, code,
+  del, dfn, em, img, ins, kbd, q, s, samp,
+  small, strike, strong, sub, sup, tt, var,
+  b, u, i, center,
+  dl, dt, dd, ol, ul, li,
+  fieldset, form, label, legend,
+  table, caption, tbody, tfoot, thead, tr, th, td,
+  article, aside, canvas, details, embed,
+  figure, figcaption, footer, hgroup,
+  menu, nav, output, ruby, section, summary,
+  time, mark, audio, video {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font: inherit;
+    vertical-align: baseline;
+  }
+/* Reset CSS */
+
 body {
     font-family: "DM Sans", sans-serif;
     margin: 0;
 }
 
 
-header {
+nav {
+    align-items: center;
     display: flex;
     flex-direction: row;
+    height: 120px;
     justify-content: space-between;
-    align-items: center;
-    height: 90px;
 }
 
 h1 {
     color: #901C1C;
+    font-size: 28px;
     margin-right: 100px;
 }
 
@@ -28,23 +51,57 @@ h1 {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     gap: 70px;
-    margin-top: 100px;
+    margin: 100px 0;
 }
 
 .photographer_section article {
-    justify-self: center;
-    display: flex;
-    justify-content: center;
     align-items: center;
+    border-radius: 50%;
+    display: flex;
     flex-direction: column;
+    justify-content: center;
+    justify-self: center;
+}
+
+.photographer_section article a {
+  text-decoration: none;
+}
+
+.photographer_identity {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .photographer_section article h2 {
     color: #D3573C;
     font-size: 36px;
+    white-space: nowrap;
 }
 
 .photographer_section article img {
+    border-radius: 50%;
     height: 200px;
     width: 200px;
+    object-fit: cover;
+}
+
+.info_photographer {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+}
+
+.info_photographer h3 {
+  color: #901C1C;
+  margin-top: 5px auto
+}
+
+.info_photographer p {
+  font-weight: lighter;
+  margin: 3px auto
+}
+
+.price {
+  color: #757575;
 }
