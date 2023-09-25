@@ -27,11 +27,11 @@ export function photographerPageTemplate(photographer) {
   closingModal.onclick = closeModal;
 
   //   Construct the path to the image using the correct folder structure
-  const imagePath = `assets/images/Photographers ID Photos/${photographer.portrait}`;
+  const mediaPath = `assets/images/Photographers ID Photos/${photographer.portrait}`;
 
   //   append to link
   const portraitElement = document.createElement("img");
-  portraitElement.src = imagePath; // Use the imagePath instead of just photographer.portrait
+  portraitElement.src = mediaPath; // Use the mediaPath instead of just photographer.portrait
   portraitElement.alt = photographer.name;
 
   const titleElement = document.createElement("h2");
@@ -122,15 +122,35 @@ export function photographerMediaTemplate(filteredMedias, photographer) {
 
     //   Construct the path to the image using the correct folder structure
     // console.log(photographer);
-    const imagePath = `assets/images/${photographer.name}/${media.image}`;
-    console.log("imagePath", imagePath);
-    //   append to link
-    const imageDiv = document.createElement("img");
-    imageDiv.src = imagePath; // Use the imagePath instead of just photographer.portrait
-    imageDiv.alt = media.image;
 
-    // Add the media details elements to the media details container
-    mediaImg.appendChild(imageDiv);
+    const mediaTypeElement = document.createElement("p");
+
+    if (media.image) {
+      mediaTypeElement.innerHTML = "Type: Image";
+
+      // Construct the path to the image using the correct folder structure
+      const imagePath = `assets/images/${photographer.name}/${media.image}`;
+
+      // Create an <img> element for displaying the image
+      const imageElement = document.createElement("img");
+      imageElement.src = imagePath;
+      imageElement.alt = media.image;
+
+      // Append the image element to the mediaImg container
+      mediaImg.appendChild(imageElement);
+    } else if (media.video) {
+      mediaTypeElement.innerHTML = "Type: Video";
+      // Construct the path to the video using the correct folder structure
+      const videoPath = `assets/images/${photographer.name}/${media.video}`;
+
+      // Create a <video> element for displaying the video
+      const videoElement = document.createElement("video");
+      videoElement.src = videoPath;
+      videoElement.controls = true;
+
+      // Append the video element to the mediaImg container
+      mediaImg.appendChild(videoElement);
+    }
     // mediaDetails.appendChild(mediaIdElement);
     mediaDetails.appendChild(mediaTitleElement);
     mediaLikeContainer.appendChild(mediaLikeElement);
