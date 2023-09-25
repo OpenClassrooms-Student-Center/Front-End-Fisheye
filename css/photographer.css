@@ -1,5 +1,12 @@
+/*  MODAL CONTACT  */
+
 #contact_modal {
     display: none;
+    position: absolute;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: rgb(196, 196, 196, 0.4);
 }
 
 .photograph-header {
@@ -19,6 +26,12 @@
     background-color: #901C1C;
     border-radius: 5px;
     cursor: pointer;
+}
+
+form .contact_button {
+    position: relative;
+    left: 0;
+    transform: translateX(0);
 }
 
 .modal {
@@ -68,11 +81,16 @@ form div {
     margin-bottom: 26px;
 }
 
-form input {
+form input, form textarea {
     width: 100%;
     height: 68px;
     border: none;
     border-radius: 5px;
+    font-size: 2rem;
+}
+
+form textarea {
+    height: 150px;
 }
 
 /* SECTION PHOTOGRAPH */
@@ -199,4 +217,23 @@ form input {
     font-size: 24px;
     font-weight: 500;
     margin: 0 30px;
+}
+
+/* ------------------ ANIMATION LIKE ------------------- */
+.like-anim {
+    animation: pulse 0.2s linear;
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.2);
+    }
+
+    100% {
+        transform: scale(1);
+    }
 }

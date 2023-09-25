@@ -80,6 +80,7 @@ function detailMediaTemplate(data) {
         const icon = document.createElement('img');
         icon.setAttribute("src", urlLike);
         icon.setAttribute("alt", "likes");
+        icon.setAttribute('onclick', 'addLikes(this)');
         icon.classList.add('like-icon');
 
         if (image) {
