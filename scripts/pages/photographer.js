@@ -63,7 +63,7 @@ class PhotographerPagesMedia {
   // Fetch media data
   async media() {
     try {
-      const mediasApi = new MediasApi("../../data/photographers.json"); // Replace with the actual JSON data path
+      const mediasApi = new MediasApi("../../data/photographers.json");
       const mediasData = await mediasApi.getMedias();
       return mediasData;
     } catch (error) {
@@ -78,12 +78,16 @@ class PhotographerPagesMedia {
       const photographer = await this.photographer();
       const mediasData = await this.media();
 
-      mediasData.forEach((mediaData) => {
+      const mediaArray = Array.isArray(mediasData) ? mediasData : [mediasData];
+
+      mediaArray.forEach((mediaData) => {
         // Use the factory to create media objects
         const media = MediasFactory.createMedia(mediaData);
+        // Create a template for the media using photographerMediaTemplate
+        const mediaTemplate = photographerMediaTemplate(media, photographer);
 
-        // Log media information to the console
-        console.log("Media:", media);
+        // Append the media template to the mediasWrapper
+        this.$mediasWrapper.appendChild(mediaTemplate);
       });
     } catch (error) {
       console.error("Error rendering media:", error);

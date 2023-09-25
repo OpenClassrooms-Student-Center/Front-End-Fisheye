@@ -84,54 +84,25 @@ export function photographerPageTemplate(photographer) {
 }
 
 //template for media section for photographer page
-export function photographerMediaTemplate(filteredMedias, photographer) {
-  // filteredMedias.forEach((media) => {
-  //   const mediasWrapper = document.querySelector(".medias-wrapper");
-  //   // Create a container for each media item
-  //   const mediaContainer = document.createElement("div");
-  //   mediaContainer.classList.add("media-info");
-  //   // Create a container for media details
-  //   const mediaImg = document.createElement("div");
-  //   mediaImg.classList.add("media-img");
-  //   const mediaDetails = document.createElement("div");
-  //   mediaDetails.classList.add("media-details");
-  //   // Create a <p> element for the media ID
-  //   const mediaIdElement = document.createElement("p");
-  //   mediaIdElement.innerHTML = `ID: ${media.id}`;
-  //   // Create a <p> element for the media title
-  //   const mediaTitleElement = document.createElement("p");
-  //   mediaTitleElement.innerHTML = media.title;
-  //   // Create a <p> element for the media title
-  //   const mediaLikeContainer = document.createElement("div");
-  //   mediaLikeContainer.classList.add("media-like");
-  //   // Create a <p> element for the media title
-  //   const mediaLikeElement = document.createElement("p");
-  //   mediaLikeElement.innerHTML = media.likes;
-  //   // Create a <p> element for the media title
-  //   const mediaLikeHeartElement = document.createElement("i");
-  //   mediaLikeHeartElement.classList.add("fa-solid", "fa-heart");
-  //   //   Construct the path to the image using the correct folder structure
-  //   // console.log(photographer);
-  //   const imagePath = `assets/images/${photographer.name}/${media.image}`;
-  //   //   append to link
-  //   const imageDiv = document.createElement("img");
-  //   imageDiv.src = imagePath; // Use the imagePath instead of just photographer.portrait
-  //   imageDiv.alt = media.image;
-  //   // Add the media details elements to the media details container
-  //   mediaImg.appendChild(imageDiv);
-  //   // mediaDetails.appendChild(mediaIdElement);
-  //   mediaDetails.appendChild(mediaTitleElement);
-  //   mediaLikeContainer.appendChild(mediaLikeElement);
-  //   mediaLikeContainer.appendChild(mediaLikeHeartElement);
-  //   // Add the media details container to the media container
-  //   mediaContainer.appendChild(mediaImg);
-  //   mediaContainer.appendChild(mediaDetails);
-  //   mediaContainer.appendChild(mediaDetails);
-  //   mediaDetails.appendChild(mediaLikeContainer);
-  //   // Add the media container to the medias wrapper
-  //   mediasWrapper.appendChild(mediaContainer);
-  // });
-  // return {
-  //   getUserCardDOM: () => mediaContainer,
-  // };
+// photographerPage.js
+export function photographerMediaTemplate(media, photographer) {
+  // Create the template for the media
+  const mediaTemplate = document.createElement("div");
+  mediaTemplate.classList.add("media");
+
+  // Create elements to display media information
+  const titleElement = document.createElement("p");
+  titleElement.textContent = `Title: ${media._title}`; // Use _title
+
+  const likesElement = document.createElement("p");
+  likesElement.textContent = `Likes: ${media._likes}`; // Use _likes
+
+  // Customize the template further based on your requirements
+  // You can add more elements to display additional information
+
+  // Append elements to the media template
+  mediaTemplate.appendChild(titleElement);
+  mediaTemplate.appendChild(likesElement);
+
+  return mediaTemplate;
 }
