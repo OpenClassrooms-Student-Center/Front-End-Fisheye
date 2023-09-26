@@ -43,14 +43,33 @@ h1 {
     flex-direction: column;
 }
 
-.photographer_section article h2 {
+.photograph-name {
     color: #D3573C;
     font-size: 36px;
+    margin: 20px 0 0;
 }
 
-.photographer_section article img {
+.photograph-photo {
     height: 200px;
     width: 200px;
     border-radius: 100px;
     object-fit: cover;
+}
+
+.photograph-location {
+    color: #901C1C;
+    font-size: 13px;
+    margin: 0;
+}
+
+.photograph-tagline {
+    color: #000;
+    font-size: 10px;
+    margin: 0 3px;
+}
+
+.photograph-price {
+    color: #757575;
+    font-size: 9px;
+    margin: 0;
 }
