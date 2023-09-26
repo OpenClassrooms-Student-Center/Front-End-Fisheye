@@ -1,7 +1,7 @@
 
 function photographerTemplate(data) {
     //Récupération des datas JSON
-    const { name, id, portrait } = data;
+    const { name, id, city, country, tagline, price, portrait } = data;
     const picture = `assets/photographers/${portrait}`;
 
     function getUserCardDOM() {
@@ -18,12 +18,27 @@ function photographerTemplate(data) {
         const h2 = document.createElement('h2');
         h2.textContent = data.name;
 
+        const location = document.createElement('p');
+        location.textContent = data.city + ", " + data.country;
+        location.className = "photograph-location";
+
+        const taglineElement = document.createElement('p');
+        taglineElement.textContent = data.tagline;
+        taglineElement.className = "photograph-tagline";
+
+        const priceElement = document.createElement('p');
+        priceElement.textContent = data.price + "€/jour";
+
         linkPagePhotographer.appendChild(article);
         article.appendChild(img);
         article.appendChild(h2);
+        article.appendChild(location);
+        article.appendChild(taglineElement);
+        article.appendChild(priceElement);
+
         return (article, linkPagePhotographer);
     }
-    return { name, picture, getUserCardDOM }
+    return { name, id, city, country, tagline, price, picture, getUserCardDOM }
 }
 
 //----Récupération des datas pour les pages photographes----//
