@@ -7,10 +7,13 @@ function photographerTemplate(data) {
     function getUserCardDOM() {
         const linkPagePhotographer = document.createElement('a');
         linkPagePhotographer.setAttribute("href", `../../photographer.html` + `${id}`);
+        linkPagePhotographer.setAttribute("title", "Voir le profil de " + `${name}`);
+
         const article = document.createElement('article');
 
         const img = document.createElement('img');
         img.setAttribute("src", picture)
+        img.setAttribute("alt", "Photo de profil du photographe");
 
         const h2 = document.createElement('h2');
         h2.textContent = data.name;
@@ -56,13 +59,20 @@ function photographInfoTemplate(data) {
     return { name, city, country, tagline, getUserInfoDOM }
 }
 
-/*function photographPicture(data) {
-    const { picture } = data;
+function photographPicture(data) {
+    const { portrait } = data;
     const picture = `assets/photographers/${portrait}`;
 
     function getUserPicture() {
+        const container = document.createElement('div');
         const img = document.createElement('img');
-        img.setAttribute("src", picture)
-        img.setAttribute("alt", "Photo de profil du photographe")
+        img.setAttribute("src", picture);
+        img.setAttribute("alt", "Photo de profil du photographe");
+
+        container.appendChild(img);
+
+        return (container);
     }
-}*/
+    return { picture, getUserPicture };
+};
+
