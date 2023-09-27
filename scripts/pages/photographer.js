@@ -54,7 +54,7 @@ const setPhotographer = async () => {
                             <h2>${media.title}</h2>
                             <div>
                                 <small>${media.price}</small>
-                                <i>♥️</i>
+                                <i class="fa-solid fa-heart"></i>
                             </div>
                         </div>
                     </div>`;
