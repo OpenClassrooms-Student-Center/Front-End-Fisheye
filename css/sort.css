@@ -1,5 +1,90 @@
+.sort {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.sort > p {
+    font-weight: bold;
+}
+
+.dropdown-container {
+    position: relative;
+    display: inline-block;
+}
+
+.btn {
+    font-size: 1rem;
+    font-weight: bold;
+    color: white;
+    height: 50px;
+    border: none;
+    background-color: #901c1c;
+    border-radius: 5px;
+    cursor: pointer;
+    padding-left: 30px;
+    padding-right: 50px;
+    width: 165px;
+
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    z-index: 1;
+}
+
+.dropdown-value {
+    font-size: 1rem;
+    font-weight: bold;
+    color: white;
+    height: 56px;
+    border: none;
+    background-color: #901c1c;
+    cursor: pointer;
+    width: 165px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    bottom: 8px;
+}
+
+hr {
+    margin-top: -5px;
+    position: fixed;
+    z-index: 1;
+    width: 10%;
+    transform: translateX(15%);
+}
+
+.show {
+    display: block;
+}
+
+.arrow {
+    border: solid white;
+    border-width: 0 3px 3px 0;
+    display: inline-block;
+    padding: 4px;
+    position: absolute;
+    right: 29px;
+}
+
+.down {
+    transform: rotate(45deg);
+    -webkit-transform: rotate(45deg);
+    top: 15px;
+}
+
+.up {
+    transform: rotate(-135deg);
+    -webkit-transform: rotate(-135deg);
+    top: 22px;
+}
+
 /* Style pour le select */
-select {
+/* select {
     -webkit-appearance: none;
     -moz-appearance: none;
     background: transparent;
@@ -13,7 +98,6 @@ select#sort {
     font-size: 1rem;
     font-weight: bold;
     color: white;
-    padding: 11px;
     width: 150px;
     height: 50px;
     border: none;
@@ -26,4 +110,4 @@ select#sort {
     display: flex;
     align-items: center;
     gap: 1rem;
-}
+} */
