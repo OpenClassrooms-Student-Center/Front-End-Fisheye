@@ -48,6 +48,14 @@
 
 .photograph-galary {
     margin: 2rem 0;
+    width: 100%;
+    /* background-color: aqua; */
+}
+
+/* --------------------------------------  */
+.galary-wrapper {
+    /* position: relative; */
+    width: 100%;
 }
 
 .photograph-galary .galary-wrapper,
@@ -72,6 +80,20 @@
 .photograph-galary .card > div h2 {
     font-size: 1.2rem;
     font-weight: 200;
+}
+
+.photograph-likes-pricing {
+    width: 250px;
+    height: 20px;
+    padding: 19px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-radius: 3px;
+    background-color: #DB8876;
+    position: sticky;
+    left: 100%;
+    bottom: 0;
 }
 
 /* Modal section */

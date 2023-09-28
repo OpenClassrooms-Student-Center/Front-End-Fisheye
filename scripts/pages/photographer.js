@@ -31,17 +31,19 @@ const setPhotographer = async () => {
         <img src="${picture}" alt="${name}">
     `;
 
+    let totalLikes = 0;
     // Creates factory pattern
     const mediaFactory = (objet) => {  
        
         const media = {
            title: objet.title,
            mediaUrl: objet.image ? objet.image : objet.video,
-           price: objet.price,
+           likes: objet.likes,
 
             createMedia: () => {
                 const ExtentionType = media.mediaUrl.split('.')[1];
                 let mediaElement = '';
+                totalLikes += media.likes;
 
                 mediaElement = ExtentionType === 'mp4' ?
                    `<video controls><source src="./assets/images/photographersWorks/${name.split(' ')[0]}/${media.mediaUrl}"></source></video>`
@@ -53,7 +55,7 @@ const setPhotographer = async () => {
                         <div>
                             <h2>${media.title}</h2>
                             <div>
-                                <small>${media.price}</small>
+                                <small>${media.likes}</small>
                                 <i class="fa-solid fa-heart"></i>
                             </div>
                         </div>
@@ -70,6 +72,17 @@ const setPhotographer = async () => {
     photographerMedia.innerHTML = filteredPhotographerMedia.map(media => {
         return mediaFactory(media).createMedia();
     });
+
+    // Adding likes and pricing info
+    const likesAndPricing = `
+        <div class="photograph-likes-pricing">
+            <div>
+                <span> ${totalLikes} </span><i class="fa-solid fa-heart"></i>
+            </div>
+            <span>${price}€ / jour</span>
+        </div>`;
+
+    photographerMedia.parentElement.innerHTML  += likesAndPricing;
 }
 
  setPhotographer();
