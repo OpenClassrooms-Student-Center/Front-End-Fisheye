@@ -8,6 +8,7 @@ const mediaContainer = document.querySelector(".photographer-media");
 // Create Element
 const button = document.createElement("button");
 button.classList.add("btn");
+button.setAttribute("data-toggle", "dropdown");
 const arrow = document.createElement("i");
 arrow.classList.add("arrow", "down");
 const dropContent = document.createElement("div");
@@ -35,12 +36,12 @@ button.addEventListener("click", () => {
 
 sortValues.forEach((value) => {
   const dropValue = document.createElement("div");
-  const separator = document.createElement("hr");
+  const divider = document.createElement("hr");
 
   dropValue.classList.add("dropdown-value");
   dropValue.innerHTML = value;
   dropContent.appendChild(dropValue);
-  dropContent.insertBefore(separator, dropValue);
+  dropContent.insertBefore(divider, dropValue);
 
   dropValue.addEventListener("click", (event) => {
     const target = event.target.innerHTML;
