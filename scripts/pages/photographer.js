@@ -77,12 +77,29 @@ const setPhotographer = async () => {
     const likesAndPricing = `
         <div class="photograph-likes-pricing">
             <div>
-                <span> ${totalLikes} </span><i class="fa-solid fa-heart"></i>
+                <span> ${totalLikes} </span> <i class="fa-solid fa-heart"></i>
             </div>
             <span>${price}€ / jour</span>
         </div>`;
 
     photographerMedia.parentElement.innerHTML  += likesAndPricing;
+
+
+    const totalMediaLikes = document.querySelector(".photograph-likes-pricing span");
+
+    Array.from(document.querySelectorAll('.galary-wrapper .card i')).map(like => {
+        like.addEventListener('click', () => {
+
+            const small = like.parentElement.firstElementChild;
+            const likes =  parseInt(small.textContent);
+            small.textContent = likes + 1;
+         
+            const parsedTotalMediaLikes = parseInt(totalMediaLikes.textContent);
+            totalMediaLikes.textContent = parsedTotalMediaLikes + 1;
+           
+        });
+    })
+
 }
 
- setPhotographer();
+setPhotographer();

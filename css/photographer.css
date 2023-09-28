@@ -64,7 +64,7 @@
     justify-content: space-between;
     align-items: center;
     flex-wrap: wrap;
-    gap: 2.5rem;
+    row-gap: 2.5rem;
     color: #901C1C;
 }
 
@@ -83,7 +83,7 @@
 }
 
 .photograph-likes-pricing {
-    width: 250px;
+    width: 200px;
     height: 20px;
     padding: 19px;
     display: flex;
