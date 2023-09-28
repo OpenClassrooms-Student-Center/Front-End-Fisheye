@@ -9,7 +9,7 @@ function photographerTemplate(data) {
         const article = document.createElement('article');
 
         const linkPagePhotographer = document.createElement('a');
-        linkPagePhotographer.setAttribute("href", `../../photographer.html` + `${id}`);
+        linkPagePhotographer.setAttribute("href", `/photographer.html?id=` + `${id}`);
         linkPagePhotographer.setAttribute("title", "Voir le profil de " + `${name}`);
 
         const img = document.createElement('img');
@@ -33,14 +33,14 @@ function photographerTemplate(data) {
         priceElement.textContent = data.price + "€/jour";
         priceElement.className = "photograph-price";
 
-        linkPagePhotographer.appendChild(article);
-        article.appendChild(img);
-        article.appendChild(h2);
+        article.appendChild(linkPagePhotographer);
+        linkPagePhotographer.appendChild(img);
+        linkPagePhotographer.appendChild(h2);
         article.appendChild(location);
         article.appendChild(taglineElement);
         article.appendChild(priceElement);
 
-        return (article, linkPagePhotographer);
+        return article;
     }
     return { name, id, city, country, tagline, price, picture, getUserCardDOM }
 }

@@ -28,11 +28,15 @@ h1 {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     gap: 70px;
-    margin-top: 100px;
+    margin: 100px;
 }
 
 .photographer_section a {
     text-decoration: none;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
 .photographer_section article {
@@ -47,6 +51,7 @@ h1 {
     color: #D3573C;
     font-size: 36px;
     margin: 20px 0 0;
+    text-align: center;
 }
 
 .photograph-photo {

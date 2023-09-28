@@ -6,23 +6,34 @@ async function getDataPhotographers() {
     return dataPhotographers.json();
 }
 
-async function displayInfo(photographers) {
-    const photographersInfo = document.querySelector(".photograph-info");
-    const { id } = data;
+async function displayInfo(photographer) {
+    const photographerInfo = document.querySelector(".photograph-info");
 
-    photographers.forEach((id) => {
-        const photographerModel = photographInfoTemplate(id);
-        const userInfoDOM = photographerModel.getUserInfoDOM();
-        photographersInfo.appendChild(userInfoDOM);
+    const photographerModel = photographerInfoTemplate(photographer);
+    const userCardInfoDOM = photographerModel.getUserInfoDOM();
+    console.log(userCardInfoDOM);
+    photographerInfo.appendChild(userCardInfoDOM);
 
-        //Pareil pour la photo puis le prix
-    });
 }
 
 async function init() {
     // Récupère les datas des photographes
     const { photographers } = await getDataPhotographers();
-    displayInfo(photographers);
+
+    const param = new URLSearchParams(document.location.search);
+    const id = param.get("id")
+    let photographer;
+
+    if (!id) {
+        console.error("missing id parameter");
+        return
+    }
+
+    for (let i = 0; i < photographers.length; i++) {
+        if (photographers[i].id == id) {
+            photographer = photographers[i]
+        }
+    }
 }
 
 init();
