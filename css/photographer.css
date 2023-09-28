@@ -53,6 +53,33 @@
 }
 
 /* --------------------------------------  */
+.photograph-filters {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 300px;
+    margin: 2rem 0;
+}
+
+.photograph-filters select {
+    width: 150px;
+    height: 50px;
+    font-size: 1rem;
+    background-color: #901C1C;
+    color: #fff;
+    /* font-weight: 700; */
+    border: none;
+    outline: none;
+    border-radius: 5px;  
+    padding: 1rem;
+    appearance: none;
+}
+
+.photograph-filters select option {
+    border-bottom: 1px;
+}
+
+/* --------------------------------------  */
 .galary-wrapper {
     /* position: relative; */
     width: 100%;
