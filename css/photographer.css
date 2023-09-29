@@ -8,13 +8,15 @@
     align-items: center;
     background-color: #FAFAFA;
     height: 300px;
+    max-width: 1240px;
     margin: 0 100px;
 }
 
 .photograph-info article {
     display: flex;
     flex-direction: column;
-    gap: 19px;
+    justify-content: flex-start;
+    align-items: flex-start;
 }
 
 .photograph-profilephoto img {
@@ -22,6 +24,18 @@
     width: 200px;
     border-radius: 100px;
     object-fit: cover;
+}
+
+.photograph-location {
+    color: #901C1C;
+    font-size: 24px;
+    margin: 0;
+}
+
+.photograph-tagline {
+    color: #000;
+    font-size: 18px;
+    margin: 0 3px;
 }
 
 

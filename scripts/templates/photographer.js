@@ -14,6 +14,7 @@ function photographerTemplate(data) {
 
         const img = document.createElement('img');
         img.setAttribute("src", picture);
+        img.setAttribute("alt", "");
         img.className = "photograph-photo";
 
         const h2 = document.createElement('h2');
@@ -80,7 +81,7 @@ function photographPicture(data) {
         const container = document.createElement('div');
         const img = document.createElement('img');
         img.setAttribute("src", picture);
-        img.setAttribute("alt", "Photo de profil du photographe");
+        img.setAttribute("alt", "");
 
         container.appendChild(img);
 
