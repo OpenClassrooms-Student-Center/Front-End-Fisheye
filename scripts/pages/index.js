@@ -9,6 +9,7 @@ async function getPhotographers() {
   };
 }
 
+/* eslint-disable */
 async function displayData(photographers) {
   const photographersSection = document.querySelector(".photographer_section");
 

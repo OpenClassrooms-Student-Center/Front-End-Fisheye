@@ -1,3 +1,4 @@
+/* eslint-disable */
 function lightboxFactory(datas, photographerName) {
   const firstName = photographerName;
 

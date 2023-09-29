@@ -8,10 +8,12 @@ const inputMessage = document.querySelector("#message");
 
 form.setAttribute("aria-label", "Formulaire de contact");
 
+/* eslint-disable */
 function displayModal() {
   modal.style.display = "block";
 }
 
+/* eslint-disable */
 function closeModal() {
   modal.style.display = "none";
 }

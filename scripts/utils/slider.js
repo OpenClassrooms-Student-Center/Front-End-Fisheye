@@ -1,17 +1,7 @@
 // Element
-const lighthox = document.querySelector("#lightbox");
-const close = document.querySelector(".close");
-const card = document.querySelector(".card");
 const sliderContainer = document.querySelector(".slider-container");
-const sliderContent = document.querySelector(".slider-content");
-const allContent = document.querySelectorAll(".photographer-media");
 const prevButton = document.querySelector(".prev");
 const nextButton = document.querySelector(".next");
-
-// Create element
-const videoElement = document.createElement("video");
-const source = document.createElement("source");
-const title = document.createElement("div");
 
 // Slider
 setTimeout(() => {

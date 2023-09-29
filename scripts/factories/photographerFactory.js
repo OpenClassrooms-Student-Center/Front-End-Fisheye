@@ -1,3 +1,4 @@
+/* eslint-disable */
 function photographerFactory(data) {
   const { id, name, portrait, city, country, tagline, price } = data;
 
@@ -12,7 +13,7 @@ function photographerFactory(data) {
     const h5 = document.createElement("h5");
 
     img.setAttribute("src", picture);
-    img.setAttribute("alt", `Photo du photographe`);
+    img.setAttribute("alt", "Photo du photographe");
     img.setAttribute("aria-label", `Photo du photographe ${name}`);
     h2.setAttribute("aria-label", "Nom du photographe");
     h2.setAttribute("aria-label", "Adresse du photographe");

@@ -1,7 +1,7 @@
-//Mettre le code JavaScript lié à la page photographer.html
+// Mettre le code JavaScript lié à la page photographer.html
 
-let params = new URL(document.location).searchParams;
-let id = params.get("id");
+const params = new URL(document.location).searchParams;
+const id = params.get("id");
 
 async function getPhotographerDetail() {
   const res = await fetch("./data/photographers.json");
@@ -28,11 +28,12 @@ async function displayData(photographer) {
   });
 }
 
+/* eslint-disable */
 async function displayMediaData(photographer) {
   const photographerFirstName = photographer.photographerDetails[0].name
     .split(" ")[0]
     .replace(/-/g, " ");
-  let newMediaDetails = [];
+  const newMediaDetails = [];
 
   photographer.mediaDetails.forEach((media) => {
     mediaFactory(media, photographerFirstName).getMediaDOM();

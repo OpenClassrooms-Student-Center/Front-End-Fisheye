@@ -1,5 +1,5 @@
 const cardInfo = document.querySelector(".card-info");
-var totalLike = 0;
+let totalLike = 0;
 
 setTimeout(() => {
   const likes = document.querySelectorAll(".like");
@@ -7,7 +7,7 @@ setTimeout(() => {
 
   likes.forEach((el) => {
     // Nombre total de like
-    var nbLike = parseInt(el.innerHTML);
+    let nbLike = parseInt(el.innerHTML);
     totalLike += nbLike;
 
     // Ajout de 1 like à chaque clique

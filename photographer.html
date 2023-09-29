@@ -1,5 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE html>
-<html>
+<html xml:lang="fr" lang="fr">
   <head>
     <link href="css/style.css" rel="stylesheet" type="text/css" />
     <meta charset="utf-8" />
@@ -13,7 +14,7 @@
   </head>
   <body>
     <header>
-      <a href="/"><img src="assets/images/logo.png" class="logo" /></a>
+      <a href="/"><img src="assets/images/logo.png" class="logo" alt="logo" /></a>
     </header>
     <main id="main">
       <div class="photograph-header">
@@ -34,7 +35,7 @@
       <div class="modal">
         <header>
           <h2 class="contact-name">Contactez-moi</h2>
-          <img src="assets/icons/close.svg" onclick="closeModal()" />
+          <img src="assets/icons/close.svg" onclick="closeModal()" alt="close"/>
         </header>
         <form action="/" method="POST">
           <div>
@@ -64,9 +65,9 @@
       <div class="slider-container">
         <div class="slider-content"></div>
       </div>
-      <i class="close fa-solid fa-xmark" aria-roledescription="Fermer la lightbox"></i>
-      <i class="slider-button next fa-solid fa-chevron-right" aria-roledescription="Image suivante"></i>
-      <i class="slider-button prev fa-solid fa-chevron-left" aria-roledescription="Image précédente"></i>
+      <div class="close fa-solid fa-xmark" aria-roledescription="Fermer la lightbox"></div>
+      <div class="slider-button next fa-solid fa-chevron-right" aria-roledescription="Image suivante"></div>
+      <div class="slider-button prev fa-solid fa-chevron-left" aria-roledescription="Image précédente"></div>
     </div>
     <script src="./scripts/factories/photographerFactory.js"></script>
     <script src="./scripts/factories/mediaFactory.js"></script>

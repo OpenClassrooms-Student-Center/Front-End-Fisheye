@@ -1,3 +1,4 @@
+/* eslint-disable */
 function mediaFactory(data, photographerName) {
   const { title, image, video, likes, date } = data;
   const firstName = photographerName;
