@@ -1,0 +1,25 @@
+{
+	"name": "oc-front-end-fisheye",
+	"version": "0.0.1",
+	"description": "Code for project 6 of the Front-End Developer path",
+	"type": "module",
+	"scripts": {
+		"dev": "vite",
+		"build": "vite build",
+		"preview": "vite preview"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/boysers/oc-Front-End-Fisheye.git"
+	},
+	"author": "boysers",
+	"license": "ISC",
+	"bugs": {
+		"url": "https://github.com/boysers/oc-Front-End-Fisheye/issues"
+	},
+	"homepage": "https://github.com/boysers/oc-Front-End-Fisheye#readme",
+	"devDependencies": {
+		"eslint": "^8.50.0",
+		"vite": "^4.4.9"
+	}
+}

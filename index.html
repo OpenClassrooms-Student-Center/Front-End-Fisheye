@@ -1,9 +1,8 @@
 <!DOCTYPE html>
 <html lang="fr">
 	<head>
-		<link href="css/style.css" rel="stylesheet" type="text/css" />
 		<meta charset="utf-8" />
-		<link rel="icon" type="image/png" href="assets/favicon.png" />
+		<link rel="icon" type="image/png" href="favicon.png" />
 		<link
 			href="https://fonts.googleapis.com/css?family=DM+Sans&display=swap"
 			rel="stylesheet"
@@ -13,20 +12,14 @@
 	<body>
 		<header>
 			<a href="/" aria-label="Fisheye Home page">
-				<img
-					src="assets/images/logo.png"
-					class="logo"
-					alt="fisheye logo"
-				/>
+				<img src="images/logo.png" class="logo" alt="fisheye logo" />
 			</a>
 			<h1>Nos photographes</h1>
 		</header>
 		<main id="main">
 			<div class="photographer_section"></div>
 		</main>
-		<script src="scripts/api/api.js"></script>
-		<script src="scripts/templates/element.js"></script>
-		<script src="scripts/templates/photographer.js"></script>
-		<script src="scripts/pages/index.js"></script>
+		<script src="src/main.js" type="module"></script>
+		<script src="src/pages/indexPage.js" type="module"></script>
 	</body>
 </html>

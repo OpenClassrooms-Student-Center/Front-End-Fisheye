@@ -1,9 +1,8 @@
 <!DOCTYPE html>
 <html lang="fr">
 	<head>
-		<link href="css/style.css" rel="stylesheet" type="text/css" />
 		<meta charset="utf-8" />
-		<link rel="icon" type="image/png" href="assets/favicon.png" />
+		<link rel="icon" type="image/png" href="favicon.png" />
 		<link
 			href="https://fonts.googleapis.com/css?family=DM+Sans&display=swap"
 			rel="stylesheet"
@@ -14,7 +13,7 @@
 		<header>
 			<a href="/" aria-label="Fisheye Home page">
 				<img
-					src="assets/images/logo.png"
+					src="images/logo.png"
 					class="logo"
 					alt="fisheye logo"
 				/>
@@ -31,7 +30,31 @@
 					Contactez-moi
 				</button>
 			</div>
-			<div class="media_section"></div>
+			<div class="media_section">
+				<!-- <div class="lightbox_controle">
+					<img
+						src="assets/icons/close-1.svg"
+						alt="Close contact form"
+						data-js="close-lightbox"
+						tabindex="0"
+						role="button"
+					/>
+					<img
+						src="assets/icons/expand_more-left.svg"
+						alt=""
+						class="arrow arrow__left"
+						tabindex="0"
+						role="button"
+					/>
+					<img
+						src="assets/icons/expand_more-right.svg"
+						alt=""
+						class="arrow arrow__right"
+						tabindex="0"
+						role="button"
+					/>
+				</div> -->
+			</div>
 		</main>
 		<div class="photographer-info"></div>
 		<div
@@ -44,7 +67,7 @@
 				<header>
 					<h2 id="modalTitle">Contactez-moi</h2>
 					<img
-						src="assets/icons/close.svg"
+						src="icons/close.svg"
 						onclick="closeModal()"
 						alt="Close contact form"
 						data-js="close-modal"
@@ -90,11 +113,7 @@
 				</form>
 			</div>
 		</div>
-		<script src="scripts/templates/element.js"></script>
-		<script src="scripts/templates/mediaFactory.js"></script>
-		<script src="scripts/templates/photographer.js"></script>
-		<script src="scripts/api/api.js"></script>
-		<script src="/scripts/pages/photographer.js"></script>
-		<script src="/scripts/utils/contactForm.js"></script>
+		<script src="src/main.js" type="module"></script>
+		<script src="src/pages/photographer.js" type="module"></script>
 	</body>
 </html>
