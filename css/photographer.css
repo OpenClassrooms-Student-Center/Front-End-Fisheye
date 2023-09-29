@@ -3,10 +3,27 @@
 }
 
 .photograph-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
     background-color: #FAFAFA;
     height: 300px;
     margin: 0 100px;
 }
+
+.photograph-info article {
+    display: flex;
+    flex-direction: column;
+    gap: 19px;
+}
+
+.photograph-profilephoto img {
+    height: 200px;
+    width: 200px;
+    border-radius: 100px;
+    object-fit: cover;
+}
+
 
 .contact_button {
     font-size: 20px;
