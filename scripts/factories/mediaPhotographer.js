@@ -44,12 +44,14 @@ export class Mediaphotographer {
     const regexName = /^\w+/; // permets de supprimé le nom de famille de name du fichier json
   const result = await photographer.name.match(regexName)[0]
   let picture, mediaHtml;
+
   if (image?.endsWith(".jpg")) {
     picture = `assets/images/${result}/${image}`;
-    mediaHtml = `<img src="${picture}" alt="${title}" tabIndex="0" />`;
+    picture = `assets/images/${result}/${image}`;
+    mediaHtml = `<img lightbox-media=${title} src="${picture}" alt="${title}" tabIndex="0" />`;
   } else if (video?.endsWith(".mp4")) {
     picture = `assets/images/${result}/${video}`;
-    mediaHtml = `<video controls src="${picture}" tabIndex="0"></video>`;
+    mediaHtml = `<video lightbox-media=${title} src="${picture}" tabIndex="0"></video>`;
   }
   card.innerHTML = `
   <div class="card" id="card" >

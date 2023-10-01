@@ -6,10 +6,9 @@ contactCloseBtn.addEventListener('click', closeContactModal);
 
 
 function displayModal() {
-  const lightbox = document.createElement('div');
-  lightbox.setAttribute('id', 'contact-modal-lightbox');
+  const createDiv = document.createElement('div');
   mainDocument.setAttribute('aria-hidden', 'true');
-  document.body.appendChild(lightbox);
+  document.body.appendChild(createDiv);
 
   // show contact form
   contactModal.style.display = 'block';
@@ -53,12 +52,10 @@ function formValidation(form) {
     return;
   }
 
-  console.log('====================================');
   console.log(`Prénom: ${contactFirstName.value}`);
   console.log(`Nom: ${contactLastName.value}`);
   console.log(`Email: ${contactEmail.value}`);
   console.log(`Message: ${contactMessage.value}`);
-  console.log('====================================');
   console.log('Form successfully submitted!');
 
   form.reset();
@@ -71,7 +68,6 @@ function closeContactModal() {
   contactModal.style.display = 'none';
   contactModal.setAttribute('aria-hidden', 'true');
   mainDocument.setAttribute('aria-hidden', 'false');
-  document.getElementById('contact-modal-lightbox').remove();
 }
 
 // used to be able to keep the focus in the form while tabbing
