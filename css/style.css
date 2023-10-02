@@ -225,7 +225,7 @@ a {
     justify-content: center;
     align-items: center;
   }
-  #lightbox .btnPrev,
+  #lightbox .btnPrevious,
   #lightbox .btnNext,
   #lightbox .btnClose {
     position: absolute;
@@ -237,7 +237,7 @@ a {
     cursor: pointer;
     top: 45%;
   }
-  #lightbox .btnPrev {
+  #lightbox .btnPrevious {
     left: -35px;
   }
   #lightbox .btnNext {

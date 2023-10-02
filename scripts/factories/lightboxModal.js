@@ -36,15 +36,18 @@ export class LightboxFactory {
     }
     _open() {
       const body = document.querySelector("body");
-      const btnPrev = document.createElement("aria-label:button-previous");
-      btnPrev.className = "btnPrev";
+      const btnPrev = document.createElement("button-previous");
+      btnPrev.className = "btnPrevious";
       btnPrev.innerHTML = "<i class='fa-solid fa-chevron-left'></i>";
-      const btnNext = document.createElement("aria-label:button-next");
+      btnPrev.setAttribute('aria-label', 'Bouton précédent');
+      const btnNext = document.createElement("button-next");
       btnNext.className = "btnNext";
       btnNext.innerHTML = "<i class='fa-solid fa-chevron-right'></i>";
-      const btnClose = document.createElement("aria-label:button-close");
+      btnNext.setAttribute('aria-label', 'Bouton suivant');
+      const btnClose = document.createElement("button-close");
       btnClose.className = "btnClose";
       btnClose.innerHTML = "<i class='fa-solid fa-xmark'></i>";
+      btnClose.setAttribute('aria-label', 'Bouton fermer');
       btnNext.addEventListener("keydown", (event) => {
         if (event.key === "ArrowRight") {
           this._goToNext();
