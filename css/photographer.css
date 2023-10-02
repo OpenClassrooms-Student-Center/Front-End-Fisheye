@@ -184,3 +184,33 @@ form input {
   padding: 10em 0;
   display: none;
 }
+
+#main-wrapper {
+  align-items: center;
+  background-color: #333;
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  justify-content: center;
+  width: 100vw;
+}
+
+.photo_modal {
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.9);
+  color: white;
+  display: none;
+  height: 500px;
+  justify-content: center;
+  left: 50%;
+  position: absolute;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 700px;
+  z-index: 2;
+}
+
+.no-scroll {
+  overflow: hidden;
+}
