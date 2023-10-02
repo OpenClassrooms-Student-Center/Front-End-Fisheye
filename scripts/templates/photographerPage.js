@@ -1,4 +1,5 @@
 import { displayModal, closeModal } from "../utils/contactForm.js";
+import { onOpenModal } from "../utils/photoModal.js"; // Import openModalBtn here
 
 //template for photographer section for photographer page
 export function photographerPageTemplate(photographer) {
@@ -110,6 +111,11 @@ export function photographerMediaTemplate(filteredMedias, photographer) {
     // Create a <p> element for the media title
     const mediaLikeContainer = document.createElement("div");
     mediaLikeContainer.classList.add("media-like");
+    // Create a <button> element for the modal open
+    const modalBtn = document.createElement("button");
+    modalBtn.classList.add("open-modal-btn");
+    modalBtn.innerHTML = media.title;
+    modalBtn.onclick = onOpenModal;
 
     // Create a <p> element for the media title
     const mediaLikeElement = document.createElement("p");
@@ -160,6 +166,7 @@ export function photographerMediaTemplate(filteredMedias, photographer) {
     mediaContainer.appendChild(mediaDetails);
     mediaContainer.appendChild(mediaDetails);
     mediaDetails.appendChild(mediaLikeContainer);
+    mediaDetails.appendChild(modalBtn);
 
     // Add the media container to the medias wrapper
     mediasWrapper.appendChild(mediaContainer);

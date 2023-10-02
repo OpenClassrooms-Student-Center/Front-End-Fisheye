@@ -7,7 +7,7 @@ const modalTitle = document.querySelector(".modal-title");
 const modalCloseBtn = document.querySelector(".modal-close-btn");
 
 // Func
-const onOpenModal = () => {
+export const onOpenModal = () => {
   console.log("tst");
   mainWrapper.setAttribute("aria-hidden", "true");
   modal.setAttribute("aria-hidden", "false");
