@@ -89,6 +89,7 @@ export function photographerMediaTemplate(filteredMedias, photographer) {
   filteredMedias.forEach((media) => {
     // console.log("photographer.name", media._image);
     const mediasWrapper = document.querySelector(".medias-wrapper");
+
     // Create a container for each media item
     const mediaContainer = document.createElement("div");
     mediaContainer.classList.add("media-info");
@@ -111,11 +112,6 @@ export function photographerMediaTemplate(filteredMedias, photographer) {
     // Create a <p> element for the media title
     const mediaLikeContainer = document.createElement("div");
     mediaLikeContainer.classList.add("media-like");
-    // Create a <button> element for the modal open
-    const modalBtn = document.createElement("button");
-    modalBtn.classList.add("open-modal-btn");
-    modalBtn.innerHTML = media.title;
-    modalBtn.onclick = onOpenModal;
 
     // Create a <p> element for the media title
     const mediaLikeElement = document.createElement("p");
@@ -135,11 +131,13 @@ export function photographerMediaTemplate(filteredMedias, photographer) {
 
       // Construct the path to the image using the correct folder structure
       const imagePath = `assets/images/${photographer.name}/${media.image}`;
-
+      const modalPic = document.querySelector(".modal-picture");
+      modalPic.src = imagePath;
       // Create an <img> element for displaying the image
       const imageElement = document.createElement("img");
       imageElement.src = imagePath;
       imageElement.alt = media.image;
+      imageElement.onclick = onOpenModal;
 
       // Append the image element to the mediaImg container
       mediaImg.appendChild(imageElement);
@@ -156,6 +154,7 @@ export function photographerMediaTemplate(filteredMedias, photographer) {
       // Append the video element to the mediaImg container
       mediaImg.appendChild(videoElement);
     }
+
     // mediaDetails.appendChild(mediaIdElement);
     mediaDetails.appendChild(mediaTitleElement);
     mediaLikeContainer.appendChild(mediaLikeElement);
@@ -166,7 +165,6 @@ export function photographerMediaTemplate(filteredMedias, photographer) {
     mediaContainer.appendChild(mediaDetails);
     mediaContainer.appendChild(mediaDetails);
     mediaDetails.appendChild(mediaLikeContainer);
-    mediaDetails.appendChild(modalBtn);
 
     // Add the media container to the medias wrapper
     mediasWrapper.appendChild(mediaContainer);
