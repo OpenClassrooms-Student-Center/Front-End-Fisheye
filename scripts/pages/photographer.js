@@ -81,20 +81,6 @@ class PhotographerPagesMedia {
         (media) => media.photographerId === Number(id)
       );
       return photographerMediaTemplate(filteredMedias, photographer);
-
-      const mediaArray = Array.isArray(mediasData) ? mediasData : [mediasData];
-      // console.log("mediaArray", mediaArray);
-      mediaArray.forEach((mediaData) => {
-        // console.log("fetchedPhotographer", fetchedPhotographer); // Access photographerId
-        // console.log("mediaData", mediaData);
-        // Use the factory to create media objects
-        const media = MediasFactory.createMedia(mediaData);
-        // Create a template for the media using photographerMediaTemplate
-        const mediaTemplate = photographerMediaTemplate(media, photographer);
-
-        // Append the media template to the mediasWrapper
-        this.$mediasWrapper.appendChild(mediaTemplate);
-      });
     } catch (error) {
       console.error("Error rendering media:", error);
     }

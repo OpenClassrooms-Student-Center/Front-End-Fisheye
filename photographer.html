@@ -33,12 +33,27 @@
           <h2>Contactez-moi</h2>
           <img id="modalClose" src="assets/icons/close.svg" />
         </header>
-        <form>
+        <form
+          name="reserve"
+          action="index.html"
+          method="get"
+          class="form-body"
+          id="form-body"
+        >
           <div>
             <label>Prénom</label>
-            <input />
+            <br />
+            <input
+              class="text-control"
+              type="text"
+              id="first"
+              name="first"
+              minlength="2"
+            />
+            <span class="error-message" id="error-first"></span>
+            <br />
           </div>
-          <button class="contact_button">Envoyer</button>
+          <button class="contact_button" type="submit">Envoyer</button>
         </form>
       </div>
     </div>

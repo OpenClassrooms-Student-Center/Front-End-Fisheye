@@ -1,5 +1,4 @@
 import { displayModal, closeModal } from "../utils/contactForm.js";
-import { MediasFactory } from "../factories/MediasFactory.js";
 
 //template for photographer section for photographer page
 export function photographerPageTemplate(photographer) {
