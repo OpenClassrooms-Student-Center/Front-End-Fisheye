@@ -8,6 +8,7 @@ const modalCloseBtn = document.querySelector(".modal-close-btn");
 
 // Func
 const onOpenModal = () => {
+  console.log("tst");
   mainWrapper.setAttribute("aria-hidden", "true");
   modal.setAttribute("aria-hidden", "false");
   body.classList.add("no-scroll");
