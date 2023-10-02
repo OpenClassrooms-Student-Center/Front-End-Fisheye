@@ -59,9 +59,6 @@ function validate(event) {
       });
       console.log("All fields are filled, message sent");
       closeModal();
-      setTimeout(() => {
-        form.submit(); //form is submit after 5s
-      }, 5000);
     }
   } catch (error) {
     //else error messages are displayed
