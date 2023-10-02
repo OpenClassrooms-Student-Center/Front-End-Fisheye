@@ -1,3 +1,7 @@
+//DOM Elements
+const validationMessage = document.getElementById("validation-message");
+const formBod = document.querySelector(".form-body");
+
 export function displayModal() {
   const modal = document.getElementById("contact_modal");
   modal.style.display = "block";
@@ -6,6 +10,17 @@ export function displayModal() {
 export function closeModal() {
   const modal = document.getElementById("contact_modal");
   modal.style.display = "none";
+}
+
+//display validation message
+function displayValidationMessage() {
+  validationMessage.style.display = "flex";
+  validationMessage.textContent = "Merci! Votre réservation a été reçue.";
+}
+
+//hide modal form content
+function hideContent() {
+  formBod.style.display = "none";
 }
 
 function validate(event) {
@@ -57,8 +72,12 @@ function validate(event) {
         const errorElement = document.getElementById("error-" + field.id);
         errorElement.textContent = ""; //no error message is displayed
       });
+      hideContent(); // content is hidden
       console.log("All fields are filled, message sent");
-      closeModal();
+      displayValidationMessage(); //validation message is displayed
+      setTimeout(() => {
+        closeModal();
+      }, 5000);
     }
   } catch (error) {
     //else error messages are displayed

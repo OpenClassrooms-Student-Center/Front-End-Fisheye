@@ -175,3 +175,12 @@ form input {
   height: 15em;
   object-fit: cover;
 }
+
+#validation-message {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 75%;
+  padding: 10em 0;
+  display: none;
+}

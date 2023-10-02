@@ -3,7 +3,6 @@ import {
   photographerPageTemplate,
   photographerMediaTemplate,
 } from "../templates/photographerPage.js";
-import { MediasFactory } from "../factories/MediasFactory.js";
 
 async function getPhotographerById(id) {
   // Retrieve photographers
