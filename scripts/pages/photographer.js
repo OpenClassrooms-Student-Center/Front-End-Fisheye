@@ -43,8 +43,6 @@ async function displayMedia(medias, user) {
     }, 0);
 
         medias.forEach((media) => {
-        // Faire la somme des likes
-
 
         // Récuperation des données média puis création de l'affichage
         const detailMedia = detailMediaTemplate(media);
@@ -52,8 +50,61 @@ async function displayMedia(medias, user) {
         photographersHeader.appendChild(detailMediaDOM);
     });
 
-    // Affichage du totalLikes et du prix
     await detailTemplate(totalLikes, user.price);
+}
+
+async function orderMedia() {
+    let filtre = document.getElementById('triMedia').value;
+    const liste = await getPhotographers();
+    let user = liste.user[0];
+
+    if (filtre === "popularity") {
+        resetMedia();
+        let media = liste.media.sort((a, b) => a.likes - b.likes);
+        await displayMedia(media.reverse(), user);
+    }
+
+    if (filtre === "date") {
+        resetMedia();
+        let media = liste.media.sort(function (a, b) {
+            if (a.date < b.date) {
+                return -1;
+            }
+            if (a.date > b.date) {
+                return 1;
+            }
+            return 0;
+        });
+        console.log(media);
+        await displayMedia(media.reverse(), user);
+    }
+
+    if (filtre === "titre") {
+        resetMedia();
+        let media = liste.media.sort(function (a, b) {
+            if (a.title < b.title) {
+                return -1;
+            }
+            if (a.title > b.title) {
+                return 1;
+            }
+            return 0;
+        });
+        await displayMedia(media, user);
+    }
+}
+
+function resetMedia() {
+    const photographersHeader = document.querySelector(".photograph-media");
+    const photographersDetail = document.querySelector(".photograph-detail");
+
+    while (photographersHeader.hasChildNodes()) {
+        photographersHeader.removeChild(photographersHeader.firstChild);
+    }
+
+    while (photographersDetail.hasChildNodes()) {
+        photographersDetail.removeChild(photographersDetail.firstChild);
+    }
 }
 
 async function init() {

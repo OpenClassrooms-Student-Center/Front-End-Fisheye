@@ -44,7 +44,6 @@ function detailMediaTemplate(data) {
     const movie = `assets/media/${video}`;
     const urlLike = 'assets/icons/like.svg';
 
-    console.log(picture);
     function getMediaDOM() {
 
         const div = document.createElement('div');

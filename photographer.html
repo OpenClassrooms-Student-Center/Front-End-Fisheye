@@ -18,11 +18,11 @@
 
       <div class="selectContainer">
         <h3>Trier par</h3>
-        <div role="button" aria-haspopup="listbox" id="listbox1">
-            <div role="listbox" id="listbox1-1" aria-activedescendant>Popularité</div>
-            <div role="listbox" id="listbox1-2" aria-activedescendant>Date</div>
-            <div role="listbox" id="listbox1-3" aria-activedescendant>Titre</div>
-        </div>
+          <select name="" id="triMedia" onclick="orderMedia()">
+              <option value="popularity">Popularité</option>
+              <option value="date">Date</option>
+              <option value="titre">Titre</option>
+          </select>
       </div>
 
       <div class="photograph-media">
@@ -32,27 +32,27 @@
 
       </div>
     </main>
-    <div id="contact_modal">
+    <dialog id="contact_modal">
         <div class="modal">
             <header>
                 <h2>Contactez-moi</h2>
-                <img src="assets/icons/close.svg" onclick="closeModal()"  alt="icon de close modal"/>
+                <img src="assets/icons/close.svg" onclick="closeModal()"  alt="Close Contact form"/>
             </header>
             <form>
                 <div>
-                    <label>Prénom</label>
-                    <input type="text" name="" id="">
-                    <label>Nom</label>
-                    <input type="text" name="" id="">
-                    <label>Email</label>
-                    <input type="email" name="" id="">
-                    <label>Votre message</label>
-                    <textarea></textarea>
+                    <label for="contact-prenom" aria-label="Label de l'input Prenom" aria-labelledby="contact-prenom">Prénom</label>
+                    <input id="contact-prenom" name="prenom" type="text">
+                    <label for="contact-nom" aria-label="Label de l'input Nom" aria-labelledby="contact-nom">Nom</label>
+                    <input type="text" name="nom" id="contact-nom">
+                    <label for="contact-email" aria-label="Label de l'input Email" aria-labelledby="contact-email">Email</label>
+                    <input type="email" name="email" id="contact-email">
+                    <label for="contact-text" aria-label="Label de l'input Votre message" aria-labelledby="contact-text">Votre message</label>
+                    <textarea id="contact-text" name="textarea"></textarea>
                 </div>
-                <button class="contact_button">Envoyer</button>
+                <button class="contact_button" aria-label="Send">Envoyer</button>
             </form>
         </div>
-    </div>
+    </dialog>
     <script src="scripts/pages/photographer.js"></script>
     <script src="scripts/templates/UserDetail.js"></script>
     <script src="scripts/utils/contactForm.js"></script>
