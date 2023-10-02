@@ -9,7 +9,7 @@
   </head>
   <body>
     <header>
-      <img src="assets/images/logo.png" class="logo" />
+      <a href="index.html" alt="Fisheye Home page"><img src="assets/images/logo.png" class="logo" alt="fisheye logo"/></a>
     </header>
     <main id="main">
       <div class="photograph-header">
@@ -25,7 +25,26 @@
 				<form>
 					<div>
 						<label>Prénom</label>
-						<input />
+						<input 
+            class="text-control"
+            type="text"
+            id="first"
+            name="first" />
+            <label>Nom</label>
+						<input 
+            class="text-control"
+            type="text"
+            id="last"
+            name="last"/>
+            <label>Email</label>
+						<input 
+            class="text-control"
+            type="email"
+            id="email"
+            name="email"
+            autocomplete="email"/>
+            <label>Votre message</label>
+            <textarea id="message"></textarea>
 					</div>
           <button class="contact_button">Envoyer</button>
 				</form>
