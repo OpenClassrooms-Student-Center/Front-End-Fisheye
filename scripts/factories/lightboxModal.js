@@ -64,7 +64,7 @@ export class LightboxFactory {
       btnPrev.addEventListener("click", () => {
         this._goToPrevious();
       });
-      document.addEventListener("keydown", (event) => {
+      document.addEventListener("keypress", (event) => {
         if (event.key === "Enter") {
           this._close();
         }
