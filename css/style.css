@@ -244,6 +244,6 @@ a {
     right: -35px;
   }
   #lightbox .btnClose {
-    top: 0;
-    right: -35px;
+    top: -60px;
+    right: -65px;
   }
