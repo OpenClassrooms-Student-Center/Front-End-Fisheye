@@ -48,7 +48,7 @@ export class LightboxFactory {
       btnClose.className = "btnClose";
       btnClose.innerHTML = "<i class='fa-solid fa-xmark'></i>";
       btnClose.setAttribute('aria-label', 'Bouton fermer');
-      btnNext.addEventListener("keydown", (event) => {
+      document.addEventListener("keydown", (event) => {
         if (event.key === "ArrowRight") {
           this._goToNext();
         }
@@ -56,7 +56,7 @@ export class LightboxFactory {
       btnNext.addEventListener("click", () => {
         this._goToNext();
       });
-      btnPrev.addEventListener("keydown", (event) => {
+      document.addEventListener("keydown", (event) => {
         if (event.key === "ArrowLeft") {
           this._goToPrevious();
         }
@@ -64,7 +64,7 @@ export class LightboxFactory {
       btnPrev.addEventListener("click", () => {
         this._goToPrevious();
       });
-      btnClose.addEventListener("keydown", (event) => {
+      document.addEventListener("keydown", (event) => {
         if (event.key === "Enter") {
           this._close();
         }
