@@ -62,7 +62,7 @@
   height: 83px;
   font-size: 61px;
   font-weight:400;
-  margin-top: 0;
+  margin-top: -25px;
 }
 #contact-modal {
   display: none;
