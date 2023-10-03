@@ -81,12 +81,14 @@ function trapFocusContactModal() {
 
     if (!isTabPressed) { return; }
 
+    // si shift + tab est enfoncé (preventDefault évite que le bouton soit ignoré)
     // if shift + tab is pressed (preventDefault avoids button to be skipped over)
     if (e.shiftKey) {
       if (document.activeElement === firstFocusItem) {
         lastFocusItem.focus();
         e.preventDefault();
       }
+     // else = tab seul est enfoncé
     // else = tab only is pressed
     } else {
       if (document.activeElement === lastFocusItem) {
