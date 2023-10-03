@@ -58,9 +58,12 @@
   border-radius: 5px;
   cursor: pointer;
 }
+.contact-header{
+  margin-bottom: -20px;
+}
 .contact-header h2{
   height: 83px;
-  font-size: 61px;
+  font-size: 55px;
   font-weight:400;
   margin-top: -25px;
 }
