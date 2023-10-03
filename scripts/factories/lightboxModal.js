@@ -16,7 +16,7 @@ export class LightboxFactory {
           };
           this.#lightbox.push(item);
           element.addEventListener("click", this._handleClick.bind(this));
-          element.addEventListener("keydown", (event) => {
+          element.addEventListener("keypress", (event) => {
             if (event.key === "Enter") {
               this._close();
             }
