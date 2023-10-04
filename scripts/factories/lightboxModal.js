@@ -17,7 +17,7 @@ export class LightboxFactory {
           this.#lightbox.push(item);
           element.addEventListener("click", this._handleClick.bind(this));
           element.addEventListener("keydown", (event) => {
-            if (event.key === "Enter") {
+            if (event.key === "Escape") {
               this._close();
             }
           });
@@ -65,7 +65,7 @@ export class LightboxFactory {
         this._goToPrevious();
       });
       document.addEventListener("keydown", (event) => {
-        if (event.key === "Enter") {
+        if (event.key === "Escape") {
           this._close();
         }
       });
