@@ -59,12 +59,42 @@ export class Mediaphotographer {
     <div class="containerInfos" >
       <h2>${title}</h2>
       <div class="containerLikes_i">
-       <span class="like" id="like-${id}">${likes}</span>
+       <span class="totalLikes" id="like-${id}">${likes}</span>
        <i id="heart-${id}" class="fa-solid fa-heart heart" aria-label="likes" tabIndex="0"></i>
       </div>
     </div>
   </div>
 `;
   containerCards.append(card);
-  }
+  const heartId = document.getElementById(`heart-${id}`);
+  const likeClass = document.getElementById(`like-${id}`);
+  console.log(id)
+  const spantotalLikes = document.getElementById("totalLikes"); // Assurez-vous que cet élément est correctement identifié
+  console.log(id)
+  likes = 0;
+  let total = 0;
+  
+  heartId.addEventListener("click", () => {
+    if (likeClass.classList.contains("likes")) {
+      // Si l'élément a déjà été "aimé", supprimez le like
+      likeClass.classList.remove("likes");
+      likes -= 1;
+      total -= 1;
+    } else {
+      // Sinon, ajoutez un like
+      likeClass.classList.add("likes");
+      likes += 1;
+      total += 1;
+    }
+  
+    likeClass.innerText = likes;
+    spantotalLikes.innerHTML = `${total} <i class="fa-solid fa-heart heart" aria-label="likes"></i>`;
+  });
+  
+  heartId.addEventListener("keydown", (e) => {
+    if (e.key === "Enter") {
+      // Vous pouvez réutiliser le code similaire ici pour gérer le "like" en appuyant sur la touche "Entrée"
+    }
+  });  
 }
+  }

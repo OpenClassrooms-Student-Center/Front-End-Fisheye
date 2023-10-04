@@ -213,7 +213,7 @@ a {
   #lightbox .lightboxContent img {
     width: 100%;
     height: 100%;
-    object-fit: cover;
+    object-fit: contain;
   }
   #lightbox .lightboxContent video {
     width: 100%;
