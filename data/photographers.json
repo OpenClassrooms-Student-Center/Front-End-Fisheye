@@ -146,7 +146,6 @@
 			"date": "2019-11-25",
 			"price": 55
 		},
-
 		{
 			"id": 73852953,
 			"photographerId": 925,
@@ -229,6 +228,15 @@
 			"price": 70
 		},
 		{
+			"id": 593444704,
+			"photographerId": 925,
+			"title": "Butterfly Stroke",
+			"image": "Sport_Butterfly.jpg",
+			"likes": 79,
+			"date": "2017-03-13",
+			"price": 70
+		},
+		{
 			"id": 394583434,
 			"photographerId": 527,
 			"title": "Rocky mountains from the air",
@@ -270,6 +278,15 @@
 			"title": "Boat Wonderer",
 			"image": "Travel_Boat_Wanderer.jpg",
 			"likes": 23,
+			"date": "2017-03-18",
+			"price": 45
+		},
+		{
+			"id": 29634510,
+			"photographerId": 527,
+			"title": "Traveler Car",
+			"image": "Travel_On_the_road.jpg",
+			"likes": 10,
 			"date": "2017-03-18",
 			"price": 45
 		},
