@@ -49,7 +49,6 @@ function mediaFactory(data, photographerName) {
       videoElement.appendChild(source);
       videoElement.setAttribute("width", "350px");
       videoElement.setAttribute("height", "300px");
-      videoElement.setAttribute("controls", "controls");
       videoElement.setAttribute("data-video", "style");
       source.setAttribute("src", videos);
       like.innerHTML = likes;
@@ -59,6 +58,12 @@ function mediaFactory(data, photographerName) {
       divMedia.appendChild(divInfo);
       mediaSection.appendChild(divMedia);
     }
+
+    const allMedias = document.querySelectorAll(".media");
+    allMedias.forEach((el, id) => {
+      el.setAttribute("data-id", id);
+      el.setAttribute("tabindex", 0);
+    });
   }
 
   return { getMediaDOM };

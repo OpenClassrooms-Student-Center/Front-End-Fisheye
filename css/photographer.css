@@ -144,6 +144,7 @@ form textarea[data-error="true"] {
 .photographer-media video[data-video="style"] {
   object-fit: cover;
   border-radius: 5px !important;
+  cursor: pointer;
 }
 
 .photographer-media .media h3 {

@@ -9,6 +9,7 @@ const mediaContainer = document.querySelector(".photographer-media");
 const button = document.createElement("button");
 button.classList.add("btn");
 button.setAttribute("data-toggle", "dropdown");
+button.setAttribute("tabindex", 0);
 const arrow = document.createElement("i");
 arrow.classList.add("arrow", "down");
 const dropContent = document.createElement("div");
@@ -22,7 +23,7 @@ dropContainer.appendChild(dropContent);
 button.innerHTML = "Choisir";
 button.appendChild(arrow);
 
-button.addEventListener("click", () => {
+function toggleDropdown() {
   dropContent.classList.toggle("show");
 
   if (arrow.className === "arrow down") {
@@ -32,13 +33,15 @@ button.addEventListener("click", () => {
     arrow.classList.remove("up");
     arrow.classList.add("down");
   }
-});
+}
+button.addEventListener("click", toggleDropdown);
 
 sortValues.forEach((value) => {
-  const dropValue = document.createElement("div");
+  const dropValue = document.createElement("button");
   const divider = document.createElement("hr");
 
   dropValue.classList.add("dropdown-value");
+  dropValue.setAttribute("tabindex", 0);
   dropValue.innerHTML = value;
   dropContent.appendChild(dropValue);
   dropContent.insertBefore(divider, dropValue);

@@ -54,9 +54,6 @@ scrollbar-width: none;
 
 .slider-button {
     position: absolute;
-    /* top: 50%;
-    transform: translateY(-50%);
-    padding: 10px 15px; */
     cursor: pointer;
 }
 
@@ -76,4 +73,8 @@ scrollbar-width: none;
 .prev {
     left: 0;
     font-size: 3rem;
+}
+
+.slider-content > div > video {
+    cursor: pointer;
 }

@@ -11,6 +11,8 @@ function photographerFactory(data) {
     const h3 = document.createElement("h3");
     const paragraph = document.createElement("p");
     const h5 = document.createElement("h5");
+    const logo = document.querySelector(".logo");
+    const h1 = document.querySelector("h1");
 
     img.setAttribute("src", picture);
     img.setAttribute("alt", "Photo du photographe");
@@ -19,6 +21,9 @@ function photographerFactory(data) {
     h2.setAttribute("aria-label", "Adresse du photographe");
     paragraph.setAttribute("aria-label", "Citation du photographe");
     h5.setAttribute("aria-label", "Le prix journalier du photographe");
+    logo.setAttribute("tabindex", 0);
+    h1.setAttribute("tabindex", 0);
+    img.setAttribute("tabindex", 0);
 
     h2.textContent = name;
     h3.textContent = `${city}, ${country}`;
@@ -49,13 +54,20 @@ function photographerFactory(data) {
     const pTagline = document.createElement("p");
     const pInfo = document.createElement("p");
     const img = document.createElement("img");
+    const contactBtn = document.querySelector(".contact_button");
+    const logo = document.querySelector(".logo");
 
     img.setAttribute("src", picture);
     img.setAttribute("alt", name);
     h1.setAttribute("aria-label", "Nom du photographe");
     h1.setAttribute("data-name", `${name}`);
+    h1.setAttribute("tabindex", 0);
     h2.setAttribute("aria-label", "Adresse du photographe");
+    h2.setAttribute("tabindex", 0);
     pTagline.setAttribute("aria-label", "Description du photographe");
+    pTagline.setAttribute("tabindex", 0);
+    contactBtn.setAttribute("tabindex", 0);
+    img.setAttribute("tabindex", 0);
 
     h1.textContent = name;
     h2.textContent = `${city}, ${country}`;
