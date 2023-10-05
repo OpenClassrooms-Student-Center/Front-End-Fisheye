@@ -60,7 +60,7 @@ export class Mediaphotographer {
     <div class="containerInfos" >
       <h2>${title}</h2>
       <div class="containerLikes_i">
-       <span class="totalLikes" id="like-${id}">${likes}</span>
+       <span class="Likes" id="like-${id}">${likes}</span>
        <i id="heart-${id}" class="fa-solid fa-heart heart" aria-label="likes" tabIndex="0"></i>
       </div>
     </div>
@@ -69,7 +69,7 @@ export class Mediaphotographer {
     containerCards.append(card);
     const heartId = document.getElementById(`heart-${id}`);
     const likeClass = document.getElementById(`like-${id}`);
-    const spantotalLikes = document.getElementById("totalLikes");
+    const Likes = document.getElementById("Likes");
     console.log(id)
     likes = Number(likeClass.textContent);
     let total = 0;
@@ -88,7 +88,7 @@ export class Mediaphotographer {
       }
     
       likeClass.innerText = likes;
-      spantotalLikes.innerHTML = `${total} <i class="fa-solid fa-heart heart" aria-label="likes"></i>`;
+      Likes.innerHTML = `${total} <i class="fa-solid fa-heart heart" aria-label="likes"></i>`;
     });
     
     heartId.addEventListener("keydown", (e) => {
