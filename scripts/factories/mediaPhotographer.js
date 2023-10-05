@@ -69,24 +69,32 @@ export class Mediaphotographer {
     containerCards.append(card);
     const heartId = document.getElementById(`heart-${id}`);
     const likeClass = document.getElementById(`like-${id}`);
-
+    const spantotalLikes = document.getElementById("totalLikes");
+    console.log(id)
+    likes = Number(likeClass.textContent);
+    let total = 0;
+    
     heartId.addEventListener("click", () => {
-      const isLike = likeClass.classList.contains("likes") 
-      const currentLike = Number(likeClass.textContent)
-      
-      if (!currentLike) throw new Error("Total like is not a Number")
-
-
-      // Add or remove "likes" class
-      likeClass.classList.toggle("likes")
-      
-      heartId.innerHTML = `${isLike ? currentLike + 1 : currentLike - 1} <i class="fa-solid fa-heart heart" aria-label="likes"></i>`;
+      if (likeClass.classList.contains("likes")) {
+        // Si l'élément a déjà été "aimé", supprimez le like
+        likeClass.classList.remove("likes");
+        likes -= 1;
+        total -= 1;
+      } else {
+        // Sinon, ajoutez un like
+        likeClass.classList.add("likes");
+        likes += 1;
+        total += 1;
+      }
+    
+      likeClass.innerText = likes;
+      spantotalLikes.innerHTML = `${total} <i class="fa-solid fa-heart heart" aria-label="likes"></i>`;
     });
-
+    
     heartId.addEventListener("keydown", (e) => {
       if (e.key === "Enter") {
         // Vous pouvez réutiliser le code similaire ici pour gérer le "like" en appuyant sur la touche "Entrée"
       }
-    });
+    });  
   }
 }
