@@ -2,17 +2,18 @@ export class Mediaphotographer {
   async getOnePhotographer() {
     const url = new URLSearchParams(document.location.search);
     const id = parseInt(url.get("id"));
-    
 
     const response = await fetch("../../data/photographers.json");
     const data = await response.json();
     const photographer = data.photographers.find(
       (onePhotographer) => onePhotographer.id === id
     );
-    const allMedias = data.media.filter((dataMediaPhotographer) => dataMediaPhotographer.photographerId === id) 
+    const allMedias = data.media.filter(
+      (dataMediaPhotographer) => dataMediaPhotographer.photographerId === id
+    );
 
     for (const element of allMedias) {
-      this.insertMedias(element, photographer)
+      this.insertMedias(element, photographer);
     }
     this.insertHeaderPhotographer(photographer);
   }
@@ -38,22 +39,22 @@ export class Mediaphotographer {
             `;
   }
   async insertMedias(media, photographer) {
-    const containerCards = document.getElementById("containerCards")
-    const card = document.createElement("div")
-    let {title, image, id, likes, video} = media
+    const containerCards = document.getElementById("containerCards");
+    const card = document.createElement("div");
+    let { title, image, id, likes, video } = media;
     const regexName = /^\w+/; // permets de supprimé le nom de famille de name du fichier json
-  const result = await photographer.name.match(regexName)[0]
-  let picture, mediaHtml;
+    const result = await photographer.name.match(regexName)[0];
+    let picture, mediaHtml;
 
-  if (image?.endsWith(".jpg")) {
-    picture = `assets/images/${result}/${image}`;
-    picture = `assets/images/${result}/${image}`;
-    mediaHtml = `<img lightbox-media=${title} src="${picture}" alt="${title}" tabIndex="0" />`;
-  } else if (video?.endsWith(".mp4")) {
-    picture = `assets/images/${result}/${video}`;
-    mediaHtml = `<video lightbox-media=${title} src="${picture}" tabIndex="0"></video>`;
-  }
-  card.innerHTML = `
+    if (image?.endsWith(".jpg")) {
+      picture = `assets/images/${result}/${image}`;
+      picture = `assets/images/${result}/${image}`;
+      mediaHtml = `<img lightbox-media=${title} src="${picture}" alt="${title}" tabIndex="0" />`;
+    } else if (video?.endsWith(".mp4")) {
+      picture = `assets/images/${result}/${video}`;
+      mediaHtml = `<video lightbox-media=${title} src="${picture}" tabIndex="0"></video>`;
+    }
+    card.innerHTML = `
   <div class="card" id="card" >
     ${mediaHtml}
     <div class="containerInfos" >
@@ -65,36 +66,27 @@ export class Mediaphotographer {
     </div>
   </div>
 `;
-  containerCards.append(card);
-  const heartId = document.getElementById(`heart-${id}`);
-  const likeClass = document.getElementById(`like-${id}`);
-  console.log(id)
-  const spantotalLikes = document.getElementById("totalLikes"); // Assurez-vous que cet élément est correctement identifié
-  console.log(id)
-  likes = 0;
-  let total = 0;
-  
-  heartId.addEventListener("click", () => {
-    if (likeClass.classList.contains("likes")) {
-      // Si l'élément a déjà été "aimé", supprimez le like
-      likeClass.classList.remove("likes");
-      likes -= 1;
-      total -= 1;
-    } else {
-      // Sinon, ajoutez un like
-      likeClass.classList.add("likes");
-      likes += 1;
-      total += 1;
-    }
-  
-    likeClass.innerText = likes;
-    spantotalLikes.innerHTML = `${total} <i class="fa-solid fa-heart heart" aria-label="likes"></i>`;
-  });
-  
-  heartId.addEventListener("keydown", (e) => {
-    if (e.key === "Enter") {
-      // Vous pouvez réutiliser le code similaire ici pour gérer le "like" en appuyant sur la touche "Entrée"
-    }
-  });  
-}
+    containerCards.append(card);
+    const heartId = document.getElementById(`heart-${id}`);
+    const likeClass = document.getElementById(`like-${id}`);
+
+    heartId.addEventListener("click", () => {
+      const isLike = likeClass.classList.contains("likes") 
+      const currentLike = Number(likeClass.textContent)
+      
+      if (!currentLike) throw new Error("Total like is not a Number")
+
+
+      // Add or remove "likes" class
+      likeClass.classList.toggle("likes")
+      
+      heartId.innerHTML = `${isLike ? currentLike + 1 : currentLike - 1} <i class="fa-solid fa-heart heart" aria-label="likes"></i>`;
+    });
+
+    heartId.addEventListener("keydown", (e) => {
+      if (e.key === "Enter") {
+        // Vous pouvez réutiliser le code similaire ici pour gérer le "like" en appuyant sur la touche "Entrée"
+      }
+    });
   }
+}
