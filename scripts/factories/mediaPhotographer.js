@@ -1,4 +1,7 @@
 export class Mediaphotographer {
+  constructor() {
+    this.totalLikes = 0; // Variable pour suivre le total des likes
+  }
   async getOnePhotographer() {
     const url = new URLSearchParams(document.location.search);
     const id = parseInt(url.get("id"));
@@ -71,28 +74,28 @@ export class Mediaphotographer {
     const likeClass = document.getElementById(`like-${id}`);
     console.log(id)
     likes = Number(likeClass.textContent);
-     this.total = 0;
+    this.total = 0;
     
     heartId.addEventListener("click", () => {
       if (likeClass.classList.contains("likes")) {
         // Si l'élément a déjà été "aimé", supprimez le like
         likeClass.classList.remove("likes");
         likes -= 1;
-        this.total -= 1;
+        this.totalLikes -= 1;
       } else {
         // Sinon, ajoutez un like
         likeClass.classList.add("likes");
         likes += 1;
-        this.total += 1;
+        this.totalLikes += 1;
       }
     
       likeClass.innerText = likes;
-    });
-    
-    heartId.addEventListener("keydown", (e) => {
-      if (e.key === "Enter") {
-        // Vous pouvez réutiliser le code similaire ici pour gérer le "like" en appuyant sur la touche "Entrée"
+      
+      // Mettez à jour l'élément HTML avec le total des likes
+      const totalLikesElement = document.getElementById("total-likes");
+      if (totalLikesElement) {
+        totalLikesElement.innerText = this.totalLikes.toString();
       }
-    });  
-  }
+    });
+}
 }
