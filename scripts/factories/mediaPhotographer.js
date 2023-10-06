@@ -72,10 +72,8 @@ export class Mediaphotographer {
     containerCards.append(card);
     const heartId = document.getElementById(`heart-${id}`);
     const likeClass = document.getElementById(`like-${id}`);
-    console.log(id)
-    likes = Number(likeClass.textContent);
-    this.total = 0;
-    
+    console.log(id);
+
     heartId.addEventListener("click", () => {
       if (likeClass.classList.contains("likes")) {
         // Si l'élément a déjà été "aimé", supprimez le like
@@ -88,14 +86,15 @@ export class Mediaphotographer {
         likes += 1;
         this.totalLikes += 1;
       }
-    
+
+      // Mettez à jour le texte de l'élément HTML avec le total des likes
       likeClass.innerText = likes;
-      
+
       // Mettez à jour l'élément HTML avec le total des likes
       const totalLikesElement = document.getElementById("total-likes");
       if (totalLikesElement) {
-        totalLikesElement.innerText = likeClass.textContent + this.totalLikes;
+        totalLikesElement.innerText = this.totalLikes.toString();
       }
     });
-}
+  }
 }
