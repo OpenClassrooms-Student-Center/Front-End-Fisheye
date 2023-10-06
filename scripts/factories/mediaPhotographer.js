@@ -1,6 +1,6 @@
 export class Mediaphotographer {
   constructor() {
-    this.totalLikes = 0; // Variable pour suivre le total des likes
+    this.totalLikes = 75 ; // Variable pour suivre le total des likes
   }
   async getOnePhotographer() {
     const url = new URLSearchParams(document.location.search);
@@ -48,7 +48,6 @@ export class Mediaphotographer {
     const regexName = /^\w+/; // permets de supprimé le nom de famille de name du fichier json
     const result = await photographer.name.match(regexName)[0];
     let picture, mediaHtml;
-
     if (image?.endsWith(".jpg")) {
       picture = `assets/images/${result}/${image}`;
       picture = `assets/images/${result}/${image}`;
