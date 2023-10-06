@@ -94,7 +94,7 @@ export class Mediaphotographer {
       // Mettez à jour l'élément HTML avec le total des likes
       const totalLikesElement = document.getElementById("total-likes");
       if (totalLikesElement) {
-        totalLikesElement.innerText = likeClass.textContent + this.totalLikes.toString();
+        totalLikesElement.innerText = likeClass.textContent + this.totalLikes;
       }
     });
 }
