@@ -1,6 +1,6 @@
 export class Mediaphotographer {
   constructor() {
-    this.totalLikes = 75 ; // Variable pour suivre le total des likes
+    this.totalLikes = 0 ; // Variable pour suivre le total des likes
   }
   async getOnePhotographer() {
     const url = new URLSearchParams(document.location.search);
@@ -14,10 +14,15 @@ export class Mediaphotographer {
     const allMedias = data.media.filter(
       (dataMediaPhotographer) => dataMediaPhotographer.photographerId === id
     );
-
-    for (const element of allMedias) {
-      this.insertMedias(element, photographer);
+    for (const media of allMedias) {
+      this.insertMedias(media, photographer);
+      this.totalLikes += media.likes
     }
+     // Mettez à jour l'élément HTML avec le total des likes
+     const totalLikesElement = document.getElementById("total-likes");
+     if (totalLikesElement) {
+       totalLikesElement.innerText = this.totalLikes.toString();
+     }
     this.insertHeaderPhotographer(photographer);
   }
 
@@ -74,26 +79,24 @@ export class Mediaphotographer {
     console.log(id);
 
     heartId.addEventListener("click", () => {
+     const totalLikesElement = document.getElementById("total-likes");
       if (likeClass.classList.contains("likes")) {
         // Si l'élément a déjà été "aimé", supprimez le like
         likeClass.classList.remove("likes");
         likes -= 1;
-        this.totalLikes -= 1;
+        this.totalLikes -= 1
+        totalLikesElement.innerText = this.totalLikes 
       } else {
         // Sinon, ajoutez un like
         likeClass.classList.add("likes");
         likes += 1;
-        this.totalLikes += 1;
+        totalLikesElement.innerText = this.totalLikes +1
       }
 
       // Mettez à jour le texte de l'élément HTML avec le total des likes
       likeClass.innerText = likes;
 
-      // Mettez à jour l'élément HTML avec le total des likes
-      const totalLikesElement = document.getElementById("total-likes");
-      if (totalLikesElement) {
-        totalLikesElement.innerText = this.totalLikes.toString();
-      }
+     
     });
   }
 }
