@@ -84,12 +84,12 @@ export class Mediaphotographer {
         // Si l'élément a déjà été "aimé", supprimez le like
         likeClass.classList.remove("likes");
         likes -= 1;
-        totalLikesElement.innerText = this.totalLikes
+        totalLikesElement.innerText = this.totalLikes -=1
       } else {
         // Sinon, ajoutez un like
         likeClass.classList.add("likes");
         likes += 1;
-        totalLikesElement.innerText = this.totalLikes +1
+        totalLikesElement.innerText = this.totalLikes +=1
       }
       // Mettez à jour le texte de l'élément HTML avec le total des likes
       likeClass.innerText = likes;
