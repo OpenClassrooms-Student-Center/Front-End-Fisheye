@@ -20,20 +20,30 @@ async function displayInfo(photographer) {
 
 }
 
-async function getMedia() {
+async function getDataMedia() {
 
     const media = await fetch("../../data/photographers.json");
     return media.json();
 }
 
-async function displayMedia(media) {
+async function displayMediaImage(image) {
     const sectionMedia = document.querySelector(".media");
 
-    const mediaModel = photographerMedia(media);
-    const userMediaDom = mediaModel.getUserMedias();
+    image.forEach((media) => {
+        const mediaModel = photographerMediaTemplate(media);
+        const userMediaDom = mediaModel.getUserMediasImage();
+        sectionMedia.appendChild(userMediaDom);
+    })
+}
 
-    sectionMedia.appendChild(userMediaDom);
+async function displayMediaVideo(video) {
+    const sectionMedia = document.querySelector(".media");
 
+    video.forEach((media) => {
+        const mediaModel = photographerMediaTemplate(media);
+        const userMediaDom = mediaModel.getUserMediasVideo();
+        sectionMedia.appendChild(userMediaDom);
+    })
 }
 
 
@@ -57,40 +67,31 @@ async function init() {
         }
     }
 
+    displayInfo(photographer);
+
     //Récupère les médias selon l'id du photographe
 
     const { media } = await getDataPhotographers();
 
-    //Media Factory
+    //Media Factory à faire
 
-    function mediaFactory() {
+    const mediaArrayByPhotographer = photographers.find(photographerIdentity => photographerIdentity.id == id);
+    let mediaArray = { media };
 
-        for (let i = 0; i < media.length; i++) {
-            media.filter(function (videoFilter) {
-                return videoFilter.photographerId
-            });
-
-            /*id = media.id[i],
-                photographerId = media.photographerId[i],
-                title = media.title[i],
-                type = media.type[i],
-                likes = media.likes[i],
-                date = media.date[i],
-                price = media.price[i]
-        } else {
-            console.error("error");
-        }*/
-        }
-
-        if (media.type === "image") {
-
-        } else {
-            console.log("video check")
-        }
+    if (!mediaArrayByPhotographer) {
+        console.error("Photographer not found")
     }
-    displayInfo(photographer);
-    displayMedia(media);
 
+    for (let i = 0; i < mediaArray.length; i++) {
+
+        mediaArray.filter(typeOfMedia);
+        if (typeOfMedia.type == "image") {
+            return displayMediaImage()
+        } else {
+            return displayMediaVideo();
+        }
+
+    }
 }
 
 

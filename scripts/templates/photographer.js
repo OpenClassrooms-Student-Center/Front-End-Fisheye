@@ -90,20 +90,45 @@ function photographPicture(data) {
     return { picture, getUserPicture };
 };
 
-/////////////////Faire un for each pour chaque divDescription en fonction du média correspondant + Revoir soucis const imageMedia et videoMedia
-function photographerMedia(data) {
+/////////////////MediaTemplate
+function photographerMediaTemplate(data) {
     const { photographerId, title, image, video, likes } = data;
     const imageMedia = `assets/medias/` + `${photographerId}` + `/` + `${image}`;
     const videoMedia = `assets/medias/` + `${photographerId}` + `/` + `${video}`;
     const likeIconMedia = `assets/icons/like-icon.png`
 
-
-    function getUserMedias() {
+    //Voir pour faire une factory
+    function getUserMediasImage() {
         const article = document.createElement('article');
 
         const imageElement = document.createElement('img');
         imageElement.setAttribute("src", imageMedia);
         imageElement.setAttribute("alt", title);
+
+
+        const divDescription = document.createElement('div');
+
+        const titleElement = document.createElement('h2');
+        titleElement.innerText = title;
+
+        const likesElement = document.createElement('p');
+        likesElement.innerText = likes;
+
+        const likesIcon = document.createElement('img')
+        likesIcon.setAttribute("src", likeIconMedia);
+        likesIcon.setAttribute("alt", "j'aimes");
+
+        article.appendChild(imageElement);
+        article.appendChild(divDescription);
+        divDescription.appendChild(titleElement);
+        divDescription.appendChild(likesElement);
+        divDescription.appendChild(likesIcon);
+
+        return article;
+    }
+
+    function getUserMediasVideo() {
+        const article = document.createElement('article');
 
         const videoDiv = document.createElement('video');
 
@@ -125,7 +150,6 @@ function photographerMedia(data) {
         likesIcon.setAttribute("src", likeIconMedia);
         likesIcon.setAttribute("alt", "j'aimes");
 
-        article.appendChild(imageElement);
         article.appendChild(videoDiv);
         videoDiv.appendChild(videoElement);
         article.appendChild(divDescription);
@@ -135,5 +159,5 @@ function photographerMedia(data) {
 
         return article;
     }
-    return { photographerId, title, image, video, likes, imageMedia, videoMedia, getUserMedias };
+    return { photographerId, title, image, video, likes, imageMedia, videoMedia, getUserMediasImage, getUserMediasVideo };
 };
