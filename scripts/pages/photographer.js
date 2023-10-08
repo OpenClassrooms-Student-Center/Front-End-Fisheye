@@ -1,3 +1,7 @@
+const photographerMedia = document.querySelector(".galary-wrapper");
+let totalLikes = 0;
+
+
 // Gets photograper
 const getPhotographerData = async () => {
     const ID = new URL(document.location.href).searchParams.get('id');
@@ -8,13 +12,12 @@ const getPhotographerData = async () => {
     const filteredPhotographerMedia = data.media.filter(media => media.photographerId == ID);
     
     return { filteredPhotographer, filteredPhotographerMedia };
-}
+};
 
-// Sets photograper
-const setPhotographer = async () => {
-    const { filteredPhotographer, filteredPhotographerMedia } = await getPhotographerData();
 
-    const { id, name, city, country, tagline, price, portrait } = filteredPhotographer;
+// Sets photograper header
+const setPhotograperHeader = (name, city, country, tagline, portrait) => {
+    const photographerHeader = document.querySelector(".photograph-header");
 
     const picture = `assets/images/photographers/${portrait}`;
 
@@ -31,49 +34,55 @@ const setPhotographer = async () => {
         <img src="${picture}" alt="${name}">
     `;
 
-    let totalLikes = 0;
-    // Creates factory pattern
-    const mediaFactory = (objet) => {  
-       
-        const media = {
-           title: objet.title,
-           mediaUrl: objet.image ? objet.image : objet.video,
-           likes: objet.likes,
-
-            createMedia: () => {
-                const ExtentionType = media.mediaUrl.split('.')[1];
-                let mediaElement = '';
-                totalLikes += media.likes;
-
-                mediaElement = ExtentionType === 'mp4' ?
-                   `<video controls><source src="./assets/images/photographersWorks/${name.split(' ')[0]}/${media.mediaUrl}"></source></video>`
-                   : `<img src="./assets/images/photographersWorks/${name.split(' ')[0]}/${media.mediaUrl}" alt="${media.title}">`                
-               
-                return `
-                    <div class="card">
-                        ${ mediaElement }
-                        <div>
-                            <h2>${media.title}</h2>
-                            <div>
-                                <small>${media.likes}</small>
-                                <i class="fa-solid fa-heart"></i>
-                            </div>
-                        </div>
-                    </div>`;
-            },
-        }       
-        return media;
-    }
-
-    const photographerHeader = document.querySelector(".photograph-header");
-    const photographerMedia = document.querySelector(".galary-wrapper");
-
     photographerHeader.innerHTML = header;
-    photographerMedia.innerHTML = filteredPhotographerMedia.map(media => {
-        return mediaFactory(media).createMedia();
-    });
+};
 
-    // Adding likes and pricing info
+
+// Creates factory pattern
+const mediaFactory = (objet, name) => {  
+    
+    const media = {
+        title: objet.title,
+        mediaUrl: objet.image ? objet.image : objet.video,
+        likes: objet.likes,
+
+        createMedia: () => {
+            const ExtentionType = media.mediaUrl.split('.')[1];
+            let mediaElement = '';
+            totalLikes += media.likes;
+
+            mediaElement = ExtentionType === 'mp4' ?
+                `<video controls><source src="./assets/images/photographersWorks/${name.split(' ')[0]}/${media.mediaUrl}"></source></video>`
+                : `<img src="./assets/images/photographersWorks/${name.split(' ')[0]}/${media.mediaUrl}" alt="${media.title}">`                
+            
+            return `
+                <div class="card">
+                    ${ mediaElement }
+                    <div>
+                        <h2>${media.title}</h2>
+                        <div>
+                            <small>${media.likes}</small>
+                            <i class="fa-solid fa-heart"></i>
+                        </div>
+                    </div>
+                </div>`;
+        },
+    }       
+    return media;
+};
+
+
+// Calls factory function
+const callFactoryFunction = (filteredPhotographerMedia, name) => {
+    filteredPhotographerMedia.forEach(media =>{ 
+        photographerMedia.innerHTML += mediaFactory(media, name).createMedia();
+    });
+};
+
+
+// Adding likes and pricing info
+const addTotalLikesAndPricingInfo = (price) => {
+    
     const likesAndPricing = `
         <div class="photograph-likes-pricing">
             <div>
@@ -84,7 +93,6 @@ const setPhotographer = async () => {
 
     photographerMedia.parentElement.innerHTML  += likesAndPricing;
 
-
     const totalMediaLikes = document.querySelector(".photograph-likes-pricing span");
 
     Array.from(document.querySelectorAll('.galary-wrapper .card i')).map(like => {
@@ -93,13 +101,58 @@ const setPhotographer = async () => {
             const small = like.parentElement.firstElementChild;
             const likes =  parseInt(small.textContent);
             small.textContent = likes + 1;
-         
+            
             const parsedTotalMediaLikes = parseInt(totalMediaLikes.textContent);
             totalMediaLikes.textContent = parsedTotalMediaLikes + 1;
-           
+            
         });
-    })
+    });
+};
 
-}
 
-setPhotographer();
+// Sorting media
+const sortingMedia = (filteredPhotographerMedia, name) => {
+    const select = document.querySelector('.select-container>select');
+
+    select.addEventListener('change', (event) => {
+
+        const filterType = event.target.value;
+        console.log(filterType)
+        const sortedPhotographerMedia = filteredPhotographerMedia.sort((a, b) => {
+
+                if(filterType === 'popularity') {
+
+                    return b.likes - a.likes;
+
+                } else if (filterType === 'title') {
+
+                    const titleA = a.title.toLowerCase();
+                    const titleB = b.title.toLowerCase();
+
+                    if (titleA < titleB) return -1;
+                    if (titleA > titleB) return 1;
+                    
+                } else if(filterType === 'date') {
+                    if (new Date(a.date) > new Date(b.date)) return -1;
+                    if (new Date(a.date) < new Date(b.date)) return 1;
+                }
+            });
+        // console.log(sortedPhotographerMedia);
+        // callFactoryFunction(sortedPhotographerMedia, name);
+    });
+};
+
+
+// inits photograper
+const initPhotographer = async () => {
+    const { filteredPhotographer, filteredPhotographerMedia } = await getPhotographerData();
+
+    const { id, name, city, country, tagline, price, portrait } = filteredPhotographer;
+     
+    setPhotograperHeader(name, city, country, tagline, portrait);
+    callFactoryFunction(filteredPhotographerMedia, name);
+    addTotalLikesAndPricingInfo(price);
+    sortingMedia(filteredPhotographerMedia, name);
+};
+initPhotographer();
+
