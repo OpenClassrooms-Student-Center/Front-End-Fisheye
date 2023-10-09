@@ -23,6 +23,42 @@ export class Mediaphotographer {
      if (totalLikesElement) {
        totalLikesElement.innerText = this.totalLikes.toString();
      }
+     const section = document.getElementById("containerCards");
+     const select = document.querySelector("#orderSelect");
+     let filteredMedia = [...allMedias];
+    select.addEventListener("change", async () => {
+      const selectedOption = select.options[select.selectedIndex];
+      const selectedValue = selectedOption.value;
+      if (selectedValue === "popularity") {
+        section.innerHTML = "";
+        filteredMedia = [...allMedias].sort((a, b) => b.likes - a.likes);
+        filteredMedia.forEach((element) => {
+          this.insertMedias(element, photographer);
+        });
+      } else if (selectedValue === "date") {
+        section.innerHTML = "";
+        filteredMedia = [...allMedias].sort(
+          (a, b) => new Date(a.date) - new Date(b.date)
+        );
+        filteredMedia.forEach((element) => {
+          this.insertMedias(element, photographer);
+        });
+      } else if (selectedValue === "title") {
+        section.innerHTML = "";
+        filteredMedia = [...allMedias].sort((a, b) => {
+          if (a.title < b.title) {
+            return -1;
+          }
+          if (a.title > b.title) {
+            return 1;
+          }
+          return 0;
+        });
+        filteredMedia.forEach((element) => {
+          this.insertMedias(element, photographer);
+        });
+      }
+    });
     this.insertHeaderPhotographer(photographer);
   }
 
@@ -76,7 +112,6 @@ export class Mediaphotographer {
     containerCards.append(card);
     const heartId = document.getElementById(`heart-${id}`);
     const likeClass = document.getElementById(`like-${id}`);
-    console.log(id);
 
     heartId.addEventListener("click", () => {
      const totalLikesElement = document.getElementById("total-likes");
