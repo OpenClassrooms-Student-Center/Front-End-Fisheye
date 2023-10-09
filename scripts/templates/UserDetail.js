@@ -55,7 +55,9 @@ function detailMediaTemplate(data) {
 
         if (image) {
             img.setAttribute("src", picture);
+            img.setAttribute("onclick", 'lightboxOpen(this)');
         } else {
+            mp4.setAttribute("onclick", 'lightboxOpen(this)');
             mp4.src = movie;
             mp4.autoplay = false;
             mp4.controls = true;

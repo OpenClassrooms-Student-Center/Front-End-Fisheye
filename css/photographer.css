@@ -267,3 +267,25 @@ form textarea {
         transform: scale(1);
     }
 }
+
+/* ------------------ LIGHTBOX ------------------- */
+
+.lightbox {
+    display: none;
+    position: fixed;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    background: rgb(35, 35, 39, 0.8);
+}
+
+.lightbox-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 50px;
+}
+
+.lightbox-container img {
+    height: 90vh;
+}
