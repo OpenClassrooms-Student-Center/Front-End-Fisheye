@@ -5,8 +5,6 @@ function detailUserTemplate(data) {
 
     function getDetailDOM() {
         const article = document.createElement('article');
-        article.setAttribute('onclick', 'linkURL('+id+')');
-        article.setAttribute('aria-label', 'Lien vers la page de '+name);
 
         const div = document.createElement('div');
         div.classList.add('cardUser-text');
@@ -60,9 +58,10 @@ function detailMediaTemplate(data) {
             mp4.setAttribute("onclick", 'lightboxOpen(this)');
             mp4.src = movie;
             mp4.autoplay = false;
-            mp4.controls = true;
+            mp4.controls = false;
             mp4.height = 350;
             mp4.width = 350;
+            mp4.poster;
         }
 
         const divText = document.createElement('div');

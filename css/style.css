@@ -18,10 +18,6 @@ h1 {
     margin-right: 100px;
 }
 
-article {
-    cursor: pointer;
-}
-
 .logo {
     height: 50px;
     margin-left: 100px;
@@ -40,6 +36,7 @@ article {
     justify-content: center;
     align-items: center;
     flex-direction: column;
+    cursor: pointer;
 }
 
 .photographer_section article h2 {

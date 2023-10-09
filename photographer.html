@@ -15,7 +15,6 @@
       <div class="photograph-header">
         <button class="contact_button" onclick="contact_modal.showModal()" alt="Contact Me">Contactez-moi</button>
       </div>
-
       <div class="selectContainer">
         <h3>Trier par</h3>
           <select name="" class="contact_button" id="triMedia" onclick="orderMedia()">
@@ -31,13 +30,11 @@
       <div class="photograph-detail">
 
       </div>
-        <div class="lightbox">
-            <button class="lightbox-close" onclick="lightboxClose()">Close</button>
-            <button class="lightbox-next">Next</button>
-            <button class="lightbox-prev">Previous</button>
+        <div class="lightbox" aria-label="image closeup view" role="dialog">
+            <button class="lightbox-prev" >Previous</button>
             <div class="lightbox-container">
-
             </div>
+            <button class="lightbox-next">Next</button>
         </div>
     </main>
     <dialog id="contact_modal">

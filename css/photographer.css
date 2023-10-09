@@ -195,10 +195,11 @@ form textarea {
     height: 350px;
     object-fit: cover;
     align-content: center;
+    cursor: pointer;
 }
 
 .cardMedia video {
-    background: #232327;
+    object-fit: cover;
 }
 
 .textMedia {
@@ -273,19 +274,38 @@ form textarea {
 .lightbox {
     display: none;
     position: fixed;
+    flex-direction: row;
     top: 0;
     height: 100%;
     width: 100%;
-    background: rgb(35, 35, 39, 0.8);
+    background: #fff;
 }
 
 .lightbox-container {
     display: flex;
     align-items: center;
     justify-content: center;
+    width: 100%;
     margin: 0 50px;
 }
 
 .lightbox-container img {
-    height: 90vh;
+    width: 80vh;
+    height: 80vh;
+    object-fit: cover;
+}
+
+.lightbox-close {
+    position: absolute;
+    width: 50px;
+    height: 48px;
+    right: 21rem;
+    border: 0;
+    background: 0;
+    cursor: pointer;
+}
+
+.lightbox-close img {
+    width: 45px;
+    height: 45px;
 }
