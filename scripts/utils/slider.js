@@ -15,11 +15,13 @@ setTimeout(() => {
   const lighthox = document.querySelector("#lightbox");
 
   // Ouvrir l'image cliqué dans la Lightbox
-  const mediaSrc = document.querySelectorAll(".media");
-  mediaSrc.forEach((el) => {
+  const media = document.querySelectorAll(".media");
+  const mediaSrc = document.querySelectorAll(".media-source");
+  mediaSrc.forEach((el, id) => {
     el.addEventListener("click", () => {
       lighthox.style.display = "flex";
-      slideIndex = (slideIndex + el.getAttribute("data-id")) % slideCount;
+      slideIndex =
+        (slideIndex + media[id].getAttribute("data-id")) % slideCount;
       updateSlider();
     });
 
