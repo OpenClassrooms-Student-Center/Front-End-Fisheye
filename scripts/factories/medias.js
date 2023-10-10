@@ -1,10 +1,9 @@
 export function mediaFactory({
-    title, image, id, likes, video, name, picture
+    title, image, id, likes, video, name, portrait
 }){
-
+    const picture = `../assets/photographers/${portrait}`;
     const getMediasCardDOM = ()=>{
         const card = document.createElement("article")
-        const name = /^\w+/; // permets de supprimé le nom de famille de name du fichier json
     
     let picture, mediaHtml;
     if (image?.endsWith(".jpg")) {
