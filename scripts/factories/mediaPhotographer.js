@@ -42,7 +42,7 @@ export class Mediaphotographer {
           (a, b) => new Date(a.date) - new Date(b.date)
         );
         filteredMedia.forEach((element) => {
-          mediaFactory(element, photographer);
+          this.mediaFactory(element, photographer);
         });
       } else if (selectedValue === "title") {
         section.innerHTML = "";

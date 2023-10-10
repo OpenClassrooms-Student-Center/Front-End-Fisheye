@@ -1,6 +1,12 @@
 export function mediaFactory({
     title, image, id, likes, video, name
 }){
+  const photographer = data.photographers.find(
+    (onePhotographer) => onePhotographer.id === id
+  );
+  const response = fetch("../../data/photographers.json");
+  const data = response.json();
+  const { portrait} = photographer;
     const picture = `../assets/photographers/${portrait}`;
     const getMediasCardDOM = ()=>{
         const card = document.createElement("article")
