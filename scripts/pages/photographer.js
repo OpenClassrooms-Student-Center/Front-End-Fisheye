@@ -6,7 +6,7 @@ async function getDataPhotographers() {
     return dataPhotographers.json();
 }
 
-async function displayInfo(photographer) {
+function displayInfo(photographer) {
     const photographerInfo = document.querySelector(".photograph-info");
     const photographerPictureSection = document.querySelector(".photograph-profilephoto")
 
@@ -20,37 +20,16 @@ async function displayInfo(photographer) {
 
 }
 
-async function getDataMedia() {
 
-    const media = await fetch("../../data/photographers.json");
-    return media.json();
-}
-
-async function displayMediaImage(image) {
-    const sectionMedia = document.querySelector(".media");
-
-    image.forEach((media) => {
-        const mediaModel = photographerMediaTemplate(media);
-        const userMediaDom = mediaModel.getUserMediasImage();
-        sectionMedia.appendChild(userMediaDom);
+function displayMedia(data) {
+        data.forEach((m) => {
+        new Media(m, data).getMediaCardDom();
     })
 }
-
-async function displayMediaVideo(video) {
-    const sectionMedia = document.querySelector(".media");
-
-    video.forEach((media) => {
-        const mediaModel = photographerMediaTemplate(media);
-        const userMediaDom = mediaModel.getUserMediasVideo();
-        sectionMedia.appendChild(userMediaDom);
-    })
-}
-
-
 
 async function init() {
     // Récupère les datas des photographes selon leur id
-    const { photographers } = await getDataPhotographers();
+    const { photographers, media } = await getDataPhotographers();
 
     const param = new URLSearchParams(document.location.search);
     const id = param.get("id")
@@ -69,29 +48,8 @@ async function init() {
 
     displayInfo(photographer);
 
-    //Récupère les médias selon l'id du photographe
-
-    const { media } = await getDataPhotographers();
-
-    //Media Factory à faire
-
-    const mediaArrayByPhotographer = photographers.find(photographerIdentity => photographerIdentity.id == id);
-    let mediaArray = { media };
-
-    if (!mediaArrayByPhotographer) {
-        console.error("Photographer not found")
-    }
-
-    for (let i = 0; i < mediaArray.length; i++) {
-
-        mediaArray.filter(typeOfMedia);
-        if (typeOfMedia.type == "image") {
-            return displayMediaImage()
-        } else {
-            return displayMediaVideo();
-        }
-
-    }
+    const mediasByPhotographers = media.filter((media) => media.photographerId == id);
+    displayMedia(mediasByPhotographers);
 }
 
 

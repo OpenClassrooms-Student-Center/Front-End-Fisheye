@@ -90,42 +90,15 @@ function photographPicture(data) {
     return { picture, getUserPicture };
 };
 
-/////////////////MediaTemplate
-function photographerMediaTemplate(data) {
+/////////////////MediasTemplate
+
+/*function photographerMediaTemplate(data) {
     const { photographerId, title, image, video, likes } = data;
     const imageMedia = `assets/medias/` + `${photographerId}` + `/` + `${image}`;
     const videoMedia = `assets/medias/` + `${photographerId}` + `/` + `${video}`;
     const likeIconMedia = `assets/icons/like-icon.png`
 
-    //Voir pour faire une factory
-    function getUserMediasImage() {
-        const article = document.createElement('article');
-
-        const imageElement = document.createElement('img');
-        imageElement.setAttribute("src", imageMedia);
-        imageElement.setAttribute("alt", title);
-
-
-        const divDescription = document.createElement('div');
-
-        const titleElement = document.createElement('h2');
-        titleElement.innerText = title;
-
-        const likesElement = document.createElement('p');
-        likesElement.innerText = likes;
-
-        const likesIcon = document.createElement('img')
-        likesIcon.setAttribute("src", likeIconMedia);
-        likesIcon.setAttribute("alt", "j'aimes");
-
-        article.appendChild(imageElement);
-        article.appendChild(divDescription);
-        divDescription.appendChild(titleElement);
-        divDescription.appendChild(likesElement);
-        divDescription.appendChild(likesIcon);
-
-        return article;
-    }
+    
 
     function getUserMediasVideo() {
         const article = document.createElement('article');
@@ -160,4 +133,4 @@ function photographerMediaTemplate(data) {
         return article;
     }
     return { photographerId, title, image, video, likes, imageMedia, videoMedia, getUserMediasImage, getUserMediasVideo };
-};
+};*/

@@ -2,6 +2,10 @@
     display: none;
 }
 
+#main {
+    width:1240px;
+}
+
 .photograph-header {
     display: flex;
     justify-content: space-between;
@@ -105,4 +109,30 @@ form input {
     height: 68px;
     border: none;
     border-radius: 5px;
+}
+
+
+.media {
+    display: flex;
+    margin: auto;
+    justify-content: space-around;
+    gap : 95px;
+}
+
+.media article {
+    display: flex;
+    flex-direction: column;
+    gap:10px;
+    width: 350px;
+    height: 350px;
+}
+
+.media article img, .media article video {
+    object-fit: cover;
+    height: 90%;
+}
+
+.media article div {
+    display: flex;
+    box-sizing: border-box;
 }
