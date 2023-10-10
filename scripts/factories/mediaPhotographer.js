@@ -15,7 +15,7 @@ export class Mediaphotographer {
       (dataMediaPhotographer) => dataMediaPhotographer.photographerId === id
     );
     for (const media of allMedias) {
-      this.insertMediasFactory(media, photographer);
+      this.insertMedias(media, photographer);
       this.totalLikes += media.likes
     }
      // Mettez à jour l'élément HTML avec le total des likes
