@@ -1,7 +1,7 @@
 export function mediaFactory({
      name, portrait
 }){
-    const picture = `../assets/photographers/${portrait}`;
+    const picture = `../../assets/photographers/${portrait}`;
     const getMediasCardDOM = ()=>{
         const containerCards = document.getElementById("containerCards");
              const card = document.createElement("div");
