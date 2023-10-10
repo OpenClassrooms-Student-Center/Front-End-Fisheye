@@ -5,6 +5,10 @@
     <meta charset="utf-8">
     <link rel="icon" type="image/png" href="assets/favicon.png">
     <link href="https://fonts.googleapis.com/css?family=DM+Sans&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&family=Shrikhand&display=swap" rel="stylesheet">
+    <link crossorigin="anonymous" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w==" referrerpolicy="no-referrer" rel="stylesheet">
     <title>Fisheye - photographe </title>
   </head>
   <body>
@@ -13,8 +17,10 @@
     </header>
     <main id="main">
       <div class="photograph-header">
-        <button class="contact_button" onclick="displayModal()">Contactez-moi</button>
       </div>
+      <div class="photographer_media">
+      </div>
+      
     </main>
     <div id="contact_modal">
 			<div class="modal">
@@ -22,6 +28,7 @@
           <h2>Contactez-moi</h2>
           <img src="assets/icons/close.svg" onclick="closeModal()" />
         </header>
+        
 				<form>
 					<div>
 						<label>Prénom</label>
@@ -30,12 +37,16 @@
             type="text"
             id="first"
             name="first" />
+            
+                <span id="firsterror"></span>
             <label>Nom</label>
 						<input 
             class="text-control"
             type="text"
             id="last"
             name="last"/>
+            
+                <span id="lasterror"></span>
             <label>Email</label>
 						<input 
             class="text-control"
@@ -43,13 +54,17 @@
             id="email"
             name="email"
             autocomplete="email"/>
+            
+                <span id="emailerror"></span>
             <label>Votre message</label>
             <textarea id="message"></textarea>
+                <span id="messageerror"></span>
 					</div>
           <button class="contact_button">Envoyer</button>
 				</form>
 			</div>
 		</div>
+    <script src="scripts/templates/photographer_profile.js"></script>
     <script src="/scripts/pages/photographer.js"></script>
     <script src="/scripts/utils/contactForm.js"></script>
   </body>

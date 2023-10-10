@@ -25,5 +25,5 @@ function photographerTemplate(data) {
         article.appendChild(h5);
         return (article);
     }
-    return { name, picture, city, country, tagline, price, getUserCardDOM }
+    return { getUserCardDOM }
 }
