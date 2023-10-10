@@ -1,16 +1,10 @@
 export function mediaFactory({
-    title, image, id, likes, video, name
+    title, image, id, likes, video, name, picture
 }){
-  const photographer = data.photographers.find(
-    (onePhotographer) => onePhotographer.id === id
-  );
-  const response = fetch("../../data/photographers.json");
-  const data = response.json();
-  const { portrait} = photographer;
-    const picture = `../assets/photographers/${portrait}`;
+
     const getMediasCardDOM = ()=>{
         const card = document.createElement("article")
-        const regexName = /^\w+/; // permets de supprimé le nom de famille de name du fichier json
+        const name = /^\w+/; // permets de supprimé le nom de famille de name du fichier json
     
     let picture, mediaHtml;
     if (image?.endsWith(".jpg")) {
