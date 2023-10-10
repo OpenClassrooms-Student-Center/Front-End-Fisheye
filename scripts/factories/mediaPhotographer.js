@@ -34,7 +34,7 @@ export class Mediaphotographer {
         section.innerHTML = "";
         filteredMedia = [...allMedias].sort((a, b) => b.likes - a.likes);
         filteredMedia.forEach((element) => {
-          mediaFactory(element, photographer);
+          this.mediaFactory(element, photographer);
         });
       } else if (selectedValue === "date") {
         section.innerHTML = "";
@@ -56,7 +56,7 @@ export class Mediaphotographer {
           return 0;
         });
         filteredMedia.forEach((element) => {
-          mediaFactory(element, photographer);
+          this.mediaFactory(element, photographer);
         });
       }
     });
