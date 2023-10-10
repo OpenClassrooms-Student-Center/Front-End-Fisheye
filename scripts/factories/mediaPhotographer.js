@@ -1,3 +1,4 @@
+import { mediaFactory } from "../factories/medias.js"
 export class Mediaphotographer {
   constructor() {
     this.totalLikes = 0 ; // Variable pour suivre le total des likes
@@ -15,7 +16,7 @@ export class Mediaphotographer {
       (dataMediaPhotographer) => dataMediaPhotographer.photographerId === id
     );
     for (const media of allMedias) {
-      this.insertMedias(media, photographer);
+      mediaFactory(media, photographer);
       this.totalLikes += media.likes
     }
      // Mettez à jour l'élément HTML avec le total des likes
@@ -33,7 +34,7 @@ export class Mediaphotographer {
         section.innerHTML = "";
         filteredMedia = [...allMedias].sort((a, b) => b.likes - a.likes);
         filteredMedia.forEach((element) => {
-          this.insertMedias(element, photographer);
+          mediaFactory(element, photographer);
         });
       } else if (selectedValue === "date") {
         section.innerHTML = "";
@@ -41,7 +42,7 @@ export class Mediaphotographer {
           (a, b) => new Date(a.date) - new Date(b.date)
         );
         filteredMedia.forEach((element) => {
-          this.insertMedias(element, photographer);
+          mediaFactory(element, photographer);
         });
       } else if (selectedValue === "title") {
         section.innerHTML = "";
@@ -55,7 +56,7 @@ export class Mediaphotographer {
           return 0;
         });
         filteredMedia.forEach((element) => {
-          this.insertMedias(element, photographer);
+          mediaFactory(element, photographer);
         });
       }
     });
