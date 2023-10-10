@@ -10,7 +10,7 @@ async function getPhotographerById(id) {
         const photographermedia = photographersData.media;
         const photographer = photographers.find((photographer) => photographer.id === id);
         let media = photographermedia.filter((item) => item.photographerId === id);
-        console.log(media);
+        
         return { photographer, media};
     } 
 
@@ -21,6 +21,13 @@ async function displayPhotographer(photographer) {
     headerSection.appendChild(userCardDOM);
 }
 
+async function displayNameForm(photographer) {
+    const formTitle = document.querySelector(".form_title");
+    const formTitleModel = photographerTemplate(photographer);
+    const formTitleCardDOM = formTitleModel.getnameFormDom();
+    formTitle.appendChild(formTitleCardDOM);
+}
+
 async function displayMedia(media) {
     const mediaSection = document.querySelector(".photographer_media");
     media.forEach((media) =>{
@@ -28,12 +35,11 @@ async function displayMedia(media) {
         const mediaCardDOM = mediaModel.getMediaCardDOM();
         mediaSection.appendChild(mediaCardDOM);
     });
-  
-
 }
 
 async function display(photographer, media) {
     displayPhotographer(photographer)
+    displayNameForm(photographer)
     displayMedia(media)
 }
 

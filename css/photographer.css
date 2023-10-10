@@ -32,7 +32,6 @@
     width: 50%;
     display: flex;
     flex-direction: column;
-    align-items: center;
     justify-content: space-between;
     padding: 35px;
     margin: auto;
@@ -190,4 +189,10 @@ form textarea {
 
 .likes h3{
     margin: 0;
+}
+
+.form_title h2{
+    margin: 0px 0px 20px 0px;
+    font-size: 64px;
+    font-weight: normal;
 }

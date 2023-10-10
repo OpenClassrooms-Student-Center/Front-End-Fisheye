@@ -52,13 +52,21 @@ function photographerTemplate(data) {
 
         return (photographerHeader);
     }
-    return { getUserCardDOM }
+
+    function getnameFormDom(){
+        const nameForm = document.createElement('h2');
+
+        nameForm.textContent = name;
+        return (nameForm);
+    }
+    return { getUserCardDOM, getnameFormDom}
 }
 
 
 function phototographerMedia(data) {
-    const { title, image, likes} = data;
-    const images = `assets/images/${image}`;
+    const { title, image, likes, photographerId, video} = data;
+    const images = `assets/images/${photographerId}/${image}`;
+    const videos = `assets/images/${photographerId}/${video}`;
 
     function getMediaCardDOM() {
         const photographerMedia = document.createElement( 'div' );
@@ -70,6 +78,23 @@ function phototographerMedia(data) {
         const mediaLikes = document.createElement( 'div' );
         mediaLikes.classList.add( 'likes' );
 
+        
+
+        if (data.video){
+            const vdo = document.createElement('video');
+            const source = document.createElement('source');
+            source.setAttribute("src", videos);
+            source.setAttribute("type", "video/mp4");
+            photographerMedia.appendChild(vdo);
+            vdo.appendChild(source);
+        }
+        else{
+            const img = document.createElement('img');
+            img.setAttribute("src", images);
+            photographerMedia.appendChild(img);
+        }
+        
+
         const h2 = document.createElement( 'h2' );
         h2.textContent= title;
         
@@ -80,18 +105,19 @@ function phototographerMedia(data) {
         heart.classList.add( 'fa-solid' );
         heart.classList.add( 'fa-heart' );
         heart.classList.add( 'heart__icon--full' );
-        
+         
         photographerMedia.appendChild(mediaInformations);
         mediaInformations.appendChild(h2);
         
         mediaLikes.appendChild(h3);
         mediaLikes.appendChild(heart);
         mediaInformations.appendChild(mediaLikes);
+        photographerMedia.appendChild(mediaInformations);
 
-        return (mediaInformations);
+        return (photographerMedia);
 
     }
 
-    return { title, likes, getMediaCardDOM }
+    return { getMediaCardDOM }
 
 }
