@@ -10,8 +10,30 @@ class Api {
   async get() {
     return fetch(this._url)
       .then((res) => res.json())
-      .then((res) => res.data)
+      .then((res) => {
+        console.log("Response data:", res);
+        return res;
+      })
       .catch((err) => console.log("an error occurs", err));
+  }
+}
+// console.log("datar", data);
+
+// Define PhotographersApi class with Api
+class PhotographersApi extends Api {
+  /**
+   *
+   * @param {string} url
+   */
+  constructor(url) {
+    super(url);
+  }
+  // Get Medias data
+  async getPhotographers() {
+    const response = await this.get();
+    const photographersData = response.photographers;
+    console.log("Photographers Data:", photographersData);
+    return photographersData;
   }
 }
 
@@ -26,8 +48,15 @@ class MediasApi extends Api {
   }
   // Get Medias data
   async getMedias() {
-    return await this.get("res.media");
+    const response = await this.get();
+    const mediasData = response.res.media;
+    if (response) {
+      console.log("Medias Data:", mediasData); // Add this line to log the medias data
+      return mediasData;
+    } else {
+      throw new Error("API response is undefined.");
+    }
   }
 }
 
-export { MediasApi };
+export { PhotographersApi, MediasApi };
