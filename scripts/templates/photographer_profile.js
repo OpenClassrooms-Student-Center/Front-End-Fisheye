@@ -1,5 +1,5 @@
 function photographerTemplate(data) {
-    const { name, portrait, city, country, tagline, price } = data;
+    const { name, portrait, city, country, tagline, price,  } = data;
     const picture = `assets/photographers/${portrait}`;
 
     function getUserCardDOM() {
@@ -16,6 +16,7 @@ function photographerTemplate(data) {
         photographerContactBtn.classList.add('contact_button');
         photographerContactBtn.textContent = 'Contactez-moi';
         photographerContactBtn.onclick = displayModal;
+        photographerContactBtn.setAttribute('arial-label', 'Contactez le photograph '+name);
 
         const photographerPicture = document.createElement('div');
         photographerPicture.classList.add('photographer_picture');
@@ -25,6 +26,7 @@ function photographerTemplate(data) {
 
         const img = document.createElement('img');
         img.setAttribute("src", picture);
+        img.setAttribute("alt", name)
 
         const h2 = document.createElement( 'h2' );
         h2.textContent = name;
@@ -55,7 +57,6 @@ function photographerTemplate(data) {
 
     function getnameFormDom(){
         const nameForm = document.createElement('h2');
-
         nameForm.textContent = name;
         return (nameForm);
     }
@@ -91,6 +92,7 @@ function phototographerMedia(data) {
         else{
             const img = document.createElement('img');
             img.setAttribute("src", images);
+            img.setAttribute("alt", title);
             photographerMedia.appendChild(img);
         }
         
@@ -117,7 +119,13 @@ function phototographerMedia(data) {
         return (photographerMedia);
 
     }
+    
+    function getTotalLikes() {
+        const h5 = document.createElement( 'h5' );
+        h5.textContent = likes;
+        return (h5)
+    }
 
-    return { getMediaCardDOM }
+    return { getMediaCardDOM, getTotalLikes }
 
 }

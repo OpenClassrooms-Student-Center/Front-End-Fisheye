@@ -7,8 +7,10 @@ function photographerTemplate(data) {
         const article = document.createElement( 'article' );
         const link = document.createElement( 'a' );
         link.setAttribute( 'href','photographer.html?id='+id );
+        link.setAttribute( 'arial-label','Voir le profil du photograph '+name );
         const img = document.createElement( 'img' );
         img.setAttribute("src", picture)
+        img.setAttribute("alt", name)
         const h2 = document.createElement( 'h2' );
         h2.textContent = name;
         const h3 = document.createElement( 'h3' );

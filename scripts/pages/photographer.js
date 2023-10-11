@@ -37,10 +37,32 @@ async function displayMedia(media) {
     });
 }
 
+async function displayTotalLikes(media){
+    likes = media.map(media => media.likes);
+    let inilikes = 0;
+    const totalLikes = likes.reduce((accumulator, currentValue) => accumulator + currentValue, inilikes);
+        
+    const totalLikesSection = document.querySelector(".photographer_likes_price");
+    const likesHeart = document.createElement("div");
+    likesHeart.classList.add( 'likeheart' );
+    const h5 = document.createElement( 'h5' );
+    h5.textContent = totalLikes;
+    const heart = document.createElement( 'i' );
+        heart.classList.add( 'fa-solid' );
+        heart.classList.add( 'fa-heart' );
+        heart.classList.add( 'heart__icon--full' );
+    
+    likesHeart.appendChild(h5);
+    likesHeart.appendChild(heart);
+    totalLikesSection.appendChild( likesHeart );
+    console.log(totalLikes)
+}
+
 async function display(photographer, media) {
     displayPhotographer(photographer)
     displayNameForm(photographer)
     displayMedia(media)
+    displayTotalLikes(media)
 }
 
 async function init() {

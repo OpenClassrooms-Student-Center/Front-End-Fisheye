@@ -146,9 +146,16 @@ form textarea {
     bottom: 0;
     right: 3%;
     display: flex;
+    flex-direction: row-reverse;
     justify-content: space-around;
     border-radius: 5px 5px 0px 0px;
     padding: 7px 15px;
+    gap: 20px;
+}
+
+.photographer_likes_price h5{
+    font-size: 20px;
+    margin: 0;
 }
 
 .photographer_media{
@@ -195,4 +202,14 @@ form textarea {
     margin: 0px 0px 20px 0px;
     font-size: 64px;
     font-weight: normal;
+}
+
+.likeheart{
+    display: flex;
+    gap: 5px;
+    align-items: center;
+}
+
+.likeheart i{
+    align-items: center;
 }
