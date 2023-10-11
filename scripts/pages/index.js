@@ -1,4 +1,5 @@
 import { PhotographersApi } from "../api/api.js";
+import { photographerTemplate } from "../templates/photographer.js";
 
 class App {
   constructor() {
@@ -10,48 +11,35 @@ class App {
   async main() {
     const photographersApiData = await this.photographersApi.getPhotographers();
 
-    console.log("photographersApiData", photographersApiData);
-
     photographersApiData.forEach((photographer) => {
-      console.log(photographer);
-
-      // const photographerModel = photographerTemplate(photographer);
-      // const userCardDOM = photographerModel.getUserCardDOM();
-      // //ajout des éléments à la classe "photographer_section"
-      // photographersSection.appendChild(userCardDOM);
+      displayPhotographerData(photographer);
     });
 
-    async function displayPhotographerData(photographersApiData) {
-      console.log("photographersArray", photographersApiData);
+    async function displayPhotographerData(photographer) {
+      console.log("photographer", photographer);
       //création de la section photographes
       const photographersSection = document.querySelector(
         ".photographer_section"
       );
+      const photographerModel = photographerTemplate(photographer);
+      const userCardDOM = photographerModel.getUserCardDOM();
 
-      //boucle sur le json
-      photographersApiData.forEach((element) => console.log(element));
-      photographersApiData.forEach((photographer) => {
-        console.log(1);
-        const photographerModel = photographerTemplate(photographer);
-        const userCardDOM = photographerModel.getUserCardDOM();
-
-        //ajout des éléments à la classe "photographer_section"
-        photographersSection.appendChild(userCardDOM);
-      });
+      //ajout des éléments à la classe "photographer_section"
+      photographersSection.appendChild(userCardDOM);
     }
 
-    // async function init() {
-    //   // Récupère les datas des photographes
-    //   try {
-    //     const photographers = await getPhotographers();
-    //     displayPhotographerData(photographers);
-    //     console.log(photographers);
-    //   } catch (error) {
-    //     console.error("Error fetching photographers data:", error);
-    //   }
-    // }
+    async function init() {
+      // Récupère les datas des photographes
+      try {
+        const photographers = await getPhotographers();
+        displayPhotographerData(photographers);
+        console.log(photographers);
+      } catch (error) {
+        console.error("Error fetching photographers data:", error);
+      }
+    }
 
-    // init();
+    init();
   }
 
   //------------------------------------------------------------------------
