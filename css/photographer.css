@@ -1,6 +1,6 @@
 .photograph-header {
     background-color: #FAFAFA;
-    height: 260px;
+    height: 250px;
     padding: 0 2rem;
     display: flex;
     justify-content: space-between;
@@ -41,7 +41,7 @@
 .photograph-header img {
     height: 180px;
     width: 180px;
-    margin-bottom: 20px;
+    /* margin-bottom: 20px; */
     border-radius: 50%;
     object-fit: cover;
 }

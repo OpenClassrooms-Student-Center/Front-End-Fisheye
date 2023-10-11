@@ -1,7 +1,3 @@
-const photographerMedia = document.querySelector(".galary-wrapper");
-let totalLikes = 0;
-
-
 // Gets photograper
 const getPhotographerData = async () => {
     const ID = new URL(document.location.href).searchParams.get('id');
@@ -38,6 +34,7 @@ const setPhotograperHeader = (name, city, country, tagline, portrait) => {
 };
 
 
+let totalLikes = 0;
 // Creates factory pattern
 const mediaFactory = (objet, name) => {  
     
@@ -74,6 +71,10 @@ const mediaFactory = (objet, name) => {
 
 // Calls factory function
 const callFactoryFunction = (filteredPhotographerMedia, name) => {
+    
+    const photographerMedia = document.querySelector(".galary-wrapper");
+    photographerMedia.replaceChildren();
+
     filteredPhotographerMedia.forEach(media =>{ 
         photographerMedia.innerHTML += mediaFactory(media, name).createMedia();
     });
@@ -82,7 +83,8 @@ const callFactoryFunction = (filteredPhotographerMedia, name) => {
 
 // Adding likes and pricing info
 const addTotalLikesAndPricingInfo = (price) => {
-    
+    const photographerMedia = document.querySelector(".galary-wrapper");
+
     const likesAndPricing = `
         <div class="photograph-likes-pricing">
             <div>
@@ -117,7 +119,7 @@ const sortingMedia = (filteredPhotographerMedia, name) => {
     select.addEventListener('change', (event) => {
 
         const filterType = event.target.value;
-        console.log(filterType)
+        
         const sortedPhotographerMedia = filteredPhotographerMedia.sort((a, b) => {
 
                 if(filterType === 'popularity') {
@@ -138,7 +140,7 @@ const sortingMedia = (filteredPhotographerMedia, name) => {
                 }
             });
         // console.log(sortedPhotographerMedia);
-        // callFactoryFunction(sortedPhotographerMedia, name);
+        callFactoryFunction(sortedPhotographerMedia, name);
     });
 };
 
