@@ -3,8 +3,6 @@ import { photographerTemplate } from "../templates/photographer.js";
 
 class App {
   constructor() {
-    // this.$moviesWrapper = document.querySelector(".movies-wrapper");
-
     this.photographersApi = new PhotographersApi("/data/photographers.json");
   }
 
@@ -27,19 +25,6 @@ class App {
       //ajout des éléments à la classe "photographer_section"
       photographersSection.appendChild(userCardDOM);
     }
-
-    async function init() {
-      // Récupère les datas des photographes
-      try {
-        const photographers = await getPhotographers();
-        displayPhotographerData(photographers);
-        console.log(photographers);
-      } catch (error) {
-        console.error("Error fetching photographers data:", error);
-      }
-    }
-
-    init();
   }
 
   //------------------------------------------------------------------------
