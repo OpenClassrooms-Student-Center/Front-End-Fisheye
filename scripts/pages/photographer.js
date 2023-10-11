@@ -18,8 +18,6 @@ async function getPhotographerById(id) {
   return fetchedPhotographer;
 }
 
-//------------------------------------------------------------------------
-
 async function displayPhotographerData(id) {
   try {
     const photographer = await getPhotographerById(id);
@@ -50,16 +48,14 @@ async function displayPhotographerData(id) {
 //------------------------------------------------------------------------
 class PhotographerPagesMedia {
   constructor() {
-    this.$mediasWrapper = document.querySelector(".medias-wrapper");
+    this.mediasApi = new MediasApi("/data/photographers.json");
   }
-
-  // // Fetch photographer data (You can implement this method)
-  // async photographer() {
-  //   // Implement your logic to fetch photographer data here
-  // }
 
   // Fetch media data
   async media() {
+    const mediasApiData = await this.mediasApi.getMedias();
+    console.log("mediasApiData", mediasApiData);
+
     try {
       const mediasApi = new MediasApi("../../data/photographers.json");
       const mediasData = await mediasApi.getMedias();
@@ -95,7 +91,6 @@ async function init() {
   const id = new URLSearchParams(window.location.search).get("id");
   const app = new PhotographerPagesMedia();
   const mediaData = await app.medias(id);
-  // app.medias();
 
   // Get photographer data
   try {

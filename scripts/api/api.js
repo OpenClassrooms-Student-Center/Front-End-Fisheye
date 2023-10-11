@@ -47,13 +47,9 @@ class MediasApi extends Api {
   // Get Medias data
   async getMedias() {
     const response = await this.get();
-    const mediasData = response.res.media;
-    if (response) {
-      console.log("Medias Data:", mediasData); // Add this line to log the medias data
-      return mediasData;
-    } else {
-      throw new Error("API response is undefined.");
-    }
+    const mediasData = response.medias;
+    console.log(mediasData);
+    return mediasData;
   }
 }
 
