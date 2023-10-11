@@ -11,7 +11,6 @@ class Api {
     return fetch(this._url)
       .then((res) => res.json())
       .then((res) => {
-        console.log("Response data:", res);
         return res;
       })
       .catch((err) => console.log("an error occurs", err));
@@ -32,7 +31,6 @@ class PhotographersApi extends Api {
   async getPhotographers() {
     const response = await this.get();
     const photographersData = response.photographers;
-    console.log("Photographers Data:", photographersData);
     return photographersData;
   }
 }
