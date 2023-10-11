@@ -79,8 +79,6 @@ function phototographerMedia(data) {
         const mediaLikes = document.createElement( 'div' );
         mediaLikes.classList.add( 'likes' );
 
-        
-
         if (data.video){
             const vdo = document.createElement('video');
             const source = document.createElement('source');
@@ -96,7 +94,6 @@ function phototographerMedia(data) {
             photographerMedia.appendChild(img);
         }
         
-
         const h2 = document.createElement( 'h2' );
         h2.textContent= title;
         
@@ -120,12 +117,7 @@ function phototographerMedia(data) {
 
     }
     
-    function getTotalLikes() {
-        const h5 = document.createElement( 'h5' );
-        h5.textContent = likes;
-        return (h5)
-    }
 
-    return { getMediaCardDOM, getTotalLikes }
+    return { getMediaCardDOM }
 
 }

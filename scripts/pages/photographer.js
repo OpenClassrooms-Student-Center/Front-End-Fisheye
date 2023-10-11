@@ -1,7 +1,5 @@
 //Mettre le code JavaScript lié à la page photographer.html
 
-//let photographerId = new URL(document.location).searchParams.get('id');
-
 async function getPhotographerById(id) {
         const response = await fetch('../../data/photographers.json');
         const photographersData = await response.json();

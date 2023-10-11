@@ -1,7 +1,7 @@
 <!DOCTYPE html>
-<html>
+<html lang="fr">
   <head>
-    <link href="css/style.css" rel="stylesheet" type="text/css" />
+    <link href="css/style.css" rel="stylesheet" type="text/css">
     <meta charset="utf-8">
     <link rel="icon" type="image/png" href="assets/favicon.png">
     <link href="https://fonts.googleapis.com/css?family=DM+Sans&display=swap" rel="stylesheet">
@@ -13,7 +13,7 @@
   </head>
   <body>
     <header>
-      <a href="index.html" alt="Fisheye Home page"><img src="assets/images/logo.png" class="logo" alt="fisheye logo"/></a>
+      <a href="index.html" aria-label="Fisheye Home page"><img src="assets/images/logo.png" class="logo" alt="fisheye logo"></a>
     </header>
     <main id="main">
       <div class="photograph-header">
@@ -26,7 +26,7 @@
 			<div class="modal">
 				<header>
           <h2>Contactez-moi</h2>
-          <img src="assets/icons/close.svg" onclick="closeModal()" />
+          <img src="assets/icons/close.svg" alt="Fermer le formulaire" onclick="closeModal()">
         </header>
         <div class="form_title"></div>
         
@@ -37,7 +37,7 @@
             class="text-control"
             type="text"
             id="first"
-            name="first" />
+            name="first">
             
                 <span id="firsterror"></span>
             <label>Nom</label>
@@ -45,7 +45,7 @@
             class="text-control"
             type="text"
             id="last"
-            name="last"/>
+            name="last">
             
                 <span id="lasterror"></span>
             <label>Email</label>
@@ -54,7 +54,7 @@
             type="email"
             id="email"
             name="email"
-            autocomplete="email"/>
+            autocomplete="email">
             
                 <span id="emailerror"></span>
             <label>Votre message</label>
