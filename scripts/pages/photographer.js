@@ -3,22 +3,21 @@ import {
   photographerPageTemplate,
   photographerMediaTemplate,
 } from "../templates/photographerPage.js";
+import { PhotographersApi } from "../api/api.js";
 
 async function getPhotographerById(id) {
-  // Retrieve photographers
-  const photographersResponse = await fetch("data/photographers.json");
-  const photographersData = await photographersResponse.json();
+  const photographersApi = new PhotographersApi("/data/photographers.json");
 
-  const fetchedPhotographer = photographersData.photographers.find(
+  // Retrieve photographers using the API
+  const getPhotographers = await photographersApi.getPhotographers();
+
+  const fetchedPhotographer = getPhotographers.find(
     (photographer) => photographer.id === Number(id)
   );
 
   return fetchedPhotographer;
 }
 
-//------------------------------------------------------------------------
-// Find the photographer with the matching id
-const id = new URLSearchParams(window.location.search).get("id");
 //------------------------------------------------------------------------
 
 async function displayPhotographerData(id) {

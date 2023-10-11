@@ -14,7 +14,6 @@ class App {
     });
 
     async function displayPhotographerData(photographer) {
-      console.log("photographer", photographer);
       //création de la section photographes
       const photographersSection = document.querySelector(
         ".photographer_section"
@@ -26,11 +25,7 @@ class App {
       photographersSection.appendChild(userCardDOM);
     }
   }
-
-  //------------------------------------------------------------------------
 }
-
-//------------------------------------------------------------------------
 
 const app = new App();
 app.main();
