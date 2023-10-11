@@ -1,14 +1,13 @@
 // Global DOM var
 const body = document.body;
 const openModalBtn = document.querySelector(".open-modal-btn");
+const openPicBtn = document.querySelector(".media-img");
 const mainWrapper = document.querySelector(".main-wrapper");
 const modal = document.querySelector(".photo_modal");
-const modalTitle = document.querySelector(".modal-title");
 const modalCloseBtn = document.querySelector(".modal-close-btn");
 
 // Func
 export const onOpenModal = () => {
-  console.log("tst");
   mainWrapper.setAttribute("aria-hidden", "true");
   modal.setAttribute("aria-hidden", "false");
   body.classList.add("no-scroll");
@@ -25,9 +24,26 @@ const onCloseModal = () => {
 };
 
 // Event
-openModalBtn.addEventListener("click", () => {
-  onOpenModal();
-});
+openModalBtn ? openModalBtn.addEventListener("click", onOpenModal) : null;
+
+// Func
+export async function onOpenPic() {
+  const imagePath = this.src;
+  console.log(imagePath);
+
+  const modalPic = document.querySelector(".modal-picture");
+  modalPic.src = imagePath;
+
+
+  mainWrapper.setAttribute("aria-hidden", "true");
+  modal.setAttribute("aria-hidden", "false");
+  body.classList.add("no-scroll");
+  modal.style.display = "flex";
+  modalCloseBtn.focus();
+}
+
+// Event
+openPicBtn ? openPicBtn.addEventListener("click", onOpenPic) : null;
 
 modalCloseBtn.addEventListener("click", () => {
   onCloseModal();

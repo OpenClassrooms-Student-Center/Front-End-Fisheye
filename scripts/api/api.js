@@ -16,7 +16,6 @@ class Api {
       .catch((err) => console.log("an error occurs", err));
   }
 }
-// console.log("datar", data);
 
 // Define PhotographersApi class with Api
 class PhotographersApi extends Api {
@@ -48,7 +47,6 @@ class MediasApi extends Api {
   async getMedias() {
     const response = await this.get();
     const mediasData = response.medias;
-    console.log(mediasData);
     return mediasData;
   }
 }

@@ -214,3 +214,8 @@ form input {
 .no-scroll {
   overflow: hidden;
 }
+
+.modal-picture {
+  width: 300px;
+  height: auto;
+}

@@ -54,7 +54,6 @@ class PhotographerPagesMedia {
   // Fetch media data
   async media() {
     const mediasApiData = await this.mediasApi.getMedias();
-    console.log("mediasApiData", mediasApiData);
 
     try {
       const mediasApi = new MediasApi("../../data/photographers.json");

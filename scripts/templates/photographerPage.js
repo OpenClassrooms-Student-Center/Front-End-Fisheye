@@ -1,9 +1,8 @@
 import { displayModal, closeModal } from "../utils/contactForm.js";
-import { onOpenModal } from "../utils/photoModal.js"; // Import openModalBtn here
+import { onOpenPic } from "../utils/photoModal.js"; // Import openModalBtn here
 
 //template for photographer section for photographer page
 export function photographerPageTemplate(photographer) {
-  // console.log("photographer", photographer);
   //création du template "photographer_section"
   const photographHeader = document.querySelector(".photograph-header");
 
@@ -87,7 +86,6 @@ export function photographerPageTemplate(photographer) {
 // photographerPage.js
 export function photographerMediaTemplate(filteredMedias, photographer) {
   filteredMedias.forEach((media) => {
-    // console.log("photographer.name", media._image);
     const mediasWrapper = document.querySelector(".medias-wrapper");
 
     // Create a container for each media item
@@ -122,7 +120,6 @@ export function photographerMediaTemplate(filteredMedias, photographer) {
     mediaLikeHeartElement.classList.add("fa-solid", "fa-heart");
 
     //   Construct the path to the image using the correct folder structure
-    // console.log(photographer);
 
     const mediaTypeElement = document.createElement("p");
 
@@ -131,13 +128,16 @@ export function photographerMediaTemplate(filteredMedias, photographer) {
 
       // Construct the path to the image using the correct folder structure
       const imagePath = `assets/images/${photographer.name}/${media.image}`;
+
       const modalPic = document.querySelector(".modal-picture");
+      const modalTitle = document.querySelector("#modal-title");
       modalPic.src = imagePath;
+
       // Create an <img> element for displaying the image
       const imageElement = document.createElement("img");
       imageElement.src = imagePath;
       imageElement.alt = media.image;
-      imageElement.onclick = onOpenModal;
+      imageElement.onclick = onOpenPic;
 
       // Append the image element to the mediaImg container
       mediaImg.appendChild(imageElement);
