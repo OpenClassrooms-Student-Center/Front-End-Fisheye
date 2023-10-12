@@ -1,21 +1,24 @@
-export function insertMediasFactory({
-    title, image, id, likes, video, name, portrait
-}){
-    const picture = `../assets/photographers/${portrait}`;
-    const getMediasCardDOM = (name, image, video, title, id, likes) => {
-      const card = document.createElement("article");
-    
-      let picture, mediaHtml;
-    
-      if (image?.endsWith(".jpg")) {
-        picture = `assets/images/${name}/${image}`;
-        mediaHtml = `<img lightbox-media="${title}" src="${picture}" alt="${title}" tabIndex="0" />`;
-      } else if (video?.endsWith(".mp4")) {
-        picture = `assets/images/${name}/${video}`;
-        mediaHtml = `<video lightbox-media="${title}" src="${picture}" tabIndex="0"></video>`;
-      }
-    
-      card.innerHTML = `
+export function mediasFactory({
+  title, image, id, likes, video
+}, { name }) {
+  const getMediasCardDOM = () => {
+    const card = document.createElement("article");
+    const containerCards = document.getElementById("containerCards");
+
+    const regexName = /^\w+/; // permets de supprimé le nom de famille de name du fichier json
+    name = name.match(regexName)[0];
+
+    let picture, mediaHtml;
+
+    if (image?.endsWith(".jpg")) {
+      picture = `assets/images/${name}/${image}`;
+      mediaHtml = `<img lightbox-media="${title}" src="${picture}" alt="${title}" tabIndex="0" />`;
+    } else if (video?.endsWith(".mp4")) {
+      picture = `assets/images/${name}/${video}`;
+      mediaHtml = `<video lightbox-media="${title}" src="${picture}" tabIndex="0"></video>`;
+    }
+
+    card.innerHTML = `
         <div class="card" id="card">
           ${mediaHtml}
           <div class="containerInfos">
@@ -27,29 +30,26 @@ export function insertMediasFactory({
           </div>
         </div>
       `;
-    
-      const containerCards = document.getElementById("containerCards");
-      containerCards.append(card);
-    
-      const heartId = document.getElementById(`heart-${id}`);
-      const likeClass = document.getElementById(`like-${id}`);
-    
-      heartId.addEventListener("click", () => {
-        if (likeClass.classList.contains("likes")) {
-          // If the element has already been liked, remove the like
-          likeClass.classList.remove("likes");
-          likes -= 1;
-        } else {
-          // Otherwise, add a like
-          likeClass.classList.add("likes");
-          likes += 1;
-        }
-    
-        // Update the text of the element with the total likes
-        likeClass.innerText = likes;
-      });
-    
-      return card;
-    };
-    return {name, picture, getMediasCardDOM}
-       }
+    containerCards.append(card);
+    const heartId = document.getElementById(`heart-${id}`);
+    const likeClass = document.getElementById(`like-${id}`);
+
+    heartId.addEventListener("click", () => {
+      if (likeClass.classList.contains("likes")) {
+        // If the element has already been liked, remove the like
+        likeClass.classList.remove("likes");
+        likes -= 1;
+      } else {
+        // Otherwise, add a like
+        likeClass.classList.add("likes");
+        likes += 1;
+      }
+
+      // Update the text of the element with the total likes
+      likeClass.innerText = likes;
+    });
+
+    return card;
+  };
+  return { name, getMediasCardDOM }
+}
