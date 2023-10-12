@@ -25,15 +25,14 @@ const onCloseModal = () => {
 
 // Event
 openModalBtn ? openModalBtn.addEventListener("click", onOpenModal) : null;
-
+// Event
+openPicBtn ? openPicBtn.addEventListener("click", onOpenPic) : null;
 // Func
 export async function onOpenPic() {
   const imagePath = this.src;
-  console.log(imagePath);
 
   const modalPic = document.querySelector(".modal-picture");
   modalPic.src = imagePath;
-
 
   mainWrapper.setAttribute("aria-hidden", "true");
   modal.setAttribute("aria-hidden", "false");
@@ -42,12 +41,7 @@ export async function onOpenPic() {
   modalCloseBtn.focus();
 }
 
-// Event
-openPicBtn ? openPicBtn.addEventListener("click", onOpenPic) : null;
-
-modalCloseBtn.addEventListener("click", () => {
-  onCloseModal();
-});
+modalCloseBtn.addEventListener("click", onCloseModal);
 
 // Close modal when escape key is pressed
 document.addEventListener("keydown", (e) => {

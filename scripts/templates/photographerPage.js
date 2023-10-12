@@ -1,7 +1,16 @@
-import { PhotographersApi } from "../api/api.js";
-import { Photographer } from "../class/photographer.js";
 import { displayModal, closeModal } from "../utils/contactForm.js";
 import { onOpenPic } from "../utils/photoModal.js";
+import { MediasFactory } from "../factories/MediasFactory.js";
+
+
+
+
+class PhotographerPages {
+
+  constructor() {
+    
+  }
+}
 
 //template for photographer section for photographer page
 export function photographerPageTemplate(photographer) {
@@ -127,17 +136,19 @@ export function photographerMediaTemplate(filteredMedias, photographer) {
 
     if (media.image) {
       mediaTypeElement.innerHTML = "Type: Image";
+      const mediaTitle = media.title;
+
+      console.log("media", media);
 
       // Construct the path to the image using the correct folder structure
       const imagePath = `assets/images/${photographer.name}/${media.image}`;
-
-      const modalPic = document.querySelector(".modal-picture");
-      const modalTitle = document.querySelector("#modal-title");
-      modalPic.src = imagePath;
+      const titlePath = media.title;
+      console.log("titlePath", titlePath);
 
       // Create an <img> element for displaying the image
       const imageElement = document.createElement("img");
       imageElement.src = imagePath;
+      // imageElement.titlePath = imageTitle;
       imageElement.alt = media.image;
       imageElement.onclick = onOpenPic;
 
