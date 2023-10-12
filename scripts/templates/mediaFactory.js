@@ -19,7 +19,7 @@ class Media {
 
 class Image {
     #media;
-    #photographer;
+    #photographer
     constructor(media, photographer) {
         this.#media = media;
         this.#photographer = photographer;
@@ -27,34 +27,40 @@ class Image {
 
     imageMediaTemplate() {
 
-        const { photographerId, title, image, likes } = this.#media;
-        const imageMedia = `assets/medias/${photographerId}/${image}`;
-        const likeIconMedia = `assets/icons/like-icon.png`
-
-        const article = document.createElement('article');
+        const {photographerId, image} = this.#media;
+        const pId = photographerId;
+        let photographerName;
     
+        switch (pId) {
+            case '243' :
+                photographerName = "Mimi";
+                break;
+            case '930' :
+                photographerName = "Ellie Rose";
+                break;
+            case '82' :
+                photographerName = "Tracy";
+                break;
+            case '527' :
+                photographerName = "Nabeel";
+                break;
+            case '925' :
+                photographerName = "Rhode";
+                break;
+            case '195' :
+                photographerName = "Marcel";
+                break;
+            default:
+                alert('photographer missing')
+        }
+
+        const imageMedia = `assets/medias/${pId}/${image}`;
+
         const imageElement = document.createElement('img');
         imageElement.setAttribute("src", imageMedia);
         imageElement.setAttribute("alt", title);
     
-    
-        const divDescription = document.createElement('div');
-    
-        const titleElement = document.createElement('h2');
-        titleElement.innerText = title;
-    
-        const likesElement = document.createElement('p');
-        likesElement.innerText = likes;
-    
-        const likesIcon = document.createElement('img')
-        likesIcon.setAttribute("src", likeIconMedia);
-        likesIcon.setAttribute("alt", "j'aimes");
-    
         article.appendChild(imageElement);
-        article.appendChild(divDescription);
-        divDescription.appendChild(titleElement);
-        divDescription.appendChild(likesElement);
-        divDescription.appendChild(likesIcon);
         
         return article;
         
@@ -78,11 +84,33 @@ class Video {
 
     videoMediaTemplate() {
 
-        const { photographerId, title, video, likes } = this.#media;
-        const videoMedia = `assets/medias/${photographerId}/${video}`;
-        const likeIconMedia = `assets/icons/like-icon.png`
-
-        const article = document.createElement('article');
+        const { photographerId,video} = this.#media;
+        const pId = photographerId;
+        let photographerName;
+    
+        switch (pId) {
+            case '243' :
+                photographerName = "Mimi";
+                break;
+            case '930' :
+                photographerName = "Ellie Rose";
+                break;
+            case '82' :
+                photographerName = "Tracy";
+                break;
+            case '527' :
+                photographerName = "Nabeel";
+                break;
+            case '925' :
+                photographerName = "Rhode";
+                break;
+            case '195' :
+                photographerName = "Marcel";
+                break;
+            default:
+                alert('photographer missing')
+        }
+        const videoMedia = `assets/medias/${pId}/${video}`;
 
         const videoDiv = document.createElement('video');
 
@@ -91,25 +119,8 @@ class Video {
         videoElement.setAttribute("type", "video/mp4");
         //Voir accessibilité vidéos et attribut control
 
-
-        const divDescription = document.createElement('div');
-
-        const titleElement = document.createElement('h2');
-        titleElement.innerText = title;
-
-        const likesElement = document.createElement('p');
-        likesElement.innerText = likes;
-
-        const likesIcon = document.createElement('img')
-        likesIcon.setAttribute("src", likeIconMedia);
-        likesIcon.setAttribute("alt", "j'aimes");
-
         article.appendChild(videoDiv);
         videoDiv.appendChild(videoElement);
-        article.appendChild(divDescription);
-        divDescription.appendChild(titleElement);
-        divDescription.appendChild(likesElement);
-        divDescription.appendChild(likesIcon);
 
         return article;
     }

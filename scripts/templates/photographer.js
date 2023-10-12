@@ -92,45 +92,36 @@ function photographPicture(data) {
 
 /////////////////MediasTemplate
 
-/*function photographerMediaTemplate(data) {
-    const { photographerId, title, image, video, likes } = data;
-    const imageMedia = `assets/medias/` + `${photographerId}` + `/` + `${image}`;
-    const videoMedia = `assets/medias/` + `${photographerId}` + `/` + `${video}`;
+
+function mediasTemplate(data) {
+
+    function getMediaFactoryCardDom() {
+        const mediaElement = new Media().getMediaCardDom();
+        return mediaElement;
+    }
+
+    const {title, likes } = data;
     const likeIconMedia = `assets/icons/like-icon.png`
 
+    const article = document.createElement('article');
+  
+    const divDescription = document.createElement('div');
     
+    const titleElement = document.createElement('h2');
+    titleElement.innerText = title;
+    
+    const likesElement = document.createElement('p');
+    likesElement.innerText = likes;
+    
+    const likesIcon = document.createElement('img')
+    likesIcon.setAttribute("src", likeIconMedia);
+    likesIcon.setAttribute("alt", "j'aimes");
+    
+    article.appendChild(divDescription);
+    divDescription.appendChild(titleElement);
+    divDescription.appendChild(likesElement);
+    divDescription.appendChild(likesIcon);
+        
+    return {article, getMediaFactoryCardDom};
 
-    function getUserMediasVideo() {
-        const article = document.createElement('article');
-
-        const videoDiv = document.createElement('video');
-
-        const videoElement = document.createElement('source');
-        videoElement.setAttribute("src", videoMedia);
-        videoElement.setAttribute("type", "video/mp4");
-        //Voir accessibilité vidéos et attribut control
-
-
-        const divDescription = document.createElement('div');
-
-        const titleElement = document.createElement('h2');
-        titleElement.innerText = title;
-
-        const likesElement = document.createElement('p');
-        likesElement.innerText = likes;
-
-        const likesIcon = document.createElement('img')
-        likesIcon.setAttribute("src", likeIconMedia);
-        likesIcon.setAttribute("alt", "j'aimes");
-
-        article.appendChild(videoDiv);
-        videoDiv.appendChild(videoElement);
-        article.appendChild(divDescription);
-        divDescription.appendChild(titleElement);
-        divDescription.appendChild(likesElement);
-        divDescription.appendChild(likesIcon);
-
-        return article;
-    }
-    return { photographerId, title, image, video, likes, imageMedia, videoMedia, getUserMediasImage, getUserMediasVideo };
-};*/
+}

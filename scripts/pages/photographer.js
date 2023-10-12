@@ -22,7 +22,11 @@ function displayInfo(photographer) {
 
 
 function displayMedia(data) {
-        data.forEach((m) => {
+    let photographerMedia = mediasTemplate(data);
+
+    data.forEach((m) => {
+        photographerMedia;
+        
         new Media(m, data).getMediaCardDom();
     })
 }
