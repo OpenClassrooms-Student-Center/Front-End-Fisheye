@@ -1,62 +1,82 @@
 //template for index page
-export function photographerTemplate(photographer) {
-  //créationdu template "photographer_section"
+class PhotographerCard {
+  constructor(photographer) {
+    this._photographer = photographer;
+  }
 
-  const cardContainer = document.createElement("div");
-  cardContainer.classList.add("photographer-card");
+  createPhotographerCard(photographer) {
+    // console.log("createPhotographerCard", photographer);
+    // créationd u template "photographer_section"
 
-  // Construct the path to the image using the correct folder structure
-  const imagePath = `assets/images/Photographers ID Photos/${photographer.portrait}`;
+    const cardContainer = document.createElement("div");
+    cardContainer.classList.add("photographer-card");
+    // cardContainer.textContent = `Photographer Name: ${photographer._name}`;
 
-  //link
-  const photographerLink = document.createElement("a");
-  photographerLink.setAttribute(
-    "href",
-    `/photographer.html?id=${photographer.id}`
-  );
+    const titleElement = document.createElement("h2");
+    titleElement.innerHTML = `${photographer._name}`;
+    cardContainer.appendChild(titleElement);
+    // photographerLink.appendChild(portraitElement);
+    // photographerLink.appendChild(cityContainer);
+    // photographerLink.appendChild(taglineElement);
+    // photographerLink.appendChild(priceElement);
 
-  //append to link
-  const portraitElement = document.createElement("img");
-  portraitElement.src = imagePath; // Use the imagePath instead of just photographer.portrait
-  portraitElement.alt = photographer.name;
+    return cardContainer;
 
-  const titleElement = document.createElement("h2");
-  titleElement.innerHTML = photographer.name;
+    cardContainer.classList.add("photographer-card");
 
-  //-------------------------------------------------------------------
+    // Construct the path to the image using the correct folder structure
+    const imagePath = `assets/images/Photographers ID Photos/${this._photographer.portrait}`;
 
-  //container parent
-  const cityContainer = document.createElement("div");
-  cityContainer.classList.add("city-container");
+    //link
+    const photographerLink = document.createElement("a");
+    photographerLink.setAttribute(
+      "href",
+      `/photographer.html?id=${photographer.id}`
+    );
 
-  //container child
-  const cityElement = document.createElement("p");
-  cityElement.innerHTML = `${photographer.city}`;
+    //append to link
+    const portraitElement = document.createElement("img");
+    portraitElement.src = imagePath; // Use the imagePath instead of just photographer.portrait
+    portraitElement.alt = photographer.name;
 
-  //container child
-  const countryElement = document.createElement("p");
-  countryElement.innerHTML = photographer.country;
+    // const titleElement = document.createElement("h2");
+    // titleElement.innerHTML = photographer.name;
 
-  cityContainer.appendChild(cityElement);
-  cityContainer.appendChild(countryElement);
+    //-------------------------------------------------------------------
 
-  //-------------------------------------------------------------------
+    //container parent
+    const cityContainer = document.createElement("div");
+    cityContainer.classList.add("city-container");
 
-  const taglineElement = document.createElement("p");
-  taglineElement.innerHTML = photographer.tagline;
+    //container child
+    const cityElement = document.createElement("p");
+    cityElement.innerHTML = `${photographer.city}`;
 
-  const priceElement = document.createElement("p");
-  priceElement.innerHTML = `${photographer.price} €/jour`;
+    //container child
+    const countryElement = document.createElement("p");
+    countryElement.innerHTML = photographer.country;
 
-  cardContainer.appendChild(photographerLink);
-  cardContainer.appendChild(photographerLink);
-  photographerLink.appendChild(portraitElement);
-  photographerLink.appendChild(titleElement);
-  photographerLink.appendChild(cityContainer);
-  photographerLink.appendChild(taglineElement);
-  photographerLink.appendChild(priceElement);
+    cityContainer.appendChild(cityElement);
+    cityContainer.appendChild(countryElement);
 
-  return {
-    getUserCardDOM: () => cardContainer,
-  };
+    //-------------------------------------------------------------------
+
+    const taglineElement = document.createElement("p");
+    taglineElement.innerHTML = photographer.tagline;
+
+    const priceElement = document.createElement("p");
+    priceElement.innerHTML = `${photographer.price} €/jour`;
+
+    cardContainer.appendChild(photographerLink);
+    photographerLink.appendChild(portraitElement);
+    // photographerLink.appendChild(titleElement);
+    photographerLink.appendChild(cityContainer);
+    photographerLink.appendChild(taglineElement);
+    photographerLink.appendChild(priceElement);
+
+    return {
+      getUserCardDOM: () => cardContainer,
+    };
+  }
 }
+export { PhotographerCard };
