@@ -2,7 +2,9 @@ class AboutPhotographer {
   constructor(photographer) {
     this._photographer = photographer;
   }
-  createAboutPhotographer() {}
+  createAboutPhotographer(photographer) {
+    console.log(photographer);
+  }
 }
 
 export { AboutPhotographer };

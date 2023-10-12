@@ -5,12 +5,16 @@ import { MediasApi } from "../api/api.js";
 // } from "../templates/photographerPage.js";
 import { PhotographersApi } from "../api/api.js";
 import { Photographer } from "../class/photographer.js";
+import { AboutPhotographer } from "../templates/aboutPhotographer.js";
 
 // Get photographer id
 let id = new URLSearchParams(window.location.search).get("id");
 
 class PhotographerPages {
   constructor() {
+    this.$aboutPhotographerWrapper =
+      document.querySelector("#photograph-header");
+
     this.photographersApi = new PhotographersApi(
       "../../data/photographers.json"
     );
@@ -22,6 +26,7 @@ class PhotographerPages {
       const photographerDataFiltered = photographerData.find(
         (photographer) => photographer.id == id
       );
+      console.log(photographerDataFiltered);
       return photographerDataFiltered;
     };
 
@@ -33,15 +38,23 @@ class PhotographerPages {
       );
       return mediasDataFiltered;
     };
-    
   }
-  	// Render aboutPhotographer
-	async aboutPhotographer() {
-		const photographer = await this.photographer();
-		const template = new AboutPhotographer(photographer);
-		this.$aboutPhotographerWrapper.appendChild(template.createAboutPhotographer());
-	}
+  // Render aboutPhotographer
+  async aboutPhotographer() {
+    const photographer = await this.photographer();
+    const template = new AboutPhotographer(photographer);
+    template.createAboutPhotographer();
+    this.$aboutPhotographerWrapper.appendChild(
+      template.createAboutPhotographer()
+    );
+  }
 }
+
+const initApp = async () => {
+  const photographerPages = new PhotographerPages();
+  await photographerPages.aboutPhotographer();
+};
+initApp();
 
 export { PhotographerPages };
 
@@ -71,9 +84,9 @@ export { PhotographerPages };
 //     const photographerModel = photographerPageTemplate(photographer);
 //     const userCardDOM = photographerModel.getUserCardDOM();
 
-//     // Add the elements to the "photograph-header" class
-//     const photographerInfo = document.querySelector(".photograph-header");
-//     photographerInfo.appendChild(userCardDOM);
+// Add the elements to the "photograph-header" class
+// const photographerInfo = document.querySelector(".photograph-header");
+// photographerInfo.appendChild(userCardDOM);
 
 //     // Update the page title
 //     document.title = `Fisheye - ${photographer.name}`;

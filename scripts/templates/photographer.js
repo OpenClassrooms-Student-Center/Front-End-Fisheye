@@ -19,7 +19,7 @@ class PhotographerCard {
     const photographerLink = document.createElement("a");
     photographerLink.setAttribute(
       "href",
-      `/photographer.html?id=${photographer.id}`
+      `/photographer.html?id=${photographer._id}`
     );
     //container parent
     const localizationContainer = document.createElement("div");
