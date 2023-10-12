@@ -28,7 +28,7 @@ class Image {
     imageMediaTemplate() {
 
         const { photographerId, title, image, likes } = this.#media;
-        const imageMedia = `assets/medias/` + `${photographerId}` + `/` + `${image}`;
+        const imageMedia = `assets/medias/${photographerId}/${image}`;
         const likeIconMedia = `assets/icons/like-icon.png`
 
         const article = document.createElement('article');
@@ -55,7 +55,7 @@ class Image {
         divDescription.appendChild(titleElement);
         divDescription.appendChild(likesElement);
         divDescription.appendChild(likesIcon);
-    
+        
         return article;
         
     }
@@ -79,7 +79,7 @@ class Video {
     videoMediaTemplate() {
 
         const { photographerId, title, video, likes } = this.#media;
-        const videoMedia = `assets/medias/` + `${photographerId}` + `/` + `${video}`;
+        const videoMedia = `assets/medias/${photographerId}/${video}`;
         const likeIconMedia = `assets/icons/like-icon.png`
 
         const article = document.createElement('article');
