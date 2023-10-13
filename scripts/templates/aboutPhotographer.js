@@ -1,3 +1,5 @@
+import { displayModal, closeModal } from "../utils/contactForm.js";
+
 class AboutPhotographer {
   constructor(photographer) {
     this._photographer = photographer;
@@ -18,11 +20,11 @@ class AboutPhotographer {
     const contactButton = document.createElement("button");
     contactButton.classList.add("contact_button"); // Add the class "contact_button"
     contactButton.textContent = "Contactez-moi";
-    // contactButton.onclick = displayModal;
+    contactButton.onclick = displayModal;
 
     // Create the close contact button element
     const closingModal = document.getElementById("modalClose");
-    // closingModal.onclick = closeModal;
+    closingModal.onclick = closeModal;
 
     //   Construct the path to the image using the correct folder structure
     const mediaPath = `assets/images/Photographers ID Photos/${photographer.portrait}`;

@@ -1,3 +1,5 @@
+import { onOpenPic } from "../utils/photoModal.js"; // Import openModalBtn here
+
 class PhotographerWork {
   constructor(photographer, media) {
     this._photographer = photographer;
@@ -61,7 +63,7 @@ class PhotographerWork {
         imageElement.src = imagePath;
         // imageElement.titlePath = imageTitle;
         imageElement.alt = media.image;
-        // imageElement.onclick = onOpenPic;
+        imageElement.onclick = onOpenPic;
 
         // Append the image element to the mediaImg container
         mediaImg.appendChild(imageElement);
