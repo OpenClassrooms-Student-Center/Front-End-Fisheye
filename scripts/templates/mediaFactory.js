@@ -1,135 +1,122 @@
-///// Factory function for medias 
+/// // Factory method for medias
 
 class Media {
-    #media;
-    #photographer;
-    constructor(media, photographer) {
-        this.#media = media;
-        this.#photographer = photographer;
-    }
+  #media;
+  #photographer;
 
-    getMediaCardDom() {
-        if (this.#media.video){
-            new Video (this.#media, this.#photographer).getMediaCardDom();
-        }else {
-            new Image (this.#media, this.#photographer).getMediaCardDom();
-        }
+  constructor(media, photographer) {
+    this.#media = media;
+    this.#photographer = photographer;
+  }
+
+  getMediaCardDom() {
+
+    if (this.#media.video) {
+      new Video(this.#media, this.#photographer).getMediaCardDom();
+    } else {
+      new Image(this.#media, this.#photographer).getMediaCardDom();
     }
+  }
 }
 
 class Image {
-    #media;
-    #photographer
-    constructor(media, photographer) {
-        this.#media = media;
-        this.#photographer = photographer;
+  #media;
+  #photographer;
+
+  constructor(media, photographer) {
+    this.#media = media;
+    this.#photographer = photographer;
+  }
+
+  /*imageMediaTemplate(mainTemplate) {
+    const { photographerId, image, title } = this.#media;
+
+    switch (pId) {
+      case '243':
+        photographerName = 'Mimi';
+        break;
+      case '930':
+        photographerName = 'Ellie Rose';
+        break;
+      case '82':
+        photographerName = 'Tracy';
+        break;
+      case '527':
+        photographerName = 'Nabeel';
+        break;
+      case '925':
+        photographerName = 'Rhode';
+        break;
+      case '195':
+        photographerName = 'Marcel';
+        break;
+      default:
+        alert('photographer missing');
     }
 
-    imageMediaTemplate() {
+    const imageMedia = `assets/medias/${this.#photographer}/${image}`;
 
-        const {photographerId, image} = this.#media;
-        const pId = photographerId;
-        let photographerName;
-    
-        switch (pId) {
-            case '243' :
-                photographerName = "Mimi";
-                break;
-            case '930' :
-                photographerName = "Ellie Rose";
-                break;
-            case '82' :
-                photographerName = "Tracy";
-                break;
-            case '527' :
-                photographerName = "Nabeel";
-                break;
-            case '925' :
-                photographerName = "Rhode";
-                break;
-            case '195' :
-                photographerName = "Marcel";
-                break;
-            default:
-                alert('photographer missing')
-        }
+    const imageElement = document.createElement('img');
+    imageElement.setAttribute('src', imageMedia);
+    imageElement.setAttribute('alt', title);
 
-        const imageMedia = `assets/medias/${pId}/${image}`;
+    mainTemplate.appendChild(imageElement);
 
-        const imageElement = document.createElement('img');
-        imageElement.setAttribute("src", imageMedia);
-        imageElement.setAttribute("alt", title);
-    
-        article.appendChild(imageElement);
-        
-        return article;
-        
-    }
+    return mainTemplate;
+  }*/
 
-    getMediaCardDom(){
-        const sectionMedia = document.querySelector(".media");
-        const mediaModel = this.imageMediaTemplate();
-        sectionMedia.appendChild(mediaModel);
-    }
+  getMediaCardDom() {
 
-}
+    const sectionMedia = document.querySelector('.media');
+    const mediaTemplate = mediaTemplate();
+
+    sectionMedia.appendChild(mediaTemplate);
+
+  }}
+
 
 class Video {
-    #media;
-    #photographer;
-    constructor(media, photographer) {
-        this.#media = media;
-        this.#photographer = photographer;
-    }
+  #media;
 
-    videoMediaTemplate() {
+  #photographer;
 
-        const { photographerId,video} = this.#media;
-        const pId = photographerId;
-        let photographerName;
-    
-        switch (pId) {
-            case '243' :
-                photographerName = "Mimi";
-                break;
-            case '930' :
-                photographerName = "Ellie Rose";
-                break;
-            case '82' :
-                photographerName = "Tracy";
-                break;
-            case '527' :
-                photographerName = "Nabeel";
-                break;
-            case '925' :
-                photographerName = "Rhode";
-                break;
-            case '195' :
-                photographerName = "Marcel";
-                break;
-            default:
-                alert('photographer missing')
-        }
-        const videoMedia = `assets/medias/${pId}/${video}`;
+  constructor(media, photographer) {
+    this.#media = media;
+    this.#photographer = photographer;
+  }
 
-        const videoDiv = document.createElement('video');
+  /*videoMediaTemplate() {
 
-        const videoElement = document.createElement('source');
-        videoElement.setAttribute("src", videoMedia);
-        videoElement.setAttribute("type", "video/mp4");
-        //Voir accessibilité vidéos et attribut control
+    const { photographerId, video } = this.#media;
+    const pId = photographerId;
+    let photographerName;
 
-        article.appendChild(videoDiv);
-        videoDiv.appendChild(videoElement);
+    switch (pId) {
+      case '243':
+        photographerName = 'Mimi';
+        break;
+      case '930':
+        photographerName = 'Ellie Rose';
+        break;
+      case '82':
+        photographerName = 'Tracy';
+        break;
+      case '527':
+        photographerName = 'Nabeel';
+        break;
+      case '925':
+        photographerName = 'Rhode';
+        break;
+      case '195':
+        photographerName = 'Marcel';
+        break;
+      default:
+        alert('photographer missing');
+  
+  }*/
 
-        return article;
-    }
-
-    getMediaCardDom() {
-        const sectionMedia = document.querySelector(".media");
-        const mediaModel = this.videoMediaTemplate();
-        sectionMedia.appendChild(mediaModel);
-    }
-
-
+  getMediaCardDom() {
+    const sectionMedia = document.querySelector('.media');
+    sectionMedia.appendChild(mediaTemplate);
+  }
 }

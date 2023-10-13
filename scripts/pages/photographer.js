@@ -21,14 +21,27 @@ function displayInfo(photographer) {
 }
 
 
-function displayMedia(data) {
-    let photographerMedia = mediasTemplate(data);
+function displayMedia(media) {
+    const sectionMedia = document.querySelector('.media');
 
-    data.forEach((m) => {
-        photographerMedia;
-        
-        new Media(m, data).getMediaCardDom();
+    media.forEach((m) => {
+        const mediaModel = mediasTemplate(m);
+        const mediaCardDom = mediaModel.getMediaFactoryCardDom(m);
+
+        new Media(m).getMediaCardDom();
+        sectionMedia.appendChild(mediaCardDom);
     })
+}
+
+function displayData(photographers) {
+    const photographersSection = document.querySelector(".photographer_section");
+
+    photographers.forEach((photographer) => {
+        const photographerModel = photographerTemplate(photographer);
+        const userCardDOM = photographerModel.getUserCardDOM();
+        console.log(userCardDOM);
+        photographersSection.appendChild(userCardDOM);
+    });
 }
 
 async function init() {
