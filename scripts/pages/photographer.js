@@ -4,8 +4,10 @@ import { MediasApi } from "../api/api.js";
 //   photographerMediaTemplate,
 // } from "../templates/photographerPage.js";
 import { PhotographersApi } from "../api/api.js";
+import { Media } from "../class/media.js";
 import { Photographer } from "../class/photographer.js";
 import { AboutPhotographer } from "../templates/aboutPhotographer.js";
+import { PhotographerWork } from "../templates/photographerWork.js";
 
 // Get photographer id
 let id = new URLSearchParams(window.location.search).get("id");
@@ -14,6 +16,8 @@ class PhotographerPages {
   constructor() {
     this.aboutPhotographerWrapper =
       document.querySelector("#photograph-header");
+
+    this.photographerWorkWrapper = document.querySelector("#medias-wrapper");
 
     this.photographersApi = new PhotographersApi(
       "../../data/photographers.json"
@@ -26,13 +30,13 @@ class PhotographerPages {
       const photographerDataFiltered = photographerData.find(
         (photographer) => photographer.id == id
       );
-      console.log(photographerDataFiltered);
+      // console.log(photographerDataFiltered);
       return photographerDataFiltered;
     };
 
     this.media = async () => {
       const mediasData = await this.mediasApi.getMedias();
-      mediasData.map((media) => new MediasFactory(media));
+      mediasData.map((media) => new Media(media));
       const mediasDataFiltered = mediasData.filter(
         (photographer) => photographer.photographerId == id
       );
@@ -47,11 +51,21 @@ class PhotographerPages {
       template.createAboutPhotographer(photographer)
     );
   }
+  // Render photographerWork
+  async photographerWork() {
+    const photographer = await this.photographer();
+    const media = await this.media();
+    const template = new PhotographerWork(photographer, media);
+    this.photographerWorkWrapper.appendChild(
+      template.createPhotographerWork(photographer, media)
+    );
+  }
 }
 
 const initApp = async () => {
   const photographerPages = new PhotographerPages();
   await photographerPages.aboutPhotographer();
+  await photographerPages.photographerWork();
 };
 initApp();
 
