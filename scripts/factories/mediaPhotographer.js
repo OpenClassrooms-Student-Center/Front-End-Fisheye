@@ -1,4 +1,4 @@
-import { mediasFactory } from "./medias.js"
+import { mediasFactory } from "./medias.js";
 export class Mediaphotographer {
   constructor() {
     this.totalLikes = 0; // Variable pour suivre le total des likes
@@ -16,8 +16,8 @@ export class Mediaphotographer {
       (dataMediaPhotographer) => dataMediaPhotographer.photographerId === id
     );
     for (const media of allMedias) {
-      this.insertMedias(media,photographer);
-      this.totalLikes += media.likes
+      this.insertMedias(media, photographer);
+      this.totalLikes += media.likes;
     }
     // Mettez à jour l'élément HTML avec le total des likes
     const totalLikesElement = document.getElementById("total-likes");
@@ -84,9 +84,7 @@ export class Mediaphotographer {
             `;
   }
   insertMedias(media, photographer) {
-   
     const mediaModel = mediasFactory(media, photographer);
     mediaModel.getMediasCardDOM();
-   
   }
 }

@@ -1,6 +1,4 @@
-export function mediasFactory({
-  title, image, id, likes, video
-}, { name }) {
+export function mediasFactory({ title, image, id, likes, video }, { name }) {
   const getMediasCardDOM = () => {
     const card = document.createElement("article");
     const containerCards = document.getElementById("containerCards");
@@ -35,21 +33,23 @@ export function mediasFactory({
     const likeClass = document.getElementById(`like-${id}`);
 
     heartId.addEventListener("click", () => {
+      const totalLikesElement = document.getElementById("total-likes");
+      const initialTotalLikesValue = totalLikesElement.innerText;
       if (likeClass.classList.contains("likes")) {
-        // If the element has already been liked, remove the like
         likeClass.classList.remove("likes");
         likes -= 1;
+        totalLikesElement.innerText = initialTotalLikesValue - 1;
       } else {
         // Otherwise, add a like
         likeClass.classList.add("likes");
         likes += 1;
+        totalLikesElement.innerText = initialTotalLikesValue + 1;
       }
 
-      // Update the text of the element with the total likes
       likeClass.innerText = likes;
     });
 
     return card;
   };
-  return { name, getMediasCardDOM }
+  return { name, getMediasCardDOM };
 }
