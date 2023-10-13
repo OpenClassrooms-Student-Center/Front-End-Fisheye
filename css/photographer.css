@@ -190,15 +190,18 @@ form input {
 .price {
   position: fixed;
   right: 2rem;
+  padding-left: 125px;
   bottom:0;
   background: #DB8876 ;
   width: 376px;
   height: 89px;
   border-radius: 5px 5px 0 0;
   display: flex;
-  justify-content: space-around;
   align-items: center;
 }
 .price span {
     font-weight: bold;
+}
+.total-likes {
+  margin-left: 15px;
 }
