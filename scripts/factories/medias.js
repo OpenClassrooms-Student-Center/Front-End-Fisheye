@@ -34,7 +34,8 @@ export function mediasFactory({ title, image, id, likes, video }, { name }) {
 
     heartId.addEventListener("click", () => {
       const totalLikesElement = document.getElementById("total-likes");
-      const initialTotalLikesValue = totalLikesElement.innerText;
+      const initialTotalLikesValue = parseInt(totalLikesElement.innerText);
+      console.log(initialTotalLikesValue);
       if (likeClass.classList.contains("likes")) {
         likeClass.classList.remove("likes");
         likes -= 1;
@@ -48,7 +49,6 @@ export function mediasFactory({ title, image, id, likes, video }, { name }) {
 
       likeClass.innerText = likes;
     });
-
     return card;
   };
   return { name, getMediasCardDOM };
