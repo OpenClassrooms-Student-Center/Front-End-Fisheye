@@ -1,29 +1,34 @@
 export class LightboxFactory {
-    #lightbox = [];
-    #currentIndex = 0;
-    #modal = null;
-    #containerImg = null;
-    #title = null;
-  
-    constructor() {
+  #lightbox = [];
+  #currentIndex = 0;
+  #modal = null;
+  #containerImg = null;
+  #title = null;
+
+  constructor() {
       const lightbox = document.querySelectorAll("[lightbox-media]");
       if (lightbox.length > 0) {
-        for (const element of lightbox) {
-          const item = {
-            src: element.src,
-            type: element.nodeName,
-            title: element.getAttribute("lightbox-media"),
-          };
-          this.#lightbox.push(item);
-          element.addEventListener("click", this._handleClick.bind(this));
-          element.addEventListener("keydown", (event) => {
-            if (event.key === "Escape") {
-              this._close();
-            }
-          });
-        }
+          for (const element of lightbox) {
+              const item = {
+                  src: element.src,
+                  type: element.nodeName,
+                  title: element.getAttribute("lightbox-media"),
+              };
+              this.#lightbox.push(item);
+              element.addEventListener("click", this._handleClick.bind(this));
+              element.addEventListener("keydown", (event) => {
+                  if (event.key === "Escape") {
+                      this._close();
+                  }
+              });
+          }
       }
-    }
+      document.addEventListener("keydown", (event) => {
+          if (event.key === "Enter") {
+              this._open();
+          }
+      });
+  }
   
     _handleClick(e) {
       const currentElement = e.currentTarget;
@@ -34,6 +39,7 @@ export class LightboxFactory {
   
       this._open();
     }
+    
     _open() {
       const body = document.querySelector("body");
       const btnPrev = document.createElement("button-previous");
@@ -71,11 +77,6 @@ export class LightboxFactory {
       });
       btnClose.addEventListener("click", () => {
         this._close();
-      });
-      document.addEventListener("keydown", (event) =>{
-        if (event.key === "Enter" ) {
-          this._open();
-        }
       });
       this.#containerImg = document.createElement("div");
       this.#containerImg.className = "lightboxContainerImg";
