@@ -30,19 +30,22 @@
     </select>
   </div>
   <section id="containerCards" class="containerCards"></section>
-  <section id="card" class="price">
+  <section id="card_totalLikes_Price" class="card_totalLikes_Price">
+    <div class="total-likes__container">
     <span id="total-likes" class="total-likes"></span>
-    <img src="assets/icons/black-heart.svg" alt="coeur-total" aria-label="likes"></img>
+    <img id="likes" src="assets/icons/black-heart.svg" alt="coeur-total" aria-label="likes"></img>
+  </div>
     <span id="price"></span>
   </section>
   <div id="contact-modal" class="modal" role="dialog" aria-modal="true" aria-hidden="false">
     <div class="contact-header">
       <div>
-      <h2 id="h2Name"></h2> </div>
+        <h2 id="h2Name"></h2>
+      </div>
       <header>
         <button type="button" class="contact-modal__close-btn" title="Fermeture du formulaire"
           aria-label="Fermeture du formulaire de contact"> <img src="assets/icons/close.svg"
-            aria-labelledby="closeContactModal" onclick="closeContactModal()" alt="X pour fermer le modal" /></button>
+          onclick="closeContactModal()" alt="X pour fermer le modal" /></button>
     </div>
     </header>
     <form id="contact-form" method="" action="index.html" name="signup"><label
@@ -53,11 +56,11 @@
         name="contact-message" id="contact-message"></textarea><button id="contact_button"
         type="submit">Envoyer</button></form>
   </div>
-</div>
-<!-- Import des factory patterns -->
+  </div>
+  <!-- Import des factory patterns -->
   <script src="/scripts/pages/photographer.js" type="module"></script>
 
-<!--Import des fonctions utilitaires-->
+  <!--Import des fonctions utilitaires-->
   <script src="/scripts/utils/contactForm.js"></script>
 </body>
 

@@ -3,11 +3,13 @@
   height: 300px;
   margin: 0 100px;
 }
+
 .photograph-header {
   display: flex;
   align-items: center;
   justify-content: space-around;
 }
+
 .photograph-header h1 {
   color: #d3573c;
   font-size: 64px;
@@ -32,6 +34,7 @@
   border-radius: 50%;
   object-fit: cover;
 }
+
 .containerCards {
   display: flex;
   flex-wrap: wrap;
@@ -40,12 +43,15 @@
   gap: 95px;
   margin: 100px 0;
 }
-.card img, video {
+
+.card img,
+video {
   object-fit: cover;
   width: 350px;
   height: 300px;
   border-radius: 5px;
 }
+
 .contact_button {
   font-size: 20px;
   font-weight: bold;
@@ -58,26 +64,31 @@
   border-radius: 5px;
   cursor: pointer;
 }
-.contact-header{
+
+.contact-header {
   margin-bottom: -20px;
 }
-.contact-header h2{
+
+.contact-header h2 {
   height: 83px;
   font-size: 55px;
-  font-weight:400;
+  font-weight: 400;
   margin-top: -25px;
 }
+
 #contact-modal {
   display: none;
   max-width: 500px;
   z-index: 10;
 }
+
 #contact-modal-lightbox {
   position: fixed;
   inset: 0;
   z-index: 5;
   background-color: rgba(255, 255, 255, 0.95);
 }
+
 .contact-modal .contact-header {
   position: relative;
   display: flex;
@@ -85,6 +96,7 @@
   margin-bottom: 16px;
   align-items: start;
 }
+
 .contact-modal__close-btn {
   position: absolute;
   top: 20px;
@@ -97,6 +109,7 @@
   background-color: transparent;
   border: none;
 }
+
 #contact-modal textarea {
   width: 100%;
   height: 5em;
@@ -136,7 +149,8 @@
   font-weight: normal;
   text-align: center;
 }
-#contact_button{
+
+#contact_button {
   padding: 11px;
   border: none;
   border-radius: 5px;
@@ -145,6 +159,7 @@
   font-size: 0.9rem;
   font-weight: bold;
 }
+
 form {
   display: flex;
   width: 100%;
@@ -175,7 +190,7 @@ form input {
   margin: 25px 100px;
 }
 
-#select > label {
+#select>label {
   margin-right: 25px;
   font-weight: bold;
 }
@@ -187,21 +202,25 @@ form input {
   border-radius: 5px;
   color: white;
 }
-.price {
+
+.card_totalLikes_Price {
   position: fixed;
   right: 2rem;
-  padding-left: 125px;
-  bottom:0;
-  background: #DB8876 ;
+  background: #db8876;
+  bottom: 0;
+  border-radius: 5px 5px 0 0;
   width: 376px;
   height: 89px;
-  border-radius: 5px 5px 0 0;
   display: flex;
+  justify-content: space-around;
   align-items: center;
 }
-.price span {
-    font-weight: bold;
+
+.card_totalLikes_Price span {
+  font-size: x-large;
+  font-weight: bold;
 }
+
 .total-likes {
   margin-left: 15px;
 }

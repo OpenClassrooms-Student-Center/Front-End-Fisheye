@@ -1,4 +1,4 @@
-import { mediasFactory } from "./medias.js";
+import { mediasFactory } from "./medias.js"
 export class Mediaphotographer {
   constructor() {
     this.totalLikes = 0; // Variable pour suivre le total des likes
@@ -33,16 +33,18 @@ export class Mediaphotographer {
       if (selectedValue === "popularity") {
         section.innerHTML = "";
         filteredMedia = [...allMedias].sort((a, b) => b.likes - a.likes);
-        filteredMedia.forEach((element) => {
-          this.insertMedias(element, photographer);
+        filteredMedia.forEach((media) => {
+          this.insertMedias(media, photographer);
+          this.totalLikes += media.likes;
         });
       } else if (selectedValue === "date") {
         section.innerHTML = "";
         filteredMedia = [...allMedias].sort(
           (a, b) => new Date(a.date) - new Date(b.date)
         );
-        filteredMedia.forEach((element) => {
-          this.insertMedias(element, photographer);
+        filteredMedia.forEach((media) => {
+          this.insertMedias(media, photographer);
+          this.totalLikes += media.likes;
         });
       } else if (selectedValue === "title") {
         section.innerHTML = "";
@@ -55,8 +57,9 @@ export class Mediaphotographer {
           }
           return 0;
         });
-        filteredMedia.forEach((element) => {
-          this.insertMedias(element, photographer);
+        filteredMedia.forEach((media) => {
+          this.insertMedias(media, photographer);
+          this.totalLikes += media.likes;
         });
       }
     });
@@ -84,6 +87,7 @@ export class Mediaphotographer {
             `;
   }
   insertMedias(media, photographer) {
+
     const mediaModel = mediasFactory(media, photographer);
     mediaModel.getMediasCardDOM();
   }
