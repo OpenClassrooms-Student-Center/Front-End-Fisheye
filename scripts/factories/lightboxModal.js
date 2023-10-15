@@ -72,6 +72,11 @@ export class LightboxFactory {
       btnClose.addEventListener("click", () => {
         this._close();
       });
+      document.addEventListener("keydown", (event) =>{
+        if (event.key === "Enter" ) {
+          this._open();
+        }
+      });
       this.#containerImg = document.createElement("div");
       this.#containerImg.className = "lightboxContainerImg";
       this.#title = document.createElement("span");
