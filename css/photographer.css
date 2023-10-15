@@ -13,6 +13,42 @@
     padding: 50px;
 }
 
+.filter_contenair{
+    width: 90%;
+    margin: auto;
+    display: flex;
+    gap: 25px ;
+    margin-top:10px;
+}
+
+.filter_label{
+    font-size: 18px;
+    font-weight: 700;
+}
+
+.filter{
+    background-color: #901C1C;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    padding: 10px;
+    cursor: pointer;
+    font-size: 18px;
+    font-weight: 700;
+    outline-style: none;
+    transition: all 0.4s;
+}
+
+.filter:hover{
+    background-color: #DB8876;
+    color: #000;
+}
+
+.filter option{
+    font-size: 18px;
+    font-weight: 700;
+}
+
 .contact_button {
     font-size: 20px;
     font-weight: bold;
@@ -188,10 +224,19 @@ form textarea {
     gap: 7px;
 }
 
-.likes i{
+.likes button{
     align-items: center;
     display: flex;
-    color: #000;
+    color: #901C1C;
+    font-size: 24px;
+    transition: all 0.4s;
+}
+
+.likes button:hover{
+    color: #DB8876;
+}
+.liked{
+    color: #DB8876 !important;
 }
 
 .likes h3{

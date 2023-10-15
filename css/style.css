@@ -28,10 +28,15 @@ h1 {
     margin-right: 100px;
 }
 
-a{
+a, button{
     text-decoration: none;
     text-align: center;
+    border: none;
+    background-color: #fff;
+    cursor: pointer;
 }
+
+
 
 .logo {
     height: 50px;

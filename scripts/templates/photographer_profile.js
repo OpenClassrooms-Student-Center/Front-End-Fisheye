@@ -65,7 +65,7 @@ function photographerTemplate(data) {
 
 
 function phototographerMedia(data) {
-    const { title, image, likes, photographerId, video} = data;
+    const { title, image, likes, photographerId, video, id} = data;
     const images = `assets/images/${photographerId}/${image}`;
     const videos = `assets/images/${photographerId}/${video}`;
 
@@ -99,25 +99,43 @@ function phototographerMedia(data) {
         
         const h3 = document.createElement( 'h3' );
         h3.textContent= likes;
+        h3.setAttribute( 'id', id + "-likes" );
 
-        const heart = document.createElement( 'i' );
-        heart.classList.add( 'fa-solid' );
-        heart.classList.add( 'fa-heart' );
-        heart.classList.add( 'heart__icon--full' );
+        const btnLike = document.createElement( 'button' );
+        btnLike.classList.add( 'like-button' );
+        btnLike.setAttribute('id', id);
+        btnLike.classList.add( 'fa-solid' );
+        btnLike.classList.add( 'fa-heart' );
+        btnLike.classList.add( 'heart__icon--full' );
          
         photographerMedia.appendChild(mediaInformations);
         mediaInformations.appendChild(h2);
         
         mediaLikes.appendChild(h3);
-        mediaLikes.appendChild(heart);
+        mediaLikes.appendChild(btnLike);
         mediaInformations.appendChild(mediaLikes);
         photographerMedia.appendChild(mediaInformations);
 
         return (photographerMedia);
 
     }
+
+    function getTotallikes(){
+    const likesHeart = document.createElement("div");
+    likesHeart.classList.add( 'likeheart' );
+    const h5 = document.createElement( 'h5' );
+    h5.setAttribute('id','total-likes')
+    const heart = document.createElement( 'i' );
+    heart.classList.add( 'fa-solid' );
+    heart.classList.add( 'fa-heart' );
+    heart.classList.add( 'heart__icon--full' );
+    likesHeart.appendChild(h5);
+    likesHeart.appendChild(heart);
+
+    return (likesHeart);
+    }
     
 
-    return { getMediaCardDOM }
+    return { getMediaCardDOM, getTotallikes }
 
 }
