@@ -1,5 +1,5 @@
 /// // Factory method for medias
-import { getPhotographersMedia } from "../pages/photographer.js";
+import { getPhotographersMedia } from "./photographer.js";
 
 export class Media {
   #media;
@@ -29,10 +29,12 @@ class Image {
   }
 
   getMediaCardDom() {
-    const { image, title, photographerId } = this.#media;
+    const { title } = this.#media;
 
-    const photographerName = getPhotographersMedia(photographerId);
-    const imageMedia = `assets/medias/${photographerName}/${image}`;
+    const photographerName = getPhotographersMedia(this.#photographer);
+    const imageMedia = `../../assets/medias/${photographerName}/${
+      this.#media.image
+    }`;
 
     const imageElement = document.createElement("img");
     imageElement.setAttribute("src", imageMedia);
@@ -52,9 +54,10 @@ class Video {
   }
 
   getMediaCardDom() {
-    const { video, photographerId } = this.#media;
-    const photographerName = getPhotographersMedia(photographerId);
-    const videoMedia = `assets/medias/${photographerName}/${video}`;
+    const photographerName = getPhotographersMedia(this.#photographer);
+    const videoMedia = `../../assets/medias/${photographerName}/${
+      this.#media.video
+    }`;
 
     const videoDiv = document.createElement("video");
     const videoElement = document.createElement("source");

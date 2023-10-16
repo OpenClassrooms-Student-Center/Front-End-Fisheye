@@ -113,12 +113,17 @@ export function photographPicture(data) {
 
 /// //////////////MediasTemplate
 
-export function mediasTemplate(data) {
-  const { title, likes } = data;
-  const mediaFactory = new Media(data).getMediaCardDom();
-  const mediaType = mediaFactory.getMediaCardDom();
+export function getPhotographersMedia(photographer) {
+  const firstName = photographer.name.split(" ")[0];
+  return firstName;
+}
 
-  const likeIconMedia = "assets/icons/like-icon.png";
+export function mediasTemplate(mediaData, photographer) {
+  const { title, likes } = mediaData;
+  const mediaFactory = new Media(mediaData, photographer).getMediaCardDom();
+  const mediaType = mediaFactory.getMediaCardDom();
+  console.log(mediaData);
+  const likeIconMedia = "../../assets/icons/like-icon.png";
 
   const article = document.createElement("article");
 
