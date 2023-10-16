@@ -63,7 +63,7 @@ class PhotographerWork {
           const lightbox = new Lightbox(media);
 
           // Call a method to open the lightbox (you need to implement this in the Lightbox class)
-          lightbox.createLightbox(media);
+          lightbox.createLightbox(media, photographer);
         });
 
         // Append the image element to the mediaImg container

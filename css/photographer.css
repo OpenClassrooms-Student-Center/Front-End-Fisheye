@@ -215,7 +215,7 @@ form input {
   overflow: hidden;
 }
 
-.modal-picture {
+#modal-picture {
   width: 300px;
   height: auto;
 }

@@ -70,37 +70,6 @@ class PhotographerPages {
       (photographer) => photographer.photographerId == id
     );
   }
-
-  async lightbox() {
-    const photographer = await this.photographer();
-
-    var medias = mediasLightbox.filter((objet) => objet.photographerId == id);
-
-    let mediaItem = 1;
-    medias.forEach((media) => {
-      const mediaId = media.id;
-      const template = new Lightbox(media, photographer);
-      // this.lightboxWrapper.insertBefore(
-      //   template.createLightbox(media, photographer)
-      // );
-
-      // const imgOnClick = document.getElementById("media-" + mediaId);
-      // imgOnClick.setAttribute("onclick", "currentSlide(" + mediaItem++ + ")");
-      // const carouselControlPrev = document.getElementById(
-      //   "carousel-control-prev"
-      // );
-      // this.lightboxWrapper.insertBefore(
-      //   template.createLightbox(),
-      //   carouselControlPrev
-      // );
-      // Add MediaNumber / TotalMedia in lightbox
-      // newValue("lightboxTotal-" + mediaId, media.length);
-      // newValue("lightbox-" + mediaId, mediaItem);
-      // Add onClick on medias for slider
-      // const imgOnClick = document.getElementById("media-" + mediaId);
-      // imgOnClick.setAttribute("onclick", "currentSlide(" + mediaItem++ + ")");
-    });
-  }
 }
 
 const initApp = async () => {
