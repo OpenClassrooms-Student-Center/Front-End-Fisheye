@@ -12,10 +12,12 @@ function lightboxOpen(media) {
     let img = document.createElement('img');
     if (urlMedia.localName === "img") {
         img.setAttribute("src", urlMedia.attributes.src.nodeValue);
+        img.setAttribute("alt", urlMedia.parentNode.children[1].children[0].innerHTML);
     }
 
     let mp4 = document.createElement( 'video' );
     if (urlMedia.localName === "video")     {
+        mp4.setAttribute("alt", urlMedia.parentNode.children[1].children[0].innerHTML);
         mp4.src = urlMedia.attributes.src.nodeValue;
         mp4.autoplay = true;
         mp4.controls = true;
@@ -38,7 +40,9 @@ function lightboxOpen(media) {
 
     lightbox.style.display = "flex";
 
-    lightbox.querySelector('.lightbox-next').addEventListener('click', function () {
+    lightbox.querySelector('.lightbox-next').addEventListener('click', nextLightbox);
+
+    function nextLightbox() {
         const listParent = urlMedia.parentNode.parentNode.children;
 
         let nextMedia  = null;
@@ -53,9 +57,11 @@ function lightboxOpen(media) {
         }
 
         lightboxOpen(nextMedia.children[0]);
-    });
+    }
 
-    lightbox.querySelector('.lightbox-prev').addEventListener('click', function () {
+    lightbox.querySelector('.lightbox-prev').addEventListener('click', prevLightbox);
+
+    function prevLightbox() {
         const listParent = urlMedia.parentNode.parentNode.children;
         let prevMedia  = null;
         for (let i = 0; i < listParent.length; i++) {
@@ -69,5 +75,24 @@ function lightboxOpen(media) {
         }
 
         lightboxOpen(prevMedia.children[0]);
-    });
+    }
+
+    window.addEventListener(
+        "keydown",
+        (event) => {
+            if (event.key === "ArrowLeft") {
+                prevLightbox();
+            }
+
+            if (event.key === "ArrowRight") {
+                nextLightbox();
+            }
+
+            // Cancel the default action to avoid it being handled twice
+            event.preventDefault();
+        },
+        true,
+    );
+
 }
+

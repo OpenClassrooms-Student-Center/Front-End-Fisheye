@@ -11,7 +11,7 @@ function detailUserTemplate(data) {
 
         const img = document.createElement( 'img' );
         img.setAttribute("src", picture);
-        img.setAttribute("atr", name);
+        img.setAttribute("alt", name);
 
         const h1 = document.createElement( 'h1' );
         h1.classList.add('title-name');
@@ -46,7 +46,7 @@ function detailMediaTemplate(data) {
 
         const div = document.createElement('div');
         div.classList.add('cardMedia');
-        div.setAttribute("alt", "Lilac breasted roller, closeup view")
+        div.setAttribute("alt", "show img " + title );
 
         const img = document.createElement( 'img' );
         const mp4 = document.createElement( 'video' );
@@ -54,8 +54,11 @@ function detailMediaTemplate(data) {
         if (image) {
             img.setAttribute("src", picture);
             img.setAttribute("onclick", 'lightboxOpen(this)');
+            img.setAttribute("alt", title);
+
         } else {
             mp4.setAttribute("onclick", 'lightboxOpen(this)');
+            mp4.setAttribute("alt", title);
             mp4.src = movie;
             mp4.autoplay = false;
             mp4.controls = false;

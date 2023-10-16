@@ -75,7 +75,6 @@ async function orderMedia() {
             }
             return 0;
         });
-        console.log(media);
         await displayMedia(media.reverse(), user);
     }
 
