@@ -24,6 +24,8 @@ class App {
       });
   }
 }
-
-const app = new App();
-app.main();
+const initApp = async () => {
+  const app = new App();
+  app.main();
+};
+initApp();

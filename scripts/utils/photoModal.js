@@ -28,11 +28,10 @@ openModalBtn ? openModalBtn.addEventListener("click", onOpenModal) : null;
 // Event
 openPicBtn ? openPicBtn.addEventListener("click", onOpenPic) : null;
 // Func
-export async function onOpenPic() {
+export async function onOpenPic(media) {
+  console.log("gg", media.title);
   const imagePath = this.src;
 
-  const modalPic = document.querySelector(".modal-picture");
-  modalPic.src = imagePath;
 
   mainWrapper.setAttribute("aria-hidden", "true");
   modal.setAttribute("aria-hidden", "false");

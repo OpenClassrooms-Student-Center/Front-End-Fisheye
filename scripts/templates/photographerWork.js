@@ -1,4 +1,5 @@
 import { onOpenPic } from "../utils/photoModal.js"; // Import openModalBtn here
+import { Lightbox } from "./lightbox.js";
 
 class PhotographerWork {
   constructor(photographer, media) {
@@ -7,8 +8,6 @@ class PhotographerWork {
   }
 
   createPhotographerWork(photographer, media) {
-    console.log(photographer);
-    console.log(media);
     media.forEach((media) => {
       const mediasWrapper = document.querySelector("#medias-wrapper");
 
@@ -17,8 +16,8 @@ class PhotographerWork {
       mediaContainer.classList.add("media-info");
 
       // Create a container for media details
-      const mediaImg = document.createElement("div");
-      mediaImg.classList.add("media-img");
+      const mediaImg = document.createElement("a");
+      mediaImg.classList.add(`media-img-${media.id}`);
 
       const mediaDetails = document.createElement("div");
       mediaDetails.classList.add("media-details");
@@ -49,21 +48,23 @@ class PhotographerWork {
 
       if (media.image) {
         mediaTypeElement.innerHTML = "Type: Image";
-        const mediaTitle = media.title;
-
-        console.log("media", media);
-
         // Construct the path to the image using the correct folder structure
         const imagePath = `assets/images/${photographer.name}/${media.image}`;
-        const titlePath = media.title;
-        console.log("titlePath", titlePath);
 
         // Create an <img> element for displaying the image
         const imageElement = document.createElement("img");
+
         imageElement.src = imagePath;
-        // imageElement.titlePath = imageTitle;
         imageElement.alt = media.image;
+        imageElement.setAttribute("id", `media-img-${media.id}`);
         imageElement.onclick = onOpenPic;
+        imageElement.addEventListener("click", () => {
+          // Create a new Lightbox instance with the clicked media
+          const lightbox = new Lightbox(media);
+
+          // Call a method to open the lightbox (you need to implement this in the Lightbox class)
+          lightbox.createLightbox(media);
+        });
 
         // Append the image element to the mediaImg container
         mediaImg.appendChild(imageElement);

@@ -26,6 +26,7 @@
     <main id="main" class="main-wrapper" aria-hidden="false">
       <div id="photograph-header"></div>
       <div class="medias-wrapper" id="medias-wrapper"></div>
+      <div class="test" id="test"></div>
     </main>
 
     <div id="contact_modal">
@@ -61,16 +62,17 @@
     </div>
     <div
       class="photo_modal"
+      id="modal-content"
       aria-hidden="true"
       role="dialog"
       aria-describedby="modalTitle"
     >
-      <div>
+      <div id="modalPhoto">
         <header>
-          <h2 class="modal-title"></h2>
+          <h2 id="modal-title"></h2>
         </header>
-        <div>
-          <img class="modal-picture" />
+        <div id="modalContent">
+          <img class="modal-picture" id="modal-picture" />
           <p>Content of your modal window</p>
         </div>
         <button class="modal-close-btn">Close modal</button>
@@ -86,6 +88,8 @@
     ></script>
     <!-- Templates -->
     <script type="module" src="/scripts/templates/photographerWork.js"></script>
+    <!-- Templates -->
+    <script type="module" src="/scripts/templates/lightbox.js"></script>
     <!-- Contact Form -->
     <script type="module" src="/scripts/utils/contactForm.js"></script>
     <!-- Contact Form -->

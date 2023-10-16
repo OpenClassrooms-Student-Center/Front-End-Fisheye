@@ -18,7 +18,7 @@ class AboutPhotographer {
 
     // Create the contact button element
     const contactButton = document.createElement("button");
-    contactButton.classList.add("contact_button"); // Add the class "contact_button"
+    contactButton.classList.add("contact_button"); 
     contactButton.textContent = "Contactez-moi";
     contactButton.onclick = displayModal;
 
@@ -31,7 +31,7 @@ class AboutPhotographer {
 
     //   append to link
     const portraitElement = document.createElement("img");
-    portraitElement.src = mediaPath; // Use the mediaPath instead of just photographer.portrait
+    portraitElement.src = mediaPath; 
     portraitElement.alt = photographer.name;
 
     const titleElement = document.createElement("h2");

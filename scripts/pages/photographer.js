@@ -1,16 +1,16 @@
 import { MediasApi } from "../api/api.js";
-// import {
-//   photographerPageTemplate,
-//   photographerMediaTemplate,
-// } from "../templates/photographerPage.js";
 import { PhotographersApi } from "../api/api.js";
 import { Media } from "../class/media.js";
 import { Photographer } from "../class/photographer.js";
 import { AboutPhotographer } from "../templates/aboutPhotographer.js";
+import { Lightbox } from "../templates/lightbox.js";
 import { PhotographerWork } from "../templates/photographerWork.js";
 
 // Get photographer id
 let id = new URLSearchParams(window.location.search).get("id");
+
+// Create mediasLightbox array
+let mediasLightbox = [];
 
 class PhotographerPages {
   constructor() {
@@ -18,6 +18,8 @@ class PhotographerPages {
       document.querySelector("#photograph-header");
 
     this.photographerWorkWrapper = document.querySelector("#medias-wrapper");
+
+    // this.lightboxWrapper = document.querySelector("#test");
 
     this.photographersApi = new PhotographersApi(
       "../../data/photographers.json"
@@ -60,12 +62,53 @@ class PhotographerPages {
       template.createPhotographerWork(photographer, media)
     );
   }
+
+  // Fill mediasLightbox array (for lightbox)
+  async mediasLightboxArray() {
+    const mediasData = await this.media();
+    mediasLightbox = mediasData.filter(
+      (photographer) => photographer.photographerId == id
+    );
+  }
+
+  async lightbox() {
+    const photographer = await this.photographer();
+
+    var medias = mediasLightbox.filter((objet) => objet.photographerId == id);
+
+    let mediaItem = 1;
+    medias.forEach((media) => {
+      const mediaId = media.id;
+      const template = new Lightbox(media, photographer);
+      // this.lightboxWrapper.insertBefore(
+      //   template.createLightbox(media, photographer)
+      // );
+
+      // const imgOnClick = document.getElementById("media-" + mediaId);
+      // imgOnClick.setAttribute("onclick", "currentSlide(" + mediaItem++ + ")");
+      // const carouselControlPrev = document.getElementById(
+      //   "carousel-control-prev"
+      // );
+      // this.lightboxWrapper.insertBefore(
+      //   template.createLightbox(),
+      //   carouselControlPrev
+      // );
+      // Add MediaNumber / TotalMedia in lightbox
+      // newValue("lightboxTotal-" + mediaId, media.length);
+      // newValue("lightbox-" + mediaId, mediaItem);
+      // Add onClick on medias for slider
+      // const imgOnClick = document.getElementById("media-" + mediaId);
+      // imgOnClick.setAttribute("onclick", "currentSlide(" + mediaItem++ + ")");
+    });
+  }
 }
 
 const initApp = async () => {
   const photographerPages = new PhotographerPages();
-  await photographerPages.aboutPhotographer();
-  await photographerPages.photographerWork();
+  photographerPages.aboutPhotographer();
+  await photographerPages.mediasLightboxArray();
+  photographerPages.photographerWork();
+  photographerPages.lightbox();
 };
 initApp();
 
