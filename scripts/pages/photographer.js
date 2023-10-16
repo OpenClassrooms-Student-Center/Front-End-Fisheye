@@ -26,15 +26,6 @@ async function displayNameForm(photographer) {
     formTitle.appendChild(formTitleCardDOM);
 }
 
-async function displayMedia(media) {
-    const mediaSection = document.querySelector(".photographer_media");
-    media.forEach((media) =>{
-        const mediaModel = phototographerMedia(media);
-        const mediaCardDOM = mediaModel.getMediaCardDOM();
-        mediaSection.appendChild(mediaCardDOM);
-    });
-}
-
 async function displayTotalLikes(media){
     likes = media.map(media => media.likes);
     let inilikes = 0;
@@ -86,11 +77,47 @@ async function displayTotalLikes(media){
     });
 }
 
+async function displayMedia(media) {
+    const mediaSection = document.querySelector(".photographer_media");
+    media.forEach((media) =>{
+        const mediaModel = phototographerMedia(media);
+        const mediaCardDOM = mediaModel.getMediaCardDOM();
+        mediaSection.appendChild(mediaCardDOM);
+    });
+}
+
+async function displayByPopularity(media){
+
+    const selectElement = document.querySelector('.filter')
+
+    selectElement.addEventListener('change', (event) => {
+        let selectedValue = selectElement.value
+
+        if (selectedValue == 2){
+            media.sort((a, b) => a.title.localeCompare(b.title));
+        }
+
+        else if (selectedValue == 1){
+            media.sort((a, b) => new Date(b.date) - new Date(a.date));
+        }
+
+        else {
+            media.sort((a, b) => b.likes - a.likes);
+        }
+        
+    document.querySelector(".photographer_media").innerHTML = '';
+    displayMedia(media)
+    })
+}
+
+
 async function display(photographer, media) {
     displayPhotographer(photographer)
     displayNameForm(photographer)
     displayMedia(media)
     displayTotalLikes(media)
+    displayByPopularity(media)
+  
 }
 
 async function init() {
