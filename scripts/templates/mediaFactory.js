@@ -1,6 +1,7 @@
 /// // Factory method for medias
+import { getPhotographersMedia } from "../pages/photographer.js";
 
-class Media {
+export class Media {
   #media;
   #photographer;
 
@@ -10,7 +11,6 @@ class Media {
   }
 
   getMediaCardDom() {
-
     if (this.#media.video) {
       new Video(this.#media, this.#photographer).getMediaCardDom();
     } else {
@@ -28,56 +28,22 @@ class Image {
     this.#photographer = photographer;
   }
 
-  /*imageMediaTemplate(mainTemplate) {
-    const { photographerId, image, title } = this.#media;
-
-    switch (pId) {
-      case '243':
-        photographerName = 'Mimi';
-        break;
-      case '930':
-        photographerName = 'Ellie Rose';
-        break;
-      case '82':
-        photographerName = 'Tracy';
-        break;
-      case '527':
-        photographerName = 'Nabeel';
-        break;
-      case '925':
-        photographerName = 'Rhode';
-        break;
-      case '195':
-        photographerName = 'Marcel';
-        break;
-      default:
-        alert('photographer missing');
-    }
-
-    const imageMedia = `assets/medias/${this.#photographer}/${image}`;
-
-    const imageElement = document.createElement('img');
-    imageElement.setAttribute('src', imageMedia);
-    imageElement.setAttribute('alt', title);
-
-    mainTemplate.appendChild(imageElement);
-
-    return mainTemplate;
-  }*/
-
   getMediaCardDom() {
+    const { image, title, photographerId } = this.#media;
 
-    const sectionMedia = document.querySelector('.media');
-    const mediaTemplate = mediaTemplate();
+    const photographerName = getPhotographersMedia(photographerId);
+    const imageMedia = `assets/medias/${photographerName}/${image}`;
 
-    sectionMedia.appendChild(mediaTemplate);
+    const imageElement = document.createElement("img");
+    imageElement.setAttribute("src", imageMedia);
+    imageElement.setAttribute("alt", title);
 
-  }}
-
+    return imageElement;
+  }
+}
 
 class Video {
   #media;
-
   #photographer;
 
   constructor(media, photographer) {
@@ -85,38 +51,19 @@ class Video {
     this.#photographer = photographer;
   }
 
-  /*videoMediaTemplate() {
-
-    const { photographerId, video } = this.#media;
-    const pId = photographerId;
-    let photographerName;
-
-    switch (pId) {
-      case '243':
-        photographerName = 'Mimi';
-        break;
-      case '930':
-        photographerName = 'Ellie Rose';
-        break;
-      case '82':
-        photographerName = 'Tracy';
-        break;
-      case '527':
-        photographerName = 'Nabeel';
-        break;
-      case '925':
-        photographerName = 'Rhode';
-        break;
-      case '195':
-        photographerName = 'Marcel';
-        break;
-      default:
-        alert('photographer missing');
-  
-  }*/
-
   getMediaCardDom() {
-    const sectionMedia = document.querySelector('.media');
-    sectionMedia.appendChild(mediaTemplate);
+    const { video, photographerId } = this.#media;
+    const photographerName = getPhotographersMedia(photographerId);
+    const videoMedia = `assets/medias/${photographerName}/${video}`;
+
+    const videoDiv = document.createElement("video");
+    const videoElement = document.createElement("source");
+
+    videoElement.setAttribute("src", videoMedia);
+    videoElement.setAttribute("type", "video/mp4");
+    // Voir accessibilité vidéos et attribut control
+
+    videoDiv.appendChild(videoElement);
+    return videoDiv;
   }
 }

@@ -1,4 +1,6 @@
-function photographerTemplate(data) {
+import { Media } from "./mediaFactory.js";
+
+export function photographerTemplate(data) {
   // Récupération des datas JSON
   const { name, id, city, country, tagline, price, portrait } = data;
   const picture = `assets/photographers/${portrait}`;
@@ -60,7 +62,7 @@ function photographerTemplate(data) {
 
 // ----Récupération des datas pour les pages photographes----//
 
-function photographInfoTemplate(data) {
+export function photographInfoTemplate(data) {
   const { name, city, country, tagline } = data;
 
   function getUserInfoDOM() {
@@ -92,7 +94,7 @@ function photographInfoTemplate(data) {
   };
 }
 
-function photographPicture(data) {
+export function photographPicture(data) {
   const { portrait } = data;
   const picture = `assets/photographers/${portrait}`;
 
@@ -111,56 +113,32 @@ function photographPicture(data) {
 
 /// //////////////MediasTemplate
 
-function mediasTemplate(data) {
-  const { title, likes, image, video, photographerId } = data;
+export function mediasTemplate(data) {
+  const { title, likes } = data;
+  const mediaFactory = new Media(data).getMediaCardDom();
+  const mediaType = mediaFactory.getMediaCardDom();
+
   const likeIconMedia = "assets/icons/like-icon.png";
 
-  function getMediaFactoryCardDom() {
-    const article = document.createElement("article");
+  const article = document.createElement("article");
 
-    const divDescription = document.createElement("div");
+  const divDescription = document.createElement("div");
 
-    const titleElement = document.createElement("h2");
-    titleElement.innerText = title;
+  const titleElement = document.createElement("h2");
+  titleElement.innerText = title;
 
-    const likesElement = document.createElement("p");
-    likesElement.innerText = likes;
+  const likesElement = document.createElement("p");
+  likesElement.innerText = likes;
 
-    const likesIcon = document.createElement("img");
-    likesIcon.setAttribute("src", likeIconMedia);
-    likesIcon.setAttribute("alt", "j'aimes");
+  const likesIcon = document.createElement("img");
+  likesIcon.setAttribute("src", likeIconMedia);
+  likesIcon.setAttribute("alt", "j'aimes");
 
-    new Media(m, data).getMediaCardDom();
+  article.appendChild(mediaType);
+  article.appendChild(divDescription);
+  divDescription.appendChild(titleElement);
+  divDescription.appendChild(likesElement);
+  divDescription.appendChild(likesIcon);
 
-    if (Media.video) {
-      const videoMedia = `assets/medias/${photographerId}/${video}`;
-
-      const videoDiv = document.createElement("video");
-
-      const videoElement = document.createElement("source");
-
-      videoElement.setAttribute("src", videoMedia);
-      videoElement.setAttribute("type", "video/mp4");
-      // Voir accessibilité vidéos et attribut control
-
-      article.appendChild(videoDiv);
-      videoDiv.appendChild(videoElement);
-    } else {
-      const imageMedia = `assets/medias/${photographerId}/${image}`;
-
-      const imageElement = document.createElement("img");
-      imageElement.setAttribute("src", imageMedia);
-      imageElement.setAttribute("alt", title);
-
-      article.appendChild(imageElement);
-    }
-
-    article.appendChild(divDescription);
-    divDescription.appendChild(titleElement);
-    divDescription.appendChild(likesElement);
-    divDescription.appendChild(likesIcon);
-
-    return article;
-  }
-  return { title, likes, getMediaFactoryCardDom };
+  return article;
 }
