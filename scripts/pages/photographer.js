@@ -32,7 +32,6 @@ class PhotographerPages {
       const photographerDataFiltered = photographerData.find(
         (photographer) => photographer.id == id
       );
-      // console.log(photographerDataFiltered);
       return photographerDataFiltered;
     };
 

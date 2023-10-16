@@ -6,7 +6,6 @@ class Lightbox {
     this._photographer = photographer;
   }
   createLightbox(media, photographer) {
-    console.log(photographer);
     const imagePath = `assets/images/${photographer.name}/${media.image}`;
 
     const modalContent = document.querySelector("#modalContent");
@@ -24,18 +23,6 @@ class Lightbox {
     modalContent.appendChild(mediaImageElement);
     modalContent.appendChild(mediaTitleElement);
     onOpenPic(media);
-    // console.log("media.id", media.id);
-    // const imgClick = document.querySelector(`#media-img-${media.id}`);
-    //on image click set area hidden false
-
-    //on image click set data to modal
-    // const setData = (media) => {
-    //   // console.log("mediaClicked", media);
-    // };
-
-    // imgClick.onclick = setData();
-
-    // onOpenPic(media);
   }
 }
 export { Lightbox };

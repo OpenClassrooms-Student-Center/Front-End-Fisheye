@@ -28,9 +28,7 @@ openModalBtn ? openModalBtn.addEventListener("click", onOpenModal) : null;
 // Event
 openPicBtn ? openPicBtn.addEventListener("click", onOpenPic) : null;
 // Func
-export async function onOpenPic(media) {
-  console.log("gg", media.title);
-
+export async function onOpenPic() {
   mainWrapper.setAttribute("aria-hidden", "true");
   modal.setAttribute("aria-hidden", "false");
   body.classList.add("no-scroll");
