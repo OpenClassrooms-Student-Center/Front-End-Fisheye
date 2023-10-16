@@ -5,6 +5,7 @@
     <meta charset="utf-8">
     <link rel="icon" type="image/png" href="assets/favicon.png">
     <link href="https://fonts.googleapis.com/css?family=DM+Sans&display=swap" rel="stylesheet">
+      <script src="https://kit.fontawesome.com/932819f24d.js" crossorigin="anonymous"></script>
     <title>Fisheye - photographe </title>
   </head>
   <body>
@@ -31,19 +32,24 @@
 
       </div>
         <div class="lightbox" aria-label="image closeup view" role="dialog">
-            <button class="lightbox-prev" >Previous</button>
-            <div class="lightbox-container">
+            <div class="lightbox-zone">
+                <button class="lightbox-prev" ><i class="fa-solid fa-angle-left fa-2xl"></i></button>
+                <div class="lightbox-container">
+                </div>
+                <div class="lightbox-btn">
+                    <button class="lightbox-close" onclick="lightboxClose()"><img src="assets/icons/close.svg" alt="Close dialog"></button>
+                    <button class="lightbox-next"><i class="fa-solid fa-angle-right fa-2xl"></i></button>
+                </div>
             </div>
-            <button class="lightbox-next">Next</button>
         </div>
     </main>
     <dialog id="contact_modal">
         <div class="modal">
             <header>
                 <h2>Contactez-moi</h2>
-                <img src="assets/icons/close.svg" onclick="contact_modal.close()"  alt="Close Contact form"/>
+                <button onclick="contact_modal.close()"  alt="Close Contact form" class="btn-icon"><img src="assets/icons/close.svg" /></button>
             </header>
-            <form>
+            <form id="form-contact" method="post">
                 <div>
                     <label for="contact-prenom" aria-label="Label de l'input Prenom" aria-labelledby="contact-prenom">Prénom</label>
                     <input id="contact-prenom" name="prenom" type="text">
@@ -54,7 +60,7 @@
                     <label for="contact-text" aria-label="Label de l'input Votre message" aria-labelledby="contact-text">Votre message</label>
                     <textarea id="contact-text" name="textarea"></textarea>
                 </div>
-                <button class="contact_button" aria-label="Send">Envoyer</button>
+                <button class="contact_button" aria-label="Send" onclick="contactSend()">Envoyer</button>
             </form>
         </div>
     </dialog>

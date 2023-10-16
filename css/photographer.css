@@ -1,12 +1,11 @@
 /*  MODAL CONTACT  */
 
 #contact_modal {
-    /*display: none;*/
-    /*position: fixed;*/
     width: 100%;
     height: 100%;
     inset: 0;
     border: 0;
+    background: none;
 }
 
 #contact_modal::backdrop {
@@ -96,6 +95,11 @@ form input, form textarea {
 
 form textarea {
     height: 150px;
+}
+
+.btn-icon {
+    border: 0;
+    background: none;
 }
 
 /* SECTION PHOTOGRAPH */
@@ -281,6 +285,19 @@ form textarea {
     background: #fff;
 }
 
+.lightbox-zone {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: auto;
+}
+
+.lightbox-btn {
+    height: 100%;
+    display: flex;
+    align-items: center;
+}
+
 .lightbox-container {
     display: flex;
     align-items: center;
@@ -289,7 +306,7 @@ form textarea {
     margin: 0 50px;
 }
 
-.lightbox-container img {
+.lightbox-container img, .lightbox-container video {
     width: 80vh;
     height: 80vh;
     object-fit: cover;
@@ -299,7 +316,7 @@ form textarea {
     position: absolute;
     width: 50px;
     height: 48px;
-    right: 21rem;
+    top: 5rem;
     border: 0;
     background: 0;
     cursor: pointer;
@@ -308,4 +325,34 @@ form textarea {
 .lightbox-close img {
     width: 45px;
     height: 45px;
+}
+
+.lightbox-prev {
+    /*position: absolute;*/
+    left: 20rem;
+    top: 50%;
+    transform: translateY(-50%);
+    border: 0;
+    background: none;
+    cursor: pointer;
+    width: 3rem;
+    height: 5rem;
+
+}
+
+.lightbox-next {
+    /*position: absolute;*/
+    right: 20rem;
+    top: 50%;
+    transform: translateY(-50%);
+    border: 0;
+    background: none;
+    cursor: pointer;
+    width: 3rem;
+    height: 5rem;
+}
+
+.lightbox-prev i, .lightbox-next i {
+    font-size: 4rem;
+    color: #901c1c;
 }
