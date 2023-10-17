@@ -86,8 +86,7 @@ async function displayMedia(media) {
     });
 }
 
-async function displayByPopularity(media){
-
+async function displayByFiltre(media){
     const selectElement = document.querySelector('.filter')
 
     selectElement.addEventListener('change', (event) => {
@@ -106,18 +105,18 @@ async function displayByPopularity(media){
         }
         
     document.querySelector(".photographer_media").innerHTML = '';
+    console.log(media);
     displayMedia(media)
+    displayTotalLikes(media);
     })
 }
-
 
 async function display(photographer, media) {
     displayPhotographer(photographer)
     displayNameForm(photographer)
     displayMedia(media)
+    displayByFiltre(media)
     displayTotalLikes(media)
-    displayByPopularity(media)
-  
 }
 
 async function init() {
