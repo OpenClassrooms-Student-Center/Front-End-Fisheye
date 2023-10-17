@@ -71,21 +71,11 @@ class PhotographerPages {
       template.createPhotographerWork(photographer, media, lightbox)
     );
   }
-
-  // Fill mediasLightbox array (for lightbox)
-  async mediasLightboxArray() {
-    const mediasData = await this.media();
-    mediasLightbox = mediasData.filter(
-      (photographer) => photographer.photographerId == id
-    );
-    console.log("mediasData", mediasData);
-  }
 }
 
 const initApp = async () => {
   const photographerPages = new PhotographerPages();
   photographerPages.aboutPhotographer();
-  await photographerPages.mediasLightboxArray();
   photographerPages.photographerWork();
 };
 initApp();
