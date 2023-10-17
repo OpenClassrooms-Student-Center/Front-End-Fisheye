@@ -24,6 +24,7 @@ export class Mediaphotographer {
     if (totalLikesElement) {
       totalLikesElement.innerText = this.totalLikes.toString();
     }
+    //Mise en place du système de tri
     const section = document.getElementById("containerCards");
     const select = document.querySelector("#orderSelect");
     let filteredMedia = [...allMedias];

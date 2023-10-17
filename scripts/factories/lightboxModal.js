@@ -1,9 +1,9 @@
 export class LightboxFactory {
-  #lightbox = [];
-  #currentIndex = 0;
-  #modal = null;
-  #containerImg = null;
-  #title = null;
+  lightbox = [];
+  currentIndex = 0;
+  modal = null;
+  containerImg = null;
+  title = null;
 
   constructor() {
       const lightbox = document.querySelectorAll("[lightbox-media]");
@@ -14,7 +14,7 @@ export class LightboxFactory {
                   type: element.nodeName,
                   title: element.getAttribute("lightbox-media"),
               };
-              this.#lightbox.push(item);
+              this.lightbox.push(item);
               element.addEventListener("click", this._handleClick.bind(this));
               element.addEventListener("keydown", (event) => {
                   if (event.key === "Escape") {
@@ -24,7 +24,12 @@ export class LightboxFactory {
           }
       }
       document.addEventListener("keydown", (event) => {
-          if (event.key === "Enter") {
+          if (event.key === "Enter" && event.target.tagName === "IMG"|| event.target.tagName === "VIDEO") {
+            const currentElement = event.target;
+            const src = currentElement.src;
+            this.currentIndex = this.lightbox.findIndex((item) => {
+              return item.src === src;
+            });
               this._open();
           }
       });
@@ -33,7 +38,7 @@ export class LightboxFactory {
     _handleClick(e) {
       const currentElement = e.currentTarget;
       const src = currentElement.src;
-      this.#currentIndex = this.#lightbox.findIndex((item) => {
+      this.currentIndex = this.lightbox.findIndex((item) => {
         return item.src === src;
       });
   
@@ -54,7 +59,7 @@ export class LightboxFactory {
       btnClose.className = "btnClose";
       btnClose.innerHTML = "<i class='fa-solid fa-xmark'></i>";
       btnClose.setAttribute('aria-label', 'Bouton fermer');
-      document.addEventListener("keyup", (event) => {
+      document.addEventListener("keydown", (event) => {
         if (event.key === "ArrowRight") {
           this._goToNext();
         }
@@ -62,7 +67,7 @@ export class LightboxFactory {
       btnNext.addEventListener("click", () => {
         this._goToNext();
       });
-      document.addEventListener("keyup", (event) => {
+      document.addEventListener("keydown", (event) => {
         if (event.key === "ArrowLeft") {
           this._goToPrevious();
         }
@@ -70,7 +75,7 @@ export class LightboxFactory {
       btnPrev.addEventListener("click", () => {
         this._goToPrevious();
       });
-      document.addEventListener("keydown", (event) => {
+      document.addEventListener("keyup", (event) => {
         if (event.key === "Escape") {
           this._close();
         }
@@ -78,54 +83,54 @@ export class LightboxFactory {
       btnClose.addEventListener("click", () => {
         this._close();
       });
-      this.#containerImg = document.createElement("div");
-      this.#containerImg.className = "lightboxContainerImg";
-      this.#title = document.createElement("span");
-      this.#title.setAttribute("class", "title");
+      this.containerImg = document.createElement("div");
+      this.containerImg.className = "lightboxContainerImg";
+      this.title = document.createElement("span");
+      this.title.setAttribute("class", "title");
       const lightboxContent = document.createElement("div");
       lightboxContent.className = "lightboxContent";
       lightboxContent.append(
-        this.#containerImg,
+        this.containerImg,
         btnPrev,
         btnNext,
         btnClose,
-        this.#title
+        this.title
       );
       const lightboxContainer = document.createElement("div");
       lightboxContainer.className = "lightboxContainer";
       lightboxContainer.append(lightboxContent);
-      this.#modal = document.createElement("dialog");
-      this.#modal.setAttribute("aria-label", "image closeup view");
-      this.#modal.setAttribute("id", "lightbox");
-      this.#modal.setAttribute("open", true);
-      this.#modal.append(lightboxContainer);
-      body.append(this.#modal);
-      this._displayItem(this.#currentIndex);
+      this.modal = document.createElement("dialog");
+      this.modal.setAttribute("aria-label", "image closeup view");
+      this.modal.setAttribute("id", "lightbox");
+      this.modal.setAttribute("open", true);
+      this.modal.append(lightboxContainer);
+      body.append(this.modal);
+      this._displayItem(this.currentIndex);
       body.style = "overflow: hidden;";
     }
     _close() {
-      this.#modal.remove();
+      this.modal.remove();
       const body = document.querySelector("body");
       body.style = "";
     }
     _goToNext() {
-      this.#currentIndex++;
-      if (this.#currentIndex >= this.#lightbox.length) {
-        this.#currentIndex = 0;
+      this.currentIndex++;
+      if (this.currentIndex >= this.lightbox.length) {
+        this.currentIndex = 0;
       }
-      this._displayItem(this.#currentIndex);
+      this._displayItem(this.currentIndex);
     }
     _goToPrevious() {
-      this.#currentIndex--;
-      if (this.#currentIndex < 0) {
-        this.#currentIndex = this.#lightbox.length - 1;
+      this.currentIndex--;
+      if (this.currentIndex < 0) {
+        this.currentIndex = this.lightbox.length - 1;
       }
-      this._displayItem(this.#currentIndex);
+      this._displayItem(this.currentIndex);
     }
   
     _displayItem(index) {
-      const item = this.#lightbox[index];
-      this.#title.textContent = item.title;
+      const item = this.lightbox[index];
+      this.title.textContent = item.title;
       let element;
   
       if (item.type === "IMG") {
@@ -140,9 +145,9 @@ export class LightboxFactory {
         element.append(src);
       }
   
-      this.#containerImg.innerHTML = "";
-      this.#containerImg.append(element);
-      this.#currentIndex = index;
+      this.containerImg.innerHTML = "";
+      this.containerImg.append(element);
+      this.currentIndex = index;
     }
     static init() {
       return new LightboxFactory();
