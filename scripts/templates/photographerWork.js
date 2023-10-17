@@ -2,12 +2,14 @@ import { onOpenPic } from "../utils/photoModal.js";
 import { Lightbox } from "./lightbox.js";
 
 class PhotographerWork {
-  constructor(photographer, media) {
+  constructor(photographer, media, lightbox) {
     this._photographer = photographer;
     this._media = media;
+    this._lightbox = lightbox;
   }
 
-  createPhotographerWork(photographer, media) {
+  createPhotographerWork(photographer, media, lightbox) {
+    console.log("lightbox", lightbox);
     media.forEach((media) => {
       const mediasWrapper = document.querySelector("#medias-wrapper");
 
@@ -63,7 +65,7 @@ class PhotographerWork {
           const lightbox = new Lightbox(media);
 
           // Call a method to open the lightbox (you need to implement this in the Lightbox class)
-          lightbox.createLightbox(media, photographer);
+          lightbox.createLightbox(media, photographer, lightbox);
         });
 
         // Append the image element to the mediaImg container

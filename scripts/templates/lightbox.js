@@ -1,9 +1,12 @@
 class Lightbox {
-  constructor(media, photographer) {
+  constructor(media, photographer, lightbox) {
     this._media = media;
     this._photographer = photographer;
+    this._lightbox = lightbox;
+    this._currentIndex = 0; // Initialize with the first image (index 0)
   }
-  createLightbox(media, photographer) {
+  createLightbox(media, photographer, lightbox) {
+    console.log("lightbox", lightbox);
     const imagePath = `assets/images/${photographer.name}/${media.image}`;
 
     const modalContent = document.querySelector("#modalContent");
@@ -31,6 +34,10 @@ class Lightbox {
     // Append the new elements to modalContent
     modalContent.appendChild(mediaImageElement);
     modalContent.appendChild(mediaTitleElement);
+  }
+  goToNextImage() {
+    this._currentIndex = (this._currentIndex + 1) % this._mediaArray.length;
+    this.createLightbox();
   }
 }
 export { Lightbox };

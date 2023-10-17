@@ -43,6 +43,15 @@ class PhotographerPages {
       );
       return mediasDataFiltered;
     };
+
+    this.lightbox = async () => {
+      const lightboxData = await this.mediasApi.getMedias();
+      lightboxData.map((media) => new Lightbox(media));
+      const lightboxDataFiltered = lightboxData.filter(
+        (photographer) => photographer.photographerId == id
+      );
+      return lightboxDataFiltered;
+    };
   }
   // Render aboutPhotographer
   async aboutPhotographer() {
@@ -56,9 +65,10 @@ class PhotographerPages {
   async photographerWork() {
     const photographer = await this.photographer();
     const media = await this.media();
-    const template = new PhotographerWork(photographer, media);
+    const lightbox = await this.lightbox();
+    const template = new PhotographerWork(photographer, media, lightbox);
     this.photographerWorkWrapper.appendChild(
-      template.createPhotographerWork(photographer, media)
+      template.createPhotographerWork(photographer, media, lightbox)
     );
   }
 
@@ -68,6 +78,7 @@ class PhotographerPages {
     mediasLightbox = mediasData.filter(
       (photographer) => photographer.photographerId == id
     );
+    console.log("mediasData", mediasData);
   }
 }
 
@@ -76,7 +87,6 @@ const initApp = async () => {
   photographerPages.aboutPhotographer();
   await photographerPages.mediasLightboxArray();
   photographerPages.photographerWork();
-  photographerPages.lightbox();
 };
 initApp();
 

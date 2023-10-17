@@ -26,7 +26,12 @@
     <main id="main" class="main-wrapper" aria-hidden="false">
       <div id="photograph-header"></div>
       <div class="medias-wrapper" id="medias-wrapper"></div>
-      <div class="test" id="test"></div>
+      <h1>Your carousel</h1>
+      <ul class="carousel" aria-label="Our selection of Recipes">
+        <li class="carrousel-item"></li>
+        <li class="carrousel-item"></li>
+        <li class="carrousel-item"></li>
+      </ul>
     </main>
 
     <div id="contact_modal">
@@ -69,7 +74,19 @@
     >
       <div id="modalPhoto">
         <div id="modalContent"></div>
+        <div role="button" class="controls controls-left">
+          <span class="img prev-image">
+            <i aria-hidden="true" class="fa fa-arrow-circle-left"></i>
+          </span>
+          <p class="sr-only">Previous</p>
+        </div>
         <button class="modal-close-btn">Close modal</button>
+        <div role="button" class="controls controls-right">
+          <span class="img next-image">
+            <i aria-hidden="true" class="fa fa-arrow-circle-right"></i>
+          </span>
+          <p class="sr-only">Next</p>
+        </div>
       </div>
     </div>
 
