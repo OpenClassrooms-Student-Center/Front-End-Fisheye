@@ -254,6 +254,11 @@ form textarea {
     cursor: pointer;
 }
 
+.button-card {
+    border: 0;
+    background: none;
+}
+
 /* ------------------ ANIMATION LIKE ------------------- */
 .like-anim {
     animation: pulse 0.2s linear;

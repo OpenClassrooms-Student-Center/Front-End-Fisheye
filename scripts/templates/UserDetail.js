@@ -48,24 +48,26 @@ function detailMediaTemplate(data) {
         div.classList.add('cardMedia');
         div.setAttribute("alt", "show img " + title );
 
+        const button = document.createElement('button');
+        button.classList.add('button-card');
+        button.setAttribute("onclick", 'lightboxOpen(this)');
+
         const img = document.createElement( 'img' );
         const mp4 = document.createElement( 'video' );
 
         if (image) {
             img.setAttribute("src", picture);
-            img.setAttribute("onclick", 'lightboxOpen(this)');
             img.setAttribute("alt", title);
-
         } else {
-            mp4.setAttribute("onclick", 'lightboxOpen(this)');
             mp4.setAttribute("alt", title);
+            mp4.setAttribute("tabindex", 0);
             mp4.src = movie;
             mp4.autoplay = false;
             mp4.controls = false;
             mp4.height = 350;
             mp4.width = 350;
-            mp4.poster;
         }
+
 
         const divText = document.createElement('div');
         divText.classList.add('textMedia');
@@ -87,10 +89,11 @@ function detailMediaTemplate(data) {
         icon.classList.add('like-icon');
 
         if (image) {
-            div.appendChild(img);
+            button.appendChild(img);
         } else {
-            div.appendChild(mp4);
+            button.appendChild(mp4);
         }
+        div.appendChild(button);
         divLike.appendChild(p);
         divLike.appendChild(icon);
         divText.appendChild(h2);
