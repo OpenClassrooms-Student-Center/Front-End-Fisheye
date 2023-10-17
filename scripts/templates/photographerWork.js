@@ -1,4 +1,4 @@
-import { onOpenPic } from "../utils/photoModal.js"; // Import openModalBtn here
+import { onOpenPic } from "../utils/photoModal.js";
 import { Lightbox } from "./lightbox.js";
 
 class PhotographerWork {
