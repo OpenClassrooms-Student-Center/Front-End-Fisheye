@@ -1,5 +1,3 @@
-import { onOpenPic } from "../utils/photoModal.js";
-
 class Lightbox {
   constructor(media, photographer) {
     this._media = media;
