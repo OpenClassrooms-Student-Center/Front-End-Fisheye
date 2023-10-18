@@ -35,6 +35,8 @@ const setPhotograperHeader = (name, city, country, tagline, portrait) => {
 
 
 let totalLikes = 0;
+let cardIndex = 0;
+
 // Creates factory pattern
 const mediaFactory = (object, name) => {  
 
@@ -53,7 +55,7 @@ const mediaFactory = (object, name) => {
                 : `<img src="./assets/images/photographersWorks/${name.split(' ')[0]}/${media.mediaUrl}" alt="${media.title}">`                
             
             return `
-                <div class="card">
+                <div class="card" data-index="${cardIndex++}">
                     ${ mediaElement }
                     <div>
                         <h2>${media.title}</h2>
@@ -144,6 +146,85 @@ const sortingMedia = (filteredPhotographerMedia, name) => {
     });
 };
 
+// Creating lightbox
+const createLightboxElements = () => {
+    const cards = document.getElementsByClassName('card');
+   
+    // Creating elements
+    const lightBoxCotainer = document.createElement('div');
+    const lightBoxContent = document.createElement('div');
+    const lightBoxImage = document.createElement('img');
+    const lightBoxVideo = document.createElement('video');
+    const lightBoxSource = document.createElement('source');
+    const lightBoxPrev = document.createElement('i');
+    const lightBoxNext = document.createElement('i');
+
+    // Adding classes
+    lightBoxCotainer.classList.add('lightbox');
+    lightBoxContent.classList.add('lightbox-content');
+    lightBoxImage.classList.add('lightbox-image');
+    lightBoxPrev.classList.add('fa', 'fa-angle-left', 'light-box-prev');
+    lightBoxNext.classList.add('fa', 'fa-angle-right', 'light-box-next');
+
+    // Appending child elements
+    lightBoxCotainer.appendChild(lightBoxContent);  
+    lightBoxContent.appendChild(lightBoxImage);
+    lightBoxContent.appendChild(lightBoxVideo);
+    lightBoxContent.appendChild(lightBoxPrev);
+    lightBoxContent.appendChild(lightBoxNext);
+
+    document.body.appendChild(lightBoxCotainer);
+   
+    function showLightBox(mediaIndex, mediaType) {
+     
+        lightBoxCotainer.style.display = 'block';
+
+        const mediaLocation = cards[mediaIndex].children[0];
+
+        if(mediaType === 'img'){
+
+            lightBoxVideo.style.display = 'none';
+            lightBoxImage.style.display = 'block';
+
+            lightBoxImage.setAttribute('src',  mediaLocation.getAttribute('src'));
+
+        } else if(mediaType === 'video') {
+
+            lightBoxImage.style.display = 'none';
+            lightBoxVideo.style.display = 'block';
+
+            lightBoxVideo.controls = true;
+            lightBoxVideo.autoplay = true;
+
+            lightBoxVideo.appendChild(lightBoxSource);
+
+            lightBoxSource.setAttribute('src', mediaLocation.children[0].getAttribute('src'));
+        } 
+    };
+
+
+    function currentImage(event) {
+        const mediaType = event.target.localName;   
+        const mediaIndex = parseInt(this.parentElement.getAttribute('data-index'));
+
+        showLightBox(mediaIndex, mediaType);
+    };
+
+    // Openning lightbox on clikc
+    Array.from(cards).forEach(card => {
+        card.children[0].addEventListener('click', currentImage);
+    })
+
+    // Closing lightBox
+    function closeLightbox(event) {
+        if(this === event.target) {
+            lightBoxCotainer.style.display = 'none';
+        }
+    };
+
+    lightBoxCotainer.addEventListener('click', closeLightbox);
+};  
+
 
 // inits photograper
 const initPhotographer = async () => {
@@ -155,6 +236,7 @@ const initPhotographer = async () => {
     callFactoryFunction(filteredPhotographerMedia, name);
     addTotalLikesAndPricingInfo(price);
     sortingMedia(filteredPhotographerMedia, name);
+    createLightboxElements();
 };
 initPhotographer();
 

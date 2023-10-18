@@ -18,6 +18,7 @@
 .photograph-header h1 {
     font-size: 3rem;
     color: #D3573C;
+    margin-right: 0;
 }
 
 .photograph-header .content p:first-of-type {
@@ -109,7 +110,14 @@
     height: 300px;
     border-radius: 10px;
     object-fit: cover;
+    cursor: pointer;
     /* object-position: top; */
+}
+
+.photograph-galary .card img:hover,
+.photograph-galary .card video:hover {
+    opacity: .8;
+    transition: opacity 400ms;
 }
 
 .photograph-galary .card > div h2 {
@@ -129,6 +137,53 @@
     position: sticky;
     left: 100%;
     bottom: 0;
+}
+
+/* Lightbox section */
+
+.lightbox {
+    display: none;
+    background-color: rgba(0,0,0,0.6);
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    top: 0;
+    left: 0;
+    position: fixed;
+}
+
+.lightbox .lightbox-content {
+    position: relative;
+    width: 40%;
+    height: 50%;
+    margin: 5% auto;
+    margin-top: 100px;
+}
+
+.lightbox .lightbox-content img,
+.lightbox .lightbox-content video  {
+    width: 100%;
+    height: 100%;
+    border: 1px solid #fff;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+.lightbox .lightbox-content i {
+   font-size: 2rem;
+    color: #901C1C;
+    position: absolute;
+    cursor: pointer;
+}
+
+.lightbox .lightbox-content .light-box-prev {
+    top: 50%;
+    left: -40px;
+}
+
+.lightbox .lightbox-content .light-box-next {
+    top: 50%;
+    right: -40px;
 }
 
 /* Modal section */
