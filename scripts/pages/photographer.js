@@ -42,13 +42,13 @@ async function displayMedia(medias, user) {
         return accumulateur + valeurCourante.likes;
     }, 0);
 
-        medias.forEach((media) => {
 
-        // Récuperation des données média puis création de l'affichage
-        const detailMedia = detailMediaTemplate(media);
-        const detailMediaDOM = detailMedia.getMediaDOM();
-        photographersHeader.appendChild(detailMediaDOM);
-    });
+        medias.forEach((media) => {
+            // Récuperation des données média puis création de l'affichage
+            const detailMedia = detailMediaTemplate(media, medias.indexOf(media));
+            const detailMediaDOM = detailMedia.getMediaDOM();
+            photographersHeader.appendChild(detailMediaDOM);
+        });
 
     await detailTemplate(totalLikes, user.price);
 }

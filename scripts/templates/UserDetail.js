@@ -35,7 +35,7 @@ function detailUserTemplate(data) {
     return { name, picture, getDetailDOM }
 }
 
-function detailMediaTemplate(data) {
+function detailMediaTemplate(data, index) {
     const { id, image, video, title, date, likes } = data;
 
     const picture = `assets/media/${image}`;
@@ -50,7 +50,7 @@ function detailMediaTemplate(data) {
 
         const button = document.createElement('button');
         button.classList.add('button-card');
-        button.setAttribute("onclick", 'lightboxOpen(this)');
+        button.setAttribute("onclick", 'lightboxOpen(); slide('+index+')');
 
         const img = document.createElement( 'img' );
         const mp4 = document.createElement( 'video' );
