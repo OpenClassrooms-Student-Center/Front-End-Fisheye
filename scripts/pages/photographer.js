@@ -36,20 +36,20 @@ const setPhotograperHeader = (name, city, country, tagline, portrait) => {
 
 let totalLikes = 0;
 // Creates factory pattern
-const mediaFactory = (objet, name) => {  
-    
+const mediaFactory = (object, name) => {  
+
     const media = {
-        title: objet.title,
-        mediaUrl: objet.image ? objet.image : objet.video,
-        likes: objet.likes,
+        title: object.title,
+        mediaUrl: object.image ? object.image : object.video,
+        likes: object.likes,
+        id: object.id,
 
         createMedia: () => {
-            const ExtentionType = media.mediaUrl.split('.')[1];
-            let mediaElement = '';
             totalLikes += media.likes;
 
-            mediaElement = ExtentionType === 'mp4' ?
-                `<video controls><source src="./assets/images/photographersWorks/${name.split(' ')[0]}/${media.mediaUrl}"></source></video>`
+            const ExtentionType = media.mediaUrl.split('.')[1];
+            const mediaElement = ExtentionType === 'mp4' ?
+                `<video controls><source src="./assets/images/photographersWorks/${name.split(' ')[0]}/${media.mediaUrl}"/></video>`
                 : `<img src="./assets/images/photographersWorks/${name.split(' ')[0]}/${media.mediaUrl}" alt="${media.title}">`                
             
             return `
