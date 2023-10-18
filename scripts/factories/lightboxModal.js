@@ -5,13 +5,6 @@ export class LightboxFactory {
   containerImg = null;
   title = null;
   
-  static close() {
-    const lightboxInstance = LightboxFactory.getInstance();
-    if (lightboxInstance) {
-      lightboxInstance._close();
-    }
-  }
-  
   constructor() {
       const lightbox = document.querySelectorAll("[lightbox-media]");
       if (lightbox.length > 0) {
