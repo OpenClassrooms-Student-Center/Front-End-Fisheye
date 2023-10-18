@@ -33,6 +33,21 @@ export class LightboxFactory {
               this._open();
           }
       });
+      document.addEventListener("keydown", (event) => {
+        if (event.key === "ArrowRight") {
+          this._goToNext();
+        }
+      })
+      document.addEventListener("keydown", (event) => {
+        if (event.key === "ArrowLeft") {
+          this._goToPrevious();
+        }
+      });
+      document.addEventListener("keyup", (event) => {
+        if (event.key === "Escape") {
+          this._close();
+        }
+      });
   }
   
     _handleClick(e) {
@@ -59,26 +74,11 @@ export class LightboxFactory {
       btnClose.className = "btnClose";
       btnClose.innerHTML = "<i class='fa-solid fa-xmark'></i>";
       btnClose.setAttribute('aria-label', 'Bouton fermer');
-      document.addEventListener("keydown", (event) => {
-        if (event.key === "ArrowRight") {
-          this._goToNext();
-        }
-      });
       btnNext.addEventListener("click", () => {
         this._goToNext();
       });
-      document.addEventListener("keydown", (event) => {
-        if (event.key === "ArrowLeft") {
-          this._goToPrevious();
-        }
-      });
       btnPrev.addEventListener("click", () => {
         this._goToPrevious();
-      });
-      document.addEventListener("keyup", (event) => {
-        if (event.key === "Escape") {
-          this._close();
-        }
       });
       btnClose.addEventListener("click", () => {
         this._close();
@@ -114,20 +114,21 @@ export class LightboxFactory {
       body.style = "";
     }
     _goToNext() {
-      this.currentIndex++;
+      this.currentIndex+=1;
       if (this.currentIndex >= this.lightbox.length) {
         this.currentIndex = 0;
       }
       this._displayItem(this.currentIndex);
+      console.log(this.currentIndex, this.lightbox)
     }
     _goToPrevious() {
-      this.currentIndex--;
+      this.currentIndex-=1;
       if (this.currentIndex < 0) {
         this.currentIndex = this.lightbox.length - 1;
       }
       this._displayItem(this.currentIndex);
+      console.log(this.currentIndex, this.lightbox)
     }
-  
     _displayItem(index) {
       const item = this.lightbox[index];
       this.title.textContent = item.title;
