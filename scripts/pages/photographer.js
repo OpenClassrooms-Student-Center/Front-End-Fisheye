@@ -56,7 +56,7 @@ async function init() {
   }
 
   displayInfo(photographer);
-  displayMedias(photographer.id, media);
+  displayMedias(photographers, media);
 }
 
 init();

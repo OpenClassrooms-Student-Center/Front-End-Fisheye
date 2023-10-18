@@ -1,4 +1,5 @@
 import { Media } from "./mediaFactory.js";
+import { getDataPhotographers } from "../pages/photographer.js";
 
 export function photographerTemplate(data) {
   // Récupération des datas JSON
@@ -113,8 +114,11 @@ export function photographPicture(data) {
 
 /// //////////////MediasTemplate
 
-export function getPhotographersMedia(photographer) {
-  const firstName = photographer.name.split(" ")[0];
+export async function getPhotographersMedia(photographerData) {
+  const { photographers } = await getDataPhotographers();
+  photographerData = photographers;
+
+  const firstName = photographerData.name.split(" ")[0];
   return firstName;
 }
 
