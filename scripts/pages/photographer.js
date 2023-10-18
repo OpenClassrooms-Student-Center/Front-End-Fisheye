@@ -4,7 +4,7 @@ import {
   mediasTemplate,
 } from "../templates/photographer.js";
 
-async function getDataPhotographers() {
+export async function getDataPhotographers() {
   const dataPhotographers = await fetch("../../data/photographers.json");
   return dataPhotographers.json();
 }
@@ -24,11 +24,11 @@ function displayInfo(photographer) {
   photographerPictureSection.appendChild(userPicture);
 }
 
-function displayMedias(photographerId, medias) {
+function displayMedias(photographer, medias) {
   const sectionMedia = document.querySelector(".media");
 
   medias
-    .filter((media) => media.photographerId == photographerId)
+    .filter((media) => media.photographerId == photographer.id)
     .forEach((media) => {
       const mediaModel = mediasTemplate(media);
       sectionMedia.appendChild(mediaModel);
@@ -56,7 +56,7 @@ async function init() {
   }
 
   displayInfo(photographer);
-  displayMedias(photographer, media);
+  displayMedias(photographer.id, media);
 }
 
 init();

@@ -12,9 +12,9 @@ export class Media {
 
   getMediaCardDom() {
     if (this.#media.video) {
-      new Video(this.#media, this.#photographer).getMediaCardDom();
+      return new Video(this.#media, this.#photographer).getMediaCardDom();
     } else {
-      new Image(this.#media, this.#photographer).getMediaCardDom();
+      return new Image(this.#media, this.#photographer).getMediaCardDom();
     }
   }
 }

@@ -118,12 +118,12 @@ export function getPhotographersMedia(photographer) {
   return firstName;
 }
 
-export function mediasTemplate(data) {
-  const { title, likes, photographerId } = data;
+export function mediasTemplate(photographer, media) {
+  const { title, likes } = media;
 
   const article = document.createElement("article");
 
-  const mediaFactory = new Media(photographerId, data);
+  const mediaFactory = new Media(media, photographer);
   const mediaType = mediaFactory.getMediaCardDom();
 
   const likeIconMedia = "../../assets/icons/like-icon.png";
