@@ -29,17 +29,14 @@ class Image {
   }
 
   getMediaCardDom() {
-    const { title } = this.#media;
+    const { title, image } = this.#media;
 
     const photographerName = getPhotographersMedia(this.#photographer);
-    const imageMedia = `../../assets/medias/${photographerName}/${
-      this.#media.image
-    }`;
+    const imageMedia = `../../assets/medias/${photographerName}/${image}`;
 
     const imageElement = document.createElement("img");
     imageElement.setAttribute("src", imageMedia);
     imageElement.setAttribute("alt", title);
-
     return imageElement;
   }
 }
@@ -54,10 +51,9 @@ class Video {
   }
 
   getMediaCardDom() {
+    const { video } = this.#media;
     const photographerName = getPhotographersMedia(this.#photographer);
-    const videoMedia = `../../assets/medias/${photographerName}/${
-      this.#media.video
-    }`;
+    const videoMedia = `../../assets/medias/${photographerName}/${video}`;
 
     const videoDiv = document.createElement("video");
     const videoElement = document.createElement("source");

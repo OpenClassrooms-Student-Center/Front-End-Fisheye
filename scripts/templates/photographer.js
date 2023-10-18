@@ -118,14 +118,15 @@ export function getPhotographersMedia(photographer) {
   return firstName;
 }
 
-export function mediasTemplate(mediaData, photographer) {
-  const { title, likes } = mediaData;
-  const mediaFactory = new Media(mediaData, photographer).getMediaCardDom();
-  const mediaType = mediaFactory.getMediaCardDom();
-  console.log(mediaData);
-  const likeIconMedia = "../../assets/icons/like-icon.png";
+export function mediasTemplate(data) {
+  const { title, likes, photographerId } = data;
 
   const article = document.createElement("article");
+
+  const mediaFactory = new Media(photographerId, data);
+  const mediaType = mediaFactory.getMediaCardDom();
+
+  const likeIconMedia = "../../assets/icons/like-icon.png";
 
   const divDescription = document.createElement("div");
 
