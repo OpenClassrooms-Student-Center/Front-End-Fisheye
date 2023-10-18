@@ -158,6 +158,7 @@ const createLightboxElements = () => {
     const lightBoxSource = document.createElement('source');
     const lightBoxPrev = document.createElement('i');
     const lightBoxNext = document.createElement('i');
+    const lightBoxXMark = document.createElement('i');
 
     // Adding classes
     lightBoxCotainer.classList.add('lightbox');
@@ -165,6 +166,8 @@ const createLightboxElements = () => {
     lightBoxImage.classList.add('lightbox-image');
     lightBoxPrev.classList.add('fa', 'fa-angle-left', 'light-box-prev');
     lightBoxNext.classList.add('fa', 'fa-angle-right', 'light-box-next');
+    lightBoxXMark.classList.add('fa', 'fa-xmark', 'light-box-remove-btn');
+
 
     // Appending child elements
     lightBoxCotainer.appendChild(lightBoxContent);  
@@ -172,6 +175,7 @@ const createLightboxElements = () => {
     lightBoxContent.appendChild(lightBoxVideo);
     lightBoxContent.appendChild(lightBoxPrev);
     lightBoxContent.appendChild(lightBoxNext);
+    lightBoxContent.appendChild(lightBoxXMark);
 
     document.body.appendChild(lightBoxCotainer);
    
@@ -239,7 +243,7 @@ const createLightboxElements = () => {
         }
     };
 
-    lightBoxCotainer.addEventListener('click', closeLightbox);
+    lightBoxXMark.addEventListener('click', closeLightbox);
 };  
 
 
