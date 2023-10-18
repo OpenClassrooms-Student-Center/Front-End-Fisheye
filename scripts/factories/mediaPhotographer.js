@@ -10,12 +10,12 @@ export class Mediaphotographer {
     const response = await fetch("../../data/photographers.json");
     const data = await response.json();
     const photographer = data.photographers.find(
-      (onePhotographer) => onePhotographer.id === id
+      (onePhotographer) => onePhotographer.id === id,
     );
-    const allMedias = data.media.filter(
-      (dataMediaPhotographer) => dataMediaPhotographer.photographerId === id
+    const medias = data.media.filter(
+      (dataMediaPhotographer) => dataMediaPhotographer.photographerId === id,
     );
-    for (const media of allMedias) {
+    for (const media of medias) {
       this.insertMedias(media, photographer);
       this.totalLikes += media.likes;
     }
@@ -24,46 +24,38 @@ export class Mediaphotographer {
     if (totalLikesElement) {
       totalLikesElement.innerText = this.totalLikes.toString();
     }
-    //Mise en place du système de tri
     const section = document.getElementById("containerCards");
     const select = document.querySelector("#orderSelect");
-    let filteredMedia = [...allMedias];
+
     select.addEventListener("change", async () => {
       const selectedOption = select.options[select.selectedIndex];
       const selectedValue = selectedOption.value;
-      if (selectedValue === "popularity") {
-        section.innerHTML = "";
-        filteredMedia = [...allMedias].sort((a, b) => b.likes - a.likes);
-        filteredMedia.forEach((media) => {
-          this.insertMedias(media, photographer);
-          this.totalLikes += media.likes;
-        });
-      } else if (selectedValue === "date") {
-        section.innerHTML = "";
-        filteredMedia = [...allMedias].sort(
-          (a, b) => new Date(a.date) - new Date(b.date)
-        );
-        filteredMedia.forEach((media) => {
-          this.insertMedias(media, photographer);
-          this.totalLikes += media.likes;
-        });
-      } else if (selectedValue === "title") {
-        section.innerHTML = "";
-        filteredMedia = [...allMedias].sort((a, b) => {
-          if (a.title < b.title) {
-            return -1;
-          }
-          if (a.title > b.title) {
-            return 1;
-          }
-          return 0;
-        });
-        filteredMedia.forEach((media) => {
-          this.insertMedias(media, photographer);
-          this.totalLikes += media.likes;
-        });
+      let filteredMedia;
+
+      switch (selectedValue) {
+        case "popularity":
+          filteredMedia = medias.sort((a, b) => b.likes - a.likes);
+          break;
+
+        case "date":
+          filteredMedia = medias.sort(
+            (a, b) => new Date(a.date) - new Date(b.date),
+          );
+          break;
+
+        case "title":
+          filteredMedia = medias.sort((a, b) => {
+            if (a.title < b.title) return -1;
+            if (a.title > b.title) return 1;
+            return 0;
+          });
       }
+
+      filteredMedia.forEach((element) => {
+        section.insertBefore(document.getElementById(`card-${element.id}`), section.lastChild);
+      });
     });
+
     this.insertHeaderPhotographer(photographer);
   }
 
@@ -81,15 +73,58 @@ export class Mediaphotographer {
              <span aria-label="${city}, ${country}">${city}, ${country}</span>
              <p aria-label="${tagline}">${tagline}</p>
             </div>
-            <div>
+            <div> 
                <button aria-label="Contact me" class="contact_button" onClick="displayModal()" aria-label="Bouton d'ouverture du modal de contact">Contactez-moi</button>
             </div>
             <img src="${picture}" alt="${name}" aria-label="${name}">
             `;
   }
   insertMedias(media, photographer) {
+    const containerCards = document.getElementById("containerCards");
+    const card = document.createElement("div");
+    card.id = `card-${media.id}`
+    let { title, image, id, likes, video } = media;
+    const regexName = /^\w+/; // permets de supprimé le nom de famille de name du fichier json
+    const result = photographer.name.match(regexName)[0];
+    let picture, mediaHtml;
+    if (image?.endsWith(".jpg")) {
+      picture = `assets/images/${result}/${image}`;
+      mediaHtml = `<img lightbox-media=${title} src="${picture}" alt="${title}" tabIndex="0" />`;
+    } else if (video?.endsWith(".mp4")) {
+      picture = `assets/images/${result}/${video}`;
+      mediaHtml = `<video lightbox-media=${title} src="${picture}" tabIndex="0"></video>`;
+    }
+    card.innerHTML = `
+  <div class="card" id="card" >
+    ${mediaHtml}
+    <div class="containerInfos" >
+      <h2>${title}</h2>
+      <div class="containerLikes_i">
+       <span class="totalLikes" id="like-${id}">${likes}</span>
+       <i id="heart-${id}" class="fa-solid fa-heart heart" aria-label="likes" tabIndex="0"></i>
+      </div>
+    </div>
+  </div>
+`;
+    containerCards.append(card);
+    const heartId = document.getElementById(`heart-${id}`);
+    const likeClass = document.getElementById(`like-${id}`);
 
-    const mediaModel = mediasFactory(media, photographer);
-    mediaModel.getMediasCardDOM();
+    heartId.addEventListener("click", () => {
+      const totalLikesElement = document.getElementById("total-likes");
+      if (likeClass.classList.contains("likes")) {
+        // Si l'élément a déjà été "aimé", supprimez le like
+        likeClass.classList.remove("likes");
+        likes -= 1;
+        totalLikesElement.innerText = this.totalLikes -= 1;
+      } else {
+        // Sinon, ajoutez un like
+        likeClass.classList.add("likes");
+        likes += 1;
+        totalLikesElement.innerText = this.totalLikes += 1;
+      }
+      // Mettez à jour le texte de l'élément HTML avec le total des likes
+      likeClass.innerText = likes;
+    });
   }
 }

@@ -4,7 +4,14 @@ export class LightboxFactory {
   modal = null;
   containerImg = null;
   title = null;
-
+  
+  static close() {
+    const lightboxInstance = LightboxFactory.getInstance();
+    if (lightboxInstance) {
+      lightboxInstance._close();
+    }
+  }
+  
   constructor() {
       const lightbox = document.querySelectorAll("[lightbox-media]");
       if (lightbox.length > 0) {
@@ -23,6 +30,8 @@ export class LightboxFactory {
               });
           }
       }
+     
+    
       document.addEventListener("keydown", (event) => {
           if (event.key === "Enter" && event.target.tagName === "IMG"|| event.target.tagName === "VIDEO") {
             const currentElement = event.target;
