@@ -175,20 +175,25 @@ const createLightboxElements = () => {
 
     document.body.appendChild(lightBoxCotainer);
    
-    function showLightBox(mediaIndex, mediaType) {
-     
-        lightBoxCotainer.style.display = 'block';
+    let index = 0;
 
-        const mediaLocation = cards[mediaIndex].children[0];
+    function showLightBox(currentIndex, mediaType) {
+        index = currentIndex;
 
-        if(mediaType === 'img'){
+        if(currentIndex === cards.length) index = 0;  
+        else if (currentIndex < 0) index = cards.length - 1;
+
+        const mediaLocation = cards[index].children[0];
+        const tagName = mediaLocation.tagName === 'IMG' ? 'img' : 'video'
+
+        if(mediaType === 'img' || tagName === 'img'){
 
             lightBoxVideo.style.display = 'none';
             lightBoxImage.style.display = 'block';
 
             lightBoxImage.setAttribute('src',  mediaLocation.getAttribute('src'));
 
-        } else if(mediaType === 'video') {
+        } else if(mediaType === 'video' ||  tagName === 'video') {
 
             lightBoxImage.style.display = 'none';
             lightBoxVideo.style.display = 'block';
@@ -197,23 +202,35 @@ const createLightboxElements = () => {
             lightBoxVideo.autoplay = true;
 
             lightBoxVideo.appendChild(lightBoxSource);
-
             lightBoxSource.setAttribute('src', mediaLocation.children[0].getAttribute('src'));
-        } 
+        }
+
+        lightBoxCotainer.style.display = 'block';
     };
 
 
     function currentImage(event) {
         const mediaType = event.target.localName;   
-        const mediaIndex = parseInt(this.parentElement.getAttribute('data-index'));
+        const currentIndex = parseInt(this.parentElement.getAttribute('data-index'));
 
-        showLightBox(mediaIndex, mediaType);
+        showLightBox(currentIndex, mediaType);
     };
 
     // Openning lightbox on clikc
     Array.from(cards).forEach(card => {
         card.children[0].addEventListener('click', currentImage);
     })
+
+
+    // Next and previous buttons area
+    function sliderImage(currentIndex) { showLightBox(index + currentIndex) };
+
+    function prevImage() { sliderImage(-1)};
+    function nextImage() { sliderImage(1)};
+
+    lightBoxPrev.addEventListener('click', prevImage);
+    lightBoxNext.addEventListener('click', nextImage);
+
 
     // Closing lightBox
     function closeLightbox(event) {
