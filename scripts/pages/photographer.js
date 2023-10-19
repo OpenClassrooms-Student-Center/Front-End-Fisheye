@@ -35,10 +35,9 @@ const setPhotograperHeader = (name, city, country, tagline, portrait) => {
 
 
 let totalLikes = 0;
-let cardIndex = 0;
 
 // Creates factory pattern
-const mediaFactory = (object, name) => {  
+const mediaFactory = (object, name, cardIndex) => {  
 
     const media = {
         title: object.title,
@@ -77,8 +76,10 @@ const callFactoryFunction = (filteredPhotographerMedia, name) => {
     const photographerMedia = document.querySelector(".galary-wrapper");
     photographerMedia.replaceChildren();
 
+    let cardIndex = 0;
+
     filteredPhotographerMedia.forEach(media =>{ 
-        photographerMedia.innerHTML += mediaFactory(media, name).createMedia();
+        photographerMedia.innerHTML += mediaFactory(media, name, cardIndex++).createMedia();
     });
 };
 
@@ -143,6 +144,7 @@ const sortingMedia = (filteredPhotographerMedia, name) => {
             });
         // console.log(sortedPhotographerMedia);
         callFactoryFunction(sortedPhotographerMedia, name);
+        createLightboxElements();
     });
 };
 
