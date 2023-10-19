@@ -195,7 +195,7 @@ const createLightboxElements = () => {
         const titleLocation = cards[index].children[1].children[0].textContent;
 
         lightBoxH2.innerHTML = titleLocation;
-
+        
         const tagName = mediaLocation.tagName === 'IMG' ? 'img' : 'video'
 
         if(mediaType === 'img' || tagName === 'img'){
@@ -252,8 +252,43 @@ const createLightboxElements = () => {
     };
 
     lightBoxXMark.addEventListener('click', closeLightbox);
-};  
+};
 
+
+// Handles form inuts
+const handleFormSubmit = (photograperName) => {
+    const formContact =  document.getElementById('form-contact');
+    const firstName = document.getElementById('firstName');
+    const lastName = document.getElementById('lastName');
+    const email = document.getElementById('email');
+    const message = document.getElementById('message');
+    
+    let headerElement = formContact.parentElement.firstElementChild;
+    let formTitleContent = headerElement.firstElementChild;
+
+    formTitleContent.textContent += ' ' + photograperName;
+    
+    formContact.addEventListener('submit', (event) => {
+        event.preventDefault();
+        
+        const formData = {
+           [firstName.name]: firstName.value,
+           [lastName.name]: lastName.value,
+           [email.name]: email.value,
+           [message.name]: message.value
+        };
+
+        // const formData = new FormData(formContact, document.querySelector('.contact_button'));
+
+    //     const f = !Object.values(formData).every(value => !!value);
+    //    if(f) return ''
+    //    else event.target.reset();
+        console.log(formData)   
+        
+        event.target.reset();
+        formContact.style.display = 'none';
+    });
+};
 
 // inits photograper
 const initPhotographer = async () => {
@@ -266,6 +301,7 @@ const initPhotographer = async () => {
     addTotalLikesAndPricingInfo(price);
     sortingMedia(filteredPhotographerMedia, name);
     createLightboxElements();
+    handleFormSubmit(name);
 };
 initPhotographer();
 
