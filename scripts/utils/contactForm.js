@@ -10,18 +10,6 @@ const contactBtn = document.querySelector(".contact-open");
 
 //Display functions
 
-function displayName(photographerId) {
-  //HTML
-  const namePhotographer = document.createElement("p");
-  namePhotographer.innerText = photographerId;
-  namePhotographer.className = "photograph-name";
-
-  modalHeader.appendChild(title);
-  modalHeader.appendChild(namePhotographer);
-
-  return modalHeader;
-}
-
 function displayModal() {
   /*const { photographers } = await getDataPhotographers();*/
 
@@ -42,9 +30,28 @@ function closeModal() {
 async function getPhotographerName() {
   const { photographers } = await getInfoPhotographers();
 
-  displayName(photographers.name);
-  console.log(
-    "Ce que correspond photographers.name dans displayName :",
-    displayName()
-  );
+  const param = new URLSearchParams(document.location.search);
+  const id = param.get("id");
+  let photographer;
+
+  if (!id) {
+    console.error("missing id parameter");
+    return;
+  }
+
+  for (let i = 0; i < photographers.length; i++) {
+    if (photographers[i].id == id) {
+      photographer = photographers[i];
+    }
+  }
+
+  const namePhotographer = document.createElement("p");
+
+  namePhotographer.innerText = photographer.name;
+  namePhotographer.className = "photograph-name";
+
+  modalHeader.appendChild(title);
+  modalHeader.appendChild(namePhotographer);
+
+  return modalHeader;
 }
