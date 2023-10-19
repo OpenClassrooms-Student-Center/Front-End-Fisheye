@@ -28,11 +28,11 @@
 
 .contact_button {
     font-size: 20px;
-    font-weight: bold;
+    font-weight: 500;
     color: white;
-    padding: 11px;
+    padding: 5px;
     width: 170px;
-    height: 70px;
+    height: 55px;
     border: none;
     background-color: #901C1C;
     border-radius: 5px;
@@ -42,7 +42,6 @@
 .photograph-header img {
     height: 180px;
     width: 180px;
-    /* margin-bottom: 20px; */
     border-radius: 50%;
     object-fit: cover;
 }
@@ -50,10 +49,10 @@
 .photograph-galary {
     margin: 2rem 0;
     width: 100%;
-    /* background-color: aqua; */
 }
 
-/* --------------------------------------  */
+
+/*********** Sorting area ***********/
 .photograph-sorting {
     display: flex;
     justify-content: space-between;
@@ -76,7 +75,6 @@
     font-size: 1rem;
     background-color: #901C1C;
     color: #fff;
-    /* font-weight: 700; */
     border: none;
     appearance: none;
     outline: none;
@@ -88,9 +86,9 @@
     border-bottom: 1px;
 } */
 
-/* --------------------------------------  */
+
+/*********** Media galary area ***********/
 .galary-wrapper {
-    /* position: relative; */
     width: 100%;
 }
 
@@ -111,7 +109,6 @@
     border-radius: 10px;
     object-fit: cover;
     cursor: pointer;
-    /* object-position: top; */
 }
 
 .photograph-galary .card img:hover,
@@ -139,8 +136,8 @@
     bottom: 0;
 }
 
-/* Lightbox section */
 
+/********** Lightbox section **********/
 .lightbox {
     display: none;
     background-color: rgba(2, 26, 52, 0.6);
@@ -191,7 +188,8 @@
     right: -40px;
 }
 
-/* Modal section */
+
+/*********** Modal section ***********/
 #contact_modal {
     display: none;
 }
@@ -199,13 +197,17 @@
 .modal {
     border-radius: 5px;
     background-color: #DB8876;
-    width: 50%;
+    width: 40%;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: space-between;
-    padding: 35px;
+    padding: 30px;
     margin: auto;
+    position: fixed;
+    top: 50vh;
+    left: 50%;
+    transform: translate(-50%, -50%);
 }
 
 .modal header {
@@ -215,10 +217,11 @@
 
 .modal header img {
     cursor: pointer;
+    width: 25px;
 }
 
 .modal header h2 {
-    font-size: 64px;
+    font-size: 2rem;
     font-weight: normal;
     text-align: center;
 }
@@ -232,7 +235,7 @@ form {
 
 form label {
     color: #312E2E;
-    font-size: 36px;
+    font-size: 1.2rem;
 }
 
 form div {
@@ -243,9 +246,14 @@ form div {
     margin-bottom: 26px;
 }
 
-form input {
+form input, form textarea {
     width: 100%;
-    height: 68px;
+    height: 50PX;
     border: none;
     border-radius: 5px;
+}
+
+form textarea {
+    min-height: 110px;
+    max-height: 140px;
 }

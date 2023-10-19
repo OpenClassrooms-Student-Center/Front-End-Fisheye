@@ -46,9 +46,21 @@
 					<img src="assets/icons/close.svg" onclick="closeModal()" />
 				</header>
 				<form>
-					<div>
-						<label>Prénom</label>
-						<input />
+					<div class="form-group">
+						<label for="firstName">Prénom</label>
+						<input type="text" id="firstName" name="firstname" />
+					</div>
+					<div class="form-group">
+						<label for="lasstName">Nom</label>
+						<input type="text" id="lasstName" name="lastname" />
+					</div>
+					<div class="form-group">
+						<label for="email">Email</label>
+						<input type="email" id="email" name="email" />
+					</div>
+					<div class="form-group">
+						<label for="message">Message</label>
+						<textarea id="message" name="message"></textarea>
 					</div>
 					<button class="contact_button">Envoyer</button>
 				</form>
