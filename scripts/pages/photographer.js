@@ -1,9 +1,12 @@
+//Imports
+
 import {
   photographInfoTemplate,
   photographPicture,
   mediasTemplate,
 } from "../templates/photographer.js";
 
+//JSON Datas
 export async function getDataPhotographers() {
   const dataPhotographers = await fetch("../../data/photographers.json");
   return dataPhotographers.json();
@@ -33,11 +36,12 @@ function displayMedias(photographer, medias) {
       const mediaModel = mediasTemplate(photographer, media);
       sectionMedia.appendChild(mediaModel);
     });
+  return sectionMedia;
 }
+//Function init
 
 async function init() {
-  // Récupère les datas des photographes selon leur id
-
+  // JSON DATAS
   const { photographers, media } = await getDataPhotographers();
 
   const param = new URLSearchParams(document.location.search);

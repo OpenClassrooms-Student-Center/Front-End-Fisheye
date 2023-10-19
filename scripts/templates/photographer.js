@@ -1,11 +1,15 @@
-import { Media } from "./mediaFactory.js";
-import { getDataPhotographers } from "../pages/photographer.js";
+///////////////////////////////////Imports
 
-export function photographerTemplate(data) {
-  // Récupération des datas JSON
-  const { name, id, city, country, tagline, price, portrait } = data;
+import { Media } from "./mediaFactory.js";
+
+///////////////////////////////////Template photographers for index.html
+
+export function photographerTemplate(photographers) {
+  // Datas JSON
+  const { name, id, city, country, tagline, price, portrait } = photographers;
   const picture = `assets/photographers/${portrait}`;
 
+  //HTML creation
   function getUserCardDOM() {
     const article = document.createElement("article");
 
@@ -25,19 +29,19 @@ export function photographerTemplate(data) {
     img.className = "photograph-photo";
 
     const h2 = document.createElement("h2");
-    h2.textContent = data.name;
+    h2.textContent = photographers.name;
     h2.className = "photograph-name";
 
     const location = document.createElement("p");
-    location.textContent = `${data.city}, ${data.country}`;
+    location.textContent = `${photographers.city}, ${photographers.country}`;
     location.className = "photograph-location";
 
     const taglineElement = document.createElement("p");
-    taglineElement.textContent = data.tagline;
+    taglineElement.textContent = photographers.tagline;
     taglineElement.className = "photograph-tagline";
 
     const priceElement = document.createElement("p");
-    priceElement.textContent = `${data.price}€/jour`;
+    priceElement.textContent = `${photographers.price}€/jour`;
     priceElement.className = "photograph-price";
 
     article.appendChild(linkPagePhotographer);
@@ -61,10 +65,10 @@ export function photographerTemplate(data) {
   };
 }
 
-// ----Récupération des datas pour les pages photographes----//
+///////////////////////////////////Displays and template for photographer header
 
-export function photographInfoTemplate(data) {
-  const { name, city, country, tagline } = data;
+export function photographInfoTemplate(dataPhotographers) {
+  const { name, city, country, tagline } = dataPhotographers;
 
   function getUserInfoDOM() {
     const article = document.createElement("article");
@@ -75,7 +79,7 @@ export function photographInfoTemplate(data) {
     h1.innerText = name;
     h1.className = "photograph-name";
 
-    location.textContent = `${data.city}, ${data.country}`;
+    location.textContent = `${dataPhotographers.city}, ${dataPhotographers.country}`;
     location.className = "photograph-location";
 
     taglineElement.innerText = tagline;
@@ -95,8 +99,8 @@ export function photographInfoTemplate(data) {
   };
 }
 
-export function photographPicture(data) {
-  const { portrait } = data;
+export function photographPicture(dataPhotographers) {
+  const { portrait } = dataPhotographers;
   const picture = `assets/photographers/${portrait}`;
 
   function getUserPicture() {
@@ -112,15 +116,7 @@ export function photographPicture(data) {
   return { picture, getUserPicture };
 }
 
-/// //////////////MediasTemplate
-
-export async function getPhotographersMedia(photographerId) {
-  const { photographers } = await getDataPhotographers();
-  photographerId = photographers;
-
-  const firstName = photographerId.name.split(" ")[0];
-  return firstName;
-}
+///////////////////////////////////Medias display and template
 
 export function mediasTemplate(photographer, media) {
   const { title, likes } = media;
@@ -150,5 +146,11 @@ export function mediasTemplate(photographer, media) {
   divDescription.appendChild(likesElement);
   divDescription.appendChild(likesIcon);
 
-  return article;
+  return { article };
+}
+
+///////// Function to get the first name of each photographers and displaying it correctly in the factory
+export function getPhotographersMedia(photographer) {
+  const firstName = photographer.name.split(" ")[0];
+  return firstName;
 }
