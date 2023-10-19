@@ -158,6 +158,7 @@ const createLightboxElements = () => {
     const lightBoxImage = document.createElement('img');
     const lightBoxVideo = document.createElement('video');
     const lightBoxSource = document.createElement('source');
+    const lightBoxH2 = document.createElement('h2');
     const lightBoxPrev = document.createElement('i');
     const lightBoxNext = document.createElement('i');
     const lightBoxXMark = document.createElement('i');
@@ -175,6 +176,7 @@ const createLightboxElements = () => {
     lightBoxCotainer.appendChild(lightBoxContent);  
     lightBoxContent.appendChild(lightBoxImage);
     lightBoxContent.appendChild(lightBoxVideo);
+    lightBoxContent.appendChild(lightBoxH2);
     lightBoxContent.appendChild(lightBoxPrev);
     lightBoxContent.appendChild(lightBoxNext);
     lightBoxContent.appendChild(lightBoxXMark);
@@ -190,6 +192,10 @@ const createLightboxElements = () => {
         else if (currentIndex < 0) index = cards.length - 1;
 
         const mediaLocation = cards[index].children[0];
+        const titleLocation = cards[index].children[1].children[0].textContent;
+
+        lightBoxH2.innerHTML = titleLocation;
+
         const tagName = mediaLocation.tagName === 'IMG' ? 'img' : 'video'
 
         if(mediaType === 'img' || tagName === 'img'){
