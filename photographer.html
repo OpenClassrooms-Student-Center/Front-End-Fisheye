@@ -19,7 +19,11 @@
     <main id="main">
       <section class="photograph-header">
         <div class="photograph-info"></div>
-        <button class="contact_button" onclick="displayModal()">
+        <button
+          class="contact_button"
+          id="contact-open"
+          onclick="displayModal()"
+        >
           Contactez-moi
         </button>
         <div class="photograph-profilephoto"></div>
@@ -28,22 +32,17 @@
     </main>
     <div id="contact_modal">
       <div class="modal">
-        <header>
-          <h2>Contactez-moi</h2>
+        <header class="modal-header">
+          <h2 class="modal-title">Contactez-moi</h2>
           <img src="assets/icons/close.svg" onclick="closeModal()" />
         </header>
         <form>
           <div>
             <label for="first">Prénom</label>
-            <input
-              class="contact-form"
-              type="text"
-              id="firstname"
-              name="first"
-            />
+            <input class="contact-form" type="text" id="first" name="first" />
 
             <label for="last">Nom</label>
-            <input class="contact-form" type="text" id="lastname" name="last" />
+            <input class="contact-form" type="text" id="last" name="last" />
 
             <label for="email">Email</label>
             <input class="contact-form" type="email" id="email" name="email" />
