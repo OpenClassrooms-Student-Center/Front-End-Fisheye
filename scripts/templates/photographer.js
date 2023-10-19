@@ -114,11 +114,11 @@ export function photographPicture(data) {
 
 /// //////////////MediasTemplate
 
-export async function getPhotographersMedia(photographerData) {
+export async function getPhotographersMedia(photographerId) {
   const { photographers } = await getDataPhotographers();
-  photographerData = photographers;
+  photographerId = photographers;
 
-  const firstName = photographerData.name.split(" ")[0];
+  const firstName = photographerId.name.split(" ")[0];
   return firstName;
 }
 

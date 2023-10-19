@@ -30,7 +30,7 @@ function displayMedias(photographer, medias) {
   medias
     .filter((media) => media.photographerId == photographer.id)
     .forEach((media) => {
-      const mediaModel = mediasTemplate(media);
+      const mediaModel = mediasTemplate(photographer, media);
       sectionMedia.appendChild(mediaModel);
     });
 }
