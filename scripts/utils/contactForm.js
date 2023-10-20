@@ -6,6 +6,7 @@ async function getInfoPhotographers() {
 //Dom elements
 const modalHeader = document.querySelector(".modal-header");
 const title = document.querySelector(".modal-title");
+const closeModalBtn = document.querySelector(".close-modal");
 const contactBtn = document.querySelector(".contact-open");
 
 //Display functions
@@ -45,13 +46,17 @@ async function getPhotographerName() {
     }
   }
 
+  const container = document.createElement("div");
+  container.className = "container-contact";
+
   const namePhotographer = document.createElement("p");
-
   namePhotographer.innerText = photographer.name;
-  namePhotographer.className = "photograph-name";
+  namePhotographer.className = "contact-photograph-name";
 
-  modalHeader.appendChild(title);
-  modalHeader.appendChild(namePhotographer);
+  modalHeader.appendChild(container);
+  container.appendChild(title);
+  container.appendChild(namePhotographer);
+  modalHeader.appendChild(closeModalBtn);
 
   return modalHeader;
 }
