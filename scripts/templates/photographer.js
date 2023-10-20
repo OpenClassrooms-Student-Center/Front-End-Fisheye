@@ -1,6 +1,5 @@
 ///////////////////////////////////Imports
 
-import { getDataPhotographers } from "../pages/photographer.js";
 import { Media } from "./mediaFactory.js";
 
 ///////////////////////////////////Template photographers for index.html
@@ -147,20 +146,5 @@ export function mediasTemplate(photographer, media) {
   divDescription.appendChild(likesElement);
   divDescription.appendChild(likesIcon);
 
-  return { article };
-}
-
-///////// Function to get the first name of each photographers and displaying it correctly in the factory
-export async function getPhotographersMedia(photographerIdentity) {
-  const { photographers } = await getDataPhotographers();
-  const { id } = photographerIdentity;
-
-  for (let i = 0; i < photographers.length; i++) {
-    if (photographers[i].id == id) {
-      photographerIdentity = photographers[i];
-    }
-  }
-
-  const firstName = photographers.name.split(" ")[0];
-  return firstName;
+  return article;
 }

@@ -1,5 +1,4 @@
 /// // Factory method for medias
-import { getPhotographersMedia } from "./photographer.js";
 
 export class Media {
   #media;
@@ -31,7 +30,7 @@ class Image {
   getMediaCardDom() {
     const { title, image } = this.#media;
 
-    const photographerName = getPhotographersMedia(this.#photographer);
+    const photographerName = this.#photographer.name.split(" ")[0];
     const imageMedia = `../../assets/medias/${photographerName}/${image}`;
 
     const imageElement = document.createElement("img");
@@ -52,7 +51,7 @@ class Video {
 
   getMediaCardDom() {
     const { video } = this.#media;
-    const photographerName = getPhotographersMedia(this.#photographer);
+    const photographerName = this.#photographer.name.split(" ")[0];
     const videoMedia = `../../assets/medias/${photographerName}/${video}`;
 
     const videoDiv = document.createElement("video");

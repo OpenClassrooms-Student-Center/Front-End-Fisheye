@@ -31,7 +31,7 @@ function displayMedias(photographer, medias) {
   const sectionMedia = document.querySelector(".media");
 
   medias
-    .filter((media) => media.photographerId == photographer)
+    .filter((media) => media.photographerId == photographer.id)
     .forEach((media) => {
       const mediaModel = mediasTemplate(photographer, media);
       sectionMedia.appendChild(mediaModel);
@@ -60,7 +60,7 @@ async function init() {
   }
 
   displayInfo(photographer);
-  displayMedias(photographers, media);
+  displayMedias(photographer, media);
 }
 
 init();
