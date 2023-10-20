@@ -42,7 +42,7 @@ getPhotographerName();
 
 //Dom elements
 
-const bodyHidden = document.querySelector(".overflow-hidden");
+const bodyPhotographer = document.querySelector(".body-photographer");
 const modal = document.getElementById("contact_modal");
 const modalHeader = document.querySelector(".modal-header");
 const title = document.querySelector(".modal-title");
@@ -54,12 +54,12 @@ const sendBtn = document.getElementById("send-contact");
 
 function displayModal() {
   modal.style.display = "flex";
-  bodyHidden.style.overflow = "hidden";
+  bodyPhotographer.classList.add("overflow-hidden");
 }
 
 function closeModal() {
   modal.style.display = "none";
-  bodyHidden.style.overflow = "none";
+  bodyPhotographer.classList.remove("overflow-hidden");
 }
 
 //Launch modal

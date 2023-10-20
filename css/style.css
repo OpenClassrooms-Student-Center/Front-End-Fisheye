@@ -1,6 +1,10 @@
 @import url("photographer.css");
 @import url("contactform.css");
 
+.overflow-hidden {
+  overflow: hidden;
+}
+
 body {
   font-family: "DM Sans", sans-serif;
   margin: 0;
