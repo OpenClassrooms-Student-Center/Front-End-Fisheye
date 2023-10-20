@@ -12,20 +12,14 @@
     <title>Fisheye - photographe</title>
   </head>
 
-  <body>
+  <body class="overflow-hidden">
     <header>
       <a href="index.html"><img src="assets/images/logo.png" class="logo" /></a>
     </header>
     <main id="main">
       <section class="photograph-header">
         <div class="photograph-info"></div>
-        <button
-          class="contact_button"
-          id="contact-open"
-          onclick="displayModal()"
-        >
-          Contactez-moi
-        </button>
+        <button class="contact_button" id="contact-open">Contactez-moi</button>
         <div class="photograph-profilephoto"></div>
       </section>
       <section class="media"></section>
@@ -34,11 +28,7 @@
       <div class="modal">
         <header class="modal-header">
           <h2 class="modal-title">Contactez-moi</h2>
-          <img
-            class="close-modal"
-            src="assets/icons/close.svg"
-            onclick="closeModal()"
-          />
+          <img class="close-modal" src="assets/icons/close.svg" />
         </header>
         <form>
           <div>
@@ -59,7 +49,7 @@
               name="message"
             />
           </div>
-          <button class="contact_button">Envoyer</button>
+          <button class="contact_button" id="send-contact">Envoyer</button>
         </form>
       </div>
     </div>

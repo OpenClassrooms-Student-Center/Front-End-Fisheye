@@ -1,33 +1,10 @@
+//Datas//
 async function getInfoPhotographers() {
   const dataPhotographers = await fetch("../../data/photographers.json");
   return dataPhotographers.json();
 }
 
-//Dom elements
-const modalHeader = document.querySelector(".modal-header");
-const title = document.querySelector(".modal-title");
-const closeModalBtn = document.querySelector(".close-modal");
-const contactBtn = document.querySelector(".contact-open");
-
-//Display functions
-
-function displayModal() {
-  /*const { photographers } = await getDataPhotographers();*/
-
-  const modal = document.getElementById("contact_modal");
-  modal.style.display = "block";
-  getPhotographerName();
-}
-
-function closeModal() {
-  const modal = document.getElementById("contact_modal");
-  modal.style.display = "none";
-}
-
-// Template by photographers
-
-//Datas//
-
+// contact template modified to match the photographer name
 async function getPhotographerName() {
   const { photographers } = await getInfoPhotographers();
 
@@ -59,4 +36,45 @@ async function getPhotographerName() {
   modalHeader.appendChild(closeModalBtn);
 
   return modalHeader;
+}
+
+getPhotographerName();
+
+//Dom elements
+
+const bodyHidden = document.querySelector(".overflow-hidden");
+const modal = document.getElementById("contact_modal");
+const modalHeader = document.querySelector(".modal-header");
+const title = document.querySelector(".modal-title");
+const closeModalBtn = document.querySelector(".close-modal");
+const contactBtn = document.getElementById("contact-open");
+const sendBtn = document.getElementById("send-contact");
+
+//Display functions
+
+function displayModal() {
+  modal.style.display = "flex";
+  bodyHidden.style.overflow = "hidden";
+}
+
+function closeModal() {
+  modal.style.display = "none";
+  bodyHidden.style.overflow = "none";
+}
+
+//Launch modal
+contactBtn.addEventListener("click", displayModal);
+
+//Close modal
+closeModalBtn.addEventListener("click", closeModal);
+
+//Submit form
+sendBtn.addEventListener("click", submitForm);
+
+///submit form
+
+function submitForm(event) {
+  event.preventDefault();
+  closeModal();
+  alert("Your message has been sent");
 }
