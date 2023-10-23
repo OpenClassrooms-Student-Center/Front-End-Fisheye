@@ -24,13 +24,13 @@ class PhotographerWork {
       mediaImg.classList.add(`media-img-${media.id}`);
 
       //append to link
-      const portraitElement = document.createElement("img");
+      const imageElement = document.createElement("img");
       if (media.image) {
         mediaTypeElement.innerHTML = "Type: Image";
 
         const imagePath = `assets/images/${photographer.name}/${media.image}`;
-        portraitElement.src = imagePath;
-        portraitElement.alt = `${photographer.name}`;
+        imageElement.src = imagePath;
+        imageElement.alt = `${photographer.name}`;
       } else if (media.video) {
         mediaTypeElement.innerHTML = "Type: Video";
         // Construct the path to the video using the correct folder structure
@@ -77,7 +77,7 @@ class PhotographerWork {
 
       // Add the media details container to the media container
       mediaContainer.appendChild(mediaImg);
-      mediaImg.appendChild(portraitElement);
+      mediaImg.appendChild(imageElement);
       mediaContainer.appendChild(mediaDetails);
       mediaContainer.appendChild(mediaDetails);
       mediaDetails.appendChild(mediaLikeContainer);
