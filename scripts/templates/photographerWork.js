@@ -9,7 +9,8 @@ class PhotographerWork {
   }
 
   createPhotographerWork(photographer, media, lightbox) {
-    console.log("lightbox", lightbox);
+    console.log("lightboxWork", lightbox);
+
     media.forEach((media) => {
       const mediasWrapper = document.querySelector("#medias-wrapper");
 
@@ -62,7 +63,7 @@ class PhotographerWork {
         imageElement.onclick = onOpenPic;
         imageElement.addEventListener("click", () => {
           // Create a new Lightbox instance with the clicked media
-          const lightbox = new Lightbox(media);
+          const lightbox = new Lightbox(media, photographer);
 
           // Call a method to open the lightbox (you need to implement this in the Lightbox class)
           lightbox.createLightbox(media, photographer, lightbox);

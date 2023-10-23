@@ -1,15 +1,13 @@
 class Lightbox {
-  constructor(media, photographer, lightbox) {
+  constructor(media, photographer) {
     this._media = media;
     this._photographer = photographer;
-    this._lightbox = lightbox;
-    this._currentIndex = 0; // Initialize with the first image (index 0)
   }
-  createLightbox(media, photographer, lightbox) {
-    console.log("lightbox", lightbox);
+  createLightbox(media, photographer) {
     const imagePath = `assets/images/${photographer.name}/${media.image}`;
 
     const modalContent = document.querySelector("#modalContent");
+    modalContent.classList.add("mx-auto", "my-0", "mySlides");
 
     // Find and remove the old mediaTitleElement and mediaImageElement
     const oldMediaTitleElement = modalContent.querySelector("h2");
