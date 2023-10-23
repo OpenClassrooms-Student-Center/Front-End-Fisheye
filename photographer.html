@@ -12,36 +12,47 @@
     <title>Fisheye - photographe</title>
   </head>
 
-  <body>
+  <body class="body-photographer">
     <header>
       <a href="index.html"><img src="assets/images/logo.png" class="logo" /></a>
     </header>
     <main id="main">
       <section class="photograph-header">
         <div class="photograph-info"></div>
-        <button class="contact_button" onclick="displayModal()">
-          Contactez-moi
-        </button>
+        <button class="contact_button" id="contact-open">Contactez-moi</button>
         <div class="photograph-profilephoto"></div>
       </section>
       <section class="media"></section>
     </main>
     <div id="contact_modal">
       <div class="modal">
-        <header>
-          <h2>Contactez-moi</h2>
-          <img src="assets/icons/close.svg" onclick="closeModal()" />
+        <header class="modal-header">
+          <h2 class="modal-title">Contactez-moi</h2>
+          <img class="close-modal" src="assets/icons/close.svg" />
         </header>
         <form>
           <div>
-            <label>Prénom</label>
-            <input />
+            <label for="first">Prénom</label>
+            <input class="contact-form" type="text" id="first" name="first" />
+
+            <label for="last">Nom</label>
+            <input class="contact-form" type="text" id="last" name="last" />
+
+            <label for="email">Email</label>
+            <input class="contact-form" type="email" id="email" name="email" />
+
+            <label for="message">Votre message</label>
+            <input
+              class="contact-form"
+              type="text"
+              id="message"
+              name="message"
+            />
           </div>
-          <button class="contact_button">Envoyer</button>
+          <button class="contact_button" id="send-contact">Envoyer</button>
         </form>
       </div>
     </div>
-
     <script src="/scripts/pages/photographer.js" type="module"></script>
     <script src="/scripts/utils/contactForm.js"></script>
   </body>
