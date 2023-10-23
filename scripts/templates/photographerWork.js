@@ -27,6 +27,7 @@ class PhotographerWork {
       const portraitElement = document.createElement("img");
       if (media.image) {
         mediaTypeElement.innerHTML = "Type: Image";
+
         const imagePath = `assets/images/${photographer.name}/${media.image}`;
         portraitElement.src = imagePath;
         portraitElement.alt = `${photographer.name}`;
