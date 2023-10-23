@@ -1,4 +1,5 @@
 function contactSend() {
+    // Afficher les résultats du formulaire Contact
     const prenom = document.querySelector("#contact-prenom");
     const nom = document.querySelector("#contact-nom");
     const mail = document.querySelector("#contact-email");

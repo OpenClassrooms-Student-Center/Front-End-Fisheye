@@ -1,3 +1,4 @@
+// Affiche les photographes
 function photographerTemplate(data) {
     const { id, name, portrait, city, country, tagline, price } = data;
 

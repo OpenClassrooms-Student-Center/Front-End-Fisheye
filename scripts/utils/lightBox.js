@@ -15,6 +15,7 @@ function slide(n) {
 }
 
 function nextSlide() {
+    // Liste des médias
     const slides = document.querySelectorAll(".cardMedia");
     if (indexSlide === slides.length - 1) {
         showSlide(indexSlide = 0);
@@ -24,6 +25,7 @@ function nextSlide() {
 }
 
 function prevSlide() {
+    // Liste des médias
     const slides = document.querySelectorAll(".cardMedia");
     if (indexSlide === 0) {
         showSlide(indexSlide = slides.length - 1);
@@ -32,13 +34,32 @@ function prevSlide() {
     }
 }
 
+// Navigation avec le clavier
+window.addEventListener(
+    "keydown",
+    (event) => {
+        if (event.key === "ArrowLeft") {
+            prevSlide();
+        }
+
+        if (event.key === "ArrowRight") {
+            nextSlide();
+        }
+
+        event.preventDefault();
+    },
+    true,
+);
 
 function showSlide(n) {
+    // Liste des médias
     const slides = document.querySelectorAll(".cardMedia");
 
     slideDOM(slides[n]);
 }
 
+
+// Créer de l'affichage
 function slideDOM(slide) {
     const lightboxContainer = document.querySelector(".lightbox-container");
 
@@ -49,12 +70,14 @@ function slideDOM(slide) {
     let img;
     let mp4;
 
+    // Si l'élément est une image
     if (image) {
         img = document.createElement('img');
         img.setAttribute("src", image.attributes.src.nodeValue);
         img.setAttribute("alt", titre);
     }
 
+    // Si l'élément est une vidéo
     if (video) {
         mp4 = document.createElement('video');
         mp4.src = video.attributes.src.nodeValue;
@@ -68,7 +91,6 @@ function slideDOM(slide) {
     let title = document.createElement('h2');
     title.innerHTML = titre;
 
-
     if (image) {
         div.appendChild(img);
     }
@@ -77,6 +99,7 @@ function slideDOM(slide) {
     }
     div.appendChild(title);
 
+    // Ajout des éléments sur la lightbox
     lightboxContainer.replaceChildren(div);
 }
 

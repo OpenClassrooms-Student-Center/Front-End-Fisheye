@@ -1,3 +1,4 @@
+// Affichage Card user detail
 function detailUserTemplate(data) {
     const { id, name, portrait, city, country, tagline } = data;
 
@@ -35,6 +36,7 @@ function detailUserTemplate(data) {
     return { name, picture, getDetailDOM }
 }
 
+// Affichage média
 function detailMediaTemplate(data, index) {
     const { id, image, video, title, date, likes } = data;
 
@@ -104,6 +106,7 @@ function detailMediaTemplate(data, index) {
     return { name, image, getMediaDOM}
 }
 
+// Affichage case like et prix
 function detailTemplate(totalLikes, tarif) {
     const photographersDetail = document.querySelector(".photograph-detail");
     const divLikes = document.createElement('div');
