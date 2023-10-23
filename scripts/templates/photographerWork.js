@@ -53,7 +53,7 @@ class PhotographerWork {
         imageElement.src = imagePath;
         imageElement.alt = media.title;
         imageElement.setAttribute("id", `media-${media.id}`);
-        console.log("imageElement", imageElement);
+        // console.log("imageElement", imageElement);
         imageElement.onclick = onOpenPic;
 
         // Append the image element to the mediaImg container
