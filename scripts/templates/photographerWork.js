@@ -7,6 +7,7 @@ class PhotographerWork {
   }
 
   createPhotographerWork(photographer, media) {
+    // Render lightbox
     media.forEach((media) => {
       const mediaTypeElement = document.createElement("p");
 
@@ -17,7 +18,7 @@ class PhotographerWork {
 
       // Create a container for media details
       const mediaImg = document.createElement("a");
-      mediaImg.classList.add(`media-img-${media.id}`);
+      mediaImg.classList.add(`media-${media.id}`);
 
       const mediaDetails = document.createElement("div");
       mediaDetails.classList.add("media-details");
@@ -51,7 +52,8 @@ class PhotographerWork {
         const imageElement = document.createElement("img");
         imageElement.src = imagePath;
         imageElement.alt = media.title;
-        imageElement.setAttribute("id", `media-img-${media.id}`);
+        imageElement.setAttribute("id", `media-${media.id}`);
+        console.log("imageElement", imageElement);
         imageElement.onclick = onOpenPic;
 
         // Append the image element to the mediaImg container
@@ -64,6 +66,9 @@ class PhotographerWork {
         // Create a <video> element for displaying the video
         const videoElement = document.createElement("video");
         videoElement.src = videoPath;
+        // videoElement.src = media.title;
+        // videoElement.setAttribute("id", `media-video-${media.id}`);
+        // console.log("videoElement", videoElement);
         videoElement.controls = true;
 
         // Append the video element to the mediaImg container

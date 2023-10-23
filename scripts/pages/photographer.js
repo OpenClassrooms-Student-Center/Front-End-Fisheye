@@ -18,9 +18,7 @@ class PhotographerPages {
       document.querySelector("#photograph-header");
 
     this.photographerWorkWrapper = document.querySelector("#medias-wrapper");
-    this.lightboxWrapper = document.querySelector("#modal-content");
-
-    // this.lightboxWrapper = document.querySelector("#test");
+    this.lightboxWrapper = document.querySelector("#modal-wrapper");
 
     this.photographersApi = new PhotographersApi(
       "../../data/photographers.json"
@@ -44,15 +42,6 @@ class PhotographerPages {
       );
       return mediasDataFiltered;
     };
-
-    // this.lightbox = async () => {
-    //   const lightboxData = await this.mediasApi.getMedias();
-    //   lightboxData.map((media) => new Lightbox(media));
-    //   const lightboxDataFiltered = lightboxData.filter(
-    //     (photographer) => photographer.photographerId == id
-    //   );
-    //   return lightboxDataFiltered;
-    // };
   }
   // Render aboutPhotographer
   async aboutPhotographer() {
@@ -83,14 +72,23 @@ class PhotographerPages {
   async lightbox() {
     const photographer = await this.photographer();
     var medias = mediasLightbox.filter((objet) => objet.photographerId == id);
+    let mediaItem = 1;
 
     medias.forEach((media) => {
+      const mediaId = media.id;
       const template = new Lightbox(media, photographer);
       const carouselControlPrev = document.getElementById("controls-left");
       this.lightboxWrapper.insertBefore(
         template.createLightbox(media, photographer),
         carouselControlPrev
       );
+      // Add MediaNumber / TotalMedia in lightbox
+      newValue("lightboxTotal-" + mediaId, medias.length);
+      newValue("lightbox-" + mediaId, mediaItem);
+      // Add onClick on medias for slider
+      const imgOnClick = document.getElementById("media-" + mediaId);
+      console.log("imgOnClick", imgOnClick);
+      imgOnClick.setAttribute("onclick", "currentSlide(" + mediaItem++ + ")");
     });
   }
 }
