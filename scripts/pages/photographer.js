@@ -18,6 +18,7 @@ class PhotographerPages {
       document.querySelector("#photograph-header");
 
     this.photographerWorkWrapper = document.querySelector("#medias-wrapper");
+    this.lightboxWrapper = document.querySelector("#modal-content");
 
     // this.lightboxWrapper = document.querySelector("#test");
 
@@ -77,11 +78,19 @@ class PhotographerPages {
     mediasLightbox = mediasData.filter(
       (photographer) => photographer.photographerId == id
     );
-    console.log("mediasData", mediasData);
   }
 
   async lightbox() {
-    console.log("test");
+    const photographer = await this.photographer();
+    var medias = mediasLightbox.filter((objet) => objet.photographerId == id);
+
+    medias.forEach((media) => {
+      const template = new Lightbox(media, photographer);
+      this.lightboxWrapper.insertBefore(
+        template.createLightbox(media, photographer),
+        carouselControlPrev
+      );
+    });
   }
 }
 
@@ -90,6 +99,7 @@ const initApp = async () => {
   photographerPages.aboutPhotographer();
   await photographerPages.mediasLightboxArray();
   photographerPages.photographerWork();
+  photographerPages.lightbox();
 };
 initApp();
 

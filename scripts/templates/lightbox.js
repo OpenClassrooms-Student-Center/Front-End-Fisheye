@@ -4,6 +4,9 @@ class Lightbox {
     this._photographer = photographer;
   }
   createLightbox(media, photographer) {
+    console.log("test");
+    console.log(media);
+    console.log(photographer);
     // ---------------------------------------------------------
     const mediaTypeElement = document.createElement("p");
 
@@ -43,8 +46,6 @@ class Lightbox {
       mediaImg.appendChild(videoElement);
     }
     // ---------------------------------------------------------
-
-    const imagePath = `assets/images/${photographer.name}/${media.image}`;
 
     const modalContent = document.querySelector("#modalContent");
     modalContent.classList.add("mx-auto", "my-0", "mySlides");
