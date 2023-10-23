@@ -86,6 +86,7 @@ class PhotographerPages {
 
     medias.forEach((media) => {
       const template = new Lightbox(media, photographer);
+      const carouselControlPrev = document.getElementById("controls-left");
       this.lightboxWrapper.insertBefore(
         template.createLightbox(media, photographer),
         carouselControlPrev
