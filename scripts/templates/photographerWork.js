@@ -11,6 +11,8 @@ class PhotographerWork {
   createPhotographerWork(photographer, media, lightbox) {
     // console.log("lightboxWork", lightbox);
     media.forEach((media) => {
+      const mediaTypeElement = document.createElement("p");
+
       const mediasWrapper = document.querySelector("#medias-wrapper");
       console.log(photographer.name);
       // Create a container for each media item
@@ -23,9 +25,24 @@ class PhotographerWork {
 
       //append to link
       const portraitElement = document.createElement("img");
-      const imagePath = `assets/images/${photographer.name}/${media.image}`;
-      portraitElement.src = imagePath;
-      portraitElement.alt = `${photographer._name}`;
+      if (media.image) {
+        mediaTypeElement.innerHTML = "Type: Image";
+        const imagePath = `assets/images/${photographer.name}/${media.image}`;
+        portraitElement.src = imagePath;
+        portraitElement.alt = `${photographer.name}`;
+      } else if (media.video) {
+        mediaTypeElement.innerHTML = "Type: Video";
+        // Construct the path to the video using the correct folder structure
+        const videoPath = `assets/images/${photographer.name}/${media.video}`;
+
+        // Create a <video> element for displaying the video
+        const videoElement = document.createElement("video");
+        videoElement.src = videoPath;
+        videoElement.controls = true;
+
+        // Append the video element to the mediaImg container
+        mediaImg.appendChild(videoElement);
+      }
 
       const mediaDetails = document.createElement("div");
       mediaDetails.classList.add("media-details");
