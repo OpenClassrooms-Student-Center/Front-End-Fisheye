@@ -36,6 +36,7 @@ class Image {
     const imageElement = document.createElement("img");
     imageElement.setAttribute("src", imageMedia);
     imageElement.setAttribute("alt", title);
+    imageElement.classList.add("media-img");
     return imageElement;
   }
 }
@@ -55,11 +56,13 @@ class Video {
     const videoMedia = `../../assets/medias/${photographerName}/${video}`;
 
     const videoDiv = document.createElement("video");
+    videoDiv.classList.add("media-video");
     const videoElement = document.createElement("source");
 
+    videoDiv.setAttribute("controls", "");
     videoElement.setAttribute("src", videoMedia);
     videoElement.setAttribute("type", "video/mp4");
-    // Voir accessibilité vidéos et attribut control
+    videoElement.setAttribute("control", "video/mp4");
 
     videoDiv.appendChild(videoElement);
     return videoDiv;

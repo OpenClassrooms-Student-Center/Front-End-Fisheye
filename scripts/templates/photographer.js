@@ -122,6 +122,7 @@ export function mediasTemplate(photographer, media) {
   const { title, likes } = media;
 
   const article = document.createElement("article");
+  article.classList.add("media-article");
 
   const mediaFactory = new Media(media, photographer);
   const mediaType = mediaFactory.getMediaCardDom();
@@ -129,22 +130,30 @@ export function mediasTemplate(photographer, media) {
   const likeIconMedia = "../../assets/icons/like-icon.png";
 
   const divDescription = document.createElement("div");
+  divDescription.classList.add("media-description");
 
-  const titleElement = document.createElement("h2");
+  const titleElement = document.createElement("p");
   titleElement.innerText = title;
+  titleElement.classList.add("media-title");
+
+  const divLikes = document.createElement("div");
+  divLikes.classList.add("likes-container");
 
   const likesElement = document.createElement("p");
   likesElement.innerText = likes;
+  likesElement.classList.add("likes");
 
   const likesIcon = document.createElement("img");
   likesIcon.setAttribute("src", likeIconMedia);
   likesIcon.setAttribute("alt", "j'aimes");
+  likesIcon.classList.add("likes-icon");
 
   article.appendChild(mediaType);
   article.appendChild(divDescription);
   divDescription.appendChild(titleElement);
-  divDescription.appendChild(likesElement);
-  divDescription.appendChild(likesIcon);
+  divDescription.appendChild(divLikes);
+  divLikes.appendChild(likesElement);
+  divLikes.appendChild(likesIcon);
 
   return article;
 }
