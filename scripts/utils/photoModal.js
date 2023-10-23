@@ -8,6 +8,7 @@ const nextImage = document.querySelector(".next-image");
 
 // Func
 export async function onOpenPic() {
+  console.log();
   mainWrapper.setAttribute("aria-hidden", "true");
   modal.setAttribute("aria-hidden", "false");
   body.classList.add("no-scroll");
@@ -26,32 +27,32 @@ const goToNextSlide = () => {
   console.log(1);
 };
 
-const goToPreviousSlide = () => {};
-// Event
-openPicBtn ? openPicBtn.addEventListener("click", onOpenPic) : null;
-// Event
-modalCloseBtn.addEventListener("click", onClosePic);
+// const goToPreviousSlide = () => {};
+// // Event
+// openPicBtn ? openPicBtn.addEventListener("click", onOpenPic) : null;
+// // Event
+// modalCloseBtn.addEventListener("click", onClosePic);
 
-nextImage.addEventListener("click", goToNextSlide);
+// nextImage.addEventListener("click", goToNextSlide);
 
-// Close modal when escape key is pressed
-document.addEventListener("keydown", (e) => {
-  const keyCode = e.keyCode ? e.keyCode : e.which;
+// // Close modal when escape key is pressed
+// document.addEventListener("keydown", (e) => {
+//   const keyCode = e.keyCode ? e.keyCode : e.which;
 
-  if (modal.getAttribute("aria-hidden") === "false" && keyCode === 27) {
-    onClosePic();
-  }
-});
+//   if (modal.getAttribute("aria-hidden") === "false" && keyCode === 27) {
+//     onClosePic();
+//   }
+// });
 
-document.addEventListener("keydown", (e) => {
-  const keyCode = e.keyCode ? e.keyCode : e.which;
+// document.addEventListener("keydown", (e) => {
+//   const keyCode = e.keyCode ? e.keyCode : e.which;
 
-  if (keyCode === 39) {
-    goToNextSlide();
-  } else if (keyCode === 37) {
-    goToPreviousSlide();
-  }
-});
+//   if (keyCode === 39) {
+//     goToNextSlide();
+//   } else if (keyCode === 37) {
+//     goToPreviousSlide();
+//   }
+// });
 
 // carouselPauseBtn.addEventListener("click", function () {
 //   clearInterval(carouselInterval);

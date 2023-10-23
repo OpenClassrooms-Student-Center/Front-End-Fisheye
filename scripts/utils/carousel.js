@@ -69,7 +69,7 @@ $(document).keydown(function (e) {
   }
 });
 
-carouselPauseBtn.on("click", function () {
+carouselPauseBtn.addEventListener("click", function () {
   clearInterval(carouselInterval);
 });
 
