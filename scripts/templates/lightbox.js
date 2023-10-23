@@ -27,7 +27,9 @@ class Lightbox {
               <p class="sr-only">Next</p>
             </div>
             <div class="caroussel-title">
-              <h2>Item 1</h2>
+            <h2>${this._media.title}</h2>
+            
+            <img id="about-photographer-img" src="assets/images/${photographer.name}/${media.image}" alt="${this._media.title}" class="rounded-circle order-md-1 order-lg-2" width="200px" height="200px">
             </div>
           </li>
           <li class="carousel-item item-1" aria-hidden="true">
@@ -44,7 +46,8 @@ class Lightbox {
               <p class="sr-only">Next</p>
             </div>
             <div class="caroussel-title">
-              <h2>Item 2</h2>
+            <h2>${this._media.title}</h2>
+            <img id="about-photographer-img" src="assets/images/${photographer.name}/${media.image}" alt="${this._media.title}" class="rounded-circle order-md-1 order-lg-2" width="200px" height="200px">
             </div>
           </li>
           <li class="carousel-item item-2" aria-hidden="true">
@@ -61,8 +64,8 @@ class Lightbox {
               <p class="sr-only">Next</p>
             </div>
             <div class="caroussel-title">
-              <h2>${this._photographer.name}</h2>
-              <img id="about-photographer-img" src="assets/img/Photographers_ID_Photos/${this._photographer.portrait}" alt="${this._photographer.name}" class="rounded-circle order-md-1 order-lg-2" width="200px" height="200px">
+              <h2>${this._media.title}</h2>
+              <img id="about-photographer-img" src="assets/images/${photographer.name}/${media.image}" alt="${this._media.title}" class="rounded-circle order-md-1 order-lg-2" width="200px" height="200px">
             </div>
           </li>
         </ul>
