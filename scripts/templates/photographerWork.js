@@ -9,11 +9,10 @@ class PhotographerWork {
   }
 
   createPhotographerWork(photographer, media, lightbox) {
-    console.log("lightboxWork", lightbox);
-
+    // console.log("lightboxWork", lightbox);
     media.forEach((media) => {
       const mediasWrapper = document.querySelector("#medias-wrapper");
-
+      console.log(photographer.name);
       // Create a container for each media item
       const mediaContainer = document.createElement("div");
       mediaContainer.classList.add("media-info");
@@ -21,6 +20,12 @@ class PhotographerWork {
       // Create a container for media details
       const mediaImg = document.createElement("a");
       mediaImg.classList.add(`media-img-${media.id}`);
+
+      //append to link
+      const portraitElement = document.createElement("img");
+      const imagePath = `assets/images/${photographer.name}/${media.image}`;
+      portraitElement.src = imagePath;
+      portraitElement.alt = `${photographer._name}`;
 
       const mediaDetails = document.createElement("div");
       mediaDetails.classList.add("media-details");
@@ -47,44 +52,6 @@ class PhotographerWork {
 
       //   Construct the path to the image using the correct folder structure
 
-      const mediaTypeElement = document.createElement("p");
-
-      if (media.image) {
-        mediaTypeElement.innerHTML = "Type: Image";
-        // Construct the path to the image using the correct folder structure
-        const imagePath = `assets/images/${photographer.name}/${media.image}`;
-
-        // Create an <img> element for displaying the image
-        const imageElement = document.createElement("img");
-
-        imageElement.src = imagePath;
-        imageElement.alt = media.image;
-        imageElement.setAttribute("id", `media-img-${media.id}`);
-        imageElement.onclick = onOpenPic;
-        imageElement.addEventListener("click", () => {
-          // Create a new Lightbox instance with the clicked media
-          const lightbox = new Lightbox(media, photographer);
-
-          // Call a method to open the lightbox (you need to implement this in the Lightbox class)
-          lightbox.createLightbox(media, photographer, lightbox);
-        });
-
-        // Append the image element to the mediaImg container
-        mediaImg.appendChild(imageElement);
-      } else if (media.video) {
-        mediaTypeElement.innerHTML = "Type: Video";
-        // Construct the path to the video using the correct folder structure
-        const videoPath = `assets/images/${photographer.name}/${media.video}`;
-
-        // Create a <video> element for displaying the video
-        const videoElement = document.createElement("video");
-        videoElement.src = videoPath;
-        videoElement.controls = true;
-
-        // Append the video element to the mediaImg container
-        mediaImg.appendChild(videoElement);
-      }
-
       // mediaDetails.appendChild(mediaIdElement);
       mediaDetails.appendChild(mediaTitleElement);
       mediaLikeContainer.appendChild(mediaLikeElement);
@@ -92,6 +59,7 @@ class PhotographerWork {
 
       // Add the media details container to the media container
       mediaContainer.appendChild(mediaImg);
+      mediaImg.appendChild(portraitElement);
       mediaContainer.appendChild(mediaDetails);
       mediaContainer.appendChild(mediaDetails);
       mediaDetails.appendChild(mediaLikeContainer);
