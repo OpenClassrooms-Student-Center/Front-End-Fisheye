@@ -50,6 +50,11 @@ const closeModalBtn = document.querySelector(".close-modal");
 const contactBtn = document.getElementById("contact-open");
 const sendBtn = document.getElementById("send-contact");
 
+const firstNameElement = document.getElementById("first");
+const lastNameElement = document.getElementById("last");
+const emailElement = document.getElementById("email");
+const messageElement = document.getElementById("message");
+
 //Display functions
 
 function displayModal() {
@@ -71,10 +76,31 @@ closeModalBtn.addEventListener("click", closeModal);
 //Submit form
 sendBtn.addEventListener("click", submitForm);
 
-///submit form
-
 function submitForm(event) {
   event.preventDefault();
-  closeModal();
-  alert("Your message has been sent");
+  let isFillingForm;
+
+  isFillingForm =
+    fillingForm(firstNameElement) +
+    fillingForm(lastNameElement) +
+    fillingForm(emailElement) +
+    fillingForm(messageElement);
+
+  if (isFillingForm > 0) {
+    return false;
+  } else {
+    closeModal();
+    alert("Your message has been sent");
+    return true;
+  }
+}
+
+function fillingForm(input) {
+  let inputField = input.value;
+  if (!input) {
+    return 1;
+  } else {
+    console.log("In the input field, the user put " + inputField);
+    return 0;
+  }
 }
