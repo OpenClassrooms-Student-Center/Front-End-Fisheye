@@ -1,4 +1,3 @@
-import { mediasFactory } from "./medias.js";
 export class Mediaphotographer {
   constructor() {
     this.totalLikes = 0; // Variable pour suivre le total des likes
@@ -10,10 +9,10 @@ export class Mediaphotographer {
     const response = await fetch("../../data/photographers.json");
     const data = await response.json();
     const photographer = data.photographers.find(
-      (onePhotographer) => onePhotographer.id === id
+      (onePhotographer) => onePhotographer.id === id,
     );
     const medias = data.media.filter(
-      (dataMediaPhotographer) => dataMediaPhotographer.photographerId === id
+      (dataMediaPhotographer) => dataMediaPhotographer.photographerId === id,
     );
     for (const media of medias) {
       this.insertMedias(media, photographer);
@@ -24,16 +23,17 @@ export class Mediaphotographer {
     if (totalLikesElement) {
       totalLikesElement.innerText = this.totalLikes.toString();
     }
-
     const section = document.getElementById("containerCards");
     const select = document.querySelector("#orderSelect");
-   // Tri initial par likes
-medias.sort((a, b) => b.likes - a.likes);
 
-// Afficher les médias triés par likes
-medias.forEach((element) => {
-  section.appendChild(document.getElementById(`card-${element.id}`));
-});
+    
+// Tri initial par likes
+ medias.sort((a, b) => b.likes - a.likes);
+
+ // Afficher les médias triés par likes
+ medias.forEach((element) => {
+    section.appendChild(document.getElementById(`card-${element.id}`));
+ });
 
 // Système de tri
 select.addEventListener("change", async () => {
@@ -68,7 +68,6 @@ select.addEventListener("change", async () => {
   });
 });
 
-
     this.insertHeaderPhotographer(photographer);
   }
 
@@ -95,17 +94,17 @@ select.addEventListener("change", async () => {
   insertMedias(media, photographer) {
     const containerCards = document.getElementById("containerCards");
     const card = document.createElement("div");
-    card.id = `card-${media.id}`;
+    card.id = `card-${media.id}`
     let { title, image, id, likes, video } = media;
     const regexName = /^\w+/; // permets de supprimé le nom de famille de name du fichier json
     const result = photographer.name.match(regexName)[0];
     let picture, mediaHtml;
     if (image?.endsWith(".jpg")) {
       picture = `assets/images/${result}/${image}`;
-      mediaHtml = `<img lightbox-media=${title} src="${picture}" alt="${title}" tabIndex="0" />`;
+      mediaHtml = `<img lightbox-media="${title}" src="${picture}" alt="${title}" tabIndex="0" />`;
     } else if (video?.endsWith(".mp4")) {
       picture = `assets/images/${result}/${video}`;
-      mediaHtml = `<video lightbox-media=${title} src="${picture}" tabIndex="0"></video>`;
+      mediaHtml = `<video lightbox-media="${title}" src="${picture}" alt="${title}" tabIndex="0"></video>`;
     }
     card.innerHTML = `
   <div class="card" id="card" >

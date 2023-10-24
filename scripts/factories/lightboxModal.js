@@ -15,6 +15,7 @@ export class LightboxFactory {
                   title: element.getAttribute("lightbox-media"),
               };
               this.lightbox.push(item);
+              
               element.addEventListener("click", this._handleClick.bind(this));
               element.addEventListener("keydown", (event) => {
                   if (event.key === "Escape") {
@@ -26,7 +27,7 @@ export class LightboxFactory {
      
     
       document.addEventListener("keydown", (event) => {
-          if (event.key === "Enter" && event.target.tagName === "IMG"|| event.target.tagName === "VIDEO") {
+          if (event.key === "Enter" && (event.target.tagName === "IMG"|| event.target.tagName === "VIDEO")) {
             const currentElement = event.target;
             const src = currentElement.src;
             this.currentIndex = this.lightbox.findIndex((item) => {
