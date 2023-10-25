@@ -6,5 +6,6 @@ function displayModal() {
 
 function closeModal() {
     const modal = document.getElementById("contact_modal");
+    if (modal.firstElementChild.childElementCount >= 3) modal.firstElementChild.lastElementChild.remove();
     modal.style.display = "none";
 }

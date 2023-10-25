@@ -280,13 +280,19 @@ const handleFormSubmit = (photograperName) => {
 
         // const formData = new FormData(formContact, document.querySelector('.contact_button'));
 
-    //     const f = !Object.values(formData).every(value => !!value);
-    //    if(f) return ''
-    //    else event.target.reset();
-        console.log(formData)   
+        const isFormEmpty = !Object.values(formData).every(value => !!value);
+       if(isFormEmpty) return ''
+      
+        // console.log(formData)   
         
         event.target.reset();
         formContact.style.display = 'none';
+
+        const confirmationMessage = document.createElement('p');
+        confirmationMessage.textContent = 'Merci pour votre message. La personne prendra contact avec vous dès que possible :)'
+        confirmationMessage.style.cssText = 'text-align: center; font-size: 1.3rem; margin-top: 2rem;';
+
+        headerElement.parentElement.appendChild(confirmationMessage);
     });
 };
 

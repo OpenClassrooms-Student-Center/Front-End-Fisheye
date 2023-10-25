@@ -203,11 +203,12 @@
 .modal {
     border-radius: 5px;
     background-color: #DB8876;
-    width: 40%;
+    width: 30%;
+    min-height: 600px;
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: space-between;
+    justify-content: flex-start;
     padding: 30px;
     margin: auto;
     position: fixed;
