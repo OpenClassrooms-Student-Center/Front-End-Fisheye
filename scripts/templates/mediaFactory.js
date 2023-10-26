@@ -33,11 +33,17 @@ class Image {
     const photographerName = this.#photographer.name.split(" ")[0];
     const imageMedia = `../../assets/medias/${photographerName}/${image}`;
 
+    const aLink = document.createElement("a");
+    aLink.classList.add("media-link");
+
     const imageElement = document.createElement("img");
     imageElement.setAttribute("src", imageMedia);
     imageElement.setAttribute("alt", title);
     imageElement.classList.add("media-img");
-    return imageElement;
+
+    aLink.appendChild(imageElement);
+
+    return aLink;
   }
 }
 
@@ -55,16 +61,21 @@ class Video {
     const photographerName = this.#photographer.name.split(" ")[0];
     const videoMedia = `../../assets/medias/${photographerName}/${video}`;
 
+    const aLink = document.createElement("a");
+    aLink.classList.add("media-link");
+
     const videoDiv = document.createElement("video");
     videoDiv.classList.add("media-video");
-    const videoElement = document.createElement("source");
-
     videoDiv.setAttribute("controls", "");
+
+    const videoElement = document.createElement("source");
     videoElement.setAttribute("src", videoMedia);
     videoElement.setAttribute("type", "video/mp4");
     videoElement.setAttribute("control", "video/mp4");
 
+    aLink.appendChild(videoDiv);
     videoDiv.appendChild(videoElement);
-    return videoDiv;
+
+    return aLink;
   }
 }

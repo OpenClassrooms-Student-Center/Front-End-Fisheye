@@ -124,11 +124,16 @@ form input {
   height: 350px;
 }
 
+.media-link {
+  width: 100%;
+  height: 80%;
+  cursor: pointer;
+}
 .media-img,
 .media-video {
   object-fit: cover;
   width: 100%;
-  height: 80%;
+  height: 100%;
   border-radius: 5px;
 }
 

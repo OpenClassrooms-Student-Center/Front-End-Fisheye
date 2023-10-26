@@ -1,0 +1,85 @@
+li {
+  list-style-type: none;
+}
+
+#lightbox {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  bottom: 0;
+  width: 100vw;
+  height: 100vh;
+  justify-content: center;
+  align-items: center;
+  background-color: white;
+  overflow: none;
+}
+
+.lightbox-display {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  max-height: 800px;
+  padding: 0;
+}
+
+.lightbox-display li {
+  display: flex;
+  flex-direction: column;
+  object-fit: contain;
+  justify-content: center;
+  max-height: 90%;
+}
+
+.lightbox-display li p {
+  color: #901c1c;
+  font-size: 24px;
+}
+
+.lightbox-display li .media-link {
+  display: flex;
+  justify-content: center;
+  object-fit: contain;
+  max-height: 75%;
+}
+
+.lightbox-display .media-link .media-img,
+.lightbox-display .media-link .media-video {
+  object-fit: contain;
+  border-radius: 5px;
+  max-height: 600px;
+  padding: 20px 0 0;
+}
+
+.last-commands-lightbox {
+  position: relative;
+}
+
+#close-lightbox {
+  cursor: pointer;
+  position: relative;
+  bottom: 300px;
+  margin-left: -32px;
+}
+
+#close-lightbox path {
+  fill: #901c1c;
+}
+
+.previous,
+.next {
+  font-size: 65px;
+  color: #901c1c;
+  cursor: pointer;
+  position: relative;
+}
+
+.previous {
+  margin-right: 25px;
+}
+
+.next {
+  margin-left: 25px;
+}
