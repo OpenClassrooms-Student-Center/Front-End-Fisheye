@@ -30,7 +30,7 @@
 .contact_button {
     font-size: 20px;
     font-weight: 500;
-    color: white;
+    color: #fff;
     padding: 5px;
     width: 170px;
     height: 55px;
@@ -38,6 +38,11 @@
     background-color: #901C1C;
     border-radius: 5px;
     cursor: pointer;
+    transition: all 600ms;
+}
+.contact_button:hover {
+    background-color: #D3573C;
+    color: #000;
 }
 
 .photograph-header img {
