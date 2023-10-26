@@ -22,6 +22,32 @@
         <button class="contact_button" id="contact-open">Contactez-moi</button>
         <div class="photograph-profilephoto"></div>
       </section>
+
+      <div class="sorted-list">
+        <label id="sort-label" for="sort-button">Trier par</label>
+        <div class="sort-div">
+          <button
+            id="sort-button"
+            aria-haspopup="listbox"
+            aria-expanded="false"
+          >
+            <span>Popularité</span>
+            <div id="sort-arrow" class="arrow-down"></div>
+          </button>
+          <ul id="sort-option-container" role="listbox" aria-label="Trier par">
+            <li
+              class="sort-option display-none"
+              role="option"
+              data-value="popularity"
+            >
+              Popularité
+            </li>
+            <li class="sort-option" role="option" data-value="date">Date</li>
+            <li class="sort-option" role="option" data-value="title">Titre</li>
+          </ul>
+        </div>
+      </div>
+
       <section class="media"></section>
     </main>
 
