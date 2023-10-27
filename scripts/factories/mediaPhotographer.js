@@ -9,10 +9,10 @@ export class Mediaphotographer {
     const response = await fetch("../../data/photographers.json");
     const data = await response.json();
     const photographer = data.photographers.find(
-      (onePhotographer) => onePhotographer.id === id,
+      (onePhotographer) => onePhotographer.id === id
     );
     const medias = data.media.filter(
-      (dataMediaPhotographer) => dataMediaPhotographer.photographerId === id,
+      (dataMediaPhotographer) => dataMediaPhotographer.photographerId === id
     );
     for (const media of medias) {
       this.insertMedias(media, photographer);
@@ -26,51 +26,47 @@ export class Mediaphotographer {
     const section = document.getElementById("containerCards");
     const select = document.querySelector("#orderSelect");
 
-    
-// Tri initial par likes
- medias.sort((a, b) => b.likes - a.likes);
+    // Tri initial par likes
+    medias.sort((a, b) => b.likes - a.likes);
 
- // Afficher les médias triés par likes
- medias.forEach((element) => {
-    section.appendChild(document.getElementById(`card-${element.id}`));
- });
+    // Afficher les médias triés par likes
+    medias.forEach((element) => {
+      section.appendChild(document.getElementById(`card-${element.id}`));
+    });
 
-// Système de tri
-select.addEventListener("change", async () => {
-  const selectedOption = select.options[select.selectedIndex];
-  const selectedValue = selectedOption.value;
-  let filteredMedia;
+    // Système de tri
+    select.addEventListener("change", async () => {
+      const selectedOption = select.options[select.selectedIndex];
+      const selectedValue = selectedOption.value;
+      let filteredMedia;
 
-  switch (selectedValue) {
-    case "popularity":
-      filteredMedia = medias.sort((a, b) => b.likes - a.likes);
-      break;
+      switch (selectedValue) {
+        case "popularity":
+          filteredMedia = [...medias].sort((a, b) => b.likes - a.likes);
+          break;
 
-    case "date":
-      filteredMedia = medias.sort(
-        (a, b) => new Date(a.date) - new Date(b.date)
-      );
-      break;
+        case "date":
+          filteredMedia = [...medias].sort(
+            (a, b) => new Date(a.date) - new Date(b.date)
+          );
+          break;
 
-    case "title":
-      filteredMedia = medias.sort((a, b) => {
-        if (a.title < b.title) return -1;
-        if (a.title > b.title) return 1;
-        return 0;
+        case "title":
+          filteredMedia = [...medias].sort((a, b) => {
+            if (a.title < b.title) return -1;
+            if (a.title > b.title) return 1;
+            return 0;
+          });
+          break;
+      }
+
+      filteredMedia.forEach((element) => {
+        section.appendChild(document.getElementById(`card-${element.id}`));
       });
-  }
-
-  filteredMedia.forEach((element) => {
-    section.insertBefore(
-      document.getElementById(`card-${element.id}`),
-      section.lastChild
-    );
-  });
-});
+    });
 
     this.insertHeaderPhotographer(photographer);
   }
-
   insertHeaderPhotographer(photographer) {
     const photographHeader = document.getElementById("photograph-header");
     const h2Name = document.getElementById("h2Name");
@@ -94,7 +90,7 @@ select.addEventListener("change", async () => {
   insertMedias(media, photographer) {
     const containerCards = document.getElementById("containerCards");
     const card = document.createElement("div");
-    card.id = `card-${media.id}`
+    card.id = `card-${media.id}`;
     let { title, image, id, likes, video } = media;
     const regexName = /^\w+/; // permets de supprimé le nom de famille de name du fichier json
     const result = photographer.name.match(regexName)[0];
