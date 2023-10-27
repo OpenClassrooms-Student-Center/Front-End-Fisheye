@@ -94,6 +94,20 @@ function sortedByPopularityMedia(photographer, allMedia) {
     .sort((a, b) => b.likes - a.likes)
     .map((media) => {
       const mediaModel = mediasTemplate(photographer, media);
+      const likeButton = mediaModel.querySelector(".likes-icon");
+      const likeCountElement = mediaModel.querySelector(".likes");
+
+      likeButton.addEventListener("click", () => {
+        if (likeButton.classList.contains("liked")) {
+          media.likes -= 1;
+          likeButton.classList.remove("liked");
+        } else {
+          media.likes += 1;
+          likeButton.classList.add("liked");
+        }
+        likeCountElement.textContent = media.likes;
+        updateTotalLikes(photographer, allMedia);
+      });
       return mediaModel;
     });
 }
@@ -104,6 +118,20 @@ function sortedByDateMedia(photographer, allMedia) {
     .sort((a, b) => new Date(b.date) - new Date(a.date))
     .map((media) => {
       const mediaModel = mediasTemplate(photographer, media);
+      const likeButton = mediaModel.querySelector(".likes-icon");
+      const likeCountElement = mediaModel.querySelector(".likes");
+
+      likeButton.addEventListener("click", () => {
+        if (likeButton.classList.contains("liked")) {
+          media.likes -= 1;
+          likeButton.classList.remove("liked");
+        } else {
+          media.likes += 1;
+          likeButton.classList.add("liked");
+        }
+        likeCountElement.textContent = media.likes;
+        updateTotalLikes(photographer, allMedia);
+      });
       return mediaModel;
     });
 }
@@ -114,8 +142,57 @@ function sortedByTitleMedia(photographer, allMedia) {
     .sort((a, b) => a.title.localeCompare(b.title))
     .map((media) => {
       const mediaModel = mediasTemplate(photographer, media);
+      const likeButton = mediaModel.querySelector(".likes-icon");
+      const likeCountElement = mediaModel.querySelector(".likes");
+
+      likeButton.addEventListener("click", () => {
+        if (likeButton.classList.contains("liked")) {
+          media.likes -= 1;
+          likeButton.classList.remove("liked");
+        } else {
+          media.likes += 1;
+          likeButton.classList.add("liked");
+        }
+        likeCountElement.textContent = media.likes;
+        updateTotalLikes(photographer, allMedia);
+      });
+
       return mediaModel;
     });
+}
+
+///////////////////Total Likes template and update
+
+function updateTotalLikes(photographer, media) {
+  const totalLikes = media
+    .filter((mediaItem) => mediaItem.photographerId === photographer.id)
+    .reduce((total, mediaItem) => total + mediaItem.likes, 0);
+
+  const likesCountContainer = document.getElementById("likes-count-container");
+
+  while (likesCountContainer.firstChild) {
+    likesCountContainer.removeChild(likesCountContainer.firstChild);
+  }
+
+  const divLikes = document.createElement("div");
+  divLikes.classList.add("likes-div");
+
+  const heart = document.createElement("img");
+  const heartIcon = "../assets/icons/heart-icon.svg";
+  heart.setAttribute("src", heartIcon);
+  heart.setAttribute("alt", "j'aimes totaux");
+  heart.classList.add("heart-icon");
+
+  const totalLikesText = document.createTextNode(totalLikes);
+
+  const priceElement = document.createElement("p");
+  priceElement.textContent = `${photographer.price}€/jour`;
+  priceElement.className = "price-by-day";
+
+  divLikes.appendChild(totalLikesText);
+  divLikes.appendChild(heart);
+  likesCountContainer.appendChild(divLikes);
+  likesCountContainer.appendChild(priceElement);
 }
 
 //Function init
@@ -172,10 +249,15 @@ async function init() {
   });
 
   //by title (alphabetical order)
+  const sortedByTitle = sortedByTitleMedia(photographer, media);
+
   titleOption.addEventListener("click", () => {
-    const sortedByTitle = sortedByTitleMedia(photographer, media);
     displayMediaUpdate(sortedByTitle, sectionMedia);
   });
+
+  //Total likes
+
+  updateTotalLikes(photographer, media);
 }
 
 init();

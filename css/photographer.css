@@ -194,3 +194,37 @@
   width: 21px;
   height: 24px;
 }
+
+/*CSS LIKES UPDATED*/
+
+#likes-and-price-info {
+  position: fixed;
+  display: flex;
+  justify-content: end;
+  bottom: 0;
+  right: 36px;
+  z-index: 3;
+}
+
+.likes-div {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+#likes-count-container {
+  display: flex;
+  justify-content: space-between;
+  gap: 65px;
+  padding: 20px 34px;
+  border-radius: 5px;
+  background: #db8876;
+  font-family: "DM Sans", sans-serif;
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 500;
+}
+
+.price-by-day {
+  margin: 0;
+}
