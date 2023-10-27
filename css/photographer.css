@@ -191,8 +191,11 @@
 }
 
 .likes-icon {
-  width: 21px;
-  height: 24px;
+  margin-bottom: -3px;
+}
+
+.liked path {
+  fill-opacity: 1;
 }
 
 /*CSS LIKES UPDATED*/
