@@ -15,9 +15,18 @@ async function displayData(photographers) {
 }
 
 async function init() {
-  // Récupère les datas des photographes
-  const { photographers } = await getPhotographers();
-  displayData(photographers);
+  const urlParams = new URLSearchParams(window.location.search);
+  const photographerId = urlParams.get("id");
+
+  if (photographerId) {
+    const photographer = await getPhotographerById(photographerId);
+    const photographerTemplate = photographerDetailTemplate(photographer);
+    const $main = document.getElementById("main");
+    $main.appendChild(photographerTemplate);
+  } else {
+    const { photographers } = await getPhotographers();
+    displayData(photographers);
+  }
 }
 
 init();
