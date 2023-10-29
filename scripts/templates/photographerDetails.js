@@ -1,11 +1,12 @@
 function photographerDetailTemplate(data) {
-    console.log("data",data);
-    const { name, city, country, tagline, picture } = data;
-  
-    const template = `
-      <div class="photograph-header">
+  const { name, city, country, tagline, portrait } = data;
+  const picture = `assets/photographers/${portrait}`;
+
+  const template = `
+      <article class="photograph-header">
         <!-- Left Column -->
         <div class="column">
+          <h2>${name}</h2>
           <p class="location">${city}, ${country}</p>
           <p class="tagline">${tagline}</p>
         </div>
@@ -17,13 +18,13 @@ function photographerDetailTemplate(data) {
         </div>
         <!-- Right Column -->
         <div class="column">
-          <img class="photographer-image" src="${picture}" alt="${name}'s portrait">
+          <img class="photographer-image" src="${picture}" alt="${name}">
         </div>
-      </div>
+      </article>
     `;
-  
-    const $template = document.createElement("div");
-    $template.innerHTML = template;
 
-    return $template;
+  const $template = document.createElement("div");
+  $template.innerHTML = template;
+
+  return $template;
 }

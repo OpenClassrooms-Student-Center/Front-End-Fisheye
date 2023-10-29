@@ -34,7 +34,8 @@ h1 {
 }
 
 main {
-    margin: 20px;
+    max-width: 1500px;
+    margin: 20px auto;
 }
 
 .logo {
@@ -73,7 +74,7 @@ main {
     font-size: 2.25rem;
 }
 
-.photographer_section article img {
+.photographer_section article img,.photograph-header img {
     height: 200px;
     width: 200px;
     object-fit: cover;
@@ -90,6 +91,11 @@ main {
 
 .photographer_section article div p:nth-child(3) {
     font-weight: bold;
+}
+.photograph-header{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
 }
 
 /* debugg */
