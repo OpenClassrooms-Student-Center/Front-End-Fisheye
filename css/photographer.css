@@ -16,7 +16,7 @@
     width: 170px;
     height: 70px;
     border: none;
-    background-color: #901C1C;
+    background-color: var(--primary-color);
     border-radius: 5px;
     cursor: pointer;
 }

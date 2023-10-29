@@ -1,8 +1,22 @@
 @import url("photographer.css");
 
+:root {
+    --primary-color: #901C1C;
+    --secondary-color: #D3573C;
+}
+
 body {
     font-family: "DM Sans", sans-serif;
     margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+::after,
+::before {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
 
@@ -15,8 +29,12 @@ header {
 }
 
 h1 {
-    color: #901C1C;
+    color: var(--primary-color);
     margin-right: 100px;
+}
+
+main {
+    margin: 20px;
 }
 
 .logo {
@@ -32,19 +50,52 @@ h1 {
 }
 
 .photographer_section article {
-    justify-self: center;
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
+    text-align: center;
+}
+
+.photographer_section article:hover {
+    outline: 2px solid var(--primary-color);
+    outline-offset: -2px;
+    cursor: pointer;
+}
+.photographer_section article:focus {
+    outline: 2px solid var(--primary-color);
+    outline-offset: -2px;
 }
 
 .photographer_section article h2 {
-    color: #D3573C;
-    font-size: 36px;
+    color: var(--secondary-color);
+    font-size: 2.25rem;
 }
 
 .photographer_section article img {
     height: 200px;
     width: 200px;
+    object-fit: cover;
+    border-radius: 50%;
 }
+
+.photographer_section article div>* {
+    line-height: 0.5;
+}
+
+.photographer_section article div p:nth-child(2) {
+    color: var(--primary-color);
+}
+
+.photographer_section article div p:nth-child(3) {
+    font-weight: bold;
+}
+
+.photographer_section article div p:nth-child(4) {
+    font-weight: initial;
+}
+
+/* debugg */
+/* *{
+    border: 1px red solid;
+} */

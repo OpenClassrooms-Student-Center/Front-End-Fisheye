@@ -1,9 +1,7 @@
 async function getPhotographers() {
-  const photographers = await fetch("/data/photographers.json")
-    .then((res) => res.json())
-    .then((data) => console.log(data))
-    .catch((error) => console.error("Error:", error));
-//   console.log("photographers:", photographers);
+  const response = await fetch("/data/photographers.json");
+  const data = await response.json();
+  return data;
 }
 
 async function displayData(photographers) {
