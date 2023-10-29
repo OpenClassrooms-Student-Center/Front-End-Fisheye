@@ -81,10 +81,10 @@ function submitForm(event) {
   let isFillingForm;
 
   isFillingForm =
-    fillingForm(firstNameElement) +
-    fillingForm(lastNameElement) +
-    fillingForm(emailElement) +
-    fillingForm(messageElement);
+    fillingForm(firstNameElement, "prénom") +
+    fillingForm(lastNameElement, "nom") +
+    fillingForm(emailElement, "e-mail") +
+    fillingForm(messageElement, "message");
 
   if (isFillingForm > 0) {
     return false;
@@ -95,12 +95,12 @@ function submitForm(event) {
   }
 }
 
-function fillingForm(input) {
+function fillingForm(input, label) {
   let inputField = input.value;
-  if (!input) {
+  if (!inputField) {
     return 1;
   } else {
-    console.log("In the input field, the user put " + inputField);
+    console.log(`User input for the "${label}": ${inputField}`);
     return 0;
   }
 }
