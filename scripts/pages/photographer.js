@@ -69,27 +69,16 @@ class PhotographerPages {
     );
   }
 
-  async lightbox() {
+  async lightbox(index) {
     const photographer = await this.photographer();
-    var medias = mediasLightbox.filter((objet) => objet.photographerId == id);
-    let mediaItem = 1;
-
-    medias.forEach((media) => {
-      const mediaId = media.id;
-      const template = new Lightbox(media, photographer);
-      const carouselControlPrev = document.getElementById("controls-left");
-      this.lightboxWrapper.insertBefore(
-        template.createLightbox(media, photographer),
-        carouselControlPrev
-      );
-      // Add MediaNumber / TotalMedia in lightbox
-      newValue("lightboxTotal-" + mediaId, medias.length);
-      newValue("lightbox-" + mediaId, mediaItem);
-      // Add onClick on medias for slider
-      const imgOnClick = document.getElementById("media-" + mediaId);
-      console.log("imgOnClick", imgOnClick);
-      imgOnClick.setAttribute("onclick", "currentSlide(" + mediaItem++ + ")");
-    });
+    await this.mediasLightboxArray(); // Ensure mediasLightbox is populated
+    const media = mediasLightbox[index];
+    const template = new Lightbox(media, photographer);
+    const carouselControlPrev = document.getElementById("controls-left");
+    this.lightboxWrapper.innerHTML = ""; // Clear the lightbox
+    this.lightboxWrapper.appendChild(
+      template.createLightbox(media, photographer)
+    );
   }
 }
 

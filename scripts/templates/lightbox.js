@@ -4,7 +4,7 @@ class Lightbox {
     this._photographer = photographer;
   }
 
-  createLightbox(media, photographer) {
+  createLightbox() {
     const modalContent = document.querySelector("#modal-content");
     const lightboxContainer = document.createElement("div");
     lightboxContainer.classList.add("lightbox");
@@ -28,44 +28,7 @@ class Lightbox {
             </div>
             <div class="caroussel-title">
             <h2>${this._media.title}</h2>
-            
             <img id="about-photographer-img" src="assets/images/${photographer.name}/${media.image}" alt="${this._media.title}" class="rounded-circle order-md-1 order-lg-2" width="200px" height="200px">
-            </div>
-          </li>
-          <li class="carousel-item item-1" aria-hidden="true">
-            <div role="button" class="controls controls-left">
-              <span class="img prev-image">
-                <i aria-hidden="true" class="fa fa-arrow-circle-left"></i>
-              </span>
-              <p class="sr-only">Previous</p>
-            </div>
-            <div role="button" class "controls controls-right">
-              <span class="img next-image">
-                <i aria-hidden="true" class="fa fa-arrow-circle-right"></i>
-              </span>
-              <p class="sr-only">Next</p>
-            </div>
-            <div class="caroussel-title">
-            <h2>${this._media.title}</h2>
-            <img id="about-photographer-img" src="assets/images/${photographer.name}/${media.image}" alt="${this._media.title}" class="rounded-circle order-md-1 order-lg-2" width="200px" height="200px">
-            </div>
-          </li>
-          <li class="carousel-item item-2" aria-hidden="true">
-            <div role="button" class="controls controls-left">
-              <span class="img prev-image">
-                <i aria-hidden="true" class="fa fa-arrow-circle-left"></i>
-              </span>
-              <p class="sr-only">Previous</p>
-            </div>
-            <div role="button" class="controls controls-right">
-              <span class="img next-image">
-                <i aria-hidden="true" class="fa fa-arrow-circle-right"></i>
-              </span>
-              <p class="sr-only">Next</p>
-            </div>
-            <div class="caroussel-title">
-              <h2>${this._media.title}</h2>
-              <img id="about-photographer-img" src="assets/images/${photographer.name}/${media.image}" alt="${this._media.title}" class="rounded-circle order-md-1 order-lg-2" width="200px" height="200px">
             </div>
           </li>
         </ul>
@@ -78,8 +41,8 @@ class Lightbox {
     modalContent.appendChild(lightboxContainer);
 
     // Global var
-    const prevBtn = $(".prev-image"); // Wrap the selector with $()
-    const nextBtn = $(".next-image"); // Wrap the selector with $()
+    const prevBtn = $(".prev-image");
+    const nextBtn = $(".next-image");
     const carouselItems = ".carousel-item";
     const carouselPauseBtn = ".carousel-pause-btn";
 
@@ -89,7 +52,6 @@ class Lightbox {
     // Funcs
     const goToNextSlide = () => {
       if (currentItemPosition + 1 >= $(carouselItems).length) {
-        // Wrap carouselItems with $()
         const lastItem = `.item-${currentItemPosition}`;
 
         currentItemPosition = 0;
