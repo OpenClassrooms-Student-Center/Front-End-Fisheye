@@ -1,54 +1,44 @@
-// La classe de base pour les médias
-class Media {
-  constructor(data) {
-    this.id = data.id;
-    this.photographerId = data.photographerId;
-    this.title = data.title;
-    this.likes = data.likes;
-    this.date = data.date;
-    this.price = data.price;
-  }
-
-  // Méthode pour créer un élément DOM représentant le média
-  getMediaElement() {
-    const $mediaElement = document.createElement("div");
-    $mediaElement.innerHTML = `
-          <!-- Structure HTML de la carte média -->
-          <div class="media-card">
-            <img src="assets/photographers/${this.image}" alt="${this.title}">
-            <p>${this.title}</p>
-            <p>${this.likes} Likes</p>
-            <p>${this.date}</p>
-            <p>${this.price}€</p>
-          </div>
-        `;
-    return $mediaElement;
-  }
-}
-
-// La classe pour les photos, héritant de la classe Media
-class Photo extends Media {
-  constructor(data) {
-    super(data);
-    this.image = data.image;
-  }
-}
-
-// La classe pour les vidéos, héritant de la classe Media
-class Video extends Media {
-  constructor(data) {
-    super(data);
-    this.video = data.video;
-  }
-}
-
-// Factory Method pour créer les médias en fonction du type de données
+// Fonction factory pour créer les médias
 function createMedia(data) {
   if (data.image) {
-    return new Photo(data);
+    return {
+      id: data.id,
+      photographerId: data.photographerId,
+      title: data.title,
+      likes: data.likes,
+      date: data.date,
+      price: data.price,
+      type: "photo",
+      source: `assets/photographers/${data.image}`,
+    };
   } else if (data.video) {
-    return new Video(data);
+    return {
+      id: data.id,
+      photographerId: data.photographerId,
+      title: data.title,
+      likes: data.likes,
+      date: data.date,
+      price: data.price,
+      type: "video",
+      source: data.video,
+    };
   }
+}
+
+// Fonction pour créer l'élément DOM d'un média
+function createMediaElement(media) {
+  const $mediaElement = document.createElement("div");
+  $mediaElement.innerHTML = `
+      <!-- Structure HTML de la carte média -->
+      <div class="media-card">
+        <img src="${media.source}" alt="${media.title}">
+        <p>${media.title}</p>
+        <p>${media.likes} Likes</p>
+        <p>${media.date}</p>
+        <p>${media.price}€</p>
+      </div>
+    `;
+  return $mediaElement;
 }
 
 // Fonction asynchrone pour récupérer les données depuis un fichier JSON
@@ -78,7 +68,7 @@ async function initPhotographerPage() {
         data.media.filter((media) => media.photographerId === photographerId)
     );
 
-    // Créer les instances de médias en utilisant le Factory Method
+    // Utilisation de la fonction factory pour créer les médias
     const mediaInstances = photographerMedia.map(createMedia);
 
     // Afficher les médias
@@ -102,8 +92,9 @@ function displayPhotographerHeader(photographerTemplate) {
 function displayMedia(mediaInstances) {
   const $mediaContainer = document.getElementById("media-container");
 
+  // Utilisation de la fonction pour créer l'élément DOM et l'afficher
   mediaInstances.forEach((media) => {
-    const $mediaElement = media.getMediaElement();
+    const $mediaElement = createMediaElement(media);
     $mediaContainer.appendChild($mediaElement);
   });
 }
