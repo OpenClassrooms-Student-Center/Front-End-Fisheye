@@ -15,12 +15,13 @@
 .price-fixed {
     position: fixed;
     bottom: 0;
-    right: 0;
-    width: 150px;
+    right: 100px;
+    width: 350px;
     background-color: var(--secondary-color);
     padding: 10px;
     color: black;
     font-weight: bold;
+    border-radius: 5px;
 }
 
 .contact_button {
@@ -111,19 +112,26 @@
     padding: 10px;
     cursor: pointer;
     color: white;
+    border-bottom: 1px white solid;
+}
+
+#selectOptions li:last-child {
+    border-bottom: none;
 }
 
 #selectOptions li:hover {
     background-color: var(--secondary-color);
+    border-bottom: 1px solid var(--secondary-color);
 }
 
 #selectedOption {
     cursor: pointer;
 }
+
 .custom-select[aria-expanded="true"] #selectOptions {
     display: block;
-  }
-  
+}
+
 /* ******************  END DU TRI DE LA GALLERIE DU PHOTOGRAPHE ******************  */
 /* ****************** START MODAL ******************  */
 #contact_modal {
