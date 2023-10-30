@@ -1,29 +1,29 @@
 // Fonction factory pour créer les médias
 function createMedia(data) {
-  if (data.image) {
-    return {
+    const commonData = {
       id: data.id,
       photographerId: data.photographerId,
       title: data.title,
       likes: data.likes,
       date: data.date,
       price: data.price,
-      type: "photo",
-      source: `assets/galleries/${data.image}`,
     };
-  } else if (data.video) {
-    return {
-      id: data.id,
-      photographerId: data.photographerId,
-      title: data.title,
-      likes: data.likes,
-      date: data.date,
-      price: data.price,
-      type: "video",
-      source: `assets/galleries/${data.video}`,
-    };
+  
+    if (data.image) {
+      return {
+        ...commonData,
+        type: "photo",
+        source: `assets/galleries/${data.image}`,
+      };
+    } else if (data.video) {
+      return {
+        ...commonData,
+        type: "video",
+        source: `assets/galleries/${data.video}`,
+      };
+    }
   }
-}
+  
 
 // Fonction pour créer l'élément DOM d'un média
 function createMediaElement(media) {
@@ -31,14 +31,13 @@ function createMediaElement(media) {
   const isVideo = media.type === "video";
 
   $mediaElement.innerHTML = `
-      <!-- Structure HTML de la carte média -->
       <div class="media-card ${isVideo ? 'video' : ''}">
         <img src="${media.source}" alt="${media.title}">
-        <p>${media.title}</p>
-        <p>${media.likes} Likes</p>
-        <p>${media.date}</p>
-        <p>${media.price}€</p>
-      </div>
+        </div>
+        <div class="media-card-description">
+            <p>${media.title}</p>
+            <p>${media.likes} <i class="fa-solid fa-heart"></i></p>
+        </div>
     `;
   return $mediaElement;
 }
@@ -91,7 +90,7 @@ function displayPhotographerHeader(photographerTemplate) {
 
 // Fonction pour afficher les médias dans le DOM
 function displayMedia(mediaInstances) {
-  const $mediaContainer = document.getElementById("media-container");
+  const $mediaContainer = document.getElementById("media-container-main");
 
   // Utilisation de la fonction pour créer l'élément DOM et l'afficher
   mediaInstances.forEach((media) => {

@@ -8,33 +8,49 @@
       href="https://fonts.googleapis.com/css?family=DM+Sans&display=swap"
       rel="stylesheet"
     />
+    <script
+      src="https://kit.fontawesome.com/8870a3e68e.js"
+      crossorigin="anonymous"
+    ></script>
     <title>Fisheye - photographe</title>
   </head>
   <body>
-    <header>
-      <a href="/">
-        <img
-          src="assets/images/logo.png"
-          class="logo"
-          alt="Fisheye Home Page"
-        />
-      </a>
-    </header>
-    <main id="main" ></main>
-    <section id="media-container"></section>
-    <div id="contact_modal">
-      <div class="modal">
-        <header>
-          <h2>Contactez-moi</h2>
-          <img src="assets/icons/close.svg" onclick="closeModal()" />
-        </header>
-        <form>
-          <div>
-            <label>Prénom</label>
-            <input />
-          </div>
-          <button class="contact_button">Envoyer</button>
-        </form>
+    <div class="container">
+      <header>
+        <a href="/">
+          <img
+            src="assets/images/logo.png"
+            class="logo photographerPage"
+            alt="Fisheye Home Page"
+          />
+        </a>
+      </header>
+      <main id="main"></main>
+      <section id="media-container">
+        <div id="media-container-header">
+          <label for="sortSelect">Trier par :</label>
+          <select id="sortSelect" name="sortSelect" aria-label="Tri des médias">
+            <option value="popularity">Popularité</option>
+            <option value="date">Date</option>
+            <option value="title">Titre</option>
+          </select>
+        </div>
+        <div id="media-container-main"></div>
+      </section>
+      <div id="contact_modal">
+        <div class="modal">
+          <header>
+            <h2>Contactez-moi</h2>
+            <img src="assets/icons/close.svg" onclick="closeModal()" />
+          </header>
+          <form>
+            <div>
+              <label>Prénom</label>
+              <input />
+            </div>
+            <button class="contact_button">Envoyer</button>
+          </form>
+        </div>
       </div>
     </div>
     <script src="/scripts/pages/photographer.js"></script>

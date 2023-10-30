@@ -19,11 +19,12 @@ body {
     padding: 0;
     box-sizing: border-box;
 }
-
+.container{
+    margin: 20px;
+}
 
 header {
     display: flex;
-    flex-direction: row;
     justify-content: space-between;
     align-items: center;
     height: 90px;
@@ -31,18 +32,18 @@ header {
 
 h1 {
     color: var(--primary-color);
-    margin-right: 100px;
 }
 
 .logo {
     height: 50px;
-    margin-left: 100px;
 }
 
+
 .photographer_section {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    gap: 70px;
+    display:flex;
+    gap: 200px;
+    justify-content: space-between;
+    flex-wrap: wrap;
     margin-top: 100px;
 }
 

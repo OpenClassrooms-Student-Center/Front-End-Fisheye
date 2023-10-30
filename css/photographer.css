@@ -1,19 +1,17 @@
-
-#contact_modal {
-    display: none;
-}
-
+/* ****************** START DESCRIPTION DU PHOTOGRAPHE ******************  */
 .photograph-header {
     background-color: #FAFAFA;
     height: 300px;
-    margin: 0 100px;
 }
-.photograph-header h1{
-   color: var(--secondary-color);
+
+.photograph-header h1 {
+    color: var(--secondary-color);
 }
-.location{
+
+.location {
     color: var(--primary-color);
 }
+
 .price-fixed {
     position: fixed;
     bottom: 0;
@@ -23,8 +21,8 @@
     padding: 10px;
     color: black;
     font-weight: bold;
-  }
-  
+}
+
 .contact_button {
     font-size: 1.25rem;
     font-weight: bold;
@@ -44,25 +42,55 @@
     background-color: var(--secondary-color);
 }
 
-/* REALISATIONS DU PHOTOGRAPHE */
-#media-container{
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    gap: 70px;
-    margin: 100px;
+/* ****************** END DESCRIPTION DU PHOTOGRAPHE ******************  */
+
+/* ****************** START GALLERIES DU PHOTOGRAPHE ******************  */
+#media-container-main {
+    display:flex;
+    gap: 20px;
+    justify-content: space-between;
+    flex-wrap: wrap;
 }
-.media-card img{
+#media-container-header{
+    margin:20px 0 50px 0;
+}
+.media-card {
     width: 400px;
     height: 400px;
+}
+.media-card img {
+    width: 100%;
+    height: 100%;
     object-fit: cover;
 }
+
+.media-card.video {
+    border: 1px grey solid;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
 .media-card.video img {
-    width: 100px; 
+    width: 100px;
     height: 100px;
     object-fit: cover;
-    display: block;
-    margin: auto;
+
 }
+
+.media-card-description {
+    display: flex;
+    justify-content: space-between;
+    color: var(--primary-color);
+    width: 400px;
+}
+
+/* ******************  END GALLERIES DU PHOTOGRAPHE ******************  */
+/* ****************** START MODAL ******************  */
+#contact_modal {
+    display: none;
+}
+
 .modal {
     border-radius: 5px;
     background-color: #DB8876;
@@ -116,3 +144,5 @@ form input {
     border: none;
     border-radius: 5px;
 }
+
+/* ****************** END MODAL ******************  */
