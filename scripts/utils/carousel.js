@@ -69,9 +69,9 @@ $(document).keydown(function (e) {
   }
 });
 
-carouselPauseBtn.addEventListener("click", function () {
-  clearInterval(carouselInterval);
-});
+// carouselPauseBtn.addEventListener("click", function () {
+//   clearInterval(carouselInterval);
+// });
 
 $(document).ready(function () {
   carouselInterval = setInterval(() => goToNextSlide(), 5000);

@@ -2,15 +2,14 @@
 const body = document.body;
 const openPicBtn = document.querySelector(".media-img");
 const mainWrapper = document.querySelector(".main-wrapper");
-const modal = document.querySelector(".photo_modal");
+const modal = document.querySelector(".photo-modal");
 const modalCloseBtn = document.querySelector(".modal-close-btn");
 const nextImage = document.querySelector(".next-image");
 
 // Func
 export async function onOpenPic() {
-  console.log();
   mainWrapper.setAttribute("aria-hidden", "true");
-  modal.setAttribute("aria-hidden", "false");
+  // modal.setAttribute("aria-hidden", "false");
   body.classList.add("no-scroll");
   modal.style.display = "flex";
   modalCloseBtn.focus();
