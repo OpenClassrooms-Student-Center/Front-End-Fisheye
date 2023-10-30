@@ -24,7 +24,7 @@ function createMedia(data) {
   }
 }
 
-// Fonction pour créer l'élément DOM, la card d'un média
+// Fonction pour créer l'élément DOM, la card média
 function createMediaElement(media) {
   const $mediaElement = document.createElement("article");
   const isVideo = media.type === "video";
@@ -68,12 +68,6 @@ async function initPhotographerPage() {
   }
 }
 
-// Fonction pour récupérer l'ID du photographe depuis l'URL
-function getPhotographerIdFromURL() {
-  const urlParams = new URLSearchParams(window.location.search);
-  return parseInt(urlParams.get("id"), 10);
-}
-
 // Fonction pour afficher le template du photographe dans le DOM
 function displayPhotographerHeader(photographerTemplate) {
   const $main = document.getElementById("main");
@@ -84,7 +78,7 @@ function displayPhotographerHeader(photographerTemplate) {
 function displayMedia(mediaInstances) {
   const $mediaContainer = document.getElementById("media-container-main");
 
-  // Utilisation de la fonction pour créer l'élément DOM et l'afficher
+  // Utilisation de la fonction pour créer l'élément DOM, la card media, et l'afficher
   mediaInstances.forEach((media) => {
     const $mediaElement = createMediaElement(media);
     $mediaContainer.appendChild($mediaElement);
