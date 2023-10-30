@@ -1,26 +1,24 @@
 // Global var
-const $prevBtn = $(".prev-image");
-const $nextBtn = $(".next-image");
-const $carouselItems = $(".carousel-item");
-const $carouselPauseBtn = $(".carousel-pause-btn");
+const prevBtn = document.querySelector("fa-arrow-circle-left");
+console.log(".prevBtn", prevBtn);
+const nextBtn = document.querySelector(".fa-arrow-circle-right");
+const carouselItems = document.querySelectorAll(".carousel-item");
+const carouselPauseBtn = document.querySelector(".carousel-pause-btn");
 
 let currentItemPosition = 0;
 let carouselInterval;
 
 // Funcs
 const goToNextSlide = () => {
-  if (currentItemPosition + 1 >= $carouselItems.length) {
-    const lastItem = `.item-${currentItemPosition}`;
-
+  if (currentItemPosition + 1 >= carouselItems.length) {
+    const lastItem = carouselItems[currentItemPosition];
     currentItemPosition = 0;
-    const currentItem = `.item-${currentItemPosition}`;
-
+    const currentItem = carouselItems[currentItemPosition];
     setNodeAttributes(lastItem, currentItem);
   } else {
     currentItemPosition += 1;
-    const lastItem = `.item-${currentItemPosition - 1}`;
-    const currentItem = `.item-${currentItemPosition}`;
-
+    const lastItem = carouselItems[currentItemPosition - 1];
+    const currentItem = carouselItems[currentItemPosition];
     setNodeAttributes(lastItem, currentItem);
   }
 };
@@ -28,39 +26,35 @@ const goToNextSlide = () => {
 const goToPreviousSlide = () => {
   if (currentItemPosition - 1 >= 0) {
     currentItemPosition -= 1;
-    const currentItem = `.item-${currentItemPosition}`;
-    const lastItem = `.item-${currentItemPosition + 1}`;
-
+    const currentItem = carouselItems[currentItemPosition];
+    const lastItem = carouselItems[currentItemPosition + 1];
     setNodeAttributes(lastItem, currentItem);
   } else {
-    const lastItem = `.item-${currentItemPosition}`;
-
+    const lastItem = carouselItems[currentItemPosition];
     currentItemPosition = 2;
-    const currentItem = `.item-${currentItemPosition}`;
-
+    const currentItem = carouselItems[currentItemPosition];
     setNodeAttributes(lastItem, currentItem);
   }
 };
 
 const setNodeAttributes = (lastItem, currentItem) => {
-  $(lastItem).css("display", "none");
-  $(currentItem).css("display", "block");
-  $(lastItem).attr("aria-hidden", "true");
-  $(currentItem).attr("aria-hidden", "false");
+  lastItem.style.display = "none";
+  lastItem.setAttribute("aria-hidden", "true");
+  currentItem.style.display = "block";
+  currentItem.setAttribute("aria-hidden", "false");
 };
 
 // Events
-$prevBtn.click(function () {
+prevBtn.addEventListener("click", function () {
   goToPreviousSlide();
 });
 
-$nextBtn.click(function () {
+nextBtn.addEventListener("click", function () {
   goToNextSlide();
 });
 
-$(document).keydown(function (e) {
+document.addEventListener("keydown", function (e) {
   const keyCode = e.keyCode ? e.keyCode : e.which;
-
   if (keyCode === 39) {
     goToNextSlide();
   } else if (keyCode === 37) {
@@ -68,10 +62,10 @@ $(document).keydown(function (e) {
   }
 });
 
-$carouselPauseBtn.on("click", function () {
+carouselPauseBtn.addEventListener("click", function () {
   clearInterval(carouselInterval);
 });
 
-$(document).ready(function () {
-  carouselInterval = setInterval(() => goToNextSlide(), 5000);
+document.addEventListener("DOMContentLoaded", function () {
+  carouselInterval = setInterval(goToNextSlide, 5000);
 });

@@ -7,93 +7,65 @@ class Lightbox {
   createLightbox(media, photographer) {
     console.log("photographer", photographer.name);
     console.log("media", media);
-    const modalContent = document.querySelector(".photo-modal");
+
+    const carouselWrapper = document.querySelector("#modal-wrapper");
+    // Create a ul
+    const carouselContainer = document.createElement("ul");
+    carouselContainer.classList.add("carousel");
+
+    const carouselElements = document.createElement("div");
+    carouselElements.classList.add("carousel-elements");
+
+
 
     media.forEach((mediaItem) => {
+      const carouselLi = document.createElement("li");
+      carouselLi.classList.add("carousel-item");
+
+      const carouselTitle = document.createElement("h2");
+      carouselTitle.classList.add("carousel-title");
+
+      carouselTitle.innerHTML = mediaItem.title;
+
       if (mediaItem.image) {
+        const carouselImg = document.createElement("img");
+        carouselImg.innerHTML = "Type: Image";
         console.log(mediaItem.image);
-        const lightboxContainer = document.createElement("li");
-        lightboxContainer.classList.add("carousel-item");
+        const mediaPath = `assets/images/${photographer.name}/${mediaItem.image}`;
+        carouselImg.classList.add("carousel-media");
 
-        lightboxContainer.innerHTML = `
+        carouselImg.setAttribute("id", `media-${media.id}`);
+        carouselImg.innerHTML = "Type: Image";
+        carouselImg.src = mediaPath;
+        carouselImg.alt = media.title;
 
-          <h1>${mediaItem.id}</h1>
-          <ul class="carousel" aria-label="Our selection of Recipes">
-            <li class="carousel-item item-0" aria-hidden="false">
-              <div role="button" class="controls controls-left">
-                <span class="img prev-image">
-                  <i aria-hidden="true" class="fa fa-arrow-circle-left"></i>
-                </span>
-                <p class="sr-only">Previous</p>
-              </div>
-              <div role="button" class="controls controls-right">
-                <span class="img next-image">
-                  <i aria-hidden="true" class="fa fa-arrow-circle-right"></i>
-                </span>
-                <p class="sr-only">Next</p>
-              </div>
-              <div class="caroussel-title">
-              <h2>${mediaItem.title}</h2>
-              <img id="about-photographer-${mediaItem.id}" src="assets/images/${photographer.name}/${mediaItem.image}" alt="${mediaItem.title}" class="rounded-circle order-md-1 order-lg-2" width="200px" height="200px">
-              </div>
-            </li>
-          </ul>
-          <div>
-            <button class="carousel-pause-btn">Pause carousel</button>
-          </div>
-      `;
-        modalContent.appendChild(lightboxContainer);
+        carouselLi.appendChild(carouselImg);
       } else if (mediaItem.video) {
+        const carouselVideo = document.createElement("video");
+        carouselVideo.innerHTML = "Type: Video";
         console.log(mediaItem.video);
-        const lightboxContainer = document.createElement("div");
-        lightboxContainer.classList.add("lightbox");
+        const mediaPath = `assets/images/${photographer.name}/${mediaItem.video}`;
+        carouselImg.classList.add("carousel-media");
 
-        lightboxContainer.innerHTML = `
-        <div class="carousel">
-          <h1>${mediaItem.id}</h1>
-          <ul class="carousel" aria-label="Our selection of Recipes">
-            <li class="carousel-item item-0" aria-hidden="false">
-              <div role="button" class="controls controls-left">
-                <span class="img prev-image">
-                  <i aria-hidden="true" class="fa fa-arrow-circle-left"></i>
-                </span>
-                <p class="sr-only">Previous</p>
-              </div>
-              <div role="button" class="controls controls-right">
-                <span class="img next-image">
-                  <i aria-hidden="true" class="fa fa-arrow-circle-right"></i>
-                </span>
-                <p class="sr-only">Next</p>
-              </div>
-              <ul class="carousel>
-                <li class="carousel-item">
-                <div role="button" class="controls controls-left">
-                <span class="img prev-image">
-                       <i aria-hidden="true" class="fa fa-arrow-circle-left"></i>
-                   </span>
-                   <p class="sr-only">Previous</p>
-                   </div>
-                   <div role="button" class="controls controls-right">
-                   <span class="img next-image">
-                       <i aria-hidden="true" class="fa fa-arrow-circle-right"></i>
-                   </span>
-                   <p class="sr-only">Next</p>
-               </div>
-                  <h2 class="caroussel-title">${mediaItem.title}</h2>
-                  <img id="about-photographer-${mediaItem.id}" src="assets/images/${photographer.name}/${mediaItem.video}" alt="${mediaItem.title}" class="rounded-circle order-md-1 order-lg-2" width="200px" height="200px">
-                </li>
-              </ul>
-            </li>
-          </ul>
-          <div>
-            <button class="carousel-pause-btn">Pause carousel</button>
-          </div>
-        </div>
-      `;
-        modalContent.appendChild(lightboxContainer);
+        carouselVideo.setAttribute("id", `media-${media.id}`);
+        carouselVideo.innerHTML = "Type: Video";
+        carouselVideo.src = mediaPath;
+        carouselVideo.alt = media.title;
+
+        carouselContainer.classList.add("carousel-item");
+
+        carouselLi.appendChild(carouselVideo);
       }
+      carouselElements.appendChild(carouselTitle);
+      carouselLi.appendChild(carouselTitle);
+      carouselContainer.appendChild(carouselLi);
+      carouselWrapper.appendChild(carouselContainer);
     });
   }
+
+  //2ndlevel
+  // carouselContainer.appendChild(mediaImg);
+  //1st level
 }
 
 export { Lightbox };

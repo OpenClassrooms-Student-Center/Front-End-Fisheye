@@ -222,6 +222,10 @@ form input {
   left: 50%;
 }
 
+.carousel-media {
+  width: 40px;
+}
+
 .no-scroll {
   overflow: hidden;
 }
