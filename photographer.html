@@ -26,17 +26,25 @@
         </a>
       </header>
       <main id="main"></main>
+      <!-- HTML -->
       <section id="media-container">
         <div id="media-container-header">
           <label for="sortSelect">Trier par :</label>
-          <select id="sortSelect" name="sortSelect" aria-label="Tri des médias">
-            <option value="popularity">Popularité</option>
-            <option value="date">Date</option>
-            <option value="title">Titre</option>
-          </select>
+          <div class="custom-select" role="listbox" aria-labelledby="selectedOptionLabel" tabindex="0">
+            <span id="selectedOptionLabel" class="sr-only">Option sélectionnée :</span>
+            <span id="selectedOption" role="option" aria-selected="true" tabindex="-1">Popularité</span>
+            <ul id="selectOptions" class="select-options" role="list">
+              <li role="option" aria-selected="false" tabindex="-1" data-value="popularity">Popularité</li>
+              <li role="option" aria-selected="false" tabindex="-1" data-value="date">Date</li>
+              <li role="option" aria-selected="false" tabindex="-1" data-value="title">Titre</li>
+            </ul>
+          </div>
         </div>
         <div id="media-container-main"></div>
       </section>
+      
+      
+
       <div id="contact_modal">
         <div class="modal">
           <header>
