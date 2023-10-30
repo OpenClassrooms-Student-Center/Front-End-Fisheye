@@ -9,7 +9,7 @@ function createMedia(data) {
       date: data.date,
       price: data.price,
       type: "photo",
-      source: `assets/photographers/${data.image}`,
+      source: `assets/galleries/${data.image}`,
     };
   } else if (data.video) {
     return {
@@ -20,7 +20,7 @@ function createMedia(data) {
       date: data.date,
       price: data.price,
       type: "video",
-      source: data.video,
+      source: `assets/galleries/${data.video}`,
     };
   }
 }
@@ -28,9 +28,11 @@ function createMedia(data) {
 // Fonction pour créer l'élément DOM d'un média
 function createMediaElement(media) {
   const $mediaElement = document.createElement("div");
+  const isVideo = media.type === "video";
+
   $mediaElement.innerHTML = `
       <!-- Structure HTML de la carte média -->
-      <div class="media-card">
+      <div class="media-card ${isVideo ? 'video' : ''}">
         <img src="${media.source}" alt="${media.title}">
         <p>${media.title}</p>
         <p>${media.likes} Likes</p>
@@ -61,7 +63,6 @@ async function initPhotographerPage() {
     // Créer le template du photographe
     const photographerTemplate = photographerDetailTemplate(photographer);
     displayPhotographerHeader(photographerTemplate);
-
     // Récupérer les médias du photographe
     const photographerMedia = await fetchData("/data/photographers.json").then(
       (data) =>
@@ -85,7 +86,7 @@ function getPhotographerIdFromURL() {
 // Fonction pour afficher le template du photographe dans le DOM
 function displayPhotographerHeader(photographerTemplate) {
   const $main = document.getElementById("main");
-  $main.innerHTML = photographerTemplate;
+  $main.appendChild(photographerTemplate);
 }
 
 // Fonction pour afficher les médias dans le DOM

@@ -44,6 +44,25 @@
     background-color: var(--secondary-color);
 }
 
+/* REALISATIONS DU PHOTOGRAPHE */
+#media-container{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 70px;
+    margin: 100px;
+}
+.media-card img{
+    width: 400px;
+    height: 400px;
+    object-fit: cover;
+}
+.media-card.video img {
+    width: 100px; 
+    height: 100px;
+    object-fit: cover;
+    display: block;
+    margin: auto;
+}
 .modal {
     border-radius: 5px;
     background-color: #DB8876;
