@@ -16,7 +16,8 @@ class Lightbox {
     const carouselElements = document.createElement("div");
     carouselElements.classList.add("carousel-elements");
 
-
+    const carouselArrows = document.createElement("div");
+    carouselArrows.classList.add("carousel-arrows");
 
     media.forEach((mediaItem) => {
       const carouselLi = document.createElement("li");
@@ -45,7 +46,7 @@ class Lightbox {
         carouselVideo.innerHTML = "Type: Video";
         console.log(mediaItem.video);
         const mediaPath = `assets/images/${photographer.name}/${mediaItem.video}`;
-        carouselImg.classList.add("carousel-media");
+        carouselVideo.classList.add("carousel-media");
 
         carouselVideo.setAttribute("id", `media-${media.id}`);
         carouselVideo.innerHTML = "Type: Video";
