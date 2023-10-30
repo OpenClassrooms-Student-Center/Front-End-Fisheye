@@ -52,7 +52,7 @@ async function initPhotographerPage() {
     );
 
     // Créer le template du photographe
-    const photographerTemplate = photographerDetailTemplate(photographer);
+    const photographerTemplate = photographerDetailsHeader(photographer);
     displayPhotographerHeader(photographerTemplate);
     // Récupérer les médias du photographe
     const photographerMedia = await fetchData("/data/photographers.json").then(
