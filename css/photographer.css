@@ -2,10 +2,9 @@
   display: none;
 }
 
-.photograph-header {
-  background-color: #fafafa;
+#photograph-header {
   height: 300px;
-  margin: 0 100px;
+  padding: 1em 10%;
 }
 
 .contact_button {
@@ -88,6 +87,11 @@ form input {
   border-radius: 50%;
   object-fit: cover;
 }
+
+.photographer-info {
+  background-color: #fafafa;
+}
+
 .photographer-card h2,
 .photographer-info h2 {
   color: #d3573c;
@@ -126,7 +130,6 @@ form input {
   align-items: center;
   justify-content: space-between;
   padding: 2em;
-  margin: 2em;
 }
 
 .photographer-info img {
@@ -137,12 +140,12 @@ form input {
 }
 
 .medias-wrapper {
-  width: 100%;
   width: auto;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 20px;
-  padding: 3em;
+  padding: 10%;
+  column-gap: 3em;
 }
 
 .media-details {
@@ -151,6 +154,10 @@ form input {
   /* background-color: lightblue; */
   text-align: center;
   align-items: center;
+}
+.media-details p {
+  color: #901c1c;
+  font-size: 24px;
 }
 
 .media-like {
