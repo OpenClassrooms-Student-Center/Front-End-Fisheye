@@ -2,10 +2,16 @@ const contactCloseBtn = document.querySelector('.contact-modal__close-btn');
 const contactModal = document.getElementById('contact-modal');
 const mainDocument = document.getElementById('main');
 
+// close contact modal and update aria hidden attributes
+const closeContactModal = () => {
+  contactModal.style.display = 'none';
+  contactModal.setAttribute('aria-hidden', 'true');
+  mainDocument.setAttribute('aria-hidden', 'false');
+};
+
 contactCloseBtn.addEventListener('click', closeContactModal);
 
-
-function displayModal() {
+const displayModal = () => {
   const createDiv = document.createElement('div');
   mainDocument.setAttribute('aria-hidden', 'true');
   document.body.appendChild(createDiv);
@@ -22,10 +28,10 @@ function displayModal() {
     e.preventDefault();
     formValidation(contactForm);
   });
-}
+};
 
 // check inputs for contact form
-function formValidation(form) {
+  const formValidation = (form) => {
   const contactFirstName = document.getElementById('contact-firstName');
   const contactLastName = document.getElementById('contact-lastName');
   const contactEmail = document.getElementById('contact-email');
@@ -63,33 +69,21 @@ function formValidation(form) {
   closeContactModal();
 }
 
-// close contact modal and update aria hidden attributes
-function closeContactModal() {
-  contactModal.style.display = 'none';
-  contactModal.setAttribute('aria-hidden', 'true');
-  mainDocument.setAttribute('aria-hidden', 'false');
-}
-
-// used to be able to keep the focus in the form while tabbing
-function trapFocusContactModal() {
+const trapFocusContactModal = () => {
   const focusItems = contactModal.querySelectorAll('button:not([disabled]), textarea:not([disabled]), input[type="text"]:not([disabled])');
   const firstFocusItem = focusItems[0];
   const lastFocusItem = focusItems[focusItems.length - 1];
 
-  contactModal.addEventListener('keydown', function(e) {
+  contactModal.addEventListener('keydown', (e) => {
     const isTabPressed = (e.key === 'Tab');
 
     if (!isTabPressed) { return; }
 
-    // si shift + tab est enfoncé (preventDefault évite que le bouton soit ignoré)
-    // if shift + tab is pressed (preventDefault avoids button to be skipped over)
     if (e.shiftKey) {
       if (document.activeElement === firstFocusItem) {
         lastFocusItem.focus();
         e.preventDefault();
       }
-     // else = tab seul est enfoncé
-    // else = tab only is pressed
     } else {
       if (document.activeElement === lastFocusItem) {
         firstFocusItem.focus();
@@ -97,4 +91,4 @@ function trapFocusContactModal() {
       }
     }
   });
-}
+};

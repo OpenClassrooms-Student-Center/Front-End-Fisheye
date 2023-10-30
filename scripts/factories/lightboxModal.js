@@ -25,7 +25,7 @@ export class LightboxFactory {
           }
       }
      
-    
+    // Utilisation de la lightbox au clavier
       document.addEventListener("keydown", (event) => {
           if (event.key === "Enter" && (event.target.tagName === "IMG"|| event.target.tagName === "VIDEO")) {
             const currentElement = event.target;
@@ -77,6 +77,7 @@ export class LightboxFactory {
       btnClose.className = "btnClose";
       btnClose.innerHTML = "<i class='fa-solid fa-xmark'></i>";
       btnClose.setAttribute('aria-label', 'Bouton fermer');
+      //Utilisation de la lightbox au clic souris
       btnNext.addEventListener("click", () => {
         this._goToNext();
       });

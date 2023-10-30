@@ -1,4 +1,4 @@
-import { photographerFactory } from "./photographer.js";
+import { photographerFactory } from "./photographers.js";
 
 export class PhotographerManager {
   constructor() {

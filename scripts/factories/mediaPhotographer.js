@@ -76,16 +76,16 @@ export class Mediaphotographer {
     spanPrice.innerText = `${price}€ / jour`;
     const picture = `../../assets/photographers/${portrait}`;
     photographHeader.innerHTML = `
-            <div>
-             <h1 aria-label="${name}">${name}</h1>
-             <span aria-label="${city}, ${country}">${city}, ${country}</span>
-             <p aria-label="${tagline}">${tagline}</p>
-            </div>
-            <div> 
-               <button aria-label="Contact me" class="contact_button" onClick="displayModal()" aria-label="Bouton d'ouverture du modal de contact">Contactez-moi</button>
-            </div>
-            <img src="${picture}" alt="${name}" aria-label="${name}">
-            `;
+    <aside class="infos" aria-labelledby='aside-title' tabIndex="0">
+    <div class="infos-name">
+    <h1 id='aside-title'>${name}</h1>
+    </div>	
+    <span class="origin">${city}, ${country}</span>
+    <span class="tagline">${tagline}</span>
+  </aside>	
+  <button class="contact_button" aria-label="cliquer pour ouvrir le formulaire de contact" onclick='displayModal()'>Contactez-moi</button>
+  <img alt="portrait du photographe ${name}" src="${picture}" tabindex="0">
+`
   }
   insertMedias(media, photographer) {
     const containerCards = document.getElementById("containerCards");
@@ -106,7 +106,7 @@ export class Mediaphotographer {
   <div class="card" id="card" >
     ${mediaHtml}
     <div class="containerInfos" >
-      <h2>${title}</h2>
+      <h1>${title}</h1>
       <div class="containerLikes_i">
        <span class="totalLikes" id="like-${id}">${likes}</span>
        <i id="heart-${id}" class="fa-solid fa-heart heart" aria-label="likes" tabIndex="0"></i>
