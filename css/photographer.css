@@ -214,12 +214,12 @@ form input {
   display: none;
   height: 500px;
   justify-content: center;
-  left: 50%;
-  position: absolute;
-  top: 75%;
   transform: translate(-50%, -50%);
   width: 700px;
   z-index: 2;
+  position: fixed;
+  top: 50%;
+  left: 50%;
 }
 
 .no-scroll {
