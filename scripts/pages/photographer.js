@@ -24,9 +24,9 @@ function createMedia(data) {
   }
 }
 
-// Fonction pour créer l'élément DOM d'un média
+// Fonction pour créer l'élément DOM, la card d'un média
 function createMediaElement(media) {
-  const $mediaElement = document.createElement("div");
+  const $mediaElement = document.createElement("article");
   const isVideo = media.type === "video";
 
   $mediaElement.innerHTML = `
@@ -39,13 +39,6 @@ function createMediaElement(media) {
         </div>
     `;
   return $mediaElement;
-}
-
-// Fonction asynchrone pour récupérer les données depuis un fichier JSON
-async function fetchData(url) {
-  const response = await fetch(url);
-  const data = await response.json();
-  return data;
 }
 
 // Fonction principale pour initialiser la page du photographe

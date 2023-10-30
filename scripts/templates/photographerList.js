@@ -1,3 +1,4 @@
+//  Fonction factory pour créer une card photographe sur la page d accueil
 function photographerTemplate(data) {
   const { name, id, city, country, tagline, price, portrait } = data;
   const picture = `assets/photographers/${portrait}`;
@@ -50,6 +51,5 @@ function photographerTemplate(data) {
 
     return $article;
   }
-
   return { getUserCardDOM };
 }

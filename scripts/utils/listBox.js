@@ -33,9 +33,8 @@ selectOptions.addEventListener('click', function (event) {
     selectedOption.textContent = event.target.textContent;
     closeSelectOptions();
 
-    // Tu peux également déclencher ici l'événement de tri en fonction de la valeur sélectionnée.
+    // Déclencher ici l'événement de tri en fonction de la valeur sélectionnée.
     const selectedValue = event.target.getAttribute('data-value');
-    // Fais quelque chose avec la valeur sélectionnée (tri, etc.).
     console.log('Option sélectionnée :', selectedValue);
   }
 });
@@ -77,9 +76,6 @@ function selectOptionWithEnter(event) {
     const selectedValue = document.activeElement.getAttribute('data-value');
     selectedOption.textContent = document.activeElement.textContent;
     closeSelectOptions();
-
-    // Faites quelque chose avec la valeur sélectionnée (tri, etc.).
-    console.log('Option sélectionnée :', selectedValue);
   }
 }
 
