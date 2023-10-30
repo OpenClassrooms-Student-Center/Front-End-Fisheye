@@ -1,3 +1,4 @@
+
 #contact_modal {
     display: none;
 }
@@ -7,9 +8,25 @@
     height: 300px;
     margin: 0 100px;
 }
-
+.photograph-header h1{
+   color: var(--secondary-color);
+}
+.location{
+    color: var(--primary-color);
+}
+.price-fixed {
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    width: 150px;
+    background-color: var(--secondary-color);
+    padding: 10px;
+    color: black;
+    font-weight: bold;
+  }
+  
 .contact_button {
-    font-size: 20px;
+    font-size: 1.25rem;
     font-weight: bold;
     color: white;
     padding: 11px;
@@ -19,6 +36,12 @@
     background-color: var(--primary-color);
     border-radius: 5px;
     cursor: pointer;
+    transition: background-color 400ms ease;
+}
+
+.contact_button:hover,
+.contact_button:focus {
+    background-color: var(--secondary-color);
 }
 
 .modal {
@@ -43,7 +66,7 @@
 }
 
 .modal header h2 {
-    font-size: 64px;
+    font-size: 4rem;
     font-weight: normal;
     text-align: center;
 }
@@ -57,7 +80,7 @@ form {
 
 form label {
     color: #312E2E;
-    font-size: 36px;
+    font-size: 2.25rem;
 }
 
 form div {

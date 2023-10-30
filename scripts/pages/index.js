@@ -1,3 +1,10 @@
+init();
+
+async function init() {
+   const { photographers } = await getPhotographers();
+  displayData(photographers);
+}
+
 async function getPhotographers() {
   const response = await fetch("/data/photographers.json");
   const data = await response.json();
@@ -14,19 +21,4 @@ async function displayData(photographers) {
   });
 }
 
-async function init() {
-  const urlParams = new URLSearchParams(window.location.search);
-  const photographerId = urlParams.get("id");
 
-  if (photographerId) {
-    const photographer = await getPhotographerById(photographerId);
-    const photographerTemplate = photographerDetailTemplate(photographer);
-    const $main = document.getElementById("main");
-    $main.appendChild(photographerTemplate);
-  } else {
-    const { photographers } = await getPhotographers();
-    displayData(photographers);
-  }
-}
-
-init();

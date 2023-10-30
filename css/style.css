@@ -7,9 +7,10 @@
 
 body {
     font-family: "DM Sans", sans-serif;
-    margin: 0;
     padding: 0;
     box-sizing: border-box;
+    max-width: 1500px;
+    margin: auto;
 }
 
 ::after,
@@ -31,11 +32,6 @@ header {
 h1 {
     color: var(--primary-color);
     margin-right: 100px;
-}
-
-main {
-    max-width: 1500px;
-    margin: 20px auto;
 }
 
 .logo {
