@@ -1,76 +1,209 @@
-#contact_modal {
-    display: none;
+.photograph-header {
+  background-color: #fafafa;
+  height: 300px;
+  margin: 0 100px;
 }
 
 .photograph-header {
-    background-color: #FAFAFA;
-    height: 300px;
-    margin: 0 100px;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.photograph-header p {
+  color: #525252;
+  font-size: 18px;
+  text-align: left;
+  margin-top: 2rem;
+}
+
+.containerCards {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 95px;
+  margin: 100px 100px;
+}
+
+.card img,
+video {
+  object-fit: cover;
+  width: 350px;
+  height: 300px;
+  border-radius: 5px;
 }
 
 .contact_button {
-    font-size: 20px;
-    font-weight: bold;
-    color: white;
-    padding: 11px;
-    width: 170px;
-    height: 70px;
-    border: none;
-    background-color: #901C1C;
-    border-radius: 5px;
-    cursor: pointer;
+  font-size: 20px;
+  font-weight: bold;
+  color: white;
+  padding: 11px;
+  width: 170px;
+  height: 70px;
+  border: none;
+  background-color: #901c1c;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.contact-header {
+  margin-bottom: -20px;
+}
+
+.contact-header h2 {
+  height: 83px;
+  font-size: 55px;
+  font-weight: 400;
+  margin-top: -25px;
+  color: #000;
+}
+
+#contact-modal {
+  display: none;
+  max-width: 500px;
+  z-index: 10;
+}
+
+#contact-modal-lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: 5;
+  background-color: rgba(255, 255, 255, 0.95);
+}
+
+.contact-modal .contact-header {
+  position: relative;
+  display: flex;
+  margin: 0;
+  margin-bottom: 16px;
+  align-items: start;
+}
+
+.contact-modal__close-btn {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  cursor: pointer;
+  align-self: baseline;
+  padding: 0;
+  font-size: 3em;
+  color: white;
+  background-color: transparent;
+  border: none;
+}
+
+#contact-modal textarea {
+  width: 100%;
+  height: 5em;
+  margin-bottom: 2em;
+  border-radius: 5px;
+  resize: none;
 }
 
 .modal {
-    border-radius: 5px;
-    background-color: #DB8876;
-    width: 50%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: space-between;
-    padding: 35px;
-    margin: auto;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 5px;
+  background-color: #db8876;
+  width: 40%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  padding: 25px;
+  margin: auto;
+
 }
 
 .modal header {
-    justify-content: space-between;
-    width: 100%;
+  justify-content: space-between;
+  width: 100%;
 }
 
 .modal header img {
-    cursor: pointer;
+  cursor: pointer;
 }
 
 .modal header h2 {
-    font-size: 64px;
-    font-weight: normal;
-    text-align: center;
+  font-size: 64px;
+  font-weight: normal;
+  text-align: center;
+}
+
+#contact_button {
+  padding: 11px;
+  border: none;
+  border-radius: 5px;
+  background-color: #911c1c;
+  color: white;
+  font-size: 0.9rem;
+  font-weight: bold;
 }
 
 form {
-    display: flex;
-    width: 100%;
-    flex-direction: column;
-    align-items: flex-start;
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  align-items: flex-start;
 }
 
 form label {
-    color: #312E2E;
-    font-size: 36px;
+  color: #312e2e;
+  font-size: 36px;
 }
 
 form div {
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-    align-items: self-start;
-    margin-bottom: 26px;
+  flex-direction: column;
+  width: 100%;
+  align-items: self-start;
+  margin-bottom: 26px;
 }
 
 form input {
-    width: 100%;
-    height: 68px;
-    border: none;
-    border-radius: 5px;
+  width: 100%;
+  height: 2.5em;
+  border: none;
+  border-radius: 5px;
+}
+
+#select {
+  margin: 25px 100px;
+}
+
+#select>label {
+  margin-right: 25px;
+  font-weight: bold;
+}
+
+#orderSelect {
+  height: 50px;
+  padding: 0 10px;
+  background-color: #901c1c;
+  border-radius: 5px;
+  color: white;
+}
+
+.card_totalLikes_Price {
+  position: fixed;
+  right: 2rem;
+  background: #db8876;
+  bottom: 0;
+  border-radius: 5px 5px 0 0;
+  width: 376px;
+  height: 89px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.card_totalLikes_Price span {
+  font-size: x-large;
+  font-weight: bold;
+}
+
+.total-likes {
+  margin-left: 15px;
 }

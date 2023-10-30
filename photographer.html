@@ -1,37 +1,67 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <link href="css/style.css" rel="stylesheet" type="text/css" />
-    <meta charset="utf-8">
-    <link rel="icon" type="image/png" href="assets/favicon.png">
-    <link href="https://fonts.googleapis.com/css?family=DM+Sans&display=swap" rel="stylesheet">
-    <title>Fisheye - photographe </title>
-  </head>
-  <body>
-    <header>
-      <img src="assets/images/logo.png" class="logo" />
-    </header>
-    <main id="main">
-      <div class="photograph-header">
-        <button class="contact_button" onclick="displayModal()">Contactez-moi</button>
+<html lang="fr">
+
+<head>
+  <link href="css/style.css" rel="stylesheet" type="text/css" />
+  <meta charset="utf-8" />
+  <link rel="icon" type="image/png" href="assets/favicon.png" />
+  <script src="https://kit.fontawesome.com/2f06b2b5ee.js" crossorigin="anonymous"></script>
+  <link href="https://fonts.googleapis.com/css?family=DM+Sans&display=swap" rel="stylesheet" />
+  <title>Fisheye - photographe</title>
+</head>
+
+<body>
+  <header>
+    <a href="./index.html">
+      <img src="assets/images/logo.png" alt="Fisheye Home Page" class="logo">
+    </a>
+  </header>
+  <main id="main">
+    <div id="photograph-header" class="photograph-header">
+      <div class="photograph_infos">
       </div>
-    </main>
-    <div id="contact_modal">
-			<div class="modal">
-				<header>
-          <h2>Contactez-moi</h2>
-          <img src="assets/icons/close.svg" onclick="closeModal()" />
-        </header>
-				<form>
-					<div>
-						<label>Prénom</label>
-						<input />
-					</div>
-          <button class="contact_button">Envoyer</button>
-				</form>
-			</div>
-		</div>
-    <script src="/scripts/pages/photographer.js"></script>
-    <script src="/scripts/utils/contactForm.js"></script>
-  </body>
+  </main>
+  <div id="select">
+    <label for="orderSelect">Trier par</label>
+    <select name="orderSelect" id="orderSelect">
+      <option value="popularity">Popularité</option>
+      <option value="date">Date</option>
+      <option value="title">Titre</option>
+    </select>
+  </div>
+  <section id="containerCards" class="containerCards"></section>
+  <section id="card_totalLikes_Price" class="card_totalLikes_Price">
+    <div class="total-likes__container">
+    <span id="total-likes" class="total-likes"></span>
+    <img id="likes" src="assets/icons/black-heart.svg" alt="coeur-total" aria-label="likes"></img>
+  </div>
+    <span id="price"></span>
+  </section>
+  <div id="contact-modal" class="modal" role="dialog" aria-modal="true" aria-hidden="false">
+    <div class="contact-header">
+      <div>
+        <h2 id="h2Name"></h2>
+      </div>
+      <header>
+        <button type="button" class="contact-modal__close-btn" title="Fermeture du formulaire"
+          aria-label="Fermeture du formulaire de contact"> <img src="assets/icons/close.svg"
+          onclick="closeContactModal()" alt="X pour fermer le modal" /></button>
+    </div>
+    </header>
+    <form id="contact-form" method="" action="index.html" name="signup"><label
+        for="contact-lastName">Prénom</label><input type="text" name="contact-lastName" id="contact-lastName"
+        aria-labelledby="" autofocus=""><label for="contact-firstName">Nom</label><input type="text"
+        name="contact-firstName" id="contact-firstName"><label for="contact-email">Email</label><input type="email"
+        name="contact-email" id="contact-email"><label for="contact-message">Votre message</label><textarea type="text"
+        name="contact-message" id="contact-message"></textarea><button id="contact_button"
+        type="submit">Envoyer</button></form>
+  </div>
+  </div>
+  <!-- Import des factory patterns -->
+  <script src="/scripts/pages/photographer.js" type="module"></script>
+
+  <!--Import des fonctions utilitaires-->
+  <script src="/scripts/utils/contactForm.js"></script>
+</body>
+
 </html>
