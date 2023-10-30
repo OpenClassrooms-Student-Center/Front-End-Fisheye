@@ -1,16 +1,15 @@
 // Global var
-const prevBtn = $(".prev-image"); // Wrap the selector with $()
-const nextBtn = $(".next-image"); // Wrap the selector with $()
-const carouselItems = ".carousel-item";
-const carouselPauseBtn = ".carousel-pause-btn";
+const $prevBtn = $(".prev-image");
+const $nextBtn = $(".next-image");
+const $carouselItems = $(".carousel-item");
+const $carouselPauseBtn = $(".carousel-pause-btn");
 
 let currentItemPosition = 0;
 let carouselInterval;
 
 // Funcs
 const goToNextSlide = () => {
-  if (currentItemPosition + 1 >= $(carouselItems).length) {
-    // Wrap carouselItems with $()
+  if (currentItemPosition + 1 >= $carouselItems.length) {
     const lastItem = `.item-${currentItemPosition}`;
 
     currentItemPosition = 0;
@@ -51,11 +50,11 @@ const setNodeAttributes = (lastItem, currentItem) => {
 };
 
 // Events
-prevBtn.click(function () {
+$prevBtn.click(function () {
   goToPreviousSlide();
 });
 
-nextBtn.click(function () {
+$nextBtn.click(function () {
   goToNextSlide();
 });
 
@@ -69,9 +68,9 @@ $(document).keydown(function (e) {
   }
 });
 
-// carouselPauseBtn.addEventListener("click", function () {
-//   clearInterval(carouselInterval);
-// });
+$carouselPauseBtn.on("click", function () {
+  clearInterval(carouselInterval);
+});
 
 $(document).ready(function () {
   carouselInterval = setInterval(() => goToNextSlide(), 5000);
