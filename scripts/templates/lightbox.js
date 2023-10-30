@@ -13,15 +13,29 @@ class Lightbox {
     const carouselContainer = document.createElement("ul");
     carouselContainer.classList.add("carousel");
 
+    const carouselControls = document.createElement("div");
+    carouselControls.classList.add("controls");
+    const controlsPrevious = document.createElement("div");
+    controlsPrevious.classList.add("controls-previous", "controls");
+    const spanPrevious = document.createElement("span");
+    spanPrevious.classList.add("previous-img");
+    const spanNext = document.createElement("span");
+    spanNext.classList.add("next-img");
+
+    const controlsNext = document.createElement("div");
+    controlsNext.classList.add("controls-next", "controls");
+
     const carouselElements = document.createElement("div");
     carouselElements.classList.add("carousel-elements");
 
     const carouselArrows = document.createElement("div");
     carouselArrows.classList.add("carousel-arrows");
 
-    media.forEach((mediaItem) => {
+    media.forEach((mediaItem, index) => {
       const carouselLi = document.createElement("li");
       carouselLi.classList.add("carousel-item");
+      // Set aria-hidden based on the index
+      carouselLi.style.display = index === 0 ? "block" : "none";
 
       const carouselTitle = document.createElement("h2");
       carouselTitle.classList.add("carousel-title");
@@ -53,13 +67,18 @@ class Lightbox {
         carouselVideo.src = mediaPath;
         carouselVideo.alt = media.title;
 
-        carouselContainer.classList.add("carousel-item");
-
         carouselLi.appendChild(carouselVideo);
       }
       carouselElements.appendChild(carouselTitle);
       carouselLi.appendChild(carouselTitle);
       carouselContainer.appendChild(carouselLi);
+
+      controlsNext.appendChild(spanPrevious);
+      controlsPrevious.appendChild(spanPrevious);
+      carouselControls.appendChild(controlsNext);
+      carouselControls.appendChild(controlsPrevious);
+
+      carouselWrapper.appendChild(carouselControls);
       carouselWrapper.appendChild(carouselContainer);
     });
   }

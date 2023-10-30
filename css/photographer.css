@@ -310,3 +310,16 @@ form input {
   align-items: center;
   justify-content: center;
 }
+
+.controls {
+  display: flex;
+  width: 2em;
+  height: 2em;
+}
+
+.controls-previous {
+  background-color: antiquewhite;
+}
+.controls-next {
+  background-color: lightgreen;
+}
