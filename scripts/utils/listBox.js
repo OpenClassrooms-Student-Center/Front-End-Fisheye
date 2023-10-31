@@ -19,12 +19,7 @@ function closeSelectOptions() {
 // Ouverture/fermeture listbox
 document.addEventListener("click", function (event) {
   const isInsideSelectContainer = $selectContainer.contains(event.target);
-
-  if (!isInsideSelectContainer) {
-    closeSelectOptions();
-  } else {
-    openSelectOptions();
-  }
+  isInsideSelectContainer ? openSelectOptions() : closeSelectOptions();
 });
 
 $selectOptions.addEventListener("click", function (event) {
@@ -40,6 +35,15 @@ $selectOptions.addEventListener("click", function (event) {
 // *************************** END GESTION COMPORTEMENT LISTBOX SOURIS ***************************
 
 // *************************** START GESTION COMPORTEMENT LISTBOX CLAVIER ***************************
+
+// Événement pour ouvrir la boîte d'options avec le clavier
+$selectContainer.addEventListener("keydown", openSelectOptionsWithKeyboard);
+
+// Événement pour gérer la navigation avec le clavier
+$selectContainer.addEventListener("keydown", navigateSelectOptionsWithArrows);
+
+// Événement pour gérer la sélection avec la touche Entrée
+$selectOptions.addEventListener("keydown", selectOptionWithEnter);
 
 // Fonction pour ouvrir la boîte d'options avec le clavier
 function openSelectOptionsWithKeyboard(event) {
@@ -84,23 +88,3 @@ function selectOptionWithEnter(event) {
 }
 
 // *************************** END GESTION COMPORTEMENT LISTBOX CLAVIER ***************************
-
-// *************************** ÉVÉNEMENTS LISTBOX CLAVIER ***************************
-
-// Événement pour ouvrir la boîte d'options avec le clavier
-$selectContainer.addEventListener("keydown", openSelectOptionsWithKeyboard);
-
-// Événement pour gérer la navigation avec le clavier
-$selectContainer.addEventListener("keydown", navigateSelectOptionsWithArrows);
-
-// Événement pour gérer la sélection avec la touche Entrée
-$selectOptions.addEventListener("keydown", selectOptionWithEnter);
-
-// Événement pour fermer la boîte d'options avec le clavier lorsque la touche Entrée est utilisée sur une option
-$selectOptions.addEventListener("click", function (event) {
-  if (event.target.tagName === "LI") {
-    selectOptionWithEnter(event);
-  }
-});
-
-// *************************** FIN ÉVÉNEMENTS LISTBOX CLAVIER ***************************
