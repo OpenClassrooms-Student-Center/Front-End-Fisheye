@@ -1,6 +1,8 @@
 // Appeler la fonction principale pour initialiser la page du photographe
 initPhotographerPage();
 
+// ********************************* START AFFICHAGE DU PROFIL PHOTOGRAPHE ET DE SA GALLERIE ********************************* //
+
 // Fonction principale pour initialiser la page du photographe
 async function initPhotographerPage() {
   const photographerId = getParameterFromURL("id");
@@ -11,9 +13,9 @@ async function initPhotographerPage() {
       (data) => data.photographers.find((p) => p.id === photographerId)
     );
 
-    // Créer le template de la tête de page du profil du photographe
-    const photographerTemplate = photographerProfile(photographer);
-    displayPhotographerProfile(photographerTemplate);
+    // Créer le template du profil du photographe
+    const photographerInListTemplate = photographerProfileTemplate(photographer);
+    displayphotographerProfileTemplate(photographerInListTemplate);
 
     // Récupérer les médias du photographe
     const photographerMedia = await fetchData("/data/photographers.json").then(
@@ -30,12 +32,13 @@ async function initPhotographerPage() {
 }
 
 // Fonction pour afficher le template du photographe dans le DOM
-function displayPhotographerProfile(photographerTemplate) {
+function displayphotographerProfileTemplate(photographerInListTemplate) {
   const $main = document.getElementById("main");
-  $main.appendChild(photographerTemplate);
+  $main.appendChild(photographerInListTemplate);
 }
+// ********************************* END AFFICHAGE DU PROFIL PHOTOGRAPHE ET DE SA GALLERIE ********************************* //
 
-// ********************************* AFFICHAGE DE LA GALLERIE ********************************* //
+// ********************************* START AFFICHAGE DU MEDIA DE LA GALLERIE ********************************* //
 
 // Fonction factory pour créer les médias
 function createMedia(data) {
@@ -90,3 +93,4 @@ function displayMedia(mediaInstances) {
     $mediaContainer.appendChild($mediaElement);
   });
 }
+// ********************************* END AFFICHAGE DU MEDIA DE LA GALLERIE ********************************* //

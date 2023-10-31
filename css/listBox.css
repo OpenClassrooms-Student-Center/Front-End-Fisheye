@@ -1,0 +1,43 @@
+/* ******************  START DE LA LISTBOX ******************  */
+.custom-select {
+    position: relative;
+    display: inline-block;
+}
+
+#selectOptions {
+    display: none;
+    position: absolute;
+    background-color: var(--primary-color);
+    box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+    z-index: 1;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    border-radius: 5px;
+}
+
+#selectOptions li {
+    padding: 10px;
+    cursor: pointer;
+    color: white;
+    border-bottom: 1px white solid;
+}
+
+#selectOptions li:last-child {
+    border-bottom: none;
+}
+
+#selectOptions li:hover {
+    background-color: var(--secondary-color);
+    border-bottom: 1px solid var(--secondary-color);
+}
+
+#selectedOption {
+    cursor: pointer;
+}
+
+.custom-select[aria-expanded="true"] #selectOptions {
+    display: block;
+}
+
+/* ******************  END DE LA LISTBOX  ******************  */

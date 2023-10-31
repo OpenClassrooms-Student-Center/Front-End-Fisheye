@@ -1,0 +1,37 @@
+body {
+    font-family: "DM Sans", sans-serif;
+    padding: 0;
+    box-sizing: border-box;
+    max-width: 1500px;
+    margin: auto;
+}
+
+::after,
+::before {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+.container{
+    margin: 20px;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 90px;
+}
+
+h1 {
+    color: var(--primary-color);
+}
+
+.logo {
+    height: 50px;
+}
+
+/* debugg */
+/* *{
+    border: 1px red solid;
+} */
