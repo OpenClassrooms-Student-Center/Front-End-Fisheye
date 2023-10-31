@@ -1,3 +1,42 @@
+// Appeler la fonction principale pour initialiser la page du photographe
+initPhotographerPage();
+
+// Fonction principale pour initialiser la page du photographe
+async function initPhotographerPage() {
+  const photographerId = getParameterFromURL("id");
+
+  if (photographerId) {
+    // Récupérer les données du photographe
+    const photographer = await fetchData("/data/photographers.json").then(
+      (data) => data.photographers.find((p) => p.id === photographerId)
+    );
+
+    // Créer le template de la tête de page du profil du photographe
+    const photographerTemplate = photographerProfile(photographer);
+    displayPhotographerProfile(photographerTemplate);
+
+    // Récupérer les médias du photographe
+    const photographerMedia = await fetchData("/data/photographers.json").then(
+      (data) =>
+        data.media.filter((media) => media.photographerId === photographerId)
+    );
+
+    // Utilisation de la fonction factory pour créer les médias
+    const mediaInstances = photographerMedia.map(createMedia);
+
+    // Afficher les médias
+    displayMedia(mediaInstances);
+  }
+}
+
+// Fonction pour afficher le template du photographe dans le DOM
+function displayPhotographerProfile(photographerTemplate) {
+  const $main = document.getElementById("main");
+  $main.appendChild(photographerTemplate);
+}
+
+// ********************************* AFFICHAGE DE LA GALLERIE ********************************* //
+
 // Fonction factory pour créer les médias
 function createMedia(data) {
   const commonData = {
@@ -41,39 +80,6 @@ function createMediaElement(media) {
   return $mediaElement;
 }
 
-// Fonction principale pour initialiser la page du photographe
-async function initPhotographerPage() {
-  const photographerId = getPhotographerIdFromURL();
-
-  if (photographerId) {
-    // Récupérer les données du photographe
-    const photographer = await fetchData("/data/photographers.json").then(
-      (data) => data.photographers.find((p) => p.id === photographerId)
-    );
-
-    // Créer le template du photographe
-    const photographerTemplate = photographerDetailsHeader(photographer);
-    displayPhotographerHeader(photographerTemplate);
-    // Récupérer les médias du photographe
-    const photographerMedia = await fetchData("/data/photographers.json").then(
-      (data) =>
-        data.media.filter((media) => media.photographerId === photographerId)
-    );
-
-    // Utilisation de la fonction factory pour créer les médias
-    const mediaInstances = photographerMedia.map(createMedia);
-
-    // Afficher les médias
-    displayMedia(mediaInstances);
-  }
-}
-
-// Fonction pour afficher le template du photographe dans le DOM
-function displayPhotographerHeader(photographerTemplate) {
-  const $main = document.getElementById("main");
-  $main.appendChild(photographerTemplate);
-}
-
 // Fonction pour afficher les médias dans le DOM
 function displayMedia(mediaInstances) {
   const $mediaContainer = document.getElementById("media-container-main");
@@ -84,9 +90,3 @@ function displayMedia(mediaInstances) {
     $mediaContainer.appendChild($mediaElement);
   });
 }
-
-// Appeler la fonction principale pour initialiser la page du photographe
-initPhotographerPage();
-
-
-
