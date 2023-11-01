@@ -70,24 +70,11 @@
     height: 300px;
 }
 
-.media-card img {
+.media-card img,
+.media-card video {
     width: 100%;
     height: 100%;
     object-fit: cover;
-}
-
-.media-card.video {
-    border: 1px grey solid;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.media-card.video img {
-    width: 100px;
-    height: 100px;
-    object-fit: cover;
-
 }
 
 .media-card-description {

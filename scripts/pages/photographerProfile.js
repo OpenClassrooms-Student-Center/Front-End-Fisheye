@@ -15,7 +15,8 @@ async function initPhotographerPage() {
 
     // Créer le profil du photographe à partir du template
     const $main = document.getElementById("main");
-    const photographerTemplate = photographerProfileTemplate(photographer);
+    const photographerTemplate =
+      photographerProfileTemplate(photographer).getUserCardHeader();
     $main.appendChild(photographerTemplate);
 
     // Récupérer les médias du photographe
@@ -25,7 +26,7 @@ async function initPhotographerPage() {
     );
 
     // Utilisation de la fonction factory pour créer les médias
-    const mediaInstances = photographerMedia.map(createMedia);
+    const mediaInstances = photographerMedia.map(createMediaFactory);
 
     // Afficher les médias
     displayMedia(mediaInstances);
@@ -37,46 +38,44 @@ async function initPhotographerPage() {
 // ********************************* START AFFICHAGE DU MEDIA DE LA GALLERIE ********************************* //
 
 // Fonction factory pour créer les médias
-function createMedia(data) {
-  const commonData = {
-    id: data.id,
-    photographerId: data.photographerId,
-    title: data.title,
-    likes: data.likes,
-    date: data.date,
-    price: data.price,
+function createMediaFactory(data) {
+
+  return {
+    createMediaElement: function () {
+      const isVideo = data.video;
+
+      const $mediaElement = document.createElement("article");
+      $mediaElement.classList.add("media-card");
+
+      if (isVideo) {
+        $mediaElement.classList.add("video");
+        $mediaElement.innerHTML = `
+          <div class="media-card">
+            <video controls>
+              <source src="assets/galleries/${data.video}" type="video/mp4">
+              Your browser does not support the video tag.
+            </video>
+          </div>
+          <div class="media-card-description">
+            <p>${data.title}</p>
+            <p>${data.likes} <i class="fa-solid fa-heart"></i></p>
+          </div>
+        `;
+      } else {
+        $mediaElement.innerHTML = `
+          <div class="media-card">
+            <img src="assets/galleries/${data.image}" alt="${data.title}" />
+          </div>
+          <div class="media-card-description">
+            <p>${data.title}</p>
+            <p>${data.likes} <i class="fa-solid fa-heart"></i></p>
+          </div>
+        `;
+      }
+
+      return $mediaElement;
+    },
   };
-
-  if (data.image) {
-    return {
-      ...commonData,
-      type: "photo",
-      source: `assets/galleries/${data.image}`,
-    };
-  } else if (data.video) {
-    return {
-      ...commonData,
-      type: "video",
-      source: `assets/galleries/${data.video}`,
-    };
-  }
-}
-
-// Fonction pour créer l'élément DOM, la card média
-function createMediaElement(media) {
-  const $mediaElement = document.createElement("article");
-  const isVideo = media.type === "video";
-
-  $mediaElement.innerHTML = `
-      <div class="media-card ${isVideo ? "video" : ""}">
-        <img src="${media.source}" alt="${media.title}" />
-      </div>
-        <div class="media-card-description">
-            <p>${media.title}</p>
-            <p>${media.likes} <i class="fa-solid fa-heart"></i></p>
-        </div>
-    `;
-  return $mediaElement;
 }
 
 // Fonction pour afficher les médias dans le DOM
@@ -84,8 +83,8 @@ function displayMedia(mediaInstances) {
   const $mediaContainer = document.getElementById("media-container-main");
 
   // Utilisation de la fonction pour créer l'élément DOM, la card media, et l'afficher
-  mediaInstances.forEach((media) => {
-    const $mediaElement = createMediaElement(media);
+  mediaInstances.forEach((mediaFactory) => {
+    const $mediaElement = mediaFactory.createMediaElement();
     $mediaContainer.appendChild($mediaElement);
   });
 }
