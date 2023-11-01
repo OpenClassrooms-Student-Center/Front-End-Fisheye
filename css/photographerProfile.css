@@ -27,9 +27,11 @@
     font-size: 24px;
     border-radius: 5px;
 }
-.tagline{
+
+.tagline {
     font-size: 18px;
 }
+
 .contact_button {
     font-size: 20px;
     font-weight: bold;
@@ -91,9 +93,21 @@
 .media-card-description {
     display: flex;
     justify-content: space-between;
+    gap: 10px;
     color: var(--primary-color);
     width: 350px;
     font-size: 24px;
+
+}
+
+/* .media-card-description>p:nth-child(1) {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+} */
+
+.media-card-description>p:nth-child(2) {
+    white-space: nowrap;
 }
 
 /* ******************  END GALLERIES DU PHOTOGRAPHE ******************  */
