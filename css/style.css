@@ -5,6 +5,7 @@
     --secondary: #d3573c;
     --black: #000000;
     --light-black: #757575;
+    --dark-grey: #525252;
 
     --main-title-font-family: 'DM sans', sans-serif;
     --main-title-font-size: 36px;
@@ -36,6 +37,31 @@
     --price-font-weight: 400;  
     --price-line-height: normal; 
 
+/* ------------------ PHOTOGRAPHER PAGE -------------------------------- */
+
+    --photographer-main-title-font-family: 'DM sans', sans-serif;
+    --photographer-main-title-font-size: 64px;
+    --photographer-main-title-font-style: normal;
+    --photographer-main-title-font-weight: 400;
+    --photographer-main-title-line-height: normal;
+
+    --city-of-country-of-font-family: 'DM sans', sans-serif;
+    --city-of-country-of-font-size: 24px;
+    --city-of-country-of-font-style: normal;
+    --city-of-country-of-font-weight: 400;
+    --city-of-country-of-line-height: normal;
+
+    --photographer-tagline-font-family: 'DM sans', sans-serif;
+    --photographer-tagline-font-size: 18px;
+    --photographer-tagline-font-style: normal;
+    --photographer-tagline-font-weight: 400;
+    --photographer-tagline-line-height: normal;
+
+    --photographer-filter-title-font-family: 'DM sans', sans-serif;
+    --photographer-filter-title-font-size: 18px;
+    --photographer-filter-title-font-style: normal;
+    --photographer-filter-title-font-weight: 700;
+    --photographer-filter-title-line-height: normal;
 }
 
 
@@ -142,5 +168,12 @@ header {
     font-style: var(--price-font-style);
     font-weight: var(--price-font-weight);
     line-height: var(--price-line-height);
+}
+
+footer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-top: 200px;
 }
 
