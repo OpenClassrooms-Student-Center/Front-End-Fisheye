@@ -48,3 +48,17 @@ h1 {
     height: 200px;
     width: 200px;
 }
+
+/* Media Queries */
+
+@media screen and (max-width: 768px) {
+    .photographer_section {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+@media screen and (max-width: 425px) {
+    .photographer_section {
+        grid-template-columns: 1fr;
+    }
+}
