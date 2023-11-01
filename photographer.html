@@ -1,37 +1,82 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <link href="css/style.css" rel="stylesheet" type="text/css" />
-    <meta charset="utf-8">
-    <link rel="icon" type="image/png" href="assets/favicon.png">
-    <link href="https://fonts.googleapis.com/css?family=DM+Sans&display=swap" rel="stylesheet">
-    <title>Fisheye - photographe </title>
-  </head>
-  <body>
-    <header>
-      <img src="assets/images/logo.png" class="logo" />
-    </header>
-    <main id="main">
-      <div class="photograph-header">
-        <button class="contact_button" onclick="displayModal()">Contactez-moi</button>
+
+<head>
+  <link href="css/style.css" rel="stylesheet" type="text/css" />
+  <meta charset="utf-8">
+  <link rel="icon" type="image/png" href="assets/favicon.png">
+  <link href="https://fonts.googleapis.com/css?family=DM+Sans&display=swap" rel="stylesheet">
+  <title>Fisheye - photographe </title>
+</head>
+
+<body>
+  <header>
+    <a href="index.html"> <img src="assets/images/logo.png" alt="Fisheye Home Page" class="logo"/></a>
+  </header>
+
+  <main id="main">
+    <div class="photograph_header">
+      <div class="text_container">
+        <h1 class="photographer_main_title"></h1>
+        <p class="city_of_country_of"></p>
+        <p class="photographer_tagline"></p>
       </div>
-    </main>
-    <div id="contact_modal">
-			<div class="modal">
-				<header>
-          <h2>Contactez-moi</h2>
-          <img src="assets/icons/close.svg" onclick="closeModal()" />
-        </header>
-				<form>
-					<div>
-						<label>Prénom</label>
-						<input />
-					</div>
-          <button class="contact_button">Envoyer</button>
-				</form>
-			</div>
-		</div>
-    <script src="/scripts/pages/photographer.js"></script>
-    <script src="/scripts/utils/contactForm.js"></script>
-  </body>
+
+      <button class="contact_button" role="button">Contactez-moi</button>
+      <div class="img_wrapper">
+      <img class="portrait_of_photographer" src="" alt="">
+      </div>
+    </div>
+    <div class="filter">
+      <h2 class="filter_title">Trier par</h2>
+    <button class="dropdown_menu">Popularité</button>
+    </div>
+    <div class="portfolio_container">
+      <article class="media_container">
+        <img class="media_of_portfolio" alt="media">
+      </article>
+      <h3 class="media_title"></h3>
+      <div class="like_container">
+        <p class="number_of_likes"></p>
+        <img class="like_icon" alt="coeur">
+      </div>
+    </div>
+    
+  </main>
+
+  <div id="contact_modal">
+    <div class="modal" role="dialog">
+      <header>
+        <h2>Contactez-moi</h2>
+        <img id="close_button" src="assets/icons/close.svg" alt="close" aria-label="bouton de fermeturegyjy" tabindex="0" />
+      </header>
+     
+      <form>
+        <div>
+          <fieldset>
+            <legend>Vos coordonnées</legend>
+            <label for="first_name">Prénom</label>
+            <input id="first_name" name="first_name" type="text" minlength="2" required>
+            <label for="last_name">Nom</label>
+            <input id="last_name" name="last_name" type="text" minlength="2" required>
+            <label for="email">Email</label>
+            <input id="email" name="email" type="email" required>
+          </fieldset>
+          <fieldset>
+            <legend>Votre message</legend>
+            <label for="text_zone">Votre message</label>
+            <textarea name="text_area" placeholder="Ecrivez votre message ici" id="text_zone"  rows="7" cols="68" minlength="30" required></textarea>
+          </fieldset>
+        </div>
+        <button class="contact_button" id="submit_button" type="submit" role="button" >Envoyer</button>
+      </form>
+    </div>
+  </div>
+  <footer>
+    
+  </footer>
+  <script src="/scripts/pages/photographer.js" defer></script>
+  <script src="/scripts/utils/contactForm.js" defer></script>
+</body>
+
 </html>

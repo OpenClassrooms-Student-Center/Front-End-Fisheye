@@ -1,46 +1,55 @@
-    async function getPhotographers() {
-        // Ceci est un exemple de données pour avoir un affichage de photographes de test dès le démarrage du projet, 
-        // mais il sera à remplacer avec une requête sur le fichier JSON en utilisant "fetch".
-        let photographers = [
-            {
-                "name": "Ma data test",
-                "id": 1,
-                "city": "Paris",
-                "country": "France",
-                "tagline": "Ceci est ma data test",
-                "price": 400,
-                "portrait": "account.png"
-            },
-            {
-                "name": "Autre data test",
-                "id": 2,
-                "city": "Londres",
-                "country": "UK",
-                "tagline": "Ceci est ma data test 2",
-                "price": 500,
-                "portrait": "account.png"
-            },
-        ]
-        // et bien retourner le tableau photographers seulement une fois récupéré
-        return ({
-            photographers: [...photographers, ...photographers, ...photographers]})
-    }
+async function getData() { 
 
-    async function displayData(photographers) {
-        const photographersSection = document.querySelector(".photographer_section");
+    const response = await fetch ("/data/photographers.json") 
+    return await response.json()
+}
+  
+async function displayData(photographers) {
+    const photographersSection = document.querySelector(".photographer_section");
 
-        photographers.forEach((photographer) => {
-            const photographerModel = photographerTemplate(photographer);
-            const userCardDOM = photographerModel.getUserCardDOM();
-            photographersSection.appendChild(userCardDOM);
-        });
-    }
+    photographers.forEach((photographer) => {
 
-    async function init() {
-        // Récupère les datas des photographes
-        const { photographers } = await getPhotographers();
+        const userCardDOM = new UserCardFactory().createFromPhotographer(photographer)
+        photographersSection.appendChild(userCardDOM);
+    });
+}
+
+async function init() {
+    // Récupère les datas des photographes
+        const { photographers } = await getData(); // déstructuration avec les accolades, pour récup uniquement photographers
         displayData(photographers);
+     }
+
+ init();
+
+class UserCardFactory {
+
+    createFromPhotographer(photographerData) {
+
+        const {name, id, city, country, tagline, price, portrait} = photographerData
+        return new UserCard(name, id, city, country, tagline, price, portrait).create()
     }
+}
+
+
+/*
+class MediaFactory {
+
+constructor(data, type) {
+    if (type === 'photo') {
+        return new MediaPhoto(data)
+    } else if (type === 'video') {
+        return new MediaVideo(data)
+    } else {
+        throw 'Unknown type format'
+    }
+}
+au lieu d'appeler la classe directement, j'appelle MediaFactory */
+
+/* class media globale path ou source et  2 sous classes mediavideo avec attribut video et mediaimage 
+    attribut src qui change en fonction de l'attribut image ou video 
+    pour le dom, factory avec 2 methodes preview : soit image , soit video 
+
     
-    init();
-    
+*/
+
