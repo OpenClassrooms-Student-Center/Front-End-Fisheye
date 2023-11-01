@@ -69,8 +69,8 @@ function createMediaElement(media) {
 
   $mediaElement.innerHTML = `
       <div class="media-card ${isVideo ? "video" : ""}">
-        <img src="${media.source}" alt="${media.title}">
-        </div>
+        <img src="${media.source}" alt="${media.title}" />
+      </div>
         <div class="media-card-description">
             <p>${media.title}</p>
             <p>${media.likes} <i class="fa-solid fa-heart"></i></p>

@@ -38,7 +38,8 @@
     color: aliceblue;
     border: none;
     border-radius: 5px;
-    padding: 8px;
+    padding: 5px;
+    font-size: 18px;
 }
 
 .custom-select[aria-expanded="true"] #selectOptions {
