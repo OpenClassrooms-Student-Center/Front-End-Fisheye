@@ -11,7 +11,9 @@ function openSelectOptions() {
 // Information accessible que la listbox est fermée
 function closeSelectOptions() {
   $selectContainer.setAttribute("aria-expanded", "false");
-  $selectContainer.focus(); //Permet de garder le focus et de rouvrir la listbox
+  //Permettre de garder le focus et de rouvrir la listbox
+  const isListboxOpened = $selectContainer.getAttribute("aria-expanded")==="true"
+  isListboxOpened && $selectContainer.focus();
 }
 // *************************** END INFOS ACCESSIBILITE ***************************
 
@@ -71,9 +73,9 @@ function navigateSelectOptionsWithArrows(event) {
     options[selectedIndex - 1].focus();
   } else if (event.key === "ArrowDown" && isLastOption) {
     options[0].focus();
-  } else if (event.key === "ArrowUp" && isFirstOption) {
+  } else if (event.key === "ArrowUp" && isFirstOption) {  
     options[options.length - 1].focus();
-  }
+  } 
 
   event.preventDefault(); // Empêcher le défilement de la page avec les touches fléchées
 }

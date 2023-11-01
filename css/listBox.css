@@ -29,8 +29,16 @@
     border-bottom: 1px solid var(--secondary-color);
 }
 
-#selectedOption {
+#selectedOption,
+#media-container-header label {
     cursor: pointer;
+}
+#sortSelect{
+    background-color: var(--primary-color);
+    color: aliceblue;
+    border: none;
+    border-radius: 5px;
+    padding: 8px;
 }
 
 .custom-select[aria-expanded="true"] #selectOptions {
