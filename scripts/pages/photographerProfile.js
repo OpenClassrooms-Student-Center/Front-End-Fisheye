@@ -13,9 +13,10 @@ async function initPhotographerPage() {
       (data) => data.photographers.find((p) => p.id === photographerId)
     );
 
-    // Créer le template du profil du photographe
-    const photographerInListTemplate = photographerProfileTemplate(photographer);
-    displayphotographerProfileTemplate(photographerInListTemplate);
+    // Créer le profil du photographe à partir du template
+    const $main = document.getElementById("main");
+    const photographerTemplate = photographerProfileTemplate(photographer);
+    $main.appendChild(photographerTemplate);
 
     // Récupérer les médias du photographe
     const photographerMedia = await fetchData("/data/photographers.json").then(
@@ -31,11 +32,6 @@ async function initPhotographerPage() {
   }
 }
 
-// Fonction pour afficher le template du photographe dans le DOM
-function displayphotographerProfileTemplate(photographerInListTemplate) {
-  const $main = document.getElementById("main");
-  $main.appendChild(photographerInListTemplate);
-}
 // ********************************* END AFFICHAGE DU PROFIL PHOTOGRAPHE ET DE SA GALLERIE ********************************* //
 
 // ********************************* START AFFICHAGE DU MEDIA DE LA GALLERIE ********************************* //
