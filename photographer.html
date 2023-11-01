@@ -1,8 +1,9 @@
 <!DOCTYPE html>
-<html>
+<html lang="fr">
 	<head>
 		<link href="css/style.css" rel="stylesheet" type="text/css" />
 		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<link rel="icon" type="image/png" href="assets/favicon.png" />
 		<link
 			href="https://fonts.googleapis.com/css?family=DM+Sans&display=swap"
@@ -43,12 +44,12 @@
 			<div class="modal">
 				<header>
 					<h2>Contactez-moi</h2>
-					<img src="assets/icons/close.svg" onclick="closeModal()" />
+					<img src="assets/icons/close.svg" alt="close button" onclick="closeModal()" />
 				</header>
 				<form id="form-contact">
 					<div class="form-group">
 						<label for="firstName">Prénom</label>
-						<input type="text" id="firstName" name="firstname"/>
+						<input type="text" id="firstName" name="firstname" aria-labelledby=""/>
 					</div>
 					<div class="form-group">
 						<label for="lastName">Nom</label>

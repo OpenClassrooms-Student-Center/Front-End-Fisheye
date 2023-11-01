@@ -1,10 +1,11 @@
 .photograph-header {
     background-color: #FAFAFA;
-    height: 250px;
-    padding: 0 2rem;
+    min-height: 250px;
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
+    flex-wrap: wrap;
+    gap: 1rem;
 }
 
 .photograph-header .content {
@@ -13,6 +14,8 @@
     justify-content: space-between;
     align-items: left;
     flex-direction: column;
+    text-align: center;
+    order: 2;
 }
 
 .photograph-header h1 {
@@ -39,6 +42,8 @@
     border-radius: 5px;
     cursor: pointer;
     transition: all 600ms;
+    order: 3;
+    margin-top: 1rem;
 }
 .contact_button:hover {
     background-color: #D3573C;
@@ -50,13 +55,13 @@
     width: 180px;
     border-radius: 50%;
     object-fit: cover;
+    order: 1;
 }
 
 .photograph-galary {
     margin: 2rem 0;
     width: 100%;
 }
-
 
 /*********** Sorting area ***********/
 .photograph-sorting {
@@ -94,23 +99,27 @@
 
 
 /*********** Media galary area ***********/
-.galary-wrapper {
-    width: 100%;
-}
-
 .photograph-galary .galary-wrapper,
 .photograph-galary .card > div {
-    display: flex;
-    justify-content: space-between;
+    display: flex; 
     align-items: center;
     flex-wrap: wrap;
     row-gap: 2.5rem;
+}
+
+.photograph-galary .galary-wrapper {
+    width: 100%;
+    justify-content: center;
+}
+
+.photograph-galary .galary-wrapper .card > div {
+     justify-content: space-between;
     color: #901C1C;
 }
 
 .photograph-galary .card img,
 .photograph-galary .card video {
-    width: 350px;
+    width: 330px;
     height: 300px;
     border-radius: 10px;
     object-fit: cover;
@@ -128,6 +137,10 @@
     font-weight: 200;
 }
 
+.photograph-galary .card i.fa-heart {
+    cursor: pointer;
+}
+
 .photograph-likes-pricing {
     width: 200px;
     height: 20px;
@@ -141,7 +154,6 @@
     left: 100%;
     bottom: 0;
 }
-
 
 /********** Lightbox section **********/
 .lightbox {
@@ -269,4 +281,27 @@ form input, form textarea {
 form textarea {
     min-height: 110px;
     max-height: 140px;
+}
+
+@media only screen and (min-width: 768px) {
+    .photograph-header {
+        justify-content: space-between;
+        padding: 0 2rem;
+    }
+
+    .photograph-header .content,
+    .photograph-header img,
+    .photograph-header .contact_button {
+        order: inherit;
+    }
+
+
+    .photograph-galary .galary-wrapper {
+        justify-content: space-between !important;
+    }
+
+    .photograph-galary .galary-wrapper .card img,
+    .photograph-galary .galary-wrapper .card video {
+        width: 350px;
+    }
 }
