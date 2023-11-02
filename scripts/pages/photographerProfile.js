@@ -30,6 +30,9 @@ async function initPhotographerPage() {
 
     // Afficher les médias
     displayMedia(mediaInstances);
+
+    // Récupérer le nom du photographe pour le formulaire
+    getPhotographerName(photographer)
   }
 }
 

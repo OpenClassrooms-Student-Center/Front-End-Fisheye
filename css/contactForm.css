@@ -2,7 +2,7 @@
 #contact_modal {
     display: none;
     position: absolute;
-    top: 20%;
+    top: 40%;
     left: 50%;
     transform: translate(-50%, -50%);
     z-index: 3;
@@ -13,9 +13,6 @@
 }
 
 .modal-contact {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
     width: 669px;
     border-radius: 5px;
     background-color: #DB8876;
@@ -28,20 +25,28 @@
     display: block;
 }
 
-.modal-contact header {
+.modal-contact .header {
+    display: flex;
     justify-content: space-between;
-    width: 100%;
+    align-items: baseline;
 }
 
-.modal-contact header img {
+.modal-contact img {
     cursor: pointer;
+    font-size: 72px;
 }
 
-.modal-contact header h2 {
+.modal-contact .header button {
+    background-color: transparent;
+    border: none;
+}
+
+.modal-contact h2 {
     font-size: 4rem;
     font-weight: normal;
-    text-align: center;
+    margin-block-start: 0;
 }
+
 
 form {
     display: flex;
@@ -68,6 +73,32 @@ form input {
     height: 68px;
     border: none;
     border-radius: 5px;
+    margin: 10px 0;
+}
+
+form textarea {
+    width: 100%;
+    height: 170px;
+    margin-bottom: 20px;
+}
+
+.contact_button {
+    font-size: 20px;
+    font-weight: bold;
+    color: white;
+    padding: 11px;
+    width: 170px;
+    height: 70px;
+    border: none;
+    background-color: var(--primary-color);
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 400ms ease;
+}
+
+.contact_button:hover,
+.contact_button:focus {
+    background-color: var(--secondary-color);
 }
 
 /* ****************** END MODAL ******************  */

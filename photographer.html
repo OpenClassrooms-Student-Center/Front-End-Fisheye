@@ -15,7 +15,12 @@
     <title>Fisheye - photographe</title>
   </head>
   <body>
-    <div class="overlay"></div>
+    <div class="overlay" aria-hidden="true">
+      <p class="sr-only">
+        Ce contenu est actuellement indisponible. La boîte de dialogue est
+        ouverte.
+      </p>
+    </div>
     <div class="container">
       <header>
         <a href="/">
@@ -91,18 +96,77 @@
         <div id="media-container-main"></div>
       </section>
 
-      <div id="contact_modal">
+      <div
+        id="contact_modal"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="modalTitle"
+        aria-describedby="modalDescription"
+      >
         <div class="modal-contact">
-          <header>
-            <h2>Contactez-moi</h2>
-            <img src="assets/icons/close.svg" onclick="closeModal('contact_modal')" />
-          </header>
-          <form>
-            <div>
-              <label>Prénom</label>
-              <input />
-            </div>
-            <button class="contact_button">Envoyer</button>
+          <div class="header">
+            <h2 id="modalTitle">
+              Contactez-moi<br /><span id="photographerName"></span>
+            </h2>
+            <button
+              aria-label="Fermer la modale"
+              onclick="closeModal('contact_modal')"
+            >
+              <img src="assets/icons/close.svg" alt="Fermer la modale" />
+            </button>
+          </div>
+          <form aria-label="Formulaire de contact">
+            <label for="firstName" tabindex="-1"
+              >Prénom <span class="required" tabindex="-1">*</span></label
+            >
+            <input
+              type="text"
+              id="firstName"
+              name="firstName"
+              aria-required="true"
+              required
+              tabindex="0"
+            />
+
+            <label for="name" tabindex="-1"
+              >Nom <span class="required" tabindex="-1">*</span></label
+            >
+            <input
+              type="text"
+              id="name"
+              name="name"
+              aria-required="true"
+              required
+              tabindex="0"
+            />
+
+            <label for="email" tabindex="-1"
+              >Email <span class="required" tabindex="-1">*</span></label
+            >
+            <input
+              type="email"
+              id="email"
+              name="email"
+              aria-required="true"
+              required
+              tabindex="0"
+            />
+
+            <label for="message" tabindex="-1"
+              >Votre message
+              <span class="required" tabindex="-1">*</span></label
+            >
+            <textarea
+              id="message"
+              name="message"
+              aria-required="true"
+              required
+              tabindex="0"
+            ></textarea>
+
+            <button type="submit" class="contact_button" tabindex="0">
+              Envoyer
+            </button>
           </form>
         </div>
       </div>
@@ -113,5 +177,6 @@
     <script src="/scripts/utils/listBox.js"></script>
     <script src="/scripts/pages/photographerProfile.js"></script>
     <script src="/scripts/utils/modal.js"></script>
+    <script src="/scripts/utils/contactForm.js"></script>
   </body>
 </html>
