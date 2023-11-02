@@ -1,0 +1,73 @@
+/* ****************** START MODAL ******************  */
+#contact_modal {
+    display: none;
+    position: absolute;
+    top: 20%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 3;
+}
+
+#contact_modal.visible {
+    display: block;
+}
+
+.modal-contact {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 669px;
+    border-radius: 5px;
+    background-color: #DB8876;
+    padding: 35px;
+    margin: auto;
+    animation: modalopen 400ms ease;
+}
+
+#contact_modal.visible {
+    display: block;
+}
+
+.modal-contact header {
+    justify-content: space-between;
+    width: 100%;
+}
+
+.modal-contact header img {
+    cursor: pointer;
+}
+
+.modal-contact header h2 {
+    font-size: 4rem;
+    font-weight: normal;
+    text-align: center;
+}
+
+form {
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+form label {
+    color: #312E2E;
+    font-size: 2.25rem;
+}
+
+form div {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    align-items: self-start;
+    margin-bottom: 26px;
+}
+
+form input {
+    width: 100%;
+    height: 68px;
+    border: none;
+    border-radius: 5px;
+}
+
+/* ****************** END MODAL ******************  */

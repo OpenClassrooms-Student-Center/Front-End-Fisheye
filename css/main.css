@@ -12,12 +12,14 @@ body {
     padding: 0;
     box-sizing: border-box;
 }
-ul{
+
+ul {
     list-style: none;
     padding: 0;
     margin: 0;
 }
-.container{
+
+.container {
     margin: 20px;
 }
 
@@ -35,6 +37,40 @@ h1 {
 .logo {
     height: 50px;
 }
+
+/* ************ Start Affichage modal ************ */
+.overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 2;
+}
+
+body.modal-open {
+    overflow: hidden;
+}
+
+.overlay.visible {
+    display: block;
+}
+
+@keyframes modalopen {
+    from {
+        opacity: 0;
+        transform: translateY(-150px);
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+/* ************ End Affichage modal ************ */
+
 /* debugg */
 /* *{
     border: 1px red solid;

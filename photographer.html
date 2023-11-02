@@ -15,6 +15,7 @@
     <title>Fisheye - photographe</title>
   </head>
   <body>
+    <div class="overlay"></div>
     <div class="container">
       <header>
         <a href="/">
@@ -91,10 +92,10 @@
       </section>
 
       <div id="contact_modal">
-        <div class="modal">
+        <div class="modal-contact">
           <header>
             <h2>Contactez-moi</h2>
-            <img src="assets/icons/close.svg" onclick="closeModal()" />
+            <img src="assets/icons/close.svg" onclick="closeModal('contact_modal')" />
           </header>
           <form>
             <div>
@@ -109,8 +110,8 @@
     <script src="/scripts/utils/fetch.js"></script>
     <script src="scripts/templates/photographerProfileTemplate.js"></script>
     <script src="scripts/templates/createMediaElement.js"></script>
-    <script src="/scripts/pages/photographerProfile.js"></script>
-    <script src="/scripts/utils/contactForm.js"></script>
     <script src="/scripts/utils/listBox.js"></script>
+    <script src="/scripts/pages/photographerProfile.js"></script>
+    <script src="/scripts/utils/modal.js"></script>
   </body>
 </html>
