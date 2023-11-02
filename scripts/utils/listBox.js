@@ -12,7 +12,8 @@ function openSelectOptions() {
 function closeSelectOptions() {
   $selectContainer.setAttribute("aria-expanded", "false");
   //Permettre de garder le focus et de rouvrir la listbox
-  const isListboxOpened = $selectContainer.getAttribute("aria-expanded")==="true"
+  const isListboxOpened =
+    $selectContainer.getAttribute("aria-expanded") === "true";
   isListboxOpened && $selectContainer.focus();
 }
 // *************************** END INFOS ACCESSIBILITE ***************************
@@ -59,6 +60,8 @@ function openSelectOptionsWithKeyboard(event) {
 
 // Fonction pour gérer la navigation dans la liste avec le clavier
 function navigateSelectOptionsWithArrows(event) {
+  const isListboxOpened =
+    $selectContainer.getAttribute("aria-expanded") === "true";
   const options = document.querySelectorAll("#selectOptions li");
   const selectedIndex = Array.from(options).findIndex(
     (option) => option === document.activeElement
@@ -73,11 +76,11 @@ function navigateSelectOptionsWithArrows(event) {
     options[selectedIndex - 1].focus();
   } else if (event.key === "ArrowDown" && isLastOption) {
     options[0].focus();
-  } else if (event.key === "ArrowUp" && isFirstOption) {  
+  } else if (event.key === "ArrowUp" && isFirstOption) {
     options[options.length - 1].focus();
-  } 
-
-  event.preventDefault(); // Empêcher le défilement de la page avec les touches fléchées
+  }
+  // Empêcher le défilement de la page avec les touches fléchées
+  isListboxOpened && event.preventDefault();
 }
 
 // Fonction pour gérer la sélection avec la touche Entrée
