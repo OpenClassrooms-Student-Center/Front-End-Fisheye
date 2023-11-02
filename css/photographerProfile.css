@@ -35,6 +35,14 @@
 /* ****************** END DESCRIPTION DU PHOTOGRAPHE ******************  */
 
 /* ****************** START GALLERIES DU PHOTOGRAPHE ******************  */
+#arrow-dropdown-listbox {
+    transition: transform 0.3s ease;
+}
+
+#arrow-dropdown-listbox.opened {
+    transform: rotate(180deg);
+}
+
 #media-container-main {
     display: flex;
     gap: 120px;

@@ -2,11 +2,13 @@
 const $selectContainer = document.querySelector(".custom-select");
 const $selectedOption = document.getElementById("selectedOption");
 const $selectOptions = document.getElementById("selectOptions");
+const $arrowDropdown = document.getElementById("arrow-dropdown-listbox");
 
 // *************************** START INFOS ACCESSIBILITE ***************************
 // Information accessible que la listbox est ouverte
 function openSelectOptions() {
   $selectContainer.setAttribute("aria-expanded", "true");
+  $arrowDropdown.classList.add("opened");
 }
 // Information accessible que la listbox est fermée
 function closeSelectOptions() {
@@ -15,6 +17,8 @@ function closeSelectOptions() {
   const isListboxOpened =
     $selectContainer.getAttribute("aria-expanded") === "true";
   isListboxOpened && $selectContainer.focus();
+  // Rotation de la flèche du dropdown
+  $arrowDropdown.classList.remove("opened");
 }
 // *************************** END INFOS ACCESSIBILITE ***************************
 
