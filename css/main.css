@@ -76,6 +76,9 @@ body.modal-open {
 }
 
 /* debugg */
+/* *:focus{
+    font-size: 500px;
+} */
 /* *{
     border: 1px red solid;
 } */

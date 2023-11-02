@@ -43,6 +43,10 @@ function displayModal(element) {
   // Ajouter des écouteurs d'événements pour la touche Escape et la navigation au clavier
   window.addEventListener("keydown", closeOnEscape);
   $modal.addEventListener("keydown", trapFocus);
+  // Retarder l'opération de mise au point du premier champ d'input
+  setTimeout(() => {
+    firstFocusable.focus();
+  }, 100);
 }
 
 function closeModal(element) {
@@ -54,8 +58,4 @@ function closeModal(element) {
   $modal.classList.remove("visible");
   $overlay.classList.remove("visible");
   document.body.classList.remove("modal-open");
-
-  // Retirer les écouteurs d'événements
-  window.removeEventListener("keydown", closeOnEscape);
-  $modal.removeEventListener("keydown", trapFocus);
 }
