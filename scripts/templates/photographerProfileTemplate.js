@@ -2,7 +2,7 @@ function photographerProfileTemplate(data) {
   const { name, city, country, tagline, price, portrait } = data;
   const picture = `assets/photographers/${portrait}`;
 
-  function getUserCardHeader() {
+  function getUserCardHeader(photographerMedia) {
     const template = `
         <article class="photograph-header">
           <div class="column">
@@ -25,10 +25,22 @@ function photographerProfileTemplate(data) {
     $template.innerHTML = template;
 
     // Ajouter le prix en bas à droite du body
-    const $priceFixed = document.createElement("div");
-    $priceFixed.classList.add("price-fixed");
-    $priceFixed.textContent = `${price}€ / jour`;
-    document.body.appendChild($priceFixed);
+    const $popularitySection = document.createElement("div");
+    const $totalLikes = document.createElement("span");
+    const $dailyPrice = document.createElement("span");
+    $popularitySection.classList.add("popularity-section");
+    $popularitySection.appendChild($totalLikes);
+    $popularitySection.appendChild($dailyPrice);
+    $dailyPrice.textContent = `${price}€ / jour`;
+
+    // Calculer la somme des likes
+    const totalLikes = photographerMedia.reduce(
+      (sum, media) => sum + media.likes,
+      0
+    );
+
+    $totalLikes.innerHTML = `${totalLikes} <i class="fa-solid fa-heart"></i> `;
+    document.body.appendChild($popularitySection);
 
     return $template;
   }

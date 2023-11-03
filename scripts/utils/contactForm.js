@@ -6,19 +6,16 @@ function getPhotographerName(photographer) {
   return $namePhotographer;
 }
 
-// Sélectionner le formulaire
-const $formulaire = document.querySelector("form");
+const $formulaire = document.querySelector("form"); // Sélectionner le formulaire
 
 // Ajouter un gestionnaire d'événement pour la soumission du formulaire
 $formulaire.addEventListener("submit", handleFormSubmit);
 
 // Fonction pour gérer la soumission du formulaire
 function handleFormSubmit(event) {
-  // Empêcher la page de se rafraîchir
-  event.preventDefault();
+  event.preventDefault(); // Empêcher la page de se rafraîchir
 
-  // Récupérer le formulaire
-  const form = event.target;
+  const form = event.target; // Récupérer le formulaire
 
   // Récupérer les valeurs du formulaire
   const formValues = getFormValues(form);

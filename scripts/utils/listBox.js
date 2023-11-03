@@ -17,8 +17,7 @@ function closeSelectOptions() {
   const isListboxOpened =
     $selectContainer.getAttribute("aria-expanded") === "true";
   isListboxOpened && $selectContainer.focus();
-  // Rotation de la flèche du dropdown
-  $arrowDropdown.classList.remove("opened");
+  $arrowDropdown.classList.remove("opened");// Rotation de la flèche du dropdown
 }
 // *************************** END INFOS ACCESSIBILITE ***************************
 

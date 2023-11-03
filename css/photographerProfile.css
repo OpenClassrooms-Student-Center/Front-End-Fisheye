@@ -14,13 +14,13 @@
     font-size: 24px;
 }
 
-.price-fixed {
+.popularity-section {
     position: fixed;
     bottom: 0;
     right: 450px;
     width: 376px;
     height: 50px;
-    background-color: var(--price-fixed-color);
+    background-color: var(--popularity-section-color);
     padding: 10px;
     color: black;
     font-weight: bold;
@@ -50,10 +50,11 @@
     flex-wrap: wrap;
 }
 
-#media-container-header{
+#media-container-header {
     margin: 20px 0 50px 0;
 }
-#media-container-header button{
+
+#media-container-header button {
     cursor: pointer;
 }
 
@@ -80,6 +81,14 @@
 
 .media-card-description i {
     font-size: 24px;
+}
+.popularity-section{
+    display: flex;
+    justify-content: space-around;
+    gap: 100px;
+}
+#likeButton {
+    cursor: pointer;
 }
 
 /* .media-card-description>p:nth-child(1) {

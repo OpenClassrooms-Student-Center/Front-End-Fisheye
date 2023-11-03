@@ -16,25 +16,25 @@ async function initPhotographerPage() {
       (data) => data.photographers.find((p) => p.id === photographerId)
     );
 
-    // Créer le profil du photographe à partir du template
-    const $main = document.getElementById("main");
-    const photographerTemplate =
-      photographerProfileTemplate(photographer).getUserCardHeader();
-    $main.appendChild(photographerTemplate);
-
     // Récupérer les médias du photographe
     photographerMedia = await fetchData("/data/photographers.json").then(
       (data) =>
         data.media.filter((media) => media.photographerId === photographerId)
     );
+    // Créer le profil du photographe à partir du template
+    const $main = document.getElementById("main");
+    const photographerTemplate =
+      photographerProfileTemplate(photographer).getUserCardHeader(
+        photographerMedia
+      );
+    $main.appendChild(photographerTemplate);
+
     // Utilisation de la fonction factory pour créer les médias
     const mediaInstances = photographerMedia.map(createMediaFactory);
 
-    // Afficher les médias
-    displayMedia(mediaInstances);
+    displayMedia(mediaInstances); // Afficher les médias
 
-    // Récupérer le nom du photographe pour le formulaire
-    getPhotographerName(photographer);
+    getPhotographerName(photographer); // Récupérer le nom du photographe pour le formulaire
   }
 }
 
@@ -45,8 +45,8 @@ async function initPhotographerPage() {
 // Fonction pour afficher les médias dans le DOM
 function displayMedia(mediaInstances) {
   const $mediaContainer = document.getElementById("media-container-main");
-  // Effacer le contenu actuel du conteneur
-  $mediaContainer.innerHTML = "";
+
+  $mediaContainer.innerHTML = ""; // Effacer le contenu actuel du conteneur
   // Utilisation de la fonction pour créer l'élément DOM, la card media, et l'afficher
   mediaInstances.forEach((mediaFactory) => {
     const $mediaElement = mediaFactory.createMediaElement();

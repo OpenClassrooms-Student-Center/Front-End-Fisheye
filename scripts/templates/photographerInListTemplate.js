@@ -9,8 +9,8 @@ function photographerInListTemplate(data) {
   }
 
   function handleKeyDown(event) {
-    // Si la touche "Entrée" est pressée
     if (event.key === "Enter") {
+      // Si la touche "Entrée" est pressée
       redirectToDetailPage();
     }
   }
@@ -25,8 +25,7 @@ function photographerInListTemplate(data) {
     const $p2 = document.createElement("p");
     const $p3 = document.createElement("p");
 
-    // Ajout de l'attribut data-id à l'élément article
-    $article.setAttribute("data-id", id);
+    $article.setAttribute("data-id", id); // Ajout de l'attribut data-id à l'élément article
     // Ajout de l'attribut aria-label à l'élément article
     const ariaLabel = `${name}, ${city}, ${country}, ${tagline}, ${price}€/jour`;
     $article.setAttribute("aria-label", ariaLabel);
