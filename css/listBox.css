@@ -29,10 +29,6 @@
     border-bottom: 1px solid var(--secondary-color);
 }
 
-#selectedOption,
-#media-container-header label {
-    cursor: pointer;
-}
 #sortSelect{
     background-color: var(--primary-color);
     color: aliceblue;

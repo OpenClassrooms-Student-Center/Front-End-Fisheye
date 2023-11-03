@@ -37,7 +37,9 @@ h1 {
 .logo {
     height: 50px;
 }
-
+button{
+    cursor: pointer;
+}
 /* ************ Start Affichage modal ************ */
 .overlay {
     display: none;

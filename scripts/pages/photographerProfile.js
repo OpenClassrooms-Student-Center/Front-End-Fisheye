@@ -1,3 +1,23 @@
+// Accessibilite globale au projet de cette variable notamment pour le tri
+let photographerMedia;
+function sortMedia(sortBy) {
+  switch (sortBy) {
+    case "popularity":
+      photographerMedia = sortByPopularity(photographerMedia);
+      break;
+    case "date":
+      photographerMedia = sortByDate(photographerMedia);
+      break;
+    case "title":
+      photographerMedia = sortByTitle(photographerMedia);
+      break;
+    default:
+      break;
+  }
+  // Afficher les médias après le tri
+  const mediaInstancesSorted = photographerMedia.map(createMediaFactory);
+  displayMedia(mediaInstancesSorted);
+}
 // Appeler la fonction principale pour initialiser la page du photographe
 initPhotographerPage();
 
@@ -20,11 +40,10 @@ async function initPhotographerPage() {
     $main.appendChild(photographerTemplate);
 
     // Récupérer les médias du photographe
-    const photographerMedia = await fetchData("/data/photographers.json").then(
+    photographerMedia = await fetchData("/data/photographers.json").then(
       (data) =>
         data.media.filter((media) => media.photographerId === photographerId)
     );
-
     // Utilisation de la fonction factory pour créer les médias
     const mediaInstances = photographerMedia.map(createMediaFactory);
 
@@ -32,7 +51,7 @@ async function initPhotographerPage() {
     displayMedia(mediaInstances);
 
     // Récupérer le nom du photographe pour le formulaire
-    getPhotographerName(photographer)
+    getPhotographerName(photographer);
   }
 }
 
@@ -43,9 +62,11 @@ async function initPhotographerPage() {
 // Fonction pour afficher les médias dans le DOM
 function displayMedia(mediaInstances) {
   const $mediaContainer = document.getElementById("media-container-main");
-
+  // Effacer le contenu actuel du conteneur
+  $mediaContainer.innerHTML = "";
   // Utilisation de la fonction pour créer l'élément DOM, la card media, et l'afficher
   mediaInstances.forEach((mediaFactory) => {
+    console.log('mediaFactory:', mediaFactory);
     const $mediaElement = mediaFactory.createMediaElement();
     $mediaContainer.appendChild($mediaElement);
   });

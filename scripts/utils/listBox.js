@@ -28,7 +28,7 @@ document.addEventListener("click", function (event) {
   const isInsideSelectContainer = $selectContainer.contains(event.target);
   isInsideSelectContainer ? openSelectOptions() : closeSelectOptions();
 });
-
+// Affichage de la sélection
 $selectOptions.addEventListener("click", function (event) {
   if (event.target.tagName === "LI") {
     $selectedOption.textContent = event.target.textContent;
@@ -36,7 +36,7 @@ $selectOptions.addEventListener("click", function (event) {
 
     // Evénement de tri en fonction de la valeur sélectionnée.
     const selectedValue = event.target.getAttribute("data-value");
-    console.log("Option sélectionnée :", selectedValue);
+    sortMedia(selectedValue);
   }
 });
 // *************************** END GESTION COMPORTEMENT LISTBOX SOURIS ***************************

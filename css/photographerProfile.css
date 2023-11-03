@@ -50,8 +50,11 @@
     flex-wrap: wrap;
 }
 
-#media-container-header {
+#media-container-header{
     margin: 20px 0 50px 0;
+}
+#media-container-header button{
+    cursor: pointer;
 }
 
 .media-card {

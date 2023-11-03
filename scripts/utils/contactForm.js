@@ -11,19 +11,6 @@ const $formulaire = document.querySelector("form");
 
 // Ajouter un gestionnaire d'événement pour la soumission du formulaire
 $formulaire.addEventListener("submit", handleFormSubmit);
-// Fonction pour récupérer les valeurs du formulaire
-function getFormValues(form) {
-  const formFields = form.querySelectorAll("input, textarea");
-  const formValues = {};
-
-  formFields.forEach((field) => {
-    if (field.name) {
-      formValues[field.name] = field.value;
-    }
-  });
-
-  return formValues;
-}
 
 // Fonction pour gérer la soumission du formulaire
 function handleFormSubmit(event) {
@@ -36,6 +23,7 @@ function handleFormSubmit(event) {
   // Récupérer les valeurs du formulaire
   const formValues = getFormValues(form);
   console.log(formValues);
+
   // Réinitialiser le formulaire et le fermer après soumission
   $formulaire.reset();
   closeModal("contact_modal");

@@ -32,7 +32,6 @@
 }
 
 .modal-contact img {
-    cursor: pointer;
     font-size: 72px;
 }
 
@@ -92,7 +91,6 @@ form textarea {
     border: none;
     background-color: var(--primary-color);
     border-radius: 5px;
-    cursor: pointer;
     transition: background-color 400ms ease;
 }
 
