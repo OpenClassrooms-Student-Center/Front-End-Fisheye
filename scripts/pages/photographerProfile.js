@@ -1,23 +1,6 @@
 // Accessibilite globale au projet de cette variable notamment pour le tri
 let photographerMedia;
-function sortMedia(sortBy) {
-  switch (sortBy) {
-    case "popularity":
-      photographerMedia = sortByPopularity(photographerMedia);
-      break;
-    case "date":
-      photographerMedia = sortByDate(photographerMedia);
-      break;
-    case "title":
-      photographerMedia = sortByTitle(photographerMedia);
-      break;
-    default:
-      break;
-  }
-  // Afficher les médias après le tri
-  const mediaInstancesSorted = photographerMedia.map(createMediaFactory);
-  displayMedia(mediaInstancesSorted);
-}
+
 // Appeler la fonction principale pour initialiser la page du photographe
 initPhotographerPage();
 
@@ -66,9 +49,28 @@ function displayMedia(mediaInstances) {
   $mediaContainer.innerHTML = "";
   // Utilisation de la fonction pour créer l'élément DOM, la card media, et l'afficher
   mediaInstances.forEach((mediaFactory) => {
-    console.log("mediaFactory:", mediaFactory);
     const $mediaElement = mediaFactory.createMediaElement();
     $mediaContainer.appendChild($mediaElement);
   });
+}
+
+// Orientation vers la fonction du tri des médias
+function sortMedia(sortBy) {
+  switch (sortBy) {
+    case "popularity":
+      photographerMedia = sortByPopularity(photographerMedia);
+      break;
+    case "date":
+      photographerMedia = sortByDate(photographerMedia);
+      break;
+    case "title":
+      photographerMedia = sortByTitle(photographerMedia);
+      break;
+    default:
+      break;
+  }
+  // Afficher les médias après le tri
+  const mediaInstancesSorted = photographerMedia.map(createMediaFactory);
+  displayMedia(mediaInstancesSorted);
 }
 // ********************************* END AFFICHAGE DU MEDIA DE LA GALLERIE ********************************* //
