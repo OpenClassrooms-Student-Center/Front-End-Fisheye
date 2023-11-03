@@ -66,7 +66,7 @@ function displayMedia(mediaInstances) {
   $mediaContainer.innerHTML = "";
   // Utilisation de la fonction pour créer l'élément DOM, la card media, et l'afficher
   mediaInstances.forEach((mediaFactory) => {
-    console.log('mediaFactory:', mediaFactory);
+    console.log("mediaFactory:", mediaFactory);
     const $mediaElement = mediaFactory.createMediaElement();
     $mediaContainer.appendChild($mediaElement);
   });

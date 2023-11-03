@@ -93,6 +93,7 @@ function selectOptionWithEnter(event) {
     const selectedValue = document.activeElement.getAttribute("data-value");
     $selectedOption.textContent = document.activeElement.textContent;
     closeSelectOptions();
+    sortMedia(selectedValue);
   }
 }
 
