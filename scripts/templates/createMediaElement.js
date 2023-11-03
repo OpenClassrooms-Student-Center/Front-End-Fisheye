@@ -53,6 +53,9 @@ function createMediaFactory(data) {
       // Mettre à jour le texte avec le nouveau nombre de likes
       const $likeCount = $mediaElement.querySelector("#likeCount");
       $likeCount.textContent = data.likes;
+
+      const $totalLikes=document.querySelector(".popularity-section > p:nth-child(1) > span:nth-child(1)")
+      $totalLikes.textContent = parseInt($totalLikes.textContent) + (liked ? 1 : -1);
     }
 
     return $mediaElement;

@@ -26,12 +26,19 @@ function photographerProfileTemplate(data) {
 
     // Ajouter le prix en bas à droite du body
     const $popularitySection = document.createElement("div");
+    const $popularitySectionLeft = document.createElement("p");
+    const $popularitySectionRight = document.createElement("p");
     const $totalLikes = document.createElement("span");
-    const $dailyPrice = document.createElement("span");
+    const $icon = document.createElement("span");
+
     $popularitySection.classList.add("popularity-section");
-    $popularitySection.appendChild($totalLikes);
-    $popularitySection.appendChild($dailyPrice);
-    $dailyPrice.textContent = `${price}€ / jour`;
+
+    $popularitySectionLeft.appendChild($totalLikes);
+    $popularitySectionLeft.appendChild($icon);
+    $popularitySection.appendChild($popularitySectionLeft);
+    $popularitySection.appendChild($popularitySectionRight);
+
+    $popularitySectionRight.textContent = `${price}€ / jour`;
 
     // Calculer la somme des likes
     const totalLikes = photographerMedia.reduce(
@@ -39,7 +46,8 @@ function photographerProfileTemplate(data) {
       0
     );
 
-    $totalLikes.innerHTML = `${totalLikes} <i class="fa-solid fa-heart"></i> `;
+    $totalLikes.textContent = `${totalLikes}`;
+    $icon.innerHTML = ` <span><i class="fa-solid fa-heart"></i></span> `;
     document.body.appendChild($popularitySection);
 
     return $template;
