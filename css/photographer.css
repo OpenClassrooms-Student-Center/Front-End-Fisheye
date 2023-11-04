@@ -1,3 +1,7 @@
+/* *:focus {
+    outline: solid #bf8072;
+} */
+
 .photograph-header {
     background-color: #FAFAFA;
     min-height: 250px;
@@ -87,8 +91,8 @@
     background-color: #901C1C;
     color: #fff;
     border: none;
-    appearance: none;
-    outline: none;
+    /* appearance: none; */
+    /* outline: none; */
     border-radius: 5px;  
     padding: 0 10px 0 15px;
 }
@@ -100,7 +104,7 @@
 
 /*********** Media galary area ***********/
 .photograph-galary .galary-wrapper,
-.photograph-galary .card > div {
+.photograph-galary .card > figcaption {
     display: flex; 
     align-items: center;
     flex-wrap: wrap;
@@ -112,7 +116,7 @@
     justify-content: center;
 }
 
-.photograph-galary .galary-wrapper .card > div {
+.photograph-galary .galary-wrapper .card > figcaption {
      justify-content: space-between;
     color: #901C1C;
 }
@@ -132,7 +136,7 @@
     transition: opacity 400ms;
 }
 
-.photograph-galary .card > div h2 {
+.photograph-galary .card > figcaption h2 {
     font-size: 1.2rem;
     font-weight: 200;
 }
@@ -170,7 +174,7 @@
 .lightbox .lightbox-content {
     position: relative;
     width: 50%;
-    height: 55%;
+    height: 66%;
     margin: 5% auto;
     margin-top: 100px;
 }
@@ -182,6 +186,7 @@
     border: 1px solid #fff;
     object-fit: cover;
     border-radius: 10px;
+    object-position: 50% 40%;
 }
 
 .lightbox .lightbox-content h2 {
@@ -237,6 +242,15 @@
 .modal header {
     justify-content: space-between;
     width: 100%;
+    padding: 0;
+}
+
+.modal header button {
+    all: unset;
+}
+
+.modal header button:focus-visible {
+    outline: solid rgb(39, 39, 121);
 }
 
 .modal header img {

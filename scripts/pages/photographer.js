@@ -24,7 +24,7 @@ const setPhotograperHeader = (name, city, country, tagline, portrait) => {
             <p>${tagline}</p>
             <!-- <small>200€/jour</small> -->
         </div>
-        <button class="contact_button" onclick="displayModal()">
+        <button class="contact_button" onclick="displayModal()" type="button" aria-label="Ouvrir le formulaire de contact" tabindex="2">
             Contactez-moi
         </button>
         <img src="${picture}" alt="${name}">
@@ -50,19 +50,19 @@ const mediaFactory = (object, name, cardIndex) => {
 
             const ExtentionType = media.mediaUrl.split('.')[1];
             const mediaElement = ExtentionType === 'mp4' ?
-                `<video controls><source src="./assets/images/photographersWorks/${name.split(' ')[0]}/${media.mediaUrl}"/></video>`
-                : `<img src="./assets/images/photographersWorks/${name.split(' ')[0]}/${media.mediaUrl}" alt="${media.title}">`                
+                `<video tabindex=${3 + cardIndex} controls><source src="./assets/images/photographersWorks/${name.split(' ')[0]}/${media.mediaUrl}"/></video>`
+                : `<img tabindex=${3 + cardIndex} src="./assets/images/photographersWorks/${name.split(' ')[0]}/${media.mediaUrl}" alt="${media.title}">`                
             
             return `
-                <div class="card" data-index="${cardIndex++}">
+                <div class="card" data-index="${cardIndex++}" role="tab">        
                     ${ mediaElement }
-                    <div>
+                    <figcaption>
                         <h2>${media.title}</h2>
                         <div>
-                            <small>${media.likes}</small>
-                            <i class="fa-solid fa-heart"></i>
+                            <small aria-label="likes">${media.likes}</small>
+                            <i class="fa-solid fa-heart" aria-hidden="true"></i>
                         </div>
-                    </div>
+                    </figcaption>
                 </div>`;
         },
     }       
@@ -91,7 +91,7 @@ const addTotalLikesAndPricingInfo = (price) => {
     const likesAndPricing = `
         <div class="photograph-likes-pricing">
             <div>
-                <span> ${totalLikes} </span> <i class="fa-solid fa-heart"></i>
+                <span> ${totalLikes} </span> <i class="fa-solid fa-heart" aria-hidden="true"></i>
             </div>
             <span>${price}€ / jour</span>
         </div>`;
@@ -171,6 +171,18 @@ const createLightboxElements = () => {
     lightBoxNext.classList.add('fa', 'fa-angle-right', 'light-box-next');
     lightBoxXMark.classList.add('fa', 'fa-xmark', 'light-box-remove-btn');
 
+    // Adding attributes
+    lightBoxCotainer.setAttribute('aria-label', 'image cloesup view');
+
+    lightBoxNext.setAttribute('role', 'button');
+    lightBoxNext.setAttribute('aria-label', 'next image');
+
+    lightBoxPrev.setAttribute('role', 'button');
+    lightBoxPrev.setAttribute('aria-label', 'previous image');
+
+    lightBoxXMark.setAttribute('role', 'button');
+    lightBoxXMark.setAttribute('aria-label', 'close dialog');
+
 
     // Appending child elements
     lightBoxCotainer.appendChild(lightBoxContent);  
@@ -195,6 +207,7 @@ const createLightboxElements = () => {
         const titleLocation = cards[index].children[1].children[0].textContent;
 
         lightBoxH2.innerHTML = titleLocation;
+        lightBoxImage.setAttribute('alt', titleLocation);
         
         const tagName = mediaLocation.tagName === 'IMG' ? 'img' : 'video'
 
@@ -223,7 +236,7 @@ const createLightboxElements = () => {
 
     function currentImage(event) {
         const mediaType = event.target.localName;   
-        const currentIndex = parseInt(this.parentElement.getAttribute('data-index'));
+        const currentIndex = parseInt(event.target.parentElement.getAttribute('data-index'));
 
         showLightBox(currentIndex, mediaType);
     };
@@ -231,6 +244,9 @@ const createLightboxElements = () => {
     // Openning lightbox on clikc
     Array.from(cards).forEach(card => {
         card.children[0].addEventListener('click', currentImage);
+        card.children[0].addEventListener('keypress', (event) => {
+            if(event.key === "Enter") currentImage(event);
+        });
     })
 
 
@@ -283,7 +299,7 @@ const handleFormSubmit = (photograperName) => {
         const isFormEmpty = !Object.values(formData).every(value => !!value);
        if(isFormEmpty) return ''
       
-        // console.log(formData)   
+        console.log(formData)   
         
         event.target.reset();
         formContact.style.display = 'none';

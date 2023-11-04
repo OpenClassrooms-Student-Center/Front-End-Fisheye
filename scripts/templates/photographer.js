@@ -6,7 +6,7 @@ function photographerTemplate(data) {
     function getUserCardDOM() {
         const elements = `
             <article>
-                <a href="photographer.html?id=${id}">
+                <a href="photographer.html?id=${id}" role="linke" aria-label="Voir le profil de ${name}">
                     <div>
                         <img src="${picture}" alt="${name}">
                         <h2>${name}</h2>

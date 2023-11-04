@@ -20,7 +20,7 @@
 	</head>
 	<body>
 		<header>
-			<a href="/">
+			<a href="/" tabindex="1">
 				<img src="assets/images/logo.png" class="logo" alt="fisheye logo"/>
 			</a>
 		</header>
@@ -29,7 +29,7 @@
 			<section class="photograph-sorting">
 				<h2>Trier par</h2>
 				<div class="select-container">
-					<select>
+					<select tabindex="2">
 						<option value="popularity">Popularité</option>
 						<option value="date">Date</option>
 						<option value="title">Titre</option>
@@ -40,11 +40,13 @@
 				<div class="galary-wrapper"></div>
 			</section>
 		</main>
-		<div id="contact_modal">
-			<div class="modal">
+		<div id="contact_modal" aria-hidden="true" rol="dialog">
+			<div class="modal" role="document">
 				<header>
 					<h2>Contactez-moi</h2>
-					<img src="assets/icons/close.svg" alt="close button" onclick="closeModal()" />
+					<button  onclick="closeModal()" aria-label="Close">
+						<img src="assets/icons/close.svg" alt="close button" aria-hidden="true"/>
+					</button>
 				</header>
 				<form id="form-contact">
 					<div class="form-group">
@@ -63,7 +65,7 @@
 						<label for="message">Message</label>
 						<textarea id="message" name="message"></textarea>
 					</div>
-					<button class="contact_button">Envoyer</button>
+					<button class="contact_button" type="submit">Envoyer</button>
 				</form>
 			</div>
 		</div>
