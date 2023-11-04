@@ -3,34 +3,35 @@ function createMediaFactory(data) {
 
   function createMediaElement() {
     const $mediaElement = document.createElement("article");
+    $mediaElement.setAttribute("aria-labelledby", `mediaTitle_${data.id}`);
     $mediaElement.classList.add("media-card");
 
     const isVideo = data.video;
     const mediaSource = isVideo ? data.video : data.image;
 
     $mediaElement.innerHTML = `
-        <div class="media-card">
-          ${
-            isVideo
-              ? `<video>
-                  <source src="assets/galleries/${mediaSource}" type="video/mp4">
-                  Votre navigateur ne supporte pas ce média.
-                </video>`
-              : `<img src="assets/galleries/${mediaSource}" alt="${data.title}" />`
-          }
-        </div>
-        <div class="media-card-description">
-            <p>${data.title}</p>
-            <p>
-            <span id="likeButton" role="button" tabindex="0" class="${
-              liked ? "liked" : ""
-            }" aria-label="J'aime">
-              <i class="fa-solid fa-heart"></i>
-            </span>           
-            <span id="likeCount">${data.likes}</span>
-            </p>
-        </div>
-      `;
+    <figure class="media-card">
+      ${
+        isVideo
+          ? `<video>
+              <source src="assets/galleries/${mediaSource}" type="video/mp4">
+              Votre navigateur ne supporte pas ce média.
+            </video>`
+          : `<img src="assets/galleries/${mediaSource}" alt="${data.title}" />`
+      }
+      <figcaption class="media-card-description">
+        <p id="mediaTitle_${data.id}">${data.title}</p>
+        <p>
+          <span id="likeButton" role="button" tabindex="0" class="${
+            liked ? "liked" : ""
+          }" aria-label="J'aime">
+            <i class="fa-solid fa-heart"></i>
+          </span>           
+          <span id="likeCount">${data.likes}</span>
+        </p>
+      </figcaption>
+    </figure>
+  `;
 
     // Ajout d'un gestionnaire d'événements sur le bouton de like
     const $likeButton = $mediaElement.querySelector("#likeButton");

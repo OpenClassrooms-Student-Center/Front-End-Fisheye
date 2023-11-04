@@ -1,0 +1,14 @@
+#lightbox_modal{
+    /* display: none; */
+    width: 1253px;
+    height: 984px;
+    background-color: green;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 3;
+}
+#lightbox_modal.visible {
+    display: block;
+}
