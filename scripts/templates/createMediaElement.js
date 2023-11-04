@@ -34,12 +34,16 @@ function createMediaFactory(data) {
   `;
 
     // Ajout d'un gestionnaire d'événements sur le media pour affichage de la modal lightbox
-    $mediaElement.addEventListener("click", () => {
-      displayModal("lightbox_modal");
-    });
-    // Ajout d'un gestionnaire d'événements sur le media pour affichage du contenu lightbox
-    $mediaElement.addEventListener("click", () => {
-      displayLightBoxContent(mediaSource, data.title,data.id);
+    $mediaElement.addEventListener("click", (event) => {
+      // Vérifier si l'élément cliqué est l'image ou la vidéo
+      const isImageOrVideo =
+        event.target.tagName === "IMG" || event.target.tagName === "VIDEO";
+
+      // Si c'est l'image ou la vidéo, déclencher la fonction
+      if (isImageOrVideo) {
+        displayModal("lightbox_modal");
+        displayLightBoxContent(mediaSource, data.title, data.id);
+      }
     });
     // Ajout d'un gestionnaire d'événements sur le bouton de like
     const $likeButton = $mediaElement.querySelector("#likeButton");

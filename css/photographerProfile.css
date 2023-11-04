@@ -60,7 +60,7 @@
 
 .media-card {
     width: 350px;
-    height: 300px;
+    height: 400px;
 }
 
 .media-card img,
@@ -87,7 +87,7 @@
     align-items: center;
     gap: 100px;
 }
-#likeButton,#media-container-main article {
+#likeButton,#media-container-main img {
     cursor: pointer;
 }
 
