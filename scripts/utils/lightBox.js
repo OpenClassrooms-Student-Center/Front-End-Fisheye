@@ -1,7 +1,6 @@
 const $lightbox_modal = document.getElementById("lightbox_modal");
 const $mediaCarousel = document.getElementById("mediaCarousel");
 const $lightboxFigure = document.querySelector("#lightbox_modal figure");
-const $ligthboxImage = document.createElement("img");
 const $closeLightbox = document.getElementById("closeLightbox");
 const $prevMedia = document.getElementById("prevMedia");
 const $nextMedia = document.getElementById("nextMedia");
@@ -25,31 +24,15 @@ function displayLightBoxContent(mediaId) {
   // Effacer le contenu précédent de la lightbox
   $lightboxFigure.innerHTML = "";
 
-  // Créer une nouvelle image
-  const $lightboxImage = document.createElement("img");
-  $lightboxImage.setAttribute(
-    "src",
-    `assets/galleries/${photographerMedia[indexMedia].image}`
-  );
-  $lightboxImage.setAttribute("alt", `${photographerMedia[indexMedia].title}`);
-  // Créer une nouvelle vidéo
-  const $lightboxVideo = document.createElement("video");
-  const $lightboxVideoSource = document.createElement("source");
-  $lightboxVideoSource.setAttribute(
-    "src",
-    `assets/galleries/${photographerMedia[indexMedia].video}`
-  );
-  $lightboxVideoSource.setAttribute("type", "video/mp4");
-  $lightboxVideo.appendChild($lightboxVideoSource)
+  // Créer une nouvelle image ou vidéo
+  const media = photographerMedia[indexMedia];
+  const $lightboxMedia = media.video
+    ? createVideo(`assets/galleries/${media.video}`)
+    : createImage(`assets/galleries/${media.image}`, media.title);
 
-  // Ajouter l'image et son titre à la lightbox
-  const isVideo = photographerMedia[indexMedia].video;
-  isVideo
-    ? $lightboxFigure.appendChild($lightboxVideo)
-    : $lightboxFigure.appendChild($lightboxImage);
-  const $figcaption = document.createElement("figcaption");
-  $figcaption.textContent = photographerMedia[indexMedia].title;
-  $lightboxFigure.appendChild($figcaption);
+  $lightboxFigure.appendChild($lightboxMedia);
+  $lightboxFigure.appendChild(createCaption({ text: media.title }));
+
 
   // Activer ou désactiver les boutons de navigation
   toggleNavigationButtons(indexMedia);

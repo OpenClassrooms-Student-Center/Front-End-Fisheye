@@ -1,7 +1,7 @@
 function createMediaFactory(data) {
   let liked = false; // Ajout d'une variable pour suivre l'état de like
 
-  function createMediaElement() {
+  function createMediaTemplate() {
     const $mediaElement = document.createElement("article");
     $mediaElement.setAttribute("aria-labelledby", `mediaTitle_${data.id}`);
     $mediaElement.classList.add("media-card");
@@ -32,6 +32,7 @@ function createMediaFactory(data) {
       </figcaption>
     </figure>
   `;
+  
 
     // Ajout d'un gestionnaire d'événements sur le media pour affichage de la modal lightbox
     $mediaElement.addEventListener("click", (event) => {
@@ -78,5 +79,5 @@ function createMediaFactory(data) {
     return $mediaElement;
   }
 
-  return { createMediaElement };
+  return { createMediaTemplate };
 }

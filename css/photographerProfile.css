@@ -81,13 +81,17 @@
 .media-card-description i {
     font-size: 24px;
 }
-.popularity-section{
+
+.popularity-section {
     display: flex;
     justify-content: space-around;
     align-items: center;
     gap: 100px;
 }
-#likeButton,#media-container-main img {
+
+#likeButton,
+#media-container-main img,
+#media-container-main video {
     cursor: pointer;
 }
 

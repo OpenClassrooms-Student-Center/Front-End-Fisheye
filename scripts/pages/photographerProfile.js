@@ -49,7 +49,7 @@ function displayMedia(mediaInstances) {
   $mediaContainer.innerHTML = ""; // Effacer le contenu actuel du conteneur
   // Utilisation de la fonction pour créer l'élément DOM, la card media, et l'afficher
   mediaInstances.forEach((mediaFactory) => {
-    const $mediaElement = mediaFactory.createMediaElement();
+    const $mediaElement = mediaFactory.createMediaTemplate();
     $mediaContainer.appendChild($mediaElement);
   });
 }
