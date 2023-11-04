@@ -33,9 +33,13 @@ function createMediaFactory(data) {
     </figure>
   `;
 
-    // Ajout d'un gestionnaire d'événements sur le media pour affichage lightbox
+    // Ajout d'un gestionnaire d'événements sur le media pour affichage de la modal lightbox
     $mediaElement.addEventListener("click", () => {
       displayModal("lightbox_modal");
+    });
+    // Ajout d'un gestionnaire d'événements sur le media pour affichage du contenu lightbox
+    $mediaElement.addEventListener("click", () => {
+      displayLightBoxContent(mediaSource, data.title,data.id);
     });
     // Ajout d'un gestionnaire d'événements sur le bouton de like
     const $likeButton = $mediaElement.querySelector("#likeButton");
