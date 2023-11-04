@@ -85,6 +85,7 @@
 .popularity-section{
     display: flex;
     justify-content: space-around;
+    align-items: center;
     gap: 100px;
 }
 #likeButton {

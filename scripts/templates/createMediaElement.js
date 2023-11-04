@@ -36,8 +36,8 @@ function createMediaFactory(data) {
     const $likeButton = $mediaElement.querySelector("#likeButton");
     $likeButton.addEventListener("click", handleLikeClick);
 
-    function handleLikeClick() {     
-      liked = !liked;// Inverser l'état de liked
+    function handleLikeClick() {
+      liked = !liked; // Inverser l'état de liked
       data.likes += liked ? 1 : -1; // Mettre à jour le nombre de likes en fonction de liked
       updateLikes(); // Mettre à jour l'icône et le nombre de likes
     }
@@ -54,8 +54,12 @@ function createMediaFactory(data) {
       const $likeCount = $mediaElement.querySelector("#likeCount");
       $likeCount.textContent = data.likes;
 
-      const $totalLikes=document.querySelector(".popularity-section > p:nth-child(1) > span:nth-child(1)")
-      $totalLikes.textContent = parseInt($totalLikes.textContent) + (liked ? 1 : -1);
+      // Calcul du nombre total de likes
+      const $totalLikes = document.querySelector(
+        ".popularity-section > p:nth-child(1) > span:nth-child(1)"
+      );
+      $totalLikes.textContent =
+        parseInt($totalLikes.textContent) + (liked ? 1 : -1);
     }
 
     return $mediaElement;

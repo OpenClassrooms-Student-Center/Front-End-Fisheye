@@ -69,6 +69,11 @@ function sortMedia(sortBy) {
     default:
       break;
   }
+  // Tri par date dans la console
+  for (media of photographerMedia) {
+    console.log("tri par date :", media.date);
+  }
+
   // Afficher les médias après le tri
   const mediaInstancesSorted = photographerMedia.map(createMediaFactory);
   displayMedia(mediaInstancesSorted);
