@@ -58,7 +58,7 @@
                 tabindex="-1"
                 >Choisir</span
               >
-              <i id ="arrow-dropdown-listbox" class="fa-solid fa-caret-down"></i>
+              <i id="arrow-dropdown-listbox" class="fa-solid fa-caret-down"></i>
             </button>
             <ul
               id="selectOptions"
@@ -171,10 +171,39 @@
           </form>
         </div>
       </div>
-      <!-- <div id="lightbox_modal"></div> -->
+      <div
+        id="lightbox_modal"
+        role="dialog"
+        aria-labelledby="lightboxTitle"
+        aria-modal="true"
+        tabindex="-1"
+      >
+        <button id="closeLightbox" aria-label="Fermer la lightbox">
+          &times;
+        </button>
+
+        <div id="lightboxContent" role="group" aria-labelledby="mediaTitle">
+          <!-- Carrousel des médias -->
+          <div id="mediaCarousel" role="listbox" aria-live="polite">
+            <!-- Chaque élément du carrousel -->
+            <div class="lightbox-media" role="option" aria-selected="true">
+              <!-- Contenu de chaque média (image, vidéo, etc.) -->
+              <figure>
+                <!-- Votre contenu média (image, vidéo, etc.) -->
+                <figcaption id="mediaTitle">Titre du média</figcaption>
+              </figure>
+            </div>
+            <!-- Répétez la structure ci-dessus pour chaque média dans la galerie -->
+          </div>
+        </div>
+        <!-- Boutons de navigation du carrousel -->
+        <button id="prevMedia" aria-label="Média précédent">&lt;</button>
+        <button id="nextMedia" aria-label="Média suivant">&gt;</button>
+      </div>
     </div>
     <script src="/scripts/utils/fetch.js"></script>
     <script src="/scripts/utils/listBox.js"></script>
+    <script src="/scripts/utils/lightBox.js"></script>
     <script src="scripts/templates/createMediaElement.js"></script>
     <script src="/scripts/pages/photographerProfile.js"></script>
     <script src="scripts/templates/photographerProfileTemplate.js"></script>

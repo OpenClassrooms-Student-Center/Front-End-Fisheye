@@ -1,14 +1,22 @@
-#lightbox_modal{
-    /* display: none; */
+#lightbox_modal {
+    display: none;
     width: 1253px;
     height: 984px;
-    background-color: green;
+    background-color: white;
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
     z-index: 3;
 }
+
 #lightbox_modal.visible {
     display: block;
+}
+
+.lightbox-media img {
+    max-height: 800px;
+    width: 800px;
+    display: block;
+    margin: 0 auto;
 }

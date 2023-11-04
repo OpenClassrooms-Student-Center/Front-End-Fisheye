@@ -37,9 +37,16 @@ h1 {
 .logo {
     height: 50px;
 }
-button{
+
+button {
     cursor: pointer;
 }
+
+img,
+video {
+    object-fit: cover;
+}
+
 /* ************ Start Affichage modal ************ */
 .overlay {
     display: none;
@@ -74,7 +81,7 @@ body.modal-open {
 /* ************ End Affichage modal ************ */
 .required {
     color: red;
-    margin-left: 5px; 
+    margin-left: 5px;
 }
 
 /* debugg */
