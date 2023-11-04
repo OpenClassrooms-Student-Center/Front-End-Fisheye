@@ -42,7 +42,7 @@ function createMediaFactory(data) {
       // Si c'est l'image ou la vidéo, déclencher la fonction
       if (isImageOrVideo) {
         displayModal("lightbox_modal");
-        displayLightBoxContent(mediaSource, data.title, data.id);
+        displayLightBoxContent(data.id);
       }
     });
     // Ajout d'un gestionnaire d'événements sur le bouton de like
