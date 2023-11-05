@@ -18,12 +18,12 @@ function photographerInListTemplate(data) {
   function getUserCardDOM() {
     // NOEUDS PAGE ACCUEIL
     const $article = document.createElement("article");
-    const $img = document.createElement("img");
     const $h2 = document.createElement("h2");
     const $div = document.createElement("div");
     const $p1 = document.createElement("p");
     const $p2 = document.createElement("p");
     const $p3 = document.createElement("p");
+    const $img = createImage(picture, name);
 
     $article.setAttribute("data-id", id); // Ajout de l'attribut data-id à l'élément article
     // Ajout de l'attribut aria-label à l'élément article
@@ -35,8 +35,6 @@ function photographerInListTemplate(data) {
     $article.addEventListener("click", redirectToDetailPage);
     $article.addEventListener("keydown", handleKeyDown);
 
-    $img.setAttribute("src", picture);
-    $img.setAttribute("alt", name);
     $h2.textContent = name;
     $p1.textContent = `${city}, ${country}`;
     $p2.textContent = tagline;

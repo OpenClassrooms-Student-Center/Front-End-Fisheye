@@ -13,11 +13,11 @@ function createMediaFactory(data) {
     <figure class="media-card">
       ${
         isVideo
-          ? `<video>
+          ? `<video tabindex="0">
               <source src="assets/galleries/${mediaSource}" type="video/mp4">
               Votre navigateur ne supporte pas ce média.
             </video>`
-          : `<img src="assets/galleries/${mediaSource}" alt="${data.title}" />`
+          : `<img src="assets/galleries/${mediaSource}" alt="${data.title}" tabindex="0"/>`
       }
       <figcaption class="media-card-description">
         <p id="mediaTitle_${data.id}">${data.title}</p>
@@ -32,7 +32,6 @@ function createMediaFactory(data) {
       </figcaption>
     </figure>
   `;
-  
 
     // Ajout d'un gestionnaire d'événements sur le media pour affichage de la modal lightbox
     $mediaElement.addEventListener("click", (event) => {
@@ -44,6 +43,21 @@ function createMediaFactory(data) {
       if (isImageOrVideo) {
         displayModal("lightbox_modal");
         displayLightBoxContent(data.id);
+      }
+    });
+    // Ajout d'un gestionnaire d'événements pour la touche "Enter"
+    $mediaElement.addEventListener("keydown", (event) => {
+      if (event.key === "Enter") {
+        // Vérifier si l'élément sélectionné est l'image ou la vidéo
+        const isImageOrVideo =
+          document.activeElement.tagName === "IMG" ||
+          document.activeElement.tagName === "VIDEO";
+
+        // Si c'est l'image ou la vidéo, déclencher la fonction
+        if (isImageOrVideo) {
+          displayModal("lightbox_modal");
+          displayLightBoxContent(data.id);
+        }
       }
     });
     // Ajout d'un gestionnaire d'événements sur le bouton de like

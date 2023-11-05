@@ -1,7 +1,7 @@
 #lightbox_modal {
     display: none;
     width: 1253px;
-    height: 984px;
+    height: auto;
     background-color: white;
     position: absolute;
     top: 50%;
@@ -16,8 +16,46 @@
 
 .lightbox-media img,
 .lightbox-media video {
-    width: 1100px;
+    width: 1000px;
     height: 800px;
     display: block;
     margin: 0 auto;
+    object-fit: contain;
+}
+
+#prevMedia,
+#nextMedia,
+#closeLightbox {
+    position: absolute;
+    top: 40%;
+    background-color: transparent;
+    border: none;
+    color: var(--primary-color);
+    font-weight: bold;
+    font-size: 48px;
+}
+
+#prevMedia {
+    left: 10px;
+}
+
+#prevMedia:disabled,
+#nextMedia:disabled {
+    color: gray;
+    cursor: not-allowed;
+}
+
+#nextMedia {
+    right: 10px;
+}
+
+#closeLightbox {
+    top: 0;
+    right: 10px;
+}
+#lightbox_modal figcaption{
+font-size: 24px;
+color: var(--primary-color);
+text-align: center;
+padding-top: 10px;
 }

@@ -189,8 +189,12 @@
           </div>
         </div>
         <!-- Boutons de navigation du carrousel -->
-        <button id="prevMedia" aria-label="Média précédent">&lt;</button>
-        <button id="nextMedia" aria-label="Média suivant">&gt;</button>
+        <button id="prevMedia" aria-label="Média précédent" disabled>
+          &lt; <span id="prevMediaText" class="sr-only">(Média précédent non disponible)</span>
+        </button>
+        <button id="nextMedia" aria-label="Média suivant" disabled>
+          <span id="nextMediaText" class="sr-only">(Média suivant non disponible)</span> &gt;
+        </button>
       </div>
     </div>
     <script src="/scripts/utils/fetch.js"></script>

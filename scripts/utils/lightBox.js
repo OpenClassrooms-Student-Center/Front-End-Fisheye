@@ -31,8 +31,7 @@ function displayLightBoxContent(mediaId) {
     : createImage(`assets/galleries/${media.image}`, media.title);
 
   $lightboxFigure.appendChild($lightboxMedia);
-  $lightboxFigure.appendChild(createCaption({ text: media.title }));
-
+  $lightboxFigure.appendChild(createCaption(media.title));
 
   // Activer ou désactiver les boutons de navigation
   toggleNavigationButtons(indexMedia);
@@ -63,4 +62,12 @@ function navigateMedia(sense) {
 function toggleNavigationButtons(index) {
   $prevMedia.disabled = index === 0;
   $nextMedia.disabled = index === photographerMedia.length - 1;
+
+  // Mettre à jour le texte explicatif
+  const prevMediaText = document.getElementById("prevMediaText");
+  const nextMediaText = document.getElementById("nextMediaText");
+
+  prevMediaText.textContent = index === 0 ? "(Média précédent non disponible)" : "";
+  nextMediaText.textContent = index === photographerMedia.length - 1 ? "(Média suivant non disponible)" : "";
 }
+
