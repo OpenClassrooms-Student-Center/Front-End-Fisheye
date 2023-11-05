@@ -40,7 +40,7 @@ function displayLightBoxContent(mediaId) {
   navigateMedia("sense");
 }
 
-// Navigation du carrousel
+// Navigation du carrousel avec la souris
 function navigateMedia(sense) {
   if (indexMedia !== undefined) {
     let newIndex;
@@ -58,6 +58,17 @@ function navigateMedia(sense) {
   }
 }
 
+// Navigation du carrousel avec les flèches du clavier
+document.addEventListener("keydown", handleKeyDown);
+
+function handleKeyDown(event) {
+  if (event.key === "ArrowLeft") {
+    navigateMedia("prev");
+  } else if (event.key === "ArrowRight") {
+    navigateMedia("next");
+  }
+}
+
 // Activer ou désactiver les boutons de navigation
 function toggleNavigationButtons(index) {
   $prevMedia.disabled = index === 0;
@@ -67,7 +78,10 @@ function toggleNavigationButtons(index) {
   const prevMediaText = document.getElementById("prevMediaText");
   const nextMediaText = document.getElementById("nextMediaText");
 
-  prevMediaText.textContent = index === 0 ? "(Média précédent non disponible)" : "";
-  nextMediaText.textContent = index === photographerMedia.length - 1 ? "(Média suivant non disponible)" : "";
+  prevMediaText.textContent =
+    index === 0 ? "(Média précédent non disponible)" : "";
+  nextMediaText.textContent =
+    index === photographerMedia.length - 1
+      ? "(Média suivant non disponible)"
+      : "";
 }
-
