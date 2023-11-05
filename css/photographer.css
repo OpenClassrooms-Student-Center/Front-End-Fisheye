@@ -1,7 +1,3 @@
-/* *:focus {
-    outline: solid #bf8072;
-} */
-
 .photograph-header {
     background-color: #FAFAFA;
     min-height: 250px;
@@ -31,7 +27,7 @@
 
 .photograph-header .content p:first-of-type {
     font-size: 1.3rem;
-    color: #D3573C;
+    color: #901C1C;
 }
 
 .contact_button {

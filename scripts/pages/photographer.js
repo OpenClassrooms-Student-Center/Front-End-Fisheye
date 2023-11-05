@@ -54,7 +54,7 @@ const mediaFactory = (object, name, cardIndex) => {
                 : `<img tabindex=${3 + cardIndex} src="./assets/images/photographersWorks/${name.split(' ')[0]}/${media.mediaUrl}" alt="${media.title}">`                
             
             return `
-                <div class="card" data-index="${cardIndex++}" role="tab">        
+                <div class="card" data-index="${cardIndex++}">        
                     ${ mediaElement }
                     <figcaption>
                         <h2>${media.title}</h2>
@@ -172,16 +172,57 @@ const createLightboxElements = () => {
     lightBoxXMark.classList.add('fa', 'fa-xmark', 'light-box-remove-btn');
 
     // Adding attributes
-    lightBoxCotainer.setAttribute('aria-label', 'image cloesup view');
+    function addingAtributes(element, attributes) {
+        for(let key in attributes) {
+            if(attributes.hasOwnProperty(key)) {
+                element.setAttribute(key, attributes[key]);
+            }
+        }
+    };
 
-    lightBoxNext.setAttribute('role', 'button');
-    lightBoxNext.setAttribute('aria-label', 'next image');
+    const lightBoxCotainerAttributes = {
+        role: 'dialog',
+        'aria-modal': 'true',
+        'aria-hidden': 'true'
+    }
 
-    lightBoxPrev.setAttribute('role', 'button');
-    lightBoxPrev.setAttribute('aria-label', 'previous image');
+    const lightBoxContentAttributes = {
+        id: 'lightbox-content',
+        'aria-label': 'Media closeup view'
+    }
 
-    lightBoxXMark.setAttribute('role', 'button');
-    lightBoxXMark.setAttribute('aria-label', 'close dialog');
+    const lightBoxMediaAttributes = {
+        role: 'media',
+        'aria-label': 'current media'
+    }
+
+    const lightBoxNextAttributes = {
+        role: 'button',
+        tabindex: "1",
+        'aria-controls': 'lightbox-content',
+        'aria-label': 'next image'
+    }
+
+    const lightBoxPrevAttributes = {
+        role: 'button',
+        tabindex: "2",
+        'aria-controls': 'lightbox-content',
+        'aria-label': 'previous image'
+    }
+
+    const lightBoxXMarkAttributes = {
+        role: 'button',
+        tabindex: "0",
+        'aria-label': 'close dialog'
+    }
+
+    addingAtributes(lightBoxCotainer, lightBoxCotainerAttributes);
+    addingAtributes(lightBoxContent, lightBoxContentAttributes);
+    addingAtributes(lightBoxImage, lightBoxMediaAttributes);
+    addingAtributes(lightBoxVideo, lightBoxMediaAttributes);
+    addingAtributes(lightBoxNext, lightBoxNextAttributes);
+    addingAtributes(lightBoxPrev, lightBoxPrevAttributes);
+    addingAtributes(lightBoxXMark, lightBoxXMarkAttributes);
 
 
     // Appending child elements
@@ -207,7 +248,6 @@ const createLightboxElements = () => {
         const titleLocation = cards[index].children[1].children[0].textContent;
 
         lightBoxH2.innerHTML = titleLocation;
-        lightBoxImage.setAttribute('alt', titleLocation);
         
         const tagName = mediaLocation.tagName === 'IMG' ? 'img' : 'video'
 
@@ -217,6 +257,7 @@ const createLightboxElements = () => {
             lightBoxImage.style.display = 'block';
 
             lightBoxImage.setAttribute('src',  mediaLocation.getAttribute('src'));
+            lightBoxImage.setAttribute('alt', titleLocation);
 
         } else if(mediaType === 'video' ||  tagName === 'video') {
 
@@ -231,6 +272,8 @@ const createLightboxElements = () => {
         }
 
         lightBoxCotainer.style.display = 'block';
+        lightBoxCotainer.setAttribute('aria-hidden', 'false');
+        cards[1].parentNode.setAttribute('aria-hidden', 'true');
     };
 
 
@@ -244,8 +287,9 @@ const createLightboxElements = () => {
     // Openning lightbox on clikc
     Array.from(cards).forEach(card => {
         card.children[0].addEventListener('click', currentImage);
-        card.children[0].addEventListener('keypress', (event) => {
-            if(event.key === "Enter") currentImage(event);
+        card.children[0].addEventListener('keydown', (event) => {
+            if(event.keyCode === 13) currentImage(event);
+
         });
     })
 
@@ -259,15 +303,24 @@ const createLightboxElements = () => {
     lightBoxPrev.addEventListener('click', prevImage);
     lightBoxNext.addEventListener('click', nextImage);
 
-
     // Closing lightBox
     function closeLightbox(event) {
-        if(this === event.target) {
-            lightBoxCotainer.style.display = 'none';
-        }
+        lightBoxCotainer.style.display = 'none';
+        lightBoxCotainer.setAttribute('aria-hidden', 'true');
+        cards[1].parentNode.setAttribute('aria-hidden', 'false');
     };
 
     lightBoxXMark.addEventListener('click', closeLightbox);
+    lightBoxXMark.addEventListener('keydown', (event) => {
+        if(event.key === 'Enter') closeLightbox();
+    });
+    
+    document.addEventListener('keydown', (event) => {
+        if(event.key === 'Escape') closeLightbox();
+
+        else if(event.key === 'ArrowLeft') prevImage();
+        else if(event.key === 'ArrowRight') nextImage();
+    });
 };
 
 

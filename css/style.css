@@ -6,6 +6,11 @@
     box-sizing: border-box;
 }
 
+*:focus {
+    /* outline: solid #bf8072 !important; */
+    outline-offset: 2px !important;
+}
+
 body {
     font-family: "DM Sans", sans-serif;
     margin: 0;
