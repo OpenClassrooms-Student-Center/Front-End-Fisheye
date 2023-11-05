@@ -118,6 +118,8 @@ form textarea {
 
 #confirm.active {
     position: absolute;
+    left: 50%;
+    transform: translate(-50%, 50%);
     display: block;
 }
 
