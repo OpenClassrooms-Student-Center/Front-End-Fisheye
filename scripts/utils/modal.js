@@ -53,9 +53,12 @@ function closeModal(element) {
   // Récupérer les éléments du DOM
   const $modal = document.getElementById(element);
   const $overlay = document.querySelector(".overlay");
+  const $contactBtn = document.querySelector(".contact_button")
 
   // Supprimer les classes pour masquer la modal et l'overlay, et réactiver le défilement du corps
   $modal.classList.remove("visible");
   $overlay.classList.remove("visible");
   document.body.classList.remove("modal-open");
+  // Replacement du focus sur le bouton du formulaire
+  $contactBtn.focus()
 }

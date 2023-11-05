@@ -15,6 +15,7 @@
     <title>Fisheye - photographe</title>
   </head>
   <body>
+    <!-- Overlay modal -->
     <div class="overlay" aria-hidden="true">
       <p class="sr-only">
         Ce contenu est actuellement indisponible. La boîte de dialogue est
@@ -31,6 +32,7 @@
           />
         </a>
       </header>
+      <!-- Bloc fiche photographe -->
       <main id="main"></main>
       <!-- HTML -->
       <section id="media-container">
@@ -96,7 +98,7 @@
 
         <div id="media-container-main"></div>
       </section>
-
+      <!-- Formulaire de contact -->
       <div
         id="contact_modal"
         role="dialog"
@@ -116,61 +118,86 @@
               <img src="assets/icons/close.svg" alt="Fermer la modale" />
             </button>
           </div>
-          <form aria-label="Formulaire de contact">
-            <label for="firstName" tabindex="-1"
-              >Prénom <span class="required" tabindex="-1">*</span></label
-            >
-            <input
-              type="text"
-              id="firstName"
-              name="prénom"
-              aria-required="true"
-              required
-              tabindex="0"
-            />
-
-            <label for="name" tabindex="-1"
-              >Nom <span class="required" tabindex="-1">*</span></label
-            >
-            <input
-              type="text"
-              id="name"
-              name="nom"
-              aria-required="true"
-              required
-              tabindex="0"
-            />
-
-            <label for="email" tabindex="-1"
-              >Email <span class="required" tabindex="-1">*</span></label
-            >
-            <input
-              type="email"
-              id="email"
-              name="email"
-              aria-required="true"
-              required
-              tabindex="0"
-            />
-
-            <label for="message" tabindex="-1"
-              >Votre message
-              <span class="required" tabindex="-1">*</span></label
-            >
-            <textarea
-              id="message"
-              name="message"
-              aria-required="true"
-              required
-              tabindex="0"
-            ></textarea>
+          <form
+            id="formContact"
+            aria-label="Formulaire de contact"
+            onsubmit="validate(event);"
+          >
+            <div id="firstName" class="formData" data-error-visible="false">
+              <label for="first" tabindex="-1"
+                >Prénom <span class="required" tabindex="-1">*</span></label
+              >
+              <input
+                type="text"
+                id="first"
+                class="text-control"
+                name="prénom"
+                aria-required="true"
+                tabindex="0"
+                oninput="validateFirstName()"
+              />
+            </div>
+            <div id="lastName" class="formData" data-error-visible="false">
+              <label for="last" tabindex="-1"
+                >Nom <span class="required" tabindex="-1">*</span></label
+              >
+              <input
+                type="text"
+                id="last"
+                class="text-control"
+                name="Nom"
+                aria-required="true"
+                tabindex="0"
+                oninput="validateLastName()"
+              />
+            </div>
+            <div id="emailField" class="formData" data-error-visible="false">
+              <label for="email" tabindex="-1"
+                >Email <span class="required" tabindex="-1">*</span></label
+              >
+              <input
+                type="email"
+                id="email"
+                class="text-control"
+                name="Email"
+                aria-required="true"
+                tabindex="0"
+                oninput="validateEmail()"
+              />
+            </div>
+            <div id="messageField" class="formData" data-error-visible="false">
+              <label for="message" tabindex="-1"
+                >Votre message
+                <span class="required" tabindex="-1">*</span></label
+              >
+              <textarea
+                id="message"
+                class="text-control"
+                name="message"
+                aria-required="true"
+                tabindex="0"
+                oninput="validateMessage()"
+              ></textarea>
+            </div>
 
             <button type="submit" class="contact_button" tabindex="0">
               Envoyer
             </button>
           </form>
         </div>
+        <div id="confirm">
+          <div class="closeBtn">
+            <button
+              aria-label="Fermer la modale"
+              onclick="closeFormConfirm()"
+            >
+              <img src="assets/icons/close.svg" alt="Fermer la modale" />
+            </button>
+          </div>
+          <p class="confirmText">Vos données ont bien été envoyées !</p>
+        </div>
       </div>
+      <!-- Lightbox -->
       <div
         id="lightbox_modal"
         role="dialog"
@@ -190,10 +217,16 @@
         </div>
         <!-- Boutons de navigation du carrousel -->
         <button id="prevMedia" aria-label="Média précédent" disabled>
-          &lt; <span id="prevMediaText" class="sr-only">(Média précédent non disponible)</span>
+          &lt;
+          <span id="prevMediaText" class="sr-only"
+            >(Média précédent non disponible)</span
+          >
         </button>
         <button id="nextMedia" aria-label="Média suivant" disabled>
-          <span id="nextMediaText" class="sr-only">(Média suivant non disponible)</span> &gt;
+          <span id="nextMediaText" class="sr-only"
+            >(Média suivant non disponible)</span
+          >
+          &gt;
         </button>
       </div>
     </div>
@@ -206,7 +239,8 @@
     <script src="scripts/templates/photographerProfileTemplate.js"></script>
     <script src="/scripts/utils/modal.js"></script>
     <script src="/scripts/utils/formValues.js"></script>
-    <script src="/scripts/utils/contactForm.js"></script>
+    <script src="/scripts/utils/formFieldsControl.js"></script>
+    <script src="/scripts/utils/formSubmit.js"></script>
     <script src="/scripts/utils/mediaSorter.js"></script>
   </body>
 </html>

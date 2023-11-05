@@ -46,7 +46,6 @@
     margin-block-start: 0;
 }
 
-
 form {
     display: flex;
     width: 100%;
@@ -98,5 +97,32 @@ form textarea {
 .contact_button:focus {
     background-color: var(--secondary-color);
 }
+/* Gestion des erreurs */
+.text-control {
+    margin: 0;
+    padding: 8px;
+    width: 100%;
+    border-radius: 8px;
+    font-size: 20px;
+    height: 48px;
+  }
 
+  /* Confirmation soumission */
+  #confirm{
+    display: none;
+  }
+  #confirm.active{
+    position: absolute;
+    display: block;
+  }
+  #confirm .closeBtn{
+   text-align: end;
+  }
+  #confirm button {
+    background-color: transparent;
+    border: none;
+  }
+  .confirmText{
+    text-align: center;
+  }
 /* ****************** END MODAL ******************  */
