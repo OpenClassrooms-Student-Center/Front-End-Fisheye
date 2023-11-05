@@ -80,7 +80,8 @@ form textarea {
     margin-bottom: 20px;
 }
 
-.contact_button {
+.contact_button,
+#contact_button {
     font-size: 20px;
     font-weight: bold;
     color: white;
@@ -94,9 +95,12 @@ form textarea {
 }
 
 .contact_button:hover,
-.contact_button:focus {
+.contact_button:focus,
+#contact_button :hover,
+#contact_button :focus {
     background-color: var(--secondary-color);
 }
+
 /* Gestion des erreurs */
 .text-control {
     margin: 0;
@@ -105,24 +109,29 @@ form textarea {
     border-radius: 8px;
     font-size: 20px;
     height: 48px;
-  }
+}
 
-  /* Confirmation soumission */
-  #confirm{
+/* Confirmation soumission */
+#confirm {
     display: none;
-  }
-  #confirm.active{
+}
+
+#confirm.active {
     position: absolute;
     display: block;
-  }
-  #confirm .closeBtn{
-   text-align: end;
-  }
-  #confirm button {
+}
+
+#confirm .closeBtn {
+    text-align: end;
+}
+
+#confirm button {
     background-color: transparent;
     border: none;
-  }
-  .confirmText{
+}
+
+.confirmText {
     text-align: center;
-  }
+}
+
 /* ****************** END MODAL ******************  */

@@ -53,12 +53,19 @@ function closeModal(element) {
   // Récupérer les éléments du DOM
   const $modal = document.getElementById(element);
   const $overlay = document.querySelector(".overlay");
-  const $contactBtn = document.querySelector(".contact_button")
+  const $contactBtn = document.getElementById("contact_button");
+  const $firstArticle = document.querySelector(
+    "#media-container-main > article > figure > :first-child"
+  );
 
   // Supprimer les classes pour masquer la modal et l'overlay, et réactiver le défilement du corps
   $modal.classList.remove("visible");
   $overlay.classList.remove("visible");
   document.body.classList.remove("modal-open");
-  // Replacement du focus sur le bouton du formulaire
-  $contactBtn.focus()
+  // Replacement du focus après fermeture modal
+  if (element === "contact_modal") {
+    $contactBtn.focus(); //Sur le bouton ouvrant la modal formulaire
+  } else if (element === "lightbox_modal") {
+    $firstArticle.focus(); //Sur le 1er média de la liste de la gallerie
+  }
 }
