@@ -1,5 +1,6 @@
 const $lightbox_modal = document.getElementById("lightbox_modal");
 const $mediaCarousel = document.getElementById("mediaCarousel");
+const $lightboxContent =document.getElementById("lightboxContent");
 const $lightboxFigure = document.querySelector("#lightbox_modal figure");
 const $closeLightbox = document.getElementById("closeLightbox");
 const $prevMedia = document.getElementById("prevMedia");
@@ -32,6 +33,7 @@ function displayLightBoxContent(mediaId) {
 
   $lightboxFigure.appendChild($lightboxMedia);
   $lightboxFigure.appendChild(createCaption(media.title));
+  $lightboxContent.setAttribute("aria-labelledby",`${media.title}`)
 
   // Activer ou désactiver les boutons de navigation
   toggleNavigationButtons(indexMedia);

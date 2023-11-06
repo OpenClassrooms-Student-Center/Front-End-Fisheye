@@ -20,7 +20,7 @@ function createMediaFactory(data) {
           : `<img src="assets/galleries/${mediaSource}" alt="${data.title}" tabindex="0"/>`
       }
       <figcaption class="media-card-description">
-        <p id="mediaTitle_${data.id}">${data.title}</p>
+        <h2 id="mediaTitle_${data.id}">${data.title}</h2>
         <p>
           <span id="likeButton" role="button" tabindex="0" class="${
             liked ? "liked" : ""
@@ -84,7 +84,7 @@ function createMediaFactory(data) {
 
       // Calcul du nombre total de likes
       const $totalLikes = document.querySelector(
-        ".popularity-section > p:nth-child(1) > span:nth-child(1)"
+        ".popularity-section > h3:nth-child(1) > span:nth-child(1)"
       );
       $totalLikes.textContent =
         parseInt($totalLikes.textContent) + (liked ? 1 : -1);

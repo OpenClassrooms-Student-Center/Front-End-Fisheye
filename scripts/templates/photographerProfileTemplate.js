@@ -7,7 +7,7 @@ function photographerProfileTemplate(data) {
         <article class="photograph-header">
           <div class="column">
             <h1>${name}</h1>
-            <p class="location">${city}, ${country}</p>
+            <h2 class="location">${city}, ${country}</h2>
             <p class="tagline">${tagline}</p>
           </div>
           <div class="column">
@@ -26,8 +26,8 @@ function photographerProfileTemplate(data) {
 
     // Ajouter le prix en bas à droite du body
     const $popularitySection = document.createElement("div");
-    const $popularitySectionLeft = document.createElement("p");
-    const $popularitySectionRight = document.createElement("p");
+    const $popularitySectionLeft = document.createElement("h3");
+    const $popularitySectionRight = document.createElement("h3");
     const $totalLikes = document.createElement("span");
     const $icon = document.createElement("span");
 
@@ -47,7 +47,7 @@ function photographerProfileTemplate(data) {
     );
 
     $totalLikes.textContent = `${totalLikes}`;
-    $icon.innerHTML = ` <span><i class="fa-solid fa-heart"></i></span> `;
+    $icon.innerHTML = ` <i class="fa-solid fa-heart"></i> `;
     document.body.appendChild($popularitySection);
 
     return $template;

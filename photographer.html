@@ -37,7 +37,7 @@
       <!-- HTML -->
       <section id="media-container">
         <div id="media-container-header">
-          <label for="sortSelect">Trier par :</label>
+          <span aria-labelledby="sortSelect">Trier par :</span>
           <div
             class="custom-select"
             role="combobox"
@@ -107,7 +107,6 @@
         role="dialog"
         aria-modal="true"
         aria-labelledby="modalTitle"
-        aria-describedby="modalDescription"
       >
         <div class="modal-contact">
           <div class="header">
@@ -201,14 +200,13 @@
       <div
         id="lightbox_modal"
         role="dialog"
-        aria-labelledby="lightboxTitle"
         aria-modal="true"
         tabindex="-1"
       >
         <button id="closeLightbox" aria-label="Fermer la lightbox">
           &times;
         </button>
-        <div id="lightboxContent" role="group" aria-labelledby="mediaTitle">
+        <div id="lightboxContent" role="group">
           <div id="mediaCarousel" role="listbox" aria-live="polite">
             <div class="lightbox-media" role="option" aria-selected="true">
               <figure></figure>

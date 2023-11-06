@@ -81,6 +81,9 @@
 .media-card-description i {
     font-size: 24px;
 }
+.media-card-description h2 {
+    font-size: 24px;
+}
 
 .popularity-section {
     display: flex;
