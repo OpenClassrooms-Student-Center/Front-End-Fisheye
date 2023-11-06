@@ -72,11 +72,11 @@ class PhotographerPages {
   async lightbox(index) {
     const photographer = await this.photographer();
     const media = await this.media();
-    await this.mediasLightboxArray(); // Ensure mediasLightbox is populated
+    await this.mediasLightboxArray();
     const medias = mediasLightbox[index];
     const template = new Lightbox(media, medias, photographer);
     // const carouselControlPrev = document.getElementById("controls-left");
-    this.lightboxWrapper.innerHTML = ""; // Clear the lightbox
+    this.lightboxWrapper.innerHTML = "";
     this.lightboxWrapper.appendChild(
       template.createLightbox(media, photographer)
     );

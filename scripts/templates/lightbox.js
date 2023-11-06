@@ -2,6 +2,7 @@ class Lightbox {
   constructor(media, photographer) {
     this._media = media;
     this._photographer = photographer;
+    this.currentIndex = 0;
   }
 
   createLightbox(media, photographer) {
@@ -31,9 +32,36 @@ class Lightbox {
     const carouselArrows = document.createElement("div");
     carouselArrows.classList.add("carousel-arrows");
 
+    let currentIndex = 0;
+
+    controlsNext.addEventListener("click", () => {
+      // Hide the current li
+      const currentLi = carouselContainer.querySelector(
+        `.carousel-item-${currentIndex}`
+      );
+      if (currentLi) {
+        currentLi.style.display = "none";
+      }
+
+      currentIndex++; // Increment the current index
+
+      // If we reach the end, loop back to the beginning
+      if (currentIndex >= media.length) {
+        currentIndex = 0;
+      }
+
+      // Display the new li
+      const newLi = carouselContainer.querySelector(
+        `.carousel-item-${currentIndex}`
+      );
+      if (newLi) {
+        newLi.style.display = "block";
+      }
+    });
+
     media.forEach((mediaItem, index) => {
       const carouselLi = document.createElement("li");
-      carouselLi.classList.add("carousel-item");
+      carouselLi.classList.add("carousel-item-" + (index + 1));
       // Set aria-hidden based on the index
       carouselLi.style.display = index === 0 ? "block" : "none";
 
