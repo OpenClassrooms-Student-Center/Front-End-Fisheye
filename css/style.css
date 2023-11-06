@@ -29,6 +29,14 @@ h1 {
     grid-template-columns: 1fr 1fr 1fr;
     gap: 70px;
     margin-top: 100px;
+
+    @media screen and (max-width: 1200px) {
+        grid-template-columns: 1fr 1fr;
+    }
+        
+    @media screen and (max-width: 800px) {
+        grid-template-columns: 1fr;
+    }
 }
 
 .photographer_section article {
@@ -42,9 +50,18 @@ h1 {
 .photographer_section article h2 {
     color: #D3573C;
     font-size: 36px;
+    text-wrap:  nowrap;
+    margin-bottom: 0px;
 }
 
 .photographer_section article img {
     height: 200px;
     width: 200px;
+    border-radius: 50%;
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.25);
+}
+
+.photographer_section article p {
+    text-align: center;
+    margin : 0px;
 }

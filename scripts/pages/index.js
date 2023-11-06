@@ -3,6 +3,7 @@
             .then(response => response.json())
             .then(data => data.photographers);
         
+            console.log(photographers);
 
         return ({
             photographers: [...photographers, ...photographers, ...photographers]})
@@ -20,7 +21,7 @@
 
     async function init() {
         const { photographers } = await getPhotographers();
-        displayData(photographers);
+        displayData(photographers.splice(0, 6));
     }
     
     init();
