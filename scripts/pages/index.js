@@ -1,5 +1,5 @@
 async function getPhotographers() {
-  const url = '../data/photographers.json'
+  const url = './data/photographers.json'
   let response = await fetch(url)
   console.log(response.url)
   let photographers = await response.json()
