@@ -1,0 +1,20 @@
+.photographers__section {
+  article {
+    justify-self: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    img {
+      height: 200px;
+      width: 200px;
+    }
+    h2 {
+      margin-bottom: 0%;
+    }
+    h3,
+    p {
+      margin: 0%;
+    }
+  }
+}

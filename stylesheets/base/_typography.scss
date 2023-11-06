@@ -1,0 +1,31 @@
+/**
+ * Basic typography style
+ */
+body {
+  font-family: 'DM Sans', sans-serif;
+  margin: 0;
+}
+h1 {
+  color: #901c1c;
+  margin-right: 100px;
+}
+
+/* phatographer card home page */
+.photographers__section {
+  article {
+    text-align: center;
+    h2 {
+      color: #d3573c;
+      font-size: 36px;
+    }
+    h3 {
+      color: #901c1c;
+    }
+    p {
+      font-weight: 400;
+      &:nth-child(3) {
+        color: #757575;
+      }
+    }
+  }
+}

@@ -1,0 +1,196 @@
+/**
+ * Set up a decent box model on the root element
+ */
+html {
+  box-sizing: border-box;
+}
+
+/**
+ * Make all elements from the DOM inherit from the parent box-sizing
+ * Since `*` has a specificity of 0, it does not override the `html` value
+ * making all elements inheriting from the root box-sizing value
+ */
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
+/** 
+* General styles
+*/
+body {
+  margin: 0;
+}
+
+h1 {
+  margin-right: 100px;
+}
+
+/**
+ * Basic styles for links
+ */
+/**
+ * Basic typography style
+ */
+body {
+  font-family: "DM Sans", sans-serif;
+  margin: 0;
+}
+
+h1 {
+  color: #901c1c;
+  margin-right: 100px;
+}
+
+/* phatographer card home page */
+.photographers__section article {
+  text-align: center;
+}
+.photographers__section article h2 {
+  color: #d3573c;
+  font-size: 36px;
+}
+.photographers__section article h3 {
+  color: #901c1c;
+}
+.photographers__section article p {
+  font-weight: 400;
+}
+.photographers__section article p:nth-child(3) {
+  color: #757575;
+}
+
+/**
+ * Main content containers
+ * 1. Make the container full-width with a maximum width
+ * 2. Center it in the viewport
+ * 3. Leave some space on the edges, especially valuable on small screens
+ */
+.container {
+  max-width: 1180px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 20px;
+  padding-right: 20px;
+  width: 100%;
+}
+
+/**
+ * Hide text while making it readable for screen readers
+ */
+.hide-text {
+  overflow: hidden;
+  padding: 0;
+  text-indent: 101%;
+  white-space: nowrap;
+}
+
+header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  height: 90px;
+}
+header .logo {
+  height: 50px;
+  margin-left: 100px;
+}
+
+form {
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  align-items: flex-start;
+}
+form label {
+  color: #312e2e;
+  font-size: 36px;
+}
+form div {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  align-items: self-start;
+  margin-bottom: 26px;
+}
+form input {
+  width: 100%;
+  height: 68px;
+  border: none;
+  border-radius: 5px;
+}
+
+.modal {
+  border-radius: 5px;
+  background-color: #db8876;
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  padding: 35px;
+  margin: auto;
+}
+.modal header {
+  justify-content: space-between;
+  width: 100%;
+}
+.modal header img {
+  cursor: pointer;
+}
+.modal header h2 {
+  font-size: 64px;
+  font-weight: normal;
+  text-align: center;
+}
+
+.photographers__section article {
+  justify-self: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+.photographers__section article img {
+  height: 200px;
+  width: 200px;
+}
+.photographers__section article h2 {
+  margin-bottom: 0%;
+}
+.photographers__section article h3,
+.photographers__section article p {
+  margin: 0%;
+}
+
+.photographers__section {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 70px;
+  margin-top: 100px;
+}
+
+#contact__modal {
+  display: none;
+}
+
+.photographer__header {
+  background-color: #fafafa;
+  height: 300px;
+  margin: 0 100px;
+}
+
+.contact__button {
+  font-size: 20px;
+  font-weight: bold;
+  color: white;
+  padding: 11px;
+  width: 170px;
+  height: 70px;
+  border: none;
+  background-color: #901c1c;
+  border-radius: 5px;
+  cursor: pointer;
+}

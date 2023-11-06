@@ -1,0 +1,30 @@
+// -----------------------------------------------------------------------------
+// This file contains styles that are specific to the contact modale.
+// -----------------------------------------------------------------------------
+
+.modal {
+  border-radius: 5px;
+  background-color: #db8876;
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  padding: 35px;
+  margin: auto;
+
+  header {
+    justify-content: space-between;
+    width: 100%;
+
+    img {
+      cursor: pointer;
+    }
+
+    h2 {
+      font-size: 64px;
+      font-weight: normal;
+      text-align: center;
+    }
+  }
+}
