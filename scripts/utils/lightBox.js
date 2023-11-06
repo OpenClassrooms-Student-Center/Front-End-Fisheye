@@ -12,6 +12,31 @@ function lightboxOpen() {
 let indexSlide = 0;
 function slide(n) {
     showSlide(indexSlide = n);
+    window.addEventListener(
+        "keydown",
+        (event) => {
+            if (event.key === "ArrowLeft") {
+                if (document.querySelector(".lightbox").style.display === 'flex') {
+                    prevSlide();
+
+                }
+            }
+
+            if (event.key === "ArrowRight") {
+                if (document.querySelector(".lightbox").style.display === 'flex') {
+                    nextSlide();
+                }
+            }
+
+            if (event.key === "Escape") {
+                if (document.querySelector(".lightbox").style.display === 'flex') {
+                    lightboxClose();
+                }
+            }
+
+        },
+        true,
+    );
 }
 
 function nextSlide() {
@@ -33,23 +58,6 @@ function prevSlide() {
         showSlide(indexSlide = indexSlide - 1);
     }
 }
-
-// Navigation avec le clavier
-window.addEventListener(
-    "keydown",
-    (event) => {
-        if (event.key === "ArrowLeft") {
-            prevSlide();
-        }
-
-        if (event.key === "ArrowRight") {
-            nextSlide();
-        }
-
-        event.preventDefault();
-    },
-    true,
-);
 
 function showSlide(n) {
     // Liste des médias

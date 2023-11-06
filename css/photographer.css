@@ -281,13 +281,15 @@ form textarea {
 /* ------------------ LIGHTBOX ------------------- */
 
 .lightbox {
-    display: none;
-    position: fixed;
+    inset: 0;
+    border: 0;
+    margin: 0;
+    padding: 20px;
     flex-direction: row;
-    top: 0;
-    height: 100%;
-    width: 100%;
+    height: 100vh;
+    width: 100vw;
     background: #fff;
+    overflow: hidden;
 }
 
 .lightbox-zone {
@@ -306,8 +308,6 @@ form textarea {
 .lightbox-container {
     display: flex;
     align-items: center;
-    justify-content: center;
-    width: 100%;
     margin: 0 50px;
 }
 

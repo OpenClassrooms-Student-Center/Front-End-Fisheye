@@ -32,6 +32,3 @@ async function displayData(photographers) {
         photographersSection.appendChild(userCardDOM);
     });
 }
-
-
-    

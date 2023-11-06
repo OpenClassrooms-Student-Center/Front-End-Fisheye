@@ -52,7 +52,8 @@ function detailMediaTemplate(data, index) {
 
         const button = document.createElement('button');
         button.classList.add('button-card');
-        button.setAttribute("onclick", 'lightboxOpen(); slide('+index+')');
+        button.setAttribute("onclick", 'lightboxDialog.showModal(); slide('+index+')');
+
 
         const img = document.createElement( 'img' );
         const mp4 = document.createElement( 'video' );
@@ -62,14 +63,12 @@ function detailMediaTemplate(data, index) {
             img.setAttribute("alt", title);
         } else {
             mp4.setAttribute("alt", title);
-            mp4.setAttribute("tabindex", 0);
             mp4.src = movie;
             mp4.autoplay = false;
             mp4.controls = false;
             mp4.height = 350;
             mp4.width = 350;
         }
-
 
         const divText = document.createElement('div');
         divText.classList.add('textMedia');
