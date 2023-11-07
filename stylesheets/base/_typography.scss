@@ -2,12 +2,15 @@
  * Basic typography style
  */
 body {
-  font-family: 'DM Sans', sans-serif;
-  margin: 0;
+  font-family: $text-font;
 }
 h1 {
-  color: #901c1c;
-  margin-right: 100px;
+  color: $principal-color;
+}
+h1,
+h2 {
+  font-size: 2.25rem;
+  font-weight: 400;
 }
 
 /* phatographer card home page */
@@ -15,17 +18,18 @@ h1 {
   .photographer {
     text-align: center;
     &__name {
-      color: #d3573c;
-      font-size: 36px;
+      color: $second-color;
     }
     &__location {
-      color: #901c1c;
+      color: $principal-color;
+      font-size: 0.8125rem;
+    }
+    &__tagline {
+      font-size: 0.625rem;
     }
     &__price {
-      font-weight: 400;
-      &:nth-child(3) {
-        color: #757575;
-      }
+      font-size: 0.5625rem;
+      color: $dark-grey;
     }
   }
 }

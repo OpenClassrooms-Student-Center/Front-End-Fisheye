@@ -21,26 +21,37 @@ html {
 */
 body {
   margin: 0;
+  max-width: 1440px;
+  margin: auto;
 }
 
-h1 {
-  margin-right: 100px;
+h1,
+h2 {
+  margin: 0%;
 }
 
 /**
- * Basic styles for links
- */
+* Basic styles for links
+*/
+a {
+  text-decoration: none;
+}
+
 /**
  * Basic typography style
  */
 body {
   font-family: "DM Sans", sans-serif;
-  margin: 0;
 }
 
 h1 {
   color: #901c1c;
-  margin-right: 100px;
+}
+
+h1,
+h2 {
+  font-size: 2.25rem;
+  font-weight: 400;
 }
 
 /* phatographer card home page */
@@ -49,16 +60,17 @@ h1 {
 }
 .photographers__section .photographer__name {
   color: #d3573c;
-  font-size: 36px;
 }
 .photographers__section .photographer__location {
   color: #901c1c;
+  font-size: 0.8125rem;
+}
+.photographers__section .photographer__tagline {
+  font-size: 0.625rem;
 }
 .photographers__section .photographer__price {
-  font-weight: 400;
-}
-.photographers__section .photographer__price:nth-child(3) {
-  color: #757575;
+  font-size: 0.5625rem;
+  color: #525252;
 }
 
 /**
@@ -68,7 +80,6 @@ h1 {
  * 3. Leave some space on the edges, especially valuable on small screens
  */
 .container {
-  max-width: 1180px;
   margin-left: auto;
   margin-right: auto;
   padding-left: 20px;
@@ -92,10 +103,10 @@ header {
   justify-content: space-between;
   align-items: center;
   height: 90px;
+  padding: 70px 100px;
 }
 header .logo {
   height: 50px;
-  margin-left: 100px;
 }
 
 form {
@@ -146,30 +157,35 @@ form input {
   text-align: center;
 }
 
-.photographers__section article {
+.photographer {
   justify-self: center;
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
 }
-.photographers__section article img {
+.photographer__profile-picture {
   height: 200px;
   width: 200px;
+  border-radius: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+  box-shadow: 0rem 0.25rem 0.75rem rgba(0, 0, 0, 0.25);
 }
-.photographers__section article h2 {
+.photographer__name {
+  margin-top: 15px;
   margin-bottom: 0%;
 }
-.photographers__section article h3,
-.photographers__section article p {
+.photographer p {
   margin: 0%;
+  padding-top: 3px;
 }
 
 .photographers__section {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   gap: 70px;
-  margin-top: 100px;
+  margin: 100px 0px;
 }
 
 #contact__modal {

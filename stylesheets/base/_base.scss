@@ -25,11 +25,17 @@ html {
 */
 body {
   margin: 0;
+  max-width: 1440px;
+  margin: auto;
 }
-h1 {
-  margin-right: 100px;
+h1,
+h2 {
+  margin: 0%;
 }
 
 /**
- * Basic styles for links
- */
+* Basic styles for links
+*/
+a {
+  text-decoration: none;
+}
