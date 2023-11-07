@@ -18,3 +18,9 @@ function photographerTemplate(data) {
   }
   return { name, picture, getUserCardDOM };
 }
+
+function photographerCard(photographer) {
+  const photographerModel = photographerTemplate(photographer);
+  const userCardDOM = photographerModel.getUserCardDOM();
+  return userCardDOM;
+}
