@@ -1,8 +1,7 @@
 import { photographerCard } from '../templates/photographerCard.js';
-import { initPhotograph } from './photographer.js';
-// Récupération des photographes depuis le fichier JSON
 
 async function getPhotographers() {
+  // Récupération des photographes depuis le fichier JSON
   const reponse = await fetch('../../data/photographers.json');
   const photographers = await reponse.json();
   console.log(photographers);
@@ -19,7 +18,6 @@ async function displayPhotographers(photographers) {
     photographersSection.appendChild(cardDOM);
     console.log(photographer.id);
   });
-  initPhotograph();
 }
 
 async function init() {

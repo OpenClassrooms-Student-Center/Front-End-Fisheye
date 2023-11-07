@@ -185,7 +185,7 @@ form input {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   gap: 70px;
-  margin: 100px 0px;
+  margin: 50px 0px 100px 0px;
 }
 
 #contact__modal {
