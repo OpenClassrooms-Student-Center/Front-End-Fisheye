@@ -33,6 +33,6 @@ function photographerTemplate(data) {
   return { name, picture, getUserCardDOM };
 }
 async function openPhotographerPage() {
-  window.location.href = '../../photographer.html';
+  window.location.href = 'pages/photographer.html';
   // initPhotograph(data);
 }
