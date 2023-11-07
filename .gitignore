@@ -1,0 +1,12 @@
+pnpm-lock.yaml
+node_modules
+
+# Logs
+logs
+*.log
+
+dist
+*.cache
+
+*.env
+
