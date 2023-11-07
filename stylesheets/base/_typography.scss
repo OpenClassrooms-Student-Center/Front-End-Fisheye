@@ -12,16 +12,16 @@ h1 {
 
 /* phatographer card home page */
 .photographers__section {
-  article {
+  .photographer {
     text-align: center;
-    h2 {
+    &__name {
       color: #d3573c;
       font-size: 36px;
     }
-    h3 {
+    &__location {
       color: #901c1c;
     }
-    p {
+    &__price {
       font-weight: 400;
       &:nth-child(3) {
         color: #757575;

@@ -44,20 +44,20 @@ h1 {
 }
 
 /* phatographer card home page */
-.photographers__section article {
+.photographers__section .photographer {
   text-align: center;
 }
-.photographers__section article h2 {
+.photographers__section .photographer__name {
   color: #d3573c;
   font-size: 36px;
 }
-.photographers__section article h3 {
+.photographers__section .photographer__location {
   color: #901c1c;
 }
-.photographers__section article p {
+.photographers__section .photographer__price {
   font-weight: 400;
 }
-.photographers__section article p:nth-child(3) {
+.photographers__section .photographer__price:nth-child(3) {
   color: #757575;
 }
 
