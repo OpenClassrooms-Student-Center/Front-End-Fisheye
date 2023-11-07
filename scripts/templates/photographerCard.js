@@ -1,11 +1,11 @@
-// import { initPhotograph } from '../pages/photographer.js';
-function photographerTemplate(data) {
+function photographerCard(data) {
   const { name, portrait, city, country, tagline, price, id } = data;
   console.log(data);
   const picture = `assets/photographers/Photographers_ID_Photos/${portrait}`;
 
-  function getUserCardDOM() {
+  function getPhotographerCard() {
     const article = document.createElement('article');
+    article.className = 'photographer';
     const img = document.createElement('img');
     img.src = picture;
     img.alt = name;
@@ -25,14 +25,14 @@ function photographerTemplate(data) {
     article.appendChild(h2);
     article.appendChild(description);
     article.tabIndex = 0;
-    article.onclick = function () {
-      openPhotographerPage(data);
-    };
+    article.dataset.id = id;
+    console.log(id);
     return article;
   }
-  return { name, picture, getUserCardDOM };
+  return { getPhotographerCard };
 }
-async function openPhotographerPage() {
-  window.location.href = 'pages/photographer.html';
-  // initPhotograph(data);
-}
+// async function openPhotographerPage(id) {
+//   window.location.href = 'pages/photographer.html';
+// }
+
+export { photographerCard };
