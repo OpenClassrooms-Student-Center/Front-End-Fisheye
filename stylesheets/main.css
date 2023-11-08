@@ -38,6 +38,18 @@ a {
 }
 
 /**
+* Picture style
+*/
+.profile-picture {
+  height: 200px;
+  width: 200px;
+  border-radius: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+  box-shadow: 0rem 0.25rem 0.75rem rgba(0, 0, 0, 0.25);
+}
+
+/**
  * Basic typography style
  */
 body {
@@ -54,15 +66,19 @@ h2 {
   font-weight: 400;
 }
 
+.name {
+  color: #d3573c;
+}
+
+.location {
+  color: #901c1c;
+}
+
 /* phatographer card home page */
 .photographers__section .photographer {
   text-align: center;
 }
-.photographers__section .photographer__name {
-  color: #d3573c;
-}
 .photographers__section .photographer__location {
-  color: #901c1c;
   font-size: 0.8125rem;
 }
 .photographers__section .photographer__tagline {
@@ -70,6 +86,20 @@ h2 {
 }
 .photographers__section .photographer__price {
   font-size: 0.5625rem;
+  color: #525252;
+}
+
+/* photograph profile */
+.photographer__presentation-name {
+  font-size: 4rem;
+  color: #d3573c;
+}
+.photographer__presentation-location {
+  font-size: 1.5rem;
+  color: #901c1c;
+}
+.photographer__presentation-tagline {
+  font-size: 1.125rem;
   color: #525252;
 }
 
@@ -164,14 +194,6 @@ form input {
   align-items: center;
   flex-direction: column;
 }
-.photographer__profile-picture {
-  height: 200px;
-  width: 200px;
-  border-radius: 100%;
-  -o-object-fit: cover;
-     object-fit: cover;
-  box-shadow: 0rem 0.25rem 0.75rem rgba(0, 0, 0, 0.25);
-}
 .photographer__name {
   margin-top: 15px;
   margin-bottom: 0%;
@@ -188,14 +210,18 @@ form input {
   margin: 50px 0px 100px 0px;
 }
 
-#contact__modal {
-  display: none;
-}
-
 .photographer__header {
   background-color: #fafafa;
   height: 300px;
   margin: 0 100px;
+  padding: 70px 50px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+#contact__modal {
+  display: none;
 }
 
 .contact__button {

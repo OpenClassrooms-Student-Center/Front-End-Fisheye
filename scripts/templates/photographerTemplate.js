@@ -1,0 +1,181 @@
+/**
+ * Fonction qui prend en paramètre un photographe
+ * Contient une fonction pour créer une card pour la page d'accueil
+ * Contient une fonction pour créer le contenu du header de la page d'un photographe
+ * @param {object} photographer
+ * @returns
+ */
+function photographerTemplate(photographer) {
+  // constructor with factory function
+  const { name, portrait, city, country, tagline, price, id } = photographer;
+  // get photographer profile picture
+  const picture = `assets/photographers/Photographers_ID_Photos/${portrait}`;
+  console.log(photographer);
+
+  /**
+   * create image element
+   * @param {jpg} picture
+   * @param {string} elementClass
+   * @param {string} alt
+   * @returns
+   */
+  function createImage(picture, elementClass, alt) {
+    const profilePicture = document.createElement('img');
+    profilePicture.className = elementClass;
+    profilePicture.src = picture;
+    profilePicture.alt = alt;
+    return profilePicture;
+  }
+  /**
+   * create element
+   * @param {string} tag
+   * @param {string} elementClass
+   * @param {string} content
+   * @returns
+   */
+  function createElement(tag, elementClass, content) {
+    const element = document.createElement(tag);
+    element.className = elementClass;
+    element.textContent = content;
+
+    return element;
+  }
+
+  /**
+   * Function that creates an article to display the photographer's card
+   * and returns an article containing several DOM elements (a, img, h2, div, p)
+   *    A card is contained in an article composed of :
+   *        a link containing :
+   *            profile picture
+   *            photographer's name
+   *        a description containing :
+   *            location (city + country)
+   *            tagline
+   *            daily rate
+   * @returns
+   */
+  function createPhotographerCard() {
+    // article container
+    const article = document.createElement('article');
+    article.className = 'photographer';
+    // link to profil page (img + name)
+    const photographerPageLink = createElement('a', 'photographer__link');
+    photographerPageLink.setAttribute(
+      'href',
+      `./pages/photographer.html?id=${id}`
+    );
+    // profile picture
+    const profilePicture = createImage(
+      picture,
+      'photographer__profile-picture profile-picture',
+      `Profil de ${name}`
+    );
+    // photographer name
+    const photographerName = createElement(
+      'h2',
+      'photographer__name name',
+      name
+    );
+
+    photographerPageLink.appendChild(profilePicture);
+    photographerPageLink.appendChild(photographerName);
+
+    // description container (location, tagline, price)
+    const photographerDescription = document.createElement('div');
+    // location
+    const photographerLocation = createElement(
+      'p',
+      'photographer__location location',
+      `${city}, ${country}`
+    );
+    // tagline
+    const photographerTagline = createElement(
+      'p',
+      'photographer__tagline',
+      tagline
+    );
+    // price
+    const photographerPrice = createElement(
+      'p',
+      'photographer__price',
+      `${price}€/jour`
+    );
+
+    photographerDescription.appendChild(photographerLocation);
+    photographerDescription.appendChild(photographerTagline);
+    photographerDescription.appendChild(photographerPrice);
+    // add all childs to article
+    article.appendChild(photographerPageLink);
+    article.appendChild(photographerDescription);
+
+    // article.dataset.id = id;
+
+    return article;
+  }
+  /**
+   * Function that creates an div to display the photographer's profile
+   * and returns a div containing several DOM elements (a, img, h2, div, p)
+   *    Profile is composed of :
+   *       a presentation containing :
+   *          photographer's name
+   *          location (city + country)
+   *          tagline
+   *       a button contact
+   *       a profile picture
+   * @returns
+   */
+  function createPhotographerProfile() {
+    // div container
+    const photographerHeader = document.createElement('div');
+    photographerHeader.className = '.photographer__header';
+    // presentation container
+    const photographerPresentation = document.createElement('section');
+    photographerPresentation.className = 'photographer__presentation';
+    // name
+    // photographer name
+    const photographerName = createElement(
+      'h1',
+      'photographer__presentation-name name',
+      name
+    );
+    // location
+    const photographerLocation = createElement(
+      'h2',
+      'photographer__presentation-location location',
+      `${city}, ${country}`
+    );
+    // tagline
+    const photographerTagline = createElement(
+      'p',
+      'photographer__presentation-tagline',
+      tagline
+    );
+
+    // add elements to presentation container
+    photographerPresentation.appendChild(photographerName);
+    photographerPresentation.appendChild(photographerLocation);
+    photographerPresentation.appendChild(photographerTagline);
+
+    // contact button
+    const photographerContactButton = createElement(
+      'button',
+      'photographer__contact-button contact__button',
+      'Contactez-moi'
+    );
+    photographerContactButton.onclick = 'displayModal()';
+    // profile picture
+    const photographerProfilePicture = createImage(
+      picture,
+      'photographer__profile-picture profile-picture',
+      name ?? ''
+    );
+    // add elements to photographer header container
+    photographerHeader.appendChild(photographerPresentation);
+    photographerHeader.appendChild(photographerContactButton);
+    photographerHeader.appendChild(photographerProfilePicture);
+    return photographerHeader;
+  }
+  return { createPhotographerCard, createPhotographerProfile };
+}
+
+export { photographerTemplate };

@@ -1,15 +1,19 @@
 // -----------------------------------------------------------------------------
 // This file contains styles that are specific to the photographer page.
 // -----------------------------------------------------------------------------
-
+.photographer {
+  &__header {
+    background-color: #fafafa;
+    height: 300px;
+    margin: 0 100px;
+    padding: 70px 50px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+}
 #contact__modal {
   display: none;
-}
-
-.photographer__header {
-  background-color: #fafafa;
-  height: 300px;
-  margin: 0 100px;
 }
 
 .contact__button {

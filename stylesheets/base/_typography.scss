@@ -13,15 +13,18 @@ h2 {
   font-weight: 400;
 }
 
+.name {
+  color: $second-color;
+}
+.location {
+  color: $principal-color;
+}
+
 /* phatographer card home page */
 .photographers__section {
   .photographer {
     text-align: center;
-    &__name {
-      color: $second-color;
-    }
     &__location {
-      color: $principal-color;
       font-size: 0.8125rem;
     }
     &__tagline {
@@ -29,6 +32,24 @@ h2 {
     }
     &__price {
       font-size: 0.5625rem;
+      color: $dark-grey;
+    }
+  }
+}
+
+/* photograph profile */
+.photographer {
+  &__presentation {
+    &-name {
+      font-size: 4rem;
+      color: $second-color;
+    }
+    &-location {
+      font-size: 1.5rem;
+      color: $principal-color;
+    }
+    &-tagline {
+      font-size: 1.125rem;
       color: $dark-grey;
     }
   }

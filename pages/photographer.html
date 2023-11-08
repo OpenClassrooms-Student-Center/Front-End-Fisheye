@@ -18,16 +18,8 @@
   <header>
     <a href="./index.html"><img src="../assets/logo/logo.png" class="logo" alt="Page d'accueil Fisheye"></a>
   </header>
-  <main id="main">
-    <div class="photographer__header">
-      <section class="photographer__presentation">
-        <h1 id="photographerName">name</h1>
-        <h2>location</h2>
-        <p>citation</p>
-      </section>
-      <button class="contact__button" onclick="displayModal()">Contactez-moi</button>
-      <img src="" alt="data.name ?? '' ">
-    </div>
+  <main id="main" class="photographer__main">
+    <!-- photographer header is display in this section via javaScript -->
     <section class="portfolio">
       <div class="filter"></div>
       <div class="gallery"></div>
@@ -48,7 +40,7 @@
       </form>
     </div>
   </div>
-  <script src="/scripts/pages/photographer.js"></script>
+  <script type="module" src="/scripts/pages/photographer.js"></script>
   <script src="/scripts/utils/contactForm.js"></script>
 </body>
 
