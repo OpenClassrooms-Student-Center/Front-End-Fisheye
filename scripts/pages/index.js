@@ -2,16 +2,16 @@ import { dbPhotographers } from '../db/dbPhotographers.js';
 import { photographerTemplate } from '../templates/photographerTemplate.js';
 
 /**
- * Executé au chargement de la page d'accueil
+ * Executed when home page is loaded
  */
 document.addEventListener('DOMContentLoaded', function () {
   init();
 });
 
 /**
- * Fonction qui récupère la div qui doit contenir tous les photographes et les affiche
+ * Function that retrieves the div containing all the photographers and displays them
  */
-function displayPhotographers(photographers) {
+const displayPhotographers = (photographers) => {
   try {
     const photographersSection = document.querySelector(
       '.photographers__section'
@@ -24,12 +24,12 @@ function displayPhotographers(photographers) {
   } catch (error) {
     console.log(error.message);
   }
-}
+};
 
 /**
- * Fonction appelée au chargement, récupère les datas des photographes
+ * Function called on loading, retrieves data from photographers database
  */
-async function init() {
+const init = async () => {
   try {
     const datasPhotographers = dbPhotographers();
     const { photographers } = await datasPhotographers.getPhotographers();
@@ -37,4 +37,4 @@ async function init() {
   } catch (error) {
     console.log(error.message);
   }
-}
+};

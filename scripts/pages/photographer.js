@@ -1,15 +1,15 @@
 import { dbPhotographers } from '../db/dbPhotographers.js';
 import { photographerTemplate } from '../templates/photographerTemplate.js';
 /**
- * Executé au chargement de la page d'un photographe
+ * Executed when home page is loaded
  */
 document.addEventListener('DOMContentLoaded', function () {
   init();
 });
 
 /**
- * Fonction qui récupère la div qui doit contenir l'entête de la page du photographe
- * et affiche les données du profil
+ * Function that retrieves the div containing the photographer's page header
+ * and displays the profile data
  * @param {array} photographer
  */
 const displayPhotographerProfile = (photographer) => {
@@ -28,12 +28,13 @@ const displayPhotographerProfile = (photographer) => {
 };
 
 /**
- * Fonction appelée au chargement, récupère les datas d'un photographe selon son id'
+ * Function called up on loading, retrieves photographer data according to id
  */
-async function init() {
+const init = async () => {
   try {
     let params = new URL(document.location).searchParams;
     const idPhotographer = params.get('id');
+    //TODO gerer l'absence d'id
     const datasPhotographer = dbPhotographers();
     const photographer = await datasPhotographer.getPhotographerById(
       idPhotographer
@@ -42,4 +43,4 @@ async function init() {
   } catch (error) {
     console.log(error.message);
   }
-}
+};

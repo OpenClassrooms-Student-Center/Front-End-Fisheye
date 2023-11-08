@@ -1,12 +1,12 @@
 /**
- * Ce fichier permet de faire le lien avec la base de donnée des photographes
+ * This file provides a link to the photographers' database.
  */
 function dbPhotographers() {
   /**
-   * Fonction qui récupère tous les photographes de la base de données JSON
+   * Function that retrieves all photographers from the JSON database
    * @returns {Promise<array>}
    */
-  async function getPhotographers() {
+  const getPhotographers = async () => {
     let photographers;
     try {
       const reponse = await fetch('../../data/photographers.json');
@@ -16,11 +16,11 @@ function dbPhotographers() {
       console.log(error.message);
     }
     return photographers;
-  }
+  };
 
   /**
-   * Fonction qui récupère un photographe de la base de données JSON selon son id
-   * @param {number} id
+   * Function that retrieves a photographer from the JSON database by id
+   * @param {number} idP
    * @returns {Promise<object>}
    */
   const getPhotographerById = async (idP) => {

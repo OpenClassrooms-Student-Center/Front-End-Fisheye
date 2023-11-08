@@ -1,7 +1,7 @@
 /**
- * Fonction qui prend en paramètre un photographe
- * Contient une fonction pour créer une card pour la page d'accueil
- * Contient une fonction pour créer le contenu du header de la page d'un photographe
+ * Function that takes a photographer as parameter
+ * Contains a function to create a card for the home page
+ * Contains a function to create the header content for a photographer's page
  * @param {object} photographer
  * @returns
  */
@@ -16,13 +16,13 @@ function photographerTemplate(photographer) {
    * @param {string} alt
    * @returns
    */
-  function createImage(picture, elementClass, alt) {
+  const createImage = (picture, elementClass, alt) => {
     const profilePicture = document.createElement('img');
     profilePicture.className = elementClass;
     profilePicture.src = picture;
     profilePicture.alt = alt;
     return profilePicture;
-  }
+  };
   /**
    * create element
    * @param {string} tag
@@ -30,13 +30,13 @@ function photographerTemplate(photographer) {
    * @param {string} content
    * @returns
    */
-  function createElement(tag, elementClass, content) {
+  const createElement = (tag, elementClass, content) => {
     const element = document.createElement(tag);
     element.className = elementClass;
     element.textContent = content;
 
     return element;
-  }
+  };
 
   /**
    * Function that creates an article to display the photographer's card
@@ -51,7 +51,7 @@ function photographerTemplate(photographer) {
    *            daily rate
    * @returns
    */
-  function createPhotographerCard() {
+  const createPhotographerCard = () => {
     // article container
     const article = document.createElement('article');
     article.className = 'photographer';
@@ -107,10 +107,8 @@ function photographerTemplate(photographer) {
     article.appendChild(photographerPageLink);
     article.appendChild(photographerDescription);
 
-    // article.dataset.id = id;
-
     return article;
-  }
+  };
   /**
    * Function that creates an div to display the photographer's profile
    * and returns a div containing several DOM elements (a, img, h2, div, p)
@@ -123,10 +121,14 @@ function photographerTemplate(photographer) {
    *       a profile picture
    * @returns
    */
-  function createPhotographerProfile() {
+  const createPhotographerProfile = () => {
     // div container
     const photographerHeader = document.createElement('div');
     photographerHeader.className = 'photographer__header';
+    photographerHeader.setAttribute(
+      'aria-label',
+      `Entête de la page de ${name}`
+    );
     // presentation container
     const photographerPresentation = document.createElement('section');
     photographerPresentation.className = 'photographer__presentation';
@@ -165,17 +167,18 @@ function photographerTemplate(photographer) {
     // profile picture
     // get photographer profile picture
     const picture = `../assets/photographers/Photographers_ID_Photos/${portrait}`;
+    const alt = name ?? '';
     const photographerProfilePicture = createImage(
       picture,
       'photographer__profile-picture profile-picture',
-      name
+      alt
     );
     // add elements to photographer header container
     photographerHeader.appendChild(photographerPresentation);
     photographerHeader.appendChild(photographerContactButton);
     photographerHeader.appendChild(photographerProfilePicture);
     return photographerHeader;
-  }
+  };
   return { createPhotographerCard, createPhotographerProfile };
 }
 
