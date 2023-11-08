@@ -1,3 +1,5 @@
+/* eslint-disable quotes */
+/* eslint-disable no-unused-vars */
 // Fonction utilitaire pour créer une balise <img>
 function createImage(src, alt) {
   const $image = document.createElement("img");

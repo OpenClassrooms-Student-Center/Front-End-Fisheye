@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 // Tri par popularité (likes)
 function sortByPopularity(mediaList) {
   return mediaList.slice().sort((a, b) => b.likes - a.likes);

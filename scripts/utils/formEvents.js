@@ -1,3 +1,6 @@
+/* eslint-disable no-undef */
+/* eslint-disable comma-dangle */
+/* eslint-disable quotes */
 const $btnFormContactClose = document.getElementById("btnFormContactClose");
 const $btnFormConfirmContactClose = document.getElementById(
   "btnFormConfirmContactClose"

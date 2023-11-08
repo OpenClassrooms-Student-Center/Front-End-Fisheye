@@ -1,3 +1,7 @@
+/* eslint-disable max-len */
+/* eslint-disable no-undef */
+/* eslint-disable operator-linebreak */
+/* eslint-disable quotes */
 // Noeuds de la listbox
 const $selectContainer = document.querySelector(".custom-select");
 const $selectedOption = document.getElementById("selectedOption");
@@ -13,25 +17,32 @@ function openSelectOptions() {
 // Information accessible que la listbox est fermée
 function closeSelectOptions() {
   $selectContainer.setAttribute("aria-expanded", "false");
-  //Permettre de garder le focus et de rouvrir la listbox
+  // Permettre de garder le focus et de rouvrir la listbox
   const isListboxOpened =
     $selectContainer.getAttribute("aria-expanded") === "true";
-  isListboxOpened && $selectContainer.focus();
-  $arrowDropdown.classList.remove("opened");// Rotation de la flèche du dropdown
+  if (isListboxOpened) {
+    $selectContainer.focus();
+  }
+  // isListboxOpened && $selectContainer.focus();
+  $arrowDropdown.classList.remove("opened"); // Rotation de la flèche du dropdown
 }
 // *************************** END INFOS ACCESSIBILITE ***************************
 
 // *************************** START GESTION COMPORTEMENT LISTBOX SOURIS ***************************
 // Ouverture/fermeture listbox
-document.addEventListener("click", function (event) {
+document.addEventListener("click", (event) => {
   const isInsideSelectContainer = $selectContainer.contains(event.target);
-  isInsideSelectContainer ? openSelectOptions() : closeSelectOptions();
+  if (isInsideSelectContainer) {
+    openSelectOptions();
+  } else {
+    closeSelectOptions();
+  }
 });
 // Affichage de la sélection
-$selectOptions.addEventListener("click", function (event) {
+$selectOptions.addEventListener("click", (event) => {
   if (event.target.tagName === "LI") {
     $selectedOption.textContent = event.target.textContent;
-    setTimeout(closeSelectOptions, 0); //Sans ce différé, la listbox ne se fermerait pas
+    setTimeout(closeSelectOptions, 0); // Sans ce différé, la listbox ne se fermerait pas
 
     // Evénement de tri en fonction de la valeur sélectionnée.
     const selectedValue = event.target.getAttribute("data-value");
@@ -41,15 +52,6 @@ $selectOptions.addEventListener("click", function (event) {
 // *************************** END GESTION COMPORTEMENT LISTBOX SOURIS ***************************
 
 // *************************** START GESTION COMPORTEMENT LISTBOX CLAVIER ***************************
-
-// Événement pour ouvrir la boîte d'options avec le clavier
-$selectContainer.addEventListener("keydown", openSelectOptionsWithKeyboard);
-
-// Événement pour gérer la navigation avec le clavier
-$selectContainer.addEventListener("keydown", navigateSelectOptionsWithArrows);
-
-// Événement pour gérer la sélection avec la touche Entrée
-$selectOptions.addEventListener("keydown", selectOptionWithEnter);
 
 // Fonction pour ouvrir la boîte d'options avec le clavier
 function openSelectOptionsWithKeyboard(event) {
@@ -83,7 +85,9 @@ function navigateSelectOptionsWithArrows(event) {
     options[options.length - 1].focus();
   }
   // Empêcher le défilement de la page avec les touches fléchées
-  isListboxOpened && event.preventDefault();
+  if (isListboxOpened) {
+    event.preventDefault();
+  }
 }
 
 // Fonction pour gérer la sélection avec la touche Entrée
@@ -95,5 +99,12 @@ function selectOptionWithEnter(event) {
     sortMedia(selectedValue);
   }
 }
+// Événement pour ouvrir la boîte d'options avec le clavier
+$selectContainer.addEventListener("keydown", openSelectOptionsWithKeyboard);
 
+// Événement pour gérer la navigation avec le clavier
+$selectContainer.addEventListener("keydown", navigateSelectOptionsWithArrows);
+
+// Événement pour gérer la sélection avec la touche Entrée
+$selectOptions.addEventListener("keydown", selectOptionWithEnter);
 // *************************** END GESTION COMPORTEMENT LISTBOX CLAVIER ***************************

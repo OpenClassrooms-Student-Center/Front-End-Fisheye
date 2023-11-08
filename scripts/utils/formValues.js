@@ -1,3 +1,5 @@
+/* eslint-disable quotes */
+/* eslint-disable no-unused-vars */
 // Récupérer le nom du photographe
 function getPhotographerName(photographer) {
   const $namePhotographer = document.getElementById("photographerName");

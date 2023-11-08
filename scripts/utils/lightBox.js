@@ -1,23 +1,29 @@
-const $lightbox_modal = document.getElementById("lightbox_modal");
-const $mediaCarousel = document.getElementById("mediaCarousel");
-const $lightboxContent =document.getElementById("lightboxContent");
+/* eslint-disable operator-linebreak */
+/* eslint-disable no-undef */
+/* eslint-disable quotes */
+const $lightboxContent = document.getElementById("lightboxContent");
 const $lightboxFigure = document.querySelector("#lightbox_modal figure");
 const $closeLightbox = document.getElementById("closeLightbox");
 const $prevMedia = document.getElementById("prevMedia");
 const $nextMedia = document.getElementById("nextMedia");
 
-$closeLightbox.addEventListener("click", () => {
-  closeModal("lightbox_modal");
-});
-$prevMedia.addEventListener("click", () => {
-  navigateMedia("prev");
-});
-$nextMedia.addEventListener("click", () => {
-  navigateMedia("next");
-});
-
 let indexMedia;
+// Activer ou désactiver les boutons de navigation
+function toggleNavigationButtons(index) {
+  $prevMedia.disabled = index === 0;
+  $nextMedia.disabled = index === photographerMedia.length - 1;
 
+  // Mettre à jour le texte explicatif
+  const prevMediaText = document.getElementById("prevMediaText");
+  const nextMediaText = document.getElementById("nextMediaText");
+
+  prevMediaText.textContent =
+    index === 0 ? "(Média précédent non disponible)" : "";
+  nextMediaText.textContent =
+    index === photographerMedia.length - 1
+      ? "(Média suivant non disponible)"
+      : "";
+}
 // Affichage de la lightbox
 function displayLightBoxContent(mediaId) {
   indexMedia = photographerMedia.findIndex((media) => media.id === mediaId);
@@ -33,12 +39,13 @@ function displayLightBoxContent(mediaId) {
 
   $lightboxFigure.appendChild($lightboxMedia);
   $lightboxFigure.appendChild(createCaption(media.title));
-  $lightboxContent.setAttribute("aria-label",`${media.title}`)
+  $lightboxContent.setAttribute("aria-label", `${media.title}`);
 
   // Activer ou désactiver les boutons de navigation
   toggleNavigationButtons(indexMedia);
 
   // Passer le sens à la fonction navigateMedia
+  // eslint-disable-next-line no-use-before-define
   navigateMedia("sense");
 }
 
@@ -61,8 +68,6 @@ function navigateMedia(sense) {
 }
 
 // Navigation du carrousel avec les flèches du clavier
-document.addEventListener("keydown", handleKeyDown);
-
 function handleKeyDown(event) {
   if (event.key === "ArrowLeft") {
     navigateMedia("prev");
@@ -70,20 +75,14 @@ function handleKeyDown(event) {
     navigateMedia("next");
   }
 }
+document.addEventListener("keydown", handleKeyDown);
 
-// Activer ou désactiver les boutons de navigation
-function toggleNavigationButtons(index) {
-  $prevMedia.disabled = index === 0;
-  $nextMedia.disabled = index === photographerMedia.length - 1;
-
-  // Mettre à jour le texte explicatif
-  const prevMediaText = document.getElementById("prevMediaText");
-  const nextMediaText = document.getElementById("nextMediaText");
-
-  prevMediaText.textContent =
-    index === 0 ? "(Média précédent non disponible)" : "";
-  nextMediaText.textContent =
-    index === photographerMedia.length - 1
-      ? "(Média suivant non disponible)"
-      : "";
-}
+$closeLightbox.addEventListener("click", () => {
+  closeModal("lightbox_modal");
+});
+$prevMedia.addEventListener("click", () => {
+  navigateMedia("prev");
+});
+$nextMedia.addEventListener("click", () => {
+  navigateMedia("next");
+});

@@ -1,3 +1,9 @@
+/* eslint-disable no-param-reassign */
+/* eslint-disable operator-linebreak */
+/* eslint-disable no-undef */
+/* eslint-disable indent */
+/* eslint-disable quotes */
+/* eslint-disable no-unused-vars */
 function createMediaFactory(data) {
   let liked = false; // Ajout d'une variable pour suivre l'état de like
 
@@ -60,23 +66,6 @@ function createMediaFactory(data) {
         }
       }
     });
-    // Ajout d'un gestionnaire d'événements sur le bouton de like
-    const $likeButton = $mediaElement.querySelector("#likeButton");
-    $likeButton.addEventListener("click", handleLikeClick);
-
-    function handleLikeClick() {
-      liked = !liked; // Inverser l'état de liked
-      data.likes += liked ? 1 : -1; // Mettre à jour le nombre de likes en fonction de liked
-      updateLikes(); // Mettre à jour l'icône et le nombre de likes
-    }
-
-    // Incrémentation au clavier
-    $likeButton.addEventListener("keydown", handleLikeClickKeyboard);
-    function handleLikeClickKeyboard(event) {
-      const isEnterKey = event.key === "Enter";
-      isEnterKey && handleLikeClick();
-    }
-
     function updateLikes() {
       // Mettre à jour le texte avec le nouveau nombre de likes
       const $likeCount = $mediaElement.querySelector("#likeCount");
@@ -87,8 +76,25 @@ function createMediaFactory(data) {
         ".popularity-section > h3:nth-child(1) > span:nth-child(1)"
       );
       $totalLikes.textContent =
-        parseInt($totalLikes.textContent) + (liked ? 1 : -1);
+        parseInt($totalLikes.textContent, 10) + (liked ? 1 : -1);
     }
+    // Ajout d'un gestionnaire d'événements sur le bouton de like
+    function handleLikeClick() {
+      liked = !liked; // Inverser l'état de liked
+      data.likes += liked ? 1 : -1; // Mettre à jour le nombre de likes en fonction de liked
+      updateLikes(); // Mettre à jour l'icône et le nombre de likes
+    }
+    const $likeButton = $mediaElement.querySelector("#likeButton");
+    $likeButton.addEventListener("click", handleLikeClick);
+
+    // Incrémentation au clavier
+    function handleLikeClickKeyboard(event) {
+      const isEnterKey = event.key === "Enter";
+      if (isEnterKey) {
+        handleLikeClick();
+      }
+    }
+    $likeButton.addEventListener("keydown", handleLikeClickKeyboard);
 
     return $mediaElement;
   }

@@ -1,3 +1,7 @@
+/* eslint-disable no-undef */
+/* eslint-disable quotes */
+/* eslint-disable object-curly-newline */
+/* eslint-disable no-unused-vars */
 //  Fonction factory pour créer une card photographe sur la page d accueil
 function photographerInListTemplate(data) {
   const { name, id, city, country, tagline, price, portrait } = data;
@@ -38,7 +42,8 @@ function photographerInListTemplate(data) {
     $h2.textContent = name;
     $p1.textContent = `${city}, ${country}`;
     $p2.textContent = tagline;
-    $p3.textContent = price + "€/jour";
+    const deviceText = "€/jour";
+    $p3.textContent = price + deviceText;
     $article.appendChild($img);
     $article.appendChild($div);
     $div.appendChild($h2);

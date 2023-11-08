@@ -1,3 +1,5 @@
+/* eslint-disable indent */
+/* eslint-disable no-unused-vars */
 // Fonction pour récupérer le paramètre depuis l'URL
 function getParameterFromURL(parameter) {
   const urlParams = new URLSearchParams(window.location.search);

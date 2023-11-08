@@ -1,3 +1,5 @@
+/* eslint-disable quotes */
+/* eslint-disable no-unused-vars */
 let closeModalElement; // Déclarer une variable pour stocker l'élément modal à fermer
 
 function displayModal(element) {
@@ -30,15 +32,15 @@ function displayModal(element) {
     }
   }
 
+  // Enregistrer l'élément modal à fermer dans la variable globale
+  closeModalElement = element;
   // Fonction pour fermer la modal lorsque la touche Escape est pressée
   function closeOnEscape(event) {
     if (event.key === "Escape") {
+      // eslint-disable-next-line no-use-before-define
       closeModal(closeModalElement);
     }
   }
-
-  // Enregistrer l'élément modal à fermer dans la variable globale
-  closeModalElement = element;
 
   // Ajouter des écouteurs d'événements pour la touche Escape et la navigation au clavier
   window.addEventListener("keydown", closeOnEscape);
@@ -55,7 +57,7 @@ function closeModal(element) {
   const $overlay = document.querySelector(".overlay");
   const $contactBtn = document.getElementById("contact_button");
   const $firstArticle = document.querySelector(
-    "#media-container-main > article > figure > :first-child"
+    "#media-container-main > article > figure > :first-child",
   );
 
   // Supprimer les classes pour masquer la modal et l'overlay, et réactiver le défilement du corps
@@ -64,8 +66,8 @@ function closeModal(element) {
   document.body.classList.remove("modal-open");
   // Replacement du focus après fermeture modal
   if (element === "contact_modal") {
-    $contactBtn.focus(); //Sur le bouton ouvrant la modal formulaire
+    $contactBtn.focus(); // Sur le bouton ouvrant la modal formulaire
   } else if (element === "lightbox_modal") {
-    $firstArticle.focus(); //Sur le 1er média de la liste de la gallerie
+    $firstArticle.focus(); // Sur le 1er média de la liste de la gallerie
   }
 }

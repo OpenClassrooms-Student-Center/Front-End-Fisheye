@@ -1,3 +1,7 @@
+/* eslint-disable comma-dangle */
+/* eslint-disable quotes */
+/* eslint-disable object-curly-newline */
+/* eslint-disable no-unused-vars */
 function photographerProfileTemplate(data) {
   const { name, city, country, tagline, price, portrait } = data;
   const picture = `assets/photographers/${portrait}`;
@@ -21,7 +25,6 @@ function photographerProfileTemplate(data) {
         </article>
       `;
 
-  
     const $template = document.createElement("div");
     $template.innerHTML = template;
 
