@@ -28,6 +28,11 @@ async function initPhotographerPage() {
         photographerMedia
       );
     $main.appendChild(photographerTemplate);
+    // Afficher le formulaire de contact
+    const $btnContact = document.getElementById("contact_button");
+    $btnContact.addEventListener("click", () => {
+      displayModal("contact_modal");
+    });
 
     // Utilisation de la fonction factory pour créer les médias
     const mediaInstances = photographerMedia.map(createMediaFactory);

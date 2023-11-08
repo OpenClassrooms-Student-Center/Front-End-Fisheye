@@ -11,7 +11,7 @@ function photographerProfileTemplate(data) {
             <p class="tagline">${tagline}</p>
           </div>
           <div class="column">
-            <button id="contact_button" onclick="displayModal('contact_modal')" aria-label="Contactez-moi">
+            <button id="contact_button" aria-label="Contactez-moi">
               Contactez-moi
             </button>
           </div>
@@ -21,6 +21,7 @@ function photographerProfileTemplate(data) {
         </article>
       `;
 
+  
     const $template = document.createElement("div");
     $template.innerHTML = template;
 

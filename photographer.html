@@ -114,17 +114,16 @@
               Contactez-moi<br /><span id="photographerName"></span>
             </h2>
             <button
-              aria-label="Fermer la modale"
-              onclick="closeModal('contact_modal')"
+              id="btnFormContactClose"
+              aria-label="Fermer le formulaire de contact"
             >
-              <img src="assets/icons/close.svg" alt="Fermer la modale" />
+              <img
+                src="assets/icons/close.svg"
+                alt="Fermer le formulaire de contact"
+              />
             </button>
           </div>
-          <form
-            id="formContact"
-            aria-label="Formulaire de contact"
-            onsubmit="validate(event);"
-          >
+          <form id="formContact" aria-label="Formulaire de contact">
             <div id="firstName" class="formData">
               <label for="first" tabindex="-1"
                 >Prénom <span class="required" tabindex="-1">*</span></label
@@ -136,7 +135,6 @@
                 name="prénom"
                 aria-required="true"
                 tabindex="0"
-                oninput="validateFirstName()"
               />
             </div>
             <div id="lastName" class="formData">
@@ -150,7 +148,6 @@
                 name="Nom"
                 aria-required="true"
                 tabindex="0"
-                oninput="validateLastName()"
               />
             </div>
             <div id="emailField" class="formData">
@@ -164,7 +161,6 @@
                 name="Email"
                 aria-required="true"
                 tabindex="0"
-                oninput="validateEmail()"
               />
             </div>
             <div id="messageField" class="formData">
@@ -178,7 +174,6 @@
                 name="message"
                 aria-required="true"
                 tabindex="0"
-                oninput="validateMessage()"
               ></textarea>
             </div>
 
@@ -189,20 +184,21 @@
         </div>
         <div id="confirm">
           <div class="closeBtn">
-            <button aria-label="Fermer la modale" onclick="closeFormConfirm()">
-              <img src="assets/icons/close.svg" alt="Fermer la modale" />
+            <button
+              id="btnFormConfirmContactClose"
+              aria-label="Fermer cette fenêtre de confirmation"
+            >
+              <img
+                src="assets/icons/close.svg"
+                alt="Fermer cette fenêtre de confirmation"
+              />
             </button>
           </div>
           <p class="confirmText">Vos données ont bien été envoyées !</p>
         </div>
       </div>
       <!-- Lightbox -->
-      <div
-        id="lightbox_modal"
-        role="dialog"
-        aria-modal="true"
-        tabindex="-1"
-      >
+      <div id="lightbox_modal" role="dialog" aria-modal="true" tabindex="-1">
         <button id="closeLightbox" aria-label="Fermer la lightbox">
           &times;
         </button>
@@ -232,6 +228,7 @@
     <script src="/scripts/pages/photographerProfile.js"></script>
     <script src="scripts/templates/photographerProfileTemplate.js"></script>
     <script src="/scripts/utils/modal.js"></script>
+    <script src="/scripts/utils/formEvents.js"></script>
     <script src="/scripts/utils/formValues.js"></script>
     <script src="/scripts/utils/formFieldsControl.js"></script>
     <script src="/scripts/utils/formSubmit.js"></script>
