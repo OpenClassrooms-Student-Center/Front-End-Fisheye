@@ -80,8 +80,8 @@ body.modal-open {
 
 /* ************ End Affichage modal ************ */
 .required {
-    color: red;
-    margin-left: 5px;
+    color: black;
+    /* margin-left: 5px; */
 }
 
 /* debugg */

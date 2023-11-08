@@ -33,7 +33,7 @@ function displayLightBoxContent(mediaId) {
 
   $lightboxFigure.appendChild($lightboxMedia);
   $lightboxFigure.appendChild(createCaption(media.title));
-  $lightboxContent.setAttribute("aria-labelledby",`${media.title}`)
+  $lightboxContent.setAttribute("aria-label",`${media.title}`)
 
   // Activer ou désactiver les boutons de navigation
   toggleNavigationButtons(indexMedia);
