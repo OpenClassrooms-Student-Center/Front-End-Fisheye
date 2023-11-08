@@ -12,27 +12,33 @@ document.addEventListener('DOMContentLoaded', function () {
  * et affiche les données du profil
  * @param {array} photographer
  */
-function displayPhotographerProfile(photographer) {
+const displayPhotographerProfile = (photographer) => {
   try {
     const photographerMain = document.querySelector('.photographer__main');
     const photographerHeader = photographerTemplate(photographer);
     const photographerHeaderDOM =
       photographerHeader.createPhotographerProfile();
-    photographerMain.appendChild(photographerHeaderDOM);
+    photographerMain.insertBefore(
+      photographerHeaderDOM,
+      photographerMain.firstChild
+    );
   } catch (error) {
     console.log(error.message);
   }
-}
+};
 
 /**
  * Fonction appelée au chargement, récupère les datas d'un photographe selon son id'
  */
 async function init() {
   try {
-    //TODO récup id
-    // const datasPhotographer = dbPhotographers();
-    // const photographer = await datasPhotographer.getPhotographerById();
-    // displayPhotographerProfile(photographer);
+    let params = new URL(document.location).searchParams;
+    const idPhotographer = params.get('id');
+    const datasPhotographer = dbPhotographers();
+    const photographer = await datasPhotographer.getPhotographerById(
+      idPhotographer
+    );
+    displayPhotographerProfile(photographer);
   } catch (error) {
     console.log(error.message);
   }

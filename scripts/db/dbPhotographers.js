@@ -4,7 +4,7 @@
 function dbPhotographers() {
   /**
    * Fonction qui récupère tous les photographes de la base de données JSON
-   * @returns {array}
+   * @returns {Promise<array>}
    */
   async function getPhotographers() {
     let photographers;
@@ -21,19 +21,27 @@ function dbPhotographers() {
   /**
    * Fonction qui récupère un photographe de la base de données JSON selon son id
    * @param {number} id
-   * @returns {object}
+   * @returns {Promise<object>}
    */
-  async function getPhotographerById(id) {
+  const getPhotographerById = async (idP) => {
     let photographer;
     try {
-      // const reponse = await fetch('../../data/photographers.json');
-      // photographer = await reponse.json();
-      // console.log(photographer);
+      const photographersData = await getPhotographers();
+      // transform to table
+      let photographersDataTab = Object.entries(
+        photographersData.photographers
+      );
+      for (let i = 0; i < photographersDataTab.length; i++) {
+        const dataId = photographersDataTab[i][1].id;
+        if (dataId == idP) {
+          photographer = photographersData.photographers[i];
+        }
+      }
     } catch (error) {
       console.log(error.message);
     }
     return photographer;
-  }
+  };
 
   return { getPhotographers, getPhotographerById };
 }

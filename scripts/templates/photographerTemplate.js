@@ -8,10 +8,7 @@
 function photographerTemplate(photographer) {
   // constructor with factory function
   const { name, portrait, city, country, tagline, price, id } = photographer;
-  // get photographer profile picture
-  const picture = `assets/photographers/Photographers_ID_Photos/${portrait}`;
   console.log(photographer);
-
   /**
    * create image element
    * @param {jpg} picture
@@ -65,6 +62,8 @@ function photographerTemplate(photographer) {
       `./pages/photographer.html?id=${id}`
     );
     // profile picture
+    // get photographer profile picture
+    const picture = `assets/photographers/Photographers_ID_Photos/${portrait}`;
     const profilePicture = createImage(
       picture,
       'photographer__profile-picture profile-picture',
@@ -127,7 +126,7 @@ function photographerTemplate(photographer) {
   function createPhotographerProfile() {
     // div container
     const photographerHeader = document.createElement('div');
-    photographerHeader.className = '.photographer__header';
+    photographerHeader.className = 'photographer__header';
     // presentation container
     const photographerPresentation = document.createElement('section');
     photographerPresentation.className = 'photographer__presentation';
@@ -164,10 +163,12 @@ function photographerTemplate(photographer) {
     );
     photographerContactButton.onclick = 'displayModal()';
     // profile picture
+    // get photographer profile picture
+    const picture = `../assets/photographers/Photographers_ID_Photos/${portrait}`;
     const photographerProfilePicture = createImage(
       picture,
       'photographer__profile-picture profile-picture',
-      name ?? ''
+      name
     );
     // add elements to photographer header container
     photographerHeader.appendChild(photographerPresentation);
