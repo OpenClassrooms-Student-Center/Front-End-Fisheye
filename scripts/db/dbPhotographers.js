@@ -1,21 +1,20 @@
+import { getDatas } from './Api.js';
 /**
  * This file provides a link to the photographers' database.
  */
-function dbPhotographers() {
+const DbPhotographers = () => {
   /**
    * Function that retrieves all photographers from the JSON database
    * @returns {Promise<array>}
    */
   const getPhotographers = async () => {
-    let photographers;
     try {
-      const reponse = await fetch('../../data/photographers.json');
-      photographers = await reponse.json();
+      const photographers = getDatas('../../data/photographers.json');
       console.log(photographers);
+      return photographers;
     } catch (error) {
       console.log(error.message);
     }
-    return photographers;
   };
 
   /**
@@ -24,26 +23,19 @@ function dbPhotographers() {
    * @returns {Promise<object>}
    */
   const getPhotographerById = async (idP) => {
-    let photographer;
     try {
-      const photographersData = await getPhotographers();
-      // transform to table
-      let photographersDataTab = Object.entries(
-        photographersData.photographers
+      let photographersData = await getPhotographers();
+      photographersData = photographersData.photographers;
+      const photographerDataFiltered = photographersData.find(
+        (photographer) => photographer.id == idP
       );
-      for (let i = 0; i < photographersDataTab.length; i++) {
-        const dataId = photographersDataTab[i][1].id;
-        if (dataId == idP) {
-          photographer = photographersData.photographers[i];
-        }
-      }
+      return photographerDataFiltered;
     } catch (error) {
       console.log(error.message);
     }
-    return photographer;
   };
 
   return { getPhotographers, getPhotographerById };
-}
+};
 
-export { dbPhotographers };
+export { DbPhotographers };

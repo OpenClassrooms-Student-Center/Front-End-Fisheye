@@ -46,7 +46,7 @@ a {
   border-radius: 100%;
   -o-object-fit: cover;
      object-fit: cover;
-  box-shadow: 0rem 0.25rem 0.75rem rgba(0, 0, 0, 0.25);
+  box-shadow: 0em 0.25em 0.75em rgba(0, 0, 0, 0.25);
 }
 
 /**
@@ -62,7 +62,7 @@ h1 {
 
 h1,
 h2 {
-  font-size: 2.25rem;
+  font-size: 2.25em;
   font-weight: 400;
 }
 
@@ -79,27 +79,25 @@ h2 {
   text-align: center;
 }
 .photographers__section .photographer__location {
-  font-size: 0.8125rem;
+  font-size: 0.8125em;
 }
 .photographers__section .photographer__tagline {
-  font-size: 0.625rem;
+  font-size: 0.625em;
 }
 .photographers__section .photographer__price {
-  font-size: 0.5625rem;
+  font-size: 0.5625em;
   color: #525252;
 }
 
 /* photograph profile */
 .photographer__presentation-name {
-  font-size: 4rem;
-  color: #d3573c;
+  font-size: 4em;
 }
 .photographer__presentation-location {
-  font-size: 1.5rem;
-  color: #901c1c;
+  font-size: 1.5em;
 }
 .photographer__presentation-tagline {
-  font-size: 1.125rem;
+  font-size: 1.125em;
   color: #525252;
 }
 
@@ -206,6 +204,7 @@ form input {
 .photographers__section {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
+  align-items: start;
   gap: 70px;
   margin: 50px 0px 100px 0px;
 }

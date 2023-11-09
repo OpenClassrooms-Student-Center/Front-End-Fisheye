@@ -9,7 +9,7 @@ h1 {
 }
 h1,
 h2 {
-  font-size: 2.25rem;
+  font-size: 2.25em;
   font-weight: 400;
 }
 
@@ -20,18 +20,19 @@ h2 {
   color: $principal-color;
 }
 
+//TODO police plus grande et commenter celle de la maquette pour plus d'accessibilité
 /* phatographer card home page */
 .photographers__section {
   .photographer {
     text-align: center;
     &__location {
-      font-size: 0.8125rem;
+      font-size: 0.8125em;
     }
     &__tagline {
-      font-size: 0.625rem;
+      font-size: 0.625em;
     }
     &__price {
-      font-size: 0.5625rem;
+      font-size: 0.5625em;
       color: $dark-grey;
     }
   }
@@ -41,15 +42,13 @@ h2 {
 .photographer {
   &__presentation {
     &-name {
-      font-size: 4rem;
-      color: $second-color;
+      font-size: 4em;
     }
     &-location {
-      font-size: 1.5rem;
-      color: $principal-color;
+      font-size: 1.5em;
     }
     &-tagline {
-      font-size: 1.125rem;
+      font-size: 1.125em;
       color: $dark-grey;
     }
   }

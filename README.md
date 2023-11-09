@@ -4,3 +4,7 @@
 
 Rien à installer ici, il suffit d'ouvrir le fichier `index.html`.
 
+Modèle MVC
+Modèles --> models (seulement pour media)
+Vues --> templates + html
+Controleurs --> pages

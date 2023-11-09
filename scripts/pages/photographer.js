@@ -1,5 +1,8 @@
-import { dbPhotographers } from '../db/dbPhotographers.js';
-import { photographerTemplate } from '../templates/photographerTemplate.js';
+/**
+ * controller of photographer page
+ */
+import { DbPhotographers } from '../db/DbPhotographers.js';
+import { PhotographerTemplate } from '../templates/PhotographerTemplate.js';
 /**
  * Executed when home page is loaded
  */
@@ -12,10 +15,10 @@ document.addEventListener('DOMContentLoaded', function () {
  * and displays the profile data
  * @param {array} photographer
  */
-const displayPhotographerProfile = (photographer) => {
+function displayPhotographerProfile(photographer) {
   try {
     const photographerMain = document.querySelector('.photographer__main');
-    const photographerHeader = photographerTemplate(photographer);
+    const photographerHeader = PhotographerTemplate(photographer);
     const photographerHeaderDOM =
       photographerHeader.createPhotographerProfile();
     photographerMain.insertBefore(
@@ -25,22 +28,26 @@ const displayPhotographerProfile = (photographer) => {
   } catch (error) {
     console.log(error.message);
   }
-};
+}
 
 /**
  * Function called up on loading, retrieves photographer data according to id
  */
-const init = async () => {
+async function init() {
   try {
     let params = new URL(document.location).searchParams;
     const idPhotographer = params.get('id');
-    //TODO gerer l'absence d'id
-    const datasPhotographer = dbPhotographers();
+    const datasPhotographer = DbPhotographers();
     const photographer = await datasPhotographer.getPhotographerById(
       idPhotographer
     );
-    displayPhotographerProfile(photographer);
+    // if id is empty or doesn't exist in database --> home redirection
+    if (photographer == null) {
+      window.location.href = '../index.html';
+    } else {
+      displayPhotographerProfile(photographer);
+    }
   } catch (error) {
     console.log(error.message);
   }
-};
+}
