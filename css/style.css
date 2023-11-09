@@ -19,6 +19,13 @@ h1 {
     margin-right: 100px;
 }
 
+h2 {
+    color: #D3573C;
+    font-size: 36px;
+    text-wrap:  nowrap;
+    margin-bottom: 0px;
+}
+
 .logo {
     height: 50px;
     margin-left: 100px;
@@ -47,13 +54,6 @@ h1 {
     flex-direction: column;
 }
 
-.photographer_section article h2 {
-    color: #D3573C;
-    font-size: 36px;
-    text-wrap:  nowrap;
-    margin-bottom: 0px;
-}
-
 .photographer_section article img {
     height: 200px;
     width: 200px;
@@ -66,4 +66,18 @@ h1 {
 .photographer_section article p {
     text-align: center;
     margin : 0px;
+}
+
+.location {
+    color: #901C1C;
+    font-size: 24px;
+}
+
+.tagline {
+    font-weight: bold;
+}
+
+.price {
+    color: #757575;
+    font-size: 18px;
 }

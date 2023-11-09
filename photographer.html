@@ -2,38 +2,64 @@
 <html lang="fr">
   <head>
     <link href="css/style.css" rel="stylesheet" type="text/css" />
-    <meta charset="utf-8">
-    <link rel="icon" type="image/png" href="assets/favicon.png">
-    <link href="https://fonts.googleapis.com/css?family=DM+Sans&display=swap" rel="stylesheet">
-    <title>Fisheye - photographe </title>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/png" href="assets/favicon.png" />
+    <link
+      href="https://fonts.googleapis.com/css?family=DM+Sans&display=swap"
+      rel="stylesheet"
+    />
+    <title>Fisheye - photographe</title>
   </head>
   <body>
     <header>
-      <img src="assets/images/logo.png" class="logo" alt="fisheye logo" />
+      <a href="index.html">
+        <img src="assets/images/logo.png" class="logo" alt="fisheye logo" />
+      </a>
     </header>
     <main id="main">
       <div class="photograph-header">
-        <button class="contact_button" onclick="displayModal()">Contactez-moi</button>
+        <div class="photograph-infos"></div>
+        <button
+          aria-label="contact"
+          class="contact_button"
+          onclick="displayModal()"
+        >
+          Contactez-moi
+        </button>
+        <div class="photograph-picture"></div>
       </div>
+      <div class="media-filter">
+        <label for="filter">Trier par</label>
+        <select name="filter" id="filter">
+          <option value="Popularite">Popularite</option>
+          <option value="Date">Date</option>
+          <option value="Titre">Titre</option>
+        </select>
+      </div>
+      <section class="media-section"></section>
     </main>
     <div id="contact_modal">
-			<div class="modal">
-				<header>
+      <div class="modal">
+        <header>
           <h2>Contactez-moi</h2>
-          <img src="assets/icons/close.svg" onclick="closeModal()" alt="close modal" />
+          <img
+            src="assets/icons/close.svg"
+            onclick="closeModal()"
+            alt="close modal"
+          />
         </header>
-				<form>
-					<div>
-						<label>Prénom</label>
-						<input />
-					</div>
-          <button class="contact_button">Envoyer</button>
-				</form>
-			</div>
-		</div>
- 
+        <form>
+          <div>
+            <label>Prénom</label>
+            <input />
+          </div>
+          <button aria-label="envoyer" class="contact_button">Envoyer</button>
+        </form>
+      </div>
+    </div>
+
     <script src="/scripts/pages/photographer.js"></script>
     <script src="/scripts/utils/contactForm.js"></script>
-    <script src="/scripts/templates/photographerProfil.js"></script>
+    <script src="/scripts/templates/photographer.js"></script>
   </body>
 </html>
