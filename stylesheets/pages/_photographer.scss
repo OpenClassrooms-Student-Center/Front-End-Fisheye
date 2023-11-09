@@ -11,6 +11,23 @@
     justify-content: space-between;
     align-items: center;
   }
+  &__portfolio {
+    display: flex;
+    flex-direction: column;
+  }
+  &__gallery {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    align-items: start;
+    gap: 90px;
+    margin: 50px auto 100px auto;
+
+    &-media-picture {
+      height: 300px;
+      width: 350px;
+      object-fit: cover;
+    }
+  }
 }
 #contact__modal {
   display: none;

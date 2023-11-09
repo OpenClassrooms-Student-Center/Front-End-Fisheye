@@ -39,7 +39,9 @@ function displayPhotographerProfile(photographer) {
  */
 function displayPhotographerGallery(photographer, medias) {
   try {
-    const photographerGallery = document.querySelector('.gallery');
+    const photographerGallery = document.querySelector(
+      '.photographer__gallery'
+    );
     medias.forEach((media) => {
       const mediaArticle = PhotographerTemplate(photographer);
       const mediaArticleDOM = mediaArticle.createMediaCard(media);
