@@ -9,7 +9,7 @@ const DbPhotographers = () => {
    */
   const getPhotographers = async () => {
     try {
-      const photographers = getDatas('../../data/photographers.json');
+      const photographers = await getDatas('/photographers.json');
       console.log(photographers);
       return photographers;
     } catch (error) {

@@ -1,23 +1,38 @@
 /* eslint-disable no-unused-vars */
 const createMedia = (data) => {
-  const { id, photographerId, title, likes, date, price } = data;
-  console.log(data);
-  console.log(id, photographerId, title, likes, date, price);
+  const { id, photographerId, title, description, likes, date, price } = data;
+  // console.log(data);
   const addLike = function () {
     this.likes++;
   };
   const removeLike = function () {
     this.likes--;
   };
-  return { id, photographerId, title, likes, date, price, addLike, removeLike };
+  return {
+    id,
+    photographerId,
+    title,
+    description,
+    likes,
+    date,
+    price,
+    addLike,
+    removeLike,
+  };
 };
 
 const createMediaImage = (data) => {
-  const media = createMedia(data);
-  return { type: 'image', ...media };
+  // console.log("it's an image");
+  const newMedia = createMedia(data);
+  const src = data.image;
+  return { type: 'image', src, ...newMedia };
 };
 
 const createMediaVideo = (data) => {
-  const media = createMedia(data);
-  return { type: 'video', ...media };
+  // console.log("it's a video");
+  const newMedia = createMedia(data);
+  const src = data.video;
+  return { type: 'video', src, ...newMedia };
 };
+
+export { createMediaImage, createMediaVideo };

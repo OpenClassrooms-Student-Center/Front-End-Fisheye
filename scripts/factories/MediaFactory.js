@@ -1,14 +1,15 @@
 /* eslint-disable no-unused-vars */
-import createMediaImage from '../models/Media.js';
-import createMediaVideo from '../models/Media.js';
+import { createMediaImage, createMediaVideo } from '../models/Media.js';
 const MediaFactory = (data) => {
+  let media;
   if (data.image) {
-    return createMediaImage(data);
+    media = createMediaImage(data);
   } else if (data.video) {
-    return createMediaVideo(data);
+    media = createMediaVideo(data);
   } else {
     throw 'Unknown data';
   }
+  return media;
 };
 
 export { MediaFactory };

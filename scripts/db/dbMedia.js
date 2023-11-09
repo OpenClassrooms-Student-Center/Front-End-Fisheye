@@ -1,7 +1,7 @@
 /* eslint-disable no-unused-vars */
 
 import { getDatas } from './Api.js';
-
+import { MediaFactory } from '../factories/MediaFactory.js';
 /**
  * Ce fichier permet de faire le lien avec la base de donnée des medias
  */
@@ -12,16 +12,32 @@ function DbMedia() {
    */
   const getMedias = async () => {
     try {
-      const medias = getDatas('../../data/media.json');
-      console.log(medias);
+      const medias = await getDatas('media.json');
+      // console.log(medias);
       return medias;
     } catch (error) {
       console.log(error.message);
     }
   };
   //TODO readByIdPhotographer()
-
-  // const getMediaType(media) {
-
-  // }
+  /**
+   * Function that retrieves a media from the JSON database by photographer id
+   * @param {number} idP
+   * @returns {Promise<object>}
+   */
+  const getMediasByPhotographerId = async (idP) => {
+    try {
+      let mediasData = await getMedias();
+      mediasData = mediasData.media;
+      mediasData.map((media) => MediaFactory(media));
+      const mediasDataFiltered = mediasData.filter(
+        (media) => media.photographerId == idP
+      );
+      return mediasDataFiltered;
+    } catch (error) {
+      console.log(error.message);
+    }
+  };
+  return { getMedias, getMediasByPhotographerId };
 }
+export { DbMedia };
