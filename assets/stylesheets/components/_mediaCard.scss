@@ -1,0 +1,32 @@
+.media-card {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: fit-content 1fr;
+  width: 350px;
+  &__link {
+    width: fit-content;
+    height: fit-content;
+  }
+  &__picture {
+    height: 300px;
+    width: 350px;
+    object-fit: cover;
+    border-radius: $media-img-border-radius;
+  }
+  &__under-picture-container,
+  &__likes-container {
+    display: flex;
+    align-items: center;
+  }
+  &__under-picture-container {
+    justify-content: space-between;
+    p,
+    button {
+      margin: 5px 0;
+    }
+  }
+  &__likes-button {
+    border: none;
+    background: none;
+  }
+}

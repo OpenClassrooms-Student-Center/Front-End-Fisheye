@@ -74,7 +74,8 @@ h2 {
   color: #901c1c;
 }
 
-/* phatographer card home page */
+/* ********** home page */
+/* photographer card */
 .photographers__section .photographer {
   text-align: center;
 }
@@ -89,7 +90,8 @@ h2 {
   color: #525252;
 }
 
-/* photograph profile */
+/* ********** photographer page */
+/***** photographer profile */
 .photographer__presentation-name {
   font-size: 4em;
 }
@@ -99,6 +101,22 @@ h2 {
 .photographer__presentation-tagline {
   font-size: 1.125em;
   color: #525252;
+}
+
+/***** photographer gallery */
+/* media card */
+.media-card__under-picture-container {
+  color: #901c1c;
+}
+.media-card__title, .media-card__likes {
+  font-size: 1.5rem;
+}
+.media-card__likes {
+  font-weight: 500;
+}
+.media-card__likes-icon {
+  color: #901c1c;
+  font-size: 1.3rem;
 }
 
 /**
@@ -201,6 +219,41 @@ form input {
   padding-top: 3px;
 }
 
+.media-card {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: fit-content 1fr;
+  width: 350px;
+}
+.media-card__link {
+  width: -moz-fit-content;
+  width: fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
+}
+.media-card__picture {
+  height: 300px;
+  width: 350px;
+  -o-object-fit: cover;
+     object-fit: cover;
+  border-radius: 5px;
+}
+.media-card__under-picture-container, .media-card__likes-container {
+  display: flex;
+  align-items: center;
+}
+.media-card__under-picture-container {
+  justify-content: space-between;
+}
+.media-card__under-picture-container p,
+.media-card__under-picture-container button {
+  margin: 5px 0;
+}
+.media-card__likes-button {
+  border: none;
+  background: none;
+}
+
 .photographers__section {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
@@ -228,12 +281,6 @@ form input {
   align-items: start;
   gap: 90px;
   margin: 50px auto 100px auto;
-}
-.photographer__gallery-media-picture {
-  height: 300px;
-  width: 350px;
-  -o-object-fit: cover;
-     object-fit: cover;
 }
 
 #contact__modal {

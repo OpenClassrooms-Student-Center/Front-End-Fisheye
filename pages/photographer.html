@@ -8,21 +8,32 @@
   <meta name="viewport" content="width=device-width,initial-scale=1.0">
   <!-- compatible edge -->
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <link rel="icon" type="image/png" href="../assets/favicon.png">
-  <link href="../stylesheets/main.css" rel="stylesheet" type="text/css">
+  <link rel="icon" type="image/png" href="../assets/images/favicon.png">
+  <link href="../assets/stylesheets/main.css" rel="stylesheet" type="text/css">
+  <!-- font family -->
   <link href="https://fonts.googleapis.com/css?family=DM+Sans&display=swap" rel="stylesheet">
+  <!-- FontAwesome icones -->
+  <script src="https://kit.fontawesome.com/90b69218b9.js" crossorigin="anonymous"></script>
   <title>Fisheye - photographe </title>
 </head>
 
 <body>
   <header>
-    <a href="./index.html"><img src="../assets/logo/logo.png" class="logo" alt="Page d'accueil Fisheye"></a>
+    <a href="./index.html"><img src="../assets/images/logo/logo.png" class="logo" alt="Page d'accueil Fisheye"></a>
   </header>
   <main id="main" class="photographer__main">
-    <!-- photographer header is display in this section via javaScript -->
+    <!-- 
+        photographer profile is display in this section via javaScript 
+        (photographerTemplate -> createPhotographerProfile) 
+    -->
     <section class="photographer__portfolio">
       <div class="photographer__filter"></div>
-      <div class="photographer__gallery"></div>
+      <div class="photographer__gallery">
+        <!-- 
+        photographer's images/videos are display in this section via javaScript 
+        (photographerTemplate -> createMediaCard) 
+    -->
+      </div>
     </section>
   </main>
   <!-- <dialog id="contact__modal">

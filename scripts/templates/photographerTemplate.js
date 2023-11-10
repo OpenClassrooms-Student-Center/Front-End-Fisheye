@@ -6,23 +6,15 @@ import { MediaFactory } from '../factories/MediaFactory.js';
 /**
  * Vue of photographer's page
  * @param {object} photographer
- * @returns
+ * @returns {html}
  */
 function PhotographerTemplate(photographer) {
   // const { name, portrait, city, country, tagline } =
   //   createPhotographer(photographer);
   const { name, portrait, city, country, tagline, price } = photographer;
-  console.log(photographer);
+  // console.log(photographer);
   /**
    * Function that creates a div to display the photographer's profile
-   * and returns a div containing several DOM elements (a, img, h2, div, p)
-   *    Profile is composed of :
-   *       a presentation containing :
-   *          photographer's name
-   *          location (city + country)
-   *          tagline
-   *       a button contact
-   *       a profile picture
    * @returns
    */
   const createPhotographerProfile = () => {
@@ -33,54 +25,16 @@ function PhotographerTemplate(photographer) {
       'aria-label',
       `Entête de la page de ${name}`
     );
-    // presentation container
-    const photographerPresentation = document.createElement('section');
-    photographerPresentation.className = 'photographer__presentation';
-    // name
-    // photographer name
-    const photographerName = createElement(
-      'h1',
-      'photographer__presentation-name name',
-      name
-    );
-    // location
-    const photographerLocation = createElement(
-      'h2',
-      'photographer__presentation-location location',
-      `${city}, ${country}`
-    );
-    // tagline
-    const photographerTagline = createElement(
-      'p',
-      'photographer__presentation-tagline',
-      tagline
-    );
-
-    // add elements to presentation container
-    photographerPresentation.appendChild(photographerName);
-    photographerPresentation.appendChild(photographerLocation);
-    photographerPresentation.appendChild(photographerTagline);
-
-    // contact button
-    const photographerContactButton = createElement(
-      'button',
-      'photographer__contact-button contact__button',
-      'Contactez-moi'
-    );
-    photographerContactButton.onclick = 'displayModal()';
-    // profile picture
-    // get photographer profile picture
-    const picture = `../assets/photographers/Photographers_ID_Photos/${portrait}`;
-    const alt = name ?? '';
-    const photographerProfilePicture = createImage(
-      picture,
-      'photographer__profile-picture profile-picture',
-      alt
-    );
-    // add elements to photographer header container
-    photographerHeader.appendChild(photographerPresentation);
-    photographerHeader.appendChild(photographerContactButton);
-    photographerHeader.appendChild(photographerProfilePicture);
+    const photographerProfile = `
+      <section class="photographer__presentation">
+        <h1 class="photographer__presentation-name name">${name}</h1>
+        <h2 class="photographer__presentation-location location">${city}, ${country}</h2>
+        <p class="photographer__presentation-tagline">${tagline}</p>
+      </section>
+      <button class="photographer__contact-button contact__button">Contactez-moi</button>
+      <img class="photographer__profile-picture profile-picture" src="../assets/images/photographers/Photographers_ID_Photos/${portrait}" alt="${name}"></img>
+  `;
+    photographerHeader.innerHTML = photographerProfile;
     return photographerHeader;
   };
 
@@ -88,82 +42,32 @@ function PhotographerTemplate(photographer) {
   // TODO create gallery
   /**
    * Function that creates an article to display a photographer's image or video
-   * and returns a div containing several DOM elements (a, img, p, div, p, i)
-   *    Media is composed of :
-   *       <a>
-   *        <img>
-   *       </a>
-   *       <div>
-   *        <p> title
-   *        <div>
-   *          <p>number of likes
-   *          <icon> heart icon
-   *        </div>
-   * @returns
+   * @returns {html}
    */
   const createMediaCard = (media) => {
     const { title, description, src, likes } = MediaFactory(media);
-    console.log(media);
-
+    console.log(MediaFactory(media));
+    // TODO manage type video or image
+    // path to picture (only firstname is needed)
+    const pictureNameRepository = name.split(' ')[0];
+    const mediaPicture = `../assets/images/photographers/${pictureNameRepository}/${src}`;
     // article container
-    const mediaCard = document.createElement('article');
-    mediaCard.className = 'photographer__gallery-media';
-    // media link container
-    const mediaCardLink = createElement(
-      'a',
-      'photographer__gallery-media-link'
-    );
-    mediaCardLink.setAttribute('href', `#`);
-    // picture
-    // TODO video or image
-    const nameRepository = name.split(' ')[0];
-    console.log(nameRepository);
-    const mediaPicture = `../assets/photographers/${nameRepository}/${src}`;
-    const mediaCardPicture = createImage(
-      mediaPicture,
-      'photographer__gallery-media-picture',
-      description
-    );
-    // add picture to media link
-    mediaCardLink.appendChild(mediaCardPicture);
-    // container under picture
-    const photographerUnderPictureContainer = createElement(
-      'div',
-      'photographer__gallery-media-under-picture-container'
-    );
-    // title
-    const mediaCardTitle = createElement(
-      'p',
-      'photographer__gallery-media-title',
-      title
-    );
-    // number of likes container
-    const mediaCardLikesContainer = createElement(
-      'div',
-      'photographer__gallery-media-likes-container'
-    );
-    const mediaCardLikes = createElement(
-      'p',
-      'photographer__gallery-media-likes',
-      likes
-    );
-    const mediaCardLikesIcon = createElement(
-      'i',
-      'photographer__gallery-media-likes-icon',
-      '<3'
-    );
-    // add number of likes and icon to mediaCardLikesContainer container
-    mediaCardLikesContainer.appendChild(mediaCardLikes);
-    mediaCardLikesContainer.appendChild(mediaCardLikesIcon);
-    // add title and likes container to photographerUnderPictureContainer container
-    photographerUnderPictureContainer.appendChild(mediaCardTitle);
-    photographerUnderPictureContainer.appendChild(mediaCardLikesContainer);
-
-    // add mediaCardLink and picturemediaCardLikesContainer to article container
-    mediaCard.appendChild(mediaCardLink);
-    mediaCard.appendChild(photographerUnderPictureContainer);
-
-    return mediaCard;
+    const mediaArticle = document.createElement('article');
+    mediaArticle.className = 'media-card';
+    const mediaCard = `
+      <a class="media-card__link" href="#">
+        <img class="media-card__picture" src="${mediaPicture}" alt="${description}">
+      </a>
+      <div class="media-card__under-picture-container">
+        <p class="media-card__title">${title}</p>
+        <div class="media-card__likes-container">
+          <p class="media-card__likes">${likes}</p>
+          <button class="media-card__likes-button"><i class="fa-solid fa-heart media-card__likes-icon"></i></button>
+        </div>
+      </div>
+  `;
+    mediaArticle.innerHTML = mediaCard;
+    return mediaArticle;
   };
   return { createPhotographerProfile, createMediaCard };
 }

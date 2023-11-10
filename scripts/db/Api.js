@@ -1,6 +1,6 @@
 const getDatas = async (url) => {
   try {
-    const reponse = await fetch(`../../data/${url}`);
+    const reponse = await fetch(`../../assets/data/${url}`);
     const datas = await reponse.json();
     // console.log(datas);
     return datas;
