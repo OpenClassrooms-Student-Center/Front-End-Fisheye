@@ -49,7 +49,6 @@ function PhotographerTemplate(photographer) {
   const createMediaCard = (media) => {
     const { title, description, src, likes, type } = MediaFactory(media);
     console.log(MediaFactory(media));
-    console.log(type);
     // path to picture (only firstname is needed)
     const pictureNameRepository = name.split(' ')[0];
     const picture = `../assets/images/photographers/${pictureNameRepository}/${src}`;
@@ -75,10 +74,10 @@ function PhotographerTemplate(photographer) {
         ${mediaPicture}
       </a>
       <div class="media-card__under-picture-container">
-        <p class="media-card__title">${title}</p>
+        <h3 class="media-card__title">${title}</h3>
         <div class="media-card__likes-container">
           <p class="media-card__likes">${likes}</p>
-          <button class="media-card__likes-button" aria-pressed="false" aria-label="liker le media"><img class="photographer__infos-likes-heart" src="https://img.icons8.com/windows/24/901c1c/filled-heart.png" alt=""></button>
+          <button class="media-card__likes-button" aria-pressed="false" aria-label="liker le media"><img class="photographer__infos-likes-heart" src="https://img.icons8.com/windows/24/901c1c/filled-heart.png" alt="likes" aria-hidden="true"></button>
         </div>
       </div>
   `;

@@ -55,7 +55,7 @@ h2 {
 }
 
 .name {
-  color: #db8876;
+  color: #d3573c;
 }
 
 .location {
@@ -98,6 +98,9 @@ h2 {
 }
 .media-card__title, .media-card__likes {
   font-size: 1.5rem;
+}
+.media-card__title {
+  font-weight: 400;
 }
 .media-card__likes {
   font-weight: 500;
@@ -243,6 +246,7 @@ form input {
   justify-content: space-between;
   align-items: flex-start;
 }
+.media-card__under-picture-container h3,
 .media-card__under-picture-container p,
 .media-card__under-picture-container button {
   margin: 5px 0;
