@@ -26,6 +26,12 @@ h2 {
     margin-bottom: 0px;
 }
 
+h3 {
+    font-size: 18px;
+    color: #901C1C;
+    margin-top: 5px;
+}
+
 .logo {
     height: 50px;
     margin-left: 100px;

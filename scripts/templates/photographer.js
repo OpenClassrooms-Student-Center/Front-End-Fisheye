@@ -37,30 +37,21 @@ function photographerTemplate(data) {
 }
 
 function mediaTemplate(media, firstName) {
-  let imageLink;
-  let videoLink;
-  const { title, image, video, likes, date, id } = media;
 
-  let pictureFormat = true
-
-  if (image) {
-  imageLink = `assets/photographers/${firstName}/${image}`;
-  } else {
-  videoLink  = `assets/photographers/${firstName}/${video}`;
-  }
+  const { title, image, video, likes, id } = media;
 
 
+  let mediaLink = `assets/photographers/${firstName}/${image??video}`;
   function getMediaCard () {
     const mediaCard = document.createElement("article");
     mediaCard.innerHTML = `
       <a href="photographer.html?id=${id}">
-        ${image ? `<img src="${imageLink}" alt="${title}">`:`<video src="${videoLink}" autoplay loop muted controls></video>`}
+        ${image ? `<img src="${mediaLink}" alt="${title}">`:`<video src="${mediaLink}" autoplay loop muted></video>`}
       </a>
       <div class="media-infos">
-        <h2>${title}</h2>
+        <h3>${title}</h3>
         <div class="likes">
-          <p>${likes} <i class="fas fa-heart"></i></p>
-          <p>${date}</p>
+          <p>${likes} <i class="fa-solid fa-heart"></i></p>
         </div>
       </div>
     `;
