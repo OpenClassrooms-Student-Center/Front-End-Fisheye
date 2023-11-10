@@ -1,0 +1,17 @@
+.photographer__infos {
+  position: fixed;
+  bottom: 0px;
+  right: 20px;
+  display: flex;
+  width: fit-content;
+  background-color: $second-color;
+  border-radius: $box-border-radius $box-border-radius 0px 0px;
+  p {
+    margin: 15px 30px;
+  }
+  &-likes {
+    display: flex;
+    gap: 3px;
+    align-items: center;
+  }
+}

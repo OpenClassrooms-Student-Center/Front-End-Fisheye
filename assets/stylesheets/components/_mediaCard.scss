@@ -4,20 +4,16 @@
   grid-template-rows: fit-content 1fr;
   width: 350px;
   &__link {
-    width: fit-content;
-    height: fit-content;
+    height: 300px;
+    width: 350px;
+    background-color: $light-grey;
   }
   &__picture {
     height: 300px;
     width: 350px;
     object-fit: cover;
+    // object-position: top;
     border-radius: $media-img-border-radius;
-    // when no src available or invalid format, display grey background
-    &--undefined {
-      height: 300px;
-      width: 350px;
-      background-color: $dark-grey;
-    }
   }
   &__under-picture-container,
   &__likes-container {

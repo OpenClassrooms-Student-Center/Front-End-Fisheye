@@ -53,6 +53,21 @@ function displayPhotographerGallery(photographer, medias) {
 }
 
 /**
+ * Function that retrieves the div containing the photographer's infos (total likes + daily rate)
+ * @param {array} photographer
+ */
+function displayPhotographerInfos(photographer) {
+  try {
+    const photographerMain = document.querySelector('.photographer__main');
+    const photographerInfos = PhotographerTemplate(photographer);
+    const photographerInfosDOM = photographerInfos.createPhotographerInfos();
+    photographerMain.appendChild(photographerInfosDOM);
+  } catch (error) {
+    console.log(error.message);
+  }
+}
+
+/**
  * Function called up on loading, retrieves photographer data according to id
  */
 async function init() {
@@ -72,6 +87,7 @@ async function init() {
       console.log(medias);
       displayPhotographerProfile(photographer);
       displayPhotographerGallery(photographer, medias);
+      displayPhotographerInfos(photographer);
     }
   } catch (error) {
     console.log(error.message);

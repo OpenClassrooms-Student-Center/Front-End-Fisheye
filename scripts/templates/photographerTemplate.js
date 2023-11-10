@@ -15,7 +15,7 @@ function PhotographerTemplate(photographer) {
   // console.log(photographer);
   /**
    * Function that creates a div to display the photographer's profile
-   * @returns
+   * @returns {html}
    */
   const createPhotographerProfile = () => {
     // div container
@@ -50,13 +50,13 @@ function PhotographerTemplate(photographer) {
     const { title, description, src, likes, type } = MediaFactory(media);
     console.log(MediaFactory(media));
     console.log(type);
-    // TODO manage type video or image
     // path to picture (only firstname is needed)
     const pictureNameRepository = name.split(' ')[0];
     const picture = `../assets/images/photographers/${pictureNameRepository}/${src}`;
     // article container
     const mediaArticle = document.createElement('article');
     mediaArticle.className = 'media-card';
+    // manage depends of media type format(image or video)
     let mediaPicture;
     if (type == 'image' && src != null) {
       mediaPicture = `<img class="media-card__picture" src="${picture}" alt="${description}"></img>`;
@@ -67,9 +67,9 @@ function PhotographerTemplate(photographer) {
           "${picture}"  type="video/mp4">
         </video>`;
     } else {
-      mediaPicture = `<div class="media-card__picture--undefined" aria-label="absence de media"></div>`;
+      mediaPicture = `<div aria-label="absence de media">Absence de media</div>`;
     }
-
+    // TODO si like => ari-pressed = true
     const mediaCard = `
       <a class="media-card__link" href="#">
         ${mediaPicture}
@@ -78,14 +78,37 @@ function PhotographerTemplate(photographer) {
         <p class="media-card__title">${title}</p>
         <div class="media-card__likes-container">
           <p class="media-card__likes">${likes}</p>
-          <button class="media-card__likes-button"><i class="fa-solid fa-heart media-card__likes-icon"></i></button>
+          <button class="media-card__likes-button" aria-pressed="false" aria-label="liker le media"><img class="photographer__infos-likes-heart" src="https://img.icons8.com/windows/24/901c1c/filled-heart.png" alt=""></button>
         </div>
       </div>
   `;
     mediaArticle.innerHTML = mediaCard;
     return mediaArticle;
   };
-  return { createPhotographerProfile, createMediaCard };
+  /**
+   * Function that creates a div to display the photographer's profile
+   * @returns {html}
+   */
+  const createPhotographerInfos = () => {
+    // div container
+    const photographerInfosContainer = document.createElement('div');
+    photographerInfosContainer.className = 'photographer__infos';
+    photographerInfosContainer.setAttribute(
+      'aria-label',
+      `Nombre total de likes et tarif journalier de ${name}`
+    );
+    const photographerInfos = `
+    <p class="photographer__infos-likes" aria-label="nombre total de like de like pour les médias de ${name}">nb <img class="photographer__infos-likes-heart" src="https://img.icons8.com/windows/20/000000/filled-heart.png" alt="" aria-hidden="true"></p>
+    <p class="photographer__infos-price">${price}€ / jour</p>
+        `;
+    photographerInfosContainer.innerHTML = photographerInfos;
+    return photographerInfosContainer;
+  };
+  return {
+    createPhotographerProfile,
+    createMediaCard,
+    createPhotographerInfos,
+  };
 }
 
 export { PhotographerTemplate };

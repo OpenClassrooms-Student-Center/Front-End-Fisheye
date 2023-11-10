@@ -55,7 +55,7 @@ h2 {
 }
 
 .name {
-  color: #d3573c;
+  color: #db8876;
 }
 
 .location {
@@ -102,9 +102,15 @@ h2 {
 .media-card__likes {
   font-weight: 500;
 }
-.media-card__likes-icon {
+.media-card__likes-heart {
   color: #901c1c;
   font-size: 1.3rem;
+}
+
+/***** photographer infos  */
+.photographer__infos {
+  font-size: 1.5em;
+  font-weight: 500;
 }
 
 /**
@@ -219,10 +225,9 @@ form input {
   width: 350px;
 }
 .media-card__link {
-  width: -moz-fit-content;
-  width: fit-content;
-  height: -moz-fit-content;
-  height: fit-content;
+  height: 300px;
+  width: 350px;
+  background-color: #fafafa;
 }
 .media-card__picture {
   height: 300px;
@@ -230,11 +235,6 @@ form input {
   -o-object-fit: cover;
      object-fit: cover;
   border-radius: 5px;
-}
-.media-card__picture--undefined {
-  height: 300px;
-  width: 350px;
-  background-color: #525252;
 }
 .media-card__under-picture-container, .media-card__likes-container {
   display: flex;
@@ -274,6 +274,25 @@ form input {
   transform: scale(1.5);
   -o-object-position: 50% 30%;
      object-position: 50% 30%;
+}
+
+.photographer__infos {
+  position: fixed;
+  bottom: 0px;
+  right: 20px;
+  display: flex;
+  width: -moz-fit-content;
+  width: fit-content;
+  background-color: #db8876;
+  border-radius: 5px 5px 0px 0px;
+}
+.photographer__infos p {
+  margin: 15px 30px;
+}
+.photographer__infos-likes {
+  display: flex;
+  gap: 3px;
+  align-items: center;
 }
 
 .photographers__section {

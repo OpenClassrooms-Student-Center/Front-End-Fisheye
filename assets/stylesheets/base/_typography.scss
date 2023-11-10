@@ -69,8 +69,13 @@ h2 {
   &__likes {
     font-weight: 500;
   }
-  &__likes-icon {
+  &__likes-heart {
     color: $principal-color;
     font-size: 1.3rem;
   }
+}
+/***** photographer infos  */
+.photographer__infos {
+  font-size: 1.5em;
+  font-weight: 500;
 }
