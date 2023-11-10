@@ -29,7 +29,6 @@ function DbMedia() {
     try {
       let mediasData = await getMedias();
       mediasData = mediasData.media;
-      mediasData.map((media) => MediaFactory(media));
       const mediasDataFiltered = mediasData.filter(
         (media) => media.photographerId == idP
       );

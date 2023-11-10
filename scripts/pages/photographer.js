@@ -79,7 +79,7 @@ async function init() {
       idPhotographer
     );
     // if id is empty or doesn't exist in database --> home redirection
-    if (photographer == null) {
+    if (!photographer) {
       window.location.href = '../index.html';
     } else {
       const datasMedia = DbMedia();

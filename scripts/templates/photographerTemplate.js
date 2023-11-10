@@ -57,9 +57,9 @@ function PhotographerTemplate(photographer) {
     mediaArticle.className = 'media-card';
     // manage depends of media type format(image or video)
     let mediaPicture;
-    if (type == 'image' && src != null) {
+    if (type === 'image' && src != null) {
       mediaPicture = `<img class="media-card__picture" src="${picture}" alt="${description}"></img>`;
-    } else if (type == 'video' && src != null) {
+    } else if (type === 'video' && src != null) {
       mediaPicture = `
         <video aria-label="${description}" class="media-card__picture">
           <source src=
