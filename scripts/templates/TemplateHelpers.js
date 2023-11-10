@@ -5,7 +5,7 @@
  * @param {string} alt
  * @returns
  */
-export const createImage = (picture, elementClass, alt) => {
+const createImage = (picture, elementClass, alt) => {
   const profilePicture = document.createElement('img');
   profilePicture.className = elementClass;
   profilePicture.src = picture;
@@ -19,10 +19,12 @@ export const createImage = (picture, elementClass, alt) => {
  * @param {string} content
  * @returns
  */
-export const createElement = (tag, elementClass, content) => {
+const createElement = (tag, elementClass, content) => {
   const element = document.createElement(tag);
   element.className = elementClass;
   element.textContent = content;
 
   return element;
 };
+
+export { createElement, createImage };

@@ -38,18 +38,6 @@ a {
 }
 
 /**
-* Picture style
-*/
-.profile-picture {
-  height: 200px;
-  width: 200px;
-  border-radius: 100%;
-  -o-object-fit: cover;
-     object-fit: cover;
-  box-shadow: 0em 0.25em 0.75em rgba(0, 0, 0, 0.25);
-}
-
-/**
  * Basic typography style
  */
 body {
@@ -210,6 +198,11 @@ form input {
   align-items: center;
   flex-direction: column;
 }
+.photographer__link {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
 .photographer__name {
   margin-top: 15px;
   margin-bottom: 0%;
@@ -238,20 +231,49 @@ form input {
      object-fit: cover;
   border-radius: 5px;
 }
+.media-card__picture--undefined {
+  height: 300px;
+  width: 350px;
+  background-color: #525252;
+}
 .media-card__under-picture-container, .media-card__likes-container {
   display: flex;
-  align-items: center;
 }
 .media-card__under-picture-container {
   justify-content: space-between;
+  align-items: flex-start;
 }
 .media-card__under-picture-container p,
 .media-card__under-picture-container button {
   margin: 5px 0;
 }
+.media-card__likes-container {
+  align-items: center;
+}
 .media-card__likes-button {
   border: none;
   background: none;
+}
+
+/**
+* Picture style
+*/
+.profile-picture__container {
+  height: 200px;
+  width: 200px;
+  border-radius: 100%;
+  box-shadow: 0em 0.25em 0.75em rgba(0, 0, 0, 0.25);
+  overflow: hidden;
+}
+
+.profile-picture {
+  height: 200px;
+  width: 200px;
+  -o-object-fit: cover;
+     object-fit: cover;
+  transform: scale(1.5);
+  -o-object-position: 50% 30%;
+     object-position: 50% 30%;
 }
 
 .photographers__section {

@@ -12,18 +12,27 @@
     width: 350px;
     object-fit: cover;
     border-radius: $media-img-border-radius;
+    // when no src available or invalid format, display grey background
+    &--undefined {
+      height: 300px;
+      width: 350px;
+      background-color: $dark-grey;
+    }
   }
   &__under-picture-container,
   &__likes-container {
     display: flex;
-    align-items: center;
   }
   &__under-picture-container {
     justify-content: space-between;
+    align-items: flex-start;
     p,
     button {
       margin: 5px 0;
     }
+  }
+  &__likes-container {
+    align-items: center;
   }
   &__likes-button {
     border: none;

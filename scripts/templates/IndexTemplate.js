@@ -24,7 +24,9 @@ function IndexTemplate(photographer) {
     article.className = 'photographer';
     const photographerCard = `
       <a class="photographer__link" href="./pages/photographer.html?id=${id}">
-        <img class="photographer__profile-picture profile-picture" src="assets/images/photographers/Photographers_ID_Photos/${portrait}" alt="Profil de ${name}">
+        <div class="profile-picture__container">
+          <img class="photographer__profile-picture profile-picture" src="assets/images/photographers/Photographers_ID_Photos/${portrait}" alt="Profil de ${name}">
+        </div>
         <h2 class="photographer__name name">${name}</h2>
       </a>
       <div>

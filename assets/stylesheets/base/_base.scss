@@ -39,15 +39,3 @@ h2 {
 a {
   text-decoration: none;
 }
-
-/**
-* Picture style
-*/
-.profile-picture {
-  height: 200px;
-  width: 200px;
-  border-radius: 100%;
-  object-fit: cover;
-  box-shadow: 0em 0.25em 0.75em rgba(0, 0, 0, 0.25);
-  //TODO
-}
