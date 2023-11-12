@@ -4,7 +4,10 @@ body {
     font-family: "DM Sans", sans-serif;
     margin: 0;
 }
-
+a {
+    text-decoration: none;
+    text-align: center;
+}
 
 header {
     display: flex;
@@ -47,6 +50,8 @@ h1 {
 .photographer_section article img {
     height: 200px;
     width: 200px;
+    object-fit: cover;
+    border-radius: 100px;
 }
 
 /* Media Queries */
