@@ -14,6 +14,7 @@ function photographerTemplate(data) {
         const PhotographerPrice = document.createElement( 'p' );
 
         link.setAttribute("href", PhotographerLink);      
+        link.setAttribute("title", name); 
         img.setAttribute("src", picture);
 
         h2.textContent = name;
@@ -22,11 +23,14 @@ function photographerTemplate(data) {
         PhotographerPrice.textContent =  price + "€/jour";;      
 
         article.appendChild(link);
+
         link.appendChild(img);
         link.appendChild(h2);
-        link.appendChild(location);
-        link.appendChild(tagLine);
-        link.appendChild(PhotographerPrice);
+
+        article.appendChild(location);
+        article.appendChild(tagLine);
+        article.appendChild(PhotographerPrice);
+              
 
         return (article);
     }
