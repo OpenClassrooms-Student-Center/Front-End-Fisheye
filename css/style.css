@@ -1,8 +1,11 @@
 @import url("photographer.css");
+* {
+    margin: 0;
+    box-sizing: border-box;
+}
 
 body {
     font-family: "DM Sans", sans-serif;
-    margin: 0;
 }
 a {
     text-decoration: none;
