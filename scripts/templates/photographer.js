@@ -1,11 +1,34 @@
 function photographerTemplate(data) {
     const { name, id, city, country, tagline, price, portrait } = data;
 
-    const picture = `assets/photographers/portrait/${portrait}`;
-    const PhotographerLink = `photographer.html?id=${id}`;
-
     function getUserCardDOM() {
+        
         const article = document.createElement( 'article' );
+        const card =
+                    `<a href="photographer.html?id=${id}" title="${name}">
+                        <img class="portrait" src="assets/photographers/portrait/${portrait}" alt="${name}">
+                        <h2 class="name">${name}</h2>
+                    </a>
+                    <p class="location">${city}, ${country}</p>
+                    <p class="tagline">${tagline}</p>
+                    <p class="price">${price}€/jour</p>`;
+
+    article.innerHTML = card;
+
+
+    return article;
+
+    }
+
+    return { getUserCardDOM }
+
+}
+
+ //const picture = `assets/photographers/portrait/${portrait}`;
+// const PhotographerLink = `photographer.html?id=${id}`;
+
+/*
+        
         const link = document.createElement('a');
         const img = document.createElement( 'img' );
         const h2 = document.createElement( 'h2' );
@@ -30,11 +53,4 @@ function photographerTemplate(data) {
         article.appendChild(location);
         article.appendChild(tagLine);
         article.appendChild(PhotographerPrice);
-              
-
-        return (article);
-    }
-
-    return { getUserCardDOM }
-
-}
+             */
