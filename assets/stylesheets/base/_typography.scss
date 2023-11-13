@@ -26,6 +26,14 @@ h2 {
   color: white;
 }
 
+/* ********** form */
+form {
+  .label {
+    color: #312e2e;
+    font-size: 2.25em;
+  }
+}
+
 /* ********** home page */
 /* photographer card */
 .photographers__section {
@@ -100,4 +108,15 @@ h2 {
 .photographer__infos {
   font-size: 1.5em;
   font-weight: 500;
+}
+
+/***** contact modal  */
+.modal {
+  &__header {
+    h2 {
+      font-size: 64px;
+      font-weight: normal;
+      text-align: left;
+    }
+  }
 }

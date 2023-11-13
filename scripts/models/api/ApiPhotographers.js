@@ -2,7 +2,7 @@ import { getDatas } from './Api.js';
 /**
  * This file provides a link to the photographers' database.
  */
-const DbPhotographers = () => {
+const ApiPhotographers = () => {
   /**
    * Function that retrieves all photographers from the JSON database
    * @returns {Promise<array>}
@@ -38,4 +38,4 @@ const DbPhotographers = () => {
   return { getPhotographers, getPhotographerById };
 };
 
-export { DbPhotographers };
+export { ApiPhotographers };

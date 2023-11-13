@@ -1,8 +1,8 @@
 /**
  * controller of home page
  */
-import { DbPhotographers } from '../models/db/DbPhotographers.js';
-import { IndexTemplate } from '../templates/IndexTemplate.js';
+import { ApiPhotographers } from '../models/api/ApiPhotographers.js';
+import { createPhotographerCard } from '../templates/indexPhotographerCardTemplate.js';
 
 /**
  * Executed when home page is loaded
@@ -20,8 +20,7 @@ const displayPhotographers = (photographers) => {
       '.photographers__section'
     );
     photographers.forEach((photographer) => {
-      const card = IndexTemplate(photographer);
-      const cardDOM = card.createPhotographerCard();
+      const cardDOM = createPhotographerCard(photographer);
       photographersSection.appendChild(cardDOM);
     });
   } catch (error) {
@@ -34,7 +33,7 @@ const displayPhotographers = (photographers) => {
  */
 const init = async () => {
   try {
-    const datasPhotographers = DbPhotographers();
+    const datasPhotographers = ApiPhotographers();
     const { photographers } = await datasPhotographers.getPhotographers();
     displayPhotographers(photographers);
   } catch (error) {

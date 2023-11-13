@@ -3,30 +3,34 @@
 // -----------------------------------------------------------------------------
 #contact__modal {
   display: none;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  height: 100vh;
+  width: 100vw;
+  // overflow: auto;
+  background: rgba(196, 196, 196, 0.4);
 }
 .modal {
-  border-radius: 5px;
-  background-color: #db8876;
+  border-radius: $box-border-radius;
+  background-color: $third-color;
   width: 50%;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: space-between;
-  padding: 35px;
+  align-items: flex-start;
+  // justify-content: space-between;
+  padding: 10px 35px;
   margin: auto;
 
-  header {
+  &__header {
+    display: flex;
     justify-content: space-between;
+    align-items: flex-start;
     width: 100%;
-
     img {
       cursor: pointer;
-    }
-
-    h2 {
-      font-size: 64px;
-      font-weight: normal;
-      text-align: center;
+      margin-top: 20px;
     }
   }
 }

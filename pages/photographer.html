@@ -16,10 +16,10 @@
 </head>
 
 <body>
-  <header>
+  <header class="header">
     <a href="../index.html"><img src="../assets/medias/logo/logo.png" class="logo" alt="Page d'accueil Fisheye"></a>
   </header>
-  <main id="main" class="photographer__main">
+  <main id="main" class="photographer__main" aria-hidden="false">
     <!-- 
         photographer profile is display in this section via javaScript 
         (photographerTemplate -> createPhotographerProfile) 
@@ -34,23 +34,37 @@
       </div>
     </section>
   </main>
-  <!-- <dialog id="contact__modal">
+  <dialog id="contact__modal" aria-hidden="true" aria-describedby="modalTitle">
     <div class="modal">
-      <header>
-        <h2>Contactez-moi</h2>
-        <img src="../assets/icons/close.svg" onclick="closeModal()" alt="fermer la modale">
+      <header class="modal__header">
+        <h2 id="modalTitle">Contactez-moi</h2>
+        <img src="../assets/medias/icons/close.svg" onclick="closeModal()" alt="fermer la modale"
+          class="close-modal-btn">
       </header>
-      <form>
-        <div>
-          <label>Prénom</label>
-          <input>
+      <!-- novalidate permitted override by js -->
+      <form id="form" name="contact" novalidate>
+        <div class="formData">
+          <label for="firstName" class="label">Prénom</label>
+          <input class="text-control" type="text" id="firstName" name="firstName" aria-required="true" required>
         </div>
-        <button class="contact__button">Envoyer</button>
+        <div class="formData">
+          <label for="lastName" class="label">Nom</label>
+          <input class="text-control" type="text" id="lastName" name="lastName" aria-required="true" required>
+        </div>
+        <div class="formData">
+          <label for="email" class="label">Email</label>
+          <input class="text-control" type="email" id="email" name="email" aria-required="true" required>
+        </div>
+        <div class="formData">
+          <label for="message" class="label">Votre message</label>
+          <textarea class="text-control textarea" id="message" name="message" required></textarea>
+        </div>
+        <button type="submit" class="contact__button submit-button button">Envoyer</button>
       </form>
     </div>
-  </dialog> -->
+  </dialog>
   <script type="module" src="/scripts/pages/Photographer.js"></script>
-  <!-- <script src="/scripts/utils/contactForm.js"></script> -->
+  <script src="/scripts/utils/contactForm.js"></script>
 </body>
 
 </html>
