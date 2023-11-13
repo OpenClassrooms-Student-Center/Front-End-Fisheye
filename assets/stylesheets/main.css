@@ -224,7 +224,11 @@ form .label {
   align-items: flex-start;
   width: 100%;
 }
-.modal__header img {
+.modal__header .close-modal-button {
+  background: none;
+  border: none;
+}
+.modal__header .close-modal-button img {
   cursor: pointer;
   margin-top: 20px;
 }

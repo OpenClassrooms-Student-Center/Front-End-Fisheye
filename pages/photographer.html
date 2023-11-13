@@ -34,12 +34,12 @@
       </div>
     </section>
   </main>
-  <dialog id="contact__modal" aria-hidden="true" aria-describedby="modalTitle">
+  <dialog tabindex=-1 id="contact__modal" aria-hidden="true" aria-describedby="modalTitle">
     <div class="modal">
       <header class="modal__header">
         <h2 id="modalTitle">Contactez-moi</h2>
-        <img src="../assets/medias/icons/close.svg" onclick="closeModal()" alt="fermer la modale"
-          class="close-modal-btn">
+        <button onclick="closeModal()" class="close-modal-button"><img src="../assets/medias/icons/close.svg"
+            alt="fermer la modale"></button>
       </header>
       <!-- novalidate permitted override by js -->
       <form id="form" name="contact" novalidate>

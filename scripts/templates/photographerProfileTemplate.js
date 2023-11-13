@@ -16,7 +16,7 @@ export const createPhotographerProfile = (photographer) => {
         <h2 class="photographer__presentation-location location">${city}, ${country}</h2>
         <p class="photographer__presentation-tagline">${tagline}</p>
       </section>
-      <button class="photographer__contact-button contact__button button" onclick="displayModal()">Contactez-moi</button>
+      <button class="photographer__contact-button open-modal-button button" onclick="displayModal()">Contactez-moi</button>
       <div class="profile-picture__container">
         <img class="photographer__profile-picture profile-picture" src="../../assets/medias/photographers/Photographers_ID_Photos/${portrait}" alt="${name}">
       </div>

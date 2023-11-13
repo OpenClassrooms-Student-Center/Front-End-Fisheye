@@ -28,9 +28,13 @@
     justify-content: space-between;
     align-items: flex-start;
     width: 100%;
-    img {
-      cursor: pointer;
-      margin-top: 20px;
+    .close-modal-button {
+      background: none;
+      border: none;
+      img {
+        cursor: pointer;
+        margin-top: 20px;
+      }
     }
   }
 }
