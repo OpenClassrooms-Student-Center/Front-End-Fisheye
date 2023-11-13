@@ -154,3 +154,7 @@ form input, textarea {
     color: #901C1C;
     font-size: 20px;
 }
+
+.likes-number {
+    cursor: pointer;
+}
