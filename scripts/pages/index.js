@@ -1,3 +1,9 @@
+async function init() {
+  // Récupère les datas des photographes
+  const { photographers } = await getPhotographers()
+  displayData(photographers)
+}
+
 async function getPhotographers() {
   const url = './data/photographers.json'
   let response = await fetch(url)
@@ -5,23 +11,15 @@ async function getPhotographers() {
   return photographers
 }
 
-// getPhotographers()
-
 async function displayData(photographers) {
   const photographersSection = document.querySelector('.photographer_section')
 
   photographers.forEach(photographer => {
-    console.log(photographer)
-    const photographerModel = photographerTemplate(photographer)
-    const userCardDOM = photographerModel.getUserCardDOM()
-    photographersSection.appendChild(userCardDOM)
+    sessionStorage.setItem(photographer.id, JSON.stringify(photographer))
+    const photographerModel = portfolioTemplate(photographer)
+    const photographerCard = photographerModel.createDOM()
+    photographersSection.appendChild(photographerCard)
   })
-}
-
-async function init() {
-  // Récupère les datas des photographes
-  const { photographers } = await getPhotographers()
-  displayData(photographers)
 }
 
 init()

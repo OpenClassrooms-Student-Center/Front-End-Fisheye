@@ -50,14 +50,50 @@ h1 {
   flex-direction: column;
 }
 
-.photographer_section article h2 {
+.photographer-name {
   color: #d3573c;
-  font-size: 36px;
-  height: 47px;
   font-weight: 400;
 }
 
-.photographer_section article img {
+.photographer_section .photographer-name {
+  font-size: 36px;
+  height: 47px;
+}
+
+.photographer_profile .photographer-name {
+  font-size: 64px;
+  height: 83px;
+}
+
+.photographer_profile .location {
+  font-size: 24px;
+  height: 31px;
+}
+
+.photographer_profile .tag {
+  font-size: 18px;
+  height: 23px;
+}
+
+.photograph-header .profile-picture {
+  margin-top: 56px;
+  margin-right: 50px;
+  margin-bottom: 57px;
+}
+
+.photograph-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.photographer_profile {
+  margin-left: 50px;
+  margin-top: 71px;
+  margin-bottom: 42px;
+}
+
+.profile-picture {
   height: 200px;
   width: 200px;
   object-fit: cover;
