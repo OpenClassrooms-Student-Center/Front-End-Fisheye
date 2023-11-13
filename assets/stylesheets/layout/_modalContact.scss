@@ -1,7 +1,9 @@
 // -----------------------------------------------------------------------------
 // This file contains styles that are specific to the contact modale.
 // -----------------------------------------------------------------------------
-
+#contact__modal {
+  display: none;
+}
 .modal {
   border-radius: 5px;
   background-color: #db8876;

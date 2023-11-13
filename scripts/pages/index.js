@@ -1,7 +1,7 @@
 /**
  * controller of home page
  */
-import { DbPhotographers } from '../db/DbPhotographers.js';
+import { DbPhotographers } from '../models/db/DbPhotographers.js';
 import { IndexTemplate } from '../templates/IndexTemplate.js';
 
 /**

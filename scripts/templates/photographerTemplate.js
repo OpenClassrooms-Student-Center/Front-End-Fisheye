@@ -1,6 +1,6 @@
 /* eslint-disable no-unused-vars */
-import { createPhotographer } from '../models/Photographer.js';
-import { MediaFactory } from '../factories/MediaFactory.js';
+import { createPhotographer } from '../models/metier/Photographer.js';
+import { MediaFactory } from '../models/factories/MediaFactory.js';
 /**
  * Vue of photographer's page
  * @param {object} photographer
@@ -18,7 +18,7 @@ function PhotographerTemplate(photographer) {
   const createPhotographerProfile = () => {
     // div container
     const photographerHeader = document.createElement('div');
-    photographerHeader.className = 'photographer__header';
+    photographerHeader.className = 'photographer__profile';
     photographerHeader.setAttribute(
       'aria-label',
       `Entête de la page de ${name}`
@@ -29,9 +29,9 @@ function PhotographerTemplate(photographer) {
         <h2 class="photographer__presentation-location location">${city}, ${country}</h2>
         <p class="photographer__presentation-tagline">${tagline}</p>
       </section>
-      <button class="photographer__contact-button contact__button">Contactez-moi</button>
+      <button class="photographer__contact-button contact__button button">Contactez-moi</button>
       <div class="profile-picture__container">
-        <img class="photographer__profile-picture profile-picture" src="../assets/medias/photographers/Photographers_ID_Photos/${portrait}" alt="${name}">
+        <img class="photographer__profile-picture profile-picture" src="../../assets/medias/photographers/Photographers_ID_Photos/${portrait}" alt="${name}">
       </div>
         `;
     photographerHeader.innerHTML = photographerProfile;
@@ -49,7 +49,7 @@ function PhotographerTemplate(photographer) {
     console.log(MediaFactory(media));
     // path to picture (only firstname is needed)
     const pictureNameRepository = name.split(' ')[0];
-    const picture = `../assets/medias/photographers/${pictureNameRepository}/${src}`;
+    const picture = `../../assets/medias/photographers/${pictureNameRepository}/${src}`;
     // article container
     const mediaArticle = document.createElement('article');
     mediaArticle.className = 'media-card';

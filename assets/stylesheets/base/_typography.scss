@@ -20,23 +20,15 @@ h2 {
   color: $principal-color;
 }
 
+.button {
+  font-size: 20px;
+  font-weight: bold;
+  color: white;
+}
+
 /* ********** home page */
 /* photographer card */
 .photographers__section {
-  // /* style with font-size of mock-up */
-  // .photographer {
-  //   text-align: center;
-  //   &__location {
-  //     font-size: 0.8125em;
-  //   }
-  //   &__tagline {
-  //     font-size: 0.625em;
-  //   }
-  //   &__price {
-  //     font-size: 0.5625em;
-  //     color: $dark-grey;
-  //   }
-  // }
   /* style with font-size more accessible */
   .photographer {
     text-align: center;
@@ -51,6 +43,20 @@ h2 {
       color: $dark-grey;
     }
   }
+  // /* style with font-size of mock-up */
+  // .photographer {
+  //   text-align: center;
+  //   &__location {
+  //     font-size: 0.8125em;
+  //   }
+  //   &__tagline {
+  //     font-size: 0.625em;
+  //   }
+  //   &__price {
+  //     font-size: 0.5625em;
+  //     color: $dark-grey;
+  //   }
+  // }
 }
 
 /* ********** photographer page */

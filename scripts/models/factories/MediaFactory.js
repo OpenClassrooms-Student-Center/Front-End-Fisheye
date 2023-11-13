@@ -1,5 +1,5 @@
 /* eslint-disable no-unused-vars */
-import { createMediaImage, createMediaVideo } from '../models/Media.js';
+import { createMediaImage, createMediaVideo } from '../metier/Media.js';
 
 const MediaFactory = (data) => {
   let media;

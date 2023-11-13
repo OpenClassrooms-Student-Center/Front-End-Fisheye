@@ -1,0 +1,11 @@
+.photographer {
+  &__profile {
+    background-color: #fafafa;
+    height: 300px;
+    margin: 0 100px;
+    padding: 70px 50px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+}

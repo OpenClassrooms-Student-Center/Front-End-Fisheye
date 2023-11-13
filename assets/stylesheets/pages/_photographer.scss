@@ -1,41 +1,13 @@
 // -----------------------------------------------------------------------------
 // This file contains styles that are specific to the photographer page.
+// Header
+// Photographer Profile
+// Photographer Gallery
+// Photographer Infos
 // -----------------------------------------------------------------------------
 .photographer {
-  &__header {
-    background-color: #fafafa;
-    height: 300px;
-    margin: 0 100px;
-    padding: 70px 50px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
   &__portfolio {
     display: flex;
     flex-direction: column;
   }
-  &__gallery {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    align-items: start;
-    gap: 90px;
-    margin: 50px auto 100px auto;
-  }
-}
-#contact__modal {
-  display: none;
-}
-
-.contact__button {
-  font-size: 20px;
-  font-weight: bold;
-  color: white;
-  padding: 11px;
-  width: 170px;
-  height: 70px;
-  border: none;
-  background-color: #901c1c;
-  border-radius: 5px;
-  cursor: pointer;
 }

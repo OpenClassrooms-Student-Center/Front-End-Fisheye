@@ -3,8 +3,8 @@
 /**
  * controller of photographer page
  */
-import { DbPhotographers } from '../db/DbPhotographers.js';
-import { DbMedia } from '../db/DbMedia.js';
+import { DbPhotographers } from '../models/db/DbPhotographers.js';
+import { DbMedia } from '../models/db/DbMedia.js';
 import { PhotographerTemplate } from '../templates/photographerTemplate.js';
 /**
  * Executed when home page is loaded
@@ -21,10 +21,10 @@ document.addEventListener('DOMContentLoaded', function () {
 const displayPhotographerProfile = (photographer, photographerTemplate) => {
   try {
     const photographerMain = document.querySelector('.photographer__main');
-    const photographerHeaderDOM =
+    const photographerProfileDOM =
       photographerTemplate.createPhotographerProfile(photographer);
     photographerMain.insertBefore(
-      photographerHeaderDOM,
+      photographerProfileDOM,
       photographerMain.firstChild
     );
   } catch (error) {

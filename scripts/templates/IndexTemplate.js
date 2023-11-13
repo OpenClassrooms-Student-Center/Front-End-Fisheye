@@ -1,5 +1,5 @@
 /* eslint-disable no-unused-vars */
-import { createPhotographer } from '../models/Photographer.js';
+import { createPhotographer } from '../models/metier/Photographer.js';
 
 /**
  * Vue of home page
