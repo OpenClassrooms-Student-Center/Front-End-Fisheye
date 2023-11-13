@@ -1,3 +1,5 @@
+import { closePhotoModal } from "../utils/contactForm.js";
+
 class Lightbox {
   constructor(media, photographer) {
     this._media = media;
@@ -16,14 +18,23 @@ class Lightbox {
 
     const carouselControls = document.createElement("div");
     carouselControls.classList.add("controls");
-    const controlsPrevious = document.createElement("div");
+
+    const closingModal = document.createElement("img");
+    closingModal.setAttribute("id", "modalClose");
+    closingModal.src = "assets/icons/close.svg";
+    closingModal.onclick = closePhotoModal;
+
+    const controlsPrevious = document.createElement("img");
+    controlsPrevious.src = `assets/images/Photographers ID Photos/${photographer._portrait}`;
+    controlsPrevious.alt = `${photographer._name}`;
     controlsPrevious.classList.add("controls-previous", "controls");
+
     const spanPrevious = document.createElement("span");
     spanPrevious.classList.add("previous-img");
     const spanNext = document.createElement("span");
     spanNext.classList.add("next-img");
 
-    const controlsNext = document.createElement("div");
+    const controlsNext = document.createElement("img");
     controlsNext.classList.add("controls-next", "controls");
 
     const carouselElements = document.createElement("div");
@@ -55,15 +66,17 @@ class Lightbox {
         `.carousel-item-${currentIndex}`
       );
       if (newLi) {
-        newLi.style.display = "block";
+        newLi.style.display = "flex";
       }
     });
 
     media.forEach((mediaItem, index) => {
       const carouselLi = document.createElement("li");
       carouselLi.classList.add("carousel-item-" + (index + 1));
+      carouselLi.classList.add("carousel-block");
+
       // Set aria-hidden based on the index
-      carouselLi.style.display = index === 0 ? "block" : "none";
+      carouselLi.style.display = index === 0 ? "flex" : "none";
 
       const carouselTitle = document.createElement("h2");
       carouselTitle.classList.add("carousel-title");
@@ -106,6 +119,7 @@ class Lightbox {
       carouselControls.appendChild(controlsNext);
       carouselControls.appendChild(controlsPrevious);
 
+      carouselWrapper.appendChild(closingModal);
       carouselWrapper.appendChild(carouselControls);
       carouselWrapper.appendChild(carouselContainer);
     });

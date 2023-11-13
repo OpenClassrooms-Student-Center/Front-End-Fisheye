@@ -209,13 +209,13 @@ form input {
 
 .photo-modal {
   align-items: center;
-  background-color: rgba(0, 0, 0, 0.9);
+  background-color: #fff;
   color: white;
   display: none;
-  height: 500px;
+  height: 100vh;
+  width: 100vw;
   justify-content: center;
   transform: translate(-50%, -50%);
-  width: 700px;
   z-index: 2;
   position: fixed;
   top: 50%;
@@ -223,7 +223,10 @@ form input {
 }
 
 .carousel-media {
-  width: 40px;
+  width: 50%;
+  height: 50%;
+  object-fit: cover;
+  background-color: yellow;
 }
 
 .no-scroll {
@@ -260,6 +263,10 @@ form input {
   margin-top: 20px;
   margin-bottom: 20px;
   list-style-type: none;
+}
+
+.carousel-title {
+  color: #901c1c;
 }
 
 .item-0 {
@@ -312,14 +319,20 @@ form input {
 }
 
 .controls {
-  display: flex;
-  width: 2em;
+  width: 3em;
   height: 2em;
+  z-index: 4;
 }
 
 .controls-previous {
   background-color: antiquewhite;
+  position: absolute;
+  right: 10%;
+  top: 50%;
 }
 .controls-next {
   background-color: lightgreen;
+  position: absolute;
+  top: 50%;
+  left: 10%;
 }

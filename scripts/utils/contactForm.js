@@ -12,6 +12,11 @@ export function closeModal() {
   modal.style.display = "none";
 }
 
+export function closePhotoModal() {
+  const modal = document.getElementById("modal-wrapper");
+  modal.style.display = "none";
+}
+
 //display validation message
 function displayValidationMessage() {
   validationMessage.style.display = "flex";
