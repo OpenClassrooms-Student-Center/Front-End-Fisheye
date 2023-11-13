@@ -2,7 +2,6 @@
 
 const createPhotographer = (data) => {
   const { name, portrait, city, country, tagline, id } = data;
-  console.log(data);
   return { name, portrait, city, country, tagline, id };
 };
 

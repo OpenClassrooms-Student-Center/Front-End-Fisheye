@@ -64,17 +64,20 @@ h2 {
 
 /* ********** home page */
 /* photographer card */
+.photographers__section {
+  /* style with font-size more accessible */
+}
 .photographers__section .photographer {
   text-align: center;
 }
 .photographers__section .photographer__location {
-  font-size: 0.8125em;
+  font-size: 1.2em;
 }
 .photographers__section .photographer__tagline {
-  font-size: 0.625em;
+  font-size: 0.9em;
 }
 .photographers__section .photographer__price {
-  font-size: 0.5625em;
+  font-size: 0.8em;
   color: #525252;
 }
 

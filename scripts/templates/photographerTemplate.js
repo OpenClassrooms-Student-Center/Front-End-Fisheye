@@ -1,6 +1,4 @@
 /* eslint-disable no-unused-vars */
-
-import { createImage, createElement } from './TemplateHelpers.js';
 import { createPhotographer } from '../models/Photographer.js';
 import { MediaFactory } from '../factories/MediaFactory.js';
 /**
@@ -9,10 +7,10 @@ import { MediaFactory } from '../factories/MediaFactory.js';
  * @returns {html}
  */
 function PhotographerTemplate(photographer) {
-  // const { name, portrait, city, country, tagline } =
-  //   createPhotographer(photographer);
-  const { name, portrait, city, country, tagline, price } = photographer;
-  // console.log(photographer);
+  const { name, portrait, city, country, tagline, price } =
+    createPhotographer(photographer);
+  // const { name, portrait, city, country, tagline, price } = photographer;
+  console.log(photographer);
   /**
    * Function that creates a div to display the photographer's profile
    * @returns {html}
@@ -33,7 +31,7 @@ function PhotographerTemplate(photographer) {
       </section>
       <button class="photographer__contact-button contact__button">Contactez-moi</button>
       <div class="profile-picture__container">
-        <img class="photographer__profile-picture profile-picture" src="../assets/images/photographers/Photographers_ID_Photos/${portrait}" alt="${name}">
+        <img class="photographer__profile-picture profile-picture" src="../assets/medias/photographers/Photographers_ID_Photos/${portrait}" alt="${name}">
       </div>
         `;
     photographerHeader.innerHTML = photographerProfile;
@@ -51,7 +49,7 @@ function PhotographerTemplate(photographer) {
     console.log(MediaFactory(media));
     // path to picture (only firstname is needed)
     const pictureNameRepository = name.split(' ')[0];
-    const picture = `../assets/images/photographers/${pictureNameRepository}/${src}`;
+    const picture = `../assets/medias/photographers/${pictureNameRepository}/${src}`;
     // article container
     const mediaArticle = document.createElement('article');
     mediaArticle.className = 'media-card';

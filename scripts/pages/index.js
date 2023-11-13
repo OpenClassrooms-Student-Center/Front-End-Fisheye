@@ -14,7 +14,7 @@ document.addEventListener('DOMContentLoaded', function () {
 /**
  * Function that retrieves the div containing all the photographers and displays them
  */
-function displayPhotographers(photographers) {
+const displayPhotographers = (photographers) => {
   try {
     const photographersSection = document.querySelector(
       '.photographers__section'
@@ -27,12 +27,12 @@ function displayPhotographers(photographers) {
   } catch (error) {
     console.log(error.message);
   }
-}
+};
 
 /**
  * Function called on loading, retrieves data from photographers database
  */
-async function init() {
+const init = async () => {
   try {
     const datasPhotographers = DbPhotographers();
     const { photographers } = await datasPhotographers.getPhotographers();
@@ -40,4 +40,4 @@ async function init() {
   } catch (error) {
     console.log(error.message);
   }
-}
+};

@@ -18,12 +18,11 @@ document.addEventListener('DOMContentLoaded', function () {
  * and displays the profile data
  * @param {array} photographer
  */
-function displayPhotographerProfile(photographer) {
+const displayPhotographerProfile = (photographer, photographerTemplate) => {
   try {
     const photographerMain = document.querySelector('.photographer__main');
-    const photographerHeader = PhotographerTemplate(photographer);
     const photographerHeaderDOM =
-      photographerHeader.createPhotographerProfile(photographer);
+      photographerTemplate.createPhotographerProfile(photographer);
     photographerMain.insertBefore(
       photographerHeaderDOM,
       photographerMain.firstChild
@@ -31,46 +30,44 @@ function displayPhotographerProfile(photographer) {
   } catch (error) {
     console.log(error.message);
   }
-}
+};
 /**
  * Function that retrieves the div containing the photographer's page header
  * and displays the profile data
  * @param {array} photographer
  */
-function displayPhotographerGallery(photographer, medias) {
+const displayPhotographerGallery = (medias, photographerTemplate) => {
   try {
     const photographerGallery = document.querySelector(
       '.photographer__gallery'
     );
     medias.forEach((media) => {
-      const mediaArticle = PhotographerTemplate(photographer);
-      const mediaArticleDOM = mediaArticle.createMediaCard(media);
+      const mediaArticleDOM = photographerTemplate.createMediaCard(media);
       photographerGallery.appendChild(mediaArticleDOM);
     });
   } catch (error) {
     console.log(error.message);
   }
-}
+};
 
 /**
  * Function that retrieves the div containing the photographer's infos (total likes + daily rate)
  * @param {array} photographer
  */
-function displayPhotographerInfos(photographer) {
+const displayPhotographerInfos = (photographerTemplate) => {
   try {
     const photographerMain = document.querySelector('.photographer__main');
-    const photographerInfos = PhotographerTemplate(photographer);
-    const photographerInfosDOM = photographerInfos.createPhotographerInfos();
+    const photographerInfosDOM = photographerTemplate.createPhotographerInfos();
     photographerMain.appendChild(photographerInfosDOM);
   } catch (error) {
     console.log(error.message);
   }
-}
+};
 
 /**
  * Function called up on loading, retrieves photographer data according to id
  */
-async function init() {
+const init = async () => {
   try {
     let params = new URL(document.location).searchParams;
     const idPhotographer = params.get('id');
@@ -85,11 +82,12 @@ async function init() {
       const datasMedia = DbMedia();
       const medias = await datasMedia.getMediasByPhotographerId(idPhotographer);
       console.log(medias);
-      displayPhotographerProfile(photographer);
-      displayPhotographerGallery(photographer, medias);
-      displayPhotographerInfos(photographer);
+      const photographerTemplate = PhotographerTemplate(photographer);
+      displayPhotographerProfile(photographer, photographerTemplate);
+      displayPhotographerGallery(medias, photographerTemplate);
+      displayPhotographerInfos(photographerTemplate);
     }
   } catch (error) {
     console.log(error.message);
   }
-}
+};

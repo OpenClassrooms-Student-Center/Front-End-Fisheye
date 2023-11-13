@@ -1,5 +1,6 @@
 /* eslint-disable no-unused-vars */
 import { createMediaImage, createMediaVideo } from '../models/Media.js';
+
 const MediaFactory = (data) => {
   let media;
   if (data.image) {
@@ -7,7 +8,7 @@ const MediaFactory = (data) => {
   } else if (data.video) {
     media = createMediaVideo(data);
   } else {
-    throw 'Unknown data';
+    throw new Error('Unknown data');
   }
   return media;
 };

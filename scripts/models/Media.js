@@ -22,14 +22,12 @@ const createMedia = (data) => {
 };
 
 const createMediaImage = (data) => {
-  // console.log("it's an image");
   const newMedia = createMedia(data);
   const src = data.image;
   return { type: 'image', src, ...newMedia };
 };
 
 const createMediaVideo = (data) => {
-  // console.log("it's a video");
   const newMedia = createMedia(data);
   const src = data.video;
   return { type: 'video', src, ...newMedia };

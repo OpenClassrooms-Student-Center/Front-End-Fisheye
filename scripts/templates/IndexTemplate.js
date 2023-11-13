@@ -1,6 +1,4 @@
 /* eslint-disable no-unused-vars */
-
-import { createImage, createElement } from './TemplateHelpers.js';
 import { createPhotographer } from '../models/Photographer.js';
 
 /**
@@ -9,10 +7,10 @@ import { createPhotographer } from '../models/Photographer.js';
  * @param {object} photographer
  * @returns
  */
-function IndexTemplate(photographer) {
-  // const { name, portrait, city, country, tagline, price, id } =
-  //   createPhotographer(photographer);
-  const { name, portrait, city, country, tagline, price, id } = photographer;
+const IndexTemplate = (photographer) => {
+  const { name, portrait, city, country, tagline, price, id } =
+    createPhotographer(photographer);
+  // const { name, portrait, city, country, tagline, price, id } = photographer;
   console.log(photographer);
   /**
    * Function that creates an article to display the photographer's card
@@ -25,7 +23,7 @@ function IndexTemplate(photographer) {
     const photographerCard = `
       <a class="photographer__link" href="./pages/photographer.html?id=${id}">
         <div class="profile-picture__container">
-          <img class="photographer__profile-picture profile-picture" src="assets/images/photographers/Photographers_ID_Photos/${portrait}" alt="Profil de ${name}">
+          <img class="photographer__profile-picture profile-picture" src="assets/medias/photographers/Photographers_ID_Photos/${portrait}" alt="Profil de ${name}">
         </div>
         <h2 class="photographer__name name">${name}</h2>
       </a>
@@ -42,6 +40,6 @@ function IndexTemplate(photographer) {
   };
 
   return { createPhotographerCard };
-}
+};
 
 export { IndexTemplate };

@@ -1,11 +1,10 @@
 /* eslint-disable no-unused-vars */
 
 import { getDatas } from './Api.js';
-import { MediaFactory } from '../factories/MediaFactory.js';
 /**
  * Ce fichier permet de faire le lien avec la base de donnée des medias
  */
-function DbMedia() {
+const DbMedia = () => {
   /**
    * Function that retrieves all medias from the JSON database
    * @returns {Promise<array>}
@@ -38,5 +37,5 @@ function DbMedia() {
     }
   };
   return { getMedias, getMediasByPhotographerId };
-}
+};
 export { DbMedia };

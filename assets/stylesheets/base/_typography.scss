@@ -20,21 +20,34 @@ h2 {
   color: $principal-color;
 }
 
-//TODO police plus grande et commenter celle de la maquette pour plus d'accessibilité
-
 /* ********** home page */
 /* photographer card */
 .photographers__section {
+  // /* style with font-size of mock-up */
+  // .photographer {
+  //   text-align: center;
+  //   &__location {
+  //     font-size: 0.8125em;
+  //   }
+  //   &__tagline {
+  //     font-size: 0.625em;
+  //   }
+  //   &__price {
+  //     font-size: 0.5625em;
+  //     color: $dark-grey;
+  //   }
+  // }
+  /* style with font-size more accessible */
   .photographer {
     text-align: center;
     &__location {
-      font-size: 0.8125em;
+      font-size: 1.2em;
     }
     &__tagline {
-      font-size: 0.625em;
+      font-size: 0.9em;
     }
     &__price {
-      font-size: 0.5625em;
+      font-size: 0.8em;
       color: $dark-grey;
     }
   }
