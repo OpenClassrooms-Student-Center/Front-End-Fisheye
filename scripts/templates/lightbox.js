@@ -12,13 +12,16 @@ class Lightbox {
     console.log(mediaId);
 
     let selectedMedia;
+    let selectedMediaArray = [];
 
     media.forEach((mediaItem) => {
       if (mediaItem.id === mediaId) {
         selectedMedia = mediaItem;
-        console.log("selectedMedia", selectedMedia.image);
-        return;
+        console.log("selectedMedia", selectedMedia);
+        selectedMediaArray.unshift(selectedMedia);
+        console.log(selectedMediaArray);
       }
+      return;
     });
 
     const carouselWrapper = document.querySelector("#modal-wrapper");
@@ -91,7 +94,7 @@ class Lightbox {
       const carouselTitle = document.createElement("h2");
       carouselTitle.classList.add("carousel-title");
 
-      carouselTitle.innerHTML = mediaItem.title;
+      carouselTitle.innerHTML = selectedMedia.title;
 
       if (mediaItem.image) {
         const carouselImg = document.createElement("img");
