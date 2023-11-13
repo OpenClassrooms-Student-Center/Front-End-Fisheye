@@ -1,4 +1,5 @@
 import { closePhotoModal } from "../utils/contactForm.js";
+import { onOpenPic } from "../utils/photoModal.js";
 
 class Lightbox {
   constructor(media, photographer) {
@@ -7,9 +8,18 @@ class Lightbox {
     this.currentIndex = 0;
   }
 
-  createLightbox(media, photographer) {
-    console.log("photographer", photographer.name);
-    console.log("media", media);
+  createLightbox(media, photographer, mediaId) {
+    console.log(mediaId);
+
+    let selectedMedia;
+
+    media.forEach((mediaItem) => {
+      if (mediaItem.id === mediaId) {
+        selectedMedia = mediaItem;
+        console.log("selectedMedia", selectedMedia.image);
+        return;
+      }
+    });
 
     const carouselWrapper = document.querySelector("#modal-wrapper");
     // Create a ul
@@ -25,7 +35,7 @@ class Lightbox {
     closingModal.onclick = closePhotoModal;
 
     const controlsPrevious = document.createElement("img");
-    controlsPrevious.src = `assets/images/Photographers ID Photos/${photographer._portrait}`;
+    // controlsPrevious.src = `assets/images/Photographers ID Photos/${photographer._portrait}`;
     controlsPrevious.alt = `${photographer._name}`;
     controlsPrevious.classList.add("controls-previous", "controls");
 
@@ -86,27 +96,28 @@ class Lightbox {
       if (mediaItem.image) {
         const carouselImg = document.createElement("img");
         carouselImg.innerHTML = "Type: Image";
-        console.log(mediaItem.image);
-        const mediaPath = `assets/images/${photographer.name}/${mediaItem.image}`;
+
+        const mediaPath = `assets/images/${photographer.name}/${selectedMedia.image}`;
+        console.log(mediaPath);
         carouselImg.classList.add("carousel-media");
 
-        carouselImg.setAttribute("id", `media-${media.id}`);
+        carouselImg.setAttribute("id", `media-${mediaItem.image}`);
         carouselImg.innerHTML = "Type: Image";
         carouselImg.src = mediaPath;
-        carouselImg.alt = media.title;
+        carouselImg.alt = mediaItem.title;
+        carouselImg.onClick = onOpenPic();
 
         carouselLi.appendChild(carouselImg);
       } else if (mediaItem.video) {
         const carouselVideo = document.createElement("video");
         carouselVideo.innerHTML = "Type: Video";
-        console.log(mediaItem.video);
-        const mediaPath = `assets/images/${photographer.name}/${mediaItem.video}`;
+        // const mediaPath = `assets/images/${photographer.name}/${mediaItem.video}`;
         carouselVideo.classList.add("carousel-media");
 
-        carouselVideo.setAttribute("id", `media-${media.id}`);
+        // carouselVideo.setAttribute("id", `media-${mediaId}`);
         carouselVideo.innerHTML = "Type: Video";
         carouselVideo.src = mediaPath;
-        carouselVideo.alt = media.title;
+        carouselVideo.alt = mediaItem.title;
 
         carouselLi.appendChild(carouselVideo);
       }
@@ -123,6 +134,7 @@ class Lightbox {
       carouselWrapper.appendChild(carouselControls);
       carouselWrapper.appendChild(carouselContainer);
     });
+    return carouselContainer;
   }
 
   //2ndlevel

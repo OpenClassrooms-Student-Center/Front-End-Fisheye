@@ -69,7 +69,8 @@ class PhotographerPages {
     );
   }
 
-  async lightbox(index) {
+  async lightbox(mediaId, index) {
+    console.log(mediaId);
     const photographer = await this.photographer();
     const media = await this.media();
     await this.mediasLightboxArray();
@@ -78,7 +79,7 @@ class PhotographerPages {
     // const carouselControlPrev = document.getElementById("controls-left");
     this.lightboxWrapper.innerHTML = "";
     this.lightboxWrapper.appendChild(
-      template.createLightbox(media, photographer)
+      template.createLightbox(media, photographer, mediaId)
     );
   }
 }

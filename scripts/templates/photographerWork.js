@@ -1,3 +1,4 @@
+import { PhotographerPages } from "../pages/photographer.js";
 import { onOpenPic } from "../utils/photoModal.js";
 
 class PhotographerWork {
@@ -54,7 +55,8 @@ class PhotographerWork {
         imageElement.alt = media.title;
         imageElement.setAttribute("id", `media-${media.id}`);
         // console.log("imageElement", imageElement);
-        imageElement.onclick = onOpenPic;
+        imageElement.onclick = () => this.openLightbox(media.id);
+        // imageElement.onclick = onOpenPic;
 
         // Append the image element to the mediaImg container
         mediaImg.appendChild(imageElement);
@@ -89,6 +91,10 @@ class PhotographerWork {
       // Add the media container to the medias wrapper
       mediasWrapper.appendChild(mediaContainer);
     });
+  }
+  openLightbox(mediaId) {
+    const photographerPages = new PhotographerPages();
+    photographerPages.lightbox(mediaId);
   }
 }
 
