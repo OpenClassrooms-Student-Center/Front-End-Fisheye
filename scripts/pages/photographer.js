@@ -108,7 +108,9 @@ const init = async () => {
         '.contact__modal-close-button'
       );
       // display name on modal title
-      const nameTitle = document.getElementById('photographer-name');
+      const nameTitle = document.getElementById(
+        'contact__modal-photographer-name'
+      );
       nameTitle.textContent = `${photographer.name}`;
 
       let modal = initModal('contact__modal');

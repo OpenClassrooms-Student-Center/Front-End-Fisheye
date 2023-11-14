@@ -12,7 +12,7 @@ export const createPhotographerInfos = (photographer) => {
     `Nombre total de likes et tarif journalier de ${name}`
   );
   const photographerInfos = `
-    <p class="photographer__infos-likes" aria-label="nombre total de like de like pour les médias de ${name}">nb <img class="photographer__infos-likes-heart" src="https://img.icons8.com/windows/20/000000/filled-heart.png" alt="" aria-hidden="true"></p>
+    <p class="photographer__infos-likes">nb <img class="photographer__infos-likes-heart" src="https://img.icons8.com/windows/20/000000/filled-heart.png" alt="" aria-hidden="true"></p>
     <p class="photographer__infos-price">${price}€ / jour</p>
         `;
   photographerInfosContainer.innerHTML = photographerInfos;

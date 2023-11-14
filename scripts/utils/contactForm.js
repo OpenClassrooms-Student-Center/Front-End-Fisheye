@@ -1,4 +1,13 @@
 /* eslint-disable no-unused-vars */
+/*********************************************************************************
+*
+* This file contains all the functions required to manage modal form
+*
+/*********************************************************************************/
+/**
+ * initialization of form
+ * @param {function} closeModal
+ */
 const initContactForm = (closeModal) => {
   const form = document.querySelector('#form');
   // manage form when submit

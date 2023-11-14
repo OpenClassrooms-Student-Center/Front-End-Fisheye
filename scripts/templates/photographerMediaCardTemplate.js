@@ -25,7 +25,7 @@ export const createPhotographerMediaCard = (media, pictureNameRepository) => {
   }
   // TODO si like => aria-pressed = true
   const mediaCard = `
-      <a class="media-card__link" href="#">
+      <a class="media-card__link">
         ${mediaPicture}
       </a>
       <div class="media-card__under-picture-container">

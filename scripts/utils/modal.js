@@ -1,6 +1,17 @@
 /* eslint-disable no-unused-vars */
+/*********************************************************************************
+*
+* This file contains all the functions required to manage modal
+*
+/*********************************************************************************/
 import { initContactForm } from '../utils/contactForm.js';
-
+/**
+ * modal initialization
+ * To reuse the modal, initialize the content
+ * according to the parameter passed (modalElementId).
+ * @param {string} modalElementId
+ * @returns
+ */
 const initModal = (modalElementId) => {
   const body = document.querySelector('body');
   const photographerMain = document.querySelector('.main');
@@ -19,6 +30,7 @@ const initModal = (modalElementId) => {
     modal.setAttribute('aria-hidden', 'false');
     body.classList.add('no-scroll');
     photographerMain.setAttribute('aria-hidden', 'true');
+    // initialize element depend of modalElementId
     if (modalElementId === 'contact__modal') {
       initContactForm(closeModal);
     }

@@ -24,7 +24,7 @@
         photographer profile is display in this section via javaScript 
         (photographerTemplate -> createPhotographerProfile) 
     -->
-    <section class="photographer__portfolio">
+    <div class="photographer__portfolio">
       <div class="photographer__filter"></div>
       <div class="photographer__gallery">
         <!-- 
@@ -32,12 +32,12 @@
         (photographerTemplate -> createMediaCard) 
     -->
       </div>
-    </section>
+    </div>
   </main>
   <dialog tabindex=-1 id="contact__modal" aria-hidden="true" aria-describedby="modalTitle">
     <div class="contact__modal">
       <header class="contact__modal-header">
-        <h2 id="modalTitle">Contactez-moi<br><span id="photographer-name"></span></h2>
+        <h2 id="modalTitle">Contactez-moi<br><span id="contact__modal-photographer-name"></span></h2>
         <button class="contact__modal-close-button"><img src="../assets/medias/icons/close.svg"
             alt="fermer la modale"></button>
       </header>
