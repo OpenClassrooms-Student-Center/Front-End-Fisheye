@@ -3,6 +3,7 @@
 body,
 h1,
 h2,
+h3,
 p {
   margin: 0;
 }
@@ -215,8 +216,7 @@ article a {
 }
 
 .media {
-  margin: 0 100px;
-  margin-top: 58px;
+  margin: 58px 100px;
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
@@ -234,7 +234,7 @@ article a {
   display: flex;
   justify-content: space-between;
   width: 350px;
-  margin-top: 10px;
+  height: 31px;
 }
 
 .media-info .title {
@@ -278,4 +278,11 @@ article a {
   width: 350px;
   height: 300px;
   border-radius: 5px;
+}
+
+.media article {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  justify-content: space-between;
 }

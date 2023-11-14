@@ -26,9 +26,9 @@ class Media {
     else console.error('No image or video found')
     mediaCard.innerHTML += `
       <div class='media-info'>
-        <p class='title'>${this.title}</p>
+        <h2 class='title'>${this.title}</h2>
         <div class='likes'>
-          <p class='number-likes'>${this.likes}</p>
+          <h3 class='number-likes'>${this.likes}</h3>
           <span class="fa-solid fa-heart"></span>
         </div>
       </div> 

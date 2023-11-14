@@ -10,9 +10,9 @@ async function portfolioTemplate(id) {
   photographHeader.innerHTML = ''
   photographHeader.innerHTML = `
   <div class="photographer-profile">
-    <h2 class='photographer-name'>${data.name}</h2>
-    <p class="location">${data.city}, ${data.country}</p>
-    <p class="tag">${data.tagline}</p>
+    <h1 class='photographer-name'>${data.name}</h1>
+    <h2 class="location">${data.city}, ${data.country}</h2>
+    <h3 class="tag">${data.tagline}</h3>
   </div>
   ${contactBtn.outerHTML}
   <img class='profile-picture' src="assets/photographers/${data.portrait}" alt="${data.name}">
