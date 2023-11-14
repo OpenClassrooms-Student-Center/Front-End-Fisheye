@@ -13,7 +13,10 @@ class Media {
   }
 
   getFirstName(fullName) {
-    return fullName.split(' ')[0]
+    let name = fullName.split(' ')[0]
+    //Ellie-Rose => Ellie Rose
+    if (name.indexOf('-') !== -1) name = name.replace('-', ' ')
+    return name
   }
 
   createMedia() {
@@ -40,8 +43,8 @@ class Media {
 
   createVideo() {
     return `
-    <video class='video' controls>
-      <source src="assets/Sample Photos/${this.firstName}/${this.video}">
+    <video class='video' controls preload="metadata">
+      <source src="assets/Sample Photos/${this.firstName}/${this.video}#t=1.1">
     </video>
     `
   }

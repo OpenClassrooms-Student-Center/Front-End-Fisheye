@@ -228,6 +228,7 @@ article a {
   display: flex;
   justify-content: space-between;
   width: 350px;
+  margin-top: 10px;
 }
 
 .media-info .title {
@@ -241,6 +242,18 @@ article a {
   justify-content: space-between;
   align-items: center;
   gap: 5px;
+}
+
+.likes .number-likes {
+  color: #901c1c;
+  text-align: right;
+  font-size: 24px;
+  font-weight: 500;
+}
+
+.likes .fa-heart {
+  color: #901c1c;
+  font-size: 20px;
 }
 
 .sort {
