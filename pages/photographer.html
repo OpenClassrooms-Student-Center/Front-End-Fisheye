@@ -37,34 +37,36 @@
   <dialog tabindex=-1 id="contact__modal" aria-hidden="true" aria-describedby="modalTitle">
     <div class="modal">
       <header class="modal__header">
-        <h2 id="modalTitle">Contactez-moi</h2>
-        <button onclick="closeModal()" class="close-modal-button"><img src="../assets/medias/icons/close.svg"
-            alt="fermer la modale"></button>
+        <h2 id="modalTitle">Contactez-moi<br><span id="photographer-name"></span></h2>
+        <button class="close-modal-button"><img src="../assets/medias/icons/close.svg" alt="fermer la modale"></button>
       </header>
       <!-- novalidate permitted override by js -->
       <form id="form" name="contact" novalidate>
         <div class="formData">
           <label for="firstName" class="label">Prénom</label>
-          <input class="text-control" type="text" id="firstName" name="firstName" aria-required="true" required>
+          <input class="text-control" type="text" id="firstName" name="firstName" aria-required="true"
+            aria-invalid="false" required>
         </div>
         <div class="formData">
           <label for="lastName" class="label">Nom</label>
-          <input class="text-control" type="text" id="lastName" name="lastName" aria-required="true" required>
+          <input class="text-control" type="text" id="lastName" name="lastName" aria-required="true"
+            aria-invalid="false" required>
         </div>
         <div class="formData">
           <label for="email" class="label">Email</label>
-          <input class="text-control" type="email" id="email" name="email" aria-required="true" required>
+          <input class="text-control" type="email" id="email" name="email" aria-required="true" aria-invalid="false"
+            required>
         </div>
         <div class="formData">
           <label for="message" class="label">Votre message</label>
-          <textarea class="text-control textarea" id="message" name="message" required></textarea>
+          <textarea class="text-control textarea" id="message" name="message" aria-required="true" aria-invalid="false"
+            required></textarea>
         </div>
         <button type="submit" class="contact__button submit-button button">Envoyer</button>
       </form>
     </div>
   </dialog>
   <script type="module" src="/scripts/pages/Photographer.js"></script>
-  <script src="/scripts/utils/contactForm.js"></script>
 </body>
 
 </html>

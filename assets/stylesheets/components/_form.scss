@@ -27,4 +27,8 @@ form {
     padding: 23px 50px;
     margin: 26px 0px;
   }
+
+  .input-error {
+    border: 2px solid $principal-color;
+  }
 }

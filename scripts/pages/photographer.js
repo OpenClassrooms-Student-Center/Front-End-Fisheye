@@ -3,16 +3,19 @@
 /**
  * controller of photographer page
  */
-import { createPhotographer } from '../models/metier/Photographer.js';
 import { ApiPhotographers } from '../models/api/ApiPhotographers.js';
 import { ApiMedia } from '../models/api/ApiMedia.js';
+import { createPhotographer } from '../models/metier/Photographer.js';
 import { MediaFactory } from '../models/factories/MediaFactory.js';
 
 import { createPhotographerProfile } from '../templates/photographerProfileTemplate.js';
 import { createPhotographerMediaCard } from '../templates/photographerMediaCardTemplate.js';
 import { createPhotographerInfos } from '../templates/photographerInfosTemplate.js';
+
+import { initModal } from '../utils/modal.js';
+
 /**
- * Executed when home page is loaded
+ * Executed when photographer page is loaded
  */
 document.addEventListener('DOMContentLoaded', function () {
   init();
@@ -97,6 +100,16 @@ const init = async () => {
       displayPhotographerProfile(photographer);
       displayPhotographerGallery(medias, photographer.name);
       displayPhotographerInfos(photographer);
+      // manage modal
+      const openModalBtn = document.querySelector('.open-modal-button');
+      const closeModalBtn = document.querySelector('.close-modal-button');
+      const modal = initModal(photographer.name);
+      openModalBtn.addEventListener('click', () => {
+        modal.displayModal();
+      });
+      closeModalBtn.addEventListener('click', () => {
+        modal.closeModal();
+      });
     }
   } catch (error) {
     console.log(error.message);

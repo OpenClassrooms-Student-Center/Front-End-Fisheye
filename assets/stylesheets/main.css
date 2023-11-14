@@ -73,6 +73,11 @@ form .label {
   color: #312e2e;
   font-size: 2.25em;
 }
+form .error-message {
+  font-size: 1.2rem;
+  font-weight: 400;
+  color: black;
+}
 
 /* ********** home page */
 /* photographer card */
@@ -205,6 +210,7 @@ form .label {
   top: 0;
   height: 100vh;
   width: 100vw;
+  overflow: auto;
   background: rgba(196, 196, 196, 0.4);
 }
 
@@ -223,6 +229,7 @@ form .label {
   justify-content: space-between;
   align-items: flex-start;
   width: 100%;
+  margin-bottom: 15px;
 }
 .modal__header .close-modal-button {
   background: none;
@@ -283,6 +290,9 @@ form .textarea {
 form .submit-button {
   padding: 23px 50px;
   margin: 26px 0px;
+}
+form .input-error {
+  border: 2px solid #901c1c;
 }
 
 .photographer {
