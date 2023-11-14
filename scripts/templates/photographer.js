@@ -1,4 +1,4 @@
-function portfolioTemplate(data) {
+function photographersTemplate(data) {
   const { name, portrait, city, country, tagline, price, id } = data
 
   const picture = `assets/photographers/${portrait}`

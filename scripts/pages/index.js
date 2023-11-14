@@ -13,10 +13,9 @@ async function getPhotographers() {
 
 async function displayData(photographers) {
   const photographersSection = document.querySelector('.photographer_section')
-
   photographers.forEach(photographer => {
     sessionStorage.setItem(photographer.id, JSON.stringify(photographer))
-    const photographerModel = portfolioTemplate(photographer)
+    const photographerModel = photographersTemplate(photographer)
     const photographerCard = photographerModel.createDOM()
     photographersSection.appendChild(photographerCard)
   })
