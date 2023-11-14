@@ -217,11 +217,17 @@ article a {
 .media {
   margin: 0 100px;
   margin-top: 58px;
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  grid-template-rows: repeat(4, 1fr);
-  grid-column-gap: 100px;
-  grid-row-gap: 20px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  row-gap: 20px;
+}
+
+.media::after {
+  content: '';
+  width: 350px;
 }
 
 .media-info {

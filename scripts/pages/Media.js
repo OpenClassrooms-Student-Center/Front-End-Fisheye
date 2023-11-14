@@ -20,7 +20,7 @@ class Media {
   }
 
   createMedia() {
-    const mediaCard = document.createElement('div')
+    const mediaCard = document.createElement('article')
     if (this.hasOwnProperty('image')) mediaCard.innerHTML = this.createImage()
     else if (this.hasOwnProperty('video')) mediaCard.innerHTML = this.createVideo()
     else console.error('No image or video found')
@@ -31,6 +31,7 @@ class Media {
           <p class='number-likes'>${this.likes}</p>
           <span class="fa-solid fa-heart"></span>
         </div>
+      </div> 
     `
     return mediaCard
   }
