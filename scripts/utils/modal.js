@@ -1,23 +1,27 @@
 /* eslint-disable no-unused-vars */
-import { initContactForm } from './contactForm.js';
+import { initContactForm } from '../utils/contactForm.js';
 
-const initModal = (photographerName) => {
+const initModal = (modalElementId) => {
   const body = document.querySelector('body');
-  const photographerMain = document.querySelector('.photographer__main');
-  const closeModalBtn = document.querySelector('.close-modal-button');
-  const modal = document.getElementById('contact__modal');
+  const photographerMain = document.querySelector('.main');
+  const closeModalBtn = document.querySelector(
+    `.${modalElementId}-close-button`
+  );
+  const modal = document.getElementById(modalElementId);
   const firstFocusElement = closeModalBtn;
-  const lastFocusElement = document.querySelector('.submit-button');
-  const nameTitle = document.getElementById('photographer-name');
+  const lastFocusElement = document.querySelector(
+    `.${modalElementId}-last-focus`
+  );
 
   const displayModal = () => {
     modal.style.display = 'block';
-    nameTitle.textContent = `${photographerName}`;
     closeModalBtn.focus();
     modal.setAttribute('aria-hidden', 'false');
     body.classList.add('no-scroll');
     photographerMain.setAttribute('aria-hidden', 'true');
-    initContactForm(closeModal);
+    if (modalElementId === 'contact__modal') {
+      initContactForm(closeModal);
+    }
   };
 
   const closeModal = () => {

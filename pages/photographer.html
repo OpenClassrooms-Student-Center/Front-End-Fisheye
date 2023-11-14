@@ -19,7 +19,7 @@
   <header class="header">
     <a href="../index.html"><img src="../assets/medias/logo/logo.png" class="logo" alt="Page d'accueil Fisheye"></a>
   </header>
-  <main id="main" class="photographer__main" aria-hidden="false">
+  <main id="main" class="main" aria-hidden="false">
     <!-- 
         photographer profile is display in this section via javaScript 
         (photographerTemplate -> createPhotographerProfile) 
@@ -35,10 +35,11 @@
     </section>
   </main>
   <dialog tabindex=-1 id="contact__modal" aria-hidden="true" aria-describedby="modalTitle">
-    <div class="modal">
-      <header class="modal__header">
+    <div class="contact__modal">
+      <header class="contact__modal-header">
         <h2 id="modalTitle">Contactez-moi<br><span id="photographer-name"></span></h2>
-        <button class="close-modal-button"><img src="../assets/medias/icons/close.svg" alt="fermer la modale"></button>
+        <button class="contact__modal-close-button"><img src="../assets/medias/icons/close.svg"
+            alt="fermer la modale"></button>
       </header>
       <!-- novalidate permitted override by js -->
       <form id="form" name="contact" novalidate>
@@ -62,7 +63,8 @@
           <textarea class="text-control textarea" id="message" name="message" aria-required="true" aria-invalid="false"
             required></textarea>
         </div>
-        <button type="submit" class="contact__button submit-button button">Envoyer</button>
+        <button type="submit"
+          class="contact__modal-submit-button submit-button button contact__modal-last-focus">Envoyer</button>
       </form>
     </div>
   </dialog>

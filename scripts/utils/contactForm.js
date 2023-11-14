@@ -66,8 +66,6 @@ const manageForm = (form, closeModal) => {
         "Veuillez entrer un message d'au moins 50 caractères."
       )
     ) {
-      // show validation message to user
-      // displayReservationValidation();
       console.log(
         'Prénom : ' +
           form.firstName.value +

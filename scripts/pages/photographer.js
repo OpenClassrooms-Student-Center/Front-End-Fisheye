@@ -28,7 +28,7 @@ document.addEventListener('DOMContentLoaded', function () {
  */
 const displayPhotographerProfile = (photographer) => {
   try {
-    const photographerMain = document.querySelector('.photographer__main');
+    const photographerMain = document.querySelector('.main');
     const photographerProfileDOM = createPhotographerProfile(photographer);
     photographerMain.insertBefore(
       photographerProfileDOM,
@@ -69,7 +69,7 @@ const displayPhotographerGallery = (medias, photographerName) => {
  */
 const displayPhotographerInfos = (photographer) => {
   try {
-    const photographerMain = document.querySelector('.photographer__main');
+    const photographerMain = document.querySelector('.main');
     const photographerInfosDOM = createPhotographerInfos(photographer);
     photographerMain.appendChild(photographerInfosDOM);
   } catch (error) {
@@ -100,10 +100,18 @@ const init = async () => {
       displayPhotographerProfile(photographer);
       displayPhotographerGallery(medias, photographer.name);
       displayPhotographerInfos(photographer);
-      // manage modal
-      const openModalBtn = document.querySelector('.open-modal-button');
-      const closeModalBtn = document.querySelector('.close-modal-button');
-      const modal = initModal(photographer.name);
+      // manage contact modal
+      const openModalBtn = document.querySelector(
+        '.contact__modal-open-button'
+      );
+      const closeModalBtn = document.querySelector(
+        '.contact__modal-close-button'
+      );
+      // display name on modal title
+      const nameTitle = document.getElementById('photographer-name');
+      nameTitle.textContent = `${photographer.name}`;
+
+      let modal = initModal('contact__modal');
       openModalBtn.addEventListener('click', () => {
         modal.displayModal();
       });
