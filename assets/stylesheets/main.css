@@ -203,18 +203,6 @@ form .error-message {
   align-items: center;
 }
 
-#contact__modal {
-  display: none;
-  position: fixed;
-  z-index: 1;
-  left: 0;
-  top: 0;
-  height: 100vh;
-  width: 100vw;
-  overflow: auto;
-  background: rgba(196, 196, 196, 0.4);
-}
-
 .contact__modal {
   border-radius: 5px;
   background-color: #db8876;
@@ -243,6 +231,11 @@ form .error-message {
 }
 .contact__modal-close-button img {
   cursor: pointer;
+}
+
+.lightbox__modal {
+  width: 50%;
+  margin: auto;
 }
 
 .photographer__profile {
@@ -382,6 +375,18 @@ form .input-error {
   transform: scale(1.5);
   -o-object-position: 50% 30%;
      object-position: 50% 30%;
+}
+
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  height: 100vh;
+  width: 100vw;
+  overflow: auto;
+  background: rgba(196, 196, 196, 0.4);
 }
 
 .photographers__section {

@@ -43,13 +43,12 @@ const displayPhotographerProfile = (photographer) => {
  * and displays the profile data
  * @param {array} photographer
  */
-const displayPhotographerGallery = (medias, photographerName) => {
+const displayPhotographerGallery = (medias, pictureNameRepository) => {
   try {
     const photographerGallery = document.querySelector(
       '.photographer__gallery'
     );
-    // path to picture (only firstname is needed)
-    const pictureNameRepository = photographerName.split(' ')[0];
+
     medias.forEach((media) => {
       media = mediaFactory(media);
       const mediaArticleDOM = createPhotographerMediaCard(
@@ -78,6 +77,55 @@ const displayPhotographerInfos = (photographer) => {
 };
 
 /**
+ * Function that manage contact form modal
+ * @param {array} photographer
+ */
+const manageContactFormModal = (photographer) => {
+  try {
+    const openContactModalBtn = document.querySelector(
+      '.contact__modal-open-button'
+    );
+    // display name on modal title
+    const nameTitle = document.getElementById(
+      'contact__modal-photographer-name'
+    );
+    nameTitle.textContent = `${photographer.name}`;
+    let modalForm = initModal('contact__modal', photographer);
+    openContactModalBtn.addEventListener('click', () => {
+      modalForm.displayModal();
+    });
+  } catch (error) {
+    console.log(error.message);
+  }
+};
+/**
+ * Function that manage contact form modal
+ * @param {array} photographer
+ */
+const manageMediaLightBox = (photographer, medias, pictureNameRepository) => {
+  try {
+    medias.forEach((media) => {
+      media = mediaFactory(media);
+      const mediaId = media.id;
+      const openLightBoxModalBtn = document.getElementById(
+        `media-card-${mediaId}`
+      );
+      let modalLightBox = initModal(
+        'lightbox__modal',
+        photographer,
+        media,
+        pictureNameRepository
+      );
+      openLightBoxModalBtn.addEventListener('click', () => {
+        modalLightBox.displayModal();
+      });
+    });
+  } catch (error) {
+    console.log(error.message);
+  }
+};
+
+/**
  * Function called up on loading, retrieves photographer data according to id
  */
 const init = async () => {
@@ -97,29 +145,13 @@ const init = async () => {
       const datasMedia = ApiMedia();
       const medias = await datasMedia.getMediasByPhotographerId(idPhotographer);
       console.log(medias);
+      // path to picture (only firstname is needed)
+      const pictureNameRepository = photographer.name.split(' ')[0];
       displayPhotographerProfile(photographer);
-      displayPhotographerGallery(medias, photographer.name);
+      displayPhotographerGallery(medias, pictureNameRepository);
       displayPhotographerInfos(photographer);
-      // manage contact modal
-      const openModalBtn = document.querySelector(
-        '.contact__modal-open-button'
-      );
-      const closeModalBtn = document.querySelector(
-        '.contact__modal-close-button'
-      );
-      // display name on modal title
-      const nameTitle = document.getElementById(
-        'contact__modal-photographer-name'
-      );
-      nameTitle.textContent = `${photographer.name}`;
-
-      let modalForm = initModal('contact__modal');
-      openModalBtn.addEventListener('click', () => {
-        modalForm.displayModal();
-      });
-      closeModalBtn.addEventListener('click', () => {
-        modalForm.closeModal();
-      });
+      manageContactFormModal(photographer);
+      manageMediaLightBox(photographer, medias, pictureNameRepository);
     }
   } catch (error) {
     console.log(error.message);

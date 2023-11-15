@@ -19,6 +19,21 @@ const ApiMedia = () => {
   };
   /**
    * Function that retrieves a media from the JSON database by photographer id
+   * mediasP correspond to getMediasByPhotographerId
+   * @param {number} id
+   * @returns {Promise<object>}
+   */
+  const getMediaById = async (mediasP, id) => {
+    try {
+      const mediaFiltered = mediasP.media.filter((media) => media.id == id);
+      return mediaFiltered;
+    } catch (error) {
+      console.log(error.message);
+    }
+  };
+
+  /**
+   * Function that retrieves a media from the JSON database by photographer id
    * @param {number} idP
    * @returns {Promise<object>}
    */
@@ -34,6 +49,6 @@ const ApiMedia = () => {
       console.log(error.message);
     }
   };
-  return { getMedias, getMediasByPhotographerId };
+  return { getMedias, getMediaById, getMediasByPhotographerId };
 };
 export { ApiMedia };

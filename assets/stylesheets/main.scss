@@ -10,12 +10,12 @@
 
 // 4. Layout-related sections
 @import 'layout/header', 'layout/footer', 'layout/photographerInfos',
-  'layout/modalContact', 'layout/photographerProfile',
+  'layout/modalContact', 'layout/modalLightbox', 'layout/photographerProfile',
   'layout/photographerGallery';
 
 // 5. Components
 @import 'components/button', 'components/form', 'components/photographerCard',
-  'components/mediaCard', 'components/profilePicture';
+  'components/mediaCard', 'components/profilePicture', 'components/modal';
 
 // 6. Page-specific styles
 @import 'pages/home';

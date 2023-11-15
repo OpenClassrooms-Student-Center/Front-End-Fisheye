@@ -1,17 +1,6 @@
 // -----------------------------------------------------------------------------
 // This file contains styles that are specific to the contact modale.
 // -----------------------------------------------------------------------------
-#contact__modal {
-  display: none;
-  position: fixed;
-  z-index: 1;
-  left: 0;
-  top: 0;
-  height: 100vh;
-  width: 100vw;
-  overflow: auto;
-  background: rgba(196, 196, 196, 0.4);
-}
 .contact__modal {
   border-radius: $box-border-radius;
   background-color: $third-color;

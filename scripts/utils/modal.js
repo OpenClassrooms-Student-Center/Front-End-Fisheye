@@ -5,19 +5,31 @@
 *
 /*********************************************************************************/
 import { initContactForm } from '../utils/contactForm.js';
+import { initLightBox } from '../utils/lightBox.js';
 /**
  * modal initialization
  * To reuse the modal, initialize the content
  * according to the parameter passed (modalElementId).
  * @param {string} modalElementId
+ * @param {object} photographer //TODO rendre optionnel
+ * @param {object} media (optional)
+ * @param {string} pictureNameRepository (optional)
  * @returns
  */
-const initModal = (modalElementId) => {
+const initModal = (
+  modalElementId,
+  photographer,
+  media,
+  pictureNameRepository
+) => {
   const body = document.querySelector('body');
   const photographerMain = document.querySelector('.main');
   const closeModalBtn = document.querySelector(
     `.${modalElementId}-close-button`
   );
+  closeModalBtn.addEventListener('click', () => {
+    closeModal();
+  });
   const modal = document.getElementById(modalElementId);
   const firstFocusElement = closeModalBtn;
   const lastFocusElement = document.querySelector(
@@ -31,8 +43,13 @@ const initModal = (modalElementId) => {
     body.classList.add('no-scroll');
     photographerMain.setAttribute('aria-hidden', 'true');
     // initialize element depend of modalElementId
+    // contact form
+    //TODO switchcase
     if (modalElementId === 'contact__modal') {
-      initContactForm(closeModal);
+      initContactForm(closeModal, photographer);
+      //media lightbox
+    } else if (modalElementId === 'lightbox__modal') {
+      initLightBox(pictureNameRepository, media);
     }
   };
 

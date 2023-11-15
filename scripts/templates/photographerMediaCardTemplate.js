@@ -3,7 +3,7 @@
  * @returns {html}
  */
 export const createPhotographerMediaCard = (media, pictureNameRepository) => {
-  const { title, src, likes, type } = media;
+  const { title, src, likes, type, id } = media;
   console.log(media);
 
   const picture = `../../assets/medias/photographers/${pictureNameRepository}/${src}`;
@@ -25,7 +25,7 @@ export const createPhotographerMediaCard = (media, pictureNameRepository) => {
   }
   // TODO si like => aria-pressed = true
   const mediaCard = `
-      <a class="media-card__link">
+      <a id="media-card-${id}" class="media-card__link" aria-label="Agrandir ${title}">
         ${mediaPicture}
       </a>
       <div class="media-card__under-picture-container">
