@@ -1,7 +1,7 @@
 /* eslint-disable no-unused-vars */
 import { createMediaImage, createMediaVideo } from '../metier/Media.js';
 
-const MediaFactory = (data) => {
+const mediaFactory = (data) => {
   let media;
   if (data.image) {
     media = createMediaImage(data);
@@ -13,4 +13,4 @@ const MediaFactory = (data) => {
   return media;
 };
 
-export { MediaFactory };
+export { mediaFactory };

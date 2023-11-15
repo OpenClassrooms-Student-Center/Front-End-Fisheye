@@ -6,7 +6,7 @@
 import { ApiPhotographers } from '../models/api/ApiPhotographers.js';
 import { ApiMedia } from '../models/api/ApiMedia.js';
 import { createPhotographer } from '../models/metier/Photographer.js';
-import { MediaFactory } from '../models/factories/MediaFactory.js';
+import { mediaFactory } from '../models/factories/MediaFactory.js';
 
 import { createPhotographerProfile } from '../templates/photographerProfileTemplate.js';
 import { createPhotographerMediaCard } from '../templates/photographerMediaCardTemplate.js';
@@ -51,7 +51,7 @@ const displayPhotographerGallery = (medias, photographerName) => {
     // path to picture (only firstname is needed)
     const pictureNameRepository = photographerName.split(' ')[0];
     medias.forEach((media) => {
-      media = MediaFactory(media);
+      media = mediaFactory(media);
       const mediaArticleDOM = createPhotographerMediaCard(
         media,
         pictureNameRepository
@@ -113,12 +113,12 @@ const init = async () => {
       );
       nameTitle.textContent = `${photographer.name}`;
 
-      let modal = initModal('contact__modal');
+      let modalForm = initModal('contact__modal');
       openModalBtn.addEventListener('click', () => {
-        modal.displayModal();
+        modalForm.displayModal();
       });
       closeModalBtn.addEventListener('click', () => {
-        modal.closeModal();
+        modalForm.closeModal();
       });
     }
   } catch (error) {

@@ -1,14 +1,10 @@
 /* eslint-disable no-unused-vars */
-import { createPhotographer } from '../models/metier/Photographer.js';
-
 /**
  * Function that creates an article to display the photographer's card
  * @returns {html}
  */
 export const createPhotographerCard = (photographer) => {
-  const { name, portrait, city, country, tagline, price, id } =
-    createPhotographer(photographer);
-  console.log(photographer);
+  const { name, portrait, city, country, tagline, price, id } = photographer;
   // article container
   const article = document.createElement('article');
   article.className = 'photographer';
