@@ -27,7 +27,7 @@ class Media {
     mediaCard.innerHTML += `
       <div class='media-info'>
         <h2 class='title'>${this.title}</h2>
-        <div class='likes'>
+        <div class='media-likes'>
           <h3 class='number-likes'>${this.likes}</h3>
           <span class="fa-solid fa-heart"></span>
         </div>

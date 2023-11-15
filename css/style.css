@@ -67,24 +67,28 @@ h1 {
 }
 
 .photographer-profile .location {
-  font-size: 24px;
   height: 31px;
+  font-size: 24px;
+  font-weight: 400;
 }
 
 .photographer-profile .tag {
-  font-size: 18px;
   height: 23px;
+  font-size: 18px;
+  color: #525252;
+  font-weight: 400;
 }
 
-.photograph-header .profile-picture {
+/* .photograph-header .profile-picture {
   margin-top: 56px;
   margin-right: 50px;
   margin-bottom: 57px;
-}
+} */
 
 .photograph-header {
-  display: flex;
-  justify-content: space-between;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  justify-items: center;
   align-items: center;
 }
 
@@ -243,21 +247,21 @@ article a {
   font-weight: 400;
 }
 
-.media-info .likes {
+.media-info .media-likes {
   display: flex;
   justify-content: space-between;
   align-items: center;
   gap: 5px;
 }
 
-.likes .number-likes {
+.media-likes .number-likes {
   color: #901c1c;
   text-align: right;
   font-size: 24px;
   font-weight: 500;
 }
 
-.likes .fa-heart {
+.media-likes .fa-heart {
   color: #901c1c;
   font-size: 20px;
 }
@@ -285,4 +289,35 @@ article a {
   flex-direction: column;
   gap: 10px;
   justify-content: space-between;
+}
+
+.sticky {
+  width: 376px;
+  height: 68px;
+  border-radius: 5px;
+  background: #db8876;
+  position: fixed;
+  bottom: 0;
+  right: 36px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.total-likes {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 5px;
+}
+
+.total-likes .number-likes,
+.sticky .price {
+  font-size: 24px;
+  font-weight: 600;
+  color: #000;
+}
+
+.total-likes .fa-heart {
+  font-size: 24px;
 }

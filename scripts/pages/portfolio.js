@@ -3,28 +3,40 @@
 import Media from '../pages/Media.js'
 
 async function portfolioTemplate(id) {
-  const data = JSON.parse(sessionStorage.getItem(id))
+  const photographerData = JSON.parse(sessionStorage.getItem(id))
+  generateHeader(photographerData)
 
+  const mediaDiv = document.querySelector('.media')
+  const medias = await getMediasById(id)
+  medias.forEach(media => {
+    const mediaObject = new Media(media, photographerData.name)
+    const mediaHTML = mediaObject.createMedia()
+    mediaDiv.appendChild(mediaHTML)
+  })
+
+  const sticky = document.querySelector('.sticky')
+  sticky.innerHTML = `
+  <div class='total-likes'>
+    <p class='number-likes'>123456</p>
+    <span class='fa-solid fa-heart'></span>
+  </div>
+  <p class='price'>${photographerData.price}€ / jour</p>
+  `
+}
+
+function generateHeader(photographerData) {
   const contactBtn = document.querySelector('.contact-button').cloneNode(true)
   const photographHeader = document.querySelector('.photograph-header')
   photographHeader.innerHTML = ''
   photographHeader.innerHTML = `
   <div class="photographer-profile">
-    <h1 class='photographer-name'>${data.name}</h1>
-    <h2 class="location">${data.city}, ${data.country}</h2>
-    <h3 class="tag">${data.tagline}</h3>
+    <h1 class='photographer-name'>${photographerData.name}</h1>
+    <h2 class="location">${photographerData.city}, ${photographerData.country}</h2>
+    <h3 class="tag">${photographerData.tagline}</h3>
   </div>
   ${contactBtn.outerHTML}
-  <img class='profile-picture' src="assets/photographers/${data.portrait}" alt="${data.name}">
+  <img class='profile-picture' src="assets/photographers/${photographerData.portrait}" alt="${photographerData.name}">
   `
-
-  const mediaDiv = document.querySelector('.media')
-  const medias = await getMediasById(id)
-  medias.forEach(media => {
-    const mediaObject = new Media(media, data.name)
-    const mediaHTML = mediaObject.createMedia()
-    mediaDiv.appendChild(mediaHTML)
-  })
 }
 
 const queryString = window.location.search
