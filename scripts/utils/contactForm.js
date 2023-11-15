@@ -25,6 +25,7 @@ const initContactForm = (closeModal, photographer) => {
  * This function retrieves information from the reservation form
  * and tests whether the fields are valid.
  */
+//TODO message de confirmation
 const manageForm = (form, closeModal) => {
   try {
     // Regexp for conditions

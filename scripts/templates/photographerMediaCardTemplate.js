@@ -25,9 +25,9 @@ export const createPhotographerMediaCard = (media, pictureNameRepository) => {
   }
   // TODO si like => aria-pressed = true
   const mediaCard = `
-      <a id="media-card-${id}" class="media-card__link" aria-label="Agrandir ${title}">
+      <button id="media-card-${id}" class="media-card__link" aria-label="Agrandir ${title}">
         ${mediaPicture}
-      </a>
+      </button>
       <div class="media-card__under-picture-container">
         <h3 class="media-card__title">${title}</h3>
         <div class="media-card__likes-container">

@@ -115,13 +115,23 @@ form {
   font-weight: 500;
 }
 
-/***** contact modal  */
-.contact__modal {
-  &-header {
-    h2 {
-      font-size: 64px;
-      font-weight: normal;
-      text-align: left;
+/***** modal  */
+.modal {
+  /* contact modal  */
+  &__contact {
+    &-header {
+      h2 {
+        font-size: 64px;
+        font-weight: normal;
+        text-align: left;
+      }
+    }
+  }
+  /* lightbox modal  */
+  &__lightbox {
+    &-media-title {
+      color: $principal-color;
+      font-size: 1.5em;
     }
   }
 }

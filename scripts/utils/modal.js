@@ -20,7 +20,8 @@ const initModal = (
   modalElementId,
   photographer,
   media,
-  pictureNameRepository
+  pictureNameRepository,
+  medias
 ) => {
   const body = document.querySelector('body');
   const photographerMain = document.querySelector('.main');
@@ -45,11 +46,11 @@ const initModal = (
     // initialize element depend of modalElementId
     // contact form
     //TODO switchcase
-    if (modalElementId === 'contact__modal') {
+    if (modalElementId === 'modal__contact') {
       initContactForm(closeModal, photographer);
       //media lightbox
-    } else if (modalElementId === 'lightbox__modal') {
-      initLightBox(pictureNameRepository, media);
+    } else if (modalElementId === 'modal__lightbox') {
+      initLightBox(pictureNameRepository, media, medias);
     }
   };
 

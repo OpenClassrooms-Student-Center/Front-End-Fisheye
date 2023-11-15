@@ -8,6 +8,7 @@ export const createPhotographerCard = (photographer) => {
   // article container
   const article = document.createElement('article');
   article.className = 'photographer';
+  //TODO verifier si image de profil sinon rond gris
   const photographerCard = `
       <a class="photographer__link" href="./pages/photographer.html?id=${id}">
         <div class="profile-picture__container">

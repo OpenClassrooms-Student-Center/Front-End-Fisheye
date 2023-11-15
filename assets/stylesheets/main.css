@@ -137,11 +137,19 @@ form .error-message {
   font-weight: 500;
 }
 
-/***** contact modal  */
-.contact__modal-header h2 {
+/***** modal  */
+.modal {
+  /* contact modal  */
+  /* lightbox modal  */
+}
+.modal__contact-header h2 {
   font-size: 64px;
   font-weight: normal;
   text-align: left;
+}
+.modal__lightbox-media-title {
+  color: #901c1c;
+  font-size: 1.5em;
 }
 
 /**
@@ -164,7 +172,8 @@ form .error-message {
 .hide-text {
   overflow: hidden;
   padding: 0;
-  text-indent: 101%;
+  position: absolute;
+  bottom: -100%;
   white-space: nowrap;
 }
 
@@ -203,7 +212,7 @@ form .error-message {
   align-items: center;
 }
 
-.contact__modal {
+.modal__contact {
   border-radius: 5px;
   background-color: #db8876;
   width: 50%;
@@ -213,7 +222,7 @@ form .error-message {
   padding: 10px 35px;
   margin: auto;
 }
-.contact__modal-header {
+.modal__contact-header {
   position: relative;
   display: flex;
   justify-content: space-between;
@@ -221,21 +230,38 @@ form .error-message {
   width: 100%;
   margin-bottom: 15px;
 }
-.contact__modal-close-button {
-  position: absolute;
+.modal__contact-close-button {
   top: 10px;
   right: -15px;
-  background: none;
-  border: none;
-  padding: 15px;
-}
-.contact__modal-close-button img {
-  cursor: pointer;
 }
 
-.lightbox__modal {
-  width: 50%;
-  margin: auto;
+#modal__lightbox {
+  background-color: white;
+}
+
+.modal__lightbox {
+  padding: 40px 100px;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+.modal__lightbox-close-button {
+  right: 100px;
+  top: 45px;
+}
+.modal__lightbox-close-button .close-icon path {
+  fill: #901c1c;
+}
+.modal__lightbox-picture {
+  width: 1050px;
+  height: 900px;
+  -o-object-fit: cover;
+     object-fit: cover;
+  -o-object-position: center 40%;
+     object-position: center 40%;
+  flex-shrink: 0;
 }
 
 .photographer__profile {
@@ -258,7 +284,6 @@ form .error-message {
 
 .button {
   padding: 22px 11px;
-  border: none;
   background-color: #901c1c;
   border-radius: 5px;
   cursor: pointer;
@@ -266,6 +291,9 @@ form .error-message {
 
 button {
   cursor: pointer;
+  border: none;
+  background-color: transparent;
+  padding: 0%;
 }
 
 form {
@@ -387,6 +415,15 @@ form .input-error {
   width: 100vw;
   overflow: auto;
   background: rgba(196, 196, 196, 0.4);
+}
+.modal__close-button {
+  position: absolute;
+  background: none;
+  border: none;
+  padding: 15px;
+}
+.modal__close-button img {
+  cursor: pointer;
 }
 
 .photographers__section {

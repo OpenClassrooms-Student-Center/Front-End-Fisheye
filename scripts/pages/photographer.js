@@ -83,14 +83,14 @@ const displayPhotographerInfos = (photographer) => {
 const manageContactFormModal = (photographer) => {
   try {
     const openContactModalBtn = document.querySelector(
-      '.contact__modal-open-button'
+      '.modal__contact-open-button'
     );
     // display name on modal title
     const nameTitle = document.getElementById(
-      'contact__modal-photographer-name'
+      'modal__contact-photographer-name'
     );
     nameTitle.textContent = `${photographer.name}`;
-    let modalForm = initModal('contact__modal', photographer);
+    let modalForm = initModal('modal__contact', photographer);
     openContactModalBtn.addEventListener('click', () => {
       modalForm.displayModal();
     });
@@ -111,10 +111,11 @@ const manageMediaLightBox = (photographer, medias, pictureNameRepository) => {
         `media-card-${mediaId}`
       );
       let modalLightBox = initModal(
-        'lightbox__modal',
+        'modal__lightbox',
         photographer,
         media,
-        pictureNameRepository
+        pictureNameRepository,
+        medias
       );
       openLightBoxModalBtn.addEventListener('click', () => {
         modalLightBox.displayModal();

@@ -23,7 +23,8 @@
 .hide-text {
   overflow: hidden;
   padding: 0;
-  text-indent: 101%;
+  position: absolute;
+  bottom: -100%;
   white-space: nowrap;
 }
 
