@@ -87,8 +87,8 @@ h1 {
 
 .photograph-header {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  justify-items: center;
+  grid-template-columns: 2fr 1fr 2fr;
+  /* justify-items: center; */
   align-items: center;
 }
 
@@ -105,6 +105,8 @@ h1 {
   overflow-clip-margin: unset;
   overflow: hidden;
   border-radius: 50%;
+  justify-self: end;
+  margin-right: 50px;
 }
 
 a {

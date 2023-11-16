@@ -17,6 +17,25 @@
     <div class="photograph-header">
       <button class="contact-button" onclick="displayModal()">Contactez-moi</button>
     </div>
+    <div id="contact-modal">
+      <div class="modal">
+        <header>
+          <h2 class="contact-me"></h2>
+          <img src="assets/icons/close.svg" onclick="closeModal()" />
+        </header>
+        <form>
+          <label for="prenom">Prénom</label>
+          <input type="text" name="prenom" placeholder="Votre prénom" id="prenom" />
+          <label for="nom">Nom</label>
+          <input type="text" name="nom" placeholder="Votre nom" id="nom" />
+          <label for="email">Email</label>
+          <input type="email" name="email" placeholder="Votre email, par exemple: abcd@domaine.fr" id="email" />
+          <label for="message">Votre message</label>
+          <textarea name="message" id="message" placeholder="Votre message"></textarea>
+          <button class="contact-button">Envoyer</button>
+        </form>
+      </div>
+    </div>
     <div class="sort">Trier par
       <select class="sort-select">
         <option value="popularite">Popularité</option>
@@ -28,21 +47,7 @@
     <div class="media"></div>
     <div class="sticky"></div>
   </main>
-  <div id="contact_modal">
-    <div class="modal">
-      <header>
-        <h2>Contactez-moi</h2>
-        <img src="assets/icons/close.svg" onclick="closeModal()" />
-      </header>
-      <form>
-        <div>
-          <label>Prénom</label>
-          <input />
-        </div>
-        <button class="contact-button">Envoyer</button>
-      </form>
-    </div>
-  </div>
+
   <script src="./scripts/pages/portfolio.js" type="module"></script>
   <script src="./scripts/pages/Media.js" type="module"></script>
   <script src="./scripts/utils/contactForm.js"></script>
