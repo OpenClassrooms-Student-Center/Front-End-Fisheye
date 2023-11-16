@@ -8,6 +8,10 @@
   width: 100vw;
   overflow: auto;
   background: rgba(196, 196, 196, 0.4);
+  &__container {
+    animation-name: modalOpen;
+    animation-duration: 0.5s;
+  }
   &__close-button {
     position: absolute;
     background: none;
@@ -16,5 +20,14 @@
     img {
       cursor: pointer;
     }
+  }
+}
+
+@keyframes modalOpen {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
   }
 }

@@ -39,6 +39,13 @@ a {
 }
 
 /**
+* Modal
+*/
+dialog {
+  border: none;
+}
+
+/**
  * Basic typography style
  */
 body {
@@ -262,8 +269,18 @@ form .error-message {
   -o-object-position: center 40%;
      object-position: center 40%;
   flex-shrink: 0;
+  animation-name: modalPicture;
+  animation-duration: 2s;
 }
 
+@keyframes modalPicture {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
 .photographer__profile {
   background-color: #fafafa;
   height: 300px;
@@ -416,6 +433,10 @@ form .input-error {
   overflow: auto;
   background: rgba(196, 196, 196, 0.4);
 }
+.modal__container {
+  animation-name: modalOpen;
+  animation-duration: 0.5s;
+}
 .modal__close-button {
   position: absolute;
   background: none;
@@ -426,6 +447,14 @@ form .input-error {
   cursor: pointer;
 }
 
+@keyframes modalOpen {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
 .photographers__section {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;

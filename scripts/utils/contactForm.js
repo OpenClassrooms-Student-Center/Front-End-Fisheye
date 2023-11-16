@@ -10,8 +10,8 @@
  */
 const initContactForm = (closeModal, photographer) => {
   // we retrieve the photographer in preparation for sending him a message
-  // directly to his e-mail address
-  // (when it's added to the database)
+  // directly to his e-mail address (when it's added to the database)
+  // const email = photographer.email
   const form = document.querySelector('#form');
   // manage form when submit
   form.addEventListener('submit', (event) => {
@@ -25,7 +25,6 @@ const initContactForm = (closeModal, photographer) => {
  * This function retrieves information from the reservation form
  * and tests whether the fields are valid.
  */
-//TODO message de confirmation
 const manageForm = (form, closeModal) => {
   try {
     // Regexp for conditions

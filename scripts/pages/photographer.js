@@ -43,13 +43,13 @@ const displayPhotographerProfile = (photographer) => {
  * and displays the profile data
  * @param {array} photographer
  */
-const displayPhotographerGallery = (medias, pictureNameRepository) => {
+const displayPhotographerGallery = async (medias, pictureNameRepository) => {
   try {
     const photographerGallery = document.querySelector(
       '.photographer__gallery'
     );
 
-    medias.forEach((media) => {
+    await medias.forEach((media) => {
       media = mediaFactory(media);
       const mediaArticleDOM = createPhotographerMediaCard(
         media,

@@ -14,9 +14,8 @@ import { mediaFactory } from '../models/factories/MediaFactory.js';
  * @param {array<object>} medias
  */
 const initLightBox = (pictureNameRepository, media, medias) => {
-  console.log(media);
   createPhotographerLightBox(pictureNameRepository, media);
-
+  const modal = document.getElementById('modal__lightbox');
   const previousCarouselMedia = document.querySelector(
     '.modal__lightbox-carousel-previous'
   );
@@ -30,6 +29,21 @@ const initLightBox = (pictureNameRepository, media, medias) => {
   nextCarouselMedia.addEventListener('click', () => {
     media = manageCarousel().nextMedia;
     createPhotographerLightBox(pictureNameRepository, media);
+  });
+
+  // accessibility with key
+  document.addEventListener('keydown', (e) => {
+    // Trap focus into modal
+    if (modal.getAttribute('aria-hidden') == 'false') {
+      if (e.key === 'ArrowLeft' || e.code === 'ArrowLeft') {
+        media = manageCarousel().previousMedia;
+        createPhotographerLightBox(pictureNameRepository, media);
+      }
+      if (e.key === 'ArrowRight' || e.code === 'ArrowRight') {
+        media = manageCarousel().nextMedia;
+        createPhotographerLightBox(pictureNameRepository, media);
+      }
+    }
   });
 
   /**
@@ -62,5 +76,3 @@ const initLightBox = (pictureNameRepository, media, medias) => {
 };
 
 export { initLightBox };
-
-//TODO key listener, Les touches fléchées du clavier permettent également de naviguer entre les médias dans la lightbox.

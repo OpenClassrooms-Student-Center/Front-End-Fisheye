@@ -24,5 +24,15 @@
     object-fit: cover;
     object-position: center 40%;
     flex-shrink: 0;
+    animation-name: modalPicture;
+    animation-duration: 2s;
+  }
+}
+@keyframes modalPicture {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
   }
 }

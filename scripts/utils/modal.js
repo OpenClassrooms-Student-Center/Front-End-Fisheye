@@ -44,13 +44,17 @@ const initModal = (
     body.classList.add('no-scroll');
     photographerMain.setAttribute('aria-hidden', 'true');
     // initialize element depend of modalElementId
-    // contact form
-    //TODO switchcase
-    if (modalElementId === 'modal__contact') {
-      initContactForm(closeModal, photographer);
-      //media lightbox
-    } else if (modalElementId === 'modal__lightbox') {
-      initLightBox(pictureNameRepository, media, medias);
+    switch (modalElementId) {
+      // contact form
+      case 'modal__contact':
+        initContactForm(closeModal, photographer);
+        break;
+      // media lightbox
+      case 'modal__lightbox':
+        initLightBox(pictureNameRepository, media, medias);
+        break;
+      default:
+        console.log(`${modalElementId} doesn't match with cases`);
     }
   };
 
@@ -64,27 +68,23 @@ const initModal = (
   // accessibility with key
   document.addEventListener('keydown', (e) => {
     // Close modal when escape key is pressed
-    if (
-      modal.getAttribute('aria-hidden') == 'false' &&
-      (e.key === 'Escape' || e.code === 'Escape')
-    ) {
-      closeModal();
-    }
-    // Trap focus into modal
-    if (
-      modal.getAttribute('aria-hidden') == 'false' &&
-      (e.key === 'Tab' || e.code === 'Tab')
-    ) {
-      if (e.shiftKey) {
-        /* shift + tab */
-        if (document.activeElement === firstFocusElement) {
-          lastFocusElement.focus();
-          e.preventDefault();
-        }
-      } /* tab */ else {
-        if (document.activeElement === lastFocusElement) {
-          firstFocusElement.focus();
-          e.preventDefault();
+    if (modal.getAttribute('aria-hidden') == 'false') {
+      if (e.key === 'Escape' || e.code === 'Escape') {
+        closeModal();
+      }
+      // Trap focus into modal
+      if (e.key === 'Tab' || e.code === 'Tab') {
+        if (e.shiftKey) {
+          /* shift + tab */
+          if (document.activeElement === firstFocusElement) {
+            lastFocusElement.focus();
+            e.preventDefault();
+          }
+        } /* tab */ else {
+          if (document.activeElement === lastFocusElement) {
+            firstFocusElement.focus();
+            e.preventDefault();
+          }
         }
       }
     }

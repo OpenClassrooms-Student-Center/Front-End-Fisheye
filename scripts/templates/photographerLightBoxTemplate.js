@@ -27,7 +27,6 @@ export const createPhotographerLightBox = (pictureNameRepository, media) => {
           </video>
           <p id="videoTitle" class="modal__lightbox-media-title">${title}</p> 
           `;
-    //TODO control
   } else {
     mediaPicture = `<div aria-label="absence de media">Absence de media</div>`;
   }
