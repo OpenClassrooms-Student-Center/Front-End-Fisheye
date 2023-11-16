@@ -3,6 +3,8 @@ import { getDatas } from './Api.js';
  * This file provides a link to the photographers' database.
  */
 const ApiPhotographers = () => {
+  // CRUD if necessary
+
   /**
    * Function that retrieves all photographers from the JSON database
    * @returns {Promise<array>}

@@ -5,9 +5,8 @@
  */
 import { ApiPhotographers } from '../models/api/ApiPhotographers.js';
 import { ApiMedia } from '../models/api/ApiMedia.js';
-import { createPhotographer } from '../models/metier/Photographer.js';
+import { Photographer } from '../models/metier/Photographer.js';
 import { mediaFactory } from '../models/factories/MediaFactory.js';
-import { addLike, removeLike } from '../models/metier/Media.js';
 
 import { createPhotographerProfile } from '../templates/photographerProfileTemplate.js';
 import { createPhotographerMediaCard } from '../templates/photographerMediaCardTemplate.js';
@@ -42,15 +41,17 @@ const displayPhotographerProfile = (photographer) => {
 
 /**
  * Function that retrieves the div containing the photographer's page header
- * and displays the profile data
+ * and displays the profile data, manage likes medias and manage lightbox media
  * @param {object} photographer
  * @param {array} medias
  * @param {string} pictureNameRepository
+ * @param {number} totalLikes
  */
 const displayPhotographerGallery = async (
   photographer,
   medias,
-  pictureNameRepository
+  pictureNameRepository,
+  totalLikes
 ) => {
   try {
     const photographerGallery = document.querySelector(
@@ -64,7 +65,26 @@ const displayPhotographerGallery = async (
       );
       photographerGallery.appendChild(mediaArticleDOM);
       // manage media like/unlike
-      manageMediaLikes(media);
+      const buttonLike = document.getElementById(
+        `media-card-button-likes-${media.id}`
+      );
+      const likesDOM = document.getElementById(`media-card-likes-${media.id}`);
+      let isLiked = false;
+      buttonLike.addEventListener('click', () => {
+        if (isLiked) {
+          media.likes -= 1;
+          totalLikes -= 1;
+        } else {
+          media.likes += 1;
+          console.log(media);
+          totalLikes += 1;
+        }
+        isLiked = !isLiked;
+        // To perpetuate the data, the object must be updated in the database (update(media)).
+        likesDOM.textContent = media.likes;
+        // update total Likes html
+        displayPhotographerInfos(photographer, totalLikes);
+      });
       // manage media lightbox
       manageMediaLightBox(photographer, media, pictureNameRepository, medias);
     });
@@ -72,28 +92,6 @@ const displayPhotographerGallery = async (
     console.log(error.message);
   }
 };
-const manageMediaLikes = async (media) => {
-  const buttonLike = document.getElementById(
-    `media-card-button-likes-${media.id}`
-  );
-  const likesDOM = document.getElementById(`media-card-likes-${media.id}`);
-  let isLiked = false;
-  let likes = media.likes;
-  buttonLike.addEventListener('click', () => {
-    if (isLiked) {
-      likes = removeLike(likes);
-    } else {
-      likes = addLike(likes);
-    }
-    isLiked = !isLiked;
-    likesDOM.textContent = likes;
-  });
-};
-
-// recuperer la valeur en bd et a chaque clique l'incrémenter/décrémenter
-// envoyer l'information dans l'encart des infos pour le calcul du total
-// depuis photographer.js grace a for each
-// button id="media-card-likes-${id}
 
 /**
  * Function that manage lightbox modal
@@ -126,11 +124,15 @@ const manageMediaLightBox = (
 /**
  * Function that retrieves the div containing the photographer's infos (total likes + daily rate)
  * @param {object} photographer
+ * @param {number} totalLikes
  */
-const displayPhotographerInfos = (photographer) => {
+const displayPhotographerInfos = (photographer, totalLikes) => {
   try {
     const photographerMain = document.querySelector('.main');
-    const photographerInfosDOM = createPhotographerInfos(photographer);
+    const photographerInfosDOM = createPhotographerInfos(
+      photographer,
+      totalLikes
+    );
     photographerMain.appendChild(photographerInfosDOM);
   } catch (error) {
     console.log(error.message);
@@ -161,13 +163,27 @@ const manageContactFormModal = (photographer) => {
 };
 
 /**
+ * count total likes of medias phototgrapher
+ * @param {array} medias
+ * @returns
+ */
+const manageTotalLikes = (medias) => {
+  let totalLikes = 0;
+  for (let i = 0; i < medias.length; i++) {
+    totalLikes += medias[i].likes;
+  }
+  return totalLikes;
+};
+
+/**
  * Function called up on loading, retrieves photographer data according to id
  */
 const init = async () => {
   try {
+    const datasPhotographer = ApiPhotographers();
+    const datasMedia = ApiMedia();
     let params = new URL(document.location).searchParams;
     const idPhotographer = params.get('id');
-    const datasPhotographer = ApiPhotographers();
     let photographer = await datasPhotographer.getPhotographerById(
       idPhotographer
     );
@@ -175,16 +191,21 @@ const init = async () => {
     if (!photographer) {
       window.location.href = '../index.html';
     } else {
-      photographer = createPhotographer(photographer);
+      photographer = Photographer(photographer);
       console.log(photographer);
-      const datasMedia = ApiMedia();
       const medias = await datasMedia.getMediasByPhotographerId(idPhotographer);
       console.log(medias);
       // path to picture (only firstname is needed)
       const pictureNameRepository = photographer.name.split(' ')[0];
       displayPhotographerProfile(photographer);
-      displayPhotographerGallery(photographer, medias, pictureNameRepository);
-      displayPhotographerInfos(photographer);
+      let totalLikes = manageTotalLikes(medias);
+      displayPhotographerGallery(
+        photographer,
+        medias,
+        pictureNameRepository,
+        totalLikes
+      );
+      displayPhotographerInfos(photographer, totalLikes);
       manageContactFormModal(photographer);
     }
   } catch (error) {

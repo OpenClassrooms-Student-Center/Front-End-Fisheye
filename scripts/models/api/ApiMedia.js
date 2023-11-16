@@ -3,6 +3,7 @@ import { getDatas } from './Api.js';
  * This file links to the media database.
  */
 const ApiMedia = () => {
+  // CRUD if necessary
   /**
    * Function that retrieves all medias from the JSON database
    * @returns {Promise<array>}

@@ -3,7 +3,7 @@
  */
 import { ApiPhotographers } from '../models/api/ApiPhotographers.js';
 import { createPhotographerCard } from '../templates/indexPhotographerCardTemplate.js';
-import { createPhotographer } from '../models/metier/Photographer.js';
+import { Photographer } from '../models/metier/Photographer.js';
 
 /**
  * Executed when home page is loaded
@@ -22,7 +22,7 @@ const displayPhotographers = (photographers) => {
       '.photographers__section'
     );
     photographers.forEach((photographer) => {
-      photographer = createPhotographer(photographer);
+      photographer = Photographer(photographer);
       console.log(photographer);
       const cardDOM = createPhotographerCard(photographer);
       photographersSection.appendChild(cardDOM);

@@ -1,4 +1,4 @@
-import { createMediaImage, createMediaVideo } from '../metier/Media.js';
+import { MediaImage, MediaVideo } from '../metier/Media.js';
 /**
  * manage media creation depend of its type (photo or video)
  * @param {object} data
@@ -7,9 +7,9 @@ import { createMediaImage, createMediaVideo } from '../metier/Media.js';
 const mediaFactory = (data) => {
   let media;
   if (data.image) {
-    media = createMediaImage(data);
+    media = MediaImage(data);
   } else if (data.video) {
-    media = createMediaVideo(data);
+    media = MediaVideo(data);
   } else {
     throw new Error('Unknown data');
   }

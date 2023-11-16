@@ -205,18 +205,22 @@ form .error-message {
   bottom: 0px;
   right: 20px;
   display: flex;
-  width: -moz-fit-content;
-  width: fit-content;
+  gap: 65px;
   background-color: #db8876;
   border-radius: 5px 5px 0px 0px;
+  padding: 15px 30px;
 }
 .photographer__infos p {
-  margin: 15px 30px;
+  margin: 0%;
 }
-.photographer__infos-likes {
+.photographer__infos-likes-container {
   display: flex;
-  gap: 3px;
   align-items: center;
+  gap: 5px;
+}
+.photographer__infos-likes-heart {
+  height: 28px;
+  padding-bottom: 5%;
 }
 
 .modal__contact {

@@ -3,15 +3,22 @@
   bottom: 0px;
   right: 20px;
   display: flex;
-  width: fit-content;
+  gap: 65px;
   background-color: $third-color;
   border-radius: $box-border-radius $box-border-radius 0px 0px;
+  padding: 15px 30px;
   p {
-    margin: 15px 30px;
+    margin: 0%;
   }
   &-likes {
-    display: flex;
-    gap: 3px;
-    align-items: center;
+    &-container {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+    &-heart {
+      height: 28px;
+      padding-bottom: 5%;
+    }
   }
 }
