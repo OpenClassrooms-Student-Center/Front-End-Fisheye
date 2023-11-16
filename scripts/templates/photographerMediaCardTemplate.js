@@ -33,8 +33,8 @@ export const createPhotographerMediaCard = (pictureNameRepository, media) => {
       <div class="media-card__under-picture-container">
         <h3 class="media-card__title">${title}</h3>
         <div class="media-card__likes-container">
-          <p class="media-card__likes">${likes}</p>
-          <button class="media-card__likes-button" aria-pressed="false" aria-label="liker le media"><img class="photographer__infos-likes-heart" src="https://img.icons8.com/windows/24/901c1c/filled-heart.png" alt="likes" aria-hidden="true"></button>
+          <p class="media-card__likes" id="media-card-likes-${id}">${likes}</p>
+          <button id="media-card-button-likes-${id}" class="media-card__likes-button" aria-pressed="false" aria-label="liker le media"><img class="photographer__infos-likes-heart" src="https://img.icons8.com/windows/24/901c1c/filled-heart.png" alt="likes" aria-hidden="true"></button>
         </div>
       </div>
   `;

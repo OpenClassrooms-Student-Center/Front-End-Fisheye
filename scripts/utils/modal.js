@@ -12,9 +12,9 @@ import { initLightBox } from '../utils/lightBox.js';
  * according to the parameter passed (modalElementId).
  * @param {string} modalElementId
  * @param {object} photographer //TODO rendre optionnel
- * @param {object} media (optional)
- * @param {string} pictureNameRepository (optional)
- * @param {array<object>} medias
+ * @param {object} media (optional) //TODO rendre optionnel
+ * @param {string} pictureNameRepository (optional) //TODO rendre optionnel
+ * @param {array<object>} medias //TODO rendre optionnel
  * @returns
  */
 const initModal = (

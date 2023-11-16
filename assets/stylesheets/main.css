@@ -255,7 +255,7 @@ form .error-message {
   width: 100%;
 }
 .modal__lightbox-close-button {
-  right: 100px;
+  right: 60px;
   top: 45px;
 }
 .modal__lightbox-close-button .close-icon path {
@@ -271,6 +271,9 @@ form .error-message {
   flex-shrink: 0;
   animation-name: modalPicture;
   animation-duration: 2s;
+}
+.modal__lightbox video {
+  margin: 0px 35px;
 }
 
 @keyframes modalPicture {

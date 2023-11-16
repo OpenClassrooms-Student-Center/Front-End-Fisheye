@@ -5,13 +5,6 @@
  */
 const createMedia = (data) => {
   const { id, photographerId, title, description, likes, date, price } = data;
-  // console.log(data);
-  const addLike = function () {
-    this.likes++;
-  };
-  const removeLike = function () {
-    this.likes--;
-  };
   return {
     id,
     photographerId,
@@ -20,9 +13,14 @@ const createMedia = (data) => {
     likes,
     date,
     price,
-    addLike,
-    removeLike,
   };
+};
+
+const addLike = (numLikes) => {
+  return (numLikes += 1);
+};
+const removeLike = (numLikes) => {
+  return (numLikes -= 1);
 };
 
 /**
@@ -47,4 +45,4 @@ const createMediaVideo = (data) => {
   return { type: 'video', src, ...newMedia };
 };
 
-export { createMediaImage, createMediaVideo };
+export { createMediaImage, createMediaVideo, addLike, removeLike };

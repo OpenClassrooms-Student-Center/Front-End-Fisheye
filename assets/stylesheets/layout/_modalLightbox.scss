@@ -12,7 +12,7 @@
   align-items: center;
   width: 100%;
   &-close-button {
-    right: 100px;
+    right: 60px;
     top: 45px;
     .close-icon path {
       fill: $principal-color;
@@ -26,6 +26,9 @@
     flex-shrink: 0;
     animation-name: modalPicture;
     animation-duration: 2s;
+  }
+  video {
+    margin: 0px 35px;
   }
 }
 @keyframes modalPicture {

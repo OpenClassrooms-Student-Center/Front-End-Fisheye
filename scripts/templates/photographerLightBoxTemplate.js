@@ -14,18 +14,20 @@ export const createPhotographerLightBox = (pictureNameRepository, media) => {
   let mediaPicture;
   if (type === 'image' && src != null) {
     mediaPicture = `
-      <figure>
+      <figure class="modal__lightbox-media-container">
         <img class="modal__lightbox-picture" src="${picture}" alt="${title}"></img>
         <figcaption class="modal__lightbox-media-title">${title}</figcaption>
       </figure>    
     `;
   } else if (type === 'video' && src != null) {
     mediaPicture = `
+      <div class="modal__lightbox-media-container">
           <video aria-labelledby="videoTitle" class="modal__lightbox-picture" controls>
             <source src=
             "${picture}"  type="video/mp4">
           </video>
           <p id="videoTitle" class="modal__lightbox-media-title">${title}</p> 
+      </div>
           `;
   } else {
     mediaPicture = `<div aria-label="absence de media">Absence de media</div>`;
