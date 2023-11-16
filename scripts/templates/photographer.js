@@ -1,3 +1,8 @@
+function displayModal() {
+  const modal = document.querySelector("#contact_modal");
+  modal.style.display = "block";
+}
+
 function photographerTemplate(data) {
   const { name, portrait, city, country, tagline, price, id } = data;
 
@@ -37,30 +42,24 @@ function photographerTemplate(data) {
 
 function mediaTemplate(media, firstName) {
   const { title, image, video, likes, id } = media;
-  let likeArray = [];
-  let likeAdded;
-
-  if (localStorage.getItem("like")) {
-    likeArray = JSON.parse(localStorage.getItem("like"));
-
-    likeAdded = likeArray.find((like) => like.id === id)?.likeAdded;
-  }
+  let likeArray = JSON.parse(localStorage.getItem("like") || "[]");
+  let likeAdded = likeArray.find((like) => like.id === id)?.likeAdded;
 
   let mediaLink = `assets/photographers/${firstName}/${image ?? video}`;
+
   function getMediaCard() {
     const mediaCard = document.createElement("article");
 
     const addLike = () => {
       likeAdded = likes + 1;
       if (likeArray.length === 0 || likeArray.find((like) => like.id !== id)) {
-        const addLikeToArray = localStorage.getItem("like")
-          ? JSON.parse(localStorage.getItem("like"))
-          : [];
+        const addLikeToArray = JSON.parse(localStorage.getItem("like")) ?? [];
 
         const addLikeObject = {
           id: id,
           likeAdded: likes + 1,
         };
+
         localStorage.setItem(
           "like",
           JSON.stringify([...addLikeToArray, addLikeObject])
@@ -72,30 +71,54 @@ function mediaTemplate(media, firstName) {
       ).innerHTML = `${likeAdded} <i class="fa-solid fa-heart"></i>`;
     };
 
-    mediaCard.addEventListener("click", addLike);
-
     mediaCard.innerHTML = `
-      <a href="photographer.html?id=${id}">
+      <div class="media-picture">
         ${
           image
             ? `<img src="${mediaLink}" alt="${title}">`
             : `<video src="${mediaLink}" autoplay loop muted></video>`
         }
-      </a>
+      </div>
       <div class="media-infos" arial-label="media infos">
         <h3>${title}</h3>
         <div class="likes">
           <p class="likes-number">${likeAdded ?? likes}  
-            ${
-              likeAdded
-                ? "<i class='fa-solid fa-heart'></i>"
-                : "<i class='fa-regular fa-heart'></i>"
-            }</p>
+            <i class="${likeAdded ? 'fa-solid' : 'fa-regular'} fa-heart"></i>
+          </p>
         </div>
-      </div>
-    `;
+      </div>`;
+
+    const mediaElement = mediaCard.querySelector(".media-picture");
+    const likeContainer = mediaCard.querySelector(".likes");
+
+    mediaElement.addEventListener("click", displayLightbox);
+    likeContainer.addEventListener("click", addLike);
+
     return mediaCard;
   }
+
+  function displayLightbox() {
+    const lightbox = document.querySelector(".lightbox");
+    const mediaContent = document.querySelector(".media-content");
+
+    mediaContent.innerHTML = `
+      ${
+          image
+            ? `<img src="${mediaLink}" alt="${title}">`
+            : `<video src="${mediaLink}" autoplay loop muted></video>`
+        }
+        <div class="lightbox-infos">
+          <h3>${title}</h3>
+        </div>
+    `;
+
+    lightbox.style.display = "block";
+
+    lightbox.addEventListener("click", () => {
+      lightbox.style.display = "none";
+    });
+  }
+
   return { getMediaCard };
 }
 

@@ -14,6 +14,12 @@ async function changeFilter(sort) {
   displayMedia(medias, photographerFirstName);
 }
 
+function displayLightbox() {
+  lightbox.style.display = "block";
+  
+}
+
+
 async function init() {
   const photographer = await getPhotographer(id);
   const media = await getMedia(id);
@@ -22,6 +28,7 @@ async function init() {
 
   displayPhotographer(photographer);
   displayMedia(media, getFirstName(photographerFirstName));
+
 }
 
 function getFirstName(photographerFirstName) {
