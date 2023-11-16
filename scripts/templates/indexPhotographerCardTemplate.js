@@ -1,6 +1,6 @@
-/* eslint-disable no-unused-vars */
 /**
  * Function that creates an article to display the photographer's card
+ * @param {object} photographer
  * @returns {html}
  */
 export const createPhotographerCard = (photographer) => {

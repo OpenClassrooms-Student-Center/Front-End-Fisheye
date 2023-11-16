@@ -1,7 +1,7 @@
-/* eslint-disable no-unused-vars */
-
 /**
  * Function that creates an article to display a photographer's image or video
+ * @param {string} pictureNameRepository
+ * @param {object} media
  * @returns {html}
  */
 export const createPhotographerLightBox = (pictureNameRepository, media) => {

@@ -1,7 +1,6 @@
-/* eslint-disable no-unused-vars */
-
 /**
  * Function that creates a div to display the photographer's profile
+ * @param {object} photographer
  * @returns {html}
  */
 export const createPhotographerProfile = (photographer) => {
@@ -9,7 +8,6 @@ export const createPhotographerProfile = (photographer) => {
   // div container
   const photographerHeader = document.createElement('div');
   photographerHeader.className = 'photographer__profile';
-  // photographerHeader.setAttribute('aria-label', `Entête de la page de ${name}`);
   const photographerProfile = `
       <section class="photographer__presentation">
         <h1 class="photographer__presentation-name name">${name}</h1>

@@ -7,6 +7,7 @@
 /**
  * initialization of form
  * @param {function} closeModal
+ * @param {object} photographer
  */
 const initContactForm = (closeModal, photographer) => {
   // we retrieve the photographer in preparation for sending him a message
@@ -24,6 +25,8 @@ const initContactForm = (closeModal, photographer) => {
 /**
  * This function retrieves information from the reservation form
  * and tests whether the fields are valid.
+ * @param {html} form
+ * @param {function} closeModal
  */
 const manageForm = (form, closeModal) => {
   try {
@@ -99,7 +102,7 @@ const manageForm = (form, closeModal) => {
  * @param {object} input
  * @param {*} condition
  * @param {string} errorMessage
- * @returns
+ * @returns {boolean}
  */
 function checkInput(input, condition, errorMessage) {
   let res = true;

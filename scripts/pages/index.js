@@ -14,6 +14,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
 /**
  * Function that retrieves the div containing all the photographers and displays them
+ * @param {array} photographers
  */
 const displayPhotographers = (photographers) => {
   try {

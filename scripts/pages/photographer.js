@@ -1,5 +1,3 @@
-/* eslint-disable no-unused-vars */
-
 /**
  * controller of photographer page
  */
@@ -52,8 +50,8 @@ const displayPhotographerGallery = async (medias, pictureNameRepository) => {
     await medias.forEach((media) => {
       media = mediaFactory(media);
       const mediaArticleDOM = createPhotographerMediaCard(
-        media,
-        pictureNameRepository
+        pictureNameRepository,
+        media
       );
       photographerGallery.appendChild(mediaArticleDOM);
     });

@@ -1,5 +1,6 @@
 /**
  * Function that creates a div to display the photographer's infos (total likes + daily rate)
+ * @param {object} photographer
  * @returns {html}
  */
 export const createPhotographerInfos = (photographer) => {

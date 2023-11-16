@@ -1,8 +1,6 @@
-/* eslint-disable no-unused-vars */
-
 import { getDatas } from './Api.js';
 /**
- * Ce fichier permet de faire le lien avec la base de donnée des medias
+ * This file links to the media database.
  */
 const ApiMedia = () => {
   /**
@@ -17,25 +15,11 @@ const ApiMedia = () => {
       console.log(error.message);
     }
   };
-  /**
-   * Function that retrieves a media from the JSON database by photographer id
-   * mediasP correspond to getMediasByPhotographerId
-   * @param {number} id
-   * @returns {Promise<object>}
-   */
-  const getMediaById = async (mediasP, id) => {
-    try {
-      const mediaFiltered = mediasP.media.filter((media) => media.id == id);
-      return mediaFiltered;
-    } catch (error) {
-      console.log(error.message);
-    }
-  };
 
   /**
    * Function that retrieves a media from the JSON database by photographer id
    * @param {number} idP
-   * @returns {Promise<object>}
+   * @returns {Promise<array>}
    */
   const getMediasByPhotographerId = async (idP) => {
     try {
@@ -49,6 +33,6 @@ const ApiMedia = () => {
       console.log(error.message);
     }
   };
-  return { getMedias, getMediaById, getMediasByPhotographerId };
+  return { getMedias, getMediasByPhotographerId };
 };
 export { ApiMedia };

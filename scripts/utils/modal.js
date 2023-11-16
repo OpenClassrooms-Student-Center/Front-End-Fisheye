@@ -14,6 +14,7 @@ import { initLightBox } from '../utils/lightBox.js';
  * @param {object} photographer //TODO rendre optionnel
  * @param {object} media (optional)
  * @param {string} pictureNameRepository (optional)
+ * @param {array<object>} medias
  * @returns
  */
 const initModal = (

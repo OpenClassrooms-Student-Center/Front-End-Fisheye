@@ -1,6 +1,9 @@
-/* eslint-disable no-unused-vars */
 import { createMediaImage, createMediaVideo } from '../metier/Media.js';
-
+/**
+ * manage media creation depend of its type (photo or video)
+ * @param {object} data
+ * @returns {object}
+ */
 const mediaFactory = (data) => {
   let media;
   if (data.image) {

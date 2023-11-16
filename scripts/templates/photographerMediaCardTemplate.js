@@ -1,8 +1,10 @@
 /**
  * Function that creates an article to display a photographer's image or video
+ * @param {string} pictureNameRepository
+ * @param {object} media
  * @returns {html}
  */
-export const createPhotographerMediaCard = (media, pictureNameRepository) => {
+export const createPhotographerMediaCard = (pictureNameRepository, media) => {
   const { title, src, likes, type, id } = media;
   console.log(media);
 
