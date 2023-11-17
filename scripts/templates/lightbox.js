@@ -15,6 +15,7 @@ class Lightbox {
     let selectedMediaArray = [];
 
     media.forEach((mediaItem) => {
+      console.log(mediaItem);
       if (mediaItem.id === mediaId) {
         selectedMedia = mediaItem;
         console.log("selectedMedia", selectedMedia);
@@ -25,7 +26,6 @@ class Lightbox {
     });
 
     const carouselWrapper = document.querySelector("#modal-wrapper");
-    // Create a ul
     const carouselContainer = document.createElement("ul");
     carouselContainer.classList.add("carousel");
 
@@ -60,7 +60,6 @@ class Lightbox {
     let currentIndex = 0;
 
     controlsNext.addEventListener("click", () => {
-      // Hide the current li
       const currentLi = carouselContainer.querySelector(
         `.carousel-item-${currentIndex}`
       );
@@ -68,14 +67,12 @@ class Lightbox {
         currentLi.style.display = "none";
       }
 
-      currentIndex++; // Increment the current index
+      currentIndex++;
 
-      // If we reach the end, loop back to the beginning
       if (currentIndex >= media.length) {
         currentIndex = 0;
       }
 
-      // Display the new li
       const newLi = carouselContainer.querySelector(
         `.carousel-item-${currentIndex}`
       );
@@ -86,22 +83,21 @@ class Lightbox {
 
     media.forEach((mediaItem, index) => {
       const carouselLi = document.createElement("li");
-      carouselLi.classList.add("carousel-item-" + (index + 1));
+      carouselLi.classList.add("carousel-item-" + index);
       carouselLi.classList.add("carousel-block");
 
-      // Set aria-hidden based on the index
       carouselLi.style.display = index === 0 ? "flex" : "none";
 
       const carouselTitle = document.createElement("h2");
       carouselTitle.classList.add("carousel-title");
 
-      carouselTitle.innerHTML = selectedMedia.title;
+      carouselTitle.innerHTML = mediaItem.title;
 
       if (mediaItem.image) {
         const carouselImg = document.createElement("img");
         carouselImg.innerHTML = "Type: Image";
 
-        const mediaPath = `assets/images/${photographer.name}/${selectedMedia.image}`;
+        const mediaPath = `assets/images/${photographer.name}/${mediaItem.image}`;
         console.log(mediaPath);
         carouselImg.classList.add("carousel-media");
 
@@ -115,7 +111,6 @@ class Lightbox {
       } else if (mediaItem.video) {
         const carouselVideo = document.createElement("video");
         carouselVideo.innerHTML = "Type: Video";
-        // const mediaPath = `assets/images/${photographer.name}/${mediaItem.video}`;
         carouselVideo.classList.add("carousel-media");
 
         // carouselVideo.setAttribute("id", `media-${mediaId}`);
@@ -140,10 +135,6 @@ class Lightbox {
     });
     return carouselContainer;
   }
-
-  //2ndlevel
-  // carouselContainer.appendChild(mediaImg);
-  //1st level
 }
 
 export { Lightbox };
