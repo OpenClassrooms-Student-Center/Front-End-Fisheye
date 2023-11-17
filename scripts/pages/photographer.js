@@ -13,6 +13,7 @@ import { createPhotographerMediaCard } from '../templates/photographerMediaCardT
 import { createPhotographerInfos } from '../templates/photographerInfosTemplate.js';
 
 import { initModal } from '../utils/modal.js';
+import { manageGalleryFiltered } from '../utils/filter.js';
 
 /**
  * Executed when photographer page is loaded
@@ -78,7 +79,7 @@ const displayPhotographerInfos = (photographer, totalLikes) => {
  * @param {string} pictureNameRepository
  * @param {number} totalLikes
  */
-const displayPhotographerGallery = async (
+export const displayPhotographerGallery = async (
   photographer,
   medias,
   pictureNameRepository,
@@ -123,26 +124,19 @@ const displayPhotographerGallery = async (
         displayPhotographerInfos(photographer, totalLikes);
       });
       // manage media lightbox
-      manageMediaLightBox(photographer, media, pictureNameRepository, medias);
+      manageMediaLightBoxModal(media, pictureNameRepository, medias);
     });
   } catch (error) {
     console.log(error.message);
   }
 };
-
 /**
- * Function that manage lightbox modal
- * @param {object} photographer
+ * Function that manage display lightbox modal
  * @param {object} media
  * @param {string} pictureNameRepository
  * @param {array} medias
  */
-const manageMediaLightBox = (
-  photographer,
-  media,
-  pictureNameRepository,
-  medias
-) => {
+const manageMediaLightBoxModal = (media, pictureNameRepository, medias) => {
   const openLightBoxModalBtn = document.getElementById(
     `media-card-${media.id}`
   );
@@ -158,81 +152,8 @@ const manageMediaLightBox = (
   });
 };
 
-const manageGalleryFiltered = (medias) => {
-  const openFilterList = document.querySelector('.photographer__filter-button');
-  const filterList = document.querySelector('.photographer__filter-list');
-  const filterItem = document.querySelectorAll('.photographer__filter-item');
-  const popularFilter = document.getElementById(
-    'photographer__filter-popularity'
-  );
-  const dateFilter = document.getElementById('photographer__filter-date');
-  const titleFilter = document.getElementById('photographer__filter-title');
-  let mediasFiltered;
-  openFilterList.addEventListener('click', () => {
-    toggleFilter();
-  });
-  filterItem.forEach((item) => {
-    item.addEventListener('click', () => {
-      toggleFilter();
-    });
-  });
-  popularFilter.addEventListener('click', () => {
-    // trier
-    mediasFiltered = filterMedias('popularity');
-    popularFilter.setAttribute('aria-current', 'location');
-    dateFilter.removeAttribute('aria-current');
-    titleFilter.removeAttribute('aria-current');
-  });
-  dateFilter.addEventListener('click', () => {
-    // trier
-    mediasFiltered = filterMedias('date');
-    dateFilter.setAttribute('aria-current', 'location');
-    popularFilter.removeAttribute('aria-current');
-    titleFilter.removeAttribute('aria-current');
-  });
-  titleFilter.addEventListener('click', () => {
-    // trier
-    mediasFiltered = filterMedias('title');
-    titleFilter.setAttribute('aria-current', 'location');
-    popularFilter.removeAttribute('aria-current');
-    dateFilter.removeAttribute('aria-current');
-  });
-
-  //TODO navigation clavier
-  const toggleFilter = () => {
-    const ariaExpandedAttribute = openFilterList.getAttribute('aria-expanded');
-    if (ariaExpandedAttribute === 'false') {
-      filterList.style.display = 'flex';
-      openFilterList.setAttribute('aria-expanded', true);
-    } else {
-      filterList.style.display = 'none';
-      openFilterList.setAttribute('aria-expanded', false);
-    }
-  };
-
-  const filterMedias = (filter) => {
-    // [...medias].sort()
-    switch (filter) {
-      case 'popularity':
-        console.log('popularity');
-        // mediasFiltered =
-        break;
-      case 'date':
-        console.log('date');
-        // mediasFiltered =
-        break;
-      case 'title':
-        console.log('title');
-        // mediasFiltered =
-        break;
-    }
-    // return mediasFiltered
-  };
-};
-// aria-current="location"
-
 /**
- * Function that manage contact form modal
+ * Function that manage display contact form modal
  * @param {object} photographer
  */
 const manageContactFormModal = (photographer) => {
@@ -255,7 +176,7 @@ const manageContactFormModal = (photographer) => {
 };
 
 /**
- * Function called up on loading, retrieves photographer data according to id
+ * Function called up on loading, retrieves photographer data according to id and display elements
  */
 const init = async () => {
   try {
@@ -285,7 +206,12 @@ const init = async () => {
         pictureNameRepository,
         totalLikes
       );
-      manageGalleryFiltered(medias);
+      manageGalleryFiltered(
+        photographer,
+        medias,
+        pictureNameRepository,
+        totalLikes
+      );
       manageContactFormModal(photographer);
     }
   } catch (error) {
