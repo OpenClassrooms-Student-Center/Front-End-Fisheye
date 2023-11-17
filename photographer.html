@@ -10,34 +10,18 @@
 </head>
 
 <body>
-  <header>
+  <header aria-label="Header du portfolio" role="banner">
     <img src="assets/images/logo.png" class="logo" alt="Page d'accueil de FishEye" />
   </header>
-  <main id="main">
+  <main id="main" aria-hidden="false">
     <div class="photograph-header">
       <button class="contact-button" onclick="displayModal()">Contactez-moi</button>
     </div>
-    <div id="contact-modal">
-      <div class="modal">
-        <header>
-          <h2 class="contact-me"></h2>
-          <img src="assets/icons/close.svg" onclick="closeModal()" />
-        </header>
-        <form>
-          <label for="prenom">Prénom</label>
-          <input type="text" name="prenom" placeholder="Votre prénom" id="prenom" />
-          <label for="nom">Nom</label>
-          <input type="text" name="nom" placeholder="Votre nom" id="nom" />
-          <label for="email">Email</label>
-          <input type="email" name="email" placeholder="Votre email, par exemple: abcd@domaine.fr" id="email" />
-          <label for="message">Votre message</label>
-          <textarea name="message" id="message" placeholder="Votre message"></textarea>
-          <button class="contact-button">Envoyer</button>
-        </form>
-      </div>
-    </div>
-    <div class="sort">Trier par
-      <select class="sort-select">
+
+    <div class="sort">
+      <!-- <label for="media-sort"></label> -->
+      <label id="media-sort">Trier par</label>
+      <select aria-labelledby="media-sort" class="sort-select">
         <option value="popularite">Popularité</option>
         <option value="date">Date</option>
         <option value="titre">Titre</option>
@@ -47,6 +31,25 @@
     <div class="media"></div>
     <div class="sticky"></div>
   </main>
+  <!-- <div id="contact-modal"> -->
+  <div class="modal closed" aria-hidden="true" aria-labelledby="modal-header" role="dialog">
+    <header aria-label="Header du formulaire">
+      <h2 class="contact-me" id="modal-header">Contactez-moi Name </h2>
+      <img src="assets/icons/close.svg" onclick="closeModal()" id="close-modal-btn" alt="Fermer la modale" />
+    </header>
+    <form>
+      <label for="prenom">Prénom</label>
+      <input type="text" name="prenom" placeholder="Votre prénom" id="prenom" />
+      <label for="nom">Nom</label>
+      <input type="text" name="nom" placeholder="Votre nom" id="nom" />
+      <label for="email">Email</label>
+      <input type="email" name="email" placeholder="Votre email, par exemple: abcd@domaine.fr" id="email" />
+      <label for="message">Votre message</label>
+      <textarea name="message" id="message" placeholder="Votre message"></textarea>
+      <button class="contact-button" aria-label="Envoyer le formulaire">Envoyer</button>
+    </form>
+  </div>
+  <!-- </div> -->
 
   <script src="./scripts/pages/portfolio.js" type="module"></script>
   <script src="./scripts/pages/Media.js" type="module"></script>
