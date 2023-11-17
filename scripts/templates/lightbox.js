@@ -141,6 +141,7 @@ class Lightbox {
         carouselVideo.innerHTML = "Type: Video";
         carouselVideo.src = mediaPath;
         carouselVideo.alt = mediaItem.title;
+        carouselVideo.controls = true;
 
         carouselLi.appendChild(carouselVideo);
       }
