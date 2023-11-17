@@ -229,9 +229,9 @@ form input {
   background-color: yellow;
 }
 
-.no-scroll {
+/* .no-scroll {
   overflow: hidden;
-}
+} */
 
 #modal-picture {
   width: 300px;
@@ -319,20 +319,18 @@ form input {
 }
 
 .controls {
-  width: 3em;
-  height: 2em;
+  width: 4em;
+  height: 4em;
   z-index: 4;
 }
 
 .controls-previous {
-  background-color: antiquewhite;
   position: absolute;
-  right: 10%;
-  top: 50%;
+  right: 20%;
+  top: 42%;
 }
 .controls-next {
-  background-color: lightgreen;
   position: absolute;
-  top: 50%;
-  left: 10%;
+  top: 42%;
+  left: 20%;
 }

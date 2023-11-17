@@ -34,11 +34,11 @@ class Lightbox {
 
     const closingModal = document.createElement("img");
     closingModal.setAttribute("id", "modalClose");
-    closingModal.src = "assets/icons/close.svg";
+    closingModal.src = "assets/icons/blackClose.svg";
     closingModal.onclick = closePhotoModal;
 
     const controlsPrevious = document.createElement("img");
-    // controlsPrevious.src = `assets/images/Photographers ID Photos/${photographer._portrait}`;
+    controlsPrevious.src = "assets/icons/icon-arrow-chevron-right.svg";
     controlsPrevious.alt = `${photographer._name}`;
     controlsPrevious.classList.add("controls-previous", "controls");
 
@@ -49,6 +49,7 @@ class Lightbox {
 
     const controlsNext = document.createElement("img");
     controlsNext.classList.add("controls-next", "controls");
+    controlsNext.src = "assets/icons/icon-arrow-chevron-left.svg";
 
     const carouselElements = document.createElement("div");
     carouselElements.classList.add("carousel-elements");
