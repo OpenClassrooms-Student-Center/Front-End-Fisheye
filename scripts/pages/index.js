@@ -1,6 +1,7 @@
 import { getAllorOnePhotographer } from "../api/getPhotographer.js";
 import { photographerCard } from "../templates/photographer.js";
-async function displayData(photographers) {
+
+function displayData(photographers) {
   const photographersSection = document.querySelector(".photographer_section");
 
   photographers.forEach((photographer) => {
@@ -13,7 +14,7 @@ async function displayData(photographers) {
 async function init() {
   getAllorOnePhotographer().then(({ photographers }) => {
     displayData(photographers);
-  })
+  });
 }
 
 init();
