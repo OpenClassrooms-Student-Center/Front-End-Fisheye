@@ -37,6 +37,9 @@ function validate(event) {
     const fields = [
       //array of objects with form fields to be validated
       { id: "first", name: "prénom" },
+      { id: "second", name: "nom" },
+      { id: "third", name: "email" },
+      { id: "fourth", name: "message" },
     ];
 
     fields.forEach((field) => {
