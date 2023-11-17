@@ -85,6 +85,25 @@ class Lightbox {
       }
     });
 
+    controlsPrevious.addEventListener("click", () => {
+      const currentLi = carouselContainer.querySelector(
+        `.carousel-item-${currentIndex}`
+      );
+      if (currentLi) {
+        currentLi.style.display = "none";
+      }
+      currentIndex--;
+      if (currentIndex < 0) {
+        currentIndex = media.length - 1;
+      }
+      const newLi = carouselContainer.querySelector(
+        `.carousel-item-${currentIndex}`
+      );
+      if (newLi) {
+        newLi.style.display = "flex";
+      }
+    });
+
     media.forEach((mediaItem, index) => {
       const carouselLi = document.createElement("li");
       carouselLi.classList.add("carousel-item-" + index);
