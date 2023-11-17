@@ -70,13 +70,10 @@ class Lightbox {
       if (currentLi) {
         currentLi.style.display = "none";
       }
-
-      currentIndex++;
-
-      if (currentIndex >= media.length) {
-        currentIndex = 0;
+      currentIndex--;
+      if (currentIndex < 0) {
+        currentIndex = media.length - 1;
       }
-
       const newLi = carouselContainer.querySelector(
         `.carousel-item-${currentIndex}`
       );
@@ -92,10 +89,13 @@ class Lightbox {
       if (currentLi) {
         currentLi.style.display = "none";
       }
-      currentIndex--;
-      if (currentIndex < 0) {
-        currentIndex = media.length - 1;
+
+      currentIndex++;
+
+      if (currentIndex >= media.length) {
+        currentIndex = 0;
       }
+
       const newLi = carouselContainer.querySelector(
         `.carousel-item-${currentIndex}`
       );
