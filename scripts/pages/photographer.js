@@ -40,6 +40,37 @@ const displayPhotographerProfile = (photographer) => {
 };
 
 /**
+ * count total likes of medias photographer
+ * @param {array} medias
+ * @returns {number}
+ */
+const manageTotalLikes = (medias) => {
+  let totalLikes = 0;
+  for (let i = 0; i < medias.length; i++) {
+    totalLikes += medias[i].likes;
+  }
+  return totalLikes;
+};
+
+/**
+ * Function that retrieves the div containing the photographer's infos (total likes + daily rate)
+ * @param {object} photographer
+ * @param {number} totalLikes
+ */
+const displayPhotographerInfos = (photographer, totalLikes) => {
+  try {
+    const photographerMain = document.querySelector('.main');
+    const photographerInfosDOM = createPhotographerInfos(
+      photographer,
+      totalLikes
+    );
+    photographerMain.appendChild(photographerInfosDOM);
+  } catch (error) {
+    console.log(error.message);
+  }
+};
+
+/**
  * Function that retrieves the div containing the photographer's page header
  * and displays the profile data, manage likes medias and manage lightbox media
  * @param {object} photographer
@@ -65,7 +96,6 @@ const displayPhotographerGallery = async (
       );
       photographerGallery.appendChild(mediaArticleDOM);
       // manage media like/unlike
-      // TODO si like => aria-pressed = true
       const buttonLike = document.getElementById(
         `media-card-button-likes-${media.id}`
       );
@@ -128,23 +158,78 @@ const manageMediaLightBox = (
   });
 };
 
-/**
- * Function that retrieves the div containing the photographer's infos (total likes + daily rate)
- * @param {object} photographer
- * @param {number} totalLikes
- */
-const displayPhotographerInfos = (photographer, totalLikes) => {
-  try {
-    const photographerMain = document.querySelector('.main');
-    const photographerInfosDOM = createPhotographerInfos(
-      photographer,
-      totalLikes
-    );
-    photographerMain.appendChild(photographerInfosDOM);
-  } catch (error) {
-    console.log(error.message);
-  }
+const manageGalleryFiltered = (medias) => {
+  const openFilterList = document.querySelector('.photographer__filter-button');
+  const filterList = document.querySelector('.photographer__filter-list');
+  const filterItem = document.querySelectorAll('.photographer__filter-item');
+  const popularFilter = document.getElementById(
+    'photographer__filter-popularity'
+  );
+  const dateFilter = document.getElementById('photographer__filter-date');
+  const titleFilter = document.getElementById('photographer__filter-title');
+  let mediasFiltered;
+  openFilterList.addEventListener('click', () => {
+    toggleFilter();
+  });
+  filterItem.forEach((item) => {
+    item.addEventListener('click', () => {
+      toggleFilter();
+    });
+  });
+  popularFilter.addEventListener('click', () => {
+    // trier
+    mediasFiltered = filterMedias('popularity');
+    popularFilter.setAttribute('aria-current', 'location');
+    dateFilter.removeAttribute('aria-current');
+    titleFilter.removeAttribute('aria-current');
+  });
+  dateFilter.addEventListener('click', () => {
+    // trier
+    mediasFiltered = filterMedias('date');
+    dateFilter.setAttribute('aria-current', 'location');
+    popularFilter.removeAttribute('aria-current');
+    titleFilter.removeAttribute('aria-current');
+  });
+  titleFilter.addEventListener('click', () => {
+    // trier
+    mediasFiltered = filterMedias('title');
+    titleFilter.setAttribute('aria-current', 'location');
+    popularFilter.removeAttribute('aria-current');
+    dateFilter.removeAttribute('aria-current');
+  });
+
+  //TODO navigation clavier
+  const toggleFilter = () => {
+    const ariaExpandedAttribute = openFilterList.getAttribute('aria-expanded');
+    if (ariaExpandedAttribute === 'false') {
+      filterList.style.display = 'flex';
+      openFilterList.setAttribute('aria-expanded', true);
+    } else {
+      filterList.style.display = 'none';
+      openFilterList.setAttribute('aria-expanded', false);
+    }
+  };
+
+  const filterMedias = (filter) => {
+    // [...medias].sort()
+    switch (filter) {
+      case 'popularity':
+        console.log('popularity');
+        // mediasFiltered =
+        break;
+      case 'date':
+        console.log('date');
+        // mediasFiltered =
+        break;
+      case 'title':
+        console.log('title');
+        // mediasFiltered =
+        break;
+    }
+    // return mediasFiltered
+  };
 };
+// aria-current="location"
 
 /**
  * Function that manage contact form modal
@@ -167,19 +252,6 @@ const manageContactFormModal = (photographer) => {
   } catch (error) {
     console.log(error.message);
   }
-};
-
-/**
- * count total likes of medias photographer
- * @param {array} medias
- * @returns {number}
- */
-const manageTotalLikes = (medias) => {
-  let totalLikes = 0;
-  for (let i = 0; i < medias.length; i++) {
-    totalLikes += medias[i].likes;
-  }
-  return totalLikes;
 };
 
 /**
@@ -213,6 +285,7 @@ const init = async () => {
         pictureNameRepository,
         totalLikes
       );
+      manageGalleryFiltered(medias);
       manageContactFormModal(photographer);
     }
   } catch (error) {

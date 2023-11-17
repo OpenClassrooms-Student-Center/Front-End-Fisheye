@@ -8,6 +8,11 @@
     justify-content: space-between;
     align-items: center;
   }
+  &__contact-button {
+    &:hover,
+    &:focus {
+      background-color: $third-color;
+      color: $black;
+    }
+  }
 }
-
-// TODO button focus/hover

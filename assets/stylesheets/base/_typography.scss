@@ -1,7 +1,7 @@
 /**
  * Basic typography style
  */
-body {
+* {
   font-family: $text-font;
 }
 h1 {
@@ -22,8 +22,9 @@ h2 {
 
 .button {
   font-size: 20px;
-  font-weight: bold;
+  font-weight: 700;
   color: white;
+  letter-spacing: 1.25px;
 }
 
 /* ********** form */

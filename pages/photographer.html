@@ -25,7 +25,20 @@
         (photographerTemplate -> createPhotographerProfile) 
     -->
     <div class="photographer__portfolio">
-      <div class="photographer__filter"></div>
+      <div class="photographer__filter">
+        <p id="filter">Trier par</p>
+        <div aria-labelledby="filter">
+          <button class="photographer__filter-button button" type="button" aria-expanded="false"
+            aria-controls="filter-list">Filtres</button>
+          <ul id="filter-list" class="photographer__filter-list">
+            <li><button id="photographer__filter-popularity" class="photographer__filter-item">Popularité</button></li>
+            <li role="separator" class="photographer__filter-item-divider"></li>
+            <li><button id="photographer__filter-date" class="photographer__filter-item">Date</button></li>
+            <li role="separator" class="photographer__filter-item-divider"></li>
+            <li><button id="photographer__filter-title" class="photographer__filter-item">Titre</button></li>
+          </ul>
+        </div>
+      </div>
       <div class="photographer__gallery">
         <!-- 
         photographer's images/videos are display in this section via javaScript 
