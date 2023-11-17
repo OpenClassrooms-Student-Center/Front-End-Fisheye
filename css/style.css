@@ -65,7 +65,8 @@ h1 {
 
 .photographer-profile .photographer-name {
   font-size: 64px;
-  height: 83px;
+  /* height: 83px; */
+  margin-right: 0;
 }
 
 .photographer-profile .location {
@@ -104,6 +105,10 @@ h1 {
   border-radius: 50%;
   justify-self: end;
   margin-right: 50px;
+}
+
+a .profile-picture {
+  margin-right: 0;
 }
 
 a {
