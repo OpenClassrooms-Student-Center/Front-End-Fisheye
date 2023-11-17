@@ -8,9 +8,8 @@
       href="https://fonts.googleapis.com/css?family=DM+Sans&display=swap"
       rel="stylesheet"
     />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css""
+    <link rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css""
     />
     <title>Fisheye - photographe</title>
   </head>
@@ -83,14 +82,19 @@
           <i class="fa-solid fa-chevron-left"></i>
         </div>
         <div class="media-content"></div>
-   
+
         <div class="lightbox-right icon">
-          
           <i class="fa-solid fa-chevron-right"></i>
         </div>
+      </div>
+    </div>
+    <div class="total-likes">
+      <i class="fa-solid fa-heart"></i>
+      <span class="likes-number"></span>
     </div>
 
-    <script src="/scripts/pages/photographer.js"></script>
+    <script type="module" src="/scripts/api/getPhotographer.js"></script>
+    <script type="module" src="/scripts/pages/photographer.js"></script>
     <script src="/scripts/utils/contactForm.js"></script>
     <script src="/scripts/templates/photographer.js"></script>
   </body>

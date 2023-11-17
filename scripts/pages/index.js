@@ -1,9 +1,20 @@
-async function getPhotographers() {
-  let photographers = await fetch("data/photographers.json")
-    .then((response) => response.json())
-    .then((data) => data.photographers);
-  return { photographers };
-}
+import { getAllorOnePhotographer } from "../api/getPhotographer.js";
+
+// async function getAllorOnePhotographer(id) {
+//   const response = await fetch("data/photographers.json");
+//   const data = await response.json();
+
+//   const photographers = data.photographers
+//     .filter((photographer) => !id || photographer.id === id) // Filter by id if id is provided
+//     .map((photographer) => {
+//       const media = data.media.filter((media) => media.photographerId === photographer.id); // Filter by photographerId
+//       return { ...photographer, media };
+//     });
+
+//     console.log(photographers);
+
+//   return { photographers };
+// }
 
 async function displayData(photographers) {
   const photographersSection = document.querySelector(".photographer_section");
@@ -16,8 +27,9 @@ async function displayData(photographers) {
 }
 
 async function init() {
-  const { photographers } = await getPhotographers();
-  displayData(photographers);
+  getAllorOnePhotographer().then(({ photographers }) => {
+    displayData(photographers);
+  })
 }
 
 init();

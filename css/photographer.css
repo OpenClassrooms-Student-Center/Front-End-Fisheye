@@ -163,12 +163,10 @@ textarea {
   display: none;
   position: fixed;
   z-index: 1;
-
   left: 0;
   top: 0;
   width: 100%;
   height: 100%;
-  overflow: auto;
   background-color: white;
 }
 
@@ -237,4 +235,14 @@ textarea {
   color: #bbb;
   text-decoration: none;
   cursor: pointer;
+}
+
+.total-likes {
+  width: 200px;
+  height: 50px;
+  background-color: #901c1c;
+  position: fixed;
+  bottom: 0px;
+  right: 20px;
+  border-radius: 5px 5px 0 0;
 }

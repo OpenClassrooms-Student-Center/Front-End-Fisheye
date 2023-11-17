@@ -1,34 +1,34 @@
-let urlParams = new URLSearchParams(window.location.search);
-let id = parseInt(urlParams.get("id"));
-const filter = document.querySelector("#filter");
+import { getAllorOnePhotographer } from "../api/getPhotographer.js";
 
-filter.addEventListener("change", (event) => {
-  changeFilter(event.target.value);
-});
+async function changeFilter(sort, id, photographerFirstName) {
+  console.log("changeFilter", sort, id);
+  const medias = await getAllorOnePhotographer(id).then(({ photographers }) => {
+    return photographers[0].media;
+  });
+  console.log("medias", medias);
+  const mediaSort = await getMedia(medias, sort);
 
-async function changeFilter(sort) {
-  const photographer = await getPhotographer(id);
-  let photographerFirstName = getFirstName(photographer?.photographer?.name);
-
-  const medias = (await getMedia(id, sort)) || [];
-  displayMedia(medias, photographerFirstName);
+  displayMedia(mediaSort, photographerFirstName);
 }
 
 function displayLightbox() {
   lightbox.style.display = "block";
-  
 }
 
-
 async function init() {
-  const photographer = await getPhotographer(id);
-  const media = await getMedia(id);
+  let urlParams = new URLSearchParams(window.location.search);
+  let id = parseInt(urlParams.get("id"));
+  const filter = document.querySelector("#filter");
 
-  let photographerFirstName = await photographer?.photographer?.name;
+  const { photographers } = await getAllorOnePhotographer(id);
+  const { name: photographerFirstName } = await photographers[0];
 
-  displayPhotographer(photographer);
-  displayMedia(media, getFirstName(photographerFirstName));
+  filter.addEventListener("change", (event) => {
+    changeFilter(event.target.value, id, getFirstName(photographerFirstName));
+  });
 
+  displayPhotographer(photographers[0]);
+  displayMedia(photographers[0]?.media, getFirstName(photographerFirstName));
 }
 
 function getFirstName(photographerFirstName) {
@@ -36,23 +36,7 @@ function getFirstName(photographerFirstName) {
   return firstName;
 }
 
-async function getPhotographer(id) {
-  let photographer = await fetch("data/photographers.json")
-    .then((response) => response.json())
-    .then((data) =>
-      data.photographers.find((photographer) => photographer.id === id)
-    );
-
-  return { photographer };
-}
-
-async function getMedia(photographId, sort = "popularite") {
-  let media = await fetch("data/photographers.json")
-    .then((response) => response.json())
-    .then((data) =>
-      data.media.filter((media) => media.photographerId === photographId)
-    );
-
+async function getMedia(media, sort = "popularite") {
   switch (sort) {
     case "popularite":
       media.sort((a, b) => b.likes - a.likes);
@@ -68,7 +52,7 @@ async function getMedia(photographId, sort = "popularite") {
   return media;
 }
 
-async function displayPhotographer({ photographer }) {
+async function displayPhotographer(photographer) {
   const photographInfoSection = document.querySelector(".photograph-infos");
   const photographPicture = document.querySelector(".photograph-picture");
 
@@ -78,6 +62,8 @@ async function displayPhotographer({ photographer }) {
 }
 
 async function displayMedia(medias, firstName) {
+  console.log("displayMedia", medias);
+
   if (!medias) {
     return;
   }
