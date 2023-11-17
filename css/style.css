@@ -81,23 +81,18 @@ h1 {
   font-weight: 400;
 }
 
-/* .photograph-header .profile-picture {
-  margin-top: 56px;
-  margin-right: 50px;
-  margin-bottom: 57px;
-} */
-
 .photograph-header {
   display: grid;
   grid-template-columns: 2fr 1fr 2fr;
-  /* justify-items: center; */
   align-items: center;
 }
 
 .photographer-profile {
   margin-left: 50px;
-  margin-top: 71px;
-  margin-bottom: 42px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  height: 200px;
 }
 
 .profile-picture {
@@ -302,7 +297,6 @@ article a {
   background: #db8876;
   position: fixed;
   bottom: 0;
-  /* right: 36px; */
   display: flex;
   justify-content: space-around;
   align-items: center;
