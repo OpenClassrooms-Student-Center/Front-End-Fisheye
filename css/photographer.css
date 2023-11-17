@@ -85,6 +85,19 @@ form input {
   padding: 2em;
   margin: 2em;
 }
+
+.photographer-card a {
+  justify-content: initial;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-decoration: none;
+  text-align: center;
+}
+
+photographer-card p {
+  text-decoration: none;
+}
 .photographer-card img {
   width: 15em;
   height: 15em;
@@ -105,6 +118,7 @@ form input {
 .photographer-card p,
 .photographer-info p {
   margin: 0.2em;
+  text-decoration: none;
 }
 
 .photographer-card > .city-container {
@@ -115,6 +129,10 @@ form input {
   font-size: 10px;
 }
 .photographer-card > p:nth-of-type(2) {
+  color: #901c1c;
+  font-size: 10px;
+}
+.photographer-info > p:nth-of-type(3) {
   color: #901c1c;
   font-size: 10px;
 }
@@ -333,4 +351,11 @@ form input {
   position: absolute;
   top: 42%;
   left: 20%;
+}
+
+.taglineElement {
+  color: black;
+}
+.priceElement {
+  color: #757575;
 }

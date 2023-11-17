@@ -38,9 +38,11 @@ class PhotographerCard {
 
     const taglineElement = document.createElement("p");
     taglineElement.innerHTML = `${photographer._tagline}`;
+    taglineElement.classList.add("taglineElement");
 
     const priceElement = document.createElement("p");
     priceElement.innerHTML = `${photographer._price} €/jour`;
+    priceElement.classList.add("priceElement");
 
     cardContainer.appendChild(photographerLink);
     photographerLink.appendChild(portraitElement);
