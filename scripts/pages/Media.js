@@ -44,8 +44,8 @@ class Media {
 
   createVideo() {
     return `
-    <video class='video' controls preload="metadata">
-      <source src="assets/Sample Photos/${this.firstName}/${this.video}#t=1.1">
+    <video class='video' controls preload="metadata" autostart="0" >
+      <source src="assets/Sample Photos/${this.firstName}/${this.video}#t=0.1">
     </video>
     `
   }

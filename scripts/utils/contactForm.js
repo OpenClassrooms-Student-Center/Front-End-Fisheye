@@ -9,6 +9,7 @@ function displayModal() {
   const main = document.querySelector('main')
   const body = document.querySelector('body')
   body.classList.add('no-scroll')
+  document.querySelector('.sticky').classList.replace('displayed-scrollbar', 'hidden-scrollbar')
   main.setAttribute('aria-hidden', 'true')
 
   const closeBtn = document.getElementById('close-modal-btn')
@@ -40,6 +41,7 @@ function closeModal() {
   const body = document.querySelector('body')
   body.classList.remove('no-scroll')
   main.setAttribute('aria-hidden', 'false')
+  document.querySelector('.sticky').classList.replace('hidden-scrollbar', 'displayed-scrollbar')
 
   const modal = document.querySelector('.modal')
   modal.classList.replace('opened', 'closed')

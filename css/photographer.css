@@ -133,4 +133,14 @@ form input {
 
 .no-scroll {
   overflow: hidden;
+  width: calc(100% - 17px);
+}
+
+.hidden-scrollbar {
+  /* width du scrollbar = 17px */
+  right: calc(36px + 17px);
+}
+
+.displayed-scrollbar {
+  right: 36px;
 }

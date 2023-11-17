@@ -302,7 +302,7 @@ article a {
   background: #db8876;
   position: fixed;
   bottom: 0;
-  right: 36px;
+  /* right: 36px; */
   display: flex;
   justify-content: space-around;
   align-items: center;
