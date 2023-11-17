@@ -54,9 +54,7 @@ class PhotographerWork {
         imageElement.src = imagePath;
         imageElement.alt = media.title;
         imageElement.setAttribute("id", `media-${media.id}`);
-        // console.log("imageElement", imageElement);
         imageElement.onclick = () => this.openLightbox(media.id);
-        // imageElement.onclick = onOpenPic;
 
         // Append the image element to the mediaImg container
         mediaImg.appendChild(imageElement);

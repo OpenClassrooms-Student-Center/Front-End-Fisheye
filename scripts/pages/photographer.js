@@ -78,7 +78,6 @@ class PhotographerPages {
     const medias = mediasLightbox[index];
 
     const template = new Lightbox(media, medias, photographer);
-    // const carouselControlPrev = document.getElementById("controls-left");
 
     this.lightboxWrapper.innerHTML = "";
     this.lightboxWrapper.appendChild(
@@ -89,9 +88,9 @@ class PhotographerPages {
 
 const initApp = async () => {
   const photographerPages = new PhotographerPages();
-  await photographerPages.aboutPhotographer(); // Wait for aboutPhotographer to complete
-  await photographerPages.mediasLightboxArray(); // Wait for mediasLightboxArray to complete
-  await photographerPages.photographerWork(); // photographerWork doesn't seem to have any asynchronous operations
+  await photographerPages.aboutPhotographer();
+  await photographerPages.mediasLightboxArray();
+  await photographerPages.photographerWork();
   await photographerPages.lightbox();
 };
 initApp();
