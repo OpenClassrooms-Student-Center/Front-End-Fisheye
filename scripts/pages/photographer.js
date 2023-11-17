@@ -1,4 +1,5 @@
 import { getAllorOnePhotographer } from "../api/getPhotographer.js";
+import { mediaCard, photographerHero } from "../templates/photographer.js";
 
 async function changeFilter(sort, id, photographerFirstName) {
   console.log("changeFilter", sort, id);
@@ -62,16 +63,11 @@ async function displayPhotographer(photographer) {
 }
 
 async function displayMedia(medias, firstName) {
-  console.log("displayMedia", medias);
-
-  if (!medias) {
-    return;
-  }
 
   const mediaSection = document.querySelector(".media-section");
   mediaSection.innerHTML = "";
 
-  medias.forEach((media) => {
+  medias?.forEach((media) => {
     mediaSection.appendChild(mediaCard(media, firstName));
   });
 }

@@ -1,28 +1,12 @@
 import { getAllorOnePhotographer } from "../api/getPhotographer.js";
-
-// async function getAllorOnePhotographer(id) {
-//   const response = await fetch("data/photographers.json");
-//   const data = await response.json();
-
-//   const photographers = data.photographers
-//     .filter((photographer) => !id || photographer.id === id) // Filter by id if id is provided
-//     .map((photographer) => {
-//       const media = data.media.filter((media) => media.photographerId === photographer.id); // Filter by photographerId
-//       return { ...photographer, media };
-//     });
-
-//     console.log(photographers);
-
-//   return { photographers };
-// }
-
+import { photographerCard } from "../templates/photographer.js";
 async function displayData(photographers) {
   const photographersSection = document.querySelector(".photographer_section");
 
   photographers.forEach((photographer) => {
-    const photographerModel = photographerTemplate(photographer);
-    const userCardDOM = photographerModel.getUserCardDOM();
-    photographersSection.appendChild(userCardDOM);
+    const photographerModel = photographerCard(photographer);
+    console.log(photographerModel);
+    photographersSection.appendChild(photographerModel);
   });
 }
 

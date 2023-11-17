@@ -4,6 +4,7 @@ function displayModal() {
 }
 
 function photographerTemplate(data) {
+  console.log("data", data);
   const { name, portrait, city, country, tagline, price, id } = data;
 
   const picture = `assets/photographers/${portrait}`;
@@ -119,7 +120,7 @@ function mediaTemplate(media, firstName) {
     });
   }
 
-  return { getMediaCard };
+  return { getMediaCard, displayLightbox };
 }
 
 function photographerCard(photographer) {
@@ -133,3 +134,9 @@ function photographerHero(photographer) {
 function mediaCard(media, firstName) {
   return mediaTemplate(media, firstName).getMediaCard();
 }
+
+function displayLightbox() {
+  return mediaTemplate().displayLightbox();
+}
+
+export { photographerCard, photographerHero, mediaCard, displayLightbox };
