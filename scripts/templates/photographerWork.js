@@ -66,10 +66,11 @@ class PhotographerWork {
         // Create a <video> element for displaying the video
         const videoElement = document.createElement("video");
         videoElement.src = videoPath;
-        // videoElement.src = media.title;
-        // videoElement.setAttribute("id", `media-video-${media.id}`);
-        // console.log("videoElement", videoElement);
+        videoElement.alt = media.title;
+        videoElement.setAttribute("id", `media-${media.id}`);
+        console.log("videoElement", videoElement);
         videoElement.controls = true;
+        videoElement.onclick = () => this.openLightbox(media.id);
 
         // Append the video element to the mediaImg container
         mediaImg.appendChild(videoElement);

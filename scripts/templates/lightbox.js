@@ -24,7 +24,7 @@ class Lightbox {
         selectedMedia = mediaItem;
         console.log("selectedMedia", selectedMedia);
         selectedMediaArray.unshift(selectedMedia);
-        console.log(selectedMediaArray);
+        // console.log(selectedMediaArray);
       }
       return;
     });
@@ -135,8 +135,9 @@ class Lightbox {
         const carouselVideo = document.createElement("video");
         carouselVideo.innerHTML = "Type: Video";
         carouselVideo.classList.add("carousel-media");
-
-        // carouselVideo.setAttribute("id", `media-${mediaId}`);
+        const mediaPath = `assets/images/${photographer.name}/${mediaItem.video}`;
+        console.log(mediaPath);
+        carouselVideo.setAttribute("id", `media-${mediaId}`);
         carouselVideo.innerHTML = "Type: Video";
         carouselVideo.src = mediaPath;
         carouselVideo.alt = mediaItem.title;
