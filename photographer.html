@@ -29,7 +29,7 @@
       <div class="medias-wrapper" id="medias-wrapper"></div>
     </main>
 
-    <div id="contact_modal">
+    <div id="contact_modal" aria-hidden="false" aria-describedby="contactModal">
       <div class="modal">
         <header>
           <h2>Contactez-moi</h2>
@@ -41,6 +41,7 @@
           method="get"
           class="form-body"
           id="form-body"
+          role="dialog"
         >
           <div class="formData">
             <label>Prénom</label>
@@ -96,10 +97,11 @@
       aria-hidden="true"
       role="dialog"
       aria-describedby="modalTitle"
+      aria-hidden="false"
     >
       <div id="modalPhoto">
         <div id="modal-content">
-          <div class="modal-close-btn">zeevfz</div>
+          <div class="modal-close-btn"></div>
         </div>
       </div>
     </div>

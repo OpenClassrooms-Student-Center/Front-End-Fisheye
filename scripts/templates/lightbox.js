@@ -1,5 +1,5 @@
 import { closePhotoModal } from "../utils/contactForm.js";
-import { onOpenPic } from "../utils/photoModal.js";
+import { onOpenPic, onClosePic } from "../utils/photoModal.js";
 
 class Lightbox {
   constructor(media, photographer) {
@@ -9,8 +9,6 @@ class Lightbox {
   }
 
   createLightbox(media, photographer, mediaId) {
-    console.log(mediaId);
-
     let selectedMedia = null;
     let selectedMediaArray = [];
 
@@ -22,9 +20,7 @@ class Lightbox {
       // console.log(mediaItem);
       if (mediaItem.id === mediaId) {
         selectedMedia = mediaItem;
-        console.log("selectedMedia", selectedMedia);
         selectedMediaArray.unshift(selectedMedia);
-        // console.log(selectedMediaArray);
       }
       return;
     });
@@ -39,7 +35,7 @@ class Lightbox {
     const closingModal = document.createElement("img");
     closingModal.setAttribute("id", "modalClose");
     closingModal.src = "assets/icons/blackClose.svg";
-    closingModal.onclick = closePhotoModal;
+    closingModal.onclick = onClosePic;
 
     const controlsPrevious = document.createElement("img");
     controlsPrevious.src = "assets/icons/icon-arrow-chevron-right.svg";

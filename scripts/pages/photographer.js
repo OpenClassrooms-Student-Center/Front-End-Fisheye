@@ -70,8 +70,6 @@ class PhotographerPages {
   }
 
   async lightbox(mediaId, index) {
-    console.log("openLightbox called with mediaId:", mediaId);
-
     const photographer = await this.photographer();
     const media = await this.media();
     await this.mediasLightboxArray();
