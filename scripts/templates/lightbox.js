@@ -11,8 +11,12 @@ class Lightbox {
   createLightbox(media, photographer, mediaId) {
     console.log(mediaId);
 
-    let selectedMedia;
+    let selectedMedia = null;
     let selectedMediaArray = [];
+
+    media = media.sort((a, b) =>
+      a.id === mediaId ? -1 : b.id === mediaId ? 1 : 0
+    );
 
     media.forEach((mediaItem) => {
       console.log(mediaItem);
