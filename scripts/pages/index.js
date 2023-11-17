@@ -1,6 +1,8 @@
 async function getPhotographers() {
   try {
-    const response = await fetch("../data/photographers.json");
+    const response = await fetch(
+      "http://localhost:5500/data/photographers.json"
+    );
     if (!response.ok) {
       throw new Error("datas can not be fetched");
     }
