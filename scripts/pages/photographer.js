@@ -140,14 +140,15 @@ const manageMediaLightBoxModal = (media, pictureNameRepository, medias) => {
   const openLightBoxModalBtn = document.getElementById(
     `media-card-${media.id}`
   );
-  let modalLightBox = initModal(
-    'modal__lightbox',
-    null,
-    media,
-    pictureNameRepository,
-    medias
-  );
   openLightBoxModalBtn.addEventListener('click', () => {
+    const modalLightBox = initModal(
+      'modal__lightbox',
+      openLightBoxModalBtn,
+      null,
+      media,
+      pictureNameRepository,
+      medias
+    );
     modalLightBox.displayModal();
   });
 };
@@ -166,7 +167,11 @@ const manageContactFormModal = (photographer) => {
       'modal__contact-photographer-name'
     );
     nameTitle.textContent = `${photographer.name}`;
-    let modalForm = initModal('modal__contact', photographer);
+    let modalForm = initModal(
+      'modal__contact',
+      openContactModalBtn,
+      photographer
+    );
     openContactModalBtn.addEventListener('click', () => {
       modalForm.displayModal();
     });

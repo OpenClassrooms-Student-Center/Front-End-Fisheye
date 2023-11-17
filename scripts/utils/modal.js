@@ -11,6 +11,7 @@ import { initLightBox } from '../utils/lightBox.js';
  * modal initialization
  * To reuse the modal, initialize the content
  * according to the parameter passed (modalElementId).
+ * elementDOM permitted to refocused on clicked element when closed modal
  * @param {string} modalElementId
  * @param {object} photographer (optional)
  * @param {object} media (optional)
@@ -20,6 +21,7 @@ import { initLightBox } from '../utils/lightBox.js';
  */
 const initModal = (
   modalElementId,
+  elementDOM,
   photographer,
   media,
   pictureNameRepository,
@@ -65,6 +67,7 @@ const initModal = (
     photographerMain.setAttribute('aria-hidden', 'false');
     modal.setAttribute('aria-hidden', 'true');
     body.classList.remove('no-scroll');
+    elementDOM.focus();
   };
 
   // accessibility with key

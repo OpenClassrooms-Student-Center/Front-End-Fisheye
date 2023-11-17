@@ -47,6 +47,7 @@ const manageGalleryFiltered = (
     if (ariaExpandedAttribute === 'false') {
       filterList.style.display = 'flex';
       openFilterList.setAttribute('aria-expanded', true);
+      popularFilter.focus();
     } else {
       filterList.style.display = 'none';
       openFilterList.setAttribute('aria-expanded', false);
@@ -61,7 +62,7 @@ const manageGalleryFiltered = (
     photographerGallery.innerHTML = '';
     switch (filter) {
       case 'popularity':
-        mediasFiltered = [...medias].sort((a, b) => a.likes - b.likes);
+        mediasFiltered = [...medias].sort((a, b) => b.likes - a.likes);
         break;
       case 'date':
         mediasFiltered = [...medias].sort(
