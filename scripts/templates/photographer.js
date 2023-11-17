@@ -15,7 +15,6 @@ function photographerTemplate(data) {
 
     article.innerHTML = card;
 
-
     return article;
 
     }
