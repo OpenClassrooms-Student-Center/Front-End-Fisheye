@@ -56,17 +56,17 @@ const initLightBox = (pictureNameRepository, media, medias) => {
       let previousMedia;
       let nextMedia;
       if (mediaIndex === 0) {
+        // if this is the first media in the list, then the previous media will be the last media
         previousMedia = mediaFactory(medias[medias.length - 1]);
       } else {
         previousMedia = mediaFactory(medias[mediaIndex - 1]);
       }
       if (mediaIndex === medias.length - 1) {
+        // if it's the last media in the list, then the next media will be the first media
         nextMedia = mediaFactory(medias[0]);
       } else {
         nextMedia = mediaFactory(medias[mediaIndex + 1]);
       }
-      console.log(previousMedia);
-      console.log(nextMedia);
       return { previousMedia, nextMedia };
     } catch (error) {
       console.log(error.message);

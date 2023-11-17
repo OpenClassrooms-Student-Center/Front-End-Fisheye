@@ -2,6 +2,7 @@
 /*********************************************************************************
 *
 * This file contains all the functions required to manage modal
+* The modal is reusable, only the content can be modified
 *
 /*********************************************************************************/
 import { initContactForm } from '../utils/contactForm.js';
@@ -11,10 +12,10 @@ import { initLightBox } from '../utils/lightBox.js';
  * To reuse the modal, initialize the content
  * according to the parameter passed (modalElementId).
  * @param {string} modalElementId
- * @param {object} photographer //TODO rendre optionnel
- * @param {object} media (optional) //TODO rendre optionnel
- * @param {string} pictureNameRepository (optional) //TODO rendre optionnel
- * @param {array<object>} medias //TODO rendre optionnel
+ * @param {object} photographer (optional)
+ * @param {object} media (optional)
+ * @param {string} pictureNameRepository (optional)
+ * @param {array<object>} medias (optional)
  * @returns
  */
 const initModal = (

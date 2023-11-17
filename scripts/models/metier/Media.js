@@ -4,8 +4,7 @@
  * @returns {object}
  */
 const Media = (data) => {
-  const { id, photographerId, title, likes, description, date, price } = data;
-
+  const { id, photographerId, title, description, likes, date, price } = data;
   return {
     id,
     photographerId,

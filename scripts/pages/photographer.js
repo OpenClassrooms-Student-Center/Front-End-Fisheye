@@ -65,23 +65,30 @@ const displayPhotographerGallery = async (
       );
       photographerGallery.appendChild(mediaArticleDOM);
       // manage media like/unlike
+      // TODO si like => aria-pressed = true
       const buttonLike = document.getElementById(
         `media-card-button-likes-${media.id}`
       );
-      const likesDOM = document.getElementById(`media-card-likes-${media.id}`);
+      const likesNumber = document.getElementById(
+        `media-card-likes-${media.id}`
+      );
       let isLiked = false;
       buttonLike.addEventListener('click', () => {
         if (isLiked) {
           media.likes -= 1;
           totalLikes -= 1;
+          // tells screen reader if the user has already liked the media
+          buttonLike.setAttribute('aria-pressed', false);
         } else {
           media.likes += 1;
           console.log(media);
           totalLikes += 1;
+          // tells screen reader if the user has already liked the media
+          buttonLike.setAttribute('aria-pressed', true);
         }
         isLiked = !isLiked;
         // To perpetuate the data, the object must be updated in the database (update(media)).
-        likesDOM.textContent = media.likes;
+        likesNumber.textContent = media.likes;
         // update total Likes html
         displayPhotographerInfos(photographer, totalLikes);
       });
@@ -111,7 +118,7 @@ const manageMediaLightBox = (
   );
   let modalLightBox = initModal(
     'modal__lightbox',
-    photographer,
+    null,
     media,
     pictureNameRepository,
     medias
@@ -163,9 +170,9 @@ const manageContactFormModal = (photographer) => {
 };
 
 /**
- * count total likes of medias phototgrapher
+ * count total likes of medias photographer
  * @param {array} medias
- * @returns
+ * @returns {number}
  */
 const manageTotalLikes = (medias) => {
   let totalLikes = 0;
@@ -199,13 +206,13 @@ const init = async () => {
       const pictureNameRepository = photographer.name.split(' ')[0];
       displayPhotographerProfile(photographer);
       let totalLikes = manageTotalLikes(medias);
+      displayPhotographerInfos(photographer, totalLikes);
       displayPhotographerGallery(
         photographer,
         medias,
         pictureNameRepository,
         totalLikes
       );
-      displayPhotographerInfos(photographer, totalLikes);
       manageContactFormModal(photographer);
     }
   } catch (error) {

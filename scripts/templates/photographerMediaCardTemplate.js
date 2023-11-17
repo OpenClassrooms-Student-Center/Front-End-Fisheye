@@ -7,7 +7,6 @@
 export const createPhotographerMediaCard = (pictureNameRepository, media) => {
   const { title, src, likes, type, id } = media;
   console.log(media);
-
   const picture = `../../assets/medias/photographers/${pictureNameRepository}/${src}`;
   // article container
   const mediaArticle = document.createElement('article');
@@ -25,7 +24,6 @@ export const createPhotographerMediaCard = (pictureNameRepository, media) => {
   } else {
     mediaPicture = `<div aria-label="absence de media">Absence de media</div>`;
   }
-  // TODO si like => aria-pressed = true
   const mediaCard = `
       <button id="media-card-${id}" class="media-card__link" aria-label="Agrandir ${title}">
         ${mediaPicture}
