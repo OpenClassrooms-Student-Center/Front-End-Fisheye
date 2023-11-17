@@ -19,7 +19,7 @@ class Lightbox {
     );
 
     media.forEach((mediaItem) => {
-      console.log(mediaItem);
+      // console.log(mediaItem);
       if (mediaItem.id === mediaId) {
         selectedMedia = mediaItem;
         console.log("selectedMedia", selectedMedia);
@@ -102,7 +102,7 @@ class Lightbox {
         carouselImg.innerHTML = "Type: Image";
 
         const mediaPath = `assets/images/${photographer.name}/${mediaItem.image}`;
-        console.log(mediaPath);
+        // console.log(mediaPath);
         carouselImg.classList.add("carousel-media");
 
         carouselImg.setAttribute("id", `media-${mediaItem.image}`);
