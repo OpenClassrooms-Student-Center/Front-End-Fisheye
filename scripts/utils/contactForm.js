@@ -1,9 +1,16 @@
+const contactButton = document.querySelector(".contact_button");
+const closeForm = document.querySelector(".close-modal");
+const modal = document.getElementById("contact_modal");
+
 function displayModal() {
-    const modal = document.getElementById("contact_modal");
+    
 	modal.style.display = "block";
 }
 
 function closeModal() {
-    const modal = document.getElementById("contact_modal");
+    
     modal.style.display = "none";
 }
+
+contactButton.addEventListener("click", displayModal);
+closeForm.addEventListener("click", closeModal);
