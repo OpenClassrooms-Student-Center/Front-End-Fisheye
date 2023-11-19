@@ -46,6 +46,10 @@ class Media {
     return `
     <video class='video' controls preload="metadata">
       <source src="assets/Sample Photos/${this.firstName}/${this.video}#t=1.1">
+      <p>
+        Votre navigateur ne supporte cette vidéo.
+        Voici <a href="assets/Sample Photos/${this.firstName}/${this.video}">un lien pour télécharger la vidéo</a>.
+      </p>
     </video>
     `
   }

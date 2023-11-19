@@ -20,8 +20,8 @@
 
     <div class="sort">
       <!-- <label for="media-sort"></label> -->
-      <label id="media-sort">Trier par</label>
-      <select aria-labelledby="media-sort" class="sort-select">
+      <label for="media-sort">Trier par</label>
+      <select aria-labelledby="media-sort" class="sort-select" id="media-sort">
         <option value="popularite">Popularité</option>
         <option value="date">Date</option>
         <option value="titre">Titre</option>
@@ -42,7 +42,7 @@
       <input type="text" name="prenom" placeholder="Votre prénom" id="prenom" />
       <label for="nom">Nom</label>
       <input type="text" name="nom" placeholder="Votre nom" id="nom" />
-      <label for="email">Email</label>
+      <label for="email" autocomplete="on">Email</label>
       <input type="email" name="email" placeholder="Votre email, par exemple: abcd@domaine.fr" id="email" />
       <label for="message">Votre message</label>
       <textarea name="message" id="message" placeholder="Votre message"></textarea>
