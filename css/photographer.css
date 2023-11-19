@@ -125,7 +125,7 @@ form div {
 }
 
 form input {
-  width: 100%;
+  width: -webkit-fill-available;
   height: 68px;
   border: none;
   border-radius: 5px;
