@@ -27,9 +27,9 @@ class Media {
     mediaCard.innerHTML += `
       <div class='media-info'>
         <h2 class='title'>${this.title}</h2>
-        <div class='media-likes'>
+        <div class='media-likes' title='Nombre de likes' aria-label='Nombre de likes'>
           <h3 class='number-likes'>${this.likes}</h3>
-          <span class="fa-solid fa-heart"></span>
+          <span class="fa-solid fa-heart" aria-hidden='true'></span>
         </div>
       </div> 
     `
@@ -44,8 +44,8 @@ class Media {
 
   createVideo() {
     return `
-    <video class='video' controls preload="metadata" autostart="0" >
-      <source src="assets/Sample Photos/${this.firstName}/${this.video}#t=0.1">
+    <video class='video' controls preload="metadata">
+      <source src="assets/Sample Photos/${this.firstName}/${this.video}#t=1.1">
     </video>
     `
   }

@@ -16,9 +16,9 @@ async function portfolioTemplate(id) {
 
   const sticky = document.querySelector('.sticky')
   sticky.innerHTML = `
-  <div class='total-likes'>
+  <div class='total-likes' title='Nombre de Likes' aria-label='Nombre de Likes'>
     <p class='number-likes'>123456</p>
-    <span class='fa-solid fa-heart'></span>
+    <span class='fa-solid fa-heart' aria-hidden='true'></span>
   </div>
   <p class='price'>${photographerData.price}€ / jour</p>
   `
