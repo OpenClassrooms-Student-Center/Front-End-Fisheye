@@ -87,6 +87,8 @@ textarea {
   position: absolute;
   top: 69px;
   width: 670px;
+  overflow-y: auto;
+  height: 90vh;
 }
 
 .modal header {
