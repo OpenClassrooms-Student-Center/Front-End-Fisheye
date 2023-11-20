@@ -1,10 +1,16 @@
 // Global DOM var
 const body = document.body;
-const openPicBtn = document.querySelector(".media-img");
 const mainWrapper = document.querySelector(".main-wrapper");
 const modal = document.querySelector(".photo-modal");
 const modalCloseBtn = document.querySelector(".modal-close-btn");
-const nextImage = document.querySelector(".next-image");
+
+$(document).on("keydown", (e) => {
+  const keyCode = e.keyCode ? e.keyCode : e.which;
+
+  if (modal.getAttribute("aria-hidden") === "false" && keyCode === 27) {
+    onClosePic();
+  }
+});
 
 // Func
 export async function onOpenPic() {
@@ -22,13 +28,3 @@ export async function onClosePic() {
   body.classList.remove("no-scroll");
   modal.style.display = "none";
 }
-
-$(document).on("keydown", (e) => {
-  const keyCode = e.keyCode ? e.keyCode : e.which;
-
-  if (modal.getAttribute("aria-hidden") === "false" && keyCode === 27) {
-    onClosePic();
-  }
-});
-
-

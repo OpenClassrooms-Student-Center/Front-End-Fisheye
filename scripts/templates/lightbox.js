@@ -78,6 +78,15 @@ class Lightbox {
       }
     });
 
+    $(document).on("keydown", (e) => {
+      const keyCode = e.keyCode ? e.keyCode : e.which;
+      if (keyCode === 39) {
+        controlsNext.click();
+      } else if (keyCode === 37) {
+        controlsPrevious.click();
+      }
+    });
+
     controlsPrevious.addEventListener("click", () => {
       const currentLi = carouselContainer.querySelector(
         `.carousel-item-${currentIndex}`
