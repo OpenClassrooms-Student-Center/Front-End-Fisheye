@@ -19,7 +19,7 @@ export const createPhotographerCard = (photographer) => {
   const photographerCard = `
       <a class="photographer__link" href="./pages/photographer.html?id=${id}">
         <div class="profile-picture__container">
-          <img class="photographer__profile-picture profile-picture" src=${src} alt="Profil de ${name}">
+          <img class="photographer__profile-picture profile-picture" src=${src} alt="">
         </div>
         <h2 class="photographer__name name">${name}</h2>
       </a>

@@ -8,6 +8,9 @@
     justify-content: space-between;
     align-items: center;
   }
+  &__presentation-location {
+    margin: 0;
+  }
   &__contact-button {
     &:hover,
     &:focus {

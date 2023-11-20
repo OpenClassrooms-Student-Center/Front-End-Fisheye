@@ -20,6 +20,13 @@ const initContactForm = (closeModal, photographer) => {
     // prevents default behavior (reload)
     event.preventDefault();
     manageForm(form, closeModal);
+
+    // manage focus on first invalid form data
+    if (document.querySelector('input:invalid')) {
+      document.querySelector('input:invalid').focus();
+    } else if (document.querySelector('textarea:invalid')) {
+      document.querySelector('textarea:invalid').focus();
+    }
   });
 };
 
@@ -42,12 +49,12 @@ const manageForm = (form, closeModal) => {
     checkInput(
       form.firstName,
       firstNameCondition,
-      'Veuillez entrer au moins 2 caractères pour ce champs.'
+      'Veuillez entrer 2 caractères ou plus pour votre prénom.'
     );
     checkInput(
       form.lastName,
       lastNameCondition,
-      'Veuillez entrer au moins 2 caractères pour ce champs.'
+      'Veuillez entrer 2 caractères ou plus pour votre nom.'
     );
     checkInput(
       form.email,
@@ -64,12 +71,12 @@ const manageForm = (form, closeModal) => {
       checkInput(
         form.firstName,
         firstNameCondition,
-        'Veuillez entrer 2 caractères ou plus pour ce champs.'
+        'Veuillez entrer 2 caractères ou plus pour votre prénom.'
       ) &&
       checkInput(
         form.lastName,
         lastNameCondition,
-        'Veuillez entrer 2 caractères ou plus pour ce champs.'
+        'Veuillez entrer 2 caractères ou plus pour votre nom.'
       ) &&
       checkInput(
         form.email,
@@ -126,29 +133,34 @@ function checkInput(input, condition, errorMessage) {
  * @param {object} parentElement
  */
 function printErrorMessage(message, parentElement) {
-  let spanErreurMessage = document.getElementById(`erreur-${parentElement.id}`);
-  if (!spanErreurMessage) {
-    spanErreurMessage = document.createElement('span');
-    spanErreurMessage.id = `erreur-${parentElement.id}`;
-    spanErreurMessage.classList.add('error-message');
-    spanErreurMessage.setAttribute('role', 'alert');
+  let spanErrorMessage = document.getElementById(`error-${parentElement.id}`);
+  if (!spanErrorMessage) {
+    parentElement.setAttribute('aria-describedby', `error-${parentElement.id}`);
+    spanErrorMessage = document.createElement('span');
+    spanErrorMessage.id = `error-${parentElement.id}`;
+    spanErrorMessage.classList.add('error-message');
+    spanErrorMessage.role = 'alert';
     parentElement.classList.add('input-error');
     // insert span after parent
-    parentElement.insertAdjacentElement('afterend', spanErreurMessage);
+    parentElement.insertAdjacentElement('afterend', spanErrorMessage);
   }
-  spanErreurMessage.innerText = message;
+  spanErrorMessage.innerText = message;
 }
 /**
  * This function clears the error message if exists
  * @param {object} parentElement
  */
 function clearErrorMessage(parentElement) {
-  const spanErreurMessage = document.getElementById(
+  const spanErrorMessage = document.getElementById(
     `erreur-${parentElement.id}`
   );
-  if (spanErreurMessage) {
-    spanErreurMessage.remove();
+  if (spanErrorMessage) {
+    spanErrorMessage.remove();
     parentElement.classList.remove('input-error');
+    parentElement.removeAttribute(
+      'aria-describedby',
+      `error-${parentElement.id}`
+    );
   }
 }
 /**

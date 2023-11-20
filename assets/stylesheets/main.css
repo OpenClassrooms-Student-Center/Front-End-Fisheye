@@ -87,6 +87,10 @@ form .error-message {
   font-weight: 400;
   color: black;
 }
+form .text-control {
+  font-size: 1em;
+  letter-spacing: 1.25px;
+}
 
 /* ********** home page */
 /* photographer card */
@@ -327,6 +331,9 @@ form .error-message {
   justify-content: space-between;
   align-items: center;
 }
+.photographer__presentation-location {
+  margin: 0;
+}
 .photographer__contact-button:hover, .photographer__contact-button:focus {
   background-color: #db8876;
   color: #000000;
@@ -362,7 +369,6 @@ form .error-message {
 }
 .photographer__sorter-list--open {
   display: flex;
-  animation: open-sort 200ms forwards;
   z-index: 99;
 }
 .photographer__sorter-item-divider {
@@ -390,7 +396,6 @@ form .error-message {
   position: absolute;
   right: 5%;
   top: 8%;
-  z-index: 99;
 }
 
 @keyframes open-sort {
@@ -431,6 +436,7 @@ form .text-control {
   height: 68px;
   border: none;
   border-radius: 5px;
+  padding-left: 10px;
 }
 form .textarea {
   height: 170px;
@@ -441,6 +447,10 @@ form .submit-button {
 }
 form .input-error {
   border: 2px solid #901c1c;
+}
+form .input-error:focus {
+  outline: #901c1c;
+  border: 4px solid #901c1c;
 }
 
 .photographer {
@@ -489,10 +499,10 @@ form .input-error {
   justify-content: space-between;
   align-items: flex-start;
 }
-.media-card__under-picture-container h3,
+.media-card__under-picture-container h2,
 .media-card__under-picture-container p,
 .media-card__under-picture-container button {
-  margin: 5px 0;
+  margin: 10px 0;
 }
 .media-card__likes-container {
   align-items: center;

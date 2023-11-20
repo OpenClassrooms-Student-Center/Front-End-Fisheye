@@ -8,9 +8,9 @@ import { ApiMedia } from '../models/api/ApiMedia.js';
 import { Photographer } from '../models/metier/Photographer.js';
 import { mediaFactory } from '../models/factories/MediaFactory.js';
 
-import { createPhotographerProfile } from '../templates/photographerProfileTemplate.js';
+import { displayPhotographerProfile } from '../templates/photographerProfileTemplate.js';
 import { createPhotographerMediaCard } from '../templates/photographerMediaCardTemplate.js';
-import { createPhotographerInfos } from '../templates/photographerInfosTemplate.js';
+import { displayPhotographerInfos } from '../templates/photographerInfosTemplate.js';
 
 import { initModal } from '../utils/modal.js';
 import { manageGallerySorted } from '../utils/sort.js';
@@ -23,24 +23,6 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 
 /**
- * Function that retrieves the div containing the photographer's page header
- * and displays the profile data
- * @param {object} photographer
- */
-const displayPhotographerProfile = (photographer) => {
-  try {
-    const photographerMain = document.querySelector('.main');
-    const photographerProfileDOM = createPhotographerProfile(photographer);
-    photographerMain.insertBefore(
-      photographerProfileDOM,
-      photographerMain.firstChild
-    );
-  } catch (error) {
-    console.log(error.message);
-  }
-};
-
-/**
  * count total likes of medias photographer
  * @param {array} medias
  * @returns {number}
@@ -51,24 +33,6 @@ const manageTotalLikes = (medias) => {
     totalLikes += medias[i].likes;
   }
   return totalLikes;
-};
-
-/**
- * Function that retrieves the div containing the photographer's infos (total likes + daily rate)
- * @param {object} photographer
- * @param {number} totalLikes
- */
-const displayPhotographerInfos = (photographer, totalLikes) => {
-  try {
-    const photographerMain = document.querySelector('.main');
-    const photographerInfosDOM = createPhotographerInfos(
-      photographer,
-      totalLikes
-    );
-    photographerMain.appendChild(photographerInfosDOM);
-  } catch (error) {
-    console.log(error.message);
-  }
 };
 
 /**
@@ -203,20 +167,20 @@ const init = async () => {
       // path to picture (only firstname is needed)
       const pictureNameRepository = photographer.name.split(' ')[0];
       displayPhotographerProfile(photographer);
-      let totalLikes = manageTotalLikes(medias);
-      displayPhotographerInfos(photographer, totalLikes);
-      displayPhotographerGallery(
-        photographer,
-        medias,
-        pictureNameRepository,
-        totalLikes
-      );
+      const totalLikes = manageTotalLikes(medias);
       manageGallerySorted(
         photographer,
         medias,
         pictureNameRepository,
         totalLikes
       );
+      displayPhotographerGallery(
+        photographer,
+        medias,
+        pictureNameRepository,
+        totalLikes
+      );
+      displayPhotographerInfos(photographer, totalLikes);
       manageContactFormModal(photographer);
     }
   } catch (error) {

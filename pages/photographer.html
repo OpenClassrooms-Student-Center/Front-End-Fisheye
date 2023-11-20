@@ -17,20 +17,23 @@
 
 <body>
   <header class="header">
-    <a href="../index.html"><img src="../assets/medias/logo/logo.png" class="logo" alt="Page d'accueil Fisheye"></a>
+    <a href="../index.html"><img src="../assets/medias/logo/logo.png" class="logo" alt="Page d'accueil Fisheye"
+        aria-hidden="true"><span class="hide-text">Aller à la page d'accueil Fisheye</span> </a>
   </header>
   <main id="main" class="main" aria-hidden="false">
-    <!-- 
+    <section class="photographer__profile" aria-label="profil">
+      <!-- 
         photographer profile is display in this section via javaScript 
-        (photographerTemplate -> createPhotographerProfile) 
+        (photographerProfileTemplate) 
     -->
+    </section>
     <div class="photographer__portfolio">
-      <div class="photographer__sorter">
-        <p id="sorter">Trier par</p>
-        <div class="photographer__sorter-container">
+      <section class="photographer__sorter" aria-label="tri des médias">
+        <p id="sorter" aria-hidden="true">Trier par</p>
+        <div>
           <button class="photographer__sorter-button photographer__sorter-button-opener" type="button"
-            aria-expanded="false" aria-controls="sorter-list" aria-labelledby="sorter">
-            <span id="selected-sort">---</span>
+            aria-expanded="false" aria-controls="sorter-list" aria-label="Trier par">
+            <span id="selected-sort" aria-hidden="true">---</span>
             <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32" fill="none"
               class="photographer__sorter-button-opener-arrow" aria-hidden="true">
               <g clip-path="url(#clip0_179240_75)">
@@ -39,7 +42,7 @@
               </g>
             </svg>
           </button>
-          <ul id="sorter-list" class="photographer__sorter-list">
+          <ul class="photographer__sorter-list">
             <li>
               <button id="photographer__sorter-arrow-close" class="photographer__sorter-arrow-close"
                 aria-label="fermer la liste des filtres">
@@ -61,22 +64,27 @@
                 class="photographer__sorter-item photographer__sorter-button">Titre</button></li>
           </ul>
         </div>
-      </div>
-      <div class="photographer__gallery">
+      </section>
+      <section class="photographer__gallery" aria-label="galerie des médias">
         <!-- 
         photographer's images/videos are display in this section via javaScript 
-        (photographerTemplate -> createMediaCard) 
+        (photographerMediaCardTemplate) 
     -->
-      </div>
+      </section>
     </div>
+    <section class="photographer__infos" aria-label="Informations complémentaires">
+      <!-- photographer's total likes + daily rate, display in this section by javaScript 
+            (photographerInfosTemplate)
+      -->
+    </section>
   </main>
   <!-- modal contact form -->
   <dialog tabindex=-1 id="modal__contact" class="modal" aria-hidden="true" aria-describedby="modalTitle">
     <div class="modal__contact modal__container">
       <header class="modal__contact-header">
         <h2 id="modalTitle">Contactez-moi<br><span id="modal__contact-photographer-name"></span></h2>
-        <button class="modal__contact-close-button modal__close-button" aria-label="fermer la modale"><img
-            src="../assets/medias/icons/close.svg" alt="close" aria-hidden="true"></button>
+        <button class="modal__contact-close-button modal__close-button"><img src="../assets/medias/icons/close.svg"
+            alt="" aria-hidden="true"><span class="hide-text">fermer la modale</span></button>
       </header>
       <!-- novalidate permitted override by js -->
       <form id="form" name="contact" novalidate>
@@ -103,10 +111,10 @@
         <button type="submit"
           class="modal__contact-submit-button submit-button button modal__contact-last-focus">Envoyer</button>
       </form>
-      <div class="modal__contact-validation">
-        <p>Votre message a bien été envoyé</p>
+      <section class="modal__contact-validation" aria-label="message envoyé">
+        <p class="message-validation">Votre message a bien été envoyé</p>
         <button class="button" id="close-validation"> fermer </button>
-      </div>
+      </section>
     </div>
   </dialog>
   <!-- modal media lightbox -->
