@@ -38,13 +38,13 @@ class Media {
 
   createImage() {
     return `
-    <img class='image' src="assets/Sample Photos/${this.firstName}/${this.image}" alt="${this.title}">
+    <img class='media' src="assets/Sample Photos/${this.firstName}/${this.image}" alt="${this.title}">
     `
   }
 
   createVideo() {
     return `
-    <video class='video' controls preload="metadata">
+    <video class='media' controls preload="metadata">
       <source src="assets/Sample Photos/${this.firstName}/${this.video}#t=1.1">
       <p>
         Votre navigateur ne supporte cette vidéo.

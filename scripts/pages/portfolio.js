@@ -6,7 +6,7 @@ async function portfolioTemplate(id) {
   const photographerData = JSON.parse(sessionStorage.getItem(id))
   generateHeader(photographerData)
 
-  const mediaDiv = document.querySelector('.media')
+  const mediaDiv = document.querySelector('.medias')
   const medias = await getMediasById(id)
   medias.forEach(media => {
     const mediaObject = new Media(media, photographerData.name)

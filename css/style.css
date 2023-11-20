@@ -223,7 +223,7 @@ article a {
   background-color: rgba(0, 0, 0, 0.1);
 }
 
-.media {
+.medias {
   margin: 58px 100px;
   display: flex;
   flex-direction: row;
@@ -233,7 +233,7 @@ article a {
   row-gap: 20px;
 }
 
-.media::after {
+.medias::after {
   content: '';
   width: 350px;
 }
@@ -275,20 +275,14 @@ article a {
   margin-top: 20px;
 }
 
-.image {
+.media {
   width: 350px;
   height: 300px;
   border-radius: 5px;
   object-fit: cover;
 }
 
-.video {
-  width: 350px;
-  height: 300px;
-  border-radius: 5px;
-}
-
-.media article {
+.medias article {
   display: flex;
   flex-direction: column;
   gap: 10px;
