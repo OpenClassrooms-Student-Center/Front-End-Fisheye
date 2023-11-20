@@ -7,6 +7,8 @@
 /*********************************************************************************/
 import { initContactForm } from '../utils/contactForm.js';
 import { initLightBox } from '../utils/lightBox.js';
+import { manageAccessibilityFocus } from './accessibility.js';
+
 /**
  * modal initialization
  * To reuse the modal, initialize the content
@@ -70,30 +72,16 @@ const initModal = (
     elementDOM.focus();
   };
 
-  // accessibility with key
-  document.addEventListener('keydown', (e) => {
-    // Close modal when escape key is pressed
-    if (modal.getAttribute('aria-hidden') == 'false') {
-      if (e.key === 'Escape' || e.code === 'Escape') {
-        closeModal();
-      }
-      // Trap focus into modal
-      if (e.key === 'Tab' || e.code === 'Tab') {
-        if (e.shiftKey) {
-          /* shift + tab */
-          if (document.activeElement === firstFocusElement) {
-            lastFocusElement.focus();
-            e.preventDefault();
-          }
-        } /* tab */ else {
-          if (document.activeElement === lastFocusElement) {
-            firstFocusElement.focus();
-            e.preventDefault();
-          }
-        }
-      }
-    }
-  });
+  // accessibility
+  manageAccessibilityFocus(
+    modal,
+    'aria-hidden',
+    'false',
+    closeModal,
+    firstFocusElement,
+    lastFocusElement
+  );
+
   return { displayModal, closeModal };
 };
 export { initModal };

@@ -88,6 +88,24 @@ form {
       color: $dark-grey;
     }
   }
+  /***** photographer media sorter  */
+  &__sorter {
+    &-button,
+    p {
+      font-size: 1.125em;
+      font-weight: 700;
+    }
+    &-button {
+      color: white;
+      text-align: left;
+      letter-spacing: 1.25px;
+    }
+  }
+  /***** photographer infos  */
+  &__infos {
+    font-size: 1.5em;
+    font-weight: 500;
+  }
 }
 /***** photographer gallery */
 /* media card */
@@ -109,11 +127,6 @@ form {
     color: $principal-color;
     font-size: 1.3rem;
   }
-}
-/***** photographer infos  */
-.photographer__infos {
-  font-size: 1.5em;
-  font-weight: 500;
 }
 
 /***** modal  */

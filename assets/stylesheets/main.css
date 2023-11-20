@@ -49,7 +49,7 @@ dialog {
  * Basic typography style
  */
 * {
-  font-family: 'DM Sans', sans-serif;
+  font-family: "DM Sans", sans-serif;
 }
 
 h1 {
@@ -109,6 +109,10 @@ form .error-message {
 
 /* ********** photographer page */
 /***** photographer profile */
+.photographer {
+  /***** photographer media sorter  */
+  /***** photographer infos  */
+}
 .photographer__presentation-name {
   font-size: 4em;
 }
@@ -119,14 +123,27 @@ form .error-message {
   font-size: 1.125em;
   color: #525252;
 }
+.photographer__sorter-button,
+.photographer__sorter p {
+  font-size: 1.125em;
+  font-weight: 700;
+}
+.photographer__sorter-button {
+  color: white;
+  text-align: left;
+  letter-spacing: 1.25px;
+}
+.photographer__infos {
+  font-size: 1.5em;
+  font-weight: 500;
+}
 
 /***** photographer gallery */
 /* media card */
 .media-card__under-picture-container {
   color: #901c1c;
 }
-.media-card__title,
-.media-card__likes {
+.media-card__title, .media-card__likes {
   font-size: 1.5rem;
 }
 .media-card__title {
@@ -138,12 +155,6 @@ form .error-message {
 .media-card__likes-heart {
   color: #901c1c;
   font-size: 1.3rem;
-}
-
-/***** photographer infos  */
-.photographer__infos {
-  font-size: 1.5em;
-  font-weight: 500;
 }
 
 /***** modal  */
@@ -271,9 +282,9 @@ form .error-message {
   width: 1050px;
   height: 900px;
   -o-object-fit: cover;
-  object-fit: cover;
+     object-fit: cover;
   -o-object-position: center 40%;
-  object-position: center 40%;
+     object-position: center 40%;
   flex-shrink: 0;
   animation-name: modalPicture;
   animation-duration: 2s;
@@ -299,8 +310,7 @@ form .error-message {
   justify-content: space-between;
   align-items: center;
 }
-.photographer__contact-button:hover,
-.photographer__contact-button:focus {
+.photographer__contact-button:hover, .photographer__contact-button:focus {
   background-color: #db8876;
   color: #000000;
 }
@@ -315,8 +325,8 @@ form .error-message {
 
 .photographer__sorter {
   display: flex;
-  align-items: flex-start;
-  gap: 15px;
+  align-items: center;
+  gap: 25px;
   margin: 15px 100px;
   position: relative;
 }
@@ -326,26 +336,39 @@ form .error-message {
   flex-direction: column;
   list-style-type: none;
   margin: 0%;
-  padding: 0% 10px;
+  padding: 0%;
   position: absolute;
   top: 0px;
   box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
   border-radius: 5px;
-  min-width: 100px;
   z-index: 99;
 }
-.photographer__sorter-item {
-  color: white;
-  padding: 23px 60px 23px 20px;
-  font-size: 1.125em;
-  font-weight: 700;
-  letter-spacing: 1.25px;
+.photographer__sorter-list--open {
+  display: flex;
 }
 .photographer__sorter-item-divider {
-  width: 100%;
-  height: 3px;
+  width: 90%;
+  height: 1px;
   background-color: white;
   margin: auto;
+}
+.photographer__sorter-button {
+  border-radius: 5px;
+  padding: 23px 60px 23px 20px;
+  min-width: 200px;
+}
+.photographer__sorter-button-arrow {
+  position: absolute;
+  left: 21.5%;
+  top: 25%;
+  z-index: 99;
+  transform: rotate(0.5turn);
+}
+.photographer__sorter-arrow-closed {
+  position: absolute;
+  right: 5%;
+  top: 8%;
+  z-index: 99;
 }
 
 .button {
@@ -426,11 +449,10 @@ form .input-error {
   height: 300px;
   width: 350px;
   -o-object-fit: cover;
-  object-fit: cover;
+     object-fit: cover;
   border-radius: 5px;
 }
-.media-card__under-picture-container,
-.media-card__likes-container {
+.media-card__under-picture-container, .media-card__likes-container {
   display: flex;
 }
 .media-card__under-picture-container {
@@ -465,10 +487,10 @@ form .input-error {
   height: 200px;
   width: 200px;
   -o-object-fit: cover;
-  object-fit: cover;
+     object-fit: cover;
   transform: scale(1.5);
   -o-object-position: 50% 30%;
-  object-position: 50% 30%;
+     object-position: 50% 30%;
 }
 
 .modal {

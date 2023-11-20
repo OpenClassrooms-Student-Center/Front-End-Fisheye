@@ -26,23 +26,39 @@
     -->
     <div class="photographer__portfolio">
       <div class="photographer__sorter">
-        <!-- <label for="sort-select">Trier par</label>
-        <select name="media-sort" id="sort-select">
-          <option value="">----</option>
-          <option value="popularity">Popularité</option>
-          <option value="date">Date</option>
-          <option value="title">Titre</option>
-        </select> -->
         <p id="sorter">Trier par</p>
-        <div>
-          <button class="photographer__sorter-button button" type="button" aria-expanded="false"
-            aria-controls="sorter-list">---</button>
+        <div class="photographer__sorter-container">
+          <button class="photographer__sorter-button" type="button" aria-expanded="false" aria-controls="sorter-list"
+            aria-labelledby="sorter">
+            <span id="selected-sort">---</span>
+            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32" fill="none"
+              class="photographer__sorter-button-arrow" aria-hidden="true">
+              <g clip-path="url(#clip0_179240_75)">
+                <path d="M9.88 20.5466L16 14.44L22.12 20.5466L24 18.6666L16 10.6666L8 18.6666L9.88 20.5466Z"
+                  fill="white" />
+              </g>
+            </svg>
+          </button>
           <ul id="sorter-list" class="photographer__sorter-list">
-            <li><button id="photographer__sorter-popularity" class="photographer__sorter-item">Popularité</button></li>
-            <li role="separator" class="photographer__sorter-item-divider"></li>
-            <li><button id="photographer__sorter-date" class="photographer__sorter-item">Date</button></li>
-            <li role="separator" class="photographer__sorter-item-divider"></li>
-            <li><button id="photographer__sorter-title" class="photographer__sorter-item">Titre</button></li>
+            <li>
+              <button id="photographer__sorter-arrow-closed" class="photographer__sorter-arrow-closed"
+                aria-label="fermer la liste des filtres">
+                <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32" fill="none">
+                  <g clip-path="url(#clip0_179240_75)" aria-hidden="true">
+                    <path d="M9.88 20.5466L16 14.44L22.12 20.5466L24 18.6666L16 10.6666L8 18.6666L9.88 20.5466Z"
+                      fill="white" />
+                  </g>
+                </svg>
+              </button>
+            </li>
+            <li><button id="photographer__sorter-popularity"
+                class="photographer__sorter-item photographer__sorter-button">Popularité</button></li>
+            <li role="separator" class="photographer__sorter-item-divider" aria-hidden="true"></li>
+            <li><button id="photographer__sorter-date"
+                class="photographer__sorter-item photographer__sorter-button">Date</button></li>
+            <li role="separator" class="photographer__sorter-item-divider" aria-hidden="true"></li>
+            <li><button id="photographer__sorter-title"
+                class="photographer__sorter-item photographer__sorter-button">Titre</button></li>
           </ul>
         </div>
       </div>

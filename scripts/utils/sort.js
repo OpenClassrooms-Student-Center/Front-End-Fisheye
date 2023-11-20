@@ -5,6 +5,7 @@
 *
 /*********************************************************************************/
 import { displayPhotographerGallery } from '../pages/Photographer.js';
+import { manageAccessibilityFocus } from './accessibility.js';
 /**
  *
  * @param {object} photographer
@@ -20,6 +21,10 @@ const manageGallerySorted = (
 ) => {
   const openSorterList = document.querySelector('.photographer__sorter-button');
   const sorterList = document.querySelector('.photographer__sorter-list');
+  const sorterArrowClosed = document.getElementById(
+    'photographer__sorter-arrow-closed'
+  );
+  const selectedSort = document.getElementById('selected-sort');
   const popularSorter = document.getElementById(
     'photographer__sorter-popularity'
   );
@@ -30,27 +35,29 @@ const manageGallerySorted = (
   openSorterList.addEventListener('click', () => {
     toggleSorter();
   });
-
+  sorterArrowClosed.addEventListener('click', () => {
+    toggleSorter();
+  });
   popularSorter.addEventListener('click', () => {
-    displayMediassortered('popularity', popularSorter);
+    displayMediasSortered('Popularité', popularSorter);
   });
   dateSorter.addEventListener('click', () => {
-    displayMediassortered('date', dateSorter);
+    displayMediasSortered('Date', dateSorter);
   });
   titleSorter.addEventListener('click', () => {
-    displayMediassortered('title', titleSorter);
+    displayMediasSortered('Titre', titleSorter);
   });
 
-  //TODO navigation clavier
   const toggleSorter = () => {
     const ariaExpandedAttribute = openSorterList.getAttribute('aria-expanded');
     if (ariaExpandedAttribute === 'false') {
-      sorterList.style.display = 'flex';
+      sorterList.classList.add('photographer__sorter-list--open');
       openSorterList.setAttribute('aria-expanded', true);
-      popularSorter.focus();
+      sorterArrowClosed.focus();
     } else {
-      sorterList.style.display = 'none';
+      sorterList.classList.remove('photographer__sorter-list--open');
       openSorterList.setAttribute('aria-expanded', false);
+      openSorterList.focus();
     }
   };
 
@@ -61,15 +68,15 @@ const manageGallerySorted = (
     // empty gallery
     photographerGallery.innerHTML = '';
     switch (sorter) {
-      case 'popularity':
+      case 'Popularité':
         mediasSorted = [...medias].sort((a, b) => b.likes - a.likes);
         break;
-      case 'date':
+      case 'Date':
         mediasSorted = [...medias].sort(
           (a, b) => new Date(b.date) - new Date(a.date)
         );
         break;
-      case 'title':
+      case 'Titre':
         mediasSorted = [...medias].sort((a, b) =>
           a.title.localeCompare(b.title)
         );
@@ -77,11 +84,13 @@ const manageGallerySorted = (
     }
     return mediasSorted;
   };
-  const displayMediassortered = (sorter, sorterButton) => {
+  const displayMediasSortered = (sorter, sorterButton) => {
     popularSorter.removeAttribute('aria-current');
     dateSorter.removeAttribute('aria-current');
     titleSorter.removeAttribute('aria-current');
     mediasSorted = sorterMedias(sorter);
+    // change button content of sort by
+    selectedSort.textContent = sorter;
     sorterButton.setAttribute('aria-current', 'location');
     toggleSorter();
     displayPhotographerGallery(
@@ -91,6 +100,15 @@ const manageGallerySorted = (
       totalLikes
     );
   };
+
+  manageAccessibilityFocus(
+    openSorterList,
+    'aria-expanded',
+    'true',
+    toggleSorter,
+    sorterArrowClosed,
+    titleSorter
+  );
 };
 
 export { manageGallerySorted };

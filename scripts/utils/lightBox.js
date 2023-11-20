@@ -32,7 +32,6 @@ const initLightBox = (pictureNameRepository, media, medias) => {
 
   // accessibility with key
   document.addEventListener('keydown', (e) => {
-    // Trap focus into modal
     if (modal.getAttribute('aria-hidden') == 'false') {
       if (e.key === 'ArrowLeft' || e.code === 'ArrowLeft') {
         media = manageCarousel().previousMedia;
