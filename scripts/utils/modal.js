@@ -1,4 +1,3 @@
-/* eslint-disable no-unused-vars */
 /*********************************************************************************
 *
 * This file contains all the functions required to manage modal

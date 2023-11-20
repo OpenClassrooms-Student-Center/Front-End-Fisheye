@@ -1,5 +1,3 @@
-/* eslint-disable no-unused-vars */
-
 /**
  * controller of photographer page
  */
@@ -164,9 +162,9 @@ const init = async () => {
       console.log(photographer);
       const medias = await datasMedia.getMediasByPhotographerId(idPhotographer);
       console.log(medias);
+      displayPhotographerProfile(photographer);
       // path to picture (only firstname is needed)
       const pictureNameRepository = photographer.name.split(' ')[0];
-      displayPhotographerProfile(photographer);
       const totalLikes = manageTotalLikes(medias);
       manageGallerySorted(
         photographer,
