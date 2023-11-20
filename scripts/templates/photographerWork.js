@@ -68,7 +68,6 @@ class PhotographerWork {
         videoElement.src = videoPath;
         videoElement.alt = media.title;
         videoElement.setAttribute("id", `media-${media.id}`);
-        console.log("videoElement", videoElement);
         videoElement.controls = true;
         videoElement.onclick = () => this.openLightbox(media.id);
 

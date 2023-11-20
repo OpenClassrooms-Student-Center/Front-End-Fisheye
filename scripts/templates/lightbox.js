@@ -81,9 +81,9 @@ class Lightbox {
     $(document).on("keydown", (e) => {
       const keyCode = e.keyCode ? e.keyCode : e.which;
       if (keyCode === 39) {
-        controlsNext.click();
-      } else if (keyCode === 37) {
         controlsPrevious.click();
+      } else if (keyCode === 37) {
+        controlsNext.click();
       }
     });
 
