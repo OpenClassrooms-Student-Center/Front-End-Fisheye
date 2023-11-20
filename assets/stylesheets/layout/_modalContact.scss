@@ -23,4 +23,19 @@
     top: 10px;
     right: -15px;
   }
+  &-validation {
+    display: none;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    min-height: 70vh;
+    width: 100%;
+    p {
+      margin: auto;
+    }
+    button {
+      padding: 20px 50px;
+      margin-bottom: 25px;
+    }
+  }
 }

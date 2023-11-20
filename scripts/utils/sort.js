@@ -19,10 +19,12 @@ const manageGallerySorted = (
   pictureNameRepository,
   totalLikes
 ) => {
-  const openSorterList = document.querySelector('.photographer__sorter-button');
+  const openSorterList = document.querySelector(
+    '.photographer__sorter-button-opener'
+  );
   const sorterList = document.querySelector('.photographer__sorter-list');
   const sorterArrowClosed = document.getElementById(
-    'photographer__sorter-arrow-closed'
+    'photographer__sorter-arrow-close'
   );
   const selectedSort = document.getElementById('selected-sort');
   const popularSorter = document.getElementById(
@@ -62,11 +64,6 @@ const manageGallerySorted = (
   };
 
   const sorterMedias = (sorter) => {
-    const photographerGallery = document.querySelector(
-      '.photographer__gallery'
-    );
-    // empty gallery
-    photographerGallery.innerHTML = '';
     switch (sorter) {
       case 'Popularité':
         mediasSorted = [...medias].sort((a, b) => b.likes - a.likes);
@@ -88,6 +85,11 @@ const manageGallerySorted = (
     popularSorter.removeAttribute('aria-current');
     dateSorter.removeAttribute('aria-current');
     titleSorter.removeAttribute('aria-current');
+    const photographerGallery = document.querySelector(
+      '.photographer__gallery'
+    );
+    // empty gallery
+    photographerGallery.innerHTML = '';
     mediasSorted = sorterMedias(sorter);
     // change button content of sort by
     selectedSort.textContent = sorter;

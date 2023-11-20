@@ -167,6 +167,9 @@ form .error-message {
   font-weight: normal;
   text-align: left;
 }
+.modal__contact-validation p {
+  font-size: 2em;
+}
 .modal__lightbox-media-title {
   color: #901c1c;
   font-size: 1.5em;
@@ -193,7 +196,7 @@ form .error-message {
   overflow: hidden;
   padding: 0;
   position: absolute;
-  bottom: -100%;
+  left: -1000%;
   white-space: nowrap;
 }
 
@@ -232,7 +235,6 @@ form .error-message {
   gap: 5px;
 }
 .photographer__infos-likes-heart {
-  height: 28px;
   padding-bottom: 5%;
 }
 
@@ -257,6 +259,21 @@ form .error-message {
 .modal__contact-close-button {
   top: 10px;
   right: -15px;
+}
+.modal__contact-validation {
+  display: none;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  min-height: 70vh;
+  width: 100%;
+}
+.modal__contact-validation p {
+  margin: auto;
+}
+.modal__contact-validation button {
+  padding: 20px 50px;
+  margin-bottom: 25px;
 }
 
 #modal__lightbox {
@@ -341,10 +358,12 @@ form .error-message {
   top: 0px;
   box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
   border-radius: 5px;
-  z-index: 99;
+  transform-origin: top;
 }
 .photographer__sorter-list--open {
   display: flex;
+  animation: open-sort 200ms forwards;
+  z-index: 99;
 }
 .photographer__sorter-item-divider {
   width: 90%;
@@ -353,24 +372,35 @@ form .error-message {
   margin: auto;
 }
 .photographer__sorter-button {
+  background-color: #901c1c;
   border-radius: 5px;
-  padding: 23px 60px 23px 20px;
+  padding: 23px 10px 23px 20px;
   min-width: 200px;
 }
-.photographer__sorter-button-arrow {
-  position: absolute;
-  left: 21.5%;
-  top: 25%;
-  z-index: 99;
+.photographer__sorter-button-opener {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 10px 20px 20px;
+}
+.photographer__sorter-button-opener-arrow {
   transform: rotate(0.5turn);
 }
-.photographer__sorter-arrow-closed {
+.photographer__sorter-arrow-close {
   position: absolute;
   right: 5%;
   top: 8%;
   z-index: 99;
 }
 
+@keyframes open-sort {
+  0% {
+    transform: scaleY(0);
+  }
+  100% {
+    transform: scaleY(1);
+  }
+}
 .button {
   padding: 22px 11px;
   background-color: #901c1c;

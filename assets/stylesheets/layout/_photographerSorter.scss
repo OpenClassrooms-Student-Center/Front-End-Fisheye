@@ -15,9 +15,11 @@
     top: 0px;
     box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
     border-radius: $box-border-radius;
-    z-index: 99;
+    transform-origin: top;
     &--open {
       display: flex;
+      animation: open-sort 200ms forwards;
+      z-index: 99;
     }
   }
   &-item {
@@ -29,21 +31,33 @@
     }
   }
   &-button {
+    background-color: $principal-color;
     border-radius: $btn-border-radius;
-    padding: 23px 60px 23px 20px;
+    padding: 23px 10px 23px 20px;
     min-width: 200px;
-    &-arrow {
-      position: absolute;
-      left: 21.5%;
-      top: 25%;
-      z-index: 99;
-      transform: rotate(0.5turn);
+    &-opener {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 10px 20px 20px;
+      &-arrow {
+        transform: rotate(0.5turn);
+      }
     }
   }
-  &-arrow-closed {
+  &-arrow-close {
     position: absolute;
     right: 5%;
     top: 8%;
     z-index: 99;
+  }
+}
+
+@keyframes open-sort {
+  0% {
+    transform: scaleY(0);
+  }
+  100% {
+    transform: scaleY(1);
   }
 }

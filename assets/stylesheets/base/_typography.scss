@@ -140,6 +140,11 @@ form {
         text-align: left;
       }
     }
+    &-validation {
+      p {
+        font-size: 2em;
+      }
+    }
   }
   /* lightbox modal  */
   &__lightbox {

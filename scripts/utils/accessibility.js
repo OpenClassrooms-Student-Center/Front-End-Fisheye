@@ -8,7 +8,7 @@ const manageAccessibilityFocus = (
 ) => {
   document.addEventListener('keydown', (e) => {
     // Close element when escape key is pressed
-    if (element.getAttribute(attribute) == attributeValue) {
+    if (element.getAttribute(attribute) === attributeValue) {
       if (e.key === 'Escape' || e.code === 'Escape') {
         action();
       }

@@ -28,11 +28,11 @@
       <div class="photographer__sorter">
         <p id="sorter">Trier par</p>
         <div class="photographer__sorter-container">
-          <button class="photographer__sorter-button" type="button" aria-expanded="false" aria-controls="sorter-list"
-            aria-labelledby="sorter">
+          <button class="photographer__sorter-button photographer__sorter-button-opener" type="button"
+            aria-expanded="false" aria-controls="sorter-list" aria-labelledby="sorter">
             <span id="selected-sort">---</span>
             <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32" fill="none"
-              class="photographer__sorter-button-arrow" aria-hidden="true">
+              class="photographer__sorter-button-opener-arrow" aria-hidden="true">
               <g clip-path="url(#clip0_179240_75)">
                 <path d="M9.88 20.5466L16 14.44L22.12 20.5466L24 18.6666L16 10.6666L8 18.6666L9.88 20.5466Z"
                   fill="white" />
@@ -41,7 +41,7 @@
           </button>
           <ul id="sorter-list" class="photographer__sorter-list">
             <li>
-              <button id="photographer__sorter-arrow-closed" class="photographer__sorter-arrow-closed"
+              <button id="photographer__sorter-arrow-close" class="photographer__sorter-arrow-close"
                 aria-label="fermer la liste des filtres">
                 <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32" fill="none">
                   <g clip-path="url(#clip0_179240_75)" aria-hidden="true">
@@ -103,6 +103,10 @@
         <button type="submit"
           class="modal__contact-submit-button submit-button button modal__contact-last-focus">Envoyer</button>
       </form>
+      <div class="modal__contact-validation">
+        <p>Votre message a bien été envoyé</p>
+        <button class="button" id="close-validation"> fermer </button>
+      </div>
     </div>
   </dialog>
   <!-- modal media lightbox -->
