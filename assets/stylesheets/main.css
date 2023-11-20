@@ -49,7 +49,7 @@ dialog {
  * Basic typography style
  */
 * {
-  font-family: "DM Sans", sans-serif;
+  font-family: 'DM Sans', sans-serif;
 }
 
 h1 {
@@ -125,7 +125,8 @@ form .error-message {
 .media-card__under-picture-container {
   color: #901c1c;
 }
-.media-card__title, .media-card__likes {
+.media-card__title,
+.media-card__likes {
   font-size: 1.5rem;
 }
 .media-card__title {
@@ -270,9 +271,9 @@ form .error-message {
   width: 1050px;
   height: 900px;
   -o-object-fit: cover;
-     object-fit: cover;
+  object-fit: cover;
   -o-object-position: center 40%;
-     object-position: center 40%;
+  object-position: center 40%;
   flex-shrink: 0;
   animation-name: modalPicture;
   animation-duration: 2s;
@@ -298,7 +299,8 @@ form .error-message {
   justify-content: space-between;
   align-items: center;
 }
-.photographer__contact-button:hover, .photographer__contact-button:focus {
+.photographer__contact-button:hover,
+.photographer__contact-button:focus {
   background-color: #db8876;
   color: #000000;
 }
@@ -311,14 +313,14 @@ form .error-message {
   margin: 0px auto 100px auto;
 }
 
-.photographer__filter {
+.photographer__sorter {
   display: flex;
   align-items: flex-start;
   gap: 15px;
   margin: 15px 100px;
   position: relative;
 }
-.photographer__filter-list {
+.photographer__sorter-list {
   display: none;
   background-color: #901c1c;
   flex-direction: column;
@@ -332,14 +334,14 @@ form .error-message {
   min-width: 100px;
   z-index: 99;
 }
-.photographer__filter-item {
+.photographer__sorter-item {
   color: white;
   padding: 23px 60px 23px 20px;
   font-size: 1.125em;
   font-weight: 700;
   letter-spacing: 1.25px;
 }
-.photographer__filter-item-divider {
+.photographer__sorter-item-divider {
   width: 100%;
   height: 3px;
   background-color: white;
@@ -424,10 +426,11 @@ form .input-error {
   height: 300px;
   width: 350px;
   -o-object-fit: cover;
-     object-fit: cover;
+  object-fit: cover;
   border-radius: 5px;
 }
-.media-card__under-picture-container, .media-card__likes-container {
+.media-card__under-picture-container,
+.media-card__likes-container {
   display: flex;
 }
 .media-card__under-picture-container {
@@ -462,10 +465,10 @@ form .input-error {
   height: 200px;
   width: 200px;
   -o-object-fit: cover;
-     object-fit: cover;
+  object-fit: cover;
   transform: scale(1.5);
   -o-object-position: 50% 30%;
-     object-position: 50% 30%;
+  object-position: 50% 30%;
 }
 
 .modal {

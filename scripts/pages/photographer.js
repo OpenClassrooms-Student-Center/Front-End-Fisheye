@@ -13,7 +13,7 @@ import { createPhotographerMediaCard } from '../templates/photographerMediaCardT
 import { createPhotographerInfos } from '../templates/photographerInfosTemplate.js';
 
 import { initModal } from '../utils/modal.js';
-import { manageGalleryFiltered } from '../utils/filter.js';
+import { manageGallerySorted } from '../utils/sort.js';
 
 /**
  * Executed when photographer page is loaded
@@ -211,7 +211,7 @@ const init = async () => {
         pictureNameRepository,
         totalLikes
       );
-      manageGalleryFiltered(
+      manageGallerySorted(
         photographer,
         medias,
         pictureNameRepository,
