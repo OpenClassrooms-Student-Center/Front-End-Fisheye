@@ -6,7 +6,6 @@ function displayData(photographers) {
 
   photographers.forEach((photographer) => {
     const photographerModel = photographerCard(photographer);
-    console.log(photographerModel);
     photographersSection.appendChild(photographerModel);
   });
 }

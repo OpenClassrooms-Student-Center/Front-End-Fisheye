@@ -1,48 +1,30 @@
 import { getAllorOnePhotographer } from "../api/getPhotographer.js";
 import {
-  likeContainer,
-  mediaCard,
   photographerHero,
 } from "../templates/photographer.js";
-
-let allLikes;
-
-async function changeFilter(sort, id, photographerFirstName) {
-  const medias = await getAllorOnePhotographer(id).then(({ photographers }) => {
-    return photographers[0].media;
-  });
-
-  const mediaSort = await getMedia(medias, sort);
-
-  displayMedia(mediaSort, photographerFirstName);
-}
-
-function displayLightbox() {
-  lightbox.style.display = "block";
-}
+import { medias, displayLikesContainer } from "../templates/media.js";
 
 async function init() {
   let urlParams = new URLSearchParams(window.location.search);
   let id = parseInt(urlParams.get("id"));
-  const filter = document.querySelector("#filter");
+
 
   const { photographers } = await getAllorOnePhotographer(id);
-  const { name: photographerFirstName, media } = await photographers[0];
+  const photographer = photographers[0];
+  
+  const allLikes = photographer.media.reduce((total, media) => total + media.likes, 0);
+  
+  const allMedias = {
+    allMedias: photographer.media,
+    firstName: getFirstName(photographer.name),
+    photographerPrice: photographer.price,
+    allLikes: allLikes
+  };
+  
 
-  filter.addEventListener("change", (event) => {
-    changeFilter(event.target.value, id, getFirstName(photographerFirstName));
-  });
-
-  allLikes = media.reduce((total, media) => total + media.likes, 0);
-
-  const photographersWithAllLikes = {
-    ...photographers[0],
-    allLikes: allLikes,
-  }
-
-  displayPhotographer(photographersWithAllLikes);
-  displayMedia(media, getFirstName(photographerFirstName));
-  displayLikeCounter(photographersWithAllLikes);
+  displayPhotographer(photographers[0]);
+  medias(allMedias);
+  displayLikesContainer(allLikes, photographers[0].price);
 }
 
 function getFirstName(photographerFirstName) {
@@ -73,19 +55,6 @@ function displayPhotographer(photographer) {
   const { userInfos, userPicture } = photographerHero(photographer);
   photographInfoSection.appendChild(userInfos);
   photographPicture.appendChild(userPicture);
-}
-
-function displayMedia(medias, firstName) {
-  const mediaSection = document.querySelector(".media-section");
-  mediaSection.innerHTML = "";
-
-  medias?.forEach((media) => {
-    mediaSection.appendChild(mediaCard(media, firstName));
-  });
-}
-
-function displayLikeCounter({allLikes, price}) {
-  likeContainer(allLikes, price);
 }
 
 init();
