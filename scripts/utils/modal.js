@@ -5,7 +5,7 @@
 *
 /*********************************************************************************/
 import { initContactForm } from '../utils/contactForm.js';
-import { initLightBox } from '../utils/lightBox.js';
+import { initLightbox } from './lightbox.js';
 import { manageAccessibilityFocus } from './accessibility.js';
 
 /**
@@ -56,7 +56,7 @@ const initModal = (
         break;
       // media lightbox
       case 'modal__lightbox':
-        initLightBox(pictureNameRepository, media, medias);
+        initLightbox(pictureNameRepository, media, medias);
         break;
       default:
         console.log(`${modalElementId} doesn't match with cases`);

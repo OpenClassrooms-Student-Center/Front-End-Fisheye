@@ -10,11 +10,11 @@ export const createPhotographerCard = (photographer) => {
   article.className = 'photographer';
   // manage missing photo
   let src;
-  if (portrait === '' || portrait === undefined) {
+  if (portrait) {
+    src = `assets/medias/photographers/Photographers_ID_Photos/${portrait}`;
+  } else {
     src =
       'assets/medias/photographers/Photographers_ID_Photos/default-avatar.jpg';
-  } else {
-    src = `assets/medias/photographers/Photographers_ID_Photos/${portrait}`;
   }
   const photographerCard = `
       <a class="photographer__link" href="./pages/photographer.html?id=${id}">

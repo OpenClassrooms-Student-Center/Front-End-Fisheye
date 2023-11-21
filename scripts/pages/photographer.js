@@ -6,9 +6,9 @@ import { ApiMedia } from '../models/api/ApiMedia.js';
 import { Photographer } from '../models/metier/Photographer.js';
 import { mediaFactory } from '../models/factories/MediaFactory.js';
 
-import { displayPhotographerProfile } from '../templates/photographerProfileTemplate.js';
+import { createPhotographerProfile } from '../templates/photographerProfileTemplate.js';
 import { createPhotographerMediaCard } from '../templates/photographerMediaCardTemplate.js';
-import { displayPhotographerInfos } from '../templates/photographerInfosTemplate.js';
+import { createPhotographerInfos } from '../templates/photographerInfosTemplate.js';
 
 import { initModal } from '../utils/modal.js';
 import { manageGallerySorted } from '../utils/sort.js';
@@ -83,10 +83,10 @@ export const displayPhotographerGallery = async (
         // To perpetuate the data, the object must be updated in the database (update(media)).
         likesNumber.textContent = media.likes;
         // update total Likes html
-        displayPhotographerInfos(photographer, totalLikes);
+        createPhotographerInfos(photographer, totalLikes);
       });
       // manage media lightbox
-      manageMediaLightBoxModal(media, pictureNameRepository, medias);
+      manageMediaLightboxModal(media, pictureNameRepository, medias);
     });
   } catch (error) {
     console.log(error.message);
@@ -98,20 +98,20 @@ export const displayPhotographerGallery = async (
  * @param {string} pictureNameRepository
  * @param {array} medias
  */
-const manageMediaLightBoxModal = (media, pictureNameRepository, medias) => {
-  const openLightBoxModalBtn = document.getElementById(
+const manageMediaLightboxModal = (media, pictureNameRepository, medias) => {
+  const openLightboxModalBtn = document.getElementById(
     `media-card-${media.id}`
   );
-  openLightBoxModalBtn.addEventListener('click', () => {
-    const modalLightBox = initModal(
+  openLightboxModalBtn.addEventListener('click', () => {
+    const modalLightbox = initModal(
       'modal__lightbox',
-      openLightBoxModalBtn,
+      openLightboxModalBtn,
       null,
       media,
       pictureNameRepository,
       medias
     );
-    modalLightBox.displayModal();
+    modalLightbox.displayModal();
   });
 };
 
@@ -162,7 +162,7 @@ const init = async () => {
       console.log(photographer);
       const medias = await datasMedia.getMediasByPhotographerId(idPhotographer);
       console.log(medias);
-      displayPhotographerProfile(photographer);
+      createPhotographerProfile(photographer);
       // path to picture (only firstname is needed)
       const pictureNameRepository = photographer.name.split(' ')[0];
       const totalLikes = manageTotalLikes(medias);
@@ -178,7 +178,7 @@ const init = async () => {
         pictureNameRepository,
         totalLikes
       );
-      displayPhotographerInfos(photographer, totalLikes);
+      createPhotographerInfos(photographer, totalLikes);
       manageContactFormModal(photographer);
     }
   } catch (error) {

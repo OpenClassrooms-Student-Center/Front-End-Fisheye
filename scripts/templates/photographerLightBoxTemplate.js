@@ -4,12 +4,12 @@
  * @param {object} media
  * @returns {html}
  */
-export const createPhotographerLightBox = (pictureNameRepository, media) => {
+export const createPhotographerLightbox = (pictureNameRepository, media) => {
   const { title, src, type } = media;
 
   const picture = `../../assets/medias/photographers/${pictureNameRepository}/${src}`;
   // article container
-  const mediaLightBox = document.querySelector('.modal__lightbox-media');
+  const mediaLightbox = document.querySelector('.modal__lightbox-media');
   // manage depends of media type format(image or video)
   let mediaPicture;
   if (type === 'image' && src != null) {
@@ -33,6 +33,6 @@ export const createPhotographerLightBox = (pictureNameRepository, media) => {
     mediaPicture = `<div aria-label="absence de media">Absence de media</div>`;
   }
 
-  mediaLightBox.innerHTML = mediaPicture;
-  return mediaLightBox;
+  mediaLightbox.innerHTML = mediaPicture;
+  return mediaLightbox;
 };

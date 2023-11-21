@@ -3,7 +3,7 @@
  * @param {object} photographer
  * @returns {html}
  */
-export const displayPhotographerProfile = (photographer) => {
+export const createPhotographerProfile = (photographer) => {
   const { name, portrait, city, country, tagline } = photographer;
   // div container
   const photographerHeader = document.querySelector('.photographer__profile');

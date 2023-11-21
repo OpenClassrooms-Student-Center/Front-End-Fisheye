@@ -1,9 +1,9 @@
 /*********************************************************************************
 *
-* This file contains all the functions required to manage modal media lightBox
+* This file contains all the functions required to manage modal media lightbox
 *
 /*********************************************************************************/
-import { createPhotographerLightBox } from '../templates/photographerLightBoxTemplate.js';
+import { createPhotographerLightbox } from '../templates/photographerLightboxTemplate.js';
 import { mediaFactory } from '../models/factories/MediaFactory.js';
 
 /**
@@ -12,8 +12,8 @@ import { mediaFactory } from '../models/factories/MediaFactory.js';
  * @param {object} media
  * @param {array<object>} medias
  */
-const initLightBox = (pictureNameRepository, media, medias) => {
-  createPhotographerLightBox(pictureNameRepository, media);
+const initLightbox = (pictureNameRepository, media, medias) => {
+  createPhotographerLightbox(pictureNameRepository, media);
   const modal = document.getElementById('modal__lightbox');
   const previousCarouselMedia = document.querySelector(
     '.modal__lightbox-carousel-previous'
@@ -23,11 +23,11 @@ const initLightBox = (pictureNameRepository, media, medias) => {
   );
   previousCarouselMedia.addEventListener('click', () => {
     media = manageCarousel().previousMedia;
-    createPhotographerLightBox(pictureNameRepository, media);
+    createPhotographerLightbox(pictureNameRepository, media);
   });
   nextCarouselMedia.addEventListener('click', () => {
     media = manageCarousel().nextMedia;
-    createPhotographerLightBox(pictureNameRepository, media);
+    createPhotographerLightbox(pictureNameRepository, media);
   });
 
   // accessibility with key
@@ -35,11 +35,11 @@ const initLightBox = (pictureNameRepository, media, medias) => {
     if (modal.getAttribute('aria-hidden') === 'false') {
       if (e.key === 'ArrowLeft' || e.code === 'ArrowLeft') {
         media = manageCarousel().previousMedia;
-        createPhotographerLightBox(pictureNameRepository, media);
+        createPhotographerLightbox(pictureNameRepository, media);
       }
       if (e.key === 'ArrowRight' || e.code === 'ArrowRight') {
         media = manageCarousel().nextMedia;
-        createPhotographerLightBox(pictureNameRepository, media);
+        createPhotographerLightbox(pictureNameRepository, media);
       }
     }
   });
@@ -73,4 +73,4 @@ const initLightBox = (pictureNameRepository, media, medias) => {
   };
 };
 
-export { initLightBox };
+export { initLightbox };
