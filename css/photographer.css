@@ -146,3 +146,78 @@ form input {
 .displayed-scrollbar {
   right: 36px;
 }
+
+.lightbox-container.closed {
+  display: none;
+}
+
+.lightbox-container {
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.lightbox {
+  margin: 30px 100px;
+  background-color: #fff;
+  border: 2px solid #901c1c;
+  display: grid;
+  grid-template-columns: 96px 1fr 96px;
+  grid-template-rows: 90px 1fr 32px;
+  grid-column-gap: 0px;
+  grid-row-gap: 0px;
+  align-items: center;
+  justify-items: center;
+  width: 75vw;
+  height: 81vh;
+}
+
+.lightbox-media {
+  width: 550px;
+  height: 500px;
+  border-radius: 5px;
+  object-fit: contain;
+  grid-area: 2 / 2 / 3 / 3;
+}
+
+.lightbox-title {
+  grid-area: 3 / 2 / 4 / 3;
+}
+
+.lightbox span {
+  width: 72px;
+  height: 72px;
+  color: #901c1c;
+  font-size: 45px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.lightbox span:hover {
+  cursor: pointer;
+}
+
+.previous-button {
+  order: 1;
+  grid-area: 2 / 1 / 3 / 2;
+}
+
+.next-button {
+  order: 3;
+  grid-area: 2 / 3 / 3 / 4;
+}
+
+.lightbox-media {
+  order: 2;
+}
+
+.close-button {
+  order: 4;
+  grid-area: 1 / 3 / 2 / 4;
+}

@@ -20,10 +20,13 @@ class Media {
   }
 
   createMedia() {
+    const numberOfMedias = document.querySelectorAll('.media').length
     const mediaCard = document.createElement('article')
     if (this.hasOwnProperty('image')) mediaCard.innerHTML = this.createImage()
     else if (this.hasOwnProperty('video')) mediaCard.innerHTML = this.createVideo()
     else console.error('No image or video found')
+    mediaCard.setAttribute('media-id', this.id)
+    mediaCard.setAttribute('rank', numberOfMedias + 1)
     mediaCard.innerHTML += `
       <div class='media-info'>
         <h2 class='title'>${this.title}</h2>
@@ -37,20 +40,26 @@ class Media {
   }
 
   createImage() {
+    // <a>
     return `
-    <img class='media' src="assets/Sample Photos/${this.firstName}/${this.image}" alt="${this.title}">
+    <a href="#${this.id}">
+      <img class='media' src="assets/Sample Photos/${this.firstName}/${this.image}" alt="${this.title}" id="${this.id}">
+    </a>
     `
   }
 
   createVideo() {
+    /* <p>
+      Votre navigateur ne supporte cette vidéo. Voici 
+      <a href="assets/Sample Photos/${this.firstName}/${this.video}">un lien pour télécharger la vidéo</a>.
+    </p> */
     return `
-    <video class='media' controls preload="metadata">
-      <source src="assets/Sample Photos/${this.firstName}/${this.video}#t=1.1">
-      <p>
-        Votre navigateur ne supporte cette vidéo.
-        Voici <a href="assets/Sample Photos/${this.firstName}/${this.video}">un lien pour télécharger la vidéo</a>.
-      </p>
-    </video>
+    <a href="#${this.id}">
+      <video class='media' controls preload="metadata">
+        <source src="assets/Sample Photos/${this.firstName}/${this.video}#t=1.1">
+        
+      </video>
+    </a>
     `
   }
 }
