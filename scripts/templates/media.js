@@ -1,17 +1,15 @@
-
 import { changeFilter } from "../utils/utils.js";
 function medias(medias) {
   const { allMedias, firstName, photographerPrice, allLikes } = medias;
   let totalLikesAdded = 0;
   let mediasSorted = changeFilter(allMedias);
-
+  
   const filter = document.querySelector(".media-filter");
 
   filter.addEventListener("change", (event) => {
     const sort = event.target.value;
     displayMedias(changeFilter(allMedias, sort));
   });
-
 
   displayMedias(mediasSorted);
 
@@ -88,13 +86,16 @@ function medias(medias) {
   function displayLightbox(index) {
     const lightbox = document.querySelector(".lightbox");
     const lightboxClose = document.querySelector(".lightbox-close");
-    const mediaContent = document.querySelector(".media-content");
     const rightArrow = document.querySelector("#right-arrow");
     const leftArrow = document.querySelector("#left-arrow");
 
-    const { image, video, title } = mediasSorted[index] ?? {};
+    lightbox.style.display = "block";
 
-    // console.log("allMedias ivi", mediasSorted[index]);
+    lightboxClose.addEventListener("click", () => {
+      lightbox.style.display = "none";
+    });
+
+    displayLightboxTemplate(index);
 
     rightArrow.addEventListener("click", () => {
       if (index === mediasSorted.length - 1) {
@@ -102,7 +103,7 @@ function medias(medias) {
       } else {
         index += 1;
       }
-      displayLightbox(index);
+      displayLightboxTemplate(index);
     });
 
     leftArrow.addEventListener("click", () => {
@@ -111,14 +112,19 @@ function medias(medias) {
       } else {
         index -= 1;
       }
-      displayLightbox(index);
+      displayLightboxTemplate(index);
     });
+  }
+
+  function displayLightboxTemplate(index) {
+    console.log("index", index);
+    const mediaContent = document.querySelector(".media-content");
+
+    const { image, video, title } = mediasSorted[index] ?? {};
 
     const mediaLink = `assets/photographers/${firstName}/${
       image ?? video ?? ""
     }`;
-
-    // console.log("mediaLink", mediasSorted[index]?.image);
 
     const mediaElement = image
       ? `<img src="${mediaLink}" alt="${title}">`
@@ -130,12 +136,6 @@ function medias(medias) {
             <h3>${title}</h3>
           </div>
       `;
-
-    lightbox.style.display = "block";
-
-    lightboxClose.addEventListener("click", () => {
-      lightbox.style.display = "none";
-    });
   }
 
   return { getMediaCard, displayLightbox };
@@ -149,7 +149,5 @@ function displayLikesContainer(totalLikes, price) {
         <span>${price}€ / jour</span>
     `;
 }
-
-
 
 export { medias, displayLikesContainer };

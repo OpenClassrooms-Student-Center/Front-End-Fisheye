@@ -20,6 +20,15 @@ function photographerTemplate({
 
   photographerPrice = price;
 
+  function displayPhotographer(photographer) {
+    const photographInfoSection = document.querySelector(".photograph-infos");
+    const photographPicture = document.querySelector(".photograph-picture");
+
+    const { userInfos, userPicture } = photographerHero(photographer);
+    photographInfoSection.appendChild(userInfos);
+    photographPicture.appendChild(userPicture);
+  }
+
   function getUserCardDOM() {
     const article = document.createElement("article");
     article.innerHTML = `
@@ -35,6 +44,8 @@ function photographerTemplate({
   }
 
   function getUserHeroBanner() {
+    const photographInfoSection = document.querySelector(".photograph-infos");
+    const photographPicture = document.querySelector(".photograph-picture");
     const userInfos = document.createElement("article");
     userInfos.innerHTML = `
         <h2>${name}</h2>
@@ -46,15 +57,12 @@ function photographerTemplate({
     userPicture.src = picture;
     userPicture.alt = name;
 
-    return { userInfos, userPicture };
+  photographInfoSection.appendChild(userInfos);
+  photographPicture.appendChild(userPicture);
   }
 
   return { getUserCardDOM, getUserHeroBanner };
 }
-
-
-
-
 
 function photographerCard(photographer) {
   return photographerTemplate(photographer).getUserCardDOM();
@@ -64,7 +72,4 @@ function photographerHero(photographer) {
   return photographerTemplate(photographer).getUserHeroBanner();
 }
 
-export {
-  photographerCard,
-  photographerHero
-};
+export { photographerCard, photographerHero };
