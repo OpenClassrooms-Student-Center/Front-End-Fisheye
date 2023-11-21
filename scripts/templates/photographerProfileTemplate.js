@@ -15,7 +15,7 @@ export const displayPhotographerProfile = (photographer) => {
       </div>
       <button class="photographer__contact-button modal__contact-open-button button">Contactez-moi</button>
       <div class="profile-picture__container">
-        <img class="photographer__profile-picture profile-picture" src="../../assets/medias/photographers/Photographers_ID_Photos/${portrait}" alt="" aria-hidden="true">
+        <img class="photographer__profile-picture profile-picture" src="../../assets/medias/photographers/Photographers_ID_Photos/${portrait}" alt="${name}">
       </div>
         `;
   photographerHeader.innerHTML = photographerProfile;

@@ -1,5 +1,5 @@
 /**
- * Create media and add function to it
+ * Create object media
  * @param {object} data
  * @returns {object}
  */

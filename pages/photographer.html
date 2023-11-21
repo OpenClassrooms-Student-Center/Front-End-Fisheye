@@ -9,7 +9,7 @@
   <!-- compatible edge -->
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="icon" type="image/png" href="../assets/medias/favicon.png">
-  <link href="../assets/stylesheets/main.css" rel="stylesheet" type="text/css">
+  <link href="../assets/stylesheets/main.css" rel="stylesheet">
   <!-- font family -->
   <link href="https://fonts.googleapis.com/css?family=DM+Sans&display=swap" rel="stylesheet">
   <title>Fisheye - photographe </title>
@@ -17,11 +17,10 @@
 
 <body>
   <header class="header">
-    <a href="../index.html"><img src="../assets/medias/logo/logo.png" class="logo" alt="Page d'accueil Fisheye"
-        aria-hidden="true"><span class="hide-text">Aller à la page d'accueil Fisheye</span> </a>
+    <a href="../index.html"><img src="../assets/medias/logo/logo.png" class="logo" alt="Page d'accueil Fisheye"></a>
   </header>
-  <main id="main" class="main" aria-hidden="false">
-    <section class="photographer__profile" aria-label="profil">
+  <main class="main" aria-hidden="false">
+    <section class="photographer__profile" aria-label="profil du photographe">
       <!-- 
         photographer profile is display in this section via javaScript 
         (photographerProfileTemplate) 
@@ -29,10 +28,10 @@
     </section>
     <div class="photographer__portfolio">
       <section class="photographer__sorter" aria-label="tri des médias">
-        <p id="sorter" aria-hidden="true">Trier par</p>
+        <p id="sort-by">Trier par</p>
         <div>
           <button class="photographer__sorter-button photographer__sorter-button-opener" type="button"
-            aria-expanded="false" aria-controls="sorter-list" aria-label="Trier par">
+            aria-expanded="false" aria-controls="sorter-list" aria-labelledby="sort-by" aria-haspopup="listbox">
             <span id="selected-sort" aria-hidden="true">---</span>
             <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32" fill="none"
               class="photographer__sorter-button-opener-arrow" aria-hidden="true">
@@ -42,9 +41,9 @@
               </g>
             </svg>
           </button>
-          <ul class="photographer__sorter-list">
+          <ul class="photographer__sorter-list" id="sorter-list" role="listbox">
             <li>
-              <button id="photographer__sorter-arrow-close" class="photographer__sorter-arrow-close"
+              <button role="option" id="photographer__sorter-arrow-close" class="photographer__sorter-arrow-close"
                 aria-label="fermer la liste des filtres">
                 <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32" fill="none">
                   <g clip-path="url(#clip0_179240_75)" aria-hidden="true">
@@ -54,13 +53,13 @@
                 </svg>
               </button>
             </li>
-            <li><button id="photographer__sorter-popularity"
+            <li><button role="option" id="photographer__sorter-popularity"
                 class="photographer__sorter-item photographer__sorter-button">Popularité</button></li>
             <li role="separator" class="photographer__sorter-item-divider" aria-hidden="true"></li>
-            <li><button id="photographer__sorter-date"
+            <li><button role="option" id="photographer__sorter-date"
                 class="photographer__sorter-item photographer__sorter-button">Date</button></li>
             <li role="separator" class="photographer__sorter-item-divider" aria-hidden="true"></li>
-            <li><button id="photographer__sorter-title"
+            <li><button role="option" id="photographer__sorter-title"
                 class="photographer__sorter-item photographer__sorter-button">Titre</button></li>
           </ul>
         </div>
@@ -79,15 +78,16 @@
     </section>
   </main>
   <!-- modal contact form -->
-  <dialog tabindex=-1 id="modal__contact" class="modal" aria-hidden="true" aria-describedby="modalTitle">
+  <dialog tabindex=-1 id="modal__contact" class="modal" aria-hidden="true" aria-describedby="modal__title">
     <div class="modal__contact modal__container">
       <header class="modal__contact-header">
-        <h2 id="modalTitle">Contactez-moi<br><span id="modal__contact-photographer-name"></span></h2>
+        <h2 id="modal__title" class="modal__contact-title">Contactez-moi<br><span
+            id="modal__contact-photographer-name"></span></h2>
         <button class="modal__contact-close-button modal__close-button"><img src="../assets/medias/icons/close.svg"
             alt="" aria-hidden="true"><span class="hide-text">fermer la modale</span></button>
       </header>
       <!-- novalidate permitted override by js -->
-      <form id="form" name="contact" novalidate>
+      <form id="contact-form" name="contact" novalidate>
         <div class="formData">
           <label for="firstName" class="label">Prénom</label>
           <input class="text-control" type="text" id="firstName" name="firstName" aria-required="true"
@@ -119,7 +119,7 @@
   </dialog>
   <!-- modal media lightbox -->
   <dialog tabindex=-1 id="modal__lightbox" class="modal" aria-hidden="true" aria-label="Media vue de près">
-    <div class="modal__lightbox  modal__container">
+    <div class="modal__lightbox  modal__container" aria-roledescription="carousel">
       <button class="modal__lightbox-close-button modal__close-button" aria-label="fermer la modale">
         <svg width="42" height="42" viewBox="0 0 42 42" fill="none" xmlns="http://www.w3.org/2000/svg"
           class="close-icon" aria-hidden="true">
@@ -128,7 +128,7 @@
             fill="white" />
         </svg>
       </button>
-      <button class="modal__lightbox-carousel-previous" aria-label="image précédente">
+      <a href="#" class="modal__lightbox-carousel-previous" aria-label="image précédente" aria-controls="display-media">
         <svg class="modal__lightbox-carousel-previous-icon" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
           width="96" height="96" viewBox="0 0 96 96" fill="none">
           <g clip-path="url(#clip0_120_800)">
@@ -136,16 +136,17 @@
               fill="#911C1C" />
           </g>
           <defs>
-            <clipPath id="clip0_120_800">
+            <clipPath>
               <rect width="96" height="96" fill="white" transform="translate(96) rotate(90)" />
             </clipPath>
           </defs>
         </svg>
-      </button>
-      <div class="modal__lightbox-media">
+      </a>
+      <div id="display-media" class="modal__lightbox-media" aria-live="polite">
         <!-- content generated by js -->
       </div>
-      <button class="modal__lightbox-carousel-next modal__lightbox-last-focus" aria-label="image suivante">
+      <a href="#" class="modal__lightbox-carousel-next modal__lightbox-last-focus" aria-label="image suivante"
+        aria-controls="display-media">
         <svg class="modal__lightbox-carousel-next-icon" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="96"
           height="96" viewBox="0 0 96 96" fill="none">
           <g clip-path="url(#clip0_120_803)">
@@ -153,12 +154,12 @@
               fill="#911C1C" />
           </g>
           <defs>
-            <clipPath id="clip0_120_803">
+            <clipPath>
               <rect width="96" height="96" fill="white" transform="translate(0 96) rotate(-90)" />
             </clipPath>
           </defs>
         </svg>
-      </button>
+      </a>
     </div>
   </dialog>
 

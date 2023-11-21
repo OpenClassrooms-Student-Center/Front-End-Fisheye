@@ -14,7 +14,7 @@ const initContactForm = (closeModal, photographer) => {
   // we retrieve the photographer in preparation for sending him a message
   // directly to his e-mail address (when it's added to the database)
   // const email = photographer.email
-  const form = document.querySelector('#form');
+  const form = document.getElementById('contact-form');
   // manage form when submit
   form.addEventListener('submit', (event) => {
     // prevents default behavior (reload)
