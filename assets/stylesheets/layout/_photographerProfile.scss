@@ -22,3 +22,27 @@
     }
   }
 }
+@media screen and (max-width: 1024px) {
+  .photographer {
+    &__profile {
+      justify-content: space-between;
+      margin: 0;
+      padding: 70px 50px;
+    }
+  }
+}
+@media screen and (max-width: 768px) {
+  .photographer {
+    &__profile {
+      flex-direction: column;
+      height: auto;
+      gap: 10px;
+    }
+    &__presentation {
+      order: 2;
+    }
+    &__contact-button {
+      order: 3;
+    }
+  }
+}

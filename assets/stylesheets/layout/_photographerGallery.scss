@@ -8,4 +8,10 @@
   grid-template-columns: 1fr 1fr 1fr;
   margin: 40px auto 100px auto;
   row-gap: 30px;
+  @media screen and (max-width: 1275px) {
+    grid-template-columns: 1fr 1fr;
+  }
+  @media screen and (max-width: 768px) {
+    grid-template-columns: 1fr;
+  }
 }

@@ -3,17 +3,19 @@
 * -----------------------------------------------------------------------------*/
 #modal__lightbox {
   background-color: $white;
+  padding: 0;
 }
 .modal__lightbox {
   align-items: center;
   display: flex;
   justify-content: center;
-  padding: 40px 100px;
-  width: 100%;
+  margin: 40px auto;
+  position: absolute;
+  width: 100vw;
   &-close-button {
     position: relative;
-    right: 90px;
-    top: 50px;
+    right: 110px;
+    top: 0px;
     .close-icon path {
       fill: $principal-color;
     }
@@ -41,5 +43,23 @@
   }
   to {
     opacity: 1;
+  }
+}
+
+@media screen and (max-width: 1400px) {
+  .modal__lightbox {
+    &-close-button {
+      right: 2%;
+      top: 0%;
+    }
+  }
+}
+
+@media screen and (max-width: 1180px) {
+  .modal__lightbox {
+    &-media-container {
+      max-height: 900px;
+      width: 100%;
+    }
   }
 }

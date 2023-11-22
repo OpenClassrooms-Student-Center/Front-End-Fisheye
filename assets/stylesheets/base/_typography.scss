@@ -156,3 +156,9 @@ form {
     font-size: 1.5em;
   }
 }
+
+@media screen and (max-width: 768px) {
+  .photographer__profile {
+    text-align: center;
+  }
+}

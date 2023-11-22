@@ -162,6 +162,11 @@ form .text-input {
   font-size: 1.5em;
 }
 
+@media screen and (max-width: 768px) {
+  .photographer__profile {
+    text-align: center;
+  }
+}
 /** -----------------------------------------------------------------------------
 * Helpers class
 * -----------------------------------------------------------------------------*/
@@ -261,24 +266,32 @@ form .text-input {
   margin-bottom: 25px;
 }
 
+@media screen and (max-width: 1200px) {
+  .modal__contact {
+    padding: 10px 35px;
+    width: 80%;
+  }
+}
 /** -----------------------------------------------------------------------------
 * Modal lightbox
 * -----------------------------------------------------------------------------*/
 #modal__lightbox {
   background-color: #fff;
+  padding: 0;
 }
 
 .modal__lightbox {
   align-items: center;
   display: flex;
   justify-content: center;
-  padding: 40px 100px;
-  width: 100%;
+  margin: 40px auto;
+  position: absolute;
+  width: 100vw;
 }
 .modal__lightbox-close-button {
   position: relative;
-  right: 90px;
-  top: 50px;
+  right: 110px;
+  top: 0px;
 }
 .modal__lightbox-close-button .close-icon path {
   fill: #901c1c;
@@ -310,6 +323,18 @@ form .text-input {
     opacity: 1;
   }
 }
+@media screen and (max-width: 1400px) {
+  .modal__lightbox-close-button {
+    right: 2%;
+    top: 0%;
+  }
+}
+@media screen and (max-width: 1180px) {
+  .modal__lightbox-media-container {
+    max-height: 900px;
+    width: 100%;
+  }
+}
 /** -----------------------------------------------------------------------------
 * Photographer's profile
 * -----------------------------------------------------------------------------*/
@@ -330,6 +355,26 @@ form .text-input {
   color: #000;
 }
 
+@media screen and (max-width: 1024px) {
+  .photographer__profile {
+    justify-content: space-between;
+    margin: 0;
+    padding: 70px 50px;
+  }
+}
+@media screen and (max-width: 768px) {
+  .photographer__profile {
+    flex-direction: column;
+    height: auto;
+    gap: 10px;
+  }
+  .photographer__presentation {
+    order: 2;
+  }
+  .photographer__contact-button {
+    order: 3;
+  }
+}
 /** -----------------------------------------------------------------------------
 * Photographer's gallery
 * -----------------------------------------------------------------------------*/
@@ -341,6 +386,16 @@ form .text-input {
   grid-template-columns: 1fr 1fr 1fr;
   margin: 40px auto 100px auto;
   row-gap: 30px;
+}
+@media screen and (max-width: 1275px) {
+  .photographer__gallery {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+@media screen and (max-width: 768px) {
+  .photographer__gallery {
+    grid-template-columns: 1fr;
+  }
 }
 
 /** -----------------------------------------------------------------------------
@@ -534,7 +589,7 @@ form .input-error:focus {
   display: none;
   height: 100vh;
   left: 0;
-  overflow: auto;
+  overflow-y: auto;
   position: fixed;
   top: 0;
   width: 100vw;
@@ -567,6 +622,11 @@ form .input-error:focus {
   gap: 70px;
   grid-template-columns: 1fr 1fr 1fr;
   margin: 50px 0 100px;
+}
+@media screen and (max-width: 768px) {
+  .photographers__section {
+    grid-template-columns: 1fr 1fr;
+  }
 }
 
 .photographer__portfolio {
