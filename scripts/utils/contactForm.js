@@ -20,10 +20,8 @@ const initContactForm = (closeModal, photographer) => {
     event.preventDefault();
     manageForm(form, closeModal);
     // manage focus on first invalid form data
-    if (document.querySelector('input:invalid')) {
-      document.querySelector('input:invalid').focus();
-    } else if (document.querySelector('textarea:invalid')) {
-      document.querySelector('textarea:invalid').focus();
+    if (document.querySelector('.input-error')) {
+      document.querySelector('.input-error').focus();
     }
   });
 };
@@ -149,9 +147,7 @@ function printErrorMessage(message, parentElement) {
  * @param {object} parentElement
  */
 function clearErrorMessage(parentElement) {
-  const spanErrorMessage = document.getElementById(
-    `erreur-${parentElement.id}`
-  );
+  const spanErrorMessage = document.getElementById(`error-${parentElement.id}`);
   if (spanErrorMessage) {
     spanErrorMessage.remove();
     parentElement.classList.remove('input-error');
