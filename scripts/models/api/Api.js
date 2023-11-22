@@ -1,3 +1,9 @@
+/*********************************************************************************
+*
+* This files permitted to link DB
+*
+/*********************************************************************************/
+
 /**
  * function to link the database for easier calling up
  * @param {*} url
@@ -6,8 +12,7 @@
 const getDatas = async (url) => {
   try {
     const reponse = await fetch(`../../assets/data/${url}`);
-    const datas = await reponse.json();
-    return datas;
+    return await reponse.json();
   } catch (error) {
     console.log(error.message);
   }

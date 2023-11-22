@@ -1,7 +1,11 @@
+/*********************************************************************************
+*
+* This file links to the photographers' database.
+*
+/*********************************************************************************/
+
 import { getDatas } from './Api.js';
-/**
- * This file provides a link to the photographers' database.
- */
+
 const ApiPhotographers = () => {
   // CRUD if necessary
 
@@ -11,9 +15,7 @@ const ApiPhotographers = () => {
    */
   const getPhotographers = async () => {
     try {
-      const photographers = await getDatas('/photographers.json');
-      console.log(photographers);
-      return photographers;
+      return await getDatas('/photographers.json');
     } catch (error) {
       console.log(error.message);
     }
@@ -28,10 +30,7 @@ const ApiPhotographers = () => {
     try {
       let photographersData = await getPhotographers();
       photographersData = photographersData.photographers;
-      const photographerDataFiltered = photographersData.find(
-        (photographer) => photographer.id == idP
-      );
-      return photographerDataFiltered;
+      return photographersData.find((photographer) => photographer.id == idP);
     } catch (error) {
       console.log(error.message);
     }

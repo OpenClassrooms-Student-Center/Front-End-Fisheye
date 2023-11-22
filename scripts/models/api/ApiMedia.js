@@ -1,17 +1,21 @@
+/*********************************************************************************
+*
+* This file links to the media database.
+*
+/*********************************************************************************/
+
 import { getDatas } from './Api.js';
-/**
- * This file links to the media database.
- */
+
 const ApiMedia = () => {
   // CRUD if necessary
+
   /**
    * Function that retrieves all medias from the JSON database
    * @returns {Promise<array>}
    */
   const getMedias = async () => {
     try {
-      const medias = await getDatas('media.json');
-      return medias;
+      return await getDatas('media.json');
     } catch (error) {
       console.log(error.message);
     }
@@ -26,10 +30,7 @@ const ApiMedia = () => {
     try {
       let mediasData = await getMedias();
       mediasData = mediasData.media;
-      const mediasDataFiltered = mediasData.filter(
-        (media) => media.photographerId == idP
-      );
-      return mediasDataFiltered;
+      return mediasData.filter((media) => media.photographerId == idP);
     } catch (error) {
       console.log(error.message);
     }

@@ -39,16 +39,24 @@ const manageGallerySorted = (
   sorterArrowClosed.addEventListener('click', () => {
     toggleSorter();
   });
-  popularSorter.addEventListener('click', () => {
-    displayMediasSortered('Popularité', popularSorter);
-  });
-  dateSorter.addEventListener('click', () => {
-    displayMediasSortered('Date', dateSorter);
-  });
-  titleSorter.addEventListener('click', () => {
-    displayMediasSortered('Titre', titleSorter);
-  });
 
+  /**
+   * manage sort depend of clicked button
+   * @param {HTMLElement} button
+   */
+  const manageEventButtonSort = (button) => {
+    button.addEventListener('click', () => {
+      displayMediasSortered(button.textContent, button);
+    });
+  };
+
+  manageEventButtonSort(popularSorter);
+  manageEventButtonSort(dateSorter);
+  manageEventButtonSort(titleSorter);
+
+  /**
+   * manage open/close sorter list
+   */
   const toggleSorter = () => {
     const ariaExpandedAttribute = openSorterList.getAttribute('aria-expanded');
     if (ariaExpandedAttribute === 'false') {
@@ -62,6 +70,11 @@ const manageGallerySorted = (
     }
   };
 
+  /**
+   * Sort medias depend of selected sort
+   * @param {string} sorter
+   * @returns {array}
+   */
   const sorterMedias = (sorter) => {
     switch (sorter) {
       case 'Popularité':
@@ -80,6 +93,12 @@ const manageGallerySorted = (
     }
     return mediasSorted;
   };
+
+  /**
+   * Reload galery for display media sorted
+   * @param {string} sorter
+   * @param {HTMLElement} sorterButton
+   */
   const displayMediasSortered = (sorter, sorterButton) => {
     popularSorter.removeAttribute('aria-current');
     dateSorter.removeAttribute('aria-current');
@@ -90,7 +109,7 @@ const manageGallerySorted = (
     // empty gallery
     photographerGallery.innerHTML = '';
     mediasSorted = sorterMedias(sorter);
-    // change button content of sort by
+    // change button content by the current sorter
     selectedSort.textContent = sorter;
     sorterButton.setAttribute('aria-current', 'location');
     toggleSorter();
@@ -102,6 +121,7 @@ const manageGallerySorted = (
     );
   };
 
+  // accessibility trap focus
   manageAccessibilityFocus(
     openSorterList,
     'aria-expanded',

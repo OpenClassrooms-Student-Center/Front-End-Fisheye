@@ -1,4 +1,11 @@
+/*********************************************************************************
+*
+* Factory method to create media
+*
+/*********************************************************************************/
+
 import { MediaImage, MediaVideo } from '../metier/Media.js';
+
 /**
  * manage media creation depend of its type (photo or video)
  * @param {object} data
@@ -11,7 +18,7 @@ const mediaFactory = (data) => {
   } else if (data.video) {
     media = MediaVideo(data);
   } else {
-    throw new Error('Unknown data');
+    console.log('Unknown data');
   }
   return media;
 };

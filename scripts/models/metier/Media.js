@@ -1,41 +1,51 @@
-/**
- * Create object media
- * @param {object} data
- * @returns {object}
- */
-const Media = (data) => {
-  const { id, photographerId, title, description, likes, date, price } = data;
-  return {
-    id,
-    photographerId,
-    title,
-    description,
-    likes,
-    date,
-    price,
-  };
-};
+/*********************************************************************************
+*
+* This file contains Media object management
+*
+/*********************************************************************************/
 
 /**
- * function that inherits from Media and creates an object image
+ * Create object media with factory pattern
+ * @param {object} data
+ */
+const Media = (data) => ({
+  id: data.id,
+  photographerId: data.photographerId,
+  title: data.title,
+  date: data.date,
+  price: data.price,
+  likes: data.likes,
+  addLike() {
+    this.likes += 1;
+  },
+  removeLike() {
+    this.likes -= 1;
+  },
+  getLikes() {
+    return this.likes;
+  },
+});
+
+/**
+ * function that inherits from Media and creates an image
  * @param {object} data
  * @returns {object}
  */
 const MediaImage = (data) => {
   const newMedia = Media(data);
   const src = data.image;
-  return { type: 'image', src, ...newMedia };
+  return { ...newMedia, type: 'image', src };
 };
 
 /**
- * function that inherits from Media and creates an object video
+ * function that inherits from Media and creates a video
  * @param {object} data
  * @returns {object}
  */
 const MediaVideo = (data) => {
   const newMedia = Media(data);
   const src = data.video;
-  return { type: 'video', src, ...newMedia };
+  return { ...newMedia, type: 'video', src };
 };
 
 export { MediaImage, MediaVideo };

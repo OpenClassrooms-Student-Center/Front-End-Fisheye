@@ -1,11 +1,21 @@
+/*********************************************************************************
+*
+* This file contains Photographer object management
+*
+/*********************************************************************************/
+
 /**
- * create object photographer
+ * create object photographer with factory pattern
  * @param {object} data
- * @returns {object}
  */
-const Photographer = (data) => {
-  const { name, portrait, city, country, tagline, id, price } = data;
-  return { name, portrait, city, country, tagline, id, price };
-};
+const Photographer = (data) => ({
+  name: data.name,
+  portrait: data.portrait,
+  city: data.city,
+  country: data.country,
+  tagline: data.tagline,
+  id: data.id,
+  price: data.price,
+});
 
 export { Photographer };

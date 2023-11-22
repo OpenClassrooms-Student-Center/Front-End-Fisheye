@@ -1,8 +1,11 @@
-/**
- * controller of home page
- */
+/*********************************************************************************
+*
+* This file control home page
+*
+/*********************************************************************************/
+
 import { ApiPhotographers } from '../models/api/ApiPhotographers.js';
-import { createPhotographerCard } from '../templates/indexPhotographerCardTemplate.js';
+import { displayPhotographerCard } from '../templates/indexPhotographerCardTemplate.js';
 import { Photographer } from '../models/metier/Photographer.js';
 
 /**
@@ -17,30 +20,22 @@ document.addEventListener('DOMContentLoaded', function () {
  * @param {array} photographers
  */
 const displayPhotographers = (photographers) => {
-  try {
-    const photographersSection = document.querySelector(
-      '.photographers__section'
-    );
-    photographers.forEach((photographer) => {
-      photographer = Photographer(photographer);
-      console.log(photographer);
-      const cardDOM = createPhotographerCard(photographer);
-      photographersSection.appendChild(cardDOM);
-    });
-  } catch (error) {
-    console.log(error.message);
-  }
+  const photographersSection = document.querySelector(
+    '.photographers__section'
+  );
+  photographers.forEach((photographer) => {
+    photographer = Photographer(photographer);
+    console.log(photographer);
+    const cardDOM = displayPhotographerCard(photographer);
+    photographersSection.appendChild(cardDOM);
+  });
 };
 
 /**
  * Function called on loading, retrieves data from photographers database
  */
 const init = async () => {
-  try {
-    const datasPhotographers = ApiPhotographers();
-    const { photographers } = await datasPhotographers.getPhotographers();
-    displayPhotographers(photographers);
-  } catch (error) {
-    console.log(error.message);
-  }
+  const datasPhotographers = ApiPhotographers();
+  const { photographers } = await datasPhotographers.getPhotographers();
+  displayPhotographers(photographers);
 };

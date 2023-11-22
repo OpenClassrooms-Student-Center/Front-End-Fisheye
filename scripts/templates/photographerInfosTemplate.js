@@ -1,12 +1,16 @@
+/*********************************************************************************
+*
+* This file manage vue of photographer's infos card (total likes + daily rate)
+*
+/*********************************************************************************/
+
 /**
- * Function that creates a div to display the photographer's infos (total likes + daily rate)
+ * Function that creates a div to display the photographer's infos
  * @param {object} photographer
  * @param {number} totalLikes
  * @returns {html}
  */
-export const createPhotographerInfos = (photographer, totalLikes) => {
-  const { price } = photographer;
-
+export const displayPhotographerInfos = (photographer, totalLikes) => {
   // div container
   const photographerInfosContainer = document.querySelector(
     '.photographer__infos'
@@ -20,7 +24,7 @@ export const createPhotographerInfos = (photographer, totalLikes) => {
         </g>
       </svg>
     </div>
-    <p class="photographer__infos-price">${price}€ / jour</p>
+    <p class="photographer__infos-price">${photographer.price}€ / jour</p>
         `;
   photographerInfosContainer.innerHTML = photographerInfos;
 };
