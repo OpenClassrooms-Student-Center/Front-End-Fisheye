@@ -63,39 +63,37 @@ form {
 }
 
 /* ************************** home page */
-.photographers__section {
+.photographer__card {
   /* font-size more accessible */
-  .photographer__card {
-    text-align: center;
-    &-location {
-      font-size: 1.2em;
-    }
-    &-tagline {
-      font-size: 0.9em;
-    }
-    &-price {
-      font-size: 0.8em;
-    }
+  text-align: center;
+  &-location {
+    font-size: 1.2em;
   }
-  // /* font-size of mock-up */
-  // .photographer__card {
-  //   text-align: center;
-  //   &-location {
-  //     font-size: 0.8125em;
-  //   }
-  //   &-tagline {
-  //     font-size: 0.625em;
-  //   }
-  //   &-price {
-  //     font-size: 0.5625em;
-  //   }
-  // }
+  &-tagline {
+    font-size: 0.9em;
+  }
+  &-price {
+    font-size: 0.8em;
+  }
 }
+// /* font-size of mock-up */
+// .photographer__card {
+//   text-align: center;
+//   &-location {
+//     font-size: 0.8125em;
+//   }
+//   &-tagline {
+//     font-size: 0.625em;
+//   }
+//   &-price {
+//     font-size: 0.5625em;
+//   }
+// }
 
-/* ************************** photographer page */
+/* ************************** photographer's page */
 
-/* photographer profile */
 .photographer {
+  // /* photographer profile */
   &__presentation {
     &-name {
       font-size: 4em;
@@ -108,7 +106,7 @@ form {
     }
   }
 
-  /* photographer media sorter  */
+  // /* photographer media sorter  */
   &__sorter {
     &-button,
     p {
@@ -121,7 +119,7 @@ form {
     }
   }
 
-  /* photographer infos  */
+  // /* photographer infos  */
   &__infos {
     font-size: 1.5em;
     font-weight: 500;
@@ -141,7 +139,7 @@ form {
 
 /* modal  */
 .modal {
-  /* contact modal  */
+  // /* contact modal  */
   &__contact {
     &-title {
       font-size: 4em;
@@ -153,7 +151,7 @@ form {
       }
     }
   }
-  /* lightbox modal  */
+  // /* lightbox modal  */
   &__lightbox-media-title {
     font-size: 1.5em;
   }

@@ -104,28 +104,21 @@ form .text-input {
 }
 
 /* ************************** home page */
-.photographers__section {
+.photographer__card {
   /* font-size more accessible */
-}
-.photographers__section .photographer__card {
   text-align: center;
 }
-.photographers__section .photographer__card-location {
+.photographer__card-location {
   font-size: 1.2em;
 }
-.photographers__section .photographer__card-tagline {
+.photographer__card-tagline {
   font-size: 0.9em;
 }
-.photographers__section .photographer__card-price {
+.photographer__card-price {
   font-size: 0.8em;
 }
 
-/* ************************** photographer page */
-/* photographer profile */
-.photographer {
-  /* photographer media sorter  */
-  /* photographer infos  */
-}
+/* ************************** photographer's page */
 .photographer__presentation-name {
   font-size: 4em;
 }
@@ -158,10 +151,6 @@ form .text-input {
 }
 
 /* modal  */
-.modal {
-  /* contact modal  */
-  /* lightbox modal  */
-}
 .modal__contact-title {
   font-size: 4em;
   text-align: left;
