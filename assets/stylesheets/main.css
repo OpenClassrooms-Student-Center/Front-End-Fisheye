@@ -339,7 +339,7 @@ form .text-input {
        column-gap: 90px;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
-  margin: 0px auto 100px auto;
+  margin: 40px auto 100px auto;
   row-gap: 30px;
 }
 
@@ -477,7 +477,6 @@ form .input-error:focus {
 .media-card {
   display: grid;
   grid-template-columns: 1fr;
-  grid-template-rows: fit-content 1fr;
   width: 350px;
 }
 .media-card__link {

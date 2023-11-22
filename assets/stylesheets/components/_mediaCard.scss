@@ -4,7 +4,6 @@
 .media-card {
   display: grid;
   grid-template-columns: 1fr;
-  grid-template-rows: fit-content 1fr;
   width: 350px;
 
   &__link {
