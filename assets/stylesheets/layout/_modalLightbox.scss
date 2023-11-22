@@ -1,36 +1,35 @@
-// -----------------------------------------------------------------------------
-// This file contains styles that are specific to the lightbox modale.
-// -----------------------------------------------------------------------------
+/** -----------------------------------------------------------------------------
+* Modal lightbox
+* -----------------------------------------------------------------------------*/
 #modal__lightbox {
-  background-color: white;
+  background-color: $white;
 }
 .modal__lightbox {
-  padding: 40px 100px;
-  position: relative;
+  align-items: center;
   display: flex;
   justify-content: center;
-  align-items: center;
+  padding: 40px 100px;
   width: 100%;
   &-close-button {
     position: relative;
-    right: 100px;
-    top: 40px;
+    right: 90px;
+    top: 50px;
     .close-icon path {
       fill: $principal-color;
     }
   }
   &-media-container {
-    width: 1050px;
     height: 900px;
+    width: 1050px;
   }
   &-picture {
-    width: 100%;
+    animation-duration: 2s;
+    animation-name: modalPicture;
+    border-radius: $media-img-border-radius;
     height: 100%;
     object-fit: cover;
     object-position: center 35%;
-    flex-shrink: 0;
-    animation-name: modalPicture;
-    animation-duration: 2s;
+    width: 100%;
   }
   &-media-title {
     margin-top: 0;

@@ -1,39 +1,42 @@
-// -----------------------------------------------------------------------------
-// This file contains styles that are specific to form.
-// -----------------------------------------------------------------------------
+/** -----------------------------------------------------------------------------
+* Form
+* -----------------------------------------------------------------------------*/
 form {
-  display: flex;
-  width: 100%;
-  flex-direction: column;
   align-items: flex-start;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
 
   .formData {
     display: flex;
     flex-direction: column;
-    width: 100%;
     margin-bottom: 5px;
+    width: 100%;
   }
 
-  .text-control {
-    width: 100%;
-    height: 68px;
+  .text-input {
     border: none;
     border-radius: $box-border-radius;
+    height: 68px;
     padding-left: 10px;
+    width: 100%;
   }
+
   .textarea {
     height: 170px;
   }
+
   .submit-button {
+    margin: 26px 0;
     padding: 23px 50px;
-    margin: 26px 0px;
   }
 
   .input-error {
     border: 2px solid $principal-color;
+
     &:focus {
-      outline: $principal-color;
       border: 4px solid $principal-color;
+      outline: $principal-color;
     }
   }
 }

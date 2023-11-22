@@ -1,39 +1,42 @@
+/** -----------------------------------------------------------------------------
+* Photographer's gallery media card
+* -----------------------------------------------------------------------------*/
 .media-card {
   display: grid;
   grid-template-columns: 1fr;
   grid-template-rows: fit-content 1fr;
   width: 350px;
+
   &__link {
     height: 300px;
     width: 350px;
-    background-color: $light-grey;
   }
+
   &__picture {
-    height: 300px;
-    width: 350px;
-    object-fit: cover;
-    // object-position: top;
     border-radius: $media-img-border-radius;
+    height: 100%;
+    object-fit: cover;
+    width: 100%;
   }
+
   &__under-picture-container,
   &__likes-container {
     display: flex;
   }
+
   &__under-picture-container {
-    justify-content: space-between;
     align-items: flex-start;
+    justify-content: space-between;
+
     h2,
     p,
     button {
       margin: 10px 0;
     }
   }
+
   &__likes-container {
     align-items: center;
     gap: 5px;
-  }
-  &__likes-button {
-    border: none;
-    background: none;
   }
 }

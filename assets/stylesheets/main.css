@@ -1,15 +1,13 @@
-/**
- * Set up a decent box model on the root element
- */
+/** -----------------------------------------------------------------------------
+* Sass variables
+* -----------------------------------------------------------------------------*/
+/** -----------------------------------------------------------------------------
+* Basic styles.
+* -----------------------------------------------------------------------------*/
 html {
   box-sizing: border-box;
 }
 
-/**
- * Make all elements from the DOM inherit from the parent box-sizing
- * Since `*` has a specificity of 0, it does not override the `html` value
- * making all elements inheriting from the root box-sizing value
- */
 *,
 *::before,
 *::after {
@@ -20,9 +18,8 @@ html {
 * General styles
 */
 body {
-  margin: 0;
+  margin: 0 auto;
   max-width: 1440px;
-  margin: auto;
 }
 
 h1,
@@ -34,8 +31,8 @@ h2 {
 * Basic styles for links
 */
 a {
-  text-decoration: none;
   cursor: pointer;
+  text-decoration: none;
 }
 
 /**
@@ -45,77 +42,89 @@ dialog {
   border: none;
 }
 
-/**
- * Basic typography style
- */
-* {
-  font-family: "DM Sans", sans-serif;
-}
-
-h1 {
-  color: #901c1c;
-}
-
+/** -----------------------------------------------------------------------------
+* Typography
+* -----------------------------------------------------------------------------*/
+/* ************************************************** colors */
 h1,
-h2 {
-  font-size: 2.25em;
-  font-weight: 400;
+.location,
+.media-card__under-picture-container,
+.media-card__likes-heart,
+.modal__lightbox-media-title {
+  color: #901c1c;
 }
 
 .name {
   color: #d3573c;
 }
 
-.location {
-  color: #901c1c;
+.photographer__presentation-tagline,
+.label {
+  color: #312e2e;
+}
+
+.photographers__section__price {
+  color: #525252;
+}
+
+button {
+  color: #fff;
+}
+
+.error-message,
+.modal__contact-title {
+  color: #000;
+}
+
+/* ************************************************** font */
+* {
+  font-family: "DM Sans", sans-serif;
+}
+
+h1,
+h2,
+.label {
+  font-size: 2.25em;
+  font-weight: 400;
 }
 
 .button {
-  font-size: 20px;
+  font-size: 1.25em;
   font-weight: 700;
-  color: white;
   letter-spacing: 1.25px;
 }
 
-/* ********** form */
-form .label {
-  color: #312e2e;
-  font-size: 2.25em;
-}
+/* form */
 form .error-message {
-  font-size: 1.2rem;
-  font-weight: 400;
-  color: black;
+  font-size: 1.2em;
 }
-form .text-control {
+form .text-input {
   font-size: 1em;
   letter-spacing: 1.25px;
 }
 
-/* ********** home page */
-/* photographer card */
+/* ************************** home page */
 .photographers__section {
-  /* style with font-size more accessible */
+  /* font-size more accessible */
 }
-.photographers__section .photographer {
+.photographers__section .photographer__card {
   text-align: center;
 }
-.photographers__section .photographer__location {
+.photographers__section .photographer__card-location {
   font-size: 1.2em;
 }
-.photographers__section .photographer__tagline {
+.photographers__section .photographer__card-tagline {
   font-size: 0.9em;
 }
-.photographers__section .photographer__price {
+.photographers__section .photographer__card-price {
   font-size: 0.8em;
-  color: #525252;
 }
 
-/* ********** photographer page */
-/***** photographer profile */
+/* ************************** photographer page */
+/* photographer profile */
 .photographer {
-  /***** photographer media sorter  */
-  /***** photographer infos  */
+  /* photographer media sorter  */
+  /* photographer infos  */
 }
 .photographer__presentation-name {
   font-size: 4em;
@@ -125,7 +134,6 @@ form .text-control {
 }
 .photographer__presentation-tagline {
   font-size: 1.125em;
-  color: #525252;
 }
 .photographer__sorter-button,
 .photographer__sorter p {
@@ -133,75 +141,49 @@ form .text-control {
   font-weight: 700;
 }
 .photographer__sorter-button {
-  color: white;
-  text-align: left;
   letter-spacing: 1.25px;
+  text-align: left;
 }
 .photographer__infos {
   font-size: 1.5em;
   font-weight: 500;
 }
 
-/***** photographer gallery */
 /* media card */
-.media-card__under-picture-container {
-  color: #901c1c;
-}
 .media-card__title, .media-card__likes {
   font-size: 1.5rem;
 }
-.media-card__title {
-  font-weight: 400;
-}
-.media-card__likes {
-  font-weight: 500;
-}
 .media-card__likes-heart {
-  color: #901c1c;
   font-size: 1.3rem;
 }
 
-/***** modal  */
+/* modal  */
 .modal {
   /* contact modal  */
   /* lightbox modal  */
 }
 .modal__contact-title {
-  font-size: 64px;
-  font-weight: normal;
+  font-size: 4em;
   text-align: left;
-  color: black;
 }
 .modal__contact-validation p {
   font-size: 2em;
 }
 .modal__lightbox-media-title {
-  color: #901c1c;
   font-size: 1.5em;
 }
 
-/**
- * Main content containers
- * 1. Make the container full-width with a maximum width
- * 2. Center it in the viewport
- * 3. Leave some space on the edges, especially valuable on small screens
- */
-.container {
-  margin-left: auto;
-  margin-right: auto;
-  padding-left: 20px;
-  padding-right: 20px;
-  width: 100%;
-}
-
+/** -----------------------------------------------------------------------------
+* Helpers class
+* -----------------------------------------------------------------------------*/
 /**
  * Hide text while making it readable for screen readers
  */
 .hide-text {
+  left: -100000%;
   overflow: hidden;
   padding: 0;
   position: absolute;
-  left: -100000%;
   white-space: nowrap;
 }
 
@@ -209,67 +191,76 @@ form .text-control {
   overflow: hidden;
 }
 
+/** -----------------------------------------------------------------------------
+* Header
+* -----------------------------------------------------------------------------*/
 .header {
+  align-items: center;
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
   height: 90px;
+  justify-content: space-between;
   padding: 70px 100px;
 }
 .header .logo {
   height: 50px;
 }
 
+/** -----------------------------------------------------------------------------
+* Photographer's infos (total likes + daily rate)
+* -----------------------------------------------------------------------------*/
 .photographer__infos {
-  position: fixed;
-  bottom: 0px;
-  right: 20px;
+  background-color: #db8876;
+  border-radius: 5px 5px 0 0;
+  bottom: 0;
   display: flex;
   gap: 60px;
-  background-color: #db8876;
-  border-radius: 5px 5px 0px 0px;
   padding: 15px 30px;
+  position: fixed;
+  right: 20px;
 }
 .photographer__infos p {
-  margin: 0%;
+  margin: 0;
 }
 .photographer__infos-likes-container {
-  display: flex;
   align-items: center;
+  display: flex;
   gap: 5px;
 }
 .photographer__infos-likes-heart {
   padding-bottom: 5%;
 }
 
+/** -----------------------------------------------------------------------------
+* Modal contact
+* -----------------------------------------------------------------------------*/
 .modal__contact {
-  border-radius: 5px;
+  align-items: flex-start;
   background-color: #db8876;
-  width: 50%;
+  border-radius: 5px;
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
-  padding: 10px 35px;
   margin: auto;
+  padding: 10px 35px;
+  width: 50%;
 }
 .modal__contact-header {
-  position: relative;
+  align-items: flex-start;
   display: flex;
   justify-content: space-between;
-  align-items: flex-start;
-  width: 100%;
   margin-bottom: 15px;
+  position: relative;
+  width: 100%;
 }
 .modal__contact-close-button {
   top: 10px;
   right: -15px;
 }
 .modal__contact-validation {
+  align-items: center;
   display: none;
   flex-direction: column;
   justify-content: space-between;
-  align-items: center;
   min-height: 70vh;
   width: 100%;
 }
@@ -281,40 +272,42 @@ form .text-control {
   margin-bottom: 25px;
 }
 
+/** -----------------------------------------------------------------------------
+* Modal lightbox
+* -----------------------------------------------------------------------------*/
 #modal__lightbox {
-  background-color: white;
+  background-color: #fff;
 }
 
 .modal__lightbox {
-  padding: 40px 100px;
-  position: relative;
+  align-items: center;
   display: flex;
   justify-content: center;
-  align-items: center;
+  padding: 40px 100px;
   width: 100%;
 }
 .modal__lightbox-close-button {
   position: relative;
-  right: 100px;
-  top: 40px;
+  right: 90px;
+  top: 50px;
 }
 .modal__lightbox-close-button .close-icon path {
   fill: #901c1c;
 }
 .modal__lightbox-media-container {
-  width: 1050px;
   height: 900px;
+  width: 1050px;
 }
 .modal__lightbox-picture {
-  width: 100%;
+  animation-duration: 2s;
+  animation-name: modalPicture;
+  border-radius: 5px;
   height: 100%;
   -o-object-fit: cover;
      object-fit: cover;
   -o-object-position: center 35%;
      object-position: center 35%;
-  flex-shrink: 0;
-  animation-name: modalPicture;
-  animation-duration: 2s;
+  width: 100%;
 }
 .modal__lightbox-media-title {
   margin-top: 0;
@@ -328,71 +321,81 @@ form .text-control {
     opacity: 1;
   }
 }
+/** -----------------------------------------------------------------------------
+* Photographer's profile
+* -----------------------------------------------------------------------------*/
 .photographer__profile {
+  align-items: center;
   background-color: #fafafa;
+  display: flex;
   height: 300px;
+  justify-content: space-between;
   margin: 0 100px;
   padding: 70px 50px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
 }
 .photographer__presentation-location {
   margin: 0;
 }
 .photographer__contact-button:hover, .photographer__contact-button:focus {
   background-color: #db8876;
-  color: #000000;
+  color: #000;
 }
 
+/** -----------------------------------------------------------------------------
+* Photographer's gallery
+* -----------------------------------------------------------------------------*/
 .photographer__gallery {
+  align-items: start;
+  -moz-column-gap: 90px;
+       column-gap: 90px;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
-  align-items: start;
-  gap: 90px;
   margin: 0px auto 100px auto;
+  row-gap: 30px;
 }
 
+/** -----------------------------------------------------------------------------
+* Media sorter
+* -----------------------------------------------------------------------------*/
 .photographer__sorter {
-  display: flex;
   align-items: center;
+  display: flex;
   gap: 25px;
   margin: 15px 100px;
   position: relative;
 }
 .photographer__sorter-list {
-  display: none;
   background-color: #901c1c;
+  border-radius: 5px;
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+  display: none;
   flex-direction: column;
   list-style-type: none;
-  margin: 0%;
-  padding: 0%;
+  margin: 0;
+  padding: 0;
   position: absolute;
-  top: 0px;
-  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
-  border-radius: 5px;
-  transform-origin: top;
+  top: 0;
 }
 .photographer__sorter-list--open {
   display: flex;
-  z-index: 99;
+  z-index: 1;
 }
 .photographer__sorter-item-divider {
-  width: 90%;
+  background-color: #fff;
   height: 1px;
-  background-color: white;
   margin: auto;
+  width: 90%;
 }
 .photographer__sorter-button {
   background-color: #901c1c;
   border-radius: 5px;
-  padding: 23px 10px 23px 20px;
   min-width: 200px;
+  padding: 23px 10px 23px 20px;
 }
 .photographer__sorter-button-opener {
+  align-items: center;
   display: flex;
   justify-content: space-between;
-  align-items: center;
   padding: 20px 10px 20px 20px;
 }
 .photographer__sorter-button-opener-arrow {
@@ -404,82 +407,84 @@ form .text-control {
   top: 8%;
 }
 
-@keyframes open-sort {
-  0% {
-    transform: scaleY(0);
-  }
-  100% {
-    transform: scaleY(1);
-  }
-}
+/** -----------------------------------------------------------------------------
+* Button
+* -----------------------------------------------------------------------------*/
 .button {
-  padding: 22px 11px;
   background-color: #901c1c;
   border-radius: 5px;
+  padding: 22px 11px;
 }
 
 button {
-  cursor: pointer;
-  border: none;
   background-color: transparent;
-  padding: 0%;
+  border: none;
+  cursor: pointer;
+  padding: 0;
 }
 
+/** -----------------------------------------------------------------------------
+* Form
+* -----------------------------------------------------------------------------*/
 form {
-  display: flex;
-  width: 100%;
-  flex-direction: column;
   align-items: flex-start;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
 }
 form .formData {
   display: flex;
   flex-direction: column;
-  width: 100%;
   margin-bottom: 5px;
-}
-form .text-control {
   width: 100%;
-  height: 68px;
+}
+form .text-input {
   border: none;
   border-radius: 5px;
+  height: 68px;
   padding-left: 10px;
+  width: 100%;
 }
 form .textarea {
   height: 170px;
 }
 form .submit-button {
+  margin: 26px 0;
   padding: 23px 50px;
-  margin: 26px 0px;
 }
 form .input-error {
   border: 2px solid #901c1c;
 }
 form .input-error:focus {
-  outline: #901c1c;
   border: 4px solid #901c1c;
+  outline: #901c1c;
 }
 
-.photographer {
-  justify-self: center;
+/** -----------------------------------------------------------------------------
+* Photographer's card of homepage
+* -----------------------------------------------------------------------------*/
+.photographer__card {
   display: flex;
+  flex-direction: column;
   justify-content: center;
-  align-items: center;
-  flex-direction: column;
 }
-.photographer__link {
+.photographer__card-link {
+  align-items: center;
   display: flex;
   flex-direction: column;
-  align-items: center;
 }
-.photographer__name {
+.photographer__card-name {
   margin-top: 15px;
-  margin-bottom: 0%;
+  margin-bottom: 0;
 }
-.photographer p {
-  margin: 0%;
+.photographer__card p {
+  margin: 0;
   padding-top: 3px;
 }
 
+/** -----------------------------------------------------------------------------
+* Photographer's gallery media card
+* -----------------------------------------------------------------------------*/
 .media-card {
   display: grid;
   grid-template-columns: 1fr;
@@ -489,21 +494,20 @@ form .input-error:focus {
 .media-card__link {
   height: 300px;
   width: 350px;
-  background-color: #fafafa;
 }
 .media-card__picture {
-  height: 300px;
-  width: 350px;
+  border-radius: 5px;
+  height: 100%;
   -o-object-fit: cover;
      object-fit: cover;
-  border-radius: 5px;
+  width: 100%;
 }
 .media-card__under-picture-container, .media-card__likes-container {
   display: flex;
 }
 .media-card__under-picture-container {
-  justify-content: space-between;
   align-items: flex-start;
+  justify-content: space-between;
 }
 .media-card__under-picture-container h2,
 .media-card__under-picture-container p,
@@ -514,51 +518,48 @@ form .input-error:focus {
   align-items: center;
   gap: 5px;
 }
-.media-card__likes-button {
-  border: none;
-  background: none;
-}
 
-/**
-* Picture style
-*/
+/** -----------------------------------------------------------------------------
+* Photographer's profile picture
+* -----------------------------------------------------------------------------*/
 .profile-picture__container {
-  height: 200px;
-  width: 200px;
   border-radius: 100%;
   box-shadow: 0em 0.25em 0.75em rgba(0, 0, 0, 0.25);
+  height: 200px;
   overflow: hidden;
+  width: 200px;
 }
 
 .profile-picture {
   height: 200px;
-  width: 200px;
   -o-object-fit: cover;
      object-fit: cover;
   transform: scale(1.1);
+  width: 200px;
 }
 
+/** -----------------------------------------------------------------------------
+* Modal
+* -----------------------------------------------------------------------------*/
 .modal {
-  display: none;
-  position: fixed;
-  z-index: 1;
-  left: 0;
-  top: 0;
-  height: 100vh;
-  width: 100vw;
-  overflow: auto;
   background: rgba(196, 196, 196, 0.4);
+  display: none;
+  height: 100vh;
+  left: 0;
+  overflow: auto;
+  position: fixed;
+  top: 0;
+  width: 100vw;
+  z-index: 1;
 }
 .modal__container {
-  animation-name: modalOpen;
   animation-duration: 0.5s;
+  animation-name: modalOpen;
 }
 .modal__close-button {
-  position: absolute;
-  padding: 15px;
-}
-.modal__close-button img {
   cursor: pointer;
+  margin: 15px;
+  position: absolute;
 }
 
 @keyframes modalOpen {
@@ -569,12 +570,15 @@ form .input-error:focus {
     opacity: 1;
   }
 }
+/** -----------------------------------------------------------------------------
+* Homepage
+* -----------------------------------------------------------------------------*/
 .photographers__section {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
   align-items: start;
+  display: grid;
   gap: 70px;
-  margin: 50px 0px 100px 0px;
+  grid-template-columns: 1fr 1fr 1fr;
+  margin: 50px 0 100px;
 }
 
 .photographer__portfolio {

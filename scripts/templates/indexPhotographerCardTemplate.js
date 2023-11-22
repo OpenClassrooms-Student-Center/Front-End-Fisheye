@@ -12,7 +12,7 @@
 const displayPhotographerCard = (photographer) => {
   // article container
   const article = document.createElement('article');
-  article.className = 'photographer';
+  article.className = 'photographer__card';
   // manage missing photo
   let src;
   if (photographer.portrait) {
@@ -22,16 +22,16 @@ const displayPhotographerCard = (photographer) => {
       'assets/medias/photographers/Photographers_ID_Photos/default-avatar.jpg';
   }
   const photographerCard = `
-      <a class="photographer__link" href="./pages/photographer.html?id=${photographer.id}">
+      <a class="photographer__card-link" href="./pages/photographer.html?id=${photographer.id}">
         <div class="profile-picture__container">
-          <img class="photographer__profile-picture profile-picture" src=${src} alt="">
+          <img class="photographer__card-profile-picture profile-picture" src=${src} alt="">
         </div>
-        <h2 class="photographer__name name">${photographer.name}</h2>
+        <h2 class="photographer__card-name name">${photographer.name}</h2>
       </a>
       <div>
-        <p class="photographer__location location">${photographer.city}, ${photographer.country}</p>
-        <p class="photographer__tagline">${photographer.tagline}</p>
-        <p class="photographer__price">${photographer.price}€/jour</p>
+        <p class="photographer__card-location location">${photographer.city}, ${photographer.country}</p>
+        <p class="photographer__card-tagline">${photographer.tagline}</p>
+        <p class="photographer__card-price">${photographer.price}€/jour</p>
       </div>
     `;
 

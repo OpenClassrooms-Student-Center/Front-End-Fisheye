@@ -1,30 +1,14 @@
-// -----------------------------------------------------------------------------
-// This file contains CSS helper classes.
-// -----------------------------------------------------------------------------
-
-/**
- * Main content containers
- * 1. Make the container full-width with a maximum width
- * 2. Center it in the viewport
- * 3. Leave some space on the edges, especially valuable on small screens
- */
-.container {
-  // max-width: $max-width;
-  margin-left: auto;
-  margin-right: auto;
-  padding-left: 20px;
-  padding-right: 20px;
-  width: 100%;
-}
-
+/** -----------------------------------------------------------------------------
+* Helpers class
+* -----------------------------------------------------------------------------*/
 /**
  * Hide text while making it readable for screen readers
  */
 .hide-text {
+  left: -100000%;
   overflow: hidden;
   padding: 0;
   position: absolute;
-  left: -100000%;
   white-space: nowrap;
 }
 

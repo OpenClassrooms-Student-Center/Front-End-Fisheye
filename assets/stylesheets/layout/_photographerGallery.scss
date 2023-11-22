@@ -1,7 +1,11 @@
+/** -----------------------------------------------------------------------------
+* Photographer's gallery
+* -----------------------------------------------------------------------------*/
 .photographer__gallery {
+  align-items: start;
+  column-gap: 90px;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
-  align-items: start;
-  gap: 90px;
   margin: 0px auto 100px auto;
+  row-gap: 30px;
 }

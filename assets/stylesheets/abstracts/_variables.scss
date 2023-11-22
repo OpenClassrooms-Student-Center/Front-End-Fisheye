@@ -1,6 +1,6 @@
-// -----------------------------------------------------------------------------
-// This file contains all application-wide Sass variables.
-// -----------------------------------------------------------------------------
+/** -----------------------------------------------------------------------------
+* Sass variables
+* -----------------------------------------------------------------------------*/
 
 /// font family
 $text-font: 'DM Sans', sans-serif;
@@ -10,8 +10,10 @@ $principal-color: #901c1c;
 $second-color: #d3573c;
 $third-color: #db8876;
 $light-grey: #fafafa;
-$dark-grey: #525252;
-$black: #000000;
+$grey: #525252;
+$dark-grey: #312e2e;
+$black: #000;
+$white: #fff;
 
 /// radius
 $box-border-radius: 5px;

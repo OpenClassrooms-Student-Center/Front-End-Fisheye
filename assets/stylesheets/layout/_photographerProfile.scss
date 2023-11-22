@@ -1,12 +1,15 @@
+/** -----------------------------------------------------------------------------
+* Photographer's profile
+* -----------------------------------------------------------------------------*/
 .photographer {
   &__profile {
-    background-color: #fafafa;
+    align-items: center;
+    background-color: $light-grey;
+    display: flex;
     height: 300px;
+    justify-content: space-between;
     margin: 0 100px;
     padding: 70px 50px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
   }
   &__presentation-location {
     margin: 0;

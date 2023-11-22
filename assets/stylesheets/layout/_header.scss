@@ -1,12 +1,12 @@
-// -----------------------------------------------------------------------------
-// This file contains all styles related to the header of the site.
-// -----------------------------------------------------------------------------
+/** -----------------------------------------------------------------------------
+* Header
+* -----------------------------------------------------------------------------*/
 .header {
+  align-items: center;
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
   height: 90px;
+  justify-content: space-between;
   padding: 70px 100px;
   .logo {
     height: 50px;

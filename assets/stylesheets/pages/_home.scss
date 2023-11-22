@@ -1,10 +1,10 @@
-// -----------------------------------------------------------------------------
-// This file contains styles that are specific to the home page.
-// -----------------------------------------------------------------------------
+/** -----------------------------------------------------------------------------
+* Homepage
+* -----------------------------------------------------------------------------*/
 .photographers__section {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
   align-items: start;
+  display: grid;
   gap: 70px;
-  margin: 50px 0px 100px 0px;
+  grid-template-columns: 1fr 1fr 1fr;
+  margin: 50px 0 100px;
 }

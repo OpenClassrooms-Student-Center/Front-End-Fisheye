@@ -1,16 +1,16 @@
-/**
-* Picture style
-*/
+/** -----------------------------------------------------------------------------
+* Photographer's profile picture
+* -----------------------------------------------------------------------------*/
 .profile-picture__container {
-  height: 200px;
-  width: 200px;
   border-radius: 100%;
   box-shadow: 0em 0.25em 0.75em rgba(0, 0, 0, 0.25);
+  height: 200px;
   overflow: hidden;
+  width: 200px;
 }
 .profile-picture {
   height: 200px;
-  width: 200px;
   object-fit: cover;
   transform: scale(1.1);
+  width: 200px;
 }

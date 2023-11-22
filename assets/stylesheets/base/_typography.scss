@@ -1,84 +1,100 @@
-/**
- * Basic typography style
- */
-* {
-  font-family: $text-font;
-}
-h1 {
-  color: $principal-color;
-}
+/** -----------------------------------------------------------------------------
+* Typography
+* -----------------------------------------------------------------------------*/
+
+/* ************************************************** colors */
 h1,
-h2 {
-  font-size: 2.25em;
-  font-weight: 400;
+.location,
+.media-card__under-picture-container,
+.media-card__likes-heart,
+.modal__lightbox-media-title {
+  color: $principal-color;
 }
 
 .name {
   color: $second-color;
 }
-.location {
-  color: $principal-color;
+
+.photographer__presentation-tagline,
+.label {
+  color: $dark-grey;
+}
+
+.photographers__section__price {
+  color: $grey;
+}
+
+button {
+  color: $white;
+}
+
+.error-message,
+.modal__contact-title {
+  color: $black;
+}
+
+/* ************************************************** font */
+* {
+  font-family: $text-font;
+}
+
+h1,
+h2,
+.label {
+  font-size: 2.25em;
+  font-weight: 400;
 }
 
 .button {
-  font-size: 20px;
+  font-size: 1.25em;
   font-weight: 700;
-  color: white;
   letter-spacing: 1.25px;
 }
 
-/* ********** form */
+/* form */
 form {
-  .label {
-    color: #312e2e;
-    font-size: 2.25em;
-  }
   .error-message {
-    font-size: 1.2rem;
-    font-weight: 400;
-    color: black;
+    font-size: 1.2em;
   }
-  .text-control {
+  .text-input {
     font-size: 1em;
     letter-spacing: 1.25px;
   }
 }
 
-/* ********** home page */
-/* photographer card */
+/* ************************** home page */
 .photographers__section {
-  /* style with font-size more accessible */
-  .photographer {
+  /* font-size more accessible */
+  .photographer__card {
     text-align: center;
-    &__location {
+    &-location {
       font-size: 1.2em;
     }
-    &__tagline {
+    &-tagline {
       font-size: 0.9em;
     }
-    &__price {
+    &-price {
       font-size: 0.8em;
-      color: $dark-grey;
     }
   }
-  // /* style with font-size of mock-up */
-  // .photographer {
+  // /* font-size of mock-up */
+  // .photographer__card {
   //   text-align: center;
-  //   &__location {
+  //   &-location {
   //     font-size: 0.8125em;
   //   }
-  //   &__tagline {
+  //   &-tagline {
   //     font-size: 0.625em;
   //   }
-  //   &__price {
+  //   &-price {
   //     font-size: 0.5625em;
-  //     color: $dark-grey;
   //   }
   // }
 }
 
-/* ********** photographer page */
-/***** photographer profile */
+/* ************************** photographer page */
+
+/* photographer profile */
 .photographer {
   &__presentation {
     &-name {
@@ -89,10 +105,10 @@ form {
     }
     &-tagline {
       font-size: 1.125em;
-      color: $dark-grey;
     }
   }
-  /***** photographer media sorter  */
+
+  /* photographer media sorter  */
   &__sorter {
     &-button,
     p {
@@ -100,48 +116,36 @@ form {
       font-weight: 700;
     }
     &-button {
-      color: white;
-      text-align: left;
       letter-spacing: 1.25px;
+      text-align: left;
     }
   }
-  /***** photographer infos  */
+
+  /* photographer infos  */
   &__infos {
     font-size: 1.5em;
     font-weight: 500;
   }
 }
-/***** photographer gallery */
+
 /* media card */
 .media-card {
-  &__under-picture-container {
-    color: $principal-color;
-  }
   &__title,
   &__likes {
     font-size: 1.5rem;
   }
-  &__title {
-    font-weight: 400;
-  }
-  &__likes {
-    font-weight: 500;
-  }
   &__likes-heart {
-    color: $principal-color;
     font-size: 1.3rem;
   }
 }
 
-/***** modal  */
+/* modal  */
 .modal {
   /* contact modal  */
   &__contact {
     &-title {
-      font-size: 64px;
-      font-weight: normal;
+      font-size: 4em;
       text-align: left;
-      color: black;
     }
     &-validation {
       p {
@@ -150,10 +154,7 @@ form {
     }
   }
   /* lightbox modal  */
-  &__lightbox {
-    &-media-title {
-      color: $principal-color;
-      font-size: 1.5em;
-    }
+  &__lightbox-media-title {
+    font-size: 1.5em;
   }
 }

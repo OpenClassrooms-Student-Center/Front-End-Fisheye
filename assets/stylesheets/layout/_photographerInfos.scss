@@ -1,19 +1,22 @@
+/** -----------------------------------------------------------------------------
+* Photographer's infos (total likes + daily rate)
+* -----------------------------------------------------------------------------*/
 .photographer__infos {
-  position: fixed;
-  bottom: 0px;
-  right: 20px;
+  background-color: $third-color;
+  border-radius: $box-border-radius $box-border-radius 0 0;
+  bottom: 0;
   display: flex;
   gap: 60px;
-  background-color: $third-color;
-  border-radius: $box-border-radius $box-border-radius 0px 0px;
   padding: 15px 30px;
+  position: fixed;
+  right: 20px;
   p {
-    margin: 0%;
+    margin: 0;
   }
   &-likes {
     &-container {
-      display: flex;
       align-items: center;
+      display: flex;
       gap: 5px;
     }
     &-heart {
