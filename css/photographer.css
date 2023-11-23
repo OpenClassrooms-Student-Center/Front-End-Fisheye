@@ -6,6 +6,20 @@
   top: 5%;
 }
 
+/* #contact_modal h2 {
+  font-size: 50px;
+  margin-top: 0;
+  color: black;
+}
+
+#contact_modal p {
+  font-size: 50px;
+  margin: 0;
+  width: 100%;
+  text-align: left;
+  color: black;
+} */
+
 .photograph-header {
   display: flex;
   justify-content: space-between;
@@ -55,23 +69,18 @@ select {
 
   background-repeat: no-repeat;
   background-position-x: 90%;
-  background-position-y: 50%;
-
+  background-position-y: 60%;
   background-size: 20px;
-
 }
 
 select option {
-  font-size: 20px;
   font-weight: bold;
   color: white;
-  cursor: pointer;
-  margin-block: 20px !important;
 }
 
 .modal {
   border-radius: 5px;
-  background-color: #DB8876;
+  background-color: #db8876;
   width: 50%;
   display: flex;
   flex-direction: column;
@@ -80,6 +89,20 @@ select option {
   padding: 35px;
   margin: auto;
 }
+
+@media screen and (min-width: 1600px) {
+  .modal {
+    width: 40%;
+  }
+}
+  
+
+input,
+textarea {
+  font-size: xx-large;
+  font-weight: bold;
+}
+
 
 .modal header {
   justify-content: space-between;
@@ -94,8 +117,23 @@ select option {
   font-size: 64px;
   font-weight: normal;
   text-align: center;
+  color: black;
+  margin:0;
 }
 
+.modal textarea {
+  height: 100px !important;
+  font-size: 36px;
+  font-weight: bold;
+  padding: 10px;
+}
+
+.modal p {
+  font-size: 42px;
+  margin: 0;
+  width: 100%;
+  margin-bottom:10px;
+}
 form {
   display: flex;
   width: 100%;
@@ -166,7 +204,6 @@ textarea {
   cursor: pointer;
 }
 
-
 .media-content {
   display: flex;
   flex-direction: column;
@@ -181,7 +218,6 @@ textarea {
   max-width: 100%;
   max-height: 80%;
   border-radius: 5px;
-
 }
 
 .lightbox {
@@ -214,9 +250,8 @@ textarea {
 .lightbox-infos {
   display: flex;
   width: 100%;
-  justify-content: start
+  justify-content: start;
 }
-
 
 .lightbox-left,
 .lightbox-right {
@@ -227,7 +262,7 @@ textarea {
 }
 
 .lightbox-left {
-  display:  flex;
+  display: flex;
   margin-right: 20px;
   justify-content: flex-end;
 }
@@ -250,7 +285,7 @@ textarea {
 .lightbox-close:hover,
 .lightbox-close:focus,
 #left-arrow:hover,
-#right-arrow:hover{
+#right-arrow:hover {
   color: #bbb;
   text-decoration: none;
   cursor: pointer;
@@ -263,11 +298,10 @@ textarea {
   font-size: 20px;
   width: 200px;
   height: 50px;
-  background-color: #DB8876;
+  background-color: #db8876;
   position: fixed;
   bottom: 0px;
   right: 20px;
   border-radius: 5px 5px 0 0;
   padding-inline: 20px;
 }
-

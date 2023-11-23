@@ -35,47 +35,50 @@
         <label for="filter">Trier par</label>
         <select name="filter" id="filter" aria-label="Trier par">
           
-          <option value="Popularite" >Popularite</option>
+          <option value="Popularite">Popularite</option>
           <option value="Date">Date</option>
           <option value="Titre">Titre</option>
         </select>
       </div>
       <section class="media-section"></section>
     </main>
-    <div id="contact_modal" role="dialog" aria-modal="true" hidden>
+
+    <div id="contact_modal" role="dialog" aria-modal="true">
       <div class="modal">
         <header role="banner">
           <h2>Contactez-moi</h2>
+
           <img
             src="assets/icons/close.svg"
             onclick="closeModal()"
             alt="close modal"
           />
         </header>
-        <form onsubmit="sendMessage(event)" role="form">
-          <div>
+        <p class="photographerName"></p>
+        <form onsubmit="sendMessage(event)" role="form" id="contactForm">
+          <div class="form-control">
             <label for="firstName">Prénom</label>
             <input id="firstName" name="prénom"/>
             <span class="error" id="firstNameError" aria-live="polite" role="alert">
               Veuillez saisir votre Prénom
             </span>
           </div>
-          <div>
+          <div class="form-control">
             <label for="lastName">Nom</label>
             <input id="lastName" name="nom" />
             <span class="error hidden" id="lastNameError" aria-live="polite" role="alert">
               Veuillez saisir votre Nom
             </span>
           </div>
-          <div>
+          <div class="form-control">
             <label for="email">Email</label>
             <input id="email" />
             <span class="error" id="emailError" aria-live="polite" role="alert">
               Veuillez saisir votre Email ou un Email valide
             </span>
           </div>
-          <div>
-            <label for="message">Message</label>
+          <div class="form-control">
+            <label for="message">Votre message</label>
             <textarea id="message"></textarea>
             <span class="error" id="messageError" aria-live="polite" role="alert">
               Veuillez saisir un message
@@ -86,7 +89,7 @@
         </form>
       </div>
     </div>
-    <div class="lightbox">
+    <div class="lightbox" role="dialog" aria-modal="true">
       <div class="lightbox-content">
 
         <div class="lightbox-left icon">

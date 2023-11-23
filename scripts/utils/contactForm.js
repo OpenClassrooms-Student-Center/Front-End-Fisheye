@@ -1,4 +1,12 @@
 function displayModal() {
+    const getPhotographerName = document.querySelector("article h2").textContent;
+    const contactMeElement = document.querySelector(".photographerName");
+
+    console.log(getPhotographerName);
+    console.log(contactMeElement);
+
+    contactMeElement.innerHTML = getPhotographerName;
+
     const firstNameElement = document.querySelector("#firstName");
     const modal = document.getElementById("contact_modal");
 	modal.style.display = "block";
@@ -20,13 +28,12 @@ function sendMessage(event) {
     const lastName = document.querySelector("#lastName").value;
     const email = document.querySelector("#email").value;
     const message = document.querySelector("#message").value;
-    const form = document.querySelector("#contact_form");
 
 
 
     if(checkInputs(firstName, lastName, email, message)) {
         closeModal();
-        form.reset();
+        document.querySelector("#contactForm").reset();
     }
 
    const dataToSend = {
