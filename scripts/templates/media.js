@@ -1,23 +1,16 @@
-import { changeFilter } from "../utils/utils.js";
+import { lightBox } from "./lightbox.js";
+
 function medias(medias) {
   const { allMedias, firstName, photographerPrice, allLikes } = medias;
   let totalLikesAdded = 0;
-  let mediasSorted = changeFilter(allMedias);
-  
-  const filter = document.querySelector(".media-filter");
 
-  filter.addEventListener("change", (event) => {
-    const sort = event.target.value;
-    displayMedias(changeFilter(allMedias, sort));
-  });
+  displayMedias();
 
-  displayMedias(mediasSorted);
-
-  function displayMedias(mediasSorted) {
+  function displayMedias() {
     const mediaSection = document.querySelector(".media-section");
     mediaSection.innerHTML = "";
 
-    mediasSorted?.forEach((media, index) => {
+    allMedias?.forEach((media, index) => {
       const { image, video, title, likes } = media ?? {};
 
       const mediaLink = `assets/photographers/${firstName}/${
@@ -38,13 +31,13 @@ function medias(medias) {
     const mediaCard = document.createElement("article");
 
     mediaCard.innerHTML = `
-        <div class="media-picture">
+        <div class="media-picture" aria-label="media picture" tabindex="0">
           ${mediaElement}
         </div>
         <div class="media-infos" arial-label="media infos">
           <h3>${title}</h3>
           <div class="likes">
-            <p class="likes-number">${likes}  
+            <p class="likes-number" aria-label="likes number" tabindex="0">${likes}  
               <i class="fa-regular fa-heart"></i>
             </p>
           </div>
@@ -53,10 +46,23 @@ function medias(medias) {
     const mediaPicture = mediaCard.querySelector(".media-picture");
     const mediaLikes = mediaCard.querySelector(".likes");
 
-    mediaPicture.addEventListener("click", () => displayLightbox(index));
-    mediaLikes.addEventListener("click", () => {
-      addRemoveLike(mediaLikes, likes);
-    });
+    mediaPicture.addEventListener("click", lightBoxClickOrEnter);
+    mediaPicture.addEventListener("keydown", lightBoxClickOrEnter);
+    mediaLikes.addEventListener("click", handleLikeClickOrEnter);
+    mediaLikes.addEventListener("keydown", handleLikeClickOrEnter);
+
+    function lightBoxClickOrEnter(event) {
+      if (event.type === "click" || event.key === "Enter") {
+        lightBox(index, allMedias, firstName);
+        mediaCard.style.display = "none";
+      }
+    }
+
+    function handleLikeClickOrEnter(event) {
+      if (event.type === "click" || event.key === "Enter") {
+        addRemoveLike(mediaLikes, likes);
+      }
+    }
 
     function addRemoveLike(mediaLikes, likes) {
       if (likeAdded === likes) {
@@ -65,7 +71,7 @@ function medias(medias) {
 
         displayLikesContainer(allLikes + totalLikesAdded, photographerPrice);
         mediaLikes.innerHTML = `
-            <p class="likes-number">${likeAdded}  
+            <p class="likes-number" aria-label="like added" tabindex="0">${likeAdded}  
               <i class="fa-solid fa-heart"></i>
             </p>
           `;
@@ -82,63 +88,6 @@ function medias(medias) {
     }
     return mediaCard;
   }
-
-  function displayLightbox(index) {
-    const lightbox = document.querySelector(".lightbox");
-    const lightboxClose = document.querySelector(".lightbox-close");
-    const rightArrow = document.querySelector("#right-arrow");
-    const leftArrow = document.querySelector("#left-arrow");
-
-    lightbox.style.display = "block";
-
-    lightboxClose.addEventListener("click", () => {
-      lightbox.style.display = "none";
-    });
-
-    displayLightboxTemplate(index);
-
-    rightArrow.addEventListener("click", () => {
-      if (index === mediasSorted.length - 1) {
-        index = 0;
-      } else {
-        index += 1;
-      }
-      displayLightboxTemplate(index);
-    });
-
-    leftArrow.addEventListener("click", () => {
-      if (index === 0) {
-        index = mediasSorted.length - 1;
-      } else {
-        index -= 1;
-      }
-      displayLightboxTemplate(index);
-    });
-  }
-
-  function displayLightboxTemplate(index) {
-    console.log("index", index);
-    const mediaContent = document.querySelector(".media-content");
-
-    const { image, video, title } = mediasSorted[index] ?? {};
-
-    const mediaLink = `assets/photographers/${firstName}/${
-      image ?? video ?? ""
-    }`;
-
-    const mediaElement = image
-      ? `<img src="${mediaLink}" alt="${title}">`
-      : `<video src="${mediaLink}" autoplay loop muted></video>`;
-
-    mediaContent.innerHTML = `
-          ${mediaElement}
-          <div class="lightbox-infos">
-            <h3>${title}</h3>
-          </div>
-      `;
-  }
-
-  return { getMediaCard, displayLightbox };
 }
 
 function displayLikesContainer(totalLikes, price) {

@@ -11,9 +11,8 @@ function displayData(photographers) {
 }
 
 async function init() {
-  getAllorOnePhotographer().then(({ photographers }) => {
-    displayData(photographers);
-  });
+  const { photographers } = await getAllorOnePhotographer();
+  displayData(photographers);
 }
 
 init();

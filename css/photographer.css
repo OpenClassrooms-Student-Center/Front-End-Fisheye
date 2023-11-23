@@ -37,6 +37,7 @@
 }
 
 select {
+  margin-left: 20px;
   font-size: 20px;
   font-weight: bold;
   color: white;
@@ -47,24 +48,30 @@ select {
   background-color: #901c1c;
   border-radius: 5px;
   cursor: pointer;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+
+  background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" fill="white"><polygon points="0,0 100,0 50,50" /></svg>');
+
+  background-repeat: no-repeat;
+  background-position-x: 90%;
+  background-position-y: 50%;
+
+  background-size: 20px;
+
 }
 
 select option {
   font-size: 20px;
   font-weight: bold;
   color: white;
-  padding: 11px;
-  width: 170px;
-  height: 70px;
-  border: none;
-  background-color: #901c1c;
-  border-radius: 5px;
   cursor: pointer;
+  margin-block: 20px !important;
 }
 
 .modal {
   border-radius: 5px;
-  background-color: #db8876;
+  background-color: #DB8876;
   width: 50%;
   display: flex;
   flex-direction: column;
@@ -159,6 +166,24 @@ textarea {
   cursor: pointer;
 }
 
+
+.media-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+}
+
+.media-content img,
+.media-content video {
+  max-width: 100%;
+  max-height: 80%;
+  border-radius: 5px;
+
+}
+
 .lightbox {
   display: none;
   position: fixed;
@@ -178,28 +203,20 @@ textarea {
   height: 100%;
 }
 
+.lightbox-picture {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+
 .lightbox-infos {
   display: flex;
   width: 100%;
   justify-content: start
 }
 
-.media-content {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
-  height: 100%;
-}
-
-.media-content img,
-.media-content video {
-  max-width: 100%;
-  max-height: 80%;
-  border-radius: 5px;
-
-}
 
 .lightbox-left,
 .lightbox-right {
@@ -224,14 +241,16 @@ textarea {
   position: absolute;
   top: 15px;
   right: 35px;
-  color: #f1f1f1;
+  color: #901c1c;
   font-size: 40px;
   font-weight: bold;
   transition: 0.3s;
 }
 
 .lightbox-close:hover,
-.lightbox-close:focus {
+.lightbox-close:focus,
+#left-arrow:hover,
+#right-arrow:hover{
   color: #bbb;
   text-decoration: none;
   cursor: pointer;

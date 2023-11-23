@@ -19,7 +19,7 @@
         <img src="assets/images/logo.png" class="logo" alt="fisheye logo" />
       </a>
     </header>
-    <main id="main">
+    <main id="main" role="main">
       <div class="photograph-header">
         <div class="photograph-infos"></div>
         <button
@@ -33,15 +33,16 @@
       </div>
       <div class="media-filter">
         <label for="filter">Trier par</label>
-        <select name="filter" id="filter">
-          <option value="Popularite">Popularite</option>
+        <select name="filter" id="filter" aria-label="Trier par">
+          
+          <option value="Popularite" >Popularite</option>
           <option value="Date">Date</option>
           <option value="Titre">Titre</option>
         </select>
       </div>
       <section class="media-section"></section>
     </main>
-    <div id="contact_modal">
+    <div id="contact_modal" role="dialog" aria-modal="true" hidden>
       <div class="modal">
         <header role="banner">
           <h2>Contactez-moi</h2>
@@ -51,22 +52,34 @@
             alt="close modal"
           />
         </header>
-        <form action="" method="post">
+        <form onsubmit="sendMessage(event)" role="form">
           <div>
-            <label>Prénom</label>
-            <input />
+            <label for="firstName">Prénom</label>
+            <input id="firstName" name="prénom"/>
+            <span class="error" id="firstNameError" aria-live="polite" role="alert">
+              Veuillez saisir votre Prénom
+            </span>
           </div>
           <div>
-            <label>Nom</label>
-            <input />
+            <label for="lastName">Nom</label>
+            <input id="lastName" name="nom" />
+            <span class="error hidden" id="lastNameError" aria-live="polite" role="alert">
+              Veuillez saisir votre Nom
+            </span>
           </div>
           <div>
-            <label>Email</label>
-            <input />
+            <label for="email">Email</label>
+            <input id="email" />
+            <span class="error" id="emailError" aria-live="polite" role="alert">
+              Veuillez saisir votre Email ou un Email valide
+            </span>
           </div>
           <div>
-            <label>Message</label>
-            <textarea></textarea>
+            <label for="message">Message</label>
+            <textarea id="message"></textarea>
+            <span class="error" id="messageError" aria-live="polite" role="alert">
+              Veuillez saisir un message
+            </span>
           </div>
 
           <button aria-label="envoyer" class="contact_button">Envoyer</button>
@@ -75,26 +88,25 @@
     </div>
     <div class="lightbox">
       <div class="lightbox-content">
-        <div class="lightbox-close">
-          <i class="fa-solid fa-xmark"></i>
-        </div>
+
         <div class="lightbox-left icon">
-          <i id="left-arrow" class="fa-solid fa-chevron-left"></i>
+          <i id="left-arrow" class="fa-solid fa-chevron-left" aria-label="previous" tabindex="0"></i>
         </div>
         <div class="media-content"></div>
 
         <div class="lightbox-right icon">
-          <i id="right-arrow" class="fa-solid fa-chevron-right"></i>
+          <i id="right-arrow" class="fa-solid fa-chevron-right" aria-label="next" tabindex="0"></i>
+          <div class="lightbox-close">
+            <i class="fa-solid fa-xmark" aria-label="close" tabindex="0"></i>
+          </div>
         </div>
+ 
       </div>
     </div>
     <div class="total-likes">
     </div>
 
-    <script type="module" src="/scripts/api/getPhotographer.js"></script>
     <script type="module" src="/scripts/pages/photographer.js"></script>
     <script src="/scripts/utils/contactForm.js"></script>
-    <script type="module" src="/scripts/templates/photographer.js"></script>
-    <script type="module"src="/scripts/templates/media.js"></script>
   </body>
 </html>
