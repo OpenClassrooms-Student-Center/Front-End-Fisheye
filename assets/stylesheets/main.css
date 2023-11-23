@@ -208,10 +208,12 @@ form .text-input {
   border-radius: 5px 5px 0 0;
   bottom: 0;
   display: flex;
+  justify-content: center;
   gap: 60px;
   padding: 15px 30px;
   position: fixed;
   right: 20px;
+  width: 350px;
 }
 .photographer__infos p {
   margin: 0;
@@ -278,6 +280,8 @@ form .text-input {
 #modal__lightbox {
   background-color: #fff;
   padding: 0;
+  overflow-x: hidden;
+  padding-bottom: 15px;
 }
 
 .modal__lightbox {

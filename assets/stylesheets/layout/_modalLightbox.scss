@@ -4,6 +4,8 @@
 #modal__lightbox {
   background-color: $white;
   padding: 0;
+  overflow-x: hidden;
+  padding-bottom: 15px;
 }
 .modal__lightbox {
   align-items: center;
