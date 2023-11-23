@@ -25,7 +25,7 @@ async function portfolioTemplate(id) {
 }
 
 function generateHeader(photographerData) {
-  const contactBtn = document.querySelector('.contact-button').cloneNode(true)
+  const contactBtn = document.getElementById('open-modal-btn').cloneNode(true)
   const photographHeader = document.querySelector('.photograph-header')
   photographHeader.innerHTML = ''
   photographHeader.innerHTML = `

@@ -35,8 +35,14 @@ textarea {
   margin: 0 100px;
 }
 
-.contact-button {
+form .contact-button {
+  font-size: 18px;
+}
+.photograph-header button {
   font-size: 20px;
+}
+
+.contact-button {
   font-weight: bold;
   color: white;
   padding: 11px;

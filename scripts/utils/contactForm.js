@@ -1,12 +1,19 @@
+const openModalBtn = document.getElementById('open-modal-btn')
+console.log(openModalBtn)
+openModalBtn.addEventListener('click', displayModal)
+
+const closeModalBtn = document.getElementById('close-modal-btn')
+closeModalBtn.addEventListener('click', closeModal)
+
 function displayModal() {
   const queryString = window.location.search
   const urlParams = new URLSearchParams(queryString)
   const id = urlParams.get('id')
   const name = JSON.parse(sessionStorage.getItem(id)).name
 
-  const contactMe = document.querySelector('.contact-me')
+  const contactMe = document.getElementById('modal-header')
   contactMe.innerHTML = `Contactez-moi <br>${name}`
-  /*  */
+
   const main = document.querySelector('main')
   const body = document.querySelector('body')
   body.classList.add('no-scroll')
@@ -16,10 +23,6 @@ function displayModal() {
 
   const closeBtn = document.getElementById('close-modal-btn')
   closeBtn.focus()
-  /*
-  TODO
-  Rendre le focus que sur la modale
-  */
 
   const modal = document.querySelector('.modal')
   modal.classList.replace('closed', 'opened')
