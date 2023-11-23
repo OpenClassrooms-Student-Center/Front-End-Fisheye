@@ -111,13 +111,22 @@ function handleLightbox() {
     closeLightBox()
     resetLightbox()
   })
+
+  //Navigation with keyboard
+  document.addEventListener('keydown', e => {
+    const key = e.key
+    if (key === 'ArrowLeft') previousMedia.click()
+    else if (key === 'ArrowRight') nextMedia.click()
+    else if (key === 'Escape') {
+      closeLightBox()
+      resetLightbox()
+    }
+  })
 }
 
 function changeLightboxMedia(mediaFile, title) {
   resetLightbox()
   const lightbox = document.querySelector('.lightbox')
-  console.log(mediaFile)
-  console.log(mediaFile.tagName)
   if (mediaFile.tagName === 'IMG') {
     const img = document.createElement('img')
     img.src = mediaFile.src
@@ -146,12 +155,26 @@ function resetLightbox() {
 
 function openLightBox() {
   const lightboxContainer = document.querySelector('.lightbox-container')
+  const main = document.querySelector('main')
+
   lightboxContainer.classList.replace('closed', 'opened')
+  lightboxContainer.setAttribute('aria-hidden', 'false')
+  lightboxContainer.setAttribute('tabindex', '0')
+
+  main.setAttribute('aria-hidden', 'true')
+  main.setAttribute('tabindex', '-1')
 }
 
 function closeLightBox() {
   const lightboxContainer = document.querySelector('.lightbox-container')
+  const main = document.querySelector('main')
+
   lightboxContainer.classList.replace('opened', 'closed')
+  lightboxContainer.setAttribute('aria-hidden', 'true')
+  lightboxContainer.setAttribute('tabindex', '-1')
+
+  main.setAttribute('aria-hidden', 'false')
+  main.setAttribute('tabindex', '0')
 }
 
 // export getIdFromURL as default

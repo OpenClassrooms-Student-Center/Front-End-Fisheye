@@ -203,6 +203,11 @@ form input {
   cursor: pointer;
 }
 
+.lightbox button {
+  background-color: transparent;
+  border: 0;
+}
+
 .previous-button {
   order: 1;
   grid-area: 2 / 1 / 3 / 2;
