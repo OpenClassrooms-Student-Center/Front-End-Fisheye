@@ -20,7 +20,7 @@ HTML5/CSS3 <br>
 Sass <br>
 JavaScript <br>
 Figma ( [voir la maquette](<https://www.figma.com/file/9yhkCN5JO2wqPNtNtZU8hX/UI-Design-FishEye-FR-(Copy)?type=design&node-id=0-1&mode=design>) ) <br>
-Réalisation d'un graphique pour visualiser le fonctionnement du code ( [voir le graphique sur Miro](https://miro.com/app/live-embed/uXjVNOu4mUc=/?moveToViewport=-1155,-653,3395,1646&embedId=641633677412) ) <br>
+Réalisation d'un diagramme d'architecture pour visualiser le fonctionnement du code ( [voir le diagramme sur Miro](https://miro.com/app/live-embed/uXjVNOu4mUc=/?moveToViewport=-1155,-653,3395,1646&embedId=641633677412) ) <br>
 ![Arborescence du code](assets/medias/arborescence-site.png) <br>
 
 Modèle MVC
