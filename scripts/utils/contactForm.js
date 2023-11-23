@@ -16,19 +16,22 @@ function displayModal() {
 
   const closeBtn = document.getElementById('close-modal-btn')
   closeBtn.focus()
+  /*
+  TODO
+  Rendre le focus que sur la modale
+  */
 
   const modal = document.querySelector('.modal')
   modal.classList.replace('closed', 'opened')
   modal.setAttribute('aria-hidden', 'false')
   modal.setAttribute('tabindex', '0')
 
-  const envoyer = document.querySelector('form button')
-
   document.addEventListener('keydown', e => {
     const key = e.key
     if (modal.getAttribute('aria-hidden') == 'false' && key === 'Escape') closeModal()
   })
 
+  const envoyer = document.querySelector('form button')
   envoyer.addEventListener('click', e => {
     e.preventDefault()
     const inputs = document.querySelectorAll('input')
@@ -36,6 +39,7 @@ function displayModal() {
     const nom = inputs[1].value
     const email = inputs[2].value
     const message = document.querySelector('textarea').value
+    //Créer une fonction pour tout
     console.log(`Nom: ${nom} \nPrénom: ${prenom} \nEmail: ${email} \nMessage: ${message}`)
     closeModal()
   })

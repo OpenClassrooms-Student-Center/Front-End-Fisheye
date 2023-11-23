@@ -40,24 +40,24 @@ class Media {
   }
 
   createImage() {
-    // <a>
     return `
-    <a href="#${this.id}">
+    <a href="#${this.id}" aria-label='${this.title}'>
       <img class='media' src="assets/Sample Photos/${this.firstName}/${this.image}" alt="${this.title}" id="${this.id}">
     </a>
     `
   }
 
   createVideo() {
-    /* <p>
+    /*
+    <p>
       Votre navigateur ne supporte cette vidéo. Voici 
       <a href="assets/Sample Photos/${this.firstName}/${this.video}">un lien pour télécharger la vidéo</a>.
-    </p> */
+    </p>
+    */
     return `
-    <a href="#${this.id}">
-      <video class='media' controls preload="metadata">
-        <source src="assets/Sample Photos/${this.firstName}/${this.video}#t=1.1">
-        
+    <a href="#${this.id}" aria-label='${this.title}'>
+      <video class='media' preload="metadata">
+        <source src="assets/Sample Photos/${this.firstName}/${this.video}#t=0.1">
       </video>
     </a>
     `

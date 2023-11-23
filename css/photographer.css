@@ -181,7 +181,7 @@ form input {
   width: 550px;
   height: 500px;
   border-radius: 5px;
-  object-fit: contain;
+  object-fit: cover;
   grid-area: 2 / 2 / 3 / 3;
 }
 
