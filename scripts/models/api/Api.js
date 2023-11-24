@@ -6,6 +6,7 @@
 
 /**
  * function to link the database for easier calling up
+ * @async
  * @param {*} url
  * @returns {Promise<array>}
  */

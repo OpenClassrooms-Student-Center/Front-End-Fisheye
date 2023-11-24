@@ -33,6 +33,7 @@ const displayPhotographers = (photographers) => {
 
 /**
  * Function called on loading, retrieves data from photographers database
+ * @async
  */
 const init = async () => {
   const datasPhotographers = ApiPhotographers();

@@ -11,6 +11,7 @@ const ApiPhotographers = () => {
 
   /**
    * Function that retrieves all photographers from the JSON database
+   * @async
    * @returns {Promise<array>}
    */
   const getPhotographers = async () => {
@@ -23,6 +24,7 @@ const ApiPhotographers = () => {
 
   /**
    * Function that retrieves a photographer from the JSON database by id
+   * @async
    * @param {number} idP
    * @returns {Promise<object>}
    */

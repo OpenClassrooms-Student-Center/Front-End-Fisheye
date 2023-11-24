@@ -26,12 +26,13 @@ document.addEventListener('DOMContentLoaded', function () {
 /**
  * Function that retrieves the section containing the photographer's gallery
  * and displays medias, manage likes medias and manage lightbox media
+ * @async
  * @param {object} photographer
  * @param {array} medias
  * @param {string} pictureNameRepository
  * @param {number} totalLikes
  */
-export const displayPhotographerGallery = async (
+export const displayPhotographerGallery = (
   photographer,
   medias,
   pictureNameRepository,

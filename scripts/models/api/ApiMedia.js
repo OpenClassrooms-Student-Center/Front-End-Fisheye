@@ -11,6 +11,7 @@ const ApiMedia = () => {
 
   /**
    * Function that retrieves all medias from the JSON database
+   * @async
    * @returns {Promise<array>}
    */
   const getMedias = async () => {
@@ -23,6 +24,7 @@ const ApiMedia = () => {
 
   /**
    * Function that retrieves a media from the JSON database by photographer id
+   * @async
    * @param {number} idP
    * @returns {Promise<array>}
    */
