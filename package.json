@@ -4,12 +4,10 @@
   "description": "",
   "main": "index.html",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "node",
-    "lint": "eslint ./scripts/*/*.js"
+    "lint": "eslint ./scripts/**/*.js"
   },
-  "keywords": [],
-  "author": "",
+  "author": "Ségolène Ganzin",
   "license": "ISC",
   "devDependencies": {
     "eslint": "^8.53.0"
