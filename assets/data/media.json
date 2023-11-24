@@ -92,12 +92,21 @@
     },
 
     {
-      "id": 73852953,
+      "id": 83812943,
       "photographerId": 925,
       "title": "8 Rows",
       "image": "Sport_2000_with_8.webp",
       "likes": 52,
-      "date": "2013-02-30",
+      "date": "2013-02-27",
+      "price": 70
+    },
+    {
+      "id": 73852953,
+      "photographerId": 925,
+      "title": "Sport butterfly",
+      "image": "Sport_Butterfly.webp",
+      "likes": 32,
+      "date": "2013-01-30",
       "price": 70
     },
     {
@@ -197,6 +206,15 @@
       "image": "Travel_Road_into_Hill.webp",
       "likes": 99,
       "date": "2018-04-30",
+      "price": 45
+    },
+    {
+      "id": 53465513,
+      "photographerId": 527,
+      "title": "Travel on the road",
+      "image": "Travel_On_the_Road.webp",
+      "likes": 40,
+      "date": "2017-04-05",
       "price": 45
     },
     {

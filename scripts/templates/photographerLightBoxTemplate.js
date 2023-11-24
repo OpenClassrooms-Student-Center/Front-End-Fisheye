@@ -19,7 +19,7 @@ export const displayPhotographerLightbox = (pictureNameRepository, media) => {
   if (media.type === 'image' && media.src != null) {
     mediaPicture = `
     <div class="modal__lightbox-media-container">
-        <img class="modal__lightbox-picture" src="${picture}" alt="${media.title}" tabindex=0>
+        <img class="modal__lightbox-picture" height="900" width="1050" src="${picture}" alt="${media.title}" tabindex=0>
         <p class="modal__lightbox-media-title" aria-hidden="true">${media.title}</p>
     </div>
     `;

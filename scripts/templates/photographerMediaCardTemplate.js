@@ -18,7 +18,7 @@ export const displayPhotographerMediaCard = (pictureNameRepository, media) => {
   // manage display depends of media type format(image or video)
   let mediaPicture;
   if (media.type === 'image' && media.src != null) {
-    mediaPicture = `<img class="media-card__picture" src="${picture}" alt="${media.title}">`;
+    mediaPicture = `<img class="media-card__picture" height="300" width="350" src="${picture}" alt="${media.title}">`;
   } else if (media.type === 'video' && media.src != null) {
     mediaPicture = `
         <video aria-label="${media.title}" class="media-card__picture">

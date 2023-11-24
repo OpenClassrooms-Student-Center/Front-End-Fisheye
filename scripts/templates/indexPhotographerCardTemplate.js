@@ -24,7 +24,7 @@ const displayPhotographerCard = (photographer) => {
   const photographerCard = `
       <a class="photographer__card-link" href="./pages/photographer.html?id=${photographer.id}">
         <div class="profile-picture__container">
-          <img class="photographer__card-profile-picture profile-picture" src=${src} alt="">
+          <img class="photographer__card-profile-picture profile-picture" height="220" width="220" src=${src} alt="">
         </div>
         <h2 class="photographer__card-name name">${photographer.name}</h2>
       </a>
