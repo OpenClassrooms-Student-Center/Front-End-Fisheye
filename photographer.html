@@ -1,37 +1,76 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <link href="css/style.css" rel="stylesheet" type="text/css" />
-    <meta charset="utf-8">
-    <link rel="icon" type="image/png" href="assets/favicon.png">
-    <link href="https://fonts.googleapis.com/css?family=DM+Sans&display=swap" rel="stylesheet">
-    <title>Fisheye - photographe </title>
-  </head>
-  <body>
-    <header>
-      <img src="assets/images/logo.png" class="logo" />
+<html lang="fr">
+
+<head>
+  <link href="css/style.css" rel="stylesheet" type="text/css" />
+  <meta charset="utf-8">
+  <link rel="icon" type="image/png" href="assets/favicon.png">
+  <link href="https://fonts.googleapis.com/css?family=DM+Sans&display=swap" rel="stylesheet">
+  <title>Fisheye - photographe </title>
+</head>
+
+<body>
+  <header aria-label="Header du portfolio" role="banner">
+    <img src="assets/images/logo.png" class="logo" alt="Page d'accueil de FishEye" />
+  </header>
+  <main id="main" aria-hidden="false">
+    <section class="photograph-header">
+      <button class="contact-button" id="open-modal-btn" onclick="displayModal()">Contactez-moi</button>
+    </section>
+
+    <section class="sort">
+      <!-- <label for="media-sort"></label> -->
+      <label for="media-sort">Trier par</label>
+      <select aria-labelledby="media-sort" class="sort-select" id="media-sort">
+        <option value="popularite">Popularité</option>
+        <option value="date">Date</option>
+        <option value="titre">Titre</option>
+      </select>
+    </section>
+
+    <section class="medias"></section>
+    <section class="sticky displayed-scrollbar"></section>
+  </main>
+  <div class="modal closed" aria-hidden="true" aria-labelledby="modal-header" role="dialog">
+    <header aria-label="Header du formulaire">
+      <h2 class="contact-me" id="modal-header">Contactez-moi Name </h2>
+      <button id="close-modal-btn" aria-label="Fermer la modale" onclick="closeModal()">
+        <img src="assets/icons/close.svg" alt="Fermer la modale" />
+      </button>
+
     </header>
-    <main id="main">
-      <div class="photograph-header">
-        <button class="contact_button" onclick="displayModal()">Contactez-moi</button>
-      </div>
-    </main>
-    <div id="contact_modal">
-			<div class="modal">
-				<header>
-          <h2>Contactez-moi</h2>
-          <img src="assets/icons/close.svg" onclick="closeModal()" />
-        </header>
-				<form>
-					<div>
-						<label>Prénom</label>
-						<input />
-					</div>
-          <button class="contact_button">Envoyer</button>
-				</form>
-			</div>
-		</div>
-    <script src="/scripts/pages/photographer.js"></script>
-    <script src="/scripts/utils/contactForm.js"></script>
-  </body>
+    <form>
+      <label for="prenom">Prénom</label>
+      <input type="text" name="prenom" placeholder="Votre prénom" id="prenom" />
+      <label for="nom">Nom</label>
+      <input type="text" name="nom" placeholder="Votre nom" id="nom" />
+      <label for="email" autocomplete="on">Email</label>
+      <input type="email" name="email" placeholder="Votre email, par exemple: abcd@domaine.fr" id="email" />
+      <label for="message">Votre message</label>
+      <textarea name="message" id="message" placeholder="Votre message"></textarea>
+      <button class="contact-button" aria-label="Envoyer le formulaire">Envoyer</button>
+    </form>
+  </div>
+
+  <div class="lightbox-container closed">
+    <div class="lightbox" role="dialog" aria-label="Image agrandie">
+      <p class="lightbox-title">Title</p>
+      <button class="previous-button" aria-label="Image précédente">
+        <span class="fa-solid fa-angle-left"></span>
+      </button>
+      <button class="next-button" aria-label="Image suivante">
+        <span class="fa-solid fa-angle-right"></span>
+      </button>
+      <button class="close-button" aria-label="Fermer la lightbox">
+        <span class="fa-solid fa-xmark"></span>
+      </button>
+    </div>
+  </div>
+
+  <script src="./scripts/pages/portfolio.js" type="module"></script>
+  <script src="./scripts/pages/Media.js" type="module"></script>
+  <script src="./scripts/utils/contactForm.js"></script>
+  <script src="https://kit.fontawesome.com/2e9a2be5dc.js" crossorigin="anonymous"></script>
+</body>
+
 </html>

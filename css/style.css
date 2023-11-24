@@ -1,50 +1,320 @@
-@import url("photographer.css");
+@import url('photographer.css');
 
-body {
-    font-family: "DM Sans", sans-serif;
-    margin: 0;
+body,
+h1,
+h2,
+h3,
+p {
+  margin: 0;
 }
 
+img {
+  max-width: 100%;
+  display: block;
+}
+
+body {
+  font-family: 'DM Sans', sans-serif;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+}
 
 header {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-    height: 90px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  height: 90px;
 }
 
 h1 {
-    color: #901C1C;
-    margin-right: 100px;
+  color: #901c1c;
+  margin-right: 100px;
 }
 
 .logo {
-    height: 50px;
-    margin-left: 100px;
+  height: 50px;
+  margin-left: 100px;
 }
 
 .photographer_section {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    gap: 70px;
-    margin-top: 100px;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 70px;
+  margin-top: 100px;
 }
 
 .photographer_section article {
-    justify-self: center;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
+  justify-self: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
 }
 
-.photographer_section article h2 {
-    color: #D3573C;
-    font-size: 36px;
+.photographer-name {
+  color: #d3573c;
+  font-weight: 400;
 }
 
+.photographer_section .photographer-name {
+  font-size: 36px;
+  height: 47px;
+}
+
+.photographer-profile .photographer-name {
+  font-size: 64px;
+  /* height: 83px; */
+  margin-right: 0;
+}
+
+.photographer-profile .location {
+  height: 31px;
+  font-size: 24px;
+  font-weight: 400;
+}
+
+.photographer-profile .tag {
+  height: 23px;
+  font-size: 18px;
+  color: #525252;
+  font-weight: 400;
+}
+
+.photograph-header {
+  display: grid;
+  grid-template-columns: 2fr 1fr 2fr;
+  align-items: center;
+}
+
+.photographer-profile {
+  margin-left: 50px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  height: 200px;
+}
+
+.profile-picture {
+  height: 200px;
+  width: 200px;
+  object-fit: cover;
+  overflow-clip-margin: unset;
+  overflow: hidden;
+  border-radius: 50%;
+  justify-self: end;
+  margin-right: 50px;
+}
+
+a .profile-picture {
+  margin-right: 0;
+}
+
+a {
+  text-decoration: none;
+}
+
+.location {
+  color: #901c1c;
+  font-size: 13px;
+}
+
+.tag {
+  color: #000;
+  font-size: 10px;
+}
+
+.price {
+  color: #757575;
+  font-size: 9px;
+}
+
+article a {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/*
 .photographer_section article img {
-    height: 200px;
-    width: 200px;
+  width: 526px;
+  height: 358px;
+  scale: 1.05;
+  margin-top: 24px;
+}
+
+.img_container {
+  width: 200px;
+  height: 200px;
+  overflow-clip-margin: content-box;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+}*/
+.img-container {
+  width: 200px;
+  height: 200px;
+  overflow: hidden;
+  border-radius: 50%;
+}
+/*------------------------------------------------------------------------------------*/
+
+.custom-select {
+  position: relative;
+  font-family: Arial;
+}
+
+.custom-select select {
+  display: none; /*hide original SELECT element: */
+}
+
+.select-selected {
+  background-color: DodgerBlue;
+}
+
+/* Style the arrow inside the select element: */
+.select-selected:after {
+  position: absolute;
+  content: '';
+  top: 14px;
+  right: 10px;
+  width: 0;
+  height: 0;
+  border: 6px solid transparent;
+  border-color: #fff transparent transparent transparent;
+}
+
+/* Point the arrow upwards when the select box is open (active): */
+.select-selected.select-arrow-active:after {
+  border-color: transparent transparent #fff transparent;
+  top: 7px;
+}
+
+/* style the items (options), including the selected item: */
+.select-items div,
+.select-selected {
+  color: #ffffff;
+  padding: 8px 16px;
+  border: 1px solid transparent;
+  border-color: transparent transparent rgba(0, 0, 0, 0.1) transparent;
+  cursor: pointer;
+}
+
+/* Style items (options): */
+.select-items {
+  position: absolute;
+  background-color: DodgerBlue;
+  top: 100%;
+  left: 0;
+  right: 0;
+  z-index: 99;
+}
+
+/* Hide the items when the select box is closed: */
+.select-hide {
+  display: none;
+}
+
+.select-items div:hover,
+.same-as-selected {
+  background-color: rgba(0, 0, 0, 0.1);
+}
+
+.medias {
+  margin: 58px 100px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  row-gap: 20px;
+}
+
+.medias::after {
+  content: '';
+  width: 350px;
+}
+
+.media-info {
+  display: flex;
+  justify-content: space-between;
+  width: 350px;
+  height: 31px;
+}
+
+.media-info .title {
+  color: #901c1c;
+  font-size: 24px;
+  font-weight: 400;
+}
+
+.media-info .media-likes {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 5px;
+}
+
+.media-likes .number-likes {
+  color: #901c1c;
+  text-align: right;
+  font-size: 24px;
+  font-weight: 500;
+}
+
+.media-likes .fa-heart {
+  color: #901c1c;
+  font-size: 20px;
+}
+
+.sort {
+  margin: 0 100px;
+  margin-top: 20px;
+}
+
+.media {
+  width: 350px;
+  height: 300px;
+  border-radius: 5px;
+  object-fit: cover;
+}
+
+.medias article {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  justify-content: space-between;
+}
+
+.sticky {
+  width: 376px;
+  height: 68px;
+  border-radius: 5px;
+  background: #db8876;
+  position: fixed;
+  bottom: 0;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.total-likes {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 5px;
+}
+
+.total-likes .number-likes,
+.sticky .price {
+  font-size: 24px;
+  font-weight: 600;
+  color: #000;
+}
+
+.total-likes .fa-heart {
+  font-size: 24px;
 }
