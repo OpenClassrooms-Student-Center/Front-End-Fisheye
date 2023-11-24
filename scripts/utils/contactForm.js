@@ -1,10 +1,3 @@
-const openModalBtn = document.getElementById('open-modal-btn')
-console.log(openModalBtn)
-openModalBtn.addEventListener('click', displayModal)
-
-const closeModalBtn = document.getElementById('close-modal-btn')
-closeModalBtn.addEventListener('click', closeModal)
-
 function displayModal() {
   const queryString = window.location.search
   const urlParams = new URLSearchParams(queryString)
