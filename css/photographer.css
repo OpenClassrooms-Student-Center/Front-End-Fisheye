@@ -1,24 +1,33 @@
+* {
+  --main-color: #901c1c;
+  --secondary-color: #d3573c;
+  --form-color: #312e2e;
+  --form-secondary-color: #db8876;
+ 
+  
+}
+
 #contact_modal {
   display: none;
-  width: 100%;
-  height: 100%;
   position: fixed;
   top: 5%;
+  border-radius: 5px;
+  background-color: var(--form-secondary-color);
+  width: 50%;
+
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  padding: 35px;
+  border:none;
 }
 
-/* #contact_modal h2 {
-  font-size: 50px;
-  margin-top: 0;
-  color: black;
-}
 
-#contact_modal p {
-  font-size: 50px;
-  margin: 0;
-  width: 100%;
-  text-align: left;
-  color: black;
-} */
+@media screen and (min-width: 1600px) {
+  #contact_modal {
+    width: 40%;
+  }
+}
 
 .photograph-header {
   display: flex;
@@ -45,9 +54,14 @@
   width: 170px;
   height: 70px;
   border: none;
-  background-color: #901c1c;
+  background-color: var(--main-color);
   border-radius: 5px;
   cursor: pointer;
+}
+
+.contact_button:hover, .contact_button:focus {
+  background-color: var(--secondary-color);
+  color:black
 }
 
 select {
@@ -59,7 +73,7 @@ select {
   width: 170px;
   height: 70px;
   border: none;
-  background-color: #901c1c;
+  background-color: var(--main-color);
   border-radius: 5px;
   cursor: pointer;
   -webkit-appearance: none;
@@ -75,25 +89,13 @@ select {
 
 select option {
   font-weight: bold;
-  color: white;
+  color: black;
 }
 
-.modal {
-  border-radius: 5px;
-  background-color: #db8876;
-  width: 50%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: space-between;
-  padding: 35px;
-  margin: auto;
-}
-
-@media screen and (min-width: 1600px) {
-  .modal {
-    width: 40%;
-  }
+select:hover, select:focus {
+  background-color: var(--secondary-color);
+  color:black;
+  background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" fill="black"><polygon points="0,0 100,0 50,50" /></svg>');
 }
   
 
@@ -142,7 +144,7 @@ form {
 }
 
 form label {
-  color: #312e2e;
+  color: var(--form-color);
   font-size: 36px;
 }
 
@@ -196,7 +198,7 @@ textarea {
 
 .media-infos p {
   margin-top: 5px;
-  color: #901c1c;
+  color: var(--main-color);
   font-size: 20px;
 }
 
@@ -220,7 +222,7 @@ textarea {
   border-radius: 5px;
 }
 
-.lightbox {
+#lightbox {
   display: none;
   position: fixed;
   z-index: 1;
@@ -229,6 +231,7 @@ textarea {
   width: 100%;
   height: 100%;
   background-color: white;
+  border:none;  
 }
 
 .lightbox-content {
@@ -275,8 +278,8 @@ textarea {
 .lightbox-close {
   position: absolute;
   top: 15px;
-  right: 35px;
-  color: #901c1c;
+  right: 60px;
+  color: var(--main-color);
   font-size: 40px;
   font-weight: bold;
   transition: 0.3s;

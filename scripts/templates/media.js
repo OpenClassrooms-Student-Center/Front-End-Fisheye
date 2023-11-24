@@ -1,31 +1,9 @@
 import { lightBox } from "./lightbox.js";
 
-function medias(medias) {
-  const { allMedias, firstName, photographerPrice, allLikes } = medias;
+function mediaTemplate(allMedias, firstName, allLikes, photographerPrice) {
   let totalLikesAdded = 0;
 
-  displayMedias();
-
-  function displayMedias() {
-    const mediaSection = document.querySelector(".media-section");
-    mediaSection.innerHTML = "";
-
-    allMedias?.forEach((media, index) => {
-      const { image, video, title, likes } = media ?? {};
-
-      const mediaLink = `assets/photographers/${firstName}/${
-        image ?? video ?? ""
-      }`;
-
-      const mediaElement = media?.image
-        ? `<img src="${mediaLink}" alt="${title}">`
-        : `<video src="${mediaLink}" autoplay loop muted></video>`;
-
-      mediaSection.appendChild(getMediaCard(mediaElement, title, likes, index));
-    });
-  }
-
-  function getMediaCard(mediaElement, title, likes, index) {
+  function getMediaCardDOM(mediaElement, title, likes, index) {
     let likeAdded = likes;
 
     const mediaCard = document.createElement("article");
@@ -68,8 +46,6 @@ function medias(medias) {
       if (likeAdded === likes) {
         likeAdded = likes + 1;
         totalLikesAdded += 1;
-
-        displayLikesContainer(allLikes + totalLikesAdded, photographerPrice);
         mediaLikes.innerHTML = `
             <p class="likes-number" aria-label="like added" tabindex="0">${likeAdded}  
               <i class="fa-solid fa-heart"></i>
@@ -78,16 +54,19 @@ function medias(medias) {
       } else {
         likeAdded = likes;
         totalLikesAdded -= 1;
-        displayLikesContainer(allLikes + totalLikesAdded, photographerPrice);
         mediaLikes.innerHTML = `
             <p class="likes-number">${likeAdded}  
               <i class="fa-regular fa-heart"></i>
             </p>
           `;
       }
+      displayLikesContainer(allLikes + totalLikesAdded, photographerPrice);
     }
     return mediaCard;
   }
+  return {
+    getMediaCardDOM,
+  };
 }
 
 function displayLikesContainer(totalLikes, price) {
@@ -99,4 +78,22 @@ function displayLikesContainer(totalLikes, price) {
     `;
 }
 
-export { medias, displayLikesContainer };
+function getMediaCard({
+  mediaElement,
+  title,
+  likes,
+  allMedias,
+  firstName,
+  index,
+  allLikes,
+  photographerPrice,
+}) {
+  return mediaTemplate(
+    allMedias,
+    firstName,
+    allLikes,
+    photographerPrice
+  ).getMediaCardDOM(mediaElement, title, likes, index);
+}
+
+export { getMediaCard, displayLikesContainer };

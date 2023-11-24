@@ -12,7 +12,7 @@ function photographerTemplate({
   function getUserCardDOM() {
     const article = document.createElement("article");
     article.innerHTML = `
-      <a href="photographer.html?id=${id}">
+      <a href="photographer.html?id=${id}" aria-label="See portfolio of ${name}">
         <img src="${picture}" alt="${name}">
         <h2>${name}</h2>
       </a>

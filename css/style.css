@@ -1,5 +1,11 @@
 @import url("photographer.css");
 
+* {
+    --main-color: #901C1C;
+    --secondary-color: #D3573C;
+    --tertiary-color: #757575;
+}
+
 body {
     font-family: "DM Sans", sans-serif;
     margin: 0;
@@ -15,12 +21,12 @@ header {
 }
 
 h1 {
-    color: #901C1C;
+    color: var(--main-color);
     margin-right: 100px;
 }
 
 h2 {
-    color: #D3573C;
+    color: var(--secondary-color);
     font-size: 36px;
     text-wrap:  nowrap;
     margin-bottom: 0px;
@@ -28,7 +34,7 @@ h2 {
 
 h3 {
     font-size: 18px;
-    color: #901C1C;
+    color: var(--main-color);
     margin-top: 5px;
 }
 
@@ -84,12 +90,12 @@ h3 {
 }
 
 .location {
-    color: #901C1C;
+    color: var(--main-color);
     font-size: 24px;
 }
 
 .icon {
-    color: #901C1C;
+    color: var(--main-color);   
     font-size: 48px;
 }
 
@@ -98,7 +104,7 @@ h3 {
 }
 
 .price {
-    color: #757575;
+    color: var(--tertiary-color);
     font-size: 18px;
 }
 

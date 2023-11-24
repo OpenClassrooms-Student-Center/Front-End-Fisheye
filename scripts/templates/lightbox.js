@@ -1,10 +1,11 @@
+import { closeModal, displayModal } from "../utils/contactForm.js";
+
 function displayLightbox(index, mediasSorted, firstName) {
-  const lightbox = document.querySelector(".lightbox");
   const lightboxClose = document.querySelector(".lightbox-close");
   const rightArrow = document.querySelector("#right-arrow");
   const leftArrow = document.querySelector("#left-arrow");
 
-  lightbox.style.display = "block";
+  displayModal("lightbox");
 
   displayLightboxTemplate();
 
@@ -27,12 +28,12 @@ function displayLightbox(index, mediasSorted, firstName) {
   });
 
   lightboxClose.addEventListener("click", () => {
-    lightbox.style.display = "none";
+    closeModal("lightbox");
   });
 
   addEventListener("keydown", (event) => {
     if (event.key === "Escape") {
-      lightbox.style.display = "none";
+      closeModal("lightbox");
     }
 
     if (event.key === "ArrowRight") {

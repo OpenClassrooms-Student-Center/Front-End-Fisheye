@@ -14,9 +14,9 @@
     <title>Fisheye - photographe</title>
   </head>
   <body>
-    <header>
-      <a href="index.html">
-        <img src="assets/images/logo.png" class="logo" alt="fisheye logo" />
+    <header role="banner">
+      <a href="./" aria-label="Fisheye Home page" tabindex="0">
+        <img src="assets/images/logo.png" class="logo" alt="Fisheye Home page" />
       </a>
     </header>
     <main id="main" role="main">
@@ -25,7 +25,9 @@
         <button
           aria-label="contact"
           class="contact_button"
-          onclick="displayModal()"
+          role="button"
+          tabindex="0"
+          id="contactButton"
         >
           Contactez-moi
         </button>
@@ -33,8 +35,7 @@
       </div>
       <div class="media-filter">
         <label for="filter">Trier par</label>
-        <select name="filter" id="filter" aria-label="Trier par">
-          
+        <select name="filter" id="filter" aria-label="Trier par" role="listbox" tabindex="0">
           <option value="Popularite">Popularite</option>
           <option value="Date">Date</option>
           <option value="Titre">Titre</option>
@@ -43,73 +44,75 @@
       <section class="media-section"></section>
     </main>
 
-    <div id="contact_modal" role="dialog" aria-modal="true">
-      <div class="modal">
+    <dialog id="contact_modal" role="dialog" aria-hidden="true">
         <header role="banner">
-          <h2>Contactez-moi</h2>
+          <h1 id="formTitle">Contactez-moi</h1>
 
           <img
             src="assets/icons/close.svg"
-            onclick="closeModal()"
-            alt="close modal"
+            alt="Close Contact form"
+            aria-label="Close Contact form"
+            role="button"
+            tabindex="0"
+            id="closeForm"
           />
         </header>
         <p class="photographerName"></p>
         <form onsubmit="sendMessage(event)" role="form" id="contactForm">
           <div class="form-control">
-            <label for="firstName">Prénom</label>
+            <label for="fisrtName" aria-label="First Name">Prénom</label>
             <input id="firstName" name="prénom"/>
             <span class="error" id="firstNameError" aria-live="polite" role="alert">
               Veuillez saisir votre Prénom
             </span>
           </div>
           <div class="form-control">
-            <label for="lastName">Nom</label>
+            <label for="lastName" aria-label="Last Name">Nom</label>
             <input id="lastName" name="nom" />
             <span class="error hidden" id="lastNameError" aria-live="polite" role="alert">
               Veuillez saisir votre Nom
             </span>
           </div>
           <div class="form-control">
-            <label for="email">Email</label>
+            <label for="email" aria-label="Email">Email</label>
             <input id="email" />
             <span class="error" id="emailError" aria-live="polite" role="alert">
               Veuillez saisir votre Email ou un Email valide
             </span>
           </div>
           <div class="form-control">
-            <label for="message">Votre message</label>
+            <label for="message" aria-label="Your message">Votre message</label>
             <textarea id="message"></textarea>
             <span class="error" id="messageError" aria-live="polite" role="alert">
               Veuillez saisir un message
             </span>
           </div>
 
-          <button aria-label="envoyer" class="contact_button">Envoyer</button>
+          <button aria-label="send" class="contact_button">Envoyer</button>
         </form>
       </div>
-    </div>
-    <div class="lightbox" role="dialog" aria-modal="true">
+    </dialog>
+    <dialog id="lightbox" role="dialog" aria-hidden="true">
       <div class="lightbox-content">
 
         <div class="lightbox-left icon">
-          <i id="left-arrow" class="fa-solid fa-chevron-left" aria-label="previous" tabindex="0"></i>
+          <i id="left-arrow" class="fa-solid fa-chevron-left" role="button"  aria-label="previous" tabindex="0"></i>
         </div>
         <div class="media-content"></div>
 
         <div class="lightbox-right icon">
-          <i id="right-arrow" class="fa-solid fa-chevron-right" aria-label="next" tabindex="0"></i>
+          <i id="right-arrow" class="fa-solid fa-chevron-right" role="button" aria-label="next" tabindex="0"></i>
           <div class="lightbox-close">
-            <i class="fa-solid fa-xmark" aria-label="close" tabindex="0"></i>
+            <i class="fa-solid fa-xmark" role="button" aria-label="close" tabindex="0"></i>
           </div>
         </div>
  
       </div>
-    </div>
+    </dialog>
     <div class="total-likes">
     </div>
 
     <script type="module" src="/scripts/pages/photographer.js"></script>
-    <script src="/scripts/utils/contactForm.js"></script>
+    <script type="module" src="/scripts/utils/contactForm.js"></script>
   </body>
 </html>
