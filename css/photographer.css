@@ -1,76 +1,338 @@
 #contact_modal {
-    display: none;
+  display: none;
 }
 
-.photograph-header {
-    background-color: #FAFAFA;
-    height: 300px;
-    margin: 0 100px;
+#photograph-header {
+  height: 300px;
+  padding: 1em 10%;
 }
 
 .contact_button {
-    font-size: 20px;
-    font-weight: bold;
-    color: white;
-    padding: 11px;
-    width: 170px;
-    height: 70px;
-    border: none;
-    background-color: #901C1C;
-    border-radius: 5px;
-    cursor: pointer;
+  font-size: 20px;
+  font-weight: bold;
+  color: white;
+  padding: 11px;
+  width: 170px;
+  height: 70px;
+  border: none;
+  background-color: #901c1c;
+  border-radius: 5px;
+  cursor: pointer;
 }
 
 .modal {
-    border-radius: 5px;
-    background-color: #DB8876;
-    width: 50%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: space-between;
-    padding: 35px;
-    margin: auto;
+  background-color: #db8876;
+  border-radius: 5px;
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+  padding: 35px;
+  margin: auto;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 
 .modal header {
-    justify-content: space-between;
-    width: 100%;
+  justify-content: space-between;
+  width: 100%;
 }
 
 .modal header img {
-    cursor: pointer;
+  cursor: pointer;
 }
 
 .modal header h2 {
-    font-size: 64px;
-    font-weight: normal;
-    text-align: center;
+  font-size: 64px;
+  font-weight: normal;
+  text-align: center;
 }
 
 form {
-    display: flex;
-    width: 100%;
-    flex-direction: column;
-    align-items: flex-start;
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  align-items: flex-start;
 }
 
 form label {
-    color: #312E2E;
-    font-size: 36px;
+  color: #312e2e;
+  font-size: 36px;
 }
 
 form div {
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-    align-items: self-start;
-    margin-bottom: 26px;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  align-items: self-start;
+  margin-bottom: 26px;
 }
 
 form input {
-    width: 100%;
-    height: 68px;
-    border: none;
-    border-radius: 5px;
+  width: 100%;
+  height: 68px;
+  border: none;
+  border-radius: 5px;
+}
+
+.photographer-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 2em;
+  margin: 2em;
+}
+.photographer-card img {
+  width: 15em;
+  height: 15em;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.photographer-info {
+  background-color: #fafafa;
+}
+
+.photographer-card h2,
+.photographer-info h2 {
+  color: #d3573c;
+  font-size: 36px;
+  margin-bottom: 10px;
+}
+.photographer-card p,
+.photographer-info p {
+  margin: 0.2em;
+}
+
+.photographer-card > .city-container {
+  color: #901c1c;
+  font-size: 13px;
+}
+.photographer-card > p:nth-of-type(1) {
+  font-size: 10px;
+}
+.photographer-card > p:nth-of-type(2) {
+  color: #901c1c;
+  font-size: 10px;
+}
+.photographer-card > p:nth-last-of-type(1) {
+  color: #757575;
+  font-size: 9px;
+}
+
+.city-container {
+  display: flex;
+  color: #901c1c;
+  font-size: 13px;
+}
+
+.photographer-info {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 2em;
+}
+
+.photographer-info img {
+  width: 15em;
+  height: 15em;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.medias-wrapper {
+  width: auto;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  padding: 10%;
+  column-gap: 3em;
+}
+
+.media-details {
+  display: flex;
+  justify-content: space-between;
+  /* background-color: lightblue; */
+  text-align: center;
+  align-items: center;
+}
+.media-details p {
+  color: #901c1c;
+  font-size: 24px;
+}
+
+.media-like {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+.media-like .fa-solid {
+  padding: 1em;
+  color: #901c1c;
+}
+
+.media-info {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.media-info img,
+.media-info video {
+  width: 100%;
+  height: 15em;
+  object-fit: cover;
+}
+
+#validation-message {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 75%;
+  padding: 10em 0;
+  display: none;
+}
+
+#main-wrapper {
+  align-items: center;
+  background-color: #333;
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  justify-content: center;
+  width: 100vw;
+}
+
+.photo-modal {
+  align-items: center;
+  background-color: #fff;
+  color: white;
+  display: none;
+  height: 100vh;
+  width: 100vw;
+  justify-content: center;
+  transform: translate(-50%, -50%);
+  z-index: 2;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+}
+
+.carousel-media {
+  width: 50%;
+  height: 50%;
+  object-fit: cover;
+  background-color: yellow;
+}
+
+.no-scroll {
+  overflow: hidden;
+}
+
+#modal-picture {
+  width: 300px;
+  height: auto;
+}
+
+/* Global */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.carousel {
+  position: relative;
+  padding: 0;
+  margin: 0;
+}
+
+.carousel-item {
+  height: 200px;
+  width: 100%;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  list-style-type: none;
+}
+
+.carousel-title {
+  color: #901c1c;
+}
+
+.item-0 {
+  background-color: tomato;
+}
+
+.item-1 {
+  background-color: blue;
+  display: none;
+}
+
+.item-2 {
+  background-color: green;
+  display: none;
+}
+
+.img {
+  height: 40px;
+  width: 40px;
+  background-color: white;
+  border-radius: 50%;
+  display: flex;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: pointer;
+  align-items: center;
+  justify-content: center;
+}
+
+.prev-image {
+  left: 20px;
+}
+
+.fa-arrow-circle-left,
+.fa-arrow-circle-right {
+  font-size: 30px;
+}
+
+.next-image {
+  right: 20px;
+}
+
+.caroussel-title {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.controls {
+  width: 3em;
+  height: 2em;
+  z-index: 4;
+}
+
+.controls-previous {
+  background-color: antiquewhite;
+  position: absolute;
+  right: 10%;
+  top: 50%;
+}
+.controls-next {
+  background-color: lightgreen;
+  position: absolute;
+  top: 50%;
+  left: 10%;
 }
