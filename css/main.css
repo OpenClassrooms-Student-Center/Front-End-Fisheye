@@ -1,0 +1,93 @@
+body {
+    font-family: "DM Sans", sans-serif;
+    padding: 0;
+    box-sizing: border-box;
+    max-width: 1440px;
+    margin: auto;
+}
+
+::after,
+::before {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.container {
+    margin: 20px;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 90px;
+}
+
+h1 {
+    color: var(--primary-color);
+}
+
+.logo {
+    height: 50px;
+}
+
+button {
+    cursor: pointer;
+}
+
+img,
+video {
+    object-fit: cover;
+}
+
+/* ************ Start Affichage modal ************ */
+.overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 2;
+}
+
+body.modal-open {
+    overflow: hidden;
+}
+
+.overlay.visible {
+    display: block;
+}
+
+@keyframes modalopen {
+    from {
+        opacity: 0;
+        transform: translateY(-150px);
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+/* ************ End Affichage modal ************ */
+.required {
+    color: black;
+    /* margin-left: 5px; */
+}
+
+/* debugg */
+/* *:focus{
+    font-size: 500px;
+} */
+/* *{
+    border: 1px red solid;
+} */

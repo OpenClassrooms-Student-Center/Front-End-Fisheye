@@ -1,0 +1,139 @@
+/* ****************** START MODAL ******************  */
+#contact_modal {
+    display: none;
+    position: absolute;
+    top: 45%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 3;
+}
+
+#contact_modal.visible {
+    display: block;
+}
+
+.modal-contact {
+    width: 669px;
+    border-radius: 5px;
+    background-color: #DB8876;
+    padding: 35px;
+    margin: auto;
+    animation: modalopen 400ms ease;
+}
+
+#contact_modal.visible {
+    display: block;
+}
+
+.modal-contact .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+}
+
+.modal-contact img {
+    font-size: 72px;
+}
+
+.modal-contact .header button {
+    background-color: transparent;
+    border: none;
+}
+
+.modal-contact h2 {
+    font-size: 4rem;
+    font-weight: normal;
+    margin-block-start: 0;
+}
+
+form {
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+form label {
+    color: #312E2E;
+    font-size: 2.25rem;
+}
+
+form div {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    align-items: self-start;
+    margin-bottom: 26px;
+}
+
+form input {
+    width: 100%;
+    height: 68px;
+    border: none;
+    border-radius: 5px;
+    margin: 10px 0;
+}
+
+form textarea {
+    width: 100%;
+    height: 170px;
+    margin-bottom: 20px;
+}
+
+.contact_button,
+#contact_button {
+    font-size: 20px;
+    font-weight: bold;
+    color: white;
+    padding: 11px;
+    width: 170px;
+    height: 70px;
+    border: none;
+    background-color: var(--primary-color);
+    border-radius: 5px;
+    transition: background-color 400ms ease;
+}
+
+.contact_button:hover,
+.contact_button:focus,
+#contact_button :hover,
+#contact_button :focus {
+    background-color: var(--secondary-color);
+}
+
+/* Gestion des erreurs */
+.text-control {
+    margin: 0;
+    padding: 8px;
+    width: 100%;
+    border-radius: 8px;
+    font-size: 20px;
+    height: 48px;
+}
+
+/* Confirmation soumission */
+#confirm {
+    display: none;
+}
+
+#confirm.active {
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%, 50%);
+    display: block;
+}
+
+#confirm .closeBtn {
+    text-align: end;
+}
+
+#confirm button {
+    background-color: transparent;
+    border: none;
+}
+
+.confirmText {
+    text-align: center;
+}
+
+/* ****************** END MODAL ******************  */

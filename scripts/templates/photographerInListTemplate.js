@@ -1,0 +1,57 @@
+/* eslint-disable no-undef */
+/* eslint-disable quotes */
+/* eslint-disable object-curly-newline */
+/* eslint-disable no-unused-vars */
+//  Fonction factory pour créer une card photographe sur la page d accueil
+function photographerInListTemplate(data) {
+  const { name, id, city, country, tagline, price, portrait } = data;
+  const picture = `assets/photographers/${portrait}`;
+
+  function redirectToDetailPage() {
+    // Rediriger vers la page détaillée avec l'ID comme paramètre
+    window.location.href = `/photographer.html?id=${id}`;
+  }
+
+  function handleKeyDown(event) {
+    if (event.key === "Enter") {
+      // Si la touche "Entrée" est pressée
+      redirectToDetailPage();
+    }
+  }
+
+  function getUserCardDOM() {
+    // NOEUDS PAGE ACCUEIL
+    const $article = document.createElement("article");
+    const $h2 = document.createElement("h2");
+    const $div = document.createElement("div");
+    const $p1 = document.createElement("p");
+    const $p2 = document.createElement("p");
+    const $p3 = document.createElement("p");
+    const $img = createImage(picture, name);
+
+    $article.setAttribute("data-id", id); // Ajout de l'attribut data-id à l'élément article
+    // Ajout de l'attribut aria-label à l'élément article
+    const ariaLabel = `${name}, ${city}, ${country}, ${tagline}, ${price}€/jour`;
+    $article.setAttribute("aria-label", ariaLabel);
+    $article.setAttribute("tabindex", "0"); // Rend l'élément focusable
+    $article.setAttribute("role", "button"); // Indique que c'est un élément cliquable
+
+    $article.addEventListener("click", redirectToDetailPage);
+    $article.addEventListener("keydown", handleKeyDown);
+
+    $h2.textContent = name;
+    $p1.textContent = `${city}, ${country}`;
+    $p2.textContent = tagline;
+    const deviceText = "€/jour";
+    $p3.textContent = price + deviceText;
+    $article.appendChild($img);
+    $article.appendChild($div);
+    $div.appendChild($h2);
+    $div.appendChild($p1);
+    $div.appendChild($p2);
+    $div.appendChild($p3);
+
+    return $article;
+  }
+  return { getUserCardDOM };
+}

@@ -1,37 +1,237 @@
 <!DOCTYPE html>
-<html>
+<html lang="fr">
   <head>
-    <link href="css/style.css" rel="stylesheet" type="text/css" />
-    <meta charset="utf-8">
-    <link rel="icon" type="image/png" href="assets/favicon.png">
-    <link href="https://fonts.googleapis.com/css?family=DM+Sans&display=swap" rel="stylesheet">
-    <title>Fisheye - photographe </title>
+    <link href="css/index.css" rel="stylesheet" type="text/css" />
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/png" href="assets/favicon.png" />
+    <link
+      href="https://fonts.googleapis.com/css?family=DM+Sans&display=swap"
+      rel="stylesheet"
+    />
+    <script
+      src="https://kit.fontawesome.com/8870a3e68e.js"
+      crossorigin="anonymous"
+    ></script>
+    <title>Fisheye - photographe</title>
   </head>
   <body>
-    <header>
-      <img src="assets/images/logo.png" class="logo" />
-    </header>
-    <main id="main">
-      <div class="photograph-header">
-        <button class="contact_button" onclick="displayModal()">Contactez-moi</button>
+    <!-- Overlay modal -->
+    <div class="overlay" aria-hidden="true">
+      <p class="sr-only">
+        Ce contenu est actuellement indisponible. La boîte de dialogue est
+        ouverte.
+      </p>
+    </div>
+    <div class="container">
+      <header>
+        <a href="/">
+          <img
+            src="assets/images/logo.png"
+            class="logo photographerPage"
+            alt="Fisheye Home Page"
+          />
+        </a>
+      </header>
+      <!-- Bloc fiche photographe -->
+      <main id="main"></main>
+      <!-- HTML -->
+      <section id="media-container">
+        <div id="media-container-header">
+          <span aria-labelledby="sortSelect">Trier par :</span>
+          <div
+            class="custom-select"
+            role="combobox"
+            aria-haspopup="listbox"
+            aria-expanded="false"
+            tabindex="0"
+          >
+            <button
+              id="sortSelect"
+              aria-labelledby="selectedOptionLabel"
+              aria-haspopup="listbox"
+              aria-expanded="false"
+              tabindex="-1"
+            >
+              <span id="selectedOptionLabel" class="sr-only">Trier par : </span>
+              <span
+                id="selectedOption"
+                role="option"
+                aria-selected="true"
+                tabindex="-1"
+                >Choisir</span
+              >
+              <strong
+                id="arrow-dropdown-listbox"
+                class="fa-solid fa-caret-down"
+              ></strong>
+            </button>
+            <ul
+              id="selectOptions"
+              class="select-options"
+              role="listbox"
+              aria-activedescendant="selectedOption"
+            >
+              <li
+                role="option"
+                aria-selected="false"
+                tabindex="-1"
+                data-value="popularity"
+              >
+                Popularité
+              </li>
+              <li
+                role="option"
+                aria-selected="false"
+                tabindex="-1"
+                data-value="date"
+              >
+                Date
+              </li>
+              <li
+                role="option"
+                aria-selected="false"
+                tabindex="-1"
+                data-value="title"
+              >
+                Titre
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <div id="media-container-main"></div>
+      </section>
+      <!-- Formulaire de contact -->
+      <div
+        id="contact_modal"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="modalTitle"
+      >
+        <div class="modal-contact">
+          <div class="header">
+            <h2 id="modalTitle">
+              Contactez-moi<br /><span id="photographerName"></span>
+            </h2>
+            <button
+              id="btnFormContactClose"
+              aria-label="Fermer le formulaire de contact"
+            >
+              <img
+                src="assets/icons/close.svg"
+                alt="Fermer le formulaire de contact"
+              />
+            </button>
+          </div>
+          <form id="formContact" aria-label="Formulaire de contact">
+            <div id="firstName" class="formData">
+              <label for="first" tabindex="-1"
+                >Prénom <span class="required" tabindex="-1">*</span></label
+              >
+              <input
+                type="text"
+                id="first"
+                class="text-control"
+                name="prénom"
+                aria-required="true"
+                tabindex="0"
+              />
+            </div>
+            <div id="lastName" class="formData">
+              <label for="last" tabindex="-1"
+                >Nom <span class="required" tabindex="-1">*</span></label
+              >
+              <input
+                type="text"
+                id="last"
+                class="text-control"
+                name="Nom"
+                aria-required="true"
+                tabindex="0"
+              />
+            </div>
+            <div id="emailField" class="formData">
+              <label for="email" tabindex="-1"
+                >Email <span class="required" tabindex="-1">*</span></label
+              >
+              <input
+                type="email"
+                id="email"
+                class="text-control"
+                name="Email"
+                aria-required="true"
+                tabindex="0"
+              />
+            </div>
+            <div id="messageField" class="formData">
+              <label for="message" tabindex="-1"
+                >Votre message
+                <span class="required" tabindex="-1">*</span></label
+              >
+              <textarea
+                id="message"
+                class="text-control"
+                name="message"
+                aria-required="true"
+                tabindex="0"
+              ></textarea>
+            </div>
+
+            <button type="submit" class="contact_button" tabindex="0">
+              Envoyer
+            </button>
+          </form>
+        </div>
+        <div id="confirm">
+          <div class="closeBtn">
+            <button
+              id="btnFormConfirmContactClose"
+              aria-label="Fermer cette fenêtre de confirmation"
+            >
+              <img
+                src="assets/icons/close.svg"
+                alt="Fermer cette fenêtre de confirmation"
+              />
+            </button>
+          </div>
+          <p class="confirmText">Vos données ont bien été envoyées !</p>
+        </div>
       </div>
-    </main>
-    <div id="contact_modal">
-			<div class="modal">
-				<header>
-          <h2>Contactez-moi</h2>
-          <img src="assets/icons/close.svg" onclick="closeModal()" />
-        </header>
-				<form>
-					<div>
-						<label>Prénom</label>
-						<input />
-					</div>
-          <button class="contact_button">Envoyer</button>
-				</form>
-			</div>
-		</div>
-    <script src="/scripts/pages/photographer.js"></script>
-    <script src="/scripts/utils/contactForm.js"></script>
+      <!-- Lightbox -->
+      <div id="lightbox_modal" role="dialog" aria-modal="true" tabindex="-1">
+        <button id="closeLightbox" aria-label="Fermer la lightbox">
+          &times;
+        </button>
+        <div id="lightboxContent" role="group">
+          <div id="mediaCarousel" role="listbox" aria-live="polite">
+            <div class="lightbox-media" role="option" aria-selected="true">
+              <figure></figure>
+            </div>
+          </div>
+        </div>
+        <!-- Boutons de navigation du carrousel -->
+        <button id="prevMedia" aria-label="Média précédent" disabled>
+          &lt;
+          <span id="prevMediaText" class="sr-only"></span>
+        </button>
+        <button id="nextMedia" aria-label="Média suivant" disabled>
+          <span id="nextMediaText" class="sr-only"></span>
+          &gt;
+        </button>
+      </div>
+    </div>
+    <script src="/scripts/utils/fetch.js"></script>
+    <script src="/scripts/utils/listBox.js"></script>
+    <script src="scripts/templates/createMediaElementTemplate.js"></script>
+    <script src="scripts/templates/createMediaTemplate.js"></script>
+    <script src="/scripts/utils/lightBox.js"></script>
+    <script src="/scripts/pages/photographerProfile.js"></script>
+    <script src="scripts/templates/photographerProfileTemplate.js"></script>
+    <script src="/scripts/utils/modal.js"></script>
+    <script src="/scripts/utils/formEvents.js"></script>
+    <script src="/scripts/utils/formValues.js"></script>
+    <script src="/scripts/utils/formFieldsControl.js"></script>
+    <script src="/scripts/utils/formSubmit.js"></script>
+    <script src="/scripts/utils/mediaSorter.js"></script>
   </body>
 </html>

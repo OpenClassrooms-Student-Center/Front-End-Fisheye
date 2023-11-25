@@ -1,0 +1,111 @@
+/* ****************** START DESCRIPTION DU PHOTOGRAPHE ******************  */
+.photograph-header {
+    background-color: #FAFAFA;
+    height: 300px;
+}
+
+.photograph-header h1 {
+    color: var(--secondary-color);
+    font-size: 64px;
+}
+
+.location {
+    color: var(--primary-color);
+    font-size: 24px;
+}
+
+.popularity-section {
+    position: fixed;
+    bottom: 0;
+    right: 450px;
+    width: 376px;
+    height: 50px;
+    background-color: var(--popularity-section-color);
+    padding: 10px;
+    color: black;
+    font-weight: bold;
+    font-size: 24px;
+    border-radius: 5px;
+}
+
+.tagline {
+    font-size: 18px;
+}
+
+/* ****************** END DESCRIPTION DU PHOTOGRAPHE ******************  */
+
+/* ****************** START GALLERIES DU PHOTOGRAPHE ******************  */
+#arrow-dropdown-listbox {
+    transition: transform 0.3s ease;
+}
+
+#arrow-dropdown-listbox.opened {
+    transform: rotate(180deg);
+}
+
+#media-container-main {
+    display: flex;
+    gap: 120px;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+#media-container-header {
+    margin: 20px 0 50px 0;
+}
+
+#media-container-header button {
+    cursor: pointer;
+}
+
+.media-card {
+    width: 350px;
+    height: 470px;
+}
+
+.media-card img,
+.media-card video {
+    width: 100%;
+    height: 100%;
+}
+
+.media-card-description {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+    color: var(--primary-color);
+    width: 350px;
+    font-size: 24px;
+}
+
+.media-card-description i {
+    font-size: 24px;
+}
+.media-card-description h2 {
+    font-size: 24px;
+}
+
+.popularity-section {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    gap: 100px;
+}
+
+#likeButton,
+#media-container-main img,
+#media-container-main video {
+    cursor: pointer;
+}
+
+/* .media-card-description>p:nth-child(1) {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+} */
+
+.media-card-description>p:nth-child(2) {
+    white-space: nowrap;
+}
+
+/* ******************  END GALLERIES DU PHOTOGRAPHE ******************  */
