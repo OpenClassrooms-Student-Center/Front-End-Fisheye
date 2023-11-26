@@ -60,7 +60,7 @@ const manageForm = (form, closeModal) => {
     checkInput(
       form.message,
       messageCondition,
-      "Veuillez entrer un message d'au moins 50 caractères."
+      "Veuillez entrer un message d'au moins 20 caractères."
     );
     // for check if all is ok
     if (
