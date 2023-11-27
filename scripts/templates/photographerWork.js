@@ -1,11 +1,50 @@
 import { PhotographerPages } from "../pages/photographer.js";
-import { onOpenPic } from "../utils/photoModal.js";
 
 class PhotographerWork {
-  constructor(photographer, media) {
+  constructor(photographer, media, likeSubject) {
     this._photographer = photographer;
     this._media = media;
+    this._likeSubject = likeSubject;
+    console.log("likeSubject", media);
+
+    const mediasWrapper = document.querySelector("#medias-wrapper");
+
+    const counterDiv = document.createElement("div");
+    counterDiv.classList.add("counter");
+
+    const counterDivHeartLikes = document.createElement("div");
+    counterDivHeartLikes.classList.add("heartLikes");
+
+    const counterDivHeart = document.createElement("div");
+    counterDivHeart.classList.add("fas", "fa-heart");
+
+    const counterDivLikes = document.createElement("div");
+    counterDivLikes.classList.add("likes");
+    const result = media.map((a) => a.likes);
+    let sum = 0;
+    for (let i = 0; i < result.length; i++) {
+      sum += result[i];
+    }
+
+    counterDivLikes.innerHTML = sum;
+
+    counterDivLikes;
+
+    const counterDivPrice = document.createElement("div");
+    counterDivPrice.classList.add("price");
+    counterDivPrice.innerHTML = `${photographer.price}€ / jour`;
+
+    counterDivHeartLikes.appendChild(counterDivLikes);
+    counterDivHeartLikes.appendChild(counterDivHeart);
+    counterDiv.appendChild(counterDivHeartLikes);
+    counterDiv.appendChild(counterDivPrice);
+    mediasWrapper.appendChild(counterDiv);
   }
+
+  // handleLikeButton(){
+  //   const that = this;
+  //   this.
+  // }
 
   createPhotographerWork(photographer, media) {
     // Render lightbox
@@ -42,7 +81,14 @@ class PhotographerWork {
 
       // Create a <p> element for the media title
       const mediaLikeHeartElement = document.createElement("i");
-      mediaLikeHeartElement.classList.add("fa-solid", "fa-heart");
+      mediaLikeHeartElement.classList.add("far", "fa-heart");
+      // mediaLikeHeartElement.onclick = () => changeHeart();
+
+      // Create a <p> element for the media title
+      const mediaLikeHeartElementClicked = document.createElement("i");
+      mediaLikeHeartElementClicked.classList.add("fas", "fa-heart");
+      mediaLikeHeartElementClicked.style.display = "none";
+      // mediaLikeHeartElementClicked.onclick = () => changeHeart();
 
       if (media.image) {
         mediaTypeElement.innerHTML = "Type: Image";
@@ -79,6 +125,7 @@ class PhotographerWork {
       mediaDetails.appendChild(mediaTitleElement);
       mediaLikeContainer.appendChild(mediaLikeElement);
       mediaLikeContainer.appendChild(mediaLikeHeartElement);
+      mediaLikeContainer.appendChild(mediaLikeHeartElementClicked);
 
       // Add the media details container to the media container
       mediaContainer.appendChild(mediaImg);

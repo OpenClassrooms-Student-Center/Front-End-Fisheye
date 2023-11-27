@@ -221,5 +221,106 @@ h1 {
   position: absolute;
   top: 10%;
   right: 10%;
-  color
+}
+
+.heart {
+  margin-right: 3rem;
+  padding-top: 0.8rem;
+}
+
+.icon .far.fa-heart {
+  z-index: 2;
+  // width: fit-content;
+  font-size: 2em;
+  transition: opacity 0.3s ease, background-position 0.5s;
+}
+
+.icon .fas.fa-heart {
+  z-index: 1;
+  opacity: 0;
+  font-size: 2em;
+  transition: opacity 0.3s ease, background-position 0.5s;
+}
+
+.icon:hover .fas.fa-heart {
+  opacity: 1;
+  background: linear-gradient(180deg, $pink 7%, $purple 100%);
+  background-size: 100% 200%;
+  background-position: 0% 100%;
+  background-clip: text;
+  -webkit-background-clip: text;
+}
+
+.far.fa-heart {
+  /* width: 100%; */
+  background-size: 100% 200%;
+  background-position: 0% 100%;
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: #901c1c;
+  transition: background-position 0.5s;
+  font-size: 2em;
+  padding: 0.5em;
+}
+.icon:hover .far.fa-heart {
+  opacity: 0;
+  background: linear-gradient(180deg, blue 7%, purple 100%);
+  background-size: 100% 200%;
+  background-position: 0% 100%;
+  background-clip: text;
+  -webkit-background-clip: text;
+}
+
+.heart:hover {
+  & .heart--outline {
+    display: none;
+    color: pink;
+  }
+}
+.heart:hover {
+  & .heart--bg {
+    display: block;
+    transition: opacity 1s;
+    opacity: 1;
+  }
+}
+
+.clickedHeart {
+  color: pink;
+}
+
+.counter {
+  position: fixed;
+  display: flex;
+  width: 30%;
+  height: 3em;
+  bottom: 0;
+  right: 5%;
+  background-color: #db8876;
+  border-radius: 0.5em 0.5em 0 0;
+  color: black;
+  font-weight: bold;
+  font-size: 24px;
+}
+
+.heartLikes {
+  width: 50%;
+  display: flex;
+  align-items: center;
+}
+
+.counter .price {
+  width: 50%;
+  height: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.counter .likes {
+  width: 50%;
+  height: auto;
+  display: flex;
+  justify-content: end;
+  align-items: center;
+  margin-right: 0.5em;
 }

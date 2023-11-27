@@ -5,6 +5,8 @@ import { Photographer } from "../class/photographer.js";
 import { AboutPhotographer } from "../templates/aboutPhotographer.js";
 import { Lightbox } from "../templates/lightbox.js";
 import { PhotographerWork } from "../templates/photographerWork.js";
+import { LikeCounter } from "../utils/counter.js";
+import { LikeSubject } from "../utils/subject.js";
 
 // Get photographer id
 let id = new URLSearchParams(window.location.search).get("id");
@@ -42,6 +44,12 @@ class PhotographerPages {
       );
       return mediasDataFiltered;
     };
+
+    //Like Count
+    this.likeCounter = new LikeCounter();
+    this.likeSubject = new LikeSubject();
+
+    this.likeSubject.like(this.likeSubject);
   }
   // Render aboutPhotographer
   async aboutPhotographer() {
@@ -55,7 +63,8 @@ class PhotographerPages {
   async photographerWork() {
     const photographer = await this.photographer();
     const media = await this.media();
-    const template = new PhotographerWork(photographer, media);
+    const likeSubject = this.likeSubject;
+    const template = new PhotographerWork(photographer, media, likeSubject);
     this.photographerWorkWrapper.appendChild(
       template.createPhotographerWork(photographer, media)
     );
