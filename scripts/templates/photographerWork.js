@@ -53,7 +53,7 @@ class PhotographerWork {
           ? currentLikes + 0
           : currentLikes + 1;
 
-      sum = sum + (far.style.color === "rgb(144, 28, 28)" ? 0 : 1);
+      sum = sum + (far.style.color === "rgb(144, 28, 28)" ? -1 : 1);
       console.log("newSum", sum);
 
       const counterDivLikes = document.querySelector(".likes");
