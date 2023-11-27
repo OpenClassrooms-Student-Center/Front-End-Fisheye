@@ -15,49 +15,48 @@ class PhotographerWork {
     const counterDivHeartLikes = document.createElement("div");
     counterDivHeartLikes.classList.add("heartLikes");
 
-    const counterDivHeart = document.createElement("div");
-    counterDivHeart.classList.add("fas", "fa-heart-black");
-
+    //likes count
     const counterDivLikes = document.createElement("div");
     counterDivLikes.classList.add("likes");
     const result = media.map((a) => a.likes);
     let sum = 0;
     for (let i = 0; i < result.length; i++) {
       sum += result[i];
+      console.log(i);
     }
 
     counterDivLikes.innerHTML = sum;
 
     counterDivLikes;
 
+    //give an index to each like btn
     const counterDivPrice = document.createElement("div");
     counterDivPrice.classList.add("price");
     counterDivPrice.innerHTML = `${photographer.price}€ / jour`;
 
+    // const allHeartsOnPage
+    // forEach
+
     counterDivHeartLikes.appendChild(counterDivLikes);
-    counterDivHeartLikes.appendChild(counterDivHeart);
     counterDiv.appendChild(counterDivHeartLikes);
     counterDiv.appendChild(counterDivPrice);
     mediasWrapper.appendChild(counterDiv);
   }
 
   createPhotographerWork(photographer, media) {
+    function changeHeart(clickedElement, index) {
+      const farElements = document.querySelectorAll(".far.fa-heart");
+      const far = farElements[index];
 
-    
-    function changeHeart(clickedElement) {
-      const far = document.querySelector(".far.fa-heart");
-      const fas = document.querySelector(".fas.fa-heart");
-
-      if (clickedElement === far) {
-        far.style.display = far.style.display = "none";
-        fas.style.display = "block";
-      } else if (clickedElement === fas) {
-        fas.style.display = fas.style.display = "none";
-        far.style.display = "block";
+      // If the clicked element is one of the .far.fa-heart elements
+      if (far) {
+        // Change the color of the corresponding element
+        far.style.color =
+          far.style.color === "rgb(144, 28, 28)" ? "blue" : "rgb(144, 28, 28)";
       }
     }
     // Render lightbox
-    media.forEach((media) => {
+    media.forEach((media, index) => {
       const mediaTypeElement = document.createElement("p");
 
       const mediasWrapper = document.querySelector("#medias-wrapper");
@@ -91,13 +90,9 @@ class PhotographerWork {
       // Create a <p> element for the media title
       const far = document.createElement("i");
       far.classList.add("far", "fa-heart");
-      far.onclick = () => changeHeart(far);
-
-      // Create a <p> element for the media title
-      const fas = document.createElement("i");
-      fas.classList.add("fas", "fa-heart");
-      fas.style.display = "none";
-      fas.onclick = () => changeHeart(fas);
+      far.setAttribute("data-index", index);
+      console.log(index);
+      far.onclick = () => changeHeart(far, index);
 
       if (media.image) {
         mediaTypeElement.innerHTML = "Type: Image";
@@ -134,7 +129,7 @@ class PhotographerWork {
       mediaDetails.appendChild(mediaTitleElement);
       mediaLikeContainer.appendChild(mediaLikeElement);
       mediaLikeContainer.appendChild(far);
-      mediaLikeContainer.appendChild(fas);
+      // mediaLikeContainer.appendChild(fas);
 
       // Add the media details container to the media container
       mediaContainer.appendChild(mediaImg);
