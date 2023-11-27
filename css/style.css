@@ -292,7 +292,7 @@ h1 {
 .counter {
   position: fixed;
   display: flex;
-  width: 30%;
+  width: 20%;
   height: 3em;
   bottom: 0;
   right: 5%;
