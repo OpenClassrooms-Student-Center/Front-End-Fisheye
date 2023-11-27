@@ -108,6 +108,7 @@ function handleContactForm() {
 
   closeModalButton.addEventListener("keydown", (event) => {
     if (event.key === "Enter" || event.key === "Escape") {
+      event.preventDefault();
       closeModal("contact_modal");
     }
   })
