@@ -18,11 +18,7 @@ class PhotographerWork {
     const counterDivLikes = document.createElement("div");
     counterDivLikes.classList.add("likes");
     const result = media.map((a) => a.likes);
-    this.sum = 0;
-    for (let i = 0; i < result.length; i++) {
-      this.sum += result[i];
-      console.log(this.sum);
-    }
+    this.sum = result.reduce((acc, current) => acc + current, 0);
 
     counterDivLikes.innerHTML = this.sum;
 
@@ -39,7 +35,7 @@ class PhotographerWork {
     mediasWrapper.appendChild(counterDiv);
   }
 
-  createPhotographerWork(photographer, media) {
+  createPhotographerWork(photographer, media, counterDivLikes) {
     let sum = this.sum;
 
     function changeHeart(
@@ -65,11 +61,13 @@ class PhotographerWork {
       mediaLikeElement.innerHTML = updatedLikes;
 
       // Update the sum variable
-      this.sum = sum + (far.style.color === "rgb(144, 28, 28)" ? 1 : -1);
+      sum = sum + (far.style.color === "rgb(144, 28, 28)" ? 1 : -1);
 
       // Update the display of the total likes
+      const counterDivLikes = document.querySelector(".likes");
       if (counterDivLikes) {
-        counterDivLikes.innerHTML = this.sum;
+        console.log(111);
+        counterDivLikes.innerHTML = sum;
       }
     }
     // Render lightbox
