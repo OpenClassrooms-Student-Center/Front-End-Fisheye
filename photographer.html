@@ -1,9 +1,10 @@
 <!DOCTYPE html>
-<html>
+<html lang="fr">
 
 <head>
   <link href="css/style.css" rel="stylesheet" type="text/css" />
   <meta charset="utf-8">
+  
   <link rel="icon" type="image/png" href="assets/favicon.png">
   <link href="https://fonts.googleapis.com/css?family=DM+Sans&display=swap" rel="stylesheet">
   <title>Fisheye - photographe </title>
@@ -11,46 +12,44 @@
 
 <body>
   <header>
-    <a href="index.html"> <img src="assets/images/logo.png" alt="Fisheye Home Page" class="logo"/></a>
+    <a href="index.html"> <img src="assets/images/logo.png" alt="Fisheye Home Page" class="logo" /></a>
   </header>
 
   <main id="main">
     <div class="photograph_header">
       <div class="text_container">
-        <h1 class="photographer_main_title"></h1>
-        <p class="city_of_country_of"></p>
-        <p class="photographer_tagline"></p>
+        <h1 class="photographer_main_title" tabindex="0"></h1>
+        <p class="city_of_country_of" tabindex="0"></p>
+        <p class="photographer_tagline" tabindex="0"></p>
       </div>
-
       <button class="contact_button" role="button">Contactez-moi</button>
       <div class="img_wrapper">
-      <img class="portrait_of_photographer" src="" alt="">
+        <img class="portrait_of_photographer" src="" alt="" tabindex="0">
       </div>
     </div>
     <div class="filter">
       <h2 class="filter_title">Trier par</h2>
-    <button class="dropdown_menu">Popularité</button>
-    </div>
-    <div class="portfolio_container">
-      <article class="media_container">
-        <img class="media_of_portfolio" alt="media">
-      </article>
-      <h3 class="media_title"></h3>
-      <div class="like_container">
-        <p class="number_of_likes"></p>
-        <img class="like_icon" alt="coeur">
+      <div class="dropdown">
+        <button id="selected_item" class="dropdown_btn likes_btn"> --- <img src="assets/expand_more-24px 4.svg" class="chevron" alt="chevron vers le bas"></button>
+        <div class="dropdown_content">
+          <button class="dropdown_menu like_btn">Popularité</button>
+          <button class="dropdown_menu date_btn">Date</button>
+          <button class="dropdown_menu title_btn">Titre</button>
+        </div>
       </div>
     </div>
-    
+    <div class="portfolio_container">
+      <!-- le code de cette section est généré dynamiquement par JS (loadMediaContent)-->
+    </div>
   </main>
-
+<!-- ----------------------------------modale -------------------------------------------------------- -->
+<div class="modal_overlay" id="contact_modal_overlay"></div>
   <div id="contact_modal">
     <div class="modal" role="dialog">
       <header>
-        <h2>Contactez-moi</h2>
-        <img id="close_button" src="assets/icons/close.svg" alt="close" aria-label="bouton de fermeturegyjy" tabindex="0" />
+        <h2 class="name_in_modal" tabindex="0">Contactez-moi</h2>
+        <img id="close_button" src="assets/icons/close.svg" alt="close" aria-label="bouton de fermeture" tabindex="0" />
       </header>
-     
       <form>
         <div>
           <fieldset>
@@ -65,18 +64,47 @@
           <fieldset>
             <legend>Votre message</legend>
             <label for="text_zone">Votre message</label>
-            <textarea name="text_area" placeholder="Ecrivez votre message ici" id="text_zone"  rows="7" cols="68" minlength="30" required></textarea>
+            <textarea name="text_area" placeholder="Ecrivez votre message ici" id="text_zone" rows="8" cols="70"
+              minlength="30" required></textarea>
           </fieldset>
         </div>
-        <button class="contact_button" id="submit_button" type="submit" role="button" >Envoyer</button>
+        <button class="contact_button" id="submit_button" type="submit" role="button">Envoyer</button>
       </form>
     </div>
   </div>
+
+  <div class="sticky_banner">
+    <div class="total_likes_container">
+      <p class="total_likes_number"></p>
+      <img class="total_heart_icon" src="/assets/heart-icon-black.svg" alt="icone coeur">
+    </div>
+    <p class="price_a_day"></p>
+  </div>
+
+<!-- ----------------------------------lightbox -------------------------------------------------------- -->
+  <section class="lightbox" role="dialog" aria-modal="true" aria-label="lightbox pour afficher les médias">
+    <img src="./assets/icons/prev-btn.svg" alt="média précédent" class="prev_btn nav_btn">
+    <div class="media_viewer_container">
+      <div class="media_viewer_wrapper">
+      </div>
+      <h3 class="media_title_in_lightbox media_title"></h3>
+    </div>
+
+    <img src="./assets/icons/next-btn.svg" alt=" média suivant" class="next_btn nav_btn">
+    <img src="./assets/icons/close-btn.svg" alt="bouton de fermeture de la lightbox" class="closing_lightbox_btn">
+    <div class="media_title_in_lightbox_container">
+    </div>
+  </section>
+
   <footer>
-    
+
   </footer>
   <script src="/scripts/pages/photographer.js" defer></script>
+  <script src="/scripts/Factory/mediaFactory.js" defer></script>
   <script src="/scripts/utils/contactForm.js" defer></script>
+  <script src="/scripts/models/Modal.js" defer></script>
+  <script src="/scripts/models/Lightbox.js" defer></script>
+
 </body>
 
 </html>

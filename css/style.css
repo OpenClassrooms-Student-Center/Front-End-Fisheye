@@ -7,6 +7,8 @@
     --light-black: #757575;
     --dark-grey: #525252;
 
+/* ------------------ INDEX PAGE -------------------------------- */
+
     --main-title-font-family: 'DM sans', sans-serif;
     --main-title-font-size: 36px;
     --main-title-font-style: normal;
@@ -51,6 +53,12 @@
     --city-of-country-of-font-weight: 400;
     --city-of-country-of-line-height: normal;
 
+    --media-title-font-family: 'DM sans', sans-serif;
+    --media-title-font-size: 21px;
+    --media-title-font-style: normal;
+    --media-title-font-weight: 400;
+    --media-title-line-height: normal;
+
     --photographer-tagline-font-family: 'DM sans', sans-serif;
     --photographer-tagline-font-size: 18px;
     --photographer-tagline-font-style: normal;
@@ -62,6 +70,12 @@
     --photographer-filter-title-font-style: normal;
     --photographer-filter-title-font-weight: 700;
     --photographer-filter-title-line-height: normal;
+
+    --sticky-banner-font-family : 'DM sans', sans-serif;
+    --sticky-banner-font-size: 24px;
+    --sticky-banner-font-style : normal;
+    --sticky-banner-font-weight: 500;
+    --sticky-banner-line-height: normal;
 }
 
 
@@ -73,7 +87,6 @@
 body {
     font-family: "DM Sans", sans-serif;
 }
-
 
 header {
     display: flex;
