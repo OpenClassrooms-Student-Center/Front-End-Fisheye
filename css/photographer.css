@@ -2,10 +2,88 @@
     display: none;
 }
 
-.photograph-header {
+.photograph_header {
     background-color: #FAFAFA;
     height: 300px;
     margin: 0 100px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.text_container {
+    display: flex;
+    flex-direction: column;
+    gap: 19px;
+    padding-left: 50px;
+}
+
+.photographer_main_title {
+    color: var(--secondary);
+    font-family: var(--photographer-main-title-font-family);
+    font-size: var(--photographer-main-title-font-size);
+    font-style: var(--photographer-main-title-font-style);
+    font-weight: var(--photographer-main-title-font-weight);
+    line-height: var(--photographer-main-title-line-height);
+}
+
+.city_of_country_of {
+    color: var(--primary);
+    font-family: var(--city-of-country-of-font-family);
+    font-size: var(--city-of-country-of-font-size);
+    font-style: var(--city-of-country-of-font-style);
+    font-weight: var(--city-of-country-of-font-weight);
+    line-height: var(--city-of-country-of-line-height);
+}
+
+.photographer_tagline {
+    color: var(--dark-grey);
+    font-family: var(--photographer-tagline-font-family);
+    font-size: var(--photographer-tagline-font-size);
+    font-style: var(--photographer-tagline-font-style);
+    font-weight: var(--photographer-tagline-font-weight);
+    line-height: var(--photographer-tagline-line-height);
+}
+
+.img_wrapper {
+    height: 200px;
+    width: 200px;
+}
+
+.img_wrapper img {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    border-radius: 50%;
+}
+
+.filter {
+    display: flex;
+    gap: 25px;
+    align-items: center;
+    margin-left: 100px;
+}
+
+.filter_title {
+    color: var(--black);
+    font-family: var(--photographer-filter-title-font-family);
+    font-size: var(--photographer-filter-title-font-size);
+    font-style: var(--photographer-filter-title-font-style);
+    font-weight: var(--photographer-filter-title-font-weight);
+    line-height: var(--photographer-filter-title-line-height);
+}
+
+.dropdown_menu {
+        font-size: 20px;
+        font-weight: bold;
+        color: white;
+        padding: 11px;
+        width: 170px;
+        height: 70px;
+        border: none;
+        background-color: #901C1C;
+        border-radius: 5px;
+        cursor: pointer;
 }
 
 .contact_button {
@@ -55,6 +133,10 @@ form {
     align-items: flex-start;
 }
 
+form legend {
+    display: none;
+}
+
 form label {
     color: #312E2E;
     font-size: 36px;
@@ -73,4 +155,10 @@ form input {
     height: 68px;
     border: none;
     border-radius: 5px;
+    font-family: 'DM sans', sans-serif;
+    font-size: 24px;
+    font-weight: 400;
+    font-style: normal;
+    line-height: normal;
+    color: var(--black);
 }
