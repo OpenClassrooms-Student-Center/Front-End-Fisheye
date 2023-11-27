@@ -1,6 +1,6 @@
 function displayModal(modalId) {
-  const getPhotographerName = document.querySelector("article h2").textContent;
-  const contactMeElement = document.querySelector(".photographerName");
+  const getPhotographerName = document.querySelector(".photographerNameHero").textContent;
+  const contactMeElement = document.querySelector(".photographerNameForm");
   contactMeElement.innerHTML = getPhotographerName;
 
   const modal = document.querySelector(`#${modalId}`);

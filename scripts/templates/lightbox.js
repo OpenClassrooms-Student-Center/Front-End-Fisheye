@@ -31,8 +31,14 @@ function displayLightbox(index, mediasSorted, firstName) {
     closeModal("lightbox");
   });
 
+  lightboxClose.addEventListener("keydown", (event) => {
+    if (event.key === "Enter") {
+      closeModal("lightbox");
+    }
+  })
+
   addEventListener("keydown", (event) => {
-    if (event.key === "Escape") {
+    if (event.key === "Escape" ) {
       closeModal("lightbox");
     }
 

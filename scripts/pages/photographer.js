@@ -23,13 +23,19 @@ async function init() {
     photographerPrice: photographer.price,
   };
 
+  // Reorder medias
   sortMedias(allMedias);
 
+  // Display photographer hero banner
   photographerHero(photographers[0]);
+
+  // Display medias
   displayMedias(allMedias);
 
+  // Display total likes container
   displayLikesContainer(allLikes, photographers[0].price);
 
+  // Handle contact form
   handleContactForm();
 }
 
@@ -93,7 +99,7 @@ function handleContactForm() {
   })
 
   closeModalButton.addEventListener("keydown", (event) => {
-    if (event.key === "Enter") {
+    if (event.key === "Enter" || event.key === "Escape") {
       closeModal("contact_modal");
     }
   })

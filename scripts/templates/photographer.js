@@ -13,10 +13,10 @@ function photographerTemplate({
     const article = document.createElement("article");
     article.innerHTML = `
       <a href="photographer.html?id=${id}" aria-label="See portfolio of ${name}">
-        <img src="${picture}" alt="${name}">
+        <img src="${picture}" alt="portrait of ${name}">
         <h2>${name}</h2>
       </a>
-      <p class="location">${city}, ${country}</p>
+      <h3 class="location">${city}, ${country}</h3>
       <p class="tagline">${tagline}</p>
       <p class="price">${price}€/jour</p>
     `;
@@ -31,8 +31,8 @@ function photographerTemplate({
 
     const userInfos = document.createElement("article");
     userInfos.innerHTML = `
-        <h2>${name}</h2>
-        <p class="location">${city}, ${country}</p>
+        <h2 class="photographerNameHero">${name}</h2>
+        <h3 class="location">${city}, ${country}</h3>
         <p class="tagline">${tagline}</p>
     `;
 
