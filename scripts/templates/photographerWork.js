@@ -1,5 +1,4 @@
 import { PhotographerPages } from "../pages/photographer.js";
-// import { changeHeart } from "../utils/subject.js";
 
 class PhotographerWork {
   constructor(photographer, media, likeSubject) {
@@ -19,13 +18,13 @@ class PhotographerWork {
     const counterDivLikes = document.createElement("div");
     counterDivLikes.classList.add("likes");
     const result = media.map((a) => a.likes);
-    let sum = 0;
+    this.sum = 0;
     for (let i = 0; i < result.length; i++) {
-      sum += result[i];
-      console.log(i);
+      this.sum += result[i];
+      console.log(this.sum);
     }
 
-    counterDivLikes.innerHTML = sum;
+    counterDivLikes.innerHTML = this.sum;
 
     counterDivLikes;
 
@@ -34,9 +33,6 @@ class PhotographerWork {
     counterDivPrice.classList.add("price");
     counterDivPrice.innerHTML = `${photographer.price}€ / jour`;
 
-    // const allHeartsOnPage
-    // forEach
-
     counterDivHeartLikes.appendChild(counterDivLikes);
     counterDiv.appendChild(counterDivHeartLikes);
     counterDiv.appendChild(counterDivPrice);
@@ -44,15 +40,36 @@ class PhotographerWork {
   }
 
   createPhotographerWork(photographer, media) {
-    function changeHeart(clickedElement, index) {
+    let sum = this.sum;
+
+    function changeHeart(
+      clickedElement,
+      index,
+      currentLikes,
+      mediaLikeElement,
+      sum
+    ) {
       const farElements = document.querySelectorAll(".far.fa-heart");
       const far = farElements[index];
 
       // If the clicked element is one of the .far.fa-heart elements
-      if (far) {
-        // Change the color of the corresponding element
-        far.style.color =
-          far.style.color === "rgb(144, 28, 28)" ? "blue" : "rgb(144, 28, 28)";
+      // Change the color of the corresponding element
+      far.style.color =
+        far.style.color === "rgb(144, 28, 28)" ? "blue" : "rgb(144, 28, 28)";
+
+      // Update the likes count and display it
+      const updatedLikes =
+        far.style.color === "rgb(144, 28, 28)"
+          ? currentLikes + 0
+          : currentLikes + 1;
+      mediaLikeElement.innerHTML = updatedLikes;
+
+      // Update the sum variable
+      this.sum = sum + (far.style.color === "rgb(144, 28, 28)" ? 1 : -1);
+
+      // Update the display of the total likes
+      if (counterDivLikes) {
+        counterDivLikes.innerHTML = this.sum;
       }
     }
     // Render lightbox
@@ -91,8 +108,8 @@ class PhotographerWork {
       const far = document.createElement("i");
       far.classList.add("far", "fa-heart");
       far.setAttribute("data-index", index);
-      console.log(index);
-      far.onclick = () => changeHeart(far, index);
+      far.onclick = () =>
+        changeHeart(far, index, media.likes, mediaLikeElement, sum);
 
       if (media.image) {
         mediaTypeElement.innerHTML = "Type: Image";
