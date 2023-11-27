@@ -18,11 +18,11 @@ class LikeSubject {
 
 export { LikeSubject };
 
-// const mediaLikeHeartElementClicked = document.querySelector(".fas");
+const mediaLikeHeartElementClicked = document.querySelector(".fas");
 
-// export async function changeHeart() {
-//   console.log(mediaLikeHeartElementClicked);
-//   const heartClicked = mediaLikeHeartElementClicked.style.display;
+export async function changeHeart() {
+  console.log(mediaLikeHeartElementClicked);
+  const heartClicked = mediaLikeHeartElementClicked.style.display;
 
-//   heartClicked === "none" ? "block" : "none";
-// }
+  heartClicked === "none" ? "block" : "none";
+}

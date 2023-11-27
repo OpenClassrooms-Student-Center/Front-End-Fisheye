@@ -1,11 +1,11 @@
 import { PhotographerPages } from "../pages/photographer.js";
+// import { changeHeart } from "../utils/subject.js";
 
 class PhotographerWork {
   constructor(photographer, media, likeSubject) {
     this._photographer = photographer;
     this._media = media;
     this._likeSubject = likeSubject;
-    console.log("likeSubject", media);
 
     const mediasWrapper = document.querySelector("#medias-wrapper");
 
@@ -16,7 +16,7 @@ class PhotographerWork {
     counterDivHeartLikes.classList.add("heartLikes");
 
     const counterDivHeart = document.createElement("div");
-    counterDivHeart.classList.add("fas", "fa-heart");
+    counterDivHeart.classList.add("fas", "fa-heart-black");
 
     const counterDivLikes = document.createElement("div");
     counterDivLikes.classList.add("likes");
@@ -41,12 +41,21 @@ class PhotographerWork {
     mediasWrapper.appendChild(counterDiv);
   }
 
-  // handleLikeButton(){
-  //   const that = this;
-  //   this.
-  // }
-
   createPhotographerWork(photographer, media) {
+
+    
+    function changeHeart(clickedElement) {
+      const far = document.querySelector(".far.fa-heart");
+      const fas = document.querySelector(".fas.fa-heart");
+
+      if (clickedElement === far) {
+        far.style.display = far.style.display = "none";
+        fas.style.display = "block";
+      } else if (clickedElement === fas) {
+        fas.style.display = fas.style.display = "none";
+        far.style.display = "block";
+      }
+    }
     // Render lightbox
     media.forEach((media) => {
       const mediaTypeElement = document.createElement("p");
@@ -80,15 +89,15 @@ class PhotographerWork {
       mediaLikeElement.innerHTML = media.likes;
 
       // Create a <p> element for the media title
-      const mediaLikeHeartElement = document.createElement("i");
-      mediaLikeHeartElement.classList.add("far", "fa-heart");
-      // mediaLikeHeartElement.onclick = () => changeHeart();
+      const far = document.createElement("i");
+      far.classList.add("far", "fa-heart");
+      far.onclick = () => changeHeart(far);
 
       // Create a <p> element for the media title
-      const mediaLikeHeartElementClicked = document.createElement("i");
-      mediaLikeHeartElementClicked.classList.add("fas", "fa-heart");
-      mediaLikeHeartElementClicked.style.display = "none";
-      // mediaLikeHeartElementClicked.onclick = () => changeHeart();
+      const fas = document.createElement("i");
+      fas.classList.add("fas", "fa-heart");
+      fas.style.display = "none";
+      fas.onclick = () => changeHeart(fas);
 
       if (media.image) {
         mediaTypeElement.innerHTML = "Type: Image";
@@ -124,8 +133,8 @@ class PhotographerWork {
       // mediaDetails.appendChild(mediaIdElement);
       mediaDetails.appendChild(mediaTitleElement);
       mediaLikeContainer.appendChild(mediaLikeElement);
-      mediaLikeContainer.appendChild(mediaLikeHeartElement);
-      mediaLikeContainer.appendChild(mediaLikeHeartElementClicked);
+      mediaLikeContainer.appendChild(far);
+      mediaLikeContainer.appendChild(fas);
 
       // Add the media details container to the media container
       mediaContainer.appendChild(mediaImg);
