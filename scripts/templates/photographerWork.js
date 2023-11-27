@@ -14,7 +14,6 @@ class PhotographerWork {
     const counterDivHeartLikes = document.createElement("div");
     counterDivHeartLikes.classList.add("heartLikes");
 
-    //likes count
     const counterDivLikes = document.createElement("div");
     counterDivLikes.classList.add("likes");
     const result = media.map((a) => a.likes);
@@ -24,7 +23,6 @@ class PhotographerWork {
 
     counterDivLikes;
 
-    //give an index to each like btn
     const counterDivPrice = document.createElement("div");
     counterDivPrice.classList.add("price");
     counterDivPrice.innerHTML = `${photographer.price}€ / jour`;
@@ -42,33 +40,27 @@ class PhotographerWork {
       clickedElement,
       index,
       currentLikes,
-      mediaLikeElement,
-      sum
+      mediaLikeElement
     ) {
       const farElements = document.querySelectorAll(".far.fa-heart");
       const far = farElements[index];
 
-      // If the clicked element is one of the .far.fa-heart elements
-      // Change the color of the corresponding element
       far.style.color =
-        far.style.color === "rgb(144, 28, 28)" ? "blue" : "rgb(144, 28, 28)";
+        far.style.color === "blue" ? "rgb(144, 28, 28)" : "blue";
 
-      // Update the likes count and display it
       const updatedLikes =
         far.style.color === "rgb(144, 28, 28)"
           ? currentLikes + 0
           : currentLikes + 1;
-      mediaLikeElement.innerHTML = updatedLikes;
 
-      // Update the sum variable
-      sum = sum + (far.style.color === "rgb(144, 28, 28)" ? 1 : -1);
+      sum = sum + (far.style.color === "rgb(144, 28, 28)" ? 0 : 1);
+      console.log("newSum", sum);
 
-      // Update the display of the total likes
       const counterDivLikes = document.querySelector(".likes");
       if (counterDivLikes) {
-        console.log(111);
         counterDivLikes.innerHTML = sum;
       }
+      mediaLikeElement.innerHTML = updatedLikes;
     }
     // Render lightbox
     media.forEach((media, index) => {
@@ -107,7 +99,14 @@ class PhotographerWork {
       far.classList.add("far", "fa-heart");
       far.setAttribute("data-index", index);
       far.onclick = () =>
-        changeHeart(far, index, media.likes, mediaLikeElement, sum);
+        changeHeart(
+          far,
+          index,
+          media.likes,
+          mediaLikeElement,
+          sum,
+          counterDivLikes
+        );
 
       if (media.image) {
         mediaTypeElement.innerHTML = "Type: Image";
