@@ -9,13 +9,13 @@
 function changeFilter(medias, sort = "popularite") {
 
     switch (sort) {
-      case "Popularite":
+      case "popularite":
         medias.sort((a, b) => b.likes - a.likes);
         break;
-      case "Date":
+      case "date":
         medias.sort((a, b) => new Date(b.date) - new Date(a.date));
         break;
-      case "Titre":
+      case "titre":
         medias.sort((a, b) => (a.title > b.title ? 1 : -1));
         break;
     }
@@ -33,4 +33,40 @@ function changeFilter(medias, sort = "popularite") {
     return firstName;
   }
 
-  export {changeFilter, getFirstName}
+  /**
+   * Displays a modal with the given modal ID.
+   *
+   * @param {string} modalId - The ID of the modal to be displayed.
+   * @return {void} 
+   */
+  function displayModal(modalId) {
+    const modal = document.querySelector(`#${modalId}`);
+    const header = document.querySelector("header");
+    const main = document.querySelector("main");
+  
+    modal.showModal();
+    modal.style.display = "block";
+    modal.setAttribute("aria-hidden", "false");
+    header.setAttribute("aria-hidden", "true");
+    main.setAttribute("aria-hidden", "true");
+  }
+  
+  /**
+   * Closes the modal with the specified ID.
+   *
+   * @param {string} modalId - The ID of the modal to be closed.
+   * @return {undefined} This function does not return a value.
+   */
+  function closeModal(modalId) {
+    const modal = document.querySelector(`#${modalId}`);
+    const header = document.querySelector("header");
+    const main = document.querySelector("main");
+  
+    modal.close();
+    modal.style.display = "none";
+    modal.setAttribute("aria-hidden", "true");
+    header.setAttribute("aria-hidden", "false");
+    main.setAttribute("aria-hidden", "false");
+  }
+  
+ export { changeFilter, getFirstName, displayModal, closeModal };

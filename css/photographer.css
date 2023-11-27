@@ -177,14 +177,31 @@ form #message {
 }
 
 .media-filter {
-  margin: 20px 100px 20px 100px;
+  display: flex;
+  align-items: center;
+  position: relative;
+  gap:10px;
+  margin: 30px 100px 30px 100px;
   font-weight: bold;
+}
+
+.media-filter h2 {
+  margin: 0;
+  color: black;
+  font-size: 24px;
+}
+
+.media-filter-menu {
+  display: flex;
+  position: relative;
+  gap: 10px;
+  top:-30px;
 }
 
 .media-section {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(450px, 1fr));
-  gap: 100px;
+  gap: 30px 100px;
   margin: 0 100px;
 }
 

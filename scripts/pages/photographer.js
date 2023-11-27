@@ -2,8 +2,12 @@ import { getAllorOnePhotographer } from "../api/getPhotographer.js";
 import { photographerHero } from "../templates/photographer.js";
 import { getMediaCard } from "../templates/media.js";
 import { displayLikesContainer } from "../templates/displayLikesContainer.js";
-import { getFirstName, changeFilter } from "../utils/utils.js";
-import { displayModal, closeModal } from "../utils/contactForm.js";
+import {
+  getFirstName,
+  changeFilter,
+  closeModal,
+  displayModal,
+} from "../utils/utils.js";
 
 async function init() {
   let urlParams = new URLSearchParams(window.location.search);
@@ -16,7 +20,6 @@ async function init() {
     (total, media) => total + media.likes,
     0
   );
-
 
   const allMedias = {
     allMedias: changeFilter(photographer.media),
@@ -37,7 +40,7 @@ async function init() {
   // Display total likes container
   displayLikesContainer(allLikes, photographers[0].price);
 
-  // Handle contact form
+  // Handle contact form  & add name in contact form
   handleContactForm();
 
   // Validate form
@@ -51,45 +54,71 @@ function displayMedias(medias) {
   medias.allMedias?.forEach((media, index) => {
     const { image, video, title, likes } = media;
 
-    const mediaLink = `assets/photographers/${medias.firstName}/${image ?? video}`;
+    const mediaLink = `assets/photographers/${medias.firstName}/${
+      image ?? video
+    }`;
 
     const mediaElement = image
       ? `<img src="${mediaLink}" alt="${title}">`
       : `<video src="${mediaLink}" autoplay loop muted></video>`;
 
-
-    const mediaCardProps = {
-      mediaElement,
-      title,
-      likes,
-      allMedias: medias.allMedias,
-      firstName: medias.firstName,
-      allLikes: medias.allLikes,
-      photographerPrice: medias.photographerPrice,
-      index: index
-    };
-
     mediaSection.appendChild(
-      getMediaCard(
-        mediaCardProps
-      )
+      getMediaCard({
+        mediaElement,
+        title,
+        likes,
+        allMedias: medias.allMedias,
+        firstName: medias.firstName,
+        allLikes: medias.allLikes,
+        photographerPrice: medias.photographerPrice,
+        index: index,
+      })
     );
-    
   });
 }
 
 function sortMedias(allMedias) {
-  const filter = document.querySelector("#filter");
-  filter.addEventListener("change", (event) => {
-    const sort = event.target.value;
-    displayMedias({
-      ...allMedias,
-      allMedias: changeFilter(allMedias.allMedias, sort),
+  const menus = document.querySelectorAll(".menu");
+  let lastSort = "popularite";
+
+  menus.forEach((menu) => {
+    menu.addEventListener("click", (e) => {
+      let listItem = e.target;
+
+      if (menu.classList.contains("open")) {
+        menu.prepend(listItem);
+      }
+
+      listItem.closest("ul").classList.toggle("open");
+
+      listItem
+        .closest("ul")
+        .setAttribute(
+          "aria-expanded",
+          listItem.closest("ul").classList.contains("open") ? "true" : "false"
+        );
+
+      let sort = listItem.getAttribute("id");
+
+      if (lastSort !== sort) {
+        lastSort = sort;
+        displayMedias({
+          ...allMedias,
+          allMedias: changeFilter(allMedias.allMedias, sort),
+        });
+      }
     });
   });
 }
 
 function handleContactForm() {
+
+  // Add name in contact form
+  const getPhotographerName = document.querySelector(".photographerNameHero").textContent;
+  const contactMeElement = document.querySelector(".photographerNameForm");
+  contactMeElement.innerHTML = getPhotographerName;
+
+  // Handle contact form
   const contactButton = document.querySelector("#contactButton");
   contactButton.addEventListener("click", () => {
     displayModal("contact_modal");
@@ -99,22 +128,22 @@ function handleContactForm() {
     if (event.key === "Enter") {
       displayModal("contact_modal");
     }
-  })
+  });
 
   const closeModalButton = document.querySelector("#closeForm");
   closeModalButton.addEventListener("click", () => {
     closeModal("contact_modal");
-  })
+  });
 
   closeModalButton.addEventListener("keydown", (event) => {
     if (event.key === "Enter" || event.key === "Escape") {
       event.preventDefault();
       closeModal("contact_modal");
     }
-  })
+  });
 }
 
-function validateForm(){
+function validateForm() {
   const form = document.querySelector("form");
 
   const firstName = document.querySelector("#firstName");
@@ -126,20 +155,19 @@ function validateForm(){
     event.preventDefault();
 
     if (checkInputs(firstName, lastName, email, message)) {
-       const dataToSend = {
-         firstName,
-         lastName,
-         email,
-         message,
-       };
-       
-       console.log(dataToSend);
+      const dataToSend = {
+        firstName,
+        lastName,
+        email,
+        message,
+      };
 
-       form.reset();
-       closeModal("contact_modal");
+      console.log(dataToSend);
 
+      form.reset();
+      closeModal("contact_modal");
     }
-  })
+  });
 }
 
 function checkInputs(firstName, lastName, email, message) {
@@ -151,43 +179,43 @@ function checkInputs(firstName, lastName, email, message) {
   const messageError = document.getElementById("messageError");
 
   if (firstName.value === "") {
-
     firstNameError.style.display = "block";
-    firstName.style= "border: 2px solid red";
+    firstName.style = "border: 2px solid red";
     isFormValid = false;
   } else {
     firstNameError.style.display = "none";
-    firstName.style= "border: 2px solid green";
+    firstName.style = "border: 2px solid green";
   }
 
   if (lastName.value === "") {
     lastNameError.style.display = "block";
-    lastName.style= "border: 2px solid red";
+    lastName.style = "border: 2px solid red";
     isFormValid = false;
   } else {
     lastNameError.style.display = "none";
-    lastName.style= "border: 2px solid green";
+    lastName.style = "border: 2px solid green";
   }
 
   if (email.value === "" || !emailRegex.test(email.value)) {
     emailError.style.display = "block";
-    email.style= "border: 2px solid red";
+    email.style = "border: 2px solid red";
     isFormValid = false;
   } else {
     emailError.style.display = "none";
-    email.style= "border: 2px solid green";
+    email.style = "border: 2px solid green";
   }
 
   if (message.value === "") {
     messageError.style.display = "block";
-    message.style= "border: 2px solid red";
+    message.style = "border: 2px solid red";
     isFormValid = false;
   } else {
     messageError.style.display = "none";
-    message.style= "border: 2px solid green";
+    message.style = "border: 2px solid green";
   }
 
   return isFormValid;
 }
+
 
 init();

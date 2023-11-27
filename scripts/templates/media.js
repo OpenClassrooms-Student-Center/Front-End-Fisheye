@@ -39,7 +39,7 @@ function mediaTemplate(allMedias, firstName, allLikes, photographerPrice) {
     }
 
     function handleLikeClickOrEnter(event) {
-      if (event.type === "click" || event.key === "Enter") {
+      if (event.type === "click" || event.key === "Enter" || event.key === "Space") {     
         addRemoveLike(mediaLikes, likes);
       }
     }
