@@ -58,7 +58,7 @@
           />
         </header>
         <p class="photographerNameForm"></p>
-        <form onsubmit="sendMessage(event)" role="form" id="contactForm">
+        <form role="form" id="contactForm">
           <div class="form-control">
             <label for="firstName" aria-label="First Name">Prénom</label>
             <input id="firstName" name="prenom" />        
@@ -88,9 +88,9 @@
             </span>
           </div>
 
-          <button aria-label="send" class="contact_button">Envoyer</button>
+          <button type="submit" aria-label="send" class="contact_button" form="contactForm">Envoyer</button>
         </form>
-      </div>
+      </dialog>
     </dialog>
     <dialog id="lightbox" role="dialog" aria-hidden="true">
       <div class="lightbox-content">

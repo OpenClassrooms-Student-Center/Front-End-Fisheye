@@ -1,6 +1,8 @@
 import { lightBox } from "./lightbox.js";
+import { displayLikesContainer } from "./displayLikesContainer.js";
 
 function mediaTemplate(allMedias, firstName, allLikes, photographerPrice) {
+
   let totalLikesAdded = 0;
 
   function getMediaCardDOM(mediaElement, title, likes, index) {
@@ -42,6 +44,7 @@ function mediaTemplate(allMedias, firstName, allLikes, photographerPrice) {
       }
     }
 
+    // if like is added or removed from media card then add or remove like from totalLikes
     function addRemoveLike(mediaLikes, likes) {
       if (likeAdded === likes) {
         likeAdded = likes + 1;
@@ -69,15 +72,6 @@ function mediaTemplate(allMedias, firstName, allLikes, photographerPrice) {
   };
 }
 
-function displayLikesContainer(totalLikes, price) {
-  const likeContainer = document.querySelector(".total-likes");
-
-  likeContainer.innerHTML = `
-        <span>${totalLikes} <i class="fa-solid fa-heart"></i></span>
-        <span>${price}€ / jour</span>
-    `;
-}
-
 function getMediaCard({
   mediaElement,
   title,
@@ -96,4 +90,4 @@ function getMediaCard({
   ).getMediaCardDOM(mediaElement, title, likes, index);
 }
 
-export { getMediaCard, displayLikesContainer };
+export { getMediaCard };

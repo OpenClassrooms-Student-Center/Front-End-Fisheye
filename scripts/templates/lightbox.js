@@ -72,7 +72,7 @@ function displayLightbox(index, mediasSorted, firstName) {
 
     const mediaElement = image
       ? `<img src="${mediaLink}" alt="${title}">`
-      : `<video src="${mediaLink}" autoplay loop muted></video>`;
+      : `<video src="${mediaLink}" autoplay loop></video>`;
 
     mediaContent.innerHTML = `
           <div class="lightbox-picture">
