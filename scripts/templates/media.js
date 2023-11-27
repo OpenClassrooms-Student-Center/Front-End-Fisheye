@@ -1,5 +1,5 @@
-import { lightBox } from "./lightbox.js";
-import { displayLikesContainer } from "./displayLikesContainer.js";
+import { lightBox } from "/scripts/templates/lightbox.js";
+import { displayLikesContainer } from "/scripts/templates/displayLikesContainer.js";
 
 function mediaTemplate(allMedias, firstName, allLikes, photographerPrice) {
 

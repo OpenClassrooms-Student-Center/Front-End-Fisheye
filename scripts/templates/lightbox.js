@@ -1,4 +1,4 @@
-import { closeModal, displayModal } from "../utils/utils.js";
+import { closeModal, displayModal } from "/scripts/utils/utils.js";
 
 function displayLightbox(index, mediasSorted, firstName) {
   const lightboxClose = document.querySelector(".lightbox-close");

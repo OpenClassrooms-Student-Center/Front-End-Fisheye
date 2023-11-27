@@ -1,5 +1,5 @@
-import { getAllorOnePhotographer } from "../api/getPhotographer.js";
-import { photographerCard } from "../templates/photographer.js";
+import { getAllorOnePhotographer } from "/scripts/api/getPhotographer.js";
+import { photographerCard } from "/scripts/templates/photographer.js";
 
 function displayData(photographers) {
   const photographersSection = document.querySelector(".photographer_section");

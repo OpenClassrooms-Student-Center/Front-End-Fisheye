@@ -1,7 +1,7 @@
-import { getAllorOnePhotographer } from "../api/getPhotographer.js";
-import { photographerHero } from "../templates/photographer.js";
-import { getMediaCard } from "../templates/media.js";
-import { displayLikesContainer } from "../templates/displayLikesContainer.js";
+import { getAllorOnePhotographer } from "/scripts/api/getPhotographer.js";
+import { photographerHero } from "/scripts/templates/photographer.js";
+import { getMediaCard } from "/scripts/templates/media.js";
+import { displayLikesContainer } from "/scripts/templates/displayLikesContainer.js";
 import {
   getFirstName,
   changeFilter,
