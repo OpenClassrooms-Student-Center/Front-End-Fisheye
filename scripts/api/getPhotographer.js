@@ -8,6 +8,5 @@ export async function getAllorOnePhotographer(id) {
         const media = data.media.filter((media) => media.photographerId === photographer.id); // Filter by photographerId
         return { ...photographer, media };
       });
-  
     return { photographers };
   }
