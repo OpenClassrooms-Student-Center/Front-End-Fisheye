@@ -81,25 +81,58 @@ function sortMedias(allMedias) {
   const menus = document.querySelectorAll(".menu");
   let lastSort = "popularite";
 
-  menus.forEach((menu) => {
-    menu.addEventListener("click", (e) => {
-      let listItem = e.target;
+  menus.forEach(menu => {
+    menu.addEventListener("click", handleClick);
+    menu.addEventListener("keydown", handleKeyDown);
 
+    function handleClick(e) {
+      handleMenuAction(e.target);
+    }
+
+    function handleKeyDown(event) {
+      event.preventDefault();
+
+      const key = event.key;
+      const menu = document.querySelector(".menu");
+      const firstElement = menu.querySelector("li");
+      const focusedElement = menu.querySelector(":focus");
+
+      if (key === "Enter" || key === "Space") {
+        handleMenuAction(event.target);
+      }
+
+      if (key === "Escape") {
+        menu.classList.remove("open");
+        menu.setAttribute("aria-expanded", "false");
+      }
+
+      if (key === "ArrowDown") {
+        if (!focusedElement) {
+          firstElement?.focus();
+        } else {
+          const nextElement = focusedElement.nextElementSibling;
+          nextElement?.focus();
+        }
+      }
+
+      if (key === "ArrowUp") {
+        if (!focusedElement) {
+          firstElement?.focus();
+        } else {
+          const previousElement = focusedElement.previousElementSibling;
+          previousElement?.focus();
+        }
+      }
+    }
+
+    function handleMenuAction(listItem) {
       if (menu.classList.contains("open")) {
         menu.prepend(listItem);
       }
-
-      listItem.closest("ul").classList.toggle("open");
-
-      listItem
-        .closest("ul")
-        .setAttribute(
-          "aria-expanded",
-          listItem.closest("ul").classList.contains("open") ? "true" : "false"
-        );
-
-      let sort = listItem.getAttribute("id");
-
+      const isOpen = menu.classList.contains("open");
+      menu.classList.toggle("open");
+      menu.setAttribute("aria-expanded", isOpen ? "true" : "false");
+      const sort = listItem.getAttribute("id");
       if (lastSort !== sort) {
         lastSort = sort;
         displayMedias({
@@ -107,9 +140,10 @@ function sortMedias(allMedias) {
           allMedias: changeFilter(allMedias.allMedias, sort),
         });
       }
-    });
+    }
   });
 }
+
 
 function handleContactForm() {
 

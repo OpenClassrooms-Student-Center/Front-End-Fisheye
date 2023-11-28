@@ -18,7 +18,7 @@ function mediaTemplate(allMedias, firstName, allLikes, photographerPrice) {
           <h3>${title}</h3>
           <div class="likes">
             <p class="likes-number" aria-label="likes number" tabindex="0">${likes}  
-              <i class="fa-regular fa-heart"></i>
+              <em class="fa-regular fa-heart"></em>
             </p>
           </div>
         </div>`;
@@ -51,7 +51,7 @@ function mediaTemplate(allMedias, firstName, allLikes, photographerPrice) {
         totalLikesAdded += 1;
         mediaLikes.innerHTML = `
             <p class="likes-number" aria-label="like added" tabindex="0">${likeAdded}  
-              <i class="fa-solid fa-heart"></i>
+              <em class="fa-solid fa-heart"></em>
             </p>
           `;
       } else {
@@ -59,7 +59,7 @@ function mediaTemplate(allMedias, firstName, allLikes, photographerPrice) {
         totalLikesAdded -= 1;
         mediaLikes.innerHTML = `
             <p class="likes-number">${likeAdded}  
-              <i class="fa-regular fa-heart"></i>
+              <em class="fa-regular fa-heart"></em>
             </p>
           `;
       }

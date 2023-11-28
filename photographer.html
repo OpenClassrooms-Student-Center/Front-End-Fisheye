@@ -40,10 +40,10 @@
       <section class="media-filter">
         <h2>Trier par</h2>
         <div class="media-filter-menu">
-        <ul class="menu" role="list">
-          <li id="popularite" role="menuitem">Popularité</li>
-          <li id="date" role="menuitem">Date</li>
-          <li id="titre" role="menuitem">Titre</li>
+        <ul class="menu" role="list" tabindex="0">
+          <li id="popularite" role="menuitem" tabindex="-1" aria-label="filter by popularity">Popularité</li>
+          <li id="date" role="menuitem" tabindex="-1" aria-label="filter by date">Date</li>
+          <li id="titre" role="menuitem" tabindex="-1" aria-label="filter by title">Titre</li>
       </ul>
         </div>
       </section>
@@ -115,31 +115,31 @@
     <dialog id="lightbox" role="dialog" aria-hidden="true">
       <div class="lightbox-content">
         <div class="lightbox-left icon">
-          <i
+          <em
             id="left-arrow"
             class="fa-solid fa-chevron-left"
             role="button"
             aria-label="previous"
             tabindex="0"
-          ></i>
+          ></em>
         </div>
         <div class="media-content"></div>
 
         <div class="lightbox-right icon">
-          <i
+          <em
             id="right-arrow"
             class="fa-solid fa-chevron-right"
             role="button"
             aria-label="next"
             tabindex="0"
-          ></i>
+          ></em>
           <div class="lightbox-close">
-            <i
+            <em
               class="fa-solid fa-xmark"
               role="button"
               aria-label="close"
               tabindex="0"
-            ></i>
+            ></em>
           </div>
         </div>
       </div>

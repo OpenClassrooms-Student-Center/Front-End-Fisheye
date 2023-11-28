@@ -9,6 +9,7 @@
 body {
   font-family: "DM Sans", sans-serif;
   margin: 0;
+  overflow: auto;
 }
 
 header {
@@ -27,7 +28,6 @@ h1 {
 h2 {
   color: var(--secondary-color);
   font-size: 36px;
-  text-wrap: nowrap;
   margin-bottom: 0px;
 }
 
@@ -48,13 +48,14 @@ h3 {
   grid-template-columns: 1fr 1fr 1fr;
   gap: 70px;
   margin-top: 100px;
+  
 
   @media screen and (max-width: 1200px) {
     grid-template-columns: 1fr 1fr;
   }
 
   @media screen and (max-width: 800px) {
-    grid-template-columns: 1fr;
+    grid-template-columns: none;
   }
 }
 
@@ -169,4 +170,18 @@ transform: rotate(135deg);
 
 ul:not(.open) li:not(:first-of-type) {
 display: none;
+}
+
+li:hover {
+  background-color: var(--secondary-color);
+  color:black
+}
+
+li:focus {
+  background-color: var(--secondary-color);
+  color:black
+}
+
+.no-scroll {
+  overflow: hidden !important;
 }
