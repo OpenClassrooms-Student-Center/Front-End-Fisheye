@@ -90,14 +90,17 @@ function sortMedias(allMedias) {
     }
 
     function handleKeyDown(event) {
-      event.preventDefault();
 
       const key = event.key;
       const menu = document.querySelector(".menu");
       const firstElement = menu.querySelector("li");
       const focusedElement = menu.querySelector(":focus");
 
-      if (key === "Enter" || key === "Space") {
+      if (key !== "Tab") {
+        event.preventDefault();
+      }
+
+      if (key === "Enter") {
         handleMenuAction(event.target);
       }
 
@@ -131,7 +134,7 @@ function sortMedias(allMedias) {
       }
       const isOpen = menu.classList.contains("open");
       menu.classList.toggle("open");
-      menu.setAttribute("aria-expanded", isOpen ? "true" : "false");
+      menu.setAttribute("aria-expanded", isOpen ? "false" : "true");
       const sort = listItem.getAttribute("id");
       if (lastSort !== sort) {
         lastSort = sort;

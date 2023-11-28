@@ -150,17 +150,19 @@ ul::after {
   content: "";
   position: absolute;
   right: 25px;
-  top: 20px;
+  top: 27px;
   width: 0.6em;
   height: 0.6em;
-  border-left: 0.2rem solid rgb(255, 255, 255);
-  border-bottom: 0.2rem solid rgb(255, 255, 255);
+  border-top: 2px solid #fff;
+  border-right: 2px solid #fff;
   transform: rotate(315deg);
   transition: transform .3s;
 }
 
 ul.open::after {
 transform: rotate(135deg);
+top: 20px;
+
 }
 
 .arrow-up::after {
