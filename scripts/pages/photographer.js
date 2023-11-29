@@ -193,12 +193,11 @@ function validateForm() {
 
     if (checkInputs(firstName, lastName, email, message)) {
       const dataToSend = {
-        firstName,
-        lastName,
-        email,
-        message,
+        firstName: firstName.value,
+        lastName: lastName.value,
+        email: email.value,
+        message: message.value,
       };
-
       console.log(dataToSend);
 
       form.reset();
