@@ -16,7 +16,7 @@ fetch("./data/photographers.json")
       /*const photographerDetails = document.createElement('div');*/
       const photographerHeader = document.querySelector(".photograph-header");
       photographerHeader.innerHTML = 
-      `
+      ` 
       <div class="photograph-text">
         <h1 class="name">${photographer.name}</h1>
         <p class="location">${photographer.city}, ${photographer.country}</p>
@@ -29,11 +29,6 @@ fetch("./data/photographers.json")
       const modalTitleName = document.querySelector(".modal-title_name");
 
       modalTitleName.append(photographer.name);
-
-
-    } else {
-      // Si aucun photographe correspondant n'est trouvé
-      console.log('Photographer not found');
     }
   })
   .catch((error) => {
