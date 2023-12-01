@@ -1,11 +1,9 @@
     async function getPhotographers() {
-      //importation des donnes json
+    //   importation des donnes json
+//importation des donnes json
        
-   const reponse = await fetch('data/photographers.json');
-   const data=await reponse.json();
-       
-        console.log(data.photographers);
-        console.log(data.media);
+const reponse = await fetch('data/photographers.json');
+const data=await reponse.json();
         // photographers = [
         //     {
         //         "name": "Ma data test",
