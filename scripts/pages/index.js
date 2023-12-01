@@ -27,29 +27,43 @@
         //     },
         // ]
         // et bien retourner le tableau photographers seulement une fois récupéré
-        return ('toto');
+        return (data);
     }
 
     async function displayData(photographers) {
-        // const photographersSection = document.querySelector(".photographer_section");
+        const photographersSection = document.querySelector(".photographer_section");
 
-        // photographers.forEach((photographer) => {
-        //     const photographerModel = photographerTemplate(photographer);
-        //     const userCardDOM = photographerModel.getUserCardDOM();
-        //     photographersSection.appendChild(userCardDOM);
-        // });
+        photographers.forEach((photographer) => {
+            const photographerModel = photographerTemplate(photographer);
+            const userCardDOM = photographerModel.getUserCardDOM();
+            photographersSection.appendChild(userCardDOM);
+        });
     }
+//Fonction asynchrone pour attendre l'exécution de getPhotographers
+    async function init() {
 
-    // async function init() {
-    //     // Récupère les datas des photographes
-    //     const { photographers } = await getPhotographers();
+        //APRES AVOIR ATTENDU L EXECUTION DE LA FONCTION ASYNCHRONE!!!!!
+
+        // Récupère les datas des photographes 
+        const { photographer } = await getPhotographers();
+        //recupération des datas (photographes+media)
+        let alo = await getPhotographers();
+
+       
         
 
-    //     displayData(photographers);
+        // displayData(photographers);
 
-    // }
-    let a=getPhotographers();
-    console.log('coucou'+ a);
-    // init();
+
+     
+        //récupérer les data des médias
+        console.log('coucou'+ alo.media[1].id);
+
+        // récupération des data de photographers
+        console.log('coucou'+ photographer);
+    }
+
+
+    init();
 
 
