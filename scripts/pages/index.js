@@ -43,14 +43,14 @@ const data=await reponse.json();
         //APRES AVOIR ATTENDU L EXECUTION DE LA FONCTION ASYNCHRONE!!!!!
 
         // Récupère les datas des photographes 
-        const { photographer } = await getPhotographers();
+        const { photographers } = await getPhotographers();
         //recupération des datas (photographes+media)
         let alo = await getPhotographers();
 
        
         
 
-        // displayData(photographers);
+        displayData(photographers);
 
 
      
@@ -58,7 +58,7 @@ const data=await reponse.json();
         console.log('coucou'+ alo.media[1].id);
 
         // récupération des data de photographers
-        console.log('coucou'+ photographer);
+        console.log('coucou'+ photographers);
     }
 
 
