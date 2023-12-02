@@ -1,4 +1,4 @@
-    async function getPhotographers() {
+async function getPhotographers() {
     //   importation des donnes json
 //importation des donnes json
        
@@ -64,3 +64,5 @@ const data=await reponse.json();
 
     init();
 
+
+//comment
