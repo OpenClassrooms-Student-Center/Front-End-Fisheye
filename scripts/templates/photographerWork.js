@@ -35,7 +35,6 @@ class PhotographerWork {
 
   createPhotographerWork(photographer, media, counterDivLikes) {
     let sum = this.sum;
-
     function changeHeart(
       clickedElement,
       index,
@@ -62,6 +61,41 @@ class PhotographerWork {
       }
       mediaLikeElement.innerHTML = updatedLikes;
     }
+
+     //likes
+    const boutonTrierLikes = document.querySelector(".btn-popularite");
+
+    boutonTrierLikes.addEventListener("click", function () {
+        const piecesOrdonnees = Array.from(media);
+        piecesOrdonnees.sort(function (a, b) {
+            return a.likes - b.likes;
+        });
+        console.log("boutonTrier",piecesOrdonnees);
+    });
+
+     //titles
+    const boutonFiltrerDates = document.querySelector(".btn-dates");
+
+    boutonFiltrerDates.addEventListener("click", function () {
+      const piecesOrdonnees = Array.from(media);
+      piecesOrdonnees.sort(function (a, b) {
+        const dateA = new Date(a.date);
+        const dateB = new Date(b.date);
+        return dateA - dateB;
+      });
+      console.log("boutonFiltrerDates",piecesOrdonnees);
+    });
+      //titles
+      const boutonFiltrerTitles = document.querySelector(".btn-titres");
+
+      boutonFiltrerTitles.addEventListener("click", function () {
+        const piecesOrdonnees = Array.from(media);
+        piecesOrdonnees.sort(function (a, b) {
+          return a.title.localeCompare(b.title);
+        });
+        console.log("boutonFiltrerTitres",piecesOrdonnees);
+    });
+
     // Render lightbox
     media.forEach((media, index) => {
       const mediaTypeElement = document.createElement("p");
