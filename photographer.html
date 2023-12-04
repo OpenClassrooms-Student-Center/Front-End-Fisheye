@@ -2,36 +2,138 @@
 <html>
   <head>
     <link href="css/style.css" rel="stylesheet" type="text/css" />
-    <meta charset="utf-8">
-    <link rel="icon" type="image/png" href="assets/favicon.png">
-    <link href="https://fonts.googleapis.com/css?family=DM+Sans&display=swap" rel="stylesheet">
-    <title>Fisheye - photographe </title>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/png" href="assets/favicon.png" />
+    <link
+      href="https://fonts.googleapis.com/css?family=DM+Sans&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+      integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <title>Fisheye - photographe</title>
   </head>
   <body>
     <header>
-      <img src="assets/images/logo.png" class="logo" />
+      <a href="/">
+        <img src="assets/images/logo.png" class="logo" />
+      </a>
     </header>
-    <main id="main">
-      <div class="photograph-header">
-        <button class="contact_button" onclick="displayModal()">Contactez-moi</button>
+    <main id="main" class="main-wrapper" aria-hidden="false">
+      <div id="photograph-header"></div>
+      <div class="dropdown">
+        <button onclick="dropBtn()" class="dropbtn">Dropdown</button>
+        <div id="myDropdown" class="dropdown-content">
+          <a class="btn-popularite" href="#">Popularité</a>
+          <a class="btn-dates" href="#">Date</a>
+          <a class="btn-titres" href="#">Titre</a>
+        </div>
       </div>
+      <div class="medias-wrapper" id="medias-wrapper"></div>
     </main>
-    <div id="contact_modal">
-			<div class="modal">
-				<header>
+
+    <div id="contact_modal" aria-hidden="false" aria-describedby="contactModal">
+      <div class="modal">
+        <header>
           <h2>Contactez-moi</h2>
-          <img src="assets/icons/close.svg" onclick="closeModal()" />
+          <img id="modalClose" src="assets/icons/close.svg" />
         </header>
-				<form>
-					<div>
-						<label>Prénom</label>
-						<input />
-					</div>
-          <button class="contact_button">Envoyer</button>
-				</form>
-			</div>
-		</div>
-    <script src="/scripts/pages/photographer.js"></script>
-    <script src="/scripts/utils/contactForm.js"></script>
+        <form
+          name="reserve"
+          action="photographer.html"
+          method="get"
+          class="form-body"
+          id="form-body"
+          role="dialog"
+        >
+          <div class="formData">
+            <label>Prénom</label>
+            <br />
+            <input
+              class="text-control"
+              type="text"
+              id="first"
+              name="first"
+              minlength="2"
+            />
+            <span class="error-message" id="error-first"></span>
+            <label>Nom</label>
+            <br />
+            <input
+              class="text-control"
+              type="text"
+              id="second"
+              name="second"
+              minlength="2"
+            />
+            <span class="error-message" id="error-second"></span>
+            <label>Email</label>
+            <br />
+            <input
+              class="text-control"
+              type="email"
+              id="third"
+              name="third"
+              minlength="2"
+            />
+            <span class="error-message" id="error-third"></span>
+            <label>Message</label>
+            <br />
+            <input
+              class="text-control"
+              type="text"
+              id="fourth"
+              name="fourth"
+              minlength="2"
+            />
+            <span class="error-message" id="error-fourth"></span>
+            <br />
+          </div>
+          <button class="contact_button" type="submit">Envoyer</button>
+        </form>
+        <div id="validation-message"></div>
+      </div>
+    </div>
+    <div
+      class="photo-modal"
+      id="modal-wrapper"
+      aria-hidden="true"
+      role="dialog"
+      aria-describedby="modalTitle"
+      aria-hidden="false"
+    >
+      <div id="modalPhoto">
+        <div id="modal-content">
+          <div class="modal-close-btn"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Entry point -->
+    <script type="module" src="/scripts/pages/photographer.js"></script>
+    <!-- Templates -->
+    <script
+      type="module"
+      src="/scripts/templates/aboutPhotographer.js"
+    ></script>
+    <!-- Templates -->
+    <script type="module" src="/scripts/templates/photographerWork.js"></script>
+    <!-- Templates -->
+    <script type="module" src="/scripts/templates/lightbox.js"></script>
+    <!-- Contact Form -->
+    <script type="module" src="/scripts/utils/contactForm.js"></script>
+    <!-- Photo Modal -->
+    <script type="module" src="/scripts/utils/photoModal.js"></script>
+    <!-- Api -->
+    <script type="module" src="/scripts/api/api.js"></script>
+    <!-- Likes -->
+    <script type="module" src="/scripts/utils/subject.js"></script>
+    <!-- Counter -->
+    <script type="module" src="/scripts/utils/counter.js"></script>
   </body>
 </html>
