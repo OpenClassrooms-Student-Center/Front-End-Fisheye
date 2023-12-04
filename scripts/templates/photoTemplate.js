@@ -1,5 +1,5 @@
 function photographerTemplate(data) {
-    const  { name,city, country,tagline, price, portrait } = data;
+    const  { name,id,city, country,tagline, price, portrait } = data;
 
     const picture = `assets/photographers/${portrait}`;
 
@@ -10,6 +10,7 @@ function photographerTemplate(data) {
         const a=document.createElement('a');
         a.setAttribute('class','link');
         a.setAttribute(`aria-label`,`lien vers la page de ${name}`)
+        a.setAttribute('href',`photographer.html?id=${id}`)
         const img = document.createElement( 'img' );
         img.setAttribute("src", picture)
         img.setAttribute(`alt`,`photo de ${name }`)
@@ -39,6 +40,7 @@ function photographerTemplate(data) {
         article.appendChild(h2);
         article.appendChild(p);
         a.appendChild(article);
+     
         return (a);
     }
     return { name, picture, getUserCardDOM }

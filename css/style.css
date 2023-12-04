@@ -27,7 +27,10 @@ p{
 
     margin-block-start: 0;
     margin-block-end: 0;
+    text-decoration: none;
 }
+
+a{ text-decoration: none;}
 .info{
     display: flex;
     flex-direction: column;
@@ -37,6 +40,9 @@ p{
 }
 .localisation{
     color: #901C1C;
+}
+.tag{
+    color:black;
 }
 .price{
     color:grey
