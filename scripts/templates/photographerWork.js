@@ -62,6 +62,8 @@ class PhotographerWork {
       mediaLikeElement.innerHTML = updatedLikes;
     }
 
+    renderLightBox(media);
+
      //likes
     const boutonTrierLikes = document.querySelector(".btn-popularite");
 
@@ -71,6 +73,8 @@ class PhotographerWork {
             return a.likes - b.likes;
         });
         console.log("boutonTrier",piecesOrdonnees);
+        document.querySelector(".medias-wrapper").innerHTML = "";
+        renderLightBox(piecesOrdonnees);
     });
 
      //titles
@@ -83,7 +87,8 @@ class PhotographerWork {
         const dateB = new Date(b.date);
         return dateA - dateB;
       });
-      console.log("boutonFiltrerDates",piecesOrdonnees);
+      document.querySelector(".medias-wrapper").innerHTML = "";
+      renderLightBox(piecesOrdonnees);
     });
       //titles
       const boutonFiltrerTitles = document.querySelector(".btn-titres");
@@ -93,11 +98,13 @@ class PhotographerWork {
         piecesOrdonnees.sort(function (a, b) {
           return a.title.localeCompare(b.title);
         });
-        console.log("boutonFiltrerTitres",piecesOrdonnees);
+        document.querySelector(".medias-wrapper").innerHTML = "";
+        renderLightBox(piecesOrdonnees);
     });
 
     // Render lightbox
-    media.forEach((media, index) => {
+    function renderLightBox (media) {
+      media.forEach((media, index) => {
       const mediaTypeElement = document.createElement("p");
 
       const mediasWrapper = document.querySelector("#medias-wrapper");
@@ -188,6 +195,7 @@ class PhotographerWork {
       // Add the media container to the medias wrapper
       mediasWrapper.appendChild(mediaContainer);
     });
+  }
   }
   openLightbox(mediaId) {
     const photographerPages = new PhotographerPages();
