@@ -26,14 +26,14 @@
     </header>
     <main id="main" class="main-wrapper" aria-hidden="false">
       <div id="photograph-header"></div>
-      <section class="filtres">
-				<h3>Filtres</h3>
-				<button class="btn-popularite">Popularité</button>
-				<br>
-				<button class="btn-dates">Date</button>
-				<br>
-				<button class="btn-titres">Titre</button>
-			</section>
+      <div class="dropdown">
+        <button onclick="dropBtn()" class="dropbtn">Dropdown</button>
+        <div id="myDropdown" class="dropdown-content">
+          <a class="btn-popularite" href="#">Popularité</a>
+          <a class="btn-dates" href="#">Date</a>
+          <a class="btn-titres" href="#">Titre</a>
+        </div>
+      </div>
       <div class="medias-wrapper" id="medias-wrapper"></div>
     </main>
 

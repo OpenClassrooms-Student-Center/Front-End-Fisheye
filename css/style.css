@@ -230,7 +230,7 @@ h1 {
 
 .icon .far.fa-heart {
   z-index: 2;
-  // width: fit-content;
+  /* // width: fit-content; */
   font-size: 2em;
   transition: opacity 0.3s ease, background-position 0.5s;
 }
@@ -242,14 +242,14 @@ h1 {
   transition: opacity 0.3s ease, background-position 0.5s;
 }
 
-.icon:hover .fas.fa-heart {
+/* .icon:hover .fas.fa-heart {
   opacity: 1;
   background: linear-gradient(180deg, $pink 7%, $purple 100%);
   background-size: 100% 200%;
   background-position: 0% 100%;
   background-clip: text;
   -webkit-background-clip: text;
-}
+} */
 
 .far.fa-heart {
   /* width: 100%; */
@@ -324,3 +324,53 @@ h1 {
   align-items: center;
   margin-right: 0.5em;
 }
+
+
+/* Dropdown Button */
+.dropbtn {
+  display: block;
+  /* width: 100%; */
+  background-color: #901C1C;
+  color: white;
+  padding: 16px;
+  font-size: 16px;
+  border: none;
+  cursor: pointer;
+  /* padding: 1em 10%; */
+}
+
+/* Dropdown button on hover & focus */
+.dropbtn:hover, .dropbtn:focus {
+  background-color: #901c1ce6;
+}
+
+/* The container <div> - needed to position the dropdown content */
+.dropdown {
+  /* position: relative; */
+  padding: 1em 10%;
+  display: inline-block;
+}
+
+/* Dropdown Content (Hidden by Default) */
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f1f1f1;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+/* Links inside the dropdown */
+.dropdown-content a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+/* Change color of dropdown links on hover */
+.dropdown-content a:hover {background-color: #ddd;}
+
+/* Show the dropdown menu (use JS to add this class to the .dropdown-content container when the user clicks on the dropdown button) */
+.show {display:block;}

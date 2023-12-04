@@ -105,10 +105,6 @@ photographer-card p {
   object-fit: cover;
 }
 
-.photographer-info {
-  background-color: #fafafa;
-}
-
 .photographer-card h2,
 .photographer-info h2 {
   color: #d3573c;
@@ -148,6 +144,7 @@ photographer-card p {
 }
 
 .photographer-info {
+  background-color: #fafafa;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -166,7 +163,7 @@ photographer-card p {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 20px;
-  padding: 10%;
+  padding: 0 10% 10% 10%;
   column-gap: 3em;
 }
 

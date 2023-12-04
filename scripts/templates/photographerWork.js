@@ -62,11 +62,30 @@ class PhotographerWork {
       mediaLikeElement.innerHTML = updatedLikes;
     }
 
+    const dropBtn = document.querySelector(".dropbtn");
+    dropBtn.addEventListener("click", function () {
+      console.log("drop")
+      document.getElementById("myDropdown").classList.toggle("show");
+  });
+
+  // Close the dropdown menu if the user clicks outside of it
+window.onclick = function(event) {
+  if (!event.target.matches('.dropbtn')) {
+    var dropdowns = document.getElementsByClassName("dropdown-content");
+    var i;
+    for (i = 0; i < dropdowns.length; i++) {
+      var openDropdown = dropdowns[i];
+      if (openDropdown.classList.contains('show')) {
+        openDropdown.classList.remove('show');
+      }
+    }
+  }
+}
+
     renderLightBox(media);
 
      //likes
     const boutonTrierLikes = document.querySelector(".btn-popularite");
-
     boutonTrierLikes.addEventListener("click", function () {
         const piecesOrdonnees = Array.from(media);
         piecesOrdonnees.sort(function (a, b) {
@@ -77,9 +96,8 @@ class PhotographerWork {
         renderLightBox(piecesOrdonnees);
     });
 
-     //titles
+     //dates
     const boutonFiltrerDates = document.querySelector(".btn-dates");
-
     boutonFiltrerDates.addEventListener("click", function () {
       const piecesOrdonnees = Array.from(media);
       piecesOrdonnees.sort(function (a, b) {
@@ -92,7 +110,6 @@ class PhotographerWork {
     });
       //titles
       const boutonFiltrerTitles = document.querySelector(".btn-titres");
-
       boutonFiltrerTitles.addEventListener("click", function () {
         const piecesOrdonnees = Array.from(media);
         piecesOrdonnees.sort(function (a, b) {
