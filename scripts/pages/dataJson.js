@@ -3,7 +3,7 @@
 
 
 
-export default class getData{
+ class getData{
 async getPhotographers() {
     //   importation des donnes json
 //importation des donnes json

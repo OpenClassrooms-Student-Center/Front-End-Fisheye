@@ -1,5 +1,5 @@
 
-import getData from './dataJson.js';
+
 //  async function getPhotographers() {
 //     //   importation des donnes json
 // //importation des donnes json
