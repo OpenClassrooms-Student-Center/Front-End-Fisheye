@@ -1,0 +1,23 @@
+/** -----------------------------------------------------------------------------
+* Sass variables
+* -----------------------------------------------------------------------------*/
+/* ************************************************** import */
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,700&display=swap');
+
+/// font family
+$text-font: 'DM Sans', sans-serif;
+
+/// colors
+$principal-color: #901c1c;
+$second-color: #d3573c;
+$third-color: #db8876;
+$light-grey: #fafafa;
+$grey: #525252;
+$dark-grey: #312e2e;
+$black: #000;
+$white: #fff;
+
+/// radius
+$box-border-radius: 5px;
+$btn-border-radius: 5px;
+$media-img-border-radius: 5px;

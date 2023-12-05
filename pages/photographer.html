@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+  <!-- encoding definition -->
+  <meta charset="utf-8">
+  <!-- mobile optimization -->
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <!-- compatible edge -->
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="icon" type="image/png" href="../assets/medias/favicon.png">
+  <link href="../assets/stylesheets/main.css" rel="stylesheet">
+  <title>Fisheye - photographe </title>
+</head>
+
+<body>
+  <header class="header">
+    <a href="../index.html"><img src="../assets/medias/logo/logo.png" height="50" width="200" class="logo"
+        alt="Page d'accueil Fisheye"></a>
+  </header>
+  <main class="main" aria-hidden="false">
+    <section class="photographer__profile" aria-label="profil du photographe">
+      <!-- 
+        photographer profile is display in this section via javaScript 
+        (photographerProfileTemplate) 
+    -->
+    </section>
+    <div class="photographer__portfolio">
+      <section class="photographer__sorter" aria-label="tri des médias">
+        <p id="sort-by">Trier par</p>
+        <div>
+          <button class="photographer__sorter-button photographer__sorter-button-opener" type="button"
+            aria-expanded="false" aria-controls="sorter-list" aria-labelledby="sort-by" aria-haspopup="listbox">
+            <span id="selected-sort" aria-hidden="true">---</span>
+            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32" fill="none"
+              class="photographer__sorter-button-opener-arrow" aria-hidden="true">
+              <g clip-path="url(#clip0_179240_75)">
+                <path d="M9.88 20.5466L16 14.44L22.12 20.5466L24 18.6666L16 10.6666L8 18.6666L9.88 20.5466Z"
+                  fill="white" />
+              </g>
+            </svg>
+          </button>
+          <ul class="photographer__sorter-list" id="sorter-list" role="listbox">
+            <li>
+              <button role="option" id="photographer__sorter-arrow-close" class="photographer__sorter-arrow-close"
+                aria-label="fermer la liste des filtres">
+                <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32" fill="none">
+                  <g clip-path="url(#clip0_179240_75)" aria-hidden="true">
+                    <path d="M9.88 20.5466L16 14.44L22.12 20.5466L24 18.6666L16 10.6666L8 18.6666L9.88 20.5466Z"
+                      fill="white" />
+                  </g>
+                </svg>
+              </button>
+            </li>
+            <li><button role="option" id="photographer__sorter-popularity"
+                class="photographer__sorter-item photographer__sorter-button">Popularité</button></li>
+            <li role="separator" class="photographer__sorter-item-divider" aria-hidden="true"></li>
+            <li><button role="option" id="photographer__sorter-date"
+                class="photographer__sorter-item photographer__sorter-button">Date</button></li>
+            <li role="separator" class="photographer__sorter-item-divider" aria-hidden="true"></li>
+            <li><button role="option" id="photographer__sorter-title"
+                class="photographer__sorter-item photographer__sorter-button">Titre</button></li>
+          </ul>
+        </div>
+      </section>
+      <section class="photographer__gallery" aria-label="galerie des médias">
+        <!-- 
+        photographer's images/videos are display in this section via javaScript 
+        (photographerMediaCardTemplate) 
+    -->
+      </section>
+    </div>
+    <section class="photographer__infos" aria-label="Informations complémentaires">
+      <!-- photographer's total likes + daily rate, display in this section by javaScript 
+            (photographerInfosTemplate)
+      -->
+    </section>
+  </main>
+  <!-- modal contact form -->
+  <dialog tabindex=-1 id="modal__contact" class="modal" aria-hidden="true" aria-describedby="modal__title">
+    <div class="modal__contact modal__container">
+      <header class="modal__contact-header">
+        <h2 id="modal__title" class="modal__contact-title">Contactez-moi<br><span
+            id="modal__contact-photographer-name"></span></h2>
+        <button class="modal__contact-close-button modal__close-button"><img src="../assets/medias/icons/close.svg"
+            alt="" aria-hidden="true"><span class="hide-text">fermer la modale</span></button>
+      </header>
+      <!-- novalidate permitted override by js -->
+      <form id="contact-form" name="contact" novalidate>
+        <div class="formData">
+          <label for="firstName" class="label">Prénom</label>
+          <input class="text-input" type="text" id="firstName" name="firstName" aria-required="true"
+            aria-invalid="false" required>
+        </div>
+        <div class="formData">
+          <label for="lastName" class="label">Nom</label>
+          <input class="text-input" type="text" id="lastName" name="lastName" aria-required="true" aria-invalid="false"
+            required>
+        </div>
+        <div class="formData">
+          <label for="email" class="label">Email</label>
+          <input class="text-input" type="email" id="email" name="email" aria-required="true" aria-invalid="false"
+            required>
+        </div>
+        <div class="formData">
+          <label for="message" class="label">Votre message</label>
+          <textarea class="text-input textarea" id="message" name="message" aria-required="true" aria-invalid="false"
+            required></textarea>
+        </div>
+        <button type="submit"
+          class="modal__contact-submit-button submit-button button modal__contact-last-focus">Envoyer</button>
+      </form>
+      <section class="modal__contact-validation" aria-label="message envoyé">
+        <p class="message-validation">Votre message a bien été envoyé</p>
+        <button class="button" id="close-validation"> fermer </button>
+      </section>
+    </div>
+  </dialog>
+  <!-- modal media lightbox -->
+  <dialog tabindex=-1 id="modal__lightbox" class="modal" aria-hidden="true" aria-label="Media vue de près">
+    <div class="modal__lightbox  modal__container" aria-roledescription="carousel">
+      <button class="modal__lightbox-close-button modal__close-button" aria-label="fermer la modale">
+        <svg width="42" height="42" viewBox="0 0 42 42" fill="none" xmlns="http://www.w3.org/2000/svg"
+          class="close-icon" aria-hidden="true">
+          <path
+            d="M42 4.23L37.77 0L21 16.77L4.23 0L0 4.23L16.77 21L0 37.77L4.23 42L21 25.23L37.77 42L42 37.77L25.23 21L42 4.23Z"
+            fill="white" />
+        </svg>
+      </button>
+      <a href="#" class="modal__lightbox-carousel-previous" aria-label="image précédente"
+        aria-controls="display-medias">
+        <svg class="modal__lightbox-carousel-previous-icon" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
+          width="96" height="96" viewBox="0 0 96 96" fill="none">
+          <g clip-path="url(#clip0_120_800)">
+            <path d="M61.6399 66.36L43.3199 48L61.6399 29.64L55.9999 24L31.9999 48L55.9999 72L61.6399 66.36Z"
+              fill="#911C1C" />
+          </g>
+        </svg>
+      </a>
+      <div id="display-medias" class="modal__lightbox-media" aria-live="polite">
+        <!-- content generated by js -->
+      </div>
+      <a href="#" class="modal__lightbox-carousel-next modal__lightbox-last-focus" aria-label="image suivante"
+        aria-controls="display-medias">
+        <svg class="modal__lightbox-carousel-next-icon" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="96"
+          height="96" viewBox="0 0 96 96" fill="none">
+          <g clip-path="url(#clip0_120_803)">
+            <path d="M34.3601 29.64L52.6801 48L34.3601 66.36L40.0001 72L64.0001 48L40.0001 24L34.3601 29.64Z"
+              fill="#911C1C" />
+          </g>
+        </svg>
+      </a>
+    </div>
+  </dialog>
+  <!-- type module permitted import/export into js file -->
+  <script type="module" src="/scripts/pages/Photographer.js"></script>
+</body>
+
+</html>

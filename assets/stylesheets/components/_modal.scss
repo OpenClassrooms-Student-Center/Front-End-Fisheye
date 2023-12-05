@@ -1,0 +1,32 @@
+/** -----------------------------------------------------------------------------
+* Modal
+* -----------------------------------------------------------------------------*/
+.modal {
+  background: rgba(196, 196, 196, 0.4);
+  display: none;
+  height: 100vh;
+  left: 0;
+  overflow-y: auto;
+  position: fixed;
+  top: 0;
+  width: 100vw;
+  z-index: 1;
+  &__container {
+    animation-duration: 0.5s;
+    animation-name: modalOpen;
+  }
+  &__close-button {
+    cursor: pointer;
+    margin: 15px;
+    position: absolute;
+  }
+}
+
+@keyframes modalOpen {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}

@@ -1,0 +1,28 @@
+/** -----------------------------------------------------------------------------
+* Photographer's infos (total likes + daily rate)
+* -----------------------------------------------------------------------------*/
+.photographer__infos {
+  background-color: $third-color;
+  border-radius: $box-border-radius $box-border-radius 0 0;
+  bottom: 0;
+  display: flex;
+  justify-content: center;
+  gap: 60px;
+  padding: 15px 30px;
+  position: fixed;
+  right: 20px;
+  width: 350px;
+  p {
+    margin: 0;
+  }
+  &-likes {
+    &-container {
+      align-items: center;
+      display: flex;
+      gap: 5px;
+    }
+    &-heart {
+      padding-bottom: 5%;
+    }
+  }
+}

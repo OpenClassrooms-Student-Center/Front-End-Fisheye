@@ -1,0 +1,67 @@
+/** -----------------------------------------------------------------------------
+* Modal lightbox
+* -----------------------------------------------------------------------------*/
+#modal__lightbox {
+  background-color: $white;
+  padding: 0;
+  overflow-x: hidden;
+  padding-bottom: 15px;
+}
+.modal__lightbox {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  margin: 40px auto;
+  position: absolute;
+  width: 100vw;
+  &-close-button {
+    position: relative;
+    right: 110px;
+    top: 0px;
+    .close-icon path {
+      fill: $principal-color;
+    }
+  }
+  &-media-container {
+    height: 900px;
+    width: 1050px;
+  }
+  &-picture {
+    animation-duration: 2s;
+    animation-name: modalPicture;
+    border-radius: $media-img-border-radius;
+    height: 100%;
+    object-fit: cover;
+    object-position: center 35%;
+    width: 100%;
+  }
+  &-media-title {
+    margin-top: 0;
+  }
+}
+@keyframes modalPicture {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@media screen and (max-width: 1400px) {
+  .modal__lightbox {
+    &-close-button {
+      right: 2%;
+      top: 0%;
+    }
+  }
+}
+
+@media screen and (max-width: 1180px) {
+  .modal__lightbox {
+    &-media-container {
+      max-height: 900px;
+      width: 100%;
+    }
+  }
+}

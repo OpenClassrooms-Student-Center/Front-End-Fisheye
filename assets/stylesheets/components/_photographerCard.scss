@@ -1,0 +1,21 @@
+/** -----------------------------------------------------------------------------
+* Photographer's card of homepage
+* -----------------------------------------------------------------------------*/
+.photographer__card {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  &-link {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+  }
+  &-name {
+    margin-top: 15px;
+    margin-bottom: 0;
+  }
+  p {
+    margin: 0;
+    padding-top: 3px;
+  }
+}

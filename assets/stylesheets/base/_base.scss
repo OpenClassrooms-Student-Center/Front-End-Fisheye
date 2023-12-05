@@ -1,0 +1,40 @@
+/** -----------------------------------------------------------------------------
+* Basic styles.
+* -----------------------------------------------------------------------------*/
+
+html {
+  box-sizing: border-box;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
+/** 
+* General styles
+*/
+body {
+  margin: 0 auto;
+  max-width: 1440px;
+}
+h1,
+h2 {
+  margin: 0%;
+}
+
+/**
+* Basic styles for links
+*/
+a {
+  cursor: pointer;
+  text-decoration: none;
+}
+
+/**
+* Modal
+*/
+dialog {
+  border: none;
+}

@@ -1,0 +1,48 @@
+/** -----------------------------------------------------------------------------
+* Photographer's profile
+* -----------------------------------------------------------------------------*/
+.photographer {
+  &__profile {
+    align-items: center;
+    background-color: $light-grey;
+    display: flex;
+    height: 300px;
+    justify-content: space-between;
+    margin: 0 100px;
+    padding: 70px 50px;
+  }
+  &__presentation-location {
+    margin: 0;
+  }
+  &__contact-button {
+    &:hover,
+    &:focus {
+      background-color: $third-color;
+      color: $black;
+    }
+  }
+}
+@media screen and (max-width: 1024px) {
+  .photographer {
+    &__profile {
+      justify-content: space-between;
+      margin: 0;
+      padding: 70px 50px;
+    }
+  }
+}
+@media screen and (max-width: 768px) {
+  .photographer {
+    &__profile {
+      flex-direction: column;
+      height: auto;
+      gap: 10px;
+    }
+    &__presentation {
+      order: 2;
+    }
+    &__contact-button {
+      order: 3;
+    }
+  }
+}

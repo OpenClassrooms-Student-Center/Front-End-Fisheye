@@ -1,0 +1,46 @@
+/** -----------------------------------------------------------------------------
+* Modal contact
+* -----------------------------------------------------------------------------*/
+.modal__contact {
+  align-items: flex-start;
+  background-color: $third-color;
+  border-radius: $box-border-radius;
+  display: flex;
+  flex-direction: column;
+  margin: auto;
+  padding: 10px 35px;
+  width: 50%;
+  &-header {
+    align-items: flex-start;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 15px;
+    position: relative;
+    width: 100%;
+  }
+  &-close-button {
+    top: 10px;
+    right: -15px;
+  }
+  &-validation {
+    align-items: center;
+    display: none;
+    flex-direction: column;
+    justify-content: space-between;
+    min-height: 70vh;
+    width: 100%;
+    p {
+      margin: auto;
+    }
+    button {
+      padding: 20px 50px;
+      margin-bottom: 25px;
+    }
+  }
+}
+@media screen and (max-width: 1200px) {
+  .modal__contact {
+    padding: 10px 35px;
+    width: 80%;
+  }
+}

@@ -1,0 +1,43 @@
+/** -----------------------------------------------------------------------------
+* Photographer's gallery media card
+* -----------------------------------------------------------------------------*/
+.media-card {
+  display: grid;
+  grid-template-columns: 1fr;
+  width: 350px;
+
+  &__link {
+    height: 300px;
+    width: 350px;
+  }
+
+  &__picture {
+    border-radius: $media-img-border-radius;
+    // height: 100%;
+    object-fit: cover;
+    // width: 100%;
+    height: 300px;
+    width: 350px;
+  }
+
+  &__under-picture-container,
+  &__likes-container {
+    display: flex;
+  }
+
+  &__under-picture-container {
+    align-items: flex-start;
+    justify-content: space-between;
+
+    h2,
+    p,
+    button {
+      margin: 10px 0;
+    }
+  }
+
+  &__likes-container {
+    align-items: center;
+    gap: 5px;
+  }
+}

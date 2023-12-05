@@ -1,0 +1,42 @@
+/** -----------------------------------------------------------------------------
+* Form
+* -----------------------------------------------------------------------------*/
+form {
+  align-items: flex-start;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+
+  .formData {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 5px;
+    width: 100%;
+  }
+
+  .text-input {
+    border: none;
+    border-radius: $box-border-radius;
+    height: 68px;
+    padding-left: 10px;
+    width: 100%;
+  }
+
+  .textarea {
+    height: 170px;
+  }
+
+  .submit-button {
+    margin: 26px 0;
+    padding: 23px 50px;
+  }
+
+  .input-error {
+    border: 2px solid $principal-color;
+
+    &:focus {
+      border: 4px solid $principal-color;
+      outline: $principal-color;
+    }
+  }
+}

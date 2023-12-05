@@ -1,0 +1,163 @@
+/** -----------------------------------------------------------------------------
+* Typography
+* -----------------------------------------------------------------------------*/
+/* ************************************************** colors */
+h1,
+.location,
+.media-card__under-picture-container,
+.media-card__likes-heart,
+.modal__lightbox-media-title {
+  color: $principal-color;
+}
+
+.name {
+  color: $second-color;
+}
+
+.photographer__presentation-tagline,
+.label {
+  color: $dark-grey;
+}
+
+.photographers__section__price {
+  color: $grey;
+}
+
+button {
+  color: $white;
+}
+
+.error-message,
+.modal__contact-title {
+  color: $black;
+}
+
+/* ************************************************** font */
+* {
+  font-family: $text-font;
+}
+
+h1,
+h2,
+.label {
+  font-size: 2.25em;
+  font-weight: 400;
+}
+
+.button {
+  font-size: 1.25em;
+  font-weight: 700;
+  letter-spacing: 1.25px;
+}
+
+/* form */
+form {
+  .error-message {
+    font-size: 1.2em;
+  }
+  .text-input {
+    font-size: 1em;
+    letter-spacing: 1.25px;
+  }
+}
+
+/* ************************** home page */
+.photographer__card {
+  /* font-size more accessible */
+  text-align: center;
+  &-location {
+    font-size: 1.2em;
+  }
+  &-tagline {
+    font-size: 0.9em;
+  }
+  &-price {
+    font-size: 0.8em;
+  }
+}
+// /* font-size of mock-up */
+// .photographer__card {
+//   text-align: center;
+//   &-location {
+//     font-size: 0.8125em;
+//   }
+//   &-tagline {
+//     font-size: 0.625em;
+//   }
+//   &-price {
+//     font-size: 0.5625em;
+//   }
+// }
+
+/* ************************** photographer's page */
+
+.photographer {
+  // /* photographer profile */
+  &__presentation {
+    &-name {
+      font-size: 4em;
+    }
+    &-location {
+      font-size: 1.5em;
+    }
+    &-tagline {
+      font-size: 1.125em;
+    }
+  }
+
+  // /* photographer media sorter  */
+  &__sorter {
+    &-button,
+    p {
+      font-size: 1.125em;
+      font-weight: 700;
+    }
+    &-button {
+      letter-spacing: 1.25px;
+      text-align: left;
+    }
+  }
+
+  // /* photographer infos  */
+  &__infos {
+    font-size: 1.5em;
+    font-weight: 500;
+  }
+}
+
+/* media card */
+.media-card {
+  &__title,
+  &__likes {
+    font-size: 1.5rem;
+  }
+  &__likes-heart {
+    font-size: 1.3rem;
+  }
+}
+
+/* modal  */
+.modal {
+  // /* contact modal  */
+  &__contact {
+    &-title {
+      font-size: 4em;
+      text-align: left;
+    }
+    &-validation {
+      p {
+        font-size: 2em;
+      }
+    }
+  }
+  // /* lightbox modal  */
+  &__lightbox-media-title {
+    font-size: 1.5em;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .photographer__profile {
+    text-align: center;
+  }
+}

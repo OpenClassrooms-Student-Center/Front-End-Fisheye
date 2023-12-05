@@ -1,21 +1,34 @@
 <!DOCTYPE html>
 <html lang="fr">
-  <head>
-    <link href="css/style.css" rel="stylesheet" type="text/css" />
-    <meta charset="utf-8">
-    <link rel="icon" type="image/png" href="assets/favicon.png">
-    <link href="https://fonts.googleapis.com/css?family=DM+Sans&display=swap" rel="stylesheet">
-    <title>Fisheye</title>
-  </head>
-  <body>
-    <header>
-        <img src="assets/images/logo.png" class="logo" alt="fisheye logo"/>
-        <h1>Nos photographes</h1>
-    </header>
-    <main id="main">
-        <div class="photographer_section"></div>
-    </main>
-    <script src="scripts/templates/photographer.js"></script>
-    <script src="scripts/pages/index.js"></script>
-  </body>
+
+<head>
+  <!-- encoding definition -->
+  <meta charset="utf-8">
+  <!-- mobile optimization -->
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <!-- compatible edge -->
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="icon" type="image/png" href="assets/medias/favicon.png">
+  <link href="assets/stylesheets/main.css" rel="stylesheet">
+  <title>Fisheye - accueil</title>
+</head>
+
+<body>
+  <header class="header">
+    <a href="index.html" aria-current="page"><img src="assets/medias/logo/logo.png" height="50" width="200" class="logo"
+        alt="Page d'accueil Fisheye"></a>
+    <h1>Nos photographes</h1>
+  </header>
+  <main aria-label="Liste des photographes">
+    <div class="photographers__section">
+      <!-- 
+        all photographers are display in this section via javaScript 
+        (indexTemplate -> displayPhotographerCard) 
+      -->
+    </div>
+  </main>
+  <!-- type module permitted import/export into js file -->
+  <script type="module" src="scripts/pages/Index.js"></script>
+</body>
+
 </html>

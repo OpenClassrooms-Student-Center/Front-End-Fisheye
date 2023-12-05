@@ -1,0 +1,641 @@
+/** -----------------------------------------------------------------------------
+* Sass variables
+* -----------------------------------------------------------------------------*/
+/* ************************************************** import */
+@import url("https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,700&display=swap");
+/** -----------------------------------------------------------------------------
+* Basic styles.
+* -----------------------------------------------------------------------------*/
+html {
+  box-sizing: border-box;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
+/** 
+* General styles
+*/
+body {
+  margin: 0 auto;
+  max-width: 1440px;
+}
+
+h1,
+h2 {
+  margin: 0%;
+}
+
+/**
+* Basic styles for links
+*/
+a {
+  cursor: pointer;
+  text-decoration: none;
+}
+
+/**
+* Modal
+*/
+dialog {
+  border: none;
+}
+
+/** -----------------------------------------------------------------------------
+* Typography
+* -----------------------------------------------------------------------------*/
+/* ************************************************** colors */
+h1,
+.location,
+.media-card__under-picture-container,
+.media-card__likes-heart,
+.modal__lightbox-media-title {
+  color: #901c1c;
+}
+
+.name {
+  color: #d3573c;
+}
+
+.photographer__presentation-tagline,
+.label {
+  color: #312e2e;
+}
+
+.photographers__section__price {
+  color: #525252;
+}
+
+button {
+  color: #fff;
+}
+
+.error-message,
+.modal__contact-title {
+  color: #000;
+}
+
+/* ************************************************** font */
+* {
+  font-family: "DM Sans", sans-serif;
+}
+
+h1,
+h2,
+.label {
+  font-size: 2.25em;
+  font-weight: 400;
+}
+
+.button {
+  font-size: 1.25em;
+  font-weight: 700;
+  letter-spacing: 1.25px;
+}
+
+/* form */
+form .error-message {
+  font-size: 1.2em;
+}
+form .text-input {
+  font-size: 1em;
+  letter-spacing: 1.25px;
+}
+
+/* ************************** home page */
+.photographer__card {
+  /* font-size more accessible */
+  text-align: center;
+}
+.photographer__card-location {
+  font-size: 1.2em;
+}
+.photographer__card-tagline {
+  font-size: 0.9em;
+}
+.photographer__card-price {
+  font-size: 0.8em;
+}
+
+/* ************************** photographer's page */
+.photographer__presentation-name {
+  font-size: 4em;
+}
+.photographer__presentation-location {
+  font-size: 1.5em;
+}
+.photographer__presentation-tagline {
+  font-size: 1.125em;
+}
+.photographer__sorter-button,
+.photographer__sorter p {
+  font-size: 1.125em;
+  font-weight: 700;
+}
+.photographer__sorter-button {
+  letter-spacing: 1.25px;
+  text-align: left;
+}
+.photographer__infos {
+  font-size: 1.5em;
+  font-weight: 500;
+}
+
+/* media card */
+.media-card__title, .media-card__likes {
+  font-size: 1.5rem;
+}
+.media-card__likes-heart {
+  font-size: 1.3rem;
+}
+
+/* modal  */
+.modal__contact-title {
+  font-size: 4em;
+  text-align: left;
+}
+.modal__contact-validation p {
+  font-size: 2em;
+}
+.modal__lightbox-media-title {
+  font-size: 1.5em;
+}
+
+@media screen and (max-width: 768px) {
+  .photographer__profile {
+    text-align: center;
+  }
+}
+/** -----------------------------------------------------------------------------
+* Helpers class
+* -----------------------------------------------------------------------------*/
+/**
+ * Hide text while making it readable for screen readers
+ */
+.hide-text {
+  left: -100000%;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  white-space: nowrap;
+}
+
+.no-scroll {
+  overflow: hidden;
+}
+
+/** -----------------------------------------------------------------------------
+* Header
+* -----------------------------------------------------------------------------*/
+.header {
+  align-items: center;
+  display: flex;
+  flex-direction: row;
+  height: 90px;
+  justify-content: space-between;
+  padding: 70px 100px;
+}
+.header .logo {
+  height: 50px;
+}
+
+/** -----------------------------------------------------------------------------
+* Photographer's infos (total likes + daily rate)
+* -----------------------------------------------------------------------------*/
+.photographer__infos {
+  background-color: #db8876;
+  border-radius: 5px 5px 0 0;
+  bottom: 0;
+  display: flex;
+  justify-content: center;
+  gap: 60px;
+  padding: 15px 30px;
+  position: fixed;
+  right: 20px;
+  width: 350px;
+}
+.photographer__infos p {
+  margin: 0;
+}
+.photographer__infos-likes-container {
+  align-items: center;
+  display: flex;
+  gap: 5px;
+}
+.photographer__infos-likes-heart {
+  padding-bottom: 5%;
+}
+
+/** -----------------------------------------------------------------------------
+* Modal contact
+* -----------------------------------------------------------------------------*/
+.modal__contact {
+  align-items: flex-start;
+  background-color: #db8876;
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+  margin: auto;
+  padding: 10px 35px;
+  width: 50%;
+}
+.modal__contact-header {
+  align-items: flex-start;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 15px;
+  position: relative;
+  width: 100%;
+}
+.modal__contact-close-button {
+  top: 10px;
+  right: -15px;
+}
+.modal__contact-validation {
+  align-items: center;
+  display: none;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 70vh;
+  width: 100%;
+}
+.modal__contact-validation p {
+  margin: auto;
+}
+.modal__contact-validation button {
+  padding: 20px 50px;
+  margin-bottom: 25px;
+}
+
+@media screen and (max-width: 1200px) {
+  .modal__contact {
+    padding: 10px 35px;
+    width: 80%;
+  }
+}
+/** -----------------------------------------------------------------------------
+* Modal lightbox
+* -----------------------------------------------------------------------------*/
+#modal__lightbox {
+  background-color: #fff;
+  padding: 0;
+  overflow-x: hidden;
+  padding-bottom: 15px;
+}
+
+.modal__lightbox {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  margin: 40px auto;
+  position: absolute;
+  width: 100vw;
+}
+.modal__lightbox-close-button {
+  position: relative;
+  right: 110px;
+  top: 0px;
+}
+.modal__lightbox-close-button .close-icon path {
+  fill: #901c1c;
+}
+.modal__lightbox-media-container {
+  height: 900px;
+  width: 1050px;
+}
+.modal__lightbox-picture {
+  animation-duration: 2s;
+  animation-name: modalPicture;
+  border-radius: 5px;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+  -o-object-position: center 35%;
+     object-position: center 35%;
+  width: 100%;
+}
+.modal__lightbox-media-title {
+  margin-top: 0;
+}
+
+@keyframes modalPicture {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@media screen and (max-width: 1400px) {
+  .modal__lightbox-close-button {
+    right: 2%;
+    top: 0%;
+  }
+}
+@media screen and (max-width: 1180px) {
+  .modal__lightbox-media-container {
+    max-height: 900px;
+    width: 100%;
+  }
+}
+/** -----------------------------------------------------------------------------
+* Photographer's profile
+* -----------------------------------------------------------------------------*/
+.photographer__profile {
+  align-items: center;
+  background-color: #fafafa;
+  display: flex;
+  height: 300px;
+  justify-content: space-between;
+  margin: 0 100px;
+  padding: 70px 50px;
+}
+.photographer__presentation-location {
+  margin: 0;
+}
+.photographer__contact-button:hover, .photographer__contact-button:focus {
+  background-color: #db8876;
+  color: #000;
+}
+
+@media screen and (max-width: 1024px) {
+  .photographer__profile {
+    justify-content: space-between;
+    margin: 0;
+    padding: 70px 50px;
+  }
+}
+@media screen and (max-width: 768px) {
+  .photographer__profile {
+    flex-direction: column;
+    height: auto;
+    gap: 10px;
+  }
+  .photographer__presentation {
+    order: 2;
+  }
+  .photographer__contact-button {
+    order: 3;
+  }
+}
+/** -----------------------------------------------------------------------------
+* Photographer's gallery
+* -----------------------------------------------------------------------------*/
+.photographer__gallery {
+  align-items: start;
+  -moz-column-gap: 90px;
+       column-gap: 90px;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  margin: 40px auto 100px auto;
+  row-gap: 30px;
+}
+@media screen and (max-width: 1275px) {
+  .photographer__gallery {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+@media screen and (max-width: 768px) {
+  .photographer__gallery {
+    grid-template-columns: 1fr;
+  }
+}
+
+/** -----------------------------------------------------------------------------
+* Media sorter
+* -----------------------------------------------------------------------------*/
+.photographer__sorter {
+  align-items: center;
+  display: flex;
+  gap: 25px;
+  margin: 15px 100px;
+  position: relative;
+}
+.photographer__sorter-list {
+  background-color: #901c1c;
+  border-radius: 5px;
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+  display: none;
+  flex-direction: column;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  position: absolute;
+  top: 0;
+}
+.photographer__sorter-list--open {
+  display: flex;
+  z-index: 1;
+}
+.photographer__sorter-item-divider {
+  background-color: #fff;
+  height: 1px;
+  margin: auto;
+  width: 90%;
+}
+.photographer__sorter-button {
+  background-color: #901c1c;
+  border-radius: 5px;
+  min-width: 200px;
+  padding: 23px 10px 23px 20px;
+}
+.photographer__sorter-button-opener {
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+  padding: 20px 10px 20px 20px;
+}
+.photographer__sorter-button-opener-arrow {
+  transform: rotate(0.5turn);
+}
+.photographer__sorter-arrow-close {
+  position: absolute;
+  right: 5%;
+  top: 8%;
+}
+
+/** -----------------------------------------------------------------------------
+* Button
+* -----------------------------------------------------------------------------*/
+.button {
+  background-color: #901c1c;
+  border-radius: 5px;
+  padding: 22px 11px;
+}
+
+button {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+}
+
+/** -----------------------------------------------------------------------------
+* Form
+* -----------------------------------------------------------------------------*/
+form {
+  align-items: flex-start;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+form .formData {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 5px;
+  width: 100%;
+}
+form .text-input {
+  border: none;
+  border-radius: 5px;
+  height: 68px;
+  padding-left: 10px;
+  width: 100%;
+}
+form .textarea {
+  height: 170px;
+}
+form .submit-button {
+  margin: 26px 0;
+  padding: 23px 50px;
+}
+form .input-error {
+  border: 2px solid #901c1c;
+}
+form .input-error:focus {
+  border: 4px solid #901c1c;
+  outline: #901c1c;
+}
+
+/** -----------------------------------------------------------------------------
+* Photographer's card of homepage
+* -----------------------------------------------------------------------------*/
+.photographer__card {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.photographer__card-link {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+}
+.photographer__card-name {
+  margin-top: 15px;
+  margin-bottom: 0;
+}
+.photographer__card p {
+  margin: 0;
+  padding-top: 3px;
+}
+
+/** -----------------------------------------------------------------------------
+* Photographer's gallery media card
+* -----------------------------------------------------------------------------*/
+.media-card {
+  display: grid;
+  grid-template-columns: 1fr;
+  width: 350px;
+}
+.media-card__link {
+  height: 300px;
+  width: 350px;
+}
+.media-card__picture {
+  border-radius: 5px;
+  -o-object-fit: cover;
+     object-fit: cover;
+  height: 300px;
+  width: 350px;
+}
+.media-card__under-picture-container, .media-card__likes-container {
+  display: flex;
+}
+.media-card__under-picture-container {
+  align-items: flex-start;
+  justify-content: space-between;
+}
+.media-card__under-picture-container h2,
+.media-card__under-picture-container p,
+.media-card__under-picture-container button {
+  margin: 10px 0;
+}
+.media-card__likes-container {
+  align-items: center;
+  gap: 5px;
+}
+
+/** -----------------------------------------------------------------------------
+* Photographer's profile picture
+* -----------------------------------------------------------------------------*/
+.profile-picture__container {
+  border-radius: 100%;
+  box-shadow: 0em 0.25em 0.75em rgba(0, 0, 0, 0.25);
+  height: 200px;
+  overflow: hidden;
+  width: 200px;
+}
+
+.profile-picture {
+  height: 200px;
+  -o-object-fit: cover;
+     object-fit: cover;
+  transform: scale(1.1);
+  width: 200px;
+}
+
+/** -----------------------------------------------------------------------------
+* Modal
+* -----------------------------------------------------------------------------*/
+.modal {
+  background: rgba(196, 196, 196, 0.4);
+  display: none;
+  height: 100vh;
+  left: 0;
+  overflow-y: auto;
+  position: fixed;
+  top: 0;
+  width: 100vw;
+  z-index: 1;
+}
+.modal__container {
+  animation-duration: 0.5s;
+  animation-name: modalOpen;
+}
+.modal__close-button {
+  cursor: pointer;
+  margin: 15px;
+  position: absolute;
+}
+
+@keyframes modalOpen {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+/** -----------------------------------------------------------------------------
+* Homepage
+* -----------------------------------------------------------------------------*/
+.photographers__section {
+  align-items: start;
+  display: grid;
+  gap: 70px;
+  grid-template-columns: 1fr 1fr 1fr;
+  margin: 50px 0 100px;
+}
+@media screen and (max-width: 768px) {
+  .photographers__section {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.photographer__portfolio {
+  display: flex;
+  flex-direction: column;
+}

@@ -1,0 +1,17 @@
+/** -----------------------------------------------------------------------------
+* Helpers class
+* -----------------------------------------------------------------------------*/
+/**
+ * Hide text while making it readable for screen readers
+ */
+.hide-text {
+  left: -100000%;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  white-space: nowrap;
+}
+
+.no-scroll {
+  overflow: hidden;
+}

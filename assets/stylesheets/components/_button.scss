@@ -1,0 +1,15 @@
+/** -----------------------------------------------------------------------------
+* Button
+* -----------------------------------------------------------------------------*/
+.button {
+  background-color: $principal-color;
+  border-radius: $btn-border-radius;
+  padding: 22px 11px;
+}
+
+button {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+}

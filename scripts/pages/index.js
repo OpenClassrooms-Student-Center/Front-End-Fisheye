@@ -1,46 +1,42 @@
-    async function getPhotographers() {
-        // Ceci est un exemple de données pour avoir un affichage de photographes de test dès le démarrage du projet, 
-        // mais il sera à remplacer avec une requête sur le fichier JSON en utilisant "fetch".
-        let photographers = [
-            {
-                "name": "Ma data test",
-                "id": 1,
-                "city": "Paris",
-                "country": "France",
-                "tagline": "Ceci est ma data test",
-                "price": 400,
-                "portrait": "account.png"
-            },
-            {
-                "name": "Autre data test",
-                "id": 2,
-                "city": "Londres",
-                "country": "UK",
-                "tagline": "Ceci est ma data test 2",
-                "price": 500,
-                "portrait": "account.png"
-            },
-        ]
-        // et bien retourner le tableau photographers seulement une fois récupéré
-        return ({
-            photographers: [...photographers, ...photographers, ...photographers]})
-    }
+/*********************************************************************************
+*
+* This file control home page
+*
+/*********************************************************************************/
 
-    async function displayData(photographers) {
-        const photographersSection = document.querySelector(".photographer_section");
+import { ApiPhotographers } from '../models/api/ApiPhotographers.js';
+import { displayPhotographerCard } from '../templates/indexPhotographerCardTemplate.js';
+import { Photographer } from '../models/metier/Photographer.js';
 
-        photographers.forEach((photographer) => {
-            const photographerModel = photographerTemplate(photographer);
-            const userCardDOM = photographerModel.getUserCardDOM();
-            photographersSection.appendChild(userCardDOM);
-        });
-    }
+/**
+ * Executed when home page is loaded
+ */
+document.addEventListener('DOMContentLoaded', function () {
+  init();
+});
 
-    async function init() {
-        // Récupère les datas des photographes
-        const { photographers } = await getPhotographers();
-        displayData(photographers);
-    }
-    
-    init();
-    
+/**
+ * Function that retrieves the div containing all the photographers and displays them
+ * @param {array} photographers
+ */
+const displayPhotographers = (photographers) => {
+  const photographersSection = document.querySelector(
+    '.photographers__section'
+  );
+  photographers.forEach((photographer) => {
+    photographer = Photographer(photographer);
+    console.log(photographer);
+    const cardDOM = displayPhotographerCard(photographer);
+    photographersSection.appendChild(cardDOM);
+  });
+};
+
+/**
+ * Function called on loading, retrieves data from photographers database
+ * @async
+ */
+const init = async () => {
+  const datasPhotographers = ApiPhotographers();
+  const { photographers } = await datasPhotographers.getPhotographers();
+  displayPhotographers(photographers);
+};
