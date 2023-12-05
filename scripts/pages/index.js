@@ -27,13 +27,15 @@ import getData from './dataJson.js';
 
         // Récupère les datas des photographes 
 
-        const photographers= new getData().getPhotographers();
-        alert(photographers.photographers[1].name)
+    const data = await new getData().getPhotographers();
+
+    const { photographers, media}=data;
+   
         //recupération des datas (photographes+media)
 
 
        
-        
+        console.log(photographers);
 
         displayData(photographers);
 
