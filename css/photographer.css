@@ -5,12 +5,12 @@
     height: 300px;
     margin: 0 100px;
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
     padding: 50px;
 }
-.photograph-text {
-    margin-right: auto;
+.photograph-text, .photograph-portrait {
+    width: 40%;
 }
 .photograph-text .name {
     color: #D3573C;
@@ -26,7 +26,9 @@
     color: #000;
     font-size: 20px;
 }
-
+.photograph-portrait {
+    text-align: end;
+}
 /* contact_button */
 .contact_button {
     font-size: 20px;
