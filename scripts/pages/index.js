@@ -1,32 +1,15 @@
-async function getPhotographers() {
-    //   importation des donnes json
-//importation des donnes json
+
+import getData from './dataJson.js';
+//  async function getPhotographers() {
+//     //   importation des donnes json
+// //importation des donnes json
        
-const reponse = await fetch('data/photographers.json');
-const data=await reponse.json();
-        // photographers = [
-        //     {
-        //         "name": "Ma data test",
-        //         "id": 1,
-        //         "city": "Paris",
-        //         "country": "France",
-        //         "tagline": "Ceci est ma data test",
-        //         "price": 400,
-        //         "portrait": "account.png"
-        //     },
-        //     {
-        //         "name": "Autre data test",
-        //         "id": 2,
-        //         "city": "Londres",
-        //         "country": "UK",
-        //         "tagline": "Ceci est ma data test 2",
-        //         "price": 500,
-        //         "portrait": "account.png"
-        //     },
-        // ]
-        // et bien retourner le tableau photographers seulement une fois récupéré
-        return (data);
-    }
+// const reponse = await fetch('data/photographers.json');
+// const data=await reponse.json();
+
+//         return (data);
+   
+//     }
 
     async function displayData(photographers) {
         const photographersSection = document.querySelector(".photographer_section");
@@ -43,9 +26,11 @@ const data=await reponse.json();
         //APRES AVOIR ATTENDU L EXECUTION DE LA FONCTION ASYNCHRONE!!!!!
 
         // Récupère les datas des photographes 
-        const { photographers } = await getPhotographers();
+
+        const photographers= new getData().getPhotographers();
+        alert(photographers.photographers[1].name)
         //recupération des datas (photographes+media)
-        let alo = await getPhotographers();
+
 
        
         
@@ -53,16 +38,9 @@ const data=await reponse.json();
         displayData(photographers);
 
 
-     
-        //récupérer les data des médias
-        console.log('coucou'+ alo.media[1].id);
-
-        // récupération des data de photographers
-        console.log('coucou'+ photographers);
-    }
+}
+    
 
 
     init();
 
-
-//test tyty
