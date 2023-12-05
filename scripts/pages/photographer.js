@@ -23,7 +23,9 @@ fetch("./data/photographers.json")
         <p class="tagline">${photographer.tagline}</p>
       </div>
       <button class="contact_button" onclick="displayModal()">Contactez-moi</button>  
-      <img class="portrait" src="assets/photographers/portrait/${photographer.portrait}" alt="${photographer.name}">
+      <div class="photograph-portrait">
+        <img class="portrait" src="assets/photographers/portrait/${photographer.portrait}" alt="${photographer.name}">
+      </div>
       `;
 
       const modalTitleName = document.querySelector(".modal-title_name");
