@@ -7,15 +7,13 @@ fetch("./data/photographers.json")
   .then((response) => response.json()) // Convertir la réponse en JSON
   .then((data) => {
     const photographers = data.photographers;
-    const medias = data.media;
+
     // Trouver le photographe correspondant
     const photographer = photographers.find((element) => element.id === photographerId);
-    
-    const media = medias.find((element) => element.id === photographerId);
 
     // Afficher les détails du photographe
     if (photographer) {
-      
+      /*const photographerDetails = document.createElement('div');*/
       const photographerHeader = document.querySelector(".photograph-header");
       photographerHeader.innerHTML = 
       ` 
@@ -31,22 +29,13 @@ fetch("./data/photographers.json")
       `;
 
       const modalTitleName = document.querySelector(".modal-title_name");
+
       modalTitleName.append(photographer.name);
-
-      const photographerMedia = document.querySelector(".photograph-medias");
-      photographerMedia.innerHTML = 
-      ` 
-      <div class="photograph-media">
-        <h1 class="name">${media.title}</h1>
-        
-      </div>
-      `;
-
     }
   })
-  //.catch((error) => {
-  //  console.error('Error fetching data:', error);
- // });
+  .catch((error) => {
+    console.error('Error fetching data:', error);
+  });
 
 
   
