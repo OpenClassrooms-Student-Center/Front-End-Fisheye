@@ -3,6 +3,8 @@
 body {
     font-family: "DM Sans", sans-serif;
     margin: 0;
+    display: flex;
+    flex-direction: column;
 }
 
 
@@ -13,6 +15,7 @@ header {
     align-items: center;
     height: 90px;
 }
+
 
 h1 {
     color: #901C1C;
@@ -68,17 +71,37 @@ a{ text-decoration: none;}
     flex-direction: column;
 }
 
-.photographer_section article h2 {
+.name {
     color: #D3573C;
     font-size: 36px;
 }
-.photograph-header{
+.photographer{
     display:flex;
     justify-content: space-around;
+    align-items: center;
 }
 .portrait {
     border-radius: 50%;
     height: 200px;
     width: 200px;
     object-fit:cover;
+}
+#media{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 70px;
+    margin-top: 100px;
+  
+}
+.visualSection{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.mediaImg{
+    margin-left:auto;
+    margin-right:auto;
+    width: 350px;
+    height: 350px;
 }

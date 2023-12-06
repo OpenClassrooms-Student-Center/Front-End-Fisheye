@@ -9,42 +9,44 @@
     function getUserCardDOM() {
         const article = document.createElement( 'article' );
         article.setAttribute(`aria-label`,` ${name}`)
-        const a=document.createElement('a');
-        a.setAttribute('class','link');
-        a.setAttribute(`aria-label`,`lien vers la page de ${name}`)
-        a.setAttribute('href',`photographer.html?id=${id}`)
-        const img = document.createElement( 'img' );
-        img.setAttribute("src", picture)
-        img.setAttribute(`alt`,`photo de ${name }`)
-        img.setAttribute('class','portrait')
-        const h2 = document.createElement( 'h2' );
-        h2.textContent = name;
-        const p= document.createElement('p');
-        p.setAttribute('class','info');
+        const  photographerA=document.createElement('a');
+        photographerA.setAttribute('class','link');
+        photographerA.setAttribute(`aria-label`,`lien vers la page de ${name}`)
+        photographerA.setAttribute('href',`photographer.html?id=${id}`)
+        const portraitImg = document.createElement( 'img' );
+       portraitImg.setAttribute("src", picture)
+       portraitImg.setAttribute(`alt`,`photo de ${name }`)
+       portraitImg.setAttribute('class','portrait')
 
-        const localisation=document.createElement('span');
-        localisation.setAttribute('class','localisation');
-        localisation.textContent=city+', '+country;
+        const NameH2 = document.createElement( 'h2' );
+        NameH2.setAttribute('class','name')
+        NameH2.textContent = name;
+        const infoSection= document.createElement('section');
+        infoSection.setAttribute('class','info');
 
-        const tag=document.createElement('span');
-        tag.setAttribute('class','tag');
-        tag.textContent=tagline;
-        const prix=document.createElement('span');
-        prix.setAttribute('class','price');
-        prix.textContent=`${price}€/jour`;
+        const localisationP=document.createElement('p');
+        localisationP.setAttribute('class','localisation');
+        localisationP.textContent=city+', '+country;
+
+        const tagP=document.createElement('p');
+        tagP.setAttribute('class','tag');
+        tagP.textContent=tagline;
+        const prixP=document.createElement('p');
+        prixP.setAttribute('class','price');
+        prixP.textContent=`${price}€/jour`;
 // creating p
 
-        p.appendChild(localisation);
-        p.appendChild(tag);
-        p.appendChild(prix);
+        infoSection.appendChild(localisationP);
+        infoSection.appendChild(tagP);
+        infoSection.appendChild(prixP);
        
 
-        article.appendChild(img);
-        article.appendChild(h2);
-        article.appendChild(p);
-        a.appendChild(article);
+        article.appendChild(portraitImg);
+        article.appendChild(NameH2);
+        article.appendChild(infoSection);
+        photographerA.appendChild(article);
      
-        return (a);
+        return (photographerA);
     }
     return { name, picture, getUserCardDOM }
 
