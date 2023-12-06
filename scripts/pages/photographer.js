@@ -85,7 +85,7 @@ var mediaSection=document.getElementById('media');
 
 media.forEach(media => {
 
-
+if(media.image){
     let mediaArticle=document.createElement('article');
 let visualSection=document.createElement('section');
 visualSection.setAttribute('class','visualSection');
@@ -98,7 +98,9 @@ let mediaDataSection=document.createElement('section');
 mediaArticle.appendChild(visualSection);
 mediaArticle.appendChild(mediaDataSection);
 mediaSection.appendChild(mediaArticle);
-});
+}});
+
+
 
 
 
