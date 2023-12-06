@@ -39,7 +39,7 @@
       </section>
       <section class="media-filter">
         <h2>Trier par</h2>
-        <div class="media-filter-menu">
+        <div class="media-filter-menu" role="menu">
         <ul class="menu" role="list">
           <li id="popularite" role="menuitem" tabindex="0" aria-label="filter by popularity">Popularité</li>
           <li id="date" role="menuitem" tabindex="0" aria-label="filter by date">Date</li>
@@ -64,20 +64,20 @@
       </header>
       <form role="form" id="contactForm">
         <h2 class="photographerNameForm"></h2>
-        <div class="form-control">
-          <label for="firstName" aria-label="First Name">Prénom</label>
+        <div class="form-control" aria-label="Contact information">
+          <label for="firstName">Prénom</label>
           <input id="firstName" name="prenom" />
           <span
             class="error"
             id="firstNameError"
-            aria-live="polite"
+              aria-live="polite"
             role="alert"
           >
             Veuillez saisir votre Prénom
           </span>
         </div>
         <div class="form-control">
-          <label for="lastName" aria-label="Last Name">Nom</label>
+          <label for="lastName">Nom</label>
           <input id="lastName" name="nom" />
           <span
             class="error hidden"
@@ -89,14 +89,14 @@
           </span>
         </div>
         <div class="form-control">
-          <label for="email" aria-label="Email">Email</label>
+          <label for="email">Email</label>
           <input id="email" />
           <span class="error" id="emailError" aria-live="polite" role="alert">
             Veuillez saisir votre Email ou un Email valide
           </span>
         </div>
         <div class="form-control">
-          <label for="message" aria-label="Your message">Votre message</label>
+          <label for="message">Votre message</label>
           <textarea id="message"></textarea>
           <span class="error" id="messageError" aria-live="polite" role="alert">
             Veuillez saisir un message

@@ -15,7 +15,7 @@ function mediaTemplate(allMedias, firstName, allLikes, photographerPrice) {
         <div class="media-infos" arial-label="media infos">
           <h3>${title}</h3>
           <div class="likes">
-            <p class="likes-number" aria-label="likes number" tabindex="0">${likes}  
+            <p class="likes-number" aria-label="number of likes of the media" role="button" aria-pressed="false" tabindex="0">${likes}  
               <em class="fa-regular fa-heart"></em>
             </p>
           </div>
@@ -42,7 +42,7 @@ function mediaTemplate(allMedias, firstName, allLikes, photographerPrice) {
         event.key === "Enter" ||
         event.key === "Space"
       ) {
-        addRemoveLike(mediaLikes, likes);
+        addRemoveLike(mediaLikes, likes, );
       }
     }
 
@@ -53,7 +53,7 @@ function mediaTemplate(allMedias, firstName, allLikes, photographerPrice) {
         totalLikesAdded += 1;
 
         mediaLikes.innerHTML = `
-            <p class="likes-number" aria-label="like added" tabindex="0">${likeAdded}  
+            <p class="likes-number" role="button" aria-pressed="true" aria-label="like added" tabindex="0">${likeAdded}  
               <em class="fa-solid fa-heart"></em>
             </p>
           `;
@@ -62,7 +62,7 @@ function mediaTemplate(allMedias, firstName, allLikes, photographerPrice) {
         likeAdded = likes;
         totalLikesAdded -= 1;
         mediaLikes.innerHTML = `
-            <p class="likes-number">${likeAdded}  
+            <p class="likes-number" aria-label="like removed" role="button" aria-pressed="true" tabindex="0">${likeAdded}  
               <em class="fa-regular fa-heart"></em>
             </p>
           `;

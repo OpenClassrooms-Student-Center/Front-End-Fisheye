@@ -62,18 +62,6 @@ function displayMedias(medias) {
       firstname: medias.firstName,
     }).createMediaElement();
 
-    // const mediaElementDOM = mediaElement.createMediaElement();
-
-    // console.log("mediaElement", mediaElementDOM);
-
-    // const mediaLink = `assets/photographers/${medias.firstName}/${
-    //   image ?? video
-    // }`;
-
-    // const mediaElement = image
-    //   ? `<img src="${mediaLink}" alt="${title}">`
-    //   : `<video src="${mediaLink}" autoplay loop muted></video>`;
-
     mediaSection.appendChild(
       getMediaCard({
         mediaElement,
