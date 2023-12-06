@@ -3,7 +3,6 @@ import { displayLikesContainer } from "./displayLikesContainer.js";
 
 let totalLikesAdded = 0;
 function mediaTemplate(allMedias, firstName, allLikes, photographerPrice) {
-
   function getMediaCardDOM(mediaElement, title, likes, index) {
     let likeAdded = likes;
 
@@ -38,7 +37,11 @@ function mediaTemplate(allMedias, firstName, allLikes, photographerPrice) {
     }
 
     function handleLikeClickOrEnter(event) {
-      if (event.type === "click" || event.key === "Enter" || event.key === "Space") {     
+      if (
+        event.type === "click" ||
+        event.key === "Enter" ||
+        event.key === "Space"
+      ) {
         addRemoveLike(mediaLikes, likes);
       }
     }
@@ -65,7 +68,6 @@ function mediaTemplate(allMedias, firstName, allLikes, photographerPrice) {
           `;
         displayLikesContainer(allLikes + totalLikesAdded, photographerPrice);
       }
-
     }
     return mediaCard;
   }

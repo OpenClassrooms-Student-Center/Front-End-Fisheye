@@ -8,6 +8,7 @@ import {
   closeModal,
   displayModal,
 } from "../utils/utils.js";
+import { createMedia } from "../factory/media.js";
 
 async function init() {
   let urlParams = new URLSearchParams(window.location.search);
@@ -54,13 +55,24 @@ function displayMedias(medias) {
   medias.allMedias?.forEach((media, index) => {
     const { image, video, title, likes } = media;
 
-    const mediaLink = `assets/photographers/${medias.firstName}/${
-      image ?? video
-    }`;
+    const mediaElement = new createMedia({
+      image,
+      video,
+      title,
+      firstname: medias.firstName,
+    }).createMediaElement();
 
-    const mediaElement = image
-      ? `<img src="${mediaLink}" alt="${title}">`
-      : `<video src="${mediaLink}" autoplay loop muted></video>`;
+    // const mediaElementDOM = mediaElement.createMediaElement();
+
+    // console.log("mediaElement", mediaElementDOM);
+
+    // const mediaLink = `assets/photographers/${medias.firstName}/${
+    //   image ?? video
+    // }`;
+
+    // const mediaElement = image
+    //   ? `<img src="${mediaLink}" alt="${title}">`
+    //   : `<video src="${mediaLink}" autoplay loop muted></video>`;
 
     mediaSection.appendChild(
       getMediaCard({

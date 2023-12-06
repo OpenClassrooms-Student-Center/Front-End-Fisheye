@@ -1,4 +1,5 @@
 import { closeModal, displayModal } from "../utils/utils.js";
+import { createMedia } from "../factory/media.js";
 
 function displayLightbox(index, mediasSorted, firstName) {
   const lightboxClose = document.querySelector(".lightbox-close");
@@ -27,7 +28,7 @@ function displayLightbox(index, mediasSorted, firstName) {
       }
       displayLightboxTemplate();
     }
-  })
+  });
 
   leftArrow.addEventListener("click", () => {
     if (index === 0) {
@@ -47,7 +48,7 @@ function displayLightbox(index, mediasSorted, firstName) {
       }
       displayLightboxTemplate();
     }
-  })
+  });
 
   lightboxClose.addEventListener("click", () => {
     closeModal("lightbox");
@@ -57,10 +58,10 @@ function displayLightbox(index, mediasSorted, firstName) {
     if (event.key === "Enter") {
       closeModal("lightbox");
     }
-  })
+  });
 
   addEventListener("keydown", (event) => {
-    if (event.key === "Escape" ) {
+    if (event.key === "Escape") {
       closeModal("lightbox");
     }
 
@@ -88,13 +89,12 @@ function displayLightbox(index, mediasSorted, firstName) {
 
     const { image, video, title } = mediasSorted[index] ?? {};
 
-    const mediaLink = `assets/photographers/${firstName}/${
-      image ?? video ?? ""
-    }`;
-
-    const mediaElement = image
-      ? `<img src="${mediaLink}" alt="${title}">`
-      : `<video src="${mediaLink}" autoplay loop></video>`;
+    const mediaElement = new createMedia({
+      image,
+      video,
+      title,
+      firstname: firstName,
+    }).createMediaElement();
 
     mediaContent.innerHTML = `
           <div class="lightbox-picture">
