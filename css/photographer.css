@@ -42,13 +42,32 @@
     border-radius: 5px;
     cursor: pointer;
 }
-/* portrait */
+/* photograph-header */
 .photograph-header .portrait {
     height: 200px;
     width: 200px;
     object-fit: cover;
     border-radius: 100px;
     margin-left: auto;
+}
+/* photograph-media */
+.photograph-medias {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    margin: 100px;
+    gap: 50px;
+}
+.photograph-media {
+    height: 300px;
+}
+.photograph-media img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+.media-text {
+    display: flex;
+    justify-content: space-between;
 }
 
 /* modal */

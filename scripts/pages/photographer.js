@@ -7,6 +7,7 @@ fetch("./data/photographers.json")
   .then((response) => response.json()) // Convertir la réponse en JSON
   .then((data) => {
     const photographers = data.photographers;
+    const media = data.media;
 
     // Trouver le photographe correspondant
     const photographer = photographers.find((element) => element.id === photographerId);
@@ -15,27 +16,41 @@ fetch("./data/photographers.json")
     if (photographer) {
       /*const photographerDetails = document.createElement('div');*/
       const photographerHeader = document.querySelector(".photograph-header");
-      photographerHeader.innerHTML = 
-      ` 
+      photographerHeader.innerHTML = ` 
       <div class="photograph-text">
         <h1 class="name">${photographer.name}</h1>
         <p class="location">${photographer.city}, ${photographer.country}</p>
         <p class="tagline">${photographer.tagline}</p>
       </div>
       <button class="contact_button" onclick="displayModal()">Contactez-moi</button>  
-      <div class="photograph-portrait">
-        <img class="portrait" src="assets/photographers/portrait/${photographer.portrait}" alt="${photographer.name}">
-      </div>
+      <img class="portrait" src="assets/photographers/portrait/${photographer.portrait}" alt="${photographer.name}">
       `;
 
       const modalTitleName = document.querySelector(".modal-title_name");
-
       modalTitleName.append(photographer.name);
+
+
+      const photographerMedia = media.filter((element) => element.photographerId === photographerId);
+      const photographerMedias = document.querySelector(".photograph-medias");
+
+      photographerMedia.forEach((media) => {
+        const mediaElement = document.createElement("div");
+        mediaElement.classList.add("photograph-media");
+        mediaElement.innerHTML = `       
+          <img class="" src="assets/photographers/${photographer.name}/${media.image}" alt="${media.image}">
+          <div class="media-text">
+            <h2 class="media-title">${media.title}</h2>
+            <span class="media-like">${media.likes} likes</span>
+          </div>
+        `;
+        photographerMedias.appendChild(mediaElement);
+      });
     }
+  
   })
-  .catch((error) => {
-    console.error('Error fetching data:', error);
-  });
+  //.catch((error) => {
+ //   console.error('Error fetching data:', error);
+ // });
 
 
   

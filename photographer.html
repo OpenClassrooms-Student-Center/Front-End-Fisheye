@@ -13,36 +13,36 @@
      <a href="index.html"  title="Fisheye Home page"><img src="assets/images/logo.png" class="logo"  alt="fisheye logo"/></a>
     </header>
     <main id="main">
-      <div class="photograph-header"></div>
-      <div class="photograph-media"></div>
+      <section class="photograph-header"></section>
+      <section class="photograph-medias"></section>
+      <div id="contact_modal">
+        <div class="modal">
+          <header>
+            <h2 class="modal-title_name">Contactez-moi</h2>
+            <img class="close-modal" src="assets/icons/close.svg" />
+          </header>
+          <form>
+            <div>
+              <label>Prénom</label>
+              <input type="text" />
+            </div>
+            <div>
+              <label>Nom</label>
+              <input type="text" />
+            </div>
+            <div>
+              <label>Email</label>
+              <input type="email" />
+            </div>
+            <div>
+              <label>Votre message</label>
+              <textarea></textarea>
+            </div>
+            <button class="contact_button">Envoyer</button>
+          </form>
+        </div>
+      </div>
     </main>
-    <div id="contact_modal">
-			<div class="modal">
-				<header>
-          <h2 class="modal-title_name">Contactez-moi</h2>
-          <img class="close-modal" src="assets/icons/close.svg" />
-        </header>
-				<form>
-					<div>
-						<label>Prénom</label>
-						<input type="text" />
-					</div>
-          <div>
-						<label>Nom</label>
-						<input type="text" />
-					</div>
-          <div>
-						<label>Email</label>
-						<input type="email" />
-					</div>
-          <div>
-						<label>Votre message</label>
-						<textarea></textarea>
-					</div>
-          <button class="contact_button">Envoyer</button>
-				</form>
-			</div>
-		</div>
     <script src="/scripts/pages/photographer.js"></script>
     <script src="/scripts/utils/contactForm.js"></script>
   </body>
