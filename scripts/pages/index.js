@@ -1,5 +1,5 @@
 
-import getData from './dataJson.js';
+import DataObject from './dataJson.js';
 import photographerTemplate from '../templates/photoTemplate.js';
 //  async function getPhotographers() {
 //     //   importation des donnes json
@@ -28,7 +28,7 @@ import photographerTemplate from '../templates/photoTemplate.js';
 
         // Récupère les datas des photographes 
 
-    const data = await new getData().getPhotographers();
+    const data = await new DataObject().getPhotoMedia();
 
     const { photographers, media}=data;
    

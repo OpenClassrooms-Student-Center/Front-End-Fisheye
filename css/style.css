@@ -72,8 +72,11 @@ a{ text-decoration: none;}
     color: #D3573C;
     font-size: 36px;
 }
-
-.photographer_section article img {
+.photograph-header{
+    display:flex;
+    justify-content: space-around;
+}
+.portrait {
     border-radius: 50%;
     height: 200px;
     width: 200px;

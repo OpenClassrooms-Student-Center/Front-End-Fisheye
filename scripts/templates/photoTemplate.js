@@ -1,3 +1,5 @@
+ 
+ // sets  data properties  and generates photographer cardDom 
  export default function photographerTemplate(data) {
     const  { name,id,city, country,tagline, price, portrait } = data;
 
@@ -14,6 +16,7 @@
         const img = document.createElement( 'img' );
         img.setAttribute("src", picture)
         img.setAttribute(`alt`,`photo de ${name }`)
+        img.setAttribute('class','portrait')
         const h2 = document.createElement( 'h2' );
         h2.textContent = name;
         const p= document.createElement('p');
