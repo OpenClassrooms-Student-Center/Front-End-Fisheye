@@ -8,7 +8,9 @@ let photographerID = params.get("id");
 //getting photographer data
 const Object= new DataObject;
 console.log(Object.data);
-console.log(Object.data.photographers[0].name);
+// console.log(Object.data.photographers[0].name);
+
+
 let photographer=await Object.getPhotographerById(photographerID);
 
 
