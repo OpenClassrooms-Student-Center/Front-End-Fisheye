@@ -1,5 +1,6 @@
 
-
+import getData from './dataJson.js';
+import photographerTemplate from '../templates/photoTemplate.js';
 //  async function getPhotographers() {
 //     //   importation des donnes json
 // //importation des donnes json
