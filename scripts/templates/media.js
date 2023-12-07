@@ -62,7 +62,7 @@ function mediaTemplate(allMedias, firstName, allLikes, photographerPrice) {
         likeAdded = likes;
         totalLikesAdded -= 1;
         mediaLikes.innerHTML = `
-            <p class="likes-number" aria-label="like removed" role="button" aria-pressed="true" tabindex="0">${likeAdded}  
+            <p class="likes-number" aria-label="like removed" role="button" aria-pressed="false" tabindex="0">${likeAdded}  
               <em class="fa-regular fa-heart"></em>
             </p>
           `;
