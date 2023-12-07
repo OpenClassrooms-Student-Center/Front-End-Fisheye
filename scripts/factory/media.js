@@ -9,7 +9,6 @@ class Image {
     const mediaElement = document.createElement('img');
     mediaElement.src = this.url;
     mediaElement.alt = this.title;
-    console.log(mediaElement);
     return mediaElement.outerHTML;
   }
 }
