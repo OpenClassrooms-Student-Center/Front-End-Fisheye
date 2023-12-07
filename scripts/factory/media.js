@@ -1,8 +1,10 @@
 class Image {
   constructor(data) {
     this.title = data.title;
+    this.image = data.image;
     this.type = 'image';
-    this.url = `assets/photographers/${data.firstname}/${data.image}`;
+    this.firstname = data.firstname;
+    this.url = `assets/photographers/${this.firstname}/${this.image}`;
   }
 
   createMediaElement() {
@@ -17,7 +19,9 @@ class Video {
   constructor(data) {
     this.title = data.title;
     this.type = 'video';
-    this.url = `assets/photographers/${data.firstname}/${data.video}`;
+    this.firstname = data.firstname;
+    this.video = data.video;
+    this.url = `assets/photographers/${this.firstname}/${this.video}`;
   }
 
   createMediaElement() {
