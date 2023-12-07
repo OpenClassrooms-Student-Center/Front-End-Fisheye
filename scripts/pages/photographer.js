@@ -1,6 +1,7 @@
 
 import DataObject from "./dataJson.js";
-import MediaTemplate from '../templates/mediaTemplate.js'
+import MediaTemplate from '../templates/mediaTemplate.js';
+import contactForm from '../utils/contactForm.js';
 
 let params = new URL(document.location).searchParams;
 let photographerID = params.get("id"); 
@@ -97,6 +98,10 @@ priceP.setAttribute('class','likePriceFooter')
 priceP.textContent=`${photographer[0].price} € `
 mediaSection.appendChild(priceP);
 
+// implementing contact button 
+const contactButton=document.getElementById("contact_button");
+const formManipulator= new contactForm;
+contactButton.addEventListener('click',function (){formManipulator.displayModal()});
 
 
 

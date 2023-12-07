@@ -19,7 +19,7 @@
 
     <main id="main">
       <section class="photographer">
-        <button class="contact_button" onclick="displayModal()">Contactez-moi</button>
+        <button class="contact_button" id="contact_button" >Contactez-moi</button>
       </section>
       <section id="media" aria-label="photographer work"></section>
 
@@ -29,12 +29,18 @@
 			<div class="modal">
 				<header>
           <h2>Contactez-moi</h2>
-          <img src="assets/icons/close.svg" onclick="closeModal()" />
+          <img src="assets/icons/close.svg"/>
         </header>
-				<form>
+				<form class="form">
 					<div>
 						<label>Prénom</label>
-						<input />
+						<input>
+            <label>Nom</label>
+            <input>
+            <label>Email</label>
+            <input>
+            <label>Votre message</label>
+            <input>
 					</div>
           <button class="contact_button">Envoyer</button>
 				</form>
