@@ -104,4 +104,27 @@ a{ text-decoration: none;}
     margin-right:auto;
     width: 350px;
     height: 350px;
+    object-fit: cover;
+}
+.mediaVideo{
+    margin-left:auto;
+    margin-right:auto;
+    width: 350px;
+    height: 350px;
+    object-fit: cover;
+}
+.likePriceFooter{
+    /* self properties */
+    background-color: #DB8876;
+   width: 260px;
+   height: 73px;
+/* position */
+    position:fixed;
+    bottom: 0rem;
+    right: 3rem;
+    z-index: 2;
+/* self position */
+display: flex;
+justify-content: center;
+align-items: center;
 }

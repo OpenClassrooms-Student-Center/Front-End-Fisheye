@@ -1,6 +1,6 @@
 
 import DataObject from "./dataJson.js";
-
+import MediaTemplate from '../templates/mediaTemplate.js'
 
 let params = new URL(document.location).searchParams;
 let photographerID = params.get("id"); 
@@ -68,7 +68,7 @@ photographHeader.prepend(infoSection);
 
 const portraitImg = document.createElement( 'img' );
 portraitImg.setAttribute("src", `assets/photographers/${photographer[0].portrait}`);
-portraitImg.setAttribute(`alt`,`photo de ${name }`)
+portraitImg.setAttribute(`alt`,`photo de ${photographer[0].name }`)
 portraitImg.setAttribute('class','portrait')
 
 
@@ -83,24 +83,19 @@ console.log(media[0].image);
 //creating media section
 var mediaSection=document.getElementById('media');
 
+// creating content
 media.forEach(media => {
 
-if(media.image){
-    let mediaArticle=document.createElement('article');
-let visualSection=document.createElement('section');
-visualSection.setAttribute('class','visualSection');
-let img=document.createElement('img');
-img.setAttribute('src',`assets/media/${photographer[0].name.substr(0, photographer[0].name.indexOf(' '))}/${media.image}`)
-img.setAttribute('alt',`${media.title}`);
-img.setAttribute('class','mediaImg');
-visualSection.appendChild(img);
-let mediaDataSection=document.createElement('section');
-mediaArticle.appendChild(visualSection);
-mediaArticle.appendChild(mediaDataSection);
+
+const mediaArticle=MediaTemplate(photographer,media);
 mediaSection.appendChild(mediaArticle);
-}});
+});
 
-
+// creating price p
+let priceP=document.createElement('footer');
+priceP.setAttribute('class','likePriceFooter')
+priceP.textContent=`${photographer[0].price} € `
+mediaSection.appendChild(priceP);
 
 
 
