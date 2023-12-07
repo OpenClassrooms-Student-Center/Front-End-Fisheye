@@ -53,20 +53,12 @@ function displayMedias(medias) {
   mediaSection.innerHTML = "";
 
   medias.allMedias?.forEach((media, index) => {
-    const { image, video, title, likes } = media;
-
-    const mediaElement = new createMedia({
-      image,
-      video,
-      title,
-      firstname: medias.firstName,
-    }).createMediaElement();
-
+    const mediaElement = new createMedia({...media, firstname: medias.firstName}).createMediaElement();
     mediaSection.appendChild(
       getMediaCard({
         mediaElement,
-        title,
-        likes,
+        title: media.title,
+        likes: media.likes,
         allMedias: medias.allMedias,
         firstName: medias.firstName,
         allLikes: medias.allLikes,

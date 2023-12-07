@@ -87,20 +87,13 @@ function displayLightbox(index, mediasSorted, firstName) {
   function displayLightboxTemplate() {
     const mediaContent = document.querySelector(".media-content");
 
-    const { image, video, title } = mediasSorted[index] ?? {};
-
-    const mediaElement = new createMedia({
-      image,
-      video,
-      title,
-      firstname: firstName,
-    }).createMediaElement();
+    const mediaElement = new createMedia({...mediasSorted[index], firstname: firstName}).createMediaElement();
 
     mediaContent.innerHTML = `
           <div class="lightbox-picture">
             ${mediaElement}
             <div class="lightbox-infos">
-              <h3>${title}</h3>
+              <h3>${mediasSorted[index].title}</h3>
             </div>
           </div>
       `;

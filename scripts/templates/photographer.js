@@ -19,7 +19,7 @@ function photographerTemplate({
       <h3 class="location">${city}, ${country}</h3>
       <p class="tagline">${tagline}</p>
       <p class="price">${price}€/jour</p>
-    `;
+    `;      
     return article;
   }
 
