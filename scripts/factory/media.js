@@ -23,6 +23,7 @@ class Video {
   createMediaElement() {
     const mediaElement = document.createElement('video');
     mediaElement.setAttribute("src", this.url);
+    mediaElement.setAttribute("aria-label", `${this.title} video`);
     mediaElement.autoplay = true;
     mediaElement.loop = true;
     mediaElement.muted = true;
