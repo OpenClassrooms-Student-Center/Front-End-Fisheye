@@ -78,20 +78,24 @@ portraitImg.setAttribute('class','portrait')
 //getting media info
 photographHeader.append(portraitImg);
 const media=await Object.getMediaById(photographerID);
-console.log(photographer[0].name);
+
 console.log(media[0].image);
 
 //creating media section
 var mediaSection=document.getElementById('media');
-
+const mediaTab=document.createElement(`tab`);
+mediaTab.setAttribute(`captation`,`select productions`);
+mediaTab.setAttribute(`scope`,`row`);
+mediaTab.setAttribute(`id`,`mediaTab`);
 // creating content
 media.forEach(media => {
 
 
 const mediaArticle=MediaTemplate(photographer,media);
-mediaSection.appendChild(mediaArticle);
+mediaTab.appendChild(mediaArticle);
 });
-
+//Implementing tab in dom
+mediaSection.appendChild(mediaTab);
 // creating price p
 let priceP=document.createElement('footer');
 priceP.setAttribute('class','likePriceFooter')

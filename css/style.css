@@ -86,7 +86,7 @@ a{ text-decoration: none;}
     width: 200px;
     object-fit:cover;
 }
-#media{
+#mediaTab{
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     gap: 70px;
@@ -133,4 +133,7 @@ align-items: center;
 
 .form{
     display: flex;
+}
+.formMessage{
+    height: 14rem;
 }

@@ -14,6 +14,8 @@ import photographerTemplate from '../templates/photoTemplate.js';
 
     async function displayData(photographers) {
         const photographersSection = document.querySelector(".photographer_section");
+        photographersSection.setAttribute(`role`,`navigation`); 
+
 
         photographers.forEach((photographer) => {
             const photographerModel = photographerTemplate(photographer);

@@ -17,6 +17,7 @@
        portraitImg.setAttribute("src", picture)
        portraitImg.setAttribute(`alt`,`photo de ${name }`)
        portraitImg.setAttribute('class','portrait')
+       portraitImg.setAttribute("role","img");
 
         const NameH2 = document.createElement( 'h2' );
         NameH2.setAttribute('class','name')

@@ -7,6 +7,7 @@ visualSection.setAttribute('class','visualSection');
 let img=document.createElement('img');
 img.setAttribute('src',`assets/media/${photographer[0].name.substr(0, photographer[0].name.indexOf(' '))}/${media.image}`)
 img.setAttribute('alt',`${media.title}`);
+img.setAttribute("role","img");
 img.setAttribute('class','mediaImg');
 visualSection.appendChild(img);
 let mediaDataSection=document.createElement('section');
