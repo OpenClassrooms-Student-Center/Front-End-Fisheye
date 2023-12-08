@@ -1,38 +1,53 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <link href="css/style.css" rel="stylesheet" type="text/css" />
-    <meta charset="utf-8">
-    <link rel="icon" type="image/png" href="assets/favicon.png">
-    <link href="https://fonts.googleapis.com/css?family=DM+Sans&display=swap" rel="stylesheet">
-    <title>Fisheye - photographe </title>
+    <link href="./css/style.css" rel="stylesheet" type="text/css" />
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/png" href="assets/favicon.png" />
+    <link
+      href="https://fonts.googleapis.com/css?family=DM+Sans&display=swap"
+      rel="stylesheet"
+    />
+    <title>Fisheye - photographe</title>
   </head>
   <body>
     <header>
-      <img src="assets/images/logo.png" class="logo" />
+      <a href="index.html">
+        <img src="./assets/images/logo.png" class="logo"
+      /></a>
     </header>
     <main id="main">
-      <div class="photograph-header">
-        <button class="contact_button" onclick="displayModal()">Contactez-moi</button>
+      <div class="photograph-header" id="photograph_header">
+        <button class="contact_button" id="contact_btn">Contactez-moi</button>
       </div>
+
+      <div id="media-container" class="media_section"></div>
     </main>
     <div id="contact_modal">
-			<div class="modal">
-				<header>
+      <div class="modal">
+        <header>
           <h2>Contactez-moi</h2>
-          <img src="assets/icons/close.svg" onclick="closeModal()" />
+          <img src="./assets/icons/close.svg" id="close_btn" />
         </header>
-				<form>
-					<div>
-						<label>Prénom</label>
-						<input />
-					</div>
+        <form>
+          <div>
+            <label for="prenom">Prénom</label>
+            <input type="text" id="prenom" name="prenom" required />
+            <label for="nom">Nom</label>
+            <input type="text" id="nom" name="nom" required />
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" required />
+            <label for="message">Votre Message :</label>
+            <textarea id="message" name="message" rows="4" required></textarea>
+          </div>
           <button class="contact_button">Envoyer</button>
-				</form>
-        div.coucou>(label)
-			</div>
-		</div>
-    <script src="/scripts/pages/photographer.js"></script>
-    <script src="/scripts/utils/contactForm.js"></script>
+        </form>
+      </div>
+    </div>
+    <script
+      src="https://kit.fontawesome.com/8c24e7947e.js"
+      crossorigin="anonymous"
+    ></script>
+    <script type="module" src="./scripts/pages/photographer.js"></script>
   </body>
 </html>

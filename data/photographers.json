@@ -2,6 +2,7 @@
 	"photographers": [
 		{
 			"name": "Mimi Keel",
+			"firstname":"Mimi",
 			"id": 243,
 			"city": "London",
 			"country": "UK",
@@ -11,6 +12,7 @@
 		},
 		{
 			"name": "Ellie-Rose Wilkens",
+			"firstname":"Ellie_rose",
 			"id": 930,
 			"city": "Paris",
 			"country": "France",
@@ -20,6 +22,7 @@
 		},
 		{
 			"name": "Tracy Galindo",
+			"firstname":"Tracy",
 			"id": 82,
 			"city": "Montreal",
 			"country": "Canada",
@@ -29,6 +32,7 @@
 		},
 		{
 			"name": "Nabeel Bradford",
+			"firstname":"Nabeel",
 			"id": 527,
 			"city": "Mexico City",
 			"country": "Mexico",
@@ -38,6 +42,7 @@
 		},
 		{
 			"name": "Rhode Dubois",
+			"firstname":"Rhode",
 			"id": 925,
 			"city": "Barcelona",
 			"country": "Spain",
@@ -47,6 +52,7 @@
 		},
 		{
 			"name": "Marcel Nikolic",
+			"firstname":"Marcel",
 			"id": 195,
 			"city": "Berlin",
 			"country": "Germany",
