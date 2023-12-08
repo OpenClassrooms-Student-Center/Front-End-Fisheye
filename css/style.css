@@ -130,10 +130,23 @@ align-items: center;
 }
 
 /* formulaire */
-
+#contact_modal{
+position:absolute;
+Width:669px;
+Height:900px;
+Top:62px;
+Left:385px;
+}
 .form{
     display: flex;
+    
+}
+input{
+    font-size: 3rem;
 }
 .formMessage{
     height: 14rem;
+}
+.hidden{
+    display:none;
 }

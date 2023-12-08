@@ -6,7 +6,7 @@ let visualSection=document.createElement('section');
 visualSection.setAttribute('class','visualSection');
 let img=document.createElement('img');
 img.setAttribute('src',`assets/media/${photographer[0].name.substr(0, photographer[0].name.indexOf(' '))}/${media.image}`)
-img.setAttribute('alt',`${media.title}`);
+img.setAttribute('alt',`image ${media.title}`);
 img.setAttribute("role","img");
 img.setAttribute('class','mediaImg');
 visualSection.appendChild(img);
@@ -20,8 +20,9 @@ let visualSection=document.createElement('section');
 visualSection.setAttribute('class','visualSection');
 let video=document.createElement('video');
 video.setAttribute('src',`assets/media/${photographer[0].name.substr(0, photographer[0].name.indexOf(' '))}/${media.video}`)
-video.setAttribute('alt',`${media.title}`);
+video.setAttribute('alt',`video ${media.title}`);
 video.setAttribute('class','mediaVideo');
+video.setAttribute(`controls`,``);
 visualSection.appendChild(video);
 let mediaDataSection=document.createElement('section');
 mediaArticle.appendChild(visualSection);

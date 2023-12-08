@@ -3,6 +3,8 @@ import DataObject from "./dataJson.js";
 import MediaTemplate from '../templates/mediaTemplate.js';
 import contactForm from '../utils/contactForm.js';
 
+
+async function apply(){
 let params = new URL(document.location).searchParams;
 let photographerID = params.get("id"); 
 
@@ -14,6 +16,9 @@ console.log(Object.data);
 
 let photographer=await Object.getPhotographerById(photographerID);
 
+// console.log(photographer[0].name);
+// console.log(`coucou`);
+
 
 // creating dom elements
 
@@ -23,7 +28,7 @@ let photographer=await Object.getPhotographerById(photographerID);
 
 const infoSection=document.createElement('section');
 
-const Photographerimg=document.createElement('img');
+
 
 
 //implementing photographer section elements
@@ -107,9 +112,14 @@ const contactButton=document.getElementById("contact_button");
 const formManipulator= new contactForm;
 contactButton.addEventListener('click',function (){formManipulator.displayModal()});
 
+//implementing valid button
+const validButton= document.getElementById("validButton");
+validButton.addEventListener('click',function(){formManipulator.validModal()})
 
 
 
+}
 
 
 
+apply();

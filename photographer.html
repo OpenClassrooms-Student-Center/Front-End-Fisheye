@@ -25,24 +25,26 @@
 
  
     </main>
-    <div id="contact_modal">
-			<div class="modal">
+    <div id="contact_modal" role="dialog">
+			<div class="modal" >
 				<header>
           <h2>Contactez-moi</h2>
           <img src="assets/icons/close.svg"/>
         </header>
 				<form class="form">
 					<div>
-						<label>Prénom</label>
-						<input>
-            <label>Nom</label>
-            <input>
-            <label>Email</label>
-            <input>
-            <label>Votre message</label>
-            <input class="formMessage">
+						<label id="prenomUtilisateur">Prénom</label>
+						<input id="inputPrenom" for="prenomUtilisateur" aria-labelledby="prenomUtilisateur">
+            <label id="nomUtilisateur">Nom</label>
+            <input id="inputNom" for="nomUtilisateur" aria-labelledby="nomUtilisateur">
+            <label id="emailUtilsateur">Email</label>
+            <input id="inputEmail" for="emailUtilisateur" aria-labelledby="emailUtilisateur" aria-describedby="email-format" >
+            <span id="email-format" class="hidden" >quelquechose@domain.extension</span>
+         
+            <label id="votreMessage">Votre message</label>
+            <input id="inputMessage" class="formMessage" for="votreMessage" aria-label="votreMessage">
 					</div>
-          <button class="contact_button">Envoyer</button>
+          <button id=validButton class="contact_button">Envoyer</button>
 				</form>
 			</div>
 		</div>

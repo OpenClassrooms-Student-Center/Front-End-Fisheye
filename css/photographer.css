@@ -1,12 +1,17 @@
-#contact_modal {
-    background-color: green;
-    display: none;
-    position:absolute;
-    top:50%;
-    left:50%;
-    transform: translate(-50%,-50% );
 
-}
+    #contact_modal {
+  
+        display: none;
+        position:absolute;
+    
+    
+            Width:669px;
+            Height:900px;
+            Top:62px;
+            Left:385px;
+            }
+
+
 
 .photograph-header {
     background-color: #FAFAFA;
