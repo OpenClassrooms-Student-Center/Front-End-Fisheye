@@ -1,42 +1,49 @@
 import { photographerTemplate } from "../templates/photographer.js";
 async function getPhotographers() {
   try {
-    const response = await fetch(
-      "http://localhost:5500/data/photographers.json"
-    );
+    const response = await fetch("http://localhost:5500/data/photographers.json");
     if (!response.ok) {
       throw new Error("datas can not be fetched");
     }
     const dataJson = await response.json();
     const photographers = dataJson.photographers;
-    return { photographers };
+    return photographers;
   } catch (error) {
     console.error(error);
-    return { photographers: [] };
+    return [];
   }
 }
 
-async function displayData(photographers) {
-  photographers.forEach((photographer) => {
-    const photographerModel = photographerTemplate(photographer);
-    const userCardDOM = photographerModel.getUserCardDOM();
-    //lien de redirection en fonction de l'id des photopgraphes
-    userCardDOM.addEventListener("click", () => {
+async function displayData() {
+  const photographersInfo = await getPhotographers();
+  const sectionHome = document.getElementById("photographer_section");
+
+  photographersInfo.forEach((photographer) => {
+    const contentHTML = photographerTemplate(photographer);
+    const article = document.createElement("article");
+
+    article.innerHTML = contentHTML;
+    sectionHome.appendChild(article);
+
+    // Ajoute l'événement de redirection à cet article
+    article.addEventListener("click", () => {
       window.location.href = `photographer.html?id=${photographer.id}`;
     });
-
-    const photographersSection = document.getElementsByClassName(
-      "photographer_section"
-    )[0];
-    photographersSection.appendChild(userCardDOM);
   });
 }
 
-async function init() {
-  // Récupère les datas des photographes
-  const { photographers } = await getPhotographers();
-  displayData(photographers);
-}
+displayData();
 
-init();
-export { getPhotographers };
+// async function displayData() {
+//   const photographersInfo = await getPhotographers();
+//   const sectionHome = document.getElementById("photographer_section");
+
+//   let contentHTML = "";
+//   photographersInfo.forEach((photographer) => {
+//     contentHTML += photographerTemplate(photographer);
+//   });
+//   sectionHome.innerHTML = contentHTML;
+
+// }
+
+// displayData();
