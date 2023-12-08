@@ -1,15 +1,10 @@
 //Mettre le code JavaScript lié à la page photographer.html
 import { displayModal, closeModal } from "../utils/contactForm.js";
-import {
-  photographerTemplateId,
-  createMediaElement,
-} from "../templates/photographer.js";
+import { photographerTemplateId, createMediaElement } from "../templates/photographer.js";
 
 async function getPhotographerById(photographerId) {
   try {
-    const response = await fetch(
-      "http://localhost:5500/data/photographers.json"
-    );
+    const response = await fetch("http://localhost:5500/data/photographers.json");
     if (!response.ok) {
       throw new Error("datas can not be fetched");
     }
@@ -22,6 +17,7 @@ async function getPhotographerById(photographerId) {
       country: photographer.country,
       tagline: photographer.tagline,
       portrait: photographer.portrait,
+      price: photographer.price,
     }));
 
     // Trouver le photographe spécifique par son ID
@@ -36,18 +32,14 @@ async function getPhotographerById(photographerId) {
 }
 async function getMediaById(photographerId) {
   try {
-    const response = await fetch(
-      "http://localhost:5500/data/photographers.json"
-    );
+    const response = await fetch("http://localhost:5500/data/photographers.json");
 
     if (!response.ok) {
       throw new Error("Media data could not be fetched");
     }
 
     const mediaJson = await response.json();
-    const media = mediaJson.media.filter(
-      (mediaToFind) => mediaToFind.photographerId === Number(photographerId)
-    );
+    const media = mediaJson.media.filter((mediaToFind) => mediaToFind.photographerId === Number(photographerId));
 
     return media;
   } catch (error) {
@@ -64,11 +56,11 @@ async function displayPhotographerInfo() {
   const photographer = await getPhotographerById(photographerId);
 
   if (photographer) {
-    const photographerInfoContainer =
-      document.getElementById("photograph_header");
+    const photographerInfoContainer = document.getElementById("photograph_header");
     const photographerModel = photographerTemplateId(photographer);
     const headerCardDOM = photographerModel.getHeaderInfo();
-
+    const dailyRate = document.getElementById("tarif_journalier");
+    dailyRate.textContent = `${photographer.price}€/jour`;
     photographerInfoContainer.appendChild(headerCardDOM);
 
     //appel des media en fonction id photographe
@@ -88,11 +80,3 @@ async function displayPhotographerInfo() {
   }
 }
 displayPhotographerInfo();
-/*
-      const mediaElement = createMediaElement(
-        mediaItem,
-        photographer.firstname
-      );
-
-      if (mediaElement) mediaContainer.appendChild(mediaElement);
-      */

@@ -76,7 +76,6 @@ function createMediaElement(media, photographerName) {
   const mediaElement = media.image
     ? `<img class="media-element" src="${mediaPath}" alt ="${altContent}">`
     : `<video controls class ="media-element" src="${mediaPath}" alt ="${altContent}">`;
-  console.log(mediaElement);
   const mediaInfo = `
     <div class="media-info">
       <p class="media-title">${media.title}</p>

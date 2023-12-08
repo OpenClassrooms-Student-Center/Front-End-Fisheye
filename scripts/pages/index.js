@@ -1,18 +1,16 @@
 import { photographerTemplate } from "../templates/photographer.js";
 async function getPhotographers() {
   try {
-    const response = await fetch(
-      "http://localhost:5500/data/photographers.json"
-    );
+    const response = await fetch("http://localhost:5500/data/photographers.json");
     if (!response.ok) {
       throw new Error("datas can not be fetched");
     }
     const dataJson = await response.json();
     const photographers = dataJson.photographers;
-    return { photographers };
+    return photographers;
   } catch (error) {
     console.error(error);
-    return { photographers: [] };
+    return [];
   }
 }
 
@@ -25,16 +23,14 @@ async function displayData(photographers) {
       window.location.href = `photographer.html?id=${photographer.id}`;
     });
 
-    const photographersSection = document.getElementsByClassName(
-      "photographer_section"
-    )[0];
+    const photographersSection = document.getElementsByClassName("photographer_section")[0];
     photographersSection.appendChild(userCardDOM);
   });
 }
 
 async function init() {
   // Récupère les datas des photographes
-  const { photographers } = await getPhotographers();
+  const photographers = await getPhotographers();
   displayData(photographers);
 }
 

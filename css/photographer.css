@@ -1,5 +1,59 @@
+#bottom-right-box {
+    position: fixed;
+    bottom: 0;
+    right: 2%;
+    background-color: #DB8876;
+    padding: 10px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+#bottom-right-box p {
+    margin: 0;
+}
+
+
 #contact_modal {
     display: none;
+}
+
+
+.bground {
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    overflow: auto;
+    background-color: rgba(26, 39, 156, 0.4);
+}
+
+@keyframes modalopen {
+    from {
+        opacity: 0;
+        transform: translateY(-150px);
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+.content {
+    max-width: 500px;
+    animation-name: modalopen;
+    animation-duration: var(--modal-duration);
+    background: #232323;
+    border-radius: 10px;
+    overflow: hidden;
+    position: relative;
+    color: #fff;
+}
+
+.modal-body {
+    width: 90%;
+
 }
 
 .photograph-header {
@@ -96,13 +150,14 @@
 .modal {
     border-radius: 5px;
     background-color: #DB8876;
-    width: 50%;
+    width: 30%;
+    height: 90%;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: space-between;
-    padding: 35px;
-    margin: auto;
+    padding: 2%;
+    margin: 2% auto;
 }
 
 .modal header {
@@ -110,15 +165,16 @@
     width: 100%;
 }
 
-.modal header img {
+#close_btn {
     cursor: pointer;
 }
 
-.modal header h2 {
-    font-size: 64px;
+.modal-title {
+    font-size: 35px;
     font-weight: normal;
     text-align: center;
 }
+
 
 form {
     display: flex;
@@ -129,7 +185,7 @@ form {
 
 form label {
     color: #312E2E;
-    font-size: 36px;
+    font-size: 23px;
 }
 
 form div {
@@ -142,7 +198,13 @@ form div {
 
 form input {
     width: 100%;
-    height: 68px;
+    height: 43px;
+    border: none;
+    border-radius: 5px;
+}
+
+form textarea {
+    width: 100% !important;
     border: none;
     border-radius: 5px;
 }
