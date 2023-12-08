@@ -4,7 +4,7 @@
 <head>
   <link href="css/style.css" rel="stylesheet" type="text/css" />
   <meta charset="utf-8">
-  
+
   <link rel="icon" type="image/png" href="assets/favicon.png">
   <link href="https://fonts.googleapis.com/css?family=DM+Sans&display=swap" rel="stylesheet">
   <title>Fisheye - photographe </title>
@@ -30,7 +30,8 @@
     <div class="filter">
       <h2 class="filter_title">Trier par</h2>
       <div class="dropdown">
-        <button id="selected_item" class="dropdown_btn likes_btn"> --- <img src="assets/expand_more-24px 4.svg" class="chevron" alt="chevron vers le bas"></button>
+        <button id="selected_item" class="dropdown_btn likes_btn"> --- <img src="assets/expand_more-24px 4.svg"
+            class="chevron" alt="chevron vers le bas"></button>
         <div class="dropdown_content">
           <button class="dropdown_menu like_btn">Popularité</button>
           <button class="dropdown_menu date_btn">Date</button>
@@ -42,8 +43,8 @@
       <!-- le code de cette section est généré dynamiquement par JS (loadMediaContent)-->
     </div>
   </main>
-<!-- ----------------------------------modale -------------------------------------------------------- -->
-<div class="modal_overlay" id="contact_modal_overlay"></div>
+  <!-- ----------------------------------modale -------------------------------------------------------- -->
+  <div class="modal_overlay" id="contact_modal_overlay"></div>
   <div id="contact_modal">
     <div class="modal" role="dialog">
       <header>
@@ -81,7 +82,7 @@
     <p class="price_a_day"></p>
   </div>
 
-<!-- ----------------------------------lightbox -------------------------------------------------------- -->
+  <!-- ----------------------------------lightbox -------------------------------------------------------- -->
   <section class="lightbox" role="dialog" aria-modal="true" aria-label="lightbox pour afficher les médias">
     <img src="./assets/icons/prev-btn.svg" alt="média précédent" class="prev_btn nav_btn">
     <div class="media_viewer_container">
@@ -99,10 +100,9 @@
   <footer>
 
   </footer>
-  <script src="/scripts/pages/photographer.js" defer></script>
-  <script src="/scripts/Factory/mediaFactory.js" defer></script>
-  <script src="/scripts/utils/contactForm.js" defer></script>
-  <script src="/scripts/models/Modal.js" defer></script>
+  <script src="/scripts/pages/photographer.js" defer type="module"></script>
+  <script src="/scripts/templates/mediaCreation.js" defer type="module"></script>
+  <script src="/scripts/models/Modal.js" defer type="module"></script>
   <script src="/scripts/models/Lightbox.js" defer></script>
 
 </body>
