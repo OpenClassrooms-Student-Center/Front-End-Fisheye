@@ -128,6 +128,13 @@ a{ text-decoration: none;}
     height: 350px;
     object-fit: cover;
 }
+.mediaDataSection{
+    color:#901C1C;
+    font-weight: 292px;
+    font-size: 24px;
+    line-height: 31.25px;
+ 
+}
 .likePriceFooter{
     /* self properties */
     background-color: #DB8876;

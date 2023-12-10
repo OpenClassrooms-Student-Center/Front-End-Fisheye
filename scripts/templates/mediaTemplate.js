@@ -1,6 +1,12 @@
 export default async function MediaTemplate(photographer, media ){
     let mediaArticle=document.createElement('article');
     mediaArticle.setAttribute('class','mediaArticle');
+
+
+//implementing mediaDataSection
+let mediaDataSection=document.createElement('section');
+mediaDataSection.setAttribute("class","mediaDataSection");
+
 if(media.image){
 
 let visualSection=document.createElement('section');
@@ -14,8 +20,6 @@ img.setAttribute('class','mediaImg');
 visualSection.appendChild(img);
 mediaArticle.appendChild(visualSection);
 
-//implementing mediaDataSection
-let mediaDataSection=document.createElement('section');
 
 //implementing name in mediaDataSection
 const titleParagraph=document.createElement("p");
@@ -33,8 +37,16 @@ video.setAttribute('alt',`video ${media.title}`);
 video.setAttribute('class','mediaVideo');
 video.setAttribute(`controls`,``);
 visualSection.appendChild(video);
-let mediaDataSection=document.createElement('section');
 mediaArticle.appendChild(visualSection);
+
+
+
+//implementing name in mediaDataSection
+const titleParagraph=document.createElement("p");
+titleParagraph.textContent=media.title;
+mediaDataSection.appendChild(titleParagraph);
+mediaArticle.appendChild(mediaDataSection);
+
 mediaArticle.appendChild(mediaDataSection);
 }
 return(mediaArticle)
