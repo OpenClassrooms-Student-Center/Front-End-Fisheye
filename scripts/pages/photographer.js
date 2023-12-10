@@ -102,6 +102,7 @@ carousselSection.style.display="none";
 // implementing mediaArticls
 media.forEach(media => {
  (async function (){
+
 //in media section
 let mediaArticle= await MediaTemplate(photographer,media);
 mediaTab.appendChild(mediaArticle);
