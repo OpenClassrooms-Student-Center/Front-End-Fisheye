@@ -127,6 +127,15 @@ getCaroussel(photographerID);
 apply();
 
 //implementing caroussel
+const carousselSection=document.getElementById("caroussel");
+carousselSection.appendChild(carousselArticle);
 
+carousselSection.style.display="flex";
+media.forEach(media => {
 
+    (async function (){
+   const carousselArticle= await MediaTemplate(photographer,media);
+   carousselSection.appendChild(carousselArticle);
+   })();
+   });
 

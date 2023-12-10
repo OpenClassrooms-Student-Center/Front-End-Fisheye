@@ -77,8 +77,12 @@ a{ text-decoration: none;}
 }
 .photographer{
     display:flex;
-    justify-content: space-around;
+    justify-content: space-between;
     align-items: center;
+    margin-left: 100px;
+    margin-right: 100px;
+    background-color: #FAFAFA;
+    padding: 2rem;
 }
 .portrait {
     border-radius: 50%;
@@ -86,12 +90,23 @@ a{ text-decoration: none;}
     width: 200px;
     object-fit:cover;
 }
+
+#media{
+    margin-left: 100px;
+    margin-right: 100px;
+}
 #mediaTab{
+    margin-left:1fr;
+    margin-right:1fr;
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-columns:  350px 350px 350px;
     gap: 70px;
     margin-top: 100px;
+    justify-content: space-between;
   
+}
+.mediaArticle{
+    width:350px;
 }
 .visualSection{
     display: flex;
@@ -116,8 +131,8 @@ a{ text-decoration: none;}
 .likePriceFooter{
     /* self properties */
     background-color: #DB8876;
-   width: 260px;
-   height: 73px;
+    width: 376px;
+    height: 89px;
 /* position */
     position:fixed;
     bottom: 0rem;

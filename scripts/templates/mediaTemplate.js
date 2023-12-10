@@ -1,19 +1,26 @@
 export default async function MediaTemplate(photographer, media ){
     let mediaArticle=document.createElement('article');
+    mediaArticle.setAttribute('class','mediaArticle');
 if(media.image){
 
 let visualSection=document.createElement('section');
 visualSection.setAttribute('class','visualSection');
-//implementing caroussel class;
-visualSection.setAttribute('class','carousselSection');
+
 let img=document.createElement('img');
 img.setAttribute('src',`assets/media/${photographer[0].name.substr(0, photographer[0].name.indexOf(' '))}/${media.image}`)
 img.setAttribute('alt',`image ${media.title}`);
 img.setAttribute("role","img");
 img.setAttribute('class','mediaImg');
 visualSection.appendChild(img);
-let mediaDataSection=document.createElement('section');
 mediaArticle.appendChild(visualSection);
+
+//implementing mediaDataSection
+let mediaDataSection=document.createElement('section');
+
+//implementing name in mediaDataSection
+const titleParagraph=document.createElement("p");
+titleParagraph.textContent=media.title;
+mediaDataSection.appendChild(titleParagraph);
 mediaArticle.appendChild(mediaDataSection);
 }
 else{

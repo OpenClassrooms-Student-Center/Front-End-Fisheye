@@ -7,10 +7,7 @@ const {photographers, media }= await getData();
 
 const carousselArticle=await MediaTemplate(photographers,media);
 
-const carousselSection=document.getElementById("caroussel");
-carousselSection.appendChild(carousselArticle);
 
-carousselSection.style.display="flex";
     
 };
 
