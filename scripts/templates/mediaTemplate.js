@@ -6,7 +6,15 @@ export default async function MediaTemplate(photographer, media ){
 //implementing mediaDataSection
 let mediaDataSection=document.createElement('section');
 mediaDataSection.setAttribute("class","mediaDataSection");
+mediaDataSection.setAttribute("aria-label","media info");
 
+//implementing name in mediaDataSection
+const titleParagraph=document.createElement("p");
+titleParagraph.textContent=media.title;
+mediaDataSection.appendChild(titleParagraph);
+
+
+//implementing media images and videos
 if(media.image){
 
 let visualSection=document.createElement('section');
@@ -21,11 +29,7 @@ visualSection.appendChild(img);
 mediaArticle.appendChild(visualSection);
 
 
-//implementing name in mediaDataSection
-const titleParagraph=document.createElement("p");
-titleParagraph.textContent=media.title;
-mediaDataSection.appendChild(titleParagraph);
-mediaArticle.appendChild(mediaDataSection);
+
 }
 else{
 
@@ -41,13 +45,9 @@ mediaArticle.appendChild(visualSection);
 
 
 
-//implementing name in mediaDataSection
-const titleParagraph=document.createElement("p");
-titleParagraph.textContent=media.title;
-mediaDataSection.appendChild(titleParagraph);
-mediaArticle.appendChild(mediaDataSection);
 
-mediaArticle.appendChild(mediaDataSection);
 }
+//adding mediaDataSection to article
+mediaArticle.appendChild(mediaDataSection);
 return(mediaArticle)
 }

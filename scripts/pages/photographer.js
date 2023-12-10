@@ -17,7 +17,7 @@ console.log(Object.data);
 let photographer=await Object.getPhotographerById(photographerID);
 
 console.log("coucou");
-console.log(photographer[0].name);
+// console.log(photographer[0].name);
 // console.log(`coucou`);
 
 
@@ -93,13 +93,22 @@ const mediaTab=document.createElement(`tab`);
 mediaTab.setAttribute(`captation`,`select productions`);
 mediaTab.setAttribute(`scope`,`row`);
 mediaTab.setAttribute(`id`,`mediaTab`);
-// creating content
 
+//creating caroussel section
+const carousselSection=document.getElementById('caroussel');
+carousselSection.style.display="none";
+
+
+// implementing mediaArticls
 media.forEach(media => {
-
  (async function (){
-const mediaArticle= await MediaTemplate(photographer,media);
+//in media section
+let mediaArticle= await MediaTemplate(photographer,media);
 mediaTab.appendChild(mediaArticle);
+//in caroussel section
+let carousselArticle= await MediaTemplate(photographer,media);
+carousselSection.appendChild(carousselArticle);
+
 })();
 });
 //Implementing tab in dom
@@ -121,21 +130,9 @@ validButton.addEventListener('click',function(){formManipulator.validModal()})
 
 
 
-getCaroussel(photographerID);
+
 }
 // mediaContent();
 apply();
 
-//implementing caroussel
-const carousselSection=document.getElementById("caroussel");
-carousselSection.appendChild(carousselArticle);
-
-carousselSection.style.display="flex";
-media.forEach(media => {
-
-    (async function (){
-   const carousselArticle= await MediaTemplate(photographer,media);
-   carousselSection.appendChild(carousselArticle);
-   })();
-   });
 
