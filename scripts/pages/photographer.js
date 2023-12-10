@@ -2,7 +2,7 @@
 import DataObject from "./dataJson.js";
 import MediaTemplate from '../templates/mediaTemplate.js';
 import contactForm from '../utils/contactForm.js';
-
+import getCaroussel from "../utils/caroussel.js";
 
 async function apply(){
 let params = new URL(document.location).searchParams;
@@ -16,7 +16,8 @@ console.log(Object.data);
 
 let photographer=await Object.getPhotographerById(photographerID);
 
-// console.log(photographer[0].name);
+console.log("coucou");
+console.log(photographer[0].name);
 // console.log(`coucou`);
 
 
@@ -93,11 +94,13 @@ mediaTab.setAttribute(`captation`,`select productions`);
 mediaTab.setAttribute(`scope`,`row`);
 mediaTab.setAttribute(`id`,`mediaTab`);
 // creating content
+
 media.forEach(media => {
 
-
-const mediaArticle=MediaTemplate(photographer,media);
+ (async function (){
+const mediaArticle= await MediaTemplate(photographer,media);
 mediaTab.appendChild(mediaArticle);
+})();
 });
 //Implementing tab in dom
 mediaSection.appendChild(mediaTab);
@@ -118,8 +121,12 @@ validButton.addEventListener('click',function(){formManipulator.validModal()})
 
 
 
+getCaroussel(photographerID);
 }
-
-
-
+// mediaContent();
 apply();
+
+//implementing caroussel
+
+
+

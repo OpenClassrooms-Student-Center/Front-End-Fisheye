@@ -1,9 +1,11 @@
-export default function MediaTemplate(photographer, media ){
+export default async function MediaTemplate(photographer, media ){
     let mediaArticle=document.createElement('article');
 if(media.image){
 
 let visualSection=document.createElement('section');
 visualSection.setAttribute('class','visualSection');
+//implementing caroussel class;
+visualSection.setAttribute('class','carousselSection');
 let img=document.createElement('img');
 img.setAttribute('src',`assets/media/${photographer[0].name.substr(0, photographer[0].name.indexOf(' '))}/${media.image}`)
 img.setAttribute('alt',`image ${media.title}`);
