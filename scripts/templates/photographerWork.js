@@ -50,7 +50,7 @@ class PhotographerWork {
       const far = farElements[index];
 
       far.style.color =
-        far.style.color === "blue" ? "rgb(144, 28, 28)" : "blue";
+        far.style.color === "pink" ? "rgb(144, 28, 28)" : "pink";
 
       const updatedLikes =
         far.style.color === "rgb(144, 28, 28)"
@@ -67,10 +67,22 @@ class PhotographerWork {
       mediaLikeElement.innerHTML = updatedLikes;
     }
 
-    const dropBtn = document.querySelector(".dropbtn");
+    let dropBtn = document.querySelector(".dropbtn");
     dropBtn.addEventListener("click", function () {
-      console.log("drop")
       document.getElementById("myDropdown").classList.toggle("show");
+    });
+    let selectedOption;
+    const dropdownOptions = document.querySelectorAll(".dropdownOption");
+    dropdownOptions.forEach((option) => {
+      option.addEventListener("click", function () {
+        selectedOption = option.innerHTML;
+      });
+    });
+    //update brn innerHTML
+    dropdownOptions.forEach((option) => {
+      option.addEventListener("click", function () {
+      dropBtn.innerHTML  = selectedOption;
+      });
     });
 
     // Close the dropdown menu if the user clicks outside of it

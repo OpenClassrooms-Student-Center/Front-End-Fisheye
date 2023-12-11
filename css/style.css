@@ -85,21 +85,6 @@ h1 {
   flex-direction: column;
   object-fit: cover;
 }
-
-.item-0 {
-  background-color: tomato;
-}
-
-.item-1 {
-  background-color: blue;
-  display: none;
-}
-
-.item-2 {
-  background-color: green;
-  display: none;
-}
-
 .img {
   height: 40px;
   width: 40px;
@@ -165,14 +150,6 @@ h1 {
   list-style-type: none;
 }
 
-.item-0 {
-  background-color: tomato;
-}
-
-.item-1 {
-  background-color: blue;
-  display: none;
-}
 
 .item-2 {
   background-color: green;

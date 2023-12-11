@@ -283,20 +283,6 @@ photographer-card p {
   color: #901c1c;
 }
 
-.item-0 {
-  background-color: tomato;
-}
-
-.item-1 {
-  background-color: blue;
-  display: none;
-}
-
-.item-2 {
-  background-color: green;
-  display: none;
-}
-
 .img {
   height: 40px;
   width: 40px;
