@@ -231,12 +231,13 @@ h1 {
   padding: 0.5em;
 }
 
-.far.fa-heart.black {
+.fas.fa-heart.black {
   display: flex;
   padding: none;
   color: black;
   align-items: center;
   font-size: 1.5em;
+  padding-left: 0.5em;
 }
 
 .icon:hover .far.fa-heart {
@@ -305,14 +306,13 @@ h1 {
 /* Dropdown Button */
 .dropbtn {
   display: block;
-  /* width: 100%; */
   background-color: #901C1C;
   color: white;
   padding: 16px;
   font-size: 16px;
   border: none;
   cursor: pointer;
-  /* padding: 1em 10%; */
+  width:7em;
 }
 
 /* Dropdown button on hover & focus */
@@ -322,7 +322,6 @@ h1 {
 
 /* The container <div> - needed to position the dropdown content */
 .dropdown {
-  /* position: relative; */
   padding: 1em 10%;
   display: inline-block;
   display: flex;
@@ -354,3 +353,12 @@ h1 {
 
 /* Show the dropdown menu (use JS to add this class to the .dropdown-content container when the user clicks on the dropdown button) */
 .show {display:block;}
+
+.dropdownOption{
+  background-color: #901c1ce6;
+  color:#FFFF;
+}
+
+.dropdown-content a {
+  color:#FFFF;
+}

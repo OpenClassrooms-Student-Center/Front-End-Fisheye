@@ -15,7 +15,7 @@ class PhotographerWork {
     counterDivHeartLikes.classList.add("heartLikes");
 
     const counterDivHeart = document.createElement("div");
-    counterDivHeart.classList.add("far", "fa-heart", "black");
+    counterDivHeart.classList.add("fas", "fa-heart", "black");
 
     const counterDivLikes = document.createElement("div");
     counterDivLikes.classList.add("likes");
