@@ -130,7 +130,7 @@ const validButton= document.getElementById("validButton");
 validButton.addEventListener('click',function(){formManipulator.validModal()})
 
 
-
+getCaroussel(photographerID);
 
 }
 // mediaContent();
