@@ -19,7 +19,18 @@
   border-radius: 5px;
   cursor: pointer;
 }
-
+.contact_button:hover {
+  font-size: 20px;
+  font-weight: bold;
+  padding: 11px;
+  width: 170px;
+  height: 70px;
+  border: none;
+  background-color: #DB8876;
+  border-radius: 5px;
+  cursor: pointer;
+  color:black;
+}
 .modal {
   background-color: #db8876;
   border-radius: 5px;

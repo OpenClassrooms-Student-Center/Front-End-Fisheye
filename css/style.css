@@ -13,10 +13,10 @@ header {
   height: 90px;
 }
 
-h1 {
+/* h1 {
   color: #901c1c;
   margin-right: 100px;
-}
+} */
 
 .logo {
   height: 50px;
@@ -252,7 +252,7 @@ h1 {
 .heart:hover {
   & .heart--outline {
     display: none;
-    color: pink;
+    color: #D3573C;
   }
 }
 .heart:hover {
@@ -264,7 +264,7 @@ h1 {
 }
 
 .clickedHeart {
-  color: pink;
+  color: #D3573C;
 }
 
 .counter {

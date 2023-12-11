@@ -21,15 +21,15 @@
   <body>
     <header>
       <a href="/">
-        <img src="assets/images/logo.png" class="logo" />
+        <img src="assets/images/logo.png" class="logo" alt="fisheye logo" />
       </a>
     </header>
     <main id="main" class="main-wrapper" aria-hidden="false">
       <div id="photograph-header"></div>
       <div class="dropdown">
         <h3>Trier par</h2>
-        <button class="dropbtn">Popularité</button>
-        <div id="myDropdown" class="dropdown-content">
+        <button class="dropbtn" aria-expanded="false" aria-label="Toggle filter">Popularité</button>
+        <div id="myDropdown" class="dropdown-content" aria-labelledby="dropdown-versions">
           <a class="dropdownOption btn-popularite">Popularité</a>
           <a class="dropdownOption btn-dates">Date</a>
           <a class="dropdownOption btn-titres">Titre</a>
@@ -41,8 +41,8 @@
     <div id="contact_modal" aria-hidden="false" aria-describedby="contactModal">
       <div class="modal">
         <header>
-          <h2>Contactez-moi</h2>
-          <img id="modalClose" src="assets/icons/close.svg" />
+          <h1>Contactez-moi</h2>
+          <img id="modalClose" src="assets/icons/close.svg" alt="“Close Contact form"/>
         </header>
         <form
           name="reserve"
@@ -57,7 +57,7 @@
             <br />
             <input
               class="text-control"
-              type="text"
+              for="first"
               id="first"
               name="first"
               minlength="2"
@@ -67,7 +67,7 @@
             <br />
             <input
               class="text-control"
-              type="text"
+              for="second"
               id="second"
               name="second"
               minlength="2"
@@ -77,6 +77,7 @@
             <br />
             <input
               class="text-control"
+              for="email"
               type="email"
               id="third"
               name="third"
@@ -87,7 +88,7 @@
             <br />
             <input
               class="text-control"
-              type="text"
+              for="fourth"
               id="fourth"
               name="fourth"
               minlength="2"

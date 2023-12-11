@@ -33,13 +33,15 @@ class Lightbox {
     carouselControls.classList.add("controls");
 
     const closingModal = document.createElement("img");
+    closingModal.alt = "image close";
     closingModal.setAttribute("id", "modalClose");
     closingModal.src = "assets/icons/blackClose.svg";
     closingModal.onclick = onClosePic;
 
+
     const controlsPrevious = document.createElement("img");
     controlsPrevious.src = "assets/icons/icon-arrow-chevron-right.svg";
-    controlsPrevious.alt = `${photographer._name}`;
+    controlsPrevious.alt ="previous";
     controlsPrevious.classList.add("controls-previous", "controls");
 
     const spanPrevious = document.createElement("span");
@@ -50,6 +52,8 @@ class Lightbox {
     const controlsNext = document.createElement("img");
     controlsNext.classList.add("controls-next", "controls");
     controlsNext.src = "assets/icons/icon-arrow-chevron-left.svg";
+    controlsNext.alt ="previous";
+
 
     const carouselElements = document.createElement("div");
     carouselElements.classList.add("carousel-elements");
@@ -124,6 +128,8 @@ class Lightbox {
       if (mediaItem.image) {
         const carouselImg = document.createElement("img");
         carouselImg.innerHTML = "Type: Image";
+        carouselImg.alt = `${mediaItem.image}`;
+
 
         const mediaPath = `assets/images/${photographer.name}/${mediaItem.image}`;
         // console.log(mediaPath);
