@@ -131,8 +131,9 @@ const validButton= document.getElementById("validButton");
 validButton.addEventListener('click',function(){formManipulator.validModal()})
 
 
-getCaroussel(photographerID);
-
+const carousselObject=await getCaroussel(photographerID);
+carousselSection.appendChild(carousselObject.media[0]);
+carousselSection.appendChild(carousselObject.title[0]);
 }
 // mediaContent();
 apply();
