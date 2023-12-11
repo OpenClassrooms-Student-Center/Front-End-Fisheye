@@ -9,19 +9,41 @@ const photographerMedia=media.filter( (media)=>media.photographerId==Photographe
 const photographer=photographers.filter((photographers)=>photographers.id==PhotographerId)
 
 
-const carousselArticle=document.createElement('article');
+const carousselSection=document.getElementById("caroussel");
 
 photographerMedia.forEach((media) => {
+    //creating article
+    const carousselArticle=document.createElement('article');
+    //setting img if image
     if (media.image){
-    const carousselImg=document.createElement('img');
-    carousselImg.setAttribute('src',`assets/media/${photographer[0].name.substr(0, photographer[0].name.indexOf(' '))}/${media.image}`)
-    carousselImg.setAttribute('alt',`image ${media.title}`);
-    carousselImg.setAttribute("role","img");
-    carousselImg.setAttribute('class','mediaImg');
+    var carousselMedia=document.createElement('img');
+    carousselMedia.setAttribute('src',`assets/media/${photographer[0].name.substr(0, photographer[0].name.indexOf(' '))}/${media.image}`)
+    carousselMedia.setAttribute('alt',`image ${media.title}`);
+    carousselMedia.setAttribute("role","img");
+    carousselMedia.setAttribute('class','carousselImg');
+    carousselMedia.setAttribute('class','carousselMedia');
+    //implementing img in article
+    carousselArticle.appendChild(carousselMedia);
 } else{
-    const carousselVideo=document.createElement('video');
+    //setting video if video
+    var carousselMedia=document.createElement('video');
+    carousselMedia.setAttribute('src',`assets/media/${photographer[0].name.substr(0, photographer[0].name.indexOf(' '))}/${media.video}`)
+carousselMedia.setAttribute('alt',`video ${media.title}`);
+carousselMedia.setAttribute('class','mediaVideo');
+carousselMedia.setAttribute(`controls`,``);
+//implementing video in article
+carousselArticle.appendChild(carousselMedia);
         }
-    const carousselTitleP=document.createElement("p");    
+//setting title
+    const carousselTitleP=document.createElement("p");   
+    carousselTitleP.textContent=media.title; 
+    //implementing title in article
+    carousselArticle.appendChild(carousselTitleP);
+    //implementing article in dom
+    carousselSection.appendChild(carousselArticle);
+   
+
+
 });
     
 };

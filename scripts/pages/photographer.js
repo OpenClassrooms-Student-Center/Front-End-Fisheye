@@ -108,7 +108,8 @@ let mediaArticle= await MediaTemplate(photographer,media);
 mediaTab.appendChild(mediaArticle);
 //in caroussel section
 let carousselArticle= await MediaTemplate(photographer,media);
-carousselSection.appendChild(carousselArticle);
+
+// carousselSection.appendChild(carousselArticle);
 
 })();
 });
