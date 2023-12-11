@@ -325,6 +325,10 @@ h1 {
   /* position: relative; */
   padding: 1em 10%;
   display: inline-block;
+  display: flex;
+}
+.dropdown h3{
+  padding-right:1em;
 }
 
 /* Dropdown Content (Hidden by Default) */
