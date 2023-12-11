@@ -3,7 +3,7 @@ async function getData(){ const reponse = await fetch('data/photographers.json')
 const data=await reponse.json();
 
         return data;}
-export{getData};
+export{getData };
 
  export default class DataObject{
 

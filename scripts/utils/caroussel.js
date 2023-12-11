@@ -10,42 +10,46 @@ const photographer=photographers.filter((photographers)=>photographers.id==Photo
 
 
 const carousselSection=document.getElementById("caroussel");
+let carousselMediaArrey=[];
+let carousselTitleArray=[];
+
 
 photographerMedia.forEach((media) => {
-    //creating article
-    const carousselArticle=document.createElement('article');
+    //creating caroussel Object
+
+
     //setting img if image
     if (media.image){
-    var carousselMedia=document.createElement('img');
+    let carousselMedia=document.createElement('img');
     carousselMedia.setAttribute('src',`assets/media/${photographer[0].name.substr(0, photographer[0].name.indexOf(' '))}/${media.image}`)
     carousselMedia.setAttribute('alt',`image ${media.title}`);
     carousselMedia.setAttribute("role","img");
     carousselMedia.setAttribute('class','carousselImg');
     carousselMedia.setAttribute('class','carousselMedia');
     //implementing img in article
-    carousselArticle.appendChild(carousselMedia);
+    carousselMediaArrey.push(carousselMedia);
 } else{
     //setting video if video
-    var carousselMedia=document.createElement('video');
+    let carousselMedia=document.createElement('video');
     carousselMedia.setAttribute('src',`assets/media/${photographer[0].name.substr(0, photographer[0].name.indexOf(' '))}/${media.video}`)
 carousselMedia.setAttribute('alt',`video ${media.title}`);
 carousselMedia.setAttribute('class','mediaVideo');
 carousselMedia.setAttribute(`controls`,``);
 //implementing video in article
-carousselArticle.appendChild(carousselMedia);
+carousselMediaArrey.push(carousselMedia);
         }
 //setting title
     const carousselTitleP=document.createElement("p");   
     carousselTitleP.textContent=media.title; 
-    //implementing title in article
-    carousselArticle.appendChild(carousselTitleP);
-    //implementing article in dom
-    carousselSection.appendChild(carousselArticle);
+carousselTitleArray.push(carousselTitleP);
    
 
 
 });
-    
+ 
+
+const carousselObject= { media:carousselMediaArrey,  title:carousselTitleArray};
+return carousselObject;
 };
 
 
