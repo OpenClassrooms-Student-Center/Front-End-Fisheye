@@ -112,3 +112,7 @@ async function addNameToModal() {
 
 addNameToModal()
 
+// then au lieu de async et await et pas de nécessité de fonction quand elle est appellé directement après , superfux 
+
+
+

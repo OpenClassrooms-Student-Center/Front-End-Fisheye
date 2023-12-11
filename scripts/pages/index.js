@@ -1,7 +1,6 @@
 import UserCardFactory from '../Factory/UserCardFactory.js'
 import { getPhotographers } from '../Repository/Repository.js'
 
-
 async function displayData(photographers) {
 	const photographersSection = document.querySelector('.photographer_section')
 

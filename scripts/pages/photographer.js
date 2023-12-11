@@ -1,4 +1,3 @@
-
 import { getPhotographer } from '../Repository/Repository.js'
 import getIdFromUrl from '../utils/urlHelpers.js'
 
@@ -35,7 +34,6 @@ async function loadPhotographerContent() {
 	textContainer.appendChild(cityOfCountryOf)
 	textContainer.appendChild(tagLineOf)
 	imgWrapper.appendChild(portraitOf)
-
 }
 
 loadPhotographerContent()

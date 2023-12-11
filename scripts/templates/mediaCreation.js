@@ -17,6 +17,8 @@ titleBtn.addEventListener('click', () => {
 	getFilteredMedia('title')
 })
 
+// sortir les fonctions dans les fonctions 
+
 async function getFilteredMedia(selectedButton) {
 	const photographerId = getIdFromUrl()
 	const filteredMedia = await getMediaByPhotographer(photographerId)
