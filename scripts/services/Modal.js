@@ -22,12 +22,14 @@ class Modal {
 			if (mainElements) {
 				mainElements.forEach(element => {
 					element.setAttribute('aria-hidden', 'true')
+					element.setAttribute('tabindex', '-1')
 				})
 			}
 
 			const headerElement = document.querySelector('header')
 			if (headerElement) {
 				headerElement.setAttribute('aria-hidden', 'true')
+				headerElement.setAttribute('tabindex', '-1')
 			}
 		})
 	}
@@ -100,7 +102,6 @@ class Modal {
 const newModal = new Modal('#contact_modal', '#contact_modal_overlay', 'form', '.contact_button', '.submit_button', '#close_button')
 newModal.init()
 
-
 async function addNameToModal() {
 	const photographer = await getPhotographer(getIdFromUrl())
 	const nameAdded = photographer.name
@@ -111,8 +112,3 @@ async function addNameToModal() {
 }
 
 addNameToModal()
-
-// then au lieu de async et await et pas de nécessité de fonction quand elle est appellé directement après , superfux 
-
-
-

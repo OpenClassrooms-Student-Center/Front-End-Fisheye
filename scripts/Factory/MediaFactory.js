@@ -25,12 +25,13 @@ export default class MediaFactory {
 		}
 
 		const element = document.createElement(elementType)
-		element.setAttribute('src', `/assets/images/${photographerName}/` + src)
+		element.setAttribute('src', `assets/images/${photographerName}/` + src)
 		element.setAttribute('alt', media.title)
+		element.setAttribute('tabindex', '0')
 		element.setAttribute('class', 'media_itself')
 		element.setAttribute('data-index', index)
 		element.setAttribute('data-type', media.type)
-		element.setAttribute('data-original-src', `/assets/images/${photographerName}/` + media.src)
+		element.setAttribute('data-original-src', `assets/images/${photographerName}/` + media.src)
 		element.setAttribute('data-title', media.title)
 		return element
 	}

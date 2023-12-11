@@ -145,6 +145,10 @@
     display: block;
 }
 
+.dropdown_content.show {
+    display: block;
+}
+
 .dropdown:hover .chevron {
     transform: rotate(180deg);
     transition: transform 300ms;

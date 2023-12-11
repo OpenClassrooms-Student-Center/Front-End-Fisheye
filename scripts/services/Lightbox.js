@@ -9,7 +9,8 @@ class Lightbox {
 	}
 
 	openLightbox() {
-		document.addEventListener('click', (event) => { // car elements chargés dynamiquement
+		// Set up the click event listener for openers
+		document.addEventListener('click', (event) => {
 			const opener = event.target.closest(this.openersSelector)
 			if (opener) {
 				this.currentMediaIndex = parseInt(opener.getAttribute('data-index'))
@@ -20,6 +21,15 @@ class Lightbox {
 				this.lightboxItself.style.display = 'flex'
 			}
 		})
+	
+		// Set up the keydown event listener for playing/pausing video
+		this.keydownListener = (event) => {
+			if (event.code === 'Space' && this.lightboxItself.style.display === 'flex') {
+				this.playVideoOnSpaceKey()
+			}
+		}
+	
+		document.addEventListener('keydown', this.keydownListener)
 	}
 
 	showMedia() {
@@ -50,6 +60,7 @@ class Lightbox {
 	closeLightbox() {
 		this.closeBtn.addEventListener('click', () => {
 			this.lightboxItself.style.display = 'none'
+			document.removeEventListener('keydown', this.keydownListener)
 		})
 
 		document.addEventListener('keydown', (event) => {
@@ -106,6 +117,19 @@ class Lightbox {
 			this.showMedia()
 		}
 	}
+
+	playVideoOnSpaceKey() {
+		if (this.currentMediaType === 'video') {
+			const video = this.mediaViewerWrapper.querySelector('video')
+			if (video) {
+				if (video.paused) {
+					video.play()
+				} else {
+					video.pause()
+				}
+			}
+		}
+	}
 }
 
 const newLightbox = new Lightbox('.media_wrapper img', '.closing_lightbox_btn', '.prev_btn', '.next_btn', '.lightbox', '.media_viewer_wrapper')
@@ -114,3 +138,4 @@ newLightbox.closeLightbox()
 newLightbox.showMedia()
 newLightbox.showPreviousMedia()
 newLightbox.showNextMedia()
+newLightbox.playVideoOnSpaceKey()

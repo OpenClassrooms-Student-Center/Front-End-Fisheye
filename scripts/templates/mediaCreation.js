@@ -67,17 +67,19 @@ async function getFilteredMedia(selectedButton) {
 		mediaTitle.setAttribute('class', 'media_title')
 		mediaTitle.textContent = mediaItem.title
 
+
 		const likeContainer = document.createElement('div')
 		likeContainer.setAttribute('class', 'like_container')
 
 		const numberOfLikes = document.createElement('p')
 		numberOfLikes.setAttribute('class', 'number_of_likes')
+		numberOfLikes.setAttribute('tabindex', '0')
 		numberOfLikes.textContent = mediaItem.likes
 
 		const likeIcon = document.createElement('img')
 		likeIcon.setAttribute('class', 'like_icon')
 		likeIcon.setAttribute('alt', 'coeur')
-		likeIcon.setAttribute('src', '/assets/heart.svg')
+		likeIcon.setAttribute('src', 'assets/heart.svg')
 
 		// On rajoute tous les nouveaux élements au DOM
 		portfolioContainer.appendChild(mediaContainer)
@@ -131,10 +133,18 @@ getFilteredMedia()
 
 
 // fonction pour modifier le dropdown menu au clic 
+
 document.addEventListener('DOMContentLoaded', function () {
 	const dropdownContent = document.querySelector('.dropdown_content')
 	const selectedItem = document.getElementById('selected_item')
 	const selectedItemText = selectedItem.childNodes[0]
+	const dropdownBtn = document.querySelector('.dropdown_btn');
+
+	function toggleDropdown() {
+		console.log('function')
+		// toggle ajoute une classe si elle n'existe pas et la supprime si elle existe
+		dropdownContent.classList.toggle('show')
+	}
 
 	dropdownContent.addEventListener('click', function (e) {
 		if (e.target.classList.contains('dropdown_menu')) {
@@ -143,6 +153,12 @@ document.addEventListener('DOMContentLoaded', function () {
 
 			// mise à jour du texte seulement (pour conserver l'icone)
 			selectedItemText.nodeValue = e.target.textContent
+		}
+	})
+
+	dropdownBtn.addEventListener('keydown', function(e) {
+		if (e.key === 'Enter' || e.keyCode === 13) {
+			toggleDropdown()
 		}
 	})
 })

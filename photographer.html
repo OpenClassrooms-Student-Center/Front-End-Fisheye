@@ -31,7 +31,7 @@
       <h2 class="filter_title">Trier par</h2>
       <div class="dropdown">
         <button id="selected_item" class="dropdown_btn likes_btn"> --- <img src="assets/expand_more-24px 4.svg"
-            class="chevron" alt="chevron vers le bas"></button>
+            class="chevron" alt="chevron vers le bas" aria-label="Trier les médias par"></button>
         <div class="dropdown_content">
           <button class="dropdown_menu like_btn">Popularité</button>
           <button class="dropdown_menu date_btn">Date</button>
@@ -76,10 +76,10 @@
 
   <div class="sticky_banner">
     <div class="total_likes_container">
-      <p class="total_likes_number"></p>
-      <img class="total_heart_icon" src="/assets/heart-icon-black.svg" alt="icone coeur">
+      <p class="total_likes_number" aria-label="nombre total de j'aime pour les médias" tabindex="0"></p>
+      <img class="total_heart_icon" src="assets/heart-icon-black.svg" alt="icone coeur">
     </div>
-    <p class="price_a_day"></p>
+    <p class="price_a_day" aria-label="prix par jour en euros" tabindex="0"></p>
   </div>
 
   <!-- ----------------------------------lightbox -------------------------------------------------------- -->
@@ -100,10 +100,10 @@
   <footer>
 
   </footer>
-  <script src="/scripts/pages/photographer.js" defer type="module"></script>
-  <script src="/scripts/templates/mediaCreation.js" defer type="module"></script>
-  <script src="/scripts/services/Modal.js" defer type="module"></script>
-  <script src="/scripts/services/Lightbox.js" defer></script>
+  <script src="scripts/pages/photographer.js" defer type="module"></script>
+  <script src="scripts/templates/mediaCreation.js" defer type="module"></script>
+  <script src="scripts/services/Modal.js" defer type="module"></script>
+  <script src="scripts/services/Lightbox.js" defer></script>
 
 </body>
 

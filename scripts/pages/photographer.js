@@ -20,7 +20,7 @@ async function loadPhotographerContent() {
 	priceOf.textContent = price
 
 	const portraitOf = document.querySelector('.portrait_of_photographer')
-	portraitOf.setAttribute('src', `/assets/photographers/${name.replace(' ', '').replace('-', '')}.jpg`)
+	portraitOf.setAttribute('src', `assets/photographers/${name.replace(' ', '').replace('-', '')}.jpg`)
 	portraitOf.setAttribute('alt', 'portrait du photographe ' + `${name}`)
 
 	cityOfCountryOf.textContent = city + ', ' + country
