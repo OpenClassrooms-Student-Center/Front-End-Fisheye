@@ -6,7 +6,7 @@ class PhotographerWork {
     this._media = media;
     this._likeSubject = likeSubject;
 
-    const mediasWrapper = document.querySelector("#medias-wrapper");
+    const mediasWrapper = document.querySelector("#main");
 
     const counterDiv = document.createElement("div");
     counterDiv.classList.add("counter");
