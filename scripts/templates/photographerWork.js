@@ -14,6 +14,9 @@ class PhotographerWork {
     const counterDivHeartLikes = document.createElement("div");
     counterDivHeartLikes.classList.add("heartLikes");
 
+    const counterDivHeart = document.createElement("div");
+    counterDivHeart.classList.add("far", "fa-heart", "black");
+
     const counterDivLikes = document.createElement("div");
     counterDivLikes.classList.add("likes");
     const result = media.map((a) => a.likes);
@@ -28,6 +31,8 @@ class PhotographerWork {
     counterDivPrice.innerHTML = `${photographer.price}€ / jour`;
 
     counterDivHeartLikes.appendChild(counterDivLikes);
+    counterDivHeartLikes.appendChild(counterDivHeart);
+
     counterDiv.appendChild(counterDivHeartLikes);
     counterDiv.appendChild(counterDivPrice);
     mediasWrapper.appendChild(counterDiv);

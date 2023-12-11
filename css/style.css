@@ -242,15 +242,6 @@ h1 {
   transition: opacity 0.3s ease, background-position 0.5s;
 }
 
-/* .icon:hover .fas.fa-heart {
-  opacity: 1;
-  background: linear-gradient(180deg, $pink 7%, $purple 100%);
-  background-size: 100% 200%;
-  background-position: 0% 100%;
-  background-clip: text;
-  -webkit-background-clip: text;
-} */
-
 .far.fa-heart {
   /* width: 100%; */
   background-size: 100% 200%;
@@ -262,6 +253,15 @@ h1 {
   font-size: 2em;
   padding: 0.5em;
 }
+
+.far.fa-heart.black {
+  display: flex;
+  padding: none;
+  color: black;
+  align-items: center;
+  font-size: 1.5em;
+}
+
 .icon:hover .far.fa-heart {
   opacity: 0;
   background: linear-gradient(180deg, blue 7%, purple 100%);
@@ -303,7 +303,7 @@ h1 {
   font-size: 24px;
 }
 
-.heartLikes {
+.counter .heartLikes {
   width: 50%;
   display: flex;
   align-items: center;
@@ -322,7 +322,6 @@ h1 {
   display: flex;
   justify-content: end;
   align-items: center;
-  margin-right: 0.5em;
 }
 
 
