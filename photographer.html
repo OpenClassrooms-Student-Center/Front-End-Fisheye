@@ -1,37 +1,110 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <link href="css/style.css" rel="stylesheet" type="text/css" />
-    <meta charset="utf-8">
-    <link rel="icon" type="image/png" href="assets/favicon.png">
-    <link href="https://fonts.googleapis.com/css?family=DM+Sans&display=swap" rel="stylesheet">
-    <title>Fisheye - photographe </title>
-  </head>
-  <body>
-    <header>
-      <img src="assets/images/logo.png" class="logo" />
-    </header>
-    <main id="main">
-      <div class="photograph-header">
-        <button class="contact_button" onclick="displayModal()">Contactez-moi</button>
+<html lang="fr">
+
+<head>
+  <link href="css/style.css" rel="stylesheet" type="text/css" />
+  <meta charset="utf-8">
+
+  <link rel="icon" type="image/png" href="assets/favicon.png">
+  <link href="https://fonts.googleapis.com/css?family=DM+Sans&display=swap" rel="stylesheet">
+  <title>Fisheye - photographe </title>
+</head>
+
+<body>
+  <header>
+    <a href="index.html"> <img src="assets/images/logo.png" alt="Fisheye Home Page" class="logo" /></a>
+  </header>
+
+  <main id="main">
+    <div class="photograph_header">
+      <div class="text_container">
+        <h1 class="photographer_main_title" tabindex="0"></h1>
+        <p class="city_of_country_of" tabindex="0"></p>
+        <p class="photographer_tagline" tabindex="0"></p>
       </div>
-    </main>
-    <div id="contact_modal">
-			<div class="modal">
-				<header>
-          <h2>Contactez-moi</h2>
-          <img src="assets/icons/close.svg" onclick="closeModal()" />
-        </header>
-				<form>
-					<div>
-						<label>Prénom</label>
-						<input />
-					</div>
-          <button class="contact_button">Envoyer</button>
-				</form>
-			</div>
-		</div>
-    <script src="/scripts/pages/photographer.js"></script>
-    <script src="/scripts/utils/contactForm.js"></script>
-  </body>
+      <button class="contact_button" role="button">Contactez-moi</button>
+      <div class="img_wrapper">
+        <img class="portrait_of_photographer" src="" alt="" tabindex="0">
+      </div>
+    </div>
+    <div class="filter">
+      <h2 class="filter_title">Trier par</h2>
+      <div class="dropdown">
+        <button id="selected_item" class="dropdown_btn likes_btn"> --- <img src="assets/expand_more-24px 4.svg"
+            class="chevron" alt="chevron vers le bas" aria-label="Trier les médias par"></button>
+        <div class="dropdown_content">
+          <button class="dropdown_menu like_btn">Popularité</button>
+          <button class="dropdown_menu date_btn">Date</button>
+          <button class="dropdown_menu title_btn">Titre</button>
+        </div>
+      </div>
+    </div>
+    <div class="portfolio_container">
+      <!-- le code de cette section est généré dynamiquement par JS -->
+    </div>
+  </main>
+  <!-- ----------------------------------modale -------------------------------------------------------- -->
+  <div class="modal_overlay" id="contact_modal_overlay"></div>
+  <div id="contact_modal">
+    <div class="modal" role="dialog">
+      <header>
+        <h2 class="name_in_modal" tabindex="0">Contactez-moi</h2>
+        <img id="close_button" src="assets/icons/close.svg" alt="close" aria-label="bouton de fermeture" tabindex="0" />
+      </header>
+      <form>
+        <div>
+          <fieldset>
+            <legend>Vos coordonnées</legend>
+            <label for="first_name">Prénom</label>
+            <input id="first_name" name="first_name" type="text" minlength="2" required>
+            <label for="last_name">Nom</label>
+            <input id="last_name" name="last_name" type="text" minlength="2" required>
+            <label for="email">Email</label>
+            <input id="email" name="email" type="email" required>
+          </fieldset>
+          <fieldset>
+            <legend>Votre message</legend>
+            <label for="text_zone">Votre message</label>
+            <textarea name="text_area" placeholder="Ecrivez votre message ici" id="text_zone" rows="8" cols="70"
+              minlength="30" required></textarea>
+          </fieldset>
+        </div>
+        <button class="contact_button" id="submit_button" type="submit" role="button">Envoyer</button>
+      </form>
+    </div>
+  </div>
+
+  <div class="sticky_banner">
+    <div class="total_likes_container">
+      <p class="total_likes_number" aria-label="nombre total de j'aime pour les médias" tabindex="0"></p>
+      <img class="total_heart_icon" src="assets/heart-icon-black.svg" alt="icone coeur">
+    </div>
+    <p class="price_a_day" aria-label="prix par jour en euros" tabindex="0"></p>
+  </div>
+
+  <!-- ----------------------------------lightbox -------------------------------------------------------- -->
+  <section class="lightbox" role="dialog" aria-modal="true" aria-label="lightbox pour afficher les médias">
+    <img src="./assets/icons/prev-btn.svg" alt="média précédent" class="prev_btn nav_btn">
+    <div class="media_viewer_container">
+      <div class="media_viewer_wrapper">
+      </div>
+      <h3 class="media_title_in_lightbox media_title"></h3>
+    </div>
+
+    <img src="./assets/icons/next-btn.svg" alt=" média suivant" class="next_btn nav_btn">
+    <img src="./assets/icons/close-btn.svg" alt="bouton de fermeture de la lightbox" class="closing_lightbox_btn">
+    <div class="media_title_in_lightbox_container">
+    </div>
+  </section>
+
+  <footer>
+
+  </footer>
+  <script src="scripts/pages/photographer.js" defer type="module"></script>
+  <script src="scripts/templates/mediaCreation.js" defer type="module"></script>
+  <script src="scripts/services/Modal.js" defer type="module"></script>
+  <script src="scripts/services/Lightbox.js" defer></script>
+
+</body>
+
 </html>

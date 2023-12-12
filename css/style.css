@@ -1,10 +1,92 @@
 @import url("photographer.css");
 
-body {
-    font-family: "DM Sans", sans-serif;
-    margin: 0;
+:root {
+    --primary:  #901C1C;
+    --secondary: #d3573c;
+    --black: #000000;
+    --light-black: #757575;
+    --dark-grey: #525252;
+
+/* ------------------ INDEX PAGE -------------------------------- */
+
+    --main-title-font-family: 'DM sans', sans-serif;
+    --main-title-font-size: 36px;
+    --main-title-font-style: normal;
+    --main-title-font-weight: 400;
+    --main-title-line-height: normal;
+
+    --photographer-name-font-family: 'DM sans', sans-serif;
+    --photographer-name-font-size: 36px;
+    --photographer-name-font-style: normal;
+    --photographer-name-font-weight: 400;
+    --photographer-name-line-height: normal;
+    
+    --city-country-font-family: 'DM sans', sans-serif;
+    --city-country-font-size: 13px;
+    --city-country-font-style: normal;
+    --city-country-font-weight: 400;
+    --city-country-line-height: normal;
+
+    --tagline-font-family: 'DM sans', sans-serif;
+    --tagline-font-size: 10px;
+    --tagline-font-style: normal;
+    --tagline-font-weight: 400;
+    --tagline-line-height: normal;
+
+    --price-font-family: 'DM sans'; 
+    --price-font-size: 9px; 
+    --price-font-style: normal; 
+    --price-font-weight: 400;  
+    --price-line-height: normal; 
+
+/* ------------------ PHOTOGRAPHER PAGE -------------------------------- */
+
+    --photographer-main-title-font-family: 'DM sans', sans-serif;
+    --photographer-main-title-font-size: 64px;
+    --photographer-main-title-font-style: normal;
+    --photographer-main-title-font-weight: 400;
+    --photographer-main-title-line-height: normal;
+
+    --city-of-country-of-font-family: 'DM sans', sans-serif;
+    --city-of-country-of-font-size: 24px;
+    --city-of-country-of-font-style: normal;
+    --city-of-country-of-font-weight: 400;
+    --city-of-country-of-line-height: normal;
+
+    --media-title-font-family: 'DM sans', sans-serif;
+    --media-title-font-size: 21px;
+    --media-title-font-style: normal;
+    --media-title-font-weight: 400;
+    --media-title-line-height: normal;
+
+    --photographer-tagline-font-family: 'DM sans', sans-serif;
+    --photographer-tagline-font-size: 18px;
+    --photographer-tagline-font-style: normal;
+    --photographer-tagline-font-weight: 400;
+    --photographer-tagline-line-height: normal;
+
+    --photographer-filter-title-font-family: 'DM sans', sans-serif;
+    --photographer-filter-title-font-size: 18px;
+    --photographer-filter-title-font-style: normal;
+    --photographer-filter-title-font-weight: 700;
+    --photographer-filter-title-line-height: normal;
+
+    --sticky-banner-font-family : 'DM sans', sans-serif;
+    --sticky-banner-font-size: 24px;
+    --sticky-banner-font-style : normal;
+    --sticky-banner-font-weight: 500;
+    --sticky-banner-line-height: normal;
 }
 
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: "DM Sans", sans-serif;
+}
 
 header {
     display: flex;
@@ -14,8 +96,13 @@ header {
     height: 90px;
 }
 
-h1 {
-    color: #901C1C;
+.main_title {
+    color: var(--primary);
+    font-family: var(--main-title-font-family);
+    font-size: var(--main-title-font-size);
+    font-style: var(--main-title-font-style);
+    font-weight: var(--main-title-font-weight);
+    line-height: var(--main-title-line-height);
     margin-right: 100px;
 }
 
@@ -40,11 +127,66 @@ h1 {
 }
 
 .photographer_section article h2 {
-    color: #D3573C;
-    font-size: 36px;
+    color: var(--secondary);
+    font-family: var(--main-title-font-family);
+    font-size: var(--main-title-font-size);
+    font-style: var(--main-title-font-style);
+    font-weight: var(--main-title-font-weight);
+    line-height: var(--main-title-line-height);
 }
 
-.photographer_section article img {
+.portrait_wrapper {
     height: 200px;
     width: 200px;
 }
+
+.photographer_section article img {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    border-radius: 50%;
+}
+
+.section_under_name {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+    justify-content: center;
+    align-items: center;
+}
+
+.city_country {
+    color: var(--primary);
+    font-family: var(--city-country-font-family);
+    font-size: var(--city-country-font-size);
+    font-style: var(--city-country-font-style);
+    font-weight: var(--city-country-font-weight);
+    line-height: var(--city-country-line-height);
+}
+
+.tagline {
+    color: var(--black);
+    font-family: var(--tagline-font-family);
+    font-size: var(--tagline-font-size);
+    font-style: var(--tagline-font-style);
+    font-weight: var(--tagline-font-weight);
+    line-height: var(--tagline-line-height);
+}
+
+.price {
+    text-align: center;
+    color: var(--light-black);
+    font-family: var(--price-font-family);
+    font-size: var(--price-font-size);
+    font-style: var(--price-font-style);
+    font-weight: var(--price-font-weight);
+    line-height: var(--price-line-height);
+}
+
+footer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-top: 200px;
+}
+
