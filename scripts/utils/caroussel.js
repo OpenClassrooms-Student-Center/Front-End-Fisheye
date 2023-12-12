@@ -2,96 +2,91 @@
 import { getData } from "../pages/dataJson.js";
 import MediaTemplate from "../templates/mediaTemplate.js";
 
-export default async function getCaroussel(PhotographerId){
-const {photographers, media }= await getData();
+export default async function getCaroussel(photographer, media,mediaElement){
+//geting dom Caroussel Elements
+const lightBox=document.getElementById('lightBoxModal');
+    const mediaSection=document.getElementById('mediaSection');
 
-const photographerMedia=media.filter( (media)=>media.photographerId==PhotographerId);
-const photographer=photographers.filter((photographers)=>photographers.id==PhotographerId)
 
 
-const carousselSection=document.getElementById("caroussel");
-const carousselArticle=document.createElement("article");
-carousselArticle.setAttribute('class','carousselArticle');
+var mediaIndex=media.findIndex(media=>media.id==mediaElement.id);
+alert(mediaIndex);
 
-//CREATING RIGHT CAROUSSEL
-const rightCaroussel=document.createElement('div');
-//creating close button
-const closeButton=document.createElement('button');
-closeButton.setAttribute('class','fa-solid fa-chevron-right')
-rightCaroussel.appendChild(closeButton);
-//creating forward button
-const forwardButton=document.createElement('button');
-forwardButton.setAttribute('class','fa-solid fa-chevron-right')
-rightCaroussel.appendChild(forwardButton);
-//creqte pervious button
-let carousselMediaArrey=[];
-let carousselTitleArray=[];
 
-//CREATING LEFT CAROUSSEL
-const leftCaroussel=document.createElement('div');
-//creating previous button
-const previousButton=document.createElement('button');
-previousButton.setAttribute('class','fa-solid fa-chevron-right')
-//adding button
-leftCaroussel.appendChild(previousButton);
+afficherMedia();
 
-photographerMedia.forEach((media) => {
-    //creating caroussel Object
+function afficherMedia(){
 
+
+
+
+let carousselMedia='';
 
     //setting img if image
-    if (media.image){
-    let carousselMedia=document.createElement('img');
-    carousselMedia.setAttribute('src',`assets/media/${photographer[0].name.substr(0, photographer[0].name.indexOf(' '))}/${media.image}`)
-    carousselMedia.setAttribute('alt',`image ${media.title}`);
+    if (media[mediaIndex].image){
+    carousselMedia=document.createElement('img');
+    carousselMedia.setAttribute('src',`assets/media/${photographer.name.substr(0, photographer.name.indexOf(' '))}/${media[mediaIndex].image}`)
+    carousselMedia.setAttribute('alt',`image ${media[mediaIndex].title}`);
     carousselMedia.setAttribute("role","img");
     carousselMedia.setAttribute('class','carousselImg');
     carousselMedia.setAttribute('class','carousselMedia');
-    //implementing img in article
-    carousselMediaArrey.push(carousselMedia);
+
+ 
 } else{
     //setting video if video
-    let carousselMedia=document.createElement('video');
-    carousselMedia.setAttribute('src',`assets/media/${photographer[0].name.substr(0, photographer[0].name.indexOf(' '))}/${media.video}`)
-carousselMedia.setAttribute('alt',`video ${media.title}`);
+    carousselMedia=document.createElement('video');
+    carousselMedia.setAttribute('src',`assets/media/${photographer.name.substr(0, photographer.name.indexOf(' '))}/${media[mediaIndex].video}`);
+carousselMedia.setAttribute('alt',`video ${media[mediaIndex].title}`);
 carousselMedia.setAttribute('class','mediaVideo');
 carousselMedia.setAttribute(`controls`,``);
-//implementing video in article
-carousselMediaArrey.push(carousselMedia);
+
+    //implementing media in mediaSection
+
         }
+
 //setting title
-    const carousselTitleP=document.createElement("p");   
-    carousselTitleP.textContent=media.title; 
-carousselTitleArray.push(carousselTitleP);
-   
+const mediaName=document.createElement('figcaption');
+mediaName.textContent=media[mediaIndex].title; 
+//displaying mediaSection
+mediaSection.appendChild(carousselMedia);
+mediaSection.appendChild(mediaName);
 
 
-});
- 
-var selection=0;
-carousselArticle.appendChild(carousselMediaArrey[selection]);
-carousselArticle.appendChild(carousselTitleArray[selection]);
-carousselArticle.appendChild(leftCaroussel);
-carousselSection.appendChild(carousselArticle);
-carousselSection.appendChild(rightCaroussel);
+    }
+//displaying caroussel
 
-//creating eventListeners
-forwardButton.addEventListener('click',function(){
-    carousselArticle.removeChild(carousselMediaArrey[selection]);
-    carousselArticle.removeChild(carousselTitleArray[selection]);
-    selection++;
-    carousselArticle.appendChild(carousselMediaArrey[selection]);
-carousselArticle.appendChild(carousselTitleArray[selection]);
-
-  });
-
+// creating eventListeners
+const previousButton=document.getElementById('leftButton');
+const forwardButton=document.getElementById('rightButton');
+const closeButton=document.getElementById('closeButton');
 previousButton.addEventListener('click',function(){
-    carousselArticle.removeChild(carousselMediaArrey[selection]);
-    selection--;
+    if(mediaIndex>0){
+        mediaSection.innerHTML='';
+        mediaIndex--;
+        afficherMedia();
+                        };
 
-    carousselArticle.appendChild(carousselTitleArray[selection]);});
+})
 
-return (carousselArticle);
+forwardButton.addEventListener('click',function(){
+    if(mediaIndex<media.length-1){
+    mediaSection.innerHTML='';
+    mediaIndex++;
+    afficherMedia();
+
+    }
+  });
+closeButton.addEventListener('click',function()
+{
+    mediaSection.innerHTML='';
+    lightBox.style.display='none';
+    main.style.display='block';
+})
+//opening Caroussel
+lightBox.style.display='flex';
+const main=document.getElementById('main');
+main.style.display='none';
+
 };
 
 

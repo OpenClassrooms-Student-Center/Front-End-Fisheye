@@ -1,6 +1,7 @@
 
 
 
+QUESTION 1
 
 let mediaArticle= await MediaTemplate(photographer,media);
 mediaTab.appendChild(mediaArticle);
@@ -9,3 +10,6 @@ let carousselArticle= await MediaTemplate(photographer,media);
 carousselSection.appendChild(carousselArticle);
 
 est-il obligatoir d'appeler deux fois la fonction ?
+
+QUESTION 2
+  box-sizing: border-box;

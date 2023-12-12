@@ -100,16 +100,15 @@ const carousselSection=document.getElementById('caroussel');
 
 
 // implementing mediaArticls
-media.forEach(media => {
+media.forEach(mediaElement => {
  (async function (){
 
 //in media section
-let mediaArticle= await MediaTemplate(photographer,media);
+let mediaArticle= await MediaTemplate(photographer,media, mediaElement);
 mediaTab.appendChild(mediaArticle);
-//in caroussel section
-let carousselArticle= await MediaTemplate(photographer,media);
 
-// carousselSection.appendChild(carousselArticle);
+
+
 
 })();
 });
@@ -132,9 +131,6 @@ validButton.addEventListener('click',function(){formManipulator.validModal()})
 
 
 
-
-const carousselArticle=await getCaroussel(photographerID);
-carousselSection.appendChild(carousselArticle);
 
 
 // mediaContent();

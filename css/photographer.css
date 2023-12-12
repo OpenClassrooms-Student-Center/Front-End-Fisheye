@@ -89,7 +89,78 @@ form input {
     border: none;
     border-radius: 5px;
 }
+.lightBox{
 
-.carousselArticle{
+    width: 100%;
+    height: 100%;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    display: none;
+}
+#caroussel{
+    display:flex;
+    box-sizing: border-box;
+    width: 80%;
+    height: 80%;
+    border: solid red 5px;
+    border-radius: 5px;
+    background-color: white;
+
+    z-index: 3;
+ 
+ 
+ 
+ 
+    align-items: center;
+    justify-content: space-between;
+    padding: 35px;
+
+}
+
+#centerSection{
+    height: 100%;
+    width: 80%;
+}
+#mediaSection{
+    height: 100%;
+    width:100%;
+}
+#leftSection{
+    height: 100%;
+    width: 10%;
+
+}
+#rightSection{
+    width: 10%;
+    height: 100%;
     display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    gap:50%;
+}
+#mediaSection{
+ 
+   display: flex;
+   flex-direction: column;
+   justify-content:flex-start;
+}
+.carousselMedia{
+    object-fit:cover;
+    max-height: 80%;
+    max-width:100%;
+    min-width: 80%;
+    overflow-clip-margin: content-box;
+    overflow: clip;
+    
+}
+#mediaSection>figcaption{
+    font-size: 3rem;
+    color: #911c1c;
+    margin: 0.5em 0;
+}
+
+#caroussel>button{
+    width:3rem;
+    height: 3rem;
 }
