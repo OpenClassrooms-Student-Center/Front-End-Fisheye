@@ -10,9 +10,30 @@ const photographer=photographers.filter((photographers)=>photographers.id==Photo
 
 
 const carousselSection=document.getElementById("caroussel");
+const carousselArticle=document.createElement("article");
+carousselArticle.setAttribute('class','carousselArticle');
+
+//CREATING RIGHT CAROUSSEL
+const rightCaroussel=document.createElement('div');
+//creating close button
+const closeButton=document.createElement('button');
+closeButton.setAttribute('class','fa-solid fa-chevron-right')
+rightCaroussel.appendChild(closeButton);
+//creating forward button
+const forwardButton=document.createElement('button');
+forwardButton.setAttribute('class','fa-solid fa-chevron-right')
+rightCaroussel.appendChild(forwardButton);
+//creqte pervious button
 let carousselMediaArrey=[];
 let carousselTitleArray=[];
 
+//CREATING LEFT CAROUSSEL
+const leftCaroussel=document.createElement('div');
+//creating previous button
+const previousButton=document.createElement('button');
+previousButton.setAttribute('class','fa-solid fa-chevron-right')
+//adding button
+leftCaroussel.appendChild(previousButton);
 
 photographerMedia.forEach((media) => {
     //creating caroussel Object
@@ -47,9 +68,30 @@ carousselTitleArray.push(carousselTitleP);
 
 });
  
+var selection=0;
+carousselArticle.appendChild(carousselMediaArrey[selection]);
+carousselArticle.appendChild(carousselTitleArray[selection]);
+carousselArticle.appendChild(leftCaroussel);
+carousselSection.appendChild(carousselArticle);
+carousselSection.appendChild(rightCaroussel);
 
-const carousselObject= { media:carousselMediaArrey,  title:carousselTitleArray};
-return carousselObject;
+//creating eventListeners
+forwardButton.addEventListener('click',function(){
+    carousselArticle.removeChild(carousselMediaArrey[selection]);
+    carousselArticle.removeChild(carousselTitleArray[selection]);
+    selection++;
+    carousselArticle.appendChild(carousselMediaArrey[selection]);
+carousselArticle.appendChild(carousselTitleArray[selection]);
+
+  });
+
+previousButton.addEventListener('click',function(){
+    carousselArticle.removeChild(carousselMediaArrey[selection]);
+    selection--;
+
+    carousselArticle.appendChild(carousselTitleArray[selection]);});
+
+return (carousselArticle);
 };
 
 

@@ -96,7 +96,7 @@ mediaTab.setAttribute(`id`,`mediaTab`);
 
 //creating caroussel section
 const carousselSection=document.getElementById('caroussel');
-carousselSection.style.display="none";
+
 
 
 // implementing mediaArticls
@@ -131,11 +131,14 @@ const validButton= document.getElementById("validButton");
 validButton.addEventListener('click',function(){formManipulator.validModal()})
 
 
-const carousselObject=await getCaroussel(photographerID);
-carousselSection.appendChild(carousselObject.media[0]);
-carousselSection.appendChild(carousselObject.title[0]);
-}
+
+
+const carousselArticle=await getCaroussel(photographerID);
+carousselSection.appendChild(carousselArticle);
+
+
 // mediaContent();
+}
 apply();
 
 

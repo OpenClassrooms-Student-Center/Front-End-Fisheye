@@ -89,3 +89,7 @@ form input {
     border: none;
     border-radius: 5px;
 }
+
+.carousselArticle{
+    display: flex;
+}
