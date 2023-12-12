@@ -1,50 +1,375 @@
 @import url("photographer.css");
 
 body {
-    font-family: "DM Sans", sans-serif;
-    margin: 0;
+  font-family: "DM Sans", sans-serif;
+  margin: 0;
 }
-
 
 header {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-    height: 90px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  height: 90px;
 }
 
-h1 {
-    color: #901C1C;
-    margin-right: 100px;
-}
+/* h1 {
+  color: #901c1c;
+  margin-right: 100px;
+} */
 
 .logo {
-    height: 50px;
-    margin-left: 100px;
+  height: 50px;
+  margin-left: 100px;
 }
 
 .photographer_section {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    gap: 70px;
-    margin-top: 100px;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 70px;
+  margin-top: 100px;
 }
 
 .photographer_section article {
-    justify-self: center;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
+  justify-self: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
 }
 
 .photographer_section article h2 {
-    color: #D3573C;
-    font-size: 36px;
+  color: #d3573c;
+  font-size: 36px;
 }
 
 .photographer_section article img {
-    height: 200px;
-    width: 200px;
+  height: 200px;
+  width: 200px;
+}
+/* Global */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.carousel {
+  position: absolute;
+  padding: 0;
+  margin: 0;
+  width: 100%;
+  height: 100%;
+  top: 20%;
+  left: 25%;
+}
+
+.carousel-item {
+  height: 200px;
+  width: 100%;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  list-style-type: none;
+}
+
+.carousel-block {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  object-fit: cover;
+}
+.img {
+  height: 40px;
+  width: 40px;
+  background-color: white;
+  border-radius: 50%;
+  display: flex;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: pointer;
+  align-items: center;
+  justify-content: center;
+}
+
+.prev-image {
+  left: 20px;
+}
+
+.fa-arrow-circle-left,
+.fa-arrow-circle-right {
+  font-size: 30px;
+}
+
+.next-image {
+  right: 20px;
+}
+
+.caroussel-title {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#modal-content video {
+  width: 3em;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.carousel {
+  /* position: relative; */
+  padding: 0;
+  margin: 0;
+}
+
+.carousel-item {
+  height: 200px;
+  width: 100%;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  list-style-type: none;
+}
+
+
+.item-2 {
+  background-color: green;
+  display: none;
+}
+
+.img {
+  height: 40px;
+  width: 40px;
+  background-color: white;
+  border-radius: 50%;
+  display: flex;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: pointer;
+  align-items: center;
+  justify-content: center;
+}
+
+.prev-image {
+  left: 20px;
+}
+
+.fa-arrow-circle-left,
+.fa-arrow-circle-right {
+  font-size: 30px;
+}
+
+.next-image {
+  right: 20px;
+}
+
+.caroussel-title {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#modalClose {
+  z-index: 4;
+  width: 4em;
+  height: 4em;
+  position: absolute;
+  top: 10%;
+  right: 10%;
+}
+
+.heart {
+  margin-right: 3rem;
+  padding-top: 0.8rem;
+}
+
+.icon .far.fa-heart {
+  z-index: 2;
+  /* // width: fit-content; */
+  font-size: 2em;
+  transition: opacity 0.3s ease, background-position 0.5s;
+}
+
+.icon .fas.fa-heart {
+  z-index: 1;
+  opacity: 0;
+  font-size: 2em;
+  transition: opacity 0.3s ease, background-position 0.5s;
+}
+
+.far.fa-heart {
+  /* width: 100%; */
+  background-size: 100% 200%;
+  background-position: 0% 100%;
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: #901c1c;
+  transition: background-position 0.5s;
+  font-size: 2em;
+  padding: 0.5em;
+}
+.fas.fa-heart {
+  /* width: 100%; */
+  background-size: 100% 200%;
+  background-position: 0% 100%;
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: #901c1c;
+  transition: background-position 0.5s;
+  font-size: 2em;
+  padding: 0.5em;
+}
+
+.fas.fa-heart.black {
+  display: flex;
+  padding: none;
+  color: black;
+  align-items: center;
+  font-size: 1.5em;
+  padding-left: 0.5em;
+}
+
+.icon:hover .far.fa-heart {
+  opacity: 0;
+  background: linear-gradient(180deg, blue 7%, purple 100%);
+  background-size: 100% 200%;
+  background-position: 0% 100%;
+  background-clip: text;
+  -webkit-background-clip: text;
+}
+
+.heart:hover {
+  & .heart--outline {
+    display: none;
+    color: #D3573C;
+  }
+}
+.heart:hover {
+  & .heart--bg {
+    display: block;
+    transition: opacity 1s;
+    opacity: 1;
+  }
+}
+
+.clickedHeart {
+  color: #D3573C;
+}
+
+.counter {
+  position: fixed;
+  display: flex;
+  width: 20%;
+  height: 3em;
+  bottom: 0;
+  right: 5%;
+  background-color: #db8876;
+  border-radius: 0.5em 0.5em 0 0;
+  color: black;
+  font-weight: bold;
+  font-size: 24px;
+}
+
+.counter .heartLikes {
+  width: 50%;
+  display: flex;
+  align-items: center;
+}
+
+.counter .price {
+  width: 50%;
+  height: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.counter .likes {
+  width: 50%;
+  height: auto;
+  display: flex;
+  justify-content: end;
+  align-items: center;
+}
+
+
+/* Dropdown Button */
+.dropbtn {
+  display: block;
+  background-color: #901C1C;
+  color: white;
+  padding: 16px;
+  font-size: 16px;
+  border: none;
+  cursor: pointer;
+  width:7em;
+}
+
+/* Dropdown button on hover & focus */
+.dropbtn:hover, .dropbtn:focus {
+  background-color: #901c1ce6;
+}
+
+/* The container <div> - needed to position the dropdown content */
+.dropdown {
+  padding: 1em 10%;
+  display: inline-block;
+  display: flex;
+}
+.dropdown h3{
+  padding-right:1em;
+}
+
+/* Dropdown Content (Hidden by Default) */
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f1f1f1;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+/* Links inside the dropdown */
+.dropdown-content a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+/* Change color of dropdown links on hover */
+.dropdown-content a:hover {background-color: #ddd;}
+
+/* Show the dropdown menu (use JS to add this class to the .dropdown-content container when the user clicks on the dropdown button) */
+.show {display:block;}
+
+.dropdownOption{
+  background-color: #901c1ce6;
+  color:#FFFF;
+}
+
+.dropdown-content a {
+  color:#FFFF;
 }
