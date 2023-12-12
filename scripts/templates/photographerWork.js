@@ -47,18 +47,15 @@ class PhotographerWork {
       currentLikes,
       mediaLikeElement
     ) {
-      const farElements = document.querySelectorAll('.far.fa-heart')
+      const farElements = document.querySelectorAll('.fa-heart')
       const far = farElements[index]
+      console.log(far)
+      far.classList.toggle('far')
+      far.classList.toggle('fas')
 
-      far.style.color =
-        far.style.color === 'pink' ? 'rgb(144, 28, 28)' : 'pink'
+      const updatedLikes = far.classList.contains('far') ? currentLikes + 0 : currentLikes + 1
 
-      const updatedLikes =
-        far.style.color === 'rgb(144, 28, 28)'
-          ? currentLikes + 0
-          : currentLikes + 1
-
-      sum = sum + (far.style.color === 'rgb(144, 28, 28)' ? -1 : 1)
+      sum = sum + (far.classList.contains('far') ? -1 : 1)
       console.log('newSum', sum)
 
       const counterDivLikes = document.querySelector('.likes')

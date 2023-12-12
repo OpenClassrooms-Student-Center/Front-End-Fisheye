@@ -230,6 +230,17 @@ header {
   font-size: 2em;
   padding: 0.5em;
 }
+.fas.fa-heart {
+  /* width: 100%; */
+  background-size: 100% 200%;
+  background-position: 0% 100%;
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: #901c1c;
+  transition: background-position 0.5s;
+  font-size: 2em;
+  padding: 0.5em;
+}
 
 .fas.fa-heart.black {
   display: flex;
