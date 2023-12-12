@@ -1,4 +1,5 @@
-import { onOpenPic, onClosePic } from "../utils/photoModal.js";
+/* eslint-disable no-undef */
+import { onOpenPic, onClosePic } from '../utils/photoModal.js'
 
 class Lightbox {
   constructor (media, photographer) {

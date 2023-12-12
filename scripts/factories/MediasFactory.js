@@ -1,16 +1,16 @@
-import { Image, Video } from "../class/media.js";
+import { Image, Video } from '../class/media.js'
 
 // Factory function to create media with Image or Video Class
 class MediasFactory {
-  static createMedia(data) {
+  static createMedia (data) {
     if (data.image) {
-      return new Image(data);
+      return new Image(data)
     } else if (data.video) {
-      return new Video(data);
+      return new Video(data)
     } else {
-      throw new Error("Unknown data");
+      throw new Error('Unknown data')
     }
   }
 }
 
-export { MediasFactory };
+export { MediasFactory }
