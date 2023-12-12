@@ -1,20 +1,21 @@
 class LikeCounter {
-  constructor() {
-    this._count = 0;
-    this._likes = document.querySelector(".likes");
+  constructor () {
+    this._count = 0
+    this._likes = document.querySelector('.likes')
   }
 
-  update(action) {
-    if (action === "INC") {
-      this._count += 1;
-    } else if (action === "DEC") {
-      this._count -= 1;
+  update (action) {
+    if (action === 'INC') {
+      this._count += 1
+    } else if (action === 'DEC') {
+      this._count -= 1
     } else {
-      throw "Unknow action";
+      // eslint-disable-next-line no-throw-literal
+      throw 'Unknow action'
     }
 
-    this._likes.innerHTML = this._count;
+    this._likes.innerHTML = this._count
   }
 }
 
-export { LikeCounter };
+export { LikeCounter }
