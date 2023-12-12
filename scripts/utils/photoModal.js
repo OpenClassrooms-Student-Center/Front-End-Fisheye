@@ -22,6 +22,7 @@ export async function onOpenPic() {
 }
 
 export async function onClosePic() {
+  console.log("onClosePic");
   mainWrapper.setAttribute("aria-hidden", "false");
   modal.setAttribute("aria-hidden", "true");
   body.classList.remove("no-scroll");

@@ -1,4 +1,3 @@
-import { closePhotoModal } from "../utils/contactForm.js";
 import { onOpenPic, onClosePic } from "../utils/photoModal.js";
 
 class Lightbox {
