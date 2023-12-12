@@ -1,3 +1,5 @@
+/* eslint-disable no-unused-vars */
+/* eslint-disable no-undef */
 // DOM Elements
 const validationMessage = document.getElementById('validation-message')
 const formBod = document.querySelector('.form-body')
