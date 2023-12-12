@@ -1,7 +1,16 @@
-/* eslint-disable no-unused-vars */
 // DOM Elements
 const validationMessage = document.getElementById('validation-message')
 const formBod = document.querySelector('.form-body')
+const modal = document.querySelector('#contact_modal')
+
+$(document).on('keydown', (e) => {
+  const keyCode = e.keyCode ? e.keyCode : e.which
+
+  if (modal.getAttribute('aria-hidden') === 'false' && keyCode === 27) {
+    console.log(123)
+    closeModal()
+  }
+})
 
 export function displayModal () {
   const modal = document.getElementById('contact_modal')
