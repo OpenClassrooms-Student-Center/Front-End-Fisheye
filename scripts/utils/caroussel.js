@@ -57,8 +57,11 @@ mediaSection.appendChild(mediaName);
 
 // creating eventListeners
 const previousButton=document.getElementById('leftButton');
+previousButton.setAttribute('class','carousselButton');
 const forwardButton=document.getElementById('rightButton');
+forwardButton.setAttribute('class','carousselButton');
 const closeButton=document.getElementById('closeButton');
+closeButton.setAttribute('class','carousselButton');
 previousButton.addEventListener('click',function(){
     if(mediaIndex>0){
         mediaSection.innerHTML='';
