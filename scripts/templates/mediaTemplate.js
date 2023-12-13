@@ -16,14 +16,34 @@ titleParagraph.textContent=mediaElement.title;
 mediaDataSection.appendChild(titleParagraph);
 // implementing likes
 let likeParagraph=document.createElement('p');
-let heart=document.createElement('em');
-heart.setAttribute('class','fa-solid fa-heart');
-
+let FullHeart=document.createElement('em');
+FullHeart.style.display='none';
+let EmptyHeart=document.createElement('em');
+const HeartBox=document.createElement('checkbox');
+FullHeart.setAttribute('class', 'fa-heart fa-solid');
+EmptyHeart.setAttribute('class','fa-heart fa-regular ');
+HeartBox.appendChild(FullHeart);
+HeartBox.appendChild(EmptyHeart);
+const mediaLikesClone=mediaElement.likes;
 likeParagraph.textContent=mediaElement.likes;
 mediaDataSection.appendChild(likeParagraph);
-mediaDataSection.appendChild(heart);
+mediaDataSection.appendChild(HeartBox);
+
+
 //preparing eventListener
-const caroussel=document.getElementById('caroussel');
+HeartBox.addEventListener('click',function(){ 
+
+    if(mediaElement.likes==mediaLikesClone)
+    {mediaElement.likes++; 
+     FullHeart.style.display='flex';
+     EmptyHeart.style.display='none';
+
+likeParagraph.textContent=mediaElement.likes;}
+    else{ mediaElement.likes--; 
+        likeParagraph.textContent=mediaElement.likes;
+        FullHeart.style.display='none';
+        EmptyHeart.style.display='flex';}})
+
 
 //implementing media images and videos
 let visualSection=document.createElement('section');
