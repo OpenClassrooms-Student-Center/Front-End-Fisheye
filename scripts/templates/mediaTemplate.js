@@ -19,19 +19,23 @@ let likeParagraph=document.createElement('p');
 let FullHeart=document.createElement('em');
 FullHeart.style.display='none';
 let EmptyHeart=document.createElement('em');
-const HeartBox=document.createElement('checkbox');
+const likeBox=document.createElement('checkbox');
+likeBox.setAttribute("class","likeBox");
+
 FullHeart.setAttribute('class', 'fa-heart fa-solid');
 EmptyHeart.setAttribute('class','fa-heart fa-regular ');
-HeartBox.appendChild(FullHeart);
-HeartBox.appendChild(EmptyHeart);
+
 const mediaLikesClone=mediaElement.likes;
 likeParagraph.textContent=mediaElement.likes;
-mediaDataSection.appendChild(likeParagraph);
-mediaDataSection.appendChild(HeartBox);
+likeBox.appendChild(likeParagraph);
+likeBox.appendChild(FullHeart);
+likeBox.appendChild(EmptyHeart);
+
+mediaDataSection.appendChild(likeBox);
 
 
 //preparing eventListener
-HeartBox.addEventListener('click',function(){ 
+likeBox.addEventListener('click',function(){ 
 
     if(mediaElement.likes==mediaLikesClone)
     {mediaElement.likes++; 

@@ -131,12 +131,16 @@ a{ text-decoration: none;}
 }
 .mediaDataSection{
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
     color:#901C1C;
     font-weight: 292px;
     font-size: 24px;
     line-height: 31.25px;
  
+}
+.likeBox{
+    display:flex;
+    gap:0.3rem;
 }
 .likePriceFooter{
     /* self properties */
