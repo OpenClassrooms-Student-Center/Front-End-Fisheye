@@ -14,6 +14,14 @@ mediaDataSection.setAttribute("aria-label","media info");
 const titleParagraph=document.createElement("p");
 titleParagraph.textContent=mediaElement.title;
 mediaDataSection.appendChild(titleParagraph);
+// implementing likes
+let likeParagraph=document.createElement('p');
+let heart=document.createElement('em');
+heart.setAttribute('class','fa-solid fa-heart');
+
+likeParagraph.textContent=mediaElement.likes;
+mediaDataSection.appendChild(likeParagraph);
+mediaDataSection.appendChild(heart);
 //preparing eventListener
 const caroussel=document.getElementById('caroussel');
 

@@ -130,6 +130,8 @@ a{ text-decoration: none;}
     object-fit: cover;
 }
 .mediaDataSection{
+    display: flex;
+    justify-content: space-around;
     color:#901C1C;
     font-weight: 292px;
     font-size: 24px;
