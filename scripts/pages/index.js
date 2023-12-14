@@ -35,17 +35,3 @@ async function displayData() {
 }
 
 displayData();
-
-// async function displayData() {
-//   const photographersInfo = await getPhotographers();
-//   const sectionHome = document.getElementById("photographer_section");
-
-//   let contentHTML = "";
-//   photographersInfo.forEach((photographer) => {
-//     contentHTML += photographerTemplate(photographer);
-//   });
-//   sectionHome.innerHTML = contentHTML;
-
-// }
-
-// displayData();

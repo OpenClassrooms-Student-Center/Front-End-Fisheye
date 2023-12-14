@@ -17,6 +17,7 @@ async function getPhotographerById(photographerId) {
       country: photographer.country,
       tagline: photographer.tagline,
       portrait: photographer.portrait,
+      price: photographer.price,
     }));
 
     // Trouver le photographe spécifique par son ID
@@ -57,8 +58,10 @@ async function displayPhotographerInfo() {
   if (photographer) {
     const photographerInfoContainer = document.getElementById("photograph_header");
     const infoPhoto = photographerTemplateId(photographer);
-
     photographerInfoContainer.innerHTML = infoPhoto;
+
+    const dailyRate = document.getElementById("tarif_journalier");
+    dailyRate.textContent = `${photographer.price}€/jour`;
     addModalListeners();
 
     //appel des media en fonction id photographe
