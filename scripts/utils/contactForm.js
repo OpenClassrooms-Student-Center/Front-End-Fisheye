@@ -1,6 +1,3 @@
-const openBtn = document.getElementById("contact_btn");
-const closeBtn = document.getElementById("close_btn");
-
 function displayModal() {
   const modal = document.getElementById("contact_modal");
   modal.style.display = "block";
@@ -11,8 +8,13 @@ function closeModal() {
   modal.style.display = "none";
 }
 
-openBtn.addEventListener("click", displayModal);
-closeBtn.addEventListener("click", closeModal);
+function addModalListeners() {
+  const openBtn = document.getElementById("contact_btn");
+  openBtn.addEventListener("click", displayModal);
+
+  const closeBtn = document.getElementById("close_btn");
+  closeBtn.addEventListener("click", closeModal);
+}
 
 function validateForm(event) {
   event.preventDefault();
@@ -37,4 +39,4 @@ function validationMessage() {
   // reset form
   document.getElementById("Form_modal").reset();
 }
-export { displayModal, closeModal };
+export { displayModal, closeModal, addModalListeners };

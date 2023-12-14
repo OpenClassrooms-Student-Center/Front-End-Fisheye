@@ -3,29 +3,19 @@ function photographerTemplate(data) {
 
   const picture = `assets/photographers/${portrait}`;
 
-  function getUserCardDOM() {
-    const article = document.createElement("article");
-    const img = document.createElement("img");
-    img.setAttribute("src", picture);
-    const h2 = document.createElement("h2");
-    h2.textContent = name;
-    const cityName = document.createElement("h3");
-    cityName.textContent = city + ", " + country;
-    const taglineText = document.createElement("p");
-    taglineText.classList.add("taglineText");
-    taglineText.textContent = tagline;
-    const priceTag = document.createElement("p");
-    priceTag.classList.add("priceTag");
-    priceTag.textContent = price + "€/jours";
-
-    article.appendChild(img);
-    article.appendChild(h2);
-    article.appendChild(cityName);
-    article.appendChild(taglineText);
-    article.appendChild(priceTag);
-    return article;
-  }
-  return { name, picture, getUserCardDOM };
+  const portraitPhotographer = `<img src="${picture}" alt ="${tagline}" >`;
+  const namePhotographer = `<h2>${name}</h2>`;
+  const cityName = `<h3>${city}, ${country}</h3>`;
+  const taglineText = `<p class ="taglineText">${tagline}</p>`;
+  const priceTag = `<p class = "priceTag">${price}€/jours</p>`;
+  return `
+   <article id="photographer_article" data-photographeid="${id}">
+    ${portraitPhotographer}
+    ${namePhotographer}
+    ${cityName}
+    ${taglineText}
+    ${priceTag}
+    </article>`;
 }
 
 function photographerTemplateId(data) {
@@ -33,34 +23,53 @@ function photographerTemplateId(data) {
 
   const picture = `assets/photographers/${portrait}`;
 
-  function getHeaderInfo() {
-    const headerContainer = document.createElement("div");
-    headerContainer.classList.add("header-container");
-    const headerText = document.createElement("div");
-    headerText.classList.add("header-text");
-    const h2 = document.createElement("h2");
-    h2.textContent = name;
-    const cityName = document.createElement("h3");
-    cityName.textContent = city + ", " + country;
-    const taglineText = document.createElement("p");
-    taglineText.classList.add("taglineText");
-    taglineText.textContent = tagline;
+  const portraitPhotographer = `<img src="${picture}" alt ="${tagline}" >`;
+  const namePhotographer = `<h2>${name}</h2>`;
+  const cityName = `<h3>${city}, ${country}</h3>`;
+  const taglineText = `<p class ="taglineText">${tagline}</p>`;
+  // const contactBtn = document.getElementById("contact_btn").outerHTML;
 
-    const contactBtn = document.getElementById("contact_btn");
-    const img = document.createElement("img");
-    img.setAttribute("src", picture);
-    img.classList.add("portrait_photographe");
+  return `
+   <div class="header-container">
+<div class="header-text">
+${namePhotographer}
+${cityName}
+${taglineText}
 
-    headerContainer.appendChild(headerText);
-    headerText.appendChild(h2);
-    headerText.appendChild(cityName);
-    headerText.appendChild(taglineText);
-    headerContainer.appendChild(contactBtn);
-    headerContainer.appendChild(img);
-    return headerContainer;
-  }
-  return { name, picture, getHeaderInfo };
+</div>
+  <button class="contact_button" id="contact_btn">Contactez-moi</button>
+    ${portraitPhotographer}
+    </div>`;
 }
+
+//   function getHeaderInfo() {
+//     const headerContainer = document.createElement("div");
+//     headerContainer.classList.add("header-container");
+//     const headerText = document.createElement("div");
+//     headerText.classList.add("");
+//     const h2 = document.createElement("h2");
+//     h2.textContent = name;
+//     const cityName = document.createElement("h3");
+//     cityName.textContent = city + ", " + country;
+//     const taglineText = document.createElement("p");
+//     taglineText.classList.add("taglineText");
+//     taglineText.textContent = tagline;
+
+//     const contactBtn = document.getElementById("contact_btn");
+//     const img = document.createElement("img");
+//     img.setAttribute("src", picture);
+//     img.classList.add("portrait_photographe");
+
+//     headerContainer.appendChild(headerText);
+//     headerText.appendChild(h2);
+//     headerText.appendChild(cityName);
+//     headerText.appendChild(taglineText);
+//     headerContainer.appendChild(contactBtn);
+//     headerContainer.appendChild(img);
+//     return headerContainer;
+//   }
+//   return { name, picture, getHeaderInfo };
+// }
 
 function createMediaElement(media, photographerName) {
   if (!media.image && !media.video) {
