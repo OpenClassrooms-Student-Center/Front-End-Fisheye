@@ -16,9 +16,8 @@ console.log(Object.data);
 
 let photographer=await Object.getPhotographerById(photographerID);
 
-console.log("coucou");
-// console.log(photographer[0].name);
-// console.log(`coucou`);
+
+
 
 
 
@@ -99,8 +98,10 @@ portraitImg.setAttribute('class','portrait')
 
 //getting media info
 photographHeader.append(portraitImg);
+
 const media=await Object.getMediaById(photographerID);
 
+async function mediaSectionCreator (){
 console.log(media[0].image);
 
 //creating media section
@@ -128,8 +129,17 @@ mediaTab.appendChild(mediaArticle);
 
 })();
 });
-//Implementing tab in dom
+mediaSection.innerHTML='';
+//Implementing mediatab in dom
 mediaSection.appendChild(mediaTab);
+
+}
+mediaSectionCreator();
+
+
+
+//SECTION PHOTOGRAPHER PRICE
+
 // creating price p
 let priceP=document.createElement('footer');
 priceP.setAttribute('class','likePriceFooter')
@@ -146,10 +156,6 @@ const validButton= document.getElementById("validButton");
 validButton.addEventListener('click',function(){formManipulator.validModal()})
 
 
-
-
-
-// mediaContent();
 }
 apply();
 
