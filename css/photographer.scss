@@ -1,0 +1,211 @@
+/*# sourceMappingURL=photographer.css.map */
+
+
+
+
+
+.photograph-header {
+    background-color: #FAFAFA;
+    height: 300px;
+    margin: 0 100px;
+}
+
+.contact_button {
+    font-size: 20px;
+    font-weight: bold;
+    color: white;
+    padding: 11px;
+    width: 170px;
+    height: 70px;
+    border: none;
+    background-color: #901C1C;
+    border-radius: 5px;
+    cursor: pointer;
+}
+/* FINDER */
+.selected:active{
+#optionList{
+
+    }
+}
+/* CONTACT MODAL */
+#contact_modal {
+  
+    display: none;
+    position:absolute;
+
+
+        Width:669px;
+        Height:900px;
+        Top:62px;
+        Left:385px;
+        }
+.modal {
+
+
+    border-radius: 5px;
+    background-color: #DB8876;
+    width: 669px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    padding: 35px;
+    margin: auto;
+}
+
+.modal header {
+    justify-content: space-between;
+    width: 100%;
+}
+
+.modal header img {
+    cursor: pointer;
+}
+
+.modal header h2 {
+    display: flex;
+    font-size: 64px;
+    font-weight: normal;
+    text-align: center;
+    margin-bottom: 0rem;
+}
+/* formulaire */
+form {
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+form label {
+    color: #312E2E;
+    font-size: 36px;
+}
+
+form div {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    align-items: self-start;
+    margin-bottom: 26px;
+}
+
+form input {
+    width: 100%;
+    height: 68px;
+    border: none;
+    border-radius: 5px;
+}
+/* CAROUSSEL */
+.lightBox{
+
+    width: 100%;
+    height: 100%;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    display: none;
+
+    #caroussel{
+        position: relative;
+        display:flex;
+        box-sizing: border-box;
+        width: 80%;
+        height: 80%;
+        border: solid red 5px;
+        border-radius: 5px;
+        background-color: white;
+    
+        z-index: 3;
+     
+     
+     
+     
+        align-items: center;
+        justify-content: space-between;
+        padding: 35px;
+    
+
+
+
+
+            .sideSection{
+                display:flex;
+                
+                height: 100%;
+                width: 10%;
+                .carousselButton{
+                    color: #901C1C;
+                    background-color: white;
+                    font-size: 5rem;
+                
+                    border: none;   
+                }
+            /* close button */
+            #closeButton{
+                position:absolute;
+                top:0;
+                right:0;
+            }
+            #fa-close{
+                height: 20px;
+                color: #901C1C;
+                background-color: white;
+
+                border: none;
+            }
+            }
+
+
+
+
+            /* center section */
+            #centerSection{
+                height: 100%;
+                width: 80%;
+
+
+            #mediaSection{
+                height: 100%;
+                width:100%;
+            display: flex;
+            flex-direction: column;
+            justify-content:flex-start;
+
+            // image or video
+            .carousselMedia{
+                object-fit:cover;
+                max-height: 80%;
+                max-width:100%;
+                min-width: 80%;
+            
+                overflow: clip;
+                
+            }
+            /* media name */
+            figcaption{
+                font-size: 3rem;
+                color: #911c1c;
+                margin: 0.5em 0;
+            }
+
+            }
+            }
+    }
+}
+
+
+#optionList{
+    display:none;
+}
+#selected:checked~h2{
+    color:red;
+}
+#selected:checked~div{
+display:flex;
+flex-direction: column;
+}
+
+
+

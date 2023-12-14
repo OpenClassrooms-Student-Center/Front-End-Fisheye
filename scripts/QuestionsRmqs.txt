@@ -1,0 +1,24 @@
+
+
+
+QUESTION 1
+
+let mediaArticle= await MediaTemplate(photographer,media);
+mediaTab.appendChild(mediaArticle);
+//in caroussel section
+let carousselArticle= await MediaTemplate(photographer,media);
+carousselSection.appendChild(carousselArticle);
+
+est-il obligatoir d'appeler deux fois la fonction ?
+
+QUESTION 2
+  box-sizing: border-box;
+
+  Question 3
+  est ce grave d utiliser des p au lieu de spans
+
+  Question 4
+  Que faire en html que faire ne js
+
+  Remarque:pour faire grossir un icone il faut donner un gros font seiz
+  a sa boite conteneur

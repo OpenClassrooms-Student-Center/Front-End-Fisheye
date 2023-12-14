@@ -21,10 +21,21 @@ console.log("coucou");
 // console.log(`coucou`);
 
 
-// creating dom elements
 
-//creating photographer section elements
 
+
+//CREATING SELECTOR
+// getting dom elements
+const optionList=document.getElementById('optionList');
+const selected=document.getElementById('selected');
+optionList.addEventListener('click',function (e){
+let selection=e.target.textContent;
+selected.textContent=selection;
+if(selection=='Popularité'){console.log('Popularite')}
+else if(selection=='Date'){console.log('Date')}
+else if(selection=='Titre'){console.log('Titre')}
+
+});
 
 
 const infoSection=document.createElement('section');
