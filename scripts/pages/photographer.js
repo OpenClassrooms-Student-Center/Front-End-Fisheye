@@ -176,7 +176,9 @@ contactButton.addEventListener('click',function (){formManipulator.displayModal(
 const validButton= document.getElementById("validButton");
 validButton.addEventListener('click',function(){formManipulator.validModal()})
 
-
+//implementing close button
+const closeButton=document.getElementById("modalCloseBtn")
+validButton.addEventListener('click',function(){formManipulator.closeModal()})
 }
 apply();
 
