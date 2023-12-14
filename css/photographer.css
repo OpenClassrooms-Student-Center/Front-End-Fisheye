@@ -163,11 +163,11 @@ form input {
   display: none;
 }
 
-#selected:checked ~ h2 {
-  color: red;
+#checkbox:checked ~ h2 {
+  color: blue;
 }
 
-#selected:checked ~ div {
+#checkbox:checked ~ div {
   display: flex;
   flex-direction: column;
 }/*# sourceMappingURL=photographer.css.map */

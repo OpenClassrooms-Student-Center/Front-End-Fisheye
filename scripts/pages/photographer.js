@@ -28,7 +28,12 @@ console.log("coucou");
 // getting dom elements
 const optionList=document.getElementById('optionList');
 const selected=document.getElementById('selected');
+const checkbox=document.getElementById('checkbox');
+
+
+//setting eventLisener
 optionList.addEventListener('click',function (e){
+    checkbox.checked=false;
 let selection=e.target.textContent;
 selected.textContent=selection;
 if(selection=='Popularité'){console.log('Popularite')}

@@ -199,13 +199,17 @@ form input {
 #optionList{
     display:none;
 }
-#selected:checked~h2{
-    color:red;
+#checkbox{
+  
 }
-#selected:checked~div{
+#checkbox:checked~h2{
+    color:blue
+}
+#checkbox:checked~div{
 display:flex;
 flex-direction: column;
 }
+
 
 
 
