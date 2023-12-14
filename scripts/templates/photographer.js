@@ -9,7 +9,7 @@ function photographerTemplate(data) {
   const taglineText = `<p class ="taglineText">${tagline}</p>`;
   const priceTag = `<p class = "priceTag">${price}€/jours</p>`;
   return `
-   <article id="photographer_article">
+   <article id="photographer_article" data-photographeid="${id}">
     ${portraitPhotographer}
     ${namePhotographer}
     ${cityName}
@@ -17,30 +17,6 @@ function photographerTemplate(data) {
     ${priceTag}
     </article>`;
 }
-//   function getUserCardDOM() {
-//     const article = document.createElement("article");
-//     const img = document.createElement("img");
-//     img.setAttribute("src", picture);
-//     const h2 = document.createElement("h2");
-//     h2.textContent = name;
-//     const cityName = document.createElement("h3");
-//     cityName.textContent = city + ", " + country;
-//     const taglineText = document.createElement("p");
-//     taglineText.classList.add("taglineText");
-//     taglineText.textContent = tagline;
-//     const priceTag = document.createElement("p");
-//     priceTag.classList.add("priceTag");
-//     priceTag.textContent = price + "€/jours";
-
-//     article.appendChild(img);
-//     article.appendChild(h2);
-//     article.appendChild(cityName);
-//     article.appendChild(taglineText);
-//     article.appendChild(priceTag);
-//     return article;
-//   }
-//   return { name, picture, getUserCardDOM };
-// }
 
 function photographerTemplateId(data) {
   const { name, portrait, id, city, country, tagline } = data;
@@ -51,7 +27,8 @@ function photographerTemplateId(data) {
   const namePhotographer = `<h2>${name}</h2>`;
   const cityName = `<h3>${city}, ${country}</h3>`;
   const taglineText = `<p class ="taglineText">${tagline}</p>`;
-  const contactBtn = document.getElementById("contact_btn");
+  // const contactBtn = document.getElementById("contact_btn").outerHTML;
+
   return `
    <div class="header-container">
 <div class="header-text">
@@ -60,7 +37,7 @@ ${cityName}
 ${taglineText}
 
 </div>
-${contactBtn}
+  <button class="contact_button" id="contact_btn">Contactez-moi</button>
     ${portraitPhotographer}
     </div>`;
 }

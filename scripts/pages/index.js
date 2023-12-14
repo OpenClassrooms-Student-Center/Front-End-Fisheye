@@ -18,16 +18,18 @@ async function displayData() {
   const photographersInfo = await getPhotographers();
   const sectionHome = document.getElementById("photographer_section");
 
+  let articlesToAdd = "";
   photographersInfo.forEach((photographer) => {
-    const contentHTML = photographerTemplate(photographer);
-    const article = document.createElement("article");
+    const photographerCard = photographerTemplate(photographer);
+    articlesToAdd += photographerCard;
+  });
 
-    article.innerHTML = contentHTML;
-    sectionHome.appendChild(article);
+  sectionHome.innerHTML = articlesToAdd;
 
-    // Ajoute l'événement de redirection à cet article
+  const allArticles = Array.from(document.getElementsByTagName("article"));
+  allArticles.forEach((article) => {
     article.addEventListener("click", () => {
-      window.location.href = `photographer.html?id=${photographer.id}`;
+      window.location.href = `photographer.html?id=${article.dataset.photographeid}`;
     });
   });
 }
