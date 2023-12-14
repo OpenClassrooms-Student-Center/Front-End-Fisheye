@@ -35,9 +35,9 @@ optionList.addEventListener('click',function (e){
     checkbox.checked=false;
 let selection=e.target.textContent;
 selected.textContent=selection;
-if(selection=='Popularité'){console.log('Popularite')}
-else if(selection=='Date'){console.log('Date')}
-else if(selection=='Titre'){console.log('Titre')}
+if(selection=='Popularité'){sortingMedia('Popularité')}
+else if(selection=='Date'){sortingMedia('Date')}
+else if(selection=='Titre'){sortingMedia('Titre')}
 
 });
 
@@ -99,12 +99,32 @@ portraitImg.setAttribute('class','portrait')
 //getting media info
 photographHeader.append(portraitImg);
 
-const media=await Object.getMediaById(photographerID);
+let media=await Object.getMediaById(photographerID);
 
-async function mediaSectionCreator (){
-console.log(media[0].image);
-
+//sorting media
+async function sortingMedia(param){
+    if(param=='Popularité'){
+         media=media.sort(function(a,b)
+        { if(b.likes>a.likes){return 1} 
+            else{return -1}})
+    }
+    if(param=='Date'){
+        media=media.sort(function(a,b)
+       { let dateA= new Date(a.date);
+        let dateB= new Date(b.date);
+        if(dateB>dateA){return -1} 
+           else{return 1}})
+   }
+   if(param=='Titre'){
+    media=media.sort(function(a,b)
+   { 
+    if(a.title<b.title){return -1} 
+       else{return 1}})
+}
+    mediaSectionCreator();
+}
 //creating media section
+async function mediaSectionCreator (){
 var mediaSection=document.getElementById('media');
 const mediaTab=document.createElement(`tab`);
 mediaTab.setAttribute(`captation`,`select productions`);
@@ -134,6 +154,7 @@ mediaSection.innerHTML='';
 mediaSection.appendChild(mediaTab);
 
 }
+sortingMedia('Popularité');
 mediaSectionCreator();
 
 
