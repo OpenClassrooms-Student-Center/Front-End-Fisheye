@@ -4,17 +4,12 @@
     <link href="./css/style.css" rel="stylesheet" type="text/css" />
     <meta charset="utf-8" />
     <link rel="icon" type="image/png" href="assets/favicon.png" />
-    <link
-      href="https://fonts.googleapis.com/css?family=DM+Sans&display=swap"
-      rel="stylesheet"
-    />
+    <link href="https://fonts.googleapis.com/css?family=DM+Sans&display=swap" rel="stylesheet" />
     <title>Fisheye - photographe</title>
   </head>
   <body>
     <header>
-      <a href="index.html">
-        <img src="./assets/images/logo.png" class="logo"
-      /></a>
+      <a href="index.html"> <img src="./assets/images/logo.png" class="logo" /></a>
     </header>
     <main id="main">
       <div class="photograph-header" id="photograph_header">
@@ -22,32 +17,35 @@
       </div>
 
       <div id="media-container" class="media_section"></div>
+
+      <div id="bottom-right-box">
+        <p id="tarif_journalier"></p>
+      </div>
     </main>
-    <div id="contact_modal">
-      <div class="modal">
+    <div id="contact_modal" class="bground">
+      <div class="modal content">
         <header>
-          <h2>Contactez-moi</h2>
+          <h2 class="modal-title">Contactez-moi</h2>
           <img src="./assets/icons/close.svg" id="close_btn" />
         </header>
-        <form>
-          <div>
-            <label for="prenom">Prénom</label>
-            <input type="text" id="prenom" name="prenom" required />
-            <label for="nom">Nom</label>
-            <input type="text" id="nom" name="nom" required />
-            <label for="email">Email</label>
-            <input type="email" id="email" name="email" required />
-            <label for="message">Votre Message :</label>
-            <textarea id="message" name="message" rows="4" required></textarea>
-          </div>
-          <button class="contact_button">Envoyer</button>
-        </form>
+        <div class="modal-body">
+          <form id="Form_modal">
+            <div>
+              <label for="prenom">Prénom</label>
+              <input type="text" id="prenom" name="prenom" required />
+              <label for="nom">Nom</label>
+              <input type="text" id="nom" name="nom" required />
+              <label for="email">Email</label>
+              <input type="email" id="email" name="email" required />
+              <label for="message">Votre Message :</label>
+              <textarea id="message" name="message" rows="4" required></textarea>
+            </div>
+            <button class="contact_button" id="submit_btn">Envoyer</button>
+          </form>
+        </div>
       </div>
     </div>
-    <script
-      src="https://kit.fontawesome.com/8c24e7947e.js"
-      crossorigin="anonymous"
-    ></script>
+    <script src="https://kit.fontawesome.com/8c24e7947e.js" crossorigin="anonymous"></script>
     <script type="module" src="./scripts/pages/photographer.js"></script>
   </body>
 </html>
