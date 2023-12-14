@@ -25,7 +25,7 @@
     top: 0;
     height: 100%;
     width: 100%;
-    overflow: auto;
+    overflow: hidden;
     background-color: rgba(26, 39, 156, 0.4);
 }
 
@@ -47,8 +47,11 @@
     background: #232323;
     border-radius: 10px;
     overflow: hidden;
-    position: relative;
     color: #fff;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
 }
 
 .modal-body {
@@ -151,13 +154,12 @@
     border-radius: 5px;
     background-color: #DB8876;
     width: 30%;
-    height: 90%;
+    height: 85%;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: space-between;
     padding: 2%;
-    margin: 2% auto;
 }
 
 .modal header {
