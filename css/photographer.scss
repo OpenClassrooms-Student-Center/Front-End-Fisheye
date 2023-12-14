@@ -200,7 +200,14 @@ form input {
     display:none;
 }
 #checkbox{
-  
+    opacity: 0;
+    position: relative;
+    bottom: -3rem;
+    display: block;
+    width: 10rem;
+    height: 3rem;
+    font-size: 3rem;
+    border: solid red 3px;
 }
 #checkbox:checked~h2{
     color:blue
