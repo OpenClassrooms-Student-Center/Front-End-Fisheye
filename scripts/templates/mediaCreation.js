@@ -79,6 +79,7 @@ async function getFilteredMedia(selectedButton) {
 		const likeIcon = document.createElement('img')
 		likeIcon.setAttribute('class', 'like_icon')
 		likeIcon.setAttribute('alt', 'coeur')
+		likeIcon.setAttribute('tabindex', '0')
 		likeIcon.setAttribute('src', 'assets/heart.svg')
 
 		// On rajoute tous les nouveaux élements au DOM
@@ -94,25 +95,35 @@ async function getFilteredMedia(selectedButton) {
 
 	function incrementLike() {
 		const likeIcons = document.querySelectorAll('.like_icon')
-
+	
 		likeIcons.forEach(likeIcon => {
-			likeIcon.addEventListener('click', () => {
-
-				const likeContainer = likeIcon.closest('.like_container')
-				const numberOfLikesElement = likeContainer.querySelector('.number_of_likes')
-				// on vient rajouter la condition de la présence d'une classe liked pour éviter de liker plusieurs fois
-				if (!likeIcon.classList.contains('liked')) {
-
-					let likes = parseInt(numberOfLikesElement.textContent)
-					numberOfLikesElement.textContent = likes + 1
-
-					likeIcon.classList.add('liked')
-					// on incrémente le total 
-					incrementTotalOfLikes()
+			likeIcon.addEventListener('click', () => incrementLikesOnClick(likeIcon))
+	
+			likeIcon.addEventListener('keydown', (event) => {
+				if (event.key === 'Enter') {
+					incrementLikesOnEnter(event, likeIcon)
 				}
 			})
 		})
 	}
+	
+	function incrementLikesOnClick(likeIcon) {
+		const likeContainer = likeIcon.closest('.like_container')
+		const numberOfLikesElement = likeContainer.querySelector('.number_of_likes')
+	
+		if (!likeIcon.classList.contains('liked')) {
+			let likes = parseInt(numberOfLikesElement.textContent)
+			numberOfLikesElement.textContent = likes + 1
+			likeIcon.classList.add('liked')
+			incrementTotalOfLikes()
+		}
+	}
+	
+	function incrementLikesOnEnter(event, likeIcon) {
+		event.preventDefault()
+		incrementLikesOnClick(likeIcon)
+	}
+	
 	incrementLike()
 
 	function incrementTotalOfLikes() {
@@ -138,7 +149,7 @@ document.addEventListener('DOMContentLoaded', function () {
 	const dropdownContent = document.querySelector('.dropdown_content')
 	const selectedItem = document.getElementById('selected_item')
 	const selectedItemText = selectedItem.childNodes[0]
-	const dropdownBtn = document.querySelector('.dropdown_btn');
+	const dropdownBtn = document.querySelector('.dropdown_btn')
 
 	function toggleDropdown() {
 		console.log('function')

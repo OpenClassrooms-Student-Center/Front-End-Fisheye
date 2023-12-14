@@ -22,7 +22,7 @@
         <p class="city_of_country_of" tabindex="0"></p>
         <p class="photographer_tagline" tabindex="0"></p>
       </div>
-      <button class="contact_button" role="button">Contactez-moi</button>
+      <button class="contact_button">Contactez-moi</button>
       <div class="img_wrapper">
         <img class="portrait_of_photographer" src="" alt="" tabindex="0">
       </div>
@@ -30,7 +30,7 @@
     <div class="filter">
       <h2 class="filter_title">Trier par</h2>
       <div class="dropdown">
-        <button id="selected_item" class="dropdown_btn likes_btn"> --- <img src="assets/expand_more-24px 4.svg"
+        <button id="selected_item" class="dropdown_btn likes_btn"> --- <img src="assets/expand_more-24px-4.svg"
             class="chevron" alt="chevron vers le bas" aria-label="Trier les médias par"></button>
         <div class="dropdown_content">
           <button class="dropdown_menu like_btn">Popularité</button>
@@ -43,7 +43,7 @@
       <!-- le code de cette section est généré dynamiquement par JS -->
     </div>
   </main>
-  <!-- ----------------------------------modale -------------------------------------------------------- -->
+  <!-- modale -->
   <div class="modal_overlay" id="contact_modal_overlay"></div>
   <div id="contact_modal">
     <div class="modal" role="dialog">
@@ -69,7 +69,7 @@
               minlength="30" required></textarea>
           </fieldset>
         </div>
-        <button class="contact_button" id="submit_button" type="submit" role="button">Envoyer</button>
+        <button class="contact_button" id="submit_button" type="submit">Envoyer</button>
       </form>
     </div>
   </div>
@@ -82,7 +82,7 @@
     <p class="price_a_day" aria-label="prix par jour en euros" tabindex="0"></p>
   </div>
 
-  <!-- ----------------------------------lightbox -------------------------------------------------------- -->
+  <!-- lightbox -->
   <section class="lightbox" role="dialog" aria-modal="true" aria-label="lightbox pour afficher les médias">
     <img src="./assets/icons/prev-btn.svg" alt="média précédent" class="prev_btn nav_btn">
     <div class="media_viewer_container">
@@ -100,9 +100,9 @@
   <footer>
 
   </footer>
-  <script src="scripts/pages/photographer.js" defer type="module"></script>
-  <script src="scripts/templates/mediaCreation.js" defer type="module"></script>
-  <script src="scripts/services/Modal.js" defer type="module"></script>
+  <script src="scripts/pages/photographer.js" type="module"></script>
+  <script src="scripts/templates/mediaCreation.js" type="module"></script>
+  <script src="scripts/services/Modal.js"  type="module"></script>
   <script src="scripts/services/Lightbox.js" defer></script>
 
 </body>

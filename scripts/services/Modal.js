@@ -106,7 +106,6 @@ async function addNameToModal() {
 	const photographer = await getPhotographer(getIdFromUrl())
 	const nameAdded = photographer.name
 	const nameInModal = document.querySelector('.name_in_modal')
-	nameInModal.setAttribute('alt', `${nameAdded}`)
 	nameInModal.textContent = 'Contactez-moi ' + `${nameAdded}`
 	nameInModal.setAttribute('aria-label', 'Formulaire de contact pour' + `${nameAdded}`)
 }

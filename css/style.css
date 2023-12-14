@@ -13,31 +13,26 @@
     --main-title-font-size: 36px;
     --main-title-font-style: normal;
     --main-title-font-weight: 400;
-    --main-title-line-height: normal;
 
     --photographer-name-font-family: 'DM sans', sans-serif;
     --photographer-name-font-size: 36px;
     --photographer-name-font-style: normal;
     --photographer-name-font-weight: 400;
-    --photographer-name-line-height: normal;
     
     --city-country-font-family: 'DM sans', sans-serif;
     --city-country-font-size: 13px;
     --city-country-font-style: normal;
     --city-country-font-weight: 400;
-    --city-country-line-height: normal;
 
     --tagline-font-family: 'DM sans', sans-serif;
     --tagline-font-size: 10px;
     --tagline-font-style: normal;
     --tagline-font-weight: 400;
-    --tagline-line-height: normal;
 
     --price-font-family: 'DM sans'; 
     --price-font-size: 9px; 
     --price-font-style: normal; 
     --price-font-weight: 400;  
-    --price-line-height: normal; 
 
 /* ------------------ PHOTOGRAPHER PAGE -------------------------------- */
 
@@ -45,37 +40,31 @@
     --photographer-main-title-font-size: 64px;
     --photographer-main-title-font-style: normal;
     --photographer-main-title-font-weight: 400;
-    --photographer-main-title-line-height: normal;
 
     --city-of-country-of-font-family: 'DM sans', sans-serif;
     --city-of-country-of-font-size: 24px;
     --city-of-country-of-font-style: normal;
     --city-of-country-of-font-weight: 400;
-    --city-of-country-of-line-height: normal;
 
     --media-title-font-family: 'DM sans', sans-serif;
     --media-title-font-size: 21px;
     --media-title-font-style: normal;
     --media-title-font-weight: 400;
-    --media-title-line-height: normal;
 
     --photographer-tagline-font-family: 'DM sans', sans-serif;
     --photographer-tagline-font-size: 18px;
     --photographer-tagline-font-style: normal;
     --photographer-tagline-font-weight: 400;
-    --photographer-tagline-line-height: normal;
 
     --photographer-filter-title-font-family: 'DM sans', sans-serif;
     --photographer-filter-title-font-size: 18px;
     --photographer-filter-title-font-style: normal;
     --photographer-filter-title-font-weight: 700;
-    --photographer-filter-title-line-height: normal;
 
     --sticky-banner-font-family : 'DM sans', sans-serif;
     --sticky-banner-font-size: 24px;
     --sticky-banner-font-style : normal;
     --sticky-banner-font-weight: 500;
-    --sticky-banner-line-height: normal;
 }
 
 
@@ -102,7 +91,6 @@ header {
     font-size: var(--main-title-font-size);
     font-style: var(--main-title-font-style);
     font-weight: var(--main-title-font-weight);
-    line-height: var(--main-title-line-height);
     margin-right: 100px;
 }
 
@@ -132,7 +120,6 @@ header {
     font-size: var(--main-title-font-size);
     font-style: var(--main-title-font-style);
     font-weight: var(--main-title-font-weight);
-    line-height: var(--main-title-line-height);
 }
 
 .portrait_wrapper {
@@ -161,7 +148,6 @@ header {
     font-size: var(--city-country-font-size);
     font-style: var(--city-country-font-style);
     font-weight: var(--city-country-font-weight);
-    line-height: var(--city-country-line-height);
 }
 
 .tagline {
@@ -170,7 +156,6 @@ header {
     font-size: var(--tagline-font-size);
     font-style: var(--tagline-font-style);
     font-weight: var(--tagline-font-weight);
-    line-height: var(--tagline-line-height);
 }
 
 .price {
@@ -180,7 +165,6 @@ header {
     font-size: var(--price-font-size);
     font-style: var(--price-font-style);
     font-weight: var(--price-font-weight);
-    line-height: var(--price-line-height);
 }
 
 footer {

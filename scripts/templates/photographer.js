@@ -46,7 +46,6 @@ class UserCard {
 	createCityCountryElement() {
 		const span = document.createElement('span')
 		span.classList.add('city_country')
-		span.setAttribute('role', 'label')
 		span.textContent = this.city + ', ' + this.country
 		return span
 	}
@@ -54,7 +53,6 @@ class UserCard {
 	createTagLineElement() {
 		const p = document.createElement('p')
 		p.classList.add('tagline')
-		p.setAttribute('role', 'label')
 		p.textContent = this.tagline
 		return p
 	}
@@ -62,7 +60,6 @@ class UserCard {
 	createPriceElement() {
 		const p2 = document.createElement('p')
 		p2.classList.add('price')
-		p2.setAttribute('role', 'label')
 		p2.textContent = this.price + '€/jour'
 		return p2
 	}
