@@ -164,6 +164,23 @@ form input {
   margin: 0.5em 0;
 }
 
+.finderZone {
+  display: flex;
+  height: 3rem;
+}
+
+.trierPar {
+  display: flex;
+  font-family: "DM Sans";
+  font-Weight: 700;
+  font-Size: 18px;
+  line-height: 23.44px;
+  justify-content: center;
+  align-items: center;
+  height: 4rem;
+  margin-left: 100px;
+}
+
 #optionList {
   display: none;
   flex-direction: column;
@@ -193,6 +210,7 @@ form input {
 
 .trieur {
   position: absolute;
+  left: 12rem;
 }
 
 .trieurElements {
@@ -209,4 +227,8 @@ form input {
   border: none;
   background-color: #901C1C;
   border-radius: 5px;
+}
+
+.chevron {
+  padding-left: 1rem;
 }/*# sourceMappingURL=photographer.css.map */
