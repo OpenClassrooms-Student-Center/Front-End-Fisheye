@@ -1,7 +1,9 @@
 /*# sourceMappingURL=photographer.css.map */
 
 
-
+main{
+    position:relative;
+}
 
 
 .photograph-header {
@@ -223,7 +225,7 @@ form input {
 display:flex;
 flex-direction: column;
 }
-.trieur{position:relative;}
+.trieur{position:absolute;}
 .trieurElements{
     border:solid;
     font-family: Arial, Helvetica, sans-serif;

@@ -1,4 +1,8 @@
 
+main {
+  position: relative;
+}
+
 .photograph-header {
   background-color: #FAFAFA;
   height: 300px;
@@ -187,7 +191,7 @@ form input {
 }
 
 .trieur {
-  position: relative;
+  position: absolute;
 }
 
 .trieurElements {
