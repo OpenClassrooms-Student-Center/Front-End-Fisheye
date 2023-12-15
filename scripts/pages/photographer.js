@@ -179,9 +179,10 @@ const validButton= document.getElementById("validButton");
 validButton.addEventListener('click',function(){formManipulator.validModal()})
 
 //implementing close button
-const closeButton=document.getElementById("modalCloseBtn")
-validButton.addEventListener('click',function(){formManipulator.closeModal()})
+const closeButton=document.getElementById("modalCloseBtn");
+closeButton.addEventListener('click',function(){formManipulator.closeModal()})
 }
+
 apply();
 
 
