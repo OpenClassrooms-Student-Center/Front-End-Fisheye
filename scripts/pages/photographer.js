@@ -34,8 +34,10 @@ const checkbox=document.getElementById('checkbox');
 optionList.addEventListener('click',function (e){
     checkbox.checked=false;
 let selection=e.target.textContent;
-selected.textContent=selection;
-if(selection=='Popularité'){sortingMedia('Popularité')}
+selection=('Popularié'||'Date'||'Titre')? selection=selected.textContent=selection:selected; 
+if(selection=='Popularité'){ 
+ 
+    sortingMedia('Popularité')}
 else if(selection=='Date'){sortingMedia('Date')}
 else if(selection=='Titre'){sortingMedia('Titre')}
 
