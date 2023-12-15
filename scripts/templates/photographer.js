@@ -16,19 +16,6 @@ function photographerTemplate(data) {
     ${taglineText}
     ${priceTag}
     </article>`;
-  const portraitPhotographer = `<img src="${picture}" alt ="${tagline}" >`;
-  const namePhotographer = `<h2>${name}</h2>`;
-  const cityName = `<h3>${city}, ${country}</h3>`;
-  const taglineText = `<p class ="taglineText">${tagline}</p>`;
-  const priceTag = `<p class = "priceTag">${price}€/jours</p>`;
-  return `
-   <article id="photographer_article" data-photographeid="${id}">
-    ${portraitPhotographer}
-    ${namePhotographer}
-    ${cityName}
-    ${taglineText}
-    ${priceTag}
-    </article>`;
 }
 
 function photographerTemplateId(data) {
@@ -67,7 +54,7 @@ function createMediaElement(media, photographerName) {
   const altContent = media.title || "";
   const mediaElement = media.image
     ? `<img class="media-element" src="${mediaPath}" alt ="${altContent}">`
-    : `<video controls class ="media-element" src="${mediaPath}" alt ="${altContent}">`;
+    : `<div><video controls class ="media-element" src="${mediaPath}"></div>`;
   const mediaInfo = `
     <div class="media-info">
       <p class="media-title">${media.title}</p>
@@ -80,8 +67,8 @@ function createMediaElement(media, photographerName) {
 
   return `
   <div class="media-container">
-    ${mediaElement}
-    ${mediaInfo}
+  ${mediaElement}
+  ${mediaInfo}
   </div>
   `;
 }
