@@ -20,5 +20,10 @@ QUESTION 2
   Question 4
   Que faire en html que faire ne js
 
+  Avancement du projet
+  dimensions media caroussel
+  accessibilite
+  navigation avec le clavier dans le menu deroulant
+
   Remarque:pour faire grossir un icone il faut donner un gros font seiz
   a sa boite conteneur
