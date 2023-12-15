@@ -1,5 +1,5 @@
 //Mettre le code JavaScript lié à la page photographer.html
-import { displayModal, closeModal } from "../utils/contactForm.js";
+import { displayModal, closeModal, addModalListeners } from "../utils/contactForm.js";
 import { photographerTemplateId, createMediaElement } from "../templates/photographer.js";
 
 async function getPhotographerById(photographerId) {
@@ -57,11 +57,12 @@ async function displayPhotographerInfo() {
 
   if (photographer) {
     const photographerInfoContainer = document.getElementById("photograph_header");
-    const photographerModel = photographerTemplateId(photographer);
-    const headerCardDOM = photographerModel.getHeaderInfo();
+    const infoPhoto = photographerTemplateId(photographer);
+    photographerInfoContainer.innerHTML = infoPhoto;
+
     const dailyRate = document.getElementById("tarif_journalier");
     dailyRate.textContent = `${photographer.price}€/jour`;
-    photographerInfoContainer.appendChild(headerCardDOM);
+    addModalListeners();
 
     //appel des media en fonction id photographe
     const media = await getMediaById(photographerId);
