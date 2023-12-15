@@ -239,8 +239,10 @@ margin-left: 100px
 display:flex;
 flex-direction: column;
 }
-.trieur{position:absolute;
+.trieur{
+position:absolute;
 left:12rem;
+z-index: 2;
 }
 .trieurElements{
     border:solid;

@@ -211,6 +211,7 @@ form input {
 .trieur {
   position: absolute;
   left: 12rem;
+  z-index: 2;
 }
 
 .trieurElements {
