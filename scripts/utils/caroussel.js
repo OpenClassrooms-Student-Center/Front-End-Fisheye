@@ -10,7 +10,7 @@ const lightBox=document.getElementById('lightBoxModal');
 
 
 var mediaIndex=media.findIndex(media=>media.id==mediaElement.id);
-alert(mediaIndex);
+
 
 
 afficherMedia();
