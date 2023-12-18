@@ -92,6 +92,9 @@ export default async function MediaTemplate(photographer, media, mediaElement) {
   visualSection.addEventListener("click", () => {
     getCaroussel(photographer[0], media, mediaElement);
   });
+  visualSection.addEventListener("keydown", (e) => { if(e.key=='Enter'){
+    getCaroussel(photographer[0], media, mediaElement);}
+  });
   // adding mediaDataSection to article
   mediaArticle.appendChild(mediaDataSection);
   return mediaArticle;

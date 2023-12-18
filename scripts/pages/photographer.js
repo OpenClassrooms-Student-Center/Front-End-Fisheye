@@ -175,14 +175,6 @@ async function apply() {
   });
 
   // setting blide processor
-
-  document.addEventListener("focus", (e) => {
-    e.addEventListener("keydown", (f) => {
-      if (f.key === "r") {
-        alert("coucou");
-      }
-    });
-  });
 }
 
 apply();
