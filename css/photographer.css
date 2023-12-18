@@ -2,6 +2,9 @@
 main {
   position: relative;
 }
+*:focus{
+  border:solid red 4px;
+}
 
 .photograph-header {
   background-color: #FAFAFA;
@@ -150,8 +153,8 @@ form input {
   /* media name */
 }
 .lightBox #caroussel #centerSection #mediaSection .carousselMedia {
-  -o-object-fit: cover;
-     object-fit: cover;
+  -o-object-fit: contain;
+     object-fit: contain;
   height: 80%;
   width: 100%;
   overflow: clip;

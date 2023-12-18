@@ -1,3 +1,3 @@
-import getCaroussel from "./caroussel.js";
+// import getCaroussel from "./caroussel.js";
 
-getCaroussel
+// getCaroussel

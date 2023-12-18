@@ -178,7 +178,7 @@ form input {
 
             // image or video
             .carousselMedia{
-                object-fit:cover;
+                object-fit:contain;
                 height: 80%;
                 width:100%;
                
