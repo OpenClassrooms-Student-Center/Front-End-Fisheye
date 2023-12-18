@@ -27,3 +27,5 @@ QUESTION 2
 
   Remarque:pour faire grossir un icone il faut donner un gros font seiz
   a sa boite conteneur
+
+  changer la taille des polices dans le form

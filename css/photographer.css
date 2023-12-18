@@ -118,6 +118,7 @@ form input {
   display: flex;
   height: 100%;
   width: 10%;
+  justify-content: center;
   /* close button */
 }
 .lightBox #caroussel .sideSection .carousselButton {
@@ -128,8 +129,7 @@ form input {
 }
 .lightBox #caroussel .sideSection #closeButton {
   position: absolute;
-  top: 0;
-  right: 0;
+  font-size: 72px;
 }
 .lightBox #caroussel .sideSection #fa-close {
   height: 20px;
@@ -152,9 +152,8 @@ form input {
 .lightBox #caroussel #centerSection #mediaSection .carousselMedia {
   -o-object-fit: cover;
      object-fit: cover;
-  max-height: 80%;
-  max-width: 100%;
-  min-width: 80%;
+  height: 80%;
+  width: 100%;
   overflow: clip;
 }
 .lightBox #caroussel #centerSection #mediaSection figcaption {

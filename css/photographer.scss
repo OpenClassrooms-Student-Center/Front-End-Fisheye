@@ -137,6 +137,7 @@ form input {
                 
                 height: 100%;
                 width: 10%;
+                justify-content: center;
                 .carousselButton{
                     color: #901C1C;
                     background-color: white;
@@ -147,8 +148,8 @@ form input {
             /* close button */
             #closeButton{
                 position:absolute;
-                top:0;
-                right:0;
+                
+                font-size: 72px;
             }
             #fa-close{
                 height: 20px;
@@ -178,9 +179,9 @@ form input {
             // image or video
             .carousselMedia{
                 object-fit:cover;
-                max-height: 80%;
-                max-width:100%;
-                min-width: 80%;
+                height: 80%;
+                width:100%;
+               
             
                 overflow: clip;
                 
