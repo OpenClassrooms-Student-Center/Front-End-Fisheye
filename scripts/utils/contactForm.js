@@ -3,8 +3,12 @@ export default class contactForm {
     const modal = document.getElementById("contact_modal");
     modal.style.display = "block";
     modal.setAttribute("aria-hidden", "false");
+ 
+    // const utilisateur = document.getElementById("prenomUtilisateur");
+    // utilisateur.focus();
     const body = document.querySelector("body");
     body.setAttribute("aria-hidden", "true");
+    modal.focus();
   }
 
   closeModal() {

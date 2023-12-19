@@ -15,11 +15,15 @@ export default async function MediaTemplate(photographer, media, mediaElement) {
   mediaDataSection.appendChild(titleParagraph);
   // implementing likes
   const likeParagraph = document.createElement("p");
+  likeParagraph.setAttribute("tabindex", "1");
+  likeParagraph.setAttribute("aria-live", "polite");
   const FullHeart = document.createElement("em");
   FullHeart.style.display = "none";
   const EmptyHeart = document.createElement("em");
   const likeBox = document.createElement("checkbox");
   likeBox.setAttribute("class", "likeBox");
+  likeBox.setAttribute("aria-label", "nombre de likes");
+  likeBox.setAttribute("tabindex", "1");
   //   likeBox.setAtrtribute("tabindex", "1");
 
   FullHeart.setAttribute("class", "fa-heart fa-solid");

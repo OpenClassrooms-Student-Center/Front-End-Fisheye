@@ -71,30 +71,30 @@
         <button id="rightButton" class="carousselButton" tabindex="3"><em class="fa-solid fa-chevron-right"></em></button>
       </div>
     </section>
-  </dialog>
-    <div id="contact_modal" role="dialog">
-			<div class="modal" >
+
+    <dialog class= "modal" id="contact_modal" role="dialog" tabindex="1">
+		
 				<header>
           <h2>Contactez-moi</h2>
-          <img id='modalCloseBtn'src="assets/icons/close.svg"/>
+          <img id='modalCloseBtn'src="assets/icons/close.svg" tabindex="1">
         </header>
 				<form class="form">
 					<div>
-						<label id="prenomUtilisateur">Prénom</label>
-						<input id="inputPrenom" for="prenomUtilisateur" aria-labelledby="prenomUtilisateur">
-            <label id="nomUtilisateur">Nom</label>
-            <input id="inputNom" for="nomUtilisateur" aria-labelledby="nomUtilisateur">
-            <label id="emailUtilsateur">Email</label>
-            <input id="inputEmail" for="emailUtilisateur" aria-labelledby="emailUtilisateur" aria-describedby[]="email-format" >
+						<label  for="prenomUtilisateur">Prénom</label>
+						<input type=text id="prenomUtilisateur" tabindex="1">
+            <label id="nomUtilisateur" >Nom</label>
+            <input id="inputNom" for="nomUtilisateur" aria-label="nomUtilisateur"  tabindex="1">
+            <label id="emailUtilsateur" aria-label="Entrez email">Email</label>
+            <input id="inputEmail" for="emailUtilisateur" aria-label="emailUtilisateur" aria-describedby[]="email-format"  tabindex="1">
             <span id="email-format" class="hidden" >quelquechose@domain.extension</span>
          
             <label id="votreMessage">Votre message</label>
-            <input id="inputMessage" class="formMessage" for="votreMessage" aria-label="votreMessage">
+            <input id="inputMessage" class="formMessage" for="votreMessage" aria-label="votreMessage"  tabindex="2">
 					</div>
-          <button id=validButton class="contact_button">Envoyer</button>
+          <button id=validButton class="contact_button" tabindex="1">Envoyer</button>
 				</form>
-			</div>
-		</div>
+		
+		</dialog>
     <script src="scripts/pages/photographer.js" type="module"></script>
 
   </body>

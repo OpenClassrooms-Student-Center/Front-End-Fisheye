@@ -158,7 +158,7 @@ async function apply() {
   // implementing contact button
   const contactButton = document.getElementById("contact_button");
   const formManipulator = new contactForm();
-  contactButton.addEventListener("click", () => {
+  contactButton.addEventListener("click", () => { 
     formManipulator.displayModal();
   });
 
