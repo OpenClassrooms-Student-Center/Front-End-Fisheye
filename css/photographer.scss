@@ -133,8 +133,9 @@ form input {
 
 
             .sideSection{
+                position:relative;
                 display:flex;
-                
+                flex-direction: column;
                 height: 100%;
                 width: 10%;
                 justify-content: center;
@@ -142,12 +143,18 @@ form input {
                     color: #901C1C;
                     background-color: white;
                     font-size: 5rem;
-                
-                    border: none;   
+                border:solid transparent;
+                &:focus{
+                border:solid violet 1rem;
+                }
                 }
             /* close button */
             #closeButton{
                 position:absolute;
+                top:-2rem;
+             left:50%;  
+               transform: translate(-50%,0);
+          
                 
                 font-size: 72px;
             }
@@ -156,7 +163,7 @@ form input {
                 color: #901C1C;
                 background-color: white;
 
-                border: none;
+            
             }
             }
 

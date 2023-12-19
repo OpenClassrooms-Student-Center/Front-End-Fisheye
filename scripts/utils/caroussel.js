@@ -35,12 +35,14 @@ export default async function getCaroussel(photographer, media, mediaElement) {
       carousselMedia.setAttribute(
         "src",
         `assets/media/${photographer.name.substr(
+          0,
           photographer.name.indexOf(" "),
         )}/${media[mediaIndex].video}`,
       );
       carousselMedia.setAttribute("alt", `video ${media[mediaIndex].title}`);
       carousselMedia.setAttribute("class", "mediaVideo");
       carousselMedia.setAttribute("class", "carousselMedia");
+      carousselMedia.setAttribute("tabindex", "3");
       carousselMedia.setAttribute(`controls`, ``);
 
       // implementing media in mediaSection
@@ -62,6 +64,8 @@ export default async function getCaroussel(photographer, media, mediaElement) {
   forwardButton.setAttribute("class", "carousselButton");
   const closeButton = document.getElementById("closeButton");
   closeButton.setAttribute("class", "carousselButton");
+
+  // implementing left section event listeners
   previousButton.addEventListener("click", () => {
     if (mediaIndex > 0) {
       mediaSection.innerHTML = "";
@@ -71,6 +75,18 @@ export default async function getCaroussel(photographer, media, mediaElement) {
     }
   });
 
+  previousButton.addEventListener("keydown", (e) => {
+    if (e.key === "Enter") {
+      if (mediaIndex > 0) {
+        mediaSection.innerHTML = "";
+        // eslint-disable-next-line no-plusplus
+        mediaIndex--;
+        afficherMedia();
+      }
+    }
+  });
+
+  // implementing right section event listeners
   forwardButton.addEventListener("click", () => {
     if (mediaIndex < media.length - 1) {
       mediaSection.innerHTML = "";
@@ -84,6 +100,25 @@ export default async function getCaroussel(photographer, media, mediaElement) {
     lightBox.style.display = "none";
     // eslint-disable-next-line no-use-before-define
     main.style.display = "block";
+  });
+  // inclusive listeners
+  forwardButton.addEventListener("keydown", (e) => {
+    if (e.key === "Enter") {
+      if (mediaIndex < media.length - 1) {
+        mediaSection.innerHTML = "";
+        // eslint-disable-next-line no-plusplus
+        mediaIndex++;
+        afficherMedia();
+      }
+    }
+  });
+  closeButton.addEventListener("keydown", (e) => {
+    if (e.key === "Enter") {
+      mediaSection.innerHTML = "";
+      lightBox.style.display = "none";
+      // eslint-disable-next-line no-use-before-define
+      main.style.display = "block";
+    }
   });
   // opening Caroussel
   lightBox.style.display = "flex";

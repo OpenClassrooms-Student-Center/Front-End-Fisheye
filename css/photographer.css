@@ -2,9 +2,6 @@
 main {
   position: relative;
 }
-*:focus{
-  border:solid red 4px;
-}
 
 .photograph-header {
   background-color: #FAFAFA;
@@ -118,7 +115,9 @@ form input {
   /* center section */
 }
 .lightBox #caroussel .sideSection {
+  position: relative;
   display: flex;
+  flex-direction: column;
   height: 100%;
   width: 10%;
   justify-content: center;
@@ -128,17 +127,22 @@ form input {
   color: #901C1C;
   background-color: white;
   font-size: 5rem;
-  border: none;
+  border: solid transparent;
+}
+.lightBox #caroussel .sideSection .carousselButton:focus {
+  border: solid violet 1rem;
 }
 .lightBox #caroussel .sideSection #closeButton {
   position: absolute;
+  top: -2rem;
+  left: 50%;
+  transform: translate(-50%, 0);
   font-size: 72px;
 }
 .lightBox #caroussel .sideSection #fa-close {
   height: 20px;
   color: #901C1C;
   background-color: white;
-  border: none;
 }
 .lightBox #caroussel #centerSection {
   height: 100%;

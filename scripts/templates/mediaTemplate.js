@@ -1,10 +1,6 @@
 import getCaroussel from "../utils/caroussel.js";
 
-
 export default async function MediaTemplate(photographer, media, mediaElement) {
-
-
-
   const mediaArticle = document.createElement("article");
   mediaArticle.setAttribute("class", "mediaArticle");
 
@@ -24,7 +20,7 @@ export default async function MediaTemplate(photographer, media, mediaElement) {
   const EmptyHeart = document.createElement("em");
   const likeBox = document.createElement("checkbox");
   likeBox.setAttribute("class", "likeBox");
-//   likeBox.setAtrtribute("tabindex", "1");
+  //   likeBox.setAtrtribute("tabindex", "1");
 
   FullHeart.setAttribute("class", "fa-heart fa-solid");
   EmptyHeart.setAttribute("class", "fa-heart fa-regular ");
@@ -34,6 +30,7 @@ export default async function MediaTemplate(photographer, media, mediaElement) {
   likeBox.appendChild(likeParagraph);
   likeBox.appendChild(FullHeart);
   likeBox.appendChild(EmptyHeart);
+  likeBox.setAttribute("tabindex", "1");
 
   mediaDataSection.appendChild(likeBox);
 
@@ -50,6 +47,26 @@ export default async function MediaTemplate(photographer, media, mediaElement) {
       likeParagraph.textContent = mediaElement.likes;
       FullHeart.style.display = "none";
       EmptyHeart.style.display = "flex";
+    }
+  });
+  // preparing inclusive event listener
+
+  // preparing eventListener
+  likeBox.addEventListener("keydown", (e) => {
+    if (e.key === 'Enter') {
+
+      if (mediaElement.likes === mediaLikesClone) {
+        mediaElement.likes++;
+        FullHeart.style.display = "flex";
+        EmptyHeart.style.display = "none";
+
+        likeParagraph.textContent = mediaElement.likes;
+      } else {
+        mediaElement.likes--;
+        likeParagraph.textContent = mediaElement.likes;
+        FullHeart.style.display = "none";
+        EmptyHeart.style.display = "flex";
+      }
     }
   });
 
@@ -85,15 +102,17 @@ export default async function MediaTemplate(photographer, media, mediaElement) {
     video.setAttribute("class", "mediaVideo");
     video.setAttribute(`controls`, ``);
     video.setAttribute("tabindex", "1");
-   
+
     visualSection.appendChild(video);
     mediaArticle.appendChild(visualSection);
   }
   visualSection.addEventListener("click", () => {
     getCaroussel(photographer[0], media, mediaElement);
   });
-  visualSection.addEventListener("keydown", (e) => { if(e.key=='Enter'){
-    getCaroussel(photographer[0], media, mediaElement);}
+  visualSection.addEventListener("keydown", (e) => {
+    if (e.key == "Enter") {
+      getCaroussel(photographer[0], media, mediaElement);
+    }
   });
   // adding mediaDataSection to article
   mediaArticle.appendChild(mediaDataSection);
