@@ -1,5 +1,6 @@
 export default class contactForm {
   displayModal() {
+   
     const modal = document.getElementById("contact_modal");
     modal.style.display = "block";
     modal.setAttribute("aria-hidden", "false");
@@ -23,6 +24,7 @@ export default class contactForm {
     const form = document.querySelector("form");
     form.addEventListener("submit", (e) => {
       e.preventDefault();
+      this.closeModal();
     });
     // capting data
     const body = document.querySelector("body");
