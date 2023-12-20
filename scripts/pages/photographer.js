@@ -16,6 +16,10 @@ async function apply() {
 
   // CREATING SELECTOR
   // getting dom elements
+  const popularité= document.getElementById('popularité');
+  const date= document.getElementById("date");
+  const titre= document.getElementById("titre");
+  const trieur = document.getElementById("trieur");
   const optionList = document.getElementById("optionList");
   const selected = document.getElementById("selected");
   const checkbox = document.getElementById("checkbox");
@@ -39,10 +43,39 @@ async function apply() {
       sortingMedia("Titre");
     }
   });
+  trieur.addEventListener("keydown", (e) => {
+    if (e.key === "Enter") {
+   
+      checkbox.checked = true;
+      popularité.focus();
+
+    }
+  });
+  // setting inlusive event listener
+  optionList.addEventListener("keydown", (e) => {
+    if (e.key === "Enter") {
+      checkbox.checked = false;
+      const selection = e.target.children[0].textContent;
+      if (
+        selection == "Popularité" ||
+        selection == "Date" ||
+        selection == "Titre"
+      ) {
+        selected.textContent = selection;
+      }
+      if (selection == "Popularité") {
+        sortingMedia("Popularité");
+      } else if (selection == "Date") {
+        sortingMedia("Date");
+      } else if (selection == "Titre") {
+        sortingMedia("Titre");
+      }
+    }
+  });
 
   const infoSection = document.createElement("section");
 
-  // implementing photographer section elements
+  // iplementing photographer section elements
 
   // implementing infosection
 
@@ -75,7 +108,7 @@ async function apply() {
   const portraitImg = document.createElement("img");
   portraitImg.setAttribute(
     "src",
-    `assets/photographers/${photographer[0].portrait}`,
+    `assets/photographers/${photographer[0].portrait}`
   );
   portraitImg.setAttribute(`alt`, `photo de ${photographer[0].name}`);
   portraitImg.setAttribute("class", "portrait");
@@ -135,7 +168,7 @@ async function apply() {
         const mediaArticle = await MediaTemplate(
           photographer,
           media,
-          mediaElement,
+          mediaElement
         );
         mediaTab.appendChild(mediaArticle);
       })();
@@ -158,7 +191,7 @@ async function apply() {
   // implementing contact button
   const contactButton = document.getElementById("contact_button");
   const formManipulator = new contactForm();
-  contactButton.addEventListener("click", () => { 
+  contactButton.addEventListener("click", () => {
     formManipulator.displayModal();
   });
 

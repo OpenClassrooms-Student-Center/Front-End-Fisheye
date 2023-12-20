@@ -15,7 +15,7 @@ export default async function MediaTemplate(photographer, media, mediaElement) {
   mediaDataSection.appendChild(titleParagraph);
   // implementing likes
   const likeParagraph = document.createElement("p");
-  likeParagraph.setAttribute("tabindex", "1");
+  likeParagraph.setAttribute("tabindex", "2");
   likeParagraph.setAttribute("aria-live", "polite");
   const FullHeart = document.createElement("em");
   FullHeart.style.display = "none";
@@ -23,7 +23,7 @@ export default async function MediaTemplate(photographer, media, mediaElement) {
   const likeBox = document.createElement("checkbox");
   likeBox.setAttribute("class", "likeBox");
   likeBox.setAttribute("aria-label", "nombre de likes");
-  likeBox.setAttribute("tabindex", "1");
+  likeBox.setAttribute("tabindex", "2");
   //   likeBox.setAtrtribute("tabindex", "1");
 
   FullHeart.setAttribute("class", "fa-heart fa-solid");
@@ -34,7 +34,7 @@ export default async function MediaTemplate(photographer, media, mediaElement) {
   likeBox.appendChild(likeParagraph);
   likeBox.appendChild(FullHeart);
   likeBox.appendChild(EmptyHeart);
-  likeBox.setAttribute("tabindex", "1");
+  likeBox.setAttribute("tabindex", "2");
 
   mediaDataSection.appendChild(likeBox);
 
@@ -90,7 +90,7 @@ export default async function MediaTemplate(photographer, media, mediaElement) {
     img.setAttribute("alt", `image ${mediaElement.title}`);
     img.setAttribute("role", "img");
     img.setAttribute("class", "mediaImg");
-    img.setAttribute("tabindex", `1`);
+    img.setAttribute("tabindex", `2`);
     visualSection.appendChild(img);
     mediaArticle.appendChild(visualSection);
   } else {
@@ -105,7 +105,7 @@ export default async function MediaTemplate(photographer, media, mediaElement) {
     video.setAttribute("alt", `video ${mediaElement.title}`);
     video.setAttribute("class", "mediaVideo");
     video.setAttribute(`controls`, ``);
-    video.setAttribute("tabindex", "1");
+    video.setAttribute("tabindex", "2");
 
     visualSection.appendChild(video);
     mediaArticle.appendChild(visualSection);
