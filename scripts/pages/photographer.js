@@ -55,7 +55,7 @@ async function apply() {
   optionList.addEventListener("keydown", (e) => {
     if (e.key === "Enter") {
       checkbox.checked = false;
-      const selection = e.target.children[0].textContent;
+      const selection = e.target.textContent;
       if (
         selection == "Popularité" ||
         selection == "Date" ||
