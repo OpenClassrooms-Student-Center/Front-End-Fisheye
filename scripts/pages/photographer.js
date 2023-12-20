@@ -18,7 +18,7 @@ async function apply() {
   // getting dom elements
   const popularité= document.getElementById('popularité');
   const date= document.getElementById("date");
-  const titre= document.getElementById("titre");
+  const trieurElement= document.getElementById("trieurElement");
   const trieur = document.getElementById("trieur");
   const optionList = document.getElementById("optionList");
   const selected = document.getElementById("selected");
@@ -43,18 +43,21 @@ async function apply() {
       sortingMedia("Titre");
     }
   });
-  trieur.addEventListener("keydown", (e) => {
+   // setting inlusive event listener
+
+  trieurElement.addEventListener("keydown", (e) => {
     if (e.key === "Enter") {
-   
       checkbox.checked = true;
-      popularité.focus();
+      optionList.focus();
+   
 
     }
   });
-  // setting inlusive event listener
+ 
   optionList.addEventListener("keydown", (e) => {
     if (e.key === "Enter") {
-      checkbox.checked = false;
+      checkbox.checked = true;
+   
       const selection = e.target.textContent;
       if (
         selection == "Popularité" ||
@@ -65,10 +68,14 @@ async function apply() {
       }
       if (selection == "Popularité") {
         sortingMedia("Popularité");
+
+        checkbox.checked = false;
       } else if (selection == "Date") {
         sortingMedia("Date");
+        checkbox.checked = false;
       } else if (selection == "Titre") {
         sortingMedia("Titre");
+        checkbox.checked = false;
       }
     }
   });

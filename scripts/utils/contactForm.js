@@ -5,11 +5,11 @@ export default class contactForm {
     modal.style.display = "block";
     modal.setAttribute("aria-hidden", "false");
  
-    // const utilisateur = document.getElementById("prenomUtilisateur");
-    // utilisateur.focus();
-    const body = document.querySelector("body");
-    body.setAttribute("aria-hidden", "true");
-    modal.focus();
+    const utilisateur = document.getElementById("prenomUtilisateur");
+    utilisateur.focus();
+  
+  
+   
   }
 
   closeModal() {

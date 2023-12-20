@@ -32,15 +32,15 @@
         <input type="checkbox" id="checkbox"  unchecked>
          
    
-          <div  class="trieurElements">
-            <p id="selected"  tabindex="1">Popularité</p>
+          <div  class="trieurElements" id="trieurElement"  >
+            <p id="selected"  tabindex="1"   aria-label="choisir système de trie des videos et images" aria-live="polite" >Popularité</p>
             <span class="fa-solid fa-chevron-down chevron"></span>
           </div>
         </input>
    
-        <div id="optionList" tabindex="1">
-          <div class="trieurElements"  tabindex="1" id="popularité">
-            <p>Popularité<p>
+        <div id="optionList" tabindex="1" >
+          <div class="trieurElements" id="popularité">
+            <p  tabindex="1" >Popularité<p>
             <span class="fa-solid fa-chevron-up chevron"></span>
           </div>
           <p class="trieurElements" tabindex="1" id="date">Date</p>
@@ -73,26 +73,26 @@
       </section>
     </dialog>
 
-    <dialog class= "modal" id="contact_modal" role="dialog" tabindex="1">
+    <dialog class= "modal" id="contact_modal" role="dialog" tabindex="2">
 		
 				<header>
           <h2>Contactez-moi</h2>
-          <img id='modalCloseBtn'src="assets/icons/close.svg" tabindex="1">
+          <img id='modalCloseBtn'src="assets/icons/close.svg" tabindex="2">
         </header>
 				<form class="form">
 					<div>
 						<label  for="prenomUtilisateur">Prénom</label>
-						<input type=text id="prenomUtilisateur" tabindex="1">
+						<input type=text id="prenomUtilisateur" tabindex="2">
             <label id="nomUtilisateur" >Nom</label>
-            <input id="inputNom" for="nomUtilisateur" aria-label="nomUtilisateur"  tabindex="1">
+            <input id="inputNom" for="nomUtilisateur" aria-label="nomUtilisateur"  tabindex="2">
             <label id="emailUtilsateur" aria-label="Entrez email">Email</label>
-            <input id="inputEmail" for="emailUtilisateur" aria-label="emailUtilisateur" aria-describedby[]="email-format"  tabindex="1">
+            <input id="inputEmail" for="emailUtilisateur" aria-label="emailUtilisateur" aria-describedby[]="email-format"  tabindex="2">
             <span id="email-format" class="hidden" >quelquechose@domain.extension</span>
          
             <label id="votreMessage">Votre message</label>
             <input id="inputMessage" class="formMessage" for="votreMessage" aria-label="votreMessage"  tabindex="2">
 					</div>
-          <button id=validButton class="contact_button" tabindex="1">Envoyer</button>
+          <button id=validButton class="contact_button" tabindex="2">Envoyer</button>
 				</form>
 		
 		</dialog>
