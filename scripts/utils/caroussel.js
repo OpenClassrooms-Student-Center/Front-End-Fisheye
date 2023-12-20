@@ -1,5 +1,5 @@
-import { getData } from "../pages/dataJson.js";
-import MediaTemplate from "../templates/mediaTemplate.js";
+// import { getData } from "../pages/dataJson.js";
+// import MediaTemplate from "../templates/mediaTemplate.js";
 
 export default async function getCaroussel(photographer, media, mediaElement) {
   // geting dom Caroussel Elements
@@ -8,13 +8,11 @@ export default async function getCaroussel(photographer, media, mediaElement) {
 
   // eslint-disable-next-line no-shadow
   let mediaIndex = media.findIndex((media) => media.id === mediaElement.id);
-let carousselMedia = "";
+  let carousselMedia = "";
   // eslint-disable-next-line no-use-before-define
   afficherMedia();
-  
+
   function afficherMedia() {
-
-
     // setting img if image
     if (media[mediaIndex].image) {
       carousselMedia = document.createElement("img");
@@ -126,8 +124,7 @@ let carousselMedia = "";
   const focusMedia = document.getElementById("centerSection");
   focusMedia.addEventListener("keydown", (e) => {
     if (e.key === "Enter") {
-      alert('coucou');
-      document.getElementById('video').focus();
+      document.getElementById("video").focus();
     }
   });
 
