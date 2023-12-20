@@ -5,7 +5,7 @@ async function getPhotographers() {
       throw new Error(`HTTP error! status: ${response.status}`);
     }
     const datas = await response.json();
-    console.log(datas);
+    console.log(datas.photographers);
     return datas;
   } catch (error) {
     console.log('Erreur lors de la récupération des données:', error);
