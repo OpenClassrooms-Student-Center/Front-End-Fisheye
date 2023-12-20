@@ -6,7 +6,7 @@ export default class contactForm {
     modal.setAttribute("aria-hidden", "false");
  
     const utilisateur = document.getElementById("prenomUtilisateur");
-    utilisateur.focus();
+    modal.focus();
   
   
    
@@ -25,7 +25,8 @@ export default class contactForm {
     form.addEventListener("submit", (e) => {
       e.preventDefault();
       this.closeModal();
-    });
+ 
+
     // capting data
     const body = document.querySelector("body");
     const inputPrenom = document.getElementById("inputPrenom");
@@ -35,8 +36,8 @@ export default class contactForm {
 
     // eslint-disable-next-line no-console
     console.log(
+      `Prenom: ${inputPrenom.value}\n` +
       `Nom: ${inputNom.value}\n` +
-        `Prenom: ${inputPrenom.value}\n` +
         `Email: ${inputEmail.value}\n` +
         `Message: ${inputMessage.value}`,
     );
@@ -44,6 +45,9 @@ export default class contactForm {
     const modal = document.getElementById("contact_modal");
     modal.style.display = "none";
     modal.setAttribute("aria-hidden", "true");
-    body.setAttribute("aria-hidden", "false");
-  }
+
+    form.reset();
+  });
+}
+
 }

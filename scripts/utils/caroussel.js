@@ -8,12 +8,12 @@ export default async function getCaroussel(photographer, media, mediaElement) {
 
   // eslint-disable-next-line no-shadow
   let mediaIndex = media.findIndex((media) => media.id === mediaElement.id);
-
+let carousselMedia = "";
   // eslint-disable-next-line no-use-before-define
   afficherMedia();
-
+  
   function afficherMedia() {
-    let carousselMedia = "";
+
 
     // setting img if image
     if (media[mediaIndex].image) {
@@ -42,7 +42,7 @@ export default async function getCaroussel(photographer, media, mediaElement) {
       carousselMedia.setAttribute("alt", `video ${media[mediaIndex].title}`);
       carousselMedia.setAttribute("class", "mediaVideo");
       carousselMedia.setAttribute("class", "carousselMedia");
-      carousselMedia.setAttribute("tabindex", "3");
+      carousselMedia.setAttribute("id", "video");
       carousselMedia.setAttribute(`controls`, ``);
 
       // implementing media in mediaSection
@@ -82,6 +82,7 @@ export default async function getCaroussel(photographer, media, mediaElement) {
         // eslint-disable-next-line no-plusplus
         mediaIndex--;
         afficherMedia();
+        document.getElementById("centerSection").focus();
       }
     }
   });
@@ -109,6 +110,7 @@ export default async function getCaroussel(photographer, media, mediaElement) {
         // eslint-disable-next-line no-plusplus
         mediaIndex++;
         afficherMedia();
+        document.getElementById("centerSection").focus();
       }
     }
   });
@@ -120,6 +122,15 @@ export default async function getCaroussel(photographer, media, mediaElement) {
       main.style.display = "block";
     }
   });
+  // zooming on video
+  const focusMedia = document.getElementById("centerSection");
+  focusMedia.addEventListener("keydown", (e) => {
+    if (e.key === "Enter") {
+      alert('coucou');
+      document.getElementById('video').focus();
+    }
+  });
+
   // opening Caroussel
   lightBox.style.display = "flex";
   const main = document.getElementById("main");

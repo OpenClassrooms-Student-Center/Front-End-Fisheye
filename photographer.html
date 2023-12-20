@@ -18,10 +18,10 @@
      <script src="https://kit.fontawesome.com/76ea79564c.js" crossorigin="anonymous"></script>
       </header>
 
-    <main id="main">
+    <main id="main" tabindex="1">
       <section class="photographer">
         
-        <button class="contact_button" id="contact_button" tabindex="1">Contactez-moi</button>
+        <button class="contact_button" id="contact_button" aria-label="contacter photographe" tabindex="1">Contactez-moi</button>
       
       </section>
       <div class="finderZone">
@@ -32,8 +32,8 @@
         <input type="checkbox" id="checkbox"  unchecked>
          
    
-          <div  class="trieurElements" id="trieurElement"  >
-            <p id="selected"  tabindex="1"   aria-label="choisir système de trie des videos et images" aria-live="polite" >Popularité</p>
+          <div  class="trieurElements" id="trieurElement"   aria-live="polite">
+            <p id="selected"  tabindex="1"   aria-label="choisir système de trie des videos et images" >Popularité</p>
             <span class="fa-solid fa-chevron-down chevron"></span>
           </div>
         </input>
@@ -60,15 +60,15 @@
     <dialog class="lightBox" id="lightBoxModal">
       <section id="caroussel">
         <div id="leftSection" class="sideSection">
-          <button id="leftButton" class="carousselButton" tabindex="1"><em class="fa-solid fa-chevron-left"></em></button>
+          <button id="leftButton" class="carousselButton" aria-label='media précédent' tabindex="2"><em class="fa-solid fa-chevron-left"></em></button>
         </div>
-        <div id="centerSection">
-          <section id="mediaSection" tabindex="2" ></section>
+        <div id="centerSection" tabindex="2">
+          <section id="mediaSection"  ></section>
 
         </div>
         <div id="rightSection" class="sideSection">
-          <button id="closeButton" class="carousselButton" tabindex="4"><em class="fa-solid fa-close"></em></button>
-          <button id="rightButton" class="carousselButton" tabindex="3"><em class="fa-solid fa-chevron-right"></em></button>
+          <button id="closeButton" class="carousselButton" aria-label='bouton fermer caroussel' tabindex="3"><em class="fa-solid fa-close"></em></button>
+          <button id="rightButton" class="carousselButton" aria-label=' bouton media suivant' tabindex="2"><em class="fa-solid fa-chevron-right"></em></button>
         </div>
       </section>
     </dialog>
@@ -77,12 +77,12 @@
 		
 				<header>
           <h2>Contactez-moi</h2>
-          <img id='modalCloseBtn'src="assets/icons/close.svg" tabindex="2">
+          <img id='modalCloseBtn'src="assets/icons/close.svg" alt="bouton fermeture du formulaire" tabindex="2">
         </header>
 				<form class="form">
 					<div>
-						<label  for="prenomUtilisateur">Prénom</label>
-						<input type=text id="prenomUtilisateur" tabindex="2">
+						<label  id="PrenomUtilisateur">Prénom</label>
+						<input  id="inputPrenom" for="prenomUtilisateur" aria-label="prenomUtilisateur" tabindex="2">
             <label id="nomUtilisateur" >Nom</label>
             <input id="inputNom" for="nomUtilisateur" aria-label="nomUtilisateur"  tabindex="2">
             <label id="emailUtilsateur" aria-label="Entrez email">Email</label>
@@ -92,7 +92,7 @@
             <label id="votreMessage">Votre message</label>
             <input id="inputMessage" class="formMessage" for="votreMessage" aria-label="votreMessage"  tabindex="2">
 					</div>
-          <button id=validButton class="contact_button" tabindex="2">Envoyer</button>
+          <button id=validButton class="contact_button"  tabindex="2">Envoyer</button>
 				</form>
 		
 		</dialog>
