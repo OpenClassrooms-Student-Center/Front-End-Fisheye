@@ -25,7 +25,7 @@ export default function photographerTemplate(data) {
 
     const localisationP = document.createElement("p");
     localisationP.setAttribute("class", "localisation");
-    localisationP.textContent = city+ ", " + country;
+    localisationP.textContent = `${city}, ${country}`;
 
     const tagP = document.createElement("p");
     tagP.setAttribute("class", "tag");

@@ -3,8 +3,6 @@ export default class contactForm {
     const modal = document.getElementById("contact_modal");
     modal.style.display = "block";
     modal.setAttribute("aria-hidden", "false");
-
-    const utilisateur = document.getElementById("prenomUtilisateur");
     modal.focus();
   }
 
@@ -12,7 +10,6 @@ export default class contactForm {
     const modal = document.getElementById("contact_modal");
     modal.style.display = "none";
     modal.setAttribute("aria-hidden", "true");
-    body.setAttribute("aria-hidden", "false");
   }
 
   validModal() {
@@ -23,7 +20,6 @@ export default class contactForm {
       this.closeModal();
 
       // capting data
-      const body = document.querySelector("body");
       const inputPrenom = document.getElementById("inputPrenom");
       const inputNom = document.getElementById("inputNom");
       const inputEmail = document.getElementById(`inputEmail`);
