@@ -29,3 +29,13 @@ QUESTION 2
   a sa boite conteneur
 
   changer la taille des polices dans le form
+
+  DERNIERE SEANCE SUR FISHEYE
+
+  Question 1:faut il mettre des media-query
+  Question 2:faut il corriger les erreurs de prettyer
+  
+
+  Projet 7
+  Conseils generaux ?
+  media Query?
