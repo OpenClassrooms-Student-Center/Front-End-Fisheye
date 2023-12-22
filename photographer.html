@@ -11,7 +11,7 @@
     <header>
       <a href="index.html"> <img src="./assets/images/logo.png" class="logo" /></a>
     </header>
-    <main id="main">
+    <main id="main" aria-hidden="false">
       <div class="photograph-header" id="photograph_header"></div>
 
       <div id="media-container" class="media_section"></div>
@@ -20,11 +20,34 @@
         <p id="tarif_journalier"></p>
       </div>
     </main>
-    <div id="contact_modal" class="bground">
+    <!-- Carrousel -->
+    <div id="lightbox">
+      <div id="lightbox_content">
+        <header>
+          <span class="close cursor" id="close_lightbox">&times;</span>
+        </header>
+        <div role="button" class="controls controls-left" id="left_arrow">
+          <span class="img prev-image">
+            <i class="fa-solid fa-arrow-left"></i>
+          </span>
+          <p class="sr-only">Previous</p>
+        </div>
+        <div id="media_lightbox"></div>
+        <div role="button" class="controls controls-right" id="right_arrow">
+          <span class="img next-image">
+            <i class="fa-solid fa-arrow-right"></i>
+          </span>
+          <p class="sr-only">Next</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- modal -->
+    <div id="contact_modal" class="bground aria-hidden="true" role="dialog"  aria-describedby="modalTitle">
       <div class="modal content">
         <header>
-          <h2 class="modal-title">Contactez-moi</h2>
-          <img src="./assets/icons/close.svg" id="close_btn" />
+          <h2 id="modalTitle" class="modal-title">Contactez-moi</h2>
+          <img src="./assets/icons/close.svg" id="close_btn" tabindex="0"/>
         </header>
         <div class="modal-body">
           <form id="Form_modal">

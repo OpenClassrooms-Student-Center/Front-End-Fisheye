@@ -19,7 +19,7 @@ function photographerTemplate(data) {
 }
 
 function photographerTemplateId(data) {
-  const { name, portrait, id, city, country, tagline } = data;
+  const { name, portrait, city, country, tagline } = data;
 
   const picture = `assets/photographers/${portrait}`;
 
@@ -53,8 +53,8 @@ function createMediaElement(media, photographerName) {
 
   const altContent = media.title || "";
   const mediaElement = media.image
-    ? `<img class="media-element" src="${mediaPath}" alt ="${altContent}">`
-    : `<div><video controls class ="media-element" src="${mediaPath}"></div>`;
+    ? `<img class="media-element" data-mediaId=${media.id} src="${mediaPath}" alt ="${altContent}">`
+    : `<div><video controls class ="media-element" data-mediaId=${media.id} src="${mediaPath}"></div>`;
   const mediaInfo = `
     <div class="media-info">
       <p class="media-title">${media.title}</p>

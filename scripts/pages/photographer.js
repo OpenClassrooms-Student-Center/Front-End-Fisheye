@@ -76,8 +76,55 @@ async function displayPhotographerInfo() {
     });
 
     mediaContainer.innerHTML = mediaElements;
+    //rend cliquable les media
+    const allMedia = Array.from(document.getElementsByClassName("media-element"));
+    allMedia.forEach((mediaLightbox, index) => {
+      mediaLightbox.addEventListener("click", () => {
+        openLightbox(index, media);
+      });
+    });
   } else {
     console.log("Photographer not found");
   }
 }
 displayPhotographerInfo();
+
+function openLightbox(selectedMediaIndex, media) {
+  // Mettez à jour le contenu de la lightbox avec le média sélectionné
+  const lightboxMediaContainer = document.getElementById("media_lightbox");
+
+  const selectedMedia = media[selectedMediaIndex];
+  const selectedMediaId = selectedMedia.id;
+
+  const selectedMediaElement = document.querySelector(`.media-element[data-mediaId="${selectedMediaId}"]`);
+
+  //récupère HTML de l'élément média sélectionné  et l'injecte dans la div media_lightbox
+  const mediaElementHTML = selectedMediaElement.outerHTML;
+  lightboxMediaContainer.innerHTML = mediaElementHTML;
+
+  // Affichez la lightbox
+  document.getElementById("lightbox").style.display = "block";
+
+  // Ajoutez des écouteurs d'événements pour la navigation dans la lightbox
+  document.getElementById("left_arrow").addEventListener("click", () => navigateLightbox(-1));
+  document.getElementById("right_arrow").addEventListener("click", () => navigateLightbox(1));
+
+  function navigateLightbox(direction) {
+    // Implémentez la logique pour naviguer vers l'image précédente ou suivante
+    selectedMediaIndex = (selectedMediaIndex + direction + media.length) % media.length;
+    const newMedia = media[selectedMediaIndex];
+    const newMediaId = newMedia.id;
+    const newMediaElement = document.querySelector(`.media-element[data-mediaId="${newMediaId}"]`);
+    const newMediaElementHTML = newMediaElement.outerHTML;
+
+    lightboxMediaContainer.innerHTML = newMediaElementHTML;
+  }
+}
+
+function closeLightbox() {
+  document.getElementById("lightbox").style.display = "none";
+}
+
+document.getElementById("close_lightbox").addEventListener("click", () => {
+  closeLightbox();
+});
