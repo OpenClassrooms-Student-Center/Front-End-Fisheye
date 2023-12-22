@@ -144,9 +144,7 @@ form input {
                     background-color: white;
                     font-size: 5rem;
                 border:solid transparent;
-                &:focus{
-                border:solid violet 1rem;
-                }
+           
                 }
             /* close button */
             #closeButton{
@@ -185,7 +183,7 @@ form input {
 
             // image or video
             .carousselMedia{
-                object-fit:contain;
+                object-fit:cover;
                 height: 80%;
                 width:100%;
                

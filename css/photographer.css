@@ -129,9 +129,6 @@ form input {
   font-size: 5rem;
   border: solid transparent;
 }
-.lightBox #caroussel .sideSection .carousselButton:focus {
-  border: solid violet 1rem;
-}
 .lightBox #caroussel .sideSection #closeButton {
   position: absolute;
   top: -2rem;
@@ -157,8 +154,8 @@ form input {
   /* media name */
 }
 .lightBox #caroussel #centerSection #mediaSection .carousselMedia {
-  -o-object-fit: contain;
-     object-fit: contain;
+  -o-object-fit: cover;
+     object-fit: cover;
   height: 80%;
   width: 100%;
   overflow: clip;
