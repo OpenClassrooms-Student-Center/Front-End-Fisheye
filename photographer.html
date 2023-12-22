@@ -1,37 +1,72 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <link href="css/style.css" rel="stylesheet" type="text/css" />
-    <meta charset="utf-8">
-    <link rel="icon" type="image/png" href="assets/favicon.png">
-    <link href="https://fonts.googleapis.com/css?family=DM+Sans&display=swap" rel="stylesheet">
-    <title>Fisheye - photographe </title>
+    <link href="./css/style.css" rel="stylesheet" type="text/css" />
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/png" href="assets/favicon.png" />
+    <link href="https://fonts.googleapis.com/css?family=DM+Sans&display=swap" rel="stylesheet" />
+    <title>Fisheye - photographe</title>
   </head>
   <body>
     <header>
-      <img src="assets/images/logo.png" class="logo" />
+      <a href="index.html"> <img src="./assets/images/logo.png" class="logo" /></a>
     </header>
-    <main id="main">
-      <div class="photograph-header">
-        <button class="contact_button" onclick="displayModal()">Contactez-moi</button>
+    <main id="main" aria-hidden="false">
+      <div class="photograph-header" id="photograph_header"></div>
+
+      <div id="media-container" class="media_section"></div>
+
+      <div id="bottom-right-box">
+        <p id="tarif_journalier"></p>
       </div>
     </main>
-    <div id="contact_modal">
-			<div class="modal">
-				<header>
-          <h2>Contactez-moi</h2>
-          <img src="assets/icons/close.svg" onclick="closeModal()" />
+    <!-- Carrousel -->
+    <div id="lightbox">
+      <div id="lightbox_content">
+        <header>
+          <span class="close cursor" id="close_lightbox">&times;</span>
         </header>
-				<form>
-					<div>
-						<label>Prénom</label>
-						<input />
-					</div>
-          <button class="contact_button">Envoyer</button>
-				</form>
-			</div>
-		</div>
-    <script src="/scripts/pages/photographer.js"></script>
-    <script src="/scripts/utils/contactForm.js"></script>
+        <div role="button" class="controls controls-left" id="left_arrow">
+          <span class="img prev-image">
+            <i class="fa-solid fa-arrow-left"></i>
+          </span>
+          <p class="sr-only">Previous</p>
+        </div>
+        <div id="media_lightbox"></div>
+        <div role="button" class="controls controls-right" id="right_arrow">
+          <span class="img next-image">
+            <i class="fa-solid fa-arrow-right"></i>
+          </span>
+          <p class="sr-only">Next</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- modal -->
+    <div id="contact_modal" class="bground aria-hidden="true" role="dialog"  aria-describedby="modalTitle">
+      <div class="modal content">
+        <header>
+          <h2 id="modalTitle" class="modal-title">Contactez-moi</h2>
+          <img src="./assets/icons/close.svg" id="close_btn" tabindex="0"/>
+        </header>
+        <div class="modal-body">
+          <form id="Form_modal">
+            <div>
+              <label for="prenom">Prénom</label>
+              <input type="text" id="prenom" name="prenom" required />
+              <label for="nom">Nom</label>
+              <input type="text" id="nom" name="nom" required />
+              <label for="email">Email</label>
+              <input type="email" id="email" name="email" required />
+              <label for="message">Votre Message :</label>
+              <textarea id="message" name="message" rows="4" required></textarea>
+            </div>
+            <button class="contact_button" id="submit_btn">Envoyer</button>
+          </form>
+        </div>
+      </div>
+    </div>
+    <script src="https://kit.fontawesome.com/8c24e7947e.js" crossorigin="anonymous"></script>
+    <script type="module" src="./scripts/pages/photographer.js"></script>
   </body>
 </html>

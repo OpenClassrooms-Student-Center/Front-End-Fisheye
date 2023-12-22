@@ -1,5 +1,13 @@
 @import url("photographer.css");
 
+h1,
+h2,
+h3,
+p {
+    margin: 0;
+    padding: 0;
+}
+
 body {
     font-family: "DM Sans", sans-serif;
     margin: 0;
@@ -44,7 +52,29 @@ h1 {
     font-size: 36px;
 }
 
+.photographer_section article h3 {
+    color: #901C1C;
+    font-weight: 400;
+    font-size: 18px;
+
+}
+
+.priceTag {
+    color: #757575;
+    font-size: 16px;
+
+}
+
+.taglineText {
+    color: #000000;
+    font-weight: 400;
+    font-size: 17px;
+
+}
+
 .photographer_section article img {
     height: 200px;
     width: 200px;
+    object-fit: cover;
+    border-radius: 50%;
 }
