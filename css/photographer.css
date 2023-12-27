@@ -88,6 +88,7 @@ form input {
   height: 68px;
   border: none;
   border-radius: 5px;
+  font-size: 2rem;
 }
 
 /* CAROUSSEL */
@@ -130,7 +131,7 @@ form input {
   border: solid transparent;
 }
 .lightBox #caroussel .sideSection .carousselButton:focus {
-  border: solid violet 1rem;
+  border: solid violet 3px;
 }
 .lightBox #caroussel .sideSection #closeButton {
   position: absolute;

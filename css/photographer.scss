@@ -98,6 +98,9 @@ form input {
     height: 68px;
     border: none;
     border-radius: 5px;
+
+    font-size: 2rem;
+
 }
 /* CAROUSSEL */
 .lightBox{
@@ -145,7 +148,7 @@ form input {
                     font-size: 5rem;
                 border:solid transparent;
                 &:focus{
-                border:solid violet 1rem;
+                border:solid violet 3px;
                 }
                 }
             /* close button */

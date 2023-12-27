@@ -8,9 +8,9 @@ body {
     box-sizing: border-box;
 }
 
-* :focus{
-    border:solid violet 1rem;
-}
+/* * :focus{
+    border:solid violet 3px;
+} */
 header {
     display: flex;
     flex-direction: row;
