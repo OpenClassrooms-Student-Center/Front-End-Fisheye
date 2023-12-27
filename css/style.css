@@ -8,9 +8,9 @@ body {
     box-sizing: border-box;
 }
 
-/* * :focus{
-    border:solid violet 3px;
-} */
+* :focus{
+    border:solid white 3px;
+}
 header {
     display: flex;
     flex-direction: row;
@@ -122,14 +122,14 @@ a{ text-decoration: none;}
     margin-right:auto;
     width: 350px;
     height: 350px;
-    object-fit: unset;
+    object-fit: cover;
 }
 .mediaVideo{
     margin-left:auto;
     margin-right:auto;
     width: 350px;
     height: 350px;
-    object-fit: unset;
+    object-fit: cover;
 }
 .mediaDataSection{
     display: flex;

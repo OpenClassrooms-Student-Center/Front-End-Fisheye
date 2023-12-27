@@ -16,9 +16,9 @@ async function apply() {
 
   // CREATING SELECTOR
   // getting dom elements
-  const popularité= document.getElementById('popularité');
-  const date= document.getElementById("date");
-  const trieurElement= document.getElementById("trieurElement");
+  const popularité = document.getElementById("popularité");
+  const date = document.getElementById("date");
+  const trieurElement = document.getElementById("trieurElement");
   const trieur = document.getElementById("trieur");
   const optionList = document.getElementById("optionList");
   const selected = document.getElementById("selected");
@@ -43,21 +43,19 @@ async function apply() {
       sortingMedia("Titre");
     }
   });
-   // setting inlusive event listener
+  // setting inlusive event listener
 
   trieurElement.addEventListener("keydown", (e) => {
     if (e.key === "Enter") {
       checkbox.checked = true;
       optionList.focus();
-   
-
     }
   });
- 
+
   optionList.addEventListener("keydown", (e) => {
     if (e.key === "Enter") {
       checkbox.checked = true;
-   
+
       const selection = e.target.textContent;
       if (
         selection == "Popularité" ||
@@ -115,7 +113,7 @@ async function apply() {
   const portraitImg = document.createElement("img");
   portraitImg.setAttribute(
     "src",
-    `assets/photographers/${photographer[0].portrait}`
+    `assets/photographers/${photographer[0].portrait}`,
   );
   portraitImg.setAttribute(`alt`, `photo de ${photographer[0].name}`);
   portraitImg.setAttribute("class", "portrait");
@@ -175,7 +173,7 @@ async function apply() {
         const mediaArticle = await MediaTemplate(
           photographer,
           media,
-          mediaElement
+          mediaElement,
         );
         mediaTab.appendChild(mediaArticle);
       })();

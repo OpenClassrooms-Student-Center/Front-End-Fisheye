@@ -29,3 +29,22 @@ QUESTION 2
   a sa boite conteneur
 
   changer la taille des polices dans le form
+
+  DERNIERE SEANCE SUR FISHEYE
+
+  Question 1:faut il mettre des media-query
+  Question 2:faut il corriger les erreurs de prettyer
+  
+  Derniers conseils pour p6
+https://achecks.org/checker/index.php (meilleur score necessaire)
+virer border solid pink
+
+  Projet 7
+  Conseils generaux ?
+  media Query?
+
+  d abord faire l algorigrame suivre les carousselArticle
+  quand on filtre sur les recettes faire une fonction principale qui se relance des qu on recherche un parametre
+  refaire un nouveau tableau ne pas partir du tableau issu de la recherche precedente.
+
+
