@@ -3,6 +3,7 @@ import MediaTemplate from "../templates/mediaTemplate.js";
 import contactForm from "../utils/contactForm.js";
 import getCaroussel from "../utils/caroussel.js";
 
+// getting photographer id
 async function apply() {
   const params = new URL(document.location).searchParams;
   const photographerID = params.get("id");
@@ -10,11 +11,11 @@ async function apply() {
   // getting photographer data
   const Object = new DataObject();
   console.log(Object.data);
-  // console.log(Object.data.photographers[0].name);
+ 
 
   const photographer = await Object.getPhotographerById(photographerID);
 
-  // CREATING SELECTOR
+  // CREATING SORT SELECTOR
   // getting dom elements
   const popularité = document.getElementById("popularité");
   const date = document.getElementById("date");
@@ -82,7 +83,7 @@ async function apply() {
 
   // iplementing photographer section elements
 
-  // implementing infosection
+  // creating infosection
 
   const NameH2 = document.createElement("h2");
   NameH2.setAttribute("class", "name");
@@ -163,8 +164,9 @@ async function apply() {
     mediaTab.setAttribute(`scope`, `row`);
     mediaTab.setAttribute(`id`, `mediaTab`);
 
-    // creating caroussel section
-    const carousselSection = document.getElementById("caroussel");
+
+
+
 
     // implementing mediaArticls
     media.forEach((mediaElement) => {
@@ -193,9 +195,15 @@ async function apply() {
   priceP.textContent = `${photographer[0].price} € `;
   mediaSection.appendChild(priceP);
 
+  // CONTACT SECTION
+
   // implementing contact button
   const contactButton = document.getElementById("contact_button");
   const formManipulator = new contactForm();
+
+  // implementing event listeners
+
+  //implementing contact button
   contactButton.addEventListener("click", () => {
     formManipulator.displayModal();
   });
@@ -212,7 +220,21 @@ async function apply() {
     formManipulator.closeModal();
   });
 
-  // setting blide processor
-}
+  //implementing inclusive event listeners
 
+  contactButton.addEventListener("keydown", (e) => {
+    if (e.key === "Enter") {
+      formManipulator.displayModal();
+  }});
+  closeButton.addEventListener("keydown", (e) => {
+    if (e.key === "Enter") {
+      formManipulator.closeModal();
+  }});
+
+validButton.addEventListener("keydown", (e) => {
+    if (e.key === "Enter") {
+    formManipulator.validModal();
+  }});
+}
 apply();
+
