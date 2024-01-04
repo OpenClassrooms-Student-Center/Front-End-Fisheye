@@ -10,9 +10,11 @@ function photographerTemplate(data) {
     const h2 = document.createElement('h2');
     h2.textContent = name ?? 'nom inconnu';
     const cityP = document.createElement('p');
-    cityP.textContent = city ?? 'ville inconue';
+    cityP.textContent = city ?? 'ville inconnue';
     const countryP = document.createElement('p');
-    countryP.textContent = country ?? 'pays inconnu';
+    countryP.textContent = country ?? 'pays inconnu'; // si chaîne de caractères vide => string vide
+    countryP.textContent = country || 'pays inconnu'; // => pays inconnu;
+
     const quote = document.createElement('p');
     quote.textContent = tagline ?? '';
     const priceP = document.createElement('p');
