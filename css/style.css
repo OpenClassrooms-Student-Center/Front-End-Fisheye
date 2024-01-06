@@ -27,7 +27,7 @@ h1 {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   gap: 70px;
-  margin-top: 100px;
+  margin: 100px 0;
 }
 
 .photographer_section article {
@@ -46,4 +46,37 @@ h1 {
 .photographer_section article img {
   height: 200px;
   width: 200px;
+  border-radius: 100%;
+  object-fit: cover;
+}
+
+a {
+  text-decoration: none;
+}
+p {
+  margin: 0;
+}
+
+.photographer__link {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.photographer__name {
+  margin-bottom: 5px;
+}
+.photographer__quote {
+  margin: 5px 0;
+}
+.photographer__price {
+  color: #525252;
+}
+.location__container {
+  display: flex;
+  color: #901c1c;
+  font-weight: 500;
+}
+
+.city {
+  padding-right: 5px;
 }
