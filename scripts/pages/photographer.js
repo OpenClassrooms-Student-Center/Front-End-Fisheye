@@ -29,12 +29,12 @@ fetch("./data/photographers.json")
       const modalTitleName = document.querySelector(".modal-title_name");
       modalTitleName.append(photographer.name);
 
-
-      const photographerMedia = media.filter((element) => element.photographerId === photographerId);
+      // Récupérer les médias correspondant au photographe
       const photographerMedias = document.querySelector(".photograph-medias");
+      const photographerMedia = media.filter((element) => element.photographerId === photographerId);
+
 
       photographerMedia.forEach((media) => {
-        /*
         const mediaElement = document.createElement("div");
         mediaElement.classList.add("photograph-media");
         mediaElement.innerHTML = `       
@@ -44,15 +44,18 @@ fetch("./data/photographers.json")
             <span class="media-like">${media.likes} likes</span>
           </div>
         `;
-        */
         photographerMedias.appendChild(mediaElement);
       });
     }
-  
+
   })
-  //.catch((error) => {
- //   console.error('Error fetching data:', error);
- // });
+
+/*
+  <a href="#" data-media=${media.id} role="link" aria-label="View media large">
+  ${mediaContent}
+  </a>
+*/
+
 
 
   
