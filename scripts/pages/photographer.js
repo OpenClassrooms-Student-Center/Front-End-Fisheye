@@ -35,8 +35,10 @@ fetch("./data/photographers.json")
 
 
       photographerMedia.forEach((media) => {
+
         const mediaElement = document.createElement("div");
         mediaElement.classList.add("photograph-media");
+        
         mediaElement.innerHTML = `       
           <img class="" src="assets/photographers/${photographer.name}/${media.image}" alt="${media.image}">
           <div class="media-text">
@@ -44,6 +46,7 @@ fetch("./data/photographers.json")
             <span class="media-like">${media.likes} likes</span>
           </div>
         `;
+
         photographerMedias.appendChild(mediaElement);
       });
     }
