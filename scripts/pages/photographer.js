@@ -29,28 +29,42 @@ fetch("./data/photographers.json")
       const modalTitleName = document.querySelector(".modal-title_name");
       modalTitleName.append(photographer.name);
 
-
-      const photographerMedia = media.filter((element) => element.photographerId === photographerId);
+      // Récupérer les médias correspondant au photographe
       const photographerMedias = document.querySelector(".photograph-medias");
+      const photographerMedia = media.filter((element) => element.photographerId === photographerId);
 
-      photographerMedia.forEach((media) => {
-        const mediaElement = document.createElement("div");
-        mediaElement.classList.add("photograph-media");
-        mediaElement.innerHTML = `       
-          <img class="" src="assets/photographers/${photographer.name}/${media.image}" alt="${media.image}">
+      //photographerMedia.map((media) => { new MediasFactory
+      
+      photographerMedia.map((media) => {
+        const mediaCard = document.createElement("div");
+        mediaCard.classList.add("photograph-media");
+
+        const mediaContent = media.image
+                ? ` <img class="" src="assets/photographers/${photographer.name}/${media.image}" alt="${media.image}">`
+                : ` <video class="" aria-label="${media.alt}">
+                        <source src="./assets/photographers/${photographer.name}/${media.video}" type="video/mp4">
+                    </video>`;
+
+            mediaCard.innerHTML = `       
+              ${mediaContent}
           <div class="media-text">
             <h2 class="media-title">${media.title}</h2>
             <span class="media-like">${media.likes} likes</span>
           </div>
         `;
-        photographerMedias.appendChild(mediaElement);
+        
+        photographerMedias.appendChild(mediaCard);
       });
     }
-  
+
   })
-  //.catch((error) => {
- //   console.error('Error fetching data:', error);
- // });
+
+/*
+  <a href="#" data-media=${media.id} role="link" aria-label="View media large">
+  ${mediaContent}
+  </a>
+*/
+
 
 
   

@@ -1,4 +1,4 @@
-export default class Media {
+/*export default class Media {
     constructor(data) {
         this.id = data.id;
         this.photographerId = data.photographerId;
@@ -8,4 +8,4 @@ export default class Media {
         this.price = data.price;
         this.alt = data.alt;
     }
-};
+};*/
