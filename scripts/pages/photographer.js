@@ -34,6 +34,7 @@ fetch("./data/photographers.json")
       const photographerMedias = document.querySelector(".photograph-medias");
 
       photographerMedia.forEach((media) => {
+        /*
         const mediaElement = document.createElement("div");
         mediaElement.classList.add("photograph-media");
         mediaElement.innerHTML = `       
@@ -43,6 +44,7 @@ fetch("./data/photographers.json")
             <span class="media-like">${media.likes} likes</span>
           </div>
         `;
+        */
         photographerMedias.appendChild(mediaElement);
       });
     }
