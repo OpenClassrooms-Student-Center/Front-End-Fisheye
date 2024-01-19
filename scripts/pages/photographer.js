@@ -1,3 +1,5 @@
+import MediasFactory from "../factories/MediasFactory.js";
+
 // Récupérer l'ID du photographe depuis l'URL
 const urlParams = new URLSearchParams(window.location.search);
 const photographerId = parseInt(urlParams.get('id'));
@@ -7,7 +9,7 @@ fetch("./data/photographers.json")
   .then((response) => response.json()) // Convertir la réponse en JSON
   .then((data) => {
     const photographers = data.photographers;
-    const media = data.media;
+    const medias = data.media;
 
     // Trouver le photographe correspondant
     const photographer = photographers.find((element) => element.id === photographerId);
@@ -30,11 +32,30 @@ fetch("./data/photographers.json")
       modalTitleName.append(photographer.name);
 
       // Récupérer les médias correspondant au photographe
-      const photographerMedias = document.querySelector(".photograph-medias");
-      const photographerMedia = media.filter((element) => element.photographerId === photographerId);
+      const mediaWrapper = document.querySelector(".photograph-medias");
+      const photographerMedias = medias.filter((element) => element.photographerId === photographerId);
       
-      photographerMedia.map((media) => {
-        const mediaCard = document.createElement("div");
+     const mediaObjects = photographerMedias.map((media)=> {
+   
+      return new MediasFactory(media)
+               
+     })
+
+     mediaObjects.map((mediaObject) => {
+
+
+      mediaWrapper.append(objectWrapperHTML);
+      
+      return
+     })
+
+     
+    
+
+     console.log(medias)
+     console.log(mediaObjects)
+
+       /* const mediaCard = document.createElement("div");
         mediaCard.classList.add("photograph-media");
 
         const mediaContent = media.image
@@ -50,8 +71,8 @@ fetch("./data/photographers.json")
             <span class="media-like">${media.likes} likes</span>
           </div>
         `;       
-        photographerMedias.appendChild(mediaCard);
-      });
+        photographerMedias.appendChild(mediaCard);*/
+     
     }
 
   })
