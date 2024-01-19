@@ -1,7 +1,8 @@
-import { Image, Video } from "../../models/Media.js";
+import Image from '../models/Image.js'
+import Video from '../models/Video.js'
 
 // Factory fonction qui crée un média image ou vidéo
-export default class MoviesFactory {
+export default class MediasFactory {
 	constructor(data, type) {
 		// Si le type correspond à image, alors retourne-moi un objet image
 		if (type === 'image') {
