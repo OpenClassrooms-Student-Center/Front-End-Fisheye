@@ -6,5 +6,8 @@ export default class Image extends Media {
 		this.image = data.image;
 	}
 
+	render() {
+
+	}
 	
 }
