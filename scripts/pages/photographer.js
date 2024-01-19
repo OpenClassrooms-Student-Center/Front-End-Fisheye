@@ -64,7 +64,11 @@ fetch("./data/photographers.json")
   ${mediaContent}
   </a>
 */
-
+/*
+  <a href="#" data-media=${media.id} role="link" aria-label="View media large">
+  ${mediaContent}
+  </a>
+*/
 
 
   
