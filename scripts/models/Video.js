@@ -5,4 +5,8 @@ export default class Video extends Media {
 		super(data);
 		this.video = data.video;
 	}
+
+	render() {
+		
+	}
 }
