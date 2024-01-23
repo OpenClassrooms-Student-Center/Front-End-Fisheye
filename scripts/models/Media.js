@@ -9,7 +9,7 @@ export default class Media {
         this.alt = data.alt;
     }
 
-    createCard() {
+   createCard() {
         const mediaCard = document.createElement("div");
         mediaCard.classList.add("photograph-media");
 
