@@ -17,8 +17,9 @@ fetch("./data/photographers.json")
 
     // Afficher les détails du photographe
     if (photographer) {
-      /*const photographerDetails = document.createElement('div');*/
+
       const photographerHeader = document.querySelector(".photograph-header");
+
       photographerHeader.innerHTML = ` 
       <div class="photograph-text">
         <h1 class="name">${photographer.name}</h1>
@@ -28,8 +29,6 @@ fetch("./data/photographers.json")
       <button class="contact_button" onclick="displayModal()">Contactez-moi</button>  
       <img class="portrait" src="assets/photographers/portrait/${photographer.portrait}" alt="${photographer.name}">
       `;
-     
-    }
 
     const modalTitleName = document.querySelector(".modal-title_name");
     modalTitleName.append(photographer.name);
@@ -40,61 +39,39 @@ fetch("./data/photographers.json")
     
     const mediaObjects = photographerMedias.map((media)=> {
 
-      return new MediasFactory(media)
+    return new MediasFactory(media)
 
    })
 
-   mediaObjects.map((mediaObject) => {
-      
-    const mediaCard = mediaObject.createCard();
-      
-    mediaWrapper.append(mediaCard);
-      
-    return mediaCard;
-  
-  })
+     mediaObjects.map((mediaObject) => {
 
-   
+      const mediaCard = mediaObject.append(mediaCard);
 
-   console.log(mediaObjects)
- 
+      mediaWrapper.append(mediaCard);
+      
+      return mediaCard;
+
+     })
+     console.log(mediaObjects)
+    
+    }
 
   })
-
-   
-
-   //console.log(medias)
   
-  
-     /* const mediaCard = document.createElement("div");
-      mediaCard.classList.add("photograph-media");
+       /* const mediaCard = document.createElement("div");
+        mediaCard.classList.add("photograph-media");
 
-      const mediaContent = media.image
-              ? ` <img class="" src="assets/photographers/${photographer.name}/${media.image}" alt="${media.image}">`
-              : ` <video class="" aria-label="${media.alt}">
-                      <source src="./assets/photographers/${photographer.name}/${media.video}" type="video/mp4">
-                  </video>`;
+        const mediaContent = media.image
+                ? ` <img class="" src="assets/photographers/${photographer.name}/${media.image}" alt="${media.image}">`
+                : ` <video class="" aria-label="${media.alt}">
+                        <source src="./assets/photographers/${photographer.name}/${media.video}" type="video/mp4">
+                    </video>`;
 
-          mediaCard.innerHTML = `       
-            ${mediaContent}
-        <div class="media-text">
-          <h2 class="media-title">${media.title}</h2>
-          <span class="media-like">${media.likes} likes</span>
-        </div>
-      `;       
-      photographerMedias.appendChild(mediaCard);*/
- 
-
-/*
-  <a href="#" data-media=${media.id} role="link" aria-label="View media large">
-  ${mediaContent}
-  </a>
-*/
-/*
-  <a href="#" data-media=${media.id} role="link" aria-label="View media large">
-  ${mediaContent}
-  </a>
-*/
-
-
-  
+            mediaCard.innerHTML = `       
+              ${mediaContent}
+          <div class="media-text">
+            <h2 class="media-title">${media.title}</h2>
+            <span class="media-like">${media.likes} likes</span>
+          </div>
+        `;       
+        photographerMedias.appendChild(mediaCard);*/
