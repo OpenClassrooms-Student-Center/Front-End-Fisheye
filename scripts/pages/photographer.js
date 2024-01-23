@@ -45,7 +45,7 @@ fetch("./data/photographers.json")
 
      mediaObjects.map((mediaObject) => {
 
-      const mediaCard = mediaObject.append(mediaCard);
+      const mediaCard = mediaObject.createCard();
 
       mediaWrapper.append(mediaCard);
       
