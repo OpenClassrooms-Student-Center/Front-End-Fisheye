@@ -41,31 +41,32 @@ fetch("./data/photographers.json")
                
      })
 
-     mediaObjects.map((mediaObject) => {
+      mediaObjects.map((mediaObject) => {
 
-
-      mediaWrapper.append(objectWrapperHTML);
+      // Utilisez la méthode mediaCard de la class Media pour créer une card du media
+      const mediaCard = mediaObject.createCard(); 
       
-      return
-     })
+      // Ajoutez la card média à mediaWrapper
+      mediaWrapper.append(mediaCard);
+      console.log(mediaCard)
 
-     
+      return mediaCard;
     
-
-     console.log(medias)
+     })
+     
      console.log(mediaObjects)
-
+     
        /* const mediaCard = document.createElement("div");
         mediaCard.classList.add("photograph-media");
 
-        const mediaContent = media.image
+        const mediathumbnail = media.image
                 ? ` <img class="" src="assets/photographers/${photographer.name}/${media.image}" alt="${media.image}">`
                 : ` <video class="" aria-label="${media.alt}">
                         <source src="./assets/photographers/${photographer.name}/${media.video}" type="video/mp4">
                     </video>`;
 
             mediaCard.innerHTML = `       
-              ${mediaContent}
+              ${mediathumbnail}
           <div class="media-text">
             <h2 class="media-title">${media.title}</h2>
             <span class="media-like">${media.likes} likes</span>
@@ -77,16 +78,6 @@ fetch("./data/photographers.json")
 
   })
 
-/*
-  <a href="#" data-media=${media.id} role="link" aria-label="View media large">
-  ${mediaContent}
-  </a>
-*/
-/*
-  <a href="#" data-media=${media.id} role="link" aria-label="View media large">
-  ${mediaContent}
-  </a>
-*/
 
 
   
