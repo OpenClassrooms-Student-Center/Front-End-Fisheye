@@ -8,6 +8,7 @@ export default class Image extends Media {
 
 	render() {
 
+		/*return `<img class="" src="assets/photographers/${photographer.name}/${this.image}" alt="${this.image}">`*/
 	}
 	
 }
