@@ -8,7 +8,7 @@ export default class Media {
         this.price = data.price;
         this.alt = data.alt;
     }
-
+    
    createCard() {
         const mediaCard = document.createElement("div");
         mediaCard.classList.add("photograph-media");
@@ -23,4 +23,5 @@ export default class Media {
         return mediaCard
     }
 
-};
+}
+
