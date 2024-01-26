@@ -21,7 +21,10 @@ export default class Media {
         `;
 
         return mediaCard
-    }
+  }
 
+  addLike() {
+    
+  }
 }
 
