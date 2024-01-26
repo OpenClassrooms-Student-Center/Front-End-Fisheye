@@ -43,15 +43,19 @@ fetch("./data/photographers.json")
 
    })
 
-     mediaObjects.map((mediaObject) => {
+   mediaObjects.map((mediaObject) => {
+    
+    /*const mediaCard = mediaObject.createCard();*/
 
-      const mediaCard = mediaObject.createCard();
+    const mediaThumbnails = mediaObject.render();
 
-      mediaWrapper.append(mediaCard);
-      
-      return mediaCard;
 
-     })
+    /*mediaCard.prepend(mediaThumbnails);*/
+
+    mediaWrapper.append(mediaCard);
+
+    return mediaCard;
+  });
      console.log(mediaObjects)
     
     }
