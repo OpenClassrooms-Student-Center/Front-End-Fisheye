@@ -9,7 +9,10 @@ export function photographerTemplate(
 
   function getUserCardDOM() {
     if (isProfilePage) {
-      const photographHeader = document.querySelector('.photograph-header');
+      const photographerHeaderContainer = document.createElement('div');
+      photographerHeaderContainer.classList.add(
+        'photographer-header-container'
+      );
       const contactButton = document.querySelector('.contact_button');
       // const article = document.createElement('article');
       const img = document.createElement('img');
@@ -44,11 +47,11 @@ export function photographerTemplate(
       infosContainer.appendChild(titleTagElement);
       infosContainer.appendChild(locationContainer);
       infosContainer.appendChild(quote);
-      photographHeader.appendChild(infosContainer);
-      photographHeader.appendChild(contactButton);
+      photographerHeaderContainer.appendChild(infosContainer);
+      photographerHeaderContainer.appendChild(contactButton);
       // photographHeader.appendChild(priceP);
-      photographHeader.appendChild(img);
-      return photographHeader;
+      photographerHeaderContainer.appendChild(img);
+      return photographerHeaderContainer;
     } else {
       const article = document.createElement('article');
       const img = document.createElement('img');
