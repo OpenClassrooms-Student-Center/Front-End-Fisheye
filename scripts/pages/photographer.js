@@ -15,6 +15,8 @@ const params = url.searchParams;
 // Récupération de la valeur du paramètre 'id'
 const id = params.get('id');
 
+let displayedMedias;
+
 async function getPhotographer() {
   try {
     const datas = await getPhotographers();
@@ -26,21 +28,19 @@ async function getPhotographer() {
     const photographerMedias = datas.media.filter(
       (oneMedia) => oneMedia.photographerId == id
     );
-    const photographerInfos = {
-      photographer,
-      medias: photographerMedias,
-    };
+    displayedMedias = photographerMedias;
+
     // console.log('hophophop', photographerInfos);
-    return photographerInfos;
+    return photographer;
   } catch (error) {
     console.error('Erreur lors de la récupération des photographes:', error);
   }
 }
 
 async function initPhotographerPage() {
-  const { photographer, medias } = await getPhotographer();
+  const photographer = await getPhotographer();
+  console.log('test', photographer.name);
   const photographerName = photographer.name;
-  console.log('medias', medias);
 
   if (photographer) {
     const photographerModelSinglePage = photographerTemplate(
@@ -55,10 +55,10 @@ async function initPhotographerPage() {
     console.log('Aucun photographe trouvé avec cet ID.');
   }
 
-  if (medias) {
+  if (displayedMedias) {
     const allMediasContainer = document.createElement('div');
     allMediasContainer.classList.add('medias-container');
-    for (let oneMedia of medias) {
+    for (let oneMedia of displayedMedias) {
       const mediaModel = mediaTemplate(oneMedia, photographerName);
       // const mediaCard = mediaModel.createMedia(oneMedia.video); // Utilisez le type de média pour déterminer si c'est une vidéo
       const mediaCard = mediaModel.createMedia(); // Utilisez le type de média pour déterminer si c'est une vidéo
