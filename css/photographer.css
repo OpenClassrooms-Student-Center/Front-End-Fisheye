@@ -131,7 +131,30 @@ main img {
   height: 22.5vw;
   border-radius: 5px;
 }
+.media-title {
+  color: #901c1c;
+  font-weight: 700;
+}
+.price-tag {
+  background-color: #d3573c;
+  font-weight: bolder;
+  width: 200px;
+  position: fixed;
+  right: 20px;
+  bottom: 0px;
+  text-align: right;
+  padding: 15px 20px;
+  border-top-right-radius: 5px;
+  border-top-left-radius: 5px;
+}
 
 .dropdown {
   margin: 50px 0 100px 100px;
+}
+
+.not-displayed-options {
+  display: none;
+}
+.all-options-displayed {
+  display: block;
 }

@@ -25,6 +25,7 @@ export function mediaTemplate(media, name) {
       mediaVideo.setAttribute('controls', 'controls');
       const mediaName = document.createElement('p');
       mediaName.textContent = title ?? 'titre inconnu';
+      mediaName.classList.add('media-title');
       const mediaContainer = document.createElement('div');
       mediaContainer.classList.add('media-container');
       mediaContainer.appendChild(mediaVideo);
@@ -36,6 +37,7 @@ export function mediaTemplate(media, name) {
       mediaImage.setAttribute('src', mediaPath);
       mediaImage.setAttribute('alt', title);
       const mediaName = document.createElement('p');
+      mediaName.classList.add('media-title');
       mediaName.textContent = title ?? 'titre inconnu';
       const mediaContainer = document.createElement('div');
       mediaContainer.classList.add('media-container');
