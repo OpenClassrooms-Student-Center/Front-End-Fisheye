@@ -58,4 +58,4 @@ fetch("./data/photographers.json")
     }
 
   })
-  
+
