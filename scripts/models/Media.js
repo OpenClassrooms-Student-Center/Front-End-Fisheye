@@ -9,9 +9,9 @@ export default class Media {
         this.alt = data.alt;
     }
     
-   createCard() {
-        const mediaCard = document.createElement("div");
-        mediaCard.classList.add("photograph-media");
+  createCard() {
+      const mediaCard = document.createElement("div");
+      mediaCard.classList.add("media-card");
 
         mediaCard.innerHTML = `       
           <div class="media-text">
@@ -20,11 +20,8 @@ export default class Media {
           </div>
         `;
 
-        return mediaCard
+      return mediaCard
   }
 
-  addLike() {
-    
-  }
 }
 
