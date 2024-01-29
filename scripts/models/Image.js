@@ -7,11 +7,16 @@ export default class Image extends Media {
 	}
 
 	render() {
+		
 		const image = document.createElement("img");
 		image.src = `assets/photographers/media/${this.image}`;
 		image.alt = this.title;
 
-		return image;
+		const mediaCard = this.createCard();
+
+		mediaCard.prepend(image);
+
+		return mediaCard;
 	}
 	
 }
