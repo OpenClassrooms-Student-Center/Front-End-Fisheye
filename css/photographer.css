@@ -150,11 +150,44 @@ main img {
 
 .dropdown {
   margin: 50px 0 100px 100px;
+  display: flex;
+  justify-content: space-between;
+  width: 250px;
 }
 
+.fa-chevron-up {
+  position: absolute;
+  top: 24px;
+  right: 3px;
+}
+.fa-chevron-down {
+  position: absolute;
+  top: 25px;
+  right: 3px;
+  display: none !important;
+}
+.dropdown-buttons {
+  width: 150px;
+  background-color: #901c1c;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.dropdown-buttons button {
+  background-color: #901c1c;
+  width: 80%;
+  color: white;
+  padding: 15px 10px;
+  border: none;
+  position: relative;
+}
 .not-displayed-options {
   display: none;
 }
 .all-options-displayed {
   display: block;
+}
+.dropdown-buttons .option2 {
+  border-top: 1px solid white;
+  border-bottom: 1px solid white;
 }
