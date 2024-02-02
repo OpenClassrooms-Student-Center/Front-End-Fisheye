@@ -55,6 +55,25 @@ fetch("./data/photographers.json")
 
       console.log(mediaObjects)
     
+
+      const body = document.querySelector("body");
+      const allLikes = document.createElement("div");
+      allLikes.classList.add("all-likes");
+      body.append(allLikes);
+
+      // Somme totale des likes
+      const totalLikes = mediaObjects.reduce((sum, mediaObject) => sum + mediaObject.likes, 0);
+
+      // Afficher la somme totale dans l'élément avec la classe 'all-likes'
+      allLikes.innerHTML = `
+                            <div class="likes">
+                              ${totalLikes} <img src="assets/icons/black-heart.svg" alt="icon coeur">
+                            </div>
+                            <div class="">
+                             <p> ${photographer.price}€ / jour</p>
+                            </div>
+                            `;
+      console.log(allLikes)
     }
 
   })
