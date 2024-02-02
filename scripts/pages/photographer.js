@@ -1,5 +1,5 @@
 import MediasFactory from "../factories/MediasFactory.js";
-import Media from "../models/Media.js";
+/*import Media from "../models/Media.js";*/
 
 // Récupérer l'ID du photographe depuis l'URL
 const urlParams = new URLSearchParams(window.location.search);
@@ -46,9 +46,7 @@ fetch("./data/photographers.json")
       mediaObjects.map((mediaObject) => {
           
         const card = mediaObject.render();
-
         mediaWrapper.append(card);
-
         return card;
         
       });
@@ -57,23 +55,46 @@ fetch("./data/photographers.json")
     
 
       const body = document.querySelector("body");
-      const allLikes = document.createElement("div");
-      allLikes.classList.add("all-likes");
-      body.append(allLikes);
+      const likesAndPrice = document.createElement("div");
+      likesAndPrice.classList.add("likes-price");
 
       // Somme totale des likes
-      const totalLikes = mediaObjects.reduce((sum, mediaObject) => sum + mediaObject.likes, 0);
+      const sommeTotalLikes = mediaObjects.reduce((sum, mediaObject) => sum + mediaObject.likes, 0);
 
-      // Afficher la somme totale dans l'élément avec la classe 'all-likes'
-      allLikes.innerHTML = `
+      // Afficher la somme totale des likes et prix du photographe 
+     likesAndPrice.innerHTML = `
                             <div class="likes">
-                              ${totalLikes} <img src="assets/icons/black-heart.svg" alt="icon coeur">
+                              <span class="total-likes">${sommeTotalLikes}</span>
+                              <img src="assets/icons/black-heart.svg" alt="icon coeur">
                             </div>
-                            <div class="">
+                            <div class="price">
                              <p> ${photographer.price}€ / jour</p>
                             </div>
                             `;
-      console.log(allLikes)
+                            
+    // fonction de mise à jour des likes
+    function updateTotalLikes() {
+
+      const totalLikes = document.querySelector(".total-likes");
+
+      // Recalculer la somme totale des likes
+      const updatedTotalLikes = mediaObjects.reduce((sum, mediaObject) => sum + mediaObject.likes, 0);
+
+      // Mettre à jour la valeur affichée
+      totalLikes.textContent = updatedTotalLikes;
+      console.log(updatedTotalLikes)
+      
+    }
+
+
+    // Ajouter la fonction à la portée globale pour qu'elle soit accessible depuis Media.js
+    window.updateTotalLikes = updateTotalLikes;  
+
+
+    body.append(likesAndPrice);
+    
+    console.log(likesAndPrice)
+     
     }
 
   })
