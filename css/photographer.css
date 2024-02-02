@@ -104,7 +104,18 @@
 .media-likes img {
     height: 26px;
 }
-.all-likes {
+
+.heart {
+    background-image:url("../../assets/icons/black-heart.svg");
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 20px;
+    width: 20px;
+}
+.heart.liked {
+    background-image:url("../../assets/icons/red-heart.svg");
+}
+.likes-price {
     background-color: #DB8876;
     color: #000;
     position: fixed;
@@ -121,11 +132,17 @@
     border-top-left-radius: 5px;
     padding: 20px 40px;
 }
+.likes-price .price {
+    color: #000;
+    font-size: 24px;
+    font-weight: 600;
+}
 .likes{
     display: flex;
     align-items: center;
-    gap: 10pxs;
+    gap: 10px;
 }
+
 /* modal */
 #contact_modal {
     display: none;
