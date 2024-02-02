@@ -10,48 +10,50 @@ export default class Media {
     }
     
   createCard() {
+
       const mediaCard = document.createElement("div");
       mediaCard.classList.add("media-card");
 
-        mediaCard.innerHTML = `       
-          <div class="media-text">
-            <h2 class="media-title">${this.title}</h2>
-            <span class="media-likes" id="likes-${this.id}" data-likes="${this.likes}">${this.likes} <img class="heart"src="assets/icons/red-heart.svg" alt="icon coeur rouge"></span>
+      mediaCard.innerHTML = `       
+        <div class="media-text">
+          <h2 class="media-title">${this.title}</h2>
+          <div class="media-likes">
+            <span class="numbers-likes">${this.likes}</span>
+            <span class="heart"></span>
           </div>
-        `;
+        </div>
+      `;
 
-  // Ajouter un événement de clic pour toggleLike
-  const heart = mediaCard.querySelector('.heart');
-  heart.addEventListener('click', () => this.toggleLike());
+      // Ajouter un événement au clic de heart
+      const heart = mediaCard.querySelector('.heart');
+      const numbersLikes = mediaCard.querySelector('.numbers-likes');
 
-  return mediaCard;
-}
+      heart.addEventListener('click', () => {
 
-toggleLike() {
-  // Récupérer l'élément span des likes
-  const likesSpan = document.getElementById(`likes-${this.id}`);
+        this.toggleLike(heart, numbersLikes)
 
-  // Récupérer la valeur actuelle des likes
-  let currentLikes = parseInt(likesSpan.getAttribute('data-likes'));
+      }
 
-  // Incrémenter ou décrémenter les likes en fonction de l'état actuel
-  if (likesSpan.classList.contains('liked')) {
-    currentLikes -= 1;
-  } else {
-    currentLikes += 1;
+      );
+      return mediaCard;
+
   }
 
-  // Mettre à jour la valeur des likes
-  likesSpan.innerHTML = `${currentLikes} <img class="heart"src="assets/icons/red-heart.svg" alt="icon coeur rouge">`;
 
-  // Basculez la classe liked pour indiquer l'état actuel
-  likesSpan.classList.toggle('liked');
+  toggleLike(heart, numbersLikes) {
 
-  // Mettre à jour l'attribut data-likes
-  likesSpan.setAttribute('data-likes', currentLikes);
+    !heart.classList.contains("liked") ? this.likes++ : this.likes--;
 
-  // Mettez à jour la valeur de likes dans l'objet Media
-  this.likes = currentLikes;
+    heart.classList.toggle("liked");
+    numbersLikes.textContent = this.likes
+
+    // Appeler la fonction pour mettre à jour le total des likes
+    updateTotalLikes();
+    
+    console.log(this.likes)
+  }
+
+
 }
-}
+
 

@@ -12,11 +12,11 @@ export default class Image extends Media {
 		image.src = `assets/photographers/media/${this.image}`;
 		image.alt = this.title;
 
-		const mediaCard = this.createCard();
+		const card = this.createCard();
 
-		mediaCard.prepend(image);
+		card.prepend(image);
 
-		return mediaCard;
+		return card;
 	}
 	
 }
