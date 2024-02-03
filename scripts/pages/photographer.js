@@ -205,19 +205,21 @@ let isSortedByDateAsc = true;
 let isSortedByTitleAsc = true;
 
 async function createMedias(photographer) {
-  let mediaContainer = document.querySelector('.medias-container');
-  if (!mediaContainer) {
-    mediaContainer = document.createElement('div');
-    mediaContainer.classList.add('medias-container');
-    document.querySelector('#main').appendChild(mediaContainer);
+  let mediasContainer = document.querySelector('.medias-container');
+  if (!mediasContainer) {
+    mediasContainer = document.createElement('div');
+    mediasContainer.classList.add('medias-container');
+    document.querySelector('#main').appendChild(mediasContainer);
   }
-  mediaContainer.innerHTML = '';
+
+  mediasContainer.innerHTML = '';
 
   const photographerName = photographer.name;
+
   for (let oneMedia of displayedMedias) {
     const mediaModel = mediaTemplate(oneMedia, photographerName);
     const mediaCard = mediaModel.createMedia();
-    mediaContainer.appendChild(mediaCard);
+    mediasContainer.appendChild(mediaCard);
   }
 }
 
@@ -265,6 +267,62 @@ async function initPhotographerPage() {
   }
 }
 
+function displayArrows() {
+  if (isSortedByPopularityAsc) {
+    const buttonPopularity = document.querySelector('.option1');
+    const arrowDown = buttonPopularity.querySelector('.fa-chevron-down');
+    const arrowUp = buttonPopularity.querySelector('.fa-chevron-up');
+    arrowDown.style.display = 'none';
+    arrowUp.style.display = 'inline';
+  } else {
+    const buttonPopularity = document.querySelector('.option1');
+    const arrowDown = buttonPopularity.querySelector('.fa-chevron-down');
+    const arrowUp = buttonPopularity.querySelector('.fa-chevron-up');
+    arrowUp.style.display = 'none';
+    arrowDown.style.display = 'inline';
+  }
+  if (isSortedByDateAsc) {
+    const buttonDate = document.querySelector('.option2');
+    const arrowDown = buttonDate.querySelector('.fa-chevron-down');
+    const arrowUp = buttonDate.querySelector('.fa-chevron-up');
+    arrowDown.style.display = 'none';
+    arrowUp.style.display = 'inline';
+  } else {
+    const buttonDate = document.querySelector('.option2');
+    const arrowDown = buttonDate.querySelector('.fa-chevron-down');
+    const arrowUp = buttonDate.querySelector('.fa-chevron-up');
+    arrowUp.style.display = 'none';
+    arrowDown.style.display = 'inline';
+  }
+  if (isSortedByTitleAsc) {
+    const buttonTitle = document.querySelector('.option3');
+    const arrowDown = buttonTitle.querySelector('.fa-chevron-down');
+    const arrowUp = buttonTitle.querySelector('.fa-chevron-up');
+    arrowDown.style.display = 'none';
+    arrowUp.style.display = 'inline';
+  } else {
+    const buttonTitle = document.querySelector('.option3');
+    const arrowDown = buttonTitle.querySelector('.fa-chevron-down');
+    const arrowUp = buttonTitle.querySelector('.fa-chevron-up');
+    arrowUp.style.display = 'none';
+    arrowDown.style.display = 'inline';
+  }
+}
+//autre option pour displayArrows
+// function setArrowDisplay(optionSelector, isAsc) {
+//   const button = document.querySelector(optionSelector);
+//   const arrowDown = button.querySelector('.fa-chevron-down');
+//   const arrowUp = button.querySelector('.fa-chevron-up');
+//   arrowDown.style.display = isAsc ? 'none' : 'inline';
+//   arrowUp.style.display = isAsc ? 'inline' : 'none';
+// }
+
+// function displayArrows() {
+//   setArrowDisplay('.option1', isSortedByPopularityAsc);
+//   setArrowDisplay('.option2', isSortedByDateAsc);
+//   setArrowDisplay('.option3', isSortedByTitleAsc);
+// }
+
 function toggleSortPopularity() {
   displayedMedias.sort((a, b) =>
     isSortedByPopularityAsc ? a.likes - b.likes : b.likes - a.likes
@@ -272,6 +330,7 @@ function toggleSortPopularity() {
   console.log('Tri par popularité', displayedMedias);
   isSortedByPopularityAsc = !isSortedByPopularityAsc;
   createMedias(photographer);
+  displayArrows();
 }
 
 function toggleSortDate() {
@@ -283,6 +342,7 @@ function toggleSortDate() {
   console.log('Tri par date', displayedMedias);
   isSortedByDateAsc = !isSortedByDateAsc;
   createMedias(photographer);
+  displayArrows();
 }
 
 function toggleSortTitle() {
@@ -294,45 +354,57 @@ function toggleSortTitle() {
   console.log('Tri par titre', displayedMedias);
   isSortedByTitleAsc = !isSortedByTitleAsc;
   createMedias(photographer);
+  displayArrows();
 }
 
 function toggleOptions() {
+  // Sélectionne les éléments HTML qui représentent les options de tri.
   const option1 = document.querySelector('.option1');
   const option2 = document.querySelector('.option2');
   const option3 = document.querySelector('.option3');
 
+  // Ajoute un écouteur d'événement 'click' sur option1.
   option1.addEventListener('click', () => {
+    // Lorsque option1 est cliquée, appelle toggleSelectedOption avec option1 comme l'option sélectionnée.
     toggleSelectedOption(option1, option2, option3);
   });
 
+  // Ajoute un écouteur d'événement 'click' sur option2, similaire à option1.
   option2.addEventListener('click', () => {
     toggleSelectedOption(option2, option1, option3);
   });
 
+  // Ajoute un écouteur d'événement 'click' sur option3, similaire à option1 et option2.
   option3.addEventListener('click', () => {
     toggleSelectedOption(option3, option1, option2);
   });
 }
 
+// Définit la fonction qui gère le changement d'option sélectionnée.
 function toggleSelectedOption(selectedOption, otherOption1, otherOption2) {
-  // Exécute la fonction de tri correspondante en fonction du texte de l'option
+  // Vérifie le contenu textuel de l'option sélectionnée pour déterminer quelle fonction de tri appeler.
   if (selectedOption.textContent.includes('Popularité')) {
+    // Si le texte inclut 'Popularité', appelle la fonction de tri par popularité.
     toggleSortPopularity();
   } else if (selectedOption.textContent.includes('Date')) {
+    // Si le texte inclut 'Date', appelle la fonction de tri par date.
     toggleSortDate();
   } else if (selectedOption.textContent.includes('Titre')) {
+    // Si le texte inclut 'Titre', appelle la fonction de tri par titre.
     toggleSortTitle();
   }
 
-  // Affiche toutes les options
+  // Affiche toutes les options en retirant la classe 'not-displayed-options' qui pourrait les cacher.
   selectedOption.classList.remove('not-displayed-options');
   otherOption1.classList.remove('not-displayed-options');
   otherOption2.classList.remove('not-displayed-options');
 
-  // Réorganise les options pour que l'option sélectionnée soit en haut
+  // Réorganise les options en déplaçant l'option sélectionnée en première position dans le conteneur '.dropdown-buttons'.
   const dropdown = document.querySelector('.dropdown-buttons');
   dropdown.insertBefore(selectedOption, dropdown.firstChild);
 }
 
+displayArrows();
 toggleOptions();
 initPhotographerPage();
+// Définit la fonction qui s'occupe de l'ajout des écouteurs d'événements sur les options.

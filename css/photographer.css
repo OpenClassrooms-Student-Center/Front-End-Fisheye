@@ -164,7 +164,7 @@ main img {
   position: absolute;
   top: 25px;
   right: 3px;
-  display: none !important;
+  /* display: none !important; */
 }
 .dropdown-buttons {
   width: 150px;
@@ -180,6 +180,7 @@ main img {
   padding: 15px 10px;
   border: none;
   position: relative;
+  cursor: pointer;
 }
 .not-displayed-options {
   display: none;
