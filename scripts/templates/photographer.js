@@ -18,6 +18,8 @@ export function photographerTemplate(
       const img = document.createElement('img');
       img.setAttribute('src', picture);
       img.setAttribute('alt', `Portrait de ${name}`);
+      const imgContainer = document.createElement('div');
+      imgContainer.appendChild(img);
       const titleTagElement = document.createElement(titleTag); // Utilise le paramètre titleTag
       titleTagElement.textContent = name ?? 'nom inconnu';
       titleTagElement.classList.add('photographer__name');
@@ -38,10 +40,6 @@ export function photographerTemplate(
       const cardLink = document.createElement('a');
       const infosContainer = document.createElement('div');
       infosContainer.classList.add('infos-container');
-      // cardLink.classList.add('photographer__link');
-      // cardLink.setAttribute('href', `photographer.html?id=${id}`);
-      // cardLink.setAttribute('aria-label', `Voir le profil de ${name}`);
-      //ajout des éléments à article en tant qu'enfant
       locationContainer.appendChild(cityP);
       locationContainer.appendChild(countryP);
       infosContainer.appendChild(titleTagElement);
@@ -50,7 +48,7 @@ export function photographerTemplate(
       photographerHeaderContainer.appendChild(infosContainer);
       photographerHeaderContainer.appendChild(contactButton);
       // photographHeader.appendChild(priceP);
-      photographerHeaderContainer.appendChild(img);
+      photographerHeaderContainer.appendChild(imgContainer);
       return photographerHeaderContainer;
     } else {
       const article = document.createElement('article');
@@ -60,9 +58,6 @@ export function photographerTemplate(
       const titleTagElement = document.createElement(titleTag); // Utilise le paramètre titleTag
       titleTagElement.textContent = name ?? 'nom inconnu';
       titleTagElement.classList.add('photographer__name');
-      // const h2 = document.createElement('h2');
-      // h2.textContent = name ?? 'nom inconnu';
-      // h2.classList.add('photographer__name');
       const cityP = document.createElement('p');
       cityP.classList.add('city');
       cityP.textContent = city ? city + ',' : 'ville inconnue';
