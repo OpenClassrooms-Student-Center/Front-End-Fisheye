@@ -11,6 +11,7 @@ let photographer;
 let isSortedByPopularityAsc = true;
 let isSortedByDateAsc = true;
 let isSortedByTitleAsc = true;
+let isDropdownOpen = false;
 
 async function createMedias(photographer) {
   let mediasContainer = document.querySelector('.medias-container');
@@ -165,6 +166,15 @@ function toggleSortTitle() {
   displayArrows();
 }
 
+function toggleDropdownVisibility() {
+  const options = document.querySelectorAll('.dropdown-buttons button');
+  options.forEach((option, index) => {
+    if (index > 0) {
+      option.classList.add('not-displayed-options');
+    }
+  });
+}
+
 function toggleOptions() {
   // Sélectionne les éléments HTML qui représentent les options de tri.
   const option1 = document.querySelector('.option1');
@@ -173,8 +183,15 @@ function toggleOptions() {
 
   // Ajoute un écouteur d'événement 'click' sur option1.
   option1.addEventListener('click', () => {
-    // Lorsque option1 est cliquée, appelle toggleSelectedOption avec option1 comme l'option sélectionnée.
-    toggleSelectedOption(option1, option2, option3);
+    option1.addEventListener('click', () => {
+      if (!isDropdownOpen) {
+        toggleDropdownVisibility();
+        isDropdownOpen = true;
+      } else {
+        toggleSelectedOption(option1, option2, option3);
+        toggleSortPopularity(); //
+      }
+    });
   });
 
   // Ajoute un écouteur d'événement 'click' sur option2, similaire à option1.
