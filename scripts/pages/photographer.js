@@ -216,3 +216,17 @@ displayArrows();
 toggleOptions();
 initPhotographerPage();
 // Définit la fonction qui s'occupe de l'ajout des écouteurs d'événements sur les options.
+document.addEventListener('click', (event) => {
+  const dropdown = document.querySelector('.dropdown');
+  const isDropdownClick = dropdown.contains(event.target);
+  const options = document.querySelectorAll('.dropdown-buttons button');
+
+  if (!isDropdownClick) {
+    options.forEach((option, index) => {
+      if (index > 0) {
+        // ignorer la première option
+        option.classList.add('not-displayed-options');
+      }
+    });
+  }
+});

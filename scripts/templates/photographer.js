@@ -18,8 +18,6 @@ export function photographerTemplate(
       const img = document.createElement('img');
       img.setAttribute('src', picture);
       img.setAttribute('alt', `Portrait de ${name}`);
-      const imgContainer = document.createElement('div');
-      imgContainer.appendChild(img);
       const titleTagElement = document.createElement(titleTag); // Utilise le paramètre titleTag
       titleTagElement.textContent = name ?? 'nom inconnu';
       titleTagElement.classList.add('photographer__name');
@@ -48,7 +46,7 @@ export function photographerTemplate(
       photographerHeaderContainer.appendChild(infosContainer);
       photographerHeaderContainer.appendChild(contactButton);
       // photographHeader.appendChild(priceP);
-      photographerHeaderContainer.appendChild(imgContainer);
+      photographerHeaderContainer.appendChild(img);
       return photographerHeaderContainer;
     } else {
       const article = document.createElement('article');
