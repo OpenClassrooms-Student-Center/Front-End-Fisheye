@@ -55,7 +55,7 @@ fetch("./data/photographers.json")
      likesAndPrice.innerHTML = `
                                 <div class="likes">
                                   <span class="total-likes">${sommeTotalLikes}</span>
-                                  <img src="assets/icons/black-heart.svg" alt="icon coeur">
+                                  <img src="./assets/icons/black-heart.svg" alt="icon coeur">
                                 </div>
                                 <div class="price">
                                 <p> ${photographer.price}€ / jour</p>
