@@ -9,7 +9,7 @@ export default class Video extends Media {
 	render() {
 
 		const video = document.createElement("video");
-		video.src = `assets/photographers/media/${this.video}`;
+		video.src = `./assets/photographers/media/${this.video}`;
 		video.alt = this.title;
 	
 		const mediaCard = this.createCard();
