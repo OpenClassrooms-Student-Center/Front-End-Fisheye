@@ -21,7 +21,7 @@ fetch("./data/photographers.json")
       // Afficher les détails du photographe
       const photographerHeader = new Photographer(photographer);
       photographerHeader.createPhotographerHeader();
-
+      console.log(photographerHeader);
 
       // Récupérer les médias correspondant au photographe
       const mediaWrapper = document.querySelector(".photograph-medias");
