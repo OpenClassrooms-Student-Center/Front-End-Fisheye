@@ -1,3 +1,5 @@
+//import Photographer from "./Photographer.js";
+
 export default class Media {
     constructor(data) {
         this.id = data.id;
