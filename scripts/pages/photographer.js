@@ -1,5 +1,5 @@
 import MediasFactory from "../factories/MediasFactory.js";
-/*import Media from "../models/Media.js";*/
+import Photographer from "../models/Photographer.js";
 
 // Récupérer l'ID du photographe depuis l'URL
 const urlParams = new URLSearchParams(window.location.search);
@@ -15,23 +15,13 @@ fetch("./data/photographers.json")
     // Trouver le photographe correspondant
     const photographer = photographers.find((element) => element.id === photographerId);
 
-    // Afficher les détails du photographe
+    
     if (photographer) {
+      
+      // Afficher les détails du photographe
+      const photographerHeader = new Photographer(photographer);
+      photographerHeader.createPhotographerHeader();
 
-      const photographerHeader = document.querySelector(".photograph-header");
-
-      photographerHeader.innerHTML = ` 
-      <div class="photograph-text">
-        <h1 class="name">${photographer.name}</h1>
-        <p class="location">${photographer.city}, ${photographer.country}</p>
-        <p class="tagline">${photographer.tagline}</p>
-      </div>
-      <button class="contact_button" onclick="displayModal()">Contactez-moi</button>  
-      <img class="portrait" src="assets/photographers/portrait/${photographer.portrait}" alt="${photographer.name}">
-      `;
-
-      const modalTitleName = document.querySelector(".modal-title_name");
-      modalTitleName.append(photographer.name);
 
       // Récupérer les médias correspondant au photographe
       const mediaWrapper = document.querySelector(".photograph-medias");
@@ -63,14 +53,14 @@ fetch("./data/photographers.json")
 
       // Afficher la somme totale des likes et prix du photographe 
      likesAndPrice.innerHTML = `
-                            <div class="likes">
-                              <span class="total-likes">${sommeTotalLikes}</span>
-                              <img src="assets/icons/black-heart.svg" alt="icon coeur">
-                            </div>
-                            <div class="price">
-                             <p> ${photographer.price}€ / jour</p>
-                            </div>
-                            `;
+                                <div class="likes">
+                                  <span class="total-likes">${sommeTotalLikes}</span>
+                                  <img src="assets/icons/black-heart.svg" alt="icon coeur">
+                                </div>
+                                <div class="price">
+                                <p> ${photographer.price}€ / jour</p>
+                                </div>
+                                `;
                             
     // fonction de mise à jour des likes
     function updateTotalLikes() {
@@ -85,7 +75,6 @@ fetch("./data/photographers.json")
       console.log(updatedTotalLikes)
       
     }
-
 
     // Ajouter la fonction à la portée globale pour qu'elle soit accessible depuis Media.js
     window.updateTotalLikes = updateTotalLikes;  
