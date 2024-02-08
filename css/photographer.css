@@ -106,7 +106,7 @@
 }
 
 .heart {
-    background-image:url("./../../assets/icons/heart-empty.svg");
+    background-image:url("../../../assets/icons/heart-empty.svg");
     background-repeat: no-repeat;
     background-position: center;
     height: 20px;
@@ -114,7 +114,7 @@
     background-size: 100%;
 }
 .heart.liked {
-    background-image:url("./../../assets/icons/heart-red.svg");
+    background-image:url("../../../assets/icons/heart-red.svg");
 }
 .likes-price {
     background-color: #DB8876;
