@@ -38,3 +38,5 @@ function photographerTemplate(data) {
     }
     return { picture, id, name, city, country, tagline, price, getUserCardDOM }
 }
+
+// test
