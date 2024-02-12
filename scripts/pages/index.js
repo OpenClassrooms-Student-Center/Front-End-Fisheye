@@ -6,6 +6,8 @@ async function getPhotographers() {
             throw new Error('Failed to fecth data');
         }
         const data = await response.json();
+        // Afficher les données dans la console
+        console.log(data);
 
         // Retourne le tableau des photographes une fois récupéré
         return data;

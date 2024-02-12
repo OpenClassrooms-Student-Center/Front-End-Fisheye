@@ -15,8 +15,8 @@ function photographerTemplate(data) {
         const naming = document.createElement( 'h2' );
         naming.textContent = name;
 
-        const cyties = document.createElement('p')
-        cyties.textContent = city;
+        const cities = document.createElement('p')
+        cities.textContent = city;
 
         const countries = document.createElement('p')
         countries.textContent = country;
@@ -30,7 +30,7 @@ function photographerTemplate(data) {
         article.appendChild(profilePic);
         article.appendChild(identification);
         article.appendChild(naming);
-        article.appendChild(cyties);
+        article.appendChild(cities);
         article.appendChild(countries);
         article.appendChild(description);
         article.appendChild(pricing);
