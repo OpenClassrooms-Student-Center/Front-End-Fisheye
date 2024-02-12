@@ -1,17 +1,40 @@
 function photographerTemplate(data) {
-    const { name, portrait } = data;
+    const { portrait, id, name, city, country, tagline, price } = data;
 
     const picture = `assets/photographers/${portrait}`;
 
     function getUserCardDOM() {
         const article = document.createElement( 'article' );
-        const img = document.createElement( 'img' );
-        img.setAttribute("src", picture)
-        const h2 = document.createElement( 'h2' );
-        h2.textContent = name;
-        article.appendChild(img);
-        article.appendChild(h2);
+
+        const profilePic = document.createElement( 'img' );
+        profilePic.setAttribute("src", picture)
+
+        const identification = document.createElement( 'p' );
+        identification.textContent = id;
+
+        const naming = document.createElement( 'h2' );
+        naming.textContent = name;
+
+        const cyties = document.createElement('p')
+        cyties.textContent = city;
+
+        const countries = document.createElement('p')
+        countries.textContent = country;
+
+        const description = document.createElement('p')
+        description.textContent = tagline;
+
+        const pricing = document.createElement('p')
+        pricing.textContent = price;
+
+        article.appendChild(profilePic);
+        article.appendChild(identification);
+        article.appendChild(naming);
+        article.appendChild(cyties);
+        article.appendChild(countries);
+        article.appendChild(description);
+        article.appendChild(pricing);
         return (article);
     }
-    return { name, picture, getUserCardDOM }
+    return { picture, id, name, city, country, tagline, price, getUserCardDOM }
 }
