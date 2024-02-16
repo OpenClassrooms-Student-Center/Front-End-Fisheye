@@ -1,16 +1,17 @@
-//import Photographer from "./Photographer.js";
+import Photographer from "./Photographer.js";
 
-export default class Media {
+export default class Media extends Photographer {
     constructor(data) {
-        this.id = data.id;
-        this.photographerId = data.photographerId;
-        this.title = data.title;
-        this.likes = data.likes;
-        this.date = data.date;
-        this.price = data.price;
-        this.alt = data.alt;
-    }
-    
+      super(data);
+      this.id = data.id;
+      this.photographerId = data.photographerId;
+      this.title = data.title;
+      this.likes = data.likes;
+      this.date = data.date;
+      this.price = data.price;
+      this.alt = data.alt;
+}
+/*
   createCard() {
 
       const mediaCard = document.createElement("div");
@@ -31,11 +32,8 @@ export default class Media {
       const numbersLikes = mediaCard.querySelector('.numbers-likes');
 
       heart.addEventListener('click', () => {
-
-        this.toggleLike(heart, numbersLikes)
-
-      }
-
+          this.toggleLike(heart, numbersLikes)
+        }
       );
       return mediaCard;
 
@@ -55,6 +53,14 @@ export default class Media {
     console.log(this.likes)
   }
 
+
+  render() {
+    const mediaWrapper = document.querySelector(".photograph-medias");
+    const allMedias = new Media();
+ 
+    console.log(allMedias);
+  }
+*/
 
 }
 
