@@ -9,9 +9,8 @@ export default class Photographer {
         this.portrait = data.portrait;
     }
 
-
-    createPhotographerHeader() {
-
+    render() {
+        
         const photographerHeader = document.querySelector(".photograph-header");
 
         photographerHeader.innerHTML = ` 
@@ -26,7 +25,5 @@ export default class Photographer {
 
         const modalTitleName = document.querySelector(".modal-title_name");
         modalTitleName.append(this.name);
-
     }
-
 }
