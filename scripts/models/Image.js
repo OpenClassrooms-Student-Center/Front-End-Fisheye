@@ -4,8 +4,9 @@ export default class Image extends Media {
 	constructor(data) {
 		super(data);
 		this.image = data.image;
+		this.src = `./assets/photographers/media/${this.image}`;
 	}
-
+/*
 	render() {
 
 		const image = document.createElement("img");
@@ -18,5 +19,5 @@ export default class Image extends Media {
 
 		return card;
 	}
-	
+	*/
 }
