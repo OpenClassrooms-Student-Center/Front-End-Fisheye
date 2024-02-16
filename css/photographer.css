@@ -78,7 +78,7 @@
 }
 .media-card img, .media-card video {
     width: 100%;
-    height: 500px;
+    height: 400px;
     object-fit: cover;
     border-radius: 5px;
 }
