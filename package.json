@@ -1,0 +1,9 @@
+{
+  "name": "fish-eye",
+  "scripts": {
+    "start": "live-server ./fishEye"
+  },
+  "devDependencies": {
+    "live-server": "^1.2.2"
+  }
+}
