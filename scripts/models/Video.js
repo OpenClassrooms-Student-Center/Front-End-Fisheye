@@ -4,8 +4,9 @@ export default class Video extends Media {
 	constructor(data) {
 		super(data);
 		this.video = data.video;
+		this.src = `./assets/photographers/media/${this.video}`;
 	}
-
+/*
 	render() {
 
 		const video = document.createElement("video");
@@ -19,4 +20,5 @@ export default class Video extends Media {
 		return mediaCard;
 
 	}
+	*/
 }
