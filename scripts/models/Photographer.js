@@ -26,4 +26,5 @@ export default class Photographer {
         const modalTitleName = document.querySelector(".modal-title_name");
         modalTitleName.append(this.name);
     }
+
 }

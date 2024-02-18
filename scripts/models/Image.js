@@ -6,18 +6,17 @@ export default class Image extends Media {
 		this.image = data.image;
 		this.src = `./assets/photographers/media/${this.image}`;
 	}
-/*
-	render() {
 
+	render() {
+		const mediaWrapper = document.querySelector(".photograph-medias");
 		const image = document.createElement("img");
+		const imageCard = this.createCard();
+		
 		image.src = `./assets/photographers/media/${this.image}`;
 		image.alt = this.title;
 
-		const card = this.createCard();
+		imageCard.prepend(image);
+		mediaWrapper.append(imageCard)
 
-		card.prepend(image);
-
-		return card;
 	}
-	*/
 }

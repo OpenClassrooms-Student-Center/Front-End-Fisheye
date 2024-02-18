@@ -6,19 +6,18 @@ export default class Video extends Media {
 		this.video = data.video;
 		this.src = `./assets/photographers/media/${this.video}`;
 	}
-/*
-	render() {
 
+	render() {
+		const mediaWrapper = document.querySelector(".photograph-medias");
 		const video = document.createElement("video");
 		video.src = `./assets/photographers/media/${this.video}`;
 		video.alt = this.title;
 	
-		const mediaCard = this.createCard();
-		
-		mediaCard.prepend(video);
+		const videoCard = this.createCard();
 
-		return mediaCard;
+		videoCard.prepend(video);
+		mediaWrapper.append(videoCard)
 
 	}
-	*/
+	
 }

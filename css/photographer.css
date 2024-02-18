@@ -144,6 +144,12 @@
     gap: 10px;
 }
 
+.photographer_likes {
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    transform: translate(-50%, -50%);
+}
 /* modal */
 #contact_modal {
     display: none;

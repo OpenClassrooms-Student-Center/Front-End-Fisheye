@@ -11,10 +11,10 @@ export default class Media extends Photographer {
       this.price = data.price;
       this.alt = data.alt;
 }
-/*
+
   createCard() {
 
-      const mediaCard = document.createElement("div");
+      const mediaCard = document.createElement("article");
       mediaCard.classList.add("media-card");
 
       mediaCard.innerHTML = `       
@@ -32,35 +32,24 @@ export default class Media extends Photographer {
       const numbersLikes = mediaCard.querySelector('.numbers-likes');
 
       heart.addEventListener('click', () => {
-          this.toggleLike(heart, numbersLikes)
+          this.toggleLike(heart, numbersLikes);
+          this.displayTotalLikes();
         }
       );
+
       return mediaCard;
 
   }
-
 
   toggleLike(heart, numbersLikes) {
 
     !heart.classList.contains("liked") ? this.likes++ : this.likes--;
 
     heart.classList.toggle("liked");
-    numbersLikes.textContent = this.likes
+    numbersLikes.textContent = this.likes;
 
-    // Appeler la fonction pour mettre à jour le total des likes
-    updateTotalLikes();
-    
-    console.log(this.likes)
   }
 
-
-  render() {
-    const mediaWrapper = document.querySelector(".photograph-medias");
-    const allMedias = new Media();
- 
-    console.log(allMedias);
-  }
-*/
 
 }
 
