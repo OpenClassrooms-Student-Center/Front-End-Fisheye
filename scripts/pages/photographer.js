@@ -22,10 +22,10 @@ fetch("./data/photographers.json")
 
     // Récupérer les médias correspondant au photographe
     const photographerMedias = medias.filter((media) => media.photographerId === photographerId); 
-    const mediaObjects = photographerMedias.map((media) => new MediasFactory(media));
+    const mediaCards= photographerMedias.map((media) => new MediasFactory(media));
 
     // Afficher les medias du photographe
-    mediaObjects.map((mediaObject) => mediaObject.render());
+    mediaCards.map((mediaCard) => mediaCard.render());
 
 
   })

@@ -33,14 +33,19 @@ export default class Media extends Photographer {
 
       heart.addEventListener('click', () => {
           this.toggleLike(heart, numbersLikes);
-          this.displayTotalLikes();
+          this.updateTotalLikes();
         }
       );
 
       return mediaCard;
 
   }
-
+    updateTotalLikes() {
+      const totalLikesElement = document.querySelector(".total_likes");
+      const allLikesElements = document.querySelectorAll('.numbers-likes');
+      const totalLikes = Array.from(allLikesElements).reduce((total, likeElement) => total + parseInt(likeElement.textContent), 0);
+      totalLikesElement.textContent = totalLikes;
+  }
   toggleLike(heart, numbersLikes) {
 
     !heart.classList.contains("liked") ? this.likes++ : this.likes--;
