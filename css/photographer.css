@@ -133,6 +133,10 @@
     border-top-left-radius: 5px;
     padding: 20px 40px;
 }
+.photographer_likes {
+    display: flex;
+    align-items: center;
+}
 .likes-price .price {
     color: #000;
     font-size: 24px;
@@ -144,11 +148,13 @@
     gap: 10px;
 }
 
-.photographer_likes {
+.likes_and_price {
     position: fixed;
     bottom: 0;
     right: 0;
     transform: translate(-50%, -50%);
+    display: flex;
+    gap: 20px;
 }
 /* modal */
 #contact_modal {

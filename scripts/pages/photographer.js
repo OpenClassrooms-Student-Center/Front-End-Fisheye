@@ -1,6 +1,7 @@
 import MediasFactory from "../factories/MediasFactory.js";
 import Photographer from "../models/Photographer.js";
-/*import PhotographerAllMedias from "../templates/PhotographerAllMedias.js";*/
+//import Media from "../models/Media.js";
+import PhotographerLikes from "../templates/PhotographerLikes.js";
 
 // Récupérer les données des photographes
 fetch("./data/photographers.json")
@@ -22,11 +23,14 @@ fetch("./data/photographers.json")
 
     // Récupérer les médias correspondant au photographe
     const photographerMedias = medias.filter((media) => media.photographerId === photographerId); 
-    const mediaCards= photographerMedias.map((media) => new MediasFactory(media));
+    const mediaCards = photographerMedias.map((media) => new MediasFactory(media));
 
     // Afficher les medias du photographe
     mediaCards.map((mediaCard) => mediaCard.render());
 
+    const photographerLikes = new PhotographerLikes(photographerMedias, photographer);
+  photographerLikes.renderLikes()
+  console.log(photographerLikes)
 
   })
 
