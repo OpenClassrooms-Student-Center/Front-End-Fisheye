@@ -27,10 +27,11 @@ fetch("./data/photographers.json")
 
     // Afficher les medias du photographe
     mediaCards.map((mediaCard) => mediaCard.render());
+    console.log(mediaCards);
 
-    const photographerLikes = new PhotographerLikes(photographerMedias, photographer);
-  photographerLikes.renderLikes()
-  console.log(photographerLikes)
+    const photographerLikes = new PhotographerLikes(mediaCards, photographer);
+    photographerLikes.renderLikes();
+    console.log(photographerLikes);
 
   })
 

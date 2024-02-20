@@ -10,20 +10,19 @@ export default class PhotographerLikes {
             const photographer = this.photographer
             // Accumuler le nombre total de likes
             const totalLikes = medias.reduce((total, media) => total + media.likes, 0);
-            console.log(totalLikes);
 
             const photographerLikesAndPrice = document.querySelector(".likes_and_price");
             //const photographerPrice = document.querySelector(".photographer_price");
 
             const LikesAndPrice = `<div class="photographer_likes">
-                                      <span class="all_likes">${totalLikes}</span><img src="./assets/icons/heart-black.svg" class="heart"></img>
+                                      <span class="total_likes">${totalLikes}</span><img src="./assets/icons/heart-black.svg" class="heart"></img>
                                     </div>
                                     <div>
                                         <span class="photographer_price">${photographer.price} $/jour</span>
                                     </div>
                                  `
             photographerLikesAndPrice.innerHTML = LikesAndPrice;
-            console.log(photographerLikesAndPrice);
+ 
     }
     /*
     updateTotalLikes() {

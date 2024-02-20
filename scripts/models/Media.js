@@ -30,21 +30,21 @@ export default class Media extends Photographer {
       // Ajouter un événement au clic de heart
       const heart = mediaCard.querySelector('.heart');
       const numbersLikes = mediaCard.querySelector('.numbers-likes');
-/*
+
       heart.addEventListener('click', () => {
           this.toggleLike(heart, numbersLikes);
           this.updateTotalLikes();
         }
       );
-*/
+
       return mediaCard;
 
-  }/*
+  }
     updateTotalLikes() {
-      const totalLikesElement = document.querySelector(".total_likes");
+      const totalLikes = document.querySelector(".total_likes");
       const allLikes = document.querySelectorAll('.numbers-likes');
-      const totalLikes = Array.from(allLikes).reduce((total, like) => total + parseInt(like.textContent), 0);
-      totalLikesElement.textContent = totalLikes;    
+      const calculeTotalLikes = Array.from(allLikes).reduce((total, like) => total + parseInt(like.textContent), 0);
+      totalLikes.textContent = calculeTotalLikes;    
   }
   toggleLike(heart, numbersLikes) {
 
@@ -54,7 +54,7 @@ export default class Media extends Photographer {
     numbersLikes.textContent = this.likes;
 
   }
-  */
+  
 
 }
 
