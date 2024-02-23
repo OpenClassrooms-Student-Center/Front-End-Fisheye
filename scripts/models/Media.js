@@ -1,8 +1,5 @@
-import Photographer from "./Photographer.js";
-
-export default class Media extends Photographer {
+export default class Media {
     constructor(data) {
-      super(data);
       this.id = data.id;
       this.photographerId = data.photographerId;
       this.title = data.title;
