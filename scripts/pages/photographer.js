@@ -1,7 +1,7 @@
 import MediasFactory from "../factories/MediasFactory.js";
 import Photographer from "../models/Photographer.js";
-//import Media from "../models/Media.js";
 import PhotographerLikes from "../templates/PhotographerLikes.js";
+import PhotographerFilter from "../templates/PhotographerFilter.js";
 
 // Récupérer les données des photographes
 fetch("./data/photographers.json")
@@ -30,8 +30,12 @@ fetch("./data/photographers.json")
     console.log(mediaCards);
 
     const photographerLikes = new PhotographerLikes(mediaCards, photographer);
-    photographerLikes.renderLikes();
+    photographerLikes.render();
     console.log(photographerLikes);
 
+
+    const photographerFilter = new PhotographerFilter(mediaCards);
+    photographerFilter.initSortListener();
+    console.log(photographerFilter);
   })
 
