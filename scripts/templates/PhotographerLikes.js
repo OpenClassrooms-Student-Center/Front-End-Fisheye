@@ -2,10 +2,9 @@ export default class PhotographerLikes {
     constructor(medias, photographer) {
         this.medias = medias;
         this.photographer = photographer;
-      }
-   
-   
-    renderLikes() {      
+    }
+    
+    render() {      
             const medias = this.medias
             const photographer = this.photographer
             // Accumuler le nombre total de likes
@@ -24,23 +23,5 @@ export default class PhotographerLikes {
             photographerLikesAndPrice.innerHTML = LikesAndPrice;
  
     }
-    /*
-    updateTotalLikes() {
-        const totalLikesElement = document.querySelector(".total_likes");
-        const allLikes = document.querySelectorAll('.numbers-likes');
-        const totalLikes = Array.from(allLikes).reduce((total, like) => total + parseInt(like.textContent), 0);
-        totalLikesElement.textContent = totalLikes;    
-    }
-
-    toggleLike(heart, numbersLikes) {
-    
-      !heart.classList.contains("liked") ? this.likes++ : this.likes--;
-    
-      heart.classList.toggle("liked");
-      numbersLikes.textContent = this.likes;
-    
-
-    }
-*/
 
 }
