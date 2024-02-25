@@ -4,6 +4,7 @@ export default class PhotographerFilter {
     }
 
     applySort(sortBy) {
+
         switch (sortBy) {
             case 'likes':
                 this.medias.sort((a, b) => b.likes - a.likes);
