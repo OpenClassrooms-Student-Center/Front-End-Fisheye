@@ -5,7 +5,6 @@ export default class PhotographerLikes {
     }
     
     render() {      
-            const medias = this.medias
             const photographer = this.photographer
             const photographerLikesAndPrice = document.querySelector(".likes_and_price");
 
