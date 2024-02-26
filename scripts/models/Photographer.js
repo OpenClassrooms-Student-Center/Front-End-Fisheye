@@ -9,8 +9,24 @@ export default class Photographer {
         this.portrait = data.portrait;
     }
 
-    render() {
-        
+    createPhotograperCard() {
+        const photographersSection = document.querySelector(".photographer_section");       
+        const article = document.createElement( 'article' );
+        const card =`
+                    <a href="photographer.html?id=${this.id}" title="${this.name}">
+                        <img class="portrait" src="assets/photographers/portrait/${this.portrait}" alt="${this.name}">
+                        <h2 class="name">${this.name}</h2>
+                    </a>
+                    <p class="location">${this.city}, ${this.country}</p>
+                    <p class="tagline">${this.tagline}</p>
+                    <p class="price">${this.price}€/jour</p>
+                    `;
+
+        article.innerHTML = card;
+        photographersSection.append(article);
+    }
+
+    render() {       
         const photographerHeader = document.querySelector(".photograph-header");
 
         photographerHeader.innerHTML = ` 
