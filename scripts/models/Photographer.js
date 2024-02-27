@@ -39,8 +39,8 @@ export default class Photographer {
                                       <img class="portrait" src="assets/photographers/portrait/${this.portrait}" alt="${this.name}">
                                       `;
 
-        const modalTitleName = document.querySelector(".modal-title_name");
-        modalTitleName.append(this.name);
+        const modalTitleNameSpan = document.querySelector(".modal-title_name span");
+        modalTitleNameSpan.append(this.name);
     }
 
 }
