@@ -34,7 +34,7 @@
     text-align: end;
 }
 /* contact_button */
-.contact_button {
+.contact_button, .submit_button {
     font-size: 20px;
     font-weight: bold;
     color: white;
@@ -151,6 +151,7 @@
 .photographer_likes {
     display: flex;
     align-items: center;
+    gap: 5px;
 }
 .likes-price .price {
     color: #000;
@@ -162,7 +163,6 @@
     align-items: center;
     gap: 10px;
 }
-
 .likes_and_price {
     position: fixed;
     bottom: 0;
@@ -233,9 +233,11 @@
 .modal header h2 {
     font-size: 64px;
     font-weight: normal;
-    text-align: center;
+    text-align: left;
 }
-
+.close-modal {
+    cursor: pointer;
+}
 form {
     display: flex;
     width: 100%;
@@ -267,6 +269,6 @@ form textarea {
     width: 100%;
     border-radius: 5px;
 }
-form button.contact_button {
+.submit_button {
     width: 100%;
 }
