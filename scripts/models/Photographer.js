@@ -35,12 +35,16 @@ export default class Photographer {
                                         <p class="location">${this.city}, ${this.country}</p>
                                         <p class="tagline">${this.tagline}</p>
                                       </div>
-                                      <button class="contact_button" onclick="displayModal()">Contactez-moi</button>  
+                                      <button class="contact_button">Contactez-moi</button>  
                                       <img class="portrait" src="assets/photographers/portrait/${this.portrait}" alt="${this.name}">
                                       `;
 
         const modalTitleNameSpan = document.querySelector(".modal-title_name span");
         modalTitleNameSpan.append(this.name);
+        
+        const modal = document.getElementById("contact_modal");
+        const contactButton = document.querySelector(".contact_button");
+        contactButton.addEventListener("click", () => modal.style.display = "block");
     }
 
 }
