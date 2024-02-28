@@ -207,6 +207,8 @@
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
+    border-radius: 15px;
+    box-shadow: 0px 0px 15px 0px #777777;
 }
 
 .modal_title {
@@ -259,4 +261,12 @@ form input {
     height: 68px;
     border: none;
     border-radius: 5px;
+}
+form textarea {
+    height: 68px;
+    width: 100%;
+    border-radius: 5px;
+}
+form button.contact_button {
+    width: 100%;
 }
