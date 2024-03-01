@@ -39,12 +39,16 @@
     font-weight: bold;
     color: white;
     padding: 11px;
-    width: 170px;
-    height: 70px;
+    height: 60px;
     border: none;
     background-color: #901C1C;
     border-radius: 5px;
     cursor: pointer;
+    transition: 0.2s ease;
+}
+.contact_button:hover {
+    background-color: #DB8876;
+    color: #000;
 }
 /* photograph-header */
 .photograph-header .portrait {
@@ -180,7 +184,8 @@
     border-top-left-radius: 5px;
     padding: 20px 40px;
 }
-/* modal */
+/******************/
+/***** modal *****/
 #contact_modal {
     display: none;
     position: fixed;
@@ -238,6 +243,7 @@
 .close-modal {
     cursor: pointer;
 }
+/***** form *****/
 form {
     display: flex;
     width: 100%;
@@ -247,7 +253,7 @@ form {
 
 form label {
     color: #312E2E;
-    font-size: 36px;
+    font-size: 32px;
 }
 
 form div {
@@ -255,20 +261,94 @@ form div {
     flex-direction: column;
     width: 100%;
     align-items: self-start;
-    margin-bottom: 26px;
+    margin-bottom: 10px;
 }
 
 form input {
     width: 100%;
-    height: 68px;
+    height: 50px;
     border: none;
     border-radius: 5px;
+    padding: 0 20px
 }
+
+.formData[data-error]::after {
+    content: attr(data-error);
+    font-size: 0.4em;
+    color: #e54858;
+    display: block;
+    text-align: right;
+    line-height: 120%;
+    opacity: 0;
+    transition: 0.3s;
+}
+.formData[data-error-visible="true"]::after {
+    opacity: 1;
+    text-align: left;
+    font-size: 16px;
+    padding-top: 10px;
+    font-weight: 500;
+}
+
 form textarea {
-    height: 68px;
+    height: 160px;
     width: 100%;
     border-radius: 5px;
 }
 .submit_button {
     width: 100%;
 }
+
+/***** message-validation *****/
+/*
+.message-validation {
+    display: none;
+    padding: 25px;
+    position: absolute;
+    z-index: 1;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #232323;
+    color: #FFF;
+    border-radius: 15px;
+    width: 100%;
+    text-align: center;
+    height: 100%;
+  }
+  .message-validation_text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    text-align: center;
+    transform: translate(-50%, -50%);
+    width: 90%;
+  }
+  .message-validation p {
+    font-weight: 400;
+    font-size: 28px;
+  }
+  .message-validation_close {
+    background: #fe142f;
+    margin-bottom: 20px;
+    padding: 2em;
+    color: #fff;
+    padding: 0.75rem 2.5rem;
+    border-radius: 8px;
+    cursor: pointer;
+    justify-content: center;
+    font-weight: normal;
+    width: 235px;
+    font-size: 20px;
+    position: absolute;
+    bottom: 0%;
+    left: 50%;
+    text-align: center;
+    transform: translateX(-50%);
+  }
+*/
+  @media screen and (max-width: 768px) {
+    .modal {
+        width: 90%;
+    }
+  }
