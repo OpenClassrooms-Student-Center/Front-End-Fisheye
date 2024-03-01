@@ -1,10 +1,10 @@
 export default class PhotographerFilter {
-    constructor(medias) {
+    constructor(medias, lightbox) {
         this.medias = medias;
+        this.lightbox = lightbox;
     }
 
     applySort(sortBy) {
-
         switch (sortBy) {
             case 'likes':
                 this.medias.sort((a, b) => b.likes - a.likes);
@@ -20,11 +20,14 @@ export default class PhotographerFilter {
         const photographerMedias = document.querySelector('.photograph-medias');
         photographerMedias.innerHTML = '';
 
-        this.medias.map((media) => media.render());
-    
+        this.medias.forEach((media) => media.render());
+        
+        // Mise à jour des médias dans la lightbox  
+        this.lightbox.updateMedias(this.medias); 
     }
+
     initSortListener() {
-        document.getElementById('sortMedia').addEventListener('click', (event) => {
+        document.getElementById('sortMedia').addEventListener('change', (event) => {
             this.applySort(event.target.value);
         });
     }
