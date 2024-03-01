@@ -387,7 +387,15 @@ form textarea {
     top: 20px;
     right: 20px;
 }
-
+.lightbox_media {
+    height: 100%;
+    width: 100%;
+}
+.lightbox_media video, .lightbox_media img {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+}
   @media screen and (max-width: 768px) {
     .modal {
         width: 90%;
