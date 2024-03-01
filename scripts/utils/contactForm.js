@@ -1,17 +1,24 @@
 // DOM Elements
+const contactButton = document.querySelector(".contact_button");
 const closeForm = document.querySelector(".close-modal");
 const modal = document.getElementById("contact_modal");
-
-closeForm.addEventListener("click", () => modal.style.display = "none");
-
 const modalBgContent = document.querySelector(".content");
-const messageValidation = document.querySelector(".message-validation");
-const messageValidationBtnClose = document.querySelector(".message-validation_close");
+//const messageValidation = document.querySelector(".message-validation");
+//const messageValidationBtnClose = document.querySelector(".message-validation_close");
 const form = document.getElementById("form");
-const prenom = document.getElementById("prenom");
-const nom = document.getElementById("nom");
+const first = document.getElementById("first");
+const last = document.getElementById("last");
 const email = document.getElementById("email");
+const textarea = document.getElementById("message");
 
+//contactButton.addEventListener("click", () => modal.style.display = "block");
+closeForm.addEventListener("click", () => modal.style.display = "none");
+/*
+messageValidationBtnClose.addEventListener("click",() => {
+  modal.style.display = "none";
+
+});
+*/
 /*
 // launch modal event
 modalBtn.forEach((btn) => btn.addEventListener("click", launchModal));
@@ -41,7 +48,6 @@ function closeModal() {
 // Regex (expression régulière)
 const regexName = /^([A-Za-z|\s]{2,15})?([-]{0,1})?([A-Za-z|\s]{2,15})$/g;
 const regexEmail = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/g;
-const regexQuantity = /^[1-9]{0,1}[0-9]$/g;
 
 // Message d'erreur des inputs
 const message = {
@@ -49,19 +55,14 @@ const message = {
   name2: "Ce champ ne doit pas contenir de caractères spéciaux.",
   email: "Veuillez renseigner une adresse email.",
   email2: "Veuillez renseigner une adresse email valide.",
-  birthdate: "Vous devez avoir plus de 18 ans pour participer.",
-  birthdate2: "Veullez renseigner une date de naissance valide.",
-  birthdate3: "Veullez renseigner une date de naissance.",
-  quantity: "Veuillez renseigner un nombre entre 0 et 99.",
-  locations: "Veuillez renseigner un tournoi auquel participer.",
-  conditions: "Veuillez accepter les conditions d'utilisation."
+  textarea: "Ce champ doit contenir un message."
 }
 
 // Ajoute l'erreur
 function addError(element, message) {
   element.parentElement.setAttribute('data-error-visible', 'true');
   element.parentElement.setAttribute('data-error', message);
-  if(prenom || nom || email || birthdate || quantity) {
+  if(first || last || email) {
     element.style.border ="2.5px solid #e54858";
   }
 };
@@ -70,37 +71,37 @@ function addError(element, message) {
 function removeError(element) {
   element.parentElement.removeAttribute('data-error-visible');
   element.parentElement.removeAttribute('data-error');
-  if(prenom || nom || email || birthdate || quantity) {
+  if(first || last || email) {
     element.style.border ="none";
   }
 };
 
-// Vérifie prenom
-function checkprenom(prenom, message) {
-  if (prenom.value.length < 2) {
-    addError(prenom, message.name);
+// Vérifie first
+function checkFirst(first, message) {
+  if (first.value.length < 2) {
+    addError(first, message.name);
     return false;
   }
-  if(!prenom.value.match(regexName)) {
-    addError(prenom, message.name2);
+  if(!first.value.match(regexName)) {
+    addError(first, message.name2);
     return false;
   } else {
-    removeError(prenom);
+    removeError(first);
   }
   return true;
 };
 
-// Vérifie nom
-function checknom(nom, message) {
-  if (nom.value.length < 2) {
-    addError(nom, message.name);
+// Vérifie last
+function checkLast(last, message) {
+  if (last.value.length < 2) {
+    addError(last, message.name);
     return false;
   }
-  if(!nom.value.match(regexName)) {
-    addError(nom, message.name2);
+  if(!last.value.match(regexName)) {
+    addError(last, message.name2);
     return false;
   } else {
-    removeError(nom);
+    removeError(last);
   }
   return true;
 };
@@ -120,36 +121,53 @@ function checkEmail(email, message) {
   return true;
 }
 
-
-// Vérifie conditions
-function checkConditions(conditions, message) {
-  if(!conditions.checked) {
-    addError(conditions, message.conditions);
+// Vérifie Textareea
+function checkTextarea(textarea, message) {
+  if (textarea.value.length < 1) {
+    addError(textarea, message.textarea);
     return false;
   } else {
-    removeError(conditions);
+    removeError(textarea);
   }
   return true;
 };
+/*
+const firstValue = first.value;
+const lastValue = last.value;
+const emailValue = email.value;
+const textareaValue = textarea.value;
+*/
+/*
+const value = {
+  "Prénom": first.value,
+  "Nom": last.value,
+  "Email": email.value,
+  "Message": textarea.value
+ }
+*/
 
 // Ajoute un évenement aux inputs du formulaire
-prenom.addEventListener('change', () => {checkprenom(prenom, message)});
-nom.addEventListener('change', () => {checknom(nom, message)});
+first.addEventListener('change', () => {checkFirst(first, message)});
+last.addEventListener('change', () => {checkLast(last, message)});
 email.addEventListener('change', () => {checkEmail(email, message)});
-conditions.addEventListener('change', () => {checkConditions(conditions, message)});
+textarea.addEventListener('change', () => {checkTextarea(textarea, message)});
 
 // Ajoute un évenement au submit du formulaire
 form.addEventListener("submit", (event) => {
   event.preventDefault();
 
-  const isCheckedprenom = checkprenom(prenom, message);
-  const isChecknom = checknom(nom, message);
+  const isCheckedfirst = checkFirst(first, message);
+  const isChecklast = checkLast(last, message);
   const isCheckedEmail = checkEmail(email, message);
-  const isCheckConditions = checkConditions(conditions, message);
+  const isCheckTextarea = checkTextarea(textarea, message);
 
-  if (isCheckedprenom && isChecknom && isCheckedEmail && isCheckConditions ) {
-    messageValidation.style.display = 'block';
-    form.style.display = "none";
+  if (isCheckedfirst && isChecklast && isCheckedEmail && isCheckTextarea ) {
+    //console.log(value);
+    console.log("Prénom :", first.value);
+    console.log("Nom :", last.value);
+    console.log("Email :", email.value);
+    console.log("Message :", textarea.value);
+    modal.style.display = "none";
     form.reset();
   }
 });
