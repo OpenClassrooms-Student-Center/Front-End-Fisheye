@@ -347,6 +347,47 @@ form textarea {
     transform: translateX(-50%);
   }
 */
+
+/*********************/
+/***** lightbox *****/
+.lightbox_modal {
+    /*display: none;*/
+    position: fixed;
+    height: 100%;
+    width: 100%;
+    background-color: #0000003b;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+.lightbox {
+    background-color: #ffffff;
+    height: 50%;
+    width: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 25px;
+    padding: 35px;
+    margin: auto;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 15px;
+    box-shadow: 0px 0px 15px 0px #777777;
+}
+.lightbox_close, .lightbox_prev, .lightbox_next {
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+}
+.lightbox_close {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+}
+
   @media screen and (max-width: 768px) {
     .modal {
         width: 90%;
