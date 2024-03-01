@@ -10,6 +10,7 @@ export default class Image extends Media {
 	render() {
 		const mediaWrapper = document.querySelector(".photograph-medias");
 		const mediaLink = document.createElement("a");
+		mediaLink.classList.add("media_link");
 		const image = `<img src="${this.src}" alt="${this.title}"/>`
 		const imageCard = this.createCard();
 
