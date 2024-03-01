@@ -9,11 +9,15 @@
     <title>Fisheye - photographe </title>
   </head>
   <body>
+    <!-- header -->
     <header>
      <a href="index.html"  title="Fisheye Home page"><img src="assets/images/logo.png" class="logo"  alt="fisheye logo"/></a>
     </header>
+    <!-- main -->
     <main id="main">
+      <!-- photograph-header -->
       <section class="photograph-header"></section>
+      <!-- photograph_medias-filter -->
       <div class="photograph_medias-filter">
         <h2>Trier par</h2>
         <div class="filter_section">
@@ -24,36 +28,48 @@
           </select>
         </div>
     </div>
-      <section class="photograph-medias"></section>    
+    <!-- photograph-medias -->
+      <section class="photograph-medias"></section>
+      <!-- likes_and_price -->
       <div class="likes_and_price"></div>         
     </main>
+    <!-- contact_modal -->
     <div id="contact_modal">
       <div class="modal">
           <div class="modal_title">
               <h2 class="modal-title_name">Contactez-moi<span></span></h2>
               <img class="close-modal" src="assets/icons/close.svg" />
           </div>
-          <form>
-              <div>
+          <form id="form" action="index.html" method="get">
+              <div class="formData">
                   <label>Prénom</label>
-                  <input type="text" id="prenom" name="prenom"/>
+                  <input type="text" id="first" name="first"/>
               </div>
-              <div>
+              <div class="formData">
                   <label>Nom</label>
-                  <input type="text" id="nom" name="nom"/>
+                  <input type="text" id="last" name="last"/>
               </div>
-              <div>
+              <div class="formData">
                   <label>Email</label>
                   <input type="email" id="email" name="email"/>
               </div>
-              <div>
+              <div class="formData">
                   <label>Votre message</label>
-                  <textarea></textarea>
+                  <textarea type="text" id="message"></textarea>
               </div>
-              <button class="submit_button">Envoyer</button>
+              <button class="submit_button"  type="submit">Envoyer</button>
           </form>
       </div>
     </div>
+    <!-- lightbox_modal -->
+    <div id="lightbox_modal" class="lightbox" aria-hidden="true" role="dialog">
+      <div class="lightbox">
+        <button class="lightbox_close"><img src="assets/icons/lightbox_close.svg"/></button>
+        <div class="lightbox_media"></div>
+        <button class="lightbox_prev"><img src="assets/icons/arrow_prev.svg"/></button>
+        <button class="lightbox_next"><img src="assets/icons/arrow_next.svg"/></button>
+      </div>
+      <!-- script -->
     <script src="./scripts/utils/contactForm.js"></script>
     <script type="module" src="./scripts/pages/photographer.js"></script>
   </body>
