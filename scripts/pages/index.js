@@ -2,7 +2,7 @@
 
    async function getPhotographers() {
         const response = await fetch ("./data/photographers.json");
-        // Extraire seulement la propriété photographers de reponse
+        // Extraire seulement la propriété photographers de response
         const {photographers} = await response.json();
         return photographers;
     }
