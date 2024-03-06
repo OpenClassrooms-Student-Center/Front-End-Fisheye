@@ -66,7 +66,7 @@ closeLightbox() {
         this.setupMediaLinks(); 
     }
 
-    init() {
+    initLightbox() {
         this.attachEventListeners();
     }
 }
