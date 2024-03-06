@@ -35,7 +35,7 @@ fetch("./data/photographers.json")
     console.log(photographerLikes);
 
     const lightbox = new PhotographerLightbox(mediaCards);
-    lightbox.init();
+    lightbox.initLightbox();
     console.log(lightbox);
 
     const photographerFilter = new PhotographerFilter(mediaCards, lightbox);
