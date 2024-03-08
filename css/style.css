@@ -58,21 +58,23 @@ h1 {
     font-size: 36px;
 }
 
-.location {
-    color: #901C1C;
-    font-size: 14px;
-    font-weight: 400;
-}
 .photographer_section article p {
     margin-top: 5px;
 }
-.tagline {
+
+.photographer_section article .location {
+    color: #901C1C;
+    font-size: 18px;
+    font-weight: 400;
+}
+.photographer_section article .tagline {
     color: #000;
+    font-size: 14px;
 }
 
-.price {
+.photographer_section article .price {
     color: #757575;
-    font-size: 10px;
+    font-size: 14px;
 }
 
 /* Media Queries */
