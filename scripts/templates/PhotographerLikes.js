@@ -16,7 +16,7 @@ export default class PhotographerLikes {
                                       <span class="total_likes">${totalLikes}</span><img src="./assets/icons/heart-black.svg" class="heart"></img>
                                     </div>
                                     <div>
-                                        <span class="photographer_price">${photographer.price} €/jour</span>
+                                        <span class="photographer_price">${photographer.price} € / jour</span>
                                     </div>
                                  `
             photographerLikesAndPrice.innerHTML = LikesAndPrice;
