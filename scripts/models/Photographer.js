@@ -39,12 +39,38 @@ export default class Photographer {
                                       <img class="portrait" src="assets/photographers/portrait/${this.portrait}" alt="${this.name}">
                                       `;
 
-        const modalTitleNameSpan = document.querySelector(".modal-title_name span");
-        modalTitleNameSpan.append(this.name);
-        
-        const modal = document.getElementById("contact_modal");
-        const contactButton = document.querySelector(".contact_button");
-        contactButton.addEventListener("click", () => modal.style.display = "block");
+        this.setupContactModal();
     }
 
+    setupContactModal() {
+        const body = document.querySelector('body');
+        const modal = document.getElementById("contact_modal");
+        const contactButton = document.querySelector(".contact_button");
+        const closeForm = document.querySelector(".close-modal");
+
+        function openModal () {
+            body.setAttribute('aria-hidden', 'true');
+            modal.setAttribute('aria-hidden', 'false');
+            modal.style.display = "block";
+            closeForm.focus();
+        };
+
+        function closeModal () {
+            body.setAttribute('aria-hidden', 'false');
+            modal.setAttribute('aria-hidden', 'true');
+            modal.style.display = "none";
+        };
+
+        function handleEscapeKey(e) {
+            const key = e.key;
+
+            if (modal.getAttribute('aria-hidden') === 'false' && key === 'Escape') {
+                closeModal();
+            }
+        };
+
+        contactButton.addEventListener("click", openModal);
+        closeForm.addEventListener("click", closeModal);
+        document.addEventListener('keydown', handleEscapeKey);
+    }
 }
