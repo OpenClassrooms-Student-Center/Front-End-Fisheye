@@ -19,7 +19,7 @@
       <section class="photograph-header"></section>
       <!-- photograph_medias-filter -->
       <div class="photograph_medias-filter">
-        <label for="sortButton">Trier par</label>
+        <p>Trier par</p>
         <div class="filter_section">
             <button id="sortButton" class="sort_button" role="button" aria-haspopup="listbox" aria-expanded="false">
                 <span class="sort_button_text">Popularité</span>
@@ -38,11 +38,11 @@
       <div class="likes_and_price"></div>         
     </main>
     <!-- contact_modal -->
-    <div id="contact_modal" role="dialog" aria-describedby="modalContact">
+    <div id="contact_modal" role="dialog">
       <div class="modal">
           <div class="modal_title">
               <h2 class="modal-title_name">Contactez-moi<span></span></h2>
-              <img class="close-modal" src="assets/icons/close.svg" role="button" aria-label="Fermer la modal"/>
+              <img class="close-modal" src="assets/icons/close.svg" role="button" aria-label="Fermer la modal" alt="icon de fermeture de la modal"/>
           </div>
           <form id="form" action="index.html" method="get">
               <div class="formData">
@@ -68,10 +68,10 @@
     <!-- lightbox_modal -->
     <div class="lightbox_modal">
       <div class="lightbox">
-        <button class="lightbox_close"><img src="assets/icons/lightbox_close.svg"/></button>
-        <button class="lightbox_prev"><img src="assets/icons/arrow_prev.svg"/></button>
+        <button class="lightbox_close" value="img"><img src="assets/icons/lightbox_close.svg"/></button>
+        <button class="lightbox_prev"  value="img"><img src="assets/icons/arrow_prev.svg" alt="icon d'une flèche qui indique précédent"/></button>
         <div class="lightbox_media"></div>
-        <button class="lightbox_next"><img src="assets/icons/arrow_next.svg"/></button>
+        <button class="lightbox_next"  value="img"><img src="assets/icons/arrow_next.svg" alt="icon d'une flèche qui indique suivant"/></button>
       </div>
       <!-- script -->
     <script src="./scripts/utils/contactForm.js"></script>
