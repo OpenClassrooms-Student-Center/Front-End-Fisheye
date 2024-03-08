@@ -1,18 +1,11 @@
 // DOM Elements
-const contactButton = document.querySelector(".contact_button");
-const closeForm = document.querySelector(".close-modal");
 const modal = document.getElementById("contact_modal");
 const modalBgContent = document.querySelector(".content");
-//const messageValidation = document.querySelector(".message-validation");
-//const messageValidationBtnClose = document.querySelector(".message-validation_close");
 const form = document.getElementById("form");
 const first = document.getElementById("first");
 const last = document.getElementById("last");
 const email = document.getElementById("email");
 const textarea = document.getElementById("message");
-
-//contactButton.addEventListener("click", () => modal.style.display = "block");
-closeForm.addEventListener("click", () => modal.style.display = "none");
 
 // Regex (expression régulière)
 const regexName = /^([A-Za-z|\s]{2,15})?([-]{0,1})?([A-Za-z|\s]{2,15})$/g;
@@ -100,20 +93,6 @@ function checkTextarea(textarea, message) {
   }
   return true;
 };
-/*
-const firstValue = first.value;
-const lastValue = last.value;
-const emailValue = email.value;
-const textareaValue = textarea.value;
-*/
-/*
-const value = {
-  "Prénom": first.value,
-  "Nom": last.value,
-  "Email": email.value,
-  "Message": textarea.value
- }
-*/
 
 // Ajoute un évenement aux inputs du formulaire
 first.addEventListener('change', () => {checkFirst(first, message)});
