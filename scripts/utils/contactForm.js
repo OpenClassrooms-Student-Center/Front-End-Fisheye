@@ -13,37 +13,6 @@ const textarea = document.getElementById("message");
 
 //contactButton.addEventListener("click", () => modal.style.display = "block");
 closeForm.addEventListener("click", () => modal.style.display = "none");
-/*
-messageValidationBtnClose.addEventListener("click",() => {
-  modal.style.display = "none";
-
-});
-*/
-/*
-// launch modal event
-modalBtn.forEach((btn) => btn.addEventListener("click", launchModal));
-// close modal event
-closeForm.addEventListener("click", closeModal);
-messageValidationBtnClose.addEventListener("click", closeModal);
-*/
-/*
-// launch modal form
-function launchModal() {
-  modalbg.style.display = "block";
-  form.style.display ="block";
-  modalBgContent.classList.remove("closed");
-  messageValidation.style.display = 'none';
-}
-*/
-/*
-// close modal form
-function closeModal() {
-  modalBgContent.classList.add("closed");
-  setTimeout(() => {
-    modalbg.style.display = "none";
-  }, 800);
-}
-*/
 
 // Regex (expression régulière)
 const regexName = /^([A-Za-z|\s]{2,15})?([-]{0,1})?([A-Za-z|\s]{2,15})$/g;
