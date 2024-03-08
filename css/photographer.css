@@ -71,7 +71,7 @@
 .photograph_medias-filter {
     display: flex;
     align-items: center;
-    width: 80%;
+    width: 90%;
     margin: 50px auto 0;
     gap: 20px;
 }
@@ -80,16 +80,10 @@
     margin: 50px 5%;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
-    gap: 50px;
+    gap: 50px 100px;
     width: 90%;
 }
-/*
-.media-card_wrapper {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    gap: 50px;
-}
-*/
+
 .media-card {
     flex-shrink: 0;
     display: flex;
@@ -112,6 +106,7 @@
 .media-title {
     font-size: 24px;
     font-weight: 500;
+    color: #901C1C;
 }
 .media-likes {
     cursor: pointer;
@@ -171,14 +166,14 @@
 .likes_and_price {
     position: fixed;
     bottom: 0;
-    right: 5%;
+    right: 2%;
     background-color: #DB8876;
     color: #000;
-    width: max-content;
+    width: 400px;
     transform: translate(0%, 0%);
     display: flex;
     align-items: center;
-    gap: 60px;
+    justify-content: space-between;
     font-size: 24px;
     font-weight: 600;
     border-top-right-radius: 5px;
@@ -295,13 +290,14 @@ form textarea {
     height: 160px;
     width: 100%;
     border-radius: 5px;
+    padding: 20px;
 }
 .submit_button {
     width: 170px;
 }
 /*************************************/
 /***** photograph_medias-filter ******/
-.photograph_medias-filter p {
+.photograph_medias-filter label {
     font-size: 18px;
     font-weight: 700;
 
@@ -353,11 +349,20 @@ form textarea {
     display: block;
     text-align: left;
     font-size: 20px;
-    border-radius: 0 0 5px 5px;
-    border-top: 1px solid #fff;
-    border-top-width: 90%;
+    position: relative;
     list-style: none;
     cursor: pointer;
+}
+.sort_dropdown li::before {
+    content: "";
+    display: block;
+    height: 1px;
+    width: 80%;
+    background-color: #fff;
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
 }
   .sort_dropdown a:hover {
     background-color: #DB8876;
@@ -371,55 +376,6 @@ form textarea {
     transform: rotate(180deg); 
 }
 
-
-/***** message-validation *****/
-/*
-.message-validation {
-    display: none;
-    padding: 25px;
-    position: absolute;
-    z-index: 1;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    background-color: #232323;
-    color: #FFF;
-    border-radius: 15px;
-    width: 100%;
-    text-align: center;
-    height: 100%;
-  }
-  .message-validation_text {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    text-align: center;
-    transform: translate(-50%, -50%);
-    width: 90%;
-  }
-  .message-validation p {
-    font-weight: 400;
-    font-size: 28px;
-  }
-  .message-validation_close {
-    background: #fe142f;
-    margin-bottom: 20px;
-    padding: 2em;
-    color: #fff;
-    padding: 0.75rem 2.5rem;
-    border-radius: 8px;
-    cursor: pointer;
-    justify-content: center;
-    font-weight: normal;
-    width: 235px;
-    font-size: 20px;
-    position: absolute;
-    bottom: 0%;
-    left: 50%;
-    text-align: center;
-    transform: translateX(-50%);
-  }
-*/
 
 /*********************/
 /***** lightbox *****/
@@ -435,7 +391,7 @@ form textarea {
 }
 .lightbox {
     background-color: #ffffff;
-    height: 50%;
+    height: 80%;
     width: 50%;
     display: flex;
     align-items: center;
@@ -461,11 +417,13 @@ form textarea {
     right: 20px;
 }
 .lightbox_media {
-    height: 100%;
-    width: 100%;
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
 }
 .lightbox_media video, .lightbox_media img {
-    height: 100%;
+    height: 600px;
     width: 100%;
     object-fit: cover;
 }
