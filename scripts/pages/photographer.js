@@ -39,7 +39,7 @@ fetch("./data/photographers.json")
     console.log(lightbox);
 
     const photographerFilter = new PhotographerFilter(mediaCards, lightbox);
-    photographerFilter.initSortListener();
+    photographerFilter.initSort();
     console.log(photographerFilter);
 
   })
