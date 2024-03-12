@@ -13,7 +13,7 @@
     <header>
      <a href="index.html" title="Fisheye Home page"><img src="assets/images/logo.png" class="logo"  alt="fisheye logo"/></a>
     </header>
-    <!-- main -->
+    <!-- main -->     
     <main id="main"  role="main">
       <!-- photograph-header -->
       <section class="photograph-header"></section>
@@ -26,12 +26,12 @@
                 <img src="assets/icons/chevron_white.svg" class="chevron" alt="icon chevron"/>
             </button>
             <ul id="sortDropdown" class="sort_dropdown" role="listbox" aria-labelledby="sortButton">
-                <li data-sort="likes" class="active" role="option">Popularité</li>
-                <li data-sort="title" role="option">Titre</li>
-                <li data-sort="date" role="option">Date</li>
+                <li data-sort="likes" class="active" role="option" tabindex="0">Popularité</li>
+                <li data-sort="title" role="option" tabindex="0">Titre</li>
+                <li data-sort="date" role="option" tabindex="0">Date</li>
             </ul>
-        </div>
-    </div>
+        </div>        
+      </div>
     <!-- photograph-medias -->
       <section class="photograph-medias"></section>
       <!-- likes_and_price -->
@@ -42,36 +42,36 @@
       <div class="modal">
           <div class="modal_title">
               <h2 class="modal-title_name">Contactez-moi<span></span></h2>
-              <img class="close-modal" src="assets/icons/close.svg" role="button" aria-label="Fermer la modal" alt="icon de fermeture de la modal"/>
+              <img class="close-modal" src="assets/icons/close.svg" role="button" aria-label="Fermer la modal" alt="icon de fermeture de la modal" tabindex="0"/>
           </div>
           <form id="form" action="index.html" method="get">
               <div class="formData">
                   <label for="first">Prénom</label>
-                  <input type="text" id="first" name="first" placeholder="Prénom"/>
+                  <input type="text" id="first" name="first" placeholder="Prénom" tabindex="0"/>
               </div>
               <div class="formData">
                   <label for="last">Nom</label>
-                  <input type="text" id="last" name="last" placeholder="Nom"/>
+                  <input type="text" id="last" name="last" placeholder="Nom" tabindex="0"/>
               </div>
               <div class="formData">
                   <label for="email">Email</label>
-                  <input type="email" id="email" name="email" placeholder="Adresse email"/>
+                  <input type="email" id="email" name="email" placeholder="Adresse email" tabindex="0"/>
               </div>
               <div class="formData">
                   <label for="message">Votre message</label>
-                  <textarea type="text" id="message" placeholder="Votre message ..."></textarea>
+                  <textarea type="text" id="message" placeholder="Votre message ..." tabindex="0"></textarea>
               </div>
-              <button class="submit_button"  type="submit">Envoyer</button>
+              <button class="submit_button" type="submit" tabindex="0">Envoyer</button>
           </form>
       </div>
     </div>
     <!-- lightbox_modal -->
-    <div class="lightbox_modal">
+    <div class="lightbox_modal" role="dialog">
       <div class="lightbox">
-        <img class="lightbox_close" src="assets/icons/lightbox_close.svg" alt="icon de fermeture de la lightbox" role="button"/>
-        <button class="lightbox_prev" value="img"><img src="assets/icons/arrow_prev.svg" alt="icon d'une flèche qui indique précédent"/></button>
+        <img class="lightbox_close" src="assets/icons/lightbox_close.svg" alt="icon de fermeture de la lightbox" role="button" tabindex="0"/>
+        <button class="lightbox_prev" value="img" tabindex="0"><img src="assets/icons/arrow_prev.svg" alt="icon d'une flèche qui indique précédent"/></button>
         <div class="lightbox_media"></div>
-        <button class="lightbox_next" value="img"><img src="assets/icons/arrow_next.svg" alt="icon d'une flèche qui indique suivant"/></button>
+        <button class="lightbox_next" value="img" tabindex="0"><img src="assets/icons/arrow_next.svg" alt="icon d'une flèche qui indique suivant" /></button>
       </div>
       <!-- script -->
     <script src="./scripts/utils/contactForm.js"></script>
