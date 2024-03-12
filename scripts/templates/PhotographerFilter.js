@@ -25,19 +25,14 @@ export default class PhotographerFilter {
         // Mise à jour des médias dans la lightbox  
         this.lightbox.updateMedias(this.medias); 
     }
-    /*
-    initSortListener() {
-        document.getElementById('sortMedia').addEventListener('change', (event) => {
-            this.applySort(event.target.value);
-        });
-    */
-        initSortListener() {
+
+        initSort() {
           this.applyActiveSort();
 
           const chevron = document.querySelector('.chevron');
           const sortButton = document.querySelector('.sort_button');
           const sortDropdown = document.querySelector('.sort_dropdown');
-      
+
           // Fonction pour basculer l'affichage du menu déroulant
           const toggleDropdown = () => {
             sortDropdown.classList.toggle('show');         
@@ -52,6 +47,8 @@ export default class PhotographerFilter {
         };
       
           sortButton.addEventListener('click', toggleDropdown);
+
+          
       
           // Fonction pour mettre à jour le texte du bouton et gérer le tri
           const updateSort = (sortDropdownLink) => {
@@ -74,6 +71,13 @@ export default class PhotographerFilter {
                   event.preventDefault();
                   updateSort(event.currentTarget);
               });
+              // Ajout pour gérer l'appui sur la touche Entrée
+                link.addEventListener('keydown', (event) => {
+                    if (event.key === "Enter") {
+                        event.preventDefault();
+                        updateSort(event.currentTarget);
+                    }
+                });
           });
       
           // Fermer le dropdown si l'utilisateur clique en dehors
@@ -93,4 +97,4 @@ export default class PhotographerFilter {
               sortButtonText.textContent = activeSortLink.textContent;
           }
       }
-      }
+    }
