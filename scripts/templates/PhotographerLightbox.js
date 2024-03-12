@@ -26,28 +26,38 @@ export default class PhotographerLightbox {
     }
 
     
-closeLightbox() {
-    const lightboxModal = document.querySelector('.lightbox_modal');
-    lightboxModal.style.display = 'none'; 
-    const lightboxMediaContainer = document.querySelector('.lightbox_media');
-    lightboxMediaContainer.innerHTML = '';
-}
+    closeLightbox() {
+        const lightboxModal = document.querySelector('.lightbox_modal');
+        lightboxModal.style.display = 'none'; 
+        const lightboxMediaContainer = document.querySelector('.lightbox_media');
+        lightboxMediaContainer.innerHTML = '';
+    }
     attachEventListeners() {
         document.querySelector('.lightbox_prev').addEventListener('click', () => this.navigate(-1));
         document.querySelector('.lightbox_next').addEventListener('click', () => this.navigate(1));
         document.querySelector('.lightbox_close').addEventListener('click', () => this.closeLightbox());
-        this.setupMediaLinks();      
-
+        this.setupMediaLinks();
+    
+        // Ajouter le gestionnaire pour les touches de navigation
+        document.addEventListener('keydown', (e) => {
+            if (e.key === "Escape") {
+                this.closeLightbox();
+            } else if (e.key === "ArrowLeft") {
+                this.navigate(-1); // Vers le média précédent
+            } else if (e.key === "ArrowRight") {
+                this.navigate(1); // Vers le média suivant
+            }
+        });
     }
 
     setupMediaLinks() {
         document.querySelectorAll('.media_link').forEach((link, index) => {
-            link.removeEventListener('click', this.handleMediaLinkClick); 
-            link.addEventListener('click', (e) => this.handleMediaLinkClick(e, index));
+            link.removeEventListener('click', this.mediaLinkClick); 
+            link.addEventListener('click', (e) => this.mediaLinkClick(e, index));
         });
     }
 
-    handleMediaLinkClick(e, index) {
+    mediaLinkClick(e, index) {
         e.preventDefault();
         this.currentIndex = index;
         this.displayCurrentMedia();
