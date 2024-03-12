@@ -48,11 +48,37 @@ export default class Photographer {
         const contactButton = document.querySelector(".contact_button");
         const closeForm = document.querySelector(".close-modal");
 
+        function trapFocus(element) {
+            const focusableElements = element.querySelectorAll('button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])');
+            const firstFocusableElement = focusableElements[0];
+            const lastFocusableElement = focusableElements[focusableElements.length - 1];
+        
+            element.addEventListener('keydown', function(e) {
+                const isTabPressed = e.key === 'Tab' || e.keyCode === 9;
+        
+                if (!isTabPressed) {
+                    return;
+                }
+        
+                if (e.shiftKey) /* shift + tab */ {
+                    if (document.activeElement === firstFocusableElement) {
+                        lastFocusableElement.focus();
+                        e.preventDefault();
+                    }
+                } else /* tab */ {
+                    if (document.activeElement === lastFocusableElement) {
+                        firstFocusableElement.focus();
+                        e.preventDefault();
+                    }
+                }
+            });
+        }
         function openModal () {
             body.setAttribute('aria-hidden', 'true');
             modal.setAttribute('aria-hidden', 'false');
             modal.style.display = "block";
             closeForm.focus();
+            trapFocus(modal); // Appliquer la capture du focus
         };
 
         function closeModal () {
