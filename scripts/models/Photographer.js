@@ -79,13 +79,13 @@ export default class Photographer {
             modal.style.display = "block";
             closeForm.focus();
             trapFocus(modal); // Appliquer la capture du focus
-        };
+        }
 
         function closeModal () {
             body.setAttribute('aria-hidden', 'false');
             modal.setAttribute('aria-hidden', 'true');
             modal.style.display = "none";
-        };
+        }
 
         function handleEscapeKey(e) {
             const key = e.key;
@@ -93,7 +93,7 @@ export default class Photographer {
             if (modal.getAttribute('aria-hidden') === 'false' && key === 'Escape') {
                 closeModal();
             }
-        };
+        }
 
         contactButton.addEventListener("click", openModal);
         closeForm.addEventListener("click", closeModal);

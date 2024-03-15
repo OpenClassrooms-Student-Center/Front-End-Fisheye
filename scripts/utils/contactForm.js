@@ -1,6 +1,5 @@
 // DOM Elements
 const modal = document.getElementById("contact_modal");
-const modalBgContent = document.querySelector(".content");
 const form = document.getElementById("form");
 const first = document.getElementById("first");
 const last = document.getElementById("last");
@@ -9,7 +8,7 @@ const textarea = document.getElementById("message");
 
 // Regex (expression régulière)
 const regexName = /^([A-Za-z|\s]{2,15})?([-]{0,1})?([A-Za-z|\s]{2,15})$/g;
-const regexEmail = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/g;
+const regexEmail = /^[\w-.]+@([\w-]+\.)+[\w-]{2,4}$/g;
 
 // Message d'erreur des inputs
 const message = {
@@ -27,7 +26,7 @@ function addError(element, message) {
   if(first || last || email) {
     element.style.border ="2.5px solid #e54858";
   }
-};
+}
 
 // Enlève l'erreur
 function removeError(element) {
@@ -36,7 +35,7 @@ function removeError(element) {
   if(first || last || email) {
     element.style.border ="none";
   }
-};
+}
 
 // Vérifie first
 function checkFirst(first, message) {
@@ -51,7 +50,7 @@ function checkFirst(first, message) {
     removeError(first);
   }
   return true;
-};
+}
 
 // Vérifie last
 function checkLast(last, message) {
@@ -66,7 +65,7 @@ function checkLast(last, message) {
     removeError(last);
   }
   return true;
-};
+}
 
 // Vérifie email
 function checkEmail(email, message) {
@@ -92,7 +91,7 @@ function checkTextarea(textarea, message) {
     removeError(textarea);
   }
   return true;
-};
+}
 
 // Ajoute un évenement aux inputs du formulaire
 first.addEventListener('change', () => {checkFirst(first, message)});
