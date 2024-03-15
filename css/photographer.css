@@ -275,7 +275,7 @@ form input {
 .formData[data-error]::after {
     content: attr(data-error);
     font-size: 0.4em;
-    color: #e54858;
+    color: #000000;
     display: block;
     text-align: right;
     line-height: 120%;
