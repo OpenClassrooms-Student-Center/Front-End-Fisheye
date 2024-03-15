@@ -15,7 +15,7 @@ export default class PhotographerLightbox {
         let mediaElement;
         
         if (media instanceof Image) {
-            mediaElement = `<img src="${media.src}" alt="${media.title}"/>` +
+            mediaElement = `<img src="${media.src}" alt="${media.title}" />` +
                            `<h3 class="media-title">${media.title}</h3>`; 
         } else if (media instanceof Video) {
             mediaElement = `<video controls><source src="${media.src}" type="video/mp4"></video>` +
@@ -31,6 +31,7 @@ export default class PhotographerLightbox {
         lightboxModal.style.display = 'none'; 
         const lightboxMediaContainer = document.querySelector('.lightbox_media');
         lightboxMediaContainer.innerHTML = '';
+        lightboxModal.setAttribute('aria-hidden', 'true');
     }
     attachEventListeners() {
         document.querySelector('.lightbox_prev').addEventListener('click', () => this.navigate(-1));
@@ -62,6 +63,7 @@ export default class PhotographerLightbox {
         this.currentIndex = index;
         this.displayCurrentMedia();
         document.querySelector('.lightbox_modal').style.display = 'block';
+        document.querySelector('.lightbox_modal').setAttribute('aria-hidden', 'false');
     }
 
     navigate(direction) {
