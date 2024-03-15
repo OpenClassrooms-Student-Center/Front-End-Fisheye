@@ -19,9 +19,9 @@
       <section class="photograph-header"></section>
       <!-- photograph_medias-filter -->
       <div class="photograph_medias-filter">
-        <p>Trier par</p>
+        <label id="sortBy" aria-label="Order by" tabindex="0" aria-labelledby="sortBy">Trier par</label>
         <div class="filter_section">
-            <button id="sortButton" class="sort_button" role="button" aria-haspopup="listbox" aria-expanded="false">
+            <button id="sortButton" class="sort_button" role="button" aria-haspopup="listbox">
                 <span class="sort_button_text">Popularité</span>
                 <img src="assets/icons/chevron_white.svg" class="chevron" alt="icon chevron"/>
             </button>
@@ -59,19 +59,19 @@
               </div>
               <div class="formData">
                   <label for="message">Votre message</label>
-                  <textarea type="text" id="message" placeholder="Votre message ..." tabindex="0"></textarea>
+                  <textarea id="message" placeholder="Votre message ..." tabindex="0"></textarea>
               </div>
               <button class="submit_button" type="submit" tabindex="0">Envoyer</button>
           </form>
       </div>
     </div>
     <!-- lightbox_modal -->
-    <div class="lightbox_modal" role="dialog">
+    <div class="lightbox_modal" role="dialog" aria-label="image closeup view" aria-hidden="true">
       <div class="lightbox">
-        <img class="lightbox_close" src="assets/icons/lightbox_close.svg" alt="icon de fermeture de la lightbox" role="button" tabindex="0"/>
-        <button class="lightbox_prev" value="img" tabindex="0"><img src="assets/icons/arrow_prev.svg" alt="icon d'une flèche qui indique précédent"/></button>
+        <img class="lightbox_close" src="assets/icons/lightbox_close.svg" alt="Ferme la fenêtre de dialogue" role="button" tabindex="0" aria-label="Close dialog"/>
+        <button class="lightbox_prev" value="img" tabindex="0"><img src="assets/icons/arrow_prev.svg" alt="Va à l’image précédente" role="link" aria-label="previous media"/></button>
         <div class="lightbox_media"></div>
-        <button class="lightbox_next" value="img" tabindex="0"><img src="assets/icons/arrow_next.svg" alt="icon d'une flèche qui indique suivant" /></button>
+        <button class="lightbox_next" value="img" tabindex="0"><img src="assets/icons/arrow_next.svg" alt="Va à l’image suivante" role="link" aria-label="next media" /></button>
       </div>
     </div>
       <!-- script -->
