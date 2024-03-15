@@ -19,7 +19,7 @@ export default class Media {
           <h2 class="media-title">${this.title}</h2>
           <div class="media-likes">
             <span class="numbers-likes">${this.likes}</span>
-            <span class="heart"></span>
+            <span class="heart" aria-label="Cliquer pour ajouter un like"></span>
           </div>
         </div>
       `;
