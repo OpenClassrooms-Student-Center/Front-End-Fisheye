@@ -26,75 +26,80 @@ export default class PhotographerFilter {
         this.lightbox.updateMedias(this.medias); 
     }
 
-        initSort() {
-          this.applyActiveSort();
-
-          const chevron = document.querySelector('.chevron');
-          const sortButton = document.querySelector('.sort_button');
-          const sortDropdown = document.querySelector('.sort_dropdown');
-
-          // Fonction pour basculer l'affichage du menu déroulant
-          const toggleDropdown = () => {
-            sortDropdown.classList.toggle('show');         
+    initSort() {
+        this.applyActiveSort();
+    
+        const chevron = document.querySelector('.chevron');
+        const sortButton = document.querySelector('.sort_button');
+        const sortDropdown = document.querySelector('.sort_dropdown');
+    
+        // Fonction pour basculer l'affichage du menu déroulant
+        const toggleDropdown = () => {
+            sortDropdown.classList.toggle('show');
             sortButton.classList.toggle('radius_bottom_none');
-
-            // Vérifier si sortDropdown a la classe 'show' et ajuster la classe du chevron en conséquence
+    
+            // si sortDropdown a la classe 'show'
             if (sortDropdown.classList.contains('show')) {
                 chevron.classList.add('rotate_bottom');
+                sortButton.setAttribute('aria-expanded', 'true');
             } else {
                 chevron.classList.remove('rotate_bottom');
+                sortButton.setAttribute('aria-expanded', 'false');
             }
         };
-      
-          sortButton.addEventListener('click', toggleDropdown);
-
-          
-      
-          // Fonction pour mettre à jour le texte du bouton et gérer le tri
-          const updateSort = (sortDropdownLink) => {
-              // Appliquer le tri sélectionné
-              const sortBy = sortDropdownLink.getAttribute('data-sort');
-              this.applySort(sortBy);
-      
-              // Mise à jour du texte du bouton et de la classe active
-              const sortButtonText = document.querySelector('.sort_button_text');
-              sortButtonText.textContent = sortDropdownLink.textContent;
-              document.querySelector('.sort_dropdown li.active').classList.remove('active');
-              sortDropdownLink.classList.add('active');
-      
-              toggleDropdown(); // Fermer le menu déroulant après sélection
-          };
-      
-          // Attacher les gestionnaires d'événements aux liens de tri
-          document.querySelectorAll('.sort_dropdown li').forEach(link => {
-              link.addEventListener('click', (event) => {
-                  event.preventDefault();
-                  updateSort(event.currentTarget);
-              });
-              // Ajout pour gérer l'appui sur la touche Entrée
-                link.addEventListener('keydown', (event) => {
-                    if (event.key === "Enter") {
-                        event.preventDefault();
-                        updateSort(event.currentTarget);
-                    }
-                });
-          });
-      
-          // Fermer le dropdown si l'utilisateur clique en dehors
-          window.addEventListener('click', (event) => {
-              if (!sortButton.contains(event.target) && sortDropdown.classList.contains('show')) {
-                  toggleDropdown();
-              }
-          });
-      }
-      
-      // Appliquer le tri actif dès l'initialisation
-      applyActiveSort() {
-          const activeSortLink = document.querySelector('.sort_dropdown li.active');
-          if (activeSortLink) {
-              this.applySort(activeSortLink.getAttribute('data-sort'));
-              const sortButtonText = document.querySelector('.sort_button_text');
-              sortButtonText.textContent = activeSortLink.textContent;
-          }
-      }
+    
+        sortButton.addEventListener('click', toggleDropdown);
+    
+        // Fonction pour mettre à jour le texte du bouton et gérer le tri
+        const updateSort = (sortDropdownLink) => {
+            // Appliquer le tri sélectionné
+            const sortBy = sortDropdownLink.getAttribute('data-sort');
+            this.applySort(sortBy);
+    
+            // Mise à jour du texte du bouton et de la classe active
+            const sortButtonText = document.querySelector('.sort_button_text');
+            sortButtonText.textContent = sortDropdownLink.textContent;
+            const activeLi = document.querySelector('.sort_dropdown li.active');
+            activeLi.classList.remove('active');
+            activeLi.setAttribute('aria-selected', 'false');
+            sortDropdownLink.classList.add('active');
+            sortDropdownLink.setAttribute('aria-selected', 'true');
+            toggleDropdown(); // Fermer le menu déroulant après sélection
+        };
+    
+        // Attacher les gestionnaires d'événements aux liens de tri
+        document.querySelectorAll('.sort_dropdown li').forEach(link => {
+            link.addEventListener('click', (event) => {
+                event.preventDefault();
+                updateSort(event.currentTarget);
+            });
+            // Ajout pour gérer l'appui sur la touche Entrée
+            link.addEventListener('keydown', (event) => {
+                if (event.key === "Enter") {
+                    event.preventDefault();
+                    updateSort(event.currentTarget);
+                }
+            });
+        });
+    
+        // Fermer le dropdown si l'utilisateur clique en dehors
+        window.addEventListener('click', (event) => {
+            if (!sortButton.contains(event.target) && sortDropdown.classList.contains('show')) {
+                toggleDropdown();
+            }
+        });
     }
+      
+    // Appliquer le tri actif dès l'initialisation
+    applyActiveSort() {
+        const activeSortLink = document.querySelector('.sort_dropdown li.active');
+        if (activeSortLink) {
+            const sortButtonText = document.querySelector('.sort_button_text');
+            sortButtonText.textContent = activeSortLink.textContent;
+            document.querySelectorAll('.sort_dropdown li').forEach(link => {
+                link.setAttribute('aria-selected', 'false');
+            });
+            activeSortLink.setAttribute('aria-selected', 'true');
+        }
+    }    
+}
