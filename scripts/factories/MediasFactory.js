@@ -1,5 +1,5 @@
-import Image from '../models/Image.js'
-import Video from '../models/Video.js'
+import Image from "../models/Image.js"
+import Video from "../models/Video.js"
 
 // Factory fonction qui crée un média image ou vidéo
 export default class MediasFactory {
@@ -12,7 +12,7 @@ export default class MediasFactory {
 			return new Video(data)
 		// Une bonne pratique est de déclencher une erreur si le format n'est pas reconnu
 		} else {
-			throw 'Unknown type format'
+			throw "Unknown type format"
 		}
 	}
- }
+}
