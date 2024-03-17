@@ -35,8 +35,10 @@ export default class Photographer {
                                         <p class="location">${this.city}, ${this.country}</p>
                                         <p class="tagline">${this.tagline}</p>
                                       </div>
-                                      <button class="contact_button" aria-label="Contact Me">Contactez-moi</button>  
-                                      <img class="portrait" src="assets/photographers/portrait/${this.portrait}" alt="${this.name}">
+                                      <button class="contact_button" aria-label="Contact Me">Contactez-moi</button>
+                                      <div class="photograph-portrait">
+                                        <img class="portrait" src="assets/photographers/portrait/${this.portrait}" alt="${this.name}">
+                                      </div>
                                       `;
 
         this.setupContactModal();
