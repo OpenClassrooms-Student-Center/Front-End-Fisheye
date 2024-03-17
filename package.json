@@ -1,0 +1,18 @@
+{
+  "dependencies": {
+    "pkg": "^5.8.1"
+  },
+  "name": "fisheye",
+  "description": "",
+  "version": "1.0.0",
+  "main": "index.js",
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "lint": "eslint '**/*.js'",
+    "lint:fix": "eslint '**/*.js' --fix"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
