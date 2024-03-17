@@ -13,7 +13,7 @@
     padding: 50px;
     width: 90%;
 }
-.photograph-text, .photograph-portrait {
+.photograph-text {
     width: 40%;
     display: flex;
     flex-direction: column;
@@ -55,6 +55,9 @@
     color: #000;
 }
 /* photograph-header */
+.photograph-portrait {
+    width: 40%;
+}
 .photograph-header .portrait {
     height: 200px;
     width: 200px;
@@ -77,6 +80,10 @@
     width: 90%;
     margin: 50px auto 0;
     gap: 20px;
+}
+.photograph_medias-filter label {
+    font-size: 18px;
+    font-weight: 600;
 }
 /* photograph-media */
 .photograph-medias {
@@ -441,8 +448,51 @@ form textarea {
     width: 100%;
     object-fit: cover;
 }
-  @media screen and (max-width: 768px) {
+
+@media screen and (max-width: 1400px) {
+    .photograph-medias {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+@media screen and (max-width: 1024px) {
+    .photograph-header {
+        flex-direction: column;
+        gap: 30px;
+        height: max-content;
+        align-items: center;
+        text-align: center;
+    }
+    .photograph-text, .photograph-portrait {
+        width: 100%;
+    }
+    .photograph-header .portrait {
+        margin-left: 0;
+    }
+    .photograph-text .name {
+        font-size: 42px;
+    }
+    .contact_button {
+        order: 2;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    
+    .photograph-medias {
+        grid-template-columns: 1fr;
+    }
     .modal {
         width: 90%;
     }
-  }
+    .likes_and_price {
+        width: 260px;
+        padding: 10px 20px;
+        font-size: 20px;
+    }
+    .lightbox {
+        width: 90%;
+        padding: 15px;
+        gap: 5px;
+    }
+}
