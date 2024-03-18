@@ -49,6 +49,8 @@ export default class Photographer {
 		const modal = document.getElementById("contact_modal")
 		const contactButton = document.querySelector(".contact_button")
 		const closeForm = document.querySelector(".close-modal")
+		const modalTitleNameSpan = document.querySelector(".modal-title_name span")
+		modalTitleNameSpan.innerHTML = this.name
 
 		function trapFocus(element) {
 			const focusableElements = element.querySelectorAll("button, [href], input, select, textarea, [tabindex]:not([tabindex=\"-1\"])")
