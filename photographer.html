@@ -42,8 +42,10 @@
       <div class="modal">
           <div class="modal_title">
               <h2 class="modal-title_name">Contactez-moi<span></span></h2>
-              <img class="close-modal" src="assets/icons/close.svg" role="button" aria-label="Fermer la modal" alt="icon de fermeture de la modal" tabindex="0"/>
-          </div>
+              <button class="close-modal" role="button" aria-label="Fermer la modal" tabindex="0">
+                <img src="assets/icons/close.svg"  alt="icon de fermeture de la modal"/>
+              </button>
+            </div>
           <form id="form" action="index.html" method="get">
               <div class="formData">
                   <label for="first">Prénom</label>
@@ -68,7 +70,9 @@
     <!-- lightbox_modal -->
     <div class="lightbox_modal" role="dialog" aria-label="image closeup view" aria-hidden="true">
       <div class="lightbox">
-        <img class="lightbox_close" src="assets/icons/lightbox_close.svg" alt="Ferme la fenêtre de dialogue" role="button" tabindex="0" aria-label="Close dialog"/>
+        <button class="lightbox_close" role="button" tabindex="0" aria-label="Close dialog">
+          <img src="assets/icons/lightbox_close.svg" alt="croix de fermeture du formulaire"/>
+        </button>
         <button class="lightbox_prev" value="img" tabindex="0"><img src="assets/icons/arrow_prev.svg" alt="Va à l’image précédente" role="link" aria-label="previous media"/></button>
         <div class="lightbox_media"></div>
         <button class="lightbox_next" value="img" tabindex="0"><img src="assets/icons/arrow_next.svg" alt="Va à l’image suivante" role="link" aria-label="next media" /></button>
