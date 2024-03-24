@@ -10,5 +10,5 @@
     "dev": "http-server",
     "lint": "eslint . --ext .js",
     "lint:fix": "eslint --fix . --ext .js"
-   }
+  }
 }

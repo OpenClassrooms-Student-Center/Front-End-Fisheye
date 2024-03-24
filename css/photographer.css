@@ -208,6 +208,7 @@
     border-radius: 5px;
     background-color: #DB8876;
     width: 40%;
+    max-height: 90%;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -300,7 +301,7 @@ form input {
 }
 
 form textarea {
-    height: 160px;
+    height: 100px;
     width: 100%;
     border-radius: 5px;
     padding: 20px;
