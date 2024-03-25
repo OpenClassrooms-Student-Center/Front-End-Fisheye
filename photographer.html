@@ -1,37 +1,85 @@
 <!DOCTYPE html>
-<html>
+<html lang="fr">
   <head>
-    <link href="css/style.css" rel="stylesheet" type="text/css" />
     <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <link href="css/style.css" rel="stylesheet" type="text/css" />
     <link rel="icon" type="image/png" href="assets/favicon.png">
     <link href="https://fonts.googleapis.com/css?family=DM+Sans&display=swap" rel="stylesheet">
     <title>Fisheye - photographe </title>
   </head>
   <body>
-    <header>
-      <img src="assets/images/logo.png" class="logo" />
+    <!-- header -->
+    <header role="banner">
+     <a href="index.html" title="Fisheye Home page"><img src="assets/images/logo.png" class="logo"  alt="fisheye logo"/></a>
     </header>
-    <main id="main">
-      <div class="photograph-header">
-        <button class="contact_button" onclick="displayModal()">Contactez-moi</button>
+    <!-- main -->     
+    <main id="main"  role="main">
+      <!-- photograph-header -->
+      <section class="photograph-header"></section>
+      <!-- photograph_medias-filter -->
+      <div class="photograph_medias-filter">
+        <label id="sortBy" aria-label="Order by" aria-labelledby="sortBy">Trier par</label>
+        <div class="filter_section">
+            <button id="sortButton" class="sort_button" role="button" aria-haspopup="listbox">
+                <span class="sort_button_text">Popularité</span>
+                <img src="assets/icons/chevron_white.svg" class="chevron" alt="icon chevron"/>
+            </button>
+            <ul id="sortDropdown" class="sort_dropdown" role="listbox" aria-labelledby="sortButton">
+                <li data-sort="likes" class="active" role="option">Popularité</li>
+                <li data-sort="title" role="option">Titre</li>
+                <li data-sort="date" role="option">Date</li>
+            </ul>
+        </div>        
       </div>
+    <!-- photograph-medias -->
+      <section class="photograph-medias"></section>
+      <!-- likes_and_price -->
+      <div class="likes_and_price"></div>         
     </main>
-    <div id="contact_modal">
-			<div class="modal">
-				<header>
-          <h2>Contactez-moi</h2>
-          <img src="assets/icons/close.svg" onclick="closeModal()" />
-        </header>
-				<form>
-					<div>
-						<label>Prénom</label>
-						<input />
-					</div>
-          <button class="contact_button">Envoyer</button>
-				</form>
-			</div>
-		</div>
-    <script src="/scripts/pages/photographer.js"></script>
-    <script src="/scripts/utils/contactForm.js"></script>
+    <!-- contact_modal -->
+    <div id="contact_modal" role="dialog">
+      <div class="modal">
+          <div class="modal_title">
+              <h2 class="modal-title_name">Contactez-moi<span></span></h2>
+              <button class="close-modal" role="button" aria-label="Fermer la modal" tabindex="0">
+                <img src="assets/icons/close.svg"  alt="icon de fermeture de la modal"/>
+              </button>
+            </div>
+          <form id="form" action="index.html" method="get">
+              <div class="formData">
+                  <label for="first">Prénom</label>
+                  <input type="text" id="first" name="first" placeholder="Prénom" tabindex="0"/>
+              </div>
+              <div class="formData">
+                  <label for="last">Nom</label>
+                  <input type="text" id="last" name="last" placeholder="Nom" tabindex="0"/>
+              </div>
+              <div class="formData">
+                  <label for="email">Email</label>
+                  <input type="email" id="email" name="email" placeholder="Adresse email" tabindex="0"/>
+              </div>
+              <div class="formData">
+                  <label for="message">Votre message</label>
+                  <textarea id="message" placeholder="Votre message ..." tabindex="0"></textarea>
+              </div>
+              <button class="submit_button" type="submit" tabindex="0">Envoyer</button>
+          </form>
+      </div>
+    </div>
+    <!-- lightbox_modal -->
+    <div class="lightbox_modal" role="dialog" aria-label="image closeup view" aria-hidden="true">
+      <div class="lightbox">
+        <button class="lightbox_close" role="button" tabindex="0" aria-label="Close dialog">
+          <img src="assets/icons/lightbox_close.svg" alt="croix de fermeture du formulaire"/>
+        </button>
+        <button class="lightbox_prev" value="img" tabindex="0"><img src="assets/icons/arrow_prev.svg" alt="Va à l’image précédente" role="link" aria-label="previous media"/></button>
+        <div class="lightbox_media"></div>
+        <button class="lightbox_next" value="img" tabindex="0"><img src="assets/icons/arrow_next.svg" alt="Va à l’image suivante" role="link" aria-label="next media" /></button>
+      </div>
+    </div>
+      <!-- script -->
+    <script src="./scripts/utils/contactForm.js"></script>
+    <script type="module" src="./scripts/pages/photographer.js"></script>
   </body>
 </html>
