@@ -52,7 +52,7 @@ export default class Photographer {
 		const modalTitleNameSpan = document.querySelector(".modal-title_name span");
 		modalTitleNameSpan.innerHTML = this.name;
 
-		function trapFocus (element) {
+		const trapFocus = (element) => {
 			const focusableElements = element.querySelectorAll("button, [href], input, select, textarea, [tabindex]:not([tabindex=\"-1\"])");
 			const firstFocusableElement = focusableElements[0];
 			const lastFocusableElement = focusableElements[focusableElements.length - 1];
@@ -76,28 +76,31 @@ export default class Photographer {
 					}
 				}
 			});
-		}
-		function openModal () {
+		};
+
+		const openModal = () => {
+			this.lastFocusedElement = document.activeElement; // Mémoriser l'élément actif avant ouverture
 			body.setAttribute("aria-hidden", "true");
 			modal.setAttribute("aria-hidden", "false");
 			modal.style.display = "block";
 			closeForm.focus();
-			trapFocus(modal); // Appliquer la capture du focus
-		}
+			trapFocus(modal);
+		};
 
-		function closeModal () {
+		const closeModal = () => {
 			body.setAttribute("aria-hidden", "false");
 			modal.setAttribute("aria-hidden", "true");
 			modal.style.display = "none";
-		}
+			if (this.lastFocusedElement) this.lastFocusedElement.focus(); // Restaurer le focus
+		};
 
-		function handleEscapeKey (e) {
+		const handleEscapeKey = (e) => {
 			const key = e.key;
 
 			if (modal.getAttribute("aria-hidden") === "false" && key === "Escape") {
 				closeModal();
 			}
-		}
+		};
 
 		contactButton.addEventListener("click", openModal);
 		closeForm.addEventListener("click", closeModal);

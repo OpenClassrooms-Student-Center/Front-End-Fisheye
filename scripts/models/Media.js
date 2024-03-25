@@ -25,6 +25,8 @@ export default class Media {
 
 		// Ajouter un événement au clic de heart
 		const heart = mediaCard.querySelector(".heart");
+		heart.role ="button";
+		heart.tabIndex ="0";
 		const numbersLikes = mediaCard.querySelector(".numbers-likes");
 
 		heart.addEventListener("click", () => {
@@ -32,7 +34,15 @@ export default class Media {
 			this.updateTotalLikes();
 		}
 		);
-
+		// Gérer les événements du clavier pour simuler un clic avec Enter ou Space
+		heart.addEventListener("keydown", (event) => {
+			if (event.key === "Enter" || event.key === " ") {
+				event.preventDefault(); // Empêche le comportement par défaut pour "Space" (scroll down)
+				this.toggleLike(heart, numbersLikes);
+				this.updateTotalLikes();
+			}
+		});
+		
 		return mediaCard;
 	}
 

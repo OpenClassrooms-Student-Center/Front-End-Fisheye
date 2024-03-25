@@ -1,5 +1,5 @@
 :focus-visible {
-    outline: 4px solid #000000;
+    outline: 3px solid #000;
     border-radius: 5px;
 }
 /** photograph-header **/
@@ -208,7 +208,7 @@
     border-radius: 5px;
     background-color: #DB8876;
     width: 40%;
-    max-height: 90%;
+    max-height: max-content;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -264,7 +264,7 @@ form {
 
 form label {
     color: #312E2E;
-    font-size: 32px;
+    font-size: 30px;
 }
 
 form div {
@@ -295,7 +295,7 @@ form input {
 .formData[data-error-visible="true"]::after {
     opacity: 1;
     text-align: left;
-    font-size: 16px;
+    font-size: 14px;
     padding-top: 10px;
     font-weight: 500;
 }
@@ -322,7 +322,7 @@ form textarea {
     border-radius: 5px;
     border: none;
     width: 170px;
-    font-size: 18px;
+    font-size: 20px;
     font-weight: 700;
     padding: 20px;
     text-align: left;
@@ -330,12 +330,21 @@ form textarea {
     display: flex;
     align-items: center;
     justify-content: space-between;
-
+    font-family: "DM Sans", sans-serif;
+    font-weight: 600;
 }
 
 .sort_button.radius_bottom_none {
     border-radius: 5px 5px 0 0;
      /* transition:  0.3s ease;*/ 
+}
+.sort_button:focus-visible {
+    background-color: #DB8876;
+    color: #000;
+    /*border: 3px solid #000;*/
+    outline: 3px solid #000;
+    border-radius: 5px;
+    /*outline: 0;*/
 }
 /* dropdown */
 .sort_dropdown {
@@ -354,9 +363,7 @@ form textarea {
 .sort_dropdown.show {
     max-height: 200px;
 }
-.sort_dropdown li.active {
-    display: none;
-}
+
 .sort_dropdown li {
     color: #fff;
     padding: 20px;
@@ -367,14 +374,20 @@ form textarea {
     position: relative;
     list-style: none;
     cursor: pointer;
+    font-weight: 600;
 }
-
+.sort_dropdown li.active {
+    display: none;
+}
 .sort_dropdown li:hover {
     background-color: #691515;
 }
 .sort_dropdown li:focus-visible {
-    background-color: #691515;
-    margin: 5px;
+    background-color: #DB8876;
+    color: #000;
+    outline: 0;
+    border: 3px solid #000;
+    font-weight: 600;
 }
 .sort_dropdown li::before {
     content: "";
@@ -387,7 +400,8 @@ form textarea {
     left: 50%;
     transform: translateX(-50%);
 }
-  .sort_dropdown a:hover {
+
+.sort_dropdown a:hover {
     background-color: #DB8876;
     color: #000;
 }
@@ -452,9 +466,24 @@ form textarea {
     object-fit: cover;
 }
 
-@media screen and (max-width: 1400px) {
+@media screen and (max-width: 1440px) {
     .photograph-medias {
         grid-template-columns: 1fr 1fr;
+    }
+    .modal {
+        width: 50%;
+    }
+    .modal-title_name {
+        font-size: 36px;
+    }
+    form label {
+        font-size: 24px;
+    }
+    form input {
+        height: 40px;
+    }
+    form textarea {
+        height: 80px;
     }
 }
 

@@ -32,19 +32,25 @@ export default class PhotographerFilter {
 		const chevron = document.querySelector(".chevron");
 		const sortButton = document.querySelector(".sort_button");
 		const sortDropdown = document.querySelector(".sort_dropdown");
-
-		// Fonction pour basculer l'affichage du menu déroulant
+		
+		// Fonction pour basculer l'affichage du menu déroulant et ajuster tabindex
 		const toggleDropdown = () => {
 			sortDropdown.classList.toggle("show");
 			sortButton.classList.toggle("radius_bottom_none");
 
-			// si sortDropdown a la classe 'show'
+			// Si sortDropdown a la classe 'show', rendre les li focusables
 			if (sortDropdown.classList.contains("show")) {
 				chevron.classList.add("rotate_bottom");
 				sortButton.setAttribute("aria-expanded", "true");
+				document.querySelectorAll(".sort_dropdown li").forEach(li => {
+					li.setAttribute("tabindex", "0"); // Rendre focusable
+				});
 			} else {
 				chevron.classList.remove("rotate_bottom");
 				sortButton.setAttribute("aria-expanded", "false");
+				document.querySelectorAll(".sort_dropdown li").forEach(li => {
+					li.setAttribute("tabindex", "-1"); // Rendre non focusable
+				});
 			}
 		};
 
@@ -55,16 +61,22 @@ export default class PhotographerFilter {
 			// Appliquer le tri sélectionné
 			const sortBy = sortDropdownLink.getAttribute("data-sort");
 			this.applySort(sortBy);
-
+		
 			// Mise à jour du texte du bouton et de la classe active
 			const sortButtonText = document.querySelector(".sort_button_text");
 			sortButtonText.textContent = sortDropdownLink.textContent;
 			const activeLi = document.querySelector(".sort_dropdown li.active");
-			activeLi.classList.remove("active");
-			activeLi.setAttribute("aria-selected", "false");
+			if (activeLi) {
+				activeLi.classList.remove("active");
+				activeLi.setAttribute("aria-selected", "false");
+			}
 			sortDropdownLink.classList.add("active");
 			sortDropdownLink.setAttribute("aria-selected", "true");
+		
 			toggleDropdown(); // Fermer le menu déroulant après sélection
+		
+			// Remettre le focus sur le bouton de tri après la mise à jour
+			sortButton.focus();
 		};
 
 		// Attacher les gestionnaires d'événements aux liens de tri
@@ -75,7 +87,7 @@ export default class PhotographerFilter {
 			});
 			// Ajout pour gérer l'appui sur la touche Entrée
 			link.addEventListener("keydown", (event) => {
-				if (event.key === "Enter") {
+				if (event.key === "Enter" || event.key === " ") {
 					event.preventDefault();
 					updateSort(event.currentTarget);
 				}
@@ -100,6 +112,10 @@ export default class PhotographerFilter {
 				link.setAttribute("aria-selected", "false");
 			});
 			activeSortLink.setAttribute("aria-selected", "true");
+			
+			// Appliquer le tri basé sur l'option active
+			const sortBy = activeSortLink.getAttribute("data-sort");
+			this.applySort(sortBy);
 		}
 	}
 }
