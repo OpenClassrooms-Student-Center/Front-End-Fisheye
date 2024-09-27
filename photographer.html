@@ -1,37 +1,150 @@
 <!DOCTYPE html>
-<html>
+<html lang="fr">
   <head>
     <link href="css/style.css" rel="stylesheet" type="text/css" />
-    <meta charset="utf-8">
-    <link rel="icon" type="image/png" href="assets/favicon.png">
-    <link href="https://fonts.googleapis.com/css?family=DM+Sans&display=swap" rel="stylesheet">
-    <title>Fisheye - photographe </title>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/png" href="assets/favicon.png" />
+    <link
+      href="https://fonts.googleapis.com/css?family=DM+Sans&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css""
+    />
+    <title>Fisheye - photographe</title>
   </head>
   <body>
-    <header>
-      <img src="assets/images/logo.png" class="logo" />
+    <header role="banner">
+      <a href="./" aria-label="Fisheye Home page" tabindex="0">
+        <img
+          src="assets/images/logo.png"
+          class="logo"
+          alt="Fisheye Home page"
+        />
+      </a>
     </header>
-    <main id="main">
-      <div class="photograph-header">
-        <button class="contact_button" onclick="displayModal()">Contactez-moi</button>
-      </div>
+    <main id="main" role="main">
+      <section class="photograph-header">
+        <div class="photograph-infos"></div>
+        <button
+          aria-label="contact"
+          class="contact_button"
+          role="button"
+          tabindex="0"
+          id="contactButton"
+        >
+          Contactez-moi
+        </button>
+        <div class="photograph-picture"></div>
+      </section>
+      <section class="media-filter">
+        <h2>Trier par</h2>
+        <div class="media-filter-menu" role="menu">
+        <ul class="menu" role="list">
+          <li id="popularite" role="menuitem" tabindex="0" aria-label="filter by popularity">Popularité</li>
+          <li id="date" role="menuitem" tabindex="0" aria-label="filter by date">Date</li>
+          <li id="titre" role="menuitem" tabindex="0" aria-label="filter by title">Titre</li>
+      </ul>
+        </div>
+      </section>
+      <section class="media-section"></section>
     </main>
-    <div id="contact_modal">
-			<div class="modal">
-				<header>
-          <h2>Contactez-moi</h2>
-          <img src="assets/icons/close.svg" onclick="closeModal()" />
-        </header>
-				<form>
-					<div>
-						<label>Prénom</label>
-						<input />
-					</div>
-          <button class="contact_button">Envoyer</button>
-				</form>
-			</div>
-		</div>
-    <script src="/scripts/pages/photographer.js"></script>
-    <script src="/scripts/utils/contactForm.js"></script>
+
+    <dialog id="contact_modal" role="dialog" aria-hidden="true" aria-modal="true">
+      <header role="banner">
+        <h1 id="formTitle">Contactez-moi</h1>
+        <img
+          src="assets/icons/close.svg"
+          alt="Close Contact form"
+          aria-label="Close Contact form"
+          role="button"
+          tabindex="0"
+          id="closeForm"
+        />
+      </header>
+      <form role="form" id="contactForm">
+        <h2 class="photographerNameForm"></h2>
+        <div class="form-control" aria-label="Contact information">
+          <label for="firstName">Prénom</label>
+          <input id="firstName" name="prenom" />
+          <span
+            class="error"
+            id="firstNameError"
+              aria-live="polite"
+            role="alert"
+          >
+            Veuillez saisir votre Prénom
+          </span>
+        </div>
+        <div class="form-control">
+          <label for="lastName">Nom</label>
+          <input id="lastName" name="nom" />
+          <span
+            class="error hidden"
+            id="lastNameError"
+            aria-live="polite"
+            role="alert"
+          >
+            Veuillez saisir votre Nom
+          </span>
+        </div>
+        <div class="form-control">
+          <label for="email">Email</label>
+          <input id="email" />
+          <span class="error" id="emailError" aria-live="polite" role="alert">
+            Veuillez saisir votre Email ou un Email valide
+          </span>
+        </div>
+        <div class="form-control">
+          <label for="message">Votre message</label>
+          <textarea id="message"></textarea>
+          <span class="error" id="messageError" aria-live="polite" role="alert">
+            Veuillez saisir un message
+          </span>
+        </div>
+        <button
+          type="submit"
+          aria-label="send"
+          class="contact_button"
+          form="contactForm"
+        >
+          Envoyer
+        </button>
+      </form>
+    </dialog>
+    <dialog id="lightbox" role="dialog" aria-hidden="true">
+      <div class="lightbox-content">
+        <div class="lightbox-left icon">
+          <em
+            id="left-arrow"
+            class="fa-solid fa-chevron-left"
+            role="button"
+            aria-label="previous"
+            tabindex="0"
+          ></em>
+        </div>
+        <div class="media-content"></div>
+
+        <div class="lightbox-right icon">
+          <em
+            id="right-arrow"
+            class="fa-solid fa-chevron-right"
+            role="button"
+            aria-label="next"
+            tabindex="0"
+          ></em>
+          <div class="lightbox-close" role="button" aria-label="close">
+            <em
+              class="fa-solid fa-xmark"
+              role="button"
+              aria-label="close"
+              tabindex="0"
+            ></em>
+          </div>
+        </div>
+      </div>
+    </dialog>
+    <section class="total-likes"></section>
+    <script type="module" src="./scripts/pages/photographer.js"></script>
   </body>
 </html>
