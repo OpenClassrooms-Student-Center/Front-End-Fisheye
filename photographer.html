@@ -1,37 +1,67 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <link href="css/style.css" rel="stylesheet" type="text/css" />
-    <meta charset="utf-8">
-    <link rel="icon" type="image/png" href="assets/favicon.png">
-    <link href="https://fonts.googleapis.com/css?family=DM+Sans&display=swap" rel="stylesheet">
-    <title>Fisheye - photographe </title>
-  </head>
-  <body>
-    <header>
-      <img src="assets/images/logo.png" class="logo" />
-    </header>
-    <main id="main">
-      <div class="photograph-header">
-        <button class="contact_button" onclick="displayModal()">Contactez-moi</button>
-      </div>
-    </main>
-    <div id="contact_modal">
+<html lang="fr">
+	<head>
+		<link href="css/style.css" rel="stylesheet" type="text/css"/>
+		<meta charset="utf-8" />
+		<link rel="icon" type="image/png" href="assets/favicon.png"/>
+		<link href="https://fonts.googleapis.com/css?family=DM+Sans&display=swap" rel="stylesheet"/>
+		<script type="module" src="scripts/pages/photographer.js" defer></script>
+		<title>Fisheye - photographe</title>
+	</head>
+	<body>
+		<header>
+			<a href="index.html"><img src="assets/images/logo.png" class="logo" alt="Fisheye logo page d'accueil"/></a>
+		</header>
+		<main id="main">
+			<section class="photograph-header">
+				<button class="contact_button" id="contactHeaderBtn" role="button" onclick="displayModal()" aria-label="formulaire de contact">Contactez-moi</button>
+			</section>
+			<section class="photographerWorksSection">
+				<label for="sortWorks" id="sort">Trier par:
+					<select name="sortWorks" id="sortWorks">
+						<option value="popularity" id="sortPopularity">Popularité</option>
+						<option value="date" id="sortDate">Date</option>
+						<option value="title" id="sortTitle">Titre</option>
+					</select>
+				</label>
+
+				<div class="photographerWorks"></div>
+			</section>
+			<div class="lightbox" tabindex="-1">
+				<button class="lightbox__close" aria-label="lightbox fermé" tabindex="0"></button>
+				<button class="lightbox__next" aria-label="photo suivante" tabindex="0"></button>
+				<button class="lightbox__prev" aria-label="photo précédente" tabindex="0"></button>
+				<div class="lightbox__container">
+					<img src="" alt="" class="lightbox__img"/>
+					<video controls class="lightbox__video"></video>
+				</div>
+				<p class="lightbox__titlePhoto"></p>
+			</div>
+		</main>
+		<div id="contact_modal" role="dialog">
+      
 			<div class="modal">
-				<header>
-          <h2>Contactez-moi</h2>
-          <img src="assets/icons/close.svg" onclick="closeModal()" />
-        </header>
-				<form>
+				<header class="modalHeader">
+					<h2>Contactez-moi</h2>
+					<img src="assets/icons/close.svg" onclick="closeModal()" alt="fermer formulaire de contact" tabindex="0"/>
+				</header>
+
+				<form aria-labelledby="">
 					<div>
-						<label>Prénom</label>
-						<input />
+						<label for="firstNameInput">Prénom</label>
+						<input type="text" id="firstNameInput" name="firstName"/>
+						<label for="lastNameInput">Nom</label>
+						<input type="text" id="lastNameInput" name="lastName"/>
+						<label for="mailInput">E-Mail</label>
+						<input type="text" id="mailInput" name="mail"/>
+						<label for="msgArea">Votre message</label>
+						<textarea type="area" id="msgArea" cols="86" rows="15" name="msg"></textarea>
 					</div>
-          <button class="contact_button">Envoyer</button>
+					<button class="contact_button" id="sendFormBtn" aria-label="envoyer">Envoyer</button>
 				</form>
+
 			</div>
 		</div>
-    <script src="/scripts/pages/photographer.js"></script>
-    <script src="/scripts/utils/contactForm.js"></script>
-  </body>
+		<script src="scripts/utils/contactForm.js"></script>
+	</body>
 </html>
