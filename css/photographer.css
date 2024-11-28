@@ -74,3 +74,8 @@ form input {
     border: none;
     border-radius: 5px;
 }
+form textarea{
+    width: 100%;
+    border: none;
+    border-radius: 5px;
+}
