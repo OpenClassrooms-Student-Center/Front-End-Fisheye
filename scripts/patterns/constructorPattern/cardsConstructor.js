@@ -21,6 +21,6 @@ class cardConstructor {
         return this._tagline;
     }
     get price(){
-        return `${this._price}€/"jour"`;
+        return `${this._price}`;
     }
 }
