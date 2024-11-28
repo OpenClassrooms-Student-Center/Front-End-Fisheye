@@ -6,32 +6,43 @@
     <link rel="icon" type="image/png" href="assets/favicon.png">
     <link href="https://fonts.googleapis.com/css?family=DM+Sans&display=swap" rel="stylesheet">
     <title>Fisheye - photographe </title>
+    <script src="/scripts/pages/photographer.js" defer></script>
+    <script src="/scripts/utils/contactForm.js" defer></script>
   </head>
   <body>
     <header>
-      <img src="assets/images/logo.png" class="logo" />
+      <a href="./index.html">
+        <img src="assets/images/logo.png" class="logo" alt="Fisheye To Home page" aria-label="Retour sur la page d'accueil" />
+      </a>
+      
     </header>
     <main id="main">
-      <div class="photograph-header">
-        <button class="contact_button" onclick="displayModal()">Contactez-moi</button>
-      </div>
+      <header class="photograph-header">
+        <button class="contact_button" onclick="displayModal()" aria-label="Ouvrir le formulaire de contact">Contactez-moi</button>
+      </header>
+      <article class="picture__container" aria-label="Exposition de plusieurs clichés pris par le photographe">
+      </article>
     </main>
     <div id="contact_modal">
 			<div class="modal">
 				<header>
           <h2>Contactez-moi</h2>
-          <img src="assets/icons/close.svg" onclick="closeModal()" />
+          <img src="assets/icons/close.svg" onclick="closeModal()" aria-label="fermer le formulaire de contact"/>
         </header>
 				<form>
 					<div>
-						<label>Prénom</label>
-						<input />
+						<label name="firstName">Prénom</label>
+						<input id="firstName" type="text" placeholder="Veuillez saisir votre prénom" required/>
+            <label name="lastName">Nom</label>
+						<input id="lastName" type="text" placeholder="Veuillez saisir votre nom" required/>
+            <label name="email">Email</label>
+						<input id="email" type="email" placeholder="Veuillez saisir votre adresse mail" required/>
+            <label name="userMessage">Votre message</label>
+            <textarea id="userMessage" type="textarea" rows="10" placeholder="Veuillez saisir votre message" maxlength="300" wrap="hard" aria-placeholder="Veuillez saisir votre message" required></textarea>
 					</div>
-          <button class="contact_button">Envoyer</button>
+          <button class="contact_button" aria-label="Bouton envoyer">Envoyer</button>
 				</form>
 			</div>
 		</div>
-    <script src="/scripts/pages/photographer.js"></script>
-    <script src="/scripts/utils/contactForm.js"></script>
   </body>
 </html>
