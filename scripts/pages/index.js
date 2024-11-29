@@ -1,11 +1,11 @@
     import { fetchJsonData } from "../API/api";
     import { cardConstructor } from "../patterns/constructorPattern/cardsConstructor";
-    import { cardFactory } from "../patterns/factoriesPattern/cardsFactory";
+    import { cardsFactory } from "../patterns/factoriesPattern/cardsFactory";
 
     async function getPhotographers() {
          
         //  requête sur le fichier JSON 
-        const photographersData = await fetchJsonData('../API/api')
+        const photographersData = await fetchJsonData()
         // retourner les datas photographers une fois récupéré
         console.log(photographersData)
         return photographersData
@@ -16,8 +16,8 @@
 
         photographers.forEach((photographerData) => {
             const photographer = new cardConstructor(photographerData);
-            const cardFactories = new cardFactory();
-            const card = cardFactory.createCard(photographer)
+            const cardsFactory = new cardsFactory();
+            const card = cardsFactory.createCard(photographer)
             photographersSection.appendChild(card);
         });
     }

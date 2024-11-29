@@ -1,3 +1,4 @@
+import { cardConstructor } from "../patterns/constructorPattern/cardsConstructor";
 export class cardFactory {
     createCard(data) {
         const card = new cardConstructor(data)
@@ -26,6 +27,7 @@ export class cardFactory {
         const photographePrice = document.createElement('p');
         photographePrice.textContent = card.price;
 
+        cardLink.appendChild.add('cardLink');
         return cardSection;
     }
 }
