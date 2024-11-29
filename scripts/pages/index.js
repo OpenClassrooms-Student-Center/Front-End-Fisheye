@@ -1,32 +1,20 @@
-    import { fetchJsonData } from "../API/api";
-    import { cardConstructor } from "../patterns/constructorPattern/cardsConstructor";
-    import { cardsFactory } from "../patterns/factoriesPattern/cardsFactory";
+import Api from"../API/api.js";
+import cardsConstructor from "../patterns/constructorsPattern/cardsConstructor.js";
+import cardFactory from "../patterns/factoriesPattern/cardsFactory.js";
 
-    async function getPhotographers() {
-         
-        //  requête sur le fichier JSON 
-        const photographersData = await fetchJsonData()
-        // retourner les datas photographers une fois récupéré
-        console.log(photographersData)
-        return photographersData
-    }
+const photographersSection = document.querySelector(".photographer-section")
+const photographerApi = new Api("../../data/photographers.json");
 
-    async function displayData(photographers) {
-        const photographersSection = document.querySelector(".photographer_section");
-
-        photographers.forEach((photographerData) => {
-            const photographer = new cardConstructor(photographerData);
-            const cardsFactory = new cardsFactory();
-            const card = cardsFactory.createCard(photographer)
-            photographersSection.appendChild(card);
-        });
-    }
-
-    async function init() {
-        // Récupère les datas des photographes
-        const { photographers } = await getPhotographers();
-        displayData(photographers);
-    }
+const init = async () => {
+    const photographersData = await photographerApi.getPhotographers();
+    const photographers =photographersData.cardsConstructor;
     
-    init();
-    
+        photographers
+            .map(photographer => new cardsConstructor(photographer))
+            .forEach(photographer => {
+                const card = new cardFactory(photographer);
+                const photographerCard = card.createCardPhotographer();
+                photographersSection.appendChild(photographerCard);
+            });
+}
+init();
