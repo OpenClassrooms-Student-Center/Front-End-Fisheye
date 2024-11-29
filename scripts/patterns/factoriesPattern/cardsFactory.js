@@ -1,33 +1,27 @@
-import { cardConstructor } from "../patterns/constructorPattern/cardsConstructor";
-export class cardFactory {
-    createCard(data) {
-        const card = new cardConstructor(data)
-
-        // Création du HTML
-        const cardSection = document.createElement ('section')
-        //lien vers la page du photographe
-        cardSection.classList.add('photographerCard')
-     
-        const cardLink = document.createElement ('a')
-        cardLink.classList.add('cardLink')
-        cardLink.innerHTML =`
-        <img src = ${data.portrait}>
-        <h2> ${data.name}</h2> 
-        `       
-        
-        //Description et présentation du photographe Nolink
-        const descriptionContainer = document.createElement('div');
-        cardSection.appendChild(descriptionContainer);
-        const photographeLocation = document.createElement('h3');
-        photographeLocation.textContent = card.location;
-        descriptionContainer.appendChild(photographeLocation);
-        const taglinePhotographe = document.createElement('h4');
-        taglinePhotographe.textContent = card.tagline;
-        descriptionContainer.appendChild(taglinePhotographe);
-        const photographePrice = document.createElement('p');
-        photographePrice.textContent = card.price;
-
-        cardLink.appendChild.add('cardLink');
+export default class cardFactory {
+    constructor(photographer) {
+        this.photographer = photographer
+    }
+        //Fonction de création de la carte
+        createCardPhotographer(){
+            // Création du HTML
+            const cardSection = document.createElement ('section')
+            cardSection.classList.add('photographerCard')
+            const cardPhotographer =`
+            <a href="photographer.html?id=${this.photographer.id}" role="link" aria-label="Voir le profil de ${this.photographer.name}">
+                <img class="photographer_thumbnail" src="./assets/images/photographers/thumbnails/${this.photographer.portrait}" alt="${this.photographer.name}">
+                <h2 class="photographer_name">${this.photographer.name}</h2>
+            </a>
+            <p class="photographer_location">${this.photographer.city}, ${this.photographer.country}</p>
+            <p class="photographer_tagline">${this.photographer.tagline}</p>
+            <span class="photographer_price">${this.photographer.price}€/jour</span>
+        `;
+        cardSection.innerHTML = cardPhotographer
         return cardSection;
     }
 }
+           
+        
+        
+        
+       
