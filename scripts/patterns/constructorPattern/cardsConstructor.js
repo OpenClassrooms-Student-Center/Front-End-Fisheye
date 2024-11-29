@@ -1,4 +1,4 @@
-class cardConstructor {
+export class cardConstructor {
     constructor(data){
         this._id = data.id;
         this._portrait = data.portrait;
@@ -12,7 +12,7 @@ class cardConstructor {
         return this._id;
     }
     get portrait(){
-        return this._portrait;
+        return `../../../assets/${this._portrait}`
     }
     get location(){
         return `${this._city} ${this._country}`;

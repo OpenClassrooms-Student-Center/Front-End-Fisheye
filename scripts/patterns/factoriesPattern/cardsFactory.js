@@ -1,4 +1,4 @@
-class cardFactory {
+export class cardFactory {
     createCard(data) {
         const card = new cardConstructor(data)
 
@@ -11,7 +11,7 @@ class cardFactory {
         cardLink.classList.add('cardLink')
         cardLink.innerHTML =`
         <img src = ${data.portrait}>
-        <h2> ${data.name}</h2>
+        <h2> ${data.name}</h2> 
         `       
         
         //Description et présentation du photographe Nolink
