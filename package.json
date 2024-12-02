@@ -4,7 +4,9 @@
   "description": "Site de photographe",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "lint": "eslint *.js",
+    "sass": "sass --watch scss:css"
   },
   "author": "Laurent B",
   "license": "ISC",
