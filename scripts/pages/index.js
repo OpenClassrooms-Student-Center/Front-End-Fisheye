@@ -1,5 +1,5 @@
 import Api from"../API/api.js";
-import CardFormatData from "../patterns/constructorPattern/cardsFormatData.js";
+import photographeData from "../patterns/constructorPattern/photographeData.js";
 import cardFactory from "../patterns/factoriesPattern/cardsFactory.js";
 
 const photographersSection = document.querySelector(".photographer")
@@ -10,7 +10,7 @@ const init = async () => {
     const photographers =photographersData.photographers;
 
         photographers
-            .map(photographer => new CardFormatData(photographer))
+            .map(photographer => new photographeData(photographer))
             .forEach(photographer => {
                 const card = new cardFactory(photographer);
                 const photographerCard = card.createCardPhotographer();

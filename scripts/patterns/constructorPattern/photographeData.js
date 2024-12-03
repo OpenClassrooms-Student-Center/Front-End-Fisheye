@@ -1,4 +1,4 @@
-export default class CardFormatData {
+export default class photographeData {
     constructor(data){
         if (!data || typeof data !== 'object') {
             throw new Error('Invalid card data provided');
@@ -15,4 +15,8 @@ export default class CardFormatData {
         formatPortraitPath(portrait){ 
         return `./assets/images/FishEye_Photos/Sample Photos/Photographers ID Photos/${portrait}`;
     }
-}
+    getFirstName(firstName) {
+        return firstName.split(' ')[0];
+      }
+    }
+

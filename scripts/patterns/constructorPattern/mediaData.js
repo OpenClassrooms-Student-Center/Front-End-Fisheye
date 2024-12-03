@@ -1,4 +1,4 @@
-export default class mediaFormatData {
+export default class mediaData {
     constructor(data){
         if (!data || typeof data !== 'object') {
             throw new Error('Invalid media data provided');
