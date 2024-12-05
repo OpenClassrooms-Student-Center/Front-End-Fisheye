@@ -7,6 +7,14 @@
     height: 300px;
     margin: 0 100px;
 }
+.photograph__profile--portrait {
+    height: 200px;
+    width: 200px;
+    object-fit: cover;
+    clip-path: circle(50% at 50% 50%);
+    object-position: center;
+    transform: scale(1.4);
+}
 
 .contact_button {
     font-size: 20px;
