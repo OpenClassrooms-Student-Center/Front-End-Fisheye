@@ -1,5 +1,5 @@
-import imagesData from "../constructorPattern/imagesData";
-import videosData from "../constructorPattern/videosData";
+import imagesData from "../constructorPattern/imagesData.js";
+import videosData from "../constructorPattern/videosData.js";
 
 
 export default class MediasFactory {

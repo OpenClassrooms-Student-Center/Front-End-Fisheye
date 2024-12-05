@@ -14,9 +14,6 @@ export default class photographeData {
     //fonction de récupération du chemin de l'image
         formatPortraitPath(portrait){ 
         return `./assets/images/FishEye_Photos/Sample Photos/Photographers ID Photos/${portrait}`;
-    }
-    getFirstName(firstName) {
-        return firstName.split(' ')[0];
-      }
+    }   
     }
 

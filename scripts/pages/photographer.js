@@ -1,8 +1,8 @@
-import Api from "../API/api";
-import photographeData from "../patterns/constructorPattern/photographeData";
-import MediasFactory from "../patterns/factoriesPattern/MediasFactory";
-import photographerPageHeader from "../patterns/factoriesPattern/photographerPageHeaderFactory";
-import photographerPageMedia from "../patterns/factoriesPattern/photographerPageMediaFactory";
+import Api from "../API/api.js";
+import photographeData from "../patterns/constructorPattern/photographeData.js";
+import MediasFactory from "../patterns/factoriesPattern/MediasFactory.js";
+import photographerPageHeader from "../patterns/factoriesPattern/photographerPageHeaderFactory.js";
+import photographerPageMedia from "../patterns/factoriesPattern/photographerPageMediaFactory.js";
 
 const photographersApi = new Api("../../data/photographers.json");
 const photographerId = new URLSearchParams(window.location.search).get("id");
