@@ -5,6 +5,7 @@
     <meta charset="utf-8">
     <link rel="icon" type="image/png" href="assets/favicon.png">
     <link href="https://fonts.googleapis.com/css?family=DM+Sans&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <title>Fisheye - photographe </title>
     <script src="/scripts/pages/photographer.js" defer></script>
     <script src="/scripts/utils/contactForm.js" defer></script>
@@ -22,20 +23,20 @@
       <article class="picture__container">
       </article>
     </main>
-    <div id="contact_modal">
-			<div class="modal">
-				<header>
-          <h2>Contactez-moi</h2>
-          <img src="assets/icons/close.svg" onclick="closeModal()" aria-label="fermer le formulaire de contact"/>
+    <div id="contact__modal">
+			<div class="modal__form">
+				<header>          
+            <h2 class="modal__form--title">Contactez-moi</h2>        
+            <img class="modal__form--BtnClose" src="assets/icons/close.svg" onclick="closeModal()" aria-label="fermer le formulaire de contact"/>                 
         </header>
 				<form>
 					<div>
 						<label name="firstName">Prénom</label>
-						<input id="firstName" type="text" placeholder="Veuillez saisir votre prénom" required/>
+						<input id="firstName" type="text" placeholder="Veuillez saisir votre prénom" />
             <label name="lastName">Nom</label>
-						<input id="lastName" type="text" placeholder="Veuillez saisir votre nom" required/>
+						<input id="lastName" type="text" placeholder="Veuillez saisir votre nom" />
             <label name="email">Email</label>
-						<input id="email" type="email" placeholder="Veuillez saisir votre adresse mail" required/>
+						<input id="email" type="email" placeholder="Veuillez saisir votre adresse mail" />
             <label name="userMessage">Votre message</label>
             <textarea id="userMessage" type="textarea" rows="10" placeholder="Veuillez saisir votre message" maxlength="300" wrap="hard" aria-placeholder="Veuillez saisir votre message" required></textarea>
 					</div>
