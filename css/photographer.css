@@ -21,7 +21,7 @@
     cursor: pointer;
 }
 
-.modal {
+#contact__modal {
     border-radius: 5px;
     background-color: #DB8876;
     width: 50%;
@@ -33,16 +33,22 @@
     margin: auto;
 }
 
-.modal header {
-    justify-content: space-between;
+.modal__form  {
+    display: flex;
+    flex-direction: column;
     width: 100%;
 }
 
-.modal header img {
+.modal__form--BtnClose{
+    background-color: #DB8876;   
+    border: none;
+    border-radius: 5px;
+    width: 50px;
+    height: 50px;
     cursor: pointer;
 }
 
-.modal header h2 {
+.modal__form--title{
     font-size: 64px;
     font-weight: normal;
     text-align: center;

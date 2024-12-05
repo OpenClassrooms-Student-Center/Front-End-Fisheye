@@ -2,7 +2,7 @@ export default class photographerPageHeader {
     constructor(photographer) {
         this.photographer = photographer;
     }
-    //Fonction de la création du header de la page photographe
+    //Méthode de la création du header de la page photographe
     createPhotographerHeader() {
         const header = document.querySelector('header');
         const presentation = `
