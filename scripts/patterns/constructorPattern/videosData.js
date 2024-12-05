@@ -1,4 +1,4 @@
-import mediaData from "./mediaData";
+import mediaData from "./mediaData.js";
 
 export default class videosData extends  mediaData{
         constructor(data){

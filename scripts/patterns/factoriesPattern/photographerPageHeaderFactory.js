@@ -4,7 +4,7 @@ export default class photographerPageHeader {
     }
     //Fonction de la création du header de la page photographe
     createPhotographerHeader() {
-        const header = document.querySelector('.photographer__header');
+        const header = document.querySelector('header');
         const presentation = `
         <div id="${this.photographer._id}" class="photograph__profile">
             <h1 class="photograph__profile--name">${this.photographer._name}</h1>
