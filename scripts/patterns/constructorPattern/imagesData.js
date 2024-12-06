@@ -5,4 +5,5 @@ export default class imagesData extends  mediaData{
        super(data);
         this._image = data.image           
     }
+    
 }
