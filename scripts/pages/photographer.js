@@ -3,8 +3,8 @@ import photographeData from "../patterns/constructorPattern/photographeData.js";
 import MediasFactory from "../patterns/factoriesPattern/MediasFactory.js";
 import photographerPageHeader from "../patterns/factoriesPattern/photographerPageHeaderFactory.js";
 import photographerPageMedia from "../patterns/factoriesPattern/photographerPageMediaFactory.js";
-//import { closeModal } from "../utils/contactForm.js";
-//import {openModal} from "../utils/contactForm.js";
+import {closeModal} from "../utils/contactForm.js";
+import {openModal} from "../utils/contactForm.js";
 
 const photographersApi = new Api("../../data/photographers.json");
 const photographerId = new URLSearchParams(window.location.search).get("id");
@@ -34,9 +34,9 @@ const displayPhotographerPage = async () => {
     header.createPhotographerHeader();
     media.createPhotographerMedia();
     
-    const closeFormBtn = document.querySelector('.modal__form--BtnClose');
-    closeFormBtn.addEventListener(('click'), () => {
+    
         closeModal();
-    });
+        openModal();
+    
 }
 displayPhotographerPage();
