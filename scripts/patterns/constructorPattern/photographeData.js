@@ -13,7 +13,7 @@ export default class photographeData {
     }
     //fonction de récupération du chemin de l'image
         formatPortraitPath(portrait){ 
-        return `./assets/images/FishEye_Photos/Sample Photos/Photographers ID Photos/${portrait}`;
+        return `./assets/images/FishEye_Photos/Sample_Photos/Photographers ID Photos/${portrait}`;
     }   
     }
 
