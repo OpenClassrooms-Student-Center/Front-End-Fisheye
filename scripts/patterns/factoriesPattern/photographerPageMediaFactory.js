@@ -3,7 +3,7 @@ export default class photographerPageMedia {
         this.photographer = photographer;
         this.medias = medias;
         
-console.log("medias", medias)
+
     }
     //Méthode de la création du header de la page photographe
     createPhotographerMedia() {
@@ -12,17 +12,17 @@ console.log("medias", medias)
         const gallery = `
                 <article class="gallery" aria-label="Exposition de plusieurs clichés pris par le photographe">
                 ${this.medias.map(media => {
-                    console.log("media1", media)
+                    
                     
                     const photographerNameFormatted = this.photographer._name.replace(/-/g, ' ');
                     const photographerNameEncoded = encodeURIComponent(photographerNameFormatted);
                 const mediaPath = media._image
                 ? `/assets/images/FishEye_Photos/Sample_Photos/${photographerNameEncoded}/${encodeURIComponent(media._image)}`
                 : `/assets/images/FishEye_Photos/Sample_Photos/${photographerNameEncoded}/${encodeURIComponent(media._video)}`;
-                console.log("mediaPath3", mediaPath);
+                
                     const mediaElement = media._image
                     ? `<img src="${mediaPath}" alt="${media._title}" class="gallery__card--media">` 
-                    : `<video class="gallery_thumbnail" alt="${media._title}">
+                    : `<video class="gallery__card--media" alt="${media._title}">
                     <source src="${mediaPath}" type="video/mp4">
                     </video>`;
                     return`
