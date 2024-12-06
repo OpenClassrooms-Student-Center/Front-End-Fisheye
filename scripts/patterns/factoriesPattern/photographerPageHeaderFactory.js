@@ -13,7 +13,7 @@ export default class photographerPageHeader {
             <p class="photograph__profile--location">${this.photographer._city}, ${this.photographer._country}</p>
             <p class="photograph__profile--tagline">${this.photographer._tagline}</p>            
         </div>
-        <button class="contact_button" onclick="displayModal()" aria-label="Ouvrir le formulaire de contact">Contactez-moi</button>
+        <button id="openModalJS" class="contact_button" onclick="displayModal()" aria-label="Ouvrir le formulaire de contact">Contactez-moi</button>
         <img class="photograph__profile--portrait" src="${this.photographer._portrait}" alt="${this.photographer._name}">
         `;
       
