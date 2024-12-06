@@ -1,8 +1,17 @@
-#contact_modal {
+/*#contact_modal {
     display: none;
-}
+}*/
+#main{
 
+    padding: 0 120px;
+}
 .photograph-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    padding: 40px;
+    margin-top: 20px;
     background-color: #FAFAFA;
     height: 300px;
     margin: 0 100px;
@@ -29,67 +38,58 @@
     cursor: pointer;
 }
 
-#contact__modal {
-    border-radius: 5px;
-    background-color: #DB8876;
-    width: 50%;
+/*FilterSection Style*/
+
+#filter__section{
     display: flex;
-    flex-direction: column;
     align-items: center;
-    justify-content: space-between;
-    padding: 35px;
-    margin: auto;
-}
-
-.modal__form  {
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-}
-
-.modal__form--BtnClose{
-    background-color: #DB8876;   
-    border: none;
-    border-radius: 5px;
-    width: 50px;
     height: 50px;
-    cursor: pointer;
+    gap: 10px;
+}
+#filter__section h2{
+    font-size: 18px;
+    font-weight: 700;
+}
+.filter__Dropdown{
+    font-size: 18px;
+    font-weight: 700;
+}
+.filter__Dropdown--Ul{
+    list-style: none;
 }
 
-.modal__form--title{
-    font-size: 64px;
-    font-weight: normal;
-    text-align: center;
+/*Gallery Style*/
+.picture__container{
+    position: relative;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 30px 60px;
+    margin-top: 20px;
 }
-
-form {
+.gallery__card{
     display: flex;
-    width: 100%;
-    flex-direction: column;
-    align-items: flex-start;
+    flex-flow: column;
+    border-radius: 5px;    
+    gap: 10px;
 }
 
-form label {
-    color: #312E2E;
-    font-size: 36px;
+.gallery__card--link{
+    text-decoration: none;
+    
 }
-
-form div {
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-    align-items: self-start;
-    margin-bottom: 26px;
+.gallery__card--link figure{
+    height: 260px; 
+    margin: 0;  
 }
-
-form input {
+.gallery__card--media{
+    height: 100%;
     width: 100%;
-    height: 68px;
-    border: none;
+    object-fit: cover;
     border-radius: 5px;
 }
-form textarea{
-    width: 100%;
-    border: none;
-    border-radius: 5px;
+.gallery__card figcaption{
+    display: flex;
+    flex-flow: row;
+    border-radius: 5px;    
+    gap: 10px;
 }
