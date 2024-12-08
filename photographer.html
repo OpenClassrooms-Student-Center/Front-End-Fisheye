@@ -51,28 +51,44 @@
         </section>
       </article>
     </main>
-    <div id="contact__modal">
-			<div class="modal__form">
-				<header>          
-            <h2 class="modal__form--title">Contactez-moi</h2>
-            <p class="modal__form--photographerName"></p>        
-            <span id="closeModalJS" class="modal__form--BtnClose" role="button" aria-label="clicker pour fermer le formulaire de contact"></span>                 
-        </header>
-				<form>
-					<div>
-						<label name="firstName">Prénom</label>
-						<input id="firstName" type="text" placeholder="Veuillez saisir votre prénom" />
-            <label name="lastName">Nom</label>
-						<input id="lastName" type="text" placeholder="Veuillez saisir votre nom" />
-            <label name="email">Email</label>
-						<input id="email" type="email" placeholder="Veuillez saisir votre adresse mail" />
-            <label name="userMessage">Votre message</label>
-            <textarea id="userMessage" type="textarea" rows="10" placeholder="Veuillez saisir votre message" maxlength="300" wrap="hard" aria-placeholder="Veuillez saisir votre message" required></textarea>
-					</div>
-          <button class="contact_button" aria-label="Bouton envoyer">Envoyer</button>
-				</form>
-			</div>
-		</div>
+    <!--Pop-up Windows section-->
+      <!--Contact--Modal-->
+        <div id="contact__modal">
+          <div class="modal__form">
+            <header>          
+                <h2 class="modal__form--title">Contactez-moi</h2>
+                <p class="modal__form--photographerName"></p>        
+                <span id="closeModalJS" class="modal__form--BtnClose" role="button" aria-label="clicker pour fermer le formulaire de contact"></span>                 
+            </header>
+            <form>
+              <div>
+                <label name="firstName">Prénom</label>
+                <input id="firstName" type="text" placeholder="Veuillez saisir votre prénom" />
+                <label name="lastName">Nom</label>
+                <input id="lastName" type="text" placeholder="Veuillez saisir votre nom" />
+                <label name="email">Email</label>
+                <input id="email" type="email" placeholder="Veuillez saisir votre adresse mail" />
+                <label name="userMessage">Votre message</label>
+                <textarea id="userMessage" type="textarea" rows="10" placeholder="Veuillez saisir votre message" maxlength="300" wrap="hard" aria-placeholder="Veuillez saisir votre message" required></textarea>
+              </div>
+              <button class="contact_button" aria-label="Bouton envoyer">Envoyer</button>
+            </form>
+          </div>
+        </div>
+
+      <!--LightBox-->
+        <div id="lightboxWrapper" class="lightbox">
+          <div class="lightbox__container">
+            <button id="closelightBoxJS'" class="lightbox__container--closeBtn" role="button" aria-label="close lightbox"></button>
+            <button id="nextMediaJS" class="lightbox__container--arrowNext" aria-label="next media"></button>
+            <button id="previousMediaJS" class="lightbox__container--arrowPrevious" aria-label="previous media"></button>
+            <figure class="lightbox__container--media" role="media" aria-label="current media">
+            </figure>
+            <figcaption class="lightbox__container--title">
+
+            </figcaption>
+          </div>
+        </div>
     
   </body>
   <script src="/scripts/pages/photographer.js" type="module" defer></script>
