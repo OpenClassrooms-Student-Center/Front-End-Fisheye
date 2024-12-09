@@ -2,9 +2,10 @@ import Api from "../API/api.js";
 import photographeData from "../patterns/constructorPattern/photographeData.js";
 import MediasFactory from "../patterns/factoriesPattern/MediasFactory.js";
 import photographerPageHeader from "../patterns/factoriesPattern/photographerPageHeaderFactory.js";
-import photographerPageMedia from "../patterns/factoriesPattern/photographerPageMediaFactory.js";
+import photographerPageMedia from "../patterns/factoriesPattern/photographerPageMediaFactory.js";   
 import {closeModal} from "../utils/contactForm.js";
 import {openModal} from "../utils/contactForm.js";
+import {afficheTotalLikes} from "../utils/likes.js"; 
 
 const photographersApi = new Api("../../data/photographers.json");
 const photographerId = new URLSearchParams(window.location.search).get("id");
@@ -39,4 +40,6 @@ const displayPhotographerPage = async () => {
         openModal();
     
 }
+
 displayPhotographerPage();
+afficheTotalLikes();
