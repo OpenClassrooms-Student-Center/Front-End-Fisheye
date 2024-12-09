@@ -8,7 +8,7 @@ import {openModal} from "../utils/contactForm.js";
 import {openCloseFilterMenu} from "../utils/filter.js";
 import {afficheTotalLikes} from "../utils/likes.js"; 
 import {displayMediaWithFilter} from "../utils/filter.js";
-
+import {displayLightbox} from "../utils/lightbox.js";
 
 const photographersApi = new Api("../../data/photographers.json");
 const photographerId = new URLSearchParams(window.location.search).get("id");
@@ -43,6 +43,7 @@ const displayPhotographerPage = async () => {
         openModal();
         openCloseFilterMenu();
         displayMediaWithFilter(media);
+        displayLightbox(media);
         
         
     
