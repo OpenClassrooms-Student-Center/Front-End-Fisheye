@@ -44,11 +44,11 @@ export default class photographerPageMedia {
                 `;
                 }).join("")}
                 <aside>
-                <p class="photographer__Likes">
-                    <span class="photographer__likes--count"></span>
+                <div class="photographer__Likes">
+                    <span id="Total__Like" class="photographer__likes--count"></span>
                     <span class="fas fa-heart" aria-hidden="true"></span>
-                </p>
-                <span>${this.photographer._price}€ / jour</span>
+                </div>
+                <span id="photographerPrice" >${this.photographer._price}€/jour</span>
                 </aside>
             `;
             mediaContainer.innerHTML = gallery;
