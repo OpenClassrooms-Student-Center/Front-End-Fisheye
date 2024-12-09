@@ -5,7 +5,10 @@ import photographerPageHeader from "../patterns/factoriesPattern/photographerPag
 import photographerPageMedia from "../patterns/factoriesPattern/photographerPageMediaFactory.js";   
 import {closeModal} from "../utils/contactForm.js";
 import {openModal} from "../utils/contactForm.js";
+import {openCloseFilterMenu} from "../utils/filter.js";
 import {afficheTotalLikes} from "../utils/likes.js"; 
+import {displayMediaWithFilter} from "../utils/filter.js";
+
 
 const photographersApi = new Api("../../data/photographers.json");
 const photographerId = new URLSearchParams(window.location.search).get("id");
@@ -35,11 +38,14 @@ const displayPhotographerPage = async () => {
     header.createPhotographerHeader();
     media.createPhotographerMedia();
     
-    
+        afficheTotalLikes();
         closeModal();
         openModal();
+        openCloseFilterMenu();
+        displayMediaWithFilter(media);
+        
+        
     
 }
 
 displayPhotographerPage();
-afficheTotalLikes();

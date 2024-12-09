@@ -4,9 +4,7 @@ export async function afficheTotalLikes() {
     const { medias } = await getPhotographerById();
     const allBtnLike = document.querySelectorAll(".btn__like");
     const likesElement = document.querySelector(".photographer__likes--count");
-    console.log("media-1", {medias})
-    console.log("BtnLikes", allBtnLike) 
-    console.log("span", likesElement)
+
     
     const updateTotalLikes = () => {
         const totalLikes = medias.reduce((accumulateur, media) => accumulateur + media._likes, 0);

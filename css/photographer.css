@@ -50,12 +50,66 @@
     font-size: 18px;
     font-weight: 700;
 }
+.filter{
+    position: relative;
+    height: 100%;
+}
 .filter__Dropdown{
     font-size: 18px;
     font-weight: 700;
+    z-index: 10;
+    position: absolute;
+    border-radius: 5px;
+    overflow: hidden;
 }
+.rotate{
+    transform: rotate(180deg);
+}
+
 .filter__Dropdown--Ul{
+    padding: 0;
+    margin: 0;
     list-style: none;
+    max-height: 0;
+    background-color: #901C1C;
+    transition: max-height .1s ease-in-out;
+}
+.dropdown__option{
+    position: relative;
+    width: 150px;
+}
+.dropdown__option::before{
+    content: "";
+    position: absolute;
+    top: 0px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 85%;
+    height: 1px;
+   
+}
+.filter__Dropdown--Btn, .dropdown__option--btn{
+    height: 50px;
+    padding: 15px;        
+}
+.filter__Dropdown--Btn{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 150px;
+}
+.dropdown__option--btn{
+    width: 100%;
+    text-align: left;
+}
+.dropdown__option:hover,
+.dropdown__option:focus,
+.filter__Dropdown--Btn:hover,
+.filter__Dropdown--Btn:focus{
+    background-color: #db8876;
+}
+.curtain_effect {
+    max-height: 200px;
 }
 
 /*Gallery Style*/
@@ -92,4 +146,7 @@
     flex-flow: row;
     border-radius: 5px;    
     gap: 10px;
+}
+.animeCard{
+    animation: fade .2s ease-in-out;
 }
