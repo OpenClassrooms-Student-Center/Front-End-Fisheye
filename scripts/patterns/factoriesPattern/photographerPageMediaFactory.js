@@ -25,7 +25,7 @@ export default class photographerPageMedia {
                                     </video>`;
                                     return`
                                                 <section class="gallery__card">
-                                                    <a class="gallery__card--link" href="#" role="link" aria-label="Photo">
+                                                    <a class="gallery__card--link" href="#" role="link" data-media="${media._id}" aria-label="Photo">
                                                         <figure>${mediaElement}</figure>
                                                     </a>
                                                     <figcaption>

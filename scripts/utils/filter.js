@@ -5,9 +5,7 @@ export const openCloseFilterMenu = () => {
     const filterMenu = document.querySelector(".filter__Dropdown--Ul");
     const filterMenuButton = document.querySelector(".filter__Dropdown--Btn");
     const filterButtons = document.querySelectorAll(".dropdown__option--btn");
-console.log("filterMenuButton", filterMenuButton) 
-console.log("filterMenu", filterMenu)  
-console.log("filterButtons", filterButtons) 
+
     filterMenuButton.addEventListener("click", () => {
         const isExpanded = filterMenuButton.getAttribute("aria-expanded") === "true" || false;
         filterMenuButton.setAttribute("aria-expanded", !isExpanded);
@@ -25,8 +23,7 @@ console.log("filterButtons", filterButtons)
 export const displayMediaWithFilter = mediasTemplate => {
     const currentFilter = document.getElementById('filter__Dropdown--BtnTitle');
     const allFilters = Array.from(document.querySelectorAll('.dropdown__option--btn'))
-console.log("currentFilter", currentFilter)
-console.log("allFilters", allFilters)
+
     let filterAlreadySelected = allFilters.find(filter => filter.textContent == currentFilter.textContent);
     filterAlreadySelected.style.display = 'none';
 
