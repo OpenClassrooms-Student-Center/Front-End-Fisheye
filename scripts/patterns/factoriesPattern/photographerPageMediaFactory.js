@@ -1,23 +1,18 @@
 export default class photographerPageMedia {
     constructor(photographer, medias) {
         this.photographer = photographer;
-        this.medias = medias;
-        
-
+        this.medias = medias;        
     }
     //Méthode de la création du header de la page photographe
     createPhotographerMedia() {
-        const mediaContainer = document.querySelector(".picture__container");
-    
-        const gallery = `
-                           
+        const mediaContainer = document.querySelector(".picture__container");    
+        const gallery = `                           
                                 ${this.medias.map(media => {                                                                       
                                     const photographerNameFormatted = this.photographer._name.replace(/-/g, ' ');
                                     const photographerNameEncoded = encodeURIComponent(photographerNameFormatted);
                                     const mediaPath = media._image
                                 ? `/assets/images/FishEye_Photos/Sample_Photos/${photographerNameEncoded}/${encodeURIComponent(media._image)}`
-                                : `/assets/images/FishEye_Photos/Sample_Photos/${photographerNameEncoded}/${encodeURIComponent(media._video)}`;
-                                
+                                : `/assets/images/FishEye_Photos/Sample_Photos/${photographerNameEncoded}/${encodeURIComponent(media._video)}`;                                
                                     const mediaElement = media._image
                                     ? `<img src="${mediaPath}" alt="${media._title}" class="gallery__card--media">` 
                                     : `<video class="gallery__card--media" alt="${media._title}">
@@ -37,8 +32,7 @@ export default class photographerPageMedia {
                                                                 </button>
                                                             </div>
                                                     </figcaption> 
-                                                </section>                            
-                            
+                                                </section>                                                        
                         `;
                 }).join("")}
                 <aside>
@@ -49,8 +43,7 @@ export default class photographerPageMedia {
                 <span id="photographerPrice" >${this.photographer._price}€/jour</span>
                 </aside>
             `;
-            mediaContainer.innerHTML = gallery;
-            
+            mediaContainer.innerHTML = gallery;            
         return gallery
     }
 }

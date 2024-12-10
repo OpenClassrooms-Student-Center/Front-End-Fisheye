@@ -40,7 +40,7 @@ const displayPhotographerPage = async () => {
     
         afficheTotalLikes();
         closeModal();
-        openModal();
+        openModal(photographer);
         openCloseFilterMenu();
         displayMediaWithFilter(media);
         displayLightbox(media);
@@ -49,4 +49,4 @@ const displayPhotographerPage = async () => {
     
 }
 
-displayPhotographerPage();
+    displayPhotographerPage();
