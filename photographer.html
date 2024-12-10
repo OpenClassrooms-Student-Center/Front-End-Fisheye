@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    
+  <head>    
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="css/style.css" rel="stylesheet" type="text/css" />
@@ -12,18 +11,15 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <title>Fisheye - photographe </title>
-    
+  </head> 
   <body>
     <header>
       <a href="./index.html">
         <img src="assets/images/logo.png" class="logo" alt="Fisheye To Home page" aria-label="Retour sur la page d'accueil" />
-      </a>
-      
+      </a> 
     </header>
     <main id="main">
-      <header class="photograph__header">        
-      </header>
-
+      <header class="photograph__header"></header>
       <article class="media__container">
         <section id="filter__section">
           <h2>Trier par</h2>
@@ -77,21 +73,17 @@
         </div>
 
       <!--LightBox-->
-        <div id="lightboxWrapper" class="lightbox">
-          <div class="lightbox__container">
-            <button id="closelightBoxJS'" class="lightbox__container--closeBtn" role="button" aria-label="close lightbox"></button>
+        <div id="lightboxWrapperJs" class="lightbox" aria-modal="true" role="dialog">
+          <div class="lightbox__container" aria-label="Vue grand format sur le media choisi">
+            <button id="closelightBoxJS" class="lightbox__container--closeBtn" aria-label="close lightbox"></button>
             <button id="nextMediaJS" class="lightbox__container--arrowNext" aria-label="next media"></button>
             <button id="previousMediaJS" class="lightbox__container--arrowPrevious" aria-label="previous media"></button>
             <figure class="lightbox__container--media" role="media" aria-label="current media">
-            </figure>
-            <figcaption class="lightbox__container--title">
-
-            </figcaption>
+            </figure>            
           </div>
         </div>
     
   </body>
   <script src="/scripts/pages/photographer.js" type="module" defer></script>
     <script src="/scripts/utils/contactForm.js" type="module" defer></script>
-  </head>
 </html>
