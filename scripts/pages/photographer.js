@@ -37,6 +37,7 @@ const displayPhotographerPage = async () => {
 
     header.createPhotographerHeader();
     media.createPhotographerMedia();
+
     
         afficheTotalLikes();
         closeModal();
