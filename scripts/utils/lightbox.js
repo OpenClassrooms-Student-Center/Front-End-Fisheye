@@ -1,5 +1,6 @@
 export const displayLightbox = medias => {
-
+    const header = document.querySelector('header');
+    const main = document.getElementById('main');    
     const lightboxWrapper = document.getElementById('lightboxWrapperJs');
     const btnClose = document.getElementById('closelightBoxJS');
     const btnPrevious = document.getElementById('previousMediaJS');
@@ -24,8 +25,7 @@ export const displayLightbox = medias => {
     };    
     mediaProvider.forEach(media => {
         media.addEventListener('click', () => {
-            const header = document.querySelector('header');
-            const main = document.getElementById('main');            
+                  
             const mediaId = media.dataset.media;        
             const mediaIndex = mediasList.findIndex(media => media._id == mediaId);                       
                 currentIndex = mediaIndex;                
@@ -39,12 +39,19 @@ export const displayLightbox = medias => {
         });
     });
     const closeLightbox = () => {
+          
         lightboxWrapper.style.display = 'none';
+        header.style.display = 'flex';
+        main.style.visibility = 'visible';
+        main.style.height = 'auto'; 
+        main.style.width = 'auto'; 
     };
     btnClose.addEventListener('click', closeLightbox);
+              
     btnPrevious.addEventListener('click', () => {
         currentIndex = (currentIndex > 0) ? currentIndex - 1 : mediasList.length - 1;
         lightboxTemplate();
+         
     });
     btnNext.addEventListener('click', () => {
         currentIndex = (currentIndex < mediasList.length - 1) ? currentIndex + 1 : 0;
