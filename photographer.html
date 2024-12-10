@@ -1,48 +1,89 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <link href="css/style.css" rel="stylesheet" type="text/css" />
+  <head>    
     <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="css/style.css" rel="stylesheet" type="text/css" />
+    <link href="css/photographer.css" rel="stylesheet" type="text/css" />
+    <link href="css/modal.css" rel="stylesheet" type="text/css" />
     <link rel="icon" type="image/png" href="assets/favicon.png">
     <link href="https://fonts.googleapis.com/css?family=DM+Sans&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <title>Fisheye - photographe </title>
-    <script src="/scripts/pages/photographer.js" defer></script>
-    <script src="/scripts/utils/contactForm.js" defer></script>
-  </head>
+  </head> 
   <body>
     <header>
       <a href="./index.html">
         <img src="assets/images/logo.png" class="logo" alt="Fisheye To Home page" aria-label="Retour sur la page d'accueil" />
-      </a>
-      
+      </a> 
     </header>
     <main id="main">
-      <header class="photograph-header">
-        <button class="contact_button" onclick="displayModal()" aria-label="Ouvrir le formulaire de contact">Contactez-moi</button>
-      </header>
-      <article class="picture__container" aria-label="Exposition de plusieurs clichés pris par le photographe">
+      <header class="photograph__header"></header>
+      <article class="media__container">
+        <section id="filter__section">
+          <h2>Trier par</h2>
+          <div class="filter" >
+            <div class="filter__Dropdown">
+                <button class="filter__Dropdown--Btn" type="button" role="button" aria-haspopup="listbox" aria-expanded="false" aria-controls="filter options" aria-label="Sort by">
+                    <span id="filter__Dropdown--BtnTitle">Titre</span>
+                    <span class="fa-solid fa-chevron-up" aria-hidden="true"></span>
+                </button>
+                <ul class="filter__Dropdown--Ul" aria-hidden="true">
+                    <li class="dropdown__option" role="option">
+                        <button class="dropdown__option--btn" type="button" tabindex="-1" aria-label="Sort by title">Titre</button>
+                    </li>
+                    <li class="dropdown__option" role="option">
+                        <button class="dropdown__option--btn" type="button" tabindex="-1" aria-label="Sort by popularity">Popularité</button>
+                    </li>
+                    <li class="dropdown__option" role="option">
+                        <button class="dropdown__option--btn" type="button" tabindex="-1" aria-label="Sort by date">Date</button>
+                    </li>
+                </ul>
+            </div>
+          </div>
+        </section>
+        <section class="picture__container" aria-label="Exposition de plusieurs clichés pris par le photographe">
+        </section>
       </article>
     </main>
-    <div id="contact_modal">
-			<div class="modal">
-				<header>
-          <h2>Contactez-moi</h2>
-          <img src="assets/icons/close.svg" onclick="closeModal()" aria-label="fermer le formulaire de contact"/>
-        </header>
-				<form>
-					<div>
-						<label name="firstName">Prénom</label>
-						<input id="firstName" type="text" placeholder="Veuillez saisir votre prénom" required/>
-            <label name="lastName">Nom</label>
-						<input id="lastName" type="text" placeholder="Veuillez saisir votre nom" required/>
-            <label name="email">Email</label>
-						<input id="email" type="email" placeholder="Veuillez saisir votre adresse mail" required/>
-            <label name="userMessage">Votre message</label>
-            <textarea id="userMessage" type="textarea" rows="10" placeholder="Veuillez saisir votre message" maxlength="300" wrap="hard" aria-placeholder="Veuillez saisir votre message" required></textarea>
-					</div>
-          <button class="contact_button" aria-label="Bouton envoyer">Envoyer</button>
-				</form>
-			</div>
-		</div>
+    <!--Pop-up Windows section-->
+      <!--Contact--Modal-->
+        <div id="contact__modal">
+          <div class="modal__form">
+            <header>          
+                <h2 class="modal__form--title">Contactez-moi</h2>
+                <p class="modal__form--photographerName"></p>        
+                <span id="closeModalJS" class="modal__form--BtnClose" role="button" aria-label="clicker pour fermer le formulaire de contact"></span>                 
+            </header>
+            <form>
+              <div>
+                <label name="firstName">Prénom</label>
+                <input id="firstName" type="text" placeholder="Veuillez saisir votre prénom" />
+                <label name="lastName">Nom</label>
+                <input id="lastName" type="text" placeholder="Veuillez saisir votre nom" />
+                <label name="email">Email</label>
+                <input id="email" type="email" placeholder="Veuillez saisir votre adresse mail" />
+                <label name="userMessage">Votre message</label>
+                <textarea id="userMessage" type="textarea" rows="10" placeholder="Veuillez saisir votre message" maxlength="300" wrap="hard" aria-placeholder="Veuillez saisir votre message" required></textarea>
+              </div>
+              <button class="contact_button" aria-label="Bouton envoyer">Envoyer</button>
+            </form>
+          </div>
+        </div>
+
+      <!--LightBox-->
+        <div id="lightboxWrapperJs" class="lightbox" aria-modal="true" role="dialog">
+          <div class="lightbox__container" aria-label="Vue grand format sur le media choisi">
+            <button id="closelightBoxJS" class="lightbox__container--closeBtn" aria-label="close lightbox"></button>
+            <button id="nextMediaJS" class="lightbox__container--arrowNext" aria-label="next media"></button>
+            <button id="previousMediaJS" class="lightbox__container--arrowPrevious" aria-label="previous media"></button>
+            <figure class="lightbox__container--media" role="media" aria-label="current media">
+            </figure>            
+          </div>
+        </div>
+    
   </body>
+  <script src="/scripts/pages/photographer.js" type="module" defer></script>
+    <script src="/scripts/utils/contactForm.js" type="module" defer></script>
 </html>
