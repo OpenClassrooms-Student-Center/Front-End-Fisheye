@@ -1,7 +1,7 @@
 <!DOCTYPE html>
-<html>
+<html lang="fr">
   <head>    
-    <meta charset="utf-8">
+    <meta  charset="utf-8">    
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="css/style.css" rel="stylesheet" type="text/css" />
     <link href="css/photographer.css" rel="stylesheet" type="text/css" />
@@ -52,22 +52,28 @@
         <div id="contact__modal">
           <div class="modal__form">
             <header>          
-                <h2 class="modal__form--title">Contactez-moi</h2>
-                <p class="modal__form--photographerName"></p>        
+                <h2 class="modal__form--title" aria-labelledby="photographerName" tabindex="1">Contactez-moi</h2>                        
                 <span id="closeModalJS" class="modal__form--BtnClose" role="button" aria-label="clicker pour fermer le formulaire de contact"></span>                 
             </header>
-            <form>
-              <div>
-                <label name="firstName">Prénom</label>
-                <input id="firstName" type="text" placeholder="Veuillez saisir votre prénom" />
-                <label name="lastName">Nom</label>
-                <input id="lastName" type="text" placeholder="Veuillez saisir votre nom" />
-                <label name="email">Email</label>
-                <input id="email" type="email" placeholder="Veuillez saisir votre adresse mail" />
-                <label name="userMessage">Votre message</label>
-                <textarea id="userMessage" type="textarea" rows="10" placeholder="Veuillez saisir votre message" maxlength="300" wrap="hard" aria-placeholder="Veuillez saisir votre message" required></textarea>
+            <p id="photographerName" class="modal__form--photographerName"></p>
+            <form id="contact__form">
+              <div class="contact__form--data">
+                <label id="FirstName" name="firstNameJS">Prénom</label>
+                <input id="firstNameJS" class="text-control" type="text" placeholder="Veuillez saisir votre prénom" aria-placeholder="Veuillez saisir votre prénom"  aria-labelledby="FirstName"/>
               </div>
-              <button class="contact_button" aria-label="Bouton envoyer">Envoyer</button>
+              <div class="contact__form--data">
+                <label id="LastName" name="lastNameJS">Nom</label>
+                <input id="lastNameJS" class="text-control" type="text" placeholder="Veuillez saisir votre nom" aria-placeholder="Veuillez saisir votre nom" aria-labelledby="LastName"/>
+              </div>
+              <div class="contact__form--data">
+                <label id="Email" name="emailJS">Email</label>
+                <input id="emailJS" class="text-control" type="email" placeholder="Veuillez saisir votre adresse mail" aria-placeholder="Veuillez saisir votre adresse mail" aria-labelledby="Email"/>
+              </div>
+              <div class="contact__form--data">                
+                <label id="Message" name="userMessageJS">Votre message</label>
+                <textarea id="userMessageJS" class="text-control" type="textarea" rows="10" placeholder="Veuillez saisir votre message" maxlength="300" wrap="hard" aria-placeholder="Veuillez saisir votre message 300 caractères maximum" aria-labelledby="Message"></textarea>
+              </div>
+              <button id="sendFormContactBtn" class="contact_button" type="submit" form="contact__form" aria-label="Bouton envoyer" name="envoyer">Envoyer</button>
             </form>
           </div>
         </div>
