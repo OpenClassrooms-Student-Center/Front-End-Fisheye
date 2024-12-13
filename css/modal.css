@@ -6,16 +6,22 @@
     background-color: #DB8876;
     width: 50%;   
     flex-direction: column;
-    align-items: center;
-    justify-content: space-between;
+    align-items: center;   
     padding: 35px;
     margin: 180px auto;
 }
-
 .modal__form  {
     display: flex;
     flex-direction: column;
+    justify-content: space-evenly;
     width: 100%;
+    min-height: 900px;
+}
+.modal__form header {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    margin: 0;
 }
 
 .modal__form--BtnClose{
@@ -38,8 +44,14 @@
 
 .modal__form--title{
     font-size: 64px;
-    font-weight: normal;
+    font-weight: 400;
     text-align: center;
+    margin: 0;
+}
+.modal__form--photographerName{
+    font-size: 64px;
+    font-weight: 400;
+    margin: 0;
 }
 
 form {
@@ -72,4 +84,25 @@ form textarea{
     width: 100%;
     border: none;
     border-radius: 5px;
+}
+::placeholder{
+    font-size: 24px;
+    font-family: "DM Sans", sans-serif;
+    color: black;
+}
+.formData[data-error-visible]::after{
+    content: attr(data-error);
+    font-size: 24px;
+    font-weight: bold;
+    text-decoration: underline 2px double #901C1C;
+    font-family: "DM Sans", sans-serif;
+    color: #0B0D0D;
+    
+    opacity: 0;    
+}
+.formData[data-error-visible="true"]::after{
+    opacity: 1;
+}
+.text-control[data-error-visible="true"]{
+    border: 5px solid #901C1C;
 }
