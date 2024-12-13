@@ -93,9 +93,11 @@ form textarea{
 .formData[data-error-visible]::after{
     content: attr(data-error);
     font-size: 24px;
+    font-weight: bold;
+    text-decoration: underline 2px double #901C1C;
     font-family: "DM Sans", sans-serif;
-    color: #FFFFFF;
-    background-color: #6C05BE;
+    color: #0B0D0D;
+    
     opacity: 0;    
 }
 .formData[data-error-visible="true"]::after{

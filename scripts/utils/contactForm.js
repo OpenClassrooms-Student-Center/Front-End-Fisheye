@@ -3,10 +3,10 @@
   const lastName = document.getElementById('lastNameJS');
   const email = document.getElementById('emailJS');
   const userMessage = document.getElementById('userMessageJS');
-  const formData = document.querySelectorAll('.contact__form--data');
+  //const formData = document.querySelectorAll('.contact__form--data');
   const errorElement = document.createElement("span")
   let regexName = new RegExp ("^[a-zA-Z]{2,}$")
-  console.log("Prénom",firstName,"Nom", lastName,"Courriel", email,"Message client", userMessage, "DIV input+label",formData,"span message d'erreur", errorElement)
+  
 
 export  function openModal(photographer) {
   const modal = document.getElementById('contact__modal');
@@ -33,8 +33,6 @@ export  function closeModal() {
 }
 //Création message d'erreur pour le formulaire et style des input en cas d'erreur
 
-
-
 function inputError(element){
   element.classList.add('error');
   element.setAttribute('data-error-visible', 'true')
@@ -47,7 +45,6 @@ function messageErreurSaisie(elementCreate, elementParent, errorMessage) {
   elementParent.parentNode.appendChild(elementCreate);
 }
 
-
 // fonction de validation de formulaire de saisie
 /**
  * Cette fonction prend un nom en paramètre et valide qu'il est au bon format
@@ -56,7 +53,7 @@ function messageErreurSaisie(elementCreate, elementParent, errorMessage) {
  */
  function validateLastName(name){  
   if (!regexName.test (name)) {
-    throw new Error (messageErreurSaisie(errorElement, lastName, "Le nom doit contenir au moins 2 lettres comprises entre a et z"),
+    throw new Error (messageErreurSaisie(errorElement, lastName, "Le nom doit contenir au moins 2 lettres."),
     inputError(lastName))        
   } else {
     lastName.setAttribute('data-error-visible', 'false')  
@@ -69,7 +66,7 @@ function messageErreurSaisie(elementCreate, elementParent, errorMessage) {
  */
  function validateFirstName(first){  
   if (!regexName.test (first)) {
-      throw new Error (messageErreurSaisie(errorElement, firstName, "Le prénom doit contenir au moins 2 lettres comprises entre a et z"),
+      throw new Error (messageErreurSaisie(errorElement, firstName, "Le prénom doit contenir au moins 2 lettres."),
       inputError(firstName))        
   } else {
     firstName.setAttribute('data-error-visible', 'false')  
@@ -95,9 +92,9 @@ function messageErreurSaisie(elementCreate, elementParent, errorMessage) {
 * @throws {Error}
 */
  function validateUserMessage (message){
-    let regexMessage = new RegExp ("^[a-zA-Z0-9@\"#'()\\-/:,;§?.]{10,}$")
+    let regexMessage = new RegExp ("[a-zA-Z0-9éèàçù@\"#'^¨ \\-()={}\\[\\]/\\\\!:,;?.]{10,300}$")
   if(!regexMessage.test(message)){
-      throw new Error (messageErreurSaisie(errorElement, userMessage,"Le message doit contenir au moins 10 caractères et 300 caractères maximum"),
+      throw new Error (messageErreurSaisie(errorElement, userMessage,"Le message doit contenir au minimum 10 caractères et au maximum 300 caractères."),
       inputError(userMessage))
   } else {
     userMessage.setAttribute('data-error-visible', 'false')   
@@ -119,28 +116,39 @@ function messageErreurSaisie(elementCreate, elementParent, errorMessage) {
     return false;
   }  
 }
+/**
+ * Cette fonction permet de réinitialiser les champs du formulaire
+ * @returns {void}  
+ */
+function resetInput(){
+  firstName.value = '';
+  lastName.value = '';
+  email.value = '';
+  userMessage.value = '';
+}
 
 // Fonction d'envoi du formulaire
 /**
  * Cette fonction envoie le formulaire de contact
  * @param {Object} data : les données du formulaire
  * @return {validateForm()} : les données du formulaire
+ * @return {resetInput()} : réinitialise les champs du formulaire
  */
 export function sendForm(){
   const form = document.querySelector('form');
   form.addEventListener('submit', (event) => {
     event.preventDefault();
     const formValid = validateForm();
-    if(formValid.isValid){
-      const formData = [
+    if(formValid){
+      const formData = 
         {
           firstName: firstName.value,
           lastName: lastName.value,
           email: email.value,
           userMessage: userMessage.value
-        }
-      ]
-      console.log(formData)     
+        }     
+      console.log(formData)
+      resetInput();     
       }                   
     }) 
   };
