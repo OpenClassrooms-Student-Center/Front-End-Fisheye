@@ -9,7 +9,7 @@ export default class mediaData {
             this._likes = data.likes;
             this._date = data.date;           
             this._price = data.price;
-            this._alt = data.alt;
+            this._alt = data.title;
     }
     
 }
