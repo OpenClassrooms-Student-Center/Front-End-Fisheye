@@ -1,0 +1,16 @@
+{
+  "name": "lb_oc_dev8app_fisheye.github.io",
+  "version": "1.0.0",
+  "description": "Site de photographe",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "lint": "eslint \"scripts/**/*.js\"",
+    "sass": "sass --watch scss:css"
+  },
+  "author": "Laurent B",
+  "license": "ISC",
+  "devDependencies": {
+    "@eslint/js": "^9.15.0"
+  }
+}
