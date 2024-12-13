@@ -4,13 +4,13 @@
   "description": "Site de photographe",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "lint": "eslint \"scripts/**/*.js\"",
+    "sass": "sass --watch scss:css"
   },
   "author": "Laurent B",
   "license": "ISC",
   "devDependencies": {
-    "@eslint/js": "^9.15.0",
-    "eslint": "^9.15.0",
-    "globals": "^15.12.0"
+    "@eslint/js": "^9.15.0"
   }
 }

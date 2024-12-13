@@ -1,18 +1,27 @@
-class cardFactory {
-    createCard(data) {
-        const card = new Card(data)
-
-        // Création du HTML
-        const cardSection = document.createElement ('section')
-        //lien vers la page du photographe
-        const cardLink = document.createElement ('a')
-        const cardPhotographerName = document.createElement("h2")
-        //Description et présentation du photographe Nolink
-        const descriptionContainer = document.createAttribute('div')
-        const photographeLocation = document.createElement('h3')
-        const taglinePhotographe = document.createElement('h4')
-        const photographePrice = document.createElement('p')
-
-
+export default class cardFactory {
+    constructor(photographer) {
+        this.photographer = photographer
     }
+        //Fonction de création de la carte
+        createCardPhotographer(){
+            // Création du HTML
+            const cardSection = document.createElement ('section')
+            cardSection.classList.add('photographerCard')
+            const cardPhotographer =`
+                <a href="photographer.html?id=${this.photographer._id}" role="link" aria-label="Voir le profil de ${this.photographer._name}">
+                    <img class="photographer_thumbnail" src="${this.photographer._portrait}" alt="${this.photographer._name}">
+                    <h2 class="photographer_name">${this.photographer._name}</h2>
+                </a>
+                <p class="photographer_location">${this.photographer._city}, ${this.photographer._country}</p>
+                <p class="photographer_tagline">${this.photographer._tagline}</p>
+                <span class="photographer_price">${this.photographer._price}€/jour</span>
+                `;
+            cardSection.innerHTML = cardPhotographer
+            return cardSection;
+        }
 }
+           
+        
+        
+        
+       
