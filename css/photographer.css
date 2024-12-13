@@ -1,11 +1,27 @@
-#contact_modal {
+/*#contact_modal {
     display: none;
+}*/
+#main{
+    padding: 0 120px;
 }
-
 .photograph-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    padding: 40px;
+    margin-top: 20px;
     background-color: #FAFAFA;
     height: 300px;
     margin: 0 100px;
+}
+.photograph__profile--portrait {
+    height: 200px;
+    width: 200px;
+    object-fit: cover;
+    clip-path: circle(50% at 50% 50%);
+    object-position: center;
+    transform: scale(1.4);
 }
 
 .contact_button {
@@ -21,56 +37,256 @@
     cursor: pointer;
 }
 
-.modal {
-    border-radius: 5px;
-    background-color: #DB8876;
-    width: 50%;
+/*FilterSection Style*/
+
+#filter__section{
     display: flex;
-    flex-direction: column;
     align-items: center;
-    justify-content: space-between;
-    padding: 35px;
-    margin: auto;
+    height: 50px;
+    gap: 10px;
 }
-
-.modal header {
-    justify-content: space-between;
-    width: 100%;
+#filter__section h2{
+    font-size: 18px;
+    font-weight: 700;
 }
-
-.modal header img {
-    cursor: pointer;
+.filter{
+    position: relative;
+    height: 100%;
 }
-
-.modal header h2 {
-    font-size: 64px;
-    font-weight: normal;
-    text-align: center;
-}
-
-form {
-    display: flex;
-    width: 100%;
-    flex-direction: column;
-    align-items: flex-start;
-}
-
-form label {
-    color: #312E2E;
-    font-size: 36px;
-}
-
-form div {
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-    align-items: self-start;
-    margin-bottom: 26px;
-}
-
-form input {
-    width: 100%;
-    height: 68px;
-    border: none;
+.filter__Dropdown{
+    font-size: 18px;
+    font-weight: 700;
+    z-index: 10;
+    position: absolute;
     border-radius: 5px;
+    overflow: hidden;
+}
+.rotate{
+    transform: rotate(180deg);
+}
+
+.filter__Dropdown--Ul{
+    padding: 0;
+    margin: 0;
+    list-style: none;
+    max-height: 0;
+    background-color: #901C1C;
+    transition: max-height .1s ease-in-out;
+}
+.dropdown__option{
+    position: relative;
+    width: 150px;
+}
+.dropdown__option::before{
+    content: "";
+    position: absolute;
+    top: 0px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 85%;
+    height: 1px;
+   
+}
+.filter__Dropdown--Btn, .dropdown__option--btn{
+    height: 50px;
+    padding: 15px;        
+}
+.filter__Dropdown--Btn{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 150px;
+}
+.dropdown__option--btn{
+    width: 100%;
+    text-align: left;
+}
+.dropdown__option:hover,
+.dropdown__option:focus,
+.filter__Dropdown--Btn:hover,
+.filter__Dropdown--Btn:focus{
+    background-color: #db8876;
+}
+.curtain_effect {
+    max-height: 200px;
+}
+
+/*Gallery Style*/
+.picture__container{
+    position: relative;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 30px 60px;
+    margin-top: 20px;
+}
+.gallery__card{
+    display: flex;
+    flex-flow: column;
+    border-radius: 5px;    
+    gap: 10px;
+}
+
+.gallery__card--link{
+    text-decoration: none;
+    
+}
+.gallery__card--link figure{
+    height: 260px; 
+    margin: 0;  
+}
+.gallery__card--media{
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    border-radius: 5px;
+}
+.gallery__card figcaption{
+    display: flex;
+    flex-flow: row;
+    border-radius: 5px;    
+    gap: 10px;
+}
+.animeCard{
+    animation: fade .2s ease-in-out;
+}
+/* Lightbox */
+.lightbox{
+    display: none;
+    justify-content: center;    
+    width: 100%;
+    max-height: 100%;
+    align-items: center;
+}
+.lightbox__container{
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    max-width: 1253px;
+    max-height: 1024px;
+    height: 100%;
+    background-color: var(--color-light);
+    padding: 30px 70px 0;
+    border-radius: 5px;
+    opacity: 0;
+    transform: translateY(-150px);
+    animation: fadeIn .3s ease-in-out forwards;
+}
+
+.lightbox__container--media{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+    /*margin: 0 auto;*/
+}
+
+.lightbox__container--media figcaption{
+    display: flex;
+    align-items: center;
+    width: 100%;
+    height: 50px;
+    margin-top: 10px;
+    font-size: clamp(1.8rem, 2.5vw, 2.5rem);
+    color:  #901C1C;
+}
+
+.lightbox__container--media img,
+.lightbox__container--media video{
+    width: 100%;
+    max-height: 900px;
+    object-fit: cover;
+}
+
+.lightbox__container--media video:focus{
+    outline: 2px solid var(--color-primary);
+}
+.lightbox__container--closeBtn,
+.lightbox__container--arrowNext,
+.lightbox__container--arrowPrevious{
+    background-color: transparent;
+    border: none;
+    color:  #901C1C;
+    ;
+}
+.lightbox__container--closeBtn{    
+    z-index: 100;
+    position: absolute;
+    top: 35px;
+    right: 5px; 
+}
+
+.lightbox__container--closeBtn::before{
+    content: "\f659";
+    font-family: 'bootstrap-icons';
+    font-size: clamp(3rem, 6vw, 5rem);
+    color: var(--color-primary);
+}
+
+.lightbox__container--arrowNext,
+.lightbox__container--arrowPrevious{
+    z-index: 100;
+    position: absolute;
+    top: 50%;
+    border-radius: 5px;
+    transform: translateY(-50%);
+    padding: 5px;
+}
+
+.lightbox__container--arrowNext{
+    right: 10px;
+}
+
+.lightbox__container--arrowPrevious{
+    left: 10px;
+}
+
+.lightbox__container--arrowNext::before,
+.lightbox__container--arrowPrevious::before{
+    font-family:  "Font Awesome 5 Free";
+    font-weight: 900;   
+    font-size: clamp(3rem, 6vw, 5rem);
+    color: var(--color-primary);
+}
+
+.lightbox__container--arrowNext::before{
+    content: "\f054";
+}
+
+.lightbox__container--arrowPrevious::before{
+    content: "\f053";
+}
+
+.lightbox__container--arrowPrevious:focus-visible:not(:hover),
+.lightbox__container--arrowNext:focus-visible:not(:hover){
+    outline: 2px solid var(--color-primary);
+}
+
+.lightbox__container--arrowPrevious:hover::before,   
+.lightbox__container--arrowNext:hover::before,
+.btn_close_lightbox:hover::before{
+    color: var(--color-secondary);
+}
+
+.invalid{
+    outline: 2px solid var(--color-primary);
+}
+
+.valid{
+    outline: 2px solid green;
+}
+
+.lightbox__container--arrowNext.active::before,
+.lightbox__container--arrowPrevious.active::before,
+.btn_close_lightbox.active::before{
+    color: var(--color-secondary);
+}
+
+/* ANIMATION */
+@keyframes fadeIn {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
