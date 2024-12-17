@@ -20,7 +20,7 @@ const init = async () => {
             const imgSrc = `${photographer._portrait}`;            
             try {
                 const img = await singletonMedia.loadImage(imgSrc);
-                photographerCard.querySelector('.photographer_thumbnail').src = img.src;
+                photographerCard.querySelector('.photographer__link--thumbnail').src = img.src;
             } catch (error) {
                 console.error('Erreur de chargement de l\'image:', error);
             }
