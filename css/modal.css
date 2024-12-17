@@ -29,6 +29,10 @@
     width: 50px;
     height: 50px;
     cursor: pointer;
+}       
+.modal__form--BtnClose:hover, .modal__form--BtnClose:focus{
+    transform: scale(1.1);
+    outline: 2px solid #901C1C;
 }
 .modal__form--BtnClose:before{
     display: flex;
@@ -105,4 +109,19 @@ form textarea{
 }
 .text-control[data-error-visible="true"]{
     border: 5px solid #901C1C;
+}
+.contact__form--submitBtn{
+    background-color: #901C1C;
+    color: white;
+    font-size: 18px;
+    font-weight: 700;
+    border: none;
+    border-radius: 5px;
+    width: 42%;
+    height: 68px;
+    cursor: pointer;
+}
+.contact__form--submitBtn:hover, .contact__form--submitBtn:focus{
+    border: #312E2E 2px solid;    
+    transform: scale(1.1);
 }

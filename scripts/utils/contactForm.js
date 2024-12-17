@@ -38,7 +38,13 @@ export  function closeModal() {
     modal.style.display = 'none';
     mainContainer.style.visibility = 'visible';
   });
-}
+  btn.addEventListener('keydown', (e) => {
+    if(e.key === 'Escape'){
+      modal.style.display = 'none';
+      mainContainer.style.visibility = 'visible';
+    }});
+  }
+
 //Création message d'erreur pour le formulaire et style des input en cas d'erreur
 /**
  * @description Ces fonctions permettent de mettre en forme les champs du formulaire en cas d'erreur
