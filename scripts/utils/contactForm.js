@@ -7,7 +7,11 @@
   const errorElement = document.createElement("span")
   let regexName = new RegExp ("^[a-zA-Z]{2,}$")
   
-
+/**
+ * @description Cette fonction permet d'ouvrir le formulaire de contact
+ * @param {*} photographer 
+ * @returns
+ */
 export  function openModal(photographer) {
   const modal = document.getElementById('contact__modal');
   const mainContainer = document.getElementById('main');
@@ -22,6 +26,10 @@ export  function openModal(photographer) {
     closeBtn.focus();
   });
 }
+/**
+ * @description Cette fonction permet de fermer le formulaire de contact
+ * @returns
+ */
 export  function closeModal() {
   const modal = document.getElementById('contact__modal');
   const mainContainer = document.getElementById('main');
@@ -32,7 +40,13 @@ export  function closeModal() {
   });
 }
 //Création message d'erreur pour le formulaire et style des input en cas d'erreur
-
+/**
+ * @description Ces fonctions permettent de mettre en forme les champs du formulaire en cas d'erreur
+ * @param {*} element
+ * @param {*} errorMessage
+ * @param {*} elementCreate
+ * @param {*} elementParent
+ */
 function inputError(element){
   element.classList.add('error');
   element.setAttribute('data-error-visible', 'true')
@@ -47,7 +61,7 @@ function messageErreurSaisie(elementCreate, elementParent, errorMessage) {
 
 // fonction de validation de formulaire de saisie
 /**
- * Cette fonction prend un nom en paramètre et valide qu'il est au bon format
+ * @description Cette fonction prend un nom en paramètre et valide qu'il est au bon format
  * @param {string} nom : le nom du joueur
  * @throws {Error}
  */
@@ -60,7 +74,7 @@ function messageErreurSaisie(elementCreate, elementParent, errorMessage) {
   }
 }
 /**
- * Cette fonction prend un nom en paramètre et valide qu'il est au bon format
+ * @description Cette fonction prend un nom en paramètre et valide qu'il est au bon format
  * @param {string} nom : le nom du joueur
  * @throws {Error}
  */
@@ -73,7 +87,7 @@ function messageErreurSaisie(elementCreate, elementParent, errorMessage) {
   }  
 }
 /**
-* Cette fonction prend une adresse mail en paramètre et valide qu'elle est au bon format
+* @description Cette fonction prend une adresse mail en paramètre et valide qu'elle est au bon format
 * @param {string} email : le mail du client
 * @throws {Error}
 */
@@ -87,7 +101,7 @@ function messageErreurSaisie(elementCreate, elementParent, errorMessage) {
   }     
 }
 /**
-* Cette fonction prend un message en paramètre et valide qu'il est au bon format
+* @description Cette fonction prend un message en paramètre et valide qu'il est au bon format
 * @param {string} message : le message du client
 * @throws {Error}
 */
@@ -102,7 +116,7 @@ function messageErreurSaisie(elementCreate, elementParent, errorMessage) {
 }
   
 /**
- * 
+ * @description Cette fonction permet de valider le formulaire de contact
  * @returns {Object} : les données du formulaire
  */
  function validateForm(){    
@@ -117,7 +131,7 @@ function messageErreurSaisie(elementCreate, elementParent, errorMessage) {
   }  
 }
 /**
- * Cette fonction permet de réinitialiser les champs du formulaire
+ * @description Cette fonction permet de réinitialiser les champs du formulaire
  * @returns {void}  
  */
 function resetInput(){
@@ -129,7 +143,7 @@ function resetInput(){
 
 // Fonction d'envoi du formulaire
 /**
- * Cette fonction envoie le formulaire de contact
+ * @description Cette fonction envoie le formulaire de contact
  * @param {Object} data : les données du formulaire
  * @return {validateForm()} : les données du formulaire
  * @return {resetInput()} : réinitialise les champs du formulaire

@@ -11,7 +11,11 @@ export const displayLightbox = medias => {
     const mediasList = medias.medias;
     let currentIndex = 0;
 
-
+/**
+ * 
+ * @returns {HTMLElement} lightboxMedia
+ * @description affiche le media dans le lightbox
+ */
     function lightboxTemplate() {        
             const currentMedia = mediasList[currentIndex];            
             lightboxMedia.innerHTML = `
@@ -38,7 +42,11 @@ export const displayLightbox = medias => {
                 lightboxTemplate();                            
         });
     });
-    const closeLightbox = () => {
+    /**
+     * @function closeLightbox
+     * @description ferme le lightbox
+     */
+    function closeLightbox  ()  {
           
         lightboxWrapper.style.display = 'none';
         header.style.display = 'flex';
@@ -47,14 +55,37 @@ export const displayLightbox = medias => {
         main.style.width = 'auto'; 
     };
     btnClose.addEventListener('click', closeLightbox);
-              
+    btnClose.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter') {
+            closeLightbox();
+        };
+    });          
     btnPrevious.addEventListener('click', () => {
         currentIndex = (currentIndex > 0) ? currentIndex - 1 : mediasList.length - 1;
-        lightboxTemplate();
-         
+        lightboxTemplate();         
+    });
+    btnPrevious.addEventListener('keydown', (e) => {
+        if (e.key === 'ArrowLeft') {
+            currentIndex = (currentIndex > 0) ? currentIndex - 1 : mediasList.length - 1;
+            lightboxTemplate(); 
+        };
     });
     btnNext.addEventListener('click', () => {
         currentIndex = (currentIndex < mediasList.length - 1) ? currentIndex + 1 : 0;
-        lightboxTemplate();
+        lightboxTemplate(); 
+    });
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') {
+            closeLightbox();
+        }
+    });    
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'ArrowRight') {
+            currentIndex = (currentIndex < mediasList.length - 1) ? currentIndex + 1 : 0;
+            lightboxTemplate();
+        } else if (e.key === 'ArrowLeft') {
+            currentIndex = (currentIndex > 0) ? currentIndex - 1 : mediasList.length - 1;
+            lightboxTemplate();
+        }
     });
 };

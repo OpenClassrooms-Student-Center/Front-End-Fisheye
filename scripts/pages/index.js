@@ -1,18 +1,26 @@
 import Api from"../API/api.js";
-import photographeData from "../patterns/constructorPattern/photographeData.js";
-import cardFactory from "../patterns/factoriesPattern/cardsFactory.js";
+import PhotographeData from "../patterns/constructorPattern/photographeData.js";
+import CardFactory from "../patterns/factoriesPattern/cardsFactory.js";
 import { singletonMedia } from "../patterns/singletonPattern/SingletonMedia.js";
 const photographersSection = document.querySelector(".photographer")
 const photographerApi = new Api("../../data/photographers.json");
-
-const init = async () => {
+/**
+ * @description - Initialise la page d'accueil
+ * @param {Array} photographersData - Tableau des photographes
+ * @param {PhotographeData} photographer - Instance de la classe PhotographeData
+ * @param {CardFactory} card - Instance de la classe CardFactory
+ * @param {HTMLElement} photographerCard - Carte du photographe
+ * @param {string} imgSrc - Source de l'image du photographe
+ * @export {init}
+ */
+async function init  ()  {
     const photographersData = await photographerApi.get();
     const photographers =photographersData.photographers;
 
         photographers
-            .map(photographer => new photographeData(photographer))
+            .map(photographer => new PhotographeData(photographer))
             .forEach(async photographer => {
-                const card = new cardFactory(photographer);
+                const card = new CardFactory(photographer);
                 const photographerCard = card.createCardPhotographer();
                 photographersSection.appendChild(photographerCard);
                 

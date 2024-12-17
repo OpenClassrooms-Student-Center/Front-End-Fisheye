@@ -1,16 +1,16 @@
 import { afficheTotalLikes} from "../utils/likes.js";
 import { displayLightbox } from "../utils/lightbox.js";
 /**
+ * @function openCloseFilterMenu   
+ * 
  * Fonction pour ouvrir et fermer le menu de filtre.
  * Cette fonction gère l'affichage du menu déroulant de filtre et met à jour les attributs ARIA pour l'accessibilité.
  */
-export const openCloseFilterMenu = () => {
+export function openCloseFilterMenu  ()  {
     const filterMenu = document.querySelector(".filter__Dropdown--Ul");
     const filterMenuButton = document.querySelector(".filter__Dropdown--Btn");
     const filterButtons = document.querySelectorAll(".dropdown__option--btn");
-    
-    
-
+        
     filterMenuButton.addEventListener("click", () => {
         const isExpanded = filterMenuButton.getAttribute("aria-expanded") === "true" || false;
         filterMenuButton.setAttribute("aria-expanded", !isExpanded);
@@ -51,6 +51,10 @@ export function displayMediaWithFilter(mediasTemplate) {
         });
     });
     // Fonction pour trier et afficher les médias en fonction du filtre sélectionné
+    /**
+     * 
+     * @param {*} filterValue 
+     */
     function sortByFilter(filterValue) {
         switch (filterValue) {
             case 'Titre':

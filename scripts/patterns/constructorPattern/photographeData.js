@@ -1,4 +1,10 @@
-export default class photographeData {
+/**
+ * @class PhotographeData
+ * @classdesc Cette classe permet de créer un objet PhotographeData
+ * @param {Object} data - Données du photographe
+ * @export {PhotographeData}
+ */
+export default class PhotographeData {
     constructor(data){
         if (!data || typeof data !== 'object') {
             throw new Error('Invalid card data provided');
@@ -12,6 +18,11 @@ export default class photographeData {
             this._portrait = this.formatPortraitPath(data.portrait);
     }
     //fonction de récupération du chemin de l'image
+    /**
+     * @description - Récupère le chemin de l'image
+     * @param {*} portrait 
+     * @returns 
+     */
         formatPortraitPath(portrait){ 
         return `./assets/images/FishEye_Photos/Sample_Photos/Photographers ID Photos/${portrait}`;
     }   
