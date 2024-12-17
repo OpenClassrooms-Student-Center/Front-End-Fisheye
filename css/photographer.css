@@ -383,12 +383,10 @@ aside{
     width: 55px;
     text-align: center;
 }
-.lightbox__container--closeBtn:focus,.lightbox__container--closeBtn:hover,
-.lightbox__container--arrowNext:focus,.lightbox__container--arrowNext:hover,
-.lightbox__container--arrowPrevious:focus,.lightbox__container--arrowPrevious:hover{
-    outline: 2px solid #901C1C;
-    transform: scale(1.2);  
+.lightbox__container--closeBtn:focus,.lightbox__container--closeBtn:hover{
+    outline: 2px solid #901C1C;     
 }
+
 .lightbox__container--closeBtn::before{
     display: inline-flex;
     justify-content: center;
@@ -438,7 +436,16 @@ aside{
 .lightbox__container--arrowPrevious::before{
     content: "\f053";
 }
-
+.lightbox__container--arrowNext:focus,.lightbox__container--arrowNext:hover,
+.lightbox__container--arrowPrevious:focus,.lightbox__container--arrowPrevious:hover{
+    outline: #901C1C solid 2px;            
+}
+.lightbox__container--arrowNext:focus,.lightbox__container--arrowNext:hover{   
+    left: 95%;
+}
+.lightbox__container--arrowPrevious:focus,.lightbox__container--arrowPrevious:hover{
+    right: 95%;
+}   
 
 /* ANIMATION */
 @keyframes fadeIn {
