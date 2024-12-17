@@ -1,8 +1,20 @@
-export default class cardFactory {
+/**
+ * Class CardFactory
+ * @class CardFactory   -   Création de la carte du photographe
+ * @constructor - Crée une nouvelle instance de la classe CardFactory
+ * @param {Object} photographer - Données du photographe
+ * @returns {HTMLElement} - Retourne la carte du photographe
+ */
+export default class CardFactory {
     constructor(photographer) {
         this.photographer = photographer
     }
         //Fonction de création de la carte
+        /**
+         * @description - Crée la carte du photographe            
+         * @returns {HTMLElement} - Retourne la carte du photographe        
+         * @returns {string} - Retourne la carte du photographe
+         */
         createCardPhotographer(){
             // Création du HTML
             const cardSection = document.createElement ('section')

@@ -1,4 +1,10 @@
-export default class mediaData {
+/**
+ * @class MediaData
+ * @description - Crée une nouvelle instance de la  classe MediaData
+ * @param {Object} data - Données des médias
+ * @export {MediaData}
+ */
+export default class MediaData {
     constructor(data){
         if (!data || typeof data !== 'object') {
             throw new Error('Invalid media data provided');

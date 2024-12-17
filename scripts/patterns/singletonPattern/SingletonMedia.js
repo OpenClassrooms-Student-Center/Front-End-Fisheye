@@ -1,3 +1,6 @@
+/**
+ * SingletonMedia
+ */
 export default class SingletonMedia {
     constructor() {
         if (SingletonMedia.instance) {

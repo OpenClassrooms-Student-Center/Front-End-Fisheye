@@ -1,4 +1,11 @@
-// Importer le fichier JSON
+// Importer le fichier JSON des photographes
+/**
+ * @class Api
+ * @description - Crée une nouvelle instance de la  classe Api
+ * @param {String} url - URL de l'API
+ * @export {Api}
+ * 
+ */
 export default class Api {
   constructor(url){
       this.url = url;

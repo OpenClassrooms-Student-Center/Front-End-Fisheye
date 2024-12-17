@@ -1,9 +1,14 @@
-export default class photographerPageMedia {
+
+export default class PhotographerPageMedia {
     constructor(photographer, medias) {
         this.photographer = photographer;
         this.medias = medias;        
     }
-    //Méthode de la création du header de la page photographe
+    //Méthode de la création du galerie de la page photographe
+    /**
+     * @description - Crée le contenu media de la page photographe
+     * @returns {string} - Retourne la galerie des médias du photographe
+     */
     createPhotographerMedia() {
         const mediaContainer = document.querySelector(".picture__container");    
         const gallery = `                           
