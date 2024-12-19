@@ -3,7 +3,7 @@ import PhotographeData from "../patterns/constructorPattern/photographeData.js";
 import CardFactory from "../patterns/factoriesPattern/cardsFactory.js";
 import { singletonMedia } from "../patterns/singletonPattern/SingletonMedia.js";
 const photographersSection = document.querySelector(".photographer")
-const photographerApi = new Api("./../../data/photographers.json");
+const photographerApi = new Api("./Fisheye.github.io/data/photographers.json");
 /**
  * @description - Initialise la page d'accueil
  * @param {Array} photographersData - Tableau des photographes
