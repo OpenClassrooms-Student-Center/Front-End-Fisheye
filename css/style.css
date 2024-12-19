@@ -1,11 +1,18 @@
 @import url("photographer.css");
-
+:root {
+    --fa-rotate-angle: 0deg; /* Valeur par défaut */
+}
+/* Correction pour FontAwesome */
+.fa-rotate-by {
+    transform: rotate(var(--fa-rotate-angle, 0deg));
+}
 body {
     font-family: "DM Sans", sans-serif;
     margin: 0;
 }
-
-
+a{
+    text-decoration: none;
+}
 header {
     display: flex;
     flex-direction: row;
@@ -24,27 +31,92 @@ h1 {
     margin-left: 100px;
 }
 
-.photographer_section {
+.photographer {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     gap: 70px;
     margin-top: 100px;
 }
 
-.photographer_section article {
+.photographerCard {
     justify-self: center;
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
+    width: 200px;
+    height: 310px;
+}
+.photographer__link {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;    
+    text-decoration: none;
+    color: #000;
+    max-width: 100%;        
+}
+.photographer__link:focus{
+    outline: #901C1C solid 2px;
+}
+.photographer__link:hover, .photographer__link:focus{    
+    transform: scale(1.15);    
+    padding-bottom: 10px;  
+      
+}
+.photographer__link:hover .photographer__link--name::before, .photographer__link:focus .photographer__link--name::before {    
+   width: 80%;           
 }
 
-.photographer_section article h2 {
-    color: #D3573C;
-    font-size: 36px;
-}
-
-.photographer_section article img {
+.photographer__link--thumbnail {
     height: 200px;
     width: 200px;
+    object-fit: cover;    
+    overflow-clip-margin: unset;/*Empêche la pixelisation de la photId du photographe sous chrome*/
+    clip-path: circle(36% at 50% 50%);
+    object-position: center;
+    transform: scale(1.4);
+}
+.photographer__link--name::before {
+    content: "";
+    position: absolute;
+    width: 0;
+    bottom: 10%;
+    left: 50%;
+    height: 2px;
+    background-color: #D3573C;
+    transform: translateX(-50%);
+    transition: width 0.5s ease-in-out ;    
+}
+.photographer__link--name{
+    color: #D3573C;
+    font-size: 36px;
+    font-weight: 400;
+    text-align: center;
+    width: max-content;
+    position: relative;
+    
+}
+.photographer__info{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding-top: 5px;
+}
+.photographer__info--location{
+    color: #901C1C;
+    font-size: 13px;
+    font-weight: 400;
+    text-align: center;
+}
+.photographer__info--tagline{
+    font-size: 10px;
+    font-weight: 400;
+    text-align: center;  
+}
+.photographer__info--price{
+    font-size: 9px;
+    font-weight: 400;
+    text-align: center;
+    color: #757575;
 }

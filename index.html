@@ -1,21 +1,23 @@
 <!DOCTYPE html>
 <html lang="fr">
   <head>
-    <link href="css/style.css" rel="stylesheet" type="text/css" />
     <meta charset="utf-8">
-    <link rel="icon" type="image/png" href="assets/favicon.png">
-    <link href="https://fonts.googleapis.com/css?family=DM+Sans&display=swap" rel="stylesheet">
-    <title>Fisheye</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Fisheye société regroupant des photographes indépendants. Cette communauté de professionnels effectue des reportages de tous vos événements privés ou professionnels dans toute la France.">
+    <title>Fisheye - Accueil</title>
+    <link href="./css/style.css" rel="stylesheet" type="text/css">    
+    <link rel="icon" type="image/png" href="./assets/favicon.png">
+    <link href="https://fonts.googleapis.com/css?family=DM+Sans&display=swap" rel="stylesheet">    
+    
   </head>
   <body>
     <header>
-        <img src="assets/images/logo.png" class="logo" alt="fisheye logo"/>
+        <img src="./assets/images/logo.png" class="logo" alt="fisheye logo homepage" aria-label="Retour sur la page d'accueil">
         <h1>Nos photographes</h1>
     </header>
     <main id="main">
-        <div class="photographer_section"></div>
-    </main>
-    <script src="scripts/templates/photographer.js"></script>
-    <script src="scripts/pages/index.js"></script>
+        <article class="photographer"></article>
+    </main> 
+    <script src="./scripts/pages/index.js" type="module"></script>   
   </body>
 </html>
