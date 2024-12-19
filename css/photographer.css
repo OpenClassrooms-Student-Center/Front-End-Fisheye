@@ -5,7 +5,7 @@
     font-family: 'DM Sans', sans-serif;
 }
 img{
-    overflow-clip-margin: unset
+    overflow-clip-margin: unset;/*Empêche la pixelisation des images dans chrome*/
 }
 .Fisheye__header{
     height: 135px;
@@ -197,7 +197,7 @@ img{
     text-decoration: underline;
 }
 .fa-chevron-up::before{
-    content: \f077;
+    content: "\f077";
     font-family: 'Font Awesome 5 Free';
 }
 .curtain__effect {
@@ -335,8 +335,7 @@ aside{
     width: 100%;
     max-width: 1253px;
     max-height: 1024px;
-    height: 100%;
-    background-color: var(--color-light);
+    height: 100%;    
     padding: 30px 70px 0;
     border-radius: 5px;
     opacity: 0;
@@ -348,7 +347,7 @@ aside{
     flex-direction: column;
     width: 100%;
     height: 100%;
-    /*margin: 0 auto;*/
+   
 }
 .lightbox__container--media figcaption{
     display: flex;
