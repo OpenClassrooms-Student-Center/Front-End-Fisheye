@@ -16,7 +16,7 @@ const photographerApi = new Api("../../data/photographers.json");
 async function init  ()  {
     const photographersData = await photographerApi.get();
     const photographers =photographersData.photographers;
-
+   
         photographers
             .map(photographer => new PhotographeData(photographer))
             .forEach(async photographer => {

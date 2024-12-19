@@ -1,4 +1,3 @@
-
 export default class PhotographerPageMedia {
     constructor(photographer, medias) {
         this.photographer = photographer;
@@ -14,15 +13,18 @@ export default class PhotographerPageMedia {
         const gallery = `                           
                     ${this.medias.map(media => {                                                                       
                         const photographerNameFormatted = this.photographer._name.replace(/-/g, ' ');
+                        
                         const photographerNameEncoded = encodeURIComponent(photographerNameFormatted);
+                        
                         const mediaPath = media._image
                     ? `/assets/images/FishEye_Photos/Sample_Photos/${photographerNameEncoded}/${encodeURIComponent(media._image)}`
-                    : `/assets/images/FishEye_Photos/Sample_Photos/${photographerNameEncoded}/${encodeURIComponent(media._video)}`;                                
+                    : `/assets/images/FishEye_Photos/Sample_Photos/${photographerNameEncoded}/${encodeURIComponent(media._video)}`;
+                                                   
                         const mediaElement = media._image
                         ? `<img src="${mediaPath}" alt="${media._title}" class="gallery__card--media">` 
                         : `<video class="gallery__card--media" alt="${media._title}">
                         <source src="${mediaPath}" type="video/mp4">
-                        </video>`;
+                        </video>`;                        
                         return`
                             <section class="gallery__card">
                                 <a class="gallery__card--link" href="#" role="link" data-media="${media._id}" aria-label="Photo">
@@ -53,7 +55,6 @@ export default class PhotographerPageMedia {
 
         mediaContainer.innerHTML = gallery;
         mediaContainer.insertAdjacentHTML('afterend', aside);
-            mediaContainer.innerHTML = gallery;            
-        return gallery
+        return gallery;
     }
 }

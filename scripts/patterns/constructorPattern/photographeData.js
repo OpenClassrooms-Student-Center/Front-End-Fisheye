@@ -24,7 +24,7 @@ export default class PhotographeData {
      * @returns 
      */
         formatPortraitPath(portrait){ 
-        return `./assets/images/FishEye_Photos/Sample_Photos/Photographers ID Photos/${portrait}`;
+        return `./assets/images/FishEye_Photos/Sample_Photos/Photographers_ID_Photos/${portrait}`;
     }   
     }
 

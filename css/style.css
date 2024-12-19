@@ -8,7 +8,9 @@ a{
     text-decoration: none;
 }
 
-
+img{
+    overflow-clip-margin: unset
+}
 
 header {
     display: flex;
@@ -69,7 +71,7 @@ h1 {
     height: 200px;
     width: 200px;
     object-fit: cover;
-    clip-path: circle(29% at 50% 50%);
+    clip-path: circle(36% at 50% 50%);
     object-position: center;
     transform: scale(1.4);
 }

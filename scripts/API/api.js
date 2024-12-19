@@ -22,11 +22,11 @@ export default class Api {
       } else {
         // Gérer les réponses non-JSON de manière appropriée
         console.error("Le serveur a renvoyé des données non-JSON:", response.status, await response.text());
-        return null; // Ou lancez une erreur, ou gérez-la d'une autre manière
+        return null; // retourne une valeur null.
       }
     } catch (err) {
       console.error("Erreur lors de la récupération des données:", err);
-      return null; // ou lancez une erreur
+      return null; // retourne une valeur null.
     }
   }
-}
+} 

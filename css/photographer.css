@@ -4,7 +4,9 @@
     box-sizing: border-box;
     font-family: 'DM Sans', sans-serif;
 }
-
+img{
+    overflow-clip-margin: unset
+}
 .Fisheye__header{
     height: 135px;
     position: relative;
@@ -64,7 +66,7 @@
     max-height: 200px;
     max-width: 200px;
     object-fit: cover;
-    clip-path: circle(29% at 50% 50%);
+    clip-path: circle(36% at 50% 50%);
     object-position: center;
     transform: scale(1.4);
 }

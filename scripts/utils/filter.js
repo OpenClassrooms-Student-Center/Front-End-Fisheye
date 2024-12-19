@@ -31,17 +31,17 @@ export function openCloseFilterMenu  ()  {
 export function displayMediaWithFilter(mediasTemplate) {
     const currentFilter = document.getElementById('Selected__FilterJS');
     const allFilters = Array.from(document.querySelectorAll('.dropdown__option--btn'));
-    console.log("currentFilter", currentFilter, "allFilters", allFilters);
+   
     // Trouver le filtre actuellement sélectionné et le masquer
     let filterAlreadySelected = allFilters.find(filter => filter.textContent == currentFilter.textContent);
-    console.log("filterAlreadySelected", filterAlreadySelected);
+  
     filterAlreadySelected.style.display = 'none';
     // Ajouter des écouteurs d'événements pour chaque filtre
     allFilters.forEach(filter => {
         filter.addEventListener('click', () => {
             // Mettre à jour le texte du filtre actuel
             currentFilter.textContent = filter.textContent;
-            console.log("currentFilter.textContent", currentFilter.textContent);
+            
             // Afficher l'ancien filtre sélectionné et masquer le nouveau
             if (filterAlreadySelected) filterAlreadySelected.style.display = 'block';            
             filterAlreadySelected = filter;
