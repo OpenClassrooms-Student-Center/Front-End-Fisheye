@@ -20,8 +20,8 @@ export const displayLightbox = medias => {
             const currentMedia = mediasList[currentIndex];            
             lightboxMedia.innerHTML = `
                     ${currentMedia._image ? `
-                    <img src="../../assets/images/FishEye_Photos/Sample_Photos/${photographer._name.replace(/-/g, ' ').replace(/\s+/g, ' ')}/${encodeURIComponent(currentMedia._image)}" alt="${currentMedia._alt || ''}">` : 
-                    `<video controls aria-label="${currentMedia._alt || ''}"><source src="../../assets/images/FishEye_Photos/Sample_Photos/${photographer._name.replace(/-/g, ' ').replace(/\s+/g, ' ')}/${encodeURIComponent(currentMedia._video)}" type="video/mp4"></video>`}
+                    <img src="./assets/images/FishEye_Photos/Sample_Photos/${photographer._name.replace(/-/g, ' ').replace(/\s+/g, ' ')}/${encodeURIComponent(currentMedia._image)}" alt="${currentMedia._alt || ''}">` : 
+                    `<video controls aria-label="${currentMedia._alt || ''}"><source src="./assets/images/FishEye_Photos/Sample_Photos/${photographer._name.replace(/-/g, ' ').replace(/\s+/g, ' ')}/${encodeURIComponent(currentMedia._video)}" type="video/mp4"></video>`}
 
                     <figcaption>${currentMedia._title || ''}</figcaption>
                 `;            
