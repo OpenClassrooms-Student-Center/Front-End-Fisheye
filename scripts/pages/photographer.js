@@ -8,7 +8,7 @@ import {openCloseFilterMenu, displayMediaWithFilter} from "../utils/filter.js";
 import {afficheTotalLikes} from "../utils/likes.js"; 
 import {displayLightbox} from "../utils/lightbox.js";
 
-const photographersApi = new Api("../../data/photographers.json");
+const photographersApi = new Api("./data/photographers.json");
 const photographerId = new URLSearchParams(window.location.search).get("id");
 /**
  * @description - Récupère les données du photographe et des médias
