@@ -17,8 +17,8 @@ export default class PhotographerPageMedia {
                         const photographerNameEncoded = encodeURIComponent(photographerNameFormatted);
                         
                         const mediaPath = media._image
-                    ? `/assets/images/FishEye_Photos/Sample_Photos/${photographerNameEncoded}/${encodeURIComponent(media._image)}`
-                    : `/assets/images/FishEye_Photos/Sample_Photos/${photographerNameEncoded}/${encodeURIComponent(media._video)}`;
+                    ? `./assets/images/FishEye_Photos/Sample_Photos/${photographerNameEncoded}/${encodeURIComponent(media._image)}`
+                    : `./assets/images/FishEye_Photos/Sample_Photos/${photographerNameEncoded}/${encodeURIComponent(media._video)}`;
                                                    
                         const mediaElement = media._image
                         ? `<img src="${mediaPath}" alt="${media._title}" class="gallery__card--media">` 
