@@ -1,5 +1,11 @@
 @import url("photographer.css");
-
+:root {
+    --fa-rotate-angle: 0deg; /* Valeur par défaut */
+}
+/* Correction pour FontAwesome */
+.fa-rotate-by {
+    transform: rotate(var(--fa-rotate-angle, 0deg));
+}
 body {
     font-family: "DM Sans", sans-serif;
     margin: 0;
@@ -7,11 +13,6 @@ body {
 a{
     text-decoration: none;
 }
-
-img{
-    overflow-clip-margin: unset
-}
-
 header {
     display: flex;
     flex-direction: row;
@@ -70,7 +71,8 @@ h1 {
 .photographer__link--thumbnail {
     height: 200px;
     width: 200px;
-    object-fit: cover;
+    object-fit: cover;    
+    overflow-clip-margin: unset;/*Empêche la pixelisation de la photId du photographe sous chrome*/
     clip-path: circle(36% at 50% 50%);
     object-position: center;
     transform: scale(1.4);
@@ -101,19 +103,20 @@ h1 {
     gap: 10px;
     padding-top: 5px;
 }
+/*Modification de la taille de police pour faciliter la lecture*/
 .photographer__info--location{
     color: #901C1C;
-    font-size: 13px;
+    font-size: 18px;
     font-weight: 400;
     text-align: center;
 }
 .photographer__info--tagline{
-    font-size: 10px;
+    font-size: 16px;
     font-weight: 400;
     text-align: center;  
 }
 .photographer__info--price{
-    font-size: 9px;
+    font-size: 14px;
     font-weight: 400;
     text-align: center;
     color: #757575;

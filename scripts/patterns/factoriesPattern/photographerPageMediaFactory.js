@@ -30,10 +30,10 @@ export default class PhotographerPageMedia {
                                 <a class="gallery__card--link" href="#" role="link" data-media="${media._id}" aria-label="Photo">
                                 <figure>${mediaElement}</figure>
                                 </a>
-                                <figcaption>
+                                <figcaption role="group">
                                 <h2>${media._title}</h2>
-                                    <div role="group" aria-label="bouton pour aimer et compteur des j'aime">
-                                    <span class="nbLike" aria-label="Nombre de j'aime">${media._likes}</span> 
+                                    <div class="container__PictureLike" tabindex="0" role="treeitem">
+                                    <span class="nbLike">${media._likes}</span> 
                                     <button class="btn__like" type="button" aria-label="J'aime" data-id="${media._id}">
                                         <span class="fas fa-heart" aria-hidden="true"></span>
                                     </button>
@@ -44,13 +44,13 @@ export default class PhotographerPageMedia {
             }).join("")}`;
 
         const aside = `
-            <aside>
-            <div class="photographer__Likes">
+            <section id="TotalLikeContainerJS" class="photographer__aside" tabindex="0" role="tabpanel" aria-live="polite">
+            <div  class="photographer__Likes">  
                 <span id="Total__Like" class="photographer__likes--count"></span>
                 <span class="Like__Heart" aria-hidden="true"></span>
             </div>
             <span id="photographerPrice" >${this.photographer._price}€/jour</span>
-            </aside>
+            </section>
             `;
 
         mediaContainer.innerHTML = gallery;

@@ -41,6 +41,7 @@ export function displayMediaWithFilter(mediasTemplate) {
         filter.addEventListener('click', () => {
             // Mettre à jour le texte du filtre actuel
             currentFilter.textContent = filter.textContent;
+            currentFilter.setAttribute('aria-label', `Filtre actuel: ${filter.textContent}`);
             
             // Afficher l'ancien filtre sélectionné et masquer le nouveau
             if (filterAlreadySelected) filterAlreadySelected.style.display = 'block';            

@@ -1,4 +1,14 @@
-export const displayLightbox = medias => {
+/**
+ * 
+ * @param {*} medias 
+ * @description affiche le lightbox
+ * @returns {HTMLElement} lightboxWrapper
+ * 
+ */
+export function displayLightbox (medias){
+    const skipLinkContainer = document.getElementById('skipLinkContainer');
+    const skipLinkBtn = document.getElementById('skipLinkBtn');
+    const skipLink = document.getElementById('skipLinkJS');
     const header = document.querySelector('header');
     const main = document.getElementById('main');    
     const lightboxWrapper = document.getElementById('lightboxWrapperJs');
@@ -12,7 +22,7 @@ export const displayLightbox = medias => {
     let currentIndex = 0;
 
 /**
- * 
+ * @param {HTMLElement} lightboxWrapper
  * @returns {HTMLElement} lightboxMedia
  * @description affiche le media dans le lightbox
  */
@@ -20,8 +30,8 @@ export const displayLightbox = medias => {
             const currentMedia = mediasList[currentIndex];            
             lightboxMedia.innerHTML = `
                     ${currentMedia._image ? `
-                    <img src="../../assets/images/FishEye_Photos/Sample_Photos/${photographer._name.replace(/-/g, ' ').replace(/\s+/g, ' ')}/${encodeURIComponent(currentMedia._image)}" alt="${currentMedia._alt || ''}">` : 
-                    `<video controls aria-label="${currentMedia._alt || ''}"><source src="../../assets/images/FishEye_Photos/Sample_Photos/${photographer._name.replace(/-/g, ' ').replace(/\s+/g, ' ')}/${encodeURIComponent(currentMedia._video)}" type="video/mp4"></video>`}
+                    <img src="./assets/images/FishEye_Photos/Sample_Photos/${photographer._name.replace(/-/g, ' ').replace(/\s+/g, ' ')}/${encodeURIComponent(currentMedia._image)}" alt="${currentMedia._alt || ''}">` : 
+                    `<video controls aria-label="${currentMedia._alt || ''}"><source src="./assets/images/FishEye_Photos/Sample_Photos/${photographer._name.replace(/-/g, ' ').replace(/\s+/g, ' ')}/${encodeURIComponent(currentMedia._video)}" type="video/mp4"></video>`}
 
                     <figcaption>${currentMedia._title || ''}</figcaption>
                 `;            
@@ -32,28 +42,46 @@ export const displayLightbox = medias => {
                   
             const mediaId = media.dataset.media;        
             const mediaIndex = mediasList.findIndex(media => media._id == mediaId);                       
-                currentIndex = mediaIndex;                
-                lightboxWrapper.style.display = 'flex';
+                currentIndex = mediaIndex;
+                skipLinkContainer.style.display = 'block';
+                skipLinkBtn.style.display = 'block';
+                skipLinkContainer   .setAttribute('aria-hidden', 'false');
+                skipLinkBtn.setAttribute('aria-hidden', 'false');
+                skipLink.setAttribute('aria-hidden', 'false');                
+                lightboxWrapper.setAttribute('aria-hidden', 'false');
+                main.setAttribute('aria-hidden', 'true');
+                lightboxWrapper.style.display = 'flex';                                         
                 header.style.display = 'none';
                 main.style.visibility = 'hidden';
+                main.setAttribute('aria-hidden', 'true');
                 main.style.height = '0'; 
-                main.style.width = '0';               
+                main.style.width = '0';              
                 btnClose.focus();
-                lightboxTemplate();                            
+                lightboxTemplate();
+                                             
         });
     });
     /**
      * @function closeLightbox
      * @description ferme le lightbox
      */
-    function closeLightbox  ()  {
-          
+    function closeLightbox  ()  {          
         lightboxWrapper.style.display = 'none';
+        lightboxWrapper.setAttribute('aria-hidden', 'true');
+        skipLinkContainer.setAttribute('aria-hidden', 'true');
+        skipLinkBtn.setAttribute('aria-hidden', 'true');
+        skipLink.setAttribute('aria-hidden', 'true');
         header.style.display = 'flex';
         main.style.visibility = 'visible';
+        main.setAttribute('aria-hidden', 'false');
         main.style.height = 'auto'; 
-        main.style.width = 'auto'; 
+        main.style.width = 'auto';
+        skipLinkContainer.style.display = 'none';
+        //skipLinkBtn.style.display = 'none';
+        //skipLink.style.display = 'none';
+        
     };
+    skipLinkBtn.addEventListener('click',closeLightbox);
     btnClose.addEventListener('click', closeLightbox);
     btnClose.addEventListener('keydown', (e) => {
         if (e.key === 'Enter') {
