@@ -4,7 +4,6 @@ import CardFactory from "../patterns/factoriesPattern/cardsFactory.js";
 import { singletonMedia } from "../patterns/singletonPattern/SingletonMedia.js";
 const photographersSection = document.querySelector(".photographer")
 const photographerApi = new Api("./data/photographers.json");
-console.log(photographerApi);
 /**
  * @description - Initialise la page d'accueil
  * @param {Array} photographersData - Tableau des photographes
