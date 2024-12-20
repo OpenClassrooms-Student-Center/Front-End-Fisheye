@@ -54,7 +54,7 @@ h1 {
     align-items: center;    
     text-decoration: none;
     color: #000;
-    max-width: 100%;        
+            
 }
 .photographer__link:focus{
     outline: #901C1C solid 2px;
@@ -69,9 +69,9 @@ h1 {
 }
 
 .photographer__link--thumbnail {
-    height: 200px;
     width: 200px;
-    object-fit: cover;    
+    height: 200px;
+    object-fit: cover;       
     overflow-clip-margin: unset;/*Correction pixelisation de l'image sous chrome. Propriété récente non reconnu par le w3c- L'alternative avec image-rendering n'est pas fonctionnelle*/
     clip-path: circle(36% at 50% 50%);
     object-position: center;
