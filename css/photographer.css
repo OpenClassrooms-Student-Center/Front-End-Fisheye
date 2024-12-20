@@ -226,8 +226,10 @@ nav{
     text-decoration: underline;
 }
 .fa-chevron-up::before{
-    content: "\f077";
-    font-family: 'Font Awesome 5 Free';
+    content: "\F27C";
+    font-family: 'bootstrap-icons';
+    font-size: 30px;
+    color: #fff;
 }
 .curtain__effect {
     max-height: 200px;
@@ -291,7 +293,7 @@ figcaption h2{
     color: #901C1C;
 }
 .container__PictureLike{
-    display: inline-flex;
+    display: flex;
     align-items: baseline;
     gap: 5px;  
 }
@@ -323,8 +325,8 @@ figcaption h2{
     color: #db8876;
 }
 .fa-heart::before{              
-    content: "\f004";
-    font-family: 'Font Awesome 5 Free';
+    content: "\F415";
+    font-family: 'bootstrap-icons';
     font-weight: 900;
     font-size: 20px;   
     color: #901C1C;
@@ -352,8 +354,8 @@ figcaption h2{
     
 }
 .Like__Heart::before{
-    content: "\f004";
-    font-family: 'Font Awesome 5 Free';
+    content: "\F415";
+    font-family: 'bootstrap-icons';
     font-weight: 900;
     font-size: 20px;   
     color: black;
