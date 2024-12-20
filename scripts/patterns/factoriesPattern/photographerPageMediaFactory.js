@@ -12,14 +12,11 @@ export default class PhotographerPageMedia {
         const mediaContainer = document.querySelector(".picture__container");    
         const gallery = `                           
                     ${this.medias.map(media => {                                                                       
-                        const photographerNameFormatted = this.photographer._name.replace(/-/g, ' ');
-                        
-                        const photographerNameEncoded = encodeURIComponent(photographerNameFormatted);
-                        
+                        const photographerNameFormatted = this.photographer._name.replace(/-/g, ' ');                        
+                        const photographerNameEncoded = encodeURIComponent(photographerNameFormatted);                        
                         const mediaPath = media._image
                     ? `./assets/images/FishEye_Photos/Sample_Photos/${photographerNameEncoded}/${encodeURIComponent(media._image)}`
-                    : `./assets/images/FishEye_Photos/Sample_Photos/${photographerNameEncoded}/${encodeURIComponent(media._video)}`;
-                                                   
+                    : `./assets/images/FishEye_Photos/Sample_Photos/${photographerNameEncoded}/${encodeURIComponent(media._video)}`;                                                   
                         const mediaElement = media._image
                         ? `<img src="${mediaPath}" alt="${media._title}" class="gallery__card--media">` 
                         : `<video class="gallery__card--media" alt="${media._title}">
@@ -42,19 +39,20 @@ export default class PhotographerPageMedia {
                             </section>                                                        
                 `;
             }).join("")}`;
-
-        const aside = `
-            <section id="TotalLikeContainerJS" class="photographer__aside" tabindex="0" role="tabpanel" aria-live="polite">
-            <div  class="photographer__Likes">  
-                <span id="Total__Like" class="photographer__likes--count"></span>
-                <span class="Like__Heart" aria-hidden="true"></span>
-            </div>
-            <span id="photographerPrice" >${this.photographer._price}€/jour</span>
-            </section>
-            `;
-
-        mediaContainer.innerHTML = gallery;
-        mediaContainer.insertAdjacentHTML('afterend', aside);
+            mediaContainer.innerHTML = gallery;
+                        const presenteAside = document.getElementById("TotalLikeContainerJS")
+                        if(!presenteAside){
+                            const aside = `
+                                            <section id="TotalLikeContainerJS" class="photographer__aside" tabindex="0" role="tabpanel" aria-live="polite">
+                                            <div  class="photographer__Likes">  
+                                                <span id="Total__Like" class="photographer__likes--count"></span>
+                                                <span class="Like__Heart" aria-hidden="true"></span>
+                                            </div>
+                                            <span id="photographerPrice" >${this.photographer._price}€/jour</span>
+                                            </section>
+                                            ` 
+                            mediaContainer.insertAdjacentHTML('afterend', aside);
+                            ;}        
         return gallery;
     }
 }
