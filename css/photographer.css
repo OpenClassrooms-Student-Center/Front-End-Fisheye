@@ -283,7 +283,7 @@ nav{
 }
 
 figcaption h2{
-    font-size: 24px;
+    font-size: 22x;
     font-weight: 400;
     color: #901C1C;
 }
@@ -292,7 +292,12 @@ figcaption h2{
     font-weight: 500;
     color: #901C1C;
 }
-.container__PictureLike:focus{
+.container__PictureLike{
+    display: inline-flex;
+    align-items: baseline;
+    gap: 5px;  
+}
+.container__PictureLike:focus{     
     outline: 2px solid #901C1C; 
     transform: scale(1.05);  
 }       
