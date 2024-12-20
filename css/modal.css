@@ -17,7 +17,7 @@
     width: 100%;
     min-height: 900px;
 }
-.modal__form header {
+.modal__form--header{
     display: flex;
     flex-direction: row;
     width: 100%;

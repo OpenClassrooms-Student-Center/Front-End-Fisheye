@@ -14,18 +14,23 @@ export async function afficheTotalLikes() {
      */
     function updateTotalLikes  () {
         const totalLikes = medias.reduce((accumulateur, media) => accumulateur + media._likes, 0);
+        const likesContainer = document.getElementById("TotalLikeContainerJS");
+        likesContainer.setAttribute("aria-label", `${totalLikes} j'aime`)
+        likesContainer.setAttribute("aria-hidden", "false");
         likesElement.textContent = `${totalLikes}`;
+        likesElement.setAttribute("aria-hidden", "true");
+      
+        
     };
     // Mettre à jour le nombre total de likes l'appuie sur la touche entrée incrémente et décrémente le nombre de likes
     updateTotalLikes();
     allBtnLike.forEach(btn => {
         btn.addEventListener("click", () => {
-            const media = medias.find(media => media._id == btn.dataset.id);
-            console.log("media-2", media);
+            const media = medias.find(media => media._id == btn.dataset.id);            
             !btn.classList.contains("liked") ? media._likes++ : media._likes--;
             btn.classList.toggle("liked");
             const likesElement = btn.previousElementSibling;
-            likesElement.textContent = `${media._likes}`;            
+            likesElement.textContent = `${media._likes}`;                        
             updateTotalLikes();                       
         });       
     });    

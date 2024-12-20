@@ -7,6 +7,37 @@
 img{
     overflow-clip-margin: unset;/*Empêche la pixelisation des images dans chrome*/
 }
+nav{
+    display: none;
+    position: sticky;
+    top: 2%;
+    left: 1%;
+}
+#skipLinkBtn{
+    display: none;
+    position: sticky;
+    top: 2%;
+    left: 1%;
+    background-color: #901C1C;
+    width: 60px;
+    height: 60px;
+}
+#skipLinkBtn:focus, #skipLinkBtn:hover{
+    outline: #901C1C solid 2px;
+    padding: 5px;
+    transform: scale(1.1);
+}
+.skip-link::before{
+    content: "\f191";
+    color: white;
+    font-size: 50px;
+    font-family: 'Font Awesome 5 Free';
+    font-weight: 700;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
 .Fisheye__header{
     height: 135px;
     position: relative;
@@ -261,6 +292,10 @@ figcaption h2{
     font-weight: 500;
     color: #901C1C;
 }
+.container__PictureLike:focus{
+    outline: 2px solid #901C1C; 
+    transform: scale(1.05);  
+}       
 .btn__like{   
     height: 21px;
     width: 21px;
@@ -291,7 +326,7 @@ figcaption h2{
     font-size: 20px;   
     color: #901C1C;
 }
-aside{
+.photographer__aside{
     display: flex;
     justify-content: space-around;
     align-items: center;
@@ -306,8 +341,12 @@ aside{
     font-size: 24px;
     font-weight: 500; 
 }
+.photographer__aside:hover, .photographer__aside:focus{
+    outline: #901C1C solid 2px;
+}
 .Like__Heart{
     margin-left: 10px;
+    
 }
 .Like__Heart::before{
     content: "\f004";
@@ -315,6 +354,7 @@ aside{
     font-weight: 900;
     font-size: 20px;   
     color: black;
+    
 }
 .animeCard{
     animation: fade .2s ease-in-out;
