@@ -7,8 +7,7 @@
  */
 export function displayLightbox (medias){
     const skipLinkContainer = document.getElementById('skipLinkContainer');
-    const skipLinkBtn = document.getElementById('skipLinkBtn');
-    const skipLink = document.getElementById('skipLinkJS');
+    const skipLink = document.getElementById('skipLink');
     const header = document.querySelector('header');
     const main = document.getElementById('main');    
     const lightboxWrapper = document.getElementById('lightboxWrapperJs');
@@ -43,11 +42,9 @@ export function displayLightbox (medias){
             const mediaId = media.dataset.media;        
             const mediaIndex = mediasList.findIndex(media => media._id == mediaId);                       
                 currentIndex = mediaIndex;
-                skipLinkContainer.style.display = 'block';
-                skipLinkBtn.style.display = 'block';
+                skipLinkContainer.style.display = 'block';                
                 skipLinkContainer   .setAttribute('aria-hidden', 'false');
-                skipLinkBtn.setAttribute('aria-hidden', 'false');
-                skipLink.setAttribute('aria-hidden', 'false');                
+                skipLink.setAttribute('aria-hidden', 'false');                                
                 lightboxWrapper.setAttribute('aria-hidden', 'false');
                 main.setAttribute('aria-hidden', 'true');
                 lightboxWrapper.style.display = 'flex';                                         
@@ -68,20 +65,17 @@ export function displayLightbox (medias){
     function closeLightbox  ()  {          
         lightboxWrapper.style.display = 'none';
         lightboxWrapper.setAttribute('aria-hidden', 'true');
-        skipLinkContainer.setAttribute('aria-hidden', 'true');
-        skipLinkBtn.setAttribute('aria-hidden', 'true');
+        skipLinkContainer.setAttribute('aria-hidden', 'true');        
         skipLink.setAttribute('aria-hidden', 'true');
         header.style.display = 'flex';
         main.style.visibility = 'visible';
         main.setAttribute('aria-hidden', 'false');
         main.style.height = 'auto'; 
         main.style.width = 'auto';
-        skipLinkContainer.style.display = 'none';
-        //skipLinkBtn.style.display = 'none';
-        //skipLink.style.display = 'none';
+        skipLinkContainer.style.display = 'none';    
         
     };
-    skipLinkBtn.addEventListener('click',closeLightbox);
+    skipLink.addEventListener('click',closeLightbox);
     btnClose.addEventListener('click', closeLightbox);
     btnClose.addEventListener('keydown', (e) => {
         if (e.key === 'Enter') {

@@ -10,8 +10,8 @@ nav{
     top: 2%;
     left: 1%;
 }
-#skipLinkBtn{
-    display: none;
+#skipLink{
+    display: block;
     position: sticky;
     top: 2%;
     left: 1%;
@@ -19,16 +19,16 @@ nav{
     width: 60px;
     height: 60px;
 }
-#skipLinkBtn:focus, #skipLinkBtn:hover{
+#skipLink:focus, #skipLink:hover{
     outline: #901C1C solid 2px;
     padding: 5px;
     transform: scale(1.1);
 }
-.skip-link::before{
-    content: "\f191";
+#skipLink::before{
+    content: "\f12E";
     color: white;
     font-size: 50px;
-    font-family: 'Font Awesome 5 Free';
+    font-family: 'bootstrap-icons';
     font-weight: 700;
     position: absolute;
     top: 50%;
@@ -464,23 +464,24 @@ figcaption h2{
 }
 .lightbox__container--arrowNext::before,
 .lightbox__container--arrowPrevious::before{
-    display: inline-flex;
-    justify-content: center;
-    font-family:  "Font Awesome 5 Free";
+    display: flex;
+    justify-content: center;    
     font-weight: 700;   
     font-size: 70px;
     color:  #901C1C ;
-    padding: 0;
+    padding: auto;
     height: 70px;
     width: 45px;
     
 }
 .lightbox__container--arrowNext::before{
-    content: "\f054";
+    content: "\f27B";
+    font-family: 'bootstrap-icons';
    
 }
 .lightbox__container--arrowPrevious::before{
-    content: "\f053";
+    content: "\F27A";
+    font-family: 'bootstrap-icons';
 }
 .lightbox__container--arrowNext:focus,.lightbox__container--arrowNext:hover,
 .lightbox__container--arrowPrevious:focus,.lightbox__container--arrowPrevious:hover{
