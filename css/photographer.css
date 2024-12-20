@@ -4,9 +4,6 @@
     box-sizing: border-box;
     font-family: 'DM Sans', sans-serif;
 }
-img{
-    overflow-clip-margin: unset;/*Empêche la pixelisation des images dans chrome*/
-}
 nav{
     display: none;
     position: sticky;
@@ -100,6 +97,7 @@ nav{
     clip-path: circle(36% at 50% 50%);
     object-position: center;
     transform: scale(1.4);
+    
 }
 .photograph__profile--name{
     color: #901C1C;
