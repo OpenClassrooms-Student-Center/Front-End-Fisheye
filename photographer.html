@@ -10,6 +10,8 @@
     <link href="https://fonts.googleapis.com/css?family=DM+Sans&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <title>Fisheye - photographe </title>
+    <script src="./scripts/pages/photographer.js" type="module" defer></script>
+  <script src="./scripts/utils/contactForm.js" type="module" defer></script>
   </head> 
   <body>
     <nav id="skipLinkContainer"  aria-hidden="true" role="navigation" aria-label="Menu de navigation">      
@@ -74,8 +76,7 @@
               </div>
               <div class="contact__form--data">                
                 <label id="Message" for="userMessageJS">Votre message</label>
-                <textarea id="userMessageJS" class="text-control" tabindex="5" type="textarea" rows="10" cols="10" placeholder="Veuillez saisir votre message" maxlength="300" wrap="hard" aria-labelledby="Message"></textarea>
-              </div>
+                <textarea id="userMessageJS" class="text-control" tabindex="5" type="textarea" rows="10" cols="10" placeholder="Veuillez saisir votre message" maxlength="300" wrap="hard" aria-labelledby="Message"></textarea>              </div>
               <button id="sendFormContactBtn" class="contact__form--submitBtn" tabindex="6" type="submit" form="contact__form" aria-label="Bouton envoyer" name="envoyer">Envoyer</button>
             </form>
           </div>
@@ -92,7 +93,5 @@
           </div>
         </section>
     
-  </body>
-  <script src="./scripts/pages/photographer.js" type="module" ></script>
-  <script src="./scripts/utils/contactForm.js" type="module" ></script>
+  </body>  
 </html>
