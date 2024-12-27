@@ -62,6 +62,7 @@ function messageErreurSaisie(elementCreate, elementParent, errorMessage) {
   elementCreate.setAttribute('data-error', errorMessage);
   elementCreate.setAttribute('data-error-visible', 'true');
   elementCreate.setAttribute('aria-label', errorMessage);
+  elementCreate.setAttribute('aria-live','assertive');
   elementParent.parentNode.appendChild(elementCreate);
 }
 

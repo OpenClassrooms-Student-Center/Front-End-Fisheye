@@ -72,8 +72,7 @@ export function displayLightbox (medias){
         main.setAttribute('aria-hidden', 'false');
         main.style.height = 'auto'; 
         main.style.width = 'auto';
-        skipLinkContainer.style.display = 'none';    
-        
+        skipLinkContainer.style.display = 'none';            
     };
     skipLink.addEventListener('click',closeLightbox);
     btnClose.addEventListener('click', closeLightbox);
