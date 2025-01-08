@@ -2,9 +2,8 @@ import { afficheTotalLikes} from "../utils/likes.js";
 import { displayLightbox } from "../utils/lightbox.js";
 /**
  * @function openCloseFilterMenu   
- * 
- * Fonction pour ouvrir et fermer le menu de filtre.
- * Cette fonction gère l'affichage du menu déroulant de filtre et met à jour les attributs ARIA pour l'accessibilité.
+ * @description Cette fonction permet d'ouvrir et de fermer le menu de filtre
+ * @returns {void}
  */
 export function openCloseFilterMenu  ()  {
     const filterMenu = document.querySelector(".filter__Dropdown--Ul");
@@ -24,9 +23,10 @@ export function openCloseFilterMenu  ()  {
 };
 
 /**
- * Fonction pour afficher les médias en fonction du filtre sélectionné.
- * Cette fonction met à jour l'affichage des médias en fonction du filtre sélectionné par l'utilisateur.
+ * @function Fonction pour afficher les médias en fonction du filtre sélectionné.
+ * @description Cette fonction met à jour l'affichage des médias en fonction du filtre sélectionné par l'utilisateur.
  * @param {Object} mediasTemplate - L'objet contenant les médias à afficher.
+ * @returns {void}
  */
 export function displayMediaWithFilter(mediasTemplate) {
     const currentFilter = document.getElementById('Selected__FilterJS');
@@ -51,10 +51,11 @@ export function displayMediaWithFilter(mediasTemplate) {
             sortByFilter(filter.textContent);
         });
     });
-    // Fonction pour trier et afficher les médias en fonction du filtre sélectionné
     /**
-     * 
-     * @param {*} filterValue 
+     * @function sortByFilter
+     * @description Cette fonction trie et affiche les médias en fonction du filtre sélectionné.
+     * @param {filterValue}
+     * @returns {void}  
      */
     function sortByFilter(filterValue) {
         switch (filterValue) {

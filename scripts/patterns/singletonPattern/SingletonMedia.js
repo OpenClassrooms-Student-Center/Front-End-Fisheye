@@ -10,6 +10,11 @@ export default class SingletonMedia {
         this.imageCache = new Map();
         SingletonMedia.instance = this;
     }
+    /**
+     * @description Cette fonction permet de charger une image
+     * @param {src} - chemin de l'image 
+     * @returns {Promise} - Retourne une promesse
+     */
 
     loadImage(src) {
         return new Promise((resolve, reject) => {

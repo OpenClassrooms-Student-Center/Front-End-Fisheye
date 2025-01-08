@@ -48,15 +48,20 @@ export  function closeModal() {
 //Création message d'erreur pour le formulaire et style des input en cas d'erreur
 /**
  * @description Ces fonctions permettent de mettre en forme les champs du formulaire en cas d'erreur
- * @param {*} element
- * @param {*} errorMessage
- * @param {*} elementCreate
- * @param {*} elementParent
+ * @param {element} 
+  * @returns {void}
  */
 function inputError(element){
   element.classList.add('error');
   element.setAttribute('data-error-visible', 'true')
 }
+/**
+ * @description Cette fonction permet de mettre en forme les champs du formulaire en cas d'erreur
+ * @param {elementCreate}
+ * @param {elementParent}
+ * @param {errorMessage}
+ * @returns {void}
+*/
 function messageErreurSaisie(elementCreate, elementParent, errorMessage) {
   elementCreate.classList.add('formData','error');
   elementCreate.setAttribute('data-error', errorMessage);

@@ -2,8 +2,10 @@ import imagesData from "../constructorPattern/imagesData.js";
 import videosData from "../constructorPattern/videosData.js";
 
 /**
+ * @description Cette classe permet de créer un média en fonction de son type
  * @class MediasFactory
  * @param {Object} data - Données des médias
+ * @returns {Object} - Retourne un média
  */
 export default class MediasFactory {
     constructor(data) {
