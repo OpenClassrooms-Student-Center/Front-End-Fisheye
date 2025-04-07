@@ -50,5 +50,5 @@ Fisheye.github.io/
 
 ## Auteur
 
-Ce projet a été réalisé par Boyer Laurent dans le cadre du parcours Développeur Front-end chez OpenClassrooms.
+Ce projet a été réalisé par Boyer Laurent dans le cadre du parcours Développeur d'application JS-React chez OpenClassrooms.
 
