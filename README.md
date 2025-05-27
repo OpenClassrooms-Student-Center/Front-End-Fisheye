@@ -36,7 +36,7 @@ Fisheye.github.io/
 
 - **HTML5** : Structure des pages web.
 - **CSS3** : Mise en page et styles.
-- **JavaScript** : Gestion des interactions utilisateur et affichage dynamique des données.
+- **JavaScript ES6** : Gestion des interactions utilisateur et affichage dynamique des données avec fonctionnalités modernes (arrow functions, const/let, template literals, etc.).
 - **JSON** : Stockage des données des photographes et médias.
 - **Live Server** : Extension Visual Studio Code pour prévisualiser le site en temps réel.
 
