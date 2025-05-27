@@ -22,11 +22,10 @@ const photographerId = new URLSearchParams(window.location.search).get("id");
  * @export {getPhotographerById}
  * @returns {Promise<{photographer: PhotographeData, medias: MediasFactory[]}>}
  */
-export async function getPhotographerById() {
+export const getPhotographerById = async () => {
     const { photographers, media } = await photographersApi.get();
     
     const photographer = photographers
-      
         .map(photographer => new PhotographeData(photographer))
         .find(photographer => photographer._id == photographerId);
         
@@ -41,7 +40,7 @@ export async function getPhotographerById() {
  * @export {displayPhotographerPage}
  */
 
-async function  displayPhotographerPage  ()  {
+const displayPhotographerPage = async () => {
     const { photographer, medias } = await getPhotographerById();
 
     const header = new PhotographerPageHeader(photographer);
@@ -50,14 +49,13 @@ async function  displayPhotographerPage  ()  {
     header.createPhotographerHeader();
     media.createPhotographerMedia();
     
-        afficheTotalLikes();
-        openModal(photographer);
-        closeModal();        
-        sendForm();
-        openCloseFilterMenu();
-        displayMediaWithFilter(media);
-        displayLightbox(media);
-                            
-}
+    afficheTotalLikes();
+    openModal(photographer);
+    closeModal();        
+    sendForm();
+    openCloseFilterMenu();
+    displayMediaWithFilter(media);
+    displayLightbox(media);
+};
       
-    displayPhotographerPage();
+displayPhotographerPage();

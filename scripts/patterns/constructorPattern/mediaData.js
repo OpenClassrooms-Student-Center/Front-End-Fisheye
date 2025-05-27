@@ -5,17 +5,16 @@
  * @export {MediaData}
  */
 export default class MediaData {
-    constructor(data){
+    constructor(data) {
         if (!data || typeof data !== 'object') {
             throw new Error('Invalid media data provided');
         }
-            this._id = data.id;
-            this._photographerId = data.photographerId;
-            this._title = data.title;
-            this._likes = data.likes;
-            this._date = data.date;           
-            this._price = data.price;
-            this._alt = data.title;
+        this._id = data.id;
+        this._photographerId = data.photographerId;
+        this._title = data.title;
+        this._likes = data.likes;
+        this._date = data.date;           
+        this._price = data.price;
+        this._alt = data.title;
     }
-    
 }

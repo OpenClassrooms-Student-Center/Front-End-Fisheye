@@ -6,10 +6,9 @@ import MediaData from "./mediaData.js";
  * @extends MediaData
  * @export {ImagesData}
  */
-export default class ImagesData extends  MediaData{
-    constructor(data){
-       super(data);
-        this._image = data.image           
+export default class ImagesData extends MediaData {
+    constructor(data) {
+        super(data);
+        this._image = data.image;
     }
-    
 }

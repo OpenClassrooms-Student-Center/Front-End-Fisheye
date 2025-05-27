@@ -10,11 +10,11 @@ import videosData from "../constructorPattern/videosData.js";
 export default class MediasFactory {
     constructor(data) {
         if (data.image) {
-            return new imagesData(data)
+            return new imagesData(data);
         } else if (data.video) {
-            return new videosData(data)
+            return new videosData(data);
         } else {
-            throw 'Unknown data type'
+            throw 'Unknown data type';
         }
     }
 }

@@ -5,7 +5,7 @@ import { displayLightbox } from "../utils/lightbox.js";
  * @description Cette fonction permet d'ouvrir et de fermer le menu de filtre
  * @returns {void}
  */
-export function openCloseFilterMenu  ()  {
+export const openCloseFilterMenu = () => {
     const filterMenu = document.querySelector(".filter__Dropdown--Ul");
     const filterMenuButton = document.querySelector(".filter__Dropdown--Btn");
     const filterButtons = document.querySelectorAll(".dropdown__option--btn");
@@ -28,7 +28,7 @@ export function openCloseFilterMenu  ()  {
  * @param {Object} mediasTemplate - L'objet contenant les médias à afficher.
  * @returns {void}
  */
-export function displayMediaWithFilter(mediasTemplate) {
+export const displayMediaWithFilter = (mediasTemplate) => {
     const currentFilter = document.getElementById('Selected__FilterJS');
     const allFilters = Array.from(document.querySelectorAll('.dropdown__option--btn'));
    
@@ -57,7 +57,7 @@ export function displayMediaWithFilter(mediasTemplate) {
      * @param {filterValue}
      * @returns {void}  
      */
-    function sortByFilter(filterValue) {
+    const sortByFilter = (filterValue) => {
         switch (filterValue) {
             case 'Titre':
                 mediasTemplate.medias.sort((a, b) => a._title.localeCompare(b._title));
@@ -83,5 +83,5 @@ export function displayMediaWithFilter(mediasTemplate) {
                 media.classList.add('animeCard');
             }, 100 * index);
         });
-    }
-}
+    };
+};

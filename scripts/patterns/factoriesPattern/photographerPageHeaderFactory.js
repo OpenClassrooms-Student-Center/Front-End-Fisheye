@@ -1,6 +1,5 @@
 export default class PhotographerPageHeader {
     constructor(photographer) {
-   
         this.photographer = photographer;
     }
     //Méthode de la création du header de la page photographe

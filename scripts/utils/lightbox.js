@@ -5,7 +5,7 @@
  * @returns {HTMLElement} lightboxWrapper
  * 
  */
-export function displayLightbox (medias){
+export const displayLightbox = (medias) => {
     const skipLinkContainer = document.getElementById('skipLinkContainer');
     const skipLink = document.getElementById('skipLink');
     const header = document.querySelector('header');
@@ -25,36 +25,37 @@ export function displayLightbox (medias){
  * @returns {HTMLElement} lightboxMedia
  * @description affiche le media dans le lightbox
  */
-    function lightboxTemplate() {        
-            const currentMedia = mediasList[currentIndex];            
-            lightboxMedia.innerHTML = `
-                    ${currentMedia._image ? `
-                    <img src="./assets/images/FishEye_Photos/Sample_Photos/${photographer._name.replace(/-/g, ' ').replace(/\s+/g, ' ')}/${encodeURIComponent(currentMedia._image)}" alt="${currentMedia._alt || ''}">` : 
-                    `<video controls aria-label="${currentMedia._alt || ''}"><source src="./assets/images/FishEye_Photos/Sample_Photos/${photographer._name.replace(/-/g, ' ').replace(/\s+/g, ' ')}/${encodeURIComponent(currentMedia._video)}" type="video/mp4"></video>`}
+    const lightboxTemplate = () => {        
+        const currentMedia = mediasList[currentIndex];            
+        lightboxMedia.innerHTML = `
+                ${currentMedia._image ? `
+                <img src="./assets/images/FishEye_Photos/Sample_Photos/${photographer._name.replace(/-/g, ' ').replace(/\s+/g, ' ')}/${encodeURIComponent(currentMedia._image)}" alt="${currentMedia._alt || ''}">` : 
+                `<video controls aria-label="${currentMedia._alt || ''}"><source src="./assets/images/FishEye_Photos/Sample_Photos/${photographer._name.replace(/-/g, ' ').replace(/\s+/g, ' ')}/${encodeURIComponent(currentMedia._video)}" type="video/mp4"></video>`}
 
-                    <figcaption>${currentMedia._title || ''}</figcaption>
-                `;            
-                return lightboxMedia;
+                <figcaption>${currentMedia._title || ''}</figcaption>
+            `;            
+        return lightboxMedia;
     };    
+    
     mediaProvider.forEach(media => {
         media.addEventListener('click', () => {
                   
             const mediaId = media.dataset.media;        
             const mediaIndex = mediasList.findIndex(media => media._id == mediaId);                       
-                currentIndex = mediaIndex;
-                skipLinkContainer.style.display = 'block';                
-                skipLinkContainer   .setAttribute('aria-hidden', 'false');
-                skipLink.setAttribute('aria-hidden', 'false');                                
-                lightboxWrapper.setAttribute('aria-hidden', 'false');
-                main.setAttribute('aria-hidden', 'true');
-                lightboxWrapper.style.display = 'flex';                                         
-                header.style.display = 'none';
-                main.style.visibility = 'hidden';
-                main.setAttribute('aria-hidden', 'true');
-                main.style.height = '0'; 
-                main.style.width = '0';              
-                btnClose.focus();
-                lightboxTemplate();
+            currentIndex = mediaIndex;
+            skipLinkContainer.style.display = 'block';                
+            skipLinkContainer.setAttribute('aria-hidden', 'false');
+            skipLink.setAttribute('aria-hidden', 'false');                                
+            lightboxWrapper.setAttribute('aria-hidden', 'false');
+            main.setAttribute('aria-hidden', 'true');
+            lightboxWrapper.style.display = 'flex';                                         
+            header.style.display = 'none';
+            main.style.visibility = 'hidden';
+            main.setAttribute('aria-hidden', 'true');
+            main.style.height = '0'; 
+            main.style.width = '0';              
+            btnClose.focus();
+            lightboxTemplate();
                                              
         });
     });
@@ -62,7 +63,7 @@ export function displayLightbox (medias){
      * @function closeLightbox
      * @description ferme le lightbox
      */
-    function closeLightbox  ()  {          
+    const closeLightbox = () => {          
         lightboxWrapper.style.display = 'none';
         lightboxWrapper.setAttribute('aria-hidden', 'true');
         skipLinkContainer.setAttribute('aria-hidden', 'true');        
@@ -74,32 +75,38 @@ export function displayLightbox (medias){
         main.style.width = 'auto';
         skipLinkContainer.style.display = 'none';            
     };
-    skipLink.addEventListener('click',closeLightbox);
+    
+    skipLink.addEventListener('click', closeLightbox);
     btnClose.addEventListener('click', closeLightbox);
     btnClose.addEventListener('keydown', (e) => {
         if (e.key === 'Enter') {
             closeLightbox();
-        };
+        }
     });          
+    
     btnPrevious.addEventListener('click', () => {
         currentIndex = (currentIndex > 0) ? currentIndex - 1 : mediasList.length - 1;
         lightboxTemplate();         
     });
+    
     btnPrevious.addEventListener('keydown', (e) => {
         if (e.key === 'ArrowLeft') {
             currentIndex = (currentIndex > 0) ? currentIndex - 1 : mediasList.length - 1;
             lightboxTemplate(); 
-        };
+        }
     });
+    
     btnNext.addEventListener('click', () => {
         currentIndex = (currentIndex < mediasList.length - 1) ? currentIndex + 1 : 0;
         lightboxTemplate(); 
     });
+    
     document.addEventListener('keydown', (e) => {
         if (e.key === 'Escape') {
             closeLightbox();
         }
     });    
+    
     document.addEventListener('keydown', (e) => {
         if (e.key === 'ArrowRight') {
             currentIndex = (currentIndex < mediasList.length - 1) ? currentIndex + 1 : 0;

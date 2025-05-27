@@ -40,7 +40,7 @@ export default class PhotographerPageMedia {
                 `;
             }).join("")}`;
             mediaContainer.innerHTML = gallery;
-                        const presenteAside = document.getElementById("TotalLikeContainerJS")
+                        const presenteAside = document.getElementById("TotalLikeContainerJS");
                         if(!presenteAside){
                             const aside = `
                                             <section id="TotalLikeContainerJS" class="photographer__aside" tabindex="0" role="tabpanel" aria-live="polite">
@@ -50,9 +50,9 @@ export default class PhotographerPageMedia {
                                             </div>
                                             <span id="photographerPrice" >${this.photographer._price}€/jour</span>
                                             </section>
-                                            ` 
+                                            `; 
                             mediaContainer.insertAdjacentHTML('afterend', aside);
-                            ;}        
+                        }        
         return gallery;
     }
 }

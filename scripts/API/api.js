@@ -7,9 +7,10 @@
  * 
  */
 export default class Api {
-  constructor(url){
-      this.url = url;
+  constructor(url) {
+    this.url = url;
   }
+  
   async get() {
     try {
       const response = await fetch(this.url);
@@ -29,4 +30,4 @@ export default class Api {
       return null; // retourne une valeur null.
     }
   }
-} 
+}

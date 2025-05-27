@@ -4,7 +4,7 @@ import { getPhotographerById } from "../pages/photographer.js";
  * @function afficheTotalLikes
  * @returns {Promise<void>}
  */
-export async function afficheTotalLikes() {
+export const afficheTotalLikes = async () => {
     const { medias } = await getPhotographerById();
     const allBtnLike = document.querySelectorAll(".btn__like");
     const likesElement = document.querySelector(".photographer__likes--count");    
@@ -12,16 +12,15 @@ export async function afficheTotalLikes() {
      * @function updateTotalLikes  
      * @returns {number} totalLikes 
      */
-    function updateTotalLikes  () {
+    const updateTotalLikes = () => {
         const totalLikes = medias.reduce((accumulateur, media) => accumulateur + media._likes, 0);
         const likesContainer = document.getElementById("TotalLikeContainerJS");
-        likesContainer.setAttribute("aria-label", `${totalLikes} j'aime`)
+        likesContainer.setAttribute("aria-label", `${totalLikes} j'aime`);
         likesContainer.setAttribute("aria-hidden", "false");
         likesElement.textContent = `${totalLikes}`;
         likesElement.setAttribute("aria-hidden", "true");
-      
-        
     };
+    
     // Mettre à jour le nombre total de likes l'appuie sur la touche entrée incrémente et décrémente le nombre de likes
     updateTotalLikes();
     allBtnLike.forEach(btn => {
