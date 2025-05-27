@@ -1,37 +1,99 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <link href="css/style.css" rel="stylesheet" type="text/css" />
-    <meta charset="utf-8">
-    <link rel="icon" type="image/png" href="assets/favicon.png">
+<html lang="fr">
+  <head>    
+    <meta  charset="utf-8">    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="./css/style.css" rel="stylesheet" type="text/css">
+    <link href="./css/photographer.css" rel="stylesheet" type="text/css">
+    <link href="./css/modal.css" rel="stylesheet" type="text/css">
+    <link rel="icon" type="image/png" href="./assets/favicon.png">
     <link href="https://fonts.googleapis.com/css?family=DM+Sans&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <title>Fisheye - photographe </title>
-  </head>
+    <script src="./scripts/pages/photographer.js" type="module" ></script>
+    <script src="./scripts/utils/contactForm.js" type="module" ></script>
+  </head> 
   <body>
-    <header>
-      <img src="assets/images/logo.png" class="logo" />
+    <nav id="skipLinkContainer"  aria-hidden="true" role="navigation" aria-label="Menu de navigation">      
+        <a id="skipLink" href="#main" role="button" tabindex="0" class="skip-link" title="link" aria-hidden="true"></a>      
+    </nav>
+       
+    <header class="Fisheye__header" role="banner" aria-label="Logo de la page photographe">
+      <a class="Fisheye__header--link" href="./index.html">
+        <img  src="./assets/images/logo.png" class="logo" alt="Fisheye To Home page" aria-label="Retour sur la page d'accueil">
+      </a> 
     </header>
-    <main id="main">
-      <div class="photograph-header">
-        <button class="contact_button" onclick="displayModal()">Contactez-moi</button>
-      </div>
+    <main id="main" aria-hidden="false" role="main" aria-label="Présentation du photographe et de ses clichés">
+      <section class="photograph__header"></section>
+      <article class="media__container">
+        <section id="filter__section">
+          <h2>Trier par</h2>
+          <div class="filter" role="complementary" aria-label="Filtre de tri">
+            <div class="filter__Dropdown">
+                <button id="filter__Dropdown--BtnJS" class="filter__Dropdown--Btn" type="button"  aria-haspopup="listbox" aria-expanded="false" aria-controls="filter__Dropdown--UlJS">
+                    <span id="Selected__FilterJS" class="filter__Dropdown--BtnTitle">Titre</span>
+                    <span class="fa-solid fa-chevron-up" aria-hidden="true"></span>
+                </button>
+                <ul id="filter__Dropdown--UlJS" class="filter__Dropdown--Ul" role="listbox" aria-hidden="true">
+                    <li class="dropdown__option" role="option">
+                        <button class="dropdown__option--btn" type="button" tabindex="-1" aria-label="titre">Titre</button>
+                    </li>
+                    <li class="dropdown__option" role="option">
+                        <button class="dropdown__option--btn" type="button" tabindex="-1" aria-label="popularité">Popularité</button>
+                    </li>
+                    <li class="dropdown__option" role="option">
+                        <button class="dropdown__option--btn" type="button" tabindex="-1" aria-label="date">Date</button>
+                    </li>
+                </ul>
+            </div>
+          </div>
+        </section>
+        <section class="picture__container" aria-label="Exposition de plusieurs clichés pris par le photographe">
+        </section>
+      </article>
     </main>
-    <div id="contact_modal">
-			<div class="modal">
-				<header>
-          <h2>Contactez-moi</h2>
-          <img src="assets/icons/close.svg" onclick="closeModal()" />
-        </header>
-				<form>
-					<div>
-						<label>Prénom</label>
-						<input />
-					</div>
-          <button class="contact_button">Envoyer</button>
-				</form>
-			</div>
-		</div>
-    <script src="/scripts/pages/photographer.js"></script>
-    <script src="/scripts/utils/contactForm.js"></script>
+    <!--Pop-up Windows section-->
+      <!--Contact Modal-->
+        <div id="contact__modal">
+          <div class="modal__form" role="main" aria-label="Formulaire de contact">
+            <div class="modal__form--header">          
+                <h2 class="modal__form--title" aria-labelledby="photographerName">Contactez-moi</h2>                        
+                <span id="closeModalJS" class="modal__form--BtnClose" tabindex="1" role="button" aria-label="clicker pour fermer le formulaire de contact"></span>                 
+            </div>
+            <p id="photographerName" class="modal__form--photographerName"></p>
+            <form id="contact__form">
+              <div class="contact__form--data">
+                <label id="FirstName" for="firstNameJS">Prénom</label>
+                <input id="firstNameJS" class="text-control" tabindex="2" type="text" placeholder="Veuillez saisir votre prénom" aria-labelledby="FirstName"/>
+              </div>
+              <div class="contact__form--data">
+                <label id="LastName" for="lastNameJS">Nom</label>
+                <input id="lastNameJS" class="text-control" tabindex="3" type="text" placeholder="Veuillez saisir votre nom" aria-labelledby="LastName"/>
+              </div>
+              <div class="contact__form--data">
+                <label id="Email" for="emailJS">Email</label>
+                <input id="emailJS" class="text-control" tabindex="4" type="email" placeholder="Veuillez saisir votre adresse mail" aria-labelledby="Email"/>
+              </div>
+              <div class="contact__form--data">                
+                <label id="Message" for="userMessageJS">Votre message</label>
+                <textarea id="userMessageJS" class="text-control" tabindex="5" rows="10" cols="10" placeholder="Veuillez saisir votre message" maxlength="300" wrap="hard" aria-labelledby="Message"></textarea>
+              </div>
+              <button id="sendFormContactBtn" class="contact__form--submitBtn" tabindex="6" type="submit" form="contact__form" aria-label="Bouton envoyer" name="envoyer">Envoyer</button>
+            </form>
+          </div>
+        </div>
+
+      <!--LightBox-->
+        <section id="lightboxWrapperJs" class="lightbox" role="dialog" aria-modal="true" aria-hidden="true" aria-label="Vue grand format sur le media choisi">
+          <div id="LightBoxContainer" class="lightbox__container" >
+            <button id="closelightBoxJS" class="lightbox__container--closeBtn" aria-label="fermeture de l'image, ou appuyé sur le bouton échappe"></button>
+            <button id="nextMediaJS" class="lightbox__container--arrowNext" aria-label="média suivant, navigation possible par la flèche droite du clavier"></button>
+            <button id="previousMediaJS" class="lightbox__container--arrowPrevious" aria-label="média précédent, navigation possible par la flèche gauche du clavier"></button>
+            <figure class="lightbox__container--media" aria-label="current media">
+            </figure>            
+          </div>
+        </section>
+    
   </body>
+
 </html>

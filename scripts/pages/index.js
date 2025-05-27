@@ -1,46 +1,38 @@
-    async function getPhotographers() {
-        // Ceci est un exemple de données pour avoir un affichage de photographes de test dès le démarrage du projet, 
-        // mais il sera à remplacer avec une requête sur le fichier JSON en utilisant "fetch".
-        let photographers = [
-            {
-                "name": "Ma data test",
-                "id": 1,
-                "city": "Paris",
-                "country": "France",
-                "tagline": "Ceci est ma data test",
-                "price": 400,
-                "portrait": "account.png"
-            },
-            {
-                "name": "Autre data test",
-                "id": 2,
-                "city": "Londres",
-                "country": "UK",
-                "tagline": "Ceci est ma data test 2",
-                "price": 500,
-                "portrait": "account.png"
-            },
-        ]
-        // et bien retourner le tableau photographers seulement une fois récupéré
-        return ({
-            photographers: [...photographers, ...photographers, ...photographers]})
-    }
+import Api from"../API/api.js";
+import PhotographeData from "../patterns/constructorPattern/photographeData.js";
+import CardFactory from "../patterns/factoriesPattern/cardsFactory.js";
+import { singletonMedia } from "../patterns/singletonPattern/SingletonMedia.js";
+const photographersSection = document.querySelector(".photographer");
+const photographerApi = new Api("./data/photographers.json");
+/**
+ * @description - Initialise la page d'accueil
+ * @param {Array} photographersData - Tableau des photographes
+ * @param {PhotographeData} photographer - Instance de la classe PhotographeData
+ * @param {CardFactory} card - Instance de la classe CardFactory
+ * @param {HTMLElement} photographerCard - Carte du photographe
+ * @param {string} imgSrc - Source de l'image du photographe
+ * @export {init}
+ */
+const init = async () => {
+    const photographersData = await photographerApi.get();
+    const photographers = photographersData.photographers;
+   
+    photographers
+        .map(photographer => new PhotographeData(photographer))
+        .forEach(async photographer => {
+            const card = new CardFactory(photographer);
+            const photographerCard = card.createCardPhotographer();
+            photographersSection.appendChild(photographerCard);
+                
+        // Charger l'image du photographe en utilisant le singleton
+        const imgSrc = `${photographer._portrait}`;            
+        try {
+            const img = await singletonMedia.loadImage(imgSrc);
+            photographerCard.querySelector('.photographer__link--thumbnail').src = img.src;
+        } catch (error) {
+            console.error('Erreur de chargement de l\'image:', error);
+        }
+    });
+};
 
-    async function displayData(photographers) {
-        const photographersSection = document.querySelector(".photographer_section");
-
-        photographers.forEach((photographer) => {
-            const photographerModel = photographerTemplate(photographer);
-            const userCardDOM = photographerModel.getUserCardDOM();
-            photographersSection.appendChild(userCardDOM);
-        });
-    }
-
-    async function init() {
-        // Récupère les datas des photographes
-        const { photographers } = await getPhotographers();
-        displayData(photographers);
-    }
-    
-    init();
-    
+init();
